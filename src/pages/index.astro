@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Detect the preferred language of the browser
+      const lang = navigator.language;
+      // If it starts with 'es', redirect to /es, otherwise to /en
+      if (lang && lang.toLowerCase().startsWith('es')) {
+        window.location.replace('/es');
+      } else {
+        window.location.replace('/en');
+      }
+    </script>
+    <noscript>
+      <!-- Fallback: if JS is disabled, show manual links -->
+      <meta http-equiv="refresh" content="0;url=/en" />
+      <p>
+        <a href="/en">English</a> | <a href="/es">Spanish</a>
+      </p>
+    </noscript>
+  </head>
+  <body></body>
+</html>

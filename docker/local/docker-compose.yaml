@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  xergioalexcom: &xergioalexcom
+    build:
+      context: .
+      dockerfile: ./xergioalexcom/Dockerfile
+    working_dir: /app
+    volumes:
+      - ../..:/app
+    ports:
+      - '4446:4321'
+      - '9000:8969'
+    env_file:
+      - xergioalexcom/.env
+    command:
+      - /bin/sh
+      - -c
+      - |
+        sleep infinity

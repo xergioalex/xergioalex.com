@@ -1,0 +1,40 @@
+---
+// import Button from '../components/button.astro';
+import Layout from '../../layouts/main.astro';
+
+const lang: string = 'es';
+---
+
+<Layout title="Sebastián Martínez Vanegas" lang={lang}>
+  <div class="relative z-20 w-full max-w-4xl mx-auto mt-16 px-7 xl:px-0">
+    <div class="flex flex-col items-center md:flex-row">
+      <div class="relative w-full md:w-1/2">
+        <h1 class="font-laomn text-neutral-600 mb-4 text-2xl font-extrabold leading-tight dark:text-white">
+          Sergio A. Florez Galeano
+        </h1>
+        <hr class="my-4 border-neutral-200 dark:border-neutral-700 w-16 mx-0" />
+        <p class="mb-4 text-base text-neutral-600 dark:text-neutral-400">
+          Pereira, 1996. Es autor de <strong>Tener un cuerpo es mala poesía</strong> (Premio Internacional de Poesía Emilio
+          Prados en 2024) y de <strong>Coordenadas de un plano irrealizable</strong> (ganador del Premio de Poesía Joven
+          RNE-Fundación Montemadrid en 2021 y finalista del Premio Nacional de Poesía del Ministerio de Colombia en 2023).
+          Disfrutó de la beca de creación de la Fundación Antonio Gala para Jóvenes Creadores entre 2023 y 2024. Su obra
+          aparece en medios como <em>Periódico de Poesía</em> (de la UNAM), <em>Círculo de Poesía</em>, <em>Poesía</em> (de
+          la Universidad de Carabobo), <em>Temporales</em>, entre otros.
+        </p>
+        <!-- <Button text="📄 Descargar dossier literario" link="/assets/dossier-sebastian-martinez.pdf" /> -->
+      </div>
+      <div
+        class="relative justify-center w-full mt-4 md:mt-10 md:flex md:pl-16 md:w-1/2 md:mt-0 md:translate-y-4 xl:translate-y-0"
+      >
+        <div class="relative z-50 w-full flex justify-center">
+          <img
+            src="/assets/images/profile2.png"
+            loading="eager"
+            decoding="auto"
+            class="relative z-30 w-40 h-52 md:w-80 md:h-96 object-cover shadow-xl ring-1 ring-neutral-200 dark:ring-neutral-800 mx-auto transition-opacity duration-700"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
