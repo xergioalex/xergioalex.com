@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-		"build:ghpages": "rm -rf docs && astro build --outDir ./docs && touch docs/.nojekyll && cp CNAME docs/",
+    "build:ghpages": "rm -rf docs && astro build --outDir ./docs && touch docs/.nojekyll && cp CNAME docs/",
     "astro": "astro",
     "astro:check": "astro check",
     "astro:preview": "astro preview",
