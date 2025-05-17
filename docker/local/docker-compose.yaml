@@ -10,7 +10,6 @@ services:
       - ../..:/app
     ports:
       - '4446:4321'
-      - '9000:8969'
     env_file:
       - xergioalexcom/.env
     command:

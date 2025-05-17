@@ -12,11 +12,6 @@ function print.error {
   echo -e "${RED}$1${RESET}"
 }
 
-function setup() {
-  print.success "Setup GitHub Actions..."
-	npm run gactions:setup
-}
-
 function check() {
   print.success "Running astro checks..."
 	npm run astro:check
@@ -26,16 +21,8 @@ function check() {
 		return 1
 	fi
 
-	print.success "Running eslint checks..."
-	npm run eslint:check
-	if [ $? != 0 ]; then
-    echo ''
-		print.error "⚠️ Eslint checks failed, skipping prettier checks..."
-		return 1
-	fi
-
-	print.success "Running prettier checks..."
-	npm run prettier:check
+	print.success "Running biome checks..."
+	npm run biome:check
 }
 
 function fix() {
@@ -47,16 +34,8 @@ function fix() {
 		return 1
 	fi
 
-  print.success "Running eslint checks && apply automatic fixes..."
-	npm run eslint:fix
-	if [ $? != 0 ]; then
-    echo ''
-		print.error "⚠️ Eslint checks failed, skipping prettier checks..."
-		return 1
-	fi
-
-	print.success "Running prettier checks && apply automatic fixes..."
-	npm run prettier:fix
+	print.success "Running biome checks && apply automatic fixes..."
+	npm run biome:fix
 }
 
 function test() {
@@ -68,7 +47,7 @@ function codecheck() {
 	fix
 	if [ $? != 0 ]; then
     echo ''
-		print.error "⚠️ Prettier checks failed..."
+		print.error "⚠️ Biome checks failed..."
 		return 1
 	fi
   test
