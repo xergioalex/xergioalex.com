@@ -1,41 +1,13 @@
-import { defineConfig } from "astro/config";
-
-import tailwind from "@astrojs/tailwind";
-
-import svelte from '@astrojs/svelte';
+// @ts-check
+import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static',
-  site: 'https://www.xergioalex.com',
-  base: '/',
-  trailingSlash: 'never',
-    integrations: [
-      tailwind(),
-      svelte({
-        experimental: {
-          prebundleSvelteLibraries: true
-        }
-      })
-    ],
-
-  server: {
+	site: 'https://www.xergioalex.com',
+	integrations: [mdx(), sitemap()],
+	server: {
     host: true,
   },
-
-  build: {
-    assets: 'assets',
-    assetsPrefix: '/',
-  },
-
-  // Configuración para manejar archivos estáticos
-  vite: {
-    publicDir: 'public',
-    build: {
-      assetsDir: 'assets'
-    },
-    optimizeDeps: {
-      exclude: ['@astrojs/svelte']
-    }
-  }
 });
