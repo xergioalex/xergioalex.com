@@ -1,10 +1,9 @@
 ---
-title: "“Abre la boca” in Temporales"
+title: '“Abre la boca” in Temporales'
 description: "Non-fiction text (or essay?, or story?) written after reading Clarice Lispector and published in the magazine Temporales (from the MFA in Creative Writing in Spanish at NYU). “I only came to do this experiment for one reason: it's because I read that story, I'm talking about «The Egg and the Chicken», just so you know; but I read it wrong. What a sadness”."
 category: Non-fiction
 date: 01/10/2020
 ---
-
 
 I have been sharing some interesting tools on [X](https://x.com/0xKaibi) and also synchronizing them to my Telegram Channel. I saw that [Austin mentioned he is preparing to create a website](https://x.com/austinit/status/1817832660758081651) to compile all the shared content. This reminded me of a template I recently came across called [Sepia](https://github.com/Planetable/SiteTemplateSepia), and I thought about converting the Telegram Channel into a microblog.
 
