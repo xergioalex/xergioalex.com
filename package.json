@@ -9,15 +9,17 @@
     "astro": "astro",
     "astro:check": "astro check",
     "ncu:check": "ncu",
-		"ncu:upgrade": "ncu -u",
-		"test": "echo 'Running tests...'",
-		"release": "npm version patch -m \"[🤖 Sebastián Martínez Vanegas] New release to v%s launched 🚀\""
+    "ncu:upgrade": "ncu -u",
+    "test": "echo 'Running tests...'",
+    "release": "npm version patch -m \"[🤖 Sebastián Martínez Vanegas] New release to v%s launched 🚀\""
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "4.2.6",
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.4.0",
-    "astro": "5.7.13"
+    "astro": "5.7.13",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "npm-check-updates": "18.0.1"
