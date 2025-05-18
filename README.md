@@ -1,4 +1,4 @@
-# Astro Starter Kit: Blog
+# Sergio Alexander Florez Galeano - Website
 
 ```sh
 npm create astro@latest -- --template blog
