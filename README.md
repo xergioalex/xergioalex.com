@@ -1,4 +1,4 @@
-# Sergio Alexander Florez Galeano - Website
+# Sergio Alexander Florez Galeano - Website.
 
 ```sh
 npm create astro@latest -- --template blog
