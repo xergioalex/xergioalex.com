@@ -1,11 +1,11 @@
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 // @ts-check
 import { defineConfig } from 'astro/config';
-import svelte from '@astrojs/svelte';
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,8 +21,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': resolve(__dirname, './src')
-      }
-    }
+        '@': resolve(__dirname, './src'),
+      },
+    },
   },
 });
