@@ -1,10 +1,25 @@
 ---
-import Hero from '@/components/Hero.astro';
+import AboutSection from '@/components/home/AboutSection.astro';
+import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
+import ContactSection from '@/components/home/ContactSection.astro';
+import EducationSection from '@/components/home/EducationSection.astro';
+import ExperienceSection from '@/components/home/ExperienceSection.astro';
+import HeroSection from '@/components/home/HeroSection.astro';
+import ProjectsSection from '@/components/home/ProjectsSection.astro';
+import SkillsSection from '@/components/home/SkillsSection.astro';
+import TestimonialsSection from '@/components/home/TestimonialsSection.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<Hero />
-	<!-- Add more landing page sections here -->
+	<HeroSection />
+	<AboutSection />
+	<SkillsSection />
+	<ExperienceSection />
+	<ProjectsSection />
+	<EducationSection />
+	<TestimonialsSection />
+	<BlogPreviewSection />
+	<ContactSection />
 </MainLayout>
