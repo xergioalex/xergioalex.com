@@ -1,11 +1,33 @@
 ---
-import { getCollection } from "astro:content";
-import MainLayout from "@/layouts/MainLayout.astro";
-import BlogGrid from "@/components/BlogGrid.astro";
-import type { CollectionEntry } from "astro:content";
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BlogGrid from '@/components/BlogGrid.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 
-export async function getStaticPaths({ paginate }) {
-  const posts = (await getCollection("blog")).sort(
+interface PaginateOptions {
+  pageSize: number;
+}
+
+interface PaginateResult {
+  params: { page: string };
+  props: {
+    page: {
+      currentPage: number;
+      lastPage: number;
+      data: CollectionEntry<'blog'>[];
+    };
+  };
+}
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: (
+    items: CollectionEntry<'blog'>[],
+    options: PaginateOptions,
+  ) => PaginateResult[];
+}) {
+  const posts = (await getCollection('blog')).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
 
@@ -16,7 +38,7 @@ interface Props {
   page: {
     currentPage: number;
     lastPage: number;
-    data: CollectionEntry<"blog">[];
+    data: CollectionEntry<'blog'>[];
   };
 }
 

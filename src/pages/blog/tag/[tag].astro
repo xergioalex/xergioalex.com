@@ -1,11 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-import MainLayout from "@/layouts/MainLayout.astro";
-import BlogGrid from "@/components/BlogGrid.astro";
+import { getCollection } from 'astro:content';
+import BlogGrid from '@/components/BlogGrid.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 
 // Genera las rutas estáticas para cada tag
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
   // Extrae todos los tags únicos de los posts
   const tags = Array.from(
     new Set(posts.flatMap((post) => post.data.tags ?? [])),
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-const posts = (await getCollection("blog")).filter((post) =>
+const posts = (await getCollection('blog')).filter((post) =>
   (post.data.tags ?? []).includes(tag),
 );
 ---

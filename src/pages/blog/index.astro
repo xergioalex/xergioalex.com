@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import MainLayout from "@/layouts/MainLayout.astro";
-import BlogGrid from "@/components/BlogGrid.astro";
+import { getCollection } from 'astro:content';
+import BlogGrid from '@/components/BlogGrid.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 
-const allPosts = (await getCollection("blog")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const pageSize = 3;
@@ -12,12 +12,12 @@ const totalPages = Math.ceil(allPosts.length / pageSize);
 const posts = allPosts.slice(0, pageSize);
 
 const allTags = Array.from(
-	new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
+  new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
 );
 
 // Calculate the range of pages to show
-const range = (start, end) =>
-	Array.from({ length: end - start + 1 }, (_, i) => start + i);
+const range = (start: number, end: number) =>
+  Array.from({ length: end - start + 1 }, (_, i) => start + i);
 const pageRange = range(1, Math.min(3, totalPages));
 ---
 
@@ -48,7 +48,7 @@ const pageRange = range(1, Math.min(3, totalPages));
 			type="text"
 			placeholder="Buscar artículos..."
 			class="w-full md:w-1/2 px-4 py-2 rounded border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-			oninput="filterArticles(event)"
+			oninput="filterArticles(this.value)"
 		/>
 	</div>
 
@@ -61,8 +61,8 @@ const pageRange = range(1, Math.min(3, totalPages));
 	/>
 
 	<script is:inline>
-		function filterArticles(event) {
-			const query = event.target.value.toLowerCase();
+		function filterArticles(query) {
+			query = query.toLowerCase();
 			document.querySelectorAll(".article-card").forEach((card) => {
 				const text = card.innerText.toLowerCase();
 				card.style.display = text.includes(query) ? "" : "none";

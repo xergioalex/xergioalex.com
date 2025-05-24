@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import FormattedDate from "@/components/FormattedDate.astro";
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '@/components/FormattedDate.astro';
 
 interface Props {
-  posts: CollectionEntry<"blog">[];
+  posts: CollectionEntry<'blog'>[];
   showPagination?: boolean;
   currentPage?: number;
   lastPage?: number;
