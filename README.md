@@ -1,4 +1,4 @@
-# Sergio Alexander Florez Galeano - Website.
+# Sergio Alexander Florez Galeano - Website
 
 ```sh
 npm create astro@latest -- --template blog
@@ -72,3 +72,4 @@ Blogs example:
 - https://relative-astro-template.vercel.app/blog
 - https://streamline-astro-template.vercel.app/blog
 - https://charter-astro-template.vercel.app/blog
+- https://astro-blog-flame.vercel.app/
