@@ -15,7 +15,8 @@
         "vscode-icons-team.vscode-icons",
         "biomejs.biome",
         "unifiedjs.vscode-mdx",
-        "astro-build.astro-vscode"
+        "astro-build.astro-vscode",
+        "bradlc.vscode-tailwindcss"
       ]
     }
   }
