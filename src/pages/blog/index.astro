@@ -10,14 +10,26 @@ const posts = (await getCollection("blog")).sort(
 
 <BlogLayout>
 	<section>
-		<ul>
+		<ul class="flex flex-wrap gap-8 list-none m-0 p-0">
 			{
-				posts.map((post) => (
-					<li>
-						<a href={`/blog/${post.id}/`}>
-							<img width={720} height={360} src={post.data.heroImage} alt="" />
-							<h4 class="title">{post.data.title}</h4>
-							<p class="date">
+				posts.map((post, index) => (
+					<li
+						class={`group ${index === 0 ? "w-full text-center mb-4" : "w-[calc(50%-1rem)]"}`}
+					>
+						<a href={`/blog/${post.id}/`} class="block">
+							<img
+								width={720}
+								height={360}
+								src={post.data.heroImage}
+								alt=""
+								class={`mb-2 rounded-xl transition-all duration-200 group-hover:shadow-lg ${index === 0 ? "w-full" : ""}`}
+							/>
+							<h4
+								class={`title m-0 text-[rgb(var(--black))] leading-none group-hover:text-[rgb(var(--accent))] transition-colors duration-200 ${index === 0 ? "text-4xl" : ""}`}
+							>
+								{post.data.title}
+							</h4>
+							<p class="date m-0 text-[rgb(var(--gray))] group-hover:text-[rgb(var(--accent))] transition-colors duration-200">
 								<FormattedDate date={post.data.pubDate} />
 							</p>
 						</a>
