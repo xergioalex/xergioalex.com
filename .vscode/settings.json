@@ -1,0 +1,13 @@
+{
+  "css.customData": ["./vscode.tailwind.json"],
+  "files.associations": {
+    "*.mdx": "markdown",
+    "*.md": "markdown",
+    "*.astro": "astro",
+    "*.css": "tailwindcss"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.formatOnSave": true
+  }
+}

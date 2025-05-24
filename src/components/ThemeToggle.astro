@@ -1,0 +1,16 @@
+<button
+  id="theme-toggle"
+  class="ml-2 w-9 h-9 flex items-center justify-center rounded-full text-xl focus:outline-none transition hover:bg-gray-100 active:bg-gray-200"
+  aria-label="Toggle dark mode"
+  type="button"
+>
+  <span class="block dark:hidden">&#x2600;&#xFE0F;</span>
+  <span class="hidden dark:block">&#x1F319;</span>
+  <script is:inline>
+    document.getElementById("theme-toggle").onclick = function () {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    };
+  </script>
+</button>

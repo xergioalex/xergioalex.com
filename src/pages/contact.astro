@@ -1,0 +1,28 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1>Contact</h1>
+  <form class="max-w-lg mt-8 space-y-4">
+    <input
+      type="text"
+      placeholder="Your Name"
+      class="w-full p-2 border rounded"
+    />
+    <input
+      type="email"
+      placeholder="Your Email"
+      class="w-full p-2 border rounded"
+    />
+    <textarea placeholder="Your Message" class="w-full p-2 border rounded"
+    ></textarea>
+    <button
+      type="submit"
+      class="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded"
+      >Send</button
+    >
+  </form>
+</MainLayout>

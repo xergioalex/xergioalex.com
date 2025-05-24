@@ -1,0 +1,69 @@
+<section
+  class="relative min-h-[70vh] flex items-center justify-center bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300"
+>
+  <!-- Subtle grid background -->
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0">
+    <svg width="100%" height="100%" class="w-full h-full" style="opacity:0.05">
+      <defs>
+        <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <path
+            d="M 32 0 L 0 0 0 32"
+            fill="none"
+            stroke="#d1d5db"
+            stroke-width="1"></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"></rect>
+    </svg>
+  </div>
+  <div
+    class="relative z-10 w-full mx-auto flex flex-col md:flex-row items-center gap-12 py-12 md:py-20"
+  >
+    <!-- Left: Text -->
+    <div class="flex-1 text-left">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white leading-tight"
+      >
+        Hello, I'm Kai.
+      </h1>
+      <p
+        class="text-lg md:text-xl text-gray-500 dark:text-gray-300 mb-7 font-normal"
+      >
+        I'm a front-end programmer living in Nanjing.<br />I focus on Web
+        development.
+      </p>
+      <div class="mb-8">
+        <span class="font-semibold text-gray-900 dark:text-white"
+          >I can help you out with:</span
+        >
+        <ul
+          class="list-disc list-inside text-gray-400 dark:text-gray-400 mt-2 space-y-1"
+        >
+          <li>Vue.js Development</li>
+          <li>React.js Development</li>
+          <li>Node.js Development</li>
+          <li>Website Design</li>
+          <li>and more...</li>
+        </ul>
+      </div>
+      <a
+        href="#"
+        class="inline-block bg-black dark:bg-white text-white dark:text-black font-semibold px-7 py-2.5 rounded-full shadow hover:bg-gray-900 dark:hover:bg-gray-200 transition-colors text-base"
+        >Follow me on X</a
+      >
+    </div>
+    <!-- Right: Avatar Card -->
+    <div class="flex-shrink-0">
+      <div
+        class="relative w-48 h-48 md:w-60 md:h-60 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md flex items-center justify-center transition-colors duration-300"
+      >
+        <!-- Replace with your avatar image -->
+        <img
+          src="https://api.dicebear.com/7.x/adventurer/svg?seed=Kai"
+          alt="Avatar"
+          class="w-36 h-36 md:w-48 md:h-48 object-cover rounded-xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>
