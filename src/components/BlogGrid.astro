@@ -1,0 +1,98 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+  showPagination?: boolean;
+  currentPage?: number;
+  lastPage?: number;
+  pageRange?: number[];
+}
+
+const {
+  posts,
+  showPagination = false,
+  currentPage,
+  lastPage,
+  pageRange,
+} = Astro.props;
+---
+
+<div>
+  <!-- Grid de artículos -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+    {
+      posts.map((post) => (
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col h-full article-card">
+          {post.data.heroImage && (
+            <img
+              src={post.data.heroImage}
+              alt={post.data.title}
+              class="w-full h-40 object-cover rounded-lg mb-4"
+            />
+          )}
+          <a href={`/blog/${post.id}/`} class="block group flex-1">
+            <h3 class="text-lg font-semibold mb-2 group-hover:underline">
+              {post.data.title}
+            </h3>
+            <p class="text-gray-500 mb-2">{post.data.description}</p>
+            <span class="text-sm text-gray-400 block mb-2">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+            <div class="flex gap-2 flex-wrap">
+              {post.data.tags?.map((tag) => (
+                <a
+                  href={`/blog/tag/${tag}/`}
+                  class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold"
+                >
+                  #{tag}
+                </a>
+              ))}
+            </div>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Pagination -->
+  {
+    showPagination && currentPage && lastPage && pageRange && (
+      <div class="flex justify-center gap-2 mt-8">
+        {currentPage > 1 && (
+          <a
+            href={
+              currentPage === 2 ? "/blog/" : `/blog/page/${currentPage - 1}/`
+            }
+            class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            Anterior
+          </a>
+        )}
+
+        {pageRange.map((pageNum) => (
+          <a
+            href={pageNum === 1 ? "/blog/" : `/blog/page/${pageNum}/`}
+            class={`px-4 py-2 rounded ${
+              pageNum === currentPage
+                ? "bg-blue-500 text-white"
+                : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+            }`}
+          >
+            {pageNum}
+          </a>
+        ))}
+
+        {currentPage < lastPage && (
+          <a
+            href={`/blog/page/${currentPage + 1}/`}
+            class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            Siguiente
+          </a>
+        )}
+      </div>
+    )
+  }
+</div>

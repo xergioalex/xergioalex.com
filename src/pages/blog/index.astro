@@ -1,18 +1,24 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
-import FormattedDate from "@/components/FormattedDate.astro";
+import BlogGrid from "@/components/BlogGrid.astro";
 
-const posts = (await getCollection("blog")).sort(
+const allPosts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const featured = posts[0];
-const rest = posts.slice(1);
+const pageSize = 3;
+const totalPages = Math.ceil(allPosts.length / pageSize);
+const posts = allPosts.slice(0, pageSize);
 
 const allTags = Array.from(
-	new Set(posts.flatMap((post) => post.data.tags ?? [])),
+	new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
 );
+
+// Calculate the range of pages to show
+const range = (start, end) =>
+	Array.from({ length: end - start + 1 }, (_, i) => start + i);
+const pageRange = range(1, Math.min(3, totalPages));
 ---
 
 <MainLayout
@@ -46,80 +52,13 @@ const allTags = Array.from(
 		/>
 	</div>
 
-	<!-- Featured Article -->
-	{
-		featured && (
-			<div class="mb-12 flex flex-col md:flex-row gap-8 items-center bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6">
-				{featured.data.heroImage && (
-					<img
-						src={featured.data.heroImage}
-						alt={featured.data.title}
-						class="w-full md:w-1/3 h-56 object-cover rounded-lg"
-					/>
-				)}
-				<div class="flex-1">
-					<a href={`/blog/${featured.id}/`} class="block group">
-						<h2 class="text-2xl md:text-3xl font-bold mb-2 group-hover:underline">
-							{featured.data.title}
-						</h2>
-						<p class="text-gray-500 mb-2">{featured.data.description}</p>
-						<span class="text-sm text-gray-400 block mb-2">
-							<FormattedDate date={featured.data.pubDate} />
-						</span>
-						<div class="flex gap-2 flex-wrap">
-							{featured.data.tags?.map((tag) => (
-								<a
-									href={`/blog/tag/${tag}/`}
-									class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold"
-								>
-									#{tag}
-								</a>
-							))}
-						</div>
-					</a>
-				</div>
-			</div>
-		)
-	}
-
-	<!-- Grid de artículos -->
-	<div
-		id="articles-grid"
-		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-	>
-		{
-			rest.map((post) => (
-				<div class="bg-white dark:bg-gray-900 rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col h-full article-card">
-					{post.data.heroImage && (
-						<img
-							src={post.data.heroImage}
-							alt={post.data.title}
-							class="w-full h-40 object-cover rounded-lg mb-4"
-						/>
-					)}
-					<a href={`/blog/${post.id}/`} class="block group flex-1">
-						<h3 class="text-lg font-semibold mb-2 group-hover:underline">
-							{post.data.title}
-						</h3>
-						<p class="text-gray-500 mb-2">{post.data.description}</p>
-						<span class="text-sm text-gray-400 block mb-2">
-							<FormattedDate date={post.data.pubDate} />
-						</span>
-						<div class="flex gap-2 flex-wrap">
-							{post.data.tags?.map((tag) => (
-								<a
-									href={`/blog/tag/${tag}/`}
-									class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold"
-								>
-									#{tag}
-								</a>
-							))}
-						</div>
-					</a>
-				</div>
-			))
-		}
-	</div>
+	<BlogGrid
+		posts={posts}
+		showPagination={totalPages > 1}
+		currentPage={1}
+		lastPage={totalPages}
+		pageRange={pageRange}
+	/>
 
 	<script is:inline>
 		function filterArticles(event) {

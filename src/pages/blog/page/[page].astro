@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import BlogGrid from "@/components/BlogGrid.astro";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+
+  return paginate(posts, { pageSize: 3 });
+}
+
+interface Props {
+  page: {
+    currentPage: number;
+    lastPage: number;
+    data: CollectionEntry<"blog">[];
+  };
+}
+
+const { page } = Astro.props;
+const { currentPage, lastPage, data: posts } = page;
+
+// Calculate the range of pages to show
+const range = (start: number, end: number): number[] =>
+  Array.from({ length: end - start + 1 }, (_, i) => start + i);
+const pageRange = range(
+  Math.max(1, currentPage - 2),
+  Math.min(lastPage, currentPage + 2),
+);
+---
+
+<MainLayout
+  title={`Blog - Página ${currentPage}`}
+  description="Artículos, tutoriales, journal y charlas."
+>
+  <h1 class="text-4xl font-extrabold mb-6">
+    Artículos, Tutoriales & Historias
+  </h1>
+
+  <BlogGrid
+    posts={posts}
+    showPagination={true}
+    currentPage={currentPage}
+    lastPage={lastPage}
+    pageRange={pageRange}
+  />
+</MainLayout>
