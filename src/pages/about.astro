@@ -1,8 +1,10 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<MainLayout>
+<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<h1>About Me</h1>
 	<p>Write something about yourself here.</p>
 </MainLayout>
