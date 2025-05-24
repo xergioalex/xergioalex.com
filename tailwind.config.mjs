@@ -10,9 +10,21 @@ export default {
 			colors: {
 				
 			},
+
+			typography: {
+				DEFAULT: {
+					css: {
+						'h1': {
+							color: 'var(--tw-prose-headings)',
+							fontWeight: '700',
+						},
+						// más personalizaciones...
+					}
+				}
+			}
 		},
 	},
 	plugins: [
-
+		require('@tailwindcss/typography'),
   ],
 };

@@ -15,76 +15,45 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<head>
 		<BaseHead title={title} description={description} />
 		<script is:inline src="/scripts/global.theme.js"></script>
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
 	</head>
 
 	<body>
 		<Header />
-		<main
-			class="w-[960px] max-w-[calc(100%-2em)] mx-auto py-12 px-4 min-h-screen"
-		>
+		<main class="max-w-7xl mx-auto px-4 md:px-8 py-12 min-h-screen">
 			<article>
-				<div class="hero-image">
+				<div class="w-full">
 					{
 						heroImage && (
-							<img width={1020} height={510} src={heroImage} alt="" />
+							<img
+								width={1020}
+								height={510}
+								src={heroImage}
+								alt=""
+								class="block mx-auto rounded-xl shadow-[var(--box-shadow)]"
+							/>
 						)
 					}
 				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
+				<div
+					class="w-[720px] max-w-[calc(100%-2em)] mx-auto p-4 text-[rgb(var(--gray-dark))]"
+				>
+					<div class="mb-4 py-4 text-center leading-none">
+						<div class="mb-2 text-[rgb(var(--gray))]">
 							<FormattedDate date={pubDate} />
 							{
 								updatedDate && (
-									<div class="last-updated-on">
+									<div class="italic">
 										Last updated on <FormattedDate date={updatedDate} />
 									</div>
 								)
 							}
 						</div>
-						<h1>{title}</h1>
+						<h1 class="m-0 mb-2">{title}</h1>
 						<hr />
 					</div>
-					<slot />
+					<div class="prose prose-lg prose-slate dark:prose-invert max-w-none">
+						<slot />
+					</div>
 				</div>
 			</article>
 		</main>
