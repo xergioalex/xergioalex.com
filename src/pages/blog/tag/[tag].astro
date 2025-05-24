@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+// Genera las rutas estáticas para cada tag
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  // Extrae todos los tags únicos de los posts
+  const tags = Array.from(
+    new Set(posts.flatMap((post) => post.data.tags ?? [])),
+  );
+  return tags.map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const posts = (await getCollection("blog")).filter((post) =>
+  (post.data.tags ?? []).includes(tag),
+);
+---
+
+<MainLayout
+  title={`Artículos con tag: ${tag}`}
+  description={`Artículos etiquetados como ${tag}.`}
+>
+  <h1 class="text-2xl font-bold mb-6">Artículos con tag: {tag}</h1>
+  <ul class="space-y-6">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}/`} class="block group">
+            <h2 class="text-xl font-semibold group-hover:underline">
+              {post.data.title}
+            </h2>
+            <p class="text-gray-500">{post.data.description}</p>
+            <span class="text-sm text-gray-400">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</MainLayout>
