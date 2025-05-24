@@ -40,7 +40,7 @@ body {
   line-height: 1.7;
 }
 main {
-  width: 720px;
+  width: 960px;
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
@@ -151,7 +151,7 @@ hr {
 }
 
 /* Blog Layout Styles */
-.blog-list {
+/* .blog-list {
   width: 960px;
 }
 
@@ -230,4 +230,4 @@ hr {
   .blog-list ul li:first-child .title {
     font-size: 1.563em;
   }
-}
+} */
