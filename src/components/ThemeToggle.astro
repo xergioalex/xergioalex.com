@@ -4,13 +4,13 @@
   aria-label="Toggle dark mode"
   type="button"
 >
-  <span class="block dark:hidden">☀️</span>
-  <span class="hidden dark:block">🌙</span>
+  <span class="block dark:hidden">&#x2600;&#xFE0F;</span>
+  <span class="hidden dark:block">&#x1F319;</span>
   <script is:inline>
-    document.getElementById('theme-toggle').onclick = function () {
+    document.getElementById("theme-toggle").onclick = function () {
       const html = document.documentElement;
-      const isDark = html.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      const isDark = html.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
     };
   </script>
-</button> 
+</button>

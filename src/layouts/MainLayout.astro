@@ -2,10 +2,14 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import BaseHead from "../components/BaseHead.astro";
+
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
+    <BaseHead title={title} description={description} />
     <slot name="head" />
     <script is:inline src="/scripts/global.theme.js"></script>
   </head>
