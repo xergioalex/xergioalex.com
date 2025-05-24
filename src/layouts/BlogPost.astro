@@ -58,7 +58,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 	<body>
 		<Header />
-		<main>
+		<main
+			class="w-[960px] max-w-[calc(100%-2em)] mx-auto py-12 px-4 min-h-screen"
+		>
 			<article>
 				<div class="hero-image">
 					{
