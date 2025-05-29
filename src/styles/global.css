@@ -1,4 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --color-main: #0F1124;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .main-container {
+    @apply max-w-6xl mx-auto py-4 px-4 md:px-8
+  }
+}
