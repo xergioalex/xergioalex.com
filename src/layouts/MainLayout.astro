@@ -1,8 +1,8 @@
 ---
-import '@/styles/global.css';
-import BaseHead from '@/components/BaseHead.astro';
-import Footer from '@/components/Footer.astro';
-import Header from '@/components/Header.astro';
+import "@/styles/global.css";
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/layout/Header.svelte";
 
 const { title, description } = Astro.props;
 ---
@@ -16,9 +16,9 @@ const { title, description } = Astro.props;
   <body
     class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300"
   >
-    <Header />
+    <Header client:load />
     <!-- ThemeToggle will be added here -->
-    <main class="max-w-6xl mx-auto py-12 px-4 md:px-8 min-h-screen">
+    <main class="min-h-screen">
       <slot />
     </main>
     <Footer />
