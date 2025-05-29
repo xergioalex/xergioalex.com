@@ -1,9 +1,9 @@
 <script lang="ts">
-  import MobileMenu from './MobileMenu.svelte';
-  let open: boolean = false;
-  function toggleMenu() {
-    open = !open;
-  }
+import MobileMenu from './MobileMenu.svelte';
+let open: boolean = false;
+function toggleMenu() {
+  open = !open;
+}
 </script>
 
 <header class="bg-main text-white sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
