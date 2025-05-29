@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import MobileMenu from './MobileMenu.svelte';
-  let open = false;
+  let open: boolean = false;
   function toggleMenu() {
     open = !open;
   }
@@ -13,7 +13,7 @@
       class="font-extrabold text-2xl md:text-3xl tracking-tight text-blue-600 select-none"
     >
       <img
-        class="h-10"
+        class="h-9"
         src="/images/logo_small_version_white.svg"
         alt="XergioAleX"
       />
@@ -29,8 +29,8 @@
     </div>
     <!-- Mobile menu button -->
     <button
-      class="block md:hidden p-2"
-      aria-label="Abrir menú"
+      class="block md:hidden p-1"
+      aria-label="Open menu"
       on:click={toggleMenu}
       type="button"
     >
