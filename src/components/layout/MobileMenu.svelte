@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let open: boolean;
-  export let toggleMenu: () => void;
+export let open: boolean;
+export let toggleMenu: () => void;
 </script>
 
 {#if open}
