@@ -5,7 +5,6 @@ export default {
   theme: {
     extend: {
       fontFamily: {},
-      colors: {},
 
       typography: {
         DEFAULT: {

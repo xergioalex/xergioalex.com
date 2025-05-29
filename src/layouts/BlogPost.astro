@@ -1,12 +1,12 @@
 ---
-import '@/styles/global.css';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '@/components/BaseHead.astro';
-import Footer from '@/components/Footer.astro';
-import FormattedDate from '@/components/FormattedDate.astro';
-import Header from '@/components/Header.astro';
+import "@/styles/global.css";
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import Header from "@/components/layout/Header.svelte";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
@@ -19,7 +19,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 	<body>
 		<Header />
-		<main class="max-w-6xl mx-auto px-4 md:px-8 py-12 min-h-screen">
+		<main class="main-container min-h-screen">
 			<article>
 				<div class="w-full">
 					{
