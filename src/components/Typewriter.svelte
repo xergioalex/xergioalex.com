@@ -15,16 +15,16 @@ async function typeLoop() {
       if (char < word.length) {
         display = word.slice(0, char + 1);
         char++;
-        await new Promise(r => setTimeout(r, speed));
+        await new Promise((r) => setTimeout(r, speed));
       } else {
         typing = false;
-        await new Promise(r => setTimeout(r, pause));
+        await new Promise((r) => setTimeout(r, pause));
       }
     } else {
       if (char > 0) {
         display = word.slice(0, char - 1);
         char--;
-        await new Promise(r => setTimeout(r, speed / 2));
+        await new Promise((r) => setTimeout(r, speed / 2));
       } else {
         typing = true;
         index = (index + 1) % words.length;
