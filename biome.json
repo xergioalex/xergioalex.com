@@ -22,7 +22,8 @@
     "rules": {
       "recommended": true,
       "style": {
-        "noInferrableTypes": "off"
+        "noInferrableTypes": "off",
+        "useConst": "off"
       }
     }
   },
