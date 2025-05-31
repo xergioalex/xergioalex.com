@@ -1,76 +1,85 @@
-<section class="bg-main">
+---
+import Typewriter from './Typewriter.svelte';
+---
+
+<section
+  class="bg-main relative h-[calc(100dvh-69px)] flex flex-col justify-center items-center transition-colors duration-300 overflow-y-auto"
+>
+  <!-- Grid background -->
+  <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0">
+    <svg width="100%" height="100%" class="w-full h-full" style="opacity:0.05">
+      <defs>
+        <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#fff" stroke-width="1"
+          ></path>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"></rect>
+    </svg>
+  </div>
   <div
-    class="main-container relative min-h-[70vh] flex items-center justify-center overflow-hidden transition-colors duration-300"
+    class="main-container relative z-10 flex flex-col items-center justify-center w-full pt-2 pb-2 sm:pt-4 sm:pb-4 md:pt-8 md:pb-8"
   >
-    <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0">
-      <svg
-        width="100%"
-        height="100%"
-        class="w-full h-full"
-        style="opacity:0.05"
+    <img
+      src="/images/logo_full.svg"
+      alt="Logo de Sergio Alexander Florez Galeano"
+      class="w-[20rem] xl:w-[28rem] max-w-full mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-105"
+      draggable="false"
+      style="user-select: none;"
+    />
+    <div class="">
+      <Typewriter
+        client:load
+        words={[
+          "Full Stack Developer",
+          "Trader",
+          "Entrepreneur",
+          "Maker",
+          "Mentor",
+          "UI/UX Designer",
+        ]}
+        speed={80}
+        pause={1800}
+      />
+    </div>
+    <!-- Social icons -->
+    <div class="flex gap-4 mt-6">
+      <a
+        href="https://github.com/tuusuario"
+        target="_blank"
+        rel="noopener"
+        aria-label="GitHub"
       >
-        <defs>
-          <pattern
-            id="grid"
-            width="32"
-            height="32"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 32 0 L 0 0 0 32"
-              fill="none"
-              stroke="#d1d5db"
-              stroke-width="1"></path>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)"></rect>
-      </svg>
+        <img src="/icons/github_white.svg" alt="GitHub" class="w-7 h-7" />
+      </a>
+      <a
+        href="https://github.com/tuusuario"
+        target="_blank"
+        rel="noopener"
+        aria-label="LinkedIn"
+      >
+        <img src="/icons/linkedin_white.svg" alt="LinkedIn" class="w-7 h-7" />
+      </a>
+
+      <a
+        href="https://github.com/tuusuario"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+      >
+        <img src="/icons/instagram_white.svg" alt="Instagram" class="w-7 h-7" />
+      </a>
     </div>
-    <div
-      class="relative z-10 w-full mx-auto flex flex-col md:flex-row items-center gap-12 py-12 md:py-20"
+    <h1
+      class="mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white text-center drop-shadow-lg"
     >
-      <div class="flex-1 text-left">
-        <h1
-          class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white leading-tight"
-        >
-          Sergio Alexander Florez Galeano
-        </h1>
-        <p
-          class="text-lg md:text-xl text-gray-500 dark:text-gray-300 mb-7 font-normal"
-        >
-          Desarrollador Full Stack, apasionado por la tecnología, el aprendizaje
-          continuo y la creación de soluciones digitales de alto impacto.
-        </p>
-        <div class="mb-8">
-          <span class="font-semibold text-gray-900 dark:text-white"
-            >Especializado en:</span
-          >
-          <ul
-            class="list-disc list-inside text-gray-400 dark:text-gray-400 mt-2 space-y-1"
-          >
-            <li>Desarrollo Web (React, Astro, Node.js, Vue)</li>
-            <li>Diseño UI/UX</li>
-            <li>Automatización y DevOps</li>
-            <li>Consultoría y mentoría técnica</li>
-          </ul>
-        </div>
-        <a
-          href="#contacto"
-          class="inline-block bg-blue-600 dark:bg-blue-400 text-white dark:text-gray-900 font-semibold px-7 py-2.5 rounded-full shadow hover:bg-blue-700 dark:hover:bg-blue-300 transition-colors text-base"
-          >Contáctame</a
-        >
-      </div>
-      <div class="flex-shrink-0">
-        <div
-          class="relative w-48 h-48 md:w-60 md:h-60 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md flex items-center justify-center transition-colors duration-300"
-        >
-          <img
-            src="/images/profile.png"
-            alt="Avatar"
-            class="w-36 h-36 md:w-48 md:h-48 object-cover rounded-xl"
-          />
-        </div>
-      </div>
-    </div>
+      Sergio Alexander Florez Galeano
+    </h1>
+    <p
+      class="mt-2 text-sm sm:text-base md:text-lg text-gray-300 text-center max-w-2xl"
+    >
+      Desarrollador Full Stack, apasionado por la tecnología, el aprendizaje
+      continuo y la creación de soluciones digitales de alto impacto.
+    </p>
   </div>
 </section>

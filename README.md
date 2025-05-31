@@ -73,3 +73,8 @@ Blogs example:
 - https://streamline-astro-template.vercel.app/blog
 - https://charter-astro-template.vercel.app/blog
 - https://astro-blog-flame.vercel.app/
+
+
+SVG Icons:
+https://heroicons.com/outline
+https://simpleicons.org/?q=github
