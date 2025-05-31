@@ -1,5 +1,5 @@
 ---
-import Typewriter from '../Typewriter.svelte';
+import Typewriter from './Typewriter.svelte';
 ---
 
 <section
@@ -18,16 +18,16 @@ import Typewriter from '../Typewriter.svelte';
     </svg>
   </div>
   <div
-    class="relative z-10 flex flex-col items-center justify-center w-full pt-2 pb-2 sm:pt-4 sm:pb-4 md:pt-8 md:pb-8 px-2"
+    class="main-container relative z-10 flex flex-col items-center justify-center w-full pt-2 pb-2 sm:pt-4 sm:pb-4 md:pt-8 md:pb-8"
   >
     <img
       src="/images/logo_full.svg"
       alt="Logo de Sergio Alexander Florez Galeano"
-      class="w-44 sm:w-56 md:w-72 lg:w-[22rem] max-w-full mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-105"
+      class="w-[20rem] xl:w-[28rem] max-w-full mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-105"
       draggable="false"
       style="user-select: none;"
     />
-    <div class="mt-2 sm:mt-4">
+    <div class="">
       <Typewriter
         client:load
         words={[
@@ -43,7 +43,7 @@ import Typewriter from '../Typewriter.svelte';
       />
     </div>
     <!-- Social icons -->
-    <div class="flex gap-4 mt-2 sm:mt-4">
+    <div class="flex gap-4 mt-6">
       <a
         href="https://github.com/tuusuario"
         target="_blank"
@@ -71,7 +71,7 @@ import Typewriter from '../Typewriter.svelte';
       </a>
     </div>
     <h1
-      class="mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white text-center drop-shadow-lg"
+      class="mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white text-center drop-shadow-lg"
     >
       Sergio Alexander Florez Galeano
     </h1>
