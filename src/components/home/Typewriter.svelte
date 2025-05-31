@@ -36,4 +36,6 @@ async function typeLoop() {
 typeLoop();
 </script>
 
-<span class="whitespace-nowrap border-r-2 border-blue-400 pr-1 animate-pulse text-white font-bold text-xl md:text-2xl drop-shadow-lg">{display}</span> 
+<span class="whitespace-nowrap border-r-2 border-blue-400 pr-1 animate-pulse text-white font-bold text-xl md:text-2xl drop-shadow-lg">
+  {display}
+</span> 
