@@ -14,7 +14,8 @@
 }
 
 @keyframes chevron-bounce {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
     transform: translateY(0);
   }
