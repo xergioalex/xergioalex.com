@@ -9,6 +9,30 @@
 
 @layer components {
   .main-container {
-    @apply max-w-6xl mx-auto py-4 px-4 md:px-8;
+    @apply max-w-7xl mx-auto py-4 px-4 md:px-8;
   }
+}
+
+@keyframes chevron-bounce {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(32px);
+  }
+  90% {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+}
+
+.animate-chevron-bounce {
+  animation: chevron-bounce 2s infinite;
 }

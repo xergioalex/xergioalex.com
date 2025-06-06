@@ -2,11 +2,15 @@
 import AboutSection from '@/components/home/AboutSection.astro';
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import ContactSection from '@/components/home/ContactSection.astro';
+import DailyBotSection from '@/components/home/DailyBotSection.astro';
 import EducationSection from '@/components/home/EducationSection.astro';
 import ExperienceSection from '@/components/home/ExperienceSection.astro';
 import HeroSection from '@/components/home/HeroSection.astro';
+import HobbiesSection from '@/components/home/HobbiesSection.astro';
+import MakerSection from '@/components/home/MakerSection.astro';
 import ProjectsSection from '@/components/home/ProjectsSection.astro';
 import SkillsSection from '@/components/home/SkillsSection.astro';
+import TechTalksSection from '@/components/home/TechTalksSection.astro';
 import TestimonialsSection from '@/components/home/TestimonialsSection.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import MainLayout from '@/layouts/MainLayout.astro';
@@ -15,6 +19,10 @@ import MainLayout from '@/layouts/MainLayout.astro';
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<HeroSection />
 	<AboutSection />
+	<DailyBotSection />
+	<TechTalksSection />
+	<MakerSection />
+	<HobbiesSection />
 	<SkillsSection />
 	<ExperienceSection />
 	<ProjectsSection />
