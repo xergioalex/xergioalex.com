@@ -1,0 +1,62 @@
+---
+import HomeSectionContent from './HomeSectionContent.astro';
+import HomeSectionImage from './HomeSectionImage.astro';
+import { HomeSectionContentAlignment } from './enum';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  ctaText?: string;
+  ctaLink?: string;
+  image?: string;
+  contentAlignment?: HomeSectionContentAlignment;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  ctaText,
+  ctaLink,
+  image,
+  contentAlignment = 'left',
+} = Astro.props;
+
+// Validate required props
+if (!title || !description) {
+  throw new Error('HomeSection: title and description are required props');
+}
+---
+
+<section class="py-24">
+  <div
+    class="main-container flex flex-col md:flex-row items-center md:items-start gap-16"
+  >
+    {
+      contentAlignment === HomeSectionContentAlignment.LEFT ? (
+        <>
+          <HomeSectionContent
+            title={title}
+            subtitle={subtitle}
+            description={description}
+            ctaText={ctaText}
+            ctaLink={ctaLink}
+          />
+          {image && <HomeSectionImage image={image} />}
+        </>
+      ) : (
+        <>
+          {image && <HomeSectionImage image={image} />}
+          <HomeSectionContent
+            title={title}
+            subtitle={subtitle}
+            description={description}
+            ctaText={ctaText}
+            ctaLink={ctaLink}
+          />
+        </>
+      )
+    }
+  </div>
+</section>
