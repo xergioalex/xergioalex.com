@@ -1,16 +1,13 @@
 ---
-import AboutSection from '@/components/home/AboutSection.astro';
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import ContactSection from '@/components/home/ContactSection.astro';
-import DailyBotSection from '@/components/home/DailyBotSection.astro';
 import EducationSection from '@/components/home/EducationSection.astro';
 import ExperienceSection from '@/components/home/ExperienceSection.astro';
-import HeroSection from '@/components/home/HeroSection.astro';
-import HobbiesSection from '@/components/home/HobbiesSection.astro';
-import MakerSection from '@/components/home/MakerSection.astro';
+import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
+import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
+import { HomeSectionContentAlignment } from '@/components/home/HomeSection/enum';
 import ProjectsSection from '@/components/home/ProjectsSection.astro';
 import SkillsSection from '@/components/home/SkillsSection.astro';
-import TechTalksSection from '@/components/home/TechTalksSection.astro';
 import TestimonialsSection from '@/components/home/TestimonialsSection.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import MainLayout from '@/layouts/MainLayout.astro';
@@ -18,16 +15,94 @@ import MainLayout from '@/layouts/MainLayout.astro';
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<HeroSection />
-	<AboutSection />
-	<DailyBotSection />
-	<TechTalksSection />
-	<MakerSection />
-	<HobbiesSection />
+
+	<!-- About Section -->
+	<HomeSection
+		title="Hola, soy <span class='text-secondary'>Sergio</span>"
+		description={`Passionate about developing of conversational interfaces. Currently CTO at DailyBot building an assistant for asynchronous team collaboration.<br /><br />
+
+Computer science engineer, MSc in data science and passionate entrepreneur, with talent and more than 10y of experience building digital businesses. In the search of the ideation of disruptive business models as agents of change and success.<br /><br />
+
+💻🎙📚 | Speaker, researcher, athlete, gamer, and geek 100%.`}
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/profile.png"
+		contentAlignment={HomeSectionContentAlignment.RIGHT}
+	/>
+
+	<!-- DailyBot Section -->
+	<HomeSection
+		title="DailyBot"
+		subtitle="UI/UX Designer & Full Stack Developer"
+		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/dailybotyc.png"
+		contentAlignment={HomeSectionContentAlignment.LEFT}
+	/>
+
+	<!-- Tech Talks Section -->
+	<HomeSection
+		title="Tech Talks"
+		subtitle="UI/UX Designer & Full Stack Developer"
+		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/techtalks.png"
+		contentAlignment={HomeSectionContentAlignment.RIGHT}
+	/>
+
+	<!-- Maker Section -->
+	<HomeSection
+		title="Maker"
+		subtitle="UI/UX Designer & Full Stack Developer"
+		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/dailybot.png"
+		contentAlignment={HomeSectionContentAlignment.LEFT}
+	/>
+
+	<!-- Trading Section -->
+	<HomeSection
+		title="Trading"
+		subtitle="UI/UX Designer & Full Stack Developer"
+		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/dailybot.png"
+		contentAlignment={HomeSectionContentAlignment.RIGHT}
+	/>
+
+	<!-- Hobbies Section -->
+	<HomeSection
+		title="Hobbies"
+		subtitle="UI/UX Designer & Full Stack Developer"
+		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/bicycle.png"
+		contentAlignment={HomeSectionContentAlignment.LEFT}
+	/>
+
+	<!-- Skills Section -->
 	<SkillsSection />
+
+	<!-- Experience Section -->
 	<ExperienceSection />
+
+	<!-- Projects Section -->
 	<ProjectsSection />
+
+	<!-- Education Section -->
 	<EducationSection />
+
+	<!-- Testimonials Section -->
 	<TestimonialsSection />
+
+	<!-- Blog Preview Section -->
 	<BlogPreviewSection />
+
+	<!-- Contact Section -->
 	<ContactSection />
 </MainLayout>
