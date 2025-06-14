@@ -3,6 +3,7 @@
 
 @theme {
   --color-main: #0f1124;
+  --color-secondary: #e41541;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

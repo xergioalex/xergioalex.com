@@ -23,7 +23,8 @@
       "recommended": true,
       "style": {
         "noInferrableTypes": "off",
-        "useConst": "off"
+        "useConst": "off",
+        "useImportType": "off"
       }
     }
   },
