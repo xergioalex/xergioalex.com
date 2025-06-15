@@ -8,13 +8,24 @@ import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
 import { HomeSectionContentAlignment } from '@/components/home/HomeSection/enum';
 import ProjectsSection from '@/components/home/ProjectsSection.astro';
 import SkillsSection from '@/components/home/SkillsSection.astro';
-import TestimonialsSection from '@/components/home/TestimonialsSection.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import MainLayout from '@/layouts/MainLayout.astro';
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<HeroSection />
+	<HeroSection
+		name="Sergio Alexander Florez Galeano"
+		description='Cofundador y CTO en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Emprendedor, speaker, investigador, atleta, trader, gamer y geek al 100%'
+		typewriterWords={[
+			"Full Stack Developer",
+			"Trader",
+			"Emprendedor",
+			"Maker",
+			"Mentor & Speaker",
+			"Geek",
+			"Apasionado del deporte",
+		]}
+	/>
 
 	<!-- About Section -->
 	<HomeSection
@@ -26,17 +37,19 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 💻🎙📚 | Speaker, researcher, athlete, gamer, and geek 100%.`}
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
+		cta2Text="Ver mi CV"
+		cta2Link="/cv"
 		image="/images/profile.png"
 		contentAlignment={HomeSectionContentAlignment.RIGHT}
 	/>
 
 	<!-- DailyBot Section -->
 	<HomeSection
-		title="DailyBot"
-		subtitle="UI/UX Designer & Full Stack Developer"
-		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
-		ctaText="Conoce más sobre mí"
-		ctaLink="/about"
+		title="DailyBot (YC S21)"
+		subtitle="CTO & Cofundador"
+		description="He liderado el desarrollo de una plataforma innovadora que conecta equipos globalmente, facilitando la colaboración y comunicación efectiva entre miembros. En 2021, fuimos seleccionados por Y Combinator, lo que nos permitió acelerar nuestro crecimiento, mejorar nuestras capacidades tecnológicas y reforzar nuestro enfoque en la satisfacción del cliente. 🚀"
+		ctaText="Conoce más sobre DailyBot"
+		ctaLink="https://dailybot.com"
 		image="/images/dailybotyc.png"
 		contentAlignment={HomeSectionContentAlignment.LEFT}
 	/>
@@ -44,9 +57,9 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 	<!-- Tech Talks Section -->
 	<HomeSection
 		title="Tech Talks"
-		subtitle="UI/UX Designer & Full Stack Developer"
-		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
-		ctaText="Conoce más sobre mí"
+		subtitle="Cofundador & Speaker"
+		description="Como cofundador y organizador de la comunidad Pereira Tech Talks, he impulsado la creación de espacios para compartir conocimiento y conectar a profesionales de tecnología. He tenido la oportunidad de ser speaker en múltiples charlas técnicas, donde disfruto compartir experiencias y aprender junto a la comunidad."
+		ctaText="Conoce más sobre mis charlas"
 		ctaLink="/about"
 		image="/images/techtalks.png"
 		contentAlignment={HomeSectionContentAlignment.RIGHT}
@@ -55,19 +68,19 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 	<!-- Maker Section -->
 	<HomeSection
 		title="Maker"
-		subtitle="UI/UX Designer & Full Stack Developer"
-		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
-		ctaText="Conoce más sobre mí"
-		ctaLink="/about"
-		image="/images/dailybot.png"
+		subtitle="Entusiasta de la tecnología, IA & Desarrollador de proyectos"
+		description="Como entusiasta de la tecnología y la inteligencia artificial, he liderado y desarrollado múltiples proyectos innovadores, explorando diversas tecnologías para crear aplicaciones digitales y soluciones técnicas de alto impacto. Mi pasión por la innovación y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desafíos complejos y aportar valor a través de la tecnología."
+		ctaText="Ver mis proyectos"
+		ctaLink="/projects"
+		image="/images/ia.png"
 		contentAlignment={HomeSectionContentAlignment.LEFT}
 	/>
 
 	<!-- Trading Section -->
 	<HomeSection
 		title="Trading"
-		subtitle="UI/UX Designer & Full Stack Developer"
-		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		subtitle="Trader entusiasta & Aprendiz de trading algorítmico"
+		description="Como trader entusiasta, he dedicado los últimos dos años a formarme en el mercado de divisas (forex) y a profundizar en el trading algorítmico, con el objetivo de optimizar y automatizar mis estrategias de inversión. Me motiva el aprendizaje continuo y la investigación de los mercados financieros, siempre en busca de nuevas herramientas y enfoques que me permitan mejorar mi desempeño y tomar decisiones más informadas."
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
 		image="/images/dailybot.png"
@@ -77,8 +90,8 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 	<!-- Hobbies Section -->
 	<HomeSection
 		title="Hobbies"
-		subtitle="UI/UX Designer & Full Stack Developer"
-		description="Soy un apasionado por crear experiencias digitales que combinan funcionalidad y belleza. Con más de 5 años de experiencia, ayudo a empresas y startups a transformar ideas en productos digitales impactantes y usables. Me motiva el aprendizaje constante, la colaboración y el impacto positivo en cada proyecto."
+		subtitle="Apasionado del deporte y la vida activa"
+		description="Fuera del mundo profesional, soy un apasionado del deporte y el bienestar. Disfruto recorrer la ciudad en bicicleta y mantenerme activo a través del running, el baloncesto y el ajedrez. Además, encuentro en los videojuegos una forma de entretenimiento y desafío mental. El deporte es una parte fundamental de mi vida, ya que me inspira a superarme constantemente y a mantener un equilibrio saludable."
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
 		image="/images/bicycle.png"
@@ -96,9 +109,6 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 
 	<!-- Education Section -->
 	<EducationSection />
-
-	<!-- Testimonials Section -->
-	<TestimonialsSection />
 
 	<!-- Blog Preview Section -->
 	<BlogPreviewSection />
