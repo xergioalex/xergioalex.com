@@ -9,6 +9,8 @@ interface Props {
   description: string;
   ctaText?: string;
   ctaLink?: string;
+  cta2Text?: string;
+  cta2Link?: string;
   image?: string;
   contentAlignment?: HomeSectionContentAlignment;
 }
@@ -19,6 +21,8 @@ const {
   description,
   ctaText,
   ctaLink,
+  cta2Text,
+  cta2Link,
   image,
   contentAlignment = 'left',
 } = Astro.props;
@@ -42,6 +46,8 @@ if (!title || !description) {
             description={description}
             ctaText={ctaText}
             ctaLink={ctaLink}
+            cta2Text={cta2Text}
+            cta2Link={cta2Link}
           />
           {image && <HomeSectionImage image={image} />}
         </>
@@ -54,6 +60,8 @@ if (!title || !description) {
             description={description}
             ctaText={ctaText}
             ctaLink={ctaLink}
+            cta2Text={cta2Text}
+            cta2Link={cta2Link}
           />
         </>
       )
