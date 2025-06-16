@@ -1,15 +1,15 @@
 ---
-import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
-import ContactSection from '@/components/home/ContactSection.astro';
-import EducationSection from '@/components/home/EducationSection.astro';
-import ExperienceSection from '@/components/home/ExperienceSection.astro';
-import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
-import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
-import { HomeSectionContentAlignment } from '@/components/home/HomeSection/enum';
-import ProjectsSection from '@/components/home/ProjectsSection.astro';
-import SkillsSection from '@/components/home/SkillsSection.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
-import MainLayout from '@/layouts/MainLayout.astro';
+import BlogPreviewSection from "@/components/home/BlogPreviewSection.astro";
+import ContactSection from "@/components/home/ContactSection.astro";
+import EducationSection from "@/components/home/EducationSection.astro";
+import ExperienceSection from "@/components/home/ExperienceSection.astro";
+import HeroSection from "@/components/home/HeroSection/HeroSection.astro";
+import HomeSection from "@/components/home/HomeSection/HomeSection.astro";
+import { HomeSectionContentAlignment } from "@/components/home/HomeSection/enum";
+import ProjectsSection from "@/components/home/ProjectsSection.astro";
+import SkillsSection from "@/components/home/SkillsSection.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -87,6 +87,17 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		contentAlignment={HomeSectionContentAlignment.RIGHT}
 	/>
 
+	<!-- Foddie Section -->
+	<HomeSection
+		title="Foodie Enthusiast"
+		subtitle="Creador de contenido & Foodie lover"
+		description="Más allá de la tecnología, soy un apasionado creador de contenido y amante de la gastronomía. Disfruto explorar nuevos lugares para comer, compartir recomendaciones y experiencias culinarias, y conectar con personas a través de mis redes sociales. Me motiva inspirar a otros a descubrir sitios únicos y vivir nuevas experiencias, combinando mi entusiasmo por la comunicación, la creatividad y el buen comer."
+		ctaText="Conoce más sobre mí"
+		ctaLink="/about"
+		image="/images/foddie.png"
+		contentAlignment={HomeSectionContentAlignment.LEFT}
+	/>
+
 	<!-- Hobbies Section -->
 	<HomeSection
 		title="Hobbies"
@@ -95,7 +106,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
 		image="/images/bicycle.png"
-		contentAlignment={HomeSectionContentAlignment.LEFT}
+		contentAlignment={HomeSectionContentAlignment.RIGHT}
 	/>
 
 	<!-- Skills Section -->
