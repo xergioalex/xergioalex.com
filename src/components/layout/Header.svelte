@@ -29,6 +29,8 @@ function toggleMenu() {
         <a href="/blog" class="nav-link">Blog</a>
         <div
           class="relative group"
+          role="menu"
+          tabindex="0"
           on:mouseenter={() => aboutOpen = true}
           on:mouseleave={() => aboutOpen = false}
         >
