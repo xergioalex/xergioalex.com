@@ -1,7 +1,10 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 import MobileMenu from './MobileMenu.svelte';
 
 let open: boolean = false;
+let aboutOpen = false;
+
 function toggleMenu() {
   open = !open;
 }
@@ -24,24 +27,51 @@ function toggleMenu() {
       <div class="flex gap-6">
         <a href="/" class="nav-link">Home</a>
         <a href="/blog" class="nav-link">Blog</a>
-        <div class="relative group">
-          <button class="nav-link flex items-center gap-1">
+        <div
+          class="relative group"
+          on:mouseenter={() => aboutOpen = true}
+          on:mouseleave={() => aboutOpen = false}
+        >
+          <button
+            class="nav-link flex items-center gap-1 cursor-pointer select-none"
+            aria-expanded={aboutOpen}
+            aria-controls="about-dropdown"
+            type="button"
+            tabindex="0"
+          >
             About
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg
+              class="w-4 h-4 transition-transform duration-200"
+              style="transform: rotate({aboutOpen ? '180deg' : '0deg'});"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
-          <div class="absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-50">
-            <a href="/about" class="block px-4 py-2 hover:bg-gray-100">About Me</a>
-            <a href="/cv" class="block px-4 py-2 hover:bg-gray-100">CV</a>
-            <a href="/dailybot" class="block px-4 py-2 hover:bg-gray-100">DailyBot</a>
-            <a href="/entrepreneur" class="block px-4 py-2 hover:bg-gray-100">Entrepreneur</a>
-            <a href="/techtalks" class="block px-4 py-2 hover:bg-gray-100">Tech Talks</a>
-            <a href="/maker" class="block px-4 py-2 hover:bg-gray-100">Maker / Builder</a>
-            <a href="/trading" class="block px-4 py-2 hover:bg-gray-100">Trading</a>
-            <a href="/foodie" class="block px-4 py-2 hover:bg-gray-100">Foodie Enthusiast</a>
-            <a href="/hobbies" class="block px-4 py-2 hover:bg-gray-100">Hobbies</a>
-          </div>
+          {#if aboutOpen}
+            <div
+              class="absolute left-1/2 -translate-x-1/2 top-full w-56"
+              style="height: 12px; pointer-events: auto;"
+            ></div>
+            <div
+              id="about-dropdown"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white text-black rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+              style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
+            >
+              <a href="/about" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">About Me</a>
+              <a href="/cv" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">CV</a>
+              <a href="/dailybot" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">DailyBot</a>
+              <a href="/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Entrepreneur</a>
+              <a href="/techtalks" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Tech Talks</a>
+              <a href="/maker" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Maker / Builder</a>
+              <a href="/trading" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Trading</a>
+              <a href="/foodie" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Foodie Enthusiast</a>
+              <a href="/hobbies" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Hobbies</a>
+            </div>
+          {/if}
         </div>
         <a href="/contact" class="nav-link">Contact</a>
       </div>
