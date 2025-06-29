@@ -1,5 +1,6 @@
 <script lang="ts">
 import MobileMenu from './MobileMenu.svelte';
+
 let open: boolean = false;
 function toggleMenu() {
   open = !open;
