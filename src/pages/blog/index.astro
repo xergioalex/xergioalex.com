@@ -4,7 +4,7 @@ import BlogGrid from '@/components/BlogGrid.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 
 const allPosts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const pageSize = 3;
@@ -12,7 +12,7 @@ const totalPages = Math.ceil(allPosts.length / pageSize);
 const posts = allPosts.slice(0, pageSize);
 
 const allTags = Array.from(
-  new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
+  new Set(allPosts.flatMap((post) => post.data.tags ?? []))
 );
 
 // Calculate the range of pages to show

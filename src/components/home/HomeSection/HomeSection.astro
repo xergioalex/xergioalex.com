@@ -1,7 +1,7 @@
 ---
+import { HomeSectionContentAlignment } from './enum';
 import HomeSectionContent from './HomeSectionContent.astro';
 import HomeSectionImage from './HomeSectionImage.astro';
-import { HomeSectionContentAlignment } from './enum';
 
 interface Props {
   title: string;
@@ -33,38 +33,68 @@ if (!title || !description) {
 }
 ---
 
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .section-image {
+    order: 1;
+  }
+  .section-content {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+  @media (min-width: 1024px) {
+    .main-container {
+      flex-direction: row;
+      gap: 4rem;
+    }
+
+    .section-content {
+      text-align: left;
+    }
+    .align-left .section-image {
+      order: 2;
+    }
+    .align-left .section-content {
+      order: 1;
+    }
+    .align-right .section-image {
+      order: 1;
+    }
+    .align-right .section-content {
+      order: 2;
+    }
+    .section-content {
+      width: auto;
+    }
+  }
+</style>
+
 <section class="py-24">
   <div
-    class="main-container flex flex-col md:flex-row items-center md:items-start gap-16"
+    class={`main-container items-center lg:items-start ${contentAlignment === HomeSectionContentAlignment.LEFT ? "align-left" : "align-right"}`}
   >
     {
-      contentAlignment === HomeSectionContentAlignment.LEFT ? (
-        <>
-          <HomeSectionContent
-            title={title}
-            subtitle={subtitle}
-            description={description}
-            ctaText={ctaText}
-            ctaLink={ctaLink}
-            cta2Text={cta2Text}
-            cta2Link={cta2Link}
-          />
-          {image && <HomeSectionImage image={image} />}
-        </>
-      ) : (
-        <>
-          {image && <HomeSectionImage image={image} />}
-          <HomeSectionContent
-            title={title}
-            subtitle={subtitle}
-            description={description}
-            ctaText={ctaText}
-            ctaLink={ctaLink}
-            cta2Text={cta2Text}
-            cta2Link={cta2Link}
-          />
-        </>
+      image && (
+        <div class="section-image">
+          <HomeSectionImage image={image} />
+        </div>
       )
     }
+    <div class="section-content">
+      <HomeSectionContent
+        title={title}
+        subtitle={subtitle}
+        description={description}
+        ctaText={ctaText}
+        ctaLink={ctaLink}
+        cta2Text={cta2Text}
+        cta2Link={cta2Link}
+      />
+    </div>
   </div>
 </section>

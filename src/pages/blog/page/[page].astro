@@ -1,6 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BlogGrid from '@/components/BlogGrid.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 
@@ -24,11 +24,11 @@ export async function getStaticPaths({
 }: {
   paginate: (
     items: CollectionEntry<'blog'>[],
-    options: PaginateOptions,
+    options: PaginateOptions
   ) => PaginateResult[];
 }) {
   const posts = (await getCollection('blog')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
 
   return paginate(posts, { pageSize: 3 });
@@ -50,7 +50,7 @@ const range = (start: number, end: number): number[] =>
   Array.from({ length: end - start + 1 }, (_, i) => start + i);
 const pageRange = range(
   Math.max(1, currentPage - 2),
-  Math.min(lastPage, currentPage + 2),
+  Math.min(lastPage, currentPage + 2)
 );
 ---
 
