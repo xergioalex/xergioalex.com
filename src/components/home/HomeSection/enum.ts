@@ -1,4 +1,4 @@
-export enum HomeSectionContentAlignment {
+export enum HomeSectionContentAlignmentEType {
   LEFT = 'left',
   RIGHT = 'right',
 }
