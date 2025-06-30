@@ -1,7 +1,7 @@
 ---
-import { HomeSectionContentAlignment } from './enum';
-import HomeSectionContent from './HomeSectionContent.astro';
-import HomeSectionImage from './HomeSectionImage.astro';
+import { HomeSectionContentAlignmentEType } from "./enum";
+import HomeSectionContent from "./HomeSectionContent.astro";
+import HomeSectionImage from "./HomeSectionImage.astro";
 
 interface Props {
   title: string;
@@ -12,7 +12,7 @@ interface Props {
   cta2Text?: string;
   cta2Link?: string;
   image?: string;
-  contentAlignment?: HomeSectionContentAlignment;
+  contentAlignment?: HomeSectionContentAlignmentEType;
 }
 
 const {
@@ -24,12 +24,12 @@ const {
   cta2Text,
   cta2Link,
   image,
-  contentAlignment = 'left',
+  contentAlignment = "left",
 } = Astro.props;
 
 // Validate required props
 if (!title || !description) {
-  throw new Error('HomeSection: title and description are required props');
+  throw new Error("HomeSection: title and description are required props");
 }
 ---
 
@@ -76,7 +76,7 @@ if (!title || !description) {
 
 <section class="py-24">
   <div
-    class={`main-container items-center lg:items-start ${contentAlignment === HomeSectionContentAlignment.LEFT ? "align-left" : "align-right"}`}
+    class={`main-container items-center lg:items-start ${contentAlignment === HomeSectionContentAlignmentEType.LEFT ? "align-left" : "align-right"}`}
   >
     {
       image && (
