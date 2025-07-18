@@ -1,7 +1,14 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import BlogContainer from "@/components/blog/BlogContainer.astro";
+import { getBlogPosts } from "@/lib/blog";
+import type { BlogPostsResultType } from "@/lib/types";
+
 const lang: string = "en";
+
+let blogPostsResult: BlogPostsResultType = await getBlogPosts({
+	lang: lang,
+});
 ---
 
 <MainLayout
@@ -9,5 +16,5 @@ const lang: string = "en";
 	title="Blog"
 	description="Articles, tutorials, journal and talks."
 >
-	<BlogContainer />
+	<BlogContainer blogPostsResult={blogPostsResult} />
 </MainLayout>
