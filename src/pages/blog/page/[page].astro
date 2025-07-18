@@ -1,19 +1,30 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import BlogContainer from "@/components/blog/BlogContainer.astro";
+import type { BlogPostsResultType } from "@/lib/types";
+import { getBlogPosts } from "@/lib/blog";
+
 const lang: string = "en";
 
-// Cambia este número según la cantidad de páginas de tu blog
+export async function getStaticPaths() {
+  const lang: string = "en";
+  let blogPostsResult: BlogPostsResultType = await getBlogPosts({ lang });
+  const totalPages = blogPostsResult.totalPages;
 
-export function getStaticPaths() {
-  const totalPages = 5;
-  return Array.from({ length: totalPages }, (_, i) => ({
-    params: { page: String(i + 1) },
-  }));
+  const paths = [];
+  for (let i = 1; i <= totalPages; i++) {
+    const pagePosts = await getBlogPosts({ lang, page: i });
+    paths.push({
+      params: { page: i },
+      props: {
+        blogPostsResult: pagePosts,
+      },
+    });
+  }
+  return paths;
 }
 
-const { page } = Astro.props;
-console.log("page: ", page);
+const { blogPostsResult } = Astro.props;
 ---
 
 <MainLayout
@@ -21,5 +32,5 @@ console.log("page: ", page);
   title="Blog"
   description="Articles, tutorials, journal and talks."
 >
-  <BlogContainer page={page} />
+  <BlogContainer blogPostsResult={blogPostsResult} />
 </MainLayout>

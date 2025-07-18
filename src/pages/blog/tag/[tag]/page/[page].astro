@@ -1,0 +1,66 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import BlogContainer from "@/components/blog/BlogContainer.astro";
+import type { BlogPostsResultType } from "@/lib/types";
+import { getBlogPosts } from "@/lib/blog";
+import { getCollection } from "astro:content";
+
+const lang: string = "en";
+
+export async function getStaticPaths() {
+  const lang: string = "en";
+
+  // Obtener todos los posts para extraer tags únicos
+  const allPosts = await getCollection("blog");
+  const allTags = Array.from(
+    new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
+  );
+
+  console.log("Tags encontrados:", allTags);
+
+  const paths = [];
+
+  // Para cada tag, generar las rutas de paginación
+  for (const tag of allTags) {
+    // Obtener la primera página para calcular el total de páginas
+    const tagPostsResult = await getBlogPosts({ lang, tag });
+    const totalPages = tagPostsResult.totalPages;
+
+    console.log(
+      `Tag "${tag}": ${tagPostsResult.postsResult.length} posts, ${totalPages} páginas`,
+    );
+
+    // Solo generar rutas de paginación si hay más de 1 página
+    if (totalPages > 1) {
+      // Generar rutas para cada página del tag (empezando desde la página 2)
+      for (let i = 2; i <= totalPages; i++) {
+        const pagePosts = await getBlogPosts({ lang, tag, page: i });
+        const path = {
+          params: { tag, page: i },
+          props: {
+            blogPostsResult: pagePosts,
+            currentTag: tag,
+          },
+        };
+        paths.push(path);
+        console.log(`Generando ruta: /blog/tag/${tag}/page/${i}/`);
+      }
+    }
+  }
+
+  console.log("Total de rutas generadas:", paths.length);
+  return paths;
+}
+
+const { blogPostsResult, currentTag } = Astro.props;
+const { tag, page } = Astro.params;
+---
+
+<MainLayout
+  lang={lang}
+  title={`Artículos con tag: ${tag} - Página ${page}`}
+  description={`Artículos etiquetados como ${tag}. Página ${page}.`}
+>
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} />
+</MainLayout>
+
