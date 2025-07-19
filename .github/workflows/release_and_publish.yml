@@ -101,7 +101,6 @@ jobs:
           git fetch origin
           git checkout -b ghpages
           git pull origin ghpages --rebase || true
-          
       - name: Step 4 - Remove previous build
         run: |
           rm -rf docs
