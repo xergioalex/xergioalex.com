@@ -1,18 +1,16 @@
 ---
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import ContactSection from '@/components/home/ContactSection.astro';
-import EducationSection from '@/components/home/EducationSection.astro';
-import ExperienceSection from '@/components/home/ExperienceSection.astro';
 import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
-import { HomeSectionContentAlignment } from '@/components/home/HomeSection/enum';
+import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
-import ProjectsSection from '@/components/home/ProjectsSection.astro';
-import SkillsSection from '@/components/home/SkillsSection.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
 import MainLayout from '@/layouts/MainLayout.astro';
+
+const lang: string = 'en';
 ---
 
-<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<MainLayout lang={lang} title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<HeroSection
 		name="Sergio Alexander Florez Galeano"
 		description='Cofundador y CTO en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Emprendedor, speaker, investigador, atleta, trader, gamer y geek al 100%'
@@ -40,7 +38,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		cta2Text="Ver mi CV"
 		cta2Link="/cv"
 		image="/images/profile.png"
-		contentAlignment={HomeSectionContentAlignment.RIGHT}
+		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
 	<!-- DailyBot Section -->
@@ -51,7 +49,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Conoce más sobre DailyBot"
 		ctaLink="https://dailybot.com"
 		image="/images/dailybotyc.png"
-		contentAlignment={HomeSectionContentAlignment.LEFT}
+		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 	/>
 
 	<!-- Tech Talks Section -->
@@ -62,7 +60,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Conoce más sobre mis charlas"
 		ctaLink="/about"
 		image="/images/techtalks.png"
-		contentAlignment={HomeSectionContentAlignment.RIGHT}
+		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
 	<!-- Maker Section -->
@@ -73,7 +71,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Ver mis proyectos"
 		ctaLink="/projects"
 		image="/images/ia.png"
-		contentAlignment={HomeSectionContentAlignment.LEFT}
+		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 	/>
 
 	<!-- Trading Section -->
@@ -84,7 +82,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
 		image="/images/trading.png"
-		contentAlignment={HomeSectionContentAlignment.RIGHT}
+		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
 	<!-- Foddie Section -->
@@ -95,7 +93,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
 		image="/images/foddie.png"
-		contentAlignment={HomeSectionContentAlignment.LEFT}
+		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 	/>
 
 	<!-- Hobbies Section -->
@@ -106,7 +104,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
 		ctaText="Conoce más sobre mí"
 		ctaLink="/about"
 		image="/images/bicycle.png"
-		contentAlignment={HomeSectionContentAlignment.RIGHT}
+		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
 	<!-- Blog Preview Section -->

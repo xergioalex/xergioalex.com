@@ -1,5 +1,5 @@
 ---
-import { HomeSectionContentAlignment } from './enum';
+import { HomeSectionContentAlignmentEType } from './enum';
 import HomeSectionContent from './HomeSectionContent.astro';
 import HomeSectionImage from './HomeSectionImage.astro';
 
@@ -12,7 +12,7 @@ interface Props {
   cta2Text?: string;
   cta2Link?: string;
   image?: string;
-  contentAlignment?: HomeSectionContentAlignment;
+  contentAlignment?: HomeSectionContentAlignmentEType;
 }
 
 const {
@@ -76,7 +76,7 @@ if (!title || !description) {
 
 <section class="py-24">
   <div
-    class={`main-container items-center lg:items-start ${contentAlignment === HomeSectionContentAlignment.LEFT ? "align-left" : "align-right"}`}
+    class={`main-container items-center lg:items-start ${contentAlignment === HomeSectionContentAlignmentEType.LEFT ? "align-left" : "align-right"}`}
   >
     {
       image && (

@@ -8,6 +8,7 @@ interface Props {
   currentPage?: number;
   lastPage?: number;
   pageRange?: number[];
+  currentTag?: string;
 }
 
 const {
@@ -16,7 +17,11 @@ const {
   currentPage,
   lastPage,
   pageRange,
+  currentTag,
 } = Astro.props;
+
+// Determinar si estamos en una página de tag
+const isTagPage = !!currentTag;
 ---
 
 <div>
@@ -63,7 +68,13 @@ const {
         {currentPage > 1 && (
           <a
             href={
-              currentPage === 2 ? "/blog/" : `/blog/page/${currentPage - 1}/`
+              isTagPage
+                ? currentPage === 2
+                  ? `/blog/tag/${currentTag}/`
+                  : `/blog/tag/${currentTag}/page/${currentPage - 1}/`
+                : currentPage === 2
+                  ? "/blog/"
+                  : `/blog/page/${currentPage - 1}/`
             }
             class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
           >
@@ -73,7 +84,15 @@ const {
 
         {pageRange.map((pageNum) => (
           <a
-            href={pageNum === 1 ? "/blog/" : `/blog/page/${pageNum}/`}
+            href={
+              isTagPage
+                ? pageNum === 1
+                  ? `/blog/tag/${currentTag}/`
+                  : `/blog/tag/${currentTag}/page/${pageNum}/`
+                : pageNum === 1
+                  ? "/blog/"
+                  : `/blog/page/${pageNum}/`
+            }
             class={`px-4 py-2 rounded ${
               pageNum === currentPage
                 ? "bg-blue-500 text-white"
@@ -86,7 +105,11 @@ const {
 
         {currentPage < lastPage && (
           <a
-            href={`/blog/page/${currentPage + 1}/`}
+            href={
+              isTagPage
+                ? `/blog/tag/${currentTag}/page/${currentPage + 1}/`
+                : `/blog/page/${currentPage + 1}/`
+            }
             class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             Siguiente
