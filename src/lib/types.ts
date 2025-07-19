@@ -1,4 +1,4 @@
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 export type BlogParamsType = {
   lang?: string;
@@ -8,8 +8,8 @@ export type BlogParamsType = {
 };
 
 export type BlogPostsResultType = {
-  allPosts: CollectionEntry<"blog">[];
-  postsResult: CollectionEntry<"blog">[];
+  allPosts: CollectionEntry<'blog'>[];
+  postsResult: CollectionEntry<'blog'>[];
   totalPages: number;
   currentPage: number;
   pageSize: number;

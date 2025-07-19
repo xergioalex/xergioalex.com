@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content";
-import FormattedDate from "@/components/FormattedDate.astro";
+import { getCollection } from 'astro:content';
+import FormattedDate from '@/components/FormattedDate.astro';
 
-const posts = (await getCollection("blog")).slice(0, 2);
+const posts = (await getCollection('blog')).slice(0, 2);
 ---
 
 <section class="py-16 transition-colors duration-300">
