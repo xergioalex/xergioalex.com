@@ -1,6 +1,6 @@
 ---
-import BlogSearch from '@/components/blog/BlogSearch.svelte';
-import type { BlogPostsResultType } from '@/lib/types';
+import StaticBlogSearch from "@/components/blog/StaticBlogSearch.svelte";
+import type { BlogPostsResultType } from "@/lib/types";
 
 export interface Props {
   blogPostsResult: BlogPostsResultType;
@@ -9,8 +9,7 @@ export interface Props {
 const { blogPostsResult, currentTag } = Astro.props;
 ---
 
-<BlogSearch
-  allPosts={blogPostsResult.allPosts}
+<StaticBlogSearch
   postsResult={blogPostsResult.postsResult}
   currentTag={currentTag}
   totalPages={blogPostsResult.totalPages}
