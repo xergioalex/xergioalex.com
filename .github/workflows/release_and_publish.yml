@@ -181,6 +181,7 @@ jobs:
         run: |
           git config user.name "Sergio Alexander Florez Galeano"
           git config user.email "xergioalex@gmail.com"
+          git config advice.skippedCherryPicks false
       - name: Step 3 - 📄 Set GitHub release content "BODY" env var
         run: |
           bash .github/scripts/get_github_release_log.sh
