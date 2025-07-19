@@ -1,13 +1,13 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
-import BlogContainer from "@/components/blog/BlogContainer.astro";
-import { getBlogPosts } from "@/lib/blog";
-import type { BlogPostsResultType } from "@/lib/types";
+import BlogContainer from '@/components/blog/BlogContainer.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+import type { BlogPostsResultType } from '@/lib/types';
 
-const lang: string = "en";
+const lang: string = 'en';
 
 let blogPostsResult: BlogPostsResultType = await getBlogPosts({
-	lang: lang,
+  lang: lang,
 });
 ---
 

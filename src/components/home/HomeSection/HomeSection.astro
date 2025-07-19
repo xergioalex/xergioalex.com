@@ -1,7 +1,7 @@
 ---
-import { HomeSectionContentAlignmentEType } from "./enum";
-import HomeSectionContent from "./HomeSectionContent.astro";
-import HomeSectionImage from "./HomeSectionImage.astro";
+import { HomeSectionContentAlignmentEType } from './enum';
+import HomeSectionContent from './HomeSectionContent.astro';
+import HomeSectionImage from './HomeSectionImage.astro';
 
 interface Props {
   title: string;
@@ -24,12 +24,12 @@ const {
   cta2Text,
   cta2Link,
   image,
-  contentAlignment = "left",
+  contentAlignment = 'left',
 } = Astro.props;
 
 // Validate required props
 if (!title || !description) {
-  throw new Error("HomeSection: title and description are required props");
+  throw new Error('HomeSection: title and description are required props');
 }
 ---
 
