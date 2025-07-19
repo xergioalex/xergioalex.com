@@ -1,7 +1,7 @@
 {
   "name": "xergioalex.com",
   "type": "module",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
