@@ -1,6 +1,6 @@
 ---
-import BlogGrid from "@/components/blog/BlogGrid.astro";
-import type { BlogPostsResultType } from "@/lib/types";
+import BlogGrid from '@/components/blog/BlogGrid.astro';
+import type { BlogPostsResultType } from '@/lib/types';
 
 export interface Props {
   blogPostsResult: BlogPostsResultType;
@@ -9,7 +9,7 @@ export interface Props {
 const { blogPostsResult, currentTag } = Astro.props;
 
 const allTags = Array.from(
-  new Set(blogPostsResult.allPosts.flatMap((post) => post.data.tags ?? [])),
+  new Set(blogPostsResult.allPosts.flatMap((post) => post.data.tags ?? []))
 );
 
 // Calculate the range of pages to show
