@@ -101,6 +101,7 @@ jobs:
           git fetch origin
           git checkout -b ghpages
           git pull origin ghpages --rebase || true
+          
       - name: Step 4 - Remove previous build
         run: |
           rm -rf docs
@@ -181,6 +182,7 @@ jobs:
         run: |
           git config user.name "Sergio Alexander Florez Galeano"
           git config user.email "xergioalex@gmail.com"
+          git config advice.skippedCherryPicks false
       - name: Step 3 - 📄 Set GitHub release content "BODY" env var
         run: |
           bash .github/scripts/get_github_release_log.sh
