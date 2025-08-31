@@ -11,14 +11,14 @@ export async function getStaticPaths() {
 
   // Obtener todos los posts para extraer tags únicos
   const allPosts = await getCollection('blog');
-  const allTags = Array.from(
+  const tagsResult = Array.from(
     new Set(allPosts.flatMap((post) => post.data.tags ?? []))
   );
 
   const paths = [];
 
   // Para cada tag, generar las rutas de paginación
-  for (const tag of allTags) {
+  for (const tag of tagsResult) {
     // Obtener la primera página para calcular el total de páginas
     const tagPostsResult = await getBlogPosts({ lang, tag });
     const totalPages = tagPostsResult.totalPages;

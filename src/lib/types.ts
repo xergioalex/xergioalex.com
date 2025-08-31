@@ -8,7 +8,7 @@ export type BlogParamsType = {
 };
 
 export type BlogPostsResultType = {
-  allTags: CollectionEntry<'tags'>[];
+  tagsResult: CollectionEntry<'tags'>[];
   postsResult: CollectionEntry<'blog'>[];
   totalPages: number;
   currentPage: number;

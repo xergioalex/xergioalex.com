@@ -6,8 +6,18 @@ export async function getBlogPosts(
   params: BlogParamsType
 ): Promise<BlogPostsResultType> {
   const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
-  const allTags: CollectionEntry<'tags'>[] = await getCollection('tags');
+  const tagsResult: CollectionEntry<'tags'>[] = await getCollection('tags');
   let posts: CollectionEntry<'blog'>[] = allPosts;
+
+  // Get all unique tags that are actually used in posts
+  const usedTags = Array.from(
+    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
+  );
+
+  // Filter tagsResult to only include tags that are used in posts
+  const filteredTags = tagsResult.filter((tag) =>
+    usedTags.includes(tag.data.name)
+  );
 
   // Primero filtrar por tag si se especifica
   if (params.tag) {
@@ -36,7 +46,7 @@ export async function getBlogPosts(
   }
 
   const result: BlogPostsResultType = {
-    allTags: allTags,
+    tagsResult: filteredTags,
     postsResult: posts,
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
