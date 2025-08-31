@@ -20,6 +20,9 @@
       }
     }
   },
+  "files": {
+    "ignoreUnknown": false
+  },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
