@@ -73,7 +73,7 @@ function performSearch(query, page = 1) {
     const searchTerm = query.toLowerCase();
 
     // Filter posts based on search query and tag
-    let filteredPosts = searchIndex.filter((post) => {
+    const filteredPosts = searchIndex.filter((post) => {
       const title = post.title.toLowerCase();
       const description = post.description.toLowerCase();
       const tags = post.tags.join(' ').toLowerCase();
