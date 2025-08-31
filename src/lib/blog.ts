@@ -6,6 +6,7 @@ export async function getBlogPosts(
   params: BlogParamsType
 ): Promise<BlogPostsResultType> {
   let allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
+  let allTags: CollectionEntry<'tags'>[] = await getCollection('tags');
   let posts: CollectionEntry<'blog'>[] = allPosts;
 
   // Primero filtrar por tag si se especifica
@@ -42,7 +43,7 @@ export async function getBlogPosts(
   }
 
   let result: BlogPostsResultType = {
-    allPosts: allPosts,
+    allTags: allTags,
     postsResult: posts,
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
