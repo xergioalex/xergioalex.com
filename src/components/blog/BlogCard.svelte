@@ -1,7 +1,9 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
 
-export let post: CollectionEntry<'blog'> | any;
+export let post: CollectionEntry<'blog'>;
+console.log('--- post ---');
+console.log(post);
 
 // Helper function to get post data regardless of structure
 function getPostData() {
@@ -12,7 +14,7 @@ function getPostData() {
       description: post.data.description,
       pubDate: post.data.pubDate,
       tags: post.data.tags || [],
-      heroImage: post.data.heroImage
+      heroImage: post.data.heroImage,
     };
   }
   // If post is flat structure (search index)
@@ -21,7 +23,7 @@ function getPostData() {
     description: post.description,
     pubDate: new Date(post.pubDate),
     tags: post.tags || [],
-    heroImage: post.heroImage
+    heroImage: post.heroImage,
   };
 }
 
