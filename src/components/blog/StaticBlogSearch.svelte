@@ -10,6 +10,10 @@ export let postsResult;
 export let currentTag;
 export let totalPages;
 export let currentPage;
+export let tagsResult = [];
+
+// Extract tag names from CollectionEntry objects for display
+$: displayTags = tagsResult.map(tag => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];
@@ -133,14 +137,11 @@ onMount(() => {
   loadSearchIndex();
 });
 
-// Get all unique tags from the current page posts (for header)
-$: allTags = Array.from(
-  new Set(postsResult.flatMap((post) => post.data.tags ?? []))
-);
+// tagsResult now comes from props, containing all available tags
 </script>
 
 <div class="main-container py-24">
-  <BlogHeader {currentTag} {allTags} />
+  <BlogHeader {currentTag} tagsResult={displayTags} />
   
   <BlogSearchInput 
     bind:searchQuery

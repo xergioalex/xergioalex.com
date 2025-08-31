@@ -1,12 +1,18 @@
 ---
-import StaticBlogSearch from '@/components/blog/StaticBlogSearch.svelte';
-import type { BlogPostsResultType } from '@/lib/types';
+import StaticBlogSearch from "@/components/blog/StaticBlogSearch.svelte";
+import type { BlogPostsResultType } from "@/lib/types";
 
 export interface Props {
   blogPostsResult: BlogPostsResultType;
   currentTag?: string;
 }
 const { blogPostsResult, currentTag } = Astro.props;
+
+// // Get all unique tags from all blog posts (more reliable than tags collection)
+// const allPosts = await getCollection("blog");
+// const tagsResult = Array.from(
+//   new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
+// );
 ---
 
 <StaticBlogSearch
@@ -14,5 +20,6 @@ const { blogPostsResult, currentTag } = Astro.props;
   currentTag={currentTag}
   totalPages={blogPostsResult.totalPages}
   currentPage={blogPostsResult.currentPage}
+  tagsResult={blogPostsResult.tagsResult}
   client:load
 />

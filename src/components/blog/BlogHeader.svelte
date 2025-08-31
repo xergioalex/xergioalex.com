@@ -1,6 +1,6 @@
 <script>
 export let currentTag;
-export let allTags;
+export let tagsResult;
 </script>
 
 <h1 class="text-4xl font-extrabold mb-6">
@@ -25,7 +25,7 @@ export let allTags;
   </a>
 
   <!-- Tags individuales -->
-  {#each allTags as tag}
+  {#each tagsResult as tag}
     <a
       href={`/blog/tag/${tag}/`}
       class={`text-xs px-2 py-0.5 rounded font-semibold ${

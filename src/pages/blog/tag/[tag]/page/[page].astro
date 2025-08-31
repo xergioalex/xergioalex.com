@@ -1,24 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
-import BlogContainer from '@/components/blog/BlogContainer.astro';
-import MainLayout from '@/layouts/MainLayout.astro';
-import { getBlogPosts } from '@/lib/blog';
+import { getCollection } from "astro:content";
+import BlogContainer from "@/components/blog/BlogContainer.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getBlogPosts } from "@/lib/blog";
 
-const lang: string = 'en';
+const lang: string = "en";
 
 export async function getStaticPaths() {
-  const lang: string = 'en';
+  const lang: string = "en";
 
   // Obtener todos los posts para extraer tags únicos
-  const allPosts = await getCollection('blog');
-  const allTags = Array.from(
-    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
+  const allPosts = await getCollection("blog");
+  const tagsResult = Array.from(
+    new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
   );
 
   const paths = [];
 
   // Para cada tag, generar las rutas de paginación
-  for (const tag of allTags) {
+  for (const tag of tagsResult) {
     // Obtener la primera página para calcular el total de páginas
     const tagPostsResult = await getBlogPosts({ lang, tag });
     const totalPages = tagPostsResult.totalPages;
