@@ -182,5 +182,12 @@ $: allTags = Array.from(
       {totalPages}
       {currentTag}
     />
+    
+    {#if totalPages > 1}
+      <BlogPagination 
+        {currentPage} 
+        {totalPages} 
+      />
+    {/if}
   {/if}
 </div> 
