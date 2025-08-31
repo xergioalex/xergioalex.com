@@ -5,6 +5,7 @@ import BlogHeader from './BlogHeader.svelte';
 import BlogPagination from './BlogPagination.svelte';
 import BlogSearchInput from './BlogSearchInput.svelte';
 import SearchResults from './SearchResults.svelte';
+import { BLOG_PAGE_SIZE } from '@/lib/constances';
 
 export let postsResult;
 export let currentTag;
@@ -92,7 +93,7 @@ function performSearch(query, page = 1) {
     );
 
     // Calculate pagination
-    const limit = 12;
+    const limit = BLOG_PAGE_SIZE;
     const totalPosts = filteredPosts.length;
     const totalPages = Math.ceil(totalPosts / limit);
     const startIndex = (page - 1) * limit;
@@ -166,6 +167,8 @@ onMount(() => {
       <BlogPagination 
         currentPage={searchPagination.currentPage} 
         totalPages={searchPagination.totalPages} 
+        isSearchMode={true}
+        onPageChange={(page) => performSearch(searchQuery, page)}
       />
     {/if}
   {:else}
