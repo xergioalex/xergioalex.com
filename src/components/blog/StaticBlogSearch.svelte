@@ -12,6 +12,7 @@ export let currentTag;
 export let totalPages;
 export let currentPage;
 export let tagsResult = [];
+export let totalPostsAvailable = 0;
 
 // Extract tag names from CollectionEntry objects for display
 $: displayTags = tagsResult.map((tag) => tag.data.name);
@@ -104,9 +105,17 @@ function performSearch(query, page = 1) {
     searchPagination = {
       currentPage: page,
       totalPages,
+      totalPosts,
       hasNextPage: page < totalPages,
       hasPrevPage: page > 1,
     };
+
+    console.log('🔍 Search pagination updated:', {
+      currentPage: page,
+      totalPages,
+      totalPosts,
+      resultsShown: paginatedPosts.length
+    });
 
     isLoading = false;
   }, 100);
@@ -142,7 +151,21 @@ onMount(() => {
 </script>
 
 <div class="main-container py-24">
-  <BlogHeader {currentTag} tagsResult={displayTags} />
+  <BlogHeader 
+    {currentTag} 
+    tagsResult={displayTags}
+    totalPosts={isSearching ? searchPagination.totalPosts : totalPostsAvailable}
+    currentPagePosts={isSearching ? searchResults.length : postsResult.length}
+    currentPage={isSearching ? searchPagination.currentPage : currentPage}
+    totalPages={isSearching ? searchPagination.totalPages : totalPages}
+  />
+  
+  <!-- Debug info for search mode -->
+  {#if isSearching}
+    <div class="text-center py-2 text-xs text-gray-500">
+      DEBUG: isSearching={isSearching}, totalPosts={searchPagination.totalPosts}, totalPostsAvailable={totalPostsAvailable}
+    </div>
+  {/if}
   
   <BlogSearchInput 
     bind:searchQuery
