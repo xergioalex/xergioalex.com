@@ -1,7 +1,7 @@
 <script lang="ts">
 import { slide } from 'svelte/transition';
 
-export let lang: string;
+// export let lang: string;
 export let open: boolean;
 export let toggleMenu: () => void;
 let aboutOpen = false;
