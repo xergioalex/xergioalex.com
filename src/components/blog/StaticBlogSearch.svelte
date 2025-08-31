@@ -13,7 +13,7 @@ export let currentPage;
 export let tagsResult = [];
 
 // Extract tag names from CollectionEntry objects for display
-$: displayTags = tagsResult.map(tag => tag.data.name);
+$: displayTags = tagsResult.map((tag) => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];

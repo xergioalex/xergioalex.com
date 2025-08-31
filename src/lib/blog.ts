@@ -13,9 +13,9 @@ export async function getBlogPosts(
   const usedTags = Array.from(
     new Set(allPosts.flatMap((post) => post.data.tags ?? []))
   );
-  
+
   // Filter tagsResult to only include tags that are used in posts
-  const filteredTags = tagsResult.filter((tag) => 
+  const filteredTags = tagsResult.filter((tag) =>
     usedTags.includes(tag.data.name)
   );
 

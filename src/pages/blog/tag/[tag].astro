@@ -1,18 +1,18 @@
 ---
-import { getCollection } from "astro:content";
-import BlogContainer from "@/components/blog/BlogContainer.astro";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { getBlogPosts } from "@/lib/blog";
+import { getCollection } from 'astro:content';
+import BlogContainer from '@/components/blog/BlogContainer.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
 
-const lang: string = "en";
+const lang: string = 'en';
 
 export async function getStaticPaths() {
-  const lang: string = "en";
+  const lang: string = 'en';
 
   // Obtener todos los posts para extraer tags únicos
-  const allPosts = await getCollection("blog");
+  const allPosts = await getCollection('blog');
   const tagsResult = Array.from(
-    new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
+    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
   );
 
   const paths = [];
