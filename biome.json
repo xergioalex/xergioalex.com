@@ -21,7 +21,16 @@
     }
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "includes": [
+      "src/**",
+      "!**/.astro",
+      "!**/docs",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/public",
+      "!**/.github"
+    ]
   },
   "formatter": {
     "enabled": true,
