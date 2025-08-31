@@ -3,6 +3,8 @@ import BlogCard from './BlogCard.svelte';
 
 export let filteredPosts = [];
 export let searchQuery;
+console.log('--- filteredPosts ---');
+console.log(filteredPosts);
 </script>
 
 {#if filteredPosts && filteredPosts.length > 0}
