@@ -1,7 +1,7 @@
 <script lang="ts">
 import MobileMenu from './MobileMenu.svelte';
 
-export let lang: string = 'en';
+export const lang: string = 'en';
 let open: boolean = false;
 let aboutOpen = false;
 let languageOpen = false;

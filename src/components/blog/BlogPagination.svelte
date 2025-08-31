@@ -1,6 +1,6 @@
 <script>
-export let currentPage = 1;
-export let totalPages = 1;
+export const currentPage = 1;
+export const totalPages = 1;
 </script>
 
 {#if totalPages > 1}
