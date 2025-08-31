@@ -5,8 +5,8 @@ import type { BlogParamsType, BlogPostsResultType } from './types';
 export async function getBlogPosts(
   params: BlogParamsType
 ): Promise<BlogPostsResultType> {
-  let allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
-  let allTags: CollectionEntry<'tags'>[] = await getCollection('tags');
+  const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
+  const allTags: CollectionEntry<'tags'>[] = await getCollection('tags');
   let posts: CollectionEntry<'blog'>[] = allPosts;
 
   // Primero filtrar por tag si se especifica
@@ -42,7 +42,7 @@ export async function getBlogPosts(
     console.log(`Primera página: ${posts.length} posts`);
   }
 
-  let result: BlogPostsResultType = {
+  const result: BlogPostsResultType = {
     allTags: allTags,
     postsResult: posts,
     currentPage: params.page ?? 1,

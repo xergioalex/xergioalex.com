@@ -1,7 +1,7 @@
 <script>
 import BlogCard from './BlogCard.svelte';
 
-export let filteredPosts = [];
+export const filteredPosts = [];
 export let searchQuery;
 console.log('--- filteredPosts ---');
 console.log(filteredPosts);

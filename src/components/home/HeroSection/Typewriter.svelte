@@ -9,8 +9,18 @@ let char = 0;
 let typing = true;
 
 async function typeLoop() {
+  // Verificar que words tenga contenido antes de empezar
+  if (!words || words.length === 0) {
+    return;
+  }
+
   while (true) {
     const word = words[index];
+    if (!word) {
+      index = 0;
+      continue;
+    }
+
     if (typing) {
       if (char < word.length) {
         display = word.slice(0, char + 1);
@@ -33,7 +43,10 @@ async function typeLoop() {
   }
 }
 
-typeLoop();
+// Solo ejecutar typeLoop si words tiene contenido
+if (words && words.length > 0) {
+  typeLoop();
+}
 </script>
 
 <span class="whitespace-nowrap border-r-2 border-blue-400 pr-1 animate-pulse text-white font-bold text-xl md:text-2xl drop-shadow-lg">
