@@ -15,8 +15,6 @@ export async function getStaticPaths() {
     new Set(allPosts.flatMap((post) => post.data.tags ?? []))
   );
 
-  console.log('Tags encontrados:', allTags);
-
   const paths = [];
 
   // Para cada tag, generar las rutas de paginación
@@ -24,10 +22,6 @@ export async function getStaticPaths() {
     // Obtener la primera página para calcular el total de páginas
     const tagPostsResult = await getBlogPosts({ lang, tag });
     const totalPages = tagPostsResult.totalPages;
-
-    console.log(
-      `Tag "${tag}": ${tagPostsResult.postsResult.length} posts, ${totalPages} páginas`
-    );
 
     // Solo generar rutas de paginación si hay más de 1 página
     if (totalPages > 1) {
@@ -42,12 +36,9 @@ export async function getStaticPaths() {
           },
         };
         paths.push(path);
-        console.log(`Generando ruta: /blog/tag/${tag}/page/${i}/`);
       }
     }
   }
-
-  console.log('Total de rutas generadas:', paths.length);
   return paths;
 }
 

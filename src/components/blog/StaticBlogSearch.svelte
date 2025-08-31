@@ -32,20 +32,14 @@ async function loadSearchIndex() {
 
   isLoadingIndex = true;
   try {
-    console.log('Loading search index...');
     const response = await fetch('/api/posts.json');
     if (response.ok) {
       searchIndex = await response.json();
-      console.log(`Search index loaded with ${searchIndex.length} posts`);
     } else {
-      console.error(
-        'Failed to load search index:',
-        response.status,
-        response.statusText
-      );
+      console.error('❌ Failed to load search index:', response.status);
     }
   } catch (error) {
-    console.error('Failed to load search index:', error);
+    console.error('❌ Failed to load search index:', error);
   } finally {
     isLoadingIndex = false;
   }
@@ -105,7 +99,6 @@ function performSearch(query, page = 1) {
     searchPagination = {
       currentPage: page,
       totalPages,
-      totalPosts,
       hasNextPage: page < totalPages,
       hasPrevPage: page > 1,
     };

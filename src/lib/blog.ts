@@ -14,9 +14,6 @@ export async function getBlogPosts(
     posts = posts.filter((post) =>
       post.data.tags?.includes(params.tag as string)
     );
-    console.log(
-      `Filtrado por tag "${params.tag}": ${posts.length} posts encontrados`
-    );
   }
 
   // Ordenar por fecha de publicación (más reciente primero)
@@ -34,12 +31,8 @@ export async function getBlogPosts(
     const startIndex = (params.page - 1) * (params.pageSize ?? BLOG_PAGE_SIZE);
     const endIndex = params.page * (params.pageSize ?? BLOG_PAGE_SIZE);
     posts = posts.slice(startIndex, endIndex);
-    console.log(
-      `Página ${params.page}: posts ${startIndex} a ${endIndex} (${posts.length} posts)`
-    );
   } else {
     posts = posts.slice(0, params.pageSize ?? BLOG_PAGE_SIZE);
-    console.log(`Primera página: ${posts.length} posts`);
   }
 
   const result: BlogPostsResultType = {
@@ -49,9 +42,5 @@ export async function getBlogPosts(
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
     totalPages: totalPages,
   };
-
-  console.log(
-    `Resultado: ${posts.length} posts en página ${result.currentPage} de ${totalPages} páginas`
-  );
   return result;
 }

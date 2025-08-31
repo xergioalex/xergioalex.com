@@ -2,8 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 
 export let post: CollectionEntry<'blog'>;
-console.log('--- post ---');
-console.log(post);
 
 // Helper function to get post data regardless of structure
 function getPostData() {
