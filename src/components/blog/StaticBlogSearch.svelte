@@ -1,5 +1,6 @@
 <script>
 import { onMount } from 'svelte';
+import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import BlogGrid from './BlogGrid.svelte';
 import BlogHeader from './BlogHeader.svelte';
 import BlogPagination from './BlogPagination.svelte';
@@ -11,6 +12,7 @@ export let currentTag;
 export let totalPages;
 export let currentPage;
 export let tagsResult = [];
+export let totalPostsAvailable = 0;
 
 // Extract tag names from CollectionEntry objects for display
 $: displayTags = tagsResult.map((tag) => tag.data.name);
@@ -92,7 +94,7 @@ function performSearch(query, page = 1) {
     );
 
     // Calculate pagination
-    const limit = 12;
+    const limit = BLOG_PAGE_SIZE;
     const totalPosts = filteredPosts.length;
     const totalPages = Math.ceil(totalPosts / limit);
     const startIndex = (page - 1) * limit;
@@ -103,9 +105,17 @@ function performSearch(query, page = 1) {
     searchPagination = {
       currentPage: page,
       totalPages,
+      totalPosts,
       hasNextPage: page < totalPages,
       hasPrevPage: page > 1,
     };
+
+    console.log('🔍 Search pagination updated:', {
+      currentPage: page,
+      totalPages,
+      totalPosts,
+      resultsShown: paginatedPosts.length,
+    });
 
     isLoading = false;
   }, 100);
@@ -141,7 +151,14 @@ onMount(() => {
 </script>
 
 <div class="main-container py-24">
-  <BlogHeader {currentTag} tagsResult={displayTags} />
+  <BlogHeader 
+    {currentTag} 
+    tagsResult={displayTags}
+    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
+    currentPagePosts={isSearching ? searchResults.length : postsResult.length}
+    currentPage={isSearching ? searchPagination.currentPage : currentPage}
+    totalPages={isSearching ? searchPagination.totalPages : totalPages}
+  />
   
   <BlogSearchInput 
     bind:searchQuery
@@ -166,6 +183,9 @@ onMount(() => {
       <BlogPagination 
         currentPage={searchPagination.currentPage} 
         totalPages={searchPagination.totalPages} 
+        isSearchMode={true}
+        onPageChange={(page) => performSearch(searchQuery, page)}
+        {currentTag}
       />
     {/if}
   {:else}
@@ -177,10 +197,11 @@ onMount(() => {
       {currentTag}
     />
     
-    {#if totalPages > 1}
+        {#if totalPages > 1}
       <BlogPagination 
-        {currentPage} 
-        {totalPages} 
+        {currentPage}
+        {totalPages}
+        {currentTag}
       />
     {/if}
   {/if}

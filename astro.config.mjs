@@ -24,5 +24,14 @@ export default defineConfig({
         '@': resolve(__dirname, './src'),
       },
     },
+    optimizeDeps: {
+      force: false,
+      holdUntilCrawlEnd: false,
+    },
+    server: {
+      hmr: {
+        overlay: true,
+      },
+    },
   },
 });

@@ -51,6 +51,7 @@ export async function getBlogPosts(
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
     totalPages: totalPages,
+    totalPostsAvailable: allPosts.length,
   };
   return result;
 }

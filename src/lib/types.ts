@@ -13,4 +13,5 @@ export type BlogPostsResultType = {
   totalPages: number;
   currentPage: number;
   pageSize: number;
+  totalPostsAvailable: number;
 };
