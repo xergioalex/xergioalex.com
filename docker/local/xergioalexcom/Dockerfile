@@ -1,4 +1,4 @@
-FROM node:24.7-bookworm-slim
+FROM node:24.13.0-bookworm-slim
 LABEL maintainer="xergioalex@gmail.com"
 
 RUN apt-get update -y && \

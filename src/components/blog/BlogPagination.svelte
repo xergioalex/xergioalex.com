@@ -3,10 +3,39 @@ export let currentPage = 1;
 export let totalPages = 1;
 export let isSearchMode = false;
 export let onPageChange = null;
+export let currentTag = null;
 
 function handlePageChange(page) {
   if (isSearchMode && onPageChange) {
     onPageChange(page);
+  }
+}
+
+function getPageUrl(page) {
+  console.log(`🔗 getPageUrl(${page}) called with currentTag:`, currentTag);
+
+  if (currentTag) {
+    // Si estamos en una vista de tag
+    if (page === 1) {
+      const url = `/blog/tag/${currentTag}/`;
+      console.log(`  Tag view, page ${page}: ${url}`);
+      return url;
+    } else {
+      const url = `/blog/tag/${currentTag}/page/${page}/`;
+      console.log(`  Tag view, page ${page}: ${url}`);
+      return url;
+    }
+  } else {
+    // Si estamos en la vista general del blog
+    if (page === 1) {
+      const url = '/blog/';
+      console.log(`  General view, page ${page}: ${url}`);
+      return url;
+    } else {
+      const url = `/blog/page/${page}/`;
+      console.log(`  General view, page ${page}: ${url}`);
+      return url;
+    }
   }
 }
 </script>
@@ -24,7 +53,7 @@ function handlePageChange(page) {
           </button>
         {:else}
           <a
-            href={currentPage === 2 ? '/blog/' : `/blog/page/${currentPage - 1}/`}
+            href={getPageUrl(currentPage - 1)}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             Anterior
@@ -46,7 +75,7 @@ function handlePageChange(page) {
           </button>
         {:else}
           <a
-            href={page === 1 ? '/blog/' : `/blog/page/${page}/`}
+            href={getPageUrl(page)}
             class={`px-3 py-2 text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
@@ -68,7 +97,7 @@ function handlePageChange(page) {
           </button>
         {:else}
           <a
-            href={`/blog/page/${currentPage + 1}/`}
+            href={getPageUrl(currentPage + 1)}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             Siguiente

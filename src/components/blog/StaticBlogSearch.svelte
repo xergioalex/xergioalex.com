@@ -1,11 +1,11 @@
 <script>
 import { onMount } from 'svelte';
+import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import BlogGrid from './BlogGrid.svelte';
 import BlogHeader from './BlogHeader.svelte';
 import BlogPagination from './BlogPagination.svelte';
 import BlogSearchInput from './BlogSearchInput.svelte';
 import SearchResults from './SearchResults.svelte';
-import { BLOG_PAGE_SIZE } from '@/lib/constances';
 
 export let postsResult;
 export let currentTag;
@@ -114,7 +114,7 @@ function performSearch(query, page = 1) {
       currentPage: page,
       totalPages,
       totalPosts,
-      resultsShown: paginatedPosts.length
+      resultsShown: paginatedPosts.length,
     });
 
     isLoading = false;
@@ -154,18 +154,11 @@ onMount(() => {
   <BlogHeader 
     {currentTag} 
     tagsResult={displayTags}
-    totalPosts={isSearching ? searchPagination.totalPosts : totalPostsAvailable}
+    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
     currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
     totalPages={isSearching ? searchPagination.totalPages : totalPages}
   />
-  
-  <!-- Debug info for search mode -->
-  {#if isSearching}
-    <div class="text-center py-2 text-xs text-gray-500">
-      DEBUG: isSearching={isSearching}, totalPosts={searchPagination.totalPosts}, totalPostsAvailable={totalPostsAvailable}
-    </div>
-  {/if}
   
   <BlogSearchInput 
     bind:searchQuery
@@ -192,6 +185,7 @@ onMount(() => {
         totalPages={searchPagination.totalPages} 
         isSearchMode={true}
         onPageChange={(page) => performSearch(searchQuery, page)}
+        {currentTag}
       />
     {/if}
   {:else}
@@ -203,10 +197,11 @@ onMount(() => {
       {currentTag}
     />
     
-    {#if totalPages > 1}
+        {#if totalPages > 1}
       <BlogPagination 
-        {currentPage} 
-        {totalPages} 
+        {currentPage}
+        {totalPages}
+        {currentTag}
       />
     {/if}
   {/if}

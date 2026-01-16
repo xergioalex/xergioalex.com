@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   for (let i = 1; i <= totalPages; i++) {
     const pagePosts = await getBlogPosts({ lang, page: i });
     paths.push({
-      params: { page: i },
+      params: { page: String(i) },
       props: {
         blogPostsResult: pagePosts,
       },
