@@ -1,6 +1,7 @@
 <script>
 import { onMount } from 'svelte';
 import { BLOG_PAGE_SIZE } from '@/lib/constances';
+import { createSearchIndex, searchPosts } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
 import BlogGrid from './BlogGrid.svelte';
 import BlogHeader from './BlogHeader.svelte';
@@ -24,10 +25,12 @@ $: displayTags = tagsResult.map((tag) => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];
+let searchResultsWithMatches = []; // Store full search results with match info
 let isSearching = false;
 let isLoading = false;
 let isLoadingIndex = false;
 let searchIndex = [];
+let fuseIndex = null; // Fuse.js search index
 let searchPagination = {
   currentPage: 1,
   totalPages: 1,
@@ -45,12 +48,13 @@ async function loadSearchIndex() {
   try {
     const response = await fetch('/api/posts.json');
     if (response.ok) {
-      searchIndex = await response.json();
-    } else {
-      console.error('❌ Failed to load search index:', response.status);
+      const allPosts = await response.json();
+      // Filter by language and create Fuse index
+      searchIndex = allPosts.filter((post) => post.lang === lang);
+      fuseIndex = createSearchIndex(searchIndex);
     }
   } catch (error) {
-    console.error('❌ Failed to load search index:', error);
+    // Error handled silently in production
   } finally {
     isLoadingIndex = false;
   }
@@ -60,12 +64,12 @@ function performSearch(query, page = 1) {
   if (!query.trim()) {
     isSearching = false;
     searchResults = [];
+    searchResultsWithMatches = [];
     return;
   }
 
   // Check if search index is loaded
-  if (!searchIndex || searchIndex.length === 0) {
-    console.warn('Search index not loaded yet');
+  if (!fuseIndex || !searchIndex || searchIndex.length === 0) {
     isLoading = false;
     return;
   }
@@ -73,60 +77,46 @@ function performSearch(query, page = 1) {
   isLoading = true;
   isSearching = true;
 
-  // Simulate async search for better UX
+  // Use setTimeout for better UX (non-blocking)
   setTimeout(() => {
-    const searchTerm = query.toLowerCase();
+    // Use Fuse.js for fuzzy search
+    const fuseResults = searchPosts(fuseIndex, query);
 
-    // Filter posts based on language, search query and tag
-    const filteredPosts = searchIndex.filter((post) => {
-      // Filter by language first
-      const matchesLang = post.lang === lang;
+    // Filter by tag if specified
+    let filteredResults = fuseResults;
+    if (currentTag) {
+      filteredResults = fuseResults.filter((result) =>
+        result.item.tags.includes(currentTag)
+      );
+    }
 
-      const title = post.title.toLowerCase();
-      const description = post.description.toLowerCase();
-      const tags = post.tags.join(' ').toLowerCase();
-
-      const matchesSearch =
-        title.includes(searchTerm) ||
-        description.includes(searchTerm) ||
-        tags.includes(searchTerm);
-
-      const matchesTag = !currentTag || post.tags.includes(currentTag);
-
-      return matchesLang && matchesSearch && matchesTag;
-    });
-
-    // Sort by publication date (newest first)
-    filteredPosts.sort(
-      (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
-    );
+    // Store full results with match info for highlighting
+    searchResultsWithMatches = filteredResults;
 
     // Calculate pagination
     const limit = BLOG_PAGE_SIZE;
-    const totalPosts = filteredPosts.length;
-    const totalPages = Math.ceil(totalPosts / limit);
+    const totalPosts = filteredResults.length;
+    const pagesCount = Math.ceil(totalPosts / limit);
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
-    const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+    const paginatedResults = filteredResults.slice(startIndex, endIndex);
 
-    searchResults = paginatedPosts;
+    // Extract just the post items for display
+    searchResults = paginatedResults.map((r) => r.item);
+
+    // Store paginated results with matches for highlighting
+    searchResultsWithMatches = paginatedResults;
+
     searchPagination = {
       currentPage: page,
-      totalPages,
+      totalPages: pagesCount,
       totalPosts,
-      hasNextPage: page < totalPages,
+      hasNextPage: page < pagesCount,
       hasPrevPage: page > 1,
     };
 
-    console.log('🔍 Search pagination updated:', {
-      currentPage: page,
-      totalPages,
-      totalPosts,
-      resultsShown: paginatedPosts.length,
-    });
-
     isLoading = false;
-  }, 100);
+  }, 50);
 }
 
 function handleSearch(query) {
@@ -188,7 +178,7 @@ onMount(() => {
       <p class="mt-2 text-gray-500">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} />
     {#if searchPagination.totalPages > 1}
       <BlogPagination 
         currentPage={searchPagination.currentPage} 

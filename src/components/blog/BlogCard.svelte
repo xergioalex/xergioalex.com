@@ -1,9 +1,13 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
+import { getHighlightedField } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: string = 'en';
+export let searchResult:
+  | { item: any; score: number; matches?: any[] }
+  | undefined = undefined;
 
 $: t = getTranslations(lang);
 
@@ -42,6 +46,14 @@ function getPostData() {
 
 $: postData = getPostData();
 $: postSlug = getPostSlug();
+
+// Get highlighted title and description if search result is available
+$: displayTitle = searchResult
+  ? getHighlightedField(searchResult, 'title', postData.title)
+  : postData.title;
+$: displayDescription = searchResult
+  ? getHighlightedField(searchResult, 'description', postData.description)
+  : postData.description;
 </script>
 
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -55,11 +67,11 @@ $: postSlug = getPostSlug();
   <div class="p-6">
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
       <a href={`${lang === 'es' ? '/es' : ''}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
-        {postData.title}
+        {@html displayTitle}
       </a>
     </h2>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
-      {postData.description}
+      {@html displayDescription}
     </p>
     <div class="flex justify-between items-center">
       <time class="text-sm text-gray-500 dark:text-gray-400">
