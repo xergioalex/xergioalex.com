@@ -26,7 +26,7 @@ export interface SearchResult {
   }>;
 }
 
-// Fuse.js configuration optimized for blog search
+// Fuse.js configuration optimized for blog search performance
 const fuseOptions: IFuseOptions<SearchablePost> = {
   // Keys to search with weights (higher = more important)
   keys: [
@@ -39,14 +39,15 @@ const fuseOptions: IFuseOptions<SearchablePost> = {
   // Include match info for highlighting
   includeMatches: true,
   // Fuzzy matching threshold (0 = exact, 1 = match anything)
-  // 0.4 is a good balance between finding relevant results and avoiding noise
   threshold: 0.4,
-  // Distance for fuzzy matching
-  distance: 100,
+  // Reduced distance for faster matching with large datasets
+  distance: 50,
   // Minimum characters before searching
   minMatchCharLength: 2,
-  // Ignore location of match in string
+  // Ignore location for better performance
   ignoreLocation: true,
+  // Field length normalization weight
+  fieldNormWeight: 1,
 };
 
 /**

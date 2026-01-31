@@ -17,6 +17,9 @@ export let tagsResult = [];
 export let totalPostsAvailable = 0;
 export let lang = 'en';
 
+// Performance: Debounce timing (reduced for snappier feel)
+const DEBOUNCE_MS = 200;
+
 // Get translations based on language
 $: t = getTranslations(lang);
 
@@ -25,39 +28,59 @@ $: displayTags = tagsResult.map((tag) => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];
-let searchResultsWithMatches = []; // Store full search results with match info
+let searchResultsWithMatches = [];
 let isSearching = false;
 let isLoading = false;
 let isLoadingIndex = false;
 let searchIndex = [];
-let fuseIndex = null; // Fuse.js search index
+let fuseIndex = null;
+let indexLoaded = false;
 let searchPagination = {
   currentPage: 1,
   totalPages: 1,
   totalPosts: 0,
 };
 
-// Debounce function to avoid too many searches
+// Performance: Search result cache (bounded to prevent memory leaks)
+let searchCache = new Map();
+const MAX_CACHE_SIZE = 50;
+
+function getCacheKey(query, tag) {
+  return `${query || ''}-${tag || ''}`;
+}
+
+function clearCache() {
+  searchCache.clear();
+}
+
+// Debounce timer
 let searchTimeout;
 
-// Load search index on component mount
+// Load search index
 async function loadSearchIndex() {
-  if (isLoadingIndex) return; // Prevent multiple simultaneous loads
+  if (isLoadingIndex || indexLoaded) return;
 
   isLoadingIndex = true;
   try {
     const response = await fetch('/api/posts.json');
     if (response.ok) {
       const allPosts = await response.json();
-      // Filter by language and create Fuse index
       searchIndex = allPosts.filter((post) => post.lang === lang);
       fuseIndex = createSearchIndex(searchIndex);
+      indexLoaded = true;
+      clearCache();
     }
   } catch (error) {
     // Error handled silently in production
   } finally {
     isLoadingIndex = false;
   }
+}
+
+// Ensure index is loaded (lazy loading)
+async function ensureIndexLoaded() {
+  if (indexLoaded) return;
+  await loadSearchIndex();
 }
 
 function performSearch(query, page = 1) {
@@ -68,7 +91,6 @@ function performSearch(query, page = 1) {
     return;
   }
 
-  // Check if search index is loaded
   if (!fuseIndex || !searchIndex || searchIndex.length === 0) {
     isLoading = false;
     return;
@@ -77,75 +99,89 @@ function performSearch(query, page = 1) {
   isLoading = true;
   isSearching = true;
 
-  // Use setTimeout for better UX (non-blocking)
-  setTimeout(() => {
+  // Check cache first (for pagination)
+  const cacheKey = getCacheKey(query, currentTag);
+  const cached = searchCache.get(cacheKey);
+
+  // Use cached full results if available
+  let filteredResults;
+  if (cached) {
+    filteredResults = cached;
+  } else {
     // Use Fuse.js for fuzzy search
     const fuseResults = searchPosts(fuseIndex, query);
 
     // Filter by tag if specified
-    let filteredResults = fuseResults;
-    if (currentTag) {
-      filteredResults = fuseResults.filter((result) =>
-        result.item.tags.includes(currentTag)
-      );
+    filteredResults = currentTag
+      ? fuseResults.filter((result) => result.item.tags.includes(currentTag))
+      : fuseResults;
+
+    // Cache results (with size limit)
+    if (searchCache.size >= MAX_CACHE_SIZE) {
+      const firstKey = searchCache.keys().next().value;
+      searchCache.delete(firstKey);
     }
+    searchCache.set(cacheKey, filteredResults);
+  }
 
-    // Store full results with match info for highlighting
-    searchResultsWithMatches = filteredResults;
+  // Calculate pagination
+  const limit = BLOG_PAGE_SIZE;
+  const totalPosts = filteredResults.length;
+  const pagesCount = Math.ceil(totalPosts / limit);
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const paginatedResults = filteredResults.slice(startIndex, endIndex);
 
-    // Calculate pagination
-    const limit = BLOG_PAGE_SIZE;
-    const totalPosts = filteredResults.length;
-    const pagesCount = Math.ceil(totalPosts / limit);
-    const startIndex = (page - 1) * limit;
-    const endIndex = startIndex + limit;
-    const paginatedResults = filteredResults.slice(startIndex, endIndex);
+  // Extract post items and store matches for highlighting
+  searchResults = paginatedResults.map((r) => r.item);
+  searchResultsWithMatches = paginatedResults;
 
-    // Extract just the post items for display
-    searchResults = paginatedResults.map((r) => r.item);
+  searchPagination = {
+    currentPage: page,
+    totalPages: pagesCount,
+    totalPosts,
+    hasNextPage: page < pagesCount,
+    hasPrevPage: page > 1,
+  };
 
-    // Store paginated results with matches for highlighting
-    searchResultsWithMatches = paginatedResults;
-
-    searchPagination = {
-      currentPage: page,
-      totalPages: pagesCount,
-      totalPosts,
-      hasNextPage: page < pagesCount,
-      hasPrevPage: page > 1,
-    };
-
-    isLoading = false;
-  }, 50);
+  isLoading = false;
 }
 
 function handleSearch(query) {
   searchQuery = query;
 
-  // Clear previous timeout
   if (searchTimeout) {
     clearTimeout(searchTimeout);
   }
 
-  // Debounce search
-  searchTimeout = setTimeout(() => {
-    // If search index is not loaded yet, try to load it first
-    if (!searchIndex || searchIndex.length === 0) {
-      loadSearchIndex().then(() => {
-        performSearch(query, 1);
-      });
-    } else {
-      performSearch(query, 1);
+  // Show searching state immediately for better UX
+  if (query.length >= 2) {
+    isSearching = true;
+  }
+
+  searchTimeout = setTimeout(async () => {
+    if (!indexLoaded) {
+      await ensureIndexLoaded();
     }
-  }, 300);
+    performSearch(query, 1);
+  }, DEBOUNCE_MS);
 }
 
-// Load search index when component mounts
-onMount(() => {
-  loadSearchIndex();
-});
+// Handle search input focus - preload index
+function handleSearchFocus() {
+  ensureIndexLoaded();
+}
 
-// tagsResult now comes from props, containing all available tags
+// Lazy load index on mount using requestIdleCallback
+onMount(() => {
+  if (typeof window !== 'undefined') {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => ensureIndexLoaded());
+    } else {
+      setTimeout(() => ensureIndexLoaded(), 1000);
+    }
+  }
+});
 </script>
 
 <div class="main-container py-24">
@@ -164,13 +200,23 @@ onMount(() => {
     {isSearching}
     resultsCount={searchPagination.totalPosts}
     on:search={(e) => handleSearch(e.detail)}
+    on:focus={handleSearchFocus}
     {lang}
   />
 
   {#if isLoadingIndex}
-    <div class="text-center py-12">
-      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-      <p class="mt-2 text-gray-500">{t.loadingIndex}</p>
+    <!-- Skeleton loading state -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {#each Array(6) as _}
+        <div class="animate-pulse bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+          <div class="bg-gray-200 dark:bg-gray-700 h-48"></div>
+          <div class="p-6">
+            <div class="bg-gray-200 dark:bg-gray-700 h-6 rounded w-3/4 mb-3"></div>
+            <div class="bg-gray-200 dark:bg-gray-700 h-4 rounded w-full mb-2"></div>
+            <div class="bg-gray-200 dark:bg-gray-700 h-4 rounded w-2/3"></div>
+          </div>
+        </div>
+      {/each}
     </div>
   {:else if isLoading}
     <div class="text-center py-12">
@@ -208,4 +254,4 @@ onMount(() => {
       />
     {/if}
   {/if}
-</div> 
+</div>

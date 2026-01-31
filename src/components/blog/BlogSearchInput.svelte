@@ -14,6 +14,10 @@ const dispatch = createEventDispatcher();
 function handleInput(e) {
   dispatch('search', e.target.value);
 }
+
+function handleFocus() {
+  dispatch('focus');
+}
 </script>
 
 <div class="mb-10">
@@ -21,8 +25,9 @@ function handleInput(e) {
     bind:value={searchQuery}
     type="text"
     placeholder={t.searchPlaceholder}
-    class="w-full md:w-1/2 px-4 py-2 rounded border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+    class="w-full md:w-1/2 px-4 py-2 rounded border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition dark:bg-gray-800 dark:text-white"
     on:input={handleInput}
+    on:focus={handleFocus}
   />
   
   {#if isSearching}
