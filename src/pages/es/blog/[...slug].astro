@@ -3,15 +3,15 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 
-const lang: string = 'en';
+const lang: string = 'es';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
-  // Only English posts (in en/ folder)
-  const posts = allPosts.filter((post) => post.id.startsWith('en/'));
+  // Only Spanish posts (in es/ folder)
+  const posts = allPosts.filter((post) => post.id.startsWith('es/'));
   return posts.map((post) => ({
-    // Remove language prefix from URL: "en/first-post" -> "first-post"
-    params: { slug: post.id.replace('en/', '') },
+    // Remove language prefix from URL: "es/first-post" -> "first-post"
+    params: { slug: post.id.replace('es/', '') },
     props: post,
   }));
 }
@@ -41,11 +41,11 @@ const { Content } = await render(post);
       <div class="text-[rgb(var(--gray-dark))]">
         <div class="mb-4 py-4 text-center leading-none">
           <div class="mb-2 text-[rgb(var(--gray))]">
-            <FormattedDate date={pubDate} />
+            <FormattedDate date={pubDate} lang={lang} />
             {
               updatedDate && (
                 <div class="italic">
-                  Last updated on <FormattedDate date={updatedDate} />
+                  Última actualización: <FormattedDate date={updatedDate} lang={lang} />
                 </div>
               )
             }

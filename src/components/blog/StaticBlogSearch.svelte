@@ -77,8 +77,11 @@ function performSearch(query, page = 1) {
   setTimeout(() => {
     const searchTerm = query.toLowerCase();
 
-    // Filter posts based on search query and tag
+    // Filter posts based on language, search query and tag
     const filteredPosts = searchIndex.filter((post) => {
+      // Filter by language first
+      const matchesLang = post.lang === lang;
+
       const title = post.title.toLowerCase();
       const description = post.description.toLowerCase();
       const tags = post.tags.join(' ').toLowerCase();
@@ -90,7 +93,7 @@ function performSearch(query, page = 1) {
 
       const matchesTag = !currentTag || post.tags.includes(currentTag);
 
-      return matchesSearch && matchesTag;
+      return matchesLang && matchesSearch && matchesTag;
     });
 
     // Sort by publication date (newest first)

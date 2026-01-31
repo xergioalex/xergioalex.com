@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BlogContainer from '@/components/blog/BlogContainer.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+
+const lang: string = 'es';
+
+export async function getStaticPaths() {
+  const lang: string = 'es';
+
+  // Get all posts to extract unique tags
+  const allPosts = await getCollection('blog');
+  const tagsResult = Array.from(
+    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
+  );
+
+  const paths = [];
+
+  // For each tag, generate only the first page
+  for (const tag of tagsResult) {
+    const tagPostsResult = await getBlogPosts({ lang, tag });
+    paths.push({
+      params: { tag },
+      props: {
+        blogPostsResult: tagPostsResult,
+        currentTag: tag,
+      },
+    });
+  }
+
+  return paths;
+}
+
+const { blogPostsResult, currentTag } = Astro.props;
+const { tag } = Astro.params;
+---
+
+<MainLayout
+  lang={lang}
+  title={`Posts con etiqueta: ${tag}`}
+  description={`Artículos etiquetados como ${tag}.`}
+>
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
+</MainLayout>

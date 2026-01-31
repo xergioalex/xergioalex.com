@@ -7,6 +7,17 @@ export let lang: string = 'en';
 
 $: t = getTranslations(lang);
 
+// Helper function to get post slug without language prefix
+// e.g., "en/first-post" -> "first-post" or just "first-post" -> "first-post"
+function getPostSlug(): string {
+  const id = post.id || post.slug || '';
+  // Remove language prefix if present (en/, es/)
+  if (id.startsWith('en/') || id.startsWith('es/')) {
+    return id.substring(3);
+  }
+  return id;
+}
+
 // Helper function to get post data regardless of structure
 function getPostData() {
   // If post has data property (CollectionEntry structure)
@@ -30,6 +41,7 @@ function getPostData() {
 }
 
 $: postData = getPostData();
+$: postSlug = getPostSlug();
 </script>
 
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -42,7 +54,7 @@ $: postData = getPostData();
   {/if}
   <div class="p-6">
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-      <a href={`${lang === 'es' ? '/es' : ''}/blog/${post.id || post.slug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+      <a href={`${lang === 'es' ? '/es' : ''}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {postData.title}
       </a>
     </h2>
