@@ -1,9 +1,15 @@
 <script>
+import { getTranslations } from '@/lib/translations';
+
 export let currentPage = 1;
 export let totalPages = 1;
 export let isSearchMode = false;
 export let onPageChange = null;
 export let currentTag = null;
+export let lang = 'en';
+
+$: t = getTranslations(lang);
+$: basePrefix = lang === 'es' ? '/es' : '';
 
 function handlePageChange(page) {
   if (isSearchMode && onPageChange) {
@@ -12,29 +18,19 @@ function handlePageChange(page) {
 }
 
 function getPageUrl(page) {
-  console.log(`🔗 getPageUrl(${page}) called with currentTag:`, currentTag);
-
   if (currentTag) {
-    // Si estamos en una vista de tag
+    // Tag view
     if (page === 1) {
-      const url = `/blog/tag/${currentTag}/`;
-      console.log(`  Tag view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/tag/${currentTag}/`;
     } else {
-      const url = `/blog/tag/${currentTag}/page/${page}/`;
-      console.log(`  Tag view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/tag/${currentTag}/page/${page}/`;
     }
   } else {
-    // Si estamos en la vista general del blog
+    // General blog view
     if (page === 1) {
-      const url = '/blog/';
-      console.log(`  General view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/`;
     } else {
-      const url = `/blog/page/${page}/`;
-      console.log(`  General view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/page/${page}/`;
     }
   }
 }
@@ -49,14 +45,14 @@ function getPageUrl(page) {
             on:click={() => handlePageChange(currentPage - 1)}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Anterior
+            {t.previous}
           </button>
         {:else}
           <a
             href={getPageUrl(currentPage - 1)}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Anterior
+            {t.previous}
           </a>
         {/if}
       {/if}
@@ -93,14 +89,14 @@ function getPageUrl(page) {
             on:click={() => handlePageChange(currentPage + 1)}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Siguiente
+            {t.next}
           </button>
         {:else}
           <a
             href={getPageUrl(currentPage + 1)}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Siguiente
+            {t.next}
           </a>
         {/if}
       {/if}

@@ -1,6 +1,7 @@
 <script>
 import { onMount } from 'svelte';
 import { BLOG_PAGE_SIZE } from '@/lib/constances';
+import { getTranslations } from '@/lib/translations';
 import BlogGrid from './BlogGrid.svelte';
 import BlogHeader from './BlogHeader.svelte';
 import BlogPagination from './BlogPagination.svelte';
@@ -13,6 +14,10 @@ export let totalPages;
 export let currentPage;
 export let tagsResult = [];
 export let totalPostsAvailable = 0;
+export let lang = 'en';
+
+// Get translations based on language
+$: t = getTranslations(lang);
 
 // Extract tag names from CollectionEntry objects for display
 $: displayTags = tagsResult.map((tag) => tag.data.name);
@@ -158,6 +163,7 @@ onMount(() => {
     currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
     totalPages={isSearching ? searchPagination.totalPages : totalPages}
+    {lang}
   />
   
   <BlogSearchInput 
@@ -165,20 +171,21 @@ onMount(() => {
     {isSearching}
     resultsCount={searchPagination.totalPosts}
     on:search={(e) => handleSearch(e.detail)}
+    {lang}
   />
 
   {#if isLoadingIndex}
     <div class="text-center py-12">
       <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-      <p class="mt-2 text-gray-500">Cargando índice de búsqueda...</p>
+      <p class="mt-2 text-gray-500">{t.loadingIndex}</p>
     </div>
   {:else if isLoading}
     <div class="text-center py-12">
       <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-      <p class="mt-2 text-gray-500">Buscando artículos...</p>
+      <p class="mt-2 text-gray-500">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} />
     {#if searchPagination.totalPages > 1}
       <BlogPagination 
         currentPage={searchPagination.currentPage} 
@@ -186,6 +193,7 @@ onMount(() => {
         isSearchMode={true}
         onPageChange={(page) => performSearch(searchQuery, page)}
         {currentTag}
+        {lang}
       />
     {/if}
   {:else}
@@ -195,13 +203,15 @@ onMount(() => {
       {currentPage}
       {totalPages}
       {currentTag}
+      {lang}
     />
     
-        {#if totalPages > 1}
+    {#if totalPages > 1}
       <BlogPagination 
         {currentPage}
         {totalPages}
         {currentTag}
+        {lang}
       />
     {/if}
   {/if}

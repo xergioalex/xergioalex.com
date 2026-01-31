@@ -1,7 +1,11 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
+import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
+export let lang: string = 'en';
+
+$: t = getTranslations(lang);
 
 // Helper function to get post data regardless of structure
 function getPostData() {
@@ -38,7 +42,7 @@ $: postData = getPostData();
   {/if}
   <div class="p-6">
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-      <a href={`/blog/${post.id || post.slug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+      <a href={`${lang === 'es' ? '/es' : ''}/blog/${post.id || post.slug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {postData.title}
       </a>
     </h2>
@@ -47,7 +51,7 @@ $: postData = getPostData();
     </p>
     <div class="flex justify-between items-center">
       <time class="text-sm text-gray-500 dark:text-gray-400">
-        {postData.pubDate.toLocaleDateString('es-ES', {
+        {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',
           day: 'numeric'
@@ -57,7 +61,7 @@ $: postData = getPostData();
         <div class="flex gap-1">
           {#each postData.tags as tag}
             <a 
-              href={`/blog/tag/${tag}/`}
+              href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag}/`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
               #{tag}

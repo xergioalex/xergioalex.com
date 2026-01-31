@@ -48,8 +48,8 @@ const { tag, page } = Astro.params;
 
 <MainLayout
   lang={lang}
-  title={`Artículos con tag: ${tag} - Página ${page}`}
-  description={`Artículos etiquetados como ${tag}. Página ${page}.`}
+  title={`Posts tagged: ${tag} - Page ${page}`}
+  description={`Articles tagged as ${tag}. Page ${page}.`}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} />
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
 </MainLayout>
