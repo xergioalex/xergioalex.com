@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Agent Deep Work Plans (execution results, not templates)
+.agent_commands/agent_deep_work_plans/results/drafts/
+.agent_commands/agent_deep_work_plans/results/plans/PLAN_*/
+
