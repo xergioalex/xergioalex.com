@@ -38,11 +38,12 @@ function getPageUrl(page) {
 
 {#if totalPages > 1}
   <div class="mt-12 flex justify-center">
-    <nav class="flex items-center space-x-2">
+    <nav class="flex items-center space-x-2" aria-label="Blog pagination">
       {#if currentPage > 1}
         {#if isSearchMode}
           <button
             on:click={() => handlePageChange(currentPage - 1)}
+            aria-label={t.previous}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.previous}
@@ -50,6 +51,7 @@ function getPageUrl(page) {
         {:else}
           <a
             href={getPageUrl(currentPage - 1)}
+            aria-label={t.previous}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.previous}
@@ -61,6 +63,8 @@ function getPageUrl(page) {
         {#if isSearchMode}
           <button
             on:click={() => handlePageChange(page)}
+            aria-label={`Page ${page}`}
+            aria-current={page === currentPage ? 'page' : undefined}
             class={`px-3 py-2 text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
@@ -72,6 +76,8 @@ function getPageUrl(page) {
         {:else}
           <a
             href={getPageUrl(page)}
+            aria-label={`Page ${page}`}
+            aria-current={page === currentPage ? 'page' : undefined}
             class={`px-3 py-2 text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
@@ -87,6 +93,7 @@ function getPageUrl(page) {
         {#if isSearchMode}
           <button
             on:click={() => handlePageChange(currentPage + 1)}
+            aria-label={t.next}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.next}
@@ -94,6 +101,7 @@ function getPageUrl(page) {
         {:else}
           <a
             href={getPageUrl(currentPage + 1)}
+            aria-label={t.next}
             class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.next}

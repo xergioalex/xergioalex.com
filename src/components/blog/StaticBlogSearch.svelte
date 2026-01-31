@@ -32,6 +32,7 @@ let searchResultsWithMatches = [];
 let isSearching = false;
 let isLoading = false;
 let isLoadingIndex = false;
+let loadError = false;
 let searchIndex = [];
 let fuseIndex = null;
 let indexLoaded = false;
@@ -61,6 +62,7 @@ async function loadSearchIndex() {
   if (isLoadingIndex || indexLoaded) return;
 
   isLoadingIndex = true;
+  loadError = false;
   try {
     const response = await fetch('/api/posts.json');
     if (response.ok) {
@@ -69,12 +71,20 @@ async function loadSearchIndex() {
       fuseIndex = createSearchIndex(searchIndex);
       indexLoaded = true;
       clearCache();
+    } else {
+      loadError = true;
     }
   } catch (error) {
-    // Error handled silently in production
+    loadError = true;
   } finally {
     isLoadingIndex = false;
   }
+}
+
+// Retry loading search index
+function retryLoadIndex() {
+  indexLoaded = false;
+  loadSearchIndex();
 }
 
 // Ensure index is loaded (lazy loading)
@@ -204,7 +214,21 @@ onMount(() => {
     {lang}
   />
 
-  {#if isLoadingIndex}
+  {#if loadError}
+    <!-- Error state -->
+    <div 
+      class="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-200 px-4 py-3 rounded mb-4"
+      role="alert"
+    >
+      <p>{t.loadError}</p>
+      <button 
+        class="underline mt-2 hover:no-underline"
+        on:click={retryLoadIndex}
+      >
+        {t.retry}
+      </button>
+    </div>
+  {:else if isLoadingIndex}
     <!-- Skeleton loading state -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {#each Array(6) as _}

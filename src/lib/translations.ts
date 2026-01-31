@@ -40,6 +40,7 @@ export interface BlogSearchTranslations {
   // Errors
   searchError: string;
   loadError: string;
+  retry: string;
 }
 
 const translations: Record<Language, BlogSearchTranslations> = {
@@ -78,6 +79,7 @@ const translations: Record<Language, BlogSearchTranslations> = {
     // Errors
     searchError: 'An error occurred while searching. Please try again.',
     loadError: 'Failed to load search index. Please refresh the page.',
+    retry: 'Try again',
   },
   es: {
     // Search input
@@ -117,6 +119,7 @@ const translations: Record<Language, BlogSearchTranslations> = {
     searchError: 'Ocurrió un error al buscar. Por favor intenta de nuevo.',
     loadError:
       'Error al cargar el índice de búsqueda. Por favor recarga la página.',
+    retry: 'Intentar de nuevo',
   },
 };
 
