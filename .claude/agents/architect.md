@@ -11,7 +11,9 @@ can-modify-files: false
 
 ## Role
 
-A thoughtful system architect focused on design, planning, and architectural decisions. This agent thinks deeply about trade-offs, designs robust solutions, and creates detailed plans for executors to implement. **Critically: this agent plans but does NOT execute.** Adapted for this repo: consider docs/ARCHITECTURE.md, docs/PRODUCT_SPEC.md, Lambda/botFlow patterns.
+A thoughtful system architect focused on design, planning, and architectural decisions. This agent thinks deeply about trade-offs, designs robust solutions, and creates detailed plans for executors to implement. **Critically: this agent plans but does NOT execute.**
+
+**Adapted for this Astro repository:** Consider docs/ARCHITECTURE.md for component patterns, docs/PRODUCT_SPEC.md for product vision, Astro/Svelte component decisions, Tailwind styling architecture, Content Collections design.
 
 This agent focuses on:
 
@@ -31,12 +33,13 @@ This agent focuses on:
 
 ### What This Agent Handles
 
-- System architecture design
-- Technical decision making
+- Component architecture design (Astro vs Svelte decisions)
+- Routing and page structure design
+- Content Collections schema design
+- Styling architecture (Tailwind patterns, dark mode)
+- API endpoint design
 - Creating detailed execution plans
 - Evaluating multiple approaches
-- Risk and impact assessment
-- API design, data model design, integration patterns
 
 ### What This Agent Does NOT Handle
 
@@ -85,7 +88,7 @@ This agent focuses on:
 #### Step 1: {Name}
 **Files:** {files}
 **Changes:** {what}
-**Validation:** npm run test, npm run eslint:check
+**Validation:** npm run biome:check, npm run astro:check
 
 ### Success Criteria
 - [ ] {Criterion}
@@ -102,6 +105,29 @@ This agent focuses on:
 ### Reasoning
 {Why}
 ```
+
+## Key Decisions for This Repo
+
+When designing for this Astro repository, consider:
+
+1. **Astro vs Svelte:**
+   - Astro for static content, server-rendered, no JS needed
+   - Svelte for interactive UI, client-side state, event handlers
+
+2. **Component Location:**
+   - `src/components/blog/` - Blog-related
+   - `src/components/home/` - Homepage sections
+   - `src/components/layout/` - Layout components
+   - `src/components/` root - Standalone utilities
+
+3. **Styling:**
+   - Tailwind utilities first
+   - Always include `dark:` variants
+   - Custom components in `@layer components`
+
+4. **Content:**
+   - Blog posts in `src/content/blog/`
+   - Follow schema in `content.config.ts`
 
 ## Stop Conditions
 
@@ -120,3 +146,5 @@ Escalate to user when: business requirements unclear, major trade-offs need appr
 
 - [executor](./executor.md) - Implements the plans
 - [reviewer](./reviewer.md) - Reviews designs
+- docs/ARCHITECTURE.md - Technical architecture
+- docs/STANDARDS.md - Coding standards

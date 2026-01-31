@@ -11,7 +11,14 @@ max-loc: 200
 
 ## Objective
 
-Update documentation files such as README, code comments, JSDoc, and markdown files. This skill handles documentation-only changes with no code logic modifications. Adapted for this repo: follow docs/ and AGENTS.md; all content in English.
+Update documentation files such as README, code comments, JSDoc, and markdown files. This skill handles documentation-only changes with no code logic modifications. Adapted for this Astro repo: follow docs/ and AGENTS.md; all content in English; supports MDX in blog posts.
+
+**Scope includes:**
+- `docs/*.md` - Project documentation
+- `src/**/README.md` - Component/folder documentation  
+- `src/content/blog/*.md` - Blog posts (Markdown)
+- `src/content/blog/*.mdx` - Blog posts (MDX with components)
+- Code comments in `.astro`, `.svelte`, `.ts` files
 
 ## Non-Goals
 
