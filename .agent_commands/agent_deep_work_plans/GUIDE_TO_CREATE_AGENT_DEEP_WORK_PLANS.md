@@ -1,0 +1,696 @@
+# GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md
+
+### How to Create Deep-Work Task Execution Plans Under `.agent_commands/agent_deep_work_plans/`
+
+This guide defines the **official structure and workflow** for creating _agent deep work plans_.
+
+These plans are designed so that an AI agent (Cursor, Claude, etc.) can:
+
+- Work for **many hours** (including overnight)
+- Focus on **one task at a time**
+- Follow a **clear, ordered execution plan**
+- Keep everything **modular, auditable and disposable**
+
+Use this document whenever you need to generate a new deep-work plan.
+
+---
+
+## 1. Top-Level Folder Structure
+
+All deep-work plan assets live under:
+
+```text
+.agent_commands/agent_deep_work_plans/
+├─ README.md
+├─ GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md   ← this guide
+├─ example_prompts/                           ← documentation and examples
+│   ├─ CREATE_PLAN.md
+│   ├─ EXECUTE_PLAN.md
+│   ├─ RESUME_PLAN.md
+│   ├─ drafts_examples/                      ← ⭐ draft examples (basic → refined)
+│   │   ├─ DRAFT_EXAMPLE_basic.md
+│   │   └─ DRAFT_EXAMPLE_refined.md
+│   └─ PLAN_EXAMPLE_lambda_performance_optimization/  ← ⭐ complete plan example
+│       ├─ README.md
+│       ├─ PROMPTS.md
+│       └─ 1.task_establish_baseline.md
+└─ results/                                   ← temporary execution artifacts (ignored in git)
+   ├─ drafts/                                 ← draft prompts workspace
+   └─ plans/                                  ← generated, per-plan folders
+      └─ PLAN_{plan_title}/
+         ├─ README.md                         ← plan overview, task index
+         ├─ PROMPTS.md                        ← ready-to-use prompts for this plan
+         ├─ 1.task_{task_title}.md            ← task 1 (detailed, single-task focus)
+         ├─ 2.task_{task_title}.md            ← task 2
+         ├─ 3.task_{task_title}.md            ← task 3
+         └─ ...
+```
+
+### 1.1. Git ignore rule
+
+The `results/` directory (containing `drafts/` and `plans/`) is **disposable** and should be git-ignored.
+
+Add (or ensure) in `.gitignore`:
+
+```gitignore
+.agent_commands/agent_deep_work_plans/results/*
+!.agent_commands/agent_deep_work_plans/results/.gitkeep
+!.agent_commands/agent_deep_work_plans/results/drafts/.gitkeep
+!.agent_commands/agent_deep_work_plans/results/drafts/README.md
+!.agent_commands/agent_deep_work_plans/results/plans/.gitkeep
+!.agent_commands/agent_deep_work_plans/results/plans/README.md
+!.agent_commands/agent_deep_work_plans/results/plans/PROMPTS_TEMPLATE.md
+!.agent_commands/agent_deep_work_plans/results/plans/VALIDATION_CHECKLIST.md
+```
+
+**Important:**
+Plan folders under `results/plans/` are meant for **temporary execution runs**, not permanent repository content. The stable documentation lives in `README.md`, `example_prompts/`, and this guide.
+
+---
+
+## 2. Naming Conventions
+
+### 2.1. Plan folders
+
+Each plan folder must be named:
+
+```text
+PLAN_{plan_title}
+```
+
+Where:
+
+- `{plan_title}` is:
+  - Lowercase
+  - Snake case
+  - Short and descriptive
+
+**Examples:**
+
+- `PLAN_ui_showcase_expansion`
+- `PLAN_refactor_checkin_engine`
+- `PLAN_docs_reorganization`
+- `PLAN_ai_dev_kit_cleanups`
+
+### 2.2. Task files
+
+Each task file inside a plan folder is named:
+
+```text
+1.task_{task_title}.md
+2.task_{task_title}.md
+3.task_{task_title}.md
+```
+
+Where:
+
+- The **numeric prefix** defines the **strict execution order**.
+- `{task_title}` is a short description of the task focus.
+
+**Examples:**
+
+- `1.task_create_buttons_component_page.md`
+- `2.task_add_integration_tests_for_checkins.md`
+- `3.task_update_checkins_docs.md`
+
+Agents must **not** change the order or numbering once created.
+
+---
+
+## 3. Purpose of This System
+
+This system exists to:
+
+- Break a large objective into **small, atomic tasks**
+- Ensure the agent works on **only one task at a time**
+- Provide a **plan-level overview** (`PLAN/README.md`)
+- Provide **per-task deep prompts** (`N.task_*.md`)
+- Support **long-running / deep-work sessions** (multi-hour / overnight)
+- Avoid clutter in the main repo (plans are temporary)
+- Make execution auditable and reproducible
+
+---
+
+## 4. Plan-Level README Structure (`PLAN_{plan_title}/README.md`)
+
+Each plan folder must have a `README.md` that serves as the **index and control center** for the deep-work session.
+
+### 4.1. Required sections
+
+A plan README must contain:
+
+1. **Plan Title and Goal**
+2. **Context**
+3. **Global Constraints / Guidelines**
+4. **Task List (with links to task files)**
+5. **Execution Rules for the Agent**
+6. **Plan Status / Notes**
+7. **Quick Note:** Reference to PROMPTS.md file for ready-to-use prompts
+
+### 4.2. Example structure
+
+```markdown
+# Plan: {Human-readable Plan Title}
+
+## 1. Goal
+
+Short description of the overall objective of this plan.
+
+Example:
+
+- Expand UI showcase docs and components.
+- Refactor the Smart Check-ins engine for better maintainability.
+- Improve test coverage and documentation for feature X.
+
+## 2. Context
+
+Provide relevant context:
+
+- Tech stack (e.g., Astro 5.16.15, Svelte 5.48.0, TypeScript 5.9.3, Tailwind CSS 4.1.18, Biome 2.3.11).
+- Where the code lives (e.g., `src/components/`, `src/pages/`, `src/content/`).
+- Any important dependencies or constraints.
+
+## 3. Global Guidelines
+
+Some examples:
+
+- Always work in a feature branch, never directly on `main`.
+- Use small, incremental, well-described commits.
+- Run code quality checks (`npm run biome:check`, `npm run astro:check`) as specified in each task.
+- Use TypeScript with type annotations where practical.
+- Follow import order: Node.js native → third-party → internal (using @) → types.
+- Support dark mode in all UI components (use Tailwind's `dark:` variant).
+- Use Astro components for static content, Svelte for interactivity.
+- Prefer clear, maintainable code over micro-optimizations.
+
+## 4. Task List & Links
+
+The agent must execute tasks **in order** and **one at a time**.
+
+- [ ] Task 1: Add new blog component
+      See: [1.task_add_blog_component.md](./1.task_add_blog_component.md)
+
+- [ ] Task 2: Add component documentation
+      See: [2.task_add_component_docs.md](./2.task_add_component_docs.md)
+
+- [ ] Task 3: Update architecture documentation
+      See: [3.task_update_architecture_docs.md](./3.task_update_architecture_docs.md)
+
+> **Agent rule:** Always work on the first unchecked `[ ]` task, and only move to the next after fully completing it.
+
+## 5. Execution Rules for the Agent
+
+- Work strictly in the order defined in the Task List.
+- Focus on **one task file at a time**.
+- Do not skip or reorder tasks.
+- For each task:
+  - Open the corresponding `N.task_*.md`.
+  - Follow the detailed instructions carefully.
+  - Run validations.
+  - **⚠️ MANDATORY: Mark the task as completed:**
+    - **UPDATE this README task list `[ ] → [x]`** (CRITICAL!)
+    - **UPDATE the Plan Status section** (completed count)
+    - **UPDATE the task file's completion / log section**
+  - Commit changes before moving to the next task.
+- Stop and log any blocking issue or failing validation.
+
+> **IMPORTANT:** Failing to mark tasks as completed will break resume functionality and cause repeated work!
+
+## 6. Plan Status / Notes
+
+- Current status:
+  - Example: "In progress, Task 2"
+- Relevant notes or decisions that affect the whole plan.
+
+## 7. Quick Reference
+
+**Need prompts for this plan?** See [PROMPTS.md](./PROMPTS.md) for ready-to-use copy-paste prompts to execute, resume, or check this plan.
+```
+
+---
+
+## 5. Task File Structure (`N.task_{task_title}.md`)
+
+Each task file is a **self-contained deep-work prompt** for a single task.
+The agent must be able to read **only this file**, understand exactly what to do, and execute it to completion.
+
+### 5.1. Required sections
+
+Each `N.task_{task_title}.md` must have:
+
+1. **Title**
+2. **Context**
+3. **Goal**
+4. **Instructions**
+5. **Acceptance Criteria**
+6. **Validation**
+7. **Execution Checklist (step-by-step)**
+8. **Completion & Log (filled by the agent)**
+
+### 5.2. Example template
+
+````markdown
+# Task {N}: {Task Title}
+
+## 1. Context
+
+Explain clearly:
+
+- Which part of the codebase this affects.
+- Where the relevant files are.
+- Any existing patterns or conventions to follow.
+- Links or references to design docs if needed.
+
+## 2. Goal
+
+A concise description of what this task must achieve.
+
+Example:
+
+- "Add a BlogCategories component to display post categories."
+- "Add pagination to the projects section on the homepage."
+
+## 3. Instructions
+
+Detailed, actionable instructions for this **single** task.
+
+Guidelines:
+
+- Specify directories and filenames.
+- Mention patterns to reuse or avoid.
+- Provide detailed prompts if necessary.
+- Clarify what _not_ to change, if important.
+
+Example:
+
+- Create a new component at `src/components/blog/BlogCategories.svelte`.
+- Follow the component patterns defined in `docs/ARCHITECTURE.md`.
+- Use TypeScript with type annotations for props.
+- Support dark mode with Tailwind's `dark:` variant.
+
+## 4. Acceptance Criteria
+
+Explicit conditions for considering this task **done**.
+
+Examples:
+
+- All required functionality is implemented.
+- Code matches the patterns in `docs/ARCHITECTURE.md`.
+- No TypeScript errors (`npm run astro:check` passes).
+- Biome checks pass (`npm run biome:check`).
+- Build succeeds (`npm run build`).
+- Dark mode is supported in UI components.
+- Naming and structure follow existing conventions in `docs/STANDARDS.md`.
+
+## 5. Validation
+
+Commands that **must be executed and pass** before marking the task as completed.
+
+Example:
+
+```bash
+# Run code quality checks
+npm run biome:check        # Lint and format check
+npm run astro:check        # TypeScript checking
+npm run build              # Verify production build works
+```
+
+If any of these fail, the agent must **stop, log the issue, and not mark the task as complete**.
+
+**Note:** Testing is not configured in this project. When tests are added, include `npm run test` in validation.
+
+## 6. Execution Checklist
+
+The agent must follow these steps sequentially:
+
+- [ ] 1. Read this task file fully and understand the goal and constraints.
+- [ ] 2. Inspect the current implementation / related files.
+- [ ] 3. Implement the required changes.
+- [ ] 4. Run the validation commands listed above.
+- [ ] 5. Review the diff and ensure it matches acceptance criteria.
+- [ ] 6. Update the plan README to mark this task as `[x]` in the Task List.
+- [ ] 7. Commit the changes with a clear commit message.
+- [ ] 8. Update the Log section below.
+
+## 7. Completion & Log (filled by the agent)
+
+The agent must append a short log here when the task is done (or blocked):
+
+- **Status:** (completed / blocked / failed validation)
+- **Timestamp:**
+- **Summary of work:**
+- **Files changed:**
+- **Validation results:**
+- **Notes / follow-ups:**
+````
+
+---
+
+## 6. Agent Execution Rules (Critical Behavior)
+
+When an agent is instructed to use this system, it must obey:
+
+1. **Single-task focus**
+   - Only work on **one task file** at a time.
+   - Ignore other tasks until the current one is fully completed or blocked.
+
+2. **Strict order**
+   - Always process the **first unchecked** task in the plan README (`[ ]`).
+   - Once completed, mark it `[x]` and move to the next.
+
+3. **Validation required**
+   - Never mark a task as completed without running and considering the validations defined in the task file.
+
+4. **Logging & commits**
+   - Always update the task's log.
+   - Always commit work before moving on.
+
+5. **Stop on failure**
+   - If a validation fails or something is unclear, stop and log.
+   - Do not continue blindly.
+
+---
+
+## ⚠️ CRITICAL: Task Completion Tracking (MANDATORY)
+
+> **THIS IS THE MOST IMPORTANT RULE OF THE ENTIRE SYSTEM**
+
+### Why This Matters
+
+The plan README's task list (`[ ]` / `[x]`) is the **SINGLE SOURCE OF TRUTH** for plan progress. Without proper task marking:
+
+- Interrupted sessions cannot resume correctly
+- Progress is lost and tasks may be repeated
+- Plan status becomes unreliable
+- Multi-day executions become impossible to track
+
+### MANDATORY Actions After Each Task
+
+**IMMEDIATELY after completing EACH task, the agent MUST:**
+
+1. **Update the plan README.md** - Change `[ ]` to `[x]` for the completed task
+2. **Update the Plan Status table** - Update the phase status and completed count
+3. **Update the task file's Completion & Log section** - Record status, timestamp, and summary
+
+### Example: Before and After
+
+**BEFORE completing Task 3:**
+
+```markdown
+## Task List
+
+- [x] Task 1: Setup
+- [x] Task 2: Implementation
+- [ ] Task 3: Testing ← Currently working on
+- [ ] Task 4: Documentation
+
+## Plan Status
+
+**Completed**: 2/4
+```
+
+**AFTER completing Task 3:**
+
+```markdown
+## Task List
+
+- [x] Task 1: Setup
+- [x] Task 2: Implementation
+- [x] Task 3: Testing ← Just completed, MUST mark!
+- [ ] Task 4: Documentation
+
+## Plan Status
+
+**Completed**: 3/4
+```
+
+### Verification Checklist (Run After Each Task)
+
+Before moving to the next task, verify:
+
+- [ ] ✅ Plan README task is marked `[x]`
+- [ ] ✅ Plan Status count is updated (e.g., "3/25")
+- [ ] ✅ Task file Completion & Log section is filled
+- [ ] ✅ Changes are committed
+
+### Consequences of Not Marking Tasks
+
+❌ **If tasks are NOT marked as completed:**
+
+- Resume operations will REDO already-completed work
+- Time and resources will be wasted
+- The plan becomes unreliable and confusing
+- Long-running plans become impossible to manage
+
+✅ **If tasks ARE properly marked:**
+
+- Seamless resume after interruptions
+- Clear progress visibility at all times
+- Reliable multi-day/multi-session execution
+- Accurate status reporting
+
+---
+
+## 7. How to Instruct an Agent to Generate a New Plan
+
+When you want Cursor, Claude, or another agent to **generate a new deep-work plan**, you can say:
+
+> **Prompt to the agent:**
+>
+> - Create the folder structure under `.agent_commands/agent_deep_work_plans/` if it does not exist:
+>   - `.agent_commands/agent_deep_work_plans/README.md`
+>   - `.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md` (this guide)
+>   - `.agent_commands/agent_deep_work_plans/results/plans/` (git-ignored)
+> - Then, create a new plan folder:
+>   - `.agent_commands/agent_deep_work_plans/results/plans/PLAN_{plan_title}/`
+> - Inside that plan folder:
+>   - Create `README.md` describing:
+>     - The overall goal
+>     - Context
+>     - Global guidelines
+>     - A Task List with `[ ]` items and links to each `N.task_*.md` file
+>     - Execution rules for the agent
+>     - Reference to PROMPTS.md for ready-to-use prompts
+>   - Create `PROMPTS.md` with ready-to-use prompts for this plan:
+>     - Use the template at `.agent_commands/agent_deep_work_plans/results/plans/PROMPTS_TEMPLATE.md`
+>     - Replace `{PLAN_NAME}` with the actual plan name
+>     - Include prompts for: execute, resume, resume with status, check status, modify
+>   - For each task in the Task List:
+>     - Create a `N.task_{task_title}.md` file following the task template defined in `GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`.
+>     - Ensure each task file has:
+>       - Context
+>       - Goal
+>       - Instructions
+>       - Acceptance Criteria
+>       - Validation commands
+>       - Execution checklist
+>       - Completion & Log section
+> - Make sure all tasks are:
+>   - Atomic (one clear objective)
+>   - Ordered
+>   - Written so an agent can complete each one independently and with high quality.
+
+---
+
+## 8. How to Instruct an Agent to Execute a Plan
+
+When a plan is ready and you want an agent to **run it**, say:
+
+> **Execution prompt to the agent:**
+>
+> - Use `.agent_commands/agent_deep_work_plans/results/plans/PLAN_{plan_title}/README.md` as your source of truth.
+> - Follow these rules:
+>   - Work on **one task at a time**.
+>   - Always pick the **first unchecked `[ ]` task** in the Task List.
+>   - Open the corresponding `N.task_*.md` file and follow its instructions in full.
+>   - Run all validation commands specified in the task file.
+>   - Only when the task meets all acceptance criteria:
+>     - Mark it as `[x]` in the plan README Task List.
+>     - Update the task file's Completion & Log section.
+>     - Commit the changes.
+>   - Then move to the next `[ ]` task and repeat.
+>   - If a validation fails or something is unclear, stop, log in the task file, and do not mark the task as completed.
+
+---
+
+## 9. How to Resume an Interrupted Plan (CRITICAL)
+
+### 9.1. When to Resume
+
+Plans may be interrupted due to:
+
+- **Internet connection loss** during execution
+- **IDE/editor crashes** (Cursor, VS Code, etc.)
+- **Agent hitting token/context limits** mid-execution
+- **Intentional breaks** (overnight pauses, scheduled stops)
+- **System shutdowns** or unexpected errors
+
+The resume functionality ensures work can continue **exactly where it left off** without duplicating completed tasks.
+
+### 9.2. Resume Prompt Template
+
+When a plan is interrupted and you want to resume execution, use this prompt:
+
+> **Resume prompt to the agent:**
+>
+> RESUME the deep work plan at: `.agent_commands/agent_deep_work_plans/results/plans/PLAN_{plan_title}/README.md`
+>
+> **Resume Instructions:**
+>
+> 1. **Read the plan README** to understand the overall objective
+> 2. **Check the task list** - identify which tasks are marked `[x]` (completed) and which are `[ ]` (pending)
+> 3. **Find the FIRST unchecked `[ ]` task** - this is your resumption point
+> 4. **BEFORE starting work on that task:**
+>    - Review the task file completely (`N.task_{task_title}.md`)
+>    - Check if any work was already started:
+>      - Run: `git status` (are there uncommitted changes?)
+>      - Run: `git diff` (what was changed since last commit?)
+>      - Run: `git log --oneline -10` (what are recent commits?)
+>    - Review the task's **Completion & Log** section for any notes from the previous session
+>    - If work was partially done, assess what remains to complete it
+> 5. **Continue execution** from that task following normal execution rules:
+>    - Complete the current task
+>    - Run all validation commands
+>    - Update the task's Completion & Log section
+>    - Mark as `[x]` in the plan README
+>    - Commit changes
+>    - Move to next `[ ]` task
+> 6. **NEVER redo completed `[x]` tasks**
+> 7. **NEVER skip `[ ]` tasks**
+>
+> **Context awareness:**
+>
+> - Review recent git commits to understand what was accomplished
+> - Check for uncommitted changes that indicate partial work
+> - Read task completion logs for any notes or blockers from previous session
+>
+> Begin resuming now. First report:
+>
+> - Which tasks are already completed `[x]`
+> - Which task you're resuming from `[ ]`
+> - Any uncommitted work or partial progress found
+> - Your plan for completing the current task
+
+### 9.3. Critical Resume Rules
+
+**The agent MUST follow these rules when resuming:**
+
+1. **Verify completion status**
+   - Trust the plan README's task list (`[x]` vs `[ ]`)
+   - Cross-check with git commits for confirmation
+   - Never assume - always verify current state
+
+2. **Assess partial work**
+   - If `git status` shows uncommitted changes, review them carefully
+   - If changes align with current task, incorporate and complete
+   - If changes are unrelated or unclear, seek clarification
+
+3. **Read completion logs**
+   - Previous session may have left notes in task's Completion & Log section
+   - Look for blockers, issues, or follow-up items
+   - Use this context to inform current work
+
+4. **Never duplicate work**
+   - If a task is marked `[x]`, it's done - move on
+   - Don't re-implement completed functionality
+   - Trust the previous session's work unless validation fails
+
+5. **Continue strict order**
+   - Resume from first `[ ]` task
+   - Complete it fully before moving to next
+   - Maintain sequential execution
+
+### 9.4. Example Resume Scenarios
+
+**Scenario A: Clean interruption (all work committed)**
+
+```text
+Plan status:
+- Task 1: [x] Completed, committed
+- Task 2: [x] Completed, committed
+- Task 3: [ ] Not started
+- Task 4: [ ] Not started
+
+Resume action:
+→ Start work on Task 3
+→ Follow task 3's instructions completely
+→ No partial work to review
+```
+
+**Scenario B: Interruption mid-task (uncommitted changes)**
+
+```text
+Plan status:
+- Task 1: [x] Completed, committed
+- Task 2: [x] Completed, committed
+- Task 3: [ ] In progress (git diff shows changes)
+- Task 4: [ ] Not started
+
+Resume action:
+→ Review uncommitted changes (git diff)
+→ Assess if changes are valid partial progress
+→ Continue completing Task 3
+→ Run validations, update logs, commit
+→ Move to Task 4
+```
+
+**Scenario C: Interruption with blocker logged**
+
+```text
+Plan status:
+- Task 1: [x] Completed, committed
+- Task 2: [ ] Blocked (log says: "validation failed - coverage at 45%, need 50%")
+- Task 3: [ ] Not started
+
+Resume action:
+→ Read Task 2's Completion & Log
+→ Understand the blocker (coverage issue)
+→ Fix the validation failure
+→ Re-run validations
+→ If pass: mark [x], commit, move to Task 3
+→ If still fail: log again, stop, request help
+```
+
+### 9.5. Resume Checklist for Agents
+
+When resuming a plan, the agent should:
+
+- [ ] 1. Read plan README completely
+- [ ] 2. Identify completed `[x]` vs pending `[ ]` tasks
+- [ ] 3. Find first `[ ]` task (resumption point)
+- [ ] 4. Run `git status` to check for uncommitted work
+- [ ] 5. Run `git log --oneline -10` to see recent commits
+- [ ] 6. Read current task's Completion & Log for notes
+- [ ] 7. Assess partial work if any
+- [ ] 8. Report resumption status to user
+- [ ] 9. Continue execution following normal rules
+- [ ] 10. Never skip or duplicate tasks
+
+---
+
+## 10. Cleanup and Lifecycle
+
+- Plan folders under `.agent_commands/agent_deep_work_plans/results/plans/` are **temporary**.
+- After a plan is fully executed and merged:
+  - The folder may be archived or deleted.
+  - Any important learnings should be summarized in a more permanent doc if needed.
+- The main repo remains clean and lightweight.
+
+---
+
+## 11. Summary
+
+This guide defines how an agent should:
+
+- Create deep-work plans under `.agent_commands/agent_deep_work_plans/results/plans/PLAN_{plan_title}/`
+- Split work into ordered, single-focus task files
+- Execute tasks sequentially, with strong validation and logging
+- Resume interrupted plans without duplicating work
+- Keep everything temporary and isolated from the main repository
+
+Use this as the **authoritative specification** whenever an agent is asked to:
+
+- Generate a new plan
+- Prepare detailed per-task prompts
+- Run long, focused, multi-task deep-work sessions
+- Resume interrupted execution safely and efficiently

@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ide__getDiagnostics",
+      "Bash(node -r ts-node/register -r tsconfig-paths/register:*)",
+      "WebFetch(domain:platform.openai.com)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "Bash(env)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(cat:*)",
+<<<<<<< HEAD
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:ai-sdk.dev)",
+      "WebFetch(domain:fashn.ai)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:www.aihero.dev)",
+      "Bash(npm install:*)",
+      "Bash(npm view:*)",
+      "Bash(npm run sls:setup:*)",
+      "Bash(npm run sls:package:local:*)",
+      "Bash(npm run eslint:check:*)",
+      "Bash(npm run test:*)"
+=======
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git restore:*)"
+>>>>>>> main
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

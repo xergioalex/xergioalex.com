@@ -23,8 +23,8 @@
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
     "@astrojs/svelte": "7.2.5",
-    "astro": "5.16.10",
-    "svelte": "5.46.4",
+    "astro": "5.16.15",
+    "svelte": "5.48.0",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3"
   },

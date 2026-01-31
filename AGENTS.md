@@ -1,0 +1,492 @@
+# AGENTS.md - Documentation for AI Agents
+
+**Purpose:** This file is the **single source of truth** for all AI coding assistants working with this repository, including:
+
+- **Claude Code** (via `CLAUDE.md` import using `@AGENTS.md`)
+- **Cursor AI** (can reference this file directly)
+- **OpenAI Codex (ChatGPT)**
+- **Google Gemini (Antigravity)**
+- **GitHub Copilot**
+- **Other AI coding assistants**
+
+This ensures all agents work in harmony with consistent guidelines, coding standards, and architectural patterns.
+
+## 📚 Detailed Documentation
+
+**For comprehensive information, refer to these detailed guides:**
+
+### Core Documentation
+
+- **[Product Specification](docs/PRODUCT_SPEC.md)** - Product vision, features, and website goals
+- **[Architecture Guide](docs/ARCHITECTURE.md)** - Astro components, Content Collections, Svelte integration
+- **[Testing Guide](docs/TESTING_GUIDE.md)** - Test conventions and future testing setup
+- **[Development Commands](docs/DEVELOPMENT_COMMANDS.md)** - npm scripts, Astro CLI, build workflows
+
+### Standards & Security
+
+- **[Repository Standards](docs/STANDARDS.md)** - Canonical coding rules for all agents
+- **[Security Guide](docs/SECURITY.md)** - Static site security best practices
+- **[Performance Guide](docs/PERFORMANCE.md)** - Astro SSG optimization, image handling, caching
+
+### AI Agent Guides
+
+- **[AI Agent Onboarding](docs/AI_AGENT_ONBOARDING.md)** - Quick setup checklist for new agents
+- **[AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)** - Multi-agent handoff and communication guidelines
+
+## Project Overview
+
+**XergioAleX.com** is a personal website and blog built with Astro, featuring a modern design with dark mode support, multilingual content (English/Spanish), and a performant static site architecture deployed to GitHub Pages.
+
+**Technology Stack:**
+
+- **Astro 5.16.15** - Static site generator with islands architecture
+- **Svelte 5.48.0** - Interactive components
+- **TypeScript 5.9.3** - Type-safe development
+- **Tailwind CSS 4.1.18** - Utility-first styling with dark mode
+- **Biome 2.3.11** - Fast linter and formatter (replaces ESLint + Prettier)
+- **MDX** - Enhanced Markdown for blog posts
+
+**Key Features:**
+
+- Blog with Content Collections
+- Multilingual support (en/es)
+- Dark mode toggle
+- RSS feed and sitemap
+- Client-side search
+- GitHub Pages deployment
+
+## Project Structure
+
+```
+src/
+├── components/              # Reusable UI components
+│   ├── BaseHead.astro       # SEO meta tags, Open Graph
+│   ├── Footer.astro         # Site footer with social links
+│   ├── ThemeToggle.astro    # Dark mode toggle
+│   ├── blog/                # Blog-specific components
+│   │   ├── BlogCard.svelte  # Post card (interactive)
+│   │   ├── BlogGrid.svelte  # Grid layout
+│   │   ├── BlogPagination.svelte
+│   │   └── StaticBlogSearch.svelte
+│   ├── home/                # Homepage sections
+│   │   ├── HeroSection/
+│   │   ├── BlogPreviewSection.astro
+│   │   ├── ProjectsSection.astro
+│   │   └── ...
+│   └── layout/
+│       ├── Header.svelte    # Main navigation (interactive)
+│       └── MobileMenu.svelte
+├── content/                 # Content Collections
+│   ├── blog/                # Blog posts (Markdown/MDX)
+│   │   ├── first-post.md
+│   │   └── using-mdx.mdx
+│   └── tags/                # Tag definitions
+│       ├── tech.md
+│       └── personal.md
+├── content.config.ts        # Collection schemas (Zod)
+├── layouts/
+│   └── MainLayout.astro     # Base page layout
+├── lib/                     # Utility functions
+│   ├── blog.ts              # Post fetching, pagination
+│   ├── constances.ts        # Site constants
+│   ├── enum.ts              # Shared enums
+│   └── types.ts             # TypeScript types
+├── pages/                   # File-based routing
+│   ├── index.astro          # Homepage (English)
+│   ├── es/index.astro       # Homepage (Spanish)
+│   ├── about.astro
+│   ├── contact.astro
+│   ├── blog/
+│   │   ├── index.astro      # Blog listing
+│   │   ├── [...slug].astro  # Dynamic post pages
+│   │   ├── page/[page].astro
+│   │   └── tag/[tag].astro
+│   ├── api/
+│   │   └── posts.json.ts    # Search API endpoint
+│   └── rss.xml.js           # RSS feed
+└── styles/
+    └── global.css           # Global styles, Tailwind config
+
+public/                      # Static assets
+├── images/                  # Site images
+├── icons/                   # Social icons
+├── fonts/                   # Custom fonts
+└── scripts/
+    └── global.theme.js      # Theme persistence
+
+docs/                        # Project documentation
+```
+
+## CRITICAL: Mandatory Requirements
+
+### 1. Language Standards
+
+**ALL code, comments, and documentation MUST be in English.**
+
+✅ Code, comments, docs, commits, variable names in English
+❌ Never use Spanish or any other language in code
+
+**Always update documentation after important changes.**
+
+### 2. Import Order Convention (MANDATORY)
+
+Follow this import order in all TypeScript/Astro/Svelte files:
+
+```typescript
+// 1. Node.js native modules
+import { dirname, resolve } from 'node:path';
+
+// 2. Third-party packages
+import { defineConfig } from 'astro/config';
+import { z } from 'astro:content';
+
+// 3. Internal project modules (using @ alias)
+import Header from '@/components/layout/Header.svelte';
+import { SITE_TITLE } from '@/lib/constances';
+import { getBlogPosts } from '@/lib/blog';
+
+// 4. Type imports (separate group)
+import type { APIRoute } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+```
+
+### 3. Type Hints (RECOMMENDED)
+
+TypeScript is configured but with relaxed rules (Biome allows `any` for flexibility). However, prefer explicit types when possible:
+
+```typescript
+// Function signatures should have type annotations
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
+// Use Astro's built-in types
+import type { CollectionEntry } from 'astro:content';
+type BlogPost = CollectionEntry<'blog'>;
+```
+
+### 4. Code Quality (MANDATORY)
+
+**Use Biome for linting and formatting:**
+
+```bash
+# Check for issues
+npm run biome:check
+
+# Auto-fix issues
+npm run biome:fix
+
+# Fix with unsafe transformations
+npm run biome:fix:unsafe
+```
+
+**❌ DO NOT use ESLint or Prettier** - This project uses Biome exclusively.
+
+### 5. Testing (NOT YET CONFIGURED)
+
+Testing is not yet set up in this project. When adding tests in the future:
+
+- Consider **Vitest** for unit tests
+- Consider **Playwright** for E2E tests
+- Test file naming: `*.test.ts` or `*.spec.ts`
+
+Currently, `npm run test` is a placeholder.
+
+## Shared Agent Coordination - CRITICAL
+
+**Multiple AI agents collaborate on this codebase:**
+
+1. **Cursor AI** - Guided by `.cursorrules` (if exists)
+2. **Claude Code** - Guided by `CLAUDE.md`
+3. **OpenAI Codex (ChatGPT)** - Guided by this file (`AGENTS.md`)
+4. **Google Gemini** - Guided by this file (`AGENTS.md`)
+
+**MANDATORY SYNCHRONIZATION**: When updating agent guidance, mirror changes across all relevant files.
+
+**Synchronize**: Patterns, standards, architectural practices, common mistakes
+**Don't sync**: Agent-specific workflows
+
+**See [AI Agent Collaboration](docs/AI_AGENT_COLLAB.md) for detailed coordination guidelines.**
+
+## Quick Commands
+
+```bash
+# Development
+npm run dev                # Start dev server (http://localhost:4321)
+npm run build              # Production build with type check
+npm run build:ghpages      # Build for GitHub Pages (outputs to docs/)
+npm run astro:preview      # Preview production build
+
+# Code Quality
+npm run biome:check        # Check linting and formatting
+npm run biome:fix          # Auto-fix issues
+npm run biome:fix:unsafe   # Fix with unsafe transformations
+npm run astro:check        # TypeScript type checking
+
+# Package Management
+npm run ncu:check          # Check for package updates
+npm run ncu:upgrade        # Upgrade all packages
+
+# Release
+npm run release            # Bump version and create release commit
+```
+
+## Architecture Patterns
+
+### 1. Astro Component Pattern
+
+Astro components (`.astro`) are the foundation:
+
+```astro
+---
+// Component Script (runs at build time)
+import { getCollection } from 'astro:content';
+import BlogCard from '@/components/blog/BlogCard.svelte';
+
+interface Props {
+  title: string;
+  count?: number;
+}
+
+const { title, count = 5 } = Astro.props;
+const posts = await getCollection('blog');
+---
+
+<!-- Component Template -->
+<section class="py-12">
+  <h2 class="text-2xl font-bold">{title}</h2>
+  {posts.slice(0, count).map((post) => (
+    <BlogCard client:load post={post} />
+  ))}
+</section>
+
+<style>
+  /* Scoped styles */
+  section { max-width: 1200px; margin: 0 auto; }
+</style>
+```
+
+### 2. Content Collections Pattern
+
+Blog posts and tags use Astro Content Collections:
+
+```typescript
+// src/content.config.ts
+import { defineCollection, z } from 'astro:content';
+
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+```
+
+### 3. Svelte Integration Pattern
+
+Use Svelte for interactive components with `client:load`:
+
+```astro
+---
+import Header from '@/components/layout/Header.svelte';
+---
+
+<!-- Hydrate on page load for interactivity -->
+<Header client:load lang={lang} />
+```
+
+### 4. API Route Pattern
+
+Server endpoints in `src/pages/api/`:
+
+```typescript
+// src/pages/api/posts.json.ts
+import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
+
+export const GET: APIRoute = async () => {
+  const posts = await getCollection('blog');
+  return new Response(JSON.stringify(posts), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+```
+
+### 5. Layout Pattern
+
+All pages use `MainLayout.astro`:
+
+```astro
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+---
+
+<MainLayout lang="en" title="Page Title" description="Page description">
+  <section>Page content here</section>
+</MainLayout>
+```
+
+### 6. i18n Pattern
+
+Language-specific routes with `lang` prop:
+
+```
+src/pages/
+├── index.astro          # English (default)
+└── es/
+    └── index.astro      # Spanish
+```
+
+Components receive `lang` prop for translations.
+
+## Documentation Standards
+
+### When to Update Documentation
+
+- ✅ After adding new components or pages
+- ✅ After changing Content Collection schemas
+- ✅ After updating configuration files
+- ✅ After adding new npm scripts
+- ✅ After establishing new patterns
+
+### Documentation Files
+
+Complex features should include documentation:
+
+```
+src/components/blog/
+├── README.md              # Component overview
+├── BlogCard.svelte
+├── BlogGrid.svelte
+└── ...
+```
+
+## Common Mistakes to Avoid
+
+### ❌ DON'T:
+
+1. Write code/docs in Spanish (English only)
+2. Use ESLint or Prettier (use Biome)
+3. Forget to run `npm run biome:check` before committing
+4. Put interactive logic in `.astro` files (use Svelte)
+5. Skip the `client:*` directive for interactive Svelte components
+6. Hardcode text that should be translatable
+7. Forget to update Content Collection schemas after changing frontmatter
+8. Use `npm run test` expecting real tests (not configured yet)
+9. Create new pages without using `MainLayout`
+10. Forget dark mode support in new components
+
+### ✅ DO:
+
+1. Write all code in English
+2. Use Biome for linting and formatting
+3. Run `npm run biome:check` before commits
+4. Use Svelte for interactive components
+5. Add `client:load` or `client:visible` for Svelte components
+6. Support dark mode with Tailwind's `dark:` variant
+7. Use Content Collections for structured content
+8. Follow the established component patterns
+9. Use the `@` path alias for imports
+10. Keep pages simple, delegate to components
+
+## Pre-Commit Checklist
+
+- [ ] All code in English
+- [ ] `npm run biome:check` passes
+- [ ] `npm run astro:check` passes (no TypeScript errors)
+- [ ] `npm run build` succeeds
+- [ ] Dark mode works in new components
+- [ ] Documentation updated if needed
+- [ ] Commit message in English (conventional format)
+
+## 🧠 Skills & Agents System
+
+This repository includes a system for creating reusable **Skills** and **Agents** that help AI assistants work more effectively.
+
+### What Are Skills and Agents?
+
+- **Skills**: Reusable "how-to" procedures invoked via slash commands (e.g., `/quick-fix`, `/doc-edit`)
+- **Agents**: Specialized worker personas for specific tasks (e.g., `reviewer`, `executor`, `architect`)
+
+**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`.
+
+Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills_agents_catalog.md).
+
+### Quick Commands
+
+```bash
+/skill-create           # Create a new skill (guided)
+/skill-list             # List available skills
+/agent-create           # Create a new agent (guided)
+/agent-list             # List available agents
+```
+
+### 3-Tier Model Strategy
+
+| Tier  | Name     | Use Case                        | Model      |
+| ----- | -------- | ------------------------------- | ---------- |
+| **1** | Light    | Simple fixes, formatting, docs  | Cheap/Fast |
+| **2** | Standard | Features, tests, safe refactors | Standard   |
+| **3** | Heavy    | Architecture, planning, complex | Frontier   |
+
+### Key Files
+
+| File                                                              | Purpose               |
+| ----------------------------------------------------------------- | --------------------- |
+| `.agent_commands/agent_skills_generator/GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md` | Complete guide        |
+| `.agent_commands/agent_skills_generator/MASTER_PROMPT.md`         | Generation prompt     |
+| `.agent_commands/agent_skills_generator/MODEL_ROUTING.md`         | Tier routing rules    |
+| `.claude/docs/skills_agents_catalog.md`                           | Available skills/agents |
+
+### Output Locations
+
+- Skills: `.claude/skills/{skill-name}/SKILL.md`
+- Agents: `.claude/agents/{agent-name}.md`
+
+---
+
+## Quick Reference Links
+
+### Documentation
+
+- [Product Spec](docs/PRODUCT_SPEC.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Testing](docs/TESTING_GUIDE.md)
+- [Commands](docs/DEVELOPMENT_COMMANDS.md)
+- [Standards](docs/STANDARDS.md)
+- [Security](docs/SECURITY.md)
+- [Performance](docs/PERFORMANCE.md)
+- [AI Agent Onboarding](docs/AI_AGENT_ONBOARDING.md)
+- [AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)
+
+### External Resources
+
+- [Astro Documentation](https://docs.astro.build/)
+- [Svelte Documentation](https://svelte.dev/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Biome Documentation](https://biomejs.dev/)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+
+## Conventional Commits
+
+**Format**: `<type>: <description>`
+
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`
+
+**Examples:**
+
+- `feat: add blog search functionality`
+- `fix: resolve dark mode toggle on mobile`
+- `docs: update architecture guide with Content Collections`
+- `style: improve blog card hover effects`
+- `refactor: extract common blog utilities to lib/`
+- `perf: optimize image loading in hero section`

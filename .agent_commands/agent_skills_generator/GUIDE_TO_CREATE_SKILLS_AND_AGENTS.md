@@ -1,0 +1,609 @@
+# GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md
+
+### How to Create Skills and Agents Under `.claude/`
+
+This guide defines the **official structure and workflow** for creating _Skills_ and _Agents_ for AI-assisted development.
+
+These definitions are designed so that AI agents (Cursor, Claude, etc.) can:
+
+- **Work efficiently** with appropriate cost/quality tradeoffs
+- **Follow consistent patterns** across the codebase
+- **Stay within defined scope** with clear guardrails
+- **Specialize appropriately** (skills for tasks, agents for personas)
+
+Use this document whenever you need to generate a new Skill or Agent.
+
+---
+
+## 1. Important Definitions (DO NOT CONFUSE THESE)
+
+### What is a Skill?
+
+A **Skill** is a reusable "how-to" SOP (Standard Operating Procedure):
+
+- **Location:** `.claude/skills/<skill-name>/SKILL.md`
+- **Invocation:** Slash commands like `/quick-fix`, `/doc-edit`, `/pr-review-lite`
+- **Characteristics:**
+  - Small, atomic, and reusable
+  - Single-purpose (one task done well)
+  - Has clear inputs and outputs
+  - Includes guardrails and scope limits
+
+**Skills are "HOW it's done"**
+
+### What is an Agent?
+
+An **Agent** (or Subagent) is a specialized worker persona:
+
+- **Location:** `.claude/agents/<agent-name>.md`
+- **Usage:** Invoked by name or role, e.g., "as reviewer" or "use architect"
+- **Characteristics:**
+  - Embodies a specific role/expertise
+  - Has defined scope and boundaries
+  - Can invoke Skills to complete work
+  - Has interaction patterns with other Agents
+
+**Agents are "WHO does it"**
+
+### Key Distinction
+
+| Aspect     | Skill            | Agent                 |
+| ---------- | ---------------- | --------------------- |
+| What       | A procedure/task | A persona/role        |
+| Example    | `/quick-fix`     | `reviewer`            |
+| Focus      | Single action    | Specialized expertise |
+| Scope      | Narrow, atomic   | Broader, role-based   |
+| Invocation | Slash command    | By name/role          |
+
+---
+
+## 2. Model & Cost Strategy (The Tier System)
+
+### Why Tiers?
+
+Not all tasks require the same level of AI reasoning. Using expensive frontier models for simple formatting wastes resources. The tier system ensures:
+
+1. **Correctness** - Right output for the task
+2. **Consistency** - Predictable behavior
+3. **Cost efficiency** - Match compute to complexity
+4. **Maintainability** - Clear expectations
+
+### Routing Summary (Quick Reference)
+
+- **Tier 3 (Heavy):** Planning and heavy reasoning — architecture, deep work plans, complex analysis, security-sensitive design.
+- **Tier 2 (Standard):** Plan execution and standard development — implementing features, following plans, tests, safe refactors.
+- **Tier 1 (Light):** Simple, mechanical tasks — formatting, docs, typos, small fixes, quick checks.
+
+For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute with Tier 2 (see Section 11).
+
+### Tier Definitions
+
+#### Tier 1: Light / Cheap
+
+**Purpose:** Simple, low-risk, repetitive tasks
+
+**Characteristics:**
+
+- Scope: 1-3 files, <100 LOC
+- Risk: Low (no auth, payments, data)
+- Reasoning: Minimal, follow patterns
+
+**Examples:**
+
+- Formatting and linting fixes
+- Documentation edits
+- Code comment improvements
+- Typo corrections
+- Small boilerplate generation
+- Quick review checklists
+
+**Guardrails:**
+
+- Strict file count limits
+- No architectural changes
+- Must follow existing patterns exactly
+
+**Model Family:** Cheap/Fast (Codex-class, Haiku-class)
+
+---
+
+#### Tier 2: Standard / Mid
+
+**Purpose:** Everyday coding, moderate reasoning
+
+**Characteristics:**
+
+- Scope: 1-10 files, 100-500 LOC
+- Risk: Medium (standard features)
+- Reasoning: Moderate decision-making
+
+**Examples:**
+
+- Feature implementation with tests
+- Bug fixes with investigation
+- Safe refactors (small to medium)
+- Test writing with edge cases
+- API endpoint implementation
+- Component creation
+
+**Guardrails:**
+
+- Standard Definition of Done checks
+- Bounded planning
+- Must write tests for changes
+
+**Model Family:** Standard (Sonnet-class, GPT-4.1-class)
+
+---
+
+#### Tier 3: Heavy / Reasoning Frontier
+
+**Purpose:** Complex architecture, long planning, deep debugging
+
+**Characteristics:**
+
+- Scope: Many files, >500 LOC
+- Risk: High (auth, payments, core)
+- Reasoning: Deep analysis required
+
+**Examples:**
+
+- Deep work plans
+- System design
+- Multi-module refactors
+- Complex debugging
+- Database migrations
+- Security-sensitive changes
+
+**Guardrails:**
+
+- Phased plan required
+- Checkpoints and rollback
+- Explicit confirmations
+
+**Model Family:** Frontier (Opus-class, o1/o3-class)
+
+---
+
+## 3. Directory Structure
+
+### Skills Location
+
+```
+.claude/skills/
+└── {skill-name}/
+    └── SKILL.md
+```
+
+**Naming Convention:**
+
+- `kebab-case` (lowercase with hyphens)
+- Descriptive action name
+- Examples: `quick-fix`, `doc-edit`, `pr-review-lite`, `write-tests`
+
+### Agents Location
+
+```
+.claude/agents/
+└── {agent-name}.md
+```
+
+**Naming Convention:**
+
+- `kebab-case` (lowercase with hyphens)
+- Role-based name
+- Examples: `reviewer`, `executor`, `architect`, `security-auditor`
+
+### Supporting Files
+
+```
+.claude/
+├── docs/
+│   ├── skills_agents_catalog.md   # Central catalog
+│   └── model_routing.md           # Routing documentation
+└── commands/
+    ├── skill-create.md            # Creation command
+    ├── skill-list.md              # List command
+    ├── agent-create.md            # Creation command
+    └── agent-list.md              # List command
+```
+
+---
+
+## 4. Skill File Structure
+
+Every Skill must follow this template:
+
+```markdown
+---
+name: { skill-name }
+description: { 1-2 line description }
+tier: { 1|2|3 }
+intent: { plan|execute|review|docs|tests|fix }
+---
+
+# Skill: {Human-Readable Name}
+
+## Objective
+
+{What this skill accomplishes}
+
+## Non-Goals
+
+{What this skill explicitly does NOT do}
+
+- Does NOT {x}
+- Does NOT {y}
+
+## Tier Classification
+
+**Tier: {N}** - {Light/Standard/Heavy}
+**Reasoning:** {Why this tier}
+
+## Inputs
+
+### Required Parameters
+
+- `$PARAM1`: {description}
+
+### Optional Parameters
+
+- `$OPTIONAL1`: {description} (default: {value})
+
+## Prerequisites
+
+- [ ] {Prerequisite 1}
+
+## Steps
+
+### Step 1: {Name}
+
+{Instructions}
+
+### Step 2: {Name}
+
+{Instructions}
+
+## Output Format
+
+{Expected output structure}
+
+## Guardrails
+
+### Scope Limits
+
+- Maximum files: {N}
+- Maximum LOC: {N}
+
+### Stop Conditions
+
+Stop if:
+
+- {Condition}
+
+## Definition of Done
+
+- [ ] {Criterion}
+
+## Escalation Conditions
+
+Escalate to higher tier if:
+
+- {Condition}
+
+## Examples
+
+### Example 1: {Scenario}
+
+**Input:** {input}
+**Output:** {output}
+```
+
+---
+
+## 5. Agent File Structure
+
+Every Agent must follow this template:
+
+```markdown
+---
+name: { agent-name }
+description: { 1-2 line description }
+tier: { 1|2|3 }
+scope: { what this agent handles }
+---
+
+# Agent: {Human-Readable Name}
+
+## Role
+
+{Who this agent is and what persona they embody}
+
+## Tier Classification
+
+**Tier: {N}** - {Light/Standard/Heavy}
+**Reasoning:** {Why this tier}
+
+## Scope
+
+### What This Agent Handles
+
+- {Task type}
+
+### What This Agent Does NOT Handle
+
+- {Out of scope}
+
+## Operating Rules
+
+### General Principles
+
+1. {Rule}
+
+### Decision Making
+
+- {How decisions are made}
+
+## Workflow
+
+### Step 1: Understand Request
+
+{Process}
+
+### Step 2: Execute
+
+{Process}
+
+## Output Format
+
+### Success Response
+
+{Template}
+
+### Escalation Response
+
+{Template}
+
+## Stop Conditions
+
+Stop if:
+
+- {Condition}
+
+## Escalation Rules
+
+Escalate if:
+
+- {Trigger}
+
+## Interactions with Other Agents
+
+### Works Well With
+
+- `{agent}`: {how}
+
+## Examples
+
+### Example 1: {Scenario}
+
+**Request:** {request}
+**Response:** {response}
+```
+
+---
+
+## 6. Naming Conventions
+
+### Skills
+
+| ✅ Good          | ❌ Bad         |
+| ---------------- | -------------- |
+| `quick-fix`      | `QuickFix`     |
+| `doc-edit`       | `doc_edit`     |
+| `pr-review-lite` | `PRReviewLite` |
+| `write-tests`    | `writeTests`   |
+
+**Rules:**
+
+- All lowercase
+- Use hyphens to separate words
+- Action-oriented verbs
+- Descriptive but concise
+
+### Agents
+
+| ✅ Good            | ❌ Bad            |
+| ------------------ | ----------------- |
+| `reviewer`         | `CodeReviewer`    |
+| `executor`         | `plan_executor`   |
+| `architect`        | `SystemArchitect` |
+| `security-auditor` | `securityAuditor` |
+
+**Rules:**
+
+- All lowercase
+- Use hyphens for multi-word names
+- Role-based nouns
+- Clear specialization
+
+---
+
+## 7. Best Practices
+
+### ✅ DO
+
+1. **Define clear scope** - Explicit boundaries prevent scope creep
+2. **Include guardrails** - Limits protect against overreach
+3. **Add escalation rules** - Know when to ask for help
+4. **Provide examples** - Show expected input/output
+5. **Match tier to complexity** - Don't over-engineer simple tasks
+6. **Keep skills atomic** - One task done well
+7. **Define agent interactions** - How they work together
+
+### ❌ DON'T
+
+1. **Create overly broad skills** - Split into multiple focused skills
+2. **Use wrong tier** - Don't use Tier 3 for formatting
+3. **Skip guardrails** - Every skill/agent needs limits
+4. **Forget escalation** - Always have an escape hatch
+5. **Mix skill and agent** - Skills are tasks, agents are personas
+6. **Duplicate functionality** - Reuse existing skills
+7. **Ignore repository context** - Read AGENTS.md first
+
+---
+
+## 8. How to Create a New Skill
+
+### Step-by-Step Workflow
+
+1. **Determine the Need**
+   - What task do you want to automate?
+   - Is there an existing skill that does this?
+   - Can an existing skill be extended instead?
+
+2. **Classify the Tier**
+   - How many files affected?
+   - What's the risk level?
+   - How much reasoning required?
+
+3. **Define the Scope**
+   - What exactly will this skill do?
+   - What will it NOT do?
+   - What are the guardrails?
+
+4. **Write the Skill File**
+   - Use `templates/SKILL_TEMPLATE.md`
+   - Fill all sections completely
+   - Include realistic examples
+
+5. **Place the File**
+   - Create `.claude/skills/{skill-name}/SKILL.md`
+   - Update `.claude/docs/skills_agents_catalog.md`
+
+6. **Test the Skill**
+   - Run with a simple case
+   - Verify guardrails work
+   - Check output format
+
+---
+
+## 9. How to Create a New Agent
+
+### Step-by-Step Workflow
+
+1. **Determine the Need**
+   - What specialized role is missing?
+   - Is there an existing agent that covers this?
+   - Would a skill be more appropriate?
+
+2. **Classify the Tier**
+   - What complexity of work will they do?
+   - Do they plan or execute?
+   - What's the typical risk level?
+
+3. **Define the Persona**
+   - What is their expertise?
+   - How do they communicate?
+   - What decisions can they make?
+
+4. **Define Interactions**
+   - Who do they work with?
+   - Who hands off work to them?
+   - Who receives their work?
+
+5. **Write the Agent File**
+   - Use `templates/AGENT_TEMPLATE.md`
+   - Fill all sections completely
+   - Include example interactions
+
+6. **Place the File**
+   - Create `.claude/agents/{agent-name}.md`
+   - Update `.claude/docs/skills_agents_catalog.md`
+
+7. **Test the Agent**
+   - Give them a sample task
+   - Verify they stay in scope
+   - Check escalation works
+
+---
+
+## 10. Escalation Ladder
+
+### Tier 1 → Tier 2
+
+Escalate when:
+
+- File count exceeds 3
+- LOC exceeds 100
+- Requires understanding business logic
+- Changes affect tests
+- Not purely mechanical transformation
+
+### Tier 2 → Tier 3
+
+Escalate when:
+
+- File count exceeds 10
+- LOC exceeds 500
+- Involves auth, payments, or user data
+- Requires architectural decisions
+- Multiple trade-offs to evaluate
+- Cross-service changes
+
+### Immediate Tier 3
+
+Always use Tier 3 for:
+
+- Database migrations
+- Security-sensitive code
+- Production deployments
+- Breaking changes
+- "I'm not sure" situations
+
+---
+
+## 11. Two-Phase Pattern (Cost Saving)
+
+**Recommended approach for large tasks:** Split planning and execution — use Tier 3 (frontier reasoning) to create the plan, then Tier 2 (standard model) to execute it. This saves cost while keeping quality. For large tasks, do the following:
+
+### Phase 1: Plan with Tier 3
+
+```
+Use frontier model to:
+1. Analyze full scope
+2. Identify risks
+3. Create detailed plan
+4. Define checkpoints
+```
+
+### Phase 2: Execute with Tier 2
+
+```
+Use standard model to:
+1. Follow plan strictly
+2. Execute step by step
+3. Run validations
+4. Report progress
+```
+
+This saves significant compute while maintaining quality.
+
+---
+
+## 12. Summary
+
+| Concept    | Definition        | Example      |
+| ---------- | ----------------- | ------------ |
+| **Skill**  | How to do a task  | `/quick-fix` |
+| **Agent**  | Who does the work | `reviewer`   |
+| **Tier 1** | Simple, cheap     | Formatting   |
+| **Tier 2** | Standard work     | Features     |
+| **Tier 3** | Complex reasoning | Architecture |
+
+**Remember:**
+
+- Skills are atomic procedures
+- Agents are specialized personas
+- Always match tier to complexity
+- Include guardrails and escalation
+- Read repository context first
