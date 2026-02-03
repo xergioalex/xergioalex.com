@@ -1,5 +1,11 @@
 version: '3.8'
 
+volumes:
+  claude_data: {}        # Claude CLI session/auth (symlinked to ~/.claude)
+  codex_data: {}         # Codex CLI session/auth (symlinked to ~/.codex)
+  cursor_data: {}        # Cursor CLI session/auth (symlinked to ~/.cursor)
+  gh_data: {}            # GitHub CLI session/auth (symlinked to ~/.config/gh)
+
 services:
   xergioalexcom: &xergioalexcom
     build:
@@ -8,6 +14,21 @@ services:
     working_dir: /app
     volumes:
       - ../..:/app
+      # Mount persistent data volumes for both root and node user
+      # Root mounts (original)
+      - claude_data:/root/.claude_data
+      - codex_data:/root/.codex_data
+      - cursor_data:/root/.cursor_data
+      - gh_data:/root/.gh_data
+      - ${HOME}/.ssh:/root/.ssh_host:ro
+      - ${HOME}/.gitconfig:/root/.gitconfig:ro
+      # Node user mounts (for devcontainer with non-root user)
+      - claude_data:/home/node/.claude_data
+      - codex_data:/home/node/.codex_data
+      - cursor_data:/home/node/.cursor_data
+      - gh_data:/home/node/.gh_data
+      - ${HOME}/.ssh:/home/node/.ssh_host:ro
+      - ${HOME}/.gitconfig:/home/node/.gitconfig:ro
     ports:
       - '4446:4321'
     env_file:
@@ -17,3 +38,8 @@ services:
       - -c
       - |
         sleep infinity
+
+  xergioalexcomvscode:
+    <<: *xergioalexcom
+    environment:
+      - DOCKER_DEV_ENV=vscode

@@ -15,7 +15,6 @@
       "Bash(git fetch:*)",
       "Bash(git checkout:*)",
       "Bash(cat:*)",
-<<<<<<< HEAD
       "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:ai-sdk.dev)",
       "WebFetch(domain:fashn.ai)",
@@ -27,12 +26,6 @@
       "Bash(npm run sls:package:local:*)",
       "Bash(npm run eslint:check:*)",
       "Bash(npm run test:*)"
-=======
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git restore:*)"
->>>>>>> main
     ],
     "deny": [],
     "ask": []
