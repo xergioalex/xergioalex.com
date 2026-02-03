@@ -1,0 +1,39 @@
+# XergioAleX.com
+
+> Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).
+
+## About
+
+This is the personal website of Sergio Alexander Florez Galeano, known as XergioAleX. He is CTO and Cofounder at DailyBot (YC S21), a computer science engineer with an MSc in data science, entrepreneur, speaker, and technology enthusiast. The site features a blog with articles about technology, software development, entrepreneurship, and personal experiences. Available in English and Spanish.
+
+## Key Pages
+
+- [Home](https://site.xergioalex.com/)
+- [Blog](https://site.xergioalex.com/blog/)
+- [About](https://site.xergioalex.com/about/)
+- [Contact](https://site.xergioalex.com/contact/)
+- [Blog (Spanish)](https://site.xergioalex.com/es/blog/)
+- [Home (Spanish)](https://site.xergioalex.com/es/)
+
+## Content Topics
+
+The blog covers:
+- Technology and software development
+- Entrepreneurship and startups
+- Tech talks and community events
+- Trading and algorithmic trading
+- Personal experiences and reflections
+
+## Languages
+
+- English (default): https://site.xergioalex.com/
+- Spanish: https://site.xergioalex.com/es/
+
+## Feeds
+
+- RSS: https://site.xergioalex.com/rss.xml
+- Sitemap: https://site.xergioalex.com/sitemap-index.xml
+
+## Detailed Version
+
+For more detailed content descriptions, see: https://site.xergioalex.com/llms-full.txt
