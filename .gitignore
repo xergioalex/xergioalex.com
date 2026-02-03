@@ -26,4 +26,5 @@ pnpm-debug.log*
 # Agent Deep Work Plans (execution results, not templates)
 .agent_commands/agent_deep_work_plans/results/drafts/
 .agent_commands/agent_deep_work_plans/results/plans/PLAN_*/
+.agent_commands/agent_deep_work_plans/results/plans/old/
 

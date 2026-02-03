@@ -41,11 +41,11 @@ const { Content } = await render(post);
       <div class="text-[rgb(var(--gray-dark))]">
         <div class="mb-4 py-4 text-center leading-none">
           <div class="mb-2 text-[rgb(var(--gray))]">
-            <FormattedDate date={pubDate} />
+            <FormattedDate date={pubDate} lang={lang} />
             {
               updatedDate && (
                 <div class="italic">
-                  Last updated on <FormattedDate date={updatedDate} />
+                  Last updated on <FormattedDate date={updatedDate} lang={lang} />
                 </div>
               )
             }

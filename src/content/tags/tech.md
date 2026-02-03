@@ -1,4 +1,4 @@
 ---
 name: "tech"
-description: "Tutoriales, guías y artículos técnicos."
+description: "Tutorials, guides, and technical articles."
 ---

@@ -1,10 +1,26 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 import MobileMenu from './MobileMenu.svelte';
 
-export const lang: string = 'en';
+export let lang: string = 'en';
 let open: boolean = false;
 let aboutOpen = false;
 let languageOpen = false;
+
+// Language switch URL - computed on mount from current page path
+let switchUrl: string = lang === 'es' ? '/' : '/es';
+
+onMount(() => {
+  const path = window.location.pathname;
+  if (lang === 'es') {
+    switchUrl =
+      path === '/es' || path === '/es/'
+        ? '/'
+        : path.replace(/^\/es/, '') || '/';
+  } else {
+    switchUrl = path === '/' ? '/es' : `/es${path}`;
+  }
+});
 
 function toggleMenu() {
   open = !open;
@@ -118,11 +134,11 @@ function toggleMenu() {
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
               {#if lang === "es"}
-                <a href="/" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
+                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
                   <span role="img" aria-label="English">🇬🇧</span> EN
                 </a>
               {:else}
-                <a href="/es" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
+                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
                   <span role="img" aria-label="Español">🇪🇸</span> ES
                 </a>
               {/if}

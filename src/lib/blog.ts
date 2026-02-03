@@ -49,17 +49,17 @@ export async function getBlogPosts(
     );
   }
 
-  // Ordenar por fecha de publicación (más reciente primero)
+  // Sort by publication date (newest first)
   posts = posts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
 
-  // Calcular totalPages basándose en los posts filtrados
+  // Calculate total pages based on filtered posts
   const totalPages = Math.ceil(
     posts.length / (params.pageSize ?? BLOG_PAGE_SIZE)
   );
 
-  // Aplicar paginación
+  // Apply pagination
   if (params.page) {
     const startIndex = (params.page - 1) * (params.pageSize ?? BLOG_PAGE_SIZE);
     const endIndex = params.page * (params.pageSize ?? BLOG_PAGE_SIZE);

@@ -1,22 +1,38 @@
 <script lang="ts">
+import { onMount } from 'svelte';
 import { slide } from 'svelte/transition';
 
-// export let lang: string;
+export let lang: string = 'en';
 export let open: boolean;
 export let toggleMenu: () => void;
 let aboutOpen = false;
 let languageOpen = false;
+
+// Language switch URL - computed on mount from current page path
+let switchUrl: string = lang === 'es' ? '/' : '/es';
+
+onMount(() => {
+  const path = window.location.pathname;
+  if (lang === 'es') {
+    switchUrl =
+      path === '/es' || path === '/es/'
+        ? '/'
+        : path.replace(/^\/es/, '') || '/';
+  } else {
+    switchUrl = path === '/' ? '/es' : `/es${path}`;
+  }
+});
 </script>
 
 {#if open}
   <div class="fixed inset-0 z-50 bg-main bg-opacity-95 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden">
     <button
       class="absolute top-6 right-6 p-2"
-      aria-label="Cerrar menú"
+      aria-label="Close menu"
       on:click={toggleMenu}
       type="button"
     >
-      <!-- Icono de cerrar (X) -->
+      <!-- Close icon (X) -->
       <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
       </svg>
@@ -67,7 +83,11 @@ let languageOpen = false;
       aria-controls="language-dropdown"
       type="button"
     >
-      Language
+      {#if lang === "es"}
+        <span role="img" aria-label="Spanish">🇪🇸</span> ES
+      {:else}
+        <span role="img" aria-label="English">🇬🇧</span> EN
+      {/if}
       <svg
         class="w-5 h-5 transition-transform duration-200"
         class:rotate-180={languageOpen}
@@ -85,13 +105,16 @@ let languageOpen = false;
         class="flex flex-col items-center gap-2 mt-1"
         transition:slide={{ duration: 200 }}
       >
-        <button class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2">
-          <span role="img" aria-label="Español">🇪🇸</span> Español
-        </button>
-        <button class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2">
-          <span role="img" aria-label="English">🇬🇧</span> English
-        </button>
+        {#if lang === "es"}
+          <a href={switchUrl} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
+            <span role="img" aria-label="English">🇬🇧</span> English
+          </a>
+        {:else}
+          <a href={switchUrl} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
+            <span role="img" aria-label="Spanish">🇪🇸</span> Español
+          </a>
+        {/if}
       </div>
     {/if}
   </div>
-{/if} 
+{/if}

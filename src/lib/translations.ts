@@ -30,6 +30,8 @@ export interface BlogSearchTranslations {
   // Tags
   postsTagged: (tag: string) => string;
   allTags: string;
+  tagNames: Record<string, string>;
+  tagDescriptions: Record<string, string>;
 
   // Date formatting
   dateLocale: string;
@@ -69,6 +71,18 @@ const translations: Record<Language, BlogSearchTranslations> = {
     // Tags
     postsTagged: (tag) => `Posts tagged "${tag}"`,
     allTags: 'All Tags',
+    tagNames: {
+      tech: 'Tech',
+      personal: 'Personal',
+      talks: 'Talks',
+      trading: 'Trading',
+    },
+    tagDescriptions: {
+      tech: 'Tutorials, guides, and technical articles.',
+      personal: 'Articles about my life and experiences.',
+      talks: 'Tech talks, slides, videos, and events.',
+      trading: 'Trading journal, analysis, and learnings.',
+    },
 
     // Date formatting
     dateLocale: 'en-US',
@@ -108,6 +122,18 @@ const translations: Record<Language, BlogSearchTranslations> = {
     // Tags
     postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
     allTags: 'Todas las Etiquetas',
+    tagNames: {
+      tech: 'Tecnología',
+      personal: 'Personal',
+      talks: 'Charlas',
+      trading: 'Trading',
+    },
+    tagDescriptions: {
+      tech: 'Tutoriales, guías y artículos técnicos.',
+      personal: 'Artículos sobre mi vida y experiencias.',
+      talks: 'Charlas técnicas, slides, videos y eventos.',
+      trading: 'Diario de trading, análisis y aprendizajes.',
+    },
 
     // Date formatting
     dateLocale: 'es-ES',

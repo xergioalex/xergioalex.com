@@ -9,7 +9,7 @@ const lang: string = 'en';
 export async function getStaticPaths() {
   const lang: string = 'en';
 
-  // Obtener todos los posts para extraer tags únicos
+  // Get all posts to extract unique tags
   const allPosts = await getCollection('blog');
   const tagsResult = Array.from(
     new Set(allPosts.flatMap((post) => post.data.tags ?? []))
@@ -17,15 +17,15 @@ export async function getStaticPaths() {
 
   const paths = [];
 
-  // Para cada tag, generar las rutas de paginación
+  // For each tag, generate pagination routes
   for (const tag of tagsResult) {
-    // Obtener la primera página para calcular el total de páginas
+    // Get the first page to calculate total pages
     const tagPostsResult = await getBlogPosts({ lang, tag });
     const totalPages = tagPostsResult.totalPages;
 
-    // Solo generar rutas de paginación si hay más de 1 página
+    // Only generate pagination routes if there's more than 1 page
     if (totalPages > 1) {
-      // Generar rutas para cada página del tag (empezando desde la página 2)
+      // Generate routes for each page of the tag (starting from page 2)
       for (let i = 2; i <= totalPages; i++) {
         const pagePosts = await getBlogPosts({ lang, tag, page: i });
         const path = {

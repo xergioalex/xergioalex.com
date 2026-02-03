@@ -9,7 +9,7 @@ const lang: string = 'en';
 export async function getStaticPaths() {
   const lang: string = 'en';
 
-  // Obtener todos los posts para extraer tags únicos
+  // Get all posts to extract unique tags
   const allPosts = await getCollection('blog');
   const tagsResult = Array.from(
     new Set(allPosts.flatMap((post) => post.data.tags ?? []))
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
   const paths = [];
 
-  // Para cada tag, generar solo la primera página
+  // For each tag, generate only the first page
   for (const tag of tagsResult) {
     const tagPostsResult = await getBlogPosts({ lang, tag });
     paths.push({
