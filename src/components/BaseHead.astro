@@ -81,6 +81,11 @@ if (pathname.startsWith('/es/') || pathname === '/es') {
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="author" content="Sergio Alexander Florez Galeano" />
+
+<!-- Theme color for browser chrome -->
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0f1124" media="(prefers-color-scheme: dark)" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -88,6 +93,9 @@ if (pathname.startsWith('/es/') || pathname === '/es') {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+<meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -95,6 +103,8 @@ if (pathname.startsWith('/es/') || pathname === '/es') {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:site" content="@XergioAleX" />
+<meta name="twitter:creator" content="@XergioAleX" />
 
 <!-- Pagination SEO -->
 {prevPage && <link rel="prev" href={prevPage} />}
