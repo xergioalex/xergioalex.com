@@ -196,6 +196,45 @@ Testing is not yet set up in this project. When adding tests in the future:
 
 Currently, `npm run test` is a placeholder.
 
+### 6. Bilingual Content Synchronization (MANDATORY)
+
+**This site is fully bilingual (English/Spanish). ALL content changes MUST be synchronized in both languages.**
+
+When you create or modify content in one language, you MUST create or update the equivalent content in the other language within the same PR/commit. There are no exceptions to this rule.
+
+#### Content Type Rules
+
+**Pages:**
+- When creating or modifying a page in `src/pages/`, the corresponding page in `src/pages/es/` MUST be created or updated with the translated content, and vice versa.
+- Both pages must use the correct `lang` value (`'en'` or `'es'`) and pass it to `MainLayout` and child components.
+
+**Blog Posts:**
+- When creating or modifying a blog post in `src/content/blog/en/`, the corresponding post in `src/content/blog/es/` MUST be created or updated with the translated content, and vice versa.
+- Translate `title`, `description`, and body content. Preserve `pubDate`, `updatedDate`, `heroImage`, `tags`, code blocks, and formatting.
+
+**Translation Strings:**
+- When adding new UI strings to `src/lib/translations.ts`, translations MUST be added for BOTH English and Spanish simultaneously.
+- Never leave a translation key with a value in only one language.
+
+**Components:**
+- Components with user-visible text MUST use `getTranslations(lang)` from `@/lib/translations`.
+- Never hardcode user-visible strings directly in templates.
+- If a component introduces new translation keys, add them to `translations.ts` in both languages.
+
+#### Bilingual Compliance Checklist
+
+Before committing any content change, verify:
+
+- [ ] All new/modified pages exist in both `src/pages/` and `src/pages/es/`
+- [ ] All new/modified blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
+- [ ] All new UI strings in `translations.ts` have both English and Spanish values
+- [ ] No hardcoded user-visible text in components (use `getTranslations()`)
+
+#### Tools for Bilingual Work
+
+- Use `/translate-sync` skill for synchronizing content between languages
+- Use `i18n-guardian` agent for translation quality review and bilingual audits
+
 ## Shared Agent Coordination - CRITICAL
 
 **Multiple AI agents collaborate on this codebase:**
@@ -384,6 +423,8 @@ src/components/blog/
 8. Use `npm run test` expecting real tests (not configured yet)
 9. Create new pages without using `MainLayout`
 10. Forget dark mode support in new components
+11. Create content (pages, blog posts) in only one language
+12. Add translation strings for only one language in `translations.ts`
 
 ### ✅ DO:
 
@@ -397,6 +438,8 @@ src/components/blog/
 8. Follow the established component patterns
 9. Use the `@` path alias for imports
 10. Keep pages simple, delegate to components
+11. Always create/update content in both English and Spanish
+12. Use `/translate-sync` when synchronizing existing content between languages
 
 ## Pre-Commit Checklist
 
@@ -405,6 +448,8 @@ src/components/blog/
 - [ ] `npm run astro:check` passes (no TypeScript errors)
 - [ ] `npm run build` succeeds
 - [ ] Dark mode works in new components
+- [ ] Content exists in both English and Spanish versions (pages, blog posts)
+- [ ] Translation strings added for both languages in `translations.ts` (if applicable)
 - [ ] Documentation updated if needed
 - [ ] Commit message in English (conventional format)
 
@@ -417,7 +462,7 @@ This repository includes a system for creating reusable **Skills** and **Agents*
 - **Skills**: Reusable "how-to" procedures invoked via slash commands (e.g., `/quick-fix`, `/doc-edit`)
 - **Agents**: Specialized worker personas for specific tasks (e.g., `reviewer`, `executor`, `architect`)
 
-**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`.
+**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`.
 
 Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills_agents_catalog.md).
 
