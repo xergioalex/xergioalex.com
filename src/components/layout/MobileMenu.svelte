@@ -1,12 +1,16 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import { slide } from 'svelte/transition';
+import { getTranslations } from '@/lib/translations';
 
 export let lang: string = 'en';
 export let open: boolean;
 export let toggleMenu: () => void;
 let aboutOpen = false;
 let languageOpen = false;
+
+$: t = getTranslations(lang);
+$: prefix = lang === 'es' ? '/es' : '';
 
 // Language switch URL - computed on mount from current page path
 let switchUrl: string = lang === 'es' ? '/' : '/es';
@@ -37,8 +41,8 @@ onMount(() => {
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
-    <a href="/" class="nav-link text-2xl text-center">Home</a>
-    <a href="/blog" class="nav-link text-2xl text-center">Blog</a>
+    <a href={prefix || '/'} class="nav-link text-2xl text-center">{t.nav.home}</a>
+    <a href="{prefix}/blog" class="nav-link text-2xl text-center">{t.nav.blog}</a>
     <button
       class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => aboutOpen = !aboutOpen}
@@ -46,7 +50,7 @@ onMount(() => {
       aria-controls="about-dropdown"
       type="button"
     >
-      About
+      {t.nav.about}
       <svg
         class="w-5 h-5 transition-transform duration-200"
         class:rotate-180={aboutOpen}
@@ -64,18 +68,18 @@ onMount(() => {
         class="flex flex-col items-center gap-2 mt-1"
         transition:slide={{ duration: 200 }}
       >
-        <a href="/about" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">About Me</a>
-        <a href="/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">CV</a>
-        <a href="/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">DailyBot</a>
-        <a href="/entrepreneur" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">Entrepreneur</a>
-        <a href="/techtalks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">Tech Talks</a>
-        <a href="/maker" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">Maker / Builder</a>
-        <a href="/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">Trading</a>
-        <a href="/foodie" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">Foodie Enthusiast</a>
-        <a href="/hobbies" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">Hobbies</a>
+        <a href="{prefix}/about" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
+        <a href="{prefix}/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
+        <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
+        <a href="{prefix}/entrepreneur" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
+        <a href="{prefix}/techtalks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
+        <a href="{prefix}/maker" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
+        <a href="{prefix}/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
+        <a href="{prefix}/foodie" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>
+        <a href="{prefix}/hobbies" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.hobbies}</a>
       </div>
     {/if}
-    <a href="/contact" class="nav-link text-2xl text-center">Contact</a>
+    <a href="{prefix}/contact" class="nav-link text-2xl text-center">{t.nav.contact}</a>
     <button
       class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => languageOpen = !languageOpen}

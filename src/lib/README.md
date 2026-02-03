@@ -18,16 +18,21 @@ lib/
 
 ### translations.ts
 
-Centralized translation system for blog components.
+Centralized translation system for the entire site.
 
 #### Types
 
 ```typescript
 export type Language = 'en' | 'es';
 
-export interface BlogSearchTranslations {
-  title: string;
-  description: string;
+export interface SiteTranslations {
+  siteTitle: string;
+  siteDescription: string;
+  nav: { home: string; blog: string; about: string; contact: string; /* ... */ };
+  footer: { copyright: string; allRightsReserved: string; };
+  hero: { description: string; typewriterWords: string[]; };
+  homeSections: { about: { /* ... */ }; dailybot: { /* ... */ }; /* ... */ };
+  contact: { title: string; nameLabel: string; /* ... */ };
   searchPlaceholder: string;
   resultsFound: (count: number) => string;
   noResults: (query: string) => string;
@@ -329,12 +334,12 @@ export function formatDate(date: Date, locale: string = 'en-US'): string {
 
 ### Adding a New Translation
 
-1. Add the key to `BlogSearchTranslations` interface
+1. Add the key to `SiteTranslations` interface
 2. Add translations for both `en` and `es`
 
 ```typescript
 // In translations.ts
-export interface BlogSearchTranslations {
+export interface SiteTranslations {
   // ... existing keys
   newKey: string;
 }

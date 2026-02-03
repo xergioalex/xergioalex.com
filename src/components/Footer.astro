@@ -1,12 +1,20 @@
 ---
-// const today = new Date();
+import type { Language } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = getTranslations(lang as Language);
 ---
 
 <footer
 	class="bg-gray-50 dark:bg-gray-900 py-8 mt-16 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500 dark:text-gray-400"
 >
 	<div class="max-w-4xl mx-auto flex flex-col items-center gap-2">
-		<div>© 2025 Your name here. All rights reserved.</div>
+		<div>&copy; 2025 {t.footer.copyright}. {t.footer.allRightsReserved}</div>
 		<div class="flex gap-4 justify-center mt-2">
 			<a href="https://m.webtoo.ls/@astro" target="_blank">
 				<span class="sr-only">Follow Astro on Mastodon</span>

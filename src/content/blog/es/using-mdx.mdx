@@ -1,32 +1,32 @@
 ---
-title: 'Using MDX'
-description: 'Lorem ipsum dolor sit amet'
+title: 'Usando MDX'
+description: 'Este post muestra como usar MDX en Astro.'
 pubDate: 'Jun 01 2024'
 tags: ["personal"]
 heroImage: '/blog-placeholder-5.jpg'
 ---
 
-This theme comes with the [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) integration installed and configured in your `astro.config.mjs` config file. If you prefer not to use MDX, you can disable support by removing the integration from your config file.
+Este tema viene con la integracion [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) instalada y configurada en tu archivo de configuracion `astro.config.mjs`. Si prefieres no usar MDX, puedes desactivar el soporte eliminando la integracion de tu archivo de configuracion.
 
-## Why MDX?
+## Por que MDX?
 
-MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+MDX es un sabor especial de Markdown que soporta sintaxis JavaScript y JSX embebida. Esto permite la capacidad de [mezclar JavaScript y componentes de UI en tu contenido Markdown](https://docs.astro.build/en/guides/markdown-content/#mdx-features) para cosas como graficos interactivos o alertas.
 
-If you have existing content authored in MDX, this integration will hopefully make migrating to Astro a breeze.
+Si tienes contenido existente escrito en MDX, esta integracion con suerte hara que migrar a Astro sea muy sencillo.
 
-## Example
+## Ejemplo
 
-Here is how you import and use a UI component inside of MDX.  
-When you open this page in the browser, you should see the clickable button below.
+Asi es como importas y usas un componente de UI dentro de MDX.
+Cuando abras esta pagina en el navegador, deberas ver el boton clickeable a continuacion.
 
 import HeaderLink from '@/components/HeaderLink.astro';
 
 <HeaderLink href="#" onclick="alert('clicked!')">
-	Embedded component in MDX
+	Componente embebido en MDX
 </HeaderLink>
 
-## More Links
+## Mas Enlaces
 
-- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
-- [Astro Usage Documentation](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
-- **Note:** [Client Directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) are still required to create interactive components. Otherwise, all components in your MDX will render as static HTML (no JavaScript) by default.
+- [Documentacion de Sintaxis MDX](https://mdxjs.com/docs/what-is-mdx)
+- [Documentacion de Uso en Astro](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
+- **Nota:** Las [Directivas de Cliente](https://docs.astro.build/en/reference/directives-reference/#client-directives) siguen siendo necesarias para crear componentes interactivos. De lo contrario, todos los componentes en tu MDX se renderizaran como HTML estatico (sin JavaScript) por defecto.

@@ -3,15 +3,15 @@ name: add-blog-post
 description: Create blog posts with Content Collections frontmatter
 tier: 1
 intent: create
-max-files: 1
-max-loc: 200
+max-files: 2
+max-loc: 400
 ---
 
 # Skill: Add Blog Post
 
 ## Objective
 
-Create new blog posts using Astro Content Collections with proper frontmatter schema, following the defined structure in `content.config.ts`.
+Create new blog posts using Astro Content Collections with proper frontmatter schema, following the defined structure in `content.config.ts`. Creates posts in BOTH English and Spanish to maintain bilingual parity.
 
 ## Non-Goals
 
@@ -39,6 +39,7 @@ Create new blog posts using Astro Content Collections with proper frontmatter sc
 - `$TAGS`: Array of tag names (must exist in `src/content/tags/`)
 - `$HERO_IMAGE`: Hero image path (from `public/`)
 - `$SLUG`: Custom slug (default: kebab-case of title)
+- `$LANG`: Primary language of the provided content, `en` or `es` (default: `en`). The other language version will be translated automatically.
 
 ## Frontmatter Schema
 
@@ -71,7 +72,9 @@ Check `src/content/tags/` for available tags:
 - Ensure uniqueness
 - Example: "My First Post" → `my-first-post.md`
 
-### Step 2: Create Post File
+### Step 2: Create Post File (Primary Language)
+
+Create the post in the primary language directory: `src/content/blog/{$LANG}/{slug}.md`
 
 **Markdown Template:**
 
@@ -121,7 +124,21 @@ This post includes interactive elements.
 <Code code={`const x = 1;`} lang="ts" />
 ```
 
-### Step 3: Validate
+### Step 3: Create Translated Version (Other Language)
+
+**MANDATORY:** Create the translated version in the other language directory.
+
+- If primary language is English (`$LANG=en`): translate and save in `src/content/blog/es/{slug}.md`
+- If primary language is Spanish (`$LANG=es`): translate and save in `src/content/blog/en/{slug}.md`
+
+**Translation rules:**
+- Translate: `title`, `description`, and all body content
+- Preserve exactly: `pubDate`, `updatedDate`, `heroImage`, `tags`, code blocks, formatting
+- Use natural, idiomatic translations (not literal word-for-word)
+- Do NOT translate code blocks, CLI commands, or technical identifiers
+- Maintain the same markdown structure (headings, lists, emphasis)
+
+### Step 4: Validate
 
 ```bash
 npm run astro:check
@@ -133,12 +150,11 @@ npm run build
 ### Success Output
 
 ```
-## ✅ Blog Post Created
+## ✅ Blog Post Created (Bilingual)
 
-### Post
-- Title: {title}
-- File: `src/content/blog/{slug}.md`
-- URL: `/blog/{slug}`
+### Posts
+- English: `src/content/blog/en/{slug}.md` -> URL: `/blog/{slug}`
+- Spanish: `src/content/blog/es/{slug}.md` -> URL: `/es/blog/{slug}`
 
 ### Frontmatter
 - pubDate: {date}
@@ -150,7 +166,7 @@ npm run build
 - Build: ✅
 
 ### Commit Message
-content: add blog post "{title}"
+content: add blog post "{title}" (en + es)
 ```
 
 ## Guardrails
@@ -170,6 +186,11 @@ content: add blog post "{title}"
 - `tags`: Optional, must be existing tags
 - `heroImage`: Optional, path from `public/`
 
+### Bilingual Enforcement
+
+- MUST create both language versions. Never create a post in only one language.
+- If translation quality for the content is uncertain, use `/translate-sync` skill after creating the primary language version.
+
 ### Stop Conditions
 
 **Stop and ask** if:
@@ -177,11 +198,15 @@ content: add blog post "{title}"
 - Need to create a new tag
 - Post requires custom components not available
 - Unsure about content/topic
+- Translation quality is uncertain for specialized content
 
 ## Definition of Done
 
-- [ ] File created in `src/content/blog/`
-- [ ] Frontmatter is complete and valid
+- [ ] Post created in `src/content/blog/en/` (English version)
+- [ ] Post created in `src/content/blog/es/` (Spanish version)
+- [ ] Both versions have matching frontmatter structure
+- [ ] Translated title and description are natural and accurate
+- [ ] Frontmatter is complete and valid in both files
 - [ ] Content is formatted properly
 - [ ] `npm run astro:check` passes
 - [ ] `npm run build` passes
@@ -197,7 +222,9 @@ $DESCRIPTION: Learn how to build fast websites with Astro
 $TAGS: ['tech']
 ```
 
-**Creates:** `src/content/blog/getting-started-with-astro.md`
+**Creates:**
+- `src/content/blog/en/getting-started-with-astro.md`
+- `src/content/blog/es/getting-started-with-astro.md` (translated)
 
 ### Example 2: Post with Hero Image
 
@@ -209,23 +236,28 @@ $HERO_IMAGE: /blog-placeholder-2.jpg
 $TAGS: ['personal']
 ```
 
-**Creates:** `src/content/blog/my-travel-adventures.md`
+**Creates:**
+- `src/content/blog/en/my-travel-adventures.md`
+- `src/content/blog/es/my-travel-adventures.md` (translated)
 
-### Example 3: MDX Post
+### Example 3: Spanish-Primary Post
 
 **Input:**
 ```
-$TITLE: Interactive Code Examples
-$DESCRIPTION: Blog post with live code examples
+$TITLE: Mi Experiencia con Astro
+$DESCRIPTION: Compartiendo mi experiencia construyendo sitios con Astro
 $TAGS: ['tech']
-$SLUG: interactive-code-examples.mdx
+$LANG: es
 ```
 
-**Creates:** `src/content/blog/interactive-code-examples.mdx`
+**Creates:**
+- `src/content/blog/es/mi-experiencia-con-astro.md` (primary)
+- `src/content/blog/en/mi-experiencia-con-astro.md` (translated to English)
 
 ## Related
 
 - [doc-edit](../doc-edit/SKILL.md) - Edit existing posts
 - [add-page](../add-page/SKILL.md) - Create pages
+- [translate-sync](../translate-sync/SKILL.md) - Synchronize translations
 - src/content/README.md - Content Collections
 - content.config.ts - Schema definition
