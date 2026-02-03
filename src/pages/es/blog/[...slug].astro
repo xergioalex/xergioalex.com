@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 
 const lang: string = 'es';
@@ -18,11 +19,35 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { heroImage, pubDate, updatedDate, title, description } = post.data;
+const { heroImage, pubDate, updatedDate, title, description, tags } = post.data;
 const { Content } = await render(post);
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const blogPostingData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  image: heroImage ? new URL(heroImage, Astro.site).href : undefined,
+  datePublished: pubDate.toISOString(),
+  dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Sergio Alexander Florez Galeano',
+    url: new URL('/about/', Astro.site).href,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL.href,
+  },
+  keywords: tags || [],
+};
 ---
 
 <MainLayout lang={lang} title={title} description={description}>
+  <Fragment slot="head">
+    <JsonLd data={blogPostingData} />
+  </Fragment>
   <main class="main-container py-24">
     <article>
       <div class="w-full">
