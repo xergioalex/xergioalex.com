@@ -1,19 +1,18 @@
 import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
 
 export async function GET(context) {
   const allPosts = await getCollection('blog');
-  const posts = allPosts.filter((post) => post.id.startsWith('en/'));
+  const posts = allPosts.filter((post) => post.id.startsWith('es/'));
   return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
+    title: 'XergioAleX',
+    description: 'Sitio web personal y blog de Sergio Alexander Florez Galeano',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/blog/${post.id.replace('en/', '')}/`,
+      link: `/es/blog/${post.id.replace('es/', '')}/`,
       categories: post.data.tags || [],
     })),
   });
