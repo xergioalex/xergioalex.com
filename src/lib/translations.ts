@@ -374,54 +374,52 @@ const translations: Record<Language, SiteTranslations> = {
     homeSections: {
       about: {
         title: "Hola, soy <span class='text-secondary'>Sergio</span>",
-        description: `Apasionado por el desarrollo de interfaces conversacionales. Actualmente CTO en DailyBot construyendo un asistente para la colaboraci\u00F3n asincr\u00F3nica de equipos.<br /><br />
-Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprendedor apasionado, con talento y m\u00E1s de 10 a\u00F1os de experiencia construyendo negocios digitales. En la b\u00FAsqueda de la ideaci\u00F3n de modelos de negocio disruptivos como agentes de cambio y \u00E9xito.<br /><br />
-\u{1F4BB}\u{1F399}\u{1F4DA} | Speaker, investigador, atleta, gamer y geek al 100%.`,
-        cta: 'Conoce m\u00E1s sobre m\u00ED',
+        description:
+          'Ingeniero en Ciencias de la Computaci\u00F3n y MSc en Ciencia de Datos con m\u00E1s de 10 a\u00F1os de experiencia construyendo productos digitales. Actualmente liderando la tecnolog\u00EDa en DailyBot, una plataforma respaldada por Y Combinator para colaboraci\u00F3n en equipos.<br /><br />Speaker, contribuidor open-source y emprendedor apasionado transformando ideas en productos que impactan miles de equipos en todo el mundo.',
+        cta: 'M\u00E1s sobre m\u00ED',
         cta2: 'Ver mi CV',
       },
       dailybot: {
-        title: 'DailyBot (YC S21)',
-        subtitle: 'CTO & Cofundador',
+        title: "DailyBot <span class='text-secondary'>(YC S21)</span>",
+        subtitle: 'CTO y Cofundador',
         description:
-          'He liderado el desarrollo de una plataforma innovadora que conecta equipos globalmente, facilitando la colaboraci\u00F3n y comunicaci\u00F3n efectiva entre miembros. En 2021, fuimos seleccionados por Y Combinator, lo que nos permiti\u00F3 acelerar nuestro crecimiento, mejorar nuestras capacidades tecnol\u00F3gicas y reforzar nuestro enfoque en la satisfacci\u00F3n del cliente. \u{1F680}',
-        cta: 'Conoce m\u00E1s sobre DailyBot',
+          'Liderando el desarrollo de una plataforma impulsada por IA utilizada por miles de equipos en el mundo para colaboraci\u00F3n as\u00EDncrona, standups y automatizaci\u00F3n de flujos de trabajo. Seleccionados por Y Combinator en 2021 (batch S21), escalando el producto de startup a plataforma SaaS global.',
+        cta: 'Explorar DailyBot',
       },
       techTalks: {
         title: 'Tech Talks',
-        subtitle: 'Cofundador & Speaker',
+        subtitle: 'Cofundador y Speaker',
         description:
-          'Como cofundador y organizador de la comunidad Pereira Tech Talks, he impulsado la creaci\u00F3n de espacios para compartir conocimiento y conectar a profesionales de tecnolog\u00EDa. He tenido la oportunidad de ser speaker en m\u00FAltiples charlas t\u00E9cnicas, donde disfruto compartir experiencias y aprender junto a la comunidad.',
-        cta: 'Conoce m\u00E1s sobre mis charlas',
+          'Cofundador de Pereira Tech Talks, una comunidad tecnol\u00F3gica activa que conecta profesionales y comparte conocimiento. Speaker en m\u00FAltiples conferencias t\u00E9cnicas cubriendo temas desde IA hasta sistemas distribuidos y emprendimiento.',
+        cta: 'Ver mis charlas',
       },
       maker: {
         title: 'Maker',
-        subtitle:
-          'Entusiasta de la tecnolog\u00EDa, IA & Desarrollador de proyectos',
+        subtitle: 'Entusiasta de IA y Constructor de Proyectos',
         description:
-          'Como entusiasta de la tecnolog\u00EDa y la inteligencia artificial, he liderado y desarrollado m\u00FAltiples proyectos innovadores, explorando diversas tecnolog\u00EDas para crear aplicaciones digitales y soluciones t\u00E9cnicas de alto impacto. Mi pasi\u00F3n por la innovaci\u00F3n y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desaf\u00EDos complejos y aportar valor a trav\u00E9s de la tecnolog\u00EDa.',
-        cta: 'Ver mis proyectos',
+          'Constantemente construyendo y lanzando \u2014 desde aplicaciones impulsadas por IA y herramientas open-source hasta proyectos experimentales. Impulsado por la curiosidad y la creencia de que la mejor forma de aprender tecnolog\u00EDa es construyendo con ella.',
+        cta: 'Ver proyectos',
       },
       trading: {
         title: 'Trading',
-        subtitle: 'Trader entusiasta & Aprendiz de trading algor\u00EDtmico',
+        subtitle: 'Trading Algor\u00EDtmico e Investigaci\u00F3n de Mercados',
         description:
-          'Como trader entusiasta, he dedicado los \u00FAltimos dos a\u00F1os a formarme en el mercado de divisas (forex) y a profundizar en el trading algor\u00EDtmico, con el objetivo de optimizar y automatizar mis estrategias de inversi\u00F3n. Me motiva el aprendizaje continuo y la investigaci\u00F3n de los mercados financieros, siempre en busca de nuevas herramientas y enfoques que me permitan mejorar mi desempe\u00F1o y tomar decisiones m\u00E1s informadas.',
-        cta: 'Conoce m\u00E1s sobre m\u00ED',
+          'Explorando la intersecci\u00F3n entre tecnolog\u00EDa y mercados financieros a trav\u00E9s de trading en forex y estrategias algor\u00EDtmicas. Construyendo sistemas de trading automatizado y aplicando ciencia de datos al an\u00E1lisis de mercados.',
+        cta: 'Leer mi blog',
       },
       foodie: {
-        title: 'Foodie Enthusiast',
-        subtitle: 'Creador de contenido & Foodie lover',
+        title: 'Foodie',
+        subtitle: 'Creador de Contenido y Explorador Gastron\u00F3mico',
         description:
-          'M\u00E1s all\u00E1 de la tecnolog\u00EDa, soy un apasionado creador de contenido y amante de la gastronom\u00EDa. Disfruto explorar nuevos lugares para comer, compartir recomendaciones y experiencias culinarias, y conectar con personas a trav\u00E9s de mis redes sociales. Me motiva inspirar a otros a descubrir sitios \u00FAnicos y vivir nuevas experiencias, combinando mi entusiasmo por la comunicaci\u00F3n, la creatividad y el buen comer.',
-        cta: 'Conoce m\u00E1s sobre m\u00ED',
+          'M\u00E1s all\u00E1 de la tecnolog\u00EDa, un apasionado creador de contenido gastron\u00F3mico explorando los mejores restaurantes y experiencias culinarias. Compartiendo recomendaciones y conectando personas a trav\u00E9s del lenguaje universal de la buena comida.',
+        cta: 'Seguir en Instagram',
       },
       hobbies: {
-        title: 'Hobbies',
-        subtitle: 'Apasionado del deporte y la vida activa',
+        title: 'Vida Activa',
+        subtitle: 'Entusiasta del Deporte y el Bienestar',
         description:
-          'Fuera del mundo profesional, soy un apasionado del deporte y el bienestar. Disfruto recorrer la ciudad en bicicleta y mantenerme activo a trav\u00E9s del running, el baloncesto y el ajedrez. Adem\u00E1s, encuentro en los videojuegos una forma de entretenimiento y desaf\u00EDo mental. El deporte es una parte fundamental de mi vida, ya que me inspira a superarme constantemente y a mantener un equilibrio saludable.',
-        cta: 'Conoce m\u00E1s sobre m\u00ED',
+          'Recorriendo la ciudad en bicicleta, corriendo, jugando baloncesto, partidas estrat\u00E9gicas de ajedrez y sesiones de gaming me mantienen en equilibrio. El deporte es parte fundamental de mi vida \u2014 un recordatorio constante de que el crecimiento sucede fuera de la zona de confort.',
+        cta: 'Conectar conmigo',
       },
       latestArticles: '\u00DAltimos Art\u00EDculos',
     },
