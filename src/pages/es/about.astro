@@ -3,13 +3,13 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
 
-const lang: Language = 'en';
+const lang: Language = 'es';
 const t = getTranslations(lang);
 ---
 
 <MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
-	<main class="main-container py-24">
-		<h1>{t.aboutPage.title}</h1>
-		<p>{t.aboutPage.description}</p>
-	</main>
+  <main class="main-container py-24">
+    <h1>{t.aboutPage.title}</h1>
+    <p>{t.aboutPage.description}</p>
+  </main>
 </MainLayout>

@@ -18,11 +18,11 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { heroImage, pubDate, updatedDate, title } = post.data;
+const { heroImage, pubDate, updatedDate, title, description } = post.data;
 const { Content } = await render(post);
 ---
 
-<MainLayout lang={lang} title={title} description={title}>
+<MainLayout lang={lang} title={title} description={description}>
   <main class="main-container py-24">
     <article>
       <div class="w-full">
@@ -32,7 +32,7 @@ const { Content } = await render(post);
               width={1020}
               height={510}
               src={heroImage}
-              alt=""
+              alt={title}
               class="block mx-auto rounded-xl shadow-[var(--box-shadow)]"
             />
           )
