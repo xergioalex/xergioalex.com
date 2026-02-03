@@ -200,54 +200,53 @@ const translations: Record<Language, SiteTranslations> = {
     // Homepage sections
     homeSections: {
       about: {
-        title: "Hello, I'm <span class='text-secondary'>Sergio</span>",
-        description: `Passionate about developing conversational interfaces. Currently CTO at DailyBot building an assistant for asynchronous team collaboration.<br /><br />
-Computer science engineer, MSc in data science and passionate entrepreneur, with talent and more than 10 years of experience building digital businesses. In the search for the ideation of disruptive business models as agents of change and success.<br /><br />
-\u{1F4BB}\u{1F399}\u{1F4DA} | Speaker, researcher, athlete, gamer, and geek 100%.`,
-        cta: 'Learn more about me',
+        title: "Hi, I'm <span class='text-secondary'>Sergio</span>",
+        description:
+          'Computer Science Engineer and MSc in Data Science with 10+ years of experience building digital products. Currently leading technology at DailyBot, a Y Combinator-backed platform for team collaboration.<br /><br />Speaker, open-source contributor, and passionate entrepreneur turning ideas into products that impact thousands of teams worldwide.',
+        cta: 'More about me',
         cta2: 'View my CV',
       },
       dailybot: {
-        title: 'DailyBot (YC S21)',
-        subtitle: 'CTO & Cofounder',
+        title: "DailyBot <span class='text-secondary'>(YC S21)</span>",
+        subtitle: 'CTO & Co-founder',
         description:
-          'I have led the development of an innovative platform that connects teams globally, facilitating collaboration and effective communication between members. In 2021, we were selected by Y Combinator, which allowed us to accelerate our growth, improve our technological capabilities and reinforce our focus on customer satisfaction. \u{1F680}',
-        cta: 'Learn more about DailyBot',
+          'Leading the development of an AI-powered platform used by thousands of teams worldwide for async collaboration, standups, and workflow automation. Selected by Y Combinator in 2021 (S21 batch), scaling the product from startup to a global SaaS platform.',
+        cta: 'Explore DailyBot',
       },
       techTalks: {
         title: 'Tech Talks',
-        subtitle: 'Cofounder & Speaker',
+        subtitle: 'Co-founder & Speaker',
         description:
-          'As cofounder and organizer of the Pereira Tech Talks community, I have driven the creation of spaces to share knowledge and connect technology professionals. I have had the opportunity to be a speaker at multiple technical talks, where I enjoy sharing experiences and learning alongside the community.',
-        cta: 'Learn more about my talks',
+          'Co-founded Pereira Tech Talks, a thriving tech community connecting professionals and sharing knowledge. Speaker at multiple technical conferences covering topics from AI to distributed systems and entrepreneurship.',
+        cta: 'See my talks',
       },
       maker: {
         title: 'Maker',
-        subtitle: 'Tech enthusiast, AI & Project developer',
+        subtitle: 'AI Enthusiast & Project Builder',
         description:
-          'As a technology and artificial intelligence enthusiast, I have led and developed multiple innovative projects, exploring various technologies to create digital applications and high-impact technical solutions. My passion for innovation and constant learning drives me to always be at the forefront, researching new tools and trends to transform ideas into tangible realities. I enjoy tackling complex challenges and adding value through technology.',
-        cta: 'View my projects',
+          'Constantly building and shipping \u2014 from AI-powered applications and open-source tools to experimental side projects. Driven by curiosity and the belief that the best way to learn technology is to build with it.',
+        cta: 'View projects',
       },
       trading: {
         title: 'Trading',
-        subtitle: 'Enthusiastic trader & Algorithmic trading learner',
+        subtitle: 'Algorithmic Trading & Market Research',
         description:
-          'As an enthusiastic trader, I have dedicated the last two years to training in the foreign exchange market (forex) and deepening my knowledge of algorithmic trading, with the goal of optimizing and automating my investment strategies. I am motivated by continuous learning and financial market research, always looking for new tools and approaches to improve my performance and make more informed decisions.',
-        cta: 'Learn more about me',
+          'Exploring the intersection of technology and financial markets through forex trading and algorithmic strategies. Building automated trading systems and applying data science to market analysis.',
+        cta: 'Read my blog',
       },
       foodie: {
-        title: 'Foodie Enthusiast',
-        subtitle: 'Content creator & Foodie lover',
+        title: 'Foodie',
+        subtitle: 'Content Creator & Food Explorer',
         description:
-          'Beyond technology, I am a passionate content creator and food lover. I enjoy exploring new places to eat, sharing recommendations and culinary experiences, and connecting with people through my social media. I am motivated to inspire others to discover unique places and live new experiences, combining my enthusiasm for communication, creativity and good food.',
-        cta: 'Learn more about me',
+          'Beyond tech, a passionate food content creator exploring the best restaurants and culinary experiences. Sharing recommendations and connecting people through the universal language of good food.',
+        cta: 'Follow on Instagram',
       },
       hobbies: {
-        title: 'Hobbies',
-        subtitle: 'Sports and active lifestyle enthusiast',
+        title: 'Active Life',
+        subtitle: 'Sports & Well-being Enthusiast',
         description:
-          'Outside the professional world, I am passionate about sports and wellness. I enjoy cycling around the city and staying active through running, basketball and chess. Additionally, I find in video games a form of entertainment and mental challenge. Sports are a fundamental part of my life, as they inspire me to constantly improve and maintain a healthy balance.',
-        cta: 'Learn more about me',
+          'Cycling through the city, running, playing basketball, strategic chess matches, and gaming sessions keep me balanced. Sport is a core part of my life \u2014 a constant reminder that growth happens outside the comfort zone.',
+        cta: 'Connect with me',
       },
       latestArticles: 'Latest Articles',
     },
