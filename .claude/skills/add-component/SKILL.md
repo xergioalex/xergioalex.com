@@ -78,39 +78,52 @@ Create new Astro (`.astro`) or Svelte (`.svelte`) components following project p
 
 ### Step 2: Create Component
 
-**Astro Template:**
+**i18n Requirement:** If the component displays user-visible text, it MUST accept a `lang` prop and use `getTranslations(lang)` for all text. Never hardcode user-visible strings directly in templates. If new translation keys are needed, add them to `src/lib/translations.ts` in BOTH English and Spanish.
+
+**Astro Template (with i18n):**
 
 ```astro
 ---
+import { getTranslations } from '@/lib/translations';
+
+import type { Language } from '@/lib/translations';
+
 interface Props {
-  title: string;
+  lang: Language;
   description?: string;
 }
 
-const { title, description = 'Default description' } = Astro.props;
+const { lang, description } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <div class="bg-white dark:bg-gray-800 p-4 rounded-lg">
-  <h2 class="text-xl font-bold text-gray-900 dark:text-white">{title}</h2>
+  <h2 class="text-xl font-bold text-gray-900 dark:text-white">{t.section.title}</h2>
   {description && <p class="text-gray-600 dark:text-gray-300">{description}</p>}
 </div>
 ```
 
-**Svelte Template:**
+**Svelte Template (with i18n):**
 
 ```svelte
 <script lang="ts">
-  export let title: string;
+  import { getTranslations } from '@/lib/translations';
+
+  export let lang: string = 'en';
   export let onClick: (() => void) | undefined = undefined;
+
+  $: t = getTranslations(lang);
 </script>
 
 <button
   class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
   on:click={onClick}
 >
-  {title}
+  {t.section.buttonLabel}
 </button>
 ```
+
+**Note:** Components that only display props (no hardcoded text) do not need the `lang` prop or `getTranslations()`.
 
 ### Step 3: Validate
 
@@ -165,6 +178,8 @@ feat: add {ComponentName} component
 - [ ] Props interface defined (TypeScript)
 - [ ] Dark mode support (`dark:` Tailwind classes)
 - [ ] Accessible (aria labels if interactive)
+- [ ] No hardcoded user-visible text (use `getTranslations(lang)`)
+- [ ] New translation keys added for both en and es in `translations.ts` (if applicable)
 
 ### Stop Conditions
 
@@ -179,6 +194,9 @@ feat: add {ComponentName} component
 - [ ] Component file created
 - [ ] Props interface defined
 - [ ] Dark mode classes included
+- [ ] No hardcoded user-visible text (uses `getTranslations()` if text is displayed)
+- [ ] New translation keys added for both languages (if applicable)
+- [ ] Component accepts `lang` prop if it displays text
 - [ ] `npm run biome:check` passes
 - [ ] `npm run astro:check` passes
 
@@ -208,5 +226,6 @@ $PURPOSE: Toggle between light and dark mode
 
 - [add-page](../add-page/SKILL.md) - Create pages
 - [add-blog-post](../add-blog-post/SKILL.md) - Create blog posts
+- [translate-sync](../translate-sync/SKILL.md) - Synchronize translations
 - [update-styles](../update-styles/SKILL.md) - Style modifications
 - [reviewer](../../agents/reviewer.md) - Review components

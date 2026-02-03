@@ -3,15 +3,15 @@ name: add-page
 description: Create new pages with correct routing and MainLayout usage
 tier: 1
 intent: create
-max-files: 2
-max-loc: 100
+max-files: 4
+max-loc: 200
 ---
 
 # Skill: Add Page
 
 ## Objective
 
-Create new pages in the Astro application with correct file-based routing, MainLayout usage, and SEO properties.
+Create new pages in the Astro application with correct file-based routing, MainLayout usage, and SEO properties. Creates pages in BOTH English and Spanish routes to maintain bilingual parity.
 
 ## Non-Goals
 
@@ -113,7 +113,20 @@ const lang = 'en';
 </MainLayout>
 ```
 
-### Step 3: Validate
+### Step 3: Create Bilingual Counterpart (MANDATORY)
+
+**MANDATORY:** Every page must exist in both languages.
+
+- After creating the English page at `src/pages/{name}.astro`, create the Spanish version at `src/pages/es/{name}.astro`
+- The Spanish page must:
+  - Set `const lang: Language = 'es';`
+  - Use `getTranslations(lang)` for all text content
+  - Pass `lang` to `MainLayout` and child components
+  - Have the same structure and layout as the English version
+
+- If the page introduces new UI text, add corresponding entries to `src/lib/translations.ts` for BOTH English and Spanish.
+
+### Step 4: Validate
 
 ```bash
 npm run astro:check
@@ -126,17 +139,16 @@ npm run build
 ### Success Output
 
 ```
-## ✅ Page Created
+## ✅ Pages Created (Bilingual)
 
-### Page
-- Route: `/{route}`
-- File: `src/pages/{path}.astro`
+### Pages
+- English: `src/pages/{path}.astro` -> URL: `/{route}`
+- Spanish: `src/pages/es/{path}.astro` -> URL: `/es/{route}`
 - Type: {Static|Dynamic}
 
 ### SEO
-- Title: {title}
-- Description: {description}
-- Lang: {lang}
+- Title: {title} / {title_es}
+- Description: {description} / {description_es}
 
 ### Layout
 - Uses MainLayout ✅
@@ -147,7 +159,7 @@ npm run build
 - Build: ✅
 
 ### Commit Message
-feat: add {name} page
+feat: add {name} page (en + es)
 ```
 
 ## Guardrails
@@ -164,6 +176,11 @@ feat: add {name} page
 - **Maximum files:** 2 (page + optional helper)
 - **Maximum LOC:** 100
 
+### Bilingual Enforcement
+
+- MUST create both language versions. Never create a page in only one language.
+- If new UI strings are needed, add them to `translations.ts` in both languages.
+
 ### Stop Conditions
 
 **Stop and escalate** if:
@@ -171,12 +188,16 @@ feat: add {name} page
 - Needs new layout component
 - Complex data fetching required
 - Multiple dynamic segments
+- Translation quality is uncertain for page content
 
 ## Definition of Done
 
-- [ ] Page file created in correct location
-- [ ] MainLayout imported and used
-- [ ] SEO props provided
+- [ ] English page created in `src/pages/`
+- [ ] Spanish page created in `src/pages/es/`
+- [ ] Both pages use correct `lang` value (`'en'` or `'es'`)
+- [ ] MainLayout imported and used with `lang` prop
+- [ ] SEO props provided in both languages
+- [ ] New UI strings added to `translations.ts` in both languages (if applicable)
 - [ ] `npm run astro:check` passes
 - [ ] `npm run build` passes
 
@@ -191,21 +212,22 @@ $TITLE: My Projects
 $DESCRIPTION: A showcase of my development projects
 ```
 
-**Creates:** `src/pages/projects.astro`
-**Route:** `/projects`
+**Creates:**
+- `src/pages/projects.astro` -> `/projects`
+- `src/pages/es/projects.astro` -> `/es/projects`
 
-### Example 2: Spanish Page
+### Example 2: Page with Translations
 
 **Input:**
 ```
 $NAME: about
-$TITLE: Sobre Mí
-$DESCRIPTION: Información sobre mí
-$LANG: es
+$TITLE: About Me
+$DESCRIPTION: Information about me
 ```
 
-**Creates:** `src/pages/es/about.astro`
-**Route:** `/es/about`
+**Creates:**
+- `src/pages/about.astro` (English, `lang='en'`)
+- `src/pages/es/about.astro` (Spanish, `lang='es'`)
 
 ### Example 3: Dynamic Page
 
@@ -224,5 +246,6 @@ $DYNAMIC: true
 
 - [add-component](../add-component/SKILL.md) - Create components
 - [add-blog-post](../add-blog-post/SKILL.md) - Create blog posts
+- [translate-sync](../translate-sync/SKILL.md) - Synchronize translations
 - docs/ARCHITECTURE.md - Routing details
 - src/pages/README.md - Page patterns
