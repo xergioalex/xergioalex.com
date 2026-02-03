@@ -186,15 +186,14 @@ const translations: Record<Language, SiteTranslations> = {
     // Homepage hero
     hero: {
       description:
-        'Cofounder and CTO at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Entrepreneur, speaker, researcher, athlete, trader, gamer, and 100% geek',
+        'CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> — Full Stack Developer, MSc in Data Science, 10+ years building digital products.',
       typewriterWords: [
         'Full Stack Developer',
-        'Trader',
-        'Entrepreneur',
+        'CTO & Co-founder',
+        'Tech Speaker',
+        'AI Enthusiast',
         'Maker',
-        'Mentor & Speaker',
-        'Geek',
-        'Sports Enthusiast',
+        'Trader',
       ],
     },
 
@@ -361,15 +360,14 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
     // Homepage hero
     hero: {
       description:
-        'Cofundador y CTO en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Emprendedor, speaker, investigador, atleta, trader, gamer y geek al 100%',
+        'CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> — Desarrollador Full Stack, MSc en Ciencia de Datos, 10+ a\u00F1os construyendo productos digitales.',
       typewriterWords: [
-        'Full Stack Developer',
-        'Trader',
-        'Emprendedor',
+        'Desarrollador Full Stack',
+        'CTO y Cofundador',
+        'Speaker de Tecnolog\u00EDa',
+        'Entusiasta de la IA',
         'Maker',
-        'Mentor & Speaker',
-        'Geek',
-        'Apasionado del deporte',
+        'Trader',
       ],
     },
 

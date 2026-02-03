@@ -29,61 +29,66 @@ const { name, description, typewriterWords } = Astro.props;
   >
     <img
       src="/images/logo_full.svg"
-      alt="Hero Logo"
+      alt="XergioAleX Logo"
       class="w-[20rem] xl:w-[28rem] max-w-full mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-105"
       draggable="false"
       style="user-select: none;"
     />
-    <div class="">
+    <h1
+      class="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white text-center drop-shadow-lg"
+    >
+      {name}
+    </h1>
+    <div class="mt-3">
       <Typewriter client:load words={typewriterWords} speed={80} pause={1800} />
     </div>
+    <p
+      class="mt-4 text-sm sm:text-base md:text-lg text-gray-300 text-center max-w-2xl px-4"
+      set:html={description}
+    />
     <!-- Social icons -->
-    <div class="flex gap-5 mt-6">
+    <div class="flex gap-6 mt-6">
       <a
         href="https://github.com/xergioalex"
         target="_blank"
         rel="noopener"
         aria-label="GitHub"
+        class="hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/github_white.svg" alt="GitHub" class="w-7 h-7" />
+        <img src="/icons/github_white.svg" alt="GitHub" class="w-8 h-8" />
       </a>
-
       <a
         href="https://www.linkedin.com/in/xergioalex/"
         target="_blank"
         rel="noopener"
         aria-label="LinkedIn"
+        class="hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/linkedin_white.svg" alt="LinkedIn" class="w-7 h-7" />
+        <img src="/icons/linkedin_white.svg" alt="LinkedIn" class="w-8 h-8" />
       </a>
-
       <a
         href="https://x.com/XergioAleX"
         target="_blank"
         rel="noopener"
         aria-label="X"
+        class="hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/x_white.svg" alt="X" class="w-7 h-7" />
+        <img src="/icons/x_white.svg" alt="X" class="w-8 h-8" />
       </a>
-
       <a
         href="https://www.instagram.com/xergioalex"
         target="_blank"
         rel="noopener"
         aria-label="Instagram"
+        class="hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/instagram_white.svg" alt="Instagram" class="w-7 h-7" />
+        <img
+          src="/icons/instagram_white.svg"
+          alt="Instagram"
+          class="w-8 h-8"
+        />
       </a>
     </div>
-    <h1
-      class="mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white text-center drop-shadow-lg"
-    >
-      {name}
-    </h1>
-    <p
-      class="mt-2 text-sm sm:text-base md:text-lg text-gray-300 text-center max-w-2xl"
-      set:html={description}
-    />
     <img
       src="/icons/chevron_down_white.svg"
       alt="Chevron down"
