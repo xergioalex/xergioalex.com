@@ -14,20 +14,32 @@ setup_claude_persistence_for_user() {
 
     # Handle .claude.json file
     if [ ! -L "${CLAUDE_JSON}" ]; then
-        # If it's a real file, move it to the persistent volume
+        # If it's a real file, move it to the persistent volume (only if volume is empty)
         if [ -f "${CLAUDE_JSON}" ]; then
-            cp "${CLAUDE_JSON}" "${CLAUDE_DATA_DIR}/claude.json"
+            # Only copy if persistent file doesn't exist (preserve existing data)
+            if [ ! -f "${CLAUDE_DATA_DIR}/claude.json" ]; then
+                cp "${CLAUDE_JSON}" "${CLAUDE_DATA_DIR}/claude.json"
+                echo "  → Copied .claude.json to persistent volume"
+            else
+                echo "  → Preserving existing .claude.json from persistent volume"
+            fi
             rm "${CLAUDE_JSON}"
         fi
+        # Ensure target file exists (some apps don't follow symlinks to non-existent files)
+        touch "${CLAUDE_DATA_DIR}/claude.json"
         # Create symlink
         ln -sf "${CLAUDE_DATA_DIR}/claude.json" "${CLAUDE_JSON}"
+        echo "  → Created symlink for .claude.json"
     fi
 
     # Handle .claude directory
     if [ ! -L "${CLAUDE_DIR}" ]; then
         # If it's a real directory, move it to the persistent volume
         if [ -d "${CLAUDE_DIR}" ]; then
-            cp -r "${CLAUDE_DIR}" "${CLAUDE_DATA_DIR}/claude_dir"
+            # Only copy if persistent directory is empty or doesn't exist
+            if [ ! -d "${CLAUDE_DATA_DIR}/claude_dir" ] || [ -z "$(ls -A "${CLAUDE_DATA_DIR}/claude_dir" 2>/dev/null)" ]; then
+                cp -r "${CLAUDE_DIR}" "${CLAUDE_DATA_DIR}/claude_dir"
+            fi
             rm -rf "${CLAUDE_DIR}"
         else
             mkdir -p "${CLAUDE_DATA_DIR}/claude_dir"
@@ -38,10 +50,14 @@ setup_claude_persistence_for_user() {
 
     # Handle .claude.json.backup file if exists
     if [ -f "${CLAUDE_JSON_BACKUP}" ] && [ ! -L "${CLAUDE_JSON_BACKUP}" ]; then
-        cp "${CLAUDE_JSON_BACKUP}" "${CLAUDE_DATA_DIR}/claude.json.backup"
+        if [ ! -f "${CLAUDE_DATA_DIR}/claude.json.backup" ]; then
+            cp "${CLAUDE_JSON_BACKUP}" "${CLAUDE_DATA_DIR}/claude.json.backup"
+        fi
         rm "${CLAUDE_JSON_BACKUP}"
         ln -sf "${CLAUDE_DATA_DIR}/claude.json.backup" "${CLAUDE_JSON_BACKUP}"
     fi
+    
+    echo "Claude CLI persistence setup complete for ${USER_HOME}"
 }
 
 # Setup Claude persistence for both root and node user
@@ -63,7 +79,10 @@ setup_codex_persistence_for_user() {
     if [ ! -L "${CODEX_DIR}" ]; then
         # If it's a real directory, move it to the persistent volume
         if [ -d "${CODEX_DIR}" ]; then
-            cp -r "${CODEX_DIR}" "${CODEX_DATA_DIR}/codex_dir"
+            # Only copy if persistent directory is empty or doesn't exist
+            if [ ! -d "${CODEX_DATA_DIR}/codex_dir" ] || [ -z "$(ls -A "${CODEX_DATA_DIR}/codex_dir" 2>/dev/null)" ]; then
+                cp -r "${CODEX_DIR}" "${CODEX_DATA_DIR}/codex_dir"
+            fi
             rm -rf "${CODEX_DIR}"
         else
             mkdir -p "${CODEX_DATA_DIR}/codex_dir"
@@ -96,7 +115,13 @@ setup_cursor_persistence_for_user() {
     if [ ! -L "${CURSOR_DIR}" ]; then
         # If it's a real directory, move it to the persistent volume
         if [ -d "${CURSOR_DIR}" ]; then
-            cp -r "${CURSOR_DIR}" "${CURSOR_DATA_DIR}/cursor_dir"
+            # Only copy if persistent directory is empty or doesn't exist (PRESERVE existing data!)
+            if [ ! -d "${CURSOR_DATA_DIR}/cursor_dir" ] || [ -z "$(ls -A "${CURSOR_DATA_DIR}/cursor_dir" 2>/dev/null)" ]; then
+                echo "  → First run: copying fresh Cursor CLI to persistent volume"
+                cp -r "${CURSOR_DIR}" "${CURSOR_DATA_DIR}/cursor_dir"
+            else
+                echo "  → Preserving existing Cursor CLI data from persistent volume"
+            fi
             rm -rf "${CURSOR_DIR}"
         else
             mkdir -p "${CURSOR_DATA_DIR}/cursor_dir"
@@ -110,7 +135,13 @@ setup_cursor_persistence_for_user() {
     if [ ! -L "${CURSOR_CONFIG_DIR}" ]; then
         # If it's a real directory, move it to the persistent volume
         if [ -d "${CURSOR_CONFIG_DIR}" ]; then
-            cp -r "${CURSOR_CONFIG_DIR}" "${CURSOR_DATA_DIR}/config_cursor"
+            # Only copy if persistent directory is empty or doesn't exist (PRESERVE existing data!)
+            if [ ! -d "${CURSOR_DATA_DIR}/config_cursor" ] || [ -z "$(ls -A "${CURSOR_DATA_DIR}/config_cursor" 2>/dev/null)" ]; then
+                echo "  → First run: copying fresh Cursor config to persistent volume"
+                cp -r "${CURSOR_CONFIG_DIR}" "${CURSOR_DATA_DIR}/config_cursor"
+            else
+                echo "  → Preserving existing Cursor config from persistent volume"
+            fi
             rm -rf "${CURSOR_CONFIG_DIR}"
         else
             mkdir -p "${CURSOR_DATA_DIR}/config_cursor"
@@ -123,7 +154,7 @@ setup_cursor_persistence_for_user() {
 # Setup Cursor persistence for both root and node user
 setup_cursor_persistence_for_user "/root"
 setup_cursor_persistence_for_user "/home/node"
-chown -R node:node /home/node/.cursor_data /home/node/.cursor 2>/dev/null || true
+chown -R node:node /home/node/.cursor_data /home/node/.cursor /home/node/.config 2>/dev/null || true
 
 # Setup GitHub CLI persistence with symlinks for a given user
 # This ensures gh config persists across container rebuilds
@@ -142,7 +173,10 @@ setup_gh_persistence_for_user() {
 
         # If it's a real directory, move it to the persistent volume
         if [ -d "${GH_CONFIG_DIR}" ]; then
-            cp -r "${GH_CONFIG_DIR}" "${GH_DATA_DIR}/gh_dir"
+            # Only copy if persistent directory is empty or doesn't exist
+            if [ ! -d "${GH_DATA_DIR}/gh_dir" ] || [ -z "$(ls -A "${GH_DATA_DIR}/gh_dir" 2>/dev/null)" ]; then
+                cp -r "${GH_CONFIG_DIR}" "${GH_DATA_DIR}/gh_dir"
+            fi
             rm -rf "${GH_CONFIG_DIR}"
         else
             mkdir -p "${GH_DATA_DIR}/gh_dir"
