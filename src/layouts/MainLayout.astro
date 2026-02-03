@@ -8,14 +8,16 @@ interface Props {
   lang: string;
   title: string;
   description: string;
+  prevPage?: string;
+  nextPage?: string;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, prevPage, nextPage } = Astro.props;
 ---
 
 <html lang={lang}>
   <head>
-    <BaseHead title={title} description={description} lang={lang} />
+    <BaseHead title={title} description={description} lang={lang} prevPage={prevPage} nextPage={nextPage} />
     <slot name="head" />
     <script is:inline src="/scripts/global.theme.js"></script>
   </head>

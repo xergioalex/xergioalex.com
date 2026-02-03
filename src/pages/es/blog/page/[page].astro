@@ -25,12 +25,24 @@ export async function getStaticPaths() {
 }
 
 const { blogPostsResult } = Astro.props;
+
+const { currentPage, totalPages } = blogPostsResult;
+const prevPage =
+  currentPage > 1
+    ? new URL(`/es/blog/page/${currentPage - 1}/`, Astro.site).href
+    : undefined;
+const nextPage =
+  currentPage < totalPages
+    ? new URL(`/es/blog/page/${currentPage + 1}/`, Astro.site).href
+    : undefined;
 ---
 
 <MainLayout
   lang={lang}
   title="Blog"
   description="Artículos, tutoriales, diario y charlas."
+  prevPage={prevPage}
+  nextPage={nextPage}
 >
   <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
 </MainLayout>
