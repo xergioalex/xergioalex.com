@@ -15,7 +15,7 @@ const { lang, title, description } = Astro.props;
 
 <html lang={lang}>
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} lang={lang} />
     <slot name="head" />
     <script is:inline src="/scripts/global.theme.js"></script>
   </head>

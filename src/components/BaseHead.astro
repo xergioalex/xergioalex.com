@@ -8,11 +8,31 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  lang?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const {
+  title,
+  description,
+  image = '/blog-placeholder-1.jpg',
+  lang = 'en',
+} = Astro.props;
+
+// Compute hreflang URLs for multilingual SEO
+const pathname = Astro.url.pathname;
+let enURL: string;
+let esURL: string;
+
+if (pathname.startsWith('/es/') || pathname === '/es') {
+  esURL = new URL(pathname, Astro.site).href;
+  const enPath = pathname.replace(/^\/es/, '') || '/';
+  enURL = new URL(enPath, Astro.site).href;
+} else {
+  enURL = new URL(pathname, Astro.site).href;
+  esURL = new URL(`/es${pathname}`, Astro.site).href;
+}
 ---
 
 <!-- Global Metadata -->
@@ -46,6 +66,11 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Hreflang for multilingual SEO -->
+<link rel="alternate" hreflang="en" href={enURL} />
+<link rel="alternate" hreflang="es" href={esURL} />
+<link rel="alternate" hreflang="x-default" href={enURL} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
