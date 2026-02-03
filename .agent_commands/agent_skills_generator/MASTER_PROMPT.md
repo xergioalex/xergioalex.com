@@ -417,21 +417,72 @@ Create file at:
 .claude/agents/{agent-name}.md
 ```
 
-### D.3 Update Catalog
+### D.3 Update Catalog (MANDATORY — 5 Steps)
 
-Add entry to `.claude/docs/skills_agents_catalog.md`:
+Update `.claude/docs/skills_agents_catalog.md` with all of the following:
+
+#### Step 1: Update Overview Table
+
+Increment four values in the Overview table at the top of the catalog:
+
+- The cell matching the type row (Skills/Agents) and tier column (Tier 1/2/3)
+- The Total column for that type row
+- The Total row for that tier column
+- The Grand Total (Total row, Total column)
+
+**Example — adding a Tier 1 skill (before → after):**
+
+```markdown
+# Before:
+| Skills | 12 | 2 | 0 | 14 |
+| **Total** | **12** | **6** | **1** | **19** |
+
+# After:
+| Skills | 13 | 2 | 0 | 15 |
+| **Total** | **13** | **6** | **1** | **20** |
+```
+
+#### Step 2: Add to Tier Table
+
+Add the entry to the correct tier table under "Skills by Tier" or "Agents by Tier".
 
 For Skills:
 
 ```markdown
-| {skill-name} | {tier} | {intent} | `/{skill-name}` | {brief description} |
+| {skill-name} | {intent} | `/{skill-name}` | {brief description} |
 ```
 
 For Agents:
 
 ```markdown
-| {agent-name} | {tier} | {scope} | {when to use} |
+| {agent-name} | {scope} | {description} |
 ```
+
+#### Step 3: Update Interaction Map (Conditional)
+
+Update the ASCII interaction map ONLY if the new skill/agent changes tier interactions (e.g., new agent bridging tiers, new Tier 3 entry, new Tier 1 category). Skip for routine additions to existing categories.
+
+#### Step 4: Update Domain Section (Conditional)
+
+Add the new entry to the appropriate domain under "Domain-Specific Skills & Agents" (Blog & Content, i18n, Code Quality, Security, or Component & Page Creation). Create a new domain if none fits.
+
+#### Step 5: Add Changelog Entry
+
+Add a new row at the top of the Changelog table:
+
+```markdown
+| {YYYY-MM-DD} | {name} added | {brief description} |
+```
+
+#### Catalog Update Validation
+
+After updating, verify:
+
+- [ ] Overview table counts are arithmetically correct
+- [ ] Entry appears in the correct tier table
+- [ ] Domain section updated if applicable
+- [ ] Changelog entry added at the top
+- [ ] No duplicate entries
 
 ### D.4 Verify Placement
 

@@ -30,7 +30,60 @@ This directory contains Claude Code configuration and custom slash commands for 
 
 ## Skills & Agents
 
-This repo has **Skills** (reusable how-to procedures) and **Agents** (specialized personas) under `.claude/skills/` and `.claude/agents/`. Use `/skill-list` and `/agent-list` to see available ones; use `/skill-create` and `/agent-create` to add new ones. Full catalog: [.claude/docs/skills_agents_catalog.md](docs/skills_agents_catalog.md).
+This project includes reusable **Skills** (procedures) and **Agents** (specialized personas).
+
+**Full catalog:** [.claude/docs/skills_agents_catalog.md](docs/skills_agents_catalog.md)
+
+### Tier Breakdown
+
+| Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
+|--------|:--------------:|:------------------:|:--------------:|:-----:|
+| Skills | 12             | 2                  | 0              | 14    |
+| Agents | 0              | 4                  | 1              | 5     |
+| **Total** | **12**      | **6**              | **1**          | **19** |
+
+### Available Skills (14)
+
+| Skill | Invocation | Tier | Description |
+|-------|-----------|------|-------------|
+| quick-fix | `/quick-fix` | 1 | Fix small bugs in 1-3 files following existing patterns |
+| doc-edit | `/doc-edit` | 1 | Update documentation (README, comments, MDX, markdown) |
+| pr-review-lite | `/pr-review-lite` | 1 | Quick checklist review of a PR (style, bugs, patterns) |
+| fix-lint | `/fix-lint` | 1 | Fix Biome linting/formatting errors in 1-3 files |
+| type-fix | `/type-fix` | 1 | Fix TypeScript type errors in 1-3 files |
+| security-check | `/security-check` | 1 | Quick security checklist (secrets, API routes, client exposure) |
+| git-commit-push | `/git-commit-push` | 1 | Commit all changes and push to remote |
+| add-component | `/add-component` | 1 | Create new Astro or Svelte component with correct patterns |
+| add-page | `/add-page` | 1 | Create new page with routing and MainLayout |
+| add-blog-post | `/add-blog-post` | 1 | Create blog post with Content Collections frontmatter |
+| translate-sync | `/translate-sync` | 1 | Synchronize content between English and Spanish versions |
+| update-styles | `/update-styles` | 1 | Update Tailwind styles with dark mode support |
+| write-tests | `/write-tests` | 2 | Add or expand tests (Vitest/Playwright when configured) |
+| refactor-safe | `/refactor-safe` | 2 | Safe refactor in bounded scope (1-10 files, no behavior change) |
+
+### Available Agents (5)
+
+| Agent | Tier | Description |
+|-------|------|-------------|
+| reviewer | 2 | Thorough PR review; Astro/Svelte patterns, dark mode, quality |
+| executor | 2 | Follows plans step by step; implements and validates |
+| security-auditor | 2 | Static site security; API routes, secrets, client exposure |
+| i18n-guardian | 2 | Translation quality specialist; bilingual consistency enforcer |
+| architect | 3 | Component design, routing, Content Collections planning |
+
+### Quick Commands
+
+```bash
+/skill-list       # List available skills
+/skill-create     # Create a new skill (guided)
+/agent-list       # List available agents
+/agent-create     # Create a new agent (guided)
+```
+
+> **IMPORTANT:** When creating new skills or agents, you MUST update the catalog
+> (`.claude/docs/skills_agents_catalog.md`) following the 5-step process (overview table, tier table,
+> interaction map, domain section, changelog) AND update this README's quick reference tables.
+> See the [Catalog Maintenance section](../.agent_commands/agent_skills_generator/GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md) (Section 10) for detailed instructions.
 
 ---
 

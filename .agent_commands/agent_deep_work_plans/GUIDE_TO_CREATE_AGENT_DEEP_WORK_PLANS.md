@@ -144,8 +144,9 @@ A plan README must contain:
 3. **Global Constraints / Guidelines**
 4. **Task List (with links to task files)**
 5. **Execution Rules for the Agent**
-6. **Plan Status / Notes**
-7. **Quick Note:** Reference to PROMPTS.md file for ready-to-use prompts
+6. **Skills & Agents Used in This Plan** (see section 11)
+7. **Plan Status / Notes**
+8. **Quick Note:** Reference to PROMPTS.md file for ready-to-use prompts
 
 ### 4.2. Example structure
 
@@ -206,7 +207,8 @@ The agent must execute tasks **in order** and **one at a time**.
 - For each task:
   - Open the corresponding `N.task_*.md`.
   - Follow the detailed instructions carefully.
-  - Run validations.
+  - If the task references a skill file, read and follow the skill's procedure.
+  - Run validations (including any agent-based validations specified in the task).
   - **⚠️ MANDATORY: Mark the task as completed:**
     - **UPDATE this README task list `[ ] → [x]`** (CRITICAL!)
     - **UPDATE the Plan Status section** (completed count)
@@ -216,13 +218,24 @@ The agent must execute tasks **in order** and **one at a time**.
 
 > **IMPORTANT:** Failing to mark tasks as completed will break resume functionality and cause repeated work!
 
-## 6. Plan Status / Notes
+## 6. Skills & Agents Used in This Plan
+
+List relevant skills and agents referenced by tasks in this plan:
+
+| Task | Skill/Agent | Purpose |
+|------|-------------|---------|
+| Task 1 | `/add-page` skill | Page creation procedure |
+| Task 2 | `i18n-guardian` agent | Bilingual validation |
+
+> See the full catalog at `.claude/docs/skills_agents_catalog.md`
+
+## 7. Plan Status / Notes
 
 - Current status:
   - Example: "In progress, Task 2"
 - Relevant notes or decisions that affect the whole plan.
 
-## 7. Quick Reference
+## 8. Quick Reference
 
 **Need prompts for this plan?** See [PROMPTS.md](./PROMPTS.md) for ready-to-use copy-paste prompts to execute, resume, or check this plan.
 ```
@@ -470,6 +483,7 @@ When you want Cursor, Claude, or another agent to **generate a new deep-work pla
 >     - Global guidelines
 >     - A Task List with `[ ]` items and links to each `N.task_*.md` file
 >     - Execution rules for the agent
+>     - Skills & Agents used in this plan (consult `.claude/docs/skills_agents_catalog.md`)
 >     - Reference to PROMPTS.md for ready-to-use prompts
 >   - Create `PROMPTS.md` with ready-to-use prompts for this plan:
 >     - Use the template at `.agent_commands/agent_deep_work_plans/results/plans/PROMPTS_TEMPLATE.md`
@@ -477,12 +491,13 @@ When you want Cursor, Claude, or another agent to **generate a new deep-work pla
 >     - Include prompts for: execute, resume, resume with status, check status, modify
 >   - For each task in the Task List:
 >     - Create a `N.task_{task_title}.md` file following the task template defined in `GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`.
+>     - Check `.claude/docs/skills_agents_catalog.md` for relevant skills/agents to reference in each task.
 >     - Ensure each task file has:
 >       - Context
 >       - Goal
->       - Instructions
+>       - Instructions (referencing relevant skill files when applicable)
 >       - Acceptance Criteria
->       - Validation commands
+>       - Validation commands (including agent-based validation when applicable)
 >       - Execution checklist
 >       - Completion & Log section
 > - Make sure all tasks are:
@@ -678,7 +693,102 @@ When resuming a plan, the agent should:
 
 ---
 
-## 11. Summary
+## 11. Skills & Agents Integration (MANDATORY)
+
+When creating deep work plans, the plan generator MUST consult the project's available Skills and Agents to produce higher-quality, more consistent plans.
+
+### Why This Matters
+
+- Skills contain battle-tested, step-by-step procedures for common tasks
+- Agents provide specialized validation checklists and review expertise
+- Referencing them in task files ensures the executor follows proven procedures instead of improvising instructions from scratch
+- This produces more consistent, higher-quality results across all plans
+
+### Where to Find Skills & Agents
+
+Before creating any plan, the generator MUST read:
+
+1. **Skills catalog:** `.claude/docs/skills_agents_catalog.md`
+   - Lists all available skills with names, tiers, and descriptions
+2. **Individual skill files:** `.claude/skills/{skill-name}/SKILL.md`
+   - Contains detailed step-by-step procedures, guardrails, and validation
+3. **Agent files:** `.claude/agents/{agent-name}.md`
+   - Contains specialized checklists, workflows, and validation criteria
+
+### How to Integrate Skills into Task Files
+
+When writing a task file (`N.task_*.md`), the plan generator MUST:
+
+1. **Check if a relevant skill exists** for the task's objective
+   - Example: Task is "Create a new page" → use `/add-page` skill
+   - Example: Task is "Fix linting errors" → use `/fix-lint` skill
+   - Example: Task is "Create a blog post" → use `/add-blog-post` skill
+   - Example: Task is "Synchronize translations" → use `/translate-sync` skill
+
+2. **If a matching skill exists, reference it in the task instructions:**
+
+   ````markdown
+   ## 3. Instructions
+
+   Follow the procedure defined in the skill file:
+   **Skill:** `/skill-name` → `.claude/skills/skill-name/SKILL.md`
+
+   Read the skill file and follow its steps. Additionally:
+   - [Any task-specific additions or overrides]
+   - [Context specific to this plan]
+   ````
+
+3. **If no matching skill exists, write instructions normally** (as described in section 5 of this guide)
+
+4. **For validation steps, check if a relevant agent exists:**
+   - Task involves code changes → add `reviewer` agent validation
+   - Task involves translation or bilingual content → add `i18n-guardian` agent validation
+   - Task involves security-sensitive changes → add `security-auditor` agent validation
+
+   ````markdown
+   ## 5. Validation
+
+   Standard validations:
+   ```bash
+   npm run biome:check
+   npm run astro:check
+   npm run build
+   ```
+
+   Agent-based validation:
+   - Follow the checklist in `.claude/agents/{agent-name}.md` section "Audit Checklist"
+     to verify {specific concern}
+   ````
+
+5. **Always prefer skill procedures over ad-hoc instructions** when a skill covers the task's objective, even partially. The skill has been tested and refined; ad-hoc instructions have not.
+
+### How to Reference Skills & Agents in Plan README
+
+The plan's `README.md` should include a section listing which skills and agents are relevant to the plan:
+
+```markdown
+## Skills & Agents Used in This Plan
+
+| Task | Skill/Agent | Purpose |
+|------|-------------|---------|
+| Task 1 | `/add-page` skill | Page creation procedure |
+| Task 2 | `/translate-sync` skill | Translation synchronization |
+| Task 3 | `i18n-guardian` agent | Bilingual validation |
+| Task 5 | `reviewer` agent | Code quality validation |
+```
+
+### Keeping the Registry Updated
+
+**CRITICAL:** The skills/agents catalog MUST be kept up to date.
+
+- When a plan creates new skills or agents, update the catalog immediately
+- When a skill or agent is deprecated, remove it from the catalog
+- The catalog is the SINGLE SOURCE OF TRUTH for what's available
+- If the catalog is outdated, plans will reference non-existent procedures or miss available ones
+
+---
+
+## 12. Summary
 
 This guide defines how an agent should:
 
@@ -687,6 +797,7 @@ This guide defines how an agent should:
 - Execute tasks sequentially, with strong validation and logging
 - Resume interrupted plans without duplicating work
 - Keep everything temporary and isolated from the main repository
+- Leverage existing skills and agents for higher-quality, more consistent task instructions and validation
 
 Use this as the **authoritative specification** whenever an agent is asked to:
 

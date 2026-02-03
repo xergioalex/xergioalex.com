@@ -4,30 +4,29 @@ This document serves as the central reference for all available Skills and Agent
 
 ## Overview
 
-| Type   | Count | Description                |
-|--------|-------|----------------------------|
-| Skills | 14    | Reusable task procedures   |
-| Agents | 5     | Specialized worker personas |
+| Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
+|--------|:--------------:|:------------------:|:--------------:|:-----:|
+| Skills | 12             | 2                  | 0              | 14    |
+| Agents | 0              | 4                  | 1              | 5     |
+| **Total** | **12**      | **6**              | **1**          | **19** |
 
 ---
 
-## Skills
+## Skills by Tier
 
 Skills are reusable "how-to" procedures invoked via slash commands.
 
-### By Tier
-
-#### Tier 1 (Light/Cheap)
+### Tier 1 (Light/Cheap)
 
 Fast, low-risk, pattern-following tasks.
 
 | Skill           | Intent | Invocation        | Description                                                                 |
 |-----------------|--------|-------------------|-----------------------------------------------------------------------------|
-| quick-fix       | fix    | `/quick-fix`      | Fix small bugs in 1–3 files following existing patterns                    |
+| quick-fix       | fix    | `/quick-fix`      | Fix small bugs in 1-3 files following existing patterns                    |
 | doc-edit        | docs   | `/doc-edit`       | Update documentation (README, comments, MDX, markdown)                      |
 | pr-review-lite  | review | `/pr-review-lite` | Quick checklist review of a PR (style, obvious bugs, Astro patterns)        |
-| fix-lint        | fix    | `/fix-lint`       | Fix Biome linting/formatting errors in 1–3 files                           |
-| type-fix        | fix    | `/type-fix`       | Fix TypeScript type errors in 1–3 files (explicit types, Astro types)      |
+| fix-lint        | fix    | `/fix-lint`       | Fix Biome linting/formatting errors in 1-3 files                           |
+| type-fix        | fix    | `/type-fix`       | Fix TypeScript type errors in 1-3 files (explicit types, Astro types)      |
 | security-check  | review | `/security-check` | Quick security checklist (secrets, API routes, client exposure)             |
 | git-commit-push | execute| `/git-commit-push`| Commit all changes and push to remote                                       |
 | add-component   | create | `/add-component`  | Create new Astro or Svelte component with correct patterns                  |
@@ -36,16 +35,16 @@ Fast, low-risk, pattern-following tasks.
 | translate-sync  | execute| `/translate-sync` | Synchronize content between English and Spanish versions                    |
 | update-styles   | fix    | `/update-styles`  | Update Tailwind styles with dark mode support                               |
 
-#### Tier 2 (Standard)
+### Tier 2 (Standard)
 
 Everyday development work.
 
 | Skill         | Intent   | Invocation       | Description                                                              |
 |---------------|----------|------------------|--------------------------------------------------------------------------|
 | write-tests   | tests    | `/write-tests`   | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
-| refactor-safe | execute  | `/refactor-safe` | Safe refactor in bounded scope (1–10 files, no behavior change)          |
+| refactor-safe | execute  | `/refactor-safe` | Safe refactor in bounded scope (1-10 files, no behavior change)          |
 
-#### Tier 3 (Heavy/Reasoning)
+### Tier 3 (Heavy/Reasoning)
 
 Complex planning and architecture.
 
@@ -55,13 +54,11 @@ Complex planning and architecture.
 
 ---
 
-## Agents
+## Agents by Tier
 
 Agents are specialized personas for different types of work.
 
-### By Tier
-
-#### Tier 2 (Standard)
+### Tier 2 (Standard)
 
 Development and review specialists.
 
@@ -72,7 +69,7 @@ Development and review specialists.
 | security-auditor  | Security review (read-only)    | Static site security; API routes, secrets, client exposure |
 | i18n-guardian     | Bilingual content & translation quality | Translation quality specialist; bilingual consistency enforcer |
 
-#### Tier 3 (Heavy/Reasoning)
+### Tier 3 (Heavy/Reasoning)
 
 Planning and architecture specialists.
 
@@ -82,51 +79,143 @@ Planning and architecture specialists.
 
 ---
 
-## Skills by Category
+## Skill-Agent Interaction Map
 
-### Creation Skills
+This diagram shows how skills and agents interact during typical workflows.
 
-| Skill | Creates |
-|-------|---------|
-| add-component | Astro/Svelte components (with i18n support) |
-| add-page | Bilingual pages with routing (en + es) |
-| add-blog-post | Bilingual blog posts with frontmatter (en + es) |
+```
+                        TIER 3 - Planning & Architecture
+  ┌──────────────────────────────────────────────────────────────┐
+  │                                                              │
+  │   architect                                                  │
+  │   Designs component structure, routing, Content Collections  │
+  │   Output: Implementation plans, architecture decisions       │
+  │                                                              │
+  └──────────────────────┬───────────────────────────────────────┘
+                         │ plans flow down
+                         ▼
+                        TIER 2 - Execution & Review
+  ┌──────────────────────────────────────────────────────────────┐
+  │                                                              │
+  │   executor ─────────────── implements using ──────┐          │
+  │   Follows plans strictly,                         │          │
+  │   validates each step                             ▼          │
+  │                                          ┌────────────────┐  │
+  │                                          │ Tier 2 Skills  │  │
+  │                                          │ write-tests    │  │
+  │                                          │ refactor-safe  │  │
+  │                                          └────────┬───────┘  │
+  │                                                   │          │
+  │   reviewer ◄──────── validates output ────────────┘          │
+  │   security-auditor ◄─── security review ──────────┘          │
+  │   i18n-guardian ◄────── bilingual audit ──────────┘          │
+  │                                                              │
+  └──────────────────────┬───────────────────────────────────────┘
+                         │ uses atomic skills
+                         ▼
+                        TIER 1 - Atomic Skills
+  ┌──────────────────────────────────────────────────────────────┐
+  │                                                              │
+  │   Creation         Fix/Update        Review       Execute    │
+  │   ─────────        ──────────        ──────       ───────    │
+  │   add-component    quick-fix         pr-review    git-commit │
+  │   add-page         fix-lint          security     translate  │
+  │   add-blog-post    type-fix          -check       -sync      │
+  │                    update-styles                  -push      │
+  │                                                              │
+  │   Documentation                                              │
+  │   ─────────────                                              │
+  │   doc-edit                                                   │
+  │                                                              │
+  └──────────────────────────────────────────────────────────────┘
+```
 
-### i18n Skills
+### Typical Workflow
 
-| Skill | Purpose |
-|-------|---------|
-| translate-sync | Synchronize content between English and Spanish versions |
+1. **architect** creates an implementation plan (Tier 3)
+2. **executor** follows the plan, invoking Tier 1/2 skills as needed (Tier 2)
+3. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
+4. Issues found are fixed using atomic Tier 1 skills
 
-### Fix/Update Skills
+---
 
-| Skill | Fixes |
-|-------|-------|
-| quick-fix | Small bugs (1-3 files) |
-| fix-lint | Biome linting errors |
-| type-fix | TypeScript errors |
-| update-styles | Tailwind/CSS styling |
+## Domain-Specific Skills & Agents
 
-### Review Skills
+### 1. Blog & Content Development
 
-| Skill | Reviews |
-|-------|---------|
-| pr-review-lite | PR checklist review |
-| security-check | Security checklist |
+Skills and agents for creating and managing blog content.
 
-### Documentation Skills
+| Resource | Type | Description |
+|----------|------|-------------|
+| add-blog-post | Skill (T1) | Create bilingual blog posts with Content Collections frontmatter |
+| doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
 
-| Skill | Updates |
-|-------|---------|
-| doc-edit | README, comments, MDX |
+### 2. i18n & Translation
 
-### Execution Skills
+Resources for bilingual content management (English/Spanish).
 
-| Skill | Executes |
-|-------|----------|
-| git-commit-push | Git commit and push |
-| refactor-safe | Safe refactoring |
-| write-tests | Test creation |
+| Resource | Type | Description |
+|----------|------|-------------|
+| translate-sync | Skill (T1) | Synchronize content between English and Spanish versions |
+| add-page | Skill (T1) | Create bilingual pages with routing (en + es) |
+| add-blog-post | Skill (T1) | Create bilingual blog posts (en + es) |
+| i18n-guardian | Agent (T2) | Translation quality specialist; bilingual consistency enforcer |
+
+### 3. Code Quality & Review
+
+Resources for maintaining code quality and reviewing changes.
+
+| Resource | Type | Description |
+|----------|------|-------------|
+| fix-lint | Skill (T1) | Fix Biome linting/formatting errors |
+| type-fix | Skill (T1) | Fix TypeScript type errors |
+| pr-review-lite | Skill (T1) | Quick checklist review of a PR |
+| quick-fix | Skill (T1) | Fix small bugs in 1-3 files |
+| write-tests | Skill (T2) | Add or expand tests (Vitest/Playwright) |
+| refactor-safe | Skill (T2) | Safe refactor in bounded scope |
+| reviewer | Agent (T2) | Thorough PR review; Astro/Svelte patterns, quality |
+
+### 4. Security
+
+Resources for security review and auditing.
+
+| Resource | Type | Description |
+|----------|------|-------------|
+| security-check | Skill (T1) | Quick security checklist (secrets, API routes, client exposure) |
+| security-auditor | Agent (T2) | Static site security; API routes, secrets, client exposure |
+
+### 5. Component & Page Creation
+
+Resources for creating new UI components and pages.
+
+| Resource | Type | Description |
+|----------|------|-------------|
+| add-component | Skill (T1) | Create new Astro or Svelte component with correct patterns |
+| add-page | Skill (T1) | Create new page with routing and MainLayout |
+| update-styles | Skill (T1) | Update Tailwind styles with dark mode support |
+| architect | Agent (T3) | Component design, routing, Content Collections planning |
+| executor | Agent (T2) | Follow plans step by step; implement and validate |
+
+---
+
+## Decision Guide: Skill vs Agent
+
+Use this table to decide whether to invoke a Skill or an Agent.
+
+| Criteria | Use a Skill | Use an Agent |
+|----------|-------------|--------------|
+| **Task scope** | Single, well-defined action | Multi-step or judgment-based work |
+| **Invocation** | Slash command (`/fix-lint`) | By name or role ("as reviewer") |
+| **Autonomy** | Follows procedure exactly | Makes decisions within scope |
+| **Duration** | Short, completes quickly | May take longer, multi-phase |
+| **Output** | Predictable, templated | Variable, context-dependent |
+| **Examples** | Fix lint errors, create a component | Review a PR, plan architecture |
+
+### When to Combine
+
+- **architect** (Agent) produces a plan, then **executor** (Agent) implements it using **add-component**, **add-page**, and **write-tests** (Skills)
+- **reviewer** (Agent) finds issues, then **fix-lint**, **type-fix**, or **quick-fix** (Skills) resolve them
+- **i18n-guardian** (Agent) audits translations, then **translate-sync** (Skill) synchronizes content
 
 ---
 
@@ -156,6 +245,7 @@ Planning and architecture specialists.
 
 - **Skills:** `.claude/skills/{skill-name}/SKILL.md`
 - **Agents:** `.claude/agents/{agent-name}.md`
+- **Catalog:** `.claude/docs/skills_agents_catalog.md`
 
 ---
 
@@ -169,7 +259,19 @@ All skills and agents are adapted for this Astro repository:
 - **Components:** Astro (.astro) and Svelte (.svelte)
 - **Styling:** Tailwind CSS with dark mode
 - **Content:** Content Collections in `src/content/`
+- **i18n:** Bilingual (English/Spanish) with `src/pages/` and `src/pages/es/`
 - **Testing:** Not yet configured (Vitest/Playwright planned)
+
+---
+
+## Changelog
+
+| Date | Change | Details |
+|------|--------|---------|
+| 2026-02-03 | Catalog restructured | Added tier breakdown overview, interaction map, domain guides, decision guide, and changelog |
+| 2025-01-01 | translate-sync, i18n-guardian added | Bilingual content synchronization skill and translation quality agent |
+| 2025-01-01 | add-page, add-component updated | Updated with bilingual enforcement and i18n guidance |
+| 2025-01-01 | Initial catalog | 14 skills and 5 agents cataloged |
 
 ---
 

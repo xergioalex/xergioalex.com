@@ -74,7 +74,7 @@ Not all tasks require the same level of AI reasoning. Using expensive frontier m
 - **Tier 2 (Standard):** Plan execution and standard development — implementing features, following plans, tests, safe refactors.
 - **Tier 1 (Light):** Simple, mechanical tasks — formatting, docs, typos, small fixes, quick checks.
 
-For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute with Tier 2 (see Section 11).
+For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute with Tier 2 (see Section 12).
 
 ### Tier Definitions
 
@@ -527,7 +527,115 @@ Escalate if:
 
 ---
 
-## 10. Escalation Ladder
+## 10. Catalog Maintenance (MANDATORY)
+
+### Why Catalog Maintenance Matters
+
+The catalog (`.claude/docs/skills_agents_catalog.md`) is the single source of truth for discovering skills and agents. If it falls out of sync, agents cannot find the right tools, users invoke nonexistent commands, and the tier system breaks down. **Every skill or agent creation MUST include a catalog update.**
+
+### Required Updates Checklist
+
+When creating a new skill or agent, you MUST update these catalog sections:
+
+#### 1. Overview Table Counts (REQUIRED)
+
+Update four values in the Overview table:
+
+- **Type-Tier cell** — increment the count for the matching row (Skills/Agents) and column (Tier 1/2/3)
+- **Type-Total cell** — increment the Total column for the matching row
+- **Total-Tier cell** — increment the Total row for the matching tier column
+- **Grand Total cell** — increment the Total row, Total column
+
+**Example — adding a new Tier 1 skill:**
+
+Before:
+```markdown
+| Skills | 12 | 2 | 0 | 14 |
+| **Total** | **12** | **6** | **1** | **19** |
+```
+
+After:
+```markdown
+| Skills | 13 | 2 | 0 | 15 |
+| **Total** | **13** | **6** | **1** | **20** |
+```
+
+#### 2. Tier Table Entry (REQUIRED)
+
+Add the new skill or agent to the appropriate tier table under "Skills by Tier" or "Agents by Tier".
+
+**For Skills:**
+```markdown
+| {skill-name} | {intent} | `/{skill-name}` | {brief description} |
+```
+
+**For Agents:**
+```markdown
+| {agent-name} | {scope} | {description} |
+```
+
+#### 3. Interaction Map (CONDITIONAL)
+
+Update the ASCII interaction map ONLY if the new skill or agent changes how tiers interact:
+
+- A new agent that bridges tiers (e.g., a new Tier 2 validator)
+- A new Tier 3 skill or agent
+- A skill that introduces a new category in Tier 1
+
+Do NOT update the map for routine Tier 1 skill additions that fit existing categories.
+
+#### 4. Domain Section (CONDITIONAL)
+
+Add the new skill or agent to the appropriate domain under "Domain-Specific Skills & Agents":
+
+1. Blog & Content Development
+2. i18n & Translation
+3. Code Quality & Review
+4. Security
+5. Component & Page Creation
+
+If none of the existing domains fit, create a new domain section following the same format.
+
+#### 5. Changelog Entry (REQUIRED)
+
+Add a new row to the top of the Changelog table:
+
+```markdown
+| {YYYY-MM-DD} | {skill-name/agent-name} added | {brief description of what was added} |
+```
+
+### Validation Checklist
+
+After updating the catalog, verify:
+
+- [ ] Overview table counts are arithmetically correct (row totals = sum of tier cells)
+- [ ] Grand total = Skills total + Agents total
+- [ ] New entry appears in the correct tier table
+- [ ] Domain section updated (if applicable)
+- [ ] Changelog has a new entry at the top
+- [ ] No duplicate entries in any table
+
+### Common Mistakes to Avoid
+
+- Incrementing only the type total but forgetting the tier column
+- Adding to the tier table but not the overview counts
+- Placing a Tier 2 skill in the Tier 1 table
+- Forgetting the changelog entry
+- Adding a domain entry without adding the tier table entry
+
+### Complete Example Workflow
+
+**Creating a new Tier 1 skill called `format-mdx`:**
+
+1. Overview: Skills Tier 1: 12→13, Skills Total: 14→15, Total Tier 1: 12→13, Grand Total: 19→20
+2. Tier table: Add `| format-mdx | fix | `/format-mdx` | Format MDX files with consistent styling |` to Tier 1
+3. Interaction map: No change (fits existing "Fix/Update" category)
+4. Domain: Add to "Blog & Content Development" domain
+5. Changelog: Add `| 2026-02-03 | format-mdx added | MDX formatting skill for consistent blog post styling |`
+
+---
+
+## 11. Escalation Ladder
 
 ### Tier 1 → Tier 2
 
@@ -562,7 +670,7 @@ Always use Tier 3 for:
 
 ---
 
-## 11. Two-Phase Pattern (Cost Saving)
+## 12. Two-Phase Pattern (Cost Saving)
 
 **Recommended approach for large tasks:** Split planning and execution — use Tier 3 (frontier reasoning) to create the plan, then Tier 2 (standard model) to execute it. This saves cost while keeping quality. For large tasks, do the following:
 
@@ -590,7 +698,7 @@ This saves significant compute while maintaining quality.
 
 ---
 
-## 12. Summary
+## 13. Summary
 
 | Concept    | Definition        | Example      |
 | ---------- | ----------------- | ------------ |

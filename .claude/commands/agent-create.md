@@ -134,11 +134,47 @@ Create this agent?
 4. ❌ Cancel
 ```
 
-### Step 6: Create File
+### Step 6: Create File and Update Catalog
+
+#### Part A: Create Agent File
 
 Create at: `.claude/agents/{name}.md`
 
-Update catalog at: `.claude/docs/skills_agents_catalog.md`
+Verify:
+- [ ] File follows template structure from `AGENT_TEMPLATE.md`
+- [ ] All sections are filled (no placeholders)
+- [ ] Scope boundaries are explicit
+- [ ] At least 2 examples included
+
+#### Part B: Update Catalog (MANDATORY)
+
+Update `.claude/docs/skills_agents_catalog.md` with ALL of the following:
+
+**B.1 — Overview Table:** Increment 4 values:
+- Agents row, Tier {N} column: +1
+- Agents row, Total column: +1
+- Total row, Tier {N} column: +1
+- Total row, Total column (Grand Total): +1
+
+**B.2 — Tier Table:** Add entry to the matching tier under "Agents by Tier":
+```markdown
+| {name} | {scope} | {description} |
+```
+
+**B.3 — Interaction Map (if needed):** Update if this agent introduces a new tier bridge, changes how tiers interact, or adds a new Tier 3 agent.
+
+**B.4 — Domain Section:** Add to the appropriate domain under "Domain-Specific Skills & Agents" (Blog & Content, i18n, Code Quality, Security, or Component & Page Creation).
+
+**B.5 — Changelog:** Add entry at the top of the Changelog table:
+```markdown
+| {YYYY-MM-DD} | {name} added | {brief description} |
+```
+
+**Catalog Validation:**
+- [ ] Overview table counts are arithmetically correct (row totals = sum of tiers)
+- [ ] Entry appears in the correct tier table
+- [ ] Changelog has a new top entry
+- [ ] No duplicate entries in any table
 
 ### Step 7: Completion
 
