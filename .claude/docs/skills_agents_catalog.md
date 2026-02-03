@@ -6,8 +6,8 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Count | Description                |
 |--------|-------|----------------------------|
-| Skills | 13    | Reusable task procedures   |
-| Agents | 4     | Specialized worker personas |
+| Skills | 14    | Reusable task procedures   |
+| Agents | 5     | Specialized worker personas |
 
 ---
 
@@ -33,6 +33,7 @@ Fast, low-risk, pattern-following tasks.
 | add-component   | create | `/add-component`  | Create new Astro or Svelte component with correct patterns                  |
 | add-page        | create | `/add-page`       | Create new page with routing and MainLayout                                 |
 | add-blog-post   | create | `/add-blog-post`  | Create blog post with Content Collections frontmatter                       |
+| translate-sync  | execute| `/translate-sync` | Synchronize content between English and Spanish versions                    |
 | update-styles   | fix    | `/update-styles`  | Update Tailwind styles with dark mode support                               |
 
 #### Tier 2 (Standard)
@@ -69,6 +70,7 @@ Development and review specialists.
 | reviewer          | Code review and quality analysis | Thorough PR review; Astro/Svelte patterns, dark mode, quality |
 | executor          | Executing predefined plans     | Follows plans step by step; implements and validates      |
 | security-auditor  | Security review (read-only)    | Static site security; API routes, secrets, client exposure |
+| i18n-guardian     | Bilingual content & translation quality | Translation quality specialist; bilingual consistency enforcer |
 
 #### Tier 3 (Heavy/Reasoning)
 
@@ -86,9 +88,15 @@ Planning and architecture specialists.
 
 | Skill | Creates |
 |-------|---------|
-| add-component | Astro/Svelte components |
-| add-page | Pages with routing |
-| add-blog-post | Blog posts with frontmatter |
+| add-component | Astro/Svelte components (with i18n support) |
+| add-page | Bilingual pages with routing (en + es) |
+| add-blog-post | Bilingual blog posts with frontmatter (en + es) |
+
+### i18n Skills
+
+| Skill | Purpose |
+|-------|---------|
+| translate-sync | Synchronize content between English and Spanish versions |
 
 ### Fix/Update Skills
 
