@@ -505,3 +505,56 @@ START: New task arrives
 | 3    | Opus   | o1/o3   | Deep reasoning, complex planning |
 
 In practice, use the best available model that matches the tier's requirements.
+
+---
+
+## Official `model` Field (Claude Code Implementation)
+
+The tier system is now **actively enforced** in Claude Code via the `model` field in skill/agent frontmatter.
+
+### For Skills (`.claude/skills/{name}/SKILL.md`)
+
+```yaml
+---
+name: quick-fix
+description: Fix small bugs. Use proactively for simple bug fixes.
+model: haiku          # Claude Code routes to Haiku model
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+tier: 1               # Documentation only (ignored by tools)
+---
+```
+
+### For Agents (`.claude/agents/{name}.md`)
+
+```yaml
+---
+name: architect
+description: System design and planning. Use proactively for architecture decisions.
+model: opus           # Claude Code routes to Opus model
+tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
+permissionMode: plan
+tier: 3               # Documentation only (ignored by tools)
+---
+```
+
+### How It Works
+
+| Field Value | Effect in Claude Code | Effect in Cursor/Codex |
+|-------------|----------------------|------------------------|
+| `model: haiku` | Uses Claude Haiku (fast/cheap) | Ignored (uses default model) |
+| `model: sonnet` | Uses Claude Sonnet (balanced) | Ignored (uses default model) |
+| `model: opus` | Uses Claude Opus (frontier reasoning) | Ignored (uses default model) |
+| `model: inherit` | Uses parent conversation model | Ignored |
+| (omitted) | Uses parent conversation model | Uses default model |
+
+### Before vs After
+
+| Before (Documentation Only) | After (Actually Works in Claude Code) |
+|-----|------|
+| `tier: 1` — ignored by all tools | `tier: 1` + `model: haiku` — Claude Code routes to fast model |
+| `tier: 2` — ignored by all tools | `tier: 2` + `model: sonnet` — Claude Code routes to balanced model |
+| `tier: 3` — ignored by all tools | `tier: 3` + `model: opus` — Claude Code routes to frontier model |
+| `can-execute-code: false` — ignored | `tools: Read, Grep, Glob` — Claude Code enforces read-only |
+| `can-modify-files: false` — ignored | Omit Write/Edit from `tools` — Claude Code enforces restriction |
+
+The `tier` field is kept for documentation but the `model` field is what Claude Code actually reads and uses.

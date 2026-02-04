@@ -1,6 +1,12 @@
 ---
 name: update-styles
-description: Update Tailwind styles with dark mode support
+description: Update Tailwind styles with dark mode support. Use proactively for styling updates.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: fix
 max-files: 5

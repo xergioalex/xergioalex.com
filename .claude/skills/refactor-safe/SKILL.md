@@ -1,6 +1,12 @@
 ---
 name: refactor-safe
-description: Safe refactor in bounded scope (1-10 files, no behavior change)
+description: Safe refactor in bounded scope (1-10 files, no behavior change). Use proactively for safe, bounded refactoring tasks.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 intent: execute
 max-files: 10

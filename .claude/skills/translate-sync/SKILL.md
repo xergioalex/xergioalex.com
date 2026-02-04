@@ -1,6 +1,12 @@
 ---
 name: translate-sync
-description: Synchronize content between English and Spanish versions
+description: Synchronize content between English and Spanish versions. Use proactively when content needs bilingual synchronization.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: execute
 max-files: 10

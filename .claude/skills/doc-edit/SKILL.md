@@ -1,6 +1,12 @@
 ---
 name: doc-edit
-description: Update documentation files including README, comments, and inline docs
+description: Update documentation files including README, comments, and inline docs. Use proactively for documentation updates.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: docs
 max-files: 10

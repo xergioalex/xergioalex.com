@@ -1,6 +1,12 @@
 ---
 name: add-page
-description: Create new pages with correct routing and MainLayout usage
+description: Create new pages with correct routing and MainLayout usage. Use proactively when creating new pages.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: create
 max-files: 4

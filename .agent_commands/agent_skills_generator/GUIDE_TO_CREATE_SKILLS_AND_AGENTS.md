@@ -57,7 +57,38 @@ An **Agent** (or Subagent) is a specialized worker persona:
 
 ---
 
-## 2. Model & Cost Strategy (The Tier System)
+## 2. Compatibility & Standards
+
+Skills and agents follow the **Agent Skills open standard** (agentskills.io) for cross-tool compatibility.
+
+### Compatibility Matrix
+
+| Tool | Skills Location | Agents Location | Standard Support |
+|------|-----------------|-----------------|------------------|
+| **Claude Code** | `.claude/skills/` | `.claude/agents/` | Full (most features) |
+| **Cursor** | `.cursor/skills/`, `.claude/skills/` | `.cursor/agents/` | Partial (basic fields) |
+| **Codex (OpenAI)** | `.codex/skills/`, `~/.codex/skills/` | N/A | Basic (skills only) |
+
+### What Works Where
+
+| Feature | Claude Code | Cursor | Codex |
+|---------|-------------|--------|-------|
+| Skill invocation (`/skill-name`) | Yes | Yes | Yes |
+| Auto-invocation by description | Yes | Yes | Yes |
+| `disable-model-invocation` | Yes | Yes | Yes |
+| Model routing (haiku/sonnet/opus) | Yes | Ignored | Ignored |
+| `allowed-tools` (skills) | Yes | Ignored | Ignored |
+| `tools`/`disallowedTools` (agents) | Yes | Ignored | Ignored |
+| `permissionMode` (agents) | Yes | Ignored | Ignored |
+| `context: fork` (skills) | Yes | Ignored | Ignored |
+| Custom fields (tier, intent, etc.) | Ignored | Ignored | Ignored |
+| Agents | Yes | Yes (basic) | No |
+
+**Key insight**: Custom fields like `tier`, `intent`, `max-files` are safely ignored by all tools. We keep them for human documentation while adding official fields that actually work.
+
+---
+
+## 3. Model & Cost Strategy (The Tier System)
 
 ### Why Tiers?
 
@@ -68,13 +99,23 @@ Not all tasks require the same level of AI reasoning. Using expensive frontier m
 3. **Cost efficiency** - Match compute to complexity
 4. **Maintainability** - Clear expectations
 
+### Model Routing (Now Works in Claude Code!)
+
+The `model` field in frontmatter directly controls which model handles the task:
+
+| Tier | Field Value | Effect in Claude Code | Effect in Cursor/Codex |
+|------|-------------|----------------------|------------------------|
+| 1 (Light) | `model: haiku` | Uses Claude Haiku (fast/cheap) | Ignored (default model) |
+| 2 (Standard) | `model: sonnet` | Uses Claude Sonnet (balanced) | Ignored (default model) |
+| 3 (Heavy) | `model: opus` | Uses Claude Opus (reasoning) | Ignored (default model) |
+
 ### Routing Summary (Quick Reference)
 
 - **Tier 3 (Heavy):** Planning and heavy reasoning — architecture, deep work plans, complex analysis, security-sensitive design.
 - **Tier 2 (Standard):** Plan execution and standard development — implementing features, following plans, tests, safe refactors.
 - **Tier 1 (Light):** Simple, mechanical tasks — formatting, docs, typos, small fixes, quick checks.
 
-For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute with Tier 2 (see Section 12).
+For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute with Tier 2 (see Section 13).
 
 ### Tier Definitions
 
@@ -165,7 +206,7 @@ For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute w
 
 ---
 
-## 3. Directory Structure
+## 4. Directory Structure
 
 ### Skills Location
 
@@ -210,16 +251,43 @@ For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute w
 
 ---
 
-## 4. Skill File Structure
+## 5. Skill File Structure
 
-Every Skill must follow this template:
+Every Skill must follow this template. Skills use the **Agent Skills open standard** (agentskills.io) for cross-tool compatibility.
+
+### Frontmatter Fields
+
+| Field | Required | Works In | Purpose |
+|-------|----------|----------|---------|
+| `name` | Yes | Claude, Cursor, Codex | Skill identifier (kebab-case, max 64 chars) |
+| `description` | Yes | Claude, Cursor, Codex | Auto-invocation and context matching |
+| `disable-model-invocation` | No | Claude, Cursor, Codex | Manual-only invocation (default: false) |
+| `allowed-tools` | No | Claude Code only | Whitelist tools this skill can use |
+| `model` | No | Claude Code only | Route to haiku/sonnet/opus |
+| `argument-hint` | No | Claude Code only | Autocomplete hint for parameters |
+| `context: fork` | No | Claude Code only | Run in isolated subagent |
+| `agent` | No | Claude Code only | Subagent type when context: fork |
+| `tier` | No | Documentation only | Human-readable tier classification |
+| `intent` | No | Documentation only | Task category |
+| `max-files` | No | Documentation only | Scope documentation |
+| `max-loc` | No | Documentation only | Scope documentation |
+
+### Template
 
 ```markdown
 ---
 name: { skill-name }
-description: { 1-2 line description }
+description: { 1-2 line description }. Use proactively for { use case }.
+# === Universal fields (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific (full functionality) ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash  # Adjust per skill needs
+model: sonnet                      # haiku (tier 1) | sonnet (tier 2) | opus (tier 3)
+# === Documentation fields (ignored by all tools, useful for humans) ===
 tier: { 1|2|3 }
-intent: { plan|execute|review|docs|tests|fix }
+intent: { plan|execute|review|docs|tests|fix|create }
+max-files: { N }
+max-loc: { N }
 ---
 
 # Skill: {Human-Readable Name}
@@ -299,18 +367,84 @@ Escalate to higher tier if:
 **Output:** {output}
 ```
 
+### Tier to Model Mapping (for `model` field)
+
+| Tier | Model Value | Effect in Claude Code | Effect in Cursor/Codex |
+|------|-------------|----------------------|------------------------|
+| 1 (Light) | `model: haiku` | Uses fast/cheap model | Ignored (default model) |
+| 2 (Standard) | `model: sonnet` | Uses balanced model | Ignored (default model) |
+| 3 (Heavy) | `model: opus` | Uses frontier model | Ignored (default model) |
+
+### Choosing `allowed-tools`
+
+Select tools based on what the skill needs:
+
+| Skill Type | Recommended `allowed-tools` |
+|------------|---------------------------|
+| Read-only review | `Read, Glob, Grep, Bash` |
+| Documentation edits | `Read, Write, Edit, Glob, Grep` |
+| Code fixes | `Read, Write, Edit, Glob, Grep, Bash` |
+| Git operations | `Read, Glob, Grep, Bash` |
+| Full development | `Read, Write, Edit, Glob, Grep, Bash` |
+
 ---
 
-## 5. Agent File Structure
+## 6. Agent File Structure
 
-Every Agent must follow this template:
+Every Agent must follow this template. Agents are primarily a Claude Code feature, with basic support in Cursor.
+
+### Frontmatter Fields
+
+| Field | Required | Works In | Purpose |
+|-------|----------|----------|---------|
+| `name` | Yes | Claude, Cursor | Agent identifier (kebab-case) |
+| `description` | Yes | Claude, Cursor | Auto-delegation context matching |
+| `tools` | No | Claude Code only | WHITELIST: comma-separated tools (omit = inherit all) |
+| `disallowedTools` | No | Claude Code only | BLACKLIST: tools to deny (use ONE of tools/disallowedTools, not both) |
+| `model` | No | Claude Code only | Route to haiku/sonnet/opus/inherit |
+| `permissionMode` | No | Claude Code only | Permission control (default/acceptEdits/dontAsk/bypassPermissions/plan) |
+| `skills` | No | Claude Code only | Skills to preload at startup |
+| `tier` | No | Documentation only | Human-readable tier classification |
+| `scope` | No | Documentation only | Scope documentation |
+| `can-execute-code` | No | Documentation only | Documents code execution capability |
+| `can-modify-files` | No | Documentation only | Documents file modification capability |
+
+### CRITICAL: `tools` vs `disallowedTools` (Choose ONE)
+
+| Approach | Field | When to Use | Example |
+|----------|-------|-------------|---------|
+| **Whitelist** | `tools: Read, Grep, Glob` | Agent should have LIMITED access | Read-only reviewer |
+| **Blacklist** | `disallowedTools: Write, Edit` | Agent should have MOST tools but block specific ones | Agent that can read and execute but not write |
+| **Neither** | (omit both) | Agent needs ALL tools | Full-access executor |
+
+### Mapping Restrictions to Tools
+
+| Custom Concept | Claude Code Implementation |
+|----------------|---------------------------|
+| `can-execute-code: false` + `can-modify-files: false` | `tools: Read, Grep, Glob, Bash` (whitelist read-only + Bash for git/checks) |
+| `can-execute-code: false` + `can-modify-files: true` | `disallowedTools: Bash` (can write but not execute arbitrary commands) |
+| `can-execute-code: true` + `can-modify-files: true` | Omit `tools`/`disallowedTools` (inherit all) |
+| Planning-only agent | `tools: Read, Grep, Glob, Bash, WebSearch, WebFetch` + `permissionMode: plan` |
+
+### Template
 
 ```markdown
 ---
 name: { agent-name }
-description: { 1-2 line description }
+description: { 1-2 line description }. Use proactively for { use case }.
+# === Claude Code specific (full functionality) ===
+# Use ONE of these approaches (not both):
+tools: Read, Grep, Glob, Bash      # WHITELIST: only these tools
+# OR:
+# disallowedTools: Write, Edit     # BLACKLIST: block specific tools
+# OR: omit both for full access
+model: sonnet                      # haiku | sonnet | opus | inherit
+permissionMode: default            # default | acceptEdits | dontAsk | bypassPermissions | plan
+# === Documentation fields (ignored by all tools, useful for humans) ===
 tier: { 1|2|3 }
-scope: { what this agent handles }
+scope: { brief description }
+can-execute-code: { true|false }
+can-modify-files: { true|false }
 ---
 
 # Agent: {Human-Readable Name}
@@ -392,7 +526,7 @@ Escalate if:
 
 ---
 
-## 6. Naming Conventions
+## 7. Naming Conventions
 
 ### Skills
 
@@ -428,7 +562,7 @@ Escalate if:
 
 ---
 
-## 7. Best Practices
+## 8. Best Practices
 
 ### ✅ DO
 
@@ -452,7 +586,7 @@ Escalate if:
 
 ---
 
-## 8. How to Create a New Skill
+## 9. How to Create a New Skill
 
 ### Step-by-Step Workflow
 
@@ -487,7 +621,7 @@ Escalate if:
 
 ---
 
-## 9. How to Create a New Agent
+## 10. How to Create a New Agent
 
 ### Step-by-Step Workflow
 
@@ -527,7 +661,7 @@ Escalate if:
 
 ---
 
-## 10. Catalog Maintenance (MANDATORY)
+## 11. Catalog Maintenance (MANDATORY)
 
 ### Why Catalog Maintenance Matters
 
@@ -635,7 +769,7 @@ After updating the catalog, verify:
 
 ---
 
-## 11. Escalation Ladder
+## 12. Escalation Ladder
 
 ### Tier 1 → Tier 2
 
@@ -670,7 +804,7 @@ Always use Tier 3 for:
 
 ---
 
-## 12. Two-Phase Pattern (Cost Saving)
+## 13. Two-Phase Pattern (Cost Saving)
 
 **Recommended approach for large tasks:** Split planning and execution — use Tier 3 (frontier reasoning) to create the plan, then Tier 2 (standard model) to execute it. This saves cost while keeping quality. For large tasks, do the following:
 
@@ -698,7 +832,7 @@ This saves significant compute while maintaining quality.
 
 ---
 
-## 13. Summary
+## 14. Summary
 
 | Concept    | Definition        | Example      |
 | ---------- | ----------------- | ------------ |

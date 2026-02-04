@@ -1,6 +1,11 @@
 ---
 name: architect
-description: Planning-only architect for system design, architecture decisions, and complex planning
+description: Planning-only architect for system design, architecture decisions, and complex planning. Use proactively for architectural decisions and system design.
+# === Claude Code specific ===
+tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
+model: opus
+permissionMode: plan
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 3
 scope: Architecture, design, and planning (NO code execution)
 can-execute-code: false

@@ -1,6 +1,12 @@
 ---
 name: write-tests
-description: Add or expand unit/integration tests for existing code (when testing is configured)
+description: Add or expand unit/integration tests for existing code (when testing is configured). Use proactively when tests need to be added or expanded.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: sonnet
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 intent: tests
 max-files: 10

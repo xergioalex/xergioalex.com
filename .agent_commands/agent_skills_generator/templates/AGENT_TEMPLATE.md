@@ -1,12 +1,22 @@
 ---
 name: { agent-name }
-description: { 1-2 line description of this agent's role }
+description: { 1-2 line description of this agent's role }. Use proactively for { use case }.
+# === Claude Code specific (full functionality) ===
+# Use ONE of these approaches (not both):
+tools: Read, Grep, Glob, Bash      # WHITELIST: only these tools (for restricted agents)
+# OR:
+# disallowedTools: Write, Edit     # BLACKLIST: block specific tools (for mostly-full-access agents)
+# OR: omit both for full access
+model: sonnet                      # haiku (tier 1) | sonnet (tier 2) | opus (tier 3) | inherit
+permissionMode: default            # default | acceptEdits | dontAsk | bypassPermissions | plan
+# skills:                          # Skills to preload (optional)
+#   - api-conventions
+#   - error-handling
+# === Documentation fields (ignored by all tools, useful for humans) ===
 tier: { 1|2|3 }
-scope: { brief description of what this agent handles }
-# Optional metadata:
-# can-execute-code: true
-# can-modify-files: true
-# requires-confirmation-for: [deployments, deletions, security-changes]
+scope: { brief description }
+can-execute-code: { true|false }     # For documentation, actual restriction via tools/disallowedTools
+can-modify-files: { true|false }     # For documentation, actual restriction via tools/disallowedTools
 ---
 
 # Agent: {Human-Readable Agent Name}

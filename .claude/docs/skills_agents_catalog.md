@@ -20,37 +20,37 @@ Skills are reusable "how-to" procedures invoked via slash commands.
 
 Fast, low-risk, pattern-following tasks.
 
-| Skill           | Intent | Invocation        | Description                                                                 |
-|-----------------|--------|-------------------|-----------------------------------------------------------------------------|
-| quick-fix       | fix    | `/quick-fix`      | Fix small bugs in 1-3 files following existing patterns                    |
-| doc-edit        | docs   | `/doc-edit`       | Update documentation (README, comments, MDX, markdown)                      |
-| pr-review-lite  | review | `/pr-review-lite` | Quick checklist review of a PR (style, obvious bugs, Astro patterns)        |
-| fix-lint        | fix    | `/fix-lint`       | Fix Biome linting/formatting errors in 1-3 files                           |
-| type-fix        | fix    | `/type-fix`       | Fix TypeScript type errors in 1-3 files (explicit types, Astro types)      |
-| security-check  | review | `/security-check` | Quick security checklist (secrets, API routes, client exposure)             |
-| git-commit-push | execute| `/git-commit-push`| Commit all changes and push to remote                                       |
-| add-component   | create | `/add-component`  | Create new Astro or Svelte component with correct patterns                  |
-| add-page        | create | `/add-page`       | Create new page with routing and MainLayout                                 |
-| add-blog-post   | create | `/add-blog-post`  | Create blog post with Content Collections frontmatter                       |
-| translate-sync  | execute| `/translate-sync` | Synchronize content between English and Spanish versions                    |
-| update-styles   | fix    | `/update-styles`  | Update Tailwind styles with dark mode support                               |
+| Skill           | Intent | Invocation        | Model  | Description                                                                 |
+|-----------------|--------|-------------------|--------|-----------------------------------------------------------------------------|
+| quick-fix       | fix    | `/quick-fix`      | haiku  | Fix small bugs in 1-3 files following existing patterns                    |
+| doc-edit        | docs   | `/doc-edit`       | haiku  | Update documentation (README, comments, MDX, markdown)                      |
+| pr-review-lite  | review | `/pr-review-lite` | haiku  | Quick checklist review of a PR (style, obvious bugs, Astro patterns)        |
+| fix-lint        | fix    | `/fix-lint`       | haiku  | Fix Biome linting/formatting errors in 1-3 files                           |
+| type-fix        | fix    | `/type-fix`       | haiku  | Fix TypeScript type errors in 1-3 files (explicit types, Astro types)      |
+| security-check  | review | `/security-check` | haiku  | Quick security checklist (secrets, API routes, client exposure)             |
+| git-commit-push | execute| `/git-commit-push`| haiku  | Commit all changes and push to remote                                       |
+| add-component   | create | `/add-component`  | haiku  | Create new Astro or Svelte component with correct patterns                  |
+| add-page        | create | `/add-page`       | haiku  | Create new page with routing and MainLayout                                 |
+| add-blog-post   | create | `/add-blog-post`  | haiku  | Create blog post with Content Collections frontmatter                       |
+| translate-sync  | execute| `/translate-sync` | haiku  | Synchronize content between English and Spanish versions                    |
+| update-styles   | fix    | `/update-styles`  | haiku  | Update Tailwind styles with dark mode support                               |
 
 ### Tier 2 (Standard)
 
 Everyday development work.
 
-| Skill         | Intent   | Invocation       | Description                                                              |
-|---------------|----------|------------------|--------------------------------------------------------------------------|
-| write-tests   | tests    | `/write-tests`   | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
-| refactor-safe | execute  | `/refactor-safe` | Safe refactor in bounded scope (1-10 files, no behavior change)          |
+| Skill         | Intent   | Invocation       | Model  | Description                                                              |
+|---------------|----------|------------------|--------|--------------------------------------------------------------------------|
+| write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
+| refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
 
 ### Tier 3 (Heavy/Reasoning)
 
 Complex planning and architecture.
 
-| Skill | Intent | Invocation | Description |
-|-------|--------|-------------|-------------|
-| *Add with /skill-create* | | | |
+| Skill | Intent | Invocation | Model | Description |
+|-------|--------|-------------|-------|-------------|
+| *Add with /skill-create* | | | | |
 
 ---
 
@@ -62,20 +62,20 @@ Agents are specialized personas for different types of work.
 
 Development and review specialists.
 
-| Agent             | Scope                          | Description                                                |
-|-------------------|---------------------------------|------------------------------------------------------------|
-| reviewer          | Code review and quality analysis | Thorough PR review; Astro/Svelte patterns, dark mode, quality |
-| executor          | Executing predefined plans     | Follows plans step by step; implements and validates      |
-| security-auditor  | Security review (read-only)    | Static site security; API routes, secrets, client exposure |
-| i18n-guardian     | Bilingual content & translation quality | Translation quality specialist; bilingual consistency enforcer |
+| Agent             | Scope                          | Model  | Description                                                |
+|-------------------|---------------------------------|--------|------------------------------------------------------------|
+| reviewer          | Code review and quality analysis | sonnet | Thorough PR review; Astro/Svelte patterns, dark mode, quality |
+| executor          | Executing predefined plans     | sonnet | Follows plans step by step; implements and validates      |
+| security-auditor  | Security review (read-only)    | sonnet | Static site security; API routes, secrets, client exposure |
+| i18n-guardian     | Bilingual content & translation quality | sonnet | Translation quality specialist; bilingual consistency enforcer |
 
 ### Tier 3 (Heavy/Reasoning)
 
 Planning and architecture specialists.
 
-| Agent     | Scope                                  | Description                                      |
-|-----------|----------------------------------------|--------------------------------------------------|
-| architect | Architecture, design, planning (no code) | Component design, routing, Content Collections planning |
+| Agent     | Scope                                  | Model | Description                                      |
+|-----------|----------------------------------------|-------|--------------------------------------------------|
+| architect | Architecture, design, planning (no code) | opus  | Component design, routing, Content Collections planning |
 
 ---
 
@@ -249,6 +249,24 @@ Use this table to decide whether to invoke a Skill or an Agent.
 
 ---
 
+## Compatibility Notes
+
+Skills and agents use the **Agent Skills open standard** (agentskills.io) for cross-tool compatibility.
+
+| Feature | Claude Code | Cursor | Codex |
+|---------|-------------|--------|-------|
+| Skill invocation (`/skill-name`) | Yes | Yes | Yes |
+| Auto-invocation by description | Yes | Yes | Yes |
+| Model routing (haiku/sonnet/opus) | Yes | Ignored | Ignored |
+| `allowed-tools` (skills) | Yes | Ignored | Ignored |
+| `tools`/`disallowedTools` (agents) | Yes | Ignored | Ignored |
+| `permissionMode` (agents) | Yes | Ignored | Ignored |
+| Custom fields (tier, intent, etc.) | Ignored | Ignored | Ignored |
+
+**Key insight**: The `model` column above reflects Claude Code routing. Other tools ignore this field and use their default model.
+
+---
+
 ## Astro-Specific Notes
 
 All skills and agents are adapted for this Astro repository:
@@ -268,6 +286,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-02-04 | Format migration | Migrated all skills and agents to official Agent Skills standard format with model routing, allowed-tools, and compatibility fields |
 | 2026-02-03 | Catalog restructured | Added tier breakdown overview, interaction map, domain guides, decision guide, and changelog |
 | 2025-01-01 | translate-sync, i18n-guardian added | Bilingual content synchronization skill and translation quality agent |
 | 2025-01-01 | add-page, add-component updated | Updated with bilingual enforcement and i18n guidance |

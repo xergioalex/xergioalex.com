@@ -138,7 +138,12 @@ Follow these rules strictly:
    - Follow the detailed instructions carefully
    - Complete all steps in the Execution Checklist
 
-3. **Run validations:**
+3. **Use skills and agents:**
+   - If the task references a skill (`/skill-name`), invoke it directly via slash command
+   - If the task specifies agent-based validation, delegate to the named agent
+   - Skills and agents handle their own model routing and tool access automatically
+
+4. **Run validations:**
    - Execute ALL validation commands specified in the task file
    - If ANY validation fails:
      - STOP execution
@@ -146,7 +151,7 @@ Follow these rules strictly:
      - DO NOT mark task as `[x]`
      - Report to user and wait for guidance
 
-4. **Mark task complete:**
+5. **Mark task complete:**
    - Only when task meets ALL acceptance criteria
    - Only when ALL validations pass
    - Update plan README: `[ ] → [x]` in Task List
@@ -158,16 +163,16 @@ Follow these rules strictly:
      - Validation results
      - Notes (if any)
 
-5. **Commit changes:**
+6. **Commit changes:**
    - Commit after each completed task
    - Use conventional commit format: `type(scope): complete task N - description`
    - Include relevant files
 
-6. **Move to next task:**
+7. **Move to next task:**
    - After committing, move to the next `[ ]` task
    - Repeat the process
 
-7. **Stop conditions:**
+8. **Stop conditions:**
    - All tasks are `[x]` (plan complete)
    - Validation fails (wait for user guidance)
    - User requests pause

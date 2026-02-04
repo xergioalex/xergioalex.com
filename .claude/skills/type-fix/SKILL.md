@@ -1,6 +1,12 @@
 ---
 name: type-fix
-description: Fix TypeScript type errors in 1-3 files (explicit types, prefer no any)
+description: Fix TypeScript type errors in 1-3 files (explicit types, prefer no any). Use proactively for TypeScript type issues.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: fix
 max-files: 3

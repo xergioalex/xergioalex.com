@@ -1,6 +1,11 @@
 ---
 name: i18n-guardian
-description: Translation quality specialist and bilingual consistency enforcer
+description: Translation quality specialist and bilingual consistency enforcer. Use proactively for bilingual content audits and translation quality reviews.
+# === Claude Code specific ===
+disallowedTools: Bash
+model: sonnet
+permissionMode: default
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 scope: Bilingual content synchronization, translation quality, i18n completeness
 can-execute-code: false

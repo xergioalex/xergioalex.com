@@ -1,6 +1,10 @@
 ---
 name: executor
-description: Plan execution specialist that follows defined plans strictly without deviation
+description: Plan execution specialist that follows defined plans strictly without deviation. Use proactively for executing predefined task plans.
+# === Claude Code specific ===
+model: sonnet
+permissionMode: default
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 scope: Executing predefined plans step by step
 can-execute-code: true

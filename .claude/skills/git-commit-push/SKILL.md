@@ -1,6 +1,12 @@
 ---
 name: git-commit-push
-description: Commit all staged/unstaged changes and push to remote
+description: Commit all staged/unstaged changes and push to remote. Use proactively for committing and pushing changes.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: execute
 max-files: unlimited

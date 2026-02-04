@@ -1,6 +1,12 @@
 ---
 name: security-check
-description: Quick security checklist for a PR or set of files (secrets, input, logging)
+description: Quick security checklist for a PR or set of files (secrets, input, logging). Use proactively for security reviews.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: review
 ---

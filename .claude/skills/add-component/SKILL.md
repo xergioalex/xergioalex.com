@@ -1,6 +1,12 @@
 ---
 name: add-component
-description: Create new Astro or Svelte components with correct patterns
+description: Create new Astro or Svelte components with correct patterns. Use proactively when creating new UI components.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: create
 max-files: 3

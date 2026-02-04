@@ -725,25 +725,25 @@ When writing a task file (`N.task_*.md`), the plan generator MUST:
    - Example: Task is "Create a blog post" → use `/add-blog-post` skill
    - Example: Task is "Synchronize translations" → use `/translate-sync` skill
 
-2. **If a matching skill exists, reference it in the task instructions:**
+2. **If a matching skill exists, invoke it directly in the task instructions:**
 
    ````markdown
    ## 3. Instructions
 
-   Follow the procedure defined in the skill file:
-   **Skill:** `/skill-name` → `.claude/skills/skill-name/SKILL.md`
+   Invoke the skill directly:
+   **Skill:** `/skill-name`
 
-   Read the skill file and follow its steps. Additionally:
+   Run the skill using slash-command invocation. The skill will handle its own procedure, model routing, and tool access. Additionally:
    - [Any task-specific additions or overrides]
    - [Context specific to this plan]
    ````
 
 3. **If no matching skill exists, write instructions normally** (as described in section 5 of this guide)
 
-4. **For validation steps, check if a relevant agent exists:**
-   - Task involves code changes → add `reviewer` agent validation
-   - Task involves translation or bilingual content → add `i18n-guardian` agent validation
-   - Task involves security-sensitive changes → add `security-auditor` agent validation
+4. **For validation steps, delegate to the relevant agent:**
+   - Task involves code changes → delegate to `reviewer` agent
+   - Task involves translation or bilingual content → delegate to `i18n-guardian` agent
+   - Task involves security-sensitive changes → delegate to `security-auditor` agent
 
    ````markdown
    ## 5. Validation
@@ -756,11 +756,11 @@ When writing a task file (`N.task_*.md`), the plan generator MUST:
    ```
 
    Agent-based validation:
-   - Follow the checklist in `.claude/agents/{agent-name}.md` section "Audit Checklist"
-     to verify {specific concern}
+   - Delegate to the `{agent-name}` agent for {specific concern} review
+     (the agent handles its own checklist, model routing, and tool access)
    ````
 
-5. **Always prefer skill procedures over ad-hoc instructions** when a skill covers the task's objective, even partially. The skill has been tested and refined; ad-hoc instructions have not.
+5. **Always prefer skill invocation over ad-hoc instructions** when a skill covers the task's objective, even partially. Skills handle their own model routing (haiku/sonnet/opus), tool access, and procedures. Ad-hoc instructions lack these optimizations.
 
 ### How to Reference Skills & Agents in Plan README
 

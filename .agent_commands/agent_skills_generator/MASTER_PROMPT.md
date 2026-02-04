@@ -256,7 +256,7 @@ Use `templates/SKILL_TEMPLATE.md` as base.
 
 Fill these sections:
 
-1. **Frontmatter** - name, description, tier, intent
+1. **Frontmatter** - name, description, disable-model-invocation, allowed-tools, model (based on tier: 1→haiku, 2→sonnet, 3→opus), tier, intent, max-files, max-loc. Include "Use proactively for..." in description.
 2. **Objective** - Clear statement from PURPOSE
 3. **Non-Goals** - What this skill does NOT do (important!)
 4. **Tier Classification** - From B.2, with reasoning
@@ -372,7 +372,7 @@ Use `templates/AGENT_TEMPLATE.md` as base.
 
 Fill these sections:
 
-1. **Frontmatter** - name, description, tier, scope
+1. **Frontmatter** - name, description (with "Use proactively for..."), model (based on tier: 1→haiku, 2→sonnet, 3→opus), tools OR disallowedTools (based on restrictions), permissionMode, tier, scope, can-execute-code, can-modify-files
 2. **Role** - Detailed persona description
 3. **Tier Classification** - From C.2, with reasoning
 4. **Scope** - What they handle AND don't handle
@@ -579,9 +579,17 @@ START
 ```markdown
 ---
 name: add-blog-post
-description: Create a new blog post with proper frontmatter
+description: Create a new blog post with proper frontmatter. Use proactively when creating new blog posts.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: create
+max-files: 2
+max-loc: 400
 ---
 
 # Skill: Add Blog Post
@@ -616,9 +624,16 @@ Create a new blog post in src/content/blog/ with correct frontmatter schema...
 ```markdown
 ---
 name: a11y-reviewer
-description: Reviews components for accessibility issues
+description: Reviews components for accessibility issues. Use proactively for accessibility audits.
+# === Claude Code specific ===
+tools: Read, Grep, Glob, Bash
+model: sonnet
+permissionMode: default
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 scope: Accessibility analysis and recommendations
+can-execute-code: false
+can-modify-files: false
 ---
 
 # Agent: Accessibility Reviewer

@@ -1,6 +1,11 @@
 ---
 name: security-auditor
-description: Security-focused reviewer for static sites, API routes, secrets, and input validation
+description: Security-focused reviewer for static sites, API routes, secrets, and input validation. Use proactively for security reviews of PRs and code changes.
+# === Claude Code specific ===
+tools: Read, Grep, Glob, Bash
+model: sonnet
+permissionMode: default
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 scope: Security review and recommendations (read-only)
 can-execute-code: false

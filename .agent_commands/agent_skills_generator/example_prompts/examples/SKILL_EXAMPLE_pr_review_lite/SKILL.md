@@ -1,6 +1,12 @@
 ---
 name: pr-review-lite
-description: Quick checklist review of a PR for style, obvious bugs, and missing tests
+description: Quick checklist review of a PR for style, obvious bugs, and missing tests. Use proactively for lightweight PR reviews.
+# === Universal (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false
+# === Claude Code specific ===
+allowed-tools: Read, Glob, Grep, Bash
+model: haiku
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 1
 intent: review
 ---

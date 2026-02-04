@@ -1,13 +1,19 @@
 ---
 name: { skill-name }
-description: { 1-2 line description of what this skill does }
+description: { 1-2 line description }. Use proactively for { use case }.
+# === Universal fields (Claude Code + Cursor + Codex) ===
+disable-model-invocation: false    # Set true for manual-only invocation
+# === Claude Code specific (full functionality) ===
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash  # Adjust per skill needs
+model: sonnet                      # haiku (tier 1) | sonnet (tier 2) | opus (tier 3)
+# argument-hint: "[parameter]"    # Uncomment if skill takes arguments
+# context: fork                    # Uncomment to run in isolated subagent
+# agent: Explore                   # Which subagent when context: fork
+# === Documentation fields (ignored by all tools, useful for humans) ===
 tier: { 1|2|3 }
-intent: { plan|execute|review|docs|tests|fix }
-# Optional metadata:
-# allowed-tools: [read, write, shell]
-# requires-confirmation: false
-# max-files: 3
-# max-loc: 100
+intent: { plan|execute|review|docs|tests|fix|create }
+max-files: { N }
+max-loc: { N }
 ---
 
 # Skill: {Human-Readable Skill Name}

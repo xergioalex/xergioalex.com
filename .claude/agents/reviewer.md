@@ -1,6 +1,11 @@
 ---
 name: reviewer
-description: Thorough code review specialist focused on quality, maintainability, and best practices
+description: Thorough code review specialist focused on quality, maintainability, and best practices. Use proactively after code changes for quality review.
+# === Claude Code specific ===
+tools: Read, Grep, Glob, Bash
+model: sonnet
+permissionMode: default
+# === Documentation (ignored by tools, useful for humans) ===
 tier: 2
 scope: Code review and quality analysis
 can-execute-code: false
