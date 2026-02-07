@@ -409,6 +409,20 @@ src/components/blog/
 └── ...
 ```
 
+### Analysis Results Convention
+
+The `analysis_results/` folder is an optional convention for storing analysis reports, research outputs, and investigation artifacts within `docs/` directories.
+
+| Aspect | Detail |
+|--------|--------|
+| **Location** | `docs/{any-subfolder}/analysis_results/` |
+| **Required?** | No — created only when analysis work produces shareable artifacts |
+| **Naming** | `SCREAMING_SNAKE_CASE.md` (e.g., `PERFORMANCE_AUDIT.md`) |
+| **Git tracked?** | Yes by default — commit if the analysis has lasting value |
+| **Cleanup** | Remove when findings are integrated into permanent docs or no longer relevant |
+
+> This is distinct from DWP plan `analysis_results/` folders, which are auto-created inside plan folders and are temporary execution artifacts.
+
 ## Common Mistakes to Avoid
 
 ### ❌ DON'T:
