@@ -12,15 +12,19 @@ You are a deep work plan creator that guides users through a smooth, unified wor
 
 ## Parameter Reference
 
-| Parameter | Description | Example |
-|-----------|-------------|---------|
-| (none) | Interactive guided flow | `/dwp-create` |
-| `{name}` | Named plan, guided flow | `/dwp-create auth_refactor` |
-| `{name} trust` | Named plan, no confirmations | `/dwp-create auth_refactor trust` |
-| `trust` or `auto` | Full auto-mode (asks info, no confirmations) | `/dwp-create trust` |
-| `draft {name}` | Draft only (legacy support) | `/dwp-create draft my_plan` |
-| `from-draft {file}` | From existing draft | `/dwp-create from-draft PLAN_x_draft.md` |
-| `from {file}` | Alias for from-draft | `/dwp-create from PLAN_x_draft.md` |
+| Input | Classification | Mode | Behavior | Example |
+|-------|---------------|------|----------|---------|
+| (none) | — | guided | Ask for name, then ask questions | `/dwp-create` |
+| `{short text}` | **name-only** | guided | Extract name, ask questions immediately | `/dwp-create improve error handling` |
+| `{long text}` | **full-context** | guided | Infer name, proceed to draft directly | `/dwp-create Refactor auth to use JWT across all services. Currently using sessions...` |
+| `trust` or `auto` | — | trust | Ask for name, then ask questions (no confirmations) | `/dwp-create trust` |
+| `{short text} trust` | **name-only** | trust | Extract name, ask questions immediately (no confirmations) | `/dwp-create improve-error-handling trust` |
+| `{long text} trust` | **full-context** | trust | Infer name, proceed to draft directly (no confirmations) | `/dwp-create Refactor auth to use JWT... trust` |
+| `draft {name}` | — | draft-only | Draft only (legacy support) | `/dwp-create draft my_plan` |
+| `from-draft {file}` | — | from-draft | From existing draft | `/dwp-create from-draft PLAN_x_draft.md` |
+| `from {file}` | — | from-draft | Alias for from-draft | `/dwp-create from PLAN_x_draft.md` |
+
+> **Name format:** Users can type names in any format (spaces, hyphens, camelCase, etc.). The agent auto-converts to `snake_case` internally.
 
 ## Modes
 
@@ -40,19 +44,32 @@ You are a deep work plan creator that guides users through a smooth, unified wor
 
 ### Step 0: Parse Parameters & Determine Mode
 
-**Parse the command:**
+**Parse the command in this order:**
 
-```
-/dwp-create                          → mode: "guided", no name
-/dwp-create {name}                   → mode: "guided", name provided
-/dwp-create trust                    → mode: "trust", no name
-/dwp-create auto                     → mode: "trust", no name
-/dwp-create {name} trust             → mode: "trust", name provided
-/dwp-create {name} auto              → mode: "trust", name provided
-/dwp-create draft {name}             → mode: "draft-only", name provided
-/dwp-create from-draft {file}        → mode: "from-draft", file provided
-/dwp-create from {file}              → mode: "from-draft", file provided
-```
+**0.1 Detect trust mode:**
+- If the LAST word is `trust` or `auto`, remove it and set `trust_mode = true`
+- Otherwise `trust_mode = false`
+
+**0.2 Detect special modes (check FIRST word):**
+- If first word is `draft` → `mode = "draft-only"`, remaining text = plan name
+- If first word is `from-draft` or `from` → `mode = "from-draft"`, remaining text = file path
+- Otherwise → continue to input classification (0.3)
+
+**0.3 Classify remaining input:**
+
+| Condition | Classification | What to do |
+|-----------|---------------|------------|
+| No remaining text | **no input** | Go to Step 1, then Step 2 (ask for name + all info) |
+| ≤10 words AND no complete sentences AND no line breaks | **name-only** | Convert to snake_case → plan name. Go to Step 1, then Step 2 (skip name question, ask all other info) |
+| >10 words OR contains detailed sentences (periods ending declarative statements) OR has line breaks | **full-context** | Infer plan name from first meaningful words → snake_case. Go to Step 1, then Step 3 (skip questions, use provided context as input) |
+
+**Name auto-conversion to snake_case:**
+- Lowercase everything
+- Replace hyphens and spaces with underscores
+- Remove special characters (keep only `a-z`, `0-9`, `_`)
+- Examples: `improve Feature X` → `improve_feature_x`, `add-stripe-payments` → `add_stripe_payments`, `RefactorAuth` → `refactorauth`
+
+> **⚠️ CRITICAL: When input is classified as name-only, NEVER explore the codebase, read project files, or research the topic before asking the user questions. The name only tells you what to CALL the plan — it does NOT tell you what to DO. Go DIRECTLY to Step 2 to ask the user what they want to achieve.**
 
 **For `from-draft` mode:**
 - Skip to Step 4.3 (Create from existing draft)
@@ -64,8 +81,11 @@ You are a deep work plan creator that guides users through a smooth, unified wor
 - Create only draft + refined draft
 - Skip final plan creation
 
-**For other modes:**
-- Continue to Step 1
+**For `no input` or `name-only`:**
+- Continue to Step 1, then Step 2 (Gather Information via questions)
+
+**For `full-context`:**
+- Continue to Step 1, then skip directly to Step 3 (Create Draft from provided context)
 
 ---
 
@@ -100,15 +120,18 @@ Let's start!
 
 ### Step 2: Gather Information (Conversational)
 
+> **Skip this entire step if input was classified as `full-context` in Step 0.** The user already provided everything — go directly to Step 3 using their input as the context.
+
 **Collect information naturally. Ask these questions:**
 
-**2.1 Plan name (if not provided via parameter):**
+**2.1 Plan name (if not provided via parameter or name-only input):**
 ```
 What should this plan be called?
-(Use snake_case, e.g., "refactor_auth", "add_stripe_payments")
+(e.g., "refactor auth", "add stripe payments" — any format works, I'll handle the rest)
 ```
-- Validate: snake_case, lowercase
+- Auto-convert any format to snake_case (lowercase, underscores)
 - Add `PLAN_` prefix internally if missing
+- **Skip this question if name was already extracted from the input**
 
 **2.2 Objective:**
 ```
@@ -668,18 +691,12 @@ Options:
 Enter option (1-3):
 ```
 
-**Invalid plan name format:**
+**Plan name auto-conversion notice (informational, not an error):**
 ```
-⚠️  Plan name must be snake_case (lowercase with underscores).
-
-Examples:
-  ✓ refactor_auth
-  ✓ add_stripe_payments
-  ✗ RefactorAuth
-  ✗ add-stripe-payments
-
-Please enter a valid name:
+📝 Plan name converted: "{original_input}" → "{snake_case_name}"
 ```
+- This is shown when the name was auto-converted (e.g., "Improve Feature X" → "improve_feature_x")
+- No user action needed — just informational
 
 **Draft file not found (for from-draft mode):**
 ```
@@ -707,7 +724,7 @@ Can you break this down into smaller steps?
 ## Important Notes
 
 - **Git ignore:** Files in `drafts/` and `plans/` are git-ignored (except README.md and .gitkeep)
-- **Naming:** Plan names must be snake_case, lowercase
+- **Naming:** Plan names are auto-converted to snake_case (users can type in any format)
 - **Tasks:** Each task should be atomic and independently completable
 - **Validation:** Include validation commands in each task file
 - **Reference:** Follow guide at `.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`
@@ -716,14 +733,42 @@ Can you break this down into smaller steps?
 
 ## Quick Examples
 
-**Fastest path (trust mode, execute immediately):**
+**1. Name-only input (any format — asks questions first):**
 ```
-User: /dwp-create auth_refactor trust
+User: /dwp-create improve error handling
 
-Agent: 🚀 Deep Work Plan Creator (Trust Mode)
+Agent: 📝 Plan name converted: "improve error handling" → "improve_error_handling"
+
+       🎯 Deep Work Plan Creator
+
        What's the goal of this plan?
 
-User: Refactor authentication to use JWT tokens
+User: Better error handling across all Lambda functions
+
+Agent: Tell me about the context...
+
+User: [provides context and tasks]
+
+Agent: Creating your plan...
+       [1/3] Creating draft... ✓
+       [2/3] Refining draft... ✓
+       [3/3] Preparing for review...
+
+       📋 Plan Ready for Review: PLAN_improve_error_handling
+       [shows summary]
+```
+
+**2. Name-only + trust mode (hyphens — asks questions, no confirmations):**
+```
+User: /dwp-create improve-error-handling trust
+
+Agent: 📝 Plan name converted: "improve-error-handling" → "improve_error_handling"
+
+       🚀 Deep Work Plan Creator (Trust Mode)
+
+       What's the goal of this plan?
+
+User: Standardize error handling across all services
 
 Agent: Tell me about the context...
 
@@ -733,80 +778,86 @@ Agent: Creating your plan...
        [1/3] Creating draft... ✓
        [2/3] Refining draft... ✓
        [3/3] Creating final plan... ✓
-       
+
        ✅ Plan Created Successfully!
-       
-       What would you like to do?
-       1. 🚀 Execute the plan now
-       2. 👀 Review the plan first
-       3. ✅ Done for now
-
-User: 1
-
-Agent: 🚀 Starting Execution: PLAN_auth_refactor
-       [begins executing tasks automatically]
 ```
 
-**Interactive guided flow with review:**
+**3. Full-context input (proceeds directly, no questions):**
+```
+User: /dwp-create Refactor the authentication system to use JWT tokens across all services. Currently using session-based auth stored in Redis. Need to update the auth middleware, token generation, and all API endpoints that check permissions. Constraints: must be backward-compatible during migration.
+
+Agent: 📝 Inferred plan name: "refactor_authentication_system"
+
+       🎯 Deep Work Plan Creator
+
+       Creating your plan from provided context...
+       [1/3] Creating draft... ✓
+       [2/3] Refining draft... ✓
+       [3/3] Preparing for review...
+
+       📋 Plan Ready for Review: PLAN_refactor_authentication_system
+       [shows summary]
+```
+
+**4. Full-context + trust (proceeds directly, no confirmations):**
+```
+User: /dwp-create Refactor the authentication system to use JWT tokens across all services. Currently using session-based auth stored in Redis. Need to update auth middleware, token generation, and all API endpoints trust
+
+Agent: 📝 Inferred plan name: "refactor_authentication_system"
+
+       🚀 Deep Work Plan Creator (Trust Mode)
+
+       Creating your plan from provided context...
+       [1/3] Creating draft... ✓
+       [2/3] Refining draft... ✓
+       [3/3] Creating final plan... ✓
+
+       ✅ Plan Created Successfully!
+```
+
+**5. No input (fully interactive):**
 ```
 User: /dwp-create
 
 Agent: 🎯 Deep Work Plan Creator
+
        What should this plan be called?
+       (e.g., "refactor auth", "add stripe payments" — any format works, I'll handle the rest)
 
-User: improve_error_handling
+User: My Awesome Plan
 
-Agent: What's the goal of this plan?
+Agent: 📝 Plan name converted: "My Awesome Plan" → "my_awesome_plan"
 
-User: Better error handling across all Lambda functions
+       What's the goal of this plan?
 
-Agent: [gathers info, creates draft+refined]
-       
-       📋 Plan Ready for Review
-       [shows summary]
-       
-       What would you like to do?
-       1. ✅ Looks good, create the final plan
-       ...
+User: [provides goal, context, tasks through guided questions]
+```
 
-User: 1
+**6. Create now, execute later:**
+```
+User: /dwp-create my_plan trust
 
-Agent: ✅ Plan Created Successfully!
-       
+Agent: 🚀 Deep Work Plan Creator (Trust Mode)
+
+       What's the goal of this plan?
+
+User: [provides goal, context, tasks]
+
+Agent: Creating your plan...
+       [1/3] Creating draft... ✓
+       [2/3] Refining draft... ✓
+       [3/3] Creating final plan... ✓
+
+       ✅ Plan Created Successfully!
+
        What would you like to do?
        1. 🚀 Execute the plan now
        2. 👀 Review the plan first
        3. ✅ Done for now
 
-User: 2
-
-Agent: [shows README.md content]
-       
-       Ready to execute?
-       1. 🚀 Yes, execute now
-       2. ✅ No, I'll execute later
-
-User: 1
-
-Agent: 🚀 Starting Execution: PLAN_improve_error_handling
-       [begins executing tasks automatically]
-```
-
-**Create now, execute later:**
-```
-User: /dwp-create my_plan trust
-
-Agent: [gathers info, creates everything]
-       
-       ✅ Plan Created Successfully!
-       
-       What would you like to do?
-       1. 🚀 Execute the plan now
-       ...
-
 User: 3
 
 Agent: ✅ Plan ready at: .../PLAN_my_plan/
-       
+
        When ready, run: /dwp-execute my_plan
 ```
