@@ -125,7 +125,8 @@ Enter option (1-3):
 **Convert to plan:**
 1. Extract plan info from draft
 2. Create plan folder and all files following the guide
-3. Offer to execute (like `/dwp-create` does)
+3. Auto-create mandatory elements: `analysis_results/`, `PROGRESS.md`, Skills & Agents Discovery task, Executive Report task (same rules as `/dwp-create` Step 4.4)
+4. Offer to execute (like `/dwp-create` does)
 
 ---
 
@@ -204,6 +205,9 @@ Enter option (1-6):
 #### 3.5 Execute Modifications
 
 **Option 1 - Add new task(s):**
+
+> **IMPORTANT:** New tasks can only be inserted BEFORE the mandatory final tasks (Skills & Agents Discovery and Executive Report). These mandatory tasks always remain as the second-to-last and last tasks respectively.
+
 ```
 Where should the new task(s) be inserted?
 
@@ -211,11 +215,13 @@ Current tasks:
 1. {task_1_title}
 2. {task_2_title}
 3. {task_3_title}
+...
+{N-1}. Skills & Agents Discovery 🔒 (mandatory)
+{N}. Executive Report 🔒 (mandatory)
 
 Options:
-- Enter a number (1-{N}) to insert BEFORE that task
-- Enter "end" to add at the end
-- Enter "after {N}" to insert after task N
+- Enter a number (1-{N-2}) to insert BEFORE that task
+- Enter "before-mandatory" to add just before the mandatory tasks
 
 Position:
 ```
@@ -230,26 +236,35 @@ Describe the new task:
 Create task file with:
 - Title
 - Context (inherit from plan)
+- Read Before Starting (optional)
 - Goal
-- Instructions
+- Instructions (with re-anchoring)
 - Acceptance Criteria
+- Outputs (optional)
 - Validation commands
+- Rollback (optional)
 - Execution Checklist
 - Completion & Log section
 
-**Renumber subsequent tasks if inserted in middle.**
+**Renumber subsequent tasks if inserted in middle, including mandatory final tasks.**
 
 Update README.md task list accordingly.
 
 ---
 
 **Option 2 - Edit existing task:**
+
+> **Note:** Mandatory tasks (Skills & Agents Discovery and Executive Report) CAN be edited to customize their content for the specific plan. They cannot be deleted or reordered.
+
 ```
 Which task do you want to edit?
 
 1. {task_1_title}
 2. {task_2_title}
 3. {task_3_title}
+...
+{N-1}. Skills & Agents Discovery 🔒
+{N}. Executive Report 🔒
 
 Enter task number:
 ```
@@ -272,6 +287,12 @@ Apply changes to task file.
 ---
 
 **Option 3 - Reorganize tasks:**
+
+> **IMPORTANT: Mandatory task protection rules:**
+> - Skills & Agents Discovery task CANNOT be deleted or moved from second-to-last position
+> - Executive Report task CANNOT be deleted or moved from last position
+> - If user attempts to delete or move them, explain: "These are mandatory tasks. They can be edited but not deleted or reordered."
+
 ```
 Reorganization options:
 
@@ -284,6 +305,9 @@ Enter option (1-4):
 ```
 
 Handle each case appropriately, renumbering files as needed.
+**When moving tasks:** Only user-defined tasks can be moved. Mandatory tasks stay in their positions.
+**When deleting tasks:** Mandatory tasks cannot be deleted. Show error message if attempted.
+**When splitting/merging:** New tasks must be inserted before mandatory tasks.
 
 ---
 
@@ -345,8 +369,10 @@ Enter option (1-2):
 ## Important Notes
 
 - **Preserve completed work:** When modifying plans, never alter `[x]` completed tasks unless explicitly requested
-- **Renumber carefully:** When adding/removing tasks, update all task file numbers and README references
-- **Maintain consistency:** Ensure task files follow the standard format
+- **Protect mandatory tasks:** Skills & Agents Discovery and Executive Report cannot be deleted or reordered. They can be edited.
+- **Renumber carefully:** When adding/removing tasks, update all task file numbers and README references (including mandatory tasks)
+- **Draft-to-plan conversion:** Always includes auto-creation of `analysis_results/`, `PROGRESS.md`, and both mandatory final tasks
+- **Maintain consistency:** Ensure task files follow the standard format (including new optional sections)
 - **Git ignore:** Files in `drafts/` and `plans/` are git-ignored (except README.md and .gitkeep)
 - **Backup suggestion:** For major changes, consider creating a copy first
 
