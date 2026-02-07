@@ -1,4 +1,4 @@
-# DRAFT: Lambda Performance Optimization (Refined)
+# DRAFT: Add Reading Time to Blog Posts (Refined)
 
 **Status:** Refined draft (ready for plan creation)
 
@@ -8,112 +8,106 @@ Create a deep work plan following `.agent_commands/agent_deep_work_plans/GUIDE_T
 
 ## Objective
 
-Optimize the botFlow Lambda function to reduce cold start times from 3-5 seconds to under 1 second and decrease average execution duration by 40%. This will improve user experience across all chat platforms (Slack, Discord, Teams, Telegram) and reduce AWS Lambda costs.
+Add an estimated reading time indicator to all blog posts, displayed both on individual post pages and on blog listing cards. The feature should calculate reading time based on word count (average ~200 words per minute), work in both English and Spanish with proper translations, and support dark mode styling. This improves the reader experience by helping visitors decide which posts to read based on time commitment.
 
 ## Context
 
 **Location:**
 
-- Primary function: `src/functions/botFlow/`
-- Related infrastructure: `serverless/services/botFlow/`
-- Configuration: `serverless.base.config.ts`
+- Blog utility functions: `src/lib/blog.ts`
+- Blog post page (EN): `src/pages/blog/[...slug].astro`
+- Blog post page (ES): `src/pages/es/blog/[...slug].astro`
+- Blog card component: `src/components/blog/BlogCard.svelte`
+- Content schema: `src/content.config.ts`
+- Translations: `src/lib/translations.ts`
+- Components directory: `src/components/blog/`
 
-**Current Performance Metrics:**
+**Current State:**
 
-- Cold start time: 3-5 seconds
-- Average execution time: 800ms
-- Memory usage: 512MB (often hitting limits)
-- Bundle size: 15MB
+- Blog posts display title, date, hero image, tags, and description
+- No reading time is shown anywhere (neither on post pages nor listing cards)
+- The `BlogCard.svelte` component shows post preview with title, date, and description
+- Content Collections use Markdown/MDX with a Zod schema for frontmatter
+- The site is fully bilingual (English/Spanish) with translation support via `getTranslations()`
 
 **Technical Stack:**
 
-- Node.js 20.x runtime
-- TypeScript 5.9.2
-- Webpack 5.101.3 bundling
-- AWS Lambda with 512MB memory
-- DynamoDB for state management
+- Astro 5.16.15 with Content Collections
+- Svelte 5.48.0 for interactive components
+- TypeScript 5.9.3
+- Tailwind CSS 4.1.18 with dark mode support
+- Biome 2.3.11 for linting/formatting
+- MDX for enhanced blog posts
 
 **Constraints:**
 
-- Must maintain backward compatibility with all platform integrations
-- Cannot break existing handler patterns
-- Must follow TypeScript strict mode with explicit types
-- All code changes must pass existing tests (127 tests)
-- Logger usage only (NO console.\*)
-- Test files must use `*.spec.ts` naming
+- Must work in both English and Spanish (bilingual synchronization is mandatory)
+- Must support dark mode via Tailwind's `dark:` variant
+- Must follow existing component patterns (Astro for static, Svelte for interactive)
+- Must use `getTranslations()` for all user-visible text
+- All code and comments in English
+- Must pass `npm run biome:check` and `npm run astro:check`
+- Must use `@` path alias for imports
 
 **Related Documentation:**
 
-- Performance baseline: `docs/PERFORMANCE.md`
-- Lambda architecture: `docs/ARCHITECTURE.md`
-- Testing requirements: `docs/TESTING_GUIDE.md`
+- Architecture patterns: `docs/ARCHITECTURE.md`
+- Coding standards: `docs/STANDARDS.md`
+- Product specification: `docs/PRODUCT_SPEC.md`
 
 ## Tasks
 
-1. **Analyze and Establish Baseline**
-   - Profile current Lambda execution using AWS X-Ray
-   - Identify top 5 performance bottlenecks
-   - Document current metrics (cold start, execution time, memory)
-   - Create performance baseline report
+1. **Create Reading Time Utility Function**
+   - Add `calculateReadingTime(content: string): number` function to `src/lib/blog.ts`
+   - Use average reading speed of ~200 words per minute
+   - Handle both Markdown and MDX content (strip markup before counting)
+   - Return time in minutes (minimum 1 minute)
+   - Add proper TypeScript types
 
-2. **Optimize Webpack Bundle**
-   - Analyze bundle size with webpack-bundle-analyzer
-   - Implement tree shaking for unused dependencies
-   - Split large dependencies into separate chunks
-   - Enable production optimizations in webpack config
-   - Target: Reduce bundle from 15MB to <8MB
+2. **Create ReadingTime Component**
+   - Create `src/components/blog/ReadingTime.astro` component
+   - Accept `minutes: number` and `lang: Language` props
+   - Display reading time with a clock icon (e.g., "5 min read" / "5 min de lectura")
+   - Style with Tailwind CSS, support dark mode
+   - Use `getTranslations()` for bilingual text
 
-3. **Optimize DynamoDB Queries**
-   - Review all DynamoDB queries in botFlow
-   - Implement batch reads where possible
-   - Add DynamoDB connection reusing
-   - Optimize query patterns (use GSI efficiently)
-   - Add query result caching for frequently accessed data
+3. **Add Translation Strings**
+   - Add reading time translation keys to `src/lib/translations.ts`
+   - English: "min read", Spanish: "min de lectura"
+   - Both languages must be added simultaneously (mandatory)
 
-4. **Implement Connection Pooling**
-   - Add HTTP connection pooling for DailyBot API calls
-   - Reuse AWS SDK clients across invocations
-   - Implement connection warming for DynamoDB
-   - Add timeout configurations to prevent hanging connections
+4. **Integrate into Blog Post Pages**
+   - Add `ReadingTime` component to `src/pages/blog/[...slug].astro` (English)
+   - Add `ReadingTime` component to `src/pages/es/blog/[...slug].astro` (Spanish)
+   - Position below the post date, above the content
+   - Calculate reading time from the post's raw content body
+   - Ensure consistent layout in both language versions
 
-5. **Reduce Lambda Cold Starts**
-   - Increase Lambda memory to 1024MB (faster CPU = faster init)
-   - Minimize imports in handler entry point
-   - Implement Lambda provisioned concurrency for critical paths
-   - Use Lambda layers for common dependencies
+5. **Add Reading Time to Blog Cards**
+   - Pass reading time data to `BlogCard.svelte` component
+   - Display reading time as a subtle badge on each card
+   - Update all pages that render BlogCard to include the reading time prop
+   - Ensure it works on blog listing, tag filtering, and pagination pages
 
-6. **Add Performance Monitoring**
-   - Add custom CloudWatch metrics for cold starts
-   - Implement execution time tracking with Logger
-   - Create performance dashboard in CloudWatch
-   - Set up alarms for performance degradation
-
-7. **Comprehensive Testing**
-   - Run full test suite (`npm run test`)
-   - Add performance regression tests
-   - Test with all platforms (Slack, Discord, Teams, Telegram)
-   - Load test with realistic traffic patterns
-   - Validate no functionality broken
-
-8. **Update Documentation**
-   - Update `docs/PERFORMANCE.md` with new benchmarks
-   - Document optimization techniques in `docs/ARCHITECTURE.md`
-   - Update Serverless configuration comments
-   - Add performance best practices section
+6. **Update Documentation**
+   - Document the new ReadingTime component in component docs
+   - Update `docs/ARCHITECTURE.md` if new patterns were introduced
+   - Add reading time to component inventory
 
 ## Plan Name
 
-`PLAN_lambda_performance_optimization`
+`PLAN_add_blog_reading_time`
 
 ## Global Guidelines
 
-- **Branch:** Work in feature branch `feature/lambda-performance-optimization`
-- **Commits:** Use conventional commit format: `perf(lambda): description`
-- **Validation:** Run `codecheck` after each task
-- **Testing:** All 127 existing tests must pass
-- **Code standards:** Follow `CLAUDE.md` and `STANDARDS.md`
-- **Performance target:** 60% reduction in cold starts, 40% reduction in execution time
-- **Budget:** Stay within AWS Free Tier limits during testing
+- **Branch:** Work on `dev` branch
+- **Commits:** Use conventional commit format: `feat(blog): description`
+- **Validation:** Run `npm run biome:check` and `npm run astro:check` after each task
+- **Standards:** Follow `docs/STANDARDS.md` and `AGENTS.md`
+- **Bilingual:** All content changes must exist in both English and Spanish
+- **Dark mode:** All new UI elements must support dark mode
+- **Testing:** Manual testing via `npm run dev` (no automated tests configured yet)
+- **Skill usage:** Use `/add-component` skill for component creation, `/translate-sync` for bilingual content
 
 ---
 
