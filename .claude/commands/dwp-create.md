@@ -256,29 +256,282 @@ What would you like to adjust?
 
 2. **Follow the guide:** `.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`
 
-3. **Create files:**
+3. **Create core files:**
 
    **README.md:**
    - Goal
    - Context
+   - Plan Variables (optional)
    - Global Guidelines
-   - Task List with `[ ]` checkboxes and links to task files
-   - Execution Rules for the Agent
+   - Task List with `[ ]` checkboxes and links to task files (including mandatory final tasks)
+   - Note: `> **Mandatory final tasks:** Every plan includes Skills & Agents Discovery (second-to-last) and Executive Report (last).`
+   - Execution Rules for the Agent (including PROGRESS.md update step)
+   - Skills & Agents Used in This Plan
    - Plan Status / Notes
+   - Analysis Outputs section
    - Quick Reference to PROMPTS.md
 
    **PROMPTS.md:**
    - Use template from `.agent_commands/agent_deep_work_plans/results/plans/PROMPTS_TEMPLATE.md`
    - Replace `{PLAN_NAME}` with actual plan name
 
-   **Task files (N.task_{task_title}.md):**
-   - One file per task
-   - Include: Title, Context, Goal, Instructions, Acceptance Criteria, Validation commands, Execution Checklist, Completion & Log section
+   **User task files (N.task_{task_title}.md):**
+   - One file per user-defined task
+   - Include: Title, Context, Read Before Starting (optional), Goal, Instructions (with re-anchoring), Acceptance Criteria, Outputs (optional), Validation commands, Rollback (optional), Execution Checklist, Completion & Log section
 
-4. **Ensure quality:**
+4. **Create mandatory elements (AUTO-GENERATED):**
+
+   **4a. Create `analysis_results/` folder:**
+   - Create `analysis_results/` inside the plan directory
+   - Add `.gitkeep` to make the folder visible
+
+   **4b. Create `PROGRESS.md`:**
+   ```markdown
+   # Plan Progress: {Plan Title}
+
+   > This file is updated after each task completion to maintain a running summary.
+
+   ## Task Summaries
+   <!-- Updated after each task -->
+
+   ## Key Decisions
+   <!-- Running list of significant decisions -->
+
+   ## Important Values & Paths
+   <!-- Running list of key values established during execution -->
+   ```
+
+   **4c. Auto-add Skills & Agents Discovery task** as the second-to-last task (`{N-1}.task_skills_agents_discovery.md`):
+
+   ```markdown
+   # Task {N-1}: Skills & Agents Discovery
+
+   ## 1. Context
+
+   **Purpose:** This is a mandatory task in every Deep Work Plan. It evaluates whether the work completed during this plan has created new patterns, components, workflows, or architectural structures that would benefit from becoming reusable Skills or Agents. It also evaluates whether existing skills/agents need updates and whether the skills generator system itself needs improvements.
+
+   **Why this matters:**
+   - New patterns created during plans are prime candidates for reusable recipes
+   - Existing skills/agents may need updates to reflect changes made during the plan
+   - The skills generator system itself may benefit from improvements
+   - This creates a virtuous cycle: plans → skills → better plans → better skills
+
+   **Where:**
+   - Skills catalog: `.claude/docs/skills_agents_catalog.md`
+   - Skills directory: `.claude/skills/{skill-name}/SKILL.md`
+   - Agents directory: `.claude/agents/{agent-name}.md`
+   - Skills generator: `.agent_commands/agent_skills_generator/`
+
+   **Dependencies:** ALL previous user-defined tasks must be completed.
+
+   ## 2. Goal
+
+   Evaluate all work completed during this plan and: (1) determine if new Skills or Agents should be created, (2) determine if existing Skills or Agents need updates, (3) evaluate if the skills generator system needs improvements. If changes are warranted, implement them. "No changes needed" is a valid outcome.
+
+   ## 3. Instructions
+
+   > **Before starting:** Re-read the plan README section 1 (Goal) to ensure this task's work aligns with the overall objective.
+
+   ### Step 1: Review all completed tasks
+   Read every completed task's Completion & Log. Note new patterns, structures, components, procedures, and validation expertise.
+
+   ### Step 2: Check existing catalog
+   Read `.claude/docs/skills_agents_catalog.md` to understand what already exists.
+
+   ### Step 3: Evaluate for NEW skills/agents
+
+   **Create a SKILL when:** A new repeatable, specific procedure was established that will be needed again.
+   **Create an AGENT when:** New specialized validation/review expertise was needed that applies to future work.
+   **Do NOT create when:** Work is one-off, existing skills cover it, pattern is too generic, or too project-specific.
+
+   | Pattern | Repeatable? | Existing Coverage? | Candidate? | Type | Rationale |
+   |---------|:-----------:|:------------------:|:----------:|:----:|-----------|
+   | {pattern} | Yes/No | Yes ({name}) / No | Yes/No | Skill/Agent/— | {why} |
+
+   ### Step 4: Evaluate EXISTING skills/agents for updates
+
+   | Skill/Agent | Update Needed? | What Changed | Proposed Update |
+   |-------------|:--------------:|-------------|-----------------|
+   | {name} | Yes/No | {what the plan changed} | {specific update} |
+
+   ### Step 5: Evaluate skills generator system
+
+   Read `.agent_commands/agent_skills_generator/GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md` and templates. Assess:
+
+   | Aspect | Improvement Needed? | Proposed Change |
+   |--------|:-------------------:|-----------------|
+   | GUIDE content | Yes/No | {describe} |
+   | Skill template | Yes/No | {describe} |
+   | Agent template | Yes/No | {describe} |
+   | Catalog format | Yes/No | {describe} |
+
+   ### Step 6: Implement changes
+   - Create new skills using `.agent_commands/agent_skills_generator/templates/SKILL_TEMPLATE.md`
+   - Create new agents using `.agent_commands/agent_skills_generator/templates/AGENT_TEMPLATE.md`
+   - Update existing skills/agents (add to Changelog section)
+   - Apply generator improvements if identified
+   - Update catalog for all changes
+
+   ### Step 7: Handle "no changes needed"
+   If nothing warrants changes, document the evaluation results and move on.
+
+   ## 4. Acceptance Criteria
+
+   - [ ] All completed tasks reviewed
+   - [ ] Existing catalog checked
+   - [ ] New pattern evaluation completed
+   - [ ] Existing skills/agents evaluated for updates
+   - [ ] Skills generator system evaluated
+   - [ ] Changes implemented (or "no changes needed" documented)
+   - [ ] Catalog updated if any changes made
+
+   ## 5. Validation
+
+   Verify: evaluation tables are filled, any new files follow templates, catalog is consistent.
+
+   ## 6. Execution Checklist
+
+   - [ ] Read all completed task Completion & Logs
+   - [ ] Read existing catalog
+   - [ ] Evaluate new patterns
+   - [ ] Evaluate existing skills/agents for updates
+   - [ ] Evaluate skills generator system
+   - [ ] Implement changes (or document "no changes needed")
+   - [ ] Update catalog
+   - [ ] Update plan README [x]
+   - [ ] Update PROGRESS.md
+   - [ ] Commit
+   - [ ] Update log below
+
+   ## 7. Completion & Log
+
+   **Status:** Not started
+
+   - Patterns evaluated:
+   - New skills created: (or "None needed")
+   - New agents created: (or "None needed")
+   - Existing skills updated: (or "None needed")
+   - Existing agents updated: (or "None needed")
+   - Generator improvements: (or "None needed")
+   - Catalog updated: Yes/No
+   ```
+
+   **4d. Auto-add Executive Report task** as the last task (`{N}.task_executive_report.md`):
+
+   ```markdown
+   # Task {N}: Executive Report
+
+   ## 1. Context
+
+   **Purpose:** This is the mandatory final task of every Deep Work Plan. It generates a comprehensive Executive Report summarizing everything accomplished, written for cross-functional consumption (Product, Engineering, QA, Stakeholders).
+
+   **Where:**
+   - Output: `analysis_results/EXECUTIVE_REPORT.md`
+   - Input: All completed tasks' Completion & Log sections
+
+   **Dependencies:** ALL previous tasks must be completed.
+
+   ## 2. Goal
+
+   Generate `analysis_results/EXECUTIVE_REPORT.md` — a comprehensive, multi-audience report.
+
+   ## 3. Instructions
+
+   > **Before starting:** Re-read the plan README section 1 (Goal).
+
+   ### Step 1: Gather information from all completed tasks
+   Read every Completion & Log. Extract: what was done, files changed, decisions made, validation results, blockers.
+
+   ### Step 2: Gather additional context
+   Read plan README. Review `git log` for commits. Check `analysis_results/` for other reports. Check `PROGRESS.md` for running summary.
+
+   ### Step 3: Write the Executive Report
+
+   Create `analysis_results/EXECUTIVE_REPORT.md` with this structure:
+
+   # Executive Report: {Plan Title}
+
+   **Plan:** `PLAN_{name}`
+   **Date:** {date}
+   **Tasks Completed:** {completed}/{total}
+   **Status:** {Completed | Partially Completed}
+
+   ## 1. Executive Summary
+   {2-3 paragraphs, no jargon, focus on "so what"}
+
+   ## 2. Product Impact
+   ### Changes Delivered
+   ### Business Value
+
+   ## 3. Technical Details
+   ### Implementation Summary
+   ### Code Quality & Testing
+   ### Files Changed
+   ### Key Decisions & Trade-offs
+
+   ## 4. QA Verification Guide
+   ### How to Verify Changes
+   ### Known Limitations & Edge Cases
+
+   ## 5. FAQs (if non-obvious)
+
+   ## 6. Next Steps & Recommendations
+   ### Immediate Follow-ups
+   ### Future Considerations
+
+   ### Step 4: Adapt based on plan type
+   - **Code plans:** All sections fully detailed
+   - **Research/docs plans:** Lighter QA, adapt to "verify quality/accuracy"
+   - **Refactoring plans:** Heavy technical, lighter product impact
+
+   ### Step 5: Review
+   Re-read from PM, QA, and developer perspectives. No section should be empty.
+
+   ## 4. Acceptance Criteria
+
+   - [ ] `analysis_results/EXECUTIVE_REPORT.md` created
+   - [ ] All sections present and filled
+   - [ ] Readable by non-technical stakeholders
+   - [ ] QA section has actionable steps
+   - [ ] Synthesizes ALL completed tasks
+
+   ## 5. Validation
+
+   Verify: file exists, all H2 sections present, QA has steps, next steps has items.
+
+   ## 6. Execution Checklist
+
+   - [ ] Read all Completion & Logs
+   - [ ] Read plan README
+   - [ ] Review git log
+   - [ ] Write EXECUTIVE_REPORT.md
+   - [ ] Review from all perspectives
+   - [ ] Update plan README [x]
+   - [ ] Update PROGRESS.md
+   - [ ] Commit
+   - [ ] Update log below
+
+   ## 7. Completion & Log
+
+   **Status:** Not started
+
+   - Files created: analysis_results/EXECUTIVE_REPORT.md
+   - Tasks synthesized:
+   - Report sections completed:
+   ```
+
+   **4e. Update plan README task list** to include both mandatory tasks with `[ ]` checkboxes
+
+   **4f. Update plan README "Analysis Outputs" section** to reference EXECUTIVE_REPORT.md
+
+   > **Note:** If `.agent_commands/agent_skills_generator/` does NOT exist in the target repo, create a simplified Skills & Agents Discovery task that only evaluates and documents (no creation step).
+
+5. **Ensure quality:**
    - Tasks are atomic (one clear objective per task)
-   - Tasks are ordered (numbered 1, 2, 3...)
+   - Tasks are ordered (numbered 1, 2, 3... N-1, N)
+   - User tasks come first, then Skills & Agents Discovery, then Executive Report
    - Tasks are detailed enough for independent execution
+   - Total task count = user tasks + 2 mandatory tasks
 
 ---
 
