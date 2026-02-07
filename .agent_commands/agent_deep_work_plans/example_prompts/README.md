@@ -66,16 +66,19 @@ Check task list. Continue from first [ ] task. Review git log.
 
 ## 📚 Reference Examples
 
-### [PLAN_EXAMPLE_document_domain_app/](./PLAN_EXAMPLE_document_domain_app/) ⭐
+### [PLAN_EXAMPLE_add_blog_feature/](./PLAN_EXAMPLE_add_blog_feature/) ⭐
 
-**Complete example of a final plan** - Full reference implementation
+**Complete example of a final plan** - Full reference implementation with 6 tasks
 
 This example shows:
 
 - ✅ Complete plan structure with README.md and task files
 - ✅ Professional task breakdown and execution workflow
 - ✅ PROMPTS.md with ready-to-use prompts
-- ✅ Real-world example (documenting a Django app)
+- ✅ PROGRESS.md for running progress tracking
+- ✅ analysis_results/ folder for reports
+- ✅ Mandatory Skills & Agents Discovery and Executive Report tasks
+- ✅ Real-world example (adding related posts to an Astro blog)
 
 **Use this as reference when:**
 
@@ -83,6 +86,7 @@ This example shows:
 - Understanding plan structure and organization
 - Seeing how tasks are detailed and executed
 - Learning best practices for plan documentation
+- Understanding mandatory final tasks
 
 ### [drafts_examples/](./drafts_examples/) ⭐
 

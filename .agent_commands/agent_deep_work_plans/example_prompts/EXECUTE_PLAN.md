@@ -190,9 +190,11 @@ When you execute a plan, the agent will:
 5. ✅ Run validation commands specified in the task
 6. ✅ Update the task's Completion & Log section
 7. ✅ Mark task as `[x]` in plan README
-8. ✅ Commit changes
-9. ✅ Move to next `[ ]` task
-10. ✅ Repeat until all tasks complete
+8. ✅ Update PROGRESS.md with task summary
+9. ✅ Commit changes
+10. ✅ Move to next `[ ]` task
+11. ✅ Repeat until all tasks complete (including mandatory final tasks)
+12. ✅ Final task generates Executive Report in `analysis_results/`
 
 ---
 
