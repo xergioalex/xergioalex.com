@@ -476,7 +476,7 @@ This repository includes a system for creating reusable **Skills** and **Agents*
 - **Skills**: Reusable "how-to" procedures invoked via slash commands (e.g., `/quick-fix`, `/doc-edit`)
 - **Agents**: Specialized worker personas for specific tasks (e.g., `reviewer`, `executor`, `architect`)
 
-**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`.
+**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `write-article`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`.
 
 Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills_agents_catalog.md).
 
