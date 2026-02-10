@@ -541,7 +541,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         title: 'Community & Speaking',
         subtitle: 'Sharing knowledge, building ecosystems',
         description:
-          "I co-founded Pereira Tech Talks, PereiraJS, and Python Pereira \u2014 three tech communities dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, and more at conferences and meetups. I believe technology grows faster when we share what we learn.",
+          "I co-founded Pereira Tech Talks, PereiraJS, and Python Pereira \u2014 three tech communities dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, and more at conferences and meetups. I believe technology grows faster when we share what we learn \u2014 that's why I write this blog and speak at events.",
         cta: 'See my talks',
       },
       beyondCode: {
@@ -579,7 +579,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         'CTO & Cofounder of DailyBot (YC S21). Computer Science Engineer, MSc in Data Science, with 10+ years building digital products and businesses.',
       bioTitle: 'Who I Am',
       bioText:
-        "I'm Sergio Alexander Florez Galeano, a Computer Science Engineer from Universidad Nacional de Colombia with a Master's degree in Data Science. For over a decade, I've been building digital products, leading engineering teams, and co-founding technology ventures.<br /><br />Currently, I serve as CTO and Cofounder of DailyBot, a Y Combinator-backed platform (S21) that helps thousands of teams collaborate asynchronously. Beyond my professional work, I'm a maker at heart — constantly exploring new technologies from AI and 3D printing to IoT and physical computing.<br /><br />I'm also the cofounder of Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge. I believe in learning every day, building things from scratch, and sharing the journey with others.",
+        "I'm Sergio Alexander Florez Galeano, a Computer Science Engineer from Universidad Nacional de Colombia with a Master's degree in Data Science. For over a decade, I've been building digital products, leading engineering teams, and co-founding technology ventures.<br /><br />Currently, I serve as CTO and Cofounder of DailyBot, a Y Combinator-backed platform (S21) that helps thousands of teams collaborate asynchronously. Beyond my professional work, I'm a maker at heart — constantly exploring new technologies from AI and 3D printing to IoT and physical computing.<br /><br />I'm also the cofounder of Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge. I believe in learning every day, building things from scratch, and sharing the journey with others \u2014 that's why I write this blog and speak at tech events.",
       passionsTitle: 'What Drives Me',
       passions: [
         {
@@ -599,7 +599,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         {
           title: 'Tech Community',
           description:
-            'Sharing knowledge through tech talks, mentoring, and building the local tech ecosystem.',
+            'Sharing knowledge through tech talks, writing, mentoring, and building the local tech ecosystem.',
           icon: '\u{1F399}',
           link: '/techtalks',
         },
@@ -1361,7 +1361,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         title: 'Comunidad & Charlas',
         subtitle: 'Compartiendo conocimiento, construyendo ecosistemas',
         description:
-          'Cofund\u00E9 Pereira Tech Talks, PereiraJS y Python Pereira \u2014 tres comunidades tech dedicadas a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional y m\u00E1s en conferencias y meetups. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos.',
+          'Cofund\u00E9 Pereira Tech Talks, PereiraJS y Python Pereira \u2014 tres comunidades tech dedicadas a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional y m\u00E1s en conferencias y meetups. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos \u2014 por eso escribo este blog y doy charlas.',
         cta: 'Ver mis charlas',
       },
       beyondCode: {
@@ -1400,7 +1400,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         'CTO y Cofundador de DailyBot (YC S21). Ingeniero en Ciencias de la Computaci\u00F3n, MSc en Ciencia de Datos, con m\u00E1s de 10 a\u00F1os construyendo productos y negocios digitales.',
       bioTitle: 'Qui\u00E9n Soy',
       bioText:
-        'Soy Sergio Alexander Florez Galeano, Ingeniero en Ciencias de la Computaci\u00F3n de la Universidad Nacional de Colombia con una Maestr\u00EDa en Ciencia de Datos. Durante m\u00E1s de una d\u00E9cada, he construido productos digitales, liderado equipos de ingenier\u00EDa y cofundado emprendimientos tecnol\u00F3gicos.<br /><br />Actualmente, soy CTO y Cofundador de DailyBot, una plataforma respaldada por Y Combinator (S21) que ayuda a miles de equipos a colaborar de forma as\u00EDncrona. M\u00E1s all\u00E1 de mi trabajo profesional, soy un maker de coraz\u00F3n — constantemente explorando nuevas tecnolog\u00EDas desde IA e impresi\u00F3n 3D hasta IoT y computaci\u00F3n f\u00EDsica.<br /><br />Tambi\u00E9n soy cofundador de Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento. Creo en aprender cada d\u00EDa, construir cosas desde cero y compartir el camino con otros.',
+        'Soy Sergio Alexander Florez Galeano, Ingeniero en Ciencias de la Computaci\u00F3n de la Universidad Nacional de Colombia con una Maestr\u00EDa en Ciencia de Datos. Durante m\u00E1s de una d\u00E9cada, he construido productos digitales, liderado equipos de ingenier\u00EDa y cofundado emprendimientos tecnol\u00F3gicos.<br /><br />Actualmente, soy CTO y Cofundador de DailyBot, una plataforma respaldada por Y Combinator (S21) que ayuda a miles de equipos a colaborar de forma as\u00EDncrona. M\u00E1s all\u00E1 de mi trabajo profesional, soy un maker de coraz\u00F3n — constantemente explorando nuevas tecnolog\u00EDas desde IA e impresi\u00F3n 3D hasta IoT y computaci\u00F3n f\u00EDsica.<br /><br />Tambi\u00E9n soy cofundador de Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento. Creo en aprender cada d\u00EDa, construir cosas desde cero y compartir el camino con otros \u2014 por eso escribo este blog y doy charlas tech.',
       passionsTitle: 'Lo Que Me Mueve',
       passions: [
         {
@@ -1420,7 +1420,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         {
           title: 'Comunidad Tech',
           description:
-            'Compartiendo conocimiento a trav\u00E9s de charlas tech, mentor\u00EDa y construyendo el ecosistema tech local.',
+            'Compartiendo conocimiento a trav\u00E9s de charlas tech, escritura, mentor\u00EDa y construyendo el ecosistema tech local.',
           icon: '\u{1F399}',
           link: '/es/techtalks',
         },
