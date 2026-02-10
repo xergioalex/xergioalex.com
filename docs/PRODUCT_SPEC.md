@@ -2,13 +2,23 @@
 
 ## Overview
 
-**XergioAleX.com** is a personal website and blog for Sergio Alexander Florez Galeano (XergioAleX). It serves as a professional portfolio, blog platform, and personal brand presence.
+**XergioAleX.com** is a personal website and blog for Sergio Alexander Florez Galeano (XergioAleX). It serves as a professional portfolio, blog platform, and personal brand presence — with a focus on clear positioning, social proof, and narrative-driven content.
+
+## Brand Positioning
+
+**Primary identity:** CTO & Builder — From Colombia to Y Combinator
+
+Sergio is positioned as a **builder-leader**: someone who creates technology, builds companies, founds communities, and ships products relentlessly. DailyBot (YC S21) is the crown jewel of this builder identity.
+
+**Value proposition:** A Y Combinator-backed CTO who has spent 10+ years building digital products, from AI-powered team platforms to open source tools, while founding tech communities and constantly shipping new projects.
 
 ## Vision
 
 Create a modern, fast, and visually appealing personal website that:
 
-- Showcases professional experience and skills
+- Communicates value within 3 seconds (CTO at DailyBot YC S21, builder of 20+ products)
+- Tells a compelling origin story (math tutor → YC CTO)
+- Showcases professional experience with specific metrics and achievements
 - Provides a platform for sharing knowledge through blog posts
 - Supports multiple languages for broader reach
 - Delivers excellent performance and user experience
@@ -16,25 +26,26 @@ Create a modern, fast, and visually appealing personal website that:
 
 ## Target Audience
 
-1. **Potential employers/clients** - Looking for professional background
-2. **Tech community** - Interested in blog content and tutorials
-3. **Colleagues/peers** - Networking and collaboration
-4. **General visitors** - Learning about XergioAleX
+1. **Tech professionals** — Looking for inspiration or collaboration
+2. **Startup founders/engineers** — Interested in YC-backed technical leadership
+3. **Recruiters/press** — Seeking background on the DailyBot CTO
+4. **Community members** — From Pereira or LATAM tech ecosystem
+5. **Potential collaborators** — Interested in AI, open source, or speaking engagements
 
 ## Key Features
 
 ### 1. Homepage
 
-**Purpose:** First impression and navigation hub
+**Purpose:** First impression and navigation hub — pass the 3-second test
 
-**Sections:**
-- **Hero Section** - Introduction with animated typewriter effect
-- **Experience Section** - Professional work history
-- **Skills Section** - Technical competencies
-- **Education Section** - Academic background
-- **Projects Section** - Featured work and portfolio
-- **Blog Preview** - Recent blog posts
-- **Contact Section** - Ways to get in touch
+**Sections (7 total, clear hierarchy):**
+- **Hero Section** — Focused identity, value proposition, typewriter with achievement-focused words (CTO at DailyBot YC S21, Builder of 20+ products, Community Founder)
+- **About Section** — Origin story narrative (Colombia → MSc → YC CTO) with specific metrics
+- **Builder Section** — DailyBot + specific projects (Moltbot, Syntro, SysPrompt), 113+ repos
+- **Blog Preview** — Elevated position, recent posts for thought leadership
+- **Community Section** — Tech Talks, PereiraJS, Python Pereira — three communities co-founded
+- **Beyond Code Section** — Consolidated personal interests (trading, sports, food)
+- **Contact Section** — Ways to get in touch
 
 ### 2. Blog
 
@@ -91,10 +102,17 @@ Create a modern, fast, and visually appealing personal website that:
 
 ### Visual Design
 
-1. **Modern and Clean** - Minimalist aesthetic with purpose
-2. **Dark Mode Support** - Toggle between light and dark themes
-3. **Responsive** - Mobile-first design approach
-4. **Consistent** - Unified color palette and typography
+1. **Modern and Clean** — Minimalist aesthetic with purpose
+2. **Dark Mode Support** — Toggle between light and dark themes
+3. **Responsive** — Mobile-first design approach
+4. **Consistent** — Unified color palette and typography
+
+### Messaging Principles
+
+1. **Tell a story, don't list activities** — Origin narrative over resume-style bullet points
+2. **Lead with achievements** — YC S21 CTO, 20+ products, 3 communities before generic roles
+3. **Use specific metrics** — 10+ years, 113+ repos, thousands of teams
+4. **Clear CTA hierarchy** — One primary action (blog/projects) over many equal CTAs
 
 ### Color Palette
 
@@ -199,21 +217,30 @@ Blog Index
 
 ### Planned Features
 
-1. **Newsletter Integration** - Email subscription
-2. **Comments System** - Discussion on posts
-3. **Analytics** - Privacy-respecting analytics
-4. **More Languages** - Additional translations
-5. **Portfolio Gallery** - Enhanced project showcase
-6. **Search Enhancement** - Full-text search
+1. **Newsletter Integration** — Email subscription for ongoing connection
+2. **Hero CTA Button** — Primary CTA above the fold ("See what I build" → /portfolio)
+3. **Comments System** — Discussion on posts
+4. **Analytics** — Privacy-respecting analytics
+5. **More Languages** — Additional translations
+6. **Portfolio Gallery** — Enhanced project showcase
+7. **Search Enhancement** — Full-text search
+8. **Social Proof Visuals** — YC badge, GitHub stats, community member counts
 
 ### Technical Improvements
 
-1. **Testing Suite** - Unit and E2E tests
-2. **CI/CD Pipeline** - Automated deployment
-3. **Performance Monitoring** - Core Web Vitals tracking
-4. **Image Optimization** - Astro Image component
+1. **Testing Suite** — Unit and E2E tests (Vitest, Playwright)
+2. **CI/CD Pipeline** — Automated deployment
+3. **Performance Monitoring** — Core Web Vitals tracking
+4. **Image Optimization** — Astro Image component
+5. **Custom Section Images** — Dedicated visuals for Builder, Community, Beyond Code
 
 ## Success Metrics
+
+### Brand Effectiveness
+
+- **3-second test:** Visitors immediately understand "YC-backed CTO who builds technology that empowers teams"
+- **Homepage audit score:** Target 8+/10 on brand clarity, value proposition, and social proof
+- **Section hierarchy:** 7 sections with clear visual weight (not 11 equal-weight sections)
 
 ### User Engagement
 
@@ -221,6 +248,7 @@ Blog Index
 - Time on site
 - Blog post reads
 - Contact form submissions
+- Scroll completion rates
 
 ### Technical Performance
 
@@ -265,6 +293,7 @@ Blog Index
 
 ## Related Documentation
 
-- [Architecture](ARCHITECTURE.md) - Technical implementation
-- [Development Commands](DEVELOPMENT_COMMANDS.md) - Build scripts
-- [Standards](STANDARDS.md) - Coding conventions
+- [Architecture](ARCHITECTURE.md) — Technical implementation
+- [Development Commands](DEVELOPMENT_COMMANDS.md) — Build scripts
+- [Standards](STANDARDS.md) — Coding conventions
+- [README](../README.md) — Project overview and quick start

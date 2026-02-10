@@ -1,80 +1,113 @@
-# Sergio Alexander Florez Galeano - Website.
+# XergioAleX.com
 
-```sh
-npm create astro@latest -- --template blog
+<p align="center">
+  <img src="assets/homepageHero.png" alt="XergioAleX.com Homepage — Personal website for Sergio Alexander Florez" width="800" />
+</p>
+
+<p align="center">
+  <strong>Personal website & blog for Sergio Alexander Florez</strong><br />
+  CTO at DailyBot (YC S21) · Builder of 20+ products · Community founder
+</p>
+
+<p align="center">
+  <a href="https://xergioalex.com">🌐 Live Site</a> ·
+  <a href="https://github.com/xergioalex/xergioalex.com">GitHub</a> ·
+  <a href="./docs/ARCHITECTURE.md">Architecture</a> ·
+  <a href="./docs/PRODUCT_SPEC.md">Product Spec</a>
+</p>
+
+---
+
+## about
+
+A modern, fast, and fully bilingual personal website built with [Astro](https://astro.build). It serves as a professional portfolio, blog platform, and personal brand presence — showcasing experience, projects, and thought leadership.
+
+**Key highlights:**
+
+- **Bilingual** — English and Spanish with full route parity
+- **Dark mode** — System-aware theme toggle with persistence
+- **Performance-first** — Static site generation, minimal JS, optimized assets
+- **SEO-ready** — Sitemap, RSS feed, Open Graph, semantic HTML
+- **Content Collections** — Typed blog posts with MDX support
+
+## tech stack
+
+| Layer | Technology |
+| :---- | :--------- |
+| Framework | [Astro](https://astro.build) 5.x |
+| UI | [Svelte](https://svelte.dev) 5.x |
+| Styling | [Tailwind CSS](https://tailwindcss.com) 4.x |
+| Content | Markdown, MDX |
+| Hosting | GitHub Pages |
+
+## quick start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+Visit [http://localhost:4321](http://localhost:4321) to preview.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## commands
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+| Command | Description |
+| :------ | :---------- |
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Production build with type check |
+| `npm run build:ghpages` | Build for GitHub Pages (outputs to `docs/`) |
+| `npm run astro:preview` | Preview production build locally |
+| `npm run biome:check` | Lint and format check |
+| `npm run biome:fix` | Auto-fix lint and format issues |
+| `npm run astro:check` | TypeScript type checking |
 
-Features:
+## project structure
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
+```
+├── public/           # Static assets (images, fonts, icons)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── components/   # Astro & Svelte components
+│   ├── content/      # Blog posts (Content Collections)
+│   ├── layouts/      # Page layouts
+│   ├── lib/          # Utilities, types, translations
+│   ├── pages/        # File-based routing
+│   └── styles/       # Global CSS
+├── docs/             # Project documentation
+├── assets/           # README and documentation assets
+└── astro.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## documentation
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Document | Description |
+| :------- | :---------- |
+| [Product Spec](./docs/PRODUCT_SPEC.md) | Vision, features, and content strategy |
+| [Architecture](./docs/ARCHITECTURE.md) | Technical implementation and patterns |
+| [Development Commands](./docs/DEVELOPMENT_COMMANDS.md) | Build scripts and workflows |
+| [Standards](./docs/STANDARDS.md) | Coding conventions |
+| [Security](./docs/SECURITY.md) | Security best practices |
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## deployment
 
-Any static assets, like images, can be placed in the `public/` directory.
+The site is deployed to [GitHub Pages](https://pages.github.com) via the `docs/` directory. Build with:
 
-## 🧞 Commands
+```bash
+npm run build:ghpages
+```
 
-All commands are run from the root of the project, from a terminal:
+Then commit and push the `docs/` folder. The live site is available at [xergioalex.com](https://xergioalex.com).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## license & credit
 
-## 👀 Want to learn more?
+- **Author:** [Sergio Alexander Florez Galeano](https://xergioalex.com)
+- **Inspiration:** [Bear Blog](https://github.com/HermanMartinus/bearblog/)
+- **Icons:** [Heroicons](https://heroicons.com), [Simple Icons](https://simpleicons.org)
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
 
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
-
-
-Blogs example:
-- https://relative-astro-template.vercel.app/blog
-- https://streamline-astro-template.vercel.app/blog
-- https://charter-astro-template.vercel.app/blog
-- https://astro-blog-flame.vercel.app/
-
-
-SVG Icons:
-https://heroicons.com/outline
-https://simpleicons.org/?q=github
+<p align="center">
+  <sub>Built with Astro · Hosted on GitHub Pages</sub>
+</p>
