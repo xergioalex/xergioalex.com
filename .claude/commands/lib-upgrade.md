@@ -428,14 +428,16 @@ Enter option (1-3):
 
 1. **Run validation:**
    ```bash
-   # Option 1: Comprehensive check (recommended)
+   # Required first step
    codecheck
 
-   # Option 2: Individual checks
-   npm run test              # Run all tests
-   npm run eslint:check      # Check linting
-   npm run prettier:check    # Check code formatting
+   # Fallback when codecheck is unavailable
+   npm run biome:check       # Check linting and formatting
+   npm run astro:check       # TypeScript checking
+   npm run build             # Verify production build works
    ```
+
+   **Important:** Always attempt `codecheck` first after upgrades. If it fails, fix issues and rerun `codecheck` (or fallback checks if `codecheck` is unavailable).
 
 2. **Check results:**
    - If all validation passes: Continue to reporting
@@ -538,7 +540,7 @@ Enter option (1, 2, "yes", or "no"):
 - **Patch/Minor first:** Always upgrade patch and minor versions before major
 - **User approval for major:** Always ask before applying major upgrades
 - **Automatic rollback:** Rollback on failures automatically
-- **Validation required:** Always run `codecheck` (or individual checks: `npm run test`, `npm run eslint:check`, `npm run prettier:check`) after upgrades
+- **Validation required:** Always run `codecheck` first after upgrades. If unavailable, run `npm run biome:check`, `npm run astro:check`, and `npm run build`
 - **Commit after success:** Recommend committing successful upgrades
 
 ## Error Handling

@@ -244,11 +244,16 @@ found 0 vulnerabilities
 Run comprehensive validation:
 
 ```bash
-# Run code quality checks
+# Preferred: run the project-wide validation wrapper
+codecheck
+
+# Fallback when codecheck is unavailable
 npm run biome:check       # Check linting and formatting
 npm run astro:check       # TypeScript checking
 npm run build             # Verify production build works
 ```
+
+**Important:** `codecheck` must be attempted first after upgrades. If it fails, fix issues and rerun `codecheck` (or the fallback checks above if `codecheck` is unavailable).
 
 **Success Criteria:**
 
@@ -483,6 +488,7 @@ git commit -m "chore(deps): upgrade 12 packages (patch + minor)"
 ### After Upgrading
 
 - ✅ Run full test suite
+- ✅ Run `codecheck` first (or fallback checks if unavailable)
 - ✅ Check for peer dependency warnings
 - ✅ Run application locally and test critical paths
 - ✅ Commit with descriptive message
@@ -558,6 +564,7 @@ ncu -u --target latest && npm install
 ncu -u --filter "typescript eslint" && npm install
 
 # Validation
+codecheck                     # Preferred project-wide validation
 npm run biome:check       # Lint and format check
 npm run astro:check       # TypeScript checking
 npm run build             # Production build
