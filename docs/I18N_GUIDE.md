@@ -1,347 +1,400 @@
-# Internationalization Guide
+# Internationalization (i18n) Guide
 
 Guide for implementing and maintaining multilingual support in XergioAleX.com.
 
-## Current Implementation
+## Overview
 
-The site currently supports two languages:
+XergioAleX.com is a fully bilingual site supporting English and Spanish. The i18n system is built on three pillars:
 
-| Language | Code | Route | Status |
-|----------|------|-------|--------|
-| English | `en` | `/` | Default |
-| Spanish | `es` | `/es/` | Secondary |
+1. **Centralized translations** via `src/lib/translations.ts`
+2. **Route-based language routing** (English at `/`, Spanish at `/es/`)
+3. **Language-split content collections** for blog posts (`en/` and `es/` folders)
 
-## Route Structure
+| Language | Code | Route Prefix | Status |
+|----------|------|-------------|--------|
+| English  | `en` | `/` (root)  | Default |
+| Spanish  | `es` | `/es/`      | Secondary |
 
-Languages are implemented via route-based i18n:
+## Translation System
 
-```
-src/pages/
-├── index.astro          # English homepage
-├── about.astro          # English about
-├── contact.astro        # English contact
-├── blog/                # English blog
-│   └── ...
-└── es/
-    └── index.astro      # Spanish homepage
-    # (Add more Spanish pages as needed)
-```
+### translations.ts Structure
 
-## Implementation Pattern
+The central translation file at `src/lib/translations.ts` contains all UI strings for both languages. It exports:
 
-### 1. Language Prop
+- **`Language` type** — `'en' | 'es'`
+- **`SiteTranslations` interface** — Full type definition for all translation keys
+- **`getTranslations(lang)` function** — Returns the translation object for a given language
+- **`isValidLanguage(lang)` function** — Type guard to validate language strings
+- **`getDefaultLanguage()` function** — Returns `'en'`
 
-Components receive a `lang` prop to determine content language:
+The file is organized into logical sections:
 
-```astro
----
-// src/pages/index.astro (English)
-import MainLayout from '@/layouts/MainLayout.astro';
-import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
----
-
-<MainLayout lang="en" title="Home" description="Welcome to my website">
-  <HeroSection lang="en" />
-</MainLayout>
-```
-
-```astro
----
-// src/pages/es/index.astro (Spanish)
-import MainLayout from '@/layouts/MainLayout.astro';
-import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
----
-
-<MainLayout lang="es" title="Inicio" description="Bienvenido a mi sitio web">
-  <HeroSection lang="es" />
-</MainLayout>
-```
-
-### 2. HTML Lang Attribute
-
-The `MainLayout` sets the correct `lang` attribute:
-
-```astro
----
-// src/layouts/MainLayout.astro
-interface Props {
-  lang: string;
-  title: string;
-  description: string;
+```typescript
+export interface SiteTranslations {
+  // Site metadata: siteTitle, siteDescription
+  // Navigation: nav.home, nav.blog, nav.about, ...
+  // Footer: footer.copyright, footer.allRightsReserved
+  // Homepage: hero, homeSections, contact
+  // Content pages: aboutPage, cvPage, dailybotPage, ...
+  // Blog: blogTitle, blogDescription, allPosts, postsTagged(), ...
+  // Tags: tagNames, tagDescriptions
+  // Dates: dateLocale
 }
-
-const { lang, title, description } = Astro.props;
----
-
-<html lang={lang}>
-  <!-- ... -->
-</html>
 ```
 
-### 3. Component Translation
+Each language has its own object (`en` and `es`) implementing this interface with complete key parity.
 
-Components can use the `lang` prop to display appropriate content:
+### Using Translations in Components
+
+**Astro components (.astro):**
 
 ```astro
 ---
-// src/components/home/HeroSection/HeroSection.astro
-interface Props {
-  lang: string;
-}
+import { getTranslations } from '@/lib/translations';
 
-const { lang } = Astro.props;
-
-const content = {
-  en: {
-    greeting: "Hello, I'm",
-    name: "Sergio Alexander",
-    role: "Software Engineer"
-  },
-  es: {
-    greeting: "Hola, soy",
-    name: "Sergio Alexander",
-    role: "Ingeniero de Software"
-  }
-};
-
-const t = content[lang] || content.en;
+const lang: string = 'en'; // or from props/URL
+const t = getTranslations(lang);
 ---
 
-<section>
-  <h1>{t.greeting} {t.name}</h1>
-  <p>{t.role}</p>
-</section>
+<h1>{t.blogTitle}</h1>
+<p>{t.blogDescription}</p>
 ```
 
-## Language Switcher
-
-The header includes a language switcher dropdown:
+**Svelte components (.svelte):**
 
 ```svelte
-<!-- In Header.svelte -->
-<script lang="ts">
-  interface Props {
-    lang: string;
-  }
-  
-  let { lang }: Props = $props();
-  
-  const languages = [
-    { code: 'en', label: 'English', flag: '🇺🇸', href: '/' },
-    { code: 'es', label: 'Español', flag: '🇪🇸', href: '/es/' },
-  ];
+<script>
+import { getTranslations } from '@/lib/translations';
+
+export let lang = 'en';
+$: t = getTranslations(lang);
 </script>
 
-<select onchange={(e) => window.location.href = e.target.value}>
-  {#each languages as language}
-    <option value={language.href} selected={lang === language.code}>
-      {language.flag} {language.label}
-    </option>
-  {/each}
-</select>
+<h1>{t.blogTitle}</h1>
 ```
 
-## Adding a New Language
+### Adding New Translation Keys
 
-### Step 1: Create Language Routes
+When adding a new user-visible string:
 
-Create a new folder under `src/pages/`:
-
-```
-src/pages/
-└── fr/                  # French
-    └── index.astro
-```
-
-### Step 2: Create Page Files
-
-```astro
----
-// src/pages/fr/index.astro
-import MainLayout from '@/layouts/MainLayout.astro';
-import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
----
-
-<MainLayout lang="fr" title="Accueil" description="Bienvenue sur mon site">
-  <HeroSection lang="fr" />
-</MainLayout>
-```
-
-### Step 3: Update Component Translations
-
-Add translations to components that need them:
+1. **Add the type** to `SiteTranslations` interface
+2. **Add the English value** to the `en` object
+3. **Add the Spanish value** to the `es` object — MUST be added simultaneously
+4. **Use it in components** via `getTranslations(lang)`
 
 ```typescript
-const content = {
-  en: { greeting: "Hello" },
-  es: { greeting: "Hola" },
-  fr: { greeting: "Bonjour" },  // Add French
+// 1. In the interface
+export interface SiteTranslations {
+  // ...
+  myNewKey: string;
+}
+
+// 2. In the English translations
+const en: SiteTranslations = {
+  // ...
+  myNewKey: 'My new text',
+};
+
+// 3. In the Spanish translations
+const es: SiteTranslations = {
+  // ...
+  myNewKey: 'Mi nuevo texto',
 };
 ```
 
-### Step 4: Update Language Switcher
-
-Add the new language to the switcher:
+For function-based translations (with parameters):
 
 ```typescript
-const languages = [
-  { code: 'en', label: 'English', flag: '🇺🇸', href: '/' },
-  { code: 'es', label: 'Español', flag: '🇪🇸', href: '/es/' },
-  { code: 'fr', label: 'Français', flag: '🇫🇷', href: '/fr/' },
-];
+// Interface
+postsTagged: (tag: string) => string;
+
+// English
+postsTagged: (tag) => `Posts tagged "${tag}"`,
+
+// Spanish
+postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
 ```
 
-## Translation Management
+## Tag Localization
 
-### Current Approach
+### Architecture Decision
 
-Translations are inline in components. For small sites, this is manageable.
+Tags use **centralized translations** (not bilingual frontmatter). This means:
 
-### Future Consideration: Translation Files
+- Tag **slugs** are language-neutral identifiers (`tech`, `personal`, `talks`, `trading`, `portfolio`)
+- Tag **display names** come from `t.tagNames[slug]` in `translations.ts`
+- Tag **descriptions** come from `t.tagDescriptions[slug]` in `translations.ts`
+- Tag **URLs** always use the slug: `/blog/tag/tech/`, `/es/blog/tag/tech/`
 
-For larger translation needs, consider extracting to files:
+This approach was chosen because:
+- Consistent with the existing centralized translation system
+- Tags are metadata, not content — they belong in the translation system
+- Minimal code changes across components
+- Single source of truth for all tag translations
+
+### Tag Content Collection
+
+Tags are defined as a content collection in `src/content/tags/*.md`:
 
 ```
-src/
-└── i18n/
-    ├── en.json
-    ├── es.json
-    └── fr.json
+src/content/tags/
+├── tech.md
+├── personal.md
+├── talks.md
+├── trading.md
+└── portfolio.md
 ```
 
-```json
-// src/i18n/en.json
-{
-  "hero": {
-    "greeting": "Hello, I'm",
-    "role": "Software Engineer"
-  },
-  "nav": {
-    "home": "Home",
-    "blog": "Blog",
-    "about": "About"
-  }
-}
+Each file has a simple schema:
+
+```markdown
+---
+name: "tech"
+description: "Tutorials, guides, and technical articles."
+---
 ```
 
-### Translation Utility
+The `name` field is the slug identifier. The `description` field serves as a default/reference but is **not used for display** — localized descriptions come from `translations.ts`.
 
-```typescript
-// src/lib/i18n.ts
-import en from '@/i18n/en.json';
-import es from '@/i18n/es.json';
+### Tag Display Pattern
 
-const translations = { en, es };
+All components display tags using this pattern:
 
-export function t(lang: string, key: string): string {
-  const keys = key.split('.');
-  let value = translations[lang] || translations.en;
-  
-  for (const k of keys) {
-    value = value?.[k];
-  }
-  
-  return value || key;
-}
+```svelte
+#{t.tagNames[tag] || tag}
 ```
 
-Usage:
+The fallback `|| tag` ensures raw slug display if a translation is missing.
+
+For tag page titles:
 
 ```astro
----
-import { t } from '@/lib/i18n';
-
-const { lang } = Astro.props;
----
-
-<h1>{t(lang, 'hero.greeting')}</h1>
+title={t.postsTagged(t.tagNames[tag] || tag)}
 ```
 
-## Blog Content i18n
+For tag descriptions (e.g., in SEO metadata):
 
-### Current Approach
+```astro
+description={t.tagDescriptions[tag] || `Articles tagged as ${t.tagNames[tag] || tag}.`}
+```
 
-Blog posts are in English only. Content Collections could support multiple languages:
+### Current Tag Translations
+
+| Slug | English Name | Spanish Name |
+|------|-------------|-------------|
+| `tech` | Tech | Tecnologia |
+| `personal` | Personal | Personal |
+| `talks` | Talks | Charlas |
+| `trading` | Trading | Trading |
+| `portfolio` | Portfolio | Portafolio |
+
+### Adding a New Tag
+
+To add a new tag (e.g., `tutorials`):
+
+1. **Create the content file** `src/content/tags/tutorials.md`:
+   ```markdown
+   ---
+   name: "tutorials"
+   description: "Step-by-step tutorials and how-to guides."
+   ---
+   ```
+
+2. **Add translations** to `src/lib/translations.ts`:
+   ```typescript
+   // In EN tagNames:
+   tagNames: { ..., tutorials: 'Tutorials' },
+   // In EN tagDescriptions:
+   tagDescriptions: { ..., tutorials: 'Step-by-step tutorials and how-to guides.' },
+   // In ES tagNames:
+   tagNames: { ..., tutorials: 'Tutoriales' },
+   // In ES tagDescriptions:
+   tagDescriptions: { ..., tutorials: 'Tutoriales paso a paso y guias practicas.' },
+   ```
+
+3. **Use in blog posts** by adding to the `tags` array in frontmatter:
+   ```markdown
+   ---
+   tags: ["tutorials", "tech"]
+   ---
+   ```
+
+No component changes are needed — the tag will automatically appear with its localized name wherever tags are displayed.
+
+## Bilingual Content
+
+### Blog Posts
+
+Blog posts are organized in language-specific folders:
 
 ```
 src/content/blog/
 ├── en/
-│   └── my-post.md
+│   ├── first-post.md
+│   ├── second-post.md
+│   └── ...
 └── es/
-    └── my-post.md
+    ├── first-post.md
+    ├── second-post.md
+    └── ...
 ```
 
-### Future Consideration
-
-If multilingual blog is needed, update the Content Collection schema:
+Language filtering works by post ID prefix in `src/lib/blog.ts`:
 
 ```typescript
-// src/content.config.ts
-const blog = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    lang: z.enum(['en', 'es']).default('en'),  // Add language field
-  }),
-});
+// English posts
+const posts = allPosts.filter((post) => post.id.startsWith('en/'));
+
+// Spanish posts
+const posts = allPosts.filter((post) => post.id.startsWith('es/'));
 ```
 
-Then filter by language:
+**Frontmatter requirements:**
 
-```typescript
-const posts = await getCollection('blog', ({ data }) => data.lang === lang);
+- `title` and `description` must be translated
+- `pubDate`, `updatedDate`, `heroImage`, and `tags` must be identical between language pairs
+- Post filenames must match between `en/` and `es/` folders
+
+### Pages
+
+Pages follow a route-based approach:
+
+```
+src/pages/
+├── index.astro          # English (lang="en")
+├── about.astro          # English
+├── contact.astro        # English
+├── blog/                # English blog routes
+│   ├── index.astro
+│   ├── [...slug].astro
+│   ├── page/[page].astro
+│   └── tag/
+│       ├── [tag].astro
+│       └── [tag]/page/[page].astro
+└── es/
+    ├── index.astro      # Spanish (lang="es")
+    ├── about.astro      # Spanish
+    ├── contact.astro    # Spanish
+    └── blog/            # Spanish blog routes (mirrors EN structure)
+        ├── index.astro
+        ├── [...slug].astro
+        ├── page/[page].astro
+        └── tag/
+            ├── [tag].astro
+            └── [tag]/page/[page].astro
 ```
 
-## SEO Considerations
+Every English page must have a Spanish equivalent under `es/`, and vice versa.
 
-### Hreflang Tags
+### Page Pattern
 
-For multilingual SEO, add hreflang tags:
+Each page declares its language and uses translations:
 
 ```astro
 ---
-// src/components/BaseHead.astro
-const { lang } = Astro.props;
-const currentUrl = Astro.url.pathname;
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+
+const lang: string = 'en'; // or 'es' for Spanish pages
+const t = getTranslations(lang);
 ---
 
-<link rel="alternate" hreflang="en" href={`https://xergioalex.com${currentUrl.replace('/es/', '/')}`} />
-<link rel="alternate" hreflang="es" href={`https://xergioalex.com/es${currentUrl.replace('/es/', '/')}`} />
-<link rel="alternate" hreflang="x-default" href={`https://xergioalex.com${currentUrl.replace('/es/', '/')}`} />
+<MainLayout lang={lang} title={t.blogTitle} description={t.blogDescription}>
+  <!-- Page content using t.* for all user-visible text -->
+</MainLayout>
 ```
 
-### Meta Tags
+### Component i18n Pattern
 
-Set language-specific meta:
+Components receive the `lang` prop and use `getTranslations()`:
+
+```svelte
+<script>
+import { getTranslations } from '@/lib/translations';
+
+export let lang = 'en';
+$: t = getTranslations(lang);
+</script>
+
+<p>{t.someKey}</p>
+```
+
+The `lang` prop flows through the component hierarchy:
+
+```
+Page (lang="en"|"es")
+  → MainLayout (lang)
+    → Header (lang)
+    → Footer (lang)
+  → BlogHeader (lang)
+    → uses getTranslations(lang)
+  → BlogCard (lang)
+    → uses getTranslations(lang)
+```
+
+**Rules:**
+- Never hardcode user-visible text in component templates
+- Always use `getTranslations(lang)` for translatable strings
+- Always pass `lang` to child components that display text
+
+## Date Formatting
+
+Dates use locale-specific formatting via the `dateLocale` translation key:
+
+```typescript
+// translations.ts
+en: { dateLocale: 'en-US' },
+es: { dateLocale: 'es-ES' },
+```
+
+The `FormattedDate.astro` component handles locale-aware formatting:
 
 ```astro
-<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+---
+interface Props {
+  date: Date;
+  lang?: string;
+}
+
+const { date, lang = 'en' } = Astro.props;
+const locale = lang === 'es' ? 'es-ES' : 'en-US';
+---
+
+<time datetime={date.toISOString()}>
+  {date.toLocaleDateString(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })}
+</time>
 ```
 
-## Best Practices
+## Language Switcher
 
-### Do
+The header includes a language switcher that toggles between English and Spanish. It maps current route paths between language versions:
 
-- ✅ Pass `lang` prop to all components that need translation
-- ✅ Use consistent translation keys
-- ✅ Include hreflang for SEO
-- ✅ Test with both languages
+- `/about/` ↔ `/es/about/`
+- `/blog/` ↔ `/es/blog/`
+- `/blog/tag/tech/` ↔ `/es/blog/tag/tech/`
 
-### Don't
+## Bilingual Compliance Checklist
 
-- ❌ Hardcode text that should be translated
-- ❌ Forget to update language switcher when adding languages
-- ❌ Mix languages in the same component
+Before committing any content change, verify:
 
-## Testing Translations
+- [ ] All new/modified pages exist in both `src/pages/` and `src/pages/es/`
+- [ ] All new/modified blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
+- [ ] All new UI strings in `translations.ts` have both English and Spanish values
+- [ ] No hardcoded user-visible text in components (use `getTranslations()`)
+- [ ] Tag names use `t.tagNames[slug] || slug` pattern for display
+- [ ] Date formatting uses locale-aware formatting with `lang` prop
+- [ ] Page titles and SEO descriptions use translation keys
+- [ ] The `lang` prop is passed through the full component hierarchy
 
-When adding or modifying translations:
+## Known Limitations
 
-1. **Build and preview**: `npm run build && npm run astro:preview`
-2. **Check both languages**: Navigate to `/` and `/es/`
-3. **Verify language switcher**: Ensure it works correctly
-4. **Check HTML lang**: Inspect that `<html lang="">` is correct
+1. **Homepage sections** — Education, Experience, Projects, and Skills sections have content that needs dedicated bilingual translation work (large structured content blocks)
+2. **Portfolio translations** — `portfolioPage` translations are referenced in code but not yet defined in `translations.ts` (pre-existing from portfolio feature branch)
+3. **Minor aria-labels** — Some accessibility attributes (ThemeToggle, BlogPagination) have hardcoded English text
 
 ## Resources
 

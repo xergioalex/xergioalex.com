@@ -3,13 +3,13 @@ import { getCollection } from 'astro:content';
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
-import { getTranslations } from '@/lib/translations';
+import { getTranslations, type Language } from '@/lib/translations';
 
-const lang: string = 'es';
+const lang: Language = 'es';
 const t = getTranslations(lang);
 
 export async function getStaticPaths() {
-  const lang: string = 'es';
+  const lang: Language = 'es';
 
   // Get all posts to extract unique tags
   const allPosts = await getCollection('blog');

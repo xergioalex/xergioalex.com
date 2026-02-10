@@ -323,15 +323,20 @@ const sortedPosts = allPosts.sort(
 ```
 src/content/
 ├── blog/
-│   ├── first-post.md
-│   ├── using-mdx.mdx
-│   └── tutorial-series/
-│       ├── part-1.md
-│       └── part-2.md
+│   ├── en/              # English blog posts
+│   │   ├── first-post.md
+│   │   ├── using-mdx.mdx
+│   │   └── ...
+│   └── es/              # Spanish blog posts (matching filenames)
+│       ├── first-post.md
+│       ├── using-mdx.mdx
+│       └── ...
 └── tags/
     ├── tech.md
     ├── personal.md
-    └── trading.md
+    ├── talks.md
+    ├── trading.md
+    └── portfolio.md
 ```
 
 ### Blog Post Format
@@ -542,6 +547,8 @@ document.documentElement.classList.toggle('dark', theme === 'dark');
 
 ## Internationalization
 
+The site is fully bilingual (English/Spanish) using a centralized translation system. See [I18N Guide](I18N_GUIDE.md) for comprehensive documentation.
+
 ### Route Structure
 
 ```
@@ -549,31 +556,44 @@ src/pages/
 ├── index.astro          # English (default)
 ├── about.astro
 ├── contact.astro
+├── blog/                # English blog routes
 └── es/
-    └── index.astro      # Spanish
+    ├── index.astro      # Spanish
+    ├── about.astro
+    ├── contact.astro
+    └── blog/            # Spanish blog routes
 ```
 
-### Language Prop Pattern
+### Translation System
 
-Components receive `lang` prop for language-aware content:
+All UI strings are centralized in `src/lib/translations.ts`. Components use `getTranslations(lang)` to access localized text:
 
 ```astro
 ---
-// English page
+import { getTranslations } from '@/lib/translations';
+const lang: string = 'en';
+const t = getTranslations(lang);
 ---
-<MainLayout lang="en" title="Home" description="Welcome">
-  <HeroSection lang="en" />
+<MainLayout lang={lang} title={t.blogTitle} description={t.blogDescription}>
+  <Content />
 </MainLayout>
 ```
 
-```astro
----
-// Spanish page
----
-<MainLayout lang="es" title="Inicio" description="Bienvenido">
-  <HeroSection lang="es" />
-</MainLayout>
+### Blog Content Collections
+
+Blog posts are split by language folder:
+
 ```
+src/content/blog/
+├── en/    # English posts
+└── es/    # Spanish posts (matching filenames)
+```
+
+### Tag Localization
+
+Tags use slug-based identifiers with localized display names from `translations.ts`:
+- URLs: `/blog/tag/tech/` (slug-based, language-neutral)
+- Display: `t.tagNames[tag]` (localized per language)
 
 ## Build & Deployment
 

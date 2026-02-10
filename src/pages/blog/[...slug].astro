@@ -3,9 +3,9 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getTranslations } from '@/lib/translations';
+import { getTranslations, type Language } from '@/lib/translations';
 
-const lang: string = 'en';
+const lang: Language = 'en';
 const t = getTranslations(lang);
 
 export async function getStaticPaths() {
