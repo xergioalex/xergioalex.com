@@ -1079,12 +1079,14 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
       personal: 'Personal',
       talks: 'Talks',
       trading: 'Trading',
+      portfolio: 'Portfolio',
     },
     tagDescriptions: {
       tech: 'Tutorials, guides, and technical articles.',
       personal: 'Articles about my life and experiences.',
       talks: 'Tech talks, slides, videos, and events.',
       trading: 'Trading journal, analysis, and learnings.',
+      portfolio: 'Personal projects, software, robotics, and open source work.',
     },
 
     // Date formatting
@@ -1819,16 +1821,19 @@ Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprende
     postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
     allTags: 'Todas las Etiquetas',
     tagNames: {
-      tech: 'Tecnolog\u00EDa',
+      tech: 'Tecnología',
       personal: 'Personal',
       talks: 'Charlas',
       trading: 'Trading',
+      portfolio: 'Portafolio',
     },
     tagDescriptions: {
-      tech: 'Tutoriales, gu\u00EDas y art\u00EDculos t\u00E9cnicos.',
-      personal: 'Art\u00EDculos sobre mi vida y experiencias.',
-      talks: 'Charlas t\u00E9cnicas, slides, videos y eventos.',
-      trading: 'Diario de trading, an\u00E1lisis y aprendizajes.',
+      tech: 'Tutoriales, guías y artículos técnicos.',
+      personal: 'Artículos sobre mi vida y experiencias.',
+      talks: 'Charlas técnicas, slides, videos y eventos.',
+      trading: 'Diario de trading, análisis y aprendizajes.',
+      portfolio:
+        'Proyectos personales, software, robótica y trabajo open source.',
     },
 
     // Date formatting
