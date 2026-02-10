@@ -1,4 +1,4 @@
 ---
 name: "talks"
-description: "Charlas técnicas, slides, videos y eventos."
+description: "Tech talks, slides, videos, and events."
 ---

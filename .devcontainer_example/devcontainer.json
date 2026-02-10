@@ -1,9 +1,10 @@
 {
   "name": "XergioAleX - Astro",
   "dockerComposeFile": "../docker/local/docker-compose.yaml",
-  "service": "xergioalexcom",
+  "service": "xergioalexcomvscode",
   "workspaceFolder": "/app",
-  "runServices": ["xergioalexcom"],
+  "runServices": ["xergioalexcomvscode"],
+  "remoteUser": "node",
   "customizations": {
     "settings": {
       "terminal.integrated.shell.linux": "/bin/bash"

@@ -1,25 +1,55 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations, type Language } from '@/lib/translations';
+
+const lang: Language = 'en';
+const t = getTranslations(lang);
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const allPosts = await getCollection('blog');
+  // Only English posts (in en/ folder)
+  const posts = allPosts.filter((post) => post.id.startsWith('en/'));
   return posts.map((post) => ({
-    params: { slug: post.id },
+    // Remove language prefix from URL: "en/first-post" -> "first-post"
+    params: { slug: post.id.replace('en/', '') },
     props: post,
   }));
 }
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
-const { heroImage, pubDate, updatedDate, title } = post.data;
+const { heroImage, pubDate, updatedDate, title, description, tags } = post.data;
 const { Content } = await render(post);
 
-const lang: string = 'en';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const blogPostingData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  image: heroImage ? new URL(heroImage, Astro.site).href : undefined,
+  datePublished: pubDate.toISOString(),
+  dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Sergio Alexander Florez Galeano',
+    url: new URL('/about/', Astro.site).href,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL.href,
+  },
+  keywords: tags || [],
+};
 ---
 
-<MainLayout lang={lang} title={title} description={title}>
+<MainLayout lang={lang} title={title} description={description}>
+  <Fragment slot="head">
+    <JsonLd data={blogPostingData} />
+  </Fragment>
   <main class="main-container py-24">
     <article>
       <div class="w-full">
@@ -29,7 +59,7 @@ const lang: string = 'en';
               width={1020}
               height={510}
               src={heroImage}
-              alt=""
+              alt={title}
               class="block mx-auto rounded-xl shadow-[var(--box-shadow)]"
             />
           )
@@ -38,11 +68,11 @@ const lang: string = 'en';
       <div class="text-[rgb(var(--gray-dark))]">
         <div class="mb-4 py-4 text-center leading-none">
           <div class="mb-2 text-[rgb(var(--gray))]">
-            <FormattedDate date={pubDate} />
+            <FormattedDate date={pubDate} lang={lang} />
             {
               updatedDate && (
                 <div class="italic">
-                  Last updated on <FormattedDate date={updatedDate} />
+                  {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
                 </div>
               )
             }
@@ -50,7 +80,7 @@ const lang: string = 'en';
           <h1 class="m-0 mb-2">{title}</h1>
           <hr />
         </div>
-        <div class="prose prose-lg prose-slate dark:prose-invert max-w-none">
+        <div class="prose prose-lg prose-slate dark:prose-invert max-w-4xl">
           <Content />
         </div>
       </div>

@@ -2,6 +2,7 @@
 export default {
   darkMode: ['class'],
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  safelist: ['md:pr-12', 'md:pl-12', 'md:ml-auto'],
   theme: {
     extend: {
       fontFamily: {},

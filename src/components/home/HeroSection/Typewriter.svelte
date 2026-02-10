@@ -1,7 +1,7 @@
 <script lang="ts">
 export let words: string[] = [];
-export let speed = 80; // ms por letra
-export let pause = 1500; // ms entre palabras
+export let speed = 80; // ms per character
+export let pause = 1500; // ms between words
 
 let display = '';
 let index = 0;
@@ -9,7 +9,7 @@ let char = 0;
 let typing = true;
 
 async function typeLoop() {
-  // Verificar que words tenga contenido antes de empezar
+  // Verify that words has content before starting
   if (!words || words.length === 0) {
     return;
   }
@@ -43,7 +43,7 @@ async function typeLoop() {
   }
 }
 
-// Solo ejecutar typeLoop si words tiene contenido
+// Only run typeLoop if words has content
 if (words && words.length > 0) {
   typeLoop();
 }

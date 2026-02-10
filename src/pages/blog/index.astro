@@ -2,9 +2,11 @@
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { getTranslations, type Language } from '@/lib/translations';
 import type { BlogPostsResultType } from '@/lib/types';
 
-const lang: string = 'en';
+const lang: Language = 'en';
+const t = getTranslations(lang);
 
 const blogPostsResult: BlogPostsResultType = await getBlogPosts({
   lang: lang,
@@ -13,8 +15,8 @@ const blogPostsResult: BlogPostsResultType = await getBlogPosts({
 
 <MainLayout
 	lang={lang}
-	title="Blog"
-	description="Articles, tutorials, journal and talks."
+	title={t.blogTitle}
+	description={t.blogDescription}
 >
-	<BlogContainer blogPostsResult={blogPostsResult} />
+	<BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
 </MainLayout>

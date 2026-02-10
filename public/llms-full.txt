@@ -1,0 +1,65 @@
+# XergioAleX.com - Full Site Description
+
+> Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).
+
+## About the Author
+
+Sergio Alexander Florez Galeano (XergioAleX) is a CTO and Cofounder at DailyBot (Y Combinator S21). He is a computer science engineer with a Master's degree in data science and a passionate entrepreneur with over 10 years of experience building digital businesses. He is also a speaker, researcher, athlete, trader, and self-described 100% geek.
+
+Based in Colombia, he has led the development of DailyBot, an innovative platform that connects teams globally, facilitating asynchronous collaboration and effective communication. He is also a cofounder and organizer of the Pereira Tech Talks community.
+
+### Social Profiles
+
+- GitHub: https://github.com/xergioalex
+- LinkedIn: https://www.linkedin.com/in/xergioalex/
+- X (Twitter): https://x.com/XergioAleX
+- Instagram: https://www.instagram.com/xergioalex
+
+## Site Structure
+
+### Pages
+
+- **Home** (https://site.xergioalex.com/) - Overview of Sergio's profile, work, and interests
+- **Blog** (https://site.xergioalex.com/blog/) - Articles about technology, programming, and more
+- **About** (https://site.xergioalex.com/about/) - Personal information and background
+- **Contact** (https://site.xergioalex.com/contact/) - Contact form
+
+### Blog Categories/Tags
+
+- **Tech** - Tutorials, guides, and technical articles about software development
+- **Personal** - Articles about life experiences and personal reflections
+- **Talks** - Tech talks, slides, videos, and event recaps
+- **Trading** - Trading journal entries, market analysis, and learnings
+
+### Languages
+
+All content is available in:
+- English (default): https://site.xergioalex.com/
+- Spanish: https://site.xergioalex.com/es/
+
+## Tech Stack
+
+The site is built with:
+- Astro (static site generator with islands architecture)
+- Svelte (interactive components)
+- TypeScript
+- Tailwind CSS (with dark mode support)
+- MDX (enhanced Markdown for blog posts)
+- Deployed on GitHub Pages
+
+## Interests & Expertise
+
+Sergio's areas of expertise and interest include:
+- Full-stack software development
+- Conversational interfaces and AI
+- Entrepreneurship and startup building
+- Algorithmic trading and forex markets
+- Community building and tech talks
+- Sports (cycling, running, basketball, chess)
+- Gaming and food content creation
+
+## Feeds & Discovery
+
+- RSS Feed: https://site.xergioalex.com/rss.xml
+- Sitemap: https://site.xergioalex.com/sitemap-index.xml
+- robots.txt: https://site.xergioalex.com/robots.txt

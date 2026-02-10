@@ -5,14 +5,9 @@ import type { BlogPostsResultType } from '@/lib/types';
 export interface Props {
   blogPostsResult: BlogPostsResultType;
   currentTag?: string;
+  lang?: string;
 }
-const { blogPostsResult, currentTag } = Astro.props;
-
-// // Get all unique tags from all blog posts (more reliable than tags collection)
-// const allPosts = await getCollection("blog");
-// const tagsResult = Array.from(
-//   new Set(allPosts.flatMap((post) => post.data.tags ?? [])),
-// );
+const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
 ---
 
 <StaticBlogSearch
@@ -22,5 +17,6 @@ const { blogPostsResult, currentTag } = Astro.props;
   currentPage={blogPostsResult.currentPage}
   tagsResult={blogPostsResult.tagsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
+  lang={lang}
   client:load
 />

@@ -2,17 +2,42 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import { SITE_TITLE } from '@/lib/constances';
+import JsonLd from '@/components/JsonLd.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
 
 interface Props {
   title: string;
   description: string;
   image?: string;
+  lang?: string;
+  prevPage?: string;
+  nextPage?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const {
+  title,
+  description,
+  image = '/images/profile.png',
+  lang = 'en',
+  prevPage,
+  nextPage,
+} = Astro.props;
+
+// Compute hreflang URLs for multilingual SEO
+const pathname = Astro.url.pathname;
+let enURL: string;
+let esURL: string;
+
+if (pathname.startsWith('/es/') || pathname === '/es') {
+  esURL = new URL(pathname, Astro.site).href;
+  const enPath = pathname.replace(/^\/es/, '') || '/';
+  enURL = new URL(enPath, Astro.site).href;
+} else {
+  enURL = new URL(pathname, Astro.site).href;
+  esURL = new URL(`/es${pathname}`, Astro.site).href;
+}
 ---
 
 <!-- Global Metadata -->
@@ -47,10 +72,21 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Hreflang for multilingual SEO -->
+<link rel="alternate" hreflang="en" href={enURL} />
+<link rel="alternate" hreflang="es" href={esURL} />
+<link rel="alternate" hreflang="x-default" href={enURL} />
+
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content="XergioAleX, Sergio Florez, DailyBot, CTO, Y Combinator, Full Stack Developer, Data Science, Tech Speaker, Software Engineer" />
+<meta name="author" content="Sergio Alexander Florez Galeano" />
+
+<!-- Theme color for browser chrome -->
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0f1124" media="(prefers-color-scheme: dark)" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -58,6 +94,9 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+<meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -65,3 +104,45 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:site" content="@XergioAleX" />
+<meta name="twitter:creator" content="@XergioAleX" />
+
+<!-- Pagination SEO -->
+{prevPage && <link rel="prev" href={prevPage} />}
+{nextPage && <link rel="next" href={nextPage} />}
+
+<!-- JSON-LD: WebSite -->
+<JsonLd
+  data={{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_TITLE,
+    url: Astro.site?.href,
+    inLanguage: ['en', 'es'],
+    description: SITE_DESCRIPTION,
+  }}
+/>
+
+<!-- JSON-LD: Person -->
+<JsonLd
+  data={{
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Sergio Alexander Florez Galeano',
+    alternateName: 'XergioAleX',
+    url: 'https://xergioalex.com',
+    jobTitle: 'CTO & Co-founder',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'DailyBot',
+      url: 'https://dailybot.com',
+    },
+    alumniOf: 'Y Combinator',
+    sameAs: [
+      'https://github.com/xergioalex',
+      'https://www.linkedin.com/in/xergioalex/',
+      'https://x.com/XergioAleX',
+      'https://www.instagram.com/xergioalex',
+    ],
+  }}
+/>

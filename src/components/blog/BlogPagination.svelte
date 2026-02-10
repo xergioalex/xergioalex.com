@@ -1,9 +1,16 @@
 <script>
+import { getTranslations } from '@/lib/translations';
+
 export let currentPage = 1;
 export let totalPages = 1;
 export let isSearchMode = false;
 export let onPageChange = null;
 export let currentTag = null;
+export let lang = 'en';
+
+$: t = getTranslations(lang);
+$: basePrefix = lang === 'es' ? '/es' : '';
+$: visiblePages = getVisiblePages();
 
 function handlePageChange(page) {
   if (isSearchMode && onPageChange) {
@@ -12,60 +19,88 @@ function handlePageChange(page) {
 }
 
 function getPageUrl(page) {
-  console.log(`🔗 getPageUrl(${page}) called with currentTag:`, currentTag);
-
   if (currentTag) {
-    // Si estamos en una vista de tag
+    // Tag view
     if (page === 1) {
-      const url = `/blog/tag/${currentTag}/`;
-      console.log(`  Tag view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/tag/${currentTag}/`;
     } else {
-      const url = `/blog/tag/${currentTag}/page/${page}/`;
-      console.log(`  Tag view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/tag/${currentTag}/page/${page}/`;
     }
   } else {
-    // Si estamos en la vista general del blog
+    // General blog view
     if (page === 1) {
-      const url = '/blog/';
-      console.log(`  General view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/`;
     } else {
-      const url = `/blog/page/${page}/`;
-      console.log(`  General view, page ${page}: ${url}`);
-      return url;
+      return `${basePrefix}/blog/page/${page}/`;
     }
   }
+}
+
+function getVisiblePages() {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  if (currentPage <= 4) {
+    return [1, 2, 3, 4, 5, 'ellipsis-right', totalPages];
+  }
+
+  if (currentPage >= totalPages - 3) {
+    return [
+      1,
+      'ellipsis-left',
+      totalPages - 4,
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ];
+  }
+
+  return [
+    1,
+    'ellipsis-left',
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    'ellipsis-right',
+    totalPages,
+  ];
 }
 </script>
 
 {#if totalPages > 1}
   <div class="mt-12 flex justify-center">
-    <nav class="flex items-center space-x-2">
+    <nav class="flex items-center space-x-2" aria-label="Blog pagination">
       {#if currentPage > 1}
         {#if isSearchMode}
           <button
             on:click={() => handlePageChange(currentPage - 1)}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            aria-label={t.previous}
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Anterior
+            {t.previous}
           </button>
         {:else}
           <a
             href={getPageUrl(currentPage - 1)}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            aria-label={t.previous}
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Anterior
+            {t.previous}
           </a>
         {/if}
       {/if}
 
-      {#each Array.from({ length: totalPages }, (_, i) => i + 1) as page}
-        {#if isSearchMode}
+      {#each visiblePages as page}
+        {#if typeof page === 'string'}
+          <span class="px-2 text-gray-500 dark:text-gray-400" aria-hidden="true">...</span>
+        {:else if isSearchMode}
           <button
             on:click={() => handlePageChange(page)}
-            class={`px-3 py-2 text-sm font-medium rounded-md ${
+            aria-label={`Page ${page}`}
+            aria-current={page === currentPage ? 'page' : undefined}
+            class={`px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700'
@@ -76,7 +111,9 @@ function getPageUrl(page) {
         {:else}
           <a
             href={getPageUrl(page)}
-            class={`px-3 py-2 text-sm font-medium rounded-md ${
+            aria-label={`Page ${page}`}
+            aria-current={page === currentPage ? 'page' : undefined}
+            class={`px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700'
@@ -91,16 +128,18 @@ function getPageUrl(page) {
         {#if isSearchMode}
           <button
             on:click={() => handlePageChange(currentPage + 1)}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            aria-label={t.next}
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Siguiente
+            {t.next}
           </button>
         {:else}
           <a
             href={getPageUrl(currentPage + 1)}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            aria-label={t.next}
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
-            Siguiente
+            {t.next}
           </a>
         {/if}
       {/if}

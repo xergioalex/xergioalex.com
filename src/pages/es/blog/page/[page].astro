@@ -1,0 +1,50 @@
+---
+import BlogContainer from '@/components/blog/BlogContainer.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+import { getTranslations, type Language } from '@/lib/translations';
+import type { BlogPostsResultType } from '@/lib/types';
+
+const lang: Language = 'es';
+const t = getTranslations(lang);
+
+export async function getStaticPaths() {
+  const lang: Language = 'es';
+  const blogPostsResult: BlogPostsResultType = await getBlogPosts({ lang });
+  const totalPages = blogPostsResult.totalPages;
+
+  const paths = [];
+  for (let i = 1; i <= totalPages; i++) {
+    const pagePosts = await getBlogPosts({ lang, page: i });
+    paths.push({
+      params: { page: String(i) },
+      props: {
+        blogPostsResult: pagePosts,
+      },
+    });
+  }
+  return paths;
+}
+
+const { blogPostsResult } = Astro.props;
+
+const { currentPage, totalPages } = blogPostsResult;
+const prevPage =
+  currentPage > 1
+    ? new URL(`/es/blog/page/${currentPage - 1}/`, Astro.site).href
+    : undefined;
+const nextPage =
+  currentPage < totalPages
+    ? new URL(`/es/blog/page/${currentPage + 1}/`, Astro.site).href
+    : undefined;
+---
+
+<MainLayout
+  lang={lang}
+  title={t.blogTitle}
+  description={t.blogDescription}
+  prevPage={prevPage}
+  nextPage={nextPage}
+>
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
+</MainLayout>

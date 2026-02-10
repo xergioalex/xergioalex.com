@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import BlogContainer from '@/components/blog/BlogContainer.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+import { getTranslations, type Language } from '@/lib/translations';
+
+const lang: Language = 'es';
+const t = getTranslations(lang);
+
+export async function getStaticPaths() {
+  const lang: Language = 'es';
+
+  // Get all posts to extract unique tags
+  const allPosts = await getCollection('blog');
+  const tagsResult = Array.from(
+    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
+  );
+
+  const paths = [];
+
+  // For each tag, generate pagination routes
+  for (const tag of tagsResult) {
+    // Get the first page to calculate total pages
+    const tagPostsResult = await getBlogPosts({ lang, tag });
+    const totalPages = tagPostsResult.totalPages;
+
+    // Only generate pagination routes if there's more than 1 page
+    if (totalPages > 1) {
+      // Generate routes for each page of the tag (starting from page 2)
+      for (let i = 2; i <= totalPages; i++) {
+        const pagePosts = await getBlogPosts({ lang, tag, page: i });
+        const path = {
+          params: { tag, page: String(i) },
+          props: {
+            blogPostsResult: pagePosts,
+            currentTag: tag,
+          },
+        };
+        paths.push(path);
+      }
+    }
+  }
+  return paths;
+}
+
+const { blogPostsResult, currentTag } = Astro.props;
+const { tag, page } = Astro.params;
+---
+
+<MainLayout
+  lang={lang}
+  title={`${t.postsTagged(t.tagNames[tag] || tag)} - ${t.pageOf(Number(page), blogPostsResult.totalPages)}`}
+  description={t.tagDescriptions[tag] || `Artículos etiquetados como ${t.tagNames[tag] || tag}.`}
+>
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
+</MainLayout>

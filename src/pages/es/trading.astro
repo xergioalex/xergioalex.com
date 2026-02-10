@@ -1,0 +1,43 @@
+---
+import HighlightCard from '@/components/pages/HighlightCard.astro';
+import PageHero from '@/components/pages/PageHero.astro';
+import PageSection from '@/components/pages/PageSection.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import type { Language } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
+
+const lang: Language = 'es';
+const t = getTranslations(lang);
+---
+
+<MainLayout lang={lang} title={t.tradingPage.title} description={t.tradingPage.description}>
+  <PageHero
+    title={t.tradingPage.title}
+    subtitle={t.tradingPage.subtitle}
+    description={t.tradingPage.heroDescription}
+    image="/images/trading.png"
+  />
+
+  <PageSection title={t.tradingPage.journeyTitle} description={t.tradingPage.journeyText} />
+
+  <PageSection title={t.tradingPage.approachTitle} description={t.tradingPage.approachText} background="gray" />
+
+  <PageSection title={t.tradingPage.areasTitle}>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {t.tradingPage.areas.map((area) => (
+        <HighlightCard title={area.title} description={area.description} icon={area.icon} />
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection title={t.tradingPage.philosophyTitle} description={t.tradingPage.philosophyText} background="gray" />
+
+  <!-- CTA to blog trading posts -->
+  <section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="main-container text-center">
+      <a href="/es/blog/tag/trading" class="inline-block px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors">
+        {t.homeSections.trading.cta}
+      </a>
+    </div>
+  </section>
+</MainLayout>

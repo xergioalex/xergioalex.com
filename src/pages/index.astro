@@ -5,111 +5,70 @@ import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
 import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
+import type { Language } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
 
-const lang: string = 'en';
+const lang: Language = 'en';
+const t = getTranslations(lang);
 ---
 
-<MainLayout lang={lang} title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<MainLayout lang={lang} title={t.siteTitle} description={t.siteDescription}>
 	<HeroSection
 		name="Sergio Alexander Florez Galeano"
-		description='Cofundador y CTO en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Emprendedor, speaker, investigador, atleta, trader, gamer y geek al 100%'
-		typewriterWords={[
-			"Full Stack Developer",
-			"Trader",
-			"Emprendedor",
-			"Maker",
-			"Mentor & Speaker",
-			"Geek",
-			"Apasionado del deporte",
-		]}
+		description={t.hero.description}
+		typewriterWords={t.hero.typewriterWords}
 	/>
 
 	<!-- About Section -->
 	<HomeSection
-		title="Hola, soy <span class='text-secondary'>Sergio</span>"
-		description={`Passionate about developing of conversational interfaces. Currently CTO at DailyBot building an assistant for asynchronous team collaboration.<br /><br />
-
-Computer science engineer, MSc in data science and passionate entrepreneur, with talent and more than 10y of experience building digital businesses. In the search of the ideation of disruptive business models as agents of change and success.<br /><br />
-
-💻🎙📚 | Speaker, researcher, athlete, gamer, and geek 100%.`}
-		ctaText="Conoce más sobre mí"
+		title={t.homeSections.about.title}
+		description={t.homeSections.about.description}
+		ctaText={t.homeSections.about.cta}
 		ctaLink="/about"
-		cta2Text="Ver mi CV"
+		cta2Text={t.homeSections.about.cta2}
 		cta2Link="/cv"
 		image="/images/profile.png"
 		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
-	<!-- DailyBot Section -->
+	<!-- Builder Section (What I Build) -->
 	<HomeSection
-		title="DailyBot (YC S21)"
-		subtitle="CTO & Cofundador"
-		description="He liderado el desarrollo de una plataforma innovadora que conecta equipos globalmente, facilitando la colaboración y comunicación efectiva entre miembros. En 2021, fuimos seleccionados por Y Combinator, lo que nos permitió acelerar nuestro crecimiento, mejorar nuestras capacidades tecnológicas y reforzar nuestro enfoque en la satisfacción del cliente. 🚀"
-		ctaText="Conoce más sobre DailyBot"
-		ctaLink="https://dailybot.com"
+		title={t.homeSections.builder.title}
+		subtitle={t.homeSections.builder.subtitle}
+		description={t.homeSections.builder.description}
+		ctaText={t.homeSections.builder.cta}
+		ctaLink="/portfolio"
 		image="/images/dailybotyc.png"
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
+		variant="alt"
 	/>
 
-	<!-- Tech Talks Section -->
+	<!-- Blog Preview Section -->
+	<BlogPreviewSection lang={lang} />
+
+	<!-- Community & Speaking Section -->
 	<HomeSection
-		title="Tech Talks"
-		subtitle="Cofundador & Speaker"
-		description="Como cofundador y organizador de la comunidad Pereira Tech Talks, he impulsado la creación de espacios para compartir conocimiento y conectar a profesionales de tecnología. He tenido la oportunidad de ser speaker en múltiples charlas técnicas, donde disfruto compartir experiencias y aprender junto a la comunidad."
-		ctaText="Conoce más sobre mis charlas"
-		ctaLink="/about"
+		title={t.homeSections.community.title}
+		subtitle={t.homeSections.community.subtitle}
+		description={t.homeSections.community.description}
+		ctaText={t.homeSections.community.cta}
+		ctaLink="/techtalks"
 		image="/images/techtalks.png"
 		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
-	<!-- Maker Section -->
+	<!-- Beyond Code Section -->
 	<HomeSection
-		title="Maker"
-		subtitle="Entusiasta de la tecnología, IA & Desarrollador de proyectos"
-		description="Como entusiasta de la tecnología y la inteligencia artificial, he liderado y desarrollado múltiples proyectos innovadores, explorando diversas tecnologías para crear aplicaciones digitales y soluciones técnicas de alto impacto. Mi pasión por la innovación y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desafíos complejos y aportar valor a través de la tecnología."
-		ctaText="Ver mis proyectos"
-		ctaLink="/projects"
-		image="/images/ia.png"
-		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
-	/>
-
-	<!-- Trading Section -->
-	<HomeSection
-		title="Trading"
-		subtitle="Trader entusiasta & Aprendiz de trading algorítmico"
-		description="Como trader entusiasta, he dedicado los últimos dos años a formarme en el mercado de divisas (forex) y a profundizar en el trading algorítmico, con el objetivo de optimizar y automatizar mis estrategias de inversión. Me motiva el aprendizaje continuo y la investigación de los mercados financieros, siempre en busca de nuevas herramientas y enfoques que me permitan mejorar mi desempeño y tomar decisiones más informadas."
-		ctaText="Conoce más sobre mí"
-		ctaLink="/about"
-		image="/images/trading.png"
-		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
-	/>
-
-	<!-- Foddie Section -->
-	<HomeSection
-		title="Foodie Enthusiast"
-		subtitle="Creador de contenido & Foodie lover"
-		description="Más allá de la tecnología, soy un apasionado creador de contenido y amante de la gastronomía. Disfruto explorar nuevos lugares para comer, compartir recomendaciones y experiencias culinarias, y conectar con personas a través de mis redes sociales. Me motiva inspirar a otros a descubrir sitios únicos y vivir nuevas experiencias, combinando mi entusiasmo por la comunicación, la creatividad y el buen comer."
-		ctaText="Conoce más sobre mí"
-		ctaLink="/about"
-		image="/images/foddie.png"
-		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
-	/>
-
-	<!-- Hobbies Section -->
-	<HomeSection
-		title="Hobbies"
-		subtitle="Apasionado del deporte y la vida activa"
-		description="Fuera del mundo profesional, soy un apasionado del deporte y el bienestar. Disfruto recorrer la ciudad en bicicleta y mantenerme activo a través del running, el baloncesto y el ajedrez. Además, encuentro en los videojuegos una forma de entretenimiento y desafío mental. El deporte es una parte fundamental de mi vida, ya que me inspira a superarme constantemente y a mantener un equilibrio saludable."
-		ctaText="Conoce más sobre mí"
-		ctaLink="/about"
+		title={t.homeSections.beyondCode.title}
+		subtitle={t.homeSections.beyondCode.subtitle}
+		description={t.homeSections.beyondCode.description}
+		ctaText={t.homeSections.beyondCode.cta}
+		ctaLink="/hobbies"
 		image="/images/bicycle.png"
-		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
+		variant="alt"
 	/>
-
-	<!-- Blog Preview Section -->
-	<BlogPreviewSection />
 
 	<!-- Contact Section -->
-	<ContactSection />
+	<ContactSection lang={lang} />
 </MainLayout>

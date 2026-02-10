@@ -3,13 +3,15 @@ import { getCollection } from 'astro:content';
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { getTranslations, type Language } from '@/lib/translations';
 
-const lang: string = 'en';
+const lang: Language = 'en';
+const t = getTranslations(lang);
 
 export async function getStaticPaths() {
-  const lang: string = 'en';
+  const lang: Language = 'en';
 
-  // Obtener todos los posts para extraer tags únicos
+  // Get all posts to extract unique tags
   const allPosts = await getCollection('blog');
   const tagsResult = Array.from(
     new Set(allPosts.flatMap((post) => post.data.tags ?? []))
@@ -17,7 +19,7 @@ export async function getStaticPaths() {
 
   const paths = [];
 
-  // Para cada tag, generar solo la primera página
+  // For each tag, generate only the first page
   for (const tag of tagsResult) {
     const tagPostsResult = await getBlogPosts({ lang, tag });
     paths.push({
@@ -38,8 +40,8 @@ const { tag } = Astro.params;
 
 <MainLayout
   lang={lang}
-  title={`Artículos con tag: ${tag}`}
-  description={`Artículos etiquetados como ${tag}.`}
+  title={t.postsTagged(t.tagNames[tag] || tag)}
+  description={t.tagDescriptions[tag] || `Articles tagged as ${t.tagNames[tag] || tag}.`}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} />
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
 </MainLayout>

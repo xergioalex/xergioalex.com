@@ -1,7 +1,26 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
+import { getHighlightedField } from '@/lib/search';
+import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
+export let lang: string = 'en';
+export let searchResult:
+  | { item: any; score: number; matches?: any[] }
+  | undefined = undefined;
+
+$: t = getTranslations(lang);
+
+// Helper function to get post slug without language prefix
+// e.g., "en/first-post" -> "first-post" or just "first-post" -> "first-post"
+function getPostSlug(): string {
+  const id = post.id || post.slug || '';
+  // Remove language prefix if present (en/, es/)
+  if (id.startsWith('en/') || id.startsWith('es/')) {
+    return id.substring(3);
+  }
+  return id;
+}
 
 // Helper function to get post data regardless of structure
 function getPostData() {
@@ -26,6 +45,15 @@ function getPostData() {
 }
 
 $: postData = getPostData();
+$: postSlug = getPostSlug();
+
+// Get highlighted title and description if search result is available
+$: displayTitle = searchResult
+  ? getHighlightedField(searchResult, 'title', postData.title)
+  : postData.title;
+$: displayDescription = searchResult
+  ? getHighlightedField(searchResult, 'description', postData.description)
+  : postData.description;
 </script>
 
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
@@ -38,16 +66,16 @@ $: postData = getPostData();
   {/if}
   <div class="p-6">
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-      <a href={`/blog/${post.id || post.slug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
-        {postData.title}
+      <a href={`${lang === 'es' ? '/es' : ''}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+        {@html displayTitle}
       </a>
     </h2>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
-      {postData.description}
+      {@html displayDescription}
     </p>
-    <div class="flex justify-between items-center">
+    <div class="flex flex-wrap justify-between items-center gap-2">
       <time class="text-sm text-gray-500 dark:text-gray-400">
-        {postData.pubDate.toLocaleDateString('es-ES', {
+        {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',
           day: 'numeric'
@@ -57,10 +85,10 @@ $: postData = getPostData();
         <div class="flex gap-1">
           {#each postData.tags as tag}
             <a 
-              href={`/blog/tag/${tag}/`}
+              href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag}/`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
-              #{tag}
+              #{t.tagNames[tag] || tag}
             </a>
           {/each}
         </div>

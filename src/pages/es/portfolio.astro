@@ -1,0 +1,31 @@
+---
+import PageHero from '@/components/pages/PageHero.astro';
+import PortfolioTimeline from '@/components/portfolio/PortfolioTimeline.svelte';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+import type { Language } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
+
+const lang: Language = 'es';
+const t = getTranslations(lang);
+
+const { postsResult: posts } = await getBlogPosts({
+  lang,
+  tag: 'portfolio',
+  pageSize: 100,
+});
+---
+
+<MainLayout lang={lang} title={t.portfolioPage.title} description={t.portfolioPage.description}>
+	<PageHero
+		title={t.portfolioPage.title}
+		subtitle={t.portfolioPage.subtitle}
+		description={t.portfolioPage.heroDescription}
+	/>
+
+	<section class="py-12 md:py-16">
+		<div class="main-container">
+			<PortfolioTimeline client:load posts={posts} lang={lang} />
+		</div>
+	</section>
+</MainLayout>

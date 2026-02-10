@@ -1,10 +1,30 @@
 <script lang="ts">
+import { onMount } from 'svelte';
+import { getTranslations } from '@/lib/translations';
 import MobileMenu from './MobileMenu.svelte';
 
-export const lang: string = 'en';
+export let lang: string = 'en';
 let open: boolean = false;
 let aboutOpen = false;
 let languageOpen = false;
+
+$: t = getTranslations(lang);
+$: prefix = lang === 'es' ? '/es' : '';
+
+// Language switch URL - computed on mount from current page path
+let switchUrl: string = lang === 'es' ? '/' : '/es';
+
+onMount(() => {
+  const path = window.location.pathname;
+  if (lang === 'es') {
+    switchUrl =
+      path === '/es' || path === '/es/'
+        ? '/'
+        : path.replace(/^\/es/, '') || '/';
+  } else {
+    switchUrl = path === '/' ? '/es' : `/es${path}`;
+  }
+});
 
 function toggleMenu() {
   open = !open;
@@ -14,7 +34,7 @@ function toggleMenu() {
 <header class="bg-main text-white sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
   <nav class="main-container flex items-center justify-between">
     <a
-      href="/"
+      href={prefix || '/'}
       class="font-extrabold text-2xl md:text-3xl tracking-tight text-blue-600 select-none"
     >
       <img
@@ -26,8 +46,9 @@ function toggleMenu() {
     <!-- Desktop menu -->
     <div class="hidden md:flex items-center gap-8">
       <div class="flex gap-6">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/blog" class="nav-link">Blog</a>
+        <a href={prefix || '/'} class="nav-link">{t.nav.home}</a>
+        <a href="{prefix}/blog" class="nav-link">{t.nav.blog}</a>
+        <a href="{prefix}/portfolio" class="nav-link">{t.nav.portfolio}</a>
         <div
           class="relative group"
           role="menu"
@@ -42,7 +63,7 @@ function toggleMenu() {
             type="button"
             tabindex="0"
           >
-            About
+            {t.nav.about}
             <svg
               class="w-4 h-4 transition-transform duration-200"
               style="transform: rotate({aboutOpen ? '180deg' : '0deg'});"
@@ -61,22 +82,22 @@ function toggleMenu() {
             ></div>
             <div
               id="about-dropdown"
-              class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white text-black rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
-              <a href="/about" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">About Me</a>
-              <a href="/cv" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">CV</a>
-              <a href="/dailybot" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">DailyBot</a>
-              <a href="/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Entrepreneur</a>
-              <a href="/techtalks" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Tech Talks</a>
-              <a href="/maker" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Maker / Builder</a>
-              <a href="/trading" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Trading</a>
-              <a href="/foodie" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Foodie Enthusiast</a>
-              <a href="/hobbies" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">Hobbies</a>
+              <a href="{prefix}/about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.aboutMe}</a>
+              <a href="{prefix}/cv" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.cv}</a>
+              <a href="{prefix}/dailybot" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.dailybot}</a>
+              <a href="{prefix}/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.entrepreneur}</a>
+              <a href="{prefix}/techtalks" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.techTalks}</a>
+              <a href="{prefix}/maker" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.maker}</a>
+              <a href="{prefix}/trading" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.trading}</a>
+              <a href="{prefix}/foodie" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.foodie}</a>
+              <a href="{prefix}/hobbies" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.hobbies}</a>
             </div>
           {/if}
         </div>
-        <a href="/contact" class="nav-link">Contact</a>
+        <a href="{prefix}/contact" class="nav-link">{t.nav.contact}</a>
         <div
           class="relative group"
           role="menu"
@@ -114,15 +135,15 @@ function toggleMenu() {
             ></div>
             <div
               id="language-dropdown"
-              class="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white text-black rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
               {#if lang === "es"}
-                <a href="/" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
+                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
                   <span role="img" aria-label="English">🇬🇧</span> EN
                 </a>
               {:else}
-                <a href="/es" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
+                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
                   <span role="img" aria-label="Español">🇪🇸</span> ES
                 </a>
               {/if}
@@ -133,7 +154,7 @@ function toggleMenu() {
     </div>
     <!-- Mobile menu button -->
     <button
-      class="block md:hidden p-1"
+      class="block md:hidden p-2"
       aria-label="Open menu"
       on:click={toggleMenu}
       type="button"
@@ -144,4 +165,4 @@ function toggleMenu() {
     </button>
   </nav>
   <MobileMenu {lang} {open} {toggleMenu} />
-</header> 
+</header>

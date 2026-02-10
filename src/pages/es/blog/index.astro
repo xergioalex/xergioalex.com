@@ -1,0 +1,22 @@
+---
+import BlogContainer from '@/components/blog/BlogContainer.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+import { getTranslations, type Language } from '@/lib/translations';
+import type { BlogPostsResultType } from '@/lib/types';
+
+const lang: Language = 'es';
+const t = getTranslations(lang);
+
+const blogPostsResult: BlogPostsResultType = await getBlogPosts({
+  lang: lang,
+});
+---
+
+<MainLayout
+  lang={lang}
+  title={t.blogTitle}
+  description={t.blogDescription}
+>
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
+</MainLayout>

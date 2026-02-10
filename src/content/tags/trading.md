@@ -1,4 +1,4 @@
 ---
 name: "trading"
-description: "Diario de trading, análisis y aprendizajes."
+description: "Trading journal, analysis, and learnings."
 ---

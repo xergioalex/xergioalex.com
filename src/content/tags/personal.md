@@ -1,4 +1,4 @@
 ---
 name: "personal"
-description: "Artículos sobre mi vida y experiencias."
+description: "Articles about my life and experiences."
 ---

@@ -1,9 +1,10 @@
 {
   "name": "XergioAleX - Astro",
   "dockerComposeFile": "../docker/local/docker-compose.yaml",
-  "service": "xergioalexcom",
+  "service": "xergioalexcomvscode",
   "workspaceFolder": "/app",
-  "runServices": ["xergioalexcom"],
+  "runServices": ["xergioalexcomvscode"],
+  "remoteUser": "node",
   "customizations": {
     "settings": {
       "terminal.integrated.shell.linux": "/bin/bash"
@@ -16,8 +17,7 @@
         "biomejs.biome",
         "unifiedjs.vscode-mdx",
         "astro-build.astro-vscode",
-        "bradlc.vscode-tailwindcss",
-        "svelte.svelte-vscode"
+        "bradlc.vscode-tailwindcss"
       ]
     }
   }
