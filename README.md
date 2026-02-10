@@ -18,7 +18,7 @@
 
 ---
 
-## about
+## About
 
 A modern, fast, and fully bilingual personal website built with [Astro](https://astro.build). It serves as a professional portfolio, blog platform, and personal brand presence — showcasing experience, projects, and thought leadership.
 
@@ -30,7 +30,7 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 - **SEO-ready** — Sitemap, RSS feed, Open Graph, semantic HTML
 - **Content Collections** — Typed blog posts with MDX support
 
-## tech stack
+## Tech Stack
 
 | Layer | Technology |
 | :---- | :--------- |
@@ -40,19 +40,16 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 | Content | Markdown, MDX |
 | Hosting | GitHub Pages |
 
-## quick start
+## Quick Start
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
 Visit [http://localhost:4321](http://localhost:4321) to preview.
 
-## commands
+## Commands
 
 | Command | Description |
 | :------ | :---------- |
@@ -64,7 +61,7 @@ Visit [http://localhost:4321](http://localhost:4321) to preview.
 | `npm run biome:fix` | Auto-fix lint and format issues |
 | `npm run astro:check` | TypeScript type checking |
 
-## project structure
+## Project Structure
 
 ```
 ├── public/           # Static assets (images, fonts, icons)
@@ -80,7 +77,7 @@ Visit [http://localhost:4321](http://localhost:4321) to preview.
 └── astro.config.mjs
 ```
 
-## documentation
+## Documentation
 
 | Document | Description |
 | :------- | :---------- |
@@ -90,20 +87,22 @@ Visit [http://localhost:4321](http://localhost:4321) to preview.
 | [Standards](./docs/STANDARDS.md) | Coding conventions |
 | [Security](./docs/SECURITY.md) | Security best practices |
 
-## deployment
+## Deployment
 
-The site is deployed to [GitHub Pages](https://pages.github.com) via the `docs/` directory. Build with:
+The site is deployed to [GitHub Pages](https://pages.github.com) via the `docs/` directory:
 
 ```bash
 npm run build:ghpages
 ```
 
-Then commit and push the `docs/` folder. The live site is available at [xergioalex.com](https://xergioalex.com).
+Then commit and push the `docs/` folder. Live at [xergioalex.com](https://xergioalex.com).
 
-## license & credit
+## License
 
-- **Author:** [Sergio Alexander Florez Galeano](https://xergioalex.com)
-- **Inspiration:** [Bear Blog](https://github.com/HermanMartinus/bearblog/)
+[MIT](LICENSE) — Sergio Alexander Florez Galeano
+
+### Third-Party Assets
+
 - **Icons:** [Heroicons](https://heroicons.com), [Simple Icons](https://simpleicons.org)
 
 ---
