@@ -13,7 +13,9 @@ $: t = getTranslations(lang);
 $: basePrefix = lang === 'es' ? '/es' : '';
 
 // Translations for header content
-$: headerTitle = currentTag ? t.postsTagged(currentTag) : t.blogDescription;
+$: headerTitle = currentTag
+  ? t.postsTagged(t.tagNames[currentTag] || currentTag)
+  : t.blogDescription;
 $: showingText =
   lang === 'es'
     ? `Mostrando ${currentPagePosts} de ${totalPosts} artículos`
@@ -65,7 +67,7 @@ $: availableText =
           : "bg-blue-100 text-blue-800 hover:bg-blue-200"
       }`}
     >
-      #{tag}
+      #{t.tagNames[tag] || tag}
     </a>
   {/each}
 </div> 

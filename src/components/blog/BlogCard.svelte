@@ -88,7 +88,7 @@ $: displayDescription = searchResult
               href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag}/`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
-              #{tag}
+              #{t.tagNames[tag] || tag}
             </a>
           {/each}
         </div>
