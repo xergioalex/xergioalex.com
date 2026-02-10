@@ -58,6 +58,7 @@ export interface Activity {
 export interface SiteTranslations {
   // Site metadata
   siteTitle: string;
+  siteTitleFull: string; // Full title for browser tab (homepage)
   siteDescription: string;
 
   // Navigation
@@ -86,6 +87,7 @@ export interface SiteTranslations {
 
   // Homepage hero
   hero: {
+    tagline: string;
     description: string;
     typewriterWords: string[];
   };
@@ -399,6 +401,7 @@ const translations: Record<Language, SiteTranslations> = {
   en: {
     // Site metadata
     siteTitle: 'XergioAleX',
+    siteTitleFull: 'Sergio Florez — CTO & Co-founder at DailyBot (YC S21)',
     siteDescription:
       'Personal website and blog by Sergio Alexander Florez Galeano',
 
@@ -428,6 +431,7 @@ const translations: Record<Language, SiteTranslations> = {
 
     // Homepage hero
     hero: {
+      tagline: 'CTO at DailyBot (YC S21) · Builder of 20+ Products',
       description:
         'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, where we help thousands of teams collaborate better. 10+ years shipping digital products, from AI-powered platforms to open source tools.',
       typewriterWords: [
@@ -1183,6 +1187,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
   es: {
     // Site metadata
     siteTitle: 'XergioAleX',
+    siteTitleFull: 'Sergio Florez — CTO y Cofundador en DailyBot (YC S21)',
     siteDescription:
       'Sitio web personal y blog de Sergio Alexander Florez Galeano',
 
@@ -1212,6 +1217,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
 
     // Homepage hero
     hero: {
+      tagline: 'CTO en DailyBot (YC S21) · Creador de 20+ Productos',
       description:
         'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, donde ayudamos a miles de equipos a colaborar mejor. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
       typewriterWords: [

@@ -12,9 +12,10 @@ const lang: Language = 'en';
 const t = getTranslations(lang);
 ---
 
-<MainLayout lang={lang} title={t.siteTitle} description={t.siteDescription}>
+<MainLayout lang={lang} title={t.siteTitleFull} description={t.siteDescription}>
 	<HeroSection
 		name="Sergio Alexander Florez Galeano"
+		tagline={t.hero.tagline}
 		description={t.hero.description}
 		typewriterWords={t.hero.typewriterWords}
 	/>
