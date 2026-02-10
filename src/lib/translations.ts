@@ -118,6 +118,12 @@ export interface SiteTranslations {
       description: string;
       cta: string;
     };
+    makerHome: {
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: string;
+    };
     portfolio: {
       title: string;
       subtitle: string;
@@ -473,6 +479,13 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         description:
           'As a technology and artificial intelligence enthusiast, I have led and developed multiple innovative projects, exploring various technologies to create digital applications and high-impact technical solutions. My passion for innovation and constant learning drives me to always be at the forefront, researching new tools and trends to transform ideas into tangible realities. I enjoy tackling complex challenges and adding value through technology.',
         cta: 'View my projects',
+      },
+      makerHome: {
+        title: 'What I Built',
+        subtitle: 'Entrepreneur, maker & tech enthusiast',
+        description:
+          "Beyond DailyBot, I'm an entrepreneur and maker passionate about technology. I build side projects, explore AI, and contribute to open source — from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management). With 113+ repositories on GitHub, I believe the best way to learn is to build something real.",
+        cta: 'Explore my projects',
       },
       portfolio: {
         title: 'Portfolio',
@@ -1260,6 +1273,13 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         description:
           'Como entusiasta de la tecnolog\u00EDa y la inteligencia artificial, he liderado y desarrollado m\u00FAltiples proyectos innovadores, explorando diversas tecnolog\u00EDas para crear aplicaciones digitales y soluciones t\u00E9cnicas de alto impacto. Mi pasi\u00F3n por la innovaci\u00F3n y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desaf\u00EDos complejos y aportar valor a trav\u00E9s de la tecnolog\u00EDa.',
         cta: 'Ver mis proyectos',
+      },
+      makerHome: {
+        title: 'Lo Que He Construido',
+        subtitle: 'Emprendedor, maker y entusiasta de la tecnolog\u00EDa',
+        description:
+          'M\u00E1s all\u00E1 de DailyBot, soy emprendedor y maker apasionado por la tecnolog\u00EDa. Construyo proyectos paralelos, exploro IA y contribuyo al open source \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs). Con 113+ repositorios en GitHub, creo que la mejor forma de aprender es construir algo real.',
+        cta: 'Explorar mis proyectos',
       },
       portfolio: {
         title: 'Portafolio',
