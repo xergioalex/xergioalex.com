@@ -2,7 +2,7 @@ FROM node:24.13.0-trixie-slim
 LABEL maintainer="xergioalex@gmail.com"
 
 RUN apt-get update -y && \
-    apt-get install -y less git curl gnupg ca-certificates openssh-client sudo && \
+    apt-get install -y less git curl gnupg ca-certificates openssh-client sudo nano && \
     # Install GitHub CLI
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
     chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \
@@ -17,6 +17,11 @@ RUN apt-get update -y && \
     apt-get clean -y && \
     rm -rf /var/cache/apk/* && \
     rm -rf /var/lib/apt/lists/*
+
+# Default terminal editor inside container (used by Git for merge/commit messages)
+ENV EDITOR=nano
+ENV VISUAL=nano
+ENV GIT_EDITOR=nano
 
 # Add node user to sudoers (node user already exists in official node images with uid 1000)
 RUN echo 'node ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/node \
