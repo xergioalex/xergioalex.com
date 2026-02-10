@@ -229,7 +229,7 @@ Files in `public/` are served from the root:
 
 ## Related Documentation
 
-- [BaseHead Component](../src/components/README.md#basehead)
-- [Styling Guide](../src/styles/README.md)
-- [Features: Dark Mode](../docs/features/dark-mode.md)
-- [Content Collections](../src/content/README.md) - Blog images
+- [BaseHead Component](../../src/components/README.md#basehead)
+- [Styling Guide](../../src/styles/README.md)
+- [Features: Dark Mode](./dark-mode.md)
+- [Content Collections](../../src/content/README.md) - Blog images
