@@ -96,15 +96,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24.13.0'
-      - name: Step 3 - Verify the existence of 'ghpages' branch
-        run: |
-          git fetch origin
-          git checkout -b ghpages
-          git pull origin ghpages --rebase || true
-      - name: Step 4 - Remove previous build
+      - name: Step 3 - Remove previous build
         run: |
           rm -rf docs
-      - name: Step 5 - 📁 Cache node modules
+      - name: Step 4 - 📁 Cache node modules
         id: cache-npm
         uses: actions/cache@v4
         env:
@@ -117,28 +112,33 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: Step 6 - ⚙️ Install Dependencies
+        name: Step 5 - ⚙️ Install Dependencies
         run: |
           npm install
           # Install specific dependencies for CI (x64)
           npm install --no-save @rollup/rollup-linux-x64-gnu@4.29.1 lightningcss-linux-x64-gnu@1.28.2 @esbuild/linux-x64@0.24.2
-      - name: Step 7 - Build static files
+      - name: Step 6 - Build static files
         run: |
           npm run build:ghpages
           if [ ! -d "docs" ]; then
-            echo "⚠️ Error: docs folder does not exist."
+            echo "⚠️ Error: docs folder does not exist after build."
             exit 1
           fi
-      - name: Step 8 - Commit build changes
+      - name: Step 7 - Deploy to ghpages branch
         run: |
-          git add .
+          # Create or reset local ghpages branch to current main HEAD
+          # Using -B flag: creates the branch or resets it if it already exists
+          git checkout -B ghpages
+          # Stage the built docs/ folder and all current files
+          git add -A
+          # Commit build output (allow no-op if nothing changed)
           git commit -m "Build: Update static files for GitHub Pages" || echo "No changes to commit"
-      - name: Step 9 - Push changes to ghpages
-        run: |
-          git push origin ghpages
+          # Force-push to overwrite remote ghpages branch completely
+          # This eliminates merge conflicts by always starting fresh from main
+          git push --force origin ghpages
         env:
           GITHUB_TOKEN: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
-      - name: Step 10 - Checkout 'main' branch
+      - name: Step 8 - Checkout 'main' branch
         run: |
           git checkout main
 
