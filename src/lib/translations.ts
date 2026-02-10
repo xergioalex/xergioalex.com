@@ -73,6 +73,7 @@ export interface SiteTranslations {
     entrepreneur: string;
     techTalks: string;
     maker: string;
+    portfolio: string;
     trading: string;
     foodie: string;
     hobbies: string;
@@ -116,6 +117,12 @@ export interface SiteTranslations {
       description: string;
       cta: string;
     };
+    portfolio: {
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: string;
+    };
     trading: {
       title: string;
       subtitle: string;
@@ -129,6 +136,24 @@ export interface SiteTranslations {
       cta: string;
     };
     hobbies: {
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: string;
+    };
+    builder: {
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: string;
+    };
+    community: {
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: string;
+    };
+    beyondCode: {
       title: string;
       subtitle: string;
       description: string;
@@ -249,6 +274,15 @@ export interface SiteTranslations {
     currentText: string;
     ctaText: string;
     ctaLink: string;
+  };
+
+  // Portfolio page
+  portfolioPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    heroDescription: string;
+    emptyState: string;
   };
 
   // Trading page
@@ -391,6 +425,7 @@ const translations: Record<Language, SiteTranslations> = {
       entrepreneur: 'Entrepreneur',
       techTalks: 'Tech Talks',
       maker: 'Maker / Builder',
+      portfolio: 'Portfolio',
       trading: 'Trading',
       foodie: 'Foodie Enthusiast',
       hobbies: 'Hobbies',
@@ -405,15 +440,13 @@ const translations: Record<Language, SiteTranslations> = {
     // Homepage hero
     hero: {
       description:
-        'Cofounder and CTO at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Entrepreneur, speaker, researcher, athlete, trader, gamer, and 100% geek',
+        'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, where we help thousands of teams collaborate better. 10+ years shipping digital products, from AI-powered platforms to open source tools.',
       typewriterWords: [
-        'Full Stack Developer',
-        'Trader',
-        'Entrepreneur',
-        'Maker',
-        'Mentor & Speaker',
-        'Geek',
-        'Sports Enthusiast',
+        'CTO at DailyBot (YC S21)',
+        'Builder of 20+ Products',
+        'Community Founder',
+        'AI & Tech Explorer',
+        'Open Source Contributor',
       ],
     },
 
@@ -421,9 +454,9 @@ const translations: Record<Language, SiteTranslations> = {
     homeSections: {
       about: {
         title: "Hello, I'm <span class='text-secondary'>Sergio</span>",
-        description: `Passionate about developing conversational interfaces. Currently CTO at DailyBot building an assistant for asynchronous team collaboration.<br /><br />
-Computer science engineer, MSc in data science and passionate entrepreneur, with talent and more than 10 years of experience building digital businesses. In the search for the ideation of disruptive business models as agents of change and success.<br /><br />
-\u{1F4BB}\u{1F399}\u{1F4DA} | Speaker, researcher, athlete, gamer, and geek 100%.`,
+        description: `I started as a math tutor and web developer at a university in Pereira, Colombia. That curiosity led me to build 20+ digital products, earn an MSc in Data Science, win a programming marathon, and eventually co-found DailyBot \u2014 a platform that got accepted into Y Combinator's Summer 2021 batch.<br /><br />
+Along the way, I co-founded three tech communities in Pereira to share what I was learning. Today I lead the engineering team at DailyBot, explore AI through side projects like Moltbot and Syntro, and still believe the best way to learn is to build and share.<br /><br />
+When I'm not coding, you'll find me cycling through the mountains, running, or playing basketball.`,
         cta: 'Learn more about me',
         cta2: 'View my CV',
       },
@@ -448,6 +481,13 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
           'As a technology and artificial intelligence enthusiast, I have led and developed multiple innovative projects, exploring various technologies to create digital applications and high-impact technical solutions. My passion for innovation and constant learning drives me to always be at the forefront, researching new tools and trends to transform ideas into tangible realities. I enjoy tackling complex challenges and adding value through technology.',
         cta: 'View my projects',
       },
+      portfolio: {
+        title: 'Portfolio',
+        subtitle: 'Projects & Open Source',
+        description:
+          'A curated timeline of my personal projects — from software and web applications to robotics and open source contributions. Each project represents a milestone in my journey as a maker and developer.',
+        cta: 'Explore my portfolio',
+      },
       trading: {
         title: 'Trading',
         subtitle: 'Enthusiastic trader & Algorithmic trading learner',
@@ -468,6 +508,27 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
         description:
           'Outside the professional world, I am passionate about sports and wellness. I enjoy cycling around the city and staying active through running, basketball and chess. Additionally, I find in video games a form of entertainment and mental challenge. Sports are a fundamental part of my life, as they inspire me to constantly improve and maintain a healthy balance.',
         cta: 'See my hobbies',
+      },
+      builder: {
+        title: 'What I Build',
+        subtitle: 'From AI-powered platforms to open source tools',
+        description:
+          'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-secondary hover:underline">DailyBot (YC S21)</a>, I\'ve architected a platform used by thousands of teams on Slack, Microsoft Teams, and Google Chat. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
+        cta: 'Explore my projects',
+      },
+      community: {
+        title: 'Community & Speaking',
+        subtitle: 'Sharing knowledge, building ecosystems',
+        description:
+          "I co-founded Pereira Tech Talks, PereiraJS, and Python Pereira \u2014 three tech communities dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, and more at conferences and meetups. I believe technology grows faster when we share what we learn.",
+        cta: 'See my talks',
+      },
+      beyondCode: {
+        title: 'Beyond Code',
+        subtitle: 'What fuels the builder',
+        description:
+          "When I'm not building products, I'm exploring other passions. I study financial markets and algorithmic trading to understand the world of business from a different angle. I stay active through cycling, running, and basketball \u2014 sports keep me energized and disciplined. And I love discovering great food and sharing culinary finds. Life is better when you're curious about everything.",
+        cta: 'More about my interests',
       },
       latestArticles: 'Latest Articles',
     },
@@ -896,6 +957,17 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
       ctaLink: 'https://github.com/xergioalex',
     },
 
+    // Portfolio page
+    portfolioPage: {
+      title: 'Portfolio',
+      subtitle: 'Projects & Open Source',
+      description:
+        'A curated timeline of personal projects — software, robotics, open source, and more.',
+      heroDescription:
+        'Explore my journey through the projects I have built over the years — from web applications and developer tools to robotics and open source contributions.',
+      emptyState: 'No projects found. Check back soon!',
+    },
+
     // Trading page
     tradingPage: {
       title: 'Trading',
@@ -1149,6 +1221,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
       entrepreneur: 'Emprendedor',
       techTalks: 'Charlas Tech',
       maker: 'Maker / Creador',
+      portfolio: 'Portafolio',
       trading: 'Trading',
       foodie: 'Foodie',
       hobbies: 'Hobbies',
@@ -1163,15 +1236,13 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
     // Homepage hero
     hero: {
       description:
-        'Cofundador y CTO en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a> - Emprendedor, speaker, investigador, atleta, trader, gamer y geek al 100%',
+        'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, donde ayudamos a miles de equipos a colaborar mejor. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
       typewriterWords: [
-        'Full Stack Developer',
-        'Trader',
-        'Emprendedor',
-        'Maker',
-        'Mentor & Speaker',
-        'Geek',
-        'Apasionado del deporte',
+        'CTO en DailyBot (YC S21)',
+        'Creador de 20+ Productos',
+        'Fundador de Comunidades',
+        'Explorador de IA & Tech',
+        'Contribuidor Open Source',
       ],
     },
 
@@ -1179,9 +1250,9 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
     homeSections: {
       about: {
         title: "Hola, soy <span class='text-secondary'>Sergio</span>",
-        description: `Apasionado por el desarrollo de interfaces conversacionales. Actualmente CTO en DailyBot construyendo un asistente para la colaboraci\u00F3n asincr\u00F3nica de equipos.<br /><br />
-Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprendedor apasionado, con talento y m\u00E1s de 10 a\u00F1os de experiencia construyendo negocios digitales. En la b\u00FAsqueda de la ideaci\u00F3n de modelos de negocio disruptivos como agentes de cambio y \u00E9xito.<br /><br />
-\u{1F4BB}\u{1F399}\u{1F4DA} | Speaker, investigador, atleta, gamer y geek al 100%.`,
+        description: `Empec\u00E9 como tutor de matem\u00E1ticas y desarrollador web en una universidad en Pereira, Colombia. Esa curiosidad me llev\u00F3 a construir m\u00E1s de 20 productos digitales, obtener una Maestr\u00EDa en Ciencia de Datos, ganar un marat\u00F3n de programaci\u00F3n y, eventualmente, cofundar DailyBot \u2014 una plataforma aceptada en Y Combinator Summer 2021.<br /><br />
+En el camino, cofund\u00E9 tres comunidades tech en Pereira para compartir lo que iba aprendiendo. Hoy lidero el equipo de ingenier\u00EDa en DailyBot, exploro IA a trav\u00E9s de proyectos como Moltbot y Syntro, y sigo creyendo que la mejor forma de aprender es construir y compartir.<br /><br />
+Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, corriendo o jugando baloncesto.`,
         cta: 'Conoce m\u00E1s sobre m\u00ED',
         cta2: 'Ver mi CV',
       },
@@ -1207,6 +1278,13 @@ Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprende
           'Como entusiasta de la tecnolog\u00EDa y la inteligencia artificial, he liderado y desarrollado m\u00FAltiples proyectos innovadores, explorando diversas tecnolog\u00EDas para crear aplicaciones digitales y soluciones t\u00E9cnicas de alto impacto. Mi pasi\u00F3n por la innovaci\u00F3n y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desaf\u00EDos complejos y aportar valor a trav\u00E9s de la tecnolog\u00EDa.',
         cta: 'Ver mis proyectos',
       },
+      portfolio: {
+        title: 'Portafolio',
+        subtitle: 'Proyectos & Open Source',
+        description:
+          'Una l\u00EDnea de tiempo curada de mis proyectos personales \u2014 desde software y aplicaciones web hasta rob\u00F3tica y contribuciones open source. Cada proyecto representa un hito en mi camino como maker y desarrollador.',
+        cta: 'Explorar mi portafolio',
+      },
       trading: {
         title: 'Trading',
         subtitle: 'Trader entusiasta & Aprendiz de trading algor\u00EDtmico',
@@ -1227,6 +1305,27 @@ Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprende
         description:
           'Fuera del mundo profesional, soy un apasionado del deporte y el bienestar. Disfruto recorrer la ciudad en bicicleta y mantenerme activo a trav\u00E9s del running, el baloncesto y el ajedrez. Adem\u00E1s, encuentro en los videojuegos una forma de entretenimiento y desaf\u00EDo mental. El deporte es una parte fundamental de mi vida, ya que me inspira a superarme constantemente y a mantener un equilibrio saludable.',
         cta: 'Ver mis hobbies',
+      },
+      builder: {
+        title: 'Lo Que Construyo',
+        subtitle: 'Desde plataformas con IA hasta herramientas open source',
+        description:
+          'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-secondary hover:underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma utilizada por miles de equipos en Slack, Microsoft Teams y Google Chat. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
+        cta: 'Explorar mis proyectos',
+      },
+      community: {
+        title: 'Comunidad & Charlas',
+        subtitle: 'Compartiendo conocimiento, construyendo ecosistemas',
+        description:
+          'Cofund\u00E9 Pereira Tech Talks, PereiraJS y Python Pereira \u2014 tres comunidades tech dedicadas a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional y m\u00E1s en conferencias y meetups. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos.',
+        cta: 'Ver mis charlas',
+      },
+      beyondCode: {
+        title: 'M\u00E1s All\u00E1 del C\u00F3digo',
+        subtitle: 'Lo que impulsa al constructor',
+        description:
+          'Cuando no estoy construyendo productos, exploro otras pasiones. Estudio los mercados financieros y el trading algor\u00EDtmico para entender el mundo de los negocios desde otro \u00E1ngulo. Me mantengo activo con ciclismo, running y baloncesto \u2014 el deporte me mantiene con energ\u00EDa y disciplina. Y me encanta descubrir buena comida y compartir hallazgos culinarios. La vida es mejor cuando eres curioso por todo.',
+        cta: 'M\u00E1s sobre mis intereses',
       },
       latestArticles: '\u00DAltimos Art\u00EDculos',
     },
@@ -1654,6 +1753,17 @@ Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprende
         'Ahora mismo, mi enfoque est\u00E1 en la emocionante intersecci\u00F3n entre software y hardware. Recientemente obtuve una impresora 3D y estoy aprendiendo a dise\u00F1ar e imprimir objetos funcionales. Tambi\u00E9n estoy experimentando con dispositivos IoT y explorando c\u00F3mo la IA puede integrarse en sistemas f\u00EDsicos.<br /><br />Cada d\u00EDa es una oportunidad para aprender algo nuevo. Ya sea un nuevo lenguaje de programaci\u00F3n (actualmente explorando GoLang), una nueva t\u00E9cnica de fabricaci\u00F3n o un nuevo modelo de IA — el objetivo siempre es el mismo: construir, aprender, compartir, repetir.',
       ctaText: 'Ver Mi GitHub',
       ctaLink: 'https://github.com/xergioalex',
+    },
+
+    // Portfolio page
+    portfolioPage: {
+      title: 'Portafolio',
+      subtitle: 'Proyectos & Open Source',
+      description:
+        'Una l\u00EDnea de tiempo curada de proyectos personales \u2014 software, rob\u00F3tica, open source y m\u00E1s.',
+      heroDescription:
+        'Explora mi camino a trav\u00E9s de los proyectos que he construido a lo largo de los a\u00F1os \u2014 desde aplicaciones web y herramientas para desarrolladores hasta rob\u00F3tica y contribuciones open source.',
+      emptyState: 'No se encontraron proyectos. \u00A1Vuelve pronto!',
     },
 
     // Trading page

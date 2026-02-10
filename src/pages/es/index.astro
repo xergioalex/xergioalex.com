@@ -31,77 +31,43 @@ const t = getTranslations(lang);
     contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
   />
 
-  <!-- DailyBot Section -->
+  <!-- Builder Section (What I Build) -->
   <HomeSection
-    title={t.homeSections.dailybot.title}
-    subtitle={t.homeSections.dailybot.subtitle}
-    description={t.homeSections.dailybot.description}
-    ctaText={t.homeSections.dailybot.cta}
-    ctaLink="https://dailybot.com"
+    title={t.homeSections.builder.title}
+    subtitle={t.homeSections.builder.subtitle}
+    description={t.homeSections.builder.description}
+    ctaText={t.homeSections.builder.cta}
+    ctaLink="/es/portfolio"
     image="/images/dailybotyc.png"
     contentAlignment={HomeSectionContentAlignmentEType.LEFT}
     variant="alt"
   />
 
-  <!-- Tech Talks Section -->
+  <!-- Blog Preview Section -->
+  <BlogPreviewSection lang={lang} />
+
+  <!-- Community & Speaking Section -->
   <HomeSection
-    title={t.homeSections.techTalks.title}
-    subtitle={t.homeSections.techTalks.subtitle}
-    description={t.homeSections.techTalks.description}
-    ctaText={t.homeSections.techTalks.cta}
+    title={t.homeSections.community.title}
+    subtitle={t.homeSections.community.subtitle}
+    description={t.homeSections.community.description}
+    ctaText={t.homeSections.community.cta}
     ctaLink="/es/techtalks"
     image="/images/techtalks.png"
     contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
   />
 
-  <!-- Maker Section -->
+  <!-- Beyond Code Section -->
   <HomeSection
-    title={t.homeSections.maker.title}
-    subtitle={t.homeSections.maker.subtitle}
-    description={t.homeSections.maker.description}
-    ctaText={t.homeSections.maker.cta}
-    ctaLink="/es/maker"
-    image="/images/ia.png"
-    contentAlignment={HomeSectionContentAlignmentEType.LEFT}
-    variant="alt"
-  />
-
-  <!-- Trading Section -->
-  <HomeSection
-    title={t.homeSections.trading.title}
-    subtitle={t.homeSections.trading.subtitle}
-    description={t.homeSections.trading.description}
-    ctaText={t.homeSections.trading.cta}
-    ctaLink="/es/trading"
-    image="/images/trading.png"
-    contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
-  />
-
-  <!-- Foodie Section -->
-  <HomeSection
-    title={t.homeSections.foodie.title}
-    subtitle={t.homeSections.foodie.subtitle}
-    description={t.homeSections.foodie.description}
-    ctaText={t.homeSections.foodie.cta}
-    ctaLink="/es/foodie"
-    image="/images/foddie.png"
-    contentAlignment={HomeSectionContentAlignmentEType.LEFT}
-    variant="alt"
-  />
-
-  <!-- Hobbies Section -->
-  <HomeSection
-    title={t.homeSections.hobbies.title}
-    subtitle={t.homeSections.hobbies.subtitle}
-    description={t.homeSections.hobbies.description}
-    ctaText={t.homeSections.hobbies.cta}
+    title={t.homeSections.beyondCode.title}
+    subtitle={t.homeSections.beyondCode.subtitle}
+    description={t.homeSections.beyondCode.description}
+    ctaText={t.homeSections.beyondCode.cta}
     ctaLink="/es/hobbies"
     image="/images/bicycle.png"
-    contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+    contentAlignment={HomeSectionContentAlignmentEType.LEFT}
+    variant="alt"
   />
-
-  <!-- Blog Preview Section -->
-  <BlogPreviewSection lang={lang} />
 
   <!-- Contact Section -->
   <ContactSection lang={lang} />
