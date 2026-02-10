@@ -167,6 +167,9 @@ export interface SiteTranslations {
       cta: string;
     };
     latestArticles: string;
+    portfolioProjectsTitle: string;
+    portfolioProjectsViewAll: string;
+    portfolioProjectsEmpty: string;
   };
 
   // Contact section (homepage)
@@ -335,6 +338,8 @@ export interface SiteTranslations {
     activities: Activity[];
     gamingTitle: string;
     gamingText: string;
+    readingSciFiTitle: string;
+    readingSciFiText: string;
     balanceTitle: string;
     balanceText: string;
   };
@@ -350,6 +355,8 @@ export interface SiteTranslations {
     namePlaceholder: string;
     emailLabel: string;
     emailPlaceholder: string;
+    reasonLabel: string;
+    reasonOptions: { value: string; label: string }[];
     subjectLabel: string;
     subjectPlaceholder: string;
     messageLabel: string;
@@ -359,6 +366,14 @@ export interface SiteTranslations {
     socialTitle: string;
     locationTitle: string;
     locationText: string;
+  };
+
+  // Homepage Let's Connect section
+  contactSection: {
+    title: string;
+    description: string;
+    ctaText: string;
+    ctaLink: string;
   };
 
   // Search input
@@ -533,10 +548,13 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         title: 'Beyond Code',
         subtitle: 'What fuels the builder',
         description:
-          "When I'm not building products, I'm exploring other passions. I study financial markets and algorithmic trading to understand the world of business from a different angle. I stay active through cycling, running, and basketball \u2014 sports keep me energized and disciplined. And I love discovering great food and sharing culinary finds. Life is better when you're curious about everything.",
+          "When I'm not building products, I'm exploring other passions. I love reading, especially science fiction \u2014 Isaac Asimov is one of my favorite authors \u2014 and films about time travel, dystopian futures, and space exploration. I study financial markets and algorithmic trading to understand the world of business from a different angle. I stay active through cycling, running, and basketball \u2014 sports keep me energized and disciplined. And I love discovering great food and sharing culinary finds. Life is better when you're curious about everything.",
         cta: 'More about my interests',
       },
       latestArticles: 'Latest Articles',
+      portfolioProjectsTitle: 'Portfolio & Projects',
+      portfolioProjectsViewAll: 'View all portfolio posts',
+      portfolioProjectsEmpty: 'More projects coming soon.',
     },
 
     // Contact section (homepage)
@@ -611,6 +629,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       quickFacts: [
         'Based in Colombia',
         'Favorite games: The Legend of Zelda & Hollow Knight',
+        'Favorite reads: Isaac Asimov, sci-fi & dystopian futures',
         'Currently learning: 3D printing, IoT & Physical AI',
         'Languages: Spanish (native), English (professional)',
         '113+ repositories on GitHub',
@@ -1101,6 +1120,9 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       gamingTitle: 'Gaming',
       gamingText:
         "Video games have been a lifelong companion. From the epic adventures of The Legend of Zelda to the hauntingly beautiful world of Hollow Knight, gaming is how I unwind, explore new worlds, and appreciate incredible storytelling and design.<br /><br />I see gaming as more than entertainment — it's interactive art. The creativity and engineering behind great games inspire me in my own work with technology.",
+      readingSciFiTitle: 'Reading & Sci-Fi',
+      readingSciFiText:
+        "I've always been drawn to science fiction \u2014 both in books and on screen. Isaac Asimov is one of my favorite authors; his visions of the future and the ethics of technology still resonate deeply. I love films that explore time travel, dystopian futures, and space exploration. These stories fuel my imagination and offer fresh perspectives on how technology shapes humanity.",
       balanceTitle: 'Finding Balance',
       balanceText:
         "The best ideas often come when you step away from the screen. Whether it's during a long cycling ride, a mountain hike, or a competitive chess match — these moments of disconnection spark creativity and bring fresh perspectives to my work.<br /><br />Sports teach me that growth happens outside the comfort zone. That lesson applies to everything — building products, learning new skills, and living a fulfilling life.",
@@ -1130,6 +1152,17 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       namePlaceholder: 'Your name',
       emailLabel: 'Email',
       emailPlaceholder: 'your@email.com',
+      reasonLabel: 'I want to contact you about',
+      reasonOptions: [
+        { value: '', label: '— Select a topic —' },
+        { value: 'general', label: 'General / Just saying hello' },
+        { value: 'tech-talk', label: 'Tech talk / Speaking invitation' },
+        { value: 'collaboration', label: 'Collaboration / Partnership' },
+        { value: 'project', label: 'Project / Work inquiry' },
+        { value: 'dailybot', label: 'Question about DailyBot' },
+        { value: 'trading', label: 'Questions about my trading' },
+        { value: 'other', label: 'Other' },
+      ],
       subjectLabel: 'Subject',
       subjectPlaceholder: 'What is this about?',
       messageLabel: 'Message',
@@ -1140,6 +1173,14 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       locationTitle: 'Location',
       locationText:
         'Based in Colombia. Open to remote collaboration worldwide.',
+    },
+
+    contactSection: {
+      title: "Let's Connect",
+      description:
+        "I'm always open to interesting conversations, collaboration opportunities, and new ideas. Whether you want to talk tech, entrepreneurship, or just say hello.",
+      ctaText: 'Get in touch',
+      ctaLink: '/contact',
     },
 
     // Search input
@@ -1327,10 +1368,13 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         title: 'M\u00E1s All\u00E1 del C\u00F3digo',
         subtitle: 'Lo que impulsa al constructor',
         description:
-          'Cuando no estoy construyendo productos, exploro otras pasiones. Estudio los mercados financieros y el trading algor\u00EDtmico para entender el mundo de los negocios desde otro \u00E1ngulo. Me mantengo activo con ciclismo, running y baloncesto \u2014 el deporte me mantiene con energ\u00EDa y disciplina. Y me encanta descubrir buena comida y compartir hallazgos culinarios. La vida es mejor cuando eres curioso por todo.',
+          'Cuando no estoy construyendo productos, exploro otras pasiones. Me encanta leer, especialmente ciencia ficci\u00F3n \u2014 Isaac Asimov es uno de mis autores favoritos \u2014 y pel\u00EDculas sobre viajes en el tiempo, futuros dist\u00F3picos y exploraci\u00F3n espacial. Estudio los mercados financieros y el trading algor\u00EDtmico para entender el mundo de los negocios desde otro \u00E1ngulo. Me mantengo activo con ciclismo, running y baloncesto \u2014 el deporte me mantiene con energ\u00EDa y disciplina. Y me encanta descubrir buena comida y compartir hallazgos culinarios. La vida es mejor cuando eres curioso por todo.',
         cta: 'M\u00E1s sobre mis intereses',
       },
       latestArticles: '\u00DAltimos Art\u00EDculos',
+      portfolioProjectsTitle: 'Portafolio y Proyectos',
+      portfolioProjectsViewAll: 'Ver todos los posts del portafolio',
+      portfolioProjectsEmpty: 'Próximamente más proyectos.',
     },
 
     // Contact section (homepage)
@@ -1406,6 +1450,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       quickFacts: [
         'Ubicado en Colombia',
         'Juegos favoritos: The Legend of Zelda y Hollow Knight',
+        'Lecturas favoritas: Isaac Asimov, ciencia ficci\u00F3n y futuros dist\u00F3picos',
         'Aprendiendo actualmente: Impresi\u00F3n 3D, IoT y IA F\u00EDsica',
         'Idiomas: Espa\u00F1ol (nativo), Ingl\u00E9s (profesional)',
         '113+ repositorios en GitHub',
@@ -1896,6 +1941,9 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       gamingTitle: 'Gaming',
       gamingText:
         'Los videojuegos han sido un compa\u00F1ero de toda la vida. Desde las \u00E9picas aventuras de The Legend of Zelda hasta el hermoso y sombr\u00EDo mundo de Hollow Knight, el gaming es c\u00F3mo me relajo, exploro nuevos mundos y aprecio una incre\u00EDble narrativa y dise\u00F1o.<br /><br />Veo el gaming como m\u00E1s que entretenimiento — es arte interactivo. La creatividad e ingenier\u00EDa detr\u00E1s de los grandes juegos me inspiran en mi propio trabajo con tecnolog\u00EDa.',
+      readingSciFiTitle: 'Lectura y Ciencia Ficci\u00F3n',
+      readingSciFiText:
+        'Siempre me ha atra\u00EDdo la ciencia ficci\u00F3n \u2014 tanto en libros como en pantalla. Isaac Asimov es uno de mis autores favoritos; sus visiones del futuro y la \u00E9tica de la tecnolog\u00EDa siguen resonando profundamente. Me encantan las pel\u00EDculas que exploran viajes en el tiempo, futuros dist\u00F3picos y exploraci\u00F3n espacial. Estas historias alimentan mi imaginaci\u00F3n y ofrecen nuevas perspectivas sobre c\u00F3mo la tecnolog\u00EDa moldea a la humanidad.',
       balanceTitle: 'Encontrando el Equilibrio',
       balanceText:
         'Las mejores ideas a menudo llegan cuando te alejas de la pantalla. Ya sea durante un largo recorrido en bicicleta, una caminata de monta\u00F1a o una partida competitiva de ajedrez — estos momentos de desconexi\u00F3n encienden la creatividad y traen perspectivas frescas a mi trabajo.<br /><br />Los deportes me ense\u00F1an que el crecimiento sucede fuera de la zona de confort. Esa lecci\u00F3n aplica a todo — construir productos, aprender nuevas habilidades y vivir una vida plena.',
@@ -1926,6 +1974,17 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       namePlaceholder: 'Tu nombre',
       emailLabel: 'Email',
       emailPlaceholder: 'tu@email.com',
+      reasonLabel: 'Quiero contactarte por',
+      reasonOptions: [
+        { value: '', label: '— Selecciona un tema —' },
+        { value: 'general', label: 'General / Solo saludar' },
+        { value: 'tech-talk', label: 'Charla tech / Invitación a hablar' },
+        { value: 'collaboration', label: 'Colaboración / Partnership' },
+        { value: 'project', label: 'Proyecto / Consulta laboral' },
+        { value: 'dailybot', label: 'Pregunta sobre DailyBot' },
+        { value: 'trading', label: 'Preguntas sobre mi trading' },
+        { value: 'other', label: 'Otro' },
+      ],
       subjectLabel: 'Asunto',
       subjectPlaceholder: '\u00BFDe qu\u00E9 se trata?',
       messageLabel: 'Mensaje',
@@ -1936,6 +1995,14 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       locationTitle: 'Ubicaci\u00F3n',
       locationText:
         'Ubicado en Colombia. Abierto a colaboraci\u00F3n remota en todo el mundo.',
+    },
+
+    contactSection: {
+      title: 'Conectemos',
+      description:
+        'Siempre estoy abierto a conversaciones interesantes, oportunidades de colaboración e ideas nuevas. Ya sea para hablar de tech, emprendimiento o simplemente saludar.',
+      ctaText: 'Ponte en contacto',
+      ctaLink: '/es/contact',
     },
 
     // Search input
