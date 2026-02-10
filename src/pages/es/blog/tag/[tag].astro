@@ -3,8 +3,10 @@ import { getCollection } from 'astro:content';
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { getTranslations } from '@/lib/translations';
 
 const lang: string = 'es';
+const t = getTranslations(lang);
 
 export async function getStaticPaths() {
   const lang: string = 'es';
@@ -38,8 +40,8 @@ const { tag } = Astro.params;
 
 <MainLayout
   lang={lang}
-  title={`Posts con etiqueta: ${tag}`}
-  description={`Artículos etiquetados como ${tag}.`}
+  title={t.postsTagged(t.tagNames[tag] || tag)}
+  description={t.tagDescriptions[tag] || `Artículos etiquetados como ${t.tagNames[tag] || tag}.`}
 >
   <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
 </MainLayout>

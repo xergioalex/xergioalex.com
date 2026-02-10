@@ -3,8 +3,10 @@ import { getCollection } from 'astro:content';
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { getTranslations } from '@/lib/translations';
 
 const lang: string = 'es';
+const t = getTranslations(lang);
 
 export async function getStaticPaths() {
   const lang: string = 'es';
@@ -48,8 +50,8 @@ const { tag, page } = Astro.params;
 
 <MainLayout
   lang={lang}
-  title={`Posts con etiqueta: ${tag} - Página ${page}`}
-  description={`Artículos etiquetados como ${tag}. Página ${page}.`}
+  title={`${t.postsTagged(t.tagNames[tag] || tag)} - ${t.pageOf(Number(page), blogPostsResult.totalPages)}`}
+  description={t.tagDescriptions[tag] || `Artículos etiquetados como ${t.tagNames[tag] || tag}.`}
 >
   <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
 </MainLayout>
