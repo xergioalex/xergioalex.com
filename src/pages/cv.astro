@@ -49,7 +49,11 @@ const t = getTranslations(lang);
     </ol>
   </PageSection>
 
-  <PageSection background="gray" title={t.cvPage.skillsTitle}>
+  <PageSection
+    background="gray"
+    title={t.cvPage.skillsTitle}
+    description={t.cvPage.skillsIntroText}
+  >
     <div class="space-y-8">
       {t.cvPage.skillCategories.map((cat) => (
         <div>

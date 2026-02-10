@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 12             | 2                  | 0              | 14    |
-| Agents | 0              | 4                  | 1              | 5     |
-| **Total** | **12**      | **6**              | **1**          | **19** |
+| Skills | 12             | 3                  | 0              | 15    |
+| Agents | 0              | 5                  | 1              | 6     |
+| **Total** | **12**      | **8**              | **1**          | **21** |
 
 ---
 
@@ -43,6 +43,7 @@ Everyday development work.
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
+| write-article | create   | `/write-article` | sonnet | Write bilingual blog post or portfolio article with personal-professional voice |
 
 ### Tier 3 (Heavy/Reasoning)
 
@@ -68,6 +69,7 @@ Development and review specialists.
 | executor          | Executing predefined plans     | sonnet | Follows plans step by step; implements and validates      |
 | security-auditor  | Security review (read-only)    | sonnet | Static site security; API routes, secrets, client exposure |
 | i18n-guardian     | Bilingual content & translation quality | sonnet | Translation quality specialist; bilingual consistency enforcer |
+| content-writer    | Blog posts, portfolio articles, narrative content | sonnet | Expert bilingual content writer with personal-professional voice |
 
 ### Tier 3 (Heavy/Reasoning)
 
@@ -104,8 +106,10 @@ This diagram shows how skills and agents interact during typical workflows.
   │                                          │ Tier 2 Skills  │  │
   │                                          │ write-tests    │  │
   │                                          │ refactor-safe  │  │
+  │                                          │ write-article  │  │
   │                                          └────────┬───────┘  │
   │                                                   │          │
+  │   content-writer ◄──── writes articles ───────────┘          │
   │   reviewer ◄──────── validates output ────────────┘          │
   │   security-auditor ◄─── security review ──────────┘          │
   │   i18n-guardian ◄────── bilingual audit ──────────┘          │
@@ -134,8 +138,9 @@ This diagram shows how skills and agents interact during typical workflows.
 
 1. **architect** creates an implementation plan (Tier 3)
 2. **executor** follows the plan, invoking Tier 1/2 skills as needed (Tier 2)
-3. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
-4. Issues found are fixed using atomic Tier 1 skills
+3. **content-writer** crafts blog posts and portfolio articles using `/write-article` (Tier 2)
+4. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
+5. Issues found are fixed using atomic Tier 1 skills
 
 ---
 
@@ -148,7 +153,9 @@ Skills and agents for creating and managing blog content.
 | Resource | Type | Description |
 |----------|------|-------------|
 | add-blog-post | Skill (T1) | Create bilingual blog posts with Content Collections frontmatter |
+| write-article | Skill (T2) | Write bilingual blog post or portfolio article with personal-professional voice |
 | doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
+| content-writer | Agent (T2) | Expert bilingual content writer with personal-professional voice |
 
 ### 2. i18n & Translation
 
@@ -216,6 +223,7 @@ Use this table to decide whether to invoke a Skill or an Agent.
 - **architect** (Agent) produces a plan, then **executor** (Agent) implements it using **add-component**, **add-page**, and **write-tests** (Skills)
 - **reviewer** (Agent) finds issues, then **fix-lint**, **type-fix**, or **quick-fix** (Skills) resolve them
 - **i18n-guardian** (Agent) audits translations, then **translate-sync** (Skill) synchronizes content
+- **content-writer** (Agent) crafts narrative articles, using **write-article** (Skill) for structured creation and **i18n-guardian** (Agent) for translation quality
 
 ---
 
@@ -286,6 +294,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-02-10 | content-writer, write-article added | Expert bilingual content writer agent and article writing skill with personal-professional voice, narrative structure, and bilingual enforcement |
 | 2026-02-10 | Responsive design guidance added | Enhanced `update-styles` skill with responsive design patterns, breakpoint reference, touch target sizing, and heading scaling examples. Enhanced `reviewer` agent with responsive design verification checklist (breakpoint coverage, dark mode pairing, touch targets, heading scales). |
 | 2026-02-04 | Format migration | Migrated all skills and agents to official Agent Skills standard format with model routing, allowed-tools, and compatibility fields |
 | 2026-02-03 | Catalog restructured | Added tier breakdown overview, interaction map, domain guides, decision guide, and changelog |

@@ -4,6 +4,7 @@ import ContactSection from '@/components/home/ContactSection.astro';
 import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
 import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
+import PortfolioPostsSection from '@/components/home/PortfolioPostsSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
@@ -12,9 +13,10 @@ const lang: Language = 'en';
 const t = getTranslations(lang);
 ---
 
-<MainLayout lang={lang} title={t.siteTitle} description={t.siteDescription}>
+<MainLayout lang={lang} title={t.siteTitleFull} description={t.siteDescription}>
 	<HeroSection
 		name="Sergio Alexander Florez Galeano"
+		tagline={t.hero.tagline}
 		description={t.hero.description}
 		typewriterWords={t.hero.typewriterWords}
 	/>
@@ -31,20 +33,31 @@ const t = getTranslations(lang);
 		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
 	/>
 
-	<!-- Builder Section (What I Build) -->
+	<!-- DailyBot Section -->
 	<HomeSection
-		title={t.homeSections.builder.title}
-		subtitle={t.homeSections.builder.subtitle}
-		description={t.homeSections.builder.description}
-		ctaText={t.homeSections.builder.cta}
-		ctaLink="/portfolio"
+		title={t.homeSections.dailybot.title}
+		subtitle={t.homeSections.dailybot.subtitle}
+		description={t.homeSections.dailybot.description}
+		ctaText={t.homeSections.dailybot.cta}
+		ctaLink="/dailybot"
 		image="/images/dailybotyc.png"
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 		variant="alt"
 	/>
 
-	<!-- Blog Preview Section -->
-	<BlogPreviewSection lang={lang} />
+	<!-- Maker Section (What I Built) -->
+	<HomeSection
+		title={t.homeSections.makerHome.title}
+		subtitle={t.homeSections.makerHome.subtitle}
+		description={t.homeSections.makerHome.description}
+		ctaText={t.homeSections.makerHome.cta}
+		ctaLink="/portfolio"
+		image="/images/ia.png"
+		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+	/>
+
+	<!-- Portfolio Projects Posts Section -->
+	<PortfolioPostsSection lang={lang} />
 
 	<!-- Community & Speaking Section -->
 	<HomeSection
@@ -54,10 +67,25 @@ const t = getTranslations(lang);
 		ctaText={t.homeSections.community.cta}
 		ctaLink="/techtalks"
 		image="/images/techtalks.png"
-		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 	/>
 
-	<!-- Beyond Code Section -->
+	<!-- Trading Section -->
+	<HomeSection
+		title={t.homeSections.trading.title}
+		subtitle={t.homeSections.trading.subtitle}
+		description={t.homeSections.trading.description}
+		ctaText={t.homeSections.trading.cta}
+		ctaLink="/trading"
+		image="/images/trading.png"
+		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+		variant="alt"
+	/>
+
+	<!-- Blog Preview Section -->
+	<BlogPreviewSection lang={lang} />
+
+	<!-- Beyond Code Section (Hobbies) -->
 	<HomeSection
 		title={t.homeSections.beyondCode.title}
 		subtitle={t.homeSections.beyondCode.subtitle}
@@ -68,6 +96,7 @@ const t = getTranslations(lang);
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 		variant="alt"
 	/>
+
 
 	<!-- Contact Section -->
 	<ContactSection lang={lang} />

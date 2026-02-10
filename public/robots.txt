@@ -7,7 +7,11 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://site.xergioalex.com/sitemap-index.xml
+Sitemap: https://xergioalex.com/sitemap-index.xml
+Sitemap: https://xergioalex.com/es/sitemap-index.xml
+
+# LLM guidance file
+# https://xergioalex.com/llms.txt
 
 # AI/LLM Crawlers - Explicitly allowed
 User-agent: GPTBot

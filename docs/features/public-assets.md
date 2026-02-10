@@ -44,13 +44,15 @@ public/
 
 | File | Description |
 |------|-------------|
-| `favicon.svg` | Site favicon (SVG format for crisp display) |
+| `favicon.svg` | Site favicon — XergioAleX isologo (same as `images/isologo.svg`) |
 
 Referenced in `BaseHead.astro`:
 
 ```html
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 ```
+
+**Note:** The favicon uses the same isologo as `images/isologo.svg`. Browsers cache favicons aggressively — use a hard refresh (Ctrl+Shift+R) or clear cache to see updates.
 
 ### Fonts
 
@@ -103,7 +105,7 @@ Site images for branding, projects, and sections.
 |-------|---------|
 | `logo_full.svg` | Full logo (hero section) |
 | `logo_small_version_white.svg` | Header logo (white) |
-| `isologo.svg` | Isolated logo mark |
+| `isologo.svg` | Isolated logo mark (also used as favicon at `public/favicon.svg`) |
 | `profile.png` | Personal profile photo |
 | `dailybot.png` | DailyBot project image |
 | `dailybotyc.png` | DailyBot YC image |
@@ -229,7 +231,7 @@ Files in `public/` are served from the root:
 
 ## Related Documentation
 
-- [BaseHead Component](../src/components/README.md#basehead)
-- [Styling Guide](../src/styles/README.md)
-- [Features: Dark Mode](../docs/features/dark-mode.md)
-- [Content Collections](../src/content/README.md) - Blog images
+- [BaseHead Component](../../src/components/README.md#basehead)
+- [Styling Guide](../../src/styles/README.md)
+- [Features: Dark Mode](./dark-mode.md)
+- [Content Collections](../../src/content/README.md) - Blog images

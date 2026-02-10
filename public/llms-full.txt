@@ -1,3 +1,45 @@
+# XergioAleX.com - Extended LLM Context
+
+## Site Identity
+- Name: XergioAleX.com
+- Owner: Sergio Alexander Florez Galeano
+- Alias: XergioAleX
+- Focus: Engineering leadership, product building, software systems, and technical communication.
+
+## Audience
+- Engineers and technical leads
+- Product builders and startup operators
+- Readers interested in practical software and infrastructure work
+
+## Content Model
+- Bilingual routing:
+  - English base routes (`/`, `/blog`, etc.)
+  - Spanish routes under `/es/`
+- Blog posts are authored with Astro Content Collections and support Markdown and MDX.
+
+## Blog Organization
+- Main listing: `/blog/`
+- Tag archives: `/blog/tag/{tag}/`
+- Paginated routes: `/blog/page/{n}/`
+- Equivalent Spanish routes under `/es/blog/`
+
+## Topic Areas
+- DevOps, CI/CD, and infrastructure workflows
+- Software engineering and architecture patterns
+- Robotics and autonomous systems projects
+- Portfolio project retrospectives
+- Personal lessons from building products and teams
+
+## Machine-Readable Endpoints
+- Sitemap index: `/sitemap-index.xml`
+- RSS: `/rss.xml`
+- Spanish RSS: `/es/rss.xml`
+- Search endpoint: `/api/posts.json`
+
+## Indexing Intent
+- Public pages and posts are intended to be indexed.
+- Use canonical URLs and alternate language links where provided.
+- Prefer route-level context (title, description, structured data) for summarization.
 # XergioAleX.com - Full Site Description
 
 > Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).

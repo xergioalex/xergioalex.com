@@ -219,4 +219,4 @@ localStorage.getItem('theme')  // Saved preference
 
 - [Styling Guide](../../src/styles/README.md)
 - [Layout Components](../../src/components/layout/README.md)
-- [Public Assets](../../public/README.md) - Icon variants
+- [Public Assets](./public-assets.md) - Icon variants

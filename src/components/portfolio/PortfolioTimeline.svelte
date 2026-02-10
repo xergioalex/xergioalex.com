@@ -73,21 +73,24 @@ function formatYear(date: Date): string {
         <!-- Mobile: always right of the line -->
         <!-- Desktop: alternating left/right -->
         <div class={`ml-14 md:ml-0 md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12 md:ml-auto'}`}>
-          <a
-            href="{prefix}/blog/{slug}/"
-            class="block bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-secondary/30 dark:hover:border-secondary/30 hover:-translate-y-1"
+          <article
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-secondary/30 dark:hover:border-secondary/30 hover:-translate-y-1"
           >
             {#if post.data.heroImage}
-              <img
-                src={post.data.heroImage}
-                alt={post.data.title}
-                class="w-full h-44 object-cover"
-                loading="lazy"
-              />
+              <a href={`${prefix}/blog/${slug}/`} class="block">
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.title}
+                  class="w-full h-44 object-cover"
+                  loading="lazy"
+                />
+              </a>
             {/if}
             <div class="p-5">
               <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-secondary transition-colors">
-                {post.data.title}
+                <a href={`${prefix}/blog/${slug}/`} class="hover:text-secondary transition-colors">
+                  {post.data.title}
+                </a>
               </h3>
               <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-3">
                 {post.data.description}
@@ -97,15 +100,18 @@ function formatYear(date: Date): string {
                   {formatDate(post.data.pubDate)}
                 </time>
                 {#if post.data.tags && post.data.tags.length > 0}
-                  {#each post.data.tags.filter(tag => tag !== 'portfolio') as tag}
-                    <span class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                  {#each post.data.tags as tag}
+                    <a
+                      href={`${prefix}/blog/tag/${tag}/`}
+                      class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
+                    >
                       #{t.tagNames[tag] || tag}
-                    </span>
+                    </a>
                   {/each}
                 {/if}
               </div>
             </div>
-          </a>
+          </article>
         </div>
       </div>
     {/each}

@@ -58,6 +58,7 @@ export interface Activity {
 export interface SiteTranslations {
   // Site metadata
   siteTitle: string;
+  siteTitleFull: string; // Full title for browser tab (homepage)
   siteDescription: string;
 
   // Navigation
@@ -86,6 +87,7 @@ export interface SiteTranslations {
 
   // Homepage hero
   hero: {
+    tagline: string;
     description: string;
     typewriterWords: string[];
   };
@@ -111,6 +113,12 @@ export interface SiteTranslations {
       cta: string;
     };
     maker: {
+      title: string;
+      subtitle: string;
+      description: string;
+      cta: string;
+    };
+    makerHome: {
       title: string;
       subtitle: string;
       description: string;
@@ -159,6 +167,9 @@ export interface SiteTranslations {
       cta: string;
     };
     latestArticles: string;
+    portfolioProjectsTitle: string;
+    portfolioProjectsViewAll: string;
+    portfolioProjectsEmpty: string;
   };
 
   // Contact section (homepage)
@@ -203,6 +214,7 @@ export interface SiteTranslations {
     educationTitle: string;
     educations: Education[];
     skillsTitle: string;
+    skillsIntroText: string;
     skillCategories: SkillCategory[];
     languagesTitle: string;
     languages: LanguageSkill[];
@@ -327,6 +339,8 @@ export interface SiteTranslations {
     activities: Activity[];
     gamingTitle: string;
     gamingText: string;
+    readingSciFiTitle: string;
+    readingSciFiText: string;
     balanceTitle: string;
     balanceText: string;
   };
@@ -342,6 +356,8 @@ export interface SiteTranslations {
     namePlaceholder: string;
     emailLabel: string;
     emailPlaceholder: string;
+    reasonLabel: string;
+    reasonOptions: { value: string; label: string }[];
     subjectLabel: string;
     subjectPlaceholder: string;
     messageLabel: string;
@@ -353,8 +369,18 @@ export interface SiteTranslations {
     locationText: string;
   };
 
+  // Homepage Let's Connect section
+  contactSection: {
+    title: string;
+    description: string;
+    ctaText: string;
+    ctaLink: string;
+  };
+
   // Search input
   searchPlaceholder: string;
+  searchHint: string;
+  clearSearch: string;
   resultsFound: (count: number) => string;
 
   // Loading states
@@ -363,6 +389,8 @@ export interface SiteTranslations {
 
   // Results
   noResults: (query: string) => string;
+  noResultsSuggestion: string;
+  noPostsAvailable: string;
 
   // Pagination
   previous: string;
@@ -376,6 +404,9 @@ export interface SiteTranslations {
   showingArticles: (showing: number, total: number) => string;
   articlesAvailable: (total: number) => string;
   lastUpdatedOn: string;
+  readingTime: (minutes: number) => string;
+  relatedArticles: string;
+  relatedArticlesDescription: string;
 
   // Tags
   postsTagged: (tag: string) => string;
@@ -399,6 +430,7 @@ const translations: Record<Language, SiteTranslations> = {
   en: {
     // Site metadata
     siteTitle: 'XergioAleX',
+    siteTitleFull: 'Sergio Florez — CTO & Co-founder at DailyBot (YC S21)',
     siteDescription:
       'Personal website and blog by Sergio Alexander Florez Galeano',
 
@@ -428,6 +460,7 @@ const translations: Record<Language, SiteTranslations> = {
 
     // Homepage hero
     hero: {
+      tagline: 'CTO at DailyBot (YC S21) · Builder of 20+ Products',
       description:
         'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, where we help thousands of teams collaborate better. 10+ years shipping digital products, from AI-powered platforms to open source tools.',
       typewriterWords: [
@@ -443,9 +476,9 @@ const translations: Record<Language, SiteTranslations> = {
     homeSections: {
       about: {
         title: "Hello, I'm <span class='text-secondary'>Sergio</span>",
-        description: `I started as a math tutor and web developer at a university in Pereira, Colombia. That curiosity led me to build 20+ digital products, earn an MSc in Data Science, win a programming marathon, and eventually co-found DailyBot \u2014 a platform that got accepted into Y Combinator's Summer 2021 batch.<br /><br />
-Along the way, I co-founded three tech communities in Pereira to share what I was learning. Today I lead the engineering team at DailyBot, explore AI through side projects like Moltbot and Syntro, and still believe the best way to learn is to build and share.<br /><br />
-When I'm not coding, you'll find me cycling through the mountains, running, or playing basketball.`,
+        description: `Today I lead engineering at DailyBot (YC S21), where I focus on product strategy, AI-powered workflows, and reliable systems that help teams move faster.<br /><br />
+My strengths are turning complex ideas into simple products, scaling engineering teams, and shipping end-to-end: architecture, execution, and iteration based on real user feedback.<br /><br />
+I currently focus on AI applications, developer productivity, and high-impact products that combine speed, quality, and measurable business results.`,
         cta: 'Learn more about me',
         cta2: 'View my CV',
       },
@@ -469,6 +502,13 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         description:
           'As a technology and artificial intelligence enthusiast, I have led and developed multiple innovative projects, exploring various technologies to create digital applications and high-impact technical solutions. My passion for innovation and constant learning drives me to always be at the forefront, researching new tools and trends to transform ideas into tangible realities. I enjoy tackling complex challenges and adding value through technology.',
         cta: 'View my projects',
+      },
+      makerHome: {
+        title: 'What I Built',
+        subtitle: 'Entrepreneur, maker & tech enthusiast',
+        description:
+          "Beyond DailyBot, I'm an entrepreneur and maker passionate about technology. I build side projects, explore AI, and contribute to open source — from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management). With 113+ repositories on GitHub, I believe the best way to learn is to build something real.",
+        cta: 'Explore my projects',
       },
       portfolio: {
         title: 'Portfolio',
@@ -509,17 +549,20 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         title: 'Community & Speaking',
         subtitle: 'Sharing knowledge, building ecosystems',
         description:
-          "I co-founded Pereira Tech Talks, PereiraJS, and Python Pereira \u2014 three tech communities dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, and more at conferences and meetups. I believe technology grows faster when we share what we learn.",
+          "I co-founded Pereira Tech Talks, PereiraJS, and Python Pereira \u2014 three tech communities dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, and more at conferences and meetups. I believe technology grows faster when we share what we learn \u2014 that's why I write this blog and speak at events.",
         cta: 'See my talks',
       },
       beyondCode: {
         title: 'Beyond Code',
         subtitle: 'What fuels the builder',
         description:
-          "When I'm not building products, I'm exploring other passions. I study financial markets and algorithmic trading to understand the world of business from a different angle. I stay active through cycling, running, and basketball \u2014 sports keep me energized and disciplined. And I love discovering great food and sharing culinary finds. Life is better when you're curious about everything.",
+          "When I'm not building products, I'm exploring other passions. I love reading, especially science fiction \u2014 Isaac Asimov is one of my favorite authors \u2014 and films about time travel, dystopian futures, and space exploration. I study financial markets and algorithmic trading to understand the world of business from a different angle. I stay active through cycling, running, and basketball \u2014 sports keep me energized and disciplined. And I love discovering great food and sharing culinary finds. Life is better when you're curious about everything.",
         cta: 'More about my interests',
       },
       latestArticles: 'Latest Articles',
+      portfolioProjectsTitle: 'Portfolio & Projects',
+      portfolioProjectsViewAll: 'View all portfolio posts',
+      portfolioProjectsEmpty: 'More projects coming soon.',
     },
 
     // Contact section (homepage)
@@ -544,7 +587,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         'CTO & Cofounder of DailyBot (YC S21). Computer Science Engineer, MSc in Data Science, with 10+ years building digital products and businesses.',
       bioTitle: 'Who I Am',
       bioText:
-        "I'm Sergio Alexander Florez Galeano, a Computer Science Engineer from Universidad Nacional de Colombia with a Master's degree in Data Science. For over a decade, I've been building digital products, leading engineering teams, and co-founding technology ventures.<br /><br />Currently, I serve as CTO and Cofounder of DailyBot, a Y Combinator-backed platform (S21) that helps thousands of teams collaborate asynchronously. Beyond my professional work, I'm a maker at heart — constantly exploring new technologies from AI and 3D printing to IoT and physical computing.<br /><br />I'm also the cofounder of Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge. I believe in learning every day, building things from scratch, and sharing the journey with others.",
+        "I'm Sergio Alexander Florez Galeano, a Computer Science Engineer from Universidad Nacional de Colombia with a Master's degree in Data Science. For over a decade, I've been building digital products, leading engineering teams, and co-founding technology ventures.<br /><br />Currently, I serve as CTO and Cofounder of DailyBot, a Y Combinator-backed platform (S21) that helps thousands of teams collaborate asynchronously. Beyond my professional work, I'm a maker at heart — constantly exploring new technologies from AI and 3D printing to IoT and physical computing.<br /><br />I'm also the cofounder of Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge. I believe in learning every day, building things from scratch, and sharing the journey with others \u2014 that's why I write this blog and speak at tech events.",
       passionsTitle: 'What Drives Me',
       passions: [
         {
@@ -564,7 +607,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         {
           title: 'Tech Community',
           description:
-            'Sharing knowledge through tech talks, mentoring, and building the local tech ecosystem.',
+            'Sharing knowledge through tech talks, writing, mentoring, and building the local tech ecosystem.',
           icon: '\u{1F399}',
           link: '/techtalks',
         },
@@ -594,6 +637,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       quickFacts: [
         'Based in Colombia',
         'Favorite games: The Legend of Zelda & Hollow Knight',
+        'Favorite reads: Isaac Asimov, sci-fi & dystopian futures',
         'Currently learning: 3D printing, IoT & Physical AI',
         'Languages: Spanish (native), English (professional)',
         '113+ repositories on GitHub',
@@ -614,7 +658,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         'Professional resume of Sergio Alexander Florez Galeano — CTO of DailyBot, Full Stack Developer, and technology entrepreneur.',
       summaryTitle: 'Professional Summary',
       summaryText:
-        'Technology leader with 10+ years of experience building and scaling digital products. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind an AI-powered platform used by thousands of teams globally. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
+        'Technology leader with 10+ years of experience building and scaling digital products. Full-stack engineer who works across frontend, backend, DevOps, and AI — building whatever the product needs. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind an AI-powered platform used by thousands of teams globally. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
       experienceTitle: 'Work Experience',
       experiences: [
         {
@@ -660,7 +704,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       educations: [
         {
           degree: 'MSc in Data Science',
-          institution: 'Universidad',
+          institution: 'Universidad Tecnológica de Pereira',
           period: '2020 - 2022',
           description:
             'Advanced studies in machine learning, data analytics, and statistical modeling applied to real-world problems.',
@@ -674,14 +718,32 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         },
       ],
       skillsTitle: 'Technical Skills',
+      skillsIntroText:
+        'Full-stack engineer who works across frontend, backend, DevOps, and AI. I build whatever the product needs — from APIs and UIs to infrastructure and ML pipelines. Current stack:',
       skillCategories: [
         {
           category: 'Languages',
-          skills: ['TypeScript', 'JavaScript', 'Python', 'GoLang', 'SQL'],
+          skills: [
+            'TypeScript',
+            'JavaScript',
+            'Python',
+            'Go',
+            'Kotlin',
+            'C++',
+            'SQL',
+          ],
         },
         {
           category: 'Frontend',
-          skills: ['React', 'Svelte', 'Astro', 'Tailwind CSS', 'HTML/CSS'],
+          skills: [
+            'React',
+            'Vue',
+            'Alpine.js',
+            'Svelte',
+            'Astro',
+            'Tailwind CSS',
+            'HTML/CSS',
+          ],
         },
         {
           category: 'Backend',
@@ -689,7 +751,15 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         },
         {
           category: 'DevOps & Cloud',
-          skills: ['Docker', 'AWS', 'Serverless', 'CI/CD', 'Terraform'],
+          skills: [
+            'Docker',
+            'AWS',
+            'Serverless',
+            'CI/CD',
+            'Terraform',
+            'Linux',
+            'Bash',
+          ],
         },
         {
           category: 'Data & AI',
@@ -702,7 +772,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         },
         {
           category: 'Tools',
-          skills: ['Git', 'Cypress', 'Biome', 'Linux', 'Jira'],
+          skills: ['Git', 'Cypress', 'Biome', 'Jira'],
         },
       ],
       languagesTitle: 'Languages',
@@ -1084,6 +1154,9 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       gamingTitle: 'Gaming',
       gamingText:
         "Video games have been a lifelong companion. From the epic adventures of The Legend of Zelda to the hauntingly beautiful world of Hollow Knight, gaming is how I unwind, explore new worlds, and appreciate incredible storytelling and design.<br /><br />I see gaming as more than entertainment — it's interactive art. The creativity and engineering behind great games inspire me in my own work with technology.",
+      readingSciFiTitle: 'Reading & Sci-Fi',
+      readingSciFiText:
+        "I've always been drawn to science fiction \u2014 both in books and on screen. Isaac Asimov is one of my favorite authors; his visions of the future and the ethics of technology still resonate deeply. I love films that explore time travel, dystopian futures, and space exploration. These stories fuel my imagination and offer fresh perspectives on how technology shapes humanity.",
       balanceTitle: 'Finding Balance',
       balanceText:
         "The best ideas often come when you step away from the screen. Whether it's during a long cycling ride, a mountain hike, or a competitive chess match — these moments of disconnection spark creativity and bring fresh perspectives to my work.<br /><br />Sports teach me that growth happens outside the comfort zone. That lesson applies to everything — building products, learning new skills, and living a fulfilling life.",
@@ -1113,6 +1186,17 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       namePlaceholder: 'Your name',
       emailLabel: 'Email',
       emailPlaceholder: 'your@email.com',
+      reasonLabel: 'I want to contact you about',
+      reasonOptions: [
+        { value: '', label: '— Select a topic —' },
+        { value: 'general', label: 'General / Just saying hello' },
+        { value: 'tech-talk', label: 'Tech talk / Speaking invitation' },
+        { value: 'collaboration', label: 'Collaboration / Partnership' },
+        { value: 'project', label: 'Project / Work inquiry' },
+        { value: 'dailybot', label: 'Question about DailyBot' },
+        { value: 'trading', label: 'Questions about my trading' },
+        { value: 'other', label: 'Other' },
+      ],
       subjectLabel: 'Subject',
       subjectPlaceholder: 'What is this about?',
       messageLabel: 'Message',
@@ -1125,8 +1209,18 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         'Based in Colombia. Open to remote collaboration worldwide.',
     },
 
+    contactSection: {
+      title: "Let's Connect",
+      description:
+        "I'm always open to interesting conversations, collaboration opportunities, and new ideas. Whether you want to talk tech, entrepreneurship, or just say hello.",
+      ctaText: 'Get in touch',
+      ctaLink: '/contact',
+    },
+
     // Search input
     searchPlaceholder: 'Search articles...',
+    searchHint: 'Tip: press Esc to clear the search.',
+    clearSearch: 'Clear',
     resultsFound: (count) => `${count} result${count !== 1 ? 's' : ''} found`,
 
     // Loading states
@@ -1135,6 +1229,8 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
 
     // Results
     noResults: (query) => `No articles found matching "${query}"`,
+    noResultsSuggestion: 'Try a broader keyword or browse all posts.',
+    noPostsAvailable: 'No posts available yet.',
 
     // Pagination
     previous: 'Previous',
@@ -1150,6 +1246,9 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
     articlesAvailable: (total) =>
       `${total} article${total !== 1 ? 's' : ''} available`,
     lastUpdatedOn: 'Last updated on',
+    readingTime: (minutes) => `${minutes} min read`,
+    relatedArticles: 'Related Articles',
+    relatedArticlesDescription: 'You might also enjoy these posts',
 
     // Tags
     postsTagged: (tag) => `Posts tagged "${tag}"`,
@@ -1183,6 +1282,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
   es: {
     // Site metadata
     siteTitle: 'XergioAleX',
+    siteTitleFull: 'Sergio Florez — CTO y Cofundador en DailyBot (YC S21)',
     siteDescription:
       'Sitio web personal y blog de Sergio Alexander Florez Galeano',
 
@@ -1212,6 +1312,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
 
     // Homepage hero
     hero: {
+      tagline: 'CTO en DailyBot (YC S21) · Creador de 20+ Productos',
       description:
         'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, donde ayudamos a miles de equipos a colaborar mejor. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
       typewriterWords: [
@@ -1227,9 +1328,9 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
     homeSections: {
       about: {
         title: "Hola, soy <span class='text-secondary'>Sergio</span>",
-        description: `Empec\u00E9 como tutor de matem\u00E1ticas y desarrollador web en una universidad en Pereira, Colombia. Esa curiosidad me llev\u00F3 a construir m\u00E1s de 20 productos digitales, obtener una Maestr\u00EDa en Ciencia de Datos, ganar un marat\u00F3n de programaci\u00F3n y, eventualmente, cofundar DailyBot \u2014 una plataforma aceptada en Y Combinator Summer 2021.<br /><br />
-En el camino, cofund\u00E9 tres comunidades tech en Pereira para compartir lo que iba aprendiendo. Hoy lidero el equipo de ingenier\u00EDa en DailyBot, exploro IA a trav\u00E9s de proyectos como Moltbot y Syntro, y sigo creyendo que la mejor forma de aprender es construir y compartir.<br /><br />
-Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, corriendo o jugando baloncesto.`,
+        description: `Hoy lidero ingenieria en DailyBot (YC S21), donde me enfoco en estrategia de producto, flujos potenciados por IA y sistemas confiables que ayudan a los equipos a avanzar mas rapido.<br /><br />
+Mis fortalezas estan en convertir ideas complejas en productos simples, escalar equipos de ingenieria y ejecutar end-to-end: arquitectura, implementacion e iteracion basada en feedback real de usuarios.<br /><br />
+Actualmente estoy enfocado en aplicaciones de IA, productividad para developers y productos de alto impacto que combinan velocidad, calidad y resultados de negocio medibles.`,
         cta: 'Conoce m\u00E1s sobre m\u00ED',
         cta2: 'Ver mi CV',
       },
@@ -1254,6 +1355,13 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         description:
           'Como entusiasta de la tecnolog\u00EDa y la inteligencia artificial, he liderado y desarrollado m\u00FAltiples proyectos innovadores, explorando diversas tecnolog\u00EDas para crear aplicaciones digitales y soluciones t\u00E9cnicas de alto impacto. Mi pasi\u00F3n por la innovaci\u00F3n y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desaf\u00EDos complejos y aportar valor a trav\u00E9s de la tecnolog\u00EDa.',
         cta: 'Ver mis proyectos',
+      },
+      makerHome: {
+        title: 'Lo Que He Construido',
+        subtitle: 'Emprendedor, maker y entusiasta de la tecnolog\u00EDa',
+        description:
+          'M\u00E1s all\u00E1 de DailyBot, soy emprendedor y maker apasionado por la tecnolog\u00EDa. Construyo proyectos paralelos, exploro IA y contribuyo al open source \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs). Con 113+ repositorios en GitHub, creo que la mejor forma de aprender es construir algo real.',
+        cta: 'Explorar mis proyectos',
       },
       portfolio: {
         title: 'Portafolio',
@@ -1294,17 +1402,20 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         title: 'Comunidad & Charlas',
         subtitle: 'Compartiendo conocimiento, construyendo ecosistemas',
         description:
-          'Cofund\u00E9 Pereira Tech Talks, PereiraJS y Python Pereira \u2014 tres comunidades tech dedicadas a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional y m\u00E1s en conferencias y meetups. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos.',
+          'Cofund\u00E9 Pereira Tech Talks, PereiraJS y Python Pereira \u2014 tres comunidades tech dedicadas a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional y m\u00E1s en conferencias y meetups. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos \u2014 por eso escribo este blog y doy charlas.',
         cta: 'Ver mis charlas',
       },
       beyondCode: {
         title: 'M\u00E1s All\u00E1 del C\u00F3digo',
         subtitle: 'Lo que impulsa al constructor',
         description:
-          'Cuando no estoy construyendo productos, exploro otras pasiones. Estudio los mercados financieros y el trading algor\u00EDtmico para entender el mundo de los negocios desde otro \u00E1ngulo. Me mantengo activo con ciclismo, running y baloncesto \u2014 el deporte me mantiene con energ\u00EDa y disciplina. Y me encanta descubrir buena comida y compartir hallazgos culinarios. La vida es mejor cuando eres curioso por todo.',
+          'Cuando no estoy construyendo productos, exploro otras pasiones. Me encanta leer, especialmente ciencia ficci\u00F3n \u2014 Isaac Asimov es uno de mis autores favoritos \u2014 y pel\u00EDculas sobre viajes en el tiempo, futuros dist\u00F3picos y exploraci\u00F3n espacial. Estudio los mercados financieros y el trading algor\u00EDtmico para entender el mundo de los negocios desde otro \u00E1ngulo. Me mantengo activo con ciclismo, running y baloncesto \u2014 el deporte me mantiene con energ\u00EDa y disciplina. Y me encanta descubrir buena comida y compartir hallazgos culinarios. La vida es mejor cuando eres curioso por todo.',
         cta: 'M\u00E1s sobre mis intereses',
       },
       latestArticles: '\u00DAltimos Art\u00EDculos',
+      portfolioProjectsTitle: 'Portafolio y Proyectos',
+      portfolioProjectsViewAll: 'Ver todos los posts del portafolio',
+      portfolioProjectsEmpty: 'Próximamente más proyectos.',
     },
 
     // Contact section (homepage)
@@ -1330,7 +1441,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         'CTO y Cofundador de DailyBot (YC S21). Ingeniero en Ciencias de la Computaci\u00F3n, MSc en Ciencia de Datos, con m\u00E1s de 10 a\u00F1os construyendo productos y negocios digitales.',
       bioTitle: 'Qui\u00E9n Soy',
       bioText:
-        'Soy Sergio Alexander Florez Galeano, Ingeniero en Ciencias de la Computaci\u00F3n de la Universidad Nacional de Colombia con una Maestr\u00EDa en Ciencia de Datos. Durante m\u00E1s de una d\u00E9cada, he construido productos digitales, liderado equipos de ingenier\u00EDa y cofundado emprendimientos tecnol\u00F3gicos.<br /><br />Actualmente, soy CTO y Cofundador de DailyBot, una plataforma respaldada por Y Combinator (S21) que ayuda a miles de equipos a colaborar de forma as\u00EDncrona. M\u00E1s all\u00E1 de mi trabajo profesional, soy un maker de coraz\u00F3n — constantemente explorando nuevas tecnolog\u00EDas desde IA e impresi\u00F3n 3D hasta IoT y computaci\u00F3n f\u00EDsica.<br /><br />Tambi\u00E9n soy cofundador de Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento. Creo en aprender cada d\u00EDa, construir cosas desde cero y compartir el camino con otros.',
+        'Soy Sergio Alexander Florez Galeano, Ingeniero en Ciencias de la Computaci\u00F3n de la Universidad Nacional de Colombia con una Maestr\u00EDa en Ciencia de Datos. Durante m\u00E1s de una d\u00E9cada, he construido productos digitales, liderado equipos de ingenier\u00EDa y cofundado emprendimientos tecnol\u00F3gicos.<br /><br />Actualmente, soy CTO y Cofundador de DailyBot, una plataforma respaldada por Y Combinator (S21) que ayuda a miles de equipos a colaborar de forma as\u00EDncrona. M\u00E1s all\u00E1 de mi trabajo profesional, soy un maker de coraz\u00F3n — constantemente explorando nuevas tecnolog\u00EDas desde IA e impresi\u00F3n 3D hasta IoT y computaci\u00F3n f\u00EDsica.<br /><br />Tambi\u00E9n soy cofundador de Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento. Creo en aprender cada d\u00EDa, construir cosas desde cero y compartir el camino con otros \u2014 por eso escribo este blog y doy charlas tech.',
       passionsTitle: 'Lo Que Me Mueve',
       passions: [
         {
@@ -1350,7 +1461,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         {
           title: 'Comunidad Tech',
           description:
-            'Compartiendo conocimiento a trav\u00E9s de charlas tech, mentor\u00EDa y construyendo el ecosistema tech local.',
+            'Compartiendo conocimiento a trav\u00E9s de charlas tech, escritura, mentor\u00EDa y construyendo el ecosistema tech local.',
           icon: '\u{1F399}',
           link: '/es/techtalks',
         },
@@ -1380,6 +1491,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       quickFacts: [
         'Ubicado en Colombia',
         'Juegos favoritos: The Legend of Zelda y Hollow Knight',
+        'Lecturas favoritas: Isaac Asimov, ciencia ficci\u00F3n y futuros dist\u00F3picos',
         'Aprendiendo actualmente: Impresi\u00F3n 3D, IoT y IA F\u00EDsica',
         'Idiomas: Espa\u00F1ol (nativo), Ingl\u00E9s (profesional)',
         '113+ repositorios en GitHub',
@@ -1400,7 +1512,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         'Curr\u00EDculum profesional de Sergio Alexander Florez Galeano — CTO de DailyBot, Desarrollador Full Stack y emprendedor tecnol\u00F3gico.',
       summaryTitle: 'Resumen Profesional',
       summaryText:
-        'L\u00EDder tecnol\u00F3gico con m\u00E1s de 10 a\u00F1os de experiencia construyendo y escalando productos digitales. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma impulsada por IA utilizada por miles de equipos globalmente. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
+        'L\u00EDder tecnol\u00F3gico con m\u00E1s de 10 a\u00F1os de experiencia construyendo y escalando productos digitales. Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA \u2014 construyendo lo que el producto necesita. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma impulsada por IA utilizada por miles de equipos globalmente. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
       experienceTitle: 'Experiencia Laboral',
       experiences: [
         {
@@ -1446,7 +1558,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       educations: [
         {
           degree: 'MSc en Ciencia de Datos',
-          institution: 'Universidad',
+          institution: 'Universidad Tecnológica de Pereira',
           period: '2020 - 2022',
           description:
             'Estudios avanzados en machine learning, an\u00E1lisis de datos y modelado estad\u00EDstico aplicado a problemas del mundo real.',
@@ -1460,14 +1572,32 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         },
       ],
       skillsTitle: 'Habilidades T\u00E9cnicas',
+      skillsIntroText:
+        'Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA. Construyo lo que el producto necesita — desde APIs y UIs hasta infraestructura y pipelines de ML. Stack actual:',
       skillCategories: [
         {
           category: 'Lenguajes',
-          skills: ['TypeScript', 'JavaScript', 'Python', 'GoLang', 'SQL'],
+          skills: [
+            'TypeScript',
+            'JavaScript',
+            'Python',
+            'Go',
+            'Kotlin',
+            'C++',
+            'SQL',
+          ],
         },
         {
           category: 'Frontend',
-          skills: ['React', 'Svelte', 'Astro', 'Tailwind CSS', 'HTML/CSS'],
+          skills: [
+            'React',
+            'Vue',
+            'Alpine.js',
+            'Svelte',
+            'Astro',
+            'Tailwind CSS',
+            'HTML/CSS',
+          ],
         },
         {
           category: 'Backend',
@@ -1475,7 +1605,15 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         },
         {
           category: 'DevOps y Cloud',
-          skills: ['Docker', 'AWS', 'Serverless', 'CI/CD', 'Terraform'],
+          skills: [
+            'Docker',
+            'AWS',
+            'Serverless',
+            'CI/CD',
+            'Terraform',
+            'Linux',
+            'Bash',
+          ],
         },
         {
           category: 'Datos e IA',
@@ -1488,7 +1626,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         },
         {
           category: 'Herramientas',
-          skills: ['Git', 'Cypress', 'Biome', 'Linux', 'Jira'],
+          skills: ['Git', 'Cypress', 'Biome', 'Jira'],
         },
       ],
       languagesTitle: 'Idiomas',
@@ -1870,6 +2008,9 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       gamingTitle: 'Gaming',
       gamingText:
         'Los videojuegos han sido un compa\u00F1ero de toda la vida. Desde las \u00E9picas aventuras de The Legend of Zelda hasta el hermoso y sombr\u00EDo mundo de Hollow Knight, el gaming es c\u00F3mo me relajo, exploro nuevos mundos y aprecio una incre\u00EDble narrativa y dise\u00F1o.<br /><br />Veo el gaming como m\u00E1s que entretenimiento — es arte interactivo. La creatividad e ingenier\u00EDa detr\u00E1s de los grandes juegos me inspiran en mi propio trabajo con tecnolog\u00EDa.',
+      readingSciFiTitle: 'Lectura y Ciencia Ficci\u00F3n',
+      readingSciFiText:
+        'Siempre me ha atra\u00EDdo la ciencia ficci\u00F3n \u2014 tanto en libros como en pantalla. Isaac Asimov es uno de mis autores favoritos; sus visiones del futuro y la \u00E9tica de la tecnolog\u00EDa siguen resonando profundamente. Me encantan las pel\u00EDculas que exploran viajes en el tiempo, futuros dist\u00F3picos y exploraci\u00F3n espacial. Estas historias alimentan mi imaginaci\u00F3n y ofrecen nuevas perspectivas sobre c\u00F3mo la tecnolog\u00EDa moldea a la humanidad.',
       balanceTitle: 'Encontrando el Equilibrio',
       balanceText:
         'Las mejores ideas a menudo llegan cuando te alejas de la pantalla. Ya sea durante un largo recorrido en bicicleta, una caminata de monta\u00F1a o una partida competitiva de ajedrez — estos momentos de desconexi\u00F3n encienden la creatividad y traen perspectivas frescas a mi trabajo.<br /><br />Los deportes me ense\u00F1an que el crecimiento sucede fuera de la zona de confort. Esa lecci\u00F3n aplica a todo — construir productos, aprender nuevas habilidades y vivir una vida plena.',
@@ -1900,6 +2041,17 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       namePlaceholder: 'Tu nombre',
       emailLabel: 'Email',
       emailPlaceholder: 'tu@email.com',
+      reasonLabel: 'Quiero contactarte por',
+      reasonOptions: [
+        { value: '', label: '— Selecciona un tema —' },
+        { value: 'general', label: 'General / Solo saludar' },
+        { value: 'tech-talk', label: 'Charla tech / Invitación a hablar' },
+        { value: 'collaboration', label: 'Colaboración / Partnership' },
+        { value: 'project', label: 'Proyecto / Consulta laboral' },
+        { value: 'dailybot', label: 'Pregunta sobre DailyBot' },
+        { value: 'trading', label: 'Preguntas sobre mi trading' },
+        { value: 'other', label: 'Otro' },
+      ],
       subjectLabel: 'Asunto',
       subjectPlaceholder: '\u00BFDe qu\u00E9 se trata?',
       messageLabel: 'Mensaje',
@@ -1912,8 +2064,18 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         'Ubicado en Colombia. Abierto a colaboraci\u00F3n remota en todo el mundo.',
     },
 
+    contactSection: {
+      title: 'Conectemos',
+      description:
+        'Siempre estoy abierto a conversaciones interesantes, oportunidades de colaboración e ideas nuevas. Ya sea para hablar de tech, emprendimiento o simplemente saludar.',
+      ctaText: 'Ponte en contacto',
+      ctaLink: '/es/contact',
+    },
+
     // Search input
     searchPlaceholder: 'Buscar art\u00EDculos...',
+    searchHint: 'Tip: presiona Esc para limpiar la b\u00FAsqueda.',
+    clearSearch: 'Limpiar',
     resultsFound: (count) =>
       `${count} resultado${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`,
 
@@ -1924,6 +2086,9 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
     // Results
     noResults: (query) =>
       `No se encontraron art\u00EDculos que coincidan con "${query}"`,
+    noResultsSuggestion:
+      'Prueba una palabra m\u00E1s amplia o navega todos los art\u00EDculos.',
+    noPostsAvailable: 'Aún no hay artículos disponibles.',
 
     // Pagination
     previous: 'Anterior',
@@ -1939,6 +2104,9 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
     articlesAvailable: (total) =>
       `${total} artículo${total !== 1 ? 's' : ''} disponible${total !== 1 ? 's' : ''}`,
     lastUpdatedOn: 'Última actualización:',
+    readingTime: (minutes) => `${minutes} min de lectura`,
+    relatedArticles: 'Artículos Relacionados',
+    relatedArticlesDescription: 'También te pueden interesar estos artículos',
 
     // Tags
     postsTagged: (tag) => `Posts etiquetados con "${tag}"`,

@@ -1,34 +1,33 @@
 ---
+import type { Language } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
+
 interface Props {
-  lang?: string;
+  lang?: Language;
 }
 
 const { lang = 'en' } = Astro.props;
-
-const title = lang === 'es' ? 'Conectemos' : "Let's Connect";
-const description =
-  lang === 'es'
-    ? 'Siempre estoy abierto a conversaciones interesantes, oportunidades de colaboraci\u00F3n y nuevas ideas. Ya sea que quieras hablar de tecnolog\u00EDa, emprendimiento o simplemente saludar.'
-    : "I'm always open to interesting conversations, collaboration opportunities, and new ideas. Whether you want to talk tech, entrepreneurship, or just say hello.";
-const emailLabel = lang === 'es' ? 'Env\u00EDame un email' : 'Send me an email';
+const t = getTranslations(lang);
 ---
 
 <section
   id="contacto"
-  class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300"
+  class="py-16 bg-gradient-to-b from-secondary/5 via-transparent to-transparent dark:from-secondary/10 dark:via-transparent dark:to-transparent transition-colors duration-300"
 >
-  <div class="max-w-3xl mx-auto px-4 text-center">
+  <div
+    class="max-w-3xl mx-auto px-4 text-center rounded-2xl border border-gray-200/80 dark:border-gray-700/80 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-12 shadow-sm"
+  >
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
     >
-      {title}
+      {t.contactSection.title}
     </h2>
     <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto">
-      {description}
+      {t.contactSection.description}
     </p>
 
     <!-- Social links -->
-    <div class="flex justify-center gap-8 mb-8">
+    <div class="flex justify-center gap-8 mb-10">
       <a
         href="https://github.com/xergioalex"
         target="_blank"
@@ -83,13 +82,25 @@ const emailLabel = lang === 'es' ? 'Env\u00EDame un email' : 'Send me an email';
       </a>
     </div>
 
-    <!-- Email CTA -->
-    <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">{emailLabel}</p>
+    <!-- CTA to contact page -->
     <a
-      href="mailto:xergioalex@gmail.com"
-      class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
+      href={t.contactSection.ctaLink}
+      class="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl"
     >
-      xergioalex@gmail.com
+      {t.contactSection.ctaText}
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"
+        />
+      </svg>
     </a>
   </div>
 </section>

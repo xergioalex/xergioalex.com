@@ -8,6 +8,7 @@ export let lang = 'en';
 export let searchResultsWithMatches = [];
 
 $: t = getTranslations(lang);
+$: basePrefix = lang === 'es' ? '/es' : '';
 </script>
 
 {#if filteredPosts && filteredPosts.length > 0}
@@ -21,5 +22,14 @@ $: t = getTranslations(lang);
     <p class="text-gray-500 dark:text-gray-400 text-lg">
       {t.noResults(searchQuery)}
     </p>
+    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+      {t.noResultsSuggestion}
+    </p>
+    <a
+      href={`${basePrefix}/blog/`}
+      class="mt-4 inline-flex rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-600"
+    >
+      {t.allPosts}
+    </a>
   </div>
 {/if} 

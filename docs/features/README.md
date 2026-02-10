@@ -8,6 +8,7 @@ This directory contains detailed documentation for specific features implemented
 |---------|------|-------------|
 | Blog Search | [blog-search.md](./blog-search.md) | Client-side search functionality |
 | Dark Mode | [dark-mode.md](./dark-mode.md) | Theme toggle and persistence |
+| Public Assets | [public-assets.md](./public-assets.md) | Static assets structure (`public/`) |
 | Internationalization | [i18n.md](./i18n.md) | Multi-language support |
 | Pagination | [pagination.md](./pagination.md) | Blog post pagination |
 | RSS Feed | [rss-feed.md](./rss-feed.md) | RSS feed generation |

@@ -40,6 +40,7 @@ Tracking documentation coverage for XergioAleX.com.
 | [dark-mode.md](features/dark-mode.md) | ✅ Current | Theme toggle and persistence |
 | [i18n.md](features/i18n.md) | ✅ Current | Multi-language support |
 | [pagination.md](features/pagination.md) | ✅ Current | Blog post pagination |
+| [public-assets.md](features/public-assets.md) | ✅ Current | Static assets structure |
 | [rss-feed.md](features/rss-feed.md) | ✅ Current | RSS feed generation |
 
 ### src/ README Files
@@ -56,12 +57,6 @@ Tracking documentation coverage for XergioAleX.com.
 | [src/layouts/README.md](../src/layouts/README.md) | ✅ Current | Page layouts |
 | [src/content/README.md](../src/content/README.md) | ✅ Current | Content Collections |
 | [src/styles/README.md](../src/styles/README.md) | ✅ Current | Styling guide |
-
-### public/ README
-
-| File | Status | Description |
-|------|--------|-------------|
-| [public/README.md](../public/README.md) | ✅ Current | Static assets structure |
 
 ### .agent_commands/ Documentation
 
