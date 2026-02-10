@@ -14,6 +14,17 @@
   }
 }
 
+@layer base {
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900;
+  }
+}
+
 @keyframes chevron-bounce {
   0%,
   100% {
@@ -36,4 +47,19 @@
 
 .animate-chevron-bounce {
   animation: chevron-bounce 2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+  }
+
+  .animate-chevron-bounce {
+    animation: none;
+  }
 }

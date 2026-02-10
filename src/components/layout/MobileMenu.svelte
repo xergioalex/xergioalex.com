@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onMount } from 'svelte';
+import { onDestroy, onMount } from 'svelte';
 import { slide } from 'svelte/transition';
 import { getTranslations } from '@/lib/translations';
 
@@ -8,13 +8,41 @@ export let open: boolean;
 export let toggleMenu: () => void;
 let aboutOpen = false;
 let languageOpen = false;
+let lockedScrollY = 0;
+let isScrollLocked = false;
 
 $: t = getTranslations(lang);
 $: prefix = lang === 'es' ? '/es' : '';
 
+function lockBodyScroll() {
+  if (isScrollLocked) return;
+  lockedScrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${lockedScrollY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  isScrollLocked = true;
+}
+
+function unlockBodyScroll() {
+  if (!isScrollLocked) return;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  window.scrollTo(0, lockedScrollY);
+  isScrollLocked = false;
+}
+
 // Lock body scroll when menu is open
 $: if (typeof document !== 'undefined') {
-  document.body.style.overflow = open ? 'hidden' : '';
+  if (open) {
+    lockBodyScroll();
+  } else {
+    unlockBodyScroll();
+  }
 }
 
 // Language switch URL - computed on mount from current page path
@@ -29,6 +57,12 @@ onMount(() => {
         : path.replace(/^\/es/, '') || '/';
   } else {
     switchUrl = path === '/' ? '/es' : `/es${path}`;
+  }
+});
+
+onDestroy(() => {
+  if (typeof document !== 'undefined') {
+    unlockBodyScroll();
   }
 });
 </script>

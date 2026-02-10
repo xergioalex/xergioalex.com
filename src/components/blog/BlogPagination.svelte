@@ -10,6 +10,7 @@ export let lang = 'en';
 
 $: t = getTranslations(lang);
 $: basePrefix = lang === 'es' ? '/es' : '';
+$: visiblePages = getVisiblePages();
 
 function handlePageChange(page) {
   if (isSearchMode && onPageChange) {
@@ -33,6 +34,38 @@ function getPageUrl(page) {
       return `${basePrefix}/blog/page/${page}/`;
     }
   }
+}
+
+function getVisiblePages() {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  if (currentPage <= 4) {
+    return [1, 2, 3, 4, 5, 'ellipsis-right', totalPages];
+  }
+
+  if (currentPage >= totalPages - 3) {
+    return [
+      1,
+      'ellipsis-left',
+      totalPages - 4,
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ];
+  }
+
+  return [
+    1,
+    'ellipsis-left',
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    'ellipsis-right',
+    totalPages,
+  ];
 }
 </script>
 
@@ -59,13 +92,15 @@ function getPageUrl(page) {
         {/if}
       {/if}
 
-      {#each Array.from({ length: totalPages }, (_, i) => i + 1) as page}
-        {#if isSearchMode}
+      {#each visiblePages as page}
+        {#if typeof page === 'string'}
+          <span class="px-2 text-gray-500 dark:text-gray-400" aria-hidden="true">...</span>
+        {:else if isSearchMode}
           <button
             on:click={() => handlePageChange(page)}
             aria-label={`Page ${page}`}
             aria-current={page === currentPage ? 'page' : undefined}
-            class={`px-3 py-2 text-sm font-medium rounded-md ${
+            class={`px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700'
@@ -78,7 +113,7 @@ function getPageUrl(page) {
             href={getPageUrl(page)}
             aria-label={`Page ${page}`}
             aria-current={page === currentPage ? 'page' : undefined}
-            class={`px-3 py-2 text-sm font-medium rounded-md ${
+            class={`px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium rounded-md ${
               page === currentPage
                 ? 'bg-blue-500 text-white'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700'

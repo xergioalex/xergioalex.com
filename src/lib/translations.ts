@@ -73,7 +73,6 @@ export interface SiteTranslations {
     entrepreneur: string;
     techTalks: string;
     maker: string;
-    portfolio: string;
     trading: string;
     foodie: string;
     hobbies: string;
@@ -332,15 +331,6 @@ export interface SiteTranslations {
     balanceText: string;
   };
 
-  // Portfolio page
-  portfolioPage: {
-    title: string;
-    subtitle: string;
-    description: string;
-    heroDescription: string;
-    emptyState: string;
-  };
-
   // Contact page
   contactPage: {
     title: string;
@@ -416,7 +406,6 @@ const translations: Record<Language, SiteTranslations> = {
     nav: {
       home: 'Home',
       blog: 'Blog',
-      portfolio: 'Portfolio',
       about: 'About',
       contact: 'Contact',
       aboutMe: 'About Me',
@@ -957,17 +946,6 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       ctaLink: 'https://github.com/xergioalex',
     },
 
-    // Portfolio page
-    portfolioPage: {
-      title: 'Portfolio',
-      subtitle: 'Projects & Open Source',
-      description:
-        'A curated timeline of personal projects — software, robotics, open source, and more.',
-      heroDescription:
-        'Explore my journey through the projects I have built over the years — from web applications and developer tools to robotics and open source contributions.',
-      emptyState: 'No projects found. Check back soon!',
-    },
-
     // Trading page
     tradingPage: {
       title: 'Trading',
@@ -1212,7 +1190,6 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
     nav: {
       home: 'Inicio',
       blog: 'Blog',
-      portfolio: 'Portafolio',
       about: 'Acerca de',
       contact: 'Contacto',
       aboutMe: 'Sobre m\u00ED',
@@ -1753,17 +1730,6 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         'Ahora mismo, mi enfoque est\u00E1 en la emocionante intersecci\u00F3n entre software y hardware. Recientemente obtuve una impresora 3D y estoy aprendiendo a dise\u00F1ar e imprimir objetos funcionales. Tambi\u00E9n estoy experimentando con dispositivos IoT y explorando c\u00F3mo la IA puede integrarse en sistemas f\u00EDsicos.<br /><br />Cada d\u00EDa es una oportunidad para aprender algo nuevo. Ya sea un nuevo lenguaje de programaci\u00F3n (actualmente explorando GoLang), una nueva t\u00E9cnica de fabricaci\u00F3n o un nuevo modelo de IA — el objetivo siempre es el mismo: construir, aprender, compartir, repetir.',
       ctaText: 'Ver Mi GitHub',
       ctaLink: 'https://github.com/xergioalex',
-    },
-
-    // Portfolio page
-    portfolioPage: {
-      title: 'Portafolio',
-      subtitle: 'Proyectos & Open Source',
-      description:
-        'Una l\u00EDnea de tiempo curada de proyectos personales \u2014 software, rob\u00F3tica, open source y m\u00E1s.',
-      heroDescription:
-        'Explora mi camino a trav\u00E9s de los proyectos que he construido a lo largo de los a\u00F1os \u2014 desde aplicaciones web y herramientas para desarrolladores hasta rob\u00F3tica y contribuciones open source.',
-      emptyState: 'No se encontraron proyectos. \u00A1Vuelve pronto!',
     },
 
     // Trading page

@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/layout/Header.svelte';
+import ThemeToggle from '@/components/ThemeToggle.astro';
 
 interface Props {
   lang: string;
@@ -25,7 +26,9 @@ const { lang, title, description, prevPage, nextPage } = Astro.props;
     class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300"
   >
     <Header client:load lang={lang} />
-    <!-- ThemeToggle will be added here -->
+    <div class="fixed bottom-4 right-4 z-50">
+      <ThemeToggle />
+    </div>
     <main class="min-h-screen">
       <slot />
     </main>
