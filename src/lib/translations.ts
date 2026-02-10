@@ -214,6 +214,7 @@ export interface SiteTranslations {
     educationTitle: string;
     educations: Education[];
     skillsTitle: string;
+    skillsIntroText: string;
     skillCategories: SkillCategory[];
     languagesTitle: string;
     languages: LanguageSkill[];
@@ -650,7 +651,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         'Professional resume of Sergio Alexander Florez Galeano — CTO of DailyBot, Full Stack Developer, and technology entrepreneur.',
       summaryTitle: 'Professional Summary',
       summaryText:
-        'Technology leader with 10+ years of experience building and scaling digital products. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind an AI-powered platform used by thousands of teams globally. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
+        'Technology leader with 10+ years of experience building and scaling digital products. Full-stack engineer who works across frontend, backend, DevOps, and AI — building whatever the product needs. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind an AI-powered platform used by thousands of teams globally. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
       experienceTitle: 'Work Experience',
       experiences: [
         {
@@ -696,7 +697,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       educations: [
         {
           degree: 'MSc in Data Science',
-          institution: 'Universidad',
+          institution: 'Universidad Tecnológica de Pereira',
           period: '2020 - 2022',
           description:
             'Advanced studies in machine learning, data analytics, and statistical modeling applied to real-world problems.',
@@ -710,6 +711,8 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         },
       ],
       skillsTitle: 'Technical Skills',
+      skillsIntroText:
+        'Full-stack engineer who works across frontend, backend, DevOps, and AI. I build whatever the product needs — from APIs and UIs to infrastructure and ML pipelines. Current stack:',
       skillCategories: [
         {
           category: 'Languages',
@@ -1471,7 +1474,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         'Curr\u00EDculum profesional de Sergio Alexander Florez Galeano — CTO de DailyBot, Desarrollador Full Stack y emprendedor tecnol\u00F3gico.',
       summaryTitle: 'Resumen Profesional',
       summaryText:
-        'L\u00EDder tecnol\u00F3gico con m\u00E1s de 10 a\u00F1os de experiencia construyendo y escalando productos digitales. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma impulsada por IA utilizada por miles de equipos globalmente. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
+        'L\u00EDder tecnol\u00F3gico con m\u00E1s de 10 a\u00F1os de experiencia construyendo y escalando productos digitales. Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA \u2014 construyendo lo que el producto necesita. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma impulsada por IA utilizada por miles de equipos globalmente. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
       experienceTitle: 'Experiencia Laboral',
       experiences: [
         {
@@ -1517,7 +1520,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       educations: [
         {
           degree: 'MSc en Ciencia de Datos',
-          institution: 'Universidad',
+          institution: 'Universidad Tecnológica de Pereira',
           period: '2020 - 2022',
           description:
             'Estudios avanzados en machine learning, an\u00E1lisis de datos y modelado estad\u00EDstico aplicado a problemas del mundo real.',
@@ -1531,6 +1534,8 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         },
       ],
       skillsTitle: 'Habilidades T\u00E9cnicas',
+      skillsIntroText:
+        'Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA. Construyo lo que el producto necesita — desde APIs y UIs hasta infraestructura y pipelines de ML. Stack actual:',
       skillCategories: [
         {
           category: 'Lenguajes',
