@@ -339,6 +339,9 @@ export interface SiteTranslations {
   blogTitle: string;
   blogDescription: string;
   allPosts: string;
+  showingArticles: (showing: number, total: number) => string;
+  articlesAvailable: (total: number) => string;
+  lastUpdatedOn: string;
 
   // Tags
   postsTagged: (tag: string) => string;
@@ -1070,6 +1073,11 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
     blogTitle: 'Blog',
     blogDescription: 'Articles about technology, programming, and more',
     allPosts: 'All Posts',
+    showingArticles: (showing, total) =>
+      `Showing ${showing} of ${total} articles`,
+    articlesAvailable: (total) =>
+      `${total} article${total !== 1 ? 's' : ''} available`,
+    lastUpdatedOn: 'Last updated on',
 
     // Tags
     postsTagged: (tag) => `Posts tagged "${tag}"`,
@@ -1813,9 +1821,13 @@ Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprende
 
     // Blog header
     blogTitle: 'Blog',
-    blogDescription:
-      'Art\u00EDculos sobre tecnolog\u00EDa, programaci\u00F3n y m\u00E1s',
+    blogDescription: 'Artículos sobre tecnología, programación y más',
     allPosts: 'Todos los Posts',
+    showingArticles: (showing, total) =>
+      `Mostrando ${showing} de ${total} artículos`,
+    articlesAvailable: (total) =>
+      `${total} artículo${total !== 1 ? 's' : ''} disponible${total !== 1 ? 's' : ''}`,
+    lastUpdatedOn: 'Última actualización:',
 
     // Tags
     postsTagged: (tag) => `Posts etiquetados con "${tag}"`,

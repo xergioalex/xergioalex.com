@@ -2,9 +2,11 @@
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { getTranslations } from '@/lib/translations';
 import type { BlogPostsResultType } from '@/lib/types';
 
 const lang: string = 'es';
+const t = getTranslations(lang);
 
 export async function getStaticPaths() {
   const lang: string = 'es';
@@ -39,8 +41,8 @@ const nextPage =
 
 <MainLayout
   lang={lang}
-  title="Blog"
-  description="Artículos, tutoriales, diario y charlas."
+  title={t.blogTitle}
+  description={t.blogDescription}
   prevPage={prevPage}
   nextPage={nextPage}
 >

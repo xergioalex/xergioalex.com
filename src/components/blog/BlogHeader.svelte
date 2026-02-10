@@ -16,14 +16,8 @@ $: basePrefix = lang === 'es' ? '/es' : '';
 $: headerTitle = currentTag
   ? t.postsTagged(t.tagNames[currentTag] || currentTag)
   : t.blogDescription;
-$: showingText =
-  lang === 'es'
-    ? `Mostrando ${currentPagePosts} de ${totalPosts} artículos`
-    : `Showing ${currentPagePosts} of ${totalPosts} articles`;
-$: availableText =
-  lang === 'es'
-    ? `${totalPosts} artículo${totalPosts !== 1 ? 's' : ''} disponible${totalPosts !== 1 ? 's' : ''}`
-    : `${totalPosts} article${totalPosts !== 1 ? 's' : ''} available`;
+$: showingText = t.showingArticles(currentPagePosts, totalPosts);
+$: availableText = t.articlesAvailable(totalPosts);
 </script>
 
 <h1 class="text-4xl font-extrabold mb-6">
