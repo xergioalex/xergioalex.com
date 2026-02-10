@@ -3,6 +3,7 @@ title: 'Primer post'
 description: 'Este es mi primer post en el blog'
 pubDate: 'Jul 08 2022'
 heroImage: '/blog-placeholder-3.jpg'
+tags: ['personal']
 ---
 
 Bienvenidos a mi primer post en este blog. Este es un espacio donde compartire mis ideas, experiencias y aprendizajes sobre tecnologia, desarrollo de software y mucho mas.
