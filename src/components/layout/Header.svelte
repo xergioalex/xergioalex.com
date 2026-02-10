@@ -48,6 +48,7 @@ function toggleMenu() {
       <div class="flex gap-6">
         <a href={prefix || '/'} class="nav-link">{t.nav.home}</a>
         <a href="{prefix}/blog" class="nav-link">{t.nav.blog}</a>
+        <a href="{prefix}/portfolio" class="nav-link">{t.nav.portfolio}</a>
         <div
           class="relative group"
           role="menu"
@@ -81,18 +82,18 @@ function toggleMenu() {
             ></div>
             <div
               id="about-dropdown"
-              class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white text-black rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
-              <a href="{prefix}/about" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.aboutMe}</a>
-              <a href="{prefix}/cv" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.cv}</a>
-              <a href="{prefix}/dailybot" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.dailybot}</a>
-              <a href="{prefix}/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.entrepreneur}</a>
-              <a href="{prefix}/techtalks" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.techTalks}</a>
-              <a href="{prefix}/maker" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.maker}</a>
-              <a href="{prefix}/trading" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.trading}</a>
-              <a href="{prefix}/foodie" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.foodie}</a>
-              <a href="{prefix}/hobbies" class="block px-4 py-2 hover:bg-gray-100 text-gray-700 transition">{t.nav.hobbies}</a>
+              <a href="{prefix}/about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.aboutMe}</a>
+              <a href="{prefix}/cv" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.cv}</a>
+              <a href="{prefix}/dailybot" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.dailybot}</a>
+              <a href="{prefix}/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.entrepreneur}</a>
+              <a href="{prefix}/techtalks" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.techTalks}</a>
+              <a href="{prefix}/maker" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.maker}</a>
+              <a href="{prefix}/trading" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.trading}</a>
+              <a href="{prefix}/foodie" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.foodie}</a>
+              <a href="{prefix}/hobbies" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.hobbies}</a>
             </div>
           {/if}
         </div>
@@ -134,15 +135,15 @@ function toggleMenu() {
             ></div>
             <div
               id="language-dropdown"
-              class="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white text-black rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
               {#if lang === "es"}
-                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
+                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
                   <span role="img" aria-label="English">🇬🇧</span> EN
                 </a>
               {:else}
-                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-700 transition flex items-center gap-2">
+                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
                   <span role="img" aria-label="Español">🇪🇸</span> ES
                 </a>
               {/if}
@@ -153,7 +154,7 @@ function toggleMenu() {
     </div>
     <!-- Mobile menu button -->
     <button
-      class="block md:hidden p-1"
+      class="block md:hidden p-2"
       aria-label="Open menu"
       on:click={toggleMenu}
       type="button"

@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 ---
 
-<li class={`relative pl-8 ${isLast ? '' : 'pb-10'}`}>
+<li class={`relative pl-6 sm:pl-8 ${isLast ? '' : 'pb-10'}`}>
   <div class={`absolute left-0 top-0 w-px bg-gray-200 dark:bg-gray-700 ${isLast ? 'h-3' : 'h-full'}`}></div>
   <div class="absolute left-0 top-1 w-2.5 h-2.5 -translate-x-[5px] rounded-full bg-secondary border-2 border-white dark:border-gray-900 ring-4 ring-secondary/20"></div>
   <div>

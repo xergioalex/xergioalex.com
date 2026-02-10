@@ -16,8 +16,8 @@ const t = getTranslations(lang as Language);
 	<div class="max-w-4xl mx-auto flex flex-col items-center gap-2">
 		<div>&copy; 2025 {t.footer.copyright}. {t.footer.allRightsReserved}</div>
 		<div class="flex gap-4 justify-center mt-2">
-			<a href="https://m.webtoo.ls/@astro" target="_blank">
-				<span class="sr-only">Follow Astro on Mastodon</span>
+			<a href="https://github.com/xergioalex" target="_blank" rel="noopener" class="p-1">
+				<span class="sr-only">GitHub</span>
 				<svg
 					viewBox="0 0 16 16"
 					aria-hidden="true"
@@ -30,8 +30,8 @@ const t = getTranslations(lang as Language);
 					></path></svg
 				>
 			</a>
-			<a href="https://twitter.com/astrodotbuild" target="_blank">
-				<span class="sr-only">Follow Astro on Twitter</span>
+			<a href="https://x.com/XergioAleX" target="_blank" rel="noopener" class="p-1">
+				<span class="sr-only">X (Twitter)</span>
 				<svg
 					viewBox="0 0 16 16"
 					aria-hidden="true"
@@ -44,8 +44,8 @@ const t = getTranslations(lang as Language);
 					></path></svg
 				>
 			</a>
-			<a href="https://github.com/withastro/astro" target="_blank">
-				<span class="sr-only">Go to Astro's GitHub repo</span>
+			<a href="https://www.linkedin.com/in/xergioalex/" target="_blank" rel="noopener" class="p-1">
+				<span class="sr-only">LinkedIn</span>
 				<svg
 					viewBox="0 0 16 16"
 					aria-hidden="true"
@@ -61,24 +61,3 @@ const t = getTranslations(lang as Language);
 		</div>
 	</div>
 </footer>
-<style>
-	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
-		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
-		margin-top: 1em;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
-	}
-</style>

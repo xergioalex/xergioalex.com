@@ -44,7 +44,7 @@ function getPageUrl(page) {
           <button
             on:click={() => handlePageChange(currentPage - 1)}
             aria-label={t.previous}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.previous}
           </button>
@@ -52,7 +52,7 @@ function getPageUrl(page) {
           <a
             href={getPageUrl(currentPage - 1)}
             aria-label={t.previous}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.previous}
           </a>
@@ -94,7 +94,7 @@ function getPageUrl(page) {
           <button
             on:click={() => handlePageChange(currentPage + 1)}
             aria-label={t.next}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.next}
           </button>
@@ -102,7 +102,7 @@ function getPageUrl(page) {
           <a
             href={getPageUrl(currentPage + 1)}
             aria-label={t.next}
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
+            class="px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700"
           >
             {t.next}
           </a>

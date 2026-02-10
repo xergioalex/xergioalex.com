@@ -55,7 +55,7 @@ function formatYear(date: Date): string {
       <!-- Year marker -->
       {#if showYear}
         <div class="relative flex items-center mb-8 mt-4">
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 z-10">
+          <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
             <span class="inline-block px-4 py-1.5 bg-secondary text-white text-sm font-bold rounded-full shadow-md">
               {year}
             </span>
@@ -72,7 +72,7 @@ function formatYear(date: Date): string {
 
         <!-- Mobile: always right of the line -->
         <!-- Desktop: alternating left/right -->
-        <div class="ml-14 md:ml-0 md:w-1/2 {isLeft ? 'md:pr-12' : 'md:pl-12 md:ml-auto'}">
+        <div class={`ml-14 md:ml-0 md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12 md:ml-auto'}`}>
           <a
             href="{prefix}/blog/{slug}/"
             class="block bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-secondary/30 dark:hover:border-secondary/30 hover:-translate-y-1"
@@ -112,11 +112,3 @@ function formatYear(date: Date): string {
   </div>
 {/if}
 
-<style>
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>

@@ -84,6 +84,13 @@ For this Astro repository, check:
 - [ ] Responsive design considered
 - [ ] Consistent with existing styling patterns
 
+### Responsive Design (if styling changes)
+- [ ] Mobile breakpoint coverage (sm:, md:, lg: present where applicable)
+- [ ] Dark mode variants paired with responsive classes (e.g., text-gray-900 dark:text-gray-100 with md:text-lg)
+- [ ] Touch target sizes >= 44px for interactive elements (buttons, links, form inputs)
+- [ ] Heading text scales at sm: breakpoint for mobile UX (e.g., text-2xl sm:text-3xl md:text-4xl)
+- [ ] No layout shifts at breakpoints (smooth responsive transitions)
+
 ### Documentation
 - [ ] Complex code is documented
 - [ ] README updated if adding to folder

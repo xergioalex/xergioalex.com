@@ -286,6 +286,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-02-10 | Responsive design guidance added | Enhanced `update-styles` skill with responsive design patterns, breakpoint reference, touch target sizing, and heading scaling examples. Enhanced `reviewer` agent with responsive design verification checklist (breakpoint coverage, dark mode pairing, touch targets, heading scales). |
 | 2026-02-04 | Format migration | Migrated all skills and agents to official Agent Skills standard format with model routing, allowed-tools, and compatibility fields |
 | 2026-02-03 | Catalog restructured | Added tier breakdown overview, interaction map, domain guides, decision guide, and changelog |
 | 2025-01-01 | translate-sync, i18n-guardian added | Bilingual content synchronization skill and translation quality agent |

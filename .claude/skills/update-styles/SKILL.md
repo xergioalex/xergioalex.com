@@ -100,6 +100,81 @@ Usage:
 <span class="text-secondary">
 ```
 
+### Responsive Design Patterns
+
+**Mobile-first approach with Tailwind breakpoints:**
+
+| Breakpoint | Width | Usage |
+|-----------|-------|-------|
+| None (default) | < 640px | Mobile (320-639px) |
+| `sm:` | >= 640px | Large phones |
+| `md:` | >= 768px | Tablets |
+| `lg:` | >= 1024px | Laptops |
+| `xl:` | >= 1280px | Desktops |
+| `2xl:` | >= 1536px | Large monitors |
+
+**Always design mobile-first, then progressively enhance:**
+
+```html
+<!-- Start simple on mobile, enhance at larger sizes -->
+<div class="text-sm md:text-base lg:text-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="p-4 md:p-6 lg:p-8">
+```
+
+**Heading text scaling (common pattern):**
+
+```html
+<!-- Scale headings across breakpoints for better mobile UX -->
+<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+<h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+<h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+```
+
+**Responsive spacing patterns:**
+
+```html
+<!-- Stack on mobile, side-by-side on larger screens -->
+<div class="flex flex-col md:flex-row gap-4 md:gap-8">
+
+<!-- Reduce padding on mobile, increase on desktop -->
+<div class="p-4 sm:p-6 md:p-8 lg:p-12">
+
+<!-- Hide on mobile, show on larger screens -->
+<div class="hidden md:block">
+
+<!-- Show different content at different sizes -->
+<div class="block md:hidden">Mobile content</div>
+<div class="hidden md:block">Desktop content</div>
+```
+
+**Touch target sizing (accessibility requirement):**
+
+Minimum 44px touch targets for interactive elements:
+
+```html
+<!-- Buttons and interactive elements should be at least 44x44px -->
+<button class="px-4 py-2 rounded min-h-[44px] min-w-[44px]">
+<a href="/" class="inline-flex items-center justify-center h-12 px-4 rounded">
+<div class="w-12 h-12 flex items-center justify-center rounded">
+```
+
+**Dark mode + responsive combination:**
+
+```html
+<!-- Always pair dark mode with responsive changes -->
+<h2 class="text-2xl sm:text-3xl md:text-4xl
+           text-gray-900 dark:text-gray-100
+           font-bold">
+
+<div class="bg-white dark:bg-gray-800
+           text-gray-900 dark:text-gray-100
+           p-4 md:p-6 lg:p-8">
+
+<button class="bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700
+              px-4 md:px-6 py-2 md:py-3">
+```
+
 ## Steps
 
 ### Step 1: Identify Target
@@ -250,6 +325,46 @@ $CHANGES: Add new utility class for cards
     @apply bg-white dark:bg-gray-800 rounded-lg shadow-md p-6;
   }
 }
+```
+
+### Example 3: Responsive + Dark Mode Fix
+
+**Input:**
+```
+$TARGET: src/components/home/HeroSection.astro
+$CHANGES: Scale heading text responsively and ensure dark mode support
+```
+
+**Before:**
+```html
+<h1 class="text-6xl font-bold text-gray-900">
+```
+
+**After:**
+```html
+<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+           font-bold
+           text-gray-900 dark:text-gray-100">
+```
+
+### Example 4: Responsive Grid Layout
+
+**Input:**
+```
+$TARGET: src/components/ProjectsSection.astro
+$CHANGES: Make project grid responsive with dark mode
+```
+
+**Before:**
+```html
+<div class="grid grid-cols-4 gap-6 bg-gray-50">
+```
+
+**After:**
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6
+           bg-gray-50 dark:bg-gray-900
+           p-4 md:p-8">
 ```
 
 ## Related

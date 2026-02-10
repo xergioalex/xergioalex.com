@@ -12,6 +12,11 @@ let languageOpen = false;
 $: t = getTranslations(lang);
 $: prefix = lang === 'es' ? '/es' : '';
 
+// Lock body scroll when menu is open
+$: if (typeof document !== 'undefined') {
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
 // Language switch URL - computed on mount from current page path
 let switchUrl: string = lang === 'es' ? '/' : '/es';
 
@@ -29,7 +34,7 @@ onMount(() => {
 </script>
 
 {#if open}
-  <div class="fixed inset-0 z-50 bg-main bg-opacity-95 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden">
+  <div class="fixed inset-0 z-50 bg-main/95 flex flex-col items-center justify-start pt-20 gap-6 overflow-y-auto overscroll-contain transition-all duration-300 md:hidden">
     <button
       class="absolute top-6 right-6 p-2"
       aria-label="Close menu"
@@ -43,6 +48,7 @@ onMount(() => {
     </button>
     <a href={prefix || '/'} class="nav-link text-2xl text-center">{t.nav.home}</a>
     <a href="{prefix}/blog" class="nav-link text-2xl text-center">{t.nav.blog}</a>
+    <a href="{prefix}/portfolio" class="nav-link text-2xl text-center">{t.nav.portfolio}</a>
     <button
       class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => aboutOpen = !aboutOpen}

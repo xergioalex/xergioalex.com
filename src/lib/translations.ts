@@ -64,6 +64,7 @@ export interface SiteTranslations {
   nav: {
     home: string;
     blog: string;
+    portfolio: string;
     about: string;
     contact: string;
     aboutMe: string;
@@ -297,6 +298,15 @@ export interface SiteTranslations {
     balanceText: string;
   };
 
+  // Portfolio page
+  portfolioPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    heroDescription: string;
+    emptyState: string;
+  };
+
   // Contact page
   contactPage: {
     title: string;
@@ -372,6 +382,7 @@ const translations: Record<Language, SiteTranslations> = {
     nav: {
       home: 'Home',
       blog: 'Blog',
+      portfolio: 'Portfolio',
       about: 'About',
       contact: 'Contact',
       aboutMe: 'About Me',
@@ -1028,6 +1039,17 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
         "The best ideas often come when you step away from the screen. Whether it's during a long cycling ride, a mountain hike, or a competitive chess match — these moments of disconnection spark creativity and bring fresh perspectives to my work.<br /><br />Sports teach me that growth happens outside the comfort zone. That lesson applies to everything — building products, learning new skills, and living a fulfilling life.",
     },
 
+    // Portfolio page
+    portfolioPage: {
+      title: 'Portfolio',
+      subtitle: 'Projects & Work',
+      description:
+        'A showcase of my projects, experiments, and technical work across software engineering, robotics, and more.',
+      heroDescription:
+        'Explore my portfolio of projects spanning software development, DevOps, robotics, and emerging technologies.',
+      emptyState: 'No portfolio projects available yet. Check back soon!',
+    },
+
     // Contact page
     contactPage: {
       title: 'Contact',
@@ -1118,6 +1140,7 @@ Computer science engineer, MSc in data science and passionate entrepreneur, with
     nav: {
       home: 'Inicio',
       blog: 'Blog',
+      portfolio: 'Portafolio',
       about: 'Acerca de',
       contact: 'Contacto',
       aboutMe: 'Sobre m\u00ED',
@@ -1774,6 +1797,18 @@ Ingeniero en ciencias de la computaci\u00F3n, MSc en ciencia de datos y emprende
       balanceTitle: 'Encontrando el Equilibrio',
       balanceText:
         'Las mejores ideas a menudo llegan cuando te alejas de la pantalla. Ya sea durante un largo recorrido en bicicleta, una caminata de monta\u00F1a o una partida competitiva de ajedrez — estos momentos de desconexi\u00F3n encienden la creatividad y traen perspectivas frescas a mi trabajo.<br /><br />Los deportes me ense\u00F1an que el crecimiento sucede fuera de la zona de confort. Esa lecci\u00F3n aplica a todo — construir productos, aprender nuevas habilidades y vivir una vida plena.',
+    },
+
+    // Portfolio page
+    portfolioPage: {
+      title: 'Portafolio',
+      subtitle: 'Proyectos y Trabajo',
+      description:
+        'Una muestra de mis proyectos, experimentos y trabajo técnico en ingeniería de software, robótica y más.',
+      heroDescription:
+        'Explora mi portafolio de proyectos en desarrollo de software, DevOps, robótica y tecnologías emergentes.',
+      emptyState:
+        'Aún no hay proyectos de portafolio disponibles. ¡Vuelve pronto!',
     },
 
     // Contact page

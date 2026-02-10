@@ -20,7 +20,7 @@ $: showingText = t.showingArticles(currentPagePosts, totalPosts);
 $: availableText = t.articlesAvailable(totalPosts);
 </script>
 
-<h1 class="text-4xl font-extrabold mb-6">
+<h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 dark:text-white">
   {headerTitle}
 </h1>
 
