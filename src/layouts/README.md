@@ -160,4 +160,4 @@ const { lang, title, description, pubDate, author } = Astro.props;
 - [Footer Component](../components/README.md#footer)
 - [Styling Guide](../styles/README.md)
 - [i18n Guide](../../docs/I18N_GUIDE.md)
-- [Features: Dark Mode](../../docs/features/dark-mode.md)
+- [Features: Dark Mode](../../docs/features/DARK_MODE.md)

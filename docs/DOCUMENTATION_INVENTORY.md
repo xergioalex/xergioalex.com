@@ -37,12 +37,12 @@ Tracking documentation coverage for XergioAleX.com.
 | File | Status | Description |
 |------|--------|-------------|
 | [README.md](features/README.md) | ✅ Current | Features index |
-| [blog-search.md](features/blog-search.md) | ✅ Current | Client-side search functionality |
-| [dark-mode.md](features/dark-mode.md) | ✅ Current | Theme toggle and persistence |
-| [i18n.md](features/i18n.md) | ✅ Current | Multi-language support |
-| [pagination.md](features/pagination.md) | ✅ Current | Blog post pagination |
-| [public-assets.md](features/public-assets.md) | ✅ Current | Static assets structure |
-| [rss-feed.md](features/rss-feed.md) | ✅ Current | RSS feed generation |
+| [BLOG_SEARCH.md](features/BLOG_SEARCH.md) | ✅ Current | Client-side search functionality |
+| [DARK_MODE.md](features/DARK_MODE.md) | ✅ Current | Theme toggle and persistence |
+| [I18N.md](features/I18N.md) | ✅ Current | Multi-language support |
+| [PAGINATION.md](features/PAGINATION.md) | ✅ Current | Blog post pagination |
+| [PUBLIC_ASSETS.md](features/PUBLIC_ASSETS.md) | ✅ Current | Static assets structure |
+| [RSS_FEED.md](features/RSS_FEED.md) | ✅ Current | RSS feed generation |
 
 ### src/ README Files
 

@@ -277,7 +277,7 @@ In `global.css`:
 ## Related Documentation
 
 - [Brand Guide](../../docs/BRAND_GUIDE.md) - Complete color palette, typography, and brand rules
-- [Features: Dark Mode](../../docs/features/dark-mode.md)
+- [Features: Dark Mode](../../docs/features/DARK_MODE.md)
 - [Components](../components/README.md)
 - [Layouts](../layouts/README.md)
 - [Architecture](../../docs/ARCHITECTURE.md)

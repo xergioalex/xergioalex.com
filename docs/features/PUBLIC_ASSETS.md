@@ -233,5 +233,5 @@ Files in `public/` are served from the root:
 
 - [BaseHead Component](../../src/components/README.md#basehead)
 - [Styling Guide](../../src/styles/README.md)
-- [Features: Dark Mode](./dark-mode.md)
+- [Features: Dark Mode](./DARK_MODE.md)
 - [Content Collections](../../src/content/README.md) - Blog images

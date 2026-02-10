@@ -306,8 +306,8 @@ All components use Tailwind CSS with dark mode support via the `dark:` prefix.
 
 ## Related Documentation
 
-- [Features: Blog Search](../../../docs/features/blog-search.md) - Detailed search architecture
-- [Features: Pagination](../../../docs/features/pagination.md) - Pagination implementation
+- [Features: Blog Search](../../../docs/features/BLOG_SEARCH.md) - Detailed search architecture
+- [Features: Pagination](../../../docs/features/PAGINATION.md) - Pagination implementation
 - [Library Utilities](../../lib/README.md) - translations.ts, search.ts
 - [Content Collections](../../content/README.md) - Blog post schema
 - [API Reference](../../../docs/API_REFERENCE.md) - /api/posts.json endpoint

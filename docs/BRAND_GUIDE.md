@@ -24,13 +24,6 @@ The brand is built around a **ninja coder** metaphor — a stylized ninja charac
 | **Shuriken X's** | The X in "**X**ERGIO ALE**X**" is designed as a shuriken (ninja throwing star) |
 | **Banner** | Bold ribbon beneath the character — badge/esports logo feel |
 
-### Logo Designer
-
-**Daniel Vasquez Correa (Koru)** — Graphic designer and illustrator, Colombia.
-- [Instagram @koru.studio.co](https://instagram.com/koru.studio.co)
-- [Behance](https://behance.net/KoruProject)
-- [X @Koruproject](https://x.com/Koruproject)
-
 ### Branding Assets Repository
 
 All source files (AI master, SVGs, PNGs): [github.com/xergioalex/personal-branding](https://github.com/xergioalex/personal-branding)
@@ -245,7 +238,7 @@ When displaying white/transparent logo images in contexts where the background m
 
 ### Theme System
 
-The site uses class-based dark mode (`dark` class on `<html>`). See [Dark Mode Feature](features/dark-mode.md) for full implementation details.
+The site uses class-based dark mode (`dark` class on `<html>`). See [Dark Mode Feature](features/DARK_MODE.md) for full implementation details.
 
 ### Brand Colors in Dark Mode
 
@@ -268,7 +261,7 @@ public/icons/
 ├── github_white.svg    # Light icon (for dark backgrounds)
 ```
 
-See [Public Assets](features/public-assets.md) for the complete icon inventory.
+See [Public Assets](features/PUBLIC_ASSETS.md) for the complete icon inventory.
 
 ---
 
@@ -333,8 +326,8 @@ Depth/secondary:    #637996 (Shadow Steel)   → subtle details
 
 - [Product Spec](PRODUCT_SPEC.md) — Brand positioning and messaging
 - [Standards](STANDARDS.md) — Coding conventions including styling
-- [Dark Mode](features/dark-mode.md) — Theme implementation details
-- [Public Assets](features/public-assets.md) — Static asset inventory
+- [Dark Mode](features/DARK_MODE.md) — Theme implementation details
+- [Public Assets](features/PUBLIC_ASSETS.md) — Static asset inventory
 - [Styling Guide](../src/styles/README.md) — CSS and Tailwind technical reference
 - [Content Writer Agent](../.claude/agents/content-writer.md) — Brand voice guidelines for articles
 - [Branding Blog Post (EN)](../src/content/blog/en/personal-branding-xergioalex.md) — Full brand story

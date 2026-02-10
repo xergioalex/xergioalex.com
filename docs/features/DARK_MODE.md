@@ -223,4 +223,4 @@ localStorage.getItem('theme')  // Saved preference
 - [Brand Guide](../BRAND_GUIDE.md) - Complete color palette and dark mode pairing rules
 - [Styling Guide](../../src/styles/README.md)
 - [Layout Components](../../src/components/layout/README.md)
-- [Public Assets](./public-assets.md) - Icon variants
+- [Public Assets](./PUBLIC_ASSETS.md) - Icon variants
