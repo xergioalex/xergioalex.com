@@ -518,6 +518,7 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 ### Documentation
 
 - [Product Spec](docs/PRODUCT_SPEC.md)
+- [Brand Guide](docs/BRAND_GUIDE.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Testing](docs/TESTING_GUIDE.md)
 - [Commands](docs/DEVELOPMENT_COMMANDS.md)

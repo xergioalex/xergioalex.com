@@ -50,16 +50,20 @@ The main stylesheet that imports Tailwind and defines global styles.
 
 ### Theme Colors
 
-| Variable | Value | Usage |
-|----------|-------|-------|
-| `--color-main` | `#0f1124` | Primary dark background |
-| `--color-secondary` | `#e41541` | Accent color |
+| Variable | Value | Brand Name | Usage |
+|----------|-------|-----------|-------|
+| `--color-main` | `#0f1124` | Void Black | Dark mode base background |
+| `--color-secondary` | `#e41541` | Crimson Strike | Accent — highlights, CTAs, interactive elements |
+
+Additional brand colors not yet registered as tokens: Ninja Navy `#152E45`, Shadow Steel `#637996`.
+
+> **Full palette and usage rules:** See **[Brand Guide](../../docs/BRAND_GUIDE.md)** for the complete 5-color system, pairing rules, and logo guidelines.
 
 Use in Tailwind classes:
 
 ```html
-<div class="bg-main">Dark background</div>
-<span class="text-secondary">Accent text</span>
+<div class="bg-main">Dark background (Void Black)</div>
+<span class="text-secondary">Accent text (Crimson Strike)</span>
 ```
 
 ### Custom Components
@@ -272,6 +276,7 @@ In `global.css`:
 
 ## Related Documentation
 
+- [Brand Guide](../../docs/BRAND_GUIDE.md) - Complete color palette, typography, and brand rules
 - [Features: Dark Mode](../../docs/features/dark-mode.md)
 - [Components](../components/README.md)
 - [Layouts](../layouts/README.md)

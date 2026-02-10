@@ -114,21 +114,17 @@ Create a modern, fast, and visually appealing personal website that:
 3. **Use specific metrics** — 10+ years, 113+ repos, thousands of teams
 4. **Clear CTA hierarchy** — One primary action (blog/projects) over many equal CTAs
 
-### Color Palette
+### Color Palette & Typography
 
+See **[Brand Guide](BRAND_GUIDE.md)** for the complete 5-color palette (Ninja Navy, Crimson Strike, Shadow Steel, Void Black, Pure White), typography system, logo variants, and detailed usage guidelines.
+
+**Quick reference:**
 ```css
---color-main: #0f1124;      /* Primary dark */
---color-secondary: #e41541; /* Accent red */
+--color-main: #0f1124;      /* Void Black — dark mode base */
+--color-secondary: #e41541; /* Crimson Strike — accent */
 ```
 
-Light mode: White backgrounds, dark text
-Dark mode: Dark backgrounds, light text
-
-### Typography
-
-- **Primary font**: System fonts with Atkinson Hyperlegible
-- **Code font**: Monospace for code blocks
-- **Hierarchy**: Clear heading structure (h1-h6)
+Additional brand colors: Ninja Navy `#152E45`, Shadow Steel `#637996`
 
 ## Technical Requirements
 

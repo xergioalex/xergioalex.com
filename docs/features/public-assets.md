@@ -99,13 +99,13 @@ Social media and UI icons with light/dark variants.
 
 ### Images
 
-Site images for branding, projects, and sections.
+Site images for branding, projects, and sections. See **[Brand Guide](../BRAND_GUIDE.md)** for logo usage rules and color pairing guidelines.
 
 | Image | Purpose |
 |-------|---------|
-| `logo_full.svg` | Full logo (hero section) |
-| `logo_small_version_white.svg` | Header logo (white) |
-| `isologo.svg` | Isolated logo mark (also used as favicon at `public/favicon.svg`) |
+| `logo_full.svg` | Full logo — ninja character + name banner (hero section) |
+| `logo_small_version_white.svg` | Compact horizontal logo — ninja face + text (site header) |
+| `isologo.svg` | Ninja face icon — compact identity mark (favicon, avatars) |
 | `profile.png` | Personal profile photo |
 | `dailybot.png` | DailyBot project image |
 | `dailybotyc.png` | DailyBot YC image |

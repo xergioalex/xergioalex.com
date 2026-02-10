@@ -166,16 +166,19 @@ Custom theme colors in `global.css`:
 
 ```css
 @theme {
-  --color-main: #0f1124;
-  --color-secondary: #e41541;
+  --color-main: #0f1124;      /* Void Black — dark mode base */
+  --color-secondary: #e41541; /* Crimson Strike — accent */
 }
 ```
 
 Use in Tailwind:
 
 ```html
-<div class="bg-main">Dark branded background</div>
+<div class="bg-main">Dark branded background (Void Black)</div>
+<span class="text-secondary">Accent text (Crimson Strike)</span>
 ```
+
+> **Full palette:** See **[Brand Guide](../BRAND_GUIDE.md)** for the complete 5-color system (Ninja Navy, Crimson Strike, Shadow Steel, Void Black, Pure White), dark/light mode pairing rules, and usage guidelines.
 
 ## Storage
 
@@ -217,6 +220,7 @@ localStorage.getItem('theme')  // Saved preference
 
 ## Related Documentation
 
+- [Brand Guide](../BRAND_GUIDE.md) - Complete color palette and dark mode pairing rules
 - [Styling Guide](../../src/styles/README.md)
 - [Layout Components](../../src/components/layout/README.md)
 - [Public Assets](./public-assets.md) - Icon variants
