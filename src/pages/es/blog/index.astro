@@ -1,5 +1,6 @@
 ---
 import BlogContainer from '@/components/blog/BlogContainer.astro';
+import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
 import { getTranslations, type Language } from '@/lib/translations';
@@ -11,6 +12,15 @@ const t = getTranslations(lang);
 const blogPostsResult: BlogPostsResultType = await getBlogPosts({
   lang: lang,
 });
+
+const collectionPageData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: t.blogTitle,
+  description: t.blogDescription,
+  inLanguage: 'es',
+  url: new URL('/es/blog/', Astro.site).href,
+};
 ---
 
 <MainLayout
@@ -18,5 +28,8 @@ const blogPostsResult: BlogPostsResultType = await getBlogPosts({
   title={t.blogTitle}
   description={t.blogDescription}
 >
+  <Fragment slot="head">
+    <JsonLd data={collectionPageData} />
+  </Fragment>
   <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
 </MainLayout>

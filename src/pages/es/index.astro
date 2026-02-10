@@ -4,6 +4,7 @@ import ContactSection from '@/components/home/ContactSection.astro';
 import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
 import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
+import PortfolioPostsSection from '@/components/home/PortfolioPostsSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
@@ -55,20 +56,8 @@ const t = getTranslations(lang);
     contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
   />
 
-  <!-- Trading Section -->
-  <HomeSection
-    title={t.homeSections.trading.title}
-    subtitle={t.homeSections.trading.subtitle}
-    description={t.homeSections.trading.description}
-    ctaText={t.homeSections.trading.cta}
-    ctaLink="/es/trading"
-    image="/images/trading.png"
-    contentAlignment={HomeSectionContentAlignmentEType.LEFT}
-    variant="alt"
-  />
-
-  <!-- Blog Preview Section -->
-  <BlogPreviewSection lang={lang} />
+  <!-- Portfolio Projects Posts Section -->
+  <PortfolioPostsSection lang={lang} />
 
   <!-- Community & Speaking Section -->
   <HomeSection
@@ -78,10 +67,25 @@ const t = getTranslations(lang);
     ctaText={t.homeSections.community.cta}
     ctaLink="/es/techtalks"
     image="/images/techtalks.png"
-    contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+    contentAlignment={HomeSectionContentAlignmentEType.LEFT}
   />
 
-  <!-- Beyond Code Section -->
+  <!-- Trading Section -->
+  <HomeSection
+    title={t.homeSections.trading.title}
+    subtitle={t.homeSections.trading.subtitle}
+    description={t.homeSections.trading.description}
+    ctaText={t.homeSections.trading.cta}
+    ctaLink="/es/trading"
+    image="/images/trading.png"
+    contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+    variant="alt"
+  />
+
+  <!-- Blog Preview Section -->
+  <BlogPreviewSection lang={lang} />
+
+  <!-- Beyond Code Section (Hobbies) -->
   <HomeSection
     title={t.homeSections.beyondCode.title}
     subtitle={t.homeSections.beyondCode.subtitle}

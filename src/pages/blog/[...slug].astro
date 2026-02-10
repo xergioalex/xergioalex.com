@@ -1,8 +1,14 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
+import {
+  getReadingTimeFromContent,
+  getRelatedPosts,
+  getWordCount,
+} from '@/lib/blog';
 import { getTranslations, type Language } from '@/lib/translations';
 
 const lang: Language = 'en';
@@ -23,8 +29,17 @@ type Props = CollectionEntry<'blog'>;
 const post = Astro.props;
 const { heroImage, pubDate, updatedDate, title, description, tags } = post.data;
 const { Content } = await render(post);
+const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
+const wordCount = getWordCount(post.body ?? '');
+const relatedPosts = await getRelatedPosts({
+  currentPostId: post.id,
+  tags: tags ?? [],
+  lang,
+  limit: 3,
+});
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const articleSection = tags?.[0] ? t.tagNames[tags[0]] || tags[0] : 'Blog';
 const blogPostingData = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -38,21 +53,70 @@ const blogPostingData = {
     name: 'Sergio Alexander Florez Galeano',
     url: new URL('/about/', Astro.site).href,
   },
+  publisher: {
+    '@type': 'Person',
+    name: 'Sergio Alexander Florez Galeano',
+    url: new URL('/about/', Astro.site).href,
+  },
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': canonicalURL.href,
   },
   keywords: tags || [],
+  wordCount,
+  timeRequired: `PT${readingTimeMinutes}M`,
+  inLanguage: 'en',
+  articleSection,
+  url: canonicalURL.href,
+};
+
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: t.nav.home,
+      item: new URL('/', Astro.site).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.nav.blog,
+      item: new URL('/blog/', Astro.site).href,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: title,
+      item: canonicalURL.href,
+    },
+  ],
 };
 ---
 
 <MainLayout lang={lang} title={title} description={description}>
   <Fragment slot="head">
     <JsonLd data={blogPostingData} />
+    <JsonLd data={breadcrumbData} />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={pubDate.toISOString()} />
+    <meta property="article:modified_time" content={(updatedDate ?? pubDate).toISOString()} />
+    <meta property="article:author" content={new URL('/about/', Astro.site).href} />
+    <meta property="article:section" content={articleSection} />
+    {tags?.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
-  <main class="main-container py-24">
-    <article>
-      <div class="w-full">
+  <main class="main-container py-16 md:py-24">
+    <article class="mx-auto max-w-5xl">
+      <nav aria-label="Breadcrumb" class="mb-6 text-sm text-[rgb(var(--gray))]">
+        <a href="/" class="transition-colors hover:text-blue-600 dark:hover:text-blue-400">{t.nav.home}</a>
+        <span class="mx-2">/</span>
+        <a href="/blog/" class="transition-colors hover:text-blue-600 dark:hover:text-blue-400">{t.nav.blog}</a>
+        <span class="mx-2">/</span>
+        <span class="truncate text-[rgb(var(--gray-dark))] dark:text-gray-300">{title}</span>
+      </nav>
+      <div class="w-full overflow-hidden rounded-xl">
         {
           heroImage && (
             <img
@@ -60,29 +124,47 @@ const blogPostingData = {
               height={510}
               src={heroImage}
               alt={title}
-              class="block mx-auto rounded-xl shadow-[var(--box-shadow)]"
+              loading="eager"
+              class="block h-auto w-full rounded-xl object-cover shadow-(--box-shadow)"
             />
           )
         }
       </div>
-      <div class="text-[rgb(var(--gray-dark))]">
-        <div class="mb-4 py-4 text-center leading-none">
-          <div class="mb-2 text-[rgb(var(--gray))]">
+      <div class="mt-6 text-[rgb(var(--gray-dark))] dark:text-gray-100">
+        <div class="mb-6 border-b border-gray-200 py-4 text-center dark:border-gray-700">
+          <div class="mb-3 flex flex-wrap items-center justify-center gap-3 text-sm text-[rgb(var(--gray))]">
             <FormattedDate date={pubDate} lang={lang} />
+            <span aria-hidden="true">•</span>
+            <span>{t.readingTime(readingTimeMinutes)}</span>
             {
               updatedDate && (
                 <div class="italic">
+                  <span aria-hidden="true">•</span>{' '}
                   {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
                 </div>
               )
             }
           </div>
-          <h1 class="m-0 mb-2">{title}</h1>
-          <hr />
+          <h1 class="m-0 mb-3 text-balance text-4xl font-extrabold">{title}</h1>
+          {
+            tags && tags.length > 0 && (
+              <div class="mb-2 flex flex-wrap justify-center gap-2">
+                {tags.map((tag) => (
+                  <a
+                    href={`/blog/tag/${tag}/`}
+                    class="rounded bg-blue-100 px-3 py-1 text-sm text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
+                  >
+                    #{t.tagNames[tag] || tag}
+                  </a>
+                ))}
+              </div>
+            )
+          }
         </div>
-        <div class="prose prose-lg prose-slate dark:prose-invert max-w-4xl">
+        <div class="prose prose-lg prose-slate mx-auto max-w-3xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400">
           <Content />
         </div>
+        <RelatedArticles posts={relatedPosts} lang={lang} />
       </div>
     </article>
   </main>

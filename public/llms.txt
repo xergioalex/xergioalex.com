@@ -1,5 +1,75 @@
 # XergioAleX.com
 
+> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO, product builder, and engineer.
+
+## About
+This site contains professional profile pages and a bilingual blog focused on software development, DevOps, product engineering, robotics projects, and practical technical notes.
+
+## Core Sections
+- Home: /
+- Blog: /blog/
+- Portfolio: /portfolio/
+- About: /about/
+- Contact: /contact/
+- CV: /cv/
+
+## Blog Topics
+- DevOps and infrastructure
+- Software engineering
+- Robotics and autonomous systems
+- Portfolio project write-ups
+- Personal technical reflections
+- Talks and knowledge sharing
+
+## Languages
+- English: / (default)
+- Spanish: /es/
+
+## Machine-Readable Feeds
+- Sitemap: /sitemap-index.xml
+- RSS: /rss.xml
+- Spanish RSS: /es/rss.xml
+
+## Crawling Guidance
+- Public content is intended for indexing by search engines and LLM systems.
+- Prefer canonical URLs and language-specific routes.
+# XergioAleX.com
+
+> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO, product builder, and engineer.
+
+## About
+This site contains professional profile pages and a bilingual blog focused on software development, DevOps, product engineering, robotics projects, and practical technical notes.
+
+## Core Sections
+- Home: /
+- Blog: /blog/
+- Portfolio: /portfolio/
+- About: /about/
+- Contact: /contact/
+- CV: /cv/
+
+## Blog Topics
+- DevOps and infrastructure
+- Software engineering
+- Robotics and autonomous systems
+- Portfolio project write-ups
+- Personal technical reflections
+- Talks and knowledge sharing
+
+## Languages
+- English: / (default)
+- Spanish: /es/
+
+## Machine-Readable Feeds
+- Sitemap: /sitemap-index.xml
+- RSS: /rss.xml
+- Spanish RSS: /es/rss.xml
+
+## Crawling Guidance
+- Public content is intended for indexing by search engines and LLM systems.
+- Prefer canonical URLs and language-specific routes.
+# XergioAleX.com
+
 > Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).
 
 ## About

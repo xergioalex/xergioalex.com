@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '@/components/FormattedDate.astro';
+import type { Language } from '@/lib/translations';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = getTranslations(lang);
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter((post) => post.id.startsWith(`${lang}/`))
+  .filter((post) => post.data.tags?.includes('portfolio'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
+---
+
+<section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="main-container">
+    <h2
+      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8"
+    >
+      {t.homeSections.portfolioProjectsTitle}
+    </h2>
+    {posts.length > 0 ? (
+      <>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            posts.map((post) => (
+              <a
+                href={`${lang === 'es' ? '/es' : ''}/blog/${post.id.replace(`${lang}/`, '')}/`}
+                class="block bg-gray-50 dark:bg-gray-800 rounded-xl shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden"
+              >
+                {post.data.heroImage && (
+                  <img
+                    src={post.data.heroImage}
+                    alt=""
+                    class="w-full h-40 object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 mb-3">
+                    {post.data.description}
+                  </p>
+                  <span class="text-gray-500 dark:text-gray-400 text-sm">
+                    <FormattedDate date={post.data.pubDate} lang={lang} />
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        <div class="mt-8 text-center">
+          <a
+            href={`${lang === 'es' ? '/es' : ''}/blog/tag/portfolio`}
+            class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
+          >
+            {t.homeSections.portfolioProjectsViewAll} &rarr;
+          </a>
+        </div>
+      </>
+    ) : (
+      <p class="text-gray-500 dark:text-gray-400 text-center py-8">
+        {t.homeSections.portfolioProjectsEmpty}
+      </p>
+    )}
+  </div>
+</section>

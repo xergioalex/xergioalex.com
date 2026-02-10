@@ -379,6 +379,8 @@ export interface SiteTranslations {
 
   // Search input
   searchPlaceholder: string;
+  searchHint: string;
+  clearSearch: string;
   resultsFound: (count: number) => string;
 
   // Loading states
@@ -387,6 +389,8 @@ export interface SiteTranslations {
 
   // Results
   noResults: (query: string) => string;
+  noResultsSuggestion: string;
+  noPostsAvailable: string;
 
   // Pagination
   previous: string;
@@ -400,6 +404,9 @@ export interface SiteTranslations {
   showingArticles: (showing: number, total: number) => string;
   articlesAvailable: (total: number) => string;
   lastUpdatedOn: string;
+  readingTime: (minutes: number) => string;
+  relatedArticles: string;
+  relatedArticlesDescription: string;
 
   // Tags
   postsTagged: (tag: string) => string;
@@ -469,9 +476,9 @@ const translations: Record<Language, SiteTranslations> = {
     homeSections: {
       about: {
         title: "Hello, I'm <span class='text-secondary'>Sergio</span>",
-        description: `I started as a math tutor and web developer at a university in Pereira, Colombia. That curiosity led me to build 20+ digital products, earn an MSc in Data Science, win a programming marathon, and eventually co-found DailyBot \u2014 a platform that got accepted into Y Combinator's Summer 2021 batch.<br /><br />
-Along the way, I co-founded three tech communities in Pereira to share what I was learning. Today I lead the engineering team at DailyBot, explore AI through side projects like Moltbot and Syntro, and still believe the best way to learn is to build and share.<br /><br />
-When I'm not coding, you'll find me cycling through the mountains, running, or playing basketball.`,
+        description: `Today I lead engineering at DailyBot (YC S21), where I focus on product strategy, AI-powered workflows, and reliable systems that help teams move faster.<br /><br />
+My strengths are turning complex ideas into simple products, scaling engineering teams, and shipping end-to-end: architecture, execution, and iteration based on real user feedback.<br /><br />
+I currently focus on AI applications, developer productivity, and high-impact products that combine speed, quality, and measurable business results.`,
         cta: 'Learn more about me',
         cta2: 'View my CV',
       },
@@ -716,11 +723,27 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
       skillCategories: [
         {
           category: 'Languages',
-          skills: ['TypeScript', 'JavaScript', 'Python', 'GoLang', 'SQL'],
+          skills: [
+            'TypeScript',
+            'JavaScript',
+            'Python',
+            'Go',
+            'Kotlin',
+            'C++',
+            'SQL',
+          ],
         },
         {
           category: 'Frontend',
-          skills: ['React', 'Svelte', 'Astro', 'Tailwind CSS', 'HTML/CSS'],
+          skills: [
+            'React',
+            'Vue',
+            'Alpine.js',
+            'Svelte',
+            'Astro',
+            'Tailwind CSS',
+            'HTML/CSS',
+          ],
         },
         {
           category: 'Backend',
@@ -728,7 +751,15 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         },
         {
           category: 'DevOps & Cloud',
-          skills: ['Docker', 'AWS', 'Serverless', 'CI/CD', 'Terraform'],
+          skills: [
+            'Docker',
+            'AWS',
+            'Serverless',
+            'CI/CD',
+            'Terraform',
+            'Linux',
+            'Bash',
+          ],
         },
         {
           category: 'Data & AI',
@@ -741,7 +772,7 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
         },
         {
           category: 'Tools',
-          skills: ['Git', 'Cypress', 'Biome', 'Linux', 'Jira'],
+          skills: ['Git', 'Cypress', 'Biome', 'Jira'],
         },
       ],
       languagesTitle: 'Languages',
@@ -1188,6 +1219,8 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
 
     // Search input
     searchPlaceholder: 'Search articles...',
+    searchHint: 'Tip: press Esc to clear the search.',
+    clearSearch: 'Clear',
     resultsFound: (count) => `${count} result${count !== 1 ? 's' : ''} found`,
 
     // Loading states
@@ -1196,6 +1229,8 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
 
     // Results
     noResults: (query) => `No articles found matching "${query}"`,
+    noResultsSuggestion: 'Try a broader keyword or browse all posts.',
+    noPostsAvailable: 'No posts available yet.',
 
     // Pagination
     previous: 'Previous',
@@ -1211,6 +1246,9 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
     articlesAvailable: (total) =>
       `${total} article${total !== 1 ? 's' : ''} available`,
     lastUpdatedOn: 'Last updated on',
+    readingTime: (minutes) => `${minutes} min read`,
+    relatedArticles: 'Related Articles',
+    relatedArticlesDescription: 'You might also enjoy these posts',
 
     // Tags
     postsTagged: (tag) => `Posts tagged "${tag}"`,
@@ -1290,9 +1328,9 @@ When I'm not coding, you'll find me cycling through the mountains, running, or p
     homeSections: {
       about: {
         title: "Hola, soy <span class='text-secondary'>Sergio</span>",
-        description: `Empec\u00E9 como tutor de matem\u00E1ticas y desarrollador web en una universidad en Pereira, Colombia. Esa curiosidad me llev\u00F3 a construir m\u00E1s de 20 productos digitales, obtener una Maestr\u00EDa en Ciencia de Datos, ganar un marat\u00F3n de programaci\u00F3n y, eventualmente, cofundar DailyBot \u2014 una plataforma aceptada en Y Combinator Summer 2021.<br /><br />
-En el camino, cofund\u00E9 tres comunidades tech en Pereira para compartir lo que iba aprendiendo. Hoy lidero el equipo de ingenier\u00EDa en DailyBot, exploro IA a trav\u00E9s de proyectos como Moltbot y Syntro, y sigo creyendo que la mejor forma de aprender es construir y compartir.<br /><br />
-Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, corriendo o jugando baloncesto.`,
+        description: `Hoy lidero ingenieria en DailyBot (YC S21), donde me enfoco en estrategia de producto, flujos potenciados por IA y sistemas confiables que ayudan a los equipos a avanzar mas rapido.<br /><br />
+Mis fortalezas estan en convertir ideas complejas en productos simples, escalar equipos de ingenieria y ejecutar end-to-end: arquitectura, implementacion e iteracion basada en feedback real de usuarios.<br /><br />
+Actualmente estoy enfocado en aplicaciones de IA, productividad para developers y productos de alto impacto que combinan velocidad, calidad y resultados de negocio medibles.`,
         cta: 'Conoce m\u00E1s sobre m\u00ED',
         cta2: 'Ver mi CV',
       },
@@ -1539,11 +1577,27 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
       skillCategories: [
         {
           category: 'Lenguajes',
-          skills: ['TypeScript', 'JavaScript', 'Python', 'GoLang', 'SQL'],
+          skills: [
+            'TypeScript',
+            'JavaScript',
+            'Python',
+            'Go',
+            'Kotlin',
+            'C++',
+            'SQL',
+          ],
         },
         {
           category: 'Frontend',
-          skills: ['React', 'Svelte', 'Astro', 'Tailwind CSS', 'HTML/CSS'],
+          skills: [
+            'React',
+            'Vue',
+            'Alpine.js',
+            'Svelte',
+            'Astro',
+            'Tailwind CSS',
+            'HTML/CSS',
+          ],
         },
         {
           category: 'Backend',
@@ -1551,7 +1605,15 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         },
         {
           category: 'DevOps y Cloud',
-          skills: ['Docker', 'AWS', 'Serverless', 'CI/CD', 'Terraform'],
+          skills: [
+            'Docker',
+            'AWS',
+            'Serverless',
+            'CI/CD',
+            'Terraform',
+            'Linux',
+            'Bash',
+          ],
         },
         {
           category: 'Datos e IA',
@@ -1564,7 +1626,7 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
         },
         {
           category: 'Herramientas',
-          skills: ['Git', 'Cypress', 'Biome', 'Linux', 'Jira'],
+          skills: ['Git', 'Cypress', 'Biome', 'Jira'],
         },
       ],
       languagesTitle: 'Idiomas',
@@ -2012,6 +2074,8 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
 
     // Search input
     searchPlaceholder: 'Buscar art\u00EDculos...',
+    searchHint: 'Tip: presiona Esc para limpiar la b\u00FAsqueda.',
+    clearSearch: 'Limpiar',
     resultsFound: (count) =>
       `${count} resultado${count !== 1 ? 's' : ''} encontrado${count !== 1 ? 's' : ''}`,
 
@@ -2022,6 +2086,9 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
     // Results
     noResults: (query) =>
       `No se encontraron art\u00EDculos que coincidan con "${query}"`,
+    noResultsSuggestion:
+      'Prueba una palabra m\u00E1s amplia o navega todos los art\u00EDculos.',
+    noPostsAvailable: 'Aún no hay artículos disponibles.',
 
     // Pagination
     previous: 'Anterior',
@@ -2037,6 +2104,9 @@ Cuando no estoy programando, me encuentras pedaleando por las monta\u00F1as, cor
     articlesAvailable: (total) =>
       `${total} artículo${total !== 1 ? 's' : ''} disponible${total !== 1 ? 's' : ''}`,
     lastUpdatedOn: 'Última actualización:',
+    readingTime: (minutes) => `${minutes} min de lectura`,
+    relatedArticles: 'Artículos Relacionados',
+    relatedArticlesDescription: 'También te pueden interesar estos artículos',
 
     // Tags
     postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
