@@ -177,4 +177,4 @@ To add a new navigation link:
 
 - [MainLayout](../../layouts/README.md)
 - [i18n Guide](../../../docs/I18N_GUIDE.md)
-- [Features: Dark Mode](../../../docs/features/dark-mode.md)
+- [Features: Dark Mode](../../../docs/features/DARK_MODE.md)

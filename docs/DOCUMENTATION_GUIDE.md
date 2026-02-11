@@ -157,6 +157,30 @@ Post content here...
 - ❌ Temporary implementations
 - ❌ Implementation details that change often
 
+## File Naming Conventions
+
+All documentation files in `docs/` follow **UPPER_SNAKE_CASE** naming:
+
+```
+docs/
+├── README.md                  # Index (exception: always README.md)
+├── BRAND_GUIDE.md             # ✅ UPPER_SNAKE_CASE
+├── PRODUCT_SPEC.md            # ✅ UPPER_SNAKE_CASE
+├── ARCHITECTURE.md            # ✅ UPPER_SNAKE_CASE
+├── STANDARDS.md               # ✅ UPPER_SNAKE_CASE
+└── features/
+    ├── README.md              # Index (exception: always README.md)
+    ├── BLOG_SEARCH.md         # ✅ UPPER_SNAKE_CASE
+    ├── DARK_MODE.md           # ✅ UPPER_SNAKE_CASE
+    └── PUBLIC_ASSETS.md       # ✅ UPPER_SNAKE_CASE
+```
+
+**Rules:**
+- All caps with underscores: `BRAND_GUIDE.md`, `DARK_MODE.md`
+- Exception: `README.md` files keep their standard name
+- This applies to `docs/` and `docs/features/` only
+- Source code READMEs (`src/**/README.md`) are unaffected
+
 ## Documentation Structure
 
 ### Standard Document Template

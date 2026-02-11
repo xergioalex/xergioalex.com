@@ -259,4 +259,4 @@ console.log(post.data.tags);    // string[] | undefined
 - [Library Functions](../lib/README.md) - `getBlogPosts()` utility
 - [API Reference](../../docs/API_REFERENCE.md) - Search API
 - [Pages](../pages/README.md) - Blog routing
-- [Features: Blog Search](../../docs/features/blog-search.md)
+- [Features: Blog Search](../../docs/features/BLOG_SEARCH.md)

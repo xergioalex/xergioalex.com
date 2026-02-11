@@ -246,6 +246,8 @@ Always specify hydration directive for Svelte components:
 
 ## Styling Standards
 
+> **Full brand reference:** See **[Brand Guide](BRAND_GUIDE.md)** for the complete color palette, typography, logo usage, and dark mode pairing rules.
+
 ### Tailwind CSS
 
 Use Tailwind utility classes for styling:
@@ -256,6 +258,21 @@ Use Tailwind utility classes for styling:
   <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Title</h2>
 </div>
 ```
+
+### Brand Colors
+
+Use the registered brand tokens for brand-consistent styling:
+
+```html
+<!-- Dark branded background (Void Black) -->
+<div class="bg-main text-white">
+
+<!-- Accent elements (Crimson Strike) -->
+<button class="bg-secondary hover:bg-red-700 text-white">
+<a class="text-secondary hover:text-red-700">
+```
+
+See [Brand Guide — CSS Design Tokens](BRAND_GUIDE.md#css-design-tokens) for all available tokens and the full 5-color palette.
 
 ### Dark Mode
 

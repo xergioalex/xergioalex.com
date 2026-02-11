@@ -43,6 +43,13 @@ Update Tailwind CSS styles in components or global CSS with proper dark mode sup
 
 - `$DARK_MODE`: Ensure dark mode support (default: true)
 
+## Brand Reference
+
+> **Always consult [Brand Guide](../../../docs/BRAND_GUIDE.md)** for the official color palette, dark mode pairing rules, and typography scale before making styling decisions.
+>
+> **Key tokens:** `bg-main` (Void Black `#0F1124`), `bg-secondary`/`text-secondary` (Crimson Strike `#E51641`)
+> **Full palette:** Ninja Navy `#152E45`, Shadow Steel `#637996`, Pure White `#FFFFFF`
+
 ## Key Concepts
 
 ### Tailwind Utility Classes

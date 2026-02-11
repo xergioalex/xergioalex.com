@@ -6,12 +6,12 @@ This directory contains detailed documentation for specific features implemented
 
 | Feature | File | Description |
 |---------|------|-------------|
-| Blog Search | [blog-search.md](./blog-search.md) | Client-side search functionality |
-| Dark Mode | [dark-mode.md](./dark-mode.md) | Theme toggle and persistence |
-| Public Assets | [public-assets.md](./public-assets.md) | Static assets structure (`public/`) |
-| Internationalization | [i18n.md](./i18n.md) | Multi-language support |
-| Pagination | [pagination.md](./pagination.md) | Blog post pagination |
-| RSS Feed | [rss-feed.md](./rss-feed.md) | RSS feed generation |
+| Blog Search | [BLOG_SEARCH.md](./BLOG_SEARCH.md) | Client-side search functionality |
+| Dark Mode | [DARK_MODE.md](./DARK_MODE.md) | Theme toggle and persistence |
+| Public Assets | [PUBLIC_ASSETS.md](./PUBLIC_ASSETS.md) | Static assets structure (`public/`) |
+| Internationalization | [I18N.md](./I18N.md) | Multi-language support |
+| Pagination | [PAGINATION.md](./PAGINATION.md) | Blog post pagination |
+| RSS Feed | [RSS_FEED.md](./RSS_FEED.md) | RSS feed generation |
 
 ## Feature Documentation Pattern
 
@@ -28,7 +28,7 @@ Each feature document follows this structure:
 
 1. Create a new markdown file in this directory:
    ```bash
-   touch docs/features/new-feature.md
+   touch docs/features/NEW_FEATURE.md
    ```
 
 2. Follow the documentation pattern above

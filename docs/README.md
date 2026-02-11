@@ -17,6 +17,7 @@ Welcome to the **XergioAleX.com** documentation. This guide helps developers and
 | Document | Description |
 |----------|-------------|
 | [Product Spec](PRODUCT_SPEC.md) | Vision, features, and goals for XergioAleX.com |
+| [Brand Guide](BRAND_GUIDE.md) | Color palette, typography, logo usage, and visual identity |
 | [Architecture](ARCHITECTURE.md) | Technical architecture, patterns, and decisions |
 | [Performance](PERFORMANCE.md) | SSG optimization, images, caching strategies |
 

@@ -256,5 +256,5 @@ const posts = await getBlogPosts({ lang: 'es' });
 - [Blog Components](../../src/components/blog/README.md)
 - [Library Utilities](../../src/lib/README.md)
 - [API Reference](../API_REFERENCE.md)
-- [Pagination](./pagination.md)
+- [Pagination](./PAGINATION.md)
 - [i18n Guide](../I18N_GUIDE.md)

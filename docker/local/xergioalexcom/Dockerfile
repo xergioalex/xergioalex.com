@@ -9,8 +9,9 @@ RUN apt-get update -y && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
     apt-get update && \
     apt-get install -y gh && \
-    # Install Claude Code CLI globally
-    npm install -g @anthropic-ai/claude-code && \
+    # Install Claude Code CLI (native installer, npm method is deprecated)
+    curl -fsSL https://claude.ai/install.sh | bash && \
+    ln -sf /root/.local/bin/claude /usr/local/bin/claude && \
     # Install Codex CLI globally
     npm install -g @openai/codex && \
     # --- Clean ---
@@ -52,6 +53,11 @@ RUN echo 'source /app/docker/custom_commands.sh' >> /root/.bashrc \
 # Create directories for node user that mirror root's setup
 RUN mkdir -p /home/node/.claude_data /home/node/.codex_data /home/node/.cursor_data /home/node/.gh_data /home/node/.ssh \
     && chown -R node:node /home/node
+
+# Install Claude Code CLI for node user as well
+USER node
+RUN curl -fsSL https://claude.ai/install.sh | bash
+USER root
 
 # Install Cursor CLI for node user as well
 USER node
