@@ -5,6 +5,7 @@ import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
+  getPostSlug,
   getReadingTimeFromContent,
   getRelatedPosts,
   getWordCount,
@@ -19,8 +20,8 @@ export async function getStaticPaths() {
   // Only Spanish posts (in es/ folder)
   const posts = allPosts.filter((post) => post.id.startsWith('es/'));
   return posts.map((post) => ({
-    // Remove language prefix from URL: "es/first-post" -> "first-post"
-    params: { slug: post.id.replace('es/', '') },
+    // Remove language prefix and date prefix from URL
+    params: { slug: getPostSlug(post.id) },
     props: post,
   }));
 }

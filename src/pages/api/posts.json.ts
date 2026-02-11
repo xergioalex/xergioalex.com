@@ -1,25 +1,6 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
-
-/**
- * Extract slug without language prefix
- * e.g., "en/first-post" -> "first-post"
- */
-function getSlugFromId(id: string): string {
-  if (id.startsWith('en/') || id.startsWith('es/')) {
-    return id.substring(3);
-  }
-  return id;
-}
-
-/**
- * Extract language from post id
- * e.g., "en/first-post" -> "en"
- */
-function getLangFromId(id: string): string {
-  if (id.startsWith('es/')) return 'es';
-  return 'en';
-}
+import { getPostLanguage, getPostSlug } from '@/lib/blog';
 
 export const GET: APIRoute = async () => {
   try {
@@ -28,8 +9,8 @@ export const GET: APIRoute = async () => {
     // Create a lightweight search index with language info
     const searchIndex = allPosts.map((post) => ({
       id: post.id,
-      slug: getSlugFromId(post.id),
-      lang: getLangFromId(post.id),
+      slug: getPostSlug(post.id),
+      lang: getPostLanguage(post.id),
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate.toISOString(),

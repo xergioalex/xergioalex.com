@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
+import { getPostSlug } from '@/lib/blog';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
 
@@ -32,7 +33,7 @@ const posts = allPosts
       {
         posts.map((post) => (
           <a
-            href={`${lang === 'es' ? '/es' : ''}/blog/${post.id.replace(`${lang}/`, '')}/`}
+            href={`${lang === 'es' ? '/es' : ''}/blog/${getPostSlug(post.id)}/`}
             class="block bg-white dark:bg-gray-900 rounded-xl shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden"
           >
             {post.data.heroImage && (
