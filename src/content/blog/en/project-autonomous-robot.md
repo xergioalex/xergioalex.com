@@ -3,6 +3,7 @@ title: 'Autonomous Line-Following Robot'
 description: 'A robotics project combining Arduino, computer vision, and PID control to build an autonomous line-following robot capable of navigating complex tracks at high speed.'
 pubDate: '2023-04-15'
 heroImage: '/blog-placeholder-2.jpg'
+heroLayout: 'banner'
 tags: ['portfolio', 'tech']
 ---
 

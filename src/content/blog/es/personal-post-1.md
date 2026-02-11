@@ -4,6 +4,7 @@ description: "Una historia personal sobre mi viaje en el desarrollo"
 pubDate: "2024-07-02"
 tags: ["personal"]
 heroImage: "/blog-placeholder-1.jpg"
+heroLayout: 'banner'
 ---
 
 Esta es una historia personal sobre mi experiencia en el mundo del desarrollo de software. Desde mis primeros pasos escribiendo codigo hasta convertirme en un profesional del sector, el camino ha estado lleno de aprendizajes, desafios y momentos inolvidables.

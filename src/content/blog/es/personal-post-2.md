@@ -4,6 +4,7 @@ description: "Mis pensamientos sobre el impacto de la tecnologia en nuestras vid
 pubDate: "2024-07-03"
 tags: ["personal"]
 heroImage: "/blog-placeholder-2.jpg"
+heroLayout: 'banner'
 ---
 
 Reflexiones personales sobre como la tecnologia ha cambiado nuestras vidas y mi perspectiva sobre el futuro.

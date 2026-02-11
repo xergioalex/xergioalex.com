@@ -4,6 +4,7 @@ description: "Un ejemplo de post con tags"
 pubDate: "2024-07-01"
 tags: ["personal", "tech"]
 heroImage: "/blog-placeholder-5.jpg"
+heroLayout: 'banner'
 ---
 
 Bienvenidos a mi primer post de ejemplo. Este articulo sirve como demostracion de como funcionan los posts en este blog, incluyendo el uso de tags para categorizar el contenido.

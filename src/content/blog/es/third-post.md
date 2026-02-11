@@ -4,6 +4,7 @@ description: 'Reflexiones sobre el desarrollo personal y profesional'
 pubDate: 'Jul 22 2022'
 tags: ["personal"]
 heroImage: '/blog-placeholder-2.jpg'
+heroLayout: 'banner'
 ---
 
 En este tercer post quiero compartir algunas reflexiones sobre el equilibrio entre el desarrollo personal y profesional.

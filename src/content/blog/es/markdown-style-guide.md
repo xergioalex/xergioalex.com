@@ -4,6 +4,7 @@ description: 'Aqui hay una muestra de sintaxis basica de Markdown que se puede u
 pubDate: 'Jun 19 2024'
 tags: ["personal"]
 heroImage: '/blog-placeholder-1.jpg'
+heroLayout: 'banner'
 ---
 
 Aqui hay una muestra de sintaxis basica de Markdown que se puede usar al escribir contenido en Markdown en Astro.

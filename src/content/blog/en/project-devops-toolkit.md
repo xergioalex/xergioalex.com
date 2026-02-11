@@ -3,6 +3,7 @@ title: 'DevOps Infrastructure Toolkit'
 description: 'An open source collection of Docker, Terraform, and CI/CD templates designed to streamline infrastructure setup for startups and small teams.'
 pubDate: '2024-01-20'
 heroImage: '/blog-placeholder-4.jpg'
+heroLayout: 'banner'
 tags: ['portfolio', 'tech']
 ---
 

@@ -3,6 +3,7 @@ title: 'Toolkit de Infraestructura DevOps'
 description: 'Una colección open source de plantillas de Docker, Terraform y CI/CD diseñada para agilizar la configuración de infraestructura para startups y equipos pequeños.'
 pubDate: '2024-01-20'
 heroImage: '/blog-placeholder-4.jpg'
+heroLayout: 'banner'
 tags: ['portfolio', 'tech']
 ---
 

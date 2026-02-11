@@ -4,6 +4,7 @@ description: 'Continuando la serie de publicaciones del blog'
 pubDate: 'Jul 15 2022'
 tags: ["tech"]
 heroImage: '/blog-placeholder-4.jpg'
+heroLayout: 'banner'
 ---
 
 Bienvenidos al segundo post de este blog. En esta ocasion quiero hablar sobre la importancia de mantenerse actualizado en el mundo de la tecnologia.
