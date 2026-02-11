@@ -67,7 +67,7 @@ Read the topic/brief and gather context:
 1. Identify the core story or angle
 2. Check existing articles in `src/content/blog/en/` for voice reference and to avoid overlap
 3. Check available tags in `src/content/tags/`
-4. Verify any referenced images exist in `public/images/`
+4. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
 5. If the brief is too vague, stop and ask for clarification
 
 ```bash
@@ -78,7 +78,7 @@ ls src/content/blog/en/
 ls src/content/tags/
 
 # Verify image assets if referenced
-ls public/images/blog/ 2>/dev/null
+ls public/images/blog/posts/ public/images/blog/shared/ 2>/dev/null
 ```
 
 ### Step 2: Plan Article Structure
@@ -96,12 +96,17 @@ Determine frontmatter values:
 - `title`: Descriptive, engaging, not clickbait
 - `description`: 1-2 sentences summarizing the article
 - `pubDate`: The date provided or today
-- `heroImage`: Path if available
+- `heroImage`: Path to image in `public/images/blog/posts/{slug}/hero.{ext}` format
+- `heroLayout`: Choose based on image aspect ratio (`banner` for landscape, `side-by-side` for square, `minimal` for secondary images, `none` if no hero)
 - `tags`: Array of existing tag slugs
 
 ### Step 3: Write English Version
 
-Create `src/content/blog/en/{slug}.md`:
+Create `src/content/blog/en/YYYY-MM-DD_{slug}.md` (use pubDate as date prefix):
+
+**File naming:** `YYYY-MM-DD_{slug}.md` (e.g., `2024-03-15_my-awesome-post.md`). The date prefix keeps files chronologically sorted but is stripped from URLs.
+
+**Image placement:** If a hero image is provided, place it at `public/images/blog/posts/{slug}/hero.{ext}`. Set `heroImage: '/images/blog/posts/{slug}/hero.{ext}'` in frontmatter. For inline images, use `public/images/blog/posts/{slug}/{descriptive-name}.{ext}`.
 
 **Voice rules:**
 - First person (I, my, me)
@@ -126,7 +131,7 @@ Create `src/content/blog/en/{slug}.md`:
 
 ### Step 4: Write Spanish Version
 
-Create `src/content/blog/es/{slug}.md`:
+Create `src/content/blog/es/YYYY-MM-DD_{slug}.md` (same date prefix as English version):
 
 **Translation rules:**
 - Translate IDEAS, not words — the Spanish should read as if originally written in Spanish

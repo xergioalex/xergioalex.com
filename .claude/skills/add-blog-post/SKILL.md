@@ -57,10 +57,17 @@ schema: z.object({
   description: z.string(),     // Required
   pubDate: z.coerce.date(),    // Required
   updatedDate: z.coerce.date().optional(),
-  heroImage: z.string().optional(),
+  heroImage: z.string().optional(),  // Path: /images/blog/posts/{slug}/hero.{ext}
+  heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none']).default('banner').optional(),
   tags: z.array(z.string()).optional(),
 })
 ```
+
+**heroLayout values:**
+- `banner` (default): Full-width image above title. Best for landscape images.
+- `side-by-side`: Two-column layout. Best for square images (1:1).
+- `minimal`: Small thumbnail. For posts where image is secondary.
+- `none`: No hero image area. For text-only posts.
 
 ## Available Tags
 
@@ -72,15 +79,22 @@ Check `src/content/tags/` for available tags:
 
 ## Steps
 
-### Step 1: Generate Slug
+### Step 1: Generate Slug and Filename
 
-- Convert title to kebab-case
-- Ensure uniqueness
-- Example: "My First Post" → `my-first-post.md`
+- Convert title to kebab-case for the slug
+- Ensure uniqueness among existing posts
+- **File naming format:** `YYYY-MM-DD_{slug}.md` (use pubDate as date prefix)
+- Example: "My First Post" with pubDate 2026-01-31 → `2026-01-31_my-first-post.md`
+- The date prefix keeps files chronologically sorted but is stripped from URLs
 
 ### Step 2: Create Post File (Primary Language)
 
-Create the post in the primary language directory: `src/content/blog/{$LANG}/{slug}.md`
+Create the post in the primary language directory: `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
+
+**Image setup:** If a hero image is provided:
+1. Create the image folder: `public/images/blog/posts/{slug}/`
+2. Place the hero image as: `public/images/blog/posts/{slug}/hero.{ext}`
+3. Use path `/images/blog/posts/{slug}/hero.{ext}` in frontmatter
 
 **Markdown Template:**
 
@@ -89,7 +103,8 @@ Create the post in the primary language directory: `src/content/blog/{$LANG}/{sl
 title: 'Post Title Here'
 description: 'A brief description of what this post is about.'
 pubDate: 'Jan 31 2026'
-heroImage: '/blog-placeholder-1.jpg'
+heroImage: '/images/blog/posts/post-title-here/hero.jpg'
+heroLayout: 'banner'
 tags: ['tech']
 ---
 
@@ -134,8 +149,9 @@ This post includes interactive elements.
 
 **MANDATORY:** Create the translated version in the other language directory.
 
-- If primary language is English (`$LANG=en`): translate and save in `src/content/blog/es/{slug}.md`
-- If primary language is Spanish (`$LANG=es`): translate and save in `src/content/blog/en/{slug}.md`
+- If primary language is English (`$LANG=en`): translate and save in `src/content/blog/es/YYYY-MM-DD_{slug}.md`
+- If primary language is Spanish (`$LANG=es`): translate and save in `src/content/blog/en/YYYY-MM-DD_{slug}.md`
+- Use the same date prefix and slug as the primary language version
 
 **Translation rules:**
 - Translate: `title`, `description`, and all body content
@@ -229,8 +245,8 @@ $TAGS: ['tech']
 ```
 
 **Creates:**
-- `src/content/blog/en/getting-started-with-astro.md`
-- `src/content/blog/es/getting-started-with-astro.md` (translated)
+- `src/content/blog/en/2026-01-31_getting-started-with-astro.md`
+- `src/content/blog/es/2026-01-31_getting-started-with-astro.md` (translated)
 
 ### Example 2: Post with Hero Image
 
@@ -238,13 +254,14 @@ $TAGS: ['tech']
 ```
 $TITLE: My Travel Adventures
 $DESCRIPTION: Sharing my recent travel experiences
-$HERO_IMAGE: /blog-placeholder-2.jpg
+$HERO_IMAGE: /images/blog/posts/my-travel-adventures/hero.jpg
 $TAGS: ['personal']
 ```
 
 **Creates:**
-- `src/content/blog/en/my-travel-adventures.md`
-- `src/content/blog/es/my-travel-adventures.md` (translated)
+- `src/content/blog/en/2026-01-31_my-travel-adventures.md`
+- `src/content/blog/es/2026-01-31_my-travel-adventures.md` (translated)
+- Image folder: `public/images/blog/posts/my-travel-adventures/`
 
 ### Example 3: Spanish-Primary Post
 
@@ -257,8 +274,8 @@ $LANG: es
 ```
 
 **Creates:**
-- `src/content/blog/es/mi-experiencia-con-astro.md` (primary)
-- `src/content/blog/en/mi-experiencia-con-astro.md` (translated to English)
+- `src/content/blog/es/2026-01-31_mi-experiencia-con-astro.md` (primary)
+- `src/content/blog/en/2026-01-31_mi-experiencia-con-astro.md` (translated to English)
 
 ## Related
 
