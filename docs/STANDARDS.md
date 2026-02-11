@@ -336,14 +336,19 @@ Required and optional fields:
 
 ```yaml
 ---
-title: "My Blog Post Title"           # Required
-description: "A brief description"     # Required
-pubDate: 2024-01-15                    # Required (YYYY-MM-DD)
-updatedDate: 2024-01-20               # Optional
-heroImage: "/images/hero.jpg"         # Optional
-tags: ["tech", "tutorial"]            # Optional
+title: "My Blog Post Title"                              # Required
+description: "A brief description"                        # Required
+pubDate: 2024-01-15                                       # Required (YYYY-MM-DD)
+updatedDate: 2024-01-20                                   # Optional
+heroImage: "/images/blog/posts/my-blog-post/hero.jpg"    # Optional
+heroLayout: "banner"                                      # Optional (banner|side-by-side|minimal|none)
+tags: ["tech"]                                            # Optional
 ---
 ```
+
+**File naming:** `YYYY-MM-DD_slug.{md,mdx}` (date prefix stripped from URLs).
+
+For complete blog post conventions, see **[Blog Posts Feature Guide](features/BLOG_POSTS.md)**.
 
 ### Tag Definition
 

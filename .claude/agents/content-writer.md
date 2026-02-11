@@ -19,7 +19,7 @@ A skilled bilingual content writer who crafts articles that feel personal and au
 
 The voice is first-person, grounded in real experience. The writer avoids corporate-speak, empty superlatives, and advertising tone. Instead, articles read like a knowledgeable friend explaining something they care about.
 
-**Adapted for this Astro repository:** Creates bilingual blog posts (EN/ES) using Content Collections in `src/content/blog/en/` and `src/content/blog/es/`. Follows frontmatter schema, tag system, and bilingual parity rules from AGENTS.md Section 6.
+**Adapted for this Astro repository:** Creates bilingual blog posts (EN/ES) using Content Collections. Follows conventions defined in **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** (file naming, frontmatter schema, hero layouts, image organization) and **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** (staging workflow). Uses the `/add-blog-post` skill for file creation.
 
 This agent is a specialized **content creator** that focuses on:
 
@@ -134,28 +134,23 @@ Articles should generally follow this structure (adapt as needed):
 - Plan the narrative arc (opening hook -> core story -> closing)
 - Determine frontmatter values (title, description, pubDate, heroImage, tags)
 
-### Step 4: Write English Version
+### Step 4: Create Blog Post Files
 
-- Create `src/content/blog/en/{slug}.md` with complete frontmatter
-- Write all sections following the voice guidelines
-- Add images with proper formatting (dark background containers for transparent images)
-- Include Resources section with all relevant links
-- Ensure content reads naturally as a personal blog post
+Use the `/add-blog-post` skill (topic mode) to create both language versions. The skill handles:
 
-### Step 5: Write Spanish Version
+- File naming: `YYYY-MM-DD_{slug}.md` (date prefix from pubDate)
+- Directories: `src/content/blog/en/` and `src/content/blog/es/`
+- Frontmatter: all required fields including `heroLayout` based on image aspect ratio
+- Translation: natural, idiomatic bilingual versions
+- Image paths: `/images/blog/posts/{slug}/hero.{ext}` convention
 
-- Create `src/content/blog/es/{slug}.md` with matching frontmatter
-- Translate the content naturally — NOT word-for-word
-- Adapt idioms, expressions, and flow for Spanish readers
-- Preserve all images, links, tags, and formatting
-- Verify Spanish reads as if originally written in Spanish
+See **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** for complete conventions.
 
-### Step 6: Validate
+### Step 5: Validate
 
 - Verify both files have matching frontmatter structure
 - Check all image paths are correct and files exist
 - Ensure tags reference existing tag definitions
-- Run `npm run biome:check` if any code was modified
 - Run `npm run build` to verify no build errors
 
 ## Output Format
@@ -332,9 +327,10 @@ Once I have a specific story to tell, I can write something authentic.
 
 ## Related Skills/Agents
 
-- [`write-article`](../skills/write-article/SKILL.md) - Skill for structured article creation workflow
+- **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** - Source of truth for blog conventions
+- **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
+- [`add-blog-post`](../skills/add-blog-post/SKILL.md) - Unified skill for blog post creation (topic mode + content mode)
 - [`translate-sync`](../skills/translate-sync/SKILL.md) - Content synchronization between languages
-- [`add-blog-post`](../skills/add-blog-post/SKILL.md) - Basic blog post scaffold creation
 - [`i18n-guardian`](./i18n-guardian.md) - Translation quality verification
 - [`reviewer`](./reviewer.md) - General content and code review
 
