@@ -3,7 +3,7 @@ title: "Reflexiones personales sobre la tecnologia"
 description: "Mis pensamientos sobre el impacto de la tecnologia en nuestras vidas"
 pubDate: "2024-07-03"
 tags: ["personal"]
-heroImage: "/blog-placeholder-2.jpg"
+heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
 heroLayout: 'banner'
 ---
 

@@ -2,7 +2,7 @@
 title: 'Robot Autónomo Seguidor de Línea'
 description: 'Un proyecto de robótica que combina Arduino, visión por computador y control PID para construir un robot autónomo seguidor de línea capaz de navegar pistas complejas a alta velocidad.'
 pubDate: '2023-04-15'
-heroImage: '/blog-placeholder-2.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'banner'
 tags: ['portfolio', 'tech']
 ---

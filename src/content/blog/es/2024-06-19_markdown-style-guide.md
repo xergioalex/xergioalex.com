@@ -3,7 +3,7 @@ title: 'Guia de Estilo Markdown'
 description: 'Aqui hay una muestra de sintaxis basica de Markdown que se puede usar al escribir contenido en Astro.'
 pubDate: 'Jun 19 2024'
 tags: ["personal"]
-heroImage: '/blog-placeholder-1.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
 heroLayout: 'banner'
 ---
 

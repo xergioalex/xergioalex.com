@@ -3,7 +3,7 @@ title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2022'
 tags: ["personal"]
-heroImage: '/blog-placeholder-2.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'banner'
 ---
 

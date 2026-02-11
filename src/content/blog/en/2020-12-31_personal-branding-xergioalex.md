@@ -2,7 +2,7 @@
 title: 'Building the XergioAleX Brand: The Ninja Coder Identity'
 description: 'The story behind the XergioAleX personal brand — from concept to execution. A deep dive into the ninja coder logo, its symbolism, color palette, and complete style guide.'
 pubDate: '2020-12-31'
-heroImage: '/images/blog/personal-branding-hero.jpg'
+heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
 heroLayout: 'banner'
 tags: ['portfolio']
 ---
@@ -122,7 +122,7 @@ The complete thing: ninja character + name banner. This is what you use when you
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![Full Logo](/images/blog/branding/full_logo_white.png)
+![Full Logo](/images/blog/posts/personal-branding-xergioalex/full_logo_white.png)
 
 </div>
 
@@ -130,7 +130,7 @@ The complete thing: ninja character + name banner. This is what you use when you
 
 Just the ninja, no text. Good for favicons, app icons, social media avatars, and anywhere the full logo would be too small to read.
 
-![Isologo](/images/blog/branding/isologo_white.png)
+![Isologo](/images/blog/posts/personal-branding-xergioalex/isologo_white.png)
 
 ### Ninja Face (Compact Icon)
 
@@ -146,7 +146,7 @@ Just the "XERGIO ALEX" text with the shuriken X's. Works well for horizontal lay
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![Logotype](/images/blog/branding/logo_text_white.png)
+![Logotype](/images/blog/posts/personal-branding-xergioalex/logo_text_white.png)
 
 </div>
 
@@ -184,9 +184,9 @@ A quick rundown of how the brand shows up across different places:
 - Stickers (one of my favorites)
 - Business cards
 
-![Sticker Mockup](/images/blog/branding/social_5.jpg)
+![Sticker Mockup](/images/blog/posts/personal-branding-xergioalex/social_5.jpg)
 
-![Business Card Mockup](/images/blog/branding/social_3.jpg)
+![Business Card Mockup](/images/blog/posts/personal-branding-xergioalex/social_3.jpg)
 
 ---
 

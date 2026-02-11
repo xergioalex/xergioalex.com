@@ -3,7 +3,7 @@ title: 'Segundo post'
 description: 'Continuando la serie de publicaciones del blog'
 pubDate: 'Jul 15 2022'
 tags: ["tech"]
-heroImage: '/blog-placeholder-4.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'banner'
 ---
 

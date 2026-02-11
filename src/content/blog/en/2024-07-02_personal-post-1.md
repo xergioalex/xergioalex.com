@@ -3,7 +3,7 @@ title: "Mi experiencia personal"
 description: "Una historia personal sobre mi viaje en el desarrollo"
 pubDate: "2024-07-02"
 tags: ["personal"]
-heroImage: "/blog-placeholder-1.jpg"
+heroImage: "/images/blog/shared/blog-placeholder-1.jpg"
 heroLayout: 'banner'
 ---
 

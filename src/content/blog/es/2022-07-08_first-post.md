@@ -2,7 +2,7 @@
 title: 'Primer post'
 description: 'Este es mi primer post en el blog'
 pubDate: 'Jul 08 2022'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'banner'
 tags: ['personal']
 ---

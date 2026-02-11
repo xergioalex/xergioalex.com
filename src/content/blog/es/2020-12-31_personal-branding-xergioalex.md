@@ -2,7 +2,7 @@
 title: 'Construyendo la Marca XergioAleX: La Identidad del Ninja Coder'
 description: 'La historia detrás de la marca personal XergioAleX — del concepto a la ejecución. Un análisis profundo del logo ninja coder, su simbolismo, paleta de colores y guía de estilo completa.'
 pubDate: '2020-12-31'
-heroImage: '/images/blog/personal-branding-hero.jpg'
+heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
 heroLayout: 'banner'
 tags: ['portfolio']
 ---
@@ -122,7 +122,7 @@ El paquete completo: personaje ninja + banner con el nombre. Es lo que usas cuan
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![Logo Completo](/images/blog/branding/full_logo_white.png)
+![Logo Completo](/images/blog/posts/personal-branding-xergioalex/full_logo_white.png)
 
 </div>
 
@@ -130,7 +130,7 @@ El paquete completo: personaje ninja + banner con el nombre. Es lo que usas cuan
 
 Solo el ninja, sin texto. Sirve para favicons, íconos de apps, avatares en redes sociales y donde el logo completo sería demasiado chico para leer.
 
-![Isologo](/images/blog/branding/isologo_white.png)
+![Isologo](/images/blog/posts/personal-branding-xergioalex/isologo_white.png)
 
 ### Cara del Ninja (Ícono Compacto)
 
@@ -146,7 +146,7 @@ Solo el texto "XERGIO ALEX" con las X shuriken. Funciona bien para layouts horiz
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![Logotipo](/images/blog/branding/logo_text_white.png)
+![Logotipo](/images/blog/posts/personal-branding-xergioalex/logo_text_white.png)
 
 </div>
 
@@ -184,9 +184,9 @@ Un repaso rápido de cómo la marca aparece en distintos lugares:
 - Stickers (de mis favoritos)
 - Tarjetas de presentación
 
-![Mockup de Sticker](/images/blog/branding/social_5.jpg)
+![Mockup de Sticker](/images/blog/posts/personal-branding-xergioalex/social_5.jpg)
 
-![Mockup de Tarjetas de Presentación](/images/blog/branding/social_3.jpg)
+![Mockup de Tarjetas de Presentación](/images/blog/posts/personal-branding-xergioalex/social_3.jpg)
 
 ---
 
