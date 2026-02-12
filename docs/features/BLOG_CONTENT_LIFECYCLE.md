@@ -146,7 +146,10 @@ src/content/blog/
 │   │   ├── 2025-01-04_demo-hero-none.md
 │   │   ├── 2025-01-05_demo-mdx-showcase.mdx
 │   │   ├── 2025-01-06_demo-rich-formatting.md
-│   │   └── 2025-01-07_demo-code-showcase.md
+│   │   ├── 2025-01-07_demo-code-showcase.md
+│   │   ├── 2025-01-08_demo-draft-post.md
+│   │   ├── 2025-01-09_demo-scheduled-post.md
+│   │   └── 2025-01-10_demo-draft-scheduled-post.md
 │   └── (regular posts)
 └── es/
     ├── _demo/                    # Spanish demo posts (matching)
@@ -192,6 +195,9 @@ The current demo posts cover:
 | `demo-mdx-showcase` | MDX features: inline components, variables, dynamic tables |
 | `demo-rich-formatting` | All Markdown formatting: headings, lists, tables, blockquotes |
 | `demo-code-showcase` | Syntax highlighting across 10+ languages |
+| `demo-draft-post` | `draft: true` — amber "Draft" badge in listing and detail view |
+| `demo-scheduled-post` | Future `pubDate` (2030) — blue "Scheduled" badge with date |
+| `demo-draft-scheduled-post` | `draft: true` + future `pubDate` — both badges stacked side by side |
 
 ### Creating New Demo Posts
 
