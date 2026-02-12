@@ -8,9 +8,12 @@ import type { BlogPostsResultType } from '@/lib/types';
 
 const lang: Language = 'es';
 const t = getTranslations(lang);
+const isDev = import.meta.env.DEV;
+const previewAll = isDev && Astro.url.searchParams.get('preview') === 'all';
 
 const blogPostsResult: BlogPostsResultType = await getBlogPosts({
   lang: lang,
+  includeHidden: previewAll,
 });
 
 const collectionPageData = {
@@ -31,5 +34,5 @@ const collectionPageData = {
   <Fragment slot="head">
     <JsonLd data={collectionPageData} />
   </Fragment>
-  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isPreviewMode={previewAll} isDev={isDev} />
 </MainLayout>
