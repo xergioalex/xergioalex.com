@@ -84,7 +84,7 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Image path:** `/images/blog/posts/{slug}/hero.{ext}`
 
-**Available tags:** Check `src/content/tags/` — currently: `personal`, `tech`, `talks`, `trading`, `portfolio` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
+**Available tags:** Check `src/content/tags/` — currently: `personal`, `tech`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
 
 **Content lifecycle:**
 - Default: post is **published** (visible in production)
