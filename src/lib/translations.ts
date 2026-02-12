@@ -1210,7 +1210,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       journeyTitle: 'Building Things That Matter',
       journeyText:
         "I've always believed the best way to learn is by building. Over the years, I've worked on projects ranging from large-scale SaaS products to weekend experiments with microcontrollers. Each project taught me something new — whether it was a new technology, a better architecture pattern, or simply how to ship faster.<br /><br />This portfolio is a living collection of the work I'm most proud of. From open-source tools and DevOps infrastructure to robotics prototypes and AI experiments — each entry represents a problem I found interesting enough to solve.",
-      areasTitle: 'What You\'ll Find Here',
+      areasTitle: "What You'll Find Here",
       areas: [
         {
           title: 'Software & SaaS',
@@ -1233,7 +1233,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         {
           title: 'AI & Experiments',
           description:
-            'Machine learning prototypes, generative AI explorations, and side projects pushing the boundaries of what\'s possible.',
+            "Machine learning prototypes, generative AI explorations, and side projects pushing the boundaries of what's possible.",
           icon: '\u{1F9EA}',
         },
       ],
