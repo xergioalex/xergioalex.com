@@ -30,7 +30,8 @@ Before creating any files, consult these (in order of priority):
 1. **[content-writer agent](../agents/content-writer.md)** — Voice & tone, article structure, bilingual quality, Spanish phrasing
 2. **[add-blog-post skill](../skills/add-blog-post/SKILL.md)** — File creation, frontmatter, slug generation, translation, validation
 3. **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** — File naming, directory structure, frontmatter schema, hero layouts, image organization
-4. **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** — Staging workflow, optimization presets
+4. **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** — Draft, scheduled, demo posts, preview mode, status badges
+5. **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** — Staging workflow, optimization presets
 
 ## Parameter Reference
 
@@ -167,9 +168,26 @@ Which layout? (Enter for recommended: {layout})
 
 ```
 Publication date? (Enter for today: {today's date YYYY-MM-DD})
+Tip: Set a future date to create a scheduled post (auto-publishes on rebuild after that date).
 ```
 
-**2.7 Language**
+**2.7 Post status**
+
+```
+Should this post be published immediately or saved as a draft?
+
+1. Publish now (visible on the site)
+2. Save as draft (hidden from production, visible in dev with ?preview=all)
+3. Schedule for the future (set a future publication date)
+```
+
+- **Option 1:** Default behavior (`draft: false`, today's date or provided date)
+- **Option 2:** Add `draft: true` to frontmatter
+- **Option 3:** If not already set via 2.6, ask for the future date and set it as `pubDate`
+
+For details on draft/scheduled/demo states, see [Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md).
+
+**2.8 Language**
 
 ```
 What's the primary language of this post?
@@ -178,7 +196,7 @@ What's the primary language of this post?
 2. Spanish (I'll translate to English)
 ```
 
-**2.8 Additional context (Topic mode only)**
+**2.9 Additional context (Topic mode only)**
 
 If in topic mode, ask for additional context to write a better article:
 
@@ -202,6 +220,7 @@ Blog Post Preview
 Title: {title}
 Slug: {slug}
 Date: {pubDate}
+Status: {published | draft | scheduled}
 Tags: {tags}
 Hero: {heroImage or "none"} ({heroLayout})
 Mode: {topic → "Writing from scratch" | content → "Using provided content"}

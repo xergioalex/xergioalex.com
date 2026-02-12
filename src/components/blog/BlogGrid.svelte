@@ -10,6 +10,7 @@ export const totalPages = 1;
 export const currentTag = undefined;
 export let lang = 'en';
 export let isDev = false;
+export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
 </script>
@@ -17,7 +18,7 @@ $: t = getTranslations(lang);
 {#if posts && posts.length > 0}
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     {#each posts as post}
-      <BlogCard {post} {lang} {isDev} />
+      <BlogCard {post} {lang} {isDev} {isPreviewMode} />
     {/each}
   </div>
 {:else}

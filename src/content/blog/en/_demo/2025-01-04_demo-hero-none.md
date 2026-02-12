@@ -3,7 +3,7 @@ title: 'The Philosophy of Clean Code'
 description: 'Exploring principles and practices for writing maintainable, readable code that stands the test of time'
 pubDate: '2025-01-04'
 heroLayout: 'none'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

@@ -635,6 +635,8 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 - [Standards](docs/STANDARDS.md)
 - [Security](docs/SECURITY.md)
 - [Performance](docs/PERFORMANCE.md)
+- [Blog Posts](docs/features/BLOG_POSTS.md)
+- [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md)
 - [AI Agent Onboarding](docs/AI_AGENT_ONBOARDING.md)
 - [AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)
 

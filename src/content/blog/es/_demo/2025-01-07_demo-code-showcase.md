@@ -4,7 +4,7 @@ description: 'Una muestra de bloques de codigo con resaltado de sintaxis en mult
 pubDate: '2025-01-07'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

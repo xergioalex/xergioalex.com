@@ -6,16 +6,9 @@ export interface Props {
   blogPostsResult: BlogPostsResultType;
   currentTag?: string;
   lang?: string;
-  isPreviewMode?: boolean;
   isDev?: boolean;
 }
-const {
-  blogPostsResult,
-  currentTag,
-  lang = 'en',
-  isPreviewMode = false,
-  isDev = false,
-} = Astro.props;
+const { blogPostsResult, currentTag, lang = 'en', isDev = false } = Astro.props;
 ---
 
 <StaticBlogSearch
@@ -26,7 +19,6 @@ const {
   tagsResult={blogPostsResult.tagsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
   lang={lang}
-  isPreviewMode={isPreviewMode}
   isDev={isDev}
   client:load
 />

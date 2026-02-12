@@ -11,8 +11,10 @@ export let searchResult:
   | undefined = undefined;
 export let postStatus: string = 'published';
 export let isDev: boolean = false;
+export let isPreviewMode: boolean = false;
 
 $: t = getTranslations(lang);
+$: querySuffix = isPreviewMode ? '?preview=all' : '';
 
 // Helper function to get post slug without language prefix or date prefix
 // e.g., "en/2022-07-08_first-post" -> "first-post"
@@ -107,7 +109,7 @@ $: displayDescription = searchResult
         <div class="flex gap-1">
           {#each postData.tags as tag}
             <a 
-              href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag}/`}
+              href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag}/${querySuffix}`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
               #{t.tagNames[tag] || tag}

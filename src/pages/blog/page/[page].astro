@@ -8,16 +8,19 @@ import type { BlogPostsResultType } from '@/lib/types';
 const lang: Language = 'en';
 const t = getTranslations(lang);
 const isDev = import.meta.env.DEV;
-const previewAll = isDev && Astro.url.searchParams.get('preview') === 'all';
 
 export async function getStaticPaths() {
   const lang: Language = 'en';
-  const blogPostsResult: BlogPostsResultType = await getBlogPosts({ lang });
+  const includeHidden = import.meta.env.DEV;
+  const blogPostsResult: BlogPostsResultType = await getBlogPosts({
+    lang,
+    includeHidden,
+  });
   const totalPages = blogPostsResult.totalPages;
 
   const paths = [];
   for (let i = 1; i <= totalPages; i++) {
-    const pagePosts = await getBlogPosts({ lang, page: i });
+    const pagePosts = await getBlogPosts({ lang, page: i, includeHidden });
     paths.push({
       params: { page: String(i) },
       props: {
@@ -48,5 +51,5 @@ const nextPage =
   prevPage={prevPage}
   nextPage={nextPage}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isPreviewMode={previewAll} isDev={isDev} />
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isDev={isDev} />
 </MainLayout>

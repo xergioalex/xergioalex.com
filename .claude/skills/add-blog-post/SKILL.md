@@ -60,7 +60,8 @@ The skill auto-detects the mode based on the inputs provided.
 - `$HERO_IMAGE`: Hero image path (from `public/`)
 - `$SLUG`: Custom slug (default: kebab-case of title)
 - `$LANG`: Primary language, `en` or `es` (default: `en`). The other language version will be translated.
-- `$PUB_DATE`: Publication date in YYYY-MM-DD format (default: today's date)
+- `$PUB_DATE`: Publication date in YYYY-MM-DD format (default: today's date). Future dates create a **scheduled** post.
+- `$DRAFT`: Set to `true` to create the post as a **draft** (hidden from production). Default: `false`.
 - `$TYPE`: Article type — `blog`, `portfolio`, `tutorial` (default: `blog`, topic mode only)
 
 ## Reference Documentation
@@ -68,6 +69,7 @@ The skill auto-detects the mode based on the inputs provided.
 **Source of truth** for all blog post conventions:
 
 - **[Blog Posts Feature Guide](../../../docs/features/BLOG_POSTS.md)** - File naming, directory structure, frontmatter schema, hero layouts, image organization, URL structure
+- **[Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Draft, scheduled, demo posts, preview mode, status badges
 - **[Image Optimization Guide](../../../docs/features/IMAGE_OPTIMIZATION.md)** - Staging workflow, optimization presets, commands
 
 ## Quick Reference
@@ -82,7 +84,13 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Image path:** `/images/blog/posts/{slug}/hero.{ext}`
 
-**Available tags:** Check `src/content/tags/` — currently: `personal`, `tech`, `talks`, `trading`, `portfolio`
+**Available tags:** Check `src/content/tags/` — currently: `personal`, `tech`, `talks`, `trading`, `portfolio` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
+
+**Content lifecycle:**
+- Default: post is **published** (visible in production)
+- `draft: true`: post is a **draft** (hidden from production, visible in dev with `?preview=all`)
+- Future `pubDate`: post is **scheduled** (hidden until site rebuild after that date)
+- Files in `_demo/` folder: **demo** posts (never in production)
 
 ## Steps
 
@@ -159,12 +167,15 @@ pubDate: 'Jan 31 2026'
 heroImage: '/images/blog/posts/post-title-here/hero.jpg'
 heroLayout: 'banner'
 tags: ['tech']
+# draft: true        # Uncomment to mark as work-in-progress (hidden from production)
 ---
 
 ## Introduction
 
 Content starts here...
 ```
+
+**Draft/scheduled note:** If `$DRAFT` is `true`, add `draft: true` to frontmatter. If `$PUB_DATE` is in the future, the post becomes scheduled (auto-publishes on rebuild). See [Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md).
 
 ### Step 4: Create Translated Version (Other Language)
 
@@ -336,6 +347,7 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.2.0   | 2026-02-12 | Added `$DRAFT` parameter, content lifecycle reference, scheduled post support. Links to new Blog Content Lifecycle guide. |
 | 2.1.0   | 2026-02-12 | Added `draft` field to frontmatter reference. Blog posts now support draft/scheduled/demo lifecycle. |
 | 2.0.0   | 2026-02-11 | Unified with write-article skill. Added topic mode, voice rules, article structure. |
 | 1.0.0   | 2026-02-10 | Initial version (content mode only) |

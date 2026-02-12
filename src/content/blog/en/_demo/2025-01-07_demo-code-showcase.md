@@ -4,7 +4,7 @@ description: 'A showcase of syntax-highlighted code blocks in multiple programmi
 pubDate: '2025-01-07'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

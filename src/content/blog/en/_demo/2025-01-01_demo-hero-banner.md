@@ -4,7 +4,7 @@ description: 'A comprehensive guide to understanding and using Docker containers
 pubDate: '2025-01-01'
 heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
 heroLayout: 'banner'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

@@ -4,7 +4,7 @@ description: 'A comprehensive showcase of all Markdown formatting features avail
 pubDate: '2025-01-06'
 heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
 heroLayout: 'banner'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

@@ -4,7 +4,7 @@ description: 'A practical overview of continuous integration and continuous depl
 pubDate: '2025-01-03'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'minimal'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

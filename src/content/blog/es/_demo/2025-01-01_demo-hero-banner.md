@@ -4,7 +4,7 @@ description: 'Una guia completa para entender y usar contenedores Docker en el d
 pubDate: '2025-01-01'
 heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
 heroLayout: 'banner'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

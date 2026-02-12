@@ -4,7 +4,7 @@ description: 'Una vision practica de los flujos de trabajo de integracion contin
 pubDate: '2025-01-03'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'minimal'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

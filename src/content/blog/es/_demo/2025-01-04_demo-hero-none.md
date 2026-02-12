@@ -3,7 +3,7 @@ title: 'La Filosofia del Codigo Limpio'
 description: 'Explorando principios y practicas para escribir codigo mantenible y legible que perdure en el tiempo'
 pubDate: '2025-01-04'
 heroLayout: 'none'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

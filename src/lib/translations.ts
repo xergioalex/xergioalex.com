@@ -65,6 +65,7 @@ export interface SiteTranslations {
   nav: {
     home: string;
     blog: string;
+    work: string;
     portfolio: string;
     about: string;
     contact: string;
@@ -465,6 +466,7 @@ const translations: Record<Language, SiteTranslations> = {
     nav: {
       home: 'Home',
       blog: 'Blog',
+      work: 'Work',
       about: 'About',
       contact: 'Contact',
       aboutMe: 'About Me',
@@ -1327,6 +1329,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       talks: 'Talks',
       trading: 'Trading',
       portfolio: 'Portfolio',
+      demo: 'Demo',
     },
     tagDescriptions: {
       tech: 'Tutorials, guides, and technical articles.',
@@ -1334,6 +1337,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       talks: 'Tech talks, slides, videos, and events.',
       trading: 'Trading journal, analysis, and learnings.',
       portfolio: 'Personal projects, software, robotics, and open source work.',
+      demo: 'Demo posts showcasing blog features. Only visible in dev mode.',
     },
 
     // Date formatting
@@ -1370,6 +1374,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     nav: {
       home: 'Inicio',
       blog: 'Blog',
+      work: 'Trabajo',
       about: 'Acerca de',
       contact: 'Contacto',
       aboutMe: 'Sobre m\u00ED',
@@ -2239,6 +2244,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       talks: 'Charlas',
       trading: 'Trading',
       portfolio: 'Portafolio',
+      demo: 'Demo',
     },
     tagDescriptions: {
       tech: 'Tutoriales, guías y artículos técnicos.',
@@ -2247,6 +2253,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       trading: 'Diario de trading, análisis y aprendizajes.',
       portfolio:
         'Proyectos personales, software, robótica y trabajo open source.',
+      demo: 'Posts de demostración mostrando funcionalidades del blog. Solo visibles en modo desarrollo.',
     },
 
     // Date formatting

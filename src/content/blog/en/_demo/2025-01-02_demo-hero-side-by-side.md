@@ -4,7 +4,7 @@ description: 'Learn the fundamentals of Kubernetes and how it revolutionizes con
 pubDate: '2025-01-02'
 heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'side-by-side'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

@@ -25,8 +25,9 @@ export async function getStaticPaths() {
   const paths = [];
 
   // For each tag, generate only the first page
+  const includeHidden = import.meta.env.DEV;
   for (const tag of tagsResult) {
-    const tagPostsResult = await getBlogPosts({ lang, tag });
+    const tagPostsResult = await getBlogPosts({ lang, tag, includeHidden });
     paths.push({
       params: { tag },
       props: {

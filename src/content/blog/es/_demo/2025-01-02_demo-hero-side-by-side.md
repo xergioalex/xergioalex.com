@@ -4,7 +4,7 @@ description: 'Aprende los fundamentos de Kubernetes y como revoluciona la orques
 pubDate: '2025-01-02'
 heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'side-by-side'
-tags: ['tech']
+tags: ['tech', 'demo']
 draft: false
 ---
 

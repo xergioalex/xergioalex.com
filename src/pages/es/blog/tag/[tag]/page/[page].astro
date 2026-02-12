@@ -25,16 +25,22 @@ export async function getStaticPaths() {
   const paths = [];
 
   // For each tag, generate pagination routes
+  const includeHidden = import.meta.env.DEV;
   for (const tag of tagsResult) {
     // Get the first page to calculate total pages
-    const tagPostsResult = await getBlogPosts({ lang, tag });
+    const tagPostsResult = await getBlogPosts({ lang, tag, includeHidden });
     const totalPages = tagPostsResult.totalPages;
 
     // Only generate pagination routes if there's more than 1 page
     if (totalPages > 1) {
       // Generate routes for each page of the tag (starting from page 2)
       for (let i = 2; i <= totalPages; i++) {
-        const pagePosts = await getBlogPosts({ lang, tag, page: i });
+        const pagePosts = await getBlogPosts({
+          lang,
+          tag,
+          page: i,
+          includeHidden,
+        });
         const path = {
           params: { tag, page: String(i) },
           props: {
