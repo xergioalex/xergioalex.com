@@ -1,6 +1,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { BLOG_PAGE_SIZE } from './constances';
-import type { BlogParamsType, BlogPostsResultType } from './types';
+import type { BlogParamsType, BlogPostsResultType, PostStatus } from './types';
 
 const WORDS_PER_MINUTE = 200;
 
@@ -54,6 +54,36 @@ export function getWordCount(content: string): number {
 export function getReadingTimeFromContent(content: string): number {
   const wordCount = getWordCount(content);
   return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
+}
+
+/**
+ * Determine the display status of a blog post.
+ * - Demo: post path contains '/_demo/'
+ * - Draft + Scheduled: draft=true AND pubDate is in the future
+ * - Draft: draft=true AND pubDate is in the past/present
+ * - Scheduled: draft=false AND pubDate is in the future
+ * - Published: draft=false AND pubDate is in the past/present
+ */
+export function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
+  if (post.id.includes('/_demo/')) return 'demo';
+
+  const isDraft = post.data.draft === true;
+  const isScheduled = post.data.pubDate.valueOf() > Date.now();
+
+  if (isDraft && isScheduled) return 'draft+scheduled';
+  if (isDraft) return 'draft';
+  if (isScheduled) return 'scheduled';
+  return 'published';
+}
+
+/**
+ * Check if a post should be visible in production builds.
+ * Only posts with status 'published' are visible in production.
+ */
+export function isPostVisibleInProduction(
+  post: CollectionEntry<'blog'>
+): boolean {
+  return getPostStatus(post) === 'published';
 }
 
 export async function getBlogPosts(
