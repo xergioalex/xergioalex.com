@@ -98,7 +98,13 @@ export async function getBlogPosts(
     post.id.startsWith(`${lang}/`)
   );
 
-  // Get all unique tags that are actually used in posts for this language
+  // Filter by visibility: in production only show published posts
+  // In dev, show all posts only when includeHidden is explicitly true
+  if (!params.includeHidden) {
+    posts = posts.filter(isPostVisibleInProduction);
+  }
+
+  // Get all unique tags that are actually used in visible posts for this language
   const usedTags = Array.from(
     new Set(posts.flatMap((post) => post.data.tags ?? []))
   );
@@ -134,8 +140,12 @@ export async function getBlogPosts(
     posts = posts.slice(0, params.pageSize ?? BLOG_PAGE_SIZE);
   }
 
-  // Count total posts for this language (before pagination)
-  const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
+  // Count total posts for this language (before pagination, respecting visibility)
+  const langPosts = allPosts.filter(
+    (post) =>
+      post.id.startsWith(`${lang}/`) &&
+      (params.includeHidden || isPostVisibleInProduction(post))
+  );
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,
@@ -166,7 +176,10 @@ export async function getRelatedPosts(
 
   const candidates = allPosts
     .filter(
-      (post) => post.id.startsWith(`${lang}/`) && post.id !== currentPostId
+      (post) =>
+        post.id.startsWith(`${lang}/`) &&
+        post.id !== currentPostId &&
+        isPostVisibleInProduction(post)
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 

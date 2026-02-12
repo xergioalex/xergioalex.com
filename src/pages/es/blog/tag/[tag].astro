@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getBlogPosts } from '@/lib/blog';
+import { getBlogPosts, isPostVisibleInProduction } from '@/lib/blog';
 import { getTranslations, type Language } from '@/lib/translations';
 
 const lang: Language = 'es';
@@ -11,10 +11,15 @@ const t = getTranslations(lang);
 export async function getStaticPaths() {
   const lang: Language = 'es';
 
-  // Get all posts to extract unique tags
+  // Get all posts to extract unique tags (only from visible posts in production)
   const allPosts = await getCollection('blog');
+  const visiblePosts = allPosts.filter((post) => {
+    if (!post.id.startsWith(`${lang}/`)) return false;
+    if (import.meta.env.PROD) return isPostVisibleInProduction(post);
+    return true;
+  });
   const tagsResult = Array.from(
-    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
+    new Set(visiblePosts.flatMap((post) => post.data.tags ?? []))
   );
 
   const paths = [];

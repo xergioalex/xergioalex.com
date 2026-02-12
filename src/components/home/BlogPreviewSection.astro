@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
-import { getPostSlug } from '@/lib/blog';
+import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
 
@@ -13,11 +13,13 @@ const { lang = 'en' } = Astro.props;
 const t = getTranslations(lang as Language);
 
 const viewAllText =
-  lang === 'es' ? 'Ver todos los art\u00EDculos' : 'View all posts';
+  lang === 'es' ? 'Ver todos los artículos' : 'View all posts';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter((post) => post.id.startsWith(`${lang}/`))
+  .filter(
+    (post) => post.id.startsWith(`${lang}/`) && isPostVisibleInProduction(post)
+  )
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 2);
 ---

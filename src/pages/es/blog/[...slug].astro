@@ -6,9 +6,11 @@ import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
   getPostSlug,
+  getPostStatus,
   getReadingTimeFromContent,
   getRelatedPosts,
   getWordCount,
+  isPostVisibleInProduction,
 } from '@/lib/blog';
 import { getTranslations, type Language } from '@/lib/translations';
 
@@ -18,7 +20,13 @@ const t = getTranslations(lang);
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
   // Only Spanish posts (in es/ folder)
-  const posts = allPosts.filter((post) => post.id.startsWith('es/'));
+  // In production, only generate pages for published posts
+  // In dev, generate pages for ALL posts (so they're accessible by URL)
+  const posts = allPosts.filter((post) => {
+    if (!post.id.startsWith('es/')) return false;
+    if (import.meta.env.PROD) return isPostVisibleInProduction(post);
+    return true;
+  });
   return posts.map((post) => ({
     // Remove language prefix and date prefix from URL
     params: { slug: getPostSlug(post.id) },
