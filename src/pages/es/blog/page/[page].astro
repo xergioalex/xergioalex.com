@@ -7,6 +7,8 @@ import type { BlogPostsResultType } from '@/lib/types';
 
 const lang: Language = 'es';
 const t = getTranslations(lang);
+const isDev = import.meta.env.DEV;
+const previewAll = isDev && Astro.url.searchParams.get('preview') === 'all';
 
 export async function getStaticPaths() {
   const lang: Language = 'es';
@@ -46,5 +48,5 @@ const nextPage =
   prevPage={prevPage}
   nextPage={nextPage}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isPreviewMode={previewAll} isDev={isDev} />
 </MainLayout>

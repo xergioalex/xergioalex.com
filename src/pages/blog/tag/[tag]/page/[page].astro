@@ -58,5 +58,5 @@ const { tag, page } = Astro.params;
   title={`${t.postsTagged(t.tagNames[tag] || tag)} - ${t.pageOf(Number(page), blogPostsResult.totalPages)}`}
   description={t.tagDescriptions[tag] || `Articles tagged as ${t.tagNames[tag] || tag}.`}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} isDev={import.meta.env.DEV} />
 </MainLayout>

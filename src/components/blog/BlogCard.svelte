@@ -52,7 +52,7 @@ function getPostData() {
 
 // Derive effective status: use prop if provided, otherwise check search index
 $: effectiveStatus =
-  effectiveStatus !== 'published' ? postStatus : post.status || 'published';
+  postStatus !== 'published' ? postStatus : post.status || 'published';
 
 $: postData = getPostData();
 $: postSlug = getPostSlug();

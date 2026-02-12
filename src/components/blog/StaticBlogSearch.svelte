@@ -16,6 +16,8 @@ export let currentPage;
 export let tagsResult = [];
 export let totalPostsAvailable = 0;
 export let lang = 'en';
+export let isPreviewMode = false;
+export let isDev = false;
 
 // Performance: Debounce timing (reduced for snappier feel)
 const DEBOUNCE_MS = 200;
@@ -67,7 +69,13 @@ async function loadSearchIndex() {
     const response = await fetch('/api/posts.json');
     if (response.ok) {
       const allPosts = await response.json();
-      searchIndex = allPosts.filter((post) => post.lang === lang);
+      const langPosts = allPosts.filter((post) => post.lang === lang);
+      // In dev without preview mode, only index published posts
+      searchIndex = isPreviewMode
+        ? langPosts
+        : langPosts.filter(
+            (post) => !post.status || post.status === 'published'
+          );
       fuseIndex = createSearchIndex(searchIndex);
       indexLoaded = true;
       clearCache();
@@ -195,7 +203,24 @@ onMount(() => {
 </script>
 
 <div class="main-container py-12 sm:py-16 lg:py-24">
-  <BlogHeader 
+  {#if isDev}
+    <div class="mb-4 flex items-center gap-2 text-sm">
+      {#if isPreviewMode}
+        <span class="inline-flex items-center gap-1 px-2 py-1 rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700 font-medium">
+          {t.previewMode}
+        </span>
+        <a href="?" class="text-indigo-600 hover:underline dark:text-indigo-400">
+          {t.showPublishedOnly}
+        </a>
+      {:else}
+        <a href="?preview=all" class="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400">
+          {t.showAllPosts}
+        </a>
+      {/if}
+    </div>
+  {/if}
+
+  <BlogHeader
     {currentTag} 
     tagsResult={displayTags}
     totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
@@ -248,33 +273,36 @@ onMount(() => {
       <p class="mt-2 text-gray-500">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} {isDev} />
     {#if searchPagination.totalPages > 1}
-      <BlogPagination 
-        currentPage={searchPagination.currentPage} 
-        totalPages={searchPagination.totalPages} 
+      <BlogPagination
+        currentPage={searchPagination.currentPage}
+        totalPages={searchPagination.totalPages}
         isSearchMode={true}
         onPageChange={(page) => performSearch(searchQuery, page)}
         {currentTag}
         {lang}
+        {isPreviewMode}
       />
     {/if}
   {:else}
-    <BlogGrid 
+    <BlogGrid
       posts={postsResult}
       showPagination={totalPages > 1}
       {currentPage}
       {totalPages}
       {currentTag}
       {lang}
+      {isDev}
     />
     
     {#if totalPages > 1}
-      <BlogPagination 
+      <BlogPagination
         {currentPage}
         {totalPages}
         {currentTag}
         {lang}
+        {isPreviewMode}
       />
     {/if}
   {/if}
