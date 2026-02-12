@@ -36,6 +36,15 @@ function formatDate(date: Date): string {
 function formatYear(date: Date): string {
   return new Date(date).getFullYear().toString();
 }
+
+function formatYearMonth(date: Date): string {
+  const d = new Date(date);
+  return `${d.getFullYear()}-${d.getMonth()}`;
+}
+
+function getMonthName(date: Date): string {
+  return new Date(date).toLocaleDateString(t.dateLocale, { month: 'long' });
+}
 </script>
 
 {#if posts.length === 0}
@@ -52,13 +61,26 @@ function formatYear(date: Date): string {
       {@const isLeft = index % 2 === 0}
       {@const year = formatYear(post.data.pubDate)}
       {@const showYear = index === 0 || formatYear(posts[index - 1].data.pubDate) !== year}
+      {@const yearMonth = formatYearMonth(post.data.pubDate)}
+      {@const showMonth = index === 0 || formatYearMonth(posts[index - 1].data.pubDate) !== yearMonth}
 
       <!-- Year marker -->
       {#if showYear}
-        <div class="relative flex items-center mb-8 mt-4">
+        <div class="relative flex items-center mb-6 mt-4">
           <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
             <span class="inline-block px-4 py-1.5 bg-secondary text-white text-sm font-bold rounded-full shadow-md">
               {year}
+            </span>
+          </div>
+        </div>
+      {/if}
+
+      <!-- Month marker -->
+      {#if showMonth}
+        <div class="relative flex items-center mb-6 {showYear ? 'mt-2' : 'mt-4'}">
+          <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
+            <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full capitalize">
+              {getMonthName(post.data.pubDate)}
             </span>
           </div>
         </div>
