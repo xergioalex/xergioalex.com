@@ -1,5 +1,7 @@
 ---
+import HighlightCard from '@/components/pages/HighlightCard.astro';
 import PageHero from '@/components/pages/PageHero.astro';
+import PageSection from '@/components/pages/PageSection.astro';
 import TradingTimeline from '@/components/trading/TradingTimeline.svelte';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
@@ -24,8 +26,25 @@ const { postsResult: posts } = await getBlogPosts({
 		image="/images/trading.png"
 	/>
 
+	<PageSection title={t.tradingPage.journeyTitle} description={t.tradingPage.journeyText} />
+
+	<PageSection title={t.tradingPage.approachTitle} description={t.tradingPage.approachText} background="gray" />
+
+	<PageSection title={t.tradingPage.areasTitle}>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			{t.tradingPage.areas.map((area) => (
+				<HighlightCard title={area.title} description={area.description} icon={area.icon} />
+			))}
+		</div>
+	</PageSection>
+
+	<PageSection title={t.tradingPage.philosophyTitle} description={t.tradingPage.philosophyText} background="gray" />
+
 	<section class="py-12 md:py-16">
 		<div class="main-container">
+			<h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+				{t.tradingPage.timelineTitle}
+			</h2>
 			<TradingTimeline client:load posts={posts} lang={lang} />
 		</div>
 	</section>

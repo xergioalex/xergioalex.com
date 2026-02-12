@@ -310,6 +310,15 @@ export interface SiteTranslations {
     subtitle: string;
     description: string;
     heroDescription: string;
+    journeyTitle: string;
+    journeyText: string;
+    approachTitle: string;
+    approachText: string;
+    areasTitle: string;
+    areas: HighlightItem[];
+    philosophyTitle: string;
+    philosophyText: string;
+    timelineTitle: string;
     emptyState: string;
   };
 
@@ -1045,6 +1054,43 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         "Sergio's trading journal — weekly updates, market analysis, strategies, and lessons learned from active trading.",
       heroDescription:
         'My personal trading journal where I document my journey through the financial markets — weekly reviews, analysis, strategies, and the lessons I learn along the way.',
+      journeyTitle: 'My Trading Journey',
+      journeyText:
+        "Trading came into my life as a natural extension of my passion for data, analysis, and pattern recognition. What started as curiosity about how financial markets work quickly became a deep interest in forex trading — the largest and most liquid market in the world.<br /><br />Over the past two years, I've dedicated significant time to studying market dynamics, understanding how macroeconomic events affect currency prices, and developing my own trading approach. This is more than a hobby — it's a discipline that challenges me every day.",
+      approachTitle: 'My Approach',
+      approachText:
+        'I approach trading with the same mindset I bring to engineering: systematic, data-driven, and disciplined. I combine fundamental analysis (understanding how news, economic data, and geopolitical events move markets) with technical analysis (reading charts, identifying patterns, and using indicators).<br /><br />Risk management is central to my philosophy. Every trade has a clear plan — entry, stop loss, and take profit. I keep a detailed trading journal to track performance and continuously improve my decision-making process.',
+      areasTitle: 'What I Study',
+      areas: [
+        {
+          title: 'Forex Trading',
+          description:
+            'Currency pairs, market sessions, central bank policies, and macroeconomic drivers that move the forex market.',
+          icon: '\u{1F4B1}',
+        },
+        {
+          title: 'Algorithmic Trading',
+          description:
+            'Automating trading strategies, backtesting systems, and applying programming skills to build trading bots.',
+          icon: '\u{1F4BB}',
+        },
+        {
+          title: 'Market Analysis',
+          description:
+            'News impact analysis, economic indicators, sentiment analysis, and understanding how global events affect prices.',
+          icon: '\u{1F4CA}',
+        },
+        {
+          title: 'Risk Management',
+          description:
+            'Position sizing, stop-loss strategies, risk-reward ratios, and protecting capital through disciplined trading.',
+          icon: '\u{1F6E1}\uFE0F',
+        },
+      ],
+      philosophyTitle: 'Trading Philosophy',
+      philosophyText:
+        'Trading is a discipline, not a gamble. Success comes from education, patience, and emotional control — not from chasing quick profits. The market is the best teacher: it rewards consistency and punishes impulsiveness.<br /><br />As a technologist, I see unique opportunities in combining my engineering skills with trading. Building algorithmic systems, analyzing data patterns, and automating strategies are areas where my tech background gives me an edge. The goal is not just to trade, but to understand the markets deeply and build systems that can make intelligent decisions.',
+      timelineTitle: 'Trading Journal',
       emptyState: 'No trading journal entries yet. Check back soon!',
     },
 
@@ -1881,11 +1927,48 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       title: 'Diario de Trading',
       subtitle: 'Mercados, estrategias y lecciones aprendidas',
       description:
-        'El diario de trading de Sergio — actualizaciones semanales, an\u00E1lisis de mercado, estrategias y lecciones aprendidas del trading activo.',
+        'El diario de trading de Sergio — actualizaciones semanales, análisis de mercado, estrategias y lecciones aprendidas del trading activo.',
       heroDescription:
-        'Mi diario personal de trading donde documento mi camino por los mercados financieros — revisiones semanales, an\u00E1lisis, estrategias y las lecciones que aprendo en el camino.',
+        'Mi diario personal de trading donde documento mi camino por los mercados financieros — revisiones semanales, análisis, estrategias y las lecciones que aprendo en el camino.',
+      journeyTitle: 'Mi Camino en el Trading',
+      journeyText:
+        'El trading llegó a mi vida como una extensión natural de mi pasión por los datos, el análisis y el reconocimiento de patrones. Lo que comenzó como curiosidad sobre cómo funcionan los mercados financieros rápidamente se convirtió en un profundo interés en el trading forex — el mercado más grande y líquido del mundo.<br /><br />Durante los últimos dos años, he dedicado tiempo significativo a estudiar la dinámica del mercado, entender cómo los eventos macroeconómicos afectan los precios de las divisas y desarrollar mi propio enfoque de trading. Esto es más que un hobby — es una disciplina que me desafía cada día.',
+      approachTitle: 'Mi Enfoque',
+      approachText:
+        'Abordo el trading con la misma mentalidad que aplico a la ingeniería: sistemática, basada en datos y disciplinada. Combino análisis fundamental (entender cómo las noticias, datos económicos y eventos geopolíticos mueven los mercados) con análisis técnico (leer gráficos, identificar patrones y usar indicadores).<br /><br />La gestión del riesgo es central en mi filosofía. Cada operación tiene un plan claro — entrada, stop loss y take profit. Mantengo un diario de trading detallado para rastrear el rendimiento y mejorar continuamente mi proceso de toma de decisiones.',
+      areasTitle: 'Lo Que Estudio',
+      areas: [
+        {
+          title: 'Trading Forex',
+          description:
+            'Pares de divisas, sesiones de mercado, políticas de bancos centrales y factores macroeconómicos que mueven el mercado forex.',
+          icon: '💱',
+        },
+        {
+          title: 'Trading Algorítmico',
+          description:
+            'Automatizando estrategias de trading, backtesting de sistemas y aplicando habilidades de programación para construir bots de trading.',
+          icon: '💻',
+        },
+        {
+          title: 'Análisis de Mercado',
+          description:
+            'Análisis de impacto de noticias, indicadores económicos, análisis de sentimiento y entender cómo eventos globales afectan los precios.',
+          icon: '📊',
+        },
+        {
+          title: 'Gestión del Riesgo',
+          description:
+            'Dimensionamiento de posiciones, estrategias de stop-loss, ratios riesgo-recompensa y protección del capital a través de trading disciplinado.',
+          icon: '🛡️',
+        },
+      ],
+      philosophyTitle: 'Filosofía de Trading',
+      philosophyText:
+        'El trading es una disciplina, no una apuesta. El éxito viene de la educación, la paciencia y el control emocional — no de perseguir ganancias rápidas. El mercado es el mejor maestro: recompensa la consistencia y castiga la impulsividad.<br /><br />Como tecnólogo, veo oportunidades únicas en combinar mis habilidades de ingeniería con el trading. Construir sistemas algorítmicos, analizar patrones de datos y automatizar estrategias son áreas donde mi formación tech me da una ventaja. El objetivo no es solo operar, sino entender los mercados profundamente y construir sistemas que puedan tomar decisiones inteligentes.',
+      timelineTitle: 'Diario de Trading',
       emptyState:
-        'A\u00FAn no hay entradas en el diario de trading. \u00A1Vuelve pronto!',
+        'Aún no hay entradas en el diario de trading. ¡Vuelve pronto!',
     },
 
     // Foodie page
