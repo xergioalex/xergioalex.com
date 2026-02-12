@@ -17,7 +17,8 @@
         "biomejs.biome",
         "unifiedjs.vscode-mdx",
         "astro-build.astro-vscode",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "svelte.svelte-vscode"
       ]
     }
   }
