@@ -6,6 +6,7 @@ import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
 import PortfolioPostsSection from '@/components/home/PortfolioPostsSection.astro';
 import TechTalksPostsSection from '@/components/home/TechTalksPostsSection.astro';
+import TradingPostsSection from '@/components/home/TradingPostsSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
@@ -85,6 +86,9 @@ const t = getTranslations(lang);
     contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
     variant="alt"
   />
+
+  <!-- Trading Journal Posts Section -->
+  <TradingPostsSection lang={lang} />
 
   <!-- Blog Preview Section -->
   <BlogPreviewSection lang={lang} />

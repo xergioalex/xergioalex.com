@@ -173,6 +173,9 @@ export interface SiteTranslations {
     techTalksPostsTitle: string;
     techTalksPostsViewAll: string;
     techTalksPostsEmpty: string;
+    tradingPostsTitle: string;
+    tradingPostsViewAll: string;
+    tradingPostsEmpty: string;
   };
 
   // Contact section (homepage)
@@ -307,14 +310,7 @@ export interface SiteTranslations {
     subtitle: string;
     description: string;
     heroDescription: string;
-    journeyTitle: string;
-    journeyText: string;
-    approachTitle: string;
-    approachText: string;
-    areasTitle: string;
-    areas: HighlightItem[];
-    philosophyTitle: string;
-    philosophyText: string;
+    emptyState: string;
   };
 
   // Foodie page
@@ -583,6 +579,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       techTalksPostsTitle: 'Recent Tech Talks',
       techTalksPostsViewAll: 'View all tech talks',
       techTalksPostsEmpty: 'More talks coming soon.',
+      tradingPostsTitle: 'Trading Journal',
+      tradingPostsViewAll: 'View all trading entries',
+      tradingPostsEmpty: 'Trading journal entries coming soon.',
     },
 
     // Contact section (homepage)
@@ -1040,48 +1039,13 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
     // Trading page
     tradingPage: {
-      title: 'Trading',
-      subtitle: 'Understanding markets, building strategies',
+      title: 'Trading Journal',
+      subtitle: 'Markets, strategies & lessons learned',
       description:
-        "Sergio's forex trading journey — market analysis, algorithmic strategies, and continuous learning.",
+        "Sergio's trading journal — weekly updates, market analysis, strategies, and lessons learned from active trading.",
       heroDescription:
-        'Exploring the intersection of technology and financial markets through forex trading and algorithmic strategies.',
-      journeyTitle: 'My Trading Journey',
-      journeyText:
-        "Trading came into my life as a natural extension of my passion for data, analysis, and pattern recognition. What started as curiosity about how financial markets work quickly became a deep interest in forex trading — the largest and most liquid market in the world.<br /><br />Over the past two years, I've dedicated significant time to studying market dynamics, understanding how macroeconomic events affect currency prices, and developing my own trading approach. This is more than a hobby — it's a discipline that challenges me every day.",
-      approachTitle: 'My Approach',
-      approachText:
-        'I approach trading with the same mindset I bring to engineering: systematic, data-driven, and disciplined. I combine fundamental analysis (understanding how news, economic data, and geopolitical events move markets) with technical analysis (reading charts, identifying patterns, and using indicators).<br /><br />Risk management is central to my philosophy. Every trade has a clear plan — entry, stop loss, and take profit. I keep a detailed trading journal to track performance and continuously improve my decision-making process.',
-      areasTitle: 'What I Study',
-      areas: [
-        {
-          title: 'Forex Trading',
-          description:
-            'Currency pairs, market sessions, central bank policies, and macroeconomic drivers that move the forex market.',
-          icon: '\u{1F4B1}',
-        },
-        {
-          title: 'Algorithmic Trading',
-          description:
-            'Automating trading strategies, backtesting systems, and applying programming skills to build trading bots.',
-          icon: '\u{1F4BB}',
-        },
-        {
-          title: 'Market Analysis',
-          description:
-            'News impact analysis, economic indicators, sentiment analysis, and understanding how global events affect prices.',
-          icon: '\u{1F4CA}',
-        },
-        {
-          title: 'Risk Management',
-          description:
-            'Position sizing, stop-loss strategies, risk-reward ratios, and protecting capital through disciplined trading.',
-          icon: '\u{1F6E1}\uFE0F',
-        },
-      ],
-      philosophyTitle: 'Trading Philosophy',
-      philosophyText:
-        'Trading is a discipline, not a gamble. Success comes from education, patience, and emotional control — not from chasing quick profits. The market is the best teacher: it rewards consistency and punishes impulsiveness.<br /><br />As a technologist, I see unique opportunities in combining my engineering skills with trading. Building algorithmic systems, analyzing data patterns, and automating strategies are areas where my tech background gives me an edge. The goal is not just to trade, but to understand the markets deeply and build systems that can make intelligent decisions.',
+        'My personal trading journal where I document my journey through the financial markets — weekly reviews, analysis, strategies, and the lessons I learn along the way.',
+      emptyState: 'No trading journal entries yet. Check back soon!',
     },
 
     // Foodie page
@@ -1453,6 +1417,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       techTalksPostsTitle: 'Charlas Recientes',
       techTalksPostsViewAll: 'Ver todas las charlas',
       techTalksPostsEmpty: 'Próximamente más charlas.',
+      tradingPostsTitle: 'Diario de Trading',
+      tradingPostsViewAll: 'Ver todas las entradas de trading',
+      tradingPostsEmpty: 'Próximamente entradas del diario de trading.',
     },
 
     // Contact section (homepage)
@@ -1911,48 +1878,14 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
     // Trading page
     tradingPage: {
-      title: 'Trading',
-      subtitle: 'Entendiendo mercados, construyendo estrategias',
+      title: 'Diario de Trading',
+      subtitle: 'Mercados, estrategias y lecciones aprendidas',
       description:
-        'El camino de Sergio en el trading forex — an\u00E1lisis de mercado, estrategias algor\u00EDtmicas y aprendizaje continuo.',
+        'El diario de trading de Sergio — actualizaciones semanales, an\u00E1lisis de mercado, estrategias y lecciones aprendidas del trading activo.',
       heroDescription:
-        'Explorando la intersecci\u00F3n entre tecnolog\u00EDa y mercados financieros a trav\u00E9s de trading forex y estrategias algor\u00EDtmicas.',
-      journeyTitle: 'Mi Camino en el Trading',
-      journeyText:
-        'El trading lleg\u00F3 a mi vida como una extensi\u00F3n natural de mi pasi\u00F3n por los datos, el an\u00E1lisis y el reconocimiento de patrones. Lo que comenz\u00F3 como curiosidad sobre c\u00F3mo funcionan los mercados financieros r\u00E1pidamente se convirti\u00F3 en un profundo inter\u00E9s en el trading forex — el mercado m\u00E1s grande y l\u00EDquido del mundo.<br /><br />Durante los \u00FAltimos dos a\u00F1os, he dedicado tiempo significativo a estudiar la din\u00E1mica del mercado, entender c\u00F3mo los eventos macroecon\u00F3micos afectan los precios de las divisas y desarrollar mi propio enfoque de trading. Esto es m\u00E1s que un hobby — es una disciplina que me desaf\u00EDa cada d\u00EDa.',
-      approachTitle: 'Mi Enfoque',
-      approachText:
-        'Abordo el trading con la misma mentalidad que aplico a la ingenier\u00EDa: sistem\u00E1tica, basada en datos y disciplinada. Combino an\u00E1lisis fundamental (entender c\u00F3mo las noticias, datos econ\u00F3micos y eventos geopol\u00EDticos mueven los mercados) con an\u00E1lisis t\u00E9cnico (leer gr\u00E1ficos, identificar patrones y usar indicadores).<br /><br />La gesti\u00F3n del riesgo es central en mi filosof\u00EDa. Cada operaci\u00F3n tiene un plan claro — entrada, stop loss y take profit. Mantengo un diario de trading detallado para rastrear el rendimiento y mejorar continuamente mi proceso de toma de decisiones.',
-      areasTitle: 'Lo Que Estudio',
-      areas: [
-        {
-          title: 'Trading Forex',
-          description:
-            'Pares de divisas, sesiones de mercado, pol\u00EDticas de bancos centrales y factores macroecon\u00F3micos que mueven el mercado forex.',
-          icon: '\u{1F4B1}',
-        },
-        {
-          title: 'Trading Algor\u00EDtmico',
-          description:
-            'Automatizando estrategias de trading, backtesting de sistemas y aplicando habilidades de programaci\u00F3n para construir bots de trading.',
-          icon: '\u{1F4BB}',
-        },
-        {
-          title: 'An\u00E1lisis de Mercado',
-          description:
-            'An\u00E1lisis de impacto de noticias, indicadores econ\u00F3micos, an\u00E1lisis de sentimiento y entender c\u00F3mo eventos globales afectan los precios.',
-          icon: '\u{1F4CA}',
-        },
-        {
-          title: 'Gesti\u00F3n del Riesgo',
-          description:
-            'Dimensionamiento de posiciones, estrategias de stop-loss, ratios riesgo-recompensa y protecci\u00F3n del capital a trav\u00E9s de trading disciplinado.',
-          icon: '\u{1F6E1}\uFE0F',
-        },
-      ],
-      philosophyTitle: 'Filosof\u00EDa de Trading',
-      philosophyText:
-        'El trading es una disciplina, no una apuesta. El \u00E9xito viene de la educaci\u00F3n, la paciencia y el control emocional — no de perseguir ganancias r\u00E1pidas. El mercado es el mejor maestro: recompensa la consistencia y castiga la impulsividad.<br /><br />Como tecn\u00F3logo, veo oportunidades \u00FAnicas en combinar mis habilidades de ingenier\u00EDa con el trading. Construir sistemas algor\u00EDtmicos, analizar patrones de datos y automatizar estrategias son \u00E1reas donde mi formaci\u00F3n tech me da una ventaja. El objetivo no es solo operar, sino entender los mercados profundamente y construir sistemas que puedan tomar decisiones inteligentes.',
+        'Mi diario personal de trading donde documento mi camino por los mercados financieros — revisiones semanales, an\u00E1lisis, estrategias y las lecciones que aprendo en el camino.',
+      emptyState:
+        'A\u00FAn no hay entradas en el diario de trading. \u00A1Vuelve pronto!',
     },
 
     // Foodie page
