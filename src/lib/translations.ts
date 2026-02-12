@@ -420,6 +420,18 @@ export interface SiteTranslations {
   // Read more
   readMore: string;
 
+  // Post status (dev mode indicators)
+  postStatus: {
+    draft: string;
+    scheduled: string;
+    'draft+scheduled': string;
+    demo: string;
+  };
+  previewMode: string;
+  showAllPosts: string;
+  showPublishedOnly: string;
+  publishesOn: string;
+
   // Errors
   searchError: string;
   loadError: string;
@@ -609,7 +621,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
           description:
             'Sharing knowledge through tech talks, writing, mentoring, and building the local tech ecosystem.',
           icon: '\u{1F399}',
-          link: '/techtalks',
+          link: '/tech-talks',
         },
         {
           title: 'Trading & Markets',
@@ -1274,6 +1286,18 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     // Read more
     readMore: 'Read more',
 
+    // Post status (dev mode indicators)
+    postStatus: {
+      draft: 'Draft',
+      scheduled: 'Scheduled',
+      'draft+scheduled': 'Draft + Scheduled',
+      demo: 'Demo',
+    },
+    previewMode: 'Preview Mode',
+    showAllPosts: 'Show all posts',
+    showPublishedOnly: 'Show published only',
+    publishesOn: 'Publishes on',
+
     // Errors
     searchError: 'An error occurred while searching. Please try again.',
     loadError: 'Failed to load search index. Please refresh the page.',
@@ -1463,7 +1487,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
           description:
             'Compartiendo conocimiento a trav\u00E9s de charlas tech, escritura, mentor\u00EDa y construyendo el ecosistema tech local.',
           icon: '\u{1F399}',
-          link: '/es/techtalks',
+          link: '/es/tech-talks',
         },
         {
           title: 'Trading y Mercados',
@@ -2133,10 +2157,22 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     // Read more
     readMore: 'Leer m\u00E1s',
 
+    // Post status (dev mode indicators)
+    postStatus: {
+      draft: 'Borrador',
+      scheduled: 'Programado',
+      'draft+scheduled': 'Borrador + Programado',
+      demo: 'Demo',
+    },
+    previewMode: 'Modo Vista Previa',
+    showAllPosts: 'Mostrar todos los posts',
+    showPublishedOnly: 'Solo publicados',
+    publishesOn: 'Se publica el',
+
     // Errors
-    searchError: 'Ocurri\u00F3 un error al buscar. Por favor intenta de nuevo.',
+    searchError: 'Ocurrió un error al buscar. Por favor intenta de nuevo.',
     loadError:
-      'Error al cargar el \u00EDndice de b\u00FAsqueda. Por favor recarga la p\u00E1gina.',
+      'Error al cargar el índice de búsqueda. Por favor recarga la página.',
     retry: 'Intentar de nuevo',
   },
 };

@@ -112,7 +112,7 @@ onDestroy(() => {
         <a href="{prefix}/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
         <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
         <a href="{prefix}/entrepreneur" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
-        <a href="{prefix}/techtalks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
+        <a href="{prefix}/tech-talks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
         <a href="{prefix}/maker" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
         <a href="{prefix}/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
         <a href="{prefix}/foodie" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>

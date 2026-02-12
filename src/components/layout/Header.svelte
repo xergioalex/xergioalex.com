@@ -89,7 +89,7 @@ function toggleMenu() {
               <a href="{prefix}/cv" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.cv}</a>
               <a href="{prefix}/dailybot" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.dailybot}</a>
               <a href="{prefix}/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.entrepreneur}</a>
-              <a href="{prefix}/techtalks" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.techTalks}</a>
+              <a href="{prefix}/tech-talks" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.techTalks}</a>
               <a href="{prefix}/maker" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.maker}</a>
               <a href="{prefix}/trading" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.trading}</a>
               <a href="{prefix}/foodie" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.foodie}</a>
