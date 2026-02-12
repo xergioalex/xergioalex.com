@@ -438,6 +438,9 @@ export interface SiteTranslations {
   // Read more
   readMore: string;
 
+  // Scroll to timeline
+  scrollToTimeline: string;
+
   // Post status (dev mode indicators)
   postStatus: {
     draft: string;
@@ -1352,6 +1355,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
     // Read more
     readMore: 'Read more',
+
+    // Scroll to timeline
+    scrollToTimeline: 'View Timeline',
 
     // Post status (dev mode indicators)
     postStatus: {
@@ -2273,6 +2279,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
     // Read more
     readMore: 'Leer m\u00E1s',
+
+    // Scroll to timeline
+    scrollToTimeline: 'Ver Timeline',
 
     // Post status (dev mode indicators)
     postStatus: {
