@@ -301,6 +301,11 @@ export interface SiteTranslations {
     subtitle: string;
     description: string;
     heroDescription: string;
+    journeyTitle: string;
+    journeyText: string;
+    areasTitle: string;
+    areas: HighlightItem[];
+    timelineTitle: string;
     emptyState: string;
   };
 
@@ -1202,6 +1207,37 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         'A showcase of my projects, experiments, and technical work across software engineering, robotics, and more.',
       heroDescription:
         'Explore my portfolio of projects spanning software development, DevOps, robotics, and emerging technologies.',
+      journeyTitle: 'Building Things That Matter',
+      journeyText:
+        "I've always believed the best way to learn is by building. Over the years, I've worked on projects ranging from large-scale SaaS products to weekend experiments with microcontrollers. Each project taught me something new — whether it was a new technology, a better architecture pattern, or simply how to ship faster.<br /><br />This portfolio is a living collection of the work I'm most proud of. From open-source tools and DevOps infrastructure to robotics prototypes and AI experiments — each entry represents a problem I found interesting enough to solve.",
+      areasTitle: 'What You\'ll Find Here',
+      areas: [
+        {
+          title: 'Software & SaaS',
+          description:
+            'Full-stack applications, APIs, and products built with modern technologies — from startup MVPs to production systems serving thousands of users.',
+          icon: '\u{1F4BB}',
+        },
+        {
+          title: 'DevOps & Infrastructure',
+          description:
+            'CI/CD pipelines, containerized deployments, cloud architectures, and open-source tools for developer productivity.',
+          icon: '\u{2699}\uFE0F',
+        },
+        {
+          title: 'Robotics & Hardware',
+          description:
+            'Autonomous robots, IoT devices, 3D printing projects, and experiments at the intersection of software and the physical world.',
+          icon: '\u{1F916}',
+        },
+        {
+          title: 'AI & Experiments',
+          description:
+            'Machine learning prototypes, generative AI explorations, and side projects pushing the boundaries of what\'s possible.',
+          icon: '\u{1F9EA}',
+        },
+      ],
+      timelineTitle: 'Projects',
       emptyState: 'No portfolio projects available yet. Check back soon!',
     },
 
@@ -2079,6 +2115,37 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         'Una muestra de mis proyectos, experimentos y trabajo técnico en ingeniería de software, robótica y más.',
       heroDescription:
         'Explora mi portafolio de proyectos en desarrollo de software, DevOps, robótica y tecnologías emergentes.',
+      journeyTitle: 'Construyendo Cosas que Importan',
+      journeyText:
+        'Siempre he creído que la mejor forma de aprender es construyendo. A lo largo de los años, he trabajado en proyectos que van desde productos SaaS a gran escala hasta experimentos de fin de semana con microcontroladores. Cada proyecto me enseñó algo nuevo — ya sea una nueva tecnología, un mejor patrón de arquitectura, o simplemente cómo entregar más rápido.<br /><br />Este portafolio es una colección viva del trabajo del que estoy más orgulloso. Desde herramientas open-source e infraestructura DevOps hasta prototipos de robótica y experimentos con IA — cada entrada representa un problema que encontré lo suficientemente interesante como para resolver.',
+      areasTitle: 'Lo Que Encontrarás Aquí',
+      areas: [
+        {
+          title: 'Software y SaaS',
+          description:
+            'Aplicaciones full-stack, APIs y productos construidos con tecnologías modernas — desde MVPs de startups hasta sistemas en producción sirviendo a miles de usuarios.',
+          icon: '💻',
+        },
+        {
+          title: 'DevOps e Infraestructura',
+          description:
+            'Pipelines CI/CD, despliegues containerizados, arquitecturas en la nube y herramientas open-source para productividad de desarrolladores.',
+          icon: '⚙️',
+        },
+        {
+          title: 'Robótica y Hardware',
+          description:
+            'Robots autónomos, dispositivos IoT, proyectos de impresión 3D y experimentos en la intersección del software y el mundo físico.',
+          icon: '🤖',
+        },
+        {
+          title: 'IA y Experimentos',
+          description:
+            'Prototipos de machine learning, exploraciones de IA generativa y proyectos paralelos empujando los límites de lo posible.',
+          icon: '🧪',
+        },
+      ],
+      timelineTitle: 'Proyectos',
       emptyState:
         'Aún no hay proyectos de portafolio disponibles. ¡Vuelve pronto!',
     },
