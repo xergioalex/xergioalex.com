@@ -123,6 +123,7 @@ Articles should generally follow this structure (adapt as needed):
 ### Step 2: Research Context
 
 - Read existing articles in `src/content/blog/en/` to match voice and quality
+- **Read demo posts in `src/content/blog/en/_demo/` as structural references** — these showcase different hero layouts (banner, side-by-side, minimal, none), MDX features, rich formatting, and code highlighting patterns. Use them as templates for structure and formatting decisions.
 - Check related content to avoid repetition
 - Review any referenced repos, tools, or resources
 - Verify image assets exist in `public/images/`

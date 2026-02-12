@@ -126,7 +126,11 @@ This post shows both badges in preview mode and requires both conditions to be c
 
 ## Demo Posts
 
-Demo posts showcase blog features and serve as references for formatting, layouts, and capabilities. They are **never** visible in production, regardless of other frontmatter settings.
+Demo posts showcase blog features and serve as **structural references** for formatting, layouts, and capabilities. They are **never** visible in production, regardless of other frontmatter settings.
+
+### Purpose for AI Agents
+
+**When writing new blog posts, agents SHOULD read the demo posts in `src/content/blog/en/_demo/` as templates.** These files demonstrate the correct structure, frontmatter patterns, formatting conventions, and layout options for different article types. Before creating a new post, review the relevant demo post(s) to match the appropriate structure (e.g., read `demo-hero-banner.md` if using a landscape hero, `demo-code-showcase.md` if the article has code blocks).
 
 ### Location
 

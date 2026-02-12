@@ -98,9 +98,10 @@ The skill auto-detects the mode based on the inputs provided.
 
 1. Determine mode (topic vs content) based on inputs provided
 2. Check existing articles in `src/content/blog/en/` for voice reference and to avoid overlap
-3. Check available tags in `src/content/tags/`
-4. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
-5. **Topic mode only:** Identify the core story or angle. If the brief is too vague, stop and ask for clarification.
+3. **Read demo posts in `src/content/blog/en/_demo/` as structural references** — these are example articles showcasing different hero layouts (banner, side-by-side, minimal, none), MDX features, rich markdown formatting, and code syntax highlighting. Use them as templates when deciding article structure and formatting.
+4. Check available tags in `src/content/tags/`
+5. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
+6. **Topic mode only:** Identify the core story or angle. If the brief is too vague, stop and ask for clarification.
 
 ```bash
 # Check existing articles
