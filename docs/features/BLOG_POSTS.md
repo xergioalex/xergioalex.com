@@ -83,7 +83,7 @@ schema: z.object({
 |-------|----------|-------------|
 | `title` | Yes | Post title. Translated between languages. |
 | `description` | Yes | 1-2 sentence excerpt. 50-160 chars recommended for SEO. Used in meta tags and Open Graph. |
-| `pubDate` | Yes | Publication date. Accepts various formats (`'Jan 31 2026'`, `2026-01-31`). Also used as date prefix in filename. If set to a future date, the post is **scheduled** (hidden until rebuild after that date). |
+| `pubDate` | Yes | Publication date/time. Accepts date-only (`'2026-01-31'`) or datetime (`'2026-01-31T14:00:00'`). For scheduled posts, datetime allows precise scheduling with time shown in badges. Date-only defaults to midnight. |
 | `updatedDate` | No | Last significant update. Displayed with "Last updated on" label. |
 | `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}` |
 | `heroLayout` | No | How the hero image is displayed. Default: `'banner'`. See [Hero Layouts](#hero-layouts). |

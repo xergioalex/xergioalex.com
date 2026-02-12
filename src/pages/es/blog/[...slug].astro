@@ -44,6 +44,7 @@ const wordCount = getWordCount(post.body ?? '');
 const postStatus = getPostStatus(post);
 const isDemo = isDemoPost(post);
 const isDev = import.meta.env.DEV;
+const hasScheduledTime = pubDate.getHours() !== 0 || pubDate.getMinutes() !== 0;
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
   tags: tags ?? [],
@@ -138,7 +139,7 @@ const breadcrumbData = {
               {postStatus === 'draft+scheduled' ? t.postStatus.draft : t.postStatus[postStatus]}
               {postStatus.includes('scheduled') && (
                 <span class="ml-1 opacity-75">
-                  — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}{hasScheduledTime ? `, ${pubDate.toLocaleTimeString(t.dateLocale, { hour: '2-digit', minute: '2-digit' })}` : ''}
                 </span>
               )}
             </div>
@@ -147,7 +148,7 @@ const breadcrumbData = {
             <div class="p-3 rounded-lg border-2 text-sm font-medium bg-blue-50 border-blue-300 text-blue-800 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300">
               {t.postStatus.scheduled}
               <span class="ml-1 opacity-75">
-                — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+                — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}{hasScheduledTime ? `, ${pubDate.toLocaleTimeString(t.dateLocale, { hour: '2-digit', minute: '2-digit' })}` : ''}
               </span>
             </div>
           )}

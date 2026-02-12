@@ -23,12 +23,27 @@ const sizeClasses = {
   lg: 'text-base px-4 py-1.5',
 };
 
+// Check if date has a non-midnight time component
+function hasTime(date: Date): boolean {
+  return date.getHours() !== 0 || date.getMinutes() !== 0;
+}
+
+$: scheduledDate = pubDate ? new Date(pubDate) : null;
+
 $: formattedPubDate =
-  pubDate && status.includes('scheduled')
-    ? new Date(pubDate).toLocaleDateString(t.dateLocale, {
+  scheduledDate && status.includes('scheduled')
+    ? scheduledDate.toLocaleDateString(t.dateLocale, {
         year: 'numeric',
         month: 'short',
         day: 'numeric',
+      })
+    : '';
+
+$: formattedPubTime =
+  scheduledDate && status.includes('scheduled') && hasTime(scheduledDate)
+    ? scheduledDate.toLocaleTimeString(t.dateLocale, {
+        hour: '2-digit',
+        minute: '2-digit',
       })
     : '';
 
@@ -57,7 +72,7 @@ $: showContentStatus = status !== 'published';
       >
         {t.postStatus.scheduled}
         {#if formattedPubDate && size !== 'sm'}
-          <span class="opacity-75">· {formattedPubDate}</span>
+          <span class="opacity-75">· {formattedPubDate}{#if formattedPubTime}, {formattedPubTime}{/if}</span>
         {/if}
       </span>
     {/if}

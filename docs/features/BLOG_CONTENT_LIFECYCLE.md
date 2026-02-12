@@ -24,13 +24,10 @@ Every blog post has a **status** determined by two factors: the `draft` frontmat
 
 ### Status Detection Logic
 
-Status is determined by `getPostStatus()` in `src/lib/blog.ts`:
+Content status is determined by `getPostStatus()` in `src/lib/blog.ts`:
 
 ```typescript
 function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
-  // Demo: file path contains '/_demo/'
-  if (post.id.includes('/_demo/')) return 'demo';
-
   const isDraft = post.data.draft === true;
   const isScheduled = post.data.pubDate.valueOf() > Date.now();
 
@@ -41,7 +38,21 @@ function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
 }
 ```
 
-**Priority:** Demo detection takes precedence over draft/scheduled checks. A demo post is always `demo` regardless of its `draft` or `pubDate` values.
+Demo detection is separate via `isDemoPost(post)` which checks `post.id.includes('/_demo/')`. This allows demo posts to also show their content status (draft, scheduled) alongside the demo badge.
+
+### Datetime Support
+
+The `pubDate` field supports both date-only and datetime formats:
+
+```yaml
+# Date-only (time defaults to midnight UTC)
+pubDate: '2026-03-15'
+
+# Datetime with specific time (for precise scheduling)
+pubDate: '2026-03-15T14:00:00'
+```
+
+When a scheduled post uses datetime format, the status badge and detail page banner will show the time alongside the date. Date-only posts show only the date (no "00:00" displayed).
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 'Próximamente: Mis Predicciones Tech para 2030'
 description: 'Un post programado que se publicara automaticamente en una fecha futura — demostrando la funcionalidad de programación'
-pubDate: '2030-06-15'
+pubDate: '2030-06-15T14:00:00'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']

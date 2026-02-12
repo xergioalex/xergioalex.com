@@ -1,7 +1,7 @@
 ---
 title: 'Borrador + Programado: Preparación de Charla para Conferencia'
 description: 'Un post que es borrador y programado a futuro al mismo tiempo — el estado de mayor ocultación'
-pubDate: '2030-12-01'
+pubDate: '2030-12-01T09:30:00'
 heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
