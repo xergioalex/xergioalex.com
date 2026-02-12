@@ -242,6 +242,8 @@ export interface SiteTranslations {
     roleText: string;
     featuresTitle: string;
     features: HighlightItem[];
+    timelineTitle: string;
+    emptyState: string;
     ctaText: string;
     ctaLink: string;
   };
@@ -874,6 +876,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
           icon: '\u{1F517}',
         },
       ],
+      timelineTitle: 'DailyBot Articles',
+      emptyState: 'No DailyBot articles available yet. Check back soon!',
       ctaText: 'Visit DailyBot',
       ctaLink: 'https://dailybot.com',
     },
@@ -1329,6 +1333,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       talks: 'Talks',
       trading: 'Trading',
       portfolio: 'Portfolio',
+      dailybot: 'DailyBot',
       demo: 'Demo',
     },
     tagDescriptions: {
@@ -1337,6 +1342,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       talks: 'Tech talks, slides, videos, and events.',
       trading: 'Trading journal, analysis, and learnings.',
       portfolio: 'Personal projects, software, robotics, and open source work.',
+      dailybot:
+        'DailyBot articles: product journey, workflow automation, and team productivity.',
       demo: 'Demo posts showcasing blog features. Only visible in dev mode.',
     },
 
@@ -1784,6 +1791,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
           icon: '\u{1F517}',
         },
       ],
+      timelineTitle: 'Artículos sobre DailyBot',
+      emptyState: '¡Aún no hay artículos sobre DailyBot. Vuelve pronto!',
       ctaText: 'Visitar DailyBot',
       ctaLink: 'https://dailybot.com',
     },
@@ -2244,6 +2253,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       talks: 'Charlas',
       trading: 'Trading',
       portfolio: 'Portafolio',
+      dailybot: 'DailyBot',
       demo: 'Demo',
     },
     tagDescriptions: {
@@ -2253,6 +2263,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       trading: 'Diario de trading, análisis y aprendizajes.',
       portfolio:
         'Proyectos personales, software, robótica y trabajo open source.',
+      dailybot:
+        'Artículos sobre DailyBot: historia del producto, automatización de flujos y productividad de equipos.',
       demo: 'Posts de demostración mostrando funcionalidades del blog. Solo visibles en modo desarrollo.',
     },
 

@@ -1,13 +1,21 @@
 ---
+import DailyBotTimeline from '@/components/dailybot/DailyBotTimeline.svelte';
 import HighlightCard from '@/components/pages/HighlightCard.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
 
 const lang: Language = 'es';
 const t = getTranslations(lang);
+
+const { postsResult: posts } = await getBlogPosts({
+  lang,
+  tag: 'dailybot',
+  pageSize: 100,
+});
 ---
 
 <MainLayout lang={lang} title={t.dailybotPage.title} description={t.dailybotPage.description}>
@@ -35,6 +43,15 @@ const t = getTranslations(lang);
       ))}
     </div>
   </PageSection>
+
+  <section class="py-12 md:py-16">
+    <div class="main-container">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+        {t.dailybotPage.timelineTitle}
+      </h2>
+      <DailyBotTimeline client:load posts={posts} lang={lang} />
+    </div>
+  </section>
 
   <section class="py-16 md:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="main-container text-center">
