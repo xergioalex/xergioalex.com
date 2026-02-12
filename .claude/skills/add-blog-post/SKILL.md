@@ -76,7 +76,7 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Directories:** `src/content/blog/en/` and `src/content/blog/es/`
 
-**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`
+**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `draft`
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
@@ -336,5 +336,6 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.1.0   | 2026-02-12 | Added `draft` field to frontmatter reference. Blog posts now support draft/scheduled/demo lifecycle. |
 | 2.0.0   | 2026-02-11 | Unified with write-article skill. Added topic mode, voice rules, article structure. |
 | 1.0.0   | 2026-02-10 | Initial version (content mode only) |
