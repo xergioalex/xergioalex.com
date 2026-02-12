@@ -11,15 +11,18 @@ export let searchResult:
 
 $: t = getTranslations(lang);
 
-// Helper function to get post slug without language prefix
-// e.g., "en/first-post" -> "first-post" or just "first-post" -> "first-post"
+// Helper function to get post slug without language prefix or date prefix
+// e.g., "en/2022-07-08_first-post" -> "first-post"
 function getPostSlug(): string {
   const id = post.id || post.slug || '';
   // Remove language prefix if present (en/, es/)
-  if (id.startsWith('en/') || id.startsWith('es/')) {
-    return id.substring(3);
+  let slug = id;
+  if (slug.startsWith('en/') || slug.startsWith('es/')) {
+    slug = slug.substring(3);
   }
-  return id;
+  // Remove date prefix (YYYY-MM-DD.) if present
+  slug = slug.replace(/^\d{4}-\d{2}-\d{2}_/, '');
+  return slug;
 }
 
 // Helper function to get post data regardless of structure

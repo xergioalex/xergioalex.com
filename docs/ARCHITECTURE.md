@@ -285,6 +285,8 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
+    heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
+      .default('banner').optional(),
     tags: z.array(z.string()).optional(),
   }),
 });
@@ -320,16 +322,18 @@ const sortedPosts = allPosts.sort(
 
 ### Content File Structure
 
+Files use date-prefix naming: `YYYY-MM-DD_slug.{md,mdx}`. The date prefix is stripped from URLs.
+
 ```
 src/content/
 ├── blog/
-│   ├── en/              # English blog posts
-│   │   ├── first-post.md
-│   │   ├── using-mdx.mdx
+│   ├── en/                              # English posts
+│   │   ├── 2020-12-31_personal-branding-xergioalex.md
+│   │   ├── 2022-07-08_first-post.md
 │   │   └── ...
-│   └── es/              # Spanish blog posts (matching filenames)
-│       ├── first-post.md
-│       ├── using-mdx.mdx
+│   └── es/                              # Spanish posts (matching filenames)
+│       ├── 2020-12-31_personal-branding-xergioalex.md
+│       ├── 2022-07-08_first-post.md
 │       └── ...
 └── tags/
     ├── tech.md
@@ -346,13 +350,15 @@ src/content/
 title: "My Blog Post"
 description: "A description of the post"
 pubDate: 2024-01-15
-updatedDate: 2024-01-20
-heroImage: "/images/hero.jpg"
-tags: ["tech", "tutorial"]
+heroImage: "/images/blog/posts/my-blog-post/hero.jpg"
+heroLayout: "banner"
+tags: ["tech"]
 ---
 
 Post content in Markdown or MDX...
 ```
+
+For complete blog post documentation including hero layouts, image organization, and naming conventions, see **[Blog Posts Feature Guide](features/BLOG_POSTS.md)**.
 
 ## Routing System
 

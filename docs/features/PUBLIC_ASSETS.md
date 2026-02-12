@@ -121,9 +121,34 @@ Site images for branding, projects, and sections. See **[Brand Guide](../BRAND_G
 <img src="/images/profile.png" alt="Profile photo" />
 ```
 
+### Blog Images
+
+Blog images are organized in per-post folders under `public/images/blog/`:
+
+```
+public/images/blog/
+├── posts/{slug}/        # Per-post image folders
+│   ├── hero.{ext}       # Hero/cover image
+│   └── {name}.{ext}     # Inline images
+├── shared/              # Shared images (placeholders, common assets)
+└── _staging/            # Drop zone for new images (processed by optimizer)
+```
+
+**New images** should be added via the staging workflow using `npm run images:optimize`. See **[Image Optimization](./IMAGE_OPTIMIZATION.md)** for the complete workflow.
+
+**Hero image path convention:**
+
+```markdown
+---
+heroImage: '/images/blog/posts/{slug}/hero.jpg'
+---
+```
+
+For complete blog image conventions, see **[Blog Posts](./BLOG_POSTS.md#image-organization)**.
+
 ### Blog Placeholders
 
-Placeholder images for blog posts without hero images.
+Legacy placeholder images for blog posts without hero images.
 
 | File | Index |
 |------|-------|
@@ -133,14 +158,6 @@ Placeholder images for blog posts without hero images.
 | `blog-placeholder-4.jpg` | 4 |
 | `blog-placeholder-5.jpg` | 5 |
 | `blog-placeholder-about.jpg` | About page |
-
-**Usage in blog posts:**
-
-```markdown
----
-heroImage: '/blog-placeholder-1.jpg'
----
-```
 
 ### Scripts
 

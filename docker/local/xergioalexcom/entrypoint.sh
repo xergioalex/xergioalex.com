@@ -56,14 +56,30 @@ setup_claude_persistence_for_user() {
         rm "${CLAUDE_JSON_BACKUP}"
         ln -sf "${CLAUDE_DATA_DIR}/claude.json.backup" "${CLAUDE_JSON_BACKUP}"
     fi
-    
+
+    # Handle .config/claude-code directory (auth tokens from native installer)
+    CLAUDE_CONFIG_DIR="${USER_HOME}/.config/claude-code"
+    mkdir -p "${USER_HOME}/.config"
+    if [ ! -L "${CLAUDE_CONFIG_DIR}" ]; then
+        if [ -d "${CLAUDE_CONFIG_DIR}" ]; then
+            # Only seed from image if volume has no existing data
+            if [ ! -d "${CLAUDE_DATA_DIR}/config_claude_code" ] || [ -z "$(ls -A "${CLAUDE_DATA_DIR}/config_claude_code" 2>/dev/null)" ]; then
+                cp -r "${CLAUDE_CONFIG_DIR}" "${CLAUDE_DATA_DIR}/config_claude_code"
+            fi
+            rm -rf "${CLAUDE_CONFIG_DIR}"
+        else
+            mkdir -p "${CLAUDE_DATA_DIR}/config_claude_code"
+        fi
+        ln -sf "${CLAUDE_DATA_DIR}/config_claude_code" "${CLAUDE_CONFIG_DIR}"
+    fi
+
     echo "Claude CLI persistence setup complete for ${USER_HOME}"
 }
 
 # Setup Claude persistence for both root and node user
 setup_claude_persistence_for_user "/root"
 setup_claude_persistence_for_user "/home/node"
-chown -R node:node /home/node/.claude_data /home/node/.claude.json /home/node/.claude 2>/dev/null || true
+chown -R node:node /home/node/.claude_data /home/node/.claude.json /home/node/.claude /home/node/.config/claude-code 2>/dev/null || true
 
 # Setup Codex CLI persistence with symlinks for a given user
 # This ensures OpenAI Codex config persists across container rebuilds

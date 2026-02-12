@@ -1,10 +1,11 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
-import FormattedDate from '@/components/FormattedDate.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
+  getPostSlug,
   getReadingTimeFromContent,
   getRelatedPosts,
   getWordCount,
@@ -19,8 +20,8 @@ export async function getStaticPaths() {
   // Only English posts (in en/ folder)
   const posts = allPosts.filter((post) => post.id.startsWith('en/'));
   return posts.map((post) => ({
-    // Remove language prefix from URL: "en/first-post" -> "first-post"
-    params: { slug: post.id.replace('en/', '') },
+    // Remove language prefix and date prefix from URL
+    params: { slug: getPostSlug(post.id) },
     props: post,
   }));
 }
@@ -108,7 +109,7 @@ const breadcrumbData = {
     {tags?.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
   <main class="main-container py-16 md:py-24">
-    <article class="mx-auto max-w-5xl">
+    <article>
       <nav aria-label="Breadcrumb" class="mb-6 text-sm text-[rgb(var(--gray))]">
         <a href="/" class="transition-colors hover:text-blue-600 dark:hover:text-blue-400">{t.nav.home}</a>
         <span class="mx-2">/</span>
@@ -116,56 +117,20 @@ const breadcrumbData = {
         <span class="mx-2">/</span>
         <span class="truncate text-[rgb(var(--gray-dark))] dark:text-gray-300">{title}</span>
       </nav>
-      <div class="w-full overflow-hidden rounded-xl">
-        {
-          heroImage && (
-            <img
-              width={1020}
-              height={510}
-              src={heroImage}
-              alt={title}
-              loading="eager"
-              class="block h-auto w-full rounded-xl object-cover shadow-(--box-shadow)"
-            />
-          )
-        }
+      <BlogPostHeader
+        title={title}
+        pubDate={pubDate}
+        updatedDate={updatedDate}
+        heroImage={heroImage}
+        heroLayout={post.data.heroLayout}
+        tags={tags}
+        lang={lang}
+        readingTimeMinutes={readingTimeMinutes}
+      />
+      <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400">
+        <Content />
       </div>
-      <div class="mt-6 text-[rgb(var(--gray-dark))] dark:text-gray-100">
-        <div class="mb-6 border-b border-gray-200 py-4 text-center dark:border-gray-700">
-          <div class="mb-3 flex flex-wrap items-center justify-center gap-3 text-sm text-[rgb(var(--gray))]">
-            <FormattedDate date={pubDate} lang={lang} />
-            <span aria-hidden="true">•</span>
-            <span>{t.readingTime(readingTimeMinutes)}</span>
-            {
-              updatedDate && (
-                <div class="italic">
-                  <span aria-hidden="true">•</span>{' '}
-                  {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
-                </div>
-              )
-            }
-          </div>
-          <h1 class="m-0 mb-3 text-balance text-4xl font-extrabold">{title}</h1>
-          {
-            tags && tags.length > 0 && (
-              <div class="mb-2 flex flex-wrap justify-center gap-2">
-                {tags.map((tag) => (
-                  <a
-                    href={`/blog/tag/${tag}/`}
-                    class="rounded bg-blue-100 px-3 py-1 text-sm text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
-                  >
-                    #{t.tagNames[tag] || tag}
-                  </a>
-                ))}
-              </div>
-            )
-          }
-        </div>
-        <div class="prose prose-lg prose-slate mx-auto max-w-3xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400">
-          <Content />
-        </div>
-        <RelatedArticles posts={relatedPosts} lang={lang} />
-      </div>
+      <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
   </main>
 </MainLayout>

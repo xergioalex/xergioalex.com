@@ -6,11 +6,13 @@ This directory contains detailed documentation for specific features implemented
 
 | Feature | File | Description |
 |---------|------|-------------|
+| Blog Posts | [BLOG_POSTS.md](./BLOG_POSTS.md) | Post structure, naming, frontmatter, hero layouts |
 | Blog Search | [BLOG_SEARCH.md](./BLOG_SEARCH.md) | Client-side search functionality |
 | Dark Mode | [DARK_MODE.md](./DARK_MODE.md) | Theme toggle and persistence |
-| Public Assets | [PUBLIC_ASSETS.md](./PUBLIC_ASSETS.md) | Static assets structure (`public/`) |
+| Image Optimization | [IMAGE_OPTIMIZATION.md](./IMAGE_OPTIMIZATION.md) | Sharp-based image pipeline and staging workflow |
 | Internationalization | [I18N.md](./I18N.md) | Multi-language support |
 | Pagination | [PAGINATION.md](./PAGINATION.md) | Blog post pagination |
+| Public Assets | [PUBLIC_ASSETS.md](./PUBLIC_ASSETS.md) | Static assets structure (`public/`) |
 | RSS Feed | [RSS_FEED.md](./RSS_FEED.md) | RSS feed generation |
 
 ## Feature Documentation Pattern

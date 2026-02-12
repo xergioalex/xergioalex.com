@@ -12,6 +12,8 @@ RUN apt-get update -y && \
     # Install Claude Code CLI (native installer, npm method is deprecated)
     curl -fsSL https://claude.ai/install.sh | bash && \
     ln -sf /root/.local/bin/claude /usr/local/bin/claude && \
+    # Clean up installer artifacts to prevent overwriting persistent volume on rebuild
+    rm -rf /root/.claude /root/.claude.json && \
     # Install Codex CLI globally
     npm install -g @openai/codex && \
     # --- Clean ---
@@ -56,7 +58,8 @@ RUN mkdir -p /home/node/.claude_data /home/node/.codex_data /home/node/.cursor_d
 
 # Install Claude Code CLI for node user as well
 USER node
-RUN curl -fsSL https://claude.ai/install.sh | bash
+RUN curl -fsSL https://claude.ai/install.sh | bash \
+    && rm -rf /home/node/.claude /home/node/.claude.json
 USER root
 
 # Install Cursor CLI for node user as well

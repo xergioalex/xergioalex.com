@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
+import { getPostSlug } from '@/lib/blog';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
 
 export async function GET(context) {
@@ -13,7 +14,7 @@ export async function GET(context) {
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
-      link: `/blog/${post.id.replace('en/', '')}/`,
+      link: `/blog/${getPostSlug(post.id)}/`,
       categories: post.data.tags || [],
     })),
   });
