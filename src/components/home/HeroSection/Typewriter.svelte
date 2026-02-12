@@ -49,6 +49,8 @@ if (words && words.length > 0) {
 }
 </script>
 
-<span class="whitespace-nowrap border-r-2 border-blue-400 pr-1 animate-pulse text-white font-bold text-xl md:text-2xl drop-shadow-lg">
+<span
+  class="whitespace-nowrap border-r-2 border-blue-400 pr-1 animate-pulse text-white font-bold text-lg sm:text-xl md:text-2xl [@media(max-height:760px)]:text-base drop-shadow-lg"
+>
   {display}
 </span> 

@@ -11,7 +11,7 @@ const { name, tagline, description, typewriterWords } = Astro.props;
 ---
 
 <section
-  class="bg-main relative h-[calc(100dvh-68px)] flex flex-col justify-center items-center transition-colors duration-300 overflow-y-auto"
+  class="bg-main relative h-[calc(100dvh-68px)] flex flex-col justify-center items-center transition-colors duration-300 overflow-hidden"
 >
   <!-- Grid background -->
   <div aria-hidden="true" class="absolute inset-0 pointer-events-none z-0">
@@ -26,34 +26,36 @@ const { name, tagline, description, typewriterWords } = Astro.props;
     </svg>
   </div>
   <div
-    class="main-container relative z-10 flex flex-col items-center justify-center w-full pt-2 pb-2 sm:pt-4 sm:pb-4 md:pt-8 md:pb-8"
+    class="main-container relative z-10 flex flex-col items-center justify-center w-full pt-2 pb-2 sm:pt-4 sm:pb-4 md:pt-8 md:pb-8 [@media(max-height:900px)]:pt-2 [@media(max-height:900px)]:pb-2 [@media(max-height:820px)]:scale-95 [@media(max-height:760px)]:scale-90 [@media(max-height:700px)]:scale-85"
   >
     <img
       src="/images/logo_full.svg"
       alt="XergioAleX Logo"
-      class="w-[20rem] xl:w-[28rem] max-w-full mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-105"
+      class="w-[16rem] sm:w-[18rem] md:w-[20rem] xl:w-[26rem] max-w-full mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-105"
       draggable="false"
       style="user-select: none;"
     />
     {tagline && (
-      <p class="mt-2 text-base sm:text-lg md:text-xl text-gray-400 text-center font-medium tracking-wide">
+      <p
+        class="mt-2 text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 text-center font-medium tracking-wide [@media(max-height:760px)]:text-sm"
+      >
         {tagline}
       </p>
     )}
     <h1
-      class="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white text-center drop-shadow-lg"
+      class="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white text-center drop-shadow-lg leading-tight px-4"
     >
       {name}
     </h1>
-    <div class="mt-3">
+    <div class="mt-2 sm:mt-3">
       <Typewriter client:load words={typewriterWords} speed={80} pause={1800} />
     </div>
     <p
-      class="mt-4 text-sm sm:text-base md:text-lg text-gray-300 text-center max-w-2xl px-4"
+      class="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-gray-300 text-center max-w-2xl px-4 [@media(max-height:760px)]:text-sm"
       set:html={description}
     />
     <!-- Social icons -->
-    <div class="flex gap-6 mt-6">
+    <div class="flex gap-4 sm:gap-6 mt-4 sm:mt-6">
       <a
         href="https://github.com/xergioalex"
         target="_blank"
@@ -61,7 +63,7 @@ const { name, tagline, description, typewriterWords } = Astro.props;
         aria-label="GitHub"
         class="p-2 hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/github_white.svg" alt="GitHub" class="w-8 h-8" />
+        <img src="/icons/github_white.svg" alt="GitHub" class="w-7 h-7 sm:w-8 sm:h-8" />
       </a>
       <a
         href="https://www.linkedin.com/in/xergioalex/"
@@ -70,7 +72,7 @@ const { name, tagline, description, typewriterWords } = Astro.props;
         aria-label="LinkedIn"
         class="p-2 hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/linkedin_white.svg" alt="LinkedIn" class="w-8 h-8" />
+        <img src="/icons/linkedin_white.svg" alt="LinkedIn" class="w-7 h-7 sm:w-8 sm:h-8" />
       </a>
       <a
         href="https://x.com/XergioAleX"
@@ -79,7 +81,7 @@ const { name, tagline, description, typewriterWords } = Astro.props;
         aria-label="X"
         class="p-2 hover:opacity-80 transition-opacity"
       >
-        <img src="/icons/x_white.svg" alt="X" class="w-8 h-8" />
+        <img src="/icons/x_white.svg" alt="X" class="w-7 h-7 sm:w-8 sm:h-8" />
       </a>
       <a
         href="https://www.instagram.com/xergioalex"
@@ -91,14 +93,14 @@ const { name, tagline, description, typewriterWords } = Astro.props;
         <img
           src="/icons/instagram_white.svg"
           alt="Instagram"
-          class="w-8 h-8"
+          class="w-7 h-7 sm:w-8 sm:h-8"
         />
       </a>
     </div>
     <img
       src="/icons/chevron_down_white.svg"
       alt="Chevron down"
-      class="mt-6 animate-chevron-bounce"
+      class="mt-4 sm:mt-6 w-5 sm:w-6 animate-chevron-bounce"
       draggable="false"
       style="user-select: none;"
     />
