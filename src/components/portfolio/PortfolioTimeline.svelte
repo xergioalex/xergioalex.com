@@ -21,7 +21,9 @@ $: prefix = lang === 'es' ? '/es' : '';
 
 function getPostSlug(postId: string): string {
   const parts = postId.split('/');
-  return parts.length > 1 ? parts.slice(1).join('/') : postId;
+  const filename = parts.length > 1 ? parts.slice(1).join('/') : postId;
+  // Strip date prefix (YYYY-MM-DD.) if present
+  return filename.replace(/^\d{4}-\d{2}-\d{2}_/, '');
 }
 
 function formatDate(date: Date): string {

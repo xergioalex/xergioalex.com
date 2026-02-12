@@ -53,6 +53,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 - Dark mode toggle
 - RSS feed and sitemap
 - Client-side search
+- Image optimization pipeline (sharp)
 - GitHub Pages deployment
 
 ## Project Structure
@@ -78,8 +79,8 @@ src/
 │       └── MobileMenu.svelte
 ├── content/                 # Content Collections
 │   ├── blog/                # Blog posts (Markdown/MDX)
-│   │   ├── first-post.md
-│   │   └── using-mdx.mdx
+│   │   ├── en/              # English posts (YYYY-MM-DD_slug.md)
+│   │   └── es/              # Spanish posts (YYYY-MM-DD_slug.md)
 │   └── tags/                # Tag definitions
 │       ├── tech.md
 │       └── personal.md
@@ -109,10 +110,18 @@ src/
 
 public/                      # Static assets
 ├── images/                  # Site images
+│   └── blog/                # Blog images
+│       ├── posts/{slug}/    # Per-post image folders
+│       ├── shared/          # Shared images (placeholders)
+│       └── _staging/        # Incoming images (temp)
 ├── icons/                   # Social icons
 ├── fonts/                   # Custom fonts
 └── scripts/
     └── global.theme.js      # Theme persistence
+
+scripts/                     # Build/utility scripts
+├── optimize-images.mjs      # Staging image optimizer
+└── optimize-existing-images.mjs  # One-off optimizer
 
 docs/                        # Project documentation
 ```
@@ -270,6 +279,9 @@ npm run astro:check        # TypeScript type checking
 npm run ncu:check          # Check for package updates
 npm run ncu:upgrade        # Upgrade all packages
 
+# Images
+npm run images:optimize    # Process staged images (resize, compress, move)
+
 # Release
 npm run release            # Bump version and create release commit
 ```
@@ -325,6 +337,7 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
+    heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none']).default('banner').optional(),
     tags: z.array(z.string()).optional(),
   }),
 });
@@ -423,6 +436,57 @@ The `analysis_results/` folder is an optional convention for storing analysis re
 
 > This is distinct from DWP plan `analysis_results/` folders, which are auto-created inside plan folders and are temporary execution artifacts.
 
+## Blog Post Conventions
+
+### Blog Post File Naming
+
+Blog posts use date-prefix naming for chronological ordering:
+
+- **Format:** `YYYY-MM-DD_slug.{md,mdx}` (underscore separator)
+- **Example:** `2024-03-15_my-awesome-post.md`
+- **Location:** `src/content/blog/en/` and `src/content/blog/es/`
+- The date prefix is stripped from URLs (clean slugs: `/blog/my-awesome-post/`)
+- Use the post's `pubDate` as the date prefix
+- Use `getPostSlug()` from `@/lib/blog` to extract clean slugs from post IDs
+
+### Blog Post Hero Layouts
+
+Posts support a `heroLayout` frontmatter field:
+
+- `banner` (default): Full-width image above title. Best for landscape/wide images (16:9, 2:1).
+- `side-by-side`: Two-column layout -- title left, image right. Best for square images (1:1). Stacks on mobile.
+- `minimal`: Small thumbnail with text-focused layout. For posts where the image is secondary.
+- `none`: No hero image area. For text-only posts.
+
+When creating a post, choose the layout based on the hero image aspect ratio.
+
+### Blog Image Organization
+
+Images are stored in per-post folders:
+
+```
+public/images/blog/
+├── posts/{slug}/           # Per-post folders
+│   ├── hero.{ext}          # Hero/cover image
+│   └── {name}.{ext}        # Inline images
+├── shared/                 # Shared across posts (placeholders)
+└── _staging/               # Incoming images (temp)
+```
+
+**Naming conventions:**
+
+- Hero images: `hero.{jpg,png,webp}`
+- Inline images: `{descriptive-name}.{ext}` (lowercase, kebab-case)
+- Folder name matches the post slug (without date prefix)
+- Hero image path in frontmatter: `/images/blog/posts/{slug}/hero.jpg`
+
+**Image optimization:**
+
+- Use `npm run images:optimize` to process staged images
+- Drop images in `_staging/` with naming: `{slug}--{name}.{ext}`
+- Script resizes (max 1400px heroes, 1200px others), compresses, and moves to final destination
+- Use `--webp` flag for WebP variants, `--dry-run` for preview
+
 ## Common Mistakes to Avoid
 
 ### ❌ DON'T:
@@ -439,6 +503,9 @@ The `analysis_results/` folder is an optional convention for storing analysis re
 10. Forget dark mode support in new components
 11. Create content (pages, blog posts) in only one language
 12. Add translation strings for only one language in `translations.ts`
+13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
+14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
+15. Commit unoptimized large images (use `npm run images:optimize`)
 
 ### ✅ DO:
 
@@ -454,6 +521,9 @@ The `analysis_results/` folder is an optional convention for storing analysis re
 10. Keep pages simple, delegate to components
 11. Always create/update content in both English and Spanish
 12. Use `/translate-sync` when synchronizing existing content between languages
+13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
+14. Set `heroLayout` based on image aspect ratio
+15. Use the image staging and optimization workflow
 
 ## Pre-Commit Checklist
 
@@ -476,7 +546,7 @@ This repository includes a system for creating reusable **Skills** and **Agents*
 - **Skills**: Reusable "how-to" procedures invoked via slash commands (e.g., `/quick-fix`, `/doc-edit`)
 - **Agents**: Specialized worker personas for specific tasks (e.g., `reviewer`, `executor`, `architect`)
 
-**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `write-article`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`.
+**Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`.
 
 Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills_agents_catalog.md).
 
@@ -518,6 +588,7 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 ### Documentation
 
 - [Product Spec](docs/PRODUCT_SPEC.md)
+- [Brand Guide](docs/BRAND_GUIDE.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Testing](docs/TESTING_GUIDE.md)
 - [Commands](docs/DEVELOPMENT_COMMANDS.md)

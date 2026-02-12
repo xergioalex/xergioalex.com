@@ -369,6 +369,6 @@ const translations = {
 
 - [Content Collections](../content/README.md)
 - [Blog Components](../components/blog/README.md)
-- [Features: Blog Search](../../docs/features/blog-search.md)
+- [Features: Blog Search](../../docs/features/BLOG_SEARCH.md)
 - [API Reference](../../docs/API_REFERENCE.md)
 - [Architecture](../../docs/ARCHITECTURE.md)

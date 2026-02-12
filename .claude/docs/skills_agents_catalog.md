@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 12             | 3                  | 0              | 15    |
+| Skills | 11             | 3                  | 0              | 14    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **12**      | **8**              | **1**          | **21** |
+| **Total** | **11**      | **8**              | **1**          | **20** |
 
 ---
 
@@ -31,7 +31,6 @@ Fast, low-risk, pattern-following tasks.
 | git-commit-push | execute| `/git-commit-push`| haiku  | Commit all changes and push to remote                                       |
 | add-component   | create | `/add-component`  | haiku  | Create new Astro or Svelte component with correct patterns                  |
 | add-page        | create | `/add-page`       | haiku  | Create new page with routing and MainLayout                                 |
-| add-blog-post   | create | `/add-blog-post`  | haiku  | Create blog post with Content Collections frontmatter                       |
 | translate-sync  | execute| `/translate-sync` | haiku  | Synchronize content between English and Spanish versions                    |
 | update-styles   | fix    | `/update-styles`  | haiku  | Update Tailwind styles with dark mode support                               |
 
@@ -41,9 +40,9 @@ Everyday development work.
 
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
+| add-blog-post | create   | `/add-blog-post` | sonnet | Create blog posts — topic mode (writes content) or content mode (scaffolding) |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
-| write-article | create   | `/write-article` | sonnet | Write bilingual blog post or portfolio article with personal-professional voice |
 
 ### Tier 3 (Heavy/Reasoning)
 
@@ -104,9 +103,9 @@ This diagram shows how skills and agents interact during typical workflows.
   │   validates each step                             ▼          │
   │                                          ┌────────────────┐  │
   │                                          │ Tier 2 Skills  │  │
+  │                                          │ add-blog-post  │  │
   │                                          │ write-tests    │  │
   │                                          │ refactor-safe  │  │
-  │                                          │ write-article  │  │
   │                                          └────────┬───────┘  │
   │                                                   │          │
   │   content-writer ◄──── writes articles ───────────┘          │
@@ -138,7 +137,7 @@ This diagram shows how skills and agents interact during typical workflows.
 
 1. **architect** creates an implementation plan (Tier 3)
 2. **executor** follows the plan, invoking Tier 1/2 skills as needed (Tier 2)
-3. **content-writer** crafts blog posts and portfolio articles using `/write-article` (Tier 2)
+3. **content-writer** crafts blog posts and portfolio articles using `/add-blog-post` (Tier 2)
 4. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
 5. Issues found are fixed using atomic Tier 1 skills
 
@@ -148,14 +147,16 @@ This diagram shows how skills and agents interact during typical workflows.
 
 ### 1. Blog & Content Development
 
-Skills and agents for creating and managing blog content.
+Skills, commands, and agents for creating and managing blog content.
 
 | Resource | Type | Description |
 |----------|------|-------------|
-| add-blog-post | Skill (T1) | Create bilingual blog posts with Content Collections frontmatter |
-| write-article | Skill (T2) | Write bilingual blog post or portfolio article with personal-professional voice |
+| new-post | Command | Interactive guided flow for creating blog posts (`/new-post`) |
+| add-blog-post | Skill (T2) | Create blog posts — topic mode (writes) or content mode (scaffolding) |
 | doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
 | content-writer | Agent (T2) | Expert bilingual content writer with personal-professional voice |
+
+**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md`.
 
 ### 2. i18n & Translation
 
@@ -165,7 +166,7 @@ Resources for bilingual content management (English/Spanish).
 |----------|------|-------------|
 | translate-sync | Skill (T1) | Synchronize content between English and Spanish versions |
 | add-page | Skill (T1) | Create bilingual pages with routing (en + es) |
-| add-blog-post | Skill (T1) | Create bilingual blog posts (en + es) |
+| add-blog-post | Skill (T2) | Create bilingual blog posts (en + es) — topic or content mode |
 | i18n-guardian | Agent (T2) | Translation quality specialist; bilingual consistency enforcer |
 
 ### 3. Code Quality & Review
@@ -223,7 +224,7 @@ Use this table to decide whether to invoke a Skill or an Agent.
 - **architect** (Agent) produces a plan, then **executor** (Agent) implements it using **add-component**, **add-page**, and **write-tests** (Skills)
 - **reviewer** (Agent) finds issues, then **fix-lint**, **type-fix**, or **quick-fix** (Skills) resolve them
 - **i18n-guardian** (Agent) audits translations, then **translate-sync** (Skill) synchronizes content
-- **content-writer** (Agent) crafts narrative articles, using **write-article** (Skill) for structured creation and **i18n-guardian** (Agent) for translation quality
+- **content-writer** (Agent) crafts narrative articles, using **add-blog-post** (Skill) for file creation and **i18n-guardian** (Agent) for translation quality
 
 ---
 
@@ -294,6 +295,8 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-02-11 | new-post command created | Interactive guided command for blog post creation. Asks questions step by step, handles images, optimization, and validation. |
+| 2026-02-11 | write-article merged into add-blog-post | Unified skill with topic mode (writes from scratch) and content mode (scaffolding). Deleted write-article. |
 | 2026-02-10 | content-writer, write-article added | Expert bilingual content writer agent and article writing skill with personal-professional voice, narrative structure, and bilingual enforcement |
 | 2026-02-10 | Responsive design guidance added | Enhanced `update-styles` skill with responsive design patterns, breakpoint reference, touch target sizing, and heading scaling examples. Enhanced `reviewer` agent with responsive design verification checklist (breakpoint coverage, dark mode pairing, touch targets, heading scales). |
 | 2026-02-04 | Format migration | Migrated all skills and agents to official Agent Skills standard format with model routing, allowed-tools, and compatibility fields |
