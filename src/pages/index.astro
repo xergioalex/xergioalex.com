@@ -5,6 +5,7 @@ import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
 import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
 import PortfolioPostsSection from '@/components/home/PortfolioPostsSection.astro';
+import TechTalksPostsSection from '@/components/home/TechTalksPostsSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
@@ -69,6 +70,9 @@ const t = getTranslations(lang);
 		image="/images/techtalks.png"
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 	/>
+
+	<!-- Tech Talks Posts Section -->
+	<TechTalksPostsSection lang={lang} />
 
 	<!-- Trading Section -->
 	<HomeSection
