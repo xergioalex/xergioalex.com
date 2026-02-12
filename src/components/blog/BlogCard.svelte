@@ -2,12 +2,15 @@
 import type { CollectionEntry } from 'astro:content';
 import { getHighlightedField } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
+import PostStatusBadge from './PostStatusBadge.svelte';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: string = 'en';
 export let searchResult:
   | { item: any; score: number; matches?: any[] }
   | undefined = undefined;
+export let postStatus: string = 'published';
+export let isDev: boolean = false;
 
 $: t = getTranslations(lang);
 
@@ -47,6 +50,10 @@ function getPostData() {
   };
 }
 
+// Derive effective status: use prop if provided, otherwise check search index
+$: effectiveStatus =
+  effectiveStatus !== 'published' ? postStatus : post.status || 'published';
+
 $: postData = getPostData();
 $: postSlug = getPostSlug();
 
@@ -61,13 +68,25 @@ $: displayDescription = searchResult
 
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   {#if postData.heroImage}
-    <img 
-      src={postData.heroImage} 
-      alt={postData.title}
-      class="w-full h-48 object-cover"
-    />
+    <div class="relative">
+      <img
+        src={postData.heroImage}
+        alt={postData.title}
+        class="w-full h-48 object-cover"
+      />
+      {#if isDev && effectiveStatus !== 'published'}
+        <div class="absolute top-2 right-2">
+          <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" />
+        </div>
+      {/if}
+    </div>
   {/if}
   <div class="p-6">
+    {#if isDev && effectiveStatus !== 'published' && !postData.heroImage}
+      <div class="mb-2">
+        <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" />
+      </div>
+    {/if}
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
       <a href={`${lang === 'es' ? '/es' : ''}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {@html displayTitle}
