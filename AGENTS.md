@@ -80,7 +80,9 @@ src/
 ├── content/                 # Content Collections
 │   ├── blog/                # Blog posts (Markdown/MDX)
 │   │   ├── en/              # English posts (YYYY-MM-DD_slug.md)
+│   │   │   └── _demo/      # Demo posts (dev only)
 │   │   └── es/              # Spanish posts (YYYY-MM-DD_slug.md)
+│   │       └── _demo/      # Demo posts (dev only)
 │   └── tags/                # Tag definitions
 │       ├── tech.md
 │       └── personal.md
@@ -460,6 +462,36 @@ Posts support a `heroLayout` frontmatter field:
 
 When creating a post, choose the layout based on the hero image aspect ratio.
 
+### Blog Post Status & Visibility
+
+Posts support a content lifecycle with multiple visibility states controlled by a `draft` frontmatter field and the `pubDate`:
+
+| Status | Frontmatter | Condition | Production | Dev |
+|--------|------------|-----------|:----------:|:---:|
+| Published | `draft: false` (default) | `pubDate <= now` | Visible | Visible |
+| Scheduled | `draft: false` | `pubDate > now` | Hidden (auto-publishes on rebuild) | Visible (badge) |
+| Draft | `draft: true` | any | Hidden | Visible (badge) |
+| Draft + Scheduled | `draft: true` | `pubDate > now` | Hidden | Visible (badges) |
+| Demo | any | File in `_demo/` folder | Hidden | Visible (badge) |
+
+**Draft field:** Add `draft: true` to frontmatter to mark a post as work-in-progress. Omitting `draft` or setting `draft: false` means the post is eligible for publishing.
+
+**Scheduling:** Set `pubDate` to a future date. The post will automatically become visible when the site is rebuilt after that date.
+
+**Preview mode:** Visit `/blog/?preview=all` in dev mode to see all posts including drafts, scheduled, and demo posts. A toggle link appears in dev mode to switch between published-only and all-posts views.
+
+### Demo Posts
+
+Demo posts showcase blog features and are stored in:
+- `src/content/blog/en/_demo/` (English)
+- `src/content/blog/es/_demo/` (Spanish)
+
+Demo posts are **never** visible in production builds. They serve as references for:
+- Hero layout variations (banner, side-by-side, minimal, none)
+- MDX capabilities
+- Rich Markdown formatting
+- Code syntax highlighting across languages
+
 ### Blog Image Organization
 
 Images are stored in per-post folders:
@@ -506,6 +538,9 @@ public/images/blog/
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
+16. Forget to set `draft: true` on work-in-progress posts
+17. Put demo posts outside `_demo/` folders
+18. Forget that scheduled posts require a site rebuild to go live
 
 ### ✅ DO:
 
@@ -524,6 +559,9 @@ public/images/blog/
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
+16. Use `draft: true` for work-in-progress posts
+17. Use `?preview=all` to view drafts/scheduled posts in dev mode
+18. Keep demo posts in `_demo/` folders (they're filtered automatically)
 
 ## Pre-Commit Checklist
 
@@ -535,6 +573,8 @@ public/images/blog/
 - [ ] Content exists in both English and Spanish versions (pages, blog posts)
 - [ ] Translation strings added for both languages in `translations.ts` (if applicable)
 - [ ] Documentation updated if needed
+- [ ] Draft posts have `draft: true` in frontmatter
+- [ ] Demo posts are in `_demo/` folders only
 - [ ] Commit message in English (conventional format)
 
 ## 🧠 Skills & Agents System
