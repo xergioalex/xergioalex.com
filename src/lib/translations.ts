@@ -170,6 +170,9 @@ export interface SiteTranslations {
     portfolioProjectsTitle: string;
     portfolioProjectsViewAll: string;
     portfolioProjectsEmpty: string;
+    techTalksPostsTitle: string;
+    techTalksPostsViewAll: string;
+    techTalksPostsEmpty: string;
   };
 
   // Contact section (homepage)
@@ -269,6 +272,8 @@ export interface SiteTranslations {
     philosophyText: string;
     ctaTitle: string;
     ctaText: string;
+    timelineTitle: string;
+    emptyState: string;
   };
 
   // Maker page
@@ -575,6 +580,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       portfolioProjectsTitle: 'Portfolio & Projects',
       portfolioProjectsViewAll: 'View all portfolio posts',
       portfolioProjectsEmpty: 'More projects coming soon.',
+      techTalksPostsTitle: 'Recent Tech Talks',
+      techTalksPostsViewAll: 'View all tech talks',
+      techTalksPostsEmpty: 'More talks coming soon.',
     },
 
     // Contact section (homepage)
@@ -969,6 +977,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       ctaTitle: 'Want Me to Speak at Your Event?',
       ctaText:
         "I'm always open to speaking opportunities — from local meetups to international conferences. Let's connect!",
+      timelineTitle: 'My Talks',
+      emptyState: 'No tech talks available yet. Check back soon!',
     },
 
     // Maker page
@@ -1440,6 +1450,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       portfolioProjectsTitle: 'Portafolio y Proyectos',
       portfolioProjectsViewAll: 'Ver todos los posts del portafolio',
       portfolioProjectsEmpty: 'Próximamente más proyectos.',
+      techTalksPostsTitle: 'Charlas Recientes',
+      techTalksPostsViewAll: 'Ver todas las charlas',
+      techTalksPostsEmpty: 'Próximamente más charlas.',
     },
 
     // Contact section (homepage)
@@ -1835,6 +1848,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       ctaTitle: '\u00BFQuieres que Hable en Tu Evento?',
       ctaText:
         'Siempre estoy abierto a oportunidades de charlas — desde meetups locales hasta conferencias internacionales. \u00A1Conect\u00E9monos!',
+      timelineTitle: 'Mis Charlas',
+      emptyState: '\u00A1A\u00FAn no hay charlas disponibles. Vuelve pronto!',
     },
 
     // Maker page
