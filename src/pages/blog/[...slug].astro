@@ -10,6 +10,7 @@ import {
   getReadingTimeFromContent,
   getRelatedPosts,
   getWordCount,
+  isDemoPost,
   isPostVisibleInProduction,
 } from '@/lib/blog';
 import { getTranslations, type Language } from '@/lib/translations';
@@ -41,6 +42,7 @@ const { Content } = await render(post);
 const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
 const postStatus = getPostStatus(post);
+const isDemo = isDemoPost(post);
 const isDev = import.meta.env.DEV;
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
@@ -120,19 +122,34 @@ const breadcrumbData = {
   </Fragment>
   <main class="main-container py-16 md:py-24">
     <article>
-      {isDev && postStatus !== 'published' && (
-        <div class={`mb-4 p-3 rounded-lg border-2 text-sm font-medium ${
-          postStatus === 'demo'
-            ? 'bg-purple-50 border-purple-300 text-purple-800 dark:bg-purple-900/20 dark:border-purple-700 dark:text-purple-300'
-            : postStatus.includes('draft')
-              ? 'bg-amber-50 border-amber-300 text-amber-800 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-300'
-              : 'bg-blue-50 border-blue-300 text-blue-800 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300'
-        }`}>
-          {t.postStatus[postStatus]}
-          {postStatus.includes('scheduled') && (
-            <span class="ml-1 opacity-75">
-              — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
-            </span>
+      {isDev && (postStatus !== 'published' || isDemo) && (
+        <div class="mb-4 flex flex-wrap gap-2">
+          {isDemo && (
+            <div class="p-3 rounded-lg border-2 text-sm font-medium bg-purple-50 border-purple-300 text-purple-800 dark:bg-purple-900/20 dark:border-purple-700 dark:text-purple-300">
+              {t.postStatus.demo}
+            </div>
+          )}
+          {postStatus !== 'published' && (
+            <div class={`p-3 rounded-lg border-2 text-sm font-medium ${
+              postStatus.includes('draft')
+                ? 'bg-amber-50 border-amber-300 text-amber-800 dark:bg-amber-900/20 dark:border-amber-700 dark:text-amber-300'
+                : 'bg-blue-50 border-blue-300 text-blue-800 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300'
+            }`}>
+              {postStatus === 'draft+scheduled' ? t.postStatus.draft : t.postStatus[postStatus]}
+              {postStatus.includes('scheduled') && (
+                <span class="ml-1 opacity-75">
+                  — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+                </span>
+              )}
+            </div>
+          )}
+          {postStatus === 'draft+scheduled' && (
+            <div class="p-3 rounded-lg border-2 text-sm font-medium bg-blue-50 border-blue-300 text-blue-800 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300">
+              {t.postStatus.scheduled}
+              <span class="ml-1 opacity-75">
+                — {t.publishesOn} {pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' })}
+              </span>
+            </div>
           )}
         </div>
       )}

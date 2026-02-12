@@ -5,6 +5,7 @@ export let status: string = 'published';
 export let lang: string = 'en';
 export let pubDate: Date | string | undefined = undefined;
 export let size: 'sm' | 'md' | 'lg' = 'sm';
+export let isDemo: boolean = false;
 
 $: t = getTranslations(lang);
 
@@ -30,43 +31,35 @@ $: formattedPubDate =
         day: 'numeric',
       })
     : '';
+
+$: showContentStatus = status !== 'published';
 </script>
 
-{#if status === 'draft'}
-  <span
-    class="inline-flex items-center gap-1 border rounded-md font-medium {sizeClasses[size]} {statusStyles.draft}"
-  >
-    {t.postStatus.draft}
-  </span>
-{:else if status === 'scheduled'}
-  <span
-    class="inline-flex items-center gap-1 border rounded-md font-medium {sizeClasses[size]} {statusStyles.scheduled}"
-  >
-    {t.postStatus.scheduled}
-    {#if formattedPubDate && size !== 'sm'}
-      <span class="opacity-75">· {formattedPubDate}</span>
-    {/if}
-  </span>
-{:else if status === 'draft+scheduled'}
+{#if isDemo || showContentStatus}
   <span class="inline-flex items-center gap-1">
-    <span
-      class="border rounded-md font-medium {sizeClasses[size]} {statusStyles.draft}"
-    >
-      {t.postStatus.draft}
-    </span>
-    <span
-      class="border rounded-md font-medium {sizeClasses[size]} {statusStyles.scheduled}"
-    >
-      {t.postStatus.scheduled}
-      {#if formattedPubDate && size !== 'sm'}
-        <span class="opacity-75">· {formattedPubDate}</span>
-      {/if}
-    </span>
-  </span>
-{:else if status === 'demo'}
-  <span
-    class="inline-flex items-center gap-1 border rounded-md font-medium {sizeClasses[size]} {statusStyles.demo}"
-  >
-    {t.postStatus.demo}
+    {#if isDemo}
+      <span
+        class="border rounded-md font-medium {sizeClasses[size]} {statusStyles.demo}"
+      >
+        {t.postStatus.demo}
+      </span>
+    {/if}
+    {#if status === 'draft' || status === 'draft+scheduled'}
+      <span
+        class="border rounded-md font-medium {sizeClasses[size]} {statusStyles.draft}"
+      >
+        {t.postStatus.draft}
+      </span>
+    {/if}
+    {#if status === 'scheduled' || status === 'draft+scheduled'}
+      <span
+        class="border rounded-md font-medium {sizeClasses[size]} {statusStyles.scheduled}"
+      >
+        {t.postStatus.scheduled}
+        {#if formattedPubDate && size !== 'sm'}
+          <span class="opacity-75">· {formattedPubDate}</span>
+        {/if}
+      </span>
+    {/if}
   </span>
 {/if}

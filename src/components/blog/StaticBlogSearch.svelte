@@ -95,11 +95,12 @@ async function loadSearchIndex() {
     if (response.ok) {
       const allPosts = await response.json();
       const langPosts = allPosts.filter((post) => post.lang === lang);
-      // In dev without preview mode, only index published posts
+      // In dev without preview mode, only index published (non-demo) posts
       searchIndex = isPreviewMode
         ? langPosts
         : langPosts.filter(
-            (post) => !post.status || post.status === 'published'
+            (post) =>
+              (!post.status || post.status === 'published') && !post.isDemo
           );
       fuseIndex = createSearchIndex(searchIndex);
       indexLoaded = true;

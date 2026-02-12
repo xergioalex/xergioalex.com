@@ -4,6 +4,7 @@ import {
   getPostLanguage,
   getPostSlug,
   getPostStatus,
+  isDemoPost,
   isPostVisibleInProduction,
 } from '@/lib/blog';
 
@@ -28,6 +29,7 @@ export const GET: APIRoute = async () => {
         tags: post.data.tags || [],
         heroImage: post.data.heroImage,
         status: getPostStatus(post),
+        isDemo: isDemoPost(post),
         draft: post.data.draft || false,
       }));
 

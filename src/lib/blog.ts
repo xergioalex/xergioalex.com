@@ -57,16 +57,24 @@ export function getReadingTimeFromContent(content: string): number {
 }
 
 /**
- * Determine the display status of a blog post.
- * - Demo: post path contains '/_demo/'
+ * Check if a post is a demo post (stored in _demo/ folder).
+ * Demo posts are never visible in production, regardless of other settings.
+ */
+export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
+  return post.id.includes('/_demo/');
+}
+
+/**
+ * Determine the content status of a blog post based on draft field and pubDate.
+ * This returns the real content status even for demo posts, so badges can show
+ * both the demo indicator AND the draft/scheduled status.
+ *
  * - Draft + Scheduled: draft=true AND pubDate is in the future
  * - Draft: draft=true AND pubDate is in the past/present
  * - Scheduled: draft=false AND pubDate is in the future
  * - Published: draft=false AND pubDate is in the past/present
  */
 export function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
-  if (post.id.includes('/_demo/')) return 'demo';
-
   const isDraft = post.data.draft === true;
   const isScheduled = post.data.pubDate.valueOf() > Date.now();
 
@@ -78,11 +86,12 @@ export function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
 
 /**
  * Check if a post should be visible in production builds.
- * Only posts with status 'published' are visible in production.
+ * Demo posts and non-published posts are hidden in production.
  */
 export function isPostVisibleInProduction(
   post: CollectionEntry<'blog'>
 ): boolean {
+  if (isDemoPost(post)) return false;
   return getPostStatus(post) === 'published';
 }
 

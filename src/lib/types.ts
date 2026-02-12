@@ -1,12 +1,11 @@
 import type { CollectionEntry } from 'astro:content';
 
-/** Post visibility status derived from draft field, pubDate, and file path */
+/** Post content status derived from draft field and pubDate */
 export type PostStatus =
   | 'published'
   | 'scheduled'
   | 'draft'
-  | 'draft+scheduled'
-  | 'demo';
+  | 'draft+scheduled';
 
 export type BlogParamsType = {
   lang?: string;

@@ -9,7 +9,6 @@ export let lang: string = 'en';
 export let searchResult:
   | { item: any; score: number; matches?: any[] }
   | undefined = undefined;
-export let postStatus: string = 'published';
 export let isDev: boolean = false;
 export let isPreviewMode: boolean = false;
 
@@ -52,9 +51,30 @@ function getPostData() {
   };
 }
 
-// Derive effective status: use prop if provided, otherwise check search index
-$: effectiveStatus =
-  postStatus !== 'published' ? postStatus : post.status || 'published';
+// Compute post status client-side from post data
+function computeStatus(postObj) {
+  // Check search index status field first (flat structure from API)
+  if (postObj.status && postObj.status !== 'published') return postObj.status;
+  // Compute from CollectionEntry data
+  const draft = postObj.data?.draft === true || postObj.draft === true;
+  const pubDate = postObj.data?.pubDate || postObj.pubDate;
+  const pubTime =
+    pubDate instanceof Date ? pubDate.valueOf() : new Date(pubDate).valueOf();
+  const scheduled = pubTime > Date.now();
+  if (draft && scheduled) return 'draft+scheduled';
+  if (draft) return 'draft';
+  if (scheduled) return 'scheduled';
+  return 'published';
+}
+
+// Compute demo status from post id/path
+function checkIsDemo(postObj) {
+  const id = postObj.id || '';
+  return id.includes('/_demo/') || id.includes('_demo/');
+}
+
+$: effectiveStatus = computeStatus(post);
+$: isDemo = checkIsDemo(post);
 
 $: postData = getPostData();
 $: postSlug = getPostSlug();
@@ -76,17 +96,17 @@ $: displayDescription = searchResult
         alt={postData.title}
         class="w-full h-48 object-cover"
       />
-      {#if isDev && effectiveStatus !== 'published'}
+      {#if isDev && (effectiveStatus !== 'published' || isDemo)}
         <div class="absolute top-2 right-2">
-          <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" />
+          <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
         </div>
       {/if}
     </div>
   {/if}
   <div class="p-6">
-    {#if isDev && effectiveStatus !== 'published' && !postData.heroImage}
+    {#if isDev && (effectiveStatus !== 'published' || isDemo) && !postData.heroImage}
       <div class="mb-2">
-        <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" />
+        <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
       </div>
     {/if}
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
