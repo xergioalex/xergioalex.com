@@ -2,6 +2,31 @@
 
 Performance optimization strategies for XergioAleX.com, an Astro static site.
 
+## Performance-First Philosophy
+
+**Performance is a core architectural value of this project, not an afterthought.** Astro was chosen specifically for its performance characteristics (zero JS by default, static generation, islands architecture). Every change to this codebase — whether a new feature, component, page, or refactor — MUST consider its performance impact.
+
+### For AI Agents: Performance Rules
+
+When working on this codebase, **always apply these principles:**
+
+1. **Prefer static over dynamic.** Use Astro components (`.astro`) for content that doesn't need interactivity. Only use Svelte with `client:*` directives when true interactivity is required.
+2. **Choose the laziest hydration possible.** Default to `client:visible` or `client:idle`. Only use `client:load` for components that need immediate interactivity (header, navigation). Never add `client:load` without justification.
+3. **Minimize JavaScript payload.** Every byte of JS increases Time to Interactive. Avoid heavy libraries. Prefer CSS-only solutions (transitions, animations, scroll-behavior) over JS equivalents.
+4. **Use native browser features first.** CSS `scroll-behavior: smooth` over JS scroll libraries. IntersectionObserver over scroll event listeners. Native `<details>` over JS accordions. HTML `loading="lazy"` over JS lazy-loaders.
+5. **Optimize images.** Always include width/height to prevent layout shifts. Use `loading="lazy"` for below-fold images. Use the image optimization pipeline (`npm run images:optimize`).
+6. **Avoid layout shifts.** Reserve space for images, fonts, and dynamic content. Use `font-display: swap`. Set explicit dimensions on media elements.
+7. **Keep builds fast.** Minimize content collection processing. Use efficient glob patterns. Pre-optimize assets before committing.
+
+### Performance Impact Assessment
+
+Before submitting any change, ask:
+- Does this add JavaScript? If yes, is it strictly necessary?
+- Could this use a lighter hydration directive?
+- Does this cause layout shifts?
+- Does this affect Largest Contentful Paint (LCP)?
+- Could this be done with CSS instead of JS?
+
 ## Performance Advantages of Astro
 
 Astro provides excellent performance out of the box:

@@ -246,6 +246,23 @@ Before committing any content change, verify:
 - Use `/translate-sync` skill for synchronizing content between languages
 - Use `i18n-guardian` agent for translation quality review and bilingual audits
 
+### 7. Performance-First Mindset (MANDATORY)
+
+**Performance is a core architectural value of this project.** Astro was chosen specifically for its performance characteristics. Every change MUST consider performance impact.
+
+**Rules for all agents:**
+
+1. **Prefer static over dynamic** — use `.astro` components for non-interactive content
+2. **Choose the laziest hydration** — `client:visible` or `client:idle` over `client:load` unless immediate interactivity is required
+3. **Minimize JavaScript** — prefer CSS-only solutions (transitions, scroll-behavior, animations) over JS equivalents
+4. **Use native browser APIs** — IntersectionObserver over scroll listeners, native `loading="lazy"` over JS lazy-loaders
+5. **Optimize images** — always include dimensions, use lazy loading for below-fold content
+6. **Avoid layout shifts** — reserve space for async content, use `font-display: swap`
+
+**Before any change, ask:** Does this add JS? Could it use a lighter hydration? Could CSS do this instead?
+
+**See [Performance Guide](docs/PERFORMANCE.md) for comprehensive optimization strategies.**
+
 ## Shared Agent Coordination - CRITICAL
 
 **Multiple AI agents collaborate on this codebase:**
@@ -541,6 +558,9 @@ public/images/blog/
 16. Forget to set `draft: true` on work-in-progress posts
 17. Put demo posts outside `_demo/` folders
 18. Forget that scheduled posts require a site rebuild to go live
+19. Use `client:load` when `client:visible` or `client:idle` would suffice
+20. Add JS-based solutions when CSS can achieve the same result
+21. Forget to include image dimensions (causes layout shifts)
 
 ### ✅ DO:
 
@@ -562,6 +582,9 @@ public/images/blog/
 16. Use `draft: true` for work-in-progress posts
 17. Use `?preview=all` to view drafts/scheduled posts in dev mode
 18. Keep demo posts in `_demo/` folders (they're filtered automatically)
+19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
+20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
+21. Prefer CSS-only solutions over JavaScript when possible
 
 ## Pre-Commit Checklist
 
@@ -575,6 +598,7 @@ public/images/blog/
 - [ ] Documentation updated if needed
 - [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only
+- [ ] Performance considered (lightest hydration, minimal JS, no layout shifts)
 - [ ] Commit message in English (conventional format)
 
 ## 🧠 Skills & Agents System
