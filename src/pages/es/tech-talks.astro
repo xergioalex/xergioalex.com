@@ -58,5 +58,5 @@ const { postsResult: posts } = await getBlogPosts({
     </div>
   </section>
 
-  <ScrollToTimeline client:load lang={lang} />
+  <ScrollToTimeline client:load lang={lang} targetLabel={t.techTalksPage.timelineTitle} />
 </MainLayout>

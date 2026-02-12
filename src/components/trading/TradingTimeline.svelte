@@ -66,7 +66,7 @@ function getMonthName(date: Date): string {
 
       <!-- Year marker -->
       {#if showYear}
-        <div class="relative flex items-center mb-6 mt-4">
+        <div class="relative flex items-center h-8 mb-6 mt-4">
           <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
             <span class="inline-block px-4 py-1.5 bg-secondary text-white text-sm font-bold rounded-full shadow-md">
               {year}
@@ -77,9 +77,9 @@ function getMonthName(date: Date): string {
 
       <!-- Month marker -->
       {#if showMonth}
-        <div class="relative flex items-center mb-6 {showYear ? 'mt-2' : 'mt-4'}">
+        <div class="relative flex items-center h-6 mb-6 mt-4">
           <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
-            <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full capitalize">
+            <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full capitalize translate-y-1">
               {getMonthName(post.data.pubDate)}
             </span>
           </div>
