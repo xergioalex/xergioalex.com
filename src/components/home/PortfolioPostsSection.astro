@@ -7,10 +7,19 @@ import { getTranslations } from '@/lib/translations';
 
 interface Props {
   lang?: Language;
+  grouped?: boolean;
+  surface?: 'default' | 'alt';
 }
 
-const { lang = 'en' } = Astro.props;
+const { lang = 'en', grouped = false, surface = 'default' } = Astro.props;
 const t = getTranslations(lang);
+const sectionSpacing = grouped
+  ? 'pt-6 sm:pt-8 lg:pt-10 pb-12 sm:pb-16 lg:pb-20'
+  : 'py-16';
+const sectionSurface =
+  surface === 'alt'
+    ? 'bg-gray-50 dark:bg-gray-800'
+    : 'bg-white dark:bg-gray-900';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
@@ -20,7 +29,7 @@ const posts = allPosts
   .slice(0, 2);
 ---
 
-<section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+<section class={`${sectionSpacing} ${sectionSurface} transition-colors duration-300`}>
   <div class="main-container">
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8"
@@ -61,7 +70,7 @@ const posts = allPosts
         </div>
         <div class="mt-8 text-center">
           <a
-            href={`${lang === 'es' ? '/es' : ''}/blog/tag/portfolio`}
+            href={`${lang === 'es' ? '/es' : ''}/portfolio#timeline`}
             class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
           >
             {t.homeSections.portfolioProjectsViewAll} &rarr;

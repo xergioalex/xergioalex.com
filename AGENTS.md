@@ -80,7 +80,9 @@ src/
 ├── content/                 # Content Collections
 │   ├── blog/                # Blog posts (Markdown/MDX)
 │   │   ├── en/              # English posts (YYYY-MM-DD_slug.md)
+│   │   │   └── _demo/      # Demo posts (dev only)
 │   │   └── es/              # Spanish posts (YYYY-MM-DD_slug.md)
+│   │       └── _demo/      # Demo posts (dev only)
 │   └── tags/                # Tag definitions
 │       ├── tech.md
 │       └── personal.md
@@ -243,6 +245,23 @@ Before committing any content change, verify:
 
 - Use `/translate-sync` skill for synchronizing content between languages
 - Use `i18n-guardian` agent for translation quality review and bilingual audits
+
+### 7. Performance-First Mindset (MANDATORY)
+
+**Performance is a core architectural value of this project.** Astro was chosen specifically for its performance characteristics. Every change MUST consider performance impact.
+
+**Rules for all agents:**
+
+1. **Prefer static over dynamic** — use `.astro` components for non-interactive content
+2. **Choose the laziest hydration** — `client:visible` or `client:idle` over `client:load` unless immediate interactivity is required
+3. **Minimize JavaScript** — prefer CSS-only solutions (transitions, scroll-behavior, animations) over JS equivalents
+4. **Use native browser APIs** — IntersectionObserver over scroll listeners, native `loading="lazy"` over JS lazy-loaders
+5. **Optimize images** — always include dimensions, use lazy loading for below-fold content
+6. **Avoid layout shifts** — reserve space for async content, use `font-display: swap`
+
+**Before any change, ask:** Does this add JS? Could it use a lighter hydration? Could CSS do this instead?
+
+**See [Performance Guide](docs/PERFORMANCE.md) for comprehensive optimization strategies.**
 
 ## Shared Agent Coordination - CRITICAL
 
@@ -460,6 +479,36 @@ Posts support a `heroLayout` frontmatter field:
 
 When creating a post, choose the layout based on the hero image aspect ratio.
 
+### Blog Post Status & Visibility
+
+Posts support a content lifecycle with multiple visibility states controlled by a `draft` frontmatter field and the `pubDate`:
+
+| Status | Frontmatter | Condition | Production | Dev |
+|--------|------------|-----------|:----------:|:---:|
+| Published | `draft: false` (default) | `pubDate <= now` | Visible | Visible |
+| Scheduled | `draft: false` | `pubDate > now` | Hidden (auto-publishes on rebuild) | Visible (badge) |
+| Draft | `draft: true` | any | Hidden | Visible (badge) |
+| Draft + Scheduled | `draft: true` | `pubDate > now` | Hidden | Visible (badges) |
+| Demo | any | File in `_demo/` folder | Hidden | Visible (badge) |
+
+**Draft field:** Add `draft: true` to frontmatter to mark a post as work-in-progress. Omitting `draft` or setting `draft: false` means the post is eligible for publishing.
+
+**Scheduling:** Set `pubDate` to a future date. The post will automatically become visible when the site is rebuilt after that date.
+
+**Preview mode:** Visit `/blog/?preview=all` in dev mode to see all posts including drafts, scheduled, and demo posts. A toggle link appears in dev mode to switch between published-only and all-posts views.
+
+### Demo Posts
+
+Demo posts showcase blog features and are stored in:
+- `src/content/blog/en/_demo/` (English)
+- `src/content/blog/es/_demo/` (Spanish)
+
+Demo posts are **never** visible in production builds. They serve as references for:
+- Hero layout variations (banner, side-by-side, minimal, none)
+- MDX capabilities
+- Rich Markdown formatting
+- Code syntax highlighting across languages
+
 ### Blog Image Organization
 
 Images are stored in per-post folders:
@@ -506,6 +555,12 @@ public/images/blog/
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
+16. Forget to set `draft: true` on work-in-progress posts
+17. Put demo posts outside `_demo/` folders
+18. Forget that scheduled posts require a site rebuild to go live
+19. Use `client:load` when `client:visible` or `client:idle` would suffice
+20. Add JS-based solutions when CSS can achieve the same result
+21. Forget to include image dimensions (causes layout shifts)
 
 ### ✅ DO:
 
@@ -524,6 +579,12 @@ public/images/blog/
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
+16. Use `draft: true` for work-in-progress posts
+17. Use `?preview=all` to view drafts/scheduled posts in dev mode
+18. Keep demo posts in `_demo/` folders (they're filtered automatically)
+19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
+20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
+21. Prefer CSS-only solutions over JavaScript when possible
 
 ## Pre-Commit Checklist
 
@@ -535,6 +596,9 @@ public/images/blog/
 - [ ] Content exists in both English and Spanish versions (pages, blog posts)
 - [ ] Translation strings added for both languages in `translations.ts` (if applicable)
 - [ ] Documentation updated if needed
+- [ ] Draft posts have `draft: true` in frontmatter
+- [ ] Demo posts are in `_demo/` folders only
+- [ ] Performance considered (lightest hydration, minimal JS, no layout shifts)
 - [ ] Commit message in English (conventional format)
 
 ## 🧠 Skills & Agents System
@@ -595,6 +659,8 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 - [Standards](docs/STANDARDS.md)
 - [Security](docs/SECURITY.md)
 - [Performance](docs/PERFORMANCE.md)
+- [Blog Posts](docs/features/BLOG_POSTS.md)
+- [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md)
 - [AI Agent Onboarding](docs/AI_AGENT_ONBOARDING.md)
 - [AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)
 

@@ -1,11 +1,13 @@
 import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
-import { getPostSlug } from '@/lib/blog';
+import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
 
 export async function GET(context) {
   const allPosts = await getCollection('blog');
-  const posts = allPosts.filter((post) => post.id.startsWith('en/'));
+  const posts = allPosts.filter(
+    (post) => post.id.startsWith('en/') && isPostVisibleInProduction(post)
+  );
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,

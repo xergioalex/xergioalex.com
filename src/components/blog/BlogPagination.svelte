@@ -7,9 +7,11 @@ export let isSearchMode = false;
 export let onPageChange = null;
 export let currentTag = null;
 export let lang = 'en';
+export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
 $: basePrefix = lang === 'es' ? '/es' : '';
+$: querySuffix = isPreviewMode ? '?preview=all' : '';
 $: visiblePages = getVisiblePages();
 
 function handlePageChange(page) {
@@ -19,21 +21,23 @@ function handlePageChange(page) {
 }
 
 function getPageUrl(page) {
+  let url;
   if (currentTag) {
     // Tag view
     if (page === 1) {
-      return `${basePrefix}/blog/tag/${currentTag}/`;
+      url = `${basePrefix}/blog/tag/${currentTag}/`;
     } else {
-      return `${basePrefix}/blog/tag/${currentTag}/page/${page}/`;
+      url = `${basePrefix}/blog/tag/${currentTag}/page/${page}/`;
     }
   } else {
     // General blog view
     if (page === 1) {
-      return `${basePrefix}/blog/`;
+      url = `${basePrefix}/blog/`;
     } else {
-      return `${basePrefix}/blog/page/${page}/`;
+      url = `${basePrefix}/blog/page/${page}/`;
     }
   }
+  return `${url}${querySuffix}`;
 }
 
 function getVisiblePages() {

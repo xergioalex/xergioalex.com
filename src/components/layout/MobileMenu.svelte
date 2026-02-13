@@ -6,6 +6,7 @@ import { getTranslations } from '@/lib/translations';
 export let lang: string = 'en';
 export let open: boolean;
 export let toggleMenu: () => void;
+let workOpen = false;
 let aboutOpen = false;
 let languageOpen = false;
 let lockedScrollY = 0;
@@ -82,7 +83,37 @@ onDestroy(() => {
     </button>
     <a href={prefix || '/'} class="nav-link text-2xl text-center">{t.nav.home}</a>
     <a href="{prefix}/blog" class="nav-link text-2xl text-center">{t.nav.blog}</a>
-    <a href="{prefix}/portfolio" class="nav-link text-2xl text-center">{t.nav.portfolio}</a>
+    <button
+      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      on:click={() => workOpen = !workOpen}
+      aria-expanded={workOpen}
+      aria-controls="work-dropdown"
+      type="button"
+    >
+      {t.nav.work}
+      <svg
+        class="w-5 h-5 transition-transform duration-200"
+        class:rotate-180={workOpen}
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </button>
+    {#if workOpen}
+      <div
+        id="work-dropdown"
+        class="flex flex-col items-center gap-2 mt-1"
+        transition:slide={{ duration: 200 }}
+      >
+        <a href="{prefix}/portfolio" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.portfolio}</a>
+        <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
+        <a href="{prefix}/tech-talks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
+        <a href="{prefix}/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
+      </div>
+    {/if}
     <button
       class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => aboutOpen = !aboutOpen}
@@ -110,11 +141,8 @@ onDestroy(() => {
       >
         <a href="{prefix}/about" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
         <a href="{prefix}/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
-        <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
         <a href="{prefix}/entrepreneur" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
-        <a href="{prefix}/techtalks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
         <a href="{prefix}/maker" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
-        <a href="{prefix}/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
         <a href="{prefix}/foodie" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>
         <a href="{prefix}/hobbies" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.hobbies}</a>
       </div>

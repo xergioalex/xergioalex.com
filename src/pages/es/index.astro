@@ -1,10 +1,13 @@
 ---
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import ContactSection from '@/components/home/ContactSection.astro';
+import DailyBotPostsSection from '@/components/home/DailyBotPostsSection.astro';
 import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
 import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
 import PortfolioPostsSection from '@/components/home/PortfolioPostsSection.astro';
+import TechTalksPostsSection from '@/components/home/TechTalksPostsSection.astro';
+import TradingPostsSection from '@/components/home/TradingPostsSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
@@ -43,7 +46,11 @@ const t = getTranslations(lang);
     image="/images/dailybotyc.png"
     contentAlignment={HomeSectionContentAlignmentEType.LEFT}
     variant="alt"
+    grouped
   />
+
+  <!-- DailyBot Posts Section -->
+  <DailyBotPostsSection lang={lang} grouped surface="alt" />
 
   <!-- Maker Section (What I Built) -->
   <HomeSection
@@ -54,10 +61,11 @@ const t = getTranslations(lang);
     ctaLink="/es/portfolio"
     image="/images/ia.png"
     contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+    grouped
   />
 
   <!-- Portfolio Projects Posts Section -->
-  <PortfolioPostsSection lang={lang} />
+  <PortfolioPostsSection lang={lang} grouped />
 
   <!-- Community & Speaking Section -->
   <HomeSection
@@ -65,10 +73,15 @@ const t = getTranslations(lang);
     subtitle={t.homeSections.community.subtitle}
     description={t.homeSections.community.description}
     ctaText={t.homeSections.community.cta}
-    ctaLink="/es/techtalks"
+    ctaLink="/es/tech-talks"
     image="/images/techtalks.png"
     contentAlignment={HomeSectionContentAlignmentEType.LEFT}
+    variant="alt"
+    grouped
   />
+
+  <!-- Tech Talks Posts Section -->
+  <TechTalksPostsSection lang={lang} grouped surface="alt" />
 
   <!-- Trading Section -->
   <HomeSection
@@ -79,11 +92,11 @@ const t = getTranslations(lang);
     ctaLink="/es/trading"
     image="/images/trading.png"
     contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
-    variant="alt"
+    grouped
   />
 
-  <!-- Blog Preview Section -->
-  <BlogPreviewSection lang={lang} />
+  <!-- Trading Journal Posts Section -->
+  <TradingPostsSection lang={lang} grouped />
 
   <!-- Beyond Code Section (Hobbies) -->
   <HomeSection
@@ -95,7 +108,11 @@ const t = getTranslations(lang);
     image="/images/bicycle.png"
     contentAlignment={HomeSectionContentAlignmentEType.LEFT}
     variant="alt"
+    grouped
   />
+
+  <!-- Blog Preview Section -->
+  <BlogPreviewSection lang={lang} grouped surface="alt" />
 
   <!-- Contact Section -->
   <ContactSection lang={lang} />

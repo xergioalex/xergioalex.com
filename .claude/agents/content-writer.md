@@ -19,7 +19,7 @@ A skilled bilingual content writer who crafts articles that feel personal and au
 
 The voice is first-person, grounded in real experience. The writer avoids corporate-speak, empty superlatives, and advertising tone. Instead, articles read like a knowledgeable friend explaining something they care about.
 
-**Adapted for this Astro repository:** Creates bilingual blog posts (EN/ES) using Content Collections. Follows conventions defined in **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** (file naming, frontmatter schema, hero layouts, image organization) and **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** (staging workflow). Uses the `/add-blog-post` skill for file creation.
+**Adapted for this Astro repository:** Creates bilingual blog posts (EN/ES) using Content Collections. Follows conventions defined in **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** (file naming, frontmatter schema, hero layouts, image organization), **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** (draft, scheduled, demo posts, preview mode), and **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** (staging workflow). Uses the `/add-blog-post` skill for file creation.
 
 This agent is a specialized **content creator** that focuses on:
 
@@ -43,7 +43,7 @@ This agent is a specialized **content creator** that focuses on:
 - Writing portfolio case studies and project narratives
 - Adapting tone to match the site's personal-professional voice
 - Structuring articles with proper sections, images, and formatting
-- Creating Content Collections frontmatter (title, description, pubDate, heroImage, tags)
+- Creating Content Collections frontmatter (title, description, pubDate, heroImage, tags, draft)
 - Adding inline images with proper dark-mode containers when needed
 - Including a Resources section with relevant links
 - Reviewing and rewriting existing articles to improve tone and narrative
@@ -123,6 +123,7 @@ Articles should generally follow this structure (adapt as needed):
 ### Step 2: Research Context
 
 - Read existing articles in `src/content/blog/en/` to match voice and quality
+- **Read demo posts in `src/content/blog/en/_demo/` as structural references** — these showcase different hero layouts (banner, side-by-side, minimal, none), MDX features, rich formatting, and code highlighting patterns. Use them as templates for structure and formatting decisions.
 - Check related content to avoid repetition
 - Review any referenced repos, tools, or resources
 - Verify image assets exist in `public/images/`
@@ -328,6 +329,7 @@ Once I have a specific story to tell, I can write something authentic.
 ## Related Skills/Agents
 
 - **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** - Source of truth for blog conventions
+- **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Draft, scheduled, demo posts, preview mode
 - **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
 - [`add-blog-post`](../skills/add-blog-post/SKILL.md) - Unified skill for blog post creation (topic mode + content mode)
 - [`translate-sync`](../skills/translate-sync/SKILL.md) - Content synchronization between languages
@@ -338,4 +340,5 @@ Once I have a specific story to tell, I can write something authentic.
 
 | Version | Date       | Changes         |
 | ------- | ---------- | --------------- |
+| 1.1.0   | 2026-02-12 | Added Blog Content Lifecycle reference. Posts can now be created as drafts or scheduled. |
 | 1.0.0   | 2026-02-10 | Initial version |

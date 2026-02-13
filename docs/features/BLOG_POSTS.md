@@ -37,21 +37,24 @@ getPostSlug(post.id);
 src/content/
 ├── blog/
 │   ├── en/                              # English posts
+│   │   ├── _demo/                       # Demo posts (dev only, never in production)
+│   │   │   ├── 2025-01-01_demo-hero-banner.md
+│   │   │   └── ...
 │   │   ├── 2020-12-31_personal-branding-xergioalex.md
 │   │   ├── 2022-07-08_first-post.md
-│   │   ├── 2022-07-15_markdown-style-guide.md
 │   │   └── ...
 │   └── es/                              # Spanish posts (matching filenames)
+│       ├── _demo/                       # Demo posts (matching en/_demo/)
+│       │   └── ...
 │       ├── 2020-12-31_personal-branding-xergioalex.md
-│       ├── 2022-07-08_first-post.md
-│       ├── 2022-07-15_markdown-style-guide.md
 │       └── ...
 └── tags/
     ├── tech.md
     ├── personal.md
     ├── talks.md
     ├── trading.md
-    └── portfolio.md
+    ├── portfolio.md
+    └── demo.md                          # Demo tag (dev only)
 ```
 
 **Bilingual requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**. Never create a post in only one language.
@@ -70,6 +73,7 @@ schema: z.object({
   heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
     .default('banner').optional(),     // Optional - hero image display layout
   tags: z.array(z.string()).optional(), // Optional - must be existing tags
+  draft: z.boolean().default(false).optional(), // Optional - marks post as work-in-progress
 })
 ```
 
@@ -79,13 +83,16 @@ schema: z.object({
 |-------|----------|-------------|
 | `title` | Yes | Post title. Translated between languages. |
 | `description` | Yes | 1-2 sentence excerpt. 50-160 chars recommended for SEO. Used in meta tags and Open Graph. |
-| `pubDate` | Yes | Publication date. Accepts various formats (`'Jan 31 2026'`, `2026-01-31`). Also used as date prefix in filename. |
+| `pubDate` | Yes | Publication date/time. Accepts date-only (`'2026-01-31'`) or datetime (`'2026-01-31T14:00:00'`). For scheduled posts, datetime allows precise scheduling with time shown in badges. Date-only defaults to midnight. |
 | `updatedDate` | No | Last significant update. Displayed with "Last updated on" label. |
 | `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}` |
 | `heroLayout` | No | How the hero image is displayed. Default: `'banner'`. See [Hero Layouts](#hero-layouts). |
 | `tags` | No | Array of tag identifiers. Must match files in `src/content/tags/`. |
+| `draft` | No | Set `true` to mark as work-in-progress. Hides post from production. Default: `false`. See [Content Lifecycle](./BLOG_CONTENT_LIFECYCLE.md). |
 
-### Frontmatter Example
+### Frontmatter Examples
+
+**Published post:**
 
 ```markdown
 ---
@@ -95,6 +102,29 @@ pubDate: '2020-12-31'
 heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
 heroLayout: 'side-by-side'
 tags: ['portfolio']
+---
+```
+
+**Draft post (hidden from production):**
+
+```markdown
+---
+title: 'Article Still Being Written'
+description: 'Work in progress.'
+pubDate: '2026-03-01'
+tags: ['tech']
+draft: true
+---
+```
+
+**Scheduled post (auto-publishes on rebuild after pubDate):**
+
+```markdown
+---
+title: 'Future Announcement'
+description: 'Coming soon.'
+pubDate: '2026-06-15'
+tags: ['tech']
 ---
 ```
 
@@ -251,15 +281,18 @@ Blog images are optimized using a **sharp-based pipeline**. See [IMAGE_OPTIMIZAT
 
 Tags are defined as Content Collection entries in `src/content/tags/`:
 
-| Tag ID | Description |
-|--------|-------------|
-| `tech` | Technical content |
-| `personal` | Personal posts |
-| `talks` | Conference talks |
-| `trading` | Trading content |
-| `portfolio` | Portfolio/branding |
+| Tag ID | Description | Visibility |
+|--------|-------------|------------|
+| `tech` | Technical content | Always |
+| `personal` | Personal posts | Always |
+| `talks` | Conference talks | Always |
+| `trading` | Trading content | Always |
+| `portfolio` | Portfolio/branding | Always |
+| `demo` | Demo posts showcasing blog features | Dev only (with `?preview=all`) |
 
 Tags are referenced by their ID in frontmatter. Display names are localized via `translations.ts` using `t.tagNames[slug]`.
+
+**Note:** The `demo` tag is only used by demo posts in `_demo/` folders. It is automatically hidden in production and in the default dev view. It only appears in the tag filter when `?preview=all` is active.
 
 ## URL Structure
 
@@ -289,8 +322,19 @@ Blog post URLs are clean (no date prefix):
 | `scripts/optimize-images.mjs` | Staging image optimizer |
 | `scripts/optimize-existing-images.mjs` | One-off bulk optimizer |
 
+## Content Lifecycle
+
+Posts support draft, scheduled, and demo states. See **[Blog Content Lifecycle](./BLOG_CONTENT_LIFECYCLE.md)** for the complete guide on:
+
+- Draft posts (`draft: true`) — work-in-progress, hidden from production
+- Scheduled posts (future `pubDate`) — auto-publish on rebuild
+- Demo posts (`_demo/` folder) — feature showcases, never in production
+- Preview mode (`?preview=all`) — see all posts in dev mode
+- Status badges and production safety
+
 ## Related Documentation
 
+- [Blog Content Lifecycle](./BLOG_CONTENT_LIFECYCLE.md) - Draft, scheduled, demo posts, preview mode
 - [Image Optimization](./IMAGE_OPTIMIZATION.md) - Image pipeline and optimization workflow
 - [Blog Search](./BLOG_SEARCH.md) - Client-side search functionality
 - [Pagination](./PAGINATION.md) - Blog post pagination

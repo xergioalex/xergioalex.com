@@ -12,6 +12,7 @@ blog/
 ├── BlogHeader.svelte        # Header with title and tag filter
 ├── BlogPagination.svelte    # Page navigation
 ├── BlogSearchInput.svelte   # Search input field
+├── PostStatusBadge.svelte   # Draft/scheduled/demo status badges
 ├── SearchResults.svelte     # Search results display
 └── StaticBlogSearch.svelte  # Complete search orchestrator
 ```
@@ -112,6 +113,8 @@ const posts = await getBlogPosts({ lang: 'es' });
 | `tagsResult` | `CollectionEntry<'tags'>[]` | `[]` | All available tags |
 | `totalPostsAvailable` | `number` | `0` | Total posts count |
 | `lang` | `string` | `'en'` | Language code |
+| `isPreviewMode` | `boolean` | `false` | Whether `?preview=all` is active |
+| `isDev` | `boolean` | `false` | Whether in dev mode |
 
 **Features:**
 - Loads search index from `/api/posts.json`
@@ -130,6 +133,8 @@ Displays an individual blog post card with image, title, description, date, and 
 | `post` | `CollectionEntry<'blog'>` | Required | Blog post entry |
 | `lang` | `string` | `'en'` | Language for date/URLs |
 | `searchResult` | `SearchResult` | `undefined` | Match data for highlighting |
+| `postStatus` | `string` | `'published'` | Post status for badge display |
+| `isDev` | `boolean` | `false` | Whether in dev mode (controls badge visibility) |
 
 **Features:**
 - Handles both Content Collection and search index formats
@@ -177,6 +182,7 @@ Pagination controls for navigating blog pages.
 | `onPageChange` | `function` | `null` | Callback for search mode |
 | `currentTag` | `string` | `null` | Tag for URL building |
 | `lang` | `string` | `'en'` | Language code |
+| `isPreviewMode` | `boolean` | `false` | Preserves `?preview=all` in URLs |
 
 **URL Generation:**
 - English: `/blog/` or `/blog/page/{n}/`
@@ -209,6 +215,25 @@ Search input with result count display.
 - `aria-live="polite"` for result count
 - Escape key clears search
 
+### PostStatusBadge.svelte
+
+Displays color-coded status badges for non-published posts in dev mode.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `status` | `string` | Required | Post status (draft, scheduled, draft+scheduled, demo) |
+| `lang` | `string` | `'en'` | Language for translated labels |
+| `pubDate` | `Date` | `undefined` | Publication date (shown for scheduled posts) |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Badge size |
+
+**Color coding:**
+- Draft: Amber
+- Scheduled: Blue
+- Demo: Purple
+- Draft + Scheduled: Shows both amber and blue badges
+
+Used in `BlogCard.svelte` (as image overlay or inline) and blog detail pages (as status banner).
+
 ### SearchResults.svelte
 
 Displays search results using BlogCard components.
@@ -229,6 +254,8 @@ Astro wrapper for the blog page (server-side).
 | `blogPostsResult` | `BlogPostsResultType` | Required | Blog posts data |
 | `currentTag` | `string` | `undefined` | Current tag filter |
 | `lang` | `string` | `'en'` | Language code |
+| `isPreviewMode` | `boolean` | `false` | Whether `?preview=all` is active |
+| `isDev` | `boolean` | `false` | Whether in dev mode |
 
 ## Data Flow
 
