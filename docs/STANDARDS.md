@@ -268,11 +268,17 @@ Use the registered brand tokens for brand-consistent styling:
 <div class="bg-main text-white">
 
 <!-- Accent elements (Crimson Strike) -->
-<button class="bg-secondary hover:bg-red-700 text-white">
-<a class="text-secondary hover:text-red-700">
+<button class="bg-secondary hover:bg-secondary/90 text-white">
+<a class="text-secondary hover:opacity-85">
 ```
 
 See [Brand Guide — CSS Design Tokens](BRAND_GUIDE.md#css-design-tokens) for all available tokens and the full 5-color palette.
+
+Color token rules:
+
+- Use `bg-secondary`, `text-secondary`, and `border-secondary` for accent usage.
+- Do not hardcode red variants (`text-red-*`, `bg-red-*`) for brand accents.
+- The accent token is theme-aware (`#E41541` in light mode, `#CD3553` in dark mode) and should be trusted globally.
 
 ### Dark Mode
 

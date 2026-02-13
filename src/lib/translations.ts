@@ -174,6 +174,9 @@ export interface SiteTranslations {
     techTalksPostsTitle: string;
     techTalksPostsViewAll: string;
     techTalksPostsEmpty: string;
+    dailybotPostsTitle: string;
+    dailybotPostsViewAll: string;
+    dailybotPostsEmpty: string;
     tradingPostsTitle: string;
     tradingPostsViewAll: string;
     tradingPostsEmpty: string;
@@ -600,6 +603,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       techTalksPostsTitle: 'Recent Tech Talks',
       techTalksPostsViewAll: 'View all tech talks',
       techTalksPostsEmpty: 'More talks coming soon.',
+      dailybotPostsTitle: 'Latest DailyBot Articles',
+      dailybotPostsViewAll: 'View all DailyBot articles',
+      dailybotPostsEmpty: 'DailyBot articles coming soon.',
       tradingPostsTitle: 'Trading Journal',
       tradingPostsViewAll: 'View all trading entries',
       tradingPostsEmpty: 'Trading journal entries coming soon.',
@@ -1517,6 +1523,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       techTalksPostsTitle: 'Charlas Recientes',
       techTalksPostsViewAll: 'Ver todas las charlas',
       techTalksPostsEmpty: 'Próximamente más charlas.',
+      dailybotPostsTitle: 'Últimos Artículos de DailyBot',
+      dailybotPostsViewAll: 'Ver todos los artículos de DailyBot',
+      dailybotPostsEmpty: 'Próximamente artículos de DailyBot.',
       tradingPostsTitle: 'Diario de Trading',
       tradingPostsViewAll: 'Ver todas las entradas de trading',
       tradingPostsEmpty: 'Próximamente entradas del diario de trading.',

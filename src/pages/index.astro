@@ -1,6 +1,7 @@
 ---
 import BlogPreviewSection from '@/components/home/BlogPreviewSection.astro';
 import ContactSection from '@/components/home/ContactSection.astro';
+import DailyBotPostsSection from '@/components/home/DailyBotPostsSection.astro';
 import HeroSection from '@/components/home/HeroSection/HeroSection.astro';
 import { HomeSectionContentAlignmentEType } from '@/components/home/HomeSection/enum';
 import HomeSection from '@/components/home/HomeSection/HomeSection.astro';
@@ -45,7 +46,11 @@ const t = getTranslations(lang);
 		image="/images/dailybotyc.png"
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 		variant="alt"
+		grouped
 	/>
+
+	<!-- DailyBot Posts Section -->
+	<DailyBotPostsSection lang={lang} grouped surface="alt" />
 
 	<!-- Maker Section (What I Built) -->
 	<HomeSection
@@ -56,10 +61,11 @@ const t = getTranslations(lang);
 		ctaLink="/portfolio"
 		image="/images/ia.png"
 		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
+		grouped
 	/>
 
 	<!-- Portfolio Projects Posts Section -->
-	<PortfolioPostsSection lang={lang} />
+	<PortfolioPostsSection lang={lang} grouped />
 
 	<!-- Community & Speaking Section -->
 	<HomeSection
@@ -70,10 +76,12 @@ const t = getTranslations(lang);
 		ctaLink="/tech-talks"
 		image="/images/techtalks.png"
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
+		variant="alt"
+		grouped
 	/>
 
 	<!-- Tech Talks Posts Section -->
-	<TechTalksPostsSection lang={lang} />
+	<TechTalksPostsSection lang={lang} grouped surface="alt" />
 
 	<!-- Trading Section -->
 	<HomeSection
@@ -84,11 +92,11 @@ const t = getTranslations(lang);
 		ctaLink="/trading"
 		image="/images/trading.png"
 		contentAlignment={HomeSectionContentAlignmentEType.RIGHT}
-		variant="alt"
+		grouped
 	/>
 
 	<!-- Trading Journal Posts Section -->
-	<TradingPostsSection lang={lang} />
+	<TradingPostsSection lang={lang} grouped />
 
 	<!-- Beyond Code Section (Hobbies) -->
 	<HomeSection
@@ -100,10 +108,11 @@ const t = getTranslations(lang);
 		image="/images/bicycle.png"
 		contentAlignment={HomeSectionContentAlignmentEType.LEFT}
 		variant="alt"
+		grouped
 	/>
 
 	<!-- Blog Preview Section -->
-	<BlogPreviewSection lang={lang} />
+	<BlogPreviewSection lang={lang} grouped surface="alt" />
 
 	<!-- Contact Section -->
 	<ContactSection lang={lang} />

@@ -24,7 +24,7 @@ const sectionSurface =
 const allPosts = await getCollection('blog');
 const posts = allPosts
   .filter((post) => post.id.startsWith(`${lang}/`))
-  .filter((post) => post.data.tags?.includes('portfolio'))
+  .filter((post) => post.data.tags?.includes('dailybot'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 2);
 ---
@@ -34,7 +34,7 @@ const posts = allPosts
     <h2
       class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8"
     >
-      {t.homeSections.portfolioProjectsTitle}
+      {t.homeSections.dailybotPostsTitle}
     </h2>
     {posts.length > 0 ? (
       <>
@@ -70,16 +70,16 @@ const posts = allPosts
         </div>
         <div class="mt-8 text-center">
           <a
-            href={`${lang === 'es' ? '/es' : ''}/portfolio#timeline`}
+            href={`${lang === 'es' ? '/es' : ''}/dailybot#timeline`}
             class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
           >
-            {t.homeSections.portfolioProjectsViewAll} &rarr;
+            {t.homeSections.dailybotPostsViewAll} &rarr;
           </a>
         </div>
       </>
     ) : (
       <p class="text-gray-500 dark:text-gray-400 text-center py-8">
-        {t.homeSections.portfolioProjectsEmpty}
+        {t.homeSections.dailybotPostsEmpty}
       </p>
     )}
   </div>

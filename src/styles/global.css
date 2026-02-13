@@ -4,9 +4,15 @@
 @theme {
   --color-main: #0f1124;
   --color-secondary: #e41541;
+  --color-gray-50: #f1f5f9;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Softer accent in dark mode to reduce visual intensity */
+.dark {
+  --color-secondary: #cd3553;
+}
 
 @layer components {
   .main-container {
