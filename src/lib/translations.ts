@@ -1,9 +1,14 @@
 /**
  * Site-wide translations
  * Supports English (en) and Spanish (es)
+ *
+ * Language configuration (type, registry, utilities) lives in i18n.ts.
+ * This file re-exports Language for backward compatibility.
  */
 
-export type Language = 'en' | 'es';
+export type { Language } from './i18n';
+
+import type { Language } from './i18n';
 
 export interface PagePassion {
   title: string;
@@ -2322,20 +2327,9 @@ export function getTranslations(lang: Language): SiteTranslations {
 }
 
 /**
- * Check if a language code is supported
- * @param lang - Language code to check
- * @returns True if the language is supported
+ * Check if a language code is supported.
+ * Delegates to the centralized i18n module.
  */
-export function isValidLanguage(lang: string): lang is Language {
-  return lang === 'en' || lang === 'es';
-}
-
-/**
- * Get the default language
- * @returns Default language code
- */
-export function getDefaultLanguage(): Language {
-  return 'en';
-}
+export { getDefaultLanguage, isValidLanguage } from './i18n';
 
 export default translations;
