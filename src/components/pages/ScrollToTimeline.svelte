@@ -6,10 +6,7 @@ export let lang: string = 'en';
 export let targetLabel = '';
 
 $: t = getTranslations(lang);
-$: actionText = lang === 'es' ? 'Ver' : 'View';
-$: buttonText = targetLabel
-  ? `${actionText} ${targetLabel}`
-  : t.scrollToTimeline;
+$: buttonText = targetLabel ? t.viewLabel(targetLabel) : t.scrollToTimeline;
 
 let visible = false;
 

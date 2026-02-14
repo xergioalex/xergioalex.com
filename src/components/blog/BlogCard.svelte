@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
+import { getUrlPrefix } from '@/lib/i18n';
 import { getHighlightedField } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
 import PostStatusBadge from './PostStatusBadge.svelte';
@@ -13,6 +14,7 @@ export let isDev: boolean = false;
 export let isPreviewMode: boolean = false;
 
 $: t = getTranslations(lang);
+$: prefix = getUrlPrefix(lang);
 $: querySuffix = isPreviewMode ? '?preview=all' : '';
 
 // Helper function to get post slug without language prefix or date prefix
@@ -110,7 +112,7 @@ $: displayDescription = searchResult
       </div>
     {/if}
     <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-      <a href={`${lang === 'es' ? '/es' : ''}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+      <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {@html displayTitle}
       </a>
     </h2>
@@ -129,7 +131,7 @@ $: displayDescription = searchResult
         <div class="flex gap-1">
           {#each postData.tags as tag}
             <a 
-              href={`${lang === 'es' ? '/es' : ''}/blog/tag/${tag}/${querySuffix}`}
+              href={`${prefix}/blog/tag/${tag}/${querySuffix}`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
               #{t.tagNames[tag] || tag}

@@ -173,6 +173,7 @@ export interface SiteTranslations {
       cta: string;
     };
     latestArticles: string;
+    viewAllPosts: string;
     portfolioProjectsTitle: string;
     portfolioProjectsViewAll: string;
     portfolioProjectsEmpty: string;
@@ -448,6 +449,7 @@ export interface SiteTranslations {
 
   // Scroll to timeline
   scrollToTimeline: string;
+  viewLabel: (label: string) => string;
 
   // Post status (dev mode indicators)
   postStatus: {
@@ -602,6 +604,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         cta: 'More about my interests',
       },
       latestArticles: 'Latest Articles',
+      viewAllPosts: 'View all posts',
       portfolioProjectsTitle: 'Portfolio & Projects',
       portfolioProjectsViewAll: 'View all portfolio posts',
       portfolioProjectsEmpty: 'More projects coming soon.',
@@ -1369,6 +1372,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
     // Scroll to timeline
     scrollToTimeline: 'View Timeline',
+    viewLabel: (label: string) => `View ${label}`,
 
     // Post status (dev mode indicators)
     postStatus: {
@@ -1522,6 +1526,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         cta: 'M\u00E1s sobre mis intereses',
       },
       latestArticles: '\u00DAltimos Art\u00EDculos',
+      viewAllPosts: 'Ver todos los art\u00EDculos',
       portfolioProjectsTitle: 'Portafolio y Proyectos',
       portfolioProjectsViewAll: 'Ver todos los posts del portafolio',
       portfolioProjectsEmpty: 'Próximamente más proyectos.',
@@ -2296,6 +2301,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
     // Scroll to timeline
     scrollToTimeline: 'Ver Timeline',
+    viewLabel: (label: string) => `Ver ${label}`,
 
     // Post status (dev mode indicators)
     postStatus: {

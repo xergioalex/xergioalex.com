@@ -4,6 +4,13 @@
 import '../styles/global.css';
 import JsonLd from '@/components/JsonLd.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
+import {
+  DEFAULT_LANGUAGE,
+  getAlternateUrls,
+  getOGLocale,
+  getSupportedLanguages,
+  type Language,
+} from '@/lib/i18n';
 
 interface Props {
   title: string;
@@ -26,18 +33,17 @@ const {
 } = Astro.props;
 
 // Compute hreflang URLs for multilingual SEO
-const pathname = Astro.url.pathname;
-let enURL: string;
-let esURL: string;
-
-if (pathname.startsWith('/es/') || pathname === '/es') {
-  esURL = new URL(pathname, Astro.site).href;
-  const enPath = pathname.replace(/^\/es/, '') || '/';
-  enURL = new URL(enPath, Astro.site).href;
-} else {
-  enURL = new URL(pathname, Astro.site).href;
-  esURL = new URL(`/es${pathname}`, Astro.site).href;
-}
+const alternateUrls = getAlternateUrls(Astro.url.pathname).map((alt) => ({
+  ...alt,
+  href: new URL(alt.url, Astro.site).href,
+}));
+const defaultHref =
+  alternateUrls.find((a) => a.lang === DEFAULT_LANGUAGE)?.href ??
+  canonicalURL.href;
+const currentLocale = getOGLocale(lang as Language);
+const alternateLocales = getSupportedLanguages()
+  .filter((l) => l !== lang)
+  .map((l) => getOGLocale(l));
 ---
 
 <!-- Global Metadata -->
@@ -73,9 +79,10 @@ if (pathname.startsWith('/es/') || pathname === '/es') {
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Hreflang for multilingual SEO -->
-<link rel="alternate" hreflang="en" href={enURL} />
-<link rel="alternate" hreflang="es" href={esURL} />
-<link rel="alternate" hreflang="x-default" href={enURL} />
+{alternateUrls.map((alt) => (
+  <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+))}
+<link rel="alternate" hreflang="x-default" href={defaultHref} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -95,8 +102,10 @@ if (pathname.startsWith('/es/') || pathname === '/es') {
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:site_name" content={SITE_TITLE} />
-<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
-<meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_ES'} />
+<meta property="og:locale" content={currentLocale} />
+{alternateLocales.map((locale) => (
+  <meta property="og:locale:alternate" content={locale} />
+))}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />

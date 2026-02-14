@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
 import { getPostSlug } from '@/lib/blog';
-import type { Language } from '@/lib/translations';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
 
 const { lang = 'en', grouped = false, surface = 'default' } = Astro.props;
 const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
 const sectionSpacing = grouped
   ? 'pt-6 sm:pt-8 lg:pt-10 pb-12 sm:pb-16 lg:pb-20'
   : 'py-16';
@@ -42,7 +43,7 @@ const posts = allPosts
           {
             posts.map((post) => (
               <a
-                href={`${lang === 'es' ? '/es' : ''}/blog/${getPostSlug(post.id)}/`}
+                href={`${prefix}/blog/${getPostSlug(post.id)}/`}
                 class="block bg-gray-50 dark:bg-gray-800 rounded-xl shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden"
               >
                 {post.data.heroImage && (
@@ -70,7 +71,7 @@ const posts = allPosts
         </div>
         <div class="mt-8 text-center">
           <a
-            href={`${lang === 'es' ? '/es' : ''}/portfolio#timeline`}
+            href={`${prefix}/portfolio#timeline`}
             class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
           >
             {t.homeSections.portfolioProjectsViewAll} &rarr;

@@ -2,7 +2,8 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
 import { getPostSlug } from '@/lib/blog';
-import { getTranslations, type Language } from '@/lib/translations';
+import { getLocalizedUrl, type Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -11,7 +12,7 @@ interface Props {
 
 const { posts, lang } = Astro.props;
 const t = getTranslations(lang);
-const blogPrefix = lang === 'es' ? '/es/blog' : '/blog';
+const blogPrefix = getLocalizedUrl('/blog', lang);
 ---
 
 {
