@@ -6,8 +6,9 @@ export interface Props {
   blogPostsResult: BlogPostsResultType;
   currentTag?: string;
   lang?: string;
+  isDev?: boolean;
 }
-const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
+const { blogPostsResult, currentTag, lang = 'en', isDev = false } = Astro.props;
 ---
 
 <StaticBlogSearch
@@ -18,5 +19,6 @@ const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
   tagsResult={blogPostsResult.tagsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
   lang={lang}
+  isDev={isDev}
   client:load
 />

@@ -167,7 +167,12 @@ Custom theme colors in `global.css`:
 ```css
 @theme {
   --color-main: #0f1124;      /* Void Black — dark mode base */
-  --color-secondary: #e41541; /* Crimson Strike — accent */
+  --color-secondary: #e41541; /* Crimson Strike — light mode accent */
+  --color-gray-50: #f1f5f9;   /* Slightly stronger light surface contrast */
+}
+
+.dark {
+  --color-secondary: #cd3553; /* Softer accent for dark mode readability */
 }
 ```
 
@@ -177,6 +182,19 @@ Use in Tailwind:
 <div class="bg-main">Dark branded background (Void Black)</div>
 <span class="text-secondary">Accent text (Crimson Strike)</span>
 ```
+
+### Accent Token Behavior by Theme
+
+| Token | Light Mode | Dark Mode | Why |
+|-------|-----------|-----------|-----|
+| `--color-secondary` | `#E41541` | `#CD3553` | Keeps brand identity while reducing perceived intensity on dark backgrounds |
+| `--color-gray-50` | `#F1F5F9` | N/A | Improves separation between adjacent light surfaces |
+
+Implementation note:
+
+- Components should keep using `bg-secondary`, `text-secondary`, and `border-secondary`.
+- Avoid hardcoding red shades (e.g. `text-red-*`) for primary accent elements.
+- The dark accent adjustment is global and automatic via `.dark`.
 
 > **Full palette:** See **[Brand Guide](../BRAND_GUIDE.md)** for the complete 5-color system (Ninja Navy, Crimson Strike, Shadow Steel, Void Black, Pure White), dark/light mode pairing rules, and usage guidelines.
 

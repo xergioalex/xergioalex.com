@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getBlogPosts } from '@/lib/blog';
+import { getBlogPosts, isPostVisibleInProduction } from '@/lib/blog';
 import { getTranslations, type Language } from '@/lib/translations';
 
 const lang: Language = 'en';
@@ -11,17 +11,23 @@ const t = getTranslations(lang);
 export async function getStaticPaths() {
   const lang: Language = 'en';
 
-  // Get all posts to extract unique tags
+  // Get all posts to extract unique tags (only from visible posts in production)
   const allPosts = await getCollection('blog');
+  const visiblePosts = allPosts.filter((post) => {
+    if (!post.id.startsWith(`${lang}/`)) return false;
+    if (import.meta.env.PROD) return isPostVisibleInProduction(post);
+    return true;
+  });
   const tagsResult = Array.from(
-    new Set(allPosts.flatMap((post) => post.data.tags ?? []))
+    new Set(visiblePosts.flatMap((post) => post.data.tags ?? []))
   );
 
   const paths = [];
 
   // For each tag, generate only the first page
+  const includeHidden = import.meta.env.DEV;
   for (const tag of tagsResult) {
-    const tagPostsResult = await getBlogPosts({ lang, tag });
+    const tagPostsResult = await getBlogPosts({ lang, tag, includeHidden });
     paths.push({
       params: { tag },
       props: {
@@ -43,5 +49,5 @@ const { tag } = Astro.params;
   title={t.postsTagged(t.tagNames[tag] || tag)}
   description={t.tagDescriptions[tag] || `Articles tagged as ${t.tagNames[tag] || tag}.`}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} />
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} isDev={import.meta.env.DEV} />
 </MainLayout>

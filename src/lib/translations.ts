@@ -65,6 +65,7 @@ export interface SiteTranslations {
   nav: {
     home: string;
     blog: string;
+    work: string;
     portfolio: string;
     about: string;
     contact: string;
@@ -170,6 +171,15 @@ export interface SiteTranslations {
     portfolioProjectsTitle: string;
     portfolioProjectsViewAll: string;
     portfolioProjectsEmpty: string;
+    techTalksPostsTitle: string;
+    techTalksPostsViewAll: string;
+    techTalksPostsEmpty: string;
+    dailybotPostsTitle: string;
+    dailybotPostsViewAll: string;
+    dailybotPostsEmpty: string;
+    tradingPostsTitle: string;
+    tradingPostsViewAll: string;
+    tradingPostsEmpty: string;
   };
 
   // Contact section (homepage)
@@ -235,6 +245,8 @@ export interface SiteTranslations {
     roleText: string;
     featuresTitle: string;
     features: HighlightItem[];
+    timelineTitle: string;
+    emptyState: string;
     ctaText: string;
     ctaLink: string;
   };
@@ -269,6 +281,8 @@ export interface SiteTranslations {
     philosophyText: string;
     ctaTitle: string;
     ctaText: string;
+    timelineTitle: string;
+    emptyState: string;
   };
 
   // Maker page
@@ -293,6 +307,11 @@ export interface SiteTranslations {
     subtitle: string;
     description: string;
     heroDescription: string;
+    journeyTitle: string;
+    journeyText: string;
+    areasTitle: string;
+    areas: HighlightItem[];
+    timelineTitle: string;
     emptyState: string;
   };
 
@@ -310,6 +329,8 @@ export interface SiteTranslations {
     areas: HighlightItem[];
     philosophyTitle: string;
     philosophyText: string;
+    timelineTitle: string;
+    emptyState: string;
   };
 
   // Foodie page
@@ -420,6 +441,21 @@ export interface SiteTranslations {
   // Read more
   readMore: string;
 
+  // Scroll to timeline
+  scrollToTimeline: string;
+
+  // Post status (dev mode indicators)
+  postStatus: {
+    draft: string;
+    scheduled: string;
+    'draft+scheduled': string;
+    demo: string;
+  };
+  previewMode: string;
+  showAllPosts: string;
+  showPublishedOnly: string;
+  publishesOn: string;
+
   // Errors
   searchError: string;
   loadError: string;
@@ -438,6 +474,7 @@ const translations: Record<Language, SiteTranslations> = {
     nav: {
       home: 'Home',
       blog: 'Blog',
+      work: 'Work',
       about: 'About',
       contact: 'Contact',
       aboutMe: 'About Me',
@@ -563,6 +600,15 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       portfolioProjectsTitle: 'Portfolio & Projects',
       portfolioProjectsViewAll: 'View all portfolio posts',
       portfolioProjectsEmpty: 'More projects coming soon.',
+      techTalksPostsTitle: 'Recent Tech Talks',
+      techTalksPostsViewAll: 'View all tech talks',
+      techTalksPostsEmpty: 'More talks coming soon.',
+      dailybotPostsTitle: 'Latest DailyBot Articles',
+      dailybotPostsViewAll: 'View all DailyBot articles',
+      dailybotPostsEmpty: 'DailyBot articles coming soon.',
+      tradingPostsTitle: 'Trading Journal',
+      tradingPostsViewAll: 'View all trading entries',
+      tradingPostsEmpty: 'Trading journal entries coming soon.',
     },
 
     // Contact section (homepage)
@@ -609,7 +655,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
           description:
             'Sharing knowledge through tech talks, writing, mentoring, and building the local tech ecosystem.',
           icon: '\u{1F399}',
-          link: '/techtalks',
+          link: '/tech-talks',
         },
         {
           title: 'Trading & Markets',
@@ -839,6 +885,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
           icon: '\u{1F517}',
         },
       ],
+      timelineTitle: 'DailyBot Articles',
+      emptyState: 'No DailyBot articles available yet. Check back soon!',
       ctaText: 'Visit DailyBot',
       ctaLink: 'https://dailybot.com',
     },
@@ -957,6 +1005,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       ctaTitle: 'Want Me to Speak at Your Event?',
       ctaText:
         "I'm always open to speaking opportunities — from local meetups to international conferences. Let's connect!",
+      timelineTitle: 'My Talks',
+      emptyState: 'No tech talks available yet. Check back soon!',
     },
 
     // Maker page
@@ -1018,12 +1068,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
     // Trading page
     tradingPage: {
-      title: 'Trading',
-      subtitle: 'Understanding markets, building strategies',
+      title: 'Trading Journal',
+      subtitle: 'Markets, strategies & lessons learned',
       description:
-        "Sergio's forex trading journey — market analysis, algorithmic strategies, and continuous learning.",
+        "Sergio's trading journal — weekly updates, market analysis, strategies, and lessons learned from active trading.",
       heroDescription:
-        'Exploring the intersection of technology and financial markets through forex trading and algorithmic strategies.',
+        'My personal trading journal where I document my journey through the financial markets — weekly reviews, analysis, strategies, and the lessons I learn along the way.',
       journeyTitle: 'My Trading Journey',
       journeyText:
         "Trading came into my life as a natural extension of my passion for data, analysis, and pattern recognition. What started as curiosity about how financial markets work quickly became a deep interest in forex trading — the largest and most liquid market in the world.<br /><br />Over the past two years, I've dedicated significant time to studying market dynamics, understanding how macroeconomic events affect currency prices, and developing my own trading approach. This is more than a hobby — it's a discipline that challenges me every day.",
@@ -1060,6 +1110,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       philosophyTitle: 'Trading Philosophy',
       philosophyText:
         'Trading is a discipline, not a gamble. Success comes from education, patience, and emotional control — not from chasing quick profits. The market is the best teacher: it rewards consistency and punishes impulsiveness.<br /><br />As a technologist, I see unique opportunities in combining my engineering skills with trading. Building algorithmic systems, analyzing data patterns, and automating strategies are areas where my tech background gives me an edge. The goal is not just to trade, but to understand the markets deeply and build systems that can make intelligent decisions.',
+      timelineTitle: 'Trading Journal',
+      emptyState: 'No trading journal entries yet. Check back soon!',
     },
 
     // Foodie page
@@ -1170,6 +1222,37 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         'A showcase of my projects, experiments, and technical work across software engineering, robotics, and more.',
       heroDescription:
         'Explore my portfolio of projects spanning software development, DevOps, robotics, and emerging technologies.',
+      journeyTitle: 'Building Things That Matter',
+      journeyText:
+        "I've always believed the best way to learn is by building. Over the years, I've worked on projects ranging from large-scale SaaS products to weekend experiments with microcontrollers. Each project taught me something new — whether it was a new technology, a better architecture pattern, or simply how to ship faster.<br /><br />This portfolio is a living collection of the work I'm most proud of. From open-source tools and DevOps infrastructure to robotics prototypes and AI experiments — each entry represents a problem I found interesting enough to solve.",
+      areasTitle: "What You'll Find Here",
+      areas: [
+        {
+          title: 'Software & SaaS',
+          description:
+            'Full-stack applications, APIs, and products built with modern technologies — from startup MVPs to production systems serving thousands of users.',
+          icon: '\u{1F4BB}',
+        },
+        {
+          title: 'DevOps & Infrastructure',
+          description:
+            'CI/CD pipelines, containerized deployments, cloud architectures, and open-source tools for developer productivity.',
+          icon: '\u{2699}\uFE0F',
+        },
+        {
+          title: 'Robotics & Hardware',
+          description:
+            'Autonomous robots, IoT devices, 3D printing projects, and experiments at the intersection of software and the physical world.',
+          icon: '\u{1F916}',
+        },
+        {
+          title: 'AI & Experiments',
+          description:
+            "Machine learning prototypes, generative AI explorations, and side projects pushing the boundaries of what's possible.",
+          icon: '\u{1F9EA}',
+        },
+      ],
+      timelineTitle: 'Projects',
       emptyState: 'No portfolio projects available yet. Check back soon!',
     },
 
@@ -1259,6 +1342,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       talks: 'Talks',
       trading: 'Trading',
       portfolio: 'Portfolio',
+      dailybot: 'DailyBot',
+      demo: 'Demo',
     },
     tagDescriptions: {
       tech: 'Tutorials, guides, and technical articles.',
@@ -1266,6 +1351,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       talks: 'Tech talks, slides, videos, and events.',
       trading: 'Trading journal, analysis, and learnings.',
       portfolio: 'Personal projects, software, robotics, and open source work.',
+      dailybot:
+        'DailyBot articles: product journey, workflow automation, and team productivity.',
+      demo: 'Demo posts showcasing blog features. Only visible in dev mode.',
     },
 
     // Date formatting
@@ -1273,6 +1361,21 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
     // Read more
     readMore: 'Read more',
+
+    // Scroll to timeline
+    scrollToTimeline: 'View Timeline',
+
+    // Post status (dev mode indicators)
+    postStatus: {
+      draft: 'Draft',
+      scheduled: 'Scheduled',
+      'draft+scheduled': 'Draft + Scheduled',
+      demo: 'Demo',
+    },
+    previewMode: 'Preview Mode',
+    showAllPosts: 'Show all posts',
+    showPublishedOnly: 'Show published only',
+    publishesOn: 'Publishes on',
 
     // Errors
     searchError: 'An error occurred while searching. Please try again.',
@@ -1290,6 +1393,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     nav: {
       home: 'Inicio',
       blog: 'Blog',
+      work: 'Trabajo',
       about: 'Acerca de',
       contact: 'Contacto',
       aboutMe: 'Sobre m\u00ED',
@@ -1416,6 +1520,15 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       portfolioProjectsTitle: 'Portafolio y Proyectos',
       portfolioProjectsViewAll: 'Ver todos los posts del portafolio',
       portfolioProjectsEmpty: 'Próximamente más proyectos.',
+      techTalksPostsTitle: 'Charlas Recientes',
+      techTalksPostsViewAll: 'Ver todas las charlas',
+      techTalksPostsEmpty: 'Próximamente más charlas.',
+      dailybotPostsTitle: 'Últimos Artículos de DailyBot',
+      dailybotPostsViewAll: 'Ver todos los artículos de DailyBot',
+      dailybotPostsEmpty: 'Próximamente artículos de DailyBot.',
+      tradingPostsTitle: 'Diario de Trading',
+      tradingPostsViewAll: 'Ver todas las entradas de trading',
+      tradingPostsEmpty: 'Próximamente entradas del diario de trading.',
     },
 
     // Contact section (homepage)
@@ -1463,7 +1576,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
           description:
             'Compartiendo conocimiento a trav\u00E9s de charlas tech, escritura, mentor\u00EDa y construyendo el ecosistema tech local.',
           icon: '\u{1F399}',
-          link: '/es/techtalks',
+          link: '/es/tech-talks',
         },
         {
           title: 'Trading y Mercados',
@@ -1693,6 +1806,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
           icon: '\u{1F517}',
         },
       ],
+      timelineTitle: 'Artículos sobre DailyBot',
+      emptyState: '¡Aún no hay artículos sobre DailyBot. Vuelve pronto!',
       ctaText: 'Visitar DailyBot',
       ctaLink: 'https://dailybot.com',
     },
@@ -1811,6 +1926,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       ctaTitle: '\u00BFQuieres que Hable en Tu Evento?',
       ctaText:
         'Siempre estoy abierto a oportunidades de charlas — desde meetups locales hasta conferencias internacionales. \u00A1Conect\u00E9monos!',
+      timelineTitle: 'Mis Charlas',
+      emptyState: '\u00A1A\u00FAn no hay charlas disponibles. Vuelve pronto!',
     },
 
     // Maker page
@@ -1872,48 +1989,51 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
     // Trading page
     tradingPage: {
-      title: 'Trading',
-      subtitle: 'Entendiendo mercados, construyendo estrategias',
+      title: 'Diario de Trading',
+      subtitle: 'Mercados, estrategias y lecciones aprendidas',
       description:
-        'El camino de Sergio en el trading forex — an\u00E1lisis de mercado, estrategias algor\u00EDtmicas y aprendizaje continuo.',
+        'El diario de trading de Sergio — actualizaciones semanales, análisis de mercado, estrategias y lecciones aprendidas del trading activo.',
       heroDescription:
-        'Explorando la intersecci\u00F3n entre tecnolog\u00EDa y mercados financieros a trav\u00E9s de trading forex y estrategias algor\u00EDtmicas.',
+        'Mi diario personal de trading donde documento mi camino por los mercados financieros — revisiones semanales, análisis, estrategias y las lecciones que aprendo en el camino.',
       journeyTitle: 'Mi Camino en el Trading',
       journeyText:
-        'El trading lleg\u00F3 a mi vida como una extensi\u00F3n natural de mi pasi\u00F3n por los datos, el an\u00E1lisis y el reconocimiento de patrones. Lo que comenz\u00F3 como curiosidad sobre c\u00F3mo funcionan los mercados financieros r\u00E1pidamente se convirti\u00F3 en un profundo inter\u00E9s en el trading forex — el mercado m\u00E1s grande y l\u00EDquido del mundo.<br /><br />Durante los \u00FAltimos dos a\u00F1os, he dedicado tiempo significativo a estudiar la din\u00E1mica del mercado, entender c\u00F3mo los eventos macroecon\u00F3micos afectan los precios de las divisas y desarrollar mi propio enfoque de trading. Esto es m\u00E1s que un hobby — es una disciplina que me desaf\u00EDa cada d\u00EDa.',
+        'El trading llegó a mi vida como una extensión natural de mi pasión por los datos, el análisis y el reconocimiento de patrones. Lo que comenzó como curiosidad sobre cómo funcionan los mercados financieros rápidamente se convirtió en un profundo interés en el trading forex — el mercado más grande y líquido del mundo.<br /><br />Durante los últimos dos años, he dedicado tiempo significativo a estudiar la dinámica del mercado, entender cómo los eventos macroeconómicos afectan los precios de las divisas y desarrollar mi propio enfoque de trading. Esto es más que un hobby — es una disciplina que me desafía cada día.',
       approachTitle: 'Mi Enfoque',
       approachText:
-        'Abordo el trading con la misma mentalidad que aplico a la ingenier\u00EDa: sistem\u00E1tica, basada en datos y disciplinada. Combino an\u00E1lisis fundamental (entender c\u00F3mo las noticias, datos econ\u00F3micos y eventos geopol\u00EDticos mueven los mercados) con an\u00E1lisis t\u00E9cnico (leer gr\u00E1ficos, identificar patrones y usar indicadores).<br /><br />La gesti\u00F3n del riesgo es central en mi filosof\u00EDa. Cada operaci\u00F3n tiene un plan claro — entrada, stop loss y take profit. Mantengo un diario de trading detallado para rastrear el rendimiento y mejorar continuamente mi proceso de toma de decisiones.',
+        'Abordo el trading con la misma mentalidad que aplico a la ingeniería: sistemática, basada en datos y disciplinada. Combino análisis fundamental (entender cómo las noticias, datos económicos y eventos geopolíticos mueven los mercados) con análisis técnico (leer gráficos, identificar patrones y usar indicadores).<br /><br />La gestión del riesgo es central en mi filosofía. Cada operación tiene un plan claro — entrada, stop loss y take profit. Mantengo un diario de trading detallado para rastrear el rendimiento y mejorar continuamente mi proceso de toma de decisiones.',
       areasTitle: 'Lo Que Estudio',
       areas: [
         {
           title: 'Trading Forex',
           description:
-            'Pares de divisas, sesiones de mercado, pol\u00EDticas de bancos centrales y factores macroecon\u00F3micos que mueven el mercado forex.',
-          icon: '\u{1F4B1}',
+            'Pares de divisas, sesiones de mercado, políticas de bancos centrales y factores macroeconómicos que mueven el mercado forex.',
+          icon: '💱',
         },
         {
-          title: 'Trading Algor\u00EDtmico',
+          title: 'Trading Algorítmico',
           description:
-            'Automatizando estrategias de trading, backtesting de sistemas y aplicando habilidades de programaci\u00F3n para construir bots de trading.',
-          icon: '\u{1F4BB}',
+            'Automatizando estrategias de trading, backtesting de sistemas y aplicando habilidades de programación para construir bots de trading.',
+          icon: '💻',
         },
         {
-          title: 'An\u00E1lisis de Mercado',
+          title: 'Análisis de Mercado',
           description:
-            'An\u00E1lisis de impacto de noticias, indicadores econ\u00F3micos, an\u00E1lisis de sentimiento y entender c\u00F3mo eventos globales afectan los precios.',
-          icon: '\u{1F4CA}',
+            'Análisis de impacto de noticias, indicadores económicos, análisis de sentimiento y entender cómo eventos globales afectan los precios.',
+          icon: '📊',
         },
         {
-          title: 'Gesti\u00F3n del Riesgo',
+          title: 'Gestión del Riesgo',
           description:
-            'Dimensionamiento de posiciones, estrategias de stop-loss, ratios riesgo-recompensa y protecci\u00F3n del capital a trav\u00E9s de trading disciplinado.',
-          icon: '\u{1F6E1}\uFE0F',
+            'Dimensionamiento de posiciones, estrategias de stop-loss, ratios riesgo-recompensa y protección del capital a través de trading disciplinado.',
+          icon: '🛡️',
         },
       ],
-      philosophyTitle: 'Filosof\u00EDa de Trading',
+      philosophyTitle: 'Filosofía de Trading',
       philosophyText:
-        'El trading es una disciplina, no una apuesta. El \u00E9xito viene de la educaci\u00F3n, la paciencia y el control emocional — no de perseguir ganancias r\u00E1pidas. El mercado es el mejor maestro: recompensa la consistencia y castiga la impulsividad.<br /><br />Como tecn\u00F3logo, veo oportunidades \u00FAnicas en combinar mis habilidades de ingenier\u00EDa con el trading. Construir sistemas algor\u00EDtmicos, analizar patrones de datos y automatizar estrategias son \u00E1reas donde mi formaci\u00F3n tech me da una ventaja. El objetivo no es solo operar, sino entender los mercados profundamente y construir sistemas que puedan tomar decisiones inteligentes.',
+        'El trading es una disciplina, no una apuesta. El éxito viene de la educación, la paciencia y el control emocional — no de perseguir ganancias rápidas. El mercado es el mejor maestro: recompensa la consistencia y castiga la impulsividad.<br /><br />Como tecnólogo, veo oportunidades únicas en combinar mis habilidades de ingeniería con el trading. Construir sistemas algorítmicos, analizar patrones de datos y automatizar estrategias son áreas donde mi formación tech me da una ventaja. El objetivo no es solo operar, sino entender los mercados profundamente y construir sistemas que puedan tomar decisiones inteligentes.',
+      timelineTitle: 'Diario de Trading',
+      emptyState:
+        'Aún no hay entradas en el diario de trading. ¡Vuelve pronto!',
     },
 
     // Foodie page
@@ -2024,6 +2144,37 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         'Una muestra de mis proyectos, experimentos y trabajo técnico en ingeniería de software, robótica y más.',
       heroDescription:
         'Explora mi portafolio de proyectos en desarrollo de software, DevOps, robótica y tecnologías emergentes.',
+      journeyTitle: 'Construyendo Cosas que Importan',
+      journeyText:
+        'Siempre he creído que la mejor forma de aprender es construyendo. A lo largo de los años, he trabajado en proyectos que van desde productos SaaS a gran escala hasta experimentos de fin de semana con microcontroladores. Cada proyecto me enseñó algo nuevo — ya sea una nueva tecnología, un mejor patrón de arquitectura, o simplemente cómo entregar más rápido.<br /><br />Este portafolio es una colección viva del trabajo del que estoy más orgulloso. Desde herramientas open-source e infraestructura DevOps hasta prototipos de robótica y experimentos con IA — cada entrada representa un problema que encontré lo suficientemente interesante como para resolver.',
+      areasTitle: 'Lo Que Encontrarás Aquí',
+      areas: [
+        {
+          title: 'Software y SaaS',
+          description:
+            'Aplicaciones full-stack, APIs y productos construidos con tecnologías modernas — desde MVPs de startups hasta sistemas en producción sirviendo a miles de usuarios.',
+          icon: '💻',
+        },
+        {
+          title: 'DevOps e Infraestructura',
+          description:
+            'Pipelines CI/CD, despliegues containerizados, arquitecturas en la nube y herramientas open-source para productividad de desarrolladores.',
+          icon: '⚙️',
+        },
+        {
+          title: 'Robótica y Hardware',
+          description:
+            'Robots autónomos, dispositivos IoT, proyectos de impresión 3D y experimentos en la intersección del software y el mundo físico.',
+          icon: '🤖',
+        },
+        {
+          title: 'IA y Experimentos',
+          description:
+            'Prototipos de machine learning, exploraciones de IA generativa y proyectos paralelos empujando los límites de lo posible.',
+          icon: '🧪',
+        },
+      ],
+      timelineTitle: 'Proyectos',
       emptyState:
         'Aún no hay proyectos de portafolio disponibles. ¡Vuelve pronto!',
     },
@@ -2117,6 +2268,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       talks: 'Charlas',
       trading: 'Trading',
       portfolio: 'Portafolio',
+      dailybot: 'DailyBot',
+      demo: 'Demo',
     },
     tagDescriptions: {
       tech: 'Tutoriales, guías y artículos técnicos.',
@@ -2125,6 +2278,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       trading: 'Diario de trading, análisis y aprendizajes.',
       portfolio:
         'Proyectos personales, software, robótica y trabajo open source.',
+      dailybot:
+        'Artículos sobre DailyBot: historia del producto, automatización de flujos y productividad de equipos.',
+      demo: 'Posts de demostración mostrando funcionalidades del blog. Solo visibles en modo desarrollo.',
     },
 
     // Date formatting
@@ -2133,10 +2289,25 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     // Read more
     readMore: 'Leer m\u00E1s',
 
+    // Scroll to timeline
+    scrollToTimeline: 'Ver Timeline',
+
+    // Post status (dev mode indicators)
+    postStatus: {
+      draft: 'Borrador',
+      scheduled: 'Programado',
+      'draft+scheduled': 'Borrador + Programado',
+      demo: 'Demo',
+    },
+    previewMode: 'Modo Vista Previa',
+    showAllPosts: 'Mostrar todos los posts',
+    showPublishedOnly: 'Solo publicados',
+    publishesOn: 'Se publica el',
+
     // Errors
-    searchError: 'Ocurri\u00F3 un error al buscar. Por favor intenta de nuevo.',
+    searchError: 'Ocurrió un error al buscar. Por favor intenta de nuevo.',
     loadError:
-      'Error al cargar el \u00EDndice de b\u00FAsqueda. Por favor recarga la p\u00E1gina.',
+      'Error al cargar el índice de búsqueda. Por favor recarga la página.',
     retry: 'Intentar de nuevo',
   },
 };

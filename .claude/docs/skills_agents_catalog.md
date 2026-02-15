@@ -40,7 +40,7 @@ Everyday development work.
 
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
-| add-blog-post | create   | `/add-blog-post` | sonnet | Create blog posts — topic mode (writes content) or content mode (scaffolding) |
+| add-blog-post | create   | `/add-blog-post` | sonnet | Create blog posts — topic mode (writes content) or content mode (scaffolding). Supports draft, scheduled, and published states. |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
 
@@ -156,7 +156,7 @@ Skills, commands, and agents for creating and managing blog content.
 | doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
 | content-writer | Agent (T2) | Expert bilingual content writer with personal-professional voice |
 
-**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md`.
+**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`. Posts can be created as published, draft (`draft: true`), or scheduled (future `pubDate`).
 
 ### 2. i18n & Translation
 
@@ -295,6 +295,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-02-12 | Blog Content Lifecycle docs | Created `docs/features/BLOG_CONTENT_LIFECYCLE.md`. Updated add-blog-post skill (v2.2.0), content-writer agent (v1.1.0), and new-post command with draft/scheduled/demo support. |
 | 2026-02-11 | new-post command created | Interactive guided command for blog post creation. Asks questions step by step, handles images, optimization, and validation. |
 | 2026-02-11 | write-article merged into add-blog-post | Unified skill with topic mode (writes from scratch) and content mode (scaffolding). Deleted write-article. |
 | 2026-02-10 | content-writer, write-article added | Expert bilingual content writer agent and article writing skill with personal-professional voice, narrative structure, and bilingual enforcement |

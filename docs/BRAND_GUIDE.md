@@ -77,7 +77,7 @@ Brand hierarchy:
 
 | Context | Background | Text | Accent |
 |---------|-----------|------|--------|
-| **Dark mode** | Void Black `#0F1124` | White `#FFFFFF` | Crimson Strike `#E51641` |
+| **Dark mode** | Void Black `#0F1124` | White `#FFFFFF` | Crimson Strike (soft dark variant) `#CD3553` |
 | **Light mode** | White `#FFFFFF` | Ninja Navy `#152E45` or dark grays | Crimson Strike `#E51641` |
 | **Hero sections** | Ninja Navy `#152E45` or Void Black | White | Crimson Strike |
 | **Cards (dark)** | Gray-800/900 | White/Gray-100 | Crimson Strike |
@@ -103,12 +103,18 @@ Brand hierarchy:
 
 ### Current Implementation
 
-In `src/styles/global.css`, two brand colors are registered as Tailwind theme tokens:
+In `src/styles/global.css`, brand colors are registered as Tailwind theme tokens:
 
 ```css
 @theme {
   --color-main: #0f1124;      /* Void Black — dark mode base */
-  --color-secondary: #e41541; /* Crimson Strike — accent (note: #e41541 ≈ #E51641) */
+  --color-secondary: #e41541; /* Crimson Strike — light mode accent (note: #e41541 ≈ #E51641) */
+  --color-gray-50: #f1f5f9;   /* Slightly stronger light surface contrast */
+}
+
+/* Dark mode accent tuning (global override) */
+.dark {
+  --color-secondary: #cd3553; /* Softer accent for dark backgrounds */
 }
 ```
 
@@ -117,7 +123,18 @@ In `src/styles/global.css`, two brand colors are registered as Tailwind theme to
 | Token | Tailwind Class | Brand Color |
 |-------|---------------|-------------|
 | `--color-main` | `bg-main`, `text-main` | Void Black `#0F1124` |
-| `--color-secondary` | `bg-secondary`, `text-secondary` | Crimson Strike `#E51641` |
+| `--color-secondary` (light) | `bg-secondary`, `text-secondary` | Crimson Strike `#E51641` |
+| `--color-secondary` (dark override) | `bg-secondary`, `text-secondary` | Crimson Strike soft variant `#CD3553` |
+| `--color-gray-50` | `bg-gray-50` | Elevated light surface `#F1F5F9` |
+
+### Accent Tone Strategy (Light vs Dark)
+
+The accent token is intentionally dynamic by theme:
+
+- **Light mode** keeps the original brand accent (`#E41541`) for maximum identity.
+- **Dark mode** uses a softer accent (`#CD3553`) to reduce visual fatigue and avoid over-saturation on deep navy backgrounds.
+- The class API stays unchanged (`text-secondary`, `bg-secondary`, `border-secondary`), so components remain simple and consistent.
+- This approach is preferred over per-component color tweaks because it enforces a global visual system.
 
 ### Using Brand Colors in Components
 
@@ -174,7 +191,7 @@ Fonts are preloaded in `BaseHead.astro` for performance.
 | Secondary text | `text-gray-600` | `dark:text-gray-300` or `dark:text-gray-400` |
 | Muted text | `text-gray-500` | `dark:text-gray-500` |
 | Links | `text-blue-600` | `dark:text-blue-400` |
-| Accent text | `text-secondary` | `text-secondary` (same in both) |
+| Accent text | `text-secondary` (`#E41541`) | `text-secondary` (`#CD3553` via dark override) |
 
 ---
 
@@ -301,12 +318,16 @@ Primary accent:     #E51641 (Crimson Strike) → bg-secondary, text-secondary
 Dark background:    #0F1124 (Void Black)     → bg-main
 Brand navy:         #152E45 (Ninja Navy)     → for brand-heavy contexts
 Depth/secondary:    #637996 (Shadow Steel)   → subtle details
+Dark accent tone:   #CD3553 (Softer Crimson) → auto-applied in `.dark`
 ```
 
 ### Always Remember
 
 - Every UI element needs both light and dark mode styles (`dark:` prefix)
-- Crimson Strike (`#E51641`) is the accent — use for CTAs, highlights, interactive elements
+- Crimson Strike is theme-aware via `--color-secondary`:
+  - Light: `#E41541`
+  - Dark: `#CD3553`
+- Use `bg-secondary` / `text-secondary` / `border-secondary` instead of hardcoding red shades
 - Void Black (`#0F1124`) is the dark mode base — don't confuse with Ninja Navy
 - Content must exist in both English and Spanish
 - The brand voice is personal, not corporate

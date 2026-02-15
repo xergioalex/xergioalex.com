@@ -8,9 +8,11 @@ import type { BlogPostsResultType } from '@/lib/types';
 
 const lang: Language = 'en';
 const t = getTranslations(lang);
+const isDev = import.meta.env.DEV;
 
 const blogPostsResult: BlogPostsResultType = await getBlogPosts({
   lang: lang,
+  includeHidden: isDev,
 });
 
 const collectionPageData = {
@@ -31,5 +33,5 @@ const collectionPageData = {
 	<Fragment slot="head">
 		<JsonLd data={collectionPageData} />
 	</Fragment>
-	<BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
+	<BlogContainer blogPostsResult={blogPostsResult} lang={lang} isDev={isDev} />
 </MainLayout>

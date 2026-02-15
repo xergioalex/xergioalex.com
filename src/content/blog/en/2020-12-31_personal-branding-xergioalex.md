@@ -1,10 +1,10 @@
 ---
-title: 'Building the XergioAleX Brand: The Ninja Coder Identity'
-description: 'The story behind the XergioAleX personal brand — from concept to execution. A deep dive into the ninja coder logo, its symbolism, color palette, and complete style guide.'
-pubDate: '2020-12-31'
-heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
-heroLayout: 'side-by-side'
-tags: ['portfolio']
+title: "Building the XergioAleX Brand: The Ninja Coder Identity"
+description: "The story behind the XergioAleX personal brand — from concept to execution. A deep dive into the ninja coder logo, its symbolism, color palette, and complete style guide."
+pubDate: "2020-12-31"
+heroImage: "/images/blog/posts/personal-branding-xergioalex/hero.jpg"
+heroLayout: "side-by-side"
+tags: ["portfolio"]
 ---
 
 I spent years building products, writing code, and shipping features — but I never really thought about how I presented myself visually. My GitHub profile, my talks, my social media... everything felt disconnected. At some point I realized I wanted something that tied it all together. Something that felt like *me*.
@@ -89,6 +89,8 @@ Here are the colors that make up the brand. I gave them names because... why not
 
 **Crimson Strike** is the pop of energy. It shows up on the ninja's right side, the banner edges, and interactive elements on the site. A little goes a long way.
 
+As the brand evolved on the website, I kept this accent dynamic by theme: the original Crimson Strike in light mode, and a slightly softer variant in dark mode to reduce visual fatigue on deep navy backgrounds.
+
 ### Secondary Colors
 
 | Color | Name | Hex | RGB | What it's for |
@@ -106,9 +108,18 @@ Here are the colors that make up the brand. I gave them names because... why not
 ### How to Combine Them
 
 - **Main pairing:** Ninja Navy + Crimson Strike — this is the signature look
-- **Dark mode:** Void Black background, Crimson Strike accents, white text
+- **Dark mode:** Void Black background, softer Crimson accents (`#CD3553`), white text
 - **Light mode:** White background, Ninja Navy text, Crimson Strike accents
 - **One rule:** Don't use Crimson Strike as a background for text — it's an accent, not a surface
+
+### Implementation Note (Website)
+
+In the current site implementation, accent classes (`text-secondary`, `bg-secondary`, `border-secondary`) use a theme-aware token:
+
+- **Light mode accent:** `#E41541` (Crimson Strike)
+- **Dark mode accent:** `#CD3553` (softened Crimson for readability)
+
+This keeps the brand identity consistent while making dark mode feel calmer over long reading sessions.
 
 ---
 
@@ -197,7 +208,7 @@ Some basic guidelines for using the brand consistently:
 **Do:**
 - Use the full logo on dark backgrounds
 - Keep clear space around the logo
-- Use Crimson Strike for interactive elements
+- Use Crimson Strike for interactive elements (with the dark-mode softened accent on the website)
 - Pair Ninja Navy with white text
 
 **Don't:**

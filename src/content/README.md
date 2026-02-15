@@ -2,139 +2,138 @@
 
 This directory contains Content Collections for blog posts and tags. Astro's Content Collections provide type-safe frontmatter validation and easy querying of content.
 
+**Detailed guides:**
+
+- **[Blog Posts](../../docs/features/BLOG_POSTS.md)** - File naming, frontmatter schema, hero layouts, image organization
+- **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Draft, scheduled, demo posts, preview mode
+- **[Image Optimization](../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
+
 ## Directory Structure
 
 ```
 content/
-├── blog/                    # Blog posts collection
-│   ├── ejemplo.md
-│   ├── first-post.md
-│   ├── markdown-style-guide.md
-│   ├── personal-post-1.md
-│   ├── personal-post-2.md
-│   ├── second-post.md
-│   ├── third-post.md
-│   └── using-mdx.mdx
-└── tags/                    # Tags collection
+├── blog/
+│   ├── en/                              # English posts
+│   │   ├── _demo/                       # Demo posts (dev only)
+│   │   │   ├── 2025-01-01_demo-hero-banner.md
+│   │   │   ├── 2025-01-02_demo-hero-side-by-side.md
+│   │   │   └── ...
+│   │   ├── 2020-12-31_personal-branding-xergioalex.md
+│   │   ├── 2022-07-08_first-post.md
+│   │   └── ...
+│   └── es/                              # Spanish posts (matching filenames)
+│       ├── _demo/                       # Demo posts (matching en/_demo/)
+│       │   └── ...
+│       ├── 2020-12-31_personal-branding-xergioalex.md
+│       └── ...
+└── tags/                                # Tag definitions
+    ├── tech.md
     ├── personal.md
     ├── talks.md
-    ├── tech.md
-    └── trading.md
-```
-
-## Schema Definition
-
-Schemas are defined in `src/content.config.ts`:
-
-```typescript
-import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
-
-const blog = defineCollection({
-  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-const tags = defineCollection({
-  schema: z.object({
-    name: z.string(),
-    description: z.string().optional(),
-  }),
-});
-
-export const collections = { blog, tags };
+    ├── trading.md
+    ├── portfolio.md
+    └── demo.md                          # Dev-only tag for demo posts
 ```
 
 ## Blog Collection
 
+### File Naming
+
+**Format:** `YYYY-MM-DD_slug.{md,mdx}` (underscore separator)
+
+The date prefix uses `pubDate` and is stripped from URLs (clean slugs: `/blog/my-post/`).
+
+**Bilingual requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**.
+
 ### Schema
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `title` | `string` | Yes | Post title |
-| `description` | `string` | Yes | Post description/excerpt |
-| `pubDate` | `Date` | Yes | Publication date |
-| `updatedDate` | `Date` | No | Last update date |
-| `heroImage` | `string` | No | Hero image path |
-| `tags` | `string[]` | No | Array of tag names |
+Defined in `src/content.config.ts`:
 
-### Creating a New Blog Post
-
-1. Create a new `.md` or `.mdx` file in `content/blog/`:
-
-```bash
-touch src/content/blog/my-new-post.md
+```typescript
+schema: z.object({
+  title: z.string(),
+  description: z.string(),
+  pubDate: z.coerce.date(),
+  updatedDate: z.coerce.date().optional(),
+  heroImage: z.string().optional(),
+  heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
+    .default('banner').optional(),
+  tags: z.array(z.string()).optional(),
+  draft: z.boolean().default(false).optional(),
+})
 ```
 
-2. Add required frontmatter:
+| Field | Required | Description |
+|-------|----------|-------------|
+| `title` | Yes | Post title |
+| `description` | Yes | Post excerpt (50-160 chars for SEO) |
+| `pubDate` | Yes | Publication date. Future dates = **scheduled** post |
+| `updatedDate` | No | Last update date |
+| `heroImage` | No | Path: `/images/blog/posts/{slug}/hero.{ext}` |
+| `heroLayout` | No | `banner` (default), `side-by-side`, `minimal`, `none` |
+| `tags` | No | Array of tag IDs from `src/content/tags/` |
+| `draft` | No | `true` = **draft** post (hidden from production). Default: `false` |
 
-```markdown
----
-title: 'My New Post Title'
-description: 'A brief description of what this post is about.'
-pubDate: 'Jan 31 2026'
-heroImage: '/blog-placeholder-1.jpg'
-tags: ['tech', 'personal']
----
+### Content Lifecycle
 
-Your content starts here...
+Posts have visibility states based on `draft` and `pubDate`:
 
-## Section Heading
+| State | How to create | Production | Dev `?preview=all` |
+|-------|--------------|:----------:|:------------------:|
+| Published | `draft: false` + past `pubDate` | Visible | Visible |
+| Draft | `draft: true` | Hidden | Visible (amber badge) |
+| Scheduled | Future `pubDate` | Hidden | Visible (blue badge) |
+| Demo | File in `_demo/` folder | Hidden | Visible (purple badge) |
 
-More content with **bold** and *italic* text.
-```
+**Preview mode:** Visit `/blog/?preview=all` in dev to see all posts including hidden ones.
+
+See **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** for the complete guide.
 
 ### Frontmatter Examples
 
-**Minimal (required fields only):**
+**Published post:**
 
 ```markdown
 ---
-title: 'Post Title'
-description: 'Post description'
+title: 'My Post Title'
+description: 'A brief description.'
 pubDate: '2026-01-31'
+heroImage: '/images/blog/posts/my-post/hero.jpg'
+heroLayout: 'banner'
+tags: ['tech']
 ---
 ```
 
-**Complete (all fields):**
+**Draft post:**
 
 ```markdown
 ---
-title: 'Complete Post Example'
-description: 'This post demonstrates all available frontmatter fields.'
-pubDate: 'Jan 31 2026'
-updatedDate: 'Feb 01 2026'
-heroImage: '/images/hero.jpg'
-tags: ['tech', 'tutorial']
+title: 'Work in Progress'
+description: 'Still drafting this.'
+pubDate: '2026-02-15'
+tags: ['tech']
+draft: true
 ---
 ```
 
-### Using MDX
+**Scheduled post:**
 
-MDX files (`.mdx`) allow you to use components inside markdown:
-
-```mdx
+```markdown
 ---
-title: 'MDX Post'
-description: 'Using components in markdown'
-pubDate: '2026-01-31'
+title: 'Coming Soon'
+description: 'This publishes automatically on rebuild after the date.'
+pubDate: '2026-06-15'
+tags: ['tech']
 ---
-
-import { Code } from 'astro:components';
-
-# My MDX Post
-
-Regular markdown works here.
-
-<Code code={`const x = 1;`} lang="js" />
 ```
+
+### Demo Posts
+
+Demo posts are stored in `_demo/` subdirectories and showcase blog features (hero layouts, MDX, formatting, syntax highlighting). They are **never** visible in production.
+
+- Always include the `demo` tag: `tags: ['tech', 'demo']`
+- Must exist in both `en/_demo/` and `es/_demo/`
+- See [Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md#demo-posts) for details
 
 ## Tags Collection
 
@@ -142,121 +141,61 @@ Regular markdown works here.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `name` | `string` | Yes | Tag identifier (used in blog posts) |
+| `name` | `string` | Yes | Tag identifier (matches `tags` array in blog posts) |
 | `description` | `string` | No | Tag description |
-
-### Creating a New Tag
-
-1. Create a new `.md` file in `content/tags/`:
-
-```bash
-touch src/content/tags/new-tag.md
-```
-
-2. Add frontmatter:
-
-```markdown
----
-name: "new-tag"
-description: "Description of this tag category."
----
-```
-
-**Note:** The `name` field should match the tag strings used in blog posts' `tags` array.
 
 ### Current Tags
 
-| Tag | Description |
-|-----|-------------|
-| `personal` | Personal posts and experiences |
-| `talks` | Conference talks and presentations |
-| `tech` | Technical tutorials and guides |
-| `trading` | Trading and finance content |
+| Tag | Description | Visibility |
+|-----|-------------|------------|
+| `tech` | Technical tutorials and guides | Always |
+| `personal` | Personal posts and experiences | Always |
+| `talks` | Conference talks and presentations | Always |
+| `trading` | Trading and finance content | Always |
+| `portfolio` | Portfolio/branding | Always |
+| `demo` | Demo posts showcasing blog features | Dev only |
+
+Tag display names are localized in `src/lib/translations.ts` via `t.tagNames[tag]`.
+
+### Creating a New Tag
+
+1. Create `src/content/tags/{tag-name}.md`:
+
+```markdown
+---
+name: "tag-name"
+description: "Description of this tag."
+---
+```
+
+2. Add translations in `src/lib/translations.ts` (both EN and ES):
+
+```typescript
+tagNames: { ..., 'tag-name': 'Display Name' },
+tagDescriptions: { ..., 'tag-name': 'Description shown on tag page.' },
+```
 
 ## Querying Collections
-
-### Get All Posts
 
 ```typescript
 import { getCollection } from 'astro:content';
 
+// All posts
 const allPosts = await getCollection('blog');
-```
 
-### Get Posts by Tag
+// Posts by tag
+const techPosts = await getCollection('blog', ({ data }) =>
+  data.tags?.includes('tech')
+);
 
-```typescript
-const techPosts = await getCollection('blog', ({ data }) => {
-  return data.tags?.includes('tech');
-});
-```
-
-### Get Single Post
-
-```typescript
-import { getEntry } from 'astro:content';
-
-const post = await getEntry('blog', 'first-post');
-```
-
-### Get All Tags
-
-```typescript
-const allTags = await getCollection('tags');
-```
-
-### Render Post Content
-
-```typescript
-const { Content, headings } = await post.render();
-```
-
-Then use in Astro:
-
-```astro
-<Content />
-```
-
-## Content Organization
-
-### File Naming
-
-- Use kebab-case: `my-post-title.md`
-- No spaces or special characters
-- The filename becomes the post's slug
-
-### Images
-
-Blog images can be stored in:
-- `public/` - For static images (recommended for hero images)
-- `src/assets/` - For processed images with optimization
-
-Reference images in frontmatter:
-
-```markdown
-heroImage: '/blog-placeholder-1.jpg'  # From public/
-```
-
-## Type Safety
-
-Content Collections provide full TypeScript support:
-
-```typescript
-import type { CollectionEntry } from 'astro:content';
-
-// Typed post entry
-const post: CollectionEntry<'blog'> = await getEntry('blog', 'first-post');
-
-// Access typed data
-console.log(post.data.title);  // string
-console.log(post.data.pubDate); // Date
-console.log(post.data.tags);    // string[] | undefined
+// Using the blog utility (recommended — handles filtering, pagination, sorting)
+import { getBlogPosts } from '@/lib/blog';
+const result = await getBlogPosts({ lang: 'en', tag: 'tech', page: 1 });
 ```
 
 ## Related Documentation
 
+- [Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md) - Full reference
+- [Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md) - Draft, scheduled, demo, preview mode
 - [Blog Components](../components/blog/README.md)
 - [Library Functions](../lib/README.md) - `getBlogPosts()` utility
-- [API Reference](../../docs/API_REFERENCE.md) - Search API
-- [Pages](../pages/README.md) - Blog routing
-- [Features: Blog Search](../../docs/features/BLOG_SEARCH.md)

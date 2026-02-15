@@ -89,6 +89,8 @@ Estos son los colores que componen la marca. Les puse nombres porque... por qué
 
 **Carmesí Letal** es el toque de energía. Aparece en el lado derecho del ninja, los bordes del banner y los elementos interactivos del sitio. Un poco rinde mucho.
 
+A medida que la marca evolucionó en el sitio web, mantuve este acento dinámico por tema: el Carmesí original en modo claro y una variante ligeramente más suave en modo oscuro para reducir la fatiga visual sobre fondos azul marino profundos.
+
 ### Colores Secundarios
 
 | Color | Nombre | Hex | RGB | Para qué se usa |
@@ -106,9 +108,18 @@ Estos son los colores que componen la marca. Les puse nombres porque... por qué
 ### Cómo Combinarlos
 
 - **Par principal:** Marino Ninja + Carmesí Letal — este es el look distintivo
-- **Modo oscuro:** Fondo Negro Vacío, acentos Carmesí Letal, texto blanco
+- **Modo oscuro:** Fondo Negro Vacío, acentos Carmesí más suaves (`#CD3553`), texto blanco
 - **Modo claro:** Fondo blanco, texto Marino Ninja, acentos Carmesí Letal
 - **Una regla:** No uses Carmesí Letal como fondo para texto — es un acento, no una superficie
+
+### Nota de Implementación (Sitio Web)
+
+En la implementación actual del sitio, las clases de acento (`text-secondary`, `bg-secondary`, `border-secondary`) usan un token dependiente del tema:
+
+- **Acento en modo claro:** `#E41541` (Carmesí Letal)
+- **Acento en modo oscuro:** `#CD3553` (Carmesí suavizado para legibilidad)
+
+Esto mantiene la identidad de marca consistente y, al mismo tiempo, hace que el modo oscuro se sienta más descansado en sesiones largas de lectura.
 
 ---
 
@@ -197,7 +208,7 @@ Algunas pautas básicas para usar la marca de forma consistente:
 **Hacer:**
 - Usar el logo completo sobre fondos oscuros
 - Mantener espacio libre alrededor del logo
-- Usar Carmesí Letal para elementos interactivos
+- Usar Carmesí Letal para elementos interactivos (con el acento suavizado en modo oscuro dentro del sitio)
 - Combinar Marino Ninja con texto blanco
 
 **No hacer:**

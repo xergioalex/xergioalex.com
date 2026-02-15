@@ -17,6 +17,7 @@ const blog = defineCollection({
       .default('banner')
       .optional(),
     tags: z.array(z.string()).optional(),
+    draft: z.boolean().default(false).optional(),
   }),
 });
 

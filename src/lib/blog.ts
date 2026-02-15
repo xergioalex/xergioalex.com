@@ -1,6 +1,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { BLOG_PAGE_SIZE } from './constances';
-import type { BlogParamsType, BlogPostsResultType } from './types';
+import type { BlogParamsType, BlogPostsResultType, PostStatus } from './types';
 
 const WORDS_PER_MINUTE = 200;
 
@@ -56,6 +56,45 @@ export function getReadingTimeFromContent(content: string): number {
   return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
 }
 
+/**
+ * Check if a post is a demo post (stored in _demo/ folder).
+ * Demo posts are never visible in production, regardless of other settings.
+ */
+export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
+  return post.id.includes('/_demo/');
+}
+
+/**
+ * Determine the content status of a blog post based on draft field and pubDate.
+ * This returns the real content status even for demo posts, so badges can show
+ * both the demo indicator AND the draft/scheduled status.
+ *
+ * - Draft + Scheduled: draft=true AND pubDate is in the future
+ * - Draft: draft=true AND pubDate is in the past/present
+ * - Scheduled: draft=false AND pubDate is in the future
+ * - Published: draft=false AND pubDate is in the past/present
+ */
+export function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
+  const isDraft = post.data.draft === true;
+  const isScheduled = post.data.pubDate.valueOf() > Date.now();
+
+  if (isDraft && isScheduled) return 'draft+scheduled';
+  if (isDraft) return 'draft';
+  if (isScheduled) return 'scheduled';
+  return 'published';
+}
+
+/**
+ * Check if a post should be visible in production builds.
+ * Demo posts and non-published posts are hidden in production.
+ */
+export function isPostVisibleInProduction(
+  post: CollectionEntry<'blog'>
+): boolean {
+  if (isDemoPost(post)) return false;
+  return getPostStatus(post) === 'published';
+}
+
 export async function getBlogPosts(
   params: BlogParamsType
 ): Promise<BlogPostsResultType> {
@@ -68,7 +107,13 @@ export async function getBlogPosts(
     post.id.startsWith(`${lang}/`)
   );
 
-  // Get all unique tags that are actually used in posts for this language
+  // Filter by visibility: in production only show published posts
+  // In dev, show all posts only when includeHidden is explicitly true
+  if (!params.includeHidden) {
+    posts = posts.filter(isPostVisibleInProduction);
+  }
+
+  // Get all unique tags that are actually used in visible posts for this language
   const usedTags = Array.from(
     new Set(posts.flatMap((post) => post.data.tags ?? []))
   );
@@ -104,8 +149,12 @@ export async function getBlogPosts(
     posts = posts.slice(0, params.pageSize ?? BLOG_PAGE_SIZE);
   }
 
-  // Count total posts for this language (before pagination)
-  const langPosts = allPosts.filter((post) => post.id.startsWith(`${lang}/`));
+  // Count total posts for this language (before pagination, respecting visibility)
+  const langPosts = allPosts.filter(
+    (post) =>
+      post.id.startsWith(`${lang}/`) &&
+      (params.includeHidden || isPostVisibleInProduction(post))
+  );
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,
@@ -136,7 +185,10 @@ export async function getRelatedPosts(
 
   const candidates = allPosts
     .filter(
-      (post) => post.id.startsWith(`${lang}/`) && post.id !== currentPostId
+      (post) =>
+        post.id.startsWith(`${lang}/`) &&
+        post.id !== currentPostId &&
+        isPostVisibleInProduction(post)
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
