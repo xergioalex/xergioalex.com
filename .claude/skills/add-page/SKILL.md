@@ -17,7 +17,7 @@ max-loc: 200
 
 ## Objective
 
-Create new pages in the Astro application with correct file-based routing, MainLayout usage, and SEO properties. Creates pages in BOTH English and Spanish routes to maintain bilingual parity.
+Create new pages in the Astro application with correct file-based routing, MainLayout usage, and SEO properties. Creates pages in ALL active language routes to maintain multilingual parity. Uses shared page components (`src/components/pages/`) with thin per-language wrappers.
 
 ## Non-Goals
 
@@ -119,18 +119,22 @@ const lang = 'en';
 </MainLayout>
 ```
 
-### Step 3: Create Bilingual Counterpart (MANDATORY)
+### Step 3: Create Shared Page Component and Language Wrappers (MANDATORY)
 
-**MANDATORY:** Every page must exist in both languages.
+**MANDATORY:** Every page must use the shared page component pattern and exist in all active languages (see `src/lib/i18n.ts`).
 
-- After creating the English page at `src/pages/{name}.astro`, create the Spanish version at `src/pages/es/{name}.astro`
-- The Spanish page must:
-  - Set `const lang: Language = 'es';`
-  - Use `getTranslations(lang)` for all text content
-  - Pass `lang` to `MainLayout` and child components
-  - Have the same structure and layout as the English version
+1. **Create the shared component** at `src/components/pages/{Name}Page.astro`:
+   - Accept `lang: Language` as a prop
+   - Use `getTranslations(lang)` for all text content
+   - Use `getUrlPrefix(lang)` for all internal URLs
+   - Wrap in `MainLayout` with `lang` prop
 
-- If the page introduces new UI text, add corresponding entries to `src/lib/translations.ts` for BOTH English and Spanish.
+2. **Create thin wrappers** for each language:
+   - English: `src/pages/{name}.astro` → `<{Name}Page lang="en" />`
+   - Spanish: `src/pages/es/{name}.astro` → `<{Name}Page lang="es" />`
+   - Each wrapper is ~5 lines (import + render with lang)
+
+3. If the page introduces new UI text, add entries to `src/lib/translations.ts` for ALL active languages.
 
 ### Step 4: Validate
 
@@ -145,7 +149,7 @@ npm run build
 ### Success Output
 
 ```
-## ✅ Pages Created (Bilingual)
+## ✅ Pages Created (Multilingual)
 
 ### Pages
 - English: `src/pages/{path}.astro` -> URL: `/{route}`
@@ -182,10 +186,10 @@ feat: add {name} page (en + es)
 - **Maximum files:** 2 (page + optional helper)
 - **Maximum LOC:** 100
 
-### Bilingual Enforcement
+### Multilingual Enforcement
 
-- MUST create both language versions. Never create a page in only one language.
-- If new UI strings are needed, add them to `translations.ts` in both languages.
+- MUST create a shared page component and wrappers for all active languages (see `src/lib/i18n.ts`).
+- If new UI strings are needed, add them to `translations.ts` for all active languages.
 
 ### Stop Conditions
 
@@ -198,12 +202,12 @@ feat: add {name} page (en + es)
 
 ## Definition of Done
 
-- [ ] English page created in `src/pages/`
-- [ ] Spanish page created in `src/pages/es/`
-- [ ] Both pages use correct `lang` value (`'en'` or `'es'`)
-- [ ] MainLayout imported and used with `lang` prop
-- [ ] SEO props provided in both languages
-- [ ] New UI strings added to `translations.ts` in both languages (if applicable)
+- [ ] Shared page component created in `src/components/pages/`
+- [ ] Thin wrapper created for each active language (see `src/lib/i18n.ts`)
+- [ ] All wrappers use correct `lang` value
+- [ ] Shared component uses `MainLayout` with `lang` prop and `getUrlPrefix(lang)` for URLs
+- [ ] SEO props provided for all active languages
+- [ ] New UI strings added to `translations.ts` for all active languages (if applicable)
 - [ ] `npm run astro:check` passes
 - [ ] `npm run build` passes
 

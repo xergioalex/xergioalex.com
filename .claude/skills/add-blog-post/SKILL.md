@@ -18,10 +18,10 @@ max-loc: 600
 
 ## Objective
 
-Create bilingual blog posts (English + Spanish) for XergioAleX.com using Astro Content Collections. Supports two modes:
+Create multilingual blog posts (currently English + Spanish) for XergioAleX.com using Astro Content Collections. Supports two modes:
 
 - **Topic mode:** Given a topic or brief, writes the full article with personal-professional voice and narrative structure.
-- **Content mode:** Given pre-written content, scaffolds the post files with proper frontmatter and bilingual versions.
+- **Content mode:** Given pre-written content, scaffolds the post files with proper frontmatter and multilingual versions.
 
 The skill auto-detects the mode based on the inputs provided.
 
@@ -38,7 +38,7 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Tier: 2** - Standard
 
-**Reasoning:** Writing quality bilingual articles requires moderate reasoning for tone calibration, narrative structure, and natural translation. Content mode (scaffolding) is simpler but shares the same bilingual creation flow.
+**Reasoning:** Writing quality multilingual articles requires moderate reasoning for tone calibration, narrative structure, and natural translation. Content mode (scaffolding) is simpler but shares the same multilingual creation flow.
 
 ## Inputs
 
@@ -211,7 +211,7 @@ Verify:
 ### Success Output
 
 ```
-## Blog Post Created (Bilingual)
+## Blog Post Created (Multilingual)
 
 ### Files Created
 - English: `src/content/blog/en/YYYY-MM-DD_{slug}.md` -> URL: `/blog/{slug}/`
@@ -247,9 +247,9 @@ content: add blog post "{title}" (en + es)
 - [ ] Tags are valid (exist in `src/content/tags/`)
 - [ ] Frontmatter matches the Content Collections schema
 
-### Bilingual Enforcement
+### Multilingual Enforcement
 
-- MUST create both language versions. Never create a post in only one language.
+- MUST create all language versions. Never create a post in only one language. See `src/lib/i18n.ts` for active languages.
 - If translation quality is uncertain, use `/translate-sync` skill after creating the primary version.
 
 ### Stop Conditions

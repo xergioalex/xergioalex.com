@@ -1,6 +1,6 @@
 ---
 name: translate-sync
-description: Synchronize content between English and Spanish versions. Use proactively when content needs bilingual synchronization.
+description: Synchronize content between English and Spanish versions. Use proactively when content needs multilingual synchronization.
 # === Universal (Claude Code + Cursor + Codex) ===
 disable-model-invocation: false
 # === Claude Code specific ===
@@ -17,13 +17,13 @@ max-loc: 500
 
 ## Objective
 
-Synchronize content between English (en) and Spanish (es) versions of pages, blog posts, and translation strings. Ensures bilingual parity across the entire site.
+Synchronize content between English (en) and Spanish (es) versions of pages, blog posts, and translation strings. Ensures multilingual parity across the entire site.
 
 ## Non-Goals
 
 - Does NOT create new pages or posts from scratch (use `add-page` or `add-blog-post`)
 - Does NOT modify the translation system architecture
-- Does NOT handle languages other than English and Spanish
+- Does NOT add new languages to `src/lib/i18n.ts` (only syncs existing active languages)
 - Does NOT change Content Collection schemas or `content.config.ts`
 
 ## Tier Classification
@@ -238,7 +238,7 @@ $CONTENT_TYPE: translations
 
 ## Related
 
-- [add-blog-post](../add-blog-post/SKILL.md) - Create bilingual blog posts
-- [add-page](../add-page/SKILL.md) - Create bilingual pages
+- [add-blog-post](../add-blog-post/SKILL.md) - Create multilingual blog posts
+- [add-page](../add-page/SKILL.md) - Create multilingual pages
 - [add-component](../add-component/SKILL.md) - Create components with i18n support
 - `i18n-guardian` agent - Translation quality specialist

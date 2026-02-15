@@ -553,7 +553,37 @@ document.documentElement.classList.toggle('dark', theme === 'dark');
 
 ## Internationalization
 
-The site is fully bilingual (English/Spanish) using a centralized translation system. See [I18N Guide](I18N_GUIDE.md) for comprehensive documentation.
+The site is multilingual-ready (currently English/Spanish) using a centralized i18n configuration module and translation system. The architecture supports N languages with zero changes to components or utilities.
+
+### i18n Configuration (`src/lib/i18n.ts`)
+
+The centralized i18n module contains:
+- `Language` type — union of all supported language codes
+- `LANGUAGES` registry — config per language (name, locale, URL prefix, flag)
+- Utility functions — `getUrlPrefix()`, `getDateLocale()`, `getOGLocale()`, `getLocalizedUrl()`, `getAlternateUrls()`, `stripLangPrefix()`, etc.
+
+### Shared Page Component Architecture
+
+Content pages use shared components to eliminate duplication across languages:
+
+```
+src/components/pages/
+├── HomePage.astro          # Shared content, receives lang prop
+├── AboutPage.astro
+├── ContactPage.astro
+├── blog/
+│   ├── BlogListingPage.astro
+│   ├── BlogPostPage.astro
+│   └── ...
+└── ...
+
+src/pages/
+├── index.astro             # Thin wrapper: lang='en' (~5 lines)
+├── about.astro
+└── es/
+    ├── index.astro         # Thin wrapper: lang='es' (~5 lines)
+    └── about.astro
+```
 
 ### Route Structure
 
@@ -577,7 +607,9 @@ All UI strings are centralized in `src/lib/translations.ts`. Components use `get
 ```astro
 ---
 import { getTranslations } from '@/lib/translations';
-const lang: string = 'en';
+import type { Language } from '@/lib/i18n';
+
+const { lang } = Astro.props;
 const t = getTranslations(lang);
 ---
 <MainLayout lang={lang} title={t.blogTitle} description={t.blogDescription}>

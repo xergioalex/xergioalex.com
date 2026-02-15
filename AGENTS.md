@@ -74,9 +74,14 @@ src/
 │   │   ├── BlogPreviewSection.astro
 │   │   ├── ProjectsSection.astro
 │   │   └── ...
-│   └── layout/
-│       ├── Header.svelte    # Main navigation (interactive)
-│       └── MobileMenu.svelte
+│   ├── layout/
+│   │   ├── Header.svelte    # Main navigation (interactive)
+│   │   └── MobileMenu.svelte
+│   └── pages/               # Shared page components (lang-agnostic)
+│       ├── HomePage.astro
+│       ├── AboutPage.astro
+│       ├── blog/            # Shared blog page components
+│       └── ...
 ├── content/                 # Content Collections
 │   ├── blog/                # Blog posts (Markdown/MDX)
 │   │   ├── en/              # English posts (YYYY-MM-DD_slug.md)
@@ -91,6 +96,7 @@ src/
 │   └── MainLayout.astro     # Base page layout
 ├── lib/                     # Utility functions
 │   ├── blog.ts              # Post fetching, pagination
+│   ├── i18n.ts              # Centralized i18n config & utilities
 │   ├── constances.ts        # Site constants
 │   ├── enum.ts              # Shared enums
 │   └── types.ts             # TypeScript types
@@ -207,9 +213,9 @@ Testing is not yet set up in this project. When adding tests in the future:
 
 Currently, `npm run test` is a placeholder.
 
-### 6. Bilingual Content Synchronization (MANDATORY)
+### 6. Multilingual Content Synchronization (MANDATORY)
 
-**This site is fully bilingual (English/Spanish). ALL content changes MUST be synchronized in both languages.**
+**This site is multilingual-ready (currently English/Spanish). ALL content changes MUST be synchronized across all active languages.**
 
 When you create or modify content in one language, you MUST create or update the equivalent content in the other language within the same PR/commit. There are no exceptions to this rule.
 
@@ -232,7 +238,7 @@ When you create or modify content in one language, you MUST create or update the
 - Never hardcode user-visible strings directly in templates.
 - If a component introduces new translation keys, add them to `translations.ts` in both languages.
 
-#### Bilingual Compliance Checklist
+#### Multilingual Compliance Checklist
 
 Before committing any content change, verify:
 
@@ -241,10 +247,32 @@ Before committing any content change, verify:
 - [ ] All new UI strings in `translations.ts` have both English and Spanish values
 - [ ] No hardcoded user-visible text in components (use `getTranslations()`)
 
-#### Tools for Bilingual Work
+#### Tools for Multilingual Work
 
 - Use `/translate-sync` skill for synchronizing content between languages
-- Use `i18n-guardian` agent for translation quality review and bilingual audits
+- Use `i18n-guardian` agent for translation quality review and multilingual audits
+
+#### How to Add a New Language
+
+The architecture is designed so adding a new language requires zero changes to components or utilities:
+
+1. **Update i18n config** (`src/lib/i18n.ts`):
+   - Add the language code to the `Language` type union (e.g., `'en' | 'es' | 'pt'`)
+   - Add a `LanguageConfig` entry to the `LANGUAGES` registry
+
+2. **Add translations** (`src/lib/translations.ts`):
+   - Add a complete translation object for the new language
+   - Use the English object as a reference for all required keys
+
+3. **Create page wrappers** (`src/pages/{lang}/`):
+   - Create `src/pages/{lang}/` directory
+   - Copy thin wrapper files from `src/pages/es/` and change `lang` value
+   - Each file is ~5 lines (import + render with new lang)
+
+4. **Create blog content directory** (`src/content/blog/{lang}/`):
+   - Create `src/content/blog/{lang}/` for translated blog posts
+
+5. **Verify**: `npm run biome:check && npm run astro:check && npm run build`
 
 ### 7. Performance-First Mindset (MANDATORY)
 
@@ -419,6 +447,52 @@ src/pages/
 
 Components receive `lang` prop for translations.
 
+### 7. Shared Page Component Pattern
+
+Content pages use shared components to eliminate duplication:
+
+```astro
+---
+// src/components/pages/AboutPage.astro (shared component)
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getUrlPrefix } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+---
+
+<MainLayout lang={lang} title={t.aboutPage.title}>
+  <!-- All content uses t.* for text and prefix for URLs -->
+</MainLayout>
+```
+
+Thin page wrappers set only the language:
+
+```astro
+---
+// src/pages/about.astro (EN wrapper — ~5 lines)
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+
+<AboutPage lang="en" />
+```
+
+```astro
+---
+// src/pages/es/about.astro (ES wrapper — ~5 lines)
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+
+<AboutPage lang="es" />
+```
+
 ## Documentation Standards
 
 ### When to Update Documentation
@@ -550,8 +624,8 @@ public/images/blog/
 8. Use `npm run test` expecting real tests (not configured yet)
 9. Create new pages without using `MainLayout`
 10. Forget dark mode support in new components
-11. Create content (pages, blog posts) in only one language
-12. Add translation strings for only one language in `translations.ts`
+11. Create content (pages, blog posts) without covering all active languages
+12. Add translation strings without covering all active languages in `translations.ts`
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
@@ -574,8 +648,8 @@ public/images/blog/
 8. Follow the established component patterns
 9. Use the `@` path alias for imports
 10. Keep pages simple, delegate to components
-11. Always create/update content in both English and Spanish
-12. Use `/translate-sync` when synchronizing existing content between languages
+11. Always create/update content in all active languages (see `src/lib/i18n.ts`)
+12. Use `/translate-sync` when synchronizing content across languages
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow

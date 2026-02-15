@@ -67,8 +67,8 @@ Development and review specialists.
 | reviewer          | Code review and quality analysis | sonnet | Thorough PR review; Astro/Svelte patterns, dark mode, quality |
 | executor          | Executing predefined plans     | sonnet | Follows plans step by step; implements and validates      |
 | security-auditor  | Security review (read-only)    | sonnet | Static site security; API routes, secrets, client exposure |
-| i18n-guardian     | Bilingual content & translation quality | sonnet | Translation quality specialist; bilingual consistency enforcer |
-| content-writer    | Blog posts, portfolio articles, narrative content | sonnet | Expert bilingual content writer with personal-professional voice |
+| i18n-guardian     | Multilingual content & translation quality | sonnet | Translation quality specialist; multilingual consistency enforcer |
+| content-writer    | Blog posts, portfolio articles, narrative content | sonnet | Expert multilingual content writer with personal-professional voice |
 
 ### Tier 3 (Heavy/Reasoning)
 
@@ -111,7 +111,7 @@ This diagram shows how skills and agents interact during typical workflows.
   │   content-writer ◄──── writes articles ───────────┘          │
   │   reviewer ◄──────── validates output ────────────┘          │
   │   security-auditor ◄─── security review ──────────┘          │
-  │   i18n-guardian ◄────── bilingual audit ──────────┘          │
+  │   i18n-guardian ◄──── multilingual audit ──────────┘          │
   │                                                              │
   └──────────────────────┬───────────────────────────────────────┘
                          │ uses atomic skills
@@ -154,20 +154,20 @@ Skills, commands, and agents for creating and managing blog content.
 | new-post | Command | Interactive guided flow for creating blog posts (`/new-post`) |
 | add-blog-post | Skill (T2) | Create blog posts — topic mode (writes) or content mode (scaffolding) |
 | doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
-| content-writer | Agent (T2) | Expert bilingual content writer with personal-professional voice |
+| content-writer | Agent (T2) | Expert multilingual content writer with personal-professional voice |
 
 **Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`. Posts can be created as published, draft (`draft: true`), or scheduled (future `pubDate`).
 
 ### 2. i18n & Translation
 
-Resources for bilingual content management (English/Spanish).
+Resources for multilingual content management (currently English/Spanish, N-language ready).
 
 | Resource | Type | Description |
 |----------|------|-------------|
-| translate-sync | Skill (T1) | Synchronize content between English and Spanish versions |
-| add-page | Skill (T1) | Create bilingual pages with routing (en + es) |
-| add-blog-post | Skill (T2) | Create bilingual blog posts (en + es) — topic or content mode |
-| i18n-guardian | Agent (T2) | Translation quality specialist; bilingual consistency enforcer |
+| translate-sync | Skill (T1) | Synchronize content across active languages |
+| add-page | Skill (T1) | Create multilingual pages with shared components + thin wrappers |
+| add-blog-post | Skill (T2) | Create multilingual blog posts — topic or content mode |
+| i18n-guardian | Agent (T2) | Translation quality specialist; multilingual consistency enforcer |
 
 ### 3. Code Quality & Review
 
@@ -286,7 +286,7 @@ All skills and agents are adapted for this Astro repository:
 - **Components:** Astro (.astro) and Svelte (.svelte)
 - **Styling:** Tailwind CSS with dark mode
 - **Content:** Content Collections in `src/content/`
-- **i18n:** Bilingual (English/Spanish) with `src/pages/` and `src/pages/es/`
+- **i18n:** Multilingual-ready (currently English/Spanish) with centralized config in `src/lib/i18n.ts`, shared page components in `src/components/pages/`, and thin per-language wrappers
 - **Testing:** Not yet configured (Vitest/Playwright planned)
 
 ---
@@ -302,8 +302,9 @@ All skills and agents are adapted for this Astro repository:
 | 2026-02-10 | Responsive design guidance added | Enhanced `update-styles` skill with responsive design patterns, breakpoint reference, touch target sizing, and heading scaling examples. Enhanced `reviewer` agent with responsive design verification checklist (breakpoint coverage, dark mode pairing, touch targets, heading scales). |
 | 2026-02-04 | Format migration | Migrated all skills and agents to official Agent Skills standard format with model routing, allowed-tools, and compatibility fields |
 | 2026-02-03 | Catalog restructured | Added tier breakdown overview, interaction map, domain guides, decision guide, and changelog |
-| 2025-01-01 | translate-sync, i18n-guardian added | Bilingual content synchronization skill and translation quality agent |
-| 2025-01-01 | add-page, add-component updated | Updated with bilingual enforcement and i18n guidance |
+| 2026-02-15 | i18n refactor to multilingual-ready | Updated all skills/agents from "bilingual" to "multilingual-ready" terminology. Added `src/lib/i18n.ts` references and shared page component patterns. |
+| 2025-01-01 | translate-sync, i18n-guardian added | Multilingual content synchronization skill and translation quality agent |
+| 2025-01-01 | add-page, add-component updated | Updated with multilingual enforcement and i18n guidance |
 | 2025-01-01 | Initial catalog | 14 skills and 5 agents cataloged |
 
 ---
