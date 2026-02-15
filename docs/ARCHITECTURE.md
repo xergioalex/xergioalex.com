@@ -119,9 +119,15 @@ src/
 │
 ├── lib/                     # Utilities
 │   ├── blog.ts              # Blog fetching/pagination
+│   ├── i18n.ts              # Centralized i18n config & utilities
 │   ├── constances.ts        # Site constants
 │   ├── enum.ts              # Shared enums
-│   └── types.ts             # TypeScript types
+│   ├── types.ts             # TypeScript types
+│   └── translations/        # Modular translation system
+│       ├── index.ts         # Public API barrel: getTranslations(), re-exports
+│       ├── types.ts         # SiteTranslations interface + all sub-interfaces
+│       ├── en.ts            # English translations
+│       └── es.ts            # Spanish translations
 │
 ├── pages/                   # File-based routing
 │   ├── index.astro          # Home (English)
@@ -489,20 +495,44 @@ const { lang, title, description } = Astro.props;
 </html>
 ```
 
-### Usage
+### Usage via Page Wrapper Pattern
+
+Content pages **do not** import `MainLayout` directly. Instead, they use the Page wrapper pattern:
+
+1. A **shared page component** in `src/components/pages/*Page.astro` handles `MainLayout` internally
+2. **Thin page wrappers** in `src/pages/` are 3-line files that only set the language
+
+**Shared component** (`src/components/pages/AboutPage.astro`):
 
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = getTranslations(lang);
 ---
 
-<MainLayout lang="en" title="About" description="About me">
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
   <section class="py-12">
-    <h1>About</h1>
-    <p>Content here...</p>
+    <h1>{t.aboutPage.title}</h1>
+    <!-- Content using t.* for text -->
   </section>
 </MainLayout>
 ```
+
+**Page wrapper** (`src/pages/about.astro`):
+
+```astro
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
+```
+
+This ensures one source of truth per page, with `MainLayout` managed inside the component.
 
 ## Styling Architecture
 
@@ -553,7 +583,47 @@ document.documentElement.classList.toggle('dark', theme === 'dark');
 
 ## Internationalization
 
-The site is fully bilingual (English/Spanish) using a centralized translation system. See [I18N Guide](I18N_GUIDE.md) for comprehensive documentation.
+The site is multilingual-ready (currently English/Spanish) using a centralized i18n configuration module and translation system. The architecture supports N languages with zero changes to components or utilities.
+
+### i18n Configuration (`src/lib/i18n.ts`)
+
+The centralized i18n module contains:
+- `Language` type — union of all supported language codes
+- `LANGUAGES` registry — config per language (name, locale, URL prefix, flag)
+- Utility functions — `getUrlPrefix()`, `getDateLocale()`, `getOGLocale()`, `getLocalizedUrl()`, `getAlternateUrls()`, `stripLangPrefix()`, etc.
+
+### Page Wrapper Pattern
+
+All content pages use the **Page wrapper pattern** to eliminate duplication across languages. Each `*Page.astro` component handles `MainLayout`, translations, and SEO metadata internally. Page files in `src/pages/` are ultra-minimal 3-line wrappers that only set the language.
+
+```
+src/components/pages/           # Shared page components (handle MainLayout internally)
+├── HomePage.astro              # Receives lang prop, wraps in MainLayout
+├── AboutPage.astro
+├── ContactPage.astro
+├── CvPage.astro
+├── PortfolioPage.astro
+├── blog/
+│   ├── BlogListingPage.astro
+│   ├── BlogPostPage.astro
+│   └── ...
+└── ...
+
+src/pages/                      # Thin routing wrappers (3 lines each)
+├── index.astro                 # <HomePage lang="en" />
+├── about.astro                 # <AboutPage lang="en" />
+├── contact.astro               # <ContactPage lang="en" />
+└── es/
+    ├── index.astro             # <HomePage lang="es" />
+    ├── about.astro             # <AboutPage lang="es" />
+    └── contact.astro           # <ContactPage lang="es" />
+```
+
+**Key rules:**
+- Page components handle `MainLayout` internally — wrappers never import `MainLayout`
+- The `lang` prop is passed as a string literal (`"en"`, `"es"`), not a variable
+- For a new page: create 1 `*Page.astro` component + N thin wrappers (one per language)
+- Benefits: DRY, scalable to N languages, content changes in a single file
 
 ### Route Structure
 
@@ -572,18 +642,47 @@ src/pages/
 
 ### Translation System
 
-All UI strings are centralized in `src/lib/translations.ts`. Components use `getTranslations(lang)` to access localized text:
+All UI strings are centralized in `src/lib/translations/`. The translation system is modular with separate files for each language:
+
+**Directory Structure:**
+```
+src/lib/translations/
+├── index.ts    # Public API barrel: getTranslations(), re-exports
+├── types.ts    # SiteTranslations interface + all sub-interfaces
+├── en.ts       # English translations
+└── es.ts       # Spanish translations
+```
+
+**Usage in page components** (`src/components/pages/*Page.astro`):
 
 ```astro
 ---
+import MainLayout from '@/layouts/MainLayout.astro';
 import { getTranslations } from '@/lib/translations';
-const lang: string = 'en';
+import type { Language } from '@/lib/i18n';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
 const t = getTranslations(lang);
 ---
 <MainLayout lang={lang} title={t.blogTitle} description={t.blogDescription}>
-  <Content />
+  <!-- Content using t.* for all user-visible text -->
 </MainLayout>
 ```
+
+Page wrappers in `src/pages/` never use translations directly — they just pass `lang`.
+
+**Adding a new language:**
+
+1. Create `src/lib/translations/{lang}.ts` exporting a `SiteTranslations` object
+2. Import it in `src/lib/translations/index.ts` and add to the `translations` record
+3. Update the `Language` type in `src/lib/i18n.ts`
+
+**Adding new translation keys:**
+
+1. Add the new interface field to `src/lib/translations/types.ts` (if needed)
+2. Add translations to both `src/lib/translations/en.ts` and `src/lib/translations/es.ts`
+3. Use the new key via `getTranslations(lang)` in components
 
 ### Blog Content Collections
 

@@ -55,32 +55,55 @@ The primary layout component used by all pages in the application.
 - **i18n Ready:** Passes `lang` prop to components
 - **Accessible:** Semantic HTML structure
 
-### Usage
+### Usage (Page Wrapper Pattern)
+
+Content pages **do not** import `MainLayout` directly in page files. Instead, they use the **Page wrapper pattern**: shared `*Page.astro` components in `src/components/pages/` handle `MainLayout` internally, while page files in `src/pages/` are ultra-minimal 3-line routing wrappers.
+
+**Shared page component** (`src/components/pages/AboutPage.astro`):
 
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = getTranslations(lang);
 ---
 
-<MainLayout lang="en" title="Page Title" description="Page description">
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
   <main class="main-container py-24">
-    <h1>Page Content</h1>
-    <p>Your content here...</p>
+    <h1>{t.aboutPage.title}</h1>
+    <!-- Content using t.* for text -->
   </main>
 </MainLayout>
 ```
 
+**Page wrapper** (`src/pages/about.astro`):
+
+```astro
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
+```
+
 ### With Custom Head Elements
+
+Page components can use the `head` slot for additional head elements:
 
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
 ---
 
-<MainLayout lang="en" title="Page Title" description="Description">
-  <link slot="head" rel="stylesheet" href="/custom-styles.css" />
-  <script slot="head" src="/custom-script.js" />
-  
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
+  <Fragment slot="head">
+    <JsonLd data={structuredData} />
+  </Fragment>
+
   <main class="main-container py-24">
     <!-- Content -->
   </main>

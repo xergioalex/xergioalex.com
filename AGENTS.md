@@ -74,9 +74,14 @@ src/
 │   │   ├── BlogPreviewSection.astro
 │   │   ├── ProjectsSection.astro
 │   │   └── ...
-│   └── layout/
-│       ├── Header.svelte    # Main navigation (interactive)
-│       └── MobileMenu.svelte
+│   ├── layout/
+│   │   ├── Header.svelte    # Main navigation (interactive)
+│   │   └── MobileMenu.svelte
+│   └── pages/               # Shared page components (lang-agnostic)
+│       ├── HomePage.astro
+│       ├── AboutPage.astro
+│       ├── blog/            # Shared blog page components
+│       └── ...
 ├── content/                 # Content Collections
 │   ├── blog/                # Blog posts (Markdown/MDX)
 │   │   ├── en/              # English posts (YYYY-MM-DD_slug.md)
@@ -91,9 +96,15 @@ src/
 │   └── MainLayout.astro     # Base page layout
 ├── lib/                     # Utility functions
 │   ├── blog.ts              # Post fetching, pagination
+│   ├── i18n.ts              # Centralized i18n config & utilities
 │   ├── constances.ts        # Site constants
 │   ├── enum.ts              # Shared enums
-│   └── types.ts             # TypeScript types
+│   ├── types.ts             # TypeScript types
+│   └── translations/        # Modular translation system
+│       ├── index.ts         # Public API barrel: getTranslations(), re-exports
+│       ├── types.ts         # SiteTranslations interface + all sub-interfaces
+│       ├── en.ts            # English translations
+│       └── es.ts            # Spanish translations
 ├── pages/                   # File-based routing
 │   ├── index.astro          # Homepage (English)
 │   ├── es/index.astro       # Homepage (Spanish)
@@ -207,44 +218,71 @@ Testing is not yet set up in this project. When adding tests in the future:
 
 Currently, `npm run test` is a placeholder.
 
-### 6. Bilingual Content Synchronization (MANDATORY)
+### 6. Multilingual Content Synchronization (MANDATORY)
 
-**This site is fully bilingual (English/Spanish). ALL content changes MUST be synchronized in both languages.**
+**This site is multilingual-ready (currently English/Spanish). ALL content changes MUST be synchronized across all active languages.**
 
 When you create or modify content in one language, you MUST create or update the equivalent content in the other language within the same PR/commit. There are no exceptions to this rule.
 
 #### Content Type Rules
 
 **Pages:**
-- When creating or modifying a page in `src/pages/`, the corresponding page in `src/pages/es/` MUST be created or updated with the translated content, and vice versa.
-- Both pages must use the correct `lang` value (`'en'` or `'es'`) and pass it to `MainLayout` and child components.
+- When creating a new page, create **1 shared component** in `src/components/pages/*Page.astro` + **thin wrappers** in `src/pages/` and `src/pages/es/` (one per language).
+- Wrappers are 3-line files that only import the component and pass `lang` as a string literal (`"en"`, `"es"`).
+- The shared component handles `MainLayout`, translations, and all content internally.
 
 **Blog Posts:**
 - When creating or modifying a blog post in `src/content/blog/en/`, the corresponding post in `src/content/blog/es/` MUST be created or updated with the translated content, and vice versa.
 - Translate `title`, `description`, and body content. Preserve `pubDate`, `updatedDate`, `heroImage`, `tags`, code blocks, and formatting.
 
 **Translation Strings:**
-- When adding new UI strings to `src/lib/translations.ts`, translations MUST be added for BOTH English and Spanish simultaneously.
+- When adding new UI strings to `src/lib/translations/`, translations MUST be added for BOTH English and Spanish simultaneously.
+- Add new keys to both `src/lib/translations/en.ts` and `src/lib/translations/es.ts`.
+- Update `src/lib/translations/types.ts` if the new keys require interface changes.
 - Never leave a translation key with a value in only one language.
 
 **Components:**
 - Components with user-visible text MUST use `getTranslations(lang)` from `@/lib/translations`.
 - Never hardcode user-visible strings directly in templates.
-- If a component introduces new translation keys, add them to `translations.ts` in both languages.
+- If a component introduces new translation keys, add them to both locale files in `src/lib/translations/`.
 
-#### Bilingual Compliance Checklist
+#### Multilingual Compliance Checklist
 
 Before committing any content change, verify:
 
 - [ ] All new/modified pages exist in both `src/pages/` and `src/pages/es/`
 - [ ] All new/modified blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
-- [ ] All new UI strings in `translations.ts` have both English and Spanish values
+- [ ] All new UI strings added to both `src/lib/translations/en.ts` and `src/lib/translations/es.ts`
+- [ ] Translation types updated in `src/lib/translations/types.ts` if needed
 - [ ] No hardcoded user-visible text in components (use `getTranslations()`)
 
-#### Tools for Bilingual Work
+#### Tools for Multilingual Work
 
 - Use `/translate-sync` skill for synchronizing content between languages
-- Use `i18n-guardian` agent for translation quality review and bilingual audits
+- Use `i18n-guardian` agent for translation quality review and multilingual audits
+
+#### How to Add a New Language
+
+The architecture is designed so adding a new language requires zero changes to components or utilities:
+
+1. **Update i18n config** (`src/lib/i18n.ts`):
+   - Add the language code to the `Language` type union (e.g., `'en' | 'es' | 'pt'`)
+   - Add a `LanguageConfig` entry to the `LANGUAGES` registry
+
+2. **Add translations** (`src/lib/translations/`):
+   - Create a new locale file `src/lib/translations/{lang}.ts` (e.g., `pt.ts`)
+   - Export a complete `SiteTranslations` object using `en.ts` as a reference
+   - Import the new locale in `src/lib/translations/index.ts` and add it to the `translations` record
+
+3. **Create page wrappers** (`src/pages/{lang}/`):
+   - Create `src/pages/{lang}/` directory
+   - Copy thin wrapper files from `src/pages/es/` and change `lang` value
+   - Each file is ~5 lines (import + render with new lang)
+
+4. **Create blog content directory** (`src/content/blog/{lang}/`):
+   - Create `src/content/blog/{lang}/` for translated blog posts
+
+5. **Verify**: `npm run biome:check && npm run astro:check && npm run build`
 
 ### 7. Performance-First Mindset (MANDATORY)
 
@@ -392,19 +430,62 @@ export const GET: APIRoute = async () => {
 };
 ```
 
-### 5. Layout Pattern
+### 5. Page Wrapper Pattern (MANDATORY)
 
-All pages use `MainLayout.astro`:
+**All content pages use the Page wrapper pattern.** Pages in `src/pages/` are ultra-minimal 3-line routing wrappers. The real logic (MainLayout, translations, SEO metadata, content) lives inside `*Page.astro` components in `src/components/pages/`.
+
+**Page component** (`src/components/pages/AboutPage.astro`) — handles everything internally:
 
 ```astro
 ---
+// src/components/pages/AboutPage.astro
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+import { getUrlPrefix } from '@/lib/i18n';
+import type { Language } from '@/lib/i18n';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
 ---
 
-<MainLayout lang="en" title="Page Title" description="Page description">
-  <section>Page content here</section>
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
+  <section>
+    <h1>{t.aboutPage.title}</h1>
+    <!-- Page content using t.* for text and prefix for URLs -->
+  </section>
 </MainLayout>
 ```
+
+**Page wrappers** (3 lines, only routing + lang):
+
+```astro
+---
+// src/pages/about.astro (EN wrapper)
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
+```
+
+```astro
+---
+// src/pages/es/about.astro (ES wrapper)
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="es" />
+```
+
+**Key rules:**
+- Page components handle `MainLayout` internally — wrappers never import `MainLayout`
+- The `lang` prop is passed as a **string literal** (`"en"`, `"es"`), not a variable
+- For a new page: create **1 `*Page.astro` component** + **N thin wrappers** (one per language)
+- All user-visible text uses `getTranslations(lang)`, all URLs use `getUrlPrefix(lang)`
+
+**Benefits:** DRY (one component per page), scalable to N languages, content changes in a single file.
 
 ### 6. i18n Pattern
 
@@ -412,12 +493,14 @@ Language-specific routes with `lang` prop:
 
 ```
 src/pages/
-├── index.astro          # English (default)
+├── index.astro          # English (default) — wrapper: <HomePage lang="en" />
+├── about.astro          # English — wrapper: <AboutPage lang="en" />
 └── es/
-    └── index.astro      # Spanish
+    ├── index.astro      # Spanish — wrapper: <HomePage lang="es" />
+    └── about.astro      # Spanish — wrapper: <AboutPage lang="es" />
 ```
 
-Components receive `lang` prop for translations.
+Page components in `src/components/pages/` receive `lang` and handle all translations internally.
 
 ## Documentation Standards
 
@@ -548,10 +631,10 @@ public/images/blog/
 6. Hardcode text that should be translatable
 7. Forget to update Content Collection schemas after changing frontmatter
 8. Use `npm run test` expecting real tests (not configured yet)
-9. Create new pages without using `MainLayout`
+9. Import `MainLayout` directly in page wrappers (use the Page wrapper pattern — `MainLayout` belongs inside `*Page.astro` components)
 10. Forget dark mode support in new components
-11. Create content (pages, blog posts) in only one language
-12. Add translation strings for only one language in `translations.ts`
+11. Create content (pages, blog posts) without covering all active languages
+12. Add translation strings without covering all active languages in `src/lib/translations/`
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
@@ -573,9 +656,10 @@ public/images/blog/
 7. Use Content Collections for structured content
 8. Follow the established component patterns
 9. Use the `@` path alias for imports
-10. Keep pages simple, delegate to components
-11. Always create/update content in both English and Spanish
-12. Use `/translate-sync` when synchronizing existing content between languages
+10. Use the Page wrapper pattern: thin 3-line wrappers in `src/pages/`, logic in `src/components/pages/*Page.astro`
+11. Always create/update content in all active languages (see `src/lib/i18n.ts`)
+12. Use `/translate-sync` when synchronizing content across languages
+13. Add new translation strings to both locale files in `src/lib/translations/`
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
@@ -594,7 +678,7 @@ public/images/blog/
 - [ ] `npm run build` succeeds
 - [ ] Dark mode works in new components
 - [ ] Content exists in both English and Spanish versions (pages, blog posts)
-- [ ] Translation strings added for both languages in `translations.ts` (if applicable)
+- [ ] Translation strings added for both languages in `src/lib/translations/` (if applicable)
 - [ ] Documentation updated if needed
 - [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only

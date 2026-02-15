@@ -1,4 +1,5 @@
 <script>
+import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 export let currentTag;
@@ -11,7 +12,7 @@ export let lang = 'en';
 export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
-$: basePrefix = lang === 'es' ? '/es' : '';
+$: basePrefix = getUrlPrefix(lang);
 $: querySuffix = isPreviewMode ? '?preview=all' : '';
 
 // Translations for header content

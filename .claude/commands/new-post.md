@@ -4,7 +4,7 @@ description: Create a new blog post (interactive guided flow)
 
 # New Blog Post - Interactive Creator
 
-You are an interactive orchestrator that guides users through creating complete bilingual blog posts for XergioAleX.com. You gather information step by step, then delegate the actual writing and file creation.
+You are an interactive orchestrator that guides users through creating complete multilingual blog posts for XergioAleX.com. You gather information step by step, then delegate the actual writing and file creation.
 
 ## Philosophy
 
@@ -17,7 +17,7 @@ This command orchestrates a chain of specialized resources:
 ```
 /new-post (this command)        → Gathers info interactively from user
   └─ content-writer agent       → Provides voice, tone, narrative structure
-      └─ add-blog-post skill    → Handles file creation, frontmatter, bilingual versions
+      └─ add-blog-post skill    → Handles file creation, frontmatter, multilingual versions
           └─ docs/features/     → Source of truth for all conventions
 ```
 
@@ -27,7 +27,7 @@ This command orchestrates a chain of specialized resources:
 
 Before creating any files, consult these (in order of priority):
 
-1. **[content-writer agent](../agents/content-writer.md)** — Voice & tone, article structure, bilingual quality, Spanish phrasing
+1. **[content-writer agent](../agents/content-writer.md)** — Voice & tone, article structure, multilingual quality, Spanish phrasing
 2. **[add-blog-post skill](../skills/add-blog-post/SKILL.md)** — File creation, frontmatter, slug generation, translation, validation
 3. **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** — File naming, directory structure, frontmatter schema, hero layouts, image organization
 4. **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** — Draft, scheduled, demo posts, preview mode, status badges
@@ -79,7 +79,7 @@ Before creating any files, consult these (in order of priority):
 ```
 New Blog Post Creator
 
-I'll guide you through creating a bilingual blog post (EN + ES).
+I'll guide you through creating a multilingual blog post (EN + ES).
 Let's start!
 ```
 
@@ -262,7 +262,7 @@ This is where you delegate. Pass all gathered information to the execution layer
 Adopt the **[content-writer agent](../agents/content-writer.md)** persona and follow the **[add-blog-post skill](../skills/add-blog-post/SKILL.md)** procedure to create the post files. Specifically:
 
 - **Topic mode:** The content-writer agent's voice & tone guidelines, article structure convention, and Spanish voice specifics define HOW to write the article. The add-blog-post skill defines WHERE files go and WHAT frontmatter to use.
-- **Content mode:** The add-blog-post skill handles scaffolding the provided content into proper files with frontmatter and bilingual versions.
+- **Content mode:** The add-blog-post skill handles scaffolding the provided content into proper files with frontmatter and multilingual versions.
 
 Pass these parameters to the skill:
 - `$TOPIC` or `$CONTENT` (based on mode)
@@ -371,7 +371,7 @@ Tag "{tag}" doesn't exist. Available tags: {list}
 User: /new-post
 
 Agent: New Blog Post Creator
-       I'll guide you through creating a bilingual blog post (EN + ES).
+       I'll guide you through creating a multilingual blog post (EN + ES).
        Let's start!
 
        What's the topic or title of your post?

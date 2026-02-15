@@ -1,17 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogContainer from '@/components/blog/BlogContainer.astro';
-import MainLayout from '@/layouts/MainLayout.astro';
+import BlogTagPaginationPage from '@/components/pages/blog/BlogTagPaginationPage.astro';
 import { getBlogPosts, isPostVisibleInProduction } from '@/lib/blog';
-import { getTranslations, type Language } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
 
 const lang: Language = 'en';
-const t = getTranslations(lang);
 
 export async function getStaticPaths() {
   const lang: Language = 'en';
 
-  // Get all posts to extract unique tags (only from visible posts in production)
   const allPosts = await getCollection('blog');
   const visiblePosts = allPosts.filter((post) => {
     if (!post.id.startsWith(`${lang}/`)) return false;
@@ -23,32 +20,26 @@ export async function getStaticPaths() {
   );
 
   const paths = [];
-
-  // For each tag, generate pagination routes
-  const includeHidden = import.meta.env.DEV;
   for (const tag of tagsResult) {
-    // Get the first page to calculate total pages
-    const tagPostsResult = await getBlogPosts({ lang, tag, includeHidden });
+    const tagPostsResult = await getBlogPosts({
+      lang,
+      tag,
+      includeHidden: false,
+    });
     const totalPages = tagPostsResult.totalPages;
 
-    // Only generate pagination routes if there's more than 1 page
     if (totalPages > 1) {
-      // Generate routes for each page of the tag (starting from page 2)
       for (let i = 2; i <= totalPages; i++) {
         const pagePosts = await getBlogPosts({
           lang,
           tag,
           page: i,
-          includeHidden,
+          includeHidden: false,
         });
-        const path = {
+        paths.push({
           params: { tag, page: String(i) },
-          props: {
-            blogPostsResult: pagePosts,
-            currentTag: tag,
-          },
-        };
-        paths.push(path);
+          props: { blogPostsResult: pagePosts, currentTag: tag },
+        });
       }
     }
   }
@@ -59,10 +50,4 @@ const { blogPostsResult, currentTag } = Astro.props;
 const { tag, page } = Astro.params;
 ---
 
-<MainLayout
-  lang={lang}
-  title={`${t.postsTagged(t.tagNames[tag] || tag)} - ${t.pageOf(Number(page), blogPostsResult.totalPages)}`}
-  description={t.tagDescriptions[tag] || `Articles tagged as ${t.tagNames[tag] || tag}.`}
->
-  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} isDev={import.meta.env.DEV} />
-</MainLayout>
+<BlogTagPaginationPage lang={lang} blogPostsResult={blogPostsResult} currentTag={currentTag} tag={tag} page={page} />

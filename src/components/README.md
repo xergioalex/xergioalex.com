@@ -6,6 +6,16 @@ This directory contains all reusable UI components for the XergioAleX.com websit
 
 ```
 components/
+├── pages/              # Shared page components (Page wrapper pattern)
+│   ├── HomePage.astro      # Handles MainLayout internally, receives lang prop
+│   ├── AboutPage.astro
+│   ├── ContactPage.astro
+│   ├── CvPage.astro
+│   ├── PortfolioPage.astro
+│   ├── blog/               # Shared blog page components
+│   │   ├── BlogListingPage.astro
+│   │   └── BlogPostPage.astro
+│   └── ...
 ├── blog/               # Blog-related components
 │   ├── BlogCard.svelte
 │   ├── BlogContainer.astro
@@ -35,6 +45,22 @@ components/
 ```
 
 ## Component Catalog
+
+### Page Components (Page Wrapper Pattern)
+
+Shared page components in `pages/` handle `MainLayout`, translations, and content internally. Page files in `src/pages/` are thin 3-line wrappers that only pass `lang`.
+
+| Component | Type | Description |
+|-----------|------|-------------|
+| `pages/HomePage.astro` | Astro | Homepage with all sections |
+| `pages/AboutPage.astro` | Astro | About page |
+| `pages/ContactPage.astro` | Astro | Contact page |
+| `pages/CvPage.astro` | Astro | CV/Resume page |
+| `pages/PortfolioPage.astro` | Astro | Portfolio page |
+| `pages/blog/BlogListingPage.astro` | Astro | Blog listing with pagination |
+| `pages/blog/BlogPostPage.astro` | Astro | Individual blog post |
+
+**Key:** Each `*Page.astro` component accepts a `lang: Language` prop and wraps content in `MainLayout` internally.
 
 ### Root Components
 

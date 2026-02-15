@@ -1,11 +1,13 @@
 ---
+import { getDateLocale, type Language } from '@/lib/i18n';
+
 interface Props {
   date: Date;
   lang?: string;
 }
 
 const { date, lang = 'en' } = Astro.props;
-const locale = lang === 'es' ? 'es-ES' : 'en-US';
+const locale = getDateLocale(lang as Language);
 ---
 
 <time datetime={date.toISOString()}>

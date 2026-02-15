@@ -75,21 +75,41 @@ pages/blog/[...slug].astro
 
 ## Page Patterns
 
-### Standard Page
+### Page Wrapper Pattern (Standard)
+
+All content pages use the **Page wrapper pattern**. Pages in `src/pages/` are ultra-minimal 3-line wrappers. The real logic (`MainLayout`, translations, content) lives inside `*Page.astro` components in `src/components/pages/`.
+
+**Thin wrapper** (`src/pages/about.astro`):
+
+```astro
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
+```
+
+**Shared component** (`src/components/pages/AboutPage.astro`):
 
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
 
-const lang = 'en';
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = getTranslations(lang);
 ---
-
-<MainLayout lang={lang} title="Page Title" description="Page description">
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
   <main class="main-container py-24">
-    <!-- Content -->
+    <!-- Content using t.* for text -->
   </main>
 </MainLayout>
 ```
+
+**Key rules:**
+- Page wrappers never import `MainLayout` — the `*Page.astro` component handles it internally
+- `lang` is passed as a string literal (`"en"`, `"es"`), not a variable
 
 ### Dynamic Page with `getStaticPaths`
 
@@ -205,24 +225,46 @@ See [i18n Guide](../../docs/I18N_GUIDE.md) for details.
 
 ## Creating a New Page
 
-### Static Page
+### Static Page (Page Wrapper Pattern)
 
-1. Create file in `pages/`:
+1. **Create the shared component** in `src/components/pages/`:
    ```bash
-   touch src/pages/new-page.astro
+   touch src/components/pages/NewPage.astro
    ```
 
-2. Add content:
    ```astro
    ---
+   // src/components/pages/NewPage.astro
    import MainLayout from '@/layouts/MainLayout.astro';
+   import { getTranslations } from '@/lib/translations';
+   import type { Language } from '@/lib/i18n';
+
+   interface Props { lang: Language; }
+   const { lang } = Astro.props;
+   const t = getTranslations(lang);
    ---
-   
-   <MainLayout lang="en" title="New Page" description="Description">
+   <MainLayout lang={lang} title="New Page" description="Description">
      <main class="main-container py-24">
        <h1>New Page</h1>
      </main>
    </MainLayout>
+   ```
+
+2. **Create thin wrappers** for each language:
+   ```astro
+   ---
+   // src/pages/new-page.astro
+   import NewPage from '@/components/pages/NewPage.astro';
+   ---
+   <NewPage lang="en" />
+   ```
+
+   ```astro
+   ---
+   // src/pages/es/new-page.astro
+   import NewPage from '@/components/pages/NewPage.astro';
+   ---
+   <NewPage lang="es" />
    ```
 
 ### Dynamic Page
@@ -242,7 +284,7 @@ See [i18n Guide](../../docs/I18N_GUIDE.md) for details.
        props: { item },
      }));
    }
-   
+
    const { item } = Astro.props;
    ---
    ```

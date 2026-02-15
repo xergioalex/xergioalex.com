@@ -1,4 +1,5 @@
 <script>
+import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 import BlogCard from './BlogCard.svelte';
 
@@ -10,7 +11,7 @@ export let isDev = false;
 export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
-$: basePrefix = lang === 'es' ? '/es' : '';
+$: basePrefix = getUrlPrefix(lang);
 $: querySuffix = isPreviewMode ? '?preview=all' : '';
 </script>
 

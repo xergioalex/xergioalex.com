@@ -71,7 +71,8 @@ Perform a quick, checklist-based review of a pull request focusing on style issu
 - [ ] Svelte components use `client:*` directive when interactive
 - [ ] Dark mode supported (Tailwind `dark:` classes)
 - [ ] Content Collection schema followed
-- [ ] Layout components used properly
+- [ ] Pages use Page wrapper pattern (thin wrappers in `src/pages/`, shared `*Page.astro` in `src/components/pages/`)
+- [ ] Page wrappers do not import `MainLayout` directly
 
 **Tests:**
 - [ ] (Note: Testing not configured in this repo)
@@ -139,7 +140,7 @@ When reviewing Astro code:
 
 1. **Components** - Check `.astro` vs `.svelte` usage is appropriate
 2. **Content** - Frontmatter matches schema in `content.config.ts`
-3. **Pages** - Proper use of `MainLayout`
+3. **Pages** - Page wrapper pattern (shared `*Page.astro` components handle `MainLayout` internally)
 4. **API routes** - Error handling and response types
 5. **Hydration** - `client:load` vs `client:visible` appropriate
 

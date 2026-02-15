@@ -1,0 +1,53 @@
+---
+import HighlightCard from '@/components/pages/HighlightCard.astro';
+import PageHero from '@/components/pages/PageHero.astro';
+import PageSection from '@/components/pages/PageSection.astro';
+import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
+import PortfolioTimeline from '@/components/portfolio/PortfolioTimeline.svelte';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getBlogPosts } from '@/lib/blog';
+import type { Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+
+const { postsResult: posts } = await getBlogPosts({
+  lang,
+  tag: 'portfolio',
+  pageSize: 100,
+});
+---
+
+<MainLayout lang={lang} title={t.portfolioPage.title} description={t.portfolioPage.description}>
+  <PageHero
+    title={t.portfolioPage.title}
+    subtitle={t.portfolioPage.subtitle}
+    description={t.portfolioPage.heroDescription}
+  />
+
+  <PageSection title={t.portfolioPage.journeyTitle} description={t.portfolioPage.journeyText} />
+
+  <PageSection title={t.portfolioPage.areasTitle} background="gray">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {t.portfolioPage.areas.map((area) => (
+        <HighlightCard title={area.title} description={area.description} icon={area.icon} />
+      ))}
+    </div>
+  </PageSection>
+
+  <section id="timeline" class="py-12 md:py-16">
+    <div class="main-container">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+        {t.portfolioPage.timelineTitle}
+      </h2>
+      <PortfolioTimeline client:load posts={posts} lang={lang} />
+    </div>
+  </section>
+
+  <ScrollToTimeline client:load lang={lang} targetLabel={t.portfolioPage.timelineTitle} />
+</MainLayout>

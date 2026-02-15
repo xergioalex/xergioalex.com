@@ -126,18 +126,32 @@ tags: ["tech"]
 ---
 ```
 
-### Page Layout
+### Page Wrapper Pattern
 
-All pages use `MainLayout`:
+All content pages use the **Page wrapper pattern**. Pages in `src/pages/` are 3-line wrappers. Logic lives in `src/components/pages/*Page.astro`:
 
+**Page component** (`src/components/pages/AboutPage.astro`):
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
----
+import { getTranslations } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
 
-<MainLayout lang="en" title="Title" description="Desc">
-  <section>Content</section>
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+---
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
+  <section>{t.aboutPage.title}</section>
 </MainLayout>
+```
+
+**Page wrapper** (`src/pages/about.astro` — 3 lines):
+```astro
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
 ```
 
 ### API Routes
@@ -170,9 +184,9 @@ export const GET: APIRoute = async () => {
 
 ### Add a Page
 
-1. Create in `src/pages/`
-2. Use `MainLayout` wrapper
-3. Pass `lang`, `title`, `description` props
+1. Create shared component in `src/components/pages/*Page.astro` (handles `MainLayout` internally)
+2. Create thin wrappers in `src/pages/` and `src/pages/es/` (3 lines each, pass `lang` as string literal)
+3. Add translation keys to `src/lib/translations/` if needed
 
 ## What NOT to Do
 
