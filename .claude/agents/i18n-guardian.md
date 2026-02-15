@@ -70,11 +70,13 @@ This agent is a specialized **i18n expert** that focuses on:
 
 For this Astro repository, check:
 
-### Page Parity
+### Page Parity (Page Wrapper Pattern)
 - [ ] Every page in `src/pages/` has a counterpart in `src/pages/es/`
 - [ ] Every page in `src/pages/es/` has a counterpart in `src/pages/`
-- [ ] English pages use `lang: Language = 'en'`
-- [ ] Spanish pages use `lang: Language = 'es'`
+- [ ] Page wrappers are thin 3-line files (import + render with `lang` string literal)
+- [ ] English wrappers pass `lang="en"`, Spanish wrappers pass `lang="es"`
+- [ ] Shared `*Page.astro` components in `src/components/pages/` handle `MainLayout` internally
+- [ ] Wrappers do not import `MainLayout` directly
 
 ### Blog Post Parity
 - [ ] Every post in `src/content/blog/en/` has a counterpart in `src/content/blog/es/`

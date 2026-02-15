@@ -90,12 +90,11 @@ Translate the content following these rules:
 - Preserve all markdown formatting, headings, lists, links
 - Do NOT translate code blocks, terminal commands, or technical identifiers
 
-**For pages (.astro):**
-- Set the correct `lang` value: `const lang: Language = 'en';` or `'es';`
-- Ensure `getTranslations(lang)` is used for all text
-- Translate any inline text content
-- Preserve all imports, component structure, and layout
-- Update the `lang` prop on `MainLayout`
+**For page wrappers (.astro in `src/pages/`):**
+- Pages use the Page wrapper pattern: thin 3-line wrappers that import a shared `*Page.astro` component
+- Set the correct `lang` string literal: `lang="en"` or `lang="es"`
+- The shared component in `src/components/pages/` handles `MainLayout`, translations, and content internally
+- When syncing a page, verify both the wrapper and the shared component exist
 
 **For translation strings (en.ts/es.ts):**
 - Find keys that exist in one locale file but not the other

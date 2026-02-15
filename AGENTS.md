@@ -227,8 +227,9 @@ When you create or modify content in one language, you MUST create or update the
 #### Content Type Rules
 
 **Pages:**
-- When creating or modifying a page in `src/pages/`, the corresponding page in `src/pages/es/` MUST be created or updated with the translated content, and vice versa.
-- Both pages must use the correct `lang` value (`'en'` or `'es'`) and pass it to `MainLayout` and child components.
+- When creating a new page, create **1 shared component** in `src/components/pages/*Page.astro` + **thin wrappers** in `src/pages/` and `src/pages/es/` (one per language).
+- Wrappers are 3-line files that only import the component and pass `lang` as a string literal (`"en"`, `"es"`).
+- The shared component handles `MainLayout`, translations, and all content internally.
 
 **Blog Posts:**
 - When creating or modifying a blog post in `src/content/blog/en/`, the corresponding post in `src/content/blog/es/` MUST be created or updated with the translated content, and vice versa.
@@ -429,43 +430,18 @@ export const GET: APIRoute = async () => {
 };
 ```
 
-### 5. Layout Pattern
+### 5. Page Wrapper Pattern (MANDATORY)
 
-All pages use `MainLayout.astro`:
+**All content pages use the Page wrapper pattern.** Pages in `src/pages/` are ultra-minimal 3-line routing wrappers. The real logic (MainLayout, translations, SEO metadata, content) lives inside `*Page.astro` components in `src/components/pages/`.
 
-```astro
----
-import MainLayout from '@/layouts/MainLayout.astro';
----
-
-<MainLayout lang="en" title="Page Title" description="Page description">
-  <section>Page content here</section>
-</MainLayout>
-```
-
-### 6. i18n Pattern
-
-Language-specific routes with `lang` prop:
-
-```
-src/pages/
-├── index.astro          # English (default)
-└── es/
-    └── index.astro      # Spanish
-```
-
-Components receive `lang` prop for translations.
-
-### 7. Shared Page Component Pattern
-
-Content pages use shared components to eliminate duplication:
+**Page component** (`src/components/pages/AboutPage.astro`) — handles everything internally:
 
 ```astro
 ---
-// src/components/pages/AboutPage.astro (shared component)
+// src/components/pages/AboutPage.astro
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
+import { getUrlPrefix } from '@/lib/i18n';
 import type { Language } from '@/lib/i18n';
 
 interface Props {
@@ -477,30 +453,54 @@ const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 ---
 
-<MainLayout lang={lang} title={t.aboutPage.title}>
-  <!-- All content uses t.* for text and prefix for URLs -->
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
+  <section>
+    <h1>{t.aboutPage.title}</h1>
+    <!-- Page content using t.* for text and prefix for URLs -->
+  </section>
 </MainLayout>
 ```
 
-Thin page wrappers set only the language:
+**Page wrappers** (3 lines, only routing + lang):
 
 ```astro
 ---
-// src/pages/about.astro (EN wrapper — ~5 lines)
+// src/pages/about.astro (EN wrapper)
 import AboutPage from '@/components/pages/AboutPage.astro';
 ---
-
 <AboutPage lang="en" />
 ```
 
 ```astro
 ---
-// src/pages/es/about.astro (ES wrapper — ~5 lines)
+// src/pages/es/about.astro (ES wrapper)
 import AboutPage from '@/components/pages/AboutPage.astro';
 ---
-
 <AboutPage lang="es" />
 ```
+
+**Key rules:**
+- Page components handle `MainLayout` internally — wrappers never import `MainLayout`
+- The `lang` prop is passed as a **string literal** (`"en"`, `"es"`), not a variable
+- For a new page: create **1 `*Page.astro` component** + **N thin wrappers** (one per language)
+- All user-visible text uses `getTranslations(lang)`, all URLs use `getUrlPrefix(lang)`
+
+**Benefits:** DRY (one component per page), scalable to N languages, content changes in a single file.
+
+### 6. i18n Pattern
+
+Language-specific routes with `lang` prop:
+
+```
+src/pages/
+├── index.astro          # English (default) — wrapper: <HomePage lang="en" />
+├── about.astro          # English — wrapper: <AboutPage lang="en" />
+└── es/
+    ├── index.astro      # Spanish — wrapper: <HomePage lang="es" />
+    └── about.astro      # Spanish — wrapper: <AboutPage lang="es" />
+```
+
+Page components in `src/components/pages/` receive `lang` and handle all translations internally.
 
 ## Documentation Standards
 
@@ -631,7 +631,7 @@ public/images/blog/
 6. Hardcode text that should be translatable
 7. Forget to update Content Collection schemas after changing frontmatter
 8. Use `npm run test` expecting real tests (not configured yet)
-9. Create new pages without using `MainLayout`
+9. Import `MainLayout` directly in page wrappers (use the Page wrapper pattern — `MainLayout` belongs inside `*Page.astro` components)
 10. Forget dark mode support in new components
 11. Create content (pages, blog posts) without covering all active languages
 12. Add translation strings without covering all active languages in `src/lib/translations/`
@@ -656,7 +656,7 @@ public/images/blog/
 7. Use Content Collections for structured content
 8. Follow the established component patterns
 9. Use the `@` path alias for imports
-10. Keep pages simple, delegate to components
+10. Use the Page wrapper pattern: thin 3-line wrappers in `src/pages/`, logic in `src/components/pages/*Page.astro`
 11. Always create/update content in all active languages (see `src/lib/i18n.ts`)
 12. Use `/translate-sync` when synchronizing content across languages
 13. Add new translation strings to both locale files in `src/lib/translations/`

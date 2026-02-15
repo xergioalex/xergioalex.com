@@ -495,20 +495,44 @@ const { lang, title, description } = Astro.props;
 </html>
 ```
 
-### Usage
+### Usage via Page Wrapper Pattern
+
+Content pages **do not** import `MainLayout` directly. Instead, they use the Page wrapper pattern:
+
+1. A **shared page component** in `src/components/pages/*Page.astro` handles `MainLayout` internally
+2. **Thin page wrappers** in `src/pages/` are 3-line files that only set the language
+
+**Shared component** (`src/components/pages/AboutPage.astro`):
 
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+import type { Language } from '@/lib/i18n';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const t = getTranslations(lang);
 ---
 
-<MainLayout lang="en" title="About" description="About me">
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
   <section class="py-12">
-    <h1>About</h1>
-    <p>Content here...</p>
+    <h1>{t.aboutPage.title}</h1>
+    <!-- Content using t.* for text -->
   </section>
 </MainLayout>
 ```
+
+**Page wrapper** (`src/pages/about.astro`):
+
+```astro
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
+```
+
+This ensures one source of truth per page, with `MainLayout` managed inside the component.
 
 ## Styling Architecture
 
@@ -568,28 +592,38 @@ The centralized i18n module contains:
 - `LANGUAGES` registry — config per language (name, locale, URL prefix, flag)
 - Utility functions — `getUrlPrefix()`, `getDateLocale()`, `getOGLocale()`, `getLocalizedUrl()`, `getAlternateUrls()`, `stripLangPrefix()`, etc.
 
-### Shared Page Component Architecture
+### Page Wrapper Pattern
 
-Content pages use shared components to eliminate duplication across languages:
+All content pages use the **Page wrapper pattern** to eliminate duplication across languages. Each `*Page.astro` component handles `MainLayout`, translations, and SEO metadata internally. Page files in `src/pages/` are ultra-minimal 3-line wrappers that only set the language.
 
 ```
-src/components/pages/
-├── HomePage.astro          # Shared content, receives lang prop
+src/components/pages/           # Shared page components (handle MainLayout internally)
+├── HomePage.astro              # Receives lang prop, wraps in MainLayout
 ├── AboutPage.astro
 ├── ContactPage.astro
+├── CvPage.astro
+├── PortfolioPage.astro
 ├── blog/
 │   ├── BlogListingPage.astro
 │   ├── BlogPostPage.astro
 │   └── ...
 └── ...
 
-src/pages/
-├── index.astro             # Thin wrapper: lang='en' (~5 lines)
-├── about.astro
+src/pages/                      # Thin routing wrappers (3 lines each)
+├── index.astro                 # <HomePage lang="en" />
+├── about.astro                 # <AboutPage lang="en" />
+├── contact.astro               # <ContactPage lang="en" />
 └── es/
-    ├── index.astro         # Thin wrapper: lang='es' (~5 lines)
-    └── about.astro
+    ├── index.astro             # <HomePage lang="es" />
+    ├── about.astro             # <AboutPage lang="es" />
+    └── contact.astro           # <ContactPage lang="es" />
 ```
+
+**Key rules:**
+- Page components handle `MainLayout` internally — wrappers never import `MainLayout`
+- The `lang` prop is passed as a string literal (`"en"`, `"es"`), not a variable
+- For a new page: create 1 `*Page.astro` component + N thin wrappers (one per language)
+- Benefits: DRY, scalable to N languages, content changes in a single file
 
 ### Route Structure
 
@@ -619,20 +653,24 @@ src/lib/translations/
 └── es.ts       # Spanish translations
 ```
 
-**Usage in components:**
+**Usage in page components** (`src/components/pages/*Page.astro`):
 
 ```astro
 ---
+import MainLayout from '@/layouts/MainLayout.astro';
 import { getTranslations } from '@/lib/translations';
 import type { Language } from '@/lib/i18n';
 
+interface Props { lang: Language; }
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 ---
 <MainLayout lang={lang} title={t.blogTitle} description={t.blogDescription}>
-  <Content />
+  <!-- Content using t.* for all user-visible text -->
 </MainLayout>
 ```
+
+Page wrappers in `src/pages/` never use translations directly — they just pass `lang`.
 
 **Adding a new language:**
 

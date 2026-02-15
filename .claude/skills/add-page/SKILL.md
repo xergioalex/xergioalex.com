@@ -63,78 +63,66 @@ Create new pages in the Astro application with correct file-based routing, MainL
 - Dynamic → `pages/{name}/[param].astro`
 - i18n → `pages/{lang}/{name}.astro`
 
-### Step 2: Create Page File
+### Step 2: Create Shared Page Component (MANDATORY)
 
-**Static Page Template:**
+**MANDATORY:** Every page must use the Page wrapper pattern. Create the shared component at `src/components/pages/{Name}Page.astro` — this component handles `MainLayout`, translations, and all content internally.
+
+**Static Page Component Template:**
 
 ```astro
 ---
+// src/components/pages/{Name}Page.astro
 import MainLayout from '@/layouts/MainLayout.astro';
+import { getTranslations } from '@/lib/translations';
+import { getUrlPrefix } from '@/lib/i18n';
+import type { Language } from '@/lib/i18n';
 
-const lang = 'en';
-const title = 'Page Title';
-const description = 'Page description for SEO.';
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
 ---
 
-<MainLayout lang={lang} title={title} description={description}>
+<MainLayout lang={lang} title={t.{name}Page.title} description={t.{name}Page.description}>
   <main class="main-container py-24">
     <h1 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
-      {title}
+      {t.{name}Page.title}
     </h1>
-    
+
     <div class="prose dark:prose-invert max-w-none">
-      <!-- Page content -->
+      <!-- Page content using t.* for text and prefix for URLs -->
     </div>
   </main>
 </MainLayout>
 ```
 
-**Dynamic Page Template:**
+### Step 3: Create Thin Page Wrappers for All Languages (MANDATORY)
 
+Create 3-line wrapper files for each active language (see `src/lib/i18n.ts`):
+
+**English wrapper** (`src/pages/{name}.astro`):
 ```astro
 ---
-import MainLayout from '@/layouts/MainLayout.astro';
-
-export async function getStaticPaths() {
-  // Return array of { params, props }
-  const items = await getItems();
-  return items.map(item => ({
-    params: { slug: item.slug },
-    props: { item },
-  }));
-}
-
-interface Props {
-  item: ItemType;
-}
-
-const { item } = Astro.props;
-const lang = 'en';
+import {Name}Page from '@/components/pages/{Name}Page.astro';
 ---
-
-<MainLayout lang={lang} title={item.title} description={item.description}>
-  <main class="main-container py-24">
-    <!-- Dynamic content -->
-  </main>
-</MainLayout>
+<{Name}Page lang="en" />
 ```
 
-### Step 3: Create Shared Page Component and Language Wrappers (MANDATORY)
+**Spanish wrapper** (`src/pages/es/{name}.astro`):
+```astro
+---
+import {Name}Page from '@/components/pages/{Name}Page.astro';
+---
+<{Name}Page lang="es" />
+```
 
-**MANDATORY:** Every page must use the shared page component pattern and exist in all active languages (see `src/lib/i18n.ts`).
-
-1. **Create the shared component** at `src/components/pages/{Name}Page.astro`:
-   - Accept `lang: Language` as a prop
-   - Use `getTranslations(lang)` for all text content
-   - Use `getUrlPrefix(lang)` for all internal URLs
-   - Wrap in `MainLayout` with `lang` prop
-
-2. **Create thin wrappers** for each language:
-   - English: `src/pages/{name}.astro` → `<{Name}Page lang="en" />`
-   - Spanish: `src/pages/es/{name}.astro` → `<{Name}Page lang="es" />`
-   - Each wrapper is ~5 lines (import + render with lang)
-
-3. If the page introduces new UI text, add entries to `src/lib/translations.ts` for ALL active languages.
+**Key rules:**
+- Wrappers never import `MainLayout` — the `*Page.astro` component handles it internally
+- The `lang` prop is passed as a **string literal** (`"en"`, `"es"`), not a variable
+- If the page introduces new UI text, add entries to `src/lib/translations/en.ts` and `src/lib/translations/es.ts`
 
 ### Step 4: Validate
 
@@ -176,15 +164,16 @@ feat: add {name} page (en + es)
 
 ### Required Elements
 
-- [ ] Uses `MainLayout` with all props (lang, title, description)
+- [ ] Shared `*Page.astro` component handles `MainLayout` internally
+- [ ] Page wrappers are 3-line files (import + render with `lang` literal)
 - [ ] Has `main-container` wrapper
 - [ ] Has semantic heading (`<h1>`)
 - [ ] Dark mode support
 
 ### Scope Limits
 
-- **Maximum files:** 2 (page + optional helper)
-- **Maximum LOC:** 100
+- **Maximum files:** 4 (1 shared component + N language wrappers)
+- **Maximum LOC:** 200
 
 ### Multilingual Enforcement
 
