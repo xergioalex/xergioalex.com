@@ -99,7 +99,12 @@ src/
 │   ├── i18n.ts              # Centralized i18n config & utilities
 │   ├── constances.ts        # Site constants
 │   ├── enum.ts              # Shared enums
-│   └── types.ts             # TypeScript types
+│   ├── types.ts             # TypeScript types
+│   └── translations/        # Modular translation system
+│       ├── index.ts         # Public API barrel: getTranslations(), re-exports
+│       ├── types.ts         # SiteTranslations interface + all sub-interfaces
+│       ├── en.ts            # English translations
+│       └── es.ts            # Spanish translations
 ├── pages/                   # File-based routing
 │   ├── index.astro          # Homepage (English)
 │   ├── es/index.astro       # Homepage (Spanish)
@@ -230,13 +235,15 @@ When you create or modify content in one language, you MUST create or update the
 - Translate `title`, `description`, and body content. Preserve `pubDate`, `updatedDate`, `heroImage`, `tags`, code blocks, and formatting.
 
 **Translation Strings:**
-- When adding new UI strings to `src/lib/translations.ts`, translations MUST be added for BOTH English and Spanish simultaneously.
+- When adding new UI strings to `src/lib/translations/`, translations MUST be added for BOTH English and Spanish simultaneously.
+- Add new keys to both `src/lib/translations/en.ts` and `src/lib/translations/es.ts`.
+- Update `src/lib/translations/types.ts` if the new keys require interface changes.
 - Never leave a translation key with a value in only one language.
 
 **Components:**
 - Components with user-visible text MUST use `getTranslations(lang)` from `@/lib/translations`.
 - Never hardcode user-visible strings directly in templates.
-- If a component introduces new translation keys, add them to `translations.ts` in both languages.
+- If a component introduces new translation keys, add them to both locale files in `src/lib/translations/`.
 
 #### Multilingual Compliance Checklist
 
@@ -244,7 +251,8 @@ Before committing any content change, verify:
 
 - [ ] All new/modified pages exist in both `src/pages/` and `src/pages/es/`
 - [ ] All new/modified blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
-- [ ] All new UI strings in `translations.ts` have both English and Spanish values
+- [ ] All new UI strings added to both `src/lib/translations/en.ts` and `src/lib/translations/es.ts`
+- [ ] Translation types updated in `src/lib/translations/types.ts` if needed
 - [ ] No hardcoded user-visible text in components (use `getTranslations()`)
 
 #### Tools for Multilingual Work
@@ -260,9 +268,10 @@ The architecture is designed so adding a new language requires zero changes to c
    - Add the language code to the `Language` type union (e.g., `'en' | 'es' | 'pt'`)
    - Add a `LanguageConfig` entry to the `LANGUAGES` registry
 
-2. **Add translations** (`src/lib/translations.ts`):
-   - Add a complete translation object for the new language
-   - Use the English object as a reference for all required keys
+2. **Add translations** (`src/lib/translations/`):
+   - Create a new locale file `src/lib/translations/{lang}.ts` (e.g., `pt.ts`)
+   - Export a complete `SiteTranslations` object using `en.ts` as a reference
+   - Import the new locale in `src/lib/translations/index.ts` and add it to the `translations` record
 
 3. **Create page wrappers** (`src/pages/{lang}/`):
    - Create `src/pages/{lang}/` directory
@@ -625,7 +634,7 @@ public/images/blog/
 9. Create new pages without using `MainLayout`
 10. Forget dark mode support in new components
 11. Create content (pages, blog posts) without covering all active languages
-12. Add translation strings without covering all active languages in `translations.ts`
+12. Add translation strings without covering all active languages in `src/lib/translations/`
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
@@ -650,6 +659,7 @@ public/images/blog/
 10. Keep pages simple, delegate to components
 11. Always create/update content in all active languages (see `src/lib/i18n.ts`)
 12. Use `/translate-sync` when synchronizing content across languages
+13. Add new translation strings to both locale files in `src/lib/translations/`
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
@@ -668,7 +678,7 @@ public/images/blog/
 - [ ] `npm run build` succeeds
 - [ ] Dark mode works in new components
 - [ ] Content exists in both English and Spanish versions (pages, blog posts)
-- [ ] Translation strings added for both languages in `translations.ts` (if applicable)
+- [ ] Translation strings added for both languages in `src/lib/translations/` (if applicable)
 - [ ] Documentation updated if needed
 - [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only

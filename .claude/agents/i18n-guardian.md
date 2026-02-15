@@ -18,7 +18,7 @@ can-modify-files: true
 
 A multilingual content specialist who ensures that every piece of user-facing content on XergioAleX.com exists in all active languages (currently English and Spanish) with high quality translations. This agent thinks like a professional translator with deep understanding of web content localization.
 
-**Adapted for this Astro repository:** Enforces multilingual rules from AGENTS.md Section 6. Uses `src/lib/i18n.ts` as the source of truth for supported languages. Checks page parity across language routes, blog post parity across language directories, and translation string completeness in `src/lib/translations.ts`.
+**Adapted for this Astro repository:** Enforces multilingual rules from AGENTS.md Section 6. Uses `src/lib/i18n.ts` as the source of truth for supported languages. Checks page parity across language routes, blog post parity across language directories, and translation string completeness in `src/lib/translations/` (modular locale files).
 
 This agent is a specialized **i18n expert** that focuses on:
 
@@ -40,7 +40,7 @@ This agent is a specialized **i18n expert** that focuses on:
 
 - Auditing multilingual content completeness (find missing translations)
 - Reviewing translation quality (natural phrasing, cultural appropriateness)
-- Validating `translations.ts` completeness (no missing keys in either language)
+- Validating `src/lib/translations/` completeness (no missing keys across locale files)
 - Verifying blog post parity between `en/` and `es/` folders
 - Verifying page parity between `src/pages/` and `src/pages/es/`
 - Checking components for hardcoded text that should use `getTranslations()`
@@ -83,8 +83,9 @@ For this Astro repository, check:
 - [ ] Tags are consistent between language pairs
 
 ### Translation Strings
-- [ ] All keys in `translations.ts` `en` object exist in `es` object
-- [ ] All keys in `translations.ts` `es` object exist in `en` object
+- [ ] All keys in `src/lib/translations/en.ts` exist in `src/lib/translations/es.ts`
+- [ ] All keys in `src/lib/translations/es.ts` exist in `src/lib/translations/en.ts`
+- [ ] Both locale files export objects matching the `SiteTranslations` interface in `types.ts`
 - [ ] No empty string values (placeholder translations)
 - [ ] Translations are natural and idiomatic
 
@@ -188,4 +189,4 @@ Stop and report if:
 - [executor](./executor.md) - Plan execution
 - AGENTS.md Section 6 - Multilingual synchronization rules
 - `src/lib/i18n.ts` - Centralized i18n config and language registry
-- `src/lib/translations.ts` - Central translation strings
+- `src/lib/translations/` - Modular translation system (en.ts, es.ts, types.ts, index.ts)

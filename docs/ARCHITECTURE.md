@@ -119,9 +119,15 @@ src/
 │
 ├── lib/                     # Utilities
 │   ├── blog.ts              # Blog fetching/pagination
+│   ├── i18n.ts              # Centralized i18n config & utilities
 │   ├── constances.ts        # Site constants
 │   ├── enum.ts              # Shared enums
-│   └── types.ts             # TypeScript types
+│   ├── types.ts             # TypeScript types
+│   └── translations/        # Modular translation system
+│       ├── index.ts         # Public API barrel: getTranslations(), re-exports
+│       ├── types.ts         # SiteTranslations interface + all sub-interfaces
+│       ├── en.ts            # English translations
+│       └── es.ts            # Spanish translations
 │
 ├── pages/                   # File-based routing
 │   ├── index.astro          # Home (English)
@@ -602,7 +608,18 @@ src/pages/
 
 ### Translation System
 
-All UI strings are centralized in `src/lib/translations.ts`. Components use `getTranslations(lang)` to access localized text:
+All UI strings are centralized in `src/lib/translations/`. The translation system is modular with separate files for each language:
+
+**Directory Structure:**
+```
+src/lib/translations/
+├── index.ts    # Public API barrel: getTranslations(), re-exports
+├── types.ts    # SiteTranslations interface + all sub-interfaces
+├── en.ts       # English translations
+└── es.ts       # Spanish translations
+```
+
+**Usage in components:**
 
 ```astro
 ---
@@ -616,6 +633,18 @@ const t = getTranslations(lang);
   <Content />
 </MainLayout>
 ```
+
+**Adding a new language:**
+
+1. Create `src/lib/translations/{lang}.ts` exporting a `SiteTranslations` object
+2. Import it in `src/lib/translations/index.ts` and add to the `translations` record
+3. Update the `Language` type in `src/lib/i18n.ts`
+
+**Adding new translation keys:**
+
+1. Add the new interface field to `src/lib/translations/types.ts` (if needed)
+2. Add translations to both `src/lib/translations/en.ts` and `src/lib/translations/es.ts`
+3. Use the new key via `getTranslations(lang)` in components
 
 ### Blog Content Collections
 

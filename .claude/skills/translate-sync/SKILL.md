@@ -41,13 +41,13 @@ Synchronize content between English (en) and Spanish (es) versions of pages, blo
 ### Optional Parameters
 
 - `$TARGET_LANG`: Target language to sync to (default: auto-detect the opposite language from source path)
-- `$CONTENT_TYPE`: Type of content: `page`, `blog`, `translations` (default: auto-detect from file path)
+- `$CONTENT_TYPE`: Type of content: `page`, `blog`, `translation-strings` (default: auto-detect from file path)
 
 ## Prerequisites
 
 - [ ] Source file exists and is valid
 - [ ] For blog posts: understand Content Collection schema in `content.config.ts`
-- [ ] For translation strings: understand `src/lib/translations.ts` structure
+- [ ] For translation strings: understand `src/lib/translations/` modular structure
 
 ## Steps
 
@@ -61,7 +61,8 @@ Determine the source language and content type from the file path:
 | `src/pages/**` (not es/) | English | page |
 | `src/content/blog/es/**` | Spanish | blog |
 | `src/content/blog/en/**` | English | blog |
-| `src/lib/translations.ts` | Both | translations |
+| `src/lib/translations/en.ts` | English | translation-strings |
+| `src/lib/translations/es.ts` | Spanish | translation-strings |
 
 Set target language to the opposite of source.
 
@@ -96,10 +97,11 @@ Translate the content following these rules:
 - Preserve all imports, component structure, and layout
 - Update the `lang` prop on `MainLayout`
 
-**For translations.ts:**
-- Find keys that exist in one language but not the other
+**For translation strings (en.ts/es.ts):**
+- Find keys that exist in one locale file but not the other
 - Add the missing translations maintaining the same nested structure
-- Ensure both `en` and `es` objects have identical key structures
+- Ensure both `en.ts` and `es.ts` export objects with identical key structures
+- Update `src/lib/translations/types.ts` if new interface fields are needed
 
 ### Step 4: Validate Synchronization
 
@@ -123,7 +125,7 @@ npm run build
 ### Source
 - File: {source_file}
 - Language: {en|es}
-- Type: {page|blog|translations}
+- Type: {page|blog|translation-strings}
 
 ### Target
 - File: {target_file}
@@ -224,17 +226,18 @@ $SOURCE_FILE: src/pages/es/about.astro
 
 **Input:**
 ```
-$SOURCE_FILE: src/lib/translations.ts
-$CONTENT_TYPE: translations
+$SOURCE_FILE: src/lib/translations/en.ts
+$CONTENT_TYPE: translation-strings
 ```
 
 **Actions:**
-1. Detect: translations file
-2. Scan for keys present in `en` but missing in `es` (and vice versa)
-3. Add missing translations
-4. Validate and report
+1. Detect: English translation file
+2. Compare with `src/lib/translations/es.ts`
+3. Find keys present in `en.ts` but missing in `es.ts`
+4. Add missing translations to `es.ts`
+5. Validate and report
 
-**Updates:** `src/lib/translations.ts`
+**Updates:** `src/lib/translations/es.ts`
 
 ## Related
 
