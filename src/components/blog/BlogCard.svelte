@@ -96,6 +96,8 @@ $: displayDescription = searchResult
       <img
         src={postData.heroImage}
         alt={postData.title}
+        width={400}
+        height={192}
         class="w-full h-48 object-cover"
       />
       {#if isDev && (effectiveStatus !== 'published' || isDemo)}

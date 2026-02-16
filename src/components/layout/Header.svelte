@@ -57,6 +57,8 @@ function toggleMenu() {
         class="h-9"
         src="/images/logo_small_version_white.svg"
         alt="XergioAleX"
+        width={36}
+        height={36}
       />
     </a>
     <!-- Desktop menu -->
