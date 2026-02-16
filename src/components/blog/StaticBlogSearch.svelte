@@ -227,7 +227,7 @@ onMount(() => {
           {t.showPublishedOnly}
         </a>
       {:else}
-        <a href="?preview=all" class="text-gray-500 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400">
+        <a href="?preview=all" class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400">
           {t.showAllPosts}
         </a>
       {/if}
@@ -285,7 +285,7 @@ onMount(() => {
   {:else if isLoading}
     <div class="text-center py-12">
       <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-      <p class="mt-2 text-gray-500">{t.searching}</p>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">{t.searching}</p>
     </div>
   {:else if isSearching}
     <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} {isDev} {isPreviewMode} />

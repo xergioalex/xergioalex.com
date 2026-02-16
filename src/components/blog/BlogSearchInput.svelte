@@ -57,7 +57,7 @@ function handleKeyDown(e) {
   <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">{t.searchHint}</p>
   
   {#if isSearching}
-    <div id="search-results-count" class="mt-2 text-sm text-gray-600 dark:text-gray-400" aria-live="polite">
+    <div id="search-results-count" class="mt-2 text-sm text-gray-600 dark:text-gray-300" aria-live="polite">
       {t.resultsFound(resultsCount)}
     </div>
   {/if}

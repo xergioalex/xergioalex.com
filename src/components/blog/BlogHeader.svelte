@@ -34,11 +34,11 @@ $: availableText = t.articlesAvailable(totalPosts);
 </p>
 
 <!-- Post counter -->
-<div class="mb-4 text-gray-600 dark:text-gray-400">
+<div class="mb-4 text-gray-600 dark:text-gray-300">
   {#if totalPages > 1}
     <p class="text-sm">
       {showingText}
-      <span class="text-gray-500">({t.pageOf(currentPage, totalPages)})</span>
+      <span class="text-gray-600 dark:text-gray-300">({t.pageOf(currentPage, totalPages)})</span>
     </p>
   {:else}
     <p class="text-sm">
