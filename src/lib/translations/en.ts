@@ -914,6 +914,18 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   showPublishedOnly: 'Show published only',
   publishesOn: 'Publishes on',
 
+  // 404 page
+  notFoundPage: {
+    title: 'Page Not Found',
+    description:
+      'The page you are looking for does not exist or has been moved.',
+    heading: 'Page Not Found',
+    message:
+      "Sorry, the page you are looking for doesn't exist or may have been moved. Try navigating back to the homepage or searching the blog.",
+    backHome: 'Go back home',
+    searchBlog: 'Search the blog',
+  },
+
   // Errors
   searchError: 'An error occurred while searching. Please try again.',
   loadError: 'Failed to load search index. Please refresh the page.',
