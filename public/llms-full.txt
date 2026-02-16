@@ -1,54 +1,12 @@
-# XergioAleX.com - Extended LLM Context
-
-## Site Identity
-- Name: XergioAleX.com
-- Owner: Sergio Alexander Florez Galeano
-- Alias: XergioAleX
-- Focus: Engineering leadership, product building, software systems, and technical communication.
-
-## Audience
-- Engineers and technical leads
-- Product builders and startup operators
-- Readers interested in practical software and infrastructure work
-
-## Content Model
-- Bilingual routing:
-  - English base routes (`/`, `/blog`, etc.)
-  - Spanish routes under `/es/`
-- Blog posts are authored with Astro Content Collections and support Markdown and MDX.
-
-## Blog Organization
-- Main listing: `/blog/`
-- Tag archives: `/blog/tag/{tag}/`
-- Paginated routes: `/blog/page/{n}/`
-- Equivalent Spanish routes under `/es/blog/`
-
-## Topic Areas
-- DevOps, CI/CD, and infrastructure workflows
-- Software engineering and architecture patterns
-- Robotics and autonomous systems projects
-- Portfolio project retrospectives
-- Personal lessons from building products and teams
-
-## Machine-Readable Endpoints
-- Sitemap index: `/sitemap-index.xml`
-- RSS: `/rss.xml`
-- Spanish RSS: `/es/rss.xml`
-- Search endpoint: `/api/posts.json`
-
-## Indexing Intent
-- Public pages and posts are intended to be indexed.
-- Use canonical URLs and alternate language links where provided.
-- Prefer route-level context (title, description, structured data) for summarization.
 # XergioAleX.com - Full Site Description
 
 > Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).
 
 ## About the Author
 
-Sergio Alexander Florez Galeano (XergioAleX) is a CTO and Cofounder at DailyBot (Y Combinator S21). He is a computer science engineer with a Master's degree in data science and a passionate entrepreneur with over 10 years of experience building digital businesses. He is also a speaker, researcher, athlete, trader, and self-described 100% geek.
+Sergio Alexander Florez Galeano (XergioAleX) is a CTO and Co-founder at DailyBot (Y Combinator S21). He is a computer science engineer with a Master's degree in data science and a passionate entrepreneur with over 10 years of experience building digital businesses. He is also a speaker, researcher, athlete, trader, and technology enthusiast.
 
-Based in Colombia, he has led the development of DailyBot, an innovative platform that connects teams globally, facilitating asynchronous collaboration and effective communication. He is also a cofounder and organizer of the Pereira Tech Talks community.
+Based in Colombia, he has led the development of DailyBot, an innovative platform that connects teams globally, facilitating asynchronous collaboration and effective communication. He is also a co-founder and organizer of the Pereira Tech Talks community.
 
 ### Social Profiles
 
@@ -61,32 +19,65 @@ Based in Colombia, he has led the development of DailyBot, an innovative platfor
 
 ### Pages
 
-- **Home** (https://site.xergioalex.com/) - Overview of Sergio's profile, work, and interests
-- **Blog** (https://site.xergioalex.com/blog/) - Articles about technology, programming, and more
-- **About** (https://site.xergioalex.com/about/) - Personal information and background
-- **Contact** (https://site.xergioalex.com/contact/) - Contact form
+- **Home** (/) - Overview of Sergio's profile, work, and interests
+- **Blog** (/blog/) - Articles about technology, programming, entrepreneurship, and more
+- **About** (/about/) - Personal background, passions, and quick facts
+- **CV** (/cv/) - Professional experience, education, skills, and languages
+- **Contact** (/contact/) - Contact form and social links
+- **Portfolio** (/portfolio/) - Software projects, open-source work, and case studies
+- **Tech Talks** (/tech-talks/) - Conference presentations, meetup talks, and workshops
+- **DailyBot** (/dailybot/) - The DailyBot story, Y Combinator journey, and product evolution
+- **Trading** (/trading/) - Trading journey, approach, philosophy, and market analysis
+- **Entrepreneur** (/entrepreneur/) - Entrepreneurship experiences and startup building
+- **Maker** (/maker/) - Hardware projects, robotics, and DIY builds
+- **Hobbies** (/hobbies/) - Sports, gaming, and other interests
+- **Foodie** (/foodie/) - Food experiences and culinary adventures
 
 ### Blog Categories/Tags
 
-- **Tech** - Tutorials, guides, and technical articles about software development
-- **Personal** - Articles about life experiences and personal reflections
-- **Talks** - Tech talks, slides, videos, and event recaps
-- **Trading** - Trading journal entries, market analysis, and learnings
+- **tech** — Tutorials, guides, and technical articles about software development
+- **talks** — Tech talks, slides, videos, and event recaps
+- **portfolio** — Project retrospectives, open-source contributions, and case studies
+- **dailybot** — DailyBot product stories, Y Combinator experience, startup journey
+- **trading** — Trading journal entries, market analysis, algorithmic trading learnings
+- **personal** — Articles about life experiences and personal reflections
 
 ### Languages
 
-All content is available in:
-- English (default): https://site.xergioalex.com/
-- Spanish: https://site.xergioalex.com/es/
+All pages and blog posts are available in:
+- English (default): /
+- Spanish: /es/
+
+Each language has its own RSS feed, blog listing, and full page set.
+
+## Content Model
+
+- Bilingual routing: English base routes (`/`, `/blog/`, etc.) and Spanish routes under `/es/`
+- Blog posts authored with Astro Content Collections supporting Markdown and MDX
+- Blog pagination: `/blog/page/{n}/` and `/es/blog/page/{n}/`
+- Tag archives: `/blog/tag/{tag}/` and `/es/blog/tag/{tag}/`
+- All pages use structured data (JSON-LD) for machine readability
+
+## Topic Areas
+
+- DevOps, CI/CD, and infrastructure workflows
+- Software engineering and architecture patterns
+- AI, machine learning, and deep learning
+- Blockchain and distributed systems
+- Robotics and autonomous systems projects
+- Entrepreneurship and startup building (DailyBot, Y Combinator)
+- Algorithmic trading and financial markets
+- Tech community building and knowledge sharing
+- Personal productivity and team collaboration
 
 ## Tech Stack
 
-The site is built with:
 - Astro (static site generator with islands architecture)
 - Svelte (interactive components)
 - TypeScript
 - Tailwind CSS (with dark mode support)
 - MDX (enhanced Markdown for blog posts)
+- Biome (linter and formatter)
 - Deployed on GitHub Pages
 
 ## Interests & Expertise
@@ -102,6 +93,21 @@ Sergio's areas of expertise and interest include:
 
 ## Feeds & Discovery
 
-- RSS Feed: https://site.xergioalex.com/rss.xml
-- Sitemap: https://site.xergioalex.com/sitemap-index.xml
-- robots.txt: https://site.xergioalex.com/robots.txt
+- RSS Feed (English): /rss.xml
+- RSS Feed (Spanish): /es/rss.xml
+- Sitemap: /sitemap-index.xml
+- Search API: /api/posts.json
+- robots.txt: /robots.txt
+- This file: /llms-full.txt
+- Short version: /llms.txt
+
+## Structured Data
+
+The site includes JSON-LD structured data on all pages:
+- WebSite schema (site-level identity)
+- Person schema (author identity and social profiles)
+- Organization schema (DailyBot association)
+- BlogPosting schema (individual blog posts with author, dates, tags)
+- BreadcrumbList schema (navigation hierarchy on all pages)
+- CollectionPage schema (blog listing pages)
+- ContactPage schema (contact page)

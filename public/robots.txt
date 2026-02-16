@@ -9,8 +9,9 @@ Disallow: /api/
 # Sitemap location
 Sitemap: https://site.xergioalex.com/sitemap-index.xml
 
-# LLM guidance file
+# LLM guidance files
 # https://site.xergioalex.com/llms.txt
+# https://site.xergioalex.com/llms-full.txt
 
 # AI/LLM Crawlers - Explicitly allowed
 User-agent: GPTBot
@@ -38,4 +39,13 @@ User-agent: PerplexityBot
 Allow: /
 
 User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
