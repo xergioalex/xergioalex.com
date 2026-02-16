@@ -66,17 +66,15 @@ function toggleMenu() {
         <a href="{prefix}/blog" class="nav-link">{t.nav.blog}</a>
         <div
           class="relative group"
-          role="menu"
-          tabindex="0"
           on:mouseenter={() => workOpen = true}
           on:mouseleave={() => workOpen = false}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
             aria-expanded={workOpen}
+            aria-haspopup="true"
             aria-controls="work-dropdown"
             type="button"
-            tabindex="0"
           >
             {t.nav.work}
             <svg
@@ -109,17 +107,15 @@ function toggleMenu() {
         </div>
         <div
           class="relative group"
-          role="menu"
-          tabindex="0"
           on:mouseenter={() => aboutOpen = true}
           on:mouseleave={() => aboutOpen = false}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
             aria-expanded={aboutOpen}
+            aria-haspopup="true"
             aria-controls="about-dropdown"
             type="button"
-            tabindex="0"
           >
             {t.nav.about}
             <svg
@@ -155,17 +151,15 @@ function toggleMenu() {
         <a href="{prefix}/contact" class="nav-link">{t.nav.contact}</a>
         <div
           class="relative group"
-          role="menu"
-          tabindex="0"
           on:mouseenter={() => languageOpen = true}
           on:mouseleave={() => languageOpen = false}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
             aria-expanded={languageOpen}
+            aria-haspopup="true"
             aria-controls="language-dropdown"
             type="button"
-            tabindex="0"
           >
             <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
             <svg
