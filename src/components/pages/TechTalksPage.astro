@@ -50,7 +50,7 @@ const { postsResult: posts } = await getBlogPosts({
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         {t.techTalksPage.timelineTitle}
       </h2>
-      <TechTalksTimeline client:load posts={posts} lang={lang} />
+      <TechTalksTimeline client:visible posts={posts} lang={lang} />
     </div>
   </section>
 
@@ -64,5 +64,5 @@ const { postsResult: posts } = await getBlogPosts({
     </div>
   </section>
 
-  <ScrollToTimeline client:load lang={lang} targetLabel={t.techTalksPage.timelineTitle} />
+  <ScrollToTimeline client:visible lang={lang} targetLabel={t.techTalksPage.timelineTitle} />
 </MainLayout>

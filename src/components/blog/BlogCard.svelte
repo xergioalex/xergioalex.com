@@ -99,6 +99,7 @@ $: displayDescription = searchResult
         width={400}
         height={192}
         class="w-full h-48 object-cover"
+        loading="lazy"
       />
       {#if isDev && (effectiveStatus !== 'published' || isDemo)}
         <div class="absolute top-2 right-2">
