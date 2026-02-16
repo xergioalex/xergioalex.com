@@ -1,8 +1,9 @@
 ---
+import JsonLd from '@/components/JsonLd.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import type { Language } from '@/lib/i18n';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -11,9 +12,51 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: t.contactPage.title,
+  description: t.contactPage.description,
+  url: `${siteUrl}${prefix}/contact`,
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Sergio Alexander Florez Galeano',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'general',
+      availableLanguage: ['English', 'Spanish'],
+    },
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${siteUrl}${prefix}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.contactPage.title,
+      item: `${siteUrl}${prefix}/contact`,
+    },
+  ],
+};
 ---
 
 <MainLayout lang={lang} title={t.contactPage.title} description={t.contactPage.description}>
+  <Fragment slot="head">
+    <JsonLd data={contactPageSchema} />
+    <JsonLd data={breadcrumbSchema} />
+  </Fragment>
   <PageHero
     title={t.contactPage.title}
     subtitle={t.contactPage.subtitle}

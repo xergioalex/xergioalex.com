@@ -1,4 +1,5 @@
 ---
+import JsonLd from '@/components/JsonLd.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
 import SkillBadge from '@/components/pages/SkillBadge.astro';
@@ -15,9 +16,32 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${siteUrl}${prefix}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.cvPage.title,
+      item: `${siteUrl}${prefix}/cv`,
+    },
+  ],
+};
 ---
 
 <MainLayout lang={lang} title={t.cvPage.title} description={t.cvPage.description}>
+  <Fragment slot="head">
+    <JsonLd data={breadcrumbSchema} />
+  </Fragment>
   <PageHero
     title={t.cvPage.title}
     subtitle={t.cvPage.subtitle}

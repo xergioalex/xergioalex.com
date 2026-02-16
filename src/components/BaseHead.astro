@@ -143,6 +143,7 @@ const alternateLocales = getSupportedLanguages()
     name: 'Sergio Alexander Florez Galeano',
     alternateName: 'XergioAleX',
     url: Astro.site?.href,
+    image: new URL('/images/profile.png', Astro.site).href,
     jobTitle: 'CTO & Co-founder',
     worksFor: {
       '@type': 'Organization',
@@ -155,6 +156,21 @@ const alternateLocales = getSupportedLanguages()
       'https://www.linkedin.com/in/xergioalex/',
       'https://x.com/XergioAleX',
       'https://www.instagram.com/xergioalex',
+    ],
+  }}
+/>
+
+<!-- JSON-LD: Organization (DailyBot) -->
+<JsonLd
+  data={{
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'DailyBot',
+    url: 'https://www.dailybot.com',
+    description: 'AI-powered platform for asynchronous team collaboration',
+    sameAs: [
+      'https://twitter.com/dailybotHQ',
+      'https://www.linkedin.com/company/dailybot',
     ],
   }}
 />
