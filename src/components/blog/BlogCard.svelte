@@ -120,7 +120,7 @@ $: displayDescription = searchResult
       {@html displayDescription}
     </p>
     <div class="flex flex-wrap justify-between items-center gap-2">
-      <time class="text-sm text-gray-500 dark:text-gray-400">
+      <time class="text-sm text-gray-600 dark:text-gray-300">
         {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',

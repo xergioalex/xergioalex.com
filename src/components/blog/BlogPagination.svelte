@@ -99,7 +99,7 @@ function getVisiblePages() {
 
       {#each visiblePages as page}
         {#if typeof page === 'string'}
-          <span class="px-2 text-gray-500 dark:text-gray-400" aria-hidden="true">...</span>
+          <span class="px-2 text-gray-600 dark:text-gray-300" aria-hidden="true">...</span>
         {:else if isSearchMode}
           <button
             on:click={() => handlePageChange(page)}
