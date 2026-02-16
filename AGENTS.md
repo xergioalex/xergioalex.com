@@ -27,6 +27,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 - **[Repository Standards](docs/STANDARDS.md)** - Canonical coding rules for all agents
 - **[Security Guide](docs/SECURITY.md)** - Static site security best practices
 - **[Performance Guide](docs/PERFORMANCE.md)** - Astro SSG optimization, image handling, caching
+- **[SEO Guide](docs/SEO.md)** - Meta tags, structured data, multilingual SEO, AEO, PageSpeed
 
 ### AI Agent Guides
 
@@ -304,6 +305,24 @@ The architecture is designed so adding a new language requires zero changes to c
 **Before any change, ask:** Does this add JS? Could it use a lighter hydration? Could CSS do this instead?
 
 **See [Performance Guide](docs/PERFORMANCE.md) for comprehensive optimization strategies.**
+
+### 8. Accessibility Standards (MANDATORY)
+
+**This site targets WCAG 2.1 AA compliance and Lighthouse Accessibility score of 100.** Every UI change MUST maintain accessibility.
+
+**Rules for all agents:**
+
+1. **Meet WCAG AA contrast ratios** — 4.5:1 for normal text, 3:1 for large text (>=18px or >=14px bold)
+2. **Use approved text color pairings** — `text-gray-600 dark:text-gray-300` for secondary text. **NEVER** use `text-gray-400`, `text-gray-500` alone, `dark:text-gray-400`, or `dark:text-gray-500`
+3. **Always include image dimensions** — every `<img>` must have `width` and `height` to prevent CLS
+4. **Use semantic HTML** — proper heading hierarchy (no skipped levels), landmark elements, button vs link
+5. **Provide text alternatives** — meaningful `alt` for informative images, `alt=""` for decorative
+6. **Support keyboard navigation** — all interactive elements must be focusable and operable
+7. **Use ARIA correctly** — disclosure pattern for nav dropdowns (not `role="menu"`), `role="progressbar"` for skill bars
+
+**Before any UI change, ask:** Does the text contrast pass 4.5:1? Are images dimensioned? Is the heading hierarchy correct?
+
+**See [Accessibility Guide](docs/ACCESSIBILITY.md) for complete standards and approved color pairings.**
 
 ## Shared Agent Coordination - CRITICAL
 
@@ -648,6 +667,10 @@ public/images/blog/
 19. Use `client:load` when `client:visible` or `client:idle` would suffice
 20. Add JS-based solutions when CSS can achieve the same result
 21. Forget to include image dimensions (causes layout shifts)
+22. Use `text-gray-400`, `dark:text-gray-400`, or `dark:text-gray-500` for body text (fails WCAG AA contrast)
+23. Use `role="menu"` for navigation dropdowns (use disclosure pattern instead)
+24. Skip heading levels (e.g., h1 -> h3 without h2)
+25. Forget `alt=""` on decorative images or `aria-label` on icon-only links
 
 ### ✅ DO:
 
@@ -673,6 +696,10 @@ public/images/blog/
 19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
 20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
 21. Prefer CSS-only solutions over JavaScript when possible
+22. Use `text-gray-600 dark:text-gray-300` for secondary/body text (WCAG AA compliant)
+23. Include `width` and `height` on all `<img>` elements
+24. Use `alt=""` for decorative images, meaningful alt for informative images
+25. Follow the [Accessibility Guide](docs/ACCESSIBILITY.md) for ARIA patterns and contrast rules
 
 ## Pre-Commit Checklist
 
@@ -687,6 +714,8 @@ public/images/blog/
 - [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only
 - [ ] Performance considered (lightest hydration, minimal JS, no layout shifts)
+- [ ] Accessibility: text contrast uses approved pairings (see [Accessibility Guide](docs/ACCESSIBILITY.md))
+- [ ] Accessibility: all images have `width`, `height`, and appropriate `alt` text
 - [ ] Commit message in English (conventional format)
 
 ## 🧠 Skills & Agents System
@@ -747,6 +776,8 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 - [Standards](docs/STANDARDS.md)
 - [Security](docs/SECURITY.md)
 - [Performance](docs/PERFORMANCE.md)
+- [SEO](docs/SEO.md)
+- [Accessibility](docs/ACCESSIBILITY.md)
 - [Blog Posts](docs/features/BLOG_POSTS.md)
 - [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md)
 - [AI Agent Onboarding](docs/AI_AGENT_ONBOARDING.md)

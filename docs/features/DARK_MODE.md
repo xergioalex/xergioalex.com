@@ -119,6 +119,20 @@ Apply dark styles using the `dark:` prefix:
 <div class="shadow-md dark:shadow-gray-900/50">
 ```
 
+## Contrast Requirements (WCAG AA)
+
+All text must meet WCAG AA contrast ratios in **both** light and dark modes:
+
+| Text Purpose | Light Mode | Dark Mode | Combined |
+|-------------|-----------|-----------|----------|
+| Primary text | `text-gray-900` | `dark:text-white` | `text-gray-900 dark:text-white` |
+| Secondary/body text | `text-gray-600` | `dark:text-gray-300` | `text-gray-600 dark:text-gray-300` |
+| Text on bg-main | N/A | `text-gray-300` | `text-gray-300` |
+
+**Never use:** `text-gray-400`, `dark:text-gray-400`, or `dark:text-gray-500` for body text — they fail WCAG AA 4.5:1 contrast on their respective backgrounds.
+
+**Full reference:** See [Accessibility Guide](../ACCESSIBILITY.md) for contrast ratio tables and all approved pairings.
+
 ## Common Patterns
 
 ### Card Component

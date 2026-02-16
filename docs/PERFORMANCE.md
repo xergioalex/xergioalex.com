@@ -267,10 +267,13 @@ npx lighthouse https://xergioalex.com --view
 
 ### Key Metrics to Track
 
-1. **Lighthouse Performance Score** - Target: 90+
-2. **Time to Interactive** - Target: < 3s
-3. **Total Blocking Time** - Target: < 200ms
-4. **Page Weight** - Keep under 1MB total
+1. **Lighthouse Performance Score** - Target: 100
+2. **Lighthouse Accessibility Score** - Target: 100
+3. **Lighthouse Best Practices Score** - Target: 100
+4. **Lighthouse SEO Score** - Target: 100
+5. **Time to Interactive** - Target: < 3s
+6. **Total Blocking Time** - Target: < 200ms
+7. **Page Weight** - Keep under 1MB total
 
 ## Performance Checklist
 
@@ -296,6 +299,20 @@ npx lighthouse https://xergioalex.com --view
 3. **Preload critical fonts**
 4. **Set image dimensions** to prevent CLS
 5. **Minimize third-party scripts**
+
+## Accessibility & Performance Overlap
+
+Several performance optimizations also improve accessibility scores:
+
+| Optimization | Performance Impact | Accessibility Impact |
+|-------------|-------------------|---------------------|
+| Image `width`/`height` attributes | Prevents CLS | Required by Lighthouse Accessibility |
+| `font-display: swap` | Prevents invisible text | Ensures text is always readable |
+| Skip-to-content link | — | Required for keyboard navigation |
+| Semantic HTML landmarks | — | Required for screen reader navigation |
+| Color contrast (WCAG AA) | — | Required for Lighthouse Accessibility 100 |
+
+**See [Accessibility Guide](ACCESSIBILITY.md) for complete accessibility standards.**
 
 ## Resources
 
