@@ -121,14 +121,18 @@ src/
 └── styles/
     └── global.css           # Global styles, Tailwind config
 
-public/                      # Static assets
-├── images/                  # Site images
+public/                      # Static assets (84 files, ~5.5 MB)
+├── favicon.svg              # Site favicon
+├── robots.txt               # Crawling rules
+├── llms.txt                 # LLM-readable site summary
+├── images/                  # Site images (~5.4 MB)
+│   ├── (root images)        # Brand, section, profile (10 files)
 │   └── blog/                # Blog images
 │       ├── posts/{slug}/    # Per-post image folders
 │       ├── shared/          # Shared images (placeholders)
 │       └── _staging/        # Incoming images (temp)
-├── icons/                   # Social icons
-├── fonts/                   # Custom fonts
+├── icons/                   # Social icons (paired light/dark)
+├── fonts/                   # Custom fonts (Atkinson Hyperlegible)
 └── scripts/
     └── global.theme.js      # Theme persistence
 
