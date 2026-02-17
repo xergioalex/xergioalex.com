@@ -81,6 +81,9 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 	crossorigin
 />
 
+<!-- Header logo preload (prevents alt text flash on navigation) -->
+<link rel="preload" href="/images/logo_small_version_white.svg" as="image" type="image/svg+xml" />
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
