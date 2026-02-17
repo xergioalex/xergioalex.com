@@ -3,10 +3,12 @@ export let words: string[] = [];
 export let speed = 80; // ms per character
 export let pause = 1500; // ms between words
 
-let display = '';
+// Static fallback: first word in initial HTML for LCP (avoids empty paint, shortens critical path)
+const firstWord = words?.[0] ?? '';
+let display = firstWord;
 let index = 0;
-let char = 0;
-let typing = true;
+let char = firstWord.length;
+let typing = false; // start in pause state so typeLoop continues naturally after hydrate
 
 async function typeLoop() {
   // Verify that words has content before starting
