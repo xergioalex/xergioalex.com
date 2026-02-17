@@ -1,36 +1,40 @@
+<div align="center">
+
 # XergioAleX.com
+
+**Personal website & blog** · CTO at DailyBot (YC S21) · Builder of 20+ products
+
+[![Code Check](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml/badge.svg)](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01?logo=astro)](https://astro.build)
+
+[🌐 Live Site](https://xergioalex.com) · [📖 Architecture](./docs/ARCHITECTURE.md) · [📋 Product Spec](./docs/PRODUCT_SPEC.md)
+
+</div>
+
+---
+
+## ✨ Overview
+
+A modern, fast, and fully bilingual personal website built with [Astro](https://astro.build). It serves as a professional portfolio, blog platform, and personal brand presence — showcasing experience, projects, and thought leadership.
 
 <p align="center">
   <img src="assets/homepageHero.png" alt="XergioAleX.com Homepage — Personal website for Sergio Alexander Florez" width="800" />
 </p>
 
-<p align="center">
-  <strong>Personal website & blog for Sergio Alexander Florez</strong><br />
-  CTO at DailyBot (YC S21) · Builder of 20+ products · Community founder
-</p>
+### Highlights
 
-<p align="center">
-  <a href="https://xergioalex.com">🌐 Live Site</a> ·
-  <a href="https://github.com/xergioalex/xergioalex.com">GitHub</a> ·
-  <a href="./docs/ARCHITECTURE.md">Architecture</a> ·
-  <a href="./docs/PRODUCT_SPEC.md">Product Spec</a>
-</p>
+| Feature | Description |
+| :------ | :---------- |
+| 🌐 **Bilingual** | Full English & Spanish with route parity |
+| 🌙 **Dark mode** | System-aware theme toggle with persistence |
+| ⚡ **Performance-first** | Static site, minimal JS, optimized assets, 99+ PageSpeed |
+| 🔍 **SEO-ready** | Sitemap, RSS, Open Graph, semantic HTML |
+| 📝 **Content Collections** | Typed blog posts with MDX support |
 
 ---
 
-## About
-
-A modern, fast, and fully bilingual personal website built with [Astro](https://astro.build). It serves as a professional portfolio, blog platform, and personal brand presence — showcasing experience, projects, and thought leadership.
-
-**Key highlights:**
-
-- **Bilingual** — English and Spanish with full route parity
-- **Dark mode** — System-aware theme toggle with persistence
-- **Performance-first** — Static site generation, minimal JS, optimized assets
-- **SEO-ready** — Sitemap, RSS feed, Open Graph, semantic HTML
-- **Content Collections** — Typed blog posts with MDX support
-
-## Tech Stack
+## 🛠 Tech Stack
 
 | Layer | Technology |
 | :---- | :--------- |
@@ -38,46 +42,54 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 | UI | [Svelte](https://svelte.dev) 5.x |
 | Styling | [Tailwind CSS](https://tailwindcss.com) 4.x |
 | Content | Markdown, MDX |
-| Hosting | Cloudflare Pages |
+| Hosting | [Cloudflare Pages](https://pages.cloudflare.com) |
 
-## Quick Start
+---
+
+## 🚀 Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-Visit [http://localhost:4321](http://localhost:4321) to preview.
+Visit **http://localhost:4321** to preview.
 
-## Commands
+---
+
+## 📜 Commands
 
 | Command | Description |
 | :------ | :---------- |
 | `npm run dev` | Start dev server at `localhost:4321` |
 | `npm run build` | Production build with type check |
-| `npm run build` | Production build (outputs to `dist/`) |
 | `npm run astro:preview` | Preview production build locally |
 | `npm run biome:check` | Lint and format check |
 | `npm run biome:fix` | Auto-fix lint and format issues |
 | `npm run astro:check` | TypeScript type checking |
+| `npm run test` | Run unit tests |
 
-## Project Structure
+---
+
+## 📁 Project Structure
 
 ```
 ├── public/           # Static assets (images, fonts, icons)
 ├── src/
 │   ├── components/   # Astro & Svelte components
 │   ├── content/      # Blog posts (Content Collections)
-│   ├── layouts/      # Page layouts
-│   ├── lib/          # Utilities, types, translations
-│   ├── pages/        # File-based routing
-│   └── styles/       # Global CSS
-├── docs/             # Project documentation
-├── assets/           # README and documentation assets
+│   ├── layouts/     # Page layouts
+│   ├── lib/         # Utilities, types, translations
+│   ├── pages/       # File-based routing
+│   └── styles/      # Global CSS
+├── docs/            # Project documentation
+├── assets/          # README and documentation assets
 └── astro.config.mjs
 ```
 
-## Documentation
+---
+
+## 📚 Documentation
 
 | Document | Description |
 | :------- | :---------- |
@@ -87,17 +99,21 @@ Visit [http://localhost:4321](http://localhost:4321) to preview.
 | [Standards](./docs/STANDARDS.md) | Coding conventions |
 | [Security](./docs/SECURITY.md) | Security best practices |
 
-## Deployment
+---
 
-The site is deployed to [Cloudflare Pages](https://pages.cloudflare.com) via the `dist/` directory:
+## 🚢 Deployment
 
-```bash
-npm run build
-```
+Deployed to **Cloudflare Pages** on every push to `main`:
 
-Then commit and push the `docs/` folder. Live at [xergioalex.com](https://xergioalex.com).
+1. Cloudflare triggers a build
+2. Runs `npm run build` (WebP generation + Astro build)
+3. Serves the `dist/` folder from its global CDN
 
-## License
+Live at **[xergioalex.com](https://xergioalex.com)**.
+
+---
+
+## 📄 License
 
 [MIT](LICENSE) — Sergio Alexander Florez Galeano
 
@@ -107,6 +123,6 @@ Then commit and push the `docs/` folder. Live at [xergioalex.com](https://xergio
 
 ---
 
-<p align="center">
+<div align="center">
   <sub>Built with Astro · Hosted on Cloudflare Pages</sub>
-</p>
+</div>
