@@ -259,7 +259,7 @@ const posts = await response.json();
 | **Improve image delivery** | WebP pipeline (`npm run images:webp`): homepage, blog shared, blog post heroes; `<picture>` with `source type="image/webp"` in BlogHeroImage, HomeSectionImage, PageHero |
 | **LCP request discovery** | Preload hero logo on homepage; `fetchpriority="high"` on above-fold images |
 | **Forced reflow** | MobileMenu: scroll lock deferred with `requestAnimationFrame`; `transition:fade` instead of `transition:slide` |
-| **Network dependency tree** | Typewriter uses `client:idle` instead of `client:load` to reduce critical path |
+| **Network dependency tree** | Typewriter replaced with CSS-only `TypewriterWords.astro` (zero JS, no critical chain) |
 
 ### Image Optimization Pipeline
 
@@ -267,7 +267,7 @@ The project uses a **WebP generation pipeline** that runs automatically before b
 
 | Script | Scope | Output |
 |--------|-------|--------|
-| `generate-webp-homepage.mjs` | `public/images/` (profile, dailybotyc, ia, techtalks, trading, foddie, bicycle) | `.webp` alongside originals; dailybotyc resized to 480px |
+| `generate-webp-homepage.mjs` | `public/images/` (profile, dailybotyc, ia, techtalks, trading, foddie, bicycle) | `.webp` alongside originals; dailybotyc and ia get responsive 280/360/480px variants for `srcset` |
 | `generate-webp-blog-shared.mjs` | `public/images/blog/shared/` (placeholders) | `.webp` at 400px width |
 | `generate-webp-blog-posts.mjs` | `public/images/blog/posts/{slug}/hero.*` | `hero.webp` at 1020px max width |
 

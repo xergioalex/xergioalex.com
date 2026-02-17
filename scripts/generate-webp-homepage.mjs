@@ -14,14 +14,16 @@ import sharp from 'sharp';
 const ROOT = resolve(import.meta.dirname, '..');
 const IMAGES_DIR = join(ROOT, 'public/images');
 
+const RESPONSIVE_SIZES = [280, 360, 480];
+
 const HOMEPAGE_IMAGES = [
-	{ file: 'profile.png', maxSize: null },
-	{ file: 'dailybotyc.png', maxSize: 480 },
-	{ file: 'ia.png', maxSize: null },
-	{ file: 'techtalks.png', maxSize: null },
-	{ file: 'trading.png', maxSize: null },
-	{ file: 'bicycle.png', maxSize: null },
-	{ file: 'foddie.png', maxSize: null },
+	{ file: 'profile.png', maxSize: null, responsive: false },
+	{ file: 'dailybotyc.png', maxSize: 480, responsive: true },
+	{ file: 'ia.png', maxSize: 480, responsive: true },
+	{ file: 'techtalks.png', maxSize: null, responsive: false },
+	{ file: 'trading.png', maxSize: null, responsive: false },
+	{ file: 'bicycle.png', maxSize: null, responsive: false },
+	{ file: 'foddie.png', maxSize: null, responsive: false },
 ];
 
 const WEBP_QUALITY = 82;
@@ -38,21 +40,13 @@ async function main() {
 
 	let totalSaved = 0;
 
-	for (const { file: filename, maxSize } of HOMEPAGE_IMAGES) {
+	for (const { file: filename, maxSize, responsive } of HOMEPAGE_IMAGES) {
 		const inputPath = join(IMAGES_DIR, filename);
+		const baseName = filename.replace(/\.(png|jpe?g)$/i, '');
 		const webpPath = inputPath.replace(/\.(png|jpe?g)$/i, '.webp');
 
 		if (!existsSync(inputPath)) continue;
-		// Skip if WebP exists and is newer than or equal to source
-		if (existsSync(webpPath)) {
-			const inputMtime = statSync(inputPath).mtimeMs;
-			const webpMtime = statSync(webpPath).mtimeMs;
-			if (webpMtime >= inputMtime) {
-				console.log(`  ${filename}: skipped (WebP exists and is up to date)`);
-				continue;
-			}
-		}
-
+		const inputMtime = statSync(inputPath).mtimeMs;
 		const ext = filename.toLowerCase().slice(-4);
 		if (!['.png', '.jpg', '.jpeg'].some((e) => ext.endsWith(e))) continue;
 
@@ -70,19 +64,45 @@ async function main() {
 					});
 				}
 			}
-			await pipeline.webp({ quality: WEBP_QUALITY }).toFile(webpPath);
-			const webpSize = statSync(webpPath).size;
-			const saved = inputSize - webpSize;
-			if (saved <= 0) {
-				const { unlinkSync } = await import('node:fs');
-				unlinkSync(webpPath);
-				console.log(`  ${filename}: skipped (WebP larger, kept original)`);
+
+			if (responsive) {
+				for (const size of RESPONSIVE_SIZES) {
+					const outPath = join(IMAGES_DIR, `${baseName}-${size}.webp`);
+					const skip =
+						existsSync(outPath) && statSync(outPath).mtimeMs >= inputMtime;
+					if (skip) {
+						console.log(`  ${baseName}-${size}.webp: skipped (up to date)`);
+						continue;
+					}
+					await sharp(inputPath)
+						.resize({ width: size, height: size, fit: 'inside', withoutEnlargement: true })
+						.webp({ quality: WEBP_QUALITY })
+						.toFile(outPath);
+					const webpSize = statSync(outPath).size;
+					totalSaved += inputSize - webpSize;
+					console.log(`  ${baseName}-${size}.webp: ${formatSize(webpSize)}`);
+				}
 			} else {
-				totalSaved += saved;
-				const resizeNote = maxSize ? `[resized to ${maxSize}px] ` : '';
-				console.log(
-					`  ${filename}: ${formatSize(inputSize)} -> ${formatSize(webpSize)} (saved ${formatSize(saved)}) ${resizeNote}`,
-				);
+				const skip =
+					existsSync(webpPath) && statSync(webpPath).mtimeMs >= inputMtime;
+				if (skip) {
+					console.log(`  ${filename}: skipped (WebP exists and is up to date)`);
+					continue;
+				}
+				await pipeline.webp({ quality: WEBP_QUALITY }).toFile(webpPath);
+				const webpSize = statSync(webpPath).size;
+				const saved = inputSize - webpSize;
+				if (saved <= 0) {
+					const { unlinkSync } = await import('node:fs');
+					unlinkSync(webpPath);
+					console.log(`  ${filename}: skipped (WebP larger, kept original)`);
+				} else {
+					totalSaved += saved;
+					const resizeNote = maxSize ? `[resized to ${maxSize}px] ` : '';
+					console.log(
+						`  ${filename}: ${formatSize(inputSize)} -> ${formatSize(webpSize)} (saved ${formatSize(saved)}) ${resizeNote}`,
+					);
+				}
 			}
 		} catch (err) {
 			console.error(`  ERROR ${filename}: ${err.message}`);

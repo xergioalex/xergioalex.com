@@ -1,0 +1,108 @@
+---
+/**
+ * CSS-only rotating words effect. Zero JavaScript — avoids critical request chain.
+ * Replaces Typewriter.svelte for performance (PageSpeed: reduce chain length).
+ * Respects prefers-reduced-motion: shows first word only when motion is reduced.
+ */
+export interface Props {
+  words: string[];
+}
+
+const { words } = Astro.props;
+---
+
+<div class="typewriter-words" role="marquee" aria-live="polite">
+  <span class="typewriter-inner">
+    {words?.map((word, i) => (
+      <span
+        class="typewriter-word"
+        data-index={i}
+        style={`--word-index: ${i}; --total-words: ${words?.length ?? 1};`}
+      >
+        {word}
+      </span>
+    ))}
+  </span>
+</div>
+
+<style>
+  .typewriter-words {
+    display: inline-block;
+    white-space: nowrap;
+    border-right: 2px solid rgb(96 165 250);
+    padding-right: 0.25rem;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
+    min-width: 22ch;
+  }
+  @media (min-width: 640px) {
+    .typewriter-words {
+      font-size: 1.125rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .typewriter-words {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-height: 760px) {
+    .typewriter-words {
+      font-size: 0.875rem;
+    }
+  }
+
+  .typewriter-inner {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Cursor blink */
+  .typewriter-words {
+    animation: cursor-blink 1s step-end infinite;
+  }
+
+  @keyframes cursor-blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  /* Reduced motion: show first word only, no animation */
+  @media (prefers-reduced-motion: reduce) {
+    .typewriter-word {
+      animation: none !important;
+    }
+    .typewriter-word:not([data-index='0']) {
+      display: none;
+    }
+    .typewriter-word[data-index='0'] {
+      opacity: 1;
+    }
+  }
+
+  /* Rotating words: each word fades in for (totalWords * 4s) / totalWords = 4s per word */
+  .typewriter-word {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    animation: word-rotate calc(var(--total-words) * 4s) infinite;
+    animation-delay: calc(var(--word-index) * 4s);
+  }
+
+  .typewriter-word[data-index='0'] {
+    position: relative;
+  }
+
+  @keyframes word-rotate {
+    0%,
+    20% {
+      opacity: 1;
+    }
+    25%,
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
