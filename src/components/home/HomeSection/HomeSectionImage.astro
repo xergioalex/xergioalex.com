@@ -1,4 +1,7 @@
 ---
+import { existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+
 interface Props {
   image: string;
 }
@@ -6,10 +9,13 @@ interface Props {
 const { image } = Astro.props;
 const isRaster = /\.(png|jpe?g)$/i.test(image);
 const webpSrc = isRaster ? image.replace(/\.(png|jpe?g)$/i, '.webp') : null;
+const publicDir = resolve(process.cwd(), 'public');
+const webpPath = webpSrc ? join(publicDir, webpSrc.replace(/^\//, '')) : null;
+const webpExists = webpPath ? existsSync(webpPath) : false;
 ---
 
 <div class="relative">
-  {isRaster && webpSrc ? (
+  {isRaster && webpSrc && webpExists ? (
     <picture>
       <source srcset={webpSrc} type="image/webp" />
       <img
