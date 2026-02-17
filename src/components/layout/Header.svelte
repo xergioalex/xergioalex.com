@@ -54,11 +54,11 @@ function toggleMenu() {
       class="font-extrabold text-2xl md:text-3xl tracking-tight text-blue-600 select-none"
     >
       <img
-        class="h-9"
+        class="h-7 w-auto md:h-8"
         src="/images/logo_small_version_white.svg"
         alt="XergioAleX"
-        width={36}
-        height={36}
+        width={952}
+        height={168}
       />
     </a>
     <!-- Desktop menu -->
