@@ -14,7 +14,9 @@
     "biome:fix:unsafe": "biome check --write --unsafe",
     "ncu:check": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "echo 'Running tests...'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
     "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
   },
