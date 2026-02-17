@@ -1,108 +1,170 @@
 ---
 /**
- * CSS-only rotating words effect. Zero JavaScript — avoids critical request chain.
- * Replaces Typewriter.svelte for performance (PageSpeed: reduce chain length).
- * Respects prefers-reduced-motion: shows first word only when motion is reduced.
+ * CSS-only typewriter effect with character-by-character reveal.
+ * Each word is independently centered via a hidden sizer span.
+ * Uses max-width + overflow:hidden + CSS steps() for typing simulation.
+ * Cursor (border-right) blinks during hold, stays solid during type/erase.
+ * Zero JavaScript — avoids critical request chain.
+ * Respects prefers-reduced-motion: shows first word only.
  */
 export interface Props {
   words: string[];
 }
 
 const { words } = Astro.props;
+const n = words?.length ?? 1;
+const cycleDuration = n * 4;
+const cursorColor = 'rgb(96 165 250)';
+
+function fmt(num: number): string {
+  return num.toFixed(2);
+}
+
+function generateWordAnimation(word: string, index: number): string {
+  const chars = word.length;
+  const slotPct = 100 / n;
+  const start = index * slotPct;
+  const typeEnd = start + slotPct * 0.38;
+  const holdEnd = start + slotPct * 0.68;
+  const eraseEnd = start + slotPct * 0.92;
+  const slotEnd = (index + 1) * slotPct;
+  const maxW = `${chars + 1}ch`;
+
+  const holdDur = holdEnd - typeEnd;
+  const b1off = typeEnd + holdDur * 0.3;
+  const b1on = typeEnd + holdDur * 0.45;
+  const b2off = typeEnd + holdDur * 0.62;
+  const b2on = typeEnd + holdDur * 0.8;
+
+  return `
+[data-tw="${index}"] > .tw-text {
+  animation: tw-${index} ${cycleDuration}s infinite;
+}
+@keyframes tw-${index} {
+  0%, ${fmt(start)}% {
+    max-width: 0;
+    border-right-color: transparent;
+  }
+  ${fmt(start + 0.1)}% {
+    max-width: 0;
+    border-right-color: ${cursorColor};
+    animation-timing-function: steps(${chars}, end);
+  }
+  ${fmt(typeEnd)}% {
+    max-width: ${maxW};
+    border-right-color: ${cursorColor};
+  }
+  ${fmt(b1off)}% { max-width: ${maxW}; border-right-color: transparent; }
+  ${fmt(b1on)}% { max-width: ${maxW}; border-right-color: ${cursorColor}; }
+  ${fmt(b2off)}% { max-width: ${maxW}; border-right-color: transparent; }
+  ${fmt(b2on)}% { max-width: ${maxW}; border-right-color: ${cursorColor}; }
+  ${fmt(holdEnd)}% {
+    max-width: ${maxW};
+    border-right-color: ${cursorColor};
+    animation-timing-function: steps(${chars}, end);
+  }
+  ${fmt(eraseEnd)}% {
+    max-width: 0;
+    border-right-color: ${cursorColor};
+  }
+  ${fmt(eraseEnd + 0.1)}% {
+    max-width: 0;
+    border-right-color: transparent;
+  }
+  ${fmt(slotEnd)}%, 100% {
+    max-width: 0;
+    border-right-color: transparent;
+  }
+}`;
+}
+
+const dynamicCSS =
+  words?.map((w, i) => generateWordAnimation(w, i)).join('\n') ?? '';
 ---
 
-<div class="typewriter-words" role="marquee" aria-live="polite">
-  <span class="typewriter-inner">
-    {words?.map((word, i) => (
-      <span
-        class="typewriter-word"
-        data-index={i}
-        style={`--word-index: ${i}; --total-words: ${words?.length ?? 1};`}
-      >
-        {word}
-      </span>
-    ))}
-  </span>
+<div class="tw-container" role="marquee" aria-live="polite">
+  {words?.map((word, i) => (
+    <span class="tw-word" data-tw={String(i)}>
+      <span class="tw-sizer" aria-hidden="true">{word}</span>
+      <span class="tw-text">{word}</span>
+    </span>
+  ))}
 </div>
 
+<Fragment set:html={`<style>${dynamicCSS}</style>`} />
+
 <style>
-  .typewriter-words {
-    display: inline-block;
-    white-space: nowrap;
-    border-right: 2px solid rgb(96 165 250);
-    padding-right: 0.25rem;
+  .tw-container {
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    min-height: 1.5em;
     color: white;
     font-weight: 700;
     font-size: 1rem;
     text-shadow: 0 1px 2px rgb(0 0 0 / 0.5);
-    min-width: 22ch;
   }
   @media (min-width: 640px) {
-    .typewriter-words {
+    .tw-container {
       font-size: 1.125rem;
     }
   }
   @media (min-width: 768px) {
-    .typewriter-words {
+    .tw-container {
       font-size: 1.5rem;
     }
   }
   @media (max-height: 760px) {
-    .typewriter-words {
+    .tw-container {
       font-size: 0.875rem;
     }
   }
 
-  .typewriter-inner {
-    position: relative;
+  .tw-word {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  /* Hidden duplicate keeps .tw-word at full text width for stable centering */
+  .tw-sizer {
+    visibility: hidden;
     display: inline-block;
+    white-space: nowrap;
   }
 
-  /* Cursor blink */
-  .typewriter-words {
-    animation: cursor-blink 1s step-end infinite;
+  /* Visible text with typewriter reveal */
+  .tw-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 0;
+    border-right: 2px solid transparent;
   }
 
-  @keyframes cursor-blink {
-    50% {
-      border-color: transparent;
-    }
-  }
-
-  /* Reduced motion: show first word only, no animation */
   @media (prefers-reduced-motion: reduce) {
-    .typewriter-word {
+    .tw-text {
       animation: none !important;
     }
-    .typewriter-word:not([data-index='0']) {
+    .tw-word:not([data-tw='0']) {
       display: none;
     }
-    .typewriter-word[data-index='0'] {
-      opacity: 1;
+    .tw-word[data-tw='0'] {
+      position: relative;
+      left: auto;
+      transform: none;
     }
-  }
-
-  /* Rotating words: each word fades in for (totalWords * 4s) / totalWords = 4s per word */
-  .typewriter-word {
-    position: absolute;
-    left: 0;
-    opacity: 0;
-    animation: word-rotate calc(var(--total-words) * 4s) infinite;
-    animation-delay: calc(var(--word-index) * 4s);
-  }
-
-  .typewriter-word[data-index='0'] {
-    position: relative;
-  }
-
-  @keyframes word-rotate {
-    0%,
-    20% {
-      opacity: 1;
+    .tw-word[data-tw='0'] > .tw-text {
+      max-width: none;
+      border-right: none;
+      position: relative;
     }
-    25%,
-    100% {
-      opacity: 0;
+    .tw-word[data-tw='0'] > .tw-sizer {
+      display: none;
     }
   }
 </style>
