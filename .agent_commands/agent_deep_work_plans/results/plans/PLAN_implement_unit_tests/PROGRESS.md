@@ -48,6 +48,13 @@
 - Deep key helper utility extracts all nested keys for structural comparison
 - Re-exports (isValidLanguage, getDefaultLanguage) verified
 
+### Task 8: Write Svelte Component Tests for BlogCard and BlogPagination
+- BlogPagination: 17 tests covering rendering, ellipsis logic, prev/next, URL generation, search mode
+- BlogCard: 14 tests covering rendering, hero image, tags, status badges, preview mode
+- Fixed Svelte 5 compatibility: added `conditions: ['browser']` in vitest resolve config
+- Svelte 5 with `@testing-library/svelte@5.3.1` requires browser condition to avoid server-side mount error
+- Total: 31 component tests, all passing
+
 ## Key Decisions
 - Using Vitest 4.0.18 (latest, compatible with Vite-based Astro build)
 - Node.js 24.13.0 runtime

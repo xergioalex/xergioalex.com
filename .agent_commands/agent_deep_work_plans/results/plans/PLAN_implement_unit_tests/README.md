@@ -68,7 +68,7 @@ The agent must execute tasks **in order** and **one at a time**.
 - [x] Task 7: Write unit tests for translations/
       See: [7.task_unit_tests_translations.md](./7.task_unit_tests_translations.md)
 
-- [ ] Task 8: Write Svelte component tests for BlogCard and BlogPagination
+- [x] Task 8: Write Svelte component tests for BlogCard and BlogPagination
       See: [8.task_svelte_component_tests.md](./8.task_svelte_component_tests.md)
 
 - [ ] Task 9: Update testing documentation
@@ -118,8 +118,8 @@ The agent must execute tasks **in order** and **one at a time**.
 
 ## 7. Plan Status / Notes
 
-- **Current status:** In progress, Task 8
-- **Completed:** 7/11
+- **Current status:** In progress, Task 9
+- **Completed:** 8/11
 
 ## Analysis Outputs
 
