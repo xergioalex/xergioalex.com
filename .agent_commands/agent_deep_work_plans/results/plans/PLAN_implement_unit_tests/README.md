@@ -62,7 +62,7 @@ The agent must execute tasks **in order** and **one at a time**.
 - [x] Task 5: Write unit tests for i18n.ts
       See: [5.task_unit_tests_i18n.md](./5.task_unit_tests_i18n.md)
 
-- [ ] Task 6: Write unit tests for search.ts
+- [x] Task 6: Write unit tests for search.ts
       See: [6.task_unit_tests_search.md](./6.task_unit_tests_search.md)
 
 - [ ] Task 7: Write unit tests for translations/
@@ -118,8 +118,8 @@ The agent must execute tasks **in order** and **one at a time**.
 
 ## 7. Plan Status / Notes
 
-- **Current status:** In progress, Task 6
-- **Completed:** 5/11
+- **Current status:** In progress, Task 7
+- **Completed:** 6/11
 
 ## Analysis Outputs
 

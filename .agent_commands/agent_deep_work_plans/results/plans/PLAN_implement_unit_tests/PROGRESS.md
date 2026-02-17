@@ -34,6 +34,13 @@
 - Tests for: getSupportedLanguages, getLanguageConfig, getDefaultLanguage, isValidLanguage, isDefaultLanguage, getUrlPrefix, getDateLocale, getOGLocale, getFlag, getLocalizedUrl, stripLangPrefix, getLangFromUrl, getAlternateUrls
 - Edge cases: case sensitivity, empty strings, root paths, trailing slashes, nested paths, missing prefixes
 
+### Task 6: Write Unit Tests for search.ts
+- 26 tests covering all 4 exported functions + indirect escapeHtml testing
+- Tests for: highlightMatches (9), getHighlightedField (4), createSearchIndex (3), searchPosts (10)
+- XSS prevention verified: HTML special chars escaped in both matched and unmatched text
+- Fuse.js integration tested with real instances and mock SearchablePost data
+- Edge cases: empty queries, short queries, whitespace, no matches, limit parameter, unsorted indices
+
 ## Key Decisions
 - Using Vitest 4.0.18 (latest, compatible with Vite-based Astro build)
 - Node.js 24.13.0 runtime
