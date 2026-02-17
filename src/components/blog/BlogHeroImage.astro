@@ -1,0 +1,48 @@
+---
+/**
+ * Blog hero image with WebP when available.
+ * Uses <picture> for raster images (png/jpg) to serve WebP.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  src,
+  alt,
+  width = 600,
+  height = 160,
+  class: className = '',
+  loading = 'lazy',
+} = Astro.props;
+const isRaster = /\.(png|jpe?g)$/i.test(src);
+const webpSrc = isRaster ? src.replace(/\.(png|jpe?g)$/i, '.webp') : null;
+---
+
+{isRaster && webpSrc ? (
+  <picture>
+    <source srcset={webpSrc} type="image/webp" />
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      class={className}
+      loading={loading}
+    />
+  </picture>
+) : (
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    loading={loading}
+  />
+)}

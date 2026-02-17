@@ -341,7 +341,7 @@ interface APIError {
 
 ## Rate Limiting
 
-GitHub Pages doesn't support rate limiting. If needed, consider:
+Cloudflare Pages can use Workers for rate limiting. If needed, consider:
 
 - Moving to a host with edge functions (Vercel, Netlify)
 - Adding a CDN with rate limiting (Cloudflare)

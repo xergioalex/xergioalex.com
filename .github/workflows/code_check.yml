@@ -46,3 +46,5 @@ jobs:
         run: npm run biome:check
       - name: Step 4 - 🧪🧪🧪 Run tests
         run: npm run test
+      - name: Step 5 - 📦 Build (includes prebuild → images:webp)
+        run: npm run build

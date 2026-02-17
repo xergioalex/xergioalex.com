@@ -25,8 +25,7 @@ public/
 │       ├── posts/{slug}/              # Per-post image folders (10 folders)
 │       ├── shared/                    # Shared placeholders (6 files, 200 KB)
 │       └── _staging/                  # Drop zone for new images (README only)
-└── scripts/
-    └── global.theme.js                # Theme persistence (dark mode init)
+└── scripts/                           # (empty; theme script is inlined in layouts)
 ```
 
 ## Format Breakdown
@@ -148,12 +147,12 @@ public/images/blog/
 
 | Script | Purpose |
 |--------|---------|
-| `global.theme.js` | Theme initialization — checks `localStorage` for saved theme, falls back to system preference, applies `dark` class to `<html>` |
+| (inline in layouts) | Theme script inlined — checks `localStorage`, applies `dark` class to `<html>` (no external file) |
 
 Loaded inline in `MainLayout.astro` to prevent flash of wrong theme:
 
 ```html
-<script is:inline src="/scripts/global.theme.js"></script>
+<script is:inline>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');else{document.documentElement.classList.remove('dark');localStorage.setItem('theme','light');}})();</script>
 ```
 
 ## Blog Image Conventions

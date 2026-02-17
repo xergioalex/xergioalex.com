@@ -103,12 +103,24 @@ function getMonthName(date: Date): string {
           >
             {#if post.data.heroImage}
               <a href={`${prefix}/blog/${slug}/`} class="block">
-                <img
-                  src={post.data.heroImage}
-                  alt={post.data.title}
-                  class="w-full h-44 object-cover"
-                  loading="lazy"
-                />
+                {#if post.data.heroImage.match(/\.(png|jpe?g)$/i)}
+                  <picture>
+                    <source srcset={post.data.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      class="w-full h-44 object-cover"
+                      loading="lazy"
+                    />
+                  </picture>
+                {:else}
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    class="w-full h-44 object-cover"
+                    loading="lazy"
+                  />
+                {/if}
               </a>
             {/if}
             <div class="p-5">

@@ -25,14 +25,14 @@ const { title, subtitle, description, ctaText, ctaLink, cta2Text, cta2Link } =
       {ctaText && (
         <a
           href={ctaLink}
-          class="inline-block border-b-2 border-secondary text-secondary font-bold text-lg sm:text-xl lg:text-2xl hover:text-secondary-800 transition"
+          class="inline-block border-b-2 border-secondary text-gray-900 dark:text-white font-bold text-lg sm:text-xl lg:text-2xl hover:text-secondary transition"
           set:html={ctaText}
         />
       )}
       {cta2Text && (
         <a
           href={cta2Link}
-          class="inline-block border-b-2 border-secondary text-secondary font-bold text-lg sm:text-xl lg:text-2xl hover:text-secondary-800 transition"
+          class="inline-block border-b-2 border-secondary text-gray-900 dark:text-white font-bold text-lg sm:text-xl lg:text-2xl hover:text-secondary transition"
           set:html={cta2Text}
         />
       )}

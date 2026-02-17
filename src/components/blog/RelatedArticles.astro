@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import { getPostSlug } from '@/lib/blog';
 import { getLocalizedUrl, type Language } from '@/lib/i18n';
@@ -34,13 +35,12 @@ const blogPrefix = getLocalizedUrl('/blog', lang);
             <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
               {post.data.heroImage ? (
                 <a href={href} class="block">
-                  <img
+                  <BlogHeroImage
                     src={post.data.heroImage}
                     alt={post.data.title}
                     width={400}
                     height={160}
                     class="h-40 w-full object-cover"
-                    loading="lazy"
                   />
                 </a>
               ) : (

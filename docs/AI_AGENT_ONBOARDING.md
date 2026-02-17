@@ -18,7 +18,7 @@ Quick start guide for AI coding assistants (Cursor AI, Claude Code, ChatGPT, Gem
 - **Personal website and blog** for XergioAleX.com
 - **Static Site Generation (SSG)** - builds to static HTML
 - **Multilingual** - English (default) and Spanish
-- **Deployed to** GitHub Pages
+- **Deployed to** Cloudflare Pages
 
 ## Repository Structure
 
@@ -108,7 +108,7 @@ npm run biome:fix        # Auto-fix
 npm run astro:check      # Type check
 
 # Deployment
-npm run build:ghpages    # Build for GitHub Pages
+npm run build            # Production build (Cloudflare Pages)
 ```
 
 ## Key Patterns
