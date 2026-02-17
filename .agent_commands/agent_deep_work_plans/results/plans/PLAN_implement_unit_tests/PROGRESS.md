@@ -55,6 +55,14 @@
 - Svelte 5 with `@testing-library/svelte@5.3.1` requires browser condition to avoid server-side mount error
 - Total: 31 component tests, all passing
 
+### Task 9: Update Testing Documentation
+- Rewrote `docs/TESTING_GUIDE.md` with actual Vitest setup, structure, conventions, and examples
+- Updated `AGENTS.md` section 5 from "NOT YET CONFIGURED" to actual testing info
+- Added testing commands to Quick Commands section
+- Added `npm run test` to pre-commit checklist
+- Updated Common Mistakes item 8 to reflect tests are now configured
+- Updated Testing Guide reference description in docs section
+
 ## Key Decisions
 - Using Vitest 4.0.18 (latest, compatible with Vite-based Astro build)
 - Node.js 24.13.0 runtime

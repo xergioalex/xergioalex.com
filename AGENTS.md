@@ -19,7 +19,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 
 - **[Product Specification](docs/PRODUCT_SPEC.md)** - Product vision, features, and website goals
 - **[Architecture Guide](docs/ARCHITECTURE.md)** - Astro components, Content Collections, Svelte integration
-- **[Testing Guide](docs/TESTING_GUIDE.md)** - Test conventions and future testing setup
+- **[Testing Guide](docs/TESTING_GUIDE.md)** - Vitest setup, test conventions, and writing tests
 - **[Development Commands](docs/DEVELOPMENT_COMMANDS.md)** - npm scripts, Astro CLI, build workflows
 
 ### Standards & Security
@@ -213,15 +213,21 @@ npm run biome:fix:unsafe
 
 **❌ DO NOT use ESLint or Prettier** - This project uses Biome exclusively.
 
-### 5. Testing (NOT YET CONFIGURED)
+### 5. Testing
 
-Testing is not yet set up in this project. When adding tests in the future:
+This project uses **Vitest** for unit and component testing with **@testing-library/svelte** for Svelte components.
 
-- Consider **Vitest** for unit tests
-- Consider **Playwright** for E2E tests
-- Test file naming: `*.test.ts` or `*.spec.ts`
+```bash
+npm run test               # Run all tests (single run)
+npm run test:watch         # Watch mode
+npm run test:coverage      # Run with coverage report
+```
 
-Currently, `npm run test` is a placeholder.
+- Test files use `*.test.ts` naming convention
+- Tests live in `tests/unit/lib/` (utilities) and `tests/unit/components/` (Svelte)
+- Mock data in `tests/fixtures/posts.ts`
+- Coverage target: 80%+ on `src/lib/`
+- See **[Testing Guide](docs/TESTING_GUIDE.md)** for full details
 
 ### 6. Multilingual Content Synchronization (MANDATORY)
 
@@ -354,6 +360,11 @@ npm run biome:check        # Check linting and formatting
 npm run biome:fix          # Auto-fix issues
 npm run biome:fix:unsafe   # Fix with unsafe transformations
 npm run astro:check        # TypeScript type checking
+
+# Testing
+npm run test               # Run unit tests
+npm run test:watch         # Watch mode
+npm run test:coverage      # With coverage report
 
 # Package Management
 npm run ncu:check          # Check for package updates
@@ -653,7 +664,7 @@ public/images/blog/
 5. Skip the `client:*` directive for interactive Svelte components
 6. Hardcode text that should be translatable
 7. Forget to update Content Collection schemas after changing frontmatter
-8. Use `npm run test` expecting real tests (not configured yet)
+8. Forget to run `npm run test` before committing (tests are configured)
 9. Import `MainLayout` directly in page wrappers (use the Page wrapper pattern — `MainLayout` belongs inside `*Page.astro` components)
 10. Forget dark mode support in new components
 11. Create content (pages, blog posts) without covering all active languages
@@ -704,6 +715,7 @@ public/images/blog/
 ## Pre-Commit Checklist
 
 - [ ] All code in English
+- [ ] `npm run test` passes (all unit tests)
 - [ ] `npm run biome:check` passes
 - [ ] `npm run astro:check` passes (no TypeScript errors)
 - [ ] `npm run build` succeeds

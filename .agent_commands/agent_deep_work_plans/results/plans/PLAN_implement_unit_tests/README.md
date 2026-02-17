@@ -71,7 +71,7 @@ The agent must execute tasks **in order** and **one at a time**.
 - [x] Task 8: Write Svelte component tests for BlogCard and BlogPagination
       See: [8.task_svelte_component_tests.md](./8.task_svelte_component_tests.md)
 
-- [ ] Task 9: Update testing documentation
+- [x] Task 9: Update testing documentation
       See: [9.task_update_testing_docs.md](./9.task_update_testing_docs.md)
 
 - [ ] Task 10: Skills & Agents Discovery
@@ -118,8 +118,8 @@ The agent must execute tasks **in order** and **one at a time**.
 
 ## 7. Plan Status / Notes
 
-- **Current status:** In progress, Task 9
-- **Completed:** 8/11
+- **Current status:** In progress, Task 10
+- **Completed:** 9/11
 
 ## Analysis Outputs
 
