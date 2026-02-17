@@ -1,5 +1,5 @@
 # robots.txt for XergioAleX.com
-# https://site.xergioalex.com
+# https://www.xergioalex.com
 
 # Default: allow all crawlers
 User-agent: *
@@ -7,11 +7,11 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://site.xergioalex.com/sitemap-index.xml
+Sitemap: https://www.xergioalex.com/sitemap-index.xml
 
 # LLM guidance files
-# https://site.xergioalex.com/llms.txt
-# https://site.xergioalex.com/llms-full.txt
+# https://www.xergioalex.com/llms.txt
+# https://www.xergioalex.com/llms-full.txt
 
 # AI/LLM Crawlers - Explicitly allowed
 User-agent: GPTBot
