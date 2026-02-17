@@ -1,6 +1,12 @@
 <script lang="ts">
 import { onDestroy, onMount } from 'svelte';
 import { slide } from 'svelte/transition';
+import {
+  getLanguageConfig,
+  getSupportedLanguages,
+  getUrlPrefix,
+  stripLangPrefix,
+} from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 export let lang: string = 'en';
@@ -13,7 +19,9 @@ let lockedScrollY = 0;
 let isScrollLocked = false;
 
 $: t = getTranslations(lang);
-$: prefix = lang === 'es' ? '/es' : '';
+$: prefix = getUrlPrefix(lang);
+$: currentLangConfig = getLanguageConfig(lang);
+$: otherLanguages = getSupportedLanguages().filter((l) => l !== lang);
 
 function lockBodyScroll() {
   if (isScrollLocked) return;
@@ -46,19 +54,26 @@ $: if (typeof document !== 'undefined') {
   }
 }
 
-// Language switch URL - computed on mount from current page path
-let switchUrl: string = lang === 'es' ? '/' : '/es';
+// Alternate language URLs - computed on mount from current page path
+let alternateLanguageUrls: {
+  lang: string;
+  url: string;
+  flag: string;
+  nativeName: string;
+}[] = [];
 
 onMount(() => {
   const path = window.location.pathname;
-  if (lang === 'es') {
-    switchUrl =
-      path === '/es' || path === '/es/'
-        ? '/'
-        : path.replace(/^\/es/, '') || '/';
-  } else {
-    switchUrl = path === '/' ? '/es' : `/es${path}`;
-  }
+  const basePath = stripLangPrefix(path);
+
+  alternateLanguageUrls = otherLanguages.map((l) => {
+    const config = getLanguageConfig(l);
+    const url =
+      basePath === '/'
+        ? config.urlPrefix || '/'
+        : `${config.urlPrefix}${basePath}`;
+    return { lang: l, url, flag: config.flag, nativeName: config.nativeName };
+  });
 });
 
 onDestroy(() => {
@@ -155,11 +170,7 @@ onDestroy(() => {
       aria-controls="language-dropdown"
       type="button"
     >
-      {#if lang === "es"}
-        <span role="img" aria-label="Spanish">🇪🇸</span> ES
-      {:else}
-        <span role="img" aria-label="English">🇬🇧</span> EN
-      {/if}
+      <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
       <svg
         class="w-5 h-5 transition-transform duration-200"
         class:rotate-180={languageOpen}
@@ -177,15 +188,11 @@ onDestroy(() => {
         class="flex flex-col items-center gap-2 mt-1"
         transition:slide={{ duration: 200 }}
       >
-        {#if lang === "es"}
-          <a href={switchUrl} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
-            <span role="img" aria-label="English">🇬🇧</span> English
+        {#each alternateLanguageUrls as alt}
+          <a href={alt.url} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
+            <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.nativeName}
           </a>
-        {:else}
-          <a href={switchUrl} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
-            <span role="img" aria-label="Spanish">🇪🇸</span> Español
-          </a>
-        {/if}
+        {/each}
       </div>
     {/if}
   </div>

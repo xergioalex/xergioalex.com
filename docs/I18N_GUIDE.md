@@ -286,23 +286,46 @@ src/pages/
 
 Every English page must have a Spanish equivalent under `es/`, and vice versa.
 
-### Page Pattern
+### Page Wrapper Pattern
 
-Each page declares its language and uses translations:
+All content pages use the **Page wrapper pattern**. Pages in `src/pages/` are ultra-minimal 3-line routing wrappers. The real logic (`MainLayout`, translations, SEO metadata, content) lives inside `*Page.astro` components in `src/components/pages/`.
+
+**Shared page component** (`src/components/pages/AboutPage.astro`):
 
 ```astro
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getTranslations } from '@/lib/translations';
+import { getUrlPrefix } from '@/lib/i18n';
+import type { Language } from '@/lib/i18n';
 
-const lang: string = 'en'; // or 'es' for Spanish pages
+interface Props { lang: Language; }
+const { lang } = Astro.props;
 const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
 ---
 
-<MainLayout lang={lang} title={t.blogTitle} description={t.blogDescription}>
-  <!-- Page content using t.* for all user-visible text -->
+<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
+  <section>
+    <h1>{t.aboutPage.title}</h1>
+    <!-- Content using t.* for text and prefix for URLs -->
+  </section>
 </MainLayout>
 ```
+
+**Thin page wrapper** (`src/pages/about.astro`):
+
+```astro
+---
+import AboutPage from '@/components/pages/AboutPage.astro';
+---
+<AboutPage lang="en" />
+```
+
+**Key rules:**
+- Page components handle `MainLayout` internally — wrappers never import `MainLayout`
+- The `lang` prop is passed as a **string literal** (`"en"`, `"es"`), not a variable
+- For a new page: create 1 `*Page.astro` component + N thin wrappers (one per language)
 
 ### Component i18n Pattern
 
@@ -322,20 +345,20 @@ $: t = getTranslations(lang);
 The `lang` prop flows through the component hierarchy:
 
 ```
-Page (lang="en"|"es")
-  → MainLayout (lang)
-    → Header (lang)
-    → Footer (lang)
-  → BlogHeader (lang)
-    → uses getTranslations(lang)
-  → BlogCard (lang)
-    → uses getTranslations(lang)
+Page wrapper (src/pages/about.astro)
+  → *Page.astro component (lang="en"|"es")
+    → MainLayout (lang)
+      → Header (lang)
+      → Footer (lang)
+    → Child components (lang)
+      → uses getTranslations(lang)
 ```
 
 **Rules:**
 - Never hardcode user-visible text in component templates
 - Always use `getTranslations(lang)` for translatable strings
 - Always pass `lang` to child components that display text
+- Never import `MainLayout` in page wrappers — it belongs inside `*Page.astro` components
 
 ## Date Formatting
 

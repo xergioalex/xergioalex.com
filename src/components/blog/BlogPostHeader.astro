@@ -1,6 +1,7 @@
 ---
 import FormattedDate from '@/components/FormattedDate.astro';
-import { getTranslations, type Language } from '@/lib/translations';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
 
 interface Props {
   title: string;
@@ -25,7 +26,7 @@ const {
 } = Astro.props;
 
 const t = getTranslations(lang);
-const langPrefix = lang === 'es' ? '/es' : '';
+const langPrefix = getUrlPrefix(lang);
 ---
 
 {/* Banner layout: Full-width image above title (landscape/wide images) */}

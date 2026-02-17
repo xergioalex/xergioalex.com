@@ -1,37 +1,5 @@
 ---
-import BlogContainer from '@/components/blog/BlogContainer.astro';
-import JsonLd from '@/components/JsonLd.astro';
-import MainLayout from '@/layouts/MainLayout.astro';
-import { getBlogPosts } from '@/lib/blog';
-import { getTranslations, type Language } from '@/lib/translations';
-import type { BlogPostsResultType } from '@/lib/types';
-
-const lang: Language = 'es';
-const t = getTranslations(lang);
-const isDev = import.meta.env.DEV;
-
-const blogPostsResult: BlogPostsResultType = await getBlogPosts({
-  lang: lang,
-  includeHidden: isDev,
-});
-
-const collectionPageData = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: t.blogTitle,
-  description: t.blogDescription,
-  inLanguage: 'es',
-  url: new URL('/es/blog/', Astro.site).href,
-};
+import BlogListingPage from '@/components/pages/blog/BlogListingPage.astro';
 ---
 
-<MainLayout
-  lang={lang}
-  title={t.blogTitle}
-  description={t.blogDescription}
->
-  <Fragment slot="head">
-    <JsonLd data={collectionPageData} />
-  </Fragment>
-  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isDev={isDev} />
-</MainLayout>
+<BlogListingPage lang="es" />

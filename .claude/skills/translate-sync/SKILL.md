@@ -1,6 +1,6 @@
 ---
 name: translate-sync
-description: Synchronize content between English and Spanish versions. Use proactively when content needs bilingual synchronization.
+description: Synchronize content between English and Spanish versions. Use proactively when content needs multilingual synchronization.
 # === Universal (Claude Code + Cursor + Codex) ===
 disable-model-invocation: false
 # === Claude Code specific ===
@@ -17,13 +17,13 @@ max-loc: 500
 
 ## Objective
 
-Synchronize content between English (en) and Spanish (es) versions of pages, blog posts, and translation strings. Ensures bilingual parity across the entire site.
+Synchronize content between English (en) and Spanish (es) versions of pages, blog posts, and translation strings. Ensures multilingual parity across the entire site.
 
 ## Non-Goals
 
 - Does NOT create new pages or posts from scratch (use `add-page` or `add-blog-post`)
 - Does NOT modify the translation system architecture
-- Does NOT handle languages other than English and Spanish
+- Does NOT add new languages to `src/lib/i18n.ts` (only syncs existing active languages)
 - Does NOT change Content Collection schemas or `content.config.ts`
 
 ## Tier Classification
@@ -41,13 +41,13 @@ Synchronize content between English (en) and Spanish (es) versions of pages, blo
 ### Optional Parameters
 
 - `$TARGET_LANG`: Target language to sync to (default: auto-detect the opposite language from source path)
-- `$CONTENT_TYPE`: Type of content: `page`, `blog`, `translations` (default: auto-detect from file path)
+- `$CONTENT_TYPE`: Type of content: `page`, `blog`, `translation-strings` (default: auto-detect from file path)
 
 ## Prerequisites
 
 - [ ] Source file exists and is valid
 - [ ] For blog posts: understand Content Collection schema in `content.config.ts`
-- [ ] For translation strings: understand `src/lib/translations.ts` structure
+- [ ] For translation strings: understand `src/lib/translations/` modular structure
 
 ## Steps
 
@@ -61,7 +61,8 @@ Determine the source language and content type from the file path:
 | `src/pages/**` (not es/) | English | page |
 | `src/content/blog/es/**` | Spanish | blog |
 | `src/content/blog/en/**` | English | blog |
-| `src/lib/translations.ts` | Both | translations |
+| `src/lib/translations/en.ts` | English | translation-strings |
+| `src/lib/translations/es.ts` | Spanish | translation-strings |
 
 Set target language to the opposite of source.
 
@@ -89,17 +90,17 @@ Translate the content following these rules:
 - Preserve all markdown formatting, headings, lists, links
 - Do NOT translate code blocks, terminal commands, or technical identifiers
 
-**For pages (.astro):**
-- Set the correct `lang` value: `const lang: Language = 'en';` or `'es';`
-- Ensure `getTranslations(lang)` is used for all text
-- Translate any inline text content
-- Preserve all imports, component structure, and layout
-- Update the `lang` prop on `MainLayout`
+**For page wrappers (.astro in `src/pages/`):**
+- Pages use the Page wrapper pattern: thin 3-line wrappers that import a shared `*Page.astro` component
+- Set the correct `lang` string literal: `lang="en"` or `lang="es"`
+- The shared component in `src/components/pages/` handles `MainLayout`, translations, and content internally
+- When syncing a page, verify both the wrapper and the shared component exist
 
-**For translations.ts:**
-- Find keys that exist in one language but not the other
+**For translation strings (en.ts/es.ts):**
+- Find keys that exist in one locale file but not the other
 - Add the missing translations maintaining the same nested structure
-- Ensure both `en` and `es` objects have identical key structures
+- Ensure both `en.ts` and `es.ts` export objects with identical key structures
+- Update `src/lib/translations/types.ts` if new interface fields are needed
 
 ### Step 4: Validate Synchronization
 
@@ -123,7 +124,7 @@ npm run build
 ### Source
 - File: {source_file}
 - Language: {en|es}
-- Type: {page|blog|translations}
+- Type: {page|blog|translation-strings}
 
 ### Target
 - File: {target_file}
@@ -224,21 +225,22 @@ $SOURCE_FILE: src/pages/es/about.astro
 
 **Input:**
 ```
-$SOURCE_FILE: src/lib/translations.ts
-$CONTENT_TYPE: translations
+$SOURCE_FILE: src/lib/translations/en.ts
+$CONTENT_TYPE: translation-strings
 ```
 
 **Actions:**
-1. Detect: translations file
-2. Scan for keys present in `en` but missing in `es` (and vice versa)
-3. Add missing translations
-4. Validate and report
+1. Detect: English translation file
+2. Compare with `src/lib/translations/es.ts`
+3. Find keys present in `en.ts` but missing in `es.ts`
+4. Add missing translations to `es.ts`
+5. Validate and report
 
-**Updates:** `src/lib/translations.ts`
+**Updates:** `src/lib/translations/es.ts`
 
 ## Related
 
-- [add-blog-post](../add-blog-post/SKILL.md) - Create bilingual blog posts
-- [add-page](../add-page/SKILL.md) - Create bilingual pages
+- [add-blog-post](../add-blog-post/SKILL.md) - Create multilingual blog posts
+- [add-page](../add-page/SKILL.md) - Create multilingual pages
 - [add-component](../add-component/SKILL.md) - Create components with i18n support
 - `i18n-guardian` agent - Translation quality specialist

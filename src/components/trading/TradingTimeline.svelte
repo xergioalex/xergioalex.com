@@ -1,4 +1,5 @@
 <script lang="ts">
+import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface PostData {
@@ -17,7 +18,7 @@ export let posts: PostData[] = [];
 export let lang: string = 'en';
 
 $: t = getTranslations(lang);
-$: prefix = lang === 'es' ? '/es' : '';
+$: prefix = getUrlPrefix(lang);
 
 function getPostSlug(postId: string): string {
   const parts = postId.split('/');

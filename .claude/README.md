@@ -68,7 +68,7 @@ This project includes reusable **Skills** (procedures) and **Agents** (specializ
 | reviewer | 2 | Thorough PR review; Astro/Svelte patterns, dark mode, quality |
 | executor | 2 | Follows plans step by step; implements and validates |
 | security-auditor | 2 | Static site security; API routes, secrets, client exposure |
-| i18n-guardian | 2 | Translation quality specialist; bilingual consistency enforcer |
+| i18n-guardian | 2 | Translation quality specialist; multilingual consistency enforcer |
 | architect | 3 | Component design, routing, Content Collections planning |
 
 ### Quick Commands

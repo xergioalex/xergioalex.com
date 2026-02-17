@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import FormattedDate from '@/components/FormattedDate.astro';
 import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
-import type { Language } from '@/lib/translations';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -21,8 +21,8 @@ const sectionSurface =
     ? 'bg-gray-50 dark:bg-gray-800'
     : 'bg-white dark:bg-gray-900';
 
-const viewAllText =
-  lang === 'es' ? 'Ver todos los artículos' : 'View all posts';
+const prefix = getUrlPrefix(lang as Language);
+const viewAllText = t.homeSections.viewAllPosts;
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
@@ -44,7 +44,7 @@ const posts = allPosts
       {
         posts.map((post) => (
           <a
-            href={`${lang === 'es' ? '/es' : ''}/blog/${getPostSlug(post.id)}/`}
+            href={`${prefix}/blog/${getPostSlug(post.id)}/`}
             class="block bg-white dark:bg-gray-900 rounded-xl shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden"
           >
             {post.data.heroImage && (
@@ -72,7 +72,7 @@ const posts = allPosts
     </div>
     <div class="mt-8 text-center">
       <a
-        href={`${lang === 'es' ? '/es' : ''}/blog`}
+        href={`${prefix}/blog`}
         class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
       >
         {viewAllText} &rarr;

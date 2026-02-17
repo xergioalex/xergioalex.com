@@ -1,5 +1,11 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+import {
+  getLanguageConfig,
+  getSupportedLanguages,
+  getUrlPrefix,
+  stripLangPrefix,
+} from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 import MobileMenu from './MobileMenu.svelte';
 
@@ -10,21 +16,30 @@ let aboutOpen = false;
 let languageOpen = false;
 
 $: t = getTranslations(lang);
-$: prefix = lang === 'es' ? '/es' : '';
+$: prefix = getUrlPrefix(lang);
+$: currentLangConfig = getLanguageConfig(lang);
+$: otherLanguages = getSupportedLanguages().filter((l) => l !== lang);
 
-// Language switch URL - computed on mount from current page path
-let switchUrl: string = lang === 'es' ? '/' : '/es';
+// Alternate language URLs - computed on mount from current page path
+let alternateLanguageUrls: {
+  lang: string;
+  url: string;
+  flag: string;
+  nativeName: string;
+}[] = [];
 
 onMount(() => {
   const path = window.location.pathname;
-  if (lang === 'es') {
-    switchUrl =
-      path === '/es' || path === '/es/'
-        ? '/'
-        : path.replace(/^\/es/, '') || '/';
-  } else {
-    switchUrl = path === '/' ? '/es' : `/es${path}`;
-  }
+  const basePath = stripLangPrefix(path);
+
+  alternateLanguageUrls = otherLanguages.map((l) => {
+    const config = getLanguageConfig(l);
+    const url =
+      basePath === '/'
+        ? config.urlPrefix || '/'
+        : `${config.urlPrefix}${basePath}`;
+    return { lang: l, url, flag: config.flag, nativeName: config.nativeName };
+  });
 });
 
 function toggleMenu() {
@@ -152,11 +167,7 @@ function toggleMenu() {
             type="button"
             tabindex="0"
           >
-            {#if lang === "es"}
-              <span role="img" aria-label="Español">🇪🇸</span> ES
-            {:else}
-              <span role="img" aria-label="English">🇬🇧</span> EN
-            {/if}
+            <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
             <svg
               class="w-4 h-4 transition-transform duration-200"
               style="transform: rotate({languageOpen ? '180deg' : '0deg'});"
@@ -178,15 +189,11 @@ function toggleMenu() {
               class="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
-              {#if lang === "es"}
-                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
-                  <span role="img" aria-label="English">🇬🇧</span> EN
+              {#each alternateLanguageUrls as alt}
+                <a href={alt.url} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
+                  <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.lang.toUpperCase()}
                 </a>
-              {:else}
-                <a href={switchUrl} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
-                  <span role="img" aria-label="Español">🇪🇸</span> ES
-                </a>
-              {/if}
+              {/each}
             </div>
           {/if}
         </div>

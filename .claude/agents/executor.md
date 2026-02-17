@@ -151,13 +151,16 @@ npm run dev
 4. Add `client:load` or `client:visible` when using
 5. Run validation
 
-### Creating a Page
+### Creating a Page (Page Wrapper Pattern)
 
-1. Create `.astro` file in `src/pages/`
-2. Import and use `MainLayout`
-3. Pass `lang`, `title`, `description` props
-4. Add content in `main-container`
-5. Run validation
+1. Create shared component in `src/components/pages/{Name}Page.astro`
+   - Accept `lang: Language` prop
+   - Handle `MainLayout`, `getTranslations(lang)`, and content internally
+2. Create thin wrappers in `src/pages/{name}.astro` and `src/pages/es/{name}.astro`
+   - Each wrapper is 3 lines: import + render with `lang` as string literal
+   - Wrappers never import `MainLayout`
+3. Add translation keys to `src/lib/translations/` for all languages if needed
+4. Run validation
 
 ## Stop Conditions
 

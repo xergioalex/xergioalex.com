@@ -7,24 +7,52 @@ This directory contains utility functions, constants, types, and enums used thro
 ```
 lib/
 ├── blog.ts        # Blog-related utility functions
+├── i18n.ts        # Centralized i18n config & utilities
 ├── constances.ts  # Site-wide constants
 ├── enum.ts        # Shared enumerations
 ├── search.ts      # Fuse.js search utilities
-├── translations.ts # i18n translation system
+├── translations/  # Modular i18n translation system
+│   ├── index.ts   # Public API barrel: getTranslations(), re-exports
+│   ├── types.ts   # SiteTranslations interface + all sub-interfaces
+│   ├── en.ts      # English translations
+│   └── es.ts      # Spanish translations
 └── types.ts       # TypeScript type definitions
 ```
 
 ## File Overview
 
-### translations.ts
+### translations/
 
-Centralized translation system for the entire site.
+Modular centralized translation system for the entire site.
 
-#### Types
+#### Directory Structure
+
+```
+src/lib/translations/
+├── index.ts    # Public API barrel: getTranslations(), re-exports
+├── types.ts    # SiteTranslations interface + all sub-interfaces
+├── en.ts       # English translations
+└── es.ts       # Spanish translations
+```
+
+#### Public API (index.ts)
+
+The `index.ts` file exports the public API:
+
+| Export | Description |
+|--------|-------------|
+| `getTranslations(lang)` | Get translation object for language |
+| `isValidLanguage(lang)` | Check if language code is valid (re-exported from `../i18n.ts`) |
+| `getDefaultLanguage()` | Returns `'en'` (re-exported from `../i18n.ts`) |
+| `Language` type | Re-exported from `../i18n.ts` |
+| `SiteTranslations` type | Re-exported from `./types.ts` |
+| Sub-interfaces | Re-exported from `./types.ts` for convenience |
+
+#### Types (types.ts)
+
+Contains the `SiteTranslations` interface and all sub-interfaces:
 
 ```typescript
-export type Language = 'en' | 'es';
-
 export interface SiteTranslations {
   siteTitle: string;
   siteDescription: string;
@@ -40,13 +68,21 @@ export interface SiteTranslations {
 }
 ```
 
-#### Functions
+#### Locale Files (en.ts, es.ts)
 
-| Function | Description |
-|----------|-------------|
-| `getTranslations(lang)` | Get translation object for language |
-| `isValidLanguage(lang)` | Check if language code is valid |
-| `getDefaultLanguage()` | Returns `'en'` |
+Each locale file exports a complete `SiteTranslations` object:
+
+```typescript
+// src/lib/translations/en.ts
+import type { SiteTranslations } from './types';
+
+export const en: SiteTranslations = {
+  siteTitle: 'XergioAleX',
+  siteDescription: 'Personal website and blog',
+  nav: { /* ... */ },
+  // ... all keys
+};
+```
 
 #### Usage
 
@@ -61,18 +97,22 @@ console.log(t.noResults('test')); // "No se encontraron resultados para 'test'"
 console.log(t.resultsFound(5));   // "5 resultados encontrados"
 ```
 
-#### Available Keys
+#### Adding a New Language
 
-| Key | English | Spanish |
-|-----|---------|---------|
-| `title` | "Articles" | "Artículos" |
-| `searchPlaceholder` | "Search articles..." | "Buscar artículos..." |
-| `noResults(q)` | "No results found for '{q}'" | "No se encontraron..." |
-| `resultsFound(n)` | "{n} results found" | "{n} resultados..." |
-| `previous` | "Previous" | "Anterior" |
-| `next` | "Next" | "Siguiente" |
-| `loadError` | "Failed to load..." | "Error al cargar..." |
-| `retry` | "Try again" | "Intentar de nuevo" |
+1. Create `src/lib/translations/{lang}.ts` (e.g., `pt.ts`)
+2. Export a complete `SiteTranslations` object (use `en.ts` as reference)
+3. Import it in `src/lib/translations/index.ts`:
+   ```typescript
+   import { pt } from './pt';
+   const translations: Record<Language, SiteTranslations> = { en, es, pt };
+   ```
+4. Update the `Language` type in `src/lib/i18n.ts`
+
+#### Adding New Translation Keys
+
+1. Add the field to the `SiteTranslations` interface in `types.ts`
+2. Add the translation to both `en.ts` and `es.ts` (and any other active locales)
+3. Use the new key via `getTranslations(lang)` in components
 
 ---
 
@@ -334,34 +374,36 @@ export function formatDate(date: Date, locale: string = 'en-US'): string {
 
 ### Adding a New Translation
 
-1. Add the key to `SiteTranslations` interface
-2. Add translations for both `en` and `es`
+1. Add the key to `SiteTranslations` interface in `types.ts`
+2. Add translations to both `en.ts` and `es.ts`
 
 ```typescript
-// In translations.ts
+// In src/lib/translations/types.ts
 export interface SiteTranslations {
   // ... existing keys
   newKey: string;
 }
 
-const translations = {
-  en: {
-    // ... existing
-    newKey: 'English text',
-  },
-  es: {
-    // ... existing
-    newKey: 'Spanish text',
-  },
+// In src/lib/translations/en.ts
+export const en: SiteTranslations = {
+  // ... existing
+  newKey: 'English text',
+};
+
+// In src/lib/translations/es.ts
+export const es: SiteTranslations = {
+  // ... existing
+  newKey: 'Spanish text',
 };
 ```
 
 ### Adding a New Language
 
-1. Add to `Language` type: `type Language = 'en' | 'es' | 'fr';`
-2. Add complete translation object in `translations` const
-3. Create routes at `/[lang]/blog/`
-4. Add content folder `src/content/blog/[lang]/`
+1. Add to `Language` type in `src/lib/i18n.ts`: `type Language = 'en' | 'es' | 'fr';`
+2. Create new locale file `src/lib/translations/fr.ts` exporting a complete `SiteTranslations` object
+3. Import it in `src/lib/translations/index.ts` and add to the `translations` record
+4. Create routes at `/[lang]/blog/`
+5. Add content folder `src/content/blog/[lang]/`
 
 ---
 

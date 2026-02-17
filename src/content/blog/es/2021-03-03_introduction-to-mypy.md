@@ -1,18 +1,34 @@
 ---
-title: 'Introduccion a MyPy'
-description: 'Agregando verificacion de tipos al codigo Python con MyPy — mejorando la calidad del codigo y detectando errores temprano.'
-pubDate: '2021-03-03'
-heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
-heroLayout: 'minimal'
-tags: ['talks', 'tech']
+title: "Introducción a MyPy"
+description: "Agregando type checking a Python con MyPy — menos carga cognitiva, detectar bugs temprano y reducir tests unitarios triviales."
+pubDate: "2021-03-03"
+heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
+heroLayout: "minimal"
+tags: ["talks", "tech"]
 ---
 
-Charla presentada por Sergio Alexander Florez Galeano.
+En marzo de 2021 di una charla sobre MyPy — el type checker estático de Python. El objetivo era mostrar por qué agregar tipos al código Python no es solo pedantería: reduce la carga cognitiva, detecta errores temprano y puede reemplazar muchos tests unitarios triviales.
 
-## Slides
-
-[Ver slides](https://slides.com/xergioalex/introduction-to-mypy)
+**¿Por qué MyPy?** Primero, menos carga cognitiva. Cuando los parámetros y valores de retorno están claramente declarados y verificados, no tienes que adivinar. Sin sorpresas. Segundo, detectas errores temprano — tipos de retorno incorrectos, checks de `None` olvidados, redeclaraciones accidentales — el type checker te lo dice antes de runtime. Tercero, validación de datos: usamos [attrs](https://pypi.org/project/attrs/) para data classes con atributos tipados y checks en runtime (Pydantic es otra gran opción). Cuarto, evitas tests unitarios triviales — el type checking elimina la necesidad de escribir y mantener tests que solo verifican tipos.
 
 ---
 
-*Este post sera actualizado con mas detalles proximamente.*
+## ¿Qué tipos puedes usar?
+
+**Tipos básicos:** `int`, `str`, `dict`, `list`, `set`, `float`, etc.
+
+**Tipado avanzado (Python 3.5+):** Generics (`TypeVar`, `Generic`), `Callable`, compositores (`Union`, `Optional`), colecciones (`Tuple`, `Dict`, `MutableMapping`, `List`, `NamedTuple`, etc.).
+
+---
+
+## Integrando MyPy en tu flujo
+
+La charla incluyó una demo de integrar MyPy en un flujo de desarrollo — ejecutándolo en CI, en pre-commit hooks, o como parte de la configuración de tu editor.
+
+---
+
+## Slides y referencias
+
+- [Ver slides](https://slides.com/xergioalex/introduction-to-mypy)
+- [attrs](https://pypi.org/project/attrs/)
+- [Pydantic](https://pydantic-docs.helpmanual.io/)
