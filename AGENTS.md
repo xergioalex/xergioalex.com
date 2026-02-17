@@ -93,8 +93,12 @@ src/
 │       ├── tech.md
 │       └── personal.md
 ├── content.config.ts        # Collection schemas (Zod)
+├── integrations/            # Custom Astro integrations
+│   └── exclude-internal.ts  # Removes /internal from production builds
 ├── layouts/
-│   └── MainLayout.astro     # Base page layout
+│   ├── MainLayout.astro     # Base page layout (public pages)
+│   ├── InternalLayout.astro # Internal Hub layout (dev-only, self-contained)
+│   └── ShowcaseLayout.astro # Design System layout (dev-only, self-contained)
 ├── lib/                     # Utility functions
 │   ├── blog.ts              # Post fetching, pagination
 │   ├── i18n.ts              # Centralized i18n config & utilities
@@ -116,6 +120,11 @@ src/
 │   │   ├── [...slug].astro  # Dynamic post pages
 │   │   ├── page/[page].astro
 │   │   └── tag/[tag].astro
+│   ├── internal/            # Internal Hub (dev-only, excluded from production)
+│   │   ├── index.astro      # Hub landing page
+│   │   ├── sitemap.astro    # Auto-generated sitemap
+│   │   ├── ui/              # UI Design System Showcase (11 pages)
+│   │   └── guide/           # Staff Guide (3 pages)
 │   ├── api/
 │   │   └── posts.json.ts    # Search API endpoint
 │   └── rss.xml.js           # RSS feed
@@ -536,6 +545,36 @@ src/pages/
 
 Page components in `src/components/pages/` receive `lang` and handle all translations internally.
 
+### 7. Internal Hub (Dev-Only Documentation Portal)
+
+**The Internal Hub is a dev-only documentation portal at `/internal/` that is automatically excluded from production builds.** It provides a visual design system reference, development guides, and an auto-generated sitemap for developers and AI agents.
+
+**Three pillars:**
+1. **UI Design System Showcase** (`/internal/ui/`) — Visual reference for all design tokens and components (colors, typography, spacing, radius, buttons, badges, cards, forms, layouts, brand)
+2. **Staff Guide** (`/internal/guide/`) — Development documentation (tech stack, file structure, naming conventions)
+3. **Auto-Generated Sitemap** (`/internal/sitemap`) — Build-time discovery of all site pages
+
+**Key architecture rules:**
+- **Dev-only:** Visible at `http://localhost:4321/internal/` during `npm run dev`. **Never deployed to production.**
+- **Three-layer production exclusion:**
+  1. Post-build deletion via `src/integrations/exclude-internal.ts` (`astro:build:done` hook)
+  2. Sitemap XML filter in `astro.config.mjs` (excludes `/internal/` URLs)
+  3. `<meta name="robots" content="noindex, nofollow">` on all internal pages
+- **Self-contained layouts:** `InternalLayout.astro` and `ShowcaseLayout.astro` have their own `<html>/<head>/<body>`. They **NEVER** use `MainLayout`.
+- **English-only:** No multilingual variants, no translation keys needed.
+- **No Page Wrapper pattern:** Internal pages are standalone `.astro` files in `src/pages/internal/`, not thin wrappers.
+- **Staging builds:** Set `INCLUDE_INTERNAL=true` environment variable to keep internal pages in build output.
+
+**When to use each layout:**
+- `InternalLayout` — Hub landing page, sitemap, and Staff Guide pages. Uses `section` and optional `subsection` props for sidebar navigation.
+- `ShowcaseLayout` — UI Design System pages. Uses `section` prop for flat navigation across design categories.
+
+**Adding new internal pages:**
+1. Create an `.astro` file in `src/pages/internal/` (or a subdirectory)
+2. Import `InternalLayout` or `ShowcaseLayout` (never `MainLayout`)
+3. The page automatically appears in the auto-generated sitemap
+4. The page is automatically excluded from production builds
+
 ## Documentation Standards
 
 ### When to Update Documentation
@@ -682,6 +721,9 @@ public/images/blog/
 23. Use `role="menu"` for navigation dropdowns (use disclosure pattern instead)
 24. Skip heading levels (e.g., h1 -> h3 without h2)
 25. Forget `alt=""` on decorative images or `aria-label` on icon-only links
+26. Use `MainLayout` for internal hub pages (use `InternalLayout` or `ShowcaseLayout` instead)
+27. Add multilingual variants for internal pages (they are English-only, dev-only)
+28. Forget that `/internal/` pages are excluded from production builds — never reference them from public pages
 
 ### ✅ DO:
 
@@ -711,6 +753,9 @@ public/images/blog/
 23. Include `width` and `height` on all `<img>` elements
 24. Use `alt=""` for decorative images, meaningful alt for informative images
 25. Follow the [Accessibility Guide](docs/ACCESSIBILITY.md) for ARIA patterns and contrast rules
+26. Use `InternalLayout` or `ShowcaseLayout` for new internal hub pages (never `MainLayout`)
+27. Browse `/internal/` in dev mode to reference design tokens and project documentation
+28. Add new design system pages to `/internal/ui/` when establishing new UI patterns
 
 ## Pre-Commit Checklist
 
