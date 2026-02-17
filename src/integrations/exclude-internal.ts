@@ -25,8 +25,19 @@ export default function excludeInternal(): AstroIntegration {
         try {
           await rm(internalDir, { recursive: true, force: true });
           logger.info('Removed /internal pages from build output');
-        } catch {
-          // Directory may not exist, that's fine
+        } catch (err: unknown) {
+          const code =
+            err instanceof Error && 'code' in err
+              ? (err as NodeJS.ErrnoException).code
+              : undefined;
+          if (code === 'ENOENT') {
+            // Directory does not exist — nothing to remove
+            return;
+          }
+          logger.error(
+            `Failed to remove /internal: ${err instanceof Error ? err.message : String(err)}`
+          );
+          throw err;
         }
       },
     },
