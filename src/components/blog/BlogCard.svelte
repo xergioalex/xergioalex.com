@@ -128,7 +128,7 @@ $: displayDescription = searchResult
         <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
       </div>
     {/if}
-    <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+    <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">
       <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {@html displayTitle}
       </a>

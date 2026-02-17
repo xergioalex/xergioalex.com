@@ -100,10 +100,10 @@ onDestroy(() => {
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
-    <a href={prefix || '/'} class="nav-link text-2xl text-center">{t.nav.home}</a>
-    <a href="{prefix}/blog" class="nav-link text-2xl text-center">{t.nav.blog}</a>
+    <a href={prefix || '/'} class="nav-link text-xl text-center">{t.nav.home}</a>
+    <a href="{prefix}/blog" class="nav-link text-xl text-center">{t.nav.blog}</a>
     <button
-      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      class="nav-link text-xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => workOpen = !workOpen}
       aria-expanded={workOpen}
       aria-controls="work-dropdown"
@@ -127,14 +127,14 @@ onDestroy(() => {
         class="flex flex-col items-center gap-2 mt-1"
         transition:fade={{ duration: 150 }}
       >
-        <a href="{prefix}/portfolio" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.portfolio}</a>
-        <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
-        <a href="{prefix}/tech-talks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
-        <a href="{prefix}/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
+        <a href="{prefix}/portfolio" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.portfolio}</a>
+        <a href="{prefix}/dailybot" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
+        <a href="{prefix}/tech-talks" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
+        <a href="{prefix}/trading" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
       </div>
     {/if}
     <button
-      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      class="nav-link text-xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => aboutOpen = !aboutOpen}
       aria-expanded={aboutOpen}
       aria-controls="about-dropdown"
@@ -158,17 +158,17 @@ onDestroy(() => {
         class="flex flex-col items-center gap-2 mt-1"
         transition:fade={{ duration: 150 }}
       >
-        <a href="{prefix}/about" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
-        <a href="{prefix}/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
-        <a href="{prefix}/entrepreneur" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
-        <a href="{prefix}/maker" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
-        <a href="{prefix}/foodie" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>
-        <a href="{prefix}/hobbies" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.hobbies}</a>
+        <a href="{prefix}/about" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
+        <a href="{prefix}/cv" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
+        <a href="{prefix}/entrepreneur" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
+        <a href="{prefix}/maker" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
+        <a href="{prefix}/foodie" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>
+        <a href="{prefix}/hobbies" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.hobbies}</a>
       </div>
     {/if}
-    <a href="{prefix}/contact" class="nav-link text-2xl text-center">{t.nav.contact}</a>
+    <a href="{prefix}/contact" class="nav-link text-xl text-center">{t.nav.contact}</a>
     <button
-      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      class="nav-link text-xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => languageOpen = !languageOpen}
       aria-expanded={languageOpen}
       aria-controls="language-dropdown"
@@ -193,7 +193,7 @@ onDestroy(() => {
         transition:fade={{ duration: 150 }}
       >
         {#each alternateLanguageUrls as alt}
-          <a href={alt.url} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
+          <a href={alt.url} class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
             <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.nativeName}
           </a>
         {/each}
