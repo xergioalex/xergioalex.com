@@ -96,7 +96,10 @@ $: displayDescription = searchResult
       <img
         src={postData.heroImage}
         alt={postData.title}
+        width={400}
+        height={192}
         class="w-full h-48 object-cover"
+        loading="lazy"
       />
       {#if isDev && (effectiveStatus !== 'published' || isDemo)}
         <div class="absolute top-2 right-2">
@@ -120,7 +123,7 @@ $: displayDescription = searchResult
       {@html displayDescription}
     </p>
     <div class="flex flex-wrap justify-between items-center gap-2">
-      <time class="text-sm text-gray-500 dark:text-gray-400">
+      <time class="text-sm text-gray-600 dark:text-gray-300">
         {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',

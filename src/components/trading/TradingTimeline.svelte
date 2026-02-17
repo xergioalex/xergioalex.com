@@ -50,7 +50,7 @@ function getMonthName(date: Date): string {
 
 {#if posts.length === 0}
   <div class="text-center py-16">
-    <p class="text-gray-500 dark:text-gray-400 text-lg">{t.tradingPage.emptyState}</p>
+    <p class="text-gray-600 dark:text-gray-300 text-lg">{t.tradingPage.emptyState}</p>
   </div>
 {:else}
   <div class="relative py-8">
@@ -120,7 +120,7 @@ function getMonthName(date: Date): string {
                 {post.data.description}
               </p>
               <div class="flex flex-wrap items-center gap-2">
-                <time class="text-xs text-gray-500 dark:text-gray-400">
+                <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(post.data.pubDate)}
                 </time>
                 {#if post.data.tags && post.data.tags.length > 0}

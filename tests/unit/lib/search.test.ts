@@ -1,0 +1,266 @@
+import Fuse from 'fuse.js';
+import { describe, expect, it } from 'vitest';
+
+import {
+	createSearchIndex,
+	getHighlightedField,
+	highlightMatches,
+	searchPosts,
+} from '@/lib/search';
+import type { SearchResult, SearchablePost } from '@/lib/search';
+
+// ─── Test Data ─────────────────────────────────────────
+
+const mockPosts: SearchablePost[] = [
+	{
+		id: '1',
+		slug: 'astro-guide',
+		lang: 'en',
+		title: 'Complete Guide to Astro',
+		description: 'Learn Astro from scratch with this comprehensive tutorial',
+		tags: ['astro', 'web', 'tutorial'],
+		pubDate: '2024-03-15',
+	},
+	{
+		id: '2',
+		slug: 'svelte-basics',
+		lang: 'en',
+		title: 'Svelte Basics',
+		description: 'Getting started with Svelte framework',
+		tags: ['svelte', 'frontend'],
+		pubDate: '2024-03-10',
+	},
+	{
+		id: '3',
+		slug: 'typescript-tips',
+		lang: 'en',
+		title: 'TypeScript Tips and Tricks',
+		description: 'Advanced TypeScript patterns for production apps',
+		tags: ['typescript', 'tips'],
+		pubDate: '2024-02-20',
+	},
+	{
+		id: '4',
+		slug: 'guia-astro',
+		lang: 'es',
+		title: 'Guia Completa de Astro',
+		description: 'Aprende Astro desde cero',
+		tags: ['astro', 'web'],
+		pubDate: '2024-03-15',
+	},
+];
+
+// ─── highlightMatches ──────────────────────────────────
+
+describe('highlightMatches', () => {
+	const markOpen =
+		'<mark class="bg-yellow-200 dark:bg-yellow-700 px-0.5 rounded">';
+	const markClose = '</mark>';
+
+	it('highlights a single match', () => {
+		const result = highlightMatches('hello world', [[0, 4]]);
+		expect(result).toBe(`${markOpen}hello${markClose} world`);
+	});
+
+	it('highlights multiple non-overlapping matches', () => {
+		const result = highlightMatches('hello world test', [
+			[0, 4],
+			[6, 10],
+		]);
+		expect(result).toBe(
+			`${markOpen}hello${markClose} ${markOpen}world${markClose} test`,
+		);
+	});
+
+	it('returns escaped text when indices array is empty', () => {
+		expect(highlightMatches('hello world', [])).toBe('hello world');
+	});
+
+	it('escapes HTML special characters in non-matched text', () => {
+		const result = highlightMatches('<script>alert("xss")</script>', []);
+		expect(result).toBe(
+			'&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;',
+		);
+	});
+
+	it('escapes ampersand and quotes', () => {
+		const result = highlightMatches("Tom & Jerry's \"adventure\"", []);
+		expect(result).toContain('&amp;');
+		expect(result).toContain('&#39;');
+		expect(result).toContain('&quot;');
+	});
+
+	it('escapes HTML in matched text too', () => {
+		const result = highlightMatches('<b>bold</b>', [[0, 2]]);
+		expect(result).toContain(`${markOpen}&lt;b&gt;${markClose}`);
+	});
+
+	it('handles match at end of string', () => {
+		const result = highlightMatches('hello world', [[6, 10]]);
+		expect(result).toBe(`hello ${markOpen}world${markClose}`);
+	});
+
+	it('handles match spanning entire string', () => {
+		const result = highlightMatches('hello', [[0, 4]]);
+		expect(result).toBe(`${markOpen}hello${markClose}`);
+	});
+
+	it('handles unsorted indices by sorting them', () => {
+		const result = highlightMatches('abc def ghi', [
+			[8, 10],
+			[0, 2],
+		]);
+		expect(result).toBe(
+			`${markOpen}abc${markClose} def ${markOpen}ghi${markClose}`,
+		);
+	});
+});
+
+// ─── getHighlightedField ───────────────────────────────
+
+describe('getHighlightedField', () => {
+	const mockResult: SearchResult = {
+		item: mockPosts[0],
+		score: 0.1,
+		matches: [
+			{
+				key: 'title',
+				value: 'Complete Guide to Astro',
+				indices: [[18, 22]],
+			},
+		],
+	};
+
+	it('returns highlighted text when field match exists', () => {
+		const result = getHighlightedField(
+			mockResult,
+			'title',
+			'Complete Guide to Astro',
+		);
+		expect(result).toContain('<mark');
+		expect(result).toContain('Astro');
+	});
+
+	it('returns escaped original value when no match for the field', () => {
+		const result = getHighlightedField(
+			mockResult,
+			'description',
+			'Some description',
+		);
+		expect(result).toBe('Some description');
+		expect(result).not.toContain('<mark');
+	});
+
+	it('returns escaped original value when matches array is undefined', () => {
+		const noMatchResult: SearchResult = {
+			item: mockPosts[0],
+			score: 0.5,
+			matches: undefined,
+		};
+		const result = getHighlightedField(
+			noMatchResult,
+			'title',
+			'Complete Guide to Astro',
+		);
+		expect(result).toBe('Complete Guide to Astro');
+		expect(result).not.toContain('<mark');
+	});
+
+	it('escapes HTML in original value when no match exists', () => {
+		const result = getHighlightedField(
+			mockResult,
+			'description',
+			'<script>alert("xss")</script>',
+		);
+		expect(result).toContain('&lt;script&gt;');
+		expect(result).not.toContain('<script>');
+	});
+});
+
+// ─── createSearchIndex ─────────────────────────────────
+
+describe('createSearchIndex', () => {
+	it('creates a Fuse instance from posts', () => {
+		const index = createSearchIndex(mockPosts);
+		expect(index).toBeInstanceOf(Fuse);
+	});
+
+	it('handles empty array and returns a valid Fuse instance', () => {
+		const index = createSearchIndex([]);
+		expect(index).toBeInstanceOf(Fuse);
+	});
+
+	it('created index can perform searches', () => {
+		const index = createSearchIndex(mockPosts);
+		const results = index.search('Astro');
+		expect(results.length).toBeGreaterThan(0);
+	});
+});
+
+// ─── searchPosts ───────────────────────────────────────
+
+describe('searchPosts', () => {
+	const fuse = createSearchIndex(mockPosts);
+
+	it('returns matching results for a known query', () => {
+		const results = searchPosts(fuse, 'Astro');
+		expect(results.length).toBeGreaterThan(0);
+		expect(results[0].item.title).toContain('Astro');
+	});
+
+	it('respects the limit parameter', () => {
+		const results = searchPosts(fuse, 'Astro', 1);
+		expect(results).toHaveLength(1);
+	});
+
+	it('returns empty array for no matches', () => {
+		const results = searchPosts(fuse, 'zzzznonexistent');
+		expect(results).toEqual([]);
+	});
+
+	it('returns empty array for empty query string', () => {
+		expect(searchPosts(fuse, '')).toEqual([]);
+	});
+
+	it('returns empty array for query shorter than 2 characters', () => {
+		expect(searchPosts(fuse, 'a')).toEqual([]);
+	});
+
+	it('returns empty array for whitespace-only query', () => {
+		expect(searchPosts(fuse, '   ')).toEqual([]);
+	});
+
+	it('results have correct shape', () => {
+		const results = searchPosts(fuse, 'Svelte');
+		expect(results.length).toBeGreaterThan(0);
+
+		const result = results[0];
+		expect(result).toHaveProperty('item');
+		expect(result).toHaveProperty('score');
+		expect(typeof result.score).toBe('number');
+		expect(result.item).toHaveProperty('id');
+		expect(result.item).toHaveProperty('slug');
+		expect(result.item).toHaveProperty('title');
+	});
+
+	it('search results include match information', () => {
+		const results = searchPosts(fuse, 'TypeScript');
+		expect(results.length).toBeGreaterThan(0);
+		expect(results[0].matches).toBeDefined();
+	});
+
+	it('searches across title, description, and tags', () => {
+		// Search by tag
+		const tagResults = searchPosts(fuse, 'tutorial');
+		expect(tagResults.length).toBeGreaterThan(0);
+
+		// Search by description content
+		const descResults = searchPosts(fuse, 'comprehensive');
+		expect(descResults.length).toBeGreaterThan(0);
+	});
+
+	it('trims whitespace from query before searching', () => {
+		const results = searchPosts(fuse, '  Astro  ');
+		expect(results.length).toBeGreaterThan(0);
+	});
+});

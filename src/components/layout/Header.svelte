@@ -54,9 +54,11 @@ function toggleMenu() {
       class="font-extrabold text-2xl md:text-3xl tracking-tight text-blue-600 select-none"
     >
       <img
-        class="h-9"
+        class="h-7 w-auto md:h-8"
         src="/images/logo_small_version_white.svg"
         alt="XergioAleX"
+        width={952}
+        height={168}
       />
     </a>
     <!-- Desktop menu -->
@@ -65,18 +67,17 @@ function toggleMenu() {
         <a href={prefix || '/'} class="nav-link">{t.nav.home}</a>
         <a href="{prefix}/blog" class="nav-link">{t.nav.blog}</a>
         <div
+          role="group"
           class="relative group"
-          role="menu"
-          tabindex="0"
           on:mouseenter={() => workOpen = true}
           on:mouseleave={() => workOpen = false}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
             aria-expanded={workOpen}
+            aria-haspopup="true"
             aria-controls="work-dropdown"
             type="button"
-            tabindex="0"
           >
             {t.nav.work}
             <svg
@@ -108,18 +109,17 @@ function toggleMenu() {
           {/if}
         </div>
         <div
+          role="group"
           class="relative group"
-          role="menu"
-          tabindex="0"
           on:mouseenter={() => aboutOpen = true}
           on:mouseleave={() => aboutOpen = false}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
             aria-expanded={aboutOpen}
+            aria-haspopup="true"
             aria-controls="about-dropdown"
             type="button"
-            tabindex="0"
           >
             {t.nav.about}
             <svg
@@ -154,18 +154,17 @@ function toggleMenu() {
         </div>
         <a href="{prefix}/contact" class="nav-link">{t.nav.contact}</a>
         <div
+          role="group"
           class="relative group"
-          role="menu"
-          tabindex="0"
           on:mouseenter={() => languageOpen = true}
           on:mouseleave={() => languageOpen = false}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
             aria-expanded={languageOpen}
+            aria-haspopup="true"
             aria-controls="language-dropdown"
             type="button"
-            tabindex="0"
           >
             <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
             <svg

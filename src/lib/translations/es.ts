@@ -927,6 +927,17 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   showPublishedOnly: 'Solo publicados',
   publishesOn: 'Se publica el',
 
+  // 404 page
+  notFoundPage: {
+    title: 'Pagina no encontrada',
+    description: 'La pagina que buscas no existe o ha sido movida.',
+    heading: 'Pagina no encontrada',
+    message:
+      'Lo sentimos, la pagina que buscas no existe o pudo haber sido movida. Intenta volver a la pagina principal o buscar en el blog.',
+    backHome: 'Volver al inicio',
+    searchBlog: 'Buscar en el blog',
+  },
+
   // Errors
   searchError: 'Ocurrió un error al buscar. Por favor intenta de nuevo.',
   loadError:

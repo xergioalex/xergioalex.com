@@ -1,12 +1,13 @@
 ---
 import DailyBotTimeline from '@/components/dailybot/DailyBotTimeline.svelte';
+import JsonLd from '@/components/JsonLd.astro';
 import HighlightCard from '@/components/pages/HighlightCard.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
 import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
-import type { Language } from '@/lib/i18n';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -15,15 +16,39 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
 
 const { postsResult: posts } = await getBlogPosts({
   lang,
   tag: 'dailybot',
   pageSize: 100,
 });
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${siteUrl}${prefix}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.dailybotPage.title,
+      item: `${siteUrl}${prefix}/dailybot`,
+    },
+  ],
+};
 ---
 
 <MainLayout lang={lang} title={t.dailybotPage.title} description={t.dailybotPage.description}>
+  <Fragment slot="head">
+    <JsonLd data={breadcrumbSchema} />
+  </Fragment>
   <PageHero
     title={t.dailybotPage.title}
     subtitle={t.dailybotPage.subtitle}
@@ -54,7 +79,7 @@ const { postsResult: posts } = await getBlogPosts({
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         {t.dailybotPage.timelineTitle}
       </h2>
-      <DailyBotTimeline client:load posts={posts} lang={lang} />
+      <DailyBotTimeline client:visible posts={posts} lang={lang} />
     </div>
   </section>
 
@@ -71,5 +96,5 @@ const { postsResult: posts } = await getBlogPosts({
     </div>
   </section>
 
-  <ScrollToTimeline client:load lang={lang} targetLabel={t.dailybotPage.timelineTitle} />
+  <ScrollToTimeline client:visible lang={lang} targetLabel={t.dailybotPage.timelineTitle} />
 </MainLayout>

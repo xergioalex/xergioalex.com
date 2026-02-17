@@ -13,6 +13,9 @@ yarn-error.log*
 pnpm-debug.log*
 
 
+# test coverage
+coverage/
+
 # environment variables
 .env
 .env.production

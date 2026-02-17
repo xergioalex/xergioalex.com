@@ -19,7 +19,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 
 - **[Product Specification](docs/PRODUCT_SPEC.md)** - Product vision, features, and website goals
 - **[Architecture Guide](docs/ARCHITECTURE.md)** - Astro components, Content Collections, Svelte integration
-- **[Testing Guide](docs/TESTING_GUIDE.md)** - Test conventions and future testing setup
+- **[Testing Guide](docs/TESTING_GUIDE.md)** - Vitest setup, test conventions, and writing tests
 - **[Development Commands](docs/DEVELOPMENT_COMMANDS.md)** - npm scripts, Astro CLI, build workflows
 
 ### Standards & Security
@@ -27,6 +27,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 - **[Repository Standards](docs/STANDARDS.md)** - Canonical coding rules for all agents
 - **[Security Guide](docs/SECURITY.md)** - Static site security best practices
 - **[Performance Guide](docs/PERFORMANCE.md)** - Astro SSG optimization, image handling, caching
+- **[SEO Guide](docs/SEO.md)** - Meta tags, structured data, multilingual SEO, AEO, PageSpeed
 
 ### AI Agent Guides
 
@@ -92,8 +93,12 @@ src/
 │       ├── tech.md
 │       └── personal.md
 ├── content.config.ts        # Collection schemas (Zod)
+├── integrations/            # Custom Astro integrations
+│   └── exclude-internal.ts  # Removes /internal from production builds
 ├── layouts/
-│   └── MainLayout.astro     # Base page layout
+│   ├── MainLayout.astro     # Base page layout (public pages)
+│   ├── InternalLayout.astro # Internal Hub layout (dev-only, self-contained)
+│   └── ShowcaseLayout.astro # Design System layout (dev-only, self-contained)
 ├── lib/                     # Utility functions
 │   ├── blog.ts              # Post fetching, pagination
 │   ├── i18n.ts              # Centralized i18n config & utilities
@@ -115,20 +120,29 @@ src/
 │   │   ├── [...slug].astro  # Dynamic post pages
 │   │   ├── page/[page].astro
 │   │   └── tag/[tag].astro
+│   ├── internal/            # Internal Hub (dev-only, excluded from production)
+│   │   ├── index.astro      # Hub landing page
+│   │   ├── sitemap.astro    # Auto-generated sitemap
+│   │   ├── ui/              # UI Design System Showcase (11 pages)
+│   │   └── guide/           # Staff Guide (3 pages)
 │   ├── api/
 │   │   └── posts.json.ts    # Search API endpoint
 │   └── rss.xml.js           # RSS feed
 └── styles/
     └── global.css           # Global styles, Tailwind config
 
-public/                      # Static assets
-├── images/                  # Site images
+public/                      # Static assets (84 files, ~5.5 MB)
+├── favicon.svg              # Site favicon
+├── robots.txt               # Crawling rules
+├── llms.txt                 # LLM-readable site summary
+├── images/                  # Site images (~5.4 MB)
+│   ├── (root images)        # Brand, section, profile (10 files)
 │   └── blog/                # Blog images
 │       ├── posts/{slug}/    # Per-post image folders
 │       ├── shared/          # Shared images (placeholders)
 │       └── _staging/        # Incoming images (temp)
-├── icons/                   # Social icons
-├── fonts/                   # Custom fonts
+├── icons/                   # Social icons (paired light/dark)
+├── fonts/                   # Custom fonts (Atkinson Hyperlegible)
 └── scripts/
     └── global.theme.js      # Theme persistence
 
@@ -208,15 +222,21 @@ npm run biome:fix:unsafe
 
 **❌ DO NOT use ESLint or Prettier** - This project uses Biome exclusively.
 
-### 5. Testing (NOT YET CONFIGURED)
+### 5. Testing
 
-Testing is not yet set up in this project. When adding tests in the future:
+This project uses **Vitest** for unit and component testing with **@testing-library/svelte** for Svelte components.
 
-- Consider **Vitest** for unit tests
-- Consider **Playwright** for E2E tests
-- Test file naming: `*.test.ts` or `*.spec.ts`
+```bash
+npm run test               # Run all tests (single run)
+npm run test:watch         # Watch mode
+npm run test:coverage      # Run with coverage report
+```
 
-Currently, `npm run test` is a placeholder.
+- Test files use `*.test.ts` naming convention
+- Tests live in `tests/unit/lib/` (utilities) and `tests/unit/components/` (Svelte)
+- Mock data in `tests/fixtures/posts.ts`
+- Coverage target: 80%+ on `src/lib/`
+- See **[Testing Guide](docs/TESTING_GUIDE.md)** for full details
 
 ### 6. Multilingual Content Synchronization (MANDATORY)
 
@@ -301,6 +321,24 @@ The architecture is designed so adding a new language requires zero changes to c
 
 **See [Performance Guide](docs/PERFORMANCE.md) for comprehensive optimization strategies.**
 
+### 8. Accessibility Standards (MANDATORY)
+
+**This site targets WCAG 2.1 AA compliance and Lighthouse Accessibility score of 100.** Every UI change MUST maintain accessibility.
+
+**Rules for all agents:**
+
+1. **Meet WCAG AA contrast ratios** — 4.5:1 for normal text, 3:1 for large text (>=18px or >=14px bold)
+2. **Use approved text color pairings** — `text-gray-600 dark:text-gray-300` for secondary text. **NEVER** use `text-gray-400`, `text-gray-500` alone, `dark:text-gray-400`, or `dark:text-gray-500`
+3. **Always include image dimensions** — every `<img>` must have `width` and `height` to prevent CLS
+4. **Use semantic HTML** — proper heading hierarchy (no skipped levels), landmark elements, button vs link
+5. **Provide text alternatives** — meaningful `alt` for informative images, `alt=""` for decorative
+6. **Support keyboard navigation** — all interactive elements must be focusable and operable
+7. **Use ARIA correctly** — disclosure pattern for nav dropdowns (not `role="menu"`), `role="progressbar"` for skill bars
+
+**Before any UI change, ask:** Does the text contrast pass 4.5:1? Are images dimensioned? Is the heading hierarchy correct?
+
+**See [Accessibility Guide](docs/ACCESSIBILITY.md) for complete standards and approved color pairings.**
+
 ## Shared Agent Coordination - CRITICAL
 
 **Multiple AI agents collaborate on this codebase:**
@@ -331,6 +369,11 @@ npm run biome:check        # Check linting and formatting
 npm run biome:fix          # Auto-fix issues
 npm run biome:fix:unsafe   # Fix with unsafe transformations
 npm run astro:check        # TypeScript type checking
+
+# Testing
+npm run test               # Run unit tests
+npm run test:watch         # Watch mode
+npm run test:coverage      # With coverage report
 
 # Package Management
 npm run ncu:check          # Check for package updates
@@ -502,6 +545,36 @@ src/pages/
 
 Page components in `src/components/pages/` receive `lang` and handle all translations internally.
 
+### 7. Internal Hub (Dev-Only Documentation Portal)
+
+**The Internal Hub is a dev-only documentation portal at `/internal/` that is automatically excluded from production builds.** It provides a visual design system reference, development guides, and an auto-generated sitemap for developers and AI agents.
+
+**Three pillars:**
+1. **UI Design System Showcase** (`/internal/ui/`) — Visual reference for all design tokens and components (colors, typography, spacing, radius, buttons, badges, cards, forms, layouts, brand)
+2. **Staff Guide** (`/internal/guide/`) — Development documentation (tech stack, file structure, naming conventions)
+3. **Auto-Generated Sitemap** (`/internal/sitemap`) — Build-time discovery of all site pages
+
+**Key architecture rules:**
+- **Dev-only:** Visible at `http://localhost:4321/internal/` during `npm run dev`. **Never deployed to production.**
+- **Three-layer production exclusion:**
+  1. Post-build deletion via `src/integrations/exclude-internal.ts` (`astro:build:done` hook)
+  2. Sitemap XML filter in `astro.config.mjs` (excludes `/internal/` URLs)
+  3. `<meta name="robots" content="noindex, nofollow">` on all internal pages
+- **Self-contained layouts:** `InternalLayout.astro` and `ShowcaseLayout.astro` have their own `<html>/<head>/<body>`. They **NEVER** use `MainLayout`.
+- **English-only:** No multilingual variants, no translation keys needed.
+- **No Page Wrapper pattern:** Internal pages are standalone `.astro` files in `src/pages/internal/`, not thin wrappers.
+- **Staging builds:** Set `INCLUDE_INTERNAL=true` environment variable to keep internal pages in build output.
+
+**When to use each layout:**
+- `InternalLayout` — Hub landing page, sitemap, and Staff Guide pages. Uses `section` and optional `subsection` props for sidebar navigation.
+- `ShowcaseLayout` — UI Design System pages. Uses `section` prop for flat navigation across design categories.
+
+**Adding new internal pages:**
+1. Create an `.astro` file in `src/pages/internal/` (or a subdirectory)
+2. Import `InternalLayout` or `ShowcaseLayout` (never `MainLayout`)
+3. The page automatically appears in the auto-generated sitemap
+4. The page is automatically excluded from production builds
+
 ## Documentation Standards
 
 ### When to Update Documentation
@@ -630,7 +703,7 @@ public/images/blog/
 5. Skip the `client:*` directive for interactive Svelte components
 6. Hardcode text that should be translatable
 7. Forget to update Content Collection schemas after changing frontmatter
-8. Use `npm run test` expecting real tests (not configured yet)
+8. Forget to run `npm run test` before committing (tests are configured)
 9. Import `MainLayout` directly in page wrappers (use the Page wrapper pattern — `MainLayout` belongs inside `*Page.astro` components)
 10. Forget dark mode support in new components
 11. Create content (pages, blog posts) without covering all active languages
@@ -644,6 +717,13 @@ public/images/blog/
 19. Use `client:load` when `client:visible` or `client:idle` would suffice
 20. Add JS-based solutions when CSS can achieve the same result
 21. Forget to include image dimensions (causes layout shifts)
+22. Use `text-gray-400`, `dark:text-gray-400`, or `dark:text-gray-500` for body text (fails WCAG AA contrast)
+23. Use `role="menu"` for navigation dropdowns (use disclosure pattern instead)
+24. Skip heading levels (e.g., h1 -> h3 without h2)
+25. Forget `alt=""` on decorative images or `aria-label` on icon-only links
+26. Use `MainLayout` for internal hub pages (use `InternalLayout` or `ShowcaseLayout` instead)
+27. Add multilingual variants for internal pages (they are English-only, dev-only)
+28. Forget that `/internal/` pages are excluded from production builds — never reference them from public pages
 
 ### ✅ DO:
 
@@ -669,10 +749,18 @@ public/images/blog/
 19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
 20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
 21. Prefer CSS-only solutions over JavaScript when possible
+22. Use `text-gray-600 dark:text-gray-300` for secondary/body text (WCAG AA compliant)
+23. Include `width` and `height` on all `<img>` elements
+24. Use `alt=""` for decorative images, meaningful alt for informative images
+25. Follow the [Accessibility Guide](docs/ACCESSIBILITY.md) for ARIA patterns and contrast rules
+26. Use `InternalLayout` or `ShowcaseLayout` for new internal hub pages (never `MainLayout`)
+27. Browse `/internal/` in dev mode to reference design tokens and project documentation
+28. Add new design system pages to `/internal/ui/` when establishing new UI patterns
 
 ## Pre-Commit Checklist
 
 - [ ] All code in English
+- [ ] `npm run test` passes (all unit tests)
 - [ ] `npm run biome:check` passes
 - [ ] `npm run astro:check` passes (no TypeScript errors)
 - [ ] `npm run build` succeeds
@@ -683,6 +771,8 @@ public/images/blog/
 - [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only
 - [ ] Performance considered (lightest hydration, minimal JS, no layout shifts)
+- [ ] Accessibility: text contrast uses approved pairings (see [Accessibility Guide](docs/ACCESSIBILITY.md))
+- [ ] Accessibility: all images have `width`, `height`, and appropriate `alt` text
 - [ ] Commit message in English (conventional format)
 
 ## 🧠 Skills & Agents System
@@ -743,6 +833,8 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 - [Standards](docs/STANDARDS.md)
 - [Security](docs/SECURITY.md)
 - [Performance](docs/PERFORMANCE.md)
+- [SEO](docs/SEO.md)
+- [Accessibility](docs/ACCESSIBILITY.md)
 - [Blog Posts](docs/features/BLOG_POSTS.md)
 - [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md)
 - [AI Agent Onboarding](docs/AI_AGENT_ONBOARDING.md)

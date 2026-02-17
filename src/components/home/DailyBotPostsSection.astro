@@ -49,7 +49,9 @@ const posts = allPosts
                 {post.data.heroImage && (
                   <img
                     src={post.data.heroImage}
-                    alt=""
+                    alt={post.data.title}
+                    width={600}
+                    height={160}
                     class="w-full h-40 object-cover"
                     loading="lazy"
                   />
@@ -61,7 +63,7 @@ const posts = allPosts
                   <p class="text-gray-600 dark:text-gray-300 mb-3">
                     {post.data.description}
                   </p>
-                  <span class="text-gray-500 dark:text-gray-400 text-sm">
+                  <span class="text-gray-600 dark:text-gray-300 text-sm">
                     <FormattedDate date={post.data.pubDate} lang={lang} />
                   </span>
                 </div>
@@ -79,7 +81,7 @@ const posts = allPosts
         </div>
       </>
     ) : (
-      <p class="text-gray-500 dark:text-gray-400 text-center py-8">
+      <p class="text-gray-600 dark:text-gray-300 text-center py-8">
         {t.homeSections.dailybotPostsEmpty}
       </p>
     )}

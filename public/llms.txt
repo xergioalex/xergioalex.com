@@ -1,109 +1,54 @@
 # XergioAleX.com
 
-> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO, product builder, and engineer.
+> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO & Co-founder at DailyBot (Y Combinator S21), computer science engineer, MSc in data science.
 
 ## About
-This site contains professional profile pages and a bilingual blog focused on software development, DevOps, product engineering, robotics projects, and practical technical notes.
+
+This site features a bilingual blog and professional profile covering software development, entrepreneurship, AI, DevOps, trading, tech talks, and personal projects.
 
 ## Core Sections
+
 - Home: /
 - Blog: /blog/
-- Portfolio: /portfolio/
 - About: /about/
-- Contact: /contact/
 - CV: /cv/
+- Contact: /contact/
+- Portfolio: /portfolio/
+- Tech Talks: /tech-talks/
+- DailyBot: /dailybot/
+- Trading: /trading/
+- Entrepreneur: /entrepreneur/
+- Maker: /maker/
+- Hobbies: /hobbies/
+- Foodie: /foodie/
 
-## Blog Topics
-- DevOps and infrastructure
-- Software engineering
-- Robotics and autonomous systems
-- Portfolio project write-ups
-- Personal technical reflections
-- Talks and knowledge sharing
+## Blog Tags
+
+- tech — Software development tutorials and technical articles
+- talks — Tech talks, slides, and event recaps
+- portfolio — Project retrospectives and case studies
+- dailybot — DailyBot product stories and startup journey
+- trading — Trading journal entries and market analysis
+- personal — Personal reflections and life experiences
 
 ## Languages
-- English: / (default)
+
+- English (default): /
 - Spanish: /es/
 
 ## Machine-Readable Feeds
+
 - Sitemap: /sitemap-index.xml
-- RSS: /rss.xml
-- Spanish RSS: /es/rss.xml
+- RSS (English): /rss.xml
+- RSS (Spanish): /es/rss.xml
+- Search API: /api/posts.json
 
 ## Crawling Guidance
-- Public content is intended for indexing by search engines and LLM systems.
+
+- All public content is intended for indexing by search engines and LLM systems.
 - Prefer canonical URLs and language-specific routes.
-# XergioAleX.com
-
-> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO, product builder, and engineer.
-
-## About
-This site contains professional profile pages and a bilingual blog focused on software development, DevOps, product engineering, robotics projects, and practical technical notes.
-
-## Core Sections
-- Home: /
-- Blog: /blog/
-- Portfolio: /portfolio/
-- About: /about/
-- Contact: /contact/
-- CV: /cv/
-
-## Blog Topics
-- DevOps and infrastructure
-- Software engineering
-- Robotics and autonomous systems
-- Portfolio project write-ups
-- Personal technical reflections
-- Talks and knowledge sharing
-
-## Languages
-- English: / (default)
-- Spanish: /es/
-
-## Machine-Readable Feeds
-- Sitemap: /sitemap-index.xml
-- RSS: /rss.xml
-- Spanish RSS: /es/rss.xml
-
-## Crawling Guidance
-- Public content is intended for indexing by search engines and LLM systems.
-- Prefer canonical URLs and language-specific routes.
-# XergioAleX.com
-
-> Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).
-
-## About
-
-This is the personal website of Sergio Alexander Florez Galeano, known as XergioAleX. He is CTO and Cofounder at DailyBot (YC S21), a computer science engineer with an MSc in data science, entrepreneur, speaker, and technology enthusiast. The site features a blog with articles about technology, software development, entrepreneurship, and personal experiences. Available in English and Spanish.
-
-## Key Pages
-
-- [Home](https://site.xergioalex.com/)
-- [Blog](https://site.xergioalex.com/blog/)
-- [About](https://site.xergioalex.com/about/)
-- [Contact](https://site.xergioalex.com/contact/)
-- [Blog (Spanish)](https://site.xergioalex.com/es/blog/)
-- [Home (Spanish)](https://site.xergioalex.com/es/)
-
-## Content Topics
-
-The blog covers:
-- Technology and software development
-- Entrepreneurship and startups
-- Tech talks and community events
-- Trading and algorithmic trading
-- Personal experiences and reflections
-
-## Languages
-
-- English (default): https://site.xergioalex.com/
-- Spanish: https://site.xergioalex.com/es/
-
-## Feeds
-
-- RSS: https://site.xergioalex.com/rss.xml
-- Sitemap: https://site.xergioalex.com/sitemap-index.xml
+- Structured data (JSON-LD) is embedded on all pages for machine consumption.
 
 ## Detailed Version
 
-For more detailed content descriptions, see: https://site.xergioalex.com/llms-full.txt
+For comprehensive content descriptions, see: /llms-full.txt

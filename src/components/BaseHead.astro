@@ -9,6 +9,7 @@ import {
   getAlternateUrls,
   getOGLocale,
   getSupportedLanguages,
+  getUrlPrefix,
   type Language,
 } from '@/lib/i18n';
 
@@ -44,18 +45,23 @@ const currentLocale = getOGLocale(lang as Language);
 const alternateLocales = getSupportedLanguages()
   .filter((l) => l !== lang)
   .map((l) => getOGLocale(l));
+const langPrefix = getUrlPrefix(lang as Language);
+const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"
 	type="application/rss+xml"
 	title={SITE_TITLE}
-	href={new URL("rss.xml", Astro.site)}
+	href={rssHref}
 />
 <meta name="generator" content={Astro.generator} />
 
@@ -101,6 +107,8 @@ const alternateLocales = getSupportedLanguages()
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:locale" content={currentLocale} />
 {alternateLocales.map((locale) => (
@@ -139,7 +147,8 @@ const alternateLocales = getSupportedLanguages()
     '@type': 'Person',
     name: 'Sergio Alexander Florez Galeano',
     alternateName: 'XergioAleX',
-    url: 'https://xergioalex.com',
+    url: Astro.site?.href,
+    image: new URL('/images/profile.png', Astro.site).href,
     jobTitle: 'CTO & Co-founder',
     worksFor: {
       '@type': 'Organization',
@@ -152,6 +161,21 @@ const alternateLocales = getSupportedLanguages()
       'https://www.linkedin.com/in/xergioalex/',
       'https://x.com/XergioAleX',
       'https://www.instagram.com/xergioalex',
+    ],
+  }}
+/>
+
+<!-- JSON-LD: Organization (DailyBot) -->
+<JsonLd
+  data={{
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'DailyBot',
+    url: 'https://www.dailybot.com',
+    description: 'AI-powered platform for asynchronous team collaboration',
+    sameAs: [
+      'https://twitter.com/dailybotHQ',
+      'https://www.linkedin.com/company/dailybot',
     ],
   }}
 />

@@ -23,10 +23,10 @@ $: querySuffix = isPreviewMode ? '?preview=all' : '';
   </div>
 {:else}
   <div class="text-center py-12">
-    <p class="text-gray-500 dark:text-gray-400 text-lg">
+    <p class="text-gray-600 dark:text-gray-300 text-lg">
       {t.noResults(searchQuery)}
     </p>
-    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
       {t.noResultsSuggestion}
     </p>
     <a

@@ -7,13 +7,23 @@ import tailwindcss from '@tailwindcss/vite';
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import excludeInternal from './src/integrations/exclude-internal';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://site.xergioalex.com',
-  integrations: [mdx(), sitemap(), svelte()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/internal/') && !page.endsWith('/internal'),
+    }),
+    svelte(),
+    excludeInternal(),
+  ],
   server: {
     host: true,
   },

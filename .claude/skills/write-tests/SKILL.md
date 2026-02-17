@@ -19,25 +19,26 @@ max-loc: 500
 
 Add or expand tests for existing code. This skill creates or extends test files with meaningful cases, edge cases, and mocks.
 
-**IMPORTANT:** Testing is NOT currently configured in this repository. This skill documents the future testing approach.
-
 ## Current Status
 
-- **Testing Framework:** Not configured
-- **Recommended Setup:** Vitest for unit tests, Playwright for E2E
-- **Test file naming:** `*.test.ts` or `*.spec.ts`
+- **Testing Framework:** Vitest 4.x (configured and active)
+- **Component Testing:** @testing-library/svelte 5.x
+- **DOM Environment:** happy-dom
+- **Coverage:** V8 provider, 80%+ threshold on `src/lib/`
+- **Test file naming:** `*.test.ts`
 
 ## Non-Goals
 
 - Does NOT implement new production code
 - Does NOT refactor production logic
 - Does NOT change function signatures for the sake of testability without agreement
+- Does NOT set up E2E tests (Playwright not configured)
 
 ## Tier Classification
 
 **Tier: 2** - Standard
 
-**Reasoning:** Writing tests requires moderate reasoning (understanding behavior, edge cases, mocks). Scope typically 1–10 files, 100–500 LOC; standard development work.
+**Reasoning:** Writing tests requires moderate reasoning (understanding behavior, edge cases, mocks). Scope typically 1-10 files, 100-500 LOC; standard development work.
 
 ## Inputs
 
@@ -50,86 +51,85 @@ Add or expand tests for existing code. This skill creates or extends test files 
 
 - `$EXISTING`: Path to existing test file to extend
 
-## Prerequisites (Future)
+## Prerequisites
 
-When testing is configured, ensure:
-
-- [ ] Test framework is set up (Vitest recommended)
 - [ ] Target code is stable (no pending refactors)
-- [ ] Test utilities and mocks are understood
+- [ ] Test fixtures understood (`tests/fixtures/posts.ts`)
+- [ ] Vitest config reviewed if testing new module types
 
-## Future Testing Setup
+## Test Infrastructure
 
-### Recommended Configuration
+### Configuration
 
-```bash
-# Install Vitest for unit tests
-npm install -D vitest @testing-library/svelte
-
-# Install Playwright for E2E
-npm install -D @playwright/test
-```
+- **Config:** `vitest.config.ts` at project root
+- **Environment:** happy-dom
+- **Path aliases:** `@/` maps to `src/` (matches tsconfig)
+- **Svelte:** `@sveltejs/vite-plugin-svelte` with `hot: false`
+- **Browser resolve:** `conditions: ['browser']` for Svelte 5 component tests
+- **astro:content mock:** `tests/mocks/astro-content.ts` (aliased in vitest config)
 
 ### Test File Structure
 
 ```
 tests/
 ├── unit/
-│   ├── components/
-│   │   └── BlogCard.test.ts
-│   └── lib/
-│       └── blog.test.ts
-└── e2e/
-    ├── home.spec.ts
-    └── blog.spec.ts
+│   ├── lib/                    # Utility function tests
+│   │   ├── blog.test.ts
+│   │   ├── i18n.test.ts
+│   │   ├── search.test.ts
+│   │   └── translations.test.ts
+│   └── components/             # Svelte component tests
+│       ├── BlogCard.test.ts
+│       └── BlogPagination.test.ts
+├── fixtures/
+│   └── posts.ts                # Mock blog post data
+├── helpers/
+│   └── setup.ts                # Test setup (jest-dom matchers)
+└── mocks/
+    └── astro-content.ts        # Mock for astro:content virtual module
 ```
 
-### Example Unit Test (Future)
+### Key Patterns
 
+**Utility function tests:**
 ```typescript
-// tests/unit/lib/blog.test.ts
-import { describe, it, expect } from 'vitest';
-import { formatDate } from '@/lib/blog';
+import { describe, expect, it } from 'vitest';
+import { getPostSlug } from '@/lib/blog';
 
-describe('formatDate', () => {
-  it('formats date correctly', () => {
-    const date = new Date('2024-01-15');
-    expect(formatDate(date)).toBe('Jan 15, 2024');
-  });
-
-  it('handles invalid date', () => {
-    expect(() => formatDate(null)).toThrow();
+describe('getPostSlug', () => {
+  it('strips date prefix from post ID', () => {
+    expect(getPostSlug('en/2024-03-15_my-post')).toBe('my-post');
   });
 });
 ```
 
-### Example Component Test (Future)
-
+**Svelte component tests:**
 ```typescript
-// tests/unit/components/BlogCard.test.ts
 import { render, screen } from '@testing-library/svelte';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import BlogCard from '@/components/blog/BlogCard.svelte';
+import { publishedEnglishPost } from '../../fixtures/posts';
 
 describe('BlogCard', () => {
   it('renders post title', () => {
-    const post = {
-      data: { title: 'Test Post', description: 'Test desc', pubDate: new Date() },
-      id: 'test-post',
-    };
-    render(BlogCard, { props: { post } });
-    expect(screen.getByText('Test Post')).toBeInTheDocument();
+    render(BlogCard, { props: { post: publishedEnglishPost as never } });
+    expect(screen.getByText('My Awesome Post')).toBeDefined();
   });
 });
 ```
 
-## Steps (When Testing is Configured)
+**Important notes:**
+- Use `as never` cast for mock posts passed to functions expecting `CollectionEntry<'blog'>`
+- Svelte 5 components require `resolve.conditions: ['browser']` in vitest config
+- Do NOT test async functions that depend on `astro:content` (e.g., `getBlogPosts`)
+
+## Steps
 
 ### Step 1: Understand Target
 
 - Read the target file(s) and identify public behavior to test
-- Check for existing tests
-- Review testing patterns in the project
+- Check for existing tests in `tests/unit/`
+- Review testing patterns in existing test files
 
 ### Step 2: Plan Cases
 
@@ -139,8 +139,9 @@ describe('BlogCard', () => {
 
 ### Step 3: Implement Tests
 
-- Create or update test file
+- Create or update test file in `tests/unit/`
 - Use Vitest (describe, it, expect)
+- Import fixtures from `tests/fixtures/` when applicable
 - Keep tests focused; avoid testing implementation details
 
 ### Step 4: Validate
@@ -155,7 +156,7 @@ npm run biome:check    # Lint check
 ### Success Output
 
 ```
-## ✅ Tests Added/Updated
+## Tests Added/Updated
 
 ### Target
 {What was tested}
@@ -167,8 +168,8 @@ npm run biome:check    # Lint check
 - {list of cases covered}
 
 ### Validation
-- npm run test: ✅
-- npm run biome:check: ✅
+- npm run test: pass
+- npm run biome:check: pass
 
 ### Commit Message
 test: add|expand tests for {target}
@@ -180,38 +181,34 @@ test: add|expand tests for {target}
 
 - **Maximum files:** 10 (test files + any small test helpers)
 - **Maximum LOC:** 500 (test code)
-- **Naming:** `*.test.ts` or `*.spec.ts`
+- **Naming:** `*.test.ts`
 
 ### Stop Conditions
 
 **Stop and escalate** if:
 
-- Testing framework not configured
 - Target is auth/security-critical (coordinate with team)
 - Requires new test infrastructure not in project
 - Scope exceeds 10 files or 500 LOC
+- Need to mock `astro:content` beyond the existing stub
 
 ## Definition of Done
 
 - [ ] New or updated test files
-- [ ] Tests pass (when configured)
+- [ ] All tests pass (`npm run test`)
 - [ ] `npm run biome:check` passes
-- [ ] Tests are meaningful (not only coverage)
+- [ ] Tests are meaningful (not only coverage padding)
 
 ## Escalation Conditions
 
 **Escalate to Tier 3** if: integration/E2E design needed, or test architecture decisions.
 
-## Current Recommendation
-
-Since testing is not configured, consider:
-
-1. **Setting up Vitest first** - Use `/skill-create` to create a "setup-testing" skill
-2. **Document test requirements** - What needs testing priority
-3. **Start with utility functions** - Easiest to test, low risk
-
 ## Related
 
 - [quick-fix](../quick-fix/SKILL.md) - Small fixes
 - [reviewer](../../agents/reviewer.md) - Review test quality
-- docs/TESTING_GUIDE.md - Conventions (when configured)
+- docs/TESTING_GUIDE.md - Full testing conventions and setup
+
+## Changelog
+
+- **2026-02-17:** Updated from placeholder to actual Vitest setup. Removed "NOT CONFIGURED" status. Added real patterns, config details, and Svelte 5 compatibility notes.

@@ -458,6 +458,16 @@ export interface SiteTranslations {
   showPublishedOnly: string;
   publishesOn: string;
 
+  // 404 page
+  notFoundPage: {
+    title: string;
+    description: string;
+    heading: string;
+    message: string;
+    backHome: string;
+    searchBlog: string;
+  };
+
   // Errors
   searchError: string;
   loadError: string;

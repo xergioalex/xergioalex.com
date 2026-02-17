@@ -2,378 +2,151 @@
 
 Guide for testing in XergioAleX.com.
 
-## Current Status
+## Overview
 
-**Testing is NOT currently configured in this project.**
+This project uses **Vitest** for unit and component testing. The testing infrastructure covers:
 
-The `npm run test` command is a placeholder:
+- **Utility function tests** for all pure functions in `src/lib/`
+- **Svelte component tests** for key interactive components using `@testing-library/svelte`
+- **Coverage enforcement** at 80%+ on `src/lib/` code
 
-```json
-{
-  "scripts": {
-    "test": "echo 'Running tests...'"
-  }
-}
-```
+E2E testing (Playwright) is not yet configured.
 
-This document outlines the recommended testing approach for future implementation.
-
-## Recommended Testing Stack
-
-| Tool | Purpose | Type |
-|------|---------|------|
-| **Vitest** | Unit tests | Fast, Vite-native |
-| **Testing Library** | Component tests | DOM testing |
-| **Playwright** | E2E tests | Browser automation |
-
-## Future Setup
-
-### Step 1: Install Dependencies
+## Running Tests
 
 ```bash
-# Unit testing
-npm install -D vitest @testing-library/svelte happy-dom
+# Run all tests (single run)
+npm run test
 
-# E2E testing
-npm install -D @playwright/test
-npx playwright install
+# Watch mode (re-runs on file changes)
+npm run test:watch
+
+# Run with coverage report
+npm run test:coverage
 ```
 
-### Step 2: Configure Vitest
-
-Create `vitest.config.ts`:
-
-```typescript
-import { getViteConfig } from 'astro/config';
-
-export default getViteConfig({
-  test: {
-    include: ['tests/unit/**/*.test.ts'],
-    environment: 'happy-dom',
-  },
-});
-```
-
-### Step 3: Update package.json
-
-```json
-{
-  "scripts": {
-    "test": "vitest",
-    "test:run": "vitest run",
-    "test:watch": "vitest --watch",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
-  }
-}
-```
-
-### Step 4: Configure Playwright
-
-Create `playwright.config.ts`:
-
-```typescript
-import { defineConfig } from '@playwright/test';
-
-export default defineConfig({
-  testDir: './tests/e2e',
-  webServer: {
-    command: 'npm run preview',
-    port: 4321,
-    reuseExistingServer: !process.env.CI,
-  },
-  use: {
-    baseURL: 'http://localhost:4321',
-  },
-});
-```
-
-## Test Directory Structure
+## Test Structure
 
 ```
 tests/
-├── unit/                    # Vitest unit tests
-│   ├── lib/
-│   │   └── blog.test.ts     # Utility function tests
-│   └── components/
-│       └── BlogCard.test.ts # Component tests
-├── e2e/                     # Playwright E2E tests
-│   ├── home.spec.ts
-│   ├── blog.spec.ts
-│   └── navigation.spec.ts
-└── fixtures/                # Test data
-    └── posts.json
+├── unit/
+│   ├── lib/                    # Utility function tests
+│   │   ├── blog.test.ts        # Blog utility functions (41 tests)
+│   │   ├── i18n.test.ts        # i18n utility functions (46 tests)
+│   │   ├── search.test.ts      # Search/Fuse.js functions (26 tests)
+│   │   └── translations.test.ts # Translation system (14 tests)
+│   └── components/             # Svelte component tests
+│       ├── BlogCard.test.ts    # Blog card rendering (14 tests)
+│       └── BlogPagination.test.ts # Pagination logic (17 tests)
+├── fixtures/
+│   └── posts.ts                # Mock blog post data
+├── helpers/
+│   └── setup.ts                # Test setup (jest-dom matchers)
+└── mocks/
+    └── astro-content.ts        # Mock for astro:content virtual module
 ```
 
-## Test File Naming
+## Writing New Tests
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Unit | `*.test.ts` | `blog.test.ts` |
-| E2E | `*.spec.ts` | `home.spec.ts` |
+### File Naming
 
-## Example Tests
+- Use `*.test.ts` for all test files
+- Place in `tests/unit/lib/` for utility tests
+- Place in `tests/unit/components/` for component tests
 
-### Unit Test: Utility Function
+### Utility Function Tests
 
 ```typescript
-// tests/unit/lib/blog.test.ts
-import { describe, it, expect } from 'vitest';
-import { formatDate } from '@/lib/blog';
+import { describe, expect, it } from 'vitest';
+import { myFunction } from '@/lib/myModule';
 
-describe('formatDate', () => {
-  it('formats date correctly', () => {
-    const date = new Date('2024-01-15');
-    const result = formatDate(date);
-    expect(result).toBe('Jan 15, 2024');
+describe('myFunction', () => {
+  it('returns expected result for valid input', () => {
+    expect(myFunction('input')).toBe('expected');
   });
 
-  it('handles invalid date gracefully', () => {
-    expect(() => formatDate(null as any)).toThrow();
+  it('handles edge case', () => {
+    expect(myFunction('')).toBe('default');
   });
 });
 ```
 
-### Component Test: Svelte Component
+### Svelte Component Tests
 
 ```typescript
-// tests/unit/components/BlogCard.test.ts
 import { render, screen } from '@testing-library/svelte';
-import { describe, it, expect } from 'vitest';
-import BlogCard from '@/components/blog/BlogCard.svelte';
+import { describe, expect, it } from 'vitest';
+import MyComponent from '@/components/MyComponent.svelte';
 
-describe('BlogCard', () => {
-  const mockPost = {
-    id: 'test-post',
-    data: {
-      title: 'Test Post Title',
-      description: 'Test description',
-      pubDate: new Date('2024-01-15'),
-      tags: ['tech'],
-    },
-  };
-
-  it('renders post title', () => {
-    render(BlogCard, { props: { post: mockPost } });
-    expect(screen.getByText('Test Post Title')).toBeInTheDocument();
-  });
-
-  it('renders post description', () => {
-    render(BlogCard, { props: { post: mockPost } });
-    expect(screen.getByText('Test description')).toBeInTheDocument();
-  });
-
-  it('renders tags', () => {
-    render(BlogCard, { props: { post: mockPost } });
-    expect(screen.getByText('tech')).toBeInTheDocument();
+describe('MyComponent', () => {
+  it('renders content', () => {
+    render(MyComponent, { props: { title: 'Hello' } });
+    expect(screen.getByText('Hello')).toBeDefined();
   });
 });
 ```
 
-### E2E Test: Page Navigation
+### Using Fixtures
+
+Import mock data from `tests/fixtures/posts.ts`:
 
 ```typescript
-// tests/e2e/navigation.spec.ts
-import { test, expect } from '@playwright/test';
+import { publishedEnglishPost, draftPost } from '../../fixtures/posts';
 
-test.describe('Navigation', () => {
-  test('home page loads correctly', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveTitle(/XergioAleX/);
-  });
-
-  test('can navigate to blog', async ({ page }) => {
-    await page.goto('/');
-    await page.click('text=Blog');
-    await expect(page).toHaveURL('/blog');
-  });
-
-  test('can navigate to about', async ({ page }) => {
-    await page.goto('/');
-    await page.click('text=About');
-    await expect(page).toHaveURL('/about');
-  });
-
-  test('language switcher works', async ({ page }) => {
-    await page.goto('/');
-    // Switch to Spanish
-    await page.selectOption('select', '/es/');
-    await expect(page).toHaveURL('/es/');
-  });
-});
+// Use `as never` for CollectionEntry type compatibility
+render(BlogCard, { props: { post: publishedEnglishPost as never } });
 ```
 
-### E2E Test: Blog Functionality
+## Configuration
 
-```typescript
-// tests/e2e/blog.spec.ts
-import { test, expect } from '@playwright/test';
+### `vitest.config.ts`
 
-test.describe('Blog', () => {
-  test('blog page shows posts', async ({ page }) => {
-    await page.goto('/blog');
-    const posts = page.locator('article');
-    await expect(posts).toHaveCount.greaterThan(0);
-  });
+Key configuration:
 
-  test('can click on blog post', async ({ page }) => {
-    await page.goto('/blog');
-    const firstPost = page.locator('article').first();
-    await firstPost.click();
-    await expect(page.url()).toContain('/blog/');
-  });
+- **Environment:** `happy-dom` (lightweight DOM for tests)
+- **Path aliases:** `@/` maps to `src/` (matches tsconfig)
+- **Svelte support:** `@sveltejs/vite-plugin-svelte` with `hot: false`
+- **Browser resolve:** `conditions: ['browser']` required for Svelte 5 component tests
+- **astro:content mock:** Aliased to `tests/mocks/astro-content.ts` since Vitest cannot resolve Astro virtual modules
 
-  test('search filters posts', async ({ page }) => {
-    await page.goto('/blog');
-    await page.fill('input[type="search"]', 'markdown');
-    // Wait for search results
-    await page.waitForTimeout(500);
-    const posts = page.locator('article');
-    // Should show filtered results
-    await expect(posts).toHaveCount.lessThan(10);
-  });
+### Coverage
 
-  test('tag filtering works', async ({ page }) => {
-    await page.goto('/blog/tag/tech');
-    const posts = page.locator('article');
-    await expect(posts).toHaveCount.greaterThan(0);
-  });
-});
-```
+- **Provider:** V8
+- **Target:** 80%+ on statements, branches, functions, and lines for `src/lib/`
+- **Excludes:** `src/lib/types.ts`, `src/lib/enum.ts` (type-only files)
+- **Reporters:** text, text-summary, html
 
-### E2E Test: Dark Mode
+### Svelte 5 Compatibility
 
-```typescript
-// tests/e2e/theme.spec.ts
-import { test, expect } from '@playwright/test';
+Svelte 5 components require `resolve.conditions: ['browser']` in the Vitest config. Without this, `@testing-library/svelte` throws a `lifecycle_function_unavailable` error because Svelte resolves to server-side exports.
 
-test.describe('Theme', () => {
-  test('dark mode toggle works', async ({ page }) => {
-    await page.goto('/');
-    
-    // Check initial state (light mode)
-    const html = page.locator('html');
-    await expect(html).not.toHaveClass(/dark/);
-    
-    // Toggle dark mode
-    await page.click('[aria-label="Toggle dark mode"]');
-    await expect(html).toHaveClass(/dark/);
-    
-    // Toggle back
-    await page.click('[aria-label="Toggle dark mode"]');
-    await expect(html).not.toHaveClass(/dark/);
-  });
+## Test Conventions
 
-  test('dark mode persists on navigation', async ({ page }) => {
-    await page.goto('/');
-    await page.click('[aria-label="Toggle dark mode"]');
-    
-    // Navigate to another page
-    await page.click('text=Blog');
-    
-    // Should still be in dark mode
-    const html = page.locator('html');
-    await expect(html).toHaveClass(/dark/);
-  });
-});
-```
-
-## What to Test
-
-### Priority 1: Critical User Flows
-
-- [ ] Home page loads
-- [ ] Navigation works
-- [ ] Blog posts display
-- [ ] Blog post pages load
-- [ ] Dark mode toggle
-
-### Priority 2: Features
-
-- [ ] Search functionality
-- [ ] Tag filtering
-- [ ] Pagination
-- [ ] Language switching
-- [ ] RSS feed
-
-### Priority 3: Edge Cases
-
-- [ ] Empty search results
-- [ ] Invalid URLs (404)
-- [ ] Mobile navigation
+- Use descriptive `describe`/`it` blocks: `describe('getPostSlug')` + `it('strips date prefix from post ID')`
+- Prefer `expect().toBe()` for primitives, `expect().toEqual()` for objects
+- Test edge cases: empty strings, undefined values, boundary conditions
+- Do **not** test async functions that depend on `astro:content` (e.g., `getBlogPosts`, `getRelatedPosts`)
+- Import order: vitest > testing-library > source modules > fixtures
 
 ## Testing Best Practices
 
 ### Do
 
-- ✅ Test user-visible behavior, not implementation
-- ✅ Use meaningful test descriptions
-- ✅ Keep tests independent
-- ✅ Use test fixtures for data
-- ✅ Run tests in CI/CD
+- Test user-visible behavior, not implementation details
+- Use meaningful test descriptions that explain the expected behavior
+- Keep tests independent (no shared mutable state)
+- Use test fixtures for mock data
+- Test edge cases and error conditions
 
 ### Don't
 
-- ❌ Test Astro/Svelte internals
-- ❌ Over-mock to the point tests are meaningless
-- ❌ Write flaky tests that depend on timing
-- ❌ Skip testing after changes
-
-## CI/CD Integration
-
-When testing is set up, add to GitHub Actions:
-
-```yaml
-# .github/workflows/test.yml
-name: Test
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - run: npm run test:run
-      - run: npx playwright install --with-deps
-      - run: npm run test:e2e
-```
-
-## Validation Without Tests
-
-Until testing is configured, validate changes with:
-
-```bash
-# Type checking
-npm run astro:check
-
-# Linting
-npm run biome:check
-
-# Build verification
-npm run build
-
-# Manual testing
-npm run dev
-```
-
-## Next Steps
-
-To implement testing:
-
-1. Install dependencies (see Setup section)
-2. Create configuration files
-3. Add first tests for critical paths
-4. Set up CI/CD integration
-5. Gradually increase coverage
+- Test Astro/Svelte framework internals
+- Over-mock to the point tests are meaningless
+- Write flaky tests that depend on timing
+- Skip running tests before committing
 
 ## Resources
 
 - [Vitest Documentation](https://vitest.dev/)
 - [Testing Library Svelte](https://testing-library.com/docs/svelte-testing-library/intro)
-- [Playwright Documentation](https://playwright.dev/)
 - [Astro Testing Recipes](https://docs.astro.build/en/recipes/testing/)
