@@ -30,7 +30,7 @@ This document describes the technical architecture of XergioAleX.com, a personal
                               │
                               ▼
                     ┌─────────────────┐
-                    │  GitHub Pages   │
+                    │ Cloudflare Pages │
                     │   (Hosting)     │
                     └─────────────────┘
 ```
@@ -483,7 +483,7 @@ const { lang, title, description } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
     <slot name="head" />
-    <script is:inline src="/scripts/global.theme.js"></script>
+    <script is:inline>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');else{document.documentElement.classList.remove('dark');localStorage.setItem('theme','light');}})();</script>
   </head>
   <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <Header client:load lang={lang} />
@@ -575,10 +575,10 @@ export default {
 Class-based dark mode with theme persistence:
 
 ```javascript
-// public/scripts/global.theme.js
-const theme = localStorage.getItem('theme') || 
-  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-document.documentElement.classList.toggle('dark', theme === 'dark');
+// Inlined in MainLayout.astro (no external file)
+const theme = localStorage.getItem('theme');
+if (theme === 'dark') document.documentElement.classList.add('dark');
+else { document.documentElement.classList.remove('dark'); localStorage.setItem('theme', 'light'); }
 ```
 
 ## Internationalization
@@ -712,14 +712,14 @@ npm run dev              # Start dev server
 npm run build            # Build with type checking
 npm run astro:preview    # Preview production build
 
-# GitHub Pages
-npm run build:ghpages    # Build to docs/ folder
+# Cloudflare Pages
+npm run build            # Build to dist/ folder (prebuild runs images:webp)
 ```
 
 ### Output Structure
 
 ```
-docs/                    # GitHub Pages output
+dist/                    # Build output (Cloudflare Pages)
 ├── index.html
 ├── about/index.html
 ├── blog/
@@ -731,11 +731,11 @@ docs/                    # GitHub Pages output
 └── images/
 ```
 
-### GitHub Pages Configuration
+### Cloudflare Pages Configuration
 
-- Output directory: `docs/`
-- Custom domain: `xergioalex.com` (via CNAME file)
-- `.nojekyll` file to disable Jekyll processing
+- Output directory: `dist/`
+- Build command: `npm run build`
+- Custom domain configured in Cloudflare dashboard
 
 ## Performance Considerations
 

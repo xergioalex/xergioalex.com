@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
@@ -36,7 +37,7 @@ const posts = allPosts
 <section class={`${sectionSpacing} ${sectionSurface} transition-colors duration-300`}>
   <div class="main-container">
     <h2
-      class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8"
+      class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8"
     >
       {t.homeSections.latestArticles}
     </h2>
@@ -48,11 +49,12 @@ const posts = allPosts
             class="block bg-white dark:bg-gray-900 rounded-xl shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden"
           >
             {post.data.heroImage && (
-              <img
+              <BlogHeroImage
                 src={post.data.heroImage}
-                alt=""
+                alt={post.data.title}
+                width={600}
+                height={160}
                 class="w-full h-40 object-cover"
-                loading="lazy"
               />
             )}
             <div class="p-6">
@@ -62,7 +64,7 @@ const posts = allPosts
               <p class="text-gray-600 dark:text-gray-300 mb-3">
                 {post.data.description}
               </p>
-              <span class="text-gray-500 dark:text-gray-400 text-sm">
+              <span class="text-gray-600 dark:text-gray-300 text-sm">
                 <FormattedDate date={post.data.pubDate} lang={lang} />
               </span>
             </div>
@@ -73,7 +75,7 @@ const posts = allPosts
     <div class="mt-8 text-center">
       <a
         href={`${prefix}/blog`}
-        class="inline-block border-b-2 border-secondary text-secondary font-bold text-xl hover:opacity-80 transition"
+        class="inline-block border-b-2 border-secondary text-gray-900 dark:text-white font-bold text-base sm:text-lg hover:text-secondary transition"
       >
         {viewAllText} &rarr;
       </a>

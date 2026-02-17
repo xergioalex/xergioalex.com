@@ -50,7 +50,13 @@ function codecheck() {
 		print.error "⚠️ Biome checks failed..."
 		return 1
 	fi
-  test
+	print.success "Generating WebP images (skips if up to date)..."
+	npm run images:webp
+	if [ $? != 0 ]; then
+		print.error "⚠️ WebP generation failed..."
+		return 1
+	fi
+	test
 }
 
 function install() {
@@ -286,7 +292,7 @@ function show_welcome() {
     echo "  • check                - Run astro and biome checks"
     echo "  • fix                  - Run checks and apply automatic fixes"
     echo "  • test                 - Run tests"
-    echo "  • codecheck            - Run all checks (fix + test)"
+    echo "  • codecheck            - Run all checks (fix + images:webp + test)"
     echo "  • install              - Run npm install"
     echo ""
     echo "AI Assistant commands:"

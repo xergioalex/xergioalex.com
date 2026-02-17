@@ -117,7 +117,7 @@ This post will go live on June 15, 2026.
 - **Production:** Hidden until a site rebuild occurs after `pubDate`
 - **Dev `?preview=all`:** Visible with a blue "Scheduled" badge showing the publish date
 - Posts do NOT auto-publish — they require a site rebuild (deploy) after `pubDate`
-- GitHub Pages deployments trigger on push, so schedule a rebuild or push for the post to go live
+- Cloudflare Pages deployments trigger on push to main, so schedule a rebuild or push for the post to go live
 
 ### Draft + Scheduled
 

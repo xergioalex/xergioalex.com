@@ -45,21 +45,20 @@ npm run build
 - Builds static site to `dist/` folder
 - Optimizes assets (CSS, JS, images)
 
-### Build for GitHub Pages
+### Production Build (Cloudflare Pages)
 
 ```bash
-npm run build:ghpages
+npm run build
 ```
 
 This command:
-1. Removes existing `docs/` folder
-2. Builds to `docs/` directory
-3. Creates `.nojekyll` file
-4. Copies `CNAME` for custom domain
+1. Runs `prebuild` (generates WebP variants via `images:webp`)
+2. Runs TypeScript checking (`astro check`)
+3. Builds to `dist/` directory
 
 **Output structure:**
 ```
-docs/
+dist/
 ├── index.html
 ├── about/index.html
 ├── blog/
@@ -67,8 +66,7 @@ docs/
 ├── _astro/
 │   ├── *.css
 │   └── *.js
-├── .nojekyll
-└── CNAME
+└── images/
 ```
 
 ## Code Quality
@@ -186,17 +184,9 @@ npm run astro:check
 npm run biome:check && npm run astro:check && npm run build
 ```
 
-### Deploy to GitHub Pages
+### Deploy (Cloudflare Pages)
 
-```bash
-# Build for deployment
-npm run build:ghpages
-
-# Commit and push docs/ folder
-git add docs/
-git commit -m "chore: update build"
-git push
-```
+Cloudflare Pages deploys automatically on push to `main`. No manual deploy step needed. Ensure `npm run build` succeeds locally before pushing.
 
 ### Update Dependencies
 
@@ -252,7 +242,7 @@ npm install
 
 ```bash
 # Remove build output
-rm -rf dist docs
+rm -rf dist
 
 # Rebuild
 npm run build
@@ -277,7 +267,7 @@ Full `package.json` scripts:
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "build:ghpages": "rm -rf docs && astro build --outDir ./docs && touch docs/.nojekyll && cp CNAME docs/",
+    "prebuild": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
     "astro": "astro",
     "astro:check": "astro check",
     "astro:preview": "astro preview",

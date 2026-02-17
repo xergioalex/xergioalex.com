@@ -121,7 +121,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       title: 'Lo Que Construyo',
       subtitle: 'Desde plataformas con IA hasta herramientas open source',
       description:
-        'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-secondary hover:underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma utilizada por miles de equipos en Slack, Microsoft Teams y Google Chat. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
+        'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma utilizada por miles de equipos en Slack, Microsoft Teams y Google Chat. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
       cta: 'Explorar mis proyectos',
     },
     community: {
@@ -926,6 +926,17 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   showAllPosts: 'Mostrar todos los posts',
   showPublishedOnly: 'Solo publicados',
   publishesOn: 'Se publica el',
+
+  // 404 page
+  notFoundPage: {
+    title: 'Pagina no encontrada',
+    description: 'La pagina que buscas no existe o ha sido movida.',
+    heading: 'Pagina no encontrada',
+    message:
+      'Lo sentimos, la pagina que buscas no existe o pudo haber sido movida. Intenta volver a la pagina principal o buscar en el blog.',
+    backHome: 'Volver al inicio',
+    searchBlog: 'Buscar en el blog',
+  },
 
   // Errors
   searchError: 'Ocurrió un error al buscar. Por favor intenta de nuevo.',

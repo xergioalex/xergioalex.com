@@ -310,6 +310,39 @@ Use scoped styles in components when Tailwind isn't sufficient:
 </style>
 ```
 
+## Accessibility Standards (MANDATORY)
+
+All UI code must meet **WCAG 2.1 AA** compliance. Key rules:
+
+### Color Contrast
+
+- **Normal text:** 4.5:1 minimum contrast ratio
+- **Large text (>=18px or >=14px bold):** 3:1 minimum
+- **Standard pairing:** `text-gray-600 dark:text-gray-300` for secondary/body text
+- **Never use:** `text-gray-400`, `dark:text-gray-400`, `dark:text-gray-500` for body text
+
+### Images
+
+- Every `<img>` must have `width` and `height` attributes (prevents CLS)
+- Informative images: descriptive `alt` text
+- Decorative images: `alt=""` (optionally `aria-hidden="true"`)
+- Icons inside labeled links: `alt=""` (parent `<a>` has `aria-label`)
+
+### Semantic HTML
+
+- One `<h1>` per page, sequential heading levels (no skipping)
+- Use `<button>` for actions, `<a>` for navigation
+- Use landmark elements: `<header>`, `<nav>`, `<main>`, `<footer>`
+- External links: always include `rel="noopener"` with `target="_blank"`
+
+### ARIA
+
+- Navigation dropdowns: use disclosure pattern (`aria-expanded`, `aria-haspopup`), **not** `role="menu"`
+- Progress bars: use `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`
+- Decorative emojis/icons: `aria-hidden="true"`
+
+**Full reference:** See [Accessibility Guide](ACCESSIBILITY.md) for complete standards, contrast tables, and component patterns.
+
 ## File Naming Conventions
 
 ### Components

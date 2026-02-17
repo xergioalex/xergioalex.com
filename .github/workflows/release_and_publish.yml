@@ -67,83 +67,8 @@ jobs:
     outputs:
       size_label_found: ${{ steps.check_pr_size_label_step.outputs.size_label_found }}
 
-  build_and_deploy:
-    needs: check_pr_size_label
-    name: 'Build application bundle'
-    runs-on: ubuntu-latest
-    environment: live
-    env:
-      # Sentry
-      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      # Google Maps
-      PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.PUBLIC_GOOGLE_MAPS_API_KEY }}
-      # Google Analytics
-      PUBLIC_GA_TRACKING_ID: ${{ secrets.PUBLIC_GA_TRACKING_ID }}
-      # Mixpanel
-      PUBLIC_MIXPANEL_TOKEN: ${{ secrets.PUBLIC_MIXPANEL_TOKEN }}
-    steps:
-      - name: Step 1 - ⚙️ Setup Actions
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: '30'
-          token: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
-      - name: Step 2 - ⚙️ Setup GitHub Config
-        run: |
-          git config user.name "Sergio Alexander Florez Galeano"
-          git config user.email "xergioalex@gmail.com"
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24.13.0'
-      - name: Step 3 - Remove previous build
-        run: |
-          rm -rf docs
-      - name: Step 4 - 📁 Cache node modules
-        id: cache-npm
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: |
-            ~/.npm
-            node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: Step 5 - ⚙️ Install Dependencies
-        run: |
-          npm install
-          # Install specific dependencies for CI (x64)
-          npm install --no-save @rollup/rollup-linux-x64-gnu@4.29.1 lightningcss-linux-x64-gnu@1.28.2 @esbuild/linux-x64@0.24.2
-      - name: Step 6 - Build static files
-        run: |
-          npm run build:ghpages
-          if [ ! -d "docs" ]; then
-            echo "⚠️ Error: docs folder does not exist after build."
-            exit 1
-          fi
-      - name: Step 7 - Deploy to ghpages branch
-        run: |
-          # Create or reset local ghpages branch to current main HEAD
-          # Using -B flag: creates the branch or resets it if it already exists
-          git checkout -B ghpages
-          # Stage the built docs/ folder and all current files
-          git add -A
-          # Commit build output (allow no-op if nothing changed)
-          git commit -m "Build: Update static files for GitHub Pages" || echo "No changes to commit"
-          # Force-push to overwrite remote ghpages branch completely
-          # This eliminates merge conflicts by always starting fresh from main
-          git push --force origin ghpages
-        env:
-          GITHUB_TOKEN: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
-      - name: Step 8 - Checkout 'main' branch
-        run: |
-          git checkout main
-
   release_and_publish:
-    needs: build_and_deploy
+    needs: check_pr_size_label
     name: 'Release and Publish'
     runs-on: ubuntu-latest
     steps:
@@ -168,32 +93,23 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-      - name: Step 1 - 📁 Cache build dist
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-build-dist
-        with:
-          path: dist
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-      - name: Step 2 - ⚙️ Setup GitHub Config
+      - name: Step 1 - ⚙️ Setup GitHub Config
         run: |
           git config user.name "Sergio Alexander Florez Galeano"
           git config user.email "xergioalex@gmail.com"
           git config advice.skippedCherryPicks false
-      - name: Step 3 - 📄 Set GitHub release content "BODY" env var
+      - name: Step 2 - 📄 Set GitHub release content "BODY" env var
         run: |
           bash .github/scripts/get_github_release_log.sh
           if [[ ! -f git_logs_output.txt ]]; then
             echo "⚠️ No description found for release body content."
             exit 1
           fi
-      - name: Step 4 -🔄 Prepare release
+      - name: Step 3 - 🔄 Prepare release
         run: |
           npm run release
           git push --follow-tags origin main
-      - name: Step 5 - 🏷️ Set GitHub release "TAG" env vars
+      - name: Step 4 - 🏷️ Set GitHub release "TAG" env vars
         run: |
           GITHUB_RELEASE_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           if [[ -z $GITHUB_RELEASE_TAG ]]; then
@@ -203,19 +119,13 @@ jobs:
           echo "::set-env name=GITHUB_RELEASE_TAG::$GITHUB_RELEASE_TAG"
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-      - name: Step 6 - 🚀 Publish GitHub release
+      - name: Step 5 - 🚀 Publish GitHub release
         uses: ncipollo/release-action@v1
         with:
           name: Release ${{ env.GITHUB_RELEASE_TAG }}
           tag: ${{ env.GITHUB_RELEASE_TAG }}
           bodyFile: git_logs_output.txt
           token: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
-      # - name: Step 7 - 🗑️ Deleting source branch
-      #   run: |
-      #     PR_MERGED=$(jq --raw-output .pull_request.merged "$GITHUB_EVENT_PATH")
-      #     if [ "$PR_MERGED" = "true" ]; then
-      #       git push origin --delete "${{ github.event.pull_request.head.ref }}"
-      #     fi
 
     outputs:
       package_version: ${{ steps.publish_npm_package.outputs.package_version }}

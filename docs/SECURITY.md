@@ -193,12 +193,12 @@ Always commit `package-lock.json` to ensure reproducible builds.
 
 ## Build Security
 
-### GitHub Pages Deployment
+### Cloudflare Pages Deployment
 
-The site deploys to GitHub Pages from the `docs/` folder:
+The site deploys to Cloudflare Pages from the `dist/` folder:
 
 ```bash
-npm run build:ghpages
+npm run build
 ```
 
 Security considerations:
@@ -206,7 +206,7 @@ Security considerations:
 - [ ] Build output (`docs/`) contains only public content
 - [ ] No `.env` files in build output
 - [ ] No source maps with sensitive paths
-- [ ] HTTPS enforced by GitHub Pages
+- [ ] HTTPS enforced by Cloudflare
 
 ### Build-Time Secrets
 
@@ -221,7 +221,7 @@ The secret is used at build time but not included in output.
 
 ## Headers and CSP
 
-GitHub Pages has limited header configuration. For enhanced security, consider:
+Cloudflare Pages allows custom headers. For enhanced security, consider:
 
 ### Meta Tags
 

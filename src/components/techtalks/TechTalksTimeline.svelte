@@ -51,7 +51,7 @@ function getMonthName(date: Date): string {
 
 {#if posts.length === 0}
   <div class="text-center py-16">
-    <p class="text-gray-500 dark:text-gray-400 text-lg">{t.techTalksPage.emptyState}</p>
+    <p class="text-gray-600 dark:text-gray-300 text-lg">{t.techTalksPage.emptyState}</p>
   </div>
 {:else}
   <div class="relative py-8">
@@ -103,12 +103,24 @@ function getMonthName(date: Date): string {
           >
             {#if post.data.heroImage}
               <a href={`${prefix}/blog/${slug}/`} class="block">
-                <img
-                  src={post.data.heroImage}
-                  alt={post.data.title}
-                  class="w-full h-44 object-cover"
-                  loading="lazy"
-                />
+                {#if post.data.heroImage.match(/\.(png|jpe?g)$/i)}
+                  <picture>
+                    <source srcset={post.data.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={post.data.heroImage}
+                      alt={post.data.title}
+                      class="w-full h-44 object-cover"
+                      loading="lazy"
+                    />
+                  </picture>
+                {:else}
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    class="w-full h-44 object-cover"
+                    loading="lazy"
+                  />
+                {/if}
               </a>
             {/if}
             <div class="p-5">
@@ -121,7 +133,7 @@ function getMonthName(date: Date): string {
                 {post.data.description}
               </p>
               <div class="flex flex-wrap items-center gap-2">
-                <time class="text-xs text-gray-500 dark:text-gray-400">
+                <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(post.data.pubDate)}
                 </time>
                 {#if post.data.tags && post.data.tags.length > 0}

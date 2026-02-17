@@ -38,7 +38,7 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 | UI | [Svelte](https://svelte.dev) 5.x |
 | Styling | [Tailwind CSS](https://tailwindcss.com) 4.x |
 | Content | Markdown, MDX |
-| Hosting | GitHub Pages |
+| Hosting | Cloudflare Pages |
 
 ## Quick Start
 
@@ -55,7 +55,7 @@ Visit [http://localhost:4321](http://localhost:4321) to preview.
 | :------ | :---------- |
 | `npm run dev` | Start dev server at `localhost:4321` |
 | `npm run build` | Production build with type check |
-| `npm run build:ghpages` | Build for GitHub Pages (outputs to `docs/`) |
+| `npm run build` | Production build (outputs to `dist/`) |
 | `npm run astro:preview` | Preview production build locally |
 | `npm run biome:check` | Lint and format check |
 | `npm run biome:fix` | Auto-fix lint and format issues |
@@ -89,10 +89,10 @@ Visit [http://localhost:4321](http://localhost:4321) to preview.
 
 ## Deployment
 
-The site is deployed to [GitHub Pages](https://pages.github.com) via the `docs/` directory:
+The site is deployed to [Cloudflare Pages](https://pages.cloudflare.com) via the `dist/` directory:
 
 ```bash
-npm run build:ghpages
+npm run build
 ```
 
 Then commit and push the `docs/` folder. Live at [xergioalex.com](https://xergioalex.com).
@@ -108,5 +108,5 @@ Then commit and push the `docs/` folder. Live at [xergioalex.com](https://xergio
 ---
 
 <p align="center">
-  <sub>Built with Astro · Hosted on GitHub Pages</sub>
+  <sub>Built with Astro · Hosted on Cloudflare Pages</sub>
 </p>

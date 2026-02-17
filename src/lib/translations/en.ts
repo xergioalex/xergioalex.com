@@ -120,7 +120,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       title: 'What I Build',
       subtitle: 'From AI-powered platforms to open source tools',
       description:
-        'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-secondary hover:underline">DailyBot (YC S21)</a>, I\'ve architected a platform used by thousands of teams on Slack, Microsoft Teams, and Google Chat. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
+        'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, I\'ve architected a platform used by thousands of teams on Slack, Microsoft Teams, and Google Chat. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
       cta: 'Explore my projects',
     },
     community: {
@@ -913,6 +913,18 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   showAllPosts: 'Show all posts',
   showPublishedOnly: 'Show published only',
   publishesOn: 'Publishes on',
+
+  // 404 page
+  notFoundPage: {
+    title: 'Page Not Found',
+    description:
+      'The page you are looking for does not exist or has been moved.',
+    heading: 'Page Not Found',
+    message:
+      "Sorry, the page you are looking for doesn't exist or may have been moved. Try navigating back to the homepage or searching the blog.",
+    backHome: 'Go back home',
+    searchBlog: 'Search the blog',
+  },
 
   // Errors
   searchError: 'An error occurred while searching. Please try again.',

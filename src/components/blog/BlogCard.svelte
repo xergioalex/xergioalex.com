@@ -93,11 +93,28 @@ $: displayDescription = searchResult
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   {#if postData.heroImage}
     <div class="relative">
-      <img
-        src={postData.heroImage}
-        alt={postData.title}
-        class="w-full h-48 object-cover"
-      />
+      {#if postData.heroImage.match(/\.(png|jpe?g)$/i)}
+        <picture>
+          <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+          <img
+            src={postData.heroImage}
+            alt={postData.title}
+            width={400}
+            height={192}
+            class="w-full h-48 object-cover"
+            loading="lazy"
+          />
+        </picture>
+      {:else}
+        <img
+          src={postData.heroImage}
+          alt={postData.title}
+          width={400}
+          height={192}
+          class="w-full h-48 object-cover"
+          loading="lazy"
+        />
+      {/if}
       {#if isDev && (effectiveStatus !== 'published' || isDemo)}
         <div class="absolute top-2 right-2">
           <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
@@ -111,7 +128,7 @@ $: displayDescription = searchResult
         <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
       </div>
     {/if}
-    <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+    <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">
       <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {@html displayTitle}
       </a>
@@ -120,7 +137,7 @@ $: displayDescription = searchResult
       {@html displayDescription}
     </p>
     <div class="flex flex-wrap justify-between items-center gap-2">
-      <time class="text-sm text-gray-500 dark:text-gray-400">
+      <time class="text-sm text-gray-600 dark:text-gray-300">
         {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',

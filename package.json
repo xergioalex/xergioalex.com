@@ -1,11 +1,11 @@
 {
   "name": "xergioalex.com",
   "type": "module",
-  "version": "0.0.35",
+  "version": "0.0.38",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "build:ghpages": "rm -rf docs && astro build --outDir ./docs && touch docs/.nojekyll && cp CNAME docs/",
+    "prebuild": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
     "astro": "astro",
     "astro:check": "astro check",
     "astro:preview": "astro preview",
@@ -14,8 +14,11 @@
     "biome:fix:unsafe": "biome check --write --unsafe",
     "ncu:check": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "echo 'Running tests...'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
+    "images:webp": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
     "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
   },
   "dependencies": {
@@ -34,7 +37,12 @@
     "@biomejs/biome": "2.3.15",
     "@tailwindcss/typography": "0.5.19",
     "@tailwindcss/vite": "4.1.18",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/svelte": "^5.3.1",
+    "@vitest/coverage-v8": "^4.0.18",
+    "happy-dom": "^20.6.1",
     "npm-check-updates": "19.3.2",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "vitest": "^4.0.18"
   }
 }

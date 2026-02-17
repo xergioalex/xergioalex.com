@@ -1,16 +1,40 @@
 ---
+import { existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+
 interface Props {
   image: string;
 }
 
 const { image } = Astro.props;
+const isRaster = /\.(png|jpe?g)$/i.test(image);
+const webpSrc = isRaster ? image.replace(/\.(png|jpe?g)$/i, '.webp') : null;
+const publicDir = resolve(process.cwd(), 'public');
+const webpPath = webpSrc ? join(publicDir, webpSrc.replace(/^\//, '')) : null;
+const webpExists = webpPath ? existsSync(webpPath) : false;
 ---
 
 <div class="relative">
-  <img
-    src={image}
-    alt="Sergio Alex"
-    class="max-w-full block sm:min-w-[320px] md:min-w-[480px]"
-    loading="lazy"
-  />
+  {isRaster && webpSrc && webpExists ? (
+    <picture>
+      <source srcset={webpSrc} type="image/webp" />
+      <img
+        src={image}
+        alt="Sergio Alex"
+        width={600}
+        height={480}
+        class="max-w-full block max-w-[280px] sm:max-w-[360px] md:max-w-[480px]"
+        loading="lazy"
+      />
+    </picture>
+  ) : (
+    <img
+      src={image}
+      alt="Sergio Alex"
+      width={600}
+      height={480}
+      class="max-w-full block max-w-[280px] sm:max-w-[360px] md:max-w-[480px]"
+      loading="lazy"
+    />
+  )}
 </div>

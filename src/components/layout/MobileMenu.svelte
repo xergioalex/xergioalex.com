@@ -1,6 +1,6 @@
 <script lang="ts">
 import { onDestroy, onMount } from 'svelte';
-import { slide } from 'svelte/transition';
+import { fade } from 'svelte/transition';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -26,23 +26,27 @@ $: otherLanguages = getSupportedLanguages().filter((l) => l !== lang);
 function lockBodyScroll() {
   if (isScrollLocked) return;
   lockedScrollY = window.scrollY;
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${lockedScrollY}px`;
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.width = '100%';
   isScrollLocked = true;
+  // Defer DOM writes to next frame to avoid forced reflow (read/write in same tick as Svelte update)
+  requestAnimationFrame(() => {
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  });
 }
 
 function unlockBodyScroll() {
   if (!isScrollLocked) return;
+  const y = lockedScrollY;
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.left = '';
   document.body.style.right = '';
   document.body.style.width = '';
-  window.scrollTo(0, lockedScrollY);
   isScrollLocked = false;
+  requestAnimationFrame(() => window.scrollTo(0, y));
 }
 
 // Lock body scroll when menu is open
@@ -96,10 +100,10 @@ onDestroy(() => {
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
-    <a href={prefix || '/'} class="nav-link text-2xl text-center">{t.nav.home}</a>
-    <a href="{prefix}/blog" class="nav-link text-2xl text-center">{t.nav.blog}</a>
+    <a href={prefix || '/'} class="nav-link text-xl text-center">{t.nav.home}</a>
+    <a href="{prefix}/blog" class="nav-link text-xl text-center">{t.nav.blog}</a>
     <button
-      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      class="nav-link text-xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => workOpen = !workOpen}
       aria-expanded={workOpen}
       aria-controls="work-dropdown"
@@ -121,16 +125,16 @@ onDestroy(() => {
       <div
         id="work-dropdown"
         class="flex flex-col items-center gap-2 mt-1"
-        transition:slide={{ duration: 200 }}
+        transition:fade={{ duration: 150 }}
       >
-        <a href="{prefix}/portfolio" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.portfolio}</a>
-        <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
-        <a href="{prefix}/tech-talks" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
-        <a href="{prefix}/trading" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
+        <a href="{prefix}/portfolio" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.portfolio}</a>
+        <a href="{prefix}/dailybot" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
+        <a href="{prefix}/tech-talks" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.techTalks}</a>
+        <a href="{prefix}/trading" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.trading}</a>
       </div>
     {/if}
     <button
-      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      class="nav-link text-xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => aboutOpen = !aboutOpen}
       aria-expanded={aboutOpen}
       aria-controls="about-dropdown"
@@ -152,19 +156,19 @@ onDestroy(() => {
       <div
         id="about-dropdown"
         class="flex flex-col items-center gap-2 mt-1"
-        transition:slide={{ duration: 200 }}
+        transition:fade={{ duration: 150 }}
       >
-        <a href="{prefix}/about" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
-        <a href="{prefix}/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
-        <a href="{prefix}/entrepreneur" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
-        <a href="{prefix}/maker" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
-        <a href="{prefix}/foodie" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>
-        <a href="{prefix}/hobbies" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.hobbies}</a>
+        <a href="{prefix}/about" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
+        <a href="{prefix}/cv" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
+        <a href="{prefix}/entrepreneur" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.entrepreneur}</a>
+        <a href="{prefix}/maker" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.maker}</a>
+        <a href="{prefix}/foodie" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.foodie}</a>
+        <a href="{prefix}/hobbies" class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.hobbies}</a>
       </div>
     {/if}
-    <a href="{prefix}/contact" class="nav-link text-2xl text-center">{t.nav.contact}</a>
+    <a href="{prefix}/contact" class="nav-link text-xl text-center">{t.nav.contact}</a>
     <button
-      class="nav-link text-2xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
+      class="nav-link text-xl text-center flex items-center justify-center gap-2 focus:outline-none cursor-pointer"
       on:click={() => languageOpen = !languageOpen}
       aria-expanded={languageOpen}
       aria-controls="language-dropdown"
@@ -186,10 +190,10 @@ onDestroy(() => {
       <div
         id="language-dropdown"
         class="flex flex-col items-center gap-2 mt-1"
-        transition:slide={{ duration: 200 }}
+        transition:fade={{ duration: 150 }}
       >
         {#each alternateLanguageUrls as alt}
-          <a href={alt.url} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
+          <a href={alt.url} class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>
             <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.nativeName}
           </a>
         {/each}

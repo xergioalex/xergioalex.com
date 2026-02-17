@@ -1,6 +1,6 @@
-# GitHub Pages Deployment Guide
+# Cloudflare Pages Deployment Guide
 
-How the site is built and deployed to GitHub Pages.
+How the site is built and deployed to Cloudflare Pages.
 
 ---
 
@@ -9,117 +9,95 @@ How the site is built and deployed to GitHub Pages.
 ```
 PR merged to main
        │
-       ▼
-release_and_publish.yml
+       ├─────────────────────────────────────┐
+       │                                     │
+       ▼                                     ▼
+Cloudflare Pages                      release_and_publish.yml
+(auto-triggered on push)              (version bump, tag, GitHub release)
        │
        ▼
 ┌──────────────────────────────────┐
-│ build_and_deploy job             │
+│ Cloudflare Pages Build          │
 │                                  │
-│ 1. Checkout main                 │
-│ 2. npm install                   │
-│ 3. npm run build:ghpages         │
-│    └→ Astro builds to docs/      │
-│ 4. git checkout -B ghpages       │
-│ 5. git push --force to ghpages   │
+│ 1. npm install                   │
+│ 2. npm run build                 │
+│    └→ prebuild runs images:webp  │
+│    └→ Astro builds to dist/      │
+│ 3. Deploy dist/ to CDN           │
 └──────────────────────────────────┘
-       │
-       ▼
-GitHub Pages serves from
-ghpages branch / docs/ folder
 ```
 
-## Deployment Strategy: Force-Push
+## Deployment Strategy
 
-The deployment uses a **conflict-free force-push strategy**:
+**Cloudflare Pages** is connected to the GitHub repository. On every push to `main`:
 
-1. The workflow checks out `main` at the merged PR commit
-2. Builds the static site with `npm run build:ghpages` (output: `docs/`)
-3. Creates or resets a local `ghpages` branch from `main` HEAD using `git checkout -B ghpages`
-4. Stages all files (main code + built `docs/`) with `git add -A`
-5. Commits with message: `Build: Update static files for GitHub Pages`
-6. Force-pushes to `origin/ghpages`, completely replacing the remote branch
+1. Cloudflare detects the push
+2. Runs `npm run build` (which triggers `prebuild` → WebP generation → Astro build)
+3. Serves the `dist/` folder from its global CDN
 
-### Why Force-Push?
+### Branch Protection (Recommended)
 
-The `ghpages` branch is a **build-output branch** — its only purpose is to hold the compiled `docs/` folder for GitHub Pages to serve. It has no unique code or history worth preserving.
+Configure in **GitHub → Settings → Branches → Branch protection rules** for `main`:
 
-**Previous approach (broken):** The workflow previously used `git pull origin ghpages --rebase`, which attempted to merge `main` and `ghpages` history. Since these branches always diverge (ghpages has old source code + old builds), this produced 40+ merge conflicts after every significant code change, especially package upgrades.
+- **Require a pull request before merging**
+- **Require status checks to pass before merging**: `code_check`, `pull_request_content_and_size_check`
+- **Require branches to be up to date before merging**
 
-**Current approach (reliable):** Force-push overwrites the remote `ghpages` entirely. No merge, no rebase, no conflicts — ever.
+This ensures:
+1. All changes go through PRs
+2. Linters, tests, and build must pass before merge
+3. On merge → Cloudflare deploys automatically; release workflow bumps version and creates tag
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `.github/workflows/release_and_publish.yml` | Deployment workflow (job: `build_and_deploy`) |
+| `package.json` → `build` | Production build (prebuild runs images:webp) |
+| `package.json` → `prebuild` | Generates WebP variants before build |
 | `astro.config.mjs` | Astro build configuration |
-| `package.json` → `build:ghpages` | Build script for GitHub Pages output |
-| `docs/` (on ghpages) | Built static site served by GitHub Pages |
+| `dist/` | Built static site (output, not committed) |
 
-## GitHub Pages Configuration
+## Cloudflare Pages Configuration
 
 | Setting | Value |
 |---------|-------|
-| **Source** | Deploy from a branch |
-| **Branch** | `ghpages` |
-| **Folder** | `/docs` |
+| **Build command** | `npm run build` |
+| **Build output directory** | `dist` |
+| **Root directory** | (empty) |
+| **Node.js version** | 24 (or match `.nvmrc` if present) |
 
-## Environment Secrets
+## Environment Variables
 
-The `build_and_deploy` job runs in the `live` environment with these secrets:
-
-| Secret | Injected As | Purpose |
-|--------|-------------|---------|
-| `SENTRY_DSN` | `env.SENTRY_DSN` | Sentry error tracking |
-| `SENTRY_PROJECT` | `env.SENTRY_PROJECT` | Sentry project ID |
-| `SENTRY_AUTH_TOKEN` | `env.SENTRY_AUTH_TOKEN` | Sentry authentication |
-| `PUBLIC_GOOGLE_MAPS_API_KEY` | `env.PUBLIC_GOOGLE_MAPS_API_KEY` | Google Maps |
-| `PUBLIC_GA_TRACKING_ID` | `env.PUBLIC_GA_TRACKING_ID` | Google Analytics |
-| `PUBLIC_MIXPANEL_TOKEN` | `env.PUBLIC_MIXPANEL_TOKEN` | Mixpanel analytics |
-| `AUTOMATION_GITHUB_TOKEN` | Git push auth | Force-push to ghpages |
-
-Secrets prefixed with `PUBLIC_` are embedded in the client-side JavaScript during build. This is expected for analytics and mapping services.
+If the project uses environment variables (e.g. analytics), configure them in **Cloudflare Pages → Settings → Environment variables**.
 
 ## Troubleshooting
 
-### Deployment fails at "Deploy to ghpages branch"
+### Deployment fails at build
 
-**Possible cause:** `AUTOMATION_GITHUB_TOKEN` lacks force-push permissions.
+**Possible cause:** Astro build error, missing dependency, or WebP script failure.
 
-**Fix:** Ensure the token has `contents: write` permission and the `ghpages` branch has no branch protection rules that block force-push.
-
-### Build fails at "Build static files"
-
-**Possible cause:** Astro build error (missing dependency, TypeScript error, etc.)
-
-**Fix:** Run `npm run build:ghpages` locally to reproduce and fix the issue. The workflow only deploys if the build succeeds and `docs/` exists.
+**Fix:** Run `npm run build` locally to reproduce. Ensure `npm run images:webp` succeeds (runs automatically via prebuild).
 
 ### Site not updating after deployment
 
 **Possible causes:**
-1. GitHub Pages caching — wait a few minutes or check the GitHub Pages deployment status
+1. Cloudflare edge caching — wait a few minutes or purge cache in Cloudflare dashboard
 2. Browser caching — hard refresh (Ctrl+Shift+R)
-3. Check the `ghpages` branch on GitHub to verify it was updated
+3. Check Cloudflare Pages deployment logs for build status
 
-### npm install fails with EJSONPARSE
+### npm install fails in Cloudflare
 
-**This should no longer happen** with the force-push strategy. If it does, check:
-1. `package.json` on the PR branch for syntax errors
-2. `package-lock.json` for corruption
+**Possible cause:** Lockfile mismatch or platform-specific native dependencies.
 
-This error previously occurred when the old rebase strategy left git conflict markers (`<<<<<<< HEAD`) in `package.json`.
+**Fix:** Ensure `package-lock.json` is committed and `npm ci` works locally. Cloudflare uses Linux runners.
 
 ## FAQ
 
-**Q: Does force-pushing to ghpages lose deployment history?**
-A: Yes, by design. Each deployment replaces the entire `ghpages` branch. The deployment history is not valuable — the actual code history is on `main`, and each build is fully reproducible.
+**Q: Does Cloudflare deploy on every push to main?**
+A: Yes. Cloudflare Pages is connected to the repo and deploys automatically on push to the production branch (typically `main`).
 
 **Q: Can I deploy manually?**
-A: The deployment is triggered by merging a PR to `main`. To manually trigger, you would need to push to `ghpages` directly, which is not recommended. Instead, merge a PR to trigger the workflow.
+A: Yes. In Cloudflare Pages dashboard, use "Retry deployment" or "Create deployment" to trigger a rebuild.
 
-**Q: What if two PRs merge at the same time?**
-A: The workflow's concurrency setting (`cancel-in-progress: true`) ensures only one deployment runs. The latest merge will be deployed.
-
-**Q: The `docs/` folder doesn't exist on `main` — is that correct?**
-A: Yes. `docs/` is only generated during the build step and exists on the `ghpages` branch. It is not tracked on `main` or `dev`.
+**Q: What about the release workflow?**
+A: The `release_and_publish` workflow runs after a PR is merged. It bumps the version, creates a git tag, and publishes a GitHub Release. It does not deploy — Cloudflare handles deployment.

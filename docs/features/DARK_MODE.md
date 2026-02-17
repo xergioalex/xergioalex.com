@@ -16,7 +16,7 @@ The website supports dark and light themes with:
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
 │  1. Page Load (Before Paint)                                 │
-│     └── global.theme.js executes inline                     │
+│     └── Inline theme script in layout executes              │
 │         ├── Check localStorage('theme')                     │
 │         ├── OR Check prefers-color-scheme                   │
 │         └── Apply 'dark' class to <html> if needed         │
@@ -37,33 +37,27 @@ The website supports dark and light themes with:
 
 | Component | File | Role |
 |-----------|------|------|
-| Theme Script | `public/scripts/global.theme.js` | Initial theme detection |
+| Theme Script | Inlined in layouts | Initial theme detection (no external request) |
 | ThemeToggle | `src/components/ThemeToggle.astro` | Manual theme toggle |
-| MainLayout | `src/layouts/MainLayout.astro` | Loads theme script |
+| MainLayout | `src/layouts/MainLayout.astro` | Inlines theme script in head |
 | global.css | `src/styles/global.css` | Dark mode configuration |
 
 ## Theme Script
 
-**Location:** `public/scripts/global.theme.js`
+**Location:** Inlined in `MainLayout.astro`, `InternalLayout.astro`, `ShowcaseLayout.astro`
 
-The theme script runs inline before the page paints to prevent flash:
+The theme script runs inline before the page paints to prevent flash (no external request, no render-blocking):
 
 ```javascript
-// Simplified logic
 (function() {
-  const theme = localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  
+  const theme = localStorage.getItem('theme');
   if (theme === 'dark') {
     document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }
 })();
-```
-
-**Loaded in MainLayout:**
-
-```html
-<script is:inline src="/scripts/global.theme.js"></script>
 ```
 
 ## ThemeToggle Component
@@ -118,6 +112,20 @@ Apply dark styles using the `dark:` prefix:
 <!-- Shadows -->
 <div class="shadow-md dark:shadow-gray-900/50">
 ```
+
+## Contrast Requirements (WCAG AA)
+
+All text must meet WCAG AA contrast ratios in **both** light and dark modes:
+
+| Text Purpose | Light Mode | Dark Mode | Combined |
+|-------------|-----------|-----------|----------|
+| Primary text | `text-gray-900` | `dark:text-white` | `text-gray-900 dark:text-white` |
+| Secondary/body text | `text-gray-600` | `dark:text-gray-300` | `text-gray-600 dark:text-gray-300` |
+| Text on bg-main | N/A | `text-gray-300` | `text-gray-300` |
+
+**Never use:** `text-gray-400`, `dark:text-gray-400`, or `dark:text-gray-500` for body text — they fail WCAG AA 4.5:1 contrast on their respective backgrounds.
+
+**Full reference:** See [Accessibility Guide](../ACCESSIBILITY.md) for contrast ratio tables and all approved pairings.
 
 ## Common Patterns
 
