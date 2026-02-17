@@ -1,0 +1,113 @@
+# XergioAleX.com - Full Site Description
+
+> Personal website and blog by Sergio Alexander Florez Galeano (XergioAleX).
+
+## About the Author
+
+Sergio Alexander Florez Galeano (XergioAleX) is a CTO and Co-founder at DailyBot (Y Combinator S21). He is a computer science engineer with a Master's degree in data science and a passionate entrepreneur with over 10 years of experience building digital businesses. He is also a speaker, researcher, athlete, trader, and technology enthusiast.
+
+Based in Colombia, he has led the development of DailyBot, an innovative platform that connects teams globally, facilitating asynchronous collaboration and effective communication. He is also a co-founder and organizer of the Pereira Tech Talks community.
+
+### Social Profiles
+
+- GitHub: https://github.com/xergioalex
+- LinkedIn: https://www.linkedin.com/in/xergioalex/
+- X (Twitter): https://x.com/XergioAleX
+- Instagram: https://www.instagram.com/xergioalex
+
+## Site Structure
+
+### Pages
+
+- **Home** (/) - Overview of Sergio's profile, work, and interests
+- **Blog** (/blog/) - Articles about technology, programming, entrepreneurship, and more
+- **About** (/about/) - Personal background, passions, and quick facts
+- **CV** (/cv/) - Professional experience, education, skills, and languages
+- **Contact** (/contact/) - Contact form and social links
+- **Portfolio** (/portfolio/) - Software projects, open-source work, and case studies
+- **Tech Talks** (/tech-talks/) - Conference presentations, meetup talks, and workshops
+- **DailyBot** (/dailybot/) - The DailyBot story, Y Combinator journey, and product evolution
+- **Trading** (/trading/) - Trading journey, approach, philosophy, and market analysis
+- **Entrepreneur** (/entrepreneur/) - Entrepreneurship experiences and startup building
+- **Maker** (/maker/) - Hardware projects, robotics, and DIY builds
+- **Hobbies** (/hobbies/) - Sports, gaming, and other interests
+- **Foodie** (/foodie/) - Food experiences and culinary adventures
+
+### Blog Categories/Tags
+
+- **tech** — Tutorials, guides, and technical articles about software development
+- **talks** — Tech talks, slides, videos, and event recaps
+- **portfolio** — Project retrospectives, open-source contributions, and case studies
+- **dailybot** — DailyBot product stories, Y Combinator experience, startup journey
+- **trading** — Trading journal entries, market analysis, algorithmic trading learnings
+- **personal** — Articles about life experiences and personal reflections
+
+### Languages
+
+All pages and blog posts are available in:
+- English (default): /
+- Spanish: /es/
+
+Each language has its own RSS feed, blog listing, and full page set.
+
+## Content Model
+
+- Bilingual routing: English base routes (`/`, `/blog/`, etc.) and Spanish routes under `/es/`
+- Blog posts authored with Astro Content Collections supporting Markdown and MDX
+- Blog pagination: `/blog/page/{n}/` and `/es/blog/page/{n}/`
+- Tag archives: `/blog/tag/{tag}/` and `/es/blog/tag/{tag}/`
+- All pages use structured data (JSON-LD) for machine readability
+
+## Topic Areas
+
+- DevOps, CI/CD, and infrastructure workflows
+- Software engineering and architecture patterns
+- AI, machine learning, and deep learning
+- Blockchain and distributed systems
+- Robotics and autonomous systems projects
+- Entrepreneurship and startup building (DailyBot, Y Combinator)
+- Algorithmic trading and financial markets
+- Tech community building and knowledge sharing
+- Personal productivity and team collaboration
+
+## Tech Stack
+
+- Astro (static site generator with islands architecture)
+- Svelte (interactive components)
+- TypeScript
+- Tailwind CSS (with dark mode support)
+- MDX (enhanced Markdown for blog posts)
+- Biome (linter and formatter)
+- Deployed on GitHub Pages
+
+## Interests & Expertise
+
+Sergio's areas of expertise and interest include:
+- Full-stack software development
+- Conversational interfaces and AI
+- Entrepreneurship and startup building
+- Algorithmic trading and forex markets
+- Community building and tech talks
+- Sports (cycling, running, basketball, chess)
+- Gaming and food content creation
+
+## Feeds & Discovery
+
+- RSS Feed (English): /rss.xml
+- RSS Feed (Spanish): /es/rss.xml
+- Sitemap: /sitemap-index.xml
+- Search API: /api/posts.json
+- robots.txt: /robots.txt
+- This file: /llms-full.txt
+- Short version: /llms.txt
+
+## Structured Data
+
+The site includes JSON-LD structured data on all pages:
+- WebSite schema (site-level identity)
+- Person schema (author identity and social profiles)
+- Organization schema (DailyBot association)
+- BlogPosting schema (individual blog posts with author, dates, tags)
+- BreadcrumbList schema (navigation hierarchy on all pages)
+- CollectionPage schema (blog listing pages)
+- ContactPage schema (contact page)

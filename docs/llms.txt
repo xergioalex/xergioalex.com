@@ -1,0 +1,54 @@
+# XergioAleX.com
+
+> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO & Co-founder at DailyBot (Y Combinator S21), computer science engineer, MSc in data science.
+
+## About
+
+This site features a bilingual blog and professional profile covering software development, entrepreneurship, AI, DevOps, trading, tech talks, and personal projects.
+
+## Core Sections
+
+- Home: /
+- Blog: /blog/
+- About: /about/
+- CV: /cv/
+- Contact: /contact/
+- Portfolio: /portfolio/
+- Tech Talks: /tech-talks/
+- DailyBot: /dailybot/
+- Trading: /trading/
+- Entrepreneur: /entrepreneur/
+- Maker: /maker/
+- Hobbies: /hobbies/
+- Foodie: /foodie/
+
+## Blog Tags
+
+- tech — Software development tutorials and technical articles
+- talks — Tech talks, slides, and event recaps
+- portfolio — Project retrospectives and case studies
+- dailybot — DailyBot product stories and startup journey
+- trading — Trading journal entries and market analysis
+- personal — Personal reflections and life experiences
+
+## Languages
+
+- English (default): /
+- Spanish: /es/
+
+## Machine-Readable Feeds
+
+- Sitemap: /sitemap-index.xml
+- RSS (English): /rss.xml
+- RSS (Spanish): /es/rss.xml
+- Search API: /api/posts.json
+
+## Crawling Guidance
+
+- All public content is intended for indexing by search engines and LLM systems.
+- Prefer canonical URLs and language-specific routes.
+- Structured data (JSON-LD) is embedded on all pages for machine consumption.
+
+## Detailed Version
+
+For comprehensive content descriptions, see: /llms-full.txt

@@ -1,0 +1,315 @@
+<!DOCTYPE html><meta charset="utf-8"><h1 id="pages-srcpages">Pages (<code>src/pages/</code>)</h1>
+<p>This directory contains all routes using Astro’s file-based routing system. Each <code>.astro</code> or <code>.ts</code> file becomes a route based on its file path.</p>
+<h2 id="directory-structure">Directory Structure</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pages/</span></span>
+<span class="line"><span>├── index.astro              # Homepage (/)</span></span>
+<span class="line"><span>├── about.astro              # About page (/about)</span></span>
+<span class="line"><span>├── contact.astro            # Contact page (/contact)</span></span>
+<span class="line"><span>├── rss.xml.js               # RSS feed (/rss.xml)</span></span>
+<span class="line"><span>├── api/</span></span>
+<span class="line"><span>│   └── posts.json.ts        # Blog search API (/api/posts.json)</span></span>
+<span class="line"><span>├── blog/</span></span>
+<span class="line"><span>│   ├── index.astro          # Blog listing (/blog)</span></span>
+<span class="line"><span>│   ├── [...slug].astro      # Individual posts (/blog/{slug})</span></span>
+<span class="line"><span>│   ├── page/</span></span>
+<span class="line"><span>│   │   └── [page].astro     # Blog pagination (/blog/page/{n})</span></span>
+<span class="line"><span>│   └── tag/</span></span>
+<span class="line"><span>│       ├── [tag].astro      # Tag page (/blog/tag/{tag})</span></span>
+<span class="line"><span>│       └── [tag]/</span></span>
+<span class="line"><span>│           └── page/</span></span>
+<span class="line"><span>│               └── [page].astro  # Tag pagination (/blog/tag/{tag}/page/{n})</span></span>
+<span class="line"><span>└── es/</span></span>
+<span class="line"><span>    └── index.astro          # Spanish homepage (/es)</span></span></code></pre>
+<h2 id="route-table">Route Table</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>File</th><th>Route</th><th>Description</th></tr></thead><tbody><tr><td><code>index.astro</code></td><td><code>/</code></td><td>English homepage</td></tr><tr><td><code>about.astro</code></td><td><code>/about</code></td><td>About page</td></tr><tr><td><code>contact.astro</code></td><td><code>/contact</code></td><td>Contact page</td></tr><tr><td><code>rss.xml.js</code></td><td><code>/rss.xml</code></td><td>RSS feed</td></tr><tr><td><code>api/posts.json.ts</code></td><td><code>/api/posts.json</code></td><td>Blog search API</td></tr><tr><td><code>blog/index.astro</code></td><td><code>/blog</code></td><td>Blog listing (page 1)</td></tr><tr><td><code>blog/[...slug].astro</code></td><td><code>/blog/{slug}</code></td><td>Individual blog post</td></tr><tr><td><code>blog/page/[page].astro</code></td><td><code>/blog/page/{n}</code></td><td>Blog pagination</td></tr><tr><td><code>blog/tag/[tag].astro</code></td><td><code>/blog/tag/{tag}</code></td><td>Posts by tag (page 1)</td></tr><tr><td><code>blog/tag/[tag]/page/[page].astro</code></td><td><code>/blog/tag/{tag}/page/{n}</code></td><td>Tag pagination</td></tr><tr><td><code>es/index.astro</code></td><td><code>/es</code></td><td>Spanish homepage</td></tr></tbody></table>
+<h2 id="route-patterns">Route Patterns</h2>
+<h3 id="static-routes">Static Routes</h3>
+<p>Files without brackets become static routes:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pages/about.astro → /about</span></span>
+<span class="line"><span>pages/contact.astro → /contact</span></span></code></pre>
+<h3 id="dynamic-routes">Dynamic Routes</h3>
+<p>Files with brackets (<code>[]</code>) become dynamic routes:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pages/blog/[...slug].astro → /blog/any-slug-here</span></span>
+<span class="line"><span>pages/blog/page/[page].astro → /blog/page/2</span></span>
+<span class="line"><span>pages/blog/tag/[tag].astro → /blog/tag/tech</span></span></code></pre>
+<h3 id="rest-parameters">Rest Parameters</h3>
+<p>The <code>[...slug]</code> syntax captures all segments:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pages/blog/[...slug].astro</span></span>
+<span class="line"><span>→ /blog/my-post-slug</span></span>
+<span class="line"><span>→ /blog/nested/path/here</span></span></code></pre>
+<h2 id="page-patterns">Page Patterns</h2>
+<h3 id="page-wrapper-pattern-standard">Page Wrapper Pattern (Standard)</h3>
+<p>All content pages use the <strong>Page wrapper pattern</strong>. Pages in <code>src/pages/</code> are ultra-minimal 3-line wrappers. The real logic (<code>MainLayout</code>, translations, content) lives inside <code>*Page.astro</code> components in <code>src/components/pages/</code>.</p>
+<p><strong>Thin wrapper</strong> (<code>src/pages/about.astro</code>):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> AboutPage </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/components/pages/AboutPage.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">AboutPage</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8"> /></span></span></code></pre>
+<p><strong>Shared component</strong> (<code>src/components/pages/AboutPage.astro</code>):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MainLayout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/layouts/MainLayout.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { getTranslations } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/lib/translations'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { Language } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/lib/i18n'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Props</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">lang</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Language</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">lang</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> t</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getTranslations</span><span style="color:#E1E4E8">(lang);</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">MainLayout</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">={lang} </span><span style="color:#B392F0">title</span><span style="color:#E1E4E8">={t.aboutPage.title} </span><span style="color:#B392F0">description</span><span style="color:#E1E4E8">={t.aboutPage.description}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">main</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"main-container py-24"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#6A737D">    &#x3C;!-- Content using t.* for text --></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">MainLayout</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p><strong>Key rules:</strong></p>
+<ul>
+<li>Page wrappers never import <code>MainLayout</code> — the <code>*Page.astro</code> component handles it internally</li>
+<li><code>lang</code> is passed as a string literal (<code>"en"</code>, <code>"es"</code>), not a variable</li>
+</ul>
+<h3 id="dynamic-page-with-getstaticpaths">Dynamic Page with <code>getStaticPaths</code></h3>
+<p>For dynamic routes, you must export <code>getStaticPaths</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { getCollection } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro:content'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MainLayout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/layouts/MainLayout.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getStaticPaths</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> getCollection</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'blog'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> posts.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">post</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">    params: { slug: post.id },</span></span>
+<span class="line"><span style="color:#E1E4E8">    props: { post },</span></span>
+<span class="line"><span style="color:#E1E4E8">  }));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">post</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">Content</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> post.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">MainLayout</span><span style="color:#B392F0"> title</span><span style="color:#E1E4E8">={post.data.title}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">Content</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">MainLayout</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h3 id="paginated-page">Paginated Page</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { getCollection } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro:content'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { BLOG_PAGE_SIZE } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/lib/constances'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getStaticPaths</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> getCollection</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'blog'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> totalPages</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">ceil</span><span style="color:#E1E4E8">(posts.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> /</span><span style="color:#79B8FF"> BLOG_PAGE_SIZE</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> Array.</span><span style="color:#B392F0">from</span><span style="color:#E1E4E8">({ length: totalPages }, (</span><span style="color:#FFAB70">_</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">i</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">    params: { page: </span><span style="color:#B392F0">String</span><span style="color:#E1E4E8">(i </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) },</span></span>
+<span class="line"><span style="color:#E1E4E8">    props: { </span></span>
+<span class="line"><span style="color:#E1E4E8">      posts: posts.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(i </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> BLOG_PAGE_SIZE</span><span style="color:#E1E4E8">, (i </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> BLOG_PAGE_SIZE</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">      currentPage: i </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      totalPages,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  }));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">posts</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">currentPage</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">totalPages</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span></code></pre>
+<h2 id="api-routes">API Routes</h2>
+<p>API routes use <code>.ts</code> files and export HTTP method handlers:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#6A737D">// pages/api/posts.json.ts</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { APIRoute } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> GET</span><span style="color:#F97583">:</span><span style="color:#B392F0"> APIRoute</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchData</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  </span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(data), {</span></span>
+<span class="line"><span style="color:#E1E4E8">    status: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">      'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'application/json'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h3 id="available-api-endpoints">Available API Endpoints</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Endpoint</th><th>Method</th><th>Description</th></tr></thead><tbody><tr><td><code>/api/posts.json</code></td><td>GET</td><td>Blog posts search index</td></tr></tbody></table>
+<p>See <a href="../../docs/API_REFERENCE.md">API Reference</a> for details.</p>
+<h2 id="rss-feed">RSS Feed</h2>
+<p>The RSS feed is generated at build time:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// pages/rss.xml.js</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> rss </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@astrojs/rss'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { getCollection } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro:content'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> GET</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">context</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> getCollection</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'blog'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> rss</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    title: </span><span style="color:#9ECBFF">'My Blog'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    description: </span><span style="color:#9ECBFF">'Blog description'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    site: context.site,</span></span>
+<span class="line"><span style="color:#E1E4E8">    items: posts.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">post</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">      title: post.data.title,</span></span>
+<span class="line"><span style="color:#E1E4E8">      pubDate: post.data.pubDate,</span></span>
+<span class="line"><span style="color:#E1E4E8">      link: </span><span style="color:#9ECBFF">`/blog/${</span><span style="color:#E1E4E8">post</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">id</span><span style="color:#9ECBFF">}/`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    })),</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="i18n-pattern">i18n Pattern</h2>
+<p>Currently using folder-based i18n:</p>
+<ul>
+<li>English: <code>/</code> (root)</li>
+<li>Spanish: <code>/es/</code></li>
+</ul>
+<p>See <a href="../../docs/I18N_GUIDE.md">i18n Guide</a> for details.</p>
+<h2 id="creating-a-new-page">Creating a New Page</h2>
+<h3 id="static-page-page-wrapper-pattern">Static Page (Page Wrapper Pattern)</h3>
+<ol>
+<li>
+<p><strong>Create the shared component</strong> in <code>src/components/pages/</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> src/components/pages/NewPage.astro</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#6A737D">// src/components/pages/NewPage.astro</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MainLayout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/layouts/MainLayout.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { getTranslations } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/lib/translations'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { Language } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/lib/i18n'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Props</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">lang</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Language</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">lang</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> t</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getTranslations</span><span style="color:#E1E4E8">(lang);</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">MainLayout</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">={lang} </span><span style="color:#B392F0">title</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"New Page"</span><span style="color:#B392F0"> description</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"Description"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">main</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"main-container py-24"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>New Page&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">MainLayout</span><span style="color:#E1E4E8">></span></span></code></pre>
+</li>
+<li>
+<p><strong>Create thin wrappers</strong> for each language:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#6A737D">// src/pages/new-page.astro</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> NewPage </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/components/pages/NewPage.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">NewPage</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8"> /></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#6A737D">// src/pages/es/new-page.astro</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> NewPage </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/components/pages/NewPage.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">NewPage</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"es"</span><span style="color:#E1E4E8"> /></span></span></code></pre>
+</li>
+</ol>
+<h3 id="dynamic-page">Dynamic Page</h3>
+<ol>
+<li>
+<p>Create file with brackets:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> src/pages/items/[id].astro</span></span></code></pre>
+</li>
+<li>
+<p>Export <code>getStaticPaths</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getStaticPaths</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> items</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> getItems</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> items.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">item</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">    params: { id: item.id },</span></span>
+<span class="line"><span style="color:#E1E4E8">    props: { item },</span></span>
+<span class="line"><span style="color:#E1E4E8">  }));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">item</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span></code></pre>
+</li>
+</ol>
+<h3 id="api-endpoint">API Endpoint</h3>
+<ol>
+<li>
+<p>Create <code>.ts</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">touch</span><span style="color:#9ECBFF"> src/pages/api/data.json.ts</span></span></code></pre>
+</li>
+<li>
+<p>Export handler:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { APIRoute } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> GET</span><span style="color:#F97583">:</span><span style="color:#B392F0"> APIRoute</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">({ data: [] }), {</span></span>
+<span class="line"><span style="color:#E1E4E8">    headers: { </span><span style="color:#9ECBFF">'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'application/json'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+</ol>
+<h2 id="related-documentation">Related Documentation</h2>
+<ul>
+<li><a href="../layouts/README.md">Layouts</a></li>
+<li><a href="../content/README.md">Content Collections</a></li>
+<li><a href="../../docs/API_REFERENCE.md">API Reference</a></li>
+<li><a href="../../docs/I18N_GUIDE.md">i18n Guide</a></li>
+<li><a href="../../docs/ARCHITECTURE.md">Architecture</a></li>
+</ul>
