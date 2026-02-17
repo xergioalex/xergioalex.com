@@ -41,6 +41,10 @@ const commands = [
   { cmd: 'npm run biome:fix', desc: 'Auto-fix lint/format issues' },
   { cmd: 'npm run astro:check', desc: 'TypeScript type checking' },
   { cmd: 'npm run images:optimize', desc: 'Process staged images' },
+  {
+    cmd: 'npm run images:webp',
+    desc: 'Generate WebP variants (skips if up to date)',
+  },
 ];
 
 const guidePages = [
@@ -55,6 +59,12 @@ const guidePages = [
     href: '/internal/guide/file-structure',
     description:
       'Repository layout, key directories, important files, and naming conventions.',
+  },
+  {
+    title: 'Performance & PageSpeed',
+    href: '/internal/guide/performance',
+    description:
+      'PageSpeed optimizations, WebP image pipeline, and deployment flow.',
   },
 ];
 ---
@@ -87,7 +97,7 @@ const guidePages = [
         </div>
       </div>
       <div class="mt-4 flex flex-wrap gap-2">
-        <span class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium">GitHub Pages</span>
+        <span class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium">Cloudflare Pages</span>
         <span class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium">Multilingual (en/es)</span>
         <span class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium">Dark Mode</span>
         <span class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium">RSS Feed</span>

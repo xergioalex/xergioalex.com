@@ -78,7 +78,7 @@ npm run biome:fix        # Auto-fix issues
 npm run astro:check      # TypeScript checking
 
 # Deployment
-npm run build:ghpages    # Build for GitHub Pages
+npm run build            # Production build (Cloudflare Pages)
 ```
 
 ## Key Concepts

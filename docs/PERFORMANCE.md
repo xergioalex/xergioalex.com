@@ -174,7 +174,7 @@ Astro inlines critical CSS automatically. For additional optimization:
 
 ### Static Assets
 
-GitHub Pages provides caching. Set appropriate cache headers for API routes:
+Cloudflare Pages provides edge caching. Set appropriate cache headers for API routes:
 
 ```typescript
 // src/pages/api/posts.json.ts
@@ -223,9 +223,9 @@ Check bundle sizes:
 # Build and check output
 npm run build
 
-# Check docs/ folder size
-du -sh docs/
-du -sh docs/_astro/
+# Check dist/ folder size
+du -sh dist/
+du -sh dist/_astro/
 ```
 
 ## Content Performance
@@ -250,6 +250,30 @@ const posts = await response.json();
 ```
 
 ## Monitoring
+
+### Lighthouse Diagnostics Addressed
+
+| Diagnostic | Mitigation |
+|------------|------------|
+| **Render-blocking requests** | Theme script inlined in MainLayout; CSS inlined via `build.inlineStylesheets: 'always'` |
+| **Improve image delivery** | WebP pipeline (`npm run images:webp`): homepage, blog shared, blog post heroes; `<picture>` with `source type="image/webp"` in BlogHeroImage, HomeSectionImage, PageHero |
+| **LCP request discovery** | Preload hero logo on homepage; `fetchpriority="high"` on above-fold images |
+| **Forced reflow** | MobileMenu: scroll lock deferred with `requestAnimationFrame`; `transition:fade` instead of `transition:slide` |
+| **Network dependency tree** | Typewriter uses `client:idle` instead of `client:load` to reduce critical path |
+
+### Image Optimization Pipeline
+
+The project uses a **WebP generation pipeline** that runs automatically before builds:
+
+| Script | Scope | Output |
+|--------|-------|--------|
+| `generate-webp-homepage.mjs` | `public/images/` (profile, dailybotyc, ia, techtalks, trading, foddie, bicycle) | `.webp` alongside originals; dailybotyc resized to 480px |
+| `generate-webp-blog-shared.mjs` | `public/images/blog/shared/` (placeholders) | `.webp` at 400px width |
+| `generate-webp-blog-posts.mjs` | `public/images/blog/posts/{slug}/hero.*` | `hero.webp` at 1020px max width |
+
+**When it runs:** `prebuild` hook (before `npm run build`), `images:webp` script, and `codecheck` (Docker). Scripts skip images that already have a valid `.webp` (same or newer mtime).
+
+**Components using WebP:** `BlogHeroImage.astro`, `HomeSectionImage.astro`, `PageHero.astro`, `BlogCard.svelte`, timeline components (TradingTimeline, etc.) — all use `<picture>` with WebP source when the image is PNG/JPG.
 
 ### Lighthouse Audits
 
@@ -299,6 +323,7 @@ npx lighthouse https://xergioalex.com --view
 3. **Preload critical fonts**
 4. **Set image dimensions** to prevent CLS
 5. **Minimize third-party scripts**
+6. **Run `npm run images:webp`** before deploy (or rely on `prebuild`) — generates WebP for homepage, blog shared, and blog post heroes (~1.3 MB total savings)
 
 ## Accessibility & Performance Overlap
 

@@ -78,7 +78,7 @@ Each language has its own RSS feed, blog listing, and full page set.
 - Tailwind CSS (with dark mode support)
 - MDX (enhanced Markdown for blog posts)
 - Biome (linter and formatter)
-- Deployed on GitHub Pages
+- Deployed on Cloudflare Pages
 
 ## Interests & Expertise
 

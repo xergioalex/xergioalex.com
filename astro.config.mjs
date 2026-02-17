@@ -15,6 +15,9 @@ const __dirname = dirname(__filename);
 // https://astro.build/config
 export default defineConfig({
   site: 'https://site.xergioalex.com',
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [
     mdx(),
     sitemap({

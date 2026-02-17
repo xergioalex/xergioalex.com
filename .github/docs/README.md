@@ -5,7 +5,7 @@ This folder contains the documentation for GitHub Actions workflows and deployme
 ## Files
 
 - `WORKFLOWS.md`: full workflow reference (triggers, jobs, and dependencies)
-- `DEPLOYMENT.md`: GitHub Pages deployment flow and troubleshooting
+- `DEPLOYMENT.md`: Cloudflare Pages deployment flow and troubleshooting
 
 ## Quick Navigation
 

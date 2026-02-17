@@ -263,7 +263,7 @@ Blog Index
 
 ### Technical
 
-- **Static hosting** - GitHub Pages (no server-side runtime)
+- **Static hosting** - Cloudflare Pages (no server-side runtime)
 - **Build time** - Keep reasonable for frequent updates
 - **Bundle size** - Minimize JavaScript payload
 
@@ -276,16 +276,16 @@ Blog Index
 
 ### Hosting
 
-- **Platform**: GitHub Pages
+- **Platform**: Cloudflare Pages
 - **Domain**: xergioalex.com
 - **SSL**: Provided by GitHub
 
 ### Process
 
-1. Build with `npm run build:ghpages`
+1. Build with `npm run build`
 2. Output to `docs/` directory
 3. Commit and push to repository
-4. GitHub Pages serves from `docs/`
+4. Cloudflare Pages serves from `dist/`
 
 ## Related Documentation
 

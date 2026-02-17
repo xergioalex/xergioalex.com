@@ -1,6 +1,6 @@
 <script lang="ts">
 import { onDestroy, onMount } from 'svelte';
-import { slide } from 'svelte/transition';
+import { fade } from 'svelte/transition';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -26,23 +26,27 @@ $: otherLanguages = getSupportedLanguages().filter((l) => l !== lang);
 function lockBodyScroll() {
   if (isScrollLocked) return;
   lockedScrollY = window.scrollY;
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${lockedScrollY}px`;
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  document.body.style.width = '100%';
   isScrollLocked = true;
+  // Defer DOM writes to next frame to avoid forced reflow (read/write in same tick as Svelte update)
+  requestAnimationFrame(() => {
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  });
 }
 
 function unlockBodyScroll() {
   if (!isScrollLocked) return;
+  const y = lockedScrollY;
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.left = '';
   document.body.style.right = '';
   document.body.style.width = '';
-  window.scrollTo(0, lockedScrollY);
   isScrollLocked = false;
+  requestAnimationFrame(() => window.scrollTo(0, y));
 }
 
 // Lock body scroll when menu is open
@@ -121,7 +125,7 @@ onDestroy(() => {
       <div
         id="work-dropdown"
         class="flex flex-col items-center gap-2 mt-1"
-        transition:slide={{ duration: 200 }}
+        transition:fade={{ duration: 150 }}
       >
         <a href="{prefix}/portfolio" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.portfolio}</a>
         <a href="{prefix}/dailybot" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.dailybot}</a>
@@ -152,7 +156,7 @@ onDestroy(() => {
       <div
         id="about-dropdown"
         class="flex flex-col items-center gap-2 mt-1"
-        transition:slide={{ duration: 200 }}
+        transition:fade={{ duration: 150 }}
       >
         <a href="{prefix}/about" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.aboutMe}</a>
         <a href="{prefix}/cv" class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition">{t.nav.cv}</a>
@@ -186,7 +190,7 @@ onDestroy(() => {
       <div
         id="language-dropdown"
         class="flex flex-col items-center gap-2 mt-1"
-        transition:slide={{ duration: 200 }}
+        transition:fade={{ duration: 150 }}
       >
         {#each alternateLanguageUrls as alt}
           <a href={alt.url} class="nav-link text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={toggleMenu}>

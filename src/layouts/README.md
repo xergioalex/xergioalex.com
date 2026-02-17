@@ -35,7 +35,7 @@ The primary layout component used by all pages in the application.
   <head>
     <BaseHead title={title} description={description} />
     <slot name="head" />           <!-- Custom head elements -->
-    <script src="/scripts/global.theme.js" />
+    <script is:inline>/* theme init */</script>
   </head>
   <body>
     <Header client:load lang={lang} />
@@ -122,7 +122,7 @@ The layout integrates these components:
 
 ## Dark Mode Integration
 
-The theme script (`/scripts/global.theme.js`) runs inline before the body renders to:
+The theme script (inlined in layout) runs before the body renders to:
 
 1. Check `localStorage` for saved theme preference
 2. Check system preference via `prefers-color-scheme`

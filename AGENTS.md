@@ -36,7 +36,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 
 ## Project Overview
 
-**XergioAleX.com** is a personal website and blog built with Astro, featuring a modern design with dark mode support, multilingual content (English/Spanish), and a performant static site architecture deployed to GitHub Pages.
+**XergioAleX.com** is a personal website and blog built with Astro, featuring a modern design with dark mode support, multilingual content (English/Spanish), and a performant static site architecture deployed to Cloudflare Pages.
 
 **Technology Stack:**
 
@@ -55,7 +55,7 @@ This ensures all agents work in harmony with consistent guidelines, coding stand
 - RSS feed and sitemap
 - Client-side search
 - Image optimization pipeline (sharp)
-- GitHub Pages deployment
+- Cloudflare Pages deployment
 
 ## Project Structure
 
@@ -144,7 +144,7 @@ public/                      # Static assets (84 files, ~5.5 MB)
 ├── icons/                   # Social icons (paired light/dark)
 ├── fonts/                   # Custom fonts (Atkinson Hyperlegible)
 └── scripts/
-    └── global.theme.js      # Theme persistence
+    └── (theme script inlined in layouts)
 
 scripts/                     # Build/utility scripts
 ├── optimize-images.mjs      # Staging image optimizer
@@ -361,7 +361,7 @@ The architecture is designed so adding a new language requires zero changes to c
 # Development
 npm run dev                # Start dev server (http://localhost:4321)
 npm run build              # Production build with type check
-npm run build:ghpages      # Build for GitHub Pages (outputs to docs/)
+npm run build              # Production build (outputs to dist/; prebuild runs images:webp)
 npm run astro:preview      # Preview production build
 
 # Code Quality
