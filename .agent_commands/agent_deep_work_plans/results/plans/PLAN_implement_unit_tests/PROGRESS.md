@@ -63,6 +63,12 @@
 - Updated Common Mistakes item 8 to reflect tests are now configured
 - Updated Testing Guide reference description in docs section
 
+### Task 10: Skills & Agents Discovery
+- Evaluated all completed tasks for new patterns
+- Updated `write-tests` skill from placeholder to actual Vitest setup with real config, patterns, and Svelte 5 notes
+- No new skills or agents needed (patterns covered by existing write-tests skill)
+- No generator improvements needed
+
 ## Key Decisions
 - Using Vitest 4.0.18 (latest, compatible with Vite-based Astro build)
 - Node.js 24.13.0 runtime
