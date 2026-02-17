@@ -67,6 +67,7 @@ function toggleMenu() {
         <a href={prefix || '/'} class="nav-link">{t.nav.home}</a>
         <a href="{prefix}/blog" class="nav-link">{t.nav.blog}</a>
         <div
+          role="group"
           class="relative group"
           on:mouseenter={() => workOpen = true}
           on:mouseleave={() => workOpen = false}
@@ -108,6 +109,7 @@ function toggleMenu() {
           {/if}
         </div>
         <div
+          role="group"
           class="relative group"
           on:mouseenter={() => aboutOpen = true}
           on:mouseleave={() => aboutOpen = false}
@@ -152,6 +154,7 @@ function toggleMenu() {
         </div>
         <a href="{prefix}/contact" class="nav-link">{t.nav.contact}</a>
         <div
+          role="group"
           class="relative group"
           on:mouseenter={() => languageOpen = true}
           on:mouseleave={() => languageOpen = false}
