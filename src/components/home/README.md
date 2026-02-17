@@ -14,7 +14,7 @@ home/
 ├── SkillsSection.astro         # Technical skills
 ├── HeroSection/                # Hero with typewriter effect
 │   ├── HeroSection.astro
-│   └── Typewriter.svelte
+│   └── TypewriterWords.astro
 └── HomeSection/                # Reusable section wrapper
     ├── HomeSection.astro
     ├── HomeSectionContent.astro
@@ -67,7 +67,7 @@ Full-viewport hero section with animated typewriter effect.
 - Full viewport height (`100dvh - header`)
 - SVG grid background pattern
 - Logo display
-- Typewriter animation (Svelte)
+- Rotating words animation (CSS-only)
 - Social media links
 - Animated chevron indicator
 
@@ -80,23 +80,17 @@ Full-viewport hero section with animated typewriter effect.
 />
 ```
 
-### Typewriter.svelte
+### TypewriterWords.astro
 
-Animated typewriter text effect component.
+CSS-only rotating words effect (zero JavaScript). Respects `prefers-reduced-motion`.
 
-**Location:** `HeroSection/Typewriter.svelte`
+**Location:** `HeroSection/TypewriterWords.astro`
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `words` | `string[]` | `[]` | Words to cycle through |
-| `speed` | `number` | `80` | Typing speed (ms per character) |
-| `pause` | `number` | `1500` | Pause between words (ms) |
+| Prop | Type | Description |
+|------|------|-------------|
+| `words` | `string[]` | Words to cycle through |
 
-**Animation cycle:**
-1. Type word character by character
-2. Pause when complete
-3. Delete character by character (faster)
-4. Move to next word
+**Animation:** Words fade in/out in sequence. Cursor blinks. No JS in critical path.
 
 ### HomeSection (Reusable Wrapper)
 

@@ -90,7 +90,7 @@ src/
 │   ├── home/                # Homepage sections
 │   │   ├── HeroSection/
 │   │   │   ├── HeroSection.astro
-│   │   │   └── Typewriter.svelte
+│   │   │   └── TypewriterWords.astro
 │   │   ├── HomeSection/
 │   │   │   ├── HomeSection.astro
 │   │   │   ├── HomeSectionContent.astro
