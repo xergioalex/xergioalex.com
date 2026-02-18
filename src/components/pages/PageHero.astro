@@ -1,4 +1,7 @@
 ---
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -8,6 +11,15 @@ interface Props {
 }
 
 const { title, subtitle, description, image, imageAlt = '' } = Astro.props;
+
+const isRaster = image ? /\.(png|jpe?g)$/i.test(image) : false;
+const webpSrc =
+  isRaster && image ? image.replace(/\.(png|jpe?g)$/i, '.webp') : null;
+const webpPath = webpSrc
+  ? resolve(process.cwd(), 'public', webpSrc.replace(/^\//, ''))
+  : null;
+const webpExists = webpPath ? existsSync(webpPath) : false;
+const useWebp = isRaster && webpSrc && webpExists;
 ---
 
 <section class="relative overflow-hidden bg-main text-white">
@@ -34,9 +46,9 @@ const { title, subtitle, description, image, imageAlt = '' } = Astro.props;
       </div>
       {image && (
         <div class="mt-8 lg:mt-0 lg:flex-shrink-0 flex justify-center">
-          {/\.(png|jpe?g)$/i.test(image) ? (
+          {useWebp ? (
             <picture>
-              <source srcset={image.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+              <source srcset={webpSrc} type="image/webp" />
               <img
                 src={image}
                 alt={imageAlt}

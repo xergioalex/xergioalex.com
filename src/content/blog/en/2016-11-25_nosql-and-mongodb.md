@@ -2,7 +2,7 @@
 title: "NoSQL and MongoDB"
 description: "Introduction to NoSQL databases and MongoDB — differences with SQL, when to use each, and practical examples."
 pubDate: "2016-11-25"
-heroImage: "/images/blog/posts/nosql-y-mongodb/hero.png"
+heroImage: "/images/blog/posts/nosql-and-mongodb/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 ---

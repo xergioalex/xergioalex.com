@@ -2,7 +2,7 @@
 title: 'NoSQL y MongoDB'
 description: 'Introducción a bases de datos NoSQL y MongoDB — diferencias con SQL, cuándo usar cada uno y ejemplos prácticos.'
 pubDate: '2016-11-25'
-heroImage: '/images/blog/posts/nosql-y-mongodb/hero.png'
+heroImage: '/images/blog/posts/nosql-and-mongodb/hero.png'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
