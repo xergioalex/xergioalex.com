@@ -1,7 +1,7 @@
 ---
 title: "What is Blockchain and How Is It Radically Transforming the Economy and Industry?"
 description: "Blockchain as a technology for recording and transferring information transparently and securely — history of money, Bitcoin, Ethereum, and applications beyond cryptocurrencies."
-pubDate: "2019-01-15"
+pubDate: "2018-06-01"
 heroImage: "/images/blog/posts/blockchain-economy-industry/hero.jpg"
 heroLayout: "banner"
 tags: ["tech"]

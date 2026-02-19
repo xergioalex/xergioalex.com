@@ -1,54 +1,101 @@
 ---
 title: "Introduction to Serverless with Emphasis on IoT"
-description: "Exploring serverless architectures — BaaS, FaaS, benefits, trade-offs, and when to use them in IoT projects."
+description: "What I shared in a talk on serverless — BaaS, FaaS, benefits, drawbacks, when to use it, and demos with Bambú, IoT, DailyBot."
 pubDate: "2019-03-03"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
+heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-In March 2019 I gave a talk on serverless architectures with a focus on IoT. The idea was to demystify what "serverless" actually means — there are still servers, of course — and show when it makes sense to use it, especially for IoT and event-driven applications.
+I gave a talk on serverless architectures with a focus on IoT. The goal was to demystify what **serverless** means — *server-less*: without a server. Spoiler: there are still servers 😄. And to show when it makes sense to use it, especially for IoT and event-driven applications.
 
-Serverless comes in two main flavors: **Backend as a Service (BaaS)** and **Functions as a Service (FaaS)**. BaaS has been around for over a decade — AWS S3 was one of the first, offering cloud storage in 2006. FaaS emerged in 2014 with AWS Lambda, changing how we design and run applications.
-
----
-
-## Backend as a Service (BaaS)
-
-BaaS gives you generic components — storage, auth, search — connected to your app via APIs. You don't build or maintain that logic yourself. Examples: AWS DynamoDB, Auth0, Algolia, Skygear. The benefit: developers focus on what makes their app unique instead of reinventing the wheel.
+![Talk demos: Bambú, IoT Light Bulb, DailyBot, Twitter Bot](/images/blog/posts/introduction-to-serverless-iot/demo.jpg)
 
 ---
 
-## Functions as a Service (FaaS)
+## Backend as a Service vs Functions as a Service
 
-FaaS is the next evolution of cloud computing. You deploy functions that run in response to events: an HTTP request, a file upload, a database change. The platform handles scaling, provisioning, and execution. AWS Lambda, Google Cloud Functions, and Azure Functions are the main players.
+Serverless comes in two main flavors:
+
+**BaaS (Backend as a Service)** — Over 10 years old. AWS S3 was one of the first BaaS, offering cloud storage in 2006. Services are generic components connected to our applications transparently via APIs. Lets developers avoid building and maintaining generic service logic that already exists. Examples: AWS DynamoDB, Auth0, Algolia, Skygear.
+
+**FaaS (Functions as a Service)** — Born in 2014 with AWS Lambda. The next evolution of cloud computing. A new way to run and design applications. You deploy functions that run in response to events: an HTTP request, a database change, a modified file, a user created. The platform allocates resources dynamically. Main players: AWS Lambda, Google Cloud Functions, Azure Functions.
 
 ---
 
-## Benefits and Trade-offs
+## Benefits of Serverless
 
-**Benefits:** No server management, automatic scaling, event-driven architecture, no upfront costs — you pay per execution.
+- **No server management**
+- **Scales automatically**
+- **Soft limits** — pay for what you use
+- **Event-driven architecture** — HTTP, DB changes, files, users
+- **No upfront costs** — no hiring or provisioning costs
 
-**Trade-offs:** Vendor lock-in, cold starts, execution limits (e.g., AWS Lambda: 3 seconds min, 5 minutes max), debugging is harder, cost estimation can be tricky.
+---
+
+## Drawbacks of Serverless
+
+- **Vendor lock-in** — dependency on the provider
+- **Cold starts** — latency on first execution
+- **Vendor restrictions** — time, size, etc. (e.g. AWS Lambda: min 3 sec, max 5 min)
+- **No good debugging tools**
+- **Cost estimation is tricky**
 
 ---
 
 ## When to Use Serverless
 
-**Use it when:** Short, periodic tasks; long idle periods; data processing; web/mobile apps that respond to user events; stateless apps; chatbots.
-
-**Avoid it when:** You don't want vendor dependency; you need long-running executions; you have complex workflows.
-
----
-
-## Demos and Resources
-
-I showed demos including [Bambú Meditación](https://appbambu.com/alexa/) (Alexa integration), [IoT Light Bulb](https://github.com/xergioalex/serverless-ligth-bulb), [DailyBot](https://dailybot.co/), and a [Twitter bot](https://twitter.com/xergioalexbot).
-
-For learning more: [Foo Bar](https://www.youtube.com/watch?v=YPc5ulMR6VI) on YouTube, or Udemy courses on Serverless with AWS and Serverless Framework in Spanish.
+- Short, periodic tasks
+- Long idle periods
+- Data processing
+- Web, mobile, or worker apps that respond to user-triggered events
+- Stateless apps
+- Chatbots
 
 ---
 
-## Slides & Reference
+## When Not to Use Serverless
 
-- [View slides](https://slides.com/xergioalex/introduction-to-serverless-with-emphasis-on-iot)
+- When you don't want vendor dependency
+- When you need long-running executions (AWS: min 3 sec, max 5 min)
+- When you have complex executions
+
+---
+
+## Demo time
+
+I showed live demos:
+
+- **[Bambú Meditación](https://appbambu.com/alexa/)** — Alexa and Lambda integration
+
+![Bambú Meditación demo with Alexa and AWS Lambda](/images/blog/posts/introduction-to-serverless-iot/alexa-demo.png)
+
+- **[IoT Light Bulb](https://github.com/xergioalex/serverless-ligth-bulb)** — Light bulb control with serverless
+
+![IoT demo circuit: ESP8266, NRF24L01+, LEDs on breadboard](/images/blog/posts/introduction-to-serverless-iot/iot-circuit.png)
+
+![Real bulb working — controlled by Lambda](/images/blog/posts/introduction-to-serverless-iot/iot-bulb.jpg)
+
+- **[DailyBot](https://dailybot.co/)** — Team assistant
+
+![DailyBot demo diagram with serverless](/images/blog/posts/introduction-to-serverless-iot/dailybot-demo.png)
+
+- **[Twitter Bot](https://x.com/XergioAleXBot)** — Automated bot with Lambda
+
+![Twitter bot in action — @XergioAleXBot](/images/blog/posts/introduction-to-serverless-iot/twitter-bot-demo.png)
+
+---
+
+## Where to Start?
+
+**Programming languages?** — Node.js, Python, Go, etc. depending on the provider.
+
+**Self-hosting?** — Options like [OpenFaaS](https://www.openfaas.com/), [Knative](https://knative.dev/) let you run FaaS on-premise.
+
+**Notable reference:** [Foo Bar](https://www.youtube.com/watch?v=YPc5ulMR6VI) on YouTube. Udemy course: *Serverless in Spanish with AWS and Serverless Framework*.
+
+---
+
+[View slides](https://slides.com/xergioalex/introduction-to-serverless-with-emphasis-on-iot)
+
+Let's keep building.

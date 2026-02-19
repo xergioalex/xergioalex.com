@@ -1,15 +1,15 @@
 ---
 title: "Introduction to APIs with GraphQL"
-description: "GraphQL as a query language for APIs — types, queries, mutations, resolvers, and how it compares to REST."
+description: "What I shared at Pereira Tech Talks on GraphQL — query language, REST vs GraphQL, schema, types, queries, mutations, and resolvers."
 pubDate: "2018-10-20"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/apis-with-graphql/hero.png"
+heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-In October 2018 I gave a talk on GraphQL at Pereira Tech Talks. GraphQL was created by Facebook in 2012, driven by their mobile team. It's a query language designed for communication between clients and servers — a complete alternative to REST. (And no, it's not like SQL.)
+I gave a talk on GraphQL at [Pereira Tech Talks](https://www.pereiratechtalks.com/). GraphQL was created by Facebook in 2012, driven by the mobile team. It's a **query language** designed for communication between clients and servers — a complete alternative to REST. (And no, it's not like SQL.)
 
-**What is GraphQL?** Platform-agnostic (implemented in 20+ languages). It's a typed language. The server exposes a schema; the client defines exactly what it receives. You send only what's necessary — no over-fetching. One request per view. Documentation lives in the definition. And you only need one endpoint: `/graphql`.
+What I liked most from the start: the client defines what it receives. No more over-fetching or multiple requests per view. GraphQL is platform-agnostic — it's implemented in over 20 languages.
 
 ---
 
@@ -17,34 +17,46 @@ In October 2018 I gave a talk on GraphQL at Pereira Tech Talks. GraphQL was crea
 
 | REST | GraphQL |
 |------|---------|
+| It's a convention | It's a typed language |
 | Server exposes resources | Client defines what it receives |
-| Often sends more than needed | Only what's necessary |
-| Multiple requests per view (or custom endpoints) | One request per view |
-| Documentation separate from dev | Documented by definition |
-| Multiple endpoints (`/puppies`, `/puppies/:id`, etc.) | Single endpoint `/graphql` |
+| Often sends more data than needed | Only necessary data is sent |
+| Multiple requests per view | One request per view |
+| Documentation separate from development | Documented by definition |
+| Multiple endpoints (`/puppies`, `/puppies/:id`, etc.) | Single endpoint: `/graphql` |
 
 ---
 
 ## Core Concepts
 
-- **Schema** — The contract between client and server
-- **Types** — Define the shape of your data
-- **Queries** — Read data
-- **Mutations** — Modify data
-- **Resolvers** — Functions that fulfill each field
+- **Schema** — Defines the structure of your API
+- **Types** — Strong typing for queries and responses
+- **Queries** — Read operations
+- **Mutations** — Write operations
+- **Resolvers** — Functions that resolve each field in the schema
+
+If you want to play with a real example, the [Star Wars API (SWAPI)](http://graphql.org/swapi-graphql/) is great to explore.
 
 ---
 
-## Resources
+## Resources I Shared
 
+### GraphQL
+
+- [GraphQL Specification](https://facebook.github.io/graphql/October2016/)
+- [GraphQL.js](https://github.com/graphql/graphql-js)
 - [GraphQL SWAPI](http://graphql.org/swapi-graphql/)
-- [GraphQL Voyager](https://github.com/APIs-guru/graphql-voyager)
 - [Apollo Launchpad](https://launchpad.graphql.com/)
-- [GitHub GraphQL API](https://developer.github.com/v4/)
+- [GraphQL Voyager](https://github.com/APIs-guru/graphql-voyager)
+- [Graphene (Python)](http://graphene-python.org/)
+- [Apollo Client](https://www.apollographql.com/client)
 - [Awesome GraphQL](https://github.com/chentsulin/awesome-graphql)
 
+### Recommended Talk
+
+- [Por qué API REST está muerto y debemos usar APIs GraphQL](https://www.youtube.com/watch?v=cUIhcgtMvGc) — José María Rodríguez Hurtado
+
 ---
 
-## Slides & Reference
+[View slides](https://slides.com/xergioalex/apis-with-graphql)
 
-- [View slides](https://slides.com/xergioalex/apis-with-graphql)
+Let's keep building.
