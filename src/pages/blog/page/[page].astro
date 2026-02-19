@@ -1,6 +1,7 @@
 ---
 import BlogPaginationPage from '@/components/pages/blog/BlogPaginationPage.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { isPreviewFeaturesEnabled } from '@/lib/env';
 import type { Language } from '@/lib/i18n';
 import type { BlogPostsResultType } from '@/lib/types';
 
@@ -8,9 +9,10 @@ const lang: Language = 'en';
 
 export async function getStaticPaths() {
   const lang: Language = 'en';
+  const includeHidden = isPreviewFeaturesEnabled();
   const blogPostsResult: BlogPostsResultType = await getBlogPosts({
     lang,
-    includeHidden: false,
+    includeHidden,
   });
   const totalPages = blogPostsResult.totalPages;
 
@@ -19,7 +21,7 @@ export async function getStaticPaths() {
     const pagePosts = await getBlogPosts({
       lang,
       page: i,
-      includeHidden: false,
+      includeHidden,
     });
     paths.push({
       params: { page: String(i) },
