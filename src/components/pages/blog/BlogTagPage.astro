@@ -1,6 +1,7 @@
 ---
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
+import { isPreviewFeaturesEnabled } from '@/lib/env';
 import type { Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 import type { BlogPostsResultType } from '@/lib/types';
@@ -14,7 +15,7 @@ interface Props {
 
 const { lang, blogPostsResult, currentTag, tag } = Astro.props;
 const t = getTranslations(lang);
-const isDev = import.meta.env.DEV;
+const showPreviewFeatures = isPreviewFeaturesEnabled();
 ---
 
 <MainLayout
@@ -22,5 +23,5 @@ const isDev = import.meta.env.DEV;
   title={t.postsTagged(t.tagNames[tag] || tag)}
   description={t.tagDescriptions[tag] || t.postsTagged(t.tagNames[tag] || tag)}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} isDev={isDev} />
+  <BlogContainer blogPostsResult={blogPostsResult} currentTag={currentTag} lang={lang} isDev={showPreviewFeatures} />
 </MainLayout>

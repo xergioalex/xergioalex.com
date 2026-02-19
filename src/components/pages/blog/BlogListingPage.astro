@@ -3,6 +3,7 @@ import BlogContainer from '@/components/blog/BlogContainer.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getBlogPosts } from '@/lib/blog';
+import { isPreviewFeaturesEnabled } from '@/lib/env';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -15,11 +16,11 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
-const isDev = import.meta.env.DEV;
 
+const showPreviewFeatures = isPreviewFeaturesEnabled();
 const blogPostsResult: BlogPostsResultType = await getBlogPosts({
   lang: lang,
-  includeHidden: false,
+  includeHidden: showPreviewFeatures,
 });
 
 const collectionPageData = {
@@ -40,5 +41,5 @@ const collectionPageData = {
   <Fragment slot="head">
     <JsonLd data={collectionPageData} />
   </Fragment>
-  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isDev={isDev} />
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isDev={showPreviewFeatures} />
 </MainLayout>

@@ -12,6 +12,7 @@ import {
   getWordCount,
   isDemoPost,
 } from '@/lib/blog';
+import { isPreviewFeaturesEnabled } from '@/lib/env';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -31,7 +32,7 @@ const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
 const postStatus = getPostStatus(post);
 const isDemo = isDemoPost(post);
-const isDev = import.meta.env.DEV;
+const showPreviewFeatures = isPreviewFeaturesEnabled();
 const hasScheduledTime = pubDate.getHours() !== 0 || pubDate.getMinutes() !== 0;
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
@@ -114,7 +115,7 @@ const breadcrumbData = {
   </Fragment>
   <main class="main-container py-16 md:py-24">
     <article>
-      {isDev && (postStatus !== 'published' || isDemo) && (
+      {showPreviewFeatures && (postStatus !== 'published' || isDemo) && (
         <div class="mb-4 flex flex-wrap gap-2">
           {isDemo && (
             <div class="p-3 rounded-lg border-2 text-sm font-medium bg-purple-50 border-purple-300 text-purple-800 dark:bg-purple-900/20 dark:border-purple-700 dark:text-purple-300">
