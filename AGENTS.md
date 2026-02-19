@@ -635,23 +635,16 @@ Posts support a `heroLayout` frontmatter field:
 
 When creating a post, choose the layout based on the hero image aspect ratio.
 
-### Blog Post Status & Visibility
+### Blog Post Visibility
 
-Posts support a content lifecycle with multiple visibility states controlled by a `draft` frontmatter field and the `pubDate`:
+All blog posts are visible in both production and dev. The only special case is **demo posts** in `_demo/` folders:
 
-| Status | Frontmatter | Condition | Production | Dev |
-|--------|------------|-----------|:----------:|:---:|
-| Published | `draft: false` (default) | `pubDate <= now` | Visible | Visible |
-| Scheduled | `draft: false` | `pubDate > now` | Hidden (auto-publishes on rebuild) | Visible (badge) |
-| Draft | `draft: true` | any | Hidden | Visible (badge) |
-| Draft + Scheduled | `draft: true` | `pubDate > now` | Hidden | Visible (badges) |
-| Demo | any | File in `_demo/` folder | Hidden | Visible (badge) |
+| Type | Location | Production | Dev (listing) | Dev (direct URL) |
+|------|----------|:----------:|:-------------:|:----------------:|
+| Regular post | `src/content/blog/{lang}/` | Visible | Visible | Visible |
+| Demo post | `src/content/blog/{lang}/_demo/` | Hidden | Hidden | Accessible |
 
-**Draft field:** Add `draft: true` to frontmatter to mark a post as work-in-progress. Omitting `draft` or setting `draft: false` means the post is eligible for publishing.
-
-**Scheduling:** Set `pubDate` to a future date. The post will automatically become visible when the site is rebuilt after that date.
-
-**Preview mode:** Visit `/blog/?preview=all` in dev mode to see all posts including drafts, scheduled, and demo posts. A toggle link appears in dev mode to switch between published-only and all-posts views.
+Demo posts are **never** shown in blog listings, tag pages, RSS feeds, or search. They are only accessible by direct URL in local dev mode (`import.meta.env.DEV`) and serve as structural references for AI agents.
 
 ### Demo Posts
 
@@ -659,7 +652,7 @@ Demo posts showcase blog features and are stored in:
 - `src/content/blog/en/_demo/` (English)
 - `src/content/blog/es/_demo/` (Spanish)
 
-Demo posts are **never** visible in production builds. They serve as references for:
+Demo posts are **never** listed or built in production. In local dev, they are accessible by direct URL only. They serve as references for:
 - Hero layout variations (banner, side-by-side, minimal, none)
 - MDX capabilities
 - Rich Markdown formatting
@@ -711,9 +704,7 @@ public/images/blog/
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
-16. Forget to set `draft: true` on work-in-progress posts
-17. Put demo posts outside `_demo/` folders
-18. Forget that scheduled posts require a site rebuild to go live
+16. Put demo posts outside `_demo/` folders
 19. Use `client:load` when `client:visible` or `client:idle` would suffice
 20. Add JS-based solutions when CSS can achieve the same result
 21. Forget to include image dimensions (causes layout shifts)
@@ -743,9 +734,7 @@ public/images/blog/
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
-16. Use `draft: true` for work-in-progress posts
-17. Use `?preview=all` to view drafts/scheduled posts in dev mode
-18. Keep demo posts in `_demo/` folders (they're filtered automatically)
+16. Keep demo posts in `_demo/` folders (they're filtered automatically)
 19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
 20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
 21. Prefer CSS-only solutions over JavaScript when possible
@@ -768,7 +757,6 @@ public/images/blog/
 - [ ] Content exists in both English and Spanish versions (pages, blog posts)
 - [ ] Translation strings added for both languages in `src/lib/translations/` (if applicable)
 - [ ] Documentation updated if needed
-- [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only
 - [ ] Performance considered (lightest hydration, minimal JS, no layout shifts)
 - [ ] Accessibility: text contrast uses approved pairings (see [Accessibility Guide](docs/ACCESSIBILITY.md))
