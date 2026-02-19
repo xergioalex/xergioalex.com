@@ -5,7 +5,6 @@ pubDate: '2025-01-07'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
-draft: false
 ---
 
 El desarrollo de software moderno frecuentemente involucra trabajar con multiples lenguajes y ecosistemas. Este post muestra el resaltado de sintaxis para una amplia variedad de lenguajes de programacion, util como referencia visual para autores de blogs.

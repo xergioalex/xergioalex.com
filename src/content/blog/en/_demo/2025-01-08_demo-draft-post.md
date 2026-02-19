@@ -5,7 +5,6 @@ pubDate: '2025-01-08'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
-draft: true
 ---
 
 This is a **draft post** demo. In a real scenario, this article would still be a work in progress — incomplete sections, rough ideas, notes to self.

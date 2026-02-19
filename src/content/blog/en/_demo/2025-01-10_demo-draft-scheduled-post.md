@@ -5,7 +5,6 @@ pubDate: '2030-12-01T09:30:00'
 heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
-draft: true
 ---
 
 This is a **draft + scheduled** post demo. It combines both states: `draft: true` AND a future `pubDate`. This is the most restrictive visibility state.

@@ -5,7 +5,6 @@ pubDate: '2025-01-07'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
-draft: false
 ---
 
 Modern software development often involves working across multiple languages and ecosystems. This post showcases syntax highlighting for a wide range of programming languages, useful as a visual reference for blog authors.
