@@ -879,7 +879,6 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     trading: 'Trading',
     portfolio: 'Portfolio',
     dailybot: 'DailyBot',
-    demo: 'Demo',
   },
   tagDescriptions: {
     tech: 'Tutorials, guides, and technical articles.',
@@ -889,7 +888,6 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     portfolio: 'Personal projects, software, robotics, and open source work.',
     dailybot:
       'DailyBot articles: product journey, workflow automation, and team productivity.',
-    demo: 'Demo posts showcasing blog features. Only visible in dev mode.',
   },
 
   // Date formatting
@@ -901,18 +899,6 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   // Scroll to timeline
   scrollToTimeline: 'View Timeline',
   viewLabel: (label: string) => `View ${label}`,
-
-  // Post status (dev mode indicators)
-  postStatus: {
-    draft: 'Draft',
-    scheduled: 'Scheduled',
-    'draft+scheduled': 'Draft + Scheduled',
-    demo: 'Demo',
-  },
-  previewMode: 'Preview Mode',
-  showAllPosts: 'Show all posts',
-  showPublishedOnly: 'Show published only',
-  publishesOn: 'Publishes on',
 
   // 404 page
   notFoundPage: {

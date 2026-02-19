@@ -446,18 +446,6 @@ export interface SiteTranslations {
   scrollToTimeline: string;
   viewLabel: (label: string) => string;
 
-  // Post status (dev mode indicators)
-  postStatus: {
-    draft: string;
-    scheduled: string;
-    'draft+scheduled': string;
-    demo: string;
-  };
-  previewMode: string;
-  showAllPosts: string;
-  showPublishedOnly: string;
-  publishesOn: string;
-
   // 404 page
   notFoundPage: {
     title: string;

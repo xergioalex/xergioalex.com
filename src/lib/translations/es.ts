@@ -891,7 +891,6 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     trading: 'Trading',
     portfolio: 'Portafolio',
     dailybot: 'DailyBot',
-    demo: 'Demo',
   },
   tagDescriptions: {
     tech: 'Tutoriales, guías y artículos técnicos.',
@@ -902,7 +901,6 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Proyectos personales, software, robótica y trabajo open source.',
     dailybot:
       'Artículos sobre DailyBot: historia del producto, automatización de flujos y productividad de equipos.',
-    demo: 'Posts de demostración mostrando funcionalidades del blog. Solo visibles en modo desarrollo.',
   },
 
   // Date formatting
@@ -914,18 +912,6 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   // Scroll to timeline
   scrollToTimeline: 'Ver Timeline',
   viewLabel: (label: string) => `Ver ${label}`,
-
-  // Post status (dev mode indicators)
-  postStatus: {
-    draft: 'Borrador',
-    scheduled: 'Programado',
-    'draft+scheduled': 'Borrador + Programado',
-    demo: 'Demo',
-  },
-  previewMode: 'Modo Vista Previa',
-  showAllPosts: 'Mostrar todos los posts',
-  showPublishedOnly: 'Solo publicados',
-  publishesOn: 'Se publica el',
 
   // 404 page
   notFoundPage: {
