@@ -41,10 +41,8 @@ describe('getPostSlug', () => {
 	});
 
 	it('handles demo post paths with _demo/ subfolder', () => {
-		// Date stripping regex only matches at start; _demo/ prefix preserves the date
-		expect(getPostSlug('en/_demo/2024-01-01_demo-post')).toBe(
-			'_demo/2024-01-01_demo-post',
-		);
+		// Extracts clean slug from demo posts (strips _demo/ prefix and date)
+		expect(getPostSlug('en/_demo/2024-01-01_demo-post')).toBe('demo-post');
 	});
 
 	it('handles post ID without language prefix', () => {

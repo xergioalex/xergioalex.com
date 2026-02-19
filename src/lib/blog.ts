@@ -5,15 +5,17 @@ import type { BlogParamsType, BlogPostsResultType } from './types';
 const WORDS_PER_MINUTE = 200;
 
 /**
- * Get the slug from a post ID (removes language prefix and date prefix).
+ * Get the slug from a post ID (removes language prefix, _demo/ prefix, and date prefix).
  * e.g., "en/2022-07-08_first-post" -> "first-post"
  * e.g., "es/2020-12-31_personal-branding-xergioalex" -> "personal-branding-xergioalex"
+ * e.g., "en/_demo/2025-01-01_demo-hero-banner" -> "demo-hero-banner"
  * e.g., "en/first-post" -> "first-post" (backwards compatible)
  */
 export function getPostSlug(postId: string): string {
   const parts = postId.split('/');
-  const filename = parts.length > 1 ? parts.slice(1).join('/') : postId;
-  // Strip date prefix (YYYY-MM-DD.) if present
+  // Get the last segment (filename) — handles both "en/file" and "en/_demo/file"
+  const filename = parts[parts.length - 1];
+  // Strip date prefix (YYYY-MM-DD_) if present
   return filename.replace(/^\d{4}-\d{2}-\d{2}_/, '');
 }
 
