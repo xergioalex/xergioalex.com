@@ -1,33 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
 import BlogTagPage from '@/components/pages/blog/BlogTagPage.astro';
-import { getBlogPosts, isPostVisibleInProduction } from '@/lib/blog';
-import { isPreviewFeaturesEnabled } from '@/lib/env';
+import { getBlogPosts } from '@/lib/blog';
 import type { Language } from '@/lib/i18n';
 
 const lang: Language = 'en';
 
 export async function getStaticPaths() {
   const lang: Language = 'en';
-  const includeHidden = isPreviewFeaturesEnabled();
 
-  const allPosts = await getCollection('blog');
-  const visiblePosts = allPosts.filter((post) => {
-    if (!post.id.startsWith(`${lang}/`)) return false;
-    if (import.meta.env.PROD && !includeHidden)
-      return isPostVisibleInProduction(post);
-    return true;
-  });
-  const tagsResult = Array.from(
-    new Set(visiblePosts.flatMap((post) => post.data.tags ?? []))
+  // Get all tags from all posts (not just first page)
+  const allPosts = await getBlogPosts({ lang, pageSize: 9999 });
+  const allTags = Array.from(
+    new Set(allPosts.postsResult.flatMap((post) => post.data.tags ?? []))
   );
 
   const paths = [];
-  for (const tag of tagsResult) {
+  for (const tag of allTags) {
     const tagPostsResult = await getBlogPosts({
       lang,
       tag,
-      includeHidden,
     });
     paths.push({
       params: { tag },

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
-import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
+import { getPostSlug, isDemoPost } from '@/lib/blog';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -27,9 +27,7 @@ const viewAllText = t.homeSections.viewAllPosts;
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter(
-    (post) => post.id.startsWith(`${lang}/`) && isPostVisibleInProduction(post)
-  )
+  .filter((post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 2);
 ---

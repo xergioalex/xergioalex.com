@@ -1,13 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPostPage from '@/components/pages/blog/BlogPostPage.astro';
-import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
+import { getPostSlug, isDemoPost } from '@/lib/blog';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
   const posts = allPosts.filter((post) => {
     if (!post.id.startsWith('es/')) return false;
-    if (import.meta.env.PROD) return isPostVisibleInProduction(post);
+    // Demo posts are only available in dev mode, not in any build
+    if (isDemoPost(post)) return import.meta.env.DEV;
     return true;
   });
   return posts.map((post) => ({

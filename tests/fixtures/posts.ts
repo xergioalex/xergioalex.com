@@ -11,7 +11,6 @@ interface MockPostData {
 	heroImage?: string;
 	heroLayout?: 'banner' | 'side-by-side' | 'minimal' | 'none';
 	tags?: string[];
-	draft?: boolean;
 }
 
 interface MockPost {
@@ -31,7 +30,6 @@ export const publishedEnglishPost: MockPost = {
 		heroImage: '/images/blog/posts/my-awesome-post/hero.jpg',
 		heroLayout: 'banner',
 		tags: ['tech', 'astro'],
-		draft: false,
 	},
 };
 
@@ -44,7 +42,6 @@ export const publishedSpanishPost: MockPost = {
 		heroImage: '/images/blog/posts/mi-post-increible/hero.jpg',
 		heroLayout: 'banner',
 		tags: ['tech', 'astro'],
-		draft: false,
 	},
 };
 
@@ -57,7 +54,6 @@ export const draftPost: MockPost = {
 		description: 'A draft post that should not appear in production',
 		pubDate: new Date('2024-04-01'),
 		tags: ['personal'],
-		draft: true,
 	},
 };
 
@@ -70,20 +66,18 @@ export const scheduledPost: MockPost = {
 		description: 'A scheduled post with a far future pubDate',
 		pubDate: new Date('2099-12-25'),
 		tags: ['tech'],
-		draft: false,
 	},
 };
 
-// ─── Draft + Scheduled Posts ────────────────────────────
+// ─── Scheduled Posts (Future Date) ─────────────────────
 
 export const draftScheduledPost: MockPost = {
 	id: 'en/2099-06-01_draft-scheduled-post',
 	data: {
 		title: 'Draft and Scheduled',
-		description: 'A draft post that is also scheduled for the future',
+		description: 'A post with a future pubDate',
 		pubDate: new Date('2099-06-01'),
 		tags: ['tech'],
-		draft: true,
 	},
 };
 
@@ -98,7 +92,6 @@ export const demoEnglishPost: MockPost = {
 		heroImage: '/images/blog/posts/demo-post/hero.jpg',
 		heroLayout: 'side-by-side',
 		tags: ['demo'],
-		draft: false,
 	},
 };
 
@@ -109,7 +102,6 @@ export const demoSpanishPost: MockPost = {
 		description: 'Un post de demo para mostrar las funciones del blog',
 		pubDate: new Date('2024-01-01'),
 		tags: ['demo'],
-		draft: false,
 	},
 };
 
@@ -146,7 +138,6 @@ export const fullyPopulatedPost: MockPost = {
 		heroImage: '/images/blog/posts/full-post/hero.jpg',
 		heroLayout: 'minimal',
 		tags: ['tech', 'svelte', 'astro'],
-		draft: false,
 	},
 };
 

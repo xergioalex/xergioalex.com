@@ -1,26 +1,15 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
-import {
-  getPostLanguage,
-  getPostSlug,
-  getPostStatus,
-  isDemoPost,
-  isPostVisibleInProduction,
-} from '@/lib/blog';
-import { isPreviewFeaturesEnabled } from '@/lib/env';
+import { getPostLanguage, getPostSlug, isDemoPost } from '@/lib/blog';
 
 export const GET: APIRoute = async () => {
   try {
     const allPosts = await getCollection('blog');
 
     // Create a lightweight search index with language info
-    // In production (main branch), only include published posts
-    const includeHidden = isPreviewFeaturesEnabled();
+    // Filter out demo posts (they are dev-only reference posts)
     const searchIndex = allPosts
-      .filter((post) => {
-        if (!includeHidden) return isPostVisibleInProduction(post);
-        return true;
-      })
+      .filter((post) => !isDemoPost(post))
       .map((post) => ({
         id: post.id,
         slug: getPostSlug(post.id),
@@ -30,9 +19,6 @@ export const GET: APIRoute = async () => {
         pubDate: post.data.pubDate.toISOString(),
         tags: post.data.tags || [],
         heroImage: post.data.heroImage,
-        status: getPostStatus(post),
-        isDemo: isDemoPost(post),
-        draft: post.data.draft || false,
       }));
 
     return new Response(JSON.stringify(searchIndex), {

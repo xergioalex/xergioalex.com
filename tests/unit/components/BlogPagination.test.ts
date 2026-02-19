@@ -123,14 +123,6 @@ describe('BlogPagination', () => {
 			);
 		});
 
-		it('appends ?preview=all when isPreviewMode is true', () => {
-			render(BlogPagination, {
-				props: { currentPage: 1, totalPages: 3, isPreviewMode: true },
-			});
-			const page2Link = screen.getByLabelText('Page 2');
-			expect(page2Link.getAttribute('href')).toContain('?preview=all');
-		});
-
 		it('generates Spanish URLs with /es prefix', () => {
 			render(BlogPagination, {
 				props: { currentPage: 1, totalPages: 3, lang: 'es' },

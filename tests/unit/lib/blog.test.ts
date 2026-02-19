@@ -3,26 +3,21 @@ import { describe, expect, it } from 'vitest';
 import {
 	getPostLanguage,
 	getPostSlug,
-	getPostStatus,
 	getReadingTimeFromContent,
 	getWordCount,
 	isDemoPost,
-	isPostVisibleInProduction,
 } from '@/lib/blog';
 
 import {
 	demoEnglishPost,
 	demoSpanishPost,
 	draftPost,
-	draftScheduledPost,
 	emptyContent,
 	longContent,
 	minimalPost,
-	postWithoutDatePrefix,
 	publishedEnglishPost,
 	publishedSpanishPost,
 	sampleMarkdownContent,
-	scheduledPost,
 	shortContent,
 } from '../../fixtures/posts';
 
@@ -102,72 +97,6 @@ describe('isDemoPost', () => {
 
 	it('returns false for minimal posts', () => {
 		expect(isDemoPost(minimalPost as never)).toBe(false);
-	});
-});
-
-// ─── getPostStatus ──────────────────────────────────────
-
-describe('getPostStatus', () => {
-	it('returns "published" for non-draft posts with past pubDate', () => {
-		expect(getPostStatus(publishedEnglishPost as never)).toBe('published');
-	});
-
-	it('returns "draft" for draft posts with past pubDate', () => {
-		expect(getPostStatus(draftPost as never)).toBe('draft');
-	});
-
-	it('returns "scheduled" for non-draft posts with future pubDate', () => {
-		expect(getPostStatus(scheduledPost as never)).toBe('scheduled');
-	});
-
-	it('returns "draft+scheduled" for draft posts with future pubDate', () => {
-		expect(getPostStatus(draftScheduledPost as never)).toBe('draft+scheduled');
-	});
-
-	it('treats undefined draft as false (published)', () => {
-		expect(getPostStatus(minimalPost as never)).toBe('published');
-	});
-
-	it('returns "published" for Spanish published posts', () => {
-		expect(getPostStatus(publishedSpanishPost as never)).toBe('published');
-	});
-});
-
-// ─── isPostVisibleInProduction ──────────────────────────
-
-describe('isPostVisibleInProduction', () => {
-	it('returns true for published non-demo posts', () => {
-		expect(isPostVisibleInProduction(publishedEnglishPost as never)).toBe(true);
-	});
-
-	it('returns true for Spanish published posts', () => {
-		expect(isPostVisibleInProduction(publishedSpanishPost as never)).toBe(true);
-	});
-
-	it('returns false for draft posts', () => {
-		expect(isPostVisibleInProduction(draftPost as never)).toBe(false);
-	});
-
-	it('returns false for scheduled posts', () => {
-		expect(isPostVisibleInProduction(scheduledPost as never)).toBe(false);
-	});
-
-	it('returns false for draft+scheduled posts', () => {
-		expect(isPostVisibleInProduction(draftScheduledPost as never)).toBe(false);
-	});
-
-	it('returns false for demo posts even if published', () => {
-		expect(isPostVisibleInProduction(demoEnglishPost as never)).toBe(false);
-	});
-
-	it('returns true for minimal posts (default values)', () => {
-		expect(isPostVisibleInProduction(minimalPost as never)).toBe(true);
-	});
-
-	it('returns true for posts without date prefix', () => {
-		expect(isPostVisibleInProduction(postWithoutDatePrefix as never)).toBe(
-			true,
-		);
 	});
 });
 
