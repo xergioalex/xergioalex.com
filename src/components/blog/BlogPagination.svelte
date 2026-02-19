@@ -8,11 +8,9 @@ export let isSearchMode = false;
 export let onPageChange = null;
 export let currentTag = null;
 export let lang = 'en';
-export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
 $: basePrefix = getUrlPrefix(lang);
-$: querySuffix = isPreviewMode ? '?preview=all' : '';
 $: visiblePages = getVisiblePages();
 
 function handlePageChange(page) {
@@ -38,7 +36,7 @@ function getPageUrl(page) {
       url = `${basePrefix}/blog/page/${page}/`;
     }
   }
-  return `${url}${querySuffix}`;
+  return url;
 }
 
 function getVisiblePages() {

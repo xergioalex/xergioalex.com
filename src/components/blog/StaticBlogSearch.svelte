@@ -16,10 +16,6 @@ export let currentPage;
 export let tagsResult = [];
 export let totalPostsAvailable = 0;
 export let lang = 'en';
-export let isDev = false;
-
-// Client-side preview mode detection (Astro static mode can't read query params server-side)
-let isPreviewMode = false;
 
 // Performance: Debounce timing (reduced for snappier feel)
 const DEBOUNCE_MS = 200;
@@ -27,31 +23,8 @@ const DEBOUNCE_MS = 200;
 // Get translations based on language
 $: t = getTranslations(lang);
 
-// Client-side check if a post is published (visible in production)
-function isPublishedPost(post) {
-  if (post.id?.includes('/_demo/')) return false;
-  if (post.data?.draft === true) return false;
-  const pubDate = post.data?.pubDate;
-  if (pubDate) {
-    const pubTime =
-      pubDate instanceof Date ? pubDate.valueOf() : new Date(pubDate).valueOf();
-    if (pubTime > Date.now()) return false;
-  }
-  return true;
-}
-
-// Filter posts based on preview mode: in dev without preview, show only published
-$: visiblePosts =
-  isDev && !isPreviewMode ? postsResult.filter(isPublishedPost) : postsResult;
-
-// Extract tag names; hide demo tag when not in preview mode
-$: displayTags = (() => {
-  const tags = tagsResult.map((tag) => tag.data.name);
-  if (isDev && !isPreviewMode) {
-    return tags.filter((tagName) => tagName !== 'demo');
-  }
-  return tags;
-})();
+// Extract tag names
+$: displayTags = tagsResult.map((tag) => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];
@@ -94,14 +67,7 @@ async function loadSearchIndex() {
     const response = await fetch('/api/posts.json');
     if (response.ok) {
       const allPosts = await response.json();
-      const langPosts = allPosts.filter((post) => post.lang === lang);
-      // In dev without preview mode, only index published (non-demo) posts
-      searchIndex = isPreviewMode
-        ? langPosts
-        : langPosts.filter(
-            (post) =>
-              (!post.status || post.status === 'published') && !post.isDemo
-          );
+      searchIndex = allPosts.filter((post) => post.lang === lang);
       fuseIndex = createSearchIndex(searchIndex);
       indexLoaded = true;
       clearCache();
@@ -216,16 +182,9 @@ function handleSearchFocus() {
   ensureIndexLoaded();
 }
 
-// Detect preview mode and lazy load index on mount
+// Lazy load search index on mount
 onMount(() => {
   if (typeof window !== 'undefined') {
-    // Detect preview mode from URL query params (client-side only, since Astro static mode
-    // cannot read query params server-side)
-    if (isDev) {
-      const params = new URLSearchParams(window.location.search);
-      isPreviewMode = params.get('preview') === 'all';
-    }
-
     // Lazy load search index using requestIdleCallback
     if ('requestIdleCallback' in window) {
       requestIdleCallback(() => ensureIndexLoaded());
@@ -237,35 +196,17 @@ onMount(() => {
 </script>
 
 <div class="main-container py-12 sm:py-16 lg:py-24">
-  {#if isDev}
-    <div class="mb-4 flex items-center gap-2 text-sm">
-      {#if isPreviewMode}
-        <span class="inline-flex items-center gap-1 px-2 py-1 rounded bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-700 font-medium">
-          {t.previewMode}
-        </span>
-        <a href="?" class="text-indigo-600 hover:underline dark:text-indigo-400">
-          {t.showPublishedOnly}
-        </a>
-      {:else}
-        <a href="?preview=all" class="text-gray-600 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400">
-          {t.showAllPosts}
-        </a>
-      {/if}
-    </div>
-  {/if}
-
   <BlogHeader
     {currentTag}
     tagsResult={displayTags}
-    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? visiblePosts.length : totalPostsAvailable)}
-    currentPagePosts={isSearching ? searchResults.length : visiblePosts.length}
+    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
+    currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
     totalPages={isSearching ? searchPagination.totalPages : totalPages}
     {lang}
-    {isPreviewMode}
   />
-  
-  <BlogSearchInput 
+
+  <BlogSearchInput
     bind:searchQuery
     {isSearching}
     resultsCount={searchPagination.totalPosts}
@@ -276,12 +217,12 @@ onMount(() => {
 
   {#if loadError}
     <!-- Error state -->
-    <div 
+    <div
       class="bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-200 px-4 py-3 rounded mb-4"
       role="alert"
     >
       <p>{t.loadError}</p>
-      <button 
+      <button
         class="underline mt-2 hover:no-underline"
         on:click={retryLoadIndex}
       >
@@ -308,7 +249,7 @@ onMount(() => {
       <p class="mt-2 text-gray-600 dark:text-gray-300">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} {isDev} {isPreviewMode} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} />
     {#if searchPagination.totalPages > 1}
       <BlogPagination
         currentPage={searchPagination.currentPage}
@@ -317,28 +258,24 @@ onMount(() => {
         onPageChange={(page) => performSearch(searchQuery, page)}
         {currentTag}
         {lang}
-        {isPreviewMode}
       />
     {/if}
   {:else}
     <BlogGrid
-      posts={visiblePosts}
+      posts={postsResult}
       showPagination={totalPages > 1}
       {currentPage}
       {totalPages}
       {currentTag}
       {lang}
-      {isDev}
-      {isPreviewMode}
     />
-    
+
     {#if totalPages > 1}
       <BlogPagination
         {currentPage}
         {totalPages}
         {currentTag}
         {lang}
-        {isPreviewMode}
       />
     {/if}
   {/if}

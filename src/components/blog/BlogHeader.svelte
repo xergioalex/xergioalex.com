@@ -9,11 +9,9 @@ export let currentPagePosts = 0;
 export let currentPage = 1;
 export let totalPages = 1;
 export let lang = 'en';
-export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
 $: basePrefix = getUrlPrefix(lang);
-$: querySuffix = isPreviewMode ? '?preview=all' : '';
 
 // Translations for header content
 $: headerTitle = currentTag
@@ -50,7 +48,7 @@ $: availableText = t.articlesAvailable(totalPosts);
 <div class="mb-10 flex flex-wrap gap-2">
   <!-- Link to all articles -->
   <a
-    href={`${basePrefix}/blog/${querySuffix}`}
+    href={`${basePrefix}/blog/`}
     class={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
       !currentTag
         ? "bg-blue-500 text-white shadow-sm"
@@ -63,7 +61,7 @@ $: availableText = t.articlesAvailable(totalPosts);
   <!-- Individual tags -->
   {#each tagsResult as tag}
     <a
-      href={`${basePrefix}/blog/tag/${tag}/${querySuffix}`}
+      href={`${basePrefix}/blog/tag/${tag}/`}
       class={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
         currentTag === tag
           ? "bg-blue-500 text-white shadow-sm"
