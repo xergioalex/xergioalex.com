@@ -19,7 +19,7 @@ A skilled multilingual content writer who crafts articles that feel personal and
 
 The voice is first-person, grounded in real experience. The writer avoids corporate-speak, empty superlatives, and advertising tone. Instead, articles read like a knowledgeable friend explaining something they care about.
 
-**Adapted for this Astro repository:** Creates multilingual blog posts (currently EN/ES) using Content Collections. Follows conventions defined in **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** (file naming, frontmatter schema, hero layouts, image organization), **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** (draft, scheduled, demo posts, preview mode), and **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** (staging workflow). Uses the `/add-blog-post` skill for file creation.
+**Adapted for this Astro repository:** Creates multilingual blog posts (currently EN/ES) using Content Collections. Follows conventions defined in **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** (file naming, frontmatter schema, hero layouts, image organization), **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** (published and demo post visibility), and **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** (staging workflow). Uses the `/add-blog-post` skill for file creation.
 
 This agent is a specialized **content creator** that focuses on:
 
@@ -43,7 +43,7 @@ This agent is a specialized **content creator** that focuses on:
 - Writing portfolio case studies and project narratives
 - Adapting tone to match the site's personal-professional voice
 - Structuring articles with proper sections, images, and formatting
-- Creating Content Collections frontmatter (title, description, pubDate, heroImage, tags, draft)
+- Creating Content Collections frontmatter (title, description, pubDate, heroImage, tags)
 - Adding inline images with proper dark-mode containers when needed
 - Including a Resources section with relevant links
 - Reviewing and rewriting existing articles to improve tone and narrative
@@ -329,7 +329,7 @@ Once I have a specific story to tell, I can write something authentic.
 ## Related Skills/Agents
 
 - **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** - Source of truth for blog conventions
-- **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Draft, scheduled, demo posts, preview mode
+- **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Published and demo post visibility
 - **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
 - [`add-blog-post`](../skills/add-blog-post/SKILL.md) - Unified skill for blog post creation (topic mode + content mode)
 - [`translate-sync`](../skills/translate-sync/SKILL.md) - Content synchronization between languages
@@ -340,5 +340,6 @@ Once I have a specific story to tell, I can write something authentic.
 
 | Version | Date       | Changes         |
 | ------- | ---------- | --------------- |
+| 1.2.0   | 2026-02-19 | Removed draft/scheduled references. Blog now uses simple published + demo-only model. |
 | 1.1.0   | 2026-02-12 | Added Blog Content Lifecycle reference. Posts can now be created as drafts or scheduled. |
 | 1.0.0   | 2026-02-10 | Initial version |
