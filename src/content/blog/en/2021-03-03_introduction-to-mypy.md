@@ -1,13 +1,13 @@
 ---
 title: "Introduction to MyPy"
-description: "Adding type checking to Python with MyPy — less cognitive load, catch bugs early, and reduce trivial unit tests."
+description: "What I shared with my team at DailyBot — how to implement MyPy and add typing across our internal Python projects."
 pubDate: "2021-03-03"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
+heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-In March 2021 I gave a talk on MyPy — Python's static type checker. The goal was to show why adding types to Python code isn't just pedantry: it reduces cognitive load, catches mistakes early, and can replace a lot of trivial unit tests.
+I gave a talk to my team at **DailyBot** to explain how to start implementing MyPy and add typing across all our internal Python projects. The goal: show why adding types isn't just pedantry — it reduces cognitive load, catches mistakes early, and can replace a lot of trivial unit tests.
 
 **Why MyPy?** First, less cognitive load. When parameters and return values are clearly stated and verified, you don't have to guess. No surprises. Second, you realize mistakes early — wrong return types, forgotten `None` checks, accidental redeclarations — the type checker tells you before runtime. Third, data validation: we use [attrs](https://pypi.org/project/attrs/) for data classes with typed attributes and runtime checks (Pydantic is another great option). Fourth, you avoid trivial unit tests — type checking eliminates the need to write and maintain tests that only verify types.
 
@@ -32,3 +32,5 @@ The talk included a demo of integrating MyPy into a development workflow — run
 - [View slides](https://slides.com/xergioalex/introduction-to-mypy)
 - [attrs](https://pypi.org/project/attrs/)
 - [Pydantic](https://pydantic-docs.helpmanual.io/)
+
+Let's keep building.
