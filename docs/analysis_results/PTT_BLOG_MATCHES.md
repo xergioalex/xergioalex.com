@@ -7,7 +7,7 @@ Matches found by navigating PTT posts one-by-one and checking if Sergio Alexande
 | Blog Post (slug) | PTT URL | Status |
 |-----------------|---------|--------|
 | introduction-to-meteorjs | [edicion-especial-desde-la-utp](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) | ✅ Migrated |
-| nosql-y-mongodb | *(no PTT post found with Sergio as speaker for NoSQL)* | ✅ Migrated (no PTT ref) |
+| nosql-and-mongodb | *(no PTT post found with Sergio as speaker for NoSQL)* | ✅ Migrated (no PTT ref) |
 | internet-of-things | [introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/) | ✅ Migrated |
 | blockchain-industrial-revolution | [introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica](https://www.pereiratechtalks.com/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) | ✅ Migrated |
 | nodeschool-day-pereira | [nodeschool-day-pereira-2018](https://www.pereiratechtalks.com/nodeschool-day-pereira-2018) | ✅ Migrated |

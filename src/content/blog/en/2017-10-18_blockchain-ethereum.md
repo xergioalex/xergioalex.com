@@ -1,17 +1,15 @@
 ---
 title: "Introduction to Blockchain and Ethereum"
-description: "Intro to blockchain, Bitcoin, Ethereum, and smart contracts — with a Solidity demo, at PereiraJs."
+description: "What I shared at PereiraJs on blockchain, Bitcoin, Ethereum, and smart contracts — with a live Solidity demo."
 pubDate: "2017-10-18"
-heroImage: "/images/blog/posts/blockchain-ethereum/hero.jpg"
+heroImage: "/images/blog/posts/blockchain-ethereum/event-1.webp"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-That night at PereiraJs we had two talks: Julian Patiño on mobile development with Ionic + Angular, and me on blockchain and cryptocurrencies. I focused on making the technology behind Bitcoin and Ethereum accessible — and closed with a demo using Solidity for smart contracts.
+In October 2017 I gave a talk at [PereiraJs](https://www.pereiratechtalks.com/) on blockchain and cryptocurrencies. I focused on making the technology behind Bitcoin and Ethereum accessible — and closed with a live demo using Solidity for smart contracts.
 
-The idea was to answer: *How does Bitcoin work?* From there, I explained blockchain as the underlying technology, then moved to Ethereum and its smart contracts — self-executing code on the chain. The Solidity demo showed how to write and deploy a simple contract.
-
-![Ionic + Angular && Blockchain (Bitcoin, Ethereum) — PereiraJs](/images/blog/posts/blockchain-ethereum/event-1.webp)
+The idea was to answer: *How does Bitcoin work?* From there, I explained blockchain as the underlying technology, then moved to Ethereum and its smart contracts — self-executing code on the chain. The demo showed how to write and deploy a simple contract.
 
 ---
 
@@ -26,7 +24,7 @@ The idea was to answer: *How does Bitcoin work?* From there, I explained blockch
 
 ---
 
-## Slides & Event Reference
+## Slides & Reference
 
 - [View slides](https://slides.com/xergioalex/blockchain-ethereum)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3) — event recap (Ionic + Blockchain)
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3) — event recap

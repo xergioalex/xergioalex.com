@@ -93,9 +93,20 @@ $: displayDescription = searchResult
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   {#if postData.heroImage}
     <div class="relative">
-      {#if postData.heroImage.match(/\.(png|jpe?g)$/i)}
-        <picture>
-          <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+      <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800">
+        {#if postData.heroImage.match(/\.(png|jpe?g)$/i)}
+          <picture>
+            <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+            <img
+              src={postData.heroImage}
+              alt={postData.title}
+              width={400}
+              height={192}
+              class="w-full h-48 object-cover"
+              loading="lazy"
+            />
+          </picture>
+        {:else}
           <img
             src={postData.heroImage}
             alt={postData.title}
@@ -104,17 +115,8 @@ $: displayDescription = searchResult
             class="w-full h-48 object-cover"
             loading="lazy"
           />
-        </picture>
-      {:else}
-        <img
-          src={postData.heroImage}
-          alt={postData.title}
-          width={400}
-          height={192}
-          class="w-full h-48 object-cover"
-          loading="lazy"
-        />
-      {/if}
+        {/if}
+      </a>
       {#if isDev && (effectiveStatus !== 'published' || isDemo)}
         <div class="absolute top-2 right-2">
           <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />

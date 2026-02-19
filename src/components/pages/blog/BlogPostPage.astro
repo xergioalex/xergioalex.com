@@ -145,12 +145,12 @@ const breadcrumbData = {
           )}
         </div>
       )}
-      <nav aria-label="Breadcrumb" class="mb-6 text-sm text-[rgb(var(--gray))]">
-        <a href={homeUrl} class="transition-colors hover:text-blue-600 dark:hover:text-blue-400">{t.nav.home}</a>
-        <span class="mx-2">/</span>
-        <a href={blogUrl} class="transition-colors hover:text-blue-600 dark:hover:text-blue-400">{t.nav.blog}</a>
-        <span class="mx-2">/</span>
-        <span class="truncate text-[rgb(var(--gray-dark))] dark:text-gray-300">{title}</span>
+      <nav aria-label="Breadcrumb" class="mb-6 flex flex-wrap items-center gap-x-2 text-sm">
+        <a href={homeUrl} class="font-semibold text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">{t.nav.home}</a>
+        <span class="font-semibold text-gray-600 dark:text-gray-300 select-none" aria-hidden="true">/</span>
+        <a href={blogUrl} class="font-semibold text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">{t.nav.blog}</a>
+        <span class="font-semibold text-gray-600 dark:text-gray-300 select-none" aria-hidden="true">/</span>
+        <span class="truncate font-normal text-gray-600 dark:text-gray-300" aria-current="page">{title}</span>
       </nav>
       <BlogPostHeader
         title={title}
@@ -162,7 +162,7 @@ const breadcrumbData = {
         lang={lang}
         readingTimeMinutes={readingTimeMinutes}
       />
-      <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400">
+      <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:block prose-img:mx-auto">
         <Content />
       </div>
       <RelatedArticles posts={relatedPosts} lang={lang} />

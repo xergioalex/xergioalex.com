@@ -1,13 +1,13 @@
 ---
 title: "Introducción a MyPy"
-description: "Agregando type checking a Python con MyPy — menos carga cognitiva, detectar bugs temprano y reducir tests unitarios triviales."
+description: "Lo que compartí con mi equipo en DailyBot — cómo implementar MyPy y tipar nuestros proyectos Python internos."
 pubDate: "2021-03-03"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
+heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-En marzo de 2021 di una charla sobre MyPy — el type checker estático de Python. El objetivo era mostrar por qué agregar tipos al código Python no es solo pedantería: reduce la carga cognitiva, detecta errores temprano y puede reemplazar muchos tests unitarios triviales.
+Di una charla a mi equipo en **DailyBot** para explicar cómo empezar a implementar MyPy y tipar todo a lo largo de nuestros proyectos internos de Python. El objetivo: mostrar por qué agregar tipos no es solo pedantería — reduce la carga cognitiva, detecta errores temprano y puede reemplazar muchos tests unitarios triviales.
 
 **¿Por qué MyPy?** Primero, menos carga cognitiva. Cuando los parámetros y valores de retorno están claramente declarados y verificados, no tienes que adivinar. Sin sorpresas. Segundo, detectas errores temprano — tipos de retorno incorrectos, checks de `None` olvidados, redeclaraciones accidentales — el type checker te lo dice antes de runtime. Tercero, validación de datos: usamos [attrs](https://pypi.org/project/attrs/) para data classes con atributos tipados y checks en runtime (Pydantic es otra gran opción). Cuarto, evitas tests unitarios triviales — el type checking elimina la necesidad de escribir y mantener tests que solo verifican tipos.
 
@@ -32,3 +32,5 @@ La charla incluyó una demo de integrar MyPy en un flujo de desarrollo — ejecu
 - [Ver slides](https://slides.com/xergioalex/introduction-to-mypy)
 - [attrs](https://pypi.org/project/attrs/)
 - [Pydantic](https://pydantic-docs.helpmanual.io/)
+
+A seguir construyendo.

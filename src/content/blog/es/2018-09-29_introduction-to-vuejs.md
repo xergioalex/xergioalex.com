@@ -1,36 +1,42 @@
 ---
-title: "Introducción a Vue.js"
-description: "Empezando con Vue.js — un framework progresivo de JavaScript para construir interfaces de usuario, de lo simple a lo complejo."
-pubDate: "2018-09-29"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
-tags: ["talks", "tech"]
+title: 'Introducción a Vue.js'
+description: 'Lo que compartí en Pereira Tech Talks sobre Vue.js — framework progresivo, reactividad, Virtual DOM y por qué es fácil y divertido de aprender.'
+pubDate: '2018-09-29'
+heroImage: '/images/blog/posts/introduction-to-vuejs/hero.png'
+heroLayout: 'side-by-side'
+tags: ['talks', 'tech']
 ---
 
-En septiembre de 2018 di una introducción a Vue.js en Pereira Tech Talks. Vue había estado ganando tracción — era accesible, bien documentado y se sentía natural para trabajar. La charla se enfocó en por qué Vue destaca: adopción progresiva, reactividad y una curva de aprendizaje suave.
-
-Vue es un **framework progresivo**: lo simple sigue siendo simple, lo complejo es posible. Puedes agregarlo a un proyecto existente con un script tag, o construir una SPA completa con Vue CLI. Esa flexibilidad era una de las cosas que quería resaltar.
+Di una introducción a Vue.js en [Pereira Tech Talks](https://www.pereiratechtalks.com/). Vue había estado ganando tracción y quería compartir por qué me gusta tanto: es accesible, bien documentado y se siente natural para trabajar. La charla se enfocó en los conceptos que hacen a Vue especial.
 
 ---
 
-## Conceptos centrales
+## Framework Progresivo
+
+Vue es un **framework progresivo**: lo simple sigue siendo simple, lo complejo es posible. Puedes agregarlo a un proyecto existente con un simple `<script>`, o construir una aplicación completa con Vue CLI. Esa flexibilidad es una de las cosas que más valoro: no te obliga a adoptar todo de golpe.
+
+---
+
+## Conceptos Centrales
 
 - **MV\*** — Vue sigue el patrón Model-View, con separación clara de responsabilidades.
-- **Reactivo** — El DOM se actualiza automáticamente cuando tus datos cambian. Sin manipulación manual del DOM.
-- **Virtual DOM** — Vue usa un virtual DOM para actualizaciones eficientes, similar a React.
+- **Reactivo** — El DOM se actualiza automáticamente cuando tus datos cambian. Sin manipulación manual.
+- **Virtual DOM** — Vue usa un virtual DOM para actualizaciones eficientes, similar a React. El core está orientado a la UI.
 - **Componentes** — Todo se construye a partir de componentes reutilizables y componibles.
-- **Orientado a UI** — La librería core se enfoca en la capa de vista; routing y estado son separados.
 
 ---
 
-## ¿Por qué Vue?
+## ¿Por Qué Vue?
 
 - **Fácil y divertido de aprender** — La documentación es excelente y la sintaxis se siente intuitiva.
+- **SPA** — Vue Router y Vuex hacen que construir single-page apps sea directo. La "santísima trinidad" de Vue: el core, el router y el state management.
 - **Rendimiento** — Competitivo con otros frameworks en benchmarks.
-- **Soporte SPA** — Vue Router y Vuex (ahora Pinia) hacen que construir single-page apps sea directo.
 
 ---
 
-## Slides y referencias
+## Recursos
 
 - [Ver slides](https://slides.com/xergioalex/introduction-to-vue)
+- [Resumen del evento en Pereira Tech Talks](https://pereiratechtalks.com/vuejs-intro-and-js-community)
+
+A seguir construyendo.

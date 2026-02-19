@@ -1,15 +1,21 @@
 ---
 title: "Let's Talk About Flutter"
-description: "Introduction to Flutter — Google's cross-platform SDK for building native Android and iOS apps from a single codebase with Dart."
+description: "What I shared in a talk on Flutter — cross-platform SDK, Dart, evolution, widgets, project structure, and demos."
 pubDate: "2019-07-05"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/lets-talk-about-flutter/hero.png"
+heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-In July 2019 I gave a talk on Flutter at Pereira Tech Talks. Flutter had just hit 1.0 in December 2018, and the buzz was real — a free, open-source SDK to build native Android and iOS apps from the same codebase. No more maintaining two separate codebases for mobile.
+I gave a talk on Flutter at Pereira Tech Talks. Flutter is a **free, open-source SDK** to create native Android and iOS applications from the same codebase. The buzz was real — it had just hit 1.0 in December 2018.
 
-**What is Flutter?** A cross-platform mobile SDK. It uses the Skia 2D rendering engine and compiles to native ARM code — so you get real native performance, not a WebView wrapper. The language is **Dart** — a multi-paradigm language that powers Flutter apps. You can also use Dart for backend (server applications) and frontend (Angular Dart), so it's a full-stack option.
+---
+
+## Evolution
+
+- **Alpha** (2017)
+- **Beta** (February 2018)
+- **1.0** (December 2018)
 
 ---
 
@@ -19,28 +25,74 @@ In July 2019 I gave a talk on Flutter at Pereira Tech Talks. Flutter had just hi
 - **Hybrid** — WebView-based (Cordova, Ionic)
 - **Cross-platform** — One codebase, multiple platforms (React Native, Flutter)
 
-Flutter falls in the cross-platform category, but with a key difference: it doesn't use the native UI components. It draws everything with Skia, which gives you pixel-perfect consistency across platforms and full control over the look and feel.
+Flutter is **cross-platform** with a key difference: it uses the **Skia 2D rendering engine**. It doesn't use WebView or native UI components — it draws everything with Skia, giving you pixel-perfect consistency across platforms and full control over the look and feel.
 
 ---
 
-## Flutter Basics
+## Dart
 
-- **Declarative** — Inspired by React. You describe the UI as a function of state.
-- **Widgets** — Everything is a widget: `StatelessWidget` for static UI, `StatefulWidget` for dynamic UI.
-- **Layout** — `Row`, `Column`, `Stack`, `Container`, `Text`, etc.
-- **Project structure** — `lib/` for Dart code, `pubspec.yaml` for dependencies and assets.
+**Dart** is a multi-paradigm programming language used to code Flutter apps. You can build **full-stack** applications with Dart:
+
+- **Mobile** — Flutter
+- **Frontend** — Angular Dart
+- **Backend** — Server applications
 
 ---
 
-## Resources
+## Installation
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- [Android Studio](https://developer.android.com/studio/?hl=es-419)
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Xcode](https://developer.apple.com/xcode/) (for iOS)
+
+Verify installation: `flutter doctor`
+
+---
+
+## Flutter Project Structure
+
+- **flutter_app/** — Main folder
+- **android/** — Android configurations
+- **ios/** — iOS configurations
+- **pubspec.yaml** — Project config: assets, fonts, images, plugins
+- **lib/** — Flutter code written in Dart
+
+---
+
+## Inspired by React — Declarative Programming
+
+Flutter uses a **declarative** approach. You describe the UI as a function of state. The typical structure includes:
+
+- **main()** — Entry point
+- **StatelessWidget** — Widget without mutable state (Icons, Text, Container, Row, Column)
+- **StatefulWidget** — Dynamic widget that changes with interactions (Sliders, Checkbox, Radio, Forms)
+- **Scaffold** — Base structure: appBar, body, bottomNavigationBar, floatingActionButton
+
+**Everything's a widget.**
+
+---
+
+## Basic Widgets
+
+- **Text** — [api.flutter.dev](https://api.flutter.dev/flutter/widgets/Text-class.html)
+- **Row** — Horizontal layout
+- **Column** — Vertical layout
+- **Stack** — Widget stacking
+- **Container** — Container with margins, color, dimensions
+
+---
+
+## Demo and Resources
 
 - [Flutter Demo App](https://github.com/xergioalex/demo_flutter_app)
 - [Flutter Documentation](https://flutter.dev/docs)
 - [Platzi Flutter Course](https://platzi.com/clases/flutter/)
 - [DartPad](https://dartpad.dartlang.org/)
+- [Flutter Theme](https://startflutter.com/)
 
 ---
 
-## Slides & Reference
+[View slides](https://slides.com/xergioalex/lets-talk-about-flutter)
 
-- [View slides](https://slides.com/xergioalex/lets-talk-about-flutter)
+Let's keep building.
