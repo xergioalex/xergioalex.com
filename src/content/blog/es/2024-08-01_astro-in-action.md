@@ -70,6 +70,7 @@ Lo reconstruimos con Astro. [v2.pereiratechtalks.com](https://v2.pereiratechtalk
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/astro-in-action/memory-1.jpg" alt="Sergio durante la charla Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/astro-in-action/memory-2.jpg" alt="Audiencia en el meetup Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/astro-in-action/memory-4.jpg" alt="Foto grupal de asistentes al meetup Astro en Acción" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

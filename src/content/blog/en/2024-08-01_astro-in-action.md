@@ -70,6 +70,7 @@ We rebuilt it with Astro. [v2.pereiratechtalks.com](https://v2.pereiratechtalks.
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/astro-in-action/memory-1.jpg" alt="Sergio during the Astro in Action talk" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/astro-in-action/memory-2.jpg" alt="Audience at the Astro in Action meetup" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/astro-in-action/memory-4.jpg" alt="Group photo of attendees at Astro in Action meetup" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---
