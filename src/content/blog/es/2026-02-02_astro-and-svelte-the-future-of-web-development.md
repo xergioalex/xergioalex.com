@@ -93,7 +93,7 @@ Esto es lo que quiero decir con "de vuelta a los orígenes." Astro recupera la s
 
 Astro está construido sobre una premisa radical: **tu sitio web probablemente no necesita JavaScript**. No todo, de todas formas. La mayoría de las páginas son contenido. El contenido no necesita un runtime. Necesita HTML.
 
-Cuando *sí* necesitas interactividad — una barra de búsqueda, un menú de navegación, un toggle de tema — Astro usa una **Islands Architecture**. En lugar de hidratar la página completa (como Next.js o Gatsby), hidratas componentes individuales:
+Cuando *sí* necesitas interactividad — una barra de búsqueda, un menú de navegación, un toggle de tema — Astro usa una **Islands Architecture**. En lugar de hidratar la página completa (como Next.js, Nuxt.js o Gatsby), hidratas componentes individuales:
 
 ```astro
 ---
@@ -364,7 +364,17 @@ Las migraciones del mundo real cuentan la historia:
 - Mejoras de LCP (Largest Contentful Paint) de **3.2s a 1.6s**
 - **60%** de los sitios en Astro logran puntajes "Good" en Core Web Vitals, comparado con **38%** para WordPress y Gatsby
 
-En mi propio sitio, [xergioalex.com](https://xergioalex.com), el puntaje de Lighthouse Performance alcanza consistentemente los 90s altos. El blog completo — 70+ posts en dos idiomas, con búsqueda, paginación, filtrado por tags y lightboxes interactivos — carga al instante. Las páginas que son contenido puro (que son la mayoría) envían literalmente cero JavaScript.
+En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados hablan por sí solos. Este no es un simple landing page — es un sitio con una arquitectura bastante compleja: 70+ posts de blog en dos idiomas, búsqueda del lado del cliente con Fuse.js, timelines interactivos, lightboxes de imágenes, dark mode, routing bilingüe, RSS feeds, y 15 componentes Svelte interactivos. Y aun así, con algo de iteración y ajuste fino, logra un **100 perfecto en las cuatro categorías de PageSpeed** — Performance, Accessibility, Best Practices y SEO — tanto en **mobile como en desktop**:
+
+**Desktop — 100/100/100/100:**
+
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.png" alt="Resultados de Google PageSpeed Insights en desktop para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS y 0.5s Speed Index" width="1208" height="932" loading="lazy" />
+
+**Mobile — 100/100/100/100:**
+
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.png" alt="Resultados de Google PageSpeed Insights en mobile para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS y 0.9s Speed Index" width="1208" height="932" loading="lazy" />
+
+Mira esas métricas. En desktop: **0.3s FCP**, **0.3s LCP**, **0ms TBT**, **0 CLS**, y **0.5s Speed Index**. En mobile: **0.9s FCP**, **1.5s LCP**, **0ms TBT**, **0 CLS**, y **0.9s Speed Index**. Todo en verde. Todo perfecto. Lograr un cuádruple 100 en desktop ya es impresionante, pero conseguirlo también en mobile — donde los dispositivos son más lentos, las conexiones más débiles, y la simulación de throttling de Google es mucho más agresiva — es donde está el verdadero desafío. Para un sitio con este nivel de contenido e interactividad, estos números serían extremadamente difíciles de lograr con Vue + Nuxt, React + Next.js, o cualquier framework SPA tradicional — no imposible, pero requeriría significativamente más esfuerzo y trabajo de optimización. Con Astro + Svelte, tomó algo de iteración, pero la arquitectura trabaja *contigo* en lugar de en tu contra. Los defaults del framework ya son rápidos; solo necesitas evitar desacelerarlo activamente.
 
 ### Por Qué Esto Importa
 
@@ -461,15 +471,19 @@ Astro sobresale en:
 - **Sitios críticos en rendimiento** — Donde cada kilobyte de JavaScript importa
 - **Sitios con mucho SEO** — Donde el HTML renderizado del servidor es esencial
 
-Astro **no** es la mejor opción para:
+Astro **no** es la opción natural para:
 
-- **SPAs altamente interactivas** — Apps como Figma, Notion o Google Docs donde toda la página es interactiva
-- **Dashboards en tiempo real** — Donde las conexiones WebSocket y las actualizaciones constantes de estado dominan
-- **Apps de manejo de estado complejo** — Donde se necesita orquestación de estado a nivel Redux a través de cientos de componentes
+- **SPAs completamente interactivas** — Apps como Figma o Google Docs donde literalmente el 100% de la página es un canvas interactivo en vivo sin contenido estático
 
-Para esos casos de uso, Vue con Nuxt, React con Next.js, o Svelte con SvelteKit siguen siendo mejores opciones. El ecosistema de Vue es maduro y battle-tested — he construido aplicaciones complejas con él y maneja bien ese tipo de trabajo. El ecosistema de React es aún más grande. Si estás construyendo una aplicación SaaS compleja con docenas de pantallas interactivas, esos frameworks se ganaron su lugar.
+Y realmente, ese es el único caso donde diría que Astro genuinamente no encaja. Para los otros casos que la gente típicamente menciona — dashboards en tiempo real, apps de manejo de estado complejo — creo que Astro los maneja mejor de lo que la mayoría asume.
 
-Pero aquí está la cosa: **la mayoría de los sitios web no son Figma**. La mayoría de los sitios web son contenido. Son blogs, landing pages, documentación, portfolios, catálogos de e-commerce, sitios corporativos. Para esos — que representan la gran mayoría de lo que se construye en la web — Astro y Svelte no son solo competitivos. Son superiores.
+**¿Dashboards en tiempo real?** Piénsalo: la barra lateral, la navegación, los labels y la estructura de la página son todo contenido estático — perfecto para Astro. ¿Los gráficos en vivo y datos en tiempo real? Esos son islands de Svelte con conexiones WebSocket. Los server islands de Astro (introducidos en Astro 5) y el modo de rendering híbrido hacen que esta arquitectura no solo sea posible, sino elegante. Obtienes cargas de página instantáneas para el shell estático mientras cada widget interactivo se hidrata independientemente.
+
+**¿Manejo de estado complejo?** Los runes de Svelte 5 (`$state`, `$derived`) combinados con [nanostores](https://github.com/nanostores/nanostores) — que Astro recomienda oficialmente para compartir estado entre islands — pueden manejar orquestación de estado sorprendentemente compleja. No es Redux, y ese es el punto. No *necesitas* la ceremonia de Redux cuando tus primitivas reactivas son así de expresivas.
+
+Dicho esto, para apps donde la interactividad domina en *cada* pantalla — un SaaS completo con docenas de vistas interactivas complejas — Vue con Nuxt, React con Next.js, o Svelte con SvelteKit son opciones más naturales. El ecosistema de Vue es maduro y battle-tested — he construido aplicaciones complejas con él y maneja bien ese tipo de trabajo. El ecosistema de React es aún más grande. Esos frameworks se ganaron su lugar para casos de uso centrados en apps.
+
+Pero aquí está la cosa: **la línea entre "sitio de contenido" y "app" es más difusa que nunca**, y Astro sigue empujando ese límite. La mayoría de los sitios web no son Figma. La mayoría de los sitios web son una mezcla de contenido e interactividad — blogs, landing pages, documentación, portfolios, catálogos de e-commerce, sitios corporativos, y sí, incluso dashboards con elementos en tiempo real. Para esos — que representan la gran mayoría de lo que se construye en la web — Astro y Svelte no son solo competitivos. Son superiores.
 
 ---
 
