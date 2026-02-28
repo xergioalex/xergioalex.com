@@ -154,7 +154,7 @@ content: sync {content_type} translation for "{identifier}" ({source_lang} -> {t
 
 - Use natural, idiomatic translations (not literal)
 - Preserve technical terminology without translation (code terms, product names, URLs)
-- Use formal-but-friendly tone for Spanish (consistent with existing site voice)
+- Use informal-professional register for Spanish (Colombian Spanish phrasing, consistent with site voice)
 - Maintain the same markdown structure and formatting
 
 ### Stop Conditions

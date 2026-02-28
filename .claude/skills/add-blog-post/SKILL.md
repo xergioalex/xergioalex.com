@@ -11,7 +11,7 @@ argument-hint: "[topic, brief, or content]"
 tier: 2
 intent: create
 max-files: 6
-max-loc: 600
+max-loc: 1200
 ---
 
 # Skill: Add Blog Post
@@ -29,7 +29,7 @@ The skill auto-detects the mode based on the inputs provided.
 
 - Does NOT modify the Content Collections schema
 - Does NOT create new tags (uses existing tags from `src/content/tags/`)
-- Does NOT modify existing posts (use `doc-edit` skill)
+- Does NOT modify existing posts (use `content-writer` agent for rewrites, `doc-edit` for minor edits)
 - Does NOT create pages (use `add-page` skill)
 - Does NOT download or optimize images (use `npm run images:optimize`)
 - Does NOT create interactive Svelte components
@@ -232,7 +232,7 @@ content: add blog post "{title}" (en + es)
 ### Scope Limits
 
 - **Maximum files:** 6 (2 article files + up to 4 supporting assets)
-- **Maximum LOC:** 600 (combined EN + ES, ~300 per language)
+- **Maximum LOC:** 1200 (combined EN + ES, ~600 per language)
 - **Allowed directories:** `src/content/blog/en/`, `src/content/blog/es/`, `public/images/`
 - **Forbidden directories:** `src/pages/`, `src/components/`, `src/layouts/`
 
@@ -344,6 +344,7 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.4.0   | 2026-02-28 | Increased max-loc from 600 to 1200 (many posts exceed 600 words). Updated existing post modification guidance to reference content-writer agent. |
 | 2.3.0   | 2026-02-19 | Removed `$DRAFT` parameter, draft/scheduled references. Blog now uses simple published + demo-only model. |
 | 2.2.0   | 2026-02-12 | Added `$DRAFT` parameter, content lifecycle reference, scheduled post support. Links to new Blog Content Lifecycle guide. |
 | 2.1.0   | 2026-02-12 | Added `draft` field to frontmatter reference. Blog posts now support draft/scheduled/demo lifecycle. |

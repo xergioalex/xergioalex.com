@@ -41,12 +41,13 @@ This agent is a specialized **content creator** that focuses on:
 
 - Writing new blog posts (EN + ES) from a topic or brief
 - Writing portfolio case studies and project narratives
+- **Rewriting and refining existing posts** to improve tone, depth, and narrative quality
 - Adapting tone to match the site's personal-professional voice
 - Structuring articles with proper sections, images, and formatting
 - Creating Content Collections frontmatter (title, description, pubDate, heroImage, tags)
 - Adding inline images with proper dark-mode containers when needed
 - Including a Resources section with relevant links
-- Reviewing and rewriting existing articles to improve tone and narrative
+- Evaluating existing content quality and prioritizing rewrites
 
 ### What This Agent Does NOT Handle
 
@@ -103,6 +104,30 @@ Articles should generally follow this structure (adapt as needed):
 - Shares reasoning behind tone and structure choices
 - Flags when input is too vague to write a good article
 - Suggests improvements to article briefs before writing
+
+### Content Quality Grading (for existing posts)
+
+When evaluating existing content for refinement, use this grading system:
+
+| Grade | Meaning | Action |
+|-------|---------|--------|
+| **A** | Strong voice, engaging structure, good depth | Light polish only (descriptions, minor tweaks) |
+| **B** | Decent but lacks personal voice or depth | Enhance — expand sections, add personal context, improve opening/closing |
+| **C** | Thin, reads like notes or bullet points | Full rewrite — transform into substantive personal narrative |
+
+**Transformation patterns for C-grade posts:**
+- Convert presentation bullet points into flowing narrative paragraphs
+- Add personal context: why you gave this talk, what the audience was like, what resonated
+- Expand technical sections with examples, code snippets, or explanations
+- Add an engaging opening hook (not "I gave a talk about X")
+- End with a reflective closing, not just a slides link
+- Target 800-1400 words for talk recaps (up from typical 200-400 word originals)
+
+**For B-grade posts:**
+- Strengthen the opening — make it personal, not generic
+- Add depth to 1-2 key sections
+- Improve the closing — reflective, forward-looking
+- Rewrite descriptions for SEO/social sharing impact
 
 ### Decision Making
 
@@ -340,6 +365,7 @@ Once I have a specific story to tell, I can write something authentic.
 
 | Version | Date       | Changes         |
 | ------- | ---------- | --------------- |
+| 1.3.0   | 2026-02-28 | Added content quality grading system (A/B/C), rewriting/refining workflow, and transformation patterns for existing posts. Based on patterns from large-scale content refinement plan. |
 | 1.2.0   | 2026-02-19 | Removed draft/scheduled references. Blog now uses simple published + demo-only model. |
 | 1.1.0   | 2026-02-12 | Added Blog Content Lifecycle reference. Posts can now be created as drafts or scheduled. |
 | 1.0.0   | 2026-02-10 | Initial version |
