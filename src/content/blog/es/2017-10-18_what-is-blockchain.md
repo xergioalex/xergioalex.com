@@ -1,5 +1,5 @@
 ---
-title: '¿Qué es el Blockchain y Cómo Transformará Radicalmente la Economía?'
+title: '¿Qué es el blockchain y cómo transformará radicalmente la economía?'
 description: 'Di esta charla en la Universidad de Caldas — trazando blockchain desde la historia del dinero hasta construir aplicaciones descentralizadas con JavaScript.'
 pubDate: '2017-10-18'
 heroImage: '/images/blog/posts/what-is-blockchain/hero.jpg'
@@ -17,7 +17,7 @@ La audiencia era una mezcla de estudiantes, profesores y desarrolladores locales
 
 ---
 
-## La Historia del Dinero y la Confianza
+## La historia del dinero y la confianza
 
 Empecé la charla con una pregunta: **¿Qué es el dinero?** La mayoría de la gente piensa en el dinero como monedas o billetes, pero eso es solo una forma. El dinero es fundamentalmente un **constructo social** — un acuerdo compartido de que algo tiene valor.
 
@@ -48,11 +48,11 @@ Por eso se dice que blockchain es "inmutable" — no porque no puedas cambiarlo,
 
 ---
 
-## Más Allá de las Criptomonedas: Casos de Uso Reales
+## Más allá de las criptomonedas: casos de uso reales
 
 Bitcoin fue la primera aplicación de blockchain, pero no es la única. Mostré varios casos de uso que iban más allá del dinero digital:
 
-### Contratos Inteligentes (Ethereum)
+### Contratos inteligentes (Ethereum)
 
 Ethereum introdujo la idea de blockchain programable. Puedes escribir código (contratos inteligentes) que corre en el blockchain, habilitando aplicaciones descentralizadas (dApps). Estos contratos se ejecutan automáticamente cuando se cumplen condiciones — no se necesita intermediario.
 
@@ -62,11 +62,11 @@ Ejemplo: préstamos descentralizados (MakerDAO), intercambios descentralizados (
 
 Blockchain puede rastrear productos desde la producción hasta la entrega. Walmart e IBM experimentaron con blockchain para la trazabilidad de alimentos — rastreando un mango desde la finca hasta la tienda en segundos en lugar de días.
 
-### Identidad Digital
+### Identidad digital
 
 En países sin sistemas de identidad robustos, blockchain podría proporcionar identidad verificable y auto-soberana. Tú controlas tus datos, y los compartes selectivamente con servicios que los necesitan.
 
-### Finanzas Descentralizadas (DeFi)
+### Finanzas descentralizadas (DeFi)
 
 Para 2017, DeFi todavía estaba en su infancia, pero la visión era clara: reconstruir el sistema financiero en blockchains públicos. Sin bancos, sin corredores — solo código y criptografía.
 
@@ -92,7 +92,7 @@ También enfaticé la importancia de entender los trade-offs. Escribir datos al 
 
 ---
 
-## Las Grandes Preguntas
+## Las grandes preguntas
 
 El Q&A fue intenso. La gente quería saber:
 

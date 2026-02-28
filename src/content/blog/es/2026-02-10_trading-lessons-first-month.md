@@ -1,5 +1,5 @@
 ---
-title: "Lecciones de Mi Primer Mes de Trading"
+title: "Lecciones de mi primer mes de trading"
 description: "Un mes en los mercados — qué funcionó, qué no, el patrón de sobretrading de los lunes que descubrí en mi diario, y por qué mover mi stop loss me costó más que solo dinero."
 pubDate: "2026-02-10"
 heroImage: "/images/blog/shared/blog-placeholder-3.jpg"
@@ -11,7 +11,7 @@ Un mes adentro. Se siente como una eternidad y un parpadeo al mismo tiempo. Los 
 
 ---
 
-## Lo Que Funcionó
+## Lo que funcionó
 
 **Tener un plan de trading.** Antes de empezar, escribí mis reglas: qué pares operar (EUR/USD, GBP/USD, USD/JPY), qué temporalidades usar (diario y 4 horas), qué setups buscar (liquidity grabs, retests de order blocks, fair value gaps), y cuánto arriesgar por operación (1% del balance de la cuenta). Tener este documento como referencia me mantuvo con los pies en la tierra cuando las emociones querían tomar el control.
 
@@ -25,7 +25,7 @@ La primera vez que sentí el impulso de romper mis reglas — tomar una operaci�
 
 ---
 
-## Lo Que No Funcionó
+## Lo que no funcionó
 
 **Sobreanalizar.** Pasé demasiadas horas mirando gráficos, buscando la entrada "perfecta". La parálisis por análisis es real. Marcaba niveles, dibujaba líneas de tendencia, revisaba múltiples temporalidades, esperaba confirmación — y para cuando decidía actuar, el movimiento estaba a mitad de camino o el setup se había invalidado. A veces lo suficientemente bueno es suficiente. Esperar la perfección significa perder oportunidades válidas.
 
@@ -37,7 +37,7 @@ La primera vez que sentí el impulso de romper mis reglas — tomar una operaci�
 
 ---
 
-## Una Operación Específica Que Me Enseñó Algo
+## Una operación específica que me enseñó algo
 
 **El whipsaw de noticias en GBP/USD (5 de febrero).** Los datos de inflación del Reino Unido estaban programados para las 7:00 AM. Lo sabía. Mi plan decía "sin trading 30 minutos antes y después de noticias importantes." Pero vi lo que parecía un liquidity grab limpio en el gráfico de 4 horas, el precio sentado en un order block, y me convencí de que el setup era lo suficientemente fuerte para aguantar las noticias.
 
@@ -47,7 +47,7 @@ Esa dolió. Pero está quemada en mi memoria ahora. No cometeré ese error otra 
 
 ---
 
-## Conclusiones Clave
+## Conclusiones clave
 
 1. **La gestión del riesgo lo es todo.** No es glamoroso, pero proteger tu capital es la base de la longevidad en el trading. Cada operación debería responder: "¿Cuánto estoy dispuesto a perder?" antes de pensar en cuánto podrías ganar.
 
@@ -61,7 +61,7 @@ Esa dolió. Pero está quemada en mi memoria ahora. No cometeré ese error otra 
 
 ---
 
-## Los Números (Porque la Rendición de Cuentas Importa)
+## Los números (porque la rendición de cuentas importa)
 
 - **Total de operaciones:** 12
 - **Win rate:** 58% (7 ganancias, 5 pérdidas)
@@ -74,7 +74,7 @@ El objetivo este mes no era ganancia — era aprender. El hecho de que no perdí
 
 ---
 
-## Mirando Hacia Adelante
+## Mirando hacia adelante
 
 El segundo mes se trata de refinamiento. Quiero reducir mi enfoque a menos setups (liquidity grabs y retests de order blocks solamente — sin fair value gaps hasta que domine estos). Quiero mejorar mi timing de entrada esperando confirmación en lugar de saltar temprano. Y quiero continuar construyendo el hábito del diario — ya es la herramienta más valiosa que tengo.
 

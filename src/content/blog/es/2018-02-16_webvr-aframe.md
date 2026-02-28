@@ -11,7 +11,7 @@ Realidad virtual en la web sin herramientas especializadas ni configuración com
 
 ---
 
-## Por Qué la Web para VR
+## Por qué la web para VR
 
 Empecé hablando del hardware. Los visores de gama alta — HTC Vive, Oculus Rift, Sony VR — cuestan cientos de dólares. Pero la barrera de entrada baja mucho con opciones como Cardboard (unos 7 USD) o VR Box (unos 15 USD). La web es la plataforma de distribución masiva más importante: no necesitas instalar nada, solo un navegador.
 
@@ -31,7 +31,7 @@ El inspector web de A-Frame da la sensación de trabajar con Unity — puedes in
 
 ---
 
-## Lo Que Mostré en la Charla
+## Lo que mostré en la charla
 
 Hice varias demos en vivo, desde lo más básico hasta proyectos más elaborados:
 

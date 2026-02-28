@@ -15,7 +15,7 @@ Este artículo está basado en lo que compartí en Pereira Tech Talks en 2018, d
 
 ---
 
-## La Filosofía del Framework Progresivo
+## La filosofía del framework progresivo
 
 Aquí está lo que hizo que Vue me hiciera click: **es progresivo**. Y no es marketing — es genuinamente cómo está diseñado el framework.
 
@@ -29,7 +29,7 @@ Viniendo de Angular (donde adoptas el framework completo o nada) y React (donde 
 
 ---
 
-## Qué Hace Diferente a Vue: Reactividad y Componentes
+## Qué hace diferente a Vue: reactividad y componentes
 
 En su núcleo, Vue está construido alrededor de la **reactividad** — la idea de que cuando tus datos cambian, el DOM se actualiza automáticamente. Sin manipulación manual. Sin llamadas a `setState()` que se sienten como ceremonias.
 
@@ -94,7 +94,7 @@ Los componentes de un solo archivo (archivos `.vue`) me parecieron naturales. To
 
 ---
 
-## Por Qué Vue Se Convirtió en Mi Opción Principal
+## Por qué Vue se convirtió en mi opción principal
 
 Después de trabajar con Vue en varios proyectos, esto es lo que me hizo volver una y otra vez:
 
@@ -110,7 +110,7 @@ Después de trabajar con Vue en varios proyectos, esto es lo que me hizo volver 
 
 ---
 
-## Mi Experiencia con Vue
+## Mi experiencia con Vue
 
 Desde ese primer experimento agregando Vue a un proyecto jQuery, lo he usado para todo — desde dashboards internos hasta apps de cara al cliente. Lo he enseñado en meetups locales (como Pereira Tech Talks). He debuggeado state trees de Vuex a las 2 AM y celebrado cuando los flujos de datos reactivos simplemente funcionaron.
 

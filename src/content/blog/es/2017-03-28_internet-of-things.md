@@ -1,5 +1,5 @@
 ---
-title: 'Introducción al Internet de las Cosas'
+title: 'Introducción al internet de las cosas'
 description: 'Me uní con Alejandro Rendón para explorar IoT — desde sensores y controladores hasta programar robots con JavaScript y Johnny-five.'
 pubDate: '2017-03-28'
 heroImage: '/images/blog/posts/internet-of-things/hero.jpg'
@@ -27,7 +27,7 @@ Lo que más me emociona del IoT es que extiende el software al mundo real. En lu
 
 ---
 
-## Los Tres Componentes Esenciales
+## Los tres componentes esenciales
 
 Todo sistema IoT se construye a partir de tres elementos fundamentales. Entender estos te ayuda a ver cómo funcionan incluso los dispositivos inteligentes más complejos:
 
@@ -45,7 +45,7 @@ En la charla, mostré ejemplos de cada componente y cómo trabajan juntos. La au
 
 ---
 
-## Programando Hardware con Node.js: Johnny-five
+## Programando hardware con Node.js: Johnny-five
 
 Aquí es donde las cosas se ponen divertidas. La mayoría de la gente asume que necesitas escribir C o C++ para programar microcontroladores. Eso es cierto para sistemas embebidos de bajo nivel, pero para prototipar y aprender, hay una mejor manera: JavaScript.
 
@@ -53,7 +53,7 @@ Aquí es donde las cosas se ponen divertidas. La mayoría de la gente asume que 
 
 ¿Por qué importa esto? Porque JavaScript es familiar para millones de desarrolladores. Si sabes cómo construir una aplicación web, ya tienes las habilidades para construir un robot. Eso es un gran avance.
 
-### Tu Primer Robot
+### Tu primer robot
 
 En la charla, mostré cómo empezar: conectar un Arduino por USB, instalar Johnny-five con npm, y hacer parpadear un LED en unas diez líneas de código. A la audiencia le encantó — hay algo mágico en escribir `led.blink(500)` y ver un LED físico prenderse y apagarse.
 

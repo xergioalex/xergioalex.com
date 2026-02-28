@@ -1,5 +1,5 @@
 ---
-title: "El futuro de la IA: Código, Hardware y Agentes"
+title: "El futuro de la IA: código, hardware y agentes"
 description: "Desde mi co-presentación en Pereira Tech Talks con Sebastián Mora — cómo la programación pasó de escribir código a orquestar agentes, qué desbloquean los MCPs, y por qué llevé un robot a un meetup de software."
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
@@ -13,13 +13,13 @@ Co-presenté esta charla con [Sebastián Mora](https://www.linkedin.com/in/sebas
 
 ---
 
-## Por Qué Elegimos Este Tema
+## Por qué elegimos este tema
 
 Sebastián y yo llevábamos meses hablando de este cambio. En DailyBot ya no solo escribimos código. Diseñamos flujos de trabajo, configuramos asistentes de IA, orquestamos automatizaciones. Los ingenieros que prosperan son los que piensan en sistemas y saben cuándo delegar — a un modelo, a un agente, a una herramienta. Quería que la audiencia viera lo que yo veo: la descripción del puesto cambió, y vale la pena sumarse.
 
 ---
 
-## De Escribir Código a Orquestar Agentes
+## De escribir código a orquestar agentes
 
 Llevé a la audiencia por lo que esto significa en la práctica. Pasamos de *solo* escribir código a diseñar agentes, orquestar LLMs, conectar RAGs e incluso hablar con hardware en el mundo real. ¿Qué es realmente un **AI Engineer**? Alguien que sabe cómo componer estas piezas — modelos, herramientas, flujos — en sistemas que resuelven problemas reales.
 
@@ -74,7 +74,7 @@ Llevé un robot con ruedas mecanum para hacer la demo. Verlo moverse en respuest
 
 ---
 
-## Qué Significa Esto para Nosotros
+## Qué significa esto para nosotros
 
 Terminé con una idea simple: las herramientas están aquí. Las APIs están abiertas. La pregunta no es si la IA va a cambiar cómo construimos — ya lo hizo. La pregunta es si nos vamos a sumar. Diseña, planea, supervisa. Aprende a delegar. Construye con agentes. Y cuando tenga sentido, piensa más allá de la pantalla.
 

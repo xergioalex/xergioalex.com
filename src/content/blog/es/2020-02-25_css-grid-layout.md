@@ -13,7 +13,7 @@ Así que lo hice. Y cambió completamente cómo abordo los layouts.
 
 ---
 
-## Por Qué Grid Me Importó
+## Por qué grid me importó
 
 Por mucho tiempo, Flexbox fue mi herramienta de cabecera. Es brillante para layouts unidimensionales — filas o columnas, no ambas. Pero en el momento en que necesitas controlar la posición en dos dimensiones simultáneamente, Flexbox empieza a sentirse como la herramienta incorrecta. Puedes hacerlo funcionar, pero estás trabajando *en contra* de él, no *con* él.
 
@@ -60,7 +60,7 @@ La charla incluía comparaciones lado a lado del mismo layout construido con Fle
 
 ---
 
-## Demo Time: Aprender Construyendo
+## Demo time: aprender construyendo
 
 Compartí dos ejercicios prácticos que construí para realmente interiorizar cómo funciona Grid. Leer la documentación es útil, pero construir layouts reales es donde todo hace clic.
 
@@ -100,7 +100,7 @@ También armé un curso completo con más ejemplos y demos interactivas:
 
 ---
 
-## Trucos Bonus del State of CSS 2020
+## Trucos bonus del State of CSS 2020
 
 Al final de la charla, cubrí dos features más nuevas de CSS que estaban ganando tracción en 2020:
 
@@ -138,7 +138,7 @@ Puedes probarlo en Firefox DevTools configurando `ui.prefersReducedMotion: 1` en
 
 ---
 
-## Lo Que Aprendí
+## Lo que aprendí
 
 Grid no reemplazó a Flexbox para mí — lo complementó. Ahora uso Grid cuando pienso en estructura de página y Flexbox cuando pienso en alineamiento de componentes. Funcionan hermosamente juntos.
 

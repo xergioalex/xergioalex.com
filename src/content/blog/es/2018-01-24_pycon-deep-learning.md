@@ -1,5 +1,5 @@
 ---
-title: 'Deep Learning: De la Academia a la Práctica'
+title: 'Deep Learning: de la academia a la práctica'
 description: 'Lo que compartí en PyCon Colombia 2018 sobre cómo la matemática aplicada nos permite construir modelos de IA — álgebra lineal, redes neuronales, descenso del gradiente y visión por computadora.'
 pubDate: '2018-02-09'
 heroImage: '/images/blog/posts/pycon-deep-learning/hero.jpg'
@@ -28,7 +28,7 @@ Hay dos paradigmas principales:
 
 ---
 
-## Redes Neuronales y el Perceptrón
+## Redes neuronales y el perceptrón
 
 Las **redes neuronales** son la base de gran parte de la IA actual. Funcionan, al menos conceptualmente, como las neuronas de nuestro cerebro. El **perceptrón** es el bloque fundamental — una unidad que recibe entradas, las pondera y produce una salida.
 
@@ -36,7 +36,7 @@ De ahí pasamos a **predicciones** con cadenas de Markov y otros modelos, pero e
 
 ---
 
-## Deep Learning: Aprendizaje en Múltiples Niveles
+## Deep Learning: aprendizaje en múltiples niveles
 
 **Deep learning** es aprendizaje en múltiples niveles. Cada capa oculta es responsable de reconocer diferentes características y entregarlas como entrada a la siguiente. Las primeras capas capturan patrones simples (bordes, texturas); las más profundas, conceptos abstractos.
 
@@ -44,7 +44,7 @@ Y aquí viene la parte que más me emocionaba compartir: **la matemática detrá
 
 ---
 
-## La Matemática que Hace Posible el Deep Learning
+## La matemática que hace posible el Deep Learning
 
 Para construir estos modelos necesitamos:
 
@@ -57,7 +57,7 @@ Uno de los conceptos clave que expliqué fue la **vectorización**: el arte de e
 
 ---
 
-## Cómo Funciona: Forward, Backward y el Descenso del Gradiente
+## Cómo funciona: forward, backward y el descenso del gradiente
 
 El flujo de un modelo de deep learning se puede resumir así:
 

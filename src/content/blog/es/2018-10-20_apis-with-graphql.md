@@ -66,7 +66,7 @@ Un request. Solo los campos que necesitás. Sin over-fetching. Sin under-fetchin
 
 ---
 
-## Conceptos Clave que Importan
+## Conceptos clave que importan
 
 ### Schema: El Contrato
 
@@ -196,7 +196,7 @@ El motor de ejecución de GraphQL llama a estos resolvers en el orden correcto, 
 
 ---
 
-## Por Qué GraphQL me Importa
+## Por qué GraphQL me importa
 
 Después de construir APIs con REST y GraphQL, esto es lo que cambió para mí:
 
@@ -222,7 +222,7 @@ GraphQL tiene implementaciones en más de 20 lenguajes. Lo he usado con Node.js,
 
 ---
 
-## Ejemplo Real: API de Star Wars
+## Ejemplo real: API de Star Wars
 
 Si querés jugar con GraphQL, probá la [API de Star Wars (SWAPI)](http://graphql.org/swapi-graphql/). Es un endpoint GraphQL público con datos sobre películas, personajes, planetas y naves.
 
@@ -265,7 +265,7 @@ Notá cómo atravesás relaciones (`films -> characters -> homeworld`) en una so
 - [Apollo Client](https://www.apollographql.com/client) — Librería GraphQL del lado del cliente
 - [Awesome GraphQL](https://github.com/chentsulin/awesome-graphql) — Lista curada de recursos
 
-### Charla Recomendada
+### Charla recomendada
 
 - [Por qué API REST está muerto y debemos usar APIs GraphQL](https://www.youtube.com/watch?v=cUIhcgtMvGc) — José María Rodríguez Hurtado
 

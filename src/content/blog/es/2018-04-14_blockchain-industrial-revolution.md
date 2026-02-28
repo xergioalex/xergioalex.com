@@ -1,5 +1,5 @@
 ---
-title: 'Blockchain: La Revolución Industrial de Internet'
+title: 'Blockchain: la revolución industrial de internet'
 description: 'Por qué blockchain es más que criptomonedas — aplicaciones reales en cadenas de suministro, identidad, votación, y cómo la confianza descentralizada cambia las reglas de los sistemas digitales.'
 pubDate: '2018-04-14'
 heroImage: '/images/blog/posts/blockchain-industrial-revolution/blockchain-2.webp'
@@ -13,7 +13,7 @@ La revolución industrial no fue solo sobre producción más rápida. Cambió c�
 
 ---
 
-## El Problema: La Confianza Centralizada es Frágil
+## El problema: la confianza centralizada es frágil
 
 La cosa con la confianza en la era digital es esta: realmente no confiamos unos en otros directamente. Confiamos en intermediarios.
 
@@ -25,7 +25,7 @@ La crisis expuso una debilidad fundamental: cuando centralizás la confianza, cr
 
 ---
 
-## La Alternativa: Redes de Confianza Distribuida
+## La alternativa: redes de confianza distribuida
 
 Mientras los gobiernos corrían a parchear el viejo sistema, un movimiento paralelo ya estaba construyendo uno nuevo. Los cypherpunks — entusiastas de la criptografía preocupados por la privacidad y la soberanía individual — habían estado trabajando en sistemas descentralizados por años.
 
@@ -57,7 +57,7 @@ Juntos, estos tres elementos crean un sistema donde la confianza se impone por c
 
 ---
 
-## Más Allá del Dinero: Aplicaciones del Mundo Real
+## Más allá del dinero: aplicaciones del mundo real
 
 Acá está lo que la mayoría de la gente se pierde: el verdadero poder de blockchain no son las criptomonedas. Es la **verificación descentralizada e inmutabilidad**.
 
@@ -69,7 +69,7 @@ Walmart usa blockchain para rastrear comida desde la granja hasta la góndola. S
 
 Las cadenas de suministro tradicionales dependen de papeles y confianza. Blockchain hace que toda la cadena sea verificable y transparente.
 
-### Identidad Digital
+### Identidad digital
 
 En muchos países, probar tu identidad es difícil o imposible. Los refugiados no tienen pasaportes. Las poblaciones rurales no tienen actas de nacimiento. Los sistemas de identidad basados en blockchain te permiten probar quién sos sin depender de una base de datos gubernamental o documentos físicos.
 
@@ -116,7 +116,7 @@ Las mejores DAPPs resuelven problemas donde la centralización crea riesgo. Los 
 
 ---
 
-## Qué Cambia Blockchain Realmente
+## Qué cambia blockchain realmente
 
 Acá está mi conclusión después de años de construir y experimentar: blockchain no reemplaza todo. Pero cambia fundamentalmente las reglas donde **la confianza es costosa o el poder centralizado es peligroso**.
 
@@ -137,7 +137,7 @@ Y la confianza es la base de toda economía, toda institución, todo sistema. Cu
 
 ## Recursos que Compartí
 
-### Charlas Recomendadas
+### Charlas recomendadas
 
 - [Innovando con blockchain](https://www.youtube.com/watch?v=8MmdpiGikwA) — TEDex Costa Rica
 - [Blockchain 101](https://www.youtube.com/watch?v=NjW6nyEhFkA) — Explicación simple para inversionistas

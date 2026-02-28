@@ -1,5 +1,5 @@
 ---
-title: "IA y la Nueva Era de la Programación en Open Tech Hackathon"
+title: "IA y la nueva era de la programación en Open Tech Hackathon"
 description: "Desde mi workshop Vibe Coding e IA en Open Tech Hackathon — cuándo usar Cursor vs Codex vs Claude Code, la mentalidad de director, y lecciones prácticas de entregar funcionalidades con IA en DailyBot."
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
@@ -13,13 +13,13 @@ La sesión **Vibe Coding e IA** del 4 de octubre apuntaba a una cosa: inspirar y
 
 ---
 
-## Lo Que Quería Dejarles
+## Lo que quería dejarles
 
 Tres cosas. Primero: **qué herramientas probar** — Cursor, Codex, Claude Code. Segundo: **cómo pensar en ellas** — no te estás reemplazando, te estás multiplicando. Tercero: **una mentalidad** — describe lo que quieres, deja que el agente itere, tú diriges. Eso es vibe coding. Eso es lo que quería que llevaran a sus proyectos.
 
 ---
 
-## Las Herramientas: Cuándo Usar Cada Una
+## Las herramientas: cuándo usar cada una
 
 Recorrí los tres agentes de código que más importan hoy — y más importante, *cuándo* brilla cada uno. Esto no es elegir favoritos. Es entender sus fortalezas y emparejarlas con tu flujo de trabajo.
 
@@ -33,7 +33,7 @@ He usado los tres en producción en DailyBot. Mi flujo de trabajo: Cursor para f
 
 ---
 
-## El Modelo Mental: Director, No Codificador
+## El modelo mental: director, no codificador
 
 La slide que quedó: **"Nuevo rol de los desarrolladores: orquestadores y supervisores."** No quería asustarlos. Quería reencuadrar. No escribes menos — decides más. Tú defines la dirección. Tú defines el problema. El agente escribe el primer borrador, ejecuta las pruebas, sugiere correcciones. Tú revisas, corriges y sigues.
 
@@ -51,7 +51,7 @@ Ese efecto multiplicador es real. Pero solo funciona si sabes cómo se ve "bueno
 
 ---
 
-## Tips Prácticos desde Producción
+## Tips prácticos desde producción
 
 Terminé con lecciones que había aprendido enviando funcionalidades con IA en DailyBot — cosas que desearía que alguien me hubiera dicho cuando empecé:
 

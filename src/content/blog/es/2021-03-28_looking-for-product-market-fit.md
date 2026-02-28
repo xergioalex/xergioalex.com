@@ -1,5 +1,5 @@
 ---
-title: "Buscando el Product Market Fit"
+title: "Buscando el product market fit"
 description: "Mi viaje construyendo y fallando productos en Rocka.co — qué me enseñó cada experimento fallido, cómo aprendí a reconocer señales reales de PMF y por qué DailyBot finalmente pegó."
 pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.jpg"
@@ -13,7 +13,7 @@ La charla no buscaba ser motivacional. Buscaba ser honesta. Construir productos 
 
 ---
 
-## Qué Significa para Mí el Product Market Fit
+## Qué significa para mí el product market fit
 
 Para mí, **Product Market Fit** es ese momento en que el mercado empieza a darte señales claras de que hay una conexión real entre lo que estás construyendo y lo que la gente realmente necesita. No es algo que puedas medir con una sola métrica. Es una sensación — respaldada por retención, crecimiento, gente que le cuenta a sus amigos, clientes que piden más features en vez de preguntar "¿qué es esto?"
 
@@ -23,7 +23,7 @@ La parte difícil es llegar ahí.
 
 ---
 
-## Cómo Aprendí a Iterar (y Fallar)
+## Cómo aprendí a iterar (y fallar)
 
 La única forma en que he logrado acercarme al PMF es **iterar incansablemente**. Construir, lanzar, aprender, repetir. No te enamores de tu primera idea. Pruébala, observa qué pasa y está dispuesto a matarla si no funciona.
 
@@ -47,14 +47,14 @@ E-commerce para artesanos y productores locales. Gestión de inventario, pagos, 
 ### KidTrix
 Juegos educativos para niños. A los padres les gustaba el concepto, pero no pudimos descifrar la distribución. Las app stores están saturadas, los padres son escépticos, las escuelas se mueven lento. Buen producto, go-to-market equivocado. **Lección:** Un gran producto que nadie descubre es lo mismo que ningún producto.
 
-### Bambú Meditación
+### Bambú meditación
 App de meditación con contenido guiado en español. Calm y Headspace ya dominaban. Pensamos que la localización sería suficiente diferenciación. No lo fue. Las apps de meditación son un mercado winner-take-most, y llegamos muy tarde. **Lección:** Competir con gigantes en su terreno requiere más que un feature (como idioma). Necesitas un wedge fundamentalmente diferente.
 
 Cada uno de estos productos me enseñó algo. Ninguno encontró PMF. Pero cada fracaso afiló mi capacidad para reconocer qué *no* estaba funcionando y por qué.
 
 ---
 
-## El Rol de la Comunidad
+## El rol de la comunidad
 
 Mientras construía todos estos productos, también me involucré profundamente en comunidades tech locales: **PereiraJS**, **Pereira Tech Talks** y **Python Pereira**. Estos no eran solo proyectos paralelos — moldearon cómo pienso en construir productos.
 
@@ -84,7 +84,7 @@ Ahí supe que teníamos algo.
 
 ---
 
-## El Camino a Y Combinator
+## El camino a Y Combinator
 
 Aplicamos a **Y Combinator tres veces** antes de entrar.
 
@@ -120,7 +120,7 @@ Si estás construyendo un producto y no estás seguro de si tienes PMF todavía,
 
 ---
 
-## Reflexiones Finales
+## Reflexiones finales
 
 Buscar Product Market Fit es frustrante. Vas a construir cosas que nadie quiere. Vas a ilusionarte y ver cómo se colapsan tus esperanzas. Vas a cuestionar si estás perdiendo tu tiempo.
 

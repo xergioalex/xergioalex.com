@@ -1,5 +1,5 @@
 ---
-title: 'Historia, discusión y análisis del Paper de Bitcoin escrito por Satoshi Nakamoto'
+title: 'Historia, discusión y análisis del paper de Bitcoin escrito por Satoshi Nakamoto'
 description: 'Una inmersión profunda en el whitepaper de Bitcoin de Satoshi — qué lo hace revolucionario, las innovaciones técnicas que más me impactaron, y mi viaje personal leyendo el paper que cambió las finanzas.'
 pubDate: '2018-11-15'
 heroImage: '/images/blog/posts/bitcoin-paper-analysis/hero.png'
@@ -13,7 +13,7 @@ Lo que me fascinó no fue solo que Bitcoin funcione. Es que Satoshi resolvió pr
 
 ---
 
-## El Recorrido: De Conchas a Promesas de Papel
+## El recorrido: de conchas a promesas de papel
 
 Empecé mi charla con la historia del dinero porque no se puede apreciar Bitcoin sin entender qué está reemplazando.
 
@@ -70,7 +70,7 @@ Por primera vez en la historia, tenemos derechos de propiedad digital que no dep
 
 ---
 
-## Los Principios de Diseño de Bitcoin
+## Los principios de diseño de Bitcoin
 
 En el whitepaper, Satoshi describe un sistema con estas características:
 
@@ -85,7 +85,7 @@ Esto no fue solo una mejora incremental sobre los sistemas de pago existentes. F
 
 ---
 
-## Más Allá de Bitcoin: Ethereum y el Dinero Programable
+## Más allá de Bitcoin: Ethereum y el dinero programable
 
 También hablé de [Ethereum](https://ethereum.org/) en mi presentación porque extiende la visión de Satoshi de una manera crucial: **programabilidad**.
 
@@ -97,7 +97,7 @@ Bitcoin demostró que podés crear escasez digital. Ethereum demostró que podé
 
 ---
 
-## Mi Conclusión Personal
+## Mi conclusión personal
 
 Lo que más me impactó del whitepaper de Bitcoin no fue la complejidad técnica — en realidad es bastante simple según los estándares de ciencias de la computación. Lo que me impactó fue la **elegancia del diseño**.
 

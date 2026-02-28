@@ -13,7 +13,7 @@ Esto no era una repetición. Era un checkpoint — ver cuánto había madurado l
 
 ---
 
-## Por Qué Manizales Se Sintió Diferente
+## Por qué Manizales se sintió diferente
 
 La audiencia de Pereira en mayo había sido curiosa — algunos escépticos, algunos emocionados, todos explorando. Para agosto en Manizales, las preguntas cambiaron. La gente no preguntaba *si* debían preocuparse por la IA — preguntaban *qué* construir con ella y *cómo* empezar realmente. Ese cambio me dijo que algo había hecho clic en el ecosistema. Ya no era hype. Era interés práctico de ingenieros que querían entregar productos.
 
@@ -21,7 +21,7 @@ Manizales también trajo una energía diferente — un ambiente más pequeño, m
 
 ---
 
-## Qué Cambió en 3 Meses
+## Qué cambió en 3 meses
 
 Entre mayo y agosto, las herramientas maduraron. **GPT-4** había pasado de un lanzamiento brillante a algo sobre lo que la gente estaba construyendo funcionalidades de producción. Lo vi en nuestro propio trabajo en DailyBot — lo que empezó como experimentos en abril ya eran integraciones en vivo que nuestros usuarios usaban.
 
@@ -31,7 +31,7 @@ También noté más claridad sobre dónde la IA *debía* y *no debía* usarse. E
 
 ---
 
-## De GPT-4 a Aplicaciones Reales
+## De GPT-4 a aplicaciones reales
 
 En Pereira había mostrado lo que GPT-4 podía hacer — multimodal, contexto largo, mejor razonamiento. En Manizales cambié el foco a *qué estaba construyendo la gente* con él:
 
@@ -44,7 +44,7 @@ Esto no era charla del futuro. Eran herramientas que había usado, productos que
 
 ---
 
-## La Metáfora del Director Toma Forma
+## La metáfora del director toma forma
 
 En mayo había introducido la idea: ya no solo codificas, orquestas. Para agosto había vivido ese cambio lo suficiente como para explicarlo mejor. Te vuelves un director — defines el objetivo, el agente genera opciones, tú eliges la dirección. Tú manejas el juicio, la creatividad y el gusto. El agente maneja la ejecución, la iteración y la escala.
 
@@ -52,7 +52,7 @@ En Manizales pasé más tiempo en esta mentalidad porque la había visto funcion
 
 ---
 
-## Aprendizajes Prácticos para la Audiencia
+## Aprendizajes prácticos para la audiencia
 
 Terminé con lo que había aprendido en la práctica desde mayo:
 

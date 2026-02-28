@@ -40,7 +40,7 @@ Y sí, la mascota Gopher es linda. Eso cuenta.
 
 ---
 
-## Lo Que Cubrí en la Charla
+## Lo que cubrí en la charla
 
 Hice demos en vivo desde lo más básico hasta ejemplos prácticos:
 
@@ -60,7 +60,7 @@ Hice demos en vivo desde lo más básico hasta ejemplos prácticos:
 - **Goroutines** — Concurrencia ligera con `go`
 - **Channels** — Comunicación entre goroutines
 
-### Ejemplos Prácticos
+### Ejemplos prácticos
 
 - Servidor HTTP con `net/http`
 - Cliente HTTP consumiendo una API (JSON)

@@ -1,5 +1,5 @@
 ---
-title: "Arquitectura de Microservicios y APIs con GraphQL"
+title: "Arquitectura de microservicios y APIs con GraphQL"
 description: "Por qué me moví de REST a GraphQL para microservicios — divide y conquista, consultas definidas por el cliente, y los trade-offs que necesitas conocer."
 pubDate: "2017-11-23"
 heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
@@ -71,7 +71,7 @@ Lo que más me gustó desde el principio: el cliente define qué recibe. No más
 | Documentación separada del desarrollo | Documentado por definición |
 | Múltiples endpoints | Un solo endpoint: `/graphql` |
 
-### Conceptos Clave
+### Conceptos clave
 
 - **Schema** — Define la estructura de tu API
 - **Types** — Tipado fuerte para consultas y respuestas
@@ -102,7 +102,7 @@ Si quieres jugar con un ejemplo real, la [API de Star Wars (SWAPI)](http://graph
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-### Charla Recomendada
+### Charla recomendada
 
 - [Por qué API REST está muerto y debemos usar APIs GraphQL](https://www.youtube.com/watch?v=cUIhcgtMvGc) — José María Rodríguez Hurtado (en español)
 

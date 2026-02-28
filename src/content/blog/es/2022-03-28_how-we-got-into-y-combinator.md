@@ -1,5 +1,5 @@
 ---
-title: "Cómo Entramos a Y Combinator"
+title: "Cómo entramos a Y Combinator"
 description: "Tres aplicaciones, tres rechazos, una aceptación — qué cambió entre cada intento a YC, cómo fue realmente la entrevista y qué nos enseñó YC sobre escalar DailyBot."
 pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.jpg"
@@ -13,7 +13,7 @@ Esto es lo que cambió entre cada aplicación, cómo fue la entrevista de YC y q
 
 ---
 
-## Por Qué Seguimos Aplicando
+## Por qué seguimos aplicando
 
 Y Combinator no fue la meta desde el día uno. Cuando empezamos DailyBot en 2017 en una hackathon interna de Rocka.co, solo estábamos tratando de resolver nuestro propio problema: demasiado tiempo gastado en check-ins manuales, standups y trabajo admin repetitivo en Slack.
 
@@ -29,7 +29,7 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 ---
 
-## Primera Aplicación (2018): Demasiado Temprano
+## Primera aplicación (2018): demasiado temprano
 
 **El pitch:** "DailyBot es un asistente de IA que automatiza trabajo dentro de Slack."
 
@@ -43,7 +43,7 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 ---
 
-## Segunda Aplicación (2019): Mejor Producto, Go-to-Market Débil
+## Segunda aplicación (2019): mejor producto, go-to-market débil
 
 **El pitch:** "DailyBot automatiza standups asincrónicos, check-ins y workflows de equipo para equipos remotos usando Slack y Microsoft Teams."
 
@@ -57,7 +57,7 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 ---
 
-## Tercera Aplicación (2020): Historia Clara, Crecimiento Comprobado
+## Tercera aplicación (2020): historia clara, crecimiento comprobado
 
 **El pitch:** "DailyBot es una plataforma de automatización de trabajo asíncrono para equipos remotos. Ayudamos a equipos distribuidos a correr standups, check-ins, encuestas y workflows sin meetings — todo dentro de Slack y Microsoft Teams."
 
@@ -75,7 +75,7 @@ Esta vez, conseguimos una entrevista.
 
 ---
 
-## La Entrevista de Y Combinator
+## La entrevista de Y Combinator
 
 La entrevista de YC son 10 minutos. Eso es todo. Estás en una videollamada con 3-5 partners, y hacen preguntas rápidas. Sin slides. Sin pitch deck. Solo tú, tus co-fundadores y una conversación.
 
@@ -105,7 +105,7 @@ Dos semanas después: **Aceptados en el batch W21 de YC.**
 
 ---
 
-## Qué Nos Enseñó Realmente Y Combinator
+## Qué nos enseñó realmente Y Combinator
 
 Entrar a YC se sintió como una gran victoria. Y lo fue. Pero el valor real no fue la insignia — fue lo que aprendimos durante el batch.
 
@@ -141,7 +141,7 @@ Esa red se compone con el tiempo. Años después, todavía estamos obteniendo va
 
 ---
 
-## Qué NO Hizo Entrar a YC
+## Qué NO hizo entrar a YC
 
 Esto es lo que YC *no* hizo:
 
@@ -173,7 +173,7 @@ Si estás pensando en aplicar a YC, esto es lo que te diría:
 
 ---
 
-## Dónde Estamos Ahora
+## Dónde estamos ahora
 
 En 2022, DailyBot fue reconocido como una de las [Top Companies de Y Combinator](https://www.ycombinator.com/companies/dailybot). Hemos crecido a miles de equipos, expandido a nuevos mercados y construido features que no podríamos haber imaginado en 2017.
 

@@ -1,5 +1,5 @@
 ---
-title: "Astro en Acción"
+title: "Astro en acción"
 description: "Por qué Astro me convenció — casos reales de Microsoft y Firebase, ganancias de rendimiento medibles, y una migración en vivo del sitio de Pereira Tech Talks para probar que no es solo hype."
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
@@ -57,7 +57,7 @@ Dicho esto, **Astro no es para todo proyecto**. Si estás construyendo una app a
 
 ---
 
-## Pereira Tech Talks: La Demo
+## Pereira Tech Talks: la demo
 
 El resultado principal de la charla fue la migración misma. [Pereira Tech Talks](https://www.pereiratechtalks.com/) lleva años funcionando — desde septiembre de 2017. Un blog comunitario: estático, landing page, fácil de mantener, gratis de hospedar. El stack original usaba Ghost en Docker. Mantenimiento alrededor de $5–8/mes.
 
@@ -77,7 +77,7 @@ Lo reconstruimos con Astro. [v2.pereiratechtalks.com](https://v2.pereiratechtalk
 
 ---
 
-## Construyamos Algo
+## Construyamos algo
 
 Terminé con una invitación: contribuir. El [repositorio de Pereira Tech Talks](https://github.com/pereira-tech-talks/pereiratechtalks.com) está abierto. Astro 4 acababa de llegar. El ecosistema madura. Si estás construyendo un blog, una landing page o un sitio de contenido — Astro vale la pena mirar.
 

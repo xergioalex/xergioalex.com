@@ -29,7 +29,7 @@ Es declarativo, no imperativo. Describes qué quieres computar, y TensorFlow des
 
 ---
 
-## Lo Que Cubrí
+## Lo que cubrí
 
 La charla estaba estructurada como una introducción — sin conocimiento previo de machine learning asumido. Empecé con la historia detrás de TensorFlow: por qué Google lo hizo código abierto, cómo evolucionó de un sistema interno llamado DistBelief, y qué problemas estaba diseñado para resolver.
 
@@ -47,7 +47,7 @@ Los tensores son la estructura de datos fundamental. Son generalizaciones de esc
 
 Entender los tensores es clave para entender cómo las redes neuronales procesan datos.
 
-### Redes Neuronales
+### Redes neuronales
 
 Expliqué lo básico: capas de neuronas, funciones de activación, propagación hacia adelante (cómo fluye la data a través de la red), y retropropagación (cómo la red aprende ajustando pesos).
 
@@ -59,7 +59,7 @@ Finalmente, mostré la instalación, cómo definir un modelo simple, entrenarlo 
 
 ---
 
-## La Reacción de la Audiencia
+## La reacción de la audiencia
 
 El Q&A fue la mejor parte. La gente tenía tantas preguntas: ¿Cuánta matemática necesitas? ¿Puedes usar TensorFlow para problemas de negocio? ¿Cuál es la diferencia entre TensorFlow y scikit-learn? ¿Cómo sabes cuándo usar deep learning vs. machine learning tradicional?
 

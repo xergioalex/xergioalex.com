@@ -15,7 +15,7 @@ Para entender por qué eso importa, tenemos que volver al principio. No al princ
 
 ---
 
-## El Problema que el Dinero Resolvió (y Creó)
+## El problema que el dinero resolvió (y creó)
 
 Pensemos en el intercambio humano temprano. Yo tengo huevos, tú tienes un caballo. Quiero tu caballo. ¿Cuántos huevos vale?
 
@@ -51,7 +51,7 @@ Con el tiempo, el vínculo con el oro desapareció por completo. El dinero pasó
 
 ---
 
-## El Surgimiento de los Intermediarios de Confianza
+## El surgimiento de los intermediarios de confianza
 
 Avancemos hasta hoy. El comercio global depende de bancos e instituciones financieras para facilitar transacciones entre desconocidos. Actúan como **terceros de confianza** — intermediarios que asumen el riesgo para que compradores y vendedores no tengan que hacerlo.
 
@@ -103,7 +103,7 @@ Bitcoin se convirtió en una forma confiable y barata de intercambiar valor glob
 
 ---
 
-## Qué Hace Diferente a Bitcoin
+## Qué hace diferente a Bitcoin
 
 Esto es lo que me llamó la atención de Bitcoin cuando lo estudié por primera vez:
 
@@ -125,11 +125,11 @@ Esto es lo que me llamó la atención de Bitcoin cuando lo estudié por primera 
 
 ---
 
-## Cómo Funciona Blockchain Realmente
+## Cómo funciona blockchain realmente
 
 Entonces, ¿cómo previene Bitcoin el doble gasto sin una autoridad central? Ahí es donde entra **blockchain**.
 
-### El Problema del Doble Gasto
+### El problema del doble gasto
 
 Los archivos digitales se pueden copiar infinitamente. Si te envío una foto digital, aún la tengo en mi computadora. Entonces, ¿cómo prevenir que alguien gaste la misma moneda digital dos veces?
 
@@ -139,7 +139,7 @@ La solución de Bitcoin: hacer el libro mayor **público, compartido y criptogr�
 
 ![Tecnologías que soportan Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-13.webp)
 
-### El Blockchain: Una Cadena de Firmas Digitales
+### El blockchain: una cadena de firmas digitales
 
 El blockchain es esencialmente una base de datos compartida — un libro mayor de todas las transacciones hechas. Pero en vez de estar almacenado en un solo lugar, está distribuido a través de miles de computadoras alrededor del mundo.
 
@@ -190,7 +190,7 @@ Esto abrió posibilidades completamente nuevas. Ahora podías construir aplicaci
 
 ---
 
-## Más Allá de Bitcoin: La Revolución Industrial de Internet
+## Más allá de Bitcoin: la revolución industrial de internet
 
 Esto es lo que más me entusiasma del blockchain: no se trata solo de dinero. En su núcleo, blockchain es una **base de datos compartida con mecanismos de seguridad y consenso incorporados**. Puedes almacenar cualquier tipo de información en ella.
 
@@ -220,13 +220,13 @@ La votación basada en blockchain sería transparente, verificable y casi imposi
 
 ![Sistema de votación electrónica basado en Blockchain](/images/blog/posts/blockchain-economy-industry/fig-19.webp)
 
-### Identidad Digital y Autenticación
+### Identidad digital y autenticación
 
 Ahora mismo, tenemos docenas de contraseñas para diferentes servicios. Es inseguro e inconveniente.
 
 Blockchain podría habilitar una **identidad digital universal** — una huella criptográfica única que controlás. Usala para loguearte en cualquier lado, probar quién sos y manejar tus datos personales sin depender de empresas como Google o Facebook.
 
-### Registros Médicos
+### Registros médicos
 
 Tu historial médico podría vivir en el blockchain — accesible para cualquier doctor a nivel mundial, pero completamente bajo tu control. Los hospitales no serían dueños de tus datos. Vos sí.
 
@@ -238,13 +238,13 @@ Blockchain te permite rastrear la historia de cualquier activo. ¿Quién fue due
 
 Las criptomonedas permiten apuestas anónimas, instantáneas y de bajas comisiones. Los contratos inteligentes pueden automatizar pagos y asegurar equidad — sin necesidad de confianza.
 
-### Notario Digital
+### Notario digital
 
 Los contratos inteligentes podrían reemplazar notarios para muchos acuerdos legales — ejecutándose automáticamente cuando se cumplen las condiciones, con un registro público inmutable que cualquiera puede auditar.
 
 ---
 
-## Por Qué Esto Importa
+## Por qué esto importa
 
 > Las divisas digitales afectarán las finanzas mundiales, transformarán el modo en que pagamos las cosas, y quizás hagan que el mundo sea un lugar más justo.
 > — **Wall Street Journal (2015)**

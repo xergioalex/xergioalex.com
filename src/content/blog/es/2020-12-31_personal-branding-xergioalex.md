@@ -1,5 +1,5 @@
 ---
-title: 'Construyendo la Marca XergioAleX: La Identidad del Ninja Coder'
+title: 'Construyendo la marca XergioAleX: la identidad del Ninja Coder'
 description: 'La historia detrás de la marca XergioAleX ninja coder — del concepto a la ejecución. Simbolismo del logo, paleta de colores, variantes de diseño y guía de estilo completa.'
 pubDate: '2020-12-31'
 heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
@@ -13,7 +13,7 @@ Así nació la marca XergioAleX.
 
 ---
 
-## Por Qué Decidí Crear una Marca Personal
+## Por qué decidí crear una marca personal
 
 Durante la mayor parte de mi carrera, dejé que el trabajo hablara por sí solo. Repositorios, despliegues, productos — esa era mi identidad. Y honestamente, por mucho tiempo fue suficiente.
 
@@ -56,7 +56,7 @@ Estoy muy contento con cómo quedó.
 
 Déjame explicarte los diferentes elementos, porque hay bastante pensamiento detrás de este diseño.
 
-### El Personaje Ninja
+### El personaje ninja
 
 La figura central es un ninja estilizado — encapuchado, ángulos afilados, inclinado hacia adelante. Tiene esa onda de mascota de esports/gaming que me gusta mucho. El rostro está casi completamente oculto por la capucha, con solo los ojos visibles. Me gusta la idea de que el trabajo habla más fuerte que la persona.
 
@@ -64,11 +64,11 @@ La figura central es un ninja estilizado — encapuchado, ángulos afilados, inc
 
 Este es uno de mis detalles favoritos. Los angle brackets `<>` están justo en la frente del ninja — el símbolo universal del código. Es lo que convierte esto de solo un ninja en un **coder**. El código es cómo pienso, cómo resuelvo problemas, cómo construyo cosas. Tenerlo literalmente en la frente se sentía correcto.
 
-### Las X Shuriken ✦
+### Las X shuriken ✦
 
 Este es bastante ingenioso: la letra **X** en "**X**ERGIO ALE**X**" está diseñada como un **shuriken** — una estrella ninja arrojadiza. Así que la tipografía misma lleva el concepto de marca. Cada vez que lees el nombre, el tema ninja está ahí en las letras.
 
-### El Banner
+### El banner
 
 El nombre se asienta sobre una cinta/banner audaz debajo del personaje, dándole a todo un aire de insignia. Está inspirado en logos de equipos de esports — dinámico, angular, y se ve bien en prácticamente cualquier tamaño.
 
@@ -78,7 +78,7 @@ El nombre se asienta sobre una cinta/banner audaz debajo del personaje, dándole
 
 Estos son los colores que componen la marca. Les puse nombres porque... por qué no.
 
-### Colores Primarios
+### Colores primarios
 
 | Color | Nombre | Hex | RGB | Para qué se usa |
 |:-----:|--------|-----|-----|-----------------|
@@ -91,7 +91,7 @@ Estos son los colores que componen la marca. Les puse nombres porque... por qué
 
 A medida que la marca evolucionó en el sitio web, mantuve este acento dinámico por tema: el Carmesí original en modo claro y una variante ligeramente más suave en modo oscuro para reducir la fatiga visual sobre fondos azul marino profundos.
 
-### Colores Secundarios
+### Colores secundarios
 
 | Color | Nombre | Hex | RGB | Para qué se usa |
 |:-----:|--------|-----|-----|-----------------|
@@ -105,7 +105,7 @@ A medida que la marca evolucionó en el sitio web, mantuve este acento dinámico
 
 **Blanco Puro** está reservado para los puntos focales clave: el símbolo de código en la frente, los ojos y los highlights principales. Son los elementos donde tu ojo va primero.
 
-### Cómo Combinarlos
+### Cómo combinarlos
 
 - **Par principal:** Marino Ninja + Carmesí Letal — este es el look distintivo
 - **Modo oscuro:** Fondo Negro Vacío, acentos Carmesí más suaves (`#CD3553`), texto blanco
@@ -127,7 +127,7 @@ Esto mantiene la identidad de marca consistente y, al mismo tiempo, hace que el 
 
 La marca tiene varias configuraciones según el contexto:
 
-### Logo Completo (Lockup)
+### Logo completo (lockup)
 
 El paquete completo: personaje ninja + banner con el nombre. Es lo que usas cuando tienes espacio — headers, secciones hero, presentaciones.
 
@@ -161,7 +161,7 @@ Solo el texto "XERGIO ALEX" con las X shuriken. Funciona bien para layouts horiz
 
 </div>
 
-### Versión Pequeña (Horizontal)
+### Versión pequeña (horizontal)
 
 La cara del ninja junto al texto en un layout horizontal compacto. Esta es la versión que ves en el header del sitio — funciona muy bien para barras de navegación y espacios horizontales apretados.
 
@@ -221,7 +221,7 @@ El texto del logo usa una tipografía personalizada hecha para esta marca. Para 
 
 ---
 
-## Qué Sigue
+## Qué sigue
 
 Por un tiempo, esta marca vivió como un montón de archivos en un repo y no mucho más. Ahora la estoy usando activamente en todos lados — este sitio web, mis perfiles sociales, mis charlas, todo.
 

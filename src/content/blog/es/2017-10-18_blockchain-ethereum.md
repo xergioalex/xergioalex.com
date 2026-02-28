@@ -15,7 +15,7 @@ El objetivo fue simple: hacer la tecnología accesible. Sin hype, sin especulaci
 
 ---
 
-## Lo Que Cubrí
+## Lo que cubrí
 
 La charla tuvo cuatro partes:
 
@@ -109,7 +109,7 @@ Es un ejemplo de juguete, pero demuestra la idea central: código corriendo en u
 
 ---
 
-## Por Qué Esto Importa
+## Por qué esto importa
 
 Blockchain no es solo sobre dinero. Es sobre **coordinación sin control central**. Los smart contracts son **programas que no pueden ser detenidos o censurados** (mientras la red sea descentralizada).
 

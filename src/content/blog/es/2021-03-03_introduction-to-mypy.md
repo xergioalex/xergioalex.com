@@ -17,7 +17,7 @@ Esta charla fue sobre compartir lo que aprendimos y convencer al equipo de que l
 
 ---
 
-## Por Qué Necesitábamos Type Checking en DailyBot
+## Por qué necesitábamos type checking en DailyBot
 
 DailyBot se integra con Slack, Microsoft Teams, Google Chat y un montón de otras plataformas. Cada integración tiene sus propias estructuras de datos, payloads de webhooks, formatos de respuesta de API. Cuando estás malabarando tanta data externa, es muy fácil que las cosas se rompan de formas sutiles.
 
@@ -41,7 +41,7 @@ Para entender qué es `data`, tenías que leer el cuerpo de la función, rastrea
 
 ---
 
-## Qué Nos Dio MyPy
+## Qué nos dio MyPy
 
 MyPy es un type checker estático para Python. Agregas type hints a tu código, corres MyPy, y te dice sobre desajustes de tipos, valores de retorno faltantes, llamadas de función incorrectas — todo antes de que corras el código.
 
@@ -157,7 +157,7 @@ Entre más usábamos estos, más claro se volvía nuestro código.
 
 ---
 
-## Integrando MyPy en Nuestro Flujo
+## Integrando MyPy en nuestro flujo
 
 Agregar tipos a un codebase existente es un proceso. No puedes simplemente activar un switch. Así fue como lo lanzamos:
 
@@ -252,7 +252,7 @@ Ahora la estructura del payload es un tipo de primera clase. Imposible equivocar
 
 ---
 
-## Lo Que Aprendí
+## Lo que aprendí
 
 El type checking no se trata de ser pedante. Se trata de reducir la sobrecarga mental de trabajar en un codebase grande. Cuando puedo mirar una firma de función e inmediatamente entender qué hace sin leer la implementación, eso es una gran ganancia.
 

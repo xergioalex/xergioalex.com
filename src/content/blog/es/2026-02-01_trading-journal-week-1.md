@@ -1,5 +1,5 @@
 ---
-title: "Diario de Trading - Semana 1: Comenzando el Camino"
+title: "Diario de trading - Semana 1: comenzando el camino"
 description: "Mi primera semana en los mercados — configurando un espacio de trading, eligiendo los recursos de aprendizaje correctos, y descubriendo por qué la paciencia es más difícil de lo que pensaba como ingeniero convertido en trader."
 pubDate: "2026-02-01"
 heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
@@ -29,7 +29,7 @@ También configuré una hoja de cálculo para registrar cada operación que even
 
 ---
 
-## Eligiendo Recursos de Aprendizaje
+## Eligiendo recursos de aprendizaje
 
 No faltan cursos de trading, libros y canales de YouTube. La mayoría es ruido. Yo quería señal. Después de investigar, me decidí por algunos recursos clave:
 
@@ -41,7 +41,7 @@ Estoy tratando de evitar la trampa de consumir contenido sin fin y nunca practic
 
 ---
 
-## Primeras Observaciones
+## Primeras observaciones
 
 Observar los mercados por primera vez con intención real (no solo curiosidad) es una experiencia diferente. El precio no se mueve aleatoriamente — empiezas a ver cómo las noticias, las aperturas de sesión (Londres, Nueva York) y las zonas de liquidez crean patrones.
 
@@ -51,7 +51,7 @@ Una cosa que noté: el precio tiende a respetar ciertos niveles. Soporte y resis
 
 ---
 
-## La Parte Más Difícil Hasta Ahora
+## La parte más difícil hasta ahora
 
 Paciencia. Cada vela parece decirte que hagas algo. La tentación de saltar, de probar una idea, de *sentir* que estás haciendo progreso tomando acción — es fuerte. Especialmente como ingeniero. Estoy acostumbrado a construir, enviar, iterar rápido.
 
@@ -61,7 +61,7 @@ Es incómodo. Pero lo estoy tratando como práctica.
 
 ---
 
-## Lecciones Aprendidas
+## Lecciones aprendidas
 
 1. **La preparación importa más que la acción.** Las horas invertidas en configurar sistemas, elegir recursos y construir un diario se traducirán en disciplina después. Igual que en software: buena arquitectura previene bugs.
 2. **La observación está subestimada.** No necesitas operar todos los días. De hecho, los mejores traders pasan la mayor parte de su tiempo esperando. Observar el mercado te enseña más que lanzarte a ciegas.

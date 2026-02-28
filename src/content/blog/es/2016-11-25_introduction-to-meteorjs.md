@@ -25,7 +25,7 @@ Ideas clave:
 
 ---
 
-## La Demo: Construir un Chat en Vivo en Minutos
+## La demo: construir un chat en vivo en minutos
 
 El corazón de mi charla fue una demo en vivo. Quería mostrar qué tan rápido se podía construir un **chat en tiempo real** con Meteor — algo que normalmente requeriría WebSockets, una base de datos y mucho código de pegamento. Con Meteor, se sentía casi trivial.
 
@@ -39,11 +39,11 @@ meteor
 
 Eso es todo. Obtienes una app corriendo con un stack reactivo ya conectado.
 
-### El Modelo
+### El modelo
 
 Usamos una colección simple `Messages`. En Meteor, las colecciones son **reactivas** — cuando insertas un documento en el servidor, cada cliente suscrito recibe la actualización automáticamente. Sin polling, sin refresh manual.
 
-### La Magia: Publicar y Suscribir
+### La magia: publicar y suscribir
 
 En el servidor, **publicas** los datos que quieres exponer:
 
@@ -61,7 +61,7 @@ Meteor.subscribe('messages');
 
 Una vez suscrito, `Messages.find()` en el cliente devuelve datos reactivos. ¿Agregas un mensaje nuevo? Aparece en todos lados, al instante.
 
-### Insertar Mensajes
+### Insertar mensajes
 
 Usamos un **Meteor Method** para insertar mensajes de forma segura (validación en el servidor):
 
@@ -86,7 +86,7 @@ Todo el proceso — de cero a un chat multi-usuario funcionando — tomó solo u
 
 ---
 
-## Por Qué Meteor Se Siente Especial
+## Por qué Meteor se siente especial
 
 Construir apps en tiempo real usualmente significa:
 

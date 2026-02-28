@@ -17,11 +17,11 @@ Antes de entrar en la tecnología, empecé invitando a la audiencia a unirse a l
 
 Primero, las definiciones:
 
-**Realidad Virtual (VR)** — Un entorno digital completamente inmersivo. Te ponés un headset y estás en otro lugar. El mundo real desaparece. Ejemplos: explorar un museo virtual, caminar por un modelo arquitectónico, jugar un juego en un mundo 3D.
+**Realidad virtual (VR)** — Un entorno digital completamente inmersivo. Te ponés un headset y estás en otro lugar. El mundo real desaparece. Ejemplos: explorar un museo virtual, caminar por un modelo arquitectónico, jugar un juego en un mundo 3D.
 
-**Realidad Aumentada (AR)** — Elementos digitales superpuestos sobre el mundo real. Ves tu entorno, pero con información u objetos añadidos. Ejemplos: Pokémon GO, apps de vista previa de muebles, overlays de navegación.
+**Realidad aumentada (AR)** — Elementos digitales superpuestos sobre el mundo real. Ves tu entorno, pero con información u objetos añadidos. Ejemplos: Pokémon GO, apps de vista previa de muebles, overlays de navegación.
 
-**Realidad Mixta (MR)** — Una mezcla de VR y AR donde objetos digitales y físicos interactúan. Los objetos digitales pueden ocluir los reales, y viceversa. Ejemplos: experiencias Microsoft HoloLens, apps AR avanzadas con conciencia espacial.
+**Realidad mixta (MR)** — Una mezcla de VR y AR donde objetos digitales y físicos interactúan. Los objetos digitales pueden ocluir los reales, y viceversa. Ejemplos: experiencias Microsoft HoloLens, apps AR avanzadas con conciencia espacial.
 
 El panorama de hardware en 2019 iba desde costoso hasta accesible:
 

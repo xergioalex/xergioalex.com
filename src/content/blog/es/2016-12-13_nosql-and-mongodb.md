@@ -1,7 +1,7 @@
 ---
 title: 'NoSQL y MongoDB'
 description: 'Cuando las tablas SQL no son suficientes — mi introducción a las bases de datos NoSQL, el modelo de documentos de MongoDB, y cuándo elegir flexibilidad sobre schemas rígidos.'
-pubDate: '2016-11-25'
+pubDate: '2016-12-13'
 heroImage: '/images/blog/posts/nosql-and-mongodb/hero.png'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
@@ -78,7 +78,7 @@ Puedes embeber cuando la relación es uno-a-pocos y siempre lees todo junto. Ref
 
 ---
 
-## Ejemplos Prácticos de la Charla
+## Ejemplos prácticos de la charla
 
 ### 1. Insertar Documentos
 
@@ -134,7 +134,7 @@ Es como el `GROUP BY` y `ORDER BY` de SQL, pero más componible. Construyes un p
 
 ---
 
-## Cuándo Usar MongoDB (y Cuándo No)
+## Cuándo usar MongoDB (y cuándo no)
 
 **Buen fit:**
 

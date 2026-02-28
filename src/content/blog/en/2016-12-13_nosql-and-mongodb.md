@@ -1,7 +1,7 @@
 ---
 title: "NoSQL and MongoDB"
 description: "When SQL tables aren't enough — my introduction to NoSQL databases, MongoDB's document model, and when to choose flexibility over rigid schemas."
-pubDate: "2016-11-25"
+pubDate: "2016-12-13"
 heroImage: "/images/blog/posts/nosql-and-mongodb/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech"]
