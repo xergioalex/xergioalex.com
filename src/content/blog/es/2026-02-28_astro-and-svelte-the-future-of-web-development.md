@@ -471,15 +471,19 @@ Astro sobresale en:
 - **Sitios críticos en rendimiento** — Donde cada kilobyte de JavaScript importa
 - **Sitios con mucho SEO** — Donde el HTML renderizado del servidor es esencial
 
-Astro **no** es la mejor opción para:
+Astro **no** es la opción natural para:
 
-- **SPAs altamente interactivas** — Apps como Figma, Notion o Google Docs donde toda la página es interactiva
-- **Dashboards en tiempo real** — Donde las conexiones WebSocket y las actualizaciones constantes de estado dominan
-- **Apps de manejo de estado complejo** — Donde se necesita orquestación de estado a nivel Redux a través de cientos de componentes
+- **SPAs completamente interactivas** — Apps como Figma o Google Docs donde literalmente el 100% de la página es un canvas interactivo en vivo sin contenido estático
 
-Para esos casos de uso, Vue con Nuxt, React con Next.js, o Svelte con SvelteKit siguen siendo mejores opciones. El ecosistema de Vue es maduro y battle-tested — he construido aplicaciones complejas con él y maneja bien ese tipo de trabajo. El ecosistema de React es aún más grande. Si estás construyendo una aplicación SaaS compleja con docenas de pantallas interactivas, esos frameworks se ganaron su lugar.
+Y realmente, ese es el único caso donde diría que Astro genuinamente no encaja. Para los otros casos que la gente típicamente menciona — dashboards en tiempo real, apps de manejo de estado complejo — creo que Astro los maneja mejor de lo que la mayoría asume.
 
-Pero aquí está la cosa: **la mayoría de los sitios web no son Figma**. La mayoría de los sitios web son contenido. Son blogs, landing pages, documentación, portfolios, catálogos de e-commerce, sitios corporativos. Para esos — que representan la gran mayoría de lo que se construye en la web — Astro y Svelte no son solo competitivos. Son superiores.
+**¿Dashboards en tiempo real?** Piénsalo: la barra lateral, la navegación, los labels y la estructura de la página son todo contenido estático — perfecto para Astro. ¿Los gráficos en vivo y datos en tiempo real? Esos son islands de Svelte con conexiones WebSocket. Los server islands de Astro (introducidos en Astro 5) y el modo de rendering híbrido hacen que esta arquitectura no solo sea posible, sino elegante. Obtienes cargas de página instantáneas para el shell estático mientras cada widget interactivo se hidrata independientemente.
+
+**¿Manejo de estado complejo?** Los runes de Svelte 5 (`$state`, `$derived`) combinados con [nanostores](https://github.com/nanostores/nanostores) — que Astro recomienda oficialmente para compartir estado entre islands — pueden manejar orquestación de estado sorprendentemente compleja. No es Redux, y ese es el punto. No *necesitas* la ceremonia de Redux cuando tus primitivas reactivas son así de expresivas.
+
+Dicho esto, para apps donde la interactividad domina en *cada* pantalla — un SaaS completo con docenas de vistas interactivas complejas — Vue con Nuxt, React con Next.js, o Svelte con SvelteKit son opciones más naturales. El ecosistema de Vue es maduro y battle-tested — he construido aplicaciones complejas con él y maneja bien ese tipo de trabajo. El ecosistema de React es aún más grande. Esos frameworks se ganaron su lugar para casos de uso centrados en apps.
+
+Pero aquí está la cosa: **la línea entre "sitio de contenido" y "app" es más difusa que nunca**, y Astro sigue empujando ese límite. La mayoría de los sitios web no son Figma. La mayoría de los sitios web son una mezcla de contenido e interactividad — blogs, landing pages, documentación, portfolios, catálogos de e-commerce, sitios corporativos, y sí, incluso dashboards con elementos en tiempo real. Para esos — que representan la gran mayoría de lo que se construye en la web — Astro y Svelte no son solo competitivos. Son superiores.
 
 ---
 
