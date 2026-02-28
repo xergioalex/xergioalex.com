@@ -1,5 +1,5 @@
 ---
-title: "What is Blockchain?"
+title: "What is Blockchain and How Will It Radically Transform the Economy?"
 description: "Talk at Universidad de Caldas on blockchain — origins, history of money, and building apps that consume blockchain services from JavaScript."
 pubDate: "2017-10-18"
 heroImage: "/images/blog/posts/what-is-blockchain/hero.jpg"
@@ -24,9 +24,14 @@ It was a great opportunity to bring the topic to another university and connect 
 
 ![Workshop memories](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
 
+![Blockchain talk at Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-3.webp)
+
+![Blockchain workshop](/images/blog/posts/what-is-blockchain/blockchain-4.webp)
+
 ---
 
 ## Slides & Reference
 
 - [View slides](https://slides.com/xergioalex/what-is-blockchain)
 - [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/que-es-el-blockchain-y-como-transformara-radicalmente-la-economia) — event recap (Universidad de Caldas)
+- [Article: What is Blockchain and How Is It Radically Transforming the Economy and Industry?](/blog/blockchain-economy-industry/) — in-depth article I wrote after this talk

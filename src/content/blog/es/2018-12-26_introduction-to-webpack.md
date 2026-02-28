@@ -1,30 +1,55 @@
 ---
 title: "Introducción a Webpack"
-description: "Empaquetador de módulos para aplicaciones JavaScript modernas — entry points, loaders, plugins y developer experience."
+description: "Lo que compartí en una charla sobre Webpack — empaquetador de módulos, AMD vs CommonJS, entry points, loaders, plugins y developer experience."
 pubDate: "2018-12-26"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
+heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-En diciembre de 2018 di una charla sobre Webpack — el empaquetador de módulos que se convirtió en el estándar de facto para aplicaciones JavaScript modernas. El objetivo era desmitificar la configuración y mostrar cómo reúne AMD y CommonJS en un solo lugar.
-
-**Sistemas de módulos en JavaScript:** AMD (Asynchronous Module Definition, ej. RequireJS) carga módulos de forma asíncrona. CommonJS (estilo Node.js) permite una sola petición con todas las librerías que necesitas. Webpack combina lo mejor de ambos mundos.
-
-**Otras herramientas:** Gulp y Grunt son task runners — los configuras para minificar, transpilar, compilar. Browserify solo te deja usar `require` en el navegador. Parcel a menudo se describe como "Webpack fancy" — menos config, más convención. Webpack es sobre **developer experience**: divide y vencerás.
+Di una charla sobre Webpack — el **empaquetador de módulos para aplicaciones modernas de JavaScript**. La idea era explicar cómo Webpack toma módulos con dependencias (`.js`, `.css`, `.coffee`, `.less`, `.jade`, imágenes) y los transforma en assets estáticos optimizados. Divide y vencerás.
 
 ---
 
-## Lo que necesitas configurar
+## Formas de utilizar módulos en JavaScript
 
-- **Entry points** — El(los) módulo(s) principal(es) por donde Webpack empieza. Puedes tener múltiples.
-- **Output** — Dónde va el bundle, cómo se llama.
-- **Loaders** — Manejan diferentes tipos de archivo: imágenes (jpg, png, gif), fuentes, CoffeeScript, Stylus, Sass, JSX.
-- **Plugins** — Extienden Webpack: Uglify para minificación, code splitting en chunks para carga más rápida.
+**AMD** (Asynchronous Module Definition) — Se usa con RequireJS. Carga módulos de forma asíncrona.
+
+**CommonJS** — Sistema de módulos de Node.js. Permite hacer una sola petición con todas las librerías que vas a necesitar.
+
+Webpack trae lo mejor de ambos mundos en un solo lugar. **AMD + CommonJS**. Y sobre todo: **Webpack === Developer experience**.
 
 ---
 
-## Instalación y ejemplos
+## ¿Qué otras herramientas hay?
+
+- **Gulp y Grunt** — Automatizadores de tareas. Configuras la herramienta y hace varias cosas por ti: minificar, transpilar, compilar código, etc. Grunt salió primero; Gulp mejoró varias cosas, como la velocidad.
+- **Browserify** — Solo permite usar `require` en el navegador, agrupando todas las dependencias.
+- **Parcel** — A menudo descrito como "Webpack fancy" — menos configuración, más convención.
+
+---
+
+## Lo que necesitas conocer para configurar Webpack
+
+### Entry Points
+
+El módulo principal, de donde se parte a importar los demás módulos. Es el archivo que Webpack lee para generar el bundle. Se pueden tener múltiples entry points.
+
+### Output
+
+Configuraciones sobre el archivo resultante: dónde estará, cómo se llamará.
+
+### Loaders
+
+Ayudan a cargar todo tipo de formatos: imágenes (jpg, png, gif), fuentes personalizadas, íconos, y "dialectos" como CoffeeScript, Stylus, Sass o JSX.
+
+### Plugins
+
+Extienden las características de Webpack: comprimir archivos con Uglify, dividir módulos en chunks más pequeños para que la aplicación cargue más rápido.
+
+---
+
+## Instalación
 
 ```bash
 npm i webpack webpack-cli --save-dev
@@ -32,11 +57,21 @@ npm i webpack webpack-cli --save-dev
 yarn add webpack webpack-cli --dev
 ```
 
-Compartí ejemplos de código de [Jopmi Landing](https://github.com/RockaLabs/jopmi-landing), [Webpack Backend Example](https://github.com/xergioalex/webpack_backend_example) y [Webpack Frontend Examples](https://github.com/xergioalex/webpack_examples).
+---
+
+## Código y ejemplos
+
+Compartí ejemplos de proyectos reales:
+
+- [Jopmi Landing](https://github.com/RockaLabs/jopmi-landing)
+- [Bambú Alexa](https://github.com/xergioalex/bambu-alexa)
+- [Beyond Campus Landing](https://github.com/xergioalex/beyond-campus-landing)
+- [Beyond Campus Webapp](https://github.com/xergioalex/beyond-campus-webapp)
+- [Webpack Backend Example](https://github.com/xergioalex/webpack_backend_example)
+- [Webpack Frontend Examples](https://github.com/xergioalex/webpack_examples)
 
 ---
 
-## Slides y referencias
+[Ver slides](https://slides.com/xergioalex/introduction-to-webpack)
 
-- [Ver slides](https://slides.com/xergioalex/introduction-to-webpack)
-- [Gulp vs Grunt vs Webpack](https://da-14.com/blog/gulp-vs-grunt-vs-webpack-comparison-build-tools-task-runners)
+A seguir construyendo.

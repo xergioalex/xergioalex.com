@@ -1,45 +1,68 @@
 ---
 title: "Introducción a Docker"
-description: "Introducción a Docker y arquitecturas orientadas a microservicios — contenedores, aislamiento, escalado y demos prácticas."
+description: "Lo que compartí en una charla sobre Docker y arquitecturas orientadas a microservicios — contenedores, características de microservicios y demos prácticas."
 pubDate: "2018-12-13"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/docker-introduction/hero.png"
+heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-En diciembre de 2018 di una charla sobre Docker con enfoque en arquitecturas orientadas a microservicios. El objetivo era mostrar cómo los contenedores encajan en el panorama más amplio: construir sistemas autónomos, aislados y escalables.
+Di una charla de introducción a Docker con enfoque en **arquitecturas orientadas a microservicios**. La idea era conectar ambos mundos: por un lado, qué define un microservicio y por qué importa; por otro, cómo Docker y los contenedores encajan en ese panorama para construir sistemas autónomos, aislados y escalables.
 
-Un **microservicio** hace una cosa y la hace bien. Es autónomo — una unidad autocontenida de funcionalidad identificada por una URL única. Es aislado, así que puedes modificarlo, probarlo y desplegarlo sin impactar otras partes del sistema. Es elástico: puedes escalarlo independientemente, vertical u horizontalmente. Es resiliente, responsivo, orientado a mensajes, programable y automatizado.
+---
+
+## ¿Qué es un microservicio?
+
+Un microservicio hace **una cosa y la hace muy bien**. Es una unidad autocontenida de funcionalidad. En la charla desglosé las características que suelen definir este estilo de arquitectura:
+
+- **Autónomo** — Se identifica por una ubicación única (URL). Es una unidad autocontenida.
+- **Aislado** — Puedes modificarlo, probarlo y desplegarlo sin impactar otras áreas del sistema.
+- **Elástico** — Se escala de forma independiente: vertical (más recursos) u horizontal (más instancias).
+- **Resiliente** — Tolera fallos y mantiene alta disponibilidad.
+- **Responsivo** — Responde en un tiempo razonable.
+- **Orientado a mensajes** — Usa paso de mensajes asíncronos para establecer límites entre componentes.
+- **Programable** — Expone APIs para desarrolladores, administradores y aplicaciones que se componen de múltiples servicios.
+- **Automatizado** — Su ciclo de vida se gestiona con automatización: dev, build, test, staging, producción y distribución.
 
 ---
 
 ## ¿Son los microservicios la bala de plata?
 
-No. Son una herramienta, no una religión. La charla cubrió cuándo ayudan y cuándo añaden complejidad. La clave es entender las contraprestaciones.
+**No.** Son una herramienta, no una religión. La charla cubrió cuándo ayudan y cuándo añaden complejidad. La clave es entender las contraprestaciones: más servicios implican más latencia de red, más complejidad operativa y desafíos con transacciones distribuidas. No todo proyecto necesita microservicios desde el día uno.
 
 ---
 
-## Lo que cubrí
+## Conceptos de Docker
 
-- **Características de microservicios** — Autónomos, aislados, elásticos, resilientes, orientados a mensajes
-- **Conceptos básicos de Docker** — Contenedores, imágenes, Docker Compose
-- **Demos** — Load balancer con Docker, blog Ghost en contenedores, Django con múltiples motores de base de datos
+Pasé a los conceptos básicos de Docker: **contenedores**, **imágenes**, **Docker Compose** para orquestar múltiples servicios, y cómo encajan en un flujo de desarrollo y despliegue. También mencioné **Docker Machine** y **Docker Swarm** para entornos más avanzados.
+
+---
+
+## Demos
+
+En la charla mostré demos en vivo, incluyendo un load balancer con Docker. El código está disponible en los repos que compartí.
 
 ---
 
 ## Recursos
 
+### Demos y artículos
+
 - [Docker Load Balancer Demo](https://github.com/xergioalex/docker-load-balancer)
+- [Divide and Conquer — Microservice Approach](https://www.art2link.com/divide-conquer-microservice-approach/)
 - [Ghost Docker](https://github.com/xergioalex/ghostDocker)
 - [Django Multiple Databases](https://github.com/xergioalex/django-multiple-databases-engines)
-- [Divide and Conquer — Microservice Approach](https://www.art2link.com/divide-conquer-microservice-approach/)
 
----
+### Documentación oficial
 
-## Slides y referencias
-
-- [Ver slides](https://slides.com/xergioalex/docker-introduction)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Docker Machine](https://docs.docker.com/machine/)
 - [Docker Swarm](https://docs.docker.com/engine/swarm/)
+- [GitHub GraphQL API](https://developer.github.com/v4/) — útil para integrar con APIs modernas desde tus contenedores
+
+---
+
+[Ver slides](https://slides.com/xergioalex/docker-introduction)
+
+A seguir construyendo.

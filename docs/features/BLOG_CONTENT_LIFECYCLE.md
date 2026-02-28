@@ -227,7 +227,7 @@ Preview mode allows developers to see all posts (including draft, scheduled, and
 
 **Technical implementation:**
 
-1. **Server-side (Astro pages):** In dev mode (`import.meta.env.DEV`), all blog listing pages pass `includeHidden: true` to `getBlogPosts()`, so ALL posts are sent to the client — including demo, draft, and scheduled posts.
+1. **Server-side (Astro pages):** When preview features are enabled (local dev or Cloudflare Pages preview branch), all blog listing pages pass `includeHidden: true` to `getBlogPosts()`, so ALL posts are sent to the client — including demo, draft, and scheduled posts.
 
 2. **Client-side (StaticBlogSearch.svelte):** On mount, the component reads `window.location.search` for the `preview=all` query parameter. This client-side detection is necessary because Astro's static output mode cannot read query parameters server-side.
 
@@ -254,9 +254,18 @@ This project uses Astro's default `output: 'static'` mode. In static mode, pages
 
 ### Toggle UI
 
-In dev mode, a toggle link appears above the blog header:
+When preview features are enabled, a toggle link appears above the blog header:
 - Default view: Shows a "Show All Posts" link
 - Preview mode: Shows a "Preview Mode" badge and a "Show Published Only" link
+
+### Cloudflare Pages Preview Deployments
+
+Preview features (badges, "Show all posts" link, hidden content) are **automatically enabled** on Cloudflare Pages preview branches. The build uses `CF_PAGES_BRANCH` (injected by Cloudflare) to detect non-production branches.
+
+- **Production branch** (`main`, `master`, or `production`): Preview features are **disabled** — only published posts are shown.
+- **Preview branches** (e.g. `dev`, `feature/xyz`, PR branches): Preview features are **enabled** — visit `/blog/?preview=all` to see drafts, scheduled, and demo posts with badges.
+
+No configuration needed. If your production branch uses a different name, update the list in `astro.config.mjs` (`define.PREVIEW_FEATURES`).
 
 ---
 

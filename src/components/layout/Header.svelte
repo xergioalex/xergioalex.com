@@ -52,13 +52,16 @@ function toggleMenu() {
     <a
       href={prefix || '/'}
       class="font-extrabold text-2xl md:text-3xl tracking-tight text-blue-600 select-none"
+      aria-label="XergioAleX"
     >
       <img
         class="h-7 w-auto md:h-8"
         src="/images/logo_small_version_white.svg"
-        alt="XergioAleX"
+        alt=""
         width={952}
         height={168}
+        loading="eager"
+        fetchpriority="high"
       />
     </a>
     <!-- Desktop menu -->

@@ -27,11 +27,31 @@ const DEBOUNCE_MS = 200;
 // Get translations based on language
 $: t = getTranslations(lang);
 
-// Server always sends only published posts (includeHidden: false), so no client-side filter needed
-$: visiblePosts = postsResult;
+// Client-side check if a post is published (visible in production)
+function isPublishedPost(post) {
+  if (post.id?.includes('/_demo/')) return false;
+  if (post.data?.draft === true) return false;
+  const pubDate = post.data?.pubDate;
+  if (pubDate) {
+    const pubTime =
+      pubDate instanceof Date ? pubDate.valueOf() : new Date(pubDate).valueOf();
+    if (pubTime > Date.now()) return false;
+  }
+  return true;
+}
 
-// Extract tag names from CollectionEntry objects
-$: displayTags = tagsResult.map((tag) => tag.data.name);
+// Filter posts based on preview mode: in dev without preview, show only published
+$: visiblePosts =
+  isDev && !isPreviewMode ? postsResult.filter(isPublishedPost) : postsResult;
+
+// Extract tag names; hide demo tag when not in preview mode
+$: displayTags = (() => {
+  const tags = tagsResult.map((tag) => tag.data.name);
+  if (isDev && !isPreviewMode) {
+    return tags.filter((tagName) => tagName !== 'demo');
+  }
+  return tags;
+})();
 
 let searchQuery = '';
 let searchResults = [];

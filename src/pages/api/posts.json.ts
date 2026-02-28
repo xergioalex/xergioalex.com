@@ -7,16 +7,18 @@ import {
   isDemoPost,
   isPostVisibleInProduction,
 } from '@/lib/blog';
+import { isPreviewFeaturesEnabled } from '@/lib/env';
 
 export const GET: APIRoute = async () => {
   try {
     const allPosts = await getCollection('blog');
 
     // Create a lightweight search index with language info
-    // In production, only include published posts
+    // In production (main branch), only include published posts
+    const includeHidden = isPreviewFeaturesEnabled();
     const searchIndex = allPosts
       .filter((post) => {
-        if (import.meta.env.PROD) return isPostVisibleInProduction(post);
+        if (!includeHidden) return isPostVisibleInProduction(post);
         return true;
       })
       .map((post) => ({

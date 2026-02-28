@@ -134,7 +134,7 @@ public/images/blog/
 | `blockchain-ethereum` | 3 | 172 KB | JPG + WebP |
 | `tensorflow` | 3 | 140 KB | JPG + WebP |
 | `introduction-to-meteorjs` | 1 | 28 KB | PNG |
-| `nosql-y-mongodb` | 1 | 20 KB | PNG |
+| `nosql-and-mongodb` | 1 | 20 KB | PNG |
 
 **Shared placeholders** (`images/blog/shared/`, 6 files, 200 KB):
 

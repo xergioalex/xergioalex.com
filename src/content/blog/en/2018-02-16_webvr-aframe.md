@@ -1,36 +1,62 @@
 ---
 title: "WebVR with A-Frame"
-description: "Bringing VR to the web with A-Frame — Mozilla's open-source framework for 3D and VR using HTML, at Pereira Tech Talks."
+description: "Introduction to virtual reality and WebVR with A-Frame — Mozilla's framework for creating 3D and VR experiences with HTML, at Pereira Tech Talks."
 pubDate: "2018-02-16"
-heroImage: "/images/blog/posts/webvr-aframe/hero.jpg"
+heroImage: "/images/blog/posts/webvr-aframe/event-1.webp"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-We resumed activities with a strong turnout and two talks: me on WebVR with A-Frame, and Alejandro Suárez on point-free JavaScript with RamdaJS. I focused on bringing virtual reality to the web — making immersive 360° experiences accessible to everyone.
-
-The web is the most important mass-distribution platform. A-Frame, an open-source framework by Mozilla, lets you create 3D and VR content with HTML — no build step required. It works with most existing JavaScript libraries and frameworks: React, Angular, D3.js, Vue.js, and more.
-
-![WebVR with A-Frame && Point-free JavaScript — Pereira Tech Talks](/images/blog/posts/webvr-aframe/event-1.webp)
+I gave a talk at [Pereira Tech Talks](https://www.pereiratechtalks.com/) on virtual reality on the web. I wanted to give an introduction to the topic and show WebVR with A-Frame — a framework that lets you create 3D and VR experiences using just HTML and JavaScript, with no build step.
 
 ---
 
-## What I Covered
+## Why the Web for VR
 
-- **WebVR basics** — Scenes, cameras, entities
-- **A-Frame** — Creating 3D and VR with HTML
-- **Components and inspector** — Building virtual environments with A-Frame's components and its web inspector (which feels like working with Unity)
-- **First steps** — From zero to your first VR scene
+I started by talking about hardware. High-end headsets — HTC Vive, Oculus Rift, Sony VR — cost hundreds of dollars. But the barrier to entry drops a lot with options like Cardboard (around $7) or VR Box (around $15). The web is the most important mass-distribution platform: you don't need to install anything, just a browser.
 
-![Pereira Tech Talks — WebVR and A-Frame](/images/blog/posts/webvr-aframe/event-2.webp)
+[WebVR](https://immersive-web.github.io/webvr/spec/1.1/) is the standard that defines the APIs a browser must expose for developers to create virtual reality experiences. Most WebVR experiences weigh less than 2 MB. And if you already know WebGL or Three.js, adding a bit of code gives you WebVR.
+
+---
+
+## A-Frame: VR with HTML
+
+[A-Frame](https://aframe.io/) is an open-source framework by Mozilla built on Three.js. You don't have to deal with WebGL directly. It uses an **Entity-Component System** architecture:
+
+- **Entities** — Container objects that components can be attached to. They're the base of everything in the scene.
+- **Components** — Reusable modules that give entities appearance, behavior, or functionality.
+- **Systems** — Provide global scope, management, and services for classes of components.
+
+A-Frame's web inspector feels like working with Unity — you can inspect and modify the scene in real time.
+
+---
+
+## What I Showed in the Talk
+
+I ran several live demos, from the basics to more elaborate projects:
+
+- **Primitives** — Cubes, spheres, cylinders with HTML ([CodePen demo](https://codepen.io/xergioalex/pen/jZxbdo))
+- **Sky and equirectangular images** — 360° scenes with photos
+- **Textures and animations** — Attributes, stats, camera animation
+- **3D models** — Collada, SketchUp 3D Warehouse, Blender
+- **Video and audio** — Multimedia content in VR
+- **Cursor events** — Interaction with the pointer
+- **Physics** — With Cannon.js
+- **Collisions and mazes** — Projects like [webvr-maze](https://github.com/xergioalex/webvr-maze)
+- **Speech recognition** — Voice commands in VR
+
+I also showed inspiration projects: Mozilla's A-Painter, A-Frame City Builder, and the React integration.
+
+---
+
+## Resources
+
+- [View slides](https://slides.com/xergioalex/webvr-aframe)
+- [A-Frame docs](https://aframe.io/docs/0.6.0/introduction/)
+- [A-Frame Registry](https://aframe.io/aframe-registry/) — Community components
+- **CodePen demos:** [Primitives](https://codepen.io/xergioalex/pen/jZxbdo), [Sky and inspector](https://codepen.io/xergioalex/pen/PQeZYy), [Textures](https://codepen.io/xergioalex/pen/VQxepd), [3D models](https://codepen.io/xergioalex/pen/JpvXrz), [Physics](https://codepen.io/xergioalex/pen/wyjowM), [Maze](https://github.com/xergioalex/webvr-maze)
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — event recap
 
 ![Event memories](/images/blog/posts/webvr-aframe/event-3.webp)
 
-We wrapped up with networking and snacks, sponsored by [Netha Soluciones IT](https://www.facebook.com/netha.it/).
-
----
-
-## Slides & Event Reference
-
-- [View slides](https://slides.com/xergioalex/webvr-aframe)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — event recap (WebVR + RamdaJS)
+Let's keep building.

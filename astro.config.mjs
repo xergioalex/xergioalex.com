@@ -14,7 +14,7 @@ const __dirname = dirname(__filename);
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://site.xergioalex.com',
+  site: 'https://www.xergioalex.com',
   build: {
     inlineStylesheets: 'always',
   },
@@ -32,6 +32,15 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    define: {
+      // Enable preview features (draft/scheduled/demo badges, "Show all posts") on Cloudflare Pages
+      // preview branches. Production branch (main) does NOT get these features.
+      'import.meta.env.PREVIEW_FEATURES': JSON.stringify(
+        process.env.CF_PAGES_BRANCH
+          ? !['main', 'master', 'production'].includes(process.env.CF_PAGES_BRANCH)
+          : false
+      ),
+    },
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),

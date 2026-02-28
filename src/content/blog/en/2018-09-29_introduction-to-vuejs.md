@@ -1,15 +1,19 @@
 ---
 title: "Introduction to Vue.js"
-description: "Getting started with Vue.js — a progressive JavaScript framework for building user interfaces, from simple to complex."
+description: "What I shared at Pereira Tech Talks on Vue.js — progressive framework, reactivity, Virtual DOM, and why it's easy and fun to learn."
 pubDate: "2018-09-29"
-heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
-heroLayout: "minimal"
+heroImage: "/images/blog/posts/introduction-to-vuejs/hero.png"
+heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-In September 2018 I gave an intro to Vue.js at Pereira Tech Talks. Vue had been gaining traction — it was approachable, well-documented, and felt natural to work with. The talk focused on why Vue stands out: progressive adoption, reactivity, and a gentle learning curve.
+I gave an introduction to Vue.js at [Pereira Tech Talks](https://www.pereiratechtalks.com/). Vue had been gaining traction and I wanted to share why I like it so much: it's approachable, well-documented, and feels natural to work with. The talk focused on the concepts that make Vue special.
 
-Vue is a **progressive framework**: simple things stay simple, complex things are possible. You can drop it into an existing project with a script tag, or build a full SPA with the Vue CLI. That flexibility was one of the things I wanted to highlight.
+---
+
+## Progressive Framework
+
+Vue is a **progressive framework**: simple things stay simple, complex things are possible. You can drop it into an existing project with a simple `<script>` tag, or build a full application with Vue CLI. That flexibility is one of the things I value most: it doesn't force you to adopt everything at once.
 
 ---
 
@@ -17,20 +21,22 @@ Vue is a **progressive framework**: simple things stay simple, complex things ar
 
 - **MV\*** — Vue follows the Model-View pattern, with clear separation of concerns.
 - **Reactive** — The DOM updates automatically when your data changes. No manual DOM manipulation.
-- **Virtual DOM** — Vue uses a virtual DOM for efficient updates, similar to React.
+- **Virtual DOM** — Vue uses a virtual DOM for efficient updates, similar to React. The core is UI-oriented.
 - **Components** — Everything is built from reusable, composable components.
-- **UI-oriented** — The core library focuses on the view layer; routing and state management are separate.
 
 ---
 
 ## Why Vue?
 
-- **Easy and fun to learn** — The docs are excellent, and the syntax feels intuitive.
+- **Easy and fun to learn** — The docs are excellent and the syntax feels intuitive.
+- **SPA** — Vue Router and Vuex make building single-page apps straightforward. The "holy trinity" of Vue: the core, the router, and state management.
 - **Performance** — Competitive with other frameworks in benchmarks.
-- **SPA support** — Vue Router and Vuex (now Pinia) make building single-page apps straightforward.
 
 ---
 
-## Slides & Reference
+## Resources
 
 - [View slides](https://slides.com/xergioalex/introduction-to-vue)
+- [Event recap on Pereira Tech Talks](https://pereiratechtalks.com/vuejs-intro-and-js-community)
+
+Let's keep building.
