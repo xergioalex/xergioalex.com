@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Meteor.js"
-description: "Introductory talk to Meteor.js — full-stack reactive framework, with a live demo building a real-time chat in minutes."
+description: "My first tech talk ever — building a real-time chat app with Meteor.js from zero to working prototype in minutes, with reactive data and no WebSockets setup."
 pubDate: "2016-11-25"
 heroImage: "/images/blog/posts/introduction-to-meteorjs/hero.png"
 heroLayout: "banner"

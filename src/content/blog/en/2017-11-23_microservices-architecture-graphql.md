@@ -1,6 +1,6 @@
 ---
 title: "Microservices Architecture and APIs with GraphQL"
-description: "Microservices and GraphQL at Pereira Tech Talks — divide and conquer, pros and cons, and why GraphQL won me over as an API layer."
+description: "Why I moved from REST to GraphQL for microservices — divide and conquer, client-defined queries, and the trade-offs you need to know."
 pubDate: "2017-11-23"
 heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
 heroLayout: "banner"

@@ -1,6 +1,6 @@
 ---
 title: "Arquitectura de Microservicios y APIs con GraphQL"
-description: "Microservicios y GraphQL en Pereira Tech Talks — divide y conquista, pros y contras, y por qué GraphQL me convenció como capa de API."
+description: "Por qué me moví de REST a GraphQL para microservicios — divide y conquista, consultas definidas por el cliente, y los trade-offs que necesitas conocer."
 pubDate: "2017-11-23"
 heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
 heroLayout: "banner"

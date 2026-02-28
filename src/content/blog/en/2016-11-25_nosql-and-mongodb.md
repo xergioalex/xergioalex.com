@@ -1,19 +1,21 @@
 ---
 title: "NoSQL and MongoDB"
-description: "Introduction to NoSQL databases and MongoDB — differences with SQL, when to use each, and practical examples."
+description: "When SQL tables aren't enough — my introduction to NoSQL databases, MongoDB's document model, and when to choose flexibility over rigid schemas."
 pubDate: "2016-11-25"
 heroImage: "/images/blog/posts/nosql-and-mongodb/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-In this talk I gave an introduction to NoSQL databases and MongoDB. The goal was to clarify what NoSQL means, how it differs from traditional SQL databases, when each approach makes sense, and to show practical examples you can try yourself.
+I spent years working with relational databases — MySQL, PostgreSQL, the usual suspects. Tables, foreign keys, JOINs. It's a solid foundation, and for many problems, it's exactly what you need. But when I started building APIs that consumed JSON from third-party services, or mobile backends where the schema evolved every sprint, SQL started to feel rigid. I kept writing migrations to add columns, restructure tables, normalize data that didn't want to be normalized.
+
+That's when I started exploring NoSQL — specifically MongoDB. This talk was my way of sharing what I learned: what NoSQL actually means, how it differs from SQL, and when each approach makes sense. I wanted to answer the questions I had when I started: *Why would I abandon tables? What do I gain? What do I lose?*
 
 ---
 
 ## What is NoSQL?
 
-**NoSQL** stands for "Not Only SQL" — it's a broad term for databases that don't follow the rigid relational model. Instead of tables, rows, and columns, NoSQL databases use different structures: documents, key-value pairs, graphs, or wide-column stores.
+**NoSQL** stands for "Not Only SQL" — a broad term for databases that don't follow the rigid relational model. Instead of tables, rows, and columns, NoSQL databases use different structures: documents (MongoDB, CouchDB), key-value pairs (Redis, DynamoDB), graphs (Neo4j), or wide-column stores (Cassandra).
 
 The rise of NoSQL came from a need to handle:
 
@@ -21,6 +23,8 @@ The rise of NoSQL came from a need to handle:
 - **Flexibility** — Schemas that evolve quickly without migrations
 - **Performance** — Optimized for specific access patterns (reads, writes, aggregations)
 - **Variety** — Unstructured or semi-structured data (logs, events, JSON from APIs)
+
+In my experience, the schema flexibility was the killer feature. I could iterate on a product, add fields to documents, nest related data — all without writing `ALTER TABLE` scripts or coordinating migrations across environments.
 
 ---
 
@@ -35,13 +39,17 @@ The rise of NoSQL came from a need to handle:
 | **Query language** | SQL (standardized) | API-specific (MongoDB uses JSON-like queries) |
 | **Joins** | Native (JOIN) | Often application-level or embedded documents |
 
-SQL excels when you have clear relationships, need strong consistency, and your data fits neatly into tables. NoSQL shines when you need flexibility, horizontal scale, or when your data is document-shaped (nested, variable structure).
+SQL excels when you have clear relationships, need strong consistency, and your data fits neatly into tables. I still use it for financial data, user permissions, anything where referential integrity matters.
+
+NoSQL shines when you need flexibility, horizontal scale, or when your data is document-shaped — nested, variable structure, closer to how you actually use it in your application code.
 
 ---
 
 ## MongoDB: Document-Oriented NoSQL
 
 [MongoDB](https://www.mongodb.com/) is a **document database**. Data is stored as **BSON** (Binary JSON) documents inside **collections**. Instead of normalizing data across tables, you store related data together in a single document.
+
+I like this model because it mirrors how I think about data in code. If I'm building a blog, a post isn't just a row in a `posts` table — it's an object with a title, content, author info, comments nested inside. MongoDB lets me store it that way.
 
 ### Example: A User with Posts
 
@@ -82,6 +90,8 @@ db.users.insertOne({
 });
 ```
 
+No schema required. Just insert a document. If you later decide users should have a `lastLogin` field, add it to new documents. Old documents don't break — you handle it in your application logic.
+
 ### 2. Finding Documents
 
 ```javascript
@@ -95,6 +105,8 @@ db.users.find({ name: "Alice" });
 db.users.findOne({ email: "alice@example.com" });
 ```
 
+Queries feel like JavaScript. Coming from SQL's `SELECT * FROM users WHERE name = 'Alice'`, it's refreshing.
+
 ### 3. Updating Documents
 
 ```javascript
@@ -104,9 +116,11 @@ db.users.updateOne(
 );
 ```
 
+The `$set` operator updates specific fields without replacing the whole document. There are operators for incrementing, pushing to arrays, renaming fields — all the things you'd do in application logic.
+
 ### 4. Aggregation Pipeline
 
-MongoDB's aggregation framework lets you transform and analyze data in stages:
+MongoDB's aggregation framework lets you transform and analyze data in stages. I use this for analytics, reporting, anything where a simple `find()` isn't enough:
 
 ```javascript
 db.orders.aggregate([
@@ -116,22 +130,28 @@ db.orders.aggregate([
 ]);
 ```
 
+It's like SQL's `GROUP BY` and `ORDER BY`, but more composable. You build a pipeline of transformations.
+
 ---
 
 ## When to Use MongoDB (and When Not To)
 
 **Good fit:**
 
-- Content management, blogs, catalogs
-- Real-time analytics, event logs
-- Prototyping and rapid iteration
-- Data with variable or nested structure (JSON from APIs)
+- Content management, blogs, catalogs — anything document-shaped
+- Real-time analytics, event logs — write-heavy, flexible schema
+- Prototyping and rapid iteration — no migrations, just code
+- Data with variable or nested structure — JSON from APIs, user-generated content
+
+I've used MongoDB for API backends, CMS systems, and mobile app data stores. It feels natural when the domain is fluid.
 
 **Less ideal:**
 
-- Heavy relational reporting (lots of JOINs)
-- Strong multi-document transactions (MongoDB has them, but they're newer)
-- Data that fits perfectly in normalized tables with strict integrity
+- Heavy relational reporting — lots of JOINs across normalized tables
+- Strong multi-document transactions — MongoDB has them now, but they're newer and SQL is still better here
+- Data that fits perfectly in normalized tables with strict integrity — why fight the model?
+
+If I'm building a financial ledger or an ERP system, I still reach for PostgreSQL. Use the right tool for the job.
 
 ---
 
