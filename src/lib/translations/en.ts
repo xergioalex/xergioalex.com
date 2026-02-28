@@ -40,7 +40,7 @@ export const en: SiteTranslations = {
   hero: {
     tagline: 'CTO at DailyBot (YC S21) · Builder of 20+ Products',
     description:
-      'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, where we help thousands of teams collaborate better. 10+ years shipping digital products, from AI-powered platforms to open source tools.',
+      'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. 14+ years shipping digital products, from AI-powered platforms to open source tools.',
     typewriterWords: [
       'CTO at DailyBot (YC S21)',
       'Builder of 20+ Products',
@@ -54,7 +54,7 @@ export const en: SiteTranslations = {
   homeSections: {
     about: {
       title: "Hello, I'm <span class='text-secondary'>Sergio</span>",
-      description: `Today I lead engineering at DailyBot (YC S21), where I focus on product strategy, AI-powered workflows, and reliable systems that help teams move faster.<br /><br />
+      description: `Today I lead engineering at DailyBot (YC S21), a modern collaboration platform that enables human teams and AI agents to work together seamlessly. I focus on product strategy, AI-powered workflows, and reliable systems that help hybrid teams move faster.<br /><br />
 My strengths are turning complex ideas into simple products, scaling engineering teams, and shipping end-to-end: architecture, execution, and iteration based on real user feedback.<br /><br />
 I currently focus on AI applications, developer productivity, and high-impact products that combine speed, quality, and measurable business results.`,
       cta: 'Learn more about me',
@@ -64,7 +64,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       title: 'DailyBot (YC S21)',
       subtitle: 'CTO & Cofounder',
       description:
-        'I have led the development of an innovative platform that connects teams globally, facilitating collaboration and effective communication between members. In 2021, we were selected by Y Combinator, which allowed us to accelerate our growth, improve our technological capabilities and reinforce our focus on customer satisfaction. \u{1F680}',
+        'I have led the development of a modern collaboration platform that enables both human teams and AI agents to work together seamlessly. It provides unified transparency and visibility into work across hybrid teams and intelligent workflows—supporting async standups, peer recognition, and AI agents reporting on progress—all inside Slack, Microsoft Teams, and Google Chat. In 2021, we were selected by Y Combinator, which accelerated our growth and reinforced our focus on customer satisfaction. \u{1F680}',
       cta: 'Learn more about DailyBot',
     },
     techTalks: {
@@ -120,15 +120,15 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       title: 'What I Build',
       subtitle: 'From AI-powered platforms to open source tools',
       description:
-        'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, I\'ve architected a platform used by thousands of teams on Slack, Microsoft Teams, and Google Chat. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
+        'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, I\'ve architected a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
       cta: 'Explore my projects',
     },
     community: {
       title: 'Community & Speaking',
       subtitle: 'Sharing knowledge, building ecosystems',
       description:
-        "I co-founded Pereira Tech Talks, PereiraJS, and Python Pereira \u2014 three tech communities dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, and more at conferences and meetups. I believe technology grows faster when we share what we learn \u2014 that's why I write this blog and speak at events.",
-      cta: 'See my talks',
+        "I co-founded Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge in Colombia. As a speaker, I've talked about Docker, serverless architectures, conversational AI, blockchain, and more at conferences and meetups across the region. The community has grown into a platform where developers, designers, and entrepreneurs connect, learn from each other, and push the boundaries of what's possible. I believe technology grows faster when we share what we learn \u2014 that's why I write this blog and speak at events.",
+      cta: 'Explore community & talks',
     },
     beyondCode: {
       title: 'Beyond Code',
@@ -172,10 +172,10 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     description:
       'Get to know Sergio Alexander Florez Galeano — CTO, entrepreneur, maker, and technology enthusiast from Colombia.',
     heroDescription:
-      'CTO & Cofounder of DailyBot (YC S21). Computer Science Engineer, MSc in Data Science, with 10+ years building digital products and businesses.',
+      'CTO & Cofounder of DailyBot (YC S21). Computer Science Engineer, MSc in Data Science, with 14+ years building digital products and businesses.',
     bioTitle: 'Who I Am',
     bioText:
-      "I'm Sergio Alexander Florez Galeano, a Computer Science Engineer from Universidad Nacional de Colombia with a Master's degree in Data Science. For over a decade, I've been building digital products, leading engineering teams, and co-founding technology ventures.<br /><br />Currently, I serve as CTO and Cofounder of DailyBot, a Y Combinator-backed platform (S21) that helps thousands of teams collaborate asynchronously. Beyond my professional work, I'm a maker at heart — constantly exploring new technologies from AI and 3D printing to IoT and physical computing.<br /><br />I'm also the cofounder of Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge. I believe in learning every day, building things from scratch, and sharing the journey with others \u2014 that's why I write this blog and speak at tech events.",
+      "I'm Sergio Alexander Florez Galeano, a Computer Science Engineer from Universidad Tecnológica de Pereira with a Master's degree in Data Science. For over 14 years, I've been building digital products, leading engineering teams, and co-founding technology ventures.<br /><br />Currently, I serve as CTO and Cofounder of DailyBot, a Y Combinator-backed platform (S21) that enables both human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows inside Slack, Microsoft Teams, and Google Chat. Beyond my professional work, I'm a maker at heart — constantly exploring new technologies from AI and 3D printing to IoT and physical computing.<br /><br />I'm also the cofounder of Pereira Tech Talks, a tech community dedicated to connecting professionals and sharing knowledge. I believe in learning every day, building things from scratch, and sharing the journey with others \u2014 that's why I write this blog and speak at tech events.",
     passionsTitle: 'What Drives Me',
     passions: [
       {
@@ -246,15 +246,15 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Professional resume of Sergio Alexander Florez Galeano — CTO of DailyBot, Full Stack Developer, and technology entrepreneur.',
     summaryTitle: 'Professional Summary',
     summaryText:
-      'Technology leader with 10+ years of experience building and scaling digital products. Full-stack engineer who works across frontend, backend, DevOps, and AI — building whatever the product needs. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind an AI-powered platform used by thousands of teams globally. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
+      'Technology leader with 14+ years of experience building and scaling digital products. Full-stack engineer who works across frontend, backend, DevOps, and AI — building whatever the product needs. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind a modern collaboration platform that enables human teams and AI agents to work together seamlessly, with unified transparency across hybrid teams and intelligent workflows. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
     experienceTitle: 'Work Experience',
     experiences: [
       {
         role: 'CTO & Cofounder',
         company: 'DailyBot (Y Combinator S21)',
-        period: '2017 - Present',
+        period: 'Jan 2020 - Present',
         description:
-          'Leading the technical vision and engineering team behind DailyBot, an AI-powered platform for asynchronous team collaboration.',
+          'Leading the technical vision and engineering team behind DailyBot, a modern collaboration platform that enables both human teams and AI agents to work together seamlessly. It provides unified transparency and visibility into work across hybrid teams and intelligent workflows—all inside Slack, Microsoft Teams, and Google Chat.',
         highlights: [
           'Architected and built the platform from the ground up, scaling to thousands of teams worldwide',
           'Led the company through Y Combinator S21 batch, accelerating growth and product development',
@@ -268,23 +268,47 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         company: 'Pereira Tech Talks',
         period: '2016 - Present',
         description:
-          'Co-founded a technology community focused on knowledge sharing and connecting tech professionals.',
+          'Co-founded a technology community focused on knowledge sharing and connecting tech professionals in Colombia.',
         highlights: [
-          'Organized regular tech meetups and conferences',
+          'Organized regular tech meetups and conferences (PyCon, Python Pereira, PereiraJs)',
+          'Speaker on Docker, serverless, TypeScript, AI, blockchain, and WebVR',
           'Grew the community to become a reference in the local tech ecosystem',
-          'Speaker on topics including Docker, serverless, TypeScript, and AI',
         ],
       },
       {
-        role: 'Full Stack Developer & Consultant',
-        company: 'Independent',
-        period: '2014 - 2017',
+        role: 'Full Stack Developer',
+        company: 'Bambú - Meditación y Mindfulness',
+        period: 'Apr 2018 - Jan 2020',
         description:
-          'Developed web applications and provided technology consulting for various companies and startups.',
+          'Developed the meditation and mindfulness mobile app for Spanish speakers. Bambú offers guided meditations, sounds, and music for relaxation. Incubated at Rocka Venture Builder.',
         highlights: [
-          'Built full-stack applications with Python/Django and Node.js',
-          'Implemented DevOps practices including Docker containerization and CI/CD pipelines',
-          'Contributed to open-source projects and developed development tools',
+          'Built full-stack mobile application with high-quality guided content',
+          'Collaborated with experts to deliver meditation and mindfulness experiences',
+          'Contributed to product development within a venture builder ecosystem',
+        ],
+      },
+      {
+        role: 'Technical Lead & Executive',
+        company: 'Rocka - Venture Builder',
+        period: 'Oct 2014 - Jan 2020',
+        description:
+          'Helped build, support, and empower digital businesses worldwide. Rocka is a venture builder focused on tech startups, offering product development and strategy for entrepreneurs.',
+        highlights: [
+          'Led technical execution across multiple ventures and product teams',
+          'Designed and built digital products from idea to launch',
+          'Implemented DevOps practices including Docker, CI/CD, and cloud infrastructure',
+        ],
+      },
+      {
+        role: 'Frontend & Backend Web Developer',
+        company: 'Universidad Tecnológica de Pereira',
+        period: 'Jul 2012 - Mar 2014',
+        description:
+          'Administration and maintenance of websites. Development of applications with PHP frameworks (Kohana, CodeIgniter, Symfony). Layout with HTML5, CSS3, and JavaScript.',
+        highlights: [
+          'Built and maintained institutional web applications',
+          'Developed full-stack solutions with PHP frameworks',
+          'Delivered responsive layouts with modern web standards',
         ],
       },
     ],
@@ -293,16 +317,16 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       {
         degree: 'MSc in Data Science',
         institution: 'Universidad Tecnológica de Pereira',
-        period: '2020 - 2022',
+        period: '2017 - 2021',
         description:
-          'Advanced studies in machine learning, data analytics, and statistical modeling applied to real-world problems.',
+          'Data visualization, statistical analysis, artificial intelligence, machine learning, natural language processing (NLP), big data, and advanced database management.',
       },
       {
-        degree: 'Computer Science Engineering',
-        institution: 'Universidad Nacional de Colombia',
-        period: '2014 - 2019',
+        degree: 'BSc in Computer Science',
+        institution: 'Universidad Tecnológica de Pereira',
+        period: '2009 - 2014',
         description:
-          'Comprehensive education in computer science fundamentals, algorithms, software engineering, and systems design.',
+          'Web development, algorithm analysis and optimization, software architecture, database administration (SQL, MySQL, Postgres, Oracle). Languages: DrRacket, C/C++, Java, Python, PHP, JavaScript.',
       },
     ],
     skillsTitle: 'Technical Skills',
@@ -363,6 +387,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       { language: 'Spanish', level: 'Native' },
       { language: 'English', level: 'Professional proficiency' },
     ],
+    ctaTitle: "Let's Connect",
+    ctaDescription:
+      "Interested in collaborating, speaking at your event, or discussing a project? I'm always open to new opportunities.",
     ctaText: 'Get in Touch',
   },
 
@@ -371,12 +398,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'DailyBot',
     subtitle: 'CTO & Cofounder — Y Combinator S21',
     description:
-      'DailyBot is an AI-powered platform for asynchronous team collaboration, backed by Y Combinator.',
+      'DailyBot is a modern collaboration platform that enables both human teams and AI agents to work together seamlessly. It provides unified transparency and visibility into the work done by people and AI agents alike, backed by Y Combinator.',
     heroDescription:
-      'Building the future of team collaboration — an AI-powered platform used by thousands of teams worldwide.',
+      'Building the future of team collaboration — a platform that enables human teams and AI agents to work together seamlessly, with unified transparency across hybrid teams and intelligent workflows.',
     storyTitle: 'The Story',
     storyText:
-      'DailyBot was born from a simple observation: distributed teams need better tools for asynchronous communication. What started as a solution to run automated standups evolved into a comprehensive platform that helps teams stay connected, aligned, and productive regardless of time zones or work schedules.<br /><br />Since its inception, the platform has grown to serve thousands of teams across the globe, integrating seamlessly with the tools they already use — Slack, Microsoft Teams, Google Chat, and Discord.',
+      'DailyBot is a modern collaboration platform that enables both human teams and AI agents to work together seamlessly. It provides unified transparency and visibility into the work done by people and AI agents alike, offering users clear insights into all activities across hybrid teams and intelligent workflows.<br /><br />DailyBot acts as a powerful automation layer, supporting everything from asynchronous standups and peer recognition among humans to AI agents reporting on progress and making business decisions within team processes—all inside familiar chat platforms like Slack, Microsoft Teams, and Google Chat.',
     ycTitle: 'Y Combinator Journey',
     ycText:
       "In 2021, DailyBot was selected for Y Combinator's Summer batch (S21). Being part of YC was a transformative experience — it accelerated our growth, sharpened our focus on product-market fit, and connected us with an incredible network of founders, mentors, and investors.<br /><br />The YC experience taught us to move fast, talk to users obsessively, and build what matters. It validated our vision and gave us the resources and confidence to scale globally.",
@@ -392,9 +419,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         icon: '\u{1F4CB}',
       },
       {
-        title: 'AI-Powered Assistant',
+        title: 'AI Agents & Human Collaboration',
         description:
-          'An intelligent assistant that helps teams work smarter with AI-driven insights and automation.',
+          'Enables both humans and AI agents to work together seamlessly, with AI agents reporting on progress and making decisions within team processes.',
         icon: '\u{1F916}',
       },
       {
@@ -435,7 +462,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     description:
       'The entrepreneurial journey of Sergio Alexander Florez Galeano — from engineer to founder.',
     heroDescription:
-      'Over a decade of building digital businesses, turning ideas into products, and learning from every challenge along the way.',
+      'Over 14 years of building digital businesses, turning ideas into products, and learning from every challenge along the way.',
     journeyTitle: 'My Entrepreneurial Journey',
     journeyText:
       'My entrepreneurial path began at the intersection of engineering and ambition. With a Computer Science degree and a passion for building things, I set out to create digital products that solve real problems for real people.<br /><br />The journey has been filled with lessons — from early freelancing and consulting work to co-founding DailyBot, which would later be selected by Y Combinator. Each step taught me something new about product development, team building, and the relentless pursuit of creating value.',
@@ -444,7 +471,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       {
         title: 'DailyBot (YC S21)',
         description:
-          'AI-powered platform for asynchronous team collaboration. CTO & Cofounder. Selected by Y Combinator in 2021, serving thousands of teams worldwide.',
+          'Modern collaboration platform that enables human teams and AI agents to work together seamlessly. Unified transparency across hybrid teams and intelligent workflows—inside Slack, Microsoft Teams, and Google Chat. CTO & Cofounder. Selected by Y Combinator in 2021.',
         period: '2017 - Present',
       },
       {
@@ -477,73 +504,75 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   // Tech Talks page
   techTalksPage: {
     title: 'Tech Talks',
-    subtitle: 'Sharing knowledge, building community',
+    subtitle: 'Building community through shared knowledge',
     description:
-      "Sergio's involvement in tech communities, speaking engagements, and knowledge sharing.",
+      'CTO at DailyBot (YC S21) and co-founder of Pereira Tech Talks. 30+ technical talks since 2016 on AI, serverless, Docker, blockchain, and building distributed teams. Passionate about knowledge sharing and community building in Colombia.',
     heroDescription:
-      'Cofounder of Pereira Tech Talks. Speaker at multiple technical conferences. Passionate about connecting professionals and sharing knowledge.',
+      'I co-founded Pereira Tech Talks to create a space where developers, designers, and entrepreneurs could learn from each other. Since 2016, I\u2019ve given 30+ talks on everything from Docker to AI \u2014 because the best way to learn is by teaching.',
     communityTitle: 'Pereira Tech Talks',
     communityText:
-      "As cofounder and organizer of Pereira Tech Talks, I've helped build one of the most active tech communities in the region. The mission is simple: create spaces where technology professionals can share knowledge, learn from each other, and grow together.<br /><br />From small meetups to larger conferences, the community has become a platform for developers, designers, and entrepreneurs to connect, collaborate, and push the boundaries of what's possible.",
-    communityImageAlt1: 'Pereira Tech Talks community in a full auditorium at UTP',
-    communityImageAlt2: 'Pereira Tech Talks community gathering with sponsors',
+      'In September 2017, a few of us sat down with a simple idea: what if we created a space where tech professionals in Pereira could share what they\u2019re learning, building, and struggling with? We\u2019d all been part of PereiraJS and Python Pereira, but we wanted something bigger \u2014 a community that brought everyone together regardless of their stack.<br /><br />That conversation became Pereira Tech Talks. What started as small meetups in borrowed spaces has grown into one of the most active tech communities in Colombia. We\u2019ve filled auditoriums at UTP, brought in speakers from across Latin America, and watched countless developers give their first public talk. The best part? Seeing people who came as attendees return months later as speakers, closing the knowledge-sharing loop.',
+    communityImageAlt1:
+      'Standing room only at a Pereira Tech Talks event at UTP auditorium',
+    communityImageAlt2:
+      'Pereira Tech Talks community gathering with sponsors and attendees',
     topicsTitle: 'Topics I Cover',
     topics: [
       {
         title: 'Docker & Containers',
         description:
-          'Containerization best practices, Docker workflows, and orchestration for modern applications.',
+          'From our early days containerizing DailyBot to orchestrating multi-service architectures. I share real production lessons, not just theory.',
         icon: '\u{1F433}',
       },
       {
         title: 'Serverless Architecture',
         description:
-          'Building scalable applications with serverless patterns on AWS and other cloud providers.',
+          'How we scaled DailyBot to thousands of teams using serverless patterns. The trade-offs, the wins, and what I\u2019d do differently.',
         icon: '\u2601\uFE0F',
       },
       {
         title: 'TypeScript & Node.js',
         description:
-          'Type-safe development, API design, and building robust backend services.',
+          'Building type-safe APIs that scale. Lessons from migrating a production codebase and the patterns that actually stick.',
         icon: '\u{1F4DD}',
       },
       {
         title: 'AI & Machine Learning',
         description:
-          'Practical AI integration, LLMs in production, and the future of intelligent applications.',
+          'Bringing AI into real products, not demos. From integrating LLMs at DailyBot to the practical challenges of AI in production.',
         icon: '\u{1F9E0}',
       },
       {
         title: 'DevOps & CI/CD',
         description:
-          'Continuous integration, deployment pipelines, and infrastructure as code practices.',
+          'How a small team ships fast without breaking things. Our CI/CD evolution from manual deploys to infrastructure as code.',
         icon: '\u{1F504}',
       },
       {
         title: 'Remote Team Building',
         description:
-          'Strategies for building effective distributed teams, async communication, and team culture.',
+          'Lessons from building DailyBot fully remote from day one. Async communication, team culture, and what actually works.',
         icon: '\u{1F30D}',
       },
       {
         title: 'Entrepreneurship in Tech',
         description:
-          'Lessons from founding a YC-backed startup, product development, and growing a tech business.',
+          'The real story of going through Y Combinator, building a SaaS product, and the startup lessons they don\u2019t teach in accelerators.',
         icon: '\u{1F4A1}',
       },
       {
         title: 'Open Source Development',
         description:
-          'Contributing to and maintaining open-source projects, community-driven development.',
+          'Why I believe in open source and how contributing to the community has shaped my career and perspective as a developer.',
         icon: '\u{1F310}',
       },
     ],
     philosophyTitle: 'Why I Speak',
     philosophyText:
-      'I believe that the best way to learn is by teaching. Every time I prepare a talk, I deepen my own understanding. Every question from the audience opens a new perspective.<br /><br />Tech communities are the backbone of innovation. When professionals share their knowledge openly, everyone grows — from juniors learning their first framework to seniors discovering new patterns. My goal is to contribute to that cycle of knowledge and inspire others to share their own experiences.',
+      'In 2016, I gave my first public talk about blockchain at a small meetup in Pereira. I was terrified. But during Q&A, someone asked a question that made me realize something I hadn\u2019t fully understood about the technology myself. That moment changed everything \u2014 I wasn\u2019t just sharing knowledge, I was deepening it.<br /><br />Every talk I prepare forces me to organize my thoughts, question my assumptions, and find clarity in complexity. Every question from the audience opens a new perspective I hadn\u2019t considered. I speak because teaching is how I learn. And I organize community events because when people share openly \u2014 whether they\u2019re giving their first talk or their fiftieth \u2014 everyone in the room gets better. That\u2019s the cycle I want to keep alive.',
     ctaTitle: 'Want Me to Speak at Your Event?',
     ctaText:
-      "I'm always open to speaking opportunities — from local meetups to international conferences. Let's connect!",
+      'I\u2019m always excited about speaking opportunities \u2014 whether it\u2019s a local meetup or an international conference. Let\u2019s chat about how I can contribute.',
     timelineTitle: 'My Talks',
     emptyState: 'No tech talks available yet. Check back soon!',
   },
@@ -889,7 +918,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     trading: 'Trading journal, analysis, and learnings.',
     portfolio: 'Personal projects, software, robotics, and open source work.',
     dailybot:
-      'DailyBot articles: product journey, workflow automation, and team productivity.',
+      'DailyBot articles: collaboration platform for human teams and AI agents, workflow automation, and hybrid team productivity.',
   },
 
   // Date formatting

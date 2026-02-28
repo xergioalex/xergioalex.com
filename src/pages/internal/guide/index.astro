@@ -1,70 +1,70 @@
 ---
-import InternalLayout from "@/layouts/InternalLayout.astro";
+import InternalLayout from '@/layouts/InternalLayout.astro';
 
 const principles = [
   {
-    title: "Performance First",
+    title: 'Performance First',
     description:
-      "Static over dynamic, lightest hydration directive, minimal JavaScript. Prefer CSS-only solutions.",
+      'Static over dynamic, lightest hydration directive, minimal JavaScript. Prefer CSS-only solutions.',
   },
   {
-    title: "Accessibility (WCAG AA)",
+    title: 'Accessibility (WCAG AA)',
     description:
-      "4.5:1 contrast ratio for text, semantic HTML, keyboard navigable, Lighthouse 100 target.",
+      '4.5:1 contrast ratio for text, semantic HTML, keyboard navigable, Lighthouse 100 target.',
   },
   {
-    title: "English Code Only",
+    title: 'English Code Only',
     description:
-      "All code, comments, documentation, and commits must be in English. Content is multilingual (en/es).",
+      'All code, comments, documentation, and commits must be in English. Content is multilingual (en/es).',
   },
   {
-    title: "Page Wrapper Pattern",
+    title: 'Page Wrapper Pattern',
     description:
-      "Thin 3-line wrappers in src/pages/, all logic in src/components/pages/*Page.astro.",
+      'Thin 3-line wrappers in src/pages/, all logic in src/components/pages/*Page.astro.',
   },
   {
-    title: "Biome Only",
+    title: 'Biome Only',
     description:
-      "Use Biome for linting and formatting. Never use ESLint or Prettier in this project.",
+      'Use Biome for linting and formatting. Never use ESLint or Prettier in this project.',
   },
   {
-    title: "Content Collections",
+    title: 'Content Collections',
     description:
-      "Structured content with Zod schemas. Blog posts, tags, and other collections use Astro Content Collections.",
+      'Structured content with Zod schemas. Blog posts, tags, and other collections use Astro Content Collections.',
   },
 ];
 
 const commands = [
-  { cmd: "npm run dev", desc: "Start dev server (localhost:4444)" },
-  { cmd: "npm run build", desc: "Production build with type check" },
-  { cmd: "npm run biome:check", desc: "Check linting and formatting" },
-  { cmd: "npm run biome:fix", desc: "Auto-fix lint/format issues" },
-  { cmd: "npm run astro:check", desc: "TypeScript type checking" },
-  { cmd: "npm run images:optimize", desc: "Process staged images" },
+  { cmd: 'npm run dev', desc: 'Start dev server (localhost:4444)' },
+  { cmd: 'npm run build', desc: 'Production build with type check' },
+  { cmd: 'npm run biome:check', desc: 'Check linting and formatting' },
+  { cmd: 'npm run biome:fix', desc: 'Auto-fix lint/format issues' },
+  { cmd: 'npm run astro:check', desc: 'TypeScript type checking' },
+  { cmd: 'npm run images:optimize', desc: 'Process staged images' },
   {
-    cmd: "npm run images:webp",
-    desc: "Generate WebP variants (skips if up to date)",
+    cmd: 'npm run images:webp',
+    desc: 'Generate WebP variants (skips if up to date)',
   },
 ];
 
 const guidePages = [
   {
-    title: "Tech Stack",
-    href: "/internal/guide/tech-stack",
+    title: 'Tech Stack',
+    href: '/internal/guide/tech-stack',
     description:
-      "Core technologies, versions, architecture patterns, and key libraries.",
+      'Core technologies, versions, architecture patterns, and key libraries.',
   },
   {
-    title: "File Structure",
-    href: "/internal/guide/file-structure",
+    title: 'File Structure',
+    href: '/internal/guide/file-structure',
     description:
-      "Repository layout, key directories, important files, and naming conventions.",
+      'Repository layout, key directories, important files, and naming conventions.',
   },
   {
-    title: "Performance & PageSpeed",
-    href: "/internal/guide/performance",
+    title: 'Performance & PageSpeed',
+    href: '/internal/guide/performance',
     description:
-      "PageSpeed optimizations, WebP image pipeline, and deployment flow.",
+      'PageSpeed optimizations, WebP image pipeline, and deployment flow.',
   },
 ];
 ---

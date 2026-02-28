@@ -1,6 +1,6 @@
 # XergioAleX.com
 
-> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO & Co-founder at DailyBot (Y Combinator S21), computer science engineer, MSc in data science.
+> Personal website and technical blog by Sergio Alexander Florez Galeano (XergioAleX): CTO & Co-founder at DailyBot (Y Combinator S21)—a modern collaboration platform for human teams and AI agents. Computer science engineer, MSc in data science.
 
 ## About
 
@@ -27,7 +27,7 @@ This site features a bilingual blog and professional profile covering software d
 - tech — Software development tutorials and technical articles
 - talks — Tech talks, slides, and event recaps
 - portfolio — Project retrospectives and case studies
-- dailybot — DailyBot product stories and startup journey
+- dailybot — DailyBot collaboration platform (human + AI agents), product stories and startup journey
 - trading — Trading journal entries and market analysis
 - personal — Personal reflections and life experiences
 

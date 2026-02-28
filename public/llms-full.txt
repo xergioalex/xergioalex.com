@@ -4,9 +4,9 @@
 
 ## About the Author
 
-Sergio Alexander Florez Galeano (XergioAleX) is a CTO and Co-founder at DailyBot (Y Combinator S21). He is a computer science engineer with a Master's degree in data science and a passionate entrepreneur with over 10 years of experience building digital businesses. He is also a speaker, researcher, athlete, trader, and technology enthusiast.
+Sergio Alexander Florez Galeano (XergioAleX) is a CTO and Co-founder at DailyBot (Y Combinator S21). He is a computer science engineer from Universidad Tecnológica de Pereira with a Master's degree in data science and a passionate entrepreneur with over 14 years of experience building digital businesses. He is also a speaker, researcher, athlete, trader, and technology enthusiast.
 
-Based in Colombia, he has led the development of DailyBot, an innovative platform that connects teams globally, facilitating asynchronous collaboration and effective communication. He is also a co-founder and organizer of the Pereira Tech Talks community.
+Based in Colombia, he has led the development of DailyBot, a modern collaboration platform that enables both human teams and AI agents to work together seamlessly. It provides unified transparency and visibility into the work done by people and AI agents alike, offering clear insights into all activities across hybrid teams and intelligent workflows—all inside familiar chat platforms like Slack, Microsoft Teams, and Google Chat. He is also a co-founder and organizer of the Pereira Tech Talks community.
 
 ### Social Profiles
 
@@ -26,7 +26,7 @@ Based in Colombia, he has led the development of DailyBot, an innovative platfor
 - **Contact** (/contact/) - Contact form and social links
 - **Portfolio** (/portfolio/) - Software projects, open-source work, and case studies
 - **Tech Talks** (/tech-talks/) - Conference presentations, meetup talks, and workshops
-- **DailyBot** (/dailybot/) - The DailyBot story, Y Combinator journey, and product evolution
+- **DailyBot** (/dailybot/) - Modern collaboration platform for human teams and AI agents; Y Combinator journey and product evolution
 - **Trading** (/trading/) - Trading journey, approach, philosophy, and market analysis
 - **Entrepreneur** (/entrepreneur/) - Entrepreneurship experiences and startup building
 - **Maker** (/maker/) - Hardware projects, robotics, and DIY builds
@@ -38,7 +38,7 @@ Based in Colombia, he has led the development of DailyBot, an innovative platfor
 - **tech** — Tutorials, guides, and technical articles about software development
 - **talks** — Tech talks, slides, videos, and event recaps
 - **portfolio** — Project retrospectives, open-source contributions, and case studies
-- **dailybot** — DailyBot product stories, Y Combinator experience, startup journey
+- **dailybot** — DailyBot collaboration platform (human + AI agents), Y Combinator experience, startup journey
 - **trading** — Trading journal entries, market analysis, algorithmic trading learnings
 - **personal** — Articles about life experiences and personal reflections
 

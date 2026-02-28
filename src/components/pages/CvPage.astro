@@ -109,8 +109,13 @@ const breadcrumbSchema = {
     </ul>
   </PageSection>
 
-  <PageSection background="gray" title="">
-    <div class="text-center">
+  <PageSection
+    background="gray"
+    title={t.cvPage.ctaTitle}
+    description={t.cvPage.ctaDescription}
+    center
+  >
+    <div class="text-center mt-4">
       <a
         href={`${prefix}/contact`}
         class="inline-flex items-center px-6 py-3 rounded-lg bg-secondary text-white font-semibold hover:bg-secondary/90 transition-colors duration-200"

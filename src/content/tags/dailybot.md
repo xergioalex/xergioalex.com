@@ -1,4 +1,4 @@
 ---
 name: "dailybot"
-description: "DailyBot articles: product journey, workflow automation, and team productivity insights."
+description: "DailyBot articles: collaboration platform for human teams and AI agents, workflow automation, and hybrid team productivity."
 ---

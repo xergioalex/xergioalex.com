@@ -229,6 +229,8 @@ export interface SiteTranslations {
     skillCategories: SkillCategory[];
     languagesTitle: string;
     languages: LanguageSkill[];
+    ctaTitle: string;
+    ctaDescription: string;
     ctaText: string;
   };
 
