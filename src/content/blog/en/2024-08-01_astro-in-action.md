@@ -1,6 +1,6 @@
 ---
 title: "Astro in Action"
-description: "What I shared at Pereira Tech Talks — why Astro is worth it, real case studies from Microsoft and Firebase, and how we migrated the community site to prove it."
+description: "Why Astro won me over — real case studies from Microsoft and Firebase, measurable performance gains, and a live migration of the Pereira Tech Talks site to prove it's not just hype."
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
 heroLayout: "side-by-side"
@@ -52,6 +52,8 @@ I walked through what makes Astro different:
 - **Server-first** — HTML by default, JS as an enhancement
 - **Content-driven** — Built for blogs, docs, and content sites
 - **Deploy everywhere** — Vercel, Netlify, Cloudflare, static hosting
+
+That said, **Astro isn't right for every project**. If you're building a highly interactive single-page app like Figma or a real-time dashboard, React or Svelte on their own might be better. Astro excels at content-heavy sites where most of the page is static and interactivity is the exception, not the rule. Knowing when *not* to use a tool is as important as knowing when to use it.
 
 ---
 

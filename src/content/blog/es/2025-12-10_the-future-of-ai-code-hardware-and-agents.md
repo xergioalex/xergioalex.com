@@ -1,6 +1,6 @@
 ---
 title: "El futuro de la IA: Código, Hardware y Agentes"
-description: "Lo que compartí en Pereira Tech Talks — cómo el rol del programador pasó de escribir código a orquestar agentes, y por qué la arquitectura, el producto y delegar importan más que nunca."
+description: "Desde mi co-presentación en Pereira Tech Talks con Sebastián Mora — cómo la programación pasó de escribir código a orquestar agentes, qué desbloquean los MCPs, y por qué llevé un robot a un meetup de software."
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
 heroLayout: "side-by-side"
@@ -37,9 +37,11 @@ Lo he visto en DailyBot. Los equipos que avanzan más rápido son los que entien
 
 ## Herramientas de Agentes en Esta Nueva Era
 
-Quería darles un mapa de las herramientas que están definiendo este momento. **Modelos** — la base, cada vez más baratos y capaces. **Agentes** — sistemas autónomos o semi-autónomos que pueden planear, ejecutar e iterar. **MCPs** (Model Context Protocol) — una forma de que los modelos se conecten a herramientas y datos externos. **Entornos de desarrollo** — IDEs y plataformas que se están reconstruyendo alrededor de flujos asistidos por IA.
+Quería darles un mapa de las herramientas que están definiendo este momento. **Modelos** — la base, cada vez más baratos y capaces. **Agentes** — sistemas autónomos o semi-autónomos que pueden planear, ejecutar e iterar. **MCPs** (Model Context Protocol) — una forma estandarizada de que los modelos se conecten a herramientas y fuentes de datos externas. Piénsalo como un adaptador universal: en lugar de que cada herramienta de IA construya integraciones personalizadas para Slack, GitHub, bases de datos y APIs, MCP provee un protocolo común. Escribes una integración, y cualquier modelo compatible con MCP puede usarla. Ese es el desbloqueo — acceso a herramientas componible y reusable para agentes de IA. **Entornos de desarrollo** — IDEs y plataformas que se están reconstruyendo alrededor de flujos asistidos por IA.
 
 El ecosistema avanza rápido. Lo que importa no es memorizar cada herramienta — es entender los patrones: cómo razonan los agentes, cómo usan herramientas, cómo se pueden componer. Esa es la habilidad que trasciende.
+
+Un ejemplo de delegación de agentes desde DailyBot: construimos un flujo donde un agente analiza las respuestas de standup de un equipo, identifica bloqueos y los rutea a la persona correcta con contexto. El agente no solo resume — *razona* sobre prioridad, *delega* acciones de seguimiento y *monitorea* la completitud. No escribimos reglas explícitas para cada caso. Definimos el objetivo, le dimos al agente las herramientas (API de Slack, task tracker, directorio de usuarios), y descubrió el resto. Ese es el cambio: de escribir código que maneja cada camino a diseñar sistemas que pueden adaptarse.
 
 ---
 

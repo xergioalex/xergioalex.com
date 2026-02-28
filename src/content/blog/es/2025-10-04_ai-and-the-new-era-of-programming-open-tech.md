@@ -1,6 +1,6 @@
 ---
 title: "IA y la Nueva Era de la Programación en Open Tech Hackathon"
-description: "Lo que compartí en el workshop Vibe Coding e IA — herramientas prácticas y modelos mentales para que los participantes del hackathon pudieran entregar más rápido con Cursor, Codex y Claude Code."
+description: "Desde mi workshop Vibe Coding e IA en Open Tech Hackathon — cuándo usar Cursor vs Codex vs Claude Code, la mentalidad de director, y lecciones prácticas de entregar funcionalidades con IA en DailyBot."
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
 heroLayout: "side-by-side"
@@ -19,15 +19,51 @@ Tres cosas. Primero: **qué herramientas probar** — Cursor, Codex, Claude Code
 
 ---
 
-## Las Herramientas: Cursor, Codex, Claude Code
+## Las Herramientas: Cuándo Usar Cada Una
 
-Recorrí los tres agentes de código que más importan hoy. **Cursor** — IDE centrado en IA, ideal para prototipado rápido. Describes una funcionalidad, sugiere código, tú refinas. Perfecto para la velocidad de un hackathon. **Codex** (impulsa GitHub Copilot) — sugerencias en línea, autocompletado potenciado. Mantienes el flujo, él llena el boilerplate. **Claude Code** — fuerte en razonamiento y contexto largo. Bueno para decisiones de arquitectura, refactoring, debugging. Cada uno tiene su punto dulce. Quería que supieran: elige uno, aprende sus atajos, y úsalo desde el primer día del hackathon.
+Recorrí los tres agentes de código que más importan hoy — y más importante, *cuándo* brilla cada uno. Esto no es elegir favoritos. Es entender sus fortalezas y emparejarlas con tu flujo de trabajo.
+
+**Cursor** — IDE centrado en IA construido para prototipado rápido. Describes una funcionalidad en lenguaje natural, sugiere código en múltiples archivos, tú refinas. Perfecto para proyectos greenfield o velocidad de hackathon. Dónde brilla: cuando empiezas desde cero y necesitas moverte rápido. Dónde falla: bases de código legacy profundamente anidadas donde el contexto se vuelve confuso.
+
+**Codex** (impulsa GitHub Copilot) — Sugerencias en línea, autocompletado potenciado. Mantienes el flujo, él llena el boilerplate y los patrones repetitivos. Dónde brilla: escribir tests, implementar funciones directas, traducir lógica de un lenguaje a otro. Dónde falla: decisiones arquitectónicas complejas o refactorizaciones de múltiples pasos.
+
+**Claude Code** — Razonamiento fuerte y contexto largo. Bueno para decisiones de arquitectura, debugging de problemas complicados y explicar código desconocido. Dónde brilla: cuando necesitas entender una base de código grande rápido, refactorizar de forma segura o arquitecturar una nueva funcionalidad. Dónde falla: codificación altamente interactiva donde la velocidad importa más que la profundidad del razonamiento.
+
+He usado los tres en producción en DailyBot. Mi flujo de trabajo: Cursor para funcionalidades nuevas, Copilot para coding del día a día, Claude Code cuando estoy atascado en arquitectura o debuggeando algo raro. Entender cuándo cambiar de herramienta ahorra horas.
 
 ---
 
 ## El Modelo Mental: Director, No Codificador
 
-La slide que quedó: **"Nuevo rol de los desarrolladores: orquestadores y supervisores."** No quería asustarlos. Quería reencuadrar. No escribes menos — decides más. Tú defines la dirección. Tú defines el problema. El agente escribe el primer borrador, ejecuta las pruebas, sugiere correcciones. Tú revisas, corriges y sigues. En un hackathon, eso significa más iteraciones en menos tiempo. Más ideas probadas. Más prototipos que realmente funcionan.
+La slide que quedó: **"Nuevo rol de los desarrolladores: orquestadores y supervisores."** No quería asustarlos. Quería reencuadrar. No escribes menos — decides más. Tú defines la dirección. Tú defines el problema. El agente escribe el primer borrador, ejecuta las pruebas, sugiere correcciones. Tú revisas, corriges y sigues.
+
+En un hackathon, eso significa más iteraciones en menos tiempo. Más ideas probadas. Más prototipos que realmente funcionan. Ya no compites con el equipo que codifica más rápido. Compites con el equipo que toma las mejores decisiones bajo presión.
+
+Así se ve esto en la práctica:
+
+1. **Tú defines el objetivo** — "Construir una funcionalidad de búsqueda que filtre por tags y rango de fechas"
+2. **El agente genera el código** — Componentes, rutas API, queries de base de datos
+3. **Tú revisas y diriges** — "Esto funciona pero la lógica del filtro de fecha está mal. Arréglalo."
+4. **El agente itera** — Reescribe el filtro, ejecuta tests, te muestra el diff
+5. **Tú haces merge y sigues** — La funcionalidad está lista en 20 minutos en lugar de 2 horas
+
+Ese efecto multiplicador es real. Pero solo funciona si sabes cómo se ve "bueno". Todavía necesitas entender arquitectura, flujo de datos, casos borde. El agente no puede hacer esa parte por ti.
+
+---
+
+## Tips Prácticos desde Producción
+
+Terminé con lecciones que había aprendido enviando funcionalidades con IA en DailyBot — cosas que desearía que alguien me hubiera dicho cuando empecé:
+
+**Empieza con el happy path.** Deja que el agente genere la versión directa primero. Iterarás más rápido que intentando describir cada caso borde por adelantado.
+
+**Revisa antes de ejecutar.** El código generado por IA puede verse bien y comportarse mal. Léelo. Entiéndelo. Si no puedes explicar qué hace, no lo envíes.
+
+**Usa tests como barandas.** Escribe un test que falle que describa lo que quieres. Deja que el agente implemente el fix. Si el test pasa, probablemente estés bien. Esto funciona especialmente bien con Copilot y Cursor.
+
+**Mantén el contexto ajustado.** Los agentes de IA funcionan mejor con prompts enfocados. "Arregla el bug de autenticación" es vago. "El token JWT expira muy temprano — aumenta el TTL a 7 días" obtiene mejores resultados.
+
+**Aprende a debuggear errores de IA.** El agente escribirá código que compila pero no hace lo que querías. Debuggear esa brecha — entre lo que pediste y lo que obtuviste — es una nueva habilidad. Practícala.
 
 ---
 

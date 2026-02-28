@@ -1,6 +1,6 @@
 ---
 title: "Astro en Acción"
-description: "Lo que compartí en Pereira Tech Talks — por qué Astro vale la pena, casos reales de Microsoft y Firebase, y cómo migramos el sitio de la comunidad para demostrarlo."
+description: "Por qué Astro me convenció — casos reales de Microsoft y Firebase, ganancias de rendimiento medibles, y una migración en vivo del sitio de Pereira Tech Talks para probar que no es solo hype."
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
 heroLayout: "side-by-side"
@@ -52,6 +52,8 @@ Recorrí lo que hace a Astro diferente:
 - **Server-first** — HTML por defecto, JS como mejora
 - **Content-driven** — Pensado para blogs, docs y sitios de contenido
 - **Deploy everywhere** — Vercel, Netlify, Cloudflare, hosting estático
+
+Dicho esto, **Astro no es para todo proyecto**. Si estás construyendo una app altamente interactiva como Figma o un dashboard en tiempo real, React o Svelte solos pueden ser mejores opciones. Astro sobresale en sitios con mucho contenido donde la mayor parte de la página es estática y la interactividad es la excepción, no la regla. Saber cuándo *no* usar una herramienta es tan importante como saber cuándo usarla.
 
 ---
 

@@ -1,41 +1,65 @@
 ---
 title: "Cómo la IA está revolucionando el desarrollo de aplicaciones modernas"
-description: "Cómo la IA está revolucionando el desarrollo de aplicaciones modernas — el despertar de la IA, ChatGPT, GPT-4 y por qué estamos viviendo el inicio de una revolución."
+description: "Qué cambió entre mayo y agosto de 2023 — mi experiencia en Manizales Tech Talks compartiendo cómo la IA transformaba el desarrollo de apps, tres meses más dentro de la revolución."
 pubDate: "2023-08-26"
 heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-**AI Rebirth** explora el despertar de la inteligencia artificial — y por qué estamos al inicio de algo real. No quería dar una charla genérica. Quería compartir lo que estaba viendo de verdad: una revolución que acababa de despertar. Algo que vivía todos los días en DailyBot.
+Tres meses después de Pereira, estaba de vuelta en un escenario — esta vez en Manizales. La misma historia central, pero todo había evolucionado. Entre mayo y agosto de 2023, el panorama de la IA cambió tan rápido que me vi reescribiendo slides la noche anterior. No porque los fundamentos hubieran cambiado, sino porque habíamos cruzado nuevos hitos. Más desarrolladores estaban enviando productos con GPT-4. Más equipos estaban experimentando. Más productos reales se construían sobre IA que no existían un año atrás.
+
+Esto no era una repetición. Era un checkpoint — ver cuánto había madurado la conversación en solo unos meses.
 
 ---
 
-## Por qué elegí este tema
+## Por Qué Manizales Se Sintió Diferente
 
-Tenía tres objetivos en mente: entender el **estado del arte** de la IA, explorar sus **posibilidades**, y responder una pregunta que no paraba de salir — *¿por qué deberíamos estar aprendiendo IA ahora?* En DailyBot ya estábamos construyendo con estas herramientas. Podía sentir el cambio. Quería que la audiencia viera lo que yo veía: no estamos en una burbuja de hype. Estamos al inicio de algo real, y quería que lo sintieran también.
+La audiencia de Pereira en mayo había sido curiosa — algunos escépticos, algunos emocionados, todos explorando. Para agosto en Manizales, las preguntas cambiaron. La gente no preguntaba *si* debían preocuparse por la IA — preguntaban *qué* construir con ella y *cómo* empezar realmente. Ese cambio me dijo que algo había hecho clic en el ecosistema. Ya no era hype. Era interés práctico de ingenieros que querían entregar productos.
 
----
-
-## Del invierno de la IA al boom generativo
-
-Los llevé por la historia. **Deep learning**, ImageNet, visión por computador, transferencia de estilo. El **invierno de la IA** — ese largo período donde el progreso se sentía lento. Luego **2022**, y todo cambió. La **IA generativa** explotó.
-
-GPT-2, GPT-3, DALL·E, GitHub Copilot, DALL·E 2, Stable Diffusion, BLOOM, Whisper. Cada lanzamiento se sentía como un salto. **ChatGPT** en noviembre de 2022 — 100 millones de usuarios en meses. Podía escribir código, responder preguntas, generar SQL desde lenguaje natural. Startups construidas encima de él de la noche a la mañana. Lo estaba viendo pasar desde adentro.
+Manizales también trajo una energía diferente — un ambiente más pequeño, más íntimo. Las conversaciones después de la charla fueron más profundas. Tuve más tiempo para hablar de casos de uso, resolver bloqueos y compartir lo que habíamos aprendido en DailyBot en los meses desde el lanzamiento de GPT-4.
 
 ---
 
-## GPT-4 y el giro multimodal
+## Qué Cambió en 3 Meses
 
-**GPT-4** ya llevaba unos meses en el mercado. Multimodal, más barato, 32K tokens. Microsoft integraba Copilot por todos lados. Google había anunciado PaLM 2, Bard, Duet AI. El futuro del trabajo se estaba reescribiendo en tiempo real.
+Entre mayo y agosto, las herramientas maduraron. **GPT-4** había pasado de un lanzamiento brillante a algo sobre lo que la gente estaba construyendo funcionalidades de producción. Lo vi en nuestro propio trabajo en DailyBot — lo que empezó como experimentos en abril ya eran integraciones en vivo que nuestros usuarios usaban.
 
-Mostré lo que venía: **audio sintético** — incluyendo el demo con mi propia voz clonada — herramientas de **texto a video**, **AutoGPT**. El mensaje que quería dejar: esto no es el final. Es el principio. Y nosotros decidimos cómo nos presentamos.
+**LangChain** y las **bases de datos vectoriales** se habían vuelto parte de la conversación. En mayo, mencioné la generación aumentada por recuperación (RAG) como concepto. Para agosto, estaba mostrando ejemplos prácticos — cómo conectar un modelo de lenguaje a tus propios datos, cómo construir sistemas de búsqueda y Q&A que realmente funcionaran. Las abstracciones mejoraban, y la barrera de entrada bajaba rápido.
+
+También noté más claridad sobre dónde la IA *debía* y *no debía* usarse. En mayo, la gente le tiraba IA a todo para ver qué funcionaba. Para agosto, los patrones eran más claros: la IA sobresale en resumen, transformación, ideación e interfaces conversacionales. Lucha con precisión, consistencia y cualquier cosa que requiera exactitud determinística. Ese matiz importaba.
 
 ---
 
-## Qué significa esto para nosotros
+## De GPT-4 a Aplicaciones Reales
 
-Terminé con dos palabras: **transformación** y **oportunidad**. Las herramientas están aquí. Las APIs están abiertas. La pregunta no es si la IA va a cambiar cómo construimos — ya lo está haciendo. La pregunta es si vamos a ser parte de ello. Espero que algunos hayan sentido lo mismo que yo.
+En Pereira había mostrado lo que GPT-4 podía hacer — multimodal, contexto largo, mejor razonamiento. En Manizales cambié el foco a *qué estaba construyendo la gente* con él:
+
+- **Automatizaciones de soporte al cliente** que podían entender contexto y responder naturalmente sin scripts rígidos
+- **Búsqueda en documentación** impulsada por embeddings y RAG — no más cazar en wikis
+- **Flujos de generación de contenido** donde la IA manejaba el primer borrador y los humanos refinaban
+- **Herramientas de desarrollo** como autocompletado más inteligente, explicaciones de código y asistentes de debugging
+
+Esto no era charla del futuro. Eran herramientas que había usado, productos que mis pares estaban enviando, y flujos que refinábamos en tiempo real. Eso aterrizó la conversación de una forma que se sintió más honesta.
+
+---
+
+## La Metáfora del Director Toma Forma
+
+En mayo había introducido la idea: ya no solo codificas, orquestas. Para agosto había vivido ese cambio lo suficiente como para explicarlo mejor. Te vuelves un director — defines el objetivo, el agente genera opciones, tú eliges la dirección. Tú manejas el juicio, la creatividad y el gusto. El agente maneja la ejecución, la iteración y la escala.
+
+En Manizales pasé más tiempo en esta mentalidad porque la había visto funcionar. Los desarrolladores que se adaptaban más rápido no eran los que escribían los mejores prompts (aunque eso ayudaba). Eran los que entendían pensamiento de sistemas, conocían su producto profundamente y podían evaluar críticamente el output de la IA. Esas habilidades importaban más que nunca.
+
+---
+
+## Aprendizajes Prácticos para la Audiencia
+
+Terminé con lo que había aprendido en la práctica desde mayo:
+
+1. **Empieza pequeño, itera rápido** — No intentes reconstruir todo tu producto con IA. Elige un flujo, automatízalo, ve qué se rompe.
+2. **Entiende los límites** — La IA es una herramienta, no magia. Sabe cuándo usarla y cuándo quedarte con enfoques tradicionales.
+3. **Construye loops de retroalimentación** — Las mejores funcionalidades impulsadas por IA mejoran con el tiempo. Diseña sistemas que aprendan del input del usuario.
+4. **Mantén al humano en el loop** — Especialmente para cualquier cosa de cara al cliente o de alto riesgo. La IA asiste, los humanos deciden.
 
 ---
 
@@ -57,4 +81,4 @@ Terminé con dos palabras: **transformación** y **oportunidad**. Las herramient
 
 [Ver slides (Manizales)](https://docs.google.com/presentation/d/1CqWtoNAwq1lN-WSsFJE6Pjxezi9EfSuLTMjoPWyCf90/edit)
 
-A seguir construyendo.
+Sigamos construyendo.

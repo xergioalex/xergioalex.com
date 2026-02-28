@@ -1,6 +1,6 @@
 ---
 title: "AI and the New Era of Programming at Open Tech Hackathon"
-description: "What I shared at the Vibe Coding e IA workshop — practical tools and mental models for hackathon participants to ship faster with Cursor, Codex, and Claude Code."
+description: "From my Vibe Coding e IA workshop at Open Tech Hackathon — when to use Cursor vs Codex vs Claude Code, the conductor mindset, and practical lessons from shipping AI-powered features at DailyBot."
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
 heroLayout: "side-by-side"
@@ -19,15 +19,51 @@ Three things. First: **which tools to try** — Cursor, Codex, Claude Code. Seco
 
 ---
 
-## The Tools: Cursor, Codex, Claude Code
+## The Tools: When to Use Each
 
-I walked through the three code agents that matter most right now. **Cursor** — AI-first IDE, great for rapid prototyping. You describe a feature, it suggests code, you refine. Perfect for hackathon speed. **Codex** (powering GitHub Copilot) — inline suggestions, autocomplete on steroids. You stay in flow, it fills in the boilerplate. **Claude Code** — strong at reasoning and long context. Good for architecture decisions, refactoring, debugging. Each has a sweet spot. I wanted them to know: pick one, learn its shortcuts, and use it from day one of the hackathon.
+I walked through the three code agents that matter most right now — and more importantly, *when* each one shines. This isn't about picking favorites. It's about understanding their strengths and matching them to your workflow.
+
+**Cursor** — AI-first IDE built for rapid prototyping. You describe a feature in plain language, it suggests code across multiple files, you refine. Perfect for greenfield projects or hackathon speed. Where it shines: when you're starting from scratch and need to move fast. Where it struggles: deeply nested legacy codebases where context gets messy.
+
+**Codex** (powering GitHub Copilot) — Inline suggestions, autocomplete on steroids. You stay in flow, it fills in the boilerplate and repetitive patterns. Where it shines: writing tests, implementing straightforward functions, translating logic from one language to another. Where it struggles: complex architectural decisions or multi-step refactors.
+
+**Claude Code** — Strong reasoning and long context. Good for architecture decisions, debugging gnarly issues, and explaining unfamiliar code. Where it shines: when you need to understand a large codebase quickly, refactor safely, or architect a new feature. Where it struggles: highly interactive coding where speed matters more than reasoning depth.
+
+I've used all three in production at DailyBot. My workflow: Cursor for new features, Copilot for day-to-day coding, Claude Code when I'm stuck on architecture or debugging something weird. Understanding when to switch tools saves hours.
 
 ---
 
 ## The Mental Model: Conductor, Not Coder
 
-The slide that stuck: **"New role of developers: orchestrators and supervisors."** I didn't want to scare them. I wanted to reframe. You're not typing less — you're deciding more. You set the direction. You define the problem. The agent writes the first draft, runs the tests, suggests fixes. You review, correct, and move on. In a hackathon, that means more iterations in less time. More ideas tested. More prototypes that actually run.
+The slide that stuck: **"New role of developers: orchestrators and supervisors."** I didn't want to scare them. I wanted to reframe. You're not typing less — you're deciding more. You set the direction. You define the problem. The agent writes the first draft, runs the tests, suggests fixes. You review, correct, and move on.
+
+In a hackathon, that means more iterations in less time. More ideas tested. More prototypes that actually run. You're not competing with the team that codes the fastest anymore. You're competing with the team that makes the best decisions under pressure.
+
+Here's what that looks like in practice:
+
+1. **You define the goal** — "Build a search feature that filters by tags and date range"
+2. **The agent drafts the code** — Components, API routes, database queries
+3. **You review and steer** — "This works but the date filter logic is wrong. Fix it."
+4. **The agent iterates** — Rewrites the filter, runs tests, shows you the diff
+5. **You merge and move on** — The feature is done in 20 minutes instead of 2 hours
+
+That multiplier effect is real. But it only works if you know what "good" looks like. You still need to understand architecture, data flow, edge cases. The agent can't do that part for you.
+
+---
+
+## Practical Tips from Production
+
+I ended with lessons I'd learned shipping AI-powered features at DailyBot — things I wish someone had told me when I started:
+
+**Start with the happy path.** Let the agent generate the straightforward version first. You'll iterate faster than trying to describe every edge case upfront.
+
+**Review before you run.** AI-generated code can look right and behave wrong. Read it. Understand it. If you can't explain what it does, don't ship it.
+
+**Use tests as guardrails.** Write a failing test that describes what you want. Let the agent implement the fix. If the test passes, you're probably good. This works especially well with Copilot and Cursor.
+
+**Keep the context tight.** AI agents work better with focused prompts. "Fix the authentication bug" is vague. "The JWT token expires too early — increase the TTL to 7 days" gets better results.
+
+**Learn to debug AI mistakes.** The agent will write code that compiles but doesn't do what you meant. Debugging that gap — between what you asked for and what you got — is a new skill. Practice it.
 
 ---
 

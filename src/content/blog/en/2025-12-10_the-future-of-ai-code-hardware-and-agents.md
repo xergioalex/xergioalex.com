@@ -1,6 +1,6 @@
 ---
 title: "The future of AI: Code, Hardware and Agents"
-description: "What I shared at Pereira Tech Talks — how the programmer's role has shifted from writing code to orchestrating agents, and why architecture, product, and delegation matter more than ever."
+description: "From my Pereira Tech Talks co-presentation with Sebastián Mora — how programming shifted from writing code to orchestrating agents, what MCPs unlock, and why I brought a robot to a software meetup."
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
 heroLayout: "side-by-side"
@@ -37,9 +37,11 @@ I've seen this at DailyBot. The teams that move fastest are the ones who get thi
 
 ## Agent Tools in This New Era
 
-I wanted to give them a map of the tools defining this moment. **Models** — the foundation, getting cheaper and more capable. **Agents** — autonomous or semi-autonomous systems that can plan, execute, and iterate. **MCPs** (Model Context Protocol) — a way for models to connect to external tools and data. **Development environments** — IDEs and platforms that are being rebuilt around AI-assisted workflows.
+I wanted to give them a map of the tools defining this moment. **Models** — the foundation, getting cheaper and more capable. **Agents** — autonomous or semi-autonomous systems that can plan, execute, and iterate. **MCPs** (Model Context Protocol) — a standardized way for models to connect to external tools and data sources. Think of it like a universal adapter: instead of every AI tool building custom integrations for Slack, GitHub, databases, and APIs, MCP provides a common protocol. You write one integration, and any MCP-compatible model can use it. That's the unlock — composable, reusable tool access for AI agents. **Development environments** — IDEs and platforms that are being rebuilt around AI-assisted workflows.
 
 The ecosystem is moving fast. What matters isn't memorizing every tool — it's understanding the patterns: how agents reason, how they use tools, how they can be composed. That's the skill that transfers.
+
+An example of agent delegation from DailyBot: we built a workflow where an agent analyzes a team's standup responses, identifies blockers, and routes them to the right person with context. The agent doesn't just summarize — it *reasons* about priority, *delegates* follow-up actions, and *monitors* completion. We didn't write explicit rules for every case. We defined the goal, gave the agent the tools (Slack API, task tracker, user directory), and it figured out the rest. That's the shift: from writing code that handles every path to designing systems that can adapt.
 
 ---
 

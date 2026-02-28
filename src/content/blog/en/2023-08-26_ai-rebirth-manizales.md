@@ -1,41 +1,65 @@
 ---
 title: "How AI is Revolutionizing Modern Application Development"
-description: "How AI is revolutionizing modern application development — the AI awakening, ChatGPT, GPT-4, and why we're living the beginning of a revolution."
+description: "What changed between May and August 2023 — my Manizales Tech Talks experience sharing how AI was transforming app development, three months deeper into the revolution."
 pubDate: "2023-08-26"
 heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-**AI Rebirth** is about the awakening of artificial intelligence — and why we're at the start of something real. I didn't want to give a generic overview. I wanted to share what I was actually seeing: a revolution that had just woken up. Something I was living every day at DailyBot.
+Three months after Pereira, I was back on stage — this time in Manizales. Same core story, but everything had evolved. Between May and August 2023, the AI landscape shifted fast enough that I found myself rewriting slides the night before. Not because the foundation changed, but because we'd crossed new milestones. More developers were shipping with GPT-4. More teams were experimenting. More real products were being built on AI that didn't exist a year ago.
+
+This wasn't a repeat. It was a checkpoint — seeing how much the conversation had matured in just a few months.
 
 ---
 
-## Why I Chose This Topic
+## Why Manizales Felt Different
 
-I had three goals in mind: understand the **state of the art** of AI, explore its **possibilities**, and answer a question that kept coming up — *why should we be learning AI right now?* At DailyBot we were already building with these tools. I could feel the shift. I wanted the audience to see what I saw: we're not in a hype bubble. We're at the start of something real, and I wanted them to feel that too.
+The Pereira audience in May had been curious — some skeptical, some excited, all exploring. By August in Manizales, the questions changed. People weren't asking *if* they should care about AI — they were asking *what* to build with it and *how* to actually start. That shift told me something had clicked in the ecosystem. This wasn't hype anymore. It was practical interest from engineers who wanted to ship.
 
----
-
-## From AI Winter to the Generative Boom
-
-I walked them through the history. **Deep learning**, ImageNet, computer vision, style transfer. The **AI winter** — that long stretch where progress felt slow. Then **2022**, and everything changed. **Generative AI** exploded.
-
-GPT-2, GPT-3, DALL·E, GitHub Copilot, DALL·E 2, Stable Diffusion, BLOOM, Whisper. Each release felt like a step up. **ChatGPT** in November 2022 — 100 million users in months. It could write code, answer questions, generate SQL from natural language. Startups built on top of it overnight. I was watching it happen from the inside.
+Manizales also brought a different energy — a smaller, more intimate setting. Conversations after the talk went deeper. I had more time to talk through use cases, troubleshoot blockers, and share what we'd learned at DailyBot in the months since GPT-4's launch.
 
 ---
 
-## GPT-4 and the Multimodal Shift
+## What Changed in 3 Months
 
-**GPT-4** had been out for a few months. Multimodal, cheaper, 32K tokens. Microsoft was integrating Copilot everywhere. Google had announced PaLM 2, Bard, Duet AI. The future of work was being rewritten in real time.
+Between May and August, the tooling matured. **GPT-4** had gone from a shiny new release to something people were building production features on. I saw it in our own work at DailyBot — what started as experiments in April were now live integrations our users relied on.
 
-I showed what was coming: **synthetic audio** — including the demo with my own cloned voice — **text-to-video** tools, **AutoGPT**. The message I wanted to leave: this is not the end. It's the beginning. And we get to decide how we show up.
+**LangChain** and **vector databases** had become part of the conversation. In May, I'd mentioned retrieval-augmented generation (RAG) as a concept. By August, I was showing practical examples — how to connect a language model to your own data, how to build search and Q&A systems that actually worked. The abstractions were getting better, and the barrier to entry was dropping fast.
+
+I also noticed more clarity around where AI *should* and *shouldn't* be used. In May, people were throwing AI at everything to see what stuck. By August, the patterns were clearer: AI excels at summarization, transformation, ideation, and conversational interfaces. It struggles with precision, consistency, and anything requiring deterministic correctness. That nuance mattered.
 
 ---
 
-## What This Means for Us
+## From GPT-4 to Real Applications
 
-I ended with two words: **transformation** and **opportunity**. The tools are here. The APIs are open. The question isn't whether AI will change how we build — it already is. The question is whether we'll be part of it. I hope some of them felt the same thing I did.
+In Pereira I'd shown what GPT-4 could do — multimodal, long context, better reasoning. In Manizales I shifted the focus to *what people were actually building* with it:
+
+- **Customer support automations** that could understand context and respond naturally without rigid scripts
+- **Documentation search** powered by embeddings and RAG — no more hunting through wikis
+- **Content generation workflows** where AI handled the first draft and humans refined
+- **Developer tools** like smarter autocomplete, code explanations, and debugging assistants
+
+This wasn't future talk. These were tools I'd used, products my peers were shipping, and workflows we were refining in real time. That grounded the conversation in a way that felt more honest.
+
+---
+
+## The Conductor Metaphor Takes Shape
+
+In May I'd introduced the idea: you're not just coding anymore, you're orchestrating. By August I'd lived that shift long enough to explain it better. You become a conductor — you define the goal, the agent generates options, you choose the direction. You handle judgment, creativity, and taste. The agent handles execution, iteration, and scale.
+
+At Manizales I spent more time on this mindset because I'd seen it work. The developers who adapted fastest weren't the ones writing the best prompts (though that helped). They were the ones who understood systems thinking, knew their product deeply, and could evaluate AI output critically. Those skills mattered more than ever.
+
+---
+
+## Practical Takeaways for the Audience
+
+I ended with what I'd learned in practice since May:
+
+1. **Start small, iterate fast** — Don't try to rebuild your whole product with AI. Pick one workflow, automate it, see what breaks.
+2. **Understand the limits** — AI is a tool, not magic. Know when to use it and when to stick with traditional approaches.
+3. **Build feedback loops** — The best AI-powered features improve over time. Design systems that learn from user input.
+4. **Keep the human in the loop** — Especially for anything customer-facing or high-stakes. AI assists, humans decide.
 
 ---
 
