@@ -1,13 +1,13 @@
 ---
 title: 'Introducción a GoLang'
-description: 'Lo que compartí en Pereira Tech Talks sobre Go — sintaxis, concurrencia, librería estándar, goroutines y casos de uso para aplicaciones modernas.'
+description: 'Por qué Go me convenció — mi sesión en Pereira Tech Talks sobre la simplicidad de Go, su concurrencia nativa y cómo resuelve problemas reales con menos ceremonias.'
 pubDate: '2018-07-05'
 heroImage: '/images/blog/posts/introduction-to-golang/hero.png'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-Go — una introducción al lenguaje explicando qué es, por qué usarlo y casos de uso para desarrollar aplicaciones modernas.
+Go es uno de esos lenguajes que no se interpone en tu camino. Cuando preparé esta charla para Pereira Tech Talks, lo que quería transmitir no era solo la sintaxis o las características — era por qué Go se siente diferente. Es un lenguaje que confía en que podés escribir código claro sin abrumarte con opciones.
 
 ---
 
@@ -25,7 +25,7 @@ func main() {
 }
 ```
 
-Go nació en 2007 de la mano de Robert Griesemer (JVM, V8), Rob Pike (UNIX, UTF-8) y Ken Thompson (B, C, UNIX). Google lo lanzó como open source en 2009; la versión 1.0 llegó en 2012. El equipo no buscaba reemplazar Java o C++, sino crear un lenguaje que les diera las ventajas que necesitaban para sistemas modernos.
+Go nació en 2007 de la mano de Robert Griesemer (JVM, V8), Rob Pike (UNIX, UTF-8) y Ken Thompson (B, C, UNIX). Google lo lanzó como open source en 2009; la versión 1.0 llegó en 2012. El equipo no buscaba reemplazar Java o C++, sino crear un lenguaje que les diera las ventajas que necesitaban para sistemas modernos: compilación rápida, concurrencia nativa y despliegue en un solo binario.
 
 ---
 
@@ -81,5 +81,9 @@ Hice demos en vivo desde lo más básico hasta ejemplos prácticos:
 - [Go oficial](https://golang.org/)
 - [Rob Pike — Concurrency Is Not Parallelism](https://blog.golang.org/concurrency-is-not-parallelism)
 - [Platzi — Go Básico](https://platzi.com/cursos/go-basico/)
+
+---
+
+Go me enseñó que simplicidad y poder no son opuestos. El lenguaje demostró que podés tener alto rendimiento y alta concurrencia sin sacrificar legibilidad. Ese equilibrio es lo que me hace volver a él una y otra vez.
 
 A seguir construyendo.

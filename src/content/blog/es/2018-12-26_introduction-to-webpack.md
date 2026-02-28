@@ -1,23 +1,23 @@
 ---
 title: "Introducción a Webpack"
-description: "Lo que compartí en una charla sobre Webpack — empaquetador de módulos, AMD vs CommonJS, entry points, loaders, plugins y developer experience."
+description: "Cómo Webpack transformó el desarrollo front-end — mi charla desglosando entry points, loaders, plugins y por qué la developer experience importa más que la configuración."
 pubDate: "2018-12-26"
 heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-Webpack — el **empaquetador de módulos para aplicaciones modernas de JavaScript**. La idea: explicar cómo Webpack toma módulos con dependencias (`.js`, `.css`, `.coffee`, `.less`, `.jade`, imágenes) y los transforma en assets estáticos optimizados. Divide y vencerás.
+Webpack cambió cómo pensamos sobre los builds de front-end. Para esta charla, quería desmitificar la herramienta que muchos desarrolladores encuentran abrumadora al principio. Webpack no es solo un empaquetador de módulos — es un cambio de mentalidad. Toma módulos con dependencias (`.js`, `.css`, `.coffee`, `.less`, `.jade`, imágenes) y los transforma en assets estáticos optimizados. Divide y vencerás.
 
 ---
 
 ## Formas de utilizar módulos en JavaScript
 
-**AMD** (Asynchronous Module Definition) — Se usa con RequireJS. Carga módulos de forma asíncrona.
+**AMD** (Asynchronous Module Definition) — Se usa con RequireJS. Carga módulos de forma asíncrona. Genial para navegadores, pero verboso.
 
-**CommonJS** — Sistema de módulos de Node.js. Permite hacer una sola petición con todas las librerías que vas a necesitar.
+**CommonJS** — Sistema de módulos de Node.js. Permite hacer una sola petición con todas las librerías que vas a necesitar. Sintaxis familiar, pero síncrono.
 
-Webpack trae lo mejor de ambos mundos en un solo lugar. **AMD + CommonJS**. Y sobre todo: **Webpack === Developer experience**.
+Webpack trae lo mejor de ambos mundos en un solo lugar. **AMD + CommonJS**. Y sobre todo: **Webpack === Developer experience**. Esa ecuación importa más de lo que la gente se da cuenta.
 
 ---
 
@@ -72,6 +72,12 @@ Compartí ejemplos de proyectos reales:
 
 ---
 
+---
+
 [Ver slides](https://slides.com/xergioalex/introduction-to-webpack)
+
+---
+
+Webpack me enseñó que el tooling no se trata solo de automatización — se trata de habilitar mejores flujos de trabajo. Sí, la configuración puede volverse compleja, pero el retorno en developer experience y optimización vale la pena. Entender tu herramienta de build te da control sobre cómo tu código llega a producción.
 
 A seguir construyendo.

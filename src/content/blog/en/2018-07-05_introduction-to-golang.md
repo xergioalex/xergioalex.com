@@ -1,13 +1,13 @@
 ---
 title: "Introduction to GoLang"
-description: "What I shared at Pereira Tech Talks on Go — syntax, concurrency, standard library, goroutines, and use cases for modern applications."
+description: "Why Go won me over — my Pereira Tech Talks session on Go's simplicity, built-in concurrency, and how it solves real problems with less ceremony."
 pubDate: "2018-07-05"
 heroImage: "/images/blog/posts/introduction-to-golang/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-Go — an introduction to the language explaining what it is, why use it, and use cases for building modern applications.
+Go is one of those languages that gets out of your way. When I prepared this talk for Pereira Tech Talks, what I wanted to convey wasn't just the syntax or features — it was why Go feels different. It's a language that trusts you to write clear code without overwhelming you with options.
 
 ---
 
@@ -25,7 +25,7 @@ func main() {
 }
 ```
 
-Go was born in 2007 from Robert Griesemer (JVM, V8), Rob Pike (UNIX, UTF-8), and Ken Thompson (B, C, UNIX). Google released it as open source in 2009; version 1.0 arrived in 2012. The team wasn't trying to replace Java or C++ — they wanted a language that gave them the advantages they needed for modern systems.
+Go was born in 2007 from Robert Griesemer (JVM, V8), Rob Pike (UNIX, UTF-8), and Ken Thompson (B, C, UNIX). Google released it as open source in 2009; version 1.0 arrived in 2012. The team wasn't trying to replace Java or C++ — they wanted a language that gave them the advantages they needed for modern systems: fast compilation, built-in concurrency, and a single binary deployment.
 
 ---
 
@@ -81,5 +81,9 @@ I ran live demos from the basics to practical examples:
 - [Go official](https://golang.org/)
 - [Rob Pike — Concurrency Is Not Parallelism](https://blog.golang.org/concurrency-is-not-parallelism)
 - [Platzi — Go Básico](https://platzi.com/cursos/go-basico/)
+
+---
+
+Go taught me that simplicity and power aren't opposites. The language proved you can have high performance and high concurrency without sacrificing readability. That balance is what keeps me coming back to it.
 
 Let's keep building.

@@ -1,13 +1,13 @@
 ---
 title: 'WebVR con A-Frame'
-description: 'Introducción a la realidad virtual y WebVR con A-Frame — framework de Mozilla para crear experiencias 3D y VR con HTML, en Pereira Tech Talks.'
+description: 'Creando experiencias VR con HTML — mi charla en Pereira Tech Talks sobre A-Frame, el framework de Mozilla que lleva la realidad virtual a la web sin configuración.'
 pubDate: '2018-02-16'
 heroImage: '/images/blog/posts/webvr-aframe/event-1.webp'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-Realidad virtual en la web — una introducción a WebVR con A-Frame, un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción.
+Realidad virtual en la web sin herramientas especializadas ni configuración compleja — esa era la promesa que quería compartir en Pereira Tech Talks. A-Frame es un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción. Si sabés HTML, podés hacer VR.
 
 ---
 
@@ -58,5 +58,9 @@ También mostré proyectos de inspiración: A-Painter de Mozilla, A-Frame City B
 - [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.com/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — resumen del evento
 
 ![Memorias del evento](/images/blog/posts/webvr-aframe/event-3.webp)
+
+---
+
+La web sigue siendo la plataforma más accesible para experimentar con nuevas tecnologías. WebVR abrió puertas que todavía vale la pena explorar — incluso mientras el estándar evoluciona hacia WebXR, la idea central permanece: hacer las experiencias inmersivas universalmente accesibles.
 
 A seguir construyendo.

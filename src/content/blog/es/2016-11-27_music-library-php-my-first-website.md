@@ -1,5 +1,5 @@
 ---
-title: "Music Library PHP: Mi primera página web"
+title: "Librería Musical en PHP: Mi primera página web"
 description: "La historia detrás de mi primer proyecto web — el trabajo final del curso de bases de datos que se convirtió en mi introducción a PHP, SQLite y el desarrollo web."
 pubDate: "2016-11-27"
 heroImage: "/images/blog/posts/music-library-php/home.gif"

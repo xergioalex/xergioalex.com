@@ -1,23 +1,23 @@
 ---
 title: "Introduction to Webpack"
-description: "What I shared in a talk on Webpack — module bundler, AMD vs CommonJS, entry points, loaders, plugins, and developer experience."
+description: "How Webpack transformed front-end development — my talk breaking down entry points, loaders, plugins, and why developer experience matters more than configuration."
 pubDate: "2018-12-26"
 heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-Webpack — the **module bundler for modern JavaScript applications**. The goal: explain how Webpack takes modules with dependencies (`.js`, `.css`, `.coffee`, `.less`, `.jade`, images) and turns them into optimized static assets. Divide and conquer.
+Webpack changed how we think about front-end builds. For this talk, I wanted to demystify the tool that many developers find overwhelming at first. Webpack isn't just a module bundler — it's a mindset shift. It takes modules with dependencies (`.js`, `.css`, `.coffee`, `.less`, `.jade`, images) and turns them into optimized static assets. Divide and conquer.
 
 ---
 
 ## Ways to Use Modules in JavaScript
 
-**AMD** (Asynchronous Module Definition) — Used with RequireJS. Loads modules asynchronously.
+**AMD** (Asynchronous Module Definition) — Used with RequireJS. Loads modules asynchronously. Great for browsers, but verbose.
 
-**CommonJS** — Node.js module system. Lets you make a single request with all the libraries you need.
+**CommonJS** — Node.js module system. Lets you make a single request with all the libraries you need. Familiar syntax, but synchronous.
 
-Webpack brings the best of both worlds in one place. **AMD + CommonJS**. And above all: **Webpack === Developer experience**.
+Webpack brings the best of both worlds in one place. **AMD + CommonJS**. And above all: **Webpack === Developer experience**. That equation matters more than people realize.
 
 ---
 
@@ -72,6 +72,12 @@ I shared examples from real projects:
 
 ---
 
+---
+
 [View slides](https://slides.com/xergioalex/introduction-to-webpack)
+
+---
+
+Webpack taught me that tooling is about more than automation — it's about enabling better workflows. Yes, the config can get complex, but the payoff in developer experience and optimization is worth it. Understanding your build tool gives you control over how your code ships.
 
 Let's keep building.
