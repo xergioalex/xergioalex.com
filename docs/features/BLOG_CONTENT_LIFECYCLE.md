@@ -34,7 +34,7 @@ function isDemoPost(post: CollectionEntry<'blog'>): boolean {
 **Behavior:**
 - **Production:** Not built at all (filtered from all routes and APIs)
 - **Dev (listings/search/tags):** Hidden from all listings, tag pages, search results, and RSS
-- **Dev (direct URL):** Accessible by direct URL (e.g., `http://localhost:4321/blog/demo-hero-banner/`)
+- **Dev (direct URL):** Accessible by direct URL (e.g., `http://localhost:4444/blog/demo-hero-banner/`)
 - **Badge:** No badge system exists — demo posts are simply accessible but unlisted in dev
 
 **Why direct URL access in dev?** This allows developers and AI agents to view demo posts in rendered form to understand layout and formatting options while keeping them out of normal browsing flows.
@@ -112,10 +112,10 @@ The current demo posts cover:
 ### Accessing Demo Posts in Dev
 
 Visit the direct URL:
-- English: `http://localhost:4321/blog/{slug}/`
-- Spanish: `http://localhost:4321/es/blog/{slug}/`
+- English: `http://localhost:4444/blog/{slug}/`
+- Spanish: `http://localhost:4444/es/blog/{slug}/`
 
-Example: `http://localhost:4321/blog/demo-hero-banner/`
+Example: `http://localhost:4444/blog/demo-hero-banner/`
 
 The post will render normally but will not appear in any listings, search results, or tag pages.
 

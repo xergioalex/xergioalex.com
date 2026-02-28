@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['talks', 'tech']
 ---
 
-Di una charla sobre **estilos en Vue** durante el **Vue Vixens Day Pereira**. Es una charla introductoria a Vue y al manejo de estilos, desarrollada especialmente para el evento. La grabación está disponible en YouTube.
+**Estilos en Vue** — una charla introductoria a Vue y al manejo de estilos. La grabación está disponible en YouTube.
 
 [Ver charla en YouTube](https://www.youtube.com/watch?v=HAWL6wzzyxQ)
 

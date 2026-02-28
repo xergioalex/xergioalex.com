@@ -29,6 +29,7 @@ export default defineConfig({
   ],
   server: {
     host: true,
+    port: 4444,
   },
   vite: {
     plugins: [tailwindcss()],
@@ -45,6 +46,7 @@ export default defineConfig({
       hmr: {
         overlay: true,
       },
+      port: 4444,
     },
   },
 });

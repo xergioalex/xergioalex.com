@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-Di una charla sobre Webpack — el **empaquetador de módulos para aplicaciones modernas de JavaScript**. La idea era explicar cómo Webpack toma módulos con dependencias (`.js`, `.css`, `.coffee`, `.less`, `.jade`, imágenes) y los transforma en assets estáticos optimizados. Divide y vencerás.
+Webpack — el **empaquetador de módulos para aplicaciones modernas de JavaScript**. La idea: explicar cómo Webpack toma módulos con dependencias (`.js`, `.css`, `.coffee`, `.less`, `.jade`, imágenes) y los transforma en assets estáticos optimizados. Divide y vencerás.
 
 ---
 

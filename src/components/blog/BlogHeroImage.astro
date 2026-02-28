@@ -1,8 +1,11 @@
 ---
 /**
  * Blog hero image with WebP when available.
- * Uses <picture> for raster images (png/jpg) to serve WebP.
+ * Uses <picture> for raster images (png/jpg) to serve WebP only when the file exists.
  */
+import { existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+
 interface Props {
   src: string;
   alt: string;
@@ -22,9 +25,13 @@ const {
 } = Astro.props;
 const isRaster = /\.(png|jpe?g)$/i.test(src);
 const webpSrc = isRaster ? src.replace(/\.(png|jpe?g)$/i, '.webp') : null;
+const publicDir = resolve(process.cwd(), 'public');
+const webpPath = webpSrc ? join(publicDir, webpSrc.replace(/^\//, '')) : null;
+const webpExists = webpPath ? existsSync(webpPath) : false;
+const useWebp = isRaster && webpSrc && webpExists;
 ---
 
-{isRaster && webpSrc ? (
+{useWebp ? (
   <picture>
     <source srcset={webpSrc} type="image/webp" />
     <img

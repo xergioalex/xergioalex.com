@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on **CSS Grid Layout** and some tricks and insights from the State of CSS Survey (2020). The goal was to compare Flexbox and Grid, show browser compatibility, and move on to practical demos.
+**CSS Grid Layout** and some tricks and insights from the State of CSS Survey (2020). The goal: compare Flexbox and Grid, show browser compatibility, and move on to practical demos.
 
 ---
 

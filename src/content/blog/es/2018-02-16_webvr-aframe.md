@@ -7,7 +7,7 @@ heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-Di una charla en [Pereira Tech Talks](https://www.pereiratechtalks.com/) sobre realidad virtual en la web. Quería hacer una introducción al tema y mostrar WebVR con A-Frame — un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción.
+Realidad virtual en la web — una introducción a WebVR con A-Frame, un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción.
 
 ---
 

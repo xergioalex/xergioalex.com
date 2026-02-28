@@ -485,6 +485,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     communityTitle: 'Pereira Tech Talks',
     communityText:
       "As cofounder and organizer of Pereira Tech Talks, I've helped build one of the most active tech communities in the region. The mission is simple: create spaces where technology professionals can share knowledge, learn from each other, and grow together.<br /><br />From small meetups to larger conferences, the community has become a platform for developers, designers, and entrepreneurs to connect, collaborate, and push the boundaries of what's possible.",
+    communityImageAlt1: 'Pereira Tech Talks community in a full auditorium at UTP',
+    communityImageAlt2: 'Pereira Tech Talks community gathering with sponsors',
     topicsTitle: 'Topics I Cover',
     topics: [
       {

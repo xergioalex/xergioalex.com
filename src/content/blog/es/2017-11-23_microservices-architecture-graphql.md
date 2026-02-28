@@ -7,11 +7,11 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-Di una charla sobre microservicios y GraphQL en un meetup de [Pereira Tech Talks](https://www.pereiratechtalks.com/). Es un tema que me tiene entusiasmado — he estado construyendo sistemas distribuidos y REST me está quedando corto para lo que necesito en el lado móvil. GraphQL está ganando tracción y quise compartir lo que he aprendido.
+Microservicios y GraphQL — un tema que me tiene entusiasmado. He estado construyendo sistemas distribuidos y REST me está quedando corto para lo que necesito en el lado móvil. GraphQL está ganando tracción y quise compartir lo que he aprendido.
 
 Aquí están los conceptos que cubrí. Si prefieres ver los slides directamente, [aquí están](https://slides.com/xergioalex/microservices-architecture-and-apis-with-graphql).
 
-![Audiencia durante la charla en Pereira Tech Talks](/images/blog/posts/microservices-architecture-graphql/audience.webp)
+![Audience during the talk](/images/blog/posts/microservices-architecture-graphql/audience.webp)
 
 ---
 

@@ -359,7 +359,7 @@ The architecture is designed so adding a new language requires zero changes to c
 
 ```bash
 # Development
-npm run dev                # Start dev server (http://localhost:4321)
+npm run dev                # Start dev server (http://localhost:4444)
 npm run build              # Production build with type check
 npm run build              # Production build (outputs to dist/; prebuild runs images:webp)
 npm run astro:preview      # Preview production build
@@ -555,7 +555,7 @@ Page components in `src/components/pages/` receive `lang` and handle all transla
 3. **Auto-Generated Sitemap** (`/internal/sitemap`) — Build-time discovery of all site pages
 
 **Key architecture rules:**
-- **Dev-only:** Visible at `http://localhost:4321/internal/` during `npm run dev`. **Never deployed to production.**
+- **Dev-only:** Visible at `http://localhost:4444/internal/` during `npm run dev`. **Never deployed to production.**
 - **Three-layer production exclusion:**
   1. Post-build deletion via `src/integrations/exclude-internal.ts` (`astro:build:done` hook)
   2. Sitemap XML filter in `astro.config.mjs` (excludes `/internal/` URLs)

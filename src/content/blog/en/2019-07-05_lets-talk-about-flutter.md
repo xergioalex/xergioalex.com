@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on Flutter at Pereira Tech Talks. Flutter is a **free, open-source SDK** to create native Android and iOS applications from the same codebase. The buzz was real — it had just hit 1.0 in December 2018.
+Flutter — a **free, open-source SDK** to create native Android and iOS applications from the same codebase. The buzz was real — it had just hit 1.0 in December 2018.
 
 ---
 

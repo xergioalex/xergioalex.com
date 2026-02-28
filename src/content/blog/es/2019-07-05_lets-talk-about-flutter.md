@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-Di una charla sobre Flutter en Pereira Tech Talks. Flutter es un **SDK gratuito y open source** para crear aplicaciones nativas Android e iOS desde la misma base de código. El buzz era real — acababa de llegar a 1.0 en diciembre de 2018.
+Flutter — un **SDK gratuito y open source** para crear aplicaciones nativas Android e iOS desde la misma base de código. El buzz era real — acababa de llegar a 1.0 en diciembre de 2018.
 
 ---
 

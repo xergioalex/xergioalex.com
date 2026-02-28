@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk analyzing the [Bitcoin paper](https://bitcoin.org/en/bitcoin-paper) written by Satoshi Nakamoto. The presentation was part of Blockchain Technologies activities at UTP, with Rocka's Research Squad and the Sirius Research Group. I wanted to walk through the history of money, the centralized trust model, and how Satoshi's paper proposes an alternative.
+The [Bitcoin paper](https://bitcoin.org/en/bitcoin-paper) by Satoshi Nakamoto — a walk through the history of money, the centralized trust model, and how Satoshi's paper proposes an alternative.
 
 ---
 

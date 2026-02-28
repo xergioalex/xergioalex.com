@@ -7,7 +7,7 @@ heroLayout: 'banner'
 tags: ['talks', 'tech', 'dailybot']
 ---
 
-Di una charla en una **clase de emprendimiento en la Universidad Tecnológica de Pereira (UTP)** sobre cómo entramos a Y Combinator. Quería contar toda mi historia como emprendedor: la evolución, los productos que creamos en [Rocka.co](https://rocka.co), la experimentación constante, los fracasos — y cómo DailyBot nació en una Hackathon interna y finalmente logró el éxito.
+Cómo entramos a Y Combinator — quería contar toda mi historia como emprendedor: la evolución, los productos que creamos en [Rocka.co](https://rocka.co), la experimentación constante, los fracasos — y cómo DailyBot nació en una Hackathon interna y finalmente logró el éxito.
 
 ---
 

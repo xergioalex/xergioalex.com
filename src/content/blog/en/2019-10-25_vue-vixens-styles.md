@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on **styles in Vue** during **Vue Vixens Day Pereira**. It's an introductory talk on Vue and styling, developed especially for the event. The recording is available on YouTube.
+**Styles in Vue** — an introductory talk on Vue and styling. The recording is available on YouTube.
 
 [Watch talk on YouTube](https://www.youtube.com/watch?v=HAWL6wzzyxQ)
 

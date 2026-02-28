@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-I gave this talk at the Universidad de Caldas (Manizales), outside Pereira. The goal was to introduce blockchain from the ground up: its origins in relation to the history of money and the economy, its potential applications as a major technological revolution, and how to build applications that consume blockchain-based services from JavaScript.
+Blockchain from the ground up: its origins in relation to the history of money and the economy, its potential applications as a major technological revolution, and how to build applications that consume blockchain-based services from JavaScript.
 
 ![Blockchain talk at Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-1.webp)
 

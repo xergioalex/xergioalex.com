@@ -56,7 +56,63 @@ const breadcrumbSchema = {
     image="/images/techtalks.png"
   />
 
-  <PageSection title={t.techTalksPage.communityTitle} description={t.techTalksPage.communityText} />
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="main-container">
+      <div class="grid grid-cols-1 md:grid-cols-[7fr_3fr] gap-8 md:gap-12 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            {t.techTalksPage.communityTitle}
+          </h2>
+          <div
+            class="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
+            set:html={t.techTalksPage.communityText}
+          />
+        </div>
+        <div class="flex justify-center md:justify-end">
+          <a
+            href="https://www.pereiratechtalks.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+            aria-label="Pereira Tech Talks"
+          >
+            <img
+              src="/images/pereira-tech-talks/logo-color.png"
+              alt="Pereira Tech Talks"
+              width={160}
+              height={200}
+              class="h-40 w-auto dark:hidden object-contain"
+            />
+            <img
+              src="/images/pereira-tech-talks/logo-white.png"
+              alt="Pereira Tech Talks"
+              width={160}
+              height={200}
+              class="h-40 w-auto hidden dark:block object-contain"
+            />
+          </a>
+        </div>
+      </div>
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <img
+          src="/images/pereira-tech-talks/auditorium-1.png"
+          alt={t.techTalksPage.communityImageAlt1}
+          width={800}
+          height={533}
+          class="w-full rounded-xl object-cover aspect-[3/2] shadow-lg"
+          loading="lazy"
+        />
+        <img
+          src="/images/pereira-tech-talks/auditorium-2.png"
+          alt={t.techTalksPage.communityImageAlt2}
+          width={800}
+          height={533}
+          class="w-full rounded-xl object-cover aspect-[3/2] shadow-lg"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
 
   <PageSection title={t.techTalksPage.topicsTitle} background="gray">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -68,15 +124,6 @@ const breadcrumbSchema = {
 
   <PageSection title={t.techTalksPage.philosophyTitle} description={t.techTalksPage.philosophyText} />
 
-  <section id="timeline" class="py-12 md:py-16">
-    <div class="main-container">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
-        {t.techTalksPage.timelineTitle}
-      </h2>
-      <TechTalksTimeline client:visible posts={posts} lang={lang} />
-    </div>
-  </section>
-
   <section class="py-16 md:py-20 bg-gray-50 dark:bg-gray-800/50 transition-colors duration-300">
     <div class="main-container text-center">
       <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">{t.techTalksPage.ctaTitle}</h3>
@@ -87,5 +134,14 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <ScrollToTimeline client:visible lang={lang} targetLabel={t.techTalksPage.timelineTitle} />
+  <section id="timeline" class="py-12 md:py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="main-container">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+        {t.techTalksPage.timelineTitle}
+      </h2>
+      <TechTalksTimeline client:visible posts={posts} lang={lang} />
+    </div>
+  </section>
+
+  <ScrollToTimeline client:load lang={lang} targetLabel={t.techTalksPage.timelineTitle} />
 </MainLayout>

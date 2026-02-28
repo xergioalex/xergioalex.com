@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk at **Manizales Tech Talks** on serverless, IoT, and conversational interfaces. It's similar to my earlier serverless and IoT talk, but with a different focus: **voice as the new interface**. Serverless is a cloud computing model where you only pay for compute time consumed — and it has a big role in IoT and voice interface development.
+Serverless, IoT, and conversational interfaces — similar to an earlier talk, but with a different focus: **voice as the new interface**. Serverless is a cloud computing model where you only pay for compute time consumed — and it has a big role in IoT and voice interface development.
 
 ---
 

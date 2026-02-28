@@ -276,6 +276,8 @@ export interface SiteTranslations {
     heroDescription: string;
     communityTitle: string;
     communityText: string;
+    communityImageAlt1: string;
+    communityImageAlt2: string;
     topicsTitle: string;
     topics: HighlightItem[];
     philosophyTitle: string;

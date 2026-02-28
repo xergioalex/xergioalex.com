@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on Webpack — the **module bundler for modern JavaScript applications**. The goal was to explain how Webpack takes modules with dependencies (`.js`, `.css`, `.coffee`, `.less`, `.jade`, images) and turns them into optimized static assets. Divide and conquer.
+Webpack — the **module bundler for modern JavaScript applications**. The goal: explain how Webpack takes modules with dependencies (`.js`, `.css`, `.coffee`, `.less`, `.jade`, images) and turns them into optimized static assets. Divide and conquer.
 
 ---
 

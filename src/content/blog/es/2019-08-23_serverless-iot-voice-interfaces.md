@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['talks', 'tech']
 ---
 
-Di una charla en **Manizales Tech Talks** sobre serverless, IoT e interfaces conversacionales. Es similar a la que di antes sobre serverless e IoT, pero con otro enfoque: **la voz como nueva interfaz**. Serverless es un modelo de computación en la nube donde solo pagas por el tiempo de cómputo consumido — y tiene un gran campo de acción en IoT y en el desarrollo de interfaces de voz.
+Serverless, IoT e interfaces conversacionales — similar a una charla anterior, pero con otro enfoque: **la voz como nueva interfaz**. Serverless es un modelo de computación en la nube donde solo pagas por el tiempo de cómputo consumido — y tiene un gran campo de acción en IoT y en el desarrollo de interfaces de voz.
 
 ---
 

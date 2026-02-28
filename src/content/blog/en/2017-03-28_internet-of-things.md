@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-In the second Pereira Tech Talks meetup of 2017, I gave a talk on the Internet of Things (IoT). The event was held at the Universidad Tecnológica de Pereira, alongside Alejandro Rendon's talk on managing a small Node.js cluster for distributed computing. You can read more about it on the [Pereira Tech Talks blog](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/).
+The Internet of Things (IoT) — alongside Alejandro Rendon's talk on managing a small Node.js cluster for distributed computing. You can read more about it on the [Pereira Tech Talks blog](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/).
 
 ---
 

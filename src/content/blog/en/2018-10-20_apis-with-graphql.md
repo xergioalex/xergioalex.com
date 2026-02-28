@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on GraphQL at [Pereira Tech Talks](https://www.pereiratechtalks.com/). GraphQL was created by Facebook in 2012, driven by the mobile team. It's a **query language** designed for communication between clients and servers — a complete alternative to REST. (And no, it's not like SQL.)
+GraphQL — a **query language** designed for communication between clients and servers, created by Facebook in 2012 and driven by the mobile team. A complete alternative to REST. (And no, it's not like SQL.)
 
 What I liked most from the start: the client defines what it receives. No more over-fetching or multiple requests per view. GraphQL is platform-agnostic — it's implemented in over 20 languages.
 

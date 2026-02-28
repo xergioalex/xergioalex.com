@@ -20,7 +20,7 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 npm run dev
 ```
 
-- Starts Astro development server at `http://localhost:4321`
+- Starts Astro development server at `http://localhost:4444`
 - Hot Module Replacement (HMR) enabled
 - Accessible on local network (host: true)
 
@@ -210,7 +210,7 @@ Astro uses `.env` files for environment variables:
 
 ```bash
 # .env (local development)
-PUBLIC_SITE_URL=http://localhost:4321
+PUBLIC_SITE_URL=http://localhost:4444
 
 # .env.production (production)
 PUBLIC_SITE_URL=https://xergioalex.com
@@ -251,12 +251,16 @@ npm run build
 ### Port Already in Use
 
 ```bash
-# Kill process on port 4321
-lsof -ti:4321 | xargs kill -9
+# Kill process on port 4444
+lsof -ti:4444 | xargs kill -9
 
 # Or use different port
 npm run dev -- --port 3000
 ```
+
+### Devcontainer (Cursor / VS Code)
+
+When using the devcontainer, the host port is mapped to **4444** (not 4444) to avoid conflict with macOS AirPlay Receiver. Access the dev server at `http://localhost:4444`.
 
 ## Scripts Reference
 

@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave an introduction to Vue.js at [Pereira Tech Talks](https://www.pereiratechtalks.com/). Vue had been gaining traction and I wanted to share why I like it so much: it's approachable, well-documented, and feels natural to work with. The talk focused on the concepts that make Vue special.
+Vue.js — why I like it so much: it's approachable, well-documented, and feels natural to work with. The focus: the concepts that make Vue special.
 
 ---
 

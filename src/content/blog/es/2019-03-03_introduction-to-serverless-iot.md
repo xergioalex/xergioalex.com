@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-Di una charla sobre arquitecturas serverless con enfoque en IoT. La idea era desmitificar qué significa **serverless** — *server-less*: sin servidor. Spoiler: aún hay servidores 😄. Y mostrar cuándo tiene sentido usarlo, especialmente para IoT y aplicaciones orientadas a eventos.
+Arquitecturas serverless con enfoque en IoT. La idea: desmitificar qué significa **serverless** — *server-less*: sin servidor. Spoiler: aún hay servidores 😄. Y mostrar cuándo tiene sentido usarlo, especialmente para IoT y aplicaciones orientadas a eventos.
 
 ![Demos de la charla: Bambú, IoT Light Bulb, DailyBot, Twitter Bot](/images/blog/posts/introduction-to-serverless-iot/demo.jpg)
 

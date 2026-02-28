@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-In October 2017 I gave a talk at [PereiraJs](https://www.pereiratechtalks.com/) on blockchain and cryptocurrencies. I focused on making the technology behind Bitcoin and Ethereum accessible — and closed with a live demo using Solidity for smart contracts.
+Blockchain and cryptocurrencies — making the technology behind Bitcoin and Ethereum accessible, and a live demo using Solidity for smart contracts.
 
 The idea was to answer: *How does Bitcoin work?* From there, I explained blockchain as the underlying technology, then moved to Ethereum and its smart contracts — self-executing code on the chain. The demo showed how to write and deploy a simple contract.
 

@@ -7,7 +7,7 @@ heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-Di una charla en [Pereira Tech Talks](https://www.pereiratechtalks.com/) sobre Go — una introducción al lenguaje explicando qué es, por qué usarlo y casos de uso para desarrollar aplicaciones modernas. La charla fue parte de una noche de Go y Google Cloud Platform en la UTP.
+Go — una introducción al lenguaje explicando qué es, por qué usarlo y casos de uso para desarrollar aplicaciones modernas.
 
 ---
 

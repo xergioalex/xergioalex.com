@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-Di una charla a mi equipo en **DailyBot** para explicar cómo empezar a implementar MyPy y tipar todo a lo largo de nuestros proyectos internos de Python. El objetivo: mostrar por qué agregar tipos no es solo pedantería — reduce la carga cognitiva, detecta errores temprano y puede reemplazar muchos tests unitarios triviales.
+Cómo empezar a implementar MyPy y tipar todo a lo largo de proyectos Python. El objetivo: mostrar por qué agregar tipos no es solo pedantería — reduce la carga cognitiva, detecta errores temprano y puede reemplazar muchos tests unitarios triviales.
 
 **¿Por qué MyPy?** Primero, menos carga cognitiva. Cuando los parámetros y valores de retorno están claramente declarados y verificados, no tienes que adivinar. Sin sorpresas. Segundo, detectas errores temprano — tipos de retorno incorrectos, checks de `None` olvidados, redeclaraciones accidentales — el type checker te lo dice antes de runtime. Tercero, validación de datos: usamos [attrs](https://pypi.org/project/attrs/) para data classes con atributos tipados y checks en runtime (Pydantic es otra gran opción). Cuarto, evitas tests unitarios triviales — el type checking elimina la necesidad de escribir y mantener tests que solo verifican tipos.
 

@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave an introduction to Docker with a focus on **microservice-oriented architectures**. The goal was to connect both worlds: on one side, what defines a microservice and why it matters; on the other, how Docker and containers fit into that picture for building autonomous, isolated, and scalable systems.
+Docker with a focus on **microservice-oriented architectures**. The goal: connect both worlds — on one side, what defines a microservice and why it matters; on the other, how Docker and containers fit into that picture for building autonomous, isolated, and scalable systems.
 
 ---
 

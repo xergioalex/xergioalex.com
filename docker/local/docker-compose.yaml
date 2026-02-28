@@ -30,7 +30,8 @@ services:
       - ${HOME}/.ssh:/home/node/.ssh_host:ro
       - ${HOME}/.gitconfig:/home/node/.gitconfig:ro
     ports:
-      - '4446:4321'
+      # Use 4444 on host to avoid conflict with macOS AirPlay Receiver (port 4444)
+      - '4444:4444'
     env_file:
       - xergioalexcom/.env
     command:

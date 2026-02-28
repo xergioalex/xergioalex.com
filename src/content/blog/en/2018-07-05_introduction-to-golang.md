@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk at [Pereira Tech Talks](https://www.pereiratechtalks.com/) on Go — an introduction to the language explaining what it is, why use it, and use cases for building modern applications. The talk was part of a Go and Google Cloud Platform night at UTP.
+Go — an introduction to the language explaining what it is, why use it, and use cases for building modern applications.
 
 ---
 

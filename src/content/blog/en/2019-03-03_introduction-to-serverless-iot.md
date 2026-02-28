@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on serverless architectures with a focus on IoT. The goal was to demystify what **serverless** means — *server-less*: without a server. Spoiler: there are still servers 😄. And to show when it makes sense to use it, especially for IoT and event-driven applications.
+Serverless architectures with a focus on IoT. The goal: demystify what **serverless** means — *server-less*: without a server. Spoiler: there are still servers 😄. And to show when it makes sense to use it, especially for IoT and event-driven applications.
 
 ![Talk demos: Bambú, IoT Light Bulb, DailyBot, Twitter Bot](/images/blog/posts/introduction-to-serverless-iot/demo.jpg)
 

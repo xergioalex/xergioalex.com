@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech", "dailybot"]
 ---
 
-I gave a talk in an **entrepreneurship class at Universidad Tecnológica de Pereira (UTP)** about how we got into Y Combinator. I wanted to tell my full story as an entrepreneur: the evolution, the products we built at [Rocka.co](https://rocka.co), constant experimentation, the failures — and how DailyBot was born in an internal Hackathon and finally found success.
+How we got into Y Combinator — I wanted to tell my full story as an entrepreneur: the evolution, the products we built at [Rocka.co](https://rocka.co), constant experimentation, the failures — and how DailyBot was born in an internal Hackathon and finally found success.
 
 ---
 

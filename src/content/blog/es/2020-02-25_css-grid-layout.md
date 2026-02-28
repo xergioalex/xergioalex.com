@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['talks', 'tech']
 ---
 
-Di una charla sobre **CSS Grid Layout** y algunos trucos e insights extraídos del State of CSS Survey (2020). La idea era comparar Flexbox y Grid, mostrar compatibilidad de navegadores y pasar a demos prácticas.
+**CSS Grid Layout** y algunos trucos e insights extraídos del State of CSS Survey (2020). La idea: comparar Flexbox y Grid, mostrar compatibilidad de navegadores y pasar a demos prácticas.
 
 ---
 

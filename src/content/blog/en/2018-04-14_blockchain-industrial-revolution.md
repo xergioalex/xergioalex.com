@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk at [Pereira Tech Talks](https://www.pereiratechtalks.com/) on blockchain as a technology beyond Bitcoin. The event had an introduction to Bitcoin and its fundamentals; I focused on **applications** — why blockchain has been called the industrial revolution of the internet and what possibilities it opens beyond cryptocurrencies.
+Blockchain as a technology beyond Bitcoin — focusing on **applications**: why blockchain has been called the industrial revolution of the internet and what possibilities it opens beyond cryptocurrencies.
 
 ---
 

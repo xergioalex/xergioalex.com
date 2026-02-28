@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['talks', 'tech']
 ---
 
-Di una introducción a Vue.js en [Pereira Tech Talks](https://www.pereiratechtalks.com/). Vue había estado ganando tracción y quería compartir por qué me gusta tanto: es accesible, bien documentado y se siente natural para trabajar. La charla se enfocó en los conceptos que hacen a Vue especial.
+Vue.js — por qué me gusta tanto: es accesible, bien documentado y se siente natural para trabajar. El enfoque: los conceptos que hacen a Vue especial.
 
 ---
 

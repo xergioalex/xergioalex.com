@@ -7,7 +7,7 @@ heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-En octubre de 2017 di una charla en [PereiraJs](https://www.pereiratechtalks.com/) sobre blockchain y criptomonedas. Me enfoqué en hacer accesible la tecnología detrás de Bitcoin y Ethereum — y cerré con una demo en vivo usando Solidity para contratos inteligentes.
+Blockchain y criptomonedas — hacer accesible la tecnología detrás de Bitcoin y Ethereum, y una demo en vivo usando Solidity para contratos inteligentes.
 
 La idea era responder: *¿Cómo funciona Bitcoin?* Desde ahí expliqué el blockchain como tecnología subyacente, luego pasé a Ethereum y sus contratos inteligentes — código auto-ejecutable en la cadena. La demo mostró cómo escribir y desplegar un contrato simple.
 

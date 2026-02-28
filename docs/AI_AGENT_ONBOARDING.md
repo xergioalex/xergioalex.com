@@ -98,7 +98,7 @@ Always support dark mode:
 
 ```bash
 # Development
-npm run dev              # Start dev server (localhost:4321)
+npm run dev              # Start dev server (localhost:4444)
 npm run build            # Production build
 npm run astro:preview    # Preview build
 

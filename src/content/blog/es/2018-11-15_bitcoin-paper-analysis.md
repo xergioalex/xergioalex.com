@@ -7,7 +7,7 @@ heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-Di una charla analizando el [paper de Bitcoin](https://bitcoin.org/en/bitcoin-paper) escrito por Satoshi Nakamoto. La presentación fue parte de las actividades de Blockchain Technologies en la UTP, con el Research Squad de Rocka y el Grupo de Investigación Sirius. Quería hacer un recorrido por la historia del dinero, el modelo de confianza centralizado, y cómo el paper de Satoshi propone una alternativa.
+El [paper de Bitcoin](https://bitcoin.org/en/bitcoin-paper) de Satoshi Nakamoto — un recorrido por la historia del dinero, el modelo de confianza centralizado, y cómo el paper de Satoshi propone una alternativa.
 
 ---
 

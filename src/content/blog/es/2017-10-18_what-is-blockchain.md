@@ -7,9 +7,9 @@ heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---
 
-Di esta charla en la Universidad de Caldas (Manizales), fuera de Pereira. El objetivo era introducir el blockchain desde cero: sus orígenes en relación con la historia del dinero y la economía, sus aplicaciones potenciales como gran revolución tecnológica, y cómo construir aplicaciones que consuman servicios basados en blockchain desde JavaScript.
+Blockchain desde cero: sus orígenes en relación con la historia del dinero y la economía, sus aplicaciones potenciales como gran revolución tecnológica, y cómo construir aplicaciones que consuman servicios basados en blockchain desde JavaScript.
 
-![Charla blockchain en Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-1.webp)
+![Blockchain presentation](/images/blog/posts/what-is-blockchain/blockchain-1.webp)
 
 ---
 

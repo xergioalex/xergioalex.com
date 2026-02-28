@@ -492,6 +492,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     communityTitle: 'Pereira Tech Talks',
     communityText:
       'Como cofundador y organizador de Pereira Tech Talks, he ayudado a construir una de las comunidades tech m\u00E1s activas de la regi\u00F3n. La misi\u00F3n es simple: crear espacios donde profesionales de tecnolog\u00EDa puedan compartir conocimiento, aprender unos de otros y crecer juntos.<br /><br />Desde peque\u00F1os meetups hasta conferencias m\u00E1s grandes, la comunidad se ha convertido en una plataforma para desarrolladores, dise\u00F1adores y emprendedores para conectar, colaborar y empujar los l\u00EDmites de lo posible.',
+    communityImageAlt1: 'Comunidad de Pereira Tech Talks en auditorio lleno en la UTP',
+    communityImageAlt2: 'Comunidad de Pereira Tech Talks reunida con patrocinadores',
     topicsTitle: 'Temas que Cubro',
     topics: [
       {

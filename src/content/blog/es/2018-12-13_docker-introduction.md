@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-Di una charla de introducción a Docker con enfoque en **arquitecturas orientadas a microservicios**. La idea era conectar ambos mundos: por un lado, qué define un microservicio y por qué importa; por otro, cómo Docker y los contenedores encajan en ese panorama para construir sistemas autónomos, aislados y escalables.
+Docker con enfoque en **arquitecturas orientadas a microservicios**. La idea: conectar ambos mundos — por un lado, qué define un microservicio y por qué importa; por otro, cómo Docker y los contenedores encajan en ese panorama para construir sistemas autónomos, aislados y escalables.
 
 ---
 

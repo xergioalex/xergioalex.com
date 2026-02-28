@@ -55,7 +55,7 @@ Use `.env` files for environment variables:
 
 ```bash
 # .env (local development - DO NOT COMMIT)
-PUBLIC_SITE_URL=http://localhost:4321
+PUBLIC_SITE_URL=http://localhost:4444
 PRIVATE_API_KEY=sk_xxxxx
 
 # .env.production

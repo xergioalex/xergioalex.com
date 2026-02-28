@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 ---
 
-I gave a talk on WebVR and A-Frame at **Universidad Remington**. It's an updated version of the talk I'd given earlier at Pereira Tech Talks: same foundations, but with refreshed slides and more demos. The goal: create 360° web experiences with A-Frame and JavaScript.
+WebVR and A-Frame — same foundations as an earlier version, but with refreshed slides and more demos. The goal: create 360° web experiences with A-Frame and JavaScript.
 
 I started by inviting people to join the tech communities in Pereira: [Sirius](https://sirius.utp.edu.co/jointdeveloper/), [PyPereira](https://pypereira.co/), [Pereira Tech Talks](https://pereiratechtalks.com/), [PereiraJs](https://pereirajs.org/).
 
