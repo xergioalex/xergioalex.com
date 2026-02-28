@@ -2,7 +2,7 @@
 title: 'Introducción a GoLang'
 description: 'Por qué Go me convenció — mi sesión en Pereira Tech Talks sobre la simplicidad de Go, su concurrencia nativa y cómo resuelve problemas reales con menos ceremonias.'
 pubDate: '2018-07-05'
-heroImage: '/images/blog/posts/introduction-to-golang/hero.png'
+heroImage: '/images/blog/posts/introduction-to-golang/hero.jpg'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
 ---

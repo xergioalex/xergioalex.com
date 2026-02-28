@@ -2,7 +2,7 @@
 title: "Deep Learning: From Academia to Practice"
 description: "What I shared at PyCon Colombia 2018 on how applied mathematics lets us build AI models — linear algebra, neural networks, gradient descent, and computer vision."
 pubDate: "2018-02-09"
-heroImage: "/images/blog/posts/pycon-deep-learning/hero.png"
+heroImage: "/images/blog/posts/pycon-deep-learning/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 ---
