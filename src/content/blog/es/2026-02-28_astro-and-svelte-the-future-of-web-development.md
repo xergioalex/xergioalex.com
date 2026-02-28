@@ -4,7 +4,7 @@ description: "Por qué Astro y Svelte representan un regreso a la simplicidad de
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
-tags: ["portfolio", "tech"]
+tags: ["tech"]
 ---
 
 Recuerdo cuando construir un sitio web era simple. Abrías un editor de texto, escribías un archivo HTML, vinculabas una hoja de estilos CSS, quizás ponías un script tag para algo interactivo, y lo abrías en el navegador. Funcionaba. Sin bundlers, sin transpilers, sin dependency hell, sin 47 pasos de configuración antes de poder renderizar "Hello World."
@@ -17,34 +17,41 @@ Entonces la industria decidió que eso no era suficiente.
 
 ## El Problema de la Sobre-Ingeniería
 
-En algún punto del camino, construir para la web se volvió innecesariamente complejo. Empezamos a necesitar build pipelines para publicar una landing page. Crear un componente en React — posiblemente el framework más popular — requiere importar la librería, definir una función, manejar estado con hooks, controlar efectos, lidiar con dependency arrays, y finalmente retornar JSX que compila a operaciones de virtual DOM. Todo esto para lo que podría ser una tarjeta simple que muestra un título y una imagen.
+En algún punto del camino, construir para la web se volvió innecesariamente complejo. Empezamos a necesitar build pipelines para publicar una landing page. React popularizó la arquitectura basada en componentes, pero con ella llegaron capas de abstracción — hooks, efectos, dependency arrays, reconciliación de virtual DOM. Y lo cierto es que otros frameworks siguieron el mismo camino.
 
-Así es como se ve un contador interactivo básico en React:
+He trabajado principalmente con Vue a lo largo de mi carrera, y lo elegí precisamente por su promesa de simplicidad. Vue nació específicamente para ser una alternativa más simple a React — Evan You lo creó después de trabajar con Angular en Google, buscando algo más accesible. Y durante mucho tiempo, cumplió esa promesa. La Options API de Vue 2 era genuinamente intuitiva: `data()`, `computed`, `methods`, `watch`. Limpio, organizado, fácil de razonar. Me encantaba. Construí proyectos con él. Lo defendí.
 
-```jsx
-import { useState, useEffect } from 'react';
+Pero entonces llegó Vue 3 con la Composition API, y empecé a ver el mismo patrón desplegarse. El framework que había elegido *porque* era más simple que React se estaba volviendo gradualmente igual de complejo. Así es como se ve un contador interactivo básico en Vue moderno:
 
-export default function Counter() {
-  const [count, setCount] = useState(0);
+```vue
+<script setup>
+import { ref, computed, watchEffect } from 'vue';
 
-  useEffect(() => {
-    document.title = `Count: ${count}`;
-  }, [count]);
+const count = ref(0);
+const title = computed(() => `Count: ${count.value}`);
 
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-    </div>
-  );
-}
+watchEffect(() => {
+  document.title = title.value;
+});
+</script>
+
+<template>
+  <div>
+    <p>Count: {{ count }}</p>
+    <button @click="count++">
+      Increment
+    </button>
+  </div>
+</template>
 ```
 
-No es terrible. Pero es mucho ceremonial para algo tan simple. `useState`, `useEffect`, dependency arrays, el patrón función-como-componente, compilación de JSX. Y este es el ejemplo *más simple*. Agrega data fetching, manejo de errores, context providers, y estarás mirando páginas de boilerplate antes de haber escrito una sola línea de lógica de negocio real.
+No es terrible. Pero fíjate en lo que pasó: `ref()`, `.value` por todas partes, `computed()`, `watchEffect()`, `defineProps`, `defineEmits`... Vue empezó como el "React más simple" y gradualmente absorbió gran parte de la misma complejidad que estaba diseñado para evitar. La Composition API es poderosa, pero agregó una curva de aprendizaje que la Options API nunca tuvo. Y este es el ejemplo *más simple*. Agrega data fetching con composables, provide/inject para inyección de dependencias, `defineModel`, `defineExpose`, y estarás mirando páginas de boilerplate antes de haber escrito una sola línea de lógica de negocio real.
 
-¿La ironía? La mayoría de los sitios web son fundamentalmente **sitios de contenido** — blogs, portfolios, documentación, páginas de marketing, landing pages. Son mayormente estáticos. Una pared de texto con algunas imágenes, quizás un formulario de contacto o una barra de búsqueda. Y sin embargo enviamos un runtime completo de JavaScript — cientos de kilobytes de código de framework — para mostrar contenido que no ha cambiado desde el último build.
+La ironía no se me escapa. Elegí Vue sobre React *por* su simplicidad, y ahora Vue camina el mismo sendero que React recorrió hace años. Los frameworks que empiezan simples inevitablemente se vuelven complejos al intentar cubrir todos los casos de uso. React lo hizo primero. Vue lo siguió. Angular nació complejo. Es como una ley de entropía de frameworks — y me hizo preguntarme: ¿existe un framework que pueda resistir esta fuerza?
+
+Eso fue lo que me llevó a Astro y Svelte.
+
+¿La ironía más grande? La mayoría de los sitios web son fundamentalmente **sitios de contenido** — blogs, portfolios, documentación, páginas de marketing, landing pages. Son mayormente estáticos. Una pared de texto con algunas imágenes, quizás un formulario de contacto o una barra de búsqueda. Y sin embargo enviamos un runtime completo de JavaScript — cientos de kilobytes de código de framework — para mostrar contenido que no ha cambiado desde el último build.
 
 Este es el impuesto de sobre-ingeniería que pagamos cada día. Y no tiene que ser así.
 
@@ -80,13 +87,13 @@ Fíjate en eso. Es HTML con superpoderes. El frontmatter (entre los separadores 
 
 ¿El output? **HTML estático puro.** Cero JavaScript enviado al navegador a menos que lo pidas explícitamente.
 
-Esto es lo que quiero decir con "de vuelta a los orígenes." Astro recupera la simplicidad de escribir un archivo HTML con un script tag, pero con una experiencia de desarrollo moderna — soporte de TypeScript, arquitectura de componentes, data fetching en build time, y output optimizado. Lo mejor de ambos mundos.
+Esto es lo que quiero decir con "de vuelta a los orígenes." Astro recupera la simplicidad de escribir un archivo HTML con un script tag, pero con una experiencia de desarrollo moderna — soporte de TypeScript, arquitectura de componentes, data fetching en build time, y output optimizado. Lo mejor de ambos mundos. Sin `ref()`, sin `.value`, sin `useState`. Solo HTML.
 
 ### La Filosofía: Envía Menos, Entrega Más
 
 Astro está construido sobre una premisa radical: **tu sitio web probablemente no necesita JavaScript**. No todo, de todas formas. La mayoría de las páginas son contenido. El contenido no necesita un runtime. Necesita HTML.
 
-Cuando *sí* necesitas interactividad — una barra de búsqueda, un menú de navegación, un toggle de tema — Astro usa una **Islands Architecture**. En lugar de hidratar la página completa (como Next.js o Gatsby), hidratas componentes individuales:
+Cuando *sí* necesitas interactividad — una barra de búsqueda, un menú de navegación, un toggle de tema — Astro usa una **Islands Architecture**. En lugar de hidratar la página completa (como Next.js, Nuxt.js o Gatsby), hidratas componentes individuales:
 
 ```astro
 ---
@@ -113,13 +120,13 @@ Controlas exactamente **cuándo** y **cómo** carga cada pieza interactiva:
 - `client:visible` — Hidrata cuando aparece en pantalla (lazy)
 - `client:idle` — Hidrata cuando el navegador está inactivo (diferido)
 
-¿Una página con 95% de contenido estático y un componente de búsqueda? Solo el componente de búsqueda envía JavaScript. Todo lo demás es HTML de costo cero. Este es un control granular que los frameworks basados en React simplemente no ofrecen. En Next.js, incluso una página completamente estática empaqueta el runtime de React — alrededor de **85KB** de JavaScript antes de que hayas escrito una sola línea de tu propio código.
+¿Una página con 95% de contenido estático y un componente de búsqueda? Solo el componente de búsqueda envía JavaScript. Todo lo demás es HTML de costo cero. Este es un control granular que los frameworks SPA tradicionales simplemente no ofrecen. En una app basada en Vue o React, incluso una página mayormente estática envía el runtime completo del framework al navegador — decenas de kilobytes de JavaScript antes de que hayas escrito una sola línea de tu propio código.
 
 ---
 
 ## Svelte: El Compañero Perfecto
 
-Si Astro es la base, [Svelte](https://svelte.dev) es su pareja ideal. Y no lo digo a la ligera — he trabajado con React, Vue y Angular en diferentes proyectos y etapas de mi carrera. Svelte es diferente. Se siente como el framework que debería haber existido desde el principio.
+Si Astro es la base, [Svelte](https://svelte.dev) es su pareja ideal. Y no lo digo a la ligera — he trabajado principalmente con Vue a lo largo de mi carrera, y genuinamente lo quiero. Pero Svelte es diferente. Se siente como el framework que debería haber existido desde el principio — como lo que Vue siempre quiso ser pero no pudo lograr del todo por su arquitectura basada en runtime.
 
 El tagline de Svelte es *"Web development for the rest of us"* — y lo dice en serio. Aquí está el mismo contador en Svelte:
 
@@ -139,9 +146,9 @@ El tagline de Svelte es *"Web development for the rest of us"* — y lo dice en 
 </button>
 ```
 
-Compara esto con la versión de React de arriba. Sin `useState`. Sin `useEffect`. Sin dependency arrays. Sin imports de utilidades del framework. Declaras el estado con `$state()`, los valores derivados con `$derived()`, y el compilador resuelve qué depende de qué. Genera el código mínimo de actualización del DOM en **build time** — sin diffing de virtual DOM en runtime.
+Compara esto con la versión de Vue de arriba. Sin `ref()`. Sin `.value` para desenvolver referencias reactivas. Sin `computed()`. Sin imports del framework. Declaras el estado con `$state()`, los valores derivados con `$derived()`, y el compilador resuelve qué depende de qué. Genera el código mínimo de actualización del DOM en **build time** — sin diffing de virtual DOM en runtime.
 
-El resultado es código que se lee casi como HTML vanilla con reactive sprinkles. Está más cerca del modelo mental de cómo funciona la web en realidad: tienes markup, tienes estado, los cambios de estado actualizan el markup. Sin capas de abstracción en el medio.
+El resultado es código que se lee casi como HTML vanilla con reactive sprinkles. Está más cerca del modelo mental de cómo funciona la web en realidad: tienes markup, tienes estado, los cambios de estado actualizan el markup. Sin capas de abstracción en el medio. Es lo que la Options API de Vue se sentía en su simplicidad — pero sin las limitaciones que llevaron a Vue a la Composition API en primer lugar.
 
 ### Svelte 5 Runes: Reactividad Bien Hecha
 
@@ -152,7 +159,40 @@ Svelte 5 introdujo los **Runes** — un sistema de reactividad basado en signals
 - **`$effect()`** — Ejecuta side effects cuando cambian las dependencias
 - **`$props()`** — Recibe props del componente con destructuring
 
-Aquí hay un ejemplo real de un componente de búsqueda — el tipo de cosa que sería un desastre de hooks en React:
+Aquí hay un ejemplo real — un componente de búsqueda con filtrado y paginación. Primero, la versión con Vue 3 Composition API:
+
+```vue
+<script setup>
+import { ref, computed } from 'vue';
+
+const props = defineProps(['posts', 'lang']);
+const query = ref('');
+const currentPage = ref(1);
+
+const filtered = computed(() =>
+  query.value.length > 2
+    ? props.posts.filter(p => p.title.toLowerCase().includes(query.value.toLowerCase()))
+    : props.posts
+);
+
+const paginated = computed(() =>
+  filtered.value.slice((currentPage.value - 1) * 12, currentPage.value * 12)
+);
+
+const totalPages = computed(() => Math.ceil(filtered.value.length / 12));
+</script>
+
+<template>
+  <input v-model="query" placeholder="Search posts..." />
+  <article v-for="post in paginated" :key="post.id">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.description }}</p>
+  </article>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+</template>
+```
+
+Ahora lo mismo en Svelte:
 
 ```svelte
 <script>
@@ -185,15 +225,17 @@ Aquí hay un ejemplo real de un componente de búsqueda — el tipo de cosa que 
 <span>Page {currentPage} of {totalPages}</span>
 ```
 
-Sin `useMemo`. Sin `useCallback`. Sin dependency arrays que mantener sincronizados manualmente. Sin bugs de stale closures. El compilador rastrea qué depende de qué y genera el código mínimo de actualización. Cuando cambia `query`, `filtered` se recalcula, lo que provoca que `paginated` y `totalPages` se actualicen, y solo los nodos del DOM afectados cambian. Es reactivo, eficiente y legible.
+Mira la diferencia. En Vue necesitas `ref()` para cada pieza de estado, `.value` para accederlo dentro del script, `computed()` para valores derivados, `defineProps` para props, y el template usa directivas `v-model`, `v-for`, `:key`. Funciona — he escrito este mismo tipo de componente en Vue decenas de veces — pero hay fricción en todas partes. El unwrapping de `.value` solo ya es una fuente constante de bugs cuando lo olvidas.
 
-En React, esta misma lógica requeriría `useState` para el query, `useMemo` para las listas filtradas y paginadas (con dependency arrays manuales), `useCallback` para la función de filtrado, y atención cuidadosa para evitar re-renders innecesarios. La versión en Svelte es la mitad del código sin ninguna trampa de rendimiento.
+En Svelte, el estado es simplemente `$state()`. Los valores derivados son `$derived()`. Los props se desestructuran de `$props()`. El template usa `bind:value` y `{#each}`. Sin `.value`. Sin imports del framework. El compilador rastrea qué depende de qué y genera el código mínimo de actualización. Cuando cambia `query`, `filtered` se recalcula, lo que provoca que `paginated` y `totalPages` se actualicen, y solo los nodos del DOM afectados cambian. Es reactivo, eficiente y legible — con notablemente menos ceremonial.
 
 ### Compilado, No en Runtime
 
-La innovación central de Svelte es que es un **compilador**, no una librería. Mientras React envía un runtime (~40KB minificado + gzipped) que maneja el diffing de virtual DOM, la reconciliación y el manejo de estado en el navegador, Svelte hace todo ese trabajo en **build time**. El output es JavaScript vanilla que hace actualizaciones quirúrgicas del DOM — sin representación intermedia, sin algoritmo de diffing, sin overhead de garbage collection.
+La innovación central de Svelte es que es un **compilador**, no una librería. Mientras Vue envía un runtime (~30KB minificado + gzipped) que maneja el diffing de virtual DOM, los proxies de reactividad y el compilador de templates en el navegador, Svelte hace todo ese trabajo en **build time**. El output es JavaScript vanilla que hace actualizaciones quirúrgicas del DOM — sin representación intermedia, sin algoritmo de diffing, sin sistema de reactividad en runtime.
 
-Para un sitio Astro que ya envía cero JavaScript por defecto, esto importa enormemente. Cuando *sí* necesitas un interactive island, Svelte asegura que ese island sea lo más pequeño posible. Los componentes Svelte compilan a un promedio de **30-40% menos JavaScript** que los componentes equivalentes en React. La capa interactiva de mi propio sitio — 15 componentes Svelte incluyendo búsqueda, navegación, lightbox, timelines y más — compila a una fracción de lo que pesaría un solo runtime de React.
+Esta es una diferencia arquitectónica fundamental. Vue (y React) necesitan un runtime en el navegador porque sus sistemas de reactividad — la reactividad basada en `Proxy` de Vue, la reconciliación de React — operan en runtime. Svelte no. El compilador analiza tu código y genera las operaciones exactas del DOM necesarias. Sin runtime, sin overhead.
+
+Para un sitio Astro que ya envía cero JavaScript por defecto, esto importa enormemente. Cuando *sí* necesitas un interactive island, Svelte asegura que ese island sea lo más pequeño posible. Los componentes Svelte compilan a un promedio de **30-40% menos JavaScript** que los componentes equivalentes en Vue o React. La capa interactiva de mi propio sitio — 15 componentes Svelte incluyendo búsqueda, navegación, lightbox, timelines y más — compila a una fracción de lo que pesaría un runtime de Vue o React.
 
 ### Por Qué Astro + Svelte Se Sienten Hechos el Uno para el Otro
 
@@ -202,7 +244,7 @@ Aquí es donde ocurre la magia. Astro y Svelte comparten una filosofía fundamen
 - Astro renderiza páginas a HTML estático en build time. Cero JavaScript por defecto.
 - Svelte compila componentes a JavaScript mínimo en build time. Sin overhead de framework en runtime.
 
-Cuando los combinas, el resultado es un sitio donde las partes estáticas envían cero JavaScript y las partes interactivas envían el mínimo absoluto. Sin runtime de React. Sin virtual DOM. Sin hydration de contenido que nunca fue interactivo en primer lugar.
+Cuando los combinas, el resultado es un sitio donde las partes estáticas envían cero JavaScript y las partes interactivas envían el mínimo absoluto. Sin runtime de Vue. Sin runtime de React. Sin virtual DOM. Sin hydration de contenido que nunca fue interactivo en primer lugar.
 
 La sintaxis también se siente natural. Los componentes Astro usan un patrón frontmatter + template. Los componentes Svelte usan un patrón script + template. Moverse entre ellos se siente fluido — el modelo mental es consistente. Escribes lo que parece HTML, con la lógica donde le corresponde.
 
@@ -223,7 +265,7 @@ const posts = await getBlogPosts('en');
 
 El data fetching ocurre en build time en Astro. La UI de búsqueda interactiva ocurre en runtime en Svelte. Cada framework hace lo que mejor sabe hacer. Sin superposición, sin desperdicio.
 
-Compara esto con un enfoque basado en React donde necesitarías `useEffect` para obtener datos al montar, `useState` para almacenarlos, un estado de carga, un estado de error, y enviarías el runtime completo de React solo para mostrar una caja de búsqueda. El enfoque Astro + Svelte es más simple **y** más rápido.
+Compara esto con un enfoque basado en Vue donde necesitarías `onMounted` para obtener datos, `ref()` para almacenarlos, un ref de carga, un ref de error, y enviarías el runtime de Vue solo para mostrar una caja de búsqueda. O un enfoque con React usando `useEffect` y `useState`. En ambos casos: más código, más runtime, más peso. El enfoque Astro + Svelte es más simple **y** más rápido.
 
 ---
 
@@ -322,7 +364,17 @@ Las migraciones del mundo real cuentan la historia:
 - Mejoras de LCP (Largest Contentful Paint) de **3.2s a 1.6s**
 - **60%** de los sitios en Astro logran puntajes "Good" en Core Web Vitals, comparado con **38%** para WordPress y Gatsby
 
-En mi propio sitio, [xergioalex.com](https://xergioalex.com), el puntaje de Lighthouse Performance alcanza consistentemente los 90s altos. El blog completo — 70+ posts en dos idiomas, con búsqueda, paginación, filtrado por tags y lightboxes interactivos — carga al instante. Las páginas que son contenido puro (que son la mayoría) envían literalmente cero JavaScript.
+En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados hablan por sí solos. Este no es un simple landing page — es un sitio con una arquitectura bastante compleja: 70+ posts de blog en dos idiomas, búsqueda del lado del cliente con Fuse.js, timelines interactivos, lightboxes de imágenes, dark mode, routing bilingüe, RSS feeds, y 15 componentes Svelte interactivos. Y aun así, con algo de iteración y ajuste fino, logra un **100 perfecto en las cuatro categorías de PageSpeed** — Performance, Accessibility, Best Practices y SEO — tanto en **mobile como en desktop**:
+
+**Desktop — 100/100/100/100:**
+
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.png" alt="Resultados de Google PageSpeed Insights en desktop para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS y 0.5s Speed Index" width="1208" height="932" loading="lazy" />
+
+**Mobile — 100/100/100/100:**
+
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.png" alt="Resultados de Google PageSpeed Insights en mobile para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS y 0.9s Speed Index" width="1208" height="932" loading="lazy" />
+
+Mira esas métricas. En desktop: **0.3s FCP**, **0.3s LCP**, **0ms TBT**, **0 CLS**, y **0.5s Speed Index**. En mobile: **0.9s FCP**, **1.5s LCP**, **0ms TBT**, **0 CLS**, y **0.9s Speed Index**. Todo en verde. Todo perfecto. Lograr un cuádruple 100 en desktop ya es impresionante, pero conseguirlo también en mobile — donde los dispositivos son más lentos, las conexiones más débiles, y la simulación de throttling de Google es mucho más agresiva — es donde está el verdadero desafío. Para un sitio con este nivel de contenido e interactividad, estos números serían extremadamente difíciles de lograr con Vue + Nuxt, React + Next.js, o cualquier framework SPA tradicional — no imposible, pero requeriría significativamente más esfuerzo y trabajo de optimización. Con Astro + Svelte, tomó algo de iteración, pero la arquitectura trabaja *contigo* en lugar de en tu contra. Los defaults del framework ya son rápidos; solo necesitas evitar desacelerarlo activamente.
 
 ### Por Qué Esto Importa
 
@@ -387,7 +439,7 @@ El sitio tiene:
 
 La experiencia de desarrollo ha sido genuinamente disfrutable. Escribí sobre esto en detalle en [Construyendo XergioAleX.com](/es/blog/building-xergioalex-website/) y presenté la filosofía de Astro en [Astro en Acción](/es/blog/astro-in-action/). La versión corta: construir con Astro + Svelte se siente como la web temprana con superpoderes modernos. Escribo componentes que parecen HTML. Obtengo seguridad de TypeScript. Obtengo builds ultrarrápidos. Y el output es el sitio más liviano y rápido que he lanzado.
 
-Toda la capa interactiva — 15 componentes Svelte cubriendo búsqueda, navegación, lightbox, timelines, menú móvil — compila a una fracción de lo que pesaría un solo runtime de React. Y esos componentes solo cargan cuando se necesitan, gracias a la Islands Architecture de Astro.
+Toda la capa interactiva — 15 componentes Svelte cubriendo búsqueda, navegación, lightbox, timelines, menú móvil — compila a una fracción de lo que pesaría un runtime de Vue o React. Y esos componentes solo cargan cuando se necesitan, gracias a la Islands Architecture de Astro.
 
 ### El Tech Stack Que Lo Impulsa
 
@@ -425,7 +477,7 @@ Astro **no** es la mejor opción para:
 - **Dashboards en tiempo real** — Donde las conexiones WebSocket y las actualizaciones constantes de estado dominan
 - **Apps de manejo de estado complejo** — Donde se necesita orquestación de estado a nivel Redux a través de cientos de componentes
 
-Para esos casos de uso, React (o Svelte con SvelteKit) sigue siendo la mejor opción. El ecosistema de React es enorme — miles de librerías, patrones battle-tested, un gran pool de talento. Si estás construyendo una aplicación SaaS compleja con docenas de pantallas interactivas, la madurez de React es difícil de superar.
+Para esos casos de uso, Vue con Nuxt, React con Next.js, o Svelte con SvelteKit siguen siendo mejores opciones. El ecosistema de Vue es maduro y battle-tested — he construido aplicaciones complejas con él y maneja bien ese tipo de trabajo. El ecosistema de React es aún más grande. Si estás construyendo una aplicación SaaS compleja con docenas de pantallas interactivas, esos frameworks se ganaron su lugar.
 
 Pero aquí está la cosa: **la mayoría de los sitios web no son Figma**. La mayoría de los sitios web son contenido. Son blogs, landing pages, documentación, portfolios, catálogos de e-commerce, sitios corporativos. Para esos — que representan la gran mayoría de lo que se construye en la web — Astro y Svelte no son solo competitivos. Son superiores.
 
@@ -435,13 +487,13 @@ Pero aquí está la cosa: **la mayoría de los sitios web no son Figma**. La may
 
 Lo que más me emociona de Astro y Svelte no son solo los méritos técnicos. Es lo que representan: un movimiento de regreso hacia la simplicidad en el desarrollo web.
 
-The New Stack capturó esto perfectamente en su análisis de 2024: *"A return to simpler ways of building a website or web application, partly as a reaction against the increasing complexity of JavaScript frameworks — especially React-based frameworks."*
+The New Stack capturó esto perfectamente en su análisis de 2024: *"A return to simpler ways of building a website or web application, partly as a reaction against the increasing complexity of JavaScript frameworks."* Y esa complejidad no es exclusiva de React — como describí antes, Vue ha seguido la misma trayectoria.
 
 La encuesta State of JS 2025 observó algo que encuentro notable: *"Something we haven't seen in a decade: stagnation in frameworks, but an explosion in workflow. Developers aren't switching tools because they're bored — they are settling down because the tools finally work."*
 
 Las guerras de frameworks no están terminando porque los desarrolladores se rindieron. Están terminando porque frameworks como Astro y Svelte resolvieron los problemas correctos de la manera correcta. Cuando una herramienta simplemente funciona — cuando es fácil de usar, rápida por defecto, y no pelea contigo — los desarrolladores dejan de buscar alternativas.
 
-Una [encuesta de TSH.io con 6,000 desarrolladores](https://tsh.io/blog/javascript-frameworks-frontend-development) confirmó la tendencia: un *"further shift away from complexity"* en 2025, con Astro y Svelte *"gaining popularity as more developers looked for solutions beyond the React ecosystem."*
+Una [encuesta de TSH.io con 6,000 desarrolladores](https://tsh.io/blog/javascript-frameworks-frontend-development) confirmó la tendencia: un *"further shift away from complexity"* en 2025, con Astro y Svelte *"gaining popularity as more developers looked for solutions beyond the traditional SPA ecosystem."*
 
 Astro alcanzó una **tasa de adopción del 25%** siendo relativamente nuevo. Eso no es crecimiento incremental — es un cambio de paradigma. Y GitHub Octoverse 2025 identificó a Astro como el framework **de más rápido crecimiento** con **78% de crecimiento año tras año**.
 
@@ -461,7 +513,7 @@ Mi predicción:
 
 4. **La adquisición de Cloudflare acelera todo.** Con respaldo institucional, Astro ahora puede iterar más rápido, llegar a más desarrolladores e invertir en el ecosistema de maneras que una startup independiente no podría.
 
-¿Desaparecerá React? No. React tiene un ecosistema enorme, adopción enterprise profunda y millones de desarrolladores. Seguirá siendo importante para aplicaciones interactivas complejas. Pero la era de React como el default para *todo* — incluyendo sitios de contenido estático donde nunca fue la herramienta correcta — está terminando.
+¿Desaparecerán Vue y React? No. Vue tiene un ecosistema maduro que conozco bien y respeto. React tiene adopción enterprise masiva y millones de desarrolladores. Ambos seguirán siendo importantes para aplicaciones interactivas complejas. Pero la era de usar frameworks SPA como el default para *todo* — incluyendo sitios de contenido estático donde nunca fueron la herramienta correcta — está terminando.
 
 La web empezó simple. Archivos HTML, estilos CSS, una pizca de JavaScript cuando se necesitaba. Astro y Svelte nos llevan de vuelta a esa simplicidad — con tooling moderno, seguridad de tipos y rendimiento que la web temprana nunca pudo imaginar.
 
