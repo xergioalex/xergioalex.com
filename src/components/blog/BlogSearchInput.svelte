@@ -1,29 +1,32 @@
 <script>
-import { createEventDispatcher } from 'svelte';
 import { getTranslations } from '@/lib/translations';
 
 export let searchQuery;
 export let isSearching;
 export let resultsCount;
 export let lang = 'en';
+/** @type {(value: string) => void} */
+export let onSearch;
+/** @type {() => void} */
+export let onFocus;
 
 $: t = getTranslations(lang);
 
-const dispatch = createEventDispatcher();
-
 function handleInput(e) {
-  dispatch('search', e.target.value);
+  const value = e.target.value;
+  searchQuery = value;
+  onSearch?.(value);
 }
 
 function handleFocus() {
-  dispatch('focus');
+  onFocus?.();
 }
 
 function handleKeyDown(e) {
   // Escape clears search
   if (e.key === 'Escape') {
     searchQuery = '';
-    dispatch('search', '');
+    onSearch?.('');
   }
 }
 </script>
@@ -47,7 +50,7 @@ function handleKeyDown(e) {
         class="rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
         on:click={() => {
           searchQuery = '';
-          dispatch('search', '');
+          onSearch?.('');
         }}
       >
         {t.clearSearch}

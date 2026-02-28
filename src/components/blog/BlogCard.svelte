@@ -6,6 +6,7 @@ import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: string = 'en';
+export let searchQuery: string = '';
 export let searchResult:
   | { item: any; score: number; matches?: any[] }
   | undefined = undefined;
@@ -53,11 +54,16 @@ $: postData = getPostData();
 $: postSlug = getPostSlug();
 
 // Get highlighted title and description if search result is available
-$: displayTitle = searchResult
-  ? getHighlightedField(searchResult, 'title', postData.title)
+$: displayTitle = searchQuery
+  ? getHighlightedField(searchResult, 'title', postData.title, searchQuery)
   : postData.title;
-$: displayDescription = searchResult
-  ? getHighlightedField(searchResult, 'description', postData.description)
+$: displayDescription = searchQuery
+  ? getHighlightedField(
+      searchResult,
+      'description',
+      postData.description,
+      searchQuery
+    )
   : postData.description;
 </script>
 

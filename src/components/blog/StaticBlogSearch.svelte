@@ -157,8 +157,21 @@ function performSearch(query, page = 1) {
   isLoading = false;
 }
 
+// Sync search query to URL without polluting browser history
+function syncQueryToUrl(query) {
+  if (typeof window === 'undefined') return;
+  const url = new URL(window.location.href);
+  if (query) {
+    url.searchParams.set('q', query);
+  } else {
+    url.searchParams.delete('q');
+  }
+  history.replaceState(null, '', url.toString());
+}
+
 function handleSearch(query) {
   searchQuery = query;
+  syncQueryToUrl(query);
 
   if (searchTimeout) {
     clearTimeout(searchTimeout);
@@ -182,10 +195,20 @@ function handleSearchFocus() {
   ensureIndexLoaded();
 }
 
-// Lazy load search index on mount
+// Restore search from URL and lazy load index on mount
 onMount(() => {
-  if (typeof window !== 'undefined') {
-    // Lazy load search index using requestIdleCallback
+  if (typeof window === 'undefined') return;
+
+  const params = new URLSearchParams(window.location.search);
+  const urlQuery = params.get('q') || '';
+
+  if (urlQuery) {
+    // Restore search from URL: load index immediately, then search
+    searchQuery = urlQuery;
+    isSearching = true;
+    ensureIndexLoaded().then(() => performSearch(urlQuery, 1));
+  } else {
+    // No URL query: lazy load search index in background
     if ('requestIdleCallback' in window) {
       requestIdleCallback(() => ensureIndexLoaded());
     } else {
@@ -210,8 +233,8 @@ onMount(() => {
     bind:searchQuery
     {isSearching}
     resultsCount={searchPagination.totalPosts}
-    on:search={(e) => handleSearch(e.detail)}
-    on:focus={handleSearchFocus}
+    onSearch={handleSearch}
+    onFocus={handleSearchFocus}
     {lang}
   />
 

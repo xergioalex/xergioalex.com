@@ -1,9 +1,10 @@
 /**
- * Advanced search functionality using Fuse.js
- * Provides fuzzy matching and relevance scoring for blog posts
+ * Blog search functionality using exact substring matching.
+ * Searches title, description, and tags with case-insensitive matching.
+ * Scores results by match location: title > tags > description.
  */
 
-import Fuse, { type IFuseOptions } from 'fuse.js';
+import Fuse from 'fuse.js';
 
 export interface SearchablePost {
   id: string;
@@ -26,45 +27,20 @@ export interface SearchResult {
   }>;
 }
 
-// Fuse.js configuration optimized for blog search performance
-const fuseOptions: IFuseOptions<SearchablePost> = {
-  // Keys to search with weights (higher = more important)
-  keys: [
-    { name: 'title', weight: 0.4 },
-    { name: 'description', weight: 0.3 },
-    { name: 'tags', weight: 0.3 },
-  ],
-  // Include score for relevance sorting
-  includeScore: true,
-  // Include match info for highlighting
-  includeMatches: true,
-  // Fuzzy matching threshold (0 = exact, 1 = match anything)
-  threshold: 0.4,
-  // Reduced distance for faster matching with large datasets
-  distance: 50,
-  // Minimum characters before searching
-  minMatchCharLength: 2,
-  // Ignore location for better performance
-  ignoreLocation: true,
-  // Field length normalization weight
-  fieldNormWeight: 1,
-};
-
 /**
- * Create a Fuse search instance from posts
+ * Create a search index (wraps posts in a Fuse instance for API compatibility).
+ * The actual search uses exact substring matching, not Fuse.js fuzzy matching.
  */
 export function createSearchIndex(
   posts: SearchablePost[]
 ): Fuse<SearchablePost> {
-  return new Fuse(posts, fuseOptions);
+  return new Fuse(posts, { keys: ['title'] });
 }
 
 /**
- * Search posts using Fuse.js
- * @param fuse - Fuse instance
- * @param query - Search query
- * @param limit - Maximum results to return
- * @returns Array of search results with scores
+ * Search posts using exact case-insensitive substring matching.
+ * A post matches if the query appears in its title, description, or any tag.
+ * Results are scored by match location: title (0.0) > tags (0.1) > description (0.2).
  */
 export function searchPosts(
   fuse: Fuse<SearchablePost>,
@@ -75,13 +51,34 @@ export function searchPosts(
     return [];
   }
 
-  const results = fuse.search(query.trim(), { limit });
+  const q = query.trim().toLowerCase();
 
-  return results.map((result) => ({
-    item: result.item,
-    score: result.score ?? 1,
-    matches: result.matches as SearchResult['matches'],
-  }));
+  // Access the underlying posts from the Fuse instance
+  const posts = (fuse as unknown as { _docs: SearchablePost[] })._docs;
+
+  const results: SearchResult[] = [];
+
+  for (const post of posts) {
+    const titleMatch = post.title.toLowerCase().includes(q);
+    const descMatch = post.description.toLowerCase().includes(q);
+    const tagsMatch = post.tags.some((tag) => tag.toLowerCase().includes(q));
+
+    if (titleMatch || descMatch || tagsMatch) {
+      // Score: lower is better (title match = best, then tags, then description)
+      const score = titleMatch ? 0.0 : tagsMatch ? 0.1 : 0.2;
+      results.push({ item: post, score });
+    }
+  }
+
+  // Sort by score (best first), then by date (newest first)
+  results.sort((a, b) => {
+    if (a.score !== b.score) return a.score - b.score;
+    return (
+      new Date(b.item.pubDate).getTime() - new Date(a.item.pubDate).getTime()
+    );
+  });
+
+  return results.slice(0, limit);
 }
 
 /**
@@ -99,50 +96,43 @@ function escapeHtml(text: string): string {
 }
 
 /**
- * Highlight matched text in a string
- * @param text - Original text
- * @param indices - Match indices from Fuse.js
- * @returns HTML string with highlighted matches
+ * Highlight occurrences of a query string in text using case-insensitive matching.
  */
-export function highlightMatches(
-  text: string,
-  indices: ReadonlyArray<readonly [number, number]>
-): string {
-  if (!indices || indices.length === 0) {
+export function highlightMatches(text: string, query: string): string {
+  if (!query || query.trim().length < 2) {
     return escapeHtml(text);
   }
 
-  let result = '';
-  let lastIndex = 0;
+  const trimmed = query.trim();
+  const escapedQuery = trimmed.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapedQuery})`, 'gi');
+  const parts = text.split(regex);
 
-  // Sort indices by start position
-  const sortedIndices = [...indices].sort((a, b) => a[0] - b[0]);
-
-  for (const [start, end] of sortedIndices) {
-    // Add text before match
-    result += escapeHtml(text.slice(lastIndex, start));
-    // Add highlighted match
-    result += `<mark class="bg-yellow-200 dark:bg-yellow-700 px-0.5 rounded">${escapeHtml(text.slice(start, end + 1))}</mark>`;
-    lastIndex = end + 1;
+  if (parts.length === 1) {
+    return escapeHtml(text);
   }
 
-  // Add remaining text
-  result += escapeHtml(text.slice(lastIndex));
-
-  return result;
+  const lowerQuery = trimmed.toLowerCase();
+  return parts
+    .map((part) =>
+      part.toLowerCase() === lowerQuery
+        ? `<mark class="bg-yellow-200 dark:bg-yellow-700 px-0.5 rounded">${escapeHtml(part)}</mark>`
+        : escapeHtml(part)
+    )
+    .join('');
 }
 
 /**
  * Get highlighted text for a specific field from search result
  */
 export function getHighlightedField(
-  result: SearchResult,
-  fieldName: string,
-  originalValue: string
+  _result: SearchResult,
+  _fieldName: string,
+  originalValue: string,
+  query: string
 ): string {
-  const match = result.matches?.find((m) => m.key === fieldName);
-  if (match?.indices) {
-    return highlightMatches(originalValue, match.indices);
+  if (query) {
+    return highlightMatches(originalValue, query);
   }
   return escapeHtml(originalValue);
 }

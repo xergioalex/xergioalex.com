@@ -57,62 +57,70 @@ describe('highlightMatches', () => {
 		'<mark class="bg-yellow-200 dark:bg-yellow-700 px-0.5 rounded">';
 	const markClose = '</mark>';
 
-	it('highlights a single match', () => {
-		const result = highlightMatches('hello world', [[0, 4]]);
+	it('highlights a substring match', () => {
+		const result = highlightMatches('hello world', 'hello');
 		expect(result).toBe(`${markOpen}hello${markClose} world`);
 	});
 
-	it('highlights multiple non-overlapping matches', () => {
-		const result = highlightMatches('hello world test', [
-			[0, 4],
-			[6, 10],
-		]);
+	it('highlights multiple occurrences of the query', () => {
+		const result = highlightMatches(
+			'Astro is great. Learn Astro now.',
+			'Astro',
+		);
 		expect(result).toBe(
-			`${markOpen}hello${markClose} ${markOpen}world${markClose} test`,
+			`${markOpen}Astro${markClose} is great. Learn ${markOpen}Astro${markClose} now.`,
 		);
 	});
 
-	it('returns escaped text when indices array is empty', () => {
-		expect(highlightMatches('hello world', [])).toBe('hello world');
+	it('is case-insensitive', () => {
+		const result = highlightMatches('Learn ASTRO framework', 'astro');
+		expect(result).toContain(`${markOpen}ASTRO${markClose}`);
+	});
+
+	it('returns escaped text when query is empty', () => {
+		expect(highlightMatches('hello world', '')).toBe('hello world');
+	});
+
+	it('returns escaped text when query is too short', () => {
+		expect(highlightMatches('hello world', 'h')).toBe('hello world');
+	});
+
+	it('returns escaped text when query has no match in text', () => {
+		expect(highlightMatches('hello world', 'xyz')).toBe('hello world');
 	});
 
 	it('escapes HTML special characters in non-matched text', () => {
-		const result = highlightMatches('<script>alert("xss")</script>', []);
+		const result = highlightMatches(
+			'<script>alert("xss")</script>',
+			'zzz',
+		);
 		expect(result).toBe(
 			'&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;',
 		);
 	});
 
 	it('escapes ampersand and quotes', () => {
-		const result = highlightMatches("Tom & Jerry's \"adventure\"", []);
+		const result = highlightMatches(
+			"Tom & Jerry's \"adventure\"",
+			'zzz',
+		);
 		expect(result).toContain('&amp;');
 		expect(result).toContain('&#39;');
 		expect(result).toContain('&quot;');
 	});
 
 	it('escapes HTML in matched text too', () => {
-		const result = highlightMatches('<b>bold</b>', [[0, 2]]);
-		expect(result).toContain(`${markOpen}&lt;b&gt;${markClose}`);
+		const result = highlightMatches('<b>bold</b>', 'bold');
+		expect(result).toContain(`${markOpen}bold${markClose}`);
+		expect(result).toContain('&lt;b&gt;');
 	});
 
-	it('handles match at end of string', () => {
-		const result = highlightMatches('hello world', [[6, 10]]);
-		expect(result).toBe(`hello ${markOpen}world${markClose}`);
-	});
-
-	it('handles match spanning entire string', () => {
-		const result = highlightMatches('hello', [[0, 4]]);
-		expect(result).toBe(`${markOpen}hello${markClose}`);
-	});
-
-	it('handles unsorted indices by sorting them', () => {
-		const result = highlightMatches('abc def ghi', [
-			[8, 10],
-			[0, 2],
-		]);
-		expect(result).toBe(
-			`${markOpen}abc${markClose} def ${markOpen}ghi${markClose}`,
+	it('handles query with regex special characters', () => {
+		const result = highlightMatches(
+			'Use file.ts for TypeScript',
+			'file.ts',
 		);
+		expect(result).toContain(`${markOpen}file.ts${markClose}`);
 	});
 });
 
@@ -131,46 +139,45 @@ describe('getHighlightedField', () => {
 		],
 	};
 
-	it('returns highlighted text when field match exists', () => {
+	it('returns highlighted text when query matches field content', () => {
 		const result = getHighlightedField(
 			mockResult,
 			'title',
 			'Complete Guide to Astro',
+			'Astro',
 		);
 		expect(result).toContain('<mark');
 		expect(result).toContain('Astro');
 	});
 
-	it('returns escaped original value when no match for the field', () => {
+	it('returns escaped original value when query is empty', () => {
 		const result = getHighlightedField(
 			mockResult,
 			'description',
 			'Some description',
+			'',
 		);
 		expect(result).toBe('Some description');
 		expect(result).not.toContain('<mark');
 	});
 
-	it('returns escaped original value when matches array is undefined', () => {
-		const noMatchResult: SearchResult = {
-			item: mockPosts[0],
-			score: 0.5,
-			matches: undefined,
-		};
+	it('returns escaped original value when query does not match', () => {
 		const result = getHighlightedField(
-			noMatchResult,
+			mockResult,
 			'title',
 			'Complete Guide to Astro',
+			'zzz',
 		);
 		expect(result).toBe('Complete Guide to Astro');
 		expect(result).not.toContain('<mark');
 	});
 
-	it('escapes HTML in original value when no match exists', () => {
+	it('escapes HTML in original value when query is empty', () => {
 		const result = getHighlightedField(
 			mockResult,
 			'description',
 			'<script>alert("xss")</script>',
+			'',
 		);
 		expect(result).toContain('&lt;script&gt;');
 		expect(result).not.toContain('<script>');
@@ -243,10 +250,21 @@ describe('searchPosts', () => {
 		expect(result.item).toHaveProperty('title');
 	});
 
-	it('search results include match information', () => {
+	it('does not return posts that lack the search term', () => {
 		const results = searchPosts(fuse, 'TypeScript');
 		expect(results.length).toBeGreaterThan(0);
-		expect(results[0].matches).toBeDefined();
+		for (const r of results) {
+			const text =
+				`${r.item.title} ${r.item.description} ${r.item.tags.join(' ')}`.toLowerCase();
+			expect(text).toContain('typescript');
+		}
+	});
+
+	it('prioritizes title matches over description matches', () => {
+		const results = searchPosts(fuse, 'Astro');
+		expect(results.length).toBeGreaterThanOrEqual(2);
+		// Posts with "Astro" in title should have score 0.0
+		expect(results[0].score).toBe(0.0);
 	});
 
 	it('searches across title, description, and tags', () => {
