@@ -40,7 +40,7 @@ export const en: SiteTranslations = {
   hero: {
     tagline: 'CTO at DailyBot (YC S21) · Builder of 20+ Products',
     description:
-      'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. 14+ years shipping digital products, from AI-powered platforms to open source tools.',
+      'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. 14+ years shipping digital products, from AI-powered platforms to open source tools.',
     typewriterWords: [
       'CTO at DailyBot (YC S21)',
       'Builder of 20+ Products',
@@ -120,7 +120,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       title: 'What I Build',
       subtitle: 'From AI-powered platforms to open source tools',
       description:
-        'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, I\'ve architected a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
+        'Building is what I do best. As CTO of <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, I\'ve architected a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. Beyond DailyBot, I\'m constantly shipping side projects \u2014 from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management).<br /><br />With 113+ repositories on GitHub and projects spanning Python, Go, TypeScript, and more, I believe the best way to learn new technology is to build something real with it.',
       cta: 'Explore my projects',
     },
     community: {

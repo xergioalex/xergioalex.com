@@ -6,6 +6,7 @@ import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 // @ts-check
 import { defineConfig } from 'astro/config';
+import rehypeExternalLinks from 'rehype-external-links';
 
 import excludeInternal from './src/integrations/exclude-internal';
 
@@ -17,6 +18,17 @@ export default defineConfig({
   site: 'https://www.xergioalex.com',
   build: {
     inlineStylesheets: 'always',
+  },
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer'],
+        },
+      ],
+    ],
   },
   integrations: [
     mdx(),

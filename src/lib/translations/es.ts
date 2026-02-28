@@ -40,7 +40,7 @@ export const es: SiteTranslations = {
   hero: {
     tagline: 'CTO en DailyBot (YC S21) · Creador de 20+ productos',
     description:
-      'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
+      'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
     typewriterWords: [
       'CTO en DailyBot (YC S21)',
       'Creador de 20+ productos',
@@ -121,7 +121,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       title: 'Lo que construyo',
       subtitle: 'Desde plataformas con IA hasta herramientas open source',
       description:
-        'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
+        'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
       cta: 'Explorar mis proyectos',
     },
     community: {
