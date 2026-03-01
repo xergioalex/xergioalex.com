@@ -822,6 +822,7 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 - [Security](docs/SECURITY.md)
 - [Performance](docs/PERFORMANCE.md)
 - [SEO](docs/SEO.md)
+- [Analytics](docs/ANALYTICS.md)
 - [Accessibility](docs/ACCESSIBILITY.md)
 - [Blog Posts](docs/features/BLOG_POSTS.md)
 - [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md)
