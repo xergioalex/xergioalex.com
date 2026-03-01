@@ -386,6 +386,69 @@ Topics are fully searchable. The API (`posts.json`) pre-groups tags by tier. Sea
 
 **Note:** The `demo` tag is only used by demo posts in `_demo/` folders. Demo posts are never visible in production or in blog listings. They are only accessible by direct URL in local dev mode.
 
+## Blog Post Series
+
+Posts can belong to a **series** — a curated sequence of related posts (e.g., a multi-chapter tutorial, a project build log). Series use the same Content Collection pattern as tags: centralized metadata with build-time resolution.
+
+### Architecture
+
+```
+Blog Post: series: "building-xergioalex", seriesOrder: 2
+                    │                              │
+                    ▼                              ▼
+Series Collection: building-xergioalex.md    Sort position
+                    │
+                    ▼
+SeriesNavigation:  TOC + prev/next links
+```
+
+### Series Collection Schema
+
+Each series is a `.md` file in `src/content/series/`:
+
+```yaml
+---
+name: "building-xergioalex"
+title: "Building XergioAleX.com"
+description: "The complete story of building a modern personal website."
+order: 1
+---
+```
+
+### Blog Frontmatter Fields
+
+Add these optional fields to posts that belong to a series:
+
+```yaml
+series: "building-xergioalex"   # References series name
+seriesOrder: 2                   # Chapter number (1, 2, 3...)
+```
+
+### Creating a New Series
+
+1. Create `src/content/series/{series-slug}.md` with `name`, `title`, `description`, `order`
+2. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
+3. The `SeriesNavigation` component renders automatically on posts with series metadata
+
+### SeriesNavigation Component
+
+Located at `src/components/blog/SeriesNavigation.astro`. Renders between post content and Related Articles:
+
+- Series title and description
+- Table of contents listing all chapters (current chapter highlighted)
+- Previous/Next chapter navigation links
+- Bilingual (uses translation keys)
+
+### Key Files
+
+| File | Purpose |
+|------|---------|
+| `src/content/series/*.md` | Series definitions |
+| `src/content.config.ts` | Series collection schema |
+| `src/lib/blog.ts` | `getSeriesNavigation()` utility |
+| `src/lib/types.ts` | `SeriesInfo`, `SeriesPost` types |
+| `src/components/blog/SeriesNavigation.astro` | Navigation component |
+
 ## URL Structure
 
 Blog post URLs are clean (no date prefix):
@@ -404,9 +467,10 @@ Blog post URLs are clean (no date prefix):
 
 | File | Purpose |
 |------|---------|
-| `src/content.config.ts` | Collection schema definition (Zod) — blog + tags collections |
+| `src/content.config.ts` | Collection schema definition (Zod) — blog, tags, and series collections |
 | `src/content/tags/*.md` | Tag definitions with tier, parent, order |
-| `src/lib/blog.ts` | `getPostSlug()`, `getBlogPosts()`, `getRelatedPosts()`, `groupPostTags()`, `getTagTierMap()` |
+| `src/content/series/*.md` | Series definitions with name, title, description |
+| `src/lib/blog.ts` | `getPostSlug()`, `getBlogPosts()`, `getRelatedPosts()`, `groupPostTags()`, `getTagTierMap()`, `getSeriesNavigation()` |
 | `src/lib/translations/{en,es}.ts` | `tagNames` + `tagDescriptions` for all tiers |
 | `src/components/blog/BlogPostHeader.astro` | Hero layout rendering (4 variants) with tier-aware tag display |
 | `src/components/blog/BlogCard.svelte` | Post card in listings with tier-aware tag badges |

@@ -5,6 +5,8 @@ pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development"]
+series: "building-xergioalex"
+seriesOrder: 3
 ---
 
 In the [first post](/blog/building-xergioalex-website/), I told the story of building this site — from a one-page landing with a photo and five social links to a full personal platform with Astro, Svelte, bilingual content, and an AI-ready architecture. In the [second post](/blog/lighthouse-perfect-scores/), I went deep on achieving perfect Lighthouse scores — 100/100/100/100 across Performance, Accessibility, Best Practices, and SEO, on both mobile and desktop.

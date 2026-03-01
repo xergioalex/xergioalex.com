@@ -754,6 +754,25 @@ Topics are fully searchable. The search API (`posts.json`) pre-groups tags by ti
 
 The `parent` field and `subtopic` tier are ready for hierarchical tag browsing (e.g., "Tech > Python > Django"). Adding subtopic tags requires zero code changes — just create `.md` files with `tier: subtopic` and `parent: "python"`
 
+### Blog Post Series
+
+Posts can belong to a **series** — a curated sequence of related posts displayed with chapter navigation. Series use the Content Collection pattern (same as tags).
+
+**How it works:**
+- Series are defined in `src/content/series/{slug}.md` with `name`, `title`, `description`, `order`
+- Blog posts reference a series via `series: "{slug}"` and `seriesOrder: {n}` in frontmatter
+- The `SeriesNavigation` component renders automatically on posts with series metadata (TOC + prev/next)
+
+**Creating a new series:**
+1. Create `src/content/series/{series-slug}.md`
+2. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
+3. Build — the navigation appears automatically
+
+**Current series:**
+- `building-xergioalex` — "Building XergioAleX.com" (4 chapters)
+
+**Key files:** `src/content/series/*.md`, `src/content.config.ts` (series schema), `src/lib/blog.ts` (`getSeriesNavigation()`), `src/components/blog/SeriesNavigation.astro`
+
 ### Blog Post Hero Layouts
 
 Posts support a `heroLayout` frontmatter field:

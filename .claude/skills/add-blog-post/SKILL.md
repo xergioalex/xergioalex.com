@@ -77,7 +77,7 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Directories:** `src/content/blog/en/` and `src/content/blog/es/`
 
-**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`
+**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `series`, `seriesOrder`
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
@@ -90,6 +90,8 @@ The skill auto-detects the mode based on the inputs provided.
 **Secondary tags** (1-3 per post): `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`
 
 **Example:** `tags: ["tech", "portfolio", "python", "database"]` — primary and secondary in one array.
+
+**Series** (optional): If the post belongs to a series, add `series: "{series-slug}"` and `seriesOrder: {n}`. Available series are defined in `src/content/series/`. The `SeriesNavigation` component renders automatically.
 
 **Content lifecycle:**
 - Posts are **published** (visible in production and dev)
