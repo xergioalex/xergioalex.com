@@ -2,7 +2,7 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { BLOG_PAGE_SIZE } from './constances';
-import type { BlogParamsType, BlogPostsResultType } from './types';
+import type { BlogParamsType, BlogPostsResultType, SeriesInfo } from './types';
 
 function heroWebpExists(heroImage: string | undefined): boolean {
   if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
@@ -227,6 +227,52 @@ export async function getBlogPosts(
     totalPostsAvailable: langPosts.length,
   };
   return result;
+}
+
+/**
+ * Get series navigation info for a post that belongs to a series.
+ * Returns series metadata, all posts in order, and prev/next navigation.
+ */
+export async function getSeriesNavigation(
+  seriesSlug: string,
+  currentPostId: string,
+  lang: string
+): Promise<SeriesInfo | null> {
+  const allSeries = await getCollection('series');
+  const seriesEntry = allSeries.find((s) => s.data.name === seriesSlug);
+  if (!seriesEntry) return null;
+
+  const allPosts = await getCollection('blog');
+  const seriesPosts = allPosts
+    .filter(
+      (post) =>
+        post.id.startsWith(`${lang}/`) &&
+        post.data.series === seriesSlug &&
+        post.data.seriesOrder != null &&
+        !isDemoPost(post)
+    )
+    .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+
+  const currentIndex = seriesPosts.findIndex(
+    (post) => post.id === currentPostId
+  );
+  if (currentIndex === -1) return null;
+
+  return {
+    name: seriesEntry.data.name,
+    title: seriesEntry.data.title,
+    description: seriesEntry.data.description,
+    posts: seriesPosts.map((post) => ({
+      post,
+      seriesOrder: post.data.seriesOrder ?? 0,
+    })),
+    currentIndex,
+    previousPost: currentIndex > 0 ? seriesPosts[currentIndex - 1] : null,
+    nextPost:
+      currentIndex < seriesPosts.length - 1
+        ? seriesPosts[currentIndex + 1]
+        : null,
+  };
 }
 
 interface RelatedPostsParams {

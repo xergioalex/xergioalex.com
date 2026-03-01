@@ -22,6 +22,9 @@ const blog = defineCollection({
       .optional(),
     // Unified tags array — tag tier is defined in the tags collection (tier: primary | secondary | subtopic)
     tags: z.array(z.string()).optional(),
+    // Series support — references a series slug from the series collection
+    series: z.string().optional(),
+    seriesOrder: z.number().optional(),
   }),
 });
 
@@ -35,4 +38,14 @@ const tags = defineCollection({
   }),
 });
 
-export const collections = { blog, tags };
+const series = defineCollection({
+  loader: glob({ base: './src/content/series', pattern: '**/*.md' }),
+  schema: z.object({
+    name: z.string(),
+    title: z.string(),
+    description: z.string().optional(),
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { blog, tags, series };
