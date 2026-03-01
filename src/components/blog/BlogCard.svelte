@@ -111,7 +111,8 @@ $: displayDescription = searchQuery
         {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',
-          day: 'numeric'
+          day: 'numeric',
+          timeZone: 'UTC'
         })}
       </time>
       {#if postData.tags && postData.tags.length > 0}

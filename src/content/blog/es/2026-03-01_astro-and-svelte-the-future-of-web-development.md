@@ -1,7 +1,7 @@
 ---
 title: "Astro y Svelte: Por Qué Creo Que Son el Futuro del Desarrollo Web"
 description: "Por qué Astro y Svelte representan un regreso a la simplicidad del desarrollo web — respaldado con datos del State of JS 2025, benchmarks de rendimiento y experiencia real construyendo este mismo sitio."
-pubDate: "2026-02-02"
+pubDate: "2026-03-01"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
 tags: ["tech"]
@@ -375,6 +375,8 @@ En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados hab
 <img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.png" alt="Resultados de Google PageSpeed Insights en mobile para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS y 0.9s Speed Index" width="1208" height="932" loading="lazy" />
 
 Mira esas métricas. En desktop: **0.3s FCP**, **0.3s LCP**, **0ms TBT**, **0 CLS**, y **0.5s Speed Index**. En mobile: **0.9s FCP**, **1.5s LCP**, **0ms TBT**, **0 CLS**, y **0.9s Speed Index**. Todo en verde. Todo perfecto. Lograr un cuádruple 100 en desktop ya es impresionante, pero conseguirlo también en mobile — donde los dispositivos son más lentos, las conexiones más débiles, y la simulación de throttling de Google es mucho más agresiva — es donde está el verdadero desafío. Para un sitio con este nivel de contenido e interactividad, estos números serían extremadamente difíciles de lograr con Vue + Nuxt, React + Next.js, o cualquier framework SPA tradicional — no imposible, pero requeriría significativamente más esfuerzo y trabajo de optimización. Con Astro + Svelte, tomó algo de iteración, pero la arquitectura trabaja *contigo* en lugar de en tu contra. Los defaults del framework ya son rápidos; solo necesitas evitar desacelerarlo activamente.
+
+Si quieres la historia completa de lo que tomó pasar de los excelentes defaults de Astro a un cuádruple 100 perfecto — el Typewriter CSS-only que eliminó JavaScript del critical path, la auditoría de accesibilidad WCAG AA, la optimización de SVGs, la auditoría de directivas de hydration, y más — escribí un deep dive dedicado: [El Camino al 100: Cómo Logré Puntajes Perfectos de Lighthouse en Cada Categoría](/es/blog/lighthouse-perfect-scores/).
 
 ### Por Qué Esto Importa
 

@@ -1,7 +1,7 @@
 ---
 title: "Astro and Svelte: Why I Believe They're the Future of Web Development"
 description: "Why Astro and Svelte represent a return to web development simplicity — backed by data from State of JS 2025, performance benchmarks, and real-world experience building this very website."
-pubDate: "2026-02-02"
+pubDate: "2026-03-01"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
 tags: ["tech"]
@@ -375,6 +375,8 @@ On my own site, [xergioalex.com](https://xergioalex.com), the results speak for 
 <img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.png" alt="Google PageSpeed Insights mobile results for xergioalex.com showing perfect 100 scores in Performance, Accessibility, Best Practices, and SEO — with 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS, and 0.9s Speed Index" width="1208" height="932" loading="lazy" />
 
 Look at those metrics. On desktop: **0.3s FCP**, **0.3s LCP**, **0ms TBT**, **0 CLS**, and **0.5s Speed Index**. On mobile: **0.9s FCP**, **1.5s LCP**, **0ms TBT**, **0 CLS**, and **0.9s Speed Index**. All green. All perfect. Achieving a quadruple 100 on desktop is already impressive, but getting it on mobile too — where devices are slower, connections are weaker, and Google's throttling simulation is far more aggressive — is where the real challenge lies. For a site with this level of content and interactivity, these numbers would be extremely difficult to achieve with Vue + Nuxt, React + Next.js, or any traditional SPA framework — not impossible, but it would require significantly more effort and optimization work. With Astro + Svelte, it took some iteration, but the architecture works *with* you instead of against you. The framework's defaults are already fast; you just need to avoid actively slowing things down.
+
+If you want the complete story of what it took to go from Astro's excellent defaults to a perfect quadruple 100 — the CSS-only Typewriter that eliminated JavaScript from the critical path, the WCAG AA accessibility audit, the SVG optimization, the hydration directive audit, and more — I wrote a dedicated deep dive: [The Road to 100: How I Achieved Perfect Lighthouse Scores on Every Category](/blog/lighthouse-perfect-scores/).
 
 ### Why This Matters
 
