@@ -900,6 +900,13 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   relatedArticles: 'Related Articles',
   relatedArticlesDescription: 'You might also enjoy these posts',
 
+  // Series navigation
+  seriesPartOf: 'Part of the series',
+  seriesChapter: (n) => `Chapter ${n}`,
+  seriesPrevious: 'Previous chapter',
+  seriesNext: 'Next chapter',
+  seriesToC: 'All chapters',
+
   // Tags
   postsTagged: (tag) => `Posts tagged "${tag}"`,
   allTags: 'All Tags',

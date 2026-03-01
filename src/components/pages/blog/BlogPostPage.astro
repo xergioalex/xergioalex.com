@@ -4,12 +4,14 @@ import { render } from 'astro:content';
 import BlogImageLightbox from '@/components/blog/BlogImageLightbox.svelte';
 import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
+import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
 import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
   getReadingTimeFromContent,
   getRelatedPosts,
+  getSeriesNavigation,
   getWordCount,
   groupPostTags,
 } from '@/lib/blog';
@@ -31,6 +33,9 @@ const { Content } = await render(post);
 const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
 const { primaryTags, topicTags } = await groupPostTags(tags ?? []);
+const seriesInfo = post.data.series
+  ? await getSeriesNavigation(post.data.series, post.id, lang)
+  : null;
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
   tags: tags ?? [],
@@ -133,6 +138,7 @@ const breadcrumbData = {
       <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:block prose-img:mx-auto">
         <Content components={{ TypewriterDemo }} />
       </div>
+      {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
     <BlogImageLightbox client:idle />

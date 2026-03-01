@@ -434,6 +434,13 @@ export interface SiteTranslations {
   relatedArticles: string;
   relatedArticlesDescription: string;
 
+  // Series navigation
+  seriesPartOf: string;
+  seriesChapter: (n: number) => string;
+  seriesPrevious: string;
+  seriesNext: string;
+  seriesToC: string;
+
   // Tags (unified — covers primary, secondary, and subtopic tiers)
   postsTagged: (tag: string) => string;
   allTags: string;

@@ -913,6 +913,13 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   relatedArticles: 'Artículos relacionados',
   relatedArticlesDescription: 'También te pueden interesar estos artículos',
 
+  // Series navigation
+  seriesPartOf: 'Parte de la serie',
+  seriesChapter: (n) => `Capítulo ${n}`,
+  seriesPrevious: 'Capítulo anterior',
+  seriesNext: 'Siguiente capítulo',
+  seriesToC: 'Todos los capítulos',
+
   // Tags
   postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
   allTags: 'Todas las etiquetas',
