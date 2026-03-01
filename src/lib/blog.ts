@@ -78,6 +78,87 @@ export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
   return post.id.includes('/_demo/');
 }
 
+/**
+ * Build a lookup map of tag name -> tier from the tags collection.
+ * Cached per call to avoid repeated collection queries within the same build.
+ */
+let _tagTierCache: Map<string, string> | null = null;
+let _hierarchyValidated = false;
+
+/**
+ * Validate tag hierarchy integrity at build time.
+ * Logs warnings for: orphaned parents, primary tags with parent, non-primary parents.
+ * Runs once per build — does NOT throw (warnings only).
+ */
+async function validateTagHierarchy(): Promise<void> {
+  if (_hierarchyValidated) return;
+  _hierarchyValidated = true;
+
+  const allTags = await getCollection('tags');
+  const tagNames = new Set(allTags.map((t) => t.data.name));
+
+  for (const tag of allTags) {
+    if (tag.data.parent && !tagNames.has(tag.data.parent)) {
+      console.warn(
+        `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which does not exist`
+      );
+    }
+    if (tag.data.tier === 'primary' && tag.data.parent) {
+      console.warn(
+        `[tag-validation] Primary tag "${tag.data.name}" should not have a parent`
+      );
+    }
+    if (tag.data.parent) {
+      const parentTag = allTags.find((t) => t.data.name === tag.data.parent);
+      if (parentTag && parentTag.data.tier !== 'primary') {
+        console.warn(
+          `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which is not a primary tag`
+        );
+      }
+    }
+  }
+}
+
+async function getTagTierMap(): Promise<Map<string, string>> {
+  if (_tagTierCache) return _tagTierCache;
+  const allTags = await getCollection('tags');
+  _tagTierCache = new Map(allTags.map((tag) => [tag.data.name, tag.data.tier]));
+  await validateTagHierarchy();
+  return _tagTierCache;
+}
+
+/**
+ * Get the tier of a tag by name. Returns 'primary' if tag is not found in the collection.
+ */
+export async function getTagTier(
+  tagName: string
+): Promise<'primary' | 'secondary' | 'subtopic'> {
+  const tierMap = await getTagTierMap();
+  return (
+    (tierMap.get(tagName) as 'primary' | 'secondary' | 'subtopic') || 'primary'
+  );
+}
+
+/**
+ * Split a post's tags into primary and secondary groups using the tags collection.
+ */
+export async function groupPostTags(
+  tags: string[]
+): Promise<{ primaryTags: string[]; topicTags: string[] }> {
+  const tierMap = await getTagTierMap();
+  const primaryTags: string[] = [];
+  const topicTags: string[] = [];
+  for (const tag of tags) {
+    const tier = tierMap.get(tag) || 'primary';
+    if (tier === 'secondary' || tier === 'subtopic') {
+      topicTags.push(tag);
+    } else {
+      primaryTags.push(tag);
+    }
+  }
+  return { primaryTags, topicTags };
+}
+
 export async function getBlogPosts(
   params: BlogParamsType
 ): Promise<BlogPostsResultType> {
@@ -95,27 +176,15 @@ export async function getBlogPosts(
     new Set(posts.flatMap((post) => post.data.tags ?? []))
   );
 
-  // Get all unique topics that are actually used in visible posts for this language
-  const usedTopics = Array.from(
-    new Set(posts.flatMap((post) => post.data.topics ?? []))
-  );
-
   // Filter tagsResult to only include tags that are used in posts
   const filteredTags = tagsResult.filter((tag) =>
     usedTags.includes(tag.data.name)
   );
 
-  // Filter by tag if specified
+  // Filter by tag if specified (works for both primary and secondary tags)
   if (params.tag) {
     posts = posts.filter((post) =>
       post.data.tags?.includes(params.tag as string)
-    );
-  }
-
-  // Filter by topic if specified
-  if (params.topic) {
-    posts = posts.filter((post) =>
-      post.data.topics?.includes(params.topic as string)
     );
   }
 
@@ -151,7 +220,6 @@ export async function getBlogPosts(
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,
-    topicsResult: usedTopics,
     postsResult: enrichedPosts,
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
@@ -164,19 +232,19 @@ export async function getBlogPosts(
 interface RelatedPostsParams {
   currentPostId: string;
   tags: string[];
-  topics?: string[];
   lang: string;
   limit?: number;
 }
 
 /**
- * Find related posts based on shared tags, with latest-post fallback.
+ * Find related posts based on shared tags (primary weighted 2x, secondary 1x), with latest-post fallback.
  */
 export async function getRelatedPosts(
   params: RelatedPostsParams
 ): Promise<CollectionEntry<'blog'>[]> {
-  const { currentPostId, tags, topics = [], lang, limit = 3 } = params;
+  const { currentPostId, tags, lang, limit = 3 } = params;
   const allPosts = await getCollection('blog');
+  const tierMap = await getTagTierMap();
 
   const candidates = allPosts
     .filter(
@@ -187,21 +255,21 @@ export async function getRelatedPosts(
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-  if ((!tags || tags.length === 0) && (!topics || topics.length === 0)) {
+  if (!tags || tags.length === 0) {
     return candidates.slice(0, limit);
   }
 
   const scoredPosts = candidates
     .map((post) => {
       const postTags = post.data.tags ?? [];
-      const postTopics = post.data.topics ?? [];
-      // Primary tag matches weighted at 2 points, topic matches at 1 point
-      const sharedTagCount =
-        postTags.filter((tag) => tags.includes(tag)).length * 2;
-      const sharedTopicCount = postTopics.filter((topic) =>
-        topics.includes(topic)
-      ).length;
-      const score = sharedTagCount + sharedTopicCount;
+      let score = 0;
+      for (const tag of postTags) {
+        if (tags.includes(tag)) {
+          const tier = tierMap.get(tag) || 'primary';
+          // Primary tag match = 2 points, secondary/subtopic = 1 point
+          score += tier === 'primary' ? 2 : 1;
+        }
+      }
       return { post, score };
     })
     .sort((a, b) => {
