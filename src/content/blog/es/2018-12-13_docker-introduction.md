@@ -63,6 +63,10 @@ En la charla mostré demos en vivo, incluyendo un load balancer con Docker. El c
 
 ---
 
+Si querés un deep dive práctico en Docker — desde Dockerfiles y volúmenes hasta redes y Docker Compose — mirá el [Workshop Introductorio a Docker](/es/blog/docker-introductory-workshop/) que realicé en Rocka Labs.
+
+---
+
 [Ver slides](https://slides.com/xergioalex/docker-introduction)
 
 A seguir construyendo.

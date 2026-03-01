@@ -63,6 +63,10 @@ I showed live demos during the talk, including a load balancer with Docker. The 
 
 ---
 
+If you want a hands-on deep dive into Docker itself — from Dockerfiles and volumes to networks and Docker Compose — check out the [Docker Introductory Workshop](/blog/docker-introductory-workshop/) I conducted at Rocka Labs.
+
+---
+
 [View slides](https://slides.com/xergioalex/docker-introduction)
 
 Let's keep building.
