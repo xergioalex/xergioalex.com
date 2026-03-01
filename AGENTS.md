@@ -627,28 +627,132 @@ Blog posts use date-prefix naming for chronological ordering:
 - Use the post's `pubDate` as the date prefix
 - Use `getPostSlug()` from `@/lib/blog` to extract clean slugs from post IDs
 
-### Blog Tag Taxonomy
+### Blog Tag Taxonomy (Unified Collection)
 
-The blog uses a **two-tier tag system**:
+The blog uses a **unified taxonomy collection** with a single `tags` array in blog post frontmatter. Tag tiers are defined in the tags collection (`src/content/tags/*.md`), NOT in the blog posts themselves.
 
-**Primary tags** (`tags` field) — Section/category classification:
-- `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot`, `demo`
-- 1-2 primary tags per post
-- Displayed as blue badges (`bg-blue-100 text-blue-800`)
-- Routes: `/blog/tag/{tag}/`
+#### Architecture
 
-**Topic tags** (`topics` field) — Content/technology classification:
-- `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`
-- 1-3 topic tags per post (some posts may have 0)
-- Displayed as subtle gray bordered badges
-- Routes: `/blog/topic/{topic}/`
+```
+Blog Post Frontmatter          Tags Collection (src/content/tags/)
+┌────────────────────┐         ┌──────────────────────────────┐
+│ tags:              │         │ tech.md     → tier: primary  │
+│   - tech           │────────►│ python.md   → tier: secondary│
+│   - portfolio      │  build  │ portfolio.md→ tier: primary  │
+│   - python         │  time   │ database.md → tier: secondary│
+│   - database       │ lookup  └──────────────────────────────┘
+└────────────────────┘                      │
+                                            ▼
+                               groupPostTags() splits by tier
+                               ┌─────────────────────────────┐
+                               │ primaryTags: [tech, portfolio]│
+                               │ topicTags: [python, database] │
+                               └─────────────────────────────┘
+```
 
-**Tag governance rules:**
-- Maximum ~15-20 topic tags total to prevent proliferation
-- New topic tag criteria: topic applies to 3+ posts and is expected to recur
-- Topic tag naming: lowercase, kebab-case (e.g., `web-development`)
-- Translations required in both `en.ts` and `es.ts` (`topicNames` + `topicDescriptions`)
-- Periodically audit: remove topics with <3 posts
+**Key principle:** Blog posts store a flat `tags` array. The tier (primary/secondary/subtopic) is resolved at **build time** from the tags collection. Zero runtime cost, zero Lighthouse impact.
+
+#### Three Tiers
+
+| Tier | Purpose | Visual Style | Example Tags |
+|------|---------|-------------|--------------|
+| `primary` | Section/category classification | Blue filled badges | `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot` |
+| `secondary` | Content/technology classification | Gray bordered badges | `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design` |
+| `subtopic` | Fine-grained specialization (future) | Gray bordered badges (same as secondary) | Not yet used — ready for when needed |
+
+#### Tag Collection Schema
+
+Each tag is a `.md` file in `src/content/tags/` with this frontmatter:
+
+```yaml
+---
+name: "python"                    # Tag identifier (must match what's used in blog posts)
+description: "Python ecosystem"   # Optional description
+tier: secondary                   # primary | secondary | subtopic
+parent: "tech"                    # Optional — parent tag for future hierarchical browsing
+order: 6                          # Sort order within tier (all tiers)
+---
+```
+
+#### Current Tags (17 total)
+
+**Primary (7):** `tech` (order: 1), `personal` (2), `portfolio` (3), `talks` (4), `trading` (5), `dailybot` (6), `demo` (99)
+
+**Secondary (10):** All have `parent: "tech"`. `web-development` (order: 1), `javascript` (2), `ai` (3), `blockchain` (4), `devops` (5), `python` (6), `university` (7), `database` (8), `iot` (9), `design` (10)
+
+**Subtopic (0):** None yet — the tier is supported in schema and code but not populated. When needed, use `tier: subtopic` with `parent` referencing a secondary tag (e.g., `parent: "python"`).
+
+#### Key Utilities (`src/lib/blog.ts`)
+
+| Function | Purpose |
+|----------|---------|
+| `getTagTierMap()` | Cached build-time lookup: tag name → tier |
+| `getTagTier(name)` | Get tier of a single tag |
+| `groupPostTags(tags)` | Split unified array into `{ primaryTags, topicTags }` |
+| `getRelatedPosts()` | Weighted scoring: primary match = 2 points, secondary/subtopic = 1 point |
+| `validateTagHierarchy()` | Build-time validation: orphaned parents, primary-with-parent, non-primary parents (warns, doesn't break) |
+
+#### How to Assign Tags to a Blog Post
+
+1. Choose 1-2 **primary tags** (section classification): `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot`
+2. Choose 1-3 **secondary tags** (topic classification): `web-development`, `javascript`, `ai`, etc.
+3. Put ALL of them in a single `tags` array:
+
+```yaml
+tags: ["tech", "portfolio", "python", "database"]
+```
+
+#### How to Add a New Tag
+
+1. Create a `.md` file in `src/content/tags/` (e.g., `typescript.md`)
+2. Set `tier`, `order`, and optionally `parent`
+3. Add translations to both `src/lib/translations/en.ts` and `es.ts` (`tagNames` + `tagDescriptions`)
+4. Use it in blog posts — no schema changes needed
+
+#### Tag Governance Rules
+
+**Creation criteria by tier:**
+
+| Tier | When to create | Who decides | Cap |
+|------|---------------|-------------|-----|
+| Primary | New site section (almost never) | User only, manually | ~8 |
+| Secondary | Topic applies to 3+ posts AND expected to recur | Agent proposes, user approves | ~20 |
+| Subtopic | Topic applies to 3+ posts within parent AND needs granularity | Agent proposes, user approves | ~15 |
+
+**New tag requirements:**
+- Name: lowercase, kebab-case (e.g., `web-development`)
+- Must include: `name`, `description`, `tier`, `order`, and `parent` (for secondary/subtopic)
+- Translations required in both `en.ts` and `es.ts` (`tagNames` + `tagDescriptions`)
+- Maximum 5 total tags per post (1-2 primary + 1-3 secondary/subtopic)
+
+**What agents must NOT do:**
+- Auto-create tags without user approval
+- Use a tag not defined in `src/content/tags/`
+- Skip the 3-post threshold when proposing new tags
+
+**Audit cadence:**
+- Every new post: `add-blog-post` skill checks existing tags, proposes new only if criteria met
+- Every ~20 posts: check for tags with <3 posts (candidates for removal/merger)
+- Build-time: `validateTagHierarchy()` warns about invalid parent references
+
+**All routes unified:** `/blog/tag/{tag}/` handles both primary and secondary tags
+
+#### Visual Rendering
+
+| Context | Primary Tags | Secondary/Subtopic Tags |
+|---------|-------------|------------------------|
+| Blog listing pills | Blue filled `bg-blue-600` (active) / `bg-blue-100` | Gray bordered `border-gray-200` |
+| Blog cards | Blue `bg-blue-100 text-blue-800` with `#` prefix | Gray bordered `border-gray-200 text-gray-600` |
+| Post detail header | Blue filled with `#` prefix | Gray bordered without `#` prefix |
+| Related articles | Blue (max 3 shown) | Gray bordered (max 2 shown) |
+
+#### Search Support
+
+Topics are fully searchable. The search API (`posts.json`) pre-groups tags by tier. Search scoring: title (0.0) > primary tags (0.1) > topics (0.15) > description (0.2).
+
+#### Future Scalability
+
+The `parent` field and `subtopic` tier are ready for hierarchical tag browsing (e.g., "Tech > Python > Django"). Adding subtopic tags requires zero code changes — just create `.md` files with `tier: subtopic` and `parent: "python"`
 
 ### Blog Post Hero Layouts
 

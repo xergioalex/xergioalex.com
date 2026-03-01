@@ -56,7 +56,7 @@ The skill auto-detects the mode based on the inputs provided.
 - `$TITLE`: Post title *(required for content mode, auto-generated in topic mode)*
 - `$DESCRIPTION`: Post excerpt/description *(required for content mode, auto-generated in topic mode)*
 - `$CONTENT`: Pre-written post content in markdown *(triggers content mode)*
-- `$TAGS`: Array of tag names (must exist in `src/content/tags/`)
+- `$TAGS`: Array of tag names — both primary and secondary in one array (must exist in `src/content/tags/`)
 - `$HERO_IMAGE`: Hero image path (from `public/`)
 - `$SLUG`: Custom slug (default: kebab-case of title)
 - `$LANG`: Primary language, `en` or `es` (default: `en`). The other language version will be translated.
@@ -77,15 +77,19 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Directories:** `src/content/blog/en/` and `src/content/blog/es/`
 
-**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `topics`
+**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
 **Image path:** `/images/blog/posts/{slug}/hero.{ext}`
 
-**Available tags:** Check `src/content/tags/` — currently: `personal`, `tech`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
+**Tags (unified array):** All tags go in a single `tags` array. The tier (primary/secondary) is determined by the tags collection, NOT by position in the array.
 
-**Available topics:** `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design` — assign 1-3 per post based on content. See `topicNames` in `src/lib/translations/en.ts` for the full list.
+**Primary tags** (1-2 per post): `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
+
+**Secondary tags** (1-3 per post): `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`
+
+**Example:** `tags: ["tech", "portfolio", "python", "database"]` — primary and secondary in one array.
 
 **Content lifecycle:**
 - Posts are **published** (visible in production and dev)
@@ -98,8 +102,8 @@ The skill auto-detects the mode based on the inputs provided.
 1. Determine mode (topic vs content) based on inputs provided
 2. Check existing articles in `src/content/blog/en/` for voice reference and to avoid overlap
 3. **Read demo posts in `src/content/blog/en/_demo/` as structural references** — these are example articles showcasing different hero layouts (banner, side-by-side, minimal, none), MDX features, rich markdown formatting, and code syntax highlighting. Use them as templates when deciding article structure and formatting.
-4. Check available tags in `src/content/tags/`
-5. **Evaluate topic tags:** Review `topicNames` in `src/lib/translations/en.ts` and assign 1-3 matching topics. If no existing topic fits and the post's subject is a niche one-off, use an empty `topics: []`.
+4. Check available tags in `src/content/tags/` — note which are `tier: primary` and which are `tier: secondary`
+5. **Assign tags:** Choose 1-2 primary tags (section) + 1-3 secondary tags (topic). Put all in a single `tags` array. If no secondary tag fits the content, use only primary tags.
 6. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
 7. **Topic mode only:** Identify the core story or angle. If the brief is too vague, stop and ask for clarification.
 
@@ -167,14 +171,15 @@ description: 'A brief description of what this post is about.'
 pubDate: 'Jan 31 2026'
 heroImage: '/images/blog/posts/post-title-here/hero.jpg'
 heroLayout: 'banner'
-tags: ['tech']
-topics: ['web-development', 'javascript']
+tags: ['tech', 'web-development', 'javascript']
 ---
 
 ## Introduction
 
 Content starts here...
 ```
+
+> **Note:** Primary (`tech`) and secondary (`web-development`, `javascript`) tags go in one `tags` array. Tier is determined by the tags collection, not by position.
 
 See [Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md) for post visibility rules.
 
@@ -348,6 +353,7 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.5.0   | 2026-03-01 | Unified tag taxonomy: removed `topics` field, all tags in single `tags` array. Tier determined by tags collection. |
 | 2.4.0   | 2026-02-28 | Increased max-loc from 600 to 1200 (many posts exceed 600 words). Updated existing post modification guidance to reference content-writer agent. |
 | 2.3.0   | 2026-02-19 | Removed `$DRAFT` parameter, draft/scheduled references. Blog now uses simple published + demo-only model. |
 | 2.2.0   | 2026-02-12 | Added `$DRAFT` parameter, content lifecycle reference, scheduled post support. Links to new Blog Content Lifecycle guide. |
