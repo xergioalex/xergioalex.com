@@ -20,8 +20,8 @@ const blog = defineCollection({
       .enum(['banner', 'side-by-side', 'minimal', 'none'])
       .default('banner')
       .optional(),
+    // Unified tags array — tag tier is defined in the tags collection (tier: primary | secondary | subtopic)
     tags: z.array(z.string()).optional(),
-    topics: z.array(z.string()).optional(),
   }),
 });
 
@@ -29,6 +29,9 @@ const tags = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string().optional(),
+    tier: z.enum(['primary', 'secondary', 'subtopic']).default('primary'),
+    parent: z.string().optional(),
+    order: z.number().default(0),
   }),
 });
 

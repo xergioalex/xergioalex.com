@@ -4,8 +4,7 @@ description: "A deep dive into Satoshi's Bitcoin whitepaper — what makes it re
 pubDate: "2018-11-15"
 heroImage: "/images/blog/posts/bitcoin-paper-analysis/hero.png"
 heroLayout: "banner"
-tags: ["talks", "tech"]
-topics: [blockchain]
+tags: ["talks", "tech", "blockchain"]
 ---
 
 I must have read the [Bitcoin whitepaper](https://bitcoin.org/en/bitcoin-paper) at least a dozen times before giving this talk. Each time I found something new — some elegant detail in Satoshi's design that I had missed before. It's only nine pages, but those nine pages rewired how I think about trust, money, and systems.

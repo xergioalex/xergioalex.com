@@ -4,8 +4,7 @@ description: "La historia detrás de mi primer proyecto web — el trabajo final
 pubDate: "2015-11-27"
 heroImage: "/images/blog/posts/music-library-php/home.gif"
 heroLayout: "banner"
-tags: ["portfolio", "tech", "personal"]
-topics: ["web-development", "university"]
+tags: ["portfolio", "tech", "personal", "web-development", "university"]
 ---
 
 Llevo casi 10 años construyendo para la web, pero no empecé así. Hace poco estaba desempolvando archivos de la universidad y encontré la primera página web que desarrollé. Era el proyecto final del curso de bases de datos — y fue ahí donde tuve mi primer encuentro real con el desarrollo web.

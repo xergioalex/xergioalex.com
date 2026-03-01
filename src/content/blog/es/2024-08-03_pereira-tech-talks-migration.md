@@ -4,8 +4,7 @@ description: "La historia detrás de migrar pereiratechtalks.com — de un Ghost
 pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech"]
-topics: [web-development, devops]
+tags: ["portfolio", "tech", "web-development", "devops"]
 ---
 
 Hace dos días di la charla [Astro en Acción](/es/blog/astro-in-action/) en Pereira. El proyecto estrella de esa noche — la demo en vivo que mostré frente a la audiencia — fue la migración completa de [pereiratechtalks.com](https://www.pereiratechtalks.com/) a Astro. Pero una charla de 45 minutos no alcanza para contar la historia completa. Esto es el deep dive.

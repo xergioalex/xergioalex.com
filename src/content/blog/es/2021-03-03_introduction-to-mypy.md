@@ -4,8 +4,7 @@ description: "Por qué adoptamos type checking en DailyBot — del caos de Pytho
 pubDate: "2021-03-03"
 heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [python]
+tags: ["talks", "tech", "python"]
 ---
 
 Di una charla interna en DailyBot a principios de 2021 sobre **MyPy** y type checking en Python. En ese momento, nuestro codebase de Python estaba creciendo rápido — nuevas integraciones, nuevas features, nuevos ingenieros uniéndose al equipo — y empezábamos a sentir el dolor de trabajar sin tipos.

@@ -4,8 +4,7 @@ description: "Qué cambió entre mayo y agosto de 2023 — mi experiencia en Man
 pubDate: "2023-08-26"
 heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [ai]
+tags: ["talks", "tech", "ai"]
 ---
 
 Tres meses después de Pereira, estaba de vuelta en un escenario — esta vez en Manizales. La misma historia central, pero todo había evolucionado. Entre mayo y agosto de 2023, el panorama de la IA cambió tan rápido que me vi reescribiendo slides la noche anterior. No porque los fundamentos hubieran cambiado, sino porque habíamos cruzado nuevos hitos. Más desarrolladores estaban enviando productos con GPT-4. Más equipos estaban experimentando. Más productos reales se construían sobre IA que no existían un año atrás.

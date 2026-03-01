@@ -4,8 +4,7 @@ description: 'Mi charla en el primer meetup de Pereira Tech Talks — explorando
 pubDate: '2017-10-18'
 heroImage: '/images/blog/posts/tensorflow/event-1.webp'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: [ai, python]
+tags: ["talks", "tech", "ai", "python"]
 ---
 
 Octubre de 2017 fue un hito para la comunidad tech de Pereira. Después de meses de planeación, lanzamos el **primer meetup oficial de Pereira Tech Talks**. El lugar estaba lleno — desarrolladores, estudiantes, emprendedores, todos curiosos sobre el futuro de la tecnología. Dos charlas esa noche: Manuel Pineda sobre AirFlow (orquestación de flujos de trabajo para pipelines de datos), y yo sobre TensorFlow.

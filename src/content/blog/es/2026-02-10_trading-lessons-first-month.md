@@ -5,7 +5,6 @@ pubDate: "2026-02-10"
 heroImage: "/images/blog/shared/blog-placeholder-3.jpg"
 heroLayout: "banner"
 tags: ["trading"]
-topics: []
 ---
 
 Un mes adentro. Se siente como una eternidad y un parpadeo al mismo tiempo. Los mercados tienen una forma de comprimir y estirar el tiempo dependiendo de si estás en una operación o mirando desde la barrera. Esto es lo que he aprendido hasta ahora — las cosas que funcionaron, los errores que cometí, y los patrones que descubrí documentando cada sesión.

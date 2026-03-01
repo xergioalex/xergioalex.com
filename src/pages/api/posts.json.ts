@@ -2,7 +2,12 @@ import { getCollection } from 'astro:content';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { APIRoute } from 'astro';
-import { getPostLanguage, getPostSlug, isDemoPost } from '@/lib/blog';
+import {
+  getPostLanguage,
+  getPostSlug,
+  groupPostTags,
+  isDemoPost,
+} from '@/lib/blog';
 
 function heroWebpExists(heroImage: string | undefined): boolean {
   if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
@@ -20,20 +25,27 @@ export const GET: APIRoute = async () => {
 
     // Create a lightweight search index with language info
     // Filter out demo posts (they are dev-only reference posts)
-    const searchIndex = allPosts
-      .filter((post) => !isDemoPost(post))
-      .map((post) => ({
-        id: post.id,
-        slug: getPostSlug(post.id),
-        lang: getPostLanguage(post.id),
-        title: post.data.title,
-        description: post.data.description,
-        pubDate: post.data.pubDate.toISOString(),
-        tags: post.data.tags || [],
-        topics: post.data.topics || [],
-        heroImage: post.data.heroImage,
-        heroWebpExists: heroWebpExists(post.data.heroImage),
-      }));
+    const visiblePosts = allPosts.filter((post) => !isDemoPost(post));
+
+    // Build search index with pre-grouped tags (primary vs topic)
+    const searchIndex = await Promise.all(
+      visiblePosts.map(async (post) => {
+        const allTags = post.data.tags || [];
+        const { primaryTags, topicTags } = await groupPostTags(allTags);
+        return {
+          id: post.id,
+          slug: getPostSlug(post.id),
+          lang: getPostLanguage(post.id),
+          title: post.data.title,
+          description: post.data.description,
+          pubDate: post.data.pubDate.toISOString(),
+          tags: primaryTags,
+          topics: topicTags,
+          heroImage: post.data.heroImage,
+          heroWebpExists: heroWebpExists(post.data.heroImage),
+        };
+      })
+    );
 
     return new Response(JSON.stringify(searchIndex), {
       status: 200,

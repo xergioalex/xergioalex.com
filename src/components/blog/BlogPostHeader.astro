@@ -77,10 +77,10 @@ const langPrefix = getUrlPrefix(lang);
           <div class="flex flex-wrap justify-center gap-1.5">
             {topics.map((topic) => (
               <a
-                href={`${langPrefix}/blog/topic/${topic}/`}
+                href={`${langPrefix}/blog/tag/${topic}/`}
                 class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
               >
-                {t.topicNames[topic] || topic}
+                {t.tagNames[topic] || topic}
               </a>
             ))}
           </div>
@@ -123,10 +123,10 @@ const langPrefix = getUrlPrefix(lang);
           <div class="flex flex-wrap gap-1.5">
             {topics.map((topic) => (
               <a
-                href={`${langPrefix}/blog/topic/${topic}/`}
+                href={`${langPrefix}/blog/tag/${topic}/`}
                 class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
               >
-                {t.topicNames[topic] || topic}
+                {t.tagNames[topic] || topic}
               </a>
             ))}
           </div>
@@ -193,10 +193,10 @@ const langPrefix = getUrlPrefix(lang);
             <div class="flex flex-wrap gap-1.5">
               {topics.map((topic) => (
                 <a
-                  href={`${langPrefix}/blog/topic/${topic}/`}
+                  href={`${langPrefix}/blog/tag/${topic}/`}
                   class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
                 >
-                  {t.topicNames[topic] || topic}
+                  {t.tagNames[topic] || topic}
                 </a>
               ))}
             </div>
@@ -239,10 +239,10 @@ const langPrefix = getUrlPrefix(lang);
         <div class="flex flex-wrap justify-center gap-1.5">
           {topics.map((topic) => (
             <a
-              href={`${langPrefix}/blog/topic/${topic}/`}
+              href={`${langPrefix}/blog/tag/${topic}/`}
               class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
             >
-              {t.topicNames[topic] || topic}
+              {t.tagNames[topic] || topic}
             </a>
           ))}
         </div>

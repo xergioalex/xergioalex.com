@@ -904,27 +904,14 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   postsTagged: (tag) => `Posts tagged "${tag}"`,
   allTags: 'All Tags',
   tagNames: {
+    // Primary tags
     tech: 'Tech',
     personal: 'Personal',
     talks: 'Talks',
     trading: 'Trading',
     portfolio: 'Portfolio',
     dailybot: 'DailyBot',
-  },
-  tagDescriptions: {
-    tech: 'Tutorials, guides, and technical articles.',
-    personal: 'Articles about my life and experiences.',
-    talks: 'Tech talks, slides, videos, and events.',
-    trading: 'Trading journal, analysis, and learnings.',
-    portfolio: 'Personal projects, software, robotics, and open source work.',
-    dailybot:
-      'DailyBot articles: collaboration platform for human teams and AI agents, workflow automation, and hybrid team productivity.',
-  },
-
-  // Topics (secondary tags)
-  postsWithTopic: (topic) => `Posts about ${topic}`,
-  allTopics: 'All Topics',
-  topicNames: {
+    // Secondary tags (topics)
     'web-development': 'Web Development',
     javascript: 'JavaScript',
     ai: 'AI & ML',
@@ -936,7 +923,16 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     iot: 'IoT',
     design: 'Design',
   },
-  topicDescriptions: {
+  tagDescriptions: {
+    // Primary tags
+    tech: 'Tutorials, guides, and technical articles.',
+    personal: 'Articles about my life and experiences.',
+    talks: 'Tech talks, slides, videos, and events.',
+    trading: 'Trading journal, analysis, and learnings.',
+    portfolio: 'Personal projects, software, robotics, and open source work.',
+    dailybot:
+      'DailyBot articles: collaboration platform for human teams and AI agents, workflow automation, and hybrid team productivity.',
+    // Secondary tags (topics)
     'web-development':
       'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',
     javascript:

@@ -5,7 +5,6 @@ pubDate: "2026-02-01"
 heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
 heroLayout: "banner"
 tags: ["trading"]
-topics: []
 ---
 
 This is the first entry in my trading journal. I've decided to document my journey through the financial markets — the wins, the losses, and everything I learn along the way. Writing things down forces me to think clearly about what I'm doing and why. It's the same principle I use when reviewing code or planning architecture: if you can't explain it, you don't understand it well enough.

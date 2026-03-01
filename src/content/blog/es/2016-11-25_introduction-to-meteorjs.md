@@ -4,8 +4,7 @@ description: 'Mi primera charla tech — construir una app de chat en tiempo rea
 pubDate: '2016-11-25'
 heroImage: '/images/blog/posts/introduction-to-meteorjs/hero.png'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: ["javascript", "web-development"]
+tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
 Esta fue mi **primera charla** en una comunidad tech. La di en [Pereira JS](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) durante una edición especial en la Universidad Tecnológica de Pereira (UTP), junto con la charla de Manuel Pineda sobre P2P y WebTorrent. Fue una gran experiencia — y el tema que elegí fue Meteor.js.

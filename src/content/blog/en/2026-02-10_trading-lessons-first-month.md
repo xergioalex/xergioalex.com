@@ -5,7 +5,6 @@ pubDate: "2026-02-10"
 heroImage: "/images/blog/shared/blog-placeholder-3.jpg"
 heroLayout: "banner"
 tags: ["trading"]
-topics: []
 ---
 
 One month in. It feels like both an eternity and a blink. The markets have a way of compressing and stretching time depending on whether you're in a trade or watching from the sidelines. Here's what I've learned so far — the things that worked, the mistakes I made, and the patterns I discovered by journaling every session.

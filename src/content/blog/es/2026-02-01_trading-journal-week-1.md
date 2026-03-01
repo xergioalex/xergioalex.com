@@ -5,7 +5,6 @@ pubDate: "2026-02-01"
 heroImage: "/images/blog/shared/blog-placeholder-2.jpg"
 heroLayout: "banner"
 tags: ["trading"]
-topics: []
 ---
 
 Esta es la primera entrada de mi diario de trading. He decidido documentar mi camino por los mercados financieros — las ganancias, las pérdidas y todo lo que aprenda en el proceso. Escribir las cosas me obliga a pensar con claridad sobre lo que estoy haciendo y por qué. Es el mismo principio que uso cuando reviso código o planeo arquitectura: si no puedes explicarlo, no lo entiendes lo suficiente.

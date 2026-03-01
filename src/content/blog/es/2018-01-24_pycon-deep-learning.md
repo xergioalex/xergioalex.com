@@ -4,8 +4,7 @@ description: 'Lo que compartí en PyCon Colombia 2018 sobre cómo la matemática
 pubDate: '2018-02-09'
 heroImage: '/images/blog/posts/pycon-deep-learning/hero.jpg'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: [ai, python]
+tags: ["talks", "tech", "ai", "python"]
 ---
 
 PyCon Colombia 2018 fue una experiencia muy especial para mí. Di la charla *Deep Learning: De la Academia a la Práctica* en Medellín y fue una de esas presentaciones donde pude conectar algo que me apasiona — la matemática aplicada — con una audiencia de desarrolladores Python.

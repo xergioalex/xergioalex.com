@@ -4,8 +4,7 @@ description: "La historia completa detrás de XergioAleX.com — de una landing 
 pubDate: "2026-01-22"
 heroImage: "/images/blog/posts/xergioalex-website/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech", "personal"]
-topics: [web-development, javascript]
+tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
 ---
 
 Durante años, mi sitio web personal fue una sola página. Una foto de perfil, mi nombre, "Full Stack Developer" y una fila de iconos de redes sociales. Eso era todo. Dirigía a la gente a mi GitHub, Twitter, Instagram y LinkedIn. Funcionaba — de la misma forma en que una nota adhesiva en una puerta "funciona" como cartel de bienvenida.

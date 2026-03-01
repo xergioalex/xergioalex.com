@@ -4,8 +4,7 @@ description: "The story behind migrating pereiratechtalks.com — from a Dockeri
 pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech"]
-topics: [web-development, devops]
+tags: ["portfolio", "tech", "web-development", "devops"]
 ---
 
 Two days ago I gave the talk [Astro in Action](/blog/astro-in-action/) in Pereira. The flagship project of that evening — the live demo I showed in front of the audience — was the complete migration of [pereiratechtalks.com](https://www.pereiratechtalks.com/) to Astro. But a 45-minute talk isn't enough to tell the full story. This is the deep dive.

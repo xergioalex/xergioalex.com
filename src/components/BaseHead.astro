@@ -194,6 +194,7 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <!-- Analytics: Umami (cookieless, privacy-first) -->
 {ANALYTICS.umami.websiteId && (
   <script
+    is:inline
     defer
     src={ANALYTICS.umami.scriptUrl}
     data-website-id={ANALYTICS.umami.websiteId}

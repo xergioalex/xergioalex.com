@@ -4,8 +4,7 @@ description: "My talk at the first Pereira Tech Talks meetup — exploring Googl
 pubDate: "2017-10-18"
 heroImage: "/images/blog/posts/tensorflow/event-1.webp"
 heroLayout: "banner"
-tags: ["talks", "tech"]
-topics: ["ai", "python"]
+tags: ["talks", "tech", "ai", "python"]
 ---
 
 October 2017 was a milestone for Pereira's tech community. After months of planning, we launched the **first official Pereira Tech Talks meetup**. The room was packed — developers, students, entrepreneurs, all curious about the future of technology. Two talks that night: Manuel Pineda on AirFlow (workflow orchestration for data pipelines), and me on TensorFlow.

@@ -5,20 +5,17 @@ import type { BlogPostsResultType } from '@/lib/types';
 export interface Props {
   blogPostsResult: BlogPostsResultType;
   currentTag?: string;
-  currentTopic?: string;
   lang?: string;
 }
-const { blogPostsResult, currentTag, currentTopic, lang = 'en' } = Astro.props;
+const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
 ---
 
 <StaticBlogSearch
   postsResult={blogPostsResult.postsResult}
   currentTag={currentTag}
-  currentTopic={currentTopic}
   totalPages={blogPostsResult.totalPages}
   currentPage={blogPostsResult.currentPage}
   tagsResult={blogPostsResult.tagsResult}
-  topicsResult={blogPostsResult.topicsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
   lang={lang}
   client:load

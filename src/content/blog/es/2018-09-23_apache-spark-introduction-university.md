@@ -4,8 +4,7 @@ description: "De los RDDs al streaming en tiempo real — cómo construí 11 not
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "talks"]
-topics: [python, database, university]
+tags: ["portfolio", "talks", "python", "database", "university"]
 ---
 
 Para cuando llegué al curso de Big Data en mi maestría, ya tenía una base sólida en múltiples paradigmas de programación. Programación funcional con [Racket](/es/blog/racket-projects-university), pensamiento a nivel de sistema con [C](/es/blog/c-projects-university), diseño orientado a objetos con [Java Swing](/es/blog/oop-java-swing-university-projects), e incluso resolución declarativa de problemas con [Prolog y Mozart/Oz](/es/blog/logic-programming-university). Cada uno me dio una lente diferente para pensar sobre la computación.

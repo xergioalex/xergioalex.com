@@ -4,8 +4,7 @@ description: "Desde mi workshop Vibe Coding e IA en Open Tech Hackathon — cuá
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [ai]
+tags: ["talks", "tech", "ai"]
 ---
 
 Estás en un hackathon. Tienes un fin de semana — tal vez menos — para convertir una idea en algo que funcione. Di este workshop en [Open Tech Hackathon](https://opentechhackathon.com/) porque quería darles a los participantes algo que pudieran usar *ese mismo día*: un mapa de las herramientas de IA que realmente ayudan a entregar, y un modelo mental para usarlas sin perderse en el hype.

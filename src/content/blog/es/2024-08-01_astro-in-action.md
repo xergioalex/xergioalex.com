@@ -4,8 +4,7 @@ description: "Por qué Astro me convenció — casos reales de Microsoft y Fireb
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [web-development, javascript]
+tags: ["talks", "tech", "web-development", "javascript"]
 ---
 
 **Astro en Acción** responde una pregunta que escuchaba seguido: *¿Vale la pena?* Es nuevo. Es solo otro framework web. Quería mostrar por qué Astro destaca — con casos reales, números reales y un proyecto real: migrar [Pereira Tech Talks](https://www.pereiratechtalks.com/) a Astro como la demo de la charla.

@@ -917,28 +917,14 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
   allTags: 'Todas las etiquetas',
   tagNames: {
+    // Primary tags
     tech: 'Tecnología',
     personal: 'Personal',
     talks: 'Charlas',
     trading: 'Trading',
     portfolio: 'Portafolio',
     dailybot: 'DailyBot',
-  },
-  tagDescriptions: {
-    tech: 'Tutoriales, guías y artículos técnicos.',
-    personal: 'Artículos sobre mi vida y experiencias.',
-    talks: 'Charlas técnicas, slides, videos y eventos.',
-    trading: 'Diario de trading, análisis y aprendizajes.',
-    portfolio:
-      'Proyectos personales, software, robótica y trabajo open source.',
-    dailybot:
-      'Artículos sobre DailyBot: plataforma de colaboración para equipos humanos y agentes de IA, automatización de flujos y productividad de equipos híbridos.',
-  },
-
-  // Topics (secondary tags)
-  postsWithTopic: (topic) => `Posts sobre ${topic}`,
-  allTopics: 'Todos los temas',
-  topicNames: {
+    // Secondary tags (topics)
     'web-development': 'Desarrollo Web',
     javascript: 'JavaScript',
     ai: 'IA & ML',
@@ -950,7 +936,17 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     iot: 'IoT',
     design: 'Diseño',
   },
-  topicDescriptions: {
+  tagDescriptions: {
+    // Primary tags
+    tech: 'Tutoriales, guías y artículos técnicos.',
+    personal: 'Artículos sobre mi vida y experiencias.',
+    talks: 'Charlas técnicas, slides, videos y eventos.',
+    trading: 'Diario de trading, análisis y aprendizajes.',
+    portfolio:
+      'Proyectos personales, software, robótica y trabajo open source.',
+    dailybot:
+      'Artículos sobre DailyBot: plataforma de colaboración para equipos humanos y agentes de IA, automatización de flujos y productividad de equipos híbridos.',
+    // Secondary tags (topics)
     'web-development':
       'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',
     javascript:

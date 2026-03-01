@@ -5,7 +5,6 @@ pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "dailybot"]
-topics: []
 ---
 
 Di una charla en una clase de emprendimiento en 2021 sobre encontrar Product Market Fit. No la teoría de un libro — mi experiencia real construyendo productos en [Rocka.co](https://rocka.co), fallando la mayoría del tiempo y eventualmente llegando a algo que funcionó.

@@ -4,8 +4,7 @@ description: 'Por qué el diseño voice-first importa y cómo serverless impulsa
 pubDate: '2019-08-23'
 heroImage: '/images/blog/posts/serverless-iot-voice-interfaces/hero.png'
 heroLayout: 'side-by-side'
-tags: ['talks', 'tech']
-topics: [devops, iot]
+tags: ["talks", "tech", "devops", "iot"]
 ---
 
 Ya había dado charlas sobre serverless antes, pero esta en Manizales Tech Talks tuvo un ángulo diferente: **la voz como nueva interfaz**. No solo funciones serverless o dispositivos IoT en aislamiento, sino la convergencia de las tres — voz, eventos e infraestructura que escala a cero.

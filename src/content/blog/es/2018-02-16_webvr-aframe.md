@@ -4,8 +4,7 @@ description: 'Creando experiencias VR con HTML — mi charla en Pereira Tech Tal
 pubDate: '2018-02-16'
 heroImage: '/images/blog/posts/webvr-aframe/event-1.webp'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: [javascript, web-development]
+tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
 Realidad virtual en la web sin herramientas especializadas ni configuración compleja — esa era la promesa que quería compartir en Pereira Tech Talks. A-Frame es un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción. Si sabés HTML, podés hacer VR.

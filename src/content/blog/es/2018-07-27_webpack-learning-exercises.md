@@ -4,8 +4,7 @@ description: "La historia de sumergirme en Webpack 4 a través de ejercicios pr�
 pubDate: "2018-07-27"
 heroImage: "/images/blog/posts/webpack-learning-exercises/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech"]
-topics: [javascript, web-development]
+tags: ["portfolio", "tech", "javascript", "web-development"]
 ---
 
 Hay un momento en la vida de todo desarrollador front-end cuando las herramientas de build se convierten en el cuello de botella. Te sientes cómodo escribiendo JavaScript, CSS, HTML — el código en sí se siente natural. Pero entonces necesitas usar SASS. E importar imágenes. Y dividir tu código en múltiples bundles. Y transpilar JavaScript moderno para navegadores viejos. Y de repente te das cuenta: no tienes un sistema de build. Tienes un *problema*.

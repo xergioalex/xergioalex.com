@@ -4,8 +4,7 @@ description: "The story of how Programming 2 introduced me to C, pointers, memor
 pubDate: "2018-05-01"
 heroImage: "/images/blog/posts/c-projects-university/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech"]
-topics: [university]
+tags: ["portfolio", "tech", "university"]
 ---
 
 If you read about [my first steps with DrScheme and functional programming](/blog/racket-projects-university), you know that my introduction to code was a sea of parentheses, recursion, and the stubborn absence of `for` loops. Programming 1 taught me to think about *what* I wanted to compute. Programming 2 was about to teach me *how* the computer actually does it.

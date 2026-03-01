@@ -5,7 +5,6 @@ pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "dailybot"]
-topics: []
 ---
 
 I gave a talk at Universidad Tecnológica de Pereira (UTP) in 2022 about how DailyBot got into Y Combinator. Not the highlight reel version — the real story. We applied three times. We got rejected twice. And when we finally got in, it wasn't because the product suddenly became brilliant. It was because we learned how to see our own product clearly and communicate that clarity to others.

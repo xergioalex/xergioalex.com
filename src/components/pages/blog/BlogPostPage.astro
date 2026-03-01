@@ -11,6 +11,7 @@ import {
   getReadingTimeFromContent,
   getRelatedPosts,
   getWordCount,
+  groupPostTags,
 } from '@/lib/blog';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
@@ -25,15 +26,14 @@ const { lang, post } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
-const { heroImage, pubDate, updatedDate, title, description, tags, topics } =
-  post.data;
+const { heroImage, pubDate, updatedDate, title, description, tags } = post.data;
 const { Content } = await render(post);
 const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
+const { primaryTags, topicTags } = await groupPostTags(tags ?? []);
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
   tags: tags ?? [],
-  topics: topics ?? [],
   lang,
   limit: 3,
 });
@@ -125,8 +125,8 @@ const breadcrumbData = {
         updatedDate={updatedDate}
         heroImage={heroImage}
         heroLayout={post.data.heroLayout}
-        tags={tags}
-        topics={topics}
+        tags={primaryTags}
+        topics={topicTags}
         lang={lang}
         readingTimeMinutes={readingTimeMinutes}
       />

@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
-import { getPostSlug } from '@/lib/blog';
+import { getPostSlug, groupPostTags } from '@/lib/blog';
 import { getLocalizedUrl, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -14,6 +14,16 @@ interface Props {
 const { posts, lang } = Astro.props;
 const t = getTranslations(lang);
 const blogPrefix = getLocalizedUrl('/blog', lang);
+
+// Pre-compute grouped tags for each post (build-time only)
+const postsWithGroupedTags = await Promise.all(
+  posts.map(async (post) => {
+    const { primaryTags, topicTags } = await groupPostTags(
+      post.data.tags || []
+    );
+    return { post, primaryTags, topicTags };
+  })
+);
 ---
 
 {
@@ -28,7 +38,7 @@ const blogPrefix = getLocalizedUrl('/blog', lang);
         </p>
       </div>
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => {
+        {postsWithGroupedTags.map(({ post, primaryTags, topicTags }) => {
           const postSlug = getPostSlug(post.id);
           const href = `${blogPrefix}/${postSlug}/`;
           return (
@@ -63,9 +73,9 @@ const blogPrefix = getLocalizedUrl('/blog', lang);
                 <div class="mb-3 text-xs text-gray-600 dark:text-gray-300">
                   <FormattedDate date={post.data.pubDate} lang={lang} />
                 </div>
-                {((post.data.tags && post.data.tags.length > 0) || (post.data.topics && post.data.topics.length > 0)) && (
+                {(primaryTags.length > 0 || topicTags.length > 0) && (
                   <div class="flex flex-wrap gap-1">
-                    {(post.data.tags || []).slice(0, 3).map((tag) => (
+                    {primaryTags.slice(0, 3).map((tag) => (
                       <a
                         href={`${blogPrefix}/tag/${tag}/`}
                         class="rounded bg-blue-100 px-2 py-0.5 text-xs text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
@@ -73,12 +83,12 @@ const blogPrefix = getLocalizedUrl('/blog', lang);
                         #{t.tagNames[tag] || tag}
                       </a>
                     ))}
-                    {(post.data.topics || []).slice(0, 2).map((topic) => (
+                    {topicTags.slice(0, 2).map((topic) => (
                       <a
-                        href={`${blogPrefix}/topic/${topic}/`}
+                        href={`${blogPrefix}/tag/${topic}/`}
                         class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
                       >
-                        {t.topicNames[topic] || topic}
+                        {t.tagNames[topic] || topic}
                       </a>
                     ))}
                   </div>

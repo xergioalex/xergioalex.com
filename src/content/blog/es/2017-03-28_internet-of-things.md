@@ -4,8 +4,7 @@ description: 'Me uní con Alejandro Rendón para explorar IoT — desde sensores
 pubDate: '2017-03-28'
 heroImage: '/images/blog/posts/internet-of-things/hero.jpg'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: ["iot"]
+tags: ["talks", "tech", "iot"]
 ---
 
 El hardware siempre me ha fascinado. Como desarrollador de software que pasa la mayor parte del tiempo en la nube, hay algo profundamente satisfactorio en hacer que cosas físicas se muevan, parpadeen y respondan al mundo. Así que cuando [Alejandro Rendón](https://www.linkedin.com/in/alejorendon/) y yo empezamos a planear una charla para [Pereira Tech Talks](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/), supe que quería sumergirme en el Internet de las Cosas — la tecnología que conecta el software con el mundo físico.

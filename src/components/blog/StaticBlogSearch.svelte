@@ -11,11 +11,9 @@ import SearchResults from './SearchResults.svelte';
 
 export let postsResult;
 export let currentTag;
-export let currentTopic;
 export let totalPages;
 export let currentPage;
 export let tagsResult = [];
-export let topicsResult = [];
 export let totalPostsAvailable = 0;
 export let lang = 'en';
 
@@ -25,8 +23,16 @@ const DEBOUNCE_MS = 200;
 // Get translations based on language
 $: t = getTranslations(lang);
 
-// Extract tag names
-$: displayTags = tagsResult.map((tag) => tag.data.name);
+// Group tags by tier for BlogHeader
+$: primaryTags = tagsResult
+  .filter((tag) => tag.data.tier === 'primary')
+  .map((tag) => tag.data.name);
+$: topicTags = tagsResult
+  .filter(
+    (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
+  )
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .map((tag) => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];
@@ -48,8 +54,8 @@ let searchPagination = {
 let searchCache = new Map();
 const MAX_CACHE_SIZE = 50;
 
-function getCacheKey(query, tag, topic) {
-  return `${query || ''}-${tag || ''}-${topic || ''}`;
+function getCacheKey(query, tag) {
+  return `${query || ''}-${tag || ''}`;
 }
 
 function clearCache() {
@@ -112,7 +118,7 @@ function performSearch(query, page = 1) {
   isSearching = true;
 
   // Check cache first (for pagination)
-  const cacheKey = getCacheKey(query, currentTag, currentTopic);
+  const cacheKey = getCacheKey(query, currentTag);
   const cached = searchCache.get(cacheKey);
 
   // Use cached full results if available
@@ -123,16 +129,13 @@ function performSearch(query, page = 1) {
     // Use Fuse.js for fuzzy search
     const fuseResults = searchPosts(fuseIndex, query);
 
-    // Filter by tag or topic if specified
+    // Filter by tag if specified (handles both primary and secondary tags)
     filteredResults = fuseResults;
     if (currentTag) {
-      filteredResults = filteredResults.filter((result) =>
-        result.item.tags.includes(currentTag)
-      );
-    }
-    if (currentTopic) {
-      filteredResults = filteredResults.filter((result) =>
-        result.item.topics?.includes(currentTopic)
+      filteredResults = filteredResults.filter(
+        (result) =>
+          result.item.tags.includes(currentTag) ||
+          result.item.topics?.includes(currentTag)
       );
     }
 
@@ -231,10 +234,9 @@ onMount(() => {
 <div class="main-container py-12 sm:py-16 lg:py-24">
   <BlogHeader
     {currentTag}
-    {currentTopic}
-    tagsResult={displayTags}
-    {topicsResult}
-    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag || currentTopic ? postsResult.length : totalPostsAvailable)}
+    tagsResult={primaryTags}
+    topicTags={topicTags}
+    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
     currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
     totalPages={isSearching ? searchPagination.totalPages : totalPages}
@@ -284,7 +286,7 @@ onMount(() => {
       <p class="mt-2 text-gray-600 dark:text-gray-300">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} topicTagNames={topicTags} />
     {#if searchPagination.totalPages > 1}
       <BlogPagination
         currentPage={searchPagination.currentPage}
@@ -303,6 +305,7 @@ onMount(() => {
       {totalPages}
       {currentTag}
       {lang}
+      topicTagNames={topicTags}
     />
 
     {#if totalPages > 1}

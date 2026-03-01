@@ -4,8 +4,7 @@ description: "La historia de mi curso de Estructuras de Datos en la universidad 
 pubDate: "2018-05-15"
 heroImage: "/images/blog/posts/data-structures-java-university/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech"]
-topics: [university]
+tags: ["portfolio", "tech", "university"]
 ---
 
 Si [Programación 1 con DrScheme](/es/blog/racket-projects-university/) me enseñó a pensar, [Programación 2 con C](/es/blog/c-projects-university/) me enseñó lo que la máquina realmente hacía, y [POO](/es/blog/oop-java-swing-university-projects/) me enseñó a diseñar sistemas bien arquitectados — entonces Estructuras de Datos fue la materia donde todo eso convergió en una sola pregunta: **¿cómo organizas tus datos para que tu programa sea eficiente?**

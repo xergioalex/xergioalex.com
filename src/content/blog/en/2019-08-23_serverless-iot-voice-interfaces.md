@@ -4,8 +4,7 @@ description: "Why voice-first design matters and how serverless powers the futur
 pubDate: "2019-08-23"
 heroImage: "/images/blog/posts/serverless-iot-voice-interfaces/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [devops, iot]
+tags: ["talks", "tech", "devops", "iot"]
 ---
 
 I've given talks on serverless before, but this one at Manizales Tech Talks had a different angle: **voice as the new interface**. Not just serverless functions or IoT devices in isolation, but the convergence of all three — voice, events, and infrastructure that scales to zero.

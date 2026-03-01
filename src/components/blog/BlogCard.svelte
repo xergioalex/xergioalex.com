@@ -11,6 +11,7 @@ export let searchQuery: string = '';
 export let searchResult:
   | { item: any; score: number; matches?: any[] }
   | undefined = undefined;
+export let topicTagNames: string[] = [];
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
@@ -33,16 +34,20 @@ function getPostSlug(): string {
 function getPostData() {
   // If post has data property (CollectionEntry structure)
   if (post.data) {
+    // Split unified tags array using topicTagNames lookup
+    const allTags = post.data.tags || [];
+    const primary = allTags.filter((t) => !topicTagNames.includes(t));
+    const secondary = allTags.filter((t) => topicTagNames.includes(t));
     return {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      tags: post.data.tags || [],
-      topics: post.data.topics || [],
+      tags: primary,
+      topics: secondary,
       heroImage: post.data.heroImage,
     };
   }
-  // If post is flat structure (search index)
+  // If post is flat structure (search index) — already pre-grouped by API
   return {
     title: post.title,
     description: post.description,
@@ -53,7 +58,8 @@ function getPostData() {
   };
 }
 
-$: postData = getPostData();
+// Reference post and topicTagNames so Svelte re-runs when they change
+$: postData = (post, topicTagNames, getPostData());
 $: postSlug = getPostSlug();
 
 // Get highlighted title and description if search result is available
@@ -129,10 +135,10 @@ $: displayDescription = searchQuery
           {/each}
           {#each postData.topics as topic}
             <a
-              href={`${prefix}/blog/topic/${topic}/`}
+              href={`${prefix}/blog/tag/${topic}/`}
               class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
             >
-              {t.topicNames[topic] || topic}
+              {t.tagNames[topic] || topic}
             </a>
           {/each}
         </div>

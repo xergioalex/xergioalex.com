@@ -4,8 +4,7 @@ description: 'Por qué los estilos importan en frameworks basados en componentes
 pubDate: '2019-10-25'
 heroImage: '/images/blog/posts/vue-vixens-styles/hero.png'
 heroLayout: 'side-by-side'
-tags: ['talks', 'tech']
-topics: [javascript, web-development, design]
+tags: ["talks", "tech", "javascript", "web-development", "design"]
 ---
 
 Los estilos son la mitad de la historia del desarrollo front-end, pero a menudo se tratan como una ocurrencia tardía. Vue.js recibe mucha atención por su modelo de datos reactivo y arquitectura de componentes, pero una de sus mejores características es cómo maneja **CSS**. Esta charla en **Vue Vixens Day Pereira** fue sobre hacer que los estilos sean accesibles, modulares y poderosos.

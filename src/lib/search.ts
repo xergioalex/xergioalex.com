@@ -13,6 +13,7 @@ export interface SearchablePost {
   title: string;
   description: string;
   tags: string[];
+  topics?: string[];
   pubDate: string;
   heroImage?: string;
 }
@@ -62,10 +63,19 @@ export function searchPosts(
     const titleMatch = post.title.toLowerCase().includes(q);
     const descMatch = post.description.toLowerCase().includes(q);
     const tagsMatch = post.tags.some((tag) => tag.toLowerCase().includes(q));
+    const topicsMatch = (post.topics || []).some((topic) =>
+      topic.toLowerCase().includes(q)
+    );
 
-    if (titleMatch || descMatch || tagsMatch) {
-      // Score: lower is better (title match = best, then tags, then description)
-      const score = titleMatch ? 0.0 : tagsMatch ? 0.1 : 0.2;
+    if (titleMatch || descMatch || tagsMatch || topicsMatch) {
+      // Score: lower is better (title > primary tags > topics > description)
+      const score = titleMatch
+        ? 0.0
+        : tagsMatch
+          ? 0.1
+          : topicsMatch
+            ? 0.15
+            : 0.2;
       results.push({ item: post, score });
     }
   }

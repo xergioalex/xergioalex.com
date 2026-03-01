@@ -4,8 +4,7 @@ description: "The story behind the XergioAleX ninja coder brand — from concept
 pubDate: "2020-12-31"
 heroImage: "/images/blog/posts/personal-branding-xergioalex/hero.jpg"
 heroLayout: "side-by-side"
-tags: ["portfolio", "personal"]
-topics: [design]
+tags: ["portfolio", "personal", "design"]
 ---
 
 I spent years building products, writing code, and shipping features — but I never really thought about how I presented myself visually. My GitHub profile, my talks, my social media... everything felt disconnected. At some point I realized I wanted something that tied it all together. Something that felt like *me*.

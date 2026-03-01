@@ -4,8 +4,7 @@ description: "Why we adopted type checking at DailyBot — from untyped Python c
 pubDate: "2021-03-03"
 heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [python]
+tags: ["talks", "tech", "python"]
 ---
 
 I gave an internal talk at DailyBot in early 2021 about **MyPy** and type checking in Python. At the time, our Python codebase was growing fast — new integrations, new features, new engineers joining the team — and we were starting to feel the pain of working without types.

@@ -4,8 +4,7 @@ description: "Mi viaje a las arquitecturas serverless y por qué cambiaron cómo
 pubDate: "2019-03-03"
 heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
 heroLayout: "banner"
-tags: ["talks", "tech"]
-topics: [devops, iot]
+tags: ["talks", "tech", "devops", "iot"]
 ---
 
 Recuerdo la primera vez que desplegué una función Lambda. Se sintió como magia — escribes una función, la subes, y de repente está corriendo en respuesta a eventos sin que te preocupes por servidores, escalado o infraestructura. Ese cambio de mentalidad es lo que quise compartir en esta charla sobre arquitecturas serverless con enfoque en IoT.

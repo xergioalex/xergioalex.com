@@ -4,8 +4,7 @@ description: "Un workshop práctico de Docker en Rocka Labs — desde contenedor
 pubDate: "2019-03-16"
 heroImage: "/images/blog/posts/docker-introductory-workshop/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [devops]
+tags: ["talks", "tech", "devops"]
 ---
 
 Si ya leíste mi post anterior sobre [Introducción a Docker](/es/blog/docker-introduction/), sabés que cubrí Docker desde el ángulo de los microservicios — la filosofía detrás de los contenedores y cómo encajan en arquitecturas modernas. Este workshop en **Rocka Labs** fue diferente: nos enfocamos en Docker en profundidad. Sin rodeos, sin teoría abstracta. Comandos reales, casos de uso reales, y suficiente práctica para que puedas arrancar desde cero.

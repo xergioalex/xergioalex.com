@@ -3,9 +3,8 @@ import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 export let currentTag;
-export let currentTopic = '';
 export let tagsResult;
-export let topicsResult = [];
+export let topicTags = [];
 export let totalPosts = 0;
 export let currentPagePosts = 0;
 export let currentPage = 1;
@@ -15,17 +14,16 @@ export let lang = 'en';
 $: t = getTranslations(lang);
 $: basePrefix = getUrlPrefix(lang);
 
+// Check if currentTag is a topic (secondary) tag
+$: isTopicActive = topicTags.includes(currentTag);
+
 // Translations for header content
-$: headerTitle = currentTopic
-  ? t.postsWithTopic(t.topicNames[currentTopic] || currentTopic)
-  : currentTag
-    ? t.postsTagged(t.tagNames[currentTag] || currentTag)
-    : t.blogDescription;
-$: headerSubtitle = currentTopic
-  ? t.topicDescriptions[currentTopic] || ''
-  : currentTag
-    ? t.tagDescriptions[currentTag] || t.blogDescription
-    : t.blogDescription;
+$: headerTitle = currentTag
+  ? t.postsTagged(t.tagNames[currentTag] || currentTag)
+  : t.blogDescription;
+$: headerSubtitle = currentTag
+  ? t.tagDescriptions[currentTag] || t.blogDescription
+  : t.blogDescription;
 $: showingText = t.showingArticles(currentPagePosts, totalPosts);
 $: availableText = t.articlesAvailable(totalPosts);
 </script>
@@ -51,26 +49,27 @@ $: availableText = t.articlesAvailable(totalPosts);
   {/if}
 </div>
 
-<div class="mb-10 flex flex-wrap gap-2">
+<!-- Primary tag pills -->
+<div class="mb-4 flex flex-wrap gap-2">
   <!-- Link to all articles -->
   <a
     href={`${basePrefix}/blog/`}
     class={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
       !currentTag
-        ? "bg-blue-500 text-white shadow-sm"
+        ? "bg-blue-600 text-white shadow-sm"
         : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
     }`}
   >
     {t.allPosts}
   </a>
 
-  <!-- Individual tags -->
+  <!-- Primary tags -->
   {#each tagsResult as tag}
     <a
       href={`${basePrefix}/blog/tag/${tag}/`}
       class={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
         currentTag === tag
-          ? "bg-blue-500 text-white shadow-sm"
+          ? "bg-blue-600 text-white shadow-sm"
           : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
       }`}
     >
@@ -79,19 +78,20 @@ $: availableText = t.articlesAvailable(totalPosts);
   {/each}
 </div>
 
-{#if topicsResult && topicsResult.length > 0}
+<!-- Topic tag pills (secondary tier) -->
+{#if topicTags && topicTags.length > 0}
   <div class="mb-10 flex flex-wrap gap-1.5">
-    {#each topicsResult as topic}
+    {#each topicTags as topic}
       <a
-        href={`${basePrefix}/blog/topic/${topic}/`}
+        href={`${basePrefix}/blog/tag/${topic}/`}
         class={`rounded-full px-2.5 py-0.5 text-xs transition-colors ${
-          currentTopic === topic
+          currentTag === topic
             ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
             : "border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
         }`}
       >
-        {t.topicNames[topic] || topic}
+        {t.tagNames[topic] || topic}
       </a>
     {/each}
   </div>
-{/if} 
+{/if}

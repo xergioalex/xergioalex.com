@@ -4,8 +4,7 @@ description: 'Por qué blockchain es más que criptomonedas — aplicaciones rea
 pubDate: '2018-04-14'
 heroImage: '/images/blog/posts/blockchain-industrial-revolution/blockchain-2.webp'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: [blockchain]
+tags: ["talks", "tech", "blockchain"]
 ---
 
 Cuando di esta charla en Pereira Tech Talks sabía que tenía un desafío: todo el mundo había escuchado sobre Bitcoin, pero la mayoría todavía pensaba que blockchain era solo "esa cosa de criptomonedas". Mi objetivo era mostrarles que blockchain es para internet lo que la máquina de vapor fue para la manufactura — un cambio fundamental en cómo funcionan los sistemas.

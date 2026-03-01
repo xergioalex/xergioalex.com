@@ -4,8 +4,7 @@ description: "Dos proyectos universitarios de mi curso de Programacion Orientada
 pubDate: "2018-05-02"
 heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech"]
-topics: [university]
+tags: ["portfolio", "tech", "university"]
 ---
 
 Hay un momento en que programar deja de ser "cosas que funcionan" y se convierte en "sistemas que tienen sentido". Para mí, ese momento llegó en Programación Orientada a Objetos — no cuando aprendí qué es una clase, ni qué hace la herencia, sino cuando descubrí que existen *soluciones con nombre* para problemas comunes. Que alguien, décadas atrás, se sentó a identificar patrones recurrentes en cómo se construía el buen software, les puso nombre, y los dejó escritos.

@@ -434,17 +434,11 @@ export interface SiteTranslations {
   relatedArticles: string;
   relatedArticlesDescription: string;
 
-  // Tags
+  // Tags (unified — covers primary, secondary, and subtopic tiers)
   postsTagged: (tag: string) => string;
   allTags: string;
   tagNames: Record<string, string>;
   tagDescriptions: Record<string, string>;
-
-  // Topics (secondary tags)
-  postsWithTopic: (topic: string) => string;
-  allTopics: string;
-  topicNames: Record<string, string>;
-  topicDescriptions: Record<string, string>;
 
   // Date formatting
   dateLocale: string;

@@ -4,8 +4,7 @@ description: "Una reflexión personal desde mi presentación en Pereira Tech Tal
 pubDate: "2023-05-17"
 heroImage: "/images/blog/shared/ai-rebirth-hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [ai]
+tags: ["talks", "tech", "ai"]
 ---
 
 **AI Rebirth** explora el despertar de la inteligencia artificial — y por qué estamos al inicio de algo real. No quería dar una charla genérica. Quería compartir lo que estaba viendo de verdad: una revolución que acababa de despertar. Algo que vivía todos los días en DailyBot.

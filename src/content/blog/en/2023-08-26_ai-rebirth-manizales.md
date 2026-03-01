@@ -4,8 +4,7 @@ description: "What changed between May and August 2023 — my Manizales Tech Tal
 pubDate: "2023-08-26"
 heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [ai]
+tags: ["talks", "tech", "ai"]
 ---
 
 Three months after Pereira, I was back on stage — this time in Manizales. Same core story, but everything had evolved. Between May and August 2023, the AI landscape shifted fast enough that I found myself rewriting slides the night before. Not because the foundation changed, but because we'd crossed new milestones. More developers were shipping with GPT-4. More teams were experimenting. More real products were being built on AI that didn't exist a year ago.

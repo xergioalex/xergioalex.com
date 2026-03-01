@@ -4,8 +4,7 @@ description: "From my Pereira Tech Talks co-presentation with Sebastián Mora �
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [ai]
+tags: ["talks", "tech", "ai"]
 ---
 
 I didn't want to give another generic AI overview. I wanted to share what I've been living every day — the shift from writing code to **orchestrating agents**. Design, plan, supervise. That's the job now. And in this new era, knowing architecture, product, and design — and learning to delegate — matters more than ever.

@@ -4,8 +4,7 @@ description: "How Webpack transformed front-end development — my talk breaking
 pubDate: "2018-12-26"
 heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
-topics: [javascript, web-development]
+tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
 Webpack changed how we think about front-end builds. For this talk, I wanted to demystify the tool that many developers find overwhelming at first. Webpack isn't just a module bundler — it's a mindset shift. It takes modules with dependencies (`.js`, `.css`, `.coffee`, `.less`, `.jade`, images) and turns them into optimized static assets. Divide and conquer.

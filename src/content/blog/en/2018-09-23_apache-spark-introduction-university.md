@@ -4,8 +4,7 @@ description: "From RDDs to real-time streaming — how I built 11 hands-on noteb
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "talks"]
-topics: [python, database, university]
+tags: ["portfolio", "talks", "python", "database", "university"]
 ---
 
 By the time I reached the Big Data course in my master's program, I'd built a solid foundation across multiple programming paradigms. Functional programming with [Racket](/blog/racket-projects-university), systems-level thinking with [C](/blog/c-projects-university), object-oriented design with [Java Swing](/blog/oop-java-swing-university-projects), and even declarative problem-solving with [Prolog and Mozart/Oz](/blog/logic-programming-university). Each one gave me a different lens for thinking about computation.

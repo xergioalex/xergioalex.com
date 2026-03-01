@@ -4,8 +4,7 @@ description: "The complete story behind XergioAleX.com — from a one-page landi
 pubDate: "2026-01-22"
 heroImage: "/images/blog/posts/xergioalex-website/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech", "personal"]
-topics: [web-development, javascript]
+tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
 ---
 
 For years, my personal website was a single page. A profile photo, my name, "Full Stack Developer," and a row of social media icons. That was it. It pointed people to my GitHub, Twitter, Instagram, and LinkedIn. It worked — in the same way a sticky note on a door "works" as a welcome sign.

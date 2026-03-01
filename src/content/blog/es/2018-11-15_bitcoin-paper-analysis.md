@@ -4,8 +4,7 @@ description: 'Una inmersión profunda en el whitepaper de Bitcoin de Satoshi —
 pubDate: '2018-11-15'
 heroImage: '/images/blog/posts/bitcoin-paper-analysis/hero.png'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
-topics: [blockchain]
+tags: ["talks", "tech", "blockchain"]
 ---
 
 Debo haber leído el [whitepaper de Bitcoin](https://bitcoin.org/en/bitcoin-paper) al menos una docena de veces antes de dar esta charla. Cada vez encontraba algo nuevo — algún detalle elegante en el diseño de Satoshi que había pasado por alto. Son solo nueve páginas, pero esas nueve páginas recablearon mi forma de pensar sobre confianza, dinero y sistemas.
