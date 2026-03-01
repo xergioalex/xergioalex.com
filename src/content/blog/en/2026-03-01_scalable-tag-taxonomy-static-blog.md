@@ -1,0 +1,461 @@
+---
+title: 'Building a Blog Without a Backend: Architecture for Scale and Performance'
+description: 'The fourth chapter of building XergioAleX.com — how the entire blog system works: Content Collections as a data layer, tag taxonomy, client-side search, bilingual content, and why every piece of complexity lives in the build, not the browser.'
+pubDate: '2026-03-01'
+heroLayout: 'none'
+tags: ['tech', 'portfolio', 'web-development']
+---
+
+In [chapter one](/blog/building-xergioalex-website/), I built the site — Astro, Svelte, Content Collections, bilingual content, the whole architecture from scratch. In [chapter two](/blog/lighthouse-perfect-scores/), I optimized it until every Lighthouse category hit 100. In [chapter three](/blog/measuring-what-matters-free-analytics/), I added a complete analytics stack without losing those scores or adding a single cookie banner.
+
+The site was built, fast, indexed, and measured.
+
+But running a blog is not the same as running a site. A site is a set of pages. A blog is a system — posts that need to be discovered, filtered, searched, grouped, related to each other, and served to readers in multiple languages. At ten posts, that is trivial. At fifty posts, you start feeling the structure. At two hundred posts, the architecture either holds or it doesn't.
+
+Chapter four: how the blog actually works.
+
+---
+
+## Content Collections: The Blog's Data Layer
+
+The foundation of the entire blog is Astro's [Content Collections](https://docs.astro.build/en/guides/content-collections/) API. If you have not worked with it, the mental model is simple: instead of blog posts being raw Markdown files that you parse manually, they are entries in a typed, schema-validated collection that Astro queries at build time.
+
+Here is what the schema looks like:
+
+```typescript
+// src/content.config.ts
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
+      .default('banner')
+      .optional(),
+    tags: z.array(z.string()).optional(),
+  }),
+});
+```
+
+[Zod](https://zod.dev/) validates every post at build time. If a post is missing `title`, or if `pubDate` is malformed, or if `heroLayout` gets a value that is not in the enum, the build fails immediately with a clear error message. No runtime surprises. No posts with broken dates making it to production because nobody noticed.
+
+Querying posts looks like this:
+
+```typescript
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ id }) => !id.includes('/_demo/'));
+```
+
+The result is a typed array. Every element has `post.data.title`, `post.data.pubDate`, `post.data.tags` — all properly typed based on the Zod schema. TypeScript will catch a typo like `post.data.titel` at compile time, not at runtime on a live page.
+
+This is the part that makes scaling to hundreds of posts manageable. The content is data. The structure is enforced. The queries are typed. You can add any field to the schema and immediately use it everywhere, knowing the build will catch anything you missed.
+
+### File naming as metadata
+
+Posts use a date-prefix naming convention: `YYYY-MM-DD_slug.md`. The `2026-03-01_scalable-tag-taxonomy-static-blog.md` file you are reading right now is a direct example. The date prefix gives files a natural sort order in the filesystem. A utility function called `getPostSlug()` strips the prefix to generate clean URLs — so `/blog/scalable-tag-taxonomy-static-blog/` is what readers see, not `/blog/2026-03-01_scalable-tag-taxonomy-static-blog/`.
+
+The bilingual directory structure mirrors this exactly:
+
+```
+src/content/blog/
+├── en/
+│   └── 2026-03-01_scalable-tag-taxonomy-static-blog.md
+└── es/
+    └── 2026-03-01_scalable-tag-taxonomy-static-blog.md
+```
+
+Same slug, same date, two languages. I will come back to how the bilingual side works in a later section.
+
+---
+
+## The Blog System: What Gets Computed at Build Time
+
+The blog system is made up of several interconnected pieces. All of them have one thing in common: every computation happens at build time, and the browser receives pre-rendered HTML.
+
+### Listing, pagination, and filtering
+
+The blog listing page displays posts sorted by publication date, newest first. Pagination splits them into groups of nine. Tag filtering lets readers see all posts under a given tag — `/blog/tag/python/` shows only Python posts. Related articles at the bottom of each post shows the three most topically similar posts based on shared tags.
+
+None of this involves a server query. When you hit `/blog/page/2/`, Astro pre-generated that page at build time. When you hit `/blog/tag/python/`, Astro already ran the filter and generated that page. Dynamic routes in Astro are a build-time concept — the `[page]` and `[tag]` in file names tell Astro to generate one static page per value, computed by `getStaticPaths()`.
+
+```typescript
+// src/pages/blog/tag/[tag].astro
+export async function getStaticPaths() {
+  const posts = await getPublishedBlogPosts();
+  const allTags = [...new Set(posts.flatMap((p) => p.data.tags ?? []))];
+  return allTags.map((tag) => ({ params: { tag } }));
+}
+```
+
+Every tag that exists in any post gets a page. If I publish a post tomorrow with a new tag, the next deploy generates that tag's page. Zero configuration needed.
+
+### Reading time
+
+Each post header shows an estimated reading time. This is computed at build time by counting words in the post body and dividing by an average reading speed. By the time the HTML reaches a browser, it is just a string: "8 min read." No client-side computation, no JavaScript required.
+
+### Hero image layouts
+
+Posts support four hero layouts: `banner` (full-width image above the title), `side-by-side` (image right, title left, responsive stacking), `minimal` (small thumbnail), and `none` (text-only, like this post). The layout is a frontmatter field that components read at build time. Choosing the right layout for a post's image aspect ratio — landscape images get `banner`, square images get `side-by-side` — makes every post look intentional rather than awkward.
+
+---
+
+## Organizing Content: The Tag Taxonomy
+
+Here is where things get interesting. When I launched the site with 15 posts, I had six top-level tags: `tech`, `personal`, `portfolio`, `talks`, `trading`, `dailybot`. Six drawers. Clear enough.
+
+By the time I had 51 posts, every technical post was tagged `tech`. That included Django, MongoDB, Webpack, WebVR, GraphQL, Golang, Meteor.js, Docker, blockchain, TensorFlow, Spark, and the Astro site itself. Clicking `tech` returned everything I had ever written on any technical topic. Which is about as useful as a library that shelves every book under "Nonfiction."
+
+At 200 posts — where this site is heading — that flat structure would be genuinely unusable.
+
+### First attempt: a separate `topics` field
+
+The obvious fix was obvious: add a second frontmatter field.
+
+```yaml
+# Early approach — separate fields
+tags: ["tech"]
+topics: ["python", "database"]
+```
+
+I updated the schema with a validated enum for topic values, migrated all 51 posts, and updated the components to render topic badges differently from primary tag badges. It worked. A post tagged `python` was now discoverable by anyone looking for Python content, even if the word "python" did not appear in the title.
+
+For 51 posts, this is completely fine. But I kept thinking about where it was going.
+
+Three months in, I started seeing the cracks.
+
+The first problem was extensibility. With the enum approach, adding a new topic meant editing `content.config.ts` — a code change, not a content change. For a system built around content-as-data, that felt wrong.
+
+The second problem was metadata poverty. Each topic was just a string in an enum. There was nowhere to store a description, a display order, or a parent relationship. If I wanted to build a `/blog/tag/python/` page with a curated description and a list of related topics, I had nowhere to put that information.
+
+The third problem was the deeper architectural one: tier information lived in the wrong place. Whether `python` was primary or secondary was encoded in which array it appeared in on each individual post. Understand the taxonomy structure? Read thousands of frontmatter files. That kind of distributed definition diverges silently over time.
+
+And then the question I ask about every architecture decision: what if I have 1000 posts?
+
+At 1000 posts, a migration because I added a new enum value is a real cost. At 1000 posts, scattered tier definitions across thousands of files is a maintenance problem. I went back to the drawing board.
+
+### The unified collection architecture
+
+The key insight: **tag tier is a property of the tag, not a property of the post.**
+
+`python` is a secondary topic not because of how any individual post uses it, but because that is what `python` *is* in this taxonomy. The tier definition should live with the tag's own definition, not distributed across every post that uses it.
+
+This is the architecture I have now. Every blog post uses a single `tags` array:
+
+```yaml
+# src/content/blog/en/2018-12-01_django-multiple-databases-university.md
+---
+tags: ["tech", "portfolio", "python", "database", "university"]
+---
+```
+
+The post does not know or care which tier each tag belongs to. It just lists the labels that describe it.
+
+The tier information lives in a separate `tags` Content Collection — one markdown file per tag:
+
+```yaml
+# src/content/tags/python.md
+---
+name: "python"
+description: "Python ecosystem — Django, TensorFlow, MyPy, Spark."
+tier: secondary
+order: 6
+parent: "tech"
+---
+```
+
+```yaml
+# src/content/tags/tech.md
+---
+name: "tech"
+description: "Tutorials, guides, and technical articles."
+tier: primary
+order: 1
+---
+```
+
+The collection schema validates the structure:
+
+```typescript
+const tags = defineCollection({
+  schema: z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    tier: z.enum(['primary', 'secondary', 'subtopic']).default('primary'),
+    parent: z.string().optional(),
+    order: z.number().default(0),
+  }),
+});
+```
+
+Three tiers: `primary` for sections (tech, personal, portfolio), `secondary` for topics (python, database, web-development, devops), `subtopic` for future granularity (django, tensorflow, mongodb — wired into the schema but not yet populated). Adding a new tag means creating one file. No migrations. No enum changes. No code review for a content decision.
+
+### Splitting tags at build time
+
+Components need to distinguish primary tags from secondary ones to render them differently. That split happens at build time via `groupPostTags()` in `src/lib/blog.ts`:
+
+```typescript
+export async function groupPostTags(
+  tags: string[]
+): Promise<{ primaryTags: string[]; topicTags: string[] }> {
+  const tierMap = await getTagTierMap();
+  const primaryTags: string[] = [];
+  const topicTags: string[] = [];
+  for (const tag of tags) {
+    const tier = tierMap.get(tag) || 'primary';
+    if (tier === 'secondary' || tier === 'subtopic') {
+      topicTags.push(tag);
+    } else {
+      primaryTags.push(tag);
+    }
+  }
+  return { primaryTags, topicTags };
+}
+```
+
+The tier map is built once per build and cached in memory:
+
+```typescript
+let _tagTierCache: Map<string, string> | null = null;
+
+async function getTagTierMap(): Promise<Map<string, string>> {
+  if (_tagTierCache) return _tagTierCache;
+  const allTags = await getCollection('tags');
+  _tagTierCache = new Map(allTags.map((tag) => [tag.data.name, tag.data.tier]));
+  await validateTagHierarchy();
+  return _tagTierCache;
+}
+```
+
+`getCollection('tags')` runs once at build startup. Every subsequent call returns the in-memory map — O(1) lookup. Across 102 blog posts (51 EN + 51 ES), the total cost is one collection read. After that, hash table lookups.
+
+By the time any component touches a post's tags, the split is already done. Components receive `primaryTags` and `topicTags` as pre-sorted arrays. Nothing to compute at render time.
+
+### Build-time taxonomy validation
+
+One thing I did not want was silent drift — a tag's parent gets renamed and posts quietly end up with orphaned relationships. `validateTagHierarchy()` catches these at build time:
+
+```typescript
+async function validateTagHierarchy(): Promise<void> {
+  if (_hierarchyValidated) return;
+  _hierarchyValidated = true;
+
+  const allTags = await getCollection('tags');
+  const tagNames = new Set(allTags.map((t) => t.data.name));
+
+  for (const tag of allTags) {
+    if (tag.data.parent && !tagNames.has(tag.data.parent)) {
+      console.warn(
+        `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which does not exist`
+      );
+    }
+    if (tag.data.tier === 'primary' && tag.data.parent) {
+      console.warn(
+        `[tag-validation] Primary tag "${tag.data.name}" should not have a parent`
+      );
+    }
+    if (tag.data.parent) {
+      const parentTag = allTags.find((t) => t.data.name === tag.data.parent);
+      if (parentTag && parentTag.data.tier !== 'primary') {
+        console.warn(
+          `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which is not a primary tag`
+        );
+      }
+    }
+  }
+}
+```
+
+Three checks: a tag cannot reference a nonexistent parent, primary tags should not have parents, and parent tags must themselves be primary. These are `console.warn` calls, not thrown errors — a taxonomy inconsistency should be visible and fixable, but it should not fail a production deploy.
+
+### Visual hierarchy
+
+The visual distinction between primary and secondary tags needs to communicate hierarchy without requiring a legend. The convention I settled on:
+
+**Primary tags** — filled blue badges with a `#` prefix:
+
+```html
+<a class="rounded bg-blue-100 px-3 py-1 text-sm text-blue-800
+          hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200
+          dark:hover:bg-blue-800">
+  #tech
+</a>
+```
+
+**Secondary tags (topics)** — smaller, bordered gray badges without prefix:
+
+```html
+<a class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600
+          hover:border-gray-400 hover:text-gray-800 dark:border-gray-600
+          dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100">
+  python
+</a>
+```
+
+Size, weight, color, and border treatment all work together to make the hierarchy scannable. No tooltip. No "Tags vs Topics" label. The visual difference is self-evident, and it is consistent across blog cards, post headers, and related articles.
+
+---
+
+## Search Without a Server
+
+The search system needed to treat topics as real search targets, not metadata. A reader searching for "python" should surface Python posts even if "python" does not appear in the title. And all of it needed to work without a backend.
+
+The approach: a static JSON search index generated at build time, queried client-side.
+
+The `posts.json.ts` API endpoint builds the search index at build time. This is where `groupPostTags()` gets called so the index already has tags pre-split:
+
+```typescript
+const { primaryTags, topicTags } = await groupPostTags(allTags);
+return {
+  id: post.id,
+  slug: getPostSlug(post.id),
+  lang: getPostLanguage(post.id),
+  title: post.data.title,
+  description: post.data.description,
+  pubDate: post.data.pubDate.toISOString(),
+  tags: primaryTags,
+  topics: topicTags,
+  heroImage: post.data.heroImage,
+  heroWebpExists: heroWebpExists(post.data.heroImage),
+};
+```
+
+The search scoring reflects the taxonomy hierarchy:
+
+```typescript
+// Score: lower is better (title > primary tags > topics > description)
+const score = titleMatch
+  ? 0.0
+  : tagsMatch
+    ? 0.1
+    : topicsMatch
+      ? 0.15
+      : 0.2;
+```
+
+A title match is the strongest signal. A primary tag match is next. A topic match is slightly weaker than a primary tag — `python` might appear in a description for context without being the post's focus. A description match is the weakest signal.
+
+All of this runs client-side from a static JSON file. The user types, the JavaScript filters the pre-loaded index in memory, results appear instantly. No server, no database query, no API call. The search UI is a Svelte component hydrated with `client:load` — the only JavaScript that runs for search is the filtering logic itself.
+
+---
+
+## Bilingual Content Architecture
+
+The blog is fully bilingual in English and Spanish. Every post I write exists in both languages. This creates some architectural constraints worth explaining.
+
+The routing model is language-prefix based. English posts are at `/blog/{slug}/`, Spanish posts are at `/es/blog/{slug}/`. Both use the same slug. The language switch in the header navigates between the two versions of the same post.
+
+The key architectural decision is that pages in `src/pages/` are ultra-thin routing wrappers — about three lines each — and the real logic lives inside shared `*Page.astro` components:
+
+```astro
+---
+// src/pages/blog/[...slug].astro — English wrapper
+import BlogPostPage from '@/components/pages/blog/BlogPostPage.astro';
+---
+<BlogPostPage lang="en" />
+```
+
+```astro
+---
+// src/pages/es/blog/[...slug].astro — Spanish wrapper
+import BlogPostPage from '@/components/pages/blog/BlogPostPage.astro';
+---
+<BlogPostPage lang="es" />
+```
+
+One component handles both languages. The `lang` prop drives which content collection subdirectory to query, which translation strings to use, and which URL prefix to apply to internal links.
+
+Tag names are language-agnostic identifiers. A post in `en/` and its counterpart in `es/` use the same tags array. The tag collection is not duplicated per language — `python.md` is one file, and both English and Spanish posts reference it by the same identifier. This means I never have tag definitions drifting between languages.
+
+The translation strings for the UI (pagination labels, "published on," "related posts," search placeholder) live in `src/lib/translations/en.ts` and `src/lib/translations/es.ts`. When a component needs user-visible text, it calls `getTranslations(lang)` and gets back the right object. Never hardcoded strings.
+
+---
+
+## Performance: Everything at Build Time
+
+I want to be explicit about the common thread running through all of this, because it is the architectural insight that makes the whole system work.
+
+Every piece of the blog system I have described — Content Collections, tag tier resolution, pagination, related posts, reading time, search index generation — runs at Astro build time. By the time any HTML reaches a browser, all of that work is already done.
+
+The browser does not receive a JavaScript application that fetches posts from an API, resolves tag tiers, and renders everything dynamically. It receives static HTML pages, each one fully pre-rendered with the correct content, the correct tags split into their correct tiers, the correct pagination, the correct related posts. The only JavaScript that runs in the browser is for interactive islands: the search component, the mobile menu, the theme toggle.
+
+The architecture flow:
+
+```
+Build time:
+  Markdown files + tag collection
+    → Zod validation (build fails on schema errors)
+    → getCollection() queries
+    → groupPostTags() (cached, O(1) after first call)
+    → Reading time computation
+    → Search index generation
+    → Static HTML for every page, tag, pagination step
+    → Static posts.json search index
+
+Runtime (browser):
+  Receives pre-rendered HTML
+  Loads ~2KB search index JSON on demand
+  Svelte islands hydrate: search, menu, theme toggle
+  Zero collection queries
+  Zero tier resolution logic
+```
+
+The result is what you see in the Lighthouse scores: Performance, Accessibility, Best Practices, and SEO all at 100 on mobile and desktop. Adding a complete tag taxonomy system — collection files, tier resolution, hierarchy validation, search integration — had zero impact on those scores. The complexity lives in the build. The browser gets clean HTML.
+
+This is the promise of Astro's build-time model, and the blog system is a clean demonstration of it. You can build arbitrarily rich content architecture — multi-tier taxonomies, cross-reference systems, reading time, search indexes — and none of it costs the user anything at runtime. The work happens once, at deploy time, and the result ships everywhere, fast.
+
+---
+
+## Adding a New Tag: How It Works Now
+
+I want to show concretely what the current system costs at the content-author level, because the architecture sounds more complex than it is to use.
+
+Adding a new secondary tag — say, `golang` — takes exactly this:
+
+```yaml
+# src/content/tags/golang.md
+---
+name: "golang"
+description: "Go language — services, CLIs, and backend projects."
+tier: secondary
+order: 12
+parent: "tech"
+---
+```
+
+That is one file. The next build automatically:
+- Makes `golang` a valid tag for any post
+- Routes it to `topicTags` instead of `primaryTags` in every component
+- Generates a `/blog/tag/golang/` page
+- Includes it in the search index with the correct tier
+- Validates that `tech` (its parent) exists and is a primary tag
+
+No schema changes. No post migrations. No component updates. One file, and the taxonomy is extended.
+
+At 1000 posts, this matters enormously. You do not want to migrate a thousand files because you decided `golang` deserves its own tag. You create one file and move on.
+
+---
+
+## Reflecting on This Chapter
+
+Every chapter in this series has been about making a decision that costs something now in exchange for a simpler path later. Chapter one: build with Astro's constraints and get performance for free. Chapter two: invest in accessibility and get a passing grade from every audit tool. Chapter three: choose lightweight analytics tools and keep the scores you worked for. Chapter four: design the content architecture correctly before the content outgrows the container.
+
+The blog has 51 posts right now. The taxonomy system I built would handle 500 or 1000 posts without any structural changes — just new content files. The search runs client-side from a static JSON index with no backend infrastructure to maintain. The bilingual system scales to any new post as a natural workflow, not a chore. Every page is pre-rendered static HTML with zero runtime cost to the user.
+
+The best time to build a scalable blog system is before the content makes it hard. The second-best time is at 51 posts, when you can feel the structure starting to strain. I caught it at the right moment. At 500 posts, restructuring a flat tag system or migrating to a new content architecture would be a serious project. At 51 posts, it was a few days of careful work and a satisfying diff.
+
+Let's keep building.
+
+---
+
+## Resources
+
+- **[Chapter 1 — Building XergioAleX.com](/blog/building-xergioalex-website/)** — The full architecture story: Astro, Svelte, Content Collections, bilingual content.
+- **[Chapter 2 — Lighthouse Perfect Scores](/blog/lighthouse-perfect-scores/)** — Accessibility, performance, SEO, and the road to 100/100/100/100.
+- **[Chapter 3 — Measuring What Matters](/blog/measuring-what-matters-free-analytics/)** — The free analytics stack: Umami, Cloudflare, Clarity, and zero cookie banners.
+- **[Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)** — Official documentation for the collection and schema system used throughout this post.
+- **[Zod Schema Validation](https://zod.dev/)** — The schema library used in `content.config.ts` for validating tag and blog post frontmatter.
+- **[xergioalex.com source code](https://github.com/xergioalex/xergioalexcom)** — The full repository where all of the code described here lives.
