@@ -10,7 +10,7 @@ In [chapter one](/blog/building-xergioalex-website/), I built the site — Astro
 
 The site was built, fast, indexed, and measured.
 
-But running a blog is not the same as running a site. A site is a set of pages. A blog is a system — posts that need to be discovered, filtered, searched, grouped, related to each other, and served to readers in multiple languages. At ten posts, that is trivial. At fifty posts, you start feeling the structure. At two hundred posts, the architecture either holds or it doesn't.
+But running a blog is not the same as running a site. A site is a set of pages. A blog is a system — posts that need to be discovered, filtered, searched, grouped, related to each other, and served to readers in multiple languages. With a handful of posts, that is trivial. As the library grows, you start feeling the structure. At hundreds of posts, the architecture either holds or it doesn't.
 
 Chapter four: how the blog actually works.
 
@@ -105,11 +105,11 @@ Posts support four hero layouts: `banner` (full-width image above the title), `s
 
 ## Organizing Content: The Tag Taxonomy
 
-Here is where things get interesting. When I launched the site with 15 posts, I had six top-level tags: `tech`, `personal`, `portfolio`, `talks`, `trading`, `dailybot`. Six drawers. Clear enough.
+Here is where things get interesting. When I launched the blog, I started with a handful of top-level tags: `tech`, `personal`, `portfolio`, `talks`, `trading`, `dailybot`. Six drawers. Clear enough.
 
-By the time I had 51 posts, every technical post was tagged `tech`. That included Django, MongoDB, Webpack, WebVR, GraphQL, Golang, Meteor.js, Docker, blockchain, TensorFlow, Spark, and the Astro site itself. Clicking `tech` returned everything I had ever written on any technical topic. Which is about as useful as a library that shelves every book under "Nonfiction."
+As the content grew, every technical post ended up tagged `tech`. That included Django, MongoDB, Webpack, WebVR, GraphQL, Golang, Meteor.js, Docker, blockchain, TensorFlow, Spark, and the Astro site itself. Clicking `tech` returned everything I had ever written on any technical topic. Which is about as useful as a library that shelves every book under "Nonfiction."
 
-At 200 posts — where this site is heading — that flat structure would be genuinely unusable.
+At hundreds of posts, that flat structure becomes genuinely unusable.
 
 ### First attempt: a separate `topics` field
 
@@ -121,11 +121,11 @@ tags: ["tech"]
 topics: ["python", "database"]
 ```
 
-I updated the schema with a validated enum for topic values, migrated all 51 posts, and updated the components to render topic badges differently from primary tag badges. It worked. A post tagged `python` was now discoverable by anyone looking for Python content, even if the word "python" did not appear in the title.
+I updated the schema with a validated enum for topic values, migrated all existing posts, and updated the components to render topic badges differently from primary tag badges. It worked. A post tagged `python` was now discoverable by anyone looking for Python content, even if the word "python" did not appear in the title.
 
-For 51 posts, this is completely fine. But I kept thinking about where it was going.
+For a small blog, this is completely fine. But I kept thinking about where it was going.
 
-Three months in, I started seeing the cracks.
+As the blog evolved, I started seeing the cracks.
 
 The first problem was extensibility. With the enum approach, adding a new topic meant editing `content.config.ts` — a code change, not a content change. For a system built around content-as-data, that felt wrong.
 
@@ -230,7 +230,7 @@ async function getTagTierMap(): Promise<Map<string, string>> {
 }
 ```
 
-`getCollection('tags')` runs once at build startup. Every subsequent call returns the in-memory map — O(1) lookup. Across 102 blog posts (51 EN + 51 ES), the total cost is one collection read. After that, hash table lookups.
+`getCollection('tags')` runs once at build startup. Every subsequent call returns the in-memory map — O(1) lookup. Across all blog posts in both languages, the total cost is one collection read. After that, hash table lookups.
 
 By the time any component touches a post's tags, the split is already done. Components receive `primaryTags` and `topicTags` as pre-sorted arrays. Nothing to compute at render time.
 
@@ -443,9 +443,9 @@ At 1000 posts, this matters enormously. You do not want to migrate a thousand fi
 
 Every chapter in this series has been about making a decision that costs something now in exchange for a simpler path later. Chapter one: build with Astro's constraints and get performance for free. Chapter two: invest in accessibility and get a passing grade from every audit tool. Chapter three: choose lightweight analytics tools and keep the scores you worked for. Chapter four: design the content architecture correctly before the content outgrows the container.
 
-The blog has 51 posts right now. The taxonomy system I built would handle 500 or 1000 posts without any structural changes — just new content files. The search runs client-side from a static JSON index with no backend infrastructure to maintain. The bilingual system scales to any new post as a natural workflow, not a chore. Every page is pre-rendered static HTML with zero runtime cost to the user.
+The taxonomy system I built handles hundreds or thousands of posts without any structural changes — just new content files. The search runs client-side from a static JSON index with no backend infrastructure to maintain. The bilingual system scales to any new post as a natural workflow, not a chore. Every page is pre-rendered static HTML with zero runtime cost to the user.
 
-The best time to build a scalable blog system is before the content makes it hard. The second-best time is at 51 posts, when you can feel the structure starting to strain. I caught it at the right moment. At 500 posts, restructuring a flat tag system or migrating to a new content architecture would be a serious project. At 51 posts, it was a few days of careful work and a satisfying diff.
+The best time to build a scalable blog system is before the content makes it hard. The second-best time is when you can feel the structure starting to strain. I caught it early enough that the migration was a few days of careful work and a satisfying diff — not a month-long rewrite.
 
 Let's keep building.
 

@@ -10,7 +10,7 @@ En el [capítulo uno](/es/blog/building-xergioalex-website/), construí el sitio
 
 El sitio estaba construido, rápido, indexado y medido.
 
-Pero tener un sitio no es lo mismo que tener un blog. Un sitio es un conjunto de páginas. Un blog es un sistema — posts que necesitan ser descubiertos, filtrados, buscados, agrupados, relacionados entre sí, y servidos a lectores en múltiples idiomas. Con diez posts, eso es trivial. Con cincuenta, empiezas a sentir la estructura. Con doscientos, la arquitectura aguanta o no aguanta.
+Pero tener un sitio no es lo mismo que tener un blog. Un sitio es un conjunto de páginas. Un blog es un sistema — posts que necesitan ser descubiertos, filtrados, buscados, agrupados, relacionados entre sí, y servidos a lectores en múltiples idiomas. Con un puñado de posts, eso es trivial. A medida que la biblioteca crece, empiezas a sentir la estructura. Con cientos de posts, la arquitectura aguanta o no aguanta.
 
 Capítulo cuatro: cómo funciona el blog por dentro.
 
@@ -105,11 +105,11 @@ Los posts soportan cuatro layouts hero: `banner` (imagen de ancho completo sobre
 
 ## Organizando el Contenido: La Taxonomía de Tags
 
-Aquí es donde las cosas se ponen interesantes. Cuando lancé el sitio con 15 posts, tenía seis tags de nivel superior: `tech`, `personal`, `portfolio`, `talks`, `trading`, `dailybot`. Seis cajones. Suficientemente claro.
+Aquí es donde las cosas se ponen interesantes. Cuando lancé el blog, empecé con un puñado de tags de nivel superior: `tech`, `personal`, `portfolio`, `talks`, `trading`, `dailybot`. Seis cajones. Suficientemente claro.
 
-Para cuando tenía 51 posts, cada post técnico estaba etiquetado como `tech`. Eso incluía Django, MongoDB, Webpack, WebVR, GraphQL, Golang, Meteor.js, Docker, blockchain, TensorFlow, Spark y el propio sitio de Astro. Hacer clic en `tech` devolvía todo lo que había escrito sobre cualquier tema técnico. Lo que es tan útil como una biblioteca que pone todos los libros bajo "No Ficción."
+A medida que el contenido creció, cada post técnico terminó etiquetado como `tech`. Eso incluía Django, MongoDB, Webpack, WebVR, GraphQL, Golang, Meteor.js, Docker, blockchain, TensorFlow, Spark y el propio sitio de Astro. Hacer clic en `tech` devolvía todo lo que había escrito sobre cualquier tema técnico. Lo que es tan útil como una biblioteca que pone todos los libros bajo "No Ficción."
 
-Con 200 posts — hacia donde se dirige este sitio — esa estructura plana sería genuinamente inutilizable.
+Con cientos de posts, esa estructura plana se vuelve genuinamente inutilizable.
 
 ### Primer intento: un campo `topics` separado
 
@@ -121,11 +121,11 @@ tags: ["tech"]
 topics: ["python", "database"]
 ```
 
-Actualicé el esquema con un enum validado para los valores de topics, migré los 51 posts, y actualicé los componentes para renderizar los badges de topics de manera diferente a los de tags primarios. Funcionó. Un post etiquetado `python` ahora era descubrible por cualquiera que buscara contenido de Python, aunque la palabra "python" no apareciera en el título.
+Actualicé el esquema con un enum validado para los valores de topics, migré todos los posts existentes, y actualicé los componentes para renderizar los badges de topics de manera diferente a los de tags primarios. Funcionó. Un post etiquetado `python` ahora era descubrible por cualquiera que buscara contenido de Python, aunque la palabra "python" no apareciera en el título.
 
-Para 51 posts, esto está perfectamente bien. Pero seguí pensando hacia dónde iba.
+Para un blog pequeño, esto está perfectamente bien. Pero seguí pensando hacia dónde iba.
 
-Tres meses después, empecé a ver las grietas.
+A medida que el blog evolucionó, empecé a ver las grietas.
 
 El primer problema era la extensibilidad. Con el enfoque de enum, agregar un nuevo topic significaba editar `content.config.ts` — un cambio de código, no un cambio de contenido. Para un sistema construido alrededor de contenido-como-datos, eso se sentía mal.
 
@@ -230,7 +230,7 @@ async function getTagTierMap(): Promise<Map<string, string>> {
 }
 ```
 
-`getCollection('tags')` se ejecuta una sola vez al iniciar el build. Cada llamada posterior devuelve el mapa en memoria — búsqueda O(1). A través de 102 posts (51 EN + 51 ES), el costo total es una sola lectura de colección. Después de eso, son búsquedas en tabla hash.
+`getCollection('tags')` se ejecuta una sola vez al iniciar el build. Cada llamada posterior devuelve el mapa en memoria — búsqueda O(1). A través de todos los posts del blog en ambos idiomas, el costo total es una sola lectura de colección. Después de eso, son búsquedas en tabla hash.
 
 Para cuando cualquier componente toca los tags de un post, la división ya está hecha. Los componentes reciben `primaryTags` y `topicTags` como arrays pre-ordenados. Nada que computar en tiempo de renderizado.
 
@@ -443,9 +443,9 @@ Con 1000 posts, esto importa enormemente. No quieres migrar mil archivos porque 
 
 Cada capítulo de esta serie ha sido sobre tomar una decisión que cuesta algo ahora a cambio de un camino más simple después. Capítulo uno: construir con las restricciones de Astro y obtener performance gratis. Capítulo dos: invertir en accesibilidad y obtener calificación perfecta de cada herramienta de auditoría. Capítulo tres: elegir herramientas de analytics livianas y mantener los puntajes por los que trabajaste. Capítulo cuatro: diseñar la arquitectura de contenido correctamente antes de que el contenido supere al contenedor.
 
-El blog tiene 51 posts ahora. El sistema de taxonomía que construí manejaría 500 o 1000 posts sin cambios estructurales — solo nuevos archivos de contenido. La búsqueda corre del lado del cliente desde un índice JSON estático sin infraestructura de backend que mantener. El sistema bilingüe escala a cualquier post nuevo como un flujo de trabajo natural, no como una tarea pesada. Cada página es HTML estático pre-renderizado con cero costo en runtime para el usuario.
+El sistema de taxonomía que construí maneja cientos o miles de posts sin ningún cambio estructural — solo nuevos archivos de contenido. La búsqueda corre del lado del cliente desde un índice JSON estático sin infraestructura de backend que mantener. El sistema bilingüe escala a cualquier post nuevo como un flujo de trabajo natural, no como una tarea pesada. Cada página es HTML estático pre-renderizado con cero costo en runtime para el usuario.
 
-El mejor momento para construir un sistema de blog escalable es antes de que el contenido lo haga difícil. El segundo mejor momento es con 51 posts, cuando puedes sentir la estructura empezando a tensionarse. Lo capté en el momento correcto. Con 500 posts, reestructurar un sistema de tags plano o migrar a una nueva arquitectura de contenido sería un proyecto serio. Con 51 posts, fueron unos días de trabajo cuidadoso y un diff satisfactorio.
+El mejor momento para construir un sistema de blog escalable es antes de que el contenido lo haga difícil. El segundo mejor momento es cuando puedes sentir la estructura empezando a tensionarse. Lo capté lo suficientemente temprano para que la migración fuera unos días de trabajo cuidadoso y un diff satisfactorio — no una reescritura de un mes.
 
 A seguir construyendo.
 
