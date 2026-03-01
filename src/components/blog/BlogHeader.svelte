@@ -3,7 +3,9 @@ import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 export let currentTag;
+export let currentTopic = '';
 export let tagsResult;
+export let topicsResult = [];
 export let totalPosts = 0;
 export let currentPagePosts = 0;
 export let currentPage = 1;
@@ -14,12 +16,16 @@ $: t = getTranslations(lang);
 $: basePrefix = getUrlPrefix(lang);
 
 // Translations for header content
-$: headerTitle = currentTag
-  ? t.postsTagged(t.tagNames[currentTag] || currentTag)
-  : t.blogDescription;
-$: headerSubtitle = currentTag
-  ? t.tagDescriptions[currentTag] || t.blogDescription
-  : t.blogDescription;
+$: headerTitle = currentTopic
+  ? t.postsWithTopic(t.topicNames[currentTopic] || currentTopic)
+  : currentTag
+    ? t.postsTagged(t.tagNames[currentTag] || currentTag)
+    : t.blogDescription;
+$: headerSubtitle = currentTopic
+  ? t.topicDescriptions[currentTopic] || ''
+  : currentTag
+    ? t.tagDescriptions[currentTag] || t.blogDescription
+    : t.blogDescription;
 $: showingText = t.showingArticles(currentPagePosts, totalPosts);
 $: availableText = t.articlesAvailable(totalPosts);
 </script>
@@ -71,4 +77,21 @@ $: availableText = t.articlesAvailable(totalPosts);
       #{t.tagNames[tag] || tag}
     </a>
   {/each}
-</div> 
+</div>
+
+{#if topicsResult && topicsResult.length > 0}
+  <div class="mb-10 flex flex-wrap gap-1.5">
+    {#each topicsResult as topic}
+      <a
+        href={`${basePrefix}/blog/topic/${topic}/`}
+        class={`rounded-full px-2.5 py-0.5 text-xs transition-colors ${
+          currentTopic === topic
+            ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
+            : "border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+        }`}
+      >
+        {t.topicNames[topic] || topic}
+      </a>
+    {/each}
+  </div>
+{/if} 

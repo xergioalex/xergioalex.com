@@ -5,6 +5,7 @@ pubDate: "2019-07-05"
 heroImage: "/images/blog/posts/lets-talk-about-flutter/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
+topics: []
 ---
 
 El desarrollo móvil cross-platform siempre ha sido un equilibrio complicado. Querés un solo codebase, rendimiento nativo y control pixel-perfect sobre la UI. Durante años, eso se sintió como elegir dos de tres. Luego llegó Flutter.

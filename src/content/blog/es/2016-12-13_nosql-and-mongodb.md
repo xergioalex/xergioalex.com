@@ -5,6 +5,7 @@ pubDate: '2016-12-13'
 heroImage: '/images/blog/posts/nosql-and-mongodb/hero.png'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
+topics: ["database"]
 ---
 
 Pasé años trabajando con bases de datos relacionales — MySQL, PostgreSQL, las sospechosas de siempre. Tablas, foreign keys, JOINs. Es una base sólida, y para muchos problemas, es exactamente lo que necesitas. Pero cuando empecé a construir APIs que consumían JSON de servicios externos, o backends móviles donde el schema evolucionaba en cada sprint, SQL empezó a sentirse rígido. Me la pasaba escribiendo migraciones para agregar columnas, reestructurar tablas, normalizar datos que no querían ser normalizados.

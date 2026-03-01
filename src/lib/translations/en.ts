@@ -921,6 +921,37 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'DailyBot articles: collaboration platform for human teams and AI agents, workflow automation, and hybrid team productivity.',
   },
 
+  // Topics (secondary tags)
+  postsWithTopic: (topic) => `Posts about ${topic}`,
+  allTopics: 'All Topics',
+  topicNames: {
+    'web-development': 'Web Development',
+    javascript: 'JavaScript',
+    ai: 'AI & ML',
+    blockchain: 'Blockchain',
+    devops: 'DevOps',
+    python: 'Python',
+    university: 'University',
+    database: 'Databases',
+    iot: 'IoT',
+    design: 'Design',
+  },
+  topicDescriptions: {
+    'web-development':
+      'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',
+    javascript:
+      'JavaScript ecosystem — Vue.js, Webpack, Meteor, A-Frame, Node.',
+    ai: 'Artificial intelligence, machine learning, deep learning, and LLMs.',
+    blockchain:
+      'Blockchain, cryptocurrency, Bitcoin, Ethereum, and smart contracts.',
+    devops: 'Docker, containers, serverless, microservices, and deployment.',
+    python: 'Python ecosystem — Django, TensorFlow, MyPy, Spark.',
+    university: 'Academic coursework projects and exercises.',
+    database: 'SQL, NoSQL, MongoDB, and multi-database architecture.',
+    iot: 'Internet of Things, sensors, hardware, and voice interfaces.',
+    design: 'Visual design, branding, web design, and UX.',
+  },
+
   // Date formatting
   dateLocale: 'en-US',
 

@@ -2,9 +2,10 @@
 title: "Midiendo lo que Importa: Cómo Configuré Analytics Gratis Sin Sacrificar el Rendimiento"
 description: "El tercer capítulo de la construcción de XergioAleX.com — implementando un stack completo de analytics usando solo herramientas gratuitas, sin perder los puntajes perfectos de Lighthouse ni agregar banners de cookies."
 pubDate: "2026-02-28"
-heroImage: "/images/blog/shared/placeholder-side-by-side.png"
+heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio"]
+topics: [web-development]
 ---
 
 En el [primer post](/es/blog/building-xergioalex-website/), conté la historia de construir este sitio — desde una página de aterrizaje con una foto y cinco enlaces a redes sociales hasta una plataforma personal completa con Astro, Svelte, contenido bilingüe y una arquitectura lista para IA. En el [segundo post](/es/blog/lighthouse-perfect-scores/), profundicé en cómo logré puntajes perfectos en Lighthouse — 100/100/100/100 en Performance, Accessibility, Best Practices y SEO, tanto en móvil como en escritorio.

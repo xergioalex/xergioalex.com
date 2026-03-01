@@ -5,6 +5,7 @@ pubDate: "2018-12-15"
 heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "dailybot"]
+topics: [web-development, design]
 ---
 
 Some projects are just work. You take the brief, you write the code, you ship it. Others get under your skin. They become part of your story — woven into the memories of late-night coding sessions, whiteboard arguments about colors, and that specific kind of energy that only happens when the people building something truly believe in what they're making.

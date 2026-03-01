@@ -5,6 +5,7 @@ pubDate: "2017-11-23"
 heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech"]
+topics: [web-development, devops]
 ---
 
 Microservices and GraphQL — a topic I'm excited about. I've been building distributed systems and REST is falling short for what I need on the mobile side. GraphQL is gaining traction and I wanted to share what I've learned.

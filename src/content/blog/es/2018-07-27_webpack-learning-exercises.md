@@ -1,17 +1,18 @@
 ---
-title: "Aprendiendo Webpack: 17 Ejercicios Que Cambiaron Cómo Construyo para la Web"
-description: "La historia de sumergirme en Webpack 4 a través de 17 ejercicios prácticos — desde loaders básicos y preprocesadores CSS hasta code splitting, optimización con DLL e integración con React. El camino de aprendizaje que convirtió una caja negra misteriosa en mi herramienta de build favorita."
+title: "Aprendiendo Webpack: Los Ejercicios Que Cambiaron Cómo Construyo para la Web"
+description: "La historia de sumergirme en Webpack 4 a través de ejercicios prácticos — desde loaders básicos y preprocesadores CSS hasta code splitting, optimización con DLL, integración con React y hasta bundling en el backend. El camino de aprendizaje que convirtió una caja negra misteriosa en mi herramienta de build favorita."
 pubDate: "2018-07-27"
 heroImage: "/images/blog/posts/webpack-learning-exercises/hero.png"
 heroLayout: "banner"
-tags: ["portfolio"]
+tags: ["portfolio", "tech"]
+topics: [javascript, web-development]
 ---
 
 Hay un momento en la vida de todo desarrollador front-end cuando las herramientas de build se convierten en el cuello de botella. Te sientes cómodo escribiendo JavaScript, CSS, HTML — el código en sí se siente natural. Pero entonces necesitas usar SASS. E importar imágenes. Y dividir tu código en múltiples bundles. Y transpilar JavaScript moderno para navegadores viejos. Y de repente te das cuenta: no tienes un sistema de build. Tienes un *problema*.
 
 Para mí, ese momento me llevó a **Webpack**.
 
-Webpack no es solo una herramienta — es *la* herramienta. El module bundler que ha tomado por asalto el ecosistema de JavaScript. Todo el mundo lo usa. Cada framework lo recomienda. Cada tutorial asume que lo tienes configurado. Pero configurarlo — eso es su propia habilidad. Y como toda habilidad que vale la pena tener, decidí aprenderla bien — no copiando configs de Stack Overflow, sino construyendo 17 ejercicios desde cero, cada uno apuntando a una funcionalidad específica.
+Webpack no es solo una herramienta — es *la* herramienta. El module bundler que ha tomado por asalto el ecosistema de JavaScript. Todo el mundo lo usa. Cada framework lo recomienda. Cada tutorial asume que lo tienes configurado. Pero configurarlo — eso es su propia habilidad. Y como toda habilidad que vale la pena tener, decidí aprenderla bien — no copiando configs de Stack Overflow, sino construyendo una serie de ejercicios desde cero, cada uno apuntando a una funcionalidad específica.
 
 El resultado fue una [colección de ejemplos de webpack](https://github.com/xergioalex/webpack_examples) que se convirtió en mi manual de referencia para cada proyecto posterior.
 
@@ -153,13 +154,102 @@ Tras semanas de correr builds manualmente y refrescar navegadores, dev server se
 
 ---
 
-## El capítulo del backend
+## El capítulo del backend: Webpack más allá del navegador
 
-Al terminar los ejercicios, creé un [proyecto separado para Webpack en backend](https://github.com/xergioalex/webpack_backend_example) — demostrando que Webpack no es solo para front-end. Usarlo para empaquetar una aplicación Node.js con integración de Docker abrió otra perspectiva: herramientas de build consistentes en todo el stack.
+Hay una suposición que se pega a Webpack como pegamento: *es una herramienta de front-end*. Cada tutorial se enfoca en navegadores. Cada ejemplo empaqueta código destinado a tags `<script>`. Pero después de todos esos ejercicios enfocados en el front-end, me pregunté — si Webpack trata todo como un módulo, ¿por qué debería importarle si ese módulo corre en un navegador o en un servidor?
+
+La respuesta es: no le importa. Así que construí un [proyecto separado para Webpack en backend](https://github.com/xergioalex/webpack_backend_example) para demostrarlo.
+
+### ¿Por qué empaquetar código del backend?
+
+Al principio, la idea suena contraintuitiva. Node.js ya tiene un sistema de módulos — `require()` funciona de forma nativa. No necesitas empaquetar nada para que funcione. Pero hay ventajas reales:
+
+- **Herramientas consistentes** — mismo pipeline de build, mismos patrones de config, mismo modelo mental en todo tu stack. Front-end y back-end hablan el mismo idioma.
+- **Transpilación con Babel** — usar features modernos de JavaScript (o incluso anotaciones de tipos con Flow) en tu código de servidor, sin importar qué versión de Node.js estés apuntando.
+- **Output optimizado** — tree shaking, minificación y eliminación de código muerto aplican también al código del servidor. Un bundle más pequeño significa arranques en frío más rápidos en entornos serverless.
+- **Source maps** — debugging adecuado con ubicaciones del código original, incluso en producción.
+
+### El config que lo cambia todo
+
+El webpack.config.js para un proyecto de backend se ve sorprendentemente similar a uno de front-end, pero con algunas diferencias críticas:
+
+```javascript
+module.exports = (env, argv) => ({
+  entry: {
+    vendor: ['express'],
+    index: path.resolve(__dirname, 'src/index.js')
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist/'),
+    filename: '[name].js',
+    library: 'main',
+    libraryTarget: 'commonjs2'  // Formato de módulos Node.js
+  },
+  target: 'node',  // Esta es la línea clave
+  node: {
+    __filename: true,
+    __dirname: true
+  },
+  // ...loaders, plugins, optimización
+});
+```
+
+Tres líneas cuentan toda la historia:
+
+1. **`target: 'node'`** — le dice a Webpack que no haga polyfill ni mock de los built-ins de Node.js como `fs`, `path` o `http`. En modo front-end, Webpack reemplaza estos con shims compatibles con el navegador. En modo node, los deja tranquilos.
+2. **`libraryTarget: 'commonjs2'`** — el output usa `module.exports` en vez de un formato orientado al navegador. El bundle es un módulo Node.js que puedes hacer `require()` desde cualquier lugar.
+3. **`node: { __filename: true, __dirname: true }`** — preserva las rutas reales de los archivos en vez de reemplazarlas con referencias internas de Webpack. Crítico para código de servidor que lee archivos del disco.
+
+### Express, Babel y Docker — el panorama completo
+
+El proyecto empaqueta un servidor Express con transpilación de Babel — lo que significa que podía escribir código de servidor usando los features más nuevos de JavaScript apuntando específicamente a Node 8.10:
+
+```javascript
+presets: [
+  ['env', {
+    target: { node: 8.10 },
+    useBuiltIns: false
+  }]
+]
+```
+
+Y después está la integración con Docker. El proyecto incluye un setup de `docker-compose.yaml` con comandos espejados tanto para desarrollo local como contenedorizado:
+
+```bash
+# Desarrollo local
+yarn build:dev           # Bundle de desarrollo
+yarn build:dev:watch     # Modo watch
+yarn build:prod          # Build de producción optimizado
+
+# Desarrollo con Docker (flujo idéntico)
+yarn docker:build:dev
+yarn docker:build:dev:watch
+yarn docker:build:prod
+```
+
+Acá es donde la consistencia se vuelve tangible. Ya sea que estés construyendo el front-end, el back-end, corriendo localmente o dentro de un contenedor Docker — el flujo es `webpack --mode development` o `webpack --mode production`. Misma herramienta, mismas flags, mismo modelo mental.
+
+### Un truco de source maps que vale la pena robar
+
+Un detalle en el config que seguí reutilizando en proyectos posteriores: el truco del `BannerPlugin` para source maps en Node.js:
+
+```javascript
+new webpack.BannerPlugin({
+  banner: 'require("source-map-support").install();',
+  raw: true,
+  entryOnly: false
+})
+```
+
+Esto inyecta `source-map-support` al inicio de cada archivo de output. Cuando tu servidor empaquetado lanza un error, el stack trace apunta a tus archivos fuente *originales*, no al output empaquetado. En debugging de producción, esta es la diferencia entre "error en la línea 1847 de index.js" y "error en la línea 23 de userController.js."
+
+### Lo que demostró
+
+El experimento del backend demostró algo más allá de lo técnico: **entender una herramienta a fondo te permite aplicarla de formas inesperadas**. Los ejercicios de front-end me dieron fluidez en los conceptos de Webpack — loaders, plugins, targets, entry points. Con ese vocabulario, apuntar Webpack a una aplicación Node.js no fue un salto. Fue el siguiente paso natural.
 
 ---
 
-## Lo que 17 ejercicios me enseñaron
+## Lo que estos ejercicios me enseñaron
 
 Mirando el [repositorio webpack_examples](https://github.com/xergioalex/webpack_examples), cada carpeta es una lección aprendida. Pero la meta-lección es más grande que cualquier ejercicio individual:
 
@@ -167,8 +257,8 @@ Mirando el [repositorio webpack_examples](https://github.com/xergioalex/webpack_
 
 Ese enfoque — aislar conceptos, construir ejemplos en aislamiento, después combinar — se convirtió en mi estrategia de aprendizaje para cualquier herramienta nueva. Es más lento al principio, pero paga intereses compuestos. No solo aprendes a usar la herramienta; aprendes a *pensar* en ella.
 
-Estos 17 ejercicios se convirtieron en mi biblioteca de referencia. Cada nuevo proyecto que configuro vuelve a una de estas carpetas, toma el config relevante y lo adapta. No copiando de Stack Overflow — sacando de mi propio entendimiento.
+Estos ejercicios se convirtieron en mi biblioteca de referencia. Cada nuevo proyecto que configuro vuelve a una de estas carpetas, toma el config relevante y lo adapta. No copiando de Stack Overflow — sacando de mi propio entendimiento.
 
 El modelo mental que Webpack me enseñó — todo es un módulo, todo fluye por un grafo, cada transformación es un loader, cada optimización es un plugin — aplica en todas partes. Rollup y otras herramientas construyen sobre las mismas ideas fundamentales que Webpack cristalizó.
 
-Y todo empieza con 17 carpetas y un `webpack.config.js`.
+Y todo empieza con una carpeta, un concepto y un `webpack.config.js`.

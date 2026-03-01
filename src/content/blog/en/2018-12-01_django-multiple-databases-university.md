@@ -3,8 +3,9 @@ title: "BSolutions: Managing Multiple Database Engines with Django and Docker"
 description: "A university project for Advanced Databases class — connecting Django to 10 different database engines (SQL and NoSQL) through Docker containers, demonstrating multi-database management and microservices architecture."
 pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
-heroLayout: "banner"
-tags: ["portfolio"]
+heroLayout: "side-by-side"
+tags: ["portfolio", "tech"]
+topics: [python, database, devops, university]
 ---
 
 In Advanced Databases class, the professor asks a question that sounds almost absurd at first: what if a single application had to talk to ten different database engines simultaneously? Not ten tables in one database. Ten completely different databases — SQL and NoSQL, relational and document-based, graph and key-value — all connected to one central application, all running at the same time.

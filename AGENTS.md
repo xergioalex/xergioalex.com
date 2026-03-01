@@ -382,6 +382,9 @@ npm run ncu:upgrade        # Upgrade all packages
 # Images
 npm run images:optimize    # Process staged images (resize, compress, move)
 
+# Lighthouse
+npm run lighthouse         # Run Lighthouse audit on built dist/ (requires Chrome)
+
 # Release
 npm run release            # Bump version and create release commit
 ```
@@ -623,6 +626,29 @@ Blog posts use date-prefix naming for chronological ordering:
 - The date prefix is stripped from URLs (clean slugs: `/blog/my-awesome-post/`)
 - Use the post's `pubDate` as the date prefix
 - Use `getPostSlug()` from `@/lib/blog` to extract clean slugs from post IDs
+
+### Blog Tag Taxonomy
+
+The blog uses a **two-tier tag system**:
+
+**Primary tags** (`tags` field) — Section/category classification:
+- `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot`, `demo`
+- 1-2 primary tags per post
+- Displayed as blue badges (`bg-blue-100 text-blue-800`)
+- Routes: `/blog/tag/{tag}/`
+
+**Topic tags** (`topics` field) — Content/technology classification:
+- `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`
+- 1-3 topic tags per post (some posts may have 0)
+- Displayed as subtle gray bordered badges
+- Routes: `/blog/topic/{topic}/`
+
+**Tag governance rules:**
+- Maximum ~15-20 topic tags total to prevent proliferation
+- New topic tag criteria: topic applies to 3+ posts and is expected to recur
+- Topic tag naming: lowercase, kebab-case (e.g., `web-development`)
+- Translations required in both `en.ts` and `es.ts` (`topicNames` + `topicDescriptions`)
+- Periodically audit: remove topics with <3 posts
 
 ### Blog Post Hero Layouts
 

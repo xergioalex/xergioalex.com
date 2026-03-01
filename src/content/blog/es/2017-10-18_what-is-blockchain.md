@@ -5,6 +5,7 @@ pubDate: '2017-10-18'
 heroImage: '/images/blog/posts/what-is-blockchain/hero.jpg'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
+topics: [blockchain]
 ---
 
 Blockchain estaba en todas partes en 2017. Bitcoin había explotado, Ethereum estaba impulsando una ola de ICOs, y cada conferencia tech tenía al menos una charla sobre "descentralizar todo". El hype era real, pero también lo era la confusión. La mayoría de la gente había escuchado de blockchain, pero pocos entendían cómo funcionaba realmente o por qué importaba más allá de la especulación con criptomonedas.

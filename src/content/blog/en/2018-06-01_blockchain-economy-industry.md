@@ -5,6 +5,7 @@ pubDate: "2018-06-01"
 heroImage: "/images/blog/posts/blockchain-economy-industry/hero.jpg"
 heroLayout: "banner"
 tags: ["tech"]
+topics: [blockchain]
 ---
 
 I've always been fascinated by systems that challenge the status quo. And few technologies have done that as dramatically as blockchain.

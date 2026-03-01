@@ -4,7 +4,8 @@ description: "Cómo construí experiencias de WebVR con solo HTML y JavaScript �
 pubDate: "2018-02-21"
 heroImage: "/images/blog/posts/webvr-projects/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio"]
+tags: ["portfolio", "tech"]
+topics: [javascript, web-development]
 ---
 
 Recuerdo el momento exacto en que hizo clic. Estaba mirando un archivo HTML simple — no un proyecto de Unity, no un engine en C++, no un Blueprint de Unreal — solo un archivo HTML. Agregué un `<script>`, escribí unos cuantos elementos personalizados, lo abrí en el navegador, y de repente estaba dentro de una habitación 3D. Incliné el teléfono, lo metí en un visor Cardboard de $7, y la habitación se movía conmigo. Realidad virtual. En un navegador. Desde un archivo HTML.

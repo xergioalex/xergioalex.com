@@ -5,6 +5,7 @@ pubDate: "2026-03-01"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
 tags: ["tech"]
+topics: [web-development, javascript]
 ---
 
 I remember when building a website was simple. You opened a text editor, wrote an HTML file, linked a CSS stylesheet, maybe dropped in a script tag for interactivity, and opened it in the browser. It worked. No bundlers, no transpilers, no dependency hell, no 47-step configuration before you could render "Hello World."

@@ -11,9 +11,11 @@ import SearchResults from './SearchResults.svelte';
 
 export let postsResult;
 export let currentTag;
+export let currentTopic;
 export let totalPages;
 export let currentPage;
 export let tagsResult = [];
+export let topicsResult = [];
 export let totalPostsAvailable = 0;
 export let lang = 'en';
 
@@ -46,8 +48,8 @@ let searchPagination = {
 let searchCache = new Map();
 const MAX_CACHE_SIZE = 50;
 
-function getCacheKey(query, tag) {
-  return `${query || ''}-${tag || ''}`;
+function getCacheKey(query, tag, topic) {
+  return `${query || ''}-${tag || ''}-${topic || ''}`;
 }
 
 function clearCache() {
@@ -110,7 +112,7 @@ function performSearch(query, page = 1) {
   isSearching = true;
 
   // Check cache first (for pagination)
-  const cacheKey = getCacheKey(query, currentTag);
+  const cacheKey = getCacheKey(query, currentTag, currentTopic);
   const cached = searchCache.get(cacheKey);
 
   // Use cached full results if available
@@ -121,10 +123,18 @@ function performSearch(query, page = 1) {
     // Use Fuse.js for fuzzy search
     const fuseResults = searchPosts(fuseIndex, query);
 
-    // Filter by tag if specified
-    filteredResults = currentTag
-      ? fuseResults.filter((result) => result.item.tags.includes(currentTag))
-      : fuseResults;
+    // Filter by tag or topic if specified
+    filteredResults = fuseResults;
+    if (currentTag) {
+      filteredResults = filteredResults.filter((result) =>
+        result.item.tags.includes(currentTag)
+      );
+    }
+    if (currentTopic) {
+      filteredResults = filteredResults.filter((result) =>
+        result.item.topics?.includes(currentTopic)
+      );
+    }
 
     // Cache results (with size limit)
     if (searchCache.size >= MAX_CACHE_SIZE) {
@@ -221,8 +231,10 @@ onMount(() => {
 <div class="main-container py-12 sm:py-16 lg:py-24">
   <BlogHeader
     {currentTag}
+    {currentTopic}
     tagsResult={displayTags}
-    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
+    {topicsResult}
+    totalPosts={isSearching ? searchPagination.totalPosts : (currentTag || currentTopic ? postsResult.length : totalPostsAvailable)}
     currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
     totalPages={isSearching ? searchPagination.totalPages : totalPages}

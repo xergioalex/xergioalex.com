@@ -5,6 +5,7 @@ pubDate: "2018-12-13"
 heroImage: "/images/blog/posts/docker-introduction/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
+topics: [devops]
 ---
 
 Docker con enfoque en **arquitecturas orientadas a microservicios**. La idea: conectar ambos mundos — por un lado, qué define un microservicio y por qué importa; por otro, cómo Docker y los contenedores encajan en ese panorama para construir sistemas autónomos, aislados y escalables.

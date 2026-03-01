@@ -5,6 +5,7 @@ pubDate: "2019-03-16"
 heroImage: "/images/blog/posts/docker-introductory-workshop/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
+topics: [devops]
 ---
 
 There's a difference between knowing that Docker exists and actually knowing Docker. I had been using containers for a while at that point — mostly following other people's `docker-compose.yml` files, tweaking environment variables, running `docker ps` to see what was running. Useful, but shallow. When the opportunity came to run a proper hands-on workshop at Rocka Labs, I decided to build the session I wished I had taken: one that explains what Docker actually is from the ground up, works through each concept with real commands, and leaves you feeling like you understand the tool rather than just the workflow around it.

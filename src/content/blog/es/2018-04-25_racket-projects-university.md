@@ -4,7 +4,8 @@ description: "La historia de cómo aprendí a programar con DrScheme (ahora DrRa
 pubDate: "2018-04-25"
 heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
 heroLayout: "side-by-side"
-tags: ["portfolio"]
+tags: ["portfolio", "tech"]
+topics: [university]
 ---
 
 Hay gente que aprende a programar imprimiendo "Hello World" en Python o arrastrando bloques en Scratch. Yo aprendí mirando fijamente un mar de paréntesis en un lenguaje del que jamás había escuchado hablar, preguntándome si el profesor nos estaba haciendo una broma elaborada a toda la clase.

@@ -4,7 +4,8 @@ description: "La historia de construir un chat en tiempo real completamente func
 pubDate: "2016-09-27"
 heroImage: "/images/blog/posts/rocka-chat-tutorial/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio"]
+tags: ["portfolio", "tech"]
+topics: ["javascript", "web-development"]
 ---
 
 Hay una sensación muy particular que te da un framework cuando simplemente *hace clic*. No cuando por fin lo haces funcionar después de horas peleando con la documentación — sino cuando hace clic al primer intento. Cuando hace exactamente lo que esperabas, y después un poco más. Esa fue mi primera experiencia con [Meteor.js](https://www.meteor.com/).

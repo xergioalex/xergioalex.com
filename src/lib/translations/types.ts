@@ -440,6 +440,12 @@ export interface SiteTranslations {
   tagNames: Record<string, string>;
   tagDescriptions: Record<string, string>;
 
+  // Topics (secondary tags)
+  postsWithTopic: (topic: string) => string;
+  allTopics: string;
+  topicNames: Record<string, string>;
+  topicDescriptions: Record<string, string>;
+
   // Date formatting
   dateLocale: string;
 

@@ -5,6 +5,7 @@ pubDate: "2026-03-01"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
 tags: ["tech"]
+topics: [web-development, javascript]
 ---
 
 Recuerdo cuando construir un sitio web era simple. Abrías un editor de texto, escribías un archivo HTML, vinculabas una hoja de estilos CSS, quizás ponías un script tag para algo interactivo, y lo abrías en el navegador. Funcionaba. Sin bundlers, sin transpilers, sin dependency hell, sin 47 pasos de configuración antes de poder renderizar "Hello World."

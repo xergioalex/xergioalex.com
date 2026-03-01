@@ -5,6 +5,7 @@ pubDate: "2019-07-05"
 heroImage: "/images/blog/posts/lets-talk-about-flutter/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
+topics: []
 ---
 
 Cross-platform mobile development has always been a tricky balance. You want one codebase, native performance, and pixel-perfect control over the UI. For years, that felt like picking two out of three. Then Flutter arrived.

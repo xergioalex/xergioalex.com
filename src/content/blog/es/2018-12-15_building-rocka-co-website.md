@@ -5,6 +5,7 @@ pubDate: "2018-12-15"
 heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "dailybot"]
+topics: [web-development, design]
 ---
 
 Algunos proyectos son solo trabajo. Recibes el brief, escribes el código, lo despliegas. Otros se te meten bajo la piel. Se vuelven parte de tu historia — entretejidos en las memorias de sesiones de código a medianoche, discusiones frente a la pizarra sobre colores, y ese tipo específico de energía que solo ocurre cuando las personas que construyen algo realmente creen en lo que están haciendo.

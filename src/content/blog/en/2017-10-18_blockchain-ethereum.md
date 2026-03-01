@@ -5,6 +5,7 @@ pubDate: "2017-10-18"
 heroImage: "/images/blog/posts/blockchain-ethereum/event-1.webp"
 heroLayout: "banner"
 tags: ["talks", "tech"]
+topics: ["blockchain"]
 ---
 
 Cryptocurrencies were everywhere in 2017. Bitcoin hit all-time highs, Ethereum was making headlines, and everyone was talking about blockchain. But when I asked people *how* it worked, I got hand-waving. "It's decentralized." "It's a ledger." "It's the future." True, but vague.

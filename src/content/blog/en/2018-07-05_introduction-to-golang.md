@@ -5,6 +5,7 @@ pubDate: "2018-07-05"
 heroImage: "/images/blog/posts/introduction-to-golang/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech"]
+topics: [devops]
 ---
 
 Go is one of those languages that gets out of your way. When I prepared this talk for Pereira Tech Talks, what I wanted to convey wasn't just the syntax or features — it was why Go feels different. It's a language that trusts you to write clear code without overwhelming you with options.

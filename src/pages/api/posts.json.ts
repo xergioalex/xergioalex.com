@@ -30,6 +30,7 @@ export const GET: APIRoute = async () => {
         description: post.data.description,
         pubDate: post.data.pubDate.toISOString(),
         tags: post.data.tags || [],
+        topics: post.data.topics || [],
         heroImage: post.data.heroImage,
         heroWebpExists: heroWebpExists(post.data.heroImage),
       }));

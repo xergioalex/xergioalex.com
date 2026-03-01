@@ -935,6 +935,37 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Artículos sobre DailyBot: plataforma de colaboración para equipos humanos y agentes de IA, automatización de flujos y productividad de equipos híbridos.',
   },
 
+  // Topics (secondary tags)
+  postsWithTopic: (topic) => `Posts sobre ${topic}`,
+  allTopics: 'Todos los temas',
+  topicNames: {
+    'web-development': 'Desarrollo Web',
+    javascript: 'JavaScript',
+    ai: 'IA & ML',
+    blockchain: 'Blockchain',
+    devops: 'DevOps',
+    python: 'Python',
+    university: 'Universidad',
+    database: 'Bases de Datos',
+    iot: 'IoT',
+    design: 'Diseño',
+  },
+  topicDescriptions: {
+    'web-development':
+      'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',
+    javascript:
+      'Ecosistema JavaScript — Vue.js, Webpack, Meteor, A-Frame, Node.',
+    ai: 'Inteligencia artificial, machine learning, deep learning y LLMs.',
+    blockchain:
+      'Blockchain, criptomonedas, Bitcoin, Ethereum y contratos inteligentes.',
+    devops: 'Docker, contenedores, serverless, microservicios y despliegue.',
+    python: 'Ecosistema Python — Django, TensorFlow, MyPy, Spark.',
+    university: 'Proyectos y ejercicios de cursos universitarios.',
+    database: 'SQL, NoSQL, MongoDB y arquitectura multi-base de datos.',
+    iot: 'Internet de las Cosas, sensores, hardware e interfaces de voz.',
+    design: 'Diseño visual, branding, diseño web y UX.',
+  },
+
   // Date formatting
   dateLocale: 'es-ES',
 

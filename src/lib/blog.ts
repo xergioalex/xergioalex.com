@@ -95,6 +95,11 @@ export async function getBlogPosts(
     new Set(posts.flatMap((post) => post.data.tags ?? []))
   );
 
+  // Get all unique topics that are actually used in visible posts for this language
+  const usedTopics = Array.from(
+    new Set(posts.flatMap((post) => post.data.topics ?? []))
+  );
+
   // Filter tagsResult to only include tags that are used in posts
   const filteredTags = tagsResult.filter((tag) =>
     usedTags.includes(tag.data.name)
@@ -104,6 +109,13 @@ export async function getBlogPosts(
   if (params.tag) {
     posts = posts.filter((post) =>
       post.data.tags?.includes(params.tag as string)
+    );
+  }
+
+  // Filter by topic if specified
+  if (params.topic) {
+    posts = posts.filter((post) =>
+      post.data.topics?.includes(params.topic as string)
     );
   }
 
@@ -139,6 +151,7 @@ export async function getBlogPosts(
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,
+    topicsResult: usedTopics,
     postsResult: enrichedPosts,
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
@@ -151,6 +164,7 @@ export async function getBlogPosts(
 interface RelatedPostsParams {
   currentPostId: string;
   tags: string[];
+  topics?: string[];
   lang: string;
   limit?: number;
 }
@@ -161,7 +175,7 @@ interface RelatedPostsParams {
 export async function getRelatedPosts(
   params: RelatedPostsParams
 ): Promise<CollectionEntry<'blog'>[]> {
-  const { currentPostId, tags, lang, limit = 3 } = params;
+  const { currentPostId, tags, topics = [], lang, limit = 3 } = params;
   const allPosts = await getCollection('blog');
 
   const candidates = allPosts
@@ -173,27 +187,32 @@ export async function getRelatedPosts(
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-  if (!tags || tags.length === 0) {
+  if ((!tags || tags.length === 0) && (!topics || topics.length === 0)) {
     return candidates.slice(0, limit);
   }
 
   const scoredPosts = candidates
     .map((post) => {
       const postTags = post.data.tags ?? [];
-      const sharedTagCount = postTags.filter((tag) =>
-        tags.includes(tag)
+      const postTopics = post.data.topics ?? [];
+      // Primary tag matches weighted at 2 points, topic matches at 1 point
+      const sharedTagCount =
+        postTags.filter((tag) => tags.includes(tag)).length * 2;
+      const sharedTopicCount = postTopics.filter((topic) =>
+        topics.includes(topic)
       ).length;
-      return { post, sharedTagCount };
+      const score = sharedTagCount + sharedTopicCount;
+      return { post, score };
     })
     .sort((a, b) => {
-      if (b.sharedTagCount !== a.sharedTagCount) {
-        return b.sharedTagCount - a.sharedTagCount;
+      if (b.score !== a.score) {
+        return b.score - a.score;
       }
       return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
     });
 
   const related = scoredPosts
-    .filter((item) => item.sharedTagCount > 0)
+    .filter((item) => item.score > 0)
     .slice(0, limit)
     .map((item) => item.post);
 

@@ -5,6 +5,7 @@ pubDate: "2020-02-25"
 heroImage: "/images/blog/posts/css-grid-layout/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
+topics: [web-development, design]
 ---
 
 Di una charla sobre **CSS Grid Layout** a principios de 2020, y honestamente, fue tanto para mí como para la audiencia. Llevaba años usando Flexbox — resolvía muchos problemas — pero seguía topándome con situaciones donde se sentía raro. Contenedores flex anidados, hacks raros con márgenes, peleando con el alineamiento en ambos ejes a la vez. Sabía que Grid existía, pero no me había sentado realmente a aprenderlo bien.

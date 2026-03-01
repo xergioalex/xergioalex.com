@@ -5,6 +5,7 @@ pubDate: '2019-09-15'
 heroImage: '/images/blog/posts/webvr-aframe-uniremington/hero.png'
 heroLayout: 'side-by-side'
 tags: ['talks', 'tech']
+topics: [javascript, web-development]
 ---
 
 La realidad virtual se sentía como un lujo cuando empecé a explorarla. Headsets de alta gama como el HTC Vive u Oculus Rift costaban cientos de dólares. La barrera de entrada era alta — hardware costoso, desarrollo específico de plataforma, motores 3D complejos. Luego descubrí **WebVR** y **A-Frame**, y todo cambió.

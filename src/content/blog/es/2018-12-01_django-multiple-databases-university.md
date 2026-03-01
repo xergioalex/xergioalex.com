@@ -3,8 +3,9 @@ title: "BSolutions: Administrando Múltiples Motores de Bases de Datos con Djang
 description: "Un proyecto universitario para la clase de Bases de Datos Avanzadas — conectando Django a 10 motores de bases de datos diferentes (SQL y NoSQL) a través de contenedores Docker, demostrando administración multi-base de datos y arquitectura de microservicios."
 pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
-heroLayout: "banner"
-tags: ["portfolio"]
+heroLayout: "side-by-side"
+tags: ["portfolio", "tech"]
+topics: [python, database, devops, university]
 ---
 
 La pregunta que da origen a este proyecto es deceptivamente simple: ¿es posible que una sola aplicación hable con diez motores de bases de datos al mismo tiempo?

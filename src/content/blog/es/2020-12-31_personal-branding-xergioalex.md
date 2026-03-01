@@ -4,7 +4,8 @@ description: 'La historia detrás de la marca XergioAleX ninja coder — del con
 pubDate: '2020-12-31'
 heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
 heroLayout: 'side-by-side'
-tags: ['portfolio']
+tags: ['portfolio', 'personal']
+topics: [design]
 ---
 
 Pasé años construyendo productos, escribiendo código y sacando features adelante — pero nunca pensé mucho en cómo me presentaba visualmente. Mi perfil de GitHub, mis charlas, mis redes sociales... todo se sentía desconectado. En algún momento me di cuenta de que quería algo que uniera todo. Algo que se sintiera como *yo*.

@@ -77,13 +77,15 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Directories:** `src/content/blog/en/` and `src/content/blog/es/`
 
-**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`
+**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `topics`
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
 **Image path:** `/images/blog/posts/{slug}/hero.{ext}`
 
 **Available tags:** Check `src/content/tags/` — currently: `personal`, `tech`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
+
+**Available topics:** `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design` — assign 1-3 per post based on content. See `topicNames` in `src/lib/translations/en.ts` for the full list.
 
 **Content lifecycle:**
 - Posts are **published** (visible in production and dev)
@@ -97,8 +99,9 @@ The skill auto-detects the mode based on the inputs provided.
 2. Check existing articles in `src/content/blog/en/` for voice reference and to avoid overlap
 3. **Read demo posts in `src/content/blog/en/_demo/` as structural references** — these are example articles showcasing different hero layouts (banner, side-by-side, minimal, none), MDX features, rich markdown formatting, and code syntax highlighting. Use them as templates when deciding article structure and formatting.
 4. Check available tags in `src/content/tags/`
-5. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
-6. **Topic mode only:** Identify the core story or angle. If the brief is too vague, stop and ask for clarification.
+5. **Evaluate topic tags:** Review `topicNames` in `src/lib/translations/en.ts` and assign 1-3 matching topics. If no existing topic fits and the post's subject is a niche one-off, use an empty `topics: []`.
+6. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
+7. **Topic mode only:** Identify the core story or angle. If the brief is too vague, stop and ask for clarification.
 
 ```bash
 # Check existing articles
@@ -165,6 +168,7 @@ pubDate: 'Jan 31 2026'
 heroImage: '/images/blog/posts/post-title-here/hero.jpg'
 heroLayout: 'banner'
 tags: ['tech']
+topics: ['web-development', 'javascript']
 ---
 
 ## Introduction

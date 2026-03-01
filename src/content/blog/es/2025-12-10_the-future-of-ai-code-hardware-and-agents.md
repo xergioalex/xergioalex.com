@@ -5,6 +5,7 @@ pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
+topics: [ai]
 ---
 
 No quería dar otra charla genérica sobre IA. Quería compartir lo que vivo todos los días — el cambio de escribir código a **orquestar agentes**. Diseñar, planear, supervisar. Ese es el trabajo ahora. Y en esta nueva era, saber de arquitectura, producto y diseño — y aprender a delegar — importa más que nunca.

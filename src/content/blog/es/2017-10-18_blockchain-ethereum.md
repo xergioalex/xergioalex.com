@@ -5,6 +5,7 @@ pubDate: '2017-10-18'
 heroImage: '/images/blog/posts/blockchain-ethereum/event-1.webp'
 heroLayout: 'banner'
 tags: ['talks', 'tech']
+topics: [blockchain]
 ---
 
 Las criptomonedas estaban en todas partes en 2017. Bitcoin alcanzó máximos históricos, Ethereum estaba en los titulares, y todo el mundo hablaba de blockchain. Pero cuando le preguntaba a la gente *cómo* funcionaba, recibía respuestas vagas. "Es descentralizado." "Es un ledger." "Es el futuro." Cierto, pero vago.

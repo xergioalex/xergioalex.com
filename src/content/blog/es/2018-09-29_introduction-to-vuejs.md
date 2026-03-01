@@ -5,6 +5,7 @@ pubDate: '2018-09-29'
 heroImage: '/images/blog/posts/introduction-to-vuejs/hero.png'
 heroLayout: 'side-by-side'
 tags: ['talks', 'tech']
+topics: [javascript, web-development]
 ---
 
 Llevo un buen tiempo construyendo aplicaciones web — suficiente como para tener opiniones formadas sobre frameworks de JavaScript. Empecé con Angular cuando todavía era AngularJS, pasé a React cuando todos hablaban del virtual DOM, y luego pasó algo interesante: descubrí Vue.js.

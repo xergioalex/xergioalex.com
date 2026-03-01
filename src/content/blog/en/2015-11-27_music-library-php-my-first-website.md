@@ -5,6 +5,7 @@ pubDate: "2015-11-27"
 heroImage: "/images/blog/posts/music-library-php/home.gif"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal"]
+topics: ["web-development", "university"]
 ---
 
 I've been building for the web for almost 10 years now, but I didn't start that way. Recently I was digging through old university files and found the first website I ever built. It was the final project for my database course — and it was where I had my first real encounter with web development.

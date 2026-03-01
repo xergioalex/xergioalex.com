@@ -2,9 +2,10 @@
 title: "Measuring What Matters: How I Set Up Free Analytics Without Sacrificing Performance"
 description: "The third chapter of building XergioAleX.com — implementing a complete analytics stack using only free tools, without losing the Lighthouse 100 scores or adding cookie banners. A practical guide to privacy-first, performance-preserving web analytics."
 pubDate: "2026-02-28"
-heroImage: "/images/blog/shared/placeholder-side-by-side.png"
+heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio"]
+topics: [web-development]
 ---
 
 In the [first post](/blog/building-xergioalex-website/), I told the story of building this site — from a one-page landing with a photo and five social links to a full personal platform with Astro, Svelte, bilingual content, and an AI-ready architecture. In the [second post](/blog/lighthouse-perfect-scores/), I went deep on achieving perfect Lighthouse scores — 100/100/100/100 across Performance, Accessibility, Best Practices, and SEO, on both mobile and desktop.

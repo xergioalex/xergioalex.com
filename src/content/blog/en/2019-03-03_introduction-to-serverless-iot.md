@@ -5,6 +5,7 @@ pubDate: "2019-03-03"
 heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech"]
+topics: [devops, iot]
 ---
 
 I remember the first time I deployed a Lambda function. It felt like magic — write a function, upload it, and suddenly it's running in response to events without me worrying about servers, scaling, or infrastructure. That shift in mindset is what I wanted to share in this talk on serverless architectures with a focus on IoT.

@@ -4,7 +4,8 @@ description: "The story of how I learned to program with DrScheme (now DrRacket)
 pubDate: "2018-04-25"
 heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
 heroLayout: "side-by-side"
-tags: ["portfolio"]
+tags: ["portfolio", "tech"]
+topics: [university]
 ---
 
 Some people learn to program by printing "Hello World" in Python or dragging blocks in Scratch. I learned by staring at a sea of parentheses in a language I'd never heard of, wondering if my professor was playing an elaborate prank on the entire class.

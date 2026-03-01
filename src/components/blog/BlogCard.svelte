@@ -38,6 +38,7 @@ function getPostData() {
       description: post.data.description,
       pubDate: post.data.pubDate,
       tags: post.data.tags || [],
+      topics: post.data.topics || [],
       heroImage: post.data.heroImage,
     };
   }
@@ -47,6 +48,7 @@ function getPostData() {
     description: post.description,
     pubDate: new Date(post.pubDate),
     tags: post.tags || [],
+    topics: post.topics || [],
     heroImage: post.heroImage,
   };
 }
@@ -115,14 +117,22 @@ $: displayDescription = searchQuery
           timeZone: 'UTC'
         })}
       </time>
-      {#if postData.tags && postData.tags.length > 0}
-        <div class="flex gap-1">
+      {#if (postData.tags && postData.tags.length > 0) || (postData.topics && postData.topics.length > 0)}
+        <div class="flex flex-wrap gap-1">
           {#each postData.tags as tag}
             <a
               href={`${prefix}/blog/tag/${tag}/`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
               #{t.tagNames[tag] || tag}
+            </a>
+          {/each}
+          {#each postData.topics as topic}
+            <a
+              href={`${prefix}/blog/topic/${topic}/`}
+              class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+            >
+              {t.topicNames[topic] || topic}
             </a>
           {/each}
         </div>
