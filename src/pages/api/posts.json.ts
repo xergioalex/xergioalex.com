@@ -1,6 +1,18 @@
 import { getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import type { APIRoute } from 'astro';
 import { getPostLanguage, getPostSlug, isDemoPost } from '@/lib/blog';
+
+function heroWebpExists(heroImage: string | undefined): boolean {
+  if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
+  const publicDir = join(process.cwd(), 'public');
+  const webpPath = join(
+    publicDir,
+    heroImage.replace(/^\//, '').replace(/\.(png|jpe?g)$/i, '.webp')
+  );
+  return existsSync(webpPath);
+}
 
 export const GET: APIRoute = async () => {
   try {
@@ -19,6 +31,7 @@ export const GET: APIRoute = async () => {
         pubDate: post.data.pubDate.toISOString(),
         tags: post.data.tags || [],
         heroImage: post.data.heroImage,
+        heroWebpExists: heroWebpExists(post.data.heroImage),
       }));
 
     return new Response(JSON.stringify(searchIndex), {

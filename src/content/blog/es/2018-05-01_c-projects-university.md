@@ -2,7 +2,8 @@
 title: "De los Paréntesis a los Punteros: Aprendiendo C y Programación Imperativa en la Universidad"
 description: "La historia de cómo Programación 2 me introdujo a C, los punteros, el manejo de memoria y la construcción de juegos con Allegro — el semestre donde aprendí lo que el computador realmente hace bajo el capó."
 pubDate: "2018-05-01"
-heroLayout: "none"
+heroImage: "/images/blog/posts/c-projects-university/hero.png"
+heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 

@@ -4,6 +4,7 @@ import { render } from 'astro:content';
 import BlogImageLightbox from '@/components/blog/BlogImageLightbox.svelte';
 import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
+import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
@@ -127,7 +128,7 @@ const breadcrumbData = {
         readingTimeMinutes={readingTimeMinutes}
       />
       <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:block prose-img:mx-auto">
-        <Content />
+        <Content components={{ TypewriterDemo }} />
       </div>
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>

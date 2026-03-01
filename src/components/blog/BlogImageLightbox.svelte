@@ -78,6 +78,12 @@ function handleBackdropClick(): void {
   dialog?.close();
 }
 
+function handleImageWrapClick(e: MouseEvent): void {
+  if (e.target === e.currentTarget) {
+    handleBackdropClick();
+  }
+}
+
 function handleTouchStart(e: TouchEvent): void {
   touchStartX = e.touches[0]?.clientX ?? 0;
 }
@@ -154,11 +160,11 @@ onMount(() => {
 					<polyline points="15 18 9 12 15 6" />
 				</svg>
 			</button>
-			<div
+			<button
+				type="button"
 				class="lightbox-image-wrap"
-				role="region"
-				aria-label="Image gallery"
-				on:click={handleBackdropClick}
+				aria-label="Close image viewer"
+				on:click={handleImageWrapClick}
 				on:touchstart={handleTouchStart}
 				on:touchend={handleTouchEnd}
 			>
@@ -168,9 +174,8 @@ onMount(() => {
 					class="lightbox-image"
 					loading="eager"
 					decoding="async"
-					on:click|stopPropagation
 				/>
-			</div>
+			</button>
 			<button
 				type="button"
 				class="lightbox-nav lightbox-next"
@@ -264,6 +269,12 @@ onMount(() => {
 		max-width: min(90vw, 1200px);
 		max-height: min(85vh, 85dvh);
 		touch-action: pan-y;
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: default;
+		color: inherit;
+		font: inherit;
 	}
 
 	.lightbox-image {

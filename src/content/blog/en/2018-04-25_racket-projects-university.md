@@ -2,8 +2,8 @@
 title: "My First Steps in Programming: DrScheme, Recursion, and a Function Plotter"
 description: "The story of how I learned to program with DrScheme (now DrRacket) at university — from the confusion of prefix notation and recursion to building a mathematical function plotter with derivatives."
 pubDate: "2018-04-25"
-heroImage: "/images/blog/posts/racket-projects-university/hero.gif"
-heroLayout: "banner"
+heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
+heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
@@ -91,7 +91,7 @@ The course moved fast. Once we had recursion down, we started building real thin
 
 And then came the projects that made us feel like actual software developers:
 
-**A Chess game** (`ajedrez.scm` — 37 KB of pure Scheme). A **Snake game** (`culebrita.scm`). A **Hangman game**. A **Paint application**. A **fractal generator**. A **text editor** that clocked in at 70 KB of functional code.
+**A Chess game** (`ajedrez.scm`). A **Snake game** (`culebrita.scm`). A **Hangman game**. A **Paint application**. A **fractal generator**. A **text editor**.
 
 Each project pushed us further. Each one made us more comfortable with the idea that functional programming wasn't a limitation — it was a lens. A different way of seeing problems.
 
@@ -110,15 +110,15 @@ You could type a mathematical function, and the program would:
 4. **Compute the derivative** symbolically — not numerically, but actually applying differentiation rules
 5. **Graph the derivative** alongside the original function
 
-![Function Plotter and Integrator](/images/blog/posts/racket-projects-university/project-screenshot.jpg)
+![Function Plotter and Integrator](/images/blog/posts/racket-projects-university/hero.gif)
 
-The main file — `integrador y derivador.scm` — was **156 KB** of Scheme code. For context, that's massive for a language as concise as Scheme. We built a modular architecture before we even knew what "modular architecture" meant: a graphing engine (`graficador.scm`), an integrator (`integrador_final.scm`), a number parser (`convertir_a_numero.scm`), a polynomial validator (`verificar polinomio.scm`), and a coefficient/exponent handler.
+The main file — `integrador y derivador.scm` — was a massive amount of Scheme code for such a concise language. We built a modular architecture before we even knew what "modular architecture" meant: a graphing engine (`graficador.scm`), an integrator (`integrador_final.scm`), a number parser (`convertir_a_numero.scm`), a polynomial validator (`verificar polinomio.scm`), and a coefficient/exponent handler.
 
 Building a graphing engine from scratch in DrScheme meant calculating pixel positions manually, mapping mathematical coordinates to screen coordinates, drawing axes, scaling the view — all in a language with no mutable state by default. Every pixel was the result of a pure function.
 
 The derivative computation was the part that made me proudest. We implemented the basic differentiation rules — power rule, constant rule, sum rule — as recursive pattern matching on the polynomial structure. Feed in `3x² + 2x + 1`, get back `6x + 2`. All from first principles, in a functional language, as first-semester students.
 
-Was the code elegant? Absolutely not. Was it well-structured by professional standards? Not even close. Did it work? **Yes.** And there's something beautiful about that — two students who learned to program less than a year ago, building something that does calculus.
+Was the code elegant? Absolutely not. Was it well-structured by professional standards? Not even close. Did it work? **Yes.** And there's something beautiful about that — learning to program less than a year ago and building something that does calculus.
 
 ---
 

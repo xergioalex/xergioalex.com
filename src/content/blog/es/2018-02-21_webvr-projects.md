@@ -2,20 +2,20 @@
 title: "Construyendo Realidad Virtual para la Web: A-Frame, Laberintos y Galerías 360°"
 description: "Cómo construí experiencias de WebVR con solo HTML y JavaScript — un laberinto en VR, una galería de fotos 360° y más de 20 demos que demostraron que la realidad virtual no necesita hardware costoso."
 pubDate: "2018-02-21"
-heroImage: "/images/blog/posts/webvr-projects/hero.jpg"
-heroLayout: "banner"
+heroImage: "/images/blog/posts/webvr-projects/hero.png"
+heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
 Recuerdo el momento exacto en que hizo clic. Estaba mirando un archivo HTML simple — no un proyecto de Unity, no un engine en C++, no un Blueprint de Unreal — solo un archivo HTML. Agregué un `<script>`, escribí unos cuantos elementos personalizados, lo abrí en el navegador, y de repente estaba dentro de una habitación 3D. Incliné el teléfono, lo metí en un visor Cardboard de $7, y la habitación se movía conmigo. Realidad virtual. En un navegador. Desde un archivo HTML.
 
-Eso fue a principios de 2018, y la tecnología se llamaba **WebVR**. El framework era **A-Frame**, creado por Mozilla. Y estaba a punto de convertirse en una de las madrigueras más divertidas en las que me he metido.
+La tecnología se llama **WebVR**. El framework es **A-Frame**, creado por Mozilla. Y está a punto de convertirse en una de las madrigueras más divertidas en las que me he metido.
 
 ---
 
 ## La promesa: VR con solo HTML
 
-El panorama de la VR en 2018 tenía un problema. Los visores de gama alta como el HTC Vive y Oculus Rift costaban entre $400 y $500. El desarrollo requería Unity o Unreal Engine — potentes pero complejos. La barrera de entrada era alta, tanto para creadores como para usuarios.
+El panorama actual de la VR tiene un problema. Los visores de gama alta como el HTC Vive y Oculus Rift costaban entre $400 y $500. El desarrollo requería Unity o Unreal Engine — potentes pero complejos. La barrera de entrada era alta, tanto para creadores como para usuarios.
 
 Entonces apareció **A-Frame**. El framework open-source de Mozilla construido sobre Three.js que te permitía crear escenas de VR con sintaxis tipo HTML. Sin paso de compilación. Sin configuración compleja. Si sabías HTML, podías construir VR.
 
@@ -27,32 +27,97 @@ Entonces apareció **A-Frame**. El framework open-source de Mozilla construido s
 </a-scene>
 ```
 
+<div class="not-prose my-6">
+  <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+    <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Primitivas" src="https://codepen.io/xergioalex/embed/jZxbdo?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/jZxbdo" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+  </div>
+</div>
+
 Eso es una escena 3D completa. Una caja azul, una esfera rosa y un cielo gris. Ábrelo en cualquier navegador y estás viendo un mundo 3D. Dale clic al botón de VR, y lo renderiza en estéreo para un visor. La simplicidad era revolucionaria.
 
 Por debajo, A-Frame usa una arquitectura **Entity-Component System** tomada de los motores de videojuegos. Las entidades son contenedores. Los componentes les dan comportamiento — geometría, material, posición, física. Los sistemas manejan la lógica global. Es el mismo patrón que impulsa los juegos AAA, envuelto en HTML.
 
 ---
 
-## Los demos: de primitivas a reconocimiento de voz
+## Los demos: explorando A-Frame
 
 No me limité a leer sobre A-Frame — construí cosas. En unas pocas semanas, creé **más de 20 demos en vivo** en CodePen, cada uno explorando una capacidad diferente:
 
-- **Primitivas** — cajas, esferas, cilindros ubicados en espacio 3D ([demo](https://codepen.io/xergioalex/pen/jZxbdo))
-- **Cielos 360°** — fotos panorámicas equirectangulares como fondos inmersivos ([demo](https://codepen.io/xergioalex/pen/PQeZYy))
-- **Texturas y animaciones** — aplicando imágenes a superficies con transiciones encadenadas ([demo](https://codepen.io/xergioalex/pen/VQxepd))
-- **Modelos 3D** — importando archivos Collada desde Blender y SketchUp ([demo](https://codepen.io/xergioalex/pen/JpvXrz))
-- **Física** — gravedad, masa y colisiones con Cannon.js ([demo](https://codepen.io/xergioalex/pen/wyjowM))
-- **Eventos de cursor** — interacción por mirada donde ver un objeto dispara acciones ([demo](https://codepen.io/xergioalex/pen/rJvLab))
-- **Audio espacial** — sonido que cambia según tu posición en la escena ([demo](https://codepen.io/xergioalex/pen/BYxzBw))
-- **Reconocimiento de voz** — comandos de voz en VR usando la Web Speech API ([demo](https://codepen.io/xergioalex/pen/rJKxbm))
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 not-prose">
 
-Cada demo era un bloque de construcción. Cada uno me enseñó algo nuevo sobre cómo funcionan los entornos 3D en el navegador. Y cada uno demostraba lo mismo: la web es lo suficientemente poderosa para experiencias inmersivas.
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Primitivas</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Cajas, esferas, cilindros en espacio 3D.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Primitivas" src="https://codepen.io/xergioalex/embed/jZxbdo?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/jZxbdo" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Cielos 360°</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Fotos panorámicas equirectangulares como fondos inmersivos.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Cielos 360°" src="https://codepen.io/xergioalex/embed/PQeZYy?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/PQeZYy" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Texturas y animaciones</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Imágenes a superficies con transiciones encadenadas.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Texturas y animaciones" src="https://codepen.io/xergioalex/embed/VQxepd?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/VQxepd" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Modelos 3D</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Importando Collada desde Blender y SketchUp.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Modelos 3D" src="https://codepen.io/xergioalex/embed/JpvXrz?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/JpvXrz" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Física</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Gravedad, masa y colisiones con Cannon.js.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Física" src="https://codepen.io/xergioalex/embed/wyjowM?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/wyjowM" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Eventos de cursor</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Interacción por mirada donde ver un objeto dispara acciones.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Eventos de cursor" src="https://codepen.io/xergioalex/embed/rJvLab?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/rJvLab" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Componente Sun</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Iluminación dinámica con un sol en movimiento.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Componente Sun" src="https://codepen.io/xergioalex/embed/BYxLPB?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/BYxLPB" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Texto y múltiples animaciones</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Texto 3D con animaciones encadenadas.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Texto y animaciones" src="https://codepen.io/xergioalex/embed/qxYbwM?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/qxYbwM" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+<div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+  <p class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300">Animación de cámara</p>
+  <p class="px-4 pb-2 text-sm text-gray-600 dark:text-gray-400">Moviendo el punto de vista programáticamente.</p>
+  <iframe height="350" style="width:100%;" scrolling="no" title="A-Frame Animación de cámara" src="https://codepen.io/xergioalex/embed/eVrJPR?default-tab=result" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  <p class="px-4 py-2 text-sm"><a href="https://codepen.io/xergioalex/pen/eVrJPR" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Ver demo en CodePen →</a></p>
+</div>
+
+</div>
+
+Cada demo era un bloque de construcción. Cada uno me enseñó algo nuevo sobre cómo funcionan los entornos 3D en el navegador. Y cada uno demostraba lo mismo: la web es lo suficientemente poderosa para experiencias inmersivas. Hay más demos en mi [colección de CodePen](https://codepen.io/xergioalex).
 
 ---
 
 ## La galería: caminando entre fotos 360°
 
-El primer proyecto de verdad fue una **galería de fotos 360°** — un cuarto virtual donde podías acercarte a miniaturas panorámicas y hacer clic en ellas para ser transportado dentro de la escena.
+El primer proyecto más grande fue una **galería de fotos 360°** — un cuarto virtual donde podías acercarte a miniaturas panorámicas y hacer clic en ellas para ser transportado dentro de la escena.
 
 El concepto era simple: cargar 18 imágenes panorámicas equirectangulares, organizarlas como miniaturas clickeables en una pared, y cuando alguien hiciera clic en una, cambiar todo el cielo a esa panorámica. De repente estabas parado dentro de una fotografía 360°, mirando en todas las direcciones.
 
@@ -66,6 +131,13 @@ Una línea para la miniatura. Una línea para el cielo. Una función de JavaScri
 ![Panorámica 360° de la galería](/images/blog/posts/webvr-projects/gallery-panorama.jpg)
 
 Le agregué un cubo flotante y giratorio con el logo de PereiraJS como easter egg, un cursor de mirada para interacción en VR (mirá una miniatura por 800ms y se activa), y controles de cámara para escritorio y móvil.
+
+<div class="not-prose my-6">
+  <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+    <iframe height="450" style="width:100%;" scrolling="no" title="Galería VR 360°" src="https://xergioalex.github.io/webvr-gallery/" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"></iframe>
+    <p class="px-4 py-2 text-sm"><a href="https://xergioalex.github.io/webvr-gallery/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Abrir galería en nueva pestaña →</a></p>
+  </div>
+</div>
 
 La galería sigue en línea: [webvr-gallery](https://xergioalex.github.io/webvr-gallery/). Ábrela en tu teléfono, mételo en un visor Cardboard, y recorré las panorámicas.
 
@@ -97,7 +169,12 @@ El stack tecnológico era mínimo pero efectivo:
 - Un componente **sun-sky** para iluminación exterior realista
 - **Piso y paredes con textura** para profundidad visual
 
-![Otra panorámica de la galería VR](/images/blog/posts/webvr-projects/gallery-panorama-2.jpg)
+<div class="not-prose my-6">
+  <div class="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-(--box-shadow)">
+    <iframe height="450" style="width:100%;" scrolling="no" title="Laberinto VR" src="https://xergioalex.github.io/webvr-maze/" frameborder="no" loading="lazy" allowfullscreen="true" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"></iframe>
+    <p class="px-4 py-2 text-sm"><a href="https://xergioalex.github.io/webvr-maze/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">Abrir laberinto en nueva pestaña →</a></p>
+  </div>
+</div>
 
 Todo el asunto eran unas 100 líneas de JavaScript y un archivo HTML. Podías jugarlo en escritorio con las teclas WASD o en VR con un visor. El laberinto sigue siendo jugable: [webvr-maze](https://xergioalex.github.io/webvr-maze/).
 
@@ -107,19 +184,17 @@ Todo el asunto eran unas 100 líneas de JavaScript y un archivo HTML. Podías ju
 
 Estos proyectos no se quedaron en GitHub. Se convirtieron en la columna vertebral de dos charlas que di sobre WebVR:
 
-La primera fue en [Pereira Tech Talks](/es/blog/webvr-aframe) en febrero de 2018, donde mostré toda la progresión — desde formas primitivas hasta el juego del laberinto — a un salón lleno de desarrolladores. La audiencia sacó los teléfonos y cargó los demos en vivo durante la presentación.
+La primera fue en [PereiraJs](/es/blog/webvr-aframe), donde mostré toda la progresión — desde formas primitivas hasta el juego del laberinto — a un salón lleno de desarrolladores. La audiencia sacó los teléfonos y cargó los demos en vivo durante la presentación.
 
-La segunda fue en la [Universidad Remington](/es/blog/webvr-aframe-uniremington) en septiembre de 2019, para un público universitario. Expandí la charla para cubrir VR vs. AR vs. Realidad Mixta, la economía del hardware de VR, y por qué la web es la mejor plataforma de distribución. Estudiantes que nunca habían probado VR la estaban experimentando en sus teléfonos con visores Cardboard al final de la sesión.
+La segunda fue en la [Universidad Remington](/es/blog/webvr-aframe-uniremington), para públicos universitarios, donde expandí el contenido para cubrir VR vs. AR vs. Realidad Mixta, la economía del hardware de VR, y por qué la web es la mejor plataforma de distribución.
 
 Ambas charlas demostraron lo mismo: cuando la VR corre en un navegador, la audiencia puede experimentar lo que estás construyendo en tiempo real. Sin descargas. Sin instalaciones. Solo una URL.
 
 ---
 
-## Mirando hacia atrás
+## Conclusión
 
-WebVR desde entonces evolucionó a **WebXR**, expandiéndose para cubrir realidad aumentada junto con realidad virtual. A-Frame sigue activo y ha crecido significativamente. Las APIs del navegador están más maduras. El panorama del hardware cambió — visores independientes como el Meta Quest hicieron la VR más accesible que nunca.
-
-Pero la idea central de 2018 sigue siendo válida: **la web es la plataforma de distribución más poderosa que tenemos.** Si podés construir una experiencia que corra en un navegador, podés llegar a cualquier persona con un dispositivo y conexión a internet. Sin tiendas de apps. Sin gatekeeping de plataformas. Solo una URL.
+La idea central es clara: **la web es la plataforma de distribución más poderosa que tenemos.** Si podés construir una experiencia que corra en un navegador, podés llegar a cualquier persona con un dispositivo y conexión a internet. Sin tiendas de apps. Sin gatekeeping de plataformas. Solo una URL.
 
 Construir esos demos me enseñó a pensar sobre la tecnología de manera diferente. No "¿cuál es la herramienta más poderosa?" sino "¿cuál es la más accesible?" No "¿cómo hago la mejor experiencia de VR?" sino "¿cómo hago que la VR esté disponible para todos?"
 
@@ -128,6 +203,6 @@ Los proyectos siguen en línea y se pueden explorar:
 - **Galería VR:** [xergioalex.github.io/webvr-gallery](https://xergioalex.github.io/webvr-gallery/)
 - **Laberinto VR:** [xergioalex.github.io/webvr-maze](https://xergioalex.github.io/webvr-maze/)
 - **Código fuente:** [webvr-gallery](https://github.com/xergioalex/webvr-gallery), [webvr-maze](https://github.com/xergioalex/webvr-maze)
-- **Slides de las charlas:** [Pereira Tech Talks](https://slides.com/xergioalex/webvr-aframe), [UniRemington](https://slides.com/xergioalex/webvr-aframe-uniremington-talk)
+- **Slides de las charlas:** [PereiraJs](https://slides.com/xergioalex/webvr-aframe), [UniRemington](https://slides.com/xergioalex/webvr-aframe-uniremington-talk)
 
 Cada demo en esos repos es prueba de que la VR no tiene que ser exclusiva. Solo necesita un navegador.

@@ -6,6 +6,7 @@ import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: string = 'en';
+export let heroWebpExists: boolean = false;
 export let searchQuery: string = '';
 export let searchResult:
   | { item: any; score: number; matches?: any[] }
@@ -71,7 +72,7 @@ $: displayDescription = searchQuery
   {#if postData.heroImage}
     <div class="relative">
       <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800">
-        {#if postData.heroImage.match(/\.(png|jpe?g)$/i)}
+        {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
           <picture>
             <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
             <img

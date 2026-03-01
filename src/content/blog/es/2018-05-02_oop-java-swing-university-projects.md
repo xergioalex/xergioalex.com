@@ -2,7 +2,7 @@
 title: "POO en Accion: Construyendo un Solucionador de Sudoku y una Agenda de Contactos con Java Swing"
 description: "Dos proyectos universitarios de mi curso de Programacion Orientada a Objetos — un solucionador de Sudoku usando el patron Observer y backtracking, y una agenda de contactos con persistencia en archivos, ambos construidos con Java Swing."
 pubDate: "2018-05-02"
-heroImage: "/images/blog/posts/java-swing-university-projects/hero.gif"
+heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
@@ -51,9 +51,9 @@ SudokuSrc/
   board_Escargot.txt
 ```
 
-**Model.java** — unos 12KB — tenía todo lo relacionado con el puzzle de Sudoku en sí. Una matriz 9x9 de objetos `Cell`. Cada Cell tenía un conjunto de valores candidatos (los enteros del 1 al 9 que la celda todavía podía contener legalmente). El Model manejaba la propagación de restricciones, el solving, la clonación de estados del tablero, la carga de puzzles desde archivos. Cero código de UI. Cero imports de Swing. El Model podía correr de manera headless y no sabía ni le importaba si existía alguna interfaz.
+**Model.java** — tenía todo lo relacionado con el puzzle de Sudoku en sí. Una matriz 9x9 de objetos `Cell`. Cada Cell tenía un conjunto de valores candidatos (los enteros del 1 al 9 que la celda todavía podía contener legalmente). El Model manejaba la propagación de restricciones, el solving, la clonación de estados del tablero, la carga de puzzles desde archivos. Cero código de UI. Cero imports de Swing. El Model podía correr de manera headless y no sabía ni le importaba si existía alguna interfaz.
 
-**Watch.java** — unos 14KB — tenía el JFrame de Java Swing, la cuadrícula de JPanels, todos los event listeners, los botones, el renderizado de colores. Sabía todo sobre cómo se veía el puzzle, pero delegaba toda la lógica al Model.
+**Watch.java** — tenía el JFrame de Java Swing, la cuadrícula de JPanels, todos los event listeners, los botones, el renderizado de colores. Sabía todo sobre cómo se veía el puzzle, pero delegaba toda la lógica al Model.
 
 Esa separación suena obvia cuando la escribes. En la práctica, cuando eres estudiante y solo quieres que algo funcione, requiere disciplina real. Cada vez que empezaba a escribir algo en Watch.java y pensaba "esto necesita verificar si la celda está resuelta", tenía que parar, poner esa lógica en Model.java, y exponerla a través de un método. El límite es fácil de difuminar. Mantenerlo limpio es una decisión que tomas continuamente.
 
@@ -141,7 +141,7 @@ La capa visual se construyó alrededor de una cuadrícula 9x9 de objetos `JPanel
 
 **Botón de resolver.** Ejecuta el algoritmo completo de backtracking sobre el estado actual del tablero y rellena la solución. Ver cómo funcionaba con un puzzle difícil era genuinamente satisfactorio.
 
-![Demo del solucionador de Sudoku — regiones con código de colores, visualización de candidatos, clic para resolver celdas, y la función de resolución automática en acción](/images/blog/posts/java-swing-university-projects/hero.gif)
+![Demo del solucionador de Sudoku — regiones con código de colores, visualización de candidatos, clic para resolver celdas, y la función de resolución automática en acción](/images/blog/posts/oop-java-swing-university-projects/hero.gif)
 
 ---
 
@@ -173,7 +173,7 @@ La arquitectura era sencilla y deliberadamente limpia:
 
 **Persistencia en archivos** mediante `contactos.txt`. Los contactos se serializaban como líneas delimitadas por espacios al guardar, y se parseaban de vuelta con `BufferedReader` y `StringTokenizer` al inicio. No es lo más glamoroso, pero funcionaba, y los contactos sobrevivían al cerrar y reabrir la aplicación — lo que, para un estudiante de segundo año, se sentía como magia de persistencia real.
 
-![Demo de la agenda de contactos — agregar contactos, ver la lista en el JTable, y gestionar entradas](/images/blog/posts/java-swing-university-projects/agenda-demo.gif)
+![Demo de la agenda de contactos — agregar contactos, ver la lista en el JTable, y gestionar entradas](/images/blog/posts/oop-java-swing-university-projects/agenda-demo.gif)
 
 La agenda no tenía el patrón Observer ni backtracking ni ninguna de las cosas ingeniosas que hacían interesante al solucionador de Sudoku. Lo que tenía era claridad. Cada clase tenía un solo trabajo. El modelo de datos no sabía que existía la pantalla. La UI no implementaba ninguna lógica. La validación estaba centralizada. Era la aplicación directa de los principios que el curso enseñaba — y construirla primero hizo que la arquitectura del Sudoku se sintiera como una escalada natural, no como un salto.
 

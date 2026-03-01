@@ -1,13 +1,13 @@
 ---
 title: "Declaring the Solution: Logic and Constraint Programming with Prolog and Mozart"
 description: "University projects from my Logic and Constraint Programming course — from classic puzzles in Prolog to constraint solving in Mozart/Oz, culminating in the Four Color Theorem applied to Colombia's map."
-pubDate: "2018-05-01"
+pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
 heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
-By the time I reached Logic and Constraint Programming, I'd been through four paradigm shifts already. Scheme taught me to think in pure functions and recursion. C taught me what the machine was actually doing with every byte. Java and data structures taught me to organize and engineer. And [my OOP course with Java Swing](/blog/java-swing-university-projects) taught me to think in patterns — to design before coding, to separate concerns, to ask "what are the pieces and how do they talk to each other?"
+By the time I reached Logic and Constraint Programming, I'd been through four paradigm shifts already. Scheme taught me to think in pure functions and recursion. C taught me what the machine was actually doing with every byte. Java and data structures taught me to organize and engineer. And [my OOP course with Java Swing](/blog/oop-java-swing-university-projects) taught me to think in patterns — to design before coding, to separate concerns, to ask "what are the pieces and how do they talk to each other?"
 
 Each of those courses gave me a new lens. But this one was different. Logic and Constraint Programming wasn't adding a new tool to the same mental model. It was proposing a fundamentally different relationship between programmer and machine. The others all said: here is a problem, now *tell* the computer how to solve it. This course said: here is a problem, now *describe* what the solution looks like, and let the computer figure out the rest.
 
@@ -169,6 +169,25 @@ Try color 1. Check if any neighbor already has color 1. If not, move on to the n
 
 **Racket** — the functional approach. I already knew DrRacket from [my first programming course](/blog/racket-projects-university), so this was a homecoming of sorts. Same backtracking algorithm as Java, but expressed with immutable structs and recursive calls instead of mutable objects and loops. The algorithm is identical under the hood, but the functional style makes the recursive structure more explicit. Still fully procedural in terms of how the search is specified — you're telling the computer exactly how to search.
 
+```racket
+(define (pintar-dpto dpto color)
+  (set-Departamento-Color! dpto color))
+
+(define (despintar-dpto dpto)
+  (set-Departamento-Color! dpto 0))
+
+(define (asignar-colores dpto n)
+  (for ([color (in-range 1 5)])
+    (pintar-dpto dpto color)
+    (if (not (comparar-vecinos dpto color))
+        (if (= n (sub1 (length Colombia)))
+            (void)
+            (asignar-colores (list-ref Colombia (add1 n)) (add1 n)))
+        (despintar-dpto dpto))))
+```
+
+Try color 1. If no neighbor has it, move to the next department. If there's a conflict, unpaint and try color 2. Same logic as Java — explicit backtracking, recursion instead of loops.
+
 **Mozart/Oz** — the constraint approach. This is where the paradigm shift becomes visceral:
 
 ```oz
@@ -215,7 +234,7 @@ That said, logic programming has real costs too. Debugging a constraint system i
 
 ## Looking back
 
-It's 2018 and I've now spent several years collecting programming paradigms like different languages for thinking.
+I've now spent several years collecting programming paradigms like different languages for thinking.
 
 Scheme gave me recursion and the idea that a program is a description of a computation, not a sequence of steps. C gave me the machine — memory addresses, pointers, the physical reality underneath every abstraction. Data structures gave me organization — how the shape of your data determines the shape of your solutions. OOP gave me architecture — patterns, separation of concerns, designing systems before writing a line. And now logic and constraint programming gave me declaration — the idea that you can sometimes just state what you want, and a sufficiently smart engine will find it.
 
@@ -232,4 +251,4 @@ Let's keep building.
 - [Logic and Constraint Programming — Prolog and Mozart/Oz projects (GitHub)](https://github.com/xergioalex/logic_and_restricted_programming)
 - [Four Color Theorem — Java, Racket, and Mozart/Oz implementations (GitHub)](https://github.com/xergioalex/4ColorsTheorem)
 - [My first programming course — Racket, recursion, and a function plotter](/blog/racket-projects-university)
-- [My OOP course — Sudoku solver and contact agenda with Java Swing](/blog/java-swing-university-projects)
+- [My OOP course — Sudoku solver and contact agenda with Java Swing](/blog/oop-java-swing-university-projects)

@@ -54,7 +54,7 @@ async function main() {
 				const inputMtime = statSync(inputPath).mtimeMs;
 				const webpMtime = statSync(webpPath).mtimeMs;
 				if (webpMtime >= inputMtime) {
-					console.log(`  ${slug}/hero: skipped (WebP exists and is up to date)`);
+					console.log(`  ${slug}/${filename}: skipped (WebP exists and is up to date)`);
 					continue;
 				}
 			}
@@ -69,12 +69,12 @@ async function main() {
 				const saved = inputSize - webpSize;
 				if (saved <= 0) {
 					unlinkSync(webpPath);
-					console.log(`  ${slug}/hero: skipped (WebP larger)`);
+					console.log(`  ${slug}/${filename}: skipped (WebP larger)`);
 				} else {
 					totalSaved += saved;
 					processed++;
 					console.log(
-						`  ${slug}/hero: ${formatSize(inputSize)} -> ${formatSize(webpSize)} (saved ${formatSize(saved)})`,
+						`  ${slug}/${filename}: ${formatSize(inputSize)} -> ${formatSize(webpSize)} (saved ${formatSize(saved)})`,
 					);
 				}
 			} catch (err) {

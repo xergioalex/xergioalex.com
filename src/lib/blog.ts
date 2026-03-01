@@ -1,6 +1,18 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { BLOG_PAGE_SIZE } from './constances';
 import type { BlogParamsType, BlogPostsResultType } from './types';
+
+function heroWebpExists(heroImage: string | undefined): boolean {
+  if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
+  const publicDir = join(process.cwd(), 'public');
+  const webpPath = join(
+    publicDir,
+    heroImage.replace(/^\//, '').replace(/\.(png|jpe?g)$/i, '.webp')
+  );
+  return existsSync(webpPath);
+}
 
 const WORDS_PER_MINUTE = 200;
 
@@ -114,6 +126,12 @@ export async function getBlogPosts(
     posts = posts.slice(0, params.pageSize ?? BLOG_PAGE_SIZE);
   }
 
+  // Enrich posts with heroWebpExists for BlogCard (avoids picture/WebP when WebP doesn't exist)
+  const enrichedPosts = posts.map((post) => ({
+    ...post,
+    heroWebpExists: heroWebpExists(post.data.heroImage),
+  }));
+
   // Count total posts for this language (before pagination, excluding demo posts)
   const langPosts = allPosts.filter(
     (post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post)
@@ -121,7 +139,7 @@ export async function getBlogPosts(
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,
-    postsResult: posts,
+    postsResult: enrichedPosts,
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
     totalPages: totalPages,

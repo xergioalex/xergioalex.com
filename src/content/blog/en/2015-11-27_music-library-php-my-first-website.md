@@ -1,7 +1,7 @@
 ---
 title: "Music Library PHP: My First Website"
 description: "The story behind my first web project — a university database course final that became my introduction to PHP, SQLite, and web development."
-pubDate: "2016-11-27"
+pubDate: "2015-11-27"
 heroImage: "/images/blog/posts/music-library-php/home.gif"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal"]

@@ -2,8 +2,8 @@
 title: "Mis Primeros Pasos en Programación: DrScheme, Recursividad y un Graficador de Funciones"
 description: "La historia de cómo aprendí a programar con DrScheme (ahora DrRacket) en la universidad — desde la confusión de la notación prefija y la recursividad hasta construir un graficador de funciones matemáticas con derivadas."
 pubDate: "2018-04-25"
-heroImage: "/images/blog/posts/racket-projects-university/hero.gif"
-heroLayout: "banner"
+heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
+heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
@@ -91,7 +91,7 @@ La materia avanzaba rápido. Una vez que teníamos la recursividad dominada, emp
 
 Y después vinieron los proyectos que nos hicieron sentir como verdaderos desarrolladores de software:
 
-**Un juego de Ajedrez** (`ajedrez.scm` — 37 KB de Scheme puro). Un **juego de la Culebrita** (`culebrita.scm`). Un **Ahorcado**. Una **aplicación de Paint**. Un **generador de fractales**. Un **editor de texto** que pesaba 70 KB de código funcional.
+**Un juego de Ajedrez** (`ajedrez.scm`). Un **juego de la Culebrita** (`culebrita.scm`). Un **Ahorcado**. Una **aplicación de Paint**. Un **generador de fractales**. Un **editor de texto**.
 
 Cada proyecto nos empujaba más lejos. Cada uno nos hacía más cómodos con la idea de que la programación funcional no era una limitación — era un lente. Una manera diferente de ver los problemas.
 
@@ -110,15 +110,15 @@ Podías escribir una función matemática, y el programa:
 4. **Calculaba la derivada** simbólicamente — no numéricamente, sino realmente aplicando las reglas de derivación
 5. **Graficaba la derivada** junto a la función original
 
-![Graficador de Funciones e Integrador](/images/blog/posts/racket-projects-university/project-screenshot.jpg)
+![Graficador de Funciones e Integrador](/images/blog/posts/racket-projects-university/hero.gif)
 
-El archivo principal — `integrador y derivador.scm` — tenía **156 KB** de código Scheme. Para ponerlo en contexto, eso es enorme para un lenguaje tan conciso como Scheme. Construimos una arquitectura modular antes de siquiera saber qué significaba "arquitectura modular": un motor gráfico (`graficador.scm`), un integrador (`integrador_final.scm`), un parser de números (`convertir_a_numero.scm`), un validador de polinomios (`verificar polinomio.scm`), y un manejador de coeficientes y exponentes.
+El archivo principal — `integrador y derivador.scm` — tenía una cantidad enorme de código Scheme para un lenguaje tan conciso. Construimos una arquitectura modular antes de siquiera saber qué significaba "arquitectura modular": un motor gráfico (`graficador.scm`), un integrador (`integrador_final.scm`), un parser de números (`convertir_a_numero.scm`), un validador de polinomios (`verificar polinomio.scm`), y un manejador de coeficientes y exponentes.
 
 Construir un motor gráfico desde cero en DrScheme significaba calcular posiciones de píxeles manualmente, mapear coordenadas matemáticas a coordenadas de pantalla, dibujar ejes, escalar la vista — todo en un lenguaje sin estado mutable por defecto. Cada píxel era el resultado de una función pura.
 
 La parte de las derivadas fue lo que más orgullo me dio. Implementamos las reglas básicas de diferenciación — regla de la potencia, regla de la constante, regla de la suma — como pattern matching recursivo sobre la estructura del polinomio. Le metías `3x² + 2x + 1`, te devolvía `6x + 2`. Todo desde los principios fundamentales, en un lenguaje funcional, siendo estudiantes de primer semestre.
 
-¿El código era elegante? Definitivamente no. ¿Estaba bien estructurado según estándares profesionales? Ni de cerca. ¿Funcionaba? **Sí.** Y hay algo bonito en eso — dos estudiantes que aprendieron a programar hace menos de un año, construyendo algo que hace cálculo diferencial.
+¿El código era elegante? Definitivamente no. ¿Estaba bien estructurado según estándares profesionales? Ni de cerca. ¿Funcionaba? **Sí.** Y hay algo bonito en eso — aprender a programar hace menos de un año y construir algo que hace cálculo diferencial.
 
 ---
 

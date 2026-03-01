@@ -1,13 +1,13 @@
 ---
 title: "Declarando la Solución: Programación Lógica y con Restricciones con Prolog y Mozart"
 description: "Proyectos universitarios de mi curso de Programación Lógica y con Restricciones — desde puzzles clásicos en Prolog hasta resolución de restricciones en Mozart/Oz, culminando con el Teorema de los Cuatro Colores aplicado al mapa de Colombia."
-pubDate: "2018-05-01"
+pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
 heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
-Cuando llegué a Programación Lógica y con Restricciones, ya había pasado por cuatro cambios de paradigma. Scheme me enseñó a pensar en funciones puras y recursividad. C me enseñó lo que el computador realmente hacía con cada byte. Java y las estructuras de datos me enseñaron a organizar y a diseñar con ingeniería. Y [mi curso de POO con Java Swing](/es/blog/java-swing-university-projects) me enseñó a pensar en patrones — a diseñar antes de codificar, a separar responsabilidades, a preguntar "¿cuáles son las piezas y cómo se comunican entre sí?"
+Cuando llegué a Programación Lógica y con Restricciones, ya había pasado por cuatro cambios de paradigma. Scheme me enseñó a pensar en funciones puras y recursividad. C me enseñó lo que el computador realmente hacía con cada byte. Java y las estructuras de datos me enseñaron a organizar y a diseñar con ingeniería. Y [mi curso de POO con Java Swing](/es/blog/oop-java-swing-university-projects) me enseñó a pensar en patrones — a diseñar antes de codificar, a separar responsabilidades, a preguntar "¿cuáles son las piezas y cómo se comunican entre sí?"
 
 Cada uno de esos cursos me dio una lente nueva. Pero este era diferente. La Programación Lógica y con Restricciones no estaba añadiendo una herramienta más al mismo modelo mental. Estaba proponiendo una relación fundamentalmente distinta entre el programador y la máquina. Los demás decían: aquí tienes un problema, ahora *dile* al computador cómo resolverlo. Este curso decía: aquí tienes un problema, ahora *describe* cómo luce la solución, y deja que el computador encuentre el camino.
 
@@ -169,6 +169,25 @@ Intenta el color 1. Verifica si algún vecino ya tiene el color 1. Si no, avanza
 
 **Racket** — el enfoque funcional. Ya conocía DrRacket de [mi primer curso de programación](/es/blog/racket-projects-university), así que fue un reencuentro. El mismo algoritmo de backtracking que en Java, pero expresado con structs inmutables y llamadas recursivas en lugar de objetos mutables y ciclos. El algoritmo es idéntico por debajo, pero el estilo funcional hace la estructura recursiva más explícita. Sigue siendo completamente procedimental en cuanto a cómo se especifica la búsqueda — le estás diciendo al computador exactamente cómo buscar.
 
+```racket
+(define (pintar-dpto dpto color)
+  (set-Departamento-Color! dpto color))
+
+(define (despintar-dpto dpto)
+  (set-Departamento-Color! dpto 0))
+
+(define (asignar-colores dpto n)
+  (for ([color (in-range 1 5)])
+    (pintar-dpto dpto color)
+    (if (not (comparar-vecinos dpto color))
+        (if (= n (sub1 (length Colombia)))
+            (void)
+            (asignar-colores (list-ref Colombia (add1 n)) (add1 n)))
+        (despintar-dpto dpto))))
+```
+
+Prueba el color 1. Si ningún vecino lo tiene, avanza al siguiente departamento. Si hay conflicto, despinta y prueba el color 2. La misma lógica que en Java — backtracking explícito, recursión en lugar de ciclos.
+
 **Mozart/Oz** — el enfoque con restricciones. Aquí es donde el cambio de paradigma se vuelve visceral:
 
 ```oz
@@ -215,7 +234,7 @@ Dicho esto, la programación lógica tiene costos reales también. Depurar un si
 
 ## Mirando atrás
 
-Es 2018 y llevo varios años acumulando paradigmas de programación como lenguajes distintos para pensar.
+Llevo varios años acumulando paradigmas de programación como lenguajes distintos para pensar.
 
 Scheme me dio la recursividad y la idea de que un programa es una descripción de una computación, no una secuencia de pasos. C me dio la máquina — direcciones de memoria, punteros, la realidad física detrás de cada abstracción. Las estructuras de datos me dieron organización — cómo la forma de tus datos determina la forma de tus soluciones. La POO me dio arquitectura — patrones, separación de responsabilidades, diseñar sistemas antes de escribir una línea. Y ahora la programación lógica y con restricciones me dio la declaración — la idea de que a veces simplemente puedes enunciar lo que quieres, y un motor suficientemente inteligente lo encontrará.
 
@@ -232,4 +251,4 @@ A seguir construyendo.
 - [Programación Lógica y con Restricciones — proyectos en Prolog y Mozart/Oz (GitHub)](https://github.com/xergioalex/logic_and_restricted_programming)
 - [Teorema de los Cuatro Colores — implementaciones en Java, Racket y Mozart/Oz (GitHub)](https://github.com/xergioalex/4ColorsTheorem)
 - [Mi primer curso de programación — Racket, recursividad y un graficador de funciones](/es/blog/racket-projects-university)
-- [Mi curso de POO — Sudoku y agenda de contactos con Java Swing](/es/blog/java-swing-university-projects)
+- [Mi curso de POO — Sudoku y agenda de contactos con Java Swing](/es/blog/oop-java-swing-university-projects)

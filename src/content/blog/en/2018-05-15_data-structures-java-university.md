@@ -1,24 +1,25 @@
 ---
 title: "Data Structures in Java: From Linked Lists to an Unbeatable Tic-Tac-Toe AI"
 description: "The story of my Data Structures course at university — implementing stacks, queues, trees, graphs, and Dijkstra's algorithm in Java, culminating in an unbeatable Tic-Tac-Toe AI using the Minimax algorithm."
-pubDate: "2018-05-01"
-heroLayout: "none"
+pubDate: "2018-05-15"
+heroImage: "/images/blog/posts/data-structures-java-university/hero.png"
+heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
-If my [first semester with DrScheme](/blog/racket-projects-university/) taught me that programming was about thinking, my second semester taught me that thinking wasn't enough — you also had to organize.
+If [Programming 1 with DrScheme](/blog/racket-projects-university/) taught me to think, [Programming 2 with C](/blog/c-projects-university/) taught me what the machine was actually doing, and [OOP](/blog/oop-java-swing-university-projects/) taught me to design well-architected systems — then Data Structures was the course where all of that converged into a single question: **how do you organize your data so your program is efficient?**
 
-Data Structures. The course that separates people who can write code from people who can write *efficient* code. The course that makes you realize a simple list isn't always the answer, that how you store your data changes everything about how fast you can find it, sort it, or traverse it. And the course that, for me, came with a paradigm shift I wasn't expecting: we were leaving Scheme behind. No more parentheses. No more prefix notation. No more "everything is a function."
-
-We were learning **Java**.
+Data Structures. The course that separates people who can write code from people who can write *efficient* code. The course that makes you realize a simple list isn't always the answer, that how you store your data changes everything about how fast you can find it, sort it, or traverse it.
 
 ---
 
-## From parentheses to curly braces
+## From design patterns to algorithmic patterns
 
-After a full semester writing `(define (factorial n) ...)` in DrScheme, opening [BlueJ](https://www.bluej.org/) for the first time and seeing `public static void main(String[] args)` was like arriving in a different country. Same planet — programming — but everything looked, sounded, and felt different.
+I was coming from a semester where the focus was *architecture*: MVC, Observer, separation of concerns, designing before coding. In [OOP](/blog/oop-java-swing-university-projects/) I'd built a [full Sudoku solver with Java Swing](https://github.com/xergioalex/SudokuMVCJavaSwing) — with constraint propagation via the Observer pattern, backtracking with state cloning, and a GUI with undo/redo. I already knew Java. I already knew how to think in classes, encapsulation, inheritance, interfaces.
 
-In Scheme, a function was a function. In Java, a function lived inside a class, which lived inside a file, which had to be named exactly the same as the class, and the class had to have the right access modifiers, and — wait, what's a constructor?
+But Data Structures changed the question. In OOP, the question was: *how do I structure my code so it's maintainable?* Here the question was: *how do I structure my data so operations are fast?* It was no longer enough for the program to be well-organized — it had to be *efficient*.
+
+And the OOP foundation helped more than I expected. Knowing how to think in classes meant that implementing a `NodoLista` with encapsulation and getters/setters was natural. Understanding interfaces meant I could design structures with clear contracts. The discipline of separating concerns that I'd practiced with MVC translated directly into clean implementations of each structure.
 
 ```java
 public class NodoLista {
@@ -32,7 +33,7 @@ public class NodoLista {
 }
 ```
 
-Object-oriented programming. Classes. Encapsulation. Inheritance. All concepts that had zero equivalent in the functional world I'd just come from. But here's the interesting thing — the recursive thinking I'd trained in Scheme? That transferred perfectly. Trees are recursive. Graphs are recursive. Most of the elegant solutions in data structures are recursive. DrScheme had prepared me better than I realized.
+What surprised me was that the recursive thinking I'd trained in Scheme transferred perfectly to this new context too. Trees are recursive. Graphs are recursive. Most of the elegant solutions in data structures are recursive. Scheme had prepared me for the algorithms, and OOP had prepared me for the implementation. Data Structures brought both worlds together.
 
 ---
 
@@ -42,7 +43,7 @@ Every data structures course starts at the same place: **linked lists**. And fro
 
 A linked list is deceptively simple — each node holds a piece of data and a pointer to the next node. That's it. But from that simple idea, you get two fundamental structures:
 
-**Stacks** — Last In, First Out. Think of a stack of plates. You can only add to the top and remove from the top. We implemented `push()`, `pop()`, and `peek()`, and suddenly you understand how your browser's back button works, how undo/redo works, how function call stacks work. The concept that had been abstract in Scheme — the call stack growing and unwinding during recursion — now had a concrete implementation I could touch.
+**Stacks** — Last In, First Out. Think of a stack of plates. You can only add to the top and remove from the top. We implemented `push()`, `pop()`, and `peek()`, and suddenly you understand how your browser's back button works, how undo/redo works, how function call stacks work. The concept that had been abstract in Scheme — the call stack growing and unwinding during recursion — now had a concrete implementation I could touch. And the most satisfying part: I had already *used* stacks without knowing I was using them — the undo/redo in the Sudoku solver from OOP was literally two `Stack<Model>` objects. Now I was building the structure that made it possible, from scratch.
 
 **Queues** — First In, First Out. A line at the supermarket. The first person in line is the first person served. We implemented `enqueue()`, `dequeue()`, and I remember the satisfaction of building the queue on top of the same linked list class we'd already written for stacks. Same foundation, different rules, completely different behavior.
 
@@ -61,7 +62,7 @@ public void enqueue(Object dato) {
 }
 ```
 
-Simple? Yes. But building these from scratch — not using `java.util.Stack` or `java.util.Queue`, but implementing every pointer manipulation yourself — that's where the real learning happens.
+Simple? Yes. But building these from scratch — not using `java.util.Stack` or `java.util.Queue`, but implementing every pointer manipulation yourself — that's where the real learning happens. In OOP we'd used `LinkedList` from the standard library for the contact agenda without a second thought. Now I understood exactly what was happening inside that class.
 
 ---
 
@@ -73,7 +74,7 @@ A binary tree is a node with at most two children: left and right. Simple defini
 
 - **Traversals** — preorder, inorder, postorder, level-order. Four different ways to visit every node, each useful for different purposes. I remember the moment when I understood that inorder traversal of a binary search tree gives you sorted output — it felt like discovering a secret.
 
-- **Syntax tree evaluation** — this was the project that connected both semesters. We built a tree that could represent mathematical expressions like `((5 + 3) * 2)` as a tree structure, then evaluate them by traversing bottom-up. The same concept I'd implemented in Scheme with prefix notation, now implemented in Java with objects and pointers.
+- **Syntax tree evaluation** — this was the project that connected several semesters. We built a tree that could represent mathematical expressions like `((5 + 3) * 2)` as a tree structure, then evaluate them by traversing bottom-up. The same concept I'd implemented in Scheme with prefix notation, now implemented in Java with objects and pointers — and with the encapsulation discipline I'd learned in OOP.
 
 - **AVL balance verification** — checking whether a tree satisfies the balance property. Not implementing full AVL rotations (that would come later), but understanding *why* balance matters and *how* to detect imbalance.
 
@@ -141,14 +142,16 @@ The result? An AI that **never loses**. Not because of hardcoded moves or patter
 
 Building this connected everything: N-ary trees for the game tree, recursive traversal for evaluating positions, the conceptual understanding of stacks (the recursion call stack) and queues (potential BFS exploration). Every data structure we'd learned found its place.
 
-What made it special wasn't just that it worked — it's that a second-semester student could understand *why* it worked. The Minimax algorithm isn't magic. It's just trees, recursion, and a scoring function. The same building blocks we'd been studying all semester, assembled into something that felt like intelligence.
+What made it special wasn't just that it worked — it's that I could understand *why* it worked. The Minimax algorithm isn't magic. It's just trees, recursion, and a scoring function. The same building blocks we'd been studying all semester, assembled into something that felt like intelligence.
 
 ---
 
 ## Looking back
 
-Data Structures was the course that turned me from someone who could program into someone who could *engineer*. The difference is knowing not just *how* to solve a problem, but *how to solve it well*. Choosing the right data structure — a tree instead of a list, a graph instead of a matrix — changes everything about your solution's elegance, performance, and maintainability.
+Data Structures was the course that completed a transformation that had started semesters earlier. If Scheme taught me to think, C taught me what the machine was actually doing, and [OOP taught me to design systems with clean architecture](/blog/oop-java-swing-university-projects/) — then Data Structures taught me to *choose well*. Choosing the right data structure — a tree instead of a list, a graph instead of a matrix — changes everything about your solution's elegance, performance, and maintainability.
 
-Java was the vehicle, but the data structures were the destination. Stacks taught me about ordering. Trees taught me about hierarchy. Graphs taught me about connections. And Minimax taught me that with the right structure, a program can explore possibilities far beyond what any human could trace on paper — even though it's all built from simple, understandable pieces.
+The combination of OOP and Data Structures was especially powerful. In OOP I'd learned to organize *code* — separate concerns, use patterns, design clean interfaces. In Data Structures I learned to organize *data*. It turns out both things are equally important, and the second without the first produces efficient but unmaintainable code, while the first without the second produces beautiful but slow code.
+
+Stacks taught me about ordering. Trees taught me about hierarchy. Graphs taught me about connections. And Minimax taught me that with the right structure, a program can explore possibilities far beyond what any human could trace on paper — even though it's all built from simple, understandable pieces.
 
 Every class, interface, and algorithm in that [repository](https://github.com/xergioalex/pregrado_estructura_de_datos_java) represents a step in understanding that computing isn't just about instructions — it's about *organization*. How you organize your data determines what questions you can answer. And the right organization can make the impossible feel trivial.

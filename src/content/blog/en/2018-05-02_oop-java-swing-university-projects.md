@@ -2,7 +2,7 @@
 title: "OOP in Action: Building a Sudoku Solver and Contact Agenda with Java Swing"
 description: "Two university projects from my Object-Oriented Programming course — a Sudoku solver using the Observer pattern and backtracking, and a contact agenda with file persistence, both built with Java Swing."
 pubDate: "2018-05-02"
-heroImage: "/images/blog/posts/java-swing-university-projects/hero.gif"
+heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
@@ -51,9 +51,9 @@ SudokuSrc/
   board_Escargot.txt
 ```
 
-**Model.java** — about 12KB — held everything that had to do with the Sudoku puzzle itself. A 9x9 matrix of `Cell` objects. Each Cell had a set of candidate values (the integers 1 through 9 that the cell could still legally contain). The Model handled constraint propagation, solving, cloning board states, loading puzzles from files. Zero UI code. Zero Swing imports. The Model could run headlessly and didn't know or care whether any interface existed.
+**Model.java** — held everything that had to do with the Sudoku puzzle itself. A 9x9 matrix of `Cell` objects. Each Cell had a set of candidate values (the integers 1 through 9 that the cell could still legally contain). The Model handled constraint propagation, solving, cloning board states, loading puzzles from files. Zero UI code. Zero Swing imports. The Model could run headlessly and didn't know or care whether any interface existed.
 
-**Watch.java** — about 14KB — held the Java Swing JFrame, the grid of JPanels, all the event listeners, the buttons, the color rendering. It knew everything about how the puzzle looked but delegated all logic to the Model.
+**Watch.java** — held the Java Swing JFrame, the grid of JPanels, all the event listeners, the buttons, the color rendering. It knew everything about how the puzzle looked but delegated all logic to the Model.
 
 That separation sounds obvious when you write it out. In practice, when you're a student who just wants to get something working, it requires real discipline. Every time I started writing something in Watch.java and thought "this needs to check if the cell is solved," I had to stop, put that logic in Model.java, and expose it through a method. The boundary is easy to blur. Keeping it clean is a choice you make continuously.
 
@@ -141,7 +141,7 @@ The visual layer was built around a 9x9 grid of `JPanel` objects, each 60x60 pix
 
 **Solve button.** Runs the full backtracking algorithm against the current board state and fills in the solution. Watching it run on a hard puzzle was genuinely satisfying.
 
-![Sudoku solver demo — color-coded regions, candidate display, clicking to solve cells, and the automatic solve feature in action](/images/blog/posts/java-swing-university-projects/hero.gif)
+![Sudoku solver demo — color-coded regions, candidate display, clicking to solve cells, and the automatic solve feature in action](/images/blog/posts/oop-java-swing-university-projects/hero.gif)
 
 ---
 
@@ -173,7 +173,7 @@ The architecture was straightforward and deliberately clean:
 
 **File persistence** via `contactos.txt`. Contacts were serialized as space-delimited lines on save and parsed back with `BufferedReader` and `StringTokenizer` on startup. Not glamorous, but it worked, and the contacts survived closing and reopening the application — which, to a second-year student, felt like genuine persistence magic.
 
-![Contact agenda demo — adding contacts, viewing the list in the JTable, and managing entries](/images/blog/posts/java-swing-university-projects/agenda-demo.gif)
+![Contact agenda demo — adding contacts, viewing the list in the JTable, and managing entries](/images/blog/posts/oop-java-swing-university-projects/agenda-demo.gif)
 
 The agenda didn't have the Observer pattern or backtracking or any of the cleverness that made the Sudoku solver interesting. What it had was clarity. Every class had one job. The data model didn't know the screen existed. The UI didn't implement any logic. The validation was centralized. It was the straightforward application of the principles the course was teaching — and building it first made the Sudoku architecture feel like a natural escalation rather than a leap.
 

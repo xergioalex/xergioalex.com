@@ -1,24 +1,25 @@
 ---
 title: "Estructuras de Datos en Java: De Listas Enlazadas a un Triqui Invencible con IA"
 description: "La historia de mi curso de Estructuras de Datos en la universidad — implementando pilas, colas, árboles, grafos y el algoritmo de Dijkstra en Java, culminando en un Triqui invencible usando el algoritmo Minimax."
-pubDate: "2018-05-01"
-heroLayout: "none"
+pubDate: "2018-05-15"
+heroImage: "/images/blog/posts/data-structures-java-university/hero.png"
+heroLayout: "side-by-side"
 tags: ["portfolio"]
 ---
 
-Si mi [primer semestre con DrScheme](/es/blog/racket-projects-university/) me enseñó que programar se trataba de pensar, mi segundo semestre me enseñó que pensar no era suficiente — también había que organizar.
+Si [Programación 1 con DrScheme](/es/blog/racket-projects-university/) me enseñó a pensar, [Programación 2 con C](/es/blog/c-projects-university/) me enseñó lo que la máquina realmente hacía, y [POO](/es/blog/oop-java-swing-university-projects/) me enseñó a diseñar sistemas bien arquitectados — entonces Estructuras de Datos fue la materia donde todo eso convergió en una sola pregunta: **¿cómo organizas tus datos para que tu programa sea eficiente?**
 
-Estructuras de Datos. La materia que separa a la gente que sabe escribir código de la gente que sabe escribir código *eficiente*. La materia que te hace darte cuenta de que una simple lista no siempre es la respuesta, que la forma en que almacenas tus datos cambia todo sobre qué tan rápido puedes encontrarlos, ordenarlos o recorrerlos. Y la materia que, para mí, vino con un cambio de paradigma que no me esperaba: estábamos dejando Scheme atrás. No más paréntesis. No más notación prefija. No más "todo es una función."
-
-Estábamos aprendiendo **Java**.
+Estructuras de Datos. La materia que separa a la gente que sabe escribir código de la gente que sabe escribir código *eficiente*. La materia que te hace darte cuenta de que una simple lista no siempre es la respuesta, que la forma en que almacenas tus datos cambia todo sobre qué tan rápido puedes encontrarlos, ordenarlos o recorrerlos.
 
 ---
 
-## De paréntesis a llaves
+## De patrones de diseño a patrones algorítmicos
 
-Después de un semestre completo escribiendo `(define (factorial n) ...)` en DrScheme, abrir [BlueJ](https://www.bluej.org/) por primera vez y ver `public static void main(String[] args)` fue como llegar a un país diferente. El mismo planeta — programación — pero todo se veía, se escuchaba y se sentía diferente.
+Venía de un semestre donde el foco era la *arquitectura*: MVC, Observer, separación de responsabilidades, diseñar antes de codear. En [POO](/es/blog/oop-java-swing-university-projects/) había construido un [solucionador de Sudoku completo con Java Swing](https://github.com/xergioalex/SudokuMVCJavaSwing) — con propagación de restricciones vía el patrón Observer, backtracking con clonación de estado, y una interfaz gráfica con deshacer/rehacer. Ya sabía Java. Ya sabía pensar en clases, encapsulamiento, herencia, interfaces.
 
-En Scheme, una función era una función. En Java, una función vivía dentro de una clase, que vivía dentro de un archivo, que tenía que llamarse exactamente igual que la clase, y la clase tenía que tener los modificadores de acceso correctos, y — espera, ¿qué es un constructor?
+Pero Estructuras de Datos cambiaba la pregunta. En POO, la pregunta era: *¿cómo estructuro mi código para que sea mantenible?* Acá la pregunta era: *¿cómo estructuro mis datos para que las operaciones sean rápidas?* Ya no era suficiente que el programa estuviera bien organizado — tenía que ser *eficiente*.
+
+Y la base de POO ayudaba más de lo que imaginaba. Saber pensar en clases significaba que implementar un `NodoLista` con encapsulamiento y getters/setters era natural. Entender interfaces significaba que podía diseñar estructuras con contratos claros. La disciplina de separar responsabilidades que había practicado con MVC se traducía directamente en implementaciones limpias de cada estructura.
 
 ```java
 public class NodoLista {
@@ -32,7 +33,7 @@ public class NodoLista {
 }
 ```
 
-Programación orientada a objetos. Clases. Encapsulamiento. Herencia. Todos conceptos que no tenían ningún equivalente en el mundo funcional del que venía. Pero acá viene lo interesante — el pensamiento recursivo que había entrenado en Scheme se transfería perfecto. Los árboles son recursivos. Los grafos son recursivos. La mayoría de las soluciones elegantes en estructuras de datos son recursivas. DrScheme me había preparado mejor de lo que me imaginaba.
+Lo que me sorprendió fue que el pensamiento recursivo que había entrenado en Scheme se transfería perfecto también a este nuevo contexto. Los árboles son recursivos. Los grafos son recursivos. La mayoría de las soluciones elegantes en estructuras de datos son recursivas. Scheme me había preparado para los algoritmos, y POO me había preparado para la implementación. Estructuras de Datos unía ambos mundos.
 
 ---
 
@@ -42,7 +43,7 @@ Todo curso de estructuras de datos empieza en el mismo lugar: **listas enlazadas
 
 Una lista enlazada es engañosamente simple — cada nodo guarda un dato y un puntero al siguiente nodo. Eso es todo. Pero de esa idea tan simple, salen dos estructuras fundamentales:
 
-**Pilas** — Last In, First Out. Piensa en una pila de platos. Solo puedes agregar arriba y sacar de arriba. Implementamos `push()`, `pop()` y `peek()`, y de repente entiendes cómo funciona el botón de atrás del navegador, cómo funciona deshacer/rehacer, cómo funcionan las pilas de llamadas de funciones. El concepto que había sido abstracto en Scheme — el call stack creciendo y desenrollándose durante la recursividad — ahora tenía una implementación concreta que podía tocar.
+**Pilas** — Last In, First Out. Piensa en una pila de platos. Solo puedes agregar arriba y sacar de arriba. Implementamos `push()`, `pop()` y `peek()`, y de repente entiendes cómo funciona el botón de atrás del navegador, cómo funciona deshacer/rehacer, cómo funcionan las pilas de llamadas de funciones. El concepto que había sido abstracto en Scheme — el call stack creciendo y desenrollándose durante la recursividad — ahora tenía una implementación concreta que podía tocar. Y lo más satisfactorio: ya había *usado* pilas sin saber que las estaba usando — el deshacer/rehacer del Sudoku en POO era literalmente dos `Stack<Model>`. Ahora estaba construyendo la estructura que lo hacía posible, desde cero.
 
 **Colas** — First In, First Out. Una fila en el supermercado. La primera persona en la fila es la primera en ser atendida. Implementamos `enqueue()`, `dequeue()`, y recuerdo la satisfacción de construir la cola sobre la misma clase de lista enlazada que ya habíamos escrito para las pilas. Misma base, diferentes reglas, comportamiento completamente diferente.
 
@@ -61,7 +62,7 @@ public void enqueue(Object dato) {
 }
 ```
 
-¿Simple? Sí. Pero construir estas estructuras desde cero — sin usar `java.util.Stack` ni `java.util.Queue`, sino implementando cada manipulación de punteros tú mismo — ahí es donde está el verdadero aprendizaje.
+¿Simple? Sí. Pero construir estas estructuras desde cero — sin usar `java.util.Stack` ni `java.util.Queue`, sino implementando cada manipulación de punteros tú mismo — ahí es donde está el verdadero aprendizaje. En POO habíamos usado `LinkedList` de la librería estándar para la agenda de contactos sin pensarlo dos veces. Ahora entendía exactamente qué pasaba dentro de esa clase.
 
 ---
 
@@ -73,7 +74,7 @@ Un árbol binario es un nodo con máximo dos hijos: izquierdo y derecho. Definic
 
 - **Recorridos** — preorden, inorden, postorden, por niveles. Cuatro maneras diferentes de visitar cada nodo, cada una útil para diferentes propósitos. Me acuerdo del momento en que entendí que el recorrido inorden de un árbol binario de búsqueda te da la salida ordenada — se sintió como descubrir un secreto.
 
-- **Evaluación de árboles de expresiones** — este fue el proyecto que conectó ambos semestres. Construimos un árbol que podía representar expresiones matemáticas como `((5 + 3) * 2)` en una estructura de árbol, y después evaluarlas recorriéndolas de abajo hacia arriba. El mismo concepto que había implementado en Scheme con notación prefija, ahora implementado en Java con objetos y punteros.
+- **Evaluación de árboles de expresiones** — este fue el proyecto que conectó varios semestres. Construimos un árbol que podía representar expresiones matemáticas como `((5 + 3) * 2)` en una estructura de árbol, y después evaluarlas recorriéndolas de abajo hacia arriba. El mismo concepto que había implementado en Scheme con notación prefija, ahora implementado en Java con objetos y punteros — y con la disciplina de encapsulamiento que había aprendido en POO.
 
 - **Verificación de balance AVL** — verificar si un árbol cumple la propiedad de balance. No implementar rotaciones AVL completas (eso vendría después), pero entender *por qué* importa el balance y *cómo* detectar el desbalance.
 
@@ -141,14 +142,16 @@ if ((tablero[0] == jugador && tablero[1] == jugador && tablero[2] == jugador) ||
 
 Construir esto conectó todo: árboles N-arios para el árbol de juego, recorrido recursivo para evaluar posiciones, la comprensión conceptual de pilas (el call stack de la recursión) y colas (exploración BFS potencial). Cada estructura de datos que habíamos aprendido encontró su lugar.
 
-Lo que lo hacía especial no era solo que funcionara — es que un estudiante de segundo semestre podía entender *por qué* funcionaba. El algoritmo Minimax no es magia. Son solo árboles, recursividad y una función de puntuación. Los mismos bloques fundamentales que habíamos estado estudiando todo el semestre, ensamblados en algo que se sentía como inteligencia.
+Lo que lo hacía especial no era solo que funcionara — es que podía entender *por qué* funcionaba. El algoritmo Minimax no es magia. Son solo árboles, recursividad y una función de puntuación. Los mismos bloques fundamentales que habíamos estado estudiando todo el semestre, ensamblados en algo que se sentía como inteligencia.
 
 ---
 
 ## Mirando hacia atrás
 
-Estructuras de Datos fue la materia que me convirtió de alguien que podía programar en alguien que podía *hacer ingeniería*. La diferencia es saber no solo *cómo* resolver un problema, sino *cómo resolverlo bien*. Elegir la estructura de datos correcta — un árbol en vez de una lista, un grafo en vez de una matriz — cambia todo sobre la elegancia, rendimiento y mantenibilidad de tu solución.
+Estructuras de Datos fue la materia que completó una transformación que había empezado semestres atrás. Si Scheme me enseñó a pensar, C me enseñó lo que la máquina hacía de verdad, y [POO me enseñó a diseñar sistemas con arquitectura limpia](/es/blog/oop-java-swing-university-projects/) — entonces Estructuras de Datos me enseñó a *elegir bien*. Elegir la estructura correcta — un árbol en vez de una lista, un grafo en vez de una matriz — cambia todo sobre la elegancia, rendimiento y mantenibilidad de tu solución.
 
-Java fue el vehículo, pero las estructuras de datos fueron el destino. Las pilas me enseñaron sobre orden. Los árboles me enseñaron sobre jerarquía. Los grafos me enseñaron sobre conexiones. Y Minimax me enseñó que con la estructura correcta, un programa puede explorar posibilidades mucho más allá de lo que cualquier humano podría trazar en papel — aunque todo esté construido con piezas simples y comprensibles.
+La combinación de POO y Estructuras de Datos fue especialmente poderosa. En POO había aprendido a organizar el *código* — separar responsabilidades, usar patrones, diseñar interfaces limpias. En Estructuras de Datos aprendí a organizar los *datos*. Resulta que las dos cosas son igual de importantes, y la segunda sin la primera produce código eficiente pero imposible de mantener, mientras que la primera sin la segunda produce código bonito pero lento.
+
+Las pilas me enseñaron sobre orden. Los árboles me enseñaron sobre jerarquía. Los grafos me enseñaron sobre conexiones. Y Minimax me enseñó que con la estructura correcta, un programa puede explorar posibilidades mucho más allá de lo que cualquier humano podría trazar en papel — aunque todo esté construido con piezas simples y comprensibles.
 
 Cada clase, interfaz y algoritmo en ese [repositorio](https://github.com/xergioalex/pregrado_estructura_de_datos_java) representa un paso en entender que la computación no se trata solo de instrucciones — se trata de *organización*. Cómo organizas tus datos determina qué preguntas puedes responder. Y la organización correcta puede hacer que lo imposible se sienta trivial.

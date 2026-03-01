@@ -1,10 +1,10 @@
 ---
-title: "Construyendo Rocka.co: La Historia Detrás del Sitio Web de un Tech Venture Builder Premiado"
+title: "Construyendo Rocka.co: La Historia Detrás del Sitio Web de un Tech Venture Builder"
 description: "Cómo construimos el sitio web de Rocka.co — desde metáforas con estatuas clásicas y efectos parallax personalizados hasta un Special Kudos en CSS Design Awards. La historia de crear la identidad digital de la incubadora donde nació DailyBot."
-pubDate: "2017-12-15"
+pubDate: "2018-12-15"
 heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech"]
+tags: ["portfolio", "tech", "dailybot"]
 ---
 
 Algunos proyectos son solo trabajo. Recibes el brief, escribes el código, lo despliegas. Otros se te meten bajo la piel. Se vuelven parte de tu historia — entretejidos en las memorias de sesiones de código a medianoche, discusiones frente a la pizarra sobre colores, y ese tipo específico de energía que solo ocurre cuando las personas que construyen algo realmente creen en lo que están haciendo.
@@ -19,7 +19,7 @@ Rocka no es solo una empresa con la que trabajé. Es la incubadora donde nació 
 
 Antes de escribir una sola línea de código, necesitábamos responder una pregunta fundamental: ¿cómo se *siente* Rocka?
 
-Trajimos a [Sergio Ruiz](https://www.behance.net/sergioruiz), un diseñador prestigioso cuyo portafolio habla por sí solo. Trabajar con Sergio fue una de las mejores decisiones que tomamos — no solo diseñó pantallas, nos ayudó a encontrar un lenguaje visual que capturaba algo esencial de lo que Rocka es.
+Trajimos a [Sergio Ruiz](https://suized.com/), un diseñador prestigioso cuyo portafolio habla por sí solo. Trabajar con Sergio fue una de las mejores decisiones que tomamos — no solo diseñó pantallas, nos ayudó a encontrar un lenguaje visual que capturaba algo esencial de lo que Rocka es.
 
 El concepto era audaz: **Rocka es un asteroide — una roca sólida de la cual nacen grandes productos.** Piénsalo como una fundación. Una plataforma de lanzamiento. Algo masivo y firme que envía cosas a órbita. Esa metáfora se convirtió en la columna vertebral de todo lo visual en el sitio.
 
@@ -49,66 +49,37 @@ Un **azul marino profundo, casi negro** domina todo — los fondos, las seccione
 
 Juntos, los tres colores crean contraste sin caos. El azul marino te atrapa. El rojo te despierta. El azul te guía hacia adelante.
 
-Para la tipografía, elegimos **GT-Walsheim** como la fuente principal — limpia, geométrica, moderna — combinada con **Knockout 90** para los encabezados display. Knockout es una tipografía condensada de peso pesado que le da a las secciones hero una presencia audaz, casi brutalista. Cuando ves "DESIGN. BUILD. LAUNCH." en Knockout contra un fondo azul marino con estatuas clásicas — el impacto es diferente.
+Para la tipografía, elegimos una fuente principal limpia y geométrica para el cuerpo, combinada con encabezados display condensados y de peso pesado que le dan a las secciones hero una presencia audaz, casi brutalista. Cuando ves "DESIGN. BUILD. LAUNCH." contra un fondo azul marino con estatuas clásicas — el impacto es diferente.
 
 ---
 
-## El stack técnico: Hugo y las herramientas de 2017
+## El stack técnico: Hugo y las herramientas
 
 Para la base técnica, elegimos **Hugo** — el generador de sitios estáticos escrito en Go. En ese momento, Hugo era el SSG más rápido disponible, y para un sitio corporativo que sería principalmente orientado a contenido con efectos visuales ricos, era la elección perfecta.
 
-Así se veía el stack:
+El stack es lo que esperarías de un proyecto frontend de esta época: Hugo genera el sitio, SCSS para los estilos modulares, Bootstrap 4 (sí, la versión alpha — somos early adopters), jQuery para el DOM, y un puñado de librerías especializadas para las partículas, las animaciones de scroll, los carruseles y los relojes del footer. Grunt orquesta el build y Babel transpila el ES6.
 
-- **Hugo v0.27.1** — Generación de sitios estáticos con un tema custom "Rocka"
-- **SCSS/Sass** — Arquitectura CSS modular con compilación Node-sass
-- **Bootstrap v4.0.0-alpha.6** — Sí, la versión *alpha* — fuimos early adopters
-- **jQuery** — Manipulación del DOM (la lingua franca del frontend en 2017)
-- **Particles.js** — Efectos atmosféricos de partículas
-- **AOS (Animate On Scroll)** — Animaciones activadas por scroll
-- **Slick Carousel** — Sliders para la sección Life at Rocka
-- **Moment.js + Moment Timezone** — Para los relojes en tiempo real del footer
-- **Bower** — Gestión de dependencias frontend
-- **Grunt** — Task runner para el pipeline de build
-- **Babel** — Transpilación ES2015
-
-Ver esta lista hoy es como abrir una cápsula del tiempo. Bower, Grunt, jQuery, Bootstrap 4 alpha — estas eran las herramientas de la época. ¿Y saben qué? Funcionaron. El sitio se lanzó, se veía increíble y ganó premios. Las herramientas no eran el punto — la artesanía lo era.
-
-El pipeline de build era directo: Grunt manejaba la concatenación, minificación (uglify para JS, cssmin para CSS, htmlmin para HTML) y la eliminación de comentarios. Babel transpilaba nuestro código ES6 a ES5 para compatibilidad con navegadores. Todo compilaba en dos bundles — `vendors.js` para librerías y `dist.js` para código custom — más `vendors.css` y `main.css` para los estilos.
-
-También configuramos un **entorno de desarrollo Docker** con una imagen de Node 18 + Hugo, para que cualquier desarrollador pudiera levantar todo el proyecto con un solo comando. Sin excusas de "en mi máquina funciona".
+¿Son las herramientas más modernas del mundo? Algunas ya están en declive, pero funcionan, el ecosistema las soporta, y nos permiten enfocarnos en lo que importa — construir un sitio que se vea y se sienta como Rocka. Las herramientas no son el punto. La artesanía lo es.
 
 ---
 
 ## El parallax personalizado: profundidad a través del código
 
-Uno de los puntos técnicos destacados del sitio es el **sistema de parallax personalizado**. No usamos una librería externa para esto — escribimos nuestro propio plugin, `parallaxImages.js`.
+Uno de los puntos técnicos destacados del sitio es el **sistema de parallax personalizado**. No usamos una librería externa — escribimos nuestro propio plugin. El concepto es simple: mientras el usuario hace scroll, diferentes elementos se mueven a diferentes velocidades, creando una ilusión de profundidad. Las estatuas y sus sombras se desplazan a ritmos distintos, y eso le da al sitio esa sensación tridimensional que buscamos. El truco técnico clave es usar transformaciones que activan la aceleración GPU del navegador — esencial para que todo sea suave a 60fps.
 
-El concepto es simple pero efectivo: mientras el usuario hace scroll, diferentes elementos se mueven a diferentes velocidades, creando una ilusión de profundidad. Cada elemento parallax tiene un atributo `data-speed` (valores como 10, 20, 28, 38) y un `data-parent-section` para anclar el cálculo relativo a su sección contenedora.
+Pero aquí es donde entra el pragmatismo: **deshabilitamos el parallax completamente en Safari**. Safari tiene problemas de renderizado con cálculos parallax complejos que causan scroll entrecortado. En vez de pelear contra el navegador, priorizamos la experiencia del usuario — los usuarios de Safari ven el sitio sin parallax, y sigue viéndose genial.
 
-La fórmula:
-
-```javascript
-yPos = -(((scrollTop - offsetParent) * speed) / 100);
-element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-```
-
-Usar `translate3d` en lugar de posicionamiento `top` activa la aceleración GPU en el navegador — una optimización crucial para animaciones de scroll suaves a 60fps.
-
-Pero aquí es donde entra el pragmatismo: **deshabilitamos el parallax completamente en Safari**. En ese momento, Safari tenía problemas de renderizado con cálculos parallax complejos que causaban scroll entrecortado y artefactos visuales. En vez de pelear contra el navegador, priorizamos la experiencia del usuario — los usuarios de Safari ven el sitio sin parallax, y sigue viéndose genial.
-
-De forma similar, **las animaciones AOS de scroll están deshabilitadas en dispositivos móviles**. No porque no funcionen, sino porque en hardware móvil más lento de 2017, podían causar tartamudeo. Performance sobre estética. Siempre.
+De forma similar, **las animaciones de scroll están deshabilitadas en móvil**. No porque no funcionen, sino porque en hardware más lento pueden causar tartamudeo. Performance sobre estética. Siempre.
 
 ---
 
 ## Partículas, colores y atmósfera
 
-**Particles.js** maneja los efectos atmosféricos — círculos flotantes conectados por líneas delgadas, desplazándose lentamente por el fondo de diferentes secciones. La configuración es personalizada: alrededor de 80–100 partículas por sección, con colores que cambian dependiendo de en qué sección estén — partículas grises en fondos claros, partículas azules en las secciones azul marino, partículas blancas en las secciones rojas.
+Partículas flotantes conectadas por líneas delgadas derivan lentamente por el fondo de cada sección. Sus colores se adaptan al contexto — se integran con el fondo, nunca compiten con él. Y empiezan estáticas: solo comienzan a moverse cuando el usuario hace scroll hasta ellas. Un detalle de rendimiento pequeño, pero el tipo de decisión que suma.
 
-Una decisión de optimización: **el movimiento de las partículas está deshabilitado por defecto**. Las partículas empiezan estáticas y solo comienzan su desplazamiento lento cuando el usuario hace scroll hasta ellas. Esto reduce la carga de renderizado en la carga inicial — un detalle pequeño, pero el tipo de decisión que suma.
+El efecto más inmersivo es que el **color de fondo de toda la página cambia dinámicamente** según qué sección estás viendo. Del azul marino profundo del hero al rojo vibrante de Boost, al azul eléctrico de Tech Due Diligence, al gris suave de Labs. La transición es sutil pero transforma la experiencia de scroll en algo cinematográfico.
 
-El color de fondo de toda la página **cambia dinámicamente** según qué sección está en el viewport. Mientras haces scroll desde el hero hacia la sección Boost, el body hace transición del azul marino profundo al rojo vibrante. Haces scroll hacia Tech Due Diligence y cambia a azul eléctrico. Hacia Labs y se suaviza a gris. La transición toma 0.5 segundos — suave, sutil, inmersiva.
-
-En móvil, el fondo dinámico se deshabilita y se establece como transparente por rendimiento. Cada decisión visual en el sitio tiene esta doble naturaleza — la experiencia completa en desktop, una versión simplificada pero igualmente hermosa en móvil.
+En móvil, simplificamos: sin fondo dinámico, sin partículas en movimiento. Cada decisión visual tiene esta doble naturaleza — la experiencia completa en desktop, una versión limpia y fluida en móvil.
 
 ---
 
@@ -116,7 +87,7 @@ En móvil, el fondo dinámico se deshabilita y se establece como transparente po
 
 Uno de mis detalles favoritos es el **footer**. Tres relojes analógicos mostrando la hora actual en Madrid (MAD), Nueva York (NYC) y Medellín (MED) — las tres ciudades donde el equipo de Rocka está distribuido.
 
-No son imágenes decorativas — son **relojes en tiempo real** construidos con Moment.js y Moment Timezone, calculando la hora, minuto y segundo actual para cada zona horaria. Cada reloj renderiza 60 marcas CSS con manecillas rotatorias de hora, minuto y segundo.
+No son imágenes decorativas — son **relojes en tiempo real** que calculan la hora actual de cada zona horaria y la muestran con manecillas que se mueven en vivo.
 
 Es un detalle sutil pero significativo. El mensaje es implícito: *estamos distribuidos, siempre estamos trabajando, y lo abrazamos*. Se conecta directamente con los valores de Rocka — **Remote. Flexible. Focused.** — sin necesidad de deletrearlo en un párrafo de texto corporativo.
 
@@ -179,7 +150,7 @@ Construir rocka.co me enseñó cosas que llevo conmigo hasta hoy:
 
 **El rendimiento es una decisión de diseño.** Deshabilitar parallax en Safari. Apagar animaciones en móvil. Iniciar partículas en estado estático. No son compromisos — son decisiones de diseño que priorizan la experiencia del usuario sobre el ego del desarrollador.
 
-**Las herramientas importan menos que la artesanía.** Construimos esto con Bower, Grunt, jQuery y Bootstrap 4 alpha. Herramientas que hoy se consideran legacy. Pero el sitio sigue en pie, sigue viéndose genial, y sigue comunicando exactamente lo que Rocka es. Las herramientas son un medio. La artesanía es lo que perdura.
+**Las herramientas importan menos que la artesanía.** Construimos esto con Bower, Grunt, jQuery y Bootstrap 4 alpha. El ecosistema se mueve rápido y seguro algunas de estas herramientas serán reemplazadas pronto, pero el sitio está en pie, se ve genial, y comunica exactamente lo que Rocka es. Las herramientas son un medio. La artesanía es lo que perdura.
 
 Y a nivel personal — Rocka es donde todo empezó para mí. Los experimentos, los productos, la cultura maker. DailyBot comenzó como una de esas ideas de noches en el Lab. Construir el sitio web fue una forma de empaquetar toda esa energía e intención en algo que el mundo pudiera ver.
 

@@ -1,10 +1,10 @@
 ---
-title: "Building Rocka.co: The Story Behind an Award-Winning Tech Venture Builder Website"
+title: "Building Rocka.co: The Story Behind a Tech Venture Builder Website"
 description: "How we built the Rocka.co website — from classical statue metaphors and custom parallax effects to a CSS Design Awards Special Kudos. The story of crafting a digital identity for the incubator where DailyBot was born."
-pubDate: "2017-12-15"
+pubDate: "2018-12-15"
 heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
 heroLayout: "banner"
-tags: ["portfolio", "tech"]
+tags: ["portfolio", "tech", "dailybot"]
 ---
 
 Some projects are just work. You take the brief, you write the code, you ship it. Others get under your skin. They become part of your story — woven into the memories of late-night coding sessions, whiteboard arguments about colors, and that specific kind of energy that only happens when the people building something truly believe in what they're making.
@@ -19,7 +19,7 @@ Rocka isn't just a company I worked with. It's the incubator where [DailyBot](ht
 
 Before a single line of code was written, we needed to answer a fundamental question: what does Rocka *feel* like?
 
-We brought in [Sergio Ruiz](https://www.behance.net/sergioruiz), a prestigious designer whose portfolio speaks for itself. Working with Sergio was one of the best decisions we made — he didn't just design screens, he helped us find a visual language that captured something essential about what Rocka is.
+We brought in [Sergio Ruiz](https://suized.com/), a prestigious designer whose portfolio speaks for itself. Working with Sergio was one of the best decisions we made — he didn't just design screens, he helped us find a visual language that captured something essential about what Rocka is.
 
 The concept was bold: **Rocka is an asteroid — a solid rock from which great products are born.** Think of it as a foundation. A launchpad. Something massive and grounded that sends things into orbit. That metaphor became the backbone of everything visual on the site.
 
@@ -49,66 +49,37 @@ A **deep, almost-black navy** dominates everything — the backgrounds, the hero
 
 Together, the three colors create contrast without chaos. The navy pulls you in. The red wakes you up. The blue guides you forward.
 
-For typography, we went with **GT-Walsheim** as the primary typeface — clean, geometric, modern — paired with **Knockout 90** for display headings. Knockout is a heavyweight condensed typeface that gives the hero sections a bold, almost brutalist presence. When you see "DESIGN. BUILD. LAUNCH." in Knockout against a navy background with classical statues — it hits different.
+For typography, we chose a clean, geometric typeface for body text, paired with heavyweight condensed display headings that give the hero sections a bold, almost brutalist presence. When you see "DESIGN. BUILD. LAUNCH." against a navy background with classical statues — it hits different.
 
 ---
 
-## The tech stack: Hugo and the tools of 2017
+## The tech stack: Hugo and the tools
 
 For the technical foundation, we chose **Hugo** — the static site generator written in Go. At the time, Hugo was the fastest SSG available, and for a corporate site that would be mostly content-driven with rich visual effects, it was the perfect choice.
 
-Here's what the stack looked like:
+The stack is what you'd expect from a frontend project of this era: Hugo generates the site, SCSS for modular styles, Bootstrap 4 (yes, the alpha version — we're early adopters), jQuery for the DOM, and a handful of specialized libraries for particles, scroll animations, carousels, and the footer clocks. Grunt orchestrates the build and Babel transpiles our ES6.
 
-- **Hugo v0.27.1** — Static site generation with a custom "Rocka" theme
-- **SCSS/Sass** — Modular CSS architecture with Node-sass compilation
-- **Bootstrap v4.0.0-alpha.6** — Yes, the *alpha* version — we were early adopters
-- **jQuery** — DOM manipulation (the lingua franca of 2017 frontend)
-- **Particles.js** — Atmospheric particle effects
-- **AOS (Animate On Scroll)** — Scroll-triggered animations
-- **Slick Carousel** — Sliders for the Life at Rocka section
-- **Moment.js + Moment Timezone** — For the real-time clocks in the footer
-- **Bower** — Frontend dependency management
-- **Grunt** — Task runner for build pipeline
-- **Babel** — ES2015 transpilation
-
-Looking at this list today is like opening a time capsule. Bower, Grunt, jQuery, Bootstrap 4 alpha — these were the tools of the era. And you know what? They worked. The site shipped, it looked incredible, and it won awards. The tools weren't the point — the craft was.
-
-The build pipeline was straightforward: Grunt handled concatenation, minification (uglify for JS, cssmin for CSS, htmlmin for HTML), and stripping comments. Babel transpiled our ES6 code to ES5 for browser compatibility. Everything compiled into two bundles — `vendors.js` for libraries and `dist.js` for custom code — plus `vendors.css` and `main.css` for styles.
-
-We also set up a **Docker development environment** with a Node 18 + Hugo image, so any developer could spin up the entire project with a single command. No "works on my machine" excuses.
+Are these the most cutting-edge tools in the world? Some are already on the decline, but they work, the ecosystem supports them, and they let us focus on what matters — building a site that looks and feels like Rocka. The tools aren't the point. The craft is.
 
 ---
 
 ## The custom parallax: depth through code
 
-One of the technical highlights of the site is the **custom parallax system**. We didn't use an external library for this — we wrote our own plugin, `parallaxImages.js`.
+One of the technical highlights of the site is the **custom parallax system**. We didn't use an external library — we wrote our own plugin. The concept is simple: as the user scrolls, different elements move at different speeds, creating an illusion of depth. The statues and their shadows shift at different rates, giving the site that three-dimensional feeling we're after. The key technical trick is using transforms that trigger GPU acceleration in the browser — essential for smooth 60fps animations.
 
-The concept is simple but effective: as the user scrolls, different elements move at different speeds, creating an illusion of depth. Each parallax element has a `data-speed` attribute (values like 10, 20, 28, 38) and a `data-parent-section` to anchor the calculation relative to its containing section.
+But here's where pragmatism enters the picture: **we disabled parallax entirely on Safari**. Safari has rendering issues with complex parallax calculations that cause janky scrolling. Rather than fighting the browser, we chose the user's experience — Safari users see the site without parallax, and it still looks great.
 
-The formula:
-
-```javascript
-yPos = -(((scrollTop - offsetParent) * speed) / 100);
-element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-```
-
-Using `translate3d` instead of `top` positioning triggers GPU acceleration in the browser — a crucial optimization for smooth 60fps scrolling animations.
-
-But here's where pragmatism enters the picture: **we disabled parallax entirely on Safari**. At the time, Safari had rendering issues with complex parallax calculations that caused janky scrolling and visual artifacts. Rather than fighting the browser, we chose the user's experience — Safari users see the site without parallax, and it still looks great.
-
-Similarly, **AOS scroll animations are disabled on mobile devices**. Not because they don't work, but because on slower mobile hardware in 2017, they could cause stuttering. Performance over aesthetics. Always.
+Similarly, **scroll animations are disabled on mobile**. Not because they don't work, but because on slower hardware they can cause stuttering. Performance over aesthetics. Always.
 
 ---
 
 ## Particles, colors, and atmosphere
 
-**Particles.js** handles the atmospheric effects — floating circles connected by thin lines, drifting slowly across the background of different sections. The config is custom: around 80–100 particles per section, with colors that change depending on which section they're in — grey particles on light backgrounds, blue particles on the navy sections, white particles on the red sections.
+Floating particles connected by thin lines drift slowly across the background of each section. Their colors adapt to the context — they blend with the background, never compete with it. And they start static: they only begin moving when the user scrolls into view. A small performance detail, but the kind of decision that adds up.
 
-One optimization decision: **particle movement is disabled by default**. The particles start static and only begin their slow drift as the user scrolls into view. This reduces the rendering load on page load — a small detail, but the kind of decision that adds up.
+The most immersive effect is that the **background color of the entire page changes dynamically** based on which section you're viewing. From the deep navy of the hero to the vibrant red of Boost, to the electric blue of Tech Due Diligence, to the soft grey of Labs. The transition is subtle but transforms the scrolling experience into something cinematic.
 
-The background color of the entire page **changes dynamically** based on which section is in the viewport. As you scroll from the hero into the Boost section, the body transitions from deep navy to vibrant red. Scroll into Tech Due Diligence and it shifts to electric blue. Into Labs and it softens to grey. The transition takes 0.5 seconds — smooth, subtle, immersive.
-
-On mobile, the dynamic background is disabled and set to transparent for performance. Every visual decision on the site has this dual nature — the full experience on desktop, a simplified-but-still-beautiful version on mobile.
+On mobile, we simplify: no dynamic background, no particle movement. Every visual decision has this dual nature — the full experience on desktop, a clean and fluid version on mobile.
 
 ---
 
@@ -116,7 +87,7 @@ On mobile, the dynamic background is disabled and set to transparent for perform
 
 One of my favorite details is the **footer**. Three analog clocks showing the current time in Madrid (MAD), New York (NYC), and Medellín (MED) — the three cities where Rocka's team is distributed.
 
-These aren't decorative images — they're **real-time clocks** built with Moment.js and Moment Timezone, calculating the current hour, minute, and second for each timezone. Each clock renders 60 CSS-based tick marks with rotating hour, minute, and second hands.
+These aren't decorative images — they're **real-time clocks** that calculate the current time for each timezone and display it with hands that move live.
 
 It's a subtle but meaningful detail. The message is implicit: *we're distributed, we're always working, and we embrace it*. It ties directly into Rocka's values — **Remote. Flexible. Focused.** — without ever having to spell it out in a paragraph of corporate text.
 
@@ -179,7 +150,7 @@ Building rocka.co taught me things that I carry with me to this day:
 
 **Performance is a design decision.** Disabling parallax on Safari. Turning off animations on mobile. Starting particles in a static state. These aren't compromises — they're design choices that prioritize the user's experience over the developer's ego.
 
-**The tools don't matter as much as the craft.** We built this with Bower, Grunt, jQuery, and Bootstrap 4 alpha. Tools that today are considered legacy. But the site still stands, still looks great, and still communicates exactly what Rocka is. The tools are a means. The craft is what lasts.
+**The tools don't matter as much as the craft.** We built this with Bower, Grunt, jQuery, and Bootstrap 4 alpha. The ecosystem moves fast and some of these tools will likely be replaced soon, but the site stands, it looks great, and it communicates exactly what Rocka is. The tools are a means. The craft is what lasts.
 
 And on a personal level — Rocka is where it all started for me. The experiments, the products, the maker culture. DailyBot began as one of those late-night Lab ideas. Building the website was a way of packaging all that energy and intention into something the world could see.
 

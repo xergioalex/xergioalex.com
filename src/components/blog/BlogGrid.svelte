@@ -14,9 +14,9 @@ $: t = getTranslations(lang);
 </script>
 
 {#if posts && posts.length > 0}
-  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
     {#each posts as post}
-      <BlogCard {post} {lang} />
+      <BlogCard {post} {lang} heroWebpExists={post.heroWebpExists ?? false} />
     {/each}
   </div>
 {:else}
