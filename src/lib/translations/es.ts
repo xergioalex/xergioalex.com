@@ -932,6 +932,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     trading: 'Trading',
     portfolio: 'Portafolio',
     dailybot: 'DailyBot',
+    entrepreneur: 'Emprendimiento',
     // Secondary tags (topics)
     'web-development': 'Desarrollo Web',
     javascript: 'JavaScript',
@@ -954,6 +955,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Proyectos personales, software, robótica y trabajo open source.',
     dailybot:
       'Artículos sobre DailyBot: plataforma de colaboración para equipos humanos y agentes de IA, automatización de flujos y productividad de equipos híbridos.',
+    entrepreneur: 'Viaje emprendedor, aventuras y experiencias de startups.',
     // Secondary tags (topics)
     'web-development':
       'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',

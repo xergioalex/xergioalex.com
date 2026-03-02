@@ -919,6 +919,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     trading: 'Trading',
     portfolio: 'Portfolio',
     dailybot: 'DailyBot',
+    entrepreneur: 'Entrepreneur',
     // Secondary tags (topics)
     'web-development': 'Web Development',
     javascript: 'JavaScript',
@@ -940,6 +941,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     portfolio: 'Personal projects, software, robotics, and open source work.',
     dailybot:
       'DailyBot articles: collaboration platform for human teams and AI agents, workflow automation, and hybrid team productivity.',
+    entrepreneur:
+      'Entrepreneurship journey, ventures, and startup experiences.',
     // Secondary tags (topics)
     'web-development':
       'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',
