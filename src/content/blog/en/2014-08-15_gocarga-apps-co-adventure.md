@@ -1,0 +1,129 @@
+---
+title: "GoCarga: My First Startup Adventure and the Art of the Pitch"
+description: "How building a cargo transport platform with university friends taught me the most valuable entrepreneurial skill: telling a story that makes people believe."
+pubDate: 2014-08-15
+heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
+heroLayout: "banner"
+tags: ["entrepreneur", "tech", "portfolio"]
+---
+
+I still remember standing at the Expocamello 2014 event at the Pereira Chamber of Commerce, pitch notes half-memorized, trying to project confidence in front of the Red Nacional de Ángeles Inversionistas. We were 1 of 5 finalists selected from over 200 projects. My heart was somewhere between my throat and my stomach.
+
+That was GoCarga. My first real startup. And the experience that taught me more about communication, storytelling, and the art of selling an idea than anything else I've done before or since.
+
+---
+
+## Where It Started
+
+It was late 2013. I was in my final semesters at Universidad Tecnológica de Pereira studying Systems Engineering — the kind of semester where you're exhausted enough to think starting a company sounds like a good idea.
+
+The team came together naturally. Alejandro Pinto was the spark. His dad, Gustavo, had been driving freight trucks across Colombia for over 20 years. Not a fleet. Not a company. Just him, his truck, and the road. And like thousands of independent transporters across the country, he knew the pain intimately: finish a delivery, and suddenly you're stuck figuring out how to find cargo for the return trip. Empty trucks. Wasted fuel. Lost income.
+
+Alejandro saw his dad live this problem every single day. That's where GoCarga began — not in a business plan, but in a kitchen conversation.
+
+We pulled in Andres Julian (Industrial Engineering), and Jose Miguel Beltran, a graphic designer. All of us from Pereira. All of us, frankly, figuring it out as we went.
+
+---
+
+## The Problem Was Bigger Than We Thought
+
+Once we started digging, the numbers were hard to ignore. Colombia's freight industry moves over 192 million tons of cargo annually, with roughly 250,000 vehicles in the system. But the matching process — connecting a company that needs to ship something with a trucker who has capacity — was happening through a chaotic mix of phone calls, middlemen, and word of mouth.
+
+Independent transporters like Gustavo would often return home empty after a delivery because they had no efficient way to find cargo for the return route. It wasn't a niche problem. It was a systemic inefficiency baked into how the entire industry operated.
+
+The opportunity felt obvious to us: build a platform that connects companies needing to ship cargo with independent truck drivers, in real time, through the web.
+
+That was GoCarga.
+
+---
+
+## Apps.co and Eight Weeks in Cali
+
+In early 2014, we applied to the 5th cohort of Apps.co — Colombia's government startup program run by MinTIC. We got in.
+
+For eight weeks, we were in Cali at Universidad ICESI, going through the Lean LaunchPad program. The government provided us with servers worth around $2,000 per month for a year, a domain, tools, and access to mentors who actually knew what they were talking about.
+
+Our mentors — Ana Lucía Alzate, Andrés Felipe Millán, and Julián Vinasco — pushed us hard on something I hadn't fully appreciated yet: **get out of the building**. Stop theorizing. Go talk to real people.
+
+<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+
+![GoCarga team with Apps.co mentors at Universidad ICESI](/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.jpg)
+
+</div>
+
+So we did. We interviewed over 80 transporters and more than 20 companies. And somewhere around interview 30 or 40, we stumbled onto something we hadn't planned for: **freight brokers** — *comisionistas* in Spanish. These were the people who had been sitting in the middle of every cargo transaction, connecting supply with demand through personal networks and phone calls. They weren't in our original business model. They turned out to be among the most critical stakeholders in the entire ecosystem.
+
+That discovery changed how we thought about GoCarga. Not just as a platform that cuts out middlemen — but one that could serve all sides of a fragmented market.
+
+---
+
+## The Platform We Built
+
+GoCarga was a web platform where companies could post cargo shipment needs and independent transporters could find available loads matching their routes and availability. The idea was simple: reduce empty trucks, reduce costs, create transparency in a market that had historically operated on informal relationships.
+
+<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+
+![GoCarga web platform screenshot](/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.png)
+
+</div>
+
+It wasn't perfect. But it was real. And it was solving a real problem that real people experienced every single day.
+
+---
+
+## Expocamello and the Angel Investor Stage
+
+Later that year, Pereira's Chamber of Commerce held the 10th edition of Expocamello — an entrepreneurship fair that draws projects from across the region. We submitted GoCarga and were selected as one of 5 to 6 finalists from a pool of over 200 projects.
+
+We presented on stage to members of the Red Nacional de Ángeles Inversionistas, backed by Fundación Bavaria. Real investors. Real stakes. Real pressure.
+
+I don't have the words to fully describe what it feels like the first time you pitch your idea in that kind of environment. Everything you've built — every spreadsheet, every interview, every whiteboard session — compresses into 10 minutes where you either make someone believe or you don't.
+
+We had to make them believe.
+
+---
+
+## The Pitch Video
+
+Around the same time, we recorded a pitch for Apps.co. If you want to see where we were at that moment — the product, the idea, the energy of four university students who genuinely thought they could fix Colombian freight logistics — this is it:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/dZxh7J_gUjU" title="GoCarga Pitch - Apps.co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Watching it now, years later, I notice all the rough edges. The things I'd say differently. The slides I'd redesign. But I also see something I didn't fully recognize then: we had a story. A real one. And we knew how to tell it.
+
+---
+
+## What Happened After
+
+GoCarga didn't continue as a commercial product. The timing, the market, the resources — the stars didn't align the way we needed them to. That's the honest answer.
+
+But I've never thought of it as a failure. Not for a second.
+
+---
+
+## The Skill That Stuck
+
+Here's what GoCarga actually gave me, and I don't think I've said this out loud enough: it taught me how to pitch.
+
+Not "pitch" in the sense of reading slides at someone. I mean the real thing — understanding your audience deeply enough to know what they care about, distilling a complex problem into a story that resonates emotionally before it lands intellectually, and making someone believe in something that doesn't fully exist yet.
+
+That skill doesn't stay in one box. It doesn't expire when a startup winds down.
+
+Every tech talk I've given at a conference or university — I'm pitching. Every DailyBot demo to a potential customer — I'm pitching. Every conversation where I'm explaining why something matters — I'm pitching. The format changes. The stakes change. The audience changes. But the core skill is the same one I built in those eight weeks in Cali, on that stage at Expocamello, and in front of that camera for YouTube.
+
+GoCarga taught me that how you tell a story is often more important than how complete the thing you've built is. That's not an excuse for building badly. It's a recognition that great execution without communication goes unnoticed, and ideas poorly communicated die before they get the chance to become great execution.
+
+I owe a lot to Alejandro, Andres Julian, and Jose Miguel. To Gustavo, whose lived experience became the foundation of the whole thing. To the mentors who pushed us to test our assumptions in the real world. And to Apps.co and Fundación Bavaria for creating the spaces where university students from Pereira could actually stand in front of serious investors and be taken seriously.
+
+Let's keep building.
+
+---
+
+## Resources
+
+- [Alejandro Pinto's write-up on GoCarga](https://www.alejandropinto.com/emprendimiento/aplicacion-web-transporte-carga-colombia/) — My co-founder's perspective on the project
+- [GoCarga on Facebook](https://www.facebook.com/GoCarga) — The original page
+- [Apps.co](https://apps.co/) — Colombia's MinTIC startup program that backed us
+- [Universidad Tecnológica de Pereira](https://www.utp.edu.co/) — Where the team came from
