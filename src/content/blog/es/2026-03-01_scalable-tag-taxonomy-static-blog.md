@@ -4,6 +4,8 @@ description: 'El cuarto capítulo de la construcción de XergioAleX.com — cóm
 pubDate: '2026-03-01'
 heroLayout: 'none'
 tags: ['tech', 'portfolio', 'web-development']
+series: "building-xergioalex"
+seriesOrder: 4
 ---
 
 En el [capítulo uno](/es/blog/building-xergioalex-website/), construí el sitio — Astro, Svelte, Content Collections, contenido bilingüe, toda la arquitectura desde cero. En el [capítulo dos](/es/blog/lighthouse-perfect-scores/), lo optimicé hasta que cada categoría de Lighthouse llegó a 100. En el [capítulo tres](/es/blog/measuring-what-matters-free-analytics/), agregué un stack completo de analytics sin perder esos puntajes ni agregar un solo banner de cookies.
@@ -36,6 +38,8 @@ const blog = defineCollection({
       .default('banner')
       .optional(),
     tags: z.array(z.string()).optional(),
+    series: z.string().optional(),
+    seriesOrder: z.number().optional(),
   }),
 });
 ```
@@ -374,6 +378,55 @@ Los strings de traducción para la UI (etiquetas de paginación, "publicado el",
 
 ---
 
+## Series: Conectando Posts en una Narrativa
+
+Algunos posts son independientes. Otros son capítulos de una historia. Los cuatro posts en esta serie "Building XergioAleX.com" son un ejemplo claro — cada uno se construye sobre el anterior, y leerlos en orden te da el panorama completo. El sistema de blog necesita entender esa relación.
+
+La arquitectura sigue el mismo patrón que los tags: una Content Collection para metadatos, campos de frontmatter en los posts, y resolución en tiempo de build.
+
+### La colección de series
+
+Cada serie es un archivo markdown en `src/content/series/`:
+
+```yaml
+# src/content/series/building-xergioalex.md
+---
+name: "building-xergioalex"
+title: "Building XergioAleX.com"
+description: "The complete story of building a modern personal website."
+order: 1
+---
+```
+
+Los posts se unen a una serie con dos campos de frontmatter:
+
+```yaml
+series: "building-xergioalex"
+seriesOrder: 4
+```
+
+Eso es todo — un identificador y un número de posición. El sistema hace el resto.
+
+### Navegación de series en tiempo de build
+
+En tiempo de build, `getSeriesNavigation()` en `src/lib/blog.ts` recopila todos los posts de la misma serie para el mismo idioma, los ordena por `seriesOrder`, y devuelve un objeto tipado `SeriesInfo` con la tabla de contenidos, la posición actual, y las referencias anterior/siguiente.
+
+El componente `SeriesNavigation` renderiza esto como un panel con borde azul al final de cada post: el título de la serie, una tabla de contenidos numerada con el capítulo actual resaltado, y enlaces anterior/siguiente. Al igual que la taxonomía de tags, todo esto es HTML pre-renderizado. Sin consultas del lado del cliente, sin JavaScript requerido.
+
+### El problema de visibilidad
+
+Pero acá está la cosa — el panel de navegación de series está al final del post, después de todo el contenido. En un artículo largo como este, un lector podría pasar veinte minutos leyendo sin nunca hacer scroll más allá del contenido y descubrir que hay otros tres capítulos. La información está ahí, pero el UX la oculta.
+
+Me encontré con este mismo patrón en las páginas de portfolio y tech-talks, donde el contenido del timeline vive debajo del fold. La solución allí fue un botón flotante de scroll-to-timeline — una pastilla roja que se queda en la esquina inferior derecha y dice "baja al timeline."
+
+Para los posts de series, construí `SeriesIndicator` — un botón flotante que aparece en la esquina inferior derecha cuando la navegación de series está debajo del viewport. Muestra un anillo de progreso circular con la posición del capítulo actual (por ejemplo, "2/4"), el texto "Capítulo 2 de 4," y un call-to-action "Todos los capítulos." Al hacer clic, la página hace smooth-scroll hasta el panel de navegación de series.
+
+El indicador usa un `IntersectionObserver` para rastrear si la navegación de series es visible. Cuando el lector hace scroll y la navegación entra en la vista, el indicador desaparece — cumplió su trabajo. El estilo usa glassmorphism (`backdrop-blur`, borde sutil) para sentirse presente pero no intrusivo, y entra deslizándose desde la derecha con una animación CSS.
+
+Este es el tipo de detalle que separa "la feature funciona" de "la feature es descubrible." Un lector que llega al capítulo tres de una serie inmediatamente ve el indicador flotante y sabe que hay otros capítulos. Sin él, podría terminar el post sin darse cuenta de que la serie existe.
+
+---
+
 ## Performance: Todo en Tiempo de Build
 
 Quiero ser explícito sobre el hilo conductor que recorre todo esto, porque es el insight arquitectónico que hace funcionar el sistema completo.
@@ -386,10 +439,11 @@ El flujo de arquitectura:
 
 ```
 Tiempo de build:
-  Archivos Markdown + colección de tags
+  Archivos Markdown + colección de tags + colección de series
     → Validación Zod (el build falla con errores de esquema)
     → Consultas getCollection()
     → groupPostTags() (cacheado, O(1) después de la primera llamada)
+    → getSeriesNavigation() (TOC de series, anterior/siguiente)
     → Cómputo de tiempo de lectura
     → Generación del índice de búsqueda
     → HTML estático para cada página, tag, paso de paginación
@@ -398,7 +452,7 @@ Tiempo de build:
 Runtime (navegador):
   Recibe HTML pre-renderizado
   Carga JSON del índice de búsqueda (~2KB) bajo demanda
-  Islands Svelte se hidratan: búsqueda, menú, toggle de tema
+  Islands Svelte se hidratan: búsqueda, menú, toggle de tema, indicador de serie
   Cero consultas de colección
   Cero lógica de resolución de niveles
 ```
@@ -443,7 +497,7 @@ Con 1000 posts, esto importa enormemente. No quieres migrar mil archivos porque 
 
 Cada capítulo de esta serie ha sido sobre tomar una decisión que cuesta algo ahora a cambio de un camino más simple después. Capítulo uno: construir con las restricciones de Astro y obtener performance gratis. Capítulo dos: invertir en accesibilidad y obtener calificación perfecta de cada herramienta de auditoría. Capítulo tres: elegir herramientas de analytics livianas y mantener los puntajes por los que trabajaste. Capítulo cuatro: diseñar la arquitectura de contenido correctamente antes de que el contenido supere al contenedor.
 
-El sistema de taxonomía que construí maneja cientos o miles de posts sin ningún cambio estructural — solo nuevos archivos de contenido. La búsqueda corre del lado del cliente desde un índice JSON estático sin infraestructura de backend que mantener. El sistema bilingüe escala a cualquier post nuevo como un flujo de trabajo natural, no como una tarea pesada. Cada página es HTML estático pre-renderizado con cero costo en runtime para el usuario.
+El sistema de taxonomía que construí maneja cientos o miles de posts sin ningún cambio estructural — solo nuevos archivos de contenido. El sistema de series conecta posts relacionados en una narrativa navegable con un indicador flotante que hace la conexión descubrible. La búsqueda corre del lado del cliente desde un índice JSON estático sin infraestructura de backend que mantener. El sistema bilingüe escala a cualquier post nuevo como un flujo de trabajo natural, no como una tarea pesada. Cada página es HTML estático pre-renderizado con cero costo en runtime para el usuario.
 
 El mejor momento para construir un sistema de blog escalable es antes de que el contenido lo haga difícil. El segundo mejor momento es cuando puedes sentir la estructura empezando a tensionarse. Lo capté lo suficientemente temprano para que la migración fuera unos días de trabajo cuidadoso y un diff satisfactorio — no una reescritura de un mes.
 

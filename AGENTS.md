@@ -761,17 +761,18 @@ Posts can belong to a **series** — a curated sequence of related posts display
 **How it works:**
 - Series are defined in `src/content/series/{slug}.md` with `name`, `title`, `description`, `order`
 - Blog posts reference a series via `series: "{slug}"` and `seriesOrder: {n}` in frontmatter
-- The `SeriesNavigation` component renders automatically on posts with series metadata (TOC + prev/next)
+- `SeriesNavigation.astro` renders a TOC + prev/next panel at the bottom of each series post
+- `SeriesIndicator.svelte` renders a floating button (bottom-right) showing "Chapter X of Y" with a progress ring, visible when the navigation panel is below the viewport. Uses `IntersectionObserver` + `client:load`. Mirrors the `ScrollToTimeline.svelte` pattern from portfolio/tech-talks pages.
 
 **Creating a new series:**
 1. Create `src/content/series/{series-slug}.md`
 2. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
-3. Build — the navigation appears automatically
+3. Build — the navigation panel and floating indicator appear automatically
 
 **Current series:**
 - `building-xergioalex` — "Building XergioAleX.com" (4 chapters)
 
-**Key files:** `src/content/series/*.md`, `src/content.config.ts` (series schema), `src/lib/blog.ts` (`getSeriesNavigation()`), `src/components/blog/SeriesNavigation.astro`
+**Key files:** `src/content/series/*.md`, `src/content.config.ts` (series schema), `src/lib/blog.ts` (`getSeriesNavigation()`), `src/components/blog/SeriesNavigation.astro`, `src/components/blog/SeriesIndicator.svelte`
 
 ### Blog Post Hero Layouts
 

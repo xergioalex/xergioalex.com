@@ -438,6 +438,20 @@ Located at `src/components/blog/SeriesNavigation.astro`. Renders between post co
 - Table of contents listing all chapters (current chapter highlighted)
 - Previous/Next chapter navigation links
 - Bilingual (uses translation keys)
+- Has `id="series-navigation"` for the floating indicator to target
+
+### SeriesIndicator Component (Floating)
+
+Located at `src/components/blog/SeriesIndicator.svelte`. A floating button in the bottom-right corner that makes series membership discoverable on long posts:
+
+- **Visibility:** Appears when the `SeriesNavigation` panel is below the viewport (uses `IntersectionObserver`). Disappears when the reader scrolls the navigation into view.
+- **Progress ring:** Circular SVG showing chapter position (e.g., filled 2/4 of the ring for chapter 2 of 4).
+- **Label:** Two lines — "Chapter X of Y" and "All chapters" with a down arrow.
+- **Action:** Clicking smooth-scrolls to the series navigation panel.
+- **Styling:** Glassmorphism (`bg-white/95 backdrop-blur-sm ring-1 ring-blue-200`), slide-in animation from right. Dark mode supported.
+- **Hydration:** Uses `client:load` since it needs to track scroll position immediately.
+
+This pattern mirrors the `ScrollToTimeline.svelte` component used on portfolio and tech-talks pages (red floating pill), but with series-specific content and blue theming.
 
 ### Key Files
 
@@ -447,7 +461,9 @@ Located at `src/components/blog/SeriesNavigation.astro`. Renders between post co
 | `src/content.config.ts` | Series collection schema |
 | `src/lib/blog.ts` | `getSeriesNavigation()` utility |
 | `src/lib/types.ts` | `SeriesInfo`, `SeriesPost` types |
-| `src/components/blog/SeriesNavigation.astro` | Navigation component |
+| `src/components/blog/SeriesNavigation.astro` | Navigation panel (TOC + prev/next) |
+| `src/components/blog/SeriesIndicator.svelte` | Floating chapter indicator |
+| `src/lib/translations/{en,es}.ts` | Series translation keys (`seriesPartOf`, `seriesChapterOf`, etc.) |
 
 ## URL Structure
 

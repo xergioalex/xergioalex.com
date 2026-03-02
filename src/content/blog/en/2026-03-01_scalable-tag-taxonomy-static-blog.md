@@ -4,6 +4,8 @@ description: 'The fourth chapter of building XergioAleX.com — how the entire b
 pubDate: '2026-03-01'
 heroLayout: 'none'
 tags: ['tech', 'portfolio', 'web-development']
+series: "building-xergioalex"
+seriesOrder: 4
 ---
 
 In [chapter one](/blog/building-xergioalex-website/), I built the site — Astro, Svelte, Content Collections, bilingual content, the whole architecture from scratch. In [chapter two](/blog/lighthouse-perfect-scores/), I optimized it until every Lighthouse category hit 100. In [chapter three](/blog/measuring-what-matters-free-analytics/), I added a complete analytics stack without losing those scores or adding a single cookie banner.
@@ -36,6 +38,8 @@ const blog = defineCollection({
       .default('banner')
       .optional(),
     tags: z.array(z.string()).optional(),
+    series: z.string().optional(),
+    seriesOrder: z.number().optional(),
   }),
 });
 ```
@@ -374,6 +378,55 @@ The translation strings for the UI (pagination labels, "published on," "related 
 
 ---
 
+## Series: Connecting Posts Into a Narrative
+
+Some posts are standalone. Others are chapters in a story. The four posts in this "Building XergioAleX.com" series are a clear example — each builds on the last, and reading them in order gives you the full picture. The blog system needs to understand that relationship.
+
+The architecture follows the same pattern as tags: a Content Collection for metadata, frontmatter fields on posts, and build-time resolution.
+
+### The series collection
+
+Each series is a markdown file in `src/content/series/`:
+
+```yaml
+# src/content/series/building-xergioalex.md
+---
+name: "building-xergioalex"
+title: "Building XergioAleX.com"
+description: "The complete story of building a modern personal website."
+order: 1
+---
+```
+
+Posts opt into a series with two frontmatter fields:
+
+```yaml
+series: "building-xergioalex"
+seriesOrder: 4
+```
+
+That is it — one identifier and a position number. The system does the rest.
+
+### Build-time series navigation
+
+At build time, `getSeriesNavigation()` in `src/lib/blog.ts` collects all posts in the same series for the same language, sorts them by `seriesOrder`, and returns a typed `SeriesInfo` object with the table of contents, the current position, and previous/next references.
+
+The `SeriesNavigation` component renders this as a blue-bordered panel at the bottom of each post: the series title, a numbered table of contents with the current chapter highlighted, and previous/next links. Like the tag taxonomy, all of this is pre-rendered HTML. No client-side queries, no JavaScript required.
+
+### The visibility problem
+
+But here is the thing — the series navigation panel sits at the very end of the post, after all the content. On a long article like this one, a reader might spend twenty minutes reading without ever scrolling past the content to discover that there are three other chapters. The information is there, but the UX hides it.
+
+I ran into this same pattern on the portfolio and tech-talks pages, where timeline content lives below the fold. The solution there was a floating scroll-to-timeline button — a red pill that sits in the bottom-right corner and says "jump down to the timeline."
+
+For series posts, I built `SeriesIndicator` — a floating button that appears in the bottom-right corner whenever the series navigation is below the viewport. It shows a circular progress ring with the current chapter position (e.g., "2/4"), the text "Chapter 2 of 4," and a "All chapters" call-to-action. Click it, and the page smooth-scrolls to the series navigation panel.
+
+The indicator uses an `IntersectionObserver` to track whether the series navigation is visible. When the reader scrolls the navigation into view, the indicator disappears — it has done its job. The styling uses glassmorphism (`backdrop-blur`, subtle ring border) to feel present but not intrusive, and it slides in from the right with a CSS animation.
+
+This is the kind of detail that separates "the feature works" from "the feature is discoverable." A reader landing on chapter three of a series immediately sees the floating indicator and knows there are other chapters. Without it, they might finish the post without ever realizing the series exists.
+
+---
+
 ## Performance: Everything at Build Time
 
 I want to be explicit about the common thread running through all of this, because it is the architectural insight that makes the whole system work.
@@ -386,10 +439,11 @@ The architecture flow:
 
 ```
 Build time:
-  Markdown files + tag collection
+  Markdown files + tag collection + series collection
     → Zod validation (build fails on schema errors)
     → getCollection() queries
     → groupPostTags() (cached, O(1) after first call)
+    → getSeriesNavigation() (series TOC, prev/next)
     → Reading time computation
     → Search index generation
     → Static HTML for every page, tag, pagination step
@@ -398,7 +452,7 @@ Build time:
 Runtime (browser):
   Receives pre-rendered HTML
   Loads ~2KB search index JSON on demand
-  Svelte islands hydrate: search, menu, theme toggle
+  Svelte islands hydrate: search, menu, theme toggle, series indicator
   Zero collection queries
   Zero tier resolution logic
 ```
@@ -443,7 +497,7 @@ At 1000 posts, this matters enormously. You do not want to migrate a thousand fi
 
 Every chapter in this series has been about making a decision that costs something now in exchange for a simpler path later. Chapter one: build with Astro's constraints and get performance for free. Chapter two: invest in accessibility and get a passing grade from every audit tool. Chapter three: choose lightweight analytics tools and keep the scores you worked for. Chapter four: design the content architecture correctly before the content outgrows the container.
 
-The taxonomy system I built handles hundreds or thousands of posts without any structural changes — just new content files. The search runs client-side from a static JSON index with no backend infrastructure to maintain. The bilingual system scales to any new post as a natural workflow, not a chore. Every page is pre-rendered static HTML with zero runtime cost to the user.
+The taxonomy system I built handles hundreds or thousands of posts without any structural changes — just new content files. The series system connects related posts into a navigable narrative with a floating indicator that makes the connection discoverable. The search runs client-side from a static JSON index with no backend infrastructure to maintain. The bilingual system scales to any new post as a natural workflow, not a chore. Every page is pre-rendered static HTML with zero runtime cost to the user.
 
 The best time to build a scalable blog system is before the content makes it hard. The second-best time is when you can feel the structure starting to strain. I caught it early enough that the migration was a few days of careful work and a satisfying diff — not a month-long rewrite.
 
