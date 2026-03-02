@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - 'main'
+      - 'dev'
     types:
       - opened
       - synchronize
@@ -46,3 +47,7 @@ jobs:
         run: npm run biome:check
       - name: Step 4 - 🧪🧪🧪 Run tests
         run: npm run test
+      - name: Step 5 - 🏗️ Build site
+        run: npm run build
+      - name: Step 6 - 🔦 Run Lighthouse audit
+        run: npm run lighthouse

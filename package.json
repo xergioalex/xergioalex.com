@@ -27,6 +27,7 @@
     "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:webp": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
+    "lighthouse": "lhci autorun",
     "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
   },
   "dependencies": {
@@ -37,21 +38,22 @@
     "@astrojs/svelte": "7.2.5",
     "astro": "5.17.2",
     "fuse.js": "7.1.0",
-    "rehype-external-links": "^3.0.0",
+    "rehype-external-links": "3.0.0",
     "svelte": "5.50.3",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.15",
+    "@lhci/cli": "0.15.1",
     "@tailwindcss/typography": "0.5.19",
     "@tailwindcss/vite": "4.1.18",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/svelte": "^5.3.1",
-    "@vitest/coverage-v8": "^4.0.18",
-    "happy-dom": "^20.6.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/svelte": "5.3.1",
+    "@vitest/coverage-v8": "4.0.18",
+    "happy-dom": "20.6.1",
     "npm-check-updates": "19.3.2",
-    "sharp": "^0.34.5",
-    "vitest": "^4.0.18"
+    "sharp": "0.34.5",
+    "vitest": "4.0.18"
   }
 }

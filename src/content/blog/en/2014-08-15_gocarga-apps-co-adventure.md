@@ -35,6 +35,10 @@ The opportunity felt obvious to us: build a platform that connects companies nee
 
 That was GoCarga.
 
+<div class="my-6 flex w-full justify-center rounded-lg px-6 py-4" style="background-color: #002f78">
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.png" alt="GoCarga logo" width="200" height="80" />
+</div>
+
 ---
 
 ## Apps.co and Eight Weeks in Cali
@@ -45,11 +49,7 @@ For eight weeks, we were in Cali at Universidad ICESI, going through the Lean La
 
 Our mentors — Ana Lucía Alzate, Andrés Felipe Millán, and Julián Vinasco — pushed us hard on something I hadn't fully appreciated yet: **get out of the building**. Stop theorizing. Go talk to real people.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
-
 ![GoCarga team with Apps.co mentors at Universidad ICESI](/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.jpg)
-
-</div>
 
 So we did. We interviewed over 80 transporters and more than 20 companies. And somewhere around interview 30 or 40, we stumbled onto something we hadn't planned for: **freight brokers** — *comisionistas* in Spanish. These were the people who had been sitting in the middle of every cargo transaction, connecting supply with demand through personal networks and phone calls. They weren't in our original business model. They turned out to be among the most critical stakeholders in the entire ecosystem.
 
@@ -61,11 +61,21 @@ That discovery changed how we thought about GoCarga. Not just as a platform that
 
 GoCarga was a web platform where companies could post cargo shipment needs and independent transporters could find available loads matching their routes and availability. The idea was simple: reduce empty trucks, reduce costs, create transparency in a market that had historically operated on informal relationships.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+During the process we built several platform prototypes. Here are some images from those prototypes:
+
+![Landing prototype — We connect empty return trips, registration with 3 free trips incentive](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-registro.png)
+
+![Main landing prototype — Transparent, secure and profitable connection](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.png)
+
+![Login prototype — Connect with Facebook or email](/images/blog/posts/gocarga-apps-co-adventure/prototype-login.png)
+
+![Route results prototype — Medellín / Pereira search, active loads](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.png)
+
+![Cargo listing prototype — Matching cargo with transporters](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-listing.png)
+
+![Cargo form prototype — Upload image, dimensions, origin, destination](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-form.png)
 
 ![GoCarga web platform screenshot](/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.png)
-
-</div>
 
 It wasn't perfect. But it was real. And it was solving a real problem that real people experienced every single day.
 
@@ -73,13 +83,19 @@ It wasn't perfect. But it was real. And it was solving a real problem that real 
 
 ## Expocamello and the Angel Investor Stage
 
+![Expocamello 2014 banner — 10 years, September 25-27 at Expofuturo Pereira](/images/blog/posts/gocarga-apps-co-adventure/expocamello-banner.png)
+
 Later that year, Pereira's Chamber of Commerce held the 10th edition of Expocamello — an entrepreneurship fair that draws projects from across the region. We submitted GoCarga and were selected as one of 5 to 6 finalists from a pool of over 200 projects.
 
 We presented on stage to members of the Red Nacional de Ángeles Inversionistas, backed by Fundación Bavaria. Real investors. Real stakes. Real pressure.
 
 I don't have the words to fully describe what it feels like the first time you pitch your idea in that kind of environment. Everything you've built — every spreadsheet, every interview, every whiteboard session — compresses into 10 minutes where you either make someone believe or you don't.
 
+![GoCarga stand at Expocamello 2014 — Connect and get your cargo with profitability](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.png)
+
 We had to make them believe.
+
+We also participated in [Ventures Colombia](https://venturescolombia.com.co/), another national entrepreneurship competition. Every event like this was another chance to refine the pitch, sharpen the story, and learn how to read a room full of people who've heard a hundred pitches before yours.
 
 ---
 
@@ -111,11 +127,11 @@ Not "pitch" in the sense of reading slides at someone. I mean the real thing —
 
 That skill doesn't stay in one box. It doesn't expire when a startup winds down.
 
-Every tech talk I've given at a conference or university — I'm pitching. Every DailyBot demo to a potential customer — I'm pitching. Every conversation where I'm explaining why something matters — I'm pitching. The format changes. The stakes change. The audience changes. But the core skill is the same one I built in those eight weeks in Cali, on that stage at Expocamello, and in front of that camera for YouTube.
+I apply this skill today in my technical talks: I always aim to tell a story, maintain a connection with the audience, and share an experience. I structure each talk as if it were a long pitch — and it has worked. Every tech talk I've given at a conference or university — I'm pitching. Every DailyBot demo to a potential customer — I'm pitching. Every conversation where I'm explaining why something matters — I'm pitching. The format changes. The stakes change. The audience changes. But the core skill is the same one I built in those eight weeks in Cali, on that stage at Expocamello, and in front of that camera for YouTube.
 
 GoCarga taught me that how you tell a story is often more important than how complete the thing you've built is. That's not an excuse for building badly. It's a recognition that great execution without communication goes unnoticed, and ideas poorly communicated die before they get the chance to become great execution.
 
-I owe a lot to Alejandro, Andres Julian, and Jose Miguel. To Gustavo, whose lived experience became the foundation of the whole thing. To the mentors who pushed us to test our assumptions in the real world. And to Apps.co and Fundación Bavaria for creating the spaces where university students from Pereira could actually stand in front of serious investors and be taken seriously.
+I owe a lot to Alejandro, Andres Julian, and Jose Miguel. To the mentors who pushed us to test our assumptions in the real world. And to Apps.co and Fundación Bavaria for creating the spaces where university students from Pereira could actually stand in front of serious investors and be taken seriously.
 
 Let's keep building.
 
@@ -124,6 +140,9 @@ Let's keep building.
 ## Resources
 
 - [Alejandro Pinto's write-up on GoCarga](https://www.alejandropinto.com/emprendimiento/aplicacion-web-transporte-carga-colombia/) — My co-founder's perspective on the project
+- [Photos of our stand at Expocamello 2014](https://www.facebook.com/photo?fbid=832763530102079&set=a.404874458455319) — GoCarga's booth at the fair
 - [GoCarga on Facebook](https://www.facebook.com/GoCarga) — The original page
 - [Apps.co](https://apps.co/) — Colombia's MinTIC startup program that backed us
+- [GoCarga on Twitter/X](https://x.com/GoCarga) — Our original Twitter account
+- [Ventures Colombia](https://venturescolombia.com.co/) — National entrepreneurship competition we participated in
 - [Universidad Tecnológica de Pereira](https://www.utp.edu.co/) — Where the team came from

@@ -16,6 +16,9 @@ pnpm-debug.log*
 # test coverage
 coverage/
 
+# Lighthouse CI local results
+.lighthouseci/
+
 # environment variables
 .env
 .env.production

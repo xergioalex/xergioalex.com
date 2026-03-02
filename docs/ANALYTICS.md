@@ -125,17 +125,17 @@ These tools add small tracking scripts to `BaseHead.astro`. Scripts load conditi
 
 ### Tier 3: Automated Performance Monitoring
 
-#### Lighthouse CI (GitHub Actions)
+#### Lighthouse CI (Local + GitHub Actions)
 
 | Aspect | Detail |
 |--------|--------|
 | **What it measures** | Performance, Accessibility, Best Practices, SEO scores per page |
-| **Cost** | Free (GitHub Actions) |
-| **Script size** | None (runs in CI, not on the site) |
-| **Runs on** | Every pull request to `main` and `dev` branches |
-| **Config** | `lighthouserc.js` at project root |
+| **Cost** | Free (GitHub Actions + local CLI) |
+| **Script size** | None (runs in CI/locally, not on the site) |
+| **Runs on** | Every pull request to `main` and `dev` branches, and locally via `npm run lighthouse` |
+| **Config** | `lighthouserc.cjs` at project root |
 
-**Setup:** Automatically runs via `.github/workflows/lighthouse-ci.yml`. Tests the built `dist/` folder against performance budgets.
+**Setup:** Integrated into the Code Check workflow (`.github/workflows/code_check.yml`). Also available locally via `npm run lighthouse` (requires Chrome). Tests the built `dist/` folder against performance budgets.
 
 **Budgets:**
 - Performance: >= 95

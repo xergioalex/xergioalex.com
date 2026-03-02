@@ -126,6 +126,20 @@ npm run ncu:upgrade
 npm install
 ```
 
+## Lighthouse
+
+### Run Lighthouse Audit
+
+```bash
+npm run lighthouse
+```
+
+- Runs Lighthouse CI against the built `dist/` folder
+- Requires a prior `npm run build` (the `dist/` directory must exist)
+- Requires Chrome installed locally
+- Tests pages defined in `lighthouserc.cjs`: `/`, `/about/`, `/blog/`, `/es/`
+- Asserts performance budgets: Performance >= 95, Accessibility = 100, Best Practices >= 95, SEO >= 95
+
 ## Release
 
 ### Create Release

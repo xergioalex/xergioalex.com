@@ -1,8 +1,9 @@
 ---
-title: 'Construyendo un Blog Sin Backend: Arquitectura para Escala y Performance'
+title: 'Arquitectura de un Blog Escalable Sin Backend'
 description: 'El cuarto capítulo de la construcción de XergioAleX.com — cómo funciona el sistema de blog completo: Content Collections como capa de datos, taxonomía de tags de tres niveles, búsqueda del lado del cliente, series de posts con navegación flotante, contenido bilingüe, y por qué toda la complejidad vive en el build, no en el navegador.'
 pubDate: '2026-03-01'
-heroLayout: 'none'
+heroImage: '/images/blog/posts/building-blog-without-backend/hero.png'
+heroLayout: 'side-by-side'
 tags: ['tech', 'portfolio', 'web-development']
 series: "building-xergioalex"
 seriesOrder: 4

@@ -1,17 +1,17 @@
 ---
-title: "Domando el Big Data: Introducción a Apache Spark para una Clase de Maestría"
-description: "De los RDDs al streaming en tiempo real — cómo construí 11 notebooks prácticos, un clúster Docker y una presentación completa para enseñar Apache Spark como proyecto final de maestría."
+title: "Domando el Big Data: Introducción a Apache Spark"
+description: "De los RDDs al streaming en tiempo real — cómo construí notebooks prácticos, un clúster Docker y una presentación completa para enseñar Apache Spark como proyecto final de Big Data."
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
-heroLayout: "banner"
+heroLayout: "side-by-side"
 tags: ["portfolio", "talks", "python", "database", "university"]
 ---
 
-Para cuando llegué al curso de Big Data en mi maestría, ya tenía una base sólida en múltiples paradigmas de programación. Programación funcional con [Racket](/es/blog/racket-projects-university), pensamiento a nivel de sistema con [C](/es/blog/c-projects-university), diseño orientado a objetos con [Java Swing](/es/blog/oop-java-swing-university-projects), e incluso resolución declarativa de problemas con [Prolog y Mozart/Oz](/es/blog/logic-programming-university). Cada uno me dio una lente diferente para pensar sobre la computación.
+Para cuando llegué al curso de Big Data en mi maestría, ya tenía una base sólida en múltiples paradigmas de programación. Cada uno me dio una lente diferente para pensar sobre la computación.
 
 Pero ninguno me preparó para el problema de escala. ¿Qué pasa cuando tus datos no caben en la memoria de una sola máquina? ¿Cuando una sola CPU no puede procesar tu dataset antes de que llegue el siguiente? ¿Cuando necesitas coordinar cientos de máquinas para responder una sola consulta?
 
-Ese es el territorio que Apache Spark ocupa. Y para mi proyecto final de maestría, no solo lo estudié — construí un recurso completo de enseñanza: una presentación con slides, 11 Jupyter notebooks interactivos cubriendo todo el ecosistema de Spark, y un clúster basado en Docker para que cualquiera pudiera ejecutar los ejemplos en su propia máquina. El objetivo era hacer lo abstracto concreto — tomar un framework diseñado para clústeres de cientos de máquinas y hacerlo accesible desde un portátil.
+Ese es el territorio que Apache Spark ocupa. Y para mi proyecto final de Big Data, no solo lo estudié — construí un recurso completo de enseñanza: una presentación con slides, Jupyter notebooks interactivos cubriendo todo el ecosistema de Spark, y un clúster basado en Docker para que cualquiera pudiera ejecutar los ejemplos en su propia máquina. El objetivo era hacer lo abstracto concreto — tomar un framework diseñado para clústeres de cientos de máquinas y hacerlo accesible desde un portátil.
 
 ---
 
@@ -19,7 +19,7 @@ Ese es el territorio que Apache Spark ocupa. Y para mi proyecto final de maestr�
 
 La presentación cubrió Apache Spark desde cero. Quería que mis compañeros salieran no solo entendiendo qué hace Spark, sino siendo capaces de escribir y ejecutar programas Spark por sí mismos. Los [slides de la presentación](https://docs.google.com/presentation/d/189cQ15l-3ZmmDfHcgc69W_qZONEIb44zJXTlwwe_R-c/edit) proporcionaron el marco teórico, pero el aprendizaje real ocurrió en los notebooks.
 
-Estructuré el material como un recorrido progresivo a través de 11 Jupyter notebooks, cada uno construyendo sobre el anterior. El [repositorio complementario](https://github.com/xergioalex/apache-spark-introduction) contiene todo: los notebooks, los archivos de datos y una configuración Docker para levantar un clúster Spark local. La idea era que cualquiera pudiera clonar el repositorio y empezar a experimentar inmediatamente.
+Estructuré el material como un recorrido progresivo a través de Jupyter notebooks, cada uno construyendo sobre el anterior. El [repositorio complementario](https://github.com/xergioalex/apache-spark-introduction) contiene todo: los notebooks, los archivos de datos y una configuración Docker para levantar un clúster Spark local. La idea era que cualquiera pudiera clonar el repositorio y empezar a experimentar inmediatamente.
 
 El libro de referencia del curso fue "Learning Spark" de Karau, Konwinski, Wendell y Zaharia (O'Reilly, 2015) — todavía una de las mejores introducciones al framework.
 
@@ -65,9 +65,9 @@ Los notebooks profundizaron en transformaciones — `map`, `filter`, `flatMap`, 
 
 Una vez que los fundamentos estaban sólidos, los notebooks avanzaron a territorio más complejo.
 
-**Los RDDs numéricos** mostraron cómo Spark tiene funciones estadísticas incorporadas. Generé 10,000 valores aleatorios de una distribución normal y calculé estadísticas — media, desviación estándar, varianza — en una sola llamada. Luego usé la regla de las 3 sigmas para detectar outliers (25 valores más allá de 3 desviaciones estándar) y visualicé la distribución con histogramas de matplotlib.
+**Los RDDs numéricos** mostraron cómo Spark tiene funciones estadísticas incorporadas. Generé valores aleatorios de una distribución normal y calculé estadísticas — media, desviación estándar, varianza — en una sola llamada. Luego usé la regla de las 3 sigmas para detectar outliers y visualicé la distribución con histogramas de matplotlib.
 
-El ejemplo más interesante fue analizar datos de patentes de Estados Unidos de 1963 a 1999. Usando `reduceByKey` para contar patentes por año se reveló un promedio de 48,243 patentes anuales, con una clara tendencia ascendente visualizada como gráfico de barras.
+El ejemplo más interesante fue analizar datos de patentes de Estados Unidos de 1963 a 1999. Usando `reduceByKey` para contar patentes por año se reveló una clara tendencia ascendente visualizada como gráfico de barras.
 
 ```python
 # Análisis de patentes de EE.UU.
@@ -79,7 +79,7 @@ counts = by_year.reduceByKey(lambda a, b: a + b)
 
 **Persistencia y particionado** abordaron una preocupación crítica de rendimiento: por defecto, Spark recalcula toda la cadena de transformaciones cada vez que llamas una acción. Para algoritmos iterativos — machine learning, procesamiento de grafos — eso es prohibitivamente costoso. La solución es `cache()` o `persist()` con seis niveles de almacenamiento que van desde `MEMORY_ONLY` hasta `DISK_ONLY` pasando por `OFF_HEAP`, cada uno intercambiando velocidad por uso de memoria y tolerancia a fallos.
 
-**La lectura y escritura de archivos** demostró la flexibilidad de Spark con fuentes de datos. Lo más destacado fue leer 15 libros comprimidos del Proyecto Gutenberg usando `wholeTextFiles`, que devuelve cada archivo como un solo par clave-valor (nombre → contenido), y luego contar las palabras por libro — resultados que iban desde 15,000 hasta 396,000 palabras dependiendo del libro.
+**La lectura y escritura de archivos** demostró la flexibilidad de Spark con fuentes de datos. Lo más destacado fue leer libros comprimidos del Proyecto Gutenberg usando `wholeTextFiles`, que devuelve cada archivo como un solo par clave-valor (nombre → contenido), y luego contar las palabras por libro — con conteos variables dependiendo del libro.
 
 ---
 
@@ -128,7 +128,7 @@ El notebook también cubrió la integración con YARN — tanto en modo cliente 
 
 ## Las librerías del ecosistema
 
-Los últimos cuatro notebooks cubrieron las librerías que hacen de Spark algo más que un reemplazo de MapReduce.
+Los notebooks finales cubrieron las librerías que hacen de Spark algo más que un reemplazo de MapReduce.
 
 ### Spark SQL
 
@@ -178,7 +178,7 @@ print(model.clusterCenters)
 # [array([0.0, 1.15, 0.0]), array([0.95, 0.0, 1.05])]
 ```
 
-Cuatro vectores dispersos separados limpiamente en dos clústeres. El modelo podía luego predecir nuevos puntos y guardarse en disco para uso posterior — el pipeline completo de ML desde entrenamiento hasta despliegue.
+Los vectores dispersos se separaron limpiamente en dos clústeres. El modelo podía luego predecir nuevos puntos y guardarse en disco para uso posterior — el pipeline completo de ML desde entrenamiento hasta despliegue.
 
 ### Spark Streaming
 
@@ -211,11 +211,11 @@ Algunas cosas destacaron:
 
 ## Mirando atrás
 
-Este proyecto llegó en un buen momento de mi camino de aprendizaje. Había construido suficiente base en paradigmas de programación para apreciar lo que Spark estaba haciendo diferente. Los conceptos de programación funcional de Racket — map, filter, reduce — eran literalmente los bloques de construcción de las operaciones sobre RDDs. Los conceptos de sistemas distribuidos eran nuevos, pero los patrones de programación eran familiares.
+Este proyecto llegó en un buen momento de mi camino de aprendizaje. Había construido suficiente base en paradigmas de programación para apreciar lo que Spark estaba haciendo diferente. Los conceptos funcionales — map, filter, reduce — eran literalmente los bloques de construcción de las operaciones sobre RDDs. Los conceptos de sistemas distribuidos eran nuevos, pero los patrones de programación eran familiares.
 
 Apache Spark me mostró que las ideas de la programación en una sola máquina no desaparecen a escala — se transforman. Map sigue siendo map. Reduce sigue siendo reduce. La diferencia es que están ejecutándose a través de un clúster, y hay un motor entre tu código y el hardware que maneja toda la complejidad en la que preferirías no pensar.
 
-El framework ha evolucionado significativamente desde 2018 — Spark 3.x trajo ejecución adaptativa de consultas, soporte mejorado para Python y DataFrames como ciudadanos de primera clase — pero los conceptos fundamentales siguen siendo los mismos. RDDs, evaluación perezosa, el scheduler DAG, el stack unificado. Entender esas bases hace que cada nueva versión sea más fácil de comprender.
+El framework seguirá evolucionando, pero los conceptos fundamentales siguen siendo los mismos. RDDs, evaluación perezosa, el scheduler DAG, el stack unificado. Entender esas bases hará que cada nueva versión sea más fácil de comprender.
 
 A seguir construyendo.
 
@@ -223,9 +223,6 @@ A seguir construyendo.
 
 ## Recursos
 
-- [Introducción a Apache Spark — 11 Jupyter notebooks, clúster Docker y archivos de datos (GitHub)](https://github.com/xergioalex/apache-spark-introduction)
+- [Introducción a Apache Spark — Jupyter notebooks, clúster Docker y archivos de datos (GitHub)](https://github.com/xergioalex/apache-spark-introduction)
 - [Slides de la presentación — Introducción a Apache Spark](https://docs.google.com/presentation/d/189cQ15l-3ZmmDfHcgc69W_qZONEIb44zJXTlwwe_R-c/edit)
 - "Learning Spark" de Karau, Konwinski, Wendell & Zaharia (O'Reilly, 2015)
-- [Mi primer curso de programación — Racket, recursividad y un graficador de funciones](/es/blog/racket-projects-university)
-- [Mi curso de POO — Sudoku y agenda de contactos con Java Swing](/es/blog/oop-java-swing-university-projects)
-- [Programación Lógica y con Restricciones — Prolog y Mozart/Oz](/es/blog/logic-programming-university)

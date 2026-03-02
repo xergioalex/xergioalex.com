@@ -35,6 +35,10 @@ La oportunidad nos parecía evidente: construir una plataforma que conectara en 
 
 Eso era GoCarga.
 
+<div class="my-6 flex w-full justify-center rounded-lg px-6 py-4" style="background-color: #002f78">
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.png" alt="Logo de GoCarga" width="200" height="80" />
+</div>
+
 ---
 
 ## Apps.co y ocho semanas en Cali
@@ -45,11 +49,7 @@ Durante ocho semanas estuvimos en Cali, en la Universidad ICESI, pasando por el 
 
 Nuestros mentores — Ana Lucía Alzate, Andrés Felipe Millán y Julián Vinasco — nos presionaron mucho en algo que yo no había terminado de entender: **salir a la calle**. Dejar de teorizar. Ir a hablar con personas reales.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
-
 ![El equipo de GoCarga con los mentores de Apps.co en la Universidad ICESI](/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.jpg)
-
-</div>
 
 Y eso hicimos. Entrevistamos a más de 80 transportadores y más de 20 empresas. Y en algún punto entre la entrevista 30 y la 40, nos encontramos con algo que no teníamos en el radar: **los comisionistas de carga**. Esas personas que llevaban años sentadas en el medio de cada transacción, conectando oferta con demanda a través de sus redes personales y el teléfono. No estaban en nuestro modelo de negocio original. Resultaron ser uno de los actores más críticos de todo el ecosistema.
 
@@ -61,11 +61,21 @@ Ese descubrimiento cambió cómo pensábamos GoCarga. No solo como una plataform
 
 GoCarga era una plataforma web donde las empresas podían publicar necesidades de envío de carga y los transportadores independientes podían encontrar cargas disponibles según sus rutas y disponibilidad. La idea era simple: reducir camiones vacíos, bajar costos, crear transparencia en un mercado que históricamente había operado sobre relaciones informales.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+Durante el proceso se hicieron varios prototipos de la plataforma. Las siguientes son algunas imágenes de esos prototipos:
+
+![Prototipo de landing — Conectamos viajes de regreso vacíos, registro con incentivo de 3 viajes sin comisión](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-registro.png)
+
+![Prototipo de landing principal — Conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.png)
+
+![Prototipo de inicio de sesión — Conectar con Facebook o email](/images/blog/posts/gocarga-apps-co-adventure/prototype-login.png)
+
+![Prototipo de resultados de ruta — Búsqueda Medellín / Pereira, cargas activas](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.png)
+
+![Prototipo de listado de cargas — Coincidencias entre carga y transportadores](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-listing.png)
+
+![Prototipo de formulario de carga — Subir imagen, dimensiones, origen, destino](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-form.png)
 
 ![Captura de pantalla de la plataforma web GoCarga](/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.png)
-
-</div>
 
 No era perfecta. Pero era real. Y estaba resolviendo un problema real que personas reales vivían todos los días.
 
@@ -73,13 +83,19 @@ No era perfecta. Pero era real. Y estaba resolviendo un problema real que person
 
 ## Expocamello y el escenario de los ángeles inversionistas
 
+![Banner de Expocamello 2014 — 10 años, 25-27 de septiembre en Expofuturo Pereira](/images/blog/posts/gocarga-apps-co-adventure/expocamello-banner.png)
+
 A finales de ese año, la Cámara de Comercio de Pereira organizó la décima edición de Expocamello — una feria de emprendimiento que convoca proyectos de toda la región. Presentamos GoCarga y quedamos seleccionados como uno de los 5 o 6 finalistas entre más de 200 proyectos.
 
 Expusimos en tarima ante miembros de la Red Nacional de Ángeles Inversionistas, respaldada por Fundación Bavaria. Inversionistas reales. Apostas reales. Presión real.
 
 No tengo palabras para describir completamente cómo se siente la primera vez que uno le hace pitch a su idea en ese tipo de entorno. Todo lo que has construido — cada hoja de cálculo, cada entrevista, cada sesión de pizarrón — se comprime en 10 minutos donde o logras que alguien crea, o no lo logras.
 
+![Stand de GoCarga en Expocamello 2014 — Conéctate y consigue tu carga con rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.png)
+
 Teníamos que hacer que creyeran.
+
+También participamos en [Ventures Colombia](https://venturescolombia.com.co/), otro concurso nacional de emprendimiento. Cada evento como este era otra oportunidad de refinar el pitch, afinar la historia y aprender a leer una sala llena de personas que ya han escuchado cien pitches antes del tuyo.
 
 ---
 
@@ -111,11 +127,11 @@ No "pitch" en el sentido de leerle diapositivas a alguien. Me refiero a lo real 
 
 Esa habilidad no se queda encajonada. No vence cuando una startup se cierra.
 
-Cada charla técnica que he dado en una conferencia o universidad — estoy haciendo un pitch. Cada demo de DailyBot a un cliente potencial — estoy haciendo un pitch. Cada conversación donde explico por qué algo importa — estoy haciendo un pitch. El formato cambia. Las apuestas cambian. La audiencia cambia. Pero la habilidad de fondo es la misma que construí en esas ocho semanas en Cali, en ese escenario de Expocamello, y frente a esa cámara para YouTube.
+Hoy aplico esta habilidad en mis charlas técnicas: siempre busco contar una historia, mantener una conexión con la audiencia y compartir una experiencia. Organizo cada charla como si fuera un pitch muy largo — y me ha funcionado. Cada charla técnica que he dado en una conferencia o universidad — estoy haciendo un pitch. Cada demo de DailyBot a un cliente potencial — estoy haciendo un pitch. Cada conversación donde explico por qué algo importa — estoy haciendo un pitch. El formato cambia. Las apuestas cambian. La audiencia cambia. Pero la habilidad de fondo es la misma que construí en esas ocho semanas en Cali, en ese escenario de Expocamello, y frente a esa cámara para YouTube.
 
 GoCarga me enseñó que cómo se cuenta una historia muchas veces importa más que qué tan completo está lo que se ha construido. Eso no es excusa para construir mal. Es el reconocimiento de que una gran ejecución sin comunicación pasa desapercibida, y las ideas mal comunicadas mueren antes de tener la oportunidad de convertirse en gran ejecución.
 
-Les debo mucho a Alejandro, Andres Julian y Jose Miguel. A Gustavo, cuya experiencia vivida se convirtió en la base de todo. A los mentores que nos empujaron a poner a prueba nuestros supuestos en el mundo real. Y a Apps.co y Fundación Bavaria por crear los espacios donde estudiantes universitarios de Pereira podían pararse frente a inversionistas serios y ser tomados en serio.
+Les debo mucho a Alejandro, Andres Julian y Jose Miguel. A los mentores que nos empujaron a poner a prueba nuestros supuestos en el mundo real. Y a Apps.co y Fundación Bavaria por crear los espacios donde estudiantes universitarios de Pereira podían pararse frente a inversionistas serios y ser tomados en serio.
 
 A seguir construyendo.
 
@@ -124,6 +140,9 @@ A seguir construyendo.
 ## Recursos
 
 - [El artículo de Alejandro Pinto sobre GoCarga](https://www.alejandropinto.com/emprendimiento/aplicacion-web-transporte-carga-colombia/) — La perspectiva de mi cofundador sobre el proyecto
+- [Fotos de nuestro stand en Expocamello 2014](https://www.facebook.com/photo?fbid=832763530102079&set=a.404874458455319) — El stand de GoCarga en la feria
 - [GoCarga en Facebook](https://www.facebook.com/GoCarga) — La página original
 - [Apps.co](https://apps.co/) — El programa de startups de MinTIC que nos respaldó
+- [GoCarga en Twitter/X](https://x.com/GoCarga) — Nuestra cuenta original de Twitter
+- [Ventures Colombia](https://venturescolombia.com.co/) — Concurso nacional de emprendimiento en el que participamos
 - [Universidad Tecnológica de Pereira](https://www.utp.edu.co/) — De donde venía el equipo

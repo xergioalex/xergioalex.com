@@ -43,6 +43,17 @@ function test() {
 	npm run test
 }
 
+function lighthouse() {
+	print.success "Building site for Lighthouse audit..."
+	npm run build
+	if [ $? != 0 ]; then
+		print.error "⚠️ Build failed, skipping Lighthouse audit..."
+		return 1
+	fi
+	print.success "Running Lighthouse audit..."
+	npm run lighthouse
+}
+
 function codecheck() {
 	fix
 	if [ $? != 0 ]; then
@@ -57,6 +68,11 @@ function codecheck() {
 		return 1
 	fi
 	test
+	if [ $? != 0 ]; then
+		print.error "⚠️ Tests failed..."
+		return 1
+	fi
+	lighthouse
 }
 
 function install() {
@@ -180,7 +196,7 @@ function check_devcontainer() {
 		print.success "✅ Running inside Docker container"
 		echo ""
 		echo "All development commands are available:"
-		echo "  • check, fix, test, codecheck, install"
+		echo "  • check, fix, test, lighthouse, codecheck, install"
 		return 0
 	else
 		print.error "❌ NOT running inside Docker container"
@@ -292,7 +308,8 @@ function show_welcome() {
     echo "  • check                - Run astro and biome checks"
     echo "  • fix                  - Run checks and apply automatic fixes"
     echo "  • test                 - Run tests"
-    echo "  • codecheck            - Run all checks (fix + images:webp + test)"
+    echo "  • lighthouse           - Build site + run Lighthouse audit"
+    echo "  • codecheck            - Run all checks (fix + images:webp + test + lighthouse)"
     echo "  • install              - Run npm install"
     echo ""
     echo "AI Assistant commands:"

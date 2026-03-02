@@ -1,7 +1,7 @@
 ---
 title: "Astro y Svelte: Por Qué Creo Que Son el Futuro del Desarrollo Web"
 description: "Por qué Astro y Svelte representan un regreso a la simplicidad del desarrollo web — respaldado con datos del State of JS 2025, benchmarks de rendimiento y experiencia real construyendo este mismo sitio."
-pubDate: "2026-03-01"
+pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "web-development", "javascript"]
@@ -235,7 +235,7 @@ La innovación central de Svelte es que es un **compilador**, no una librería. 
 
 Esta es una diferencia arquitectónica fundamental. Vue (y React) necesitan un runtime en el navegador porque sus sistemas de reactividad — la reactividad basada en `Proxy` de Vue, la reconciliación de React — operan en runtime. Svelte no. El compilador analiza tu código y genera las operaciones exactas del DOM necesarias. Sin runtime, sin overhead.
 
-Para un sitio Astro que ya envía cero JavaScript por defecto, esto importa enormemente. Cuando *sí* necesitas un interactive island, Svelte asegura que ese island sea lo más pequeño posible. Los componentes Svelte compilan a un promedio de **30-40% menos JavaScript** que los componentes equivalentes en Vue o React. La capa interactiva de mi propio sitio — 15 componentes Svelte incluyendo búsqueda, navegación, lightbox, timelines y más — compila a una fracción de lo que pesaría un runtime de Vue o React.
+Para un sitio Astro que ya envía cero JavaScript por defecto, esto importa enormemente. Cuando *sí* necesitas un interactive island, Svelte asegura que ese island sea lo más pequeño posible. Los componentes Svelte compilan a un promedio de **30-40% menos JavaScript** que los componentes equivalentes en Vue o React. La capa interactiva de mi propio sitio — decenas de componentes Svelte cubriendo búsqueda, navegación, lightbox, timelines y más — compila a una fracción de lo que pesaría un runtime de Vue o React.
 
 ### Por Qué Astro + Svelte Se Sienten Hechos el Uno para el Otro
 
@@ -364,7 +364,7 @@ Las migraciones del mundo real cuentan la historia:
 - Mejoras de LCP (Largest Contentful Paint) de **3.2s a 1.6s**
 - **60%** de los sitios en Astro logran puntajes "Good" en Core Web Vitals, comparado con **38%** para WordPress y Gatsby
 
-En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados hablan por sí solos. Este no es un simple landing page — es un sitio con una arquitectura bastante compleja: 70+ posts de blog en dos idiomas, búsqueda del lado del cliente con Fuse.js, timelines interactivos, lightboxes de imágenes, dark mode, routing bilingüe, RSS feeds, y 15 componentes Svelte interactivos. Y aun así, con algo de iteración y ajuste fino, logra un **100 perfecto en las cuatro categorías de PageSpeed** — Performance, Accessibility, Best Practices y SEO — tanto en **mobile como en desktop**:
+En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados hablan por sí solos. Este no es un simple landing page — es un sitio con una arquitectura bastante compleja: un blog en crecimiento en dos idiomas, búsqueda del lado del cliente, timelines interactivos, lightboxes de imágenes, dark mode, routing bilingüe, RSS feeds, y decenas de componentes Svelte interactivos. Y aun así, con algo de iteración y ajuste fino, logra un **100 perfecto en las cuatro categorías de PageSpeed** — Performance, Accessibility, Best Practices y SEO — tanto en **mobile como en desktop**:
 
 **Desktop — 100/100/100/100:**
 
@@ -432,16 +432,16 @@ No solo leí sobre Astro y Svelte — construí toda mi plataforma personal con 
 
 El sitio tiene:
 
-- **70+ posts de blog** en dos idiomas (inglés y español)
+- **Un blog en crecimiento** en dos idiomas (inglés y español)
 - **Arquitectura bilingüe completa** — cada página, cada string de UI, cada post del blog existe en ambos idiomas
-- **Búsqueda del lado del cliente** impulsada por Fuse.js, lazy-loaded con `requestIdleCallback`
-- **15 componentes Svelte interactivos** — navegación, búsqueda, lightbox, timelines y más
+- **Búsqueda del lado del cliente** impulsada por un índice JSON estático, lazy-loaded con `requestIdleCallback`
+- **Decenas de componentes Svelte interactivos** — navegación, búsqueda, lightbox, timelines y más
 - **Dark mode** con detección del sistema y persistencia en localStorage
 - **RSS feeds, sitemap, optimización SEO** — todo integrado con Astro
 
 La experiencia de desarrollo ha sido genuinamente disfrutable. Escribí sobre esto en detalle en [Construyendo XergioAleX.com](/es/blog/building-xergioalex-website/) y presenté la filosofía de Astro en [Astro en Acción](/es/blog/astro-in-action/). La versión corta: construir con Astro + Svelte se siente como la web temprana con superpoderes modernos. Escribo componentes que parecen HTML. Obtengo seguridad de TypeScript. Obtengo builds ultrarrápidos. Y el output es el sitio más liviano y rápido que he lanzado.
 
-Toda la capa interactiva — 15 componentes Svelte cubriendo búsqueda, navegación, lightbox, timelines, menú móvil — compila a una fracción de lo que pesaría un runtime de Vue o React. Y esos componentes solo cargan cuando se necesitan, gracias a la Islands Architecture de Astro.
+Toda la capa interactiva — búsqueda, navegación, lightbox, timelines, menú móvil, y más — compila a una fracción de lo que pesaría un runtime de Vue o React. Y esos componentes solo cargan cuando se necesitan, gracias a la Islands Architecture de Astro.
 
 ### El Tech Stack Que Lo Impulsa
 
