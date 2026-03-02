@@ -506,6 +506,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'La comunidad y la colaboraci\u00F3n aceleran todo',
       'Mant\u00E9n la curiosidad — las mejores ideas vienen de lugares inesperados',
     ],
+    timelineTitle: 'Historias de Emprendimiento',
+    emptyState: 'Aún no hay posts de emprendimiento. ¡Pronto!',
   },
 
   // Tech Talks page

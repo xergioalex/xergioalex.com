@@ -268,6 +268,8 @@ export interface SiteTranslations {
     philosophyText: string;
     lessonsTitle: string;
     lessons: string[];
+    timelineTitle: string;
+    emptyState: string;
   };
 
   // Tech Talks page

@@ -499,6 +499,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Community and collaboration accelerate everything',
       'Stay curious — the best ideas come from unexpected places',
     ],
+    timelineTitle: 'Entrepreneurship Stories',
+    emptyState: 'No entrepreneurship posts yet. Stay tuned!',
   },
 
   // Tech Talks page
