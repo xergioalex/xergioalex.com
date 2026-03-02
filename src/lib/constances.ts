@@ -22,16 +22,16 @@ export const ANALYTICS = {
 } as const;
 
 // Contact form configuration — Google Forms direct POST
-// Form only loads when formUrl is provided
 export const CONTACT_FORM = {
   googleForms: {
-    formUrl: import.meta.env.PUBLIC_GOOGLE_FORM_URL || '',
+    formUrl:
+      'https://docs.google.com/forms/d/e/1FAIpQLScuGSujpXLKF5eS4Z_6ZGAYf6j1iPrOIHwtJ-3i1_7MGk466Q/formResponse',
     entries: {
-      name: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_NAME || '',
-      email: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_EMAIL || '',
-      reason: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_REASON || '',
-      subject: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_SUBJECT || '',
-      message: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_MESSAGE || '',
+      name: 'entry.1008715654',
+      email: 'entry.903587259',
+      reason: 'entry.677814908',
+      subject: 'entry.1738397177',
+      message: 'entry.110815800',
     },
   },
 } as const;

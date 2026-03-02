@@ -24,7 +24,7 @@ let subject = '';
 let message = '';
 
 // Validation errors
-let errors = { name: '', email: '', subject: '', message: '' };
+let errors = { name: '', email: '', reason: '', subject: '', message: '' };
 
 // Reference for focus management
 let successRef;
@@ -35,9 +35,25 @@ const labelClass =
   'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2';
 const errorClass = 'mt-1 text-sm text-red-600 dark:text-red-400';
 
+function focusFirstInvalidField() {
+  const fieldOrder = [
+    { key: 'name', id: 'contact-name' },
+    { key: 'email', id: 'contact-email' },
+    { key: 'reason', id: 'contact-reason' },
+    { key: 'subject', id: 'contact-subject' },
+    { key: 'message', id: 'contact-message' },
+  ];
+
+  const firstInvalid = fieldOrder.find((field) => errors[field.key]);
+  if (firstInvalid) {
+    const el = document.getElementById(firstInvalid.id);
+    el?.focus();
+  }
+}
+
 function validate() {
   let valid = true;
-  errors = { name: '', email: '', subject: '', message: '' };
+  errors = { name: '', email: '', reason: '', subject: '', message: '' };
 
   if (!name.trim()) {
     errors.name = t.contactPage.requiredField;
@@ -54,6 +70,10 @@ function validate() {
     errors.subject = t.contactPage.requiredField;
     valid = false;
   }
+  if (!reason.trim()) {
+    errors.reason = t.contactPage.requiredField;
+    valid = false;
+  }
   if (!message.trim()) {
     errors.message = t.contactPage.requiredField;
     valid = false;
@@ -63,7 +83,10 @@ function validate() {
 }
 
 async function handleSubmit() {
-  if (!validate()) return;
+  if (!validate()) {
+    focusFirstInvalidField();
+    return;
+  }
   formState = 'submitting';
 
   try {
@@ -98,7 +121,7 @@ function resetForm() {
   reason = '';
   subject = '';
   message = '';
-  errors = { name: '', email: '', subject: '', message: '' };
+  errors = { name: '', email: '', reason: '', subject: '', message: '' };
   formState = 'idle';
 }
 </script>
@@ -107,7 +130,7 @@ function resetForm() {
   <div
     bind:this={successRef}
     tabindex="-1"
-    class="max-w-2xl text-center py-12"
+    class="max-w-2xl mx-auto text-center py-12"
     role="status"
     aria-live="polite"
   >
@@ -128,7 +151,7 @@ function resetForm() {
   </div>
 {:else}
   <form
-    class="max-w-2xl space-y-6"
+    class="max-w-2xl mx-auto space-y-6"
     on:submit|preventDefault={handleSubmit}
     novalidate
   >
@@ -184,13 +207,22 @@ function resetForm() {
       <select
         id="contact-reason"
         class={inputClass}
+        class:border-red-500={errors.reason}
         bind:value={reason}
         disabled={formState === 'submitting'}
+        aria-describedby={errors.reason ? 'reason-error' : undefined}
+        aria-invalid={errors.reason ? 'true' : undefined}
+        required
       >
         {#each t.contactPage.reasonOptions as opt}
           <option value={opt.value}>{opt.label}</option>
         {/each}
       </select>
+      {#if errors.reason}
+        <p id="reason-error" class={errorClass} aria-live="polite">
+          {errors.reason}
+        </p>
+      {/if}
     </div>
 
     <div>
@@ -237,7 +269,7 @@ function resetForm() {
       {/if}
     </div>
 
-    <div>
+    <div class="text-center">
       <button
         type="submit"
         disabled={formState === 'submitting'}
