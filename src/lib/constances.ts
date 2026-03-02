@@ -20,3 +20,18 @@ export const ANALYTICS = {
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
   },
 } as const;
+
+// Contact form configuration — Google Forms direct POST
+// Form only loads when formUrl is provided
+export const CONTACT_FORM = {
+  googleForms: {
+    formUrl: import.meta.env.PUBLIC_GOOGLE_FORM_URL || '',
+    entries: {
+      name: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_NAME || '',
+      email: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_EMAIL || '',
+      reason: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_REASON || '',
+      subject: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_SUBJECT || '',
+      message: import.meta.env.PUBLIC_GOOGLE_FORM_ENTRY_MESSAGE || '',
+    },
+  },
+} as const;
