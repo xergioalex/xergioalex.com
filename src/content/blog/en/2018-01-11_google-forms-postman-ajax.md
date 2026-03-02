@@ -69,9 +69,13 @@ $.ajax({
 });
 ```
 
-As you can see, we only needed to translate the Postman request into jQuery Ajax format. Here's a minimal working example of a web form connected to the example form; all submissions will appear in the [response spreadsheet](https://docs.google.com/forms/) linked above:
+As you can see, we only needed to translate the Postman request into jQuery Ajax format. Here's a minimal working example of a web form connected to the example form; you can try it out right here:
 
-<iframe src="https://docs.google.com/spreadsheets/d/14iddB2KpAgBb7pKbGPQwFfMCcjo2IWV_uFHMCq-0U_4/edit?usp=sharing&widget=true&headers=false" width="100%" height="400" frameborder="0" loading="lazy" title="Google Forms response spreadsheet">Loading…</iframe>
+<iframe height="500" style="width: 100%;" scrolling="no" src="https://codepen.io/xergioalex/embed/ZNevvM?default-tab=result&theme-id=dark" frameborder="no" loading="eager" allowtransparency="true" allowfullscreen="true" title="Google Forms - Ajax request">Loading…</iframe>
+
+All submissions will appear in the [response spreadsheet](https://docs.google.com/forms/) linked above:
+
+<iframe src="https://docs.google.com/spreadsheets/d/14iddB2KpAgBb7pKbGPQwFfMCcjo2IWV_uFHMCq-0U_4/preview" width="100%" height="400" frameborder="0" loading="eager" title="Google Forms response spreadsheet">Loading…</iframe>
 
 One final note: when using this approach, you may see an error like `No 'Access-Control-Allow-Origin' header is present on the requested resource`. In other applications this is usually fixed by allowing the origin domain on the server, but Google Forms doesn't expose such a setting. Despite that, the submission still succeeds, so you can safely ignore this message.
 

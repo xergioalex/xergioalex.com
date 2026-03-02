@@ -69,9 +69,13 @@ $.ajax({
 });
 ```
 
-Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://docs.google.com/forms/) anteriormente presentada:
+Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; puedes probarlo directamente desde aquí:
 
-<iframe src="https://docs.google.com/spreadsheets/d/14iddB2KpAgBb7pKbGPQwFfMCcjo2IWV_uFHMCq-0U_4/edit?usp=sharing&widget=true&headers=false" width="100%" height="400" frameborder="0" loading="lazy" title="Hoja de cálculo de respuestas del formulario de Google">Cargando…</iframe>
+<iframe height="500" style="width: 100%;" scrolling="no" src="https://codepen.io/xergioalex/embed/ZNevvM?default-tab=result&theme-id=dark" frameborder="no" loading="eager" allowtransparency="true" allowfullscreen="true" title="Google Forms - Ajax request">Cargando…</iframe>
+
+Todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://docs.google.com/forms/) anteriormente presentada:
+
+<iframe src="https://docs.google.com/spreadsheets/d/14iddB2KpAgBb7pKbGPQwFfMCcjo2IWV_uFHMCq-0U_4/preview" width="100%" height="400" frameborder="0" loading="eager" title="Hoja de cálculo de respuestas del formulario de Google">Cargando…</iframe>
 
 Como consideración final, cabe mencionar que al usar este método obtendremos una respuesta y mensaje de error como esta: `No 'Access-Control-Allow-Origin' header is present on the requested resource`, la cual normalmente se soluciona en otras aplicaciones dando permisos en el destino a las IPs y dominios desde las cuales queremos enviar las peticiones, pero para el caso de los formularios de Google no encontré algún parámetro de configuración que me permitiera solucionarlo, pero aún así la respuesta se registra exitosamente, por lo cual no deberíamos preocuparnos por este detalle.
 
