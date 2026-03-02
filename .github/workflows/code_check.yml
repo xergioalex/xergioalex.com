@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - 'main'
+      - 'dev'
     types:
       - opened
       - synchronize
@@ -21,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '24.13.0'
+          node-version: '24.14.0'
       - name: Step 0 - 📁 Cache node modules
         id: cache-npm
         uses: actions/cache@v4
@@ -46,3 +47,9 @@ jobs:
         run: npm run biome:check
       - name: Step 4 - 🧪🧪🧪 Run tests
         run: npm run test
+      - name: Step 5 - 🏗️ Build site
+        run: npm run build
+      - name: Step 6 - 📏 Check search performance budgets
+        run: npm run search:budgets
+      - name: Step 7 - 🔦 Run Lighthouse audit
+        run: npm run lighthouse

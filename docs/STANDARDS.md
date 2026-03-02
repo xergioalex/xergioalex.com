@@ -364,7 +364,7 @@ All UI code must meet **WCAG 2.1 AA** compliance. Key rules:
 
 ### Content
 
-- **Blog posts**: `kebab-case.md` or `kebab-case.mdx`
+- **Blog posts**: `YYYY-MM-DD_slug.md` or `YYYY-MM-DD_slug.mdx` (date prefix required)
 - **Tags**: `kebab-case.md`
 
 ## Content Collection Standards
@@ -382,10 +382,19 @@ updatedDate: 2024-01-20                                   # Optional
 heroImage: "/images/blog/posts/my-blog-post/hero.jpg"    # Optional
 heroLayout: "banner"                                      # Optional (banner|side-by-side|minimal|none)
 tags: ["tech"]                                            # Optional
+series: "series-slug"                                     # Optional
+seriesOrder: 1                                            # Optional (required when series is set)
 ---
 ```
 
 **File naming:** `YYYY-MM-DD_slug.{md,mdx}` (date prefix stripped from URLs).
+
+### Blog Post Creation Workflow (MANDATORY)
+
+- Use `/add-blog-post` for creating new posts in `src/content/blog/`.
+- Never create a new blog post in only one language.
+- For EN/ES, create or update both versions in the same task.
+- Preserve synchronized frontmatter across locales: `pubDate`, `updatedDate`, `heroImage`, `heroLayout`, `tags`, `series`, `seriesOrder`.
 
 For complete blog post conventions, see **[Blog Posts Feature Guide](features/BLOG_POSTS.md)**.
 

@@ -11,6 +11,7 @@ interface Props {
   heroImage?: string;
   heroLayout?: 'banner' | 'side-by-side' | 'minimal' | 'none';
   tags?: string[];
+  topics?: string[];
   lang: Language;
   readingTimeMinutes: number;
 }
@@ -22,6 +23,7 @@ const {
   heroImage,
   heroLayout = 'banner',
   tags,
+  topics,
   lang,
   readingTimeMinutes,
 } = Astro.props;
@@ -71,6 +73,18 @@ const langPrefix = getUrlPrefix(lang);
             ))}
           </div>
         )}
+        {topics && topics.length > 0 && (
+          <div class="flex flex-wrap justify-center gap-1.5">
+            {topics.map((topic) => (
+              <a
+                href={`${langPrefix}/blog/tag/${topic}/`}
+                class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+              >
+                {t.tagNames[topic] || topic}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -101,6 +115,18 @@ const langPrefix = getUrlPrefix(lang);
                 class="rounded bg-blue-100 px-3 py-1 text-sm text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
               >
                 #{t.tagNames[tag] || tag}
+              </a>
+            ))}
+          </div>
+        )}
+        {topics && topics.length > 0 && (
+          <div class="flex flex-wrap gap-1.5">
+            {topics.map((topic) => (
+              <a
+                href={`${langPrefix}/blog/tag/${topic}/`}
+                class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+              >
+                {t.tagNames[topic] || topic}
               </a>
             ))}
           </div>
@@ -163,6 +189,18 @@ const langPrefix = getUrlPrefix(lang);
               ))}
             </div>
           )}
+          {topics && topics.length > 0 && (
+            <div class="flex flex-wrap gap-1.5">
+              {topics.map((topic) => (
+                <a
+                  href={`${langPrefix}/blog/tag/${topic}/`}
+                  class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                >
+                  {t.tagNames[topic] || topic}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -193,6 +231,18 @@ const langPrefix = getUrlPrefix(lang);
               class="rounded bg-blue-100 px-3 py-1 text-sm text-blue-800 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
             >
               #{t.tagNames[tag] || tag}
+            </a>
+          ))}
+        </div>
+      )}
+      {topics && topics.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-1.5">
+          {topics.map((topic) => (
+            <a
+              href={`${langPrefix}/blog/tag/${topic}/`}
+              class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+            >
+              {t.tagNames[topic] || topic}
             </a>
           ))}
         </div>

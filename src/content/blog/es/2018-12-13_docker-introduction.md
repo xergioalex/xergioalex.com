@@ -4,10 +4,10 @@ description: "Lo que compartí en una charla sobre Docker y arquitecturas orient
 pubDate: "2018-12-13"
 heroImage: "/images/blog/posts/docker-introduction/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
+tags: ["talks", "tech", "devops"]
 ---
 
-Di una charla de introducción a Docker con enfoque en **arquitecturas orientadas a microservicios**. La idea era conectar ambos mundos: por un lado, qué define un microservicio y por qué importa; por otro, cómo Docker y los contenedores encajan en ese panorama para construir sistemas autónomos, aislados y escalables.
+Docker con enfoque en **arquitecturas orientadas a microservicios**. La idea: conectar ambos mundos — por un lado, qué define un microservicio y por qué importa; por otro, cómo Docker y los contenedores encajan en ese panorama para construir sistemas autónomos, aislados y escalables.
 
 ---
 
@@ -60,6 +60,10 @@ En la charla mostré demos en vivo, incluyendo un load balancer con Docker. El c
 - [Docker Machine](https://docs.docker.com/machine/)
 - [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [GitHub GraphQL API](https://developer.github.com/v4/) — útil para integrar con APIs modernas desde tus contenedores
+
+---
+
+Si querés un deep dive práctico en Docker — desde Dockerfiles y volúmenes hasta redes y Docker Compose — mirá el [Workshop Introductorio a Docker](/es/blog/docker-introductory-workshop/) que realicé en Rocka Labs.
 
 ---
 

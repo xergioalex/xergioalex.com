@@ -1,7 +1,6 @@
 ---
 import BlogContainer from '@/components/blog/BlogContainer.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { isPreviewFeaturesEnabled } from '@/lib/env';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -15,7 +14,6 @@ interface Props {
 const { lang, blogPostsResult } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
-const showPreviewFeatures = isPreviewFeaturesEnabled();
 
 const { currentPage, totalPages } = blogPostsResult;
 const prevPage =
@@ -35,5 +33,5 @@ const nextPage =
   prevPage={prevPage}
   nextPage={nextPage}
 >
-  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} isDev={showPreviewFeatures} />
+  <BlogContainer blogPostsResult={blogPostsResult} lang={lang} />
 </MainLayout>

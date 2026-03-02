@@ -1,8 +1,10 @@
-FROM node:24.13.0-trixie-slim
+FROM node:24.14.0-trixie-slim
 LABEL maintainer="xergioalex@gmail.com"
 
 RUN apt-get update -y && \
-    apt-get install -y less git curl gnupg ca-certificates openssh-client sudo nano && \
+    apt-get install -y less git curl gnupg ca-certificates openssh-client sudo nano \
+    # Chromium for Lighthouse CI local audits
+    chromium && \
     # Install GitHub CLI
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
     chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \
@@ -25,6 +27,10 @@ RUN apt-get update -y && \
 ENV EDITOR=nano
 ENV VISUAL=nano
 ENV GIT_EDITOR=nano
+
+# Chromium path for Lighthouse CI (chrome-launcher)
+ENV CHROME_PATH=/usr/bin/chromium
+ENV CHROMIUM_FLAGS="--no-sandbox"
 
 # Add node user to sudoers (node user already exists in official node images with uid 1000)
 RUN echo 'node ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/node \

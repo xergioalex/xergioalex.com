@@ -1,17 +1,17 @@
 ---
-title: "Arquitectura de Microservicios y APIs con GraphQL"
-description: "Microservicios y GraphQL en Pereira Tech Talks — divide y conquista, pros y contras, y por qué GraphQL me convenció como capa de API."
+title: "Arquitectura de microservicios y APIs con GraphQL"
+description: "Por qué me moví de REST a GraphQL para microservicios — divide y conquista, consultas definidas por el cliente, y los trade-offs que necesitas conocer."
 pubDate: "2017-11-23"
 heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
 heroLayout: "banner"
-tags: ["talks", "tech"]
+tags: ["talks", "tech", "web-development", "devops"]
 ---
 
-Di una charla sobre microservicios y GraphQL en un meetup de [Pereira Tech Talks](https://www.pereiratechtalks.com/). Es un tema que me tiene entusiasmado — he estado construyendo sistemas distribuidos y REST me está quedando corto para lo que necesito en el lado móvil. GraphQL está ganando tracción y quise compartir lo que he aprendido.
+Microservicios y GraphQL — un tema que me tiene entusiasmado. He estado construyendo sistemas distribuidos y REST me está quedando corto para lo que necesito en el lado móvil. GraphQL está ganando tracción y quise compartir lo que he aprendido.
 
 Aquí están los conceptos que cubrí. Si prefieres ver los slides directamente, [aquí están](https://slides.com/xergioalex/microservices-architecture-and-apis-with-graphql).
 
-![Audiencia durante la charla en Pereira Tech Talks](/images/blog/posts/microservices-architecture-graphql/audience.webp)
+![Audience during the talk](/images/blog/posts/microservices-architecture-graphql/audience.webp)
 
 ---
 
@@ -71,7 +71,7 @@ Lo que más me gustó desde el principio: el cliente define qué recibe. No más
 | Documentación separada del desarrollo | Documentado por definición |
 | Múltiples endpoints | Un solo endpoint: `/graphql` |
 
-### Conceptos Clave
+### Conceptos clave
 
 - **Schema** — Define la estructura de tu API
 - **Types** — Tipado fuerte para consultas y respuestas
@@ -102,7 +102,7 @@ Si quieres jugar con un ejemplo real, la [API de Star Wars (SWAPI)](http://graph
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-### Charla Recomendada
+### Charla recomendada
 
 - [Por qué API REST está muerto y debemos usar APIs GraphQL](https://www.youtube.com/watch?v=cUIhcgtMvGc) — José María Rodríguez Hurtado (en español)
 

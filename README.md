@@ -53,7 +53,7 @@ npm install
 npm run dev
 ```
 
-Visit **http://localhost:4321** to preview.
+Visit **http://localhost:4444** to preview.
 
 ---
 
@@ -61,7 +61,7 @@ Visit **http://localhost:4321** to preview.
 
 | Command | Description |
 | :------ | :---------- |
-| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run dev` | Start dev server at `localhost:4444` |
 | `npm run build` | Production build with type check |
 | `npm run astro:preview` | Preview production build locally |
 | `npm run biome:check` | Lint and format check |

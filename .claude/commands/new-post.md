@@ -30,7 +30,7 @@ Before creating any files, consult these (in order of priority):
 1. **[content-writer agent](../agents/content-writer.md)** — Voice & tone, article structure, multilingual quality, Spanish phrasing
 2. **[add-blog-post skill](../skills/add-blog-post/SKILL.md)** — File creation, frontmatter, slug generation, translation, validation
 3. **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** — File naming, directory structure, frontmatter schema, hero layouts, image organization
-4. **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** — Draft, scheduled, demo posts, preview mode, status badges
+4. **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** — Published and demo post visibility
 5. **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** — Staging workflow, optimization presets
 
 ## Parameter Reference
@@ -131,7 +131,29 @@ Available tags:
 Example: 1,2 or tech, personal
 ```
 
-**2.5 Hero Image** — Ask about the hero image.
+**2.5 Series** (optional) — Check if this post belongs to a series.
+
+First, check if any series exist in `src/content/series/`. If series exist, ask:
+
+```
+Does this post belong to a series?
+
+Available series:
+1. building-xergioalex - "Building XergioAleX.com" (currently 4 chapters)
+
+0. No, it's a standalone post
+
+Which series? (Enter for standalone)
+```
+
+**If user selects a series:**
+- Determine the next `seriesOrder` by checking existing posts: `grep -r 'series: "{slug}"' src/content/blog/en/`
+- Confirm: `This will be Chapter {n} in "{series title}". Correct?`
+- Add `series` and `seriesOrder` to frontmatter
+
+**If no series exist** in the project, skip this question entirely.
+
+**2.6 Hero Image** — Ask about the hero image.
 
 ```
 Do you have a hero image for this post?
@@ -164,28 +186,11 @@ Which layout? (Enter for recommended: {layout})
 - Run `npm run images:optimize` if the image is placed in staging (see Image Optimization Guide)
 - Inform the user about the optimization results
 
-**2.6 Publication date**
+**2.7 Publication date**
 
 ```
 Publication date? (Enter for today: {today's date YYYY-MM-DD})
-Tip: Set a future date to create a scheduled post (auto-publishes on rebuild after that date).
 ```
-
-**2.7 Post status**
-
-```
-Should this post be published immediately or saved as a draft?
-
-1. Publish now (visible on the site)
-2. Save as draft (hidden from production, visible in dev with ?preview=all)
-3. Schedule for the future (set a future publication date)
-```
-
-- **Option 1:** Default behavior (`draft: false`, today's date or provided date)
-- **Option 2:** Add `draft: true` to frontmatter
-- **Option 3:** If not already set via 2.6, ask for the future date and set it as `pubDate`
-
-For details on draft/scheduled/demo states, see [Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md).
 
 **2.8 Language**
 
@@ -220,8 +225,8 @@ Blog Post Preview
 Title: {title}
 Slug: {slug}
 Date: {pubDate}
-Status: {published | draft | scheduled}
 Tags: {tags}
+Series: {series name + chapter number, or "standalone"}
 Hero: {heroImage or "none"} ({heroLayout})
 Mode: {topic → "Writing from scratch" | content → "Using provided content"}
 Primary language: {lang}

@@ -10,7 +10,7 @@
 
 Sergio is positioned as a **builder-leader**: someone who creates technology, builds companies, founds communities, and ships products relentlessly. DailyBot (YC S21) is the crown jewel of this builder identity.
 
-**Value proposition:** A Y Combinator-backed CTO who has spent 10+ years building digital products, from AI-powered team platforms to open source tools, while founding tech communities and constantly shipping new projects.
+**Value proposition:** A Y Combinator-backed CTO who has spent 14+ years building digital products, from AI-powered team platforms to open source tools, while founding tech communities and constantly shipping new projects.
 
 ## Vision
 
@@ -111,7 +111,7 @@ Create a modern, fast, and visually appealing personal website that:
 
 1. **Tell a story, don't list activities** — Origin narrative over resume-style bullet points
 2. **Lead with achievements** — YC S21 CTO, 20+ products, 3 communities before generic roles
-3. **Use specific metrics** — 10+ years, 113+ repos, thousands of teams
+3. **Use specific metrics** — 14+ years, 113+ repos, thousands of teams
 4. **Clear CTA hierarchy** — One primary action (blog/projects) over many equal CTAs
 
 ### Color Palette & Typography

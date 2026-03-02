@@ -12,7 +12,6 @@ blog/
 ├── BlogHeader.svelte        # Header with title and tag filter
 ├── BlogPagination.svelte    # Page navigation
 ├── BlogSearchInput.svelte   # Search input field
-├── PostStatusBadge.svelte   # Draft/scheduled/demo status badges
 ├── SearchResults.svelte     # Search results display
 └── StaticBlogSearch.svelte  # Complete search orchestrator
 ```
@@ -106,19 +105,17 @@ const posts = await getBlogPosts({ lang: 'es' });
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `postsResult` | `CollectionEntry<'blog'>[]` | Required | Posts for current page |
+| `postsResult` | `Array` | Required | Lightweight posts for current page |
 | `currentTag` | `string` | `undefined` | Current tag filter |
 | `totalPages` | `number` | Required | Total number of pages |
 | `currentPage` | `number` | Required | Current page number |
 | `tagsResult` | `CollectionEntry<'tags'>[]` | `[]` | All available tags |
 | `totalPostsAvailable` | `number` | `0` | Total posts count |
 | `lang` | `string` | `'en'` | Language code |
-| `isPreviewMode` | `boolean` | `false` | Whether `?preview=all` is active |
-| `isDev` | `boolean` | `false` | Whether in dev mode |
 
 **Features:**
-- Loads search index from `/api/posts.json`
-- Creates Fuse.js index for fuzzy search
+- Loads language shard index from `/api/posts-{lang}.json`
+- Falls back to `/api/posts.json` for compatibility
 - Debounced search (200ms)
 - Result caching (max 50 queries)
 - Manages search vs browse modes
@@ -133,8 +130,6 @@ Displays an individual blog post card with image, title, description, date, and 
 | `post` | `CollectionEntry<'blog'>` | Required | Blog post entry |
 | `lang` | `string` | `'en'` | Language for date/URLs |
 | `searchResult` | `SearchResult` | `undefined` | Match data for highlighting |
-| `postStatus` | `string` | `'published'` | Post status for badge display |
-| `isDev` | `boolean` | `false` | Whether in dev mode (controls badge visibility) |
 
 **Features:**
 - Handles both Content Collection and search index formats
@@ -182,7 +177,6 @@ Pagination controls for navigating blog pages.
 | `onPageChange` | `function` | `null` | Callback for search mode |
 | `currentTag` | `string` | `null` | Tag for URL building |
 | `lang` | `string` | `'en'` | Language code |
-| `isPreviewMode` | `boolean` | `false` | Preserves `?preview=all` in URLs |
 
 **URL Generation:**
 - English: `/blog/` or `/blog/page/{n}/`
@@ -215,25 +209,6 @@ Search input with result count display.
 - `aria-live="polite"` for result count
 - Escape key clears search
 
-### PostStatusBadge.svelte
-
-Displays color-coded status badges for non-published posts in dev mode.
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `status` | `string` | Required | Post status (draft, scheduled, draft+scheduled, demo) |
-| `lang` | `string` | `'en'` | Language for translated labels |
-| `pubDate` | `Date` | `undefined` | Publication date (shown for scheduled posts) |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Badge size |
-
-**Color coding:**
-- Draft: Amber
-- Scheduled: Blue
-- Demo: Purple
-- Draft + Scheduled: Shows both amber and blue badges
-
-Used in `BlogCard.svelte` (as image overlay or inline) and blog detail pages (as status banner).
-
 ### SearchResults.svelte
 
 Displays search results using BlogCard components.
@@ -254,8 +229,6 @@ Astro wrapper for the blog page (server-side).
 | `blogPostsResult` | `BlogPostsResultType` | Required | Blog posts data |
 | `currentTag` | `string` | `undefined` | Current tag filter |
 | `lang` | `string` | `'en'` | Language code |
-| `isPreviewMode` | `boolean` | `false` | Whether `?preview=all` is active |
-| `isDev` | `boolean` | `false` | Whether in dev mode |
 
 ## Data Flow
 
@@ -273,8 +246,9 @@ Page Load → StaticBlogSearch receives postsResult
 ```
 User Types → BlogSearchInput dispatches 'search' event
           → StaticBlogSearch debounces (200ms)
-          → Fetches /api/posts.json (if not cached)
-          → Fuse.js performs fuzzy search
+          → Fetches /api/posts-{lang}.json (if not cached)
+          → Falls back to /api/posts.json if needed
+          → Performs ranked substring search
           → Results cached for pagination
           → SearchResults displays with highlighting
           → BlogPagination shows pages (buttons)
@@ -282,12 +256,13 @@ User Types → BlogSearchInput dispatches 'search' event
 
 ## Search Features
 
-### Fuzzy Matching
+### Ranked Matching
 
-Powered by Fuse.js with weighted fields:
-- Title: 40% weight
-- Description: 30% weight
-- Tags: 30% weight
+Weighted ranking rules:
+- Title match: score 0.0
+- Primary tags match: score 0.1
+- Topics match: score 0.15
+- Description match: score 0.2
 
 ### Result Highlighting
 
@@ -308,7 +283,14 @@ The highlighting uses `<mark>` tags with Tailwind classes.
 
 ## Search API
 
-The search uses `/api/posts.json` which returns:
+Primary endpoints:
+- `/api/posts-en.json`
+- `/api/posts-es.json`
+
+Compatibility endpoint:
+- `/api/posts.json`
+
+The search index returns:
 
 ```json
 [
@@ -325,7 +307,7 @@ The search uses `/api/posts.json` which returns:
 ]
 ```
 
-See [API Reference](../../../docs/API_REFERENCE.md) for details.
+See [API Reference](../../../docs/API_REFERENCE.md) for full details.
 
 ## Styling
 
@@ -337,4 +319,4 @@ All components use Tailwind CSS with dark mode support via the `dark:` prefix.
 - [Features: Pagination](../../../docs/features/PAGINATION.md) - Pagination implementation
 - [Library Utilities](../../lib/README.md) - translations.ts, search.ts
 - [Content Collections](../../content/README.md) - Blog post schema
-- [API Reference](../../../docs/API_REFERENCE.md) - /api/posts.json endpoint
+- [API Reference](../../../docs/API_REFERENCE.md) - Search shard endpoints

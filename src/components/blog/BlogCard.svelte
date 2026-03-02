@@ -3,19 +3,27 @@ import type { CollectionEntry } from 'astro:content';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getHighlightedField } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
-import PostStatusBadge from './PostStatusBadge.svelte';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: string = 'en';
+export let heroWebpExists: boolean = false;
+export let searchQuery: string = '';
 export let searchResult:
   | { item: any; score: number; matches?: any[] }
   | undefined = undefined;
-export let isDev: boolean = false;
-export let isPreviewMode: boolean = false;
+export let topicTagNames: string[] = [];
+let postData: {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  topics: string[];
+  heroImage?: string;
+};
+let postSlug = '';
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
-$: querySuffix = isPreviewMode ? '?preview=all' : '';
 
 // Helper function to get post slug without language prefix or date prefix
 // e.g., "en/2022-07-08_first-post" -> "first-post"
@@ -35,58 +43,49 @@ function getPostSlug(): string {
 function getPostData() {
   // If post has data property (CollectionEntry structure)
   if (post.data) {
+    // Split unified tags array using topicTagNames lookup
+    const allTags = post.data.tags || [];
+    const primary = allTags.filter((t) => !topicTagNames.includes(t));
+    const secondary = allTags.filter((t) => topicTagNames.includes(t));
     return {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      tags: post.data.tags || [],
+      tags: primary,
+      topics: secondary,
       heroImage: post.data.heroImage,
     };
   }
-  // If post is flat structure (search index)
+  // If post is flat structure (search index) — already pre-grouped by API
   return {
     title: post.title,
     description: post.description,
     pubDate: new Date(post.pubDate),
     tags: post.tags || [],
+    topics: post.topics || [],
     heroImage: post.heroImage,
   };
 }
 
-// Compute post status client-side from post data
-function computeStatus(postObj) {
-  // Check search index status field first (flat structure from API)
-  if (postObj.status && postObj.status !== 'published') return postObj.status;
-  // Compute from CollectionEntry data
-  const draft = postObj.data?.draft === true || postObj.draft === true;
-  const pubDate = postObj.data?.pubDate || postObj.pubDate;
-  const pubTime =
-    pubDate instanceof Date ? pubDate.valueOf() : new Date(pubDate).valueOf();
-  const scheduled = pubTime > Date.now();
-  if (draft && scheduled) return 'draft+scheduled';
-  if (draft) return 'draft';
-  if (scheduled) return 'scheduled';
-  return 'published';
+// Reference post and topicTagNames so Svelte re-runs when they change
+$: {
+  post;
+  topicTagNames;
+  postData = getPostData();
 }
-
-// Compute demo status from post id/path
-function checkIsDemo(postObj) {
-  const id = postObj.id || '';
-  return id.includes('/_demo/') || id.includes('_demo/');
-}
-
-$: effectiveStatus = computeStatus(post);
-$: isDemo = checkIsDemo(post);
-
-$: postData = getPostData();
 $: postSlug = getPostSlug();
 
 // Get highlighted title and description if search result is available
-$: displayTitle = searchResult
-  ? getHighlightedField(searchResult, 'title', postData.title)
+$: displayTitle = searchQuery
+  ? getHighlightedField(searchResult, 'title', postData.title, searchQuery)
   : postData.title;
-$: displayDescription = searchResult
-  ? getHighlightedField(searchResult, 'description', postData.description)
+$: displayDescription = searchQuery
+  ? getHighlightedField(
+      searchResult,
+      'description',
+      postData.description,
+      searchQuery
+    )
   : postData.description;
 </script>
 
@@ -94,7 +93,7 @@ $: displayDescription = searchResult
   {#if postData.heroImage}
     <div class="relative">
       <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800">
-        {#if postData.heroImage.match(/\.(png|jpe?g)$/i)}
+        {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
           <picture>
             <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
             <img
@@ -117,19 +116,9 @@ $: displayDescription = searchResult
           />
         {/if}
       </a>
-      {#if isDev && (effectiveStatus !== 'published' || isDemo)}
-        <div class="absolute top-2 right-2">
-          <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
-        </div>
-      {/if}
     </div>
   {/if}
   <div class="p-6">
-    {#if isDev && (effectiveStatus !== 'published' || isDemo) && !postData.heroImage}
-      <div class="mb-2">
-        <PostStatusBadge status={effectiveStatus} {lang} pubDate={postData.pubDate} size="sm" {isDemo} />
-      </div>
-    {/if}
     <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">
       <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
         {@html displayTitle}
@@ -143,21 +132,30 @@ $: displayDescription = searchResult
         {postData.pubDate.toLocaleDateString(t.dateLocale, {
           year: 'numeric',
           month: 'short',
-          day: 'numeric'
+          day: 'numeric',
+          timeZone: 'UTC'
         })}
       </time>
-      {#if postData.tags && postData.tags.length > 0}
-        <div class="flex gap-1">
+      {#if (postData.tags && postData.tags.length > 0) || (postData.topics && postData.topics.length > 0)}
+        <div class="flex flex-wrap gap-1">
           {#each postData.tags as tag}
-            <a 
-              href={`${prefix}/blog/tag/${tag}/${querySuffix}`}
+            <a
+              href={`${prefix}/blog/tag/${tag}/`}
               class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
               #{t.tagNames[tag] || tag}
+            </a>
+          {/each}
+          {#each postData.topics as topic}
+            <a
+              href={`${prefix}/blog/tag/${topic}/`}
+              class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+            >
+              {t.tagNames[topic] || topic}
             </a>
           {/each}
         </div>
       {/if}
     </div>
   </div>
-</article> 
+</article>

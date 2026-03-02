@@ -23,7 +23,6 @@ export const es: SiteTranslations = {
     dailybot: 'DailyBot',
     entrepreneur: 'Emprendedor',
     techTalks: 'Charlas Tech',
-    maker: 'Maker / Creador',
     portfolio: 'Portafolio',
     trading: 'Trading',
     foodie: 'Foodie',
@@ -38,15 +37,15 @@ export const es: SiteTranslations = {
 
   // Homepage hero
   hero: {
-    tagline: 'CTO en DailyBot (YC S21) · Creador de 20+ Productos',
+    tagline: 'CTO en DailyBot (YC S21) · Creador de 20+ productos',
     description:
-      'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, donde ayudamos a miles de equipos a colaborar mejor. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
+      'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
     typewriterWords: [
       'CTO en DailyBot (YC S21)',
-      'Creador de 20+ Productos',
-      'Fundador de Comunidades',
-      'Explorador de IA & Tech',
-      'Contribuidor Open Source',
+      'Creador de 20+ productos',
+      'Fundador de comunidades',
+      'Explorador de IA & tech',
+      'Contribuidor open source',
     ],
   },
 
@@ -54,7 +53,7 @@ export const es: SiteTranslations = {
   homeSections: {
     about: {
       title: "Hola, soy <span class='text-secondary'>Sergio</span>",
-      description: `Hoy lidero ingenieria en DailyBot (YC S21), donde me enfoco en estrategia de producto, flujos potenciados por IA y sistemas confiables que ayudan a los equipos a avanzar mas rapido.<br /><br />
+      description: `Hoy lidero ingenier\u00EDa en DailyBot (YC S21), una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Me enfoco en estrategia de producto, flujos potenciados por IA y sistemas confiables que ayudan a los equipos h\u00EDbridos a avanzar m\u00E1s r\u00E1pido.<br /><br />
 Mis fortalezas estan en convertir ideas complejas en productos simples, escalar equipos de ingenieria y ejecutar end-to-end: arquitectura, implementacion e iteracion basada en feedback real de usuarios.<br /><br />
 Actualmente estoy enfocado en aplicaciones de IA, productividad para developers y productos de alto impacto que combinan velocidad, calidad y resultados de negocio medibles.`,
       cta: 'Conoce m\u00E1s sobre m\u00ED',
@@ -64,7 +63,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       title: 'DailyBot (YC S21)',
       subtitle: 'CTO & Cofundador',
       description:
-        'He liderado el desarrollo de una plataforma innovadora que conecta equipos globalmente, facilitando la colaboraci\u00F3n y comunicaci\u00F3n efectiva entre miembros. En 2021, fuimos seleccionados por Y Combinator, lo que nos permiti\u00F3 acelerar nuestro crecimiento, mejorar nuestras capacidades tecnol\u00F3gicas y reforzar nuestro enfoque en la satisfacci\u00F3n del cliente. \u{1F680}',
+        'He liderado el desarrollo de una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Ofrece transparencia y visibilidad unificadas sobre el trabajo en equipos h\u00EDbridos y flujos inteligentes — desde standups as\u00EDncronos y reconocimiento entre pares hasta agentes de IA reportando progreso — todo dentro de Slack, Microsoft Teams y Google Chat. En 2021 fuimos seleccionados por Y Combinator, lo que aceler\u00F3 nuestro crecimiento y reforz\u00F3 nuestro enfoque en la satisfacci\u00F3n del cliente. \u{1F680}',
       cta: 'Conoce m\u00E1s sobre DailyBot',
     },
     techTalks: {
@@ -74,20 +73,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         'Como cofundador y organizador de la comunidad Pereira Tech Talks, he impulsado la creaci\u00F3n de espacios para compartir conocimiento y conectar a profesionales de tecnolog\u00EDa. He tenido la oportunidad de ser speaker en m\u00FAltiples charlas t\u00E9cnicas, donde disfruto compartir experiencias y aprender junto a la comunidad.',
       cta: 'Conoce m\u00E1s sobre mis charlas',
     },
-    maker: {
-      title: 'Maker',
-      subtitle:
-        'Entusiasta de la tecnolog\u00EDa, IA & Desarrollador de proyectos',
-      description:
-        'Como entusiasta de la tecnolog\u00EDa y la inteligencia artificial, he liderado y desarrollado m\u00FAltiples proyectos innovadores, explorando diversas tecnolog\u00EDas para crear aplicaciones digitales y soluciones t\u00E9cnicas de alto impacto. Mi pasi\u00F3n por la innovaci\u00F3n y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desaf\u00EDos complejos y aportar valor a trav\u00E9s de la tecnolog\u00EDa.',
-      cta: 'Ver mis proyectos',
-    },
     makerHome: {
-      title: 'Lo Que He Construido',
+      title: 'Lo que he construido',
       subtitle: 'Emprendedor, maker y entusiasta de la tecnolog\u00EDa',
       description:
         'M\u00E1s all\u00E1 de DailyBot, soy emprendedor y maker apasionado por la tecnolog\u00EDa. Construyo proyectos paralelos, exploro IA y contribuyo al open source \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs). Con 113+ repositorios en GitHub, creo que la mejor forma de aprender es construir algo real.',
-      cta: 'Explorar mis proyectos',
+      cta: 'Ver portafolio',
     },
     portfolio: {
       title: 'Portafolio',
@@ -118,35 +109,35 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       cta: 'Ver mis hobbies',
     },
     builder: {
-      title: 'Lo Que Construyo',
+      title: 'Lo que construyo',
       subtitle: 'Desde plataformas con IA hasta herramientas open source',
       description:
-        'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma utilizada por miles de equipos en Slack, Microsoft Teams y Google Chat. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
+        'Construir es lo que mejor hago. Como CTO de <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white font-semibold underline hover:no-underline">DailyBot (YC S21)</a>, he dise\u00F1ado la arquitectura de una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s all\u00E1 de DailyBot, estoy constantemente lanzando proyectos \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs).<br /><br />Con 113+ repositorios en GitHub y proyectos en Python, Go, TypeScript y m\u00E1s, creo que la mejor forma de aprender nueva tecnolog\u00EDa es construir algo real con ella.',
       cta: 'Explorar mis proyectos',
     },
     community: {
-      title: 'Comunidad & Charlas',
+      title: 'Comunidad & charlas',
       subtitle: 'Compartiendo conocimiento, construyendo ecosistemas',
       description:
-        'Cofund\u00E9 Pereira Tech Talks, PereiraJS y Python Pereira \u2014 tres comunidades tech dedicadas a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional y m\u00E1s en conferencias y meetups. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos \u2014 por eso escribo este blog y doy charlas.',
-      cta: 'Ver mis charlas',
+        'Cofund\u00E9 Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento en Colombia. Como speaker, he hablado sobre Docker, arquitecturas serverless, IA conversacional, blockchain y m\u00E1s en conferencias y meetups de la regi\u00F3n. La comunidad se ha convertido en una plataforma donde desarrolladores, dise\u00F1adores y emprendedores se conectan, aprenden unos de otros y empujan los l\u00EDmites de lo posible. Creo que la tecnolog\u00EDa crece m\u00E1s r\u00E1pido cuando compartimos lo que aprendemos \u2014 por eso escribo este blog y doy charlas.',
+      cta: 'Explorar comunidad y charlas',
     },
     beyondCode: {
-      title: 'M\u00E1s All\u00E1 del C\u00F3digo',
+      title: 'M\u00E1s all\u00E1 del c\u00F3digo',
       subtitle: 'Lo que impulsa al constructor',
       description:
         'Cuando no estoy construyendo productos, exploro otras pasiones. Me encanta leer, especialmente ciencia ficci\u00F3n \u2014 Isaac Asimov es uno de mis autores favoritos \u2014 y pel\u00EDculas sobre viajes en el tiempo, futuros dist\u00F3picos y exploraci\u00F3n espacial. Estudio los mercados financieros y el trading algor\u00EDtmico para entender el mundo de los negocios desde otro \u00E1ngulo. Me mantengo activo con ciclismo, running y baloncesto \u2014 el deporte me mantiene con energ\u00EDa y disciplina. Y me encanta descubrir buena comida y compartir hallazgos culinarios. La vida es mejor cuando eres curioso por todo.',
       cta: 'M\u00E1s sobre mis intereses',
     },
-    latestArticles: '\u00DAltimos Art\u00EDculos',
+    latestArticles: '\u00DAltimos art\u00EDculos',
     viewAllPosts: 'Ver todos los art\u00EDculos',
-    portfolioProjectsTitle: 'Portafolio y Proyectos',
+    portfolioProjectsTitle: 'Portafolio y proyectos',
     portfolioProjectsViewAll: 'Ver todos los posts del portafolio',
     portfolioProjectsEmpty: 'Próximamente más proyectos.',
-    techTalksPostsTitle: 'Charlas Recientes',
+    techTalksPostsTitle: 'Charlas recientes',
     techTalksPostsViewAll: 'Ver todas las charlas',
     techTalksPostsEmpty: 'Próximamente más charlas.',
-    dailybotPostsTitle: 'Últimos Artículos de DailyBot',
+    dailybotPostsTitle: 'Últimos artículos de DailyBot',
     dailybotPostsViewAll: 'Ver todos los artículos de DailyBot',
     dailybotPostsEmpty: 'Próximamente artículos de DailyBot.',
     tradingPostsTitle: 'Diario de Trading',
@@ -168,24 +159,24 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
   // About page
   aboutPage: {
-    title: 'Sobre M\u00ED',
+    title: 'Sobre m\u00ED',
     subtitle:
-      'Entusiasta de la Tecnolog\u00EDa, Emprendedor y Aprendiz Constante',
+      'Entusiasta de la tecnolog\u00EDa, emprendedor y aprendiz constante',
     description:
       'Conoce a Sergio Alexander Florez Galeano — CTO, emprendedor, maker y entusiasta de la tecnolog\u00EDa de Colombia.',
     heroDescription:
-      'CTO y Cofundador de DailyBot (YC S21). Ingeniero en Ciencias de la Computaci\u00F3n, MSc en Ciencia de Datos, con m\u00E1s de 10 a\u00F1os construyendo productos y negocios digitales.',
-    bioTitle: 'Qui\u00E9n Soy',
+      'CTO y Cofundador de DailyBot (YC S21). Ingeniero en Ciencias de la Computaci\u00F3n, MSc en Ciencia de Datos, con m\u00E1s de 14 a\u00F1os construyendo productos y negocios digitales.',
+    bioTitle: 'Qui\u00E9n soy',
     bioText:
-      'Soy Sergio Alexander Florez Galeano, Ingeniero en Ciencias de la Computaci\u00F3n de la Universidad Nacional de Colombia con una Maestr\u00EDa en Ciencia de Datos. Durante m\u00E1s de una d\u00E9cada, he construido productos digitales, liderado equipos de ingenier\u00EDa y cofundado emprendimientos tecnol\u00F3gicos.<br /><br />Actualmente, soy CTO y Cofundador de DailyBot, una plataforma respaldada por Y Combinator (S21) que ayuda a miles de equipos a colaborar de forma as\u00EDncrona. M\u00E1s all\u00E1 de mi trabajo profesional, soy un maker de coraz\u00F3n — constantemente explorando nuevas tecnolog\u00EDas desde IA e impresi\u00F3n 3D hasta IoT y computaci\u00F3n f\u00EDsica.<br /><br />Tambi\u00E9n soy cofundador de Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento. Creo en aprender cada d\u00EDa, construir cosas desde cero y compartir el camino con otros \u2014 por eso escribo este blog y doy charlas tech.',
-    passionsTitle: 'Lo Que Me Mueve',
+      'Soy Sergio Alexander Florez Galeano, Ingeniero en Ciencias de la Computaci\u00F3n de la Universidad Tecnol\u00F3gica de Pereira con una Maestr\u00EDa en Ciencia de Datos. Durante m\u00E1s de 14 a\u00F1os, he construido productos digitales, liderado equipos de ingenier\u00EDa y cofundado emprendimientos tecnol\u00F3gicos.<br /><br />Actualmente, soy CTO y Cofundador de DailyBot, una plataforma respaldada por Y Combinator (S21) que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes dentro de Slack, Microsoft Teams y Google Chat. M\u00E1s all\u00E1 de mi trabajo profesional, soy un maker de coraz\u00F3n — constantemente explorando nuevas tecnolog\u00EDas desde IA e impresi\u00F3n 3D hasta IoT y computaci\u00F3n f\u00EDsica.<br /><br />Tambi\u00E9n soy cofundador de Pereira Tech Talks, una comunidad tech dedicada a conectar profesionales y compartir conocimiento. Creo en aprender cada d\u00EDa, construir cosas desde cero y compartir el camino con otros \u2014 por eso escribo este blog y doy charlas tech.',
+    passionsTitle: 'Lo que me mueve',
     passions: [
       {
         title: 'Tecnolog\u00EDa e IA',
         description:
           'Explorando inteligencia artificial, machine learning y tecnolog\u00EDas emergentes para crear soluciones innovadoras.',
         icon: '\u{1F916}',
-        link: '/es/maker',
+        link: '/es/portfolio',
       },
       {
         title: 'Emprendimiento',
@@ -223,7 +214,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         link: '/es/foodie',
       },
     ],
-    quickFactsTitle: 'Datos R\u00E1pidos',
+    quickFactsTitle: 'Datos r\u00E1pidos',
     quickFacts: [
       'Ubicado en Colombia',
       'Juegos favoritos: The Legend of Zelda y Hollow Knight',
@@ -233,7 +224,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       '113+ repositorios en GitHub',
       'Filosof\u00EDa: Construir, aprender, compartir, repetir',
     ],
-    ctaTitle: '\u00BFQuieres Saber M\u00E1s?',
+    ctaTitle: '\u00BFQuieres saber m\u00E1s?',
     ctaDescription:
       'Revisa mi experiencia profesional o ponte en contacto — siempre estoy abierto a nuevas conversaciones y colaboraciones.',
     ctaCv: 'Ver mi CV',
@@ -246,17 +237,17 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     subtitle: 'CTO y Cofundador | Desarrollador Full Stack | Emprendedor',
     description:
       'Curr\u00EDculum profesional de Sergio Alexander Florez Galeano — CTO de DailyBot, Desarrollador Full Stack y emprendedor tecnol\u00F3gico.',
-    summaryTitle: 'Resumen Profesional',
+    summaryTitle: 'Resumen profesional',
     summaryText:
-      'L\u00EDder tecnol\u00F3gico con m\u00E1s de 10 a\u00F1os de experiencia construyendo y escalando productos digitales. Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA \u2014 construyendo lo que el producto necesita. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma impulsada por IA utilizada por miles de equipos globalmente. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
-    experienceTitle: 'Experiencia Laboral',
+      'L\u00EDder tecnol\u00F3gico con m\u00E1s de 14 a\u00F1os de experiencia construyendo y escalando productos digitales. Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA \u2014 construyendo lo que el producto necesita. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
+    experienceTitle: 'Experiencia laboral',
     experiences: [
       {
         role: 'CTO y Cofundador',
         company: 'DailyBot (Y Combinator S21)',
-        period: '2017 - Presente',
+        period: 'Ene 2020 - Presente',
         description:
-          'Liderando la visi\u00F3n t\u00E9cnica y el equipo de ingenier\u00EDa detr\u00E1s de DailyBot, una plataforma impulsada por IA para colaboraci\u00F3n as\u00EDncrona de equipos.',
+          'Liderando la visi\u00F3n t\u00E9cnica y el equipo de ingenier\u00EDa detr\u00E1s de DailyBot, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Ofrece transparencia y visibilidad unificadas sobre el trabajo en equipos h\u00EDbridos y flujos inteligentes — todo dentro de Slack, Microsoft Teams y Google Chat.',
         highlights: [
           'Dise\u00F1\u00E9 y constru\u00ED la plataforma desde cero, escal\u00E1ndola a miles de equipos en todo el mundo',
           'Lider\u00E9 a la empresa a trav\u00E9s del batch S21 de Y Combinator, acelerando crecimiento y desarrollo de producto',
@@ -270,23 +261,47 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         company: 'Pereira Tech Talks',
         period: '2016 - Presente',
         description:
-          'Cofund\u00E9 una comunidad tecnol\u00F3gica enfocada en compartir conocimiento y conectar profesionales tech.',
+          'Cofund\u00E9 una comunidad tecnol\u00F3gica enfocada en compartir conocimiento y conectar profesionales tech en Colombia.',
         highlights: [
-          'Organiz\u00E9 meetups y conferencias tech regulares',
+          'Organiz\u00E9 meetups y conferencias tech regulares (PyCon, Python Pereira, PereiraJs)',
+          'Speaker en Docker, serverless, TypeScript, IA, blockchain y WebVR',
           'Crecimos la comunidad hasta convertirla en referencia del ecosistema tech local',
-          'Speaker en temas como Docker, serverless, TypeScript e IA',
         ],
       },
       {
-        role: 'Desarrollador Full Stack y Consultor',
-        company: 'Independiente',
-        period: '2014 - 2017',
+        role: 'Desarrollador Full Stack',
+        company: 'Bamb\u00FA - Meditaci\u00F3n y Mindfulness',
+        period: 'Abr 2018 - Ene 2020',
         description:
-          'Desarrollo de aplicaciones web y consultor\u00EDa tecnol\u00F3gica para diversas empresas y startups.',
+          'Desarrollo de la app m\u00F3vil de meditaci\u00F3n y mindfulness para hispanohablantes. Bamb\u00FA ofrece meditaciones guiadas, sonidos y m\u00FAsica para relajaci\u00F3n. Incubada en Rocka Venture Builder.',
         highlights: [
-          'Constru\u00ED aplicaciones full-stack con Python/Django y Node.js',
-          'Implement\u00E9 pr\u00E1cticas DevOps incluyendo contenedorizaci\u00F3n con Docker y pipelines CI/CD',
-          'Contribu\u00ED a proyectos open-source y desarroll\u00E9 herramientas de desarrollo',
+          'Constru\u00ED aplicaci\u00F3n m\u00F3vil full-stack con contenido guiado de alta calidad',
+          'Colabor\u00E9 con expertos para entregar experiencias de meditaci\u00F3n y mindfulness',
+          'Contribu\u00ED al desarrollo de producto dentro del ecosistema venture builder',
+        ],
+      },
+      {
+        role: 'Technical Lead y Ejecutivo',
+        company: 'Rocka - Venture Builder',
+        period: 'Oct 2014 - Ene 2020',
+        description:
+          'Ayud\u00E9 a construir, apoyar y empoderar negocios digitales en todo el mundo. Rocka es un venture builder enfocado en startups tech, ofreciendo desarrollo de producto y estrategia para emprendedores.',
+        highlights: [
+          'Lider\u00E9 la ejecuci\u00F3n t\u00E9cnica en m\u00FAltiples ventures y equipos de producto',
+          'Dise\u00F1\u00E9 y constru\u00ED productos digitales desde la idea hasta el lanzamiento',
+          'Implement\u00E9 pr\u00E1cticas DevOps incluyendo Docker, CI/CD e infraestructura cloud',
+        ],
+      },
+      {
+        role: 'Desarrollador Web Frontend y Backend',
+        company: 'Universidad Tecnol\u00F3gica de Pereira',
+        period: 'Jul 2012 - Mar 2014',
+        description:
+          'Administraci\u00F3n y mantenimiento de sitios web. Desarrollo de aplicaciones con frameworks PHP (Kohana, CodeIgniter, Symfony). Maquetaci\u00F3n con HTML5, CSS3 y JavaScript.',
+        highlights: [
+          'Constru\u00ED y mantuve aplicaciones web institucionales',
+          'Desarroll\u00E9 soluciones full-stack con frameworks PHP',
+          'Entregu\u00E9 layouts responsivos con est\u00E1ndares web modernos',
         ],
       },
     ],
@@ -294,20 +309,20 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     educations: [
       {
         degree: 'MSc en Ciencia de Datos',
-        institution: 'Universidad Tecnológica de Pereira',
-        period: '2020 - 2022',
+        institution: 'Universidad Tecnol\u00F3gica de Pereira',
+        period: '2017 - 2021',
         description:
-          'Estudios avanzados en machine learning, an\u00E1lisis de datos y modelado estad\u00EDstico aplicado a problemas del mundo real.',
+          'Visualizaci\u00F3n de datos, an\u00E1lisis estad\u00EDstico, inteligencia artificial, machine learning, procesamiento de lenguaje natural (NLP), big data y gesti\u00F3n de bases de datos avanzadas.',
       },
       {
-        degree: 'Ingenier\u00EDa en Ciencias de la Computaci\u00F3n',
-        institution: 'Universidad Nacional de Colombia',
-        period: '2014 - 2019',
+        degree: 'BSc en Ciencias de la Computaci\u00F3n',
+        institution: 'Universidad Tecnol\u00F3gica de Pereira',
+        period: '2009 - 2014',
         description:
-          'Formaci\u00F3n integral en fundamentos de ciencias de la computaci\u00F3n, algoritmos, ingenier\u00EDa de software y dise\u00F1o de sistemas.',
+          'Desarrollo web, an\u00E1lisis y optimizaci\u00F3n de algoritmos, arquitectura de software, administraci\u00F3n de bases de datos (SQL, MySQL, Postgres, Oracle). Lenguajes: DrRacket, C/C++, Java, Python, PHP, JavaScript.',
       },
     ],
-    skillsTitle: 'Habilidades T\u00E9cnicas',
+    skillsTitle: 'Habilidades t\u00E9cnicas',
     skillsIntroText:
       'Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA. Construyo lo que el producto necesita — desde APIs y UIs hasta infraestructura y pipelines de ML. Stack actual:',
     skillCategories: [
@@ -370,6 +385,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       { language: 'Espa\u00F1ol', level: 'Nativo' },
       { language: 'Ingl\u00E9s', level: 'Competencia profesional' },
     ],
+    ctaTitle: 'Conectemos',
+    ctaDescription:
+      '\u00BFTe interesa colaborar, que hable en tu evento o discutir un proyecto? Siempre estoy abierto a nuevas oportunidades.',
     ctaText: 'Contactar',
   },
 
@@ -378,52 +396,52 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'DailyBot',
     subtitle: 'CTO y Cofundador — Y Combinator S21',
     description:
-      'DailyBot es una plataforma impulsada por IA para colaboraci\u00F3n as\u00EDncrona de equipos, respaldada por Y Combinator.',
+      'DailyBot es una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Ofrece transparencia y visibilidad unificadas sobre el trabajo de personas y agentes de IA, respaldada por Y Combinator.',
     heroDescription:
-      'Construyendo el futuro de la colaboraci\u00F3n en equipos — una plataforma impulsada por IA utilizada por miles de equipos en todo el mundo.',
-    storyTitle: 'La Historia',
+      'Construyendo el futuro de la colaboraci\u00F3n en equipos — una plataforma que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes.',
+    storyTitle: 'La historia',
     storyText:
-      'DailyBot naci\u00F3 de una observaci\u00F3n simple: los equipos distribuidos necesitan mejores herramientas para la comunicaci\u00F3n as\u00EDncrona. Lo que comenz\u00F3 como una soluci\u00F3n para ejecutar standups automatizados evolucion\u00F3 en una plataforma integral que ayuda a los equipos a mantenerse conectados, alineados y productivos sin importar zonas horarias o horarios de trabajo.<br /><br />Desde sus inicios, la plataforma ha crecido para servir a miles de equipos en todo el mundo, integr\u00E1ndose perfectamente con las herramientas que ya usan — Slack, Microsoft Teams, Google Chat y Discord.',
-    ycTitle: 'La Experiencia Y Combinator',
+      'DailyBot es una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Ofrece transparencia y visibilidad unificadas sobre el trabajo de personas y agentes de IA, con insights claros sobre todas las actividades en equipos h\u00EDbridos y flujos inteligentes.<br /><br />DailyBot act\u00FAa como una capa de automatizaci\u00F3n potente, soportando desde standups as\u00EDncronos y reconocimiento entre pares entre humanos hasta agentes de IA reportando progreso y tomando decisiones de negocio dentro de procesos de equipo — todo dentro de plataformas de chat familiares como Slack, Microsoft Teams y Google Chat.',
+    ycTitle: 'La experiencia Y Combinator',
     ycText:
       'En 2021, DailyBot fue seleccionado para el batch de verano de Y Combinator (S21). Ser parte de YC fue una experiencia transformadora — aceler\u00F3 nuestro crecimiento, agudiz\u00F3 nuestro enfoque en product-market fit y nos conect\u00F3 con una red incre\u00EDble de fundadores, mentores e inversores.<br /><br />La experiencia YC nos ense\u00F1\u00F3 a movernos r\u00E1pido, hablar con usuarios obsesivamente y construir lo que importa. Valid\u00F3 nuestra visi\u00F3n y nos dio los recursos y la confianza para escalar globalmente.',
-    roleTitle: 'Mi Rol como CTO',
+    roleTitle: 'Mi rol como CTO',
     roleText:
       'Como CTO, lidero la visi\u00F3n t\u00E9cnica y el equipo de ingenier\u00EDa detr\u00E1s de DailyBot. Desde decisiones de arquitectura hasta el desarrollo de funcionalidades de IA, soy responsable de asegurar que nuestra tecnolog\u00EDa entregue valor real a los equipos.<br /><br />Esto incluye dise\u00F1ar sistemas escalables, integrar capacidades de IA (incluyendo LLMs) en el producto, gestionar infraestructura cloud en AWS y fomentar una cultura de excelencia en ingenier\u00EDa dentro del equipo.',
-    featuresTitle: 'Funcionalidades de la Plataforma',
+    featuresTitle: 'Funcionalidades de la plataforma',
     features: [
       {
-        title: 'Standups y Check-ins As\u00EDncronos',
+        title: 'Standups y check-ins as\u00EDncronos',
         description:
           'Actualizaciones de equipo automatizadas que se ejecutan en tu horario, manteniendo a todos alineados sin reuniones.',
         icon: '\u{1F4CB}',
       },
       {
-        title: 'Asistente con IA',
+        title: 'Colaboraci\u00F3n entre agentes IA y humanos',
         description:
-          'Un asistente inteligente que ayuda a los equipos a trabajar de forma m\u00E1s inteligente con insights y automatizaci\u00F3n impulsados por IA.',
+          'Permite que humanos y agentes de IA trabajen juntos sin fricciones, con agentes de IA reportando progreso y tomando decisiones dentro de procesos de equipo.',
         icon: '\u{1F916}',
       },
       {
-        title: 'Kudos y Reconocimiento',
+        title: 'Kudos y reconocimiento',
         description:
           'Un sistema de reconocimiento entre pares que eleva la moral del equipo y celebra los logros.',
         icon: '\u2B50',
       },
       {
-        title: 'Flujos y Automatizaciones',
+        title: 'Flujos y automatizaciones',
         description:
           'Flujos de trabajo personalizados activados por eventos o programaciones para optimizar procesos del equipo.',
         icon: '\u2699\uFE0F',
       },
       {
-        title: 'Seguimiento de Estado de \u00C1nimo',
+        title: 'Seguimiento de estado de \u00E1nimo',
         description:
           'Rastrea el sentimiento del equipo a lo largo del tiempo para mantener una fuerza laboral saludable y comprometida.',
         icon: '\u{1F4CA}',
       },
       {
-        title: 'Integraci\u00F3n Multi-Plataforma',
+        title: 'Integraci\u00F3n multi-plataforma',
         description:
           'Funciona con Slack, Microsoft Teams, Google Chat, Discord y muchas m\u00E1s herramientas.',
         icon: '\u{1F517}',
@@ -442,16 +460,16 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     description:
       'El camino emprendedor de Sergio Alexander Florez Galeano — de ingeniero a fundador.',
     heroDescription:
-      'M\u00E1s de una d\u00E9cada construyendo negocios digitales, transformando ideas en productos y aprendiendo de cada desaf\u00EDo en el camino.',
-    journeyTitle: 'Mi Camino Emprendedor',
+      'M\u00E1s de 14 a\u00F1os construyendo negocios digitales, transformando ideas en productos y aprendiendo de cada desaf\u00EDo en el camino.',
+    journeyTitle: 'Mi camino emprendedor',
     journeyText:
       'Mi camino emprendedor comenz\u00F3 en la intersecci\u00F3n entre ingenier\u00EDa y ambici\u00F3n. Con un t\u00EDtulo en Ciencias de la Computaci\u00F3n y una pasi\u00F3n por construir cosas, me propuse crear productos digitales que resuelvan problemas reales para personas reales.<br /><br />El camino ha estado lleno de lecciones — desde el trabajo freelance y consultor\u00EDa hasta cofundar DailyBot, que luego ser\u00EDa seleccionado por Y Combinator. Cada paso me ense\u00F1\u00F3 algo nuevo sobre desarrollo de producto, construcci\u00F3n de equipos y la b\u00FAsqueda incansable de crear valor.',
-    venturesTitle: 'Proyectos y Emprendimientos',
+    venturesTitle: 'Proyectos y emprendimientos',
     ventures: [
       {
         title: 'DailyBot (YC S21)',
         description:
-          'Plataforma impulsada por IA para colaboraci\u00F3n as\u00EDncrona de equipos. CTO y Cofundador. Seleccionados por Y Combinator en 2021, sirviendo a miles de equipos en todo el mundo.',
+          'Plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Transparencia unificada en equipos h\u00EDbridos y flujos inteligentes — dentro de Slack, Microsoft Teams y Google Chat. CTO y Cofundador. Seleccionados por Y Combinator en 2021.',
         period: '2017 - Presente',
       },
       {
@@ -461,16 +479,16 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         period: '2016 - Presente',
       },
       {
-        title: 'Open Source y Herramientas',
+        title: 'Open source y herramientas',
         description:
           'Cre\u00E9 y contribu\u00ED a proyectos open-source incluyendo herramientas de desarrollo, utilidades DevOps y recursos educativos con 113+ repositorios en GitHub.',
         period: 'Continuo',
       },
     ],
-    philosophyTitle: 'Mi Filosof\u00EDa',
+    philosophyTitle: 'Mi filosof\u00EDa',
     philosophyText:
       'Creo que la tecnolog\u00EDa es una fuerza poderosa de cambio. Los mejores emprendedores no son solo constructores — son solucionadores de problemas que entienden profundamente a las personas a las que sirven. El \u00E9xito viene del enfoque incansable en entregar valor, combinado con la humildad de aprender de cada fracaso.<br /><br />La comunidad est\u00E1 en el coraz\u00F3n de todo lo que hago. Ya sea construyendo un producto usado por miles de equipos u organizando meetups tech en mi ciudad, el objetivo siempre es el mismo: conectar personas, compartir conocimiento y crear oportunidades.',
-    lessonsTitle: 'Lecciones Clave',
+    lessonsTitle: 'Lecciones clave',
     lessons: [
       'Habla con tus usuarios — su feedback vale m\u00E1s que cualquier suposici\u00F3n',
       'Mu\u00E9vete r\u00E1pido, pero construye cosas que duren',
@@ -479,135 +497,85 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'La comunidad y la colaboraci\u00F3n aceleran todo',
       'Mant\u00E9n la curiosidad — las mejores ideas vienen de lugares inesperados',
     ],
+    timelineTitle: 'Historias de Emprendimiento',
+    emptyState: 'Aún no hay posts de emprendimiento. ¡Pronto!',
   },
 
   // Tech Talks page
   techTalksPage: {
     title: 'Charlas Tech',
-    subtitle: 'Compartiendo conocimiento, construyendo comunidad',
+    subtitle:
+      'Construyendo comunidad a trav\u00E9s del conocimiento compartido',
     description:
-      'La participaci\u00F3n de Sergio en comunidades tech, charlas y difusi\u00F3n de conocimiento.',
+      'CTO en DailyBot (YC S21) y cofundador de Pereira Tech Talks. M\u00E1s de 30 charlas t\u00E9cnicas desde 2016 sobre IA, serverless, Docker, blockchain y equipos distribuidos. Apasionado por compartir conocimiento y construir comunidad en Colombia.',
     heroDescription:
-      'Cofundador de Pereira Tech Talks. Speaker en m\u00FAltiples conferencias t\u00E9cnicas. Apasionado por conectar profesionales y compartir conocimiento.',
+      'Cofund\u00E9 Pereira Tech Talks para crear un espacio donde desarrolladores, dise\u00F1adores y emprendedores pudieran aprender juntos. Desde 2016, he dado m\u00E1s de 30 charlas sobre todo, desde Docker hasta IA \u2014 porque la mejor forma de aprender es ense\u00F1ando.',
     communityTitle: 'Pereira Tech Talks',
     communityText:
-      'Como cofundador y organizador de Pereira Tech Talks, he ayudado a construir una de las comunidades tech m\u00E1s activas de la regi\u00F3n. La misi\u00F3n es simple: crear espacios donde profesionales de tecnolog\u00EDa puedan compartir conocimiento, aprender unos de otros y crecer juntos.<br /><br />Desde peque\u00F1os meetups hasta conferencias m\u00E1s grandes, la comunidad se ha convertido en una plataforma para desarrolladores, dise\u00F1adores y emprendedores para conectar, colaborar y empujar los l\u00EDmites de lo posible.',
-    topicsTitle: 'Temas que Cubro',
+      'En septiembre de 2017, nos sentamos con una idea simple: \u00BFqu\u00E9 tal si creamos un espacio donde los profesionales tech en Pereira puedan compartir lo que est\u00E1n aprendiendo, construyendo y enfrentando? Todos hab\u00EDamos sido parte de PereiraJS y Python Pereira, pero quer\u00EDamos algo m\u00E1s grande \u2014 una comunidad que uniera a todos sin importar su stack tecnol\u00F3gico.<br /><br />Esa conversaci\u00F3n se convirti\u00F3 en Pereira Tech Talks. Lo que empez\u00F3 como peque\u00F1os meetups en espacios prestados se ha convertido en una de las comunidades tech m\u00E1s activas de Colombia. Hemos llenado auditorios en la UTP, tra\u00EDdo speakers de toda Latinoam\u00E9rica, y visto a un mont\u00F3n de desarrolladores dar su primera charla p\u00FAblica. \u00BFLo mejor? Ver gente que lleg\u00F3 como asistente regresar meses despu\u00E9s como speaker, cerrando el ciclo del conocimiento compartido.',
+    communityImageAlt1:
+      'Auditorio lleno en un evento de Pereira Tech Talks en la UTP',
+    communityImageAlt2:
+      'Encuentro de la comunidad Pereira Tech Talks con sponsors y asistentes',
+    topicsTitle: 'Temas que cubro',
     topics: [
       {
-        title: 'Docker y Contenedores',
+        title: 'Docker y contenedores',
         description:
-          'Mejores pr\u00E1cticas de contenedorizaci\u00F3n, flujos de Docker y orquestaci\u00F3n para aplicaciones modernas.',
+          'Desde nuestros primeros d\u00EDas contenedorizando DailyBot hasta orquestar arquitecturas multi-servicio. Comparto lecciones reales de producci\u00F3n, no solo teor\u00EDa.',
         icon: '\u{1F433}',
       },
       {
-        title: 'Arquitectura Serverless',
+        title: 'Arquitectura serverless',
         description:
-          'Construyendo aplicaciones escalables con patrones serverless en AWS y otros proveedores cloud.',
+          'C\u00F3mo escalamos DailyBot a miles de equipos usando patrones serverless. Los trade-offs, los aciertos y lo que har\u00EDa diferente hoy.',
         icon: '\u2601\uFE0F',
       },
       {
         title: 'TypeScript y Node.js',
         description:
-          'Desarrollo type-safe, dise\u00F1o de APIs y construcci\u00F3n de servicios backend robustos.',
+          'Construyendo APIs type-safe que escalan. Lecciones de migrar un codebase en producci\u00F3n y los patrones que realmente funcionan.',
         icon: '\u{1F4DD}',
       },
       {
-        title: 'IA y Machine Learning',
+        title: 'IA y machine learning',
         description:
-          'Integraci\u00F3n pr\u00E1ctica de IA, LLMs en producci\u00F3n y el futuro de las aplicaciones inteligentes.',
+          'Llevando IA a productos reales, no demos. Desde integrar LLMs en DailyBot hasta los retos pr\u00E1cticos de IA en producci\u00F3n.',
         icon: '\u{1F9E0}',
       },
       {
         title: 'DevOps y CI/CD',
         description:
-          'Integraci\u00F3n continua, pipelines de despliegue y pr\u00E1cticas de infraestructura como c\u00F3digo.',
+          'C\u00F3mo un equipo peque\u00F1o hace deploys r\u00E1pido sin romper nada. Nuestra evoluci\u00F3n de CI/CD desde deploys manuales hasta infraestructura como c\u00F3digo.',
         icon: '\u{1F504}',
       },
       {
-        title: 'Equipos Remotos',
+        title: 'Equipos remotos',
         description:
-          'Estrategias para construir equipos distribuidos efectivos, comunicaci\u00F3n as\u00EDncrona y cultura de equipo.',
+          'Lecciones de construir DailyBot 100% remoto desde el d\u00EDa uno. Comunicaci\u00F3n as\u00EDncrona, cultura de equipo y lo que realmente funciona.',
         icon: '\u{1F30D}',
       },
       {
-        title: 'Emprendimiento Tech',
+        title: 'Emprendimiento tech',
         description:
-          'Lecciones de fundar una startup respaldada por YC, desarrollo de producto y hacer crecer un negocio tech.',
+          'La historia real de pasar por Y Combinator, construir un producto SaaS y las lecciones de startups que no ense\u00F1an en las aceleradoras.',
         icon: '\u{1F4A1}',
       },
       {
-        title: 'Desarrollo Open Source',
+        title: 'Desarrollo open source',
         description:
-          'Contribuir y mantener proyectos open-source, desarrollo impulsado por la comunidad.',
+          'Por qu\u00E9 creo en el open source y c\u00F3mo contribuir a la comunidad ha formado mi carrera y perspectiva como desarrollador.',
         icon: '\u{1F310}',
       },
     ],
-    philosophyTitle: 'Por Qu\u00E9 Hablo',
+    philosophyTitle: 'Por qu\u00E9 hablo',
     philosophyText:
-      'Creo que la mejor forma de aprender es ense\u00F1ando. Cada vez que preparo una charla, profundizo mi propio entendimiento. Cada pregunta de la audiencia abre una nueva perspectiva.<br /><br />Las comunidades tech son la columna vertebral de la innovaci\u00F3n. Cuando los profesionales comparten su conocimiento abiertamente, todos crecen — desde juniors aprendiendo su primer framework hasta seniors descubriendo nuevos patrones. Mi meta es contribuir a ese ciclo de conocimiento e inspirar a otros a compartir sus propias experiencias.',
-    ctaTitle: '\u00BFQuieres que Hable en Tu Evento?',
+      'En 2016, di mi primera charla p\u00FAblica sobre Meteor.js en un meetup peque\u00F1o en Pereira. Estaba aterrado. Pero durante las preguntas, alguien me hizo una que me hizo darme cuenta de algo que yo mismo no hab\u00EDa entendido completamente sobre el framework. Ese momento lo cambi\u00F3 todo \u2014 no solo estaba compartiendo conocimiento, lo estaba profundizando.<br /><br />Cada charla que preparo me obliga a organizar mis ideas, cuestionar mis supuestos y encontrar claridad en lo complejo. Cada pregunta de la audiencia abre una perspectiva nueva que no hab\u00EDa considerado. Hablo porque ense\u00F1ar es como aprendo. Y organizo eventos de comunidad porque cuando la gente comparte abiertamente \u2014 ya sea dando su primera charla o la n\u00FAmero cincuenta \u2014 todos en la sala mejoramos. Ese es el ciclo que quiero mantener vivo.',
+    ctaTitle: '\u00BFQuieres que hable en tu evento?',
     ctaText:
-      'Siempre estoy abierto a oportunidades de charlas — desde meetups locales hasta conferencias internacionales. \u00A1Conect\u00E9monos!',
-    timelineTitle: 'Mis Charlas',
+      'Siempre me entusiasma hablar en eventos \u2014 ya sea un meetup local o una conferencia internacional. Hablemos de c\u00F3mo puedo contribuir.',
+    timelineTitle: 'Mis charlas',
     emptyState: '\u00A1A\u00FAn no hay charlas disponibles. Vuelve pronto!',
-  },
-
-  // Maker page
-  makerPage: {
-    title: 'Maker / Creador',
-    subtitle: 'Transformando ideas en realidad',
-    description:
-      'El camino maker de Sergio — desde proyectos de software hasta impresi\u00F3n 3D, IoT y exploraci\u00F3n de IA.',
-    heroDescription:
-      'Un constructor y entusiasta de la tecnolog\u00EDa de por vida. Del c\u00F3digo al hardware, constantemente creando y experimentando con nuevas tecnolog\u00EDas.',
-    philosophyTitle: 'La Mentalidad Maker',
-    philosophyText:
-      'Siempre me ha impulsado la necesidad de construir cosas. Ya sea una aplicaci\u00F3n web, una herramienta open-source, un prototipo impreso en 3D o un dispositivo IoT — el proceso de tomar una idea y convertirla en algo tangible es lo que m\u00E1s me emociona.<br /><br />La tecnolog\u00EDa evoluciona a un ritmo incre\u00EDble, y creo que la mejor forma de entenderla es ensuci\u00E1ndose las manos. Cada nuevo proyecto es una oportunidad para aprender, experimentar y empujar l\u00EDmites.',
-    areasTitle: '\u00C1reas de Exploraci\u00F3n',
-    areas: [
-      {
-        title: 'Inteligencia Artificial',
-        description:
-          'Explorando integraci\u00F3n de IA, modelos de machine learning, LLMs y construyendo aplicaciones impulsadas por IA que resuelven problemas reales.',
-        icon: '\u{1F916}',
-      },
-      {
-        title: 'Impresi\u00F3n 3D',
-        description:
-          'Recientemente comenc\u00E9 mi camino en impresi\u00F3n 3D — dise\u00F1ando objetos, prototipando ideas y aprendiendo modelado CAD para dar vida a conceptos.',
-        icon: '\u{1F5A8}\uFE0F',
-      },
-      {
-        title: 'IoT y Hardware',
-        description:
-          'Construyendo dispositivos conectados, proyectos con sensores y explorando el mundo de la computaci\u00F3n f\u00EDsica y automatizaci\u00F3n del hogar.',
-        icon: '\u{1F4E1}',
-      },
-      {
-        title: 'IA F\u00EDsica y Rob\u00F3tica',
-        description:
-          'Fascinado por la IA embodied, rob\u00F3tica y la convergencia de la inteligencia de software con sistemas f\u00EDsicos.',
-        icon: '\u{1F9BE}',
-      },
-      {
-        title: 'Open Source',
-        description:
-          'Con 113+ repositorios en GitHub, contribuyendo y creando herramientas que ayudan a otros desarrolladores a construir mejor software.',
-        icon: '\u{1F310}',
-      },
-      {
-        title: 'Desarrollo Full Stack',
-        description:
-          'Construyendo aplicaciones web, APIs y sistemas cloud-native con tecnolog\u00EDas modernas y mejores pr\u00E1cticas.',
-        icon: '\u{1F4BB}',
-      },
-    ],
-    currentTitle: 'Lo Que Estoy Construyendo Ahora',
-    currentText:
-      'Ahora mismo, mi enfoque est\u00E1 en la emocionante intersecci\u00F3n entre software y hardware. Recientemente obtuve una impresora 3D y estoy aprendiendo a dise\u00F1ar e imprimir objetos funcionales. Tambi\u00E9n estoy experimentando con dispositivos IoT y explorando c\u00F3mo la IA puede integrarse en sistemas f\u00EDsicos.<br /><br />Cada d\u00EDa es una oportunidad para aprender algo nuevo. Ya sea un nuevo lenguaje de programaci\u00F3n (actualmente explorando GoLang), una nueva t\u00E9cnica de fabricaci\u00F3n o un nuevo modelo de IA — el objetivo siempre es el mismo: construir, aprender, compartir, repetir.',
-    ctaText: 'Ver Mi GitHub',
-    ctaLink: 'https://github.com/xergioalex',
   },
 
   // Trading page
@@ -618,42 +586,45 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'El diario de trading de Sergio — actualizaciones semanales, análisis de mercado, estrategias y lecciones aprendidas del trading activo.',
     heroDescription:
       'Mi diario personal de trading donde documento mi camino por los mercados financieros — revisiones semanales, análisis, estrategias y las lecciones que aprendo en el camino.',
-    journeyTitle: 'Mi Camino en el Trading',
+    journeyTitle: 'Mi camino en el trading',
     journeyText:
       'El trading llegó a mi vida como una extensión natural de mi pasión por los datos, el análisis y el reconocimiento de patrones. Lo que comenzó como curiosidad sobre cómo funcionan los mercados financieros rápidamente se convirtió en un profundo interés en el trading forex — el mercado más grande y líquido del mundo.<br /><br />Durante los últimos dos años, he dedicado tiempo significativo a estudiar la dinámica del mercado, entender cómo los eventos macroeconómicos afectan los precios de las divisas y desarrollar mi propio enfoque de trading. Esto es más que un hobby — es una disciplina que me desafía cada día.',
-    approachTitle: 'Mi Enfoque',
+    approachTitle: 'Mi enfoque',
     approachText:
       'Abordo el trading con la misma mentalidad que aplico a la ingeniería: sistemática, basada en datos y disciplinada. Combino análisis fundamental (entender cómo las noticias, datos económicos y eventos geopolíticos mueven los mercados) con análisis técnico (leer gráficos, identificar patrones y usar indicadores).<br /><br />La gestión del riesgo es central en mi filosofía. Cada operación tiene un plan claro — entrada, stop loss y take profit. Mantengo un diario de trading detallado para rastrear el rendimiento y mejorar continuamente mi proceso de toma de decisiones.',
-    areasTitle: 'Lo Que Estudio',
+    areasTitle: 'Lo que estudio',
     areas: [
       {
-        title: 'Trading Forex',
+        title: 'Trading forex',
         description:
           'Pares de divisas, sesiones de mercado, políticas de bancos centrales y factores macroeconómicos que mueven el mercado forex.',
         icon: '💱',
       },
       {
-        title: 'Trading Algorítmico',
+        title: 'Trading algorítmico',
         description:
           'Automatizando estrategias de trading, backtesting de sistemas y aplicando habilidades de programación para construir bots de trading.',
         icon: '💻',
       },
       {
-        title: 'Análisis de Mercado',
+        title: 'Análisis de mercado',
         description:
           'Análisis de impacto de noticias, indicadores económicos, análisis de sentimiento y entender cómo eventos globales afectan los precios.',
         icon: '📊',
       },
       {
-        title: 'Gestión del Riesgo',
+        title: 'Gestión del riesgo',
         description:
           'Dimensionamiento de posiciones, estrategias de stop-loss, ratios riesgo-recompensa y protección del capital a través de trading disciplinado.',
         icon: '🛡️',
       },
     ],
-    philosophyTitle: 'Filosofía de Trading',
+    philosophyTitle: 'Filosofía de trading',
     philosophyText:
       'El trading es una disciplina, no una apuesta. El éxito viene de la educación, la paciencia y el control emocional — no de perseguir ganancias rápidas. El mercado es el mejor maestro: recompensa la consistencia y castiga la impulsividad.<br /><br />Como tecnólogo, veo oportunidades únicas en combinar mis habilidades de ingeniería con el trading. Construir sistemas algorítmicos, analizar patrones de datos y automatizar estrategias son áreas donde mi formación tech me da una ventaja. El objetivo no es solo operar, sino entender los mercados profundamente y construir sistemas que puedan tomar decisiones inteligentes.',
+    ctaTitle: '¿Quieres hablar de trading?',
+    ctaText:
+      'Si quieres conversar sobre estrategias, sistemas o un proyecto de trading, estoy feliz de conectar.',
     timelineTitle: 'Diario de Trading',
     emptyState: 'Aún no hay entradas en el diario de trading. ¡Vuelve pronto!',
   },
@@ -666,36 +637,36 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'La pasi\u00F3n de Sergio por la comida — exploraci\u00F3n de restaurantes, creaci\u00F3n de contenido y aventuras culinarias.',
     heroDescription:
       'M\u00E1s all\u00E1 de la tecnolog\u00EDa, un apasionado explorador gastron\u00F3mico y creador de contenido. Descubriendo los mejores sabores y comparti\u00E9ndolos con el mundo.',
-    passionTitle: 'Mi Pasi\u00F3n por la Comida',
+    passionTitle: 'Mi pasi\u00F3n por la comida',
     passionText:
       'La comida es uno de esos lenguajes universales que conecta personas a trav\u00E9s de culturas y or\u00EDgenes. Siempre he sido apasionado por descubrir nuevos restaurantes, probar nuevas cocinas y compartir esas experiencias con otros.<br /><br />Ya sea una joya escondida en la ciudad, un puesto de comida callejera o una experiencia de alta gastronom\u00EDa — cada comida cuenta una historia. Me encanta la aventura de explorar nuevos sabores y la alegr\u00EDa de recomendar grandes lugares a amigos y seguidores.',
-    contentTitle: 'Creaci\u00F3n de Contenido',
+    contentTitle: 'Creaci\u00F3n de contenido',
     contentText:
       'Sol\u00EDa ser muy activo compartiendo contenido gastron\u00F3mico en Instagram (@xergioalex), documentando mis exploraciones culinarias a trav\u00E9s de fotos e historias. Desde recomendaciones de restaurantes hasta experimentos de cocina, mi feed era una celebraci\u00F3n de la buena comida.<br /><br />Aunque he estado menos activo recientemente, estoy planeando revivir mi camino de contenido gastron\u00F3mico. Hay demasiados restaurantes incre\u00EDbles y experiencias culinarias esperando ser descubiertas y compartidas. \u00A1Estate atento!',
-    cookingTitle: 'Aventuras en la Cocina',
+    cookingTitle: 'Aventuras en la cocina',
     cookingText:
       'No soy un chef profesional — ni de cerca. Pero disfruto meterme en la cocina y experimentar con recetas. Cocinar para m\u00ED es como programar: sigues una receta (o la rompes), iteras, pruebas y a veces creas algo inesperadamente delicioso.<br /><br />Desde comidas simples en casa hasta experimentos m\u00E1s ambiciosos, cocinar es otra forma de expresar creatividad y aprender algo nuevo.',
     highlights: [
       {
-        title: 'Explorador de Restaurantes',
+        title: 'Explorador de restaurantes',
         description:
           'Descubriendo joyas ocultas, favoritos locales y experiencias culinarias \u00FAnicas donde sea que vaya.',
         icon: '\u{1F37D}\uFE0F',
       },
       {
-        title: 'Fotograf\u00EDa de Comida',
+        title: 'Fotograf\u00EDa de comida',
         description:
           'Capturando la belleza y la historia detr\u00E1s de cada plato a trav\u00E9s de fotos y redes sociales.',
         icon: '\u{1F4F8}',
       },
       {
-        title: 'Cocina en Casa',
+        title: 'Cocina en casa',
         description:
           'Experimentando con recetas, aprendiendo nuevas t\u00E9cnicas y la alegr\u00EDa de cocinar para otros.',
         icon: '\u{1F468}\u200D\u{1F373}',
       },
       {
-        title: 'Compartir y Comunidad',
+        title: 'Compartir y comunidad',
         description:
           'Inspirando a otros a explorar buena comida y conectando personas a trav\u00E9s de experiencias culinarias.',
         icon: '\u{1F91D}',
@@ -712,7 +683,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Los hobbies y estilo de vida activo de Sergio — ciclismo, running, baloncesto, gaming y m\u00E1s.',
     heroDescription:
       'Deportes, gaming y aventuras al aire libre — las actividades que me mantienen en equilibrio, lleno de energ\u00EDa e inspirado.',
-    philosophyTitle: 'Vida Activa',
+    philosophyTitle: 'Vida activa',
     philosophyText:
       'Creo que un cuerpo saludable alimenta una mente creativa. Los deportes y la actividad f\u00EDsica no son solo hobbies para m\u00ED — son esenciales para quien soy. Ense\u00F1an disciplina, resiliencia y el valor del esfuerzo constante.<br /><br />Fuera del trabajo y la tecnolog\u00EDa, me encontrar\u00E1s en una bicicleta, en un sendero, en una cancha de baloncesto o inmerso en una sesi\u00F3n de gaming. Estas actividades me mantienen con los pies en la tierra y proporcionan el contrapeso perfecto a la intensidad de construir productos tecnol\u00F3gicos.',
     activities: [
@@ -735,7 +706,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         icon: '\u{1F3C0}',
       },
       {
-        title: 'Senderismo de Monta\u00F1a',
+        title: 'Senderismo de monta\u00F1a',
         description:
           'Conquistando senderos, respirando aire fresco y descubriendo paisajes incre\u00EDbles en las monta\u00F1as de Colombia.',
         icon: '\u26F0\uFE0F',
@@ -750,10 +721,10 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     gamingTitle: 'Gaming',
     gamingText:
       'Los videojuegos han sido un compa\u00F1ero de toda la vida. Desde las \u00E9picas aventuras de The Legend of Zelda hasta el hermoso y sombr\u00EDo mundo de Hollow Knight, el gaming es c\u00F3mo me relajo, exploro nuevos mundos y aprecio una incre\u00EDble narrativa y dise\u00F1o.<br /><br />Veo el gaming como m\u00E1s que entretenimiento — es arte interactivo. La creatividad e ingenier\u00EDa detr\u00E1s de los grandes juegos me inspiran en mi propio trabajo con tecnolog\u00EDa.',
-    readingSciFiTitle: 'Lectura y Ciencia Ficci\u00F3n',
+    readingSciFiTitle: 'Lectura y ciencia ficci\u00F3n',
     readingSciFiText:
       'Siempre me ha atra\u00EDdo la ciencia ficci\u00F3n \u2014 tanto en libros como en pantalla. Isaac Asimov es uno de mis autores favoritos; sus visiones del futuro y la \u00E9tica de la tecnolog\u00EDa siguen resonando profundamente. Me encantan las pel\u00EDculas que exploran viajes en el tiempo, futuros dist\u00F3picos y exploraci\u00F3n espacial. Estas historias alimentan mi imaginaci\u00F3n y ofrecen nuevas perspectivas sobre c\u00F3mo la tecnolog\u00EDa moldea a la humanidad.',
-    balanceTitle: 'Encontrando el Equilibrio',
+    balanceTitle: 'Encontrando el equilibrio',
     balanceText:
       'Las mejores ideas a menudo llegan cuando te alejas de la pantalla. Ya sea durante un largo recorrido en bicicleta, una caminata de monta\u00F1a o una partida competitiva de ajedrez — estos momentos de desconexi\u00F3n encienden la creatividad y traen perspectivas frescas a mi trabajo.<br /><br />Los deportes me ense\u00F1an que el crecimiento sucede fuera de la zona de confort. Esa lecci\u00F3n aplica a todo — construir productos, aprender nuevas habilidades y vivir una vida plena.',
   },
@@ -761,20 +732,23 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   // Portfolio page
   portfolioPage: {
     title: 'Portafolio',
-    subtitle: 'Proyectos y Trabajo',
+    subtitle: 'Proyectos y trabajo',
     description:
       'Una muestra de mis proyectos, experimentos y trabajo técnico en ingeniería de software, robótica y más.',
     heroDescription:
-      'Explora mi portafolio de proyectos en desarrollo de software, DevOps, robótica y tecnologías emergentes.',
-    journeyTitle: 'Construyendo Cosas que Importan',
+      'Un constructor y entusiasta de la tecnología de por vida. Del código al hardware, constantemente creando y experimentando con nuevas tecnologías.',
+    journeyTitle: 'Construyendo cosas que importan',
     journeyText:
       'Siempre he creído que la mejor forma de aprender es construyendo. A lo largo de los años, he trabajado en proyectos que van desde productos SaaS a gran escala hasta experimentos de fin de semana con microcontroladores. Cada proyecto me enseñó algo nuevo — ya sea una nueva tecnología, un mejor patrón de arquitectura, o simplemente cómo entregar más rápido.<br /><br />Este portafolio es una colección viva del trabajo del que estoy más orgulloso. Desde herramientas open-source e infraestructura DevOps hasta prototipos de robótica y experimentos con IA — cada entrada representa un problema que encontré lo suficientemente interesante como para resolver.',
-    areasTitle: 'Lo Que Encontrarás Aquí',
+    philosophyTitle: 'La mentalidad maker',
+    philosophyText:
+      'Siempre me ha impulsado la necesidad de construir cosas. Ya sea una aplicación web, una herramienta open-source, un prototipo impreso en 3D o un dispositivo IoT — el proceso de tomar una idea y convertirla en algo tangible es lo que más me emociona.<br /><br />La tecnología evoluciona a un ritmo increíble, y creo que la mejor forma de entenderla es ensuciándose las manos. Cada nuevo proyecto es una oportunidad para aprender, experimentar y empujar límites.',
+    areasTitle: 'Lo que encontrarás aquí',
     areas: [
       {
         title: 'Software y SaaS',
         description:
-          'Aplicaciones full-stack, APIs y productos construidos con tecnologías modernas — desde MVPs de startups hasta sistemas en producción sirviendo a miles de usuarios.',
+          'Aplicaciones full-stack, APIs y productos construidos con tecnologías modernas — desde MVPs de startups hasta sistemas en producción sirviendo a miles de usuarios. Con 113+ repositorios en GitHub, contribuir al open source es parte fundamental de cómo construyo.',
         icon: '💻',
       },
       {
@@ -784,18 +758,23 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         icon: '⚙️',
       },
       {
-        title: 'Robótica y Hardware',
+        title: 'Robótica y hardware',
         description:
-          'Robots autónomos, dispositivos IoT, proyectos de impresión 3D y experimentos en la intersección del software y el mundo físico.',
+          'Robots autónomos, dispositivos IoT, proyectos de impresión 3D y experimentos en la intersección del software y el mundo físico. Desde sensores conectados hasta prototipos diseñados en CAD.',
         icon: '🤖',
       },
       {
-        title: 'IA y Experimentos',
+        title: 'IA y experimentos',
         description:
-          'Prototipos de machine learning, exploraciones de IA generativa y proyectos paralelos empujando los límites de lo posible.',
+          'Prototipos de machine learning, integraciones con LLMs, exploraciones de IA generativa y proyectos paralelos empujando los límites de lo posible — incluyendo IA embodied y sistemas físicos.',
         icon: '🧪',
       },
     ],
+    currentTitle: 'Lo que estoy construyendo ahora',
+    currentText:
+      'Ahora mismo, mi enfoque está en la emocionante intersección entre software y hardware. Recientemente obtuve una impresora 3D y estoy aprendiendo a diseñar e imprimir objetos funcionales. También estoy experimentando con dispositivos IoT y explorando cómo la IA puede integrarse en sistemas físicos.<br /><br />Cada día es una oportunidad para aprender algo nuevo. Ya sea un nuevo lenguaje de programación (actualmente explorando GoLang), una nueva técnica de fabricación o un nuevo modelo de IA — el objetivo siempre es el mismo: construir, aprender, compartir, repetir.',
+    ctaText: 'Ver mi GitHub',
+    ctaLink: 'https://github.com/xergioalex',
     timelineTitle: 'Proyectos',
     emptyState:
       'Aún no hay proyectos de portafolio disponibles. ¡Vuelve pronto!',
@@ -809,7 +788,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Ponte en contacto con Sergio Alexander Florez Galeano — abierto a colaboraciones, charlas y nuevas oportunidades.',
     heroDescription:
       'Siempre estoy abierto a nuevas oportunidades, colaboraciones y conversaciones. Ya sea que tengas una idea de proyecto, una invitaci\u00F3n para hablar o simplemente quieras saludar — me encantar\u00EDa saber de ti.',
-    formTitle: 'Enviar un Mensaje',
+    formTitle: 'Enviar un mensaje',
     nameLabel: 'Nombre',
     namePlaceholder: 'Tu nombre',
     emailLabel: 'Email',
@@ -829,12 +808,31 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     subjectPlaceholder: '\u00BFDe qu\u00E9 se trata?',
     messageLabel: 'Mensaje',
     messagePlaceholder: 'Escribe tu mensaje...',
-    sendButton: 'Enviar Mensaje',
-    formNote: 'Te responder\u00E9 lo antes posible.',
-    socialTitle: 'Con\u00E9ctate Conmigo',
+    sendButton: 'Enviar mensaje',
+    sendingButton: 'Enviando...',
+    successTitle: '¡Mensaje enviado!',
+    successMessage: 'Gracias por escribirme. Te responderé lo antes posible.',
+    sendAnotherButton: 'Enviar otro mensaje',
+    requiredField: 'Este campo es obligatorio',
+    invalidEmail: 'Por favor ingresa un email válido',
+    fallbackMessage:
+      'El formulario de contacto no está disponible en este momento. Puedes contactarme directamente por email.',
+    fallbackEmailText: 'Envíame un email a',
+    formNote: 'Te responderé lo antes posible.',
+    socialTitle: 'Con\u00E9ctate conmigo',
     locationTitle: 'Ubicaci\u00F3n',
     locationText:
       'Ubicado en Colombia. Abierto a colaboraci\u00F3n remota en todo el mundo.',
+    prefillSubjects: {
+      generalInquiry: 'Consulta General',
+      collaboration: 'Oportunidad de Colaboracion',
+      projectInquiry: 'Consulta de Proyecto o Trabajo',
+      projectCollaboration: 'Consulta de Colaboracion en Proyecto',
+      startupCollaboration: 'Oportunidad de Colaboracion Startup',
+      techTalkInvitation: 'Invitacion a Charla Tech',
+      tradingQuestion: 'Pregunta de Trading',
+      dailybotQuestion: 'Pregunta sobre DailyBot',
+    },
   },
 
   contactSection: {
@@ -842,7 +840,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     description:
       'Siempre estoy abierto a conversaciones interesantes, oportunidades de colaboración e ideas nuevas. Ya sea para hablar de tech, emprendimiento o simplemente saludar.',
     ctaText: 'Ponte en contacto',
-    ctaLink: '/es/contact',
+    ctaLink: '/es/contact?topic=general&subject=Consulta%20General',
   },
 
   // Search input
@@ -871,29 +869,50 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   // Blog header
   blogTitle: 'Blog',
   blogDescription: 'Artículos sobre tecnología, programación y más',
-  allPosts: 'Todos los Posts',
+  allPosts: 'Todos los posts',
   showingArticles: (showing, total) =>
     `Mostrando ${showing} de ${total} artículos`,
   articlesAvailable: (total) =>
     `${total} artículo${total !== 1 ? 's' : ''} disponible${total !== 1 ? 's' : ''}`,
   lastUpdatedOn: 'Última actualización:',
   readingTime: (minutes) => `${minutes} min de lectura`,
-  relatedArticles: 'Artículos Relacionados',
+  relatedArticles: 'Artículos relacionados',
   relatedArticlesDescription: 'También te pueden interesar estos artículos',
+
+  // Series navigation
+  seriesPartOf: 'Parte de la serie',
+  seriesChapter: (n) => `Capítulo ${n}`,
+  seriesPrevious: 'Capítulo anterior',
+  seriesNext: 'Siguiente capítulo',
+  seriesToC: 'Todos los capítulos',
+  seriesChapterOf: (current, total) => `Capítulo ${current} de ${total}`,
 
   // Tags
   postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
-  allTags: 'Todas las Etiquetas',
+  allTags: 'Todas las etiquetas',
   tagNames: {
+    // Primary tags
     tech: 'Tecnología',
     personal: 'Personal',
     talks: 'Charlas',
     trading: 'Trading',
     portfolio: 'Portafolio',
     dailybot: 'DailyBot',
-    demo: 'Demo',
+    entrepreneur: 'Emprendimiento',
+    // Secondary tags (topics)
+    'web-development': 'Desarrollo Web',
+    javascript: 'JavaScript',
+    ai: 'IA & ML',
+    blockchain: 'Blockchain',
+    devops: 'DevOps',
+    python: 'Python',
+    university: 'Universidad',
+    database: 'Bases de Datos',
+    iot: 'IoT',
+    design: 'Diseño',
   },
   tagDescriptions: {
+    // Primary tags
     tech: 'Tutoriales, guías y artículos técnicos.',
     personal: 'Artículos sobre mi vida y experiencias.',
     talks: 'Charlas técnicas, slides, videos y eventos.',
@@ -901,8 +920,22 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     portfolio:
       'Proyectos personales, software, robótica y trabajo open source.',
     dailybot:
-      'Artículos sobre DailyBot: historia del producto, automatización de flujos y productividad de equipos.',
-    demo: 'Posts de demostración mostrando funcionalidades del blog. Solo visibles en modo desarrollo.',
+      'Artículos sobre DailyBot: plataforma de colaboración para equipos humanos y agentes de IA, automatización de flujos y productividad de equipos híbridos.',
+    entrepreneur: 'Viaje emprendedor, aventuras y experiencias de startups.',
+    // Secondary tags (topics)
+    'web-development':
+      'Frameworks, frontend, fullstack — Astro, Vue, Svelte, Meteor, CSS, Webpack.',
+    javascript:
+      'Ecosistema JavaScript — Vue.js, Webpack, Meteor, A-Frame, Node.',
+    ai: 'Inteligencia artificial, machine learning, deep learning y LLMs.',
+    blockchain:
+      'Blockchain, criptomonedas, Bitcoin, Ethereum y contratos inteligentes.',
+    devops: 'Docker, contenedores, serverless, microservicios y despliegue.',
+    python: 'Ecosistema Python — Django, TensorFlow, MyPy, Spark.',
+    university: 'Proyectos y ejercicios de cursos universitarios.',
+    database: 'SQL, NoSQL, MongoDB y arquitectura multi-base de datos.',
+    iot: 'Internet de las Cosas, sensores, hardware e interfaces de voz.',
+    design: 'Diseño visual, branding, diseño web y UX.',
   },
 
   // Date formatting
@@ -912,20 +945,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   readMore: 'Leer m\u00E1s',
 
   // Scroll to timeline
-  scrollToTimeline: 'Ver Timeline',
+  scrollToTimeline: 'Ver timeline',
   viewLabel: (label: string) => `Ver ${label}`,
-
-  // Post status (dev mode indicators)
-  postStatus: {
-    draft: 'Borrador',
-    scheduled: 'Programado',
-    'draft+scheduled': 'Borrador + Programado',
-    demo: 'Demo',
-  },
-  previewMode: 'Modo Vista Previa',
-  showAllPosts: 'Mostrar todos los posts',
-  showPublishedOnly: 'Solo publicados',
-  publishesOn: 'Se publica el',
 
   // 404 page
   notFoundPage: {

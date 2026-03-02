@@ -1,19 +1,46 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { BLOG_PAGE_SIZE } from './constances';
-import type { BlogParamsType, BlogPostsResultType, PostStatus } from './types';
+import type { BlogParamsType, BlogPostsResultType, SeriesInfo } from './types';
+
+function heroWebpExists(heroImage: string | undefined): boolean {
+  if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
+  const publicDir = join(process.cwd(), 'public');
+  const webpPath = join(
+    publicDir,
+    heroImage.replace(/^\//, '').replace(/\.(png|jpe?g)$/i, '.webp')
+  );
+  return existsSync(webpPath);
+}
 
 const WORDS_PER_MINUTE = 200;
 
+export interface SearchIndexEntry {
+  id: string;
+  slug: string;
+  lang: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  tags: string[];
+  topics: string[];
+  heroImage?: string;
+  heroWebpExists: boolean;
+}
+
 /**
- * Get the slug from a post ID (removes language prefix and date prefix).
+ * Get the slug from a post ID (removes language prefix, _demo/ prefix, and date prefix).
  * e.g., "en/2022-07-08_first-post" -> "first-post"
  * e.g., "es/2020-12-31_personal-branding-xergioalex" -> "personal-branding-xergioalex"
+ * e.g., "en/_demo/2025-01-01_demo-hero-banner" -> "demo-hero-banner"
  * e.g., "en/first-post" -> "first-post" (backwards compatible)
  */
 export function getPostSlug(postId: string): string {
   const parts = postId.split('/');
-  const filename = parts.length > 1 ? parts.slice(1).join('/') : postId;
-  // Strip date prefix (YYYY-MM-DD.) if present
+  // Get the last segment (filename) — handles both "en/file" and "en/_demo/file"
+  const filename = parts[parts.length - 1];
+  // Strip date prefix (YYYY-MM-DD_) if present
   return filename.replace(/^\d{4}-\d{2}-\d{2}_/, '');
 }
 
@@ -58,41 +85,136 @@ export function getReadingTimeFromContent(content: string): number {
 
 /**
  * Check if a post is a demo post (stored in _demo/ folder).
- * Demo posts are never visible in production, regardless of other settings.
+ * Demo posts are excluded from listings and only accessible via direct URL in dev mode.
  */
 export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
   return post.id.includes('/_demo/');
 }
 
 /**
- * Determine the content status of a blog post based on draft field and pubDate.
- * This returns the real content status even for demo posts, so badges can show
- * both the demo indicator AND the draft/scheduled status.
- *
- * - Draft + Scheduled: draft=true AND pubDate is in the future
- * - Draft: draft=true AND pubDate is in the past/present
- * - Scheduled: draft=false AND pubDate is in the future
- * - Published: draft=false AND pubDate is in the past/present
+ * Build a lookup map of tag name -> tier from the tags collection.
+ * Cached per call to avoid repeated collection queries within the same build.
  */
-export function getPostStatus(post: CollectionEntry<'blog'>): PostStatus {
-  const isDraft = post.data.draft === true;
-  const isScheduled = post.data.pubDate.valueOf() > Date.now();
+let _tagTierCache: Map<string, string> | null = null;
+let _hierarchyValidated = false;
 
-  if (isDraft && isScheduled) return 'draft+scheduled';
-  if (isDraft) return 'draft';
-  if (isScheduled) return 'scheduled';
-  return 'published';
+/**
+ * Validate tag hierarchy integrity at build time.
+ * Logs warnings for: orphaned parents, primary tags with parent, non-primary parents.
+ * Runs once per build — does NOT throw (warnings only).
+ */
+async function validateTagHierarchy(): Promise<void> {
+  if (_hierarchyValidated) return;
+  _hierarchyValidated = true;
+
+  const allTags = await getCollection('tags');
+  const tagNames = new Set(allTags.map((t) => t.data.name));
+
+  for (const tag of allTags) {
+    if (tag.data.parent && !tagNames.has(tag.data.parent)) {
+      console.warn(
+        `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which does not exist`
+      );
+    }
+    if (tag.data.tier === 'primary' && tag.data.parent) {
+      console.warn(
+        `[tag-validation] Primary tag "${tag.data.name}" should not have a parent`
+      );
+    }
+    if (tag.data.parent) {
+      const parentTag = allTags.find((t) => t.data.name === tag.data.parent);
+      if (parentTag && parentTag.data.tier !== 'primary') {
+        console.warn(
+          `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which is not a primary tag`
+        );
+      }
+    }
+  }
+}
+
+async function getTagTierMap(): Promise<Map<string, string>> {
+  if (_tagTierCache) return _tagTierCache;
+  const allTags = await getCollection('tags');
+  _tagTierCache = new Map(allTags.map((tag) => [tag.data.name, tag.data.tier]));
+  await validateTagHierarchy();
+  return _tagTierCache;
 }
 
 /**
- * Check if a post should be visible in production builds.
- * Demo posts and non-published posts are hidden in production.
+ * Get the tier of a tag by name. Returns 'primary' if tag is not found in the collection.
  */
-export function isPostVisibleInProduction(
-  post: CollectionEntry<'blog'>
-): boolean {
-  if (isDemoPost(post)) return false;
-  return getPostStatus(post) === 'published';
+export async function getTagTier(
+  tagName: string
+): Promise<'primary' | 'secondary' | 'subtopic'> {
+  const tierMap = await getTagTierMap();
+  return (
+    (tierMap.get(tagName) as 'primary' | 'secondary' | 'subtopic') || 'primary'
+  );
+}
+
+/**
+ * Split a post's tags into primary and secondary groups using the tags collection.
+ */
+export async function groupPostTags(
+  tags: string[]
+): Promise<{ primaryTags: string[]; topicTags: string[] }> {
+  const tierMap = await getTagTierMap();
+  const primaryTags: string[] = [];
+  const topicTags: string[] = [];
+  for (const tag of tags) {
+    const tier = tierMap.get(tag) || 'primary';
+    if (tier === 'secondary' || tier === 'subtopic') {
+      topicTags.push(tag);
+    } else {
+      primaryTags.push(tag);
+    }
+  }
+  return { primaryTags, topicTags };
+}
+
+/**
+ * Build the search index for client-side blog search.
+ * Same structure as /api/posts.json — used to inline the index at build time
+ * so search works without a runtime fetch (fixes 404 on some deployments).
+ */
+let _searchIndexCache: Promise<SearchIndexEntry[]> | null = null;
+
+async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
+  const allPosts = await getCollection('blog');
+  const visiblePosts = allPosts.filter((post) => !isDemoPost(post));
+
+  return Promise.all(
+    visiblePosts.map(async (post) => {
+      const allTags = post.data.tags || [];
+      const { primaryTags, topicTags } = await groupPostTags(allTags);
+      return {
+        id: post.id,
+        slug: getPostSlug(post.id),
+        lang: getPostLanguage(post.id),
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.pubDate.toISOString(),
+        tags: primaryTags,
+        topics: topicTags,
+        heroImage: post.data.heroImage,
+        heroWebpExists: heroWebpExists(post.data.heroImage),
+      };
+    })
+  );
+}
+
+export async function getSearchIndex(): Promise<SearchIndexEntry[]> {
+  if (!_searchIndexCache) {
+    _searchIndexCache = buildSearchIndex();
+  }
+  return _searchIndexCache;
+}
+
+export async function getSearchIndexByLanguage(
+  lang: string
+): Promise<SearchIndexEntry[]> {
+  const searchIndex = await getSearchIndex();
+  return searchIndex.filter((post) => post.lang === lang);
 }
 
 export async function getBlogPosts(
@@ -103,15 +225,9 @@ export async function getBlogPosts(
 
   // Filter by language first (based on folder structure: en/, es/)
   const lang = params.lang || 'en';
-  let posts: CollectionEntry<'blog'>[] = allPosts.filter((post) =>
-    post.id.startsWith(`${lang}/`)
+  let posts: CollectionEntry<'blog'>[] = allPosts.filter(
+    (post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post)
   );
-
-  // Filter by visibility: in production only show published posts
-  // In dev, show all posts only when includeHidden is explicitly true
-  if (!params.includeHidden) {
-    posts = posts.filter(isPostVisibleInProduction);
-  }
 
   // Get all unique tags that are actually used in visible posts for this language
   const usedTags = Array.from(
@@ -123,7 +239,7 @@ export async function getBlogPosts(
     usedTags.includes(tag.data.name)
   );
 
-  // Filter by tag if specified
+  // Filter by tag if specified (works for both primary and secondary tags)
   if (params.tag) {
     posts = posts.filter((post) =>
       post.data.tags?.includes(params.tag as string)
@@ -149,22 +265,72 @@ export async function getBlogPosts(
     posts = posts.slice(0, params.pageSize ?? BLOG_PAGE_SIZE);
   }
 
-  // Count total posts for this language (before pagination, respecting visibility)
+  // Enrich posts with heroWebpExists for BlogCard (avoids picture/WebP when WebP doesn't exist)
+  const enrichedPosts = posts.map((post) => ({
+    ...post,
+    heroWebpExists: heroWebpExists(post.data.heroImage),
+  }));
+
+  // Count total posts for this language (before pagination, excluding demo posts)
   const langPosts = allPosts.filter(
-    (post) =>
-      post.id.startsWith(`${lang}/`) &&
-      (params.includeHidden || isPostVisibleInProduction(post))
+    (post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post)
   );
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,
-    postsResult: posts,
+    postsResult: enrichedPosts,
     currentPage: params.page ?? 1,
     pageSize: params.pageSize ?? BLOG_PAGE_SIZE,
     totalPages: totalPages,
     totalPostsAvailable: langPosts.length,
   };
   return result;
+}
+
+/**
+ * Get series navigation info for a post that belongs to a series.
+ * Returns series metadata, all posts in order, and prev/next navigation.
+ */
+export async function getSeriesNavigation(
+  seriesSlug: string,
+  currentPostId: string,
+  lang: string
+): Promise<SeriesInfo | null> {
+  const allSeries = await getCollection('series');
+  const seriesEntry = allSeries.find((s) => s.data.name === seriesSlug);
+  if (!seriesEntry) return null;
+
+  const allPosts = await getCollection('blog');
+  const seriesPosts = allPosts
+    .filter(
+      (post) =>
+        post.id.startsWith(`${lang}/`) &&
+        post.data.series === seriesSlug &&
+        post.data.seriesOrder != null &&
+        !isDemoPost(post)
+    )
+    .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+
+  const currentIndex = seriesPosts.findIndex(
+    (post) => post.id === currentPostId
+  );
+  if (currentIndex === -1) return null;
+
+  return {
+    name: seriesEntry.data.name,
+    title: seriesEntry.data.title,
+    description: seriesEntry.data.description,
+    posts: seriesPosts.map((post) => ({
+      post,
+      seriesOrder: post.data.seriesOrder ?? 0,
+    })),
+    currentIndex,
+    previousPost: currentIndex > 0 ? seriesPosts[currentIndex - 1] : null,
+    nextPost:
+      currentIndex < seriesPosts.length - 1
+        ? seriesPosts[currentIndex + 1]
+        : null,
+  };
 }
 
 interface RelatedPostsParams {
@@ -175,20 +341,21 @@ interface RelatedPostsParams {
 }
 
 /**
- * Find related posts based on shared tags, with latest-post fallback.
+ * Find related posts based on shared tags (primary weighted 2x, secondary 1x), with latest-post fallback.
  */
 export async function getRelatedPosts(
   params: RelatedPostsParams
 ): Promise<CollectionEntry<'blog'>[]> {
   const { currentPostId, tags, lang, limit = 3 } = params;
   const allPosts = await getCollection('blog');
+  const tierMap = await getTagTierMap();
 
   const candidates = allPosts
     .filter(
       (post) =>
         post.id.startsWith(`${lang}/`) &&
         post.id !== currentPostId &&
-        isPostVisibleInProduction(post)
+        !isDemoPost(post)
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -199,20 +366,25 @@ export async function getRelatedPosts(
   const scoredPosts = candidates
     .map((post) => {
       const postTags = post.data.tags ?? [];
-      const sharedTagCount = postTags.filter((tag) =>
-        tags.includes(tag)
-      ).length;
-      return { post, sharedTagCount };
+      let score = 0;
+      for (const tag of postTags) {
+        if (tags.includes(tag)) {
+          const tier = tierMap.get(tag) || 'primary';
+          // Primary tag match = 2 points, secondary/subtopic = 1 point
+          score += tier === 'primary' ? 2 : 1;
+        }
+      }
+      return { post, score };
     })
     .sort((a, b) => {
-      if (b.sharedTagCount !== a.sharedTagCount) {
-        return b.sharedTagCount - a.sharedTagCount;
+      if (b.score !== a.score) {
+        return b.score - a.score;
       }
       return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
     });
 
   const related = scoredPosts
-    .filter((item) => item.sharedTagCount > 0)
+    .filter((item) => item.score > 0)
     .slice(0, limit)
     .map((item) => item.post);
 

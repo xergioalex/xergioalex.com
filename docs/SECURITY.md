@@ -55,7 +55,7 @@ Use `.env` files for environment variables:
 
 ```bash
 # .env (local development - DO NOT COMMIT)
-PUBLIC_SITE_URL=http://localhost:4321
+PUBLIC_SITE_URL=http://localhost:4444
 PRIVATE_API_KEY=sk_xxxxx
 
 # .env.production
@@ -131,13 +131,15 @@ The site has minimal API routes:
 
 | Endpoint | Purpose | Security |
 |----------|---------|----------|
-| `/api/posts.json` | Blog search index | Public, cached |
+| `/api/posts-en.json` | Blog search index (EN shard) | Public, cached |
+| `/api/posts-es.json` | Blog search index (ES shard) | Public, cached |
+| `/api/posts.json` | Blog search index (compatibility) | Public, cached |
 | `/rss.xml` | RSS feed | Public |
 
 ### API Route Best Practices
 
 ```typescript
-// src/pages/api/posts.json.ts
+// src/pages/api/posts-en.json.ts (same pattern for posts-es.json)
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
