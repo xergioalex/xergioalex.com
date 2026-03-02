@@ -4,7 +4,7 @@ This guide documents the analytics stack, monitoring strategy, and best practice
 
 ## Overview
 
-The site uses a **free, privacy-first, performance-preserving** analytics stack. All tools are completely free, most are cookieless (no consent banner needed), and the total script overhead is ~12KB loaded asynchronously — preserving the site's Lighthouse 100 scores.
+The site uses a **free, privacy-first, performance-preserving** analytics stack. All tools are completely free, most are cookieless (no consent banner needed), and the total script overhead is minimal and loaded asynchronously — preserving the site's Lighthouse 100 scores.
 
 **Core principles:**
 - **Free tools only** — no paid plans required
@@ -104,25 +104,6 @@ These tools add small tracking scripts to `BaseHead.astro`. Scripts load conditi
 
 **Why Umami over GA4:** ~2KB vs ~70KB script, no cookies, no consent banner needed, GDPR compliant by default. Covers the same traffic analytics use cases without the privacy and performance debt.
 
-#### Microsoft Clarity
-
-| Aspect | Detail |
-|--------|--------|
-| **What it measures** | Click heatmaps, scroll heatmaps, session recordings, rage clicks, dead clicks, AI-powered behavioral summaries |
-| **Cost** | Free (unlimited traffic, no limits) |
-| **Script size** | ~10KB (async) |
-| **Cookies** | Anonymized behavioral data |
-| **Consent banner** | Not required (anonymized, no PII) |
-| **Data retention** | 30 days (recordings), 13 months (heatmaps) |
-| **Dashboard** | [clarity.microsoft.com](https://clarity.microsoft.com) |
-| **Env variable** | `PUBLIC_CLARITY_PROJECT_ID` |
-
-**Setup:** Register at [clarity.microsoft.com](https://clarity.microsoft.com), create a project, copy the Project ID. Set `PUBLIC_CLARITY_PROJECT_ID` in environment variables.
-
-**Unique value:** See exactly how visitors interact with blog posts — scroll heatmaps reveal whether readers finish articles, click heatmaps show engagement patterns, and session recordings let you watch real user journeys. Rage click detection identifies frustrating UX issues.
-
-**Why Clarity over Hotjar:** Completely free with no traffic limits (Hotjar starts at $32/month for session recordings).
-
 ### Tier 3: Automated Performance Monitoring
 
 #### Lighthouse CI (Local + GitHub Actions)
@@ -154,9 +135,9 @@ These tools add small tracking scripts to `BaseHead.astro`. Scripts load conditi
 | Where does traffic come from? | Umami (Referrers) + Cloudflare |
 | What do people search on Google to find the site? | Google Search Console |
 | Is the content cited in AI tools (Copilot)? | Bing Webmaster Tools (AI Performance) |
-| Do readers finish blog posts? | Microsoft Clarity (scroll heatmaps) |
-| Where do users click on pages? | Microsoft Clarity (click heatmaps) |
-| What frustrates users? | Microsoft Clarity (rage clicks + session recordings) |
+| Do readers finish blog posts? | Umami events + content metrics (time on page, bounce rate) |
+| Where do users click on pages? | Umami custom click events |
+| What frustrates users? | Funnel drop-off + custom UX events |
 | Is the site fast for real users? | Cloudflare Web Analytics (Core Web Vitals RUM) |
 | Are Lighthouse scores maintained? | Lighthouse CI (automated on every PR) |
 | Are all pages indexed by search engines? | Google Search Console + Bing Webmaster Tools |
@@ -175,7 +156,7 @@ GA4 was evaluated and intentionally excluded:
 | **Consent banner** | Additional JS + potential layout shift from the banner itself |
 | **Partytown workaround** | Moves script to web worker but adds build complexity and has issues with Astro View Transitions |
 
-**Bottom line:** Everything GA4 provides is already covered by Umami + Cloudflare Web Analytics + Clarity, without the privacy debt, performance cost, or consent banner complexity.
+**Bottom line:** Everything GA4 provides is already covered by Umami + Cloudflare Web Analytics + search console tooling, without the privacy debt, performance cost, or consent banner complexity.
 
 ## Environment Variables
 
@@ -184,7 +165,6 @@ All analytics-related environment variables:
 | Variable | Tool | Required | Description |
 |----------|------|----------|-------------|
 | `PUBLIC_UMAMI_WEBSITE_ID` | Umami | Optional | Website ID from Umami Cloud dashboard |
-| `PUBLIC_CLARITY_PROJECT_ID` | Clarity | Optional | Project ID from Clarity dashboard |
 | `PUBLIC_BING_SITE_VERIFICATION` | Bing | Optional | Verification code from Bing Webmaster Tools |
 
 **All variables are optional.** If not set, the corresponding scripts/meta tags simply don't render. The site works perfectly without any analytics configured.
@@ -201,7 +181,6 @@ All analytics-related environment variables:
 |------|-----|-------|
 | Cloudflare Web Analytics | `dash.cloudflare.com` → Pages → Project → Web Analytics | Cloudflare account |
 | Umami | [cloud.umami.is](https://cloud.umami.is) | Umami account |
-| Microsoft Clarity | [clarity.microsoft.com](https://clarity.microsoft.com) | Microsoft account |
 | Google Search Console | [search.google.com/search-console](https://search.google.com/search-console) | Google account |
 | Bing Webmaster Tools | [bing.com/webmasters](https://www.bing.com/webmasters) | Microsoft account |
 | Lighthouse CI | GitHub PR checks | GitHub account |
@@ -212,7 +191,6 @@ All analytics-related environment variables:
 
 - [ ] Enable Cloudflare Web Analytics in CF Pages dashboard
 - [ ] Register at [umami.is](https://umami.is) and create a website
-- [ ] Register at [clarity.microsoft.com](https://clarity.microsoft.com) and create a project
 - [ ] Verify site in [Google Search Console](https://search.google.com/search-console)
 - [ ] Import GSC data into [Bing Webmaster Tools](https://www.bing.com/webmasters)
 - [ ] Submit sitemap (`/sitemap-index.xml`) in GSC and Bing
@@ -221,7 +199,6 @@ All analytics-related environment variables:
 ### Verification
 
 - [ ] Confirm Umami is receiving data (check dashboard after a few page views)
-- [ ] Confirm Clarity is recording sessions (check dashboard after ~24 hours)
 - [ ] Confirm GSC shows the site as verified and sitemap as submitted
 - [ ] Confirm Lighthouse CI runs on PRs (create a test PR)
 
@@ -231,8 +208,8 @@ All analytics-related environment variables:
 
 1. **Umami** → Top Pages: which blog posts are getting traction?
 2. **Umami** → Referrers: where is traffic coming from?
-3. **Clarity** → Scroll heatmaps: are readers finishing your latest posts?
-4. **Clarity** → Rage clicks: is anything frustrating users?
+3. **Umami** → Event breakdown: are key CTAs getting clicks?
+4. **Cloudflare** → Core Web Vitals trends: any real-user regressions?
 
 ### Monthly (~10 minutes)
 
@@ -250,7 +227,6 @@ All analytics-related environment variables:
 
 - [Cloudflare Web Analytics Documentation](https://developers.cloudflare.com/web-analytics/)
 - [Umami Documentation](https://umami.is/docs)
-- [Microsoft Clarity Documentation](https://learn.microsoft.com/en-us/clarity/)
 - [Google Search Console Help](https://support.google.com/webmasters/)
 - [Bing Webmaster Tools Help](https://www.bing.com/webmasters/help)
 - [Lighthouse CI Documentation](https://github.com/GoogleChrome/lighthouse-ci)

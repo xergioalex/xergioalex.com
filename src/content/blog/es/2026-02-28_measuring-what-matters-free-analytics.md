@@ -95,32 +95,16 @@ La integración fue directa. Un tag `<script>` en `BaseHead.astro`, renderizado 
 
 Si la variable de entorno no está configurada — como en desarrollo local — el script simplemente no se renderiza. Cero overhead.
 
-### Microsoft Clarity — La Revelación
+### Eventos Personalizados de Umami — Clics Sin Peso Extra
 
-Esta es la herramienta que más me sorprendió. [Microsoft Clarity](https://clarity.microsoft.com) es completamente gratis — sin límites de tráfico, sin tier premium, sin truco. Y lo que proporciona es algo que ninguna herramienta de analytics de tráfico puede: **puedes ver a personas reales usar tu sitio.**
+Umami no es solo page views. También soporta eventos personalizados, lo que me permite medir clics relevantes sin agregar un segundo script de comportamiento.
 
-Clarity graba sesiones de usuario y genera heatmaps. Los heatmaps de clic muestran dónde la gente hace clic. Los heatmaps de scroll muestran qué tan lejos hacen scroll. Las grabaciones de sesión te permiten ver una reproducción anonimizada de una visita real.
+Para un blog, esto da señales accionables con payload mínimo:
+- **¿Los lectores hacen clic en posts relacionados?** Medir clics en el bloque de "artículos relacionados".
+- **¿Hacen clic en CTAs clave?** Medir newsletter, contacto y enlaces externos.
+- **¿Usan el cambio de idioma o los tags?** Medir interacciones de navegación y filtros.
 
-Para un blog, esto es transformador. Puedo ver:
-- **¿Los lectores realmente terminan mis posts?** Los heatmaps de scroll revelan el punto exacto donde la mayoría de visitantes dejan de hacer scroll. Si el 80% abandona después del segundo párrafo, eso es una señal para mejorar la apertura.
-- **¿Dónde hacen clic?** ¿La gente está haciendo clic en los tags? ¿Los enlaces internos? ¿Los botones sociales?
-- **¿Qué los frustra?** Clarity detecta "rage clicks" — clics rápidos y repetidos en un elemento que no responde. La detección de dead clicks encuentra elementos que parecen clickeables pero no lo son.
-
-El script pesa ~10KB y carga asincrónicamente. Usa un patrón IIFE que se inicializa sin bloquear la página:
-
-```astro
-{ANALYTICS.clarity.projectId && (
-  <script is:inline define:vars={{ clarityId: ANALYTICS.clarity.projectId }}>
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script",clarityId);
-  </script>
-)}
-```
-
-Mismo patrón condicional: sin variable de entorno, sin script.
+La instrumentación es explícita y privacy-first: solo se envían los eventos que yo decido rastrear.
 
 ### Google Search Console + Bing Webmaster Tools — La Capa SEO
 
@@ -157,9 +141,8 @@ Los umbrales están ligeramente por debajo de 100 para tener en cuenta la variac
 
 La pregunta que me hacía constantemente durante este proceso: **¿agregar todos estos analytics rompió mis puntajes perfectos de Lighthouse?**
 
-El overhead total de todos los scripts de analytics es aproximadamente **12KB cargados asincrónicamente**:
+El overhead total de todos los scripts de analytics es aproximadamente **2KB cargados asincrónicamente**:
 - Umami: ~2KB (defer)
-- Clarity: ~10KB (IIFE async)
 - Meta tags de verificación: despreciable
 
 Para comparar, una sola imagen hero de blog pesa 50-200KB. Los scripts de analytics pesan menos que un JPEG pequeño.
@@ -180,8 +163,8 @@ Con este stack implementado, tengo respuestas a preguntas que antes no podía re
 | ¿Qué posts del blog tienen más tráfico? | Umami (Top Pages) |
 | ¿De dónde vienen los visitantes? | Umami (Referrers) |
 | ¿Qué busca la gente para encontrar el sitio? | Google Search Console |
-| ¿Los lectores realmente terminan los posts? | Clarity (heatmaps de scroll) |
-| ¿Dónde hacen clic los visitantes? | Clarity (heatmaps de clic) |
+| ¿Los lectores interactúan con elementos clave del post? | Eventos personalizados de Umami |
+| ¿Dónde hacen clic los visitantes? | Eventos de clic en Umami |
 | ¿El sitio es rápido para usuarios reales? | Cloudflare (Core Web Vitals) |
 | ¿Un cambio de código romperá el rendimiento? | Lighthouse CI (automático en PRs) |
 | ¿El contenido es citado en herramientas de IA? | Bing Webmaster (AI Performance) |
@@ -206,9 +189,6 @@ export const ANALYTICS = {
   umami: {
     websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || '',
     scriptUrl: 'https://cloud.umami.is/script.js',
-  },
-  clarity: {
-    projectId: import.meta.env.PUBLIC_CLARITY_PROJECT_ID || '',
   },
   verification: {
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
@@ -240,7 +220,6 @@ Si hay algo que se puede sacar de todo este viaje, es esto: no tienes que elegir
 
 - [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/) — RUM inyectado en el edge con Core Web Vitals
 - [Umami Analytics](https://umami.is) — Analytics de tráfico open-source y sin cookies
-- [Microsoft Clarity](https://clarity.microsoft.com) — Heatmaps y grabaciones de sesión gratis
 - [Google Search Console](https://search.google.com/search-console) — Rendimiento de búsqueda e indexación
 - [Bing Webmaster Tools](https://www.bing.com/webmasters) — Búsqueda + tracking de citaciones IA
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) — Auditorías de rendimiento automatizadas en CI
