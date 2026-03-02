@@ -10,9 +10,6 @@ export const ANALYTICS = {
     websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || '',
     scriptUrl: 'https://cloud.umami.is/script.js',
   },
-  clarity: {
-    projectId: import.meta.env.PUBLIC_CLARITY_PROJECT_ID || '',
-  },
   verification: {
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
   },
