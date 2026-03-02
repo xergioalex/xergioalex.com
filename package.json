@@ -9,7 +9,7 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
