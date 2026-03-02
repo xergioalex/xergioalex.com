@@ -201,7 +201,7 @@ Si Programación 1 con Scheme me enseñó a pensar recursivamente, y Programaci�
 
 Empezar con patrones de diseño se sentía académico en su momento — mucho UML y vocabulario antes de cualquier código real. Pero los proyectos lo hicieron concreto. El solucionador de Sudoku no solo demostró el patrón Observer; me mostró por qué el patrón Observer *existe* — qué problema fue inventado para resolver, y cuánto más limpio es el resultado cuando lo usas versus cuando no.
 
-Si tienes curiosidad sobre dónde comenzó este recorrido universitario — con un tipo muy diferente de desafío — te invito a leer sobre [mi primer curso de programación con DrRacket](/blog/racket-projects-university), donde los paréntesis y la recursión me enseñaron a pensar sobre la computación desde cero.
+Si tienes curiosidad sobre dónde comenzó este recorrido universitario — con un tipo muy diferente de desafío — te invito a leer sobre [mi primer curso de programación con DrRacket](/es/blog/racket-projects-university/), donde los paréntesis y la recursión me enseñaron a pensar sobre la computación desde cero.
 
 A seguir construyendo.
 
@@ -211,4 +211,4 @@ A seguir construyendo.
 
 - [Código fuente del Solucionador de Sudoku (GitHub)](https://github.com/xergioalex/SudokuMVCJavaSwing)
 - [Código fuente de la Agenda de Contactos (GitHub)](https://github.com/xergioalex/AgendaJavaSwing)
-- [Mi primer curso de programación — Racket, recursión y un graficador de funciones](/blog/racket-projects-university)
+- [Mi primer curso de programación — Racket, recursión y un graficador de funciones](/es/blog/racket-projects-university/)

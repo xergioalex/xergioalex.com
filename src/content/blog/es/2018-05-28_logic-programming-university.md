@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 ---
 
-Cuando llegué a Programación Lógica y con Restricciones, ya había pasado por cuatro cambios de paradigma. Scheme me enseñó a pensar en funciones puras y recursividad. C me enseñó lo que el computador realmente hacía con cada byte. Java y las estructuras de datos me enseñaron a organizar y a diseñar con ingeniería. Y [mi curso de POO con Java Swing](/es/blog/oop-java-swing-university-projects) me enseñó a pensar en patrones — a diseñar antes de codificar, a separar responsabilidades, a preguntar "¿cuáles son las piezas y cómo se comunican entre sí?"
+Cuando llegué a Programación Lógica y con Restricciones, ya había pasado por cuatro cambios de paradigma. Scheme me enseñó a pensar en funciones puras y recursividad. C me enseñó lo que el computador realmente hacía con cada byte. Java y las estructuras de datos me enseñaron a organizar y a diseñar con ingeniería. Y [mi curso de POO con Java Swing](/es/blog/oop-java-swing-university-projects/) me enseñó a pensar en patrones — a diseñar antes de codificar, a separar responsabilidades, a preguntar "¿cuáles son las piezas y cómo se comunican entre sí?"
 
 Cada uno de esos cursos me dio una lente nueva. Pero este era diferente. La Programación Lógica y con Restricciones no estaba añadiendo una herramienta más al mismo modelo mental. Estaba proponiendo una relación fundamentalmente distinta entre el programador y la máquina. Los demás decían: aquí tienes un problema, ahora *dile* al computador cómo resolverlo. Este curso decía: aquí tienes un problema, ahora *describe* cómo luce la solución, y deja que el computador encuentre el camino.
 
@@ -167,7 +167,7 @@ public void asignarColores(Departamento dpto, int n) {
 
 Intenta el color 1. Verifica si algún vecino ya tiene el color 1. Si no, avanza al siguiente departamento. Si sí, prueba el color 2. Si el color 4 falla, retrocede. La lógica es completamente explícita — cada decisión, cada rollback, cada iteración es código que tú escribiste. Funciona, y puedes rastrear cada paso. Pero son unas 100 líneas de código para expresar lo que es fundamentalmente una búsqueda en un espacio restringido.
 
-**Racket** — el enfoque funcional. Ya conocía DrRacket de [mi primer curso de programación](/es/blog/racket-projects-university), así que fue un reencuentro. El mismo algoritmo de backtracking que en Java, pero expresado con structs inmutables y llamadas recursivas en lugar de objetos mutables y ciclos. El algoritmo es idéntico por debajo, pero el estilo funcional hace la estructura recursiva más explícita. Sigue siendo completamente procedimental en cuanto a cómo se especifica la búsqueda — le estás diciendo al computador exactamente cómo buscar.
+**Racket** — el enfoque funcional. Ya conocía DrRacket de [mi primer curso de programación](/es/blog/racket-projects-university/), así que fue un reencuentro. El mismo algoritmo de backtracking que en Java, pero expresado con structs inmutables y llamadas recursivas en lugar de objetos mutables y ciclos. El algoritmo es idéntico por debajo, pero el estilo funcional hace la estructura recursiva más explícita. Sigue siendo completamente procedimental en cuanto a cómo se especifica la búsqueda — le estás diciendo al computador exactamente cómo buscar.
 
 ```racket
 (define (pintar-dpto dpto color)
@@ -240,7 +240,7 @@ Scheme me dio la recursividad y la idea de que un programa es una descripción d
 
 Cada paradigma fue una lente nueva. Ninguno es completo por sí solo. El programador que solo piensa imperativamente se pierde la elegancia de la propagación de restricciones. El que solo piensa declarativamente batalla con sistemas donde el rendimiento y el control importan. La habilidad real está en saber qué lente usar y cuándo.
 
-Hay algo apropiado en terminar la secuencia universitaria de programación aquí. Empezó con Scheme pidiéndome que dejara de pensar proceduralmente y empezara a pensar funcionalmente. Terminó con Prolog y Mozart/Oz pidiéndome que dejara de pensar en algoritmos por completo y empezara a pensar en qué es verdad. Los paréntesis de [mi primer curso de programación con DrRacket](/es/blog/racket-projects-university) conectaron directamente con la implementación en Racket del Teorema de los Cuatro Colores — dos semestres, edificios distintos, la misma idea de fondo: la computación como transformación de significado.
+Hay algo apropiado en terminar la secuencia universitaria de programación aquí. Empezó con Scheme pidiéndome que dejara de pensar proceduralmente y empezara a pensar funcionalmente. Terminó con Prolog y Mozart/Oz pidiéndome que dejara de pensar en algoritmos por completo y empezara a pensar en qué es verdad. Los paréntesis de [mi primer curso de programación con DrRacket](/es/blog/racket-projects-university/) conectaron directamente con la implementación en Racket del Teorema de los Cuatro Colores — dos semestres, edificios distintos, la misma idea de fondo: la computación como transformación de significado.
 
 A seguir construyendo.
 
@@ -250,5 +250,5 @@ A seguir construyendo.
 
 - [Programación Lógica y con Restricciones — proyectos en Prolog y Mozart/Oz (GitHub)](https://github.com/xergioalex/logic_and_restricted_programming)
 - [Teorema de los Cuatro Colores — implementaciones en Java, Racket y Mozart/Oz (GitHub)](https://github.com/xergioalex/4ColorsTheorem)
-- [Mi primer curso de programación — Racket, recursividad y un graficador de funciones](/es/blog/racket-projects-university)
-- [Mi curso de POO — Sudoku y agenda de contactos con Java Swing](/es/blog/oop-java-swing-university-projects)
+- [Mi primer curso de programación — Racket, recursividad y un graficador de funciones](/es/blog/racket-projects-university/)
+- [Mi curso de POO — Sudoku y agenda de contactos con Java Swing](/es/blog/oop-java-swing-university-projects/)

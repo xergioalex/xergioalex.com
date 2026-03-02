@@ -2,7 +2,7 @@
 title: "Introduction to Blockchain and Ethereum"
 description: "From Bitcoin's blockchain to Ethereum's smart contracts — demystifying crypto for the Pereira JS community with a live Solidity demo."
 pubDate: "2017-10-18"
-heroImage: "/images/blog/posts/blockchain-ethereum/event-1.webp"
+heroImage: "/images/blog/posts/blockchain-ethereum/pereira-js-meetup-hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
 ---
@@ -26,7 +26,7 @@ The talk had four parts:
 
 I started with Bitcoin because that's where most people's curiosity begins. Once you understand how Bitcoin works, blockchain clicks. And once you understand blockchain, Ethereum's value proposition — "What if the blockchain could run programs?" — makes perfect sense.
 
-![PereiraJs meetup — blockchain and cryptocurrencies](/images/blog/posts/blockchain-ethereum/event-2.webp)
+![PereiraJs meetup — blockchain and cryptocurrencies](/images/blog/posts/blockchain-ethereum/pereira-js-meetup-audience.webp)
 
 ---
 

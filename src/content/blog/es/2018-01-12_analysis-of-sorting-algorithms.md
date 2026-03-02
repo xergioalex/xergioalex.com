@@ -2,7 +2,7 @@
 title: "Analisis comparativo de algoritmos de ordenamiento"
 description: "Un analisis academico sobre complejidad y tiempos de ejecucion de algoritmos de ordenamiento, comparando resultados reales en dos servidores."
 pubDate: "2018-01-12"
-heroImage: "/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/hero.jpg"
+heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
 heroLayout: "banner"
 tags: ["tech", "javascript", "university"]
 ---
@@ -64,7 +64,7 @@ Con esto ya estaba todo listo. Solo faltaba dejar corriendo `runTest.c` en una m
 
 Para eso cree dos droplets en Digital Ocean:
 
-![Digital Ocean droplets](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/digital-ocean-droplets.png)
+![Digital Ocean droplets](/images/blog/posts/analysis-of-sorting-algorithms/digital-ocean-droplets.png)
 
 El segundo servidor tenia el doble de recursos, asi que en teoria debia rendir mejor.
 
@@ -108,51 +108,51 @@ M2 = Maquina 2 (2 nucleos, 2GB RAM)
 
 ### Burbuja (Bubble Sort): O(n^2)
 
-![Bubble Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/bubble-sort-m1.png)
-![Bubble Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/bubble-sort-m2.png)
-![Bubble Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/bubble-sort-m1-m2.png)
+![Bubble Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1.png)
+![Bubble Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m2.png)
+![Bubble Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1-m2.png)
 
 ### Conteo (Counting Sort): O(n+k)
 
-![Counting Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/counting-sort-m1.png)
-![Counting Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/counting-sort-m2.png)
-![Counting Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/counting-sort-m1-m2.png)
+![Counting Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1.png)
+![Counting Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m2.png)
+![Counting Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1-m2.png)
 
 ### Montones (Heapsort): O(n log n)
 
-![Heap Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/heap-sort-m1.png)
-![Heap Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/heap-sort-m2.png)
-![Heap Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/heap-sort-m1-m2.png)
+![Heap Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1.png)
+![Heap Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m2.png)
+![Heap Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1-m2.png)
 
 ### Insercion (Insertion Sort): O(n^2)
 
-![Insertion Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/insertion-sort-m1.png)
-![Insertion Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/insertion-sort-m2.png)
-![Insertion Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/insertion-sort-m1-m2.png)
+![Insertion Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1.png)
+![Insertion Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m2.png)
+![Insertion Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1-m2.png)
 
 ### Mezcla (Merge Sort): O(n log n)
 
-![Merge Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/merge-sort-m1.png)
-![Merge Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/merge-sort-m2.png)
-![Merge Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/merge-sort-m1-m2.png)
+![Merge Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1.png)
+![Merge Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m2.png)
+![Merge Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1-m2.png)
 
 ### Rapido (Quicksort): O(n log n)
 
-![Quick Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/quick-sort-m1.png)
-![Quick Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/quick-sort-m2.png)
-![Quick Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/quick-sort-m1-m2.png)
+![Quick Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1.png)
+![Quick Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m2.png)
+![Quick Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1-m2.png)
 
 ### Seleccion (Selection Sort): O(n^2)
 
-![Selection Sort M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/selection-sort-m1.png)
-![Selection Sort M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/selection-sort-m2.png)
-![Selection Sort M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/selection-sort-m1-m2.png)
+![Selection Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1.png)
+![Selection Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m2.png)
+![Selection Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1-m2.png)
 
 ### Grafica comparativa de todos los algoritmos
 
-![All algorithms M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/all-algorithms-m1.png)
-![All algorithms M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/all-algorithms-m2.png)
-![All algorithms M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/all-algorithms-m1-m2.png)
+![All algorithms M1](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1.png)
+![All algorithms M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m2.png)
+![All algorithms M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1-m2.png)
 
 En esa comparativa, los cuatro algoritmos rapidos (`quickSort`, `mergeSort`, `heapSort`, `countingSort`) se solapan por escala. El perdedor claro fue `bubbleSort`, seguido por `insertionSort` y `selectionSort`.
 
@@ -192,9 +192,9 @@ Esto refleja un reto clasico en computacion: para un mismo problema hay muchas s
 
 Al graficar solo los algoritmos eficientes (`quickSort`, `mergeSort`, `heapSort`, `countingSort`), casi ninguno supero 1 segundo con 1.600.000 datos.
 
-![Fastest algorithms M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/fastest-algorithms-m1.png)
-![Fastest algorithms M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/fastest-algorithms-m2.png)
-![Fastest algorithms M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/fastest-algorithms-m1-m2.png)
+![Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1.png)
+![Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m2.png)
+![Comparación de algoritmos de ordenamiento más rápidos — Máquina 1 vs Máquina 2 lado a lado](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1-m2.png)
 
 El ganador fue `countingSort` (`O(n+k)`), pero no es una bala de plata:
 
@@ -218,8 +218,8 @@ Eso deja la comparacion mas ligada a frecuencia de CPU por nucleo:
 
 ### Informacion del sistema
 
-![Arquitectura M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/architecture-m1.png)
-![Arquitectura M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/architecture-m2.png)
+![Arquitectura del sistema de la Máquina 1 de benchmark — especificaciones del droplet de DigitalOcean](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m1.png)
+![Arquitectura del sistema de la Máquina 2 de benchmark — especificaciones del droplet de DigitalOcean](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m2.png)
 
 Las unidades de frecuencia:
 
@@ -241,40 +241,40 @@ $ lscpu
 
 Luego extendi el experimento enfocandome en algoritmos eficientes para ver cuanto soportaban las maquinas por memoria disponible:
 
-![Capacidad maxima M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/fastst-algorithms-memory-test-m1.png)
-![Capacidad maxima M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/fastst-algorithms-memory-test-m2.png)
+![Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m1.png)
+![Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m2.png)
 
 Aqui M2 (2GB RAM) si logro procesar mas volumen en varios casos.
 
 ### Counting Sort hasta maximo volumen
 
-![Counting max M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/counting-sort-max-memory-m1.png)
-![Counting max M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/counting-sort-max-memory-m2.png)
-![Counting max M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/counting-sort-max-memory-m1-m2.png)
+![Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1.png)
+![Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m2.png)
+![Counting Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1-m2.png)
 
 ### Heap Sort hasta maximo volumen
 
-![Heap max M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/heap-sort-max-memory-m1.png)
-![Heap max M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/heap-sort-max-memory-m2.png)
-![Heap max M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/heap-sort-max-memory-m1-m2.png)
+![Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1.png)
+![Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m2.png)
+![Heap Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1-m2.png)
 
 ### Merge Sort hasta maximo volumen
 
-![Merge max M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/merge-sort-max-memory-m1.png)
-![Merge max M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/merge-sort-max-memory-m2.png)
-![Merge max M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/merge-sort-max-memory-m1-m2.png)
+![Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1.png)
+![Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m2.png)
+![Merge Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1-m2.png)
 
 ### Quick Sort hasta maximo volumen
 
-![Quick max M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/quick-sort-max-memory-m1.png)
-![Quick max M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/quick-sort-max-memory-m2.png)
-![Quick max M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/quick-sort-max-memory-m1-m2.png)
+![Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1.png)
+![Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m2.png)
+![Quick Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1-m2.png)
 
 ### Comparativa final de algoritmos eficientes
 
-![All max M1](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/all-algorithms-max-memory-m1.png)
-![All max M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/all-algorithms-max-memory-m2.png)
-![All max M1 vs M2](/images/blog/posts/analisis-de-algoritmos-de-ordenamiento/all-algorithms-max-memory-m1-m2.png)
+![Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1.png)
+![Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m2.png)
+![Todos los algoritmos rápidos a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1-m2.png)
 
 Al extender el experimento con mayor volumen de datos, las curvas se volvieron mas uniformes y comparables con sus funciones de complejidad teorica.
 

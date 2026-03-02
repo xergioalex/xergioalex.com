@@ -15,7 +15,7 @@ A continuación se describe el proceso para conectar el formulario de contacto d
 
 Lo primero es ir a [Google Forms](https://www.google.com/forms/about/) y crear un formulario como este:
 
-![Ejemplo de formulario de Google](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+![Ejemplo de formulario de Google](/images/blog/posts/google-forms-postman-ajax/form-example.jpg)
 
 Como paso seguido, abrimos el [formulario](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) e inspeccionamos cada uno de los campos buscando los `name` de cada input, los cuales siguen el formato `entry.{id}`:
 
@@ -65,9 +65,9 @@ $.ajax({
 });
 ```
 
-Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://goo.gl/VXMdV5) anteriormente presentada:
+Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://docs.google.com/forms/) anteriormente presentada:
 
-![Formulario web conectado a Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+![Formulario web conectado a Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpg)
 
 Como consideración final, cabe mencionar que al usar este método obtendremos una respuesta y mensaje de error como esta: `No 'Access-Control-Allow-Origin' header is present on the requested resource`, la cual normalmente se soluciona en otras aplicaciones dando permisos en el destino a las IPs y dominios desde las cuales queremos enviar las peticiones, pero para el caso de los formularios de Google no encontré algún parámetro de configuración que me permitiera solucionarlo, pero aún así la respuesta se registra exitosamente, por lo cual no deberíamos preocuparnos por este detalle.
 

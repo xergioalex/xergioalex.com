@@ -224,7 +224,7 @@ GraphQL tiene implementaciones en más de 20 lenguajes. Lo he usado con Node.js,
 
 ## Ejemplo real: API de Star Wars
 
-Si querés jugar con GraphQL, probá la [API de Star Wars (SWAPI)](http://graphql.org/swapi-graphql/). Es un endpoint GraphQL público con datos sobre películas, personajes, planetas y naves.
+Si querés jugar con GraphQL, probá la [API de Star Wars (SWAPI)](https://graphql.org/swapi-graphql/). Es un endpoint GraphQL público con datos sobre películas, personajes, planetas y naves.
 
 Probá esta query:
 
@@ -258,10 +258,10 @@ Notá cómo atravesás relaciones (`films -> characters -> homeworld`) en una so
 
 - [Especificación GraphQL](https://facebook.github.io/graphql/October2016/) — Spec oficial
 - [GraphQL.js](https://github.com/graphql/graphql-js) — Implementación de referencia
-- [GraphQL SWAPI](http://graphql.org/swapi-graphql/) — Playground de la API de Star Wars
-- [Apollo Launchpad](https://launchpad.graphql.com/) — Sandbox online de servidor GraphQL
+- [GraphQL SWAPI](https://graphql.org/swapi-graphql/) — Playground de la API de Star Wars
+- [Documentación GraphQL](https://graphql.org/) — Apollo Launchpad fue discontinuado
 - [GraphQL Voyager](https://github.com/APIs-guru/graphql-voyager) — Visualiza schemas como grafos
-- [Graphene (Python)](http://graphene-python.org/) — Framework GraphQL para Python
+- [Graphene (Python)](https://graphene-python.org/) — Framework GraphQL para Python
 - [Apollo Client](https://www.apollographql.com/client) — Librería GraphQL del lado del cliente
 - [Awesome GraphQL](https://github.com/chentsulin/awesome-graphql) — Lista curada de recursos
 

@@ -79,7 +79,7 @@ Lo que más me gustó desde el principio: el cliente define qué recibe. No más
 - **Mutations** — Operaciones de escritura
 - **Resolvers** — Funciones que resuelven cada campo del schema
 
-Si quieres jugar con un ejemplo real, la [API de Star Wars (SWAPI)](http://graphql.org/swapi-graphql/) es excelente para explorar.
+Si quieres jugar con un ejemplo real, la [API de Star Wars (SWAPI)](https://graphql.org/swapi-graphql/) es excelente para explorar.
 
 ---
 
@@ -89,9 +89,9 @@ Si quieres jugar con un ejemplo real, la [API de Star Wars (SWAPI)](http://graph
 
 - [Especificación GraphQL](https://facebook.github.io/graphql/October2016/)
 - [GraphQL.js](https://github.com/graphql/graphql-js)
-- [GraphQL SWAPI](http://graphql.org/swapi-graphql/)
-- [Apollo Launchpad](https://launchpad.graphql.com/)
-- [Graphene (Python)](http://graphene-python.org/)
+- [GraphQL SWAPI](https://graphql.org/swapi-graphql/)
+- [Documentación GraphQL](https://graphql.org/) — Apollo Launchpad fue discontinuado
+- [Graphene (Python)](https://graphene-python.org/)
 - [Apollo Client](https://www.apollographql.com/client)
 - [Awesome GraphQL](https://github.com/chentsulin/awesome-graphql)
 

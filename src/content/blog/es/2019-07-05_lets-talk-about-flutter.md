@@ -189,7 +189,7 @@ Después de la instalación, ejecuta `flutter doctor` para verificar tu configur
 - [Mi Demo App Flutter](https://github.com/xergioalex/demo_flutter_app) — Ejemplos simples que construí para esta charla
 - [Documentación Flutter](https://flutter.dev/docs) — Empezá acá
 - [Curso Flutter en Platzi](https://platzi.com/clases/flutter/) — Curso hands-on en español
-- [DartPad](https://dartpad.dartlang.org/) — Playground Dart online para experimentar sin instalar nada
+- [DartPad](https://dartpad.dev/) — Playground Dart online para experimentar sin instalar nada
 - [Galería de temas Flutter](https://startflutter.com/) — Temas y templates pre-construidos
 
 ---

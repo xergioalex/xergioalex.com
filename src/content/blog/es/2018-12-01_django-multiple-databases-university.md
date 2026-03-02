@@ -4,7 +4,7 @@ description: "Un proyecto universitario para la clase de Bases de Datos Avanzada
 pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "python", "database", "devops", "university"]
+tags: ["portfolio", "tech", "python", "database", "university"]
 ---
 
 La pregunta que da origen a este proyecto es deceptivamente simple: ¿es posible que una sola aplicación hable con diez motores de bases de datos al mismo tiempo?

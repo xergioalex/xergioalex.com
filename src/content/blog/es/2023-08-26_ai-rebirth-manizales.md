@@ -66,9 +66,9 @@ Terminé con lo que había aprendido en la práctica desde mayo:
 ## Memorias del evento
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/ai-rebirth-manizales/memory-1.jpg" alt="Presentación con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-rebirth-manizales/memory-2.jpg" alt="Presentador hablando a la audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-rebirth-manizales/memory-3.jpg" alt="Slide State of the art durante la charla AI Rebirth" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-rebirth-manizales/talk-title-slide.jpg" alt="Presentación con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-rebirth-manizales/speaker-presenting-to-audience.jpg" alt="Presentador hablando a la audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-rebirth-manizales/state-of-the-art-slide.jpg" alt="Slide State of the art durante la charla AI Rebirth" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

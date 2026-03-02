@@ -42,12 +42,12 @@ Terminé con dos palabras: **transformación** y **oportunidad**. Las herramient
 ## Memorias del evento
 
 <div class="grid grid-cols-2 gap-4 md:grid-cols-3 not-prose">
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/memory-1.jpg" alt="Presentación AI Rebirth con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/memory-2.jpg" alt="Slide del Gartner Hype Cycle" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/memory-3.jpg" alt="Slide AI Rebirth rostro dividido" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/memory-4.jpg" alt="Encuentro después del evento" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/memory-5.jpg" alt="Audiencia durante la charla" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/memory-6.jpg" alt="Pódium y audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/title-slide-presentation.jpg" alt="Presentación AI Rebirth con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/gartner-hype-cycle-slide.jpg" alt="Slide del Gartner Hype Cycle" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/ai-rebirth-split-face-slide.jpg" alt="Slide AI Rebirth rostro dividido" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/post-event-gathering.jpg" alt="Encuentro después del evento" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/audience-during-talk.jpg" alt="Audiencia durante la charla" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/podium-and-audience.jpg" alt="Pódium y audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

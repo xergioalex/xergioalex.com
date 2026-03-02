@@ -189,7 +189,7 @@ After installation, run `flutter doctor` to verify your setup. It checks for mis
 - [My Flutter Demo App](https://github.com/xergioalex/demo_flutter_app) — Simple examples I built for this talk
 - [Flutter Documentation](https://flutter.dev/docs) — Start here
 - [Platzi Flutter Course](https://platzi.com/clases/flutter/) — Hands-on course in Spanish
-- [DartPad](https://dartpad.dartlang.org/) — Online Dart playground to experiment without installing anything
+- [DartPad](https://dartpad.dev/) — Online Dart playground to experiment without installing anything
 - [Flutter Theme Gallery](https://startflutter.com/) — Pre-built themes and templates
 
 ---

@@ -72,7 +72,7 @@ By 2017, DeFi was still in its infancy, but the vision was clear: rebuild the fi
 
 I was honest about the limitations: blockchain is slow, expensive, and energy-intensive (proof-of-work). It's not a solution to every problem. But for certain use cases — especially where trust is expensive or unavailable — it's transformative.
 
-![Workshop memories](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
+![Blockchain workshop at Universidad de Caldas — audience during the hands-on session](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
 
 ---
 

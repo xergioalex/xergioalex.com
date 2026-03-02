@@ -184,9 +184,9 @@ Todo el asunto eran unas 100 líneas de JavaScript y un archivo HTML. Podías ju
 
 Estos proyectos no se quedaron en GitHub. Se convirtieron en la columna vertebral de dos charlas que di sobre WebVR:
 
-La primera fue en [PereiraJs](/es/blog/webvr-aframe), donde mostré toda la progresión — desde formas primitivas hasta el juego del laberinto — a un salón lleno de desarrolladores. La audiencia sacó los teléfonos y cargó los demos en vivo durante la presentación.
+La primera fue en [PereiraJs](/es/blog/webvr-aframe/), donde mostré toda la progresión — desde formas primitivas hasta el juego del laberinto — a un salón lleno de desarrolladores. La audiencia sacó los teléfonos y cargó los demos en vivo durante la presentación.
 
-La segunda fue en la [Universidad Remington](/es/blog/webvr-aframe-uniremington), para públicos universitarios, donde expandí el contenido para cubrir VR vs. AR vs. Realidad Mixta, la economía del hardware de VR, y por qué la web es la mejor plataforma de distribución.
+La segunda fue en la [Universidad Remington](/es/blog/webvr-aframe-uniremington/), para públicos universitarios, donde expandí el contenido para cubrir VR vs. AR vs. Realidad Mixta, la economía del hardware de VR, y por qué la web es la mejor plataforma de distribución.
 
 Ambas charlas demostraron lo mismo: cuando la VR corre en un navegador, la audiencia puede experimentar lo que estás construyendo en tiempo real. Sin descargas. Sin instalaciones. Solo una URL.
 

@@ -15,7 +15,7 @@ Below is the process to connect your site's contact form to a Google Form withou
 
 First, go to [Google Forms](https://www.google.com/forms/about/) and create a form like this:
 
-![Google Form example](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+![Google Form example](/images/blog/posts/google-forms-postman-ajax/form-example.jpg)
 
 Next, open the [form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) and inspect each field to find the `name` attributes of the inputs, which follow the format `entry.{id}`:
 
@@ -65,9 +65,9 @@ $.ajax({
 });
 ```
 
-As you can see, we only needed to translate the Postman request into jQuery Ajax format. Here's a minimal working example of a web form connected to the example form; all submissions will appear in the [response spreadsheet](https://goo.gl/VXMdV5) linked above:
+As you can see, we only needed to translate the Postman request into jQuery Ajax format. Here's a minimal working example of a web form connected to the example form; all submissions will appear in the [response spreadsheet](https://docs.google.com/forms/) linked above:
 
-![Web form connected to Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+![Web form connected to Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpg)
 
 One final note: when using this approach, you may see an error like `No 'Access-Control-Allow-Origin' header is present on the requested resource`. In other applications this is usually fixed by allowing the origin domain on the server, but Google Forms doesn't expose such a setting. Despite that, the submission still succeeds, so you can safely ignore this message.
 

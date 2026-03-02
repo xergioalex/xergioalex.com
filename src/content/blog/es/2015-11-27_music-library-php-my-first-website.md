@@ -2,7 +2,7 @@
 title: "Librería musical en PHP: mi primera página web"
 description: "La historia detrás de mi primer proyecto web — el trabajo final del curso de bases de datos que se convirtió en mi introducción a PHP, SQLite y el desarrollo web."
 pubDate: "2015-11-27"
-heroImage: "/images/blog/posts/music-library-php/home.gif"
+heroImage: "/images/blog/posts/music-library-php-my-first-website/home.gif"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "university"]
 ---
@@ -51,7 +51,7 @@ Esa lista resume la mayor parte del trabajo. Y algo importante: **todo se hizo d
 
 Este es el esquema de base de datos que diseñé para la biblioteca musical:
 
-![Modelo de datos de la biblioteca musical](/images/blog/posts/music-library-php/db-model.jpg)
+![Modelo de datos de la biblioteca musical](/images/blog/posts/music-library-php-my-first-website/db-model.jpg)
 
 ---
 
@@ -61,19 +61,19 @@ He mantenido el proyecto en GitHub todos estos años. Aquí hay algunos GIFs que
 
 ### Página de inicio
 
-![Página de inicio de Music Library PHP](/images/blog/posts/music-library-php/home.gif)
+![Página de inicio de Music Library PHP](/images/blog/posts/music-library-php-my-first-website/home.gif)
 
 ### Registro e inicio de sesión
 
-![Flujo de registro e inicio de sesión](/images/blog/posts/music-library-php/login-and-list-music.gif)
+![Flujo de registro e inicio de sesión](/images/blog/posts/music-library-php-my-first-website/login-and-list-music.gif)
 
 ### Navegación y gestión de canciones
 
-![Agregar canciones, artistas, géneros y álbumes](/images/blog/posts/music-library-php/add-song.gif)
+![Agregar canciones, artistas, géneros y álbumes](/images/blog/posts/music-library-php-my-first-website/add-song.gif)
 
 ### Búsqueda
 
-![Búsqueda de canciones](/images/blog/posts/music-library-php/search.gif)
+![Búsqueda de canciones](/images/blog/posts/music-library-php-my-first-website/search.gif)
 
 ---
 

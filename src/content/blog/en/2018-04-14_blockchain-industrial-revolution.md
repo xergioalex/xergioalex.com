@@ -148,18 +148,18 @@ And trust is the foundation of every economy, every institution, every system. W
 - [Embark](https://github.com/iurimatias/embark-framework) — Framework for building Ethereum applications
 - [Blockchain Startups](https://angel.co/blockchains)
 - [Blockchain Jobs](https://blocktribe.com/jobs/)
-- [Preev](http://preev.com/), [BitcoinCharts](https://bitcoincharts.com/) — Real-time converters
+- [Preev](https://preev.com/), [BitcoinCharts](https://bitcoincharts.com/) — Real-time converters
 - [Mastering Bitcoin](https://www.bitcoinbook.info/) — Andreas Antonopoulos book
 
 ### News and Wallets
 
-- [DiarioBitcoin](http://www.diariobitcoin.com/), [CriptoNoticias](https://criptonoticias.com/)
+- [DiarioBitcoin](https://www.diariobitcoin.com/), [CriptoNoticias](https://criptonoticias.com/)
 - [CoinMarketCap](https://coinmarketcap.com/) — Historical data and charts
-- [Copay](https://copay.io/), [Blockchain.info](https://blockchain.info/) — Wallets
+- [Copay](https://copay.io/), [Blockchain.info](https://www.blockchain.com/) — Wallets
 
 ---
 
-![Bitcoin and Blockchain meetup](/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp)
+![Bitcoin and Blockchain meetup at Pereira Tech Talks — audience attending the talk](/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp)
 
 ![Pereira Tech Talks — blockchain night](/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp)
 

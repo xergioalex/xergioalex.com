@@ -21,11 +21,11 @@ Think about early human exchange. I have eggs, you have a horse. I want your hor
 
 This is the fundamental challenge of barter: establishing fair exchange rates between completely different things. One egg versus one horse — clearly not equivalent. But how do you calculate it without a common reference point?
 
-![Example of basic exchange model](/images/blog/posts/blockchain-economy-industry/fig-1.webp)
+![Example of basic exchange model](/images/blog/posts/blockchain-economy-industry/barter-exchange-model.webp)
 
 Humanity's solution was brilliant: **gold**. A scarce, attractive, durable natural resource that everyone valued. Gold became the universal reference — the standard against which everything else could be measured.
 
-![Gold as a reference for exchange](/images/blog/posts/blockchain-economy-industry/fig-2.webp)
+![Gold as a reference for exchange](/images/blog/posts/blockchain-economy-industry/gold-as-exchange-reference.webp)
 
 Let's use a simple example (borrowed from the movie *The Contestant*). A farmer wants to trade eggs for a horse. Through market dynamics, people established that:
 - 1 gold nugget = 1 comb of eggs
@@ -33,7 +33,7 @@ Let's use a simple example (borrowed from the movie *The Contestant*). A farmer 
 
 So through basic math: **120 eggs = 1 horse**.
 
-![Case study of basic exchange with gold](/images/blog/posts/blockchain-economy-industry/fig-3.webp)
+![Case study of basic exchange with gold](/images/blog/posts/blockchain-economy-industry/gold-exchange-case-study.webp)
 
 Gold became the first **currency** — a universal medium of exchange.
 
@@ -43,7 +43,7 @@ So people started leaving their gold with goldsmiths for safekeeping. The goldsm
 
 That's how **paper money** was born — a claim on gold, not the gold itself.
 
-![Gold pesos in paper money was a reference to its backing against gold](/images/blog/posts/blockchain-economy-industry/fig-5.webp)
+![Gold pesos in paper money was a reference to its backing against gold](/images/blog/posts/blockchain-economy-industry/paper-money-gold-backing.webp)
 
 Then goldsmiths discovered something clever: they didn't need to keep all the gold in their vaults. As long as people trusted they could redeem their receipts, goldsmiths could issue more receipts than they had gold. This is called **fractional reserve banking** — and it's still how modern banks work.
 
@@ -55,11 +55,11 @@ Over time, the link to gold disappeared entirely. Money became backed not by met
 
 Fast forward to today. Global commerce depends on banks and financial institutions to facilitate transactions between strangers. They act as **trusted third parties** — intermediaries who assume risk so buyers and sellers don't have to.
 
-![Global commerce](/images/blog/posts/blockchain-economy-industry/fig-6.webp)
+![Global commerce](/images/blog/posts/blockchain-economy-industry/global-commerce-network.webp)
 
 This creates a **centralized trust model**. We deposit money in banks. We trust them to hold it, transfer it, and keep records. In return, we pay fees, accept delays, and surrender control.
 
-![Centralized trust model](/images/blog/posts/blockchain-economy-industry/fig-7.webp)
+![Centralized trust model](/images/blog/posts/blockchain-economy-industry/centralized-trust-model.webp)
 
 But centralized systems have inherent weaknesses:
 
@@ -69,7 +69,7 @@ But centralized systems have inherent weaknesses:
 
 And then 2008 happened.
 
-![2008 mortgage crisis on Wall Street](/images/blog/posts/blockchain-economy-industry/fig-8.webp)
+![2008 mortgage crisis on Wall Street](/images/blog/posts/blockchain-economy-industry/2008-financial-crisis-wall-street.webp)
 
 The [2008 financial crisis](https://en.wikipedia.org/wiki/2007%E2%80%932008_financial_crisis) exposed the dangers of centralized financial power. Greed and reckless management of mortgage bonds crashed the global economy. Lehman Brothers collapsed. Major institutions needed bailouts. Trust in the financial system cratered.
 
@@ -83,7 +83,7 @@ The idea of money without central control had been around for a while. The [Cyph
 
 Then, on October 31, 2008 — at the height of the financial crisis — an anonymous person (or group) published the famous [Bitcoin whitepaper](https://bitcoin.org/en/bitcoin-paper) under the pseudonym **Satoshi Nakamoto**.
 
-![Representative figures of the Cypherpunks, from the documentary Banking on Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-9.webp)
+![Representative figures of the Cypherpunks, from the documentary Banking on Bitcoin](/images/blog/posts/blockchain-economy-industry/cypherpunks-banking-on-bitcoin.webp)
 
 Satoshi's paper described a purely electronic version of cash — a system where you could exchange value directly, peer-to-peer, without needing a bank or payment processor in the middle.
 
@@ -93,11 +93,11 @@ At the time, Bitcoin had no real-world value. But on May 22, 2010, a developer n
 
 Someone accepted. The [first real-world Bitcoin transaction](https://www.blockchain.com/en/btc/tx/cca7507897abc89628f450e8b1e0c6fca4ec3f7b34cccf55f3f531c659ff4d79) happened.
 
-![Photo of the first two pizzas bought with bitcoins](/images/blog/posts/blockchain-economy-industry/fig-10.webp)
+![Photo of the first two pizzas bought with bitcoins](/images/blog/posts/blockchain-economy-industry/bitcoin-pizza-first-transaction.webp)
 
 Those 10,000 BTC? At Bitcoin's 2017 peak of nearly $20,000 per coin, they were worth **$200 million**. Quite possibly the most expensive pizzas in history.
 
-![Bitcoin price from January 2009 to present (2019), from coinmarketcap](/images/blog/posts/blockchain-economy-industry/fig-11.webp)
+![Bitcoin price from January 2009 to present (2019), from coinmarketcap](/images/blog/posts/blockchain-economy-industry/bitcoin-price-history-2009-2019.webp)
 
 Bitcoin became a reliable, cheap way to exchange value globally — especially useful for avoiding the high fees charged by traditional intermediaries.
 
@@ -121,7 +121,7 @@ Here's what stood out to me about Bitcoin when I first studied it:
 
 **Anonymous (or pseudonymous)** — You don't need to reveal your identity to transact, preserving privacy.
 
-![Bitcoin as a global exchange network](/images/blog/posts/blockchain-economy-industry/fig-12.webp)
+![Bitcoin as a global exchange network](/images/blog/posts/blockchain-economy-industry/bitcoin-global-exchange-network.webp)
 
 ---
 
@@ -137,7 +137,7 @@ Traditional systems solve this with a central ledger. A bank keeps track of who 
 
 Bitcoin's solution: make the ledger **public, shared, and cryptographically secured**.
 
-![Technologies that support Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-13.webp)
+![Technologies that support Bitcoin](/images/blog/posts/blockchain-economy-industry/bitcoin-supporting-technologies.webp)
 
 ### The Blockchain: A Chain of Digital Signatures
 
@@ -149,7 +149,7 @@ Each **block** contains:
 - A reference to the previous block
 - A unique cryptographic signature (hash)
 
-![Transactions as a chain of digital signatures, from the Bitcoin paper](/images/blog/posts/blockchain-economy-industry/fig-14.webp)
+![Transactions as a chain of digital signatures, from the Bitcoin paper](/images/blog/posts/blockchain-economy-industry/blockchain-chain-of-digital-signatures.webp)
 
 Blocks are chained together sequentially. Change one transaction, and the cryptographic signature changes. Change the signature, and the chain breaks. This makes it nearly impossible to alter past transactions without being detected.
 
@@ -166,13 +166,13 @@ That's the job of **miners** — participants in the network who compete to crea
 5. Once verified, the block is added to the chain
 6. The winning miner receives a reward (new Bitcoin + transaction fees)
 
-![Mining on the Bitcoin network](/images/blog/posts/blockchain-economy-industry/fig-15.webp)
+![Mining on the Bitcoin network](/images/blog/posts/blockchain-economy-industry/bitcoin-mining-network.webp)
 
 The proof-of-work system makes attacking the network extremely expensive. To rewrite the blockchain, you'd need to control more computing power than the rest of the network combined — and redo all that cryptographic work faster than honest miners are adding new blocks.
 
 Satoshi compared it to gold mining: early on, gold is easy to find. But as time goes on, you have to dig deeper and work harder. Bitcoin mining works the same way — as more miners join, the difficulty adjusts to keep block times consistent (about 10 minutes per block).
 
-![Blockchain in action on a Bitcoin network](/images/blog/posts/blockchain-economy-industry/fig-16.webp)
+![Blockchain in action on a Bitcoin network](/images/blog/posts/blockchain-economy-industry/blockchain-in-action-bitcoin-network.webp)
 
 ---
 
@@ -182,7 +182,7 @@ Bitcoin proved blockchain could work for money. But what else could you build on
 
 In 2014, [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin) launched **Ethereum** — a blockchain platform designed for more than just payments. Ethereum introduced **smart contracts**: self-executing code that runs on the blockchain.
 
-![Smart Contract](/images/blog/posts/blockchain-economy-industry/fig-17.webp)
+![Smart Contract](/images/blog/posts/blockchain-economy-industry/ethereum-smart-contract.webp)
 
 A smart contract is like a digital vending machine. You put in money, the contract checks if conditions are met, and if so, it automatically executes (sends you a soda, transfers ownership, releases funds, etc.).
 
@@ -208,7 +208,7 @@ Files are encrypted before being uploaded, so even though they're distributed ac
 
 Billions of devices — sensors, smart appliances, wearables — will soon be connected to the internet. But securing low-power, low-cost devices is hard. Many IoT devices ship with weak security and never get updated.
 
-![Blockchain in IoT](/images/blog/posts/blockchain-economy-industry/fig-18.webp)
+![Blockchain in IoT](/images/blog/posts/blockchain-economy-industry/blockchain-iot-applications.webp)
 
 Blockchain can serve as infrastructure for IoT communication — ensuring data integrity and enabling secure, automated interactions between devices through smart contracts.
 
@@ -218,7 +218,7 @@ Electoral fraud is a massive problem worldwide. Electronic voting could solve it
 
 Blockchain-based voting would be transparent, verifiable, and nearly impossible to tamper with. Projects like [Polys](https://polys.me/), [Secure Vote](https://secure.vote/), and [Voatz](https://voatz.com/) are working on this.
 
-![Blockchain-based electronic voting system](/images/blog/posts/blockchain-economy-industry/fig-19.webp)
+![Blockchain-based electronic voting system](/images/blog/posts/blockchain-economy-industry/blockchain-electronic-voting.webp)
 
 ### Digital Identity and Authentication
 
