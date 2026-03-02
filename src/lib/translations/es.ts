@@ -78,7 +78,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       subtitle: 'Emprendedor, maker y entusiasta de la tecnolog\u00EDa',
       description:
         'M\u00E1s all\u00E1 de DailyBot, soy emprendedor y maker apasionado por la tecnolog\u00EDa. Construyo proyectos paralelos, exploro IA y contribuyo al open source \u2014 desde Moltbot (IA en Raspberry Pi) hasta Syntro (soporte con IA) y SysPrompt (gesti\u00F3n de prompts para LLMs). Con 113+ repositorios en GitHub, creo que la mejor forma de aprender es construir algo real.',
-      cta: 'Explorar mis proyectos',
+      cta: 'Ver portafolio',
     },
     portfolio: {
       title: 'Portafolio',
@@ -806,7 +806,16 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     messageLabel: 'Mensaje',
     messagePlaceholder: 'Escribe tu mensaje...',
     sendButton: 'Enviar mensaje',
-    formNote: 'Te responder\u00E9 lo antes posible.',
+    sendingButton: 'Enviando...',
+    successTitle: '¡Mensaje enviado!',
+    successMessage: 'Gracias por escribirme. Te responderé lo antes posible.',
+    sendAnotherButton: 'Enviar otro mensaje',
+    requiredField: 'Este campo es obligatorio',
+    invalidEmail: 'Por favor ingresa un email válido',
+    fallbackMessage:
+      'El formulario de contacto no está disponible en este momento. Puedes contactarme directamente por email.',
+    fallbackEmailText: 'Envíame un email a',
+    formNote: 'Te responderé lo antes posible.',
     socialTitle: 'Con\u00E9ctate conmigo',
     locationTitle: 'Ubicaci\u00F3n',
     locationText:

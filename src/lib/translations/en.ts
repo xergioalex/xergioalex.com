@@ -78,7 +78,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       subtitle: 'Entrepreneur, maker & tech enthusiast',
       description:
         "Beyond DailyBot, I'm an entrepreneur and maker passionate about technology. I build side projects, explore AI, and contribute to open source — from Moltbot (AI on Raspberry Pi) to Syntro (AI-powered support) to SysPrompt (LLM prompt management). With 113+ repositories on GitHub, I believe the best way to learn is to build something real.",
-      cta: 'Explore my projects',
+      cta: 'View portfolio',
     },
     portfolio: {
       title: 'Portfolio',
@@ -798,6 +798,16 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     messageLabel: 'Message',
     messagePlaceholder: 'Write your message...',
     sendButton: 'Send Message',
+    sendingButton: 'Sending...',
+    successTitle: 'Message sent!',
+    successMessage:
+      "Thank you for reaching out. I'll get back to you as soon as possible.",
+    sendAnotherButton: 'Send another message',
+    requiredField: 'This field is required',
+    invalidEmail: 'Please enter a valid email address',
+    fallbackMessage:
+      'The contact form is currently unavailable. You can reach me directly by email.',
+    fallbackEmailText: 'Send me an email at',
     formNote: "I'll get back to you as soon as possible.",
     socialTitle: 'Connect With Me',
     locationTitle: 'Location',

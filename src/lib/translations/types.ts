@@ -374,6 +374,14 @@ export interface SiteTranslations {
     messageLabel: string;
     messagePlaceholder: string;
     sendButton: string;
+    sendingButton: string;
+    successTitle: string;
+    successMessage: string;
+    sendAnotherButton: string;
+    requiredField: string;
+    invalidEmail: string;
+    fallbackMessage: string;
+    fallbackEmailText: string;
     formNote: string;
     socialTitle: string;
     locationTitle: string;
