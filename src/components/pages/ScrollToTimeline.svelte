@@ -37,7 +37,7 @@ onMount(() => {
 {#if visible}
   <button
     on:click={scrollToTimeline}
-    class="fixed bottom-20 right-4 sm:right-6 z-40 flex items-center gap-2 px-4 py-2.5 bg-secondary text-white text-sm font-medium rounded-full shadow-lg hover:bg-secondary/90 hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
+    class="fixed bottom-4 right-[4.5rem] sm:right-[5rem] z-40 flex items-center gap-2 px-4 py-2.5 bg-secondary text-white text-sm font-medium rounded-full shadow-lg hover:bg-secondary/90 hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5"
     aria-label={buttonText}
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">

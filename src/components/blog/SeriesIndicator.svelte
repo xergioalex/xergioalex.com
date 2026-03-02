@@ -40,7 +40,7 @@ onMount(() => {
 {#if visible}
   <button
     on:click={scrollToSeries}
-    class="series-indicator fixed bottom-20 right-4 sm:right-6 z-40 flex items-center gap-3 rounded-full bg-white/95 pl-1.5 pr-4 py-1.5 text-sm font-medium shadow-lg ring-1 ring-blue-200 backdrop-blur-sm hover:shadow-xl dark:bg-gray-800/95 dark:ring-blue-700 transition-all duration-200 hover:-translate-y-0.5"
+    class="series-indicator fixed bottom-4 right-[4.5rem] sm:right-[5rem] z-40 flex items-center gap-3 rounded-full bg-white/95 pl-1.5 pr-4 py-1.5 text-sm font-medium shadow-lg ring-1 ring-blue-200 backdrop-blur-sm hover:shadow-xl dark:bg-gray-800/95 dark:ring-blue-700 transition-all duration-200 hover:-translate-y-0.5"
     aria-label="{buttonText} — {seriesTitle}"
   >
     <!-- Chapter progress ring -->
