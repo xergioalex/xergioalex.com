@@ -219,6 +219,7 @@ See [Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md) f
 - Use informal-professional register
 - When translating to Spanish, prefer Colombian Spanish phrasing
 - Do NOT translate code blocks, CLI commands, technical terms, product names
+- **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página), etc. Verify before saving.
 
 ### Step 5: Validate
 
@@ -297,6 +298,7 @@ content: add blog post "{title}" (en + es)
 - [ ] Translated title and description are natural and accurate
 - [ ] Voice is personal-professional, not marketing copy (topic mode)
 - [ ] Spanish reads naturally (not machine-translated)
+- [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
 - [ ] All referenced images exist
 - [ ] `npm run build` passes
 

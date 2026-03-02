@@ -18,6 +18,29 @@ This document defines the **canonical coding rules** for all contributors and AI
 - Comments: `// Obtener publicaciones del blog`
 - Commit messages: `feat: agregar modo oscuro`
 
+### Orthography & Diacritical Marks (MANDATORY)
+
+**Correct spelling is essential in ALL languages.** Every piece of user-facing text — blog posts, translation strings, UI labels, descriptions — MUST use proper orthography, including diacritical marks (accents, tildes, ñ).
+
+**Spanish orthography rules:**
+
+- **Always use ñ:** pequeño, tamaño, año, niño, señal, español, diseño, enseñar, mañana, caña, sueño, compañía, pestaña
+- **Always use accented vowels:** análisis, más, número, código, máquina, ejecución, versión, información, aplicación, descripción, sección, también, después, página, título, último, próximo, índice, búsqueda, artículo, categoría, navegación, configuración, aquí, así, rápido, fácil, típico, científico, académico, práctica, automáticamente, producción, integración
+- **Question/exclamation words need accents:** cómo, qué, cuál, dónde, cuándo, cuánto, por qué
+- **Verb forms:** está (is), será (will be), empecé (I started), comenzó (started), surgió (emerged)
+
+**English orthography rules:**
+
+- Use correct spelling for technical terms and common words
+- Verify proper capitalization of brand names and acronyms
+
+**Pre-commit check for Spanish content:**
+
+Before committing any Spanish text (blog posts, translations, UI strings), verify:
+- [ ] All ñ characters are present (search for `pequeno`, `tamano`, `ano`, `diseno`, `espanol`)
+- [ ] All accented vowels are present (search for `analisis`, `numero`, `codigo`, `ejecucion`, `version`)
+- [ ] Question words have accents when interrogative (`cómo`, `qué`, `dónde`)
+
 ## TypeScript Standards
 
 ### Type Annotations

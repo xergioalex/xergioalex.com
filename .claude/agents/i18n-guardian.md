@@ -24,6 +24,7 @@ This agent is a specialized **i18n expert** that focuses on:
 
 - Multilingual content completeness (parity across all active languages)
 - Translation quality and natural phrasing
+- **Orthography enforcement** — verifying correct diacritical marks (ñ, á, é, í, ó, ú) in Spanish content
 - `translations.ts` key completeness
 - Component i18n compliance (no hardcoded text)
 - Cultural appropriateness of translations
@@ -90,6 +91,13 @@ For this Astro repository, check:
 - [ ] Both locale files export objects matching the `SiteTranslations` interface in `types.ts`
 - [ ] No empty string values (placeholder translations)
 - [ ] Translations are natural and idiomatic
+
+### Orthography & Diacritical Marks
+- [ ] Spanish blog posts use correct ñ (search for: `pequeno`, `tamano`, `diseno`, `espanol`, `manana`)
+- [ ] Spanish blog posts use correct accented vowels (search for: `analisis`, `numero`, `codigo`, `ejecucion`, `version`, `pagina`, `titulo`)
+- [ ] Spanish translation strings in `es.ts` use correct diacritical marks
+- [ ] Interrogative words have accents: cómo, qué, cuál, dónde, cuándo
+- [ ] English content has correct spelling
 
 ### Component i18n
 - [ ] No hardcoded user-visible strings in components

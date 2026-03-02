@@ -1,30 +1,30 @@
 ---
 title: 'Primeros Pasos con Contenedores Docker'
-description: 'Una guia completa para entender y usar contenedores Docker en el desarrollo moderno de aplicaciones'
+description: 'Una guía completa para entender y usar contenedores Docker en el desarrollo moderno de aplicaciones'
 pubDate: '2025-01-01'
 heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 ---
 
-Docker ha cambiado fundamentalmente la forma en que los desarrolladores construyen, distribuyen y ejecutan aplicaciones. Al empaquetar software en unidades estandarizadas llamadas contenedores, Docker garantiza que tu aplicacion funcione sin problemas en diferentes entornos, desde tu maquina local hasta servidores de produccion.
+Docker ha cambiado fundamentalmente la forma en que los desarrolladores construyen, distribuyen y ejecutan aplicaciones. Al empaquetar software en unidades estandarizadas llamadas contenedores, Docker garantiza que tu aplicación funcione sin problemas en diferentes entornos, desde tu máquina local hasta servidores de producción.
 
-## Que es un Contenedor?
+## Qué es un Contenedor?
 
-Un contenedor es un paquete de software ligero, independiente y ejecutable que incluye todo lo necesario para ejecutar una aplicacion: codigo, runtime, herramientas del sistema, bibliotecas y configuraciones. A diferencia de las maquinas virtuales, los contenedores comparten el kernel del sistema anfitrion, haciendolos significativamente mas eficientes.
+Un contenedor es un paquete de software ligero, independiente y ejecutable que incluye todo lo necesario para ejecutar una aplicación: código, runtime, herramientas del sistema, bibliotecas y configuraciones. A diferencia de las máquinas virtuales, los contenedores comparten el kernel del sistema anfitrión, haciéndolos significativamente más eficientes.
 
-### Contenedores vs Maquinas Virtuales
+### Contenedores vs Máquinas Virtuales
 
-La diferencia clave esta en la capa de abstraccion. Las maquinas virtuales emulan un sistema operativo completo, incluyendo el kernel. Los contenedores, en cambio, comparten el kernel del SO anfitrion y aislan los procesos de la aplicacion del resto del sistema.
+La diferencia clave está en la capa de abstracción. Las máquinas virtuales emulan un sistema operativo completo, incluyendo el kernel. Los contenedores, en cambio, comparten el kernel del SO anfitrión y aislan los procesos de la aplicación del resto del sistema.
 
 - **Tiempo de inicio:** Los contenedores arrancan en segundos; las VMs pueden tardar minutos
 - **Uso de recursos:** Los contenedores usan MBs de memoria; las VMs usan GBs
-- **Nivel de aislamiento:** Las VMs proporcionan mayor aislamiento; los contenedores ofrecen aislamiento suficiente para la mayoria de casos
-- **Portabilidad:** Ambos son portables, pero los contenedores son mas ligeros y faciles de mover
+- **Nivel de aislamiento:** Las VMs proporcionan mayor aislamiento; los contenedores ofrecen aislamiento suficiente para la mayoría de casos
+- **Portabilidad:** Ambos son portables, pero los contenedores son más ligeros y fáciles de mover
 
 ## Tu Primer Dockerfile
 
-Un `Dockerfile` es un documento de texto que contiene todos los comandos necesarios para ensamblar una imagen Docker. Aqui tienes un ejemplo simple para una aplicacion Node.js:
+Un `Dockerfile` es un documento de texto que contiene todos los comandos necesarios para ensamblar una imagen Docker. Aquí tienes un ejemplo simple para una aplicación Node.js:
 
 ```dockerfile
 # Usar una imagen oficial de Node.js como base
@@ -70,7 +70,7 @@ docker stop mi-app && docker rm mi-app
 
 ## Docker Compose para Aplicaciones Multi-Contenedor
 
-La mayoria de aplicaciones del mundo real constan de multiples servicios. Docker Compose te permite definir y gestionar aplicaciones multi-contenedor usando un archivo YAML:
+La mayoría de aplicaciones del mundo real constan de múltiples servicios. Docker Compose te permite definir y gestionar aplicaciones multi-contenedor usando un archivo YAML:
 
 ```yaml
 version: '3.8'
@@ -95,16 +95,16 @@ volumes:
   pgdata:
 ```
 
-## Buenas Practicas
+## Buenas Prácticas
 
-1. **Usa builds multi-etapa** para reducir el tamano de la imagen
-2. **Nunca almacenes secretos** en imagenes Docker — usa variables de entorno o gestores de secretos
+1. **Usa builds multi-etapa** para reducir el tamaño de la imagen
+2. **Nunca almacenes secretos** en imágenes Docker — usa variables de entorno o gestores de secretos
 3. **Usa `.dockerignore`** para excluir archivos innecesarios del contexto de build
-4. **Fija las versiones de imagenes base** para builds reproducibles
+4. **Fija las versiones de imágenes base** para builds reproducibles
 5. **Ejecuta contenedores como usuario no-root** para mejor seguridad
 
 > Docker no reemplaza la necesidad de entender tu infraestructura — te da una forma consistente de interactuar con ella.
 
-## Que Sigue?
+## Qué Sigue?
 
-Una vez que te sientas comodo con los basicos de Docker, explora la orquestacion de contenedores con Kubernetes, registros de imagenes como Docker Hub o GitHub Container Registry, y pipelines CI/CD que automaticen tu flujo de trabajo con contenedores. La contenedorizacion no es solo una herramienta — es un cambio de mentalidad hacia la entrega de software reproducible, portable y escalable.
+Una vez que te sientas cómodo con los básicos de Docker, explora la orquestación de contenedores con Kubernetes, registros de imágenes como Docker Hub o GitHub Container Registry, y pipelines CI/CD que automaticen tu flujo de trabajo con contenedores. La contenedorización no es solo una herramienta — es un cambio de mentalidad hacia la entrega de software reproducible, portable y escalable.

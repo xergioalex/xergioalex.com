@@ -1,25 +1,25 @@
 ---
 title: 'Entendiendo los Pipelines CI/CD'
-description: 'Una vision practica de los flujos de trabajo de integracion continua y despliegue continuo para equipos modernos'
+description: 'Una visión práctica de los flujos de trabajo de integración continua y despliegue continuo para equipos modernos'
 pubDate: '2025-01-03'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
 ---
 
-La Integracion Continua y el Despliegue Continuo (CI/CD) son practicas que automatizan el proceso de integrar cambios de codigo, ejecutar pruebas y desplegar aplicaciones. Cuando se implementan bien, transforman la forma en que los equipos entregan software — de lanzamientos manuales propensos a errores a pipelines automatizados y confiables.
+La Integración Continua y el Despliegue Continuo (CI/CD) son prácticas que automatizan el proceso de integrar cambios de código, ejecutar pruebas y desplegar aplicaciones. Cuando se implementan bien, transforman la forma en que los equipos entregan software — de lanzamientos manuales propensos a errores a pipelines automatizados y confiables.
 
-## Integracion Continua (CI)
+## Integración Continua (CI)
 
-CI es la practica de fusionar frecuentemente cambios de codigo en un repositorio compartido, donde builds y pruebas automatizadas verifican cada cambio. El objetivo es detectar problemas de integracion temprano, cuando son baratos de corregir.
+CI es la práctica de fusionar frecuentemente cambios de código en un repositorio compartido, donde builds y pruebas automatizadas verifican cada cambio. El objetivo es detectar problemas de integración temprano, cuando son baratos de corregir.
 
-Un flujo de trabajo CI tipico se ve asi:
+Un flujo de trabajo CI típico se ve así:
 
-1. El desarrollador sube codigo a una rama de feature
+1. El desarrollador sube código a una rama de feature
 2. El servidor CI detecta el cambio e inicia un pipeline
-3. El codigo se compila y se analiza con linters
-4. Se ejecutan pruebas unitarias y de integracion
-5. Se generan reportes de cobertura de codigo
+3. El código se compila y se analiza con linters
+4. Se ejecutan pruebas unitarias y de integración
+5. Se generan reportes de cobertura de código
 6. Los resultados se reportan en el pull request
 
 ### Ejemplo: Pipeline CI con GitHub Actions
@@ -52,31 +52,31 @@ jobs:
 
 ## Despliegue Continuo (CD)
 
-CD extiende CI desplegando automaticamente cada cambio que pasa el pipeline a un entorno objetivo. Hay dos variantes:
+CD extiende CI desplegando automáticamente cada cambio que pasa el pipeline a un entorno objetivo. Hay dos variantes:
 
-- **Entrega Continua:** Los cambios se preparan automaticamente para lanzamiento pero requieren aprobacion manual para despliegue a produccion
-- **Despliegue Continuo:** Cada cambio que pasa va directamente a produccion sin intervencion manual
+- **Entrega Continua:** Los cambios se preparan automáticamente para lanzamiento pero requieren aprobación manual para despliegue a producción
+- **Despliegue Continuo:** Cada cambio que pasa va directamente a producción sin intervención manual
 
 ### Estrategias de Despliegue
 
-| Estrategia | Descripcion | Nivel de Riesgo | Velocidad de Rollback |
+| Estrategia | Descripción | Nivel de Riesgo | Velocidad de Rollback |
 |------------|-------------|:---------------:|:---------------------:|
 | Rolling | Reemplaza gradualmente instancias antiguas | Bajo | Media |
-| Blue-Green | Cambia trafico entre dos entornos | Bajo | Rapida |
-| Canary | Enruta un pequeno porcentaje de trafico a la nueva version | Muy Bajo | Rapida |
-| Recreate | Detiene la version antigua, inicia la nueva | Alto | Lenta |
+| Blue-Green | Cambia tráfico entre dos entornos | Bajo | Rápida |
+| Canary | Enruta un pequeño porcentaje de tráfico a la nueva versión | Muy Bajo | Rápida |
+| Recreate | Detiene la versión antigua, inicia la nueva | Alto | Lenta |
 
-## Buenas Practicas para Pipelines
+## Buenas Prácticas para Pipelines
 
-**Manten los pipelines rapidos.** Los pipelines lentos matan la productividad. Apunta a menos de 10 minutos para CI y usa paralelismo donde sea posible.
+**Mantén los pipelines rápidos.** Los pipelines lentos matan la productividad. Apunta a menos de 10 minutos para CI y usa paralelismo donde sea posible.
 
-**Falla rapido.** Ejecuta las verificaciones mas baratas primero (linting, chequeo de tipos) antes de las costosas (pruebas de integracion, pruebas E2E).
+**Falla rápido.** Ejecuta las verificaciones más baratas primero (linting, chequeo de tipos) antes de las costosas (pruebas de integración, pruebas E2E).
 
-**Haz los pipelines deterministas.** Usa versiones fijas de dependencias, imagenes Docker fijadas, y evita depender de servicios externos que puedan ser inestables.
+**Haz los pipelines deterministas.** Usa versiones fijas de dependencias, imágenes Docker fijadas, y evita depender de servicios externos que puedan ser inestables.
 
-> "Si duele, hazlo mas frecuentemente, y adelanta el dolor." — Jez Humble
+> "Si duele, hazlo más frecuentemente, y adelanta el dolor." — Jez Humble
 
-**Usa los entornos sabiamente.** Una progresion tipica se ve asi:
+**Usa los entornos sabiamente.** Una progresión típica se ve así:
 
 ```
 rama feature → staging → produccion
@@ -87,11 +87,11 @@ rama feature → staging → produccion
 
 Un pipeline no termina en el despliegue. El monitoreo post-despliegue es esencial:
 
-- **Verificaciones de salud** confirman que la aplicacion responde correctamente
+- **Verificaciones de salud** confirman que la aplicación responde correctamente
 - **Monitoreo de tasa de errores** captura regresiones que las pruebas no detectaron
 - **Metricas de rendimiento** aseguran que los despliegues no introduzcan latencia
-- **Rollback automatico** se activa cuando fallan las verificaciones de salud
+- **Rollback automático** se activa cuando fallan las verificaciones de salud
 
 ## Primeros Pasos
 
-No necesitas una configuracion compleja para empezar. Comienza con un pipeline CI simple que ejecute tus pruebas en cada push. A medida que crece tu confianza, agrega linting, escaneo de seguridad y despliegues automatizados. El mejor pipeline es el que tu equipo realmente usa y en el que confia.
+No necesitas una configuración compleja para empezar. Comienza con un pipeline CI simple que ejecute tus pruebas en cada push. A medida que crece tu confianza, agrega linting, escaneo de seguridad y despliegues automatizados. El mejor pipeline es el que tu equipo realmente usa y en el que confía.

@@ -1,6 +1,6 @@
 ---
-title: "POO en Accion: Construyendo un Solucionador de Sudoku y una Agenda de Contactos con Java Swing"
-description: "Dos proyectos universitarios de mi curso de Programacion Orientada a Objetos — un solucionador de Sudoku usando el patron Observer y backtracking, y una agenda de contactos con persistencia en archivos, ambos construidos con Java Swing."
+title: "POO en Acción: Construyendo un Solucionador de Sudoku y una Agenda de Contactos con Java Swing"
+description: "Dos proyectos universitarios de mi curso de Programación Orientada a Objetos — un solucionador de Sudoku usando el patrón Observer y backtracking, y una agenda de contactos con persistencia en archivos, ambos construidos con Java Swing."
 pubDate: "2018-05-02"
 heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
 heroLayout: "side-by-side"

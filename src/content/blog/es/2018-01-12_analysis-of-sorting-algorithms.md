@@ -1,17 +1,17 @@
 ---
-title: "Analisis comparativo de algoritmos de ordenamiento"
-description: "Un analisis academico sobre complejidad y tiempos de ejecucion de algoritmos de ordenamiento, comparando resultados reales en dos servidores."
+title: "Análisis comparativo de algoritmos de ordenamiento"
+description: "Un análisis académico sobre complejidad y tiempos de ejecución de algoritmos de ordenamiento, comparando resultados reales en dos servidores."
 pubDate: "2018-01-12"
 heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
 heroLayout: "banner"
 tags: ["tech", "javascript", "university"]
 ---
 
-Como parte de un ejercicio tipico de algoritmia en la universidad, hice un pequeno analisis comparativo de los algoritmos de ordenamiento mas populares, buscando estudiar la complejidad de cada uno y como las diferentes formas de resolver un mismo problema pueden afectar los tiempos de ejecucion.
+Como parte de un ejercicio típico de algoritmia en la universidad, hice un pequeño análisis comparativo de los algoritmos de ordenamiento más populares, buscando estudiar la complejidad de cada uno y cómo las diferentes formas de resolver un mismo problema pueden afectar los tiempos de ejecución.
 
-Quiero aclarar que este es solo un analisis academico muy simple que quise documentar, y que tal vez sirva a futuro para otros estudiantes de ciencias de la computacion.
+Quiero aclarar que este es solo un análisis académico muy simple que quise documentar, y que tal vez sirva a futuro para otros estudiantes de ciencias de la computación.
 
-Comence desarrollando un pequeno script en Java que genera numeros aleatorios de cinco digitos y los almacena en un archivo de texto, para poder analizar el mismo conjunto de datos entre diferentes algoritmos. El script lo puedes encontrar en este [repositorio](https://github.com/xergioalex/analysisOfSortAlgorithms) y ejecutar de la siguiente forma:
+Comencé desarrollando un pequeño script en Java que genera números aleatorios de cinco dígitos y los almacena en un archivo de texto, para poder analizar el mismo conjunto de datos entre diferentes algoritmos. El script lo puedes encontrar en este [repositorio](https://github.com/xergioalex/analysisOfSortAlgorithms) y ejecutar de la siguiente forma:
 
 ```bash
 # Ruta del archivo
@@ -21,29 +21,29 @@ Comence desarrollando un pequeno script en Java que genera numeros aleatorios de
 $ javac RandomNumbers.java && java RandomNumbers
 ```
 
-Lo anterior genera el archivo [numbers/numbers.txt](https://github.com/xergioalex/analysisOfSortAlgorithms/blob/master/numbers/numbers.txt) con `n` numeros aleatorios definidos dentro del script. En mis experimentos llegue a generar un archivo de 1.000.000.000 de datos (cerca de 5 GB), por eso no lo adjunte en el repositorio.
+Lo anterior genera el archivo [numbers/numbers.txt](https://github.com/xergioalex/analysisOfSortAlgorithms/blob/master/numbers/numbers.txt) con `n` números aleatorios definidos dentro del script. En mis experimentos llegué a generar un archivo de 1.000.000.000 de datos (cerca de 5 GB), por eso no lo adjunté en el repositorio.
 
 ---
 
 ## Algoritmos evaluados
 
-En un paso siguiente procedi a implementar algoritmos de ordenamiento populares:
+En un paso siguiente procedí a implementar algoritmos de ordenamiento populares:
 
 - [Burbuja (Bubble Sort)](https://es.wikipedia.org/wiki/Ordenamiento_de_burbuja): `O(n^2)`
 - [Conteo (Counting Sort)](https://es.wikipedia.org/wiki/Ordenamiento_por_cuentas): `O(n+k)`
 - [Montones (Heapsort)](https://es.wikipedia.org/wiki/Heapsort): `O(n log n)`
-- [Insercion (Insertion Sort)](https://es.wikipedia.org/wiki/Ordenamiento_por_inserci%C3%B3n): `O(n^2)`
+- [Inserción (Insertion Sort)](https://es.wikipedia.org/wiki/Ordenamiento_por_inserci%C3%B3n): `O(n^2)`
 - [Mezcla (Merge Sort)](https://es.wikipedia.org/wiki/Ordenamiento_por_mezcla): `O(n log n)`
-- [Rapido (Quicksort)](https://es.wikipedia.org/wiki/Quicksort): `O(n log n)`
-- [Seleccion (Selection Sort)](https://es.wikipedia.org/wiki/Ordenamiento_por_selecci%C3%B3n): `O(n^2)`
+- [Rápido (Quicksort)](https://es.wikipedia.org/wiki/Quicksort): `O(n log n)`
+- [Selección (Selection Sort)](https://es.wikipedia.org/wiki/Ordenamiento_por_selecci%C3%B3n): `O(n^2)`
 
-Para esta tarea seleccione C y los scripts se encuentran en [`algorithms/c/sortAlgorithms`](https://github.com/xergioalex/analysisOfSortAlgorithms/tree/master/algorithms/c/sortAlgorithms).
+Para esta tarea seleccioné C y los scripts se encuentran en [`algorithms/c/sortAlgorithms`](https://github.com/xergioalex/analysisOfSortAlgorithms/tree/master/algorithms/c/sortAlgorithms).
 
 ---
 
-## Automatizacion de pruebas
+## Automatización de pruebas
 
-Dado que para hacer un buen analisis se deben correr muchas pruebas, cree un par de scripts para automatizarlas:
+Dado que para hacer un buen análisis se deben correr muchas pruebas, creé un par de scripts para automatizarlas:
 
 ```bash
 # Script base para ejecutar cualquier algoritmo y generar logs de tiempos
@@ -53,22 +53,22 @@ Dado que para hacer un buen analisis se deben correr muchas pruebas, cree un par
 # arg1, arg2 => nombre del algoritmo y cantidad de elementos
 $ gcc benchmark.c -o benchmark.out && ./benchmark.out arg1 arg2
 
-# Script para correr multiples pruebas
+# Script para correr múltiples pruebas
 > algorithms/c/runTest.c
 
 # Correr pruebas
 $ gcc runTest.c -o runTest.out && ./runTest.out
 ```
 
-Con esto ya estaba todo listo. Solo faltaba dejar corriendo `runTest.c` en una maquina. Aunque era un ejercicio academico sin gran rigor cientifico, procure usar un pequeno ambiente controlado para evitar ruido por otros procesos.
+Con esto ya estaba todo listo. Solo faltaba dejar corriendo `runTest.c` en una máquina. Aunque era un ejercicio académico sin gran rigor científico, procuré usar un pequeño ambiente controlado para evitar ruido por otros procesos.
 
-Para eso cree dos droplets en Digital Ocean:
+Para eso creé dos droplets en Digital Ocean:
 
 ![Digital Ocean droplets](/images/blog/posts/analysis-of-sorting-algorithms/digital-ocean-droplets.png)
 
-El segundo servidor tenia el doble de recursos, asi que en teoria debia rendir mejor.
+El segundo servidor tenía el doble de recursos, así que en teoría debía rendir mejor.
 
-Tambien configure Java y C en ambos servidores con este script de aprovisionamiento: [ServerConfig/provision.sh](https://github.com/xergioalex/analysisOfSortAlgorithms/blob/master/severConfig/provision.sh)
+También configuré Java y C en ambos servidores con este script de aprovisionamiento: [ServerConfig/provision.sh](https://github.com/xergioalex/analysisOfSortAlgorithms/blob/master/severConfig/provision.sh)
 
 ```bash
 # Base installation
@@ -90,9 +90,9 @@ sudo apt-get install openjdk-7-jdk -y
 
 ## Resultados
 
-En cada maquina se corrieron pruebas con el mismo archivo de numeros aleatorios, aumentando el tamano en diferentes intervalos (10, 100, 1.000, 10.000, etc.). Los resultados detallados estan en [`results/analysis.ods`](https://github.com/xergioalex/analysisOfSortAlgorithms/blob/master/results/analysis.ods).
+En cada máquina se corrieron pruebas con el mismo archivo de números aleatorios, aumentando el tamaño en diferentes intervalos (10, 100, 1.000, 10.000, etc.). Los resultados detallados están en [`results/analysis.ods`](https://github.com/xergioalex/analysisOfSortAlgorithms/blob/master/results/analysis.ods).
 
-Como pausa util, este fue el truco para dejar el proceso en background sin depender de la sesion:
+Como pausa útil, este fue el truco para dejar el proceso en background sin depender de la sesión:
 
 ```bash
 $ gcc runTest.c -o runTest.out && ./runTest.out
@@ -101,10 +101,10 @@ disown -h %1
 bg 1
 ```
 
-Despues de varios dias, los experimentos apenas iban por 1.600.000 de datos en los algoritmos `O(n^2)`, asi que detuve la ejecucion en ambos servidores y empece el analisis.
+Después de varios días, los experimentos apenas iban por 1.600.000 de datos en los algoritmos `O(n^2)`, así que detuve la ejecución en ambos servidores y empecé el análisis.
 
-M1 = Maquina 1 (1 nucleo, 1GB RAM)  
-M2 = Maquina 2 (2 nucleos, 2GB RAM)
+M1 = Máquina 1 (1 núcleo, 1GB RAM)  
+M2 = Máquina 2 (2 núcleos, 2GB RAM)
 
 ### Burbuja (Bubble Sort): O(n^2)
 
@@ -124,7 +124,7 @@ M2 = Maquina 2 (2 nucleos, 2GB RAM)
 ![Heap Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m2.png)
 ![Heap Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1-m2.png)
 
-### Insercion (Insertion Sort): O(n^2)
+### Inserción (Insertion Sort): O(n^2)
 
 ![Insertion Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1.png)
 ![Insertion Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m2.png)
@@ -136,33 +136,33 @@ M2 = Maquina 2 (2 nucleos, 2GB RAM)
 ![Merge Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m2.png)
 ![Merge Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1-m2.png)
 
-### Rapido (Quicksort): O(n log n)
+### Rápido (Quicksort): O(n log n)
 
 ![Quick Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1.png)
 ![Quick Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m2.png)
 ![Quick Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1-m2.png)
 
-### Seleccion (Selection Sort): O(n^2)
+### Selección (Selection Sort): O(n^2)
 
 ![Selection Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1.png)
 ![Selection Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m2.png)
 ![Selection Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1-m2.png)
 
-### Grafica comparativa de todos los algoritmos
+### Gráfica comparativa de todos los algoritmos
 
 ![All algorithms M1](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1.png)
 ![All algorithms M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m2.png)
 ![All algorithms M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1-m2.png)
 
-En esa comparativa, los cuatro algoritmos rapidos (`quickSort`, `mergeSort`, `heapSort`, `countingSort`) se solapan por escala. El perdedor claro fue `bubbleSort`, seguido por `insertionSort` y `selectionSort`.
+En esa comparativa, los cuatro algoritmos rápidos (`quickSort`, `mergeSort`, `heapSort`, `countingSort`) se solapan por escala. El perdedor claro fue `bubbleSort`, seguido por `insertionSort` y `selectionSort`.
 
-Esto refleja un reto clasico en computacion: para un mismo problema hay muchas soluciones, pero cada una funciona mejor bajo condiciones concretas.
+Esto refleja un reto clásico en computación: para un mismo problema hay muchas soluciones, pero cada una funciona mejor bajo condiciones concretas.
 
 ---
 
-## Tiempos de respuesta (ultimos 7 puntos)
+## Tiempos de respuesta (últimos 7 puntos)
 
-### Maquina 1 (M1)
+### Máquina 1 (M1)
 
 | Size | BubbleSort | CountingSort | HeapSort | InsertionSort | MergeSort | QuickSort | SelectionSort |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,7 +174,7 @@ Esto refleja un reto clasico en computacion: para un mismo problema hay muchas s
 | 1,500,000 | 13798.854123 | 0.027525 | 1.094257 | 6555.365499 | 0.743651 | 0.315602 | 4839.340426 |
 | 1,600,000 | 15205.680544 | 0.028478 | 0.996648 | 6794.512119 | 0.725347 | 0.325990 | 5056.213092 |
 
-### Maquina 2 (M2)
+### Máquina 2 (M2)
 
 | Size | BubbleSort | CountingSort | HeapSort | InsertionSort | MergeSort | QuickSort | SelectionSort |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -188,9 +188,9 @@ Esto refleja un reto clasico en computacion: para un mismo problema hay muchas s
 
 ---
 
-## Algoritmos rapidos
+## Algoritmos rápidos
 
-Al graficar solo los algoritmos eficientes (`quickSort`, `mergeSort`, `heapSort`, `countingSort`), casi ninguno supero 1 segundo con 1.600.000 datos.
+Al graficar solo los algoritmos eficientes (`quickSort`, `mergeSort`, `heapSort`, `countingSort`), casi ninguno superó 1 segundo con 1.600.000 datos.
 
 ![Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1.png)
 ![Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m2.png)
@@ -199,24 +199,24 @@ Al graficar solo los algoritmos eficientes (`quickSort`, `mergeSort`, `heapSort`
 El ganador fue `countingSort` (`O(n+k)`), pero no es una bala de plata:
 
 - Solo funciona con enteros.
-- Puede consumir mucha memoria si `maximo - minimo` es grande.
+- Puede consumir mucha memoria si `máximo - mínimo` es grande.
 
-En segundo lugar quedo `quickSort`, muy usado en practica, aunque puede degradar a `O(n^2)` con mala seleccion de pivote y distribuciones adversas.
+En segundo lugar quedó `quickSort`, muy usado en práctica, aunque puede degradar a `O(n^2)` con mala selección de pivote y distribuciones adversas.
 
 ---
 
-## Maquina 1 vs Maquina 2
+## Máquina 1 vs Máquina 2
 
-Surgio una pregunta importante: ¿como puede M1 vencer a M2 en tiempos si M2 tiene el doble de recursos?
+Surgió una pregunta importante: ¿cómo puede M1 vencer a M2 en tiempos si M2 tiene el doble de recursos?
 
-La clave es que los algoritmos no estaban paralelizados. Aunque M2 tiene dos nucleos, el codigo no usaba hilos para explotarlos realmente.
+La clave es que los algoritmos no estaban paralelizados. Aunque M2 tiene dos núcleos, el código no usaba hilos para explotarlos realmente.
 
-Eso deja la comparacion mas ligada a frecuencia de CPU por nucleo:
+Eso deja la comparación más ligada a frecuencia de CPU por núcleo:
 
 - M1: `2399.998 MHz`
 - M2: `1799.998 MHz`
 
-### Informacion del sistema
+### Información del sistema
 
 ![Arquitectura del sistema de la Máquina 1 de benchmark — especificaciones del droplet de DigitalOcean](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m1.png)
 ![Arquitectura del sistema de la Máquina 2 de benchmark — especificaciones del droplet de DigitalOcean](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m2.png)
@@ -237,34 +237,34 @@ $ lscpu
 
 ---
 
-## Prueba extendida (maxima capacidad por memoria)
+## Prueba extendida (máxima capacidad por memoria)
 
-Luego extendi el experimento enfocandome en algoritmos eficientes para ver cuanto soportaban las maquinas por memoria disponible:
+Luego extendí el experimento enfocándome en algoritmos eficientes para ver cuánto soportaban las máquinas por memoria disponible:
 
 ![Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m1.png)
 ![Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m2.png)
 
-Aqui M2 (2GB RAM) si logro procesar mas volumen en varios casos.
+Aquí M2 (2GB RAM) sí logró procesar más volumen en varios casos.
 
-### Counting Sort hasta maximo volumen
+### Counting Sort hasta máximo volumen
 
 ![Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1.png)
 ![Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m2.png)
 ![Counting Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1-m2.png)
 
-### Heap Sort hasta maximo volumen
+### Heap Sort hasta máximo volumen
 
 ![Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1.png)
 ![Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m2.png)
 ![Heap Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1-m2.png)
 
-### Merge Sort hasta maximo volumen
+### Merge Sort hasta máximo volumen
 
 ![Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1.png)
 ![Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m2.png)
 ![Merge Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1-m2.png)
 
-### Quick Sort hasta maximo volumen
+### Quick Sort hasta máximo volumen
 
 ![Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1.png)
 ![Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m2.png)
@@ -276,24 +276,24 @@ Aqui M2 (2GB RAM) si logro procesar mas volumen en varios casos.
 ![Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m2.png)
 ![Todos los algoritmos rápidos a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1-m2.png)
 
-Al extender el experimento con mayor volumen de datos, las curvas se volvieron mas uniformes y comparables con sus funciones de complejidad teorica.
+Al extender el experimento con mayor volumen de datos, las curvas se volvieron más uniformes y comparables con sus funciones de complejidad teórica.
 
 ---
 
 ## Conclusiones
 
-Este ejercicio me ayudo a reforzar varias ideas:
+Este ejercicio me ayudó a reforzar varias ideas:
 
-- Complejidad algoritmica importa, pero no cuenta toda la historia.
-- El hardware influye segun el tipo de algoritmo y su uso real de recursos.
-- Mas RAM no siempre acelera, pero puede ampliar el limite de datos procesables.
-- Paralelismo real requiere diseno explicito (hilos, particion de trabajo, etc.).
+- Complejidad algorítmica importa, pero no cuenta toda la historia.
+- El hardware influye según el tipo de algoritmo y su uso real de recursos.
+- Más RAM no siempre acelera, pero puede ampliar el límite de datos procesables.
+- Paralelismo real requiere diseño explícito (hilos, partición de trabajo, etc.).
 
-Espero que este analisis le sirva a quien esta empezando en ciencias de la computacion o quiere repasar fundamentos.
+Espero que este análisis le sirva a quien está empezando en ciencias de la computación o quiere repasar fundamentos.
 
-Recursos: [Repositorio con codigo en GitHub](https://github.com/xergioalex/analysisOfSortAlgorithms)
+Recursos: [Repositorio con código en GitHub](https://github.com/xergioalex/analysisOfSortAlgorithms)
 
 ---
 
-> "La inteligencia consiste no solo en el conocimiento, sino tambien en la destreza de aplicar los conocimientos en la practica."  
-> **Aristoteles**
+> "La inteligencia consiste no solo en el conocimiento, sino también en la destreza de aplicar los conocimientos en la práctica."  
+> **Aristóteles**
