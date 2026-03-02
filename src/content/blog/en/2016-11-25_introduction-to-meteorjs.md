@@ -1,10 +1,10 @@
 ---
 title: "Introduction to Meteor.js"
-description: "Introductory talk to Meteor.js — full-stack reactive framework, with a live demo building a real-time chat in minutes."
+description: "My first tech talk ever — building a real-time chat app with Meteor.js from zero to working prototype in minutes, with reactive data and no WebSockets setup."
 pubDate: "2016-11-25"
 heroImage: "/images/blog/posts/introduction-to-meteorjs/hero.png"
 heroLayout: "banner"
-tags: ["talks", "tech"]
+tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
 This was my **first talk ever** in a tech community. I gave it at [Pereira JS](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) during a special edition held at the Universidad Tecnológica de Pereira (UTP), alongside Manuel Pineda's talk on P2P and WebTorrent. It was a great experience — and the topic I chose was Meteor.js.

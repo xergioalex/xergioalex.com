@@ -1,10 +1,10 @@
 ---
 title: 'Introducción a Meteor.js'
-description: 'Charla introductoria a Meteor.js — framework full-stack reactivo, con demo en vivo de un chat en tiempo real en minutos.'
+description: 'Mi primera charla tech — construir una app de chat en tiempo real con Meteor.js desde cero hasta un prototipo funcionando en minutos, con datos reactivos y sin configurar WebSockets.'
 pubDate: '2016-11-25'
 heroImage: '/images/blog/posts/introduction-to-meteorjs/hero.png'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
+tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
 Esta fue mi **primera charla** en una comunidad tech. La di en [Pereira JS](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) durante una edición especial en la Universidad Tecnológica de Pereira (UTP), junto con la charla de Manuel Pineda sobre P2P y WebTorrent. Fue una gran experiencia — y el tema que elegí fue Meteor.js.
@@ -25,7 +25,7 @@ Ideas clave:
 
 ---
 
-## La Demo: Construir un Chat en Vivo en Minutos
+## La demo: construir un chat en vivo en minutos
 
 El corazón de mi charla fue una demo en vivo. Quería mostrar qué tan rápido se podía construir un **chat en tiempo real** con Meteor — algo que normalmente requeriría WebSockets, una base de datos y mucho código de pegamento. Con Meteor, se sentía casi trivial.
 
@@ -39,11 +39,11 @@ meteor
 
 Eso es todo. Obtienes una app corriendo con un stack reactivo ya conectado.
 
-### El Modelo
+### El modelo
 
 Usamos una colección simple `Messages`. En Meteor, las colecciones son **reactivas** — cuando insertas un documento en el servidor, cada cliente suscrito recibe la actualización automáticamente. Sin polling, sin refresh manual.
 
-### La Magia: Publicar y Suscribir
+### La magia: publicar y suscribir
 
 En el servidor, **publicas** los datos que quieres exponer:
 
@@ -61,7 +61,7 @@ Meteor.subscribe('messages');
 
 Una vez suscrito, `Messages.find()` en el cliente devuelve datos reactivos. ¿Agregas un mensaje nuevo? Aparece en todos lados, al instante.
 
-### Insertar Mensajes
+### Insertar mensajes
 
 Usamos un **Meteor Method** para insertar mensajes de forma segura (validación en el servidor):
 
@@ -86,7 +86,7 @@ Todo el proceso — de cero a un chat multi-usuario funcionando — tomó solo u
 
 ---
 
-## Por Qué Meteor Se Siente Especial
+## Por qué Meteor se siente especial
 
 Construir apps en tiempo real usualmente significa:
 

@@ -5,7 +5,6 @@ pubDate: '2025-01-02'
 heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
-draft: false
 ---
 
 A medida que las aplicaciones en contenedores crecen en complejidad, gestionar contenedores individuales se vuelve impractico. Kubernetes (K8s) surgio como el estandar de la industria para automatizar el despliegue, escalado y gestion de aplicaciones en contenedores.

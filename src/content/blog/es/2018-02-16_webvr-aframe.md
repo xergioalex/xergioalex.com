@@ -1,17 +1,17 @@
 ---
 title: 'WebVR con A-Frame'
-description: 'Introducción a la realidad virtual y WebVR con A-Frame — framework de Mozilla para crear experiencias 3D y VR con HTML, en Pereira Tech Talks.'
+description: 'Creando experiencias VR con HTML — mi charla en Pereira Tech Talks sobre A-Frame, el framework de Mozilla que lleva la realidad virtual a la web sin configuración.'
 pubDate: '2018-02-16'
 heroImage: '/images/blog/posts/webvr-aframe/event-1.webp'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
+tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
-Di una charla en [Pereira Tech Talks](https://www.pereiratechtalks.com/) sobre realidad virtual en la web. Quería hacer una introducción al tema y mostrar WebVR con A-Frame — un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción.
+Realidad virtual en la web sin herramientas especializadas ni configuración compleja — esa era la promesa que quería compartir en Pereira Tech Talks. A-Frame es un framework que te permite crear experiencias 3D y VR usando solo HTML y JavaScript, sin pasos de construcción. Si sabés HTML, podés hacer VR.
 
 ---
 
-## Por Qué la Web para VR
+## Por qué la web para VR
 
 Empecé hablando del hardware. Los visores de gama alta — HTC Vive, Oculus Rift, Sony VR — cuestan cientos de dólares. Pero la barrera de entrada baja mucho con opciones como Cardboard (unos 7 USD) o VR Box (unos 15 USD). La web es la plataforma de distribución masiva más importante: no necesitas instalar nada, solo un navegador.
 
@@ -31,7 +31,7 @@ El inspector web de A-Frame da la sensación de trabajar con Unity — puedes in
 
 ---
 
-## Lo Que Mostré en la Charla
+## Lo que mostré en la charla
 
 Hice varias demos en vivo, desde lo más básico hasta proyectos más elaborados:
 
@@ -58,5 +58,9 @@ También mostré proyectos de inspiración: A-Painter de Mozilla, A-Frame City B
 - [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.com/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — resumen del evento
 
 ![Memorias del evento](/images/blog/posts/webvr-aframe/event-3.webp)
+
+---
+
+La web sigue siendo la plataforma más accesible para experimentar con nuevas tecnologías. WebVR abrió puertas que todavía vale la pena explorar — incluso mientras el estándar evoluciona hacia WebXR, la idea central permanece: hacer las experiencias inmersivas universalmente accesibles.
 
 A seguir construyendo.

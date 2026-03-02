@@ -5,7 +5,6 @@ pubDate: '2025-01-01'
 heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
-draft: false
 ---
 
 Docker ha cambiado fundamentalmente la forma en que los desarrolladores construyen, distribuyen y ejecutan aplicaciones. Al empaquetar software en unidades estandarizadas llamadas contenedores, Docker garantiza que tu aplicacion funcione sin problemas en diferentes entornos, desde tu maquina local hasta servidores de produccion.

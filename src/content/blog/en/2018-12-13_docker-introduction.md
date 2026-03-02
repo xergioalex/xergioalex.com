@@ -4,10 +4,10 @@ description: "What I shared in a talk on Docker and microservice-oriented archit
 pubDate: "2018-12-13"
 heroImage: "/images/blog/posts/docker-introduction/hero.png"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
+tags: ["talks", "tech", "devops"]
 ---
 
-I gave an introduction to Docker with a focus on **microservice-oriented architectures**. The goal was to connect both worlds: on one side, what defines a microservice and why it matters; on the other, how Docker and containers fit into that picture for building autonomous, isolated, and scalable systems.
+Docker with a focus on **microservice-oriented architectures**. The goal: connect both worlds — on one side, what defines a microservice and why it matters; on the other, how Docker and containers fit into that picture for building autonomous, isolated, and scalable systems.
 
 ---
 
@@ -60,6 +60,10 @@ I showed live demos during the talk, including a load balancer with Docker. The 
 - [Docker Machine](https://docs.docker.com/machine/)
 - [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [GitHub GraphQL API](https://developer.github.com/v4/) — useful for integrating with modern APIs from your containers
+
+---
+
+If you want a hands-on deep dive into Docker itself — from Dockerfiles and volumes to networks and Docker Compose — check out the [Docker Introductory Workshop](/blog/docker-introductory-workshop/) I conducted at Rocka Labs.
 
 ---
 

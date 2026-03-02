@@ -91,7 +91,7 @@ describe('MyComponent', () => {
 Import mock data from `tests/fixtures/posts.ts`:
 
 ```typescript
-import { publishedEnglishPost, draftPost } from '../../fixtures/posts';
+import { publishedEnglishPost, demoEnglishPost } from '../../fixtures/posts';
 
 // Use `as never` for CollectionEntry type compatibility
 render(BlogCard, { props: { post: publishedEnglishPost as never } });

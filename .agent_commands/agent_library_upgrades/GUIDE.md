@@ -272,7 +272,7 @@ npm run build             # Verify production build works
 # Start development server
 npm run dev
 
-# Open http://localhost:4321
+# Open http://localhost:4444
 # Navigate to key pages (home, blog, about)
 # Verify no console errors
 ```

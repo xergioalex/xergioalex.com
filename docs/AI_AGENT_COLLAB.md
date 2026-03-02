@@ -104,7 +104,7 @@ Use conventional commits with clear context:
 # Good - clear what and why
 git commit -m "feat: add blog search with debounced input
 
-- Uses /api/posts.json for search index
+- Uses /api/posts-{lang}.json shard endpoints for search index
 - Debounces input by 300ms
 - Filters by title, description, and tags"
 
@@ -122,7 +122,7 @@ Added client-side blog search functionality.
 
 ## Changes
 - New BlogSearch.svelte component
-- API endpoint for search index
+- Language-sharded search endpoints (`/api/posts-en.json`, `/api/posts-es.json`)
 
 ## Testing
 - [x] Search filters correctly
@@ -130,8 +130,8 @@ Added client-side blog search functionality.
 - [x] Dark mode supported
 
 ## Notes for Reviewers
-The search is client-side for now. Consider server-side
-if post count exceeds 100.
+Search is static-first and shard-based for scale. Keep
+`npm run search:budgets` green to avoid payload regressions.
 ```
 
 ## Conflict Resolution

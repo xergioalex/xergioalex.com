@@ -241,11 +241,11 @@ export const BLOG_PAGE_SIZE = 30; // Posts per page
 
 ### Search Optimization
 
-Client-side search loads post metadata on demand:
+Client-side search loads lightweight metadata shards on demand:
 
 ```typescript
-// Search index is cached and loaded once
-const response = await fetch('/api/posts.json');
+// Search index shard is cached and loaded once
+const response = await fetch('/api/posts-en.json'); // or /api/posts-es.json
 const posts = await response.json();
 ```
 

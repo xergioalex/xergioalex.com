@@ -6,6 +6,7 @@ import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 // @ts-check
 import { defineConfig } from 'astro/config';
+import rehypeExternalLinks from 'rehype-external-links';
 
 import excludeInternal from './src/integrations/exclude-internal';
 
@@ -18,6 +19,17 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always',
   },
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer'],
+        },
+      ],
+    ],
+  },
   integrations: [
     mdx(),
     sitemap({
@@ -29,18 +41,10 @@ export default defineConfig({
   ],
   server: {
     host: true,
+    port: 4444,
   },
   vite: {
     plugins: [tailwindcss()],
-    define: {
-      // Enable preview features (draft/scheduled/demo badges, "Show all posts") on Cloudflare Pages
-      // preview branches. Production branch (main) does NOT get these features.
-      'import.meta.env.PREVIEW_FEATURES': JSON.stringify(
-        process.env.CF_PAGES_BRANCH
-          ? !['main', 'master', 'production'].includes(process.env.CF_PAGES_BRANCH)
-          : false
-      ),
-    },
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
@@ -54,6 +58,7 @@ export default defineConfig({
       hmr: {
         overlay: true,
       },
+      port: 4444,
     },
   },
 });

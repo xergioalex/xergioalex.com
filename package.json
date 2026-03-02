@@ -1,5 +1,13 @@
 {
   "name": "xergioalex.com",
+  "description": "Personal website & blog — CTO at DailyBot (YC S21), builder of 20+ products",
+  "author": "Sergio Alexander Florez Galeano",
+  "license": "MIT",
+  "homepage": "https://xergioalex.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xergioalex/xergioalex.com"
+  },
   "type": "module",
   "version": "0.0.45",
   "scripts": {
@@ -19,6 +27,8 @@
     "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:webp": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
+    "search:budgets": "node scripts/check-search-performance-budgets.mjs",
+    "lighthouse": "lhci autorun",
     "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
   },
   "dependencies": {
@@ -27,22 +37,24 @@
     "@astrojs/rss": "4.0.15",
     "@astrojs/sitemap": "3.7.0",
     "@astrojs/svelte": "7.2.5",
-    "astro": "5.17.2",
+    "astro": "5.18.0",
     "fuse.js": "7.1.0",
-    "svelte": "5.50.3",
-    "tailwindcss": "4.1.18",
+    "rehype-external-links": "3.0.0",
+    "svelte": "5.53.6",
+    "tailwindcss": "4.2.1",
     "typescript": "5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.15",
+    "@biomejs/biome": "2.4.5",
+    "@lhci/cli": "0.15.1",
     "@tailwindcss/typography": "0.5.19",
-    "@tailwindcss/vite": "4.1.18",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/svelte": "^5.3.1",
-    "@vitest/coverage-v8": "^4.0.18",
-    "happy-dom": "^20.6.1",
-    "npm-check-updates": "19.3.2",
-    "sharp": "^0.34.5",
-    "vitest": "^4.0.18"
+    "@tailwindcss/vite": "4.2.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/svelte": "5.3.1",
+    "@vitest/coverage-v8": "4.0.18",
+    "happy-dom": "20.7.0",
+    "npm-check-updates": "19.6.3",
+    "sharp": "0.34.5",
+    "vitest": "4.0.18"
   }
 }

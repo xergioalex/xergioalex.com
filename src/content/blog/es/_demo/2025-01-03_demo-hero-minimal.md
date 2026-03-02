@@ -5,7 +5,6 @@ pubDate: '2025-01-03'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
-draft: false
 ---
 
 La Integracion Continua y el Despliegue Continuo (CI/CD) son practicas que automatizan el proceso de integrar cambios de codigo, ejecutar pruebas y desplegar aplicaciones. Cuando se implementan bien, transforman la forma en que los equipos entregan software — de lanzamientos manuales propensos a errores a pipelines automatizados y confiables.

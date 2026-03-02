@@ -1,9 +1,13 @@
 ---
+import EntrepreneurTimeline from '@/components/entrepreneur/EntrepreneurTimeline.svelte';
+import JsonLd from '@/components/JsonLd.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
+import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
 import TimelineItem from '@/components/pages/TimelineItem.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import type { Language } from '@/lib/i18n';
+import { getBlogPosts } from '@/lib/blog';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -12,9 +16,43 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+const contactCtaHref = `${prefix}/contact?${new URLSearchParams({
+  topic: 'collaboration',
+  subject: t.contactPage.prefillSubjects.startupCollaboration,
+}).toString()}`;
+
+const { postsResult: posts } = await getBlogPosts({
+  lang,
+  tag: 'entrepreneur',
+  pageSize: 100,
+});
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${siteUrl}${prefix}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.entrepreneurPage.title,
+      item: `${siteUrl}${prefix}/entrepreneur`,
+    },
+  ],
+};
 ---
 
 <MainLayout lang={lang} title={t.entrepreneurPage.title} description={t.entrepreneurPage.description}>
+  <Fragment slot="head">
+    <JsonLd data={breadcrumbSchema} />
+  </Fragment>
   <PageHero
     title={t.entrepreneurPage.title}
     subtitle={t.entrepreneurPage.subtitle}
@@ -48,4 +86,23 @@ const t = getTranslations(lang);
       ))}
     </ol>
   </PageSection>
+
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="main-container text-center">
+      <a href={contactCtaHref} class="inline-block px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors">
+        {t.contactPage.title}
+      </a>
+    </div>
+  </section>
+
+  <section id="timeline" class="py-12 md:py-16">
+    <div class="main-container">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
+        {t.entrepreneurPage.timelineTitle}
+      </h2>
+      <EntrepreneurTimeline client:visible posts={posts} lang={lang} />
+    </div>
+  </section>
+
+  <ScrollToTimeline client:load lang={lang} targetLabel={t.entrepreneurPage.timelineTitle} />
 </MainLayout>

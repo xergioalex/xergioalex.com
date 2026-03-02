@@ -16,6 +16,10 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
+const contactCtaHref = `${prefix}/contact?${new URLSearchParams({
+  topic: 'project',
+  subject: t.contactPage.prefillSubjects.projectInquiry,
+}).toString()}`;
 const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
 
 const breadcrumbSchema = {
@@ -109,10 +113,15 @@ const breadcrumbSchema = {
     </ul>
   </PageSection>
 
-  <PageSection background="gray" title="">
-    <div class="text-center">
+  <PageSection
+    background="gray"
+    title={t.cvPage.ctaTitle}
+    description={t.cvPage.ctaDescription}
+    center
+  >
+    <div class="text-center mt-4">
       <a
-        href={`${prefix}/contact`}
+        href={contactCtaHref}
         class="inline-flex items-center px-6 py-3 rounded-lg bg-secondary text-white font-semibold hover:bg-secondary/90 transition-colors duration-200"
       >
         {t.cvPage.ctaText}

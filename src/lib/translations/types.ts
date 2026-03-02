@@ -74,7 +74,6 @@ export interface SiteTranslations {
     dailybot: string;
     entrepreneur: string;
     techTalks: string;
-    maker: string;
     trading: string;
     foodie: string;
     hobbies: string;
@@ -108,12 +107,6 @@ export interface SiteTranslations {
       cta: string;
     };
     techTalks: {
-      title: string;
-      subtitle: string;
-      description: string;
-      cta: string;
-    };
-    maker: {
       title: string;
       subtitle: string;
       description: string;
@@ -229,6 +222,8 @@ export interface SiteTranslations {
     skillCategories: SkillCategory[];
     languagesTitle: string;
     languages: LanguageSkill[];
+    ctaTitle: string;
+    ctaDescription: string;
     ctaText: string;
   };
 
@@ -266,6 +261,8 @@ export interface SiteTranslations {
     philosophyText: string;
     lessonsTitle: string;
     lessons: string[];
+    timelineTitle: string;
+    emptyState: string;
   };
 
   // Tech Talks page
@@ -276,6 +273,8 @@ export interface SiteTranslations {
     heroDescription: string;
     communityTitle: string;
     communityText: string;
+    communityImageAlt1: string;
+    communityImageAlt2: string;
     topicsTitle: string;
     topics: HighlightItem[];
     philosophyTitle: string;
@@ -286,22 +285,6 @@ export interface SiteTranslations {
     emptyState: string;
   };
 
-  // Maker page
-  makerPage: {
-    title: string;
-    subtitle: string;
-    description: string;
-    heroDescription: string;
-    philosophyTitle: string;
-    philosophyText: string;
-    areasTitle: string;
-    areas: HighlightItem[];
-    currentTitle: string;
-    currentText: string;
-    ctaText: string;
-    ctaLink: string;
-  };
-
   // Portfolio page
   portfolioPage: {
     title: string;
@@ -310,8 +293,14 @@ export interface SiteTranslations {
     heroDescription: string;
     journeyTitle: string;
     journeyText: string;
+    philosophyTitle: string;
+    philosophyText: string;
     areasTitle: string;
     areas: HighlightItem[];
+    currentTitle: string;
+    currentText: string;
+    ctaText: string;
+    ctaLink: string;
     timelineTitle: string;
     emptyState: string;
   };
@@ -330,6 +319,8 @@ export interface SiteTranslations {
     areas: HighlightItem[];
     philosophyTitle: string;
     philosophyText: string;
+    ctaTitle: string;
+    ctaText: string;
     timelineTitle: string;
     emptyState: string;
   };
@@ -385,10 +376,28 @@ export interface SiteTranslations {
     messageLabel: string;
     messagePlaceholder: string;
     sendButton: string;
+    sendingButton: string;
+    successTitle: string;
+    successMessage: string;
+    sendAnotherButton: string;
+    requiredField: string;
+    invalidEmail: string;
+    fallbackMessage: string;
+    fallbackEmailText: string;
     formNote: string;
     socialTitle: string;
     locationTitle: string;
     locationText: string;
+    prefillSubjects: {
+      generalInquiry: string;
+      collaboration: string;
+      projectInquiry: string;
+      projectCollaboration: string;
+      startupCollaboration: string;
+      techTalkInvitation: string;
+      tradingQuestion: string;
+      dailybotQuestion: string;
+    };
   };
 
   // Homepage Let's Connect section
@@ -430,7 +439,15 @@ export interface SiteTranslations {
   relatedArticles: string;
   relatedArticlesDescription: string;
 
-  // Tags
+  // Series navigation
+  seriesPartOf: string;
+  seriesChapter: (n: number) => string;
+  seriesPrevious: string;
+  seriesNext: string;
+  seriesToC: string;
+  seriesChapterOf: (current: number, total: number) => string;
+
+  // Tags (unified — covers primary, secondary, and subtopic tiers)
   postsTagged: (tag: string) => string;
   allTags: string;
   tagNames: Record<string, string>;
@@ -445,18 +462,6 @@ export interface SiteTranslations {
   // Scroll to timeline
   scrollToTimeline: string;
   viewLabel: (label: string) => string;
-
-  // Post status (dev mode indicators)
-  postStatus: {
-    draft: string;
-    scheduled: string;
-    'draft+scheduled': string;
-    demo: string;
-  };
-  previewMode: string;
-  showAllPosts: string;
-  showPublishedOnly: string;
-  publishesOn: string;
 
   // 404 page
   notFoundPage: {

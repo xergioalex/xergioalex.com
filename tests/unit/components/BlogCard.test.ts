@@ -4,12 +4,9 @@ import { describe, expect, it } from 'vitest';
 import BlogCard from '@/components/blog/BlogCard.svelte';
 
 import {
-	demoEnglishPost,
-	draftPost,
 	minimalPost,
 	publishedEnglishPost,
 	publishedSpanishPost,
-	scheduledPost,
 } from '../../fixtures/posts';
 
 // ─── Basic rendering ───────────────────────────────────
@@ -104,61 +101,4 @@ describe('BlogCard', () => {
 		});
 	});
 
-	// ─── Status badges ─────────────────────────────────
-
-	describe('status badges', () => {
-		it('shows draft badge for draft posts when isDev=true', () => {
-			const { container } = render(BlogCard, {
-				props: { post: draftPost as never, isDev: true },
-			});
-			// PostStatusBadge renders badge text from translations
-			expect(container.textContent).toContain('Draft');
-		});
-
-		it('does not show badges when isDev=false', () => {
-			const { container } = render(BlogCard, {
-				props: { post: draftPost as never, isDev: false },
-			});
-			// No PostStatusBadge span should be rendered
-			const badges = container.querySelectorAll('.border.rounded-md');
-			expect(badges).toHaveLength(0);
-		});
-
-		it('shows demo badge for demo posts when isDev=true', () => {
-			const { container } = render(BlogCard, {
-				props: { post: demoEnglishPost as never, isDev: true },
-			});
-			expect(container.textContent).toContain('Demo');
-		});
-	});
-
-	// ─── Preview mode ──────────────────────────────────
-
-	describe('preview mode', () => {
-		it('appends ?preview=all to tag URLs when isPreviewMode=true', () => {
-			const { container } = render(BlogCard, {
-				props: {
-					post: publishedEnglishPost as never,
-					isPreviewMode: true,
-				},
-			});
-			const tagLinks = container.querySelectorAll('a[href*="/blog/tag/"]');
-			for (const link of tagLinks) {
-				expect(link.getAttribute('href')).toContain('?preview=all');
-			}
-		});
-
-		it('does not append query string when isPreviewMode=false', () => {
-			const { container } = render(BlogCard, {
-				props: {
-					post: publishedEnglishPost as never,
-					isPreviewMode: false,
-				},
-			});
-			const tagLinks = container.querySelectorAll('a[href*="/blog/tag/"]');
-			for (const link of tagLinks) {
-				expect(link.getAttribute('href')).not.toContain('?preview=all');
-			}
-		});
-	});
 });

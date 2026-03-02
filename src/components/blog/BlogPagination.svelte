@@ -8,11 +8,9 @@ export let isSearchMode = false;
 export let onPageChange = null;
 export let currentTag = null;
 export let lang = 'en';
-export let isPreviewMode = false;
 
 $: t = getTranslations(lang);
 $: basePrefix = getUrlPrefix(lang);
-$: querySuffix = isPreviewMode ? '?preview=all' : '';
 $: visiblePages = getVisiblePages();
 
 function handlePageChange(page) {
@@ -38,7 +36,7 @@ function getPageUrl(page) {
       url = `${basePrefix}/blog/page/${page}/`;
     }
   }
-  return `${url}${querySuffix}`;
+  return url;
 }
 
 function getVisiblePages() {
@@ -107,7 +105,7 @@ function getVisiblePages() {
             aria-current={page === currentPage ? 'page' : undefined}
             class={`px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium rounded-md ${
               page === currentPage
-                ? 'bg-blue-500 text-white'
+                ? 'bg-blue-600 text-white'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700'
             }`}
           >
@@ -120,7 +118,7 @@ function getVisiblePages() {
             aria-current={page === currentPage ? 'page' : undefined}
             class={`px-3 py-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-sm font-medium rounded-md ${
               page === currentPage
-                ? 'bg-blue-500 text-white'
+                ? 'bg-blue-600 text-white'
                 : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700'
             }`}
           >

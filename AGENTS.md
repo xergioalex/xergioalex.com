@@ -254,6 +254,7 @@ When you create or modify content in one language, you MUST create or update the
 **Blog Posts:**
 - When creating or modifying a blog post in `src/content/blog/en/`, the corresponding post in `src/content/blog/es/` MUST be created or updated with the translated content, and vice versa.
 - Translate `title`, `description`, and body content. Preserve `pubDate`, `updatedDate`, `heroImage`, `tags`, code blocks, and formatting.
+- **MANDATORY workflow for new posts:** Use `/add-blog-post` skill. Do not create new blog post files manually unless the user explicitly requests bypassing the skill.
 
 **Translation Strings:**
 - When adding new UI strings to `src/lib/translations/`, translations MUST be added for BOTH English and Spanish simultaneously.
@@ -316,6 +317,8 @@ The architecture is designed so adding a new language requires zero changes to c
 4. **Use native browser APIs** — IntersectionObserver over scroll listeners, native `loading="lazy"` over JS lazy-loaders
 5. **Optimize images** — always include dimensions, use lazy loading for below-fold content
 6. **Avoid layout shifts** — reserve space for async content, use `font-display: swap`
+7. **Keep blog search payload lean** — never inline full search index into blog page HTML; use language-sharded static endpoints (`/api/posts-en.json`, `/api/posts-es.json`) and keep index schema minimal (no full article body)
+8. **Protect Lighthouse/PageSpeed scores** — run `npm run search:budgets` after search-related changes and treat failures as blockers
 
 **Before any change, ask:** Does this add JS? Could it use a lighter hydration? Could CSS do this instead?
 
@@ -339,6 +342,17 @@ The architecture is designed so adding a new language requires zero changes to c
 
 **See [Accessibility Guide](docs/ACCESSIBILITY.md) for complete standards and approved color pairings.**
 
+### 9. Analytics Verification Policy (MANDATORY)
+
+Google Search Console ownership is verified via **Domain property DNS TXT**.
+
+**Rules for all agents:**
+
+1. Do not add or reintroduce `PUBLIC_GOOGLE_SITE_VERIFICATION`.
+2. Do not add `google-site-verification` meta tags in templates/components.
+3. Keep Bing verification as optional env-based meta tag (`PUBLIC_BING_SITE_VERIFICATION`).
+4. Treat GSC as part of analytics/SEO stack, but verification is DNS-only operational setup.
+
 ## Shared Agent Coordination - CRITICAL
 
 **Multiple AI agents collaborate on this codebase:**
@@ -359,7 +373,7 @@ The architecture is designed so adding a new language requires zero changes to c
 
 ```bash
 # Development
-npm run dev                # Start dev server (http://localhost:4321)
+npm run dev                # Start dev server (http://localhost:4444)
 npm run build              # Production build with type check
 npm run build              # Production build (outputs to dist/; prebuild runs images:webp)
 npm run astro:preview      # Preview production build
@@ -381,6 +395,9 @@ npm run ncu:upgrade        # Upgrade all packages
 
 # Images
 npm run images:optimize    # Process staged images (resize, compress, move)
+
+# Lighthouse
+npm run lighthouse         # Run Lighthouse audit on built dist/ (requires Chrome)
 
 # Release
 npm run release            # Bump version and create release commit
@@ -555,7 +572,7 @@ Page components in `src/components/pages/` receive `lang` and handle all transla
 3. **Auto-Generated Sitemap** (`/internal/sitemap`) — Build-time discovery of all site pages
 
 **Key architecture rules:**
-- **Dev-only:** Visible at `http://localhost:4321/internal/` during `npm run dev`. **Never deployed to production.**
+- **Dev-only:** Visible at `http://localhost:4444/internal/` during `npm run dev`. **Never deployed to production.**
 - **Three-layer production exclusion:**
   1. Post-build deletion via `src/integrations/exclude-internal.ts` (`astro:build:done` hook)
   2. Sitemap XML filter in `astro.config.mjs` (excludes `/internal/` URLs)
@@ -624,6 +641,153 @@ Blog posts use date-prefix naming for chronological ordering:
 - Use the post's `pubDate` as the date prefix
 - Use `getPostSlug()` from `@/lib/blog` to extract clean slugs from post IDs
 
+### Blog Tag Taxonomy (Unified Collection)
+
+The blog uses a **unified taxonomy collection** with a single `tags` array in blog post frontmatter. Tag tiers are defined in the tags collection (`src/content/tags/*.md`), NOT in the blog posts themselves.
+
+#### Architecture
+
+```
+Blog Post Frontmatter          Tags Collection (src/content/tags/)
+┌────────────────────┐         ┌──────────────────────────────┐
+│ tags:              │         │ tech.md     → tier: primary  │
+│   - tech           │────────►│ python.md   → tier: secondary│
+│   - portfolio      │  build  │ portfolio.md→ tier: primary  │
+│   - python         │  time   │ database.md → tier: secondary│
+│   - database       │ lookup  └──────────────────────────────┘
+└────────────────────┘                      │
+                                            ▼
+                               groupPostTags() splits by tier
+                               ┌─────────────────────────────┐
+                               │ primaryTags: [tech, portfolio]│
+                               │ topicTags: [python, database] │
+                               └─────────────────────────────┘
+```
+
+**Key principle:** Blog posts store a flat `tags` array. The tier (primary/secondary/subtopic) is resolved at **build time** from the tags collection. Zero runtime cost, zero Lighthouse impact.
+
+#### Three Tiers
+
+| Tier | Purpose | Visual Style | Example Tags |
+|------|---------|-------------|--------------|
+| `primary` | Section/category classification | Blue filled badges | `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot` |
+| `secondary` | Content/technology classification | Gray bordered badges | `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design` |
+| `subtopic` | Fine-grained specialization (future) | Gray bordered badges (same as secondary) | Not yet used — ready for when needed |
+
+#### Tag Collection Schema
+
+Each tag is a `.md` file in `src/content/tags/` with this frontmatter:
+
+```yaml
+---
+name: "python"                    # Tag identifier (must match what's used in blog posts)
+description: "Python ecosystem"   # Optional description
+tier: secondary                   # primary | secondary | subtopic
+parent: "tech"                    # Optional — parent tag for future hierarchical browsing
+order: 6                          # Sort order within tier (all tiers)
+---
+```
+
+#### Current Tags (17 total)
+
+**Primary (7):** `tech` (order: 1), `personal` (2), `portfolio` (3), `talks` (4), `trading` (5), `dailybot` (6), `demo` (99)
+
+**Secondary (10):** All have `parent: "tech"`. `web-development` (order: 1), `javascript` (2), `ai` (3), `blockchain` (4), `devops` (5), `python` (6), `university` (7), `database` (8), `iot` (9), `design` (10)
+
+**Subtopic (0):** None yet — the tier is supported in schema and code but not populated. When needed, use `tier: subtopic` with `parent` referencing a secondary tag (e.g., `parent: "python"`).
+
+#### Key Utilities (`src/lib/blog.ts`)
+
+| Function | Purpose |
+|----------|---------|
+| `getTagTierMap()` | Cached build-time lookup: tag name → tier |
+| `getTagTier(name)` | Get tier of a single tag |
+| `groupPostTags(tags)` | Split unified array into `{ primaryTags, topicTags }` |
+| `getRelatedPosts()` | Weighted scoring: primary match = 2 points, secondary/subtopic = 1 point |
+| `validateTagHierarchy()` | Build-time validation: orphaned parents, primary-with-parent, non-primary parents (warns, doesn't break) |
+
+#### How to Assign Tags to a Blog Post
+
+1. Choose 1-2 **primary tags** (section classification): `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot`
+2. Choose 1-3 **secondary tags** (topic classification): `web-development`, `javascript`, `ai`, etc.
+3. Put ALL of them in a single `tags` array:
+
+```yaml
+tags: ["tech", "portfolio", "python", "database"]
+```
+
+#### How to Add a New Tag
+
+1. Create a `.md` file in `src/content/tags/` (e.g., `typescript.md`)
+2. Set `tier`, `order`, and optionally `parent`
+3. Add translations to both `src/lib/translations/en.ts` and `es.ts` (`tagNames` + `tagDescriptions`)
+4. Use it in blog posts — no schema changes needed
+
+#### Tag Governance Rules
+
+**Creation criteria by tier:**
+
+| Tier | When to create | Who decides | Cap |
+|------|---------------|-------------|-----|
+| Primary | New site section (almost never) | User only, manually | ~8 |
+| Secondary | Topic applies to 3+ posts AND expected to recur | Agent proposes, user approves | ~20 |
+| Subtopic | Topic applies to 3+ posts within parent AND needs granularity | Agent proposes, user approves | ~15 |
+
+**New tag requirements:**
+- Name: lowercase, kebab-case (e.g., `web-development`)
+- Must include: `name`, `description`, `tier`, `order`, and `parent` (for secondary/subtopic)
+- Translations required in both `en.ts` and `es.ts` (`tagNames` + `tagDescriptions`)
+- Maximum 5 total tags per post (1-2 primary + 1-3 secondary/subtopic)
+
+**What agents must NOT do:**
+- Auto-create tags without user approval
+- Use a tag not defined in `src/content/tags/`
+- Skip the 3-post threshold when proposing new tags
+
+**Audit cadence:**
+- Every new post: `add-blog-post` skill checks existing tags, proposes new only if criteria met
+- Every ~20 posts: check for tags with <3 posts (candidates for removal/merger)
+- Build-time: `validateTagHierarchy()` warns about invalid parent references
+
+**All routes unified:** `/blog/tag/{tag}/` handles both primary and secondary tags
+
+#### Visual Rendering
+
+| Context | Primary Tags | Secondary/Subtopic Tags |
+|---------|-------------|------------------------|
+| Blog listing pills | Blue filled `bg-blue-600` (active) / `bg-blue-100` | Gray bordered `border-gray-200` |
+| Blog cards | Blue `bg-blue-100 text-blue-800` with `#` prefix | Gray bordered `border-gray-200 text-gray-600` |
+| Post detail header | Blue filled with `#` prefix | Gray bordered without `#` prefix |
+| Related articles | Blue (max 3 shown) | Gray bordered (max 2 shown) |
+
+#### Search Support
+
+Topics are fully searchable. The search API (`posts.json`) pre-groups tags by tier. Search scoring: title (0.0) > primary tags (0.1) > topics (0.15) > description (0.2).
+
+#### Future Scalability
+
+The `parent` field and `subtopic` tier are ready for hierarchical tag browsing (e.g., "Tech > Python > Django"). Adding subtopic tags requires zero code changes — just create `.md` files with `tier: subtopic` and `parent: "python"`
+
+### Blog Post Series
+
+Posts can belong to a **series** — a curated sequence of related posts displayed with chapter navigation. Series use the Content Collection pattern (same as tags).
+
+**How it works:**
+- Series are defined in `src/content/series/{slug}.md` with `name`, `title`, `description`, `order`
+- Blog posts reference a series via `series: "{slug}"` and `seriesOrder: {n}` in frontmatter
+- `SeriesNavigation.astro` renders a TOC + prev/next panel at the bottom of each series post
+- `SeriesIndicator.svelte` renders a floating button (bottom-right) showing "Chapter X of Y" with a progress ring, visible when the navigation panel is below the viewport. Uses `IntersectionObserver` + `client:load`. Mirrors the `ScrollToTimeline.svelte` pattern from portfolio/tech-talks pages.
+
+**Creating a new series:**
+1. Create `src/content/series/{series-slug}.md`
+2. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
+3. Build — the navigation panel and floating indicator appear automatically
+
+**Current series:**
+- `building-xergioalex` — "Building XergioAleX.com" (4 chapters)
+
+**Key files:** `src/content/series/*.md`, `src/content.config.ts` (series schema), `src/lib/blog.ts` (`getSeriesNavigation()`), `src/components/blog/SeriesNavigation.astro`, `src/components/blog/SeriesIndicator.svelte`
+
 ### Blog Post Hero Layouts
 
 Posts support a `heroLayout` frontmatter field:
@@ -635,23 +799,16 @@ Posts support a `heroLayout` frontmatter field:
 
 When creating a post, choose the layout based on the hero image aspect ratio.
 
-### Blog Post Status & Visibility
+### Blog Post Visibility
 
-Posts support a content lifecycle with multiple visibility states controlled by a `draft` frontmatter field and the `pubDate`:
+All blog posts are visible in both production and dev. The only special case is **demo posts** in `_demo/` folders:
 
-| Status | Frontmatter | Condition | Production | Dev |
-|--------|------------|-----------|:----------:|:---:|
-| Published | `draft: false` (default) | `pubDate <= now` | Visible | Visible |
-| Scheduled | `draft: false` | `pubDate > now` | Hidden (auto-publishes on rebuild) | Visible (badge) |
-| Draft | `draft: true` | any | Hidden | Visible (badge) |
-| Draft + Scheduled | `draft: true` | `pubDate > now` | Hidden | Visible (badges) |
-| Demo | any | File in `_demo/` folder | Hidden | Visible (badge) |
+| Type | Location | Production | Dev (listing) | Dev (direct URL) |
+|------|----------|:----------:|:-------------:|:----------------:|
+| Regular post | `src/content/blog/{lang}/` | Visible | Visible | Visible |
+| Demo post | `src/content/blog/{lang}/_demo/` | Hidden | Hidden | Accessible |
 
-**Draft field:** Add `draft: true` to frontmatter to mark a post as work-in-progress. Omitting `draft` or setting `draft: false` means the post is eligible for publishing.
-
-**Scheduling:** Set `pubDate` to a future date. The post will automatically become visible when the site is rebuilt after that date.
-
-**Preview mode:** Visit `/blog/?preview=all` in dev mode to see all posts including drafts, scheduled, and demo posts. A toggle link appears in dev mode to switch between published-only and all-posts views.
+Demo posts are **never** shown in blog listings, tag pages, RSS feeds, or search. They are only accessible by direct URL in local dev mode (`import.meta.env.DEV`) and serve as structural references for AI agents.
 
 ### Demo Posts
 
@@ -659,7 +816,7 @@ Demo posts showcase blog features and are stored in:
 - `src/content/blog/en/_demo/` (English)
 - `src/content/blog/es/_demo/` (Spanish)
 
-Demo posts are **never** visible in production builds. They serve as references for:
+Demo posts are **never** listed or built in production. In local dev, they are accessible by direct URL only. They serve as references for:
 - Hero layout variations (banner, side-by-side, minimal, none)
 - MDX capabilities
 - Rich Markdown formatting
@@ -711,9 +868,7 @@ public/images/blog/
 13. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
 14. Put blog images in random locations (use `public/images/blog/posts/{slug}/`)
 15. Commit unoptimized large images (use `npm run images:optimize`)
-16. Forget to set `draft: true` on work-in-progress posts
-17. Put demo posts outside `_demo/` folders
-18. Forget that scheduled posts require a site rebuild to go live
+16. Put demo posts outside `_demo/` folders
 19. Use `client:load` when `client:visible` or `client:idle` would suffice
 20. Add JS-based solutions when CSS can achieve the same result
 21. Forget to include image dimensions (causes layout shifts)
@@ -743,9 +898,7 @@ public/images/blog/
 13. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
-16. Use `draft: true` for work-in-progress posts
-17. Use `?preview=all` to view drafts/scheduled posts in dev mode
-18. Keep demo posts in `_demo/` folders (they're filtered automatically)
+16. Keep demo posts in `_demo/` folders (they're filtered automatically)
 19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
 20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
 21. Prefer CSS-only solutions over JavaScript when possible
@@ -768,7 +921,6 @@ public/images/blog/
 - [ ] Content exists in both English and Spanish versions (pages, blog posts)
 - [ ] Translation strings added for both languages in `src/lib/translations/` (if applicable)
 - [ ] Documentation updated if needed
-- [ ] Draft posts have `draft: true` in frontmatter
 - [ ] Demo posts are in `_demo/` folders only
 - [ ] Performance considered (lightest hydration, minimal JS, no layout shifts)
 - [ ] Accessibility: text contrast uses approved pairings (see [Accessibility Guide](docs/ACCESSIBILITY.md))
@@ -785,6 +937,8 @@ This repository includes a system for creating reusable **Skills** and **Agents*
 - **Agents**: Specialized worker personas for specific tasks (e.g., `reviewer`, `executor`, `architect`)
 
 **Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`.
+
+**Critical policy:** New blog post creation is standardized through `add-blog-post` to enforce multilingual parity, frontmatter correctness, tag governance, and series metadata consistency.
 
 Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills_agents_catalog.md).
 
@@ -834,6 +988,7 @@ Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills
 - [Security](docs/SECURITY.md)
 - [Performance](docs/PERFORMANCE.md)
 - [SEO](docs/SEO.md)
+- [Analytics](docs/ANALYTICS.md)
 - [Accessibility](docs/ACCESSIBILITY.md)
 - [Blog Posts](docs/features/BLOG_POSTS.md)
 - [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md)

@@ -1,24 +1,42 @@
 ---
 import StaticBlogSearch from '@/components/blog/StaticBlogSearch.svelte';
+import { getPostLanguage, getPostSlug, groupPostTags } from '@/lib/blog';
 import type { BlogPostsResultType } from '@/lib/types';
 
 export interface Props {
   blogPostsResult: BlogPostsResultType;
   currentTag?: string;
   lang?: string;
-  isDev?: boolean;
 }
-const { blogPostsResult, currentTag, lang = 'en', isDev = false } = Astro.props;
+const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
+
+const lightweightPosts = await Promise.all(
+  blogPostsResult.postsResult.map(async (post) => {
+    const allTags = post.data.tags || [];
+    const { primaryTags, topicTags } = await groupPostTags(allTags);
+    return {
+      id: post.id,
+      slug: getPostSlug(post.id),
+      lang: getPostLanguage(post.id),
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate.toISOString(),
+      tags: primaryTags,
+      topics: topicTags,
+      heroImage: post.data.heroImage,
+      heroWebpExists: false,
+    };
+  })
+);
 ---
 
 <StaticBlogSearch
-  postsResult={blogPostsResult.postsResult}
+  postsResult={lightweightPosts}
   currentTag={currentTag}
   totalPages={blogPostsResult.totalPages}
   currentPage={blogPostsResult.currentPage}
   tagsResult={blogPostsResult.tagsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
   lang={lang}
-  isDev={isDev}
   client:load
 />

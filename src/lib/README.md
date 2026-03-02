@@ -10,7 +10,7 @@ lib/
 ├── i18n.ts        # Centralized i18n config & utilities
 ├── constances.ts  # Site-wide constants
 ├── enum.ts        # Shared enumerations
-├── search.ts      # Fuse.js search utilities
+├── search.ts      # Search utilities (ranked substring matching)
 ├── translations/  # Modular i18n translation system
 │   ├── index.ts   # Public API barrel: getTranslations(), re-exports
 │   ├── types.ts   # SiteTranslations interface + all sub-interfaces
@@ -118,7 +118,7 @@ console.log(t.resultsFound(5));   // "5 resultados encontrados"
 
 ### search.ts
 
-Advanced search functionality using Fuse.js for fuzzy matching and relevance scoring.
+Search functionality using ranked exact substring matching and lightweight indexing.
 
 #### Types
 
@@ -149,8 +149,8 @@ export interface SearchResult {
 
 | Function | Description |
 |----------|-------------|
-| `createSearchIndex(posts)` | Create Fuse.js instance from posts |
-| `searchPosts(fuse, query, limit)` | Perform fuzzy search |
+| `createSearchIndex(posts)` | Create in-memory index from posts |
+| `searchPosts(index, query, limit)` | Perform ranked substring search |
 | `highlightMatches(text, indices)` | Highlight matched text |
 | `getHighlightedField(result, field, original)` | Get field with highlights |
 
@@ -164,12 +164,12 @@ import {
   type SearchablePost 
 } from '@/lib/search';
 
-// Create index from posts
-const posts: SearchablePost[] = await fetch('/api/posts.json').then(r => r.json());
-const fuse = createSearchIndex(posts);
+// Create index from posts (language shard)
+const posts: SearchablePost[] = await fetch('/api/posts-en.json').then(r => r.json());
+const index = createSearchIndex(posts);
 
 // Perform search
-const results = searchPosts(fuse, 'javascript');
+const results = searchPosts(index, 'javascript');
 
 // Get highlighted text for display
 results.forEach(result => {
@@ -178,20 +178,11 @@ results.forEach(result => {
 });
 ```
 
-#### Fuse.js Configuration
+#### Ranking Rules
 
 ```typescript
-const fuseOptions = {
-  keys: [
-    { name: 'title', weight: 0.4 },
-    { name: 'description', weight: 0.3 },
-    { name: 'tags', weight: 0.3 },
-  ],
-  threshold: 0.4,       // Fuzzy tolerance
-  distance: 50,         // Optimized for performance
-  includeMatches: true, // Enable highlighting
-  includeScore: true,   // Enable relevance sorting
-};
+// Score: lower is better
+// title: 0.0, tags: 0.1, topics: 0.15, description: 0.2
 ```
 
 ---

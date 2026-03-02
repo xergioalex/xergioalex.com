@@ -1,13 +1,13 @@
 ---
 title: 'Introducción a GoLang'
-description: 'Lo que compartí en Pereira Tech Talks sobre Go — sintaxis, concurrencia, librería estándar, goroutines y casos de uso para aplicaciones modernas.'
+description: 'Por qué Go me convenció — mi sesión en Pereira Tech Talks sobre la simplicidad de Go, su concurrencia nativa y cómo resuelve problemas reales con menos ceremonias.'
 pubDate: '2018-07-05'
-heroImage: '/images/blog/posts/introduction-to-golang/hero.png'
+heroImage: '/images/blog/posts/introduction-to-golang/hero.jpg'
 heroLayout: 'banner'
-tags: ['talks', 'tech']
+tags: ["talks", "tech", "devops"]
 ---
 
-Di una charla en [Pereira Tech Talks](https://www.pereiratechtalks.com/) sobre Go — una introducción al lenguaje explicando qué es, por qué usarlo y casos de uso para desarrollar aplicaciones modernas. La charla fue parte de una noche de Go y Google Cloud Platform en la UTP.
+Go es uno de esos lenguajes que no se interpone en tu camino. Cuando preparé esta charla para Pereira Tech Talks, lo que quería transmitir no era solo la sintaxis o las características — era por qué Go se siente diferente. Es un lenguaje que confía en que podés escribir código claro sin abrumarte con opciones.
 
 ---
 
@@ -25,7 +25,7 @@ func main() {
 }
 ```
 
-Go nació en 2007 de la mano de Robert Griesemer (JVM, V8), Rob Pike (UNIX, UTF-8) y Ken Thompson (B, C, UNIX). Google lo lanzó como open source en 2009; la versión 1.0 llegó en 2012. El equipo no buscaba reemplazar Java o C++, sino crear un lenguaje que les diera las ventajas que necesitaban para sistemas modernos.
+Go nació en 2007 de la mano de Robert Griesemer (JVM, V8), Rob Pike (UNIX, UTF-8) y Ken Thompson (B, C, UNIX). Google lo lanzó como open source en 2009; la versión 1.0 llegó en 2012. El equipo no buscaba reemplazar Java o C++, sino crear un lenguaje que les diera las ventajas que necesitaban para sistemas modernos: compilación rápida, concurrencia nativa y despliegue en un solo binario.
 
 ---
 
@@ -40,7 +40,7 @@ Y sí, la mascota Gopher es linda. Eso cuenta.
 
 ---
 
-## Lo Que Cubrí en la Charla
+## Lo que cubrí en la charla
 
 Hice demos en vivo desde lo más básico hasta ejemplos prácticos:
 
@@ -60,7 +60,7 @@ Hice demos en vivo desde lo más básico hasta ejemplos prácticos:
 - **Goroutines** — Concurrencia ligera con `go`
 - **Channels** — Comunicación entre goroutines
 
-### Ejemplos Prácticos
+### Ejemplos prácticos
 
 - Servidor HTTP con `net/http`
 - Cliente HTTP consumiendo una API (JSON)
@@ -81,5 +81,9 @@ Hice demos en vivo desde lo más básico hasta ejemplos prácticos:
 - [Go oficial](https://golang.org/)
 - [Rob Pike — Concurrency Is Not Parallelism](https://blog.golang.org/concurrency-is-not-parallelism)
 - [Platzi — Go Básico](https://platzi.com/cursos/go-basico/)
+
+---
+
+Go me enseñó que simplicidad y poder no son opuestos. El lenguaje demostró que podés tener alto rendimiento y alta concurrencia sin sacrificar legibilidad. Ese equilibrio es lo que me hace volver a él una y otra vez.
 
 A seguir construyendo.

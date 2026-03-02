@@ -5,7 +5,6 @@ pubDate: '2025-01-02'
 heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
-draft: false
 ---
 
 As containerized applications grow in complexity, managing individual containers becomes impractical. Kubernetes (K8s) emerged as the industry standard for automating the deployment, scaling, and management of containerized applications.

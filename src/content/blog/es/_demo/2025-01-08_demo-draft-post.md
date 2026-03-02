@@ -5,7 +5,6 @@ pubDate: '2025-01-08'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
-draft: true
 ---
 
 Este es un **post en borrador** de demostración. En un escenario real, este artículo aún estaría en proceso — secciones incompletas, ideas sueltas, notas personales.

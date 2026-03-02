@@ -18,6 +18,10 @@ const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+const contactCtaHref = `${prefix}/contact?${new URLSearchParams({
+  topic: 'trading',
+  subject: t.contactPage.prefillSubjects.tradingQuestion,
+}).toString()}`;
 
 const { postsResult: posts } = await getBlogPosts({
   lang,
@@ -70,6 +74,20 @@ const breadcrumbSchema = {
 
   <PageSection title={t.tradingPage.philosophyTitle} description={t.tradingPage.philosophyText} background="gray" />
 
+  <section class="py-16 md:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="main-container text-center">
+      <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        {t.tradingPage.ctaTitle}
+      </h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+        {t.tradingPage.ctaText}
+      </p>
+      <a href={contactCtaHref} class="inline-block px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors">
+        {t.contactPage.title}
+      </a>
+    </div>
+  </section>
+
   <section id="timeline" class="py-12 md:py-16">
     <div class="main-container">
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
@@ -79,5 +97,5 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <ScrollToTimeline client:visible lang={lang} targetLabel={t.tradingPage.timelineTitle} />
+  <ScrollToTimeline client:load lang={lang} targetLabel={t.tradingPage.timelineTitle} />
 </MainLayout>

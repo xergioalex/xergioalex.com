@@ -7,18 +7,16 @@ export let filteredPosts = [];
 export let searchQuery;
 export let lang = 'en';
 export let searchResultsWithMatches = [];
-export let isDev = false;
-export let isPreviewMode = false;
+export let topicTagNames = [];
 
 $: t = getTranslations(lang);
 $: basePrefix = getUrlPrefix(lang);
-$: querySuffix = isPreviewMode ? '?preview=all' : '';
 </script>
 
 {#if filteredPosts && filteredPosts.length > 0}
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {#each filteredPosts as post, index}
-      <BlogCard {post} {lang} {isDev} {isPreviewMode} searchResult={searchResultsWithMatches[index]} />
+      <BlogCard {post} {lang} heroWebpExists={post.heroWebpExists ?? false} {searchQuery} searchResult={searchResultsWithMatches[index]} {topicTagNames} />
     {/each}
   </div>
 {:else}
@@ -30,8 +28,8 @@ $: querySuffix = isPreviewMode ? '?preview=all' : '';
       {t.noResultsSuggestion}
     </p>
     <a
-      href={`${basePrefix}/blog/${querySuffix}`}
-      class="mt-4 inline-flex rounded-full bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-600"
+      href={`${basePrefix}/blog/`}
+      class="mt-4 inline-flex rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
     >
       {t.allPosts}
     </a>
