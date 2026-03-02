@@ -94,9 +94,6 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <link rel="alternate" hreflang="x-default" href={defaultHref} />
 
 <!-- Search engine verification -->
-{ANALYTICS.verification.google && (
-  <meta name="google-site-verification" content={ANALYTICS.verification.google} />
-)}
 {ANALYTICS.verification.bing && (
   <meta name="msvalidate.01" content={ANALYTICS.verification.bing} />
 )}

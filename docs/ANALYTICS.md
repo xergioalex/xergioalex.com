@@ -56,13 +56,13 @@ These tools require no code changes — only dashboard configuration.
 |--------|--------|
 | **What it measures** | Search queries, impressions, clicks, CTR, average position, index coverage, Core Web Vitals (field data), rich results |
 | **Cost** | Free |
-| **Script size** | None (verification via meta tag) |
+| **Script size** | None (DNS TXT verification, no script or meta tag required) |
 | **Cookies** | None on visitors |
 | **Consent banner** | Not needed |
 | **Data retention** | 16 months |
 | **Dashboard** | [search.google.com/search-console](https://search.google.com/search-console) |
 
-**Setup:** Verify ownership via meta tag in `BaseHead.astro` (env var: `PUBLIC_GOOGLE_SITE_VERIFICATION`). Submit sitemap at `/sitemap-index.xml`.
+**Setup:** Verify ownership via Domain property DNS TXT in Search Console. Submit sitemap at `/sitemap-index.xml`.
 
 **Unique value:** The most direct signal for blog content performance in organic search. Shows which queries drive traffic to which specific blog posts, trending content, and indexation issues.
 
@@ -184,12 +184,12 @@ All analytics-related environment variables:
 | Variable | Tool | Required | Description |
 |----------|------|----------|-------------|
 | `PUBLIC_UMAMI_WEBSITE_ID` | Umami | Optional | Website ID from Umami Cloud dashboard |
-| `PUBLIC_UMAMI_SCRIPT_URL` | Umami | Optional | Script URL (defaults to `https://cloud.umami.is/script.js`) |
 | `PUBLIC_CLARITY_PROJECT_ID` | Clarity | Optional | Project ID from Clarity dashboard |
-| `PUBLIC_GOOGLE_SITE_VERIFICATION` | GSC | Optional | Verification code from Google Search Console |
 | `PUBLIC_BING_SITE_VERIFICATION` | Bing | Optional | Verification code from Bing Webmaster Tools |
 
 **All variables are optional.** If not set, the corresponding scripts/meta tags simply don't render. The site works perfectly without any analytics configured.
+
+> Note: Google Search Console is part of the analytics stack, but verification is DNS-based (Domain property TXT), so no `PUBLIC_GOOGLE_SITE_VERIFICATION` variable is used.
 
 **Where to set them:**
 - **Local development:** `.env.local` file (gitignored)

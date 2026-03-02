@@ -124,18 +124,15 @@ Mismo patrón condicional: sin variable de entorno, sin script.
 
 ### Google Search Console + Bing Webmaster Tools — La Capa SEO
 
-Estas dos no son scripts de analytics — son herramientas solo de dashboard que requieren verificación mediante una etiqueta `<meta>`. Cero impacto en rendimiento.
+Estas dos no son scripts de analytics — son herramientas solo de dashboard. En Google Search Console, la propiedad de dominio se puede verificar por DNS TXT. Cero impacto en rendimiento.
 
 **Google Search Console** responde la pregunta que todo creador de contenido necesita saber: "¿Qué está buscando la gente para encontrar mi sitio?" Muestra qué queries generan impresiones, cuáles obtienen clics, y la posición promedio para cada una. Para un blog, esto es oro. Puedes ver qué posts rankean para qué términos, cuáles están en tendencia, y cuáles tienen muchas impresiones pero bajo click-through (lo que significa que el título y la descripción necesitan trabajo).
 
 **Bing Webmaster Tools** proporciona datos de búsqueda similares, pero con una adición única: el **reporte AI Performance**. Lanzado en 2026, muestra qué tan seguido tu contenido es citado en Microsoft Copilot y en resúmenes generados por IA en Bing. A medida que la búsqueda impulsada por IA se vuelve más prevalente, esta es una de las únicas herramientas que da visibilidad sobre cómo los motores generativos usan tu contenido.
 
-Ambas etiquetas de verificación se renderizan condicionalmente:
+La etiqueta de verificación de Bing se renderiza condicionalmente:
 
 ```astro
-{ANALYTICS.verification.google && (
-  <meta name="google-site-verification" content={ANALYTICS.verification.google} />
-)}
 {ANALYTICS.verification.bing && (
   <meta name="msvalidate.01" content={ANALYTICS.verification.bing} />
 )}
@@ -208,13 +205,12 @@ Esto se implementó a través de un objeto de configuración `ANALYTICS` central
 export const ANALYTICS = {
   umami: {
     websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || '',
-    scriptUrl: import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js',
+    scriptUrl: 'https://cloud.umami.is/script.js',
   },
   clarity: {
     projectId: import.meta.env.PUBLIC_CLARITY_PROJECT_ID || '',
   },
   verification: {
-    google: import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || '',
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
   },
 } as const;

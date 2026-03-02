@@ -109,7 +109,7 @@ The language itself is a beautiful hybrid. It has functional programming feature
 
 The Magic Square problem showed the FD approach clearly:
 
-```oz
+```plaintext
 proc {MagicSquare Root}
    S1 S2 S3 S4 S5 S6 S7 S8 S9
 in
@@ -190,7 +190,7 @@ Try color 1. If no neighbor has it, move to the next department. If there's a co
 
 **Mozart/Oz** — the constraint approach. This is where the paradigm shift becomes visceral:
 
-```oz
+```plaintext
 fun {ColorMapa Dato}
     Deptos = {Map Dato fun {$ D#_} D end}
 in

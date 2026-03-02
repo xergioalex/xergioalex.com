@@ -109,7 +109,7 @@ El lenguaje en sí es un híbrido hermoso. Tiene características de programaci�
 
 El problema del Cuadrado Mágico mostró el enfoque FD con claridad:
 
-```oz
+```plaintext
 proc {MagicSquare Root}
    S1 S2 S3 S4 S5 S6 S7 S8 S9
 in
@@ -190,7 +190,7 @@ Prueba el color 1. Si ningún vecino lo tiene, avanza al siguiente departamento.
 
 **Mozart/Oz** — el enfoque con restricciones. Aquí es donde el cambio de paradigma se vuelve visceral:
 
-```oz
+```plaintext
 fun {ColorMapa Dato}
     Deptos = {Map Dato fun {$ D#_} D end}
 in

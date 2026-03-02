@@ -115,6 +115,12 @@ npm run build
 npm run search:budgets
 ```
 
+### 9. Analytics Verification Policy
+
+- Google Search Console verification is DNS-based (Domain property TXT), not meta-tag based.
+- Do not add `PUBLIC_GOOGLE_SITE_VERIFICATION` or `google-site-verification` meta tags.
+- Keep Bing verification as optional env-based meta tag (`PUBLIC_BING_SITE_VERIFICATION`).
+
 ## Essential Commands
 
 ```bash

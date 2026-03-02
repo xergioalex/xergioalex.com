@@ -342,6 +342,17 @@ The architecture is designed so adding a new language requires zero changes to c
 
 **See [Accessibility Guide](docs/ACCESSIBILITY.md) for complete standards and approved color pairings.**
 
+### 9. Analytics Verification Policy (MANDATORY)
+
+Google Search Console ownership is verified via **Domain property DNS TXT**.
+
+**Rules for all agents:**
+
+1. Do not add or reintroduce `PUBLIC_GOOGLE_SITE_VERIFICATION`.
+2. Do not add `google-site-verification` meta tags in templates/components.
+3. Keep Bing verification as optional env-based meta tag (`PUBLIC_BING_SITE_VERIFICATION`).
+4. Treat GSC as part of analytics/SEO stack, but verification is DNS-only operational setup.
+
 ## Shared Agent Coordination - CRITICAL
 
 **Multiple AI agents collaborate on this codebase:**

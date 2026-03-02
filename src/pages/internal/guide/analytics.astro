@@ -31,7 +31,7 @@ const dashboards = [
     url: 'search.google.com/search-console',
     login: 'Google account',
     measures: 'Search queries, impressions, CTR, position, indexation',
-    scriptSize: 'None (meta tag)',
+    scriptSize: 'None (DNS TXT verification)',
     cookies: 'None',
   },
   {
@@ -161,19 +161,9 @@ const envVars = [
     where: 'Umami Cloud dashboard',
   },
   {
-    name: 'PUBLIC_UMAMI_SCRIPT_URL',
-    tool: 'Umami',
-    where: 'Default: cloud.umami.is/script.js',
-  },
-  {
     name: 'PUBLIC_CLARITY_PROJECT_ID',
     tool: 'Clarity',
     where: 'Clarity dashboard',
-  },
-  {
-    name: 'PUBLIC_GOOGLE_SITE_VERIFICATION',
-    tool: 'GSC',
-    where: 'GSC > Settings > Verification',
   },
   {
     name: 'PUBLIC_BING_SITE_VERIFICATION',
@@ -332,6 +322,9 @@ const envVars = [
     <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
       Set these in Cloudflare Pages dashboard (Settings &gt; Environment Variables) for production.
       All are optional — if not set, the corresponding scripts simply don't load.
+    </p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+      Google Search Console is verified via DNS TXT (Domain property), so there is no GSC env variable.
     </p>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse">

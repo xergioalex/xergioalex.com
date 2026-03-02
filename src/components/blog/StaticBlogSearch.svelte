@@ -82,8 +82,7 @@ async function loadSearchIndex() {
     if (response.ok) {
       const allPosts = await response.json();
       const isShardedPayload =
-        allPosts.length > 0 &&
-        allPosts.every((post) => post.lang === lang);
+        allPosts.length > 0 && allPosts.every((post) => post.lang === lang);
       searchIndex = isShardedPayload
         ? allPosts
         : allPosts.filter((post) => post.lang === lang);

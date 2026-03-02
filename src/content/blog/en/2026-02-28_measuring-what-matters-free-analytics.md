@@ -124,18 +124,15 @@ Same conditional pattern: no environment variable, no script.
 
 ### Google Search Console + Bing Webmaster Tools — The SEO Layer
 
-These two are not analytics scripts — they are dashboard-only tools that require verification via a `<meta>` tag. Zero performance impact.
+These two are not analytics scripts — they are dashboard-only tools. For Google Search Console, domain ownership can be verified via DNS TXT. Zero performance impact.
 
 **Google Search Console** answers the question every content creator cares about: "What are people searching for to find my site?" It shows which queries generate impressions, which ones get clicks, and the average position for each. For a blog, this is gold. You can see which posts rank for which terms, which are trending up, and which have high impressions but low click-through (meaning the title and description need work).
 
 **Bing Webmaster Tools** provides similar search data, but with a unique addition: the **AI Performance report**. Launched in 2026, it shows how often your content is cited in Microsoft Copilot and AI-generated summaries in Bing. As AI-driven search becomes more prevalent, this is one of the only tools that gives visibility into how generative engines use your content.
 
-Both verification tags are conditionally rendered:
+Bing verification tag is conditionally rendered:
 
 ```astro
-{ANALYTICS.verification.google && (
-  <meta name="google-site-verification" content={ANALYTICS.verification.google} />
-)}
 {ANALYTICS.verification.bing && (
   <meta name="msvalidate.01" content={ANALYTICS.verification.bing} />
 )}
@@ -208,13 +205,12 @@ This was implemented through a centralized `ANALYTICS` configuration object in `
 export const ANALYTICS = {
   umami: {
     websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || '',
-    scriptUrl: import.meta.env.PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js',
+    scriptUrl: 'https://cloud.umami.is/script.js',
   },
   clarity: {
     projectId: import.meta.env.PUBLIC_CLARITY_PROJECT_ID || '',
   },
   verification: {
-    google: import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || '',
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
   },
 } as const;

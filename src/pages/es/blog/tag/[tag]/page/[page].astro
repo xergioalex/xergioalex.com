@@ -9,9 +9,7 @@ export async function getStaticPaths() {
   const lang: Language = 'es';
   const allPostsResult = await getBlogPosts({ lang, pageSize: 9999 });
   const allTags = Array.from(
-    new Set(
-      allPostsResult.postsResult.flatMap((post) => post.data.tags ?? [])
-    )
+    new Set(allPostsResult.postsResult.flatMap((post) => post.data.tags ?? []))
   );
 
   const paths = [];

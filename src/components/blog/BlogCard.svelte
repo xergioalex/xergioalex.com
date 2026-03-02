@@ -12,6 +12,15 @@ export let searchResult:
   | { item: any; score: number; matches?: any[] }
   | undefined = undefined;
 export let topicTagNames: string[] = [];
+let postData: {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags: string[];
+  topics: string[];
+  heroImage?: string;
+};
+let postSlug = '';
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
@@ -59,7 +68,11 @@ function getPostData() {
 }
 
 // Reference post and topicTagNames so Svelte re-runs when they change
-$: postData = (post, topicTagNames, getPostData());
+$: {
+  post;
+  topicTagNames;
+  postData = getPostData();
+}
 $: postSlug = getPostSlug();
 
 // Get highlighted title and description if search result is available
