@@ -440,6 +440,7 @@ export interface SiteTranslations {
   seriesPrevious: string;
   seriesNext: string;
   seriesToC: string;
+  seriesChapterOf: (current: number, total: number) => string;
 
   // Tags (unified — covers primary, secondary, and subtopic tiers)
   postsTagged: (tag: string) => string;

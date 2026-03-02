@@ -4,6 +4,7 @@ import { render } from 'astro:content';
 import BlogImageLightbox from '@/components/blog/BlogImageLightbox.svelte';
 import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
+import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
 import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
@@ -141,6 +142,15 @@ const breadcrumbData = {
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
+    {seriesInfo && (
+      <SeriesIndicator
+        client:load
+        lang={lang}
+        currentChapter={seriesInfo.currentIndex + 1}
+        totalChapters={seriesInfo.posts.length}
+        seriesTitle={seriesInfo.title}
+      />
+    )}
     <BlogImageLightbox client:idle />
   </main>
 </MainLayout>

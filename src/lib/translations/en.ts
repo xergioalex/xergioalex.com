@@ -906,6 +906,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesPrevious: 'Previous chapter',
   seriesNext: 'Next chapter',
   seriesToC: 'All chapters',
+  seriesChapterOf: (current, total) => `Chapter ${current} of ${total}`,
 
   // Tags
   postsTagged: (tag) => `Posts tagged "${tag}"`,

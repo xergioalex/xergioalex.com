@@ -919,6 +919,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesPrevious: 'Capítulo anterior',
   seriesNext: 'Siguiente capítulo',
   seriesToC: 'Todos los capítulos',
+  seriesChapterOf: (current, total) => `Capítulo ${current} de ${total}`,
 
   // Tags
   postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
