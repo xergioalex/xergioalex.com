@@ -334,7 +334,7 @@ The search system needed to treat topics as real search targets, not metadata. A
 
 The approach: a static JSON search index generated at build time, queried client-side.
 
-The `posts.json.ts` API endpoint builds the search index at build time. This is where `groupPostTags()` gets called so the index already has tags pre-split:
+The search index is generated at build time and exposed as static language shards (`/api/posts-en.json`, `/api/posts-es.json`). This is where `groupPostTags()` gets called so tags are pre-split:
 
 ```typescript
 const { primaryTags, topicTags } = await groupPostTags(allTags);
@@ -367,7 +367,7 @@ const score = titleMatch
 
 A title match is the strongest signal. A primary tag match is next. A topic match is slightly weaker than a primary tag — `python` might appear in a description for context without being the post's focus. A description match is the weakest signal.
 
-All of this runs client-side from a static JSON file. The user types, the JavaScript filters the pre-loaded index in memory, results appear instantly. No server, no database query, no API call. The search UI is a Svelte component hydrated with `client:load` — the only JavaScript that runs for search is the filtering logic itself.
+All of this runs client-side from static JSON shards. The user types, JavaScript filters an in-memory index, and results appear instantly. There is no backend service or database query at request time — only static asset fetches from the CDN. The search UI is a Svelte island hydrated with `client:load`.
 
 ---
 
@@ -472,11 +472,11 @@ Build time:
     → Reading time computation
     → Search index generation
     → Static HTML for every page, tag, pagination step
-    → Static posts.json search index
+    → Static search shards (posts-en.json, posts-es.json)
 
 Runtime (browser):
   Receives pre-rendered HTML
-  Loads ~2KB search index JSON on demand
+  Loads language-specific search shard on demand
   Svelte islands hydrate: search, menu, theme toggle, series indicator
   Zero collection queries
   Zero tier resolution logic

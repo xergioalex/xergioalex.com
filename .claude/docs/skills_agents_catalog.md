@@ -40,7 +40,7 @@ Everyday development work.
 
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
-| add-blog-post | create   | `/add-blog-post` | sonnet | Create blog posts — topic mode (writes content) or content mode (scaffolding). |
+| add-blog-post | create   | `/add-blog-post` | sonnet | **Mandatory for new blog posts** — topic mode (writes content) or content mode (scaffolding). |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
 
@@ -157,6 +157,8 @@ Skills, commands, and agents for creating and managing blog content.
 | content-writer | Agent (T2) | Expert multilingual content writer with personal-professional voice |
 
 **Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`.
+
+**Mandatory policy:** Any new file creation in `src/content/blog/` must go through `add-blog-post` to enforce multilingual parity and schema/frontmatter consistency.
 
 ### 2. i18n & Translation
 
@@ -295,6 +297,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-03-02 | Mandatory blog creation policy | Marked `add-blog-post` as mandatory for new blog post creation in catalog workflows and domain guidance. |
 | 2026-03-02 | Series workflow documentation | Updated add-blog-post skill (v2.6.0) with detailed series workflow for adding posts to existing series. Updated new-post command with series question in interactive flow. |
 | 2026-02-28 | Content refinement patterns | Updated content-writer agent (v1.3.0) with content quality grading system, rewriting workflow, and transformation patterns. Updated add-blog-post skill (v2.4.0) with increased max-loc (600→1200) and content-writer reference for existing post rewrites. Fixed translate-sync Spanish register to "informal-professional" (Colombian Spanish). |
 | 2026-02-19 | Remove draft/scheduled from skills/agents | Updated add-blog-post skill (v2.3.0), content-writer agent (v1.2.0), new-post command, and catalog to remove draft/scheduled/preview references. Blog now uses simple published + demo-only model. |

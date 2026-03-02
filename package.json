@@ -27,6 +27,7 @@
     "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:webp": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
+    "search:budgets": "node scripts/check-search-performance-budgets.mjs",
     "lighthouse": "lhci autorun",
     "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
   },

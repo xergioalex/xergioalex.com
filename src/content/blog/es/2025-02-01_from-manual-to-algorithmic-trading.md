@@ -1,7 +1,10 @@
 ---
-title: "De trading manual a trading algorítmico con MQL4"
-description: "Cómo pasé de ejecutar manualmente un proceso repetitivo a construir scripts, indicadores y expert advisors en MetaTrader 4 para mejorar riesgo, disciplina y consistencia."
-pubDate: "2026-03-04"
+title: "De trading manual a trading algorítmico"
+description: "Cómo pasé de ejecutar manualmente en MetaTrader 4 a migrar scripts, indicadores y expert advisors a MetaTrader 5 para operar con una automatización más avanzada."
+pubDate: "2025-02-01"
+heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.png"
+series: "trading-journey"
+seriesOrder: 3
 heroLayout: "banner"
 tags: ["trading", "tech"]
 ---
@@ -31,9 +34,35 @@ Dejé de pensar solo como trader y empecé a pensar también como constructor:
 
 ---
 
-## Las 3 piezas clave en MT4
+## De MQL4 a MQL5: el siguiente salto
 
-Si quieres automatizar en MT4, hay tres tipos de herramientas principales:
+Cuando ya tenía bastante recorrido en MQL4, descubrí que existía **MetaTrader 5 (MT5)** y que su ecosistema para automatización es mucho más completo.
+
+MT5 tiene su propio lenguaje, **MQL5**, que es muy parecido a MQL4, pero más avanzado y con más capacidades para construir robots, lógica de ejecución y herramientas de análisis.
+
+Hoy en día, prácticamente todo el mundo que está metido a fondo en trading algorítmico está construyendo en MT5.
+
+---
+
+## Mi proceso de migración: de MT4 a MT5
+
+La transición no fue empezar desde cero, sino migrar lo que ya venía construyendo:
+
+- Scripts
+- Indicadores
+- Expert Advisors
+
+He venido pasando esas piezas de MQL4 a MQL5 para mantener la lógica que me funciona, pero con una base más moderna y flexible.
+
+Actualmente opero principalmente en **MQL5**, aunque mantengo compatibilidad entre ambas versiones porque todavía ejecuto parte de mi operativa en MT4 y MT5.
+
+Mi dirección final es clara: quedarme solo con MT5 por ser el entorno más completo para automatización.
+
+---
+
+## Las 3 piezas clave en automatización (MT4 y MT5)
+
+Si quieres automatizar de forma seria, hay tres tipos de herramientas principales (aplican en MT4 y MT5):
 
 ### 1) Scripts
 
@@ -111,14 +140,14 @@ Eso no significa que toda estrategia automatizada gane. Pero sí significa que l
 
 ## Hacia dónde voy
 
-Mi dirección es clara: seguir evolucionando de una operativa manual/discrecional hacia una operativa más sistematizada y progresivamente más automatizada.
+Mi dirección es clara: seguir evolucionando de una operativa manual/discrecional hacia una operativa más sistematizada y progresivamente más automatizada, con foco principal en MT5.
 
 No lo veo como reemplazar por completo el criterio humano. Lo veo como combinar:
 
 - Juicio estratégico humano
 - Consistencia operativa de máquina
 
-Esa combinación es lo que quiero seguir construyendo.
+Esa combinación es lo que quiero seguir construyendo, cada vez con más peso del lado algorítmico en MQL5.
 
 ---
 

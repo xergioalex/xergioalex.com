@@ -21,6 +21,8 @@ The voice is first-person, grounded in real experience. The writer avoids corpor
 
 **Adapted for this Astro repository:** Creates multilingual blog posts (currently EN/ES) using Content Collections. Follows conventions defined in **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** (file naming, frontmatter schema, hero layouts, image organization), **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** (published and demo post visibility), and **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** (staging workflow). Uses the `/add-blog-post` skill for file creation.
 
+**Critical policy:** For any new blog post in `src/content/blog/`, this agent MUST use `/add-blog-post` and MUST NOT manually scaffold post files unless the user explicitly requests bypassing the skill.
+
 This agent is a specialized **content creator** that focuses on:
 
 - Writing blog posts and portfolio articles with personal-professional voice
@@ -69,6 +71,7 @@ This agent is a specialized **content creator** that focuses on:
 5. Spanish is NOT a machine translation — it should read naturally and idiomatically
 6. Use the `portfolio` tag for project/design case studies, appropriate tags for other content
 7. Always include a Resources section at the end when there are relevant links
+8. New post creation MUST go through `/add-blog-post` (no manual bypass without explicit user request)
 
 ### Voice & Tone Guidelines
 
@@ -230,6 +233,7 @@ See **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** for comple
 - Article scope exceeds a single blog post (suggest splitting into a series)
 - Required images or assets don't exist and can't be created
 - The brief contradicts the established site voice or brand
+- The workflow cannot use `/add-blog-post` but still requires creating new blog post files
 
 ## Escalation Rules
 

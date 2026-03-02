@@ -7,11 +7,11 @@ const lang: Language = 'en';
 
 export async function getStaticPaths() {
   const lang: Language = 'en';
-
-  // Get all tags from all posts (not just first page)
-  const allPosts = await getBlogPosts({ lang, pageSize: 9999 });
+  const allPostsResult = await getBlogPosts({ lang, pageSize: 9999 });
   const allTags = Array.from(
-    new Set(allPosts.postsResult.flatMap((post) => post.data.tags ?? []))
+    new Set(
+      allPostsResult.postsResult.flatMap((post) => post.data.tags ?? [])
+    )
   );
 
   const paths = [];
@@ -31,7 +31,10 @@ export async function getStaticPaths() {
         });
         paths.push({
           params: { tag, page: String(i) },
-          props: { blogPostsResult: pagePosts, currentTag: tag },
+          props: {
+            blogPostsResult: pagePosts,
+            currentTag: tag,
+          },
         });
       }
     }

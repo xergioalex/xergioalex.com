@@ -94,6 +94,27 @@ Always support dark mode:
 <div class="bg-white dark:bg-gray-900 text-black dark:text-white">
 ```
 
+### 7. Blog Post Creation Workflow
+
+New blog posts MUST be created with the `/add-blog-post` skill (not manual file scaffolding).
+
+- Create both language files in the same task: `src/content/blog/en/` and `src/content/blog/es/`
+- Use date-prefix naming: `YYYY-MM-DD_slug.md`
+- Keep frontmatter synchronized across languages (`pubDate`, `heroImage`, `heroLayout`, `tags`, `series`, `seriesOrder`)
+- Validate with `npm run build`
+
+### 8. Blog Search Performance Guardrails
+
+- Keep search static-only and language-sharded (`/api/posts-en.json`, `/api/posts-es.json`)
+- Do **not** inline full search index data into blog listing/tag page HTML
+- Keep search index metadata-only (no full markdown body)
+- For search-related changes, run:
+
+```bash
+npm run build
+npm run search:budgets
+```
+
 ## Essential Commands
 
 ```bash
@@ -172,9 +193,10 @@ export const GET: APIRoute = async () => {
 
 ### Add a Blog Post
 
-1. Create `src/content/blog/my-post.md`
-2. Add required frontmatter (title, description, pubDate)
-3. Write content in Markdown/MDX
+1. Use `/add-blog-post` (mandatory workflow)
+2. Ensure EN + ES files are both created/updated in `src/content/blog/{lang}/`
+3. Verify frontmatter includes required fields and optional series fields when applicable
+4. Run `npm run build` to validate Content Collections
 
 ### Add a Component
 

@@ -127,7 +127,7 @@ The following safeguards ensure demo content never leaks to production:
 
 1. **`getBlogPosts()`:** Filters out demo posts using `isDemoPost()` check
 2. **`getStaticPaths()`:** Tag and pagination routes exclude demo posts when generating static paths
-3. **API endpoint (`/api/posts.json`):** Filters out demo posts in production builds
+3. **Search API endpoints (`/api/posts-en.json`, `/api/posts-es.json`, `/api/posts.json` fallback):** Filter out demo posts in production builds
 4. **Demo folder:** `_demo/` posts are always filtered regardless of build mode
 5. **Demo tag:** Not generated in production builds (no demo posts reference it in visible content)
 6. **Direct URL builds:** In production, demo post routes are not generated at all
@@ -142,7 +142,7 @@ ls dist/blog/tag/
 # Should NOT contain 'demo'
 
 # No demo posts in API
-cat dist/api/posts.json | node -e "
+cat dist/api/posts-en.json | node -e "
   const posts = JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
   const demo = posts.filter(p => p.id.includes('/_demo/'));
   console.log('Demo posts in prod:', demo.length);  // Should be 0
@@ -162,7 +162,9 @@ ls dist/blog/ | grep demo
 | `src/lib/blog.ts` | `isDemoPost()`, `getBlogPosts()` — demo detection and filtering |
 | `src/content.config.ts` | Blog collection schema (no special demo field needed) |
 | `src/pages/blog/[...slug].astro` | Dynamic post route with `import.meta.env.DEV` check for demo access |
-| `src/pages/api/posts.json.ts` | Search API with demo post filtering |
+| `src/pages/api/posts-en.json.ts` | EN search shard with demo post filtering |
+| `src/pages/api/posts-es.json.ts` | ES search shard with demo post filtering |
+| `src/pages/api/posts.json.ts` | Compatibility aggregate endpoint |
 | `src/content/tags/demo.md` | Demo tag definition |
 | `src/lib/translations/` | Translation strings for the demo tag |
 

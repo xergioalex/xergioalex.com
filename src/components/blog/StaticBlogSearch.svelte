@@ -42,7 +42,7 @@ let isLoading = false;
 let isLoadingIndex = false;
 let loadError = false;
 let searchIndex = [];
-let fuseIndex = null;
+let searchEngine = null;
 let indexLoaded = false;
 let searchPagination = {
   currentPage: 1,
@@ -72,11 +72,22 @@ async function loadSearchIndex() {
   isLoadingIndex = true;
   loadError = false;
   try {
-    const response = await fetch('/api/posts.json');
+    // Prefer language shards to reduce payload and parsing cost.
+    let response = await fetch(`/api/posts-${lang}.json`);
+    if (!response.ok) {
+      // Compatibility fallback for environments that only expose /api/posts.json.
+      response = await fetch('/api/posts.json');
+    }
+
     if (response.ok) {
       const allPosts = await response.json();
-      searchIndex = allPosts.filter((post) => post.lang === lang);
-      fuseIndex = createSearchIndex(searchIndex);
+      const isShardedPayload =
+        allPosts.length > 0 &&
+        allPosts.every((post) => post.lang === lang);
+      searchIndex = isShardedPayload
+        ? allPosts
+        : allPosts.filter((post) => post.lang === lang);
+      searchEngine = createSearchIndex(searchIndex);
       indexLoaded = true;
       clearCache();
     } else {
@@ -109,7 +120,7 @@ function performSearch(query, page = 1) {
     return;
   }
 
-  if (!fuseIndex || !searchIndex || searchIndex.length === 0) {
+  if (!searchEngine || !searchIndex || searchIndex.length === 0) {
     isLoading = false;
     return;
   }
@@ -127,7 +138,7 @@ function performSearch(query, page = 1) {
     filteredResults = cached;
   } else {
     // Use Fuse.js for fuzzy search
-    const fuseResults = searchPosts(fuseIndex, query);
+    const fuseResults = searchPosts(searchEngine, query);
 
     // Filter by tag if specified (handles both primary and secondary tags)
     filteredResults = fuseResults;
@@ -216,7 +227,7 @@ onMount(() => {
   const urlQuery = params.get('q') || '';
 
   if (urlQuery) {
-    // Restore search from URL: load index immediately, then search
+    // Restore search from URL: load index if needed, then search
     searchQuery = urlQuery;
     isSearching = true;
     ensureIndexLoaded().then(() => performSearch(urlQuery, 1));

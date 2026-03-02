@@ -16,6 +16,19 @@ function heroWebpExists(heroImage: string | undefined): boolean {
 
 const WORDS_PER_MINUTE = 200;
 
+export interface SearchIndexEntry {
+  id: string;
+  slug: string;
+  lang: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  tags: string[];
+  topics: string[];
+  heroImage?: string;
+  heroWebpExists: boolean;
+}
+
 /**
  * Get the slug from a post ID (removes language prefix, _demo/ prefix, and date prefix).
  * e.g., "en/2022-07-08_first-post" -> "first-post"
@@ -157,6 +170,51 @@ export async function groupPostTags(
     }
   }
   return { primaryTags, topicTags };
+}
+
+/**
+ * Build the search index for client-side blog search.
+ * Same structure as /api/posts.json — used to inline the index at build time
+ * so search works without a runtime fetch (fixes 404 on some deployments).
+ */
+let _searchIndexCache: Promise<SearchIndexEntry[]> | null = null;
+
+async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
+  const allPosts = await getCollection('blog');
+  const visiblePosts = allPosts.filter((post) => !isDemoPost(post));
+
+  return Promise.all(
+    visiblePosts.map(async (post) => {
+      const allTags = post.data.tags || [];
+      const { primaryTags, topicTags } = await groupPostTags(allTags);
+      return {
+        id: post.id,
+        slug: getPostSlug(post.id),
+        lang: getPostLanguage(post.id),
+        title: post.data.title,
+        description: post.data.description,
+        pubDate: post.data.pubDate.toISOString(),
+        tags: primaryTags,
+        topics: topicTags,
+        heroImage: post.data.heroImage,
+        heroWebpExists: heroWebpExists(post.data.heroImage),
+      };
+    })
+  );
+}
+
+export async function getSearchIndex(): Promise<SearchIndexEntry[]> {
+  if (!_searchIndexCache) {
+    _searchIndexCache = buildSearchIndex();
+  }
+  return _searchIndexCache;
+}
+
+export async function getSearchIndexByLanguage(
+  lang: string
+): Promise<SearchIndexEntry[]> {
+  const searchIndex = await getSearchIndex();
+  return searchIndex.filter((post) => post.lang === lang);
 }
 
 export async function getBlogPosts(

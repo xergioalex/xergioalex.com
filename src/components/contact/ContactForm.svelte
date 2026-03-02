@@ -1,4 +1,5 @@
 <script>
+import { onMount } from 'svelte';
 import { getTranslations } from '@/lib/translations';
 
 export let lang = 'en';
@@ -34,6 +35,51 @@ const inputClass =
 const labelClass =
   'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2';
 const errorClass = 'mt-1 text-sm text-red-600 dark:text-red-400';
+
+const MAX_SUBJECT_LENGTH = 140;
+const MAX_MESSAGE_LENGTH = 2000;
+
+function sanitizeText(value, maxLength) {
+  return value.trim().slice(0, maxLength);
+}
+
+function getAllowedReasonValues() {
+  return new Set(
+    t.contactPage.reasonOptions
+      .map((option) => option.value)
+      .filter((value) => value.length > 0)
+  );
+}
+
+function applyPrefillFromQueryParams() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const topicParam = params.get('topic');
+  const subjectParam = params.get('subject');
+  const messageParam = params.get('message');
+
+  if (topicParam) {
+    const allowedValues = getAllowedReasonValues();
+    if (allowedValues.has(topicParam)) {
+      reason = topicParam;
+    }
+  }
+
+  if (subjectParam) {
+    subject = sanitizeText(subjectParam, MAX_SUBJECT_LENGTH);
+  }
+
+  if (messageParam) {
+    message = sanitizeText(messageParam, MAX_MESSAGE_LENGTH);
+  }
+}
+
+onMount(() => {
+  applyPrefillFromQueryParams();
+});
 
 function focusFirstInvalidField() {
   const fieldOrder = [

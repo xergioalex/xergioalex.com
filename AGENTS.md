@@ -254,6 +254,7 @@ When you create or modify content in one language, you MUST create or update the
 **Blog Posts:**
 - When creating or modifying a blog post in `src/content/blog/en/`, the corresponding post in `src/content/blog/es/` MUST be created or updated with the translated content, and vice versa.
 - Translate `title`, `description`, and body content. Preserve `pubDate`, `updatedDate`, `heroImage`, `tags`, code blocks, and formatting.
+- **MANDATORY workflow for new posts:** Use `/add-blog-post` skill. Do not create new blog post files manually unless the user explicitly requests bypassing the skill.
 
 **Translation Strings:**
 - When adding new UI strings to `src/lib/translations/`, translations MUST be added for BOTH English and Spanish simultaneously.
@@ -316,6 +317,8 @@ The architecture is designed so adding a new language requires zero changes to c
 4. **Use native browser APIs** — IntersectionObserver over scroll listeners, native `loading="lazy"` over JS lazy-loaders
 5. **Optimize images** — always include dimensions, use lazy loading for below-fold content
 6. **Avoid layout shifts** — reserve space for async content, use `font-display: swap`
+7. **Keep blog search payload lean** — never inline full search index into blog page HTML; use language-sharded static endpoints (`/api/posts-en.json`, `/api/posts-es.json`) and keep index schema minimal (no full article body)
+8. **Protect Lighthouse/PageSpeed scores** — run `npm run search:budgets` after search-related changes and treat failures as blockers
 
 **Before any change, ask:** Does this add JS? Could it use a lighter hydration? Could CSS do this instead?
 
@@ -923,6 +926,8 @@ This repository includes a system for creating reusable **Skills** and **Agents*
 - **Agents**: Specialized worker personas for specific tasks (e.g., `reviewer`, `executor`, `architect`)
 
 **Available in this repo:** Skills: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`. Agents: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`.
+
+**Critical policy:** New blog post creation is standardized through `add-blog-post` to enforce multilingual parity, frontmatter correctness, tag governance, and series metadata consistency.
 
 Full list and usage: [.claude/docs/skills_agents_catalog.md](.claude/docs/skills_agents_catalog.md).
 

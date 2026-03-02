@@ -334,7 +334,7 @@ El sistema de búsqueda necesitaba tratar los topics como objetivos reales, no c
 
 El enfoque: un índice JSON estático de búsqueda generado en tiempo de build, consultado del lado del cliente.
 
-El endpoint `posts.json.ts` construye el índice de búsqueda en tiempo de build. Aquí es donde se llama `groupPostTags()` para que el índice ya tenga los tags pre-divididos:
+El índice de búsqueda se genera en build time y se expone en shards estáticos por idioma (`/api/posts-en.json`, `/api/posts-es.json`). Aquí es donde se llama `groupPostTags()` para que el índice ya tenga los tags pre-divididos:
 
 ```typescript
 const { primaryTags, topicTags } = await groupPostTags(allTags);
@@ -367,7 +367,7 @@ const score = titleMatch
 
 Un match de título es la señal más fuerte. Un match de tag primario es el siguiente. Un match de topic es ligeramente más débil — `python` podría aparecer en una descripción por contexto sin ser el enfoque principal del post. Un match de descripción es la señal más débil.
 
-Todo esto corre del lado del cliente desde un archivo JSON estático. El usuario escribe, el JavaScript filtra el índice pre-cargado en memoria, los resultados aparecen al instante. Sin servidor, sin consulta a base de datos, sin llamada a una API. El UI de búsqueda es un componente Svelte hidratado con `client:load` — el único JavaScript que corre para la búsqueda es la lógica de filtrado en sí.
+Todo esto corre del lado del cliente desde shards JSON estáticos. El usuario escribe, JavaScript filtra un índice en memoria, y los resultados aparecen al instante. No hay backend ni consulta a base de datos en tiempo de request — solo fetch de assets estáticos desde CDN. El UI de búsqueda es un island Svelte hidratado con `client:load`.
 
 ---
 
@@ -472,11 +472,11 @@ Tiempo de build:
     → Cómputo de tiempo de lectura
     → Generación del índice de búsqueda
     → HTML estático para cada página, tag, paso de paginación
-    → Índice de búsqueda posts.json estático
+    → Shards estáticos de búsqueda (posts-en.json, posts-es.json)
 
 Runtime (navegador):
   Recibe HTML pre-renderizado
-  Carga JSON del índice de búsqueda (~2KB) bajo demanda
+  Carga shard de búsqueda por idioma bajo demanda
   Islands Svelte se hidratan: búsqueda, menú, toggle de tema, indicador de serie
   Cero consultas de colección
   Cero lógica de resolución de niveles

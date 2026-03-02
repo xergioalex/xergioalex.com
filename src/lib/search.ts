@@ -4,8 +4,6 @@
  * Scores results by match location: title > tags > description.
  */
 
-import Fuse from 'fuse.js';
-
 export interface SearchablePost {
   id: string;
   slug: string;
@@ -28,14 +26,13 @@ export interface SearchResult {
   }>;
 }
 
+export type SearchIndex = SearchablePost[];
+
 /**
- * Create a search index (wraps posts in a Fuse instance for API compatibility).
- * The actual search uses exact substring matching, not Fuse.js fuzzy matching.
+ * Create a search index.
  */
-export function createSearchIndex(
-  posts: SearchablePost[]
-): Fuse<SearchablePost> {
-  return new Fuse(posts, { keys: ['title'] });
+export function createSearchIndex(posts: SearchablePost[]): SearchIndex {
+  return posts;
 }
 
 /**
@@ -44,7 +41,7 @@ export function createSearchIndex(
  * Results are scored by match location: title (0.0) > tags (0.1) > description (0.2).
  */
 export function searchPosts(
-  fuse: Fuse<SearchablePost>,
+  index: SearchIndex,
   query: string,
   limit = 100
 ): SearchResult[] {
@@ -54,8 +51,7 @@ export function searchPosts(
 
   const q = query.trim().toLowerCase();
 
-  // Access the underlying posts from the Fuse instance
-  const posts = (fuse as unknown as { _docs: SearchablePost[] })._docs;
+  const posts = index;
 
   const results: SearchResult[] = [];
 

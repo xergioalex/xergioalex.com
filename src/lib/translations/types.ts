@@ -319,6 +319,8 @@ export interface SiteTranslations {
     areas: HighlightItem[];
     philosophyTitle: string;
     philosophyText: string;
+    ctaTitle: string;
+    ctaText: string;
     timelineTitle: string;
     emptyState: string;
   };
@@ -386,6 +388,16 @@ export interface SiteTranslations {
     socialTitle: string;
     locationTitle: string;
     locationText: string;
+    prefillSubjects: {
+      generalInquiry: string;
+      collaboration: string;
+      projectInquiry: string;
+      projectCollaboration: string;
+      startupCollaboration: string;
+      techTalkInvitation: string;
+      tradingQuestion: string;
+      dailybotQuestion: string;
+    };
   };
 
   // Homepage Let's Connect section

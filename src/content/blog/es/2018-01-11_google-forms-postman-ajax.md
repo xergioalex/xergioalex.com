@@ -1,0 +1,76 @@
+---
+title: "Cómo responder formularios de Google via postman y ajax"
+description: "Conecta un formulario de contacto estático a Google Forms mediante HTTP POST — sin iframe. Guía paso a paso con Postman y jQuery Ajax."
+pubDate: "2018-01-11"
+heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.png"
+heroLayout: "banner"
+tags: ["tech", "javascript", "web-development"]
+---
+
+En el desarrollo de web estáticas básicas, como las páginas de aterrizaje (landing pages) o páginas personales, se suele requerir conectar un formulario de contacto, y si no se está haciendo uso de nada más allá de html, css y js, como suele ser el caso de las [páginas de github](https://pages.github.com/), los [formularios de Google](https://www.google.com/forms/about/) son una buena opción para almacenar la información suministrada por los visitantes o usuarios del sitio.
+
+A continuación se describe el proceso para conectar el formulario de contacto de tu sitio web con un formulario de Google sin necesidad de embeber el contenido del mismo mediante un iframe, haciendo uso de una petición HTTP.
+
+## Completar formulario via Postman
+
+Lo primero es ir a [Google Forms](https://www.google.com/forms/about/) y crear un formulario como este:
+
+![Ejemplo de formulario de Google](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+
+Como paso seguido, abrimos el [formulario](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) e inspeccionamos cada uno de los campos buscando los `name` de cada input, los cuales siguen el formato `entry.{id}`:
+
+![Inspeccionando los nombres de los campos del formulario en DevTools](/images/blog/posts/google-forms-postman-ajax/postman-1.webp)
+
+Una vez obtenemos todos los `name`, ya tenemos todo lo necesario para poder completar nuestro formulario enviando una petición HTTP usando [Postman](https://www.getpostman.com/):
+
+1. Cambiar la parte final de la URL del formulario de `viewform` a `formResponse`:
+
+```
+https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform
+https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/formResponse
+```
+
+2. Usar `text/xml` como `Content-Type` en los Headers:
+
+![Headers de Postman con Content-Type text/xml](/images/blog/posts/google-forms-postman-ajax/postman-2.webp)
+
+3. Definir el contenido del body. Para [nuestro formulario](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) en particular, los `name` de cada uno de los inputs de nombre, email, teléfono y mensaje son respectivamente `entry.568194084`, `entry.1303875942`, `entry.807958025` y `entry.703388132`:
+
+![Body de Postman con los campos entry del formulario](/images/blog/posts/google-forms-postman-ajax/postman-3.webp)
+
+Si seguiste los pasos anteriores, ya deberías poder enviar respuestas al formulario de Google usando Postman; siéntete libre de usar [mi formulario de ejemplo](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) para hacer pruebas y enviar respuestas, las cuales puedes visualizar en la [siguiente hoja de cálculo](https://docs.google.com/spreadsheets/d/1r0O9A4oRT81jgzIodJRNL_1GA9WYgJsdRxWVjQULv00/edit#gid=1264787793).
+
+## Completar formulario via Ajax
+
+Finalmente es hora de conectar nuestro formulario web via Ajax. Aquí tienes un código muy simple en jQuery:
+
+```javascript
+$.ajax({
+  url: 'https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/formResponse',
+  type: 'POST',
+  crossDomain: true,
+  dataType: "xml",
+  data: {
+    'entry.568194084': 'Value name field',
+    'entry.1303875942': 'Value email field',
+    'entry.807958025': 'Value phone field',
+    'entry.703388132': 'Value message field'
+  },
+  success: function(jqXHR, textStatus, errorThrown) {
+    console.log('Enter on success');
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.log('Enter on error');
+  }
+});
+```
+
+Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://goo.gl/VXMdV5) anteriormente presentada:
+
+![Formulario web conectado a Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+
+Como consideración final, cabe mencionar que al usar este método obtendremos una respuesta y mensaje de error como esta: `No 'Access-Control-Allow-Origin' header is present on the requested resource`, la cual normalmente se soluciona en otras aplicaciones dando permisos en el destino a las IPs y dominios desde las cuales queremos enviar las peticiones, pero para el caso de los formularios de Google no encontré algún parámetro de configuración que me permitiera solucionarlo, pero aún así la respuesta se registra exitosamente, por lo cual no deberíamos preocuparnos por este detalle.
+
+Muchas gracias por visitar mi blog y si este contenido te ha parecido útil, no olvides compartirlo, así me ayudas a llegar a más personas increíbles como tú.
+
+**Recursos:** [Repositorio con código en GitHub](https://github.com/xergioalex/googleFormsHttpRequest)

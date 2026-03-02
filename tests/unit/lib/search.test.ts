@@ -1,4 +1,3 @@
-import Fuse from 'fuse.js';
 import { describe, expect, it } from 'vitest';
 
 import {
@@ -187,19 +186,19 @@ describe('getHighlightedField', () => {
 // ─── createSearchIndex ─────────────────────────────────
 
 describe('createSearchIndex', () => {
-	it('creates a Fuse instance from posts', () => {
+	it('returns posts as a search index array', () => {
 		const index = createSearchIndex(mockPosts);
-		expect(index).toBeInstanceOf(Fuse);
+		expect(index).toEqual(mockPosts);
 	});
 
-	it('handles empty array and returns a valid Fuse instance', () => {
+	it('handles empty array', () => {
 		const index = createSearchIndex([]);
-		expect(index).toBeInstanceOf(Fuse);
+		expect(index).toEqual([]);
 	});
 
-	it('created index can perform searches', () => {
+	it('created index works with searchPosts', () => {
 		const index = createSearchIndex(mockPosts);
-		const results = index.search('Astro');
+		const results = searchPosts(index, 'Astro');
 		expect(results.length).toBeGreaterThan(0);
 	});
 });
@@ -207,38 +206,38 @@ describe('createSearchIndex', () => {
 // ─── searchPosts ───────────────────────────────────────
 
 describe('searchPosts', () => {
-	const fuse = createSearchIndex(mockPosts);
+	const index = createSearchIndex(mockPosts);
 
 	it('returns matching results for a known query', () => {
-		const results = searchPosts(fuse, 'Astro');
+		const results = searchPosts(index, 'Astro');
 		expect(results.length).toBeGreaterThan(0);
 		expect(results[0].item.title).toContain('Astro');
 	});
 
 	it('respects the limit parameter', () => {
-		const results = searchPosts(fuse, 'Astro', 1);
+		const results = searchPosts(index, 'Astro', 1);
 		expect(results).toHaveLength(1);
 	});
 
 	it('returns empty array for no matches', () => {
-		const results = searchPosts(fuse, 'zzzznonexistent');
+		const results = searchPosts(index, 'zzzznonexistent');
 		expect(results).toEqual([]);
 	});
 
 	it('returns empty array for empty query string', () => {
-		expect(searchPosts(fuse, '')).toEqual([]);
+		expect(searchPosts(index, '')).toEqual([]);
 	});
 
 	it('returns empty array for query shorter than 2 characters', () => {
-		expect(searchPosts(fuse, 'a')).toEqual([]);
+		expect(searchPosts(index, 'a')).toEqual([]);
 	});
 
 	it('returns empty array for whitespace-only query', () => {
-		expect(searchPosts(fuse, '   ')).toEqual([]);
+		expect(searchPosts(index, '   ')).toEqual([]);
 	});
 
 	it('results have correct shape', () => {
-		const results = searchPosts(fuse, 'Svelte');
+		const results = searchPosts(index, 'Svelte');
 		expect(results.length).toBeGreaterThan(0);
 
 		const result = results[0];
@@ -251,7 +250,7 @@ describe('searchPosts', () => {
 	});
 
 	it('does not return posts that lack the search term', () => {
-		const results = searchPosts(fuse, 'TypeScript');
+		const results = searchPosts(index, 'TypeScript');
 		expect(results.length).toBeGreaterThan(0);
 		for (const r of results) {
 			const text =
@@ -261,7 +260,7 @@ describe('searchPosts', () => {
 	});
 
 	it('prioritizes title matches over description matches', () => {
-		const results = searchPosts(fuse, 'Astro');
+		const results = searchPosts(index, 'Astro');
 		expect(results.length).toBeGreaterThanOrEqual(2);
 		// Posts with "Astro" in title should have score 0.0
 		expect(results[0].score).toBe(0.0);
@@ -269,16 +268,16 @@ describe('searchPosts', () => {
 
 	it('searches across title, description, and tags', () => {
 		// Search by tag
-		const tagResults = searchPosts(fuse, 'tutorial');
+		const tagResults = searchPosts(index, 'tutorial');
 		expect(tagResults.length).toBeGreaterThan(0);
 
 		// Search by description content
-		const descResults = searchPosts(fuse, 'comprehensive');
+		const descResults = searchPosts(index, 'comprehensive');
 		expect(descResults.length).toBeGreaterThan(0);
 	});
 
 	it('trims whitespace from query before searching', () => {
-		const results = searchPosts(fuse, '  Astro  ');
+		const results = searchPosts(index, '  Astro  ');
 		expect(results.length).toBeGreaterThan(0);
 	});
 });

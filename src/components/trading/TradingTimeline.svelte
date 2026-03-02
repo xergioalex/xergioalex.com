@@ -46,6 +46,20 @@ function formatYearMonth(date: Date): string {
 function getMonthName(date: Date): string {
   return new Date(date).toLocaleDateString(t.dateLocale, { month: 'long' });
 }
+
+const containHeroSlugs = new Set([
+  'my-trading-journey-from-futures-to-forex',
+  'what-is-market-profile-in-trading',
+  'from-manual-to-algorithmic-trading',
+]);
+
+function getHeroImageClass(slug: string): string {
+  if (containHeroSlugs.has(slug)) {
+    return 'w-full h-44 object-contain bg-gray-100 dark:bg-gray-900';
+  }
+
+  return 'w-full h-44 object-cover';
+}
 </script>
 
 {#if posts.length === 0}
@@ -108,7 +122,7 @@ function getMonthName(date: Date): string {
                     <img
                       src={post.data.heroImage}
                       alt={post.data.title}
-                      class="w-full h-44 object-cover"
+                      class={getHeroImageClass(slug)}
                       loading="lazy"
                     />
                   </picture>
@@ -116,7 +130,7 @@ function getMonthName(date: Date): string {
                   <img
                     src={post.data.heroImage}
                     alt={post.data.title}
-                    class="w-full h-44 object-cover"
+                    class={getHeroImageClass(slug)}
                     loading="lazy"
                   />
                 {/if}

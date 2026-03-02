@@ -25,6 +25,15 @@ Create multilingual blog posts (currently English + Spanish) for XergioAleX.com 
 
 The skill auto-detects the mode based on the inputs provided.
 
+## Mandatory Invocation Policy (CRITICAL)
+
+This skill is the mandatory workflow for creating new blog posts in this repository.
+
+- All AI agents and assistants MUST use `/add-blog-post` when creating new posts in `src/content/blog/`.
+- Do NOT create new blog posts manually unless the user explicitly requests bypassing the skill.
+- Always produce both language files (currently EN + ES) in the same task.
+- If creation starts outside this skill, stop and switch to `/add-blog-post` before writing files.
+
 ## Non-Goals
 
 - Does NOT modify the Content Collections schema
@@ -179,7 +188,7 @@ Create `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
 ---
 title: 'Post Title Here'
 description: 'A brief description of what this post is about.'
-pubDate: 'Jan 31 2026'
+pubDate: '2026-01-31'
 heroImage: '/images/blog/posts/post-title-here/hero.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'web-development', 'javascript']
@@ -221,6 +230,7 @@ Verify:
 - Both files exist with matching frontmatter structure
 - All image paths reference existing files
 - Tags reference existing tag definitions
+- `/add-blog-post` workflow was used for creation (no manual bypass)
 
 ## Output Format
 

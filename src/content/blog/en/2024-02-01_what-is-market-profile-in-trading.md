@@ -1,7 +1,10 @@
 ---
 title: "What Is Market Profile in Trading (and Why It Changed My Process)"
 description: "A practical explanation of Market Profile as a visual framework for imbalance areas, institutional flow, and decision-making with structure instead of guesswork."
-pubDate: "2026-03-03"
+pubDate: "2024-02-01"
+heroImage: "/images/blog/posts/what-is-market-profile-in-trading/hero.png"
+series: "trading-journey"
+seriesOrder: 2
 heroLayout: "banner"
 tags: ["trading"]
 ---

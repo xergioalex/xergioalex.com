@@ -8,15 +8,29 @@ XergioAleX.com is primarily a static site, but includes a few API endpoints and 
 
 | Endpoint | Type | Purpose |
 |----------|------|---------|
-| `/api/posts.json` | JSON API | Blog search index |
+| `/api/posts-en.json` | JSON API | Blog search index (English shard) |
+| `/api/posts-es.json` | JSON API | Blog search index (Spanish shard) |
+| `/api/posts.json` | JSON API | Blog search index (compatibility aggregate) |
 | `/rss.xml` | RSS Feed | Blog subscription |
 | `/sitemap-index.xml` | Sitemap | Search engine indexing |
 
 ## API Endpoints
 
+### GET /api/posts-en.json
+
+Returns the English search shard for client-side blog search.
+
+**Location:** `src/pages/api/posts-en.json.ts`
+
+### GET /api/posts-es.json
+
+Returns the Spanish search shard for client-side blog search.
+
+**Location:** `src/pages/api/posts-es.json.ts`
+
 ### GET /api/posts.json
 
-Returns a JSON array of all blog posts for client-side search.
+Returns a compatibility aggregate search index (all languages).
 
 **Location:** `src/pages/api/posts.json.ts`
 
@@ -24,13 +38,16 @@ Returns a JSON array of all blog posts for client-side search.
 
 ```typescript
 interface PostIndexEntry {
-  id: string;           // Post ID (used in URLs)
-  slug: string;         // Same as id
-  title: string;        // Post title
-  description: string;  // Post description
-  pubDate: string;      // ISO 8601 date string
-  tags: string[];       // Array of tag names
-  heroImage?: string;   // Optional hero image path
+  id: string;
+  slug: string;
+  lang: 'en' | 'es';
+  title: string;
+  description: string;
+  pubDate: string;
+  tags: string[];
+  topics: string[];
+  heroImage?: string;
+  heroWebpExists?: boolean;
 }
 
 type Response = PostIndexEntry[];
@@ -81,9 +98,9 @@ Status: `500`
 #### Usage Example
 
 ```typescript
-// Client-side search
+// Client-side search (preferred: shard endpoint by language)
 async function searchPosts(query: string) {
-  const response = await fetch('/api/posts.json');
+  const response = await fetch('/api/posts-en.json');
   const posts = await response.json();
   
   return posts.filter(post => 

@@ -8,9 +8,7 @@ const lang: Language = 'en';
 
 export async function getStaticPaths() {
   const lang: Language = 'en';
-  const blogPostsResult: BlogPostsResultType = await getBlogPosts({
-    lang,
-  });
+  const blogPostsResult: BlogPostsResultType = await getBlogPosts({ lang });
   const totalPages = blogPostsResult.totalPages;
 
   const paths = [];

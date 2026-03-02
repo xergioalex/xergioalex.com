@@ -16,9 +16,7 @@ const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
-const blogPostsResult: BlogPostsResultType = await getBlogPosts({
-  lang: lang,
-});
+const blogPostsResult: BlogPostsResultType = await getBlogPosts({ lang });
 
 const collectionPageData = {
   '@context': 'https://schema.org',

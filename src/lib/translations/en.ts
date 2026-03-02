@@ -615,6 +615,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     philosophyTitle: 'Trading Philosophy',
     philosophyText:
       'Trading is a discipline, not a gamble. Success comes from education, patience, and emotional control — not from chasing quick profits. The market is the best teacher: it rewards consistency and punishes impulsiveness.<br /><br />As a technologist, I see unique opportunities in combining my engineering skills with trading. Building algorithmic systems, analyzing data patterns, and automating strategies are areas where my tech background gives me an edge. The goal is not just to trade, but to understand the markets deeply and build systems that can make intelligent decisions.',
+    ctaTitle: 'Want to talk trading?',
+    ctaText:
+      "If you want to discuss strategies, systems, or a trading project, I'm happy to connect.",
     timelineTitle: 'Trading Journal',
     emptyState: 'No trading journal entries yet. Check back soon!',
   },
@@ -812,6 +815,16 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     socialTitle: 'Connect With Me',
     locationTitle: 'Location',
     locationText: 'Based in Colombia. Open to remote collaboration worldwide.',
+    prefillSubjects: {
+      generalInquiry: 'General Inquiry',
+      collaboration: 'Collaboration Opportunity',
+      projectInquiry: 'Project or Work Inquiry',
+      projectCollaboration: 'Project Collaboration Inquiry',
+      startupCollaboration: 'Startup Collaboration Opportunity',
+      techTalkInvitation: 'Tech Talk Speaking Invitation',
+      tradingQuestion: 'Trading Question',
+      dailybotQuestion: 'Question About DailyBot',
+    },
   },
 
   contactSection: {
@@ -819,7 +832,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     description:
       "I'm always open to interesting conversations, collaboration opportunities, and new ideas. Whether you want to talk tech, entrepreneurship, or just say hello.",
     ctaText: 'Get in touch',
-    ctaLink: '/contact',
+    ctaLink: '/contact?topic=general&subject=General%20Inquiry',
   },
 
   // Search input

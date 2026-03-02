@@ -622,6 +622,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     philosophyTitle: 'Filosofía de trading',
     philosophyText:
       'El trading es una disciplina, no una apuesta. El éxito viene de la educación, la paciencia y el control emocional — no de perseguir ganancias rápidas. El mercado es el mejor maestro: recompensa la consistencia y castiga la impulsividad.<br /><br />Como tecnólogo, veo oportunidades únicas en combinar mis habilidades de ingeniería con el trading. Construir sistemas algorítmicos, analizar patrones de datos y automatizar estrategias son áreas donde mi formación tech me da una ventaja. El objetivo no es solo operar, sino entender los mercados profundamente y construir sistemas que puedan tomar decisiones inteligentes.',
+    ctaTitle: '¿Quieres hablar de trading?',
+    ctaText:
+      'Si quieres conversar sobre estrategias, sistemas o un proyecto de trading, estoy feliz de conectar.',
     timelineTitle: 'Diario de Trading',
     emptyState: 'Aún no hay entradas en el diario de trading. ¡Vuelve pronto!',
   },
@@ -820,6 +823,16 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     locationTitle: 'Ubicaci\u00F3n',
     locationText:
       'Ubicado en Colombia. Abierto a colaboraci\u00F3n remota en todo el mundo.',
+    prefillSubjects: {
+      generalInquiry: 'Consulta General',
+      collaboration: 'Oportunidad de Colaboracion',
+      projectInquiry: 'Consulta de Proyecto o Trabajo',
+      projectCollaboration: 'Consulta de Colaboracion en Proyecto',
+      startupCollaboration: 'Oportunidad de Colaboracion Startup',
+      techTalkInvitation: 'Invitacion a Charla Tech',
+      tradingQuestion: 'Pregunta de Trading',
+      dailybotQuestion: 'Pregunta sobre DailyBot',
+    },
   },
 
   contactSection: {
@@ -827,7 +840,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     description:
       'Siempre estoy abierto a conversaciones interesantes, oportunidades de colaboración e ideas nuevas. Ya sea para hablar de tech, emprendimiento o simplemente saludar.',
     ctaText: 'Ponte en contacto',
-    ctaLink: '/es/contact',
+    ctaLink: '/es/contact?topic=general&subject=Consulta%20General',
   },
 
   // Search input

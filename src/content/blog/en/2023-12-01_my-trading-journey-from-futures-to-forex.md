@@ -1,7 +1,10 @@
 ---
 title: "My Trading Journey: From Futures to Forex"
 description: "How I started in futures with friends, found mentorship in Forex through Market Profile, and learned that discipline, psychology, and consistency matter more than fast profits."
-pubDate: "2026-03-02"
+pubDate: "2023-12-01"
+heroImage: "/images/blog/posts/my-trading-journey-from-futures-to-forex/hero.png"
+series: "trading-journey"
+seriesOrder: 1
 heroLayout: "banner"
 tags: ["trading", "personal"]
 ---

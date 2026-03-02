@@ -105,7 +105,7 @@ const posts = await getBlogPosts({ lang: 'es' });
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `postsResult` | `CollectionEntry<'blog'>[]` | Required | Posts for current page |
+| `postsResult` | `Array` | Required | Lightweight posts for current page |
 | `currentTag` | `string` | `undefined` | Current tag filter |
 | `totalPages` | `number` | Required | Total number of pages |
 | `currentPage` | `number` | Required | Current page number |
@@ -114,8 +114,8 @@ const posts = await getBlogPosts({ lang: 'es' });
 | `lang` | `string` | `'en'` | Language code |
 
 **Features:**
-- Loads search index from `/api/posts.json`
-- Creates Fuse.js index for fuzzy search
+- Loads language shard index from `/api/posts-{lang}.json`
+- Falls back to `/api/posts.json` for compatibility
 - Debounced search (200ms)
 - Result caching (max 50 queries)
 - Manages search vs browse modes
@@ -246,8 +246,9 @@ Page Load → StaticBlogSearch receives postsResult
 ```
 User Types → BlogSearchInput dispatches 'search' event
           → StaticBlogSearch debounces (200ms)
-          → Fetches /api/posts.json (if not cached)
-          → Fuse.js performs fuzzy search
+          → Fetches /api/posts-{lang}.json (if not cached)
+          → Falls back to /api/posts.json if needed
+          → Performs ranked substring search
           → Results cached for pagination
           → SearchResults displays with highlighting
           → BlogPagination shows pages (buttons)
@@ -255,12 +256,13 @@ User Types → BlogSearchInput dispatches 'search' event
 
 ## Search Features
 
-### Fuzzy Matching
+### Ranked Matching
 
-Powered by Fuse.js with weighted fields:
-- Title: 40% weight
-- Description: 30% weight
-- Tags: 30% weight
+Weighted ranking rules:
+- Title match: score 0.0
+- Primary tags match: score 0.1
+- Topics match: score 0.15
+- Description match: score 0.2
 
 ### Result Highlighting
 
@@ -281,7 +283,14 @@ The highlighting uses `<mark>` tags with Tailwind classes.
 
 ## Search API
 
-The search uses `/api/posts.json` which returns:
+Primary endpoints:
+- `/api/posts-en.json`
+- `/api/posts-es.json`
+
+Compatibility endpoint:
+- `/api/posts.json`
+
+The search index returns:
 
 ```json
 [
@@ -298,7 +307,7 @@ The search uses `/api/posts.json` which returns:
 ]
 ```
 
-See [API Reference](../../../docs/API_REFERENCE.md) for details.
+See [API Reference](../../../docs/API_REFERENCE.md) for full details.
 
 ## Styling
 
@@ -310,4 +319,4 @@ All components use Tailwind CSS with dark mode support via the `dark:` prefix.
 - [Features: Pagination](../../../docs/features/PAGINATION.md) - Pagination implementation
 - [Library Utilities](../../lib/README.md) - translations.ts, search.ts
 - [Content Collections](../../content/README.md) - Blog post schema
-- [API Reference](../../../docs/API_REFERENCE.md) - /api/posts.json endpoint
+- [API Reference](../../../docs/API_REFERENCE.md) - Search shard endpoints

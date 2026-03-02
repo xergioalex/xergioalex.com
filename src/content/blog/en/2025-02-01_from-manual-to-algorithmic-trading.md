@@ -1,7 +1,10 @@
 ---
-title: "From Manual Trading to Algorithmic Trading with MQL4"
-description: "How I moved from repetitive manual execution to building scripts, indicators, and expert advisors in MetaTrader 4 to improve risk control and reduce emotional mistakes."
-pubDate: "2026-03-04"
+title: "From Manual Trading to Algorithmic Trading"
+description: "How I moved from repetitive manual execution in MetaTrader 4 to migrating scripts, indicators, and expert advisors into MetaTrader 5 for a more advanced automation stack."
+pubDate: "2025-02-01"
+heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.png"
+series: "trading-journey"
+seriesOrder: 3
 heroLayout: "banner"
 tags: ["trading", "tech"]
 ---
@@ -31,9 +34,35 @@ I was no longer thinking only as a trader, but also as a builder:
 
 ---
 
-## The 3 Building Blocks in MT4
+## From MQL4 to MQL5: The Next Step
 
-When you want to automate work in MT4, there are three core tool types:
+After building significant momentum in MQL4, I discovered **MetaTrader 5 (MT5)** and realized its automation ecosystem is much richer.
+
+MT5 has its own language, **MQL5**. It is very similar to MQL4, but more advanced and capable when it comes to building robots, execution logic, and analysis tooling.
+
+At this point, most serious algorithmic trading development is happening in MT5.
+
+---
+
+## My Migration Process: MT4 to MT5
+
+The transition was not a reset. It was a migration of what I had already built:
+
+- Scripts
+- Indicators
+- Expert Advisors
+
+I have been porting those pieces from MQL4 into MQL5 to preserve the logic that works for me while building on a more modern and flexible base.
+
+Today, I operate mainly in **MQL5**, while still maintaining compatibility with both versions because I continue to run parts of my process in MT4 and MT5.
+
+My end direction is clear: eventually operate only in MT5 because it is the more complete environment for automation.
+
+---
+
+## The 3 Building Blocks of Automation (MT4 and MT5)
+
+When you want to automate seriously, there are three core tool types (valid in both MT4 and MT5):
 
 ### 1) Scripts
 
@@ -111,14 +140,14 @@ That does not mean every automated strategy wins. But it means rule execution ca
 
 ## Where I Am Heading
 
-My direction is clear: keep evolving from manual discretionary execution toward a more systemized and eventually highly automated operation.
+My direction is clear: keep evolving from manual discretionary execution toward a more systemized and eventually highly automated operation, with MT5 as my primary environment.
 
 I do not see this as replacing human thinking completely. I see it as combining:
 
 - Human strategic judgment
 - Machine-level operational consistency
 
-That combination is what I want to keep building.
+That combination is what I want to keep building, with increasing algorithmic depth in MQL5.
 
 ---
 

@@ -6,6 +6,14 @@ Comprehensive guide to the blog post system: file naming, directory structure, f
 
 Blog posts use Astro Content Collections with a bilingual structure (English/Spanish). Each post exists in both languages with matching slugs, and uses date-prefixed filenames for chronological ordering.
 
+## AI Workflow (Mandatory)
+
+For AI agents and assistants, new blog post creation in `src/content/blog/` must use `/add-blog-post`.
+
+- Do not manually scaffold new post files unless the user explicitly asks to bypass the skill.
+- The workflow must create/update both language versions in the same task.
+- Use `/translate-sync` when parity corrections are needed for existing posts.
+
 ## File Naming Convention
 
 **Format:** `YYYY-MM-DD_slug.{md,mdx}`
@@ -84,6 +92,8 @@ schema: z.object({
   heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
     .default('banner').optional(),     // Optional - hero image display layout
   tags: z.array(z.string()).optional(), // Optional - must be existing tags
+  series: z.string().optional(),        // Optional - references src/content/series/{slug}.md
+  seriesOrder: z.number().optional(),   // Optional - chapter order when series is set
 })
 ```
 
@@ -98,6 +108,8 @@ schema: z.object({
 | `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}` |
 | `heroLayout` | No | How the hero image is displayed. Default: `'banner'`. See [Hero Layouts](#hero-layouts). |
 | `tags` | No | Array of tag identifiers. Must match files in `src/content/tags/`. |
+| `series` | No | Series slug from `src/content/series/`. Required together with `seriesOrder`. |
+| `seriesOrder` | No | Chapter number within the series. Required together with `series`. |
 
 ### Frontmatter Examples
 
