@@ -1,6 +1,6 @@
 ---
 title: 'Construyendo un Blog Sin Backend: Arquitectura para Escala y Performance'
-description: 'El cuarto capítulo de la construcción de XergioAleX.com — cómo funciona el sistema de blog completo: Content Collections como capa de datos, taxonomía de tags, búsqueda del lado del cliente, contenido bilingüe, y por qué toda la complejidad vive en el build, no en el navegador.'
+description: 'El cuarto capítulo de la construcción de XergioAleX.com — cómo funciona el sistema de blog completo: Content Collections como capa de datos, taxonomía de tags de tres niveles, búsqueda del lado del cliente, series de posts con navegación flotante, contenido bilingüe, y por qué toda la complejidad vive en el build, no en el navegador.'
 pubDate: '2026-03-01'
 heroLayout: 'none'
 tags: ['tech', 'portfolio', 'web-development']
@@ -60,16 +60,16 @@ Esto es lo que hace manejable escalar a cientos de posts. El contenido es datos.
 
 ### Naming de archivos como metadato
 
-Los posts usan una convención de naming con prefijo de fecha: `YYYY-MM-DD_slug.md`. El archivo `2026-03-01_scalable-tag-taxonomy-static-blog.md` que estás leyendo ahora mismo es un ejemplo directo. El prefijo de fecha da a los archivos un orden natural en el sistema de archivos. Una función utilitaria llamada `getPostSlug()` elimina el prefijo para generar URLs limpias — así que `/blog/scalable-tag-taxonomy-static-blog/` es lo que ven los lectores, no `/blog/2026-03-01_scalable-tag-taxonomy-static-blog/`.
+Los posts usan una convención de naming con prefijo de fecha: `YYYY-MM-DD_slug.md`. El archivo `2026-03-01_building-blog-without-backend.md` que estás leyendo ahora mismo es un ejemplo directo. El prefijo de fecha da a los archivos un orden natural en el sistema de archivos. Una función utilitaria llamada `getPostSlug()` elimina el prefijo para generar URLs limpias — así que `/blog/building-blog-without-backend/` es lo que ven los lectores, no `/blog/2026-03-01_building-blog-without-backend/`.
 
 La estructura de directorios bilingüe replica esto exactamente:
 
 ```
 src/content/blog/
 ├── en/
-│   └── 2026-03-01_scalable-tag-taxonomy-static-blog.md
+│   └── 2026-03-01_building-blog-without-backend.md
 └── es/
-    └── 2026-03-01_scalable-tag-taxonomy-static-blog.md
+    └── 2026-03-01_building-blog-without-backend.md
 ```
 
 Mismo slug, misma fecha, dos idiomas. Vuelvo a cómo funciona el lado bilingüe más adelante.
@@ -104,6 +104,30 @@ El encabezado de cada post muestra un tiempo de lectura estimado. Esto se comput
 ### Layouts de imagen hero
 
 Los posts soportan cuatro layouts hero: `banner` (imagen de ancho completo sobre el título), `side-by-side` (imagen a la derecha, título a la izquierda, apilamiento responsive), `minimal` (miniatura pequeña), y `none` (solo texto, como este post). El layout es un campo de frontmatter que los componentes leen en tiempo de build. Elegir el layout correcto para el aspect ratio de la imagen hero — las imágenes paisaje obtienen `banner`, las cuadradas obtienen `side-by-side` — hace que cada post se vea intencional en lugar de torpe.
+
+### Posts relacionados
+
+Al final de cada post, aparecen tres artículos relacionados. La selección no es aleatoria y no son "los más recientes" — usa un algoritmo de puntuación ponderada que entiende la taxonomía de tags:
+
+```typescript
+for (const tag of postTags) {
+  if (tags.includes(tag)) {
+    const tier = tierMap.get(tag) || 'primary';
+    // Match de tag primario = 2 puntos, secundario/subtopic = 1 punto
+    score += tier === 'primary' ? 2 : 1;
+  }
+}
+```
+
+Un match de tag primario (como `tech`) vale el doble que un match de tag secundario (como `python`). Dos posts que comparten `tech` y `python` puntúan más alto que dos posts que solo comparten `python` — la similitud a nivel de sección pesa más que la coincidencia a nivel de tema. Los tres con mayor puntaje, con desempate por más reciente, aparecen como posts relacionados.
+
+Como todo lo demás en este sistema, la puntuación se calcula en tiempo de build. El navegador recibe tres tarjetas HTML pre-seleccionadas. Sin llamada a API, sin motor de recomendación, sin cookies de tracking.
+
+### Posts demo
+
+Una pieza más del sistema de contenido que vale la pena mencionar: los posts demo. Son posts de referencia estructural almacenados en directorios `_demo/` (`src/content/blog/en/_demo/`, `src/content/blog/es/_demo/`) que muestran las features del blog — variaciones de layouts hero, capacidades MDX, formato enriquecido, resaltado de código en múltiples lenguajes.
+
+Los posts demo nunca se muestran en los listados del blog, páginas de tags, feeds RSS ni resultados de búsqueda. Se filtran a nivel de consulta con un simple check `!id.includes('/_demo/')`. En producción, son completamente invisibles. En dev local, solo son accesibles por URL directa. Existen para que yo — y cualquier agente de IA que contribuya a este sitio — pueda verificar cómo se renderiza una feature específica sin contaminar el blog real con contenido de prueba.
 
 ---
 

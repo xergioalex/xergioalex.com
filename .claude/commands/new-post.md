@@ -131,7 +131,29 @@ Available tags:
 Example: 1,2 or tech, personal
 ```
 
-**2.5 Hero Image** — Ask about the hero image.
+**2.5 Series** (optional) — Check if this post belongs to a series.
+
+First, check if any series exist in `src/content/series/`. If series exist, ask:
+
+```
+Does this post belong to a series?
+
+Available series:
+1. building-xergioalex - "Building XergioAleX.com" (currently 4 chapters)
+
+0. No, it's a standalone post
+
+Which series? (Enter for standalone)
+```
+
+**If user selects a series:**
+- Determine the next `seriesOrder` by checking existing posts: `grep -r 'series: "{slug}"' src/content/blog/en/`
+- Confirm: `This will be Chapter {n} in "{series title}". Correct?`
+- Add `series` and `seriesOrder` to frontmatter
+
+**If no series exist** in the project, skip this question entirely.
+
+**2.6 Hero Image** — Ask about the hero image.
 
 ```
 Do you have a hero image for this post?
@@ -164,13 +186,13 @@ Which layout? (Enter for recommended: {layout})
 - Run `npm run images:optimize` if the image is placed in staging (see Image Optimization Guide)
 - Inform the user about the optimization results
 
-**2.6 Publication date**
+**2.7 Publication date**
 
 ```
 Publication date? (Enter for today: {today's date YYYY-MM-DD})
 ```
 
-**2.7 Language**
+**2.8 Language**
 
 ```
 What's the primary language of this post?
@@ -179,7 +201,7 @@ What's the primary language of this post?
 2. Spanish (I'll translate to English)
 ```
 
-**2.8 Additional context (Topic mode only)**
+**2.9 Additional context (Topic mode only)**
 
 If in topic mode, ask for additional context to write a better article:
 
@@ -204,6 +226,7 @@ Title: {title}
 Slug: {slug}
 Date: {pubDate}
 Tags: {tags}
+Series: {series name + chapter number, or "standalone"}
 Hero: {heroImage or "none"} ({heroLayout})
 Mode: {topic → "Writing from scratch" | content → "Using provided content"}
 Primary language: {lang}

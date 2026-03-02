@@ -91,7 +91,16 @@ The skill auto-detects the mode based on the inputs provided.
 
 **Example:** `tags: ["tech", "portfolio", "python", "database"]` — primary and secondary in one array.
 
-**Series** (optional): If the post belongs to a series, add `series: "{series-slug}"` and `seriesOrder: {n}`. Available series are defined in `src/content/series/`. The `SeriesNavigation` component renders automatically.
+**Series** (optional): If the post belongs to a series, add `series: "{series-slug}"` and `seriesOrder: {n}`. Available series are defined in `src/content/series/`. The `SeriesNavigation` panel and `SeriesIndicator` floating button render automatically — no component imports or page changes needed.
+
+**Series workflow (when adding to an existing series):**
+1. Check available series: `ls src/content/series/`
+2. Read the series file to confirm the slug: `cat src/content/series/{slug}.md`
+3. Find existing posts in the series: `grep -r 'series: "{slug}"' src/content/blog/en/` to determine the next `seriesOrder` value
+4. Add both `series` and `seriesOrder` to frontmatter in BOTH en/ and es/ versions
+5. The `SeriesNavigation` (TOC + prev/next links) and `SeriesIndicator` (floating chapter progress button) appear automatically at build time
+
+**Creating a NEW series:** Create `src/content/series/{slug}.md` with `name`, `title`, `description`, `order` fields. Then add the series fields to each post's frontmatter.
 
 **Content lifecycle:**
 - Posts are **published** (visible in production and dev)
@@ -287,7 +296,7 @@ content: add blog post "{title}" (en + es)
 
 - Article requires new Content Collections schema fields
 - Topic requires creating new page templates or components
-- Multiple articles need to be created as a series (plan with `architect` first)
+- Multiple articles need to be created as a NEW series (plan with `architect` first). Adding a single post to an existing series is fine — just set `series` and `seriesOrder` in frontmatter.
 - Article requires custom interactive elements (Svelte islands)
 
 ## Examples
@@ -355,6 +364,7 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.6.0   | 2026-03-02 | Enhanced series workflow: detailed steps for adding posts to existing series, creating new series, and escalation guidance. |
 | 2.5.0   | 2026-03-01 | Unified tag taxonomy: removed `topics` field, all tags in single `tags` array. Tier determined by tags collection. |
 | 2.4.0   | 2026-02-28 | Increased max-loc from 600 to 1200 (many posts exceed 600 words). Updated existing post modification guidance to reference content-writer agent. |
 | 2.3.0   | 2026-02-19 | Removed `$DRAFT` parameter, draft/scheduled references. Blog now uses simple published + demo-only model. |

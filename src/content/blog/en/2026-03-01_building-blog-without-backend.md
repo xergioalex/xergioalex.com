@@ -1,6 +1,6 @@
 ---
 title: 'Building a Blog Without a Backend: Architecture for Scale and Performance'
-description: 'The fourth chapter of building XergioAleX.com — how the entire blog system works: Content Collections as a data layer, tag taxonomy, client-side search, bilingual content, and why every piece of complexity lives in the build, not the browser.'
+description: 'The fourth chapter of building XergioAleX.com — how the entire blog system works: Content Collections as a data layer, a three-tier tag taxonomy, client-side search, post series with floating navigation, bilingual content, and why every piece of complexity lives in the build, not the browser.'
 pubDate: '2026-03-01'
 heroLayout: 'none'
 tags: ['tech', 'portfolio', 'web-development']
@@ -60,16 +60,16 @@ This is the part that makes scaling to hundreds of posts manageable. The content
 
 ### File naming as metadata
 
-Posts use a date-prefix naming convention: `YYYY-MM-DD_slug.md`. The `2026-03-01_scalable-tag-taxonomy-static-blog.md` file you are reading right now is a direct example. The date prefix gives files a natural sort order in the filesystem. A utility function called `getPostSlug()` strips the prefix to generate clean URLs — so `/blog/scalable-tag-taxonomy-static-blog/` is what readers see, not `/blog/2026-03-01_scalable-tag-taxonomy-static-blog/`.
+Posts use a date-prefix naming convention: `YYYY-MM-DD_slug.md`. The `2026-03-01_building-blog-without-backend.md` file you are reading right now is a direct example. The date prefix gives files a natural sort order in the filesystem. A utility function called `getPostSlug()` strips the prefix to generate clean URLs — so `/blog/building-blog-without-backend/` is what readers see, not `/blog/2026-03-01_building-blog-without-backend/`.
 
 The bilingual directory structure mirrors this exactly:
 
 ```
 src/content/blog/
 ├── en/
-│   └── 2026-03-01_scalable-tag-taxonomy-static-blog.md
+│   └── 2026-03-01_building-blog-without-backend.md
 └── es/
-    └── 2026-03-01_scalable-tag-taxonomy-static-blog.md
+    └── 2026-03-01_building-blog-without-backend.md
 ```
 
 Same slug, same date, two languages. I will come back to how the bilingual side works in a later section.
@@ -104,6 +104,30 @@ Each post header shows an estimated reading time. This is computed at build time
 ### Hero image layouts
 
 Posts support four hero layouts: `banner` (full-width image above the title), `side-by-side` (image right, title left, responsive stacking), `minimal` (small thumbnail), and `none` (text-only, like this post). The layout is a frontmatter field that components read at build time. Choosing the right layout for a post's image aspect ratio — landscape images get `banner`, square images get `side-by-side` — makes every post look intentional rather than awkward.
+
+### Related posts
+
+At the bottom of every post, three related articles appear. The selection is not random and it is not "latest posts" — it uses a weighted scoring algorithm that understands the tag taxonomy:
+
+```typescript
+for (const tag of postTags) {
+  if (tags.includes(tag)) {
+    const tier = tierMap.get(tag) || 'primary';
+    // Primary tag match = 2 points, secondary/subtopic = 1 point
+    score += tier === 'primary' ? 2 : 1;
+  }
+}
+```
+
+A primary tag match (like `tech`) is worth twice as much as a secondary tag match (like `python`). Two posts sharing `tech` and `python` score higher than two posts sharing only `python` — section-level similarity carries more weight than topic-level overlap. The top three by score, falling back to newest-first for ties, appear as related posts.
+
+Like everything else in this system, the scoring runs at build time. The browser receives three pre-selected HTML cards. No API call, no recommendation engine, no tracking cookies.
+
+### Demo posts
+
+One more piece of the content system worth mentioning: demo posts. These are structural reference posts stored in `_demo/` directories (`src/content/blog/en/_demo/`, `src/content/blog/es/_demo/`) that showcase blog features — hero layout variations, MDX capabilities, rich formatting, code highlighting across languages.
+
+Demo posts are never shown in blog listings, tag pages, RSS feeds, or search results. They are filtered out at the query level with a single `!id.includes('/_demo/')` check. In production, they are completely invisible. In local dev, they are accessible by direct URL only. They exist so that I — and any AI agent contributing to this site — can verify how a specific feature renders without polluting the real blog with test content.
 
 ---
 

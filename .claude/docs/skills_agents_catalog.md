@@ -295,6 +295,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-03-02 | Series workflow documentation | Updated add-blog-post skill (v2.6.0) with detailed series workflow for adding posts to existing series. Updated new-post command with series question in interactive flow. |
 | 2026-02-28 | Content refinement patterns | Updated content-writer agent (v1.3.0) with content quality grading system, rewriting workflow, and transformation patterns. Updated add-blog-post skill (v2.4.0) with increased max-loc (600→1200) and content-writer reference for existing post rewrites. Fixed translate-sync Spanish register to "informal-professional" (Colombian Spanish). |
 | 2026-02-19 | Remove draft/scheduled from skills/agents | Updated add-blog-post skill (v2.3.0), content-writer agent (v1.2.0), new-post command, and catalog to remove draft/scheduled/preview references. Blog now uses simple published + demo-only model. |
 | 2026-02-12 | Blog Content Lifecycle docs | Created `docs/features/BLOG_CONTENT_LIFECYCLE.md`. Updated add-blog-post skill (v2.2.0), content-writer agent (v1.1.0), and new-post command with draft/scheduled/demo support. |
