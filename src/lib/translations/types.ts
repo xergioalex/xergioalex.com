@@ -74,7 +74,6 @@ export interface SiteTranslations {
     dailybot: string;
     entrepreneur: string;
     techTalks: string;
-    maker: string;
     trading: string;
     foodie: string;
     hobbies: string;
@@ -108,12 +107,6 @@ export interface SiteTranslations {
       cta: string;
     };
     techTalks: {
-      title: string;
-      subtitle: string;
-      description: string;
-      cta: string;
-    };
-    maker: {
       title: string;
       subtitle: string;
       description: string;
@@ -292,22 +285,6 @@ export interface SiteTranslations {
     emptyState: string;
   };
 
-  // Maker page
-  makerPage: {
-    title: string;
-    subtitle: string;
-    description: string;
-    heroDescription: string;
-    philosophyTitle: string;
-    philosophyText: string;
-    areasTitle: string;
-    areas: HighlightItem[];
-    currentTitle: string;
-    currentText: string;
-    ctaText: string;
-    ctaLink: string;
-  };
-
   // Portfolio page
   portfolioPage: {
     title: string;
@@ -316,8 +293,14 @@ export interface SiteTranslations {
     heroDescription: string;
     journeyTitle: string;
     journeyText: string;
+    philosophyTitle: string;
+    philosophyText: string;
     areasTitle: string;
     areas: HighlightItem[];
+    currentTitle: string;
+    currentText: string;
+    ctaText: string;
+    ctaLink: string;
     timelineTitle: string;
     emptyState: string;
   };

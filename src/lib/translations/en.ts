@@ -23,7 +23,6 @@ export const en: SiteTranslations = {
     dailybot: 'DailyBot',
     entrepreneur: 'Entrepreneur',
     techTalks: 'Tech Talks',
-    maker: 'Maker / Builder',
     portfolio: 'Portfolio',
     trading: 'Trading',
     foodie: 'Foodie Enthusiast',
@@ -73,13 +72,6 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       description:
         'As cofounder and organizer of the Pereira Tech Talks community, I have driven the creation of spaces to share knowledge and connect technology professionals. I have had the opportunity to be a speaker at multiple technical talks, where I enjoy sharing experiences and learning alongside the community.',
       cta: 'Learn more about my talks',
-    },
-    maker: {
-      title: 'Maker',
-      subtitle: 'Tech enthusiast, AI & Project developer',
-      description:
-        'As a technology and artificial intelligence enthusiast, I have led and developed multiple innovative projects, exploring various technologies to create digital applications and high-impact technical solutions. My passion for innovation and constant learning drives me to always be at the forefront, researching new tools and trends to transform ideas into tangible realities. I enjoy tackling complex challenges and adding value through technology.',
-      cta: 'View my projects',
     },
     makerHome: {
       title: 'What I Built',
@@ -183,7 +175,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         description:
           'Exploring artificial intelligence, machine learning, and emerging technologies to build innovative solutions.',
         icon: '\u{1F916}',
-        link: '/maker',
+        link: '/portfolio',
       },
       {
         title: 'Entrepreneurship',
@@ -579,63 +571,6 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     emptyState: 'No tech talks available yet. Check back soon!',
   },
 
-  // Maker page
-  makerPage: {
-    title: 'Maker / Builder',
-    subtitle: 'Building ideas into reality',
-    description:
-      "Sergio's maker journey — from software projects to 3D printing, IoT, and AI exploration.",
-    heroDescription:
-      'A lifelong builder and technology enthusiast. From code to hardware, constantly creating and experimenting with new technologies.',
-    philosophyTitle: 'The Maker Mindset',
-    philosophyText:
-      "I've always been driven by the urge to build things. Whether it's a web application, an open-source tool, a 3D printed prototype, or an IoT device — the process of taking an idea and turning it into something tangible is what excites me most.<br /><br />Technology is evolving at an incredible pace, and I believe the best way to understand it is to get your hands dirty. Every new project is a chance to learn, experiment, and push boundaries.",
-    areasTitle: 'Areas of Exploration',
-    areas: [
-      {
-        title: 'Artificial Intelligence',
-        description:
-          'Exploring AI integration, machine learning models, LLMs, and building AI-powered applications that solve real problems.',
-        icon: '\u{1F916}',
-      },
-      {
-        title: '3D Printing',
-        description:
-          'Recently started my 3D printing journey — designing objects, prototyping ideas, and learning CAD modeling to bring concepts to life.',
-        icon: '\u{1F5A8}\uFE0F',
-      },
-      {
-        title: 'IoT & Hardware',
-        description:
-          'Building connected devices, sensor projects, and exploring the world of physical computing and home automation.',
-        icon: '\u{1F4E1}',
-      },
-      {
-        title: 'Physical AI & Robotics',
-        description:
-          'Fascinated by embodied AI, robotics, and the convergence of software intelligence with physical systems.',
-        icon: '\u{1F9BE}',
-      },
-      {
-        title: 'Open Source',
-        description:
-          'With 113+ repositories on GitHub, contributing to and creating tools that help other developers build better software.',
-        icon: '\u{1F310}',
-      },
-      {
-        title: 'Full Stack Development',
-        description:
-          'Building web applications, APIs, and cloud-native systems with modern technologies and best practices.',
-        icon: '\u{1F4BB}',
-      },
-    ],
-    currentTitle: "What I'm Building Now",
-    currentText:
-      "Right now, my focus is on the exciting intersection of software and hardware. I recently got a 3D printer and I'm learning to design and print functional objects. I'm also experimenting with IoT devices and exploring how AI can be embedded into physical systems.<br /><br />Every day is an opportunity to learn something new. Whether it's a new programming language (currently exploring GoLang), a new manufacturing technique, or a new AI model — the goal is always the same: build, learn, share, repeat.",
-    ctaText: 'Check My GitHub',
-    ctaLink: 'https://github.com/xergioalex',
-  },
-
   // Trading page
   tradingPage: {
     title: 'Trading Journal',
@@ -791,16 +726,19 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     description:
       'A showcase of my projects, experiments, and technical work across software engineering, robotics, and more.',
     heroDescription:
-      'Explore my portfolio of projects spanning software development, DevOps, robotics, and emerging technologies.',
+      'A lifelong builder and technology enthusiast. From code to hardware, constantly creating and experimenting with new technologies.',
     journeyTitle: 'Building Things That Matter',
     journeyText:
       "I've always believed the best way to learn is by building. Over the years, I've worked on projects ranging from large-scale SaaS products to weekend experiments with microcontrollers. Each project taught me something new — whether it was a new technology, a better architecture pattern, or simply how to ship faster.<br /><br />This portfolio is a living collection of the work I'm most proud of. From open-source tools and DevOps infrastructure to robotics prototypes and AI experiments — each entry represents a problem I found interesting enough to solve.",
+    philosophyTitle: 'The Maker Mindset',
+    philosophyText:
+      "I've always been driven by the urge to build things. Whether it's a web application, an open-source tool, a 3D printed prototype, or an IoT device — the process of taking an idea and turning it into something tangible is what excites me most.<br /><br />Technology is evolving at an incredible pace, and I believe the best way to understand it is to get your hands dirty. Every new project is a chance to learn, experiment, and push boundaries.",
     areasTitle: "What You'll Find Here",
     areas: [
       {
         title: 'Software & SaaS',
         description:
-          'Full-stack applications, APIs, and products built with modern technologies — from startup MVPs to production systems serving thousands of users.',
+          'Full-stack applications, APIs, and products built with modern technologies — from startup MVPs to production systems serving thousands of users. With 113+ repositories on GitHub, contributing to open source is a core part of how I build.',
         icon: '\u{1F4BB}',
       },
       {
@@ -812,16 +750,21 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       {
         title: 'Robotics & Hardware',
         description:
-          'Autonomous robots, IoT devices, 3D printing projects, and experiments at the intersection of software and the physical world.',
+          'Autonomous robots, IoT devices, 3D printing projects, and experiments at the intersection of software and the physical world. From connected sensors to CAD-designed prototypes.',
         icon: '\u{1F916}',
       },
       {
         title: 'AI & Experiments',
         description:
-          "Machine learning prototypes, generative AI explorations, and side projects pushing the boundaries of what's possible.",
+          "Machine learning prototypes, LLM integrations, generative AI explorations, and side projects pushing the boundaries of what's possible — including embodied AI and physical systems.",
         icon: '\u{1F9EA}',
       },
     ],
+    currentTitle: "What I'm Building Now",
+    currentText:
+      "Right now, my focus is on the exciting intersection of software and hardware. I recently got a 3D printer and I'm learning to design and print functional objects. I'm also experimenting with IoT devices and exploring how AI can be embedded into physical systems.<br /><br />Every day is an opportunity to learn something new. Whether it's a new programming language (currently exploring GoLang), a new manufacturing technique, or a new AI model — the goal is always the same: build, learn, share, repeat.",
+    ctaText: 'Check My GitHub',
+    ctaLink: 'https://github.com/xergioalex',
     timelineTitle: 'Projects',
     emptyState: 'No portfolio projects available yet. Check back soon!',
   },

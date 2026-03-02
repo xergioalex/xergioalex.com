@@ -23,7 +23,6 @@ export const es: SiteTranslations = {
     dailybot: 'DailyBot',
     entrepreneur: 'Emprendedor',
     techTalks: 'Charlas Tech',
-    maker: 'Maker / Creador',
     portfolio: 'Portafolio',
     trading: 'Trading',
     foodie: 'Foodie',
@@ -73,14 +72,6 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       description:
         'Como cofundador y organizador de la comunidad Pereira Tech Talks, he impulsado la creaci\u00F3n de espacios para compartir conocimiento y conectar a profesionales de tecnolog\u00EDa. He tenido la oportunidad de ser speaker en m\u00FAltiples charlas t\u00E9cnicas, donde disfruto compartir experiencias y aprender junto a la comunidad.',
       cta: 'Conoce m\u00E1s sobre mis charlas',
-    },
-    maker: {
-      title: 'Maker',
-      subtitle:
-        'Entusiasta de la tecnolog\u00EDa, IA & Desarrollador de proyectos',
-      description:
-        'Como entusiasta de la tecnolog\u00EDa y la inteligencia artificial, he liderado y desarrollado m\u00FAltiples proyectos innovadores, explorando diversas tecnolog\u00EDas para crear aplicaciones digitales y soluciones t\u00E9cnicas de alto impacto. Mi pasi\u00F3n por la innovaci\u00F3n y el aprendizaje constante me impulsa a estar siempre a la vanguardia, investigando nuevas herramientas y tendencias para transformar ideas en realidades tangibles. Disfruto enfrentar desaf\u00EDos complejos y aportar valor a trav\u00E9s de la tecnolog\u00EDa.',
-      cta: 'Ver mis proyectos',
     },
     makerHome: {
       title: 'Lo que he construido',
@@ -185,7 +176,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         description:
           'Explorando inteligencia artificial, machine learning y tecnolog\u00EDas emergentes para crear soluciones innovadoras.',
         icon: '\u{1F916}',
-        link: '/es/maker',
+        link: '/es/portfolio',
       },
       {
         title: 'Emprendimiento',
@@ -587,63 +578,6 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     emptyState: '\u00A1A\u00FAn no hay charlas disponibles. Vuelve pronto!',
   },
 
-  // Maker page
-  makerPage: {
-    title: 'Maker / Creador',
-    subtitle: 'Transformando ideas en realidad',
-    description:
-      'El camino maker de Sergio — desde proyectos de software hasta impresi\u00F3n 3D, IoT y exploraci\u00F3n de IA.',
-    heroDescription:
-      'Un constructor y entusiasta de la tecnolog\u00EDa de por vida. Del c\u00F3digo al hardware, constantemente creando y experimentando con nuevas tecnolog\u00EDas.',
-    philosophyTitle: 'La mentalidad maker',
-    philosophyText:
-      'Siempre me ha impulsado la necesidad de construir cosas. Ya sea una aplicaci\u00F3n web, una herramienta open-source, un prototipo impreso en 3D o un dispositivo IoT — el proceso de tomar una idea y convertirla en algo tangible es lo que m\u00E1s me emociona.<br /><br />La tecnolog\u00EDa evoluciona a un ritmo incre\u00EDble, y creo que la mejor forma de entenderla es ensuci\u00E1ndose las manos. Cada nuevo proyecto es una oportunidad para aprender, experimentar y empujar l\u00EDmites.',
-    areasTitle: '\u00C1reas de exploraci\u00F3n',
-    areas: [
-      {
-        title: 'Inteligencia artificial',
-        description:
-          'Explorando integraci\u00F3n de IA, modelos de machine learning, LLMs y construyendo aplicaciones impulsadas por IA que resuelven problemas reales.',
-        icon: '\u{1F916}',
-      },
-      {
-        title: 'Impresi\u00F3n 3D',
-        description:
-          'Recientemente comenc\u00E9 mi camino en impresi\u00F3n 3D — dise\u00F1ando objetos, prototipando ideas y aprendiendo modelado CAD para dar vida a conceptos.',
-        icon: '\u{1F5A8}\uFE0F',
-      },
-      {
-        title: 'IoT y hardware',
-        description:
-          'Construyendo dispositivos conectados, proyectos con sensores y explorando el mundo de la computaci\u00F3n f\u00EDsica y automatizaci\u00F3n del hogar.',
-        icon: '\u{1F4E1}',
-      },
-      {
-        title: 'IA f\u00EDsica y rob\u00F3tica',
-        description:
-          'Fascinado por la IA embodied, rob\u00F3tica y la convergencia de la inteligencia de software con sistemas f\u00EDsicos.',
-        icon: '\u{1F9BE}',
-      },
-      {
-        title: 'Open Source',
-        description:
-          'Con 113+ repositorios en GitHub, contribuyendo y creando herramientas que ayudan a otros desarrolladores a construir mejor software.',
-        icon: '\u{1F310}',
-      },
-      {
-        title: 'Desarrollo full stack',
-        description:
-          'Construyendo aplicaciones web, APIs y sistemas cloud-native con tecnolog\u00EDas modernas y mejores pr\u00E1cticas.',
-        icon: '\u{1F4BB}',
-      },
-    ],
-    currentTitle: 'Lo que estoy construyendo ahora',
-    currentText:
-      'Ahora mismo, mi enfoque est\u00E1 en la emocionante intersecci\u00F3n entre software y hardware. Recientemente obtuve una impresora 3D y estoy aprendiendo a dise\u00F1ar e imprimir objetos funcionales. Tambi\u00E9n estoy experimentando con dispositivos IoT y explorando c\u00F3mo la IA puede integrarse en sistemas f\u00EDsicos.<br /><br />Cada d\u00EDa es una oportunidad para aprender algo nuevo. Ya sea un nuevo lenguaje de programaci\u00F3n (actualmente explorando GoLang), una nueva t\u00E9cnica de fabricaci\u00F3n o un nuevo modelo de IA — el objetivo siempre es el mismo: construir, aprender, compartir, repetir.',
-    ctaText: 'Ver mi GitHub',
-    ctaLink: 'https://github.com/xergioalex',
-  },
-
   // Trading page
   tradingPage: {
     title: 'Diario de Trading',
@@ -799,16 +733,19 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     description:
       'Una muestra de mis proyectos, experimentos y trabajo técnico en ingeniería de software, robótica y más.',
     heroDescription:
-      'Explora mi portafolio de proyectos en desarrollo de software, DevOps, robótica y tecnologías emergentes.',
+      'Un constructor y entusiasta de la tecnología de por vida. Del código al hardware, constantemente creando y experimentando con nuevas tecnologías.',
     journeyTitle: 'Construyendo cosas que importan',
     journeyText:
       'Siempre he creído que la mejor forma de aprender es construyendo. A lo largo de los años, he trabajado en proyectos que van desde productos SaaS a gran escala hasta experimentos de fin de semana con microcontroladores. Cada proyecto me enseñó algo nuevo — ya sea una nueva tecnología, un mejor patrón de arquitectura, o simplemente cómo entregar más rápido.<br /><br />Este portafolio es una colección viva del trabajo del que estoy más orgulloso. Desde herramientas open-source e infraestructura DevOps hasta prototipos de robótica y experimentos con IA — cada entrada representa un problema que encontré lo suficientemente interesante como para resolver.',
+    philosophyTitle: 'La mentalidad maker',
+    philosophyText:
+      'Siempre me ha impulsado la necesidad de construir cosas. Ya sea una aplicación web, una herramienta open-source, un prototipo impreso en 3D o un dispositivo IoT — el proceso de tomar una idea y convertirla en algo tangible es lo que más me emociona.<br /><br />La tecnología evoluciona a un ritmo increíble, y creo que la mejor forma de entenderla es ensuciándose las manos. Cada nuevo proyecto es una oportunidad para aprender, experimentar y empujar límites.',
     areasTitle: 'Lo que encontrarás aquí',
     areas: [
       {
         title: 'Software y SaaS',
         description:
-          'Aplicaciones full-stack, APIs y productos construidos con tecnologías modernas — desde MVPs de startups hasta sistemas en producción sirviendo a miles de usuarios.',
+          'Aplicaciones full-stack, APIs y productos construidos con tecnologías modernas — desde MVPs de startups hasta sistemas en producción sirviendo a miles de usuarios. Con 113+ repositorios en GitHub, contribuir al open source es parte fundamental de cómo construyo.',
         icon: '💻',
       },
       {
@@ -820,16 +757,21 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       {
         title: 'Robótica y hardware',
         description:
-          'Robots autónomos, dispositivos IoT, proyectos de impresión 3D y experimentos en la intersección del software y el mundo físico.',
+          'Robots autónomos, dispositivos IoT, proyectos de impresión 3D y experimentos en la intersección del software y el mundo físico. Desde sensores conectados hasta prototipos diseñados en CAD.',
         icon: '🤖',
       },
       {
         title: 'IA y experimentos',
         description:
-          'Prototipos de machine learning, exploraciones de IA generativa y proyectos paralelos empujando los límites de lo posible.',
+          'Prototipos de machine learning, integraciones con LLMs, exploraciones de IA generativa y proyectos paralelos empujando los límites de lo posible — incluyendo IA embodied y sistemas físicos.',
         icon: '🧪',
       },
     ],
+    currentTitle: 'Lo que estoy construyendo ahora',
+    currentText:
+      'Ahora mismo, mi enfoque está en la emocionante intersección entre software y hardware. Recientemente obtuve una impresora 3D y estoy aprendiendo a diseñar e imprimir objetos funcionales. También estoy experimentando con dispositivos IoT y explorando cómo la IA puede integrarse en sistemas físicos.<br /><br />Cada día es una oportunidad para aprender algo nuevo. Ya sea un nuevo lenguaje de programación (actualmente explorando GoLang), una nueva técnica de fabricación o un nuevo modelo de IA — el objetivo siempre es el mismo: construir, aprender, compartir, repetir.',
+    ctaText: 'Ver mi GitHub',
+    ctaLink: 'https://github.com/xergioalex',
     timelineTitle: 'Proyectos',
     emptyState:
       'Aún no hay proyectos de portafolio disponibles. ¡Vuelve pronto!',

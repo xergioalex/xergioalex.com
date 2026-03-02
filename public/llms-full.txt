@@ -29,7 +29,6 @@ Based in Colombia, he has led the development of DailyBot, a modern collaboratio
 - **DailyBot** (/dailybot/) - Modern collaboration platform for human teams and AI agents; Y Combinator journey and product evolution
 - **Trading** (/trading/) - Trading journey, approach, philosophy, and market analysis
 - **Entrepreneur** (/entrepreneur/) - Entrepreneurship experiences and startup building
-- **Maker** (/maker/) - Hardware projects, robotics, and DIY builds
 - **Hobbies** (/hobbies/) - Sports, gaming, and other interests
 - **Foodie** (/foodie/) - Food experiences and culinary adventures
 

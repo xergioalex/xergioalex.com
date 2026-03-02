@@ -18,7 +18,6 @@ This site features a bilingual blog and professional profile covering software d
 - DailyBot: /dailybot/
 - Trading: /trading/
 - Entrepreneur: /entrepreneur/
-- Maker: /maker/
 - Hobbies: /hobbies/
 - Foodie: /foodie/
 
