@@ -95,32 +95,16 @@ The integration was straightforward. One `<script>` tag in `BaseHead.astro`, con
 
 If the environment variable is not configured — like in local development — the script simply does not render. Zero overhead.
 
-### Microsoft Clarity — The Eye-Opener
+### Umami Custom Events — Click Tracking Without Extra Weight
 
-This is the tool that surprised me the most. [Microsoft Clarity](https://clarity.microsoft.com) is completely free — no traffic limits, no premium tier, no catch. And what it provides is something no traffic analytics tool can: **you can watch real people use your site.**
+Umami is not only page views. It also supports custom events, which lets me track meaningful clicks without adding a second behavior-recording script.
 
-Clarity records user sessions and generates heatmaps. Click heatmaps show where people click. Scroll heatmaps show how far they scroll. Session recordings let you watch an anonymized replay of an actual visit.
+For a blog, this gives actionable data with minimal payload:
+- **Do readers click related posts?** Track clicks on the "related articles" block.
+- **Do readers click key CTAs?** Track newsletter, contact, and outbound profile links.
+- **Do readers use language switchers or tags?** Track filter and navigation interactions.
 
-For a blog, this is transformative. I can see:
-- **Do readers actually finish my posts?** Scroll heatmaps reveal the exact point where most visitors stop scrolling. If 80% of readers bail after the second paragraph, that is a signal to improve the opening.
-- **Where do they click?** Are people clicking on the tags? The internal links? The social buttons?
-- **What frustrates them?** Clarity detects "rage clicks" — rapid repeated clicks on an element that is not responding. Dead click detection finds elements that look clickable but are not.
-
-The script is ~10KB and loads asynchronously. It uses an IIFE pattern that initializes without blocking the page:
-
-```astro
-{ANALYTICS.clarity.projectId && (
-  <script is:inline define:vars={{ clarityId: ANALYTICS.clarity.projectId }}>
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script",clarityId);
-  </script>
-)}
-```
-
-Same conditional pattern: no environment variable, no script.
+The instrumentation is explicit and privacy-friendly: only the events I decide to track are sent.
 
 ### Google Search Console + Bing Webmaster Tools — The SEO Layer
 
@@ -157,9 +141,8 @@ The thresholds are slightly below 100 to account for CI environment variance (Li
 
 The question I kept asking myself throughout this process: **did adding all these analytics break my Lighthouse 100 scores?**
 
-The total overhead of all analytics scripts is approximately **12KB loaded asynchronously**:
+The total overhead of all analytics scripts is approximately **2KB loaded asynchronously**:
 - Umami: ~2KB (defer)
-- Clarity: ~10KB (async IIFE)
 - Verification meta tags: negligible
 
 For comparison, a single blog post hero image weighs 50-200KB. The analytics scripts are lighter than a small JPEG.
@@ -180,8 +163,8 @@ With this stack in place, I have answers to questions I could not answer before:
 | Which blog posts get the most traffic? | Umami (Top Pages) |
 | Where do visitors come from? | Umami (Referrers) |
 | What do people search to find the site? | Google Search Console |
-| Do readers actually finish blog posts? | Clarity (scroll heatmaps) |
-| Where do visitors click? | Clarity (click heatmaps) |
+| Do readers engage with key post elements? | Umami custom events |
+| Where do visitors click? | Umami custom click events |
 | Is the site fast for real users? | Cloudflare (Core Web Vitals) |
 | Will a code change break performance? | Lighthouse CI (automatic on PRs) |
 | Is content cited in AI tools? | Bing Webmaster (AI Performance) |
@@ -206,9 +189,6 @@ export const ANALYTICS = {
   umami: {
     websiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || '',
     scriptUrl: 'https://cloud.umami.is/script.js',
-  },
-  clarity: {
-    projectId: import.meta.env.PUBLIC_CLARITY_PROJECT_ID || '',
   },
   verification: {
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
@@ -240,7 +220,6 @@ If there is one takeaway from this whole journey, it is this: you do not have to
 
 - [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/) — Edge-injected RUM with Core Web Vitals
 - [Umami Analytics](https://umami.is) — Open-source, cookieless traffic analytics
-- [Microsoft Clarity](https://clarity.microsoft.com) — Free heatmaps and session recordings
 - [Google Search Console](https://search.google.com/search-console) — Search performance and indexation
 - [Bing Webmaster Tools](https://www.bing.com/webmasters) — Search + AI citation tracking
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) — Automated performance audits in CI

@@ -534,7 +534,7 @@ Let's keep building.
 
 - **[Chapter 1 — Building XergioAleX.com](/blog/building-xergioalex-website/)** — The full architecture story: Astro, Svelte, Content Collections, bilingual content.
 - **[Chapter 2 — Lighthouse Perfect Scores](/blog/lighthouse-perfect-scores/)** — Accessibility, performance, SEO, and the road to 100/100/100/100.
-- **[Chapter 3 — Measuring What Matters](/blog/measuring-what-matters-free-analytics/)** — The free analytics stack: Umami, Cloudflare, Clarity, and zero cookie banners.
+- **[Chapter 3 — Measuring What Matters](/blog/measuring-what-matters-free-analytics/)** — The free analytics stack: Umami, Cloudflare, search consoles, and zero cookie banners.
 - **[Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)** — Official documentation for the collection and schema system used throughout this post.
 - **[Zod Schema Validation](https://zod.dev/)** — The schema library used in `content.config.ts` for validating tag and blog post frontmatter.
 - **[xergioalex.com source code](https://github.com/xergioalex/xergioalexcom)** — The full repository where all of the code described here lives.

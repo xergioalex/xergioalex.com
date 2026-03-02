@@ -19,14 +19,6 @@ const dashboards = [
     cookies: 'None',
   },
   {
-    name: 'Microsoft Clarity',
-    url: 'clarity.microsoft.com',
-    login: 'Microsoft account',
-    measures: 'Heatmaps, scroll maps, session recordings, rage clicks',
-    scriptSize: '~10KB (async)',
-    cookies: 'Anonymized',
-  },
-  {
     name: 'Google Search Console',
     url: 'search.google.com/search-console',
     login: 'Google account',
@@ -64,14 +56,14 @@ const weeklyTasks = [
     question: 'Where is traffic coming from? (social, search, direct)',
   },
   {
-    tool: 'Clarity',
-    action: 'Scroll heatmaps on recent posts',
-    question: 'Are readers finishing the latest blog posts?',
+    tool: 'Umami',
+    action: 'Review event dashboard',
+    question: 'Are key CTA and outbound clicks being tracked?',
   },
   {
-    tool: 'Clarity',
-    action: 'Rage clicks dashboard',
-    question: 'Is anything frustrating users? Dead buttons, broken links?',
+    tool: 'Cloudflare',
+    action: 'Core Web Vitals snapshot',
+    question: 'Any real-user performance regressions this week?',
   },
 ];
 
@@ -117,12 +109,6 @@ const keyMetrics = [
     tool: 'Umami + Cloudflare',
   },
   {
-    metric: 'Scroll Depth',
-    good: '>70% reach end of post',
-    bad: '<30% finish reading',
-    tool: 'Microsoft Clarity',
-  },
-  {
     metric: 'Bounce Rate',
     good: '<60% for blog posts',
     bad: '>80%',
@@ -161,11 +147,6 @@ const envVars = [
     where: 'Umami Cloud dashboard',
   },
   {
-    name: 'PUBLIC_CLARITY_PROJECT_ID',
-    tool: 'Clarity',
-    where: 'Clarity dashboard',
-  },
-  {
     name: 'PUBLIC_BING_SITE_VERIFICATION',
     tool: 'Bing',
     where: 'Bing Webmaster > Verification',
@@ -179,7 +160,7 @@ const envVars = [
   <section class="mb-12">
     <h2 class="text-xl md:text-2xl font-bold mb-4">Analytics Stack</h2>
     <p class="text-gray-600 dark:text-gray-300 mb-6">
-      All tools are free, privacy-first, and performance-preserving. Total script overhead: ~12KB async.
+      All tools are free, privacy-first, and performance-preserving. Total script overhead stays minimal.
     </p>
     <div class="overflow-x-auto">
       <table class="w-full text-sm border-collapse">
@@ -293,15 +274,15 @@ const envVars = [
         <ol class="list-decimal list-inside space-y-1 text-sm text-gray-600 dark:text-gray-300">
           <li>Check <strong>Umami Top Pages</strong> for highest pageview posts</li>
           <li>Cross-reference with <strong>GSC queries</strong> to see which search terms drive traffic</li>
-          <li>Check <strong>Clarity scroll heatmaps</strong> on those posts — high scroll depth = engaging content</li>
+          <li>Check <strong>Umami engagement proxies</strong> (time on page + bounce rate) for post quality signals</li>
         </ol>
       </div>
       <div class="p-4 rounded-xl border border-gray-200 dark:border-gray-700">
         <h3 class="font-semibold mb-2">Identifying Underperforming Posts</h3>
         <ol class="list-decimal list-inside space-y-1 text-sm text-gray-600 dark:text-gray-300">
           <li>Check <strong>GSC Performance</strong> for posts with high impressions but low CTR (&lt;1%)</li>
-          <li>Check <strong>Clarity scroll depth</strong> — if readers leave before 30%, the content needs improvement</li>
-          <li>Check <strong>Clarity rage clicks</strong> — may indicate broken links or confusing UI</li>
+          <li>Check <strong>Umami bounce rate</strong> and engagement events for weak content patterns</li>
+          <li>Review <strong>Cloudflare Core Web Vitals</strong> for UX issues caused by slow pages</li>
         </ol>
       </div>
       <div class="p-4 rounded-xl border border-gray-200 dark:border-gray-700">

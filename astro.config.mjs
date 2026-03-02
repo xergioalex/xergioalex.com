@@ -59,6 +59,9 @@ export default defineConfig({
         overlay: true,
       },
       port: 4444,
+      watch: {
+        ignored: ['**/.lighthouseci/**'],
+      },
     },
   },
 });
