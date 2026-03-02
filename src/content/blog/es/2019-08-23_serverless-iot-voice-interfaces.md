@@ -115,7 +115,7 @@ Demostré los mismos proyectos de mi charla anterior sobre serverless, pero esta
 
 - **[Bambú Meditación](https://appbambu.com/alexa/)** — Skill de Alexa impulsada por Lambda. Guía de meditación voice-first.
 - **[IoT Light Bulb](https://github.com/xergioalex/serverless-ligth-bulb)** — Bombillo controlado por serverless. API HTTP dispara Lambda, que señaliza el dispositivo.
-- **[DailyBot](https://dailybot.co/)** — Bot asistente de equipos. Eventos programados y mensajes de usuarios disparan funciones Lambda.
+- **[DailyBot](https://www.dailybot.com/)** — Bot asistente de equipos. Eventos programados y mensajes de usuarios disparan funciones Lambda.
 - **[Twitter Bot](https://x.com/XergioAleXBot)** — Tuiteo automatizado vía Lambda y eventos CloudWatch.
 
 Cada demo mostró el mismo patrón: evento entra, función corre, acción sale. Sin servidores, sin recursos inactivos.

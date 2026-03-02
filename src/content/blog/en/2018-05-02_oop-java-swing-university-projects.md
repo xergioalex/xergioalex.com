@@ -201,7 +201,7 @@ If Programming 1 with Scheme taught me to think recursively, and Programming 2 w
 
 Starting with design patterns felt academic at the time — a lot of UML diagrams and vocabulary before any actual code. But the projects made it concrete. The Sudoku solver didn't just demonstrate the Observer pattern; it showed me why the Observer pattern *exists* — what problem it was invented to solve, and how much cleaner the result is when you use it versus when you don't.
 
-If you're curious about where this university journey started — with a very different kind of challenge — check out [my first programming course with DrRacket](/blog/racket-projects-university), where parentheses and recursion taught me to think about computation from the ground up.
+If you're curious about where this university journey started — with a very different kind of challenge — check out [my first programming course with DrRacket](/blog/racket-projects-university/), where parentheses and recursion taught me to think about computation from the ground up.
 
 Let's keep building.
 
@@ -211,4 +211,4 @@ Let's keep building.
 
 - [Sudoku Solver source code (GitHub)](https://github.com/xergioalex/SudokuMVCJavaSwing)
 - [Contact Agenda source code (GitHub)](https://github.com/xergioalex/AgendaJavaSwing)
-- [My first programming course — Racket, recursion, and a function plotter](/blog/racket-projects-university)
+- [My first programming course — Racket, recursion, and a function plotter](/blog/racket-projects-university/)

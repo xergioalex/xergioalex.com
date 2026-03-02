@@ -89,6 +89,7 @@ The writing voice follows these principles established across the site:
 - Prefer natural Colombian Spanish phrasing where appropriate
 - Maintain the same conversational, first-person tone as English
 - Translate ideas, not words — adapt expressions to sound native
+- **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página). Verify before saving.
 
 ### Article Structure Convention
 

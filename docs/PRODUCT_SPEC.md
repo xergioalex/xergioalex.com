@@ -16,7 +16,7 @@ Sergio is positioned as a **builder-leader**: someone who creates technology, bu
 
 Create a modern, fast, and visually appealing personal website that:
 
-- Communicates value within 3 seconds (CTO at DailyBot YC S21, builder of 20+ products)
+- Communicates value within 3 seconds (CTO at DailyBot YC S21, builder of digital products)
 - Tells a compelling origin story (math tutor → YC CTO)
 - Showcases professional experience with specific metrics and achievements
 - Provides a platform for sharing knowledge through blog posts
@@ -39,7 +39,7 @@ Create a modern, fast, and visually appealing personal website that:
 **Purpose:** First impression and navigation hub — pass the 3-second test
 
 **Sections (7 total, clear hierarchy):**
-- **Hero Section** — Focused identity, value proposition, typewriter with achievement-focused words (CTO at DailyBot YC S21, Builder of 20+ products, Community Founder)
+- **Hero Section** — Focused identity, value proposition, typewriter with achievement-focused words (CTO at DailyBot YC S21, Builder of digital products, Community Founder)
 - **About Section** — Origin story narrative (Colombia → MSc → YC CTO) with specific metrics
 - **Builder Section** — DailyBot + specific projects (Moltbot, Syntro, SysPrompt), 113+ repos
 - **Blog Preview** — Elevated position, recent posts for thought leadership
@@ -110,7 +110,7 @@ Create a modern, fast, and visually appealing personal website that:
 ### Messaging Principles
 
 1. **Tell a story, don't list activities** — Origin narrative over resume-style bullet points
-2. **Lead with achievements** — YC S21 CTO, 20+ products, 3 communities before generic roles
+2. **Lead with achievements** — YC S21 CTO, digital products, 3 communities before generic roles
 3. **Use specific metrics** — 14+ years, 113+ repos, thousands of teams
 4. **Clear CTA hierarchy** — One primary action (blog/projects) over many equal CTAs
 

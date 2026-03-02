@@ -148,18 +148,18 @@ Y la confianza es la base de toda economía, toda institución, todo sistema. Cu
 - [Embark](https://github.com/iurimatias/embark-framework) — Framework para crear aplicaciones con Ethereum
 - [Blockchain Startups](https://angel.co/blockchains)
 - [Blockchain Jobs](https://blocktribe.com/jobs/)
-- [Preev](http://preev.com/), [BitcoinCharts](https://bitcoincharts.com/) — Convertidores en tiempo real
+- [Preev](https://preev.com/), [BitcoinCharts](https://bitcoincharts.com/) — Convertidores en tiempo real
 - [Mastering Bitcoin](https://www.bitcoinbook.info/) — Libro de Andreas Antonopoulos
 
 ### Noticias y Wallets
 
-- [DiarioBitcoin](http://www.diariobitcoin.com/), [CriptoNoticias](https://criptonoticias.com/)
+- [DiarioBitcoin](https://www.diariobitcoin.com/), [CriptoNoticias](https://criptonoticias.com/)
 - [CoinMarketCap](https://coinmarketcap.com/) — Históricos y gráficos
-- [Copay](https://copay.io/), [Blockchain.info](https://blockchain.info/) — Wallets
+- [Copay](https://copay.io/), [Blockchain.info](https://www.blockchain.com/) — Wallets
 
 ---
 
-![Meetup Bitcoin y Blockchain](/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp)
+![Meetup de Bitcoin y Blockchain en Pereira Tech Talks — audiencia asistiendo a la charla](/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp)
 
 ![Pereira Tech Talks — noche de blockchain](/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp)
 

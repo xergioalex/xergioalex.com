@@ -9,18 +9,18 @@ tags: ['tech', 'demo']
 
 MDX te permite escribir JSX directamente en tus archivos Markdown. Esto significa que puedes importar componentes, usar variables y crear contenido interactivo — todo dentro de un post de blog.
 
-## Por que MDX?
+## Por qué MDX?
 
-El Markdown tradicional es excelente para contenido estatico, pero a veces necesitas mas. MDX conecta la simplicidad del Markdown con todo el poder de los frameworks de componentes:
+El Markdown tradicional es excelente para contenido estático, pero a veces necesitas más. MDX conecta la simplicidad del Markdown con todo el poder de los frameworks de componentes:
 
 - **Componentes reutilizables** embebidos directamente en el contenido
-- **Datos dinamicos** renderizados en tiempo de build
+- **Datos dinámicos** renderizados en tiempo de build
 - **Elementos interactivos** que mejoran la experiencia de lectura
 - **Contenido con tipos seguros** con soporte completo del IDE
 
 ## Embebiendo Componentes
 
-Una de las fortalezas de MDX es la capacidad de embeber componentes directamente en tu escritura. Esto es especialmente util para documentacion tecnica donde quieres mostrar ejemplos interactivos junto a las explicaciones.
+Una de las fortalezas de MDX es la capacidad de embeber componentes directamente en tu escritura. Esto es especialmente útil para documentación técnica donde quieres mostrar ejemplos interactivos junto a las explicaciones.
 
 export const Aviso = ({ tipo = 'info', children }) => (
   <div style={{
@@ -36,16 +36,16 @@ export const Aviso = ({ tipo = 'info', children }) => (
 );
 
 <Aviso tipo="info">
-  Este componente de aviso esta definido y renderizado directamente dentro del archivo MDX. No se necesita un archivo de componente separado!
+  Este componente de aviso está definido y renderizado directamente dentro del archivo MDX. No se necesita un archivo de componente separado!
 </Aviso>
 
 <Aviso tipo="advertencia">
-  Los componentes MDX se renderizan en tiempo de build en el modo de salida estatica de Astro. Para interactividad del lado del cliente, necesitaras usar componentes de framework con directivas client.
+  Los componentes MDX se renderizan en tiempo de build en el modo de salida estática de Astro. Para interactividad del lado del cliente, necesitarás usar componentes de framework con directivas client.
 </Aviso>
 
 ## Usando Variables y Expresiones
 
-MDX soporta expresiones JavaScript en linea. Puedes calcular valores y renderizarlos directamente:
+MDX soporta expresiones JavaScript en línea. Puedes calcular valores y renderizarlos directamente:
 
 export const estadisticas = {
   lenguajes: 12,
@@ -54,32 +54,32 @@ export const estadisticas = {
   anio: new Date().getFullYear()
 };
 
-Aqui hay algunas estadisticas para {estadisticas.anio}:
+Aquí hay algunas estadísticas para {estadisticas.anio}:
 
 - **Lenguajes soportados:** {estadisticas.lenguajes}
 - **Integraciones de framework:** {estadisticas.frameworks}
 - **Herramientas de desarrollo:** {estadisticas.herramientas}
-- **Tamano total del ecosistema:** {estadisticas.lenguajes + estadisticas.frameworks + estadisticas.herramientas} tecnologias
+- **Tamaño total del ecosistema:** {estadisticas.lenguajes + estadisticas.frameworks + estadisticas.herramientas} tecnologías
 
-## Tablas Dinamicas
+## Tablas Dinámicas
 
 export const caracteristicas = [
-  { nombre: 'Renderizado Estatico', astro: true, next: true, gatsby: true },
+  { nombre: 'Renderizado Estático', astro: true, next: true, gatsby: true },
   { nombre: 'Arquitectura de Islas', astro: true, next: false, gatsby: false },
   { nombre: 'Cero JS por Defecto', astro: true, next: false, gatsby: false },
   { nombre: 'Soporte MDX', astro: true, next: true, gatsby: true },
   { nombre: 'Colecciones de Contenido', astro: true, next: false, gatsby: true },
 ];
 
-### Comparacion de Caracteristicas de Frameworks
+### Comparación de Características de Frameworks
 
-| Caracteristica | Astro | Next.js | Gatsby |
+| Característica | Astro | Next.js | Gatsby |
 |----------------|:-----:|:-------:|:------:|
 {caracteristicas.map(f => `| ${f.nombre} | ${f.astro ? '✅' : '❌'} | ${f.next ? '✅' : '❌'} | ${f.gatsby ? '✅' : '❌'} |`).join('\n')}
 
-## Codigo con Contexto
+## Código con Contexto
 
-MDX hace natural intercalar explicaciones con codigo. Aqui tienes una ruta API paso a paso:
+MDX hace natural intercalar explicaciones con código. Aquí tienes una ruta API paso a paso:
 
 **Paso 1:** Definir el manejador de ruta
 
@@ -117,16 +117,16 @@ export const GET: APIRoute = async ({ params }) => {
 ```
 
 <Aviso tipo="info">
-  MDX es particularmente poderoso para tutoriales y guias tecnicas donde necesitas mezclar explicacion con ejemplos interactivos. Todo el post de blog que estas leyendo ahora mismo esta escrito en MDX!
+  MDX es particularmente poderoso para tutoriales y guías técnicas donde necesitas mezclar explicación con ejemplos interactivos. Todo el post de blog que estás leyendo ahora mismo está escrito en MDX!
 </Aviso>
 
 ## Cuando Usar MDX
 
 MDX es excelente para:
 
-1. **Tutoriales tecnicos** que se benefician de ejemplos interactivos
-2. **Documentacion** con patrones de componentes reutilizables
+1. **Tutoriales técnicos** que se benefician de ejemplos interactivos
+2. **Documentación** con patrones de componentes reutilizables
 3. **Contenido basado en datos** donde los valores cambian con el tiempo
-4. **Posts con layouts personalizados** que van mas alla del Markdown estandar
+4. **Posts con layouts personalizados** que van más allá del Markdown estándar
 
-Para posts de blog simples con mayormente texto e imagenes, el Markdown estandar (`.md`) es perfectamente adecuado y tiene menos sobrecarga. Elige la herramienta correcta para el contenido.
+Para posts de blog simples con mayormente texto e imágenes, el Markdown estándar (`.md`) es perfectamente adecuado y tiene menos sobrecarga. Elige la herramienta correcta para el contenido.

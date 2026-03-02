@@ -97,7 +97,7 @@ class SlackMessage:
 
 Ahora cada payload de mensaje de Slack se valida en runtime *y* se chequea de tipos en tiempo de desarrollo. Si alguien intenta pasar un `int` como `user_id`, MyPy lo detecta. Si la API de Slack envía un payload mal formado, attrs lo detecta.
 
-(También experimentamos con **[Pydantic](https://pydantic-docs.helpmanual.io/)**, que es otra gran opción para validación de data + tipos.)
+(También experimentamos con **[Pydantic](https://docs.pydantic.dev/)**, que es otra gran opción para validación de data + tipos.)
 
 ### 4. Eliminar Tests Triviales
 
@@ -269,7 +269,7 @@ A seguir construyendo.
 ## Recursos
 
 - [Slides de la charla](https://slides.com/xergioalex/introduction-to-mypy)
-- [Documentación de MyPy](http://mypy-lang.org/)
+- [Documentación de MyPy](https://mypy-lang.org/)
 - [attrs — Classes Without Boilerplate](https://pypi.org/project/attrs/)
-- [Pydantic — Data Validation](https://pydantic-docs.helpmanual.io/)
+- [Pydantic — Data Validation](https://docs.pydantic.dev/)
 - [Python Type Hints (PEP 484)](https://peps.python.org/pep-0484/)

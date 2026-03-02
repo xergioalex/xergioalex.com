@@ -123,8 +123,8 @@ That's what keeps me reading the whitepaper over and over. Each time, I understa
 
 - [Embark](https://github.com/iurimatias/embark-framework) — Framework for Ethereum
 - [Mastering Bitcoin](https://www.bitcoinbook.info/) — Andreas Antonopoulos (essential reading)
-- [Preev](http://preev.com/), [CoinMarketCap](https://coinmarketcap.com/)
-- [Copay](https://copay.io/), [Blockchain.info](https://blockchain.info/) — Wallets
+- [Preev](https://preev.com/), [CoinMarketCap](https://coinmarketcap.com/)
+- [Copay](https://copay.io/), [Blockchain.info](https://www.blockchain.com/) — Wallets
 
 ---
 

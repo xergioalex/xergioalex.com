@@ -49,7 +49,7 @@ In the talk, I walked through examples of each component and showed how they wor
 
 Here's where things get fun. Most people assume you need to write C or C++ to program microcontrollers. That's true for low-level embedded systems, but for prototyping and learning, there's a better way: JavaScript.
 
-[Johnny-five](http://johnny-five.io/) is a JavaScript robotics and IoT platform. It lets you control Arduino, Raspberry Pi, and other boards from Node.js — no need to write C or C++. You write JavaScript, and Johnny-five handles the low-level communication with the hardware.
+[Johnny-five](https://johnny-five.io/) is a JavaScript robotics and IoT platform. It lets you control Arduino, Raspberry Pi, and other boards from Node.js — no need to write C or C++. You write JavaScript, and Johnny-five handles the low-level communication with the hardware.
 
 Why does this matter? Because JavaScript is familiar to millions of developers. If you know how to build a web app, you already have the skills to build a robot. That's a huge unlock.
 

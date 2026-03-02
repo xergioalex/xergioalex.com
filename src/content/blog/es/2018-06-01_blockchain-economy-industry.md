@@ -21,11 +21,11 @@ Pensemos en el intercambio humano temprano. Yo tengo huevos, tú tienes un cabal
 
 Este es el desafío fundamental del trueque: establecer tasas de cambio justas entre cosas completamente diferentes. Un huevo versus un caballo — claramente no son equivalentes. ¿Pero cómo calcularlo sin un punto de referencia común?
 
-![Ejemplo de modelo de intercambio básico](/images/blog/posts/blockchain-economy-industry/fig-1.webp)
+![Ejemplo de modelo de intercambio básico](/images/blog/posts/blockchain-economy-industry/barter-exchange-model.webp)
 
 La solución de la humanidad fue brillante: **el oro**. Un recurso natural escaso, atractivo y duradero que todos valoraban. El oro se convirtió en la referencia universal — el estándar contra el cual todo lo demás podía medirse.
 
-![Oro como referencia de intercambio](/images/blog/posts/blockchain-economy-industry/fig-2.webp)
+![Oro como referencia de intercambio](/images/blog/posts/blockchain-economy-industry/gold-as-exchange-reference.webp)
 
 Usemos un ejemplo simple (tomado de la película *El Concursante*). Un granjero quiere intercambiar huevos por un caballo. A través de las dinámicas del mercado, la gente estableció que:
 - 1 pepita de oro = 1 panal de huevos
@@ -33,7 +33,7 @@ Usemos un ejemplo simple (tomado de la película *El Concursante*). Un granjero 
 
 Entonces, con matemática básica: **120 huevos = 1 caballo**.
 
-![Caso de estudio de intercambio básico con oro](/images/blog/posts/blockchain-economy-industry/fig-3.webp)
+![Caso de estudio de intercambio básico con oro](/images/blog/posts/blockchain-economy-industry/gold-exchange-case-study.webp)
 
 El oro se convirtió en la primera **moneda** — un medio universal de intercambio.
 
@@ -43,7 +43,7 @@ Entonces la gente empezó a dejar su oro con orfebres para custodia. El orfebre 
 
 Así nació el **papel moneda** — un reclamo sobre el oro, no el oro en sí.
 
-![El término pesos oro en el papel moneda era una referencia a su respaldo contra el oro](/images/blog/posts/blockchain-economy-industry/fig-5.webp)
+![El término pesos oro en el papel moneda era una referencia a su respaldo contra el oro](/images/blog/posts/blockchain-economy-industry/paper-money-gold-backing.webp)
 
 Luego los orfebres descubrieron algo astuto: no necesitaban mantener todo el oro en sus bóvedas. Mientras la gente confiara en que podían canjear sus recibos, los orfebres podían emitir más recibos de los que tenían en oro. Esto se llama **banca de reserva fraccionaria** — y así es como los bancos modernos aún funcionan.
 
@@ -55,11 +55,11 @@ Con el tiempo, el vínculo con el oro desapareció por completo. El dinero pasó
 
 Avancemos hasta hoy. El comercio global depende de bancos e instituciones financieras para facilitar transacciones entre desconocidos. Actúan como **terceros de confianza** — intermediarios que asumen el riesgo para que compradores y vendedores no tengan que hacerlo.
 
-![Comercio global](/images/blog/posts/blockchain-economy-industry/fig-6.webp)
+![Comercio global](/images/blog/posts/blockchain-economy-industry/global-commerce-network.webp)
 
 Esto crea un **modelo de confianza centralizado**. Depositamos dinero en bancos. Confiamos en que lo mantengan, lo transfieran y lleven registros. A cambio, pagamos comisiones, aceptamos demoras y cedemos control.
 
-![Modelo centralizado de confianza](/images/blog/posts/blockchain-economy-industry/fig-7.webp)
+![Modelo centralizado de confianza](/images/blog/posts/blockchain-economy-industry/centralized-trust-model.webp)
 
 Pero los sistemas centralizados tienen debilidades inherentes:
 
@@ -69,7 +69,7 @@ Pero los sistemas centralizados tienen debilidades inherentes:
 
 Y entonces llegó 2008.
 
-![Crisis hipotecaria de 2008 en Wall Street](/images/blog/posts/blockchain-economy-industry/fig-8.webp)
+![Crisis hipotecaria de 2008 en Wall Street](/images/blog/posts/blockchain-economy-industry/2008-financial-crisis-wall-street.webp)
 
 La [crisis financiera de 2008](https://es.wikipedia.org/wiki/Crisis_financiera_de_2008) expuso los peligros del poder financiero centralizado. La avaricia y la gestión imprudente de bonos hipotecarios colapsaron la economía global. Lehman Brothers quebró. Grandes instituciones necesitaron rescates. La confianza en el sistema financiero se desplomó.
 
@@ -83,7 +83,7 @@ La idea de dinero sin control central había existido por un tiempo. Los [Cypher
 
 Entonces, el 31 de octubre de 2008 — en plena crisis financiera — una persona anónima (o grupo) publicó el famoso [whitepaper de Bitcoin](https://bitcoin.org/en/bitcoin-paper) bajo el seudónimo **Satoshi Nakamoto**.
 
-![Figuras representativas de los Cypherpunks, del documental Banking on Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-9.webp)
+![Figuras representativas de los Cypherpunks, del documental Banking on Bitcoin](/images/blog/posts/blockchain-economy-industry/cypherpunks-banking-on-bitcoin.webp)
 
 El paper de Satoshi describía una versión puramente electrónica de efectivo — un sistema donde podías intercambiar valor directamente, peer-to-peer, sin necesitar un banco o procesador de pagos de por medio.
 
@@ -93,11 +93,11 @@ En ese momento, Bitcoin no tenía valor real. Pero el 22 de mayo de 2010, un des
 
 Alguien aceptó. La [primera transacción de Bitcoin en el mundo real](https://www.blockchain.com/en/btc/tx/cca7507897abc89628f450e8b1e0c6fca4ec3f7b34cccf55f3f531c659ff4d79) había ocurrido.
 
-![Foto de las primeras dos pizzas compradas con bitcoins](/images/blog/posts/blockchain-economy-industry/fig-10.webp)
+![Foto de las primeras dos pizzas compradas con bitcoins](/images/blog/posts/blockchain-economy-industry/bitcoin-pizza-first-transaction.webp)
 
 ¿Esos 10,000 BTC? En el pico de Bitcoin de 2017 de casi $20,000 por moneda, valían **$200 millones de dólares**. Posiblemente las pizzas más caras de la historia.
 
-![Precio del Bitcoin desde enero de 2009 hasta la actualidad (2019), de coinmarketcap](/images/blog/posts/blockchain-economy-industry/fig-11.webp)
+![Precio del Bitcoin desde enero de 2009 hasta la actualidad (2019), de coinmarketcap](/images/blog/posts/blockchain-economy-industry/bitcoin-price-history-2009-2019.webp)
 
 Bitcoin se convirtió en una forma confiable y barata de intercambiar valor globalmente — especialmente útil para evitar las altas comisiones de los intermediarios tradicionales.
 
@@ -121,7 +121,7 @@ Esto es lo que me llamó la atención de Bitcoin cuando lo estudié por primera 
 
 **Anónimo (o seudónimo)** — No necesitas revelar tu identidad para transaccionar, preservando privacidad.
 
-![Bitcoin como red de intercambio mundial](/images/blog/posts/blockchain-economy-industry/fig-12.webp)
+![Bitcoin como red de intercambio mundial](/images/blog/posts/blockchain-economy-industry/bitcoin-global-exchange-network.webp)
 
 ---
 
@@ -137,7 +137,7 @@ Los sistemas tradicionales resuelven esto con un libro mayor central. Un banco l
 
 La solución de Bitcoin: hacer el libro mayor **público, compartido y criptográficamente seguro**.
 
-![Tecnologías que soportan Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-13.webp)
+![Tecnologías que soportan Bitcoin](/images/blog/posts/blockchain-economy-industry/bitcoin-supporting-technologies.webp)
 
 ### El blockchain: una cadena de firmas digitales
 
@@ -149,7 +149,7 @@ Cada **bloque** contiene:
 - Una referencia al bloque anterior
 - Una firma criptográfica única (hash)
 
-![Transacciones como cadena de firmas digitales, del paper de Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-14.webp)
+![Transacciones como cadena de firmas digitales, del paper de Bitcoin](/images/blog/posts/blockchain-economy-industry/blockchain-chain-of-digital-signatures.webp)
 
 Los bloques están encadenados secuencialmente. Cambia una transacción, y la firma criptográfica cambia. Cambia la firma, y la cadena se rompe. Esto hace casi imposible alterar transacciones pasadas sin ser detectado.
 
@@ -166,13 +166,13 @@ Ese es el trabajo de los **mineros** — participantes en la red que compiten pa
 5. Una vez verificado, el bloque se agrega a la cadena
 6. El minero ganador recibe una recompensa (Bitcoin nuevo + comisiones de transacción)
 
-![Minería en la red Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-15.webp)
+![Minería en la red Bitcoin](/images/blog/posts/blockchain-economy-industry/bitcoin-mining-network.webp)
 
 El sistema de proof-of-work hace que atacar la red sea extremadamente costoso. Para reescribir el blockchain, necesitarías controlar más poder de cómputo que el resto de la red combinada — y rehacer todo ese trabajo criptográfico más rápido de lo que los mineros honestos están agregando nuevos bloques.
 
 Satoshi lo comparó con la minería de oro: al principio, el oro es fácil de encontrar. Pero con el tiempo, tienes que cavar más profundo y trabajar más duro. La minería de Bitcoin funciona igual — a medida que más mineros se unen, la dificultad se ajusta para mantener tiempos de bloque consistentes (unos 10 minutos por bloque).
 
-![Blockchain en acción en una red de Bitcoin](/images/blog/posts/blockchain-economy-industry/fig-16.webp)
+![Blockchain en acción en una red de Bitcoin](/images/blog/posts/blockchain-economy-industry/blockchain-in-action-bitcoin-network.webp)
 
 ---
 
@@ -182,7 +182,7 @@ Bitcoin demostró que blockchain podía funcionar para dinero. ¿Pero qué más 
 
 En 2014, [Vitalik Buterin](https://en.wikipedia.org/wiki/Vitalik_Buterin) lanzó **Ethereum** — una plataforma blockchain diseñada para más que solo pagos. Ethereum introdujo **contratos inteligentes**: código autoejecutado que corre en el blockchain.
 
-![Contrato Inteligente](/images/blog/posts/blockchain-economy-industry/fig-17.webp)
+![Contrato Inteligente](/images/blog/posts/blockchain-economy-industry/ethereum-smart-contract.webp)
 
 Un contrato inteligente es como una máquina expendedora digital. Pones dinero, el contrato verifica si se cumplen las condiciones, y de ser así, se ejecuta automáticamente (te envía una gaseosa, transfiere propiedad, libera fondos, etc.).
 
@@ -208,7 +208,7 @@ Los archivos se encriptan antes de subirse, así que aunque estén distribuidos 
 
 Miles de millones de dispositivos — sensores, electrodomésticos inteligentes, wearables — pronto estarán conectados a internet. Pero asegurar dispositivos de bajo consumo y bajo costo es difícil. Muchos dispositivos IoT se envían con seguridad débil y nunca se actualizan.
 
-![Blockchain en el IoT](/images/blog/posts/blockchain-economy-industry/fig-18.webp)
+![Blockchain en el IoT](/images/blog/posts/blockchain-economy-industry/blockchain-iot-applications.webp)
 
 Blockchain puede servir como infraestructura para la comunicación IoT — asegurando integridad de datos y permitiendo interacciones seguras y automatizadas entre dispositivos a través de contratos inteligentes.
 
@@ -218,7 +218,7 @@ El fraude electoral es un problema masivo a nivel mundial. La votación electró
 
 La votación basada en blockchain sería transparente, verificable y casi imposible de alterar. Proyectos como [Polys](https://polys.me/), [Secure Vote](https://secure.vote/), y [Voatz](https://voatz.com/) están trabajando en esto.
 
-![Sistema de votación electrónica basado en Blockchain](/images/blog/posts/blockchain-economy-industry/fig-19.webp)
+![Sistema de votación electrónica basado en Blockchain](/images/blog/posts/blockchain-economy-industry/blockchain-electronic-voting.webp)
 
 ### Identidad digital y autenticación
 

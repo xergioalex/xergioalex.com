@@ -72,7 +72,7 @@ Para 2017, DeFi todavía estaba en su infancia, pero la visión era clara: recon
 
 Fui honesto sobre las limitaciones: blockchain es lento, costoso, y consume mucha energía (prueba de trabajo). No es una solución para todos los problemas. Pero para ciertos casos de uso — especialmente donde la confianza es costosa o no está disponible — es transformador.
 
-![Memorias del taller](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
+![Taller de blockchain en la Universidad de Caldas — audiencia durante la sesión práctica](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
 
 ---
 

@@ -57,11 +57,11 @@ Llevé un robot con ruedas mecanum para hacer la demo. Verlo moverse en respuest
 
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/poster.jpg" alt="Póster promocional del meetup El futuro de la IA: Código, Hardware y Agentes en la UTP" width="600" height="400" class="col-span-2 rounded-xl object-contain w-full" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/memory-2.jpg" alt="Presentación 10 People + AI en la UTP" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/memory-6.jpg" alt="Sergio presentando API Gateway e integración con hardware" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/memory-3.jpg" alt="Refrigerios en el meetup" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/memory-7.jpg" alt="Sergio demostrando robótica con robot de ruedas mecanum" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/memory-4.jpg" alt="Foto grupal de asistentes a El futuro de la IA: Código, Hardware y Agentes" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/ten-people-ai-presentation.jpg" alt="Presentación 10 People + AI en la UTP" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-presenting-api-gateway.jpg" alt="Sergio presentando API Gateway e integración con hardware" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/meetup-refreshments.jpg" alt="Refrigerios en el meetup" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-demonstrating-robotics.jpg" alt="Sergio demostrando robótica con robot de ruedas mecanum" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/group-photo-attendees.jpg" alt="Foto grupal de asistentes a El futuro de la IA: Código, Hardware y Agentes" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

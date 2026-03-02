@@ -2,7 +2,7 @@
 title: 'WebVR con A-Frame'
 description: 'Creando experiencias VR con HTML — mi charla en Pereira Tech Talks sobre A-Frame, el framework de Mozilla que lleva la realidad virtual a la web sin configuración.'
 pubDate: '2018-02-16'
-heroImage: '/images/blog/posts/webvr-aframe/event-1.webp'
+heroImage: '/images/blog/posts/webvr-aframe/webvr-aframe-talk-hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "javascript", "web-development"]
 ---
@@ -57,7 +57,7 @@ También mostré proyectos de inspiración: A-Painter de Mozilla, A-Frame City B
 - **Demos en CodePen:** [Primitivos](https://codepen.io/xergioalex/pen/jZxbdo), [Sky e inspector](https://codepen.io/xergioalex/pen/PQeZYy), [Texturas](https://codepen.io/xergioalex/pen/VQxepd), [Modelos 3D](https://codepen.io/xergioalex/pen/JpvXrz), [Física](https://codepen.io/xergioalex/pen/wyjowM), [Laberinto](https://github.com/xergioalex/webvr-maze)
 - [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.com/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — resumen del evento
 
-![Memorias del evento](/images/blog/posts/webvr-aframe/event-3.webp)
+![Memorias del evento](/images/blog/posts/webvr-aframe/webvr-aframe-event-memories.webp)
 
 ---
 

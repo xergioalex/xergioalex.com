@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 ---
 
-By the time I reached Logic and Constraint Programming, I'd been through four paradigm shifts already. Scheme taught me to think in pure functions and recursion. C taught me what the machine was actually doing with every byte. Java and data structures taught me to organize and engineer. And [my OOP course with Java Swing](/blog/oop-java-swing-university-projects) taught me to think in patterns — to design before coding, to separate concerns, to ask "what are the pieces and how do they talk to each other?"
+By the time I reached Logic and Constraint Programming, I'd been through four paradigm shifts already. Scheme taught me to think in pure functions and recursion. C taught me what the machine was actually doing with every byte. Java and data structures taught me to organize and engineer. And [my OOP course with Java Swing](/blog/oop-java-swing-university-projects/) taught me to think in patterns — to design before coding, to separate concerns, to ask "what are the pieces and how do they talk to each other?"
 
 Each of those courses gave me a new lens. But this one was different. Logic and Constraint Programming wasn't adding a new tool to the same mental model. It was proposing a fundamentally different relationship between programmer and machine. The others all said: here is a problem, now *tell* the computer how to solve it. This course said: here is a problem, now *describe* what the solution looks like, and let the computer figure out the rest.
 
@@ -167,7 +167,7 @@ public void asignarColores(Departamento dpto, int n) {
 
 Try color 1. Check if any neighbor already has color 1. If not, move on to the next department. If yes, try color 2. If color 4 fails, backtrack. The logic is completely explicit — every decision, every rollback, every iteration is code you wrote. It works, and you can trace every step. But it's around 100 lines of boilerplate to express what is fundamentally a search through a constrained space.
 
-**Racket** — the functional approach. I already knew DrRacket from [my first programming course](/blog/racket-projects-university), so this was a homecoming of sorts. Same backtracking algorithm as Java, but expressed with immutable structs and recursive calls instead of mutable objects and loops. The algorithm is identical under the hood, but the functional style makes the recursive structure more explicit. Still fully procedural in terms of how the search is specified — you're telling the computer exactly how to search.
+**Racket** — the functional approach. I already knew DrRacket from [my first programming course](/blog/racket-projects-university/), so this was a homecoming of sorts. Same backtracking algorithm as Java, but expressed with immutable structs and recursive calls instead of mutable objects and loops. The algorithm is identical under the hood, but the functional style makes the recursive structure more explicit. Still fully procedural in terms of how the search is specified — you're telling the computer exactly how to search.
 
 ```racket
 (define (pintar-dpto dpto color)
@@ -240,7 +240,7 @@ Scheme gave me recursion and the idea that a program is a description of a compu
 
 Each paradigm was a new lens. None of them are complete on their own. The programmer who only thinks imperatively misses the elegance of constraint propagation. The programmer who only thinks declaratively struggles with systems where performance and control matter. The real skill is knowing which lens to reach for and when.
 
-There's something fitting about ending the university programming sequence here. It started with Scheme asking me to stop thinking procedurally and start thinking functionally. It ended with Prolog and Mozart/Oz asking me to stop thinking about algorithms altogether and start thinking about what's true. The parentheses from [my first programming course with DrRacket](/blog/racket-projects-university) connected directly to the Racket implementation of the Four Color Theorem — both semesters, different buildings, same underlying idea: computation as transformation of meaning.
+There's something fitting about ending the university programming sequence here. It started with Scheme asking me to stop thinking procedurally and start thinking functionally. It ended with Prolog and Mozart/Oz asking me to stop thinking about algorithms altogether and start thinking about what's true. The parentheses from [my first programming course with DrRacket](/blog/racket-projects-university/) connected directly to the Racket implementation of the Four Color Theorem — both semesters, different buildings, same underlying idea: computation as transformation of meaning.
 
 Let's keep building.
 
@@ -250,5 +250,5 @@ Let's keep building.
 
 - [Logic and Constraint Programming — Prolog and Mozart/Oz projects (GitHub)](https://github.com/xergioalex/logic_and_restricted_programming)
 - [Four Color Theorem — Java, Racket, and Mozart/Oz implementations (GitHub)](https://github.com/xergioalex/4ColorsTheorem)
-- [My first programming course — Racket, recursion, and a function plotter](/blog/racket-projects-university)
-- [My OOP course — Sudoku solver and contact agenda with Java Swing](/blog/oop-java-swing-university-projects)
+- [My first programming course — Racket, recursion, and a function plotter](/blog/racket-projects-university/)
+- [My OOP course — Sudoku solver and contact agenda with Java Swing](/blog/oop-java-swing-university-projects/)

@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 ---
 
-If you read about [my first steps with DrScheme and functional programming](/blog/racket-projects-university), you know that my introduction to code was a sea of parentheses, recursion, and the stubborn absence of `for` loops. Programming 1 taught me to think about *what* I wanted to compute. Programming 2 was about to teach me *how* the computer actually does it.
+If you read about [my first steps with DrScheme and functional programming](/blog/racket-projects-university/), you know that my introduction to code was a sea of parentheses, recursion, and the stubborn absence of `for` loops. Programming 1 taught me to think about *what* I wanted to compute. Programming 2 was about to teach me *how* the computer actually does it.
 
 It was 2010. Second semester. The professor walked in, opened a terminal, and typed something that looked shockingly normal after a semester of Scheme:
 
