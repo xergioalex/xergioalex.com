@@ -1,6 +1,6 @@
 ---
-title: "Astro in Action"
-description: "Why Astro won me over — real case studies from Microsoft and Firebase, measurable performance gains, and a live migration of the Pereira Tech Talks site to prove it's not just hype."
+title: "Astro in Action: Real Case Studies That Prove It's Not Just Hype"
+description: "Microsoft Fluent and Firebase Blog case studies, community metrics, and a live site migration — why Astro is the real deal."
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
 heroLayout: "side-by-side"

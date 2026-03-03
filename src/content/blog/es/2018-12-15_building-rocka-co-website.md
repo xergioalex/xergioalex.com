@@ -1,6 +1,6 @@
 ---
-title: "Cómo Estatuas Clásicas y Parallax Nos Ganaron un Premio de CSS Design Awards"
-description: "La historia de construir Rocka.co — donde nació DailyBot. Dioses griegos, parallax personalizado, paleta azul marino, y un Special Kudos."
+title: "Construyendo Rocka.co: La Historia Detrás de un Sitio Web Tech Premiado"
+description: "Cómo construimos el sitio de Rocka.co — donde nació DailyBot. Estatuas clásicas, parallax personalizado, y un Special Kudos en CSS Design Awards."
 pubDate: "2018-12-15"
 heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
 heroLayout: "banner"
