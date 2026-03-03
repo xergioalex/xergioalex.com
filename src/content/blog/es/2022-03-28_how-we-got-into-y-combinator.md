@@ -1,6 +1,6 @@
 ---
-title: "Cómo Entramos a Y Combinator Después de Ser Rechazados Dos Veces"
-description: "Tres aplicaciones, dos rechazos, una aceptación — qué cambió entre cada intento, cómo fue realmente la entrevista y qué aprendimos."
+title: "Cómo entramos a Y Combinator"
+description: "Tres aplicaciones, tres rechazos, una aceptación — qué cambió entre cada intento a YC, cómo fue realmente la entrevista y qué nos enseñó YC sobre escalar DailyBot."
 pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.jpg"
 heroLayout: "banner"

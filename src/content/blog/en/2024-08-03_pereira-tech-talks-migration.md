@@ -1,6 +1,6 @@
 ---
-title: "We Ditched Ghost and Saved $100/Year by Going Static With Astro"
-description: "From a Dockerized Ghost CMS with monthly maintenance headaches to a free, zero-maintenance Astro site on GitHub Pages. The complete migration story."
+title: "Migrating Pereira Tech Talks: From Ghost to Astro"
+description: "The story behind migrating pereiratechtalks.com — from a Dockerized Ghost setup with monthly costs to a static Astro site deployed for free on GitHub Pages. Ten years of lessons condensed into two weeks of code."
 pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
 heroLayout: "banner"

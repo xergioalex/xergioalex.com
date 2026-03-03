@@ -1,6 +1,6 @@
 ---
-title: "How a Software Engineer Automates Their Trading (MQL4 to MQL5)"
-description: "When I realized my trading was highly repetitive, I did what any developer would — I automated it. From manual execution to algorithmic trading."
+title: "From Manual Trading to Algorithmic Trading"
+description: "How I moved from repetitive manual execution in MetaTrader 4 to migrating scripts, indicators, and expert advisors into MetaTrader 5 for a more advanced automation stack."
 pubDate: "2025-02-01"
 heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.png"
 series: "trading-journey"

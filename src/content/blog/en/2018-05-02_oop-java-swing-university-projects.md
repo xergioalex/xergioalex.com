@@ -1,6 +1,6 @@
 ---
-title: "The Sudoku Solver That Taught Me Software Architecture"
-description: "MVC architecture, Observer pattern, backtracking with state cloning — a university project that changed how I think about designing software."
+title: "OOP in Action: Building a Sudoku Solver and Contact Agenda with Java Swing"
+description: "Two university projects from my Object-Oriented Programming course — a Sudoku solver using the Observer pattern and backtracking, and a contact agenda with file persistence, both built with Java Swing."
 pubDate: "2018-05-02"
 heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
 heroLayout: "side-by-side"

@@ -1,6 +1,6 @@
 ---
-title: "Why We Added Type Checking to DailyBot's Python Codebase"
-description: "From ambiguous function signatures to catching bugs before runtime — how MyPy reduced cognitive load and trivial unit tests in our growing codebase."
+title: "Introduction to MyPy"
+description: "Why we adopted type checking at DailyBot — from untyped Python chaos to catching bugs before runtime, reducing cognitive load, and shipping with confidence."
 pubDate: "2021-03-03"
 heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
 heroLayout: "side-by-side"

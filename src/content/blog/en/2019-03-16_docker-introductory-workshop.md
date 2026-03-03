@@ -1,6 +1,6 @@
 ---
-title: "The Docker Workshop I Wish I Had Taken"
-description: "From containers and images to Dockerfiles, volumes, networks, and Compose — a hands-on deep dive that explains what Docker actually does."
+title: "Docker Introductory Workshop"
+description: "A hands-on Docker workshop at Rocka Labs — from containers and images to Dockerfiles, volumes, networks, Docker Compose, and beyond. The complete guide to getting started with Docker."
 pubDate: "2019-03-16"
 heroImage: "/images/blog/posts/docker-introductory-workshop/hero.png"
 heroLayout: "side-by-side"

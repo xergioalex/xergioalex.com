@@ -1,6 +1,6 @@
 ---
-title: "We Built and Killed 7 Products Before DailyBot Worked"
-description: "Seven startup failures, each with a specific lesson — and the one that finally found product-market fit. A brutally honest founder's story."
+title: "Looking for Product Market Fit"
+description: "My journey through building and failing products at Rocka.co — what each failed experiment taught me, how I learned to recognize real PMF signals, and why DailyBot finally stuck."
 pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.jpg"
 heroLayout: "banner"

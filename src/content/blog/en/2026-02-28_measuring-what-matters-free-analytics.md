@@ -1,6 +1,6 @@
 ---
-title: "How I Track Everything on My Site Without Google Analytics (for Free)"
-description: "Cloudflare Web Analytics, Umami, Search Console, and Clarity — a complete analytics stack that costs nothing and keeps Lighthouse at 100."
+title: "Measuring What Matters: How I Set Up Free Analytics Without Sacrificing Performance"
+description: "The third chapter of building XergioAleX.com — implementing a complete analytics stack using only free tools, without losing the Lighthouse 100 scores or adding cookie banners. A practical guide to privacy-first, performance-preserving web analytics."
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"

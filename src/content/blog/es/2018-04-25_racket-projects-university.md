@@ -1,6 +1,6 @@
 ---
-title: "Mi profesor nos hizo aprender a programar en un lenguaje hecho completamente de paréntesis"
-description: "Cómo aprender Scheme — notación prefija, recursividad, cero ciclos for — como mi primer lenguaje de programación me dio un superpoder sin querer."
+title: "Mis Primeros Pasos en Programación: DrScheme, Recursividad y un Graficador de Funciones"
+description: "La historia de cómo aprendí a programar con DrScheme (ahora DrRacket) en la universidad — desde la confusión de la notación prefija y la recursividad hasta construir un graficador de funciones matemáticas con derivadas."
 pubDate: "2018-04-25"
 heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
 heroLayout: "side-by-side"

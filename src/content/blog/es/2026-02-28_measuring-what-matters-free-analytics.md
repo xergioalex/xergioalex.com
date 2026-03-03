@@ -1,6 +1,6 @@
 ---
-title: "Cómo Monitoreo Todo en Mi Sitio Sin Google Analytics (y Gratis)"
-description: "Cloudflare Web Analytics, Umami, Search Console y Clarity — un stack completo de analytics que no cuesta nada y mantiene Lighthouse en 100."
+title: "Midiendo lo que Importa: Cómo Configuré Analytics Gratis Sin Sacrificar el Rendimiento"
+description: "El tercer capítulo de la construcción de XergioAleX.com — implementando un stack completo de analytics usando solo herramientas gratuitas, sin perder los puntajes perfectos de Lighthouse ni agregar banners de cookies."
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"

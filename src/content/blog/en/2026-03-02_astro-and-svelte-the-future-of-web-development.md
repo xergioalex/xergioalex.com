@@ -1,9 +1,9 @@
 ---
 title: "Astro and Svelte: Why I Believe They're the Future of Web Development"
-description: "After years building with Vue, I switched to Astro + Svelte. Backed by State of JS data, performance benchmarks, and real-world experience."
+description: "Why Astro and Svelte represent a return to web development simplicity — backed by data from State of JS 2025, performance benchmarks, and real-world experience building this very website."
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "web-development", "javascript"]
 ---
 

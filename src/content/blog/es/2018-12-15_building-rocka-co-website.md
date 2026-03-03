@@ -1,6 +1,6 @@
 ---
-title: "Construyendo Rocka.co: La Historia Detrás de un Sitio Web Tech Premiado"
-description: "Cómo construimos el sitio de Rocka.co — donde nació DailyBot. Estatuas clásicas, parallax personalizado, y un Special Kudos en CSS Design Awards."
+title: "Construyendo Rocka.co: La Historia Detrás del Sitio Web de un Tech Venture Builder"
+description: "Cómo construimos el sitio web de Rocka.co — desde metáforas con estatuas clásicas y efectos parallax personalizados hasta un Special Kudos en CSS Design Awards. La historia de crear la identidad digital de la incubadora donde nació DailyBot."
 pubDate: "2018-12-15"
 heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
 heroLayout: "banner"

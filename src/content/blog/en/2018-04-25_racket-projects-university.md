@@ -1,6 +1,6 @@
 ---
-title: "My Professor Made Us Learn to Code in a Language Made Entirely of Parentheses"
-description: "How learning Scheme — prefix notation, recursion, zero for loops — as my first programming language accidentally gave me a superpower."
+title: "My First Steps in Programming: DrScheme, Recursion, and a Function Plotter"
+description: "The story of how I learned to program with DrScheme (now DrRacket) at university — from the confusion of prefix notation and recursion to building a mathematical function plotter with derivatives."
 pubDate: "2018-04-25"
 heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
 heroLayout: "side-by-side"
