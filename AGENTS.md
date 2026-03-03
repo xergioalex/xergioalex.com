@@ -12,6 +12,7 @@
 | Standards | [Standards](docs/STANDARDS.md) | Canonical coding rules, orthography, import order |
 | Blog | [Blog Posts](docs/features/BLOG_POSTS.md) | Tags, series, hero layouts, images, content lifecycle |
 | Blog Lifecycle | [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md) | End-to-end blog workflow |
+| Writing Voice | [Writing Voice Guide](docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop checklist, author voice, vocabulary blocklist |
 | Testing | [Testing](docs/TESTING_GUIDE.md) | Vitest setup, conventions, writing tests |
 | Commands | [Development Commands](docs/DEVELOPMENT_COMMANDS.md) | npm scripts, Astro CLI, build workflows |
 | i18n | [I18N Guide](docs/I18N_GUIDE.md) | Adding languages, translation workflow |
