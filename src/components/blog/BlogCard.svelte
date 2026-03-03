@@ -1,16 +1,14 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
-import { getUrlPrefix } from '@/lib/i18n';
-import { getHighlightedField } from '@/lib/search';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { getHighlightedField, type SearchResult } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
-export let lang: string = 'en';
+export let lang: Language = 'en';
 export let heroWebpExists: boolean = false;
 export let searchQuery: string = '';
-export let searchResult:
-  | { item: any; score: number; matches?: any[] }
-  | undefined = undefined;
+export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
 let postData: {
   title: string;
@@ -21,6 +19,10 @@ let postData: {
   heroImage?: string;
 };
 let postSlug = '';
+let seriesCurrent: number | undefined;
+let seriesTotal: number | undefined;
+let seriesTitle: string | undefined;
+let seriesBadgeLabel = '';
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
@@ -44,7 +46,7 @@ function getPostData() {
   // If post has data property (CollectionEntry structure)
   if (post.data) {
     // Split unified tags array using topicTagNames lookup
-    const allTags = post.data.tags || [];
+    const allTags: string[] = post.data.tags || [];
     const primary = allTags.filter((t) => !topicTagNames.includes(t));
     const secondary = allTags.filter((t) => topicTagNames.includes(t));
     return {
@@ -74,14 +76,41 @@ $: {
   postData = getPostData();
 }
 $: postSlug = getPostSlug();
+$: {
+  const seriesCurrentValue = (post as any).seriesCurrent;
+  const seriesTotalValue = (post as any).seriesTotal;
+  seriesCurrent =
+    typeof seriesCurrentValue === 'number' &&
+    Number.isFinite(seriesCurrentValue)
+      ? seriesCurrentValue
+      : undefined;
+  seriesTotal =
+    typeof seriesTotalValue === 'number' && Number.isFinite(seriesTotalValue)
+      ? seriesTotalValue
+      : undefined;
+  const seriesTitleValue = (post as any).seriesTitle;
+  seriesTitle =
+    typeof seriesTitleValue === 'string' ? seriesTitleValue : undefined;
+}
+$: seriesBadgeLabel =
+  seriesCurrent && seriesTotal
+    ? seriesTitle
+      ? `${seriesTitle} · ${t.seriesChapterOf(seriesCurrent, seriesTotal)}`
+      : t.seriesChapterOf(seriesCurrent, seriesTotal)
+    : '';
 
 // Get highlighted title and description if search result is available
 $: displayTitle = searchQuery
-  ? getHighlightedField(searchResult, 'title', postData.title, searchQuery)
+  ? getHighlightedField(
+      searchResult as SearchResult,
+      'title',
+      postData.title,
+      searchQuery
+    )
   : postData.title;
 $: displayDescription = searchQuery
   ? getHighlightedField(
-      searchResult,
+      searchResult as SearchResult,
       'description',
       postData.description,
       searchQuery
@@ -128,14 +157,35 @@ $: displayDescription = searchQuery
       {@html displayDescription}
     </p>
     <div class="flex flex-wrap justify-between items-center gap-2">
-      <time class="text-sm text-gray-600 dark:text-gray-300">
-        {postData.pubDate.toLocaleDateString(t.dateLocale, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          timeZone: 'UTC'
-        })}
-      </time>
+      <div class="flex flex-wrap items-center gap-2">
+        <time class="text-sm text-gray-600 dark:text-gray-300">
+          {postData.pubDate.toLocaleDateString(t.dateLocale, {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            timeZone: 'UTC'
+          })}
+        </time>
+        {#if seriesCurrent && seriesTotal}
+          <div class="group relative inline-flex items-center">
+            <span
+              class="inline-flex items-center rounded-full border-2 border-blue-200 bg-blue-50/70 px-2.5 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-200"
+              aria-label={seriesBadgeLabel}
+              title={seriesBadgeLabel}
+            >
+                            {seriesCurrent}/{seriesTotal}
+            </span>
+            {#if seriesTitle}
+              <span
+                class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-gray-100 dark:text-gray-900"
+                role="tooltip"
+              >
+                {seriesTitle}
+              </span>
+            {/if}
+          </div>
+        {/if}
+      </div>
       {#if (postData.tags && postData.tags.length > 0) || (postData.topics && postData.topics.length > 0)}
         <div class="flex flex-wrap gap-1">
           {#each postData.tags as tag}

@@ -27,6 +27,66 @@ export interface SearchIndexEntry {
   topics: string[];
   heroImage?: string;
   heroWebpExists: boolean;
+  series?: string;
+  seriesOrder?: number;
+  seriesCurrent?: number;
+  seriesTotal?: number;
+  seriesTitle?: string;
+}
+
+interface SeriesPosition {
+  current: number;
+  total: number;
+}
+
+let _seriesTitleCache: Map<string, string> | null = null;
+
+async function getSeriesTitleMap(): Promise<Map<string, string>> {
+  if (_seriesTitleCache) return _seriesTitleCache;
+  const allSeries = await getCollection('series');
+  _seriesTitleCache = new Map(
+    allSeries.map((seriesEntry) => [
+      seriesEntry.data.name,
+      seriesEntry.data.title,
+    ])
+  );
+  return _seriesTitleCache;
+}
+
+function getSeriesPositionById(
+  posts: CollectionEntry<'blog'>[]
+): Map<string, SeriesPosition> {
+  const seriesGroups = new Map<string, CollectionEntry<'blog'>[]>();
+
+  for (const post of posts) {
+    if (!post.data.series) continue;
+    const lang = getPostLanguage(post.id);
+    const key = `${lang}:${post.data.series}`;
+    const group = seriesGroups.get(key);
+    if (group) {
+      group.push(post);
+    } else {
+      seriesGroups.set(key, [post]);
+    }
+  }
+
+  const positions = new Map<string, SeriesPosition>();
+
+  for (const [, groupPosts] of seriesGroups) {
+    const ordered = [...groupPosts].sort((a, b) => {
+      const orderA = a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+      const orderB = b.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+      if (orderA !== orderB) return orderA - orderB;
+      return a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
+    });
+
+    const total = ordered.length;
+    for (const [index, post] of ordered.entries()) {
+      positions.set(post.id, { current: index + 1, total });
+    }
+  }
+
+  return positions;
 }
 
 /**
@@ -182,11 +242,15 @@ let _searchIndexCache: Promise<SearchIndexEntry[]> | null = null;
 async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
   const allPosts = await getCollection('blog');
   const visiblePosts = allPosts.filter((post) => !isDemoPost(post));
+  const seriesPositionById = getSeriesPositionById(visiblePosts);
+  const seriesTitleBySlug = await getSeriesTitleMap();
 
   return Promise.all(
     visiblePosts.map(async (post) => {
       const allTags = post.data.tags || [];
       const { primaryTags, topicTags } = await groupPostTags(allTags);
+      const seriesPosition = seriesPositionById.get(post.id);
+      const seriesSlug = post.data.series;
       return {
         id: post.id,
         slug: getPostSlug(post.id),
@@ -198,6 +262,11 @@ async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
         topics: topicTags,
         heroImage: post.data.heroImage,
         heroWebpExists: heroWebpExists(post.data.heroImage),
+        series: seriesSlug,
+        seriesOrder: post.data.seriesOrder,
+        seriesCurrent: seriesPosition?.current,
+        seriesTotal: seriesPosition?.total,
+        seriesTitle: seriesSlug ? seriesTitleBySlug.get(seriesSlug) : undefined,
       };
     })
   );
@@ -225,9 +294,12 @@ export async function getBlogPosts(
 
   // Filter by language first (based on folder structure: en/, es/)
   const lang = params.lang || 'en';
-  let posts: CollectionEntry<'blog'>[] = allPosts.filter(
+  const langPosts = allPosts.filter(
     (post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post)
   );
+  const seriesPositionById = getSeriesPositionById(langPosts);
+  const seriesTitleBySlug = await getSeriesTitleMap();
+  let posts: CollectionEntry<'blog'>[] = [...langPosts];
 
   // Get all unique tags that are actually used in visible posts for this language
   const usedTags = Array.from(
@@ -269,12 +341,12 @@ export async function getBlogPosts(
   const enrichedPosts = posts.map((post) => ({
     ...post,
     heroWebpExists: heroWebpExists(post.data.heroImage),
+    seriesCurrent: seriesPositionById.get(post.id)?.current,
+    seriesTotal: seriesPositionById.get(post.id)?.total,
+    seriesTitle: post.data.series
+      ? seriesTitleBySlug.get(post.data.series)
+      : undefined,
   }));
-
-  // Count total posts for this language (before pagination, excluding demo posts)
-  const langPosts = allPosts.filter(
-    (post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post)
-  );
 
   const result: BlogPostsResultType = {
     tagsResult: filteredTags,

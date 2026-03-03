@@ -120,7 +120,7 @@ const breadcrumbData = {
     <meta property="article:section" content={articleSection} />
     {tags?.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
-  <div class="reading-progress" aria-hidden="true"></div>
+  <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
   <main class="main-container py-16 md:py-24">
     <article>
       <nav aria-label="Breadcrumb" class="mb-6 flex flex-wrap items-center gap-x-2 text-sm">
@@ -170,6 +170,51 @@ const breadcrumbData = {
   </main>
 </MainLayout>
 
+<script is:inline>
+  (() => {
+    const progressEl = document.querySelector('[data-reading-progress]');
+    if (!(progressEl instanceof HTMLElement)) return;
+
+    const supportsScrollTimeline =
+      typeof CSS !== 'undefined' && CSS.supports('animation-timeline: scroll()');
+
+    if (supportsScrollTimeline) return;
+
+    progressEl.classList.add('reading-progress--js');
+
+    let ticking = false;
+    let frameId = 0;
+    const maxScale = 1;
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    const updateProgress = () => {
+      const root = document.documentElement;
+      const scrollRange = root.scrollHeight - root.clientHeight;
+      const ratio = scrollRange > 0 ? root.scrollTop / scrollRange : 0;
+      progressEl.style.transform = `scaleX(${clamp(ratio, 0, maxScale)})`;
+      ticking = false;
+    };
+
+    const scheduleUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      frameId = window.requestAnimationFrame(updateProgress);
+    };
+
+    scheduleUpdate();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    window.addEventListener('pagehide', () => {
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    });
+  })();
+</script>
+
 <style>
   .reading-progress {
     position: fixed;
@@ -182,6 +227,14 @@ const breadcrumbData = {
     pointer-events: none;
     animation: reading-progress-fill linear;
     animation-timeline: scroll();
+  }
+
+  .reading-progress--js {
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+    animation: none;
   }
 
   @keyframes reading-progress-fill {
