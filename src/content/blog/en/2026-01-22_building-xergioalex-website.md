@@ -1,6 +1,6 @@
 ---
-title: "Building XergioAleX.com: How I Built My Personal Website with Astro, Svelte, and AI"
-description: "The complete story behind XergioAleX.com — from a one-page landing to a bilingual, AI-ready, performance-first personal platform. A deep dive into architecture, technology choices, and why Astro + Svelte is a killer combo for modern static sites."
+title: "How I Rebuilt My Personal Website From a Single Page to a Full Platform"
+description: "From a profile photo and 5 social links to a bilingual, AI-ready platform with perfect Lighthouse scores. The complete build story with Astro and Svelte."
 pubDate: "2026-01-22"
 heroImage: "/images/blog/posts/building-xergioalex-website/hero.png"
 heroLayout: "banner"

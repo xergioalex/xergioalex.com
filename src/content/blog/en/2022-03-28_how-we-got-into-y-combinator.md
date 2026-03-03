@@ -1,6 +1,6 @@
 ---
-title: "How We Got Into Y Combinator"
-description: "Three applications, three rejections, one acceptance — what changed between each YC attempt, what the interview was actually like, and what YC taught us about scaling DailyBot."
+title: "How We Got Into Y Combinator After Being Rejected Twice"
+description: "Three applications, two rejections, one acceptance — what changed between each YC attempt, what the interview was really like, and what we learned."
 pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.jpg"
 heroLayout: "banner"
