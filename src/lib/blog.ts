@@ -152,6 +152,14 @@ export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
 }
 
 /**
+ * Check if a post is scheduled for the future (pubDate > now).
+ * Scheduled posts are excluded from production builds but visible in dev mode.
+ */
+export function isScheduledPost(post: CollectionEntry<'blog'>): boolean {
+  return post.data.pubDate.valueOf() > Date.now();
+}
+
+/**
  * Build a lookup map of tag name -> tier from the tags collection.
  * Cached per call to avoid repeated collection queries within the same build.
  */
@@ -241,7 +249,10 @@ let _searchIndexCache: Promise<SearchIndexEntry[]> | null = null;
 
 async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
   const allPosts = await getCollection('blog');
-  const visiblePosts = allPosts.filter((post) => !isDemoPost(post));
+  const visiblePosts = allPosts.filter(
+    (post) =>
+      !isDemoPost(post) && (import.meta.env.DEV || !isScheduledPost(post))
+  );
   const seriesPositionById = getSeriesPositionById(visiblePosts);
   const seriesTitleBySlug = await getSeriesTitleMap();
 
@@ -295,7 +306,10 @@ export async function getBlogPosts(
   // Filter by language first (based on folder structure: en/, es/)
   const lang = params.lang || 'en';
   const langPosts = allPosts.filter(
-    (post) => post.id.startsWith(`${lang}/`) && !isDemoPost(post)
+    (post) =>
+      post.id.startsWith(`${lang}/`) &&
+      !isDemoPost(post) &&
+      (import.meta.env.DEV || !isScheduledPost(post))
   );
   const seriesPositionById = getSeriesPositionById(langPosts);
   const seriesTitleBySlug = await getSeriesTitleMap();
@@ -379,7 +393,8 @@ export async function getSeriesNavigation(
         post.id.startsWith(`${lang}/`) &&
         post.data.series === seriesSlug &&
         post.data.seriesOrder != null &&
-        !isDemoPost(post)
+        !isDemoPost(post) &&
+        (import.meta.env.DEV || !isScheduledPost(post))
     )
     .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
 
@@ -427,7 +442,8 @@ export async function getRelatedPosts(
       (post) =>
         post.id.startsWith(`${lang}/`) &&
         post.id !== currentPostId &&
-        !isDemoPost(post)
+        !isDemoPost(post) &&
+        (import.meta.env.DEV || !isScheduledPost(post))
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
