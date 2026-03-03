@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.png"
 series: "trading-journey"
 seriesOrder: 3
 heroLayout: "banner"
-tags: ["trading", "tech"]
+tags: ["trading", "tech", "personal"]
 ---
 
 After spending a lot of time doing manual trading — reading structure, tracking Market Profile zones, and making execution decisions in real time — I realized something obvious:

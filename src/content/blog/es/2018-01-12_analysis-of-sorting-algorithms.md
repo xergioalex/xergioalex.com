@@ -4,7 +4,7 @@ description: "Un análisis académico sobre complejidad y tiempos de ejecución 
 pubDate: "2018-01-12"
 heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
 heroLayout: "banner"
-tags: ["tech", "javascript", "university"]
+tags: ["tech", "university"]
 ---
 
 Como parte de un ejercicio típico de algoritmia en la universidad, hice un pequeño análisis comparativo de los algoritmos de ordenamiento más populares, buscando estudiar la complejidad de cada uno y cómo las diferentes formas de resolver un mismo problema pueden afectar los tiempos de ejecución.
