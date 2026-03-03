@@ -2,7 +2,7 @@
 title: "My First Steps in Programming: DrScheme, Recursion, and a Function Plotter"
 description: "The story of how I learned to program with DrScheme (now DrRacket) at university — from the confusion of prefix notation and recursion to building a mathematical function plotter with derivatives."
 pubDate: "2018-04-25"
-heroImage: "/images/blog/posts/racket-projects-university/project-screenshot.jpg"
+heroImage: "/images/blog/posts/racket-projects-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 ---
