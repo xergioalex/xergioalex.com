@@ -131,11 +131,8 @@ function validate() {
 
 async function handleSubmit() {
   if (!validate()) {
-    const failedFields = Object.entries(errors)
-      .filter(([, v]) => v)
-      .map(([k]) => k)
-      .join(',');
-    trackEvent(EVENTS.CONTACT_FORM_ERROR, { fields: failedFields });
+    const failedCount = Object.values(errors).filter(Boolean).length;
+    trackEvent(EVENTS.CONTACT_FORM_ERROR, { field_count: failedCount });
     focusFirstInvalidField();
     return;
   }

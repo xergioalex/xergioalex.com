@@ -170,7 +170,7 @@ Umami custom events are used to track specific user interactions beyond page vie
 | `series_indicator_click` | Series indicator scroll | — | SeriesIndicator.svelte |
 | `lightbox_open` | Image lightbox opened | — | BlogImageLightbox.svelte |
 | `contact_form_submit` | Contact form submitted | `{ reason }` | ContactForm.svelte |
-| `contact_form_error` | Form validation failure | `{ fields }` | ContactForm.svelte |
+| `contact_form_error` | Form validation failure | `{ field_count }` | ContactForm.svelte |
 | `newsletter_subscribe` | Newsletter signup | — | NewsletterForm.svelte |
 | `social_click` | Footer social link | `{ platform }` | Footer.astro |
 | `outbound_click` | External link click | `{ url }` | MainLayout.astro (delegated) |

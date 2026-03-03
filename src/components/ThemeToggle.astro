@@ -12,6 +12,7 @@
       const isDark = html.classList.toggle("dark");
       const newTheme = isDark ? "dark" : "light";
       localStorage.setItem("theme", newTheme);
+      // Event name must match EVENTS.THEME_TOGGLE in src/lib/analytics.ts
       if (window.umami) { window.umami.track("theme_toggle", { theme: newTheme }); }
     };
   </script>

@@ -100,7 +100,7 @@ export function trackSearch(query: string, resultCount: number): void {
   searchTimer = setTimeout(() => {
     if (query.trim().length >= 2) {
       trackEvent(EVENTS.BLOG_SEARCH, {
-        query: query.trim(),
+        query: query.trim().slice(0, 100),
         results: resultCount,
       });
     }
@@ -112,8 +112,11 @@ export function trackSearch(query: string, resultCount: number): void {
  * Fires 'outbound_click' for clicks on links pointing to external domains.
  * Skips links that already have data-umami-event attributes to avoid double-tracking.
  */
+let outboundTrackingSetUp = false;
+
 export function setupOutboundTracking(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || outboundTrackingSetUp) return;
+  outboundTrackingSetUp = true;
 
   document.addEventListener('click', (e: MouseEvent) => {
     const link = (e.target as HTMLElement).closest<HTMLAnchorElement>(
