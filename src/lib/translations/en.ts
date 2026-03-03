@@ -970,6 +970,14 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Get notified when I publish something new. No spam, unsubscribe anytime.',
     newsletterPlaceholder: 'your@email.com',
     newsletterButton: 'Subscribe',
+    newsletterSubmitting: 'Subscribing...',
+    newsletterSuccessTitle: 'You\u2019re subscribed!',
+    newsletterSuccessMessage:
+      'Thanks for subscribing. You\u2019ll hear from me when something new is published.',
+    newsletterInvalidEmail: 'Please enter a valid email address.',
+    newsletterAlreadySubscribed:
+      'You\u2019re already subscribed. Thanks for being here!',
+    newsletterResubscribe: 'Subscribe with a different email',
     newsletterPrivacy: 'No spam. Unsubscribe anytime.',
 
     // End-of-post CTA

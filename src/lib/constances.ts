@@ -15,11 +15,15 @@ export const ANALYTICS = {
   },
 } as const;
 
-// Newsletter configuration — Buttondown embed form
+// Newsletter configuration — Google Forms direct POST
 export const NEWSLETTER = {
-  provider: 'buttondown',
-  username: 'xergioalex',
-  formAction: 'https://buttondown.com/api/emails/embed-subscribe/xergioalex',
+  googleForms: {
+    formUrl:
+      'https://docs.google.com/forms/d/e/1FAIpQLSedegaN0_5eZWLIuizdKPCV1pAUm8vTatHo_ny07IXd8_xIfw/formResponse',
+    entries: {
+      email: 'entry.903587259',
+    },
+  },
 } as const;
 
 // Contact form configuration — Google Forms direct POST

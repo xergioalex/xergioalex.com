@@ -980,6 +980,15 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Recibe una notificación cuando publique algo nuevo. Sin spam, cancela cuando quieras.',
     newsletterPlaceholder: 'tu@email.com',
     newsletterButton: 'Suscribirse',
+    newsletterSubmitting: 'Suscribiendo...',
+    newsletterSuccessTitle: '\u00a1Te has suscrito!',
+    newsletterSuccessMessage:
+      'Gracias por suscribirte. Te avisar\u00e9 cuando publique algo nuevo.',
+    newsletterInvalidEmail:
+      'Por favor, ingresa un correo electr\u00f3nico v\u00e1lido.',
+    newsletterAlreadySubscribed:
+      '\u00a1Ya est\u00e1s suscrito! Gracias por estar aqu\u00ed.',
+    newsletterResubscribe: 'Suscribirse con otro correo',
     newsletterPrivacy: 'Sin spam. Cancela cuando quieras.',
 
     // End-of-post CTA

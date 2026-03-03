@@ -492,6 +492,12 @@ export interface SiteTranslations {
     newsletterDescription: string;
     newsletterPlaceholder: string;
     newsletterButton: string;
+    newsletterSubmitting: string;
+    newsletterSuccessTitle: string;
+    newsletterSuccessMessage: string;
+    newsletterInvalidEmail: string;
+    newsletterAlreadySubscribed: string;
+    newsletterResubscribe: string;
     newsletterPrivacy: string;
 
     // End-of-post CTA

@@ -4,7 +4,7 @@ import { render } from 'astro:content';
 import AuthorBioCard from '@/components/blog/AuthorBioCard.astro';
 import BlogImageLightbox from '@/components/blog/BlogImageLightbox.svelte';
 import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
-import NewsletterForm from '@/components/blog/NewsletterForm.astro';
+import NewsletterForm from '@/components/blog/NewsletterForm.svelte';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
@@ -19,6 +19,7 @@ import {
   getWordCount,
   groupPostTags,
 } from '@/lib/blog';
+import { NEWSLETTER } from '@/lib/constances';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -145,7 +146,12 @@ const breadcrumbData = {
       <section class="mx-auto mt-12 max-w-4xl space-y-8" aria-label={t.engagement.ctaTitle}>
         <AuthorBioCard lang={lang} />
         <ShareButtons lang={lang} title={title} url={canonicalURL.href} />
-        <NewsletterForm lang={lang} />
+        <NewsletterForm
+          client:visible
+          lang={lang}
+          formUrl={NEWSLETTER.googleForms.formUrl}
+          entries={NEWSLETTER.googleForms.entries}
+        />
       </section>
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
