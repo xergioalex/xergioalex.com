@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 11             | 3                  | 0              | 14    |
+| Skills | 11             | 4                  | 0              | 15    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **11**      | **8**              | **1**          | **20** |
+| **Total** | **11**      | **9**              | **1**          | **21** |
 
 ---
 
@@ -41,6 +41,7 @@ Everyday development work.
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
 | add-blog-post | create   | `/add-blog-post` | sonnet | **Mandatory for new blog posts** — topic mode (writes content) or content mode (scaffolding). |
+| promote-post  | create   | `/promote-post`  | sonnet | Generate social media content for any blog post (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
 
@@ -140,6 +141,7 @@ This diagram shows how skills and agents interact during typical workflows.
 3. **content-writer** crafts blog posts and portfolio articles using `/add-blog-post` (Tier 2)
 4. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
 5. Issues found are fixed using atomic Tier 1 skills
+6. After publishing, `/promote-post` generates social media content for distribution (Tier 2)
 
 ---
 
@@ -153,10 +155,11 @@ Skills, commands, and agents for creating and managing blog content.
 |----------|------|-------------|
 | new-post | Command | Interactive guided flow for creating blog posts (`/new-post`) |
 | add-blog-post | Skill (T2) | Create blog posts — topic mode (writes) or content mode (scaffolding) |
+| promote-post | Skill (T2) | Generate social media content for any blog post across multiple platforms |
 | doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
 | content-writer | Agent (T2) | Expert multilingual content writer with personal-professional voice |
 
-**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`.
+**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`. After publishing, use `/promote-post` to generate social media content for distribution.
 
 **Mandatory policy:** Any new file creation in `src/content/blog/` must go through `add-blog-post` to enforce multilingual parity and schema/frontmatter consistency.
 
@@ -297,6 +300,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-03-03 | promote-post skill added | New Tier 2 skill for generating social media content (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) for any blog post. |
 | 2026-03-02 | Mandatory blog creation policy | Marked `add-blog-post` as mandatory for new blog post creation in catalog workflows and domain guidance. |
 | 2026-03-02 | Series workflow documentation | Updated add-blog-post skill (v2.6.0) with detailed series workflow for adding posts to existing series. Updated new-post command with series question in interactive flow. |
 | 2026-02-28 | Content refinement patterns | Updated content-writer agent (v1.3.0) with content quality grading system, rewriting workflow, and transformation patterns. Updated add-blog-post skill (v2.4.0) with increased max-loc (600→1200) and content-writer reference for existing post rewrites. Fixed translate-sync Spanish register to "informal-professional" (Colombian Spanish). |

@@ -291,6 +291,8 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}` in frontmatter. Series defined in `src/content/series/`. Navigation renders automatically.
 
+**Resources section:** Include external links (docs, repos, tools). Do NOT list related articles or previous chapters — they appear in the series navigation below.
+
 **Hero layouts:** `banner` (default, landscape), `side-by-side` (square), `minimal` (thumbnail), `none` (text-only). Set based on image aspect ratio.
 
 **Demo posts:** In `_demo/` folders only. Never shown in listings/search. Accessible by direct URL in dev only.
@@ -325,6 +327,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 16. Put blog images outside `public/images/blog/posts/{slug}/`
 17. Put demo posts outside `_demo/` folders
 18. Write Spanish content without proper accents/tildes/ñ
+19. List related articles or previous chapters in the Resources section when the post belongs to a series — they already appear in `#series-navigation` below; listing them is redundant
 
 ### DO:
 
@@ -356,7 +359,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 
 ## Skills & Agents
 
-- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`
+- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `promote-post`
 - **Agents** — Specialized workers: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`
 - **Critical policy:** New blog posts MUST use `/add-blog-post` skill
 - **Management:** `/skill-list`, `/agent-list`, `/skill-create`, `/agent-create`
