@@ -1,5 +1,5 @@
 ---
-title: 'Cómo Construí un Blog Que Escala a Cientos de Posts Sin Backend'
+title: 'Arquitectura de un Blog Escalable Sin Backend'
 description: 'Content Collections, taxonomía de tags de tres niveles, búsqueda fragmentada, series de posts, contenido bilingüe — toda la complejidad vive en el build, no en el navegador.'
 pubDate: '2026-03-01'
 heroImage: '/images/blog/posts/building-blog-without-backend/hero.png'

@@ -1,5 +1,5 @@
 ---
-title: 'How I Built a Blog That Scales to Hundreds of Posts With Zero Backend'
+title: 'Architecture of a Scalable Blog Without a Backend'
 description: 'Content Collections, three-tier tag taxonomy, sharded search, post series, bilingual content — every complexity lives in the build, not the browser.'
 pubDate: '2026-03-01'
 heroImage: '/images/blog/posts/building-blog-without-backend/hero.png'
