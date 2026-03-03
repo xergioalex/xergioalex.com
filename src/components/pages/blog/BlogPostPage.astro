@@ -105,11 +105,10 @@ const breadcrumbData = {
 };
 ---
 
-<MainLayout lang={lang} title={title} description={description} image={heroImage}>
+<MainLayout lang={lang} title={title} description={description} image={heroImage} ogType="article">
   <Fragment slot="head">
     <JsonLd data={blogPostingData} />
     <JsonLd data={breadcrumbData} />
-    <meta property="og:type" content="article" />
     <meta property="article:published_time" content={pubDate.toISOString()} />
     <meta property="article:modified_time" content={(updatedDate ?? pubDate).toISOString()} />
     <meta property="article:author" content={new URL('/about/', Astro.site).href} />

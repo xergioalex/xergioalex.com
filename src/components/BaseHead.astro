@@ -20,6 +20,7 @@ interface Props {
   lang?: string;
   prevPage?: string;
   nextPage?: string;
+  ogType?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -31,6 +32,7 @@ const {
   lang = 'en',
   prevPage,
   nextPage,
+  ogType = 'website',
 } = Astro.props;
 const absoluteImageUrl = new URL(image, Astro.site ?? Astro.url).href;
 const imageExtension = image.split('.').pop()?.toLowerCase();
@@ -120,7 +122,7 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <meta name="theme-color" content="#0f1124" media="(prefers-color-scheme: dark)" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalURL.href} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
