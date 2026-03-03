@@ -1,23 +1,23 @@
 ---
 title: "Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA sin JavaScript"
-description: "El séptimo capítulo de la construcción de XergioAleX.com — implementando analíticas para bots de IA con un solo archivo de middleware en Cloudflare Pages. Sin JavaScript, sin scripts de rastreo, sin cambios de infraestructura. Solo un archivo en el edge y doce patrones que cambiaron lo que puedo ver."
-pubDate: "2026-03-03"
-heroImage: "/images/blog/posts/tracking-the-invisible-ai-bot-analytics/hero.png"
+description: "Implementando analíticas para bots de IA con un solo archivo de middleware en Cloudflare Pages. Sin JavaScript, sin scripts de rastreo, sin cambios de infraestructura. Solo un archivo en el edge y doce patrones que cambiaron lo que puedo ver."
+pubDate: "2026-03-05"
+heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development", "ai"]
 series: "building-xergioalex"
 seriesOrder: 7
 ---
 
-En el [capítulo seis](/es/blog/deploying-astro-blog-cloudflare-pages/) moví el sitio de GitHub Pages a Cloudflare Pages y expliqué por qué: hosting gratuito, despliegues de vista previa por rama, DNS y SSL integrados, y una plataforma con margen para crecer. Hacia el final de ese capítulo, mencioné una puerta que la plataforma había abierto — el directorio `functions/`, detectado automáticamente, desplegado como middleware en el edge, sin infraestructura que gestionar.
+Este sitio corre en Cloudflare Pages. Una de las cosas que viene con la plataforma es un directorio `functions/` — pones un archivo TypeScript ahí, y Cloudflare lo detecta automáticamente y lo despliega como middleware en el edge. Cada solicitud pasa por él. Sin infraestructura que gestionar.
 
-Esto es lo que construí con ella.
+Tenía un uso específico para eso. Esto es lo que construí.
 
 ---
 
 ## El Punto Ciego
 
-En el [capítulo tres](/es/blog/measuring-what-matters-free-analytics/) armé un stack de analíticas del que estaba orgulloso. Umami para rastreo de eventos con privacidad primero. Cloudflare Web Analytics en el edge. Ambos gratuitos. Ambos rápidos. Ambos funcionando sin banners de cookies ni scripts pesados.
+El stack de analíticas de este sitio es algo de lo que estoy orgulloso. Umami para rastreo de eventos con privacidad primero. Cloudflare Web Analytics en el edge. Ambos gratuitos. Ambos rápidos. Ambos funcionando sin banners de cookies ni scripts pesados.
 
 Lo que no noté — o no pensé con suficiente cuidado — fue quién no podía ser contado.
 
@@ -43,7 +43,7 @@ Y no son solo los bots de IA. Lectores de RSS, crawlers de motores de búsqueda,
 
 ## La Solución Parecía Un Solo Archivo
 
-Había visto el directorio `functions/` mencionado en la documentación de Cloudflare Pages antes. En el capítulo seis, lo mencioné como una de las cosas que incluye la plataforma: pon un archivo TypeScript en `functions/`, y Cloudflare lo detecta automáticamente y lo despliega como middleware en el edge. Cada solicitud pasa por él antes de servirse.
+El directorio `functions/` está documentado en la documentación de Cloudflare Pages: pon un archivo TypeScript ahí, y Cloudflare lo detecta automáticamente y lo despliega como middleware en el edge. Cada solicitud pasa por él antes de servirse.
 
 Para la mayoría de los sitios estáticos, esto es innecesario. Todo el atractivo de un sitio estático es no necesitar lógica del lado del servidor. Eso sigue siendo cierto para el 99.9% de lo que hace este sitio.
 
@@ -243,7 +243,7 @@ Rastro los bots de IA en el mismo sitio web de Umami que los visitantes humanos 
 
 La alternativa era un sitio de Umami separado solo para bots. Lo pensé unos treinta segundos y decidí que era sobre-ingeniería. Quiero ver el tráfico de bots junto al tráfico humano — mismo dashboard, misma línea de tiempo, mismo contexto. Un bot visitando el blog la misma semana que un pico de tráfico de un artículo compartido es interesante. En dashboards separados, esa correlación es más difícil de ver.
 
-La variable de entorno `PUBLIC_UMAMI_WEBSITE_ID` ya está configurada en el dashboard de Cloudflare — el middleware la lee desde `context.env`. No agregué un nuevo secreto ni una nueva variable de entorno. La infraestructura ya estaba. Eso es parte de lo que quise decir en el capítulo seis cuando dije que Cloudflare Pages era una plataforma, no solo hosting: las piezas encajan de maneras que no tienes que conectar tú mismo.
+La variable de entorno `PUBLIC_UMAMI_WEBSITE_ID` ya está configurada en el dashboard de Cloudflare — el middleware la lee desde `context.env`. No agregué un nuevo secreto ni una nueva variable de entorno. La infraestructura ya estaba. Eso es una de las cosas que me gustan de Cloudflare Pages como plataforma: las piezas encajan de maneras que no tienes que conectar tú mismo.
 
 ---
 
@@ -261,7 +261,7 @@ La lección: cuando un check de build falla después de un cambio pequeño, el e
 
 El dashboard de Cloudflare tiene un visor de logs en tiempo real. Dentro de la primera hora de desplegar el middleware, vi `[AI Bot] GPTBot → /blog/building-xergioalex-website/ (GET)` pasar por la pantalla.
 
-Ese es un crawler real de OpenAI, leyendo el capítulo uno de esta serie. No tengo idea en qué ciclo de entrenamiento de modelo entró, ni si el contenido terminó en algún dataset de fine-tuning. Pero puedo ver que ocurrió. Eso es lo importante. Antes de esto, era invisible. Ahora está registrado.
+Ese es un crawler real de OpenAI, leyendo uno de mis posts del blog. No tengo idea en qué ciclo de entrenamiento de modelo entró, ni si el contenido terminó en algún dataset de fine-tuning. Pero puedo ver que ocurrió. Eso es lo importante. Antes de esto, era invisible. Ahora está registrado.
 
 En Umami, los eventos `ai_bot_visit` aparecen en la sección de eventos personalizados con el nombre del bot adjunto. Puedo filtrar por `bot = ClaudeBot`, ver qué páginas ha visitado el crawler de Anthropic, y compararlo con la distribución de vistas de página de los lectores humanos. Puedo rastrear si el tráfico de bots se correlaciona con la publicación de nuevos posts. Puedo ver qué secciones del sitio se rastrean más.
 

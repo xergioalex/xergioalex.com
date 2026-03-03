@@ -1,29 +1,25 @@
 ---
 title: "La Mejor Forma de Desplegar tu Sitio Astro Gratis"
-description: "El sexto capítulo de la construcción de XergioAleX.com — después de años desplegando sitios estáticos en GitHub Pages, evalué todas las opciones gratuitas y aterricé en Cloudflare Pages. Esto es lo que aprendí, lo que me sorprendió, y por qué la plataforma sigue mejorando."
-pubDate: "2026-03-03"
-heroImage: "/images/blog/posts/deploying-astro-blog-cloudflare-pages/hero.png"
+description: "Después de años desplegando sitios estáticos en GitHub Pages, evalué todas las opciones gratuitas y aterricé en Cloudflare Pages. Esto es lo que aprendí, lo que me sorprendió, y por qué la plataforma sigue mejorando."
+pubDate: "2026-03-04"
+heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development"]
 series: "building-xergioalex"
 seriesOrder: 6
 ---
 
-Cinco capítulos en esta serie y he hablado de la [arquitectura](/es/blog/building-xergioalex-website/), el [rendimiento](/es/blog/lighthouse-perfect-scores/), las [analíticas](/es/blog/measuring-what-matters-free-analytics/), el [motor del blog](/es/blog/building-blog-without-backend/) y los [dos idiomas](/es/blog/building-multilingual-website/). Todos asumían algo que nunca expliqué: dónde vive el sitio.
-
-Este es ese capítulo.
+Todo sitio tiene que vivir en algún lugar. Por un tiempo no pensé mucho en dónde — tenía GitHub Pages, funcionaba, y con eso bastaba. Pero cuando los requisitos crecieron — más páginas, dos idiomas, procesamiento de imágenes en tiempo de build, un blog completo con búsqueda — me di cuenta de que la plataforma de despliegue merecía la misma elección deliberada que el framework.
 
 ---
 
 ## Los Años de GitHub Pages
 
-Llevo mucho tiempo desplegando sitios estáticos en GitHub Pages. Antes de que existiera este sitio, Pereira Tech Talks — la comunidad tecnológica que co-organizo en Pereira, Colombia — corría en Ghost. Una configuración dockerizada en Digital Ocean: MySQL, Ghost, Nginx, Certbot. $8.43 al mes. Funcionó durante años, hasta que el costo de mantenimiento dejó de ser dinero y pasó a ser tiempo.
+Llevo mucho tiempo desplegando sitios estáticos en GitHub Pages. Lo había usado para sitios de comunidades, proyectos paralelos, documentación — los casos de uso típicos de sitios estáticos. Conectar el repositorio, escribir un workflow de GitHub Actions, empujar a `gh-pages`. Siempre funcionó.
 
-En agosto de 2024 migré todo [pereiratechtalks.com](https://www.pereiratechtalks.com) a Astro y lo desplegué en GitHub Pages con GitHub Actions. Como describí en [ese artículo](/es/blog/pereira-tech-talks-migration/): de $8.43 al mes a $0. Sin servidor. Sin base de datos. Sin tardes de domingo aplicando actualizaciones de Ghost. Solo un sitio estático, un repositorio de GitHub, y un workflow de despliegue que corría en cada push.
+Entonces cuando empecé a construir este sitio en Astro, GitHub Pages fue el primer instinto. Ya tenía las plantillas del workflow. Ya conocía los problemas comunes. Parecía el camino de menor resistencia.
 
-Funcionó perfecto. Entonces cuando empecé a reconstruir xergioalex.com en Astro, GitHub Pages fue el primer instinto. Ya tenía las plantillas del workflow. Ya conocía los problemas comunes. Parecía el camino de menor resistencia.
-
-Pero me detuve a mirar las opciones primero. No porque GitHub Pages me hubiera fallado — no lo hizo. Sino porque este sitio iba a ser más grande que Pereira Tech Talks. Más páginas, dos idiomas, procesamiento de imágenes en tiempo de build, un blog con series y etiquetas y búsqueda. La plataforma de despliegue iba a importar más, y quería elegir deliberadamente en lugar de caer por defecto en lo que ya conocía.
+Pero me detuve a mirar las opciones primero. No porque GitHub Pages me hubiera fallado — no lo hizo. Sino porque este sitio tenía más partes móviles que cualquier cosa que hubiera desplegado ahí antes. Quería elegir deliberadamente en lugar de caer por defecto en lo que ya conocía.
 
 ---
 
@@ -51,7 +47,7 @@ Dejé de buscar.
 
 El primer despliegue fue casi decepcionante de tan simple. Conecté el repositorio de GitHub en el panel de Cloudflare, y Cloudflare detectó automáticamente el framework Astro. Completó el comando de build (`astro build`), configuró el directorio de salida (`dist`), y me pidió confirmar la versión de Node.js. Básicamente eso fue todo. El primer build corrió en unos cuarenta segundos y el sitio quedó activo en un subdominio `pages.dev`.
 
-Sin workflow de despliegue que escribir. Sin secretos que gestionar. Sin archivos YAML definiendo etapas y entornos. Comparado con el workflow de GitHub Actions que había escrito para Pereira Tech Talks — que implicaba instalar dependencias, correr el build, configurar la rama `gh-pages`, gestionar claves de despliegue — esto fue un no-evento.
+Sin workflow de despliegue que escribir. Sin secretos que gestionar. Sin archivos YAML definiendo etapas y entornos. Comparado con los workflows de GitHub Actions que había escrito antes — instalar dependencias, correr el build, configurar la rama `gh-pages`, gestionar claves de despliegue — esto fue un no-evento.
 
 La configuración de DNS fue igual de directa. Apunté los nameservers del dominio a Cloudflare, fui al panel, agregué `xergioalex.com` como dominio personalizado en el proyecto de Pages, y el certificado SSL se generó automáticamente. Sin scripts de renovación de Let's Encrypt. Sin malabarismos de CNAME con un proveedor externo. Sin "espera 48 horas y veremos si resuelve." Todo quedó listo en menos de una hora, incluyendo la propagación del DNS — más rápido de lo esperado.
 
@@ -81,7 +77,7 @@ Déjame recorrer cada funcionalidad de forma concreta, porque la lista en la pá
 
 Cada push a `main` dispara un build. Sin archivo de workflow necesario — Cloudflare lo maneja. El sitio usa un workflow de GitHub Actions para el versionado y las etiquetas de commits, pero el despliegue en sí es 100% responsabilidad de Cloudflare. No mantengo un pipeline de despliegue. Hago push del código y el sitio se actualiza.
 
-Para Pereira Tech Talks tenía un workflow de GitHub Actions de 40 líneas solo para desplegar. Aquí, ese workflow no existe. Eso no es un detalle menor.
+Mis proyectos anteriores necesitaban workflows de GitHub Actions de 40 líneas solo para desplegar. Aquí, ese workflow no existe. Eso no es un detalle menor.
 
 ### Despliegues de Vista Previa por Rama
 
@@ -97,7 +93,7 @@ Esto suena como algo menor. Después de años gestionando certificados de Let's 
 
 ### Analíticas Incluidas
 
-Cloudflare Web Analytics se inyecta automáticamente en el edge. Sin script que agregar al código. Sin variable de entorno. Sin cambios en el código. Lo cubrí en el [capítulo tres](/es/blog/measuring-what-matters-free-analytics/) — el stack completo de analíticas. Pero el punto aquí es el contraste: en GitHub Pages, las analíticas requieren agregar un script de seguimiento manualmente. En Cloudflare Pages, simplemente vienen con la plataforma.
+Cloudflare Web Analytics se inyecta automáticamente en el edge. Sin script que agregar al código. Sin variable de entorno. Sin cambios en el código. En GitHub Pages, las analíticas requieren agregar un script de seguimiento manualmente. En Cloudflare Pages, simplemente vienen con la plataforma.
 
 ### Variables de Entorno
 
@@ -115,7 +111,7 @@ Esto es menos una funcionalidad y más una consecuencia. El sitio se sirve desde
 
 El directorio `functions/` en el repositorio se detecta automáticamente y se despliega como Cloudflare Pages Functions — middleware en el edge que corre en cada solicitud sin infraestructura de servidor que gestionar. Esto es lo que hace posible la lógica del lado del servidor en lo que de otra manera sería un sitio estático.
 
-Llegaré a lo que realmente construí con esto en el próximo capítulo. Pero vale la pena nombrarlo aquí: la plataforma de despliegue que elegí por el nivel gratuito resultó tener un runtime de edge programable integrado en el alojamiento estático. Eso desbloqueó algo que no había anticipado cuando elegí Cloudflare Pages.
+La plataforma de despliegue que elegí por el nivel gratuito resultó tener un runtime de edge programable integrado en el alojamiento estático. Eso desbloqueó cosas que no había anticipado cuando elegí Cloudflare Pages — como analíticas del lado del servidor para visitantes que no ejecutan JavaScript.
 
 ### El Nivel Gratuito en Detalle
 
@@ -133,19 +129,7 @@ La primera vez que configuré la propagación DNS, pasé cerca de una hora depur
 
 También: las Cloudflare Pages Functions son excelentes para middleware, pero no son lo mismo que los Cloudflare Workers completos. La superficie de API es más pequeña — sin Durable Objects, sin Queues, sin primitivos avanzados. Si necesitas esas funcionalidades, necesitas un proyecto de Workers separado, no un despliegue de Pages Functions. Para un blog, la capacidad de middleware es más que suficiente. Pero conocer el límite importa antes de diseñar alrededor de él.
 
----
-
-## El Puente al Capítulo 7
-
-Estar en Cloudflare Pages abrió una puerta que no esperaba cuando lo elegí.
-
-El directorio `functions/` — detectado automáticamente, desplegado como middleware en el edge, sin infraestructura que gestionar — significa que puedo correr código en cada solicitud sin operar un servidor. Para un blog estático, eso suena innecesario. Y para la mayoría de las cosas, lo es.
-
-Pero había algo que quería medir que ninguna herramienta de analíticas podía darme. Ni Umami. Ni Cloudflare Web Analytics. Ni siquiera Google Analytics. Todas esas herramientas dependen de un snippet de JavaScript corriendo en un navegador. Si no hay navegador — si el visitante no ejecuta JavaScript — son invisibles. Y en 2025, algunos de los visitantes más importantes de un sitio de contenido son exactamente ese tipo de invisibles.
-
-Hablo de bots de IA. GPTBot, ClaudeBot, PerplexityBot — los crawlers que alimentan los modelos de lenguaje. El sitio ya les había tendido la alfombra roja: `llms.txt`, `robots.txt` con reglas explícitas de Allow, datos estructurados. Pero no tenía forma de saber si realmente estaban viniendo.
-
-Las funciones en el edge lo hicieron posible. Un archivo, detectado automáticamente, desplegado en el edge. Más sobre eso en el próximo capítulo.
+Si estás buscando hosting gratuito para un sitio estático en Astro y quieres más que solo servir archivos — despliegues de vista previa, gestión de DNS, funciones en el edge, analíticas — Cloudflare Pages es la mejor opción que he encontrado. No es perfecta, pero la fricción es baja y el techo es alto.
 
 A seguir construyendo.
 
@@ -157,4 +141,3 @@ A seguir construyendo.
 - [Desplegar un sitio Astro en Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 - [Nivel Gratuito de Cloudflare Pages](https://www.cloudflare.com/developer-platform/products/pages/)
 - [Cloudflare adquiere Astro](https://blog.cloudflare.com/cloudflare-acquires-astro/)
-- [Migración de Pereira Tech Talks: De Ghost a Astro](/es/blog/pereira-tech-talks-migration/)

@@ -1,23 +1,23 @@
 ---
 title: "Tracking the Invisible: How I Built AI Bot Analytics with Zero JavaScript"
-description: "The seventh chapter of building XergioAleX.com — implementing AI bot analytics with a single Cloudflare Pages middleware file. No JavaScript, no tracking scripts, no infrastructure changes. Just one file at the edge and twelve patterns that changed what I could see."
-pubDate: "2026-03-03"
-heroImage: "/images/blog/posts/tracking-the-invisible-ai-bot-analytics/hero.png"
+description: "Implementing AI bot analytics with a single Cloudflare Pages middleware file. No JavaScript, no tracking scripts, no infrastructure changes. Just one file at the edge and twelve patterns that changed what I could see."
+pubDate: "2026-03-05"
+heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development", "ai"]
 series: "building-xergioalex"
 seriesOrder: 7
 ---
 
-In [chapter six](/blog/deploying-astro-blog-cloudflare-pages/), I moved the site from GitHub Pages to Cloudflare Pages and explained why: free hosting, preview deployments per branch, DNS and SSL built-in, and a platform with room to grow. Toward the end of that chapter, I mentioned a door the platform had opened — the `functions/` directory, auto-detected, deployed as edge middleware, zero infrastructure to manage.
+This site runs on Cloudflare Pages. One of the things that comes with the platform is a `functions/` directory — drop a TypeScript file in there, and Cloudflare auto-detects it and deploys it as edge middleware. Every request passes through it. Zero infrastructure to manage.
 
-This is what I built with it.
+I had a specific use for that. This is what I built.
 
 ---
 
 ## The Blind Spot
 
-In [chapter three](/blog/measuring-what-matters-free-analytics/), I put together an analytics stack I was proud of. Umami for privacy-first event tracking. Cloudflare Web Analytics at the edge. Both free. Both fast. Both running without cookie banners or bloated scripts.
+The analytics stack for this site is something I'm proud of. Umami for privacy-first event tracking. Cloudflare Web Analytics at the edge. Both free. Both fast. Both running without cookie banners or bloated scripts.
 
 What I didn't notice — or didn't think through carefully enough — was who couldn't be counted.
 
@@ -43,7 +43,7 @@ And it's not just AI bots. RSS readers, search engine crawlers, monitoring tools
 
 ## The Solution Looked Like One File
 
-I'd seen the `functions/` directory mentioned in Cloudflare Pages documentation before. In chapter six, I called it out as one of the things the platform includes: put a TypeScript file in `functions/`, and Cloudflare auto-detects it and deploys it as edge middleware. Every request passes through it before being served.
+The `functions/` directory is documented in the Cloudflare Pages docs: put a TypeScript file there, and Cloudflare auto-detects it and deploys it as edge middleware. Every request passes through it before being served.
 
 For most static sites, this is unnecessary. The whole appeal of a static site is that you don't need server-side logic. That's still true for 99.9% of what this site does.
 
@@ -243,7 +243,7 @@ I track AI bots to the same Umami website as human visitors — not a separate p
 
 The alternative was a separate Umami site just for bots. I thought about it for about thirty seconds and decided it was over-engineering. I want to see bot traffic alongside human traffic — same dashboard, same timeline, same context. A bot visiting the blog the same week as a traffic spike from a shared article is interesting. In separate dashboards, that correlation is harder to spot.
 
-The environment variable `PUBLIC_UMAMI_WEBSITE_ID` is already set in the Cloudflare dashboard — the middleware reads it from `context.env`. I didn't add a new secret or a new environment variable. The infrastructure was already there. That's part of what I meant in chapter six when I said Cloudflare Pages was a platform, not just hosting: the pieces fit together in ways you don't have to wire up yourself.
+The environment variable `PUBLIC_UMAMI_WEBSITE_ID` is already set in the Cloudflare dashboard — the middleware reads it from `context.env`. I didn't add a new secret or a new environment variable. The infrastructure was already there. That's one of the things I like about Cloudflare Pages as a platform: the pieces fit together in ways you don't have to wire up yourself.
 
 ---
 
@@ -261,7 +261,7 @@ The lesson: when a build check fails after a small change, the error is almost a
 
 The Cloudflare dashboard has a real-time log viewer. Within the first hour of deploying the middleware, I saw `[AI Bot] GPTBot → /blog/building-xergioalex-website/ (GET)` scroll past.
 
-That's a real OpenAI crawler, reading chapter one of this series. I have no idea which model training run it fed into, or whether the content ended up in any fine-tuning dataset. But I can see it happened. That's the thing. Before this, it was invisible. Now it's logged.
+That's a real OpenAI crawler, reading one of my blog posts. I have no idea which model training run it fed into, or whether the content ended up in any fine-tuning dataset. But I can see it happened. That's the thing. Before this, it was invisible. Now it's logged.
 
 In Umami, `ai_bot_visit` events show up in the custom events section with the bot name attached. I can filter by `bot = ClaudeBot`, see what pages Anthropic's crawler has visited, and compare that to the page view distribution from human readers. I can track whether bot traffic correlates with publishing new posts. I can see which sections of the site get crawled most.
 

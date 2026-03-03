@@ -151,8 +151,10 @@ ls public/images/blog/posts/ public/images/blog/shared/ 2>/dev/null
 2. **Context/Why** — Why this matters, why the author did it
 3. **Core content** — Main story, breakdown, or explanation (3-6 sections)
 4. **Visual elements** — Place images, tables, code blocks where they add value
-5. **Closing** — Brief, forward-looking ("Let's keep building." / "A seguir construyendo.")
+5. **Closing** — Brief, forward-looking ("Let's keep building." / "A seguir construyendo."). **Series posts: Do NOT create a "Bridge to Chapter N" or teaser section** at the end that previews the next chapter. Each chapter should stand on its own — end with a satisfying conclusion, not a cliffhanger or preview. The series navigation already shows readers what comes next.
 6. **Resources** — Links to repos, tools, docs, external references (when applicable). **Do NOT list related articles or previous chapters** — if the post belongs to a series, those already appear in the series navigation below; listing them in Resources is redundant.
+
+**Series independence principle:** Each post in a series should read well on its own. Avoid explicit "In chapter N..." references. Instead: weave in context naturally with inline links, or simply state the fact without referencing which chapter covered it. A reader who lands on chapter 5 from a search engine should not feel lost.
 
 ### Step 3: Create Primary Language Version
 

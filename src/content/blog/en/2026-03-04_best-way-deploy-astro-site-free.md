@@ -1,29 +1,25 @@
 ---
 title: "The Best Way to Deploy Your Astro Site for Free"
-description: "The sixth chapter of building XergioAleX.com — after years deploying static sites on GitHub Pages, I evaluated every free option and landed on Cloudflare Pages. Here's what I learned, what surprised me, and why the platform keeps getting better."
-pubDate: "2026-03-03"
-heroImage: "/images/blog/posts/deploying-astro-blog-cloudflare-pages/hero.png"
+description: "After years deploying static sites on GitHub Pages, I evaluated every free option and landed on Cloudflare Pages. Here's what I learned, what surprised me, and why the platform keeps getting better."
+pubDate: "2026-03-04"
+heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development"]
 series: "building-xergioalex"
 seriesOrder: 6
 ---
 
-Five chapters into this series and I've talked about the [architecture](/blog/building-xergioalex-website/), the [performance](/blog/lighthouse-perfect-scores/), the [analytics](/blog/measuring-what-matters-free-analytics/), the [blog engine](/blog/building-blog-without-backend/), and [two languages](/blog/building-multilingual-website/). Every one of them assumed something I never actually explained: where the site lives.
-
-This is that chapter.
+Every site has to live somewhere. For a while I didn't think much about where — I had GitHub Pages, it worked, and that was enough. But when the requirements grew — more pages, two languages, image processing at build time, a full blog with search — I realized the deployment platform deserved the same deliberate choice as the framework.
 
 ---
 
 ## The GitHub Pages Years
 
-I have been deploying static sites to GitHub Pages for a long time. Before this site existed, Pereira Tech Talks — the tech community I co-organize in Pereira, Colombia — ran on Ghost. A Dockerized setup on Digital Ocean: MySQL, Ghost, Nginx, Certbot. $8.43/month. It worked for years, until the maintenance cost stopped being money and started being time.
+I have been deploying static sites to GitHub Pages for a long time. I'd used it for community sites, side projects, documentation — the typical static site use cases. Connect the repo, write a GitHub Actions workflow, push to `gh-pages`. It always worked.
 
-In August 2024, I migrated the entire [pereiratechtalks.com](https://www.pereiratechtalks.com) to Astro and deployed it on GitHub Pages with GitHub Actions. As I described in [that post](/blog/pereira-tech-talks-migration/): from $8.43/month to $0. No server. No database. No Sunday afternoons spent applying Ghost updates. Just a static site, a GitHub repo, and a deployment workflow that ran on every push.
+So when I started building this site on Astro, GitHub Pages was the obvious first instinct. I already had the workflow templates. I already knew the gotchas. It felt like the path of least resistance.
 
-It worked perfectly. So when I started rebuilding xergioalex.com on Astro, GitHub Pages was the obvious first instinct. I already had the workflow templates. I already knew the gotchas. It felt like the path of least resistance.
-
-But I stopped and looked around first. Not because GitHub Pages had failed me — it hadn't. But because this site was going to be bigger than Pereira Tech Talks. More pages, two languages, image processing at build time, a blog with series and tags and search. The deployment platform was going to matter more, and I wanted to choose deliberately rather than default into what I already knew.
+But I stopped and looked around first. Not because GitHub Pages had failed me — it hadn't. But because this site had more moving parts than anything I'd deployed there before. I wanted to choose deliberately rather than default into what I already knew.
 
 ---
 
@@ -51,7 +47,7 @@ I stopped looking.
 
 The first deployment was almost anticlimactic. I connected the GitHub repo in the Cloudflare dashboard, and Cloudflare auto-detected the Astro framework. It populated the build command (`astro build`), set the output directory (`dist`), and asked me to confirm the Node.js version. That was essentially it. The first build ran in about forty seconds and the site was live on a `pages.dev` subdomain.
 
-No deployment workflow to write. No secrets to manage. No YAML files defining stages and environments. Compared to the GitHub Actions workflow I had written for Pereira Tech Talks — which involved installing dependencies, running the build, configuring the `gh-pages` branch, managing deploy keys — this was a non-event.
+No deployment workflow to write. No secrets to manage. No YAML files defining stages and environments. Compared to the GitHub Actions workflows I'd written before — installing dependencies, running the build, configuring the `gh-pages` branch, managing deploy keys — this was a non-event.
 
 The DNS setup was equally direct. I pointed my domain's nameservers to Cloudflare, went to the dashboard, added `xergioalex.com` as a custom domain on the Pages project, and SSL was auto-generated. No Let's Encrypt renewal scripts. No CNAME juggling with an external provider. No "wait 48 hours and see if it resolves." The whole thing was done in under an hour, including DNS propagation — faster than I expected.
 
@@ -81,7 +77,7 @@ Let me walk through each feature concretely, because the list on the Cloudflare 
 
 Every push to `main` triggers a build. No workflow file needed — Cloudflare handles it. The site uses a release workflow with GitHub Actions for versioning and commit tagging, but the deployment itself is 100% Cloudflare's responsibility. I do not maintain a deployment pipeline. I push code and the site updates.
 
-For Pereira Tech Talks, I had a 40-line GitHub Actions workflow just to deploy. Here, that workflow does not exist. That is not nothing.
+My previous projects needed 40-line GitHub Actions workflows just to deploy. Here, that workflow does not exist. That is not nothing.
 
 ### Preview Deployments per Branch
 
@@ -97,7 +93,7 @@ This sounds like a small thing. After years of managing Let's Encrypt certificat
 
 ### Analytics Included
 
-Cloudflare Web Analytics is auto-injected at the edge. No script to add to the codebase. No environment variable. No code changes. I covered this in [chapter three](/blog/measuring-what-matters-free-analytics/) — the full analytics stack. But the point here is the contrast: on GitHub Pages, analytics requires adding a tracking script manually. On Cloudflare Pages, it just comes with the platform.
+Cloudflare Web Analytics is auto-injected at the edge. No script to add to the codebase. No environment variable. No code changes. On GitHub Pages, analytics requires adding a tracking script manually. On Cloudflare Pages, it just comes with the platform.
 
 ### Environment Variables
 
@@ -115,7 +111,7 @@ This is less of a feature and more of a consequence. The site is served from 300
 
 The `functions/` directory in the repository is auto-detected and deployed as Cloudflare Pages Functions — edge middleware that runs on every request without any server infrastructure to manage. This is what makes server-side logic possible on what is otherwise a static site.
 
-I'll get to what I actually built with this in the next chapter. But the point here is: the deployment platform I chose because of the free tier turned out to have a programmable edge runtime built into the static hosting. That unlocked something I hadn't anticipated when I chose Cloudflare Pages.
+The deployment platform I chose because of the free tier turned out to have a programmable edge runtime built into the static hosting. That unlocked things I hadn't anticipated when I chose Cloudflare Pages — like server-side analytics for visitors that don't run JavaScript.
 
 ### The Free Tier in Full
 
@@ -133,19 +129,7 @@ The first time I set up DNS propagation, I spent about an hour debugging what tu
 
 Also: Cloudflare Pages Functions are great for middleware, but they're not the same as full Cloudflare Workers. The API surface is smaller — no Durable Objects, no Queues, no advanced primitives. If you need those features, you need a separate Workers project, not a Pages Functions deployment. For a blog, the middleware capability is enough and then some. But knowing the boundary matters before you design around it.
 
----
-
-## The Bridge to Chapter 7
-
-Being on Cloudflare Pages opened a door I hadn't expected when I chose it.
-
-The `functions/` directory — auto-detected, deployed as edge middleware, zero infrastructure to manage — means I can run code on every request without operating a server. For a static blog, that sounds unnecessary. And for most things, it is.
-
-But there was one thing I wanted to measure that no analytics tool could give me. Not Umami. Not Cloudflare Web Analytics. Not even Google Analytics. All of those tools rely on a JavaScript snippet running in a browser. If there's no browser — if the visitor doesn't execute JavaScript — they're invisible. And in 2025, some of the most important visitors to a content site are exactly that kind of invisible.
-
-I'm talking about AI bots. GPTBot, ClaudeBot, PerplexityBot — the crawlers that feed large language models. The site had already rolled out the welcome mat for them: `llms.txt`, `robots.txt` with explicit Allow rules, structured data. But I had no way to know if they were actually coming.
-
-The edge functions made it possible. One file, auto-detected, deployed at the edge. More on that in the next chapter.
+If you're looking for free hosting for a static Astro site and you want more than just file serving — preview deployments, DNS management, edge functions, analytics — Cloudflare Pages is the best option I've found. Not perfect, but the friction is low and the ceiling is high.
 
 Let's keep building.
 
@@ -157,4 +141,3 @@ Let's keep building.
 - [Deploy an Astro site to Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 - [Cloudflare Pages Free Tier](https://www.cloudflare.com/developer-platform/products/pages/)
 - [Cloudflare acquires Astro](https://blog.cloudflare.com/cloudflare-acquires-astro/)
-- [Pereira Tech Talks Migration: From Ghost to Astro](/blog/pereira-tech-talks-migration/)
