@@ -1,6 +1,6 @@
 ---
-title: "Declarando la Solución: Programación Lógica y con Restricciones con Prolog y Mozart"
-description: "Proyectos universitarios de mi curso de Programación Lógica y con Restricciones — desde puzzles clásicos en Prolog hasta resolución de restricciones en Mozart/Oz, culminando con el Teorema de los Cuatro Colores aplicado al mapa de Colombia."
+title: "Las Cinco Líneas de Prolog Que Resolvieron un Problema Que Creí Necesitaba Cientos"
+description: "Cuando mi profesor resolvió las Ocho Reinas en 5 líneas de código declarativo, mi forma de entender la programación cambió. Un viaje por Prolog y Mozart."
 pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
 heroLayout: "side-by-side"

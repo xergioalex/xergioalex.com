@@ -1,6 +1,6 @@
 ---
-title: "Introducción a MyPy"
-description: "Por qué adoptamos type checking en DailyBot — del caos de Python sin tipos a detectar bugs antes de runtime, reducir carga cognitiva y shipear con confianza."
+title: "Por Qué Agregamos Type Checking al Código Python de DailyBot"
+description: "De firmas ambiguas a detectar bugs antes de runtime — cómo MyPy redujo la carga cognitiva y los tests triviales en nuestro codebase."
 pubDate: "2021-03-03"
 heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
 heroLayout: "side-by-side"

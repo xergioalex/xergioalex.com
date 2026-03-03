@@ -1,6 +1,6 @@
 ---
-title: "Declaring the Solution: Logic and Constraint Programming with Prolog and Mozart"
-description: "University projects from my Logic and Constraint Programming course — from classic puzzles in Prolog to constraint solving in Mozart/Oz, culminating in the Four Color Theorem applied to Colombia's map."
+title: "The Five Lines of Prolog That Solved a Problem I Thought Needed Hundreds"
+description: "When my professor solved Eight Queens in 5 lines of declarative code, my understanding of programming shifted. A journey through Prolog and Mozart."
 pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
 heroLayout: "side-by-side"
