@@ -161,8 +161,6 @@ El componente compartido importa el layout, obtiene las traducciones para el idi
 
 Tengo 17 componentes de página compartidos y 23 wrappers de ruteo. ¿Agregar portugués? Once archivos nuevos de tres líneas, cero cambios en componentes. Un bug fix ocurre en un archivo. Una nueva funcionalidad aparece en todos los idiomas automáticamente.
 
-[AUTHOR: ¿Qué probaste antes del patrón Page Wrapper? ¿Empezaste con cada página manejando su propio ruteo de idiomas? ¿Cuántos archivos tenías que tocar para cambiar un label antes de encontrar el enfoque correcto?]
-
 ---
 
 ## El Sistema de Traducciones

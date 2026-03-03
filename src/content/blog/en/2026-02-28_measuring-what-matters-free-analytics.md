@@ -68,8 +68,6 @@ That last point is crucial. Lighthouse gives you lab scores — measurements tak
 
 No cookies. No consent banner. No performance impact. It was activated before I wrote a single line of analytics code.
 
-[AUTHOR: Did you consider Plausible or another paid tool first? Did you try something that didn't work? Was there a moment where you looked at the data and realized your assumptions about traffic patterns were wrong?]
-
 ### Umami — The GA4 Replacement
 
 [Umami](https://umami.is) is an open-source, privacy-first analytics tool. The cloud version has a free tier that supports up to 1 million events per month — more than enough for any personal site.

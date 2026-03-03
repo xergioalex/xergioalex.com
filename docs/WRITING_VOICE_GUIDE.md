@@ -51,7 +51,7 @@ Grounded in evidence, admits uncertainty ("I think that answer landed"). Never b
 | Over-polishing | "That simplicity wasn't a limitation — it was the web's greatest feature. The barrier to entry was low. The feedback loop was instant." | "It worked. No bundlers, no transpilers, no configuration ritual before you could render Hello World." |
 | Data obsession | 5 subsections of survey citations with tables: State of JS, Rising Stars, Stack Overflow, Aggregate Picture | "The surveys all point the same way: 88% retention. That's rare in JavaScript land." |
 | Structural regularity | Every post: Hook > Problem > Solution > Data > Conclusion. Every section: Statement > Explanation > Code > Transition | Vary structure: sometimes code first, sometimes a question, sometimes just a 2-sentence section |
-| No failure narratives | "Astro changed everything for me. When I first discovered it, the feeling was immediate" | "[AUTHOR: What was the friction like on day one? What broke?]" |
+| No failure narratives | "Astro changed everything for me. When I first discovered it, the feeling was immediate" | "I spent hours on a broken config. Nothing rendered. Then I found the docs." |
 | Length explosion | 5,000-10,000 word posts covering every angle | 2,500-4,000 words. Cut redundant evidence, merge similar sections |
 | AI vocabulary | "genuinely," "comprehensive," "this is where X shines," "radical premise," "beautifully simple" | "actually," "real," "this is where they win," "simple bet," "small" |
 
@@ -65,7 +65,20 @@ Grounded in evidence, admits uncertainty ("I think that answer landed"). Never b
 - Rough transitions (not every section needs a smooth bridge)
 - At least 1 opinion stated without evidence ("I think," "in my experience")
 
-## 5. Pre-Publish Checklist
+## 5. No Placeholder Content (MANDATORY)
+
+**Published posts must NEVER contain placeholder text.** Placeholders like `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, `[FIXME]`, or any bracketed instruction to "fill in later" destroy credibility — they are a visible signal that content was not fully reviewed.
+
+- Replace placeholders with real content or remove the section entirely
+- Run the grep below before publishing
+
+```bash
+grep -rn '\[AUTHOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/
+```
+
+Expected: zero matches. If any match is found, fix before committing.
+
+## 6. Pre-Publish Checklist
 
 ```
 [ ] Does the post include at least 1 failure or struggle?
@@ -80,7 +93,7 @@ Grounded in evidence, admits uncertainty ("I think that answer landed"). Never b
 [ ] Is there at least 1 sentence that starts with "Honestly" or "I think"?
 ```
 
-## 6. AI Vocabulary Blocklist
+## 7. AI Vocabulary Blocklist
 
 Words and phrases to search for and replace before publishing:
 

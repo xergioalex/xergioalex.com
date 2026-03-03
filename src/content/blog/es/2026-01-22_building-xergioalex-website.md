@@ -15,8 +15,6 @@ Pero con el tiempo las cosas fueron cambiando. Empecé a construir [DailyBot](ht
 
 Así que decidí construir uno de verdad.
 
-[AUTHOR: Antes de llegar a Astro, ¿probaste otros enfoques? ¿Un setup de WordPress que se sentía demasiado pesado? ¿Un proyecto de Gatsby que quedó a medias? ¿Cuál fue el intento fallido que hizo que apreciaras la elección final?]
-
 ---
 
 ## El sitio anterior

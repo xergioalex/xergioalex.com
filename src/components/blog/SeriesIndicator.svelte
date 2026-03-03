@@ -1,5 +1,6 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import type { Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -15,6 +16,7 @@ $: chapterBadge = `${currentChapter}/${totalChapters}`;
 let visible = false;
 
 function scrollToSeries() {
+  trackEvent(EVENTS.SERIES_INDICATOR_CLICK);
   const el = document.getElementById('series-navigation');
   if (el) {
     el.scrollIntoView({ behavior: 'smooth' });

@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getHighlightedField, type SearchResult } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
@@ -149,7 +150,7 @@ $: displayDescription = searchQuery
   {/if}
   <div class="p-6">
     <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">
-      <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400">
+      <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400" on:click={() => trackEvent(EVENTS.BLOG_CARD_CLICK, { slug: postSlug })}>
         {@html displayTitle}
       </a>
     </h2>

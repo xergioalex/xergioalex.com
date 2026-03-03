@@ -78,6 +78,8 @@ src/content/
 
 **Bilingual requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**. Never create a post in only one language.
 
+**No placeholder content:** Published posts must NEVER contain placeholder text such as `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" instruction. Zero tolerance — replace with real content or remove the section. See [Writing Voice Guide](../WRITING_VOICE_GUIDE.md#5-no-placeholder-content-mandatory).
+
 ## Frontmatter Schema
 
 Defined in `src/content.config.ts`:

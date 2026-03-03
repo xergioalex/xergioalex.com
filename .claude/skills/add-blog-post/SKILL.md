@@ -279,6 +279,7 @@ content: add blog post "{title}" (en + es)
 - [ ] All referenced images exist
 - [ ] Tags are valid (exist in `src/content/tags/`)
 - [ ] Frontmatter matches the Content Collections schema
+- [ ] **No placeholder content** — never leave `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or similar in published posts. Replace with real content or remove the section.
 
 ### Multilingual Enforcement
 
@@ -305,6 +306,7 @@ content: add blog post "{title}" (en + es)
 - [ ] Voice is personal-professional, not marketing copy (topic mode)
 - [ ] Spanish reads naturally (not machine-translated)
 - [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
+- [ ] No placeholder content (`[AUTHOR:`, `[TODO:`, `[TBD]`, `[FIXME]` — zero in final post)
 - [ ] All referenced images exist
 - [ ] `npm run build` passes
 
@@ -384,6 +386,6 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.8.0   | 2026-03-03 | No placeholder content: never leave [AUTHOR:], [TODO:], [TBD], [FIXME] in published posts. Added to Safety Checks and Definition of Done. |
 | 2.7.0   | 2026-03-03 | Resources section: do NOT list related articles or previous chapters when post belongs to a series. Added Guardrails subsection. |
 | 2.6.0   | 2026-03-02 | Enhanced series workflow: detailed steps for adding posts to existing series, creating new series, and escalation guidance. |
-| 2.5.0   | 2026-03-01 | Unified tag taxonomy: removed `topics` field, all tags in single `tags` array. Tier determined by tags collection. |

@@ -174,8 +174,6 @@ Y luego la pregunta que me hago sobre cada decisión de arquitectura: ¿qué pas
 
 Con 1000 posts, una migración porque agregué un valor nuevo al enum es un costo real. Con 1000 posts, definiciones de nivel dispersas en miles de archivos es un problema de mantenimiento. Volví a la mesa de diseño.
 
-[AUTHOR: ¿Cuántos posts habías migrado al enfoque de enum antes de darte cuenta de que no iba a escalar? ¿Cómo fue esa tarde del domingo re-arquitectando todo? ¿Cuánto tiempo tardó realmente en deshacer el error?]
-
 ### La arquitectura de colección unificada
 
 El insight clave: **el nivel del tag es una propiedad del tag, no una propiedad del post.**

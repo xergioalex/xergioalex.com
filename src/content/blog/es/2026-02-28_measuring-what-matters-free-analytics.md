@@ -68,8 +68,6 @@ Ese último punto es crucial. Lighthouse te da puntajes de laboratorio — medic
 
 Sin cookies. Sin banner de consentimiento. Sin impacto en rendimiento. Estaba activado antes de que escribiera una sola línea de código de analytics.
 
-[AUTHOR: ¿Consideraste primero Plausible u otra herramienta de pago? ¿Probaste algo que no funcionó? ¿Hubo un momento en que miraste los datos y te diste cuenta de que tus suposiciones sobre los patrones de tráfico estaban equivocadas?]
-
 ### Umami — El Reemplazo de GA4
 
 [Umami](https://umami.is) es una herramienta de analytics open-source enfocada en privacidad. La versión cloud tiene un tier gratuito que soporta hasta 1 millón de eventos por mes — más que suficiente para cualquier sitio personal.
