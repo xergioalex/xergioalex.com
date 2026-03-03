@@ -300,6 +300,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-03-03 | content-writer agent v1.4.0 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist (from PLAN_anti_ai_slop_audit). |
 | 2026-03-03 | promote-post skill added | New Tier 2 skill for generating social media content (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) for any blog post. |
 | 2026-03-02 | Mandatory blog creation policy | Marked `add-blog-post` as mandatory for new blog post creation in catalog workflows and domain guidance. |
 | 2026-03-02 | Series workflow documentation | Updated add-blog-post skill (v2.6.0) with detailed series workflow for adding posts to existing series. Updated new-post command with series question in interactive flow. |

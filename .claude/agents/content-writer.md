@@ -75,6 +75,8 @@ This agent is a specialized **content creator** that focuses on:
 
 ### Voice & Tone Guidelines
 
+> **Authoritative reference:** See **[Writing Voice Guide](../../docs/WRITING_VOICE_GUIDE.md)** for the full anti-AI-slop checklist, vocabulary blocklist, and pre-publish quality checks. The guidelines below are a summary.
+
 The writing voice follows these principles established across the site:
 
 - **Personal, not corporate:** "I spent years building products" not "The journey of product development"
@@ -358,6 +360,7 @@ Once I have a specific story to tell, I can write something authentic.
 
 ## Related Skills/Agents
 
+- **[Writing Voice Guide](../../docs/WRITING_VOICE_GUIDE.md)** - Anti-AI-slop checklist, vocabulary blocklist, pre-publish quality checks
 - **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** - Source of truth for blog conventions
 - **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Published and demo post visibility
 - **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
@@ -370,6 +373,7 @@ Once I have a specific story to tell, I can write something authentic.
 
 | Version | Date       | Changes         |
 | ------- | ---------- | --------------- |
+| 1.4.0   | 2026-03-03 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist. Guide created during PLAN_anti_ai_slop_audit. |
 | 1.3.0   | 2026-02-28 | Added content quality grading system (A/B/C), rewriting/refining workflow, and transformation patterns for existing posts. Based on patterns from large-scale content refinement plan. |
 | 1.2.0   | 2026-02-19 | Removed draft/scheduled references. Blog now uses simple published + demo-only model. |
 | 1.1.0   | 2026-02-12 | Added Blog Content Lifecycle reference. Posts can now be created as drafts or scheduled. |

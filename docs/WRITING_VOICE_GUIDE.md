@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This guide exists because the blog was flagged as AI-generated content ("AI slop") on Hacker News ([thread](https://news.ycombinator.com/item?id=47225826)). An audit identified 6 specific patterns that trigger this perception, and this document captures the author's authentic voice characteristics and provides a checklist to prevent AI-sloppy content going forward.
+Avoiding AI slop in blog content is critical. An internal audit identified 6 specific patterns that trigger the perception of AI-generated writing, and this document captures the author's authentic voice characteristics and provides a checklist to prevent AI-sloppy content going forward.
 
 ## 2. The Author's Voice (Based on Older Posts)
 
