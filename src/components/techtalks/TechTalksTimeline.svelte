@@ -1,5 +1,5 @@
 <script lang="ts">
-import { getUrlPrefix } from '@/lib/i18n';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
 interface PostData {
@@ -11,11 +11,18 @@ interface PostData {
     updatedDate?: Date;
     heroImage?: string;
     tags?: string[];
+    series?: string;
+    seriesOrder?: number;
   };
 }
 
+interface SeriesPosition {
+  current: number;
+  total: number;
+}
+
 export let posts: PostData[] = [];
-export let lang: string = 'en';
+export let lang: Language = 'en';
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
@@ -47,6 +54,38 @@ function formatYearMonth(date: Date): string {
 function getMonthName(date: Date): string {
   return new Date(date).toLocaleDateString(t.dateLocale, { month: 'long' });
 }
+
+function getSeriesPositionById(items: PostData[]): Map<string, SeriesPosition> {
+  const seriesGroups = new Map<string, PostData[]>();
+
+  for (const item of items) {
+    if (!item.data.series) continue;
+    const group = seriesGroups.get(item.data.series);
+    if (group) {
+      group.push(item);
+    } else {
+      seriesGroups.set(item.data.series, [item]);
+    }
+  }
+
+  const positions = new Map<string, SeriesPosition>();
+  for (const [, groupItems] of seriesGroups) {
+    const ordered = [...groupItems].sort((a, b) => {
+      const orderA = a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+      const orderB = b.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+      if (orderA !== orderB) return orderA - orderB;
+      return a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
+    });
+    const total = ordered.length;
+    for (const [index, item] of ordered.entries()) {
+      positions.set(item.id, { current: index + 1, total });
+    }
+  }
+
+  return positions;
+}
+
+$: seriesPositionById = getSeriesPositionById(posts);
 </script>
 
 {#if posts.length === 0}
@@ -65,6 +104,14 @@ function getMonthName(date: Date): string {
       {@const showYear = index === 0 || formatYear(posts[index - 1].data.pubDate) !== year}
       {@const yearMonth = formatYearMonth(post.data.pubDate)}
       {@const showMonth = index === 0 || formatYearMonth(posts[index - 1].data.pubDate) !== yearMonth}
+      {@const seriesPosition = seriesPositionById.get(post.id)}
+      {@const seriesTitle = (post as { seriesTitle?: string }).seriesTitle}
+      {@const seriesBadgeLabel =
+        seriesPosition
+          ? seriesTitle
+            ? `${seriesTitle} · ${t.seriesChapterOf(seriesPosition.current, seriesPosition.total)}`
+            : t.seriesChapterOf(seriesPosition.current, seriesPosition.total)
+          : ''}
 
       <!-- Year marker -->
       {#if showYear}
@@ -136,6 +183,15 @@ function getMonthName(date: Date): string {
                 <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(post.data.pubDate)}
                 </time>
+                {#if seriesPosition}
+                  <span
+                    class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200"
+                    aria-label={seriesBadgeLabel}
+                    title={seriesBadgeLabel}
+                  >
+                                        {seriesPosition.current}/{seriesPosition.total}
+                  </span>
+                {/if}
                 {#if post.data.tags && post.data.tags.length > 0}
                   {#each post.data.tags as tag}
                     <a

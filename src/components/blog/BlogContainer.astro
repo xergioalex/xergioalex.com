@@ -25,6 +25,9 @@ const lightweightPosts = await Promise.all(
       topics: topicTags,
       heroImage: post.data.heroImage,
       heroWebpExists: false,
+      seriesCurrent: (post as { seriesCurrent?: number }).seriesCurrent,
+      seriesTotal: (post as { seriesTotal?: number }).seriesTotal,
+      seriesTitle: (post as { seriesTitle?: string }).seriesTitle,
     };
   })
 );
