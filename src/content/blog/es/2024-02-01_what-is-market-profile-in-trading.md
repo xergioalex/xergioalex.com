@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/what-is-market-profile-in-trading/hero.png"
 series: "trading-journey"
 seriesOrder: 2
 heroLayout: "banner"
-tags: ["trading"]
+tags: ["trading", "personal"]
 ---
 
 En el [artículo anterior](/es/blog/my-trading-journey-from-futures-to-forex/), conté cómo pasé de explorar futuros a construir un proceso más estructurado en Forex.

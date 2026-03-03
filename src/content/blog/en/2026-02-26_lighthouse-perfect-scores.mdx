@@ -4,7 +4,7 @@ description: "The detailed story of taking XergioAleX.com from great to perfect 
 pubDate: "2026-02-26"
 heroImage: "/images/blog/posts/lighthouse-perfect-scores/hero.png"
 heroLayout: "side-by-side"
-tags: ["tech", "portfolio"]
+tags: ["tech", "portfolio", "web-development"]
 series: "building-xergioalex"
 seriesOrder: 2
 ---
@@ -21,7 +21,7 @@ But the last few points to reach 100 are where the real work lives. Each categor
 
 ## Accessibility — The Foundation (100/100)
 
-This was the biggest lift of the entire project. Getting Accessibility to 100 meant making systematic changes across blog components, home sections, layout components, page components, and the timeline. It was not glamorous work — no clever architecture, no interesting algorithms — but it was the most impactful work I did, because accessibility improvements make the site genuinely better for real users, not just for scoring algorithms.
+Accessibility was the hardest part. Not fancy — just grinding through every color, every image, every component. But it matters because real users actually read this thing, not just scoring algorithms.
 
 ### Color Contrast
 
@@ -87,11 +87,13 @@ The key insight is using `max-width` (in `ch` units — one character-width each
 
 The cursor is a `border-right` on the `.tw-text` element — it does not need to be positioned separately because it naturally follows the `max-width` edge.
 
-Centering the component correctly required a three-layer architecture. The outer `.tw-word` uses absolute positioning to stack all words in the same space. Inside it, `.tw-sizer` is a visually hidden duplicate of the longest word, sized to hold its full width. The visible `.tw-text` sits on top and takes its width cue from the animated `max-width`. This ensures the centering of the entire hero section does not jump around as different-length words appear and disappear.
+Centering was weird because the word lengths change. Had to use a hidden element to measure the longest word so the others didn't cause reflow. CSS is dumb like that sometimes.
 
 The component also respects `prefers-reduced-motion` — if the user has set their OS preference to reduce motion, it shows only the first word with no animation.
 
 The result: the entire Typewriter JavaScript chunk was eliminated. **Critical path latency dropped from 1,338ms to 468ms — a 65% reduction.**
+
+[AUTHOR: How long did the typewriter CSS take? Did you try JS-based approaches first — GSAP, Svelte transitions? What failed before you figured out the pure-CSS approach? How did it feel when you realized the browser could already do it?]
 
 ### Responsive Images with srcset
 
@@ -136,11 +138,11 @@ Astro's `build.inlineStylesheets: 'always'` configuration (which was already in 
 
 ## SEO — The Infrastructure Layer (100/100)
 
-Getting SEO to 100 was less about any single change and more about a comprehensive audit to fill gaps in the existing foundation.
+SEO was mostly checking boxes. Nothing flashy — just filling gaps.
 
 ### Structured Data Expansion
 
-The site started with 3 JSON-LD schema types. After the audit, it has 7:
+The site went from 3 JSON-LD schema types to 7:
 
 ```json
 {
@@ -157,9 +159,7 @@ The site started with 3 JSON-LD schema types. After the audit, it has 7:
 }
 ```
 
-`BlogPosting` schema on article pages gives Google structured metadata about the post — author, date published, date modified, headline. `BreadcrumbList` on every page gives search engines the navigation hierarchy. `CollectionPage` on the blog listing and tag pages signals that these are index pages, not individual content pages.
-
-Every page on the site now has at least a `BreadcrumbList` even if it does not have a more specific type. This consistent coverage is what Lighthouse expects for a full SEO score.
+`BlogPosting` for articles, `BreadcrumbList` for navigation hierarchy, `CollectionPage` for index pages. Every page gets breadcrumbs now, even the ones that don't really need them. Lighthouse is fussy about coverage.
 
 ### Custom 404 Page
 
@@ -241,17 +241,17 @@ After all of this work, here is what PageSpeed Insights reports consistently:
 | Cumulative Layout Shift | 0 | 0 |
 | Speed Index | 0.9s | 0.5s |
 
-Zero Total Blocking Time and zero Cumulative Layout Shift on both mobile and desktop. LCP at 0.3 seconds on desktop. These are not scores I expected to actually see — they look like the example numbers in blog posts about theoretical ideal performance.
+Zero TBT, zero CLS, LCP at 0.3 seconds on desktop. Part of me wonders if something's wrong — these look like the example numbers in blog posts about theoretical ideal performance.
 
 ---
 
 ## What I Actually Learned
 
-The accessibility work was the most impactful, full stop. Not because it moved the score the most — though it did — but because it genuinely makes the site better for real people. WCAG contrast ratios are not bureaucratic theater. Text that barely passes is text that strains eyes in bright sunlight, on old monitors, or for users with visual impairments. Getting the contrast right means the site is actually easier to read. The skip-to-content link costs nothing and is the difference between "usable" and "frustrating" for keyboard users. That work mattered beyond the number.
+The accessibility work was the most impactful. Not because it moved the score the most, but because a keyboard user can actually use the thing now. WCAG contrast ratios aren't bureaucratic theater — text that barely passes strains eyes in bright sunlight, on old monitors, or for users with visual impairments. That work mattered beyond the number.
 
 The CSS-only Typewriter was the most technically satisfying change. There is something deeply pleasing about deleting a JavaScript component entirely and replacing it with a handful of CSS declarations that achieve the same result. The browser was already capable of doing this — I just had not asked it to. The 65% reduction in critical path latency was a bonus; the real win was eliminating the JavaScript dependency.
 
-Performance is not a one-time fix. Lighthouse scores are a snapshot, not a permanent state. Every new feature, every image added, every component refactored can shift the numbers. What this project taught me is that performance needs to be a design constraint from the beginning — not a pass run at the end. The hydration audit would not have been necessary if I had asked "what is the lightest hydration that works here?" from the start. That question is now on my mental checklist for every interactive component.
+Performance is not a one-time fix. Every new feature can shift the numbers. The hydration audit wouldn't have been necessary if I'd asked "what's the lightest hydration that works here?" from the start. Now I ask that first. Save yourself the rewrite.
 
 The whole journey — from the initial Astro build to the accessibility audit to the CSS Typewriter — is documented in the [xergioalex.com repository](https://github.com/xergioalex/xergioalex.com). If you want to dig into the implementation details of any of these changes, it is all there.
 
@@ -261,7 +261,6 @@ Let's keep building.
 
 ## Resources
 
-- [Building XergioAleX.com](/blog/building-xergioalex-website/) — The predecessor post with architecture details
 - [xergioalex/xergioalex.com](https://github.com/xergioalex/xergioalex.com) — The full source code
 - [Google PageSpeed Insights](https://pagespeed.web.dev/) — Test your own site
 - [WCAG 2.1 Contrast Requirements](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) — The official spec for AA contrast ratios

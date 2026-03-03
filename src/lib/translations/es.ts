@@ -39,7 +39,7 @@ export const es: SiteTranslations = {
   hero: {
     tagline: 'CTO en DailyBot (YC S21) · Creador de productos digitales',
     description:
-      'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
+      'Construyo tecnología que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboración donde equipos humanos y agentes de IA trabajan juntos. Más de 10 años creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
     typewriterWords: [
       'CTO en DailyBot (YC S21)',
       'Creador de productos digitales',
@@ -672,6 +672,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         icon: '\u{1F91D}',
       },
     ],
+    ctaTitle: 'Más en Instagram',
+    ctaDescription:
+      'Recetas, descubrimientos gastronómicos y momentos culinarios — sígueme para inspiración.',
     ctaText: 'Seguir en Instagram',
   },
 
@@ -957,6 +960,44 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Lo sentimos, la página que buscas no existe o pudo haber sido movida. Intenta volver a la página principal o buscar en el blog.',
     backHome: 'Volver al inicio',
     searchBlog: 'Buscar en el blog',
+  },
+
+  // Blog post engagement
+  engagement: {
+    // Author bio
+    authorBioTitle: 'Sobre el Autor',
+    authorBioDescription:
+      'CTO y Cofundador en DailyBot (YC S21). Escribo sobre desarrollo de productos, startups y el arte de la ingeniería de software.',
+
+    // Share buttons
+    shareTitle: 'Comparte este artículo',
+    shareOnTwitter: 'Compartir en X',
+    shareOnLinkedIn: 'Compartir en LinkedIn',
+    shareOnWhatsApp: 'Compartir en WhatsApp',
+    copyLink: 'Copiar enlace',
+    linkCopied: 'Enlace copiado!',
+
+    // Newsletter
+    newsletterTitle: 'Mantente al día',
+    newsletterDescription:
+      'Recibe una notificación cuando publique algo nuevo. Sin spam, cancela cuando quieras.',
+    newsletterPlaceholder: 'tu@email.com',
+    newsletterButton: 'Suscribirse',
+    newsletterSubmitting: 'Suscribiendo...',
+    newsletterSuccessTitle: '\u00a1Te has suscrito!',
+    newsletterSuccessMessage:
+      'Gracias por suscribirte. Te avisar\u00e9 cuando publique algo nuevo.',
+    newsletterInvalidEmail:
+      'Por favor, ingresa un correo electr\u00f3nico v\u00e1lido.',
+    newsletterAlreadySubscribed:
+      '\u00a1Ya est\u00e1s suscrito! Gracias por estar aqu\u00ed.',
+    newsletterResubscribe: 'Suscribirse con otro correo',
+    newsletterPrivacy: 'Sin spam. Cancela cuando quieras.',
+
+    // End-of-post CTA
+    ctaTitle: '¿Te gustó este artículo?',
+    ctaDescription:
+      'Compártelo con tu red o suscríbete para recibir mis nuevas publicaciones.',
   },
 
   // Errors

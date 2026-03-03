@@ -33,6 +33,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      lastmod: new Date(),
       filter: (page) =>
         !page.includes('/internal/') && !page.endsWith('/internal'),
     }),

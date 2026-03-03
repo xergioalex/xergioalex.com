@@ -338,6 +338,8 @@ export interface SiteTranslations {
     cookingTitle: string;
     cookingText: string;
     highlights: HighlightItem[];
+    ctaTitle: string;
+    ctaDescription: string;
     ctaText: string;
   };
 
@@ -471,6 +473,38 @@ export interface SiteTranslations {
     message: string;
     backHome: string;
     searchBlog: string;
+  };
+
+  // Blog post engagement
+  engagement: {
+    // Author bio
+    authorBioTitle: string;
+    authorBioDescription: string;
+
+    // Share buttons
+    shareTitle: string;
+    shareOnTwitter: string;
+    shareOnLinkedIn: string;
+    shareOnWhatsApp: string;
+    copyLink: string;
+    linkCopied: string;
+
+    // Newsletter
+    newsletterTitle: string;
+    newsletterDescription: string;
+    newsletterPlaceholder: string;
+    newsletterButton: string;
+    newsletterSubmitting: string;
+    newsletterSuccessTitle: string;
+    newsletterSuccessMessage: string;
+    newsletterInvalidEmail: string;
+    newsletterAlreadySubscribed: string;
+    newsletterResubscribe: string;
+    newsletterPrivacy: string;
+
+    // End-of-post CTA
+    ctaTitle: string;
+    ctaDescription: string;
   };
 
   // Errors

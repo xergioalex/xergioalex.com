@@ -28,13 +28,52 @@ const personData = {
   name: 'Sergio Alexander Florez Galeano',
   alternateName: 'XergioAleX',
   url: Astro.site?.href,
+  image: new URL('/images/profile.png', Astro.site).href,
+  description:
+    'CTO & Cofounder of DailyBot (Y Combinator S21). Computer Science Engineer, MSc in Data Science, with 14+ years building digital products.',
   jobTitle: 'CTO & Cofounder at DailyBot',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'DailyBot',
+    url: 'https://dailybot.com',
+  },
+  alumniOf: [
+    {
+      '@type': 'Organization',
+      name: 'Y Combinator',
+      url: 'https://www.ycombinator.com',
+    },
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Universidad Tecnológica de Pereira',
+    },
+  ],
+  knowsAbout: [
+    'Software Engineering',
+    'Artificial Intelligence',
+    'Web Development',
+    'Astro Framework',
+    'Svelte',
+    'TypeScript',
+    'DevOps',
+    'Blockchain',
+    'Algorithmic Trading',
+    'Startup Building',
+  ],
   sameAs: [
     'https://github.com/xergioalex',
     'https://www.linkedin.com/in/xergioalex/',
     'https://x.com/XergioAleX',
     'https://www.instagram.com/xergioalex',
   ],
+};
+
+const profilePageData = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: { '@id': Astro.site?.href },
+  dateCreated: '2024-01-01',
+  dateModified: new Date().toISOString().split('T')[0],
 };
 
 const breadcrumbSchema = {
@@ -60,6 +99,7 @@ const breadcrumbSchema = {
 <MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
   <Fragment slot="head">
     <JsonLd data={personData} />
+    <JsonLd data={profilePageData} />
     <JsonLd data={breadcrumbSchema} />
   </Fragment>
 

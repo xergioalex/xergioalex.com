@@ -1,7 +1,7 @@
 export const SITE_TITLE: string =
   'XergioAleX - CTO & Co-founder at DailyBot (YC S21)';
 export const SITE_DESCRIPTION: string =
-  'Sergio Alexander Florez Galeano — CTO & Co-founder at DailyBot (YC S21). Full Stack Developer, MSc in Data Science, speaker, maker, and tech entrepreneur with 14+ years building digital products.';
+  'CTO & Co-founder at DailyBot (YC S21). Full Stack Developer, speaker, and tech entrepreneur with 14+ years building digital products.';
 export const BLOG_PAGE_SIZE: number = 30;
 
 // Analytics configuration — scripts load only when IDs are provided
@@ -12,6 +12,17 @@ export const ANALYTICS = {
   },
   verification: {
     bing: import.meta.env.PUBLIC_BING_SITE_VERIFICATION || '',
+  },
+} as const;
+
+// Newsletter configuration — Google Forms direct POST
+export const NEWSLETTER = {
+  googleForms: {
+    formUrl:
+      'https://docs.google.com/forms/d/e/1FAIpQLSedegaN0_5eZWLIuizdKPCV1pAUm8vTatHo_ny07IXd8_xIfw/formResponse',
+    entries: {
+      email: 'entry.903587259',
+    },
   },
 } as const;
 

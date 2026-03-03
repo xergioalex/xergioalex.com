@@ -12,9 +12,22 @@ interface Props {
   image?: string;
   prevPage?: string;
   nextPage?: string;
+  ogType?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
 }
 
-const { lang, title, description, image, prevPage, nextPage } = Astro.props;
+const {
+  lang,
+  title,
+  description,
+  image,
+  prevPage,
+  nextPage,
+  ogType,
+  ogImageWidth,
+  ogImageHeight,
+} = Astro.props;
 ---
 
 <html lang={lang}>
@@ -26,6 +39,9 @@ const { lang, title, description, image, prevPage, nextPage } = Astro.props;
       lang={lang}
       prevPage={prevPage}
       nextPage={nextPage}
+      ogType={ogType}
+      ogImageWidth={ogImageWidth}
+      ogImageHeight={ogImageHeight}
     />
     <slot name="head" />
     <script is:inline>

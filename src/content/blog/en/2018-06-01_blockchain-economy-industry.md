@@ -4,7 +4,7 @@ description: "From Bitcoin's origins to industrial revolution — exploring how 
 pubDate: "2018-06-01"
 heroImage: "/images/blog/posts/blockchain-economy-industry/hero.jpg"
 heroLayout: "banner"
-tags: ["tech", "blockchain"]
+tags: ["talks", "tech", "blockchain"]
 ---
 
 I've always been fascinated by systems that challenge the status quo. And few technologies have done that as dramatically as blockchain.

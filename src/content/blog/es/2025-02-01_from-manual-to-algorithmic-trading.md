@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.png"
 series: "trading-journey"
 seriesOrder: 3
 heroLayout: "banner"
-tags: ["trading", "tech"]
+tags: ["trading", "tech", "personal"]
 ---
 
 Después de dedicar mucho tiempo al trading manual — leyendo estructura, siguiendo zonas con Market Profile y tomando decisiones de ejecución en tiempo real — me di cuenta de algo muy claro:

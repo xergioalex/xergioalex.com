@@ -4,7 +4,7 @@ description: "From RDDs to real-time streaming — how I built hands-on notebook
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio", "talks", "python", "database", "university"]
+tags: ["tech", "talks", "python", "database", "university"]
 ---
 
 By the time I reached the Big Data course in my master's program, I'd built a solid foundation across multiple programming paradigms. Each one gave me a different lens for thinking about computation.

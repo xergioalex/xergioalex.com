@@ -38,13 +38,20 @@ const t = getTranslations(lang);
 
   <!-- CTA to Instagram -->
   <section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
-    <div class="main-container text-center">
+    <div class="main-container text-center max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+        {t.foodiePage.ctaTitle}
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300 mb-8">
+        {t.foodiePage.ctaDescription}
+      </p>
       <a
         href="https://instagram.com/xergioalex"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors shadow-lg hover:shadow-xl"
       >
+        <img src="/icons/instagram_white.svg" alt="" width={24} height={24} class="w-6 h-6" />
         {t.foodiePage.ctaText}
       </a>
     </div>
