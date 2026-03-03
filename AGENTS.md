@@ -343,7 +343,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 8. Include `width` and `height` on all `<img>` elements
 9. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 10. Verify Spanish diacritical marks before committing
-11. Ensure no placeholder content in blog posts (`grep -rn '\[AUTHOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/` → zero matches)
+11. Ensure no placeholder content in blog posts (`grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/` → zero matches)
 
 ## Pre-Commit Checklist
 
