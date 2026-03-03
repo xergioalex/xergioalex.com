@@ -949,6 +949,35 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     searchBlog: 'Search the blog',
   },
 
+  // Blog post engagement
+  engagement: {
+    // Author bio
+    authorBioTitle: 'About the Author',
+    authorBioDescription:
+      'CTO & Co-founder at DailyBot (YC S21). I write about building products, startups, and the craft of software engineering.',
+
+    // Share buttons
+    shareTitle: 'Share this post',
+    shareOnTwitter: 'Share on X',
+    shareOnLinkedIn: 'Share on LinkedIn',
+    shareOnWhatsApp: 'Share on WhatsApp',
+    copyLink: 'Copy link',
+    linkCopied: 'Link copied!',
+
+    // Newsletter
+    newsletterTitle: 'Stay in the loop',
+    newsletterDescription:
+      'Get notified when I publish something new. No spam, unsubscribe anytime.',
+    newsletterPlaceholder: 'your@email.com',
+    newsletterButton: 'Subscribe',
+    newsletterPrivacy: 'No spam. Unsubscribe anytime.',
+
+    // End-of-post CTA
+    ctaTitle: 'Enjoyed this post?',
+    ctaDescription:
+      'Share it with your network or subscribe to get my latest posts delivered to your inbox.',
+  },
+
   // Errors
   searchError: 'An error occurred while searching. Please try again.',
   loadError: 'Failed to load search index. Please refresh the page.',

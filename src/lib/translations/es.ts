@@ -959,6 +959,35 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     searchBlog: 'Buscar en el blog',
   },
 
+  // Blog post engagement
+  engagement: {
+    // Author bio
+    authorBioTitle: 'Sobre el Autor',
+    authorBioDescription:
+      'CTO y Cofundador en DailyBot (YC S21). Escribo sobre desarrollo de productos, startups y el arte de la ingeniería de software.',
+
+    // Share buttons
+    shareTitle: 'Comparte este artículo',
+    shareOnTwitter: 'Compartir en X',
+    shareOnLinkedIn: 'Compartir en LinkedIn',
+    shareOnWhatsApp: 'Compartir en WhatsApp',
+    copyLink: 'Copiar enlace',
+    linkCopied: 'Enlace copiado!',
+
+    // Newsletter
+    newsletterTitle: 'Mantente al día',
+    newsletterDescription:
+      'Recibe una notificación cuando publique algo nuevo. Sin spam, cancela cuando quieras.',
+    newsletterPlaceholder: 'tu@email.com',
+    newsletterButton: 'Suscribirse',
+    newsletterPrivacy: 'Sin spam. Cancela cuando quieras.',
+
+    // End-of-post CTA
+    ctaTitle: '¿Te gustó este artículo?',
+    ctaDescription:
+      'Compártelo con tu red o suscríbete para recibir mis nuevas publicaciones.',
+  },
+
   // Errors
   searchError: 'Ocurrió un error al buscar. Por favor intenta de nuevo.',
   loadError:

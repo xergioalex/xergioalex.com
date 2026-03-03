@@ -473,6 +473,32 @@ export interface SiteTranslations {
     searchBlog: string;
   };
 
+  // Blog post engagement
+  engagement: {
+    // Author bio
+    authorBioTitle: string;
+    authorBioDescription: string;
+
+    // Share buttons
+    shareTitle: string;
+    shareOnTwitter: string;
+    shareOnLinkedIn: string;
+    shareOnWhatsApp: string;
+    copyLink: string;
+    linkCopied: string;
+
+    // Newsletter
+    newsletterTitle: string;
+    newsletterDescription: string;
+    newsletterPlaceholder: string;
+    newsletterButton: string;
+    newsletterPrivacy: string;
+
+    // End-of-post CTA
+    ctaTitle: string;
+    ctaDescription: string;
+  };
+
   // Errors
   searchError: string;
   loadError: string;
