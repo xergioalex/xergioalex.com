@@ -99,6 +99,7 @@ $: seriesBadgeLabel =
       ? `${seriesTitle} · ${t.seriesChapterOf(seriesCurrent, seriesTotal)}`
       : t.seriesChapterOf(seriesCurrent, seriesTotal)
     : '';
+$: isScheduled = !!(post as any).isScheduled;
 
 // Get highlighted title and description if search result is available
 $: displayTitle = searchQuery
@@ -167,6 +168,11 @@ $: displayDescription = searchQuery
             timeZone: 'UTC'
           })}
         </time>
+        {#if isScheduled}
+          <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+            {t.scheduledBadge}
+          </span>
+        {/if}
         {#if seriesCurrent && seriesTotal}
           <div class="group relative inline-flex items-center">
             <span

@@ -449,6 +449,11 @@ export interface SiteTranslations {
   seriesToC: string;
   seriesChapterOf: (current: number, total: number) => string;
 
+  // Scheduled posts (dev-only indicators)
+  scheduledBadge: string;
+  scheduledBannerTitle: string;
+  scheduledBannerMessage: (date: string) => string;
+
   // Tags (unified — covers primary, secondary, and subtopic tiers)
   postsTagged: (tag: string) => string;
   allTags: string;
