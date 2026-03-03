@@ -1,6 +1,6 @@
 ---
-title: "BSolutions: Managing Multiple Database Engines with Django and Docker"
-description: "A university project for Advanced Databases class — connecting Django to 10 different database engines (SQL and NoSQL) through Docker containers, demonstrating multi-database management and microservices architecture."
+title: "I Connected Django to 10 Different Databases at Once"
+description: "A university project that became a polyglot persistence demo — Django talking to PostgreSQL, MySQL, MongoDB, Redis, Neo4j, and 5 more, all in Docker."
 pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
 heroLayout: "side-by-side"

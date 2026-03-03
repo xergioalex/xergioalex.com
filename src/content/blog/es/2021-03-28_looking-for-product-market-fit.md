@@ -1,6 +1,6 @@
 ---
-title: "Buscando el product market fit"
-description: "Mi viaje construyendo y fallando productos en Rocka.co — qué me enseñó cada experimento fallido, cómo aprendí a reconocer señales reales de PMF y por qué DailyBot finalmente pegó."
+title: "Construimos y matamos 7 productos antes de que DailyBot funcionara"
+description: "Siete fracasos de startup, cada uno con una lección específica — y el que finalmente encontró product-market fit. Una historia brutalmente honesta."
 pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.jpg"
 heroLayout: "banner"

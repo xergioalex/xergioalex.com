@@ -1,6 +1,6 @@
 ---
-title: "BSolutions: Administrando Múltiples Motores de Bases de Datos con Django y Docker"
-description: "Un proyecto universitario para la clase de Bases de Datos Avanzadas — conectando Django a 10 motores de bases de datos diferentes (SQL y NoSQL) a través de contenedores Docker, demostrando administración multi-base de datos y arquitectura de microservicios."
+title: "Conecté Django a 10 bases de datos diferentes al mismo tiempo"
+description: "Un proyecto universitario que se convirtió en demo de persistencia políglota — Django hablando con PostgreSQL, MySQL, MongoDB, Redis, Neo4j y 5 más, todo en Docker."
 pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
 heroLayout: "side-by-side"
