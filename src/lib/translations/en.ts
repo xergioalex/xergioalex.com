@@ -665,6 +665,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         icon: '\u{1F91D}',
       },
     ],
+    ctaTitle: 'More on Instagram',
+    ctaDescription:
+      'Recipes, restaurant finds, and culinary moments — follow along for food inspiration.',
     ctaText: 'Follow on Instagram',
   },
 

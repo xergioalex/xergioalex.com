@@ -672,6 +672,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         icon: '\u{1F91D}',
       },
     ],
+    ctaTitle: 'Más en Instagram',
+    ctaDescription:
+      'Recetas, descubrimientos gastronómicos y momentos culinarios — sígueme para inspiración.',
     ctaText: 'Seguir en Instagram',
   },
 

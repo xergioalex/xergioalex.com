@@ -338,6 +338,8 @@ export interface SiteTranslations {
     cookingTitle: string;
     cookingText: string;
     highlights: HighlightItem[];
+    ctaTitle: string;
+    ctaDescription: string;
     ctaText: string;
   };
 
