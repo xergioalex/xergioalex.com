@@ -115,6 +115,7 @@ const breadcrumbData = {
     <meta property="article:section" content={articleSection} />
     {tags?.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
+  <div class="reading-progress" aria-hidden="true"></div>
   <main class="main-container py-16 md:py-24">
     <article>
       <nav aria-label="Breadcrumb" class="mb-6 flex flex-wrap items-center gap-x-2 text-sm">
@@ -153,3 +154,27 @@ const breadcrumbData = {
     <BlogImageLightbox client:idle />
   </main>
 </MainLayout>
+
+<style>
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, #2563eb, #3b82f6);
+    z-index: 60;
+    pointer-events: none;
+    animation: reading-progress-fill linear;
+    animation-timeline: scroll();
+  }
+
+  @keyframes reading-progress-fill {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+</style>
