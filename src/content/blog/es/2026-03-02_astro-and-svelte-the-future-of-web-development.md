@@ -49,8 +49,6 @@ Elegí Vue sobre React *por* su simplicidad, y ahora Vue recorría el mismo cami
 
 Eso fue lo que me llevó a Astro y Svelte.
 
-[AUTOR: ¿Cuál fue el momento en que realmente probaste Astro? ¿Algo se rompió primero? ¿Perdiste tiempo con otro enfoque — quizás una configuración de Gatsby o Next.js que te frustró? ¿Cómo fue la fricción el primer día? Un momento real del tipo "me senté un domingo y..." daría pie a esta sección.]
-
 La mayoría de los sitios web son fundamentalmente **sitios de contenido** — blogs, portfolios, documentación, páginas de marketing. Mayormente estáticos. Una pared de texto con algunas imágenes, quizás un formulario de contacto o una barra de búsqueda. Y sin embargo enviamos cientos de kilobytes de código de framework para mostrar contenido que no ha cambiado desde el último build.
 
 ---
@@ -234,8 +232,6 @@ Para un sitio Astro que ya envía cero JavaScript por defecto, esto importa. Cua
 ### Por Qué Funcionan Juntos
 
 Astro genera HTML estático en build time. Svelte compila a JavaScript mínimo en build time. Juntos, las partes estáticas no cuestan nada y las partes interactivas envían lo mínimo absoluto. Sin impuesto de hydration para contenido que nunca cambia.
-
-[AUTOR: Cuando construiste el sitio por primera vez, ¿usaste `client:load` en todos lados y luego tuviste que volver a optimizar a `client:visible`? ¿Cuál fue el error de hydration? Admitir "hice lo obvio incorrecto primero" haría esto real.]
 
 La sintaxis también se siente natural. Astro usa un patrón frontmatter + template. Svelte usa un patrón script + template. Moverse entre ellos es fluido.
 
