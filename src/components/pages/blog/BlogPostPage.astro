@@ -1,11 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
+import AuthorBioCard from '@/components/blog/AuthorBioCard.astro';
 import BlogImageLightbox from '@/components/blog/BlogImageLightbox.svelte';
 import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
+import NewsletterForm from '@/components/blog/NewsletterForm.astro';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
+import ShareButtons from '@/components/blog/ShareButtons.astro';
 import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
@@ -139,6 +142,11 @@ const breadcrumbData = {
       <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:block prose-img:mx-auto">
         <Content components={{ TypewriterDemo }} />
       </div>
+      <section class="mx-auto mt-12 max-w-4xl space-y-8" aria-label={t.engagement.ctaTitle}>
+        <AuthorBioCard lang={lang} />
+        <ShareButtons lang={lang} title={title} url={canonicalURL.href} />
+        <NewsletterForm lang={lang} />
+      </section>
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
