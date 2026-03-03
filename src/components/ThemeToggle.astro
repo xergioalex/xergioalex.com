@@ -10,7 +10,10 @@
     document.getElementById("theme-toggle").onclick = function () {
       const html = document.documentElement;
       const isDark = html.classList.toggle("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+      const newTheme = isDark ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      // Event name must match EVENTS.THEME_TOGGLE in src/lib/analytics.ts
+      if (window.umami) { window.umami.track("theme_toggle", { theme: newTheme }); }
     };
   </script>
 </button>

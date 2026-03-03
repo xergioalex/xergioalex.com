@@ -1,4 +1,5 @@
 <script>
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -72,6 +73,7 @@ $: availableText = t.articlesAvailable(totalPosts);
           ? "bg-blue-600 text-white shadow-sm"
           : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
       }`}
+      on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag })}
     >
       #{t.tagNames[tag] || tag}
     </a>
@@ -89,6 +91,7 @@ $: availableText = t.articlesAvailable(totalPosts);
             ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
             : "border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
         }`}
+        on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: topic })}
       >
         {t.tagNames[topic] || topic}
       </a>

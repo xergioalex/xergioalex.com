@@ -62,5 +62,9 @@ const {
       <slot />
     </main>
     <Footer lang={lang} />
+    <script>
+      import { setupOutboundTracking } from '@/lib/analytics';
+      setupOutboundTracking();
+    </script>
   </body>
 </html>

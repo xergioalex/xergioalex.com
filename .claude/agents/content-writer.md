@@ -72,6 +72,7 @@ This agent is a specialized **content creator** that focuses on:
 6. Use the `portfolio` tag for project/design case studies, appropriate tags for other content
 7. Always include a Resources section at the end when there are relevant links
 8. New post creation MUST go through `/add-blog-post` (no manual bypass without explicit user request)
+9. **Never leave placeholder content in posts** — no `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or similar. Replace with real content or remove the section. Published posts must be complete.
 
 ### Voice & Tone Guidelines
 
