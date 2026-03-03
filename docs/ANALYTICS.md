@@ -126,6 +126,78 @@ These tools add small tracking scripts to `BaseHead.astro`. Scripts load conditi
 
 **Unique value:** Automated safety net that prevents performance and accessibility regressions. The site currently scores Lighthouse 100 in all categories — this CI check ensures that remains true over time.
 
+### Tier 4: AI Bot Analytics (Server-Side)
+
+AI crawlers (GPTBot, ClaudeBot, etc.) don't execute JavaScript, making them invisible to client-side analytics. This tier uses a Cloudflare Pages middleware to detect and track AI bot visits server-side.
+
+#### Cloudflare Pages Middleware (`functions/_middleware.ts`)
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | AI bot visits: which bots, which pages, how often |
+| **Cost** | Free (Cloudflare Pages Functions included) |
+| **Script size** | None on client — runs at the edge as middleware |
+| **Cookies** | None |
+| **Performance impact** | Zero for human visitors (bot detection short-circuits on first line) |
+| **Event name** | `ai_bot_visit` |
+| **Tracking destinations** | Umami (persistent) + Cloudflare console logs (real-time) |
+
+**How it works:**
+
+1. Every request passes through `functions/_middleware.ts` (Cloudflare Pages auto-detects this file)
+2. The middleware checks the `User-Agent` header against 12 known AI bot patterns
+3. Non-bot requests: `context.next()` immediately — zero overhead
+4. Bot requests:
+   - `console.log()` for real-time visibility in Cloudflare dashboard logs
+   - `context.waitUntil(fetch(...))` sends an `ai_bot_visit` event to Umami's server-side API (non-blocking)
+
+**Tracked AI bots** (mirrors `robots.txt` Allow list):
+
+| Bot | Operator |
+|-----|----------|
+| GPTBot | OpenAI |
+| ChatGPT-User | OpenAI |
+| ClaudeBot | Anthropic |
+| anthropic-ai | Anthropic |
+| Google-Extended | Google |
+| Bytespider | ByteDance |
+| CCBot | Common Crawl |
+| PerplexityBot | Perplexity AI |
+| Applebot-Extended | Apple |
+| Amazonbot | Amazon |
+| Meta-ExternalAgent | Meta |
+| cohere-ai | Cohere |
+
+**Event payload:**
+
+```json
+{
+  "type": "event",
+  "payload": {
+    "website": "<UMAMI_WEBSITE_ID>",
+    "url": "/blog/post-slug",
+    "hostname": "xergioalex.com",
+    "language": "en-US",
+    "name": "ai_bot_visit",
+    "data": {
+      "bot": "GPTBot",
+      "path": "/blog/post-slug",
+      "method": "GET"
+    }
+  }
+}
+```
+
+**Environment variables:** Uses `PUBLIC_UMAMI_WEBSITE_ID` (same var as client-side Umami — already configured in Cloudflare Pages dashboard).
+
+**How to verify:**
+
+1. **Real-time logs:** Cloudflare Dashboard → Pages → Project → Functions → Real-time Logs. Look for `[AI Bot]` log lines
+2. **Umami dashboard:** Events tab → filter by `ai_bot_visit` to see bot names, paths, and frequency
+3. **Local testing:** `curl -H "User-Agent: GPTBot/1.0" http://localhost:8788/` (requires `npx wrangler pages dev dist/`)
+
+**Maintenance:** When new AI crawlers emerge, add them to both `robots.txt` and the `AI_BOT_PATTERNS` array in `functions/_middleware.ts`.
+
 ## Custom Event Tracking
 
 Umami custom events are used to track specific user interactions beyond page views. Events are implemented using two approaches depending on the component type.
@@ -177,6 +249,7 @@ Umami custom events are used to track specific user interactions beyond page vie
 | `scroll_depth` | Scroll milestone | `{ depth }` | BlogPostPage.astro |
 | `scroll_to_timeline` | Scroll-to-timeline button | — | ScrollToTimeline.svelte |
 | `timeline_click` | Timeline card title click | `{ page, slug }` | PortfolioTimeline, DailyBotTimeline, EntrepreneurTimeline, TechTalksTimeline, TradingTimeline |
+| `ai_bot_visit` | AI crawler page visit (server-side) | `{ bot, path, method }` | `functions/_middleware.ts` (edge middleware) |
 
 ### How to Verify Events
 
@@ -229,6 +302,7 @@ Umami custom events are used to track specific user interactions beyond page vie
 | Are Lighthouse scores maintained? | Lighthouse CI (automated on every PR) |
 | Are all pages indexed by search engines? | Google Search Console + Bing Webmaster Tools |
 | Is SEO metadata correct? | Lighthouse CI (SEO audit) |
+| Are AI bots visiting the site? Which pages? | AI Bot Middleware (Umami events + CF console logs) |
 
 ## Why NOT Google Analytics 4
 
@@ -305,6 +379,7 @@ All analytics-related environment variables:
 3. **Bing Webmaster** → AI Performance: is content being cited in Copilot?
 4. **Cloudflare** → Core Web Vitals: are any pages slow for real users?
 5. **Umami** → Compare month-over-month traffic trends
+6. **Umami** → Events → `ai_bot_visit`: which AI bots are visiting? Which pages do they crawl most?
 
 ### On Every PR (Automatic)
 
