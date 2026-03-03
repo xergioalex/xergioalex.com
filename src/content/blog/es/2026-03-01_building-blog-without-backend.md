@@ -9,13 +9,11 @@ series: "building-xergioalex"
 seriesOrder: 4
 ---
 
-En el [capítulo uno](/es/blog/building-xergioalex-website/), construí el sitio — Astro, Svelte, Content Collections, contenido bilingüe, toda la arquitectura desde cero. En el [capítulo dos](/es/blog/lighthouse-perfect-scores/), lo optimicé hasta que cada categoría de Lighthouse llegó a 100. En el [capítulo tres](/es/blog/measuring-what-matters-free-analytics/), agregué un stack completo de analytics sin perder esos puntajes ni agregar un solo banner de cookies.
+Tener un sitio no es lo mismo que tener un blog. Un sitio es un conjunto de páginas. Un blog es un sistema — posts que necesitan ser descubiertos, filtrados, buscados, agrupados, relacionados entre sí, y servidos a lectores en múltiples idiomas. Con un puñado de posts, eso es trivial. A medida que la biblioteca crece, empiezas a sentir la estructura. Con cientos de posts, la arquitectura aguanta o no aguanta.
 
-El sitio estaba construido, rápido, indexado y medido.
+El sitio estaba [construido](/es/blog/building-xergioalex-website/), [rápido](/es/blog/lighthouse-perfect-scores/) y [medido](/es/blog/measuring-what-matters-free-analytics/). Ahora necesitaba un motor de blog que pudiera escalar sin un servidor.
 
-Pero tener un sitio no es lo mismo que tener un blog. Un sitio es un conjunto de páginas. Un blog es un sistema — posts que necesitan ser descubiertos, filtrados, buscados, agrupados, relacionados entre sí, y servidos a lectores en múltiples idiomas. Con un puñado de posts, eso es trivial. A medida que la biblioteca crece, empiezas a sentir la estructura. Con cientos de posts, la arquitectura aguanta o no aguanta.
-
-Capítulo cuatro: cómo funciona el blog por dentro.
+Así es como lo construí.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Desplegando tu Blog en Astro: De GitHub Pages a Cloudflare Pages"
-description: "El sexto capítulo de la construcción de XergioAleX.com — el camino de GitHub Pages a Cloudflare Pages, y por qué resultó ser una de las mejores decisiones del proyecto. Una guía práctica de despliegue envuelta en una historia personal."
+title: "La Mejor Forma de Desplegar tu Sitio Astro Gratis"
+description: "El sexto capítulo de la construcción de XergioAleX.com — después de años desplegando sitios estáticos en GitHub Pages, evalué todas las opciones gratuitas y aterricé en Cloudflare Pages. Esto es lo que aprendí, lo que me sorprendió, y por qué la plataforma sigue mejorando."
 pubDate: "2026-03-03"
 heroImage: "/images/blog/posts/deploying-astro-blog-cloudflare-pages/hero.png"
 heroLayout: "side-by-side"
@@ -9,9 +9,7 @@ series: "building-xergioalex"
 seriesOrder: 6
 ---
 
-En el [capítulo uno](/es/blog/building-xergioalex-website/) reconstruí este sitio desde cero — Astro, Svelte, Content Collections, todo. En el [capítulo dos](/es/blog/lighthouse-perfect-scores/) perseguí los 100 en Lighthouse hasta conseguirlos. En el [capítulo tres](/es/blog/measuring-what-matters-free-analytics/) armé un stack de analíticas gratuito sin romper esos puntajes. En el [capítulo cuatro](/es/blog/building-blog-without-backend/) diseñé el sistema del blog — etiquetas, búsqueda, series, arquitectura bilingüe. En el [capítulo cinco](/es/blog/building-multilingual-website/) conté la historia completa de un sitio que habla inglés y español.
-
-Todos esos capítulos asumían algo que nunca expliqué: dónde vive el sitio.
+Cinco capítulos en esta serie y he hablado de la [arquitectura](/es/blog/building-xergioalex-website/), el [rendimiento](/es/blog/lighthouse-perfect-scores/), las [analíticas](/es/blog/measuring-what-matters-free-analytics/), el [motor del blog](/es/blog/building-blog-without-backend/) y los [dos idiomas](/es/blog/building-multilingual-website/). Todos asumían algo que nunca expliqué: dónde vive el sitio.
 
 Este es ese capítulo.
 

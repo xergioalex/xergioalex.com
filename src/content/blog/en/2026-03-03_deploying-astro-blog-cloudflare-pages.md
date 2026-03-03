@@ -1,6 +1,6 @@
 ---
-title: "Deploying Your Astro Blog: From GitHub Pages to Cloudflare Pages"
-description: "The sixth chapter of building XergioAleX.com — the journey from GitHub Pages to Cloudflare Pages, and why it turned out to be one of the best decisions for the entire project. A practical deployment guide wrapped in a personal story."
+title: "The Best Way to Deploy Your Astro Site for Free"
+description: "The sixth chapter of building XergioAleX.com — after years deploying static sites on GitHub Pages, I evaluated every free option and landed on Cloudflare Pages. Here's what I learned, what surprised me, and why the platform keeps getting better."
 pubDate: "2026-03-03"
 heroImage: "/images/blog/posts/deploying-astro-blog-cloudflare-pages/hero.png"
 heroLayout: "side-by-side"
@@ -9,9 +9,7 @@ series: "building-xergioalex"
 seriesOrder: 6
 ---
 
-In [chapter one](/blog/building-xergioalex-website/), I rebuilt this site from scratch — Astro, Svelte, Content Collections, the whole thing. In [chapter two](/blog/lighthouse-perfect-scores/), I chased Lighthouse 100s until I got them. In [chapter three](/blog/measuring-what-matters-free-analytics/), I assembled a free analytics stack without breaking those scores. In [chapter four](/blog/building-blog-without-backend/), I designed the blog system — tags, search, series, bilingual architecture. In [chapter five](/blog/building-multilingual-website/), I told the full story of a site that speaks English and Spanish.
-
-Every one of those chapters assumed something I never actually explained: where the site lives.
+Five chapters into this series and I've talked about the [architecture](/blog/building-xergioalex-website/), the [performance](/blog/lighthouse-perfect-scores/), the [analytics](/blog/measuring-what-matters-free-analytics/), the [blog engine](/blog/building-blog-without-backend/), and [two languages](/blog/building-multilingual-website/). Every one of them assumed something I never actually explained: where the site lives.
 
 This is that chapter.
 

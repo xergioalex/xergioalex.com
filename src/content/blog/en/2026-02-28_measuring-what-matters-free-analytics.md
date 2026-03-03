@@ -9,9 +9,7 @@ series: "building-xergioalex"
 seriesOrder: 3
 ---
 
-In the [first post](/blog/building-xergioalex-website/), I told the story of building this site — from a one-page landing with a photo and five social links to a full personal platform with Astro, Svelte, bilingual content, and an AI-ready architecture. In the [second post](/blog/lighthouse-perfect-scores/), I went deep on achieving perfect Lighthouse scores — 100/100/100/100 across Performance, Accessibility, Best Practices, and SEO, on both mobile and desktop.
-
-Now the site was built. It was fast. It was accessible. It was indexed.
+The site was built. [Lighthouse scores](/blog/lighthouse-perfect-scores/) were 100 across the board — Performance, Accessibility, Best Practices, SEO. Everything I could measure about the site itself looked perfect.
 
 But I had no idea if anyone was reading it.
 
