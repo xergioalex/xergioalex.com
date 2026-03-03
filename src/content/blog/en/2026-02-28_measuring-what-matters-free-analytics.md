@@ -223,5 +223,3 @@ If there is one takeaway from this whole journey, it is this: you do not have to
 - [Google Search Console](https://search.google.com/search-console) — Search performance and indexation
 - [Bing Webmaster Tools](https://www.bing.com/webmasters) — Search + AI citation tracking
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) — Automated performance audits in CI
-- [Building XergioAleX.com](/blog/building-xergioalex-website/) — First post in this series
-- [The Road to 100: Lighthouse Perfect Scores](/blog/lighthouse-perfect-scores/) — Second post in this series

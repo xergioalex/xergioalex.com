@@ -477,6 +477,15 @@ This pattern mirrors the `ScrollToTimeline.svelte` component used on portfolio a
 | `src/components/blog/SeriesIndicator.svelte` | Floating chapter indicator |
 | `src/lib/translations/{en,es}.ts` | Series translation keys (`seriesPartOf`, `seriesChapterOf`, etc.) |
 
+### Resources Section — Avoid Redundancy with Series Navigation
+
+Posts may include a **Resources** (EN) / **Recursos** (ES) section at the end with links to repos, tools, documentation, or external references.
+
+**Rule:** Do **not** list related articles or previous chapters in the Resources section when the post belongs to a series. The `SeriesNavigation` component already renders the full table of contents and prev/next links below the content. Listing the same chapters in Resources is redundant.
+
+- **Include in Resources:** External links (docs, repos, tools, people), source code URLs
+- **Exclude from Resources:** Links to other posts in the same series — they appear in `#series-navigation`
+
 ## URL Structure
 
 Blog post URLs are clean (no date prefix):

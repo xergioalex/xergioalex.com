@@ -457,9 +457,5 @@ A seguir construyendo.
 
 ## Recursos
 
-- **[Capítulo 1 — Construyendo XergioAleX.com](/es/blog/building-xergioalex-website/)** — La historia completa de la arquitectura: Astro, Svelte, Content Collections, y las primeras decisiones bilingües.
-- **[Capítulo 2 — Puntajes Perfectos en Lighthouse](/es/blog/lighthouse-perfect-scores/)** — Accesibilidad, performance, SEO, y el camino a 100/100/100/100.
-- **[Capítulo 3 — Midiendo Lo Que Importa](/es/blog/measuring-what-matters-free-analytics/)** — El stack de analytics gratuito: Umami, Cloudflare, Search Console/Bing, y cero banners de cookies.
-- **[Capítulo 4 — Arquitectura de un Blog Escalable](/es/blog/building-blog-without-backend/)** — Content Collections, taxonomía de tags, búsqueda del lado del cliente, navegación de series, y contenido bilingüe.
 - **[Astro i18n Recipes](https://docs.astro.build/en/recipes/i18n/)** — Documentación oficial de Astro para patrones de internacionalización.
 - **[Código fuente de xergioalex.com](https://github.com/xergioalex/xergioalex.com)** — El repositorio completo donde vive todo el código descrito en esta serie.

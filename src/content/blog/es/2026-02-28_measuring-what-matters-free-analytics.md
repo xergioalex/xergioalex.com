@@ -223,5 +223,3 @@ Si hay algo que se puede sacar de todo este viaje, es esto: no tienes que elegir
 - [Google Search Console](https://search.google.com/search-console) — Rendimiento de búsqueda e indexación
 - [Bing Webmaster Tools](https://www.bing.com/webmasters) — Búsqueda + tracking de citaciones IA
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) — Auditorías de rendimiento automatizadas en CI
-- [Construyendo XergioAleX.com](/es/blog/building-xergioalex-website/) — Primer post de esta serie
-- [El Camino al 100: Puntajes Perfectos en Lighthouse](/es/blog/lighthouse-perfect-scores/) — Segundo post de esta serie
