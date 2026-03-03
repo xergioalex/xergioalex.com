@@ -39,7 +39,7 @@ export const es: SiteTranslations = {
   hero: {
     tagline: 'CTO en DailyBot (YC S21) · Creador de productos digitales',
     description:
-      'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
+      'Construyo tecnología que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboración donde equipos humanos y agentes de IA trabajan juntos. Más de 10 años creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
     typewriterWords: [
       'CTO en DailyBot (YC S21)',
       'Creador de productos digitales',
