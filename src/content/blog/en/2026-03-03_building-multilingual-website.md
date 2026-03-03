@@ -15,7 +15,7 @@ One thread has been woven through every chapter, mentioned often but never given
 
 Every page, every blog post, every button label, every navigation link — all of it exists in both English and Spanish. Not as an afterthought bolted on at the end, but as a first-class architectural decision that shaped the entire codebase from day one.
 
-Chapter five: how I built the multilingual system, and why the architecture is ready for languages I may never add.
+This is that story.
 
 ---
 
@@ -35,7 +35,7 @@ So the question was never _whether_ to support both languages. It was _how_ — 
 
 The foundation of the entire multilingual system is a single TypeScript file: `src/lib/i18n.ts`. It is 160 lines long, and it contains every piece of language configuration the site needs.
 
-The first design decision was choosing a TypeScript union type instead of an enum:
+I went with a TypeScript union type instead of an enum:
 
 ```typescript
 // src/lib/i18n.ts
@@ -50,7 +50,7 @@ export type Language = 'en' | 'es' | 'pt';
 
 TypeScript enforces this at compile time across the entire codebase. Every function that accepts a `Language` parameter will immediately require handling the new value. The compiler becomes the migration checklist.
 
-The second decision was centralizing all language metadata into a single registry:
+All the language metadata lives in a single registry:
 
 ```typescript
 export interface LanguageConfig {
@@ -85,11 +85,11 @@ export const LANGUAGES: Record<Language, LanguageConfig> = {
 };
 ```
 
-Eight fields per language. Everything the site needs — date formatting, Open Graph tags, URL routing, the language selector — comes from this one object. No scattered constants across files. No magic strings hidden in templates. One registry, one source of truth.
+Eight fields per language. Date formatting, Open Graph tags, URL routing, the language selector — it all comes from this one object. I did not want constants scattered across files or magic strings hiding in templates.
 
 The URL prefix strategy is worth calling out explicitly. The default language (`en`) gets an empty prefix, which means English URLs are clean: `/about`, `/blog/my-post`, `/contact`. Spanish gets `/es` as a prefix: `/es/about`, `/es/blog/my-post`, `/es/contact`. This is a common pattern for multilingual sites, and Astro's file-based routing makes it natural.
 
-The module also exports 13 utility functions that the rest of the codebase relies on:
+The same file also exports a handful of utility functions that the rest of the codebase uses everywhere:
 
 ```typescript
 getUrlPrefix(lang)      // '' or '/es'
@@ -161,7 +161,7 @@ The shared component imports the layout, gets the translations for the current l
 
 I have 17 shared page components and 23 routing wrappers across both languages. If I add Portuguese tomorrow, I create 11 new wrapper files — each one is three lines. I change zero shared components. The new language works everywhere immediately because the logic is already language-agnostic. It receives `lang`, calls `getTranslations(lang)`, and renders. It does not know or care how many languages exist.
 
-The DRY payoff compounds over time. Every bug fix to a page happens in one file. Every new feature is automatically available in all languages. Every new page requires writing the logic exactly once.
+In practice, this means a bug fix to any page happens in one file. A new feature shows up in all languages without extra work. And when I build a new page, I write the logic once.
 
 ---
 
@@ -313,7 +313,7 @@ This design means adding a post is always a two-file operation: write the Englis
 
 ## The SEO Layer
 
-A multilingual site that search engines cannot understand is a multilingual site that only exists for its author. The SEO layer handles this automatically.
+None of this matters if search engines cannot tell the pages apart. The SEO layer handles that automatically.
 
 Every page on the site generates hreflang tags through `BaseHead.astro`:
 
@@ -364,7 +364,7 @@ The architecture does not judge this decision. It is ready for three languages, 
 
 ## Adding a New Language: The Scalability Story
 
-Despite choosing to stay with two languages, I want to walk through what it would actually take to add a third. Because the architecture was designed for this, and the proof is in the steps.
+Despite choosing to stay with two languages, I want to walk through what it would actually take to add a third — because I think the steps speak for themselves.
 
 Let us say I decide to add Portuguese. Here is the complete process:
 
@@ -419,7 +419,7 @@ That is it. Six steps. Zero changes to any existing component. The About page, t
 
 The hreflang tags automatically include the new language. The language selector shows three options instead of two. The search loads the right index. The blog filters by language. Everything adapts because the language boundary is entirely in the data layer — translations and content — not in the code layer.
 
-This is the compound benefit of the architecture. Every feature I add to the site — a new page, a new blog component, a new search improvement — automatically works in all supported languages. The investment in the multilingual architecture pays dividends on every future feature.
+That is what makes this architecture worth the upfront work. Every feature I add — a new page, a new blog component, a search improvement — just works in all languages. The time I spent getting the multilingual foundation right keeps saving me time on everything I build after.
 
 ---
 
@@ -443,15 +443,13 @@ Astro made this natural. Its file-based routing produces one HTML file per route
 
 ## Reflecting on This Chapter
 
-Every chapter in this series has been about making a decision that costs something now in exchange for a simpler path later. Chapter one: build with Astro's constraints and get performance for free. Chapter two: invest in accessibility and earn a perfect score from every audit tool. Chapter three: choose lightweight analytics and keep the performance you worked for. Chapter four: design the content architecture correctly before the content outgrows the container.
+Looking back at this series, each chapter has been about the same thing: spending time now so things are simpler later. The Astro architecture, the Lighthouse work, the analytics setup, the blog system — they were all upfront investments that kept paying off as the site grew.
 
-Chapter five: invest in a multilingual architecture from day one, even for a personal site.
+This chapter was no different. Building multilingual support into a personal site from day one sounds like overkill, and honestly, some days it felt like it. Every component had to be language-aware from the start. Every string had to go through the translation system. Every URL needed a prefix strategy. Every blog post needed its twin in another language. It was a lot of extra work, especially early on when I just wanted to ship pages.
 
-The cost was real. Every page component needed to be language-aware from the start. Every piece of text needed to flow through the translation system. Every URL needed a prefix strategy. Every blog post needed a companion in another language.
+But today the site has 57 blog posts in two languages, 12 types of pages, and over 960 translation keys — and none of the components know or care how many languages exist. They take a `lang` parameter and do their thing. That trade-off was worth it.
 
-But the payoff is real too. Today, the site serves 57 blog posts in two languages, across 12 page types, with 960+ translation keys — and the only thing that knows about language is the data. The components, the layouts, the utilities, the search system — they are all language-agnostic. They accept a `lang` parameter and do their job.
-
-The languages you choose for your site reveal who you are building for. I chose English and Spanish because those are my people. The architecture is ready for more, but the decision to add them is a human one, not a technical one. And that is exactly how it should be.
+I chose English and Spanish because those are my people — the communities I have built in, the audiences I actually know. The architecture could handle more whenever I am ready, but that is a decision about who I am writing for, not about what the code can do.
 
 Let's keep building.
 

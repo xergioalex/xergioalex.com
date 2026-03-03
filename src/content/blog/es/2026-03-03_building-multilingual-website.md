@@ -15,7 +15,7 @@ Hay un hilo que ha estado presente en cada capítulo, mencionado frecuentemente 
 
 Cada página, cada artículo del blog, cada botón, cada enlace de navegación — todo existe tanto en inglés como en español. No como algo que se agregó al final como parche, sino como una decisión arquitectónica de primera clase que moldeó todo el código desde el día uno.
 
-Capítulo cinco: cómo construí el sistema multilingüe, y por qué la arquitectura está lista para idiomas que quizás nunca agregue.
+Esta es esa historia.
 
 ---
 
@@ -35,7 +35,7 @@ Así que la pregunta nunca fue _si_ soportar ambos idiomas. Fue _cómo_ — y c�
 
 La base de todo el sistema multilingüe es un solo archivo de TypeScript: `src/lib/i18n.ts`. Son 160 líneas, y contiene toda la configuración de idiomas que el sitio necesita.
 
-La primera decisión de diseño fue usar un union type de TypeScript en lugar de un enum:
+Opté por un union type de TypeScript en lugar de un enum:
 
 ```typescript
 // src/lib/i18n.ts
@@ -50,7 +50,7 @@ export type Language = 'en' | 'es' | 'pt';
 
 TypeScript impone esto en tiempo de compilación en todo el código. Cada función que acepta un parámetro `Language` inmediatamente requerirá manejar el nuevo valor. El compilador se convierte en el checklist de migración.
 
-La segunda decisión fue centralizar todos los metadatos de idioma en un solo registro:
+Todos los metadatos de idioma viven en un solo registro:
 
 ```typescript
 export interface LanguageConfig {
@@ -85,11 +85,11 @@ export const LANGUAGES: Record<Language, LanguageConfig> = {
 };
 ```
 
-Ocho campos por idioma. Todo lo que el sitio necesita — formato de fechas, etiquetas de Open Graph, ruteo de URLs, el selector de idiomas — viene de este único objeto. Sin constantes dispersas por varios archivos. Sin strings mágicos escondidos en templates. Un registro, una sola fuente de verdad.
+Ocho campos por idioma. Formato de fechas, etiquetas de Open Graph, ruteo de URLs, el selector de idiomas — todo viene de este único objeto. No quería constantes dispersas por varios archivos ni strings mágicos escondidos en templates.
 
 La estrategia de prefijos de URL vale la pena mencionarla explícitamente. El idioma por defecto (`en`) tiene un prefijo vacío, lo que significa que las URLs en inglés son limpias: `/about`, `/blog/my-post`, `/contact`. El español tiene `/es` como prefijo: `/es/about`, `/es/blog/my-post`, `/es/contact`. Este es un patrón común para sitios multilingües, y el ruteo basado en archivos de Astro lo hace natural.
 
-El módulo también exporta 13 funciones utilitarias de las que depende el resto del código:
+El mismo archivo también exporta un puñado de funciones utilitarias que el resto del código usa en todos lados:
 
 ```typescript
 getUrlPrefix(lang)             // '' o '/es'
@@ -161,7 +161,7 @@ El componente compartido importa el layout, obtiene las traducciones para el idi
 
 Tengo 17 componentes de página compartidos y 23 wrappers de ruteo entre ambos idiomas. Si mañana agrego portugués, creo 11 nuevos archivos wrapper — cada uno tiene tres líneas. No cambio ningún componente compartido. El nuevo idioma funciona en todos lados inmediatamente porque la lógica ya es agnóstica al idioma. Recibe `lang`, llama a `getTranslations(lang)`, y renderiza. No sabe ni le importa cuántos idiomas existen.
 
-El beneficio DRY se acumula con el tiempo. Cada corrección de bugs en una página ocurre en un solo archivo. Cada nueva funcionalidad está automáticamente disponible en todos los idiomas. Cada nueva página requiere escribir la lógica exactamente una vez.
+En la práctica, esto significa que una corrección de bugs en cualquier página ocurre en un solo archivo. Una nueva funcionalidad aparece en todos los idiomas sin trabajo extra. Y cuando construyo una nueva página, escribo la lógica una sola vez.
 
 ---
 
@@ -313,7 +313,7 @@ Este diseño significa que agregar un post siempre es una operación de dos arch
 
 ## La Capa de SEO
 
-Un sitio multilingüe que los motores de búsqueda no pueden entender es un sitio multilingüe que solo existe para su autor. La capa de SEO maneja esto automáticamente.
+Nada de esto importa si los motores de búsqueda no pueden distinguir las páginas entre sí. La capa de SEO se encarga de eso automáticamente.
 
 Cada página del sitio genera etiquetas hreflang a través de `BaseHead.astro`:
 
@@ -364,7 +364,7 @@ La arquitectura no juzga esta decisión. Está lista para tres idiomas, o cinco,
 
 ## Agregando un Nuevo Idioma: La Historia de Escalabilidad
 
-A pesar de elegir quedarme con dos idiomas, quiero recorrer lo que realmente tomaría agregar un tercero. Porque la arquitectura fue diseñada para esto, y la prueba está en los pasos.
+A pesar de elegir quedarme con dos idiomas, quiero recorrer lo que realmente tomaría agregar un tercero — porque creo que los pasos hablan por sí mismos.
 
 Digamos que decido agregar portugués. Este es el proceso completo:
 
@@ -419,7 +419,7 @@ Eso es todo. Seis pasos. Cero cambios a cualquier componente existente. La pági
 
 Las etiquetas hreflang incluyen el nuevo idioma automáticamente. El selector de idiomas muestra tres opciones en vez de dos. La búsqueda carga el índice correcto. El blog filtra por idioma. Todo se adapta porque la frontera del idioma está completamente en la capa de datos — traducciones y contenido — no en la capa de código.
 
-Este es el beneficio compuesto de la arquitectura. Cada funcionalidad que agrego al sitio — una nueva página, un nuevo componente de blog, una mejora de búsqueda — automáticamente funciona en todos los idiomas soportados. La inversión en la arquitectura multilingüe rinde dividendos en cada funcionalidad futura.
+Eso es lo que hace que esta arquitectura valga el esfuerzo inicial. Cada funcionalidad que agrego — una nueva página, un nuevo componente de blog, una mejora en la búsqueda — simplemente funciona en todos los idiomas. El tiempo que invertí en hacer bien la base multilingüe me sigue ahorrando tiempo en todo lo que construyo después.
 
 ---
 
@@ -443,15 +443,13 @@ Astro hizo esto natural. Su ruteo basado en archivos produce un archivo HTML por
 
 ## Reflexionando Sobre Este Capítulo
 
-Cada capítulo de esta serie ha sido sobre tomar una decisión que cuesta algo ahora a cambio de un camino más simple después. Capítulo uno: construir con las restricciones de Astro y obtener performance gratis. Capítulo dos: invertir en accesibilidad y obtener calificación perfecta de cada herramienta de auditoría. Capítulo tres: elegir herramientas de analytics livianas y mantener el performance por el que trabajaste. Capítulo cuatro: diseñar la arquitectura de contenido correctamente antes de que el contenido supere al contenedor.
+Mirando hacia atrás en esta serie, cada capítulo ha tratado sobre lo mismo: invertir tiempo ahora para que las cosas sean más simples después. La arquitectura con Astro, el trabajo de Lighthouse, el setup de analytics, el sistema de blog — todas fueron inversiones iniciales que siguieron dando frutos a medida que el sitio crecía.
 
-Capítulo cinco: invertir en una arquitectura multilingüe desde el día uno, incluso para un sitio personal.
+Este capítulo no fue diferente. Construir soporte multilingüe en un sitio personal desde el día uno suena exagerado, y honestamente, algunos días se sentía así. Cada componente tenía que ser consciente del idioma desde el principio. Cada string tenía que pasar por el sistema de traducciones. Cada URL necesitaba una estrategia de prefijos. Cada artículo del blog necesitaba su gemelo en otro idioma. Fue mucho trabajo extra, especialmente al principio cuando solo quería publicar páginas.
 
-El costo fue real. Cada componente de página necesitó ser consciente del idioma desde el principio. Cada pieza de texto necesitó fluir a través del sistema de traducciones. Cada URL necesitó una estrategia de prefijos. Cada artículo del blog necesitó un compañero en otro idioma.
+Pero hoy el sitio tiene 57 artículos de blog en dos idiomas, 12 tipos de páginas y más de 960 claves de traducción — y ninguno de los componentes sabe ni le importa cuántos idiomas existen. Reciben un parámetro `lang` y hacen lo suyo. Ese intercambio valió la pena.
 
-Pero el beneficio también es real. Hoy, el sitio sirve 57 artículos de blog en dos idiomas, a través de 12 tipos de páginas, con más de 960 claves de traducción — y lo único que sabe sobre idiomas es la data. Los componentes, los layouts, las utilidades, el sistema de búsqueda — todos son agnósticos al idioma. Aceptan un parámetro `lang` y hacen su trabajo.
-
-Los idiomas que eliges para tu sitio revelan para quién estás construyendo. Yo elegí inglés y español porque esa es mi gente. La arquitectura está lista para más, pero la decisión de agregarlos es humana, no técnica. Y así es exactamente como debe ser.
+Elegí inglés y español porque esa es mi gente — las comunidades en las que he construido, las audiencias que realmente conozco. La arquitectura podría manejar más cuando yo esté listo, pero esa es una decisión sobre para quién escribo, no sobre lo que el código puede hacer.
 
 A seguir construyendo.
 
