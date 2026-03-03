@@ -21,7 +21,7 @@ Capítulo cuatro: cómo funciona el blog por dentro.
 
 ## Content Collections: La Capa de Datos del Blog
 
-La base de todo el blog es el API de [Content Collections](https://docs.astro.build/en/guides/content-collections/) de Astro. Si no has trabajado con él, el modelo mental es simple: en lugar de que los posts sean archivos Markdown que parseas manualmente, son entradas en una colección tipada y validada con esquema que Astro consulta en tiempo de build.
+Content Collections es la columna vertebral. Concepto simple: en lugar de archivos Markdown que parseas manualmente, los posts son entradas en una colección tipada y validada con esquema que Astro consulta en tiempo de build.
 
 Así se ve el esquema:
 
@@ -57,7 +57,7 @@ const posts = await getCollection('blog', ({ id }) => !id.includes('/_demo/'));
 
 El resultado es un array tipado. Cada elemento tiene `post.data.title`, `post.data.pubDate`, `post.data.tags` — todos correctamente tipados basándose en el esquema Zod. TypeScript captura un typo como `post.data.titel` en tiempo de compilación, no en runtime en una página en vivo.
 
-Esto es lo que hace manejable escalar a cientos de posts. El contenido es datos. La estructura se hace cumplir. Las consultas son tipadas. Puedes agregar cualquier campo al esquema y usarlo en todo de inmediato, sabiendo que el build capturará lo que te perdiste.
+Y por eso funciona a escala — la estructura no te deja cometer errores sin que el build te avise.
 
 ### Naming de archivos como metadato
 
@@ -174,6 +174,8 @@ Y luego la pregunta que me hago sobre cada decisión de arquitectura: ¿qué pas
 
 Con 1000 posts, una migración porque agregué un valor nuevo al enum es un costo real. Con 1000 posts, definiciones de nivel dispersas en miles de archivos es un problema de mantenimiento. Volví a la mesa de diseño.
 
+[AUTHOR: ¿Cuántos posts habías migrado al enfoque de enum antes de darte cuenta de que no iba a escalar? ¿Cómo fue esa tarde del domingo re-arquitectando todo? ¿Cuánto tiempo tardó realmente en deshacer el error?]
+
 ### La arquitectura de colección unificada
 
 El insight clave: **el nivel del tag es una propiedad del tag, no una propiedad del post.**
@@ -253,23 +255,7 @@ export async function groupPostTags(
 }
 ```
 
-El mapa de niveles se construye una vez por build y queda cacheado en memoria:
-
-```typescript
-let _tagTierCache: Map<string, string> | null = null;
-
-async function getTagTierMap(): Promise<Map<string, string>> {
-  if (_tagTierCache) return _tagTierCache;
-  const allTags = await getCollection('tags');
-  _tagTierCache = new Map(allTags.map((tag) => [tag.data.name, tag.data.tier]));
-  await validateTagHierarchy();
-  return _tagTierCache;
-}
-```
-
-`getCollection('tags')` se ejecuta una sola vez al iniciar el build. Cada llamada posterior devuelve el mapa en memoria — búsqueda O(1). A través de todos los posts del blog en ambos idiomas, el costo total es una sola lectura de colección. Después de eso, son búsquedas en tabla hash.
-
-Para cuando cualquier componente toca los tags de un post, la división ya está hecha. Los componentes reciben `primaryTags` y `topicTags` como arrays pre-ordenados. Nada que computar en tiempo de renderizado.
+El mapa de niveles se construye una vez por build y queda cacheado en memoria — `getCollection('tags')` corre una sola vez al arrancar, y cada llamada posterior devuelve el mapa en memoria. Búsqueda O(1). Los componentes reciben `primaryTags` y `topicTags` como arrays ya ordenados.
 
 ### Validación de jerarquía en tiempo de build
 
@@ -462,9 +448,7 @@ Este es el tipo de detalle que separa "la feature funciona" de "la feature es de
 
 ## Performance: Todo en Tiempo de Build
 
-Quiero ser explícito sobre el hilo conductor que recorre todo esto, porque es el insight arquitectónico que hace funcionar el sistema completo.
-
-Cada pieza del sistema de blog que describí — Content Collections, resolución de niveles de tags, paginación, posts relacionados, tiempo de lectura, generación del índice de búsqueda — se ejecuta en tiempo de build de Astro. Para cuando cualquier HTML llega a un navegador, todo ese trabajo ya está hecho.
+El hilo en común: todo esto corre en tiempo de build. Para cuando cualquier HTML llega a un navegador, el trabajo ya está hecho.
 
 El navegador no recibe una aplicación JavaScript que obtiene posts de una API, resuelve niveles de tags y renderiza todo dinámicamente. Recibe páginas HTML estáticas, cada una completamente pre-renderizada con el contenido correcto, los tags correctos divididos en sus niveles correctos, la paginación correcta, los posts relacionados correctos. El único JavaScript que corre en el navegador es para los islands interactivos: el componente de búsqueda, el menú móvil, el toggle de tema.
 

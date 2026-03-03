@@ -159,9 +159,9 @@ const prefix = getUrlPrefix(lang);
 
 El componente compartido importa el layout, obtiene las traducciones para el idioma actual, construye URLs localizadas y renderiza la página completa. Un archivo, toda la lógica. Los wrappers son simplemente stubs de ruteo.
 
-Tengo 17 componentes de página compartidos y 23 wrappers de ruteo entre ambos idiomas. Si mañana agrego portugués, creo 11 nuevos archivos wrapper — cada uno tiene tres líneas. No cambio ningún componente compartido. El nuevo idioma funciona en todos lados inmediatamente porque la lógica ya es agnóstica al idioma. Recibe `lang`, llama a `getTranslations(lang)`, y renderiza. No sabe ni le importa cuántos idiomas existen.
+Tengo 17 componentes de página compartidos y 23 wrappers de ruteo. ¿Agregar portugués? Once archivos nuevos de tres líneas, cero cambios en componentes. Un bug fix ocurre en un archivo. Una nueva funcionalidad aparece en todos los idiomas automáticamente.
 
-En la práctica, esto significa que una corrección de bugs en cualquier página ocurre en un solo archivo. Una nueva funcionalidad aparece en todos los idiomas sin trabajo extra. Y cuando construyo una nueva página, escribo la lógica una sola vez.
+[AUTHOR: ¿Qué probaste antes del patrón Page Wrapper? ¿Empezaste con cada página manejando su propio ruteo de idiomas? ¿Cuántos archivos tenías que tocar para cambiar un label antes de encontrar el enfoque correcto?]
 
 ---
 
@@ -364,62 +364,9 @@ La arquitectura no juzga esta decisión. Está lista para tres idiomas, o cinco,
 
 ## Agregando un Nuevo Idioma: La Historia de Escalabilidad
 
-A pesar de elegir quedarme con dos idiomas, quiero recorrer lo que realmente tomaría agregar un tercero — porque creo que los pasos hablan por sí mismos.
+A pesar de elegir dos idiomas, esto es lo que realmente tomaría agregar portugués: actualizar el union type (`'en' | 'es' | 'pt'`), agregar una entrada en `LANGUAGES`, crear un archivo de traducciones (~960 claves), agregar 11 wrappers de tres líneas, crear un directorio de contenido del blog, y agregar un endpoint de búsqueda. Seis pasos, cero cambios en componentes. Todo se adapta porque la frontera del idioma vive en la capa de datos, no en el código.
 
-Digamos que decido agregar portugués. Este es el proceso completo:
-
-**Paso 1: Actualizar la configuración de idiomas** (`src/lib/i18n.ts`)
-
-```typescript
-// Agregar al union type
-export type Language = 'en' | 'es' | 'pt';
-
-// Agregar al registro LANGUAGES
-pt: {
-  code: 'pt',
-  name: 'Portuguese',
-  nativeName: 'Português',
-  dateLocale: 'pt-BR',
-  ogLocale: 'pt_BR',
-  flag: '🇧🇷',
-  urlPrefix: '/pt',
-},
-```
-
-**Paso 2: Crear el archivo de traducciones** (`src/lib/translations/pt.ts`)
-
-Copiar `en.ts` como template, traducir las aproximadamente 960 claves, importarlo en `index.ts`, y agregarlo al registro de traducciones.
-
-**Paso 3: Crear page wrappers** (`src/pages/pt/`)
-
-Crear 11 archivos en `src/pages/pt/`. Cada uno tiene tres líneas:
-
-```astro
----
-import AboutPage from '@/components/pages/AboutPage.astro';
----
-<AboutPage lang="pt" />
-```
-
-**Paso 4: Crear directorio de contenido del blog** (`src/content/blog/pt/`)
-
-Crear el directorio. Empezar a agregar versiones en portugués de los posts del blog.
-
-**Paso 5: Crear endpoint de búsqueda** (`src/pages/api/posts-pt.json.ts`)
-
-Un archivo, 24 líneas. Filtrar el índice de búsqueda por idioma.
-
-**Paso 6: Verificar**
-
-```bash
-npm run biome:check && npm run astro:check && npm run build
-```
-
-Eso es todo. Seis pasos. Cero cambios a cualquier componente existente. La página de About, la de Blog, la de Contacto, el header, el footer, la búsqueda — todo funciona en portugués inmediatamente porque ya hablan "cualquier idioma." Reciben `lang`, llaman a `getTranslations(lang)`, y renderizan.
-
-Las etiquetas hreflang incluyen el nuevo idioma automáticamente. El selector de idiomas muestra tres opciones en vez de dos. La búsqueda carga el índice correcto. El blog filtra por idioma. Todo se adapta porque la frontera del idioma está completamente en la capa de datos — traducciones y contenido — no en la capa de código.
-
-Eso es lo que hace que esta arquitectura valga el esfuerzo inicial. Cada funcionalidad que agrego — una nueva página, un nuevo componente de blog, una mejora en la búsqueda — simplemente funciona en todos los idiomas. El tiempo que invertí en hacer bien la base multilingüe me sigue ahorrando tiempo en todo lo que construyo después.
+Eso es lo que hace que esta arquitectura valga el esfuerzo inicial — cada funcionalidad que agrego simplemente funciona en todos los idiomas.
 
 ---
 

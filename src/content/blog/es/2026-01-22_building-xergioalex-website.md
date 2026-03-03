@@ -15,6 +15,8 @@ Pero con el tiempo las cosas fueron cambiando. Empecé a construir [DailyBot](ht
 
 Así que decidí construir uno de verdad.
 
+[AUTHOR: Antes de llegar a Astro, ¿probaste otros enfoques? ¿Un setup de WordPress que se sentía demasiado pesado? ¿Un proyecto de Gatsby que quedó a medias? ¿Cuál fue el intento fallido que hizo que apreciaras la elección final?]
+
 ---
 
 ## El sitio anterior
@@ -41,7 +43,7 @@ Básicamente, toda la identidad visual del sitio nació de esa marca. No fue "in
 
 ## Por qué Astro
 
-Evalué varios frameworks antes de decidirme por [Astro](https://astro.build). Next.js, Gatsby, Hugo, Eleventy — todos son capaces. Pero Astro ganó porque su filosofía se alineaba perfectamente con lo que necesitaba: un sitio personal centrado en contenido que debería ser mayormente estático, increíblemente rápido y fácil de extender.
+Revisé Next.js, Gatsby, Hugo, Eleventy — todos son capaces. Pero [Astro](https://astro.build) ganó porque se ajustaba a lo que realmente necesitaba: un sitio personal centrado en contenido que debería ser mayormente estático, rápido y fácil de extender.
 
 ### Cero JavaScript por defecto
 
@@ -318,33 +320,13 @@ El despliegue está completamente automatizado: cada push a `main` dispara un bu
 
 ---
 
-## En números
-
-| Métrica | Valor |
-|---------|-------|
-| Componentes Astro | 48 |
-| Islas interactivas Svelte | 15 |
-| Componentes de página | 13 páginas distintas |
-| Archivos de ruta | 52 (wrappers EN + ES) |
-| Posts de blog | 36+ por idioma |
-| Cadenas de traducción | ~950 por idioma |
-| Páginas del hub interno | 17 |
-| Skills de IA | 14 |
-| Agentes de IA | 6 |
-| Imágenes públicas | 226 archivos |
-| Archivos de tests | 6 |
-
----
-
 ## De una página a una plataforma
 
 Pasar de una landing con una foto y cinco enlaces sociales a una plataforma personal completa, bilingüe y preparada para IA fue una decisión deliberada. Quería un lugar que pudiera crecer con mi trabajo — más proyectos, más posts, más idiomas, más ideas — sin convertirse en una carga de mantenimiento.
 
-Astro hizo posible la base: estático, rápido, centrado en contenido. Svelte hizo que las partes interactivas se sintieran nativas y livianas. Juntos forman una combinación difícil de superar para sitios centrados en contenido — obtienes el rendimiento del HTML estático con la riqueza de un framework de componentes moderno, y solo pagas por la interactividad donde realmente la necesitas.
+Astro hizo posible la base. Svelte hizo que las partes interactivas fueran livianas. Juntos son difíciles de superar para sitios centrados en contenido — HTML estático con la riqueza de componentes modernos, y solo pagas por la interactividad donde la necesitas.
 
-La marca le dio un alma. La arquitectura preparada para IA le dio un futuro.
-
-Si estás pensando en construir tu sitio personal, recomiendo fuertemente este stack. Y si te interesa la implementación, cada línea está disponible como código abierto.
+La marca le dio un alma. La arquitectura preparada para IA le dio un futuro. El código es abierto.
 
 **Repositorio:** [xergioalex/xergioalex.com](https://github.com/xergioalex/xergioalex.com)
 **Sitio en vivo:** [xergioalex.com](https://xergioalex.com)

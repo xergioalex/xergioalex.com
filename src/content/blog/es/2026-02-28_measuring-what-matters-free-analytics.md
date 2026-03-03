@@ -19,9 +19,7 @@ Pero no tenía idea si alguien lo estaba leyendo.
 
 ## Volando a Ciegas
 
-Hay algo extraño en publicar contenido al vacío. Escribes un post, lo despliegas, y luego... nada. Sin ciclo de retroalimentación. Sin señal. Puedes revisar el dashboard de Cloudflare y ver que sí, el sitio se está sirviendo, pero no sabes qué páginas visita la gente, qué posts realmente leen, de dónde vienen, o si pasan del primer párrafo.
-
-Este era el problema que me propuse resolver. No solo "agregar analytics" — sino construir un sistema de medición que responda preguntas reales sobre el contenido y el comportamiento de los usuarios, sin comprometer lo que había pasado semanas perfeccionando.
+Publicas un post al vacío. El sitio se sirve, pero no tienes idea si alguien lo está leyendo o si rebota en dos segundos. Quería arreglar eso sin deshacer todo lo que había pasado semanas perfeccionando.
 
 Las restricciones eran claras:
 
@@ -69,6 +67,8 @@ Proporciona:
 Ese último punto es crucial. Lighthouse te da puntajes de laboratorio — mediciones tomadas bajo condiciones controladas. Cloudflare te da **datos de campo** — lo que los usuarios reales experimentan. Puedes sacar 100 en Lighthouse pero tener un LCP lento para usuarios en Sudamérica en móvil. Solo los datos RUM revelan eso.
 
 Sin cookies. Sin banner de consentimiento. Sin impacto en rendimiento. Estaba activado antes de que escribiera una sola línea de código de analytics.
+
+[AUTHOR: ¿Consideraste primero Plausible u otra herramienta de pago? ¿Probaste algo que no funcionó? ¿Hubo un momento en que miraste los datos y te diste cuenta de que tus suposiciones sobre los patrones de tráfico estaban equivocadas?]
 
 ### Umami — El Reemplazo de GA4
 
@@ -210,9 +210,7 @@ Este fue el tercer capítulo de construir XergioAleX.com:
 
 Cada capítulo se construyó sobre el anterior. Las decisiones arquitectónicas del capítulo uno (Astro, generación estática, islands) hicieron posible el capítulo dos. El trabajo de rendimiento del capítulo dos estableció la restricción para el capítulo tres: cualquier analytics que agregara no podía comprometer lo que ya había logrado.
 
-El resultado es un sitio que es rápido, accesible, medible y privado — todo al mismo tiempo. Sin trade-offs, sin compromisos, sin facturas mensuales.
-
-Si hay algo que se puede sacar de todo este viaje, es esto: no tienes que elegir entre entender a tus usuarios y respetarlos. Las herramientas correctas, configuradas con cuidado, te dan ambas cosas.
+Rápido, accesible, medible y privado. Todo gratis. No tienes que elegir entre entender a tus usuarios y respetarlos.
 
 ---
 
