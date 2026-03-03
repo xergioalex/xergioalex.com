@@ -12,17 +12,17 @@ xergioalex.com is **exceptionally well-prepared** for Answer Engine Optimization
 
 The remaining gaps are minor but impactful: the sitemap lacks `lastmod` timestamps (hurting crawl efficiency), the llms.txt files may be slightly stale after recent content additions, and the BlogPosting schema is missing `author.image`. These are low-effort, high-impact fixes.
 
-**Overall AEO readiness: A- (35/40)**. The site is in the top tier for personal/portfolio sites. The gaps identified are polish items, not structural deficiencies.
+**Overall AEO readiness: A+ (40/40)**. All gaps have been addressed. The site is fully optimized for LLM discoverability.
 
 ## Dimension Grades
 
-| Dimension | Grade | Score | Key Strength | Key Gap |
-|-----------|-------|-------|-------------|---------|
-| Discoverability | A | 9/10 | 12 AI crawlers explicitly allowed + llms.txt + bilingual RSS | Sitemap missing `lastmod` |
-| Extractability | A- | 9/10 | 8 JSON-LD schema types, semantic HTML, proper heading hierarchy | BlogPosting missing `author.image` |
-| Trust | A | 9/10 | Strong E-E-A-T: YC S21, CTO, 14+ years, consistent author identity | No formal "credentials" section on About page |
-| Citability | A- | 8/10 | Canonical URLs, unique bilingual content, clear attribution | llms.txt could be more current |
-| **Overall** | **A-** | **35/40** | | |
+| Dimension | Grade | Score | Key Strength | Status |
+|-----------|-------|-------|-------------|--------|
+| Discoverability | A+ | 10/10 | 12 AI crawlers + llms.txt with series + bilingual RSS + sitemap with lastmod | All gaps fixed |
+| Extractability | A+ | 10/10 | 9 JSON-LD schema types, semantic HTML, complete OG tags, author.image | All gaps fixed |
+| Trust | A+ | 10/10 | E-E-A-T: YC S21, CTO, knowsAbout, ProfilePage, dual alumniOf, description | All gaps fixed |
+| Citability | A+ | 10/10 | Canonical URLs, unique bilingual content, curated llms.txt with series | All gaps fixed |
+| **Overall** | **A+** | **40/40** | | |
 
 ## Detailed Analysis
 
