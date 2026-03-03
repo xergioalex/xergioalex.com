@@ -152,7 +152,7 @@ ls public/images/blog/posts/ public/images/blog/shared/ 2>/dev/null
 3. **Core content** — Main story, breakdown, or explanation (3-6 sections)
 4. **Visual elements** — Place images, tables, code blocks where they add value
 5. **Closing** — Brief, forward-looking ("Let's keep building." / "A seguir construyendo.")
-6. **Resources** — Links to repos, tools, people, references (when applicable)
+6. **Resources** — Links to repos, tools, docs, external references (when applicable). **Do NOT list related articles or previous chapters** — if the post belongs to a series, those already appear in the series navigation below; listing them in Resources is redundant.
 
 ### Step 3: Create Primary Language Version
 
@@ -267,6 +267,12 @@ content: add blog post "{title}" (en + es)
 - **Allowed directories:** `src/content/blog/en/`, `src/content/blog/es/`, `public/images/`
 - **Forbidden directories:** `src/pages/`, `src/components/`, `src/layouts/`
 
+### Resources Section (Recursos)
+
+- **Do NOT** list related articles or previous chapters in Resources when the post belongs to a series — the `SeriesNavigation` panel already shows the full TOC below the content.
+- **Include:** External links (documentation, repos, tools, people).
+- **Exclude:** Links to other posts in the same series.
+
 ### Safety Checks
 
 - [ ] Slug doesn't conflict with an existing article
@@ -374,13 +380,10 @@ $TOPIC: AI
 
 ## Changelog
 
+> **Policy:** Keep only the 3 most recent entries. When adding a new entry, remove the oldest.
+
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.7.0   | 2026-03-03 | Resources section: do NOT list related articles or previous chapters when post belongs to a series. Added Guardrails subsection. |
 | 2.6.0   | 2026-03-02 | Enhanced series workflow: detailed steps for adding posts to existing series, creating new series, and escalation guidance. |
 | 2.5.0   | 2026-03-01 | Unified tag taxonomy: removed `topics` field, all tags in single `tags` array. Tier determined by tags collection. |
-| 2.4.0   | 2026-02-28 | Increased max-loc from 600 to 1200 (many posts exceed 600 words). Updated existing post modification guidance to reference content-writer agent. |
-| 2.3.0   | 2026-02-19 | Removed `$DRAFT` parameter, draft/scheduled references. Blog now uses simple published + demo-only model. |
-| 2.2.0   | 2026-02-12 | Added `$DRAFT` parameter, content lifecycle reference, scheduled post support. Links to new Blog Content Lifecycle guide. |
-| 2.1.0   | 2026-02-12 | Added `draft` field to frontmatter reference. Blog posts now support draft/scheduled/demo lifecycle. |
-| 2.0.0   | 2026-02-11 | Unified with write-article skill. Added topic mode, voice rules, article structure. |
-| 1.0.0   | 2026-02-10 | Initial version (content mode only) |

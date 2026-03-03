@@ -298,6 +298,8 @@ This agent needs access to:
 
 ## Changelog
 
+> **Policy:** Keep only the 3 most recent entries. When adding a new entry, remove the oldest.
+
 | Version | Date   | Changes         |
 | ------- | ------ | --------------- |
 | 1.0.0   | {date} | Initial version |

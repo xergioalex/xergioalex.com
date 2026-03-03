@@ -4,7 +4,7 @@ description: 'Por qué Go me convenció — mi sesión en Pereira Tech Talks sob
 pubDate: '2018-07-05'
 heroImage: '/images/blog/posts/introduction-to-golang/hero.jpg'
 heroLayout: 'banner'
-tags: ["talks", "tech", "devops"]
+tags: ["talks", "tech"]
 ---
 
 Go es uno de esos lenguajes que no se interpone en tu camino. Cuando preparé esta charla para Pereira Tech Talks, lo que quería transmitir no era solo la sintaxis o las características — era por qué Go se siente diferente. Es un lenguaje que confía en que podés escribir código claro sin abrumarte con opciones.

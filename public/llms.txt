@@ -29,6 +29,12 @@ This site features a bilingual blog and professional profile covering software d
 - dailybot — DailyBot collaboration platform (human + AI agents), product stories and startup journey
 - trading — Trading journal entries and market analysis
 - personal — Personal reflections and life experiences
+- entrepreneur — Entrepreneurship, startup building, and Y Combinator journey
+
+## Blog Series
+
+- Building XergioAleX.com (5 chapters) — How the site was built from scratch with Astro: architecture, design system, Lighthouse 100, content collections, and multilingual support
+- Trading Journey (3 chapters) — From manual to algorithmic trading: futures, forex, and market profile
 
 ## Languages
 

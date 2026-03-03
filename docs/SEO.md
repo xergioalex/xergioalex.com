@@ -177,6 +177,11 @@ All content MUST exist in both languages:
 
 ## AI Engine Optimization (AEO)
 
+For comprehensive AEO documentation, see `docs/aeo/`:
+- **[AEO Audit](aeo/AUDIT.md)** — Full audit grading 4 AEO dimensions (Discoverability, Extractability, Trust, Citability)
+- **[Target Queries](aeo/QUERIES.md)** — 30 target queries mapped to site URLs (TOFU/MOFU/BOFU)
+- **[Monthly Checklist](aeo/CHECKLIST.md)** — Maintenance checklist for ongoing AEO health
+
 ### Files
 
 | File | Purpose | Update When |

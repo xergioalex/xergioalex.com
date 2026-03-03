@@ -39,7 +39,7 @@ export const en: SiteTranslations = {
   hero: {
     tagline: 'CTO at DailyBot (YC S21) · Builder of Digital Products',
     description:
-      'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, a modern collaboration platform that enables human teams and AI agents to work together seamlessly—with unified transparency across hybrid teams and intelligent workflows. 14+ years shipping digital products, from AI-powered platforms to open source tools.',
+      'I build technology that empowers teams. CTO & Co-founder at <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, a collaboration platform where human teams and AI agents work together. 14+ years shipping digital products, from AI-powered platforms to open source tools.',
     typewriterWords: [
       'CTO at DailyBot (YC S21)',
       'Builder of Digital Products',
@@ -665,6 +665,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         icon: '\u{1F91D}',
       },
     ],
+    ctaTitle: 'More on Instagram',
+    ctaDescription:
+      'Recipes, restaurant finds, and culinary moments — follow along for food inspiration.',
     ctaText: 'Follow on Instagram',
   },
 
@@ -947,6 +950,43 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       "Sorry, the page you are looking for doesn't exist or may have been moved. Try navigating back to the homepage or searching the blog.",
     backHome: 'Go back home',
     searchBlog: 'Search the blog',
+  },
+
+  // Blog post engagement
+  engagement: {
+    // Author bio
+    authorBioTitle: 'About the Author',
+    authorBioDescription:
+      'CTO & Co-founder at DailyBot (YC S21). I write about building products, startups, and the craft of software engineering.',
+
+    // Share buttons
+    shareTitle: 'Share this post',
+    shareOnTwitter: 'Share on X',
+    shareOnLinkedIn: 'Share on LinkedIn',
+    shareOnWhatsApp: 'Share on WhatsApp',
+    copyLink: 'Copy link',
+    linkCopied: 'Link copied!',
+
+    // Newsletter
+    newsletterTitle: 'Stay in the loop',
+    newsletterDescription:
+      'Get notified when I publish something new. No spam, unsubscribe anytime.',
+    newsletterPlaceholder: 'your@email.com',
+    newsletterButton: 'Subscribe',
+    newsletterSubmitting: 'Subscribing...',
+    newsletterSuccessTitle: 'You\u2019re subscribed!',
+    newsletterSuccessMessage:
+      'Thanks for subscribing. You\u2019ll hear from me when something new is published.',
+    newsletterInvalidEmail: 'Please enter a valid email address.',
+    newsletterAlreadySubscribed:
+      'You\u2019re already subscribed. Thanks for being here!',
+    newsletterResubscribe: 'Subscribe with a different email',
+    newsletterPrivacy: 'No spam. Unsubscribe anytime.',
+
+    // End-of-post CTA
+    ctaTitle: 'Enjoyed this post?',
+    ctaDescription:
+      'Share it with your network or subscribe to get my latest posts delivered to your inbox.',
   },
 
   // Errors

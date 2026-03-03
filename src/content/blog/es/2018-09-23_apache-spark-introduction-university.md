@@ -4,7 +4,7 @@ description: "De los RDDs al streaming en tiempo real — cómo construí notebo
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
 heroLayout: "side-by-side"
-tags: ["portfolio", "talks", "python", "database", "university"]
+tags: ["tech", "talks", "python", "database", "university"]
 ---
 
 Para cuando llegué al curso de Big Data en mi maestría, ya tenía una base sólida en múltiples paradigmas de programación. Cada uno me dio una lente diferente para pensar sobre la computación.

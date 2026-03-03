@@ -40,6 +40,23 @@ Based in Colombia, he has led the development of DailyBot, a modern collaboratio
 - **dailybot** — DailyBot collaboration platform (human + AI agents), Y Combinator experience, startup journey
 - **trading** — Trading journal entries, market analysis, algorithmic trading learnings
 - **personal** — Articles about life experiences and personal reflections
+- **entrepreneur** — Entrepreneurship experiences, startup building, and Y Combinator journey
+
+### Blog Series
+
+#### Building XergioAleX.com (5 chapters)
+How this website was built from scratch with Astro, covering architecture decisions, design systems, performance optimization, and multilingual support:
+1. Building an Astro Website — Why Astro and the initial architecture (/blog/building-xergioalex-website/)
+2. Building a Design System — Component library and visual consistency (/blog/building-design-system/)
+3. Lighthouse Perfect Scores — Achieving 100 across all Lighthouse categories (/blog/lighthouse-perfect-scores/)
+4. Building a Blog Without a Backend — Content Collections and file-based content (/blog/building-blog-without-backend/)
+5. Building a Multilingual Website — i18n architecture with typed translations (/blog/building-multilingual-website/)
+
+#### Trading Journey (3 chapters)
+From manual trading to algorithmic strategies:
+1. My Trading Journey — From futures to forex (/blog/my-trading-journey-from-futures-to-forex/)
+2. What is Market Profile — Volume profiling and market analysis (/blog/what-is-market-profile-in-trading/)
+3. From Manual to Algorithmic Trading — Automating trading strategies (/blog/from-manual-to-algorithmic-trading/)
 
 ### Languages
 
