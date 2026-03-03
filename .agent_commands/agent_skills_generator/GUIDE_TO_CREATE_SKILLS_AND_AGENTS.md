@@ -732,7 +732,7 @@ If none of the existing domains fit, create a new domain section following the s
 
 #### 5. Changelog Entry (REQUIRED)
 
-Add a new row to the top of the Changelog table:
+Add a new row to the top of the Changelog table. **Keep only the 3 most recent entries** — when adding a new entry, remove the oldest if there are already 3. This applies to all changelogs: catalog, skills, and agents.
 
 ```markdown
 | {YYYY-MM-DD} | {skill-name/agent-name} added | {brief description of what was added} |
@@ -756,6 +756,7 @@ After updating the catalog, verify:
 - Placing a Tier 2 skill in the Tier 1 table
 - Forgetting the changelog entry
 - Adding a domain entry without adding the tier table entry
+- Keeping more than 3 changelog entries (remove the oldest when adding a new one)
 
 ### Complete Example Workflow
 

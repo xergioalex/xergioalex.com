@@ -371,10 +371,10 @@ Once I have a specific story to tell, I can write something authentic.
 
 ## Changelog
 
+> **Policy:** Keep only the 3 most recent entries. When adding a new entry, remove the oldest.
+
 | Version | Date       | Changes         |
 | ------- | ---------- | --------------- |
-| 1.4.0   | 2026-03-03 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist. Guide created during PLAN_anti_ai_slop_audit. |
-| 1.3.0   | 2026-02-28 | Added content quality grading system (A/B/C), rewriting/refining workflow, and transformation patterns for existing posts. Based on patterns from large-scale content refinement plan. |
+| 1.4.0   | 2026-03-03 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist. |
+| 1.3.0   | 2026-02-28 | Added content quality grading system (A/B/C), rewriting/refining workflow, and transformation patterns. |
 | 1.2.0   | 2026-02-19 | Removed draft/scheduled references. Blog now uses simple published + demo-only model. |
-| 1.1.0   | 2026-02-12 | Added Blog Content Lifecycle reference. Posts can now be created as drafts or scheduled. |
-| 1.0.0   | 2026-02-10 | Initial version |
