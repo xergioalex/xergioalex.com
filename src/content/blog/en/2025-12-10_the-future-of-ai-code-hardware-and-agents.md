@@ -1,5 +1,5 @@
 ---
-title: "The future of AI: Code, Hardware and Agents"
+title: "The Future of AI: Code, Hardware and Agents"
 description: "From my Pereira Tech Talks co-presentation with Sebastián Mora — how programming shifted from writing code to orchestrating agents, what MCPs unlock, and why I brought a robot to a software meetup."
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
