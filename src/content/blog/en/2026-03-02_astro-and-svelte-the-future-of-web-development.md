@@ -1,5 +1,5 @@
 ---
-title: "I Left Vue for Svelte — Here's Why (And Why Astro Changes Everything)"
+title: "Astro and Svelte: Why I Believe They're the Future of Web Development"
 description: "After years building with Vue, I switched to Astro + Svelte. Backed by State of JS data, performance benchmarks, and real-world experience."
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
