@@ -73,7 +73,7 @@ Grounded in evidence, admits uncertainty ("I think that answer landed"). Never b
 - Run the grep below before publishing
 
 ```bash
-grep -rn '\[AUTHOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/
+grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/
 ```
 
 Expected: zero matches. If any match is found, fix before committing.
