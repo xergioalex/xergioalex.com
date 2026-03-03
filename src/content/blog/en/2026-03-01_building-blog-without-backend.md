@@ -61,7 +61,15 @@ This is the part that makes scaling to hundreds of posts manageable. The content
 
 ### File naming as metadata
 
-Posts use a date-prefix naming convention: `YYYY-MM-DD_slug.md`. The `2026-03-01_building-blog-without-backend.md` file you are reading right now is a direct example. The date prefix gives files a natural sort order in the filesystem. A utility function called `getPostSlug()` strips the prefix to generate clean URLs — so `/blog/building-blog-without-backend/` is what readers see, not `/blog/2026-03-01_building-blog-without-backend/`.
+Posts use a date-prefix naming convention: `YYYY-MM-DD_slug.md`. The `2026-03-01_building-blog-without-backend.md` file you are reading right now is a direct example.
+
+This was not an arbitrary choice. I needed files to have a natural sort order in the filesystem — when I open the `en/` directory, I want to see posts in chronological order without thinking about it. But more importantly, I needed a naming scheme that would not break as the blog grew.
+
+The obvious alternative was numeric prefixes: `001_first-post.md`, `002_second-post.md`, and so on. That works at ten posts. At fifty, it still works. But what happens when I want to backfill a post from 2015 between two existing entries? I would need to renumber every file that comes after it. At a hundred posts, that is annoying. At a thousand, it is insanity. And every rename means updating references, breaking git history, and potentially introducing errors.
+
+Dates solve this completely. A post from November 2015 is `2015-11-27_music-library-php-my-first-website.md`. A post from March 2026 is `2026-03-01_building-blog-without-backend.md`. They sort themselves. If I publish three posts on the same day, I just pick the right date and the slug does the rest. If I backfill an old post, it slots into the correct position automatically. No renaming, no cascading changes, no coordination.
+
+A utility function called `getPostSlug()` strips the date prefix to generate clean URLs — so `/blog/building-blog-without-backend/` is what readers see, not `/blog/2026-03-01_building-blog-without-backend/`. The date is metadata for the filesystem, not for the reader.
 
 The bilingual directory structure mirrors this exactly:
 

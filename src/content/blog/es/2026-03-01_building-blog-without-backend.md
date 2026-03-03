@@ -61,7 +61,15 @@ Esto es lo que hace manejable escalar a cientos de posts. El contenido es datos.
 
 ### Naming de archivos como metadato
 
-Los posts usan una convención de naming con prefijo de fecha: `YYYY-MM-DD_slug.md`. El archivo `2026-03-01_building-blog-without-backend.md` que estás leyendo ahora mismo es un ejemplo directo. El prefijo de fecha da a los archivos un orden natural en el sistema de archivos. Una función utilitaria llamada `getPostSlug()` elimina el prefijo para generar URLs limpias — así que `/blog/building-blog-without-backend/` es lo que ven los lectores, no `/blog/2026-03-01_building-blog-without-backend/`.
+Los posts usan una convención de naming con prefijo de fecha: `YYYY-MM-DD_slug.md`. El archivo `2026-03-01_building-blog-without-backend.md` que estás leyendo ahora mismo es un ejemplo directo.
+
+Esto no fue una decisión al azar. Necesitaba que los archivos tuvieran un orden natural en el sistema de archivos — cuando abro el directorio `en/`, quiero ver los posts en orden cronológico sin tener que pensarlo. Pero más importante aún, necesitaba un esquema de nombres que no se rompiera a medida que el blog creciera.
+
+La alternativa obvia eran prefijos numéricos: `001_primer-post.md`, `002_segundo-post.md`, y así sucesivamente. Eso funciona con diez posts. Con cincuenta, todavía funciona. Pero ¿qué pasa cuando quiero agregar un post de 2015 entre dos entradas existentes? Tendría que renumerar cada archivo posterior. Con cien posts, eso es molesto. Con mil, es una locura. Y cada rename significa actualizar referencias, romper el historial de git, y potencialmente introducir errores.
+
+Las fechas resuelven esto completamente. Un post de noviembre de 2015 es `2015-11-27_music-library-php-my-first-website.md`. Un post de marzo de 2026 es `2026-03-01_building-blog-without-backend.md`. Se ordenan solos. Si publico tres posts el mismo día, solo elijo la fecha correcta y el slug hace el resto. Si agrego un post antiguo, se ubica en la posición correcta automáticamente. Sin renombrar, sin cambios en cascada, sin coordinación.
+
+Una función utilitaria llamada `getPostSlug()` elimina el prefijo de fecha para generar URLs limpias — así que `/blog/building-blog-without-backend/` es lo que ven los lectores, no `/blog/2026-03-01_building-blog-without-backend/`. La fecha es metadato para el sistema de archivos, no para el lector.
 
 La estructura de directorios bilingüe replica esto exactamente:
 
