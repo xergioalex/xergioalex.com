@@ -177,17 +177,33 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
     alternateName: 'XergioAleX',
     url: Astro.site?.href,
     image: new URL('/images/profile.png', Astro.site).href,
+    description: 'CTO & Cofounder of DailyBot (Y Combinator S21). Computer Science Engineer, MSc in Data Science, with 14+ years building digital products.',
     jobTitle: 'CTO & Co-founder',
     worksFor: {
       '@type': 'Organization',
       name: 'DailyBot',
       url: 'https://dailybot.com',
     },
-    alumniOf: {
-      '@type': 'Organization',
-      name: 'Y Combinator',
-      url: 'https://www.ycombinator.com',
-    },
+    alumniOf: [
+      {
+        '@type': 'Organization',
+        name: 'Y Combinator',
+        url: 'https://www.ycombinator.com',
+      },
+      {
+        '@type': 'CollegeOrUniversity',
+        name: 'Universidad Tecnológica de Pereira',
+      },
+    ],
+    knowsAbout: [
+      'Software Engineering',
+      'Artificial Intelligence',
+      'Web Development',
+      'DevOps',
+      'Blockchain',
+      'Algorithmic Trading',
+      'Startup Building',
+    ],
     sameAs: [
       'https://github.com/xergioalex',
       'https://www.linkedin.com/in/xergioalex/',
