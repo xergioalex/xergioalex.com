@@ -1,6 +1,6 @@
 {
   "name": "xergioalex.com",
-  "description": "Personal website & blog — CTO at DailyBot (YC S21), builder of 20+ products",
+  "description": "Personal website & blog — CTO at DailyBot (YC S21), builder of digital products",
   "author": "Sergio Alexander Florez Galeano",
   "license": "MIT",
   "homepage": "https://xergioalex.com",
@@ -9,7 +9,7 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",

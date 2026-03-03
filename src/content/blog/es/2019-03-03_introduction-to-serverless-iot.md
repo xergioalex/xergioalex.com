@@ -84,7 +84,7 @@ Mostré cuatro demos en vivo para ilustrar serverless en acción:
 
 ![Bombillo real funcionando — controlado por Lambda](/images/blog/posts/introduction-to-serverless-iot/iot-bulb.jpg)
 
-**[DailyBot](https://dailybot.co/)** — Un bot asistente de equipos para Slack y otras plataformas. DailyBot usa funciones serverless para enviar recordatorios diarios de standup, recolectar respuestas y generar reportes. Todo disparado por eventos programados o mensajes de usuarios.
+**[DailyBot](https://www.dailybot.com/)** — Un bot asistente de equipos para Slack y otras plataformas. DailyBot usa funciones serverless para enviar recordatorios diarios de standup, recolectar respuestas y generar reportes. Todo disparado por eventos programados o mensajes de usuarios.
 
 ![Diagrama de la demo DailyBot con serverless](/images/blog/posts/introduction-to-serverless-iot/dailybot-demo.png)
 

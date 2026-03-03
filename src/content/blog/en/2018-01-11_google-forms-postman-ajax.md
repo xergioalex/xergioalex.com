@@ -15,11 +15,15 @@ Below is the process to connect your site's contact form to a Google Form withou
 
 First, go to [Google Forms](https://www.google.com/forms/about/) and create a form like this:
 
-![Google Form example](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" title="Google Forms contact form">Loading…</iframe>
 
 Next, open the [form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) and inspect each field to find the `name` attributes of the inputs, which follow the format `entry.{id}`:
 
 ![Inspecting form field names in browser DevTools](/images/blog/posts/google-forms-postman-ajax/postman-1.webp)
+
+> **Tip:** Another quick way to find all the field IDs is to inspect near the `<form>` tag, where you'll find `hidden` inputs whose `name` attributes start with `entry.`, containing all the form field identifiers:
+
+![Hidden fields with entry IDs inside the form tag](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.png)
 
 Once you have all the `name` values, you can submit the form by sending an HTTP request with [Postman](https://www.getpostman.com/):
 
@@ -36,7 +40,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5Spo
 
 3. Define the body content. For [this example form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform), the `name` values for name, email, phone, and message are `entry.568194084`, `entry.1303875942`, `entry.807958025`, and `entry.703388132` respectively:
 
-![Postman body with form entry fields](/images/blog/posts/google-forms-postman-ajax/postman-3.webp)
+![Postman body with form entry fields](/images/blog/posts/google-forms-postman-ajax/postman-3.png)
 
 If you followed the steps above, you should be able to submit responses to the Google Form using Postman. Feel free to use [my example form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) for testing; responses appear in this [spreadsheet](https://docs.google.com/spreadsheets/d/1r0O9A4oRT81jgzIodJRNL_1GA9WYgJsdRxWVjQULv00/edit#gid=1264787793).
 
@@ -65,9 +69,13 @@ $.ajax({
 });
 ```
 
-As you can see, we only needed to translate the Postman request into jQuery Ajax format. Here's a minimal working example of a web form connected to the example form; all submissions will appear in the [response spreadsheet](https://goo.gl/VXMdV5) linked above:
+As you can see, we only needed to translate the Postman request into jQuery Ajax format. Here's a minimal working example of a web form connected to the example form; you can try it out right here:
 
-![Web form connected to Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+<iframe height="500" style="width: 100%;" scrolling="no" src="https://codepen.io/xergioalex/embed/ZNevvM?default-tab=result&theme-id=dark" frameborder="no" loading="eager" allowtransparency="true" allowfullscreen="true" title="Google Forms - Ajax request">Loading…</iframe>
+
+All submissions will appear in the [response spreadsheet](https://docs.google.com/forms/) linked above:
+
+<iframe src="https://docs.google.com/spreadsheets/d/14iddB2KpAgBb7pKbGPQwFfMCcjo2IWV_uFHMCq-0U_4/preview" width="100%" height="400" frameborder="0" loading="eager" title="Google Forms response spreadsheet">Loading…</iframe>
 
 One final note: when using this approach, you may see an error like `No 'Access-Control-Allow-Origin' header is present on the requested resource`. In other applications this is usually fixed by allowing the origin domain on the server, but Google Forms doesn't expose such a setting. Despite that, the submission still succeeds, so you can safely ignore this message.
 

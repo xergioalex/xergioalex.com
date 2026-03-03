@@ -9,16 +9,24 @@ interface Props {
   lang: string;
   title: string;
   description: string;
+  image?: string;
   prevPage?: string;
   nextPage?: string;
 }
 
-const { lang, title, description, prevPage, nextPage } = Astro.props;
+const { lang, title, description, image, prevPage, nextPage } = Astro.props;
 ---
 
 <html lang={lang}>
   <head>
-    <BaseHead title={title} description={description} lang={lang} prevPage={prevPage} nextPage={nextPage} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      lang={lang}
+      prevPage={prevPage}
+      nextPage={nextPage}
+    />
     <slot name="head" />
     <script is:inline>
   (function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');else{document.documentElement.classList.remove('dark');localStorage.setItem('theme','light');}})();

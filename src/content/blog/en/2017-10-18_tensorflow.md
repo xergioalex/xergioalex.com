@@ -2,7 +2,7 @@
 title: "Introduction to TensorFlow"
 description: "My talk at the first Pereira Tech Talks meetup — exploring Google's TensorFlow, machine learning basics, and why AI was about to change everything."
 pubDate: "2017-10-18"
-heroImage: "/images/blog/posts/tensorflow/event-1.webp"
+heroImage: "/images/blog/posts/tensorflow/pereira-tech-talks-first-meetup.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "ai", "python"]
 ---

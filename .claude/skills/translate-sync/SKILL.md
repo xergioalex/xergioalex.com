@@ -156,6 +156,7 @@ content: sync {content_type} translation for "{identifier}" ({source_lang} -> {t
 - Preserve technical terminology without translation (code terms, product names, URLs)
 - Use informal-professional register for Spanish (Colombian Spanish phrasing, consistent with site voice)
 - Maintain the same markdown structure and formatting
+- **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página), `ejecucion` (→ ejecución), `version` (→ versión), etc. Run a quick grep check before committing.
 
 ### Stop Conditions
 
@@ -174,6 +175,7 @@ Stop and ask if:
 - [ ] All user-visible text is translated
 - [ ] Code blocks, commands, and technical content are preserved untranslated
 - [ ] `lang` value is correct in target page files
+- [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
 - [ ] `npm run biome:check` passes
 - [ ] `npm run astro:check` passes
 - [ ] `npm run build` passes

@@ -37,12 +37,12 @@ export const es: SiteTranslations = {
 
   // Homepage hero
   hero: {
-    tagline: 'CTO en DailyBot (YC S21) · Creador de 20+ productos',
+    tagline: 'CTO en DailyBot (YC S21) · Creador de productos digitales',
     description:
       'Construyo tecnolog\u00EDa que empodera equipos. CTO y Cofundador en <a href="https://dailybot.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-300 transition-colors underline">DailyBot (YC S21)</a>, una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. M\u00E1s de 10 a\u00F1os creando productos digitales, desde plataformas potenciadas por IA hasta herramientas open source.',
     typewriterWords: [
       'CTO en DailyBot (YC S21)',
-      'Creador de 20+ productos',
+      'Creador de productos digitales',
       'Fundador de comunidades',
       'Explorador de IA & tech',
       'Contribuidor open source',
@@ -54,7 +54,7 @@ export const es: SiteTranslations = {
     about: {
       title: "Hola, soy <span class='text-secondary'>Sergio</span>",
       description: `Hoy lidero ingenier\u00EDa en DailyBot (YC S21), una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Me enfoco en estrategia de producto, flujos potenciados por IA y sistemas confiables que ayudan a los equipos h\u00EDbridos a avanzar m\u00E1s r\u00E1pido.<br /><br />
-Mis fortalezas estan en convertir ideas complejas en productos simples, escalar equipos de ingenieria y ejecutar end-to-end: arquitectura, implementacion e iteracion basada en feedback real de usuarios.<br /><br />
+Mis fortalezas están en convertir ideas complejas en productos simples, escalar equipos de ingeniería y ejecutar end-to-end: arquitectura, implementación e iteración basada en feedback real de usuarios.<br /><br />
 Actualmente estoy enfocado en aplicaciones de IA, productividad para developers y productos de alto impacto que combinan velocidad, calidad y resultados de negocio medibles.`,
       cta: 'Conoce m\u00E1s sobre m\u00ED',
       cta2: 'Ver mi CV',
@@ -825,11 +825,11 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Ubicado en Colombia. Abierto a colaboraci\u00F3n remota en todo el mundo.',
     prefillSubjects: {
       generalInquiry: 'Consulta General',
-      collaboration: 'Oportunidad de Colaboracion',
+      collaboration: 'Oportunidad de Colaboración',
       projectInquiry: 'Consulta de Proyecto o Trabajo',
-      projectCollaboration: 'Consulta de Colaboracion en Proyecto',
-      startupCollaboration: 'Oportunidad de Colaboracion Startup',
-      techTalkInvitation: 'Invitacion a Charla Tech',
+      projectCollaboration: 'Consulta de Colaboración en Proyecto',
+      startupCollaboration: 'Oportunidad de Colaboración Startup',
+      techTalkInvitation: 'Invitación a Charla Tech',
       tradingQuestion: 'Pregunta de Trading',
       dailybotQuestion: 'Pregunta sobre DailyBot',
     },
@@ -950,11 +950,11 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
   // 404 page
   notFoundPage: {
-    title: 'Pagina no encontrada',
-    description: 'La pagina que buscas no existe o ha sido movida.',
-    heading: 'Pagina no encontrada',
+    title: 'Página no encontrada',
+    description: 'La página que buscas no existe o ha sido movida.',
+    heading: 'Página no encontrada',
     message:
-      'Lo sentimos, la pagina que buscas no existe o pudo haber sido movida. Intenta volver a la pagina principal o buscar en el blog.',
+      'Lo sentimos, la página que buscas no existe o pudo haber sido movida. Intenta volver a la página principal o buscar en el blog.',
     backHome: 'Volver al inicio',
     searchBlog: 'Buscar en el blog',
   },

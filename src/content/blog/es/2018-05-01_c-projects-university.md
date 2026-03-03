@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 ---
 
-Si leyeron sobre [mis primeros pasos con DrScheme y la programación funcional](/es/blog/racket-projects-university), saben que mi introducción al código fue un mar de paréntesis, recursividad y la terca ausencia de ciclos `for`. Programación 1 me enseñó a pensar en *qué* quería computar. Programación 2 estaba a punto de enseñarme *cómo* el computador realmente lo hace.
+Si leyeron sobre [mis primeros pasos con DrScheme y la programación funcional](/es/blog/racket-projects-university/), saben que mi introducción al código fue un mar de paréntesis, recursividad y la terca ausencia de ciclos `for`. Programación 1 me enseñó a pensar en *qué* quería computar. Programación 2 estaba a punto de enseñarme *cómo* el computador realmente lo hace.
 
 Era 2010. Segundo semestre. El profesor entró, abrió una terminal y escribió algo que se veía sorprendentemente normal después de un semestre de Scheme:
 

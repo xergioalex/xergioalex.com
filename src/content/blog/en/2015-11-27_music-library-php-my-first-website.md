@@ -2,7 +2,7 @@
 title: "Music Library PHP: My First Website"
 description: "The story behind my first web project — a university database course final that became my introduction to PHP, SQLite, and web development."
 pubDate: "2015-11-27"
-heroImage: "/images/blog/posts/music-library-php/home.gif"
+heroImage: "/images/blog/posts/music-library-php-my-first-website/home.gif"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "university"]
 ---
@@ -51,7 +51,7 @@ That list captures most of the work. And importantly: **everything was built fro
 
 Here's the database schema I designed for the music library:
 
-![Database model for the music library](/images/blog/posts/music-library-php/db-model.jpg)
+![Database model for the music library](/images/blog/posts/music-library-php-my-first-website/db-model.jpg)
 
 ---
 
@@ -61,19 +61,19 @@ I've kept the project on GitHub all these years. Here are some GIFs that show ho
 
 ### Homepage
 
-![Music Library PHP homepage](/images/blog/posts/music-library-php/home.gif)
+![Music Library PHP homepage](/images/blog/posts/music-library-php-my-first-website/home.gif)
 
 ### User Registration and Login
 
-![User registration and login flow](/images/blog/posts/music-library-php/login-and-list-music.gif)
+![User registration and login flow](/images/blog/posts/music-library-php-my-first-website/login-and-list-music.gif)
 
 ### Browsing and Managing Songs
 
-![Adding songs, artists, genres, and albums](/images/blog/posts/music-library-php/add-song.gif)
+![Adding songs, artists, genres, and albums](/images/blog/posts/music-library-php-my-first-website/add-song.gif)
 
 ### Search
 
-![Searching for songs](/images/blog/posts/music-library-php/search.gif)
+![Searching for songs](/images/blog/posts/music-library-php-my-first-website/search.gif)
 
 ---
 

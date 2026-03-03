@@ -2,7 +2,7 @@
 
 # XergioAleX.com
 
-**Personal website & blog** · CTO at DailyBot (YC S21) · Builder of 20+ products
+**Personal website & blog** · CTO at DailyBot (YC S21) · Builder of digital products
 
 [![Code Check](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml/badge.svg)](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)

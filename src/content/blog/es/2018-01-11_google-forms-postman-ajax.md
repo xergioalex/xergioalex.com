@@ -15,11 +15,15 @@ A continuación se describe el proceso para conectar el formulario de contacto d
 
 Lo primero es ir a [Google Forms](https://www.google.com/forms/about/) y crear un formulario como este:
 
-![Ejemplo de formulario de Google](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" title="Formulario de contacto de Google Forms">Cargando…</iframe>
 
 Como paso seguido, abrimos el [formulario](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) e inspeccionamos cada uno de los campos buscando los `name` de cada input, los cuales siguen el formato `entry.{id}`:
 
 ![Inspeccionando los nombres de los campos del formulario en DevTools](/images/blog/posts/google-forms-postman-ajax/postman-1.webp)
+
+> **Tip:** Otra forma rápida de encontrar todos los IDs es inspeccionar cerca del tag `<form>`, donde encontrarás inputs de tipo `hidden` cuyos `name` comienzan con `entry.`, conteniendo todos los identificadores de los campos del formulario:
+
+![Campos hidden con los entry IDs dentro del tag form](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.png)
 
 Una vez obtenemos todos los `name`, ya tenemos todo lo necesario para poder completar nuestro formulario enviando una petición HTTP usando [Postman](https://www.getpostman.com/):
 
@@ -36,7 +40,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5Spo
 
 3. Definir el contenido del body. Para [nuestro formulario](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) en particular, los `name` de cada uno de los inputs de nombre, email, teléfono y mensaje son respectivamente `entry.568194084`, `entry.1303875942`, `entry.807958025` y `entry.703388132`:
 
-![Body de Postman con los campos entry del formulario](/images/blog/posts/google-forms-postman-ajax/postman-3.webp)
+![Body de Postman con los campos entry del formulario](/images/blog/posts/google-forms-postman-ajax/postman-3.png)
 
 Si seguiste los pasos anteriores, ya deberías poder enviar respuestas al formulario de Google usando Postman; siéntete libre de usar [mi formulario de ejemplo](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) para hacer pruebas y enviar respuestas, las cuales puedes visualizar en la [siguiente hoja de cálculo](https://docs.google.com/spreadsheets/d/1r0O9A4oRT81jgzIodJRNL_1GA9WYgJsdRxWVjQULv00/edit#gid=1264787793).
 
@@ -65,9 +69,13 @@ $.ajax({
 });
 ```
 
-Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://goo.gl/VXMdV5) anteriormente presentada:
+Como se puede observar, solo fue necesario traducir al formato Ajax de jQuery la petición que ya se tenía en Postman. Aquí tienes un pequeño código funcional de un formulario web conectado al formulario de ejemplo; puedes probarlo directamente desde aquí:
 
-![Formulario web conectado a Google Forms via Ajax](/images/blog/posts/google-forms-postman-ajax/form-example.jpeg)
+<iframe height="500" style="width: 100%;" scrolling="no" src="https://codepen.io/xergioalex/embed/ZNevvM?default-tab=result&theme-id=dark" frameborder="no" loading="eager" allowtransparency="true" allowfullscreen="true" title="Google Forms - Ajax request">Cargando…</iframe>
+
+Todas las respuestas que se envíen se deberán ver reflejadas en la [hoja de cálculo de respuestas](https://docs.google.com/forms/) anteriormente presentada:
+
+<iframe src="https://docs.google.com/spreadsheets/d/14iddB2KpAgBb7pKbGPQwFfMCcjo2IWV_uFHMCq-0U_4/preview" width="100%" height="400" frameborder="0" loading="eager" title="Hoja de cálculo de respuestas del formulario de Google">Cargando…</iframe>
 
 Como consideración final, cabe mencionar que al usar este método obtendremos una respuesta y mensaje de error como esta: `No 'Access-Control-Allow-Origin' header is present on the requested resource`, la cual normalmente se soluciona en otras aplicaciones dando permisos en el destino a las IPs y dominios desde las cuales queremos enviar las peticiones, pero para el caso de los formularios de Google no encontré algún parámetro de configuración que me permitiera solucionarlo, pero aún así la respuesta se registra exitosamente, por lo cual no deberíamos preocuparnos por este detalle.
 

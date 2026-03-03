@@ -164,6 +164,28 @@ docs/                        # Project documentation
 
 **Always update documentation after important changes.**
 
+### 1b. Orthography & Diacritical Marks (MANDATORY)
+
+**Correct spelling is essential in ALL languages.** Every piece of user-facing text — blog posts, translation strings, UI labels, descriptions, frontmatter — MUST use proper orthography, including diacritical marks (accents, tildes, ñ).
+
+**Spanish content MUST include:**
+
+- **ñ:** pequeño, tamaño, año, diseño, español, señal, mañana, compañía, pestaña
+- **Accented vowels:** análisis, más, número, código, máquina, ejecución, versión, información, aplicación, descripción, sección, también, después, página, título, último, próximo, índice, búsqueda, aquí, así, rápido, fácil, típico, científico, académico, práctica, automáticamente, producción, integración
+- **Interrogative accents:** cómo, qué, cuál, dónde, cuándo, cuánto, por qué
+
+**Quick validation** — search for these red-flag patterns in Spanish text:
+
+```bash
+# Missing ñ
+grep -rn 'pequeno\|tamano\|diseno\|espanol\|manana' src/content/blog/es/ src/lib/translations/es.ts
+
+# Missing accents
+grep -rn 'analisis\|numero\|codigo\|ejecucion\|version\|pagina\|titulo' src/content/blog/es/ src/lib/translations/es.ts
+```
+
+If any match is found, fix it before committing. See **[Standards Guide](docs/STANDARDS.md)** for the full orthography reference.
+
 ### 2. Import Order Convention (MANDATORY)
 
 Follow this import order in all TypeScript/Astro/Svelte files:
@@ -879,6 +901,8 @@ public/images/blog/
 26. Use `MainLayout` for internal hub pages (use `InternalLayout` or `ShowcaseLayout` instead)
 27. Add multilingual variants for internal pages (they are English-only, dev-only)
 28. Forget that `/internal/` pages are excluded from production builds — never reference them from public pages
+29. Write Spanish content without proper accents, tildes, or ñ (e.g., `pequeno` instead of `pequeño`, `analisis` instead of `análisis`)
+30. Commit Spanish text without verifying diacritical marks — always check for missing ñ and accented vowels
 
 ### ✅ DO:
 
@@ -899,6 +923,8 @@ public/images/blog/
 14. Set `heroLayout` based on image aspect ratio
 15. Use the image staging and optimization workflow
 16. Keep demo posts in `_demo/` folders (they're filtered automatically)
+17. Verify all Spanish text has correct diacritical marks (ñ, á, é, í, ó, ú) before committing
+18. Run a quick grep for common misspellings (`pequeno`, `tamano`, `numero`, `codigo`, `pagina`) in Spanish files
 19. Consider performance impact of every change (see [Performance Guide](docs/PERFORMANCE.md))
 20. Use the lightest hydration directive that works (`client:visible` > `client:load`)
 21. Prefer CSS-only solutions over JavaScript when possible
@@ -926,6 +952,7 @@ public/images/blog/
 - [ ] Accessibility: text contrast uses approved pairings (see [Accessibility Guide](docs/ACCESSIBILITY.md))
 - [ ] Accessibility: all images have `width`, `height`, and appropriate `alt` text
 - [ ] Commit message in English (conventional format)
+- [ ] Spanish content has correct diacritical marks (ñ, accents) — no `pequeno`, `tamano`, `numero`, `codigo`, `pagina`
 
 ## 🧠 Skills & Agents System
 
