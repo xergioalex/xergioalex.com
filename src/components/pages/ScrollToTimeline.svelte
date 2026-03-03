@@ -1,5 +1,6 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getTranslations } from '@/lib/translations';
 
 export let lang: string = 'en';
@@ -11,6 +12,7 @@ $: buttonText = targetLabel ? t.viewLabel(targetLabel) : t.scrollToTimeline;
 let visible = false;
 
 function scrollToTimeline() {
+  trackEvent(EVENTS.SCROLL_TO_TIMELINE);
   const el = document.getElementById('timeline');
   if (el) {
     el.scrollIntoView({ behavior: 'smooth' });

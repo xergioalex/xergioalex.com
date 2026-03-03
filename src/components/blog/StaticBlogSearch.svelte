@@ -1,5 +1,6 @@
 <script>
 import { onMount } from 'svelte';
+import { trackSearch } from '@/lib/analytics';
 import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import { createSearchIndex, searchPosts } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
@@ -178,6 +179,7 @@ function performSearch(query, page = 1) {
   };
 
   isLoading = false;
+  trackSearch(query, totalPosts);
 }
 
 // Sync search query to URL without polluting browser history

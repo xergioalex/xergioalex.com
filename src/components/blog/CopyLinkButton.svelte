@@ -1,4 +1,6 @@
 <script lang="ts">
+import { EVENTS, trackEvent } from '@/lib/analytics';
+
 let { url, label, copiedLabel } = $props<{
   url: string;
   label: string;
@@ -11,6 +13,7 @@ async function copyLink() {
   try {
     await navigator.clipboard.writeText(url);
     copied = true;
+    trackEvent(EVENTS.COPY_LINK);
     setTimeout(() => {
       copied = false;
     }, 2000);

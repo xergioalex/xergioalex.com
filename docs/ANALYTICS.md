@@ -126,6 +126,93 @@ These tools add small tracking scripts to `BaseHead.astro`. Scripts load conditi
 
 **Unique value:** Automated safety net that prevents performance and accessibility regressions. The site currently scores Lighthouse 100 in all categories — this CI check ensures that remains true over time.
 
+## Custom Event Tracking
+
+Umami custom events are used to track specific user interactions beyond page views. Events are implemented using two approaches depending on the component type.
+
+### Implementation Approaches
+
+| Approach | Used In | How It Works |
+|----------|---------|-------------|
+| `data-umami-event` HTML attributes | Astro components (`.astro`) | Zero JS overhead — Umami script reads attributes at click time |
+| `trackEvent()` programmatic calls | Svelte components (`.svelte`) | Calls `window.umami.track()` inside event handlers |
+
+**Utility file:** `src/lib/analytics.ts` exports the `EVENTS` constant catalog, `trackEvent()`, and helper functions (`trackScrollDepth`, `trackSearch`, `setupOutboundTracking`).
+
+### Event Naming Convention
+
+- All event names use `snake_case`
+- Names are descriptive: `{noun}_{verb}` or `{context}_{action}` (e.g., `nav_click`, `contact_form_submit`)
+- All event names are defined in the `EVENTS` constant in `src/lib/analytics.ts` — never use raw strings
+
+### Privacy Policy
+
+- **No PII is ever tracked** — no emails, names, phone numbers, or message content
+- Contact form tracks validation failure field names (e.g., `{ fields: "name,email" }`) but never field values
+- Newsletter form tracks the subscribe event but not the email address
+- Umami is cookieless and GDPR-compliant by default
+
+### Event Catalog
+
+| Event | Description | Data Payload | Source Component(s) |
+|-------|-------------|-------------|---------------------|
+| `nav_click` | Navigation link click | `{ item, source }` | Header.svelte, MobileMenu.svelte |
+| `language_switch` | Language toggle | `{ from, to }` | Header.svelte, MobileMenu.svelte |
+| `mobile_menu_toggle` | Hamburger menu open/close | `{ action }` | Header.svelte |
+| `theme_toggle` | Dark/light mode switch | `{ theme }` | ThemeToggle.astro |
+| `blog_search` | Blog search query | `{ query, results }` | StaticBlogSearch.svelte |
+| `tag_filter` | Tag/topic filter click | `{ tag }` | BlogHeader.svelte |
+| `blog_card_click` | Blog post card click | `{ slug }` | BlogCard.svelte |
+| `pagination_click` | Blog pagination | `{ page }` | BlogPagination.svelte |
+| `share_click` | Social share button | `{ platform }` | ShareButtons.astro |
+| `copy_link` | Copy link button | — | CopyLinkButton.svelte |
+| `series_nav` | Series navigation | `{ action }` | SeriesNavigation.astro |
+| `series_indicator_click` | Series indicator scroll | — | SeriesIndicator.svelte |
+| `lightbox_open` | Image lightbox opened | — | BlogImageLightbox.svelte |
+| `contact_form_submit` | Contact form submitted | `{ reason }` | ContactForm.svelte |
+| `contact_form_error` | Form validation failure | `{ fields }` | ContactForm.svelte |
+| `newsletter_subscribe` | Newsletter signup | — | NewsletterForm.svelte |
+| `social_click` | Footer social link | `{ platform }` | Footer.astro |
+| `outbound_click` | External link click | `{ url }` | MainLayout.astro (delegated) |
+| `scroll_depth` | Scroll milestone | `{ depth }` | BlogPostPage.astro |
+| `scroll_to_timeline` | Scroll-to-timeline button | — | ScrollToTimeline.svelte |
+| `timeline_click` | Timeline card title click | `{ page, slug }` | PortfolioTimeline, DailyBotTimeline, EntrepreneurTimeline, TechTalksTimeline, TradingTimeline |
+
+### How to Verify Events
+
+1. Run `npm run dev` and open the site in a browser
+2. Open DevTools → **Network** tab
+3. Filter requests by `api/send` (Umami's event endpoint)
+4. Perform an interaction (e.g., click a nav link)
+5. Verify a POST request appears with the event name in the payload
+6. Check the [Umami Cloud dashboard](https://cloud.umami.is) → Events tab for real-time data
+
+**Manual test matrix:**
+
+| Event | How to Trigger | Expected Data |
+|-------|---------------|---------------|
+| `nav_click` | Click any nav link in header | `item: "blog"`, `source: "desktop"` |
+| `language_switch` | Click EN/ES toggle | `from: "en"`, `to: "es"` |
+| `theme_toggle` | Click sun/moon button | `theme: "dark"` or `"light"` |
+| `blog_search` | Type 2+ chars in blog search | `query: "astro"`, `results: 3` |
+| `tag_filter` | Click a tag on the blog page | `tag: "tech"` |
+| `blog_card_click` | Click a blog post title | `slug: "astro-in-action"` |
+| `share_click` | Click a share button on a post | `platform: "twitter"` |
+| `contact_form_submit` | Submit the contact form | `reason: "project"` |
+| `social_click` | Click GitHub/LinkedIn in footer | `platform: "github"` |
+| `scroll_depth` | Scroll to bottom of a blog post | `depth: "100"` |
+| `timeline_click` | Click a post title in any timeline | `page: "portfolio"`, `slug: "..."` |
+
+### How to Add New Events
+
+1. Add the event name to the `EVENTS` constant in `src/lib/analytics.ts`
+2. Choose the implementation approach:
+   - **Astro component:** Add `data-umami-event="event_name"` and optional `data-umami-event-*` attributes
+   - **Svelte component:** Import `{ EVENTS, trackEvent }` and call `trackEvent(EVENTS.NEW_EVENT, { key: value })`
+3. Update this event catalog table
+4. Test via DevTools Network tab
+5. Verify in Umami dashboard
+
 ## Coverage Matrix
 
 | Question | Answered By |

@@ -1,4 +1,5 @@
 <script>
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -14,6 +15,7 @@ $: basePrefix = getUrlPrefix(lang);
 $: visiblePages = getVisiblePages();
 
 function handlePageChange(page) {
+  trackEvent(EVENTS.PAGINATION_CLICK, { page });
   if (isSearchMode && onPageChange) {
     onPageChange(page);
   }

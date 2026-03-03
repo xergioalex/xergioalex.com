@@ -15,8 +15,6 @@ But things changed over time. I started building [DailyBot](https://www.dailybot
 
 So I decided to build a real one.
 
-[AUTHOR: Before you landed on Astro, did you try other approaches? A WordPress setup that felt heavy? A Gatsby project that got abandoned halfway? What was the false start that made you appreciate the final choice?]
-
 ---
 
 ## The Old Site

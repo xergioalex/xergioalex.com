@@ -329,6 +329,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 17. Put demo posts outside `_demo/` folders
 18. Write Spanish content without proper accents/tildes/ñ
 19. List related articles or previous chapters in the Resources section when the post belongs to a series — they already appear in `#series-navigation` below; listing them is redundant
+20. **Leave placeholder content in blog posts** — `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" text. Published posts must be complete. Zero tolerance.
 
 ### DO:
 
@@ -342,6 +343,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 8. Include `width` and `height` on all `<img>` elements
 9. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 10. Verify Spanish diacritical marks before committing
+11. Ensure no placeholder content in blog posts (`grep -rn '\[AUTHOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/` → zero matches)
 
 ## Pre-Commit Checklist
 
@@ -354,6 +356,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - [ ] Content in both English and Spanish
 - [ ] Translation strings in both locale files
 - [ ] Spanish content has correct diacritical marks
+- [ ] No placeholder content in blog posts (`[AUTHOR:`, `[TODO:`, etc.)
 - [ ] Accessibility: approved text contrast, image dimensions, heading hierarchy
 - [ ] Performance: lightest hydration, minimal JS
 - [ ] Commit message in English (conventional format)

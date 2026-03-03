@@ -170,8 +170,6 @@ The second problem was metadata poverty. Each topic was just a string in an enum
 
 The third problem was the deeper architectural one: tier information lived in the wrong place. Whether `python` was primary or secondary was encoded in which array it appeared in on each individual post. Understand the taxonomy structure? Read thousands of frontmatter files. That kind of distributed definition diverges silently over time.
 
-[AUTHOR: How many posts had you already migrated to the enum approach before you realized it wouldn't scale? What did that Sunday afternoon of re-architecting feel like? How long did it actually take to undo the mistake?]
-
 At 1000 posts, a migration because I added a new enum value is a real cost. I went back to the drawing board.
 
 ### The unified collection architecture

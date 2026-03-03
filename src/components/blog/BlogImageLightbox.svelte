@@ -7,6 +7,7 @@
  * - client:idle for performance
  */
 import { onMount } from 'svelte';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 
 interface ImageInfo {
   src: string;
@@ -36,6 +37,7 @@ function openLightbox(img: HTMLImageElement): void {
   if (currentIndex < 0) currentIndex = 0;
 
   dialog?.showModal();
+  trackEvent(EVENTS.LIGHTBOX_OPEN);
 }
 
 function handleImageActivate(e: Event): void {

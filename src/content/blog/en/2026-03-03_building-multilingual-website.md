@@ -159,8 +159,6 @@ const prefix = getUrlPrefix(lang);
 
 The shared component imports the layout, gets the translations for the current language, builds localized URLs, and renders the full page. One file, all logic. The wrappers are just routing stubs.
 
-[AUTHOR: What did you try before the Page Wrapper pattern? Did you start with each page handling its own language routing? How many files did you have to touch to change one label before you figured out the right approach?]
-
 I have 17 shared page components and 23 routing wrappers. Add Portuguese? 11 new three-line files, zero component changes. A bug fix happens in one file. A new feature shows up in all languages automatically.
 
 ---

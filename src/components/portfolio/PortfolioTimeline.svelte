@@ -1,4 +1,5 @@
 <script lang="ts">
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -172,7 +173,7 @@ $: seriesPositionById = getSeriesPositionById(posts);
             {/if}
             <div class="p-5">
               <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-secondary transition-colors">
-                <a href={`${prefix}/blog/${slug}/`} class="hover:text-secondary transition-colors">
+                <a href={`${prefix}/blog/${slug}/`} class="hover:text-secondary transition-colors" on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: 'portfolio', slug })}>
                   {post.data.title}
                 </a>
               </h3>

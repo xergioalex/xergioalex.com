@@ -1,5 +1,6 @@
 <script lang="ts">
 import { onMount } from 'svelte';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import {
   getLanguageConfig,
   getSupportedLanguages,
@@ -44,6 +45,7 @@ onMount(() => {
 
 function toggleMenu() {
   open = !open;
+  trackEvent(EVENTS.MOBILE_MENU_TOGGLE, { action: open ? 'open' : 'close' });
 }
 </script>
 
@@ -67,8 +69,8 @@ function toggleMenu() {
     <!-- Desktop menu -->
     <div class="hidden md:flex items-center gap-8">
       <div class="flex gap-6">
-        <a href={prefix || '/'} class="nav-link">{t.nav.home}</a>
-        <a href="{prefix}/blog" class="nav-link">{t.nav.blog}</a>
+        <a href={prefix || '/'} class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'home' })}>{t.nav.home}</a>
+        <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
         <div
           role="group"
           class="relative group"
@@ -104,10 +106,10 @@ function toggleMenu() {
               class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
-              <a href="{prefix}/portfolio" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.portfolio}</a>
-              <a href="{prefix}/dailybot" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.dailybot}</a>
-              <a href="{prefix}/tech-talks" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.techTalks}</a>
-              <a href="{prefix}/trading" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.trading}</a>
+              <a href="{prefix}/portfolio" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'portfolio' })}>{t.nav.portfolio}</a>
+              <a href="{prefix}/dailybot" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'dailybot' })}>{t.nav.dailybot}</a>
+              <a href="{prefix}/tech-talks" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'tech_talks' })}>{t.nav.techTalks}</a>
+              <a href="{prefix}/trading" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'trading' })}>{t.nav.trading}</a>
             </div>
           {/if}
         </div>
@@ -146,15 +148,15 @@ function toggleMenu() {
               class="absolute left-1/2 -translate-x-1/2 top-full w-56 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
-              <a href="{prefix}/about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.aboutMe}</a>
-              <a href="{prefix}/cv" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.cv}</a>
-              <a href="{prefix}/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.entrepreneur}</a>
-              <a href="{prefix}/foodie" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.foodie}</a>
-              <a href="{prefix}/hobbies" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">{t.nav.hobbies}</a>
+              <a href="{prefix}/about" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'about_me' })}>{t.nav.aboutMe}</a>
+              <a href="{prefix}/cv" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'cv' })}>{t.nav.cv}</a>
+              <a href="{prefix}/entrepreneur" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'entrepreneur' })}>{t.nav.entrepreneur}</a>
+              <a href="{prefix}/foodie" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'foodie' })}>{t.nav.foodie}</a>
+              <a href="{prefix}/hobbies" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'hobbies' })}>{t.nav.hobbies}</a>
             </div>
           {/if}
         </div>
-        <a href="{prefix}/contact" class="nav-link">{t.nav.contact}</a>
+        <a href="{prefix}/contact" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contact' })}>{t.nav.contact}</a>
         <div
           role="group"
           class="relative group"
@@ -191,7 +193,7 @@ function toggleMenu() {
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
               {#each alternateLanguageUrls as alt}
-                <a href={alt.url} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2">
+                <a href={alt.url} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2" on:click={() => trackEvent(EVENTS.LANGUAGE_SWITCH, { from: lang, to: alt.lang })}>
                   <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.lang.toUpperCase()}
                 </a>
               {/each}

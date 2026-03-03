@@ -93,8 +93,6 @@ The component also respects `prefers-reduced-motion` — if the user has set the
 
 The result: the entire Typewriter JavaScript chunk was eliminated. **Critical path latency dropped from 1,338ms to 468ms — a 65% reduction.**
 
-[AUTHOR: How long did the typewriter CSS take? Did you try JS-based approaches first — GSAP, Svelte transitions? What failed before you figured out the pure-CSS approach? How did it feel when you realized the browser could already do it?]
-
 ### Responsive Images with srcset
 
 PageSpeed flagged two homepage images as oversized for mobile viewports. On a phone screen, serving the same 1400px-wide WebP as on a desktop is wasteful — the browser downloads 3-4x more pixels than it can display.

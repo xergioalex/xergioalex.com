@@ -1,5 +1,6 @@
 <script>
 import { onMount } from 'svelte';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getTranslations } from '@/lib/translations';
 
 const STORAGE_KEY = 'newsletter-subscribed';
@@ -49,12 +50,14 @@ async function handleSubmit() {
 
     localStorage.setItem(STORAGE_KEY, 'true');
     formState = 'success';
+    trackEvent(EVENTS.NEWSLETTER_SUBSCRIBE);
     setTimeout(() => successRef?.focus(), 100);
   } catch {
     // With no-cors, fetch only throws on network errors
     // Still show success since we can't confirm either way
     localStorage.setItem(STORAGE_KEY, 'true');
     formState = 'success';
+    trackEvent(EVENTS.NEWSLETTER_SUBSCRIBE);
     setTimeout(() => successRef?.focus(), 100);
   }
 }

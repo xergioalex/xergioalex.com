@@ -1,5 +1,6 @@
 <script>
 import { onMount } from 'svelte';
+import { EVENTS, trackEvent } from '@/lib/analytics';
 import { getTranslations } from '@/lib/translations';
 
 export let lang = 'en';
@@ -130,6 +131,11 @@ function validate() {
 
 async function handleSubmit() {
   if (!validate()) {
+    const failedFields = Object.entries(errors)
+      .filter(([, v]) => v)
+      .map(([k]) => k)
+      .join(',');
+    trackEvent(EVENTS.CONTACT_FORM_ERROR, { fields: failedFields });
     focusFirstInvalidField();
     return;
   }
@@ -151,12 +157,14 @@ async function handleSubmit() {
     });
 
     formState = 'success';
+    trackEvent(EVENTS.CONTACT_FORM_SUBMIT, { reason: reason || 'unspecified' });
     // Focus success message for screen readers
     setTimeout(() => successRef?.focus(), 100);
   } catch (error) {
     // With no-cors, fetch only throws on network errors
     // Still show success since we can't confirm either way
     formState = 'success';
+    trackEvent(EVENTS.CONTACT_FORM_SUBMIT, { reason: reason || 'unspecified' });
     setTimeout(() => successRef?.focus(), 100);
   }
 }
