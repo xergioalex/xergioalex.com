@@ -183,7 +183,11 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
       name: 'DailyBot',
       url: 'https://dailybot.com',
     },
-    alumniOf: 'Y Combinator',
+    alumniOf: {
+      '@type': 'Organization',
+      name: 'Y Combinator',
+      url: 'https://www.ycombinator.com',
+    },
     sameAs: [
       'https://github.com/xergioalex',
       'https://www.linkedin.com/in/xergioalex/',
