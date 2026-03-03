@@ -159,9 +159,9 @@ const prefix = getUrlPrefix(lang);
 
 The shared component imports the layout, gets the translations for the current language, builds localized URLs, and renders the full page. One file, all logic. The wrappers are just routing stubs.
 
-I have 17 shared page components and 23 routing wrappers across both languages. If I add Portuguese tomorrow, I create 11 new wrapper files — each one is three lines. I change zero shared components. The new language works everywhere immediately because the logic is already language-agnostic. It receives `lang`, calls `getTranslations(lang)`, and renders. It does not know or care how many languages exist.
+[AUTHOR: What did you try before the Page Wrapper pattern? Did you start with each page handling its own language routing? How many files did you have to touch to change one label before you figured out the right approach?]
 
-In practice, this means a bug fix to any page happens in one file. A new feature shows up in all languages without extra work. And when I build a new page, I write the logic once.
+I have 17 shared page components and 23 routing wrappers. Add Portuguese? 11 new three-line files, zero component changes. A bug fix happens in one file. A new feature shows up in all languages automatically.
 
 ---
 
@@ -179,7 +179,7 @@ src/lib/translations/
 └── index.ts     # Barrel: getTranslations() function (52 lines)
 ```
 
-The heart is `types.ts` — a 480-line TypeScript interface that defines the complete shape of all translations:
+`types.ts` defines the shape — a 480-line interface covering every piece of user-visible text:
 
 ```typescript
 // src/lib/translations/types.ts (simplified)
@@ -217,7 +217,7 @@ export interface SiteTranslations {
 
 Each locale file (`en.ts`, `es.ts`) implements this interface. The TypeScript compiler enforces **complete parity**. If I add a new key to `types.ts` and only implement it in `en.ts`, the build fails with a clear error telling me that `es.ts` is missing the key. No key falls through the cracks. No page renders with a missing translation.
 
-One design decision I am particularly pleased with is the use of **functions for dynamic strings**:
+Here's the trick: **functions instead of template strings** for dynamic content:
 
 ```typescript
 // en.ts
@@ -313,7 +313,7 @@ This design means adding a post is always a two-file operation: write the Englis
 
 ## The SEO Layer
 
-None of this matters if search engines cannot tell the pages apart. The SEO layer handles that automatically.
+Google needs to know these are two different pages. The SEO layer handles that automatically.
 
 Every page on the site generates hreflang tags through `BaseHead.astro`:
 
@@ -358,68 +358,15 @@ But publishing in a language I cannot verify feels like giving up control over m
 
 English is the language of my professional world. Spanish is the language of my roots. These are the audiences I know, the communities I have built in, and the people I am writing for. Two languages, fully audited, fully mine.
 
-The architecture does not judge this decision. It is ready for three languages, or five, or ten, whenever I am. But right now, quality matters more than quantity. And I would rather have two languages done well than five done almost-well.
+The code doesn't care. It's ready either way. But right now, quality matters more than quantity.
 
 ---
 
 ## Adding a New Language: The Scalability Story
 
-Despite choosing to stay with two languages, I want to walk through what it would actually take to add a third — because I think the steps speak for themselves.
+Despite choosing two languages, here's what adding Portuguese would actually take: update the type union (`'en' | 'es' | 'pt'`), add a `LANGUAGES` entry, create a translation file (~960 keys), add 11 three-line page wrappers, create a blog content directory, and add a search endpoint. Six steps, zero component changes. Everything adapts because the language boundary lives in the data layer, not the code.
 
-Let us say I decide to add Portuguese. Here is the complete process:
-
-**Step 1: Update the language configuration** (`src/lib/i18n.ts`)
-
-```typescript
-// Add to the type union
-export type Language = 'en' | 'es' | 'pt';
-
-// Add to the LANGUAGES registry
-pt: {
-  code: 'pt',
-  name: 'Portuguese',
-  nativeName: 'Português',
-  dateLocale: 'pt-BR',
-  ogLocale: 'pt_BR',
-  flag: '🇧🇷',
-  urlPrefix: '/pt',
-},
-```
-
-**Step 2: Create the translation file** (`src/lib/translations/pt.ts`)
-
-Copy `en.ts` as a template, translate the approximately 960 keys, import it in `index.ts`, and add it to the translations record.
-
-**Step 3: Create page wrappers** (`src/pages/pt/`)
-
-Create 11 files in `src/pages/pt/`. Each one is three lines:
-
-```astro
----
-import AboutPage from '@/components/pages/AboutPage.astro';
----
-<AboutPage lang="pt" />
-```
-
-**Step 4: Create blog content directory** (`src/content/blog/pt/`)
-
-Create the directory. Start adding Portuguese versions of blog posts.
-
-**Step 5: Create search endpoint** (`src/pages/api/posts-pt.json.ts`)
-
-One file, 24 lines. Filter the search index by language.
-
-**Step 6: Verify**
-
-```bash
-npm run biome:check && npm run astro:check && npm run build
-```
-
-That is it. Six steps. Zero changes to any existing component. The About page, the Blog page, the Contact page, the header, the footer, the search — they all work in Portuguese immediately because they already speak "any language." They receive `lang`, call `getTranslations(lang)`, and render.
-
-The hreflang tags automatically include the new language. The language selector shows three options instead of two. The search loads the right index. The blog filters by language. Everything adapts because the language boundary is entirely in the data layer — translations and content — not in the code layer.
-
-That is what makes this architecture worth the upfront work. Every feature I add — a new page, a new blog component, a search improvement — just works in all languages. The time I spent getting the multilingual foundation right keeps saving me time on everything I build after.
+That's what makes this architecture worth the upfront work — every feature I add just works in all languages.
 
 ---
 

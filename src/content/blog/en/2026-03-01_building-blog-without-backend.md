@@ -21,7 +21,7 @@ Chapter four: how the blog actually works.
 
 ## Content Collections: The Blog's Data Layer
 
-The foundation of the entire blog is Astro's [Content Collections](https://docs.astro.build/en/guides/content-collections/) API. If you have not worked with it, the mental model is simple: instead of blog posts being raw Markdown files that you parse manually, they are entries in a typed, schema-validated collection that Astro queries at build time.
+Content Collections is the backbone. Simple concept: instead of raw Markdown files you parse manually, posts are entries in a typed, schema-validated collection that Astro queries at build time.
 
 Here is what the schema looks like:
 
@@ -57,7 +57,7 @@ const posts = await getCollection('blog', ({ id }) => !id.includes('/_demo/'));
 
 The result is a typed array. Every element has `post.data.title`, `post.data.pubDate`, `post.data.tags` — all properly typed based on the Zod schema. TypeScript will catch a typo like `post.data.titel` at compile time, not at runtime on a live page.
 
-This is the part that makes scaling to hundreds of posts manageable. The content is data. The structure is enforced. The queries are typed. You can add any field to the schema and immediately use it everywhere, knowing the build will catch anything you missed.
+And that's why it works at scale — the structure doesn't let you slip up.
 
 ### File naming as metadata
 
@@ -170,13 +170,13 @@ The second problem was metadata poverty. Each topic was just a string in an enum
 
 The third problem was the deeper architectural one: tier information lived in the wrong place. Whether `python` was primary or secondary was encoded in which array it appeared in on each individual post. Understand the taxonomy structure? Read thousands of frontmatter files. That kind of distributed definition diverges silently over time.
 
-And then the question I ask about every architecture decision: what if I have 1000 posts?
+[AUTHOR: How many posts had you already migrated to the enum approach before you realized it wouldn't scale? What did that Sunday afternoon of re-architecting feel like? How long did it actually take to undo the mistake?]
 
-At 1000 posts, a migration because I added a new enum value is a real cost. At 1000 posts, scattered tier definitions across thousands of files is a maintenance problem. I went back to the drawing board.
+At 1000 posts, a migration because I added a new enum value is a real cost. I went back to the drawing board.
 
 ### The unified collection architecture
 
-The key insight: **tag tier is a property of the tag, not a property of the post.**
+Tag tier is a property of the tag, not a property of the post.
 
 `python` is a secondary topic not because of how any individual post uses it, but because that is what `python` *is* in this taxonomy. The tier definition should live with the tag's own definition, not distributed across every post that uses it.
 
@@ -253,23 +253,7 @@ export async function groupPostTags(
 }
 ```
 
-The tier map is built once per build and cached in memory:
-
-```typescript
-let _tagTierCache: Map<string, string> | null = null;
-
-async function getTagTierMap(): Promise<Map<string, string>> {
-  if (_tagTierCache) return _tagTierCache;
-  const allTags = await getCollection('tags');
-  _tagTierCache = new Map(allTags.map((tag) => [tag.data.name, tag.data.tier]));
-  await validateTagHierarchy();
-  return _tagTierCache;
-}
-```
-
-`getCollection('tags')` runs once at build startup. Every subsequent call returns the in-memory map — O(1) lookup. Across all blog posts in both languages, the total cost is one collection read. After that, hash table lookups.
-
-By the time any component touches a post's tags, the split is already done. Components receive `primaryTags` and `topicTags` as pre-sorted arrays. Nothing to compute at render time.
+The tier map is built once per build and cached in memory — `getCollection('tags')` runs once at startup, and every subsequent call returns the in-memory map. O(1) lookup. Components receive `primaryTags` and `topicTags` as pre-sorted arrays.
 
 ### Build-time taxonomy validation
 
@@ -306,7 +290,7 @@ async function validateTagHierarchy(): Promise<void> {
 }
 ```
 
-Three checks: a tag cannot reference a nonexistent parent, primary tags should not have parents, and parent tags must themselves be primary. These are `console.warn` calls, not thrown errors — a taxonomy inconsistency should be visible and fixable, but it should not fail a production deploy.
+A tag can't reference a nonexistent parent, primary tags shouldn't have parents, and parent tags must be primary. Warnings, not errors — visible and fixable, but not blocking a deploy.
 
 ### Visual hierarchy
 
@@ -464,7 +448,7 @@ This is the kind of detail that separates "the feature works" from "the feature 
 
 I want to be explicit about the common thread running through all of this, because it is the architectural insight that makes the whole system work.
 
-Every piece of the blog system I have described — Content Collections, tag tier resolution, pagination, related posts, reading time, search index generation — runs at Astro build time. By the time any HTML reaches a browser, all of that work is already done.
+Here's the thing: all of this runs at build time. By the time any HTML reaches a browser, the work is done.
 
 The browser does not receive a JavaScript application that fetches posts from an API, resolves tag tiers, and renders everything dynamically. It receives static HTML pages, each one fully pre-rendered with the correct content, the correct tags split into their correct tiers, the correct pagination, the correct related posts. The only JavaScript that runs in the browser is for interactive islands: the search component, the mobile menu, the theme toggle.
 

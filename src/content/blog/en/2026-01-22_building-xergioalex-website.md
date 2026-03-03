@@ -15,6 +15,8 @@ But things changed over time. I started building [DailyBot](https://www.dailybot
 
 So I decided to build a real one.
 
+[AUTHOR: Before you landed on Astro, did you try other approaches? A WordPress setup that felt heavy? A Gatsby project that got abandoned halfway? What was the false start that made you appreciate the final choice?]
+
 ---
 
 ## The Old Site
@@ -41,7 +43,7 @@ Basically, the entire visual identity of the site was born from that brand. It w
 
 ## Why Astro
 
-I evaluated several frameworks before landing on [Astro](https://astro.build). Next.js, Gatsby, Hugo, Eleventy — they're all capable. But Astro won because its philosophy aligned perfectly with what I needed: a content-heavy personal site that should be mostly static, insanely fast, and easy to extend.
+I looked at Next.js, Gatsby, Hugo, Eleventy. They're all capable. But [Astro](https://astro.build) won because it matched what I actually needed: a content-heavy personal site that should be mostly static, fast, and easy to extend.
 
 ### Zero JavaScript by Default
 
@@ -84,17 +86,17 @@ Routing, layouts, MDX support, image optimization, sitemap generation, RSS feeds
 
 ## Why Svelte (and Why It's a Perfect Match for Astro)
 
-Astro is **UI-agnostic** — you can use React, Vue, Svelte, Solid, or plain HTML for your interactive components. I chose [Svelte](https://svelte.dev) and it turned out to be a perfect complement.
+Astro doesn't care what you use for interactive parts — React, Vue, Svelte, Solid, plain HTML. I picked [Svelte](https://svelte.dev) and honestly it was the right call.
 
 ### Compiled, Not Runtime
 
 Svelte's core philosophy mirrors Astro's: **do the work at build time, not at runtime**. While React ships a virtual DOM diffing engine to every user's browser, Svelte compiles your components into minimal, surgical DOM operations during the build. The output is vanilla JavaScript — no framework overhead, no virtual DOM, no runtime library.
 
-For an Astro site that already ships zero JavaScript by default, this matters enormously. When I *do* need an interactive island, Svelte ensures that island is as small as possible. The blog search component, the navigation header, the image lightbox — they all compile down to tiny bundles.
+For an Astro site that already ships zero JavaScript by default, this matters. When I *do* need an interactive island, Svelte keeps it small.
 
 ### Truly Reactive with Less Code
 
-Svelte 5 (which this site uses at version `5.50`) introduced **runes** — a compiler-driven reactivity system that's both more powerful and more intuitive than previous versions. State management is straightforward:
+Svelte 5 introduced **runes** — a compiler-driven reactivity system. State management is straightforward:
 
 ```svelte
 <script>
@@ -103,7 +105,7 @@ Svelte 5 (which this site uses at version `5.50`) introduced **runes** — a com
 </script>
 ```
 
-No `useState`, no `useEffect`, no dependency arrays. The compiler figures out what depends on what and generates the minimal update code. For interactive components in a content site, this simplicity is a genuine advantage — less code means fewer bugs and easier maintenance.
+No `useState`, no `useEffect`, no dependency arrays. The compiler figures out what depends on what. Less code, fewer bugs.
 
 ### Small Bundle, Big Impact
 
@@ -198,7 +200,7 @@ The site targets **WCAG 2.1 AA compliance** and a **Lighthouse Accessibility sco
 
 ### The Page Wrapper Pattern
 
-One of the key architectural decisions: **every page is a thin 3-line wrapper**. The actual page logic, layout, SEO metadata, and content live inside shared `*Page.astro` components in `src/components/pages/`. The wrappers in `src/pages/` only handle routing and pass a `lang` string literal:
+Every page is a thin 3-line wrapper. The actual logic lives inside shared `*Page.astro` components in `src/components/pages/`. The wrappers only handle routing:
 
 ```astro
 ---
@@ -216,7 +218,7 @@ import AboutPage from '@/components/pages/AboutPage.astro';
 <AboutPage lang="es" />
 ```
 
-This means every page's content, translations, and layout exist in **one place**. Adding a new language means adding a new 3-line wrapper — no component changes, no logic duplication. The site currently has 52 page files but only 13 distinct page components.
+So every page lives in one place. Add a language? Just three lines. The site has 52 page files but only 13 distinct components.
 
 ### Performance Architecture
 
@@ -318,33 +320,13 @@ Deployment is fully automated: every push to `main` triggers a Cloudflare Pages 
 
 ---
 
-## By the Numbers
-
-| Metric | Value |
-|--------|-------|
-| Astro components | 48 |
-| Svelte interactive islands | 15 |
-| Page components | 13 distinct pages |
-| Route files | 52 (EN + ES wrappers) |
-| Blog posts | 36+ per language |
-| Translation strings | ~950 per language |
-| Internal hub pages | 17 |
-| AI skills | 14 |
-| AI agents | 6 |
-| Public images | 226 files |
-| Test files | 6 |
-
----
-
 ## From One Page to a Platform
 
 Going from a single landing page with a photo and five social links to a full personal platform was a deliberate choice. I wanted a place that could grow with my work — more projects, more posts, more languages, more ideas — without becoming a maintenance burden.
 
-Astro made the foundation possible: static, fast, content-first. Svelte made the interactive parts feel native and lightweight. Together they form a combination that's hard to beat for content-driven sites — you get the performance of static HTML with the richness of a modern component framework, and you only pay for interactivity where you actually need it.
+Astro made the foundation possible. Svelte made the interactive parts lightweight. Together they're hard to beat for content-driven sites — static HTML performance with modern component richness, and you only pay for interactivity where you need it.
 
-The brand gave it a soul. The AI-ready architecture gave it a future.
-
-If you're thinking about building your personal site, I'd recommend giving this stack a try. And if you're curious about the implementation, the whole thing is open source.
+The brand gave it a soul. The AI-ready architecture gave it a future. The whole thing is open source.
 
 **Repository:** [xergioalex/xergioalex.com](https://github.com/xergioalex/xergioalex.com)
 **Live site:** [xergioalex.com](https://xergioalex.com)
