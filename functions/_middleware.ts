@@ -37,6 +37,7 @@ const AI_BOT_PATTERNS: ReadonlyArray<{ pattern: RegExp; name: string }> = [
   { pattern: /Amazonbot/i, name: 'Amazonbot' },
   { pattern: /Meta-ExternalAgent/i, name: 'Meta-ExternalAgent' },
   { pattern: /cohere-ai/i, name: 'cohere-ai' },
+  { pattern: /OAI-SearchBot/i, name: 'OAI-SearchBot' },
 ];
 
 /**
@@ -48,9 +49,9 @@ const BOT_KEYWORD_PATTERN =
 const SPIDER_CRAWLER_PATTERN =
   /crawler|spider|scraper|fetcher|agent[\/\s;)]/i;
 
-/** Well-known non-AI bots to ignore (search engines, uptime monitors, etc.) */
+/** Well-known non-AI bots to ignore (search engines, SEO tools, uptime monitors, etc.) */
 const IGNORED_BOTS_PATTERN =
-  /Googlebot|bingbot|YandexBot|Baiduspider|DuckDuckBot|Slurp|facebot|ia_archiver|Uptimebot|UptimeRobot|pingdom|StatusCake|NodePing|Site24x7|Checkly|DatadogSynthetics|NewRelicPinger|Better Uptime/i;
+  /Googlebot|bingbot|YandexBot|Baiduspider|DuckDuckBot|Slurp|facebot|ia_archiver|Uptimebot|UptimeRobot|pingdom|StatusCake|NodePing|Site24x7|Checkly|DatadogSynthetics|NewRelicPinger|Better Uptime|AhrefsBot|SemrushBot|DataForSeoBot|MJ12bot|Discordbot|PetalBot|Barkrowler|BitSightBot|Jetslide|archive\.org_bot/i;
 
 const UMAMI_API_URL = 'https://cloud.umami.is/api/send';
 
@@ -72,10 +73,17 @@ function isUnknownBot(userAgent: string): boolean {
 
 /** Extract a short readable name from a raw User-Agent string */
 function extractBotName(userAgent: string): string {
-  // Try to grab the first product token, e.g. "DeepSeekBot/1.0" → "DeepSeekBot"
-  const match = userAgent.match(/^([^\s\/]+)/);
-  const name = match ? match[1] : userAgent;
-  // Cap length to keep Umami data clean
+  // Many bots use "Mozilla/5.0 (compatible; RealBotName/1.0; ...)" format
+  const compatibleMatch = userAgent.match(/compatible;\s*([^\s;\/]+)/);
+  if (compatibleMatch) return compatibleMatch[1].slice(0, 60);
+
+  // Some use "Mozilla/5.0 ... compatible; BotName/1.0; ..." without parentheses
+  const inlineMatch = userAgent.match(/;\s*compatible;\s*([^\s;\/]+)/);
+  if (inlineMatch) return inlineMatch[1].slice(0, 60);
+
+  // Fallback: first product token, e.g. "RafineriBot/1.0" → "RafineriBot"
+  const firstToken = userAgent.match(/^([^\s\/]+)/);
+  const name = firstToken ? firstToken[1] : userAgent;
   return name.slice(0, 60);
 }
 
