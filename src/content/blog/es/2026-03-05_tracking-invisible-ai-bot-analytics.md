@@ -45,7 +45,7 @@ Y no son solo los bots de IA. Lectores de RSS, crawlers de motores de búsqueda,
 
 Lo que necesitaba era simple: algo que pudiera inspeccionar cada solicitud, mirar el encabezado User-Agent, y registrar el bot antes de servir el contenido estático. El directorio `functions/` de Cloudflare Pages hace exactamente eso — pones un archivo TypeScript ahí y se despliega como middleware en el edge.
 
-Un archivo. Sin `wrangler.toml`. Sin nuevas dependencias. Sin cambios al build de Astro.
+Un archivo. Sin nuevas dependencias, sin cambios al build de Astro.
 
 ---
 
@@ -91,7 +91,7 @@ const AI_BOT_PATTERNS: ReadonlyArray<{ pattern: RegExp; name: string }> = [
 ];
 ```
 
-Doce patrones. Estos son los mismos doce bots listados en `robots.txt` con reglas explícitas `Allow: /`. No es coincidencia — la puerta abierta y el sensor usan la misma lista.
+Son los mismos bots listados en `robots.txt` con reglas explícitas `Allow: /`. No es coincidencia — la puerta abierta y el sensor usan la misma lista.
 
 Cada entrada tiene un patrón regex y un nombre limpio. Los nombres aparecen en los eventos de analíticas, así que quería que fueran legibles. "GPTBot" es más útil en un dashboard que la cadena de User-Agent sin procesar.
 
@@ -174,7 +174,7 @@ function buildUmamiPayload(
 }
 ```
 
-La API server-side de Umami acepta un payload JSON con un `type` y un `payload`. El nombre del evento es `ai_bot_visit` — el mismo nombre definido en el catálogo de analíticas del sitio. El objeto `data` personalizado adjunta el nombre del bot y la ruta, lo que significa que puedo filtrar por bot en el dashboard de Umami.
+La API server-side de Umami acepta un payload JSON con un `type` y un `payload`. El nombre del evento es `ai_bot_visit` — el mismo que uso para todo el tracking de bots. El objeto `data` personalizado adjunta el nombre del bot y la ruta, lo que significa que puedo filtrar por bot en el dashboard de Umami.
 
 ### La Llamada de Rastreo
 
@@ -214,7 +214,7 @@ Un `fetch` a la API de Umami envuelto en try/catch con un catch vacío. Si Umami
 
 ### Regex en Lugar de una Biblioteca
 
-No hay paquete npm para detección de bots de IA aquí. Lo consideré brevemente, miré las opciones, y decidí que el overhead no valía la pena — tanto en tamaño del bundle como en mantenimiento de dependencias. Doce patrones regex hacen el trabajo. Los patrones vienen de la documentación oficial de cada bot (OpenAI, Anthropic, Google, etc.), y son lo suficientemente estables como para que un enfoque regex sobreviva a cualquier biblioteca que los envuelva.
+No hay paquete npm para detección de bots de IA aquí. Miré un par — isbot, crawler-user-agents — y honestamente, hacen más de lo que necesito. Doce patrones regex hacen el trabajo. Los patrones vienen de la documentación oficial de cada bot (OpenAI, Anthropic, Google, etc.), y son lo suficientemente estables como para que un enfoque regex sobreviva a cualquier biblioteca que los envuelva.
 
 El compromiso: cuando aparece un nuevo bot de IA y quiero rastrearlo, actualizo el array y el archivo `robots.txt`. Dos lugares. Manual, pero obvio. Si usara una biblioteca, estaría esperando un ciclo de release en lugar de hacer un cambio de dos líneas.
 
@@ -243,7 +243,7 @@ La variable de entorno `PUBLIC_UMAMI_WEBSITE_ID` ya está configurada en el dash
 
 ## Lo Que Puedo Ver Ahora Que Antes No Podía
 
-El dashboard de Cloudflare tiene un visor de logs en tiempo real. Dentro de la primera hora de desplegar el middleware, vi `[AI Bot] GPTBot → /blog/building-xergioalex-website/ (GET)` pasar por la pantalla.
+El primer deploy, nada pasó. Sin logs, sin eventos. Pensé que tenía un bug. Resulta que solo tenía que esperar — los bots no visitan en tu horario. Como una hora después, `[AI Bot] GPTBot → /blog/building-xergioalex-website/ (GET)` pasó por los logs en tiempo real de Cloudflare.
 
 Ese es un crawler real de OpenAI, leyendo uno de mis posts del blog. No tengo idea en qué ciclo de entrenamiento de modelo entró, ni si el contenido terminó en algún dataset de fine-tuning. Pero puedo ver que ocurrió. Eso es lo importante. Antes de esto, era invisible. Ahora está registrado.
 
