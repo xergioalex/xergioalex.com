@@ -259,9 +259,7 @@ Y en el gráfico de eventos, los `ai_bot_visit` empiezan a aparecer junto al res
 
 Como cada evento lleva la propiedad `bot`, puedo desglosar el tráfico por crawler. Filtrando por la propiedad `bot` en `ai_bot_visit` me da esto — una imagen clara de quién está entrando realmente por la puerta:
 
-![Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot — ChatGPT-User 49%, Amazonbot 38%, GPTBot 13%](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
-
-ChatGPT-User liderando con 49%, seguido por Amazonbot con 38% y GPTBot con 13%. Tres bots de doce haciendo todo el crawling — al menos en los primeros días. Los otros nueve no han aparecido todavía, o visitan con menos frecuencia. Los datos lo dirán con el tiempo.
+![Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
 
 Con analíticas del lado del cliente nada de esto existía. Con un archivo de middleware, ahora sí.
 
