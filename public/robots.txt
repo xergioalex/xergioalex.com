@@ -49,3 +49,6 @@ Allow: /
 
 User-agent: cohere-ai
 Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
