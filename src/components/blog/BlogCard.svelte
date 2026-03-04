@@ -111,10 +111,9 @@ $: isScheduled = (() => {
   const todayInTz = new Date().toLocaleDateString('en-CA', {
     timeZone: SITE_TIMEZONE,
   });
-  const pubDateInTz = pubDate.toLocaleDateString('en-CA', {
-    timeZone: SITE_TIMEZONE,
-  });
-  return pubDateInTz > todayInTz;
+  // pubDate is a calendar date, not a UTC moment — extract directly
+  const pubDateStr = pubDate.toISOString().slice(0, 10);
+  return pubDateStr > todayInTz;
 })();
 
 // Get highlighted title and description if search result is available
