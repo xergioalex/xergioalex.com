@@ -257,9 +257,71 @@ And in the events chart, the `ai_bot_visit` events start showing up alongside th
 
 ![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
 
+Because each event carries the `bot` property, I can break down traffic by crawler. Filtering by the `bot` property on `ai_bot_visit` gives me this — a clear picture of who's actually coming through the door:
+
+![Umami properties breakdown showing ai_bot_visit events by bot type](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
+
 With client-side analytics none of this existed. With one middleware file, now it does.
 
-The list will need updates — there were five or six crawlers when I first put together `robots.txt`, there are twelve now, and by the time you read this there will probably be more. When I see an unfamiliar User-Agent in the logs that looks like an AI crawler, I add it: one line to the middleware, one line to `robots.txt`. Not perfect, but it works.
+---
+
+## Catching the Ones I Don't Know Yet
+
+I was pretty happy with the setup until I realized something obvious that I'd overlooked: this thing only tracks bots I already know about. Twelve names in a list. If tomorrow some new AI company launches a crawler called `DeepWhateverBot`, it sails right through `detectAiBot()`, gets a `null`, and vanishes. I'd built a fix for a blind spot that had its own blind spot.
+
+There were five or six AI crawlers when I first put together `robots.txt`. Now there are twelve. By the time you read this, who knows. The list will always lag behind.
+
+The fix was simple enough — after the known-bot check fails, look for generic bot signals in the User-Agent. If the string contains `bot`, `crawler`, `spider`, `scraper`, or `fetcher`, it's probably not someone's Chrome browser:
+
+```typescript
+const BOT_KEYWORD_PATTERN = /bot[\/\s;)]/i;
+const SPIDER_CRAWLER_PATTERN = /crawler|spider|scraper|fetcher|agent[\/\s;)]/i;
+
+function isUnknownBot(userAgent: string): boolean {
+  if (!userAgent || userAgent.length < 5) return false;
+  if (IGNORED_BOTS_PATTERN.test(userAgent)) return false;
+  return BOT_KEYWORD_PATTERN.test(userAgent)
+    || SPIDER_CRAWLER_PATTERN.test(userAgent);
+}
+```
+
+I had to add an ignore list for the obvious stuff — Googlebot, Bingbot, YandexBot, uptime monitors like UptimeRobot and Pingdom. Those aren't what I'm looking for, and logging them would drown the signal in noise.
+
+Unknown bots get their own event: `unknown_bot_visit`, separate from `ai_bot_visit`. The full User-Agent string goes into the event properties — I want to see exactly what showed up, not just that something did. The middleware grabs a readable name from the first token:
+
+```typescript
+function extractBotName(userAgent: string): string {
+  const match = userAgent.match(/^([^\s\/]+)/);
+  const name = match ? match[1] : userAgent;
+  return name.slice(0, 60);
+}
+```
+
+So the request handler now has two paths:
+
+```typescript
+export async function onRequest(context: EventContext): Promise<Response> {
+  const userAgent = context.request.headers.get('user-agent') || '';
+  const botName = detectAiBot(userAgent);
+
+  if (botName) {
+    // Known AI bot → track as ai_bot_visit
+    // ...
+    return context.next();
+  }
+
+  // Check for unknown bots
+  if (isUnknownBot(userAgent)) {
+    const name = extractBotName(userAgent);
+    // Track as unknown_bot_visit with full User-Agent attached
+    // ...
+  }
+
+  return context.next();
+}
+```
+
+Now when something new shows up crawling the site, I'll see it in Umami under `unknown_bot_visit`. If it's an AI crawler worth tracking properly, I promote it: one line to `AI_BOT_PATTERNS`, one line to `robots.txt`. That's it. The first version could only see what I told it to look for. This one can also tell me what I'm missing.
 
 My hypothesis was that blog posts would dominate bot traffic — long-form text is what language models scrape the most. I also expected `llms.txt` to get visits from crawlers doing a quick inventory. Whether that's the case, the data will show.
 

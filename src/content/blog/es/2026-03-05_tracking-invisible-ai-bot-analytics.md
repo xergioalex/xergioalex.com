@@ -257,9 +257,71 @@ Y en el gráfico de eventos, los `ai_bot_visit` empiezan a aparecer junto al res
 
 ![Gráfico de eventos en Umami mostrando tráfico ai_bot_visit junto a otros eventos del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
 
+Como cada evento lleva la propiedad `bot`, puedo desglosar el tráfico por crawler. Filtrando por la propiedad `bot` en `ai_bot_visit` me da esto — una imagen clara de quién está entrando realmente por la puerta:
+
+![Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
+
 Con analíticas del lado del cliente nada de esto existía. Con un archivo de middleware, ahora sí.
 
-La lista va a necesitar actualizaciones — había cinco o seis crawlers cuando armé la primera versión de `robots.txt`, ahora hay doce, y para cuando leas esto probablemente habrá más. Cuando veo un User-Agent desconocido en los logs que parece un crawler de IA, lo agrego: una línea al middleware, una línea a `robots.txt`. No es perfecto, pero funciona.
+---
+
+## Atrapando a los Que Aún No Conozco
+
+Estaba bastante contento con el sistema hasta que me di cuenta de algo obvio que había pasado por alto: esta cosa solo rastrea bots que ya conozco. Doce nombres en una lista. Si mañana alguna empresa nueva de IA lanza un crawler llamado `DeepLoQueSeaBot`, pasa derecho por `detectAiBot()`, recibe un `null`, y se esfuma. Había construido un fix para un punto ciego que tenía su propio punto ciego.
+
+Había cinco o seis crawlers de IA cuando armé la primera versión de `robots.txt`. Ahora hay doce. Para cuando leas esto, quién sabe. La lista siempre va a ir por detrás.
+
+El fix fue bastante simple — después de que el chequeo de bots conocidos falla, buscar señales genéricas de bot en el User-Agent. Si la cadena contiene `bot`, `crawler`, `spider`, `scraper`, o `fetcher`, probablemente no es el Chrome de alguien:
+
+```typescript
+const BOT_KEYWORD_PATTERN = /bot[\/\s;)]/i;
+const SPIDER_CRAWLER_PATTERN = /crawler|spider|scraper|fetcher|agent[\/\s;)]/i;
+
+function isUnknownBot(userAgent: string): boolean {
+  if (!userAgent || userAgent.length < 5) return false;
+  if (IGNORED_BOTS_PATTERN.test(userAgent)) return false;
+  return BOT_KEYWORD_PATTERN.test(userAgent)
+    || SPIDER_CRAWLER_PATTERN.test(userAgent);
+}
+```
+
+Tuve que agregar una lista de cosas obvias que ignorar — Googlebot, Bingbot, YandexBot, monitores de uptime como UptimeRobot y Pingdom. Esos no son lo que busco, y loguearlos ahogaría la señal en ruido.
+
+Los bots desconocidos tienen su propio evento: `unknown_bot_visit`, separado de `ai_bot_visit`. La cadena completa de User-Agent va en las propiedades del evento — quiero ver exactamente qué apareció, no solo que algo lo hizo. El middleware agarra un nombre legible del primer token:
+
+```typescript
+function extractBotName(userAgent: string): string {
+  const match = userAgent.match(/^([^\s\/]+)/);
+  const name = match ? match[1] : userAgent;
+  return name.slice(0, 60);
+}
+```
+
+Entonces el manejador de solicitudes ahora tiene dos caminos:
+
+```typescript
+export async function onRequest(context: EventContext): Promise<Response> {
+  const userAgent = context.request.headers.get('user-agent') || '';
+  const botName = detectAiBot(userAgent);
+
+  if (botName) {
+    // Bot de IA conocido → rastrear como ai_bot_visit
+    // ...
+    return context.next();
+  }
+
+  // Chequear bots desconocidos
+  if (isUnknownBot(userAgent)) {
+    const name = extractBotName(userAgent);
+    // Rastrear como unknown_bot_visit con User-Agent completo adjunto
+    // ...
+  }
+
+  return context.next();
+}
+```
+
+Ahora cuando algo nuevo aparezca rastreando el sitio, lo voy a ver en Umami bajo `unknown_bot_visit`. Si resulta ser un crawler de IA que vale la pena rastrear formalmente, lo promuevo: una línea a `AI_BOT_PATTERNS`, una línea a `robots.txt`. Eso es todo. La primera versión solo podía ver lo que le dije que buscara. Esta también me puede decir qué me estoy perdiendo.
 
 Mi hipótesis era que los posts del blog dominarían el tráfico de bots — el texto largo es lo que más scrapean los modelos de lenguaje. También esperaba que `llms.txt` recibiera visitas de crawlers haciendo un inventario rápido. Si es así, los datos lo van a mostrar.
 
