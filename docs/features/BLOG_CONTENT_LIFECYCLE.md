@@ -25,12 +25,13 @@ All posts in `src/content/blog/{lang}/` (outside `_demo/` folders) with a `pubDa
 
 Posts with a `pubDate` set to a **future date** are scheduled. They use the existing `pubDate` field — no schema changes needed.
 
-**Detection:** A post is scheduled if `pubDate > Date.now()` at build time. Checked by `isScheduledPost()` in `src/lib/blog.ts`:
+**Detection:** A post is scheduled if its date (in `SITE_TIMEZONE` = America/Bogota) is after today's date in that timezone. Checked by `isScheduledPost()` in `src/lib/blog.ts`:
 
 ```typescript
-function isScheduledPost(post: CollectionEntry<'blog'>): boolean {
-  return post.data.pubDate.valueOf() > Date.now();
-}
+// Uses SITE_TIMEZONE (America/Bogota) for consistent scheduling
+const todayInTz = new Date().toLocaleDateString('en-CA', { timeZone: SITE_TIMEZONE });
+const pubDateInTz = post.data.pubDate.toLocaleDateString('en-CA', { timeZone: SITE_TIMEZONE });
+return pubDateInTz > todayInTz;
 ```
 
 **Behavior:**

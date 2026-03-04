@@ -1,6 +1,6 @@
 ---
 title: "Tracking the Invisible: How I Built AI Bot Analytics with Zero JavaScript"
-description: "Implementing AI bot analytics with a single Cloudflare Pages middleware file. No JavaScript, no tracking scripts, no infrastructure changes. Just one file at the edge and twelve patterns that changed what I could see."
+description: "A single Cloudflare Pages middleware file to see what JavaScript analytics can't: the AI crawlers visiting the site."
 pubDate: "2026-03-05"
 heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
@@ -17,39 +17,35 @@ I had a specific use for that. This is what I built.
 
 ## The Blind Spot
 
-The analytics stack for this site is something I'm proud of. Umami for privacy-first event tracking. Cloudflare Web Analytics at the edge. Both free. Both fast. Both running without cookie banners or bloated scripts.
+The analytics stack for this site turned out well. Umami for privacy-first event tracking. Cloudflare Web Analytics at the edge. Free, fast, no cookie banners or bloated scripts.
 
 What I didn't notice — or didn't think through carefully enough — was who couldn't be counted.
 
 Both of those tools work the same way. A JavaScript snippet runs in the visitor's browser. The snippet fires events. The events hit an API. The numbers go up on a dashboard. That chain only works if there's a browser. If there's a visitor who actually executes JavaScript.
 
-By 2025, some of the most important visitors to a content site are not that kind of visitor.
+These days, some of the most important visitors to a content site are not that kind of visitor.
 
 ---
 
 ## The Problem With Crawlers
 
-AI crawlers — GPTBot, ClaudeBot, PerplexityBot, the others — don't browse the web the way humans do. They send HTTP requests. They read HTML. They leave. No browser. No JavaScript execution. No event firing.
+AI crawlers — GPTBot, ClaudeBot, PerplexityBot, the others — don't browse the web the way humans do. They send an HTTP request, read the HTML, and leave. No browser, no JavaScript execution.
 
-This means every time GPTBot crawls a page to train a language model, I see nothing. The page is served. The crawler reads it. My analytics register zero. From the dashboard's perspective, the visit never happened.
+So every time GPTBot crawls a page, I see nothing. The request is served, the crawler consumes it, and my analytics register zero. For the dashboard, that visit never happened.
 
-The irony was sharp. This site had gone out of its way to invite those crawlers. I had written a `robots.txt` that explicitly named all twelve of them with `Allow: /`. I had created `llms.txt` and `llms-full.txt` files — machine-readable summaries of the site's content and contact information, specifically for LLM consumption. I had added structured data to help AI systems understand what the site was about.
+The ironic part: this site had gone out of its way to invite those crawlers. A `robots.txt` that explicitly named all twelve with `Allow: /`. `llms.txt` and `llms-full.txt` files for LLM consumption. Structured data to help AI systems understand the content.
 
-I'd built a welcome mat. I had no idea if anyone was walking through.
+I'd opened the door for them. I had no idea if anyone was coming in.
 
-And it's not just AI bots. RSS readers, search engine crawlers, monitoring tools — the entire non-browser ecosystem is invisible to client-side analytics. I'd assumed "analytics" meant "JavaScript analytics" and never questioned it. That assumption was wrong.
+And it's not just AI bots. RSS readers, search engine crawlers, monitoring tools — everything that doesn't use a browser is invisible to client-side analytics. I'd been assuming "analytics" meant "JavaScript analytics" without questioning it.
 
 ---
 
-## The Solution Looked Like One File
+## The Solution
 
-The `functions/` directory is documented in the Cloudflare Pages docs: put a TypeScript file there, and Cloudflare auto-detects it and deploys it as edge middleware. Every request passes through it before being served.
+What I needed was simple: something that could inspect each request, look at the User-Agent header, and log the bot before serving the static content. The `functions/` directory in Cloudflare Pages does exactly that — drop a TypeScript file in there and it deploys as edge middleware.
 
-For most static sites, this is unnecessary. The whole appeal of a static site is that you don't need server-side logic. That's still true for 99.9% of what this site does.
-
-But middleware runs on every request regardless. And what I needed was exactly that — something that could inspect the request, look at the User-Agent header, and decide what to do before the static content got served.
-
-The solution was 122 lines. One file. No `wrangler.toml`. No new dependencies. No changes to the Astro build pipeline. Just a TypeScript file in `functions/` and a Cloudflare deployment that auto-detected it.
+One file. No `wrangler.toml`. No new dependencies. No changes to the Astro build.
 
 ---
 
@@ -74,7 +70,7 @@ interface EventContext {
 
 Cloudflare Pages Functions run in a Worker environment. The `EventContext` interface defines what the middleware receives: the incoming request, the environment (where I read secrets), a `next()` function to pass the request downstream, and `waitUntil()` for non-blocking async work.
 
-I defined these interfaces inline rather than installing `@cloudflare/workers-types`. One dependency avoided, zero tradeoffs — the types I need are narrow and stable.
+I defined these interfaces inline rather than installing `@cloudflare/workers-types`. The types I need are few and stable — not worth adding a dependency.
 
 ### The Bot List
 
@@ -95,7 +91,7 @@ const AI_BOT_PATTERNS: ReadonlyArray<{ pattern: RegExp; name: string }> = [
 ];
 ```
 
-Twelve patterns. These are the same twelve bots listed in `robots.txt` with explicit `Allow: /` rules. Not a coincidence — the welcome mat and the doorbell use the same list.
+Twelve patterns. These are the same twelve bots listed in `robots.txt` with explicit `Allow: /` rules. Not a coincidence — the open door and the sensor use the same list.
 
 Each entry has a regex pattern and a clean name. The names show up in analytics events, so I wanted them readable. "GPTBot" is more useful in a dashboard than the raw User-Agent string.
 
@@ -144,7 +140,7 @@ export async function onRequest(context: EventContext): Promise<Response> {
 }
 ```
 
-This is the core. Every request hits this function. The fast path is the first three lines: read the User-Agent, check for bot patterns, return `context.next()` immediately if there's no match. For human visitors, the overhead is one header read and twelve regex tests — microseconds, not milliseconds.
+Every request goes through this function. If it's not a bot, `context.next()` returns the response immediately — the overhead for human visitors is twelve regex tests, microseconds.
 
 If a bot is detected, two things happen: a console log (for real-time visibility in the Cloudflare dashboard) and a `context.waitUntil()` call to Umami.
 
@@ -210,11 +206,11 @@ async function sendToUmami(
 }
 ```
 
-A `fetch` to Umami's API. The whole function is wrapped in a try/catch with an empty catch block. If Umami is down, if the request times out, if the payload is malformed — the site serves normally and no one knows analytics failed. That's the right behavior for instrumentation.
+A `fetch` to Umami's API wrapped in try/catch with an empty catch block. If Umami is down or the request times out, the site serves normally. Analytics should never break anything.
 
 ---
 
-## Why These Specific Design Decisions
+## Decisions
 
 ### Regex Instead of a Library
 
@@ -233,9 +229,7 @@ return context.next();
 
 Then every bot visit would block waiting for the Umami API call to resolve before returning a response. For a bot that doesn't care about latency, this is pointless. For edge performance, it's actively bad.
 
-`context.waitUntil()` registers a promise to be resolved after the response is sent. The bot gets its response immediately. The Umami call runs in the background. The visitor's experience — even the bot's experience — is unchanged.
-
-This is a pattern from Service Workers and Cloudflare Workers: do the minimum required before responding, defer everything else. Analytics are definitionally "everything else."
+`context.waitUntil()` registers a promise that resolves after the response is sent. The bot gets its page immediately, the Umami call runs in the background. Do the minimum before responding, defer the rest.
 
 ### The Same Umami Instance
 
@@ -243,17 +237,7 @@ I track AI bots to the same Umami website as human visitors — not a separate p
 
 The alternative was a separate Umami site just for bots. I thought about it for about thirty seconds and decided it was over-engineering. I want to see bot traffic alongside human traffic — same dashboard, same timeline, same context. A bot visiting the blog the same week as a traffic spike from a shared article is interesting. In separate dashboards, that correlation is harder to spot.
 
-The environment variable `PUBLIC_UMAMI_WEBSITE_ID` is already set in the Cloudflare dashboard — the middleware reads it from `context.env`. I didn't add a new secret or a new environment variable. The infrastructure was already there. That's one of the things I like about Cloudflare Pages as a platform: the pieces fit together in ways you don't have to wire up yourself.
-
----
-
-## The Debugging I Did That I Shouldn't Have Had To
-
-I want to be honest about one thing: the first version didn't work. Not because of the middleware logic — because of a TypeScript error I introduced trying to be too clever.
-
-My original `buildUmamiPayload` function accepted a `userAgent` parameter to include in the payload. After I wrote it, I decided the bot name was more useful than the raw User-Agent string and removed the usage from the payload body. But I forgot to remove the parameter from the function signature. `astro check` flagged it: declared but never read. One-line fix. Twenty minutes of confused debugging because I'd been staring at the wrong section of the code.
-
-The lesson: when a build check fails after a small change, the error is almost always in the small change. I wasted time looking at the middleware logic when the problem was a function signature one screen up.
+The environment variable `PUBLIC_UMAMI_WEBSITE_ID` is already set in the Cloudflare dashboard — the middleware reads it from `context.env`. I didn't add a new secret or a new environment variable. The infrastructure was already there.
 
 ---
 
@@ -265,35 +249,11 @@ That's a real OpenAI crawler, reading one of my blog posts. I have no idea which
 
 In Umami, `ai_bot_visit` events show up in the custom events section with the bot name attached. I can filter by `bot = ClaudeBot`, see what pages Anthropic's crawler has visited, and compare that to the page view distribution from human readers. I can track whether bot traffic correlates with publishing new posts. I can see which sections of the site get crawled most.
 
-None of this was possible with client-side analytics. All of it is possible with 122 lines and one file.
+With client-side analytics none of this existed. With one middleware file, now it does.
 
----
+The list will need updates — there were five or six crawlers when I first put together `robots.txt`, there are twelve now, and by the time you read this there will probably be more. When I see an unfamiliar User-Agent in the logs that looks like an AI crawler, I add it: one line to the middleware, one line to `robots.txt`. Not perfect, but it works.
 
-## Maintaining It Going Forward
-
-The list will need updates. AI crawlers are proliferating. There were five or six when I first put together the `robots.txt` allow list. There are twelve now. By the time you read this, there will probably be more.
-
-My current process: when I see an unfamiliar bot User-Agent in the Cloudflare logs that looks like an AI crawler, I add it. Two changes — one to `AI_BOT_PATTERNS` in the middleware, one to `robots.txt`. Both files are in the same repository. The change is a one-line addition to each.
-
-I'm not monitoring for new bots actively. I'll catch them when they show up in logs as untracked traffic that a search shows is an AI crawler. Not perfect, but good enough for what this is: instrumentation for a personal site, not a production system.
-
-The only thing I'd do differently if I were building this for something bigger: read bot detection patterns from a KV store instead of hardcoding them in the middleware. That way, adding a new bot pattern is a dashboard update rather than a deploy. Something to know about before you need it.
-
----
-
-## The Bigger Picture
-
-This chapter is, at its surface, about one small middleware file. But I keep coming back to what it represents.
-
-The site was already built for AI — structured data, `llms.txt`, explicit allow rules. But "built for AI" meant "made content discoverable." It said nothing about whether AI systems were actually discovering it. The analytics blind spot wasn't a mistake I made. It was a gap in what the tools could see.
-
-Closing that gap didn't require a new product or a paid service. It required one edge function and the observation that a JavaScript snippet can't run in a crawler that doesn't execute JavaScript. Once that's obvious, the solution follows.
-
-There's something interesting in who does the most crawling and where they go. My hypothesis going in was that blog posts would dominate — long-form text is exactly what language model training scrapes for. I also expected the homepage and `llms.txt` to get traffic from crawlers that are doing a quick surface-level inventory before diving deeper. Whether that's actually what happens is what the data will eventually show.
-
-I think that's worth saying directly: most of the invisible things in web infrastructure aren't invisible because they're complicated to measure. They're invisible because the tools we've been using since 2005 were designed for browsers, and we've been assuming everything worth measuring has a browser attached.
-
-More of it doesn't. That's not changing.
+My hypothesis was that blog posts would dominate bot traffic — long-form text is what language models scrape the most. I also expected `llms.txt` to get visits from crawlers doing a quick inventory. Whether that's the case, the data will show.
 
 Let's keep building.
 

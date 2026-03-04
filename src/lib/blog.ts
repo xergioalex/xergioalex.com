@@ -1,7 +1,7 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { BLOG_PAGE_SIZE } from './constances';
+import { BLOG_PAGE_SIZE, SITE_TIMEZONE } from './constances';
 import type { BlogParamsType, BlogPostsResultType, SeriesInfo } from './types';
 
 function heroWebpExists(heroImage: string | undefined): boolean {
@@ -152,11 +152,21 @@ export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
 }
 
 /**
- * Check if a post is scheduled for the future (pubDate > now).
+ * Check if a post is scheduled for the future (pubDate date > today's date).
+ * Uses SITE_TIMEZONE (America/Bogota) so scheduling is consistent regardless
+ * of where the build runs (Cloudflare, local, etc.). A post dated "March 4"
+ * is scheduled until it's March 4 in Colombia.
  * Scheduled posts are excluded from production builds but visible in dev mode.
  */
 export function isScheduledPost(post: CollectionEntry<'blog'>): boolean {
-  return post.data.pubDate.valueOf() > Date.now();
+  const now = new Date();
+  const todayInTz = now.toLocaleDateString('en-CA', {
+    timeZone: SITE_TIMEZONE,
+  });
+  const pubDateInTz = post.data.pubDate.toLocaleDateString('en-CA', {
+    timeZone: SITE_TIMEZONE,
+  });
+  return pubDateInTz > todayInTz;
 }
 
 /**

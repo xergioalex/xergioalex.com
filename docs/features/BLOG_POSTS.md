@@ -528,7 +528,8 @@ Posts with a `pubDate` set to a **future date** are treated as scheduled posts. 
 ### How It Works
 
 - **No schema changes needed** — uses the existing `pubDate` field
-- A post is "scheduled" when `pubDate > Date.now()` at build time
+- A post is "scheduled" when its date (in `SITE_TIMEZONE`) is after today's date in that timezone
+- Uses `America/Bogota` (`SITE_TIMEZONE` in `src/lib/constances.ts`) so scheduling is consistent regardless of where the build runs (Cloudflare, local, etc.)
 - The `isScheduledPost()` utility in `src/lib/blog.ts` performs this check
 
 ### Behavior by Environment
