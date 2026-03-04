@@ -1,23 +1,49 @@
 # Blog Content Lifecycle
 
-Guide to blog post visibility with a focus on demo posts, the dev-only reference content that showcases blog features.
+Guide to blog post visibility states: published, scheduled, and demo.
 
 ## Overview
 
-Blog posts in this project are generally visible in production once published. The exception is **demo posts**, which are dev-only reference content stored in `_demo/` folders.
+Blog posts in this project have three visibility states based on their location and `pubDate`:
 
-**Key principle:** Demo posts are structural references for AI agents and developers. They are accessible by direct URL in local development but never appear in blog listings, tag pages, search, RSS, or production builds.
+1. **Published** — visible everywhere (production and dev)
+2. **Scheduled** — future `pubDate`, visible only in dev with an amber badge
+3. **Demo** — in `_demo/` folders, accessible only by direct URL in dev
 
 ## Post Visibility States
 
 ### Published Posts (Default)
 
-All posts in `src/content/blog/{lang}/` (outside `_demo/` folders) are published and visible in production.
+All posts in `src/content/blog/{lang}/` (outside `_demo/` folders) with a `pubDate` in the past or today are published and visible in production.
 
 **Behavior:**
 - Appear in blog listings, tag pages, RSS, and search
 - Accessible via direct URL in both dev and production
 - No special frontmatter required
+
+### Scheduled Posts
+
+Posts with a `pubDate` set to a **future date** are scheduled. They use the existing `pubDate` field — no schema changes needed.
+
+**Detection:** A post is scheduled if its date (in `SITE_TIMEZONE` = America/Bogota) is after today's date in that timezone. Checked by `isScheduledPost()` in `src/lib/blog.ts`:
+
+```typescript
+// Uses SITE_TIMEZONE (America/Bogota) for consistent scheduling
+const todayInTz = new Date().toLocaleDateString('en-CA', { timeZone: SITE_TIMEZONE });
+const pubDateInTz = post.data.pubDate.toLocaleDateString('en-CA', { timeZone: SITE_TIMEZONE });
+return pubDateInTz > todayInTz;
+```
+
+**Behavior:**
+- **Production:** Completely excluded — no routes, no listings, no search, no RSS
+- **Dev (listings/search/tags):** Visible in all listings with an amber "Scheduled" badge
+- **Dev (detail page):** Accessible with an amber banner showing the scheduled publication date
+
+**Visual indicators (dev only):**
+- Blog cards: Amber pill badge next to the date
+- Detail page: Amber banner below breadcrumb with publication date
+
+**How to schedule:** Set `pubDate` to a future date. After the date passes, rebuild and deploy.
 
 ### Demo Posts
 
@@ -123,14 +149,16 @@ The post will render normally but will not appear in any listings, search result
 
 ## Production Safety
 
-The following safeguards ensure demo content never leaks to production:
+The following safeguards ensure demo and scheduled content never leaks to production:
 
-1. **`getBlogPosts()`:** Filters out demo posts using `isDemoPost()` check
-2. **`getStaticPaths()`:** Tag and pagination routes exclude demo posts when generating static paths
-3. **Search API endpoints (`/api/posts-en.json`, `/api/posts-es.json`, `/api/posts.json` fallback):** Filter out demo posts in production builds
-4. **Demo folder:** `_demo/` posts are always filtered regardless of build mode
-5. **Demo tag:** Not generated in production builds (no demo posts reference it in visible content)
-6. **Direct URL builds:** In production, demo post routes are not generated at all
+1. **`getBlogPosts()`:** Filters out demo posts (`isDemoPost()`) and scheduled posts (`isScheduledPost()`) in production
+2. **`getStaticPaths()`:** Detail routes exclude both demo and scheduled posts in production
+3. **Search API endpoints:** Filter out demo posts; scheduled posts filtered via `getSearchIndex()`
+4. **RSS feeds:** Exclude both demo and scheduled posts
+5. **`getRelatedPosts()` and `getSeriesNavigation()`:** Exclude demo and scheduled posts in production
+6. **Demo folder:** `_demo/` posts are always filtered regardless of build mode
+7. **Demo tag:** Not generated in production builds (no demo posts reference it in visible content)
+8. **Direct URL builds:** In production, neither demo nor scheduled post routes are generated
 
 ### Verification
 
@@ -159,7 +187,7 @@ ls dist/blog/ | grep demo
 
 | File | Purpose |
 |------|---------|
-| `src/lib/blog.ts` | `isDemoPost()`, `getBlogPosts()` — demo detection and filtering |
+| `src/lib/blog.ts` | `isDemoPost()`, `isScheduledPost()`, `getBlogPosts()` — detection and filtering |
 | `src/content.config.ts` | Blog collection schema (no special demo field needed) |
 | `src/pages/blog/[...slug].astro` | Dynamic post route with `import.meta.env.DEV` check for demo access |
 | `src/pages/api/posts-en.json.ts` | EN search shard with demo post filtering |

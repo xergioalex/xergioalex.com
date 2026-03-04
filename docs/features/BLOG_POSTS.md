@@ -521,11 +521,66 @@ Blog post URLs are clean (no date prefix):
 | `scripts/optimize-images.mjs` | Staging image optimizer |
 | `scripts/optimize-existing-images.mjs` | One-off bulk optimizer |
 
+## Scheduled Posts
+
+Posts with a `pubDate` set to a **future date** are treated as scheduled posts. They are automatically hidden from production builds but visible during local development.
+
+### How It Works
+
+- **No schema changes needed** — uses the existing `pubDate` field
+- A post is "scheduled" when its date (in `SITE_TIMEZONE`) is after today's date in that timezone
+- Uses `America/Bogota` (`SITE_TIMEZONE` in `src/lib/constances.ts`) so scheduling is consistent regardless of where the build runs (Cloudflare, local, etc.)
+- The `isScheduledPost()` utility in `src/lib/blog.ts` performs this check
+
+### Behavior by Environment
+
+| Environment | Visibility | Badge |
+|-------------|-----------|-------|
+| `npm run dev` | Visible in all listings, search, series nav | Amber "Scheduled" badge on cards and detail page |
+| `npm run build` (production) | Completely excluded — no routes, no listings, no RSS, no search | N/A |
+
+### How to Schedule a Post
+
+1. Set `pubDate` to a future date in the post frontmatter:
+   ```yaml
+   pubDate: '2026-06-15'
+   ```
+2. The post is immediately visible in `npm run dev` with a "Scheduled" badge
+3. When you deploy (`npm run build`), the post is excluded from the build output
+4. After the `pubDate` passes, rebuild and deploy — the post becomes a normal published post
+
+### Visual Indicators (Dev Only)
+
+- **Blog cards:** Amber pill badge ("Scheduled" / "Programado") next to the publication date
+- **Detail page:** Amber banner below breadcrumb: "Scheduled post — This post will be published on {date}. It is only visible in development mode."
+
+### Filtered Locations
+
+Scheduled posts are excluded from all these in production builds:
+
+- Blog listings (`getBlogPosts()`)
+- Search index (`getSearchIndex()`)
+- Detail page routes (`getStaticPaths()`)
+- RSS feeds (`rss.xml`)
+- Related posts (`getRelatedPosts()`)
+- Series navigation (`getSeriesNavigation()`)
+
+### Key Files
+
+| File | Role |
+|------|------|
+| `src/lib/blog.ts` | `isScheduledPost()` function and all query filters |
+| `src/components/blog/BlogContainer.astro` | Passes `isScheduled` flag to card components |
+| `src/components/blog/BlogCard.svelte` | Renders amber badge |
+| `src/components/pages/blog/BlogPostPage.astro` | Renders amber banner |
+| `src/lib/translations/{en,es}.ts` | `scheduledBadge`, `scheduledBannerTitle`, `scheduledBannerMessage` |
+
 ## Content Lifecycle
 
-Posts are either published or demo. See **[Blog Content Lifecycle](./BLOG_CONTENT_LIFECYCLE.md)** for the complete guide on:
+Posts can be published, scheduled, or demo. See **[Blog Content Lifecycle](./BLOG_CONTENT_LIFECYCLE.md)** for the complete guide on:
 
 - Published posts — visible in production and dev
+- Scheduled posts — future `pubDate`, visible only in dev with badge
 - Demo posts (`_demo/` folder) — feature showcases, accessible only by direct URL in local dev mode
 
 ## Related Documentation

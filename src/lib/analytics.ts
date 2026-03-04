@@ -39,6 +39,7 @@ export const EVENTS = {
   SCROLL_DEPTH: 'scroll_depth',
   SCROLL_TO_TIMELINE: 'scroll_to_timeline',
   TIMELINE_CLICK: 'timeline_click',
+  AI_BOT_VISIT: 'ai_bot_visit',
 } as const;
 
 /**

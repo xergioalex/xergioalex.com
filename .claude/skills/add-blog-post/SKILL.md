@@ -69,7 +69,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 - `$HERO_IMAGE`: Hero image path (from `public/`)
 - `$SLUG`: Custom slug (default: kebab-case of title)
 - `$LANG`: Primary language, `en` or `es` (default: `en`). The other language version will be translated.
-- `$PUB_DATE`: Publication date in YYYY-MM-DD format (default: today's date).
+- `$PUB_DATE`: Publication date in YYYY-MM-DD format (default: today's date). **Scheduled posts:** If set to a future date, the post will be hidden from production builds but visible in dev with an amber "Scheduled" badge. See [Blog Posts — Scheduled Posts](../../../docs/features/BLOG_POSTS.md#scheduled-posts).
 - `$TYPE`: Article type — `blog`, `portfolio`, `tutorial` (default: `blog`, topic mode only)
 
 ## Reference Documentation
@@ -77,7 +77,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 **Source of truth** for all blog post conventions:
 
 - **[Blog Posts Feature Guide](../../../docs/features/BLOG_POSTS.md)** - File naming, directory structure, frontmatter schema, hero layouts, image organization, URL structure
-- **[Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Published and demo post visibility
+- **[Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Published, scheduled, and demo post visibility
 - **[Image Optimization Guide](../../../docs/features/IMAGE_OPTIMIZATION.md)** - Staging workflow, optimization presets, commands
 
 ## Quick Reference
@@ -147,12 +147,14 @@ ls public/images/blog/posts/ public/images/blog/shared/ 2>/dev/null
 
 **Topic mode only — plan article structure:**
 
-1. **Opening hook** — Personal, relatable opening (2-3 paragraphs)
+1. **Opening hook** — Personal, relatable opening (2-3 paragraphs). **Series posts: DO NOT open with a mechanical recap of all previous chapters** (e.g., "In chapter one I did X. In chapter two I did Y. In chapter three I did Z."). This pattern becomes robotic and impersonal as the series grows. Instead: open with the new chapter's own hook, and weave in references to prior chapters only when directly relevant — a single link, a short phrase, or an inline mention. The series navigation already shows readers the full chapter list; the opening should feel like a conversation, not an index.
 2. **Context/Why** — Why this matters, why the author did it
 3. **Core content** — Main story, breakdown, or explanation (3-6 sections)
 4. **Visual elements** — Place images, tables, code blocks where they add value
-5. **Closing** — Brief, forward-looking ("Let's keep building." / "A seguir construyendo.")
+5. **Closing** — Brief, forward-looking ("Let's keep building." / "A seguir construyendo."). **Series posts: Do NOT create a "Bridge to Chapter N" or teaser section** at the end that previews the next chapter. Each chapter should stand on its own — end with a satisfying conclusion, not a cliffhanger or preview. The series navigation already shows readers what comes next.
 6. **Resources** — Links to repos, tools, docs, external references (when applicable). **Do NOT list related articles or previous chapters** — if the post belongs to a series, those already appear in the series navigation below; listing them in Resources is redundant.
+
+**Series independence principle:** Each post in a series should read well on its own. Avoid explicit "In chapter N..." references. Instead: weave in context naturally with inline links, or simply state the fact without referencing which chapter covered it. A reader who lands on chapter 5 from a search engine should not feel lost.
 
 ### Step 3: Create Primary Language Version
 
@@ -386,6 +388,6 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 2.9.0   | 2026-03-03 | Scheduled posts: documented that future `$PUB_DATE` creates a scheduled post (hidden in prod, amber badge in dev). Updated lifecycle references. |
 | 2.8.0   | 2026-03-03 | No placeholder content: never leave [AUTHOR:], [TODO:], [TBD], [FIXME] in published posts. Added to Safety Checks and Definition of Done. |
 | 2.7.0   | 2026-03-03 | Resources section: do NOT list related articles or previous chapters when post belongs to a series. Added Guardrails subsection. |
-| 2.6.0   | 2026-03-02 | Enhanced series workflow: detailed steps for adding posts to existing series, creating new series, and escalation guidance. |

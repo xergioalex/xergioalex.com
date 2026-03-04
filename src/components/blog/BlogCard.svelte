@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
 import { EVENTS, trackEvent } from '@/lib/analytics';
+import { SITE_TIMEZONE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getHighlightedField, type SearchResult } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
@@ -99,6 +100,22 @@ $: seriesBadgeLabel =
       ? `${seriesTitle} · ${t.seriesChapterOf(seriesCurrent, seriesTotal)}`
       : t.seriesChapterOf(seriesCurrent, seriesTotal)
     : '';
+// Compute isScheduled client-side using SITE_TIMEZONE (America/Bogota) so it matches
+// the server build — consistent regardless of Cloudflare/local or user location
+$: isScheduled = (() => {
+  const serverVal = (post as any).isScheduled;
+  const pub = postData?.pubDate;
+  if (!pub) return !!serverVal;
+  const pubDate = typeof pub === 'string' ? new Date(pub) : pub;
+  if (Number.isNaN(pubDate.getTime())) return !!serverVal;
+  const todayInTz = new Date().toLocaleDateString('en-CA', {
+    timeZone: SITE_TIMEZONE,
+  });
+  const pubDateInTz = pubDate.toLocaleDateString('en-CA', {
+    timeZone: SITE_TIMEZONE,
+  });
+  return pubDateInTz > todayInTz;
+})();
 
 // Get highlighted title and description if search result is available
 $: displayTitle = searchQuery
@@ -167,6 +184,11 @@ $: displayDescription = searchQuery
             timeZone: 'UTC'
           })}
         </time>
+        {#if isScheduled}
+          <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+            {t.scheduledBadge}
+          </span>
+        {/if}
         {#if seriesCurrent && seriesTotal}
           <div class="group relative inline-flex items-center">
             <span
