@@ -45,7 +45,7 @@ And it's not just AI bots. RSS readers, search engine crawlers, monitoring tools
 
 What I needed was simple: something that could inspect each request, look at the User-Agent header, and log the bot before serving the static content. The `functions/` directory in Cloudflare Pages does exactly that — drop a TypeScript file in there and it deploys as edge middleware.
 
-One file. No `wrangler.toml`. No new dependencies. No changes to the Astro build.
+One file. No new dependencies, no changes to the Astro build.
 
 ---
 
@@ -91,7 +91,7 @@ const AI_BOT_PATTERNS: ReadonlyArray<{ pattern: RegExp; name: string }> = [
 ];
 ```
 
-Twelve patterns. These are the same twelve bots listed in `robots.txt` with explicit `Allow: /` rules. Not a coincidence — the open door and the sensor use the same list.
+These are the same bots listed in `robots.txt` with explicit `Allow: /` rules. Not a coincidence — the open door and the sensor use the same list.
 
 Each entry has a regex pattern and a clean name. The names show up in analytics events, so I wanted them readable. "GPTBot" is more useful in a dashboard than the raw User-Agent string.
 
@@ -174,7 +174,7 @@ function buildUmamiPayload(
 }
 ```
 
-Umami's server-side API accepts a JSON payload with a `type` and a `payload`. The event name is `ai_bot_visit` — the same name defined in the site's analytics catalog. The custom `data` object attaches the bot name and path, which means I can filter by bot in the Umami dashboard.
+Umami's server-side API accepts a JSON payload with a `type` and a `payload`. The event name is `ai_bot_visit` — the same one I use for all bot tracking. The custom `data` object attaches the bot name and path, which means I can filter by bot in the Umami dashboard.
 
 ### The Tracking Call
 
@@ -214,7 +214,7 @@ A `fetch` to Umami's API wrapped in try/catch with an empty catch block. If Umam
 
 ### Regex Instead of a Library
 
-There's no npm package for AI bot detection here. I considered it briefly, looked at the options, and decided the overhead wasn't worth it — both in bundle size and in dependency maintenance. Twelve regex patterns do the job. The patterns come from the official documentation for each bot (OpenAI, Anthropic, Google, etc.), and they're stable enough that a regex approach will outlast any library that wraps them.
+There's no npm package for AI bot detection here. I looked at a few — isbot, crawler-user-agents — and honestly, they do more than I need. Twelve regex patterns do the job. The patterns come from the official documentation for each bot (OpenAI, Anthropic, Google, etc.), and they're stable enough that a regex approach will outlast any library that wraps them.
 
 The tradeoff: when a new AI bot appears and I want to track it, I update the array and the `robots.txt` file. Two places. Manual, but obvious. If I used a library, I'd be waiting for a release cycle instead of making a two-line change.
 
@@ -243,11 +243,19 @@ The environment variable `PUBLIC_UMAMI_WEBSITE_ID` is already set in the Cloudfl
 
 ## What I Can See Now That I Couldn't Before
 
-The Cloudflare dashboard has a real-time log viewer. Within the first hour of deploying the middleware, I saw `[AI Bot] GPTBot → /blog/building-xergioalex-website/ (GET)` scroll past.
+The first deploy, nothing happened. No logs, no events. I thought I had a bug. Turns out I just had to wait — bots don't visit on your schedule. About an hour later, `[AI Bot] GPTBot → /blog/building-xergioalex-website/ (GET)` scrolled past in the Cloudflare real-time logs.
 
 That's a real OpenAI crawler, reading one of my blog posts. I have no idea which model training run it fed into, or whether the content ended up in any fine-tuning dataset. But I can see it happened. That's the thing. Before this, it was invisible. Now it's logged.
 
 In Umami, `ai_bot_visit` events show up in the custom events section with the bot name attached. I can filter by `bot = ClaudeBot`, see what pages Anthropic's crawler has visited, and compare that to the page view distribution from human readers. I can track whether bot traffic correlates with publishing new posts. I can see which sections of the site get crawled most.
+
+This is what the activity feed looks like — each `ai_bot_visit` event with the page the bot crawled:
+
+![Umami activity feed showing ai_bot_visit events on different pages of the site](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.png)
+
+And in the events chart, the `ai_bot_visit` events start showing up alongside the rest of the site's analytics — same dashboard, same timeline:
+
+![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
 
 With client-side analytics none of this existed. With one middleware file, now it does.
 

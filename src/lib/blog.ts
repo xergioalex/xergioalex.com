@@ -163,10 +163,11 @@ export function isScheduledPost(post: CollectionEntry<'blog'>): boolean {
   const todayInTz = now.toLocaleDateString('en-CA', {
     timeZone: SITE_TIMEZONE,
   });
-  const pubDateInTz = post.data.pubDate.toLocaleDateString('en-CA', {
-    timeZone: SITE_TIMEZONE,
-  });
-  return pubDateInTz > todayInTz;
+  // pubDate is a calendar date (e.g. "2026-03-04"), not a UTC moment.
+  // Astro parses it as midnight UTC, so converting to a timezone shifts it
+  // back a day. Extract the original date string directly from the ISO format.
+  const pubDateStr = post.data.pubDate.toISOString().slice(0, 10);
+  return pubDateStr > todayInTz;
 }
 
 /**
