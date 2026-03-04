@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import EntrepreneurTimeline from '@/components/entrepreneur/EntrepreneurTimeline.svelte';
 import JsonLd from '@/components/JsonLd.astro';
 import PageHero from '@/components/pages/PageHero.astro';
@@ -28,6 +29,13 @@ const { postsResult: posts } = await getBlogPosts({
   tag: 'entrepreneur',
   pageSize: 100,
 });
+
+const allTags = await getCollection('tags');
+const topicTagNames = allTags
+  .filter(
+    (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
+  )
+  .map((tag) => tag.data.name);
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -100,7 +108,7 @@ const breadcrumbSchema = {
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         {t.entrepreneurPage.timelineTitle}
       </h2>
-      <EntrepreneurTimeline client:visible posts={posts} lang={lang} />
+      <EntrepreneurTimeline client:visible posts={posts} lang={lang} {topicTagNames} />
     </div>
   </section>
 
