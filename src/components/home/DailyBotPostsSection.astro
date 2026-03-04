@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
-import { getPostSlug } from '@/lib/blog';
+import { getPostSlug, isDemoPost, isScheduledPost } from '@/lib/blog';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -25,7 +25,12 @@ const sectionSurface =
 
 const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter((post) => post.id.startsWith(`${lang}/`))
+  .filter(
+    (post) =>
+      post.id.startsWith(`${lang}/`) &&
+      !isDemoPost(post) &&
+      (import.meta.env.DEV || !isScheduledPost(post))
+  )
   .filter((post) => post.data.tags?.includes('dailybot'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 2);
@@ -63,9 +68,16 @@ const posts = allPosts
                   <p class="text-gray-600 dark:text-gray-300 mb-3">
                     {post.data.description}
                   </p>
-                  <span class="text-gray-600 dark:text-gray-300 text-sm">
-                    <FormattedDate date={post.data.pubDate} lang={lang} />
-                  </span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-600 dark:text-gray-300 text-sm">
+                      <FormattedDate date={post.data.pubDate} lang={lang} />
+                    </span>
+                    {isScheduledPost(post) && (
+                      <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                        {t.scheduledBadge}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </a>
             ))
