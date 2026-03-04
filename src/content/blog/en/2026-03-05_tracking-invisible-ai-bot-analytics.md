@@ -257,6 +257,12 @@ And in the events chart, the `ai_bot_visit` events start showing up alongside th
 
 ![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
 
+Because each event carries the `bot` property, I can break down traffic by crawler. Filtering by the `bot` property on `ai_bot_visit` gives me this — a clear picture of who's actually coming through the door:
+
+![Umami properties breakdown showing ai_bot_visit events by bot type — ChatGPT-User 49%, Amazonbot 38%, GPTBot 13%](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
+
+ChatGPT-User leading at 49%, followed by Amazonbot at 38% and GPTBot at 13%. Three bots out of twelve doing all the crawling — at least in the first few days. The other nine haven't shown up yet, or they visit less frequently. The data will tell over time.
+
 With client-side analytics none of this existed. With one middleware file, now it does.
 
 The list will need updates — there were five or six crawlers when I first put together `robots.txt`, there are twelve now, and by the time you read this there will probably be more. When I see an unfamiliar User-Agent in the logs that looks like an AI crawler, I add it: one line to the middleware, one line to `robots.txt`. Not perfect, but it works.
