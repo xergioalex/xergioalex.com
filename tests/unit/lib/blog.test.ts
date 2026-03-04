@@ -6,18 +6,21 @@ import {
 	getReadingTimeFromContent,
 	getWordCount,
 	isDemoPost,
+	isScheduledPost,
 } from '@/lib/blog';
 
 import {
 	demoEnglishPost,
 	demoSpanishPost,
 	draftPost,
+	draftScheduledPost,
 	emptyContent,
 	longContent,
 	minimalPost,
 	publishedEnglishPost,
 	publishedSpanishPost,
 	sampleMarkdownContent,
+	scheduledPost,
 	shortContent,
 } from '../../fixtures/posts';
 
@@ -95,6 +98,39 @@ describe('isDemoPost', () => {
 
 	it('returns false for minimal posts', () => {
 		expect(isDemoPost(minimalPost as never)).toBe(false);
+	});
+});
+
+// ─── isScheduledPost ────────────────────────────────────
+
+describe('isScheduledPost', () => {
+	it('returns true for posts with future pubDate', () => {
+		expect(isScheduledPost(scheduledPost as never)).toBe(true);
+	});
+
+	it('returns true for another future-dated post', () => {
+		expect(isScheduledPost(draftScheduledPost as never)).toBe(true);
+	});
+
+	it('returns false for posts with past pubDate', () => {
+		expect(isScheduledPost(publishedEnglishPost as never)).toBe(false);
+	});
+
+	it("returns false for today's pubDate", () => {
+		const todayPost = {
+			id: 'en/2024-01-01_today-post',
+			data: {
+				title: 'Today Post',
+				description: 'A post published today',
+				pubDate: new Date(),
+				tags: ['tech'],
+			},
+		};
+		expect(isScheduledPost(todayPost as never)).toBe(false);
+	});
+
+	it('returns false for demo posts (past date)', () => {
+		expect(isScheduledPost(demoEnglishPost as never)).toBe(false);
 	});
 });
 

@@ -9,9 +9,7 @@ series: "building-xergioalex"
 seriesOrder: 3
 ---
 
-En el [primer post](/es/blog/building-xergioalex-website/), conté la historia de construir este sitio — desde una página de aterrizaje con una foto y cinco enlaces a redes sociales hasta una plataforma personal completa con Astro, Svelte, contenido bilingüe y una arquitectura lista para IA. En el [segundo post](/es/blog/lighthouse-perfect-scores/), profundicé en cómo logré puntajes perfectos en Lighthouse — 100/100/100/100 en Performance, Accessibility, Best Practices y SEO, tanto en móvil como en escritorio.
-
-Ahora el sitio estaba construido. Era rápido. Era accesible. Estaba indexado.
+El sitio estaba construido. Los [puntajes de Lighthouse](/es/blog/lighthouse-perfect-scores/) eran 100 en todas las categorías — Performance, Accessibility, Best Practices, SEO. Todo lo que podía medir sobre el sitio en sí se veía perfecto.
 
 Pero no tenía idea si alguien lo estaba leyendo.
 

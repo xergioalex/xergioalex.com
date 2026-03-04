@@ -9,9 +9,7 @@ series: "building-xergioalex"
 seriesOrder: 5
 ---
 
-En el [capítulo uno](/es/blog/building-xergioalex-website/), construí el sitio — Astro, Svelte, Content Collections, toda la arquitectura desde cero. En el [capítulo dos](/es/blog/lighthouse-perfect-scores/), lo optimicé hasta que cada categoría de Lighthouse llegó a 100. En el [capítulo tres](/es/blog/measuring-what-matters-free-analytics/), agregué un stack completo de analytics sin perder esos puntajes. En el [capítulo cuatro](/es/blog/building-blog-without-backend/), diseñé el sistema de blog completo: tags, búsqueda, series y arquitectura de contenido.
-
-Hay un hilo que ha estado presente en cada capítulo, mencionado frecuentemente pero nunca con su propia historia: este sitio habla dos idiomas.
+Hay un hilo que ha estado presente en cada capítulo de esta serie, mencionado frecuentemente pero nunca con su propia historia: este sitio habla dos idiomas.
 
 Cada página, cada artículo del blog, cada botón, cada enlace de navegación — todo existe tanto en inglés como en español. No como algo que se agregó al final como parche, sino como una decisión arquitectónica de primera clase que moldeó todo el código desde el día uno.
 

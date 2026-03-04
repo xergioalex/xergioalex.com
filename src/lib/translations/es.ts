@@ -890,6 +890,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesToC: 'Todos los capítulos',
   seriesChapterOf: (current, total) => `Capítulo ${current} de ${total}`,
 
+  // Scheduled posts (dev-only indicators)
+  scheduledBadge: 'Programado',
+  scheduledBannerTitle: 'Post programado',
+  scheduledBannerMessage: (date) =>
+    `Este post será publicado el ${date}. Solo es visible en modo desarrollo.`,
+
   // Tags
   postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
   allTags: 'Todas las etiquetas',

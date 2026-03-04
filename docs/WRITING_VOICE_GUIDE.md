@@ -54,6 +54,9 @@ Grounded in evidence, admits uncertainty ("I think that answer landed"). Never b
 | No failure narratives | "Astro changed everything for me. When I first discovered it, the feeling was immediate" | "I spent hours on a broken config. Nothing rendered. Then I found the docs." |
 | Length explosion | 5,000-10,000 word posts covering every angle | 2,500-4,000 words. Cut redundant evidence, merge similar sections |
 | AI vocabulary | "genuinely," "comprehensive," "this is where X shines," "radical premise," "beautifully simple" | "actually," "real," "this is where they win," "simple bet," "small" |
+| Series recap dump | "In chapter one I did X. In chapter two I did Y. In chapter three I did Z. In chapter four I did W." — enumerating every prior chapter at the opening of each new one | Open with the new chapter's own hook. Reference prior chapters only when directly relevant — a phrase, a link, a sentence. The series navigation shows the full list; the opening should feel like a conversation, not an index. |
+| Bridge/teaser sections | "## The Bridge to Chapter 7" — ending a chapter with a long preview of the next one, naming specific features, creating a cliffhanger | End each chapter on its own conclusion. The series navigation shows what's next. A brief forward-looking sentence ("Let's keep building.") is fine; a multi-paragraph teaser is not. |
+| Excessive cross-references | "In chapter three I covered X. In chapter six I mentioned Y. As I explained in chapter one..." — multiple explicit "chapter N" references throughout the body | Weave context naturally: state the fact, optionally link it. "The analytics stack uses Umami" is better than "In chapter three, I set up Umami." Each post should stand on its own. |
 
 ## 4. Humanization Patterns to INCLUDE
 

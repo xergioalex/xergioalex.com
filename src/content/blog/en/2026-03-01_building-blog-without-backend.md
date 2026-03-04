@@ -9,13 +9,11 @@ series: "building-xergioalex"
 seriesOrder: 4
 ---
 
-In [chapter one](/blog/building-xergioalex-website/), I built the site — Astro, Svelte, Content Collections, bilingual content, the whole architecture from scratch. In [chapter two](/blog/lighthouse-perfect-scores/), I optimized it until every Lighthouse category hit 100. In [chapter three](/blog/measuring-what-matters-free-analytics/), I added a complete analytics stack without losing those scores or adding a single cookie banner.
+Running a blog is not the same as running a site. A site is a set of pages. A blog is a system — posts that need to be discovered, filtered, searched, grouped, related to each other, and served to readers in multiple languages. With a handful of posts, that is trivial. As the library grows, you start feeling the structure. At hundreds of posts, the architecture either holds or it doesn't.
 
-The site was built, fast, indexed, and measured.
+The site was [built](/blog/building-xergioalex-website/), [fast](/blog/lighthouse-perfect-scores/), and [measured](/blog/measuring-what-matters-free-analytics/). Now it needed a blog engine that could scale without a server.
 
-But running a blog is not the same as running a site. A site is a set of pages. A blog is a system — posts that need to be discovered, filtered, searched, grouped, related to each other, and served to readers in multiple languages. With a handful of posts, that is trivial. As the library grows, you start feeling the structure. At hundreds of posts, the architecture either holds or it doesn't.
-
-Chapter four: how the blog actually works.
+This is how I built it.
 
 ---
 

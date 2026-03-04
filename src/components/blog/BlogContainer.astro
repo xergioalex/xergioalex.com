@@ -1,6 +1,11 @@
 ---
 import StaticBlogSearch from '@/components/blog/StaticBlogSearch.svelte';
-import { getPostLanguage, getPostSlug, groupPostTags } from '@/lib/blog';
+import {
+  getPostLanguage,
+  getPostSlug,
+  groupPostTags,
+  isScheduledPost,
+} from '@/lib/blog';
 import type { BlogPostsResultType } from '@/lib/types';
 
 export interface Props {
@@ -28,6 +33,7 @@ const lightweightPosts = await Promise.all(
       seriesCurrent: (post as { seriesCurrent?: number }).seriesCurrent,
       seriesTotal: (post as { seriesTotal?: number }).seriesTotal,
       seriesTitle: (post as { seriesTitle?: string }).seriesTitle,
+      isScheduled: isScheduledPost(post),
     };
   })
 );

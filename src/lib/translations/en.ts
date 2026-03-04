@@ -879,6 +879,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesToC: 'All chapters',
   seriesChapterOf: (current, total) => `Chapter ${current} of ${total}`,
 
+  // Scheduled posts (dev-only indicators)
+  scheduledBadge: 'Scheduled',
+  scheduledBannerTitle: 'Scheduled post',
+  scheduledBannerMessage: (date) =>
+    `This post will be published on ${date}. It is only visible in development mode.`,
+
   // Tags
   postsTagged: (tag) => `Posts tagged "${tag}"`,
   allTags: 'All Tags',
