@@ -91,6 +91,10 @@ The integration was straightforward. One `<script>` tag in `BaseHead.astro`, con
 
 If the environment variable is not configured — like in local development — the script simply does not render. Zero overhead.
 
+This is what the Umami dashboard looks like one day after going live — visitors, views, bounce rate, visit duration, all in one place:
+
+![Umami dashboard showing 305 visitors, 333 visits, 473 views, 85% bounce rate and 1m 8s visit duration with a traffic chart over 24 hours](/images/blog/posts/measuring-what-matters-free-analytics/umami-dashboard-overview.png)
+
 ### Umami Custom Events — Click Tracking Without Extra Weight
 
 Umami is not only page views. It also supports custom events, which lets me track meaningful clicks without adding a second behavior-recording script.
@@ -101,6 +105,10 @@ For a blog, this gives actionable data with minimal payload:
 - **Do readers use language switchers or tags?** Track filter and navigation interactions.
 
 The instrumentation is explicit and privacy-friendly: only the events I decide to track are sent.
+
+Here's what the events section looks like — each event type color-coded in the chart, with counts below:
+
+![Umami events dashboard showing 243 events across 8 unique event types including scroll_depth, nav_click, blog_card_click and ai_bot_visit](/images/blog/posts/measuring-what-matters-free-analytics/umami-events-chart.png)
 
 ### Google Search Console + Bing Webmaster Tools — The SEO Layer
 
@@ -193,6 +201,34 @@ export const ANALYTICS = {
 ```
 
 All variables use Astro's `PUBLIC_` prefix convention, which makes them available at build time for client-side rendering. The `as const` assertion gives TypeScript full type inference over the configuration.
+
+---
+
+## The First Day of Data
+
+One day after configuring everything, the dashboard was already telling a story. Here's what showed up.
+
+Which pages get the most visits — the first post in the series dominated with 82% of traffic:
+
+![Umami pages report showing top visited pages, led by the Astro and Svelte blog post at 82%](/images/blog/posts/measuring-what-matters-free-analytics/umami-top-pages.png)
+
+Individual visitor sessions — country, city, browser, device, all without cookies:
+
+![Umami activity table showing individual visitor sessions from Colombia, United States, Canada, Germany, Portugal with browser and device details](/images/blog/posts/measuring-what-matters-free-analytics/umami-sessions-activity.png)
+
+The browser breakdown — Chrome leads at 39%, followed by iOS and Safari:
+
+![Umami environment panel showing browser distribution: Chrome 39%, iOS 25%, Safari 13%, Firefox 9%](/images/blog/posts/measuring-what-matters-free-analytics/umami-browsers.png)
+
+Where visitors come from — 11 countries in the first 24 hours, with the US at 55% and Colombia at 7%:
+
+![Umami location panel showing visitor countries: United States 55%, Canada 9%, Colombia 7%, Germany 7%, United Kingdom 5%](/images/blog/posts/measuring-what-matters-free-analytics/umami-countries.png)
+
+And the geographic view with the traffic heatmap — when visitors arrive during the week:
+
+![World map showing visitor locations and a traffic heatmap grid by day and hour](/images/blog/posts/measuring-what-matters-free-analytics/umami-world-map-traffic.png)
+
+All of this from a 2KB script, no cookies, and zero impact on Lighthouse scores.
 
 ---
 
