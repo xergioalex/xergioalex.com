@@ -1,5 +1,6 @@
 <script lang="ts">
 import { EVENTS, trackEvent } from '@/lib/analytics';
+import { SITE_TIMEZONE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -24,9 +25,20 @@ interface SeriesPosition {
 
 export let posts: PostData[] = [];
 export let lang: Language = 'en';
+export let topicTagNames: string[] = [];
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
+
+function isPostScheduled(pubDate: Date): boolean {
+  const d = typeof pubDate === 'string' ? new Date(pubDate) : pubDate;
+  if (Number.isNaN(d.getTime())) return false;
+  const todayInTz = new Date().toLocaleDateString('en-CA', {
+    timeZone: SITE_TIMEZONE,
+  });
+  const pubDateStr = d.toISOString().slice(0, 10);
+  return pubDateStr > todayInTz;
+}
 
 function getPostSlug(postId: string): string {
   const parts = postId.split('/');
@@ -184,6 +196,11 @@ $: seriesPositionById = getSeriesPositionById(posts);
                 <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(post.data.pubDate)}
                 </time>
+                {#if isPostScheduled(post.data.pubDate)}
+                  <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                    {t.scheduledBadge}
+                  </span>
+                {/if}
                 {#if seriesPosition}
                   <span
                     class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200"
@@ -194,12 +211,20 @@ $: seriesPositionById = getSeriesPositionById(posts);
                   </span>
                 {/if}
                 {#if post.data.tags && post.data.tags.length > 0}
-                  {#each post.data.tags as tag}
+                  {#each post.data.tags.filter((tag) => !topicTagNames.includes(tag)) as tag}
                     <a
                       href={`${prefix}/blog/tag/${tag}/`}
                       class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
                     >
                       #{t.tagNames[tag] || tag}
+                    </a>
+                  {/each}
+                  {#each post.data.tags.filter((tag) => topicTagNames.includes(tag)) as topic}
+                    <a
+                      href={`${prefix}/blog/tag/${topic}/`}
+                      class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+                    >
+                      {t.tagNames[topic] || topic}
                     </a>
                   {/each}
                 {/if}

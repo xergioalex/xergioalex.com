@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import DailyBotTimeline from '@/components/dailybot/DailyBotTimeline.svelte';
 import JsonLd from '@/components/JsonLd.astro';
 import HighlightCard from '@/components/pages/HighlightCard.astro';
@@ -28,6 +29,13 @@ const { postsResult: posts } = await getBlogPosts({
   tag: 'dailybot',
   pageSize: 100,
 });
+
+const allTags = await getCollection('tags');
+const topicTagNames = allTags
+  .filter(
+    (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
+  )
+  .map((tag) => tag.data.name);
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -120,7 +128,7 @@ const breadcrumbSchema = {
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         {t.dailybotPage.timelineTitle}
       </h2>
-      <DailyBotTimeline client:visible posts={posts} lang={lang} />
+      <DailyBotTimeline client:visible posts={posts} lang={lang} {topicTagNames} />
     </div>
   </section>
 
