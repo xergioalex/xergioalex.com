@@ -51,7 +51,7 @@ const SPIDER_CRAWLER_PATTERN =
 
 /** Well-known non-AI bots to ignore (search engines, SEO tools, uptime monitors, etc.) */
 const IGNORED_BOTS_PATTERN =
-  /Googlebot|bingbot|YandexBot|Baiduspider|DuckDuckBot|Slurp|facebot|ia_archiver|Uptimebot|UptimeRobot|pingdom|StatusCake|NodePing|Site24x7|Checkly|DatadogSynthetics|NewRelicPinger|Better Uptime|AhrefsBot|SemrushBot|DataForSeoBot|MJ12bot|Discordbot|PetalBot|Barkrowler|BitSightBot|Jetslide|archive\.org_bot/i;
+  /Googlebot|bingbot|YandexBot|Baiduspider|DuckDuckBot|Slurp|facebot|ia_archiver|Uptimebot|UptimeRobot|pingdom|StatusCake|NodePing|Site24x7|Checkly|DatadogSynthetics|NewRelicPinger|Better Uptime|AhrefsBot|SemrushBot|DataForSeoBot|MJ12bot|Discordbot|PetalBot|Barkrowler|BitSightBot|Jetslide|archive\.org_bot|RafineriBot/i;
 
 const UMAMI_API_URL = 'https://cloud.umami.is/api/send';
 
