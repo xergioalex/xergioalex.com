@@ -249,6 +249,14 @@ That's a real OpenAI crawler, reading one of my blog posts. I have no idea which
 
 In Umami, `ai_bot_visit` events show up in the custom events section with the bot name attached. I can filter by `bot = ClaudeBot`, see what pages Anthropic's crawler has visited, and compare that to the page view distribution from human readers. I can track whether bot traffic correlates with publishing new posts. I can see which sections of the site get crawled most.
 
+This is what the activity feed looks like — each `ai_bot_visit` event with the page the bot crawled:
+
+![Umami activity feed showing ai_bot_visit events on different pages of the site](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.png)
+
+And in the events chart, the `ai_bot_visit` events start showing up alongside the rest of the site's analytics — same dashboard, same timeline:
+
+![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
+
 With client-side analytics none of this existed. With one middleware file, now it does.
 
 The list will need updates — there were five or six crawlers when I first put together `robots.txt`, there are twelve now, and by the time you read this there will probably be more. When I see an unfamiliar User-Agent in the logs that looks like an AI crawler, I add it: one line to the middleware, one line to `robots.txt`. Not perfect, but it works.
