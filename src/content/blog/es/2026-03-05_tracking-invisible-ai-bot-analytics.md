@@ -1,5 +1,5 @@
 ---
-title: "Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA sin JavaScript"
+title: "Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA sin JavaScript del Lado del Cliente"
 description: "Un solo archivo de middleware en Cloudflare Pages para ver lo que las analíticas JavaScript no pueden: los crawlers de IA que visitan el sitio."
 pubDate: "2026-03-05"
 heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
