@@ -165,7 +165,7 @@ export async function onRequest(context: EventContext): Promise<Response> {
       );
     }
 
-    return await context.next();
+    return context.next();
   }
 
   // Check for unknown bots
@@ -190,5 +190,5 @@ export async function onRequest(context: EventContext): Promise<Response> {
     }
   }
 
-  return await context.next();
+  return context.next();
 }
