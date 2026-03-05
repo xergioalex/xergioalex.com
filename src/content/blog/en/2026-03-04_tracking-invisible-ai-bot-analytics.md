@@ -1,7 +1,7 @@
 ---
 title: "Tracking the Invisible: How I Built AI Bot Analytics with Zero Client-Side JavaScript"
 description: "A single Cloudflare Pages middleware file to see what JavaScript analytics can't: the AI crawlers visiting the site."
-pubDate: "2026-03-05"
+pubDate: "2026-03-04T14:00:00"
 heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development", "ai"]

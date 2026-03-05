@@ -1,7 +1,7 @@
 ---
 title: "The Best Way to Deploy Your Astro Site for Free"
 description: "After years deploying static sites on GitHub Pages, I evaluated the free options and landed on Cloudflare Pages. Here's what I learned and what surprised me."
-pubDate: "2026-03-04"
+pubDate: "2026-03-04T10:00:00"
 heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "web-development"]
