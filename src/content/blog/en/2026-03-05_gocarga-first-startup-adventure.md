@@ -1,5 +1,5 @@
 ---
-title: "GoCarga: My First Startup Didn't Survive. What It Taught Me Did."
+title: "GoCarga: My First Startup Adventure and the Art of the Pitch"
 description: "How building a cargo transport platform with university friends taught me the most valuable entrepreneurial skill: telling a story that makes people believe."
 pubDate: 2026-03-05
 heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
