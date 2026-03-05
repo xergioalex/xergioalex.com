@@ -85,7 +85,7 @@ No era perfecta. Pero era real. Y estaba resolviendo un problema real que person
 
 A finales de ese año, la Cámara de Comercio de Pereira organizó la décima edición de Expocamello — una feria de emprendimiento que convoca proyectos de toda la región. Presentamos GoCarga y quedamos seleccionados como uno de los 5 o 6 finalistas entre más de 200 proyectos.
 
-Expusimos en tarima ante miembros de la Red Nacional de Ángeles Inversionistas, respaldada por Fundación Bavaria. Inversionistas reales. Apostas reales. Presión real.
+Expusimos en tarima ante miembros de la Red Nacional de Ángeles Inversionistas, respaldada por Fundación Bavaria. Inversionistas reales. Apostas reales. Presión real. [Las diapositivas de ese pitch](https://docs.google.com/presentation/d/0Bxjo-NvH2A07a1VPbHZXY3lYSFE/edit?usp=sharing&ouid=104916662745510468500&resourcekey=0-U-7VThFjoigTn2jhEkKTog&rtpof=true&sd=true) todavía existen en algún rincón de Google Drive.
 
 Armar nuestro stand fue una de las cosas que recuerdo con más cariño. Era el primero que hacíamos — diseñamos el banner, escogimos los colores, armamos el layout. Incluso mandamos a hacer tarjetas de presentación. De las de verdad, con el nombre y el cargo de cada uno. Verlas ahora se siente como una cápsula del tiempo — cuatro estudiantes universitarios que se pusieron títulos y los imprimieron en cartulina.
 
@@ -162,6 +162,7 @@ A seguir construyendo.
 
 - [El artículo de Alejandro Pinto sobre GoCarga](https://www.alejandropinto.com/emprendimiento/aplicacion-web-transporte-carga-colombia/) — La perspectiva de mi cofundador sobre el proyecto
 - [Fotos de nuestro stand en Expocamello 2014](https://www.facebook.com/photo?fbid=832763530102079&set=a.404874458455319) — El stand de GoCarga en la feria
+- [Diapositivas del pitch de GoCarga — Fundación Bavaria](https://docs.google.com/presentation/d/0Bxjo-NvH2A07a1VPbHZXY3lYSFE/edit?usp=sharing&ouid=104916662745510468500&resourcekey=0-U-7VThFjoigTn2jhEkKTog&rtpof=true&sd=true) — Las diapositivas reales del pitch ante ángeles inversionistas
 - [GoCarga en Facebook](https://www.facebook.com/GoCarga) — La página original
 - [Apps.co](https://apps.co/) — El programa de startups de MinTIC que nos respaldó
 - [GoCarga en Twitter/X](https://x.com/GoCarga) — Nuestra cuenta original de Twitter
