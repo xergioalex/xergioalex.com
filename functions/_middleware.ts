@@ -147,24 +147,6 @@ async function sendToUmami(
   }
 }
 
-/** Add X-Robots-Tag: noindex on *.pages.dev to prevent duplicate indexing */
-function withNoIndexIfPagesDev(
-  request: Request,
-  response: Response
-): Response {
-  const hostname = new URL(request.url).hostname;
-  if (hostname.endsWith('.pages.dev')) {
-    const headers = new Headers(response.headers);
-    headers.set('X-Robots-Tag', 'noindex, nofollow');
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers,
-    });
-  }
-  return response;
-}
-
 export async function onRequest(context: EventContext): Promise<Response> {
   const userAgent = context.request.headers.get('user-agent') || '';
   const botName = detectAiBot(userAgent);
@@ -183,8 +165,7 @@ export async function onRequest(context: EventContext): Promise<Response> {
       );
     }
 
-    const response = await context.next();
-    return withNoIndexIfPagesDev(context.request, response);
+    return await context.next();
   }
 
   // Check for unknown bots
@@ -209,6 +190,5 @@ export async function onRequest(context: EventContext): Promise<Response> {
     }
   }
 
-  const response = await context.next();
-  return withNoIndexIfPagesDev(context.request, response);
+  return await context.next();
 }
