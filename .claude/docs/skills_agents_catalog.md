@@ -276,8 +276,49 @@ Skills and agents use the **Agent Skills open standard** (agentskills.io) for cr
 | `tools`/`disallowedTools` (agents) | Yes | Ignored | Ignored |
 | `permissionMode` (agents) | Yes | Ignored | Ignored |
 | Custom fields (tier, intent, etc.) | Ignored | Ignored | Ignored |
+| Team agents (parallel execution) | Yes | Ignored | Ignored |
 
 **Key insight**: The `model` column above reflects Claude Code routing. Other tools ignore this field and use their default model.
+
+---
+
+## Execution Modes
+
+Plans and tasks can be executed in different modes depending on complexity and parallelism requirements.
+
+| Mode | Support | Token Cost | Best For | Description |
+|------|---------|-----------|----------|-------------|
+| Sequential | All agents | Lowest | Dependent tasks, simple plans | Default — tasks one at a time, in order |
+| Subagents | Claude Code | Low-Medium | Focused research, quick helpers | Helper agents within session, report back only |
+| Team Agents | Claude Code only | High | 3+ parallel independent tasks | Multiple instances with shared task list and messaging |
+| Orchestrator | All agents | Varies | Multi-repo feature work | Parent DWP spawns child DWPs in sub-repos |
+
+### When to Use Each Mode
+
+| Scenario | Recommended Mode | Why |
+|----------|-----------------|-----|
+| Tasks depend on each other | Sequential | No parallelism benefit |
+| Quick focused sub-task | Subagents | Lower overhead than team agents |
+| 3+ independent parallel tasks | Team Agents | Shared coordination, inter-agent messaging |
+| Same-file edits | Sequential | Teammates would overwrite each other |
+| Multi-repo changes | Orchestrator | Each repo gets own DWP |
+| Simple single-session work | Sequential | Team overhead exceeds benefit |
+
+### Execution Mode Integration
+
+```
+Sequential (default)     Subagents              Team Agents
+---------------------   ----------              -----------
+Task 1 -> Task 2 ->    Main --> Sub1            Lead --> Teammate1
+Task 3 -> Task 4         |<---- result             |<---- messages
+                        Main --> Sub2            Lead --> Teammate2
+                          |<---- result             |<---- messages
+                                                 Lead --> Teammate3
+                                                    |<---- messages
+                                                 Shared task list
+```
+
+> Team agents are used for DWP parallel task groups. See [Team Agents Reference](../../docs/technical/TEAM_AGENTS_REFERENCE.md).
 
 ---
 
@@ -302,9 +343,9 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-03-05 | Team agents execution modes | Added Execution Modes section with comparison table, updated compatibility notes, added team agents integration to interaction map. |
 | 2026-03-03 | content-writer agent v1.4.0 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist (from PLAN_anti_ai_slop_audit). |
 | 2026-03-03 | promote-post skill added | New Tier 2 skill for generating social media content (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) for any blog post. |
-| 2026-03-02 | Mandatory blog creation policy | Marked `add-blog-post` as mandatory for new blog post creation in catalog workflows and domain guidance. |
 
 ---
 
