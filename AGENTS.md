@@ -369,6 +369,17 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - **Management:** `/skill-list`, `/agent-list`, `/skill-create`, `/agent-create`
 - **Full catalog:** [Skills & Agents Catalog](.claude/docs/skills_agents_catalog.md)
 
+### Execution Modes
+
+| Mode | Support | Description |
+|------|---------|-------------|
+| Sequential | All agents | Default — tasks one at a time |
+| Subagents | Claude Code | Helper agents within session |
+| Team Agents | Claude Code only | Parallel instances with shared coordination |
+| Orchestrator | All agents | Child DWPs in sub-repos |
+
+See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details.
+
 ## Conventional Commits
 
 **Format:** `<type>: <description>`
