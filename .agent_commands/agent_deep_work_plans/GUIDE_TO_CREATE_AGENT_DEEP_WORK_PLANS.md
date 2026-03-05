@@ -897,7 +897,96 @@ The full cycle: Catalog → Plan (input) → Execution → Discovery → Catalog
 
 ---
 
-## 12. Summary
+## 12. Team Agents Execution Mode (Claude Code Only)
+
+> **Note:** This section applies to Claude Code only. Other AI agents (Cursor, Codex, Gemini) should ignore team agents configuration and execute all tasks sequentially.
+
+Team agents allow parallel execution of independent tasks within a plan. This is an **optional optimization** — all plans work sequentially by default.
+
+**Official docs:** https://code.claude.com/docs/en/agent-teams
+**Reference:** [Team Agents Reference](../../docs/technical/TEAM_AGENTS_REFERENCE.md)
+
+**When to use:** Plans with 3+ tasks that work on different files/modules with no data dependencies.
+**When NOT to use:** Same-file edits, highly sequential work, simple tasks.
+
+### 12.1. Parallel Task Groups (in plan README)
+
+Add at the end of the plan README, after all standard sections:
+
+```markdown
+## Team Agents Configuration (Claude Code Only)
+
+> **Note:** This section is used by Claude Code team agents for parallel execution.
+> Other AI agents should ignore this section and execute all tasks sequentially.
+
+### Parallel Task Groups
+
+| Group | Tasks | Teammates | Description |
+|-------|-------|-----------|-------------|
+| Sequential | 1-2 | Lead only | Setup / prerequisites |
+| Parallel A | 3, 4, 5 | 3 teammates | Independent implementation |
+| Sequential | 6 | Lead only | Integration checkpoint |
+| Sequential | 7, 8 | Lead only | Mandatory final tasks |
+
+### Teammate Roles
+
+| Role | Assigned Tasks | Model | Spawn Prompt |
+|------|---------------|-------|-------------|
+| {Role Name} | {N} | sonnet | "{context-specific prompt}" |
+```
+
+### 12.2. Task File Metadata (in task files)
+
+Add at the end of task files, after the Completion & Log section:
+
+```markdown
+## Team Agents Metadata (Claude Code Only)
+
+- **Parallel Group:** {A/B/C...}
+- **Teammate Role:** {descriptive role name}
+- **Can Run With:** Tasks {list of concurrent tasks}
+- **Blocks:** Task {N} (tasks that depend on this one)
+- **Files Owned:** {paths this task exclusively modifies}
+```
+
+### 12.3. Progressive Enhancement Rules
+
+**Critical:** Team agents additions are optimizations, NOT requirements.
+
+1. **ADDITIVE ONLY** — Never put required information in team agents sections
+2. **AFTER standard sections** — Team agents metadata goes at the END of README and task files
+3. **OPTIONAL** — Removing all team agents sections must not break anything
+4. **SEQUENTIAL-COMPATIBLE** — All tasks must work when executed one at a time
+5. **Marked "(Claude Code Only)"** — Other agents skip these sections
+
+**Rules:**
+- NEVER make task execution depend on team agent communication
+- All tasks MUST be independently executable in sequential order
+- Team agents sections are optimization hints, not execution requirements
+- Task numbering remains sequential (parallel groups overlay the numbering)
+- Mandatory final tasks (Skills Discovery, Executive Report) are ALWAYS sequential
+
+### 12.4. Execution Flow
+
+When a plan with team agents metadata is executed in Claude Code:
+
+1. Lead reads plan README and detects "Team Agents Configuration" section
+2. Asks user: use team agents or sequential?
+3. Sequential tasks execute normally (lead handles them)
+4. At parallel group boundary:
+   - Create team: `"dwp-{plan_name}-group-{letter}"`
+   - Spawn teammates with roles from the Teammate Roles table
+   - Create shared tasks and assign to teammates
+   - Teammates work independently, follow standard task execution rules
+5. Lead waits for all parallel tasks to complete
+6. Lead shuts down teammates, cleans up team
+7. Continue with next group
+
+**Fallback:** If team agents are unavailable (not enabled, not Claude Code, error) → all tasks execute sequentially. No special handling needed.
+
+---
+
+## 13. Summary
 
 This guide defines how an agent should:
 
@@ -907,6 +996,7 @@ This guide defines how an agent should:
 - Resume interrupted plans without duplicating work
 - Keep everything temporary and isolated from the main repository
 - Leverage existing skills and agents for higher-quality, more consistent task instructions and validation
+- Optionally configure team agents for parallel execution of independent tasks (Claude Code only)
 
 Use this as the **authoritative specification** whenever an agent is asked to:
 

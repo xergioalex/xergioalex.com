@@ -193,6 +193,41 @@ Creating your plan...
 - Ensure clarity and completeness
 - Create: `.agent_commands/agent_deep_work_plans/results/drafts/PLAN_{name}_draft_refined.md`
 
+**3.3 Analyze Tasks for Parallelism (Automatic — Every Plan):**
+
+After refining the draft, **always** evaluate the user-defined tasks for parallel execution opportunities:
+
+- Are there 2+ tasks that work on different files, modules, or areas?
+- Are there tasks with no data dependencies between them?
+- Would parallel execution meaningfully reduce total execution time?
+
+**Auto-assignment rules:**
+- **Parallel groups:** Group tasks that touch different files/modules/areas with no dependencies
+- **Teammate roles:** Derive from task content (e.g., "Security Reviewer", "API Developer")
+- **Teammate model:** Default to sonnet
+- **Sequential tasks:** Setup tasks, integration tasks, tasks depending on previous outputs, and mandatory final tasks (Skills Discovery, Executive Report) are ALWAYS sequential
+
+**If parallelizable tasks detected:**
+
+In guided mode — inform the user (no confirmation needed):
+```
+I detected {N} tasks that can run in parallel across {M} groups.
+Adding team agents configuration for Claude Code parallel execution.
+(Other AI agents will execute all tasks sequentially — fully backward compatible)
+
+Parallel groups:
+- Sequential: Tasks 1-2 (setup)
+- Parallel A: Tasks 3, 4, 5 (independent work)
+- Sequential: Tasks 6-7 (integration + report)
+```
+
+In trust mode — silent, no output. Add configuration without messaging.
+
+**If NO parallelizable tasks detected:**
+- Do not add team agents configuration
+- Do not mention team agents to the user
+- Plan proceeds as a standard sequential plan
+
 **Show progress:**
 ```
 [1/3] Creating draft... ✓
@@ -549,12 +584,54 @@ What would you like to adjust?
 
    > **Note:** If `.agent_commands/agent_skills_generator/` does NOT exist in the target repo, create a simplified Skills & Agents Discovery task that only evaluates and documents (no creation step).
 
-5. **Ensure quality:**
+5. **Add Team Agents Configuration (if parallelizable tasks detected in Step 3.3):**
+
+   **In plan README** — append after all standard sections:
+
+   ```markdown
+   ## Team Agents Configuration (Claude Code Only)
+
+   > **Note:** This section is used by Claude Code team agents for parallel execution.
+   > Other AI agents should ignore this section and execute all tasks sequentially.
+
+   ### Parallel Task Groups
+
+   | Group | Tasks | Teammates | Description |
+   |-------|-------|-----------|-------------|
+   | Sequential | {N} | Lead only | {description} |
+   | Parallel A | {N, M, P} | {count} teammates | {description} |
+   | Sequential | {N} | Lead only | {description} |
+
+   ### Teammate Roles
+
+   | Role | Assigned Tasks | Model | Spawn Prompt |
+   |------|---------------|-------|-------------|
+   | {Role} | {N} | sonnet | "{context-specific prompt}" |
+   ```
+
+   **In parallel task files** — append after Completion & Log:
+
+   ```markdown
+   ## Team Agents Metadata (Claude Code Only)
+
+   - **Parallel Group:** {A/B/C...}
+   - **Teammate Role:** {role name}
+   - **Can Run With:** Tasks {list}
+   - **Blocks:** Task {N}
+   - **Files Owned:** {paths}
+   ```
+
+   **If NO parallelizable tasks detected:** skip this step entirely. Do not add any team agents sections.
+
+   See: `.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md` section 12 for full specification.
+
+6. **Ensure quality:**
    - Tasks are atomic (one clear objective per task)
    - Tasks are ordered (numbered 1, 2, 3... N-1, N)
    - User tasks come first, then Skills & Agents Discovery, then Executive Report
    - Tasks are detailed enough for independent execution
    - Total task count = user tasks + 2 mandatory tasks
+   - Team agents config (if present) follows progressive enhancement rules
 
 ---
 
@@ -728,6 +805,24 @@ Can you break this down into smaller steps?
 - **Tasks:** Each task should be atomic and independently completable
 - **Validation:** Include validation commands in each task file
 - **Reference:** Follow guide at `.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`
+- **Team agents:** Parallelism analysis is automatic. Configuration is added only when beneficial. See guide section 12.
+
+## Plan Creation Acceleration with Team Agents (Claude Code Only)
+
+> Other AI agents should ignore this section and create plans sequentially.
+
+When creating complex plans, team agents can speed up plan creation itself:
+
+**Phase 1 — Parallel Research (before drafting):**
+When the plan involves multiple complex areas, spawn research teammates to investigate simultaneously (1 per area). Each returns structured findings. Lead synthesizes for the draft.
+
+**Phase 2 — Parallel Task File Generation (after drafting):**
+When generating 5+ user-defined task files, spawn teammates to write task files simultaneously (1 per 2-3 files). Lead creates README, PROMPTS, PROGRESS, mandatory tasks. Teammates write user-defined task files.
+
+**Both phases:**
+- **Fallback:** If team agents unavailable → execute sequentially (no impact on result)
+- Transparent to the user — the plan output is identical regardless of method
+- In trust mode: runs silently without progress messages
 
 ---
 

@@ -119,3 +119,24 @@ feat: add getRelatedPosts utility function
 feat: integrate related posts into blog page
 docs: add related posts documentation
 ```
+
+## Team Agents Configuration (Claude Code Only)
+
+> **Note:** This section is used by Claude Code team agents for parallel execution.
+> Other AI agents should ignore this section and execute all tasks sequentially.
+
+### Parallel Task Groups
+
+| Group | Tasks | Teammates | Description |
+|-------|-------|-----------|-------------|
+| Sequential | 1 | Lead only | Create component (foundation for integration) |
+| Parallel A | 2, 3 | 2 teammates | Utility function + page integration (independent files) |
+| Sequential | 4 | Lead only | Update documentation (depends on implementation) |
+| Sequential | 5, 6 | Lead only | Mandatory final tasks |
+
+### Teammate Roles
+
+| Role | Assigned Tasks | Model | Spawn Prompt |
+|------|---------------|-------|-------------|
+| Utility Developer | 2 | sonnet | "Add getRelatedPosts utility function to src/lib/blog.ts following the task file instructions." |
+| Page Integrator | 3 | sonnet | "Integrate RelatedPosts component into the blog post page following the task file instructions." |

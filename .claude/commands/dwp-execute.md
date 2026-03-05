@@ -90,6 +90,7 @@ Read the plan's `README.md` to understand:
 - Global guidelines
 - Task list (which are `[x]` vs `[ ]`)
 - Execution rules
+- **Team Agents Configuration** (if present — check for "Team Agents Configuration (Claude Code Only)" section)
 
 ### Step 3: Check Current Status
 
@@ -112,6 +113,33 @@ Current status:
 - Git status: [clean / uncommitted changes]
 - Recent commits: [last 3-5 commits related to this plan]
 ```
+
+### Step 3.5: Team Agents Option (Claude Code Only)
+
+> Other AI agents should skip this step entirely.
+
+**If the plan README contains a "Team Agents Configuration (Claude Code Only)" section:**
+
+Ask:
+```
+This plan has team agents configuration for parallel execution.
+
+1. Use team agents (parallel execution for applicable task groups)
+2. Execute sequentially (standard mode)
+
+Enter option (1-2, default: 2):
+```
+
+**If user chooses option 1 (team agents):**
+- Store `team_agents_mode = true`
+- Note the parallel task groups and teammate roles from the plan README
+- At parallel group boundaries during execution, use team agents (see Step 5)
+
+**If user chooses option 2 or presses Enter:**
+- Proceed with standard sequential execution (default behavior)
+
+**If no "Team Agents Configuration" section found:**
+- Skip this step silently — proceed to Step 4
 
 ### Step 4: Ask for Execution Preferences (Optional)
 
@@ -178,6 +206,37 @@ Follow these rules strictly:
    - User requests pause
    - Blocking issue encountered
 
+9. **Parallel group execution (Team Agents Mode only):**
+
+   > **CRITICAL DISTINCTION:** Use real team agents API (TeamCreate + Agent with team_name),
+   > NOT subagents (Agent tool without team_name). Subagents report back only;
+   > team agents share a task list and can message each other.
+
+   When `team_agents_mode = true` and the current task is part of a parallel group:
+
+   a) **Create team:** `TeamCreate` with name `"dwp-{plan_name}-group-{letter}"`
+   b) **Spawn teammates:** `Agent` (with `team_name`) for each task in the group, using:
+      - Role name from the Teammate Roles table
+      - Spawn prompt from the table (include task file path and key context)
+      - Model: sonnet (default)
+   c) **Create shared tasks:** `TaskCreate` for each parallel task
+   d) **Assign tasks:** `TaskUpdate` (owner) to assign each task to its teammate
+   e) **Monitor:** Lead receives automatic messages from teammates as they work
+   f) **Wait for completion:** All teammates must complete their assigned tasks
+   g) **Shutdown:** `SendMessage` (shutdown_request) for graceful shutdown of each teammate
+   h) **Clean up:** `TeamDelete` to remove team resources
+   i) **Update tracking:** Mark all completed tasks in plan README, update PROGRESS.md
+   j) **Continue:** Move to the next group
+
+   **How to verify real team agents are active:**
+   - Status bar shows: `Team: dwp-{name} · {N} teammates`
+   - NOT: `{N} local agents` (that's subagents — wrong!)
+
+   **Fallback:** If team agents fail at any point (creation error, teammate crash):
+   - Log the error
+   - Execute remaining tasks in the failed group sequentially
+   - Continue with the rest of the plan normally
+
 ### Step 6: Progress Reporting
 
 **After each task completion, report:**
@@ -195,6 +254,16 @@ Follow these rules strictly:
   - Error: [validation error details]
   - Status: Blocked - waiting for guidance
   - Task remains: [ ]
+```
+
+**For parallel group completion (Team Agents Mode):**
+```
+✓ Parallel Group {letter} completed:
+  - Task {N}: {title} - completed by {teammate_role}
+  - Task {M}: {title} - completed by {teammate_role}
+  - Task {P}: {title} - completed by {teammate_role}
+  Team cleaned up. Continuing with next group.
+  Next: Task {X} - {next_task_title}
 ```
 
 ### Step 7: Completion
