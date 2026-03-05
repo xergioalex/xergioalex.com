@@ -37,6 +37,8 @@ That was GoCarga.
   <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.png" alt="GoCarga logo" width="200" height="80" />
 </div>
 
+![GoCarga brand banner — logo on orange geometric background](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.png)
+
 ---
 
 ## Apps.co and Eight Weeks in Cali
@@ -61,6 +63,10 @@ GoCarga was a web platform where companies could post cargo shipment needs and i
 
 We went through several prototypes. Each one a little closer to something real:
 
+![Welcome prototype — GoCarga mascot, onboarding page with government and university sponsors](/images/blog/posts/gocarga-apps-co-adventure/prototype-welcome.png)
+
+![Home prototype — Two-sided marketplace: companies and transporters, transparent, secure and profitable connection](/images/blog/posts/gocarga-apps-co-adventure/prototype-home.png)
+
 ![Main landing prototype — Transparent, secure and profitable connection](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.png)
 
 ![Route results prototype — Medellín / Pereira search, active loads](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.png)
@@ -81,9 +87,20 @@ Later that year, Pereira's Chamber of Commerce held the 10th edition of Expocame
 
 We presented on stage to members of the Red Nacional de Ángeles Inversionistas, backed by Fundación Bavaria. Real investors. Real stakes. Real pressure.
 
-I don't have the words to fully describe what it feels like the first time you pitch your idea in that kind of environment. Everything you've built — every spreadsheet, every interview, every whiteboard session — compresses into 10 minutes where you either make someone believe or you don't.
+Building our stand was one of the things I remember most fondly. It was our first one ever — we designed the banner, picked the colors, figured out the layout. We even had business cards made. Real ones, with everyone's name and role. Looking at them now feels like a time capsule — four university students who gave themselves titles and printed them on cardstock.
+
+![Original banner design for the GoCarga stand — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.png)
+
+<div class="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.png" alt="GoCarga business card front — Logo, tagline: Conexión Transparente, Segura & Rentable, sponsor logos" width="510" height="288" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.png" alt="GoCarga business card back — Team: Alejandro Pinto (CEO), Sergio Alexander Flórez (Tech), Andrés Julián Vinasco (Operations), Jose Miguel Beltran (Creative)" width="510" height="288" />
+</div>
+
+When we saw it all printed and set up in the venue, it felt like GoCarga had become something real in a way that code on a screen never quite achieves.
 
 ![GoCarga stand at Expocamello 2014 — Connect and get your cargo with profitability](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.png)
+
+I don't have the words to fully describe what it feels like the first time you pitch your idea in that kind of environment. Everything you've built — every spreadsheet, every interview, every whiteboard session — compresses into 10 minutes where you either make someone believe or you don't.
 
 We had to make them believe.
 
@@ -105,9 +122,17 @@ Watching it now, years later, I notice all the rough edges. The things I'd say d
 
 ## What Happened After
 
-GoCarga didn't continue as a commercial product. The timing, the market, the resources — the stars didn't align the way we needed them to. That's the honest answer.
+We poured almost two years of energy into GoCarga. Two years of prototypes, interviews, pitches, late nights. We had a product with a great idea and a platform that worked. But the technology wasn't everything — and we learned that the hard way.
 
-But I've never thought of it as a failure. Not for a second.
+The real problem was the network. GoCarga only worked if you had transporters and companies willing to use it and connect with each other. Without that critical mass of users, you could have the best platform in the world and it was worth nothing. And building that network turned out to be much harder than we imagined.
+
+With the transporters, we hit a barrier we hadn't seen coming: many of them were older adults who weren't comfortable with technology. Convincing them to install an app, create a profile, trust a web platform — it was an uphill battle. And on the company side, getting even a single meeting with a logistics manager to pitch our idea was nearly impossible. We were four university students knocking on doors that didn't open easily.
+
+We never managed to build that network. We had no business experience, no industry contacts, and finding users was a real struggle. GoCarga didn't continue as a commercial product. That's the honest answer.
+
+But we learned a tremendous amount in the process.
+
+I've never thought of it as a failure. Not for a second.
 
 ---
 

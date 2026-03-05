@@ -37,6 +37,8 @@ Eso era GoCarga.
   <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.png" alt="Logo de GoCarga" width="200" height="80" />
 </div>
 
+![Banner de marca GoCarga — logo sobre fondo geométrico naranja](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.png)
+
 ---
 
 ## Apps.co y ocho semanas en Cali
@@ -61,6 +63,10 @@ GoCarga era una plataforma web donde las empresas podían publicar necesidades d
 
 Pasamos por varios prototipos. Cada uno un poco más cerca de algo real:
 
+![Prototipo de bienvenida — Mascota de GoCarga, página de onboarding con apoyo del gobierno y universidades](/images/blog/posts/gocarga-apps-co-adventure/prototype-welcome.png)
+
+![Prototipo del home — Marketplace de dos lados: empresas y transportadores, conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-home.png)
+
 ![Prototipo de landing principal — Conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.png)
 
 ![Prototipo de resultados de ruta — Búsqueda Medellín / Pereira, cargas activas](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.png)
@@ -81,9 +87,20 @@ A finales de ese año, la Cámara de Comercio de Pereira organizó la décima ed
 
 Expusimos en tarima ante miembros de la Red Nacional de Ángeles Inversionistas, respaldada por Fundación Bavaria. Inversionistas reales. Apostas reales. Presión real.
 
-No tengo palabras para describir completamente cómo se siente la primera vez que uno le hace pitch a su idea en ese tipo de entorno. Todo lo que has construido — cada hoja de cálculo, cada entrevista, cada sesión de pizarrón — se comprime en 10 minutos donde o logras que alguien crea, o no lo logras.
+Armar nuestro stand fue una de las cosas que recuerdo con más cariño. Era el primero que hacíamos — diseñamos el banner, escogimos los colores, armamos el layout. Incluso mandamos a hacer tarjetas de presentación. De las de verdad, con el nombre y el cargo de cada uno. Verlas ahora se siente como una cápsula del tiempo — cuatro estudiantes universitarios que se pusieron títulos y los imprimieron en cartulina.
+
+![Diseño original del banner del stand de GoCarga — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.png)
+
+<div class="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.png" alt="Tarjeta de presentación de GoCarga — frente: logo, tagline Conexión Transparente, Segura & Rentable, logos de patrocinadores" width="510" height="288" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.png" alt="Tarjeta de presentación de GoCarga — reverso: equipo con Alejandro Pinto (Director Ejecutivo), Sergio Alexander Flórez (Tecnologías), Andrés Julián Vinasco (Operaciones), Jose Miguel Beltran (Creativo)" width="510" height="288" />
+</div>
+
+Cuando lo vimos todo impreso y montado en el recinto, GoCarga se sintió real de una forma que el código en una pantalla nunca logra del todo.
 
 ![Stand de GoCarga en Expocamello 2014 — Conéctate y consigue tu carga con rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.png)
+
+No tengo palabras para describir completamente cómo se siente la primera vez que uno le hace pitch a su idea en ese tipo de entorno. Todo lo que has construido — cada hoja de cálculo, cada entrevista, cada sesión de pizarrón — se comprime en 10 minutos donde o logras que alguien crea, o no lo logras.
 
 Teníamos que hacer que creyeran.
 
@@ -105,9 +122,17 @@ Verlo ahora, años después, noto todas las asperezas. Las cosas que diría dife
 
 ## Qué pasó después
 
-GoCarga no continuó como producto comercial. El momento, el mercado, los recursos — los astros no se alinearon como lo necesitábamos. Esa es la respuesta honesta.
+Le invertimos casi dos años de energía a GoCarga. Dos años de prototipos, entrevistas, pitches, trasnochos. Teníamos un producto con una gran idea y una plataforma que funcionaba. Pero la tecnología no lo era todo — y eso lo aprendimos de la forma difícil.
 
-Pero nunca lo he considerado un fracaso. Ni por un segundo.
+El problema real era la red. GoCarga solo servía si tenías transportadores y empresas dispuestos a usarla y conectar entre sí. Sin esa masa crítica de usuarios, podías tener la mejor plataforma del mundo y no valía nada. Y construir esa red resultó ser mucho más difícil de lo que imaginamos.
+
+Con los transportadores nos topamos con una barrera que no teníamos en el radar: muchos eran adultos mayores para los que la tecnología no era algo natural. Convencerlos de instalarse una app, crear un perfil, confiar en una plataforma web — fue una batalla cuesta arriba. Y por el lado de las empresas, conseguir siquiera una cita con un gerente de logística para presentar nuestra idea era casi imposible. Éramos cuatro estudiantes universitarios tocando puertas que no se abrían fácil.
+
+Nunca logramos consolidar esa red. No teníamos experiencia en negocios, no teníamos contactos en la industria, y buscar usuarios fue un verdadero reto. GoCarga no continuó como producto comercial. Esa es la respuesta honesta.
+
+Pero aprendimos muchísimo en el proceso.
+
+Nunca lo he considerado un fracaso. Ni por un segundo.
 
 ---
 
