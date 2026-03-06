@@ -85,7 +85,7 @@ It wasn't perfect. But it was real. And it was solving a real problem that real 
 
 Later that year, Pereira's Chamber of Commerce held the 10th edition of Expocamello — an entrepreneurship fair that draws projects from across the region. We submitted GoCarga and were selected as one of 5 to 6 finalists from a pool of over 200 projects.
 
-We presented on stage to members of the Red Nacional de Ángeles Inversionistas, backed by Fundación Bavaria. Real investors. Real stakes. Real pressure.
+We presented on stage to members of the Red Nacional de Ángeles Inversionistas, backed by Fundación Bavaria. Real investors. Real stakes. Real pressure. [The slides from that pitch](https://docs.google.com/presentation/d/0Bxjo-NvH2A07a1VPbHZXY3lYSFE/edit?usp=sharing&ouid=104916662745510468500&resourcekey=0-U-7VThFjoigTn2jhEkKTog&rtpof=true&sd=true) still exist somewhere in Google Drive.
 
 Building our stand was one of the things I remember most fondly. It was our first one ever — we designed the banner, picked the colors, figured out the layout. We even had business cards made. Real ones, with everyone's name and role. Looking at them now feels like a time capsule — four university students who gave themselves titles and printed them on cardstock.
 
@@ -162,6 +162,7 @@ Let's keep building.
 
 - [Alejandro Pinto's write-up on GoCarga](https://www.alejandropinto.com/emprendimiento/aplicacion-web-transporte-carga-colombia/) — My co-founder's perspective on the project
 - [Photos of our stand at Expocamello 2014](https://www.facebook.com/photo?fbid=832763530102079&set=a.404874458455319) — GoCarga's booth at the fair
+- [GoCarga pitch slides — Fundación Bavaria](https://docs.google.com/presentation/d/0Bxjo-NvH2A07a1VPbHZXY3lYSFE/edit?usp=sharing&ouid=104916662745510468500&resourcekey=0-U-7VThFjoigTn2jhEkKTog&rtpof=true&sd=true) — The actual slides from our pitch to angel investors
 - [GoCarga on Facebook](https://www.facebook.com/GoCarga) — The original page
 - [Apps.co](https://apps.co/) — Colombia's MinTIC startup program that backed us
 - [GoCarga on Twitter/X](https://x.com/GoCarga) — Our original Twitter account
