@@ -7,94 +7,71 @@ heroLayout: "banner"
 tags: ["portfolio", "web-development", "personal", "design"]
 ---
 
-Hay proyectos que nacen de contratos. Otros de la energía de un side project. Y otros nacen de una amiga que te dice: "Oye, ¿le podrías hacer un sitio web a mi esposo?"
+Yuli me llamó por ahí en 2017. Éramos amigos desde la universidad — de esas amistades que sobreviven la graduación y la distancia y años de apenas hablar, y un día alguien te llama y es como si no hubiera pasado el tiempo.
 
-Así empezó este.
+"¿Le podrías hacer un sitio web a mi esposo?"
 
----
+Su esposo es músico de salsa. Más exactamente, imita a **Héctor Lavoe** — la leyenda puertorriqueña — y había participado en *[Yo Me Llamo](https://www.caracoltv.com/yo-me-llamo)*, que para los que no son de Colombia es básicamente el programa de televisión de imitación más grande del país. Los concursantes escogen un artista famoso y se convierten en él en tarima. El canto, el look, los gestos. Es un show enorme acá.
 
-## La historia detrás
-
-Yuli fue de esas amigas de la universidad con las que conectas de verdad — de esas personas con las que sigues hablando mucho después de graduarte. Su esposo es músico. No cualquier músico — es imitador de **Héctor Lavoe**, el legendario cantante de salsa puertorriqueño, y concursó en *Yo Me Llamo*.
-
-Para quien no conozca el programa: [Yo Me Llamo](https://www.caracoltv.com/yo-me-llamo) es uno de los shows de televisión más populares de Colombia, donde los concursantes imitan a artistas famosos. No se trata de ser uno mismo — se trata de *convertirse* en alguien más. El canto, el estilo, la presencia escénica. El público y los jueces evalúan qué tan cerca llegas del original.
-
-Participar en ese programa es un logro grande. Y una vez que estás ahí, tener una presencia profesional en línea importa. Yuli me contactó, y yo dije que sí sin pensarlo dos veces.
+Dije que sí antes de que terminara de explicarme qué necesitaba.
 
 ---
 
-## Lo que el sitio necesitaba
+## El encargo
 
-No era una página de portafolio típica ni un landing page cualquiera. Los requisitos venían del contenido mismo — la carrera de un artista es inherentemente multimedia:
+Lo que me describió era más de lo que esperaba. No era un landing page con una bio y un formulario de contacto. El señor tenía décadas de material — fotos de presentaciones por todo el país, grabaciones de video, una biografía completa que recorría su camino por varias orquestas, y lo más importante: música. Pistas que quería que la gente pudiera escuchar directamente en el sitio.
 
-- **Reproducción de música** — Necesitaba que los visitantes pudieran *escuchar* sus presentaciones. No enlaces a Spotify o YouTube. Un reproductor integrado, ahí mismo en la página.
-- **Galería de fotos** — Fotos de presentaciones, eventos, imágenes detrás de cámaras del programa. Organizadas y navegables.
-- **Sección de videos** — Grabaciones de conciertos y apariciones en televisión.
-- **Biografía** — Una sección detallada de su trayectoria cubriendo décadas de trabajo musical en Colombia, desde la orquesta Borinquen hasta giras nacionales.
-- **Contacto** — Un formulario para consultas de contratación, más enlaces a redes sociales.
-
-El reto no era ninguna función individual. Era lograr que todas coexistieran en un sitio que se sintiera pulido y cohesivo — no como cinco cosas diferentes pegadas con cinta.
+Entonces la lista de funcionalidades creció rápido: reproductor de audio, galería de fotos, sección de videos, biografía de la trayectoria, formulario de contacto, redes sociales. ¿Cada cosa por separado? Fácil. ¿Todo junto en algo que no parezca un Frankenstein de componentes de Bootstrap? Ahí se pone complicado.
 
 ---
 
-## El problema del reproductor de audio
+## El reproductor de audio fue el problema real
 
-La sección de música fue el desafío técnico más interesante. Necesitaba un reproductor que funcionara de manera confiable en todos los navegadores, manejara múltiples pistas y se viera lo suficientemente bien como para encajar con la identidad visual del sitio.
+Todo lo demás lo había hecho antes de alguna forma u otra. Galerías, layouts, formularios — trabajo web estándar. Pero integrar un reproductor de música que funcionara bien de verdad? Eso era terreno nuevo para mí.
 
-Elegí **[jPlayer](http://jplayer.org/)** — una librería de audio y video HTML5 basada en jQuery. En ese momento, jPlayer era una de las mejores opciones para integrar reproductores de audio personalizados sin cargar un framework enorme. Me daba control sobre la interfaz, soportaba playlists y manejaba las inconsistencias entre navegadores que hacían del audio en la web un dolor de cabeza.
+Escogí **[jPlayer](http://jplayer.org/)**, una librería de audio HTML5 basada en jQuery. En ese momento era de las pocas opciones que te dejaban construir una interfaz personalizada sin importar medio internet. La idea era simple: poner el reproductor en el header para que la música sea lo primero que encuentras. Llegas al sitio, escuchas salsa. Ese es todo el punto.
 
-Hacerlo funcionar fue una cosa. Lograr que se *sintiera* integrado fue otra. El reproductor está en la parte superior del sitio — siempre visible, siempre accesible. Llegas a la página y su música está ahí. Eso fue intencional. Para un artista, la música debería ser lo primero que la gente experimenta, no algo enterrado a tres clics de profundidad.
+Hacer que jPlayer reprodujera audio fue la parte fácil. Hacer que se viera como si perteneciera al sitio — eso tomó una eternidad. El skin por defecto es feo. No hay forma bonita de decirlo. Terminé escribiendo CSS personalizado encima, peleando guerras de especificidad contra los estilos propios de jPlayer, tratando de que los controles encajaran con el esquema dorado y negro del resto del sitio. En un momento estaba debuggeando un botón de play que funcionaba en Chrome pero aparecía desalineado en Firefox por exactamente 3 píxeles. Tres píxeles. Me gasté una tarde entera en tres píxeles.
 
-Honestamente, lo más difícil fue el estilo visual. jPlayer te da un reproductor funcional, pero la apariencia por defecto es... genérica. Pasé más tiempo ajustando el CSS de ese reproductor de lo que me gustaría admitir.
-
----
-
-## Construyendo el sitio
-
-El stack era directo para la época: **HTML, CSS, JavaScript, LESS y un poco de PHP** para el formulario de contacto. Sin framework. Sin sistema de build. Solo archivos, un preprocesador para estilos y el tipo de trabajo frontend donde abres `index.html` en un navegador y le das refresh.
-
-El sitio tiene seis secciones principales:
-
-- **Inicio** — Un hero a ancho completo con la marca "Yo Me Llamo", el artista actuando en escenario. Fondo oscuro, tipografía bold. El reproductor de audio integrado directo en el header.
-- **Trayectoria** — Su camino musical desde la universidad hasta giras nacionales. Esta sección es larga — el hombre tiene décadas de experiencia en múltiples orquestas y agrupaciones musicales.
-- **Videos** — Grabaciones de presentaciones y conciertos.
-- **Galería** — Colecciones de fotos organizadas por evento, con miniaturas clicables.
-- **Música** — La sección de jPlayer con sus pistas.
-- **Contacto** — Formulario de contratación, correo, teléfono, redes sociales.
-
-LESS hizo manejable la parte de estilos. Podía separar todo en módulos — un archivo para la galería, otro para el reproductor, otro para el layout — y compilar todo en un solo archivo CSS. Sin eso, la hoja de estilos habría sido un desastre.
+Y después está el móvil. En esa época — y honestamente creo que sigue siendo parcialmente cierto — Safari en iOS tenía sus propias opiniones sobre cuándo el audio debía hacer autoplay y cuándo no. Tuve que agregar workarounds para que el reproductor inicializara bien en iPhones. De esos workarounds que encuentras en la página 3 de un hilo de Stack Overflow de 2015.
 
 ---
 
-## Decisiones de diseño
+## El resto del stack
 
-La identidad visual tenía que comunicar dos cosas: salsa y profesionalismo. Este no es un músico de hobby — es alguien que se presenta en televisión nacional.
+Nada sofisticado: **HTML, CSS, JavaScript, LESS, un poco de PHP** para el formulario de contacto. Sin React. Sin bundler. Editas un archivo, refrescas el navegador, ves si funcionó. Ese tipo de proyecto.
 
-Opté por un **esquema de colores oscuros** — principalmente negros y grises profundos — con **acentos dorados/amarillos** que hacen referencia a la calidez de la música salsa y la cultura latina. La tipografía es bold y en mayúsculas en los encabezados, más legible en el cuerpo. La sección hero usa fotografía de alto contraste — el artista en el escenario, micrófono en mano, con el logo de "Yo Me Llamo" visible.
+LESS fue la mejor decisión que tomé. El sitio tiene seis secciones — inicio, trayectoria, videos, galería, música y contacto — y sin un preprocesador de CSS la hoja de estilos habría sido inmanejable. Separé todo en módulos: `_gallery.less`, `_player.less`, `_layout.less`, y así. Todo compilado en un solo archivo. Suficientemente limpio.
 
-Algo con lo que batallé fue la galería. Las galerías de fotos suenan simples hasta que las construyes. Tamaño de miniaturas, relaciones de aspecto, rendimiento de carga, comportamiento en móvil — cada una es una pequeña decisión que se acumula. Terminé con una grilla de miniaturas que se expanden al hacer clic, organizadas por tipo de evento. Nada revolucionario, pero funcional y limpio.
-
----
-
-## Lo que aprendí
-
-Construir para un cliente no técnico — especialmente uno en las artes — me enseñó cosas que los proyectos puramente de ingeniería no enseñan.
-
-**El contenido dirige todo.** No podía decidir el layout hasta saber qué contenido existía. ¿Cuántas fotos? ¿Qué tan larga es la biografía? ¿Cuántas pistas de audio? Las respuestas a esas preguntas moldearon la arquitectura. No al revés.
-
-**El audio en la web es más difícil de lo que parece.** Entre las inconsistencias de navegadores, las políticas de autoplay y las limitaciones en móvil, lograr una experiencia de audio confiable fue más trabajo que construir el resto del sitio combinado. Creo que el audio sigue siendo una de las áreas más descuidadas del desarrollo web.
-
-**Los proyectos personales pesan.** Este no fue un cliente de gran presupuesto. No había equipo de diseño, ni project manager, ni tablero de Jira. Solo yo, el contenido que Yuli y su esposo proporcionaron, y muchas idas y vueltas sobre qué se veía bien. Pero me alegra haberlo hecho. Construir algo para alguien que te importa tiene una energía diferente que construir para una empresa.
+El PHP era mínimo. Solo el formulario de contacto mandando un correo. Viéndolo ahora, la validación es... digamos optimista. Sin tokens CSRF, sin rate limiting. Funcionó, nadie lo abusó, pero no lo escribiría así hoy.
 
 ---
 
-## Dónde está hoy
+## Diseñando para la salsa
 
-El sitio ya no se mantiene activamente — la carrera del artista ha seguido adelante, y la web también. Pero lo mantuve vivo en [yomellamohectorlavoe.xergioalex.com](https://yomellamohectorlavoe.xergioalex.com/) como subdominio de mi sitio personal. Es una foto de un momento en el tiempo — tanto de la carrera del artista como de mis propias habilidades en ese punto.
+Dos cosas supe temprano sobre la dirección visual: tenía que sentirse como salsa — cálida, enérgica, viva — y tenía que sentirse profesional. Este no es un músico de hobby posteando links de SoundCloud. Es alguien que se presenta en televisión nacional.
 
-Viéndolo ahora, veo todas las cosas que haría diferente. El comportamiento responsive podría ser mejor. La galería podría usar lazy loading. El formulario de contacto en PHP es una reliquia. Pero también veo algo que funciona, que cuenta una historia y que cumplió su propósito cuando importaba.
+Fondos oscuros. Acentos dorados. Tipografía bold en mayúsculas para los encabezados. Fotografía de alto contraste del artista en tarima. El logo de "Yo Me Llamo" visible en el hero. Suena obvio cuando lo describo, pero encontrar el balance entre "festivo" y "serio" tomó varias iteraciones. Las primeras versiones estaban demasiado oscuras — parecían un flyer de discoteca. Tuve que retroceder, agregar más espacio, dejar que las fotos hablaran solas.
 
-No todos los proyectos necesitan ser de última tecnología. A veces solo necesitan ser los correctos para la persona para la que los estás construyendo.
+La galería me dio más problemas de los que esperaba. Recuerdo ir y venir con el tamaño de las miniaturas — muy pequeñas y no se ve nada, muy grandes y la página es enorme en móvil. Las relaciones de aspecto eran inconsistentes porque las fotos venían de distintos eventos, distintas cámaras, distintos años. Terminé recortando todo al mismo ratio y esperando que nadie notara los bordes perdidos. Nadie lo notó.
+
+---
+
+## Lo que haría diferente
+
+Veo este sitio ahora y veo al desarrollador que era en ese momento. Los breakpoints del responsive son muy pocos — básicamente hay "desktop" y "teléfono" sin nada en el medio. Las imágenes no tienen lazy loading, así que la galería carga todo de entrada. La integración de jPlayer funciona pero el código es desordenado — muchos event handlers inline y callbacks de jQuery que estructuraría completamente diferente hoy.
+
+Pero hizo lo que tenía que hacer. El esposo de Yuli tenía un lugar donde mandar a la gente. La música sonaba. Las fotos se veían bien. La biografía contaba su historia. Cuando alguien le preguntaba "¿tienes página web?" podía decir que sí y dar una URL que no avergonzaba a nadie.
+
+Creo que eso es lo que más valoro de proyectos como este. No son piezas de portafolio que construyes para impresionar a otros desarrolladores. Son cosas que construyes porque alguien que te importa necesitaba ayuda, y tú sabías cómo ayudar.
+
+---
+
+## Dónde está ahora
+
+El sitio ya no se mantiene. La carrera del artista tomó otros rumbos, y la web también — el stack se nota viejo. Pero lo dejé corriendo en [yomellamohectorlavoe.xergioalex.com](https://yomellamohectorlavoe.xergioalex.com/) bajo mi dominio. Una cápsula del tiempo.
+
+Mirando hacia atrás, lo que más recuerdo no es el código ni las decisiones de diseño. Es Yuli mandándome las fotos y las pistas de su esposo por WhatsApp, el ir y venir sobre cuál imagen usar para el hero, el "¡quedó increíble!" cuando le mandé la primera versión funcional. Eso no aparece en un git log, pero es la razón por la que el proyecto existió.
 
 Sigamos construyendo.
 

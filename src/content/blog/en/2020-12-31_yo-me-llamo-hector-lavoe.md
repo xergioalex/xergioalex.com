@@ -7,94 +7,71 @@ heroLayout: "banner"
 tags: ["portfolio", "web-development", "personal", "design"]
 ---
 
-Some projects come from client briefs. Some from side project energy. And some come from a friend asking: "Hey, could you build a website for my husband?"
+Yuli called me sometime around 2017. We'd been friends since university — the kind of friendship that survives graduation and distance and years of barely talking, and then one day someone calls and it's like no time has passed at all.
 
-That's how this one started.
+"Could you build a website for my husband?"
 
----
+Her husband is a salsa musician. Specifically, he impersonates **Héctor Lavoe** — the Puerto Rican legend — and he'd been on *Yo Me Llamo*, which for anyone outside Colombia is basically the biggest talent show in the country. Contestants pick a famous artist and become them on stage. The singing, the look, the mannerisms. It's huge here.
 
-## The backstory
-
-Yuli was one of those friends from university you actually connect with — the kind of person you stay in touch with long after graduation. Her husband is a musician. Not just any musician — he's an impersonator of **Héctor Lavoe**, the legendary Puerto Rican salsa singer, and he competed on *Yo Me Llamo*.
-
-For anyone outside Colombia: [Yo Me Llamo](https://www.caracoltv.com/yo-me-llamo) is a hugely popular TV show where contestants impersonate famous artists. Think of it as a talent show where the goal isn't to be yourself — it's to *become* someone else. The singing, the style, the stage presence. The audience and judges evaluate how close you get to the real thing.
-
-Getting on that show is a big deal. And once you're on it, having a professional online presence matters. So Yuli reached out, and I said yes without thinking twice.
+I said yes before she finished explaining what she needed.
 
 ---
 
-## What the site needed
+## The ask
 
-This wasn't a typical portfolio or landing page. The requirements were driven by the content itself — an artist's career is inherently multimedia:
+What she described was more than I expected. This wasn't a landing page with a bio and a contact form. The guy had decades of career material — photos from performances across the country, video recordings, a full biography that traced his path through multiple orchestras, and most importantly, music. Actual tracks he wanted people to hear right on the site.
 
-- **Music playback** — He needed visitors to actually *listen* to his performances. Not links to Spotify or YouTube. An embedded player, right there on the page.
-- **Photo gallery** — Performance shots, event photos, behind-the-scenes images from the show. Organized and browsable.
-- **Video section** — Concert recordings and TV appearances.
-- **Biography** — A detailed career section covering decades of musical work across Colombia, from the Borinquen orchestra to national tours.
-- **Contact** — A form for booking inquiries, plus social media links.
-
-The challenge wasn't any single feature. It was making all of them coexist in a site that felt polished and cohesive — not like five different things duct-taped together.
+So the feature list grew fast: audio player, photo gallery, video section, career biography, contact form, social links. Each one individually? Easy. All of them together in something that doesn't look like a Frankenstein of Bootstrap components? That's where it gets tricky.
 
 ---
 
-## The audio player problem
+## The audio player was the real problem
 
-The music section was the most interesting technical challenge. I needed a player that would work reliably across browsers, handle multiple tracks, and look good enough to match the site's visual identity.
+Everything else I'd done before in one form or another. Galleries, layouts, contact forms — standard web work. But embedding a music player that actually worked well? That was new territory for me.
 
-I went with **[jPlayer](http://jplayer.org/)** — a jQuery-based HTML5 audio and video library. At the time, jPlayer was one of the better options for embedding custom audio players without pulling in a massive framework. It gave me control over the UI, supported playlists, and handled the cross-browser inconsistencies that made audio on the web such a headache back then.
+I picked **[jPlayer](http://jplayer.org/)**, a jQuery-based HTML5 audio library. At the time it was one of the few options that let you build a custom UI without importing half the internet. The idea was simple: put the player in the header so the music is the first thing you encounter. You land on the site, you hear salsa. That's the whole point.
 
-Getting it to work was one thing. Making it *feel* integrated was another. The player sits in the header area of the site — always visible, always accessible. You land on the page and his music is right there. That was intentional. For an artist, the music should be the first thing people experience, not something buried three clicks deep.
+Getting jPlayer to play audio was the easy part. Getting it to look like it belonged on the site — that took forever. The default skin is ugly. There's no nice way to say it. I ended up writing custom CSS on top of it, fighting specificity wars with jPlayer's own styles, trying to make the controls match the gold-and-black color scheme of the rest of the site. At one point I was debugging a play button that worked in Chrome but showed up misaligned in Firefox by exactly 3 pixels. Three pixels. I spent an afternoon on three pixels.
 
-Honestly, the hardest part was the styling. jPlayer gives you a functional player, but the default look is... generic. I spent more time tweaking the CSS for that player than I'd like to admit.
-
----
-
-## Building the site
-
-The stack was straightforward for the era: **HTML, CSS, JavaScript, LESS, and a bit of PHP** for the contact form. No framework. No build system. Just files, a preprocessor for styles, and the kind of frontend work where you open `index.html` in a browser and hit refresh.
-
-The site has six main sections:
-
-- **Home** — A full-width hero with the "Yo Me Llamo" branding, the artist performing on stage. Dark background, bold typography. The audio player integrated right into the header.
-- **Trayectoria** (Career) — His musical journey from university to national tours. This section is long — the man has decades of experience across multiple orchestras and musical groups.
-- **Videos** — Performance recordings and concert footage.
-- **Galería** (Gallery) — Photo collections organized by event, with clickable thumbnails.
-- **Música** (Music) — The jPlayer section with his tracks.
-- **Contacto** (Contact) — Booking form, email, phone, social links.
-
-LESS made the styling manageable. I could break things into modules — one file for the gallery, one for the player, one for the layout — and compile everything into a single CSS file. Without it, the stylesheet would have been a mess.
+And then there's mobile. Back then — and honestly I think it's still partially true — iOS Safari had its own opinions about when audio should autoplay and when it shouldn't. I had to add workarounds for the player to initialize properly on iPhones. The kind of workarounds you find on page 3 of a Stack Overflow thread from 2015.
 
 ---
 
-## Design decisions
+## The rest of the stack
 
-The visual identity had to communicate two things: salsa and professionalism. This isn't a hobby musician — this is someone who performs on national television.
+Nothing fancy: **HTML, CSS, JavaScript, LESS, a bit of PHP** for the contact form. No React. No bundler. You edit a file, refresh the browser, see if it worked. That kind of project.
 
-I went with a **dark color scheme** — mostly blacks and deep grays — with **gold/yellow accents** that reference the warmth of salsa music and Latin culture. The typography is bold and uppercase in the headers, more readable in the body. The hero section uses high-contrast photography — the artist on stage, microphone in hand, with the "Yo Me Llamo" logo visible.
+LESS was the best decision I made. The site has six sections — home, trayectoria (his career), videos, gallery, music, and contact — and without a CSS preprocessor the stylesheet would've been unmanageable. I split everything into modules: `_gallery.less`, `_player.less`, `_layout.less`, and so on. Compiled into one file. Clean enough.
 
-One thing I struggled with was the gallery. Photo galleries sound simple until you actually build one. Thumbnail sizing, aspect ratios, loading performance, mobile behavior — each one is a small decision that compounds. I ended up with a grid of thumbnails that expand on click, organized by event type. Not groundbreaking, but functional and clean.
-
----
-
-## What I learned
-
-Building for a non-technical client — especially one in the arts — taught me things that pure engineering projects don't.
-
-**Content drives everything.** I couldn't decide the layout until I knew what content existed. How many photos? How long is the biography? How many tracks? The answers to those questions shaped the architecture. Not the other way around.
-
-**Audio on the web is harder than it looks.** Between browser inconsistencies, autoplay policies, and mobile limitations, getting a reliable audio experience was more work than building the rest of the site combined. I think audio is still one of the more neglected areas of web development.
-
-**Personal projects carry weight.** This wasn't a big-budget client. There was no design team, no project manager, no Jira board. Just me, the content Yuli and her husband provided, and a lot of back-and-forth about what looked right. But I'm glad I did it. Building something for someone you care about has a different energy than building for a company.
+The PHP was minimal. Just the contact form sending an email. Looking at it now, the validation is... let's say optimistic. No CSRF tokens, no rate limiting. It worked, nobody abused it, but I wouldn't write it that way today.
 
 ---
 
-## Where it stands today
+## Designing for salsa
 
-The site is no longer actively maintained — the artist's career has moved on, and so has the web. But I kept it alive at [yomellamohectorlavoe.xergioalex.com](https://yomellamohectorlavoe.xergioalex.com/) as a subdomain of my personal site. It's a snapshot of a moment in time — both for the artist's career and for my own skills at that point.
+I knew two things about the visual direction early on: it had to feel like salsa — warm, energetic, alive — and it had to feel professional. This isn't a hobby musician posting SoundCloud links. This is someone who performs on national television.
 
-Looking at it now, I see all the things I'd do differently. The responsive behavior could be better. The gallery could use lazy loading. The PHP contact form is a relic. But I also see something that works, that tells a story, and that served its purpose when it mattered.
+Dark backgrounds. Gold accents. Bold uppercase typography for headers. High-contrast photography of the artist on stage. The "Yo Me Llamo" logo visible in the hero. It sounds obvious when I describe it, but getting the balance right between "festive" and "serious" took some iteration. Early versions were too dark — like a nightclub flyer. I had to pull back, add more breathing room, let the photos do the talking.
 
-Not every project needs to be cutting-edge. Sometimes it just needs to be right for the person you're building it for.
+The gallery gave me more trouble than I expected. I remember going back and forth on thumbnail sizes — too small and you can't see anything, too big and the page is enormous on mobile. Aspect ratios were inconsistent because the photos came from different events, different cameras, different years. I ended up cropping everything to the same ratio and hoping nobody would notice the lost edges. Nobody did.
+
+---
+
+## What I'd do differently
+
+I look at this site now and I see the developer I was at that point. The responsive breakpoints are too few — there's basically "desktop" and "phone" with nothing in between. The images aren't lazy loaded, so the gallery page loads everything upfront. The jPlayer integration works but the code is messy — lots of inline event handlers and jQuery callbacks that I'd structure completely differently today.
+
+But it did what it needed to do. Yuli's husband had a place to send people. The music played. The photos looked good. The biography told his story. When someone asked "do you have a website?" he could say yes and hand them a URL that didn't embarrass anyone.
+
+I think that's the part I value most about projects like this. They're not portfolio pieces you build to impress other developers. They're things you build because someone you care about needed help, and you happened to know how to help.
+
+---
+
+## Where it is now
+
+The site isn't maintained anymore. The artist's career moved in other directions, and the web moved too — the stack is showing its age. But I kept it running at [yomellamohectorlavoe.xergioalex.com](https://yomellamohectorlavoe.xergioalex.com/) under my domain. A time capsule.
+
+Looking back, the thing I remember most isn't the code or the design decisions. It's Yuli sending me her husband's photos and tracks over WhatsApp, the back-and-forth about which picture to use for the hero, the "it looks amazing" message when I sent her the first working version. That stuff doesn't show up in a git log, but it's the reason the project existed.
 
 Let's keep building.
 
