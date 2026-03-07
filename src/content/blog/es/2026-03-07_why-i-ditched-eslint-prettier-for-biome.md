@@ -76,9 +76,7 @@ Había oído hablar de Biome en 2023. Un fork de Rome — una herramienta que in
 
 Escrito en Rust. Un solo binario. Un archivo de configuración.
 
-Era escéptico. "Otra herramienta de linting" no es un argumento que convence fácilmente después de haber pagado los costos de migración de ESLint. Pero seguía volviendo a los números: Biome hace lint de 10,000 archivos en 0.8 segundos. ESLint tarda 45.2 segundos. Biome formatea 10,000 archivos en 0.3 segundos. Prettier tarda 12.1 segundos.
-
-Esos no son números proyectados. Son de benchmarks reales en el [repositorio de Biome](https://github.com/biomejs/biome/blob/main/benchmark/README.md). La diferencia de velocidad se debe a que Biome parsea el código una vez y reutiliza el AST tanto para linting como para formato. ESLint y Prettier parsean el código de forma independiente, y luego a veces pelean por el resultado.
+Era escéptico. "Otra herramienta de linting" no es un argumento que convence fácilmente después de haber pagado los costos de migración de ESLint. Pero seguía volviendo a los números del [repositorio de Biome](https://github.com/biomejs/biome/blob/main/benchmark/README.md): 10,000 archivos procesados por el linter en 0.8 segundos frente a 45.2 segundos de ESLint. 10,000 archivos formateados en 0.3 segundos frente a 12.1 segundos de Prettier. Tus números van a variar — máquina, tamaño de archivos, complejidad — pero la diferencia de orden de magnitud es real. La velocidad viene de que Biome parsea el código una vez y reutiliza el AST tanto para linting como para formato. ESLint y Prettier parsean el código de forma independiente, y luego a veces pelean por el resultado.
 
 Lo probé en este sitio — xergioalex.com, el proyecto de Astro + Svelte + TypeScript que corre en Cloudflare Pages. La migración tomó alrededor de una hora, principalmente porque quería entender lo que estaba haciendo en lugar de solo ejecutar comandos a ciegas.
 
@@ -89,7 +87,7 @@ biome migrate eslint
 biome migrate prettier
 ```
 
-Eso es todo. Esos dos comandos leen tus configuraciones existentes y generan un `biome.json` equivalente. Luego eliminas los archivos viejos y desinstala alrededor de 120 paquetes.
+Eso es todo. Esos dos comandos leen tus configuraciones existentes y generan un `biome.json` equivalente. Luego eliminas los archivos viejos y desinstalas alrededor de 120 paquetes.
 
 Ejecuté `npm uninstall eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin` y vi cómo caía el conteo de paquetes. Luego eliminé cuatro archivos de configuración. Luego instalé un paquete: `@biomejs/biome`.
 
@@ -155,7 +153,7 @@ Este es el `biome.json` de xergioalex.com, el sitio donde estás leyendo esto:
 }
 ```
 
-Cincuenta líneas. Eso es todo. Sin archivo ignore separado — `includes` lo maneja. Sin configuración de formato separada — está ahí mismo en el mismo archivo. Soporte de CSS incluido, con las directivas de Tailwind configuradas (`noUnknownAtRules: "off"` también funcionaría, pero el flag `tailwindDirectives: true` del parser es más limpio).
+Cincuenta líneas. Eso es todo. Sin archivo ignore separado — `includes` lo maneja. Sin configuración de formato separada — está ahí mismo en el mismo archivo. Soporte de CSS incluido, con las directivas de Tailwind configuradas a través del flag `tailwindDirectives: true` del parser. El override `noUnknownAtRules: "off"` también está presente — por si acaso — para cualquier at-rule que el parser no reconozca automáticamente.
 
 Los overrides que configuré: `noExplicitAny: "off"` porque tengo algo de código de interoperabilidad con TypeScript donde `any` es genuinamente el tipo correcto, `noUnusedImports: "off"` y `noUnusedVariables: "off"` porque esas reglas son útiles en CI pero generan ruido durante el desarrollo activo. Todo lo demás corre con los defaults de Biome.
 
@@ -177,11 +175,11 @@ Un paquete instalado. Un archivo de configuración. Tres comandos. Compáralo co
 
 No voy a pretender que Biome reemplaza ESLint función por función. No lo hace.
 
-ESLint existe desde 2013. Su ecosistema tiene miles de reglas construidas por la comunidad. `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, `eslint-plugin-security`, `eslint-plugin-unicorn` — plugins especializados para cada caso de uso. Biome tiene alrededor de 423 reglas integradas y un sistema de plugins (GritQL, agregado en Biome 2.0) que todavía está madurando.
+ESLint existe desde 2013. Su ecosistema tiene miles de reglas construidas por la comunidad. `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, `eslint-plugin-security`, `eslint-plugin-unicorn` — plugins especializados para cada caso de uso. Biome tiene cientos de reglas integradas — el número sube con cada versión — y un sistema de plugins (GritQL, agregado en Biome 2.0) que todavía está madurando.
 
 El soporte de Astro y Svelte es parcial. Biome maneja el JavaScript y TypeScript dentro de esos archivos, pero no la sintaxis de plantilla — los bloques `<template>` de Svelte, las directivas específicas de Astro. Eso está en el roadmap para 2026, pero aún no está ahí. Para este sitio, eso es aceptable — el código TypeScript es donde las reglas de lint importantes necesitan ejecutarse.
 
-El linting consciente de tipos está en aproximadamente el 85% de lo que captura `typescript-eslint`. Reglas como `noFloatingPromises` funcionan — Biome hace inferencia de tipos por su cuenta, sin ejecutar el compilador de TypeScript. Eso es impresionante. Pero está ese 15% restante de casos extremos que typescript-eslint captura y Biome no. Si eso importa depende de tu proyecto. Para mí, el 85% de cobertura con tipos a una fracción del costo de rendimiento es un intercambio que acepto.
+El linting consciente de tipos — creo que esta es el área donde la cobertura de Biome importa más y es más difícil de cuantificar con precisión. Reglas como `noFloatingPromises` funcionan — Biome hace inferencia de tipos por su cuenta, sin ejecutar el compilador de TypeScript, lo cual es genuinamente diferente a lo que hace typescript-eslint. La cobertura no es del 100%; hay casos extremos que typescript-eslint captura y Biome todavía no. Si esa brecha importa depende de tu proyecto y de cuáles reglas específicas necesitas. Para mí, la cobertura que realmente uso está sólida, y la diferencia de rendimiento — sin invocar el compilador de TypeScript en el proceso de linting — vale la pena.
 
 HTML, Markdown y SCSS no están soportados todavía.
 
@@ -195,7 +193,7 @@ Para este sitio, nada de eso es un problema. Biome cubre todo lo que necesito.
 
 En junio de 2025, Biome 2.0 llegó — nombre en clave "Biotype". Dos grandes adiciones: plugins (escribe reglas de lint personalizadas en GritQL) e inferencia de tipos (reglas de lint que entienden los tipos de TypeScript sin ejecutar `tsc`).
 
-El trabajo de inferencia de tipos fue patrocinado por Vercel. Eso no es un detalle menor — significa que hay dinero real detrás de hacer que Biome sea una alternativa creíble a `typescript-eslint`. La regla inicial `noFloatingPromises` captura alrededor del 75% de lo que captura el equivalente en TypeScript. A partir de Biome 2.4, ese porcentaje subió al ~85%. El número sigue subiendo.
+El trabajo de inferencia de tipos fue patrocinado por Vercel — lo cual, si lo piensas, dice bastante sobre hacia dónde va el ecosistema de herramientas frontend. Las grandes empresas de infraestructura no patrocinan proyectos de linting por caridad. Lo hacen porque las herramientas lentas les cuestan minutos de CI y tiempo de desarrollo, y Biome es significativamente más rápido a escala. La regla `noFloatingPromises` — la regla estrella consciente de tipos — ya funciona. La cobertura sigue mejorando con cada versión.
 
 El roadmap de 2026 incluye mejor soporte para Astro/Svelte/Vue — linting en las secciones de template/markup, no solo en los bloques de script. Reglas de lint cruzadas entre JavaScript y CSS. Mejor integración con LSP para que los editores puedan mostrar referencias entre tipos de archivos.
 

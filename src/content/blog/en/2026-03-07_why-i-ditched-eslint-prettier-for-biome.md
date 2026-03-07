@@ -76,9 +76,7 @@ I'd heard about Biome in 2023. A fork of Rome — a tool that tried to be a unif
 
 Written in Rust. Single binary. One config file.
 
-I was skeptical. "Another linting tool" is not a pitch that lands easily after you've been burned by migration costs. But I kept coming back to the benchmark numbers: Biome lints 10,000 files in 0.8 seconds. ESLint takes 45.2 seconds. Biome formats 10,000 files in 0.3 seconds. Prettier takes 12.1 seconds.
-
-Those aren't projected numbers. Those are from actual benchmarks in [Biome's own repository](https://github.com/biomejs/biome/blob/main/benchmark/README.md). The speed difference is because Biome parses code once and reuses the AST for both linting and formatting. ESLint and Prettier each parse the code independently, then sometimes fight about the result.
+I was skeptical. "Another linting tool" is not a pitch that lands easily after you've been burned by migration costs. But I kept coming back to the benchmark numbers from [Biome's own repository](https://github.com/biomejs/biome/blob/main/benchmark/README.md): 10,000 files linted in 0.8 seconds versus ESLint's 45.2 seconds. 10,000 files formatted in 0.3 seconds versus Prettier's 12.1 seconds. Your numbers will vary — machine, file size, complexity — but the order of magnitude difference is real. The speed comes from Biome parsing code once and reusing the AST for both linting and formatting. ESLint and Prettier each parse the code independently, then sometimes fight about the result.
 
 I tried it on this site — xergioalex.com, the Astro + Svelte + TypeScript project that runs on Cloudflare Pages. The migration took about an hour, mostly because I wanted to understand what I was doing rather than just running commands blindly.
 
@@ -155,7 +153,7 @@ This is the `biome.json` for xergioalex.com, the site you're reading this on:
 }
 ```
 
-Fifty lines. That's the whole thing. No separate ignore file — `includes` handles it. No separate formatter config — it's right there in the same file. CSS support built in, with Tailwind directives handled (`noUnknownAtRules: "off"` would also work, but the `tailwindDirectives: true` parser flag is cleaner).
+Fifty lines. That's the whole thing. No separate ignore file — `includes` handles it. No separate formatter config — it's right there in the same file. CSS support built in, with Tailwind directives handled via the `tailwindDirectives: true` parser flag. The `noUnknownAtRules: "off"` override is also there — belt and suspenders — for any at-rules the parser doesn't recognize automatically.
 
 The overrides I set: `noExplicitAny: "off"` because I have some TypeScript interop code where `any` is actually the right type, `noUnusedImports: "off"` and `noUnusedVariables: "off"` because those rules are useful in CI but noisy during active development. Everything else runs at the Biome defaults.
 
@@ -177,11 +175,11 @@ One package installed. One config file. Three commands. Compare that to what cam
 
 I'm not going to pretend Biome replaces ESLint feature-for-feature. It doesn't.
 
-ESLint has been around since 2013. Its ecosystem has thousands of community-built rules. `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, `eslint-plugin-security`, `eslint-plugin-unicorn` — specialized plugins for every use case. Biome has around 423 rules built in and a plugin system (GritQL, added in Biome 2.0) that's still maturing.
+ESLint has been around since 2013. Its ecosystem has thousands of community-built rules. `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, `eslint-plugin-security`, `eslint-plugin-unicorn` — specialized plugins for every use case. Biome has hundreds of rules built in — the number goes up with every release — and a plugin system (GritQL, added in Biome 2.0) that's still maturing.
 
 Astro and Svelte support is partial. Biome handles the JavaScript and TypeScript inside those files, but not the template syntax — the `<template>` blocks in Svelte, the Astro-specific directives. That's on the roadmap for 2026, but it's not there yet. For this site, that's acceptable — the TypeScript code is where the important lint rules need to run.
 
-Type-aware linting sits at roughly 85% of what `typescript-eslint` catches. Rules like `noFloatingPromises` work — Biome does type inference on its own, without running the TypeScript compiler. That's impressive. But there's that remaining 15% of edge cases that typescript-eslint catches and Biome doesn't. Whether that matters depends on your project. For me, 85% of type-aware coverage at a fraction of the performance cost is a trade I'll take.
+Type-aware linting — I think this is the area where Biome's coverage matters most and is hardest to quantify precisely. Rules like `noFloatingPromises` work — Biome does type inference on its own, without running the TypeScript compiler, which is genuinely different from what typescript-eslint does. The coverage isn't 100%; there are edge cases typescript-eslint catches that Biome doesn't yet. Whether the gap matters depends on your project and which specific rules you rely on. For me, the coverage I actually use is solid, and the performance difference — no TypeScript compiler invocation in the lint path — is worth the trade.
 
 HTML, Markdown, and SCSS aren't supported yet.
 
@@ -195,7 +193,7 @@ For this site, none of that is a problem. Biome covers everything I need.
 
 In June 2025, Biome 2.0 shipped — codename "Biotype." Two big additions: plugins (write custom lint rules in GritQL) and type inference (lint rules that understand TypeScript types without running `tsc`).
 
-The type inference work was sponsored by Vercel. That's not a minor thing — it means there's real money behind making Biome a credible `typescript-eslint` alternative. The initial `noFloatingPromises` rule catches about 75% of what the TypeScript equivalent catches. As of Biome 2.4, that's up to ~85%. The number is going up.
+The type inference work was sponsored by Vercel — which, if you think about it, tells you something about where the frontend tooling ecosystem is heading. Major infrastructure companies don't sponsor linting projects out of charity. They do it because slow tooling costs them CI minutes and developer time, and Biome is meaningfully faster at scale. The `noFloatingPromises` rule — the marquee type-aware rule — is already working. The coverage is improving with each release.
 
 The 2026 roadmap includes better Astro/Svelte/Vue support — linting in the template/markup sections, not just the script blocks. Cross-language lint rules that work across JS and CSS. Improved LSP integration so editors can show references across file types.
 
