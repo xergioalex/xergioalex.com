@@ -86,4 +86,4 @@ Lo más importante es empezar. Construye algo pequeño, haz que funcione, luego 
 ## Slides y Referencia
 
 - [Ver slides](https://slides.com/xergioalex/tensorflow)
-- [Post del blog Pereira Tech Talks](https://www.pereiratechtalks.com/control-de-flujos-de-trabajo-en-airflow-inteligencia-artificial-con-tensorflow) — primer meetup (AirFlow + TensorFlow)
+- [Post del blog Pereira Tech Talks](https://www.pereiratechtalks.org/control-de-flujos-de-trabajo-en-airflow-inteligencia-artificial-con-tensorflow) — primer meetup (AirFlow + TensorFlow)

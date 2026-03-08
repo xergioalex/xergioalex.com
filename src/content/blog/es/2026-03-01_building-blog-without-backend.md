@@ -4,7 +4,7 @@ description: 'El cuarto capítulo de la construcción de XergioAleX.com — cóm
 pubDate: '2026-03-01'
 heroImage: '/images/blog/posts/building-blog-without-backend/hero.png'
 heroLayout: 'side-by-side'
-tags: ['tech', 'portfolio', 'web-development']
+tags: ['tech', 'web-development']
 series: "building-xergioalex"
 seriesOrder: 4
 ---

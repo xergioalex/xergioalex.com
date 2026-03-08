@@ -4,7 +4,7 @@ description: "Después de años desplegando sitios estáticos en GitHub Pages, e
 pubDate: "2026-03-04T10:00:00"
 heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
 heroLayout: "side-by-side"
-tags: ["tech", "portfolio", "web-development"]
+tags: ["tech", "web-development"]
 series: "building-xergioalex"
 seriesOrder: 6
 ---

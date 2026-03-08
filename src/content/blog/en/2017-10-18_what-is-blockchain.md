@@ -125,5 +125,5 @@ The best way to understand blockchain is to use it.
 ## Slides & Reference
 
 - [View slides](https://slides.com/xergioalex/what-is-blockchain)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/que-es-el-blockchain-y-como-transformara-radicalmente-la-economia) — event recap (Universidad de Caldas)
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/que-es-el-blockchain-y-como-transformara-radicalmente-la-economia) — event recap (Universidad de Caldas)
 - [Article: What is Blockchain and How Is It Radically Transforming the Economy and Industry?](/blog/blockchain-economy-industry/) — in-depth article I wrote after this talk

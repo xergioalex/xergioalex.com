@@ -26,6 +26,7 @@
 | Analytics | [Analytics](docs/ANALYTICS.md) | Tracking, GSC, verification |
 | AI Agents | [Agent Onboarding](docs/AI_AGENT_ONBOARDING.md), [Agent Collaboration](docs/AI_AGENT_COLLAB.md) | Setup, handoff, coordination |
 | Skills/Agents | [Skills & Agents Catalog](.claude/docs/skills_agents_catalog.md) | Available skills and agents |
+| Commands | [Commands Reference](.claude/docs/COMMANDS_REFERENCE.md) | All slash commands with procedure files |
 
 ## Project Overview
 
@@ -379,6 +380,30 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 | Orchestrator | All agents | Child DWPs in sub-repos |
 
 See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details.
+
+## ⚡ Slash Commands (All Agents)
+
+**This section applies to ALL agents** — Claude Code, OpenAI Codex, Cursor AI, Gemini, and any other assistant.
+
+### How to Invoke Commands
+
+| Agent | Prefix | Example |
+|-------|--------|---------|
+| **Claude Code** | `/` (native) | `/add-blog-post` |
+| **OpenAI Codex** | `#` | `#add-blog-post` |
+| **Cursor AI** | `#` | `#add-blog-post` |
+| **Gemini / others** | `#` | `#add-blog-post` |
+
+> **Why `#` for non-Claude agents?** Most AI CLIs (Codex, Cursor) intercept `/` as their own system commands. Using `#` avoids interception. You can also write the command name in plain text: "run add-blog-post".
+
+When a command is invoked (via `/`, `#`, or by name), the agent MUST:
+
+1. **Look up** the command in **[Commands Reference](.claude/docs/COMMANDS_REFERENCE.md)** to find its procedure file
+2. **READ** the linked procedure file completely
+3. **FOLLOW** its step-by-step instructions exactly
+4. **DO NOT** improvise or skip steps — the procedure file IS the spec
+
+> **If a user prompt starts with `#`** (e.g., `#add-blog-post`, `#quick-fix`), treat it as a command invocation — look up the command name (without `#`) in the [Commands Reference](.claude/docs/COMMANDS_REFERENCE.md) and execute its procedure.
 
 ## Conventional Commits
 

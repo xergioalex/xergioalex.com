@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "javascript"]
 ---
 
-**Astro in Action** is about answering a question I kept hearing: *Is it worth it?* It's new. It's just another web framework. I wanted to show why Astro stands out — with real case studies, real numbers, and a real project: migrating [Pereira Tech Talks](https://www.pereiratechtalks.com/) to Astro as the demo of the talk.
+**Astro in Action** is about answering a question I kept hearing: *Is it worth it?* It's new. It's just another web framework. I wanted to show why Astro stands out — with real case studies, real numbers, and a real project: migrating [Pereira Tech Talks](https://www.pereiratechtalks.org/) to Astro as the demo of the talk.
 
 ---
 
@@ -59,9 +59,9 @@ That said, **Astro isn't right for every project**. If you're building a highly 
 
 ## Pereira Tech Talks: The Demo
 
-The main outcome of the talk was the migration itself. [Pereira Tech Talks](https://www.pereiratechtalks.com/) had been running for years — since September 2017. A community blog: static, landing page, easy to maintain, free to host. The original stack used Ghost in Docker. Maintenance cost around $5–8/month.
+The main outcome of the talk was the migration itself. [Pereira Tech Talks](https://www.pereiratechtalks.org/) had been running for years — since September 2017. A community blog: static, landing page, easy to maintain, free to host. The original stack used Ghost in Docker. Maintenance cost around $5–8/month.
 
-We rebuilt it with Astro. [v2.pereiratechtalks.com](https://v2.pereiratechtalks.com/) became the live demo — static and dynamic, blogging, landing page, easy to maintain, connected to simple storage, real-time support where needed. One developer. Two weeks. The site is now lighter, faster, and easier to contribute to.
+We rebuilt it with Astro. [v2.pereiratechtalks.org](https://v2.pereiratechtalks.org/) became the live demo — static and dynamic, blogging, landing page, easy to maintain, connected to simple storage, real-time support where needed. One developer. Two weeks. The site is now lighter, faster, and easier to contribute to.
 
 ![Promotional poster for Astro in Action talk at Camellando Coworking](/images/blog/posts/astro-in-action/poster.jpg)
 
@@ -79,7 +79,7 @@ We rebuilt it with Astro. [v2.pereiratechtalks.com](https://v2.pereiratechtalks.
 
 ## Let's Build Something
 
-I ended with an invitation: contribute. The [Pereira Tech Talks repo](https://github.com/pereira-tech-talks/pereiratechtalks.com) is open. Astro 4 had just landed. The ecosystem is maturing. If you're building a blog, a landing page, or a content site — Astro is worth a look.
+I ended with an invitation: contribute. The [Pereira Tech Talks repo](https://github.com/pereira-tech-talks/pereiratechtalks.org) is open. Astro 4 had just landed. The ecosystem is maturing. If you're building a blog, a landing page, or a content site — Astro is worth a look.
 
 [View slides](https://slides.com/xergioalex/astro-in-action)
 

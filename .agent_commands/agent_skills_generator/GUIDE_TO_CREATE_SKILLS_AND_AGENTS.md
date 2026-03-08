@@ -613,6 +613,7 @@ Escalate if:
 5. **Place the File**
    - Create `.claude/skills/{skill-name}/SKILL.md`
    - Update `.claude/docs/skills_agents_catalog.md`
+   - Update `.claude/docs/COMMANDS_REFERENCE.md` with new command entry
 
 6. **Test the Skill**
    - Run with a simple case
@@ -738,6 +739,20 @@ Add a new row to the top of the Changelog table. **Keep only the 3 most recent e
 | {YYYY-MM-DD} | {skill-name/agent-name} added | {brief description of what was added} |
 ```
 
+#### 6. Commands Reference Update (REQUIRED for skills with slash commands)
+
+If the new skill or command has a slash command invocation, add an entry to the correct category table in `.claude/docs/COMMANDS_REFERENCE.md`:
+
+For Skills:
+```markdown
+| `/{skill-name}` | `.claude/skills/{skill-name}/SKILL.md` | {brief description} |
+```
+
+For Commands:
+```markdown
+| `/{command-name}` | `.claude/commands/{command-name}.md` | {brief description} |
+```
+
 ### Validation Checklist
 
 After updating the catalog, verify:
@@ -748,6 +763,7 @@ After updating the catalog, verify:
 - [ ] Domain section updated (if applicable)
 - [ ] Changelog has a new entry at the top
 - [ ] No duplicate entries in any table
+- [ ] Commands Reference updated with new command entry (`.claude/docs/COMMANDS_REFERENCE.md`)
 
 ### Common Mistakes to Avoid
 

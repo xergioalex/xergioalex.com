@@ -86,4 +86,4 @@ The most important thing is to start. Build something small, make it work, then 
 ## Slides & Event Reference
 
 - [View slides](https://slides.com/xergioalex/tensorflow)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/control-de-flujos-de-trabajo-en-airflow-inteligencia-artificial-con-tensorflow) — first meetup (AirFlow + TensorFlow)
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/control-de-flujos-de-trabajo-en-airflow-inteligencia-artificial-con-tensorflow) — first meetup (AirFlow + TensorFlow)

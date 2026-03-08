@@ -237,6 +237,8 @@ Use this table to decide whether to invoke a Skill or an Agent.
 
 ### How to Use Skills
 
+> See [Commands Reference](COMMANDS_REFERENCE.md) for the complete command list with procedure file paths.
+
 ```bash
 # List available skills
 /skill-list
@@ -351,6 +353,7 @@ All skills and agents are adapted for this Astro repository:
 
 ## Related Documentation
 
+- [Commands Reference](COMMANDS_REFERENCE.md) — All slash commands with procedure files and cross-agent invocation convention
 - [Guide to Create Skills and Agents](../../.agent_commands/agent_skills_generator/GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md)
 - [Model Routing](../../.agent_commands/agent_skills_generator/MODEL_ROUTING.md)
 - [Skill Template](../../.agent_commands/agent_skills_generator/templates/SKILL_TEMPLATE.md)

@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
 ---
 
-This was my **first talk ever** in a tech community. I gave it at [Pereira JS](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) during a special edition held at the Universidad Tecnológica de Pereira (UTP), alongside Manuel Pineda's talk on P2P and WebTorrent. It was a great experience — and the topic I chose was Meteor.js.
+This was my **first talk ever** in a tech community. I gave it at [Pereira JS](https://www.pereiratechtalks.org/edicion-especial-desde-la-utp/) during a special edition held at the Universidad Tecnológica de Pereira (UTP), alongside Manuel Pineda's talk on P2P and WebTorrent. It was a great experience — and the topic I chose was Meteor.js.
 
 ---
 
@@ -103,4 +103,4 @@ Meteor abstracts most of that. You focus on your app logic; the framework handle
 
 - [View slides](https://slides.com/xergioalex/meteorjs)
 - [Source code (GitHub)](https://github.com/rockalabs/rocka-chat-tutorial)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) — event context (special edition at UTP)
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/edicion-especial-desde-la-utp/) — event context (special edition at UTP)

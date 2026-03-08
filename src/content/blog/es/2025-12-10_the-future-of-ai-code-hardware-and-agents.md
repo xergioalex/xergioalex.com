@@ -9,7 +9,7 @@ tags: ["talks", "tech", "ai"]
 
 No quería dar otra charla genérica sobre IA. Quería compartir lo que vivo todos los días — el cambio de escribir código a **orquestar agentes**. Diseñar, planear, supervisar. Ese es el trabajo ahora. Y en esta nueva era, saber de arquitectura, producto y diseño — y aprender a delegar — importa más que nunca.
 
-Co-presenté esta charla con [Sebastián Mora](https://www.linkedin.com/in/sebastianmorac/) en [Pereira Tech Talks](https://www.pereiratechtalks.com/e0qp2vux-el-futuro-de-la-ia/), el último meetup del año. Queríamos explorar cómo la IA está transformando la programación desde cero, desde nuestra perspectiva — lo que construimos en DailyBot y lo que vemos en el ecosistema.
+Co-presenté esta charla con [Sebastián Mora](https://www.linkedin.com/in/sebastianmorac/) en [Pereira Tech Talks](https://www.pereiratechtalks.org/e0qp2vux-el-futuro-de-la-ia/), el último meetup del año. Queríamos explorar cómo la IA está transformando la programación desde cero, desde nuestra perspectiva — lo que construimos en DailyBot y lo que vemos en el ecosistema.
 
 ---
 

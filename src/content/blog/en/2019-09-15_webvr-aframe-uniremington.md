@@ -11,7 +11,7 @@ Virtual reality felt like a luxury when I started exploring it. High-end headset
 
 This talk at Universidad Remington was about bringing VR to a university audience — students, developers, and curious minds who might not have a gaming PC or a $500 headset. The web is the most accessible distribution platform we have. If you can make VR work in a browser, you can reach anyone with a smartphone and a $15 Cardboard viewer.
 
-Before diving into the tech, I started by inviting the audience to join the local tech communities in Pereira: [Sirius](https://sirius.utp.edu.co/jointdeveloper/), [PyPereira](https://pypereira.co/), [Pereira Tech Talks](https://pereiratechtalks.com/), [PereiraJs](https://pereirajs.org/). These communities are where real learning happens — through meetups, workshops, and shared projects.
+Before diving into the tech, I started by inviting the audience to join the local tech communities in Pereira: [Sirius](https://sirius.utp.edu.co/jointdeveloper/), [PyPereira](https://pypereira.co/), [Pereira Tech Talks](https://pereiratechtalks.org/), [PereiraJs](https://pereirajs.org/). These communities are where real learning happens — through meetups, workshops, and shared projects.
 
 ## VR, AR, and Mixed Reality
 

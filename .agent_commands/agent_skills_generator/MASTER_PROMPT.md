@@ -417,7 +417,7 @@ Create file at:
 .claude/agents/{agent-name}.md
 ```
 
-### D.3 Update Catalog (MANDATORY — 5 Steps)
+### D.3 Update Catalog (MANDATORY — 5 Steps) and Commands Reference
 
 Update `.claude/docs/skills_agents_catalog.md` with all of the following:
 
@@ -474,6 +474,14 @@ Add a new row at the top of the Changelog table:
 | {YYYY-MM-DD} | {name} added | {brief description} |
 ```
 
+#### Step 6: Update Commands Reference
+
+If the new skill has a slash command invocation, add an entry to the correct category table in `.claude/docs/COMMANDS_REFERENCE.md`:
+
+```markdown
+| `/{skill-name}` | `.claude/skills/{skill-name}/SKILL.md` | {brief description} |
+```
+
 #### Catalog Update Validation
 
 After updating, verify:
@@ -483,6 +491,7 @@ After updating, verify:
 - [ ] Domain section updated if applicable
 - [ ] Changelog entry added at the top
 - [ ] No duplicate entries
+- [ ] Commands Reference updated with new command entry (if skill has slash command)
 
 ### D.4 Verify Placement
 

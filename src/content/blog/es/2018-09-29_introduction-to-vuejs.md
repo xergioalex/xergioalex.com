@@ -125,7 +125,7 @@ Puede que descubras, como yo, que simplemente se siente bien.
 ## Recursos
 
 - [Ver las slides de mi charla](https://slides.com/xergioalex/introduction-to-vue)
-- [Resumen del evento en Pereira Tech Talks](https://pereiratechtalks.com/vuejs-intro-and-js-community)
+- [Resumen del evento en Pereira Tech Talks](https://pereiratechtalks.org/vuejs-intro-and-js-community)
 - [Documentación Oficial de Vue.js](https://vuejs.org/guide/introduction.html)
 - [Repositorio de Vue.js en GitHub](https://github.com/vuejs/core)
 
