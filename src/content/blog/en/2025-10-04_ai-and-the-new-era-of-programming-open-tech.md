@@ -5,6 +5,7 @@ pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
+keywords: ["vibe coding AI programming", "Cursor vs Codex vs Claude Code", "AI code agent comparison", "developer as conductor orchestrator", "Open Tech Hackathon AI workshop", "AI coding tools productivity", "DailyBot AI features shipping"]
 ---
 
 You're at a hackathon. You have a weekend — maybe less — to turn an idea into something that works. I gave this workshop at [Open Tech Hackathon](https://opentechhackathon.com/) because I wanted to give participants something they could use *that same day*: a map of the AI tools that actually help you ship, and a mental model for how to use them without getting lost in the hype.

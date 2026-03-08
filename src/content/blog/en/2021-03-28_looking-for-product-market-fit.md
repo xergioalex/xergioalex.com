@@ -5,6 +5,7 @@ pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "dailybot", "entrepreneur"]
+keywords: ["product market fit startup journey", "DailyBot product market fit", "failed startup products lessons", "Rocka.co startup experiments", "how to find product market fit", "PMF signals recognition", "Y Combinator product market fit"]
 ---
 
 I gave a talk in an entrepreneurship class in 2021 about finding Product Market Fit. Not the theory from a textbook — my actual experience building products at [Rocka.co](https://rocka.co), failing most of the time, and eventually landing on something that worked.

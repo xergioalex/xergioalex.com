@@ -5,6 +5,7 @@ pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "javascript"]
+keywords: ["Astro in Action talk", "Astro Microsoft Firebase case study", "Pereira Tech Talks Astro", "Astro framework performance", "Astro islands architecture", "Astro zero JavaScript default", "Astro vs Next.js comparison"]
 ---
 
 **Astro in Action** is about answering a question I kept hearing: *Is it worth it?* It's new. It's just another web framework. I wanted to show why Astro stands out — with real case studies, real numbers, and a real project: migrating [Pereira Tech Talks](https://www.pereiratechtalks.org/) to Astro as the demo of the talk.

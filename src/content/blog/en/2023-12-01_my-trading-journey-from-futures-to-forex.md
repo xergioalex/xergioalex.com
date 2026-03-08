@@ -7,6 +7,7 @@ series: "trading-journey"
 seriesOrder: 1
 heroLayout: "banner"
 tags: ["trading", "personal"]
+keywords: ["forex trading journey personal", "Market Profile trading mentorship", "futures to forex trading", "trading discipline psychology", "forex consistency over profits", "trading journey Colombia", "learning forex from scratch"]
 ---
 
 I got into trading the way many people do: out of curiosity and through conversations with friends.

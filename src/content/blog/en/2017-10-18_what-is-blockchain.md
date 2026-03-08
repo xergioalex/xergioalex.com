@@ -5,6 +5,7 @@ pubDate: "2017-10-18"
 heroImage: "/images/blog/posts/what-is-blockchain/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
+keywords: ["blockchain explained history of money", "how blockchain transforms economy", "Web3.js blockchain apps", "decentralized trust explained", "blockchain Universidad de Caldas", "blockchain ICO 2017", "Bitcoin origin story blockchain"]
 ---
 
 Blockchain was everywhere in 2017. Bitcoin had exploded, Ethereum was powering a wave of ICOs, and every tech conference had at least one talk about "decentralizing everything." The hype was real, but so was the confusion. Most people had heard of blockchain, but few understood how it actually worked or why it mattered beyond cryptocurrency speculation.

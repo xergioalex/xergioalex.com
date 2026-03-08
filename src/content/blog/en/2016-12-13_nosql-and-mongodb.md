@@ -5,6 +5,7 @@ pubDate: "2016-12-13"
 heroImage: "/images/blog/posts/nosql-and-mongodb/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech", "database"]
+keywords: ["NoSQL vs SQL comparison", "MongoDB introduction", "document database MongoDB", "when to use NoSQL", "MongoDB document model", "NoSQL vs relational database", "MongoDB for developers"]
 ---
 
 I spent years working with relational databases — MySQL, PostgreSQL, the usual suspects. Tables, foreign keys, JOINs. It's a solid foundation, and for many problems, it's exactly what you need. But when I started building APIs that consumed JSON from third-party services, or mobile backends where the schema evolved every sprint, SQL started to feel rigid. I kept writing migrations to add columns, restructure tables, normalize data that didn't want to be normalized.

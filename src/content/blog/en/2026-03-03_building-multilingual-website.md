@@ -5,6 +5,7 @@ pubDate: '2026-03-03'
 heroImage: '/images/blog/posts/building-multilingual-website/hero.png'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
+keywords: ["multilingual website Astro i18n", "Astro bilingual architecture English Spanish", "TypeScript translation system website", "page wrapper pattern Astro", "i18n static site Astro", "hreflang multilingual Astro", "960 translation keys typed system"]
 series: "building-xergioalex"
 seriesOrder: 5
 ---

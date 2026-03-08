@@ -5,6 +5,7 @@ pubDate: "2015-11-27"
 heroImage: "/images/blog/posts/music-library-php-my-first-website/home.gif"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "university"]
+keywords: ["PHP music library", "SQLite web app", "first website PHP", "university database project", "PHP SQLite tutorial", "beginner web development", "HTML CSS PHP project"]
 ---
 
 I've been building for the web for almost 10 years now, but I didn't start that way. Recently I was digging through old university files and found the first website I ever built. It was the final project for my database course — and it was where I had my first real encounter with web development.

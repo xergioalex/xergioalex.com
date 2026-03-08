@@ -5,6 +5,7 @@ pubDate: "2018-04-14"
 heroImage: "/images/blog/posts/blockchain-industrial-revolution/blockchain-2.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
+keywords: ["blockchain industrial revolution", "decentralized trust without intermediaries", "blockchain real-world applications", "supply chain blockchain", "DApps decentralized applications", "blockchain beyond cryptocurrency", "blockchain identity voting"]
 ---
 
 When I gave this talk at Pereira Tech Talks, I knew I had a challenge: everyone had heard about Bitcoin, but most people still thought blockchain was just "that cryptocurrency thing." My goal was to show them that blockchain is to the internet what the steam engine was to manufacturing — a fundamental shift in how systems work.

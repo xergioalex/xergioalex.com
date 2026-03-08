@@ -5,6 +5,7 @@ pubDate: "2018-12-31"
 heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "web-development", "personal", "design"]
+keywords: ["artist website jPlayer", "salsa musician website HTML CSS", "jPlayer audio player tutorial", "Yo Me Llamo Héctor Lavoe", "musician website LESS PHP", "custom audio player website", "jQuery jPlayer iOS Safari fix"]
 ---
 
 Yuli called me sometime around 2017. We'd been friends since university — the kind of friendship that survives graduation and distance and years of barely talking, and then one day someone calls and it's like no time has passed at all.

@@ -5,6 +5,7 @@ pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "python", "database", "university"]
+keywords: ["Django multiple database engines", "Django PostgreSQL MySQL MongoDB", "multi-database Django project", "Django Docker database containers", "Django Redis Neo4j integration", "10 databases Django project", "university advanced databases Django"]
 ---
 
 In Advanced Databases class, the professor asks a question that sounds almost absurd at first: what if a single application had to talk to ten different database engines simultaneously? Not ten tables in one database. Ten completely different databases — SQL and NoSQL, relational and document-based, graph and key-value — all connected to one central application, all running at the same time.

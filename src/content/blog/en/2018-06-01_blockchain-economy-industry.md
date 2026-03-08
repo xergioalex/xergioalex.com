@@ -5,6 +5,7 @@ pubDate: "2018-06-01"
 heroImage: "/images/blog/posts/blockchain-economy-industry/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
+keywords: ["blockchain economy transformation", "Bitcoin whitepaper origins", "Ethereum smart contracts economy", "history of money blockchain", "blockchain digital ownership", "decentralized finance DeFi explained", "blockchain trust without intermediaries"]
 ---
 
 I've always been fascinated by systems that challenge the status quo. And few technologies have done that as dramatically as blockchain.

@@ -5,6 +5,7 @@ pubDate: "2018-04-25"
 heroImage: "/images/blog/posts/racket-projects-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["DrRacket Scheme university programming", "functional programming beginner", "recursion Racket tutorial", "DrScheme function plotter", "learn programming Scheme", "functional programming university course", "Racket derivatives function plotter"]
 ---
 
 Some people learn to program by printing "Hello World" in Python or dragging blocks in Scratch. I learned by staring at a sea of parentheses in a language I'd never heard of, wondering if my professor was playing an elaborate prank on the entire class.

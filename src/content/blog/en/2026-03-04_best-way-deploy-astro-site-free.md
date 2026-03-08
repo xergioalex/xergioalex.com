@@ -5,6 +5,7 @@ pubDate: "2026-03-04T10:00:00"
 heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
+keywords: ["deploy Astro site free Cloudflare Pages", "Cloudflare Pages vs GitHub Pages", "free static site hosting Astro", "Cloudflare Pages preview deployments", "deploy Astro Cloudflare unlimited bandwidth", "best free hosting Astro", "Cloudflare Pages auto-detect Astro"]
 series: "building-xergioalex"
 seriesOrder: 6
 ---

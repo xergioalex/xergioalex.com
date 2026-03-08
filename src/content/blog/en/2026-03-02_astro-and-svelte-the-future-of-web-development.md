@@ -5,6 +5,7 @@ pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "web-development", "javascript"]
+keywords: ["Astro vs Next.js performance comparison", "Svelte 5 runes reactivity", "Astro Svelte web development 2025", "State of JS 2025 Astro satisfaction", "Astro zero JavaScript default", "Svelte compiled framework runtime", "Cloudflare acquires Astro"]
 ---
 
 I remember when building a website was simple. You opened a text editor, wrote HTML, linked some CSS, threw in a script tag if you needed it. It worked. No bundlers, no transpilers, no configuration ritual before you could render "Hello World."

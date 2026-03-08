@@ -5,6 +5,7 @@ pubDate: "2018-01-11"
 heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["submit Google Forms via Ajax", "contact form without backend", "Google Forms HTTP POST", "jQuery Ajax Google Forms", "static site contact form", "Google Forms Postman integration", "form submission without server"]
 ---
 
 When building basic static websites — like landing pages or personal sites — you often need to connect a contact form. If you're not using anything beyond HTML, CSS, and JavaScript (as is common with [GitHub Pages](https://pages.github.com/)), [Google Forms](https://www.google.com/forms/about/) is a solid option for storing visitor submissions.
