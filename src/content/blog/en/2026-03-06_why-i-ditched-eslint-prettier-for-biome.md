@@ -17,9 +17,9 @@ That was the moment I started actually looking at alternatives.
 
 ## The years when it worked
 
-I want to be fair. ESLint and Prettier worked well together for a long time. I used them on multiple projects — the [Pereira Tech Talks](https://www.pereiratechtalks.org/) site, personal projects, work projects at [DailyBot](https://www.dailybot.com). Set up once, forget about it. Run on save, run on CI. The code comes out consistently formatted. Imports sorted. Semicolons where expected.
+I want to be fair. ESLint and Prettier work well together — and they still do. I used them on multiple projects — the [Pereira Tech Talks](https://www.pereiratechtalks.org/) site, personal projects, work projects at [DailyBot](https://www.dailybot.com). Set up once, forget about it. Run on save, run on CI. The code comes out consistently formatted. Imports sorted. Semicolons where expected.
 
-And they still work. A lot of my projects still use them — migrating an existing project has its cost and it's not always worth it. But for every new project, Biome is my default now.
+A lot of my projects still use them — migrating an existing project has its cost and it's not always worth it. But for every new project, Biome is my default now.
 
 What changed wasn't that the tools stopped working. What changed is that the ecosystem around them got complicated in a way that made every upgrade feel like a negotiation.
 
@@ -51,7 +51,7 @@ And then there's the configuration order issue — Prettier overrides *must* com
 
 ## The flat config migration
 
-With ESLint v9 came "flat config" — a new configuration format that replaced the old `.eslintrc` system.
+With [ESLint v9](https://eslint.org/blog/2024/04/eslint-v9.0.0-released/) came "flat config" — a new configuration format that replaced the old `.eslintrc` system.
 
 In theory it was cleaner. A single `eslint.config.js` file, JavaScript-native, explicit imports. In practice — the ESLint team themselves published a retrospective about the v9 launch, and here's what they wrote:
 

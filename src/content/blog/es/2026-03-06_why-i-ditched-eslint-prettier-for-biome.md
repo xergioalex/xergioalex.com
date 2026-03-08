@@ -17,9 +17,9 @@ Ese fue el momento en que empecé a buscar alternativas de verdad.
 
 ## Los años en que funcionó
 
-Quiero ser justo. ESLint y Prettier funcionaron bien juntos durante mucho tiempo. Los usé en múltiples proyectos — el sitio de [Pereira Tech Talks](https://www.pereiratechtalks.org/), proyectos personales, proyectos de trabajo en [DailyBot](https://www.dailybot.com). Configuración única, olvidarse del tema. Ejecuta al guardar, ejecuta en CI. El código sale con formato consistente. Imports ordenados. Punto y coma donde se espera.
+Quiero ser justo. ESLint y Prettier funcionan bien juntos — y siguen funcionando. Los usé en múltiples proyectos — el sitio de [Pereira Tech Talks](https://www.pereiratechtalks.org/), proyectos personales, proyectos de trabajo en [DailyBot](https://www.dailybot.com). Configuración única, olvidarse del tema. Ejecuta al guardar, ejecuta en CI. El código sale con formato consistente. Imports ordenados. Punto y coma donde se espera.
 
-Y siguen funcionando. Muchos de mis proyectos todavía los usan — migrar un proyecto existente tiene su costo y no siempre vale la pena. Pero en cada proyecto nuevo, Biome ya es mi primera opción por defecto.
+Muchos de mis proyectos todavía los usan — migrar un proyecto existente tiene su costo y no siempre vale la pena. Pero en cada proyecto nuevo, Biome ya es mi primera opción por defecto.
 
 Lo que cambió no fue que las herramientas dejaran de servir. Lo que cambió es que el ecosistema alrededor de ellas se volvió complicado de una manera que hacía que cada actualización se sintiera como una negociación.
 
@@ -51,7 +51,7 @@ Y luego está el problema del orden de configuración — los overrides de Prett
 
 ## La migración a flat config
 
-Con ESLint v9 llegó "flat config" — un nuevo formato de configuración que reemplazaba el sistema antiguo de `.eslintrc`.
+Con [ESLint v9](https://eslint.org/blog/2024/04/eslint-v9.0.0-released/) llegó "flat config" — un nuevo formato de configuración que reemplazaba el sistema antiguo de `.eslintrc`.
 
 En teoría era más limpio. Un solo archivo `eslint.config.js`, nativo de JavaScript, imports explícitos. En la práctica — el propio equipo de ESLint publicó una retrospectiva sobre el lanzamiento de v9, y esto es lo que escribieron:
 
