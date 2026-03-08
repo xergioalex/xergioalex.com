@@ -14,7 +14,14 @@ const { lang } = Astro.props;
 const t = getTranslations(lang);
 ---
 
-<MainLayout lang={lang} title={t.hobbiesPage.title} description={t.hobbiesPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.hobbiesPage.title}
+  description={t.hobbiesPage.description}
+  keywords={lang === 'en'
+    ? ['XergioAleX hobbies', 'software engineer life beyond code', 'cycling developer', 'tech professional interests', 'work life balance engineer', 'developer personal interests']
+    : ['hobbies XergioAleX', 'vida ingeniero de software más allá del código', 'ciclismo desarrollador', 'intereses profesional tecnología', 'equilibrio vida trabajo ingeniero', 'intereses personales desarrollador']}
+>
   <PageHero
     title={t.hobbiesPage.title}
     subtitle={t.hobbiesPage.subtitle}

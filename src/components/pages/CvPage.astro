@@ -42,7 +42,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.cvPage.title} description={t.cvPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.cvPage.title}
+  description={t.cvPage.description}
+  keywords={lang === 'en'
+    ? ['Sergio Florez resume', 'XergioAleX CV', 'CTO software engineer experience', 'full stack developer resume', 'Y Combinator founder CV', 'tech leader Colombia']
+    : ['currículum Sergio Florez', 'CV XergioAleX', 'experiencia CTO ingeniero de software', 'currículum desarrollador full stack', 'CV fundador Y Combinator', 'líder tecnológico Colombia']}
+>
   <Fragment slot="head">
     <JsonLd data={breadcrumbSchema} />
   </Fragment>

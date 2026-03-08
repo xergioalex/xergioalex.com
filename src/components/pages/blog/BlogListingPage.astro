@@ -32,6 +32,9 @@ const collectionPageData = {
   lang={lang}
   title={t.blogTitle}
   description={t.blogDescription}
+  keywords={lang === 'en'
+    ? ['XergioAleX blog', 'software engineering articles', 'tech tutorials developer', 'web development blog', 'startup lessons learned', 'programming insights Colombia']
+    : ['blog XergioAleX', 'artículos ingeniería de software', 'tutoriales tecnología desarrollador', 'blog desarrollo web', 'lecciones aprendidas startup', 'perspectivas programación Colombia']}
 >
   <Fragment slot="head">
     <JsonLd data={collectionPageData} />

@@ -57,7 +57,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.techTalksPage.title} description={t.techTalksPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.techTalksPage.title}
+  description={t.techTalksPage.description}
+  keywords={lang === 'en'
+    ? ['XergioAleX tech talks', 'conference speaker software', 'developer conference presentations', 'tech speaking Colombia', 'software engineering talks', 'community tech events']
+    : ['charlas tecnología XergioAleX', 'conferencista software Colombia', 'presentaciones conferencias desarrollo', 'ponencias ingeniería de software', 'eventos comunidad tecnológica', 'speaker tecnología latinoamérica']}
+>
   <Fragment slot="head">
     <JsonLd data={breadcrumbSchema} />
   </Fragment>
