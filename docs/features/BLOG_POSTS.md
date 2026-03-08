@@ -94,6 +94,7 @@ schema: z.object({
   heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
     .default('banner').optional(),     // Optional - hero image display layout
   tags: z.array(z.string()).optional(), // Optional - must be existing tags
+  keywords: z.array(z.string()).optional(), // Optional - SEO search phrases (5-8 per post)
   series: z.string().optional(),        // Optional - references src/content/series/{slug}.md
   seriesOrder: z.number().optional(),   // Optional - chapter order when series is set
 })
@@ -110,6 +111,7 @@ schema: z.object({
 | `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}` |
 | `heroLayout` | No | How the hero image is displayed. Default: `'banner'`. See [Hero Layouts](#hero-layouts). |
 | `tags` | No | Array of tag identifiers. Must match files in `src/content/tags/`. |
+| `keywords` | No | Array of 5-8 SEO search phrases. Specific to post content, internationalized per language. Used in `<meta name="keywords">` and JSON-LD. |
 | `series` | No | Series slug from `src/content/series/`. Required together with `seriesOrder`. |
 | `seriesOrder` | No | Chapter number within the series. Required together with `series`. |
 
@@ -125,10 +127,13 @@ pubDate: '2020-12-31'
 heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
 heroLayout: 'side-by-side'
 tags: ['portfolio', 'personal', 'design']
+keywords: ['XergioAleX personal branding', 'ninja coder logo design', 'developer brand identity', 'personal branding for engineers', 'Koru logo design']
 ---
 ```
 
 > **Note:** The `tags` array contains both primary (`portfolio`, `personal`) and secondary (`design`) tags. The tier is determined by the tag collection, not by position in the array.
+
+> **Keywords vs Tags:** Tags are categorical labels from a controlled taxonomy (used for navigation/filtering). Keywords are specific search phrases users type into search engines (used for SEO discovery). Keywords are internationalized — Spanish keywords should be adapted to Spanish search behavior, not literal translations. See [SEO Guide — Keywords](../SEO.md#keywords-dynamic) for details.
 
 ### Translation Rules
 
