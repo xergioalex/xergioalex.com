@@ -205,7 +205,9 @@ Biome 2.0 llegó con dos adiciones grandes: plugins (escribe reglas de lint pers
 
 El trabajo de inferencia de tipos fue [patrocinado por Vercel](https://biomejs.dev/blog/vercel-partners-biome-type-inference/). Creo que eso dice algo. Las empresas grandes de infraestructura no patrocinan proyectos de linting por caridad — lo hacen porque las herramientas lentas les cuestan minutos de CI y tiempo de desarrollo, y Biome es significativamente más rápido a escala.
 
-Y no es solo patrocinio. [Next.js desde la versión 15.5](https://nextjs.org/blog/next-15-5) ofrece Biome como opción oficial al crear un proyecto nuevo con `create-next-app` — al mismo nivel que ESLint. Y en [Next.js 16](https://nextjs.org/docs/app/guides/upgrading/version-16) fueron un paso más allá: eliminaron `next lint` por completo. Ya no hay linter integrado. El framework te dice: usa ESLint o Biome directamente, tú decides. Que el framework de React más usado del mundo le dé ese nivel de protagonismo a Biome dice bastante sobre hacia dónde se está moviendo el ecosistema.
+Y no es solo patrocinio. [Next.js desde la versión 15.5](https://nextjs.org/blog/next-15-5) ofrece Biome como opción oficial al crear un proyecto nuevo con `create-next-app` — al mismo nivel que ESLint. Y en [Next.js 16](https://nextjs.org/docs/app/guides/upgrading/version-16) fueron un paso más allá: eliminaron `next lint` por completo. Ya no hay linter integrado. El framework te dice: usa ESLint o Biome directamente, tú decides.
+
+Que el framework de React más usado del mundo le dé ese nivel de protagonismo a Biome dice bastante sobre hacia dónde se está moviendo el ecosistema.
 
 El [roadmap](https://biomejs.dev/blog/roadmap-2026/) incluye mejor soporte para Astro/Svelte/Vue — linting en las secciones de template/markup, no solo en los bloques de script. Reglas de lint cruzadas entre JavaScript y CSS. Mejor integración con editores.
 
