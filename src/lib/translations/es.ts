@@ -513,6 +513,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     communityTitle: 'Pereira Tech Talks',
     communityText:
       'En septiembre de 2017, nos sentamos con una idea simple: \u00BFqu\u00E9 tal si creamos un espacio donde los profesionales tech en Pereira puedan compartir lo que est\u00E1n aprendiendo, construyendo y enfrentando? Todos hab\u00EDamos sido parte de PereiraJS y Python Pereira, pero quer\u00EDamos algo m\u00E1s grande \u2014 una comunidad que uniera a todos sin importar su stack tecnol\u00F3gico.<br /><br />Esa conversaci\u00F3n se convirti\u00F3 en Pereira Tech Talks. Lo que empez\u00F3 como peque\u00F1os meetups en espacios prestados se ha convertido en una de las comunidades tech m\u00E1s activas de Colombia. Hemos llenado auditorios en la UTP, tra\u00EDdo speakers de toda Latinoam\u00E9rica, y visto a un mont\u00F3n de desarrolladores dar su primera charla p\u00FAblica. \u00BFLo mejor? Ver gente que lleg\u00F3 como asistente regresar meses despu\u00E9s como speaker, cerrando el ciclo del conocimiento compartido.',
+    communityCta: 'Visitar Pereira Tech Talks',
     communityImageAlt1:
       'Auditorio lleno en un evento de Pereira Tech Talks en la UTP',
     communityImageAlt2:

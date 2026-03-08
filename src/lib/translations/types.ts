@@ -273,6 +273,7 @@ export interface SiteTranslations {
     heroDescription: string;
     communityTitle: string;
     communityText: string;
+    communityCta: string;
     communityImageAlt1: string;
     communityImageAlt2: string;
     topicsTitle: string;

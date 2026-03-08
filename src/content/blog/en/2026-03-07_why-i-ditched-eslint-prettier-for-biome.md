@@ -2,13 +2,14 @@
 title: "Why I Ditched ESLint + Prettier for Biome"
 description: "After years of chasing ESLint upgrades and managing the Prettier conflict dance, I switched to Biome. One config file, one binary, and I haven't looked back."
 pubDate: '2026-03-07'
-heroLayout: 'none'
+heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.png'
+heroLayout: 'side-by-side'
 tags: ['tech', 'web-development', 'javascript']
 ---
 
-I ran `npm update eslint` and watched my CI pipeline break. Again. Third time that year.
+I bumped the ESLint and Prettier versions, ran `npm install`, and watched the project break. Again. Third time in a few months.
 
-This was 2024, during the ESLint v9 migration. I opened the migration guide. It was longer than my project's README. It talked about flat config, about `eslintrc` deprecation, about `FlatCompat` utilities for when your plugins hadn't caught up yet. I spent two hours — two hours on linting configuration, which should take fifteen minutes total, ever — just to get back to where I was before the update.
+Every ESLint upgrade was the same ritual: run the command and pray nothing breaks. Best case, I'd end up refactoring types, adjusting formatting, and touching several parts of the codebase. Worst case — and this happened often — there were incompatibilities with other libraries that depended on the previous version, and I'd spend hours doing cascading upgrades until everything worked again. If you've ever run `apt upgrade` on Ubuntu or Arch and sat there staring at the terminal praying the boot grub doesn't break again, you know exactly the feeling.
 
 That was the moment I started actually looking at alternatives.
 
@@ -16,13 +17,13 @@ That was the moment I started actually looking at alternatives.
 
 ## The years when it worked
 
-I want to be fair. ESLint and Prettier worked well together for a long time. I used them on every project — this personal site, DailyBot's frontend, a dozen side projects. Set up once, forget about it. Run on save, run on CI. The code comes out consistently formatted. Imports sorted. Semicolons where expected.
+I want to be fair. ESLint and Prettier worked well together for a long time. I used them on multiple projects — the [Pereira Tech Talks](https://www.pereiratechtalks.org/) site, personal projects, work projects at [DailyBot](https://www.dailybot.com). Set up once, forget about it. Run on save, run on CI. The code comes out consistently formatted. Imports sorted. Semicolons where expected.
 
-That was the deal. And it held up, more or less, until it didn't.
+And they still work. A lot of my projects still use them — migrating an existing project has its cost and it's not always worth it. But for every new project, Biome is my default now.
 
-The problem wasn't that ESLint or Prettier got worse. The problem is that the ecosystem around them got complicated in a way that made every upgrade feel like a negotiation.
+What changed wasn't that the tools stopped working. What changed is that the ecosystem around them got complicated in a way that made every upgrade feel like a negotiation.
 
-There was a period — I think around 2022, 2023 — where I had a VS Code setup that had both ESLint and Prettier configured as formatters. I didn't realize the issue until I noticed my files were flickering on save. ESLint would run, reformat the code one way. Prettier would run, reformat it back. Or sometimes the other direction. The file would visibly jump — you could see the indentation change and change back in under a second. I thought I had a CPU problem before I realized it was two opinionated tools fighting over the same text.
+At some point I had a VS Code setup with both ESLint and Prettier configured as formatters. I didn't realize the issue until I noticed my files were flickering on save. ESLint would run, reformat the code one way. Prettier would run, reformat it back. Or sometimes the other direction. The file would visibly jump — you could see the indentation change and change back in under a second. I thought it was my IDE acting up before I realized it was two opinionated tools fighting over the same text.
 
 The fix was `eslint-config-prettier` — a package that disables all the ESLint formatting rules that overlap with Prettier. A package that exists solely because two tools have overlapping opinions and someone has to be told to stop talking. You install it, you put `"prettier"` at the end of your ESLint `extends` array, you configure VS Code to use only Prettier as the formatter on save. Three steps to solve a problem that shouldn't exist.
 
@@ -42,56 +43,54 @@ Here's what a real ESLint + Prettier + TypeScript setup actually requires:
 - `eslint-plugin-prettier` — if you want Prettier errors to show as ESLint errors
 - `@typescript-eslint/parser` and `@typescript-eslint/eslint-plugin` — for TypeScript support
 
-Run `npm install` on a fresh project. Watch 127+ packages hit your `node_modules`. Not a typo. A hundred and twenty-seven packages, just for linting and formatting.
+Run `npm install` on a fresh project. Watch over a hundred packages hit your `node_modules`. Just for linting and formatting.
 
 And then there's the configuration order issue — Prettier overrides *must* come last in your ESLint config, otherwise the formatting rules fight. Get it wrong and your editor reformats the file one way on save, ESLint reformats it back, the file won't stop flickering. I've debugged that exact problem more times than I'd like to admit.
 
 ---
 
-## ESLint v9 and what happened next
+## The flat config migration
 
-In April 2024, ESLint released v9. First major release in nearly three years. They introduced "flat config" — a new configuration format that replaced the old `.eslintrc` system.
+With ESLint v9 came "flat config" — a new configuration format that replaced the old `.eslintrc` system.
 
-In theory it was cleaner. A single `eslint.config.js` file, JavaScript-native, explicit imports. In practice — ESLint published a retrospective about it in May 2025, more than a year after the release, and here's what they wrote:
+In theory it was cleaner. A single `eslint.config.js` file, JavaScript-native, explicit imports. In practice — the ESLint team themselves published a retrospective about the v9 launch, and here's what they wrote:
 
-> "Initial online sentiment was largely negative, with users saying v9.0.0 'wasn't ready,' 'didn't work,' or even 'broke the ecosystem.' Some postponed upgrading while others considered switching tools altogether."
+> Initial online sentiment was largely negative, with users saying [the release] 'wasn't ready', 'didn't work', or even 'broke the ecosystem'. Some postponed upgrading while others considered switching tools altogether.
 
-That's from the ESLint team's own post-mortem. They wrote that about their own release.
+That's from the [ESLint team's own post-mortem](https://eslint.org/blog/2025/05/eslint-v9.0.0-retrospective/). They wrote that about their own release.
 
-What went wrong? A few things. The new flat config syntax was — to use the charitable word — verbose. Plugins suddenly needed to expose their configurations differently, and they didn't all do it the same way. Some exported an object. Some exported an array. Some hadn't updated at all, so you needed `FlatCompat` from `@eslint/eslintrc` just to load them. Users hit a wall of `TypeError: context.getScope is not a function` errors for plugins that hadn't been updated to the v9 rule API.
+What went wrong? The new flat config syntax was — to use the charitable word — verbose. Plugins suddenly needed to expose their configurations differently, and they didn't all do it the same way. Some exported an object. Some exported an array. Some hadn't updated at all, so you needed `FlatCompat` from `@eslint/eslintrc` just to load them. Users hit a wall of `TypeError: context.getScope is not a function` errors for plugins that hadn't caught up.
 
-There was a GitHub discussion — `eslint/eslint` #20500, if you want to find it — asking why there were 7+ different ways to use plugins with flat config. Real question. Didn't have a great answer.
+The GitHub discussions told the story. One asked [why there were 7+ different ways to use plugins](https://github.com/eslint/eslint/discussions/20500) with flat config. Another was [the ESLint team themselves asking for migration feedback](https://github.com/eslint/eslint/discussions/18456) — and what they got back wasn't pretty. The [ecosystem tracking issue](https://github.com/eslint/eslint/issues/18093) showed how many plugins were still not updated months later.
 
 The team's eventual response was to bring `extends` back. Via `defineConfig()`. A feature they'd removed because it was "unnecessary in flat config." They removed it, got user feedback, then re-added it. That sequence tells you something about how the rollout went.
 
-And then ESLint v10 came out in February 2026. The old `eslintrc` system — the one everyone had been using for years — was completely removed. Not deprecated. Gone. If you hadn't migrated yet, now you had to.
+And then the next major version dropped. The old `eslintrc` system — the one everyone had been using for years — was completely removed. No gradual phase-out, no grace period. If you hadn't migrated yet, now you had to.
 
-Every project I touched had some version of this problem. A plugin that wasn't updated. A shared config that needed manual `FlatCompat` wrapping. A CI pipeline that passed locally but broke on the server because of Node.js version differences in how the config was loaded. Hours of debugging, for an output that looked identical to what I had before.
+Every project I touched had some version of this problem. A plugin that wasn't updated. A shared config that needed manual `FlatCompat` wrapping. Hours of debugging, for an output that looked identical to what I had before.
 
 ---
 
 ## Enter Biome
 
-I'd heard about Biome in 2023. A fork of Rome — a tool that tried to be a unified JavaScript toolchain, went quiet for a while, then came back as Biome with a clearer focus: linting and formatting, done well, in one tool.
+[Biome](https://biomejs.dev/) started as a fork of [Rome](https://github.com/rome/tools) — a tool that tried to be a unified JavaScript toolchain, went quiet for a while, then came back with a clearer focus: linting and formatting, done well, in one tool.
 
 Written in Rust. Single binary. One config file.
 
-I was skeptical. "Another linting tool" is not a pitch that lands easily after you've been burned by migration costs. But I kept coming back to the benchmark numbers from [Biome's own repository](https://github.com/biomejs/biome/blob/main/benchmark/README.md): 10,000 files linted in 0.8 seconds versus ESLint's 45.2 seconds. 10,000 files formatted in 0.3 seconds versus Prettier's 12.1 seconds. Your numbers will vary — machine, file size, complexity — but the order of magnitude difference is real. The speed comes from Biome parsing code once and reusing the AST for both linting and formatting. ESLint and Prettier each parse the code independently, then sometimes fight about the result.
+I was skeptical. "Another linting tool" is not a pitch that lands easily after you've been burned by migration costs. But what stopped me was the speed. The first time I ran Biome on a large project, I thought it had silently failed — it finished so fast it didn't seem possible it had done anything. But it had. The [benchmarks](https://github.com/biomejs/biome/blob/main/benchmark/README.md) show differences of 10x to 50x against ESLint and Prettier. Your numbers will vary, but the order of magnitude is real. The reason underneath: Biome parses the code once and reuses the AST for both linting and formatting. ESLint and Prettier parse independently, then sometimes fight about the result.
 
-I tried it on this site — xergioalex.com, the Astro + Svelte + TypeScript project that runs on Cloudflare Pages. The migration took about an hour, mostly because I wanted to understand what I was doing rather than just running commands blindly.
-
-The actual migration commands:
+I tried it first on [pereiratechtalks.com](https://pereiratechtalks.org/) — which I had originally set up with ESLint + Prettier. The migration starts with two commands:
 
 ```bash
 biome migrate eslint
 biome migrate prettier
 ```
 
-That's it. Those two commands read your existing configs and generate an equivalent `biome.json`. Then you delete the old files and uninstall about 120 packages.
+Those two commands read your existing configs and generate an equivalent `biome.json`. From there, the work is removing the old stuff. In the case of Pereira Tech Talks, I deleted four config files — `.eslintrc.js`, `.prettierrc.js`, `.eslintignore`, `.prettierignore` — and uninstalled the ESLint and Prettier packages. I also had to update the VS Code extensions (out with ESLint and Prettier, in with Biome), simplify the CI pipeline that previously had separate steps for lint and formatting, and update the `CONTRIBUTING.md` where it said `npm run eslint:fix` and `npm run prettier:fix` to a single `npm run biome:fix`. The [full commit](https://github.com/pereira-tech-talks/pereiratechtalks.com/commit/114c473b) is on GitHub if you want to see exactly what changed.
 
-I ran `npm uninstall eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin` and watched the package count drop. Then I deleted four config files. Then I installed one package: `@biomejs/biome`.
+It took about an hour — mostly because I wanted to understand what I was doing rather than just running commands blindly. I loved it. When I started xergioalex.com from scratch, I didn't even think about it — Biome from day one.
 
-That deletion — I don't want to oversell it — felt good in a way that surprised me. Not because the old tools were bad, but because the accumulation was visible. You could see it in the package count, see it in the root directory listing, see it in the CI install time. Removing it felt like clearing a counter that had been running up for years.
+That cleanup — I don't want to oversell it — felt good in a way that surprised me. Not because the old tools were bad, but because the accumulation was visible. You could see it in the package count, see it in the root directory listing, see it in the CI install time. Removing it felt like clearing a desk that had been piling up for years.
 
 ---
 
@@ -153,9 +152,11 @@ This is the `biome.json` for xergioalex.com, the site you're reading this on:
 }
 ```
 
-Fifty lines. That's the whole thing. No separate ignore file — `includes` handles it. No separate formatter config — it's right there in the same file. CSS support built in, with Tailwind directives handled via the `tailwindDirectives: true` parser flag. The `noUnknownAtRules: "off"` override is also there — belt and suspenders — for any at-rules the parser doesn't recognize automatically.
+Fifty lines. That's the whole thing. The only thing I have to deal with occasionally is updating the `$schema` version when a new release drops — sometimes it means a minor rule tweak, but nothing that takes more than five minutes. Compared to an ESLint upgrade, it's almost recreational.
 
-The overrides I set: `noExplicitAny: "off"` because I have some TypeScript interop code where `any` is actually the right type, `noUnusedImports: "off"` and `noUnusedVariables: "off"` because those rules are useful in CI but noisy during active development. Everything else runs at the Biome defaults.
+No separate ignore file — `includes` handles it. No separate formatter config — it's right there in the same file. CSS support built in, with Tailwind directives handled via the `tailwindDirectives: true` parser flag. The `noUnknownAtRules: "off"` override is also there — belt and suspenders — for any at-rules the parser doesn't recognize automatically.
+
+The overrides I set: `noExplicitAny: "off"` because I have some TypeScript interop code where `any` is actually the right type, `noUnusedImports: "off"` and `noUnusedVariables: "off"` because those rules are useful in CI but noisy during active development — you're mid-refactor, you comment something out, and suddenly there's red everywhere. Everything else runs at the Biome defaults.
 
 Three npm scripts:
 
@@ -167,37 +168,46 @@ Three npm scripts:
 
 `biome check` runs the linter and formatter together and reports violations. `--write` applies safe fixes automatically. `--unsafe` applies everything, including transformations that might change behavior — I use that one rarely and with `git diff` open.
 
-One package installed. One config file. Three commands. Compare that to what came before.
+One package installed. One config file. Three commands. Before, I had this:
+
+```json
+"eslint:check": "eslint .",
+"eslint:fix": "eslint . --fix",
+"prettier:check": "prettier --check .",
+"prettier:fix": "prettier --write ."
+```
+
+Four scripts, two tools, two separate configs, two CI steps. Now it's one of each.
 
 ---
 
-## Where it's honest about what it can't do
+## What it can't do
 
 I'm not going to pretend Biome replaces ESLint feature-for-feature. It doesn't.
 
-ESLint has been around since 2013. Its ecosystem has thousands of community-built rules. `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, `eslint-plugin-security`, `eslint-plugin-unicorn` — specialized plugins for every use case. Biome has hundreds of rules built in — the number goes up with every release — and a plugin system (GritQL, added in Biome 2.0) that's still maturing.
+ESLint has been around for over a decade. Its ecosystem has thousands of community-built rules. `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, `eslint-plugin-security`, `eslint-plugin-unicorn` — specialized plugins for every use case. Biome has hundreds of rules built in — the number goes up with every release — and a plugin system (GritQL) that's still maturing.
 
-Astro and Svelte support is partial. Biome handles the JavaScript and TypeScript inside those files, but not the template syntax — the `<template>` blocks in Svelte, the Astro-specific directives. That's on the roadmap for 2026, but it's not there yet. For this site, that's acceptable — the TypeScript code is where the important lint rules need to run.
+Astro and Svelte support is partial. Biome handles the JavaScript and TypeScript inside those files, but not the template syntax — the `<template>` blocks in Svelte, the Astro-specific directives. That's on the roadmap but not there yet. For this site, that's acceptable — the TypeScript code is where the important lint rules need to run.
 
-Type-aware linting — I think this is the area where Biome's coverage matters most and is hardest to quantify precisely. Rules like `noFloatingPromises` work — Biome does type inference on its own, without running the TypeScript compiler, which is genuinely different from what typescript-eslint does. The coverage isn't 100%; there are edge cases typescript-eslint catches that Biome doesn't yet. Whether the gap matters depends on your project and which specific rules you rely on. For me, the coverage I actually use is solid, and the performance difference — no TypeScript compiler invocation in the lint path — is worth the trade.
+Type-aware linting — I think this is the area where Biome's coverage matters most and is hardest to pin down. Rules like `noFloatingPromises` work — Biome does type inference on its own, without running the TypeScript compiler, which is a fundamentally different approach from what typescript-eslint does. The coverage isn't 100%; there are edge cases typescript-eslint catches that Biome doesn't yet. Whether the gap matters depends on your project. For me, the rules I actually rely on work, and the performance difference — no TypeScript compiler invocation in the lint path — is worth the trade.
 
 HTML, Markdown, and SCSS aren't supported yet.
 
-Honestly — if you have a project that relies heavily on `eslint-plugin-react-hooks` specific rules, or on jsx-a11y for accessibility enforcement at the linting level, you might run a hybrid setup for a while. Biome for formatting and most linting, ESLint for the specific rules you need. That's a real pattern in 2025-2026. It's more setup than I want, but it's better than managing the whole ESLint stack.
+Honestly — if you have a project that relies heavily on `eslint-plugin-react-hooks` specific rules, or on jsx-a11y for accessibility enforcement at the linting level, you might need a hybrid setup for a while. Biome for formatting and most linting, ESLint for the specific rules you need. It's more setup than I want, but it's better than managing the whole ESLint stack.
 
 For this site, none of that is a problem. Biome covers everything I need.
 
 ---
 
-## Biome 2.0 and what's coming
+## Where it's heading
 
-In June 2025, Biome 2.0 shipped — codename "Biotype." Two big additions: plugins (write custom lint rules in GritQL) and type inference (lint rules that understand TypeScript types without running `tsc`).
+Biome 2.0 shipped with two big additions: plugins (write custom lint rules in GritQL) and type inference (lint rules that understand TypeScript types without running `tsc`).
 
-The type inference work was sponsored by Vercel — which, if you think about it, tells you something about where the frontend tooling ecosystem is heading. Major infrastructure companies don't sponsor linting projects out of charity. They do it because slow tooling costs them CI minutes and developer time, and Biome is meaningfully faster at scale. The `noFloatingPromises` rule — the marquee type-aware rule — is already working. The coverage is improving with each release.
+The type inference work was [sponsored by Vercel](https://biomejs.dev/blog/vercel-partners-biome-type-inference/). I think that says something. Major infrastructure companies don't sponsor linting projects out of charity — they do it because slow tooling costs them CI minutes and developer time, and Biome is meaningfully faster at scale.
 
-The 2026 roadmap includes better Astro/Svelte/Vue support — linting in the template/markup sections, not just the script blocks. Cross-language lint rules that work across JS and CSS. Improved LSP integration so editors can show references across file types.
+The [roadmap](https://biomejs.dev/blog/roadmap-2026/) includes better Astro/Svelte/Vue support — linting in the template/markup sections, not just the script blocks. Cross-language lint rules that work across JS and CSS. Better editor integration.
 
-None of that is shipped yet. But the direction is clear: one tool that handles your whole frontend stack. Linting, formatting, eventually bundling. Less glue code. Less configuration. Less "why is ESLint fighting with Prettier again."
+None of that is fully shipped yet. But the direction is what I care about: fewer tools doing more, with less configuration to maintain.
 
 ---
 
@@ -205,11 +215,11 @@ None of that is shipped yet. But the direction is clear: one tool that handles y
 
 The decision wasn't only about speed. The speed is real — my local `biome:check` runs in under a second, always. But honestly, I could live with a slower linter if the configuration was stable.
 
-The thing that broke me on ESLint was the maintenance cost. Every major release felt like a migration project. v8 to v9 took hours. ESLint v10 forcing `eslintrc` removal means everyone on the old format had to migrate, whether they wanted to or not. The Prettier conflict dance — the `eslint-config-prettier` package exists only because two tools have overlapping opinions about formatting and someone has to be told to shut up.
+The thing that broke me on ESLint was the maintenance cost. Every major release felt like a migration project. The flat config migration took hours. Then the old config format got removed entirely, and everyone had to move whether they wanted to or not. The Prettier conflict dance — the `eslint-config-prettier` package exists only because two tools have overlapping opinions about formatting and someone has to be told to shut up.
 
 Biome doesn't have that problem. One config. One tool. When I upgrade Biome, I update the `$schema` version in `biome.json` and run `biome migrate`. It handles the config differences automatically.
 
-I'm aware that things change — Biome might have its own v2-to-v3 migration story someday. I hope they handle it better than ESLint did. But right now, the maintenance surface area is dramatically smaller, and I want to keep it that way.
+I'm aware that things change — Biome might have its own painful migration someday. I hope they handle it better than ESLint did. But right now, the maintenance surface is a lot smaller, and I want to keep it that way.
 
 ---
 
@@ -218,7 +228,7 @@ I'm aware that things change — Biome might have its own v2-to-v3 migration sto
 - [Biome.js](https://biomejs.dev/) — Documentation and quick start
 - [Biome v2 release post](https://biomejs.dev/blog/biome-v2/) — What shipped in 2.0 (plugins, type inference)
 - [Migrating from ESLint and Prettier to Biome](https://biomejs.dev/guides/migrate-eslint-prettier/) — Official migration guide
-- [ESLint v9.0.0 retrospective](https://eslint.org/blog/2025/05/eslint-v9.0.0-retrospective/) — Worth reading if you want to understand what went wrong
+- [ESLint flat config retrospective](https://eslint.org/blog/2025/05/eslint-v9.0.0-retrospective/) — Worth reading if you want to understand what went wrong
 - [Biome benchmarks](https://github.com/biomejs/biome/blob/main/benchmark/README.md) — Where the numbers come from
 
 Let's keep building.

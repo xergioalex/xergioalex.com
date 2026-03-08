@@ -506,6 +506,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     communityTitle: 'Pereira Tech Talks',
     communityText:
       'In September 2017, a few of us sat down with a simple idea: what if we created a space where tech professionals in Pereira could share what they\u2019re learning, building, and struggling with? We\u2019d all been part of PereiraJS and Python Pereira, but we wanted something bigger \u2014 a community that brought everyone together regardless of their stack.<br /><br />That conversation became Pereira Tech Talks. What started as small meetups in borrowed spaces has grown into one of the most active tech communities in Colombia. We\u2019ve filled auditoriums at UTP, brought in speakers from across Latin America, and watched countless developers give their first public talk. The best part? Seeing people who came as attendees return months later as speakers, closing the knowledge-sharing loop.',
+    communityCta: 'Visit Pereira Tech Talks',
     communityImageAlt1:
       'Standing room only at a Pereira Tech Talks event at UTP auditorium',
     communityImageAlt2:
