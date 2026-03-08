@@ -79,14 +79,14 @@ Escrito en Rust. Un solo binario. Un archivo de configuración.
 
 Era escéptico. "Otra herramienta de linting" no es un argumento que convence fácilmente después de haber pagado los costos de migración de ESLint. Pero lo que me hizo parar fue la velocidad. La primera vez que corrí Biome en un proyecto grande, pensé que había fallado silenciosamente — terminó tan rápido que no parecía posible que hubiera hecho algo. Pero sí lo hizo. Los [benchmarks](https://github.com/biomejs/biome/blob/main/benchmark/README.md) hablan de diferencias de entre 10x y 50x contra ESLint y Prettier. Tus números van a variar, pero el orden de magnitud es real. La razón de fondo: Biome parsea el código una sola vez y reutiliza el AST para linting y formato. ESLint y Prettier parsean por separado, y luego a veces pelean por el resultado.
 
-Lo probé primero en [pereiratechtalks.com](https://pereiratechtalks.org/) — que yo mismo había montado con ESLint + Prettier. La migración arranca con dos comandos:
+Lo probé primero en [pereiratechtalks.org](https://pereiratechtalks.org/) — que yo mismo había montado con ESLint + Prettier. La migración arranca con dos comandos:
 
 ```bash
 biome migrate eslint
 biome migrate prettier
 ```
 
-Esos dos comandos leen tus configuraciones existentes y generan un `biome.json` equivalente. A partir de ahí, el trabajo es eliminar lo viejo. En el caso de Pereira Tech Talks, borré cuatro archivos de configuración — `.eslintrc.js`, `.prettierrc.js`, `.eslintignore`, `.prettierignore` — y desinstalé los paquetes de ESLint y Prettier. También tuve que actualizar las extensiones de VS Code (fuera ESLint y Prettier, dentro Biome), simplificar el pipeline de CI que antes tenía pasos separados para lint y formato, y ajustar el `CONTRIBUTING.md` donde decía `npm run eslint:fix` y `npm run prettier:fix` por un solo `npm run biome:fix`. El [commit completo](https://github.com/pereira-tech-talks/pereiratechtalks.com/commit/114c473b) está en GitHub si quieres ver exactamente qué cambió.
+Esos dos comandos leen tus configuraciones existentes y generan un `biome.json` equivalente. A partir de ahí, el trabajo es eliminar lo viejo. En el caso de Pereira Tech Talks, borré cuatro archivos de configuración — `.eslintrc.js`, `.prettierrc.js`, `.eslintignore`, `.prettierignore` — y desinstalé los paquetes de ESLint y Prettier. También tuve que actualizar las extensiones de VS Code (fuera ESLint y Prettier, dentro Biome), simplificar el pipeline de CI que antes tenía pasos separados para lint y formato, y ajustar el `CONTRIBUTING.md` donde decía `npm run eslint:fix` y `npm run prettier:fix` por un solo `npm run biome:fix`. El [commit completo](https://github.com/pereira-tech-talks/pereiratechtalks.org/commit/114c473b) está en GitHub si quieres ver exactamente qué cambió.
 
 Tomó alrededor de una hora — principalmente porque quería entender lo que estaba haciendo en lugar de solo ejecutar comandos a ciegas. Me encantó. Cuando arranqué xergioalex.com desde cero, ni me lo pensé — Biome desde el día uno.
 

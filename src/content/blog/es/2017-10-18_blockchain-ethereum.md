@@ -122,4 +122,4 @@ Esta charla fue mi forma de cortar el ruido y enfocarme en los fundamentos. Si t
 ## Slides y Referencia
 
 - [Ver slides](https://slides.com/xergioalex/blockchain-ethereum)
-- [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.com/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3) — resumen del evento
+- [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.org/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3) — resumen del evento

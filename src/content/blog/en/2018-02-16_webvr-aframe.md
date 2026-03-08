@@ -55,7 +55,7 @@ I also showed inspiration projects: Mozilla's A-Painter, A-Frame City Builder, a
 - [A-Frame docs](https://aframe.io/docs/0.6.0/introduction/)
 - [A-Frame Registry](https://aframe.io/aframe-registry/) — Community components
 - **CodePen demos:** [Primitives](https://codepen.io/xergioalex/pen/jZxbdo), [Sky and inspector](https://codepen.io/xergioalex/pen/PQeZYy), [Textures](https://codepen.io/xergioalex/pen/VQxepd), [3D models](https://codepen.io/xergioalex/pen/JpvXrz), [Physics](https://codepen.io/xergioalex/pen/wyjowM), [Maze](https://github.com/xergioalex/webvr-maze)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — event recap
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — event recap
 
 ![Event memories](/images/blog/posts/webvr-aframe/webvr-aframe-event-memories.webp)
 

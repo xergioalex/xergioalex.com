@@ -164,6 +164,6 @@ And trust is the foundation of every economy, every institution, every system. W
 ![Pereira Tech Talks — blockchain night](/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp)
 
 - [View slides](https://slides.com/xergioalex/blockchain-industrial-revolution-of-internet)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) — event recap
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) — event recap
 
 Let's keep building.

@@ -7,7 +7,7 @@ heroLayout: "banner"
 tags: ["talks", "tech", "iot"]
 ---
 
-Hardware has always fascinated me. As a software developer who spends most of my time in the cloud, there's something deeply satisfying about making physical things move, blink, and respond to the world. So when [Alejandro Rendon](https://www.linkedin.com/in/alejorendon/) and I started planning a talk for [Pereira Tech Talks](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/), I knew I wanted to dive into the Internet of Things — the technology that bridges software and the physical world.
+Hardware has always fascinated me. As a software developer who spends most of my time in the cloud, there's something deeply satisfying about making physical things move, blink, and respond to the world. So when [Alejandro Rendon](https://www.linkedin.com/in/alejorendon/) and I started planning a talk for [Pereira Tech Talks](https://www.pereiratechtalks.org/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/), I knew I wanted to dive into the Internet of Things — the technology that bridges software and the physical world.
 
 The timing felt right. IoT was exploding in 2017 — smart homes, wearables, industrial sensors — and the barrier to entry was lower than ever. You could buy an Arduino for a few dollars and start controlling LEDs, motors, and sensors with just a few lines of code. For a JavaScript developer like me, the fact that you could do all of this with Node.js made it even more compelling.
 
@@ -90,4 +90,4 @@ If you're interested in IoT, start small. Grab an Arduino kit, install Johnny-fi
 ## Slides & Event Reference
 
 - [View slides](https://slides.com/xergioalex/internet-of-things)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/) — event recap (IoT + Node.js clustering)
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/) — event recap (IoT + Node.js clustering)

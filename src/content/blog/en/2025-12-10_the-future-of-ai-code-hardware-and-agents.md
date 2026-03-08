@@ -9,7 +9,7 @@ tags: ["talks", "tech", "ai"]
 
 I didn't want to give another generic AI overview. I wanted to share what I've been living every day — the shift from writing code to **orchestrating agents**. Design, plan, supervise. That's the job now. And in this new era, knowing architecture, product, and design — and learning to delegate — matters more than ever.
 
-I co-presented this talk with [Sebastián Mora](https://www.linkedin.com/in/sebastianmorac/) at [Pereira Tech Talks](https://www.pereiratechtalks.com/e0qp2vux-el-futuro-de-la-ia/), the last meetup of the year. We wanted to explore how AI is transforming programming from the ground up, from our perspective — what we're building at DailyBot and what we're seeing in the ecosystem.
+I co-presented this talk with [Sebastián Mora](https://www.linkedin.com/in/sebastianmorac/) at [Pereira Tech Talks](https://www.pereiratechtalks.org/e0qp2vux-el-futuro-de-la-ia/), the last meetup of the year. We wanted to explore how AI is transforming programming from the ground up, from our perspective — what we're building at DailyBot and what we're seeing in the ecosystem.
 
 ---
 

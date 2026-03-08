@@ -17,7 +17,7 @@ That feeling has been sitting with me for a while. And now I finally have a reas
 
 ## The Setup: A Talk at PereiraJS
 
-I'm going to give a talk at [PereiraJS](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) — a local tech community event at Universidad Tecnológica de Pereira. The topic is Meteor.js. And I've been thinking about what makes a great technical talk, and I keep coming back to the same answer: the demo.
+I'm going to give a talk at [PereiraJS](https://www.pereiratechtalks.org/edicion-especial-desde-la-utp/) — a local tech community event at Universidad Tecnológica de Pereira. The topic is Meteor.js. And I've been thinking about what makes a great technical talk, and I keep coming back to the same answer: the demo.
 
 You can explain a framework all day. Slides, diagrams, feature lists — none of it hits the same way as watching something real get built in front of you. So I'm not just going to *talk* about Meteor. I'm going to build a full, working, multi-user real-time chat application on stage. From scratch.
 
@@ -261,4 +261,4 @@ There's something powerful about sitting down with an idea and having it working
 - **Source code:** [github.com/rockalabs/rocka-chat-tutorial](https://github.com/rockalabs/rocka-chat-tutorial)
 - **Slides:** [slides.com/xergioalex/meteorjs-live-chat](https://slides.com/xergioalex/meteorjs-live-chat)
 - **Meteor.js:** [meteor.com](https://www.meteor.com/)
-- **PereiraJS:** [pereiratechtalks.com](https://www.pereiratechtalks.com/)
+- **PereiraJS:** [pereiratechtalks.org](https://www.pereiratechtalks.org/)

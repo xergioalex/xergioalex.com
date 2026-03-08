@@ -7,7 +7,7 @@ heroLayout: 'banner'
 tags: ["talks", "tech", "iot"]
 ---
 
-El hardware siempre me ha fascinado. Como desarrollador de software que pasa la mayor parte del tiempo en la nube, hay algo profundamente satisfactorio en hacer que cosas físicas se muevan, parpadeen y respondan al mundo. Así que cuando [Alejandro Rendón](https://www.linkedin.com/in/alejorendon/) y yo empezamos a planear una charla para [Pereira Tech Talks](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/), supe que quería sumergirme en el Internet de las Cosas — la tecnología que conecta el software con el mundo físico.
+El hardware siempre me ha fascinado. Como desarrollador de software que pasa la mayor parte del tiempo en la nube, hay algo profundamente satisfactorio en hacer que cosas físicas se muevan, parpadeen y respondan al mundo. Así que cuando [Alejandro Rendón](https://www.linkedin.com/in/alejorendon/) y yo empezamos a planear una charla para [Pereira Tech Talks](https://www.pereiratechtalks.org/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/), supe que quería sumergirme en el Internet de las Cosas — la tecnología que conecta el software con el mundo físico.
 
 El momento se sentía perfecto. IoT estaba explotando en 2017 — casas inteligentes, wearables, sensores industriales — y la barrera de entrada era más baja que nunca. Podías comprar un Arduino por unos pocos dólares y empezar a controlar LEDs, motores y sensores con solo unas pocas líneas de código. Para un desarrollador JavaScript como yo, el hecho de que pudieras hacer todo esto con Node.js lo hacía aún más atractivo.
 
@@ -90,4 +90,4 @@ Si te interesa IoT, empieza pequeño. Consigue un kit de Arduino, instala Johnny
 ## Slides y Referencia
 
 - [Ver slides](https://slides.com/xergioalex/internet-of-things)
-- [Post del blog Pereira Tech Talks](https://www.pereiratechtalks.com/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/) — recap del evento (IoT + clustering con Node.js)
+- [Post del blog Pereira Tech Talks](https://www.pereiratechtalks.org/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/) — recap del evento (IoT + clustering con Node.js)
