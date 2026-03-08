@@ -5,6 +5,7 @@ pubDate: "2018-02-16"
 heroImage: "/images/blog/posts/webvr-aframe/webvr-aframe-talk-hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["A-Frame WebVR tutorial", "VR web browser JavaScript", "A-Frame HTML virtual reality", "WebVR without specialized tools", "Mozilla A-Frame framework", "VR HTML JavaScript", "browser-based virtual reality"]
 ---
 
 Virtual reality on the web without specialized tools or complex setup — that was the promise I wanted to share at Pereira Tech Talks. A-Frame is a framework that lets you create 3D and VR experiences using just HTML and JavaScript, with no build step. If you know HTML, you can build VR.

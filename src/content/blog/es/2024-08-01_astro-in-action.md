@@ -5,6 +5,7 @@ pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "javascript"]
+keywords: ["Astro en acción charla", "por qué usar Astro para sitios web", "Astro rendimiento vs otros frameworks", "migrar sitio web a Astro", "Astro para desarrolladores JavaScript", "Pereira Tech Talks Astro 2024", "Astro static site generator ventajas"]
 ---
 
 **Astro en Acción** responde una pregunta que escuchaba seguido: *¿Vale la pena?* Es nuevo. Es solo otro framework web. Quería mostrar por qué Astro destaca — con casos reales, números reales y un proyecto real: migrar [Pereira Tech Talks](https://www.pereiratechtalks.org/) a Astro como la demo de la charla.

@@ -33,12 +33,30 @@ Every page automatically gets these tags through `MainLayout` → `BaseHead`:
 - `<meta name="viewport">` — fixed: `width=device-width,initial-scale=1`
 - `<meta charset="utf-8">`
 - `<meta name="author">` — fixed: Sergio Alexander Florez Galeano
-- `<meta name="keywords">` — global keywords
+- `<meta name="keywords">` — per-post keywords (from frontmatter `keywords` array) or global fallback
 
 ### Character Length Guidelines
 
 - **Title**: 50-60 characters (displayed in search results)
 - **Description**: 150-160 characters (displayed as snippet)
+
+### Keywords (Dynamic)
+
+Blog posts can provide per-post keywords via the `keywords` frontmatter field. These are specific search phrases (distinct from categorical tags) that match how users search for the content.
+
+- **Blog posts with `keywords`:** Rendered as `<meta name="keywords" content="phrase 1, phrase 2, ...">`
+- **Pages without `keywords`:** Falls back to global site keywords (XergioAleX, Sergio Florez, DailyBot, etc.)
+- **JSON-LD:** BlogPosting `keywords` field uses the `keywords` array when present, tags as fallback
+
+**Tags vs Keywords:**
+
+| Aspect | Tags | Keywords |
+|--------|------|----------|
+| Purpose | Categorical navigation | SEO search discovery |
+| Source | Controlled taxonomy (18 tags) | Free-form per post |
+| Example | `tech`, `web-development` | `replace ESLint with Biome`, `Biome linter setup` |
+| Internationalized | No (same slugs in EN/ES) | Yes (adapted per language) |
+| Used in | Filtering, navigation, search index | `<meta name="keywords">`, JSON-LD |
 
 ### Customizing Per-Page
 
@@ -299,7 +317,9 @@ Structure:
 
 ### New Blog Post SEO Checklist
 
-- [ ] Frontmatter complete: title, description, pubDate, tags, heroImage
+- [ ] Frontmatter complete: title, description, pubDate, tags, keywords, heroImage
+- [ ] Keywords: 5-8 specific search phrases per language version
+- [ ] ES keywords adapted to Spanish search behavior (not literal translations)
 - [ ] Hero image optimized and in `public/images/blog/posts/{slug}/`
 - [ ] Post exists in both `src/content/blog/en/` and `src/content/blog/es/`
 - [ ] Tags are valid (defined in tags collection)

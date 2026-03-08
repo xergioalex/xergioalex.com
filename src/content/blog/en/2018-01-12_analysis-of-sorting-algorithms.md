@@ -5,6 +5,7 @@ pubDate: "2018-01-12"
 heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
 heroLayout: "banner"
 tags: ["tech", "university"]
+keywords: ["sorting algorithm comparison C", "bubble sort vs quicksort benchmark", "DigitalOcean server performance test", "sorting algorithms time complexity", "C language algorithms benchmark", "sorting performance comparison", "university algorithms exercise"]
 ---
 
 As part of a typical university algorithms exercise, I ran a small comparative analysis of the most popular sorting algorithms. The idea was to study complexity and see how different approaches to the same problem can produce very different execution times.

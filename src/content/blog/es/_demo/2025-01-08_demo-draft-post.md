@@ -5,6 +5,7 @@ pubDate: '2025-01-08'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
+keywords: ['tutorial herramienta CLI en Rust', 'crear línea de comandos con Rust', 'Rust para principiantes', 'Rust vs Go para CLI', 'Rust clap parser argumentos']
 ---
 
 Este es un **post en borrador** de demostración. En un escenario real, este artículo aún estaría en proceso — secciones incompletas, ideas sueltas, notas personales.

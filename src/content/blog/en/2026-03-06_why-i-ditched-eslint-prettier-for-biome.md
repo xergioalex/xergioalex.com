@@ -5,6 +5,7 @@ pubDate: '2026-03-06'
 heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.png'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development', 'javascript']
+keywords: ["replace ESLint Prettier with Biome", "Biome linter formatter", "ESLint v9 flat config problems", "Biome vs ESLint performance", "Biome single config file", "migrate ESLint to Biome", "Biome Rust linter JavaScript"]
 ---
 
 I bumped the ESLint and Prettier versions, ran `npm install`, and watched the project break. Again. Third time in a few months.

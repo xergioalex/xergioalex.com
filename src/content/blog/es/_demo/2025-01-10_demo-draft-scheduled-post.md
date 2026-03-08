@@ -5,6 +5,7 @@ pubDate: '2030-12-01T09:30:00'
 heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
+keywords: ['preparación charla de conferencia', 'planificación charla técnica', 'consejos conferencia de desarrolladores', 'hablar en público para ingenieros', 'preparar presentaciones técnicas']
 ---
 
 Este es un **post borrador + programado** de demostración. Combina ambos estados: `draft: true` Y un `pubDate` futuro. Este es el estado de visibilidad más restrictivo.

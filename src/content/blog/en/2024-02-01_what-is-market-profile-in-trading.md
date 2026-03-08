@@ -7,6 +7,7 @@ series: "trading-journey"
 seriesOrder: 2
 heroLayout: "banner"
 tags: ["trading", "personal"]
+keywords: ["Market Profile trading explained", "institutional flow analysis", "TPO value area trading", "Market Profile imbalance areas", "Forex trading structure Market Profile", "volume profile trading technique", "market profile decision making trading"]
 ---
 
 In my [previous article](/blog/my-trading-journey-from-futures-to-forex/), I shared how I moved from early futures exploration into a more structured Forex process.

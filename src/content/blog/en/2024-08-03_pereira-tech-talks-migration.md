@@ -5,6 +5,7 @@ pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "web-development", "devops"]
+keywords: ["Ghost to Astro migration", "Pereira Tech Talks Astro site", "static site Ghost replacement", "GitHub Pages free hosting Astro", "Lighthouse Ghost vs Astro scores", "Docker Ghost migration static", "free static blog Astro GitHub Pages"]
 ---
 
 Two days ago I gave the talk [Astro in Action](/blog/astro-in-action/) in Pereira. The flagship project of that evening — the live demo I showed in front of the audience — was the complete migration of [pereiratechtalks.org](https://www.pereiratechtalks.org/) to Astro. But a 45-minute talk isn't enough to tell the full story. This is the deep dive.

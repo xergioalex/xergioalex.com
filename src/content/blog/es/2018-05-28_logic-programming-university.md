@@ -5,6 +5,7 @@ pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["programación lógica con Prolog", "Mozart Oz restricciones", "programación con restricciones ejemplos", "Prolog para principiantes", "teorema de cuatro colores Prolog", "paradigmas de programación universidad", "programación declarativa vs imperativa"]
 ---
 
 Cuando llegué a Programación Lógica y con Restricciones, ya había pasado por cuatro cambios de paradigma. Scheme me enseñó a pensar en funciones puras y recursividad. C me enseñó lo que el computador realmente hacía con cada byte. Java y las estructuras de datos me enseñaron a organizar y a diseñar con ingeniería. Y [mi curso de POO con Java Swing](/es/blog/oop-java-swing-university-projects/) me enseñó a pensar en patrones — a diseñar antes de codificar, a separar responsabilidades, a preguntar "¿cuáles son las piezas y cómo se comunican entre sí?"

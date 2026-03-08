@@ -5,6 +5,7 @@ pubDate: '2025-01-02'
 heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
+keywords: ['tutorial de Kubernetes', 'orquestación de contenedores', 'Kubernetes vs Docker diferencias', 'K8s para principiantes', 'desplegar contenedores con Kubernetes']
 ---
 
 A medida que las aplicaciones en contenedores crecen en complejidad, gestionar contenedores individuales se vuelve impráctico. Kubernetes (K8s) surgió como el estándar de la industria para automatizar el despliegue, escalado y gestión de aplicaciones en contenedores.

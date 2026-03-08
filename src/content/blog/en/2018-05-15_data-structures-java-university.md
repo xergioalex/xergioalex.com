@@ -5,6 +5,7 @@ pubDate: "2018-05-15"
 heroImage: "/images/blog/posts/data-structures-java-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["data structures Java university", "Minimax algorithm Tic-Tac-Toe AI", "Dijkstra algorithm Java", "linked lists stacks queues Java", "unbeatable Tic-Tac-Toe Java", "data structures trees graphs", "algorithm efficiency Big O Java"]
 ---
 
 If [Programming 1 with DrScheme](/blog/racket-projects-university/) taught me to think, [Programming 2 with C](/blog/c-projects-university/) taught me what the machine was actually doing, and [OOP](/blog/oop-java-swing-university-projects/) taught me to design well-architected systems — then Data Structures was the course where all of that converged into a single question: **how do you organize your data so your program is efficient?**

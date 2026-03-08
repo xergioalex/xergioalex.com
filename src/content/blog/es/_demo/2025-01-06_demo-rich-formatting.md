@@ -5,6 +5,7 @@ pubDate: '2025-01-06'
 heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
+keywords: ['guía de formato markdown', 'escritura técnica markdown', 'referencia sintaxis markdown', 'formato de blog posts', 'markdown para desarrolladores']
 ---
 
 Este post demuestra cada caracteristica de formato Markdown soportada en nuestro sistema de blog. Usalo como referencia cuando escribas tus propios posts.

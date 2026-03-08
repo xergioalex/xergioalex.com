@@ -57,7 +57,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.tradingPage.title} description={t.tradingPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.tradingPage.title}
+  description={t.tradingPage.description}
+  keywords={lang === 'en'
+    ? ['algorithmic trading journal', 'trading developer perspective', 'futures forex trading', 'market profile trading', 'automated trading systems', 'trading journey software engineer']
+    : ['diario trading algorítmico', 'trading perspectiva desarrollador', 'trading futuros forex', 'perfil de mercado trading', 'sistemas de trading automatizado', 'viaje trading ingeniero de software']}
+>
   <Fragment slot="head">
     <JsonLd data={breadcrumbSchema} />
   </Fragment>

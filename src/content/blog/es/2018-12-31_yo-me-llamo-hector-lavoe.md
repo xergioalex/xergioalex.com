@@ -5,6 +5,7 @@ pubDate: "2018-12-31"
 heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "web-development", "personal", "design"]
+keywords: ["sitio web para artista musical", "reproductor de audio en HTML CSS", "jPlayer reproductor web", "sitio web salsa Héctor Lavoe", "Yo Me Llamo imitadores web", "galería de fotos artista músico", "desarrollo web para músicos"]
 ---
 
 Yuli me llamó por ahí en 2017. Éramos amigos desde la universidad — de esas amistades que sobreviven la graduación y la distancia y años de apenas hablar, y un día alguien te llama y es como si no hubiera pasado el tiempo.

@@ -5,6 +5,7 @@ pubDate: "2018-05-02"
 heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["Java OOP Sudoku solver Observer pattern", "Java Swing GUI projects", "backtracking Sudoku algorithm Java", "Observer design pattern Java", "object-oriented programming Java university", "Java Swing contact agenda", "design patterns Java university"]
 ---
 
 Some people have a moment when programming stops being "stuff that works" and becomes "systems that make sense." For me, that moment came in Object-Oriented Programming — not from learning what a class is, or what inheritance does, but from learning that there are *named solutions* to common problems. That someone, decades ago, sat down and identified recurring patterns in how good software was built, gave them names, and wrote them down.

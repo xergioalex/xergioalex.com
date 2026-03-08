@@ -5,6 +5,7 @@ pubDate: "2018-09-29"
 heroImage: "/images/blog/posts/introduction-to-vuejs/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["Vue.js introduction tutorial", "Vue vs React vs Angular", "Vue.js reactivity system", "Vue Router Vuex tutorial", "Vue single file components", "why choose Vue.js", "Vue.js Options API explained"]
 ---
 
 I've been building web apps for a while now — long enough to have opinions about JavaScript frameworks. I started with Angular back when it was still AngularJS, moved to React when everyone was talking about virtual DOM, and then something interesting happened: I discovered Vue.js.

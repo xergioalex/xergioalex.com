@@ -10,6 +10,7 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  keywords?: string[];
   prevPage?: string;
   nextPage?: string;
   ogType?: string;
@@ -22,6 +23,7 @@ const {
   title,
   description,
   image,
+  keywords,
   prevPage,
   nextPage,
   ogType,
@@ -37,6 +39,7 @@ const {
       description={description}
       image={image}
       lang={lang}
+      keywords={keywords}
       prevPage={prevPage}
       nextPage={nextPage}
       ogType={ogType}

@@ -5,6 +5,7 @@ pubDate: "2019-10-25"
 heroImage: "/images/blog/posts/vue-vixens-styles/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development", "design"]
+keywords: ["Vue.js scoped styles CSS", "CSS in Vue components", "Vue Vixens Day Pereira", "SCSS preprocessors Vue", "component CSS architecture Vue", "Vue CSS modules scoped", "styling Vue components best practices"]
 ---
 
 Styles are half the story of front-end development, but they're often treated as an afterthought. Vue.js gets a lot of attention for its reactive data model and component architecture, but one of its best features is how it handles **CSS**. This talk at **Vue Vixens Day Pereira** was about making styling approachable, modular, and powerful.

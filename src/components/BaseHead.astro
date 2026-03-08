@@ -18,6 +18,7 @@ interface Props {
   description: string;
   image?: string;
   lang?: string;
+  keywords?: string[];
   prevPage?: string;
   nextPage?: string;
   ogType?: string;
@@ -32,6 +33,7 @@ const {
   description,
   image = '/images/og-default.png',
   lang = 'en',
+  keywords,
   prevPage,
   nextPage,
   ogType = 'website',
@@ -118,7 +120,7 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="keywords" content="XergioAleX, Sergio Florez, DailyBot, CTO, Y Combinator, Full Stack Developer, Data Science, Tech Speaker, Software Engineer" />
+<meta name="keywords" content={keywords && keywords.length > 0 ? keywords.join(', ') : "XergioAleX, Sergio Florez, DailyBot, CTO, Y Combinator, Full Stack Developer, Data Science, Tech Speaker, Software Engineer"} />
 <meta name="author" content="Sergio Alexander Florez Galeano" />
 
 <!-- Theme color for browser chrome -->

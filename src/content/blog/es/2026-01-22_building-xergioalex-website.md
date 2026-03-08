@@ -5,6 +5,7 @@ pubDate: "2026-01-22"
 heroImage: "/images/blog/posts/building-xergioalex-website/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
+keywords: ["construir sitio web personal con Astro", "Astro y Svelte para sitio estático", "arquitectura sitio personal bilingüe", "Astro islands arquitectura", "sitio web personal con blog integrado", "cómo construí mi web personal con Astro", "Astro Svelte TypeScript Tailwind"]
 series: "building-xergioalex"
 seriesOrder: 1
 ---

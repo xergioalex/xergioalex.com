@@ -5,6 +5,7 @@ pubDate: '2025-01-03'
 heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
+keywords: ['CI/CD pipeline tutorial', 'continuous integration setup', 'automated deployment workflow', 'GitHub Actions CI/CD', 'DevOps pipeline basics']
 ---
 
 Continuous Integration and Continuous Deployment (CI/CD) are practices that automate the process of integrating code changes, running tests, and deploying applications. When implemented well, they transform how teams deliver software — from manual, error-prone releases to automated, reliable pipelines.

@@ -57,7 +57,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.entrepreneurPage.title} description={t.entrepreneurPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.entrepreneurPage.title}
+  description={t.entrepreneurPage.description}
+  keywords={lang === 'en'
+    ? ['XergioAleX entrepreneur', 'startup founder Colombia', 'tech entrepreneurship journey', 'Y Combinator startup experience', 'building tech companies', 'CTO cofounder story']
+    : ['XergioAleX emprendedor', 'fundador startup Colombia', 'viaje emprendimiento tecnológico', 'experiencia startup Y Combinator', 'construir empresas tecnológicas', 'historia CTO cofundador']}
+>
   <Fragment slot="head">
     <JsonLd data={breadcrumbSchema} />
   </Fragment>

@@ -5,6 +5,7 @@ pubDate: '2025-01-07'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
+keywords: ['syntax highlighting examples', 'code blocks multiple languages', 'programming language showcase', 'developer blog code formatting', 'polyglot programming examples']
 ---
 
 Modern software development often involves working across multiple languages and ecosystems. This post showcases syntax highlighting for a wide range of programming languages, useful as a visual reference for blog authors.

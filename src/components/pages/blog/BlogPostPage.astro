@@ -34,7 +34,8 @@ const { lang, post } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
-const { heroImage, pubDate, updatedDate, title, description, tags } = post.data;
+const { heroImage, pubDate, updatedDate, title, description, tags, keywords } =
+  post.data;
 const { Content } = await render(post);
 const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
@@ -75,7 +76,7 @@ const blogPostingData = {
     '@type': 'WebPage',
     '@id': canonicalURL.href,
   },
-  keywords: tags || [],
+  keywords: keywords && keywords.length > 0 ? keywords : tags || [],
   wordCount,
   timeRequired: `PT${readingTimeMinutes}M`,
   inLanguage: lang,
@@ -112,7 +113,7 @@ const breadcrumbData = {
 };
 ---
 
-<MainLayout lang={lang} title={title} description={description} image={heroImage} ogType="article">
+<MainLayout lang={lang} title={title} description={description} image={heroImage} keywords={keywords} ogType="article">
   <Fragment slot="head">
     <JsonLd data={blogPostingData} />
     <JsonLd data={breadcrumbData} />

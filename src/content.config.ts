@@ -22,6 +22,8 @@ const blog = defineCollection({
       .optional(),
     // Unified tags array — tag tier is defined in the tags collection (tier: primary | secondary | subtopic)
     tags: z.array(z.string()).optional(),
+    // SEO keywords — specific search phrases (distinct from categorical tags)
+    keywords: z.array(z.string()).optional(),
     // Series support — references a series slug from the series collection
     series: z.string().optional(),
     seriesOrder: z.number().optional(),

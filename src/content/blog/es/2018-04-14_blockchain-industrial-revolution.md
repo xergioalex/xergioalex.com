@@ -5,6 +5,7 @@ pubDate: '2018-04-14'
 heroImage: '/images/blog/posts/blockchain-industrial-revolution/blockchain-2.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "blockchain"]
+keywords: ["blockchain más allá de las criptomonedas", "blockchain en cadenas de suministro", "confianza descentralizada blockchain", "aplicaciones reales de blockchain", "blockchain en la industria", "revolución industrial de internet", "blockchain para votación e identidad"]
 ---
 
 Cuando di esta charla en Pereira Tech Talks sabía que tenía un desafío: todo el mundo había escuchado sobre Bitcoin, pero la mayoría todavía pensaba que blockchain era solo "esa cosa de criptomonedas". Mi objetivo era mostrarles que blockchain es para internet lo que la máquina de vapor fue para la manufactura — un cambio fundamental en cómo funcionan los sistemas.

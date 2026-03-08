@@ -5,6 +5,7 @@ pubDate: "2016-09-27"
 heroImage: "/images/blog/posts/rocka-chat-tutorial/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "javascript", "web-development"]
+keywords: ["Meteor.js real-time chat", "build chat app Meteor", "reactive web app tutorial", "Meteor.js tutorial beginners", "real-time chat JavaScript", "WebSocket alternative Meteor"]
 ---
 
 There is a specific feeling you get when a framework just *clicks*. Not when you finally get it to work after hours of fighting the docs — but when it clicks on the first try. When it does exactly what you hoped it would, and then a little more. That was my first experience with [Meteor.js](https://www.meteor.com/).

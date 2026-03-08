@@ -5,6 +5,7 @@ pubDate: '2026-03-01'
 heroImage: '/images/blog/posts/building-blog-without-backend/hero.png'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
+keywords: ["blog estático sin backend", "arquitectura de blog con Astro Content Collections", "búsqueda de blog del lado del cliente", "sistema de tags para blog Astro", "blog bilingüe con Astro", "series de posts en Astro", "blog escalable sin servidor"]
 series: "building-xergioalex"
 seriesOrder: 4
 ---

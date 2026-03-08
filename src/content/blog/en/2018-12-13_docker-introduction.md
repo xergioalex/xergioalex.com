@@ -5,6 +5,7 @@ pubDate: "2018-12-13"
 heroImage: "/images/blog/posts/docker-introduction/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "devops"]
+keywords: ["Docker introduction containers", "Docker microservices architecture", "Docker Compose tutorial", "containers vs virtual machines", "Docker for developers", "microservice oriented architecture Docker", "Docker containers explained"]
 ---
 
 Docker with a focus on **microservice-oriented architectures**. The goal: connect both worlds — on one side, what defines a microservice and why it matters; on the other, how Docker and containers fit into that picture for building autonomous, isolated, and scalable systems.

@@ -5,6 +5,7 @@ pubDate: '2016-12-13'
 heroImage: '/images/blog/posts/nosql-and-mongodb/hero.png'
 heroLayout: 'banner'
 tags: ["talks", "tech", "database"]
+keywords: ["qué es NoSQL", "introducción a MongoDB", "NoSQL vs SQL cuándo usar cada uno", "bases de datos de documentos", "MongoDB para desarrolladores", "cuándo elegir NoSQL sobre SQL", "bases de datos flexibles sin schema"]
 ---
 
 Pasé años trabajando con bases de datos relacionales — MySQL, PostgreSQL, las sospechosas de siempre. Tablas, foreign keys, JOINs. Es una base sólida, y para muchos problemas, es exactamente lo que necesitas. Pero cuando empecé a construir APIs que consumían JSON de servicios externos, o backends móviles donde el schema evolucionaba en cada sprint, SQL empezó a sentirse rígido. Me la pasaba escribiendo migraciones para agregar columnas, reestructurar tablas, normalizar datos que no querían ser normalizados.

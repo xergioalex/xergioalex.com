@@ -22,7 +22,14 @@ const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 ---
 
-<MainLayout lang={lang} title={t.siteTitleFull} description={t.siteDescription}>
+<MainLayout
+  lang={lang}
+  title={t.siteTitleFull}
+  description={t.siteDescription}
+  keywords={lang === 'en'
+    ? ['XergioAleX personal website', 'Sergio Florez portfolio', 'CTO DailyBot', 'Y Combinator founder', 'full stack developer blog', 'tech talks speaker Colombia']
+    : ['sitio web personal XergioAleX', 'portafolio Sergio Florez', 'CTO DailyBot', 'fundador Y Combinator', 'blog desarrollador full stack', 'conferencista tecnología Colombia']}
+>
   <HeroSection
     name="Sergio Florez"
     tagline={t.hero.tagline}

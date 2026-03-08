@@ -5,6 +5,7 @@ pubDate: "2018-05-01"
 heroImage: "/images/blog/posts/c-projects-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["aprender C en la universidad", "punteros en C para principiantes", "manejo de memoria en C", "programación imperativa con C", "juegos con Allegro en C", "estructuras de datos en C", "proyecto universitario programación C"]
 ---
 
 Si leyeron sobre [mis primeros pasos con DrScheme y la programación funcional](/es/blog/racket-projects-university/), saben que mi introducción al código fue un mar de paréntesis, recursividad y la terca ausencia de ciclos `for`. Programación 1 me enseñó a pensar en *qué* quería computar. Programación 2 estaba a punto de enseñarme *cómo* el computador realmente lo hace.

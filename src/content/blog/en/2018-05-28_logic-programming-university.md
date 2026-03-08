@@ -5,6 +5,7 @@ pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["Prolog logic programming university", "Mozart Oz constraint programming", "Four Color Theorem Prolog", "declarative programming Prolog", "constraint satisfaction programming", "logic programming university course", "Prolog map coloring problem"]
 ---
 
 By the time I reached Logic and Constraint Programming, I'd been through four paradigm shifts already. Scheme taught me to think in pure functions and recursion. C taught me what the machine was actually doing with every byte. Java and data structures taught me to organize and engineer. And [my OOP course with Java Swing](/blog/oop-java-swing-university-projects/) taught me to think in patterns — to design before coding, to separate concerns, to ask "what are the pieces and how do they talk to each other?"

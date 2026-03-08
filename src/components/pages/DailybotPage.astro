@@ -57,7 +57,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.dailybotPage.title} description={t.dailybotPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.dailybotPage.title}
+  description={t.dailybotPage.description}
+  keywords={lang === 'en'
+    ? ['DailyBot startup story', 'Y Combinator S21 batch', 'SaaS team collaboration tool', 'startup journey CTO', 'DailyBot product evolution', 'building a SaaS company']
+    : ['historia startup DailyBot', 'Y Combinator S21', 'herramienta colaboración equipos SaaS', 'viaje startup CTO', 'evolución producto DailyBot', 'construir empresa SaaS']}
+>
   <Fragment slot="head">
     <JsonLd data={breadcrumbSchema} />
   </Fragment>

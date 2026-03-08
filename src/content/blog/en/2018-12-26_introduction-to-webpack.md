@@ -5,6 +5,7 @@ pubDate: "2018-12-26"
 heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["Webpack introduction talk", "Webpack entry points loaders plugins", "JavaScript module bundler Webpack", "Webpack developer experience", "front-end build tools Webpack", "Webpack transforms static assets", "Webpack configuration beginners"]
 ---
 
 Webpack changed how we think about front-end builds. For this talk, I wanted to demystify the tool that many developers find overwhelming at first. Webpack isn't just a module bundler — it's a mindset shift. It takes modules with dependencies (`.js`, `.css`, `.coffee`, `.less`, `.jade`, images) and turns them into optimized static assets. Divide and conquer.

@@ -57,7 +57,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.portfolioPage.title} description={t.portfolioPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.portfolioPage.title}
+  description={t.portfolioPage.description}
+  keywords={lang === 'en'
+    ? ['XergioAleX portfolio', 'software projects showcase', 'web development projects', 'open source developer', 'Sergio Florez projects', 'tech side projects']
+    : ['portafolio XergioAleX', 'proyectos de software', 'proyectos desarrollo web', 'desarrollador open source', 'proyectos Sergio Florez', 'proyectos tecnológicos personales']}
+>
   <Fragment slot="head">
     <JsonLd data={breadcrumbSchema} />
   </Fragment>
