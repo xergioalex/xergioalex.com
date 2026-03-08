@@ -45,7 +45,7 @@ Here's what a real ESLint + Prettier + TypeScript setup actually requires:
 
 Run `npm install` on a fresh project. Watch over a hundred packages hit your `node_modules`. Just for linting and formatting.
 
-And then there's the configuration order issue — Prettier overrides *must* come last in your ESLint config, otherwise the formatting rules fight. Get it wrong and your editor reformats the file one way on save, ESLint reformats it back, the file won't stop flickering. I've debugged that exact problem more times than I'd like to admit.
+And then there's the configuration order issue — Prettier overrides *must* come last in your ESLint config, otherwise the formatting rules fight. Get it wrong and you're back to the flickering I mentioned. I've debugged that exact problem more times than I'd like to admit.
 
 ---
 
@@ -154,7 +154,7 @@ This is the `biome.json` for xergioalex.com, the site you're reading this on:
 
 Fifty lines. That's the whole thing. The only thing I have to deal with occasionally is updating the `$schema` version when a new release drops — sometimes it means a minor rule tweak, but nothing that takes more than five minutes. Compared to an ESLint upgrade, it's almost recreational.
 
-No separate ignore file — `includes` handles it. No separate formatter config — it's right there in the same file. CSS support built in, with Tailwind directives handled via the `tailwindDirectives: true` parser flag. The `noUnknownAtRules: "off"` override is also there — belt and suspenders — for any at-rules the parser doesn't recognize automatically.
+No separate ignore file — `includes` handles it. No separate formatter config — it's right there in the same file. CSS support built in, with Tailwind directives handled via the `tailwindDirectives: true` parser flag.
 
 The overrides I set: `noExplicitAny: "off"` because I have some TypeScript interop code where `any` is actually the right type, `noUnusedImports: "off"` and `noUnusedVariables: "off"` because those rules are useful in CI but noisy during active development — you're mid-refactor, you comment something out, and suddenly there's red everywhere. Everything else runs at the Biome defaults.
 
@@ -217,7 +217,7 @@ None of that is fully shipped yet. But the direction is what I care about: fewer
 
 The decision wasn't only about speed. The speed is real — my local `biome:check` runs in under a second, always. But honestly, I could live with a slower linter if the configuration was stable.
 
-The thing that broke me on ESLint was the maintenance cost. Every major release felt like a migration project. The flat config migration took hours. Then the old config format got removed entirely, and everyone had to move whether they wanted to or not. The Prettier conflict dance — the `eslint-config-prettier` package exists only because two tools have overlapping opinions about formatting and someone has to be told to shut up.
+The thing that broke me on ESLint was the maintenance cost. Every major release felt like a migration project. The flat config migration took hours. Then the old config format got removed entirely, and everyone had to move whether they wanted to or not. The Prettier conflict dance — the fact that a package exists solely to make one tool stop fighting with another tells you everything you need to know.
 
 Biome doesn't have that problem. One config. One tool. When I upgrade Biome, I update the `$schema` version in `biome.json` and run `biome migrate`. It handles the config differences automatically.
 

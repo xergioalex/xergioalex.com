@@ -4,7 +4,7 @@ description: 'Chapter five of building xergioalex.com — the complete story of 
 pubDate: '2026-03-03'
 heroImage: '/images/blog/posts/building-multilingual-website/hero.png'
 heroLayout: 'side-by-side'
-tags: ['tech', 'portfolio', 'web-development']
+tags: ['tech', 'web-development']
 series: "building-xergioalex"
 seriesOrder: 5
 ---

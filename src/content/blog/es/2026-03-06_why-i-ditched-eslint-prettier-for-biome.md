@@ -45,7 +45,7 @@ Esto es lo que un setup real de ESLint + Prettier + TypeScript requiere en la pr
 
 Ejecuta `npm install` en un proyecto nuevo. Mira cómo más de cien paquetes aterrizan en tu `node_modules`. Solo para linting y formato.
 
-Y luego está el problema del orden de configuración — los overrides de Prettier deben ir al *final* de tu config de ESLint, de lo contrario las reglas de formato pelean entre sí. Equivócate y tu editor reformatea el archivo de una manera al guardar, ESLint lo reformatea de vuelta, el archivo no para de parpadear. He depurado ese problema exacto más veces de las que me gustaría admitir.
+Y luego está el problema del orden de configuración — los overrides de Prettier deben ir al *final* de tu config de ESLint, de lo contrario las reglas de formato pelean entre sí. Equivócate en el orden y vuelves al parpadeo que mencioné antes. He depurado ese problema exacto más veces de las que me gustaría admitir.
 
 ---
 
@@ -154,7 +154,7 @@ Este es el `biome.json` de xergioalex.com, el sitio donde estás leyendo esto:
 
 Cincuenta líneas. Eso es todo. Lo único que me toca atender de vez en cuando es actualizar la versión del `$schema` cuando sale una nueva release — a veces implica algún ajuste menor en reglas, pero nada que tome más de cinco minutos. Comparado con lo que era un upgrade de ESLint, es casi recreativo.
 
-Sin archivo ignore separado — `includes` lo maneja. Sin configuración de formato separada — está ahí mismo en el mismo archivo. Soporte de CSS incluido, con las directivas de Tailwind configuradas a través del flag `tailwindDirectives: true` del parser. El override `noUnknownAtRules: "off"` también está presente — por si acaso — para cualquier at-rule que el parser no reconozca automáticamente.
+Sin archivo ignore separado — `includes` lo maneja. Sin configuración de formato separada — está ahí mismo en el mismo archivo. Soporte de CSS incluido, con las directivas de Tailwind configuradas a través del flag `tailwindDirectives: true` del parser.
 
 Los overrides que configuré: `noExplicitAny: "off"` porque tengo algo de código de interoperabilidad con TypeScript donde `any` es realmente el tipo correcto, `noUnusedImports: "off"` y `noUnusedVariables: "off"` porque esas reglas son útiles en CI pero generan ruido durante el desarrollo activo — estás en medio de un refactor, comentas algo, y de repente hay rojo por todas partes. Todo lo demás corre con los defaults de Biome.
 
@@ -217,7 +217,7 @@ Nada de eso está completamente disponible todavía. Pero la dirección es lo qu
 
 La decisión no fue solo por la velocidad. La velocidad es real — mi `biome:check` local corre en menos de un segundo, siempre. Pero honestamente, podría vivir con un linter más lento si la configuración fuera estable.
 
-Lo que me quebró de ESLint fue el costo de mantenimiento. Cada versión mayor se sentía como un proyecto de migración. La de flat config me tomó horas. Después eliminaron el formato antiguo por completo, y todos los que seguían ahí tuvieron que migrar, quisieran o no. La danza del conflicto con Prettier — el paquete `eslint-config-prettier` existe solo porque dos herramientas tienen opiniones superpuestas sobre el formato y a alguien hay que decirle que se calle.
+Lo que me quebró de ESLint fue el costo de mantenimiento. Cada versión mayor se sentía como un proyecto de migración. La de flat config me tomó horas. Después eliminaron el formato antiguo por completo, y todos los que seguían ahí tuvieron que migrar, quisieran o no. La danza del conflicto con Prettier — que un paquete exista únicamente para que una herramienta deje de pelear con otra ya te dice todo lo que necesitas saber.
 
 Biome no tiene ese problema. Una configuración. Una herramienta. Cuando actualizo Biome, actualizo la versión del `$schema` en `biome.json` y ejecuto `biome migrate`. Maneja las diferencias de configuración automáticamente.
 

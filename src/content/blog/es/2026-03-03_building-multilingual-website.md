@@ -4,7 +4,7 @@ description: 'Capítulo cinco de la construcción de xergioalex.com — la histo
 pubDate: '2026-03-03'
 heroImage: '/images/blog/posts/building-multilingual-website/hero.png'
 heroLayout: 'side-by-side'
-tags: ['tech', 'portfolio', 'web-development']
+tags: ['tech', 'web-development']
 series: "building-xergioalex"
 seriesOrder: 5
 ---
