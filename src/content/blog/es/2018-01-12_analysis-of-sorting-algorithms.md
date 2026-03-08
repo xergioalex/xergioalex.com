@@ -5,6 +5,7 @@ pubDate: "2018-01-12"
 heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
 heroLayout: "banner"
 tags: ["tech", "university"]
+keywords: ["análisis de algoritmos de ordenamiento", "comparación de algoritmos de sorting en Java", "complejidad algorítmica Big O", "algoritmos de ordenamiento más populares", "rendimiento algoritmos sorting Java", "proyecto universitario algoritmia", "quicksort mergesort comparación"]
 ---
 
 Como parte de un ejercicio típico de algoritmia en la universidad, hice un pequeño análisis comparativo de los algoritmos de ordenamiento más populares, buscando estudiar la complejidad de cada uno y cómo las diferentes formas de resolver un mismo problema pueden afectar los tiempos de ejecución.

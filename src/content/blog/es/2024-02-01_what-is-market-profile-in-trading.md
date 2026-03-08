@@ -7,6 +7,7 @@ series: "trading-journey"
 seriesOrder: 2
 heroLayout: "banner"
 tags: ["trading", "personal"]
+keywords: ["qué es Market Profile en trading", "Market Profile para traders", "zonas de desbalance en trading", "flujo institucional con Market Profile", "cómo usar Market Profile en Forex", "toma de decisiones con estructura de mercado", "Market Profile vs análisis técnico tradicional"]
 ---
 
 En el [artículo anterior](/es/blog/my-trading-journey-from-futures-to-forex/), conté cómo pasé de explorar futuros a construir un proceso más estructurado en Forex.

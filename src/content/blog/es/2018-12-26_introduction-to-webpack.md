@@ -5,6 +5,7 @@ pubDate: "2018-12-26"
 heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["introducción a Webpack", "qué es Webpack y cómo funciona", "module bundler JavaScript", "entry points y loaders Webpack", "developer experience con Webpack", "Webpack para front-end", "bundling de módulos JavaScript"]
 ---
 
 Webpack cambió cómo pensamos sobre los builds de front-end. Para esta charla, quería desmitificar la herramienta que muchos desarrolladores encuentran abrumadora al principio. Webpack no es solo un empaquetador de módulos — es un cambio de mentalidad. Toma módulos con dependencias (`.js`, `.css`, `.coffee`, `.less`, `.jade`, imágenes) y los transforma en assets estáticos optimizados. Divide y vencerás.

@@ -5,6 +5,7 @@ pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
+keywords: ["futuro de la IA en programación", "agentes de IA para desarrolladores", "MCPs y agentes de código", "orquestación de agentes con IA", "IA reemplazando tareas de programación", "Pereira Tech Talks futuro IA 2025", "cómo la IA cambia el trabajo del programador"]
 ---
 
 No quería dar otra charla genérica sobre IA. Quería compartir lo que vivo todos los días — el cambio de escribir código a **orquestar agentes**. Diseñar, planear, supervisar. Ese es el trabajo ahora. Y en esta nueva era, saber de arquitectura, producto y diseño — y aprender a delegar — importa más que nunca.

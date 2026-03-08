@@ -5,6 +5,7 @@ pubDate: 2026-03-05
 heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
 heroLayout: "banner"
 tags: ["entrepreneur", "tech", "portfolio"]
+keywords: ["primera startup colombiana logística", "GoCarga plataforma transporte de carga", "emprendimiento universitario Colombia", "pitch para inversores ángeles", "Apps.co Mintic emprendimiento", "cómo hacer un pitch para inversores", "startup de tecnología en Colombia"]
 ---
 
 Todavía recuerdo estar parado en Expocamello 2014, en la Cámara de Comercio de Pereira, con las notas del pitch medio memorizadas, tratando de proyectar confianza frente a la Red Nacional de Ángeles Inversionistas. Éramos 1 de los 5 finalistas seleccionados entre más de 200 proyectos. El corazón me latía entre la garganta y el estómago.

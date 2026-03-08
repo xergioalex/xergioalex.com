@@ -5,6 +5,7 @@ pubDate: "2023-08-26"
 heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
+keywords: ["IA revolucionando el desarrollo de aplicaciones", "ChatGPT en producción en 2023", "GPT-4 para desarrolladores", "Manizales Tech Talks IA", "cómo la IA transforma los equipos de software", "productos reales construidos con IA", "evolución de la IA generativa en 2023"]
 ---
 
 Tres meses después de Pereira, estaba de vuelta en un escenario — esta vez en Manizales. La misma historia central, pero todo había evolucionado. Entre mayo y agosto de 2023, el panorama de la IA cambió tan rápido que me vi reescribiendo slides la noche anterior. No porque los fundamentos hubieran cambiado, sino porque habíamos cruzado nuevos hitos. Más desarrolladores estaban enviando productos con GPT-4. Más equipos estaban experimentando. Más productos reales se construían sobre IA que no existían un año atrás.

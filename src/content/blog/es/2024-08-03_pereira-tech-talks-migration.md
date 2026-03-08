@@ -5,6 +5,7 @@ pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "web-development", "devops"]
+keywords: ["migrar de Ghost a Astro", "Astro vs Ghost CMS", "sitio estático gratis con Astro", "GitHub Pages con Astro", "migración de blog a sitio estático", "Pereira Tech Talks historia y rediseño", "cómo migrar un blog a Astro"]
 ---
 
 Hace dos días di la charla [Astro en Acción](/es/blog/astro-in-action/) en Pereira. El proyecto estrella de esa noche — la demo en vivo que mostré frente a la audiencia — fue la migración completa de [pereiratechtalks.org](https://www.pereiratechtalks.org/) a Astro. Pero una charla de 45 minutos no alcanza para contar la historia completa. Esto es el deep dive.

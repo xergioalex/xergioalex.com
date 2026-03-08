@@ -5,6 +5,7 @@ pubDate: "2021-03-01"
 heroImage: "/images/blog/posts/building-kathelopez-website/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "personal", "web-development"]
+keywords: ["construir sitio web profesional con Bootstrap", "GitHub Pages sitio web gratuito", "sitio web para psicólogo o terapeuta", "landing page estática sin backend", "Bootstrap para sitio web personal", "presencia en línea para profesionales de la salud", "sitio web terapeuta ABA"]
 ---
 
 Mi esposa necesitaba un sitio web.

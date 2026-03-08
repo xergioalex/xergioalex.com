@@ -5,6 +5,7 @@ pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "python", "database", "university"]
+keywords: ["Django con múltiples bases de datos", "conectar Django a MongoDB MySQL PostgreSQL", "administración multi-base de datos Django", "Docker con Django y bases de datos", "microservicios con Django", "proyecto universitario bases de datos avanzadas", "Django y NoSQL juntos"]
 ---
 
 La pregunta que da origen a este proyecto es deceptivamente simple: ¿es posible que una sola aplicación hable con diez motores de bases de datos al mismo tiempo?

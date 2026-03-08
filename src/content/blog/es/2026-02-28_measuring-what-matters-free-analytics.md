@@ -5,6 +5,7 @@ pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
+keywords: ["analytics gratis sin cookies", "Umami Analytics alternativa a Google Analytics", "Cloudflare Web Analytics", "analíticas privadas sitio estático", "cómo medir visitas sin perder rendimiento Lighthouse", "analytics sin banners de cookies", "stack de analíticas gratuito para sitios web"]
 series: "building-xergioalex"
 seriesOrder: 3
 ---

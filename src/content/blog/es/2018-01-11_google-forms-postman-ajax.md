@@ -5,6 +5,7 @@ pubDate: "2018-01-11"
 heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["conectar formulario Google Forms con JavaScript", "enviar datos a Google Forms con Ajax", "formulario de contacto sin backend", "Google Forms API jQuery", "HTTP POST a Google Forms", "formulario web estático sin servidor", "Postman Google Forms tutorial"]
 ---
 
 En el desarrollo de web estáticas básicas, como las páginas de aterrizaje (landing pages) o páginas personales, se suele requerir conectar un formulario de contacto, y si no se está haciendo uso de nada más allá de html, css y js, como suele ser el caso de las [páginas de github](https://pages.github.com/), los [formularios de Google](https://www.google.com/forms/about/) son una buena opción para almacenar la información suministrada por los visitantes o usuarios del sitio.

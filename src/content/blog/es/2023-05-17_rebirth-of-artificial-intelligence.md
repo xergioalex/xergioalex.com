@@ -5,6 +5,7 @@ pubDate: "2023-05-17"
 heroImage: "/images/blog/shared/ai-rebirth-hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
+keywords: ["renacimiento de la inteligencia artificial", "ChatGPT GPT-4 revolución IA", "IA generativa en el desarrollo de software", "cómo la IA está cambiando la tecnología", "Pereira Tech Talks IA 2023", "fin del invierno de la IA", "IA generativa para desarrolladores"]
 ---
 
 **AI Rebirth** explora el despertar de la inteligencia artificial — y por qué estamos al inicio de algo real. No quería dar una charla genérica. Quería compartir lo que estaba viendo de verdad: una revolución que acababa de despertar. Algo que vivía todos los días en DailyBot.

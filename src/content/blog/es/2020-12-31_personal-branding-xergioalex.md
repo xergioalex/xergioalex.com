@@ -5,6 +5,7 @@ pubDate: '2020-12-31'
 heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
 heroLayout: 'side-by-side'
 tags: ["portfolio", "personal", "design"]
+keywords: ["diseño de marca personal developer", "identidad visual para programadores", "logo ninja coder concepto", "paleta de colores marca personal", "branding para desarrolladores", "guía de estilo personal XergioAleX", "cómo crear tu marca como desarrollador"]
 ---
 
 Pasé años construyendo productos, escribiendo código y sacando features adelante — pero nunca pensé mucho en cómo me presentaba visualmente. Mi perfil de GitHub, mis charlas, mis redes sociales... todo se sentía desconectado. En algún momento me di cuenta de que quería algo que uniera todo. Algo que se sintiera como *yo*.

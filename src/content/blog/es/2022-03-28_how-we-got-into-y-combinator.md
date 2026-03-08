@@ -5,6 +5,7 @@ pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "dailybot", "entrepreneur"]
+keywords: ["cómo entrar a Y Combinator", "entrevista de Y Combinator experiencia", "DailyBot Y Combinator historia", "aplicar a YC y ser aceptado", "startup acelerada por Y Combinator", "qué evalúa Y Combinator", "lecciones de Y Combinator para founders"]
 ---
 
 Di una charla en la Universidad Tecnológica de Pereira (UTP) en 2022 sobre cómo DailyBot entró a Y Combinator. No la versión de highlight reel — la historia real. Aplicamos tres veces. Nos rechazaron dos veces. Y cuando finalmente entramos, no fue porque el producto se volvió brillante de repente. Fue porque aprendimos a ver nuestro propio producto con claridad y comunicar esa claridad a otros.

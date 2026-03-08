@@ -5,6 +5,7 @@ pubDate: '2018-06-01'
 heroImage: '/images/blog/posts/blockchain-economy-industry/hero.jpg'
 heroLayout: 'banner'
 tags: ["talks", "tech", "blockchain"]
+keywords: ["blockchain economía e industria", "cómo funciona blockchain explicado", "historia del dinero y Bitcoin", "blockchain propiedad digital", "descentralización y confianza", "Bitcoin y la revolución financiera", "qué es blockchain y para qué sirve"]
 ---
 
 Siempre me han fascinado los sistemas que desafían el status quo. Y pocas tecnologías lo han hecho tan dramáticamente como blockchain.

@@ -5,6 +5,7 @@ pubDate: '2018-10-20'
 heroImage: '/images/blog/posts/apis-with-graphql/hero.png'
 heroLayout: 'banner'
 tags: ["talks", "tech", "web-development", "devops"]
+keywords: ["introducción a GraphQL", "qué es GraphQL y cómo funciona", "GraphQL vs REST APIs", "consultas con GraphQL", "lenguaje de consulta para APIs", "GraphQL tipado fuerte", "cómo implementar GraphQL"]
 ---
 
 Voy a ser honesto: la primera vez que usé GraphQL, pensé que estaba sobre-ingeniado. "¿Por qué necesito todo un lenguaje de consulta cuando REST funciona bien?" Luego construí una app móvil que hacía 12 llamadas API diferentes solo para renderizar una pantalla. Ahí fue cuando GraphQL hizo clic.
