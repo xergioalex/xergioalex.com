@@ -96,7 +96,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.aboutPage.title} description={t.aboutPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.aboutPage.title}
+  description={t.aboutPage.description}
+  keywords={lang === 'en'
+    ? ['about XergioAleX', 'Sergio Florez biography', 'CTO cofounder DailyBot', 'software engineer Colombia', 'Y Combinator S21 founder', 'full stack developer experience']
+    : ['sobre XergioAleX', 'biografía Sergio Florez', 'CTO cofundador DailyBot', 'ingeniero de software Colombia', 'fundador Y Combinator S21', 'experiencia desarrollador full stack']}
+>
   <Fragment slot="head">
     <JsonLd data={personData} />
     <JsonLd data={profilePageData} />
