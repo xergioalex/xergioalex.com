@@ -4,6 +4,7 @@ description: 'Explorando principios y practicas para escribir codigo mantenible 
 pubDate: '2025-01-04'
 heroLayout: 'none'
 tags: ['tech', 'demo']
+keywords: ['principios de código limpio', 'escribir código legible', 'mantenibilidad del código', 'buenas prácticas de programación', 'código limpio Robert Martin']
 ---
 
 Escribir codigo es facil. Escribir codigo que otro desarrollador (o tu yo del futuro) pueda entender seis meses despues — ese es el verdadero desafio. El codigo limpio no se trata de seguir reglas rigidas; se trata de empatia hacia el lector.

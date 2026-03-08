@@ -5,6 +5,7 @@ pubDate: '2030-06-15T14:00:00'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
+keywords: ['predicciones tecnológicas 2030', 'futuro de la tecnología', 'predicciones de inteligencia artificial', 'tendencias tecnológicas próxima década', 'futuro del desarrollo de software']
 ---
 
 Este es un **post programado** de demostración. Tiene un `pubDate` en el futuro lejano (2030), así que no aparecerá en producción hasta que se haga un rebuild del sitio después de esa fecha.
