@@ -1,19 +1,19 @@
 ---
 title: "Migrating Pereira Tech Talks: From Ghost to Astro"
-description: "The story behind migrating pereiratechtalks.com — from a Dockerized Ghost setup with monthly costs to a static Astro site deployed for free on GitHub Pages. Ten years of lessons condensed into two weeks of code."
+description: "The story behind migrating pereiratechtalks.org — from a Dockerized Ghost setup with monthly costs to a static Astro site deployed for free on GitHub Pages. Ten years of lessons condensed into two weeks of code."
 pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "web-development", "devops"]
 ---
 
-Two days ago I gave the talk [Astro in Action](/blog/astro-in-action/) in Pereira. The flagship project of that evening — the live demo I showed in front of the audience — was the complete migration of [pereiratechtalks.com](https://www.pereiratechtalks.com/) to Astro. But a 45-minute talk isn't enough to tell the full story. This is the deep dive.
+Two days ago I gave the talk [Astro in Action](/blog/astro-in-action/) in Pereira. The flagship project of that evening — the live demo I showed in front of the audience — was the complete migration of [pereiratechtalks.org](https://www.pereiratechtalks.org/) to Astro. But a 45-minute talk isn't enough to tell the full story. This is the deep dive.
 
 ---
 
 ## The beginning: Ghost in 2014
 
-[Pereira Tech Talks](https://www.pereiratechtalks.com/) was born in 2014 — a local tech community in Pereira, Colombia. From day one it needed a website. And the natural choice at the time was **Ghost**.
+[Pereira Tech Talks](https://www.pereiratechtalks.org/) was born in 2014 — a local tech community in Pereira, Colombia. From day one it needed a website. And the natural choice at the time was **Ghost**.
 
 Ghost was a good option. Open source, built on Node.js, clean editor, designed specifically for blogging. It was the antidote to WordPress — no endless plugins, no bloated codebase. Just write, publish, share.
 
@@ -27,7 +27,7 @@ We set it up and it worked well for years. The community grew. Events filled up.
 
 To keep everything organized, we built a Docker architecture with four containers: **MySQL** as the database, **Ghost** as the CMS, **Nginx** as a reverse proxy, and **Certbot** for SSL certificates. Each piece in place, orchestrated with Docker Compose.
 
-<img src="/images/blog/posts/pereira-tech-talks-migration/docker-architecture.png" alt="Docker architecture for pereiratechtalks.com — MySQL, Ghost, Nginx, and Certbot containers" width="1200" height="675" loading="lazy" />
+<img src="/images/blog/posts/pereira-tech-talks-migration/docker-architecture.png" alt="Docker architecture for pereiratechtalks.org — MySQL, Ghost, Nginx, and Certbot containers" width="1200" height="675" loading="lazy" />
 
 The repository is at [github.com/pereira-tech-talks/ghostDocker](https://github.com/pereira-tech-talks/ghostDocker). It worked. It was stable. It was what we needed at the time.
 
@@ -67,7 +67,7 @@ The last one was what mattered most in the long run: if the site depended on a b
 
 The first alternative I considered was [Hugo](https://gohugo.io/). I already knew it well — I had built [rocka.co](https://rocka.co) with Hugo and it had served me well. Fast, static, no runtime dependencies.
 
-I found the [Hinode](https://gethinode.com/) theme — clean, well-documented, built with community projects in mind. I set up a base in the [pereiratechtalks.com](https://github.com/pereira-tech-talks/pereiratechtalks.com) repository, adjusted some colors, started structuring the content.
+I found the [Hinode](https://gethinode.com/) theme — clean, well-documented, built with community projects in mind. I set up a base in the [pereiratechtalks.org](https://github.com/pereira-tech-talks/pereiratechtalks.org) repository, adjusted some colors, started structuring the content.
 
 And there it stayed. For months.
 
@@ -93,7 +93,7 @@ When I started planning the **Astro in Action** talk, the decision was natural: 
 
 I set myself the goal of having the site ready before the talk. Two weeks. One developer — me.
 
-The result: [v2.pereiratechtalks.com](https://v2.pereiratechtalks.com/) — complete static site, blog with Content Collections, community landing page, deployed on **GitHub Pages** with **GitHub Actions**. Every push to `main` triggers the build and deployment. No server. No database. No migration rituals.
+The result: [v2.pereiratechtalks.org](https://v2.pereiratechtalks.org/) — complete static site, blog with Content Collections, community landing page, deployed on **GitHub Pages** with **GitHub Actions**. Every push to `main` triggers the build and deployment. No server. No database. No migration rituals.
 
 Blog posts are written in Markdown and published via pull request — the natural workflow for an open source community. Any member can contribute using the same flow they'd use to contribute to any other open source project.
 
@@ -130,7 +130,7 @@ And most importantly: those numbers come from static HTML on a CDN. Not from a w
 
 Ten years of Pereira Tech Talks history — talks, events, community posts — now live in Markdown files in a public repository. Anyone can fork it. Anyone can contribute. Nobody depends on someone remembering to pay the server bill.
 
-If you have posts you want to add to the community blog, the flow is simple: fork, write your post in Markdown, open a pull request. The repository is at [github.com/pereira-tech-talks/pereiratechtalks.com](https://github.com/pereira-tech-talks/pereiratechtalks.com).
+If you have posts you want to add to the community blog, the flow is simple: fork, write your post in Markdown, open a pull request. The repository is at [github.com/pereira-tech-talks/pereiratechtalks.org](https://github.com/pereira-tech-talks/pereiratechtalks.org).
 
 ---
 
@@ -148,8 +148,8 @@ Let's keep building.
 
 ## Resources
 
-- [v2.pereiratechtalks.com](https://v2.pereiratechtalks.com/) — The migrated site
-- [github.com/pereira-tech-talks/pereiratechtalks.com](https://github.com/pereira-tech-talks/pereiratechtalks.com) — The Astro site repository
+- [v2.pereiratechtalks.org](https://v2.pereiratechtalks.org/) — The migrated site
+- [github.com/pereira-tech-talks/pereiratechtalks.org](https://github.com/pereira-tech-talks/pereiratechtalks.org) — The Astro site repository
 - [github.com/pereira-tech-talks/ghostDocker](https://github.com/pereira-tech-talks/ghostDocker) — The original Docker architecture
 - [Astro in Action Slides](https://slides.com/xergioalex/astro-in-action) — The talk where I presented this migration
 - [Astro Documentation](https://docs.astro.build/) — To get started with Astro

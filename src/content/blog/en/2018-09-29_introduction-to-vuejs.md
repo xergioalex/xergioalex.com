@@ -125,7 +125,7 @@ You might find, like I did, that it just feels right.
 ## Resources
 
 - [View my talk slides](https://slides.com/xergioalex/introduction-to-vue)
-- [Event recap on Pereira Tech Talks](https://pereiratechtalks.com/vuejs-intro-and-js-community)
+- [Event recap on Pereira Tech Talks](https://pereiratechtalks.org/vuejs-intro-and-js-community)
 - [Vue.js Official Documentation](https://vuejs.org/guide/introduction.html)
 - [Vue.js GitHub Repository](https://github.com/vuejs/core)
 

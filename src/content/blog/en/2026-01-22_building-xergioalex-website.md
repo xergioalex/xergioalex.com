@@ -11,7 +11,7 @@ seriesOrder: 1
 
 For years, my personal website was a single page. A profile photo, my name, "Full Stack Developer," and a row of social media icons. That was it. It pointed people to my GitHub, Twitter, Instagram, and LinkedIn. It worked — in the same way a sticky note on a door "works" as a welcome sign.
 
-But things changed over time. I started building [DailyBot](https://www.dailybot.com), giving talks about [Astro](/blog/astro-in-action/), [serverless architectures](/blog/introduction-to-serverless-iot/) and [AI](/blog/rebirth-of-artificial-intelligence/), contributing to communities like [Pereira Tech Talks](https://www.pereiratechtalks.com/), writing, experimenting with trading and hardware. And that page with a photo and five links no longer represented any of that.
+But things changed over time. I started building [DailyBot](https://www.dailybot.com), giving talks about [Astro](/blog/astro-in-action/), [serverless architectures](/blog/introduction-to-serverless-iot/) and [AI](/blog/rebirth-of-artificial-intelligence/), contributing to communities like [Pereira Tech Talks](https://www.pereiratechtalks.org/), writing, experimenting with trading and hardware. And that page with a photo and five links no longer represented any of that.
 
 So I decided to build a real one.
 

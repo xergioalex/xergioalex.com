@@ -164,6 +164,6 @@ Y la confianza es la base de toda economía, toda institución, todo sistema. Cu
 ![Pereira Tech Talks — noche de blockchain](/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp)
 
 - [Ver slides](https://slides.com/xergioalex/blockchain-industrial-revolution-of-internet)
-- [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.com/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) — resumen del evento
+- [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.org/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) — resumen del evento
 
 A seguir construyendo.

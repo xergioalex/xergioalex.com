@@ -11,7 +11,7 @@ seriesOrder: 1
 
 Durante años, mi sitio web personal fue una sola página. Una foto de perfil, mi nombre, "Full Stack Developer" y una fila de iconos de redes sociales. Eso era todo. Dirigía a la gente a mi GitHub, Twitter, Instagram y LinkedIn. Funcionaba — de la misma forma en que una nota adhesiva en una puerta "funciona" como cartel de bienvenida.
 
-Pero con el tiempo las cosas fueron cambiando. Empecé a construir [DailyBot](https://www.dailybot.com), a dar charlas sobre [Astro](/es/blog/astro-in-action/), [arquitecturas serverless](/es/blog/introduction-to-serverless-iot/) e [IA](/es/blog/rebirth-of-artificial-intelligence/), a contribuir en comunidades como [Pereira Tech Talks](https://www.pereiratechtalks.com/), a escribir, a experimentar con trading y hardware. Y esa página con una foto y cinco enlaces ya no representaba nada de eso.
+Pero con el tiempo las cosas fueron cambiando. Empecé a construir [DailyBot](https://www.dailybot.com), a dar charlas sobre [Astro](/es/blog/astro-in-action/), [arquitecturas serverless](/es/blog/introduction-to-serverless-iot/) e [IA](/es/blog/rebirth-of-artificial-intelligence/), a contribuir en comunidades como [Pereira Tech Talks](https://www.pereiratechtalks.org/), a escribir, a experimentar con trading y hardware. Y esa página con una foto y cinco enlaces ya no representaba nada de eso.
 
 Así que decidí construir uno de verdad.
 

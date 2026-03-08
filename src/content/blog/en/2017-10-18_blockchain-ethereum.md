@@ -122,4 +122,4 @@ This talk was my way of cutting through the noise and focusing on the fundamenta
 ## Slides & Reference
 
 - [View slides](https://slides.com/xergioalex/blockchain-ethereum)
-- [Pereira Tech Talks blog post](https://www.pereiratechtalks.com/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3) — event recap
+- [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3) — event recap

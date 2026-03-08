@@ -4,7 +4,7 @@ description: "A single Cloudflare Pages middleware file to see what JavaScript a
 pubDate: "2026-03-04T14:00:00"
 heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
-tags: ["tech", "portfolio", "web-development", "ai"]
+tags: ["tech", "web-development", "ai"]
 series: "building-xergioalex"
 seriesOrder: 7
 ---

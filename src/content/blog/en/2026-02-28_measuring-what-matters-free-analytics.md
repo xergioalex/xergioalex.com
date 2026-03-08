@@ -4,7 +4,7 @@ description: "The third chapter of building XergioAleX.com — implementing a co
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"
-tags: ["tech", "portfolio", "web-development"]
+tags: ["tech", "web-development"]
 series: "building-xergioalex"
 seriesOrder: 3
 ---

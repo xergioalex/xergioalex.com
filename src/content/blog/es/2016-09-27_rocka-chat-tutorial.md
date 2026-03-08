@@ -17,7 +17,7 @@ Esa sensación lleva un tiempo dando vueltas en mi cabeza. Y hoy finalmente teng
 
 ## El contexto: una charla en PereiraJS
 
-Voy a dar una charla en [PereiraJS](https://www.pereiratechtalks.com/edicion-especial-desde-la-utp/) — un evento de la comunidad tech local en la Universidad Tecnológica de Pereira. El tema: Meteor.js. Y llevo días pensando en qué hace grande a una charla técnica, y siempre llego a la misma respuesta: la demo.
+Voy a dar una charla en [PereiraJS](https://www.pereiratechtalks.org/edicion-especial-desde-la-utp/) — un evento de la comunidad tech local en la Universidad Tecnológica de Pereira. El tema: Meteor.js. Y llevo días pensando en qué hace grande a una charla técnica, y siempre llego a la misma respuesta: la demo.
 
 Puedes explicar un framework todo el día. Slides, diagramas, listas de features — nada de eso golpea igual que ver algo real construirse frente a tus ojos. Así que no voy a solo *hablar* de Meteor. Voy a construir una aplicación de chat multiusuario en tiempo real, completa y funcional, en vivo, desde cero.
 
@@ -261,4 +261,4 @@ Hay algo poderoso en sentarte con una idea y tenerla funcionando antes de que se
 - **Código fuente:** [github.com/rockalabs/rocka-chat-tutorial](https://github.com/rockalabs/rocka-chat-tutorial)
 - **Slides:** [slides.com/xergioalex/meteorjs-live-chat](https://slides.com/xergioalex/meteorjs-live-chat)
 - **Meteor.js:** [meteor.com](https://www.meteor.com/)
-- **PereiraJS:** [pereiratechtalks.com](https://www.pereiratechtalks.com/)
+- **PereiraJS:** [pereiratechtalks.org](https://www.pereiratechtalks.org/)
