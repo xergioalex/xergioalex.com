@@ -507,6 +507,19 @@ Blog post URLs are clean (no date prefix):
 | Spanish blog listing | `/es/blog/` |
 | Paginated listing | `/blog/page/{n}/` |
 
+### Markdown Endpoints (Agent-Friendly)
+
+All blog posts automatically serve clean Markdown for AI agents:
+
+| Type | URL pattern |
+|------|-------------|
+| EN blog post | `/blog/{slug}.md` |
+| ES blog post | `/es/blog/{slug}.md` |
+| EN blog index | `/blog/index.md` |
+| ES blog index | `/es/blog/index.md` |
+
+Blog `.md` endpoints are auto-generated from `post.body` (raw Markdown without frontmatter). No code changes needed when adding posts. Agents can also request Markdown via `Accept: text/markdown` header. See **[Markdown for Agents](../../docs/aeo/MARKDOWN_FOR_AGENTS.md)**.
+
 ## Key Source Files
 
 | File | Purpose |

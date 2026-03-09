@@ -47,6 +47,12 @@ const dashboards = [
 const weeklyTasks = [
   {
     tool: 'Umami',
+    action: 'Check Markdown requests',
+    question:
+      'How many agents are consuming content via .md endpoints or Accept: text/markdown?',
+  },
+  {
+    tool: 'Umami',
     action: 'Check Top Pages',
     question: 'Which blog posts are getting the most traction?',
   },
@@ -96,6 +102,12 @@ const monthlyTasks = [
 ];
 
 const keyMetrics = [
+  {
+    metric: 'Markdown Requests',
+    good: 'Growing trend (agents consuming content)',
+    bad: 'Zero (no agent adoption)',
+    tool: 'Umami (markdown_request event)',
+  },
   {
     metric: 'Page Views',
     good: 'Growing trend',

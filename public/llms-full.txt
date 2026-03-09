@@ -52,6 +52,13 @@ How this website was built from scratch with Astro, covering architecture decisi
 4. Building a Blog Without a Backend — Content Collections and file-based content (/blog/building-blog-without-backend/)
 5. Building a Multilingual Website — i18n architecture with typed translations (/blog/building-multilingual-website/)
 
+#### The AEO Journey (4 chapters)
+From invisible to cited — building a website that AI answer engines can find, understand, and reference:
+0. Optimizing for Answers, Not Just Rankings — Series overview and entry point (/blog/aeo-answer-engine-optimization/)
+1. The Shift: Why Rankings No Longer Mean Visibility — The landscape change, answer engines, and SEO vs AEO (/blog/aeo-the-shift/)
+2. The Toolkit: llms.txt, Structured Data, and Markdown for Agents — Full technical implementation (/blog/aeo-the-toolkit/)
+3. The Scorecard: Auditing AEO, Reading the Data, and What's Next — Measurement, bot tracking, and future (/blog/aeo-the-scorecard/)
+
 #### Trading Journey (3 chapters)
 From manual trading to algorithmic strategies:
 1. My Trading Journey — From futures to forex (/blog/my-trading-journey-from-futures-to-forex/)
@@ -106,6 +113,48 @@ Sergio's areas of expertise and interest include:
 - Community building and tech talks
 - Sports (cycling, running, basketball, chess)
 - Gaming and food content creation
+
+## Agent-Friendly Markdown Endpoints
+
+All pages and blog posts are available as clean, native Markdown for AI agents. This content is served directly from the original source Markdown — not converted from rendered HTML — preserving full fidelity of code blocks, links, and formatting.
+
+### URL Patterns
+
+- **Pages**: `/{page}.md` (EN), `/es/{page}.md` (ES)
+  - Examples: `/about.md`, `/cv.md`, `/dailybot.md`, `/es/about.md`
+- **Blog index**: `/blog/index.md` (EN), `/es/blog/index.md` (ES)
+  - Lists all posts with links to their `.md` versions
+- **Blog posts**: `/blog/{slug}.md` (EN), `/es/blog/{slug}.md` (ES)
+  - Examples: `/blog/building-xergioalex-website.md`, `/es/blog/building-xergioalex-website.md`
+
+### Response Format
+
+Each Markdown response includes:
+- H1 title
+- Description (blockquote)
+- Metadata: Published date, Language, Canonical URL (HTML version), Tags
+- Separator
+- Original Markdown body content
+
+Content-Type: `text/markdown; charset=utf-8`
+
+### Content Negotiation
+
+Agents can request Markdown without changing URLs by sending `Accept: text/markdown`:
+
+```
+curl -H "Accept: text/markdown" https://xergioalex.com/about
+→ Returns Markdown with Content-Type: text/markdown; charset=utf-8
+→ Response includes Vary: Accept header for proper caching
+```
+
+### Why Native Markdown
+
+- Content is served from the original source files, not HTML→Markdown conversion
+- More token-efficient for AI consumption (no HTML tag residue)
+- Code blocks, links, and formatting preserved exactly as authored
+- Canonical URL always points to the HTML version for human readers
+- Internal cross-links between pages enable agents to discover the full site structure
 
 ## Feeds & Discovery
 
