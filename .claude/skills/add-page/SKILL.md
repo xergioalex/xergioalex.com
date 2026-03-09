@@ -124,7 +124,16 @@ import {Name}Page from '@/components/pages/{Name}Page.astro';
 - The `lang` prop is passed as a **string literal** (`"en"`, `"es"`), not a variable
 - If the page introduces new UI text, add entries to `src/lib/translations/en.ts` and `src/lib/translations/es.ts`
 
-### Step 4: Validate
+### Step 4: Create Agent-Friendly Markdown (MANDATORY)
+
+Create Markdown source files for the new page's `.md` endpoint (Markdown for Agents):
+
+1. Create `src/content/pages/en/{name}.md` with frontmatter (`title`, `description`, `lastUpdated`) and page content as clean Markdown
+2. Create `src/content/pages/es/{name}.md` with translated frontmatter and content (proper diacritical marks)
+
+These files are automatically served as `/{name}.md` and `/es/{name}.md` endpoints — no endpoint code changes needed.
+
+### Step 5: Validate
 
 ```bash
 npm run astro:check
