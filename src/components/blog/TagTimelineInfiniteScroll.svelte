@@ -226,13 +226,24 @@ function buildSeriesBadgeLabel(
 
                 {#if post.seriesCurrent && post.seriesTotal}
                   {@const seriesBadgeLabel = buildSeriesBadgeLabel(post.seriesCurrent, post.seriesTotal, post.seriesTitle)}
-                  <span
-                    class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200"
-                    aria-label={seriesBadgeLabel}
-                    title={seriesBadgeLabel}
-                  >
-                    {post.seriesCurrent}/{post.seriesTotal}
-                  </span>
+                  {#if post.seriesSlug}
+                    <a
+                      href={`${prefix}/blog/series/${post.seriesSlug}/`}
+                      class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 transition-colors hover:bg-blue-100 hover:border-blue-400 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200 dark:hover:bg-blue-900/60 dark:hover:border-blue-600"
+                      aria-label={seriesBadgeLabel}
+                      title={seriesBadgeLabel}
+                    >
+                      {post.seriesCurrent}/{post.seriesTotal}
+                    </a>
+                  {:else}
+                    <span
+                      class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200"
+                      aria-label={seriesBadgeLabel}
+                      title={seriesBadgeLabel}
+                    >
+                      {post.seriesCurrent}/{post.seriesTotal}
+                    </span>
+                  {/if}
                 {/if}
 
                 {#if post.tags && post.tags.length > 0}
