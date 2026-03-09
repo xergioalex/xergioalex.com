@@ -1,13 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
-import DailyBotTimeline from '@/components/dailybot/DailyBotTimeline.svelte';
+import TagTimelineInfiniteScroll from '@/components/blog/TagTimelineInfiniteScroll.svelte';
 import JsonLd from '@/components/JsonLd.astro';
 import HighlightCard from '@/components/pages/HighlightCard.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
 import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getBlogPosts } from '@/lib/blog';
+import { getTimelineIndex } from '@/lib/blog';
+import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -24,11 +25,10 @@ const contactCtaHref = `${prefix}/contact?${new URLSearchParams({
   subject: t.contactPage.prefillSubjects.dailybotQuestion,
 }).toString()}`;
 
-const { postsResult: posts } = await getBlogPosts({
-  lang,
-  tag: 'dailybot',
-  pageSize: 100,
-});
+const allDailybotPosts = await getTimelineIndex('dailybot', lang);
+const initialPosts = allDailybotPosts.slice(0, BLOG_PAGE_SIZE);
+const totalCount = allDailybotPosts.length;
+const timelineApiEndpoint = `/api/timeline/${lang}/dailybot.json`;
 
 const allTags = await getCollection('tags');
 const topicTagNames = allTags
@@ -135,7 +135,17 @@ const breadcrumbSchema = {
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         {t.dailybotPage.timelineTitle}
       </h2>
-      <DailyBotTimeline client:visible posts={posts} lang={lang} {topicTagNames} />
+      <TagTimelineInfiniteScroll
+        client:visible
+        {initialPosts}
+        {totalCount}
+        apiEndpoint={timelineApiEndpoint}
+        {lang}
+        {topicTagNames}
+        pageSize={BLOG_PAGE_SIZE}
+        pageName="dailybot"
+        emptyStateMessage={t.dailybotPage.emptyState}
+      />
     </div>
   </section>
 
