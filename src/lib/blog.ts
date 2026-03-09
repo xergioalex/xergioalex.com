@@ -34,6 +34,22 @@ export interface SearchIndexEntry {
   seriesTitle?: string;
 }
 
+/** Minimal post schema for timeline card rendering — leaner than SearchIndexEntry. */
+export interface TimelineCardEntry {
+  slug: string;
+  lang: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  /** All post tags (primary + subtopic combined). Callers derive topics client-side via topicTagNames. */
+  tags: string[];
+  heroImage?: string;
+  heroWebpExists: boolean;
+  seriesCurrent?: number;
+  seriesTotal?: number;
+  seriesTitle?: string;
+}
+
 interface SeriesPosition {
   current: number;
   total: number;
@@ -306,6 +322,41 @@ export async function getSearchIndexByLanguage(
 ): Promise<SearchIndexEntry[]> {
   const searchIndex = await getSearchIndex();
   return searchIndex.filter((post) => post.lang === lang);
+}
+
+/**
+ * Build a full timeline index for a specific tag and language.
+ * Returns ALL matching posts as TimelineCardEntry[] (no pagination) — callers paginate client-side.
+ * Reuses getBlogPosts for consistent filtering, sorting, and series enrichment.
+ */
+export async function getTimelineIndex(
+  tag: string,
+  lang: string
+): Promise<TimelineCardEntry[]> {
+  // pageSize: 9999 ensures all matching posts are returned (no actual pagination)
+  const { postsResult } = await getBlogPosts({ lang, tag, pageSize: 9999 });
+
+  return postsResult.map((post) => {
+    const enriched = post as CollectionEntry<'blog'> & {
+      heroWebpExists: boolean;
+      seriesCurrent?: number;
+      seriesTotal?: number;
+      seriesTitle?: string;
+    };
+    return {
+      slug: getPostSlug(post.id),
+      lang: getPostLanguage(post.id),
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate.toISOString(),
+      tags: post.data.tags ?? [],
+      heroImage: post.data.heroImage,
+      heroWebpExists: enriched.heroWebpExists ?? false,
+      seriesCurrent: enriched.seriesCurrent,
+      seriesTotal: enriched.seriesTotal,
+      seriesTitle: enriched.seriesTitle,
+    };
+  });
 }
 
 export async function getBlogPosts(
