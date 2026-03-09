@@ -93,14 +93,14 @@ Create a definitive, highly shareable blog post about Answer Engine Optimization
       See: [5.task_hero_image.md](./5.task_hero_image.md)
 - [x] Task 6: Final Review & Comprehensive Validation
       See: [6.task_final_review.md](./6.task_final_review.md)
-- [ ] Task 7: Skills & Agents Discovery
+- [x] Task 7: Skills & Agents Discovery
       See: [7.task_skills_agents_discovery.md](./7.task_skills_agents_discovery.md)
-- [ ] Task 8: Executive Report
+- [x] Task 8: Executive Report
       See: [8.task_executive_report.md](./8.task_executive_report.md)
 
 > **Mandatory final tasks:** Every plan includes Skills & Agents Discovery (second-to-last) and Executive Report (last).
 
-**Progress: 6/8 tasks completed**
+**Progress: 8/8 tasks completed**
 
 ## 5. Execution Rules for the Agent
 
@@ -134,7 +134,7 @@ Create a definitive, highly shareable blog post about Answer Engine Optimization
 
 | Field | Value |
 |-------|-------|
-| Status | In progress |
+| Status | Completed |
 | Created | 2026-03-09 |
 | Tasks | 8 (6 user + 2 mandatory) |
 | Branch | `feat/blog-aeo-answer-engine-optimization` |
