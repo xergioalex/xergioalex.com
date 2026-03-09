@@ -41,6 +41,16 @@ This site features a bilingual blog and professional profile covering software d
 - English (default): /
 - Spanish: /es/
 
+## Agent-Friendly Markdown
+
+All pages and blog posts are available as native Markdown for AI agents:
+
+- Page Markdown: /{page}.md (EN), /es/{page}.md (ES)
+- Blog index: /blog/index.md (EN), /es/blog/index.md (ES)
+- Blog posts: /blog/{slug}.md (EN), /es/blog/{slug}.md (ES)
+- Content-Type: text/markdown; charset=utf-8
+- Source Markdown — not HTML-to-Markdown conversion
+
 ## Machine-Readable Feeds
 
 - Sitemap: /sitemap-index.xml

@@ -107,6 +107,37 @@ Sergio's areas of expertise and interest include:
 - Sports (cycling, running, basketball, chess)
 - Gaming and food content creation
 
+## Agent-Friendly Markdown Endpoints
+
+All pages and blog posts are available as clean, native Markdown for AI agents. This content is served directly from the original source Markdown — not converted from rendered HTML — preserving full fidelity of code blocks, links, and formatting.
+
+### URL Patterns
+
+- **Pages**: `/{page}.md` (EN), `/es/{page}.md` (ES)
+  - Examples: `/about.md`, `/cv.md`, `/dailybot.md`, `/es/about.md`
+- **Blog index**: `/blog/index.md` (EN), `/es/blog/index.md` (ES)
+  - Lists all posts with links to their `.md` versions
+- **Blog posts**: `/blog/{slug}.md` (EN), `/es/blog/{slug}.md` (ES)
+  - Examples: `/blog/building-xergioalex-website.md`, `/es/blog/building-xergioalex-website.md`
+
+### Response Format
+
+Each Markdown response includes:
+- H1 title
+- Description (blockquote)
+- Metadata: Published date, Language, Canonical URL (HTML version), Tags
+- Separator
+- Original Markdown body content
+
+Content-Type: `text/markdown; charset=utf-8`
+
+### Why Native Markdown
+
+- Content is served from the original source files, not HTML→Markdown conversion
+- More token-efficient for AI consumption (no HTML tag residue)
+- Code blocks, links, and formatting preserved exactly as authored
+- Canonical URL always points to the HTML version for human readers
+
 ## Feeds & Discovery
 
 - RSS Feed (English): /rss.xml
