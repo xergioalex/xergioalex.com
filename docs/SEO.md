@@ -201,6 +201,20 @@ For comprehensive AEO documentation, see `docs/aeo/`:
 - **[Monthly Checklist](aeo/CHECKLIST.md)** — Maintenance checklist for ongoing AEO health
 - **[Markdown for Agents](aeo/MARKDOWN_FOR_AGENTS.md)** — Native Markdown endpoints for AI agent consumption
 
+### Markdown for Agents (Endpoints & Content Negotiation)
+
+Every page and blog post serves native Markdown for AI consumption:
+
+| Type | URL pattern (EN) | URL pattern (ES) |
+|------|------------------|-------------------|
+| Pages | `/{page}.md` | `/es/{page}.md` |
+| Blog posts | `/blog/{slug}.md` | `/es/blog/{slug}.md` |
+| Blog index | `/blog/index.md` | `/es/blog/index.md` |
+
+**Content Negotiation:** Agents can send `Accept: text/markdown` header to get Markdown without changing URLs. The Cloudflare Pages middleware (`functions/_middleware.ts`) resolves the `.md` path and serves it with `Content-Type: text/markdown; charset=utf-8` and `Vary: Accept`.
+
+**Maintenance:** When page components or translation strings change, update corresponding files in `src/content/pages/{en,es}/`. Blog posts auto-sync from `post.body`. See **[Markdown for Agents](aeo/MARKDOWN_FOR_AGENTS.md)** for details.
+
 ### Files
 
 | File | Purpose | Update When |

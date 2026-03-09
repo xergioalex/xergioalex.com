@@ -150,6 +150,12 @@ Post content here...
 - ✅ Complex logic
 - ✅ Non-obvious decisions
 
+### Agent-Friendly Content (AEO)
+
+- When adding new pages, create corresponding `.md` files in `src/content/pages/{en,es}/`
+- When updating page content or translations, update corresponding `.md` files
+- When content structure changes, update `public/llms.txt` and `public/llms-full.txt`
+
 ### Don't Over-Document
 
 - ❌ Obvious code

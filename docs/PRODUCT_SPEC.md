@@ -85,7 +85,19 @@ Create a modern, fast, and visually appealing personal website that:
 - Social media links
 - Professional profiles (LinkedIn, GitHub)
 
-### 5. Multilingual Support
+### 5. Agent-Friendly Markdown Endpoints
+
+**Purpose:** Make site content natively accessible to AI agents and LLMs
+
+**Features:**
+- Native Markdown endpoints for all pages and blog posts (`.md` URLs)
+- Content negotiation via `Accept: text/markdown` header (Cloudflare middleware)
+- No HTML→Markdown conversion — original source served for token efficiency
+- Discovery via `llms.txt`, `llms-full.txt`, and `robots.txt`
+
+**Technical details:** See [Markdown for Agents](docs/aeo/MARKDOWN_FOR_AGENTS.md)
+
+### 6. Multilingual Support
 
 **Purpose:** Reach broader audience
 

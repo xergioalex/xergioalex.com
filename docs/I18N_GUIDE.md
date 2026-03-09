@@ -412,6 +412,8 @@ Before committing any content change, verify:
 - [ ] Date formatting uses locale-aware formatting with `lang` prop
 - [ ] Page titles and SEO descriptions use translation keys
 - [ ] The `lang` prop is passed through the full component hierarchy
+- [ ] Page Markdown files exist in both `src/content/pages/en/` and `src/content/pages/es/`
+- [ ] When page content or translations change, corresponding `.md` files updated (both languages)
 
 ## Known Limitations
 

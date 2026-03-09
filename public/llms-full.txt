@@ -131,12 +131,23 @@ Each Markdown response includes:
 
 Content-Type: `text/markdown; charset=utf-8`
 
+### Content Negotiation
+
+Agents can request Markdown without changing URLs by sending `Accept: text/markdown`:
+
+```
+curl -H "Accept: text/markdown" https://xergioalex.com/about
+→ Returns Markdown with Content-Type: text/markdown; charset=utf-8
+→ Response includes Vary: Accept header for proper caching
+```
+
 ### Why Native Markdown
 
 - Content is served from the original source files, not HTML→Markdown conversion
 - More token-efficient for AI consumption (no HTML tag residue)
 - Code blocks, links, and formatting preserved exactly as authored
 - Canonical URL always points to the HTML version for human readers
+- Internal cross-links between pages enable agents to discover the full site structure
 
 ## Feeds & Discovery
 

@@ -48,6 +48,7 @@ All pages and blog posts are available as native Markdown for AI agents:
 - Page Markdown: /{page}.md (EN), /es/{page}.md (ES)
 - Blog index: /blog/index.md (EN), /es/blog/index.md (ES)
 - Blog posts: /blog/{slug}.md (EN), /es/blog/{slug}.md (ES)
+- Content Negotiation: Send Accept: text/markdown header to get Markdown for any page
 - Content-Type: text/markdown; charset=utf-8
 - Source Markdown — not HTML-to-Markdown conversion
 
