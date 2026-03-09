@@ -44,13 +44,15 @@ Based in Colombia, he has led the development of DailyBot, a modern collaboratio
 
 ### Blog Series
 
-#### Building XergioAleX.com (5 chapters)
-How this website was built from scratch with Astro, covering architecture decisions, design systems, performance optimization, and multilingual support:
+#### Building XergioAleX.com (7 chapters)
+How this website was built from scratch with Astro, covering architecture decisions, performance optimization, analytics, content collections, multilingual support, deployment, and AI bot tracking:
 1. Building an Astro Website — Why Astro and the initial architecture (/blog/building-xergioalex-website/)
-2. Building a Design System — Component library and visual consistency (/blog/building-design-system/)
-3. Lighthouse Perfect Scores — Achieving 100 across all Lighthouse categories (/blog/lighthouse-perfect-scores/)
+2. Lighthouse Perfect Scores — Achieving 100 across all Lighthouse categories (/blog/lighthouse-perfect-scores/)
+3. Measuring What Matters — Free analytics without sacrificing performance (/blog/measuring-what-matters-free-analytics/)
 4. Building a Blog Without a Backend — Content Collections and file-based content (/blog/building-blog-without-backend/)
 5. Building a Multilingual Website — i18n architecture with typed translations (/blog/building-multilingual-website/)
+6. The Best Way to Deploy Your Astro Site — Free deployment on Cloudflare Pages (/blog/best-way-deploy-astro-site-free/)
+7. Tracking the Invisible — AI bot analytics with zero client-side JavaScript (/blog/tracking-invisible-ai-bot-analytics/)
 
 #### The AEO Journey (4 chapters)
 From invisible to cited — building a website that AI answer engines can find, understand, and reference:
