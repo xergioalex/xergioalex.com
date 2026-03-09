@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 11             | 4                  | 0              | 15    |
+| Skills | 12             | 4                  | 0              | 16    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **11**      | **9**              | **1**          | **21** |
+| **Total** | **12**      | **9**              | **1**          | **22** |
 
 ---
 
@@ -31,6 +31,7 @@ Fast, low-risk, pattern-following tasks.
 | git-commit-push | execute| `/git-commit-push`| haiku  | Commit all changes and push to remote                                       |
 | add-component   | create | `/add-component`  | haiku  | Create new Astro or Svelte component with correct patterns                  |
 | add-page        | create | `/add-page`       | haiku  | Create new page with routing and MainLayout                                 |
+| add-timeline-page | create | `/add-timeline-page` | haiku | Add a new tag-filtered infinite-scroll timeline page (e.g. /trading, /entrepreneur) |
 | translate-sync  | execute| `/translate-sync` | haiku  | Synchronize content between English and Spanish versions                    |
 | update-styles   | fix    | `/update-styles`  | haiku  | Update Tailwind styles with dark mode support                               |
 
@@ -205,6 +206,7 @@ Resources for creating new UI components and pages.
 |----------|------|-------------|
 | add-component | Skill (T1) | Create new Astro or Svelte component with correct patterns |
 | add-page | Skill (T1) | Create new page with routing and MainLayout |
+|| add-timeline-page | Skill (T1) | Add a new tag-filtered infinite-scroll timeline page (e.g. /trading, /entrepreneur) |
 | update-styles | Skill (T1) | Update Tailwind styles with dark mode support |
 | architect | Agent (T3) | Component design, routing, Content Collections planning |
 | executor | Agent (T2) | Follow plans step by step; implement and validate |
@@ -345,7 +347,8 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
-| 2026-03-05 | Team agents execution modes | Added Execution Modes section with comparison table, updated compatibility notes, added team agents integration to interaction map. |
+| 2026-03-09 | add-timeline-page skill added | New Tier 1 skill for adding tag-filtered infinite-scroll timeline pages. Extracted from PLAN_timeline_infinite_scroll_pagination. |
+|| 2026-03-05 | Team agents execution modes | Added Execution Modes section with comparison table, updated compatibility notes, added team agents integration to interaction map. |
 | 2026-03-03 | content-writer agent v1.4.0 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist (from PLAN_anti_ai_slop_audit). |
 | 2026-03-03 | promote-post skill added | New Tier 2 skill for generating social media content (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) for any blog post. |
 
