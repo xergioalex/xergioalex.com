@@ -4,13 +4,23 @@ description: "CTO & Co-founder at DailyBot, a Y Combinator (S21) company buildin
 lastUpdated: 2026-03-09
 ---
 
-## About DailyBot
+## Building the Future of Team Collaboration
 
-DailyBot is a platform that enables human teams and AI agents to work together seamlessly. It provides unified transparency for hybrid teams in Slack, Microsoft Teams, and Google Chat. Features include async stand-ups, recognition, AI agents, workflows, and mood tracking.
+[DailyBot](https://dailybot.com) is a platform that enables human teams and AI agents to work together seamlessly. It provides unified transparency for hybrid teams in Slack, Microsoft Teams, and Google Chat. Features include async stand-ups, recognition, AI agents, workflows, and mood tracking.
+
+---
+
+## The DailyBot Story
+
+DailyBot started as an idea to solve a real problem: how can teams work more efficiently with AI? In December 2020, we began this journey with a vision to create a platform where human intelligence and artificial intelligence work together seamlessly. Today, DailyBot serves hundreds of teams across different industries, helping them automate workflows and enhance collaboration.
+
+---
 
 ## Y Combinator Journey
 
-Selected for Y Combinator's Summer 2021 batch. The YC experience transformed company growth, sharpened product-market fit focus, and provided access to an invaluable network of founders and investors.
+Selected for [Y Combinator's Summer 2021 batch](https://www.ycombinator.com/companies/dailybot). The YC experience transformed company growth, sharpened product-market fit focus, and provided access to an invaluable network of founders and investors. This experience shaped our product vision, business strategy, and how we think about building sustainable tech companies.
+
+---
 
 ## My Role as CTO
 
@@ -18,8 +28,10 @@ Leading the technical vision and engineering team at DailyBot. Responsibilities 
 - System architecture and technical strategy
 - AI features and LLM integrations
 - AWS infrastructure and cloud operations
-- Engineering team leadership and culture
+- Engineering team leadership and culture (35+ team members)
 - Developer experience and engineering excellence
+
+---
 
 ## Platform Features
 
@@ -30,6 +42,12 @@ Leading the technical vision and engineering team at DailyBot. Responsibilities 
 - **Mood & Wellness Tracking** — Team sentiment and wellbeing monitoring
 - **Multi-Platform Integration** — Works in Slack, Microsoft Teams, and Google Chat
 
+---
+
 ## Links
 
-- Website: [dailybot.com](https://dailybot.com)
+- [Visit DailyBot](https://dailybot.com)
+- [DailyBot on Y Combinator](https://www.ycombinator.com/companies/dailybot)
+- [My entrepreneurial journey](/entrepreneur)
+- [View my CV](/cv)
+- [Get in touch](/contact)
