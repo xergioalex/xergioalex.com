@@ -206,7 +206,7 @@ Resources for creating new UI components and pages.
 |----------|------|-------------|
 | add-component | Skill (T1) | Create new Astro or Svelte component with correct patterns |
 | add-page | Skill (T1) | Create new page with routing and MainLayout |
-|| add-timeline-page | Skill (T1) | Add a new tag-filtered infinite-scroll timeline page (e.g. /trading, /entrepreneur) |
+| add-timeline-page | Skill (T1) | Add a new tag-filtered infinite-scroll timeline page (e.g. /trading, /entrepreneur) |
 | update-styles | Skill (T1) | Update Tailwind styles with dark mode support |
 | architect | Agent (T3) | Component design, routing, Content Collections planning |
 | executor | Agent (T2) | Follow plans step by step; implement and validate |

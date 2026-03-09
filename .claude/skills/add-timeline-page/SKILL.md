@@ -37,6 +37,7 @@ Add a new tag-filtered timeline page (like `/tech-talks` or `/dailybot`) that di
 
 - `$TAG`: The blog tag slug that filters posts for this timeline (e.g. `trading`, `entrepreneur`)
 - `$SLUG`: The URL slug for the page (e.g. `trading`, `my-journey`) — usually same as `$TAG`
+- `$PAGE_KEY`: The translation key name — must be a valid JS property (e.g. `tradingPage`, `entrepreneurPage`). Used as `t.$PAGE_KEY.title`, `t.$PAGE_KEY.description`, etc.
 - `$PAGE_TITLE_EN`: English page title (e.g. "Trading Journal")
 - `$PAGE_TITLE_ES`: Spanish page title (e.g. "Diario de Trading")
 
@@ -97,21 +98,28 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}${prefix}/` },
-    { '@type': 'ListItem', position: 2, name: t.$pageKey.title, item: `${siteUrl}${prefix}/$SLUG` },
+    { '@type': 'ListItem', position: 2, name: t.$PAGE_KEY.title, item: `${siteUrl}${prefix}/$SLUG` },
   ],
 };
 ---
 
-<MainLayout lang={lang} title={t.$pageKey.title} description={t.$pageKey.description}>
+<MainLayout
+  lang={lang}
+  title={t.$PAGE_KEY.title}
+  description={t.$PAGE_KEY.description}
+  keywords={lang === 'en'
+    ? ['keyword1 en', 'keyword2 en']
+    : ['keyword1 es', 'keyword2 es']}
+>
   <Fragment slot="head"><JsonLd data={breadcrumbSchema} /></Fragment>
-  <PageHero title={t.$pageKey.title} subtitle={t.$pageKey.subtitle} description={t.$pageKey.heroDescription} image="/images/$SLUG.png" />
+  <PageHero title={t.$PAGE_KEY.title} subtitle={t.$PAGE_KEY.subtitle} description={t.$PAGE_KEY.heroDescription} image="/images/$SLUG.png" />
 
   <!-- Add page-specific content sections here -->
 
   <section id="timeline" class="py-12 md:py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
     <div class="main-container">
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
-        {t.$pageKey.timelineTitle}
+        {t.$PAGE_KEY.timelineTitle}
       </h2>
       <TagTimelineInfiniteScroll
         client:visible
@@ -122,11 +130,11 @@ const breadcrumbSchema = {
         {topicTagNames}
         pageSize={BLOG_PAGE_SIZE}
         pageName="$ANALYTICS_PAGE_NAME"
-        emptyStateMessage={t.$pageKey.emptyState}
+        emptyStateMessage={t.$PAGE_KEY.emptyState}
       />
     </div>
   </section>
-  <ScrollToTimeline client:load lang={lang} targetLabel={t.$pageKey.timelineTitle} />
+  <ScrollToTimeline client:load lang={lang} targetLabel={t.$PAGE_KEY.timelineTitle} />
 </MainLayout>
 ```
 
@@ -150,13 +158,13 @@ import {PageName}Page from '@/components/pages/{PageName}Page.astro';
 
 ### Step 4: Add translation keys
 
-Add the new page's translation keys to BOTH `src/lib/translations/en.ts` and `es.ts`. Required keys:
-- `$pageKey.title`
-- `$pageKey.subtitle`
-- `$pageKey.description`
-- `$pageKey.heroDescription`
-- `$pageKey.timelineTitle`
-- `$pageKey.emptyState`
+Add the new page's translation keys to BOTH `src/lib/translations/en.ts` and `es.ts`. Required keys (where `$PAGE_KEY` is a valid JS property like `tradingPage`):
+- `$PAGE_KEY.title`
+- `$PAGE_KEY.subtitle`
+- `$PAGE_KEY.description`
+- `$PAGE_KEY.heroDescription`
+- `$PAGE_KEY.timelineTitle`
+- `$PAGE_KEY.emptyState`
 
 Also update `src/lib/translations/types.ts` with the new interface.
 
@@ -213,7 +221,7 @@ Missing prerequisite: {description}
 Before creating files:
 
 - [ ] Tag `$TAG` exists in `src/content/tags/` or is used in posts
-- [ ] Translation key `$pageKey` doesn't conflict with existing keys
+- [ ] Translation key `$PAGE_KEY` doesn't conflict with existing keys
 - [ ] Page slug `$SLUG` doesn't conflict with existing pages
 
 ### Stop Conditions
@@ -239,6 +247,20 @@ This skill is **complete** when ALL of the following are true:
 - [ ] `npm run build` succeeds
 - [ ] New page appears at `/$SLUG` in the build output
 
+## Escalation Conditions
+
+**Escalate to a higher tier** (or ask user) if:
+
+- The page requires custom interactive components beyond the standard timeline
+- Translation types.ts needs structural changes (new nested interfaces)
+- The page layout diverges significantly from the TechTalksPage pattern
+
+**Escalation Path:**
+
+1. First: Check if `add-page` skill is more appropriate
+2. Then: If timeline-specific but complex, escalate to Tier 2 with `architect` agent
+3. Finally: Ask user for guidance
+
 ## Examples
 
 ### Example 1: Add /trading page
@@ -247,11 +269,12 @@ This skill is **complete** when ALL of the following are true:
 ```
 $TAG: trading
 $SLUG: trading
+$PAGE_KEY: tradingPage
 $PAGE_TITLE_EN: Trading Journal
 $PAGE_TITLE_ES: Diario de Trading
 ```
 
-**Output:** Creates `/trading` and `/es/trading` pages showing all posts tagged `trading`.
+**Output:** Creates `/trading` and `/es/trading` pages showing all posts tagged `trading` in a `TradingPage.astro` component with `t.tradingPage.*` translations.
 
 ### Example 2: Add /entrepreneur page
 
@@ -259,11 +282,12 @@ $PAGE_TITLE_ES: Diario de Trading
 ```
 $TAG: entrepreneur
 $SLUG: entrepreneur
+$PAGE_KEY: entrepreneurPage
 $PAGE_TITLE_EN: Entrepreneurship Journey
 $PAGE_TITLE_ES: Viaje Emprendedor
 ```
 
-**Output:** Creates `/entrepreneur` and `/es/entrepreneur` pages.
+**Output:** Creates `/entrepreneur` and `/es/entrepreneur` pages in an `EntrepreneurPage.astro` component.
 
 ## Related Skills/Agents
 
@@ -277,4 +301,5 @@ $PAGE_TITLE_ES: Viaje Emprendedor
 
 | Version | Date       | Changes         |
 | ------- | ---------- | --------------- |
+| 1.1.0   | 2026-03-09 | Added `$PAGE_KEY` param, `keywords` SEO prop, Escalation Conditions section |
 | 1.0.0   | 2026-03-09 | Initial version — extracted from PLAN_timeline_infinite_scroll_pagination |

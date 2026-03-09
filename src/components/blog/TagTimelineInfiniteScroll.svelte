@@ -1,5 +1,5 @@
 <script lang="ts">
-import { onDestroy, onMount } from 'svelte';
+import { onDestroy, onMount, tick } from 'svelte';
 import { EVENTS, trackEvent } from '@/lib/analytics';
 import type { TimelineCardEntry } from '@/lib/blog';
 import { SITE_TIMEZONE } from '@/lib/constances';
@@ -67,7 +67,15 @@ async function loadMore() {
     fetchError = true;
   } finally {
     loading = false;
+    await tick();
+    reobserveSentinel();
   }
+}
+
+function reobserveSentinel(): void {
+  if (!observer || !sentinel || allLoaded) return;
+  observer.unobserve(sentinel);
+  observer.observe(sentinel);
 }
 
 function isPostScheduled(pubDate: string): boolean {
@@ -285,11 +293,24 @@ function buildSeriesBadgeLabel(
       </div>
     {/if}
 
-    <!-- All posts loaded indicator -->
-    {#if allLoaded && renderedPosts.length > pageSize}
-      <p class="text-center text-sm text-gray-600 dark:text-gray-300 py-8">
-        {lang === 'es' ? 'Todo al día — has visto todos los posts.' : "You're all caught up."}
-      </p>
-    {/if}
   </div>
+
+  <!-- Timeline end cap — outside the line container so the line terminates cleanly -->
+  {#if allLoaded && renderedPosts.length > pageSize}
+    <div class="flex flex-col items-center gap-4 pb-6">
+      <div class="w-12 h-12 rounded-full bg-secondary shadow-lg shadow-secondary/25 flex items-center justify-center ring-4 ring-secondary/10 dark:ring-secondary/20">
+        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <div class="bg-white dark:bg-gray-800 px-8 py-4 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 text-center">
+        <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+          {lang === 'es' ? 'Has llegado al inicio' : "You've reached the beginning"}
+        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+          {renderedPosts.length} {lang === 'es' ? 'posts en total' : 'total posts'}
+        </p>
+      </div>
+    </div>
+  {/if}
 {/if}
