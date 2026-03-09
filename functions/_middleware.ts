@@ -206,9 +206,18 @@ async function tryServeMarkdown(
 
   try {
     const mdUrl = new URL(mdPath, url.origin);
-    const assetResponse = await context.env.ASSETS.fetch(
+    let assetResponse = await context.env.ASSETS.fetch(
       new Request(mdUrl.toString())
     );
+
+    // Fallback: /path.md → /path/index.md (for directory-style paths like /es/, /blog/)
+    if (!assetResponse.ok && !mdPath.endsWith('/index.md')) {
+      const indexMdPath = `${mdPath.replace(/\.md$/, '')}/index.md`;
+      const indexMdUrl = new URL(indexMdPath, url.origin);
+      assetResponse = await context.env.ASSETS.fetch(
+        new Request(indexMdUrl.toString())
+      );
+    }
 
     if (!assetResponse.ok) return null;
 
