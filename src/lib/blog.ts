@@ -45,6 +45,7 @@ export interface TimelineCardEntry {
   tags: string[];
   heroImage?: string;
   heroWebpExists: boolean;
+  seriesSlug?: string;
   seriesCurrent?: number;
   seriesTotal?: number;
   seriesTitle?: string;
@@ -352,9 +353,59 @@ export async function getTimelineIndex(
       tags: post.data.tags ?? [],
       heroImage: post.data.heroImage,
       heroWebpExists: enriched.heroWebpExists ?? false,
+      seriesSlug: post.data.series,
       seriesCurrent: enriched.seriesCurrent,
       seriesTotal: enriched.seriesTotal,
       seriesTitle: enriched.seriesTitle,
+    };
+  });
+}
+
+/**
+ * Build a full timeline index for a specific series and language.
+ * Returns ALL matching posts as TimelineCardEntry[] sorted by seriesOrder ascending (chapter order).
+ * Callers paginate client-side.
+ */
+export async function getSeriesTimelineIndex(
+  seriesSlug: string,
+  lang: string
+): Promise<TimelineCardEntry[]> {
+  const allPosts = await getCollection('blog');
+  const seriesTitleBySlug = await getSeriesTitleMap();
+
+  const filteredPosts = allPosts.filter(
+    (post) =>
+      post.id.startsWith(`${lang}/`) &&
+      post.data.series === seriesSlug &&
+      !isDemoPost(post) &&
+      (import.meta.env.DEV || !isScheduledPost(post))
+  );
+
+  const seriesPositionById = getSeriesPositionById(filteredPosts);
+
+  // Sort by seriesOrder ascending (chapter 1 first, then 2, 3...)
+  const sorted = [...filteredPosts].sort((a, b) => {
+    const orderA = a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+    const orderB = b.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
+  });
+
+  return sorted.map((post) => {
+    const position = seriesPositionById.get(post.id);
+    return {
+      slug: getPostSlug(post.id),
+      lang: getPostLanguage(post.id),
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate.toISOString(),
+      tags: post.data.tags ?? [],
+      heroImage: post.data.heroImage,
+      heroWebpExists: heroWebpExists(post.data.heroImage),
+      seriesSlug: post.data.series,
+      seriesCurrent: position?.current,
+      seriesTotal: position?.total,
+      seriesTitle: seriesTitleBySlug.get(seriesSlug),
     };
   });
 }
