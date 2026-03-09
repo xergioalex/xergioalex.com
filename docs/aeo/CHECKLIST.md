@@ -60,7 +60,17 @@ Record results:
 - [ ] Verify Spanish RSS: `curl -s https://xergioalex.com/es/rss.xml | head -20`
 - [ ] Confirm latest posts appear in feeds
 
-## 8. Quick Local Validation
+## 8. Markdown for Agents
+
+- [ ] Verify `.md` endpoints are generated: `find dist -name "*.md" | wc -l` (should be 100+)
+- [ ] Spot-check a blog post `.md` endpoint: `cat dist/blog/building-multilingual-website.md | head -15`
+- [ ] Verify content-type is set in endpoint source: `grep "text/markdown" src/pages/blog/\[slug\].md.ts`
+- [ ] Check page endpoints exist: `ls dist/about.md dist/cv.md dist/es/about.md`
+- [ ] Verify blog index: `cat dist/blog/index.md | head -20`
+- [ ] Ensure `llms.txt` references Markdown endpoints: `grep "\.md" public/llms.txt`
+- [ ] Full docs: [Markdown for Agents](MARKDOWN_FOR_AGENTS.md)
+
+## 9. Quick Local Validation
 
 Run these commands before deploying:
 
@@ -76,12 +86,15 @@ grep "lastmod" dist/sitemap-0.xml | head -3
 
 # Check schema in a built blog post
 grep "BlogPosting" dist/blog/building-multilingual-website/index.html | head -1
+
+# Verify Markdown endpoints generated
+find dist -name "*.md" | wc -l
 ```
 
 ## Schedule
 
 | Frequency | Tasks |
 |-----------|-------|
-| Every deploy | Section 8 (local validation) |
-| Monthly | Sections 1-7 (full checklist) |
+| Every deploy | Section 9 (local validation) |
+| Monthly | Sections 1-8 (full checklist) |
 | Quarterly | Full audit refresh (re-run `/dwp-execute aeo_llm_discoverability` Task 1) |
