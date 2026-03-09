@@ -5,8 +5,6 @@ pubDate: "2026-03-09T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "track AI bot traffic server-side analytics"]
-series: "building-xergioalex"
-seriesOrder: 8
 ---
 
 I had good SEO scores. Lighthouse 100 across the board. Pages indexed, canonical URLs validated, structured data passing every test Google threw at it. By every traditional metric, the site was doing fine.
@@ -212,7 +210,7 @@ I spent more time on structured data than on any other AEO optimization. It's no
 
 The hardest part of AEO is measurement. Google Analytics can't see AI bots. They don't execute JavaScript. From a client-side analytics perspective, every AI crawler visit is invisible.
 
-I covered the technical solution in detail in a previous chapter — a Cloudflare Pages middleware that inspects every request, checks the User-Agent against a list of 13 known AI crawlers, and fires server-side events to Umami. Zero JavaScript overhead, zero impact on page load, runs at the edge.
+I built a solution for this: a Cloudflare Pages middleware that inspects every request, checks the User-Agent against a list of 13 known AI crawlers, and fires server-side events to Umami. Zero JavaScript overhead, zero impact on page load, runs at the edge. (I wrote about the full technical implementation in [Tracking the Invisible: How I Built AI Bot Analytics](/blog/tracking-invisible-ai-bot-analytics).)
 
 The bot detection array looks like this:
 

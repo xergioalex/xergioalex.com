@@ -5,8 +5,6 @@ pubDate: "2026-03-09T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["optimización para motores de respuesta AEO", "optimizar sitio web para búsqueda con IA", "llms.txt datos estructurados AEO", "cómo los motores de búsqueda IA citan fuentes", "AEO vs SEO guía práctica", "datos estructurados JSON-LD visibilidad IA", "rastrear tráfico bots IA analítica servidor"]
-series: "building-xergioalex"
-seriesOrder: 8
 ---
 
 Tenía buenos puntajes de SEO. Lighthouse 100 en todas las métricas. Páginas indexadas, URLs canónicas validadas, datos estructurados pasando cada prueba que Google me lanzaba. Por cualquier métrica tradicional, el sitio estaba en orden.
@@ -212,7 +210,7 @@ Le dediqué más tiempo a los datos estructurados que a cualquier otra optimizac
 
 La parte más difícil del AEO es la medición. Google Analytics no puede ver los bots de IA. No ejecutan JavaScript. Desde una perspectiva de analíticas del lado del cliente, cada visita de un crawler de IA es invisible.
 
-Cubrí la solución técnica en detalle en un capítulo anterior — un middleware de Cloudflare Pages que inspecciona cada solicitud, verifica el User-Agent contra una lista de 13 crawlers de IA conocidos, y dispara eventos server-side a Umami. Cero overhead de JavaScript, cero impacto en la carga de la página, corre en el edge.
+Construí una solución para esto: un middleware de Cloudflare Pages que inspecciona cada solicitud, verifica el User-Agent contra una lista de 13 crawlers de IA conocidos, y dispara eventos server-side a Umami. Cero overhead de JavaScript, cero impacto en la carga de la página, corre en el edge. (Escribí sobre la implementación técnica completa en [Rastreando lo Invisible: Cómo Construí Analíticas de Bots de IA](/es/blog/tracking-invisible-ai-bot-analytics).)
 
 El array de detección de bots se ve así:
 
