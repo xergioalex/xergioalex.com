@@ -5,6 +5,7 @@ pubDate: '2025-01-06'
 heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
+keywords: ['markdown formatting guide', 'technical writing markdown', 'markdown syntax reference', 'blog post formatting', 'markdown for developers']
 ---
 
 This post demonstrates every Markdown formatting feature supported in our blog system. Use it as a reference when writing your own posts.

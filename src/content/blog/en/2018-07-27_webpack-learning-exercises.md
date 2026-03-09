@@ -5,6 +5,7 @@ pubDate: "2018-07-27"
 heroImage: "/images/blog/posts/webpack-learning-exercises/hero.png"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "javascript", "web-development"]
+keywords: ["Webpack 4 deep dive", "Webpack loaders plugins tutorial", "code splitting Webpack", "Webpack DLL optimization", "Webpack React integration", "JavaScript build tool Webpack", "Webpack configuration guide"]
 ---
 
 There's a moment in every front-end developer's life when the toolchain becomes the bottleneck. You're comfortable writing JavaScript, CSS, HTML — the actual code feels natural. But then you need to use SASS. And import images. And split your code into multiple bundles. And transpile modern JavaScript for older browsers. And suddenly you realize: you don't have a build system. You have a *problem*.

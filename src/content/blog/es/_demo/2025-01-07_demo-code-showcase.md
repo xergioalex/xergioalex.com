@@ -5,6 +5,7 @@ pubDate: '2025-01-07'
 heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
+keywords: ['ejemplos de resaltado de sintaxis', 'bloques de código múltiples lenguajes', 'showcase lenguajes de programación', 'formato de código en blog', 'ejemplos de programación políglota']
 ---
 
 El desarrollo de software moderno frecuentemente involucra trabajar con multiples lenguajes y ecosistemas. Este post muestra el resaltado de sintaxis para una amplia variedad de lenguajes de programacion, util como referencia visual para autores de blogs.

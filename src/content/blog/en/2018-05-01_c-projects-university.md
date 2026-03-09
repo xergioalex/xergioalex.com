@@ -5,6 +5,7 @@ pubDate: "2018-05-01"
 heroImage: "/images/blog/posts/c-projects-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["C programming pointers university", "Allegro graphics library games", "C imperative programming tutorial", "memory management C language", "learn C programming beginners", "Allegro 2D game development C", "university C programming projects"]
 ---
 
 If you read about [my first steps with DrScheme and functional programming](/blog/racket-projects-university/), you know that my introduction to code was a sea of parentheses, recursion, and the stubborn absence of `for` loops. Programming 1 taught me to think about *what* I wanted to compute. Programming 2 was about to teach me *how* the computer actually does it.

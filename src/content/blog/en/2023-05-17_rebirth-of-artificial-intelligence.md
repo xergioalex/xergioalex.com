@@ -5,6 +5,7 @@ pubDate: "2023-05-17"
 heroImage: "/images/blog/shared/ai-rebirth-hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
+keywords: ["AI rebirth ChatGPT revolution", "GPT-4 generative AI explained", "ChatGPT AI winter end", "DailyBot AI features", "generative AI 2023 talk", "Pereira Tech Talks AI", "artificial intelligence revolution 2023"]
 ---
 
 **AI Rebirth** is about the awakening of artificial intelligence — and why we're at the start of something real. I didn't want to give a generic overview. I wanted to share what I was actually seeing: a revolution that had just woken up. Something I was living every day at DailyBot.

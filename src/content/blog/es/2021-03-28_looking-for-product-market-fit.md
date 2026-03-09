@@ -5,6 +5,7 @@ pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "dailybot", "entrepreneur"]
+keywords: ["cómo encontrar product market fit", "qué es product market fit", "señales de PMF en startups", "fracasar y aprender en startups", "DailyBot product market fit historia", "emprendimiento lecciones reales", "construir productos que funcionan"]
 ---
 
 Di una charla en una clase de emprendimiento en 2021 sobre encontrar Product Market Fit. No la teoría de un libro — mi experiencia real construyendo productos en [Rocka.co](https://rocka.co), fallando la mayoría del tiempo y eventualmente llegando a algo que funcionó.

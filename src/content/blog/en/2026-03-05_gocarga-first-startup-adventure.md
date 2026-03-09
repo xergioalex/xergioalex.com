@@ -5,6 +5,7 @@ pubDate: 2026-03-05
 heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
 heroLayout: "banner"
 tags: ["entrepreneur", "tech", "portfolio"]
+keywords: ["GoCarga startup Colombia freight", "Apps.co MinTIC startup program", "cargo transport platform Colombia", "Expocamello pitch angel investors", "Lean LaunchPad startup Cali", "first startup adventure university", "startup pitch skills storytelling"]
 ---
 
 I still remember standing at the Expocamello 2014 event at the Pereira Chamber of Commerce, pitch notes half-memorized, trying to project confidence in front of the Red Nacional de Ángeles Inversionistas. We were 1 of 5 finalists selected from over 200 projects. My heart was somewhere between my throat and my stomach.

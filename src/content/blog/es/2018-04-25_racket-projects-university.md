@@ -5,6 +5,7 @@ pubDate: "2018-04-25"
 heroImage: "/images/blog/posts/racket-projects-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
+keywords: ["aprender a programar con Racket", "programación funcional para principiantes", "DrScheme DrRacket universidad", "recursividad en programación funcional", "graficador de funciones matemáticas", "primer lenguaje de programación Scheme", "programación funcional vs imperativa"]
 ---
 
 Hay gente que aprende a programar imprimiendo "Hello World" en Python o arrastrando bloques en Scratch. Yo aprendí mirando fijamente un mar de paréntesis en un lenguaje del que jamás había escuchado hablar, preguntándome si el profesor nos estaba haciendo una broma elaborada a toda la clase.

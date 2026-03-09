@@ -7,6 +7,7 @@ series: "trading-journey"
 seriesOrder: 3
 heroLayout: "banner"
 tags: ["trading", "tech", "personal"]
+keywords: ["trading algorítmico desde cero", "de trading manual a automatizado", "MetaTrader 5 vs MetaTrader 4", "migrar scripts de MT4 a MT5", "Expert Advisors MetaTrader 5", "automatización en trading Forex", "cómo empezar con trading algorítmico"]
 ---
 
 Después de dedicar mucho tiempo al trading manual — leyendo estructura, siguiendo zonas con Market Profile y tomando decisiones de ejecución en tiempo real — me di cuenta de algo muy claro:

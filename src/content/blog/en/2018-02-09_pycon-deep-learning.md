@@ -5,6 +5,7 @@ pubDate: "2018-02-09"
 heroImage: "/images/blog/posts/pycon-deep-learning/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "ai", "python"]
+keywords: ["PyCon Colombia 2018 deep learning", "neural networks math explained", "deep learning applied mathematics", "linear algebra machine learning", "gradient descent explained", "deep learning Python PyCon", "computer vision neural networks"]
 ---
 
 PyCon Colombia 2018 was a very special experience for me. I gave the talk *Deep Learning: From Academia to Practice* in Medellín and it was one of those presentations where I could connect something I'm passionate about — applied mathematics — with an audience of Python developers.

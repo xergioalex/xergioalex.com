@@ -86,7 +86,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **Directories:** `src/content/blog/en/` and `src/content/blog/es/`
 
-**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `series`, `seriesOrder`
+**Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `keywords`, `series`, `seriesOrder`
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
@@ -194,6 +194,7 @@ pubDate: '2026-01-31'
 heroImage: '/images/blog/posts/post-title-here/hero.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'web-development', 'javascript']
+keywords: ['specific search phrase 1', 'long-tail keyword phrase 2', 'technology name tutorial', 'how to do X with Y', 'comparison A vs B']
 ---
 
 ## Introduction
@@ -205,7 +206,36 @@ Content starts here...
 
 See [Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md) for post visibility rules.
 
-### Step 4: Create Translated Version (Other Language)
+### Step 4: Generate SEO Keywords (Both Languages)
+
+**MANDATORY:** Every blog post must have 5-8 SEO keywords per language version.
+
+**Keywords ≠ Tags.** Tags are categorical labels from a controlled taxonomy (`tech`, `web-development`). Keywords are specific search phrases users type into search engines (`replace ESLint with Biome`, `Biome linter setup`).
+
+**Keyword generation rules:**
+
+1. **5-8 keywords per post** — mix of short-tail (1-2 words) and long-tail (3-6 words)
+2. **Think like a searcher** — what would someone type into Google to find this content?
+3. **Include the main technology/topic** in at least 2-3 keywords
+4. **No generic keywords** — every keyword must be specific to the post content
+5. **Keywords complement tags** — don't repeat tag names as keywords
+
+**English keywords:** Natural English search phrases.
+
+**Spanish keywords:** Adapted to Spanish search behavior (NOT literal translations):
+- Spanish users search with questions: "qué es...", "cómo usar...", "para qué sirve..."
+- Technical terms often stay in English: Docker, Webpack, API, GraphQL
+- MUST have proper diacritical marks (ñ, á, é, í, ó, ú) — never `analisis`, `codigo`, `introduccion`
+
+**Placement in frontmatter:** `keywords` array goes AFTER `tags` and BEFORE `series` (if present):
+
+```yaml
+tags: ['tech', 'web-development']
+keywords: ['keyword phrase 1', 'keyword phrase 2', 'keyword phrase 3', 'keyword phrase 4', 'keyword phrase 5']
+series: "optional-series"
+```
+
+### Step 5: Create Translated Version (Other Language)
 
 **MANDATORY:** Create the translated version in the other language directory.
 
@@ -215,15 +245,16 @@ See [Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md) f
 
 **Translation rules:**
 - Translate IDEAS, not words — should read as if originally written in that language
-- Translate: `title`, `description`, all body content, alt text
+- Translate: `title`, `description`, `keywords`, all body content, alt text
 - Preserve exactly: `pubDate`, `updatedDate`, `heroImage`, `heroLayout`, `tags`, code blocks, URLs
 - Adapt idioms and expressions to sound natural
+- **Keywords:** Generate language-specific keywords (adapted, not translated) — see Step 4
 - Use informal-professional register
 - When translating to Spanish, prefer Colombian Spanish phrasing
 - Do NOT translate code blocks, CLI commands, technical terms, product names
 - **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página), etc. Verify before saving.
 
-### Step 5: Validate
+### Step 6: Validate
 
 ```bash
 npm run build
@@ -233,6 +264,8 @@ Verify:
 - Both files exist with matching frontmatter structure
 - All image paths reference existing files
 - Tags reference existing tag definitions
+- Both language versions have `keywords` array with 5-8 entries
+- Spanish keywords have correct diacritical marks
 - `/add-blog-post` workflow was used for creation (no manual bypass)
 
 ## Output Format
@@ -308,6 +341,8 @@ content: add blog post "{title}" (en + es)
 - [ ] Voice is personal-professional, not marketing copy (topic mode)
 - [ ] Spanish reads naturally (not machine-translated)
 - [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
+- [ ] Both EN and ES versions have `keywords` array (5-8 natural search phrases per post)
+- [ ] ES keywords adapted to Spanish search behavior (not literal translations)
 - [ ] No placeholder content (`[AUTHOR:`, `[TODO:`, `[TBD]`, `[FIXME]` — zero in final post)
 - [ ] All referenced images exist
 - [ ] `npm run build` passes
@@ -388,6 +423,6 @@ $TOPIC: AI
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
+| 3.0.0   | 2026-03-08 | SEO keywords: added Step 4 for keyword generation (5-8 per post, both EN/ES). Keywords are search phrases distinct from tags. Updated frontmatter template, Definition of Done, and validation. |
 | 2.9.0   | 2026-03-03 | Scheduled posts: documented that future `$PUB_DATE` creates a scheduled post (hidden in prod, amber badge in dev). Updated lifecycle references. |
 | 2.8.0   | 2026-03-03 | No placeholder content: never leave [AUTHOR:], [TODO:], [TBD], [FIXME] in published posts. Added to Safety Checks and Definition of Done. |
-| 2.7.0   | 2026-03-03 | Resources section: do NOT list related articles or previous chapters when post belongs to a series. Added Guardrails subsection. |

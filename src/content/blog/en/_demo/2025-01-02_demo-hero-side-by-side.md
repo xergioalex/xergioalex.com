@@ -5,6 +5,7 @@ pubDate: '2025-01-02'
 heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
+keywords: ['Kubernetes tutorial', 'container orchestration basics', 'Kubernetes vs Docker', 'K8s for beginners', 'deploy containers with Kubernetes']
 ---
 
 As containerized applications grow in complexity, managing individual containers becomes impractical. Kubernetes (K8s) emerged as the industry standard for automating the deployment, scaling, and management of containerized applications.

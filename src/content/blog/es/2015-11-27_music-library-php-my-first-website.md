@@ -5,6 +5,7 @@ pubDate: "2015-11-27"
 heroImage: "/images/blog/posts/music-library-php-my-first-website/home.gif"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "university"]
+keywords: ["primer proyecto web en PHP", "desarrollo web con PHP y SQLite", "XAMPP para principiantes", "biblioteca musical PHP HTML CSS", "aprender programación web desde cero", "proyecto universitario bases de datos", "introducción al desarrollo web"]
 ---
 
 Llevo casi 10 años construyendo para la web, pero no empecé así. Hace poco estaba desempolvando archivos de la universidad y encontré la primera página web que desarrollé. Era el proyecto final del curso de bases de datos — y fue ahí donde tuve mi primer encuentro real con el desarrollo web.

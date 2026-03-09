@@ -5,6 +5,7 @@ pubDate: '2018-07-05'
 heroImage: '/images/blog/posts/introduction-to-golang/hero.jpg'
 heroLayout: 'banner'
 tags: ["talks", "tech"]
+keywords: ["introducción a Go", "qué es Go Golang", "concurrencia con Go", "Go vs otros lenguajes de programación", "Go para desarrolladores backend", "simplicidad del lenguaje Go", "Pereira Tech Talks Golang"]
 ---
 
 Go es uno de esos lenguajes que no se interpone en tu camino. Cuando preparé esta charla para Pereira Tech Talks, lo que quería transmitir no era solo la sintaxis o las características — era por qué Go se siente diferente. Es un lenguaje que confía en que podés escribir código claro sin abrumarte con opciones.

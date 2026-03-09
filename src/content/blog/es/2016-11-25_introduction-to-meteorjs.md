@@ -5,6 +5,7 @@ pubDate: '2016-11-25'
 heroImage: '/images/blog/posts/introduction-to-meteorjs/hero.png'
 heroLayout: 'banner'
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["introducción a Meteor.js", "qué es Meteor.js", "framework JavaScript full-stack", "datos reactivos en tiempo real", "aplicación web con Meteor", "publicaciones y suscripciones Meteor", "charla PereiraJS Meteor"]
 ---
 
 Esta fue mi **primera charla** en una comunidad tech. La di en [Pereira JS](https://www.pereiratechtalks.org/edicion-especial-desde-la-utp/) durante una edición especial en la Universidad Tecnológica de Pereira (UTP), junto con la charla de Manuel Pineda sobre P2P y WebTorrent. Fue una gran experiencia — y el tema que elegí fue Meteor.js.

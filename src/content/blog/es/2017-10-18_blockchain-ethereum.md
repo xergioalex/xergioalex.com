@@ -5,6 +5,7 @@ pubDate: '2017-10-18'
 heroImage: '/images/blog/posts/blockchain-ethereum/pereira-js-meetup-hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "blockchain"]
+keywords: ["introducción a Ethereum", "qué son los smart contracts", "Solidity desde cero", "blockchain vs Ethereum diferencias", "cómo funcionan los smart contracts", "demo Solidity en vivo", "Ethereum para desarrolladores"]
 ---
 
 Las criptomonedas estaban en todas partes en 2017. Bitcoin alcanzó máximos históricos, Ethereum estaba en los titulares, y todo el mundo hablaba de blockchain. Pero cuando le preguntaba a la gente *cómo* funcionaba, recibía respuestas vagas. "Es descentralizado." "Es un ledger." "Es el futuro." Cierto, pero vago.

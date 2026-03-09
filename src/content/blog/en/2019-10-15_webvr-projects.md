@@ -5,6 +5,7 @@ pubDate: "2019-10-15"
 heroImage: "/images/blog/posts/webvr-projects/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "javascript", "web-development"]
+keywords: ["WebVR A-Frame projects portfolio", "VR maze game web browser", "360 photo gallery A-Frame", "A-Frame VR HTML JavaScript", "browser VR without headset", "WebVR Google Cardboard demos", "A-Frame interactive VR web"]
 ---
 
 I remember the exact moment it clicked. I was staring at a simple HTML file — not a Unity project, not a C++ engine, not an Unreal Blueprint — just an HTML file. I added a `<script>` tag, wrote a few custom elements, opened it in a browser, and suddenly I was inside a 3D room. I tilted my phone, slipped it into a $7 Cardboard viewer, and the room moved with me. Virtual reality. In a browser. From an HTML file.

@@ -5,6 +5,7 @@ pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "talks", "python", "database", "university"]
+keywords: ["introducción a Apache Spark", "qué es Apache Spark", "Big Data con Apache Spark", "RDDs y DataFrames en Spark", "clúster Docker con Apache Spark", "streaming en tiempo real con Spark", "Apache Spark con Python"]
 ---
 
 Para cuando llegué al curso de Big Data en mi maestría, ya tenía una base sólida en múltiples paradigmas de programación. Cada uno me dio una lente diferente para pensar sobre la computación.

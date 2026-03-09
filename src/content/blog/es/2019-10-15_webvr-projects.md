@@ -5,6 +5,7 @@ pubDate: "2019-10-15"
 heroImage: "/images/blog/posts/webvr-projects/hero.png"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "javascript", "web-development"]
+keywords: ["proyectos WebVR con A-Frame", "galería 360 grados en el navegador", "laberinto en realidad virtual con HTML", "A-Frame demos prácticos", "experiencias VR con JavaScript", "fotos 360 VR web", "portfolio WebVR A-Frame"]
 ---
 
 Recuerdo el momento exacto en que hizo clic. Estaba mirando un archivo HTML simple — no un proyecto de Unity, no un engine en C++, no un Blueprint de Unreal — solo un archivo HTML. Agregué un `<script>`, escribí unos cuantos elementos personalizados, lo abrí en el navegador, y de repente estaba dentro de una habitación 3D. Incliné el teléfono, lo metí en un visor Cardboard de $7, y la habitación se movía conmigo. Realidad virtual. En un navegador. Desde un archivo HTML.

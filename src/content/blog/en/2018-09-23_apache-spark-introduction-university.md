@@ -5,6 +5,7 @@ pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "talks", "python", "database", "university"]
+keywords: ["Apache Spark introduction Python", "Spark RDDs DataFrames tutorial", "Docker Spark cluster setup", "big data processing Spark", "PySpark university project", "distributed computing Spark", "Spark streaming real-time processing"]
 ---
 
 By the time I reached the Big Data course in my master's program, I'd built a solid foundation across multiple programming paradigms. Each one gave me a different lens for thinking about computation.

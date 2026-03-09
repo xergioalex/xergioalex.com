@@ -5,6 +5,7 @@ pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
+keywords: ["free web analytics without cookies", "Umami analytics Cloudflare", "privacy first analytics Lighthouse 100", "web analytics without Google Analytics", "Cloudflare Web Analytics Core Web Vitals", "cookieless analytics static site", "Google Search Console free analytics stack"]
 series: "building-xergioalex"
 seriesOrder: 3
 ---

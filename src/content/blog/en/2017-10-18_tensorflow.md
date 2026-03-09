@@ -5,6 +5,7 @@ pubDate: "2017-10-18"
 heroImage: "/images/blog/posts/tensorflow/pereira-tech-talks-first-meetup.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "ai", "python"]
+keywords: ["TensorFlow introduction talk", "machine learning Python basics", "neural network explained beginners", "TensorFlow Pereira Tech Talks", "Google TensorFlow tutorial", "deep learning Python introduction", "Pereira Tech Talks first meetup"]
 ---
 
 October 2017 was a milestone for Pereira's tech community. After months of planning, we launched the **first official Pereira Tech Talks meetup**. The room was packed — developers, students, entrepreneurs, all curious about the future of technology. Two talks that night: Manuel Pineda on AirFlow (workflow orchestration for data pipelines), and me on TensorFlow.

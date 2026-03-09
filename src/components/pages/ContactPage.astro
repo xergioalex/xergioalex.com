@@ -54,7 +54,14 @@ const breadcrumbSchema = {
 };
 ---
 
-<MainLayout lang={lang} title={t.contactPage.title} description={t.contactPage.description}>
+<MainLayout
+  lang={lang}
+  title={t.contactPage.title}
+  description={t.contactPage.description}
+  keywords={lang === 'en'
+    ? ['contact XergioAleX', 'hire software engineer', 'tech speaker inquiry', 'collaboration request', 'Sergio Florez contact', 'startup consulting']
+    : ['contactar XergioAleX', 'contratar ingeniero de software', 'solicitud conferencista tecnología', 'solicitud de colaboración', 'contacto Sergio Florez', 'consultoría startup']}
+>
   <Fragment slot="head">
     <JsonLd data={contactPageSchema} />
     <JsonLd data={breadcrumbSchema} />

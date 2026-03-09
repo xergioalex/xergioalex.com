@@ -7,6 +7,7 @@ series: "trading-journey"
 seriesOrder: 3
 heroLayout: "banner"
 tags: ["trading", "tech", "personal"]
+keywords: ["algorithmic trading MQL5", "MetaTrader 4 to MetaTrader 5 migration", "Expert Advisor trading robot", "MQL5 automated trading", "trading automation discipline", "Profit Shield trading tool", "position sizing calculator MQL5"]
 ---
 
 After spending a lot of time doing manual trading — reading structure, tracking Market Profile zones, and making execution decisions in real time — I realized something obvious:

@@ -5,6 +5,7 @@ pubDate: "2026-03-04T14:00:00"
 heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
+keywords: ["track AI bot crawlers analytics", "GPTBot ClaudeBot tracking middleware", "Cloudflare Pages functions middleware", "AI crawler analytics Umami", "server-side bot detection edge", "track AI crawlers no client JS", "Cloudflare edge middleware TypeScript"]
 series: "building-xergioalex"
 seriesOrder: 7
 ---

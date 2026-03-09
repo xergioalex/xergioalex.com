@@ -4,6 +4,7 @@ description: 'Exploring principles and practices for writing maintainable, reada
 pubDate: '2025-01-04'
 heroLayout: 'none'
 tags: ['tech', 'demo']
+keywords: ['clean code principles', 'writing readable code', 'code maintainability tips', 'software craftsmanship', 'Robert Martin clean code']
 ---
 
 Writing code is easy. Writing code that another developer (or your future self) can understand six months later — that's the real challenge. Clean code isn't about following rigid rules; it's about empathy for the reader.

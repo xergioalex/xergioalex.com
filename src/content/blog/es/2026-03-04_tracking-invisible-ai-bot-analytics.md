@@ -5,6 +5,7 @@ pubDate: "2026-03-04T14:00:00"
 heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
+keywords: ["rastrear bots de IA en mi sitio web", "Cloudflare Pages middleware para analíticas", "crawlers de IA GPTBot ChatGPT-User", "analíticas sin JavaScript del lado del cliente", "detectar bots de IA en el servidor", "middleware en Cloudflare Edge Functions", "qué bots de IA visitan mi sitio"]
 series: "building-xergioalex"
 seriesOrder: 7
 ---

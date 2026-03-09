@@ -5,6 +5,7 @@ pubDate: '2025-01-01'
 heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
+keywords: ['Docker containers tutorial', 'getting started with Docker', 'Docker for developers', 'container vs virtual machine', 'Docker beginner guide']
 ---
 
 Docker has fundamentally changed how developers build, ship, and run applications. By packaging software into standardized units called containers, Docker ensures that your application works seamlessly across different environments — from your local machine to production servers.

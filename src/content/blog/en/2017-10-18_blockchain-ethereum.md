@@ -5,6 +5,7 @@ pubDate: "2017-10-18"
 heroImage: "/images/blog/posts/blockchain-ethereum/pereira-js-meetup-hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
+keywords: ["Ethereum smart contracts introduction", "blockchain vs Bitcoin", "Solidity smart contract demo", "how Ethereum works", "blockchain explained developers", "Bitcoin blockchain comparison", "decentralized applications Ethereum"]
 ---
 
 Cryptocurrencies were everywhere in 2017. Bitcoin hit all-time highs, Ethereum was making headlines, and everyone was talking about blockchain. But when I asked people *how* it worked, I got hand-waving. "It's decentralized." "It's a ledger." "It's the future." True, but vague.

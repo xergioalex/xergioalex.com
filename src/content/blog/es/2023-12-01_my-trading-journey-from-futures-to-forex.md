@@ -7,6 +7,7 @@ series: "trading-journey"
 seriesOrder: 1
 heroLayout: "banner"
 tags: ["trading", "personal"]
+keywords: ["comenzar en trading desde cero", "trading de futuros para principiantes", "mi camino en el trading Forex", "mentoría en trading Forex", "disciplina y psicología en trading", "de futuros a Forex experiencia personal", "cómo aprendí a operar en Forex"]
 ---
 
 Entré al trading como entra mucha gente: por curiosidad y por conversaciones con amigos.

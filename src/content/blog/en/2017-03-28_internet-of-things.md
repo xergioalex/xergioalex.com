@@ -5,6 +5,7 @@ pubDate: "2017-03-28"
 heroImage: "/images/blog/posts/internet-of-things/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "iot"]
+keywords: ["IoT introduction JavaScript", "Arduino Johnny-five tutorial", "Internet of Things JavaScript", "Node.js robotics programming", "Johnny-five Arduino framework", "JavaScript IoT development", "hardware programming JavaScript"]
 ---
 
 Hardware has always fascinated me. As a software developer who spends most of my time in the cloud, there's something deeply satisfying about making physical things move, blink, and respond to the world. So when [Alejandro Rendon](https://www.linkedin.com/in/alejorendon/) and I started planning a talk for [Pereira Tech Talks](https://www.pereiratechtalks.org/introduccion-al-internet-de-las-cosas-y-clustering-con-nodejs/), I knew I wanted to dive into the Internet of Things — the technology that bridges software and the physical world.

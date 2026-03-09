@@ -5,6 +5,7 @@ pubDate: "2019-09-15"
 heroImage: "/images/blog/posts/webvr-aframe-uniremington/hero.png"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["WebVR A-Frame Universidad Remington", "VR AR mixed reality differences", "A-Frame entity component system", "WebXR browser virtual reality", "Google Cardboard VR web", "A-Frame JavaScript 3D scenes", "virtual reality accessible web"]
 ---
 
 Virtual reality felt like a luxury when I started exploring it. High-end headsets like the HTC Vive or Oculus Rift cost hundreds of dollars. The barrier to entry was high — expensive hardware, platform-specific development, complex 3D engines. Then I discovered **WebVR** and **A-Frame**, and everything changed.

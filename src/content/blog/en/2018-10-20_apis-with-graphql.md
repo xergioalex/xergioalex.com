@@ -5,6 +5,7 @@ pubDate: "2018-10-20"
 heroImage: "/images/blog/posts/apis-with-graphql/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech", "web-development", "devops"]
+keywords: ["GraphQL API tutorial", "GraphQL vs REST comparison", "GraphQL schemas queries mutations", "GraphQL resolvers explained", "single endpoint API GraphQL", "client-defined queries GraphQL", "GraphQL strong typing benefits"]
 ---
 
 I'll be honest: the first time I used GraphQL, I thought it was over-engineered. "Why do I need a whole query language when REST works fine?" Then I built a mobile app that made 12 different API calls just to render one screen. That's when GraphQL clicked.

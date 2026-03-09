@@ -5,6 +5,7 @@ pubDate: '2019-09-15'
 heroImage: '/images/blog/posts/webvr-aframe-uniremington/hero.png'
 heroLayout: 'side-by-side'
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["WebVR con A-Frame charla universitaria", "realidad virtual accesible con el navegador", "VR con smartphone y Google Cardboard", "A-Frame HTML para realidad virtual", "WebVR para estudiantes", "realidad virtual sin hardware costoso", "comunidades tech en Pereira"]
 ---
 
 La realidad virtual se sentía como un lujo cuando empecé a explorarla. Headsets de alta gama como el HTC Vive u Oculus Rift costaban cientos de dólares. La barrera de entrada era alta — hardware costoso, desarrollo específico de plataforma, motores 3D complejos. Luego descubrí **WebVR** y **A-Frame**, y todo cambió.

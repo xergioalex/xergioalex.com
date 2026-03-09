@@ -5,6 +5,7 @@ pubDate: "2019-03-03"
 heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
 heroLayout: "banner"
 tags: ["talks", "tech", "devops", "iot"]
+keywords: ["introducción a serverless", "qué es serverless computing", "arquitectura serverless para IoT", "AWS Lambda con IoT", "funciones serverless para dispositivos conectados", "serverless sin administrar servidores", "IoT con arquitectura serverless"]
 ---
 
 Recuerdo la primera vez que desplegué una función Lambda. Se sintió como magia — escribes una función, la subes, y de repente está corriendo en respuesta a eventos sin que te preocupes por servidores, escalado o infraestructura. Ese cambio de mentalidad es lo que quise compartir en esta charla sobre arquitecturas serverless con enfoque en IoT.

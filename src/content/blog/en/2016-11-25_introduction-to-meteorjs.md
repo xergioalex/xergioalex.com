@@ -5,6 +5,7 @@ pubDate: "2016-11-25"
 heroImage: "/images/blog/posts/introduction-to-meteorjs/hero.png"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
+keywords: ["Meteor.js introduction", "first tech talk Meteor", "PereiraJS meetup", "reactive JavaScript framework", "Meteor.js real-time apps", "building chat app Meteor", "Node.js full-stack framework"]
 ---
 
 This was my **first talk ever** in a tech community. I gave it at [Pereira JS](https://www.pereiratechtalks.org/edicion-especial-desde-la-utp/) during a special edition held at the Universidad Tecnológica de Pereira (UTP), alongside Manuel Pineda's talk on P2P and WebTorrent. It was a great experience — and the topic I chose was Meteor.js.

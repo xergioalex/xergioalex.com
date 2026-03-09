@@ -5,6 +5,7 @@ pubDate: '2018-02-09'
 heroImage: '/images/blog/posts/pycon-deep-learning/hero.jpg'
 heroLayout: 'banner'
 tags: ["talks", "tech", "ai", "python"]
+keywords: ["deep learning desde la academia a la práctica", "redes neuronales con Python", "álgebra lineal para machine learning", "descenso del gradiente explicado", "visión por computadora con Python", "PyCon Colombia 2018", "matemáticas para inteligencia artificial"]
 ---
 
 PyCon Colombia 2018 fue una experiencia muy especial para mí. Di la charla *Deep Learning: De la Academia a la Práctica* en Medellín y fue una de esas presentaciones donde pude conectar algo que me apasiona — la matemática aplicada — con una audiencia de desarrolladores Python.
