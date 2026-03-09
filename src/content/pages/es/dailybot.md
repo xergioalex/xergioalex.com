@@ -4,6 +4,12 @@ description: "CTO y Cofundador en DailyBot, una compañía de Y Combinator (S21)
 lastUpdated: 2026-03-09
 ---
 
+## Archivo de Artículos
+
+El archivo de artículos sobre DailyBot en esta página se carga progresivamente a medida que el usuario hace scroll — los primeros posts aparecen de inmediato al cargar la página y el contenido adicional se obtiene bajo demanda para una experiencia de navegación rápida y fluida.
+
+---
+
 ## Construyendo el Futuro de la Colaboración en Equipos
 
 [DailyBot](https://dailybot.com) es una plataforma que permite a equipos humanos y agentes de IA trabajar juntos de manera fluida. Proporciona transparencia unificada para equipos híbridos en Slack, Microsoft Teams y Google Chat. Incluye stand-ups asíncronos, reconocimiento, agentes de IA, flujos de trabajo y seguimiento del estado de ánimo.
