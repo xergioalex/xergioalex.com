@@ -1,7 +1,7 @@
 ---
 title: "Optimizing for Answers, Not Just Rankings: What I Built for the Age of AI Search"
 description: "SEO got me ranked. AEO got me cited. A three-part deep dive into building for the age of AI search — from theory to implementation to measurement."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-08T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "markdown for AI agents endpoints", "track AI bot traffic server-side analytics"]

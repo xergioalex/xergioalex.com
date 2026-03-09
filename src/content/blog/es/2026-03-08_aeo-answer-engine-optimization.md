@@ -1,7 +1,7 @@
 ---
 title: "Optimizar para Respuestas, No Solo para Rankings: Lo Que Construí para la Era de la Búsqueda con IA"
 description: "El SEO me dio rankings. El AEO me dio citas. Una inmersión en tres partes sobre construir para la era de la búsqueda con IA — desde la teoría hasta la implementación y la medición."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-08T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["optimización para motores de respuesta AEO", "optimizar sitio web para búsqueda con IA", "llms.txt datos estructurados AEO", "cómo los motores de búsqueda IA citan fuentes", "AEO vs SEO guía práctica", "datos estructurados JSON-LD visibilidad IA", "markdown para agentes IA endpoints", "rastrear tráfico bots IA analítica servidor"]

@@ -1,7 +1,7 @@
 ---
 title: "The Scorecard: Auditing AEO, Reading the Data, and What's Next"
 description: "The hardest part of AEO is knowing if it works. Here's how I track AI bot traffic, audit AEO health, and what the future of AI search looks like."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-11T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["AEO audit methodology checklist", "track AI bot traffic analytics", "Bing AI Performance report", "measure AI search citations", "AI referral traffic growing statistics"]

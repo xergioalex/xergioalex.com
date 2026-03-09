@@ -1,7 +1,7 @@
 ---
 title: "Las Herramientas: llms.txt, Datos Estructurados y Markdown para Agentes"
 description: "Permitir los crawlers es el mínimo. Esto es todo lo que construí para hacer un sitio estático legible por máquinas — desde esquemas JSON-LD hasta endpoints nativos de Markdown."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-10T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["implementación especificación llms.txt", "datos estructurados JSON-LD AEO", "markdown para agentes endpoints", "negociación de contenido Accept text/markdown", "datos estructurados E-E-A-T esquema"]

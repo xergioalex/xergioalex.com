@@ -1,7 +1,7 @@
 ---
 title: "The Toolkit: llms.txt, Structured Data, and Markdown for Agents"
 description: "Allowing crawlers in is the bare minimum. Here's everything I built to make a static site machine-readable — from JSON-LD schemas to native Markdown endpoints."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-10T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["llms.txt specification implementation", "structured data JSON-LD AEO", "markdown for agents endpoints", "content negotiation Accept text/markdown", "E-E-A-T structured data schema"]

@@ -1,7 +1,7 @@
 ---
 title: "El Marcador: Auditar AEO, Leer los Datos y lo Que Viene"
 description: "Lo más difícil del AEO es saber si funciona. Así es como rastreo el tráfico de bots IA, audito la salud AEO, y lo que pinta el futuro de la búsqueda con IA."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-11T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
 keywords: ["auditoría AEO metodología checklist", "rastrear tráfico bots IA analíticas", "informe rendimiento IA Bing", "medir citas búsqueda IA", "estadísticas crecimiento tráfico referido IA"]
