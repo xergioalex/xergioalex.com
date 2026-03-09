@@ -89,9 +89,9 @@ Create a definitive, highly shareable blog post about Answer Engine Optimization
       See: [3.task_write_english_post.md](./3.task_write_english_post.md)
 - [x] Task 4: Write Spanish Blog Post
       See: [4.task_write_spanish_post.md](./4.task_write_spanish_post.md)
-- [ ] Task 5: Hero Image & Visual Assets
+- [x] Task 5: Hero Image & Visual Assets (set to "none" — pending user-provided image)
       See: [5.task_hero_image.md](./5.task_hero_image.md)
-- [ ] Task 6: Final Review & Comprehensive Validation
+- [x] Task 6: Final Review & Comprehensive Validation
       See: [6.task_final_review.md](./6.task_final_review.md)
 - [ ] Task 7: Skills & Agents Discovery
       See: [7.task_skills_agents_discovery.md](./7.task_skills_agents_discovery.md)
@@ -100,7 +100,7 @@ Create a definitive, highly shareable blog post about Answer Engine Optimization
 
 > **Mandatory final tasks:** Every plan includes Skills & Agents Discovery (second-to-last) and Executive Report (last).
 
-**Progress: 4/8 tasks completed**
+**Progress: 6/8 tasks completed**
 
 ## 5. Execution Rules for the Agent
 
