@@ -198,6 +198,62 @@ AI crawlers (GPTBot, ClaudeBot, etc.) don't execute JavaScript, making them invi
 
 **Maintenance:** When new AI crawlers emerge, add them to both `robots.txt` and the `AI_BOT_PATTERNS` array in `functions/_middleware.ts`.
 
+### Tier 5: Markdown Request Analytics (Server-Side)
+
+Tracks when AI agents or users request Markdown content — either via content negotiation (`Accept: text/markdown` header) or by visiting `.md` URLs directly. This data reveals how much agent traffic uses the Markdown for Agents endpoints.
+
+#### How it works
+
+1. **Content negotiation requests:** When `tryServeMarkdown()` successfully serves a `.md` response, a `markdown_request` event fires with `source: "content_negotiation"`
+2. **Direct `.md` URL requests:** When a request targets a `.md` path (e.g., `/about.md`), a `markdown_request` event fires with `source: "direct_url"`
+
+Both flows attempt to identify the requester using the same bot detection logic as Tier 4 (known AI bots first, then unknown bot extraction, then `"unknown"` fallback).
+
+#### Event payload
+
+```json
+{
+  "type": "event",
+  "payload": {
+    "website": "<UMAMI_WEBSITE_ID>",
+    "url": "/about",
+    "hostname": "xergioalex.com",
+    "language": "en-US",
+    "name": "markdown_request",
+    "data": {
+      "bot": "ClaudeBot",
+      "path": "/about",
+      "source": "content_negotiation",
+      "user_agent": "ClaudeBot/1.0 ..."
+    }
+  }
+}
+```
+
+| Field | Values | Purpose |
+|-------|--------|---------|
+| `source` | `content_negotiation` or `direct_url` | How the Markdown was requested |
+| `bot` | Bot name or `"unknown"` | Who is requesting |
+| `path` | URL pathname | Which page/post was requested |
+| `user_agent` | Truncated UA (200 chars) | Full identification for analysis |
+
+#### What to look for in Umami
+
+- **Total markdown requests over time** — is agent consumption growing?
+- **Content negotiation vs direct URL** — are agents using `Accept: text/markdown` or bookmarking `.md` URLs?
+- **Which bots request markdown** — ClaudeBot, GPTBot, PerplexityBot, or unknown agents?
+- **Most-requested pages in markdown** — which content do agents consume most?
+
+#### How to verify
+
+1. **Umami dashboard:** Events tab → filter by `markdown_request`
+2. **Real-time logs:** Cloudflare Functions logs → look for `[Markdown content_negotiation]` or `[Markdown direct_url]`
+3. **Local testing:** `curl -H "Accept: text/markdown" http://localhost:8788/about` (requires `npx wrangler pages dev dist/`)
+
+#### Performance impact
+
+**Zero for human visitors.** Content negotiation check is a single `string.includes()` on the Accept header — short-circuits immediately for normal HTML requests. Direct URL tracking only fires for `.md` paths. Analytics is fire-and-forget via `context.waitUntil()`.
+
 ## Custom Event Tracking
 
 Umami custom events are used to track specific user interactions beyond page views. Events are implemented using two approaches depending on the component type.
@@ -250,6 +306,7 @@ Umami custom events are used to track specific user interactions beyond page vie
 | `scroll_to_timeline` | Scroll-to-timeline button | — | ScrollToTimeline.svelte |
 | `timeline_click` | Timeline card title click | `{ page, slug }` | PortfolioTimeline, DailyBotTimeline, EntrepreneurTimeline, TechTalksTimeline, TradingTimeline |
 | `ai_bot_visit` | AI crawler page visit (server-side) | `{ bot, path, method }` | `functions/_middleware.ts` (edge middleware) |
+| `markdown_request` | Markdown endpoint request (server-side) | `{ bot, path, source, user_agent }` | `functions/_middleware.ts` (edge middleware) |
 
 ### How to Verify Events
 

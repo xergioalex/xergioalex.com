@@ -153,6 +153,19 @@ curl https://xergioalex.com/about.md
 - `Vary: Accept` — tells caches that response varies by Accept header
 - `X-Content-Negotiation: markdown` — signals the response was content-negotiated
 
+## Analytics
+
+Markdown endpoint usage is tracked server-side via Umami `markdown_request` events. Two sources are distinguished:
+
+| Source | Trigger | Example |
+|--------|---------|---------|
+| `content_negotiation` | Agent sends `Accept: text/markdown` header | `curl -H "Accept: text/markdown" /about` |
+| `direct_url` | Agent/user navigates to a `.md` URL | `curl /about.md` |
+
+Each event captures: bot name (or `"unknown"`), requested path, source, and User-Agent. See **[Analytics Guide](../ANALYTICS.md)** (Tier 5) for payload details and Umami dashboard queries.
+
+**Performance impact:** Zero for HTML visitors — tracking only fires on markdown requests.
+
 ## Maintenance
 
 - **No ongoing maintenance for blog posts** — endpoints auto-generated from `post.body` (always in sync)

@@ -71,6 +71,8 @@ Record results:
 - [ ] Verify content negotiation middleware: `grep "text/markdown" functions/_middleware.ts`
 - [ ] **Sync check:** Compare page `.md` files against HTML content — no major sections missing
 - [ ] **Bilingual sync:** EN and ES `.md` files cover the same sections (`ls src/content/pages/en/ src/content/pages/es/`)
+- [ ] **Analytics:** Verify `markdown_request` events appear in Umami (Events tab → filter `markdown_request`)
+- [ ] **Analytics sources:** Check both `content_negotiation` and `direct_url` sources are being captured
 - [ ] Full docs: [Markdown for Agents](MARKDOWN_FOR_AGENTS.md)
 
 ## 9. Quick Local Validation
