@@ -10,8 +10,15 @@
 - Key data: 48% US query AIO reach, 83% zero-click for AIO, 58% CTR reduction, 900M ChatGPT users, 37% active AEO adoption, 2.8x schema citation boost
 - Output: `analysis_results/aeo_research.md`
 
+### Task 2: Content Outline & Story Arc Design ✅
+- 7 major sections designed with dual-arc weaving (educational + personal)
+- Title: "Optimizing for Answers, Not Just Rankings: What I Built for the Age of AI Search"
+- 4 code snippets mapped to real codebase files
+- ~4,100 word target (within range)
+- AEO framed as evolution of SEO → AEO → AAO in the age of agents
+- Output: `analysis_results/blog_outline.md`
+
 ## Key Decisions
-<!-- Running list of significant decisions -->
 
 ## Important Values & Paths
 <!-- Running list of key values established during execution -->
