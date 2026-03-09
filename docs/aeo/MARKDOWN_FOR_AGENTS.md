@@ -79,6 +79,7 @@ Tags: tag1, tag2
 
 | File | Purpose |
 |------|---------|
+| `functions/_middleware.ts` | Content negotiation (Accept: text/markdown) |
 | `src/lib/markdown-for-agents.ts` | Serialization helpers |
 | `src/pages/blog/[slug].md.ts` | EN blog post endpoint |
 | `src/pages/es/blog/[slug].md.ts` | ES blog post endpoint |
@@ -111,17 +112,46 @@ Tags: tag1, tag2
 
 **Zero.** The `.md` endpoints are separate static files generated at build time. They do not add any JavaScript, runtime processing, or SSR overhead. HTML pages and their PageSpeed/Lighthouse scores are completely unaffected.
 
-## Future: Cloudflare Edge Content Negotiation
+## Content Negotiation via `Accept: text/markdown`
 
-The architecture supports adding Cloudflare Workers/Rules to detect `Accept: text/markdown` and rewrite to `.md` endpoints:
+The Cloudflare Pages middleware (`functions/_middleware.ts`) supports automatic content negotiation. When a request includes `Accept: text/markdown`, the middleware serves the `.md` version of the page instead of HTML — no URL change needed.
 
+**How it works:**
+1. Middleware checks the `Accept` header for `text/markdown`
+2. Resolves the `.md` asset path (e.g., `/about` → `/about.md`)
+3. Fetches the static `.md` file via `context.env.ASSETS.fetch()`
+4. Returns it with `Content-Type: text/markdown; charset=utf-8` and `Vary: Accept`
+
+**Path resolution:**
+| Request Path | Resolved `.md` Path |
+|---|---|
+| `/` | `/index.md` |
+| `/about` | `/about.md` |
+| `/about/` | `/about.md` |
+| `/blog/my-post` | `/blog/my-post.md` |
+| `/es/about` | `/es/about.md` |
+
+**Excluded paths:** `/api/*`, `/internal/*`, `/_*`, and any path with a file extension (`.js`, `.css`, `.png`, etc.).
+
+**Fallback:** If no `.md` file exists for the requested path, the middleware falls back to serving HTML normally.
+
+**Testing with curl:**
+```bash
+# Get Markdown
+curl -H "Accept: text/markdown" https://xergioalex.com/about
+
+# Get HTML (default)
+curl https://xergioalex.com/about
+
+# Direct .md URL also works
+curl https://xergioalex.com/about.md
 ```
-If Accept contains "text/markdown"
-AND path matches a blog/page route:
-  Rewrite to /{path}.md
-```
 
-This is decoupled from the Astro implementation and can be added independently without any code changes.
+**Response headers for content-negotiated Markdown:**
+- `Content-Type: text/markdown; charset=utf-8`
+- `Cache-Control: public, max-age=3600`
+- `Vary: Accept` — tells caches that response varies by Accept header
+- `X-Content-Negotiation: markdown` — signals the response was content-negotiated
 
 ## Maintenance
 
