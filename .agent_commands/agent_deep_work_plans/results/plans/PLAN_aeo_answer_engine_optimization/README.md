@@ -87,7 +87,7 @@ Create a definitive, highly shareable blog post about Answer Engine Optimization
       See: [2.task_content_outline.md](./2.task_content_outline.md)
 - [x] Task 3: Write English Blog Post
       See: [3.task_write_english_post.md](./3.task_write_english_post.md)
-- [ ] Task 4: Write Spanish Blog Post
+- [x] Task 4: Write Spanish Blog Post
       See: [4.task_write_spanish_post.md](./4.task_write_spanish_post.md)
 - [ ] Task 5: Hero Image & Visual Assets
       See: [5.task_hero_image.md](./5.task_hero_image.md)
@@ -100,7 +100,7 @@ Create a definitive, highly shareable blog post about Answer Engine Optimization
 
 > **Mandatory final tasks:** Every plan includes Skills & Agents Discovery (second-to-last) and Executive Report (last).
 
-**Progress: 3/8 tasks completed**
+**Progress: 4/8 tasks completed**
 
 ## 5. Execution Rules for the Agent
 
