@@ -160,6 +160,10 @@ The following safeguards ensure demo and scheduled content never leaks to produc
 7. **Demo tag:** Not generated in production builds (no demo posts reference it in visible content)
 8. **Direct URL builds:** In production, neither demo nor scheduled post routes are generated
 
+### Markdown Endpoint Visibility
+
+Blog post Markdown endpoints (`.md` files) follow the same visibility rules as HTML pages. The `isDemoPost()` and `isScheduledPost()` filters apply equally to `.md` endpoint generation — demo and scheduled posts are excluded from `.md` output in production.
+
 ### Verification
 
 After building for production (`npm run build`), verify:

@@ -50,4 +50,18 @@ const series = defineCollection({
   }),
 });
 
-export const collections = { blog, tags, series };
+const pages = defineCollection({
+  // Markdown source files for agent-friendly .md endpoints (non-blog pages)
+  loader: glob({
+    base: './src/content/pages',
+    pattern: '**/*.md',
+    generateId: ({ entry }) => entry.replace(/\.md$/i, ''),
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    lastUpdated: z.coerce.date().optional(),
+  }),
+});
+
+export const collections = { blog, tags, series, pages };

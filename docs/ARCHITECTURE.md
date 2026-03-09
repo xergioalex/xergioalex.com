@@ -108,10 +108,14 @@ src/
 │       └── MobileMenu.svelte    # Mobile nav menu
 │
 ├── content/                 # Content Collections
-│   ├── blog/                # Blog posts
+│   ├── blog/                # Blog posts (auto-generates .md endpoints)
+│   ├── pages/               # Page Markdown for AI agents
+│   │   ├── en/              # English page content (.md endpoints)
+│   │   └── es/              # Spanish page content (.md endpoints)
+│   ├── series/              # Blog series definitions
 │   └── tags/                # Tag definitions
 │
-├── content.config.ts        # Collection schemas
+├── content.config.ts        # Collection schemas (blog, tags, series, pages)
 ├── env.d.ts                 # TypeScript environment
 │
 ├── layouts/

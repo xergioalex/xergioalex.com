@@ -1,19 +1,27 @@
 /**
- * Cloudflare Pages Middleware — AI Bot Analytics
+ * Cloudflare Pages Middleware — AI Bot Analytics & Markdown Content Negotiation
  *
- * Detects AI crawler visits via User-Agent matching and tracks them
- * server-side to Umami (AI bots don't execute JavaScript, so client-side
- * analytics are invisible to them).
+ * Two responsibilities:
  *
- * Two event types:
- * - ai_bot_visit:     Known AI bots (from the explicit list)
- * - unknown_bot_visit: User-Agents that look like bots but aren't in the list
+ * 1. **Markdown for Agents**: If a request sends `Accept: text/markdown`,
+ *    serves the static `.md` version of the page (if it exists) instead of HTML.
+ *    This enables AI agents to get clean, token-efficient Markdown content
+ *    without parsing HTML. See: https://blog.cloudflare.com/markdown-for-agents/
  *
- * Non-bot requests pass through with zero overhead.
+ * 2. **AI Bot Analytics**: Detects AI crawler visits via User-Agent matching
+ *    and tracks them server-side to Umami (AI bots don't execute JavaScript,
+ *    so client-side analytics are invisible to them).
+ *
+ * Non-bot, non-markdown requests pass through with zero overhead.
  */
+
+interface AssetsFetcher {
+  fetch(request: Request | string): Promise<Response>;
+}
 
 interface Env {
   PUBLIC_UMAMI_WEBSITE_ID?: string;
+  ASSETS: AssetsFetcher;
 }
 
 interface EventContext {
@@ -147,13 +155,147 @@ async function sendToUmami(
   }
 }
 
+/** Paths that should never be served as Markdown */
+const MARKDOWN_EXCLUDED_PREFIXES = ['/api/', '/internal/', '/_'];
+const MARKDOWN_EXCLUDED_EXTENSIONS =
+  /\.(js|css|png|jpg|jpeg|webp|svg|ico|woff|woff2|xml|json|txt|md)$/i;
+
+/**
+ * Resolve the `.md` asset path for a given URL pathname.
+ * - /about       → /about.md
+ * - /about/      → /about.md
+ * - /blog/post   → /blog/post.md
+ * - /es/about    → /es/about.md
+ * - /            → /index.md
+ */
+function resolveMarkdownPath(pathname: string): string {
+  // Strip trailing slash (except root)
+  let clean = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+
+  // Root path → /index.md
+  if (clean === '/') return '/index.md';
+
+  // Paths ending with /index → /path/index.md
+  if (clean.endsWith('/index')) return `${clean}.md`;
+
+  return `${clean}.md`;
+}
+
+/**
+ * Check if the request wants Markdown content and serve the .md file if available.
+ * Uses context.env.ASSETS.fetch() to serve directly from static assets — no redirect loop.
+ */
+async function tryServeMarkdown(
+  context: EventContext
+): Promise<Response | null> {
+  const accept = context.request.headers.get('accept') || '';
+  if (!accept.includes('text/markdown')) return null;
+
+  const url = new URL(context.request.url);
+  const pathname = url.pathname;
+
+  // Skip excluded paths
+  for (const prefix of MARKDOWN_EXCLUDED_PREFIXES) {
+    if (pathname.startsWith(prefix)) return null;
+  }
+
+  // Skip requests for static assets (already have an extension)
+  if (MARKDOWN_EXCLUDED_EXTENSIONS.test(pathname)) return null;
+
+  const mdPath = resolveMarkdownPath(pathname);
+
+  try {
+    const mdUrl = new URL(mdPath, url.origin);
+    const assetResponse = await context.env.ASSETS.fetch(
+      new Request(mdUrl.toString())
+    );
+
+    if (!assetResponse.ok) return null;
+
+    // Serve the Markdown with correct headers
+    return new Response(assetResponse.body, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/markdown; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600',
+        'Vary': 'Accept',
+        'X-Content-Negotiation': 'markdown',
+      },
+    });
+  } catch {
+    return null;
+  }
+}
+
+/** Track a markdown request to Umami analytics */
+function trackMarkdownRequest(
+  context: EventContext,
+  source: 'content_negotiation' | 'direct_url'
+): void {
+  const websiteId = context.env.PUBLIC_UMAMI_WEBSITE_ID;
+  if (!websiteId) return;
+
+  const userAgent = context.request.headers.get('user-agent') || '';
+  const knownBot = detectAiBot(userAgent);
+  const botName = knownBot || (isUnknownBot(userAgent) ? extractBotName(userAgent) : 'unknown');
+  const url = new URL(context.request.url);
+
+  console.log(
+    `[Markdown ${source}] ${botName} → ${url.pathname} (${userAgent.slice(0, 100)})`
+  );
+
+  const data: Record<string, string> = {
+    bot: botName,
+    path: url.pathname,
+    source,
+    user_agent: userAgent.slice(0, 200),
+  };
+
+  context.waitUntil(
+    fetch(UMAMI_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        payload: {
+          website: websiteId,
+          url: url.pathname,
+          hostname: url.hostname,
+          language: 'en-US',
+          name: 'markdown_request',
+          data,
+        },
+        type: 'event',
+      }),
+    }).catch(() => {})
+  );
+}
+
+/** Check if the request is for a direct .md URL (e.g., /about.md) */
+function isDirectMarkdownUrl(pathname: string): boolean {
+  return pathname.endsWith('.md') &&
+    !MARKDOWN_EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+}
+
 export async function onRequest(context: EventContext): Promise<Response> {
+  // 1. Markdown content negotiation — serve .md if Accept: text/markdown
+  const markdownResponse = await tryServeMarkdown(context);
+  if (markdownResponse) {
+    trackMarkdownRequest(context, 'content_negotiation');
+    return markdownResponse;
+  }
+
+  // 2. Track direct .md URL requests (e.g., /about.md, /blog/post.md)
+  const url = new URL(context.request.url);
+  if (isDirectMarkdownUrl(url.pathname)) {
+    trackMarkdownRequest(context, 'direct_url');
+  }
+
+  // 3. AI bot analytics
   const userAgent = context.request.headers.get('user-agent') || '';
   const botName = detectAiBot(userAgent);
 
   if (botName) {
     // Known AI bot
-    const url = new URL(context.request.url);
     console.log(
       `[AI Bot] ${botName} → ${url.pathname} (${context.request.method})`
     );
@@ -171,7 +313,6 @@ export async function onRequest(context: EventContext): Promise<Response> {
   // Check for unknown bots
   if (isUnknownBot(userAgent)) {
     const name = extractBotName(userAgent);
-    const url = new URL(context.request.url);
     console.log(
       `[Unknown Bot] ${name} → ${url.pathname} (${context.request.method}) UA: ${userAgent.slice(0, 150)}`
     );
