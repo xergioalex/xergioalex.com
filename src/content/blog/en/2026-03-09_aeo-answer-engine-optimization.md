@@ -4,7 +4,7 @@ description: "SEO got me ranked. AEO got me cited. Here's everything I built to 
 pubDate: "2026-03-09T14:00:00"
 heroLayout: "none"
 tags: ["tech", "web-development", "ai"]
-keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "track AI bot traffic server-side analytics"]
+keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "markdown for AI agents endpoints", "track AI bot traffic server-side analytics"]
 ---
 
 I had good SEO scores. Lighthouse 100 across the board. Pages indexed, canonical URLs validated, structured data passing every test Google threw at it. By every traditional metric, the site was doing fine.
@@ -49,7 +49,7 @@ Here's what makes AEO different from traditional SEO:
 |---|---|---|
 | **Goal** | Rank on the results page | Get cited in the AI answer |
 | **Format** | Long-form pages | Structured, extractable answer blocks |
-| **Target** | Keywords and backlinks | Entities, questions, conversational queries |
+| **Focus** | Keywords and backlinks | Entities, questions, conversational queries |
 | **Metrics** | Rankings, click-through rate | Citation frequency, brand mentions, sentiment |
 
 The critical nuance: AEO doesn't replace SEO. They're complementary. AI systems heavily favor content from domains that already rank well in traditional search. [86% of Google AI Overview citations](https://ahrefs.com/blog/search-rankings-ai-citations/) come from pages ranking in the top 100. Strong SEO feeds AEO. But SEO alone is no longer enough.
@@ -206,6 +206,44 @@ I spent more time on structured data than on any other AEO optimization. It's no
 
 ---
 
+## Markdown for Agents — Speaking the Machines' Language
+
+There's a problem with everything above that I didn't notice until I thought about it from the other side. Crawlers arrive at my site. They read the pages. But what they read is HTML — with navigation bars, footers, theme scripts, Tailwind classes, SVG icons, and all the visual noise that humans need but a language model doesn't.
+
+An AI agent that wants to understand what my About page is about has to download the full HTML, discard the header, the footer, the navigation bar, the JSON-LD schemas, the meta tags, and then try to extract the actual content from the middle. It manages — these models are good at that. But it's inefficient. Tokens wasted on markup that adds nothing to content understanding.
+
+In March 2025, [Cloudflare published "Markdown for Agents"](https://blog.cloudflare.com/markdown-for-agents/) — a proposal for websites to serve content directly in Markdown when an AI agent requests it. The idea is simple: if the agent sends an `Accept: text/markdown` header, the server returns clean Markdown instead of HTML. Pure content. No navigation, no styles, no JavaScript.
+
+I liked the idea but didn't want to depend on an edge computing solution — and my site already has all the original content in Markdown. Blog posts are written in `.md` files. Pages have structured content. The source Markdown already exists. It just needs to be served.
+
+So I built a native delivery layer. Every page and every blog post now has a `.md` endpoint that serves the original Markdown directly:
+
+```
+/blog/building-xergioalex-website.md     → Post Markdown
+/about.md                                → About page Markdown
+/es/blog/aeo-answer-engine-optimization.md → This very post, in Markdown
+/es/about.md                              → About in Spanish
+```
+
+That's 153 static `.md` files generated on every build. Each one has a metadata header — title, description, author, date, canonical URL — followed by the original body as I wrote it. No HTML-to-Markdown conversion. No runtime processing. Static files served directly from the CDN.
+
+The architecture is deliberately simple:
+
+```
+Source .md  →  [Astro build]  →  HTML page (humans)
+Source .md  →  [Astro build]  →  .md file (agents)
+```
+
+Zero performance impact. The `.md` files are separate files — they don't add JavaScript, don't affect HTML page PageSpeed scores, don't cost the human user anything. And they're fully scalable: when I add a new post or a new page, its `.md` endpoint is generated automatically.
+
+Is it worth it? Honestly, I don't know if any AI agent is reading these endpoints today. I have no way to tell yet — agents don't necessarily identify themselves in the User-Agent when browsing, and I don't have granular access logs for the `.md` files. But the cost of building it was a day of work. The investment is minimal. And if AI agents start preferring sites that speak their language — clean Markdown over noisy HTML — this site is already there.
+
+I think of it like the decision to add `llms.txt` multiplied by ten. The `llms.txt` is a summary. The `.md` endpoints are the full content. If an agent wants to read an entire post, it doesn't have to parse HTML — it consumes it directly. If it wants to index all pages, there's an index at `/blog/index.md` with links to every individual `.md` file.
+
+Cloudflare is pushing header-based content negotiation at the edge — their solution converts HTML to Markdown on the fly. I took the opposite path: serve the source Markdown directly, no conversion, because I already have it. Both approaches reach the same point. Mine has the advantage of perfect fidelity — what the agent reads is exactly what I wrote, with no conversion artifacts.
+
+---
+
 ## Measuring What You Can't See
 
 The hardest part of AEO is measurement. Google Analytics can't see AI bots. They don't execute JavaScript. From a client-side analytics perspective, every AI crawler visit is invisible.
@@ -273,11 +311,13 @@ The standards are still forming. The [IETF AIPREF working group](https://www.iet
 
 AI referral traffic is real and growing. It [grew 123%](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) between September 2024 and February 2025. ChatGPT drives 87.4% of it. Vercel reported that ChatGPT referrals [grew to 10% of their new signups](https://aiseotracker.com/case-study/vercel). Tally.so saw ChatGPT become their number one referral source. These aren't theoretical projections. They're real numbers from real companies.
 
-I don't know exactly how much of this site's traffic comes from AI citations. That's still hard to measure accurately. I don't know which model training runs included this content, or whether any fine-tuning dataset picked it up. But I can see the crawlers coming. I can see which pages they hit. I can see the Bing AI Performance report showing citations.
+And the next wave is already here. The Markdown endpoints I built are a concrete bet — not a theoretical one — in that direction. Today, crawlers read HTML. Tomorrow, they'll prefer Markdown. The autonomous agents emerging now — the ones that buy, compare, research, and act — are going to need clean, structured, efficient content. Sites that already speak that language will have an advantage. Sites still serving only HTML will be like sites without a mobile version in 2015 — they work, but with increasing friction.
+
+I don't know exactly how much of this site's traffic comes from AI citations. That's still hard to measure accurately. I don't know which model training runs included this content, or whether any fine-tuning dataset picked it up. But I can see the crawlers coming. I can see which pages they hit. I can see the Bing AI Performance report showing citations. And now, if an agent wants to read this entire post without parsing HTML, it can — directly, in Markdown, exactly as I wrote it.
 
 The ground is moving under search. Traditional SEO still matters — it's the foundation everything else is built on. But the next layer is here. AEO isn't a trend to watch anymore. It's something to build for.
 
-And if you're reading this and thinking "I should probably do something about this" — you're already ahead of 63% of marketing teams. Start with structured data. Add an `llms.txt`. Check your robots.txt. Track your bots. Run your queries against ChatGPT and Perplexity. The bar is low right now, and the first-mover advantage is real.
+And if you're reading this and thinking "I should probably do something about this" — you're already ahead of 63% of marketing teams. Start with structured data. Add an `llms.txt`. Check your robots.txt. Track your bots. Add `.md` endpoints for your pages. Run your queries against ChatGPT and Perplexity. The bar is low right now, and the first-mover advantage is real.
 
 Let's keep building.
 
@@ -292,6 +332,7 @@ Let's keep building.
 - [Google: Succeeding in AI Search](https://developers.google.com/search/blog/2025/05/succeeding-in-ai-search)
 - [Google: Structured Data Introduction](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
 - [IETF AIPREF Working Group](https://www.ietf.org/blog/aipref-wg/)
+- [Cloudflare: Markdown for Agents](https://blog.cloudflare.com/markdown-for-agents/)
 
 **Crawler Documentation**
 - [OpenAI Crawlers](https://platform.openai.com/docs/bots)
