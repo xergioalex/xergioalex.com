@@ -880,6 +880,30 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesToC: 'All chapters',
   seriesChapterOf: (current, total) => `Chapter ${current} of ${total}`,
 
+  // Series pages
+  seriesPage: {
+    title: 'Series',
+    breadcrumb: 'Series',
+    chapters: 'chapters',
+    chapter: 'Chapter',
+    progress: (current, total) => `${current} of ${total} chapters`,
+    readChapter: 'Read chapter',
+    emptyState: 'No posts in this series yet.',
+    backToSeries: 'All Series',
+    backToBlog: 'Back to Blog',
+    startReading: 'Start reading',
+    continueReading: 'Continue reading',
+  },
+  seriesListingPage: {
+    title: 'Blog Series',
+    description:
+      'Explore curated collections of articles organized into thematic series.',
+    heading: 'Series',
+    postsCount: (count) => `${count} ${count === 1 ? 'chapter' : 'chapters'}`,
+    exploreSeries: 'Explore series',
+    emptyState: 'No series available yet.',
+  },
+
   // Scheduled posts (dev-only indicators)
   scheduledBadge: 'Scheduled',
   scheduledBannerTitle: 'Scheduled post',

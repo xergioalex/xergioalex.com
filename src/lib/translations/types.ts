@@ -450,6 +450,29 @@ export interface SiteTranslations {
   seriesToC: string;
   seriesChapterOf: (current: number, total: number) => string;
 
+  // Series pages
+  seriesPage: {
+    title: string;
+    breadcrumb: string;
+    chapters: string;
+    chapter: string;
+    progress: (current: number, total: number) => string;
+    readChapter: string;
+    emptyState: string;
+    backToSeries: string;
+    backToBlog: string;
+    startReading: string;
+    continueReading: string;
+  };
+  seriesListingPage: {
+    title: string;
+    description: string;
+    heading: string;
+    postsCount: (count: number) => string;
+    exploreSeries: string;
+    emptyState: string;
+  };
+
   // Scheduled posts (dev-only indicators)
   scheduledBadge: string;
   scheduledBannerTitle: string;

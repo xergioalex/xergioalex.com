@@ -891,6 +891,30 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesToC: 'Todos los capítulos',
   seriesChapterOf: (current, total) => `Capítulo ${current} de ${total}`,
 
+  // Series pages
+  seriesPage: {
+    title: 'Serie',
+    breadcrumb: 'Series',
+    chapters: 'capítulos',
+    chapter: 'Capítulo',
+    progress: (current, total) => `${current} de ${total} capítulos`,
+    readChapter: 'Leer capítulo',
+    emptyState: 'Aún no hay publicaciones en esta serie.',
+    backToSeries: 'Todas las Series',
+    backToBlog: 'Volver al Blog',
+    startReading: 'Comenzar a leer',
+    continueReading: 'Continuar leyendo',
+  },
+  seriesListingPage: {
+    title: 'Series del Blog',
+    description:
+      'Explora colecciones curadas de artículos organizados en series temáticas.',
+    heading: 'Series',
+    postsCount: (count) => `${count} ${count === 1 ? 'capítulo' : 'capítulos'}`,
+    exploreSeries: 'Explorar serie',
+    emptyState: 'Aún no hay series disponibles.',
+  },
+
   // Scheduled posts (dev-only indicators)
   scheduledBadge: 'Programado',
   scheduledBannerTitle: 'Post programado',
