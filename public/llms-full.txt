@@ -52,6 +52,13 @@ How this website was built from scratch with Astro, covering architecture decisi
 4. Building a Blog Without a Backend — Content Collections and file-based content (/blog/building-blog-without-backend/)
 5. Building a Multilingual Website — i18n architecture with typed translations (/blog/building-multilingual-website/)
 
+#### The AEO Journey (4 chapters)
+From invisible to cited — building a website that AI answer engines can find, understand, and reference:
+0. Optimizing for Answers, Not Just Rankings — Series overview and entry point (/blog/aeo-answer-engine-optimization/)
+1. The Shift: Why Rankings No Longer Mean Visibility — The landscape change, answer engines, and SEO vs AEO (/blog/aeo-the-shift/)
+2. The Toolkit: llms.txt, Structured Data, and Markdown for Agents — Full technical implementation (/blog/aeo-the-toolkit/)
+3. The Scorecard: Auditing AEO, Reading the Data, and What's Next — Measurement, bot tracking, and future (/blog/aeo-the-scorecard/)
+
 #### Trading Journey (3 chapters)
 From manual trading to algorithmic strategies:
 1. My Trading Journey — From futures to forex (/blog/my-trading-journey-from-futures-to-forex/)
