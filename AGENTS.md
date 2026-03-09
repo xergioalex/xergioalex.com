@@ -141,6 +141,7 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 - **Blog Posts:** Both `src/content/blog/en/` and `src/content/blog/es/` MUST have the equivalent post. Translate `title`, `description`, and body. Preserve `pubDate`, `heroImage`, `tags`, code blocks. **Use `/add-blog-post` skill for new posts.**
 - **Translation Strings:** Add to BOTH `src/lib/translations/en.ts` and `es.ts`. Update `types.ts` with any new interface keys
 - **Components:** Use `getTranslations(lang)` from `@/lib/translations`. Never hardcode user-visible strings
+- **Agent-Friendly Markdown (MANDATORY):** When page or translation content changes, update the corresponding `src/content/pages/{en,es}/*.md` files. These serve as Markdown endpoints for AI agents and MUST stay in sync with the HTML content. See **[Markdown for Agents](docs/aeo/MARKDOWN_FOR_AGENTS.md)**.
 
 **Compliance checklist:**
 
@@ -148,6 +149,7 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 - [ ] Blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
 - [ ] UI strings in both `en.ts` and `es.ts`
 - [ ] No hardcoded user-visible text
+- [ ] Page Markdown files updated in both `src/content/pages/en/` and `src/content/pages/es/`
 
 **Tools:** `/translate-sync` skill, `i18n-guardian` agent. Adding a new language: see **[I18N Guide](docs/I18N_GUIDE.md)**.
 

@@ -155,7 +155,22 @@ curl https://xergioalex.com/about.md
 
 ## Maintenance
 
-- **No ongoing maintenance for blog posts** — endpoints auto-generated from content
-- **Update page Markdown when page content changes** — edit files in `src/content/pages/`
+- **No ongoing maintenance for blog posts** — endpoints auto-generated from `post.body` (always in sync)
+- **Page Markdown MUST stay in sync with HTML content** — when translation strings (`en.ts`/`es.ts`) or page components (`*Page.astro`) change, update the corresponding files in `src/content/pages/{en,es}/`
+- **Both languages required** — every change to an EN `.md` must be reflected in the ES `.md` (and vice versa)
+- **Include internal links** — page Markdown should contain links to other site pages so agents can discover the full site structure
+- **Full content, not summaries** — page Markdown should match the semantic content of the HTML page (strip presentation chrome, keep all text, links, and structure)
 - **Discovery files** — `llms.txt` and `llms-full.txt` reference the endpoints
 - **Tests** — `npm run test` covers serialization correctness
+
+### Sync Rule for AI Agents
+
+**When ANY of these change, update the corresponding `src/content/pages/{en,es}/*.md`:**
+
+| What Changed | Files to Update |
+|---|---|
+| Translation strings in `en.ts` | `src/content/pages/en/{page}.md` |
+| Translation strings in `es.ts` | `src/content/pages/es/{page}.md` |
+| Page component (`*Page.astro`) adds/removes sections | Both EN and ES `.md` files |
+| New page created (via `/add-page` skill) | Both EN and ES `.md` files (Step 4 of skill) |
+| Page removed | Remove both EN and ES `.md` files |

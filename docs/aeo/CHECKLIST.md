@@ -68,6 +68,9 @@ Record results:
 - [ ] Check page endpoints exist: `ls dist/about.md dist/cv.md dist/es/about.md`
 - [ ] Verify blog index: `cat dist/blog/index.md | head -20`
 - [ ] Ensure `llms.txt` references Markdown endpoints: `grep "\.md" public/llms.txt`
+- [ ] Verify content negotiation middleware: `grep "text/markdown" functions/_middleware.ts`
+- [ ] **Sync check:** Compare page `.md` files against HTML content — no major sections missing
+- [ ] **Bilingual sync:** EN and ES `.md` files cover the same sections (`ls src/content/pages/en/ src/content/pages/es/`)
 - [ ] Full docs: [Markdown for Agents](MARKDOWN_FOR_AGENTS.md)
 
 ## 9. Quick Local Validation
