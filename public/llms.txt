@@ -33,8 +33,7 @@ This site features a bilingual blog and professional profile covering software d
 
 ## Blog Series
 
-- Building XergioAleX.com (5 chapters) — How the site was built from scratch with Astro: architecture, design system, Lighthouse 100, content collections, and multilingual support
-- The AEO Journey (4 chapters) — From invisible to cited: building a website that AI answer engines can find, understand, and reference
+- Building XergioAleX.com (7 chapters) — How the site was built from scratch with Astro: architecture, Lighthouse 100, analytics, content collections, multilingual support, deployment, and AI bot tracking
 - Trading Journey (3 chapters) — From manual to algorithmic trading: futures, forex, and market profile
 
 ## Languages
