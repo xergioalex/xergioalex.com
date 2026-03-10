@@ -872,8 +872,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
   // Blog header
   blogTitle: 'Blog',
-  blogHeading: 'Blog',
-  blogDescription: 'Artículos sobre tecnología, programación y más',
+  blogHeading: 'Artículos e Historias',
+  blogDescription:
+    'Tecnología, emprendimiento, vida personal y todo lo que hay en el medio',
   allPosts: 'Todos los posts',
   showingArticles: (showing, total) =>
     `Mostrando ${showing} de ${total} artículos`,

@@ -25,9 +25,9 @@ export const GET: APIRoute = async () => {
 
   const markdown = serializeBlogIndexToMarkdown(entries, {
     lang: 'en',
-    title: 'XergioAleX Blog',
+    title: 'XergioAleX Blog — Articles & Stories',
     description:
-      'Technical blog about software engineering, DevOps, AI, trading, and entrepreneurship.',
+      'Technology, entrepreneurship, personal life, and everything in between.',
   });
 
   return new Response(markdown, {

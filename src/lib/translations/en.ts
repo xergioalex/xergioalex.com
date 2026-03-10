@@ -861,8 +861,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
   // Blog header
   blogTitle: 'Blog',
-  blogHeading: 'Blog',
-  blogDescription: 'Articles about technology, programming, and more',
+  blogHeading: 'Articles & Stories',
+  blogDescription:
+    'Technology, entrepreneurship, personal life, and everything in between',
   allPosts: 'All Posts',
   showingArticles: (showing, total) =>
     `Showing ${showing} of ${total} articles`,
