@@ -98,22 +98,22 @@ function canUseWebp(series: SeriesListingEntry): boolean {
     </p>
   </div>
 {:else}
-  <div class="max-w-7xl mx-auto px-4 md:px-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {#each renderedSeries as series, index}
-      {@const hero = getHeroImage(series)}
-      {@const isFirst = index === 0}
+  <!-- Adaptive layout: stack (≤4 series) or grid (5+) -->
+  {#if renderedSeries.length <= 4}
+    <!-- Stack layout: all cards use premium horizontal layout -->
+    <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-6">
+      {#each renderedSeries as series, index}
+        {@const hero = getHeroImage(series)}
+        {@const isFirst = index === 0}
 
-      <a
-        href={`${prefix}/blog/series/${series.slug}/`}
-        class="group block bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:-translate-y-1.5
-          {isFirst && renderedSeries.length > 1 ? 'sm:col-span-2 lg:col-span-full' : ''}"
-        on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: 'series-listing', slug: series.slug })}
-      >
-        <!-- Featured first card: horizontal layout on desktop -->
-        {#if isFirst && renderedSeries.length > 1}
-          <div class="lg:flex">
+        <a
+          href={`${prefix}/blog/series/${series.slug}/`}
+          class="group block bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:-translate-y-1"
+          on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: 'series-listing', slug: series.slug })}
+        >
+          <div class="md:flex {index % 2 !== 0 ? 'md:flex-row-reverse' : ''}">
             <!-- Image area -->
-            <div class="relative lg:w-1/2 xl:w-3/5">
+            <div class="relative md:w-1/2 {isFirst ? 'xl:w-3/5' : ''}">
               {#if hero}
                 {#if canUseWebp(series)}
                   <picture>
@@ -121,8 +121,8 @@ function canUseWebp(series: SeriesListingEntry): boolean {
                     <img
                       src={hero}
                       alt=""
-                      class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
-                      loading="eager"
+                      class="w-full h-56 md:h-full md:min-h-[260px] object-cover"
+                      loading={isFirst ? 'eager' : 'lazy'}
                       width="800"
                       height="400"
                     />
@@ -131,25 +131,25 @@ function canUseWebp(series: SeriesListingEntry): boolean {
                   <img
                     src={hero}
                     alt=""
-                    class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
-                    loading="eager"
+                    class="w-full h-56 md:h-full md:min-h-[260px] object-cover"
+                    loading={isFirst ? 'eager' : 'lazy'}
                     width="800"
                     height="400"
                   />
                 {/if}
               {:else}
-                <div class="w-full h-56 lg:h-full lg:min-h-[280px] bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
+                <div class="w-full h-56 md:h-full md:min-h-[260px] bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
                   <svg class="w-16 h-16 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
               {/if}
               <!-- Gradient overlay for mobile -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent lg:hidden"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:hidden"></div>
             </div>
 
             <!-- Content area -->
-            <div class="lg:w-1/2 xl:w-2/5 p-6 lg:p-8 flex flex-col justify-center">
+            <div class="md:w-1/2 {isFirst ? 'xl:w-2/5' : ''} p-6 lg:p-8 flex flex-col justify-center">
               <div class="mb-3">
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 text-xs font-medium">
                   <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -172,71 +172,130 @@ function canUseWebp(series: SeriesListingEntry): boolean {
               </span>
             </div>
           </div>
+        </a>
+      {/each}
+    </div>
 
-        <!-- Regular cards -->
-        {:else}
-          <!-- Image area -->
-          <div class="relative">
-            {#if hero}
-              {#if canUseWebp(series)}
-                <picture>
-                  <source srcset={hero.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                  <img
-                    src={hero}
-                    alt=""
-                    class="w-full h-48 object-cover"
-                    loading="lazy"
-                    width="400"
-                    height="192"
-                  />
-                </picture>
-              {:else}
-                <img
-                  src={hero}
-                  alt=""
-                  class="w-full h-48 object-cover"
-                  loading="lazy"
-                  width="400"
-                  height="192"
-                />
-              {/if}
-            {:else}
-              <div class="w-full h-48 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
-                <svg class="w-14 h-14 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+  {:else}
+    <!-- Grid layout: featured first card + grid for 5+ series -->
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {#each renderedSeries as series, index}
+        {@const hero = getHeroImage(series)}
+        {@const isFirst = index === 0}
+
+        <a
+          href={`${prefix}/blog/series/${series.slug}/`}
+          class="group block bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:-translate-y-1.5
+            {isFirst ? 'sm:col-span-2 lg:col-span-full' : ''}"
+          on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: 'series-listing', slug: series.slug })}
+        >
+          {#if isFirst}
+            <!-- Featured first card: horizontal layout -->
+            <div class="lg:flex">
+              <div class="relative lg:w-1/2 xl:w-3/5">
+                {#if hero}
+                  {#if canUseWebp(series)}
+                    <picture>
+                      <source srcset={hero.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                      <img
+                        src={hero}
+                        alt=""
+                        class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
+                        loading="eager"
+                        width="800"
+                        height="400"
+                      />
+                    </picture>
+                  {:else}
+                    <img
+                      src={hero}
+                      alt=""
+                      class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
+                      loading="eager"
+                      width="800"
+                      height="400"
+                    />
+                  {/if}
+                {:else}
+                  <div class="w-full h-56 lg:h-full lg:min-h-[280px] bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                {/if}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent lg:hidden"></div>
               </div>
-            {/if}
-            <!-- Subtle gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-          </div>
-
-          <!-- Content area -->
-          <div class="p-5">
-            <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {t.seriesNames[series.slug] || series.title}
-            </h2>
-            {#if series.description}
-              <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-                {t.seriesDescriptions[series.slug] || series.description}
-              </p>
-            {/if}
-            <div class="flex items-center justify-between">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 text-xs font-medium">
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-                {t.seriesListingPage.postsCount(series.postCount)}
-              </span>
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
-                {t.seriesListingPage.exploreSeries} &rarr;
-              </span>
+              <div class="lg:w-1/2 xl:w-2/5 p-6 lg:p-8 flex flex-col justify-center">
+                <div class="mb-3">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 text-xs font-medium">
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    {t.seriesListingPage.postsCount(series.postCount)}
+                  </span>
+                </div>
+                <h2 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {t.seriesNames[series.slug] || series.title}
+                </h2>
+                {#if series.description}
+                  <p class="text-sm lg:text-base text-gray-600 dark:text-gray-300 mb-5 line-clamp-3">
+                    {t.seriesDescriptions[series.slug] || series.description}
+                  </p>
+                {/if}
+                <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+                  {t.seriesListingPage.exploreSeries}
+                  <span aria-hidden="true">&rarr;</span>
+                </span>
+              </div>
             </div>
-          </div>
-        {/if}
-      </a>
-    {/each}
-  </div>
+
+          {:else}
+            <!-- Grid cards -->
+            <div class="relative">
+              {#if hero}
+                {#if canUseWebp(series)}
+                  <picture>
+                    <source srcset={hero.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+                    <img src={hero} alt="" class="w-full h-48 object-cover" loading="lazy" width="400" height="192" />
+                  </picture>
+                {:else}
+                  <img src={hero} alt="" class="w-full h-48 object-cover" loading="lazy" width="400" height="192" />
+                {/if}
+              {:else}
+                <div class="w-full h-48 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
+                  <svg class="w-14 h-14 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+              {/if}
+              <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+            </div>
+            <div class="p-5">
+              <h2 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {t.seriesNames[series.slug] || series.title}
+              </h2>
+              {#if series.description}
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                  {t.seriesDescriptions[series.slug] || series.description}
+                </p>
+              {/if}
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 text-xs font-medium">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  {t.seriesListingPage.postsCount(series.postCount)}
+                </span>
+                <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+                  {t.seriesListingPage.exploreSeries} &rarr;
+                </span>
+              </div>
+            </div>
+          {/if}
+        </a>
+      {/each}
+    </div>
+  {/if}
 
   <!-- Sentinel for IntersectionObserver -->
   {#if !allLoaded}
