@@ -243,7 +243,7 @@ onMount(() => {
 });
 </script>
 
-<div class="main-container py-12 sm:py-16 lg:py-24">
+<div class="main-container py-10 sm:py-12 lg:py-16">
   <BlogHeader
     {currentTag}
     tagsResult={primaryTags}

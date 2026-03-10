@@ -4,6 +4,12 @@ description: "Building community through shared knowledge. Co-founder of Pereira
 lastUpdated: 2026-03-09
 ---
 
+## Talk Archive
+
+The talk archive at the bottom of this page loads progressively as you scroll — the first posts appear immediately on page load, with additional entries fetched on demand for a fast and smooth browsing experience.
+
+---
+
 ## Pereira Tech Talks
 
 Co-founded in September 2017 with a simple idea: create a space where developers, designers, and entrepreneurs could learn from each other. What started as small meetups in borrowed spaces has grown into an active Colombian tech community, filling auditoriums at Universidad Tecnologica de Pereira with speakers from across Latin America.

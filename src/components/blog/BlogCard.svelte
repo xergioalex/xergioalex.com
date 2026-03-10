@@ -12,6 +12,7 @@ export let heroWebpExists: boolean = false;
 export let searchQuery: string = '';
 export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
+export let eager: boolean = false;
 let postData: {
   title: string;
   description: string;
@@ -91,8 +92,20 @@ $: {
       ? seriesTotalValue
       : undefined;
   const seriesTitleValue = (post as any).seriesTitle;
-  seriesTitle =
+  const rawSeriesTitle =
     typeof seriesTitleValue === 'string' ? seriesTitleValue : undefined;
+  const seriesSlugForTitle =
+    (post as any).seriesSlug ?? post.data?.series ?? (post as any).series;
+  seriesTitle =
+    (typeof seriesSlugForTitle === 'string' &&
+      t.seriesNames[seriesSlugForTitle]) ||
+    rawSeriesTitle;
+}
+let seriesSlug: string | undefined;
+$: {
+  const slug =
+    (post as any).seriesSlug ?? post.data?.series ?? (post as any).series;
+  seriesSlug = typeof slug === 'string' ? slug : undefined;
 }
 $: seriesBadgeLabel =
   seriesCurrent && seriesTotal
@@ -137,14 +150,14 @@ $: displayDescription = searchQuery
 
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   {#if postData.heroImage}
-    <div class="relative">
-      <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800">
+    <div class="relative bg-gray-100 dark:bg-gray-700">
+      <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800" aria-hidden="true" tabindex="-1">
         {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
           <picture>
             <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
             <img
               src={postData.heroImage}
-              alt={postData.title}
+              alt=""
               width={400}
               height={192}
               class="w-full h-48 object-cover"
@@ -154,7 +167,7 @@ $: displayDescription = searchQuery
         {:else}
           <img
             src={postData.heroImage}
-            alt={postData.title}
+            alt=""
             width={400}
             height={192}
             class="w-full h-48 object-cover"
@@ -190,13 +203,24 @@ $: displayDescription = searchQuery
         {/if}
         {#if seriesCurrent && seriesTotal}
           <div class="group relative inline-flex items-center">
-            <span
-              class="inline-flex items-center rounded-full border-2 border-blue-200 bg-blue-50/70 px-2.5 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-200"
-              aria-label={seriesBadgeLabel}
-              title={seriesBadgeLabel}
-            >
-                            {seriesCurrent}/{seriesTotal}
-            </span>
+            {#if seriesSlug}
+              <a
+                href={`${prefix}/blog/series/${seriesSlug}/`}
+                class="inline-flex items-center rounded-full border-2 border-blue-200 bg-blue-50/70 px-2.5 py-0.5 text-[11px] font-medium text-blue-700 transition-colors hover:bg-blue-100 hover:border-blue-300 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-200 dark:hover:bg-blue-900/50 dark:hover:border-blue-700"
+                aria-label={seriesBadgeLabel}
+                title={seriesBadgeLabel}
+              >
+                {seriesCurrent}/{seriesTotal}
+              </a>
+            {:else}
+              <span
+                class="inline-flex items-center rounded-full border-2 border-blue-200 bg-blue-50/70 px-2.5 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-200"
+                aria-label={seriesBadgeLabel}
+                title={seriesBadgeLabel}
+              >
+                {seriesCurrent}/{seriesTotal}
+              </span>
+            {/if}
             {#if seriesTitle}
               <span
                 class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-gray-100 dark:text-gray-900"
