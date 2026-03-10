@@ -27,7 +27,7 @@ La decisión de diseño clave es usar `context.waitUntil()` para diferir la llam
 
 Pero no todos los crawlers se anuncian claramente. Una segunda capa captura bots no reconocidos — cualquier cosa con "crawler", "spider", "scraper" o "agent" en el User-Agent que no sea un buscador conocido como Googlebot o Bingbot. Estos disparan un evento `unknown_bot_visit` que incluye el string completo de User-Agent, para que después pueda inspeccionar el dashboard y decidir si alguno merece ser promovido a la lista de conocidos.
 
-Escribí sobre la implementación completa en [Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA](/es/blog/tracking-invisible-ai-bot-analytics). Así se ven los datos reales después de unos meses de recolección:
+Escribí sobre la implementación completa en [Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA](/es/blog/tracking-invisible-ai-bot-analytics). Así se ven los datos de las últimas 24 horas:
 
 ![Dashboard de Umami mostrando eventos ai_bot_visit por bot: Amazonbot 56%, OAI-SearchBot 9%, Meta-ExternalAgent 9%, ClaudeBot 7%, Bytespider 6%, ChatGPT-User 6%, GPTBot 4%, PerplexityBot 3%](/images/blog/posts/aeo-the-scorecard/umami-ai-bot-visit.png)
 
@@ -37,7 +37,11 @@ El dashboard de bots desconocidos cuenta una historia diferente:
 
 ![Dashboard de Umami mostrando eventos unknown_bot_visit: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-visit.png)
 
-La mayoría de estos son herramientas SEO (AwarioBot, SERankingBacklinksBot) o crawlers de redes sociales (Twitterbot), no sistemas de IA. El 23% etiquetado como "Mozilla" probablemente son scrapers automatizados usando strings genéricos de navegador — exactamente el tipo de bot que es imposible de clasificar sin un análisis más profundo. Esta capa es útil como mecanismo de descubrimiento: cuando aparezca un nuevo crawler de IA, lo voy a ver acá primero.
+La mayoría de estos son herramientas SEO (AwarioBot, SERankingBacklinksBot) o crawlers de redes sociales (Twitterbot), no sistemas de IA. El 23% etiquetado como "Mozilla" tiene más sentido cuando ves los strings completos de User-Agent:
+
+![Dashboard de Umami mostrando strings de User-Agent de unknown_bot_visit: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla/Macintosh AppleWebKit 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-user-agent.png)
+
+Esas entradas de "Mozilla" están usando `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit...` — un string completo de User-Agent de Safari en escritorio. Son scrapers automatizados disfrazándose de navegadores reales. Exactamente el tipo de bot que es imposible de clasificar sin un análisis más profundo. Esta capa es útil como mecanismo de descubrimiento: cuando aparezca un nuevo crawler de IA, lo voy a ver acá primero.
 
 Lo que obtenés de todo esto es imperfecto pero real: qué bots están rastreando, qué páginas visitan, con qué frecuencia. Esa es la base. Todo lo demás en la medición de AEO se construye sobre esta señal — o le falta completamente.
 
@@ -64,11 +68,11 @@ Los datos apenas están empezando a llegar — implementé esto recientemente y 
 
 Este es el estado de la industria: una herramienta nativa útil, algunas opciones de terceros, y mucho trabajo manual de suposición.
 
-El informe de Rendimiento de IA de Bing es lo más concreto disponible. Obtenés citas totales, qué páginas son referenciadas, y las "consultas de fundamentación" — las frases que usó la IA cuando recuperó tu contenido. Cubre Microsoft Copilot y los resúmenes de Bing AI específicamente. No es un panorama global, pero son datos reales de una plataforma real, lo que lo hace más útil que la mayoría de las alternativas disponibles ahora mismo.
+El [informe de Rendimiento de IA de Bing](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) es lo más concreto disponible. Obtenés citas totales, qué páginas son referenciadas, y las "consultas de fundamentación" — las frases que usó la IA cuando recuperó tu contenido. Cubre Microsoft Copilot y los resúmenes de Bing AI específicamente. No es un panorama global, pero son datos reales de una plataforma real, lo que lo hace más útil que la mayoría de las alternativas disponibles ahora mismo.
 
-Google no tiene nada comparable para AI Overviews. Google Search Console sigue agrupando los clics de AI Mode dentro del tipo de búsqueda "Web" regular. Si eso es una opacidad intencional o simplemente no está listo, no podría decirlo — pero es una brecha significativa dado que Google genera la mayor cantidad de AI Overviews. La plataforma con mayor presencia te da la menor visibilidad.
+Google no tiene nada comparable para AI Overviews. [Google Search Console ya incluye datos de AI Mode](https://searchengineland.com/google-ai-mode-traffic-data-search-console-457076), pero todo queda agrupado dentro del tipo de búsqueda "Web" regular — [no hay un filtro separado](https://developers.google.com/search/docs/appearance/ai-features) para ver cuánto tráfico viene de superficies generadas por IA versus los resultados orgánicos tradicionales. Si eso es una opacidad intencional o simplemente no está listo, no podría decirlo — pero es una brecha significativa dado que Google genera la mayor cantidad de AI Overviews. La plataforma con mayor presencia te da la menor visibilidad.
 
-Para todo lo demás, las opciones son: [Otterly.ai](https://otterly.ai) para monitoreo de citas entre plataformas, el [AEO Grader gratuito de HubSpot](https://www.hubspot.com/aeo-grader) para una auditoría puntuada contra las mejores prácticas de AEO, y pruebas manuales — corriendo tus consultas objetivo en ChatGPT y Perplexity y verificando si aparecés.
+Para todo lo demás, investigando encontré un par de opciones que no he probado personalmente pero que se ven prometedoras: [Otterly.ai](https://otterly.ai) para monitoreo de citas entre plataformas y el [AEO Grader gratuito de HubSpot](https://www.hubspot.com/aeo-grader) para una auditoría puntuada contra las mejores prácticas de AEO. Más allá de esas, quedan las pruebas manuales — correr tus consultas objetivo en ChatGPT y Perplexity y verificar si aparecés.
 
 Las pruebas manuales son más útiles de lo que parecen, pero con una advertencia importante. Según [la investigación de AirOps](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt), solo el 30% de las marcas se mantienen visibles de una respuesta de IA a la siguiente, y solo el 20% en cinco ejecuciones consecutivas. Una verificación puntual el martes no significa nada para el jueves.
 
@@ -78,7 +82,7 @@ Esta es la parte más débil del ecosistema AEO ahora mismo. Podemos optimizar c
 
 ## La Auditoría
 
-No hay herramientas de auditoría AEO estandarizadas como SEMrush o Lighthouse para SEO y rendimiento. Tenés que construir el checklist vos mismo, o tomarlo prestado de algún lado. El framework de cuatro dimensiones al que llegué cubre las preguntas que realmente importan:
+No hay herramientas de auditoría AEO estandarizadas como [SEMrush](https://www.semrush.com/) o [Lighthouse](https://developer.chrome.com/docs/lighthouse) para SEO y rendimiento. Tenés que construir el checklist tú mismo, o tomarlo prestado de algún lado. Como no encontré nada que cubriera todo lo que me importaba, armé mi propio framework alrededor de cuatro dimensiones — básicamente las cuatro preguntas que me hacía sobre cada página de este sitio:
 
 | Dimensión | Qué Mide |
 |-----------|-----------------|
@@ -87,17 +91,13 @@ No hay herramientas de auditoría AEO estandarizadas como SEMrush o Lighthouse p
 | **Confianza** | ¿Lleva el contenido señales de credibilidad? (atribución de autor, timestamps, fuentes citadas) |
 | **Citabilidad** | ¿Está el contenido estructurado para ser citable? (respuestas claras, lenguaje directo, densidad factual) |
 
-Cada dimensión tiene su propio checklist. Puntué el mío en 40/40 — no porque ya fuera perfecto, sino porque el trabajo deliberado de AEO documentado a lo largo de esta serie abordó cada brecha a medida que la encontré. Lo que importa más que el puntaje final es lo que la auditoría revela en el proceso.
+Cada dimensión tiene su propio checklist. El puntaje en sí importa menos que lo que la auditoría revela en el proceso — cada brecha que encontré se convirtió en una tarea, y el trabajo documentado a lo largo de esta serie es el resultado de recorrer ese checklist sistemáticamente.
 
-Tres cosas me sorprendieron cuando revisé esto sistemáticamente.
+Dos cosas me sorprendieron cuando revisé esto sistemáticamente.
 
 **La actualidad no es solo contenido — son señales.** Mencioné en el [primer capítulo](/es/blog/aeo-answer-engine-optimization) que los sistemas de IA ponderan fuertemente la recencia. Lo que la auditoría hizo concreto es que no basta con actualizar el texto — necesitás pruebas visibles. Agregar timestamps de "última actualización" a cada post, mantener `dateModified` actualizado en el schema BlogPosting, y asegurarse de que el llms.txt refleje cambios recientes. El contenido puede ser idéntico, pero si las señales de actualidad están desactualizadas, los sistemas de IA lo tratan como desactualizado.
 
-**La calidad de la localización importa más que la cobertura.** Tener este sitio en dos idiomas ya le da una ventaja de visibilidad — los sistemas de IA tratan cada versión de idioma de forma independiente. Pero la auditoría reveló que las páginas traducidas automáticamente con frases torpes o sin contexto cultural puntuaban más bajo en citabilidad. Las páginas que mejor rinden son las que se leen como si hubieran sido escritas nativamente, no traducidas. Eso es más trabajo, pero es la diferencia entre "técnicamente bilingüe" y "realmente útil en ambos idiomas."
-
-**Las consultas objetivo tienen que ser explícitas.** La auditoría me forzó a mapear contenido contra consultas reales — 30 de ellas, en categorías informacional, comparativa y orientada a la acción. Había estado escribiendo posts que respondían preguntas que nadie estaba haciendo realmente. Ese no es un problema inusual. Mucho contenido se escribe desde la perspectiva del autor ("esto es lo que sé") en lugar de desde la perspectiva del lector ("esto es lo que están tratando de descubrir"). El AEO hace visible esta brecha porque las respuestas de IA se extraen para consultas específicas — el contenido vago no se extrae.
-
-La auditoría también revela requerimientos de mantenimiento. El AEO no es una configuración de una sola vez. Los datos de actualidad solos te dicen que tiene que ser una rutina — actualizar llms.txt, validar schemas, correr consultas objetivo, verificar estadísticas de rastreo. Mensual es probablemente el mínimo.
+**La calidad de la localización importa más que la cobertura.** Tener este sitio en dos idiomas ya le da una ventaja de visibilidad — los sistemas de IA tratan cada versión de idioma de forma independiente. Pero la auditoría reveló que las páginas traducidas automáticamente con frases torpes o sin contexto cultural puntuaban más bajo en citabilidad. Las páginas que mejor rinden son las que se leen como si hubieran sido escritas nativamente, no traducidas. Esa es exactamente la razón por la que este sitio solo existe en inglés y español — los dos idiomas que realmente hablo y puedo auditar personalmente. Podría escalar a más idiomas con traducción por IA, pero no podría leer cada frase y darle forma hasta que suene bien. Recorro cada frase, reescribo lo que no se siente natural, y construyo la versión final yo mismo. Es un proceso que lleva tiempo, pero si querés entregar contenido de calidad con una voz de autor real, es importante.
 
 ---
 
