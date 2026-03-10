@@ -15,6 +15,14 @@ module.exports = {
         'categories:best-practices': ['error', { minScore: 0.95 }],
         'categories:seo': ['error', { minScore: 0.95 }],
       },
+      assertMatrix: [
+        {
+          matchingUrlPattern: '.*/blog/$',
+          assertions: {
+            'categories:performance': ['error', { minScore: 0.8 }],
+          },
+        },
+      ],
     },
     upload: {
       target: 'temporary-public-storage',
