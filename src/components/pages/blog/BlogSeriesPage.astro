@@ -38,12 +38,18 @@ const seriesApiEndpoint = `/api/series/${lang}/${slug}.json`;
 const localizedTitle = t.seriesNames[slug] || series.data.title;
 const localizedDescription =
   t.seriesDescriptions[slug] || series.data.description || '';
+
+const firstPostHero = allPosts[0]?.heroImage || undefined;
+const seriesHeroImage = series.data.heroImage || firstPostHero;
 ---
 
 <MainLayout
   lang={lang}
   title={`${localizedTitle} — ${t.seriesPage.title}`}
   description={localizedDescription || t.seriesPage.emptyState}
+  image={seriesHeroImage}
+  keywords={series.data.keywords}
+  ogType="article"
 >
   <section class="py-10 sm:py-12 lg:py-16">
     <!-- Breadcrumb navigation -->
