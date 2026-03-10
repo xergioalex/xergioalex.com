@@ -158,28 +158,14 @@ $: displayDescription = searchQuery
   ></a>
   {#if postData.heroImage}
     <div class="bg-gray-100 dark:bg-gray-700">
-      {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
-        <picture>
-          <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-          <img
-            src={postData.heroImage}
-            alt=""
-            width={400}
-            height={192}
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          />
-        </picture>
-      {:else}
-        <img
-          src={postData.heroImage}
-          alt=""
-          width={400}
-          height={192}
-          class="w-full h-48 object-cover"
-          loading="lazy"
-        />
-      {/if}
+      <img
+        src={postData.heroImage}
+        alt=""
+        width={400}
+        height={192}
+        class="w-full h-48 object-cover"
+        loading="lazy"
+      />
     </div>
   {/if}
   <div class="p-6">

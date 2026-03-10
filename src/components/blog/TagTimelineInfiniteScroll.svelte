@@ -180,28 +180,14 @@ function buildSeriesBadgeLabel(
 
             {#if post.heroImage}
               <div>
-                {#if post.heroWebpExists && post.heroImage.match(/\.(png|jpe?g)$/i)}
-                  <picture>
-                    <source srcset={post.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                    <img
-                      src={post.heroImage}
-                      alt={post.title}
-                      class="w-full h-44 object-cover"
-                      loading="lazy"
-                      width="800"
-                      height="176"
-                    />
-                  </picture>
-                {:else}
-                  <img
-                    src={post.heroImage}
-                    alt={post.title}
-                    class="w-full h-44 object-cover"
-                    loading="lazy"
-                    width="800"
-                    height="176"
-                  />
-                {/if}
+                <img
+                  src={post.heroImage}
+                  alt={post.title}
+                  class="w-full h-44 object-cover"
+                  loading="lazy"
+                  width="800"
+                  height="176"
+                />
               </div>
             {/if}
 
