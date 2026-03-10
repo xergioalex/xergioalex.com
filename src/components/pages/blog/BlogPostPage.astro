@@ -167,7 +167,7 @@ const breadcrumbData = {
     </article>
     {seriesInfo && (
       <SeriesIndicator
-        client:load
+        client:idle
         lang={lang}
         currentChapter={seriesInfo.currentIndex + 1}
         totalChapters={seriesInfo.posts.length}
