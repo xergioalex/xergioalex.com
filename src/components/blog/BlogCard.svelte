@@ -12,6 +12,7 @@ export let heroWebpExists: boolean = false;
 export let searchQuery: string = '';
 export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
+export let eager: boolean = false;
 let postData: {
   title: string;
   description: string;
@@ -149,28 +150,28 @@ $: displayDescription = searchQuery
 
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   {#if postData.heroImage}
-    <div class="relative">
+    <div class="relative bg-gray-100 dark:bg-gray-700">
       <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800">
         {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
           <picture>
             <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
             <img
               src={postData.heroImage}
-              alt={postData.title}
+              alt=""
               width={400}
               height={192}
               class="w-full h-48 object-cover"
-              loading="lazy"
+              loading={eager ? 'eager' : 'lazy'}
             />
           </picture>
         {:else}
           <img
             src={postData.heroImage}
-            alt={postData.title}
+            alt=""
             width={400}
             height={192}
             class="w-full h-48 object-cover"
-            loading="lazy"
+            loading={eager ? 'eager' : 'lazy'}
           />
         {/if}
       </a>
