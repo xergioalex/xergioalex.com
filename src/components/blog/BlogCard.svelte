@@ -151,7 +151,7 @@ $: displayDescription = searchQuery
 <article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
   {#if postData.heroImage}
     <div class="relative bg-gray-100 dark:bg-gray-700">
-      <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800">
+      <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800" aria-hidden="true" tabindex="-1">
         {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
           <picture>
             <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
