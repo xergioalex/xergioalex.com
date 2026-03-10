@@ -1019,6 +1019,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
     // Share buttons
     shareTitle: 'Comparte este artículo',
+    shareSeriesTitle: 'Comparte esta serie',
     shareOnTwitter: 'Compartir en X',
     shareOnLinkedIn: 'Compartir en LinkedIn',
     shareOnWhatsApp: 'Compartir en WhatsApp',

@@ -1009,6 +1009,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
     // Share buttons
     shareTitle: 'Share this post',
+    shareSeriesTitle: 'Share this series',
     shareOnTwitter: 'Share on X',
     shareOnLinkedIn: 'Share on LinkedIn',
     shareOnWhatsApp: 'Share on WhatsApp',
