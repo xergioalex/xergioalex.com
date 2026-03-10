@@ -61,12 +61,13 @@ describe('BlogCard', () => {
 
 	describe('hero image', () => {
 		it('renders hero image when heroImage is provided', () => {
-			render(BlogCard, {
+			const { container } = render(BlogCard, {
 				props: { post: publishedEnglishPost as never },
 			});
-			const img = screen.getByAltText('My Awesome Post');
+			const img = container.querySelector('img');
 			expect(img).toBeDefined();
-			expect(img.getAttribute('src')).toBe(
+			expect(img?.getAttribute('alt')).toBe('');
+			expect(img?.getAttribute('src')).toBe(
 				'/images/blog/posts/my-awesome-post/hero.jpg',
 			);
 		});
