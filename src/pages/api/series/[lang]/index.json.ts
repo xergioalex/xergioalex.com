@@ -17,6 +17,7 @@ export interface SeriesListingEntry {
   heroImage: string | null;
   firstPostHero: string | null;
   firstPostHeroWebp: boolean;
+  lastPostDate: string;
 }
 
 function heroWebpExists(heroImage: string | undefined): boolean {
@@ -37,15 +38,19 @@ export const GET: APIRoute = async ({ params }) => {
   try {
     const { lang } = params as { lang: Language };
     const allSeries = await getCollection('series');
-    const sortedSeries = allSeries.sort((a, b) => a.data.order - b.data.order);
-
     const seriesEntries: SeriesListingEntry[] = [];
 
-    for (const series of sortedSeries) {
+    for (const series of allSeries) {
       const posts = await getSeriesTimelineIndex(series.id, lang);
       if (posts.length === 0) continue;
 
       const firstPostHero = posts[0]?.heroImage || null;
+
+      // Find the most recent post date across all posts in the series
+      const lastPostDate = posts.reduce((latest, post) => {
+        const d = post.pubDate;
+        return d > latest ? d : latest;
+      }, posts[0].pubDate);
 
       seriesEntries.push({
         slug: series.id,
@@ -56,8 +61,17 @@ export const GET: APIRoute = async ({ params }) => {
         heroImage: series.data.heroImage || null,
         firstPostHero,
         firstPostHeroWebp: heroWebpExists(firstPostHero ?? undefined),
+        lastPostDate,
       });
     }
+
+    // Sort by most recent post date (newest first), fallback to order
+    seriesEntries.sort((a, b) => {
+      const dateCompare =
+        new Date(b.lastPostDate).valueOf() - new Date(a.lastPostDate).valueOf();
+      if (dateCompare !== 0) return dateCompare;
+      return a.order - b.order;
+    });
 
     return new Response(
       JSON.stringify({

@@ -19,13 +19,18 @@ const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
 const allSeries = await getCollection('series');
-const sortedSeries = allSeries.sort((a, b) => a.data.order - b.data.order);
 
 const seriesWithMeta: SeriesListingEntry[] = (
   await Promise.all(
-    sortedSeries.map(async (series) => {
+    allSeries.map(async (series) => {
       const posts = await getSeriesTimelineIndex(series.id, lang);
       if (posts.length === 0) return null;
+
+      const lastPostDate = posts.reduce((latest, post) => {
+        const d = post.pubDate;
+        return d > latest ? d : latest;
+      }, posts[0].pubDate);
+
       return {
         slug: series.id,
         title: series.data.title,
@@ -35,10 +40,19 @@ const seriesWithMeta: SeriesListingEntry[] = (
         heroImage: series.data.heroImage || null,
         firstPostHero: posts[0]?.heroImage || null,
         firstPostHeroWebp: posts[0]?.heroWebpExists || false,
+        lastPostDate,
       };
     })
   )
 ).filter((s): s is SeriesListingEntry => s !== null);
+
+// Sort by most recent post date (newest first), fallback to order
+seriesWithMeta.sort((a, b) => {
+  const dateCompare =
+    new Date(b.lastPostDate).valueOf() - new Date(a.lastPostDate).valueOf();
+  if (dateCompare !== 0) return dateCompare;
+  return a.order - b.order;
+});
 
 const initialSeries = seriesWithMeta.slice(0, BLOG_PAGE_SIZE);
 const seriesApiEndpoint = `/api/series/${lang}/index.json`;
