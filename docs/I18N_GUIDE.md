@@ -255,6 +255,11 @@ const posts = allPosts.filter((post) => post.id.startsWith('es/'));
 - `pubDate`, `updatedDate`, `heroImage`, and `tags` must be identical between language pairs
 - Post filenames must match between `en/` and `es/` folders
 
+**Spanish content voice:**
+
+- Use **tuteo** (tú/tienes/puedes), NOT **voseo** (vos/tenés/podés) — the register is informal-professional with Colombian Spanish phrasing
+- Proper diacritical marks are mandatory (see [Standards](STANDARDS.md))
+
 ### Pages
 
 Pages follow a route-based approach:

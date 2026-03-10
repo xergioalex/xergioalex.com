@@ -251,7 +251,8 @@ series: "optional-series"
 - `heroImage`: Use the same path as EN by default. If a `hero-es.{ext}` variant exists, use it in the ES frontmatter
 - Adapt idioms and expressions to sound natural
 - **Keywords:** Generate language-specific keywords (adapted, not translated) — see Step 4
-- Use informal-professional register
+- Use informal-professional register (tuteo: tú/tienes/puedes)
+- **CRITICAL — No voseo:** NEVER use Argentine/Rioplatense voseo forms (vos, tenés, podés, sabés, querés, hacés, buscás, necesitás, decís, etc.). Always use tuteo: tienes, puedes, sabes, quieres, haces, buscas, necesitas, dices. The tone is personal but professional — tuteo, not voseo.
 - When translating to Spanish, prefer Colombian Spanish phrasing
 - Do NOT translate code blocks, CLI commands, technical terms, product names
 - **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página), etc. Verify before saving.
@@ -342,6 +343,7 @@ content: add blog post "{title}" (en + es)
 - [ ] Translated title and description are natural and accurate
 - [ ] Voice is personal-professional, not marketing copy (topic mode)
 - [ ] Spanish reads naturally (not machine-translated)
+- [ ] Spanish uses tuteo (tú), NOT voseo (vos) — no `tenés`, `podés`, `sabés`, `querés`, etc.
 - [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
 - [ ] Both EN and ES versions have `keywords` array (5-8 natural search phrases per post)
 - [ ] ES keywords adapted to Spanish search behavior (not literal translations)

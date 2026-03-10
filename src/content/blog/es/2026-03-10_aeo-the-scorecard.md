@@ -10,9 +10,9 @@ series: "aeo-journey"
 seriesOrder: 3
 ---
 
-La parte más difícil del AEO es la medición. Google Analytics no ve los bots de IA. No ejecutan JavaScript. Desde la perspectiva de las analíticas del lado del cliente, cada visita de un crawler de IA es completamente invisible — un agujero negro al que va tu mejor contenido y del que no sabés nada de lo que pasa después.
+La parte más difícil del AEO es la medición. Google Analytics no ve los bots de IA. No ejecutan JavaScript. Desde la perspectiva de las analíticas del lado del cliente, cada visita de un crawler de IA es completamente invisible — un agujero negro al que va tu mejor contenido y del que no sabes nada de lo que pasa después.
 
-Pasé bastante tiempo tratando de entender qué significa siquiera "funcionar" en el contexto del AEO. Con el SEO tradicional tenés rankings, CTR, impresiones. Con el AEO tenés... intuición. Alguien te dice que te encontró en ChatGPT. Buscás tu propio nombre en Perplexity y a veces aparecés, a veces no. El ecosistema de medición está años por detrás del ecosistema de optimización, y esa brecha es frustrante para todos — no solo para mí.
+Pasé bastante tiempo tratando de entender qué significa siquiera "funcionar" en el contexto del AEO. Con el SEO tradicional tienes rankings, CTR, impresiones. Con el AEO tienes... intuición. Alguien te dice que te encontró en ChatGPT. Buscas tu propio nombre en Perplexity y a veces apareces, a veces no. El ecosistema de medición está años por detrás del ecosistema de optimización, y esa brecha es frustrante para todos — no solo para mí.
 
 Este capítulo trata de cerrar esa brecha tanto como es posible actualmente, y es honesto sobre cuánto camino falta recorrer todavía.
 
@@ -20,7 +20,7 @@ Este capítulo trata de cerrar esa brecha tanto como es posible actualmente, y e
 
 ## Rastrear el Tráfico de Bots IA
 
-El único lugar donde podés interceptar los crawlers de IA es del lado del servidor, antes de que salga la respuesta. Las analíticas del lado del cliente nunca los ven — no ejecutan JavaScript, así que herramientas como Google Analytics ni saben que existen.
+El único lugar donde puedes interceptar los crawlers de IA es del lado del servidor, antes de que salga la respuesta. Las analíticas del lado del cliente nunca los ven — no ejecutan JavaScript, así que herramientas como Google Analytics ni saben que existen.
 
 El enfoque que construí para este sitio es un [middleware de Cloudflare Pages](https://github.com/xergioalex/xergioalex.com/blob/main/functions/_middleware.ts) que corre en el edge con cada solicitud. Verifica el header `User-Agent` contra una lista de patrones de bots de IA conocidos — GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, OAI-SearchBot, Amazonbot, Meta-ExternalAgent, Bytespider, y algunos otros. Cuando hay coincidencia, dispara un evento `ai_bot_visit` a [Umami](https://umami.is/) (mi plataforma de analíticas) con el nombre del bot, la ruta de la página y el método HTTP. Los visitantes humanos pasan sin costo adicional — son apenas una docena de pruebas regex que toman microsegundos.
 
@@ -44,7 +44,7 @@ La mayoría de estos son herramientas SEO (AwarioBot, SERankingBacklinksBot) o c
 
 Esas entradas de "Mozilla" están usando `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit...` — un string completo de User-Agent de Safari en escritorio. Son scrapers automatizados disfrazándose de navegadores reales. Exactamente el tipo de bot que es imposible de clasificar sin un análisis más profundo. Esta capa es útil como mecanismo de descubrimiento: cuando aparezca un nuevo crawler de IA, lo voy a ver acá primero.
 
-Lo que obtenés de todo esto es imperfecto pero real: qué bots están rastreando, qué páginas visitan, con qué frecuencia. Esa es la base. Todo lo demás en la medición de AEO se construye sobre esta señal — o le falta completamente.
+Lo que obtienes de todo esto es imperfecto pero real: qué bots están rastreando, qué páginas visitan, con qué frecuencia. Esa es la base. Todo lo demás en la medición de AEO se construye sobre esta señal — o le falta completamente.
 
 ### Rastrear Solicitudes de Markdown
 
@@ -69,21 +69,21 @@ Los datos apenas están empezando a llegar — implementé esto recientemente y 
 
 Este es el estado de la industria: una herramienta nativa útil, algunas opciones de terceros, y mucho trabajo manual de suposición.
 
-El [informe de Rendimiento de IA de Bing](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) es lo más concreto disponible. Obtenés citas totales, qué páginas son referenciadas, y las "consultas de fundamentación" — las frases que usó la IA cuando recuperó tu contenido. Cubre Microsoft Copilot y los resúmenes de Bing AI específicamente. No es un panorama global, pero son datos reales de una plataforma real, lo que lo hace más útil que la mayoría de las alternativas disponibles ahora mismo.
+El [informe de Rendimiento de IA de Bing](https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview) es lo más concreto disponible. Obtienes citas totales, qué páginas son referenciadas, y las "consultas de fundamentación" — las frases que usó la IA cuando recuperó tu contenido. Cubre Microsoft Copilot y los resúmenes de Bing AI específicamente. No es un panorama global, pero son datos reales de una plataforma real, lo que lo hace más útil que la mayoría de las alternativas disponibles ahora mismo.
 
 Google no tiene nada comparable para AI Overviews. [Google Search Console ya incluye datos de AI Mode](https://searchengineland.com/google-ai-mode-traffic-data-search-console-457076), pero todo queda agrupado dentro del tipo de búsqueda "Web" regular — [no hay un filtro separado](https://developers.google.com/search/docs/appearance/ai-features) para ver cuánto tráfico viene de superficies generadas por IA versus los resultados orgánicos tradicionales. Si eso es una opacidad intencional o simplemente no está listo, no podría decirlo — pero es una brecha significativa dado que Google genera la mayor cantidad de AI Overviews. La plataforma con mayor presencia te da la menor visibilidad.
 
-Para todo lo demás, investigando encontré un par de opciones que no he probado personalmente pero que se ven prometedoras: [Otterly.ai](https://otterly.ai) para monitoreo de citas entre plataformas y el [AEO Grader gratuito de HubSpot](https://www.hubspot.com/aeo-grader) para una auditoría puntuada contra las mejores prácticas de AEO. Más allá de esas, quedan las pruebas manuales — correr tus consultas objetivo en ChatGPT y Perplexity y verificar si aparecés.
+Para todo lo demás, investigando encontré un par de opciones que no he probado personalmente pero que se ven prometedoras: [Otterly.ai](https://otterly.ai) para monitoreo de citas entre plataformas y el [AEO Grader gratuito de HubSpot](https://www.hubspot.com/aeo-grader) para una auditoría puntuada contra las mejores prácticas de AEO. Más allá de esas, quedan las pruebas manuales — correr tus consultas objetivo en ChatGPT y Perplexity y verificar si apareces.
 
 Las pruebas manuales son más útiles de lo que parecen, pero con una advertencia importante. Según [la investigación de AirOps](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt), solo el 30% de las marcas se mantienen visibles de una respuesta de IA a la siguiente, y solo el 20% en cinco ejecuciones consecutivas. Una verificación puntual el martes no significa nada para el jueves.
 
-Esta es la parte más débil del ecosistema AEO ahora mismo. Podemos optimizar contenido. Podemos rastrear crawlers. Pero medir "¿con qué frecuencia me cita la IA?" con alguna confianza estadística sigue siendo básicamente un problema sin resolver. El rastreo de bots del lado del servidor es el mejor proxy disponible — al menos podés confirmar que los bots están llegando y qué páginas les interesan. Lo que no podés confirmar es si esas visitas de crawleo se están convirtiendo en citas.
+Esta es la parte más débil del ecosistema AEO ahora mismo. Podemos optimizar contenido. Podemos rastrear crawlers. Pero medir "¿con qué frecuencia me cita la IA?" con alguna confianza estadística sigue siendo básicamente un problema sin resolver. El rastreo de bots del lado del servidor es el mejor proxy disponible — al menos puedes confirmar que los bots están llegando y qué páginas les interesan. Lo que no puedes confirmar es si esas visitas de crawleo se están convirtiendo en citas.
 
 ---
 
 ## La Auditoría
 
-No hay herramientas de auditoría AEO estandarizadas como [SEMrush](https://www.semrush.com/) o [Lighthouse](https://developer.chrome.com/docs/lighthouse) para SEO y rendimiento. Tenés que construir el checklist tú mismo, o tomarlo prestado de algún lado. Como no encontré nada que cubriera todo lo que me importaba, armé mi propio framework alrededor de cuatro dimensiones — básicamente las cuatro preguntas que me hacía sobre cada página de este sitio:
+No hay herramientas de auditoría AEO estandarizadas como [SEMrush](https://www.semrush.com/) o [Lighthouse](https://developer.chrome.com/docs/lighthouse) para SEO y rendimiento. Tienes que construir el checklist tú mismo, o tomarlo prestado de algún lado. Como no encontré nada que cubriera todo lo que me importaba, armé mi propio framework alrededor de cuatro dimensiones — básicamente las cuatro preguntas que me hacía sobre cada página de este sitio:
 
 | Dimensión | Qué Mide |
 |-----------|-----------------|
@@ -96,9 +96,9 @@ Cada dimensión tiene su propio checklist. El puntaje en sí importa menos que l
 
 Dos cosas me sorprendieron cuando revisé esto sistemáticamente.
 
-**La actualidad no es solo contenido — son señales.** Mencioné en el [primer capítulo](/es/blog/aeo-answer-engine-optimization) que los sistemas de IA favorecen el contenido fresco — y [los datos lo respaldan](https://www.seerinteractive.com/insights/study-ai-brand-visibility-and-content-recency): el contenido citado por IA es un 25.7% más reciente que los resultados tradicionales de Google, y en ChatGPT específicamente, el 76.4% de las páginas más citadas se actualizaron en los últimos 30 días. Lo que descubrí trabajando en este sitio es que no basta con actualizar el texto — necesitás pruebas visibles. Agregar timestamps de "última actualización" a cada post, mantener `dateModified` actualizado en el schema BlogPosting, y asegurarse de que el llms.txt refleje cambios recientes. El contenido puede ser idéntico, pero si las señales de actualidad están desactualizadas, los sistemas de IA lo tratan como desactualizado.
+**La actualidad no es solo contenido — son señales.** Mencioné en el [primer capítulo](/es/blog/aeo-answer-engine-optimization) que los sistemas de IA favorecen el contenido fresco — y [los datos lo respaldan](https://www.seerinteractive.com/insights/study-ai-brand-visibility-and-content-recency): el contenido citado por IA es un 25.7% más reciente que los resultados tradicionales de Google, y en ChatGPT específicamente, el 76.4% de las páginas más citadas se actualizaron en los últimos 30 días. Lo que descubrí trabajando en este sitio es que no basta con actualizar el texto — necesitas pruebas visibles. Agregar timestamps de "última actualización" a cada post, mantener `dateModified` actualizado en el schema BlogPosting, y asegurarse de que el llms.txt refleje cambios recientes. El contenido puede ser idéntico, pero si las señales de actualidad están desactualizadas, los sistemas de IA lo tratan como desactualizado.
 
-**La calidad de la localización importa más que la cobertura.** Tener este sitio en dos idiomas ya le da una ventaja de visibilidad — los sistemas de IA tratan cada versión de idioma de forma independiente. Pero las páginas traducidas automáticamente con frases torpes o sin contexto cultural puntúan más bajo en citabilidad. Las páginas que mejor rinden son las que se leen como si hubieran sido escritas nativamente, no traducidas. Esa es exactamente la razón por la que este sitio solo existe en inglés y español — los dos idiomas que realmente hablo y puedo auditar personalmente. Podría escalar a más idiomas con traducción por IA, pero no podría leer cada frase y darle forma hasta que suene bien. Recorro cada frase, reescribo lo que no se siente natural, y construyo la versión final yo mismo. Es un proceso que lleva tiempo, pero si querés entregar contenido de calidad con una voz de autor real, es importante.
+**La calidad de la localización importa más que la cobertura.** Tener este sitio en dos idiomas ya le da una ventaja de visibilidad — los sistemas de IA tratan cada versión de idioma de forma independiente. Pero las páginas traducidas automáticamente con frases torpes o sin contexto cultural puntúan más bajo en citabilidad. Las páginas que mejor rinden son las que se leen como si hubieran sido escritas nativamente, no traducidas. Esa es exactamente la razón por la que este sitio solo existe en inglés y español — los dos idiomas que realmente hablo y puedo auditar personalmente. Podría escalar a más idiomas con traducción por IA, pero no podría leer cada frase y darle forma hasta que suene bien. Recorro cada frase, reescribo lo que no se siente natural, y construyo la versión final yo mismo. Es un proceso que lleva tiempo, pero si quieres entregar contenido de calidad con una voz de autor real, es importante.
 
 ---
 

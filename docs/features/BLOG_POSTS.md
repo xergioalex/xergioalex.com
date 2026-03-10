@@ -143,6 +143,7 @@ When creating the translated version:
 - **Preserve exactly:** `pubDate`, `updatedDate`, `heroLayout`, `tags`, code blocks, formatting
 - **heroImage:** Use the same path as EN by default. If the hero contains English text, use a localized variant (see [Multilingual Hero Images](#multilingual-hero-images))
 - Use natural, idiomatic translations (not literal word-for-word)
+- **Spanish register:** Use tuteo (tú/tienes/puedes), NOT voseo (vos/tenés/podés). Prefer Colombian Spanish phrasing.
 - Do NOT translate code blocks, CLI commands, or technical identifiers
 - Maintain the same markdown structure (headings, lists, emphasis)
 

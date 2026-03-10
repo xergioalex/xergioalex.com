@@ -210,7 +210,6 @@ $: displayDescription = searchQuery
               <a
                 href={`${prefix}/blog/series/${seriesSlug}/`}
                 class="inline-flex items-center rounded-full border-2 border-blue-200 bg-blue-50/70 px-2.5 py-0.5 text-[11px] font-medium text-blue-700 transition-colors hover:bg-blue-100 hover:border-blue-300 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-200 dark:hover:bg-blue-900/50 dark:hover:border-blue-700"
-                aria-label={seriesBadgeLabel}
                 title={seriesBadgeLabel}
               >
                 {seriesCurrent}/{seriesTotal}
@@ -218,7 +217,6 @@ $: displayDescription = searchQuery
             {:else}
               <span
                 class="inline-flex items-center rounded-full border-2 border-blue-200 bg-blue-50/70 px-2.5 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-800 dark:bg-blue-900/30 dark:text-blue-200"
-                aria-label={seriesBadgeLabel}
                 title={seriesBadgeLabel}
               >
                 {seriesCurrent}/{seriesTotal}
@@ -236,11 +234,11 @@ $: displayDescription = searchQuery
         {/if}
       </div>
       {#if (postData.tags && postData.tags.length > 0) || (postData.topics && postData.topics.length > 0)}
-        <div class="flex flex-wrap gap-1">
+        <div class="flex flex-wrap gap-1.5">
           {#each postData.tags as tag}
             <a
               href={`${prefix}/blog/tag/${tag}/`}
-              class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
+              class="text-xs px-2 py-1 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
             >
               #{t.tagNames[tag] || tag}
             </a>
@@ -248,7 +246,7 @@ $: displayDescription = searchQuery
           {#each postData.topics as topic}
             <a
               href={`${prefix}/blog/tag/${topic}/`}
-              class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+              class="text-xs px-2 py-1 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
             >
               {t.tagNames[topic] || topic}
             </a>

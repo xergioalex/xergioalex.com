@@ -32,7 +32,7 @@ Esa es la idea detrás de Markdown for Agents. Enviar Markdown cuando el cliente
 
 ## La Propuesta de Cloudflare
 
-En febrero de 2026, [Cloudflare publicó "Markdown for Agents"](https://blog.cloudflare.com/markdown-for-agents/) — un post que planteó el problema con claridad y propuso una implementación: conversión de HTML a Markdown en el edge. Cuando una solicitud incluye `Accept: text/markdown`, Cloudflare Workers la intercepta, obtiene el HTML, lo convierte al vuelo y devuelve Markdown limpio al agente. Sin cambios requeridos en el servidor de origen. También lanzaron [`markdown.new`](https://markdown.new) — una herramienta pública donde podés pegar cualquier URL y obtener su versión Markdown al instante, útil para probar cómo se vería cualquier sitio a través de los ojos de un agente.
+En febrero de 2026, [Cloudflare publicó "Markdown for Agents"](https://blog.cloudflare.com/markdown-for-agents/) — un post que planteó el problema con claridad y propuso una implementación: conversión de HTML a Markdown en el edge. Cuando una solicitud incluye `Accept: text/markdown`, Cloudflare Workers la intercepta, obtiene el HTML, lo convierte al vuelo y devuelve Markdown limpio al agente. Sin cambios requeridos en el servidor de origen. También lanzaron [`markdown.new`](https://markdown.new) — una herramienta pública donde puedes pegar cualquier URL y obtener su versión Markdown al instante, útil para probar cómo se vería cualquier sitio a través de los ojos de un agente.
 
 El post aterrizó en los círculos de desarrolladores e inició una conversación que todavía continúa. Posicionó el header `Accept: text/markdown` como el estándar emergente para esta clase de solicitud — lo que probablemente será, si el patrón se consolida.
 
@@ -200,7 +200,7 @@ Creo que la pregunta más importante no es si Markdown for Agents funciona hoy, 
 
 Estoy dispuesto a hacer esa apuesta.
 
-De hecho, este mismo post que estás leyendo tiene su versión Markdown lista para agentes. Podés verla directamente en <a href="/es/blog/aeo-markdown-for-agents.md" target="_blank">/es/blog/aeo-markdown-for-agents.md</a>, o pedirla vía content negotiation:
+De hecho, este mismo post que estás leyendo tiene su versión Markdown lista para agentes. Puedes verla directamente en <a href="/es/blog/aeo-markdown-for-agents.md" target="_blank">/es/blog/aeo-markdown-for-agents.md</a>, o pedirla vía content negotiation:
 
 ```bash
 # Negociación de contenido — misma URL, diferente formato
