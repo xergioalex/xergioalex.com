@@ -61,7 +61,7 @@ const seriesHeroImage = series.data.heroImage || firstPostHero;
       <span class="truncate font-normal text-gray-600 dark:text-gray-300" aria-current="page">{localizedTitle}</span>
     </nav>
 
-    <div class="px-4">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
       <SeriesInfiniteScroll
         client:visible
         {initialPosts}
@@ -70,6 +70,7 @@ const seriesHeroImage = series.data.heroImage || firstPostHero;
         {lang}
         seriesTitle={localizedTitle}
         seriesDescription={localizedDescription}
+        seriesHeroImage={seriesHeroImage}
         pageSize={BLOG_PAGE_SIZE}
         emptyStateMessage={t.seriesPage.emptyState}
         {topicTagNames}
