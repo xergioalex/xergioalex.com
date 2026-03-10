@@ -28,6 +28,7 @@ This document defines the **canonical coding rules** for all contributors and AI
 - **Always use accented vowels:** análisis, más, número, código, máquina, ejecución, versión, información, aplicación, descripción, sección, también, después, página, título, último, próximo, índice, búsqueda, artículo, categoría, navegación, configuración, aquí, así, rápido, fácil, típico, científico, académico, práctica, automáticamente, producción, integración
 - **Question/exclamation words need accents:** cómo, qué, cuál, dónde, cuándo, cuánto, por qué
 - **Verb forms:** está (is), será (will be), empecé (I started), comenzó (started), surgió (emerged)
+- **Tuteo, NOT voseo (MANDATORY):** Always use tú conjugations (tienes, puedes, sabes, quieres, haces, necesitas, dices). NEVER use vos conjugations (tenés, podés, sabés, querés, hacés, necesitás, decís). The register is informal-professional with Colombian Spanish phrasing.
 
 **English orthography rules:**
 
@@ -40,6 +41,7 @@ Before committing any Spanish text (blog posts, translations, UI strings), verif
 - [ ] All ñ characters are present (search for `pequeno`, `tamano`, `ano`, `diseno`, `espanol`)
 - [ ] All accented vowels are present (search for `analisis`, `numero`, `codigo`, `ejecucion`, `version`)
 - [ ] Question words have accents when interrogative (`cómo`, `qué`, `dónde`)
+- [ ] No voseo forms (search for `tenés`, `podés`, `sabés`, `querés`, `hacés`, `necesitás`, `decís`)
 
 ## TypeScript Standards
 

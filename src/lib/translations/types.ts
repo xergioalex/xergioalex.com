@@ -517,6 +517,7 @@ export interface SiteTranslations {
 
     // Share buttons
     shareTitle: string;
+    shareSeriesTitle: string;
     shareOnTwitter: string;
     shareOnLinkedIn: string;
     shareOnWhatsApp: string;

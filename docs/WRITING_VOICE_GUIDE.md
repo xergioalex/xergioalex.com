@@ -43,6 +43,7 @@ Grounded in evidence, admits uncertainty ("I think that answer landed"). Never b
 - Blames others
 - Uses marketing language in the body
 - Claims false modesty
+- Uses voseo in Spanish (no `tenés`, `podés`, `sabés` — always tuteo: `tienes`, `puedes`, `sabes`)
 
 ## 3. AI Slop Patterns to AVOID
 
@@ -94,6 +95,7 @@ Expected: zero matches. If any match is found, fix before committing.
 [ ] Read it aloud — does it sound like you talking, or a report?
 [ ] Does every section have at least some sentence length variety?
 [ ] Is there at least 1 sentence that starts with "Honestly" or "I think"?
+[ ] Spanish content uses tuteo (tú), not voseo (vos)?
 ```
 
 ## 7. AI Vocabulary Blocklist

@@ -33,7 +33,7 @@ describe('BlogCard', () => {
 			render(BlogCard, {
 				props: { post: publishedEnglishPost as never, lang: 'en' },
 			});
-			const link = screen.getByText('My Awesome Post').closest('a');
+			const link = screen.getByLabelText('My Awesome Post');
 			expect(link?.getAttribute('href')).toBe('/blog/my-awesome-post/');
 		});
 
@@ -41,7 +41,7 @@ describe('BlogCard', () => {
 			render(BlogCard, {
 				props: { post: publishedSpanishPost as never, lang: 'es' },
 			});
-			const link = screen.getByText('Mi Post Increible').closest('a');
+			const link = screen.getByLabelText('Mi Post Increible');
 			expect(link?.getAttribute('href')).toBe(
 				'/es/blog/mi-post-increible/',
 			);
