@@ -19,21 +19,48 @@ This chapter is about closing that gap as much as currently possible, and honest
 
 ## Tracking AI Bot Traffic
 
-The only place to catch AI crawlers is server-side, before the response goes out. Client-side analytics never sees them.
+The only place to catch AI crawlers is server-side, before the response goes out. Client-side analytics never sees them — they don't execute JavaScript, so tools like Google Analytics have no idea they exist.
 
-The approach that works: middleware that runs at the edge on every request, checks the `User-Agent` header against a list of known AI bot patterns, and fires analytics events when there's a match. Human visitors pass through with zero overhead. Full implementation details are in [Tracking the Invisible: How I Built AI Bot Analytics](/blog/tracking-invisible-ai-bot-analytics) — the short version is that Cloudflare Pages middleware handles this cleanly, using `context.waitUntil()` so the event fires without blocking the response.
+The approach I built for this site is a [Cloudflare Pages middleware](https://github.com/xergioalex/xergioalex.com/blob/main/functions/_middleware.ts) that runs at the edge on every request. It checks the `User-Agent` header against a list of known AI bot patterns — GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, OAI-SearchBot, Amazonbot, Meta-ExternalAgent, Bytespider, and a few others. When there's a match, it fires an `ai_bot_visit` event to [Umami](https://umami.is/) (my analytics platform) with the bot name, page path, and HTTP method. Human visitors pass through with zero overhead — it's just a dozen regex tests that take microseconds.
 
-The patterns to watch cover the main players: GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, OAI-SearchBot, plus a handful of others. Each match fires an `ai_bot_visit` event with the bot name, page path, and HTTP method.
+The key design decision is using `context.waitUntil()` to defer the analytics call. The bot gets its response immediately; the event fires in the background. Analytics failures never block page delivery — an empty catch ensures that a Umami outage doesn't break the site.
 
-What you get from this is imperfect but real: which bots are crawling, which pages they visit, how often. That's the baseline. Everything else in AEO measurement is built on top of this signal — or is missing it entirely.
+But not every crawler announces itself clearly. A second layer catches unrecognized bots — anything with "crawler", "spider", "scraper", or "agent" in the User-Agent that isn't a known search engine like Googlebot or Bingbot. These fire an `unknown_bot_visit` event that includes the full User-Agent string, so I can inspect the dashboard later and decide if any of them deserve to be promoted to the known list.
 
-For tracking when agents request Markdown content — via `Accept: text/markdown` headers or `.md` URLs directly — that's covered in [Markdown for Agents](/blog/aeo-markdown-for-agents), where the full tracking architecture lives alongside the implementation.
+I wrote about the full implementation story in [Tracking the Invisible: How I Built AI Bot Analytics](/blog/tracking-invisible-ai-bot-analytics). Here's what the data actually looks like after a few months of collection:
+
+![Umami dashboard showing ai_bot_visit events by bot: Amazonbot 56%, OAI-SearchBot 9%, Meta-ExternalAgent 9%, ClaudeBot 7%, Bytespider 6%, ChatGPT-User 6%, GPTBot 4%, PerplexityBot 3%](/images/blog/posts/aeo-the-scorecard/umami-ai-bot-visit.png)
+
+The distribution surprised me. Amazonbot dominates at 56% of all AI bot visits — not what I expected when I first set this up. OpenAI's bots (OAI-SearchBot + ChatGPT-User + GPTBot) collectively account for about 19%, Meta-ExternalAgent sits at 9%, and ClaudeBot at 7%. PerplexityBot is the smallest at 3%, which is interesting given how much Perplexity has grown as a product.
+
+The unknown bot dashboard tells a different story:
+
+![Umami dashboard showing unknown_bot_visit events: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-visit.png)
+
+Most of these are SEO tools (AwarioBot, SERankingBacklinksBot) or social media crawlers (Twitterbot), not AI systems. The 23% labeled "Mozilla" is likely automated scrapers using generic browser User-Agent strings — exactly the kind of bot that's impossible to classify without deeper analysis. This layer is useful as a discovery mechanism: when a new AI crawler appears, I'll see it here first.
+
+What you get from all of this is imperfect but real: which bots are crawling, which pages they visit, how often. That's the baseline. Everything else in AEO measurement is built on top of this signal — or is missing it entirely.
+
+### Tracking Markdown Requests
+
+The same middleware tracks a second signal: when agents request Markdown content — via `Accept: text/markdown` headers or direct `.md` URLs. In my implementation, every Markdown request fires a `markdown_request` event to Umami with:
+
+| Field | Description |
+|-------|-------------|
+| `bot` | Known bot name (GPTBot, ClaudeBot, etc.) or `"unknown"` |
+| `path` | The requested path |
+| `source` | `content_negotiation` or `direct_url` |
+| `user_agent` | First 200 characters of the User-Agent string |
+
+The `source` field is the most interesting one. If agents start sending `Accept: text/markdown` headers — the "proper" way to request [Markdown for Agents](/blog/aeo-markdown-for-agents) — it shows up as `content_negotiation`. If they're just hitting `.md` URLs they found somewhere, it appears as `direct_url`. The ratio tells you something about how aware agents are of the convention.
+
+![Umami dashboard showing markdown_request events by source: content_negotiation at 52 (51%) vs direct_url at 49 (49%)](/images/blog/posts/aeo-the-scorecard/umami-markdown-request-source.png)
+
+The data is just starting to come in — I implemented this recently and it's still too early to draw conclusions. But going forward, this signal will let me understand whether the standard is actually gaining adoption and how much AI bots are requesting Markdown content on my site.
 
 ---
 
 ## The Measurement Landscape
-
-**Bing Webmaster Tools launched an AI Performance report in February 2026 — the first official tool from any major platform showing how often your content gets cited in AI-generated answers. Google hasn't shipped an equivalent yet. Third-party tools exist but are volatile.**
 
 This is the state of the industry: one useful native tool, a few third-party options, and a lot of manual guesswork.
 
@@ -43,15 +70,13 @@ Google hasn't shipped anything comparable for AI Overviews. Google Search Consol
 
 For everything else, the options are: [Otterly.ai](https://otterly.ai) for cross-platform citation monitoring, [HubSpot's free AEO Grader](https://www.hubspot.com/aeo-grader) for a scored audit against AEO best practices, and manual testing — running your target queries through ChatGPT and Perplexity and checking if you appear.
 
-Manual testing is more useful than it sounds, but with a major caveat. According to [AirOps research](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt), only 30% of brands stay visible from one AI answer to the next, and only 20% across five consecutive runs. Google AI Overviews change roughly 70% of their content for the same query between runs, with about half the citations swapped out. A snapshot check on Tuesday means nothing by Thursday.
+Manual testing is more useful than it sounds, but with a major caveat. According to [AirOps research](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt), only 30% of brands stay visible from one AI answer to the next, and only 20% across five consecutive runs. A snapshot check on Tuesday means nothing by Thursday.
 
 This is the weakest part of the AEO ecosystem right now. We can optimize content. We can track crawlers. But measuring "how often does AI cite me?" with any statistical confidence is still basically unsolved. Server-side bot tracking is the best proxy available — you can at least confirm bots are coming and which pages they care about. What you can't confirm is whether those crawl visits are turning into citations.
 
 ---
 
 ## The Audit
-
-**Running a structured AEO audit reveals what's actually missing — not what you assume is missing. The four dimensions that matter are Discoverability, Extractability, Trust, and Citability.**
 
 There are no standardized AEO audit tools the way SEMrush or Lighthouse handle SEO and performance. You're building the checklist yourself, or borrowing one. The four-dimension framework I landed on covers the questions that actually matter:
 
@@ -66,9 +91,9 @@ Each dimension has its own checklist. I scored mine at 40/40 — not because it 
 
 Three things surprised me when I went through this systematically.
 
-**Freshness matters more than I expected.** According to [Ten Speed's research](https://www.tenspeed.io/blog/content-freshness-aeo-era), 76.4% of AI-cited pages were updated within the previous 30 days. AI systems prefer content that's [25.7% fresher](https://www.hillwebcreations.com/content-freshness/) than what traditional search surfaces. Adding visible "last updated" timestamps to posts led to [30% more Perplexity citations](https://www.averi.ai/blog/google-ai-overviews-optimization-how-to-get-featured-in-2026) in one published study. Timestamps as a trust signal wasn't something I'd considered before. Now they're on every post.
+**Freshness isn't just about content — it's about signals.** I mentioned in the [first chapter](/blog/aeo-answer-engine-optimization) that AI systems weight recency heavily. What the audit made concrete is that it's not enough to update the text — you need visible proof. Adding "last updated" timestamps to every post, keeping `dateModified` current in the BlogPosting schema, and making sure the llms.txt reflects recent changes. The content can be identical, but if the freshness signals are stale, AI systems treat it as stale.
 
-**Bilingual content is a real multiplier.** Properly localized multilingual sites see [up to 327% more AI Overview visibility](https://koanthic.com/en/multilingual-seo-ai/) compared to single-language sites — and the emphasis is on "localized," not translated. AI systems assess each language independently. Machine translation without cultural adaptation doesn't qualify. This matters for anyone building a site that serves multiple languages: the work of actual translation pays off in AEO the same way it does in traditional search.
+**Localization quality matters more than coverage.** Running this site in two languages already gives it a visibility advantage — AI systems treat each language version independently. But the audit revealed that machine-translated pages with awkward phrasing or missing cultural context scored lower on citability. The pages that perform best are the ones that read like they were written natively, not translated. That's more work, but it's the difference between "technically bilingual" and "actually useful in both languages."
 
 **Target queries need to be explicit.** The audit forced me to map content against real queries — 30 of them, across informational, comparison, and action-oriented categories. I'd been writing posts that answered questions nobody was actually asking. That's not an unusual problem. A lot of content is written from the author's perspective ("here's what I know") rather than from the reader's perspective ("here's what they're trying to find out"). AEO makes this gap visible because AI answers are pulled to specific queries — vague content doesn't get pulled.
 
@@ -78,13 +103,9 @@ The audit also surfaces maintenance requirements. AEO isn't a one-time setup. Th
 
 ## Where This Is Heading
 
-**AI referral traffic grew 123% between September 2024 and February 2025. ChatGPT drives 87.4% of it. The infrastructure standards are still forming — the IETF AIPREF working group is drafting formal specs for AI content permissions. The sites that adapt now have a window.**
-
-Only [37% of marketing teams](https://www.acquia.com/blog/why-answer-engine-optimization-aeo-next-big-thing-digital-strategy-and-why-most-brands-arent) are actively optimizing for AI search. 70% recognize it matters. Only 20% have started. The brands implementing see [3.4x more visibility](https://blog.hubspot.com/marketing/answer-engine-optimization-trends) than late adopters. The first-mover advantage is real, and the window is still open — though it won't stay open indefinitely.
-
 The standards are still being written. The [IETF AIPREF working group](https://www.ietf.org/blog/aipref-wg/), chartered in February 2025, is drafting formal specifications for how websites can express preferences about AI content use — separate categories for training, AI output, and search. That distinction matters. Right now, robots.txt is the best we have, and it was never designed for this problem. Crawl directives that predate large language models by fifteen years are carrying a lot of weight they weren't built to carry.
 
-The traffic numbers aren't theoretical. AI referral traffic [grew 123%](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) between September 2024 and February 2025. ChatGPT drives 87.4% of it. Vercel reported ChatGPT referrals [grew to 10% of new signups](https://aiseotracker.com/case-study/vercel). Tally.so saw ChatGPT become their number one referral source, period. Real companies, real numbers — not projections.
+The traffic numbers aren't theoretical. [AI referral traffic](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) now accounts for over 1% of all website visits across major industries, growing roughly 1% month over month — and ChatGPT drives 87.4% of it. Vercel reported ChatGPT referrals [grew to 10% of new signups](https://aiseotracker.com/case-study/vercel). Tally.so saw ChatGPT become their number one referral source, period. Real companies, real numbers — not projections.
 
 The measurement picture will improve. Bing's AI Performance report is a start. More platforms will follow — they have to, because the demand from publishers to understand citation behavior is only going to grow. The AIPREF specs will eventually give us cleaner permission frameworks. And as Markdown for Agents [becomes more common](/blog/aeo-markdown-for-agents), we'll have better signals about how agents are actually consuming content, not just crawling it.
 
@@ -104,11 +125,9 @@ Let's keep building.
 - [HubSpot AEO Grader](https://www.hubspot.com/aeo-grader) — Free AEO audit scoring tool
 
 **Research & Data**
-- [AirOps: AI Citation Volatility](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt) — 30% stay visible across runs; 70% of citations swap between runs
-- [Ten Speed: Content Freshness and AEO](https://www.tenspeed.io/blog/content-freshness-aeo-era) — 76.4% of cited pages updated within 30 days
-- [Koanthic: Multilingual AI Overview Visibility](https://koanthic.com/en/multilingual-seo-ai/) — 327% uplift for localized multilingual sites
-- [Search Engine Land: AI Referral Traffic](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) — 123% growth September 2024–February 2025
-- [HubSpot: AEO Adoption Trends](https://blog.hubspot.com/marketing/answer-engine-optimization-trends) — 3.4x visibility for early adopters
+- [AirOps: AI Citation Volatility](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt) — 30% of brands stay visible across consecutive AI answers
+- [Search Engine Land: AI Referral Traffic](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) — ChatGPT drives 87.4% of AI referrals
+- [HubSpot: AEO Adoption Trends](https://blog.hubspot.com/marketing/answer-engine-optimization-trends) — AEO strategy and implementation insights
 - [Vercel Case Study](https://aiseotracker.com/case-study/vercel) — ChatGPT grows to 10% of new signups
 
 **Standards**

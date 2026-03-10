@@ -43,7 +43,7 @@ export function serializePostToAgentMarkdown(
   options: PostSerializeOptions
 ): string {
   const { slug, lang } = options;
-  const { title, description, pubDate, updatedDate, tags } = post.data;
+  const { title, description, pubDate, updatedDate, tags, heroImage } = post.data;
   const prefix = buildUrlPrefix(lang);
   const canonicalUrl = `${SITE_URL}${prefix}/blog/${slug}`;
 
@@ -61,6 +61,9 @@ export function serializePostToAgentMarkdown(
   lines.push(`Canonical: ${canonicalUrl}`);
   if (tags && tags.length > 0) {
     lines.push(`Tags: ${tags.join(', ')}`);
+  }
+  if (heroImage) {
+    lines.push(`Hero Image: ${SITE_URL}${heroImage}`);
   }
   lines.push('');
   lines.push('---');

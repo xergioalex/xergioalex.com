@@ -2,7 +2,8 @@
 title: "Markdown for Agents: Cómo Hacer que tu Contenido Hable el Idioma de la IA"
 description: "La negociación de contenido existe desde HTTP/1.1. Ahora tiene un trabajo nuevo. Qué significa 'Markdown for Agents' como patrón web — y una implementación funcional con Astro y Cloudflare Pages."
 pubDate: "2026-03-10T14:00:00"
-heroLayout: "none"
+heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.png"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["implementación markdown for agents", "negociación de contenido bots IA", "header Accept text/markdown", "Cloudflare markdown for agents", "contenido web legible por IA", "servir markdown a agentes IA"]
 series: "aeo-journey"
@@ -11,7 +12,7 @@ seriesOrder: 2
 
 Cuando un agente de IA visita una página web, recibe la respuesta HTTP completa — lo mismo que recibe un navegador. Markup de navegación, footer, scripts de cambio de tema, avisos de cookies, clases de utilidad de Tailwind, definiciones de íconos SVG, schemas JSON-LD embebidos como etiquetas script. Y en algún lugar dentro de todo eso, el contenido real.
 
-Los agentes son buenos extrayendo señal del ruido. Pero cada token gastado en `class="text-gray-600 dark:text-gray-300"` o `<nav aria-label="Main navigation">` es un token que no se gasta entendiendo lo que la página realmente dice. Para un artículo corto, la proporción está bien. Para un post largo con una barra lateral compleja, estás quemando una parte significativa de la ventana de contexto antes de llegar al primer párrafo.
+Los agentes son buenos extrayendo señal del ruido. Pero cada token — cada fragmento de texto que el modelo procesa — gastado en `class="text-gray-600 dark:text-gray-300"` o `<nav aria-label="Main navigation">` es un token que no se gasta entendiendo lo que la página realmente dice. Para un artículo corto, la proporción está bien. Para un post largo con una barra lateral compleja, estás quemando una parte significativa de la ventana de contexto — la cantidad de texto que un modelo puede mantener en memoria a la vez — antes de llegar al primer párrafo.
 
 Este es un problema estructural con la entrega HTML primero. Y está adquiriendo un nombre: **Markdown for Agents**.
 
@@ -31,13 +32,13 @@ Esa es la idea detrás de Markdown for Agents. Enviar Markdown cuando el cliente
 
 ## La Propuesta de Cloudflare
 
-En marzo de 2025, [Cloudflare publicó "Markdown for Agents"](https://blog.cloudflare.com/markdown-for-agents/) — un post que planteó el problema con claridad y propuso una implementación: conversión de HTML a Markdown en el edge. Cuando una solicitud incluye `Accept: text/markdown`, Cloudflare Workers la intercepta, obtiene el HTML, lo convierte al vuelo y devuelve Markdown limpio al agente. Sin cambios requeridos en el servidor de origen.
+En febrero de 2026, [Cloudflare publicó "Markdown for Agents"](https://blog.cloudflare.com/markdown-for-agents/) — un post que planteó el problema con claridad y propuso una implementación: conversión de HTML a Markdown en el edge. Cuando una solicitud incluye `Accept: text/markdown`, Cloudflare Workers la intercepta, obtiene el HTML, lo convierte al vuelo y devuelve Markdown limpio al agente. Sin cambios requeridos en el servidor de origen. También lanzaron [`markdown.new`](https://markdown.new) — una herramienta pública donde podés pegar cualquier URL y obtener su versión Markdown al instante, útil para probar cómo se vería cualquier sitio a través de los ojos de un agente.
 
 El post aterrizó en los círculos de desarrolladores e inició una conversación que todavía continúa. Posicionó el header `Accept: text/markdown` como el estándar emergente para esta clase de solicitud — lo que probablemente será, si el patrón se consolida.
 
 Markdown for Agents está junto a dos otras convenciones en el conjunto de herramientas AEO: `robots.txt` (política de acceso), `llms.txt` (índice del sitio para modelos de lenguaje), y ahora negociación de contenido para entrega limpia bajo demanda. Resuelven cosas distintas. `robots.txt` dice si los bots pueden visitar. `llms.txt` les da un mapa. Markdown for Agents les da el contenido en un formato que no desperdicia su atención.
 
-Si esto se convierte en un estándar web formal es una pregunta abierta. El IETF no lo ha estandarizado. Ningún navegador importante se preocupa por él. Pero Cloudflare es una de las redes edge más grandes del planeta, y cuando publican un post de "así es como los agentes deberían hablar con los servidores web", la industria presta atención. Creo que esta convención tiene futuro — no porque sea técnicamente novedosa, sino porque resuelve un problema real con mínima ceremonia.
+Si esto se convierte en un estándar web formal es una pregunta abierta. El [IETF](https://www.ietf.org/) (Internet Engineering Task Force — el organismo que define los estándares fundamentales de Internet como HTTP, TLS y DNS) no lo ha estandarizado. Ningún navegador importante se preocupa por él. Pero Cloudflare es una de las redes edge más grandes del planeta, y cuando publican un post de "así es como los agentes deberían hablar con los servidores web", la industria presta atención. Creo que esta convención tiene futuro — no porque sea técnicamente novedosa, sino porque resuelve un problema real con mínima ceremonia.
 
 ---
 
@@ -83,39 +84,50 @@ Canonical: https://example.com/blog/post-slug
 
 Título, metadatos, cuerpo. Eso es todo. Sin `<head>`, sin navegación, sin anuncios, sin píxeles de analíticas. Para un post de 2.000 palabras, esto podría ser 8KB de Markdown versus 80KB de HTML con todo lo que viene junto a un sitio moderno.
 
+### ¿Y las Imágenes?
+
+El servicio `markdown.new` mencionado antes excluye imágenes por defecto (`retain_images=false`) — y ofrece un flag opcional para incluirlas. La lógica es directa: el objetivo de Markdown for Agents es la eficiencia de tokens. Una referencia a imagen como `![hero](/images/hero.png)` es texto que el agente no puede procesar directamente — necesitaría hacer un fetch adicional y tener capacidades multimodales para interpretarla. La mayoría de los agentes hoy son text-first.
+
+La convención de la industria refuerza esto: nunca pongas información crítica dentro de imágenes. Si un dato importa, tiene que estar en texto — tablas Markdown, listas, datos estructurados. Las imágenes son suplementarias, no primarias.
+
+Mi enfoque es un punto medio. Para los blog posts, la URL de la imagen de portada se incluye en el header de metadatos — una sola línea como `Hero Image: https://xergioalex.com/images/blog/posts/.../hero.png` que le da a un agente con capacidades multimodales la opción de obtenerla, sin inflar el cuerpo. Y como los blog posts están escritos en Markdown desde el origen, cualquier imagen ya referenciada en el cuerpo (capturas de pantalla, diagramas) se pasa tal cual — sin procesamiento adicional. Para las páginas estáticas (About, Portfolio, Contact), las imágenes se excluyen por completo — esos endpoints son texto puro.
+
+Si los agentes empiezan a procesar imágenes inline de forma rutinaria, expandir la cobertura es trivial. Por ahora, referencia en metadatos para la portada más lo que el autor ya incluyó en el cuerpo se siente como el balance correcto.
+
 El header de respuesta `Vary: Accept` es importante — le dice a los cachés de CDN que la misma URL puede devolver contenido diferente dependiendo del header `Accept`, para que un caché no sirva accidentalmente Markdown a un navegador o HTML a un agente.
 
 ---
 
 ## Una Implementación Funcional
 
-Cloudflare tomó el camino de conversión de HTML a Markdown. Yo fui en una dirección diferente.
+Cloudflare tomó el camino de conversión de HTML a Markdown en el edge. Yo opté por un enfoque híbrido: servir ambos formatos — HTML y Markdown — desde archivos estáticos, con un middleware que decide cuál entregar según lo que pida el cliente.
 
-Este sitio está construido con Astro — cada post de blog ya es un archivo `.md`. El código fuente Markdown existe. No necesita computarse desde HTML; solo necesita servirse. Entonces en vez de conversión en el edge, el build genera archivos `.md` endpoint junto a las páginas HTML:
-
-```
-Fuente .md → [Astro build] → Página HTML (navegadores)
-Fuente .md → [Astro build] → Archivo .md (agentes)
-```
-
-Dos salidas de una sola fuente. Sin artefactos de conversión, sin adivinar cómo debería verse el Markdown después de quitar etiquetas HTML. Lo que el agente lee es lo que escribí.
-
-El resultado son 153 endpoints `.md` estáticos generados en cada build:
+Este sitio está construido con Astro — cada post de blog ya es un archivo `.md`. El Markdown fuente existe desde el origen. Para los blog posts no tuve que hacer nada extra: ya estaban escritos en Markdown. Para las páginas estáticas (About, Portfolio, Contact, etc.) sí generé una versión `.md` de cada una como parte del build. El resultado: cada URL del sitio tiene una versión HTML y una versión Markdown lista para servir.
 
 ```
-/blog/building-xergioalex-website.md       → Post EN del blog
-/es/blog/building-xergioalex-website.md    → Post ES del blog
-/about.md                                  → Página About
-/es/about.md                               → About en español
-/blog/index.md                             → Índice del blog EN con links .md
-/es/blog/index.md                          → Índice del blog ES
+                       ┌─→ Página HTML (navegadores)
+Fuente .md → [Astro build]
+                       └─→ Archivo .md  (agentes)
 ```
+
+Dos salidas de una misma fuente. Por ejemplo, un post del blog y una página estática:
+
+| URL | Formato |
+|-----|---------|
+| [/es/blog/astro-and-svelte-the-future-of-web-development](https://xergioalex.com/es/blog/astro-and-svelte-the-future-of-web-development/) | HTML (navegadores) |
+| [/es/blog/astro-and-svelte-the-future-of-web-development.md](https://xergioalex.com/es/blog/astro-and-svelte-the-future-of-web-development.md) | Markdown (agentes) |
+| [/es/about](https://xergioalex.com/es/about/) | HTML (navegadores) |
+| [/es/about.md](https://xergioalex.com/es/about.md) | Markdown (agentes) |
+
+Sin conversión en tiempo real, sin artefactos de transformación HTML→Markdown. Lo que el agente lee es lo que escribí. Y como este es un sitio estático, quería mantener todo estático — nada necesita computarse en runtime, todo se construye una vez y se sirve desde el CDN. La única pieza que requirió implementación fue el middleware, y como el sitio corre en Cloudflare Pages, fue muy fácil de integrar.
+
+Cada página del sitio obtiene un endpoint `.md` generado en cada build — posts del blog en ambos idiomas, páginas estáticas y páginas índice:
 
 Cada archivo tiene un header de metadatos — título, descripción, autor, URL canónica — seguido del cuerpo tal como fue escrito. Cero procesamiento en runtime. Los archivos `.md` están en el CDN de Cloudflare como cualquier otro asset estático.
 
 ### El Middleware
 
-La negociación de contenido — la parte de "devolver Markdown cuando se pide" — corre en un middleware de Cloudflare Pages en `functions/_middleware.ts`. La lógica de resolución de rutas maneja slashes finales, rutas index y los distintos patrones de URL:
+La negociación de contenido — la parte de "devolver Markdown cuando se pide" — corre en un middleware de Cloudflare Pages en [`functions/_middleware.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/functions/_middleware.ts). La lógica de resolución de rutas maneja slashes finales, rutas index y los distintos patrones de URL:
 
 ```typescript
 function resolveMarkdownPath(pathname: string): string {
@@ -158,54 +170,45 @@ async function tryServeMarkdown(context: EventContext): Promise<Response | null>
 }
 ```
 
-El fallback — intentar `/path/index.md` si `/path.md` no existe — fue algo que descubrí de la manera difícil. Las rutas como `/es/` y `/blog/` tienen archivos `index.md`, no `es.md` y `blog.md`. La primera versión del middleware devolvía 404s para esas. Lo detecté durante las pruebas, pero era uno de esos bugs que habría sido vergonzoso si hubiera llegado a producción sin el fallback: las rutas index son posiblemente las páginas más útiles para un agente navegando el sitio.
+El fallback — intentar `/path/index.md` si `/path.md` no existe — importa porque rutas como `/es/` y `/blog/` resuelven a archivos `index.md`, no `es.md` y `blog.md`. Sin él, las páginas más útiles para un agente navegando el sitio devolverían 404s.
 
-El middleware completo tiene 346 líneas incluyendo la capa de analíticas de bots de IA — que maneja un trabajo separado (rastreo server-side de crawlers de IA conocidos como GPTBot, ClaudeBot, PerplexityBot y otros 10 — los agentes no corren JavaScript, por lo que las analíticas del lado del cliente no los ven).
+El [middleware completo](https://github.com/xergioalex/xergioalex.com/blob/main/functions/_middleware.ts) también incluye una capa de analíticas de bots de IA — rastreo server-side de crawlers conocidos como GPTBot, ClaudeBot, PerplexityBot, y otros. Los agentes no corren JavaScript, por lo que las analíticas del lado del cliente no los ven.
 
 Puedes probar todo con un solo curl:
 
 ```bash
 # Negociación de contenido
-curl -H "Accept: text/markdown" https://xergioalex.com/about
+curl -H "Accept: text/markdown" https://xergioalex.com/es/about
 
 # URL .md directa — sin headers necesarios
-curl https://xergioalex.com/about.md
+curl https://xergioalex.com/es/about.md
 ```
 
 ---
 
-## Rastrear la Adopción
+## La Apuesta
 
-Los bots de IA no corren JavaScript. Esa es la primera complicación con cualquier analítica relacionada con agentes: el rastreo estándar de páginas es invisible para ellos. El rastreo server-side es la única opción que realmente funciona.
+El middleware también dispara eventos de analíticas por cada solicitud de Markdown — rastreando qué bots piden Markdown, si usan negociación de contenido o URLs `.md` directas, y con qué frecuencia. La arquitectura completa de medición se cubre en el [siguiente capítulo](/es/blog/aeo-the-scorecard), donde encaja junto con el resto de la historia de medición AEO.
 
-Cada solicitud de markdown — ya sea vía negociación de contenido o URL directa — dispara un evento `markdown_request` a Umami desde dentro del middleware. El evento captura:
+¿Alguien está leyendo estos endpoints hoy? Probablemente no de forma sistemática. Ningún sistema de IA importante ha dicho públicamente que envía headers `Accept: text/markdown` o que lee preferentemente URLs `.md`. Cloudflare propuso el patrón en febrero de 2026; todavía no se ha convertido en un estándar.
 
-| Campo | Descripción |
-|-------|-------------|
-| `bot` | Nombre del bot conocido (GPTBot, ClaudeBot, etc.) o `"unknown"` |
-| `path` | La ruta solicitada |
-| `source` | `content_negotiation` o `direct_url` |
-| `user_agent` | Primeros 200 caracteres del string User-Agent |
+Pero así es como empiezan estas cosas. `robots.txt` era informal antes de ser estándar. `sitemap.xml` era una propuesta de Google antes de ser una convención de la industria.
 
-El campo `source` es el que encuentro más interesante. Si los agentes empiezan a enviar headers `Accept: text/markdown` — la manera "correcta" de solicitar Markdown for Agents — vería eventos `content_negotiation`. Si están simplemente marcando URLs `.md` que encontraron en algún lugar, aparece como `direct_url`. La proporción me dice algo sobre cuánto conocen los agentes la convención.
-
-Honestamente, no sé si algún agente está leyendo estos endpoints hoy. Los eventos están activos, los datos se están acumulando, pero todavía no he visto un patrón claro. El volumen es suficientemente bajo como para que las visitas individuales de bots sean difíciles de separar de pruebas, verificadores de links y lo que sea que rastrée un martes por la tarde. Lo que puedo decir es que la infraestructura está ahí.
-
-El desafío con las analíticas de Markdown for Agents es el mismo que con cualquier otra métrica de AEO ahora mismo: estás midiendo entradas (¿está esto optimizado?), no salidas (¿está siendo citado?). No hay una API que te diga "un sistema de IA leyó tu endpoint de Markdown y lo usó en una respuesta." Desplegás la infraestructura, mirás los logs y esperás.
-
----
-
-## Reflexión Honesta
-
-¿Alguien está leyendo estos endpoints hoy? Probablemente no de forma sistemática. Ningún sistema de IA importante ha dicho públicamente que envía headers `Accept: text/markdown` o que lee preferentemente URLs `.md`. Cloudflare propuso el patrón en marzo de 2025; todavía no se ha convertido en un estándar.
-
-Pero así es también como empiezan estas cosas. `robots.txt` era informal antes de ser estándar. `sitemap.xml` era una propuesta de Google antes de ser una convención de la industria. `llms.txt` tiene 844.000 adoptadores y John Mueller de Google diciendo que ningún sistema de IA actual lo usa — ambas cosas son simultáneamente verdad, y probablemente ambas cosas seguirán siendo verdad por un tiempo.
-
-El patrón de Markdown for Agents no cuesta casi nada mantener en un sitio estático. Los 153 archivos `.md` agregan quizás unos pocos cientos de kilobytes a la salida del build. El middleware corre en cada solicitud pero no agrega overhead a las respuestas HTML. Y si la convención se consolida — si los agentes empiezan a enviar `Accept: text/markdown` como los navegadores envían `Accept: text/html` — la infraestructura ya está en su lugar.
+El patrón de Markdown for Agents no cuesta casi nada mantener en un sitio estático. Los archivos `.md` agregan quizás unos pocos cientos de kilobytes a la salida del build. El middleware corre en cada solicitud pero no agrega carga adicional a las respuestas HTML. Y si la convención se consolida — si los agentes empiezan a enviar `Accept: text/markdown` como los navegadores envían `Accept: text/html` — la infraestructura ya está en su lugar.
 
 Creo que la pregunta más importante no es si Markdown for Agents funciona hoy, sino qué pasa si se convierte en un estándar web. Si el W3C o el IETF formalizan la negociación de contenido para agentes de IA, los sitios sin endpoints `.md` se vuelven ciudadanos de segunda clase en la web de agentes. Los que los tienen obtienen entrega limpia desde el primer día. El costo de ser temprano es despreciable. El costo de ser tarde, si esto despega, es un proyecto de migración.
 
 Estoy dispuesto a hacer esa apuesta.
+
+De hecho, este mismo post que estás leyendo tiene su versión Markdown lista para agentes. Podés verla directamente en <a href="/es/blog/aeo-markdown-for-agents.md" target="_blank">/es/blog/aeo-markdown-for-agents.md</a>, o pedirla vía content negotiation:
+
+```bash
+# Negociación de contenido — misma URL, diferente formato
+curl -H "Accept: text/markdown" https://xergioalex.com/es/blog/aeo-markdown-for-agents
+
+# URL directa — sin headers necesarios
+curl https://xergioalex.com/es/blog/aeo-markdown-for-agents.md
+```
 
 Sigamos construyendo.
 
@@ -215,12 +218,14 @@ Sigamos construyendo.
 
 **Markdown for Agents**
 - [Cloudflare: Markdown for Agents](https://blog.cloudflare.com/markdown-for-agents/) — el post que inició la conversación
-- [xergioalex.com/about.md](https://xergioalex.com/about.md) — ejemplo de endpoint Markdown (URL directa)
+- [markdown.new](https://markdown.new) — herramienta de Cloudflare para convertir cualquier URL a Markdown al instante
+- [xergioalex.com/es/about.md](https://xergioalex.com/es/about.md) — ejemplo de endpoint Markdown (URL directa)
 
 **Estándares**
 - [Negociación de Contenido HTTP — RFC 7231](https://www.rfc-editor.org/rfc/rfc7231#section-5.3.2)
 - [Especificación llms.txt](https://llmstxt.org/)
 
 **Implementación**
+- [Código fuente: `functions/_middleware.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/functions/_middleware.ts) — el middleware completo (negociación de contenido + analíticas de bots IA)
 - [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
 - [Cloudflare Pages Functions](https://developers.cloudflare.com/pages/functions/)

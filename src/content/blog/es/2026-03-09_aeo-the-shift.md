@@ -2,7 +2,8 @@
 title: "El Cambio: Por Qué los Rankings Ya No Significan Visibilidad"
 description: "El panorama de la búsqueda cambió — y la mayoría de los sitios no están preparados. Así es como se ve el cambio, por qué los motores de respuesta con IA funcionan diferente, y las dos bases que todo sitio debería tener en su lugar."
 pubDate: "2026-03-09T14:00:00"
-heroLayout: "none"
+heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["optimización para motores de respuesta AEO guía", "qué es AEO vs SEO", "cómo funcionan los motores de búsqueda con IA", "optimización Google AI Overviews", "citas de contenido ChatGPT Perplexity", "implementación llms.txt", "datos estructurados JSON-LD AEO", "E-E-A-T datos estructurados schema"]
 series: "aeo-journey"
@@ -21,44 +22,25 @@ Este post cubre tanto el cambio como la primera respuesta práctica a él — do
 
 ## El Cambio
 
-**La versión corta: durante más de dos décadas, la búsqueda funcionó igual — subir tu enlace en la lista. Ese modelo se está rompiendo. El volumen de búsqueda tradicional está cayendo, los motores de respuesta con IA absorben millones de consultas al día, y la mayoría de esas interacciones nunca producen un clic.**
+**El volumen de búsqueda tradicional está cayendo, los motores de respuesta con IA absorben millones de consultas al día, y la mayoría de esas interacciones nunca producen un clic. Los números ya no son proyecciones — son la realidad actual.**
 
-Durante más de dos décadas, la búsqueda funcionó más o menos igual. Escribías algo, obtenías una lista de enlaces, hacías clic en uno. El juego era: subir tu enlace en esa lista. El SEO se construyó alrededor de eso. Palabras clave, backlinks, meta etiquetas, velocidad de página, diseño móvil — todo al servicio de subir en la lista.
+Todo el SEO que conocemos — palabras clave, backlinks, meta etiquetas, velocidad de página, diseño móvil — se construyó alrededor de un modelo simple: subir tu enlace en una lista de resultados. Ese modelo se está rompiendo.
 
-Ese modelo se está rompiendo.
+Las búsquedas por usuario en EE.UU. ya [bajaron un 20% año tras año](https://searchengineland.com/google-searches-per-us-user-fall-report-468051). Y el problema no es solo que busquen menos — es lo que pasa cuando sí buscan. Los AI Overviews aparecen en [la mitad de las búsquedas en EE.UU.](https://www.demandsage.com/ai-overviews-statistics/), y cuando lo hacen, [el 83% terminan sin un clic](https://www.demandsage.com/ai-overviews-statistics/). El usuario recibe la respuesta ahí mismo. La lista de enlaces de abajo — la lista que pasamos años optimizando — no la toca nadie.
 
-[Gartner predijo](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents) en febrero de 2024 que el volumen de búsqueda tradicional caería un 25% para 2026. En ese momento sonaba exagerado. Ahora, con las búsquedas por usuario en escritorios de EE.UU. [bajando aproximadamente un 20% año tras año](https://searchengineland.com/google-searches-per-us-user-fall-report-468051) y las referencias de publicadores desde Google [cayendo un 38%](https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/), la proyección va encaminada.
+Y eso es solo Google. Sumale que cientos de millones de personas ya ni siquiera pasan por un buscador — le preguntan directamente a [ChatGPT](https://almcorp.com/blog/chatgpt-900-million-weekly-active-users/), [Perplexity](https://www.demandsage.com/perplexity-ai-statistics/) o Claude, y reciben una respuesta sintetizada con citas. El SEO no está muerto, pero ya no es suficiente por sí solo.
 
-A principios de 2026, los AI Overviews aparecen en [aproximadamente el 48% de las búsquedas en EE.UU.](https://www.demandsage.com/ai-overviews-statistics/). Cuando aparecen, [el 83% de esas búsquedas terminan sin un clic](https://www.demandsage.com/ai-overviews-statistics/). El usuario recibe la respuesta. La lista de enlaces de abajo — la lista que pasamos años optimizando — no la toca nadie.
-
-Y Google no está solo. ChatGPT llegó a [900 millones de usuarios activos semanales](https://almcorp.com/blog/chatgpt-900-million-weekly-active-users/) en febrero de 2026. Perplexity procesa [entre 35 y 45 millones de consultas al día](https://www.demandsage.com/perplexity-ai-statistics/). Según McKinsey, [el 44% de los usuarios de búsqueda con IA](https://magnawiz.com/answer-engine-optimization-aeo-why-seo-alone-isnt-enough-in-2025-2026/) ahora recurre a la IA como su principal fuente de información — más que la búsqueda tradicional.
-
-Esto no es la muerte del SEO. Es su evolución.
+Y esto no solo afecta a sitios pequeños. En enero de 2026, [Adam Wathan — creador de Tailwind CSS](https://devclass.com/2026/01/08/tailwind-labs-lays-off-75-percent-of-its-engineers-thanks-to-brutal-impact-of-ai/) — reveló que tuvo que despedir al 75% de su equipo de ingeniería por lo que llamó el "impacto brutal" de la IA en su negocio. El titular suena dramático hasta que ves los números: el equipo de ingeniería eran 4 personas — despidió a 3, quedó 1. El tráfico a la documentación de Tailwind había caído un 40% en dos años, y los ingresos un 80%. Lo paradójico: Tailwind como framework estaba creciendo más rápido que nunca. Pero los desarrolladores ya no visitaban el sitio — Cursor, GitHub Copilot y ChatGPT respondían sus dudas directamente en el editor. El embudo que convertía visitas a la documentación en ventas de productos pagos simplemente se rompió. Todo explotó cuando Wathan [cerró un PR en GitHub](https://github.com/tailwindlabs/tailwindcss/discussions/14677) que proponía hacer la documentación más accesible para LLMs, argumentando que facilitar el acceso a los modelos solo significaba menos tráfico y menos ingresos. El hilo acumuló cientos de comentarios, el repo se hizo privado temporalmente, y la historia llegó a Hacker News con más de 1.100 puntos. Como Wathan dijo en su podcast: *"Tailwind es más grande y más popular que nunca, y nuestros ingresos cayeron cerca del 80%."* La historia tuvo un final feliz — Vercel, Google y otras empresas terminaron patrocinando al proyecto, y Tailwind sobrevivió. Pero el modelo de negocio que lo sostenía ya no existe, y lo que venga después va a tener que verse muy diferente. Es quizá el ejemplo más visible de lo que este cambio significa en la práctica.
 
 ---
 
-## Qué Es el AEO — Y Por Qué No Es Solo SEO con Otro Nombre
+## AEO No Surgió de la Nada
 
-**La Answer Engine Optimization es la práctica de hacer visible tu contenido ante los sistemas de IA que generan respuestas — y lograr que te citen como fuente en esas respuestas. Es complementaria al SEO, no un reemplazo, pero requiere un conjunto de técnicas fundamentalmente diferente.**
+**Antes de entrar en las bases prácticas, vale la pena saber que esto ya tiene investigación detrás.**
 
-[SEMrush lo define](https://www.semrush.com/blog/answer-engine-optimization/) como "un conjunto de prácticas de marketing para aumentar la visibilidad de tu marca en respuestas generadas por IA." [Ahrefs lo plantea diferente](https://ahrefs.com/blog/answer-engine-optimization/): "La búsqueda tradicional consiste en competir por clics. La búsqueda con IA consiste en ser citado dentro de la respuesta misma."
+Un [artículo de la Universidad de Princeton](https://arxiv.org/abs/2311.09735) presentado en KDD 2024 demostró que estrategias específicas de optimización pueden aumentar la visibilidad en respuestas de motores generativos hasta en un 40%. Ellos lo llaman GEO (Generative Engine Optimization), otros le dicen LLMO — [SEMrush](https://www.semrush.com/blog/answer-engine-optimization/) y [Ahrefs](https://ahrefs.com/blog/answer-engine-optimization/) ya tienen guías completas sobre el tema con diferentes nombres. Al final, todos hablan de lo mismo: optimizar para motores que dan respuestas en vez de enlaces.
 
-La terminología todavía se está asentando — lo que, honestamente, es la mitad de la gracia y la mitad de la frustración de trabajar en algo temprano. Algunos le llaman GEO — Generative Engine Optimization. Un [artículo de la Universidad de Princeton](https://arxiv.org/abs/2311.09735) presentado en KDD 2024 acuñó ese término y demostró que estrategias específicas de optimización pueden aumentar la visibilidad en respuestas de motores generativos hasta en un 40%. Otros le llaman LLMO (Large Language Model Optimization). En la práctica se superponen. Yo uso AEO porque es el más descriptivo: estás optimizando para motores que dan respuestas.
-
-Esto es lo que hace al AEO diferente del SEO tradicional:
-
-| | SEO Tradicional | AEO |
-|---|---|---|
-| **Objetivo** | Rankear en la página de resultados | Ser citado en la respuesta de la IA |
-| **Formato** | Páginas de formato largo | Bloques de respuesta estructurados y extraíbles |
-| **Enfoque** | Palabras clave y backlinks | Entidades, preguntas, consultas conversacionales |
-| **Métricas** | Rankings, tasa de clics | Frecuencia de citas, menciones de marca, sentimiento |
-
-El matiz clave: el AEO no reemplaza al SEO. Son complementarios. Los sistemas de IA favorecen fuertemente el contenido de dominios que ya rankean bien en búsqueda tradicional. [El 86% de las citas en Google AI Overviews](https://ahrefs.com/blog/search-rankings-ai-citations/) provienen de páginas que rankean en el top 100. Un buen SEO alimenta al AEO. Pero el SEO solo ya no es suficiente.
-
-Incluso está surgiendo una nueva capa. Search Engine Land ha empezado a escribir sobre [AAO — Assistive Agent Optimization](https://searchengineland.com/aao-assistive-agent-optimization-469919) — preparar el contenido para agentes de IA que no solo responden preguntas sino que actúan en nombre del usuario. Comprar un vuelo. Comparar productos. Radicar un informe. Todavía no estamos ahí para la mayoría de los sitios. Pero la dirección es clara.
-
-Lo pienso así: el SEO te indexa. El AEO te cita. El AAO — algún día — te elige. Solo el [37% de los equipos de marketing](https://www.acquia.com/blog/why-answer-engine-optimization-aeo-next-big-thing-digital-strategy-and-why-most-brands-arent) está haciendo trabajo de AEO activamente ahora mismo. La mayoría sabe que importa. La mayoría no ha empezado.
+Las dos primeras bases que cualquier sitio puede poner en su lugar son más simples de lo que parecen.
 
 ---
 
@@ -68,7 +50,7 @@ Lo pienso así: el SEO te indexa. El AEO te cita. El AAO — algún día — te 
 
 Para optimizar para los motores de respuesta, ayuda entender cómo funcionan realmente. No todos operan de la misma manera. Pasé más tiempo del esperado revisando documentación de crawlers — las diferencias importan.
 
-**Google AI Overviews** no usa un crawler separado. Si Googlebot ya indexó tu página, eres elegible. Lo interesante es su [técnica de "query fan-out"](https://developers.google.com/search/blog/2025/05/succeeding-in-ai-search) — al construir una respuesta, el sistema lanza múltiples sub-consultas relacionadas. Una página que rankea en posición 40 para un tema relacionado puede terminar citada en la respuesta principal. El contenido con bloques de respuesta específicos y autocontenidos de [134 a 167 palabras](https://wellows.com/blog/google-ai-overviews-ranking-factors/) tiene tasas de selección más altas. No sabía que ese rango existía hasta que empecé a medir mi propio contenido contra él.
+**Google AI Overviews** no usa un crawler separado. Si Googlebot ya indexó tu página, eres elegible. Lo interesante es su [técnica de "query fan-out"](https://developers.google.com/search/blog/2025/05/succeeding-in-ai-search) — al construir una respuesta, el sistema lanza múltiples sub-consultas relacionadas. Una página que rankea en posición 40 para un tema relacionado puede terminar citada en la respuesta principal. El contenido que mejor funciona son bloques de respuesta específicos y autocontenidos — párrafos que responden una pregunta concreta sin depender del contexto alrededor. Algunos análisis sugieren que el rango ideal está entre [134 y 167 palabras](https://wellows.com/blog/google-ai-overviews-ranking-factors/) por bloque.
 
 **ChatGPT** corre tres crawlers separados, cada uno controlable de forma independiente: [GPTBot](https://platform.openai.com/docs/bots) para entrenamiento, OAI-SearchBot para su índice de búsqueda, y ChatGPT-User para navegación en tiempo real. Puedes bloquear el entrenamiento mientras permites la búsqueda — son decisiones separadas. La mayoría de la gente no sabe esto.
 
@@ -118,11 +100,11 @@ Ahí es donde entra `llms.txt`.
 
 La [especificación llms.txt](https://llmstxt.org/) fue propuesta por Jeremy Howard en septiembre de 2024. La premisa es simple: en vez de hacer que un modelo de lenguaje rastree todo tu sitio para entender qué hay ahí, le entregas un índice estructurado — un archivo Markdown en `/llms.txt` que le da a los sistemas de IA un resumen curado de tu sitio. Qué cubre, cómo está organizado, dónde encontrar las cosas. Unas 10 a 30 líneas que toman unos minutos escribir.
 
-[Semrush reporta](https://www.semrush.com/blog/llms-txt/) que aproximadamente 844.000 sitios tienen uno — cerca del 10% de los dominios encuestados. Los primeros adoptadores son mayormente orientados a desarrolladores: Anthropic, Cloudflare, Vercel, Supabase.
+La adopción todavía es temprana — [Semrush reporta](https://www.semrush.com/blog/llms-txt/) que solo unos 951 dominios habían publicado un archivo llms.txt a mediados de 2025. Los primeros adoptadores son mayormente orientados a desarrolladores: Anthropic, Cloudflare, Vercel, Supabase.
 
-John Mueller de Google dijo en junio de 2025 que "ningún sistema de IA usa llms.txt actualmente." Lo construí de todas formas.
+En junio de 2025, John Mueller de Google dijo que "ningún sistema de IA usa llms.txt." Pero desde entonces, Cloudflare lanzó [Markdown for Agents](https://blog.cloudflare.com/markdown-for-agents/) y el ecosistema se movió rápido — herramientas como Cursor, Claude y otros agentes de código ya consumen archivos Markdown como fuente primaria de contexto. El `llms.txt` encaja exactamente en esa dirección.
 
-El costo es unas líneas de Markdown. Si algún modelo empieza a leerlo — y creo que algunos eventualmente lo harán — la información ya va a estar ahí. Lo pienso como el `sitemap.xml` de la era de la IA: no es glamoroso, no garantiza hacer nada ahora mismo, pero es suficientemente barato de mantener y potencialmente valioso como para conservarlo.
+Lo pienso como el `sitemap.xml` de la era de la IA: el costo es unas líneas de Markdown, y si el patrón se consolida — que todo indica que sí — la información ya está ahí.
 
 Así se ve el de este sitio:
 
@@ -156,7 +138,7 @@ Así se ve el de este sitio:
 For comprehensive content descriptions, see: /llms-full.txt
 ```
 
-También hay un `llms-full.txt` — 130 líneas con descripciones detalladas de páginas, áreas temáticas y el stack tecnológico completo. ¿Lo está usando algún modelo importante hoy? Probablemente no. Pero no cuesta nada mantenerlo.
+También hay un `llms-full.txt` — 130 líneas con descripciones detalladas de páginas, áreas temáticas y el stack tecnológico completo. A la fecha, ningún crawler de IA lo consume automáticamente — pero desarrolladores ya lo usan manualmente como contexto en herramientas como Cursor, y plataformas como Mintlify lo generan por defecto para toda su documentación. El patrón está ganando tracción aunque los buscadores no lo adopten formalmente todavía.
 
 ---
 
@@ -164,7 +146,7 @@ También hay un `llms-full.txt` — 130 líneas con descripciones detalladas de 
 
 Aquí es donde el AEO se vuelve concreto — y, honestamente, un poco tedioso.
 
-Los datos estructurados son E-E-A-T — Experiencia, Expertise, Autoridad, Confiabilidad — codificados en un formato que las máquinas pueden analizar directamente. Las páginas con schema markup tienen [tasas de citación por IA 2,8 veces más altas](https://www.airops.com/blog/schema-markup-aeo). En marzo de 2025, [Google, Microsoft y OpenAI confirmaron](https://www.stackmatix.com/blog/structured-data-ai-search) que usan datos estructurados en sus funciones de IA generativa. Un [estudio de BrightEdge](https://searchengineland.com/schema-ai-overviews-structured-data-visibility-462353) encontró un aumento del 44% en citas de búsqueda con IA para sitios con datos estructurados y bloques FAQ.
+Los datos estructurados son E-E-A-T — Experiencia, Expertise, Autoridad, Confiabilidad — codificados en un formato que las máquinas pueden analizar directamente. Las páginas con schema markup tienen [tasas de citación por IA 2,8 veces más altas](https://www.airops.com/blog/schema-markup-aeo). [Google, Microsoft y OpenAI](https://www.stackmatix.com/blog/structured-data-ai-search) usan datos estructurados en sus funciones de IA generativa. Los sitios con datos estructurados y bloques FAQ muestran [tasas de citación por IA mediblemente más altas](https://searchengineland.com/schema-ai-overviews-structured-data-visibility-462353) comparados con los que no los tienen.
 
 El schema más importante en este sitio es el tipo `Person` — aparece en cada página:
 
@@ -202,7 +184,17 @@ El schema más importante en este sitio es el tipo `Person` — aparece en cada 
 
 Cada campo cumple un propósito. `alumniOf` con Y Combinator — credibilidad institucional. `worksFor` — contexto profesional actual. `sameAs` con cuatro perfiles sociales — verificación de identidad entre plataformas. `knowsAbout` — señales de autoridad temática. Nada de esto es decorativo. Cada campo es algo que un sistema de IA puede usar cuando decide si citar este sitio como fuente.
 
-Pasé más tiempo en los datos estructurados que en cualquier otra parte de este proyecto. No es un trabajo emocionante — escribir schemas JSON, validarlos en el Rich Results Test de Google, asegurarse de que cada página tenga los tipos correctos. Pasé una tarde entera en el schema `BlogPosting`, comparando la especificación de schema.org para verificar qué propiedades usan realmente los sistemas de IA versus cuáles son técnicamente válidas pero ignoradas. La mayor parte del primer borrador estaba mal en cosas pequeñas. Volver a revisar documentación que ya había leído no fue divertido.
+Los datos estructurados me llevaron un tiempo considerable. No es un trabajo emocionante — escribir schemas JSON, validarlos en el [Schema.org Validator](https://validator.schema.org/) para verificar que la estructura sea correcta, asegurarse de que cada página tenga los tipos correctos.
+
+![Schema.org Validator mostrando los datos estructurados de xergioalex.com: Organization, WebSite y Person detectados con 0 errores](/images/blog/posts/aeo-the-shift/schema-validator.png)
+
+En un blog post la cosa se pone más interesante — además de los schemas base, aparecen `BlogPosting` y `BreadcrumbList`:
+
+![Schema.org Validator mostrando 5 elementos en un blog post: Organization, BreadcrumbList, WebSite, Person y BlogPosting, todos con 0 errores](/images/blog/posts/aeo-the-shift/schema-validator-blog.png)
+
+Al expandir el `BlogPosting`, se ve todo lo que la IA puede leer sin parsear el HTML: título, descripción, imagen, fechas de publicación y modificación, keywords, conteo de palabras — cada campo es una señal explícita que le ahorra trabajo de inferencia al modelo.
+
+![Detalle del schema BlogPosting mostrando headline, description, image, datePublished, dateModified, keywords y wordCount](/images/blog/posts/aeo-the-shift/schema-validator-blogposting.png) Pasé una tarde entera en el schema `BlogPosting`, comparando la especificación de schema.org para verificar qué propiedades usan realmente los sistemas de IA versus cuáles son técnicamente válidas pero ignoradas. La mayor parte del primer borrador estaba mal en cosas pequeñas. Volver a revisar documentación que ya había leído no fue divertido.
 
 Pero es la optimización que comunica significado directamente a las máquinas — no solo contenido, sino contexto. Quién escribió esto, por qué está calificado para escribirlo, cuándo fue actualizado por última vez. Esa es la capa que importa.
 
@@ -214,18 +206,19 @@ Más allá del schema `Person`, este sitio tiene 9 tipos JSON-LD en total: `Blog
 
 Las bases están en su lugar: crawlers permitidos, un menú en `/llms.txt`, datos estructurados en cada página. Pero ser rastreable y ser legible por máquinas son solo las condiciones mínimas — te meten en el juego. La frontera más interesante es darle a los agentes de IA un canal directo a tu contenido, saltando el parseo de HTML por completo con endpoints nativos de Markdown.
 
-De eso trata el próximo capítulo. Sigamos construyendo.
+De eso trata el próximo capítulo: [Markdown for Agents: Cómo Hacer que tu Contenido Hable el Idioma de la IA](/es/blog/aeo-markdown-for-agents). Sigamos construyendo.
 
 ---
 
 ## Recursos
 
 **Investigación y Datos**
-- [Gartner: Predicción de Caída en Volumen de Búsqueda](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents)
 - [Artículo GEO de Princeton — Generative Engine Optimization (KDD 2024)](https://arxiv.org/abs/2311.09735)
 - [Search Engine Land: Caída en Búsquedas de Escritorio en EE.UU.](https://searchengineland.com/google-searches-per-us-user-fall-report-468051)
 - [Demand Sage: Estadísticas de AI Overviews](https://www.demandsage.com/ai-overviews-statistics/)
 - [Demand Sage: Estadísticas de Perplexity AI](https://www.demandsage.com/perplexity-ai-statistics/)
+- [DevClass: Tailwind Labs Despide al 75% de Ingenieros por Impacto de la IA](https://devclass.com/2026/01/08/tailwind-labs-lays-off-75-percent-of-its-engineers-thanks-to-brutal-impact-of-ai/)
+- [GitHub: Discusión sobre Documentación LLM-Friendly en Tailwind CSS](https://github.com/tailwindlabs/tailwindcss/discussions/14677)
 - [AirOps: Schema Markup y Tasas de Citación por IA](https://www.airops.com/blog/schema-markup-aeo)
 - [BrightEdge: Schema y Visibilidad en AI Overview](https://searchengineland.com/schema-ai-overviews-structured-data-visibility-462353)
 
@@ -250,5 +243,4 @@ De eso trata el próximo capítulo. Sigamos construyendo.
 - [Apple World Knowledge Answers](https://searchengineland.com/apple-world-knowledge-answers-ai-search-461569)
 
 **Herramientas**
-- [Google Rich Results Test](https://search.google.com/test/rich-results)
 - [Schema.org Validator](https://validator.schema.org/)
