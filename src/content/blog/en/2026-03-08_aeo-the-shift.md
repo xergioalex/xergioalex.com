@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["answer engine optimization AEO guide", "what is AEO vs SEO", "how AI search engines work", "Google AI Overviews optimization", "ChatGPT Perplexity content citation", "llms.txt implementation", "structured data JSON-LD AEO", "E-E-A-T structured data schema"]
-series: "aeo-journey"
+series: "aeo-from-invisible-to-cited"
 seriesOrder: 1
 ---
 

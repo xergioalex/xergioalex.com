@@ -12,7 +12,7 @@ Colecciones curadas de artículos organizados en series temáticas. Cada serie c
 
 - [**Building XergioAleX.com**](/es/blog/series/building-xergioalex/) — La historia completa de la construcción de un sitio web personal moderno, desde decisiones de arquitectura hasta optimización de rendimiento, analítica y escalabilidad de contenido.
 - [**Trading Journey: From Futures to Algorithms**](/es/blog/series/trading-journey/) — Una serie de 3 partes sobre la evolución desde el trading discrecional temprano hasta el análisis estructurado con Market Profile y la ejecución algorítmica con MQL4.
-- [**The AEO Journey**](/es/blog/series/aeo-journey/) — De invisible a citado, construyendo un sitio web que los motores de respuesta de IA pueden encontrar, entender y referenciar.
+- [**AEO: De Invisible a Citado**](/es/blog/series/aeo-from-invisible-to-cited/) — De invisible a citado, construyendo un sitio web que los motores de respuesta de IA pueden encontrar, entender y referenciar.
 
 ### Cómo Funcionan las Series
 
