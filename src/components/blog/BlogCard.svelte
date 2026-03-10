@@ -161,7 +161,7 @@ $: displayDescription = searchQuery
               width={400}
               height={192}
               class="w-full h-48 object-cover"
-              loading={eager ? 'eager' : 'lazy'}
+              loading="lazy"
             />
           </picture>
         {:else}
@@ -171,7 +171,7 @@ $: displayDescription = searchQuery
             width={400}
             height={192}
             class="w-full h-48 object-cover"
-            loading={eager ? 'eager' : 'lazy'}
+            loading="lazy"
           />
         {/if}
       </a>
