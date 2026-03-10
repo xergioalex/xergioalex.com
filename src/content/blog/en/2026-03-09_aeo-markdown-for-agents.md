@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["markdown for agents implementation", "content negotiation AI bots", "Accept text/markdown header", "Cloudflare markdown for agents", "AI-readable web content", "serve markdown to AI agents"]
-series: "aeo-journey"
+series: "aeo-from-invisible-to-cited"
 seriesOrder: 2
 ---
 
