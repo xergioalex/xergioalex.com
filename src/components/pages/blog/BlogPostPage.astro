@@ -124,7 +124,7 @@ const breadcrumbData = {
     {tags?.map((tag) => <meta property="article:tag" content={tag} />)}
   </Fragment>
   <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
-  <main class="main-container py-16 md:py-24">
+  <main class="main-container py-10 sm:py-12 lg:py-16">
     <article>
       <nav aria-label="Breadcrumb" class="mb-6 flex flex-wrap items-center gap-x-2 text-sm">
         <a href={homeUrl} class="font-semibold text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">{t.nav.home}</a>
@@ -171,7 +171,7 @@ const breadcrumbData = {
         lang={lang}
         currentChapter={seriesInfo.currentIndex + 1}
         totalChapters={seriesInfo.posts.length}
-        seriesTitle={seriesInfo.title}
+        seriesTitle={t.seriesNames[seriesInfo.name] || seriesInfo.title}
       />
     )}
     <BlogImageLightbox client:idle />

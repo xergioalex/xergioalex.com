@@ -14,6 +14,7 @@ export let seriesTitle: string = '';
 export let seriesDescription: string = '';
 export let pageSize: number = 30;
 export let emptyStateMessage: string = '';
+export let topicTagNames: string[] = [];
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
@@ -101,7 +102,7 @@ function formatDate(pubDate: string): string {
   </div>
 {:else}
   <!-- Series header -->
-  <div class="max-w-3xl mx-auto mb-10 text-center">
+  <div class="max-w-7xl mx-auto mb-10 text-center">
     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
       {seriesTitle}
     </h1>
@@ -180,12 +181,20 @@ function formatDate(pubDate: string): string {
                 {/if}
 
                 {#if post.tags && post.tags.length > 0}
-                  {#each post.tags.slice(0, 3) as tag}
+                  {#each post.tags.filter((tag) => !topicTagNames.includes(tag)) as tag}
                     <a
                       href={`${prefix}/blog/tag/${tag}/`}
-                      class="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 transition-colors"
+                      class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
                     >
                       #{t.tagNames[tag] || tag}
+                    </a>
+                  {/each}
+                  {#each post.tags.filter((tag) => topicTagNames.includes(tag)) as topic}
+                    <a
+                      href={`${prefix}/blog/tag/${topic}/`}
+                      class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+                    >
+                      {t.tagNames[topic] || topic}
                     </a>
                   {/each}
                 {/if}

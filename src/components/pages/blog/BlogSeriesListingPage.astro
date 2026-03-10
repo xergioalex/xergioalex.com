@@ -22,8 +22,9 @@ const seriesWithMeta = await Promise.all(
     const posts = await getSeriesTimelineIndex(series.id, lang);
     return {
       id: series.id,
-      title: series.data.title,
-      description: series.data.description || '',
+      title: t.seriesNames[series.id] || series.data.title,
+      description:
+        t.seriesDescriptions[series.id] || series.data.description || '',
       postCount: posts.length,
       firstPostHero: posts[0]?.heroImage || null,
       firstPostHeroWebp: posts[0]?.heroWebpExists || false,
@@ -39,24 +40,16 @@ const visibleSeries = seriesWithMeta.filter((s) => s.postCount > 0);
   title={t.seriesListingPage.title}
   description={t.seriesListingPage.description}
 >
-  <section class="py-8 md:py-12">
+  <section class="py-10 sm:py-12 lg:py-16">
     <!-- Breadcrumb -->
-    <nav class="max-w-4xl mx-auto px-4 mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-        <li>
-          <a href={`${prefix}/blog/`} class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            {t.nav.blog}
-          </a>
-        </li>
-        <li aria-hidden="true" class="text-gray-400 dark:text-gray-500">/</li>
-        <li aria-current="page" class="font-medium text-gray-900 dark:text-white">
-          {t.seriesListingPage.heading}
-        </li>
-      </ol>
+    <nav class="max-w-7xl mx-auto px-4 md:px-8 mb-6 flex flex-wrap items-center gap-x-2 text-sm" aria-label="Breadcrumb">
+      <a href={`${prefix}/blog/`} class="font-semibold text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">{t.nav.blog}</a>
+      <span class="font-semibold text-gray-600 dark:text-gray-300 select-none" aria-hidden="true">/</span>
+      <span class="truncate font-normal text-gray-600 dark:text-gray-300" aria-current="page">{t.seriesListingPage.heading}</span>
     </nav>
 
     <!-- Page header -->
-    <div class="max-w-4xl mx-auto px-4 mb-10 text-center">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 mb-10 text-center">
       <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
         {t.seriesListingPage.heading}
       </h1>
@@ -72,7 +65,7 @@ const visibleSeries = seriesWithMeta.filter((s) => s.postCount > 0);
         </p>
       </div>
     ) : (
-      <div class="max-w-4xl mx-auto px-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visibleSeries.map((series) => (
           <a
             href={`${prefix}/blog/series/${series.id}/`}
@@ -136,7 +129,7 @@ const visibleSeries = seriesWithMeta.filter((s) => s.postCount > 0);
     )}
 
     <!-- Back to blog -->
-    <div class="max-w-4xl mx-auto px-4 mt-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 mt-10">
       <a
         href={`${prefix}/blog/`}
         class="inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"

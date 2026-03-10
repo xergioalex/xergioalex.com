@@ -225,7 +225,8 @@ function buildSeriesBadgeLabel(
                 {/if}
 
                 {#if post.seriesCurrent && post.seriesTotal}
-                  {@const seriesBadgeLabel = buildSeriesBadgeLabel(post.seriesCurrent, post.seriesTotal, post.seriesTitle)}
+                  {@const localizedSeriesTitle = (post.seriesSlug && t.seriesNames[post.seriesSlug]) || post.seriesTitle}
+                  {@const seriesBadgeLabel = buildSeriesBadgeLabel(post.seriesCurrent, post.seriesTotal, localizedSeriesTitle)}
                   {#if post.seriesSlug}
                     <a
                       href={`${prefix}/blog/series/${post.seriesSlug}/`}

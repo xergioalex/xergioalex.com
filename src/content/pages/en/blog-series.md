@@ -10,9 +10,9 @@ Curated collections of articles organized into thematic series. Each series cove
 
 ### Available Series
 
-- **Building XergioAleX.com** — The complete story of building a modern personal website, from architecture decisions to performance optimization, analytics, and content scalability.
-- **Trading Journey: From Futures to Algorithms** — A 3-part series about the evolution from early discretionary trading to structured analysis with Market Profile and algorithmic execution with MQL4.
-- **The AEO Journey** — From invisible to cited, building a website that AI answer engines can find, understand, and reference.
+- [**Building XergioAleX.com**](/blog/series/building-xergioalex/) — The complete story of building a modern personal website, from architecture decisions to performance optimization, analytics, and content scalability.
+- [**Trading Journey: From Futures to Algorithms**](/blog/series/trading-journey/) — A 3-part series about the evolution from early discretionary trading to structured analysis with Market Profile and algorithmic execution with MQL4.
+- [**The AEO Journey**](/blog/series/aeo-journey/) — From invisible to cited, building a website that AI answer engines can find, understand, and reference.
 
 ### How Series Work
 

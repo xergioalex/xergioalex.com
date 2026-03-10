@@ -433,6 +433,7 @@ export interface SiteTranslations {
 
   // Blog header
   blogTitle: string;
+  blogHeading: string;
   blogDescription: string;
   allPosts: string;
   showingArticles: (showing: number, total: number) => string;
@@ -483,6 +484,10 @@ export interface SiteTranslations {
   allTags: string;
   tagNames: Record<string, string>;
   tagDescriptions: Record<string, string>;
+
+  // Series names and descriptions (keyed by series slug)
+  seriesNames: Record<string, string>;
+  seriesDescriptions: Record<string, string>;
 
   // Date formatting
   dateLocale: string;

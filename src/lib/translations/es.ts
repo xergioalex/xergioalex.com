@@ -872,6 +872,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
   // Blog header
   blogTitle: 'Blog',
+  blogHeading: 'Blog',
   blogDescription: 'Artículos sobre tecnología, programación y más',
   allPosts: 'Todos los posts',
   showingArticles: (showing, total) =>
@@ -970,6 +971,21 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     database: 'SQL, NoSQL, MongoDB y arquitectura multi-base de datos.',
     iot: 'Internet de las Cosas, sensores, hardware e interfaces de voz.',
     design: 'Diseño visual, branding, diseño web y UX.',
+  },
+
+  // Series names and descriptions (keyed by series slug)
+  seriesNames: {
+    'building-xergioalex': 'Construyendo XergioAleX.com',
+    'trading-journey': 'Viaje de Trading: De Futuros a Algoritmos',
+    'aeo-journey': 'El Viaje AEO',
+  },
+  seriesDescriptions: {
+    'building-xergioalex':
+      'La historia completa de la construcción de un sitio web personal moderno — desde decisiones de arquitectura hasta optimización de rendimiento, analítica y escalabilidad de contenido.',
+    'trading-journey':
+      'Una serie de 3 partes sobre mi evolución desde el trading discrecional temprano hasta el análisis estructurado con Market Profile y la ejecución algorítmica con MQL4.',
+    'aeo-journey':
+      'De invisible a citado — construyendo un sitio web que los motores de respuesta de IA pueden encontrar, entender y referenciar.',
   },
 
   // Date formatting

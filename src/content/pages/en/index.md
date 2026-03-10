@@ -70,6 +70,7 @@ Life is more than just code. I'm passionate about cycling, gaming, sci-fi novels
 Technical articles about software engineering, DevOps, AI, trading, entrepreneurship, and the journey of building digital products. Written from real experience — with code, failures, and lessons learned.
 
 - [Read the blog](/blog)
+- [Browse blog series](/blog/series/) — curated collections of articles organized into thematic series
 
 ---
 

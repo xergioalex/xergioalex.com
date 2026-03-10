@@ -91,8 +91,14 @@ $: {
       ? seriesTotalValue
       : undefined;
   const seriesTitleValue = (post as any).seriesTitle;
-  seriesTitle =
+  const rawSeriesTitle =
     typeof seriesTitleValue === 'string' ? seriesTitleValue : undefined;
+  const seriesSlugForTitle =
+    (post as any).seriesSlug ?? post.data?.series ?? (post as any).series;
+  seriesTitle =
+    (typeof seriesSlugForTitle === 'string' &&
+      t.seriesNames[seriesSlugForTitle]) ||
+    rawSeriesTitle;
 }
 let seriesSlug: string | undefined;
 $: {
