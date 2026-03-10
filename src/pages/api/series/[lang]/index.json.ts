@@ -1,6 +1,4 @@
 import { getCollection } from 'astro:content';
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 
 import type { APIRoute, GetStaticPaths } from 'astro';
 
@@ -16,19 +14,9 @@ export interface SeriesListingEntry {
   postCount: number;
   heroImage: string | null;
   firstPostHero: string | null;
-  firstPostHeroWebp: boolean;
   lastPostDate: string;
 }
 
-function heroWebpExists(heroImage: string | undefined): boolean {
-  if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
-  const publicDir = join(process.cwd(), 'public');
-  const webpPath = join(
-    publicDir,
-    heroImage.replace(/^\//, '').replace(/\.(png|jpe?g)$/i, '.webp')
-  );
-  return existsSync(webpPath);
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
@@ -60,7 +48,6 @@ export const GET: APIRoute = async ({ params }) => {
         postCount: posts.length,
         heroImage: series.data.heroImage || null,
         firstPostHero,
-        firstPostHeroWebp: heroWebpExists(firstPostHero ?? undefined),
         lastPostDate,
       });
     }

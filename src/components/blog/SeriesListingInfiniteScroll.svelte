@@ -76,14 +76,7 @@ function getHeroImage(series: SeriesListingEntry): string | null {
   return series.heroImage || series.firstPostHero;
 }
 
-function canUseWebp(series: SeriesListingEntry): boolean {
-  const hero = getHeroImage(series);
-  if (!hero) return false;
-  // If using series own hero (already webp), no need for picture element
-  if (series.heroImage) return false;
-  // Only for firstPostHero with webp variant
-  return series.firstPostHeroWebp && /\.(png|jpe?g)$/i.test(hero);
-}
+
 </script>
 
 {#if renderedSeries.length === 0 && !loading}
@@ -115,28 +108,14 @@ function canUseWebp(series: SeriesListingEntry): boolean {
             <!-- Image area -->
             <div class="relative md:w-1/2 {isFirst ? 'xl:w-3/5' : ''}">
               {#if hero}
-                {#if canUseWebp(series)}
-                  <picture>
-                    <source srcset={hero.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                    <img
-                      src={hero}
-                      alt=""
-                      class="w-full h-56 md:h-full md:min-h-[260px] object-cover"
-                      loading={isFirst ? 'eager' : 'lazy'}
-                      width="800"
-                      height="400"
-                    />
-                  </picture>
-                {:else}
-                  <img
-                    src={hero}
-                    alt=""
-                    class="w-full h-56 md:h-full md:min-h-[260px] object-cover"
-                    loading={isFirst ? 'eager' : 'lazy'}
-                    width="800"
-                    height="400"
-                  />
-                {/if}
+                <img
+                  src={hero}
+                  alt=""
+                  class="w-full h-56 md:h-full md:min-h-[260px] object-cover"
+                  loading={isFirst ? 'eager' : 'lazy'}
+                  width="800"
+                  height="400"
+                />
               {:else}
                 <div class="w-full h-56 md:h-full md:min-h-[260px] bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
                   <svg class="w-16 h-16 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -194,28 +173,14 @@ function canUseWebp(series: SeriesListingEntry): boolean {
             <div class="lg:flex">
               <div class="relative lg:w-1/2 xl:w-3/5">
                 {#if hero}
-                  {#if canUseWebp(series)}
-                    <picture>
-                      <source srcset={hero.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                      <img
-                        src={hero}
-                        alt=""
-                        class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
-                        loading="eager"
-                        width="800"
-                        height="400"
-                      />
-                    </picture>
-                  {:else}
-                    <img
-                      src={hero}
-                      alt=""
-                      class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
-                      loading="eager"
-                      width="800"
-                      height="400"
-                    />
-                  {/if}
+                  <img
+                    src={hero}
+                    alt=""
+                    class="w-full h-56 lg:h-full lg:min-h-[280px] object-cover"
+                    loading="eager"
+                    width="800"
+                    height="400"
+                  />
                 {:else}
                   <div class="w-full h-56 lg:h-full lg:min-h-[280px] bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
                     <svg class="w-16 h-16 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
@@ -253,14 +218,7 @@ function canUseWebp(series: SeriesListingEntry): boolean {
             <!-- Grid cards -->
             <div class="relative">
               {#if hero}
-                {#if canUseWebp(series)}
-                  <picture>
-                    <source srcset={hero.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                    <img src={hero} alt="" class="w-full h-48 object-cover" loading="lazy" width="400" height="192" />
-                  </picture>
-                {:else}
-                  <img src={hero} alt="" class="w-full h-48 object-cover" loading="lazy" width="400" height="192" />
-                {/if}
+                <img src={hero} alt="" class="w-full h-48 object-cover" loading="lazy" width="400" height="192" />
               {:else}
                 <div class="w-full h-48 bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
                   <svg class="w-14 h-14 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">

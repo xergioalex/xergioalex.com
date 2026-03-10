@@ -14,7 +14,7 @@ const postsResult = [
 		tags: ['tech'],
 		topics: ['web-development'],
 		heroImage: undefined,
-		heroWebpExists: false,
+
 	},
 	{
 		id: 'en/2026-01-02_vue-post',
@@ -26,7 +26,7 @@ const postsResult = [
 		tags: ['tech'],
 		topics: ['javascript'],
 		heroImage: undefined,
-		heroWebpExists: false,
+
 	},
 ];
 

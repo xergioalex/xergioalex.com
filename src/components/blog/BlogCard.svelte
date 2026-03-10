@@ -8,11 +8,9 @@ import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: Language = 'en';
-export let heroWebpExists: boolean = false;
 export let searchQuery: string = '';
 export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
-export let eager: boolean = false;
 let postData: {
   title: string;
   description: string;
