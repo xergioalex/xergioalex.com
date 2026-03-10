@@ -60,6 +60,13 @@ From manual trading to algorithmic strategies:
 2. What is Market Profile — Volume profiling and market analysis (/blog/what-is-market-profile-in-trading/)
 3. From Manual to Algorithmic Trading — Automating trading strategies (/blog/from-manual-to-algorithmic-trading/)
 
+#### AEO: From Invisible to Cited (4 chapters)
+Answer Engine Optimization — how to build a website that AI answer engines can find, understand, and reference:
+1. AEO: What Changes When AI Starts Answering Instead of Linking — Introduction to AEO, how it differs from SEO, and why the first-mover window is open (/blog/aeo-answer-engine-optimization/)
+2. The Shift: Why Rankings No Longer Mean Visibility — The landscape change, how answer engines work, llms.txt and structured data foundations (/blog/aeo-the-shift/)
+3. Markdown for Agents: Making Your Content Speak AI's Language — Content negotiation for AI, hybrid implementation with Astro and Cloudflare Pages (/blog/aeo-markdown-for-agents/)
+4. The Scorecard: How to Measure What AI Can't Tell You — Bot tracking, audit methodology, measurement tools, and what's next (/blog/aeo-the-scorecard/)
+
 ### Languages
 
 All pages and blog posts are available in:
