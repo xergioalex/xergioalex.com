@@ -70,6 +70,7 @@ La vida es más que solo código. Me apasiona el ciclismo, el gaming, las novela
 Artículos técnicos sobre ingeniería de software, DevOps, IA, trading, emprendimiento y el viaje de construir productos digitales. Escritos desde la experiencia real — con código, fracasos y lecciones aprendidas.
 
 - [Leer el blog](/es/blog)
+- [Explorar series del blog](/es/blog/series/) — colecciones curadas de artículos organizados en series temáticas
 
 ---
 

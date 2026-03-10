@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import StaticBlogSearch from '@/components/blog/StaticBlogSearch.svelte';
 import {
   getPostLanguage,
@@ -15,6 +17,14 @@ export interface Props {
 }
 const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
 
+function checkWebpExists(heroImage: string | undefined): boolean {
+  if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
+  const webpPath = heroImage
+    .replace(/\.(png|jpe?g)$/i, '.webp')
+    .replace(/^\//, '');
+  return existsSync(resolve('public', webpPath));
+}
+
 const lightweightPosts = await Promise.all(
   blogPostsResult.postsResult.map(async (post) => {
     const allTags = post.data.tags || [];
@@ -29,7 +39,7 @@ const lightweightPosts = await Promise.all(
       tags: primaryTags,
       topics: topicTags,
       heroImage: post.data.heroImage,
-      heroWebpExists: false,
+      heroWebpExists: checkWebpExists(post.data.heroImage),
       seriesCurrent: (post as { seriesCurrent?: number }).seriesCurrent,
       seriesTotal: (post as { seriesTotal?: number }).seriesTotal,
       seriesTitle: (post as { seriesTitle?: string }).seriesTitle,
@@ -47,5 +57,5 @@ const lightweightPosts = await Promise.all(
   tagsResult={blogPostsResult.tagsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
   lang={lang}
-  client:load
+  client:idle
 />

@@ -21,7 +21,7 @@ $: isTopicActive = topicTags.includes(currentTag);
 // Translations for header content
 $: headerTitle = currentTag
   ? t.postsTagged(t.tagNames[currentTag] || currentTag)
-  : t.blogDescription;
+  : t.blogHeading;
 $: headerSubtitle = currentTag
   ? t.tagDescriptions[currentTag] || t.blogDescription
   : t.blogDescription;
@@ -48,6 +48,21 @@ $: availableText = t.articlesAvailable(totalPosts);
       {availableText}
     </p>
   {/if}
+</div>
+
+<!-- Series link — separate from tag filters (navigation, not a filter) -->
+<div class="mb-4">
+  <a
+    href={`${basePrefix}/blog/series/`}
+    class="inline-flex items-center gap-1.5 text-sm text-purple-700 transition-colors hover:text-purple-900 dark:text-purple-400 dark:hover:text-purple-200"
+    on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: 'series' })}
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+      <path d="M10.75 16.82A7.462 7.462 0 0115 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0018 15.06v-11a.75.75 0 00-.546-.721A9.006 9.006 0 0015 3a8.999 8.999 0 00-4.25 1.065V16.82zM9.25 4.065A8.999 8.999 0 005 3c-.85 0-1.673.118-2.454.34A.75.75 0 002 4.06v11a.75.75 0 00.954.721A7.506 7.506 0 015 15.5c1.579 0 3.042.487 4.25 1.32V4.065z" />
+    </svg>
+    {t.seriesListingPage.exploreSeries}
+    <span aria-hidden="true">&rarr;</span>
+  </a>
 </div>
 
 <!-- Primary tag pills -->

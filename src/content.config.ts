@@ -47,6 +47,8 @@ const series = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     order: z.number().default(0),
+    heroImage: z.string().optional(),
+    keywords: z.array(z.string()).optional(),
   }),
 });
 

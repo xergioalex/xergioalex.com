@@ -34,6 +34,23 @@ export interface SearchIndexEntry {
   seriesTitle?: string;
 }
 
+/** Minimal post schema for timeline card rendering — leaner than SearchIndexEntry. */
+export interface TimelineCardEntry {
+  slug: string;
+  lang: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  /** All post tags (primary + subtopic combined). Callers derive topics client-side via topicTagNames. */
+  tags: string[];
+  heroImage?: string;
+  heroWebpExists: boolean;
+  seriesSlug?: string;
+  seriesCurrent?: number;
+  seriesTotal?: number;
+  seriesTitle?: string;
+}
+
 interface SeriesPosition {
   current: number;
   total: number;
@@ -306,6 +323,91 @@ export async function getSearchIndexByLanguage(
 ): Promise<SearchIndexEntry[]> {
   const searchIndex = await getSearchIndex();
   return searchIndex.filter((post) => post.lang === lang);
+}
+
+/**
+ * Build a full timeline index for a specific tag and language.
+ * Returns ALL matching posts as TimelineCardEntry[] (no pagination) — callers paginate client-side.
+ * Reuses getBlogPosts for consistent filtering, sorting, and series enrichment.
+ */
+export async function getTimelineIndex(
+  tag: string,
+  lang: string
+): Promise<TimelineCardEntry[]> {
+  // pageSize: 9999 ensures all matching posts are returned (no actual pagination)
+  const { postsResult } = await getBlogPosts({ lang, tag, pageSize: 9999 });
+
+  return postsResult.map((post) => {
+    const enriched = post as CollectionEntry<'blog'> & {
+      heroWebpExists: boolean;
+      seriesCurrent?: number;
+      seriesTotal?: number;
+      seriesTitle?: string;
+    };
+    return {
+      slug: getPostSlug(post.id),
+      lang: getPostLanguage(post.id),
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate.toISOString(),
+      tags: post.data.tags ?? [],
+      heroImage: post.data.heroImage,
+      heroWebpExists: enriched.heroWebpExists ?? false,
+      seriesSlug: post.data.series,
+      seriesCurrent: enriched.seriesCurrent,
+      seriesTotal: enriched.seriesTotal,
+      seriesTitle: enriched.seriesTitle,
+    };
+  });
+}
+
+/**
+ * Build a full timeline index for a specific series and language.
+ * Returns ALL matching posts as TimelineCardEntry[] sorted by seriesOrder ascending (chapter order).
+ * Callers paginate client-side.
+ */
+export async function getSeriesTimelineIndex(
+  seriesSlug: string,
+  lang: string
+): Promise<TimelineCardEntry[]> {
+  const allPosts = await getCollection('blog');
+  const seriesTitleBySlug = await getSeriesTitleMap();
+
+  const filteredPosts = allPosts.filter(
+    (post) =>
+      post.id.startsWith(`${lang}/`) &&
+      post.data.series === seriesSlug &&
+      !isDemoPost(post) &&
+      (import.meta.env.DEV || !isScheduledPost(post))
+  );
+
+  const seriesPositionById = getSeriesPositionById(filteredPosts);
+
+  // Sort by seriesOrder ascending (chapter 1 first, then 2, 3...)
+  const sorted = [...filteredPosts].sort((a, b) => {
+    const orderA = a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+    const orderB = b.data.seriesOrder ?? Number.MAX_SAFE_INTEGER;
+    if (orderA !== orderB) return orderA - orderB;
+    return a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
+  });
+
+  return sorted.map((post) => {
+    const position = seriesPositionById.get(post.id);
+    return {
+      slug: getPostSlug(post.id),
+      lang: getPostLanguage(post.id),
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate.toISOString(),
+      tags: post.data.tags ?? [],
+      heroImage: post.data.heroImage,
+      heroWebpExists: heroWebpExists(post.data.heroImage),
+      seriesSlug: post.data.series,
+      seriesCurrent: position?.current,
+      seriesTotal: position?.total,
+      seriesTitle: seriesTitleBySlug.get(seriesSlug),
+    };
+  });
 }
 
 export async function getBlogPosts(

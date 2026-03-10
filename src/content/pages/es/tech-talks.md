@@ -4,6 +4,12 @@ description: "Construyendo comunidad a través del conocimiento compartido. Cofu
 lastUpdated: 2026-03-09
 ---
 
+## Archivo de Charlas
+
+El archivo de charlas al final de esta página se carga progresivamente a medida que el usuario hace scroll — los primeros posts aparecen de inmediato al cargar la página y el contenido adicional se obtiene bajo demanda para una experiencia de navegación rápida y fluida.
+
+---
+
 ## Pereira Tech Talks
 
 Cofundada en septiembre de 2017 con una idea simple: crear un espacio donde desarrolladores, diseñadores y emprendedores pudieran aprender unos de otros. Lo que empezó como pequeñas reuniones en espacios prestados ha crecido hasta convertirse en una comunidad tecnológica activa en Colombia, llenando auditorios en la Universidad Tecnológica de Pereira con ponentes de toda Latinoamérica.
