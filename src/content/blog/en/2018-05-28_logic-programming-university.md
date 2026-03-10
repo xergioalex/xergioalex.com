@@ -2,7 +2,7 @@
 title: "Declaring the Solution: Logic and Constraint Programming with Prolog and Mozart"
 description: "University projects from my Logic and Constraint Programming course — from classic puzzles in Prolog to constraint solving in Mozart/Oz, culminating in the Four Color Theorem applied to Colombia's map."
 pubDate: "2018-05-28"
-heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
+heroImage: "/images/blog/posts/logic-programming-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 keywords: ["Prolog logic programming university", "Mozart Oz constraint programming", "Four Color Theorem Prolog", "declarative programming Prolog", "constraint satisfaction programming", "logic programming university course", "Prolog map coloring problem"]

@@ -2,7 +2,7 @@
 title: "Astro in Action"
 description: "Why Astro won me over — real case studies from Microsoft and Firebase, measurable performance gains, and a live migration of the Pereira Tech Talks site to prove it's not just hype."
 pubDate: "2024-08-01"
-heroImage: "/images/blog/posts/astro-in-action/hero.png"
+heroImage: "/images/blog/posts/astro-in-action/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "javascript"]
 keywords: ["Astro in Action talk", "Astro Microsoft Firebase case study", "Pereira Tech Talks Astro", "Astro framework performance", "Astro islands architecture", "Astro zero JavaScript default", "Astro vs Next.js comparison"]

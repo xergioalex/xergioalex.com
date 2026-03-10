@@ -2,7 +2,7 @@
 title: "AI and the New Era of Programming at Open Tech Hackathon"
 description: "From my Vibe Coding e IA workshop at Open Tech Hackathon — when to use Cursor vs Codex vs Claude Code, the conductor mindset, and practical lessons from shipping AI-powered features at DailyBot."
 pubDate: "2025-10-04"
-heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
+heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["vibe coding AI programming", "Cursor vs Codex vs Claude Code", "AI code agent comparison", "developer as conductor orchestrator", "Open Tech Hackathon AI workshop", "AI coding tools productivity", "DailyBot AI features shipping"]

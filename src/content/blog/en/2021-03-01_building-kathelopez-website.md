@@ -2,7 +2,7 @@
 title: "Building kathelopez.com: The Website I Built for My Wife"
 description: "How I built a simple, no-framework static website to help my wife — an ABA therapist and neuropsychologist — establish her professional online presence. Bootstrap, GitHub Pages, and zero backend."
 pubDate: "2021-03-01"
-heroImage: "/images/blog/posts/building-kathelopez-website/hero.png"
+heroImage: "/images/blog/posts/building-kathelopez-website/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "personal", "web-development"]
 keywords: ["psychologist website Bootstrap", "static website GitHub Pages", "Google Forms contact form no backend", "Bootstrap 4 single page website", "no framework website portfolio", "kathelopez.com website build", "simple professional website psychology"]

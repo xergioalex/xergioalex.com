@@ -2,7 +2,7 @@
 title: "Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA sin JavaScript del Lado del Cliente"
 description: "Un solo archivo de middleware en Cloudflare Pages para ver lo que las analíticas JavaScript no pueden: los crawlers de IA que visitan el sitio."
 pubDate: "2026-03-04T14:00:00"
-heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
+heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["rastrear bots de IA en mi sitio web", "Cloudflare Pages middleware para analíticas", "crawlers de IA GPTBot ChatGPT-User", "analíticas sin JavaScript del lado del cliente", "detectar bots de IA en el servidor", "middleware en Cloudflare Edge Functions", "qué bots de IA visitan mi sitio"]

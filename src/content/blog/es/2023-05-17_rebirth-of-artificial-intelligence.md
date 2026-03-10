@@ -2,7 +2,7 @@
 title: "El renacimiento de la inteligencia artificial"
 description: "Una reflexión personal desde mi presentación en Pereira Tech Talks — por qué ChatGPT, GPT-4 y la IA generativa marcaron el fin del invierno de la IA y el inicio de una revolución que vivo todos los días."
 pubDate: "2023-05-17"
-heroImage: "/images/blog/shared/ai-rebirth-hero.png"
+heroImage: "/images/blog/shared/ai-rebirth-hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["renacimiento de la inteligencia artificial", "ChatGPT GPT-4 revolución IA", "IA generativa en el desarrollo de software", "cómo la IA está cambiando la tecnología", "Pereira Tech Talks IA 2023", "fin del invierno de la IA", "IA generativa para desarrolladores"]

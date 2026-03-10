@@ -2,7 +2,7 @@
 title: 'En Progreso: Construyendo una Herramienta CLI con Rust'
 description: 'Un articulo en borrador sobre construir una herramienta de linea de comandos con Rust — aun en proceso de escritura'
 pubDate: '2025-01-08'
-heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-3.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['tutorial herramienta CLI en Rust', 'crear línea de comandos con Rust', 'Rust para principiantes', 'Rust vs Go para CLI', 'Rust clap parser argumentos']

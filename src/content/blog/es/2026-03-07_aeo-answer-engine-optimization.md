@@ -2,7 +2,7 @@
 title: "AEO: Qué Cambia Cuando la IA Empieza a Responder en Vez de Enlazar"
 description: "Los agentes de IA son ahora algunos de los visitantes más importantes de tu sitio — y no hacen clic en enlaces. Una guía práctica sobre Answer Engine Optimization: qué es, cómo difiere del SEO, y por qué la ventana del primero en actuar todavía está abierta."
 pubDate: "2026-03-07T14:00:00"
-heroImage: "/images/blog/posts/aeo-answer-engine-optimization/hero.png"
+heroImage: "/images/blog/posts/aeo-answer-engine-optimization/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["guía answer engine optimization AEO", "optimizar sitio web para motores de búsqueda IA", "llms.txt datos estructurados AEO", "cómo los motores de búsqueda IA citan fuentes", "AEO vs SEO guía práctica", "datos estructurados JSON-LD visibilidad IA", "markdown para agentes IA endpoints", "rastrear tráfico bots IA analítica servidor"]

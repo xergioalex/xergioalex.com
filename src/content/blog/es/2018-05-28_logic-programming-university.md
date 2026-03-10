@@ -2,7 +2,7 @@
 title: "Declarando la Solución: Programación Lógica y con Restricciones con Prolog y Mozart"
 description: "Proyectos universitarios de mi curso de Programación Lógica y con Restricciones — desde puzzles clásicos en Prolog hasta resolución de restricciones en Mozart/Oz, culminando con el Teorema de los Cuatro Colores aplicado al mapa de Colombia."
 pubDate: "2018-05-28"
-heroImage: "/images/blog/posts/logic-programming-university/hero.jpg"
+heroImage: "/images/blog/posts/logic-programming-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 keywords: ["programación lógica con Prolog", "Mozart Oz restricciones", "programación con restricciones ejemplos", "Prolog para principiantes", "teorema de cuatro colores Prolog", "paradigmas de programación universidad", "programación declarativa vs imperativa"]

@@ -2,7 +2,7 @@
 title: "Midiendo lo que Importa: Cómo Configuré Analytics Gratis Sin Sacrificar el Rendimiento"
 description: "El tercer capítulo de la construcción de XergioAleX.com — implementando un stack completo de analytics usando solo herramientas gratuitas, sin perder los puntajes perfectos de Lighthouse ni agregar banners de cookies."
 pubDate: "2026-02-28"
-heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
+heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["analytics gratis sin cookies", "Umami Analytics alternativa a Google Analytics", "Cloudflare Web Analytics", "analíticas privadas sitio estático", "cómo medir visitas sin perder rendimiento Lighthouse", "analytics sin banners de cookies", "stack de analíticas gratuito para sitios web"]

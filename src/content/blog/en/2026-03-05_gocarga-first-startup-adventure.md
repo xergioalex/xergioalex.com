@@ -2,7 +2,7 @@
 title: "GoCarga: My First Startup Adventure and the Art of the Pitch"
 description: "How building a cargo transport platform with university friends taught me the most valuable entrepreneurial skill: telling a story that makes people believe."
 pubDate: 2026-03-05
-heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
+heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.webp"
 heroLayout: "banner"
 tags: ["entrepreneur", "tech", "portfolio"]
 keywords: ["GoCarga startup Colombia freight", "Apps.co MinTIC startup program", "cargo transport platform Colombia", "Expocamello pitch angel investors", "Lean LaunchPad startup Cali", "first startup adventure university", "startup pitch skills storytelling"]

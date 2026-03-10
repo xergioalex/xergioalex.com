@@ -2,7 +2,7 @@
 title: "Introduction to Meteor.js"
 description: "My first tech talk ever — building a real-time chat app with Meteor.js from zero to working prototype in minutes, with reactive data and no WebSockets setup."
 pubDate: "2016-11-25"
-heroImage: "/images/blog/posts/introduction-to-meteorjs/hero.png"
+heroImage: "/images/blog/posts/introduction-to-meteorjs/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["Meteor.js introduction", "first tech talk Meteor", "PereiraJS meetup", "reactive JavaScript framework", "Meteor.js real-time apps", "building chat app Meteor", "Node.js full-stack framework"]

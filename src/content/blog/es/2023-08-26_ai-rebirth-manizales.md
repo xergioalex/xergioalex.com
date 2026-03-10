@@ -2,7 +2,7 @@
 title: "Cómo la IA está revolucionando el desarrollo de aplicaciones modernas"
 description: "Qué cambió entre mayo y agosto de 2023 — mi experiencia en Manizales Tech Talks compartiendo cómo la IA transformaba el desarrollo de apps, tres meses más dentro de la revolución."
 pubDate: "2023-08-26"
-heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
+heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["IA revolucionando el desarrollo de aplicaciones", "ChatGPT en producción en 2023", "GPT-4 para desarrolladores", "Manizales Tech Talks IA", "cómo la IA transforma los equipos de software", "productos reales construidos con IA", "evolución de la IA generativa en 2023"]

@@ -2,7 +2,7 @@
 title: "The Scorecard: How to Measure What AI Can't Tell You"
 description: "AEO measurement is years behind AEO optimization. Here's what the industry has, what's still missing, and one audit framework that gives you something concrete to work with."
 pubDate: "2026-03-10T14:00:00"
-heroImage: "/images/blog/posts/aeo-the-scorecard/hero.png"
+heroImage: "/images/blog/posts/aeo-the-scorecard/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["AEO audit methodology checklist", "track AI bot traffic analytics", "Bing AI Performance report", "measure AI search citations", "AI referral traffic growing statistics"]

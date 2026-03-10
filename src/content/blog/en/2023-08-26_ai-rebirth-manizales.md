@@ -2,7 +2,7 @@
 title: "How AI is Revolutionizing Modern Application Development"
 description: "What changed between May and August 2023 — my Manizales Tech Talks experience sharing how AI was transforming app development, three months deeper into the revolution."
 pubDate: "2023-08-26"
-heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
+heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["LangChain RAG AI applications", "GPT-4 developer practical use", "Manizales Tech Talks AI 2023", "AI application development 2023", "LangChain retrieval augmented generation", "building AI apps GPT-4", "AI revolution app development Colombia"]

@@ -2,7 +2,7 @@
 title: "Markdown for Agents: Making Your Content Speak AI's Language"
 description: "Content negotiation has existed since HTTP/1.1. Now it's getting a new job. Here's what 'Markdown for Agents' means as a web pattern — and a working implementation using Astro and Cloudflare Pages."
 pubDate: "2026-03-09T14:00:00"
-heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.png"
+heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["markdown for agents implementation", "content negotiation AI bots", "Accept text/markdown header", "Cloudflare markdown for agents", "AI-readable web content", "serve markdown to AI agents"]

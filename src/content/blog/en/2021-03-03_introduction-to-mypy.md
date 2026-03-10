@@ -2,7 +2,7 @@
 title: "Introduction to MyPy"
 description: "Why we adopted type checking at DailyBot — from untyped Python chaos to catching bugs before runtime, reducing cognitive load, and shipping with confidence."
 pubDate: "2021-03-03"
-heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
+heroImage: "/images/blog/posts/introduction-to-mypy/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "python"]
 keywords: ["MyPy Python type checking", "Python type hints tutorial", "DailyBot MyPy adoption", "type checking Python codebase", "attrs Python type safety", "Python static type analysis", "MyPy catching bugs before runtime"]

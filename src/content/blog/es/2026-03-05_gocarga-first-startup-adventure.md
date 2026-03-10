@@ -2,7 +2,7 @@
 title: "GoCarga: Mi Primera Aventura Startup y el Arte del Pitch"
 description: "Cómo construir una plataforma de transporte de carga con amigos de la universidad me enseñó la habilidad empresarial más valiosa: contar una historia que haga creer a la gente."
 pubDate: 2026-03-05
-heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
+heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.webp"
 heroLayout: "banner"
 tags: ["entrepreneur", "tech", "portfolio"]
 keywords: ["primera startup colombiana logística", "GoCarga plataforma transporte de carga", "emprendimiento universitario Colombia", "pitch para inversores ángeles", "Apps.co Mintic emprendimiento", "cómo hacer un pitch para inversores", "startup de tecnología en Colombia"]

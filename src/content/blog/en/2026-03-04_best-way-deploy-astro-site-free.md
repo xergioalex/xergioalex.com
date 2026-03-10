@@ -2,7 +2,7 @@
 title: "The Best Way to Deploy Your Astro Site for Free"
 description: "After years deploying static sites on GitHub Pages, I evaluated the free options and landed on Cloudflare Pages. Here's what I learned and what surprised me."
 pubDate: "2026-03-04T10:00:00"
-heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
+heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["deploy Astro site free Cloudflare Pages", "Cloudflare Pages vs GitHub Pages", "free static site hosting Astro", "Cloudflare Pages preview deployments", "deploy Astro Cloudflare unlimited bandwidth", "best free hosting Astro", "Cloudflare Pages auto-detect Astro"]

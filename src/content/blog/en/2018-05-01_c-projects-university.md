@@ -2,7 +2,7 @@
 title: "From Parentheses to Pointers: Learning C and Imperative Programming at University"
 description: "The story of how Programming 2 introduced me to C, pointers, memory management, and building games with Allegro — the semester where I learned what the computer is actually doing under the hood."
 pubDate: "2018-05-01"
-heroImage: "/images/blog/posts/c-projects-university/hero.png"
+heroImage: "/images/blog/posts/c-projects-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 keywords: ["C programming pointers university", "Allegro graphics library games", "C imperative programming tutorial", "memory management C language", "learn C programming beginners", "Allegro 2D game development C", "university C programming projects"]

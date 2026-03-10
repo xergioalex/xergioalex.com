@@ -2,7 +2,7 @@
 title: "El Cambio: Por Qué los Rankings Ya No Significan Visibilidad"
 description: "El panorama de la búsqueda cambió — y la mayoría de los sitios no están preparados. Así es como se ve el cambio, por qué los motores de respuesta con IA funcionan diferente, y las dos bases que todo sitio debería tener en su lugar."
 pubDate: "2026-03-08T14:00:00"
-heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
+heroImage: "/images/blog/posts/aeo-the-shift/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["optimización para motores de respuesta AEO guía", "qué es AEO vs SEO", "cómo funcionan los motores de búsqueda con IA", "optimización Google AI Overviews", "citas de contenido ChatGPT Perplexity", "implementación llms.txt", "datos estructurados JSON-LD AEO", "E-E-A-T datos estructurados schema"]

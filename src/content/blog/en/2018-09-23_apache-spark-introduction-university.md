@@ -2,7 +2,7 @@
 title: "Taming Big Data: An Introduction to Apache Spark"
 description: "From RDDs to real-time streaming — how I built hands-on notebooks, a Docker cluster, and a full presentation to teach Apache Spark as my Big Data course final project."
 pubDate: "2018-09-23"
-heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.png"
+heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "talks", "python", "database", "university"]
 keywords: ["Apache Spark introduction Python", "Spark RDDs DataFrames tutorial", "Docker Spark cluster setup", "big data processing Spark", "PySpark university project", "distributed computing Spark", "Spark streaming real-time processing"]

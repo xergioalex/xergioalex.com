@@ -2,7 +2,7 @@
 title: "Construyendo XergioAleX.com: Cómo construí mi sitio web personal con Astro, Svelte e IA"
 description: "La historia completa detrás de XergioAleX.com — de una landing de una sola página a una plataforma personal bilingüe, preparada para IA y enfocada en rendimiento. Un deep dive en arquitectura, decisiones tecnológicas y por qué Astro + Svelte es una combinación ganadora para sitios estáticos modernos."
 pubDate: "2026-01-22"
-heroImage: "/images/blog/posts/building-xergioalex-website/hero.png"
+heroImage: "/images/blog/posts/building-xergioalex-website/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
 keywords: ["construir sitio web personal con Astro", "Astro y Svelte para sitio estático", "arquitectura sitio personal bilingüe", "Astro islands arquitectura", "sitio web personal con blog integrado", "cómo construí mi web personal con Astro", "Astro Svelte TypeScript Tailwind"]

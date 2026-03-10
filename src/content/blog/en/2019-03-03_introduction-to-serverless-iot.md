@@ -2,7 +2,7 @@
 title: "Introduction to Serverless with Emphasis on IoT"
 description: "My journey into serverless architectures and why they changed how I think about building IoT applications. From meditation apps to smart light bulbs."
 pubDate: "2019-03-03"
-heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
+heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "devops", "iot"]
 keywords: ["serverless IoT architecture", "AWS Lambda IoT tutorial", "serverless functions explained", "BaaS FaaS serverless comparison", "Alexa skill IoT serverless", "serverless IoT events scaling", "AWS Lambda beginner guide"]

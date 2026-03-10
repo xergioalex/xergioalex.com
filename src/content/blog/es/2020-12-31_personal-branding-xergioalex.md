@@ -2,7 +2,7 @@
 title: 'Construyendo la marca XergioAleX: la identidad del Ninja Coder'
 description: 'La historia detrás de la marca XergioAleX ninja coder — del concepto a la ejecución. Simbolismo del logo, paleta de colores, variantes de diseño y guía de estilo completa.'
 pubDate: '2020-12-31'
-heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.jpg'
+heroImage: '/images/blog/posts/personal-branding-xergioalex/hero.webp'
 heroLayout: 'side-by-side'
 tags: ["portfolio", "personal", "design"]
 keywords: ["diseño de marca personal developer", "identidad visual para programadores", "logo ninja coder concepto", "paleta de colores marca personal", "branding para desarrolladores", "guía de estilo personal XergioAleX", "cómo crear tu marca como desarrollador"]

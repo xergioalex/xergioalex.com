@@ -2,7 +2,7 @@
 title: "History, Discussion, and Analysis of the Bitcoin Paper by Satoshi Nakamoto"
 description: "A deep dive into Satoshi's Bitcoin whitepaper — what makes it revolutionary, the technical innovations I found most compelling, and my personal journey reading the paper that changed finance."
 pubDate: "2018-11-15"
-heroImage: "/images/blog/posts/bitcoin-paper-analysis/hero.png"
+heroImage: "/images/blog/posts/bitcoin-paper-analysis/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
 keywords: ["Bitcoin whitepaper analysis Satoshi Nakamoto", "Bitcoin proof of work explained", "Satoshi Nakamoto paper review", "Bitcoin whitepaper deep dive", "blockchain proof of work", "Bitcoin peer-to-peer cash system", "cryptocurrency Bitcoin origins"]

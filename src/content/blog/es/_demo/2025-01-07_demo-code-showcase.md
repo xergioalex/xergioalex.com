@@ -2,7 +2,7 @@
 title: 'Programacion Poliglota: Ejemplos de Codigo en Multiples Lenguajes'
 description: 'Una muestra de bloques de codigo con resaltado de sintaxis en multiples lenguajes de programacion'
 pubDate: '2025-01-07'
-heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-4.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
 keywords: ['ejemplos de resaltado de sintaxis', 'bloques de código múltiples lenguajes', 'showcase lenguajes de programación', 'formato de código en blog', 'ejemplos de programación políglota']

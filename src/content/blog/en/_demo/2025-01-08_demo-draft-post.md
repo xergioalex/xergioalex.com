@@ -2,7 +2,7 @@
 title: 'Work in Progress: Building a CLI Tool with Rust'
 description: 'A draft article about building a command-line tool with Rust — still being written'
 pubDate: '2025-01-08'
-heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-3.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['Rust CLI tool tutorial', 'build command line tool Rust', 'Rust for beginners', 'Rust vs Go CLI', 'Rust clap argument parser']

@@ -2,7 +2,7 @@
 title: 'Introducción a Meteor.js'
 description: 'Mi primera charla tech — construir una app de chat en tiempo real con Meteor.js desde cero hasta un prototipo funcionando en minutos, con datos reactivos y sin configurar WebSockets.'
 pubDate: '2016-11-25'
-heroImage: '/images/blog/posts/introduction-to-meteorjs/hero.png'
+heroImage: '/images/blog/posts/introduction-to-meteorjs/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["introducción a Meteor.js", "qué es Meteor.js", "framework JavaScript full-stack", "datos reactivos en tiempo real", "aplicación web con Meteor", "publicaciones y suscripciones Meteor", "charla PereiraJS Meteor"]

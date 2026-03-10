@@ -2,7 +2,7 @@
 title: "Introducción a Webpack"
 description: "Cómo Webpack transformó el desarrollo front-end — mi charla desglosando entry points, loaders, plugins y por qué la developer experience importa más que la configuración."
 pubDate: "2018-12-26"
-heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
+heroImage: "/images/blog/posts/introduction-to-webpack/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["introducción a Webpack", "qué es Webpack y cómo funciona", "module bundler JavaScript", "entry points y loaders Webpack", "developer experience con Webpack", "Webpack para front-end", "bundling de módulos JavaScript"]

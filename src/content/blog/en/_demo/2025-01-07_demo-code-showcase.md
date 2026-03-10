@@ -2,7 +2,7 @@
 title: 'Polyglot Programming: Code Examples Across Languages'
 description: 'A showcase of syntax-highlighted code blocks in multiple programming languages'
 pubDate: '2025-01-07'
-heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-4.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
 keywords: ['syntax highlighting examples', 'code blocks multiple languages', 'programming language showcase', 'developer blog code formatting', 'polyglot programming examples']

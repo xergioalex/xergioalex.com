@@ -2,7 +2,7 @@
 title: "Building Virtual Reality for the Web: A-Frame, Mazes, and 360° Galleries"
 description: "How I built WebVR experiences with just HTML and JavaScript — a VR maze game, a 360° photo gallery, and over 20 demos that proved virtual reality doesn't need expensive hardware."
 pubDate: "2019-10-15"
-heroImage: "/images/blog/posts/webvr-projects/hero.png"
+heroImage: "/images/blog/posts/webvr-projects/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "javascript", "web-development"]
 keywords: ["WebVR A-Frame projects portfolio", "VR maze game web browser", "360 photo gallery A-Frame", "A-Frame VR HTML JavaScript", "browser VR without headset", "WebVR Google Cardboard demos", "A-Frame interactive VR web"]

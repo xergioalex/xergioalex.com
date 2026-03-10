@@ -2,7 +2,7 @@
 title: '¿Qué es el Blockchain y cómo está transformando radicalmente la economía y la industria?'
 description: 'Desde los orígenes del Bitcoin hasta la revolución industrial — explorando cómo la tecnología blockchain está redefiniendo el dinero, la confianza y el futuro de la propiedad digital.'
 pubDate: '2018-06-01'
-heroImage: '/images/blog/posts/blockchain-economy-industry/hero.jpg'
+heroImage: '/images/blog/posts/blockchain-economy-industry/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "blockchain"]
 keywords: ["blockchain economía e industria", "cómo funciona blockchain explicado", "historia del dinero y Bitcoin", "blockchain propiedad digital", "descentralización y confianza", "Bitcoin y la revolución financiera", "qué es blockchain y para qué sirve"]

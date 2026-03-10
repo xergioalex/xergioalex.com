@@ -2,7 +2,7 @@
 title: "Introducción a Serverless con énfasis en IoT"
 description: "Mi viaje a las arquitecturas serverless y por qué cambiaron cómo pienso en construir aplicaciones IoT. Desde apps de meditación hasta bombillos inteligentes."
 pubDate: "2019-03-03"
-heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
+heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "devops", "iot"]
 keywords: ["introducción a serverless", "qué es serverless computing", "arquitectura serverless para IoT", "AWS Lambda con IoT", "funciones serverless para dispositivos conectados", "serverless sin administrar servidores", "IoT con arquitectura serverless"]

@@ -2,7 +2,7 @@
 title: "How to Submit Google Forms via Postman and Ajax"
 description: "Connect a static contact form to Google Forms via HTTP POST — no iframe needed. Step-by-step guide with Postman and jQuery Ajax."
 pubDate: "2018-01-11"
-heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.png"
+heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["submit Google Forms via Ajax", "contact form without backend", "Google Forms HTTP POST", "jQuery Ajax Google Forms", "static site contact form", "Google Forms Postman integration", "form submission without server"]

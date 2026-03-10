@@ -2,7 +2,7 @@
 title: 'Referencia Completa de Markdown para Escritores Técnicos'
 description: 'Una muestra exhaustiva de todas las características de formato Markdown disponibles para posts de blog'
 pubDate: '2025-01-06'
-heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-5.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['guía de formato markdown', 'escritura técnica markdown', 'referencia sintaxis markdown', 'formato de blog posts', 'markdown para desarrolladores']

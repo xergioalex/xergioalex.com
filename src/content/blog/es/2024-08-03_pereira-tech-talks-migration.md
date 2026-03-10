@@ -2,7 +2,7 @@
 title: "Migrando Pereira Tech Talks: de Ghost a Astro"
 description: "La historia detrás de migrar pereiratechtalks.org — de un Ghost dockerizado con costos mensuales a un sitio estático con Astro, desplegado gratis en GitHub Pages. Diez años de lecciones condensadas en dos semanas de código."
 pubDate: "2024-08-03"
-heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
+heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "web-development", "devops"]
 keywords: ["migrar de Ghost a Astro", "Astro vs Ghost CMS", "sitio estático gratis con Astro", "GitHub Pages con Astro", "migración de blog a sitio estático", "Pereira Tech Talks historia y rediseño", "cómo migrar un blog a Astro"]

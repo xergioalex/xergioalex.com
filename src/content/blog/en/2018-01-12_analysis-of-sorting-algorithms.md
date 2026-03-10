@@ -2,7 +2,7 @@
 title: "Comparative Analysis of Sorting Algorithms"
 description: "An academic experiment comparing sorting algorithm complexity and real execution times across two server configurations."
 pubDate: "2018-01-12"
-heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
+heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "university"]
 keywords: ["sorting algorithm comparison C", "bubble sort vs quicksort benchmark", "DigitalOcean server performance test", "sorting algorithms time complexity", "C language algorithms benchmark", "sorting performance comparison", "university algorithms exercise"]

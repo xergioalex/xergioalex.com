@@ -2,7 +2,7 @@
 title: "Análisis comparativo de algoritmos de ordenamiento"
 description: "Un análisis académico sobre complejidad y tiempos de ejecución de algoritmos de ordenamiento, comparando resultados reales en dos servidores."
 pubDate: "2018-01-12"
-heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.jpg"
+heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "university"]
 keywords: ["análisis de algoritmos de ordenamiento", "comparación de algoritmos de sorting en Java", "complejidad algorítmica Big O", "algoritmos de ordenamiento más populares", "rendimiento algoritmos sorting Java", "proyecto universitario algoritmia", "quicksort mergesort comparación"]

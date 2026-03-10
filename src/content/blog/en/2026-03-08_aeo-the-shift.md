@@ -2,7 +2,7 @@
 title: "The Shift: Why Rankings No Longer Mean Visibility"
 description: "The search landscape changed — and most sites aren't ready. Here's what the shift looks like, why AI answer engines work differently, and the two foundations every site should have in place."
 pubDate: "2026-03-08T14:00:00"
-heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
+heroImage: "/images/blog/posts/aeo-the-shift/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["answer engine optimization AEO guide", "what is AEO vs SEO", "how AI search engines work", "Google AI Overviews optimization", "ChatGPT Perplexity content citation", "llms.txt implementation", "structured data JSON-LD AEO", "E-E-A-T structured data schema"]

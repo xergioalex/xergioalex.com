@@ -2,7 +2,7 @@
 title: "Por qué abandoné ESLint + Prettier por Biome"
 description: "Después de años persiguiendo actualizaciones de ESLint y manejando los conflictos con Prettier, me pasé a Biome. Un archivo de configuración, un binario, y no he mirado atrás."
 pubDate: '2026-03-06'
-heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.png'
+heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development', 'javascript']
 keywords: ["reemplazar ESLint y Prettier por Biome", "qué es Biome linter formatter", "Biome vs ESLint Prettier comparación", "cómo configurar Biome en proyecto JavaScript", "linter y formatter todo en uno", "migrar de ESLint a Biome", "Biome para proyectos TypeScript Astro"]

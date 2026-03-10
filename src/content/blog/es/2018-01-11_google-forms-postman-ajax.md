@@ -2,7 +2,7 @@
 title: "Cómo responder formularios de Google via postman y ajax"
 description: "Conecta un formulario de contacto estático a Google Forms mediante HTTP POST — sin iframe. Guía paso a paso con Postman y jQuery Ajax."
 pubDate: "2018-01-11"
-heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.png"
+heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["conectar formulario Google Forms con JavaScript", "enviar datos a Google Forms con Ajax", "formulario de contacto sin backend", "Google Forms API jQuery", "HTTP POST a Google Forms", "formulario web estático sin servidor", "Postman Google Forms tutorial"]

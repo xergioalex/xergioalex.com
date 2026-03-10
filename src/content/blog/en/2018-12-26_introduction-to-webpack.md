@@ -2,7 +2,7 @@
 title: "Introduction to Webpack"
 description: "How Webpack transformed front-end development — my talk breaking down entry points, loaders, plugins, and why developer experience matters more than configuration."
 pubDate: "2018-12-26"
-heroImage: "/images/blog/posts/introduction-to-webpack/hero.png"
+heroImage: "/images/blog/posts/introduction-to-webpack/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["Webpack introduction talk", "Webpack entry points loaders plugins", "JavaScript module bundler Webpack", "Webpack developer experience", "front-end build tools Webpack", "Webpack transforms static assets", "Webpack configuration beginners"]

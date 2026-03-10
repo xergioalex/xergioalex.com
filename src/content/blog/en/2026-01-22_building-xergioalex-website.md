@@ -2,7 +2,7 @@
 title: "Building XergioAleX.com: How I Built My Personal Website with Astro, Svelte, and AI"
 description: "The complete story behind XergioAleX.com — from a one-page landing to a bilingual, AI-ready, performance-first personal platform. A deep dive into architecture, technology choices, and why Astro + Svelte is a killer combo for modern static sites."
 pubDate: "2026-01-22"
-heroImage: "/images/blog/posts/building-xergioalex-website/hero.png"
+heroImage: "/images/blog/posts/building-xergioalex-website/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
 keywords: ["building personal website Astro Svelte", "XergioAleX.com architecture", "Astro Svelte personal platform", "bilingual personal website Astro", "personal site Astro islands", "Ninja Coder brand website", "Astro Svelte performance personal blog"]

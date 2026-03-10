@@ -2,7 +2,7 @@
 title: "El futuro de la IA: código, hardware y agentes"
 description: "Desde mi co-presentación en Pereira Tech Talks con Sebastián Mora — cómo la programación pasó de escribir código a orquestar agentes, qué desbloquean los MCPs, y por qué llevé un robot a un meetup de software."
 pubDate: "2025-12-10"
-heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.jpg"
+heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["futuro de la IA en programación", "agentes de IA para desarrolladores", "MCPs y agentes de código", "orquestación de agentes con IA", "IA reemplazando tareas de programación", "Pereira Tech Talks futuro IA 2025", "cómo la IA cambia el trabajo del programador"]

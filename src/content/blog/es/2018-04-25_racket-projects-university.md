@@ -2,7 +2,7 @@
 title: "Mis Primeros Pasos en Programación: DrScheme, Recursividad y un Graficador de Funciones"
 description: "La historia de cómo aprendí a programar con DrScheme (ahora DrRacket) en la universidad — desde la confusión de la notación prefija y la recursividad hasta construir un graficador de funciones matemáticas con derivadas."
 pubDate: "2018-04-25"
-heroImage: "/images/blog/posts/racket-projects-university/hero.png"
+heroImage: "/images/blog/posts/racket-projects-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 keywords: ["aprender a programar con Racket", "programación funcional para principiantes", "DrScheme DrRacket universidad", "recursividad en programación funcional", "graficador de funciones matemáticas", "primer lenguaje de programación Scheme", "programación funcional vs imperativa"]

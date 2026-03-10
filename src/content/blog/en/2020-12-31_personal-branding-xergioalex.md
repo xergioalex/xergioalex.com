@@ -2,7 +2,7 @@
 title: "Building the XergioAleX Brand: The Ninja Coder Identity"
 description: "The story behind the XergioAleX ninja coder brand — from concept to execution. Logo symbolism, color palette, design variants, and a complete style guide."
 pubDate: "2020-12-31"
-heroImage: "/images/blog/posts/personal-branding-xergioalex/hero.jpg"
+heroImage: "/images/blog/posts/personal-branding-xergioalex/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "personal", "design"]
 keywords: ["XergioAleX ninja coder brand", "personal brand developer identity", "ninja coder logo design", "developer personal branding", "tech personal brand visual identity", "XergioAleX logo color palette", "Koru Daniel Vasquez branding"]

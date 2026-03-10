@@ -2,7 +2,7 @@
 title: "Astro en acción"
 description: "Por qué Astro me convenció — casos reales de Microsoft y Firebase, ganancias de rendimiento medibles, y una migración en vivo del sitio de Pereira Tech Talks para probar que no es solo hype."
 pubDate: "2024-08-01"
-heroImage: "/images/blog/posts/astro-in-action/hero.png"
+heroImage: "/images/blog/posts/astro-in-action/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "javascript"]
 keywords: ["Astro en acción charla", "por qué usar Astro para sitios web", "Astro rendimiento vs otros frameworks", "migrar sitio web a Astro", "Astro para desarrolladores JavaScript", "Pereira Tech Talks Astro 2024", "Astro static site generator ventajas"]

@@ -2,7 +2,7 @@
 title: "Cómo entramos a Y Combinator"
 description: "Tres aplicaciones, tres rechazos, una aceptación — qué cambió entre cada intento a YC, cómo fue realmente la entrevista y qué nos enseñó YC sobre escalar DailyBot."
 pubDate: "2022-03-28"
-heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.jpg"
+heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "dailybot", "entrepreneur"]
 keywords: ["cómo entrar a Y Combinator", "entrevista de Y Combinator experiencia", "DailyBot Y Combinator historia", "aplicar a YC y ser aceptado", "startup acelerada por Y Combinator", "qué evalúa Y Combinator", "lecciones de Y Combinator para founders"]

@@ -2,7 +2,7 @@
 title: 'Draft + Scheduled: Conference Talk Preparation'
 description: 'A post that is both a draft and scheduled for the future — the most hidden state'
 pubDate: '2030-12-01T09:30:00'
-heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-5.webp'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
 keywords: ['conference talk preparation', 'tech talk planning', 'developer conference tips', 'public speaking for engineers', 'preparing technical presentations']

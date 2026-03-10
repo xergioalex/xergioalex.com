@@ -2,7 +2,7 @@
 title: "The Rebirth of Artificial Intelligence"
 description: "A personal reflection from my Pereira Tech Talks presentation — why ChatGPT, GPT-4, and generative AI marked the end of the AI winter and the start of a revolution I'm living every day."
 pubDate: "2023-05-17"
-heroImage: "/images/blog/shared/ai-rebirth-hero.png"
+heroImage: "/images/blog/shared/ai-rebirth-hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["AI rebirth ChatGPT revolution", "GPT-4 generative AI explained", "ChatGPT AI winter end", "DailyBot AI features", "generative AI 2023 talk", "Pereira Tech Talks AI", "artificial intelligence revolution 2023"]

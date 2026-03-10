@@ -2,7 +2,7 @@
 title: "Construyendo kathelopez.com: la web que le construí a mi esposa"
 description: "Cómo construí un sitio web estático simple, sin framework, para ayudar a mi esposa — terapeuta ABA y neuropsicóloga — a establecer su presencia profesional en línea. Bootstrap, GitHub Pages y cero backend."
 pubDate: "2021-03-01"
-heroImage: "/images/blog/posts/building-kathelopez-website/hero.png"
+heroImage: "/images/blog/posts/building-kathelopez-website/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "personal", "web-development"]
 keywords: ["construir sitio web profesional con Bootstrap", "GitHub Pages sitio web gratuito", "sitio web para psicólogo o terapeuta", "landing page estática sin backend", "Bootstrap para sitio web personal", "presencia en línea para profesionales de la salud", "sitio web terapeuta ABA"]

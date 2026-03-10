@@ -2,7 +2,7 @@
 title: "Introduction to Vue.js"
 description: "Why Vue became my favorite framework after years of Angular and React — a deep dive into progressive design, reactivity, and what makes Vue special."
 pubDate: "2018-09-29"
-heroImage: "/images/blog/posts/introduction-to-vuejs/hero.png"
+heroImage: "/images/blog/posts/introduction-to-vuejs/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["Vue.js introduction tutorial", "Vue vs React vs Angular", "Vue.js reactivity system", "Vue Router Vuex tutorial", "Vue single file components", "why choose Vue.js", "Vue.js Options API explained"]

@@ -2,7 +2,7 @@
 title: 'Vue Vixens Talk: estilos en Vue'
 description: 'Por qué los estilos importan en frameworks basados en componentes y cómo Vue hace que CSS sea scoped, modular y poderoso. De preprocesadores a arquitectura de componentes.'
 pubDate: '2019-10-25'
-heroImage: '/images/blog/posts/vue-vixens-styles/hero.png'
+heroImage: '/images/blog/posts/vue-vixens-styles/hero.webp'
 heroLayout: 'side-by-side'
 tags: ["talks", "tech", "javascript", "web-development", "design"]
 keywords: ["estilos en Vue.js", "CSS scoped en Vue componentes", "preprocesadores CSS con Vue", "Vue Vixens charla estilos", "CSS modular con Vue.js", "diseño basado en componentes Vue", "Vue.js estilos para principiantes"]

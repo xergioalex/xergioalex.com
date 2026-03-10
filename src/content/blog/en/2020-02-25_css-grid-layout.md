@@ -2,7 +2,7 @@
 title: "CSS Grid Layout"
 description: "How CSS Grid changed the way I think about layouts — from Flexbox limitations to two-dimensional freedom, with practical exercises and accessibility tricks."
 pubDate: "2020-02-25"
-heroImage: "/images/blog/posts/css-grid-layout/hero.png"
+heroImage: "/images/blog/posts/css-grid-layout/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "design"]
 keywords: ["CSS Grid Layout tutorial", "CSS Grid vs Flexbox", "two-dimensional CSS layout", "CSS Grid practical examples", "CSS Grid accessibility", "modern CSS layout techniques", "CSS Grid named grid areas"]

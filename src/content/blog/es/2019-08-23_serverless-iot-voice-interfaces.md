@@ -2,7 +2,7 @@
 title: 'Serverless, IoT e interfaces conversacionales'
 description: 'Por qué el diseño voice-first importa y cómo serverless impulsa el futuro de las interfaces conversacionales. De skills de Alexa a integración IoT.'
 pubDate: '2019-08-23'
-heroImage: '/images/blog/posts/serverless-iot-voice-interfaces/hero.png'
+heroImage: '/images/blog/posts/serverless-iot-voice-interfaces/hero.webp'
 heroLayout: 'side-by-side'
 tags: ["talks", "tech", "devops", "iot"]
 keywords: ["interfaces conversacionales serverless", "voz como nueva interfaz de usuario", "Alexa skills con serverless", "diseño voice-first", "IoT y interfaces de voz", "Google Assistant y serverless", "Manizales Tech Talks serverless IoT"]
