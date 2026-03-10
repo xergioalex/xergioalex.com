@@ -22,7 +22,9 @@ The metric that used to matter was ranking. The metric that matters now is citat
 
 ## The Big Picture
 
-[Gartner predicted](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents) in early 2024 that traditional search volume would drop 25% by 2026. With publisher referrals from Google [down 38%](https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/) and AI Overviews now appearing in roughly half of US searches, those numbers aren't projection anymore. They're current reality.
+[Gartner predicted](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents) in early 2024 that traditional search volume would drop 25% by 2026. With publisher referrals from Google [down 38%](https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/) and AI Overviews now appearing in roughly half of US searches, those numbers aren't projection anymore. They're current reality. The impact is already hitting hard: [Growtika's analysis](https://growtika.com/blog/tech-media-collapse) shows that major tech publications have lost up to 97% of their organic traffic since mid-2024 — Digital Trends went from 8.5 million monthly visits to 265,000, ZDNet dropped 90%, The Verge 85%. These aren't small blogs. These are some of the biggest names in tech media.
+
+![Table showing organic traffic decline of major tech publications: Digital Trends -97%, ZDNet -90%, The Verge -85%, HowToGeek -85%, TechRadar -74%, Wired -62%, Tom's Guide -50%, CNET -47%, PCMag -41%, Mashable -30%](/images/blog/posts/aeo-answer-engine-optimization/growtika-tech-media-decline.png)
 
 The platforms driving this aren't niche or experimental. Google, ChatGPT, Perplexity, Claude — these are mainstream tools used by hundreds of millions of people who have simply changed how they ask questions. Instead of searching for "best static site generators 2026" and scanning results, they ask the AI directly. The AI reads a dozen sources, synthesizes an answer, and names two or three of them. If your content isn't in that pool, the click never comes.
 
@@ -96,6 +98,7 @@ Let's keep building.
 
 **Research & Guides**
 - [Princeton GEO Paper — Generative Engine Optimization (KDD 2024)](https://arxiv.org/abs/2311.09735)
+- [Growtika: Tech Media Traffic Collapse](https://growtika.com/blog/tech-media-collapse) — Major tech publications losing up to 97% of organic traffic
 - [Gartner: Search Volume Decline Prediction](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents)
 - [SEMrush: Answer Engine Optimization](https://www.semrush.com/blog/answer-engine-optimization/)
 - [Ahrefs: Answer Engine Optimization](https://ahrefs.com/blog/answer-engine-optimization/)

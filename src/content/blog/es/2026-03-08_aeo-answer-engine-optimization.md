@@ -22,7 +22,9 @@ La métrica que importaba antes era el posicionamiento. La que importa ahora es 
 
 ## El Panorama General
 
-[Gartner predijo](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents) a principios de 2024 que el volumen de búsqueda tradicional caería un 25% para 2026. Con las referencias de publicadores desde Google [cayendo un 38%](https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/) y los AI Overviews apareciendo en aproximadamente la mitad de las búsquedas en EE.UU., esos números ya no son proyecciones. Son la realidad actual.
+[Gartner predijo](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents) a principios de 2024 que el volumen de búsqueda tradicional caería un 25% para 2026. Con las referencias de publicadores desde Google [cayendo un 38%](https://pressgazette.co.uk/media-audience-and-business-data/google-traffic-down-2025-trends-report-2026/) y los AI Overviews apareciendo en aproximadamente la mitad de las búsquedas en EE.UU., esos números ya no son proyecciones. Son la realidad actual. El impacto ya está pegando fuerte: [el análisis de Growtika](https://growtika.com/blog/tech-media-collapse) muestra que las principales publicaciones tech han perdido hasta el 97% de su tráfico orgánico desde mediados de 2024 — Digital Trends pasó de 8.5 millones de visitas mensuales a 265,000, ZDNet cayó un 90%, The Verge un 85%. No son blogs pequeños. Son algunos de los nombres más grandes en medios de tecnología.
+
+![Tabla mostrando la caída de tráfico orgánico de las principales publicaciones tech: Digital Trends -97%, ZDNet -90%, The Verge -85%, HowToGeek -85%, TechRadar -74%, Wired -62%, Tom's Guide -50%, CNET -47%, PCMag -41%, Mashable -30%](/images/blog/posts/aeo-answer-engine-optimization/growtika-tech-media-decline.png)
 
 Las plataformas que impulsan este cambio no son de nicho ni experimentales. Google, ChatGPT, Perplexity, Claude — son herramientas masivas usadas por cientos de millones de personas que simplemente cambiaron cómo hacen preguntas. En vez de buscar "mejores generadores de sitios estáticos 2026" y escanear resultados, le preguntan directamente a la IA. La IA lee una docena de fuentes, sintetiza una respuesta y nombra dos o tres de ellas. Si tu contenido no está en ese grupo, el clic nunca llega.
 
@@ -96,6 +98,7 @@ Sigamos construyendo.
 
 **Investigación y Guías**
 - [Artículo GEO de Princeton — Generative Engine Optimization (KDD 2024)](https://arxiv.org/abs/2311.09735)
+- [Growtika: Colapso del Tráfico en Medios Tech](https://growtika.com/blog/tech-media-collapse) — Publicaciones tech perdiendo hasta el 97% de su tráfico orgánico
 - [Gartner: Predicción de Caída en el Volumen de Búsqueda](https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents)
 - [SEMrush: Answer Engine Optimization](https://www.semrush.com/blog/answer-engine-optimization/)
 - [Ahrefs: Answer Engine Optimization](https://ahrefs.com/blog/answer-engine-optimization/)

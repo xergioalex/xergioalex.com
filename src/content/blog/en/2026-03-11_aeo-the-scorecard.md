@@ -2,7 +2,8 @@
 title: "The Scorecard: How to Measure What AI Can't Tell You"
 description: "AEO measurement is years behind AEO optimization. Here's what the industry has, what's still missing, and one audit framework that gives you something concrete to work with."
 pubDate: "2026-03-11T14:00:00"
-heroLayout: "none"
+heroImage: "/images/blog/posts/aeo-the-scorecard/hero.png"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["AEO audit methodology checklist", "track AI bot traffic analytics", "Bing AI Performance report", "measure AI search citations", "AI referral traffic growing statistics"]
 series: "aeo-journey"
@@ -95,23 +96,21 @@ Each dimension has its own checklist. The score itself matters less than what th
 
 Two things surprised me when I went through this systematically.
 
-**Freshness isn't just about content — it's about signals.** I mentioned in the [first chapter](/blog/aeo-answer-engine-optimization) that AI systems favor fresh content — and [the data backs it up](https://www.seerinteractive.com/insights/study-ai-brand-visibility-and-content-recency): AI-cited content is 25.7% fresher than traditional Google results, and in ChatGPT specifically, 76.4% of the most-cited pages were updated in the last 30 days. What the audit made concrete is that it's not enough to update the text — you need visible proof. Adding "last updated" timestamps to every post, keeping `dateModified` current in the BlogPosting schema, and making sure the llms.txt reflects recent changes. The content can be identical, but if the freshness signals are stale, AI systems treat it as stale.
+**Freshness isn't just about content — it's about signals.** I mentioned in the [first chapter](/blog/aeo-answer-engine-optimization) that AI systems favor fresh content — and [the data backs it up](https://www.seerinteractive.com/insights/study-ai-brand-visibility-and-content-recency): AI-cited content is 25.7% fresher than traditional Google results, and in ChatGPT specifically, 76.4% of the most-cited pages were updated in the last 30 days. What I realized working on this site is that it's not enough to update the text — you need visible proof. Adding "last updated" timestamps to every post, keeping `dateModified` current in the BlogPosting schema, and making sure the llms.txt reflects recent changes. The content can be identical, but if the freshness signals are stale, AI systems treat it as stale.
 
-**Localization quality matters more than coverage.** Running this site in two languages already gives it a visibility advantage — AI systems treat each language version independently. But the audit revealed that machine-translated pages with awkward phrasing or missing cultural context scored lower on citability. The pages that perform best are the ones that read like they were written natively, not translated. That's exactly why this site only exists in English and Spanish — the two languages I actually speak and can personally audit. I could scale to more languages with AI translation, but I wouldn't be able to read every sentence and reshape it until it sounds right. I go through every phrase, rewrite what feels off, and build the final version myself. It's a process that takes time, but if you want to deliver quality content with a real author's voice, it's important.
+**Localization quality matters more than coverage.** Running this site in two languages already gives it a visibility advantage — AI systems treat each language version independently. But machine-translated pages with awkward phrasing or missing cultural context score lower on citability. The pages that perform best are the ones that read like they were written natively, not translated. That's exactly why this site only exists in English and Spanish — the two languages I actually speak and can personally audit. I could scale to more languages with AI translation, but I wouldn't be able to read every sentence and reshape it until it sounds right. I go through every phrase, rewrite what feels off, and build the final version myself. It's a process that takes time, but if you want to deliver quality content with a real author's voice, it's important.
 
 ---
 
 ## Where This Is Heading
 
-The standards are still being written. The [IETF AIPREF working group](https://www.ietf.org/blog/aipref-wg/), chartered in February 2025, is drafting formal specifications for how websites can express preferences about AI content use — separate categories for training, AI output, and search. That distinction matters. Right now, robots.txt is the best we have, and it was never designed for this problem. Crawl directives that predate large language models by fifteen years are carrying a lot of weight they weren't built to carry.
+I'll be honest: we're still figuring this out. All of us. The [IETF AIPREF working group](https://www.ietf.org/blog/aipref-wg/) is drafting specs for how websites express preferences about AI content use — training, output, search, each as separate categories. Until that lands, we're relying on robots.txt, a file that predates large language models by fifteen years. It works, but it was never designed for this.
 
-The traffic numbers aren't theoretical. [AI referral traffic](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) now accounts for over 1% of all website visits across major industries, growing roughly 1% month over month — and ChatGPT drives 87.4% of it. Vercel reported ChatGPT referrals [grew to 10% of new signups](https://aiseotracker.com/case-study/vercel). Tally.so saw ChatGPT become their number one referral source, period. Real companies, real numbers — not projections.
+What I do know is that the numbers are real. A [13-month analysis by Search Engine Land](https://searchengineland.com/what-13-months-of-data-reveals-about-llm-traffic-growth-and-conversions-470115) (February 2026) found AI search traffic converting at roughly 18% — the highest-converting source in their dataset. Vercel reported ChatGPT referrals [hitting 10% of new signups](https://aiseotracker.com/case-study/vercel). [Tally.so](https://foundationinc.co/lab/tally-geo/) saw ChatGPT become their number one referral source, period. And on the other side of the equation, [major tech publications are losing up to 97% of their organic traffic](https://growtika.com/blog/tech-media-collapse) as AI Overviews eat into the queries they used to own.
 
-The measurement picture will improve. Bing's AI Performance report is a start. More platforms will follow — they have to, because the demand from publishers to understand citation behavior is only going to grow. The AIPREF specs will eventually give us cleaner permission frameworks. And as Markdown for Agents [becomes more common](/blog/aeo-markdown-for-agents), we'll have better signals about how agents are actually consuming content, not just crawling it.
+How much of this site's traffic comes from AI citations? I honestly don't know. That's the measurement gap I've been talking about this whole chapter. The bots are visiting — I can see that in the dashboard. Which pages they care about — that's visible too. Whether those visits turn into citations that send people here — still a black box.
 
-I don't know exactly how much of any given site's traffic comes from AI citations right now — that measurement problem is real and I've been honest about it throughout this chapter. But the bots are coming. The pages they care about are visible. And the infrastructure to serve them well exists today.
-
-The ground is moving under search. Traditional SEO still matters — it's the foundation everything else is built on. But the next layer is here, and it's not a trend to watch anymore.
+But the infrastructure to serve them well exists today. And the ground under search is moving whether we're ready or not.
 
 Let's keep building.
 
@@ -126,7 +125,7 @@ Let's keep building.
 
 **Research & Data**
 - [AirOps: AI Citation Volatility](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt) — 30% of brands stay visible across consecutive AI answers
-- [Search Engine Land: AI Referral Traffic](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) — ChatGPT drives 87.4% of AI referrals
+- [Search Engine Land: 13 Months of LLM Traffic Data](https://searchengineland.com/what-13-months-of-data-reveals-about-llm-traffic-growth-and-conversions-470115) — AI search traffic converts at ~18%, the highest-converting source
 - [HubSpot: AEO Adoption Trends](https://blog.hubspot.com/marketing/answer-engine-optimization-trends) — AEO strategy and implementation insights
 - [Vercel Case Study](https://aiseotracker.com/case-study/vercel) — ChatGPT grows to 10% of new signups
 

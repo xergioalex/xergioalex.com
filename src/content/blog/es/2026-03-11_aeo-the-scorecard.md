@@ -2,7 +2,8 @@
 title: "El Marcador: Cómo Medir lo que la IA No Te Dice"
 description: "La medición AEO está años por detrás de la optimización AEO. Esto es lo que tiene la industria, lo que todavía falta, y un framework de auditoría que te da algo concreto con qué trabajar."
 pubDate: "2026-03-11T14:00:00"
-heroLayout: "none"
+heroImage: "/images/blog/posts/aeo-the-scorecard/hero.png"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["auditoría AEO metodología checklist", "rastrear tráfico bots IA analíticas", "informe rendimiento IA Bing", "medir citas búsqueda IA", "estadísticas crecimiento tráfico referido IA"]
 series: "aeo-journey"
@@ -95,23 +96,21 @@ Cada dimensión tiene su propio checklist. El puntaje en sí importa menos que l
 
 Dos cosas me sorprendieron cuando revisé esto sistemáticamente.
 
-**La actualidad no es solo contenido — son señales.** Mencioné en el [primer capítulo](/es/blog/aeo-answer-engine-optimization) que los sistemas de IA ponderan fuertemente la recencia. Lo que la auditoría hizo concreto es que no basta con actualizar el texto — necesitás pruebas visibles. Agregar timestamps de "última actualización" a cada post, mantener `dateModified` actualizado en el schema BlogPosting, y asegurarse de que el llms.txt refleje cambios recientes. El contenido puede ser idéntico, pero si las señales de actualidad están desactualizadas, los sistemas de IA lo tratan como desactualizado.
+**La actualidad no es solo contenido — son señales.** Mencioné en el [primer capítulo](/es/blog/aeo-answer-engine-optimization) que los sistemas de IA favorecen el contenido fresco — y [los datos lo respaldan](https://www.seerinteractive.com/insights/study-ai-brand-visibility-and-content-recency): el contenido citado por IA es un 25.7% más reciente que los resultados tradicionales de Google, y en ChatGPT específicamente, el 76.4% de las páginas más citadas se actualizaron en los últimos 30 días. Lo que descubrí trabajando en este sitio es que no basta con actualizar el texto — necesitás pruebas visibles. Agregar timestamps de "última actualización" a cada post, mantener `dateModified` actualizado en el schema BlogPosting, y asegurarse de que el llms.txt refleje cambios recientes. El contenido puede ser idéntico, pero si las señales de actualidad están desactualizadas, los sistemas de IA lo tratan como desactualizado.
 
-**La calidad de la localización importa más que la cobertura.** Tener este sitio en dos idiomas ya le da una ventaja de visibilidad — los sistemas de IA tratan cada versión de idioma de forma independiente. Pero la auditoría reveló que las páginas traducidas automáticamente con frases torpes o sin contexto cultural puntuaban más bajo en citabilidad. Las páginas que mejor rinden son las que se leen como si hubieran sido escritas nativamente, no traducidas. Esa es exactamente la razón por la que este sitio solo existe en inglés y español — los dos idiomas que realmente hablo y puedo auditar personalmente. Podría escalar a más idiomas con traducción por IA, pero no podría leer cada frase y darle forma hasta que suene bien. Recorro cada frase, reescribo lo que no se siente natural, y construyo la versión final yo mismo. Es un proceso que lleva tiempo, pero si querés entregar contenido de calidad con una voz de autor real, es importante.
+**La calidad de la localización importa más que la cobertura.** Tener este sitio en dos idiomas ya le da una ventaja de visibilidad — los sistemas de IA tratan cada versión de idioma de forma independiente. Pero las páginas traducidas automáticamente con frases torpes o sin contexto cultural puntúan más bajo en citabilidad. Las páginas que mejor rinden son las que se leen como si hubieran sido escritas nativamente, no traducidas. Esa es exactamente la razón por la que este sitio solo existe en inglés y español — los dos idiomas que realmente hablo y puedo auditar personalmente. Podría escalar a más idiomas con traducción por IA, pero no podría leer cada frase y darle forma hasta que suene bien. Recorro cada frase, reescribo lo que no se siente natural, y construyo la versión final yo mismo. Es un proceso que lleva tiempo, pero si querés entregar contenido de calidad con una voz de autor real, es importante.
 
 ---
 
 ## Hacia Dónde Va Esto
 
-Los estándares todavía se están escribiendo. El [grupo de trabajo IETF AIPREF](https://www.ietf.org/blog/aipref-wg/), constituido en febrero de 2025, está redactando especificaciones formales sobre cómo los sitios web pueden expresar preferencias sobre el uso de su contenido por IA — categorías separadas para entrenamiento, output de IA y búsqueda. Esa distinción importa. Por ahora, robots.txt es lo mejor que tenemos, y nunca fue diseñado para este problema. Directivas de rastreo que preceden a los grandes modelos de lenguaje por quince años están haciendo un trabajo para el que no fueron pensadas.
+Voy a ser honesto: todavía estamos descubriendo esto. Todos. El [grupo de trabajo IETF AIPREF](https://www.ietf.org/blog/aipref-wg/) está redactando especificaciones sobre cómo los sitios web expresan preferencias sobre el uso de su contenido por IA — entrenamiento, output, búsqueda, cada una como categoría separada. Hasta que eso llegue, dependemos de robots.txt, un archivo que precede a los grandes modelos de lenguaje por quince años. Funciona, pero nunca fue diseñado para esto.
 
-Los números de tráfico no son teóricos. El [tráfico referido de IA](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) ya representa más del 1% de todas las visitas a sitios web en industrias principales, creciendo aproximadamente un 1% mes a mes — y ChatGPT concentra el 87,4% de ese tráfico. Vercel reportó que las referencias de ChatGPT [crecieron hasta el 10% de sus nuevos registros](https://aiseotracker.com/case-study/vercel). Tally.so vio a ChatGPT convertirse en su principal fuente de referidos, a secas. Son empresas reales reportando números reales — no proyecciones.
+Lo que sí sé es que los números son reales. Un [análisis de 13 meses de Search Engine Land](https://searchengineland.com/what-13-months-of-data-reveals-about-llm-traffic-growth-and-conversions-470115) (febrero 2026) encontró que el tráfico de búsqueda por IA convierte a un 18% aproximadamente — la fuente de mayor conversión en su dataset. Vercel reportó que las referencias de ChatGPT [llegaron al 10% de sus nuevos registros](https://aiseotracker.com/case-study/vercel). [Tally.so](https://foundationinc.co/lab/tally-geo/) vio a ChatGPT convertirse en su principal fuente de referidos, a secas. Y del otro lado de la ecuación, [las principales publicaciones tech están perdiendo hasta el 97% de su tráfico orgánico](https://growtika.com/blog/tech-media-collapse) a medida que los AI Overviews se comen las consultas que antes dominaban.
 
-El panorama de medición va a mejorar. El informe de Rendimiento de IA de Bing es un comienzo. Más plataformas van a seguir — tienen que hacerlo, porque la demanda de los publicadores por entender el comportamiento de las citas solo va a crecer. Las especificaciones AIPREF eventualmente nos darán marcos de permisos más claros. Y a medida que Markdown for Agents [se vuelva más común](/es/blog/aeo-markdown-for-agents), tendremos mejores señales sobre cómo los agentes están consumiendo realmente el contenido, no solo rastreándolo.
+¿Cuánto del tráfico de este sitio viene de citas de IA? Honestamente no lo sé. Esa es la brecha de medición de la que vengo hablando todo este capítulo. Los bots están visitando — eso lo puedo ver en el dashboard. Qué páginas les interesan — eso también es visible. Si esas visitas se convierten en citas que traen gente hasta acá — sigue siendo una caja negra.
 
-No sé exactamente qué porcentaje del tráfico de este sitio viene de citas de IA ahora mismo — ese problema de medición es real y he sido honesto sobre él a lo largo de este capítulo. Pero los bots están llegando. Las páginas que les interesan son visibles. Y la infraestructura para servirlos bien existe hoy.
-
-El terreno debajo de la búsqueda se está moviendo. El SEO tradicional sigue importando — es la base sobre la que se construye todo lo demás. Pero la siguiente capa ya está acá, y ya no es una tendencia para observar.
+Pero la infraestructura para servirlos bien existe hoy. Y el terreno debajo de la búsqueda se está moviendo, estemos listos o no.
 
 Sigamos construyendo.
 
@@ -126,7 +125,7 @@ Sigamos construyendo.
 
 **Investigación y Datos**
 - [AirOps: Volatilidad de Citas de IA](https://www.airops.com/blog/how-to-test-content-visibility-in-perplexity-and-chatgpt) — Solo el 30% de las marcas se mantiene visible entre respuestas consecutivas de IA
-- [Search Engine Land: Tráfico Referido de IA](https://searchengineland.com/ai-1-traffic-mostly-chatgpt-464653) — ChatGPT concentra el 87,4% de los referidos de IA
+- [Search Engine Land: 13 Meses de Datos de Tráfico LLM](https://searchengineland.com/what-13-months-of-data-reveals-about-llm-traffic-growth-and-conversions-470115) — El tráfico de búsqueda por IA convierte a ~18%, la fuente de mayor conversión
 - [HubSpot: Tendencias de Adopción de AEO](https://blog.hubspot.com/marketing/answer-engine-optimization-trends) — Estrategia e implementación de AEO
 - [Caso de Estudio Vercel](https://aiseotracker.com/case-study/vercel) — ChatGPT crece hasta el 10% de los nuevos registros
 
