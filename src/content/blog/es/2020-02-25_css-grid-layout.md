@@ -76,7 +76,7 @@ Este ejercicio enseña:
 
 Mi solución: [movies-page-css-grid](https://github.com/xergioalex/movies-page-css-grid)
 
-![Ejercicio Movies Page con CSS Grid](/images/blog/posts/css-grid-layout/movies-demo.png)
+![Ejercicio Movies Page con CSS Grid](/images/blog/posts/css-grid-layout/movies-demo.webp)
 
 ### Ejercicio 2: Videos Player
 
@@ -93,7 +93,7 @@ Este ejercicio enseña:
 Repo: [videos-player-css-grid](https://github.com/xergioalex/videos-player-css-grid)
 Demo en vivo: [videos-player-css-grid.xergioalex.com](https://videos-player-css-grid.xergioalex.com/)
 
-![Ejercicio Videos Player con CSS Grid](/images/blog/posts/css-grid-layout/videos-demo.jpg)
+![Ejercicio Videos Player con CSS Grid](/images/blog/posts/css-grid-layout/videos-demo.webp)
 
 También armé un curso completo con más ejemplos y demos interactivas:
 

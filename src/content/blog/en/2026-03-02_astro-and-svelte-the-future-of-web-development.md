@@ -281,11 +281,11 @@ On my own site, [xergioalex.com](https://xergioalex.com), the results are a bit 
 
 **Desktop — 100/100/100/100:**
 
-<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.png" alt="Google PageSpeed Insights desktop results for xergioalex.com showing perfect 100 scores in Performance, Accessibility, Best Practices, and SEO — with 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS, and 0.5s Speed Index" width="1208" height="932" loading="lazy" />
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.webp" alt="Google PageSpeed Insights desktop results for xergioalex.com showing perfect 100 scores in Performance, Accessibility, Best Practices, and SEO — with 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS, and 0.5s Speed Index" width="1208" height="932" loading="lazy" />
 
 **Mobile — 100/100/100/100:**
 
-<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.png" alt="Google PageSpeed Insights mobile results for xergioalex.com showing perfect 100 scores in Performance, Accessibility, Best Practices, and SEO — with 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS, and 0.9s Speed Index" width="1208" height="932" loading="lazy" />
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.webp" alt="Google PageSpeed Insights mobile results for xergioalex.com showing perfect 100 scores in Performance, Accessibility, Best Practices, and SEO — with 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS, and 0.9s Speed Index" width="1208" height="932" loading="lazy" />
 
 Desktop: 0.3s FCP, 0.3s LCP, 0ms TBT, 0 CLS. Mobile: 0.9s FCP, 1.5s LCP, 0ms TBT. Getting a quadruple 100 on desktop is already good, but mobile — where Google's throttling is aggressive — is where it gets hard. With Astro + Svelte, the architecture works *with* you. The defaults are already fast; you just avoid actively slowing things down.
 

@@ -79,7 +79,7 @@ Nested blockquotes are also supported:
 
 Images can be embedded with alt text:
 
-![A placeholder image demonstrating inline image support](/images/blog/shared/blog-placeholder-3.jpg)
+![A placeholder image demonstrating inline image support](/images/blog/shared/blog-placeholder-3.webp)
 
 ## Tables
 

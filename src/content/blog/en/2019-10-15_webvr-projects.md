@@ -129,7 +129,7 @@ The concept was simple: load 18 equirectangular panorama images, arrange them as
 
 One line for the thumbnail. One line for the sky. A three-line JavaScript function to swap them. The entire gallery — 18 panoramas, interactive navigation, VR-ready — was a single HTML file.
 
-![360° panorama from the gallery](/images/blog/posts/webvr-projects/gallery-panorama.jpg)
+![360° panorama from the gallery](/images/blog/posts/webvr-projects/gallery-panorama.webp)
 
 I added a floating, rotating cube with the PereiraJS logo as an easter egg, a gaze cursor for VR interaction (look at a thumbnail for 800ms and it activates), and camera controls for both desktop and mobile.
 

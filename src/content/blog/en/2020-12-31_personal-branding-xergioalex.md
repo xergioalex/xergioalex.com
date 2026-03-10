@@ -134,7 +134,7 @@ The complete thing: ninja character + name banner. This is what you use when you
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![XergioAleX full logo with ninja character and name text in white](/images/blog/posts/personal-branding-xergioalex/full-logo-white.png)
+![XergioAleX full logo with ninja character and name text in white](/images/blog/posts/personal-branding-xergioalex/full-logo-white.webp)
 
 </div>
 
@@ -142,7 +142,7 @@ The complete thing: ninja character + name banner. This is what you use when you
 
 Just the ninja, no text. Good for favicons, app icons, social media avatars, and anywhere the full logo would be too small to read.
 
-![XergioAleX isologo — ninja character icon without text, white version](/images/blog/posts/personal-branding-xergioalex/isologo-white.png)
+![XergioAleX isologo — ninja character icon without text, white version](/images/blog/posts/personal-branding-xergioalex/isologo-white.webp)
 
 ### Ninja Face (Compact Icon)
 
@@ -158,7 +158,7 @@ Just the "XERGIO ALEX" text with the shuriken X's. Works well for horizontal lay
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![XergioAleX logotype — text wordmark with shuriken styling, white version](/images/blog/posts/personal-branding-xergioalex/logo-text-white.png)
+![XergioAleX logotype — text wordmark with shuriken styling, white version](/images/blog/posts/personal-branding-xergioalex/logo-text-white.webp)
 
 </div>
 
@@ -196,9 +196,9 @@ A quick rundown of how the brand shows up across different places:
 - Stickers (one of my favorites)
 - Business cards
 
-![Sticker Mockup](/images/blog/posts/personal-branding-xergioalex/social-media-5.jpg)
+![Sticker Mockup](/images/blog/posts/personal-branding-xergioalex/social-media-5.webp)
 
-![Business Card Mockup](/images/blog/posts/personal-branding-xergioalex/social-media-3.jpg)
+![Business Card Mockup](/images/blog/posts/personal-branding-xergioalex/social-media-3.webp)
 
 ---
 

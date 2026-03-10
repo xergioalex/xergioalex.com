@@ -64,16 +64,16 @@ El resultado principal de la charla fue la migración misma. [Pereira Tech Talks
 
 Lo reconstruimos con Astro. [v2.pereiratechtalks.org](https://v2.pereiratechtalks.org/) se convirtió en la demo en vivo — estático y dinámico, blog, landing page, fácil de mantener, conectado a storage simple, soporte en tiempo real donde hacía falta. Un desarrollador. Dos semanas. El sitio ahora es más ligero, más rápido y más fácil de contribuir.
 
-![Póster promocional de la charla Astro en Acción en Camellando Coworking](/images/blog/posts/astro-in-action/poster.jpg)
+![Póster promocional de la charla Astro en Acción en Camellando Coworking](/images/blog/posts/astro-in-action/poster.webp)
 
 ---
 
 ## Memorias del Evento
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/astro-in-action/sergio-presenting-astro-talk.jpg" alt="Sergio durante la charla Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/astro-in-action/audience-at-meetup.jpg" alt="Audiencia en el meetup Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/astro-in-action/group-photo-attendees.jpg" alt="Foto grupal de asistentes al meetup Astro en Acción" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/astro-in-action/sergio-presenting-astro-talk.webp" alt="Sergio durante la charla Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/astro-in-action/audience-at-meetup.webp" alt="Audiencia en el meetup Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/astro-in-action/group-photo-attendees.webp" alt="Foto grupal de asistentes al meetup Astro en Acción" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

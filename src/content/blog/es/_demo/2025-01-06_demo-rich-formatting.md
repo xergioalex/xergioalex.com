@@ -79,7 +79,7 @@ Las citas anidadas también son soportadas:
 
 Las imágenes se pueden embeber con texto alternativo:
 
-![Una imagen de ejemplo demostrando soporte de imágenes en línea](/images/blog/shared/blog-placeholder-3.jpg)
+![Una imagen de ejemplo demostrando soporte de imágenes en línea](/images/blog/shared/blog-placeholder-3.webp)
 
 ## Tablas
 

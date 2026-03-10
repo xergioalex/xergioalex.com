@@ -44,19 +44,19 @@ Entonces miré **Cloudflare Pages**. Ancho de banda ilimitado, 500 builds al mes
 
 El proceso fue ridículamente corto. En el panel de Cloudflare, **+ Add** > **Pages**:
 
-<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.png" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" />
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" />
 
 Te da dos opciones — importar un repositorio de Git o subir archivos. La primera:
 
-![Pantalla de inicio de Cloudflare Pages con la opción de importar repositorio Git](/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.png)
+![Pantalla de inicio de Cloudflare Pages con la opción de importar repositorio Git](/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.webp)
 
 Seleccionas tu cuenta de GitHub y el repositorio:
 
-![Selección de cuenta GitHub y repositorio xergioalex.com](/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.png)
+![Selección de cuenta GitHub y repositorio xergioalex.com](/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.webp)
 
 Y acá Cloudflare detectó Astro automáticamente. Completó el comando de build, el directorio de salida, la rama de producción — todo:
 
-![Configuración del build con Astro detectado, comando npm run build y directorio dist](/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.png)
+![Configuración del build con Astro detectado, comando npm run build y directorio dist](/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.webp)
 
 Clic en **Save and Deploy**. Cuarenta segundos después el sitio estaba en un subdominio `pages.dev`. Eso fue todo.
 

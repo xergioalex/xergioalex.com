@@ -82,8 +82,8 @@ I ended with a few pointers so they could start right away:
 ## Workshop Memories
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.png" alt="Illustration of human orchestrating AI agents — programmer as conductor" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.png" alt="Slide: New role of developers — orchestrators and supervisors" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.webp" alt="Illustration of human orchestrating AI agents — programmer as conductor" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.webp" alt="Slide: New role of developers — orchestrators and supervisors" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

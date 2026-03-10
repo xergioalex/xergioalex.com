@@ -24,7 +24,7 @@ Un buen ejemplo es [Bambú Meditación](https://appbambu.com/alexa/), una skill 
 4. **Slots** — Datos variables extraídos de las utterances. "descansar", "matutina", "concentrarme".
 5. **Intent** — La acción que la app debe ejecutar. Reproducir una meditación específica. Reanudar sesión. Proveer ayuda.
 
-![Flujo de una interfaz de voz: wake word, invocation, utterances, slots, intent](/images/blog/posts/serverless-iot-voice-interfaces/voice-interface.png)
+![Flujo de una interfaz de voz: wake word, invocation, utterances, slots, intent](/images/blog/posts/serverless-iot-voice-interfaces/voice-interface.webp)
 
 El backend — en este caso, una función AWS Lambda — recibe el intent y los slots, obtiene el audio o datos apropiados y devuelve una respuesta. El usuario escucha una pista de meditación o una confirmación. La interacción completa está orientada a eventos. Sin servidor corriendo constantemente. Sin recursos inactivos. Solo una función que se despierta cuando se le habla.
 

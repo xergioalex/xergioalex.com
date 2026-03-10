@@ -134,7 +134,7 @@ El paquete completo: personaje ninja + banner con el nombre. Es lo que usas cuan
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![Logo completo de XergioAleX con personaje ninja y texto del nombre en blanco](/images/blog/posts/personal-branding-xergioalex/full-logo-white.png)
+![Logo completo de XergioAleX con personaje ninja y texto del nombre en blanco](/images/blog/posts/personal-branding-xergioalex/full-logo-white.webp)
 
 </div>
 
@@ -142,7 +142,7 @@ El paquete completo: personaje ninja + banner con el nombre. Es lo que usas cuan
 
 Solo el ninja, sin texto. Sirve para favicons, íconos de apps, avatares en redes sociales y donde el logo completo sería demasiado chico para leer.
 
-![Isologo de XergioAleX — ícono del personaje ninja sin texto, versión blanca](/images/blog/posts/personal-branding-xergioalex/isologo-white.png)
+![Isologo de XergioAleX — ícono del personaje ninja sin texto, versión blanca](/images/blog/posts/personal-branding-xergioalex/isologo-white.webp)
 
 ### Cara del Ninja (Ícono Compacto)
 
@@ -158,7 +158,7 @@ Solo el texto "XERGIO ALEX" con las X shuriken. Funciona bien para layouts horiz
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
 
-![Logotipo de XergioAleX — wordmark de texto con estilo shuriken, versión blanca](/images/blog/posts/personal-branding-xergioalex/logo-text-white.png)
+![Logotipo de XergioAleX — wordmark de texto con estilo shuriken, versión blanca](/images/blog/posts/personal-branding-xergioalex/logo-text-white.webp)
 
 </div>
 
@@ -196,9 +196,9 @@ Un repaso rápido de cómo la marca aparece en distintos lugares:
 - Stickers (de mis favoritos)
 - Tarjetas de presentación
 
-![Mockup de Sticker](/images/blog/posts/personal-branding-xergioalex/social-media-5.jpg)
+![Mockup de Sticker](/images/blog/posts/personal-branding-xergioalex/social-media-5.webp)
 
-![Mockup de Tarjetas de Presentación](/images/blog/posts/personal-branding-xergioalex/social-media-3.jpg)
+![Mockup de Tarjetas de Presentación](/images/blog/posts/personal-branding-xergioalex/social-media-3.webp)
 
 ---
 

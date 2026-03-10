@@ -186,15 +186,15 @@ Every field serves a purpose. `alumniOf` with Y Combinator — institutional cre
 
 Structured data took a considerable amount of time. It's not exciting work — writing JSON schemas, validating them in the [Schema.org Validator](https://validator.schema.org/) to verify the structure is correct, making sure each page has the right types.
 
-![Schema.org Validator showing xergioalex.com structured data: Organization, WebSite, and Person detected with 0 errors](/images/blog/posts/aeo-the-shift/schema-validator.png)
+![Schema.org Validator showing xergioalex.com structured data: Organization, WebSite, and Person detected with 0 errors](/images/blog/posts/aeo-the-shift/schema-validator.webp)
 
 On a blog post it gets more interesting — on top of the base schemas, `BlogPosting` and `BreadcrumbList` show up:
 
-![Schema.org Validator showing 5 elements on a blog post: Organization, BreadcrumbList, WebSite, Person, and BlogPosting, all with 0 errors](/images/blog/posts/aeo-the-shift/schema-validator-blog.png)
+![Schema.org Validator showing 5 elements on a blog post: Organization, BreadcrumbList, WebSite, Person, and BlogPosting, all with 0 errors](/images/blog/posts/aeo-the-shift/schema-validator-blog.webp)
 
 Expanding `BlogPosting` reveals everything AI can read without parsing HTML: title, description, image, publication and modification dates, keywords, word count — each field is an explicit signal that saves the model from having to infer it.
 
-![BlogPosting schema detail showing headline, description, image, datePublished, dateModified, keywords, and wordCount](/images/blog/posts/aeo-the-shift/schema-validator-blogposting.png) I spent an afternoon on the `BlogPosting` schema alone, cross-referencing the schema.org spec to check which properties were actually used by AI systems versus which ones were just technically valid but ignored. Most of the first draft was wrong in small ways. Going back through documentation I'd already read once wasn't fun.
+![BlogPosting schema detail showing headline, description, image, datePublished, dateModified, keywords, and wordCount](/images/blog/posts/aeo-the-shift/schema-validator-blogposting.webp) I spent an afternoon on the `BlogPosting` schema alone, cross-referencing the schema.org spec to check which properties were actually used by AI systems versus which ones were just technically valid but ignored. Most of the first draft was wrong in small ways. Going back through documentation I'd already read once wasn't fun.
 
 But it's the one optimization that directly communicates meaning to machines — not just content, but context. Who wrote this, why they're qualified to write it, when it was last updated. That's the layer that matters.
 

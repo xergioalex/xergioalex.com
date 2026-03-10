@@ -52,7 +52,7 @@ Esa lista resume la mayor parte del trabajo. Y algo importante: **todo se hizo d
 
 Este es el esquema de base de datos que diseñé para la biblioteca musical:
 
-![Modelo de datos de la biblioteca musical](/images/blog/posts/music-library-php-my-first-website/db-model.jpg)
+![Modelo de datos de la biblioteca musical](/images/blog/posts/music-library-php-my-first-website/db-model.webp)
 
 ---
 

@@ -24,7 +24,7 @@ Como paso seguido, abrimos el [formulario](https://docs.google.com/forms/d/e/1FA
 
 > **Tip:** Otra forma rápida de encontrar todos los IDs es inspeccionar cerca del tag `<form>`, donde encontrarás inputs de tipo `hidden` cuyos `name` comienzan con `entry.`, conteniendo todos los identificadores de los campos del formulario:
 
-![Campos hidden con los entry IDs dentro del tag form](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.png)
+![Campos hidden con los entry IDs dentro del tag form](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.webp)
 
 Una vez obtenemos todos los `name`, ya tenemos todo lo necesario para poder completar nuestro formulario enviando una petición HTTP usando [Postman](https://www.getpostman.com/):
 
@@ -41,7 +41,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5Spo
 
 3. Definir el contenido del body. Para [nuestro formulario](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) en particular, los `name` de cada uno de los inputs de nombre, email, teléfono y mensaje son respectivamente `entry.568194084`, `entry.1303875942`, `entry.807958025` y `entry.703388132`:
 
-![Body de Postman con los campos entry del formulario](/images/blog/posts/google-forms-postman-ajax/postman-3.png)
+![Body de Postman con los campos entry del formulario](/images/blog/posts/google-forms-postman-ajax/postman-3.webp)
 
 Si seguiste los pasos anteriores, ya deberías poder enviar respuestas al formulario de Google usando Postman; siéntete libre de usar [mi formulario de ejemplo](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) para hacer pruebas y enviar respuestas, las cuales puedes visualizar en la [siguiente hoja de cálculo](https://docs.google.com/spreadsheets/d/1r0O9A4oRT81jgzIodJRNL_1GA9WYgJsdRxWVjQULv00/edit#gid=1264787793).
 

@@ -57,12 +57,12 @@ I brought a robot with mecanum wheels to demo. Seeing it move in response to com
 ## Event Memories
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/poster.jpg" alt="Promotional poster for The future of AI: Code, Hardware and Agents meetup at UTP" width="600" height="400" class="col-span-2 rounded-xl object-contain w-full" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/ten-people-ai-presentation.jpg" alt="10 People + AI presentation at UTP" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-presenting-api-gateway.jpg" alt="Sergio presenting API Gateway and hardware integration" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/meetup-refreshments.jpg" alt="Refreshments at the meetup" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-demonstrating-robotics.jpg" alt="Sergio demonstrating robotics with mecanum wheel robot" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/group-photo-attendees.jpg" alt="Group photo of attendees at The future of AI: Code, Hardware and Agents" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/poster.webp" alt="Promotional poster for The future of AI: Code, Hardware and Agents meetup at UTP" width="600" height="400" class="col-span-2 rounded-xl object-contain w-full" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/ten-people-ai-presentation.webp" alt="10 People + AI presentation at UTP" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-presenting-api-gateway.webp" alt="Sergio presenting API Gateway and hardware integration" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/meetup-refreshments.webp" alt="Refreshments at the meetup" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-demonstrating-robotics.webp" alt="Sergio demonstrating robotics with mecanum wheel robot" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/group-photo-attendees.webp" alt="Group photo of attendees at The future of AI: Code, Hardware and Agents" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

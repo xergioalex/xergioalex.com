@@ -145,7 +145,7 @@ Mathematicians proved in 1976 — with computer assistance — that any map draw
 
 For our final assignment, we applied it to something we knew: Colombia's 31 departments.
 
-![Blank map of Colombia's departments before coloring](/images/blog/posts/logic-programming-university/blank-map.jpg)
+![Blank map of Colombia's departments before coloring](/images/blog/posts/logic-programming-university/blank-map.webp)
 
 The challenge wasn't just implementing map coloring — that's a textbook problem. The challenge was implementing it in three different languages, with three different programming paradigms, and understanding why each approach looked the way it did.
 
@@ -213,7 +213,7 @@ That's essentially the entire solver. `{FD.record color Deptos 1#NroColores Colo
 
 There's no explicit backtracking. No trial-and-error loop. No rollback code. You stated the constraint that adjacent regions can't share a color, and the solver found an assignment satisfying all constraints across all 31 departments simultaneously.
 
-![Colombia's 31 departments colored with four colors — no adjacent departments share the same color](/images/blog/posts/logic-programming-university/hero.jpg)
+![Colombia's 31 departments colored with four colors — no adjacent departments share the same color](/images/blog/posts/logic-programming-university/hero.webp)
 
 The Java version and the Racket version both search the same space, just described differently. The Mozart/Oz version describes the space of valid solutions and delegates the entire search to the constraint engine. About 50 lines versus about 100. And crucially, the Oz version is easier to reason about — there's no search logic that could have subtle bugs, no missed backtrack condition, no edge case in the rollback.
 
