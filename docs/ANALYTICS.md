@@ -168,6 +168,37 @@ AI crawlers (GPTBot, ClaudeBot, etc.) don't execute JavaScript, making them invi
 | Meta-ExternalAgent | Meta |
 | cohere-ai | Cohere |
 
+**Ignored bots** (non-AI, filtered out to reduce noise):
+
+| Bot | Category | Why Ignored |
+|-----|----------|-------------|
+| AwarioBot | Brand monitoring | Social listening tool (awario.com). Not a search engine or AI crawler. |
+| Applebot | Search engine | Apple's general crawler for Siri/Spotlight. `Applebot-Extended` (AI variant) is tracked separately. |
+| Twitterbot | Social preview | Twitter/X link preview bot. Only fires when someone shares a link. |
+| SeznamBot | Search engine | Czech search engine (seznam.cz). Same category as Googlebot/Bingbot. |
+| DotBot | SEO tool | Moz crawler (Open Site Explorer). Same category as AhrefsBot/SemrushBot. |
+| meta-webindexer | Social preview | Meta's crawler for link previews and Open Graph sharing. Not AI — `Meta-ExternalAgent` is Meta's AI bot (already tracked). |
+| AgentWarsBot | Experimental | GitHub hobby project. See Bot Watchlist below. |
+
+### Bot Watchlist
+
+Bots in the watchlist are currently ignored but should be reviewed periodically when new `unknown_bot_visit` analytics are available. They may be reclassified as known AI bots if their purpose changes or traffic grows significantly.
+
+| Bot | First Seen | Current Status | Review Notes |
+|-----|-----------|----------------|--------------|
+| AgentWarsBot | 2026-03-10 | Ignored (1 visit) | GitHub project (github.com/agent-wars). Currently experimental. If it becomes a legitimate AI agent platform, reclassify to `AI_BOT_PATTERNS`. |
+
+**Review process:**
+
+1. When reviewing new `unknown_bot_visit` data, check if any watchlisted bots appear with increased traffic
+2. Research whether the bot's purpose has changed (visit their URL from the User-Agent string)
+3. Decision criteria:
+   - **Promote to AI bot** (`AI_BOT_PATTERNS` + `robots.txt`): If the bot is now a legitimate AI crawler, LLM training bot, or AI-powered search agent
+   - **Keep in watchlist**: If still ambiguous or low traffic but potentially AI-related
+   - **Move to ignored permanently**: If confirmed non-AI (SEO tool, monitoring, social preview)
+   - **Remove from watchlist**: If the bot is dead (no visits for 3+ months)
+4. Update this table, `functions/_middleware.ts`, and `robots.txt` accordingly
+
 **Event payload:**
 
 ```json
