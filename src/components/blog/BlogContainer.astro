@@ -19,7 +19,9 @@ const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
 
 function checkWebpExists(heroImage: string | undefined): boolean {
   if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
-  const webpPath = heroImage.replace(/\.(png|jpe?g)$/i, '.webp').replace(/^\//, '');
+  const webpPath = heroImage
+    .replace(/\.(png|jpe?g)$/i, '.webp')
+    .replace(/^\//, '');
   return existsSync(resolve('public', webpPath));
 }
 
