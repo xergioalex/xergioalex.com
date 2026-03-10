@@ -978,14 +978,14 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesNames: {
     'building-xergioalex': 'Construyendo XergioAleX.com',
     'trading-journey': 'Viaje de Trading: De Futuros a Algoritmos',
-    'aeo-journey': 'AEO: De Invisible a Citado',
+    'aeo-from-invisible-to-cited': 'AEO: De Invisible a Citado',
   },
   seriesDescriptions: {
     'building-xergioalex':
       'La historia completa de la construcción de un sitio web personal moderno — desde decisiones de arquitectura hasta optimización de rendimiento, analítica y escalabilidad de contenido.',
     'trading-journey':
       'Una serie de 3 partes sobre mi evolución desde el trading discrecional temprano hasta el análisis estructurado con Market Profile y la ejecución algorítmica con MQL4.',
-    'aeo-journey':
+    'aeo-from-invisible-to-cited':
       'Cómo construir un sitio web que los motores de respuesta de IA encuentren, entiendan y referencien.',
   },
 

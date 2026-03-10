@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/aeo-the-scorecard/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["auditoría AEO metodología checklist", "rastrear tráfico bots IA analíticas", "informe rendimiento IA Bing", "medir citas búsqueda IA", "estadísticas crecimiento tráfico referido IA"]
-series: "aeo-journey"
+series: "aeo-from-invisible-to-cited"
 seriesOrder: 3
 ---
 

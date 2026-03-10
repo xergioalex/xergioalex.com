@@ -6,7 +6,7 @@ heroImage: "/images/blog/posts/aeo-answer-engine-optimization/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "markdown for AI agents endpoints", "track AI bot traffic server-side analytics"]
-series: "aeo-journey"
+series: "aeo-from-invisible-to-cited"
 seriesOrder: 0
 ---
 
