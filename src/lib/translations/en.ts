@@ -967,7 +967,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesNames: {
     'building-xergioalex': 'Building XergioAleX.com',
     'trading-journey': 'Trading Journey: From Futures to Algorithms',
-    'aeo-journey': 'The AEO Journey',
+    'aeo-journey': 'AEO: From Invisible to Cited',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -975,7 +975,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'trading-journey':
       'A 3-part series about my evolution from early discretionary trading to structured analysis with Market Profile and algorithmic execution with MQL4.',
     'aeo-journey':
-      'From invisible to cited — building a website that AI answer engines can find, understand, and reference.',
+      'How to build a website that AI answer engines can find, understand, and reference.',
   },
 
   // Date formatting

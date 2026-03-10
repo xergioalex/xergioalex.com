@@ -1,7 +1,7 @@
 ---
 title: "The Shift: Why Rankings No Longer Mean Visibility"
 description: "The search landscape changed — and most sites aren't ready. Here's what the shift looks like, why AI answer engines work differently, and the two foundations every site should have in place."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-08T14:00:00"
 heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]

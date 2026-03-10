@@ -1,7 +1,7 @@
 ---
 title: "El Marcador: Cómo Medir lo que la IA No Te Dice"
 description: "La medición AEO está años por detrás de la optimización AEO. Esto es lo que tiene la industria, lo que todavía falta, y un framework de auditoría que te da algo concreto con qué trabajar."
-pubDate: "2026-03-11T14:00:00"
+pubDate: "2026-03-10T14:00:00"
 heroImage: "/images/blog/posts/aeo-the-scorecard/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]

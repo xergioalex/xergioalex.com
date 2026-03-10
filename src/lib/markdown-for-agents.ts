@@ -43,7 +43,8 @@ export function serializePostToAgentMarkdown(
   options: PostSerializeOptions
 ): string {
   const { slug, lang } = options;
-  const { title, description, pubDate, updatedDate, tags, heroImage } = post.data;
+  const { title, description, pubDate, updatedDate, tags, heroImage } =
+    post.data;
   const prefix = buildUrlPrefix(lang);
   const canonicalUrl = `${SITE_URL}${prefix}/blog/${slug}`;
 

@@ -148,23 +148,19 @@ $: displayDescription = searchQuery
   : postData.description;
 </script>
 
-<article class="article-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+<article class="article-card group relative bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+  <!-- Full-card clickable link (background layer) -->
+  <a
+    href={`${prefix}/blog/${postSlug}/`}
+    class="absolute inset-0 z-0"
+    aria-label={postData.title}
+    on:click={() => trackEvent(EVENTS.BLOG_CARD_CLICK, { slug: postSlug })}
+  ></a>
   {#if postData.heroImage}
-    <div class="relative bg-gray-100 dark:bg-gray-700">
-      <a href={`${prefix}/blog/${postSlug}/`} class="block focus:outline focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800" aria-hidden="true" tabindex="-1">
-        {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
-          <picture>
-            <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-            <img
-              src={postData.heroImage}
-              alt=""
-              width={400}
-              height={192}
-              class="w-full h-48 object-cover"
-              loading="lazy"
-            />
-          </picture>
-        {:else}
+    <div class="bg-gray-100 dark:bg-gray-700">
+      {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
+        <picture>
+          <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
           <img
             src={postData.heroImage}
             alt=""
@@ -173,20 +169,27 @@ $: displayDescription = searchQuery
             class="w-full h-48 object-cover"
             loading="lazy"
           />
-        {/if}
-      </a>
+        </picture>
+      {:else}
+        <img
+          src={postData.heroImage}
+          alt=""
+          width={400}
+          height={192}
+          class="w-full h-48 object-cover"
+          loading="lazy"
+        />
+      {/if}
     </div>
   {/if}
   <div class="p-6">
-    <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">
-      <a href={`${prefix}/blog/${postSlug}/`} class="hover:text-blue-600 dark:hover:text-blue-400" on:click={() => trackEvent(EVENTS.BLOG_CARD_CLICK, { slug: postSlug })}>
-        {@html displayTitle}
-      </a>
+    <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+      {@html displayTitle}
     </h2>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
       {@html displayDescription}
     </p>
-    <div class="flex flex-wrap justify-between items-center gap-2">
+    <div class="relative z-10 flex flex-wrap justify-between items-center gap-2">
       <div class="flex flex-wrap items-center gap-2">
         <time class="text-sm text-gray-600 dark:text-gray-300">
           {postData.pubDate.toLocaleDateString(t.dateLocale, {
@@ -202,7 +205,7 @@ $: displayDescription = searchQuery
           </span>
         {/if}
         {#if seriesCurrent && seriesTotal}
-          <div class="group relative inline-flex items-center">
+          <div class="group/series relative inline-flex items-center">
             {#if seriesSlug}
               <a
                 href={`${prefix}/blog/series/${seriesSlug}/`}
@@ -223,7 +226,7 @@ $: displayDescription = searchQuery
             {/if}
             {#if seriesTitle}
               <span
-                class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100 dark:bg-gray-100 dark:text-gray-900"
+                class="pointer-events-none absolute top-full left-1/2 z-10 mt-1 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] font-medium text-white opacity-0 shadow-md transition-opacity duration-150 group-hover/series:opacity-100 group-focus-within/series:opacity-100 dark:bg-gray-100 dark:text-gray-900"
                 role="tooltip"
               >
                 {seriesTitle}

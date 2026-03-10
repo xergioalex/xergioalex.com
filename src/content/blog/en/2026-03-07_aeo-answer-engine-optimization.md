@@ -1,7 +1,7 @@
 ---
 title: "AEO: What Changes When AI Starts Answering Instead of Linking"
 description: "AI agents are now some of the most important visitors to your site — and they don't click links. A practical guide to Answer Engine Optimization: what it is, how it differs from SEO, and why the first-mover window is still open."
-pubDate: "2026-03-08T14:00:00"
+pubDate: "2026-03-07T14:00:00"
 heroImage: "/images/blog/posts/aeo-answer-engine-optimization/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]

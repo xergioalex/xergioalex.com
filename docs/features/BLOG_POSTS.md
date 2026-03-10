@@ -108,7 +108,7 @@ schema: z.object({
 | `description` | Yes | 1-2 sentence excerpt. 50-160 chars recommended for SEO. Used in meta tags and Open Graph. |
 | `pubDate` | Yes | Publication date. Accepts date-only (`'2026-01-31'`) or datetime (`'2026-01-31T14:00:00'`). Date-only defaults to midnight. |
 | `updatedDate` | No | Last significant update. Displayed with "Last updated on" label. |
-| `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}` |
+| `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}`. ES posts can reference a different image (e.g., `hero-es.{ext}`) when the hero contains localized text. See [Multilingual Hero Images](#multilingual-hero-images). |
 | `heroLayout` | No | How the hero image is displayed. Default: `'banner'`. See [Hero Layouts](#hero-layouts). |
 | `tags` | No | Array of tag identifiers. Must match files in `src/content/tags/`. |
 | `keywords` | No | Array of 5-8 SEO search phrases. Specific to post content, internationalized per language. Used in `<meta name="keywords">` and JSON-LD. |
@@ -140,7 +140,8 @@ keywords: ['XergioAleX personal branding', 'ninja coder logo design', 'developer
 When creating the translated version:
 
 - **Translate:** `title`, `description`, and all body content
-- **Preserve exactly:** `pubDate`, `updatedDate`, `heroImage`, `heroLayout`, `tags`, code blocks, formatting
+- **Preserve exactly:** `pubDate`, `updatedDate`, `heroLayout`, `tags`, code blocks, formatting
+- **heroImage:** Use the same path as EN by default. If the hero contains English text, use a localized variant (see [Multilingual Hero Images](#multilingual-hero-images))
 - Use natural, idiomatic translations (not literal word-for-word)
 - Do NOT translate code blocks, CLI commands, or technical identifiers
 - Maintain the same markdown structure (headings, lists, emphasis)
@@ -257,6 +258,26 @@ public/images/blog/
 - Folder name matches the post **slug** (without date prefix)
 - Filenames use **lowercase kebab-case**
 - Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`
+
+### Multilingual Hero Images
+
+When a hero image contains text (titles, labels, annotations) that should be localized, create a language-specific variant:
+
+| File | Purpose |
+|------|---------|
+| `hero.{ext}` | Default/English hero image |
+| `hero-es.{ext}` | Spanish variant (only when image has localized text) |
+
+**How it works:** EN and ES are separate `.md` files, each with their own `heroImage` frontmatter. By default both point to the same path. When a Spanish variant exists, the ES file points to it instead.
+
+**EN frontmatter:** `heroImage: "/images/blog/posts/my-post/hero.png"`
+**ES frontmatter:** `heroImage: "/images/blog/posts/my-post/hero-es.png"`
+
+**Rules:**
+- If no localized variant exists, both languages share the same image (default behavior, no action needed)
+- Only create variants when the image contains visible text that needs translation
+- Generate WebP for all variants (`hero-es.webp` alongside `hero-es.png`)
+- For additional languages, follow the same pattern: `hero-{lang}.{ext}`
 
 ### Referencing Images in Content
 

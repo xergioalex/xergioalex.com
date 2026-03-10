@@ -1,7 +1,7 @@
 ---
 title: "El Cambio: Por Qué los Rankings Ya No Significan Visibilidad"
 description: "El panorama de la búsqueda cambió — y la mayoría de los sitios no están preparados. Así es como se ve el cambio, por qué los motores de respuesta con IA funcionan diferente, y las dos bases que todo sitio debería tener en su lugar."
-pubDate: "2026-03-09T14:00:00"
+pubDate: "2026-03-08T14:00:00"
 heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]

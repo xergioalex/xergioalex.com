@@ -66,7 +66,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 - `$DESCRIPTION`: Post excerpt/description *(required for content mode, auto-generated in topic mode)*
 - `$CONTENT`: Pre-written post content in markdown *(triggers content mode)*
 - `$TAGS`: Array of tag names — both primary and secondary in one array (must exist in `src/content/tags/`)
-- `$HERO_IMAGE`: Hero image path (from `public/`)
+- `$HERO_IMAGE`: Hero image path (from `public/`). If the image contains text, provide a language-specific variant for ES (see [Multilingual Hero Images](../../../docs/features/BLOG_POSTS.md#multilingual-hero-images))
 - `$SLUG`: Custom slug (default: kebab-case of title)
 - `$LANG`: Primary language, `en` or `es` (default: `en`). The other language version will be translated.
 - `$PUB_DATE`: Publication date in YYYY-MM-DD format (default: today's date). **Scheduled posts:** If set to a future date, the post will be hidden from production builds but visible in dev with an amber "Scheduled" badge. See [Blog Posts — Scheduled Posts](../../../docs/features/BLOG_POSTS.md#scheduled-posts).
@@ -90,7 +90,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
-**Image path:** `/images/blog/posts/{slug}/hero.{ext}`
+**Image path:** `/images/blog/posts/{slug}/hero.{ext}` (ES variant: `hero-es.{ext}` when image has localized text)
 
 **Tags (unified array):** All tags go in a single `tags` array. The tier (primary/secondary) is determined by the tags collection, NOT by position in the array.
 
@@ -163,6 +163,7 @@ Create `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
 **Image setup:** If a hero image is provided:
 1. Verify the image folder exists: `public/images/blog/posts/{slug}/`
 2. Use path `/images/blog/posts/{slug}/hero.{ext}` in frontmatter
+3. **Multilingual hero:** If the hero image contains text that needs localization, ask the user for a language-specific variant. Save as `hero-es.{ext}` in the same folder, generate WebP, and use the variant path in the ES frontmatter
 
 **Topic mode — voice rules:**
 - First person (I, my, me) — the author is Sergio (XergioAleX)
@@ -246,7 +247,8 @@ series: "optional-series"
 **Translation rules:**
 - Translate IDEAS, not words — should read as if originally written in that language
 - Translate: `title`, `description`, `keywords`, all body content, alt text
-- Preserve exactly: `pubDate`, `updatedDate`, `heroImage`, `heroLayout`, `tags`, code blocks, URLs
+- Preserve exactly: `pubDate`, `updatedDate`, `heroLayout`, `tags`, code blocks, URLs
+- `heroImage`: Use the same path as EN by default. If a `hero-es.{ext}` variant exists, use it in the ES frontmatter
 - Adapt idioms and expressions to sound natural
 - **Keywords:** Generate language-specific keywords (adapted, not translated) — see Step 4
 - Use informal-professional register
@@ -311,7 +313,7 @@ content: add blog post "{title}" (en + es)
 ### Safety Checks
 
 - [ ] Slug doesn't conflict with an existing article
-- [ ] All referenced images exist
+- [ ] All referenced images exist (including ES hero variant if applicable)
 - [ ] Tags are valid (exist in `src/content/tags/`)
 - [ ] Frontmatter matches the Content Collections schema
 - [ ] **No placeholder content** — never leave `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or similar in published posts. Replace with real content or remove the section.

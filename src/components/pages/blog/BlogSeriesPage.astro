@@ -41,6 +41,7 @@ const localizedDescription =
 
 const firstPostHero = allPosts[0]?.heroImage || undefined;
 const seriesHeroImage = series.data.heroImage || firstPostHero;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <MainLayout
@@ -74,6 +75,7 @@ const seriesHeroImage = series.data.heroImage || firstPostHero;
         pageSize={BLOG_PAGE_SIZE}
         emptyStateMessage={t.seriesPage.emptyState}
         {topicTagNames}
+        shareUrl={canonicalURL.href}
       />
     </div>
 
