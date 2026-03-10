@@ -168,10 +168,18 @@ function buildSeriesBadgeLabel(
 
         <!-- Card: always right of line on mobile (ml-14), alternating on desktop -->
         <div class={`ml-14 md:ml-0 md:w-1/2 ${isLeft ? 'md:pr-12' : 'md:pl-12 md:ml-auto'}`}>
-          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-secondary/30 dark:hover:border-secondary/30 hover:-translate-y-1">
+          <article class="relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-secondary/30 dark:hover:border-secondary/30 hover:-translate-y-1">
+            <!-- Full-card clickable link (background layer) -->
+            <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
+            <a
+              href={`${prefix}/blog/${post.slug}/`}
+              class="absolute inset-0 z-0"
+              aria-label={post.title}
+              on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: pageName, slug: post.slug })}
+            ></a>
 
             {#if post.heroImage}
-              <a href={`${prefix}/blog/${post.slug}/`} class="block">
+              <div>
                 {#if post.heroWebpExists && post.heroImage.match(/\.(png|jpe?g)$/i)}
                   <picture>
                     <source srcset={post.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
@@ -194,26 +202,19 @@ function buildSeriesBadgeLabel(
                     height="176"
                   />
                 {/if}
-              </a>
+              </div>
             {/if}
 
             <div class="p-5">
               <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-secondary transition-colors">
-                <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
-                <a
-                  href={`${prefix}/blog/${post.slug}/`}
-                  class="hover:text-secondary transition-colors"
-                  on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: pageName, slug: post.slug })}
-                >
-                  {post.title}
-                </a>
+                {post.title}
               </h3>
 
               <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-3">
                 {post.description}
               </p>
 
-              <div class="flex flex-wrap items-center gap-2">
+              <div class="relative z-10 flex flex-wrap items-center gap-2">
                 <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(post.pubDate)}
                 </time>
@@ -231,7 +232,6 @@ function buildSeriesBadgeLabel(
                     <a
                       href={`${prefix}/blog/series/${post.seriesSlug}/`}
                       class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 transition-colors hover:bg-blue-100 hover:border-blue-400 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200 dark:hover:bg-blue-900/60 dark:hover:border-blue-600"
-                      aria-label={seriesBadgeLabel}
                       title={seriesBadgeLabel}
                     >
                       {post.seriesCurrent}/{post.seriesTotal}
@@ -239,7 +239,6 @@ function buildSeriesBadgeLabel(
                   {:else}
                     <span
                       class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200"
-                      aria-label={seriesBadgeLabel}
                       title={seriesBadgeLabel}
                     >
                       {post.seriesCurrent}/{post.seriesTotal}

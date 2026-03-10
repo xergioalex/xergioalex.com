@@ -66,7 +66,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 - `$DESCRIPTION`: Post excerpt/description *(required for content mode, auto-generated in topic mode)*
 - `$CONTENT`: Pre-written post content in markdown *(triggers content mode)*
 - `$TAGS`: Array of tag names — both primary and secondary in one array (must exist in `src/content/tags/`)
-- `$HERO_IMAGE`: Hero image path (from `public/`)
+- `$HERO_IMAGE`: Hero image path (from `public/`). If the image contains text, provide a language-specific variant for ES (see [Multilingual Hero Images](../../../docs/features/BLOG_POSTS.md#multilingual-hero-images))
 - `$SLUG`: Custom slug (default: kebab-case of title)
 - `$LANG`: Primary language, `en` or `es` (default: `en`). The other language version will be translated.
 - `$PUB_DATE`: Publication date in YYYY-MM-DD format (default: today's date). **Scheduled posts:** If set to a future date, the post will be hidden from production builds but visible in dev with an amber "Scheduled" badge. See [Blog Posts — Scheduled Posts](../../../docs/features/BLOG_POSTS.md#scheduled-posts).
@@ -90,7 +90,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
-**Image path:** `/images/blog/posts/{slug}/hero.{ext}`
+**Image path:** `/images/blog/posts/{slug}/hero.{ext}` (ES variant: `hero-es.{ext}` when image has localized text)
 
 **Tags (unified array):** All tags go in a single `tags` array. The tier (primary/secondary) is determined by the tags collection, NOT by position in the array.
 
@@ -163,6 +163,7 @@ Create `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
 **Image setup:** If a hero image is provided:
 1. Verify the image folder exists: `public/images/blog/posts/{slug}/`
 2. Use path `/images/blog/posts/{slug}/hero.{ext}` in frontmatter
+3. **Multilingual hero:** If the hero image contains text that needs localization, ask the user for a language-specific variant. Save as `hero-es.{ext}` in the same folder, generate WebP, and use the variant path in the ES frontmatter
 
 **Topic mode — voice rules:**
 - First person (I, my, me) — the author is Sergio (XergioAleX)
@@ -246,10 +247,12 @@ series: "optional-series"
 **Translation rules:**
 - Translate IDEAS, not words — should read as if originally written in that language
 - Translate: `title`, `description`, `keywords`, all body content, alt text
-- Preserve exactly: `pubDate`, `updatedDate`, `heroImage`, `heroLayout`, `tags`, code blocks, URLs
+- Preserve exactly: `pubDate`, `updatedDate`, `heroLayout`, `tags`, code blocks, URLs
+- `heroImage`: Use the same path as EN by default. If a `hero-es.{ext}` variant exists, use it in the ES frontmatter
 - Adapt idioms and expressions to sound natural
 - **Keywords:** Generate language-specific keywords (adapted, not translated) — see Step 4
-- Use informal-professional register
+- Use informal-professional register (tuteo: tú/tienes/puedes)
+- **CRITICAL — No voseo:** NEVER use Argentine/Rioplatense voseo forms (vos, tenés, podés, sabés, querés, hacés, buscás, necesitás, decís, etc.). Always use tuteo: tienes, puedes, sabes, quieres, haces, buscas, necesitas, dices. The tone is personal but professional — tuteo, not voseo.
 - When translating to Spanish, prefer Colombian Spanish phrasing
 - Do NOT translate code blocks, CLI commands, technical terms, product names
 - **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página), etc. Verify before saving.
@@ -311,7 +314,7 @@ content: add blog post "{title}" (en + es)
 ### Safety Checks
 
 - [ ] Slug doesn't conflict with an existing article
-- [ ] All referenced images exist
+- [ ] All referenced images exist (including ES hero variant if applicable)
 - [ ] Tags are valid (exist in `src/content/tags/`)
 - [ ] Frontmatter matches the Content Collections schema
 - [ ] **No placeholder content** — never leave `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or similar in published posts. Replace with real content or remove the section.
@@ -340,6 +343,7 @@ content: add blog post "{title}" (en + es)
 - [ ] Translated title and description are natural and accurate
 - [ ] Voice is personal-professional, not marketing copy (topic mode)
 - [ ] Spanish reads naturally (not machine-translated)
+- [ ] Spanish uses tuteo (tú), NOT voseo (vos) — no `tenés`, `podés`, `sabés`, `querés`, etc.
 - [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
 - [ ] Both EN and ES versions have `keywords` array (5-8 natural search phrases per post)
 - [ ] ES keywords adapted to Spanish search behavior (not literal translations)
