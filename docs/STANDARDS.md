@@ -516,6 +516,10 @@ Testing is not yet configured. When implemented:
 - **File naming**: `*.test.ts` or `*.spec.ts`
 - **Location**: `tests/` directory or co-located with source
 
+## Meta Description Length (MANDATORY)
+
+All page and blog post meta descriptions MUST be 130-160 characters (both EN and ES independently). See [SEO Guide](SEO.md#meta-description-standards-mandatory) for full rules, locations, and writing guidelines.
+
 ## Documentation Standards
 
 ### When to Document
@@ -539,5 +543,6 @@ Before committing, verify:
 - [ ] `npm run biome:check` passes
 - [ ] `npm run astro:check` passes
 - [ ] Dark mode is supported in new UI
+- [ ] Meta descriptions are 130-160 characters (pages in translations, blog posts in frontmatter)
 - [ ] Documentation is updated if needed
 - [ ] Commit message follows conventional format
