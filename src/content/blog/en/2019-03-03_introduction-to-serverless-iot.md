@@ -2,7 +2,7 @@
 title: "Introduction to Serverless with Emphasis on IoT"
 description: "My journey into serverless architectures and why they changed how I think about building IoT applications. From meditation apps to smart light bulbs."
 pubDate: "2019-03-03"
-heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.jpg"
+heroImage: "/images/blog/posts/introduction-to-serverless-iot/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "devops", "iot"]
 keywords: ["serverless IoT architecture", "AWS Lambda IoT tutorial", "serverless functions explained", "BaaS FaaS serverless comparison", "Alexa skill IoT serverless", "serverless IoT events scaling", "AWS Lambda beginner guide"]
@@ -12,7 +12,7 @@ I remember the first time I deployed a Lambda function. It felt like magic — w
 
 The term **serverless** is both beautiful and misleading. *Server-less* literally means "without a server" — but spoiler: there are still servers 😄. You just don't manage them. Someone else handles the infrastructure while you focus on code and logic. For IoT applications, where devices trigger events constantly and unpredictably, this model makes incredible sense.
 
-![Talk demos: Bambú, IoT Light Bulb, DailyBot, Twitter Bot](/images/blog/posts/introduction-to-serverless-iot/demo.jpg)
+![Talk demos: Bambú, IoT Light Bulb, DailyBot, Twitter Bot](/images/blog/posts/introduction-to-serverless-iot/demo.webp)
 
 ## Backend as a Service vs Functions as a Service
 
@@ -77,21 +77,21 @@ I showed four live demos to illustrate serverless in action:
 
 **[Bambú Meditación](https://appbambu.com/alexa/)** — An Alexa skill for guided meditation powered by AWS Lambda. Users say "Alexa, open Bambú" and Lambda handles the conversation logic, fetches meditation audio, and manages session state. No servers. Just functions responding to voice events.
 
-![Bambú Meditación demo with Alexa and AWS Lambda](/images/blog/posts/introduction-to-serverless-iot/alexa-demo.png)
+![Bambú Meditación demo with Alexa and AWS Lambda](/images/blog/posts/introduction-to-serverless-iot/alexa-demo.webp)
 
 **[IoT Light Bulb](https://github.com/xergioalex/serverless-ligth-bulb)** — A serverless-controlled light bulb using ESP8266, NRF24L01+ wireless modules, and Lambda. The bulb listens for commands sent via an HTTP API. Lambda receives the request, processes it, and sends a signal to the bulb. The entire control flow is event-driven.
 
-![IoT demo circuit: ESP8266, NRF24L01+, LEDs on breadboard](/images/blog/posts/introduction-to-serverless-iot/iot-circuit.png)
+![IoT demo circuit: ESP8266, NRF24L01+, LEDs on breadboard](/images/blog/posts/introduction-to-serverless-iot/iot-circuit.webp)
 
-![Real bulb working — controlled by Lambda](/images/blog/posts/introduction-to-serverless-iot/iot-bulb.jpg)
+![Real bulb working — controlled by Lambda](/images/blog/posts/introduction-to-serverless-iot/iot-bulb.webp)
 
 **[DailyBot](https://www.dailybot.com/)** — A team assistant bot for Slack and other platforms. DailyBot uses serverless functions to send daily standup reminders, collect responses, and generate reports. All triggered by scheduled events or user messages.
 
-![DailyBot demo diagram with serverless](/images/blog/posts/introduction-to-serverless-iot/dailybot-demo.png)
+![DailyBot demo diagram with serverless](/images/blog/posts/introduction-to-serverless-iot/dailybot-demo.webp)
 
 **[Twitter Bot](https://x.com/XergioAleXBot)** — An automated bot that tweets on a schedule using Lambda. A CloudWatch event triggers the function every few hours, the function generates a tweet (or retweets content), and posts via the Twitter API. Simple, cheap, and requires zero infrastructure.
 
-![Twitter bot in action — @XergioAleXBot](/images/blog/posts/introduction-to-serverless-iot/twitter-bot-demo.png)
+![Twitter bot in action — @XergioAleXBot](/images/blog/posts/introduction-to-serverless-iot/twitter-bot-demo.webp)
 
 These demos showed the same idea from different angles: small, event-driven functions powering real applications without managing servers.
 

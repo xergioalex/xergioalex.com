@@ -2,7 +2,7 @@
 title: 'Referencia Completa de Markdown para Escritores Técnicos'
 description: 'Una muestra exhaustiva de todas las características de formato Markdown disponibles para posts de blog'
 pubDate: '2025-01-06'
-heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-5.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['guía de formato markdown', 'escritura técnica markdown', 'referencia sintaxis markdown', 'formato de blog posts', 'markdown para desarrolladores']
@@ -79,7 +79,7 @@ Las citas anidadas también son soportadas:
 
 Las imágenes se pueden embeber con texto alternativo:
 
-![Una imagen de ejemplo demostrando soporte de imágenes en línea](/images/blog/shared/blog-placeholder-3.jpg)
+![Una imagen de ejemplo demostrando soporte de imágenes en línea](/images/blog/shared/blog-placeholder-3.webp)
 
 ## Tablas
 

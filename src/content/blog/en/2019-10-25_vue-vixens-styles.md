@@ -2,7 +2,7 @@
 title: "Vue Vixens Talk: Styles in Vue"
 description: "Why styling matters in component-based frameworks and how Vue makes CSS scoped, modular, and powerful. From preprocessors to component architecture."
 pubDate: "2019-10-25"
-heroImage: "/images/blog/posts/vue-vixens-styles/hero.png"
+heroImage: "/images/blog/posts/vue-vixens-styles/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development", "design"]
 keywords: ["Vue.js scoped styles CSS", "CSS in Vue components", "Vue Vixens Day Pereira", "SCSS preprocessors Vue", "component CSS architecture Vue", "Vue CSS modules scoped", "styling Vue components best practices"]

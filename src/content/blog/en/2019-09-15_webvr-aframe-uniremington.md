@@ -2,7 +2,7 @@
 title: "WebVR with A-Frame (UniRemington Talk)"
 description: "Bringing virtual reality to the web and why democratizing VR matters. From 360° photos to interactive 3D worlds, all with HTML and JavaScript."
 pubDate: "2019-09-15"
-heroImage: "/images/blog/posts/webvr-aframe-uniremington/hero.png"
+heroImage: "/images/blog/posts/webvr-aframe-uniremington/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["WebVR A-Frame Universidad Remington", "VR AR mixed reality differences", "A-Frame entity component system", "WebXR browser virtual reality", "Google Cardboard VR web", "A-Frame JavaScript 3D scenes", "virtual reality accessible web"]

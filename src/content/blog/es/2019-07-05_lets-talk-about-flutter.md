@@ -2,7 +2,7 @@
 title: "Hablemos de Flutter"
 description: "Por qué el desarrollo cross-platform importa y cómo el modelo de widgets de Flutter cambió mi enfoque para construir apps móviles. De la mentalidad React a la magia de Dart."
 pubDate: "2019-07-05"
-heroImage: "/images/blog/posts/lets-talk-about-flutter/hero.png"
+heroImage: "/images/blog/posts/lets-talk-about-flutter/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech"]
 keywords: ["introducción a Flutter", "qué es Flutter de Google", "Flutter vs React Native", "desarrollo móvil cross-platform", "widgets en Flutter", "Dart para desarrolladores móviles", "Flutter para apps iOS y Android"]

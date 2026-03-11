@@ -2,7 +2,7 @@
 title: "Building Rocka.co: The Story Behind a Tech Venture Builder Website"
 description: "How we built the Rocka.co website — from classical statue metaphors and custom parallax effects to a CSS Design Awards Special Kudos. The story of crafting a digital identity for the incubator where DailyBot was born."
 pubDate: "2018-12-15"
-heroImage: "/images/blog/posts/building-rocka-co-website/hero.png"
+heroImage: "/images/blog/posts/building-rocka-co-website/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "dailybot", "web-development", "design"]
 keywords: ["Rocka.co website Hugo build", "CSS Design Awards website", "custom parallax effect website", "venture builder website design", "Hugo static site portfolio", "CSS Design Awards Special Kudos", "DailyBot startup website Rocka"]

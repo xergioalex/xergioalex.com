@@ -2,7 +2,7 @@
 title: "IA y la nueva era de la programación en Open Tech Hackathon"
 description: "Desde mi workshop Vibe Coding e IA en Open Tech Hackathon — cuándo usar Cursor vs Codex vs Claude Code, la mentalidad de director, y lecciones prácticas de entregar funcionalidades con IA en DailyBot."
 pubDate: "2025-10-04"
-heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
+heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["Vibe Coding con IA", "Cursor vs Codex vs Claude Code", "IA para hackathon de programación", "nueva era de la programación con IA", "mentalidad de director con IA", "Open Tech Hackathon IA workshop", "cómo usar IA para entregar código más rápido"]
@@ -82,8 +82,8 @@ Terminé con algunos enlaces para que pudieran empezar de inmediato:
 ## Memorias del Workshop
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.png" alt="Ilustración de humano orquestando agentes de IA — programador como director" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.png" alt="Slide: Nuevo rol de los desarrolladores — orquestadores y supervisores" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.webp" alt="Ilustración de humano orquestando agentes de IA — programador como director" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.webp" alt="Slide: Nuevo rol de los desarrolladores — orquestadores y supervisores" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

@@ -52,7 +52,7 @@ That list captures most of the work. And importantly: **everything was built fro
 
 Here's the database schema I designed for the music library:
 
-![Database model for the music library](/images/blog/posts/music-library-php-my-first-website/db-model.jpg)
+![Database model for the music library](/images/blog/posts/music-library-php-my-first-website/db-model.webp)
 
 ---
 

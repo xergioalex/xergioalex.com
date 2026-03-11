@@ -9,11 +9,11 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "prebuild": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
+    "prebuild": "echo 'All images are natively WebP — no pre-processing needed'",
     "astro": "astro",
     "astro:check": "astro check",
     "astro:preview": "astro preview",
@@ -26,7 +26,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
-    "images:webp": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
+    "images:webp": "echo 'All images are natively WebP — no generation needed'",
     "search:budgets": "node scripts/check-search-performance-budgets.mjs",
     "lighthouse": "lhci autorun",
     "lighthouse:full": "lhci autorun --config=lighthouserc.full.cjs",

@@ -2,7 +2,7 @@
 title: "Introducción a MyPy"
 description: "Por qué adoptamos type checking en DailyBot — del caos de Python sin tipos a detectar bugs antes de runtime, reducir carga cognitiva y shipear con confianza."
 pubDate: "2021-03-03"
-heroImage: "/images/blog/posts/introduction-to-mypy/hero.png"
+heroImage: "/images/blog/posts/introduction-to-mypy/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "python"]
 keywords: ["introducción a MyPy", "type checking en Python", "tipos estáticos en Python con MyPy", "por qué usar type hints en Python", "detectar bugs en Python con tipos", "MyPy para equipos de desarrollo", "Python tipado vs no tipado"]

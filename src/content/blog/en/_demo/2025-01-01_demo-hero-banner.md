@@ -2,7 +2,7 @@
 title: 'Getting Started with Docker Containers'
 description: 'A comprehensive guide to understanding and using Docker containers for modern application development'
 pubDate: '2025-01-01'
-heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-1.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['Docker containers tutorial', 'getting started with Docker', 'Docker for developers', 'container vs virtual machine', 'Docker beginner guide']

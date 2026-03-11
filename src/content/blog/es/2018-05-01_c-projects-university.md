@@ -2,7 +2,7 @@
 title: "De los Paréntesis a los Punteros: Aprendiendo C y Programación Imperativa en la Universidad"
 description: "La historia de cómo Programación 2 me introdujo a C, los punteros, el manejo de memoria y la construcción de juegos con Allegro — el semestre donde aprendí lo que el computador realmente hace bajo el capó."
 pubDate: "2018-05-01"
-heroImage: "/images/blog/posts/c-projects-university/hero.png"
+heroImage: "/images/blog/posts/c-projects-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 keywords: ["aprender C en la universidad", "punteros en C para principiantes", "manejo de memoria en C", "programación imperativa con C", "juegos con Allegro en C", "estructuras de datos en C", "proyecto universitario programación C"]

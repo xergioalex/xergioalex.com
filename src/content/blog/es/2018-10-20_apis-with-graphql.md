@@ -2,7 +2,7 @@
 title: 'Introducción a APIs con GraphQL'
 description: 'Por qué GraphQL cambió cómo construyo APIs — tipado fuerte, consultas controladas por el cliente, arquitectura de un solo endpoint, y la experiencia de desarrollo que hace que REST se sienta anticuado.'
 pubDate: '2018-10-20'
-heroImage: '/images/blog/posts/apis-with-graphql/hero.png'
+heroImage: '/images/blog/posts/apis-with-graphql/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "web-development", "devops"]
 keywords: ["introducción a GraphQL", "qué es GraphQL y cómo funciona", "GraphQL vs REST APIs", "consultas con GraphQL", "lenguaje de consulta para APIs", "GraphQL tipado fuerte", "cómo implementar GraphQL"]

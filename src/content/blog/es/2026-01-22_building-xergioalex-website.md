@@ -2,7 +2,7 @@
 title: "Construyendo XergioAleX.com: Cómo construí mi sitio web personal con Astro, Svelte e IA"
 description: "La historia completa detrás de XergioAleX.com — de una landing de una sola página a una plataforma personal bilingüe, preparada para IA y enfocada en rendimiento. Un deep dive en arquitectura, decisiones tecnológicas y por qué Astro + Svelte es una combinación ganadora para sitios estáticos modernos."
 pubDate: "2026-01-22"
-heroImage: "/images/blog/posts/building-xergioalex-website/hero.png"
+heroImage: "/images/blog/posts/building-xergioalex-website/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
 keywords: ["construir sitio web personal con Astro", "Astro y Svelte para sitio estático", "arquitectura sitio personal bilingüe", "Astro islands arquitectura", "sitio web personal con blog integrado", "cómo construí mi web personal con Astro", "Astro Svelte TypeScript Tailwind"]
@@ -22,7 +22,7 @@ Así que decidí construir uno de verdad.
 
 Esto es lo que tuve durante mucho tiempo:
 
-![Mi antiguo sitio web personal — una landing simple con foto de perfil, nombre y enlaces sociales](/images/blog/posts/building-xergioalex-website/old-site.png)
+![Mi antiguo sitio web personal — una landing simple con foto de perfil, nombre y enlaces sociales](/images/blog/posts/building-xergioalex-website/old-site.webp)
 
 Súper simple. Solo una foto y enlaces a mis redes. Cumplía su función, pero no reflejaba el alcance de todo lo que había estado construyendo — DailyBot (un producto respaldado por Y Combinator), Pereira Tech Talks, proyectos open source, docenas de charlas técnicas, artículos, experimentos de trading, proyectos de hardware. Quería un lugar que pudiera contener todo eso y aun así sentirse rápido, limpio y fácil de mantener.
 

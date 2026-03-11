@@ -2,7 +2,7 @@
 title: "Migrando Pereira Tech Talks: de Ghost a Astro"
 description: "La historia detrás de migrar pereiratechtalks.org — de un Ghost dockerizado con costos mensuales a un sitio estático con Astro, desplegado gratis en GitHub Pages. Diez años de lecciones condensadas en dos semanas de código."
 pubDate: "2024-08-03"
-heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.png"
+heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "web-development", "devops"]
 keywords: ["migrar de Ghost a Astro", "Astro vs Ghost CMS", "sitio estático gratis con Astro", "GitHub Pages con Astro", "migración de blog a sitio estático", "Pereira Tech Talks historia y rediseño", "cómo migrar un blog a Astro"]
@@ -18,7 +18,7 @@ Hace dos días di la charla [Astro en Acción](/es/blog/astro-in-action/) en Per
 
 Ghost era una buena opción. Open source, construido en Node.js, editor limpio, pensado específicamente para blogging. Era el antídoto a WordPress — sin plugins infinitos, sin base de código inflada. Solo escribir, publicar, compartir.
 
-<img src="/images/blog/posts/pereira-tech-talks-migration/ghost-cms.png" alt="Ghost CMS — independent technology for modern publishing" width="1200" height="675" loading="lazy" />
+<img src="/images/blog/posts/pereira-tech-talks-migration/ghost-cms.webp" alt="Ghost CMS — independent technology for modern publishing" width="1200" height="675" loading="lazy" />
 
 Lo montamos y funcionó bien durante años. La comunidad creció. Los eventos se llenaron. Los posts del blog llegaban. Todo corría en Digital Ocean — inicialmente $5/mes, después $8.43 con backups activados. Pequeño, manejable, nuestro.
 
@@ -28,7 +28,7 @@ Lo montamos y funcionó bien durante años. La comunidad creció. Los eventos se
 
 Para mantener todo ordenado, construimos una arquitectura Docker con cuatro contenedores: **MySQL** como base de datos, **Ghost** como CMS, **Nginx** como proxy reverso y **Certbot** para los certificados SSL. Cada pieza en su lugar, orquestada con Docker Compose.
 
-<img src="/images/blog/posts/pereira-tech-talks-migration/docker-architecture.png" alt="Arquitectura Docker para pereiratechtalks.org — contenedores MySQL, Ghost, Nginx y Certbot" width="1200" height="675" loading="lazy" />
+<img src="/images/blog/posts/pereira-tech-talks-migration/docker-architecture.webp" alt="Arquitectura Docker para pereiratechtalks.org — contenedores MySQL, Ghost, Nginx y Certbot" width="1200" height="675" loading="lazy" />
 
 El repositorio está en [github.com/pereira-tech-talks/ghostDocker](https://github.com/pereira-tech-talks/ghostDocker). Funcionaba. Era estable. Era lo que necesitábamos en ese momento.
 
@@ -104,13 +104,13 @@ Los posts del blog se escriben en Markdown y se publican vía pull request — e
 
 Una de las cosas que me sorprendió fue que Ghost no tenía malos números. Una instalación bien configurada de Ghost con Nginx y caché tiene rendimiento decente:
 
-<img src="/images/blog/posts/pereira-tech-talks-migration/lighthouse-ghost.png" alt="Puntuaciones Lighthouse para la versión Ghost — Rendimiento 90, Accesibilidad 91, Mejores Prácticas 100, SEO 100" width="1200" height="400" loading="lazy" />
+<img src="/images/blog/posts/pereira-tech-talks-migration/lighthouse-ghost.webp" alt="Puntuaciones Lighthouse para la versión Ghost — Rendimiento 90, Accesibilidad 91, Mejores Prácticas 100, SEO 100" width="1200" height="400" loading="lazy" />
 
 Rendimiento 90, Accesibilidad 91, Mejores Prácticas 100, SEO 100. Nada de qué avergonzarse.
 
 Pero Astro llegó a otros números casi sin esfuerzo:
 
-<img src="/images/blog/posts/pereira-tech-talks-migration/lighthouse-astro.png" alt="Puntuaciones Lighthouse para la versión Astro — Rendimiento 99, Accesibilidad 96, Mejores Prácticas 100, SEO 100" width="1200" height="400" loading="lazy" />
+<img src="/images/blog/posts/pereira-tech-talks-migration/lighthouse-astro.webp" alt="Puntuaciones Lighthouse para la versión Astro — Rendimiento 99, Accesibilidad 96, Mejores Prácticas 100, SEO 100" width="1200" height="400" loading="lazy" />
 
 Rendimiento 99, Accesibilidad 96, Mejores Prácticas 100, SEO 100. La diferencia entre 90 y 99 en rendimiento puede sonar pequeña en papel — pero en velocidad de carga real, en Core Web Vitals, en experiencia de usuario en conexiones lentas, esos 9 puntos son significativos.
 

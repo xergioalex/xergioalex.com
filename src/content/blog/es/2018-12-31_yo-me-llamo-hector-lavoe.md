@@ -2,7 +2,7 @@
 title: "Yo Me Llamo Héctor Lavoe: Creando un Sitio Web Personal para un Artista Salsero"
 description: "La historia de construir un sitio web para un concursante de 'Yo Me Llamo' que interpreta a Héctor Lavoe — con reproductor de audio, galería de fotos, y la pelea con jPlayer que me costó una tarde por 3 píxeles."
 pubDate: "2018-12-31"
-heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.png"
+heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "web-development", "personal", "design"]
 keywords: ["sitio web para artista musical", "reproductor de audio en HTML CSS", "jPlayer reproductor web", "sitio web salsa Héctor Lavoe", "Yo Me Llamo imitadores web", "galería de fotos artista músico", "desarrollo web para músicos"]

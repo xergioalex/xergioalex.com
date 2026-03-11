@@ -2,7 +2,7 @@
 title: "OOP in Action: Building a Sudoku Solver and Contact Agenda with Java Swing"
 description: "Two university projects from my Object-Oriented Programming course — a Sudoku solver using the Observer pattern and backtracking, and a contact agenda with file persistence, both built with Java Swing."
 pubDate: "2018-05-02"
-heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.png"
+heroImage: "/images/blog/posts/oop-java-swing-university-projects/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "university"]
 keywords: ["Java OOP Sudoku solver Observer pattern", "Java Swing GUI projects", "backtracking Sudoku algorithm Java", "Observer design pattern Java", "object-oriented programming Java university", "Java Swing contact agenda", "design patterns Java university"]

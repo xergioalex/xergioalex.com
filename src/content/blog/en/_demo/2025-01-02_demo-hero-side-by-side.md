@@ -2,7 +2,7 @@
 title: 'Introduction to Kubernetes Orchestration'
 description: 'Learn the fundamentals of Kubernetes and how it revolutionizes container orchestration at scale'
 pubDate: '2025-01-02'
-heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-2.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
 keywords: ['Kubernetes tutorial', 'container orchestration basics', 'Kubernetes vs Docker', 'K8s for beginners', 'deploy containers with Kubernetes']

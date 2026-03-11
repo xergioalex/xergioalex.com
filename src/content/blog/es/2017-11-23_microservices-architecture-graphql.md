@@ -2,7 +2,7 @@
 title: "Arquitectura de microservicios y APIs con GraphQL"
 description: "Por qué me moví de REST a GraphQL para microservicios — divide y conquista, consultas definidas por el cliente, y los trade-offs que necesitas conocer."
 pubDate: "2017-11-23"
-heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
+heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "web-development", "devops"]
 keywords: ["arquitectura de microservicios", "GraphQL vs REST", "APIs con GraphQL", "microservicios con GraphQL", "consultas definidas por el cliente", "dividir y conquistar en APIs", "cómo migrar de REST a GraphQL"]

@@ -2,7 +2,7 @@
 title: "BSolutions: Administrando Múltiples Motores de Bases de Datos con Django y Docker"
 description: "Un proyecto universitario para la clase de Bases de Datos Avanzadas — conectando Django a 10 motores de bases de datos diferentes (SQL y NoSQL) a través de contenedores Docker, demostrando administración multi-base de datos y arquitectura de microservicios."
 pubDate: "2018-12-01"
-heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
+heroImage: "/images/blog/posts/django-multiple-databases-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "python", "database", "university"]
 keywords: ["Django con múltiples bases de datos", "conectar Django a MongoDB MySQL PostgreSQL", "administración multi-base de datos Django", "Docker con Django y bases de datos", "microservicios con Django", "proyecto universitario bases de datos avanzadas", "Django y NoSQL juntos"]
@@ -32,7 +32,7 @@ Y está el escenario académico: aprender cómo se comporta cada motor, cómo di
 
 El corazón del proyecto es un contenedor central corriendo **Python con Django**, **Factory Boy** para generación de datos de prueba, y **uWSGI** como servidor de aplicaciones. Ese contenedor central se conecta, a través de la red interna de Docker, a diez contenedores de bases de datos — cinco SQL y cinco NoSQL.
 
-<img src="/images/blog/posts/django-multiple-databases-university/docker-stack.png" alt="Diagrama de arquitectura Docker de BSolutions mostrando un contenedor central de Django conectado a 10 contenedores de bases de datos — PostgreSQL, MySQL, MariaDB, Oracle, SQL Server (SQL) y MongoDB, Redis, CouchDB, Cassandra, Neo4j (NoSQL) — más Nginx, Certbot, Celery y Flower" width="972" height="1153" loading="lazy" />
+<img src="/images/blog/posts/django-multiple-databases-university/docker-stack.webp" alt="Diagrama de arquitectura Docker de BSolutions mostrando un contenedor central de Django conectado a 10 contenedores de bases de datos — PostgreSQL, MySQL, MariaDB, Oracle, SQL Server (SQL) y MongoDB, Redis, CouchDB, Cassandra, Neo4j (NoSQL) — más Nginx, Certbot, Celery y Flower" width="972" height="1153" loading="lazy" />
 
 Lo que el diagrama muestra es una topología estrella: un core central y diez spokes que son las bases de datos. Cada base de datos vive en su propio contenedor aislado, expone su puerto nativo, y la aplicación Django sabe cómo hablar con cada una de ellas.
 

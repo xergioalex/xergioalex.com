@@ -2,7 +2,7 @@
 title: "Introduction to APIs with GraphQL"
 description: "Why GraphQL changed how I build APIs — strong typing, client-controlled queries, single endpoint architecture, and the developer experience that makes REST feel outdated."
 pubDate: "2018-10-20"
-heroImage: "/images/blog/posts/apis-with-graphql/hero.png"
+heroImage: "/images/blog/posts/apis-with-graphql/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "web-development", "devops"]
 keywords: ["GraphQL API tutorial", "GraphQL vs REST comparison", "GraphQL schemas queries mutations", "GraphQL resolvers explained", "single endpoint API GraphQL", "client-defined queries GraphQL", "GraphQL strong typing benefits"]

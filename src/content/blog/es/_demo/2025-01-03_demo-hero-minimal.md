@@ -2,7 +2,7 @@
 title: 'Entendiendo los Pipelines CI/CD'
 description: 'Una visión práctica de los flujos de trabajo de integración continua y despliegue continuo para equipos modernos'
 pubDate: '2025-01-03'
-heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-3.webp'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
 keywords: ['tutorial pipeline CI/CD', 'configuración integración continua', 'despliegue automatizado', 'GitHub Actions CI/CD', 'fundamentos DevOps pipeline']

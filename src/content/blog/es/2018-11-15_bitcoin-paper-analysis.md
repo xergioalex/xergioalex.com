@@ -2,7 +2,7 @@
 title: 'Historia, discusión y análisis del paper de Bitcoin escrito por Satoshi Nakamoto'
 description: 'Una inmersión profunda en el whitepaper de Bitcoin de Satoshi — qué lo hace revolucionario, las innovaciones técnicas que más me impactaron, y mi viaje personal leyendo el paper que cambió las finanzas.'
 pubDate: '2018-11-15'
-heroImage: '/images/blog/posts/bitcoin-paper-analysis/hero.png'
+heroImage: '/images/blog/posts/bitcoin-paper-analysis/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "blockchain"]
 keywords: ["análisis del whitepaper de Bitcoin", "Satoshi Nakamoto paper original", "cómo funciona Bitcoin técnicamente", "prueba de trabajo Bitcoin", "peer-to-peer electronic cash system", "whitepaper Bitcoin en español", "fundamentos técnicos de Bitcoin"]

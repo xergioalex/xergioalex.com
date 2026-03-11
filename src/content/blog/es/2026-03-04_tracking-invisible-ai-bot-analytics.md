@@ -2,7 +2,7 @@
 title: "Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA sin JavaScript del Lado del Cliente"
 description: "Un solo archivo de middleware en Cloudflare Pages para ver lo que las analíticas JavaScript no pueden: los crawlers de IA que visitan el sitio."
 pubDate: "2026-03-04T14:00:00"
-heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
+heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["rastrear bots de IA en mi sitio web", "Cloudflare Pages middleware para analíticas", "crawlers de IA GPTBot ChatGPT-User", "analíticas sin JavaScript del lado del cliente", "detectar bots de IA en el servidor", "middleware en Cloudflare Edge Functions", "qué bots de IA visitan mi sitio"]
@@ -252,15 +252,15 @@ En Umami, los eventos `ai_bot_visit` aparecen en la sección de eventos personal
 
 Así se ve el feed de actividad — cada evento `ai_bot_visit` con la página que el bot rastreó:
 
-![Feed de actividad en Umami mostrando eventos ai_bot_visit en diferentes páginas del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.png)
+![Feed de actividad en Umami mostrando eventos ai_bot_visit en diferentes páginas del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.webp)
 
 Y en el gráfico de eventos, los `ai_bot_visit` empiezan a aparecer junto al resto de analíticas del sitio — mismo dashboard, misma línea de tiempo:
 
-![Gráfico de eventos en Umami mostrando tráfico ai_bot_visit junto a otros eventos del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
+![Gráfico de eventos en Umami mostrando tráfico ai_bot_visit junto a otros eventos del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.webp)
 
 Como cada evento lleva la propiedad `bot`, puedo desglosar el tráfico por crawler. Filtrando por la propiedad `bot` en `ai_bot_visit` me da esto — una imagen clara de quién está entrando realmente por la puerta:
 
-![Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
+![Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.webp)
 
 Con analíticas del lado del cliente nada de esto existía. Con un archivo de middleware, ahora sí.
 

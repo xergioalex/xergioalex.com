@@ -2,7 +2,7 @@
 title: "Midiendo lo que Importa: Cómo Configuré Analytics Gratis Sin Sacrificar el Rendimiento"
 description: "El tercer capítulo de la construcción de XergioAleX.com — implementando un stack completo de analytics usando solo herramientas gratuitas, sin perder los puntajes perfectos de Lighthouse ni agregar banners de cookies."
 pubDate: "2026-02-28"
-heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.png"
+heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["analytics gratis sin cookies", "Umami Analytics alternativa a Google Analytics", "Cloudflare Web Analytics", "analíticas privadas sitio estático", "cómo medir visitas sin perder rendimiento Lighthouse", "analytics sin banners de cookies", "stack de analíticas gratuito para sitios web"]
@@ -94,7 +94,7 @@ Si la variable de entorno no está configurada — como en desarrollo local — 
 
 Así se ve el dashboard de Umami un día después de ponerlo en producción — visitantes, vistas, bounce rate, duración de visita, todo en un solo lugar:
 
-![Dashboard de Umami mostrando 305 visitantes, 333 visitas, 473 vistas, 85% bounce rate y 1m 8s de duración de visita con gráfico de tráfico de 24 horas](/images/blog/posts/measuring-what-matters-free-analytics/umami-dashboard-overview.png)
+![Dashboard de Umami mostrando 305 visitantes, 333 visitas, 473 vistas, 85% bounce rate y 1m 8s de duración de visita con gráfico de tráfico de 24 horas](/images/blog/posts/measuring-what-matters-free-analytics/umami-dashboard-overview.webp)
 
 ### Eventos Personalizados de Umami — Clics Sin Peso Extra
 
@@ -109,7 +109,7 @@ La instrumentación es explícita y privacy-first: solo se envían los eventos q
 
 Así se ve la sección de eventos — cada tipo de evento con su color en el gráfico, con los conteos abajo:
 
-![Dashboard de eventos de Umami mostrando 243 eventos en 8 tipos incluyendo scroll_depth, nav_click, blog_card_click y ai_bot_visit](/images/blog/posts/measuring-what-matters-free-analytics/umami-events-chart.png)
+![Dashboard de eventos de Umami mostrando 243 eventos en 8 tipos incluyendo scroll_depth, nav_click, blog_card_click y ai_bot_visit](/images/blog/posts/measuring-what-matters-free-analytics/umami-events-chart.webp)
 
 ### Google Search Console + Bing Webmaster Tools — La Capa SEO
 
@@ -211,23 +211,23 @@ Un día después de configurar todo, el dashboard ya estaba contando una histori
 
 Qué páginas reciben más visitas — el primer post de la serie dominó con el 82% del tráfico:
 
-![Reporte de páginas en Umami mostrando las páginas más visitadas, lideradas por el post de Astro y Svelte con 82%](/images/blog/posts/measuring-what-matters-free-analytics/umami-top-pages.png)
+![Reporte de páginas en Umami mostrando las páginas más visitadas, lideradas por el post de Astro y Svelte con 82%](/images/blog/posts/measuring-what-matters-free-analytics/umami-top-pages.webp)
 
 Sesiones individuales de visitantes — país, ciudad, navegador, dispositivo, todo sin cookies:
 
-![Tabla de actividad en Umami mostrando sesiones individuales de Colombia, Estados Unidos, Canadá, Alemania, Portugal con detalles de navegador y dispositivo](/images/blog/posts/measuring-what-matters-free-analytics/umami-sessions-activity.png)
+![Tabla de actividad en Umami mostrando sesiones individuales de Colombia, Estados Unidos, Canadá, Alemania, Portugal con detalles de navegador y dispositivo](/images/blog/posts/measuring-what-matters-free-analytics/umami-sessions-activity.webp)
 
 El desglose de navegadores — Chrome lidera con 39%, seguido por iOS y Safari:
 
-![Panel de entorno en Umami mostrando distribución de navegadores: Chrome 39%, iOS 25%, Safari 13%, Firefox 9%](/images/blog/posts/measuring-what-matters-free-analytics/umami-browsers.png)
+![Panel de entorno en Umami mostrando distribución de navegadores: Chrome 39%, iOS 25%, Safari 13%, Firefox 9%](/images/blog/posts/measuring-what-matters-free-analytics/umami-browsers.webp)
 
 De dónde vienen los visitantes — 11 países en las primeras 24 horas, con Estados Unidos al 55% y Colombia al 7%:
 
-![Panel de ubicación en Umami mostrando países de visitantes: Estados Unidos 55%, Canadá 9%, Colombia 7%, Alemania 7%, Reino Unido 5%](/images/blog/posts/measuring-what-matters-free-analytics/umami-countries.png)
+![Panel de ubicación en Umami mostrando países de visitantes: Estados Unidos 55%, Canadá 9%, Colombia 7%, Alemania 7%, Reino Unido 5%](/images/blog/posts/measuring-what-matters-free-analytics/umami-countries.webp)
 
 Y la vista geográfica con el mapa de calor de tráfico — cuándo llegan los visitantes durante la semana:
 
-![Mapa mundial mostrando ubicación de visitantes y mapa de calor de tráfico por día y hora](/images/blog/posts/measuring-what-matters-free-analytics/umami-world-map-traffic.png)
+![Mapa mundial mostrando ubicación de visitantes y mapa de calor de tráfico por día y hora](/images/blog/posts/measuring-what-matters-free-analytics/umami-world-map-traffic.webp)
 
 Todo esto con un script de 2KB, sin cookies, y cero impacto en los puntajes de Lighthouse.
 

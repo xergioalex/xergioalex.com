@@ -2,7 +2,7 @@
 title: "Construyendo Realidad Virtual para la Web: A-Frame, Laberintos y Galerías 360°"
 description: "Cómo construí experiencias de WebVR con solo HTML y JavaScript — un laberinto en VR, una galería de fotos 360° y más de 20 demos que demostraron que la realidad virtual no necesita hardware costoso."
 pubDate: "2019-10-15"
-heroImage: "/images/blog/posts/webvr-projects/hero.png"
+heroImage: "/images/blog/posts/webvr-projects/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "javascript", "web-development"]
 keywords: ["proyectos WebVR con A-Frame", "galería 360 grados en el navegador", "laberinto en realidad virtual con HTML", "A-Frame demos prácticos", "experiencias VR con JavaScript", "fotos 360 VR web", "portfolio WebVR A-Frame"]
@@ -129,7 +129,7 @@ El concepto era simple: cargar 18 imágenes panorámicas equirectangulares, orga
 
 Una línea para la miniatura. Una línea para el cielo. Una función de JavaScript de tres líneas para intercambiarlos. La galería entera — 18 panorámicas, navegación interactiva, lista para VR — era un solo archivo HTML.
 
-![Panorámica 360° de la galería](/images/blog/posts/webvr-projects/gallery-panorama.jpg)
+![Panorámica 360° de la galería](/images/blog/posts/webvr-projects/gallery-panorama.webp)
 
 Le agregué un cubo flotante y giratorio con el logo de PereiraJS como easter egg, un cursor de mirada para interacción en VR (mirá una miniatura por 800ms y se activa), y controles de cámara para escritorio y móvil.
 

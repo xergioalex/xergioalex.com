@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 12             | 4                  | 0              | 16    |
+| Skills | 13             | 4                  | 0              | 17    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **12**      | **9**              | **1**          | **22** |
+| **Total** | **13**      | **9**              | **1**          | **23** |
 
 ---
 
@@ -33,6 +33,7 @@ Fast, low-risk, pattern-following tasks.
 | add-page        | create | `/add-page`       | haiku  | Create new page with routing and MainLayout                                 |
 | add-timeline-page | create | `/add-timeline-page` | haiku | Add a new tag-filtered infinite-scroll timeline page (e.g. /trading, /entrepreneur) |
 | translate-sync  | execute| `/translate-sync` | haiku  | Synchronize content between English and Spanish versions                    |
+| optimize-image  | execute| `/optimize-image` | haiku  | Convert and optimize images to WebP for blog posts and series               |
 | update-styles   | fix    | `/update-styles`  | haiku  | Update Tailwind styles with dark mode support                               |
 
 ### Tier 2 (Standard)

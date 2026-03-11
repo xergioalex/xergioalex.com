@@ -2,7 +2,7 @@
 title: "El renacimiento de la inteligencia artificial"
 description: "Una reflexión personal desde mi presentación en Pereira Tech Talks — por qué ChatGPT, GPT-4 y la IA generativa marcaron el fin del invierno de la IA y el inicio de una revolución que vivo todos los días."
 pubDate: "2023-05-17"
-heroImage: "/images/blog/shared/ai-rebirth-hero.png"
+heroImage: "/images/blog/shared/ai-rebirth-hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["renacimiento de la inteligencia artificial", "ChatGPT GPT-4 revolución IA", "IA generativa en el desarrollo de software", "cómo la IA está cambiando la tecnología", "Pereira Tech Talks IA 2023", "fin del invierno de la IA", "IA generativa para desarrolladores"]
@@ -43,12 +43,12 @@ Terminé con dos palabras: **transformación** y **oportunidad**. Las herramient
 ## Memorias del evento
 
 <div class="grid grid-cols-2 gap-4 md:grid-cols-3 not-prose">
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/title-slide-presentation.jpg" alt="Presentación AI Rebirth con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/gartner-hype-cycle-slide.jpg" alt="Slide del Gartner Hype Cycle" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/ai-rebirth-split-face-slide.jpg" alt="Slide AI Rebirth rostro dividido" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/post-event-gathering.jpg" alt="Encuentro después del evento" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/audience-during-talk.jpg" alt="Audiencia durante la charla" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/podium-and-audience.jpg" alt="Pódium y audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/title-slide-presentation.webp" alt="Presentación AI Rebirth con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/gartner-hype-cycle-slide.webp" alt="Slide del Gartner Hype Cycle" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/ai-rebirth-split-face-slide.webp" alt="Slide AI Rebirth rostro dividido" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/post-event-gathering.webp" alt="Encuentro después del evento" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/audience-during-talk.webp" alt="Audiencia durante la charla" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/rebirth-of-artificial-intelligence/podium-and-audience.webp" alt="Pódium y audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

@@ -2,7 +2,7 @@
 title: "Introducción a Docker"
 description: "Lo que compartí en una charla sobre Docker y arquitecturas orientadas a microservicios — contenedores, características de microservicios y demos prácticas."
 pubDate: "2018-12-13"
-heroImage: "/images/blog/posts/docker-introduction/hero.png"
+heroImage: "/images/blog/posts/docker-introduction/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "devops"]
 keywords: ["introducción a Docker", "qué es Docker y para qué sirve", "contenedores Docker para principiantes", "Docker y microservicios", "cómo usar Docker", "imágenes y contenedores Docker", "Docker en arquitecturas modernas"]

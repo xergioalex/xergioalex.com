@@ -2,7 +2,7 @@
 title: "Introduction to the Internet of Things"
 description: "I teamed up with Alejandro Rendon to explore IoT — from sensors and controllers to programming robots with JavaScript and Johnny-five."
 pubDate: "2017-03-28"
-heroImage: "/images/blog/posts/internet-of-things/hero.jpg"
+heroImage: "/images/blog/posts/internet-of-things/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "iot"]
 keywords: ["IoT introduction JavaScript", "Arduino Johnny-five tutorial", "Internet of Things JavaScript", "Node.js robotics programming", "Johnny-five Arduino framework", "JavaScript IoT development", "hardware programming JavaScript"]

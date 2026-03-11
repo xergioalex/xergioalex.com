@@ -2,7 +2,7 @@
 title: 'Architecture of a Scalable Blog Without a Backend'
 description: 'The fourth chapter of building XergioAleX.com — how the entire blog system works: Content Collections as a data layer, a three-tier tag taxonomy, client-side search, post series with floating navigation, bilingual content, and why every piece of complexity lives in the build, not the browser.'
 pubDate: '2026-03-01'
-heroImage: '/images/blog/posts/building-blog-without-backend/hero.png'
+heroImage: '/images/blog/posts/building-blog-without-backend/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
 keywords: ["static blog architecture Astro", "Astro Content Collections scalable blog", "blog tag taxonomy system", "client-side search static JSON", "Fuse.js blog search", "Astro blog series navigation", "bilingual blog Astro architecture"]

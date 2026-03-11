@@ -2,7 +2,7 @@
 title: 'Cómo Construí un Sitio Web Multilingüe con Astro'
 description: 'Capítulo cinco de la construcción de xergioalex.com — la historia completa de diseñar una arquitectura multilingüe desde cero: configuración de idiomas como código, un sistema de traducciones tipado con más de 960 claves, el patrón Page Wrapper que mantiene cada página DRY entre idiomas, y una arquitectura lista para escalar a cualquier número de idiomas sin cambiar un solo componente.'
 pubDate: '2026-03-03'
-heroImage: '/images/blog/posts/building-multilingual-website/hero.png'
+heroImage: '/images/blog/posts/building-multilingual-website/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
 keywords: ["sitio web multilingüe con Astro", "cómo agregar múltiples idiomas en Astro", "i18n con Astro sin plugins", "sistema de traducciones tipado en TypeScript", "arquitectura multilingüe para sitios estáticos", "inglés y español con Astro", "Page Wrapper pattern Astro i18n"]

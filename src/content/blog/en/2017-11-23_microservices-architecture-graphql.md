@@ -2,7 +2,7 @@
 title: "Microservices Architecture and APIs with GraphQL"
 description: "Why I moved from REST to GraphQL for microservices — divide and conquer, client-defined queries, and the trade-offs you need to know."
 pubDate: "2017-11-23"
-heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.png"
+heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "web-development", "devops"]
 keywords: ["microservices architecture GraphQL", "REST vs GraphQL APIs", "microservices distributed systems", "GraphQL API design", "divide and conquer microservices", "client-controlled queries GraphQL", "microservices vs monolith"]
