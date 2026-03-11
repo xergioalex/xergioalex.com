@@ -396,7 +396,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'DailyBot',
     subtitle: 'CTO y Cofundador — Y Combinator S21',
     description:
-      'DailyBot es una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Ofrece transparencia y visibilidad unificadas sobre el trabajo de personas y agentes de IA, respaldada por Y Combinator.',
+      'DailyBot es una plataforma respaldada por Y Combinator donde equipos humanos y agentes de IA colaboran con transparencia y visibilidad en tiempo real.',
     heroDescription:
       'Construyendo el futuro de la colaboraci\u00F3n en equipos — una plataforma que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes.',
     storyTitle: 'La historia',
@@ -507,7 +507,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     subtitle:
       'Construyendo comunidad a trav\u00E9s del conocimiento compartido',
     description:
-      'CTO en DailyBot (YC S21) y cofundador de Pereira Tech Talks. M\u00E1s de 30 charlas t\u00E9cnicas desde 2016 sobre IA, serverless, Docker, blockchain y equipos distribuidos. Apasionado por compartir conocimiento y construir comunidad en Colombia.',
+      'CTO en DailyBot (YC S21) y cofundador de Pereira Tech Talks. M\u00E1s de 30 charlas desde 2016 sobre IA, serverless, Docker, blockchain y equipos distribuidos.',
     heroDescription:
       'Cofund\u00E9 Pereira Tech Talks para crear un espacio donde desarrolladores, dise\u00F1adores y emprendedores pudieran aprender juntos. Desde 2016, he dado m\u00E1s de 30 charlas sobre todo, desde Docker hasta IA \u2014 porque la mejor forma de aprender es ense\u00F1ando.',
     communityTitle: 'Pereira Tech Talks',
