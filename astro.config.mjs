@@ -45,6 +45,17 @@ export default defineConfig({
     port: 4444,
   },
   vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/svelte/')) {
+              return 'svelte';
+            }
+          },
+        },
+      },
+    },
     plugins: [tailwindcss()],
     resolve: {
       alias: {

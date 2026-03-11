@@ -9,7 +9,7 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "0.0.74",
+  "version": "0.0.75",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
@@ -33,27 +33,27 @@
     "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
   },
   "dependencies": {
-    "@astrojs/check": "0.9.6",
-    "@astrojs/mdx": "4.3.13",
-    "@astrojs/rss": "4.0.15",
-    "@astrojs/sitemap": "3.7.0",
+    "@astrojs/check": "0.9.7",
+    "@astrojs/mdx": "4.3.14",
+    "@astrojs/rss": "4.0.17",
+    "@astrojs/sitemap": "3.7.1",
     "@astrojs/svelte": "7.2.5",
-    "astro": "5.18.0",
+    "astro": "5.18.1",
     "fuse.js": "7.1.0",
     "rehype-external-links": "3.0.0",
-    "svelte": "5.53.6",
+    "svelte": "5.53.10",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.5",
+    "@biomejs/biome": "2.4.6",
     "@lhci/cli": "0.15.1",
     "@tailwindcss/typography": "0.5.19",
     "@tailwindcss/vite": "4.2.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/svelte": "5.3.1",
     "@vitest/coverage-v8": "4.0.18",
-    "happy-dom": "20.7.0",
+    "happy-dom": "20.8.3",
     "npm-check-updates": "19.6.3",
     "sharp": "0.34.5",
     "vitest": "4.0.18"
