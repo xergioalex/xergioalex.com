@@ -38,7 +38,33 @@ Every page automatically gets these tags through `MainLayout` → `BaseHead`:
 ### Character Length Guidelines
 
 - **Title**: 50-60 characters (displayed in search results)
-- **Description**: 150-160 characters (displayed as snippet)
+- **Description**: 130-160 characters (displayed as snippet in SERPs)
+
+### Meta Description Standards (MANDATORY)
+
+**Target length:** 130-160 characters per description (both EN and ES).
+
+**Why this range:**
+- Under 130 chars: Wastes SERP real estate, lower click-through rate
+- 130-160 chars: Optimal — fully displayed in Google/Bing results
+- Over 160 chars: Truncated with "..." in search results, losing key information
+
+**Where descriptions are defined:**
+
+| Content Type | Location | Field |
+|-------------|----------|-------|
+| Pages | `src/lib/translations/{lang}.ts` | `{pageName}.description` |
+| Site default | `src/lib/constances.ts` | `SITE_DESCRIPTION` |
+| Blog posts | `src/content/blog/{lang}/*.md` | `description` frontmatter |
+
+**Rules for writing meta descriptions:**
+1. **Length:** 130-160 characters (count BEFORE committing)
+2. **Content:** Summarize what the page offers and why it matters
+3. **Keywords:** Include 1-2 relevant SEO keywords naturally
+4. **Action-oriented:** Use compelling language that encourages clicks
+5. **Unique:** Every page must have a unique description (no duplicates)
+6. **Both languages:** EN and ES descriptions must both be in range independently
+7. **Not literal translations:** ES descriptions should be semantically equivalent but natural in Colombian Spanish
 
 ### Keywords (Dynamic)
 
@@ -322,6 +348,7 @@ Structure:
 ### New Page SEO Checklist
 
 - [ ] Page component has `title` and `description` props passed to MainLayout
+- [ ] Meta description is 130-160 characters (EN and ES independently)
 - [ ] BreadcrumbList JSON-LD schema added via `<Fragment slot="head">`
 - [ ] Page exists in both `src/pages/` (EN) and `src/pages/es/` (ES)
 - [ ] Translation strings added to both `en.ts` and `es.ts`
@@ -333,6 +360,7 @@ Structure:
 ### New Blog Post SEO Checklist
 
 - [ ] Frontmatter complete: title, description, pubDate, tags, keywords, heroImage
+- [ ] Description frontmatter is 130-160 characters (EN and ES independently)
 - [ ] Keywords: 5-8 specific search phrases per language version
 - [ ] ES keywords adapted to Spanish search behavior (not literal translations)
 - [ ] Hero image optimized and in `public/images/blog/posts/{slug}/`

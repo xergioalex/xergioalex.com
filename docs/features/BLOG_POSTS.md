@@ -87,7 +87,7 @@ Defined in `src/content.config.ts`:
 ```typescript
 schema: z.object({
   title: z.string(),                    // Required - post title
-  description: z.string(),             // Required - excerpt/description (50-160 chars recommended)
+  description: z.string(),             // Required - excerpt/description (130-160 chars required)
   pubDate: z.coerce.date(),            // Required - publication date
   updatedDate: z.coerce.date().optional(),  // Optional - last update date
   heroImage: z.string().optional(),    // Optional - path: /images/blog/posts/{slug}/hero.{ext}
@@ -105,7 +105,7 @@ schema: z.object({
 | Field | Required | Description |
 |-------|----------|-------------|
 | `title` | Yes | Post title. Translated between languages. |
-| `description` | Yes | 1-2 sentence excerpt. 50-160 chars recommended for SEO. Used in meta tags and Open Graph. |
+| `description` | Yes | 1-2 sentence excerpt. **130-160 chars required** for optimal SERP display. Used in meta tags and Open Graph. Both EN and ES must independently meet this range. |
 | `pubDate` | Yes | Publication date. Accepts date-only (`'2026-01-31'`) or datetime (`'2026-01-31T14:00:00'`). Date-only defaults to midnight. |
 | `updatedDate` | No | Last significant update. Displayed with "Last updated on" label. |
 | `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}`. ES posts can reference a different image (e.g., `hero-es.{ext}`) when the hero contains localized text. See [Multilingual Hero Images](#multilingual-hero-images). |
