@@ -162,7 +162,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'About Me',
     subtitle: 'Technology Enthusiast, Entrepreneur & Lifelong Learner',
     description:
-      'Get to know Sergio Alexander Florez Galeano — CTO, entrepreneur, maker, and technology enthusiast from Colombia.',
+      'Get to know Sergio Alexander Florez Galeano — CTO at DailyBot (YC S21), entrepreneur, maker, and technology enthusiast building from Colombia.',
     heroDescription:
       'CTO & Cofounder of DailyBot (YC S21). Computer Science Engineer, MSc in Data Science, with 14+ years building digital products and businesses.',
     bioTitle: 'Who I Am',
@@ -235,7 +235,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Curriculum Vitae',
     subtitle: 'CTO & Cofounder | Full Stack Developer | Entrepreneur',
     description:
-      'Professional resume of Sergio Alexander Florez Galeano — CTO of DailyBot, Full Stack Developer, and technology entrepreneur.',
+      'Professional resume of Sergio Alexander Florez Galeano — CTO at DailyBot (YC S21), Full Stack Developer with 14+ years of experience in tech.',
     summaryTitle: 'Professional Summary',
     summaryText:
       'Technology leader with 14+ years of experience building and scaling digital products. Full-stack engineer who works across frontend, backend, DevOps, and AI — building whatever the product needs. Currently serving as CTO and Cofounder of DailyBot (Y Combinator S21), leading the engineering team behind a modern collaboration platform that enables human teams and AI agents to work together seamlessly, with unified transparency across hybrid teams and intelligent workflows. Computer Science Engineer with an MSc in Data Science, combining deep technical expertise with entrepreneurial vision.',
@@ -452,7 +452,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Entrepreneur',
     subtitle: 'Building the future, one venture at a time',
     description:
-      'The entrepreneurial journey of Sergio Alexander Florez Galeano — from engineer to founder.',
+      'The entrepreneurial journey of Sergio Alexander Florez Galeano — from software engineer to CTO and co-founder of DailyBot, backed by Y Combinator.',
     heroDescription:
       'Over 14 years of building digital businesses, turning ideas into products, and learning from every challenge along the way.',
     journeyTitle: 'My Entrepreneurial Journey',
@@ -577,7 +577,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Trading Journal',
     subtitle: 'Markets, strategies & lessons learned',
     description:
-      "Sergio's trading journal — weekly updates, market analysis, strategies, and lessons learned from active trading.",
+      "Sergio's trading journal — forex market analysis, algorithmic trading strategies, risk management insights, and lessons from active trading.",
     heroDescription:
       'My personal trading journal where I document my journey through the financial markets — weekly reviews, analysis, strategies, and the lessons I learn along the way.',
     journeyTitle: 'My Trading Journey',
@@ -628,7 +628,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Foodie Enthusiast',
     subtitle: 'Exploring flavors, sharing experiences',
     description:
-      "Sergio's passion for food — restaurant exploration, content creation, and cooking adventures.",
+      "Sergio's passion for food — restaurant discoveries, food photography, cooking experiments, and culinary experiences shared from Colombia and beyond.",
     heroDescription:
       'Beyond technology, a passionate food explorer and content creator. Discovering the best flavors and sharing them with the world.',
     passionTitle: 'My Food Passion',
@@ -677,7 +677,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Hobbies',
     subtitle: 'Stay active, stay curious',
     description:
-      "Sergio's hobbies and active lifestyle — cycling, running, basketball, gaming, and more.",
+      "Sergio's active lifestyle beyond tech — cycling, running, basketball, mountain hiking, chess, and gaming adventures in Colombia and beyond.",
     heroDescription:
       'Sports, gaming, and outdoor adventures — the activities that keep me balanced, energized, and inspired.',
     philosophyTitle: 'Active Lifestyle',
@@ -731,7 +731,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Portfolio',
     subtitle: 'Projects & Work',
     description:
-      'A showcase of my projects, experiments, and technical work across software engineering, robotics, and more.',
+      "Explore Sergio's projects and technical work — from SaaS products and open-source tools to robotics experiments and AI-powered applications.",
     heroDescription:
       'A lifelong builder and technology enthusiast. From code to hardware, constantly creating and experimenting with new technologies.',
     journeyTitle: 'Building Things That Matter',
@@ -781,7 +781,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     title: 'Contact',
     subtitle: "Let's connect and build something together",
     description:
-      'Get in touch with Sergio Alexander Florez Galeano — open to collaborations, speaking, and new opportunities.',
+      'Get in touch with Sergio Alexander Florez Galeano — open to collaborations, speaking opportunities, and conversations about tech and startups.',
     heroDescription:
       "I'm always open to new opportunities, collaborations, and conversations. Whether you have a project idea, a speaking invitation, or just want to say hi — I'd love to hear from you.",
     formTitle: 'Send a Message',
@@ -899,7 +899,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesListingPage: {
     title: 'Blog Series',
     description:
-      'Explore curated collections of articles organized into thematic series.',
+      'Explore curated collections of articles organized into thematic series — deep dives into technology, entrepreneurship, and software engineering.',
     heading: 'Series',
     postsCount: (count) => `${count} ${count === 1 ? 'chapter' : 'chapters'}`,
     exploreSeries: 'Explore series',
@@ -992,7 +992,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   notFoundPage: {
     title: 'Page Not Found',
     description:
-      'The page you are looking for does not exist or has been moved.',
+      'The page you are looking for does not exist or has been moved. Explore the blog, portfolio, or head back to the homepage to keep browsing.',
     heading: 'Page Not Found',
     message:
       "Sorry, the page you are looking for doesn't exist or may have been moved. Try navigating back to the homepage or searching the blog.",
