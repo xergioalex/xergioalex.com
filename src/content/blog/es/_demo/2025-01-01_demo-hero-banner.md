@@ -2,7 +2,7 @@
 title: 'Primeros Pasos con Contenedores Docker'
 description: 'Una guía completa para entender y usar contenedores Docker en el desarrollo moderno de aplicaciones'
 pubDate: '2025-01-01'
-heroImage: '/images/blog/shared/blog-placeholder-1.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-1.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['tutorial de contenedores Docker', 'introducción a Docker', 'Docker para desarrolladores', 'contenedor vs máquina virtual', 'guía de Docker para principiantes']

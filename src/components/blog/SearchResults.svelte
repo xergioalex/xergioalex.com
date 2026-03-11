@@ -16,7 +16,7 @@ $: basePrefix = getUrlPrefix(lang);
 {#if filteredPosts && filteredPosts.length > 0}
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {#each filteredPosts as post, index}
-      <BlogCard {post} {lang} heroWebpExists={post.heroWebpExists ?? false} {searchQuery} searchResult={searchResultsWithMatches[index]} {topicTagNames} />
+      <BlogCard {post} {lang} {searchQuery} searchResult={searchResultsWithMatches[index]} {topicTagNames} />
     {/each}
   </div>
 {:else}

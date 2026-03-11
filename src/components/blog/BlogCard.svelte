@@ -8,11 +8,9 @@ import { getTranslations } from '@/lib/translations';
 
 export let post: CollectionEntry<'blog'>;
 export let lang: Language = 'en';
-export let heroWebpExists: boolean = false;
 export let searchQuery: string = '';
 export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
-export let eager: boolean = false;
 let postData: {
   title: string;
   description: string;
@@ -158,28 +156,14 @@ $: displayDescription = searchQuery
   ></a>
   {#if postData.heroImage}
     <div class="bg-gray-100 dark:bg-gray-700">
-      {#if postData.heroImage.match(/\.(png|jpe?g)$/i) && heroWebpExists}
-        <picture>
-          <source srcset={postData.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-          <img
-            src={postData.heroImage}
-            alt=""
-            width={400}
-            height={192}
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          />
-        </picture>
-      {:else}
-        <img
-          src={postData.heroImage}
-          alt=""
-          width={400}
-          height={192}
-          class="w-full h-48 object-cover"
-          loading="lazy"
-        />
-      {/if}
+      <img
+        src={postData.heroImage}
+        alt=""
+        width={400}
+        height={192}
+        class="w-full h-48 object-cover"
+        loading="lazy"
+      />
     </div>
   {/if}
   <div class="p-6">

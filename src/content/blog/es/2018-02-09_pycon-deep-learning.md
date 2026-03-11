@@ -2,7 +2,7 @@
 title: 'Deep Learning: de la academia a la práctica'
 description: 'Lo que compartí en PyCon Colombia 2018 sobre cómo la matemática aplicada nos permite construir modelos de IA — álgebra lineal, redes neuronales, descenso del gradiente y visión por computadora.'
 pubDate: '2018-02-09'
-heroImage: '/images/blog/posts/pycon-deep-learning/hero.jpg'
+heroImage: '/images/blog/posts/pycon-deep-learning/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "ai", "python"]
 keywords: ["deep learning desde la academia a la práctica", "redes neuronales con Python", "álgebra lineal para machine learning", "descenso del gradiente explicado", "visión por computadora con Python", "PyCon Colombia 2018", "matemáticas para inteligencia artificial"]

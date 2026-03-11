@@ -269,28 +269,14 @@ function formatDate(pubDate: string): string {
             <!-- Hero thumbnail (desktop only) -->
             {#if post.heroImage}
               <div class="hidden md:block flex-shrink-0">
-                {#if post.heroWebpExists && post.heroImage.match(/\.(png|jpe?g)$/i)}
-                  <picture>
-                    <source srcset={post.heroImage.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
-                    <img
-                      src={post.heroImage}
-                      alt={post.title}
-                      class="w-28 h-20 object-cover rounded-lg"
-                      loading="lazy"
-                      width="112"
-                      height="80"
-                    />
-                  </picture>
-                {:else}
-                  <img
-                    src={post.heroImage}
-                    alt={post.title}
-                    class="w-28 h-20 object-cover rounded-lg"
-                    loading="lazy"
-                    width="112"
-                    height="80"
-                  />
-                {/if}
+                <img
+                  src={post.heroImage}
+                  alt={post.title}
+                  class="w-28 h-20 object-cover rounded-lg"
+                  loading="lazy"
+                  width="112"
+                  height="80"
+                />
               </div>
             {/if}
           </div>

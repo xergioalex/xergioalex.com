@@ -2,7 +2,7 @@
 title: "AI and the New Era of Programming at Open Tech Hackathon"
 description: "From my Vibe Coding e IA workshop at Open Tech Hackathon — when to use Cursor vs Codex vs Claude Code, the conductor mindset, and practical lessons from shipping AI-powered features at DailyBot."
 pubDate: "2025-10-04"
-heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.png"
+heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["vibe coding AI programming", "Cursor vs Codex vs Claude Code", "AI code agent comparison", "developer as conductor orchestrator", "Open Tech Hackathon AI workshop", "AI coding tools productivity", "DailyBot AI features shipping"]
@@ -82,8 +82,8 @@ I ended with a few pointers so they could start right away:
 ## Workshop Memories
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.png" alt="Illustration of human orchestrating AI agents — programmer as conductor" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.png" alt="Slide: New role of developers — orchestrators and supervisors" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.webp" alt="Illustration of human orchestrating AI agents — programmer as conductor" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.webp" alt="Slide: New role of developers — orchestrators and supervisors" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

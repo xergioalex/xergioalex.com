@@ -2,7 +2,7 @@
 title: "What is Blockchain and How Will It Radically Transform the Economy?"
 description: "I gave this talk at Universidad de Caldas — tracing blockchain from the history of money to building decentralized apps with JavaScript."
 pubDate: "2017-10-18"
-heroImage: "/images/blog/posts/what-is-blockchain/hero.jpg"
+heroImage: "/images/blog/posts/what-is-blockchain/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
 keywords: ["blockchain explained history of money", "how blockchain transforms economy", "Web3.js blockchain apps", "decentralized trust explained", "blockchain Universidad de Caldas", "blockchain ICO 2017", "Bitcoin origin story blockchain"]

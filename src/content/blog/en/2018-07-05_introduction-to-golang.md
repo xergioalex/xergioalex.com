@@ -2,7 +2,7 @@
 title: "Introduction to GoLang"
 description: "Why Go won me over — my Pereira Tech Talks session on Go's simplicity, built-in concurrency, and how it solves real problems with less ceremony."
 pubDate: "2018-07-05"
-heroImage: "/images/blog/posts/introduction-to-golang/hero.jpg"
+heroImage: "/images/blog/posts/introduction-to-golang/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech"]
 keywords: ["Go language introduction", "Golang goroutines channels", "Go concurrency tutorial", "why use Go programming", "Golang simplicity performance", "Go vs Node.js concurrency", "Pereira Tech Talks Golang"]

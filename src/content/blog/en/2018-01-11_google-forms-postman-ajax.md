@@ -2,7 +2,7 @@
 title: "How to Submit Google Forms via Postman and Ajax"
 description: "Connect a static contact form to Google Forms via HTTP POST — no iframe needed. Step-by-step guide with Postman and jQuery Ajax."
 pubDate: "2018-01-11"
-heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.png"
+heroImage: "/images/blog/posts/google-forms-postman-ajax/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["submit Google Forms via Ajax", "contact form without backend", "Google Forms HTTP POST", "jQuery Ajax Google Forms", "static site contact form", "Google Forms Postman integration", "form submission without server"]
@@ -24,7 +24,7 @@ Next, open the [form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJ
 
 > **Tip:** Another quick way to find all the field IDs is to inspect near the `<form>` tag, where you'll find `hidden` inputs whose `name` attributes start with `entry.`, containing all the form field identifiers:
 
-![Hidden fields with entry IDs inside the form tag](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.png)
+![Hidden fields with entry IDs inside the form tag](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.webp)
 
 Once you have all the `name` values, you can submit the form by sending an HTTP request with [Postman](https://www.getpostman.com/):
 
@@ -41,7 +41,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5Spo
 
 3. Define the body content. For [this example form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform), the `name` values for name, email, phone, and message are `entry.568194084`, `entry.1303875942`, `entry.807958025`, and `entry.703388132` respectively:
 
-![Postman body with form entry fields](/images/blog/posts/google-forms-postman-ajax/postman-3.png)
+![Postman body with form entry fields](/images/blog/posts/google-forms-postman-ajax/postman-3.webp)
 
 If you followed the steps above, you should be able to submit responses to the Google Form using Postman. Feel free to use [my example form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) for testing; responses appear in this [spreadsheet](https://docs.google.com/spreadsheets/d/1r0O9A4oRT81jgzIodJRNL_1GA9WYgJsdRxWVjQULv00/edit#gid=1264787793).
 

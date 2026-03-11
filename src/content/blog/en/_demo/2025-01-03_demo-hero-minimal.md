@@ -2,7 +2,7 @@
 title: 'Understanding CI/CD Pipelines'
 description: 'A practical overview of continuous integration and continuous deployment workflows for modern teams'
 pubDate: '2025-01-03'
-heroImage: '/images/blog/shared/blog-placeholder-3.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-3.webp'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
 keywords: ['CI/CD pipeline tutorial', 'continuous integration setup', 'automated deployment workflow', 'GitHub Actions CI/CD', 'DevOps pipeline basics']

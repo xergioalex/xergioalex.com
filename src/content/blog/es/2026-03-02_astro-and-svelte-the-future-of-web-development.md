@@ -281,11 +281,11 @@ En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados son
 
 **Desktop — 100/100/100/100:**
 
-<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.png" alt="Resultados de Google PageSpeed Insights en desktop para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS y 0.5s Speed Index" width="1208" height="932" loading="lazy" />
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.webp" alt="Resultados de Google PageSpeed Insights en desktop para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS y 0.5s Speed Index" width="1208" height="932" loading="lazy" />
 
 **Mobile — 100/100/100/100:**
 
-<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.png" alt="Resultados de Google PageSpeed Insights en mobile para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS y 0.9s Speed Index" width="1208" height="932" loading="lazy" />
+<img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.webp" alt="Resultados de Google PageSpeed Insights en mobile para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS y 0.9s Speed Index" width="1208" height="932" loading="lazy" />
 
 Desktop: 0.3s FCP, 0.3s LCP, 0ms TBT, 0 CLS. Mobile: 0.9s FCP, 1.5s LCP, 0ms TBT. Lograr un cuádruple 100 en desktop ya es bueno, pero en mobile — donde el throttling de Google es agresivo — es donde se complica de verdad. Con Astro + Svelte, la arquitectura trabaja *contigo*. Los defaults ya son rápidos; solo evitas frenarlo activamente.
 

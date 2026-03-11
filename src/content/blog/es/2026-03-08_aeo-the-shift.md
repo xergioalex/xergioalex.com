@@ -2,7 +2,7 @@
 title: "El Cambio: Por Qué los Rankings Ya No Significan Visibilidad"
 description: "El panorama de la búsqueda cambió — y la mayoría de los sitios no están preparados. Así es como se ve el cambio, por qué los motores de respuesta con IA funcionan diferente, y las dos bases que todo sitio debería tener en su lugar."
 pubDate: "2026-03-08T14:00:00"
-heroImage: "/images/blog/posts/aeo-the-shift/hero.png"
+heroImage: "/images/blog/posts/aeo-the-shift/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["optimización para motores de respuesta AEO guía", "qué es AEO vs SEO", "cómo funcionan los motores de búsqueda con IA", "optimización Google AI Overviews", "citas de contenido ChatGPT Perplexity", "implementación llms.txt", "datos estructurados JSON-LD AEO", "E-E-A-T datos estructurados schema"]
@@ -186,15 +186,15 @@ Cada campo cumple un propósito. `alumniOf` con Y Combinator — credibilidad in
 
 Los datos estructurados me llevaron un tiempo considerable. No es un trabajo emocionante — escribir schemas JSON, validarlos en el [Schema.org Validator](https://validator.schema.org/) para verificar que la estructura sea correcta, asegurarse de que cada página tenga los tipos correctos.
 
-![Schema.org Validator mostrando los datos estructurados de xergioalex.com: Organization, WebSite y Person detectados con 0 errores](/images/blog/posts/aeo-the-shift/schema-validator.png)
+![Schema.org Validator mostrando los datos estructurados de xergioalex.com: Organization, WebSite y Person detectados con 0 errores](/images/blog/posts/aeo-the-shift/schema-validator.webp)
 
 En un blog post la cosa se pone más interesante — además de los schemas base, aparecen `BlogPosting` y `BreadcrumbList`:
 
-![Schema.org Validator mostrando 5 elementos en un blog post: Organization, BreadcrumbList, WebSite, Person y BlogPosting, todos con 0 errores](/images/blog/posts/aeo-the-shift/schema-validator-blog.png)
+![Schema.org Validator mostrando 5 elementos en un blog post: Organization, BreadcrumbList, WebSite, Person y BlogPosting, todos con 0 errores](/images/blog/posts/aeo-the-shift/schema-validator-blog.webp)
 
 Al expandir el `BlogPosting`, se ve todo lo que la IA puede leer sin parsear el HTML: título, descripción, imagen, fechas de publicación y modificación, keywords, conteo de palabras — cada campo es una señal explícita que le ahorra trabajo de inferencia al modelo.
 
-![Detalle del schema BlogPosting mostrando headline, description, image, datePublished, dateModified, keywords y wordCount](/images/blog/posts/aeo-the-shift/schema-validator-blogposting.png) Pasé una tarde entera en el schema `BlogPosting`, comparando la especificación de schema.org para verificar qué propiedades usan realmente los sistemas de IA versus cuáles son técnicamente válidas pero ignoradas. La mayor parte del primer borrador estaba mal en cosas pequeñas. Volver a revisar documentación que ya había leído no fue divertido.
+![Detalle del schema BlogPosting mostrando headline, description, image, datePublished, dateModified, keywords y wordCount](/images/blog/posts/aeo-the-shift/schema-validator-blogposting.webp) Pasé una tarde entera en el schema `BlogPosting`, comparando la especificación de schema.org para verificar qué propiedades usan realmente los sistemas de IA versus cuáles son técnicamente válidas pero ignoradas. La mayor parte del primer borrador estaba mal en cosas pequeñas. Volver a revisar documentación que ya había leído no fue divertido.
 
 Pero es la optimización que comunica significado directamente a las máquinas — no solo contenido, sino contexto. Quién escribió esto, por qué está calificado para escribirlo, cuándo fue actualizado por última vez. Esa es la capa que importa.
 

@@ -2,7 +2,7 @@
 title: "CSS Grid Layout"
 description: "Cómo CSS Grid cambió la forma en que pienso los layouts — de las limitaciones de Flexbox a la libertad bidimensional, con ejercicios prácticos y trucos de accesibilidad."
 pubDate: "2020-02-25"
-heroImage: "/images/blog/posts/css-grid-layout/hero.png"
+heroImage: "/images/blog/posts/css-grid-layout/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "web-development", "design"]
 keywords: ["CSS Grid Layout tutorial", "cómo usar CSS Grid", "CSS Grid vs Flexbox", "layouts bidimensionales con CSS", "CSS Grid para principiantes", "diseño web con CSS Grid", "accesibilidad con CSS Grid"]
@@ -76,7 +76,7 @@ Este ejercicio enseña:
 
 Mi solución: [movies-page-css-grid](https://github.com/xergioalex/movies-page-css-grid)
 
-![Ejercicio Movies Page con CSS Grid](/images/blog/posts/css-grid-layout/movies-demo.png)
+![Ejercicio Movies Page con CSS Grid](/images/blog/posts/css-grid-layout/movies-demo.webp)
 
 ### Ejercicio 2: Videos Player
 
@@ -93,7 +93,7 @@ Este ejercicio enseña:
 Repo: [videos-player-css-grid](https://github.com/xergioalex/videos-player-css-grid)
 Demo en vivo: [videos-player-css-grid.xergioalex.com](https://videos-player-css-grid.xergioalex.com/)
 
-![Ejercicio Videos Player con CSS Grid](/images/blog/posts/css-grid-layout/videos-demo.jpg)
+![Ejercicio Videos Player con CSS Grid](/images/blog/posts/css-grid-layout/videos-demo.webp)
 
 También armé un curso completo con más ejemplos y demos interactivas:
 

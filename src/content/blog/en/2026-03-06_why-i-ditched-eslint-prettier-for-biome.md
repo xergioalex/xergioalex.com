@@ -2,7 +2,7 @@
 title: "Why I Ditched ESLint + Prettier for Biome"
 description: "After years of chasing ESLint upgrades and managing the Prettier conflict dance, I switched to Biome. One config file, one binary, and I haven't looked back."
 pubDate: '2026-03-06'
-heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.png'
+heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'web-development', 'javascript']
 keywords: ["replace ESLint Prettier with Biome", "Biome linter formatter", "ESLint v9 flat config problems", "Biome vs ESLint performance", "Biome single config file", "migrate ESLint to Biome", "Biome Rust linter JavaScript"]

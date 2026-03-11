@@ -2,7 +2,7 @@
 title: 'Próximamente: Mis Predicciones Tech para 2030'
 description: 'Un post programado que se publicara automaticamente en una fecha futura — demostrando la funcionalidad de programación'
 pubDate: '2030-06-15T14:00:00'
-heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-4.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
 keywords: ['predicciones tecnológicas 2030', 'futuro de la tecnología', 'predicciones de inteligencia artificial', 'tendencias tecnológicas próxima década', 'futuro del desarrollo de software']

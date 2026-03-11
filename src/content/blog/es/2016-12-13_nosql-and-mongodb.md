@@ -2,7 +2,7 @@
 title: 'NoSQL y MongoDB'
 description: 'Cuando las tablas SQL no son suficientes — mi introducción a las bases de datos NoSQL, el modelo de documentos de MongoDB, y cuándo elegir flexibilidad sobre schemas rígidos.'
 pubDate: '2016-12-13'
-heroImage: '/images/blog/posts/nosql-and-mongodb/hero.png'
+heroImage: '/images/blog/posts/nosql-and-mongodb/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "database"]
 keywords: ["qué es NoSQL", "introducción a MongoDB", "NoSQL vs SQL cuándo usar cada uno", "bases de datos de documentos", "MongoDB para desarrolladores", "cuándo elegir NoSQL sobre SQL", "bases de datos flexibles sin schema"]

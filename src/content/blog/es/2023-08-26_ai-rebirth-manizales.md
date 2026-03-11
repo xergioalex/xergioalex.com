@@ -2,7 +2,7 @@
 title: "Cómo la IA está revolucionando el desarrollo de aplicaciones modernas"
 description: "Qué cambió entre mayo y agosto de 2023 — mi experiencia en Manizales Tech Talks compartiendo cómo la IA transformaba el desarrollo de apps, tres meses más dentro de la revolución."
 pubDate: "2023-08-26"
-heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.png"
+heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.webp"
 heroLayout: "side-by-side"
 tags: ["talks", "tech", "ai"]
 keywords: ["IA revolucionando el desarrollo de aplicaciones", "ChatGPT en producción en 2023", "GPT-4 para desarrolladores", "Manizales Tech Talks IA", "cómo la IA transforma los equipos de software", "productos reales construidos con IA", "evolución de la IA generativa en 2023"]
@@ -67,9 +67,9 @@ Terminé con lo que había aprendido en la práctica desde mayo:
 ## Memorias del evento
 
 <div class="grid grid-cols-2 gap-4 not-prose">
-  <img src="/images/blog/posts/ai-rebirth-manizales/talk-title-slide.jpg" alt="Presentación con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-rebirth-manizales/speaker-presenting-to-audience.jpg" alt="Presentador hablando a la audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
-  <img src="/images/blog/posts/ai-rebirth-manizales/state-of-the-art-slide.jpg" alt="Slide State of the art durante la charla AI Rebirth" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-rebirth-manizales/talk-title-slide.webp" alt="Presentación con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-rebirth-manizales/speaker-presenting-to-audience.webp" alt="Presentador hablando a la audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
+  <img src="/images/blog/posts/ai-rebirth-manizales/state-of-the-art-slide.webp" alt="Slide State of the art durante la charla AI Rebirth" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
 
 ---

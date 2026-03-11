@@ -2,7 +2,7 @@
 title: 'Introducción a la Orquestación con Kubernetes'
 description: 'Aprende los fundamentos de Kubernetes y cómo revoluciona la orquestación de contenedores a escala'
 pubDate: '2025-01-02'
-heroImage: '/images/blog/shared/blog-placeholder-2.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-2.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
 keywords: ['tutorial de Kubernetes', 'orquestación de contenedores', 'Kubernetes vs Docker diferencias', 'K8s para principiantes', 'desplegar contenedores con Kubernetes']

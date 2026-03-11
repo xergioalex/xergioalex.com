@@ -2,7 +2,7 @@
 title: "BSolutions: Managing Multiple Database Engines with Django and Docker"
 description: "A university project for Advanced Databases class — connecting Django to 10 different database engines (SQL and NoSQL) through Docker containers, demonstrating multi-database management and microservices architecture."
 pubDate: "2018-12-01"
-heroImage: "/images/blog/posts/django-multiple-databases-university/hero.png"
+heroImage: "/images/blog/posts/django-multiple-databases-university/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "tech", "python", "database", "university"]
 keywords: ["Django multiple database engines", "Django PostgreSQL MySQL MongoDB", "multi-database Django project", "Django Docker database containers", "Django Redis Neo4j integration", "10 databases Django project", "university advanced databases Django"]
@@ -21,7 +21,7 @@ That's the premise of BSolutions, my Advanced Databases university project. And 
 The core idea is simple to describe and interesting to implement. A central Python container running Django sits at the middle of the system. Around it, ten database containers — each isolated, each independent, each connected. The Django application can write to and read from any of them.
 
 <div class="dark-bg-container" style="background:#1a1a2e;border-radius:8px;padding:1.5rem;margin:2rem 0;display:flex;justify-content:center;">
-<img src="/images/blog/posts/django-multiple-databases-university/docker-stack.png" alt="BSolutions Docker architecture diagram showing a central Django container connected to 10 database containers — PostgreSQL, MySQL, MariaDB, Oracle, SQL Server (SQL) and MongoDB, Redis, CouchDB, Cassandra, Neo4j (NoSQL) — plus Nginx, Certbot, Celery, and Flower for production infrastructure" width="972" height="1153" loading="lazy" style="max-width:100%;height:auto;" />
+<img src="/images/blog/posts/django-multiple-databases-university/docker-stack.webp" alt="BSolutions Docker architecture diagram showing a central Django container connected to 10 database containers — PostgreSQL, MySQL, MariaDB, Oracle, SQL Server (SQL) and MongoDB, Redis, CouchDB, Cassandra, Neo4j (NoSQL) — plus Nginx, Certbot, Celery, and Flower for production infrastructure" width="972" height="1153" loading="lazy" style="max-width:100%;height:auto;" />
 </div>
 
 The diagram makes the topology clear. The Python Core container — Django, Factory Boy for test data generation, uWSGI as the application server — is the single point of contact. Below it, two clusters of five databases each: SQL engines on one side, NoSQL on the other. Above it, the production infrastructure: Nginx as reverse proxy, Certbot for Let's Encrypt SSL, volumes for certificates and config.

@@ -2,7 +2,7 @@
 title: 'Upcoming: My 2030 Tech Predictions'
 description: 'A scheduled post that will auto-publish on a future date — demonstrating the scheduling feature'
 pubDate: '2030-06-15T14:00:00'
-heroImage: '/images/blog/shared/blog-placeholder-4.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-4.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'demo']
 keywords: ['tech predictions 2030', 'future of technology', 'AI predictions next decade', 'technology trends forecast', 'software development future']

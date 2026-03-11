@@ -2,7 +2,7 @@
 title: 'Serverless, IoT e interfaces conversacionales'
 description: 'Por qué el diseño voice-first importa y cómo serverless impulsa el futuro de las interfaces conversacionales. De skills de Alexa a integración IoT.'
 pubDate: '2019-08-23'
-heroImage: '/images/blog/posts/serverless-iot-voice-interfaces/hero.png'
+heroImage: '/images/blog/posts/serverless-iot-voice-interfaces/hero.webp'
 heroLayout: 'side-by-side'
 tags: ["talks", "tech", "devops", "iot"]
 keywords: ["interfaces conversacionales serverless", "voz como nueva interfaz de usuario", "Alexa skills con serverless", "diseño voice-first", "IoT y interfaces de voz", "Google Assistant y serverless", "Manizales Tech Talks serverless IoT"]
@@ -24,7 +24,7 @@ Un buen ejemplo es [Bambú Meditación](https://appbambu.com/alexa/), una skill 
 4. **Slots** — Datos variables extraídos de las utterances. "descansar", "matutina", "concentrarme".
 5. **Intent** — La acción que la app debe ejecutar. Reproducir una meditación específica. Reanudar sesión. Proveer ayuda.
 
-![Flujo de una interfaz de voz: wake word, invocation, utterances, slots, intent](/images/blog/posts/serverless-iot-voice-interfaces/voice-interface.png)
+![Flujo de una interfaz de voz: wake word, invocation, utterances, slots, intent](/images/blog/posts/serverless-iot-voice-interfaces/voice-interface.webp)
 
 El backend — en este caso, una función AWS Lambda — recibe el intent y los slots, obtiene el audio o datos apropiados y devuelve una respuesta. El usuario escucha una pista de meditación o una confirmación. La interacción completa está orientada a eventos. Sin servidor corriendo constantemente. Sin recursos inactivos. Solo una función que se despierta cuando se le habla.
 

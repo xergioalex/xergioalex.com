@@ -2,7 +2,7 @@
 title: 'Complete Markdown Reference for Technical Writers'
 description: 'A comprehensive showcase of all Markdown formatting features available for blog posts'
 pubDate: '2025-01-06'
-heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-5.webp'
 heroLayout: 'banner'
 tags: ['tech', 'demo']
 keywords: ['markdown formatting guide', 'technical writing markdown', 'markdown syntax reference', 'blog post formatting', 'markdown for developers']
@@ -79,7 +79,7 @@ Nested blockquotes are also supported:
 
 Images can be embedded with alt text:
 
-![A placeholder image demonstrating inline image support](/images/blog/shared/blog-placeholder-3.jpg)
+![A placeholder image demonstrating inline image support](/images/blog/shared/blog-placeholder-3.webp)
 
 ## Tables
 

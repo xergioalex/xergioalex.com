@@ -2,7 +2,7 @@
 title: "GoCarga: Mi Primera Aventura Startup y el Arte del Pitch"
 description: "Cómo construir una plataforma de transporte de carga con amigos de la universidad me enseñó la habilidad empresarial más valiosa: contar una historia que haga creer a la gente."
 pubDate: 2026-03-05
-heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.png"
+heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.webp"
 heroLayout: "banner"
 tags: ["entrepreneur", "tech", "portfolio"]
 keywords: ["primera startup colombiana logística", "GoCarga plataforma transporte de carga", "emprendimiento universitario Colombia", "pitch para inversores ángeles", "Apps.co Mintic emprendimiento", "cómo hacer un pitch para inversores", "startup de tecnología en Colombia"]
@@ -35,10 +35,10 @@ La oportunidad nos parecía evidente: construir la plataforma que los conectara.
 Eso era GoCarga.
 
 <div class="my-6 flex w-full justify-center rounded-lg px-6 py-4" style="background-color: #002f78">
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.png" alt="Logo de GoCarga" width="200" height="80" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.webp" alt="Logo de GoCarga" width="200" height="80" />
 </div>
 
-![Banner de marca GoCarga — logo sobre fondo geométrico naranja](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.png)
+![Banner de marca GoCarga — logo sobre fondo geométrico naranja](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.webp)
 
 ---
 
@@ -50,7 +50,7 @@ Durante ocho semanas estuvimos en Cali, en la Universidad ICESI, pasando por el 
 
 Nuestros mentores — Ana Lucía Alzate y Andrés Felipe Millán — nos presionaron mucho en algo que yo no había terminado de entender: **salir a la calle**. Dejar de teorizar. Ir a hablar con personas reales.
 
-![El equipo de GoCarga con los mentores de Apps.co en la Universidad ICESI](/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.jpg)
+![El equipo de GoCarga con los mentores de Apps.co en la Universidad ICESI](/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.webp)
 
 Y eso hicimos. Entrevistamos a más de 80 transportadores y más de 20 empresas. Y en algún punto entre la entrevista 30 y la 40, nos encontramos con algo que no teníamos en el radar: **los comisionistas de carga**. Esas personas que llevaban años sentadas en el medio de cada transacción, conectando oferta con demanda a través de sus redes personales y el teléfono. No estaban en nuestro modelo de negocio original. Resultaron ser uno de los actores más críticos de todo el ecosistema.
 
@@ -64,17 +64,17 @@ GoCarga era una plataforma web donde las empresas podían publicar necesidades d
 
 Pasamos por varios prototipos. Cada uno un poco más cerca de algo real:
 
-![Prototipo de bienvenida — Mascota de GoCarga, página de onboarding con apoyo del gobierno y universidades](/images/blog/posts/gocarga-apps-co-adventure/prototype-welcome.png)
+![Prototipo de bienvenida — Mascota de GoCarga, página de onboarding con apoyo del gobierno y universidades](/images/blog/posts/gocarga-apps-co-adventure/prototype-welcome.webp)
 
-![Prototipo del home — Marketplace de dos lados: empresas y transportadores, conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-home.png)
+![Prototipo del home — Marketplace de dos lados: empresas y transportadores, conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-home.webp)
 
-![Prototipo de landing principal — Conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.png)
+![Prototipo de landing principal — Conexión transparente, segura y rentable](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.webp)
 
-![Prototipo de resultados de ruta — Búsqueda Medellín / Pereira, cargas activas](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.png)
+![Prototipo de resultados de ruta — Búsqueda Medellín / Pereira, cargas activas](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.webp)
 
-![Prototipo de listado de cargas — Coincidencias entre carga y transportadores](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-listing.png)
+![Prototipo de listado de cargas — Coincidencias entre carga y transportadores](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-listing.webp)
 
-![Captura de pantalla de la plataforma web GoCarga](/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.png)
+![Captura de pantalla de la plataforma web GoCarga](/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.webp)
 
 No era perfecta. Pero era real. Y estaba resolviendo un problema real que personas reales vivían todos los días.
 
@@ -82,7 +82,7 @@ No era perfecta. Pero era real. Y estaba resolviendo un problema real que person
 
 ## Expocamello y el escenario de los ángeles inversionistas
 
-![Banner de Expocamello 2014 — 10 años, 25-27 de septiembre en Expofuturo Pereira](/images/blog/posts/gocarga-apps-co-adventure/expocamello-banner.png)
+![Banner de Expocamello 2014 — 10 años, 25-27 de septiembre en Expofuturo Pereira](/images/blog/posts/gocarga-apps-co-adventure/expocamello-banner.webp)
 
 A finales de ese año, la Cámara de Comercio de Pereira organizó la décima edición de Expocamello — una feria de emprendimiento que convoca proyectos de toda la región. Presentamos GoCarga y quedamos seleccionados como uno de los 5 o 6 finalistas entre más de 200 proyectos.
 
@@ -90,16 +90,16 @@ Expusimos en tarima ante miembros de la Red Nacional de Ángeles Inversionistas,
 
 Armar nuestro stand fue una de las cosas que recuerdo con más cariño. Era el primero que hacíamos — diseñamos el banner, escogimos los colores, armamos el layout. Incluso mandamos a hacer tarjetas de presentación. De las de verdad, con el nombre y el cargo de cada uno. Verlas ahora se siente como una cápsula del tiempo — cuatro estudiantes universitarios que se pusieron títulos y los imprimieron en cartulina.
 
-![Diseño original del banner del stand de GoCarga — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.png)
+![Diseño original del banner del stand de GoCarga — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.webp)
 
 <div class="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.png" alt="Tarjeta de presentación de GoCarga — frente: logo, tagline Conexión Transparente, Segura & Rentable, logos de patrocinadores" width="510" height="288" />
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.png" alt="Tarjeta de presentación de GoCarga — reverso: equipo con Alejandro Pinto (Director Ejecutivo), Sergio Alexander Flórez (Tecnologías), Andrés Julián Vinasco (Operaciones), Jose Miguel Beltran (Creativo)" width="510" height="288" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.webp" alt="Tarjeta de presentación de GoCarga — frente: logo, tagline Conexión Transparente, Segura & Rentable, logos de patrocinadores" width="510" height="288" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.webp" alt="Tarjeta de presentación de GoCarga — reverso: equipo con Alejandro Pinto (Director Ejecutivo), Sergio Alexander Flórez (Tecnologías), Andrés Julián Vinasco (Operaciones), Jose Miguel Beltran (Creativo)" width="510" height="288" />
 </div>
 
 Cuando lo vimos todo impreso y montado en el recinto, GoCarga se sintió real de una forma que el código en una pantalla nunca logra del todo.
 
-![Stand de GoCarga en Expocamello 2014 — Conéctate y consigue tu carga con rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.png)
+![Stand de GoCarga en Expocamello 2014 — Conéctate y consigue tu carga con rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.webp)
 
 No tengo palabras para describir completamente cómo se siente la primera vez que uno le hace pitch a su idea en ese tipo de entorno. Todo lo que has construido — cada hoja de cálculo, cada entrevista, cada sesión de pizarrón — se comprime en 10 minutos donde o logras que alguien crea, o no lo logras.
 

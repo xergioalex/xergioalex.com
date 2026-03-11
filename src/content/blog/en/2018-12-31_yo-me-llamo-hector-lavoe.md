@@ -2,7 +2,7 @@
 title: "Yo Me Llamo Héctor Lavoe: Building a Personal Website for a Salsa Artist"
 description: "The story of building a website for a 'Yo Me Llamo' contestant who performs as Héctor Lavoe — audio player, photo gallery, and the jPlayer fight that cost me an afternoon over 3 pixels."
 pubDate: "2018-12-31"
-heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.png"
+heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "web-development", "personal", "design"]
 keywords: ["artist website jPlayer", "salsa musician website HTML CSS", "jPlayer audio player tutorial", "Yo Me Llamo Héctor Lavoe", "musician website LESS PHP", "custom audio player website", "jQuery jPlayer iOS Safari fix"]

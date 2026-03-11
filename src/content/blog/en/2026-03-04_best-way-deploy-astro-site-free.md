@@ -2,7 +2,7 @@
 title: "The Best Way to Deploy Your Astro Site for Free"
 description: "After years deploying static sites on GitHub Pages, I evaluated the free options and landed on Cloudflare Pages. Here's what I learned and what surprised me."
 pubDate: "2026-03-04T10:00:00"
-heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.png"
+heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["deploy Astro site free Cloudflare Pages", "Cloudflare Pages vs GitHub Pages", "free static site hosting Astro", "Cloudflare Pages preview deployments", "deploy Astro Cloudflare unlimited bandwidth", "best free hosting Astro", "Cloudflare Pages auto-detect Astro"]
@@ -44,19 +44,19 @@ Then I looked at **Cloudflare Pages**. Unlimited bandwidth, 500 builds a month, 
 
 The process was ridiculously short. In the Cloudflare dashboard, **+ Add** > **Pages**:
 
-<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.png" alt="Cloudflare menu with Pages option selected" class="prose-img-narrow" />
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Cloudflare menu with Pages option selected" class="prose-img-narrow" />
 
 Two options — import a Git repository or upload files. The first one:
 
-![Cloudflare Pages getting started screen with Git repository import option](/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.png)
+![Cloudflare Pages getting started screen with Git repository import option](/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.webp)
 
 Select your GitHub account and the repository:
 
-![GitHub account and repository selection showing xergioalex.com](/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.png)
+![GitHub account and repository selection showing xergioalex.com](/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.webp)
 
 And here Cloudflare auto-detected Astro. It populated the build command, the output directory, the production branch — everything:
 
-![Build configuration with Astro detected, npm run build command and dist directory](/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.png)
+![Build configuration with Astro detected, npm run build command and dist directory](/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.webp)
 
 Click **Save and Deploy**. Forty seconds later the site was live on a `pages.dev` subdomain. That was it.
 

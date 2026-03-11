@@ -2,7 +2,7 @@
 title: "Building XergioAleX.com: How I Built My Personal Website with Astro, Svelte, and AI"
 description: "The complete story behind XergioAleX.com — from a one-page landing to a bilingual, AI-ready, performance-first personal platform. A deep dive into architecture, technology choices, and why Astro + Svelte is a killer combo for modern static sites."
 pubDate: "2026-01-22"
-heroImage: "/images/blog/posts/building-xergioalex-website/hero.png"
+heroImage: "/images/blog/posts/building-xergioalex-website/hero.webp"
 heroLayout: "banner"
 tags: ["portfolio", "tech", "personal", "web-development", "javascript"]
 keywords: ["building personal website Astro Svelte", "XergioAleX.com architecture", "Astro Svelte personal platform", "bilingual personal website Astro", "personal site Astro islands", "Ninja Coder brand website", "Astro Svelte performance personal blog"]
@@ -22,7 +22,7 @@ So I decided to build a real one.
 
 This is what I had for a long time:
 
-![My old personal website — a simple landing page with profile photo, name, and social links](/images/blog/posts/building-xergioalex-website/old-site.png)
+![My old personal website — a simple landing page with profile photo, name, and social links](/images/blog/posts/building-xergioalex-website/old-site.webp)
 
 Super simple. Just a photo and links to my networks. It did the job, but it didn't reflect what I'd actually been working on — DailyBot, Pereira Tech Talks, open source projects, dozens of tech talks, blog posts, trading experiments, hardware projects. I wanted a place that could hold all of that and still feel fast, clean, and easy to maintain.
 

@@ -2,7 +2,7 @@
 title: 'Introducción a Vue.js'
 description: 'Por qué Vue se convirtió en mi framework favorito después de años con Angular y React — filosofía progresiva, reactividad y qué hace especial a Vue.'
 pubDate: '2018-09-29'
-heroImage: '/images/blog/posts/introduction-to-vuejs/hero.png'
+heroImage: '/images/blog/posts/introduction-to-vuejs/hero.webp'
 heroLayout: 'side-by-side'
 tags: ["talks", "tech", "javascript", "web-development"]
 keywords: ["introducción a Vue.js", "qué es Vue.js", "Vue.js vs React vs Angular", "reactividad en Vue.js", "framework progresivo JavaScript", "Vue.js para principiantes", "por qué elegir Vue.js"]

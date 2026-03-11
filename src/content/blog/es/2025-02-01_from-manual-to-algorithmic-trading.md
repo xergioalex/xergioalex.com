@@ -2,7 +2,7 @@
 title: "De trading manual a trading algorítmico"
 description: "Cómo pasé de ejecutar manualmente en MetaTrader 4 a migrar scripts, indicadores y expert advisors a MetaTrader 5 para operar con una automatización más avanzada."
 pubDate: "2025-02-01"
-heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.png"
+heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.webp"
 series: "trading-journey"
 seriesOrder: 3
 heroLayout: "banner"

@@ -2,7 +2,7 @@
 title: "What is Blockchain and How Is It Radically Transforming the Economy and Industry?"
 description: "From Bitcoin's origins to industrial revolution — exploring how blockchain technology is reshaping money, trust, and the future of digital ownership."
 pubDate: "2018-06-01"
-heroImage: "/images/blog/posts/blockchain-economy-industry/hero.jpg"
+heroImage: "/images/blog/posts/blockchain-economy-industry/hero.webp"
 heroLayout: "banner"
 tags: ["talks", "tech", "blockchain"]
 keywords: ["blockchain economy transformation", "Bitcoin whitepaper origins", "Ethereum smart contracts economy", "history of money blockchain", "blockchain digital ownership", "decentralized finance DeFi explained", "blockchain trust without intermediaries"]

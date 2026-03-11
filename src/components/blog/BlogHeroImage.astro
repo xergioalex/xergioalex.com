@@ -1,10 +1,8 @@
 ---
 /**
- * Blog hero image with WebP when available.
- * Uses <picture> for raster images (png/jpg) to serve WebP only when the file exists.
+ * Blog hero image component.
+ * All blog images are now natively WebP — no <picture> fallback needed.
  */
-import { existsSync } from 'node:fs';
-import { join, resolve } from 'node:path';
 
 interface Props {
   src: string;
@@ -23,33 +21,13 @@ const {
   class: className = '',
   loading = 'lazy',
 } = Astro.props;
-const isRaster = /\.(png|jpe?g)$/i.test(src);
-const webpSrc = isRaster ? src.replace(/\.(png|jpe?g)$/i, '.webp') : null;
-const publicDir = resolve(process.cwd(), 'public');
-const webpPath = webpSrc ? join(publicDir, webpSrc.replace(/^\//, '')) : null;
-const webpExists = webpPath ? existsSync(webpPath) : false;
-const useWebp = isRaster && webpSrc && webpExists;
 ---
 
-{useWebp ? (
-  <picture>
-    <source srcset={webpSrc} type="image/webp" />
-    <img
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      class={className}
-      loading={loading}
-    />
-  </picture>
-) : (
-  <img
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    class={className}
-    loading={loading}
-  />
-)}
+<img
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+/>

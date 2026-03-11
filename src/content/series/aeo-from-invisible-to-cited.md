@@ -3,6 +3,6 @@ name: "aeo-from-invisible-to-cited"
 title: "AEO: From Invisible to Cited"
 description: "How to build a website that AI answer engines can find, understand, and reference."
 order: 3
-heroImage: "/images/blog/series/aeo-from-invisible-to-cited/hero.png"
+heroImage: "/images/blog/series/aeo-from-invisible-to-cited/hero.webp"
 keywords: ["AEO", "answer engine optimization", "AI search", "SEO", "structured data", "llms.txt"]
 ---

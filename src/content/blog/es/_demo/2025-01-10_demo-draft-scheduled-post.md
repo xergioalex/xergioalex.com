@@ -2,7 +2,7 @@
 title: 'Borrador + Programado: Preparación de Charla para Conferencia'
 description: 'Un post que es borrador y programado a futuro al mismo tiempo — el estado de mayor ocultación'
 pubDate: '2030-12-01T09:30:00'
-heroImage: '/images/blog/shared/blog-placeholder-5.jpg'
+heroImage: '/images/blog/shared/blog-placeholder-5.webp'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
 keywords: ['preparación charla de conferencia', 'planificación charla técnica', 'consejos conferencia de desarrolladores', 'hablar en público para ingenieros', 'preparar presentaciones técnicas']

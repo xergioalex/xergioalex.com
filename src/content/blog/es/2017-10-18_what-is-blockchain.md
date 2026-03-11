@@ -2,7 +2,7 @@
 title: '¿Qué es el blockchain y cómo transformará radicalmente la economía?'
 description: 'Di esta charla en la Universidad de Caldas — trazando blockchain desde la historia del dinero hasta construir aplicaciones descentralizadas con JavaScript.'
 pubDate: '2017-10-18'
-heroImage: '/images/blog/posts/what-is-blockchain/hero.jpg'
+heroImage: '/images/blog/posts/what-is-blockchain/hero.webp'
 heroLayout: 'banner'
 tags: ["talks", "tech", "blockchain"]
 keywords: ["qué es blockchain", "cómo funciona blockchain", "blockchain y aplicaciones descentralizadas", "historia del dinero y blockchain", "blockchain para desarrolladores JavaScript", "tecnología blockchain explicada", "introducción a blockchain y criptomonedas"]

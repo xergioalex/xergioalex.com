@@ -2,7 +2,7 @@
 title: "Tracking the Invisible: How I Built AI Bot Analytics with Zero Client-Side JavaScript"
 description: "A single Cloudflare Pages middleware file to see what JavaScript analytics can't: the AI crawlers visiting the site."
 pubDate: "2026-03-04T14:00:00"
-heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.png"
+heroImage: "/images/blog/posts/tracking-invisible-ai-bot-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["track AI bot crawlers analytics", "GPTBot ClaudeBot tracking middleware", "Cloudflare Pages functions middleware", "AI crawler analytics Umami", "server-side bot detection edge", "track AI crawlers no client JS", "Cloudflare edge middleware TypeScript"]
@@ -252,15 +252,15 @@ In Umami, `ai_bot_visit` events show up in the custom events section with the bo
 
 This is what the activity feed looks like — each `ai_bot_visit` event with the page the bot crawled:
 
-![Umami activity feed showing ai_bot_visit events on different pages of the site](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.png)
+![Umami activity feed showing ai_bot_visit events on different pages of the site](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.webp)
 
 And in the events chart, the `ai_bot_visit` events start showing up alongside the rest of the site's analytics — same dashboard, same timeline:
 
-![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.png)
+![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.webp)
 
 Because each event carries the `bot` property, I can break down traffic by crawler. Filtering by the `bot` property on `ai_bot_visit` gives me this — a clear picture of who's actually coming through the door:
 
-![Umami properties breakdown showing ai_bot_visit events by bot type](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.png)
+![Umami properties breakdown showing ai_bot_visit events by bot type](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.webp)
 
 With client-side analytics none of this existed. With one middleware file, now it does.
 

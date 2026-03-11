@@ -1,18 +1,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 import { BLOG_PAGE_SIZE, SITE_TIMEZONE } from './constances';
 import type { BlogParamsType, BlogPostsResultType, SeriesInfo } from './types';
-
-function heroWebpExists(heroImage: string | undefined): boolean {
-  if (!heroImage || !/\.(png|jpe?g)$/i.test(heroImage)) return false;
-  const publicDir = join(process.cwd(), 'public');
-  const webpPath = join(
-    publicDir,
-    heroImage.replace(/^\//, '').replace(/\.(png|jpe?g)$/i, '.webp')
-  );
-  return existsSync(webpPath);
-}
 
 const WORDS_PER_MINUTE = 200;
 
@@ -26,7 +14,7 @@ export interface SearchIndexEntry {
   tags: string[];
   topics: string[];
   heroImage?: string;
-  heroWebpExists: boolean;
+
   series?: string;
   seriesOrder?: number;
   seriesCurrent?: number;
@@ -44,7 +32,7 @@ export interface TimelineCardEntry {
   /** All post tags (primary + subtopic combined). Callers derive topics client-side via topicTagNames. */
   tags: string[];
   heroImage?: string;
-  heroWebpExists: boolean;
+
   seriesSlug?: string;
   seriesCurrent?: number;
   seriesTotal?: number;
@@ -300,7 +288,6 @@ async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
         tags: primaryTags,
         topics: topicTags,
         heroImage: post.data.heroImage,
-        heroWebpExists: heroWebpExists(post.data.heroImage),
         series: seriesSlug,
         seriesOrder: post.data.seriesOrder,
         seriesCurrent: seriesPosition?.current,
@@ -339,7 +326,6 @@ export async function getTimelineIndex(
 
   return postsResult.map((post) => {
     const enriched = post as CollectionEntry<'blog'> & {
-      heroWebpExists: boolean;
       seriesCurrent?: number;
       seriesTotal?: number;
       seriesTitle?: string;
@@ -352,7 +338,6 @@ export async function getTimelineIndex(
       pubDate: post.data.pubDate.toISOString(),
       tags: post.data.tags ?? [],
       heroImage: post.data.heroImage,
-      heroWebpExists: enriched.heroWebpExists ?? false,
       seriesSlug: post.data.series,
       seriesCurrent: enriched.seriesCurrent,
       seriesTotal: enriched.seriesTotal,
@@ -401,7 +386,6 @@ export async function getSeriesTimelineIndex(
       pubDate: post.data.pubDate.toISOString(),
       tags: post.data.tags ?? [],
       heroImage: post.data.heroImage,
-      heroWebpExists: heroWebpExists(post.data.heroImage),
       seriesSlug: post.data.series,
       seriesCurrent: position?.current,
       seriesTotal: position?.total,
@@ -464,10 +448,9 @@ export async function getBlogPosts(
     posts = posts.slice(0, params.pageSize ?? BLOG_PAGE_SIZE);
   }
 
-  // Enrich posts with heroWebpExists for BlogCard (avoids picture/WebP when WebP doesn't exist)
+  // Enrich posts with series position for BlogCard
   const enrichedPosts = posts.map((post) => ({
     ...post,
-    heroWebpExists: heroWebpExists(post.data.heroImage),
     seriesCurrent: seriesPositionById.get(post.id)?.current,
     seriesTotal: seriesPositionById.get(post.id)?.total,
     seriesTitle: post.data.series
