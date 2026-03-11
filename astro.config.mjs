@@ -1,5 +1,8 @@
+import EventEmitter from 'node:events';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+EventEmitter.defaultMaxListeners = 20;
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import svelte from '@astrojs/svelte';
@@ -47,6 +50,13 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
+        onwarn(warning, defaultHandler) {
+          if (warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
+            (warning.exporter?.includes('svelte/') || warning.exporter?.includes('@astrojs/internal-helpers'))) {
+            return;
+          }
+          defaultHandler(warning);
+        },
         output: {
           manualChunks(id) {
             if (id.includes('node_modules/svelte/')) {
