@@ -326,7 +326,6 @@ export async function getTimelineIndex(
 
   return postsResult.map((post) => {
     const enriched = post as CollectionEntry<'blog'> & {
-    
       seriesCurrent?: number;
       seriesTotal?: number;
       seriesTitle?: string;

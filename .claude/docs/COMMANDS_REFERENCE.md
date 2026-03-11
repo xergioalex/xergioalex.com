@@ -64,6 +64,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 | `/new-post` | `.claude/commands/new-post.md` | Create a new blog post (interactive guided flow) |
 | `/add-blog-post` | `.claude/skills/add-blog-post/SKILL.md` | Create blog posts — topic mode (writes content) or content mode (scaffolding) |
 | `/promote-post` | `.claude/skills/promote-post/SKILL.md` | Generate social media content for blog posts across multiple platforms |
+| `/optimize-image` | `.claude/skills/optimize-image/SKILL.md` | Convert and optimize images to WebP for blog posts |
 | `/doc` | `.claude/commands/doc.md` | Document a module following the documentation guide |
 | `/doc-edit` | `.claude/skills/doc-edit/SKILL.md` | Update documentation files (README, comments, MDX, markdown) |
 

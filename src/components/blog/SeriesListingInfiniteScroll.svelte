@@ -75,8 +75,6 @@ function reobserveSentinel(): void {
 function getHeroImage(series: SeriesListingEntry): string | null {
   return series.heroImage || series.firstPostHero;
 }
-
-
 </script>
 
 {#if renderedSeries.length === 0 && !loading}

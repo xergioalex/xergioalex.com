@@ -17,7 +17,6 @@ export interface SeriesListingEntry {
   lastPostDate: string;
 }
 
-
 export const getStaticPaths: GetStaticPaths = async () => {
   return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 };

@@ -16,7 +16,6 @@ export interface Props {
 }
 const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
 
-
 const lightweightPosts = await Promise.all(
   blogPostsResult.postsResult.map(async (post) => {
     const allTags = post.data.tags || [];

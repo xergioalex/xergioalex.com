@@ -237,14 +237,14 @@ Blog images are stored in per-post folders under `public/images/blog/`:
 public/images/blog/
 ├── posts/                    # Per-post image folders
 │   ├── personal-branding-xergioalex/
-│   │   ├── hero.jpg          # Hero/cover image
-│   │   ├── full_logo_white.png
-│   │   └── social_1.jpg      # Inline images
+│   │   ├── hero.webp         # Hero/cover image (WebP only)
+│   │   ├── full_logo_white.webp
+│   │   └── social_1.webp     # Inline images
 │   ├── first-post/
-│   │   └── hero.jpg
+│   │   └── hero.webp
 │   └── {slug}/               # Folder name = post slug (no date prefix)
-│       ├── hero.{ext}        # Hero image (required if using heroImage)
-│       └── {name}.{ext}      # Additional inline images
+│       ├── hero.webp         # Hero image (required if using heroImage)
+│       └── {name}.webp       # Additional inline images
 ├── shared/                   # Images shared across posts (placeholders, common assets)
 └── _staging/                 # Incoming images for optimization (temporary)
 ```
@@ -253,12 +253,14 @@ public/images/blog/
 
 | Image type | Filename | Path in frontmatter |
 |------------|----------|-------------------|
-| Hero image | `hero.{jpg,png,webp}` | `/images/blog/posts/{slug}/hero.{ext}` |
-| Inline image | `{descriptive-name}.{ext}` | `/images/blog/posts/{slug}/{name}.{ext}` |
+| Hero image | `hero.webp` | `/images/blog/posts/{slug}/hero.webp` |
+| Inline image | `{descriptive-name}.webp` | `/images/blog/posts/{slug}/{name}.webp` |
 
 - Folder name matches the post **slug** (without date prefix)
 - Filenames use **lowercase kebab-case**
-- Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`
+- **All blog images MUST be in WebP format** — convert any PNG/JPG to WebP before adding to the repo
+- If an image **cannot be converted to WebP** (e.g., BMP with unsupported channels, corrupted files, or formats sharp can't process), keep it in the best available format (JPG preferred over PNG for photos)
+- When the user provides an image (PNG, JPG, etc.), always convert it to WebP first — see [Image Optimization: Agent Conversion Workflow](./IMAGE_OPTIMIZATION.md#agent-conversion-workflow) for the exact script
 
 ### Multilingual Hero Images
 
@@ -266,19 +268,19 @@ When a hero image contains text (titles, labels, annotations) that should be loc
 
 | File | Purpose |
 |------|---------|
-| `hero.{ext}` | Default/English hero image |
-| `hero-es.{ext}` | Spanish variant (only when image has localized text) |
+| `hero.webp` | Default/English hero image |
+| `hero-es.webp` | Spanish variant (only when image has localized text) |
 
 **How it works:** EN and ES are separate `.md` files, each with their own `heroImage` frontmatter. By default both point to the same path. When a Spanish variant exists, the ES file points to it instead.
 
-**EN frontmatter:** `heroImage: "/images/blog/posts/my-post/hero.png"`
-**ES frontmatter:** `heroImage: "/images/blog/posts/my-post/hero-es.png"`
+**EN frontmatter:** `heroImage: "/images/blog/posts/my-post/hero.webp"`
+**ES frontmatter:** `heroImage: "/images/blog/posts/my-post/hero-es.webp"`
 
 **Rules:**
 - If no localized variant exists, both languages share the same image (default behavior, no action needed)
 - Only create variants when the image contains visible text that needs translation
-- Generate WebP for all variants (`hero-es.webp` alongside `hero-es.png`)
-- For additional languages, follow the same pattern: `hero-{lang}.{ext}`
+- All variants must be in WebP format
+- For additional languages, follow the same pattern: `hero-{lang}.webp`
 
 ### Referencing Images in Content
 
@@ -286,14 +288,14 @@ When a hero image contains text (titles, labels, annotations) that should be loc
 
 ```markdown
 ---
-heroImage: '/images/blog/posts/my-post-slug/hero.jpg'
+heroImage: '/images/blog/posts/my-post-slug/hero.webp'
 ---
 ```
 
 **In markdown body (inline images):**
 
 ```markdown
-![Description](/images/blog/posts/my-post-slug/screenshot.jpg)
+![Description](/images/blog/posts/my-post-slug/screenshot.webp)
 ```
 
 ## Image Optimization

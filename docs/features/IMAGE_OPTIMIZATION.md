@@ -1,6 +1,10 @@
 # Image Optimization
 
-Pipeline for optimizing blog images using [sharp](https://sharp.pixelplumbing.com/). Includes a staging workflow for new images and a bulk optimizer for existing images.
+Pipeline for optimizing blog images using [sharp](https://sharp.pixelplumbing.com/). Includes a staging workflow for new images, a bulk optimizer for existing images, and a WebP conversion workflow for AI agents.
+
+## WebP-First Policy
+
+**All blog images MUST be in WebP format.** When adding any image to the blog (hero, inline, or shared), convert it to WebP before committing. If an image cannot be converted (e.g., BMP with unsupported channels, corrupted files, or formats sharp can't process), keep it in the best available format (JPG preferred over PNG for photos) and document the exception.
 
 ## Overview
 
@@ -30,9 +34,11 @@ The double-dash (`--`) separates the post slug from the image name.
 
 | Staging filename | Output path |
 |-----------------|-------------|
-| `my-post--hero.jpg` | `posts/my-post/hero.jpg` |
-| `my-post--screenshot.png` | `posts/my-post/screenshot.jpg` |
-| `my-post--diagram.webp` | `posts/my-post/diagram.webp` |
+| `my-post--hero.jpg` | `posts/my-post/hero.webp` (converted to WebP) |
+| `my-post--screenshot.png` | `posts/my-post/screenshot.webp` (converted to WebP) |
+| `my-post--diagram.webp` | `posts/my-post/diagram.webp` (already WebP) |
+
+> **Note:** Always use the `--webp` flag or convert to WebP before staging. All blog images must be in WebP format.
 
 **Invalid names** (missing `--` separator) are skipped with a warning.
 
@@ -133,46 +139,122 @@ The bulk optimizer writes to a temporary file first, then only replaces the orig
 
 | Extension | Supported | Notes |
 |-----------|-----------|-------|
-| `.jpg` / `.jpeg` | Yes | Primary format for photos |
-| `.png` | Yes | Converted to JPEG if opaque |
-| `.webp` | Yes | Modern format, good compression |
-| `.avif` | Yes | Next-gen format |
+| `.jpg` / `.jpeg` | Yes | Convert to WebP (fallback: keep as JPG) |
+| `.png` | Yes | Convert to WebP (fallback: keep as JPG if opaque, PNG if transparent) |
+| `.webp` | Yes | **Preferred format** — optimize in-place |
+| `.avif` | Yes | Next-gen format, accepted |
+
+## Agent Conversion Workflow
+
+**For AI agents adding images to blog posts.** When the user provides an image (PNG, JPG, etc.), convert it to WebP using this inline Node.js script before placing it in the post folder.
+
+### Quick Conversion Script
+
+```bash
+# Convert a single image to WebP (run from project root)
+node -e "
+const sharp = require('sharp');
+const path = require('path');
+
+const input = process.argv[1];
+const output = process.argv[2];
+
+sharp(input)
+  .resize({ width: 1400, withoutEnlargement: true })
+  .webp({ quality: 80 })
+  .toFile(output)
+  .then(info => console.log('Converted:', info.width + 'x' + info.height, info.size + ' bytes'))
+  .catch(err => console.error('Error:', err.message));
+" /path/to/source.png public/images/blog/posts/{slug}/hero.webp
+```
+
+### Conversion Parameters
+
+| Image type | Max width | Quality | Fit |
+|------------|-----------|---------|-----|
+| Hero (landscape) | 1400px | 80 | cover |
+| Hero (square) | 800px | 80 | cover |
+| Inline/content | 1200px | 80 | inside (preserve aspect ratio) |
+
+### Full Conversion Script (file-based)
+
+For converting multiple images or when the inline script has shell escaping issues, create a temporary `.mjs` file:
+
+```javascript
+// /tmp/convert-to-webp.mjs
+import sharp from 'sharp';
+
+const input = process.argv[2];
+const output = process.argv[3];
+const maxWidth = parseInt(process.argv[4] || '1400', 10);
+
+try {
+  const info = await sharp(input)
+    .resize({ width: maxWidth, withoutEnlargement: true })
+    .webp({ quality: 80 })
+    .toFile(output);
+  console.log(`OK: ${info.width}x${info.height}, ${info.size} bytes`);
+} catch (err) {
+  console.error(`FAIL: ${err.message}`);
+  process.exit(1);
+}
+```
+
+```bash
+# Run from project root (so sharp is found in node_modules)
+node /tmp/convert-to-webp.mjs /path/to/source.png public/images/blog/posts/{slug}/hero.webp 1400
+```
+
+### Error Handling
+
+If sharp fails to convert an image (e.g., unsupported format, BMP with unusual channels):
+
+1. **Try converting with the original format** as fallback (e.g., keep as `.jpg`)
+2. **Log the issue** — note the file path, error message, and file size
+3. **Use the best available format** — JPG preferred over PNG for photos without transparency
+4. **Report to the user** — list any images that couldn't be converted to WebP
+
+### Important Notes
+
+- **Always run from the project root** (`/app/`) so Node.js can find `sharp` in `node_modules`
+- **Do NOT run scripts from `/tmp/`** unless using an `.mjs` file with the `import` syntax — `require()` won't find sharp from outside the project
+- The `withoutEnlargement: true` option prevents upscaling small images
+- WebP at quality 80 provides excellent quality-to-size ratio for web use
 
 ## Adding Images to a New Blog Post
 
 Complete workflow for adding images when creating a new blog post:
 
-1. **Prepare images** with the staging naming convention:
+1. **Prepare images** — convert to WebP first (see [Agent Conversion Workflow](#agent-conversion-workflow) above):
+   ```bash
+   # Convert hero image to WebP
+   node -e "require('sharp')('source-hero.jpg').resize({width:1400,withoutEnlargement:true}).webp({quality:80}).toFile('public/images/blog/posts/my-new-post/hero.webp').then(i=>console.log('OK',i.size+'B'))"
+   ```
+
+2. **Or use the staging pipeline** (for multiple images):
    ```
    my-new-post--hero.jpg
    my-new-post--diagram.png
    ```
-
-2. **Drop into staging:**
    ```bash
    cp my-new-post--hero.jpg public/images/blog/_staging/
-   cp my-new-post--diagram.png public/images/blog/_staging/
+   npm run images:optimize -- --webp
    ```
 
-3. **Run optimizer:**
-   ```bash
-   npm run images:optimize
-   ```
-
-4. **Verify output:**
+3. **Verify output:**
    ```bash
    ls public/images/blog/posts/my-new-post/
-   # hero.jpg  diagram.jpg
+   # hero.webp
    ```
 
-5. **Reference in frontmatter:**
+4. **Reference in frontmatter:**
    ```markdown
    ---
-   heroImage: '/images/blog/posts/my-new-post/hero.jpg'
+   heroImage: '/images/blog/posts/my-new-post/hero.webp'
    heroLayout: 'banner'
    ---
 
-   ![Diagram](/images/blog/posts/my-new-post/diagram.jpg)
+   ![Diagram](/images/blog/posts/my-new-post/diagram.webp)
    ```
 
 ## Directory Structure
@@ -181,12 +263,12 @@ Complete workflow for adding images when creating a new blog post:
 public/images/blog/
 ├── posts/                    # Optimized per-post images (output)
 │   ├── {slug}/
-│   │   ├── hero.{ext}
-│   │   └── {name}.{ext}
+│   │   ├── hero.webp         # Hero image (WebP only)
+│   │   └── {name}.webp       # Inline images (WebP only)
 │   └── ...
 ├── shared/                   # Shared images (placeholders, common)
 └── _staging/                 # Drop zone for new images (input)
-    └── {slug}--{name}.{ext}
+    └── {slug}--{name}.{ext}  # Any format (converted to WebP on optimize)
 
 scripts/
 ├── optimize-images.mjs       # Staging workflow optimizer

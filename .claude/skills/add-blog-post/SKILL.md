@@ -40,7 +40,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 - Does NOT create new tags (uses existing tags from `src/content/tags/`)
 - Does NOT modify existing posts (use `content-writer` agent for rewrites, `doc-edit` for minor edits)
 - Does NOT create pages (use `add-page` skill)
-- Does NOT download or optimize images (use `npm run images:optimize`)
+- Does NOT download or optimize images (use `/optimize-image` skill or `npm run images:optimize`)
 - Does NOT create interactive Svelte components
 
 ## Tier Classification
