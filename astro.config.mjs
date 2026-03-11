@@ -18,6 +18,9 @@ const __dirname = dirname(__filename);
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    rustCompiler: true,
+  },
   site: 'https://xergioalex.com',
   build: {
     inlineStylesheets: 'always',
