@@ -93,7 +93,7 @@ const dynamicCSS =
   ))}
 </div>
 
-<Fragment set:html={`<style>${dynamicCSS}</style>`} />
+<style is:inline set:html={dynamicCSS}></style>
 
 <style>
   .tw-container {
