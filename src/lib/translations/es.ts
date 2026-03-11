@@ -913,7 +913,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Explora colecciones curadas de artículos organizados en series temáticas — inmersiones profundas en tecnología, emprendimiento e ingeniería.',
     heading: 'Series',
     postsCount: (count) => `${count} ${count === 1 ? 'capítulo' : 'capítulos'}`,
-    exploreSeries: 'Explorar serie',
+    exploreSeries: 'Explorar series',
     emptyState: 'Aún no hay series disponibles.',
   },
 
