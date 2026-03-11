@@ -12,7 +12,7 @@ seriesOrder: 8
 
 Astro 6 se lanzó el 10 de marzo de 2026. Un día después, este sitio ya estaba corriendo sobre él.
 
-Puede sonar arriesgado — migrar un sitio en producción a una versión mayor el día después del lanzamiento — pero este sitio ya estaba prácticamente al día. Cada dependencia menor y de parche estaba actualizada, el código ya usaba las APIs más recientes, y ya había limpiado los warnings de Vite unas horas antes. Cuando ya estás on top de todo, un salto mayor es solo un paso más. Además, el tooling de migración de Astro es muy sólido — el CLI de upgrade hizo el trabajo pesado, detectó lo que necesitaba cambiar, y resolvió las dependencias limpiamente. La migración tomó unos 30 minutos, rompió exactamente dos cosas, y las correcciones fueron triviales. Así fue como pasó.
+Puede sonar arriesgado — migrar un sitio en producción a una versión mayor el día después del lanzamiento. Pero este sitio ya estaba al día. Cada dependencia actualizada, el código usando las APIs más recientes, y los warnings de Vite limpios desde unas horas antes. Cuando ya estás on top de todo, un salto mayor es solo un paso más. Y el tooling de migración de Astro es muy sólido — pero de eso hablo en un momento.
 
 ---
 
@@ -42,7 +42,7 @@ Detectó tres paquetes que necesitaban bumps mayores:
 | @astrojs/svelte | 7.2.5 | 8.0.0 |
 | @astrojs/mdx | 4.3.14 | 5.0.0 |
 
-El CLI actualizó el `package.json` y ejecutó `npm install`. Sin conflictos de peer dependencies. Sin errores de resolución. Instalación limpia.
+El CLI actualizó el `package.json`, ejecutó `npm install`, resolvió todas las peer dependencies. Instalación limpia, sin conflictos.
 
 Luego ejecuté `npm run build` y contuve la respiración.
 
@@ -50,7 +50,7 @@ Luego ejecuté `npm run build` y contuve la respiración.
 
 ## Qué Se Rompió (Y Qué No)
 
-El build completó. 235 páginas generadas. Pero había errores en la consola:
+El build completó. 235 páginas generadas. Pero errores en la consola:
 
 ```
 The collection "tags" does not exist or is empty.
@@ -74,7 +74,7 @@ const tags = defineCollection({
 });
 ```
 
-Sin loader. Astro 5 lo manejaba en silencio. Astro 6 no. La corrección fue una línea:
+Sin loader. La corrección fue una línea:
 
 ```typescript
 const tags = defineCollection({
@@ -100,30 +100,30 @@ import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 ```
 
-Todavía no es un breaking change — sigue funcionando con el import viejo — pero el warning de deprecación es claro. Mejor arreglarlo ahora.
+Todavía no es un breaking change — el import viejo sigue funcionando — pero el warning de deprecación es claro. Mejor arreglarlo ahora que perseguirlo después.
 
 ### Lo Que No Se Rompió
 
-Honestamente, casi todo. Esto es lo que esperaba que fuera problemático y no lo fue:
+Honestamente, casi todo:
 
-- **Vite 7** — Mi configuración personalizada de `manualChunks` para Svelte funcionó sin cambios. La API de Rollup es la misma.
+- **Vite 7** — Mi configuración personalizada de `manualChunks` para Svelte funcionó sin cambios.
 - **Shiki 4** — No uso el componente `<Code>` directamente, así que cero impacto.
 - **Content Layer API** — Ya estaba usando loaders con `glob()` para blog, series y páginas. No necesité migración legacy.
-- **API `render()`** — Ya estaba usando `render(post)` en vez de `post.render()`. Ya estaba preparado.
+- **API `render()`** — Ya estaba usando `render(post)` en vez de `post.render()`. Preparado desde antes.
 - **Vitest 4.0.18** — Funciona con Vite 7. No necesité cambios en tests.
 - **170 tests unitarios** — Todos pasaron en la primera ejecución. Ni una sola falla.
 
-La migración completa — desde `npx @astrojs/upgrade` hasta un build limpio con todos los tests pasando — tomó menos de 30 minutos. La mayor parte fue esperar builds y leer el changelog. Después de confirmar que todo estaba verde — Biome, TypeScript, build, 170 tests — simplemente subí a producción. Sin staging, sin canary deploy. Cuando tu pipeline de validación es sólido y cada check pasa, no hay mucho de qué preocuparse.
+Dos correcciones. Eso fue todo. Después de confirmar que todo estaba verde — Biome, TypeScript, build, los 170 tests — simplemente subí a producción. Sin staging, sin canary deploy. Cuando tu pipeline de validación es sólido y cada check pasa, no hay mucho que pensar.
 
 ---
 
 ## Qué Hay de Nuevo en Astro 6
 
-Ahora la parte que realmente me emocionaba. Astro 6 no es solo actualización de dependencias — hay cosas nuevas de verdad.
+La migración fue la parte fácil. Ahora lo que realmente me emocionaba.
 
 ### API de Fuentes
 
-Casi todos los sitios web usan fuentes personalizadas, y hacerlo bien es sorprendentemente complicado — rendimiento, privacidad, precarga, fallbacks. Astro 6 agrega una API integrada que maneja todo eso:
+Casi todos los sitios web usan fuentes personalizadas, y hacerlo bien es sorprendentemente complicado — rendimiento, privacidad, precarga, fallbacks. Astro 6 agrega una API integrada que maneja todo:
 
 ```javascript
 import { defineConfig, fontProviders } from 'astro/config';
@@ -137,17 +137,17 @@ export default defineConfig({
 });
 ```
 
-Astro descarga las fuentes, genera fallbacks optimizados y agrega los hints de precarga correctos. No más adivinar sobre `font-display: swap` o compromisos entre FOUT/FOIT. No lo he implementado en mi sitio todavía — mi setup actual de fuentes funciona bien — pero para proyectos nuevos, esto es un gran punto de partida.
+Descarga las fuentes, genera fallbacks optimizados y agrega los hints de precarga correctos. No más adivinar sobre `font-display: swap` o compromisos entre FOUT/FOIT. No lo he implementado en mi sitio todavía — el setup actual funciona — pero para proyectos nuevos, es un gran punto de partida.
 
 ### Live Content Collections
 
-Esta sí me llamó la atención. Las Content Collections siempre han sido de build-time — cambias contenido, reconstruyes. Las Live Content Collections buscan contenido en tiempo de request usando las mismas APIs (`getCollection`, `getEntry`), pero sin necesitar un rebuild.
+Las Content Collections siempre han sido de build-time — cambias contenido, reconstruyes. Las Live Content Collections buscan contenido en tiempo de request usando las mismas APIs (`getCollection`, `getEntry`), pero sin necesitar un rebuild.
 
-Para un sitio estático como el mío, las colecciones de build-time son la opción correcta. Pero si estuviera construyendo un sitio con contenido manejado por un CMS que se actualiza frecuentemente, esto sería muy atractivo. Misma API, mismos esquemas, pero datos en vivo. Sin necesidad de pipeline de webhook → rebuild.
+Para un blog estático, build-time es la opción correcta. Pero para un sitio con CMS y contenido que cambia frecuentemente — inventarios, noticias — misma API, mismos esquemas, datos en vivo. Sin pipeline de webhook → rebuild. Eso sí es atractivo.
 
 ### Content Security Policy
 
-Astro es uno de los primeros meta-frameworks en ofrecer CSP integrado. Para páginas estáticas, hashea todos los scripts y estilos en build-time. Para páginas dinámicas, lo hace por request. Una sola flag de configuración lo habilita:
+CSP era el feature request más votado en toda la historia de Astro. Y se entregó. Astro es uno de los primeros meta-frameworks en ofrecer CSP integrado — para páginas estáticas, hashea todos los scripts y estilos en build-time. Una sola flag lo habilita:
 
 ```javascript
 export default defineConfig({
@@ -155,41 +155,39 @@ export default defineConfig({
 });
 ```
 
-Para un sitio estático desplegado en Cloudflare Pages, ya tengo los headers CSP configurados a nivel de CDN. Pero tener CSP a nivel de framework es significativo para setups más complejos.
+Yo ya manejo los headers CSP a nivel de Cloudflare CDN, pero tener CSP a nivel de framework importa para equipos que no quieren gestionar headers por separado.
 
 ### El Dev Server Rediseñado
 
 Por debajo, Astro 6 reconstruyó el dev server usando la Environment API de Vite. El impacto práctico: `astro dev` ahora ejecuta el runtime real de producción durante desarrollo. Para usuarios de Cloudflare, esto es enorme — puedes desarrollar contra `workerd` localmente en vez de esperar que el comportamiento de Node.js coincida.
 
-Para mi sitio estático — no sé si es placebo o la actualización a Vite 7 o qué, pero todo se *siente* más rápido después de la migración. El arranque del dev server, la navegación entre páginas, los builds. No puedo señalar un benchmark específico que lo pruebe. Tal vez es simplemente el hype haciendo lo suyo. Pero la percepción está ahí, y la percepción importa cuando pasas horas en `astro dev`.
+No sé si es placebo o la actualización a Vite 7 o qué, pero todo se *siente* más rápido después de la migración. El arranque del dev server, la navegación entre páginas, los builds. No puedo señalar un benchmark específico que lo pruebe. Tal vez es simplemente la emoción de una versión mayor recién instalada. Pero la percepción está ahí, y la percepción importa cuando pasas horas en `astro dev`.
 
 ### El Compilador Rust (Experimental)
 
-Esta es la que más curiosidad me genera. Astro 6 incluye un compilador Rust experimental — el sucesor del compilador `.astro` basado en Go. El equipo dice que es más rápido y produce diagnósticos más fuertes. Planean hacerlo el default en un release futuro.
+Esta es la que más curiosidad me genera. Astro 6 incluye un compilador Rust experimental — el sucesor del compilador `.astro` basado en Go. Más rápido, diagnósticos más fuertes, y planean hacerlo el default en un release futuro.
 
-No lo he habilitado todavía — está detrás de una flag experimental y requiere instalar `@astrojs/compiler-rs`. Pero la dirección es clara: tooling en Rust es donde el equipo de Astro está invirtiendo. Entre esto y la actualización a Vite 7, el pipeline de build se está volviendo mediblemente más rápido.
+No lo he habilitado todavía — está detrás de una flag experimental y requiere `@astrojs/compiler-rs`. Pero la dirección es clara: tooling en Rust es donde va la inversión. Entre esto y Vite 7, el pipeline de build sigue poniéndose más rápido.
 
 ---
 
 ## ¿Valió la Pena la Espera?
 
-Hablemos primero de la expectativa — ¿realmente hubo hype?
+Hablemos primero de la anticipación — ¿realmente hubo hype?
 
-Más o menos. No fue el tipo de hype "React Server Components" donde todo el Twitter de JavaScript implosiona por una semana. Pero sí había anticipación real. El soporte de CSP era el feature request más votado en toda la historia de Astro. El período de beta se extendió casi dos meses — nueve betas desde el 13 de enero hasta el release estable el 10 de marzo. Y por supuesto, la adquisición de Cloudflare en enero elevó las expectativas sobre qué vendría después.
+Más o menos. No fue el tipo de hype "React Server Components" donde todo el Twitter de JavaScript implosiona por una semana. Pero sí había anticipación real. CSP era el request más votado en la historia de Astro. El período de beta se extendió casi dos meses — nueve betas desde el 13 de enero hasta el release estable el 10 de marzo. Y la adquisición de Cloudflare en enero elevó las expectativas sobre lo que este equipo podría entregar con respaldo real.
 
-La respuesta de la comunidad ha sido positiva en general. Los desarrolladores que trabajan con Cloudflare Workers son los más emocionados — la paridad de runtime entre dev y producción es un dolor real resuelto. Hubo un bug crítico durante la beta con builds de Cloudflare + React SSR, pero el equipo lo corrigió antes del lanzamiento. Algo de fricción por los breaking changes — requisito de Node 22+, colecciones legacy eliminadas completamente, comportamiento de `import.meta.env` cambiado — pero nada irrazonable para una versión mayor.
+La respuesta de la comunidad ha sido positiva en general. Los desarrolladores de Cloudflare Workers son los más emocionados — la paridad de runtime entre dev y producción resuelve un dolor real. Hubo un bug crítico durante la beta con builds de Cloudflare + React SSR, pero el equipo lo corrigió antes del lanzamiento. Algo de fricción por los breaking changes — Node 22+ obligatorio, colecciones legacy eliminadas, comportamiento de `import.meta.env` cambiado — pero nada irrazonable para una versión mayor.
 
-Los números de adopción también cuentan una historia: 14.6% de sitios desktop y 11.8% de sitios mobile usan Astro según HTTP Archive. Empresas como Pokemon, Salesforce y Aftonbladet lo están usando en producción. Esto ya no es un experimento de nicho.
+Los números de adopción respaldan el momentum: 14.6% de sitios desktop y 11.8% de sitios mobile corren Astro según HTTP Archive. Empresas como Pokemon, Salesforce y Aftonbladet lo usan en producción. Esto ya no es un experimento de nicho.
 
-Entonces, ¿valió la pena? Honestamente, sí — pero no porque haya alguna funcionalidad revolucionaria que cambie todo. Vale la pena porque la migración es indolora, las funcionalidades nuevas son prácticas, y la base es más sólida. Dos correcciones pequeñas y mi sitio ya estaba corriendo en v6. La guía de migración era precisa. El CLI hizo el trabajo pesado. Eso es raro en el ecosistema JavaScript, donde las actualizaciones mayores suelen significar despejar tu agenda por un día o dos.
+Entonces — ¿valió la pena?
 
-Las nuevas funcionalidades — API de Fuentes, Live Collections, CSP, compilador Rust — son adiciones sólidas. Ninguna cambia mi sitio hoy, pero expanden lo que Astro puede hacer. CSP y la API de Fuentes resuelven dolores de cabeza comunes. Live Collections abren un modelo de contenido completamente nuevo. El compilador Rust es una inversión en rendimiento de builds.
+Sí. No porque haya una funcionalidad que cambie todo, sino porque el paquete completo está bien ejecutado. La migración fue indolora. Las funcionalidades nuevas son prácticas, no especulativas. La base — Vite 7, Zod 4, loaders obligatorios — es más fuerte y más explícita. Y la filosofía se mantiene: Astro no rompió cosas por romperlas. Cada cambio tiene un "por qué" claro.
 
-Lo que más aprecio es la filosofía. Astro 6 no rompió cosas por el gusto de romperlas. Los cambios son intencionales: Vite 7 para mejor paridad de runtime, Zod 4 para una librería de esquemas más madura, loaders obligatorios para resolución explícita de contenido. Cada breaking change tiene un "por qué" claro.
+La adquisición de Cloudflare claramente aceleró esto. Respaldo institucional significa que el equipo puede invertir en el compilador Rust y la Environment API sin preocuparse por el runway. El framework tiene momentum — no solo entusiasmo de comunidad, sino recursos de ingeniería detrás.
 
-La adquisición por parte de Cloudflare claramente aceleró las cosas. Tener respaldo institucional significa que el equipo puede invertir en funcionalidades ambiciosas como el compilador Rust y la Environment API sin preocuparse por el runway. El framework se siente con momentum — no solo entusiasmo de la comunidad, sino recursos de ingeniería.
-
-Para quien tenga un sitio en Astro 5 y se esté preguntando si debería actualizar: sí, hazlo. Limpia tus actualizaciones menores primero, ejecuta el CLI de upgrade, corrige las dos cosas que se rompan, y listo. La migración es suave, las funcionalidades nuevas son reales, y el ecosistema está más sano que nunca.
+Para quien esté en Astro 5 preguntándose si debería actualizar: hazlo. Limpia tus actualizaciones menores primero, ejecuta el CLI, corrige lo que se rompa, y sube. Vas a terminar antes del almuerzo.
 
 ---
 
