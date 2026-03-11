@@ -163,7 +163,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     subtitle:
       'Entusiasta de la tecnolog\u00EDa, emprendedor y aprendiz constante',
     description:
-      'Conoce a Sergio Alexander Florez Galeano — CTO, emprendedor, maker y entusiasta de la tecnolog\u00EDa de Colombia.',
+      'Conoce a Sergio Alexander Florez Galeano — CTO en DailyBot (YC S21), emprendedor, maker y entusiasta de la tecnología construyendo desde Colombia.',
     heroDescription:
       'CTO y Cofundador de DailyBot (YC S21). Ingeniero en Ciencias de la Computaci\u00F3n, MSc en Ciencia de Datos, con m\u00E1s de 14 a\u00F1os construyendo productos y negocios digitales.',
     bioTitle: 'Qui\u00E9n soy',
@@ -236,7 +236,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Curr\u00EDculum Vitae',
     subtitle: 'CTO y Cofundador | Desarrollador Full Stack | Emprendedor',
     description:
-      'Curr\u00EDculum profesional de Sergio Alexander Florez Galeano — CTO de DailyBot, Desarrollador Full Stack y emprendedor tecnol\u00F3gico.',
+      'Currículum profesional de Sergio Alexander Florez Galeano — CTO en DailyBot (YC S21), Desarrollador Full Stack con más de 14 años de experiencia.',
     summaryTitle: 'Resumen profesional',
     summaryText:
       'L\u00EDder tecnol\u00F3gico con m\u00E1s de 14 a\u00F1os de experiencia construyendo y escalando productos digitales. Ingeniero full-stack que trabaja en frontend, backend, DevOps e IA \u2014 construyendo lo que el producto necesita. Actualmente CTO y Cofundador de DailyBot (Y Combinator S21), liderando el equipo de ingenier\u00EDa detr\u00E1s de una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes. Ingeniero en Ciencias de la Computaci\u00F3n con MSc en Ciencia de Datos, combinando profunda experiencia t\u00E9cnica con visi\u00F3n emprendedora.',
@@ -396,7 +396,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'DailyBot',
     subtitle: 'CTO y Cofundador — Y Combinator S21',
     description:
-      'DailyBot es una plataforma de colaboraci\u00F3n moderna que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones. Ofrece transparencia y visibilidad unificadas sobre el trabajo de personas y agentes de IA, respaldada por Y Combinator.',
+      'DailyBot es una plataforma respaldada por Y Combinator donde equipos humanos y agentes de IA colaboran con transparencia y visibilidad en tiempo real.',
     heroDescription:
       'Construyendo el futuro de la colaboraci\u00F3n en equipos — una plataforma que permite que equipos humanos y agentes de IA trabajen juntos sin fricciones, con transparencia unificada en equipos h\u00EDbridos y flujos inteligentes.',
     storyTitle: 'La historia',
@@ -458,7 +458,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Emprendedor',
     subtitle: 'Construyendo el futuro, un proyecto a la vez',
     description:
-      'El camino emprendedor de Sergio Alexander Florez Galeano — de ingeniero a fundador.',
+      'El camino emprendedor de Sergio Alexander Florez Galeano — de ingeniero de software a CTO y cofundador de DailyBot, respaldado por Y Combinator.',
     heroDescription:
       'M\u00E1s de 14 a\u00F1os construyendo negocios digitales, transformando ideas en productos y aprendiendo de cada desaf\u00EDo en el camino.',
     journeyTitle: 'Mi camino emprendedor',
@@ -507,7 +507,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     subtitle:
       'Construyendo comunidad a trav\u00E9s del conocimiento compartido',
     description:
-      'CTO en DailyBot (YC S21) y cofundador de Pereira Tech Talks. M\u00E1s de 30 charlas t\u00E9cnicas desde 2016 sobre IA, serverless, Docker, blockchain y equipos distribuidos. Apasionado por compartir conocimiento y construir comunidad en Colombia.',
+      'CTO en DailyBot (YC S21) y cofundador de Pereira Tech Talks. M\u00E1s de 30 charlas desde 2016 sobre IA, serverless, Docker, blockchain y equipos distribuidos.',
     heroDescription:
       'Cofund\u00E9 Pereira Tech Talks para crear un espacio donde desarrolladores, dise\u00F1adores y emprendedores pudieran aprender juntos. Desde 2016, he dado m\u00E1s de 30 charlas sobre todo, desde Docker hasta IA \u2014 porque la mejor forma de aprender es ense\u00F1ando.',
     communityTitle: 'Pereira Tech Talks',
@@ -584,7 +584,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Diario de Trading',
     subtitle: 'Mercados, estrategias y lecciones aprendidas',
     description:
-      'El diario de trading de Sergio — actualizaciones semanales, análisis de mercado, estrategias y lecciones aprendidas del trading activo.',
+      'El diario de trading de Sergio — análisis del mercado forex, estrategias de trading algorítmico, gestión de riesgo y lecciones del trading activo.',
     heroDescription:
       'Mi diario personal de trading donde documento mi camino por los mercados financieros — revisiones semanales, análisis, estrategias y las lecciones que aprendo en el camino.',
     journeyTitle: 'Mi camino en el trading',
@@ -635,7 +635,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Foodie Enthusiast',
     subtitle: 'Explorando sabores, compartiendo experiencias',
     description:
-      'La pasi\u00F3n de Sergio por la comida — exploraci\u00F3n de restaurantes, creaci\u00F3n de contenido y aventuras culinarias.',
+      'La pasión de Sergio por la comida — descubrimientos gastronómicos, fotografía de comida, experimentos culinarios y experiencias desde Colombia.',
     heroDescription:
       'M\u00E1s all\u00E1 de la tecnolog\u00EDa, un apasionado explorador gastron\u00F3mico y creador de contenido. Descubriendo los mejores sabores y comparti\u00E9ndolos con el mundo.',
     passionTitle: 'Mi pasi\u00F3n por la comida',
@@ -684,7 +684,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Hobbies',
     subtitle: 'Mant\u00E9n activo, mant\u00E9n la curiosidad',
     description:
-      'Los hobbies y estilo de vida activo de Sergio — ciclismo, running, baloncesto, gaming y m\u00E1s.',
+      'El estilo de vida activo de Sergio más allá de la tecnología — ciclismo, running, baloncesto, senderismo, ajedrez y gaming desde Colombia.',
     heroDescription:
       'Deportes, gaming y aventuras al aire libre — las actividades que me mantienen en equilibrio, lleno de energ\u00EDa e inspirado.',
     philosophyTitle: 'Vida activa',
@@ -738,7 +738,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Portafolio',
     subtitle: 'Proyectos y trabajo',
     description:
-      'Una muestra de mis proyectos, experimentos y trabajo técnico en ingeniería de software, robótica y más.',
+      'Explora los proyectos y trabajo técnico de Sergio — desde productos SaaS y herramientas open source hasta robótica y aplicaciones con IA.',
     heroDescription:
       'Un constructor y entusiasta de la tecnología de por vida. Del código al hardware, constantemente creando y experimentando con nuevas tecnologías.',
     journeyTitle: 'Construyendo cosas que importan',
@@ -789,7 +789,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     title: 'Contacto',
     subtitle: 'Conectemos y construyamos algo juntos',
     description:
-      'Ponte en contacto con Sergio Alexander Florez Galeano — abierto a colaboraciones, charlas y nuevas oportunidades.',
+      'Ponte en contacto con Sergio Alexander Florez Galeano — abierto a colaboraciones, charlas, oportunidades y conversaciones sobre tecnología.',
     heroDescription:
       'Siempre estoy abierto a nuevas oportunidades, colaboraciones y conversaciones. Ya sea que tengas una idea de proyecto, una invitaci\u00F3n para hablar o simplemente quieras saludar — me encantar\u00EDa saber de ti.',
     formTitle: 'Enviar un mensaje',
@@ -910,7 +910,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesListingPage: {
     title: 'Series del Blog',
     description:
-      'Explora colecciones curadas de artículos organizados en series temáticas.',
+      'Explora colecciones curadas de artículos organizados en series temáticas — inmersiones profundas en tecnología, emprendimiento e ingeniería.',
     heading: 'Series',
     postsCount: (count) => `${count} ${count === 1 ? 'capítulo' : 'capítulos'}`,
     exploreSeries: 'Explorar serie',
@@ -1002,7 +1002,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   // 404 page
   notFoundPage: {
     title: 'Página no encontrada',
-    description: 'La página que buscas no existe o ha sido movida.',
+    description:
+      'La página que buscas no existe o ha sido movida. Explora el blog, el portafolio o la página principal para encontrar lo que necesitas.',
     heading: 'Página no encontrada',
     message:
       'Lo sentimos, la página que buscas no existe o pudo haber sido movida. Intenta volver a la página principal o buscar en el blog.',

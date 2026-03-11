@@ -4,7 +4,7 @@ export const SITE_TIMEZONE = 'America/Bogota';
 export const SITE_TITLE: string =
   'XergioAleX - CTO & Co-founder at DailyBot (YC S21)';
 export const SITE_DESCRIPTION: string =
-  'CTO & Co-founder at DailyBot (YC S21). Full Stack Developer, speaker, and tech entrepreneur with 14+ years building digital products.';
+  'CTO & Co-founder at DailyBot (YC S21). Full Stack Developer, speaker, and tech entrepreneur with 14+ years building digital products from Colombia.';
 export const BLOG_PAGE_SIZE: number = 30;
 
 // Analytics configuration — scripts load only when IDs are provided

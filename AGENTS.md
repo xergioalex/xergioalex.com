@@ -360,6 +360,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - [ ] Translation strings in both locale files
 - [ ] Spanish content has correct diacritical marks
 - [ ] No placeholder content in blog posts (`[AUTHOR:`, `[TODO:`, etc.)
+- [ ] Meta descriptions: 130-160 characters (pages in translations, blog posts in frontmatter)
 - [ ] Accessibility: approved text contrast, image dimensions, heading hierarchy
 - [ ] Performance: lightest hydration, minimal JS
 - [ ] Commit message in English (conventional format)
