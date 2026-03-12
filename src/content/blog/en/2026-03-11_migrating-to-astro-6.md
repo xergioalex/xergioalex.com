@@ -10,7 +10,7 @@ series: "building-xergioalex"
 seriesOrder: 8
 ---
 
-People who know me know I love Astro. So when they dropped [this on X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — I was already watching.
+People who know me know I love Astro — I've [written about why](/blog/astro-and-svelte-the-future-of-web-development/). So when they dropped [this on X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — I was already watching.
 
 ![Astro's teaser tweet for version 6.0 — "4... 3... 2... 1..." with a glowing "6.0" image](/images/blog/posts/migrating-to-astro-6/astro-6-teaser-tweet.webp)
 
