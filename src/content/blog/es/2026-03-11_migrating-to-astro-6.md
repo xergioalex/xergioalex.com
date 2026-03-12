@@ -10,7 +10,7 @@ series: "building-xergioalex"
 seriesOrder: 8
 ---
 
-Los que me conocen saben que me gusta mucho Astro. Así que cuando publicaron [esto en X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — ya estaba a la expectativa.
+Los que me conocen saben que me gusta mucho Astro — ya [escribí un poco al respecto](/es/blog/astro-and-svelte-the-future-of-web-development/). Así que cuando publicaron [esto en X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — ya estaba a la expectativa.
 
 ![Tweet teaser de Astro para la versión 6.0 — "4... 3... 2... 1..." con una imagen brillante del "6.0"](/images/blog/posts/migrating-to-astro-6/astro-6-teaser-tweet.webp)
 
