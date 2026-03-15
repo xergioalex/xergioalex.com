@@ -48,8 +48,6 @@ Usé el mismo stack que ya conozco bien: Astro, Svelte, TailwindCSS, TypeScript 
 
 De las plantillas que le mostré a Sebastián, la que eligió fue [Aria](https://github.com/ccbikai/astro-aria) — una plantilla de Astro limpia, orientada a contenido, con buenas bases de tipografía y estructura. Una base sólida sobre la cual construir sin pelear contra decisiones de diseño que no son las tuyas.
 
-Para mayo de 2025 el repositorio lleva 265 commits y está en la versión v0.0.31. No es un proyecto de un fin de semana — le fui dedicando tiempo entre otros compromisos, iterando en el diseño y asegurándome de que todo estuviera correcto antes de pasárselo a Sebastián.
-
 ---
 
 ## Lo que se construyó
@@ -62,19 +60,11 @@ La sección de **Libros** muestra sus publicaciones con portada, descripción y 
 
 Y **Contacto** cierra el sitio de manera funcional: un formulario limpio para que medios, festivales o lectores puedan escribirle directamente.
 
-El diseño es minimalista, con tipografía clara y navegación sticky. Modo oscuro incluido — no como adorno sino porque un sitio literario que se lee de noche necesita tratarle bien los ojos al lector. En el footer, discretamente: "Desarrollado por XergioAleX".
+El diseño es minimalista, con tipografía clara y navegación sticky. Modo oscuro incluido — no como adorno sino porque un sitio literario que se lee de noche necesita tratarle bien los ojos al lector.
 
 ---
 
-## Lo que significa construir algo para la familia
-
-Hay una diferencia entre construir un proyecto y construir algo para alguien que conoces. No es solo técnica — es que cada decisión de diseño, cada texto del placeholder que reemplazas, cada detalle de tipografía lleva el peso de saber quién lo va a usar.
-
-Sebastián va a mostrarle este sitio a editoriales, a jurados de premios, a lectores que acaban de escuchar su nombre por primera vez. Eso cambia cómo uno piensa en cada cosa. No hay atajos que valgan cuando el resultado final representa a alguien de la familia.
-
-Que haya quedado bien me da mucha satisfacción. Y que esté ahí, funcionando, cada vez que alguien busca su nombre en Google — eso es lo que hace que valga la pena.
-
-A seguir construyendo.
+Que haya quedado bien me da mucha satisfacción. Y que esté ahí, funcionando, cada vez que alguien busca su nombre en Google — eso es lo que hace que valga la pena. A seguir construyendo.
 
 ---
 
