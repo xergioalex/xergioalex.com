@@ -50,8 +50,6 @@ From the templates I showed Sebastián, the one he picked was the [Aria theme](h
 
 Astro was the right call for this kind of project. Sebastián's site is fundamentally a content site — biography, books, blog posts, a contact form. It doesn't need a heavy framework. Astro builds it all to static HTML, ships almost no JavaScript to the browser, and loads fast on any connection. Perfect for a literary portfolio that needs to be accessible internationally, including in places where connectivity isn't always ideal.
 
-Dark mode, responsive design across all breakpoints, deployed on **GitHub Pages** with CI/CD via GitHub Actions. The repo hit 265 commits and v0.0.31 by May 2025.
-
 ---
 
 ## What the Site Has
@@ -68,21 +66,9 @@ The site is organized around what a reader or literary professional would actual
 
 Navigation is sticky and adapts on scroll — present but not intrusive. The overall design is minimalist on purpose. Literary sites that try to be visually overwhelming end up competing with the writing. The goal here was to put the work front and center and stay out of the way.
 
-In the footer: "Desarrollado por XergioAleX." My quiet signature.
-
 ---
 
-## Building Something for Family
-
-Most of the projects I write about here have a client, a brief, a deadline. This one had none of those things. It had something different: a reason that didn't need explaining.
-
-Sebastián won one of the most important prizes a young Spanish-language poet can win. He has two books published by one of Spain's best literary houses. He has been a fellow at a prestigious residency. He is being covered by major Colombian media. And he needed a website.
-
-I could do that. So I did.
-
-There's something I like about the intersection of technology and literature — the idea that the same tools used to build products and platforms can also be used to give visibility to someone making real art. Not every project needs a business model or a KPI. Sometimes a website is just a way of saying: this person's work matters, and here's somewhere you can find it.
-
-Let's keep building.
+I'm really satisfied with how it turned out. And knowing it's there, working, every time someone searches his name on Google — that's what makes it worth it. Let's keep building.
 
 ---
 
