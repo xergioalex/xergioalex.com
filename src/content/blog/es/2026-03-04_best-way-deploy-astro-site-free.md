@@ -1,6 +1,6 @@
 ---
 title: "La Mejor Forma de Desplegar tu Sitio Astro Gratis"
-description: "Después de años desplegando sitios estáticos en GitHub Pages, evalué las opciones gratuitas y aterricé en Cloudflare Pages. Esto es lo que aprendí y lo que me sorprendió."
+description: "Tras años en GitHub Pages, evalué opciones gratuitas y elegí Cloudflare Pages: lecciones y sorpresas al desplegar este sitio Astro."
 pubDate: "2026-03-04T10:00:00"
 heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.webp"
 heroLayout: "side-by-side"

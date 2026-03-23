@@ -1,6 +1,6 @@
 ---
 title: "Data Structures in Java: From Linked Lists to an Unbeatable Tic-Tac-Toe AI"
-description: "The story of my Data Structures course at university — implementing stacks, queues, trees, graphs, and Dijkstra's algorithm in Java, culminating in an unbeatable Tic-Tac-Toe AI using the Minimax algorithm."
+description: "Data structures in Java: stacks, queues, trees, graphs, Dijkstra, and an unbeatable Tic-Tac-Toe bot with Minimax—my university course end to end."
 pubDate: "2018-05-15"
 heroImage: "/images/blog/posts/data-structures-java-university/hero.webp"
 heroLayout: "side-by-side"

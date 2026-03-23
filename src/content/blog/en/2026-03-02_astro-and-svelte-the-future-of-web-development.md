@@ -1,6 +1,6 @@
 ---
 title: "Astro and Svelte: Why I Believe They're the Future of Web Development"
-description: "Why Astro and Svelte represent a return to web development simplicity — backed by data from State of JS 2025, performance benchmarks, and real-world experience building this very website."
+description: "Why Astro and Svelte simplify modern web development—State of JS 2025 data, benchmarks, and practical lessons from building this website."
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "banner"

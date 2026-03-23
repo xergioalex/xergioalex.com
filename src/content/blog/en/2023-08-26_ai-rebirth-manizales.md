@@ -1,6 +1,6 @@
 ---
 title: "How AI is Revolutionizing Modern Application Development"
-description: "What changed between May and August 2023 — my Manizales Tech Talks experience sharing how AI was transforming app development, three months deeper into the revolution."
+description: "What changed between May and August 2023: Manizales Tech Talks on AI transforming app development, three months deeper into the revolution."
 pubDate: "2023-08-26"
 heroImage: "/images/blog/posts/ai-rebirth-manizales/hero.webp"
 heroLayout: "side-by-side"

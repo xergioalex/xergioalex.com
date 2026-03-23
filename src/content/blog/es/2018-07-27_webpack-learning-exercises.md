@@ -1,6 +1,6 @@
 ---
 title: "Aprendiendo Webpack: Los Ejercicios Que Cambiaron Cómo Construyo para la Web"
-description: "La historia de sumergirme en Webpack 4 a través de ejercicios prácticos — desde loaders básicos y preprocesadores CSS hasta code splitting, optimización con DLL, integración con React y hasta bundling en el backend. El camino de aprendizaje que convirtió una caja negra misteriosa en mi herramienta de build favorita."
+description: "Webpack 4 a golpe de ejercicios: loaders, preprocesadores CSS, code splitting, DLL, React y bundling backend—del misterio a mi herramienta de build."
 pubDate: "2018-07-27"
 heroImage: "/images/blog/posts/webpack-learning-exercises/hero.webp"
 heroLayout: "banner"

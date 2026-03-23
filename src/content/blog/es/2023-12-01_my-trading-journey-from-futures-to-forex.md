@@ -1,6 +1,6 @@
 ---
 title: "Mi camino en trading: de futuros a Forex"
-description: "Cómo empecé en futuros con amigos, encontré mentoría en Forex con Market Profile y entendí que la disciplina, la psicología y la constancia pesan más que las ganancias rápidas."
+description: "De futuros con amigos a Forex con Market Profile: la disciplina, la psicología y la constancia pesan más que las ganancias rápidas."
 pubDate: "2023-12-01"
 heroImage: "/images/blog/posts/my-trading-journey-from-futures-to-forex/hero.webp"
 series: "trading-journey"

@@ -1,6 +1,6 @@
 ---
 title: "Yo Me Llamo Héctor Lavoe: Creando un Sitio Web Personal para un Artista Salsero"
-description: "La historia de construir un sitio web para un concursante de 'Yo Me Llamo' que interpreta a Héctor Lavoe — con reproductor de audio, galería de fotos, y la pelea con jPlayer que me costó una tarde por 3 píxeles."
+description: "Sitio para un imitador de Héctor Lavoe en Yo Me Llamo: audio, galería y un arreglo con jPlayer que me costó una tarde por tres píxeles."
 pubDate: "2018-12-31"
 heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.webp"
 heroLayout: "banner"

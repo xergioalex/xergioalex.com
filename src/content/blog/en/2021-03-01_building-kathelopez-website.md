@@ -1,6 +1,6 @@
 ---
 title: "Building kathelopez.com: The Website I Built for My Wife"
-description: "How I built a simple, no-framework static website to help my wife — an ABA therapist and neuropsychologist — establish her professional online presence. Bootstrap, GitHub Pages, and zero backend."
+description: "A simple static site for my wife, an ABA therapist and neuropsychologist: Bootstrap, GitHub Pages, zero backend, professional presence online."
 pubDate: "2021-03-01"
 heroImage: "/images/blog/posts/building-kathelopez-website/hero.webp"
 heroLayout: "side-by-side"

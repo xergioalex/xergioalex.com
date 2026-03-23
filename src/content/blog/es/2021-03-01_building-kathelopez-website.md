@@ -1,6 +1,6 @@
 ---
 title: "Construyendo kathelopez.com: la web que le construí a mi esposa"
-description: "Cómo construí un sitio web estático simple, sin framework, para ayudar a mi esposa — terapeuta ABA y neuropsicóloga — a establecer su presencia profesional en línea. Bootstrap, GitHub Pages y cero backend."
+description: "Sitio estático sin framework para mi esposa, terapeuta ABA y neuropsicóloga: Bootstrap, GitHub Pages y cero backend para su presencia profesional."
 pubDate: "2021-03-01"
 heroImage: "/images/blog/posts/building-kathelopez-website/hero.webp"
 heroLayout: "side-by-side"

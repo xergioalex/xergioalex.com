@@ -1,6 +1,6 @@
 ---
 title: 'WebVR con A-Frame'
-description: 'Creando experiencias VR con HTML — mi charla en Pereira Tech Talks sobre A-Frame, el framework de Mozilla que lleva la realidad virtual a la web sin configuración.'
+description: 'Creando experiencias VR con HTML — charla en Pereira Tech Talks sobre A-Frame, el framework de Mozilla que lleva la realidad virtual a la web sin configuración.'
 pubDate: '2018-02-16'
 heroImage: '/images/blog/posts/webvr-aframe/webvr-aframe-talk-hero.webp'
 heroLayout: 'banner'

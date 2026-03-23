@@ -1,6 +1,6 @@
 ---
 title: "Domando el Big Data: Introducción a Apache Spark"
-description: "De los RDDs al streaming en tiempo real — cómo construí notebooks prácticos, un clúster Docker y una presentación completa para enseñar Apache Spark como proyecto final de Big Data."
+description: "De RDDs a streaming: notebooks, clúster Docker y presentación para enseñar Apache Spark en mi proyecto final universitario de Big Data."
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.webp"
 heroLayout: "side-by-side"

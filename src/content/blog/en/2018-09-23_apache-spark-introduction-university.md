@@ -1,6 +1,6 @@
 ---
 title: "Taming Big Data: An Introduction to Apache Spark"
-description: "From RDDs to real-time streaming — how I built hands-on notebooks, a Docker cluster, and a full presentation to teach Apache Spark as my Big Data course final project."
+description: "From RDDs to streaming: notebooks, a Docker cluster, and a presentation teaching Apache Spark for my university Big Data final project."
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.webp"
 heroLayout: "side-by-side"

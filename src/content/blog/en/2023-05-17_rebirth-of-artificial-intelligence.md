@@ -1,6 +1,6 @@
 ---
 title: "The Rebirth of Artificial Intelligence"
-description: "A personal reflection from my Pereira Tech Talks presentation — why ChatGPT, GPT-4, and generative AI marked the end of the AI winter and the start of a revolution I'm living every day."
+description: "From my Pereira Tech Talks talk: why ChatGPT and GPT-4 ended the AI winter and started a generative revolution I experience daily."
 pubDate: "2023-05-17"
 heroImage: "/images/blog/shared/ai-rebirth-hero.webp"
 heroLayout: "side-by-side"
