@@ -241,17 +241,58 @@ grep -rni 'genuinely\|comprehensive\|best-in-class\|beautifully\|radical premise
 |-------|------|----------|
 | AI slop words | No words from the AI vocabulary blocklist | WARN if found (list each occurrence) |
 
-**6e. Writing voice (informational — for human review):**
+**6e. Writing voice & personal tone:**
 
-Report whether the post contains:
-- At least 1 failure or struggle narrative
-- At least 1 tangent or aside (em-dash, parenthetical)
-- Sentence length variety
-- At least 1 moment of uncertainty ("I think", "honestly", "I'm not sure")
+Read the **[Writing Voice Guide](../../../docs/WRITING_VOICE_GUIDE.md)** completely before evaluating. The author's voice has specific characteristics that must be present:
+
+**Authority style — hard-won, not assumed:**
+- Uses "I learned...", "I noticed...", "In my experience..." — NOT "Studies show...", "Research indicates..."
+- Authority comes from lived experience and real anecdotes, not abstract citations
+
+**Sentence rhythm — high variance:**
+- Mix of short punchy sentences ("We applied. And got rejected.") with longer explanatory ones
+- NOT every sentence the same length or structure
+
+**Tangents and asides:**
+- Em-dash interruptions for mid-thought corrections ("Not to pitch. To listen.")
+- Parenthetical thinking-out-loud moments
+- At least 2-3 instances per post
+
+**Failure/struggle voice:**
+- Direct, clinical, not self-pitying. Failure = data
+- At least 1 failure or struggle narrative per post
+- "Most of them went nowhere." — stated matter-of-factly
+
+**Specificity:**
+- Uses real names, products, dates, places, metrics
+- NOT vague references ("a certain tool", "some companies")
+
+**Uncertainty/humility:**
+- At least 1 moment of admitted uncertainty ("I think", "I'm not sure", "honestly", "nobody knows")
+- Never bluffs past what he knows
+
+**Signature patterns:**
+- "The problem:" diagnostic framing
+- "Let's keep building." or similar as closer
+- Grounded optimism — not hype, not alarmist
+
+**Things the voice NEVER does:**
+- Hides uncertainty or exaggerates accomplishments
+- Uses marketing language in the body
+- Claims false modesty
+- Uses structural regularity (every section identical pattern)
 
 | Check | Rule | Severity |
 |-------|------|----------|
-| Voice humanization | Post includes humanization patterns from Writing Voice Guide | INFO (human review recommended) |
+| Authority from experience | Post uses first-person lived experience, not abstract citations | WARN if mostly impersonal |
+| Sentence rhythm variety | Mix of short and long sentences throughout | WARN if monotonous |
+| Tangents/asides present | At least 2 em-dash interruptions or parenthetical asides | WARN if none found |
+| Failure/struggle narrative | At least 1 honest moment of difficulty or uncertainty | WARN if absent |
+| Specificity | Uses real names, numbers, places — not vague references | WARN if too generic |
+| Uncertainty moments | At least 1 admission of not knowing ("I think", "nobody knows") | WARN if absent |
+| No marketing language | Body text avoids sales-pitch tone | WARN if detected |
+| Structural variety | Sections vary in structure (not all identical pattern) | INFO |
+| Closer matches style | Ends with action-oriented closer aligned with author voice | INFO |
 
 ### Step 7: i18n Parity
 

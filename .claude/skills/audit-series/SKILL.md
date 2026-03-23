@@ -222,7 +222,26 @@ grep -rn 'tenés\|podés\|sabés\|querés\|hacés\|buscás\|necesitás\|decís' 
 grep -n '^#' src/content/blog/en/*_${POST_SLUG}.md
 ```
 
-**Important:** This is a summary check. For deep review of any individual post, recommend running `/audit-post {slug}` separately.
+**6b. Writing voice & tone consistency (across series):**
+
+Read the **[Writing Voice Guide](../../../docs/WRITING_VOICE_GUIDE.md)** and check that ALL posts in the series maintain consistent voice:
+
+| Check | Rule | Severity |
+|-------|------|----------|
+| Consistent authority style | All posts use first-person lived experience, not abstract citations | WARN if any post shifts to impersonal |
+| Consistent tone | No post shifts dramatically in register (e.g., casual → academic) | WARN if tone inconsistency detected |
+| AI slop vocabulary | No words from the AI vocabulary blocklist in any post | WARN if found |
+| Specificity maintained | All posts use real names, numbers, places — not vague references | WARN if any post is too generic |
+| No marketing language | Body text avoids sales-pitch tone across all posts | WARN if detected |
+
+```bash
+# Check AI slop vocabulary across all series posts
+for POST_SLUG in ${POST_SLUGS}; do
+  echo "=== ${POST_SLUG} ===" && grep -rni 'genuinely\|comprehensive\|best-in-class\|beautifully\|radical premise\|worth highlighting\|worth calling out\|key insight\|key takeaway\|this is where.*shines\|game-changer\|revolutionary\|leveraging\|harnessing' src/content/blog/en/*_${POST_SLUG}.md src/content/blog/es/*_${POST_SLUG}.md
+done
+```
+
+**Important:** This is a summary check. For deep review of any individual post (including full voice analysis), recommend running `/audit-post {slug}` separately.
 
 ### Step 7: Navigation & Build
 
