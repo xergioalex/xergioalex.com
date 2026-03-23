@@ -1,13 +1,13 @@
 ---
 title: "Markdown for Agents: Making Your Content Speak AI's Language"
-description: "Content negotiation has existed since HTTP/1.1. Now it's getting a new job. Here's what 'Markdown for Agents' means as a web pattern — and a working implementation using Astro and Cloudflare Pages."
+description: "Markdown for Agents: content negotiation meets AI—what the pattern means and a working Astro plus Cloudflare Pages implementation."
 pubDate: "2026-03-09T14:00:00"
 heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["markdown for agents implementation", "content negotiation AI bots", "Accept text/markdown header", "Cloudflare markdown for agents", "AI-readable web content", "serve markdown to AI agents"]
 series: "aeo-from-invisible-to-cited"
-seriesOrder: 2
+seriesOrder: 3
 ---
 
 When an AI agent visits a web page, it gets the full HTTP response — the same thing a browser gets. Navigation markup, footer, theme-switching scripts, cookie banners, Tailwind utility classes, SVG icon definitions, JSON-LD schemas embedded as script tags. Then, somewhere inside all of that, the actual content.

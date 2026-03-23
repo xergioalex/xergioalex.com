@@ -1,6 +1,6 @@
 ---
 title: "El futuro de la IA: código, hardware y agentes"
-description: "Desde mi co-presentación en Pereira Tech Talks con Sebastián Mora — cómo la programación pasó de escribir código a orquestar agentes, qué desbloquean los MCPs, y por qué llevé un robot a un meetup de software."
+description: "Pereira Tech Talks con Sebastián Mora: de escribir código a orquestar agentes, MCPs y por qué llevé un robot a un meetup de software."
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.webp"
 heroLayout: "side-by-side"
@@ -70,7 +70,7 @@ Llevé un robot con ruedas mecanum para hacer la demo. Verlo moverse en respuest
 ## Grabación
 
 <div class="aspect-video w-full max-w-3xl rounded-xl overflow-hidden my-6">
-  <iframe src="https://www.youtube.com/embed/WnEjgd8c2GE" title="El futuro de la IA: Código, Hardware y Agentes — grabación completa de la charla" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+  <iframe src="https://www.youtube.com/embed/WnEjgd8c2GE" title="El futuro de la IA: Código, Hardware y Agentes — grabación completa de la charla" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" loading="lazy"></iframe>
 </div>
 
 ---

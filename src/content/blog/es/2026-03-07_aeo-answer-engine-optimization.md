@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["guía answer engine optimization AEO", "optimizar sitio web para motores de búsqueda IA", "llms.txt datos estructurados AEO", "cómo los motores de búsqueda IA citan fuentes", "AEO vs SEO guía práctica", "datos estructurados JSON-LD visibilidad IA", "markdown para agentes IA endpoints", "rastrear tráfico bots IA analítica servidor"]
 series: "aeo-from-invisible-to-cited"
-seriesOrder: 0
+seriesOrder: 1
 ---
 
 Durante la mayor parte de la historia de la web, optimizar para búsqueda significaba una sola cosa: posicionarse. Poner las palabras clave correctas en los lugares correctos, conseguir algunos backlinks, asegurarse de que Google pudiera rastrearte. Si lo hacías bien, aparecías en una lista de diez enlaces azules. Los usuarios hacían clic. Ese era el trato.

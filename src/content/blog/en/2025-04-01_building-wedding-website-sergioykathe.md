@@ -1,6 +1,6 @@
 ---
 title: "Building sergioykathe.com: The Wedding Website I Built for Our Special Day"
-description: "How I built a fully static wedding invitation website with Astro, Svelte, and zero backend — personalized invitations, RSVP via Google Forms, and deployed on GitHub Pages in a couple of weekends."
+description: "A fully static wedding invitation site built with Astro, Svelte, and GitHub Pages — unique codes, RSVP via Google Forms, zero backend."
 pubDate: "2025-04-01"
 heroImage: "/images/blog/posts/building-wedding-website-sergioykathe/hero.webp"
 heroLayout: "side-by-side"

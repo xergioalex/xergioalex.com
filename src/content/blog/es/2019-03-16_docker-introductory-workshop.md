@@ -1,6 +1,6 @@
 ---
 title: "Workshop Introductorio a Docker"
-description: "Un workshop práctico de Docker en Rocka Labs — desde contenedores e imágenes hasta Dockerfiles, volúmenes, redes, Docker Compose y más. La guía completa para arrancar con Docker."
+description: "Workshop práctico de Docker en Rocka Labs: contenedores, imágenes, Dockerfiles, volúmenes, redes y Compose—introducción concreta para empezar."
 pubDate: "2019-03-16"
 heroImage: "/images/blog/posts/docker-introductory-workshop/hero.webp"
 heroLayout: "side-by-side"

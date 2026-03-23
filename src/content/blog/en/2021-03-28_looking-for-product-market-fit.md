@@ -1,6 +1,6 @@
 ---
 title: "Looking for Product Market Fit"
-description: "My journey through building and failing products at Rocka.co — what each failed experiment taught me, how I learned to recognize real PMF signals, and why DailyBot finally stuck."
+description: "Building and failing products at Rocka.co — lessons from each experiment, reading real PMF signals, and how DailyBot finally stuck."
 pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.webp"
 heroLayout: "banner"

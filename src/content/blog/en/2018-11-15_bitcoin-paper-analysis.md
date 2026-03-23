@@ -1,6 +1,6 @@
 ---
 title: "History, Discussion, and Analysis of the Bitcoin Paper by Satoshi Nakamoto"
-description: "A deep dive into Satoshi's Bitcoin whitepaper — what makes it revolutionary, the technical innovations I found most compelling, and my personal journey reading the paper that changed finance."
+description: "A deep dive into Satoshi's Bitcoin whitepaper—what makes it revolutionary, the technical ideas that stuck with me, and why it changed finance."
 pubDate: "2018-11-15"
 heroImage: "/images/blog/posts/bitcoin-paper-analysis/hero.webp"
 heroLayout: "banner"

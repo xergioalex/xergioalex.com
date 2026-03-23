@@ -1,6 +1,6 @@
 ---
 title: "IA y la nueva era de la programación en Open Tech Hackathon"
-description: "Desde mi workshop Vibe Coding e IA en Open Tech Hackathon — cuándo usar Cursor vs Codex vs Claude Code, la mentalidad de director, y lecciones prácticas de entregar funcionalidades con IA en DailyBot."
+description: "Workshop Vibe Coding e IA en Open Tech Hackathon: Cursor, Codex y Claude Code, mentalidad de director y envíos con IA en DailyBot."
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.webp"
 heroLayout: "side-by-side"

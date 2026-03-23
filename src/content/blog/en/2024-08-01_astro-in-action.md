@@ -1,6 +1,6 @@
 ---
 title: "Astro in Action"
-description: "Why Astro won me over — real case studies from Microsoft and Firebase, measurable performance gains, and a live migration of the Pereira Tech Talks site to prove it's not just hype."
+description: "Why Astro won me over — Microsoft and Firebase cases, measurable gains, and a live Pereira Tech Talks migration to prove it is not hype."
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.webp"
 heroLayout: "side-by-side"

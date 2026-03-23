@@ -1,6 +1,6 @@
 ---
 title: "La Mejor Forma de Desplegar tu Sitio Astro Gratis"
-description: "Después de años desplegando sitios estáticos en GitHub Pages, evalué las opciones gratuitas y aterricé en Cloudflare Pages. Esto es lo que aprendí y lo que me sorprendió."
+description: "Tras años en GitHub Pages, evalué opciones gratuitas y elegí Cloudflare Pages: lecciones y sorpresas al desplegar este sitio Astro."
 pubDate: "2026-03-04T10:00:00"
 heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.webp"
 heroLayout: "side-by-side"
@@ -44,7 +44,7 @@ Entonces miré **Cloudflare Pages**. Ancho de banda ilimitado, 500 builds al mes
 
 El proceso fue ridículamente corto. En el panel de Cloudflare, **+ Add** > **Pages**:
 
-<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" />
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" width="800" height="450" loading="lazy" />
 
 Te da dos opciones — importar un repositorio de Git o subir archivos. La primera:
 

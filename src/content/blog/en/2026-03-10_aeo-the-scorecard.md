@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["AEO audit methodology checklist", "track AI bot traffic analytics", "Bing AI Performance report", "measure AI search citations", "AI referral traffic growing statistics"]
 series: "aeo-from-invisible-to-cited"
-seriesOrder: 3
+seriesOrder: 4
 ---
 
 The hardest part of AEO is measurement. Google Analytics can't see AI bots. They don't execute JavaScript. From a client-side analytics perspective, every AI crawler visit is completely invisible — a black hole where your best content goes and you have no idea what happens next.

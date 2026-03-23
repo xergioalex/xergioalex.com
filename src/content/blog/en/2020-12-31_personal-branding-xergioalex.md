@@ -149,7 +149,7 @@ Just the ninja, no text. Good for favicons, app icons, social media avatars, and
 A close-up of just the ninja's face — even more minimal than the isologo. This is the version used in the site favicon and very small contexts where you only need the essence of the character.
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;display:flex;justify-content:center">
-  <img src="/images/isologo.svg" alt="XergioAleX ninja face icon — compact version for favicon and avatars" style="max-height:160px" />
+  <img src="/images/isologo.svg" alt="XergioAleX ninja face icon — compact version for favicon and avatars" style="max-height:160px" width="160" height="160" loading="lazy" />
 </div>
 
 ### Logotype (Wordmark)

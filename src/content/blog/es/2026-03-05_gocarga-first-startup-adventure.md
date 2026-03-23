@@ -1,6 +1,6 @@
 ---
 title: "GoCarga: Mi Primera Aventura Startup y el Arte del Pitch"
-description: "Cómo construir una plataforma de transporte de carga con amigos de la universidad me enseñó la habilidad empresarial más valiosa: contar una historia que haga creer a la gente."
+description: "GoCarga: cómo un proyecto de logística con amigos universitarios enseñó a contar una historia que convence a inversores ángeles y mentores."
 pubDate: 2026-03-05
 heroImage: "/images/blog/posts/gocarga-apps-co-adventure/hero.webp"
 heroLayout: "banner"
@@ -35,7 +35,7 @@ La oportunidad nos parecía evidente: construir la plataforma que los conectara.
 Eso era GoCarga.
 
 <div class="my-6 flex w-full justify-center rounded-lg px-6 py-4" style="background-color: #002f78">
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.webp" alt="Logo de GoCarga" width="200" height="80" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.webp" alt="Logo de GoCarga" width="200" height="80" loading="lazy" />
 </div>
 
 ![Banner de marca GoCarga — logo sobre fondo geométrico naranja](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.webp)
@@ -93,8 +93,8 @@ Armar nuestro stand fue una de las cosas que recuerdo con más cariño. Era el p
 ![Diseño original del banner del stand de GoCarga — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.webp)
 
 <div class="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.webp" alt="Tarjeta de presentación de GoCarga — frente: logo, tagline Conexión Transparente, Segura & Rentable, logos de patrocinadores" width="510" height="288" />
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.webp" alt="Tarjeta de presentación de GoCarga — reverso: equipo con Alejandro Pinto (Director Ejecutivo), Sergio Alexander Flórez (Tecnologías), Andrés Julián Vinasco (Operaciones), Jose Miguel Beltran (Creativo)" width="510" height="288" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.webp" alt="Tarjeta de presentación de GoCarga — frente: logo, tagline Conexión Transparente, Segura & Rentable, logos de patrocinadores" width="510" height="288" loading="lazy" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.webp" alt="Tarjeta de presentación de GoCarga — reverso: equipo con Alejandro Pinto (Director Ejecutivo), Sergio Alexander Flórez (Tecnologías), Andrés Julián Vinasco (Operaciones), Jose Miguel Beltran (Creativo)" width="510" height="288" loading="lazy" />
 </div>
 
 Cuando lo vimos todo impreso y montado en el recinto, GoCarga se sintió real de una forma que el código en una pantalla nunca logra del todo.
@@ -114,7 +114,7 @@ También participamos en [Ventures Colombia](https://venturescolombia.com.co/), 
 Por esa misma época grabamos un pitch para Apps.co. Si quieres ver en qué punto estábamos en ese momento — el producto, la idea, la energía de cuatro estudiantes universitarios que de verdad creían que podían arreglar la logística de carga colombiana — aquí está:
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
-<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/dZxh7J_gUjU" title="GoCarga Pitch - Apps.co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/dZxh7J_gUjU" title="GoCarga Pitch - Apps.co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
 Verlo ahora, años después, noto todas las asperezas. Las cosas que diría diferente. Las diapositivas que rediseñaría. Pero también veo algo que en ese momento no reconocí del todo: teníamos una historia. Una de verdad. Y sabíamos cómo contarla.

@@ -1,6 +1,6 @@
 ---
 title: "Yo Me Llamo Héctor Lavoe: Building a Personal Website for a Salsa Artist"
-description: "The story of building a website for a 'Yo Me Llamo' contestant who performs as Héctor Lavoe — audio player, photo gallery, and the jPlayer fight that cost me an afternoon over 3 pixels."
+description: "Website for a Yo Me Llamo contestant as Héctor Lavoe: audio player, gallery, and a jPlayer Safari fix that took an afternoon over three pixels."
 pubDate: "2018-12-31"
 heroImage: "/images/blog/posts/yo-me-llamo-hector-lavoe/hero.webp"
 heroLayout: "banner"

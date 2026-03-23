@@ -1,6 +1,6 @@
 ---
 title: "Declarando la Solución: Programación Lógica y con Restricciones con Prolog y Mozart"
-description: "Proyectos universitarios de mi curso de Programación Lógica y con Restricciones — desde puzzles clásicos en Prolog hasta resolución de restricciones en Mozart/Oz, culminando con el Teorema de los Cuatro Colores aplicado al mapa de Colombia."
+description: "Prolog y Mozart/Oz: puzzles, restricciones y cuatro colores en el mapa de Colombia—programación lógica y con restricciones en la universidad."
 pubDate: "2018-05-28"
 heroImage: "/images/blog/posts/logic-programming-university/hero.webp"
 heroLayout: "side-by-side"

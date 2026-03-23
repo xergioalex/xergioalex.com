@@ -1,6 +1,6 @@
 ---
 title: "Construyendo Realidad Virtual para la Web: A-Frame, Laberintos y Galerías 360°"
-description: "Cómo construí experiencias de WebVR con solo HTML y JavaScript — un laberinto en VR, una galería de fotos 360° y más de 20 demos que demostraron que la realidad virtual no necesita hardware costoso."
+description: "WebVR con HTML y JavaScript: laberinto, galería 360° y más de 20 demos que prueban que la RV en el navegador no exige hardware costoso."
 pubDate: "2019-10-15"
 heroImage: "/images/blog/posts/webvr-projects/hero.webp"
 heroLayout: "side-by-side"

@@ -35,7 +35,7 @@ The opportunity felt obvious: build the platform that connects them. In real tim
 That was GoCarga.
 
 <div class="my-6 flex w-full justify-center rounded-lg px-6 py-4" style="background-color: #002f78">
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.webp" alt="GoCarga logo" width="200" height="80" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.webp" alt="GoCarga logo" width="200" height="80" loading="lazy" />
 </div>
 
 ![GoCarga brand banner — logo on orange geometric background](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.webp)
@@ -93,8 +93,8 @@ Building our stand was one of the things I remember most fondly. It was our firs
 ![Original banner design for the GoCarga stand — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.webp)
 
 <div class="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.webp" alt="GoCarga business card front — Logo, tagline: Conexión Transparente, Segura & Rentable, sponsor logos" width="510" height="288" />
-  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.webp" alt="GoCarga business card back — Team: Alejandro Pinto (CEO), Sergio Alexander Flórez (Tech), Andrés Julián Vinasco (Operations), Jose Miguel Beltran (Creative)" width="510" height="288" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.webp" alt="GoCarga business card front — Logo, tagline: Conexión Transparente, Segura & Rentable, sponsor logos" width="510" height="288" loading="lazy" />
+  <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.webp" alt="GoCarga business card back — Team: Alejandro Pinto (CEO), Sergio Alexander Flórez (Tech), Andrés Julián Vinasco (Operations), Jose Miguel Beltran (Creative)" width="510" height="288" loading="lazy" />
 </div>
 
 When we saw it all printed and set up in the venue, it felt like GoCarga had become something real in a way that code on a screen never quite achieves.
@@ -114,7 +114,7 @@ We also participated in [Ventures Colombia](https://venturescolombia.com.co/), a
 Around the same time, we recorded a pitch for Apps.co. If you want to see where we were at that moment — the product, the idea, the energy of four university students who actually thought they could fix Colombian freight logistics — this is it:
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
-<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/dZxh7J_gUjU" title="GoCarga Pitch - Apps.co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/dZxh7J_gUjU" title="GoCarga Pitch - Apps.co" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
 Watching it now, years later, I notice all the rough edges. The things I'd say differently. The slides I'd redesign. But I also see something I didn't fully recognize then: we had a story. A real one. And we knew how to tell it.

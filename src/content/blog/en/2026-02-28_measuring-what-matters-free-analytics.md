@@ -1,6 +1,6 @@
 ---
 title: "Measuring What Matters: How I Set Up Free Analytics Without Sacrificing Performance"
-description: "The third chapter of building XergioAleX.com — implementing a complete analytics stack using only free tools, without losing the Lighthouse 100 scores or adding cookie banners. A practical guide to privacy-first, performance-preserving web analytics."
+description: "Chapter three while building XergioAleX.com: free analytics with privacy-first tools that keep Lighthouse at 100—no cookie banners."
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.webp"
 heroLayout: "side-by-side"

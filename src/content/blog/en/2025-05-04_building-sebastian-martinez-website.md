@@ -1,6 +1,6 @@
 ---
 title: "Building sebastianmartinezvanegas.com: The Website I Built for a Talented Colombian Poet"
-description: "How I built a portfolio website with Astro and Svelte for Sebastián Martínez Vanegas, a young Colombian poet who won the prestigious Emilio Prados International Poetry Prize."
+description: "Astro and Svelte portfolio site for Sebastián Martínez Vanegas, Colombian poet and winner of the Emilio Prados International Poetry Prize."
 pubDate: "2025-05-04"
 heroImage: "/images/blog/posts/building-sebastian-martinez-website/hero.webp"
 heroLayout: "side-by-side"

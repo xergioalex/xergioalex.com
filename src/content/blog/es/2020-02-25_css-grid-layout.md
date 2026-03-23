@@ -1,6 +1,6 @@
 ---
 title: "CSS Grid Layout"
-description: "Cómo CSS Grid cambió la forma en que pienso los layouts — de las limitaciones de Flexbox a la libertad bidimensional, con ejercicios prácticos y trucos de accesibilidad."
+description: "Cómo CSS Grid cambió mi forma de pensar los layouts: de Flexbox a la bidimensionalidad real, con ejercicios prácticos y accesibilidad."
 pubDate: "2020-02-25"
 heroImage: "/images/blog/posts/css-grid-layout/hero.webp"
 heroLayout: "side-by-side"

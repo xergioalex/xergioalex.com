@@ -1,6 +1,6 @@
 ---
 title: 'Historia, discusión y análisis del paper de Bitcoin escrito por Satoshi Nakamoto'
-description: 'Una inmersión profunda en el whitepaper de Bitcoin de Satoshi — qué lo hace revolucionario, las innovaciones técnicas que más me impactaron, y mi viaje personal leyendo el paper que cambió las finanzas.'
+description: 'El whitepaper de Bitcoin de Satoshi: por qué es revolucionario, las innovaciones técnicas que más me marcaron y cómo cambió mi mirada sobre confianza y dinero.'
 pubDate: '2018-11-15'
 heroImage: '/images/blog/posts/bitcoin-paper-analysis/hero.webp'
 heroLayout: 'banner'

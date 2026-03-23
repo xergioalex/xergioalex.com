@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Webpack"
-description: "How Webpack transformed front-end development — my talk breaking down entry points, loaders, plugins, and why developer experience matters more than configuration."
+description: "How Webpack transformed front-end development—my talk on entry points, loaders, plugins, and why developer experience beats configuration complexity."
 pubDate: "2018-12-26"
 heroImage: "/images/blog/posts/introduction-to-webpack/hero.webp"
 heroLayout: "side-by-side"
