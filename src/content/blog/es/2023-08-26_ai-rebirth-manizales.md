@@ -77,7 +77,7 @@ Terminé con lo que había aprendido en la práctica desde mayo:
 ## Grabación
 
 <div class="aspect-video w-full max-w-3xl rounded-xl overflow-hidden my-6">
-  <iframe src="https://www.youtube.com/embed/569TV50FDUE" title="AI Rebirth — Manizales grabación completa de la charla" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+  <iframe src="https://www.youtube.com/embed/569TV50FDUE" title="AI Rebirth — Manizales grabación completa de la charla" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" loading="lazy"></iframe>
 </div>
 
 [Ver slides (Manizales)](https://docs.google.com/presentation/d/1CqWtoNAwq1lN-WSsFJE6Pjxezi9EfSuLTMjoPWyCf90/edit)

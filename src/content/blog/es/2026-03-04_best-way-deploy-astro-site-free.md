@@ -44,7 +44,7 @@ Entonces miré **Cloudflare Pages**. Ancho de banda ilimitado, 500 builds al mes
 
 El proceso fue ridículamente corto. En el panel de Cloudflare, **+ Add** > **Pages**:
 
-<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" />
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" width="800" height="450" loading="lazy" />
 
 Te da dos opciones — importar un repositorio de Git o subir archivos. La primera:
 

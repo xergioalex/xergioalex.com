@@ -70,7 +70,7 @@ I brought a robot with mecanum wheels to demo. Seeing it move in response to com
 ## Recording
 
 <div class="aspect-video w-full max-w-3xl rounded-xl overflow-hidden my-6">
-  <iframe src="https://www.youtube.com/embed/WnEjgd8c2GE" title="The future of AI: Code, Hardware and Agents — full talk recording" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+  <iframe src="https://www.youtube.com/embed/WnEjgd8c2GE" title="The future of AI: Code, Hardware and Agents — full talk recording" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" loading="lazy"></iframe>
 </div>
 
 ---

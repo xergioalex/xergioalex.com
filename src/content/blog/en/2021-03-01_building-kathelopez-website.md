@@ -81,8 +81,8 @@ The initial version used a generic color scheme and no logo. In February 2021 we
 The logo is a fusion of the letter **K** for Katherine and the psychology symbol — the Greek letter psi (Ψ). The final result merges both shapes into a monogram that reads as **AK** — her initials, Astrid Katherine — but that any psychologist would recognize instantly.
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 1.5rem 0;">
-  <img src="/images/blog/posts/building-kathelopez-website/psychology-symbol.webp" alt="The psychology symbol (Ψ), the Greek letter psi" width="400" height="400" />
-  <img src="/images/blog/posts/building-kathelopez-website/logo.webp" alt="kathelopez.com final logo — AK monogram with blue-to-pink gradient" width="400" height="400" />
+  <img src="/images/blog/posts/building-kathelopez-website/psychology-symbol.webp" alt="The psychology symbol (Ψ), the Greek letter psi" width="400" height="400" loading="lazy" />
+  <img src="/images/blog/posts/building-kathelopez-website/logo.webp" alt="kathelopez.com final logo — AK monogram with blue-to-pink gradient" width="400" height="400" loading="lazy" />
 </div>
 
 The primary color is **#c82c75** — a vibrant pink/magenta she picked. Not my first choice, honestly. I would have gone with something more muted. But it's her site, her brand, her personality. And looking at it now, it works. Poppins from Google Fonts for the typography, and that's it.

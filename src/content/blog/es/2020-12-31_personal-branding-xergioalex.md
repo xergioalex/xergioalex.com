@@ -149,7 +149,7 @@ Solo el ninja, sin texto. Sirve para favicons, íconos de apps, avatares en rede
 Un close-up de solo la cara del ninja — aún más minimal que el isologo. Es la versión que se usa en el favicon del sitio y en contextos muy pequeños donde solo necesitas la esencia del personaje.
 
 <div style="background:#0F1124;border-radius:12px;padding:2rem;display:flex;justify-content:center">
-  <img src="/images/isologo.svg" alt="Ícono de la cara del ninja XergioAleX — versión compacta para favicon y avatares" style="max-height:160px" />
+  <img src="/images/isologo.svg" alt="Ícono de la cara del ninja XergioAleX — versión compacta para favicon y avatares" style="max-height:160px" width="160" height="160" loading="lazy" />
 </div>
 
 ### Logotipo (Wordmark)
