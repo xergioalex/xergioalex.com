@@ -1,10 +1,10 @@
 ---
 title: "De programador a orquestador: la revolución silenciosa que casi nadie ve"
-description: "Cómo pasé de escribir cada línea de código a orquestar agentes de IA — y por qué la revolución tecnológica más grande de la historia está pasando tan silenciosamente que casi nadie se da cuenta."
+description: "Cómo pasé de escribir código a orquestar agentes de IA — y por qué la mayor revolución tecnológica está pasando en silencio, casi sin que nadie lo note."
 pubDate: "2026-03-21"
 heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai"]
+tags: ["tech", "ai", "personal"]
 keywords: ["agentes de IA para programadores 2026", "futuro de la programación con inteligencia artificial", "programador orquestador de agentes IA", "revolución silenciosa modelos frontera IA", "Claude Code agentes remotos productividad", "METR duplicación tareas IA nueva ley de Moore", "debate IA reemplazando ingenieros de software"]
 ---
 

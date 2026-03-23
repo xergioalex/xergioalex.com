@@ -1,10 +1,10 @@
 ---
 title: "From Programmer to Orchestrator: The Silent Revolution Almost Nobody Sees"
-description: "How I went from writing every line of code to orchestrating AI agents — and why the biggest tech revolution in history is happening so quietly that almost nobody notices."
+description: "How I went from writing every line of code to orchestrating AI agents — and why the biggest tech revolution is happening so quietly that almost nobody notices."
 pubDate: "2026-03-21"
 heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai"]
+tags: ["tech", "ai", "personal"]
 keywords: ["AI coding agents orchestration 2026", "programmer to orchestrator AI shift", "future of programming AI agents", "silent AI revolution frontier models", "Claude Code remote agents workflow", "METR AI task doubling Moore's Law", "AI replacing software engineers nuanced debate"]
 ---
 
