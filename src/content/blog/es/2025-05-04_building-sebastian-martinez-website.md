@@ -44,7 +44,7 @@ Si entras a [sebastianmartinezvanegas.com](https://www.sebastianmartinezvanegas.
 
 ## El stack técnico
 
-Usé el mismo stack que ya conozco bien: Astro, Svelte, TailwindCSS, TypeScript y Biome. El mismo que uso en [xergioalex.com](https://www.xergioalex.com/) y en [sergioykathe.com](https://www.sergioykathe.com/). Desplegado en GitHub Pages con CI/CD vía GitHub Actions.
+Usé el mismo stack que ya conozco bien: Astro, Svelte, TailwindCSS, TypeScript y Biome. El mismo que uso en [xergioalex.com](https://xergioalex.com/) y en [sergioykathe.com](https://www.sergioykathe.com/). Desplegado en GitHub Pages con CI/CD vía GitHub Actions.
 
 De las plantillas que le mostré a Sebastián, la que eligió fue [Aria](https://github.com/ccbikai/astro-aria) — una plantilla de Astro limpia, orientada a contenido, con buenas bases de tipografía y estructura. Una base sólida sobre la cual construir sin pelear contra decisiones de diseño que no son las tuyas.
 
