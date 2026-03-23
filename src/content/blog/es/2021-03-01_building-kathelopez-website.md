@@ -66,7 +66,7 @@ Para el formulario, la solución obvia era un backend — Node.js, una función 
 
 Hice ingeniería inversa del endpoint de envío y conecté un formulario HTML personalizado que hace POST directo a Google. Los datos van a un Spreadsheet, Kathe recibe un email. Sin servidor, sin claves API, sin nada que mantener. Tomó menos de lo que esperaba. Una vez funcionó, siguió funcionando.
 
-La técnica completa está en [Cómo responder formularios de Google via Postman y Ajax](/blog/google-forms-postman-ajax).
+La técnica completa está en [Cómo responder formularios de Google via Postman y Ajax](/es/blog/google-forms-postman-ajax).
 
 ### Hosting: GitHub Pages
 
