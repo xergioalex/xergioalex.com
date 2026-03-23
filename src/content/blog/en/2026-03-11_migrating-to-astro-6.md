@@ -240,7 +240,7 @@ So yes — that's what's running this site right now. The dev server starts in 3
 
 ## Was It Worth the Wait?
 
-Astro 6 didn't have the kind of hype where JavaScript Twitter implodes for a week. But there was real anticipation — nine betas over almost two months, Cloudflare acquiring the company in January, CSP as the most-upvoted feature request in Astro's history. People were watching.
+Astro 6 didn't have the kind of hype where the JavaScript community implodes for a week. But there was real anticipation — nine betas over almost two months, Cloudflare acquiring the company in January, CSP as the most-upvoted feature request in Astro's history. People were watching.
 
 And the response has been positive. Some friction around breaking changes — Node 22+ required, legacy collections gone — but nothing unfair for a major version. The Cloudflare Workers crowd is especially happy now that dev and production actually run the same runtime.
 
