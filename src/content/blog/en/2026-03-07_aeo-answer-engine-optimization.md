@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "markdown for AI agents endpoints", "track AI bot traffic server-side analytics"]
 series: "aeo-from-invisible-to-cited"
-seriesOrder: 0
+seriesOrder: 1
 ---
 
 For most of the web's history, optimizing for search meant one thing: get ranked. Put the right keywords in the right places, earn some backlinks, make sure Google could crawl you. If you did it well, you showed up in a list of ten blue links. Users clicked. That was the deal.
