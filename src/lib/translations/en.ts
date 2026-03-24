@@ -968,8 +968,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'building-xergioalex': 'Building XergioAleX.com',
     'trading-journey': 'Trading Journey: From Futures to Algorithms',
     'aeo-from-invisible-to-cited': 'AEO: From Invisible to Cited',
-    'working-with-agents':
-      'Working with Agents',
+    'working-with-agents': 'Working with Agents',
   },
   seriesDescriptions: {
     'building-xergioalex':
