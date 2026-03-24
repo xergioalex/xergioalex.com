@@ -188,7 +188,7 @@ Two-column layout: title and metadata on the left, image on the right. Stacks ve
 └─────────────────────────────────────────┘
 ```
 
-**Image dimensions:** Optimized to 800x800px (cover fit) for square images. Max height `24rem` in display.
+**Image dimensions:** Max width 800px, aspect ratio preserved (no cropping). Max height `24rem` in display.
 
 ### `minimal`
 

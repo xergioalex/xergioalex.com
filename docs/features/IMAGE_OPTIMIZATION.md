@@ -83,13 +83,13 @@ Total: 864.5KB -> 106.5KB (87.7% reduction)
 
 The staging optimizer auto-selects a preset based on the image name and aspect ratio:
 
-| Preset | Dimensions | Fit | Used when |
+| Preset | Max width | Fit | Used when |
 |--------|-----------|-----|-----------|
-| `hero` | 1400 x 700 | cover | Image named `hero*` with landscape aspect ratio |
-| `hero-square` | 800 x 800 | cover | Image named `hero*` with square aspect ratio (0.8-1.2) |
-| `default` | 1200 x auto | inside | All other images |
+| `hero` | 1400px | inside (preserve ratio) | Image named `hero*` with landscape aspect ratio |
+| `hero-square` | 800px | inside (preserve ratio) | Image named `hero*` with square aspect ratio (0.8-1.2) |
+| `default` | 1200px | inside (preserve ratio) | All other images |
 
-**Aspect ratio detection:** For hero images, the script reads the original dimensions. If the aspect ratio is between 0.8 and 1.2, it uses the `hero-square` preset; otherwise, it uses the landscape `hero` preset.
+**Aspect ratio detection:** For hero images, the script reads the original dimensions. If the aspect ratio is between 0.8 and 1.2, it uses the `hero-square` preset (max 800px width); otherwise, it uses the landscape `hero` preset (max 1400px width). **All presets preserve the original aspect ratio — no cropping.**
 
 **No upscaling:** Images smaller than the preset dimensions are not enlarged (`withoutEnlargement: true`).
 
@@ -150,6 +150,8 @@ The bulk optimizer writes to a temporary file first, then only replaces the orig
 
 ### Quick Conversion Script
 
+**IMPORTANT:** Always use `resize({ width, withoutEnlargement: true })` WITHOUT a fixed height. This preserves the original aspect ratio. Never use `resize(width, height, { fit: 'cover' })` — it crops the image.
+
 ```bash
 # Convert a single image to WebP (run from project root)
 node -e "
@@ -170,11 +172,13 @@ sharp(input)
 
 ### Conversion Parameters
 
-| Image type | Max width | Quality | Fit |
-|------------|-----------|---------|-----|
-| Hero (landscape) | 1400px | 80 | cover |
-| Hero (square) | 800px | 80 | cover |
-| Inline/content | 1200px | 80 | inside (preserve aspect ratio) |
+**CRITICAL: Always preserve the original aspect ratio.** Use `inside` fit (or `null` height) — NEVER use `cover` with fixed height, as it crops the image and cuts off content.
+
+| Image type | Max width | Quality | Fit | Height |
+|------------|-----------|---------|-----|--------|
+| Hero | 1400px | 80 | inside | auto (preserve ratio) |
+| Series hero | 1400px | 80 | inside | auto (preserve ratio) |
+| Inline/content | 1200px | 80 | inside | auto (preserve ratio) |
 
 ### Full Conversion Script (file-based)
 

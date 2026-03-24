@@ -27,8 +27,8 @@ const POSTS_DIR = join(ROOT, 'public/images/blog/posts');
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
 
 const PRESETS = {
-	hero: { width: 1400, height: 700, fit: 'cover' },
-	'hero-square': { width: 800, height: 800, fit: 'cover' },
+	hero: { width: 1400, height: null, fit: 'inside' },
+	'hero-square': { width: 800, height: null, fit: 'inside' },
 	default: { width: 1200, height: null, fit: 'inside' },
 };
 
