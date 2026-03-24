@@ -186,7 +186,7 @@ function formatDate(pubDate: string): string {
           <img
             src={seriesHeroImage}
             alt=""
-            class="block h-auto max-h-96 w-full rounded-xl object-cover shadow-lg"
+            class="block w-full h-auto md:h-96 rounded-xl object-cover shadow-lg ring-1 ring-gray-200 dark:ring-gray-700"
             loading="eager"
             width="600"
             height="400"

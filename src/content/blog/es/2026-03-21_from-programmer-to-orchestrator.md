@@ -6,6 +6,8 @@ heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "personal"]
 keywords: ["agentes de IA para programadores 2026", "futuro de la programación con inteligencia artificial", "programador orquestador de agentes IA", "revolución silenciosa modelos frontera IA", "Claude Code agentes remotos productividad", "METR duplicación tareas IA nueva ley de Moore", "debate IA reemplazando ingenieros de software"]
+series: "working-with-agents"
+seriesOrder: 1
 ---
 
 A finales de 2025, durante el último meetup del año en [Pereira Tech Talks](/es/blog/the-future-of-ai-code-hardware-and-agents/), presenté una charla cuya tesis principal era directa: **los programadores ya no somos solo programadores — somos orquestadores**. Diseñar, planear, supervisar, delegar. Ese es el trabajo ahora. En ese momento decía que estábamos en un 95% de automatización del código — que la IA ya escribía casi todo, pero que todavía necesitábamos intervenir en el último tramo.

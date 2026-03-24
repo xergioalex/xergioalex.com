@@ -6,6 +6,8 @@ heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "personal"]
 keywords: ["AI coding agents orchestration 2026", "programmer to orchestrator AI shift", "future of programming AI agents", "silent AI revolution frontier models", "Claude Code remote agents workflow", "METR AI task doubling Moore's Law", "AI replacing software engineers nuanced debate"]
+series: "working-with-agents"
+seriesOrder: 1
 ---
 
 At the end of 2025, during the last meetup of the year at [Pereira Tech Talks](/blog/the-future-of-ai-code-hardware-and-agents/), I gave a talk whose main thesis was bold and simple: **programmers are no longer just coders — we're orchestrators**. Design, plan, supervise, delegate. That's the job now. Back then, I said we were at about 95% code automation — that AI was writing almost everything, but we still needed to step in for the last stretch.
