@@ -1,11 +1,13 @@
 ---
 title: "From Programmer to Orchestrator: The Silent Revolution Almost Nobody Sees"
-description: "How I went from writing every line of code to orchestrating AI agents — and why the biggest tech revolution is happening so quietly that almost nobody notices."
+description: "How I went from writing every line of code to orchestrating AI agents — and why the biggest tech revolution is happening so quietly that almost nobody sees."
 pubDate: "2026-03-21"
 heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "personal"]
 keywords: ["AI coding agents orchestration 2026", "programmer to orchestrator AI shift", "future of programming AI agents", "silent AI revolution frontier models", "Claude Code remote agents workflow", "METR AI task doubling Moore's Law", "AI replacing software engineers nuanced debate"]
+series: "working-with-agents"
+seriesOrder: 1
 ---
 
 At the end of 2025, during the last meetup of the year at [Pereira Tech Talks](/blog/the-future-of-ai-code-hardware-and-agents/), I gave a talk whose main thesis was bold and simple: **programmers are no longer just coders — we're orchestrators**. Design, plan, supervise, delegate. That's the job now. Back then, I said we were at about 95% code automation — that AI was writing almost everything, but we still needed to step in for the last stretch.
@@ -142,7 +144,7 @@ Let that sink in. We went from humans hiring AI to **AI hiring humans**.
 
 Almost simultaneously, [Moltbook](https://www.npr.org/2026/02/04/nx-s1-5697392/moltbook-social-media-ai-agents) appeared — a social network exclusively for AI agents. Within its first week, over a million humans had visited just to watch what the agents were doing. Bots posting, interacting with each other, discovering services. It was surreal and fascinating in equal measure. The platform grew so fast that [Meta acquired it on March 10](https://techcrunch.com/2026/03/10/meta-acquired-moltbook-the-ai-agent-social-network-that-went-viral-because-of-fake-posts/), bringing the founders into Meta Superintelligence Labs. Think about that: the company that built Facebook — the social network for humans — just bought the social network for AI agents.
 
-For agents to hire humans, negotiate with each other, and have their own social network, they need real infrastructure — and it already exists. Payment cards? [AgentCard](https://agentcard.sh/) and [Ramp](https://agents.ramp.com/cards) already offer them. Their own email? [AgentMail](https://www.agentmail.to/) just raised $6 million for exactly that. Wallets and agent-to-agent payments? [Coinbase](https://www.coinbase.com/developer-platform/products/agentic-wallets) and [Stripe](https://stripe.com/newsroom/news/agentic-commerce-suite) already have the infrastructure in place. Identity, money, communication — everything an agent would need to operate in the real world probably already exists or is being built right now.
+For agents to hire humans, negotiate with each other, and have their own social network, they need real infrastructure — and it already exists. Payment cards? [AgentCard](https://agentcard.sh/) and [Ramp](https://agents.ramp.com/cards) already offer them. Their own email? [AgentMail](https://www.agentmail.to/) just raised $6 million for exactly that. A WhatsApp number for your agent? [Kapso](https://kapso.ai/) is a new platform doing exactly that. Wallets and agent-to-agent payments? [Coinbase](https://www.coinbase.com/developer-platform/products/agentic-wallets) and [Stripe](https://stripe.com/newsroom/news/agentic-commerce-suite) already have the infrastructure in place. Identity, money, communication — everything an agent would need to operate in the real world probably already exists or is being built right now.
 
 Steinberger himself predicted that [80% of apps will disappear](https://singjupost.com/openclaw-creator-why-80-of-apps-will-disappear-transcript/). Why do you need MyFitnessPal when your personal agent already knows your habits? Why do you need a to-do app when your agent manages your tasks? The shift isn't from one app to a better app — it's from apps to agents.
 

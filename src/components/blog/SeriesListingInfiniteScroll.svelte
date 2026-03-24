@@ -92,7 +92,7 @@ function getHeroImage(series: SeriesListingEntry): string | null {
   <!-- Adaptive layout: stack (≤4 series) or grid (5+) -->
   {#if renderedSeries.length <= 4}
     <!-- Stack layout: all cards use premium horizontal layout -->
-    <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-6">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 space-y-6">
       {#each renderedSeries as series, index}
         {@const hero = getHeroImage(series)}
         {@const isFirst = index === 0}
@@ -102,20 +102,20 @@ function getHeroImage(series: SeriesListingEntry): string | null {
           class="group block bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:-translate-y-1"
           on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: 'series-listing', slug: series.slug })}
         >
-          <div class="md:flex {index % 2 !== 0 ? 'md:flex-row-reverse' : ''}">
+          <div class="md:flex md:h-[320px] {index % 2 !== 0 ? 'md:flex-row-reverse' : ''}">
             <!-- Image area -->
-            <div class="relative md:w-1/2 {isFirst ? 'xl:w-3/5' : ''}">
+            <div class="relative md:w-1/2">
               {#if hero}
                 <img
                   src={hero}
                   alt=""
-                  class="w-full h-56 md:h-full md:min-h-[260px] object-cover"
+                  class="w-full h-56 md:h-full object-cover"
                   loading={isFirst ? 'eager' : 'lazy'}
                   width="800"
                   height="400"
                 />
               {:else}
-                <div class="w-full h-56 md:h-full md:min-h-[260px] bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
+                <div class="w-full h-56 md:h-full bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-100 dark:from-blue-900/40 dark:via-indigo-900/30 dark:to-purple-900/20 flex items-center justify-center">
                   <svg class="w-16 h-16 text-blue-300 dark:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
@@ -126,7 +126,7 @@ function getHeroImage(series: SeriesListingEntry): string | null {
             </div>
 
             <!-- Content area -->
-            <div class="md:w-1/2 {isFirst ? 'xl:w-2/5' : ''} p-6 lg:p-8 flex flex-col justify-center">
+            <div class="md:w-1/2 p-6 lg:p-8 flex flex-col justify-center overflow-hidden">
               <div class="mb-3">
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 text-xs font-medium">
                   <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -135,7 +135,7 @@ function getHeroImage(series: SeriesListingEntry): string | null {
                   {t.seriesListingPage.postsCount(series.postCount)}
                 </span>
               </div>
-              <h2 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h2 class="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                 {t.seriesNames[series.slug] || series.title}
               </h2>
               {#if series.description}
