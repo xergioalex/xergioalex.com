@@ -1,6 +1,6 @@
 ---
 title: "De programador a orquestador: la revolución silenciosa que casi nadie ve"
-description: "Cómo pasé de escribir código a orquestar agentes de IA — y por qué la mayor revolución tecnológica está pasando en silencio, casi sin que nadie lo note."
+description: "Cómo pasé de escribir código a orquestar agentes de IA — y por qué la mayor revolución tecnológica pasa en silencio, casi sin que nadie lo note."
 pubDate: "2026-03-21"
 heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero-es.webp"
 heroLayout: "side-by-side"

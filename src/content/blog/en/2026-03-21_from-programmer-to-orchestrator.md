@@ -1,6 +1,6 @@
 ---
 title: "From Programmer to Orchestrator: The Silent Revolution Almost Nobody Sees"
-description: "How I went from writing every line of code to orchestrating AI agents — and why the biggest tech revolution is happening so quietly that almost nobody notices."
+description: "How I went from writing every line of code to orchestrating AI agents — and why the biggest tech revolution is happening so quietly that almost nobody sees."
 pubDate: "2026-03-21"
 heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero.webp"
 heroLayout: "side-by-side"
