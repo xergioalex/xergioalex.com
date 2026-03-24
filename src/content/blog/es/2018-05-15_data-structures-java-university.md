@@ -1,6 +1,6 @@
 ---
 title: "Estructuras de Datos en Java: De Listas Enlazadas a un Triqui Invencible con IA"
-description: "La historia de mi curso de Estructuras de Datos en la universidad — implementando pilas, colas, árboles, grafos y el algoritmo de Dijkstra en Java, culminando en un Triqui invencible usando el algoritmo Minimax."
+description: "Estructuras de datos en Java: pilas, colas, árboles, grafos, Dijkstra y un triqui invencible con Minimax—de teoría a un tablero imbatible."
 pubDate: "2018-05-15"
 heroImage: "/images/blog/posts/data-structures-java-university/hero.webp"
 heroLayout: "side-by-side"

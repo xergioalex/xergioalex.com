@@ -1,6 +1,6 @@
 ---
 title: "Blockchain: The Industrial Revolution of the Internet"
-description: "Why blockchain is more than cryptocurrency — real-world applications in supply chains, identity, voting, and how decentralized trust changes the rules of digital systems."
+description: "Why blockchain goes beyond cryptocurrency: supply chains, identity, voting, and how decentralized trust reshapes modern digital systems."
 pubDate: "2018-04-14"
 heroImage: "/images/blog/posts/blockchain-industrial-revolution/blockchain-2.webp"
 heroLayout: "banner"

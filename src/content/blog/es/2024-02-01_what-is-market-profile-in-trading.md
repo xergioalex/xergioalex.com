@@ -1,6 +1,6 @@
 ---
 title: "Qué es el Market Profile en trading (y por qué cambió mi proceso)"
-description: "Una explicación práctica de Market Profile como marco visual para zonas de desbalance, flujo institucional y toma de decisiones con estructura en lugar de intuición."
+description: "Market Profile explicado: marco visual para desbalance, flujo institucional y decisiones con estructura frente a la intuición sola en trading."
 pubDate: "2024-02-01"
 heroImage: "/images/blog/posts/what-is-market-profile-in-trading/hero.webp"
 series: "trading-journey"

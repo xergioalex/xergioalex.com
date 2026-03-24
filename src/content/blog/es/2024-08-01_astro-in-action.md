@@ -1,6 +1,6 @@
 ---
 title: "Astro en acción"
-description: "Por qué Astro me convenció — casos reales de Microsoft y Firebase, ganancias de rendimiento medibles, y una migración en vivo del sitio de Pereira Tech Talks para probar que no es solo hype."
+description: "Por qué Astro me convenció: casos de Microsoft y Firebase, rendimiento medible y migración en vivo de Pereira Tech Talks, sin hype."
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.webp"
 heroLayout: "side-by-side"

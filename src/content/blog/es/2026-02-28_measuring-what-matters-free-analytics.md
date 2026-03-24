@@ -1,6 +1,6 @@
 ---
 title: "Midiendo lo que Importa: Cómo Configuré Analytics Gratis Sin Sacrificar el Rendimiento"
-description: "El tercer capítulo de la construcción de XergioAleX.com — implementando un stack completo de analytics usando solo herramientas gratuitas, sin perder los puntajes perfectos de Lighthouse ni agregar banners de cookies."
+description: "Capítulo tres sobre XergioAleX.com: analíticas gratis con herramientas privacy-first, puntajes Lighthouse 100 y sin banners de cookies."
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.webp"
 heroLayout: "side-by-side"

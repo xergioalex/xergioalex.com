@@ -1,6 +1,6 @@
 ---
 title: "From Manual Trading to Algorithmic Trading"
-description: "How I moved from repetitive manual execution in MetaTrader 4 to migrating scripts, indicators, and expert advisors into MetaTrader 5 for a more advanced automation stack."
+description: "How I moved from manual MetaTrader 4 trading to migrating scripts, indicators, and expert advisors into MetaTrader 5 for stronger automation."
 pubDate: "2025-02-01"
 heroImage: "/images/blog/posts/from-manual-to-algorithmic-trading/hero.webp"
 series: "trading-journey"

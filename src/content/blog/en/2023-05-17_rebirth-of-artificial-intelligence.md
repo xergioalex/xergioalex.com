@@ -1,6 +1,6 @@
 ---
 title: "The Rebirth of Artificial Intelligence"
-description: "A personal reflection from my Pereira Tech Talks presentation — why ChatGPT, GPT-4, and generative AI marked the end of the AI winter and the start of a revolution I'm living every day."
+description: "From my Pereira Tech Talks talk: why ChatGPT and GPT-4 ended the AI winter and started a generative revolution I experience daily."
 pubDate: "2023-05-17"
 heroImage: "/images/blog/shared/ai-rebirth-hero.webp"
 heroLayout: "side-by-side"
@@ -56,7 +56,7 @@ I ended with two words: **transformation** and **opportunity**. The tools are he
 ## Recording
 
 <div class="aspect-video w-full max-w-3xl rounded-xl overflow-hidden my-6">
-  <iframe src="https://www.youtube.com/embed/u-pSII46BJQ" title="AI Rebirth — full talk recording" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+  <iframe src="https://www.youtube.com/embed/u-pSII46BJQ" title="AI Rebirth — full talk recording" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" loading="lazy"></iframe>
 </div>
 
 [View slides](https://docs.google.com/presentation/d/1cuekD501Ra6ikehVXeX2AZ19waUViWUuagW6_8y3f4A/edit)

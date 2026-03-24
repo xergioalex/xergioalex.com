@@ -44,7 +44,7 @@ Then I looked at **Cloudflare Pages**. Unlimited bandwidth, 500 builds a month, 
 
 The process was ridiculously short. In the Cloudflare dashboard, **+ Add** > **Pages**:
 
-<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Cloudflare menu with Pages option selected" class="prose-img-narrow" />
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Cloudflare menu with Pages option selected" class="prose-img-narrow" width="800" height="450" loading="lazy" />
 
 Two options — import a Git repository or upload files. The first one:
 

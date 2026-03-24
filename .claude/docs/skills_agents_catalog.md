@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 13             | 4                  | 0              | 17    |
+| Skills | 13             | 6                  | 0              | 19    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **13**      | **9**              | **1**          | **23** |
+| **Total** | **13**      | **11**             | **1**          | **25** |
 
 ---
 
@@ -43,6 +43,8 @@ Everyday development work.
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
 | add-blog-post | create   | `/add-blog-post` | sonnet | **Mandatory for new blog posts** — topic mode (writes content) or content mode (scaffolding). |
+| audit-post    | review   | `/audit-post`    | sonnet | Pre-publication audit for blog posts — SEO, AEO, accessibility, images, content quality, i18n parity, and project conventions. |
+| audit-series  | review   | `/audit-series`  | sonnet | Pre-publication audit for blog series — series definition, post ordering, cross-post consistency, navigation, and individual post summary checks. |
 | promote-post  | create   | `/promote-post`  | sonnet | Generate social media content for any blog post (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
@@ -107,6 +109,8 @@ This diagram shows how skills and agents interact during typical workflows.
   │                                          ┌────────────────┐  │
   │                                          │ Tier 2 Skills  │  │
   │                                          │ add-blog-post  │  │
+  │                                          │ audit-post     │  │
+  │                                          │ audit-series   │  │
   │                                          │ write-tests    │  │
   │                                          │ refactor-safe  │  │
   │                                          └────────┬───────┘  │
@@ -141,9 +145,11 @@ This diagram shows how skills and agents interact during typical workflows.
 1. **architect** creates an implementation plan (Tier 3)
 2. **executor** follows the plan, invoking Tier 1/2 skills as needed (Tier 2)
 3. **content-writer** crafts blog posts and portfolio articles using `/add-blog-post` (Tier 2)
-4. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
-5. Issues found are fixed using atomic Tier 1 skills
-6. After publishing, `/promote-post` generates social media content for distribution (Tier 2)
+4. `/audit-post` runs a comprehensive pre-publication review per post (Tier 2)
+5. `/audit-series` validates series-level consistency (ordering, cross-post parity, navigation) (Tier 2)
+6. **reviewer**, **security-auditor**, and **i18n-guardian** validate the output (Tier 2)
+7. Issues found are fixed using atomic Tier 1 skills
+8. After publishing, `/promote-post` generates social media content for distribution (Tier 2)
 
 ---
 
@@ -157,11 +163,13 @@ Skills, commands, and agents for creating and managing blog content.
 |----------|------|-------------|
 | new-post | Command | Interactive guided flow for creating blog posts (`/new-post`) |
 | add-blog-post | Skill (T2) | Create blog posts — topic mode (writes) or content mode (scaffolding) |
+| audit-post | Skill (T2) | Pre-publication audit for individual posts — SEO, AEO, accessibility, images, content quality, i18n |
+| audit-series | Skill (T2) | Pre-publication audit for series — definition, ordering, cross-post consistency, navigation |
 | promote-post | Skill (T2) | Generate social media content for any blog post across multiple platforms |
 | doc-edit | Skill (T1) | Update documentation, README, comments, MDX files |
 | content-writer | Agent (T2) | Expert multilingual content writer with personal-professional voice |
 
-**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`. After publishing, use `/promote-post` to generate social media content for distribution.
+**Relationship:** `/new-post` (command) guides the user interactively, while `add-blog-post` (skill) is used programmatically by agents. Both follow conventions from `docs/features/BLOG_POSTS.md` and `docs/features/BLOG_CONTENT_LIFECYCLE.md`. After creation, use `/audit-post` for individual post review and `/audit-series` for series-level validation (ordering, cross-post consistency, navigation). After publishing, use `/promote-post` to generate social media content for distribution.
 
 **Mandatory policy:** Any new file creation in `src/content/blog/` must go through `add-blog-post` to enforce multilingual parity and schema/frontmatter consistency.
 
@@ -348,10 +356,9 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-03-23 | audit-series skill added | New Tier 2 skill for pre-publication blog series auditing — 9-step review covering series definition, post discovery, ordering validation, cross-post consistency, i18n parity, individual post summary checks, build validation, and final report. Companion to audit-post. |
+| 2026-03-23 | audit-post skill added | New Tier 2 skill for pre-publication blog post auditing — 10-step comprehensive review covering frontmatter, SEO, AEO, images, accessibility, content quality, i18n parity, resources, build validation. |
 | 2026-03-09 | add-timeline-page skill added | New Tier 1 skill for adding tag-filtered infinite-scroll timeline pages. Extracted from PLAN_timeline_infinite_scroll_pagination. |
-|| 2026-03-05 | Team agents execution modes | Added Execution Modes section with comparison table, updated compatibility notes, added team agents integration to interaction map. |
-| 2026-03-03 | content-writer agent v1.4.0 | Added Writing Voice Guide reference for anti-AI-slop checks and vocabulary blocklist (from PLAN_anti_ai_slop_audit). |
-| 2026-03-03 | promote-post skill added | New Tier 2 skill for generating social media content (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) for any blog post. |
 
 ---
 

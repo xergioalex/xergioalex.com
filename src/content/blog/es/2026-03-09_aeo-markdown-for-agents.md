@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["implementación markdown for agents", "negociación de contenido bots IA", "header Accept text/markdown", "Cloudflare markdown for agents", "contenido web legible por IA", "servir markdown a agentes IA"]
 series: "aeo-from-invisible-to-cited"
-seriesOrder: 2
+seriesOrder: 3
 ---
 
 Cuando un agente de IA visita una página web, recibe la respuesta HTTP completa — lo mismo que recibe un navegador. Markup de navegación, footer, scripts de cambio de tema, avisos de cookies, clases de utilidad de Tailwind, definiciones de íconos SVG, schemas JSON-LD embebidos como etiquetas script. Y en algún lugar dentro de todo eso, el contenido real.

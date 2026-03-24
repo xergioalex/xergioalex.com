@@ -1,6 +1,6 @@
 ---
 title: 'Blockchain: la revolución industrial de internet'
-description: 'Por qué blockchain es más que criptomonedas — aplicaciones reales en cadenas de suministro, identidad, votación, y cómo la confianza descentralizada cambia las reglas de los sistemas digitales.'
+description: 'Blockchain va más allá del cripto: cadenas de suministro, identidad, votación y cómo la confianza descentralizada transforma sistemas digitales.'
 pubDate: '2018-04-14'
 heroImage: '/images/blog/posts/blockchain-industrial-revolution/blockchain-2.webp'
 heroLayout: 'banner'

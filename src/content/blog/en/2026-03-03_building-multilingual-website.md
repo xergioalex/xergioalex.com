@@ -1,6 +1,6 @@
 ---
 title: 'How I Built a Multilingual Website with Astro'
-description: 'Chapter five of building xergioalex.com — the complete story of designing a multilingual architecture from scratch: language configuration as code, a typed translation system with 960+ keys, the Page Wrapper pattern that keeps every page DRY across languages, and an architecture ready to scale to any number of languages with zero component changes.'
+description: 'Designing multilingual Astro from scratch: typed translations, the Page Wrapper pattern, and scaling to more languages without rewiring components.'
 pubDate: '2026-03-03'
 heroImage: '/images/blog/posts/building-multilingual-website/hero.webp'
 heroLayout: 'side-by-side'

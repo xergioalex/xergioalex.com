@@ -1,6 +1,6 @@
 ---
 title: "Por qué abandoné ESLint + Prettier por Biome"
-description: "Después de años persiguiendo actualizaciones de ESLint y manejando los conflictos con Prettier, me pasé a Biome. Un archivo de configuración, un binario, y no he mirado atrás."
+description: "Tras años persiguiendo upgrades de ESLint y conflictos con Prettier, me pasé a Biome: un config, un binario y menos fricción en cada release."
 pubDate: '2026-03-06'
 heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.webp'
 heroLayout: 'side-by-side'

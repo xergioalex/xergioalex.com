@@ -1,6 +1,6 @@
 ---
 title: "Comparative Analysis of Sorting Algorithms"
-description: "An academic experiment comparing sorting algorithm complexity and real execution times across two server configurations."
+description: "An academic experiment comparing sorting algorithms—complexity analysis and real execution times across two server configurations."
 pubDate: "2018-01-12"
 heroImage: "/images/blog/posts/analysis-of-sorting-algorithms/hero.webp"
 heroLayout: "banner"

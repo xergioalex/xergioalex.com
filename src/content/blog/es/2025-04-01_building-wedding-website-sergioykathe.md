@@ -1,6 +1,6 @@
 ---
 title: "Construyendo sergioykathe.com: el sitio web que creé para nuestra boda"
-description: "El sitio de invitación de nuestra boda: Astro, Svelte, GitHub Pages y cero backend. Invitaciones personalizadas con código único y confirmación de asistencia vía Google Forms."
+description: "Invitación de boda estática: Astro, Svelte, GitHub Pages, sin backend. Códigos únicos y confirmación de asistencia con Google Forms."
 pubDate: "2025-04-01"
 heroImage: "/images/blog/posts/building-wedding-website-sergioykathe/hero.webp"
 heroLayout: "side-by-side"

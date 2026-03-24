@@ -1,6 +1,6 @@
 ---
 title: "Learning Webpack: The Exercises That Changed How I Build for the Web"
-description: "The story of diving deep into Webpack 4 through hands-on exercises — from basic loaders and CSS preprocessors to code splitting, DLL optimization, React integration, and even backend bundling. The learning journey that turned a mysterious black box into my go-to build tool."
+description: "Hands-on Webpack 4: loaders, preprocessors, code splitting, DLL optimization, React integration, and backend bundling—how practice demystified the bundler."
 pubDate: "2018-07-27"
 heroImage: "/images/blog/posts/webpack-learning-exercises/hero.webp"
 heroLayout: "banner"
