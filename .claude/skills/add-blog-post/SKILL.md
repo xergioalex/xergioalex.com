@@ -255,6 +255,7 @@ series: "optional-series"
 - **CRITICAL — No voseo:** NEVER use Argentine/Rioplatense voseo forms (vos, tenés, podés, sabés, querés, hacés, buscás, necesitás, decís, etc.). Always use tuteo: tienes, puedes, sabes, quieres, haces, buscas, necesitas, dices. The tone is personal but professional — tuteo, not voseo.
 - When translating to Spanish, prefer Colombian Spanish phrasing
 - Do NOT translate code blocks, CLI commands, technical terms, product names
+- **Direct quotes in English:** When the Spanish version includes a direct quote originally spoken/written in English, keep the original English text in italics and add a Spanish translation in parentheses immediately after. Example: *"Express my will to my agents."* ("Expresar mi voluntad a mis agentes.")
 - **CRITICAL — Spanish orthography:** ALL Spanish text MUST use correct diacritical marks (ñ, á, é, í, ó, ú). Never write `pequeno` (→ pequeño), `tamano` (→ tamaño), `analisis` (→ análisis), `numero` (→ número), `codigo` (→ código), `pagina` (→ página), etc. Verify before saving.
 
 ### Step 6: Validate
