@@ -89,6 +89,7 @@ Translate the content following these rules:
 - Use natural, idiomatic translations (not literal word-for-word)
 - Preserve all markdown formatting, headings, lists, links
 - Do NOT translate code blocks, terminal commands, or technical identifiers
+- **Direct quotes in English:** When translating to Spanish and the content includes a direct quote originally in English, keep the original English text in italics and add a Spanish translation in parentheses immediately after. Example: *"Express my will to my agents."* ("Expresar mi voluntad a mis agentes.")
 
 **For page wrappers (.astro in `src/pages/`):**
 - Pages use the Page wrapper pattern: thin 3-line wrappers that import a shared `*Page.astro` component
