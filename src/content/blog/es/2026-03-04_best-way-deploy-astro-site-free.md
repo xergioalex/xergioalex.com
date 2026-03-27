@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["cómo desplegar sitio Astro gratis", "Cloudflare Pages vs GitHub Pages Astro", "mejor plataforma para desplegar Astro", "despliegue gratuito de sitio estático", "Cloudflare Pages para sitios Astro", "GitHub Pages vs Cloudflare Pages comparación", "hosting gratuito para sitio web"]
 series: "building-xergioalex"
-seriesOrder: 6
+seriesOrder: 7
 ---
 
 Todo sitio tiene que vivir en algún lugar. Por un tiempo no pensé mucho en dónde — tenía GitHub Pages, funcionaba, y con eso bastaba. Pero cuando este sitio creció — más páginas, dos idiomas, procesamiento de imágenes, un blog con búsqueda — me di cuenta de que la plataforma de despliegue merecía la misma elección deliberada que el framework.

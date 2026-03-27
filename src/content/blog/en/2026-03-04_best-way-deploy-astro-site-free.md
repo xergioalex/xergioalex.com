@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["deploy Astro site free Cloudflare Pages", "Cloudflare Pages vs GitHub Pages", "free static site hosting Astro", "Cloudflare Pages preview deployments", "deploy Astro Cloudflare unlimited bandwidth", "best free hosting Astro", "Cloudflare Pages auto-detect Astro"]
 series: "building-xergioalex"
-seriesOrder: 6
+seriesOrder: 7
 ---
 
 Every site has to live somewhere. For a while I didn't think much about where — I had GitHub Pages, it worked, and that was enough. But when this site grew — more pages, two languages, image processing, a full blog with search — I realized the deployment platform deserved the same deliberate choice as the framework.

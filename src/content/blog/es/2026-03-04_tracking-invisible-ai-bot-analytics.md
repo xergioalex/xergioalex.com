@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["rastrear bots de IA en mi sitio web", "Cloudflare Pages middleware para analíticas", "crawlers de IA GPTBot ChatGPT-User", "analíticas sin JavaScript del lado del cliente", "detectar bots de IA en el servidor", "middleware en Cloudflare Edge Functions", "qué bots de IA visitan mi sitio"]
 series: "building-xergioalex"
-seriesOrder: 7
+seriesOrder: 8
 ---
 
 Este sitio corre en Cloudflare Pages. Una de las cosas que viene con la plataforma es un directorio `functions/` — pones un archivo TypeScript ahí, y Cloudflare lo detecta automáticamente y lo despliega como middleware en el edge. Cada solicitud pasa por él. Sin infraestructura que gestionar.

@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
 keywords: ["multilingual website Astro i18n", "Astro bilingual architecture English Spanish", "TypeScript translation system website", "page wrapper pattern Astro", "i18n static site Astro", "hreflang multilingual Astro", "960 translation keys typed system"]
 series: "building-xergioalex"
-seriesOrder: 5
+seriesOrder: 6
 ---
 
 One thread has been woven through every chapter of this series, mentioned often but never given its own story: this site speaks two languages.
