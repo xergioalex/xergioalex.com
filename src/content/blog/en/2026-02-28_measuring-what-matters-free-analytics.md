@@ -1,13 +1,13 @@
 ---
 title: "Measuring What Matters: How I Set Up Free Analytics Without Sacrificing Performance"
-description: "Chapter three while building XergioAleX.com: free analytics with privacy-first tools that keep Lighthouse at 100—no cookie banners."
+description: "Chapter four while building XergioAleX.com: free analytics with privacy-first tools that keep Lighthouse at 100—no cookie banners."
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["free web analytics without cookies", "Umami analytics Cloudflare", "privacy first analytics Lighthouse 100", "web analytics without Google Analytics", "Cloudflare Web Analytics Core Web Vitals", "cookieless analytics static site", "Google Search Console free analytics stack"]
 series: "building-xergioalex"
-seriesOrder: 3
+seriesOrder: 4
 ---
 
 The site was built. [Lighthouse scores](/blog/lighthouse-perfect-scores/) were 100 across the board — Performance, Accessibility, Best Practices, SEO. Everything I could measure about the site itself looked perfect.
@@ -235,13 +235,14 @@ All of this from a 2KB script, no cookies, and zero impact on Lighthouse scores.
 
 ## Looking Back
 
-This was the third chapter of building XergioAleX.com:
+This was the fourth chapter of building XergioAleX.com:
 
 1. **Building the platform** — architecture, technology choices, the journey from one page to a full site.
-2. **Perfecting the scores** — the meticulous work of achieving Lighthouse 100 across all categories.
-3. **Measuring the impact** — adding a complete analytics stack without undoing any of that work.
+2. **The brand** — the Ninja Coder visual identity that gave the site its soul.
+3. **Perfecting the scores** — the meticulous work of achieving Lighthouse 100 across all categories.
+4. **Measuring the impact** — adding a complete analytics stack without undoing any of that work.
 
-Each chapter built on the previous one. The architecture decisions from chapter one (Astro, static generation, islands) made chapter two possible. The performance work from chapter two set the constraint for chapter three: whatever analytics I added could not compromise what I had already achieved.
+Each chapter built on the previous one. The architecture decisions from chapter one (Astro, static generation, islands) and the brand identity from chapter two gave the site its foundation. The performance work from chapter three set the constraint for chapter four: whatever analytics I added could not compromise what I had already achieved.
 
 Fast, accessible, measured, and private. All free. You don't have to choose between understanding your users and respecting them.
 

@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
 keywords: ["blog estático sin backend", "arquitectura de blog con Astro Content Collections", "búsqueda de blog del lado del cliente", "sistema de tags para blog Astro", "blog bilingüe con Astro", "series de posts en Astro", "blog escalable sin servidor"]
 series: "building-xergioalex"
-seriesOrder: 4
+seriesOrder: 5
 ---
 
 Tener un sitio no es lo mismo que tener un blog. Un sitio es un conjunto de páginas. Un blog es un sistema — posts que necesitan ser descubiertos, filtrados, buscados, agrupados, relacionados entre sí, y servidos a lectores en múltiples idiomas. Con un puñado de posts, eso es trivial. A medida que la biblioteca crece, empiezas a sentir la estructura. Con cientos de posts, la arquitectura aguanta o no aguanta.
@@ -396,7 +396,7 @@ Los strings de traducción para la UI (etiquetas de paginación, "publicado el",
 
 ## Series: Conectando Posts en una Narrativa
 
-Algunos posts son independientes. Otros son capítulos de una historia. Los cuatro posts en esta serie "Building XergioAleX.com" son un ejemplo claro — cada uno se construye sobre el anterior, y leerlos en orden te da el panorama completo. El sistema de blog necesita entender esa relación.
+Algunos posts son independientes. Otros son capítulos de una historia. Los posts en esta serie "Building XergioAleX.com" son un ejemplo claro — cada uno se construye sobre el anterior, y leerlos en orden te da el panorama completo. El sistema de blog necesita entender esa relación.
 
 La arquitectura sigue el mismo patrón que los tags: una Content Collection para metadatos, campos de frontmatter en los posts, y resolución en tiempo de build.
 
@@ -418,7 +418,7 @@ Los posts se unen a una serie con dos campos de frontmatter:
 
 ```yaml
 series: "building-xergioalex"
-seriesOrder: 4
+seriesOrder: 5
 ```
 
 Eso es todo — un identificador y un número de posición. El sistema hace el resto.
@@ -509,7 +509,7 @@ Con 1000 posts, esto importa enormemente. No quieres migrar mil archivos porque 
 
 ## Reflexionando Sobre Este Capítulo
 
-Cada capítulo de esta serie ha sido sobre tomar una decisión que cuesta algo ahora a cambio de un camino más simple después. Capítulo uno: construir con las restricciones de Astro y obtener performance gratis. Capítulo dos: invertir en accesibilidad y obtener calificación perfecta de cada herramienta de auditoría. Capítulo tres: elegir herramientas de analytics livianas y mantener los puntajes por los que trabajaste. Capítulo cuatro: diseñar la arquitectura de contenido correctamente antes de que el contenido supere al contenedor.
+Cada capítulo de esta serie ha sido sobre tomar una decisión que cuesta algo ahora a cambio de un camino más simple después. Capítulo uno: construir con las restricciones de Astro y obtener performance gratis. Capítulo dos: invertir en identidad visual y darle alma al sitio. Capítulo tres: invertir en accesibilidad y obtener calificación perfecta de cada herramienta de auditoría. Capítulo cuatro: elegir herramientas de analytics livianas y mantener los puntajes por los que trabajaste. Capítulo cinco: diseñar la arquitectura de contenido correctamente antes de que el contenido supere al contenedor.
 
 El sistema de taxonomía que construí maneja cientos o miles de posts sin ningún cambio estructural — solo nuevos archivos de contenido. El sistema de series conecta posts relacionados en una narrativa navegable con un indicador flotante que hace la conexión descubrible. La búsqueda corre del lado del cliente desde un índice JSON estático sin infraestructura de backend que mantener. El sistema bilingüe escala a cualquier post nuevo como un flujo de trabajo natural, no como una tarea pesada. Cada página es HTML estático pre-renderizado con cero costo en runtime para el usuario.
 
