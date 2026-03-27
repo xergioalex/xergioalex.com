@@ -142,7 +142,7 @@ I think the first step is just naming it. Not dramatizing it, not pathologizing 
 
 For me, the awareness has changed small things. I notice now when I'm starting a project at 11 PM not because it matters but because the loop told me to. I notice when I check the billing dashboard and feel anxious that I haven't used enough tokens. I notice when I feel the pull to start something new before I've finished the last thing. I don't always resist it. But at least I see it.
 
-I also think there's something worth protecting in all of this. The excitement is real. The joy of building is real. Watching an agent construct something you imagined in minutes is genuinely one of the most incredible feelings in my career. I don't want to lose that. I don't want to become so self-aware that the magic disappears. The line between healthy excitement and compulsion is blurry — and I'm not sure anyone has found it yet.
+I also think there's something worth protecting in all of this. The excitement is real. The joy of building is real. Watching an agent construct something you imagined in minutes is one of the most incredible feelings in my career. I don't want to lose that. I don't want to become so self-aware that the magic disappears. The line between healthy excitement and compulsion is blurry — and I'm not sure anyone has found it yet.
 
 What I do know is that the conversation at that meetup meant something. There's a difference between being alone in a dopamine loop and being in a room full of people who nod when you describe it. We're a community going through the same thing. And the only irresponsible move would be not talking about it.
 
