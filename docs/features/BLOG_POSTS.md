@@ -145,6 +145,7 @@ When creating the translated version:
 - Use natural, idiomatic translations (not literal word-for-word)
 - **Spanish register:** Use tuteo (tú/tienes/puedes), NOT voseo (vos/tenés/podés). Prefer Colombian Spanish phrasing.
 - Do NOT translate code blocks, CLI commands, or technical identifiers
+- **Direct quotes in English:** When a Spanish post includes a direct quote originally spoken/written in English, keep the original English text in italics and add a Spanish translation in parentheses immediately after. Example: *"Express my will to my agents."* ("Expresar mi voluntad a mis agentes.") — This preserves the original voice while ensuring readability for Spanish-speaking audiences.
 - Maintain the same markdown structure (headings, lists, emphasis)
 
 ## Hero Layouts
