@@ -127,7 +127,7 @@ Here's what this site's looks like:
 ...
 
 ## Blog Series
-- Building XergioAleX.com (8 chapters)
+- Building XergioAleX.com (9 chapters)
 - Trading Journey (3 chapters)
 
 ## Crawling Guidance

@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "javascript"]
 keywords: ["migrar Astro 5 a 6 guía", "Astro 6 cambios importantes Vite 7", "compilador Rust Astro 6 benchmark", "compilador Rust Astro 6 rendimiento", "Astro 6 velocidad dev server", "Astro 6 Zod 4 content collections", "cómo actualizar Astro a versión 6", "Astro 6 novedades migración"]
 series: "building-xergioalex"
-seriesOrder: 8
+seriesOrder: 9
 ---
 
 Los que me conocen saben que me gusta mucho Astro — ya [escribí un poco al respecto](/es/blog/astro-and-svelte-the-future-of-web-development/). Así que cuando publicaron [esto en X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — ya estaba a la expectativa.

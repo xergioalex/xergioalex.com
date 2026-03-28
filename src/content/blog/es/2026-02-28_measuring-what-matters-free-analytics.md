@@ -1,13 +1,13 @@
 ---
 title: "Midiendo lo que Importa: Cómo Configuré Analytics Gratis Sin Sacrificar el Rendimiento"
-description: "Capítulo tres sobre XergioAleX.com: analíticas gratis con herramientas privacy-first, puntajes Lighthouse 100 y sin banners de cookies."
+description: "Capítulo cuatro sobre XergioAleX.com: analíticas gratis con herramientas privacy-first, puntajes Lighthouse 100 y sin banners de cookies."
 pubDate: "2026-02-28"
 heroImage: "/images/blog/posts/measuring-what-matters-free-analytics/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development"]
 keywords: ["analytics gratis sin cookies", "Umami Analytics alternativa a Google Analytics", "Cloudflare Web Analytics", "analíticas privadas sitio estático", "cómo medir visitas sin perder rendimiento Lighthouse", "analytics sin banners de cookies", "stack de analíticas gratuito para sitios web"]
 series: "building-xergioalex"
-seriesOrder: 3
+seriesOrder: 4
 ---
 
 El sitio estaba construido. Los [puntajes de Lighthouse](/es/blog/lighthouse-perfect-scores/) eran 100 en todas las categorías — Performance, Accessibility, Best Practices, SEO. Todo lo que podía medir sobre el sitio en sí se veía perfecto.
@@ -235,13 +235,14 @@ Todo esto con un script de 2KB, sin cookies, y cero impacto en los puntajes de L
 
 ## Mirando Atrás
 
-Este fue el tercer capítulo de construir XergioAleX.com:
+Este fue el cuarto capítulo de construir XergioAleX.com:
 
 1. **Construyendo la plataforma** — arquitectura, decisiones de tecnología, el camino de una página a un sitio completo.
-2. **Perfeccionando los puntajes** — el trabajo meticuloso de lograr Lighthouse 100 en todas las categorías.
-3. **Midiendo el impacto** — agregar un stack completo de analytics sin deshacer nada de ese trabajo.
+2. **La marca** — la identidad visual del Ninja Coder que le dio alma al sitio.
+3. **Perfeccionando los puntajes** — el trabajo meticuloso de lograr Lighthouse 100 en todas las categorías.
+4. **Midiendo el impacto** — agregar un stack completo de analytics sin deshacer nada de ese trabajo.
 
-Cada capítulo se construyó sobre el anterior. Las decisiones arquitectónicas del capítulo uno (Astro, generación estática, islands) hicieron posible el capítulo dos. El trabajo de rendimiento del capítulo dos estableció la restricción para el capítulo tres: cualquier analytics que agregara no podía comprometer lo que ya había logrado.
+Cada capítulo se construyó sobre el anterior. Las decisiones arquitectónicas del capítulo uno (Astro, generación estática, islands) y la identidad de marca del capítulo dos le dieron al sitio su base. El trabajo de rendimiento del capítulo tres estableció la restricción para el capítulo cuatro: cualquier analytics que agregara no podía comprometer lo que ya había logrado.
 
 Rápido, accesible, medible y privado. Todo gratis. No tienes que elegir entre entender a tus usuarios y respetarlos.
 

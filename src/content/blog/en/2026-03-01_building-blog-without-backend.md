@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
 keywords: ["static blog architecture Astro", "Astro Content Collections scalable blog", "blog tag taxonomy system", "client-side search static JSON", "Fuse.js blog search", "Astro blog series navigation", "bilingual blog Astro architecture"]
 series: "building-xergioalex"
-seriesOrder: 4
+seriesOrder: 5
 ---
 
 Running a blog is not the same as running a site. A site is a set of pages. A blog is a system — posts that need to be discovered, filtered, searched, grouped, related to each other, and served to readers in multiple languages. With a handful of posts, that is trivial. As the library grows, you start feeling the structure. At hundreds of posts, the architecture either holds or it doesn't.
@@ -394,7 +394,7 @@ The translation strings for the UI (pagination labels, "published on," "related 
 
 ## Series: Connecting Posts Into a Narrative
 
-Some posts are standalone. Others are chapters in a story. The four posts in this "Building XergioAleX.com" series are a clear example — each builds on the last, and reading them in order gives you the full picture. The blog system needs to understand that relationship.
+Some posts are standalone. Others are chapters in a story. The posts in this "Building XergioAleX.com" series are a clear example — each builds on the last, and reading them in order gives you the full picture. The blog system needs to understand that relationship.
 
 The architecture follows the same pattern as tags: a Content Collection for metadata, frontmatter fields on posts, and build-time resolution.
 
@@ -416,7 +416,7 @@ Posts opt into a series with two frontmatter fields:
 
 ```yaml
 series: "building-xergioalex"
-seriesOrder: 4
+seriesOrder: 5
 ```
 
 That is it — one identifier and a position number. The system does the rest.
@@ -509,7 +509,7 @@ At 1000 posts, this matters enormously. You do not want to migrate a thousand fi
 
 ## Reflecting on This Chapter
 
-Every chapter in this series has been about making a decision that costs something now in exchange for a simpler path later. Chapter one: build with Astro's constraints and get performance for free. Chapter two: invest in accessibility and get a passing grade from every audit tool. Chapter three: choose lightweight analytics tools and keep the scores you worked for. Chapter four: design the content architecture correctly before the content outgrows the container.
+Every chapter in this series has been about making a decision that costs something now in exchange for a simpler path later. Chapter one: build with Astro's constraints and get performance for free. Chapter two: invest in visual identity and give the site a soul. Chapter three: invest in accessibility and get a passing grade from every audit tool. Chapter four: choose lightweight analytics tools and keep the scores you worked for. Chapter five: design the content architecture correctly before the content outgrows the container.
 
 The taxonomy system I built handles hundreds or thousands of posts without any structural changes — just new content files. The series system connects related posts into a navigable narrative with a floating indicator that makes the connection discoverable. The search runs client-side from a static JSON index with no backend infrastructure to maintain. The bilingual system scales to any new post as a natural workflow, not a chore. Every page is pre-rendered static HTML with zero runtime cost to the user.
 

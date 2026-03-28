@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "javascript"]
 keywords: ["Astro 6 migration guide", "upgrade Astro 5 to 6", "Astro 6 breaking changes Vite 7", "Astro 6 Rust compiler benchmark", "Astro 6 Rust compiler performance", "Astro 6 dev server speed", "Astro 6 Zod 4 content collections", "migrate Astro site to v6"]
 series: "building-xergioalex"
-seriesOrder: 8
+seriesOrder: 9
 ---
 
 People who know me know I love Astro — I've [written about why](/blog/astro-and-svelte-the-future-of-web-development/). So when they dropped [this on X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — I was already watching.

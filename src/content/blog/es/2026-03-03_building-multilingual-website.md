@@ -7,7 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['tech', 'web-development']
 keywords: ["sitio web multilingüe con Astro", "cómo agregar múltiples idiomas en Astro", "i18n con Astro sin plugins", "sistema de traducciones tipado en TypeScript", "arquitectura multilingüe para sitios estáticos", "inglés y español con Astro", "Page Wrapper pattern Astro i18n"]
 series: "building-xergioalex"
-seriesOrder: 5
+seriesOrder: 6
 ---
 
 Hay un hilo que ha estado presente en cada capítulo de esta serie, mencionado frecuentemente pero nunca con su propia historia: este sitio habla dos idiomas.

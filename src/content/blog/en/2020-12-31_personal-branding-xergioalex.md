@@ -6,6 +6,8 @@ heroImage: "/images/blog/posts/personal-branding-xergioalex/hero.webp"
 heroLayout: "side-by-side"
 tags: ["portfolio", "personal", "design"]
 keywords: ["XergioAleX ninja coder brand", "personal brand developer identity", "ninja coder logo design", "developer personal branding", "tech personal brand visual identity", "XergioAleX logo color palette", "Koru Daniel Vasquez branding"]
+series: "building-xergioalex"
+seriesOrder: 2
 ---
 
 I spent years building products, writing code, and shipping features — but I never really thought about how I presented myself visually. My GitHub profile, my talks, my social media... everything felt disconnected. At some point I realized I wanted something that tied it all together. Something that felt like *me*.

@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["track AI bot crawlers analytics", "GPTBot ClaudeBot tracking middleware", "Cloudflare Pages functions middleware", "AI crawler analytics Umami", "server-side bot detection edge", "track AI crawlers no client JS", "Cloudflare edge middleware TypeScript"]
 series: "building-xergioalex"
-seriesOrder: 7
+seriesOrder: 8
 ---
 
 This site runs on Cloudflare Pages. One of the things that comes with the platform is a `functions/` directory — drop a TypeScript file in there, and Cloudflare auto-detects it and deploys it as edge middleware. Every request passes through it. Zero infrastructure to manage.
