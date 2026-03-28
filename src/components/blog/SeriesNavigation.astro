@@ -55,20 +55,23 @@ const nextSlug = seriesInfo.nextPost
         const href = `${blogPrefix}/${slug}/`;
         return (
           <li class="flex items-baseline gap-2 text-sm">
-            <span class={`shrink-0 font-mono text-xs ${isCurrent ? 'font-bold text-blue-700 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}>
-              {t.seriesChapter(item.seriesOrder)}
-            </span>
             {isCurrent ? (
-              <span class="font-bold text-gray-900 dark:text-white" aria-current="page">
+              <span class="flex items-baseline gap-2 font-bold text-gray-900 dark:text-white" aria-current="page">
+                <span class="shrink-0 font-mono text-xs">
+                  {t.seriesChapter(item.seriesOrder)}
+                </span>
                 {item.post.data.title}
               </span>
             ) : (
               <a
                 href={href}
-                class="text-blue-600 transition-colors hover:text-blue-800 hover:underline dark:text-blue-400 dark:hover:text-blue-200"
+                class="flex items-baseline gap-2 text-blue-600 transition-colors hover:text-blue-800 hover:underline dark:text-blue-400 dark:hover:text-blue-200"
                 data-umami-event="series_nav"
                 data-umami-event-action="chapter"
               >
+                <span class="shrink-0 font-mono text-xs no-underline">
+                  {t.seriesChapter(item.seriesOrder)}
+                </span>
                 {item.post.data.title}
               </a>
             )}
