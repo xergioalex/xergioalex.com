@@ -1,8 +1,8 @@
 ---
-title: "Learning to Build Agents: An Agent Is Not a Prompt"
+title: "Becoming an AI Engineer: An Agent Is Not a Prompt"
 description: "Most people think an agent is an LLM with tools. They're wrong. A real agent is a system — and building one requires a different kind of engineering."
 pubDate: "2026-04-01"
-heroImage: "/images/blog/posts/an-agent-is-not-a-prompt/hero.webp"
+heroImage: "/images/blog/posts/becoming-an-ai-engineer/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
 keywords: ["building AI agents 2026", "AI engineer craft", "agent architecture layers", "LLM agent systems design", "agent is not a prompt", "AI engineering discipline", "agent frameworks landscape 2026"]
@@ -39,7 +39,7 @@ None of these are model failures. The model does exactly what you'd expect a lan
 [Simon Willison](https://simonwillison.net/) has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
 
 <figure class="dark-bg-container">
-  <img src="/images/blog/posts/an-agent-is-not-a-prompt/demo-vs-system-en.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2-3 tools) versus what a production agent system needs — 11 layers from model and state management to observability and evaluation" width="2048" height="1268" loading="lazy" />
+  <img src="/images/blog/posts/becoming-an-ai-engineer/demo-vs-system-en.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2-3 tools) versus what a production agent system needs — 11 layers from model and state management to observability and evaluation" width="2048" height="1268" loading="lazy" />
   <figcaption>An agent demo needs 3 components. A production agent needs at least 11 engineering layers.</figcaption>
 </figure>
 

@@ -1,8 +1,8 @@
 ---
-title: "Aprendiendo a construir agentes: Un agente no es un prompt"
+title: "Convirtiéndote en AI Engineer: Un agente no es un prompt"
 description: "La mayoría piensa que un agente es un LLM con herramientas. Un agente real es un sistema — y construirlo requiere otra clase de ingeniería."
 pubDate: "2026-04-01"
-heroImage: "/images/blog/posts/an-agent-is-not-a-prompt/hero.webp"
+heroImage: "/images/blog/posts/becoming-an-ai-engineer/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
 keywords: ["construir agentes de IA 2026", "ingeniero de IA oficio", "capas de arquitectura de agentes", "diseño de sistemas de agentes LLM", "un agente no es un prompt", "disciplina de ingeniería de IA", "ecosistema de frameworks de agentes 2026"]
@@ -39,7 +39,7 @@ Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que espera
 [Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 
 <figure class="dark-bg-container">
-  <img src="/images/blog/posts/an-agent-is-not-a-prompt/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1409" height="915" loading="lazy" />
+  <img src="/images/blog/posts/becoming-an-ai-engineer/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1409" height="915" loading="lazy" />
   <figcaption>Una demo de agente necesita 3 componentes. Un agente en producción necesita al menos 11 capas de ingeniería.</figcaption>
 </figure>
 
