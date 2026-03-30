@@ -1,0 +1,262 @@
+---
+title: "Construyendo Agentes #1 — El nuevo oficio: Por qué construir agentes es un tipo diferente de ingeniería"
+description: "Construir agentes no se trata de aprender una librería. Es aprender un nuevo oficio de ingeniería — basado en estado, memoria, herramientas y criterio."
+pubDate: "2026-04-01"
+heroImage: "/images/blog/posts/the-new-craft/hero.webp"
+heroLayout: "side-by-side"
+tags: ["tech", "ai"]
+keywords: ["construir agentes de IA 2026", "ingeniero de IA oficio", "capas de arquitectura de agentes", "diseño de sistemas de agentes LLM", "de prompt a sistema IA", "disciplina de ingeniería de IA", "ecosistema de frameworks de agentes 2026"]
+series: "building-agents"
+seriesOrder: 1
+---
+
+Todo el mundo recuerda su primera demo de agentes.
+
+La mía fue a finales de 2024. Conecté a Claude con un lector de archivos, una herramienta de búsqueda web y un ejecutor de código, y escribí: "Investiga este tema y escribe un resumen con ejemplos de código." Funcionó. No a la perfección — alucinó una URL y se confundió en la tercera llamada a una herramienta — pero lo suficientemente bien como para que me recostara en la silla y sintiera algo que no había sentido desde la primera vez que vi una página web cargada desde un servidor que yo mismo había construido. Se lo mostré a un colega y los dos tuvimos la misma reacción: "Si esto funciona así ahora, imagínate dónde estará en un año."
+
+Un año después, puedo decirte exactamente dónde está. Y la respuesta no es lo que ninguno de los dos esperaba.
+
+He pasado meses construyendo sistemas de agentes — no demos, no prototipos, sino sistemas que corren en producción, manejan tareas reales y fallan ocasionalmente de formas que me enseñan más que cualquier tutorial. La lección más grande no fue sobre un framework específico ni sobre qué modelo llamar. Fue esta: construir agentes no se trata de aprender una librería. Se trata de aprender un nuevo tipo de ingeniería.
+
+Esa conclusión es de lo que trata esta serie.
+
+---
+
+## La Seducción de la Demo
+
+Las demos son, de verdad, impresionantes. Ese es el problema — o al menos, ahí es donde empieza el problema.
+
+Mira el video de lanzamiento de Devin y verás un agente levantando un entorno de desarrollo, escribiendo pruebas, enviando un fix a un repositorio y publicando una actualización en Slack. Mira a Claude Computer Use navegar un navegador, llenar un formulario y extraer resultados a una hoja de cálculo. Mira una sesión de AutoGPT de 2023 — incluso la versión temprana y torpe — investigando un tema de forma recursiva, escribiéndose subtareas a sí mismo y produciendo un informe estructurado. La reacción emocional es inmediata: *esto cambia todo.*
+
+Hay un patrón de pensamiento específico que sigue a cada demo poderosa. Va más o menos así: "Solo necesito descubrir sobre qué framework corre esto, pasar un fin de semana aprendiendo la API, y puedo construir algo parecido." La demo hace que el trabajo parezca incremental. Eliges una librería, escribes unos cuantos prompts, conectas algunas herramientas. Listo.
+
+No le voy a echar la culpa a nadie por pensar eso. Yo pensé exactamente lo mismo.
+
+---
+
+## La Brecha de la Que Nadie Habla
+
+La demo funcionó. Luego intenté usarla en algo real.
+
+Estaba construyendo un agente para automatizar una parte de nuestro flujo de contenido — recopilar investigación de múltiples fuentes, sintetizarla, redactar un documento estructurado y señalar todo lo que necesitara revisión humana. Debería haber sido sencillo. Tres herramientas, un objetivo claro, unas 200 líneas de código de orquestación.
+
+Tres semanas después, tenía algo que funcionaba quizás el 60% de las veces. El otro 40% era una mezcla de fallas que no podía predecir:
+
+El agente perdía el hilo de dónde estaba en el flujo de trabajo después de tres o cuatro llamadas a herramientas — no porque las herramientas fallaran, sino porque la ventana de contexto se estaba llenando con resultados intermedios y el modelo empezaba a tratar observaciones antiguas como si fueran nuevas. Lo llamé "amnesia de estado" en mis notas. El nombre real es colapso de contexto.
+
+A veces llamaba a la herramienta correcta con los parámetros incorrectos — no incorrectos de forma aleatoria, sino incorrectos con confianza, de un modo que sugería que había construido una interpretación plausible pero equivocada de lo que la herramienta esperaba. Mal uso de herramientas, y no era un problema del modelo — los esquemas de las herramientas eran ambiguos.
+
+Ocasionalmente entraba en lo que empecé a llamar "bucles de alucinación" — repitiendo la misma consulta de búsqueda con frases ligeramente distintas, cada vez obteniendo resultados levemente diferentes, ninguno satisfactorio, hasta que se agotaba el tiempo o producía un resumen confuso que mezclaba hechos de cuatro bucles distintos.
+
+Ninguno de estos era un fallo del modelo. El modelo hacía exactamente lo que esperarías que hiciera un modelo de lenguaje dados los inputs que recibía. Eran fallas de arquitectura. El sistema no tenía una gestión de estado adecuada. Las definiciones de las herramientas no imponían contratos de parámetros. No había detección de bucles, ni mecanismo de puntos de control, ni forma de inspeccionar lo que realmente estaba pasando dentro de una ejecución de varios pasos.
+
+Simon Willison tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
+
+<div class="dark-bg-container">
+  <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo (modelo, prompt, 2 herramientas) frente a lo que necesita un sistema de agentes en producción (estado, memoria, manejo de errores, observabilidad, evaluación y más)" width="1200" height="700" loading="lazy" />
+</div>
+
+---
+
+## Lo Que la Mayoría Cree Que Es un Agente
+
+Si lees los primeros cien tutoriales que aparecen cuando buscas "cómo construir un agente de IA," obtienes un modelo mental sorprendentemente consistente:
+
+> Un agente es un LLM que puede usar herramientas.
+
+Eso es todo. El código de inicio rápido se ve algo así: define unas cuantas funciones, cuéntale al modelo sobre ellas, ponlas en un bucle, imprime el resultado. Diecisiete líneas de Python. "Ya construiste un agente."
+
+El modelo no está del todo equivocado. Un agente sí necesita un modelo, y sí necesita herramientas. Pero llamar a eso un agente es como llamar a una aplicación web "un servidor que devuelve HTML." Técnicamente cierto. Prácticamente inútil como principio de diseño. En el momento en que intentas construir algo que sobreviva al uso real, el modelo mental de diecisiete líneas se derrumba.
+
+¿De dónde viene este modelo? Principalmente de las demos. Los inicios rápidos de los frameworks están optimizados para el "momento aha" — lograr que algo funcione en cinco minutos. Eso está bien para el marketing. Es activamente engañoso para la ingeniería. El inicio rápido no te muestra qué pasa cuando el agente necesita recordar algo de tres pasos atrás. No te muestra qué pasa cuando una herramienta falla y el agente necesita decidir si reintentar o escalar. No te muestra cómo saber si el agente está funcionando correctamente, o si simplemente produce resultados que suenan plausibles.
+
+Pasé unos dos meses tratando los frameworks como la respuesta. Elegí LangChain porque tenía más tutoriales. Luego me topé con el problema de gestión de estado y cambié a LangGraph. LangGraph es realmente excelente — posiblemente el tratamiento más explícito de estado y orquestación de agentes disponible ahora mismo — pero cambiar de framework no resolvió mis problemas de arquitectura. Me dio mejores herramientas para implementar soluciones que yo igual tenía que diseñar.
+
+---
+
+## Lo Que un Agente Real Realmente Contiene
+
+Aquí está la lista honesta. Lo que un sistema de agentes en producción realmente requiere:
+
+**Capa de modelo** — Qué modelo, qué proveedor, cómo manejar los límites de tasa y los fallos. Más fácil de lo que suena hasta que necesitas fallbacks.
+
+**Ingeniería de prompts** — No solo el system prompt. La estrategia de contexto completa: qué va en el prompt estático, qué se inyecta dinámicamente, cómo estructurar los resultados de las herramientas, cómo manejar conversaciones largas sin degradar la calidad.
+
+**Gestión de estado** — Todo lo que el agente sabe en cada paso. No solo "el historial de conversación" sino: tarea actual, puntos de control de progreso, resultados intermedios, qué se ha intentado, qué está pendiente. Este es su propio problema de diseño.
+
+**Memoria de corto plazo** — Lo que el agente recuerda dentro de una sesión. No es lo mismo que la ventana de contexto. Tienes que decidir qué conservar, qué comprimir, qué descartar.
+
+**Memoria de largo plazo** — Lo que el agente recuerda entre sesiones. Requiere almacenamiento, recuperación y decisiones sobre qué vale la pena recordar. La mayoría de las demos se saltan esto por completo.
+
+**Recuperación de conocimiento (RAG)** — Cómo el agente accede al conocimiento externo. Estrategia de fragmentación, elección de embeddings, método de recuperación, reranking. Una disciplina de ingeniería distinta con sus propios modos de fallo.
+
+**Ecosistema de herramientas** — No solo "funciones que el modelo puede llamar" sino: diseño de esquemas, validación de parámetros, manejo de errores, gestión de efectos secundarios, límites de permisos. Cada herramienta es una superficie para el fallo.
+
+**Orquestación del flujo de trabajo** — Cómo se estructuran, secuencian, ramifican y reúnen las tareas de varios pasos. Cuándo ejecutar en paralelo, cuándo esperar, cuándo abandonar.
+
+**Capa de aprobación y seguridad** — Qué requiere confirmación humana. Qué nunca debería ocurrir automáticamente. Cómo implementar paradas duras. Frecuentemente es una idea de último momento. Debería ser una preocupación de diseño de primer orden.
+
+**Observabilidad y trazabilidad** — ¿Puedes ver lo que el agente realmente hizo? ¿Qué llamadas a herramientas se hicieron, con qué parámetros, en qué orden, con qué resultados? Sin esto, depurar es adivinar.
+
+**Evaluación** — ¿Cómo sabes si el agente está funcionando correctamente? No solo "¿produjo una salida?" sino "¿produjo la salida correcta?" Esta es probablemente la capa menos discutida en todo el campo.
+
+<div class="dark-bg-container">
+  <img src="/images/blog/posts/the-new-craft/agent-architecture-stack.webp" alt="Diagrama de arquitectura en capas que muestra las capas de un sistema de agentes de abajo a arriba: Modelo, Ingeniería de Prompts, Gestión de Estado, Memoria (corto y largo plazo), Recuperación de Conocimiento, Ecosistema de Herramientas, Orquestación del Flujo de Trabajo, Aprobación y Seguridad, Observabilidad, Evaluación" width="1200" height="800" loading="lazy" />
+</div>
+
+Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ellas no existía como campo con nombre hace cinco años. Todas son necesarias. Puedes ignorar algunas en una demo. No puedes ignorar ninguna en producción.
+
+---
+
+## El Ecosistema Hoy
+
+El ecosistema que ha crecido alrededor de la construcción de agentes es — sinceramente — impresionante. No en el sentido del hype. En el sentido de "esto señala algo real."
+
+En el lado de frameworks y SDKs: **LangChain/LangGraph** se ha convertido en el referente con más de 100K estrellas en GitHub, el ecosistema más maduro y probablemente el tratamiento más explícito del estado de agentes disponible en herramientas de código abierto. **CrewAI** se enfoca en la orquestación de múltiples agentes — varios agentes colaborando en tareas — y ha encontrado un seguimiento sólido para ese patrón específico. **AutoGen/AG2**, el enfoque de Microsoft, adopta un modelo conversacional de múltiples agentes. **Mastra** es un framework con TypeScript como primera clase que vale la pena seguir si estás construyendo en un ecosistema JavaScript. **Vercel AI SDK** apuesta por lo web-nativo y el streaming.
+
+Luego están los SDKs de primera parte de los propios proveedores de modelos. Anthropic lanzó el **Claude Agent SDK**. OpenAI lanzó su **Agents SDK**. Google publicó **ADK** (Agent Development Kit). Cuando los proveedores de modelos empiezan a lanzar frameworks con opiniones propias para construir con sus modelos, significa que han pasado de "aquí está la API" a "así es como realmente construyes con esto."
+
+Y por debajo de todo, está la capa de protocolo. **MCP — Model Context Protocol** — alcanzó 97 millones de descargas mensuales del SDK antes de ser donado a la Agentic AI Foundation para su gestión abierta. **A2A** (Agent-to-Agent) de Google y **ACP** de OpenAI están atacando la interoperabilidad entre agentes. Estos son movimientos de infraestructura aburridos. Los movimientos de infraestructura aburridos importan.
+
+La observación a la que sigo volviendo: cuando Stripe, Coinbase, Google, Anthropic, Microsoft y decenas de startups bien financiadas están todas construyendo infraestructura para agentes simultáneamente, algo real está pasando. No necesariamente en la dirección que ninguna empresa individual predice, pero real. Esto no es una moda que quedará como nota al pie en cinco años.
+
+No tengo idea de qué frameworks específicos van a ganar. Esa es una pregunta aparte. Lo que el ecosistema te dice es que el problema subyacente — construir sistemas de agentes confiables — es difícil e importante en igual medida. La inversión en infraestructura confirma la existencia del problema.
+
+---
+
+## Por Qué "AI Engineer" Está Empezando a Significar Algo
+
+Swyx acuñó el término "AI Engineer" en 2023 en un ensayo en Latent Space. En ese momento se sentía aspiracional — una forma de describir lo que algunas personas empezaban a hacer antes de que el rol tuviera nombre. Tres años después es un título de trabajo en miles de ofertas, con expectativas específicas asociadas.
+
+Esto es lo que las empresas realmente están buscando contratar: no "¿puedes llamar la API de OpenAI?" — cualquiera puede hacer eso en una tarde. Quieren saber: ¿puedes diseñar la gestión de estado para un flujo de trabajo de agentes de múltiples turnos? ¿Puedes implementar un sistema de memoria que escale? ¿Puedes depurar un agente que produce resultados sutilmente incorrectos? ¿Puedes construir un pipeline de evaluación que te diga si una nueva versión del modelo es realmente mejor? ¿Puedes diseñar esquemas de herramientas que reduzcan el mal uso sin sobre-restringir la flexibilidad del modelo?
+
+Ese es un conjunto de habilidades diferente al de ML Engineering, que se enfoca en el entrenamiento, el ajuste fino y la evaluación en la capa del modelo. También es diferente de la ingeniería de software tradicional, aunque se apoya mucho en ella. El AI Engineer opera en el espacio entre ambas: entiende los modelos lo suficiente como para trabajar con ellos de forma confiable, y entiende los sistemas lo suficiente como para construir la infraestructura que hace que los modelos sean útiles.
+
+Creo que el rol seguirá cristalizándose. No porque alguien decidiera inventar un nuevo rol, sino porque el trabajo lo exige. Cuando la inteligencia central de tu sistema es probabilística y el resto del sistema tiene que ser confiable, necesitas ingenieros que puedan pensar en ambos registros simultáneamente.
+
+---
+
+## La Tensión en el Corazón de Todo
+
+Esto es lo que encuentro más interesante sobre construir agentes — y lo que creo que la mayoría de los tutoriales pierden por completo.
+
+Hemos pasado treinta años construyendo sistemas deterministas. Entrada → lógica → salida. Los mismos inputs siempre producen los mismos outputs. Depurar significa rastrear la lógica. Probar significa cubrir los casos extremos. La confiabilidad significa escribir la lógica correctamente.
+
+Los agentes rompen con esto. Parte de la inteligencia del sistema es probabilística — los mismos inputs podrían producir outputs diferentes en distintas ejecuciones. El modelo razona, y el razonamiento tiene varianza. Eso no es un bug. Es la característica. La capacidad del modelo para manejar situaciones novedosas, para generalizar, para producir outputs útiles para inputs que nunca ha visto — todo eso viene de la misma naturaleza probabilística que lo hace impredecible.
+
+Pero la confiabilidad del sistema igualmente tiene que ingeniarse. A los usuarios no les importa que el modelo subyacente sea probabilístico. Les importa si el agente hace lo que se supone que debe hacer, de forma consistente, sin cometer errores catastróficos.
+
+Entonces terminas con esta tensión: abraza el probabilismo en la capa del modelo, ingenia la confiabilidad en todo lo demás. Outputs estructurados para restringir lo que devuelve el modelo. Validación para verificar si tiene sentido. Lógica de reintento para cuando no lo tiene. Puertas de aprobación para acciones irreversibles. Evaluación para verificar que el sistema está mejorando con el tiempo.
+
+Esta tensión define cada decisión de diseño en los sistemas de agentes. ¿Cuánto confías en el modelo? ¿Dónde agregas salvaguardas? ¿Qué hardcodeas versus qué dejas flexible? No hay una respuesta universal — depende de la tarea, las apuestas, el usuario. Pero pensar en estos compromisos es, yo diría, la habilidad intelectual central del AI Engineer.
+
+Los ingenieros civiles aprendieron a construir con madera, luego con acero, luego con concreto. Cada material requirió nuevas disciplinas — nuevas formas de pensar sobre carga, fallo, tolerancias. Los LLMs son un nuevo material para construir software. La disciplina todavía se está inventando.
+
+---
+
+## Mi Propio Descubrimiento
+
+Honestamente, no me di cuenta de lo profundo que iba esto hasta que ya estaba dentro.
+
+Mi progresión fue así: "Solo voy a usar LangChain" → "¿por qué el estado sigue comportándose raro?" → "bien, necesito LangGraph y un diseño de estado adecuado" → "espera, el sistema de memoria que asumí que sería sencillo es su propio problema completo" → "estos esquemas de herramientas están causando mal uso, necesito repensar las interfaces" → "no tengo idea si esto está funcionando correctamente, necesito evaluación" → "no puedo depurar esto sin trazas."
+
+Cada nueva capacidad revelaba una nueva capa. Cada capa tenía sus propios modos de fallo, sus propios patrones de diseño, su propio cuerpo de conocimiento que absorber.
+
+La primera sesión de depuración real que cambió mi perspectiva fue un bug de gestión de estado en ese agente de flujo de contenido. Pasé tres horas tratando de entender por qué el agente trataba una tarea que ya había completado como si estuviera pendiente. El bug no estaba en ninguna línea de código individual — estaba en el esquema de estado. Había diseñado el estado como un diccionario plano, y dos partes diferentes del flujo de trabajo estaban escribiendo en la misma clave con suposiciones diferentes sobre lo que representaba el valor. El modelo no estaba equivocado. Mi diseño de estado estaba equivocado.
+
+Fue entonces cuando dejé de pensar "estoy aprendiendo un framework" y empecé a pensar "estoy aprendiendo un oficio."
+
+La serie paralela que he estado escribiendo — Working with Agents — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que descubrí cuando intenté *construirlos*. Es la capa que está debajo de esa experiencia.
+
+---
+
+## Por Qué los Frameworks No Son Suficientes
+
+Esto es, creo, lo más importante que puedo decirte antes de entrar en esta serie.
+
+Los frameworks resuelven la sintaxis, no la arquitectura. Puedes conocer la API de StateGraph de LangGraph al derecho y al revés y aun así construir un agente terrible. El framework te da herramientas. No toma tus decisiones de diseño.
+
+El framework no te enseña: cómo diseñar el estado para tu flujo de trabajo específico, cuándo la memoria de corto plazo es suficiente versus cuándo necesitas almacenamiento persistente de largo plazo, qué herramientas deberían ser de solo lectura versus cuáles tienen efectos secundarios que requieren puertas de aprobación, cómo estructurar un conjunto de evaluación que realmente te diga si el agente está funcionando correctamente, qué hacer cuando el modelo devuelve con confianza algo plausible pero incorrecto.
+
+Django no te enseña a construir una buena aplicación web. Rails no te enseña buen diseño de bases de datos. LangGraph no te enseña buen diseño de agentes. Estas herramientas implementan patrones bien. No eligen los patrones por ti.
+
+Esto no significa que los frameworks sean malos — estaría pasándola mucho más difícil sin el modelo de estado explícito de LangGraph y las trazas de LangSmith. La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar que haya encontrado. Estas herramientas son necesarias. Simplemente no son suficientes.
+
+Las decisiones arquitectónicas — las que realmente determinan si tu agente es útil o no — están por encima de la capa del framework. De eso trata esta serie.
+
+---
+
+## El Nuevo Stack
+
+Esto es lo que he encontrado que realmente necesitas pensar, capa por capa. Cada una tiene su propio capítulo.
+
+**Estado** — La base. Todo lo que el agente sabe, recuerda y lleva entre pasos. El mal diseño de estado causa más fallas en agentes que cualquier otro factor individual. Capítulo 3.
+
+**Memoria** — No es lo mismo que el contexto. Los problemas distintos de qué retiene el agente dentro de una sesión, qué persiste entre sesiones, cómo funciona la recuperación, y cuándo la memoria empeora las cosas en lugar de mejorarlas. Capítulo 4.
+
+**Conocimiento y recuperación** — Cómo los agentes acceden a información externa. RAG, fragmentación, embeddings, reranking, y el problema sorprendentemente difícil de saber cuándo el contenido recuperado es realmente relevante. Capítulo 5.
+
+**Herramientas** — En el momento en que un agente puede actuar, el problema de diseño cambia. Esquemas de herramientas, límites de permisos, efectos secundarios, flujos de aprobación. Aquí es donde los agentes se convierten en operadores en lugar de asistentes. Capítulo 6.
+
+**Confiabilidad** — Hacer que un sistema probabilístico se comporte de forma consistente. Outputs estructurados, validación, reintentos, manejo de errores, patrones de humano en el bucle. Capítulo 7.
+
+**Observabilidad** — Si no puedes ver el interior de un agente en ejecución, estás volando a ciegas. Trazas, árboles de ejecución, inspección de herramientas, datasets de evaluación. La capa más omitida, y la más necesaria. Capítulo 8.
+
+Al final de esta serie, tendrás una imagen completa de lo que realmente se necesita para construir sistemas de agentes que funcionen de forma confiable — no solo en demos, sino en producción.
+
+---
+
+## Lo Que Esta Serie No Será
+
+Vale la pena ser directo al respecto.
+
+Esto no es un tutorial. No podrás copiar y pegar nada de esta serie y tener un agente funcionando. El objetivo no es darte código — es cambiar cómo piensas sobre los problemas que el código tiene que resolver.
+
+Esto no es una comparación de frameworks. "LangChain vs CrewAI" no es el punto. Los problemas de ingeniería subyacentes existen independientemente del framework que uses. Si me enfoco en herramientas específicas, es para ilustrar un patrón, no para recomendar un ganador.
+
+Esto no es documentación. No voy a explicar cómo inicializar un `AgentExecutor`. Los SDKs hacen eso mejor de lo que yo podría. Lo que los SDKs no hacen es explicar el pensamiento de diseño detrás de por qué querrías ciertos patrones, dónde esos patrones fallan, y qué hacer cuando lo hacen.
+
+Esto no es hype. Construir agentes es interesante y el campo está evolucionando rápido. También es difícil, y algunas cosas que la gente afirma que son fáciles en realidad no lo son. Voy a ser honesto sobre ambos lados.
+
+Lo que sí será: una exploración narrativa de cada capa de ingeniería, que abre con algo concreto — un fallo real, un descubrimiento sorpresivo, una idea equivocada que yo tenía — y avanza hacia la perspectiva técnica, luego hacia la lección más profunda sobre lo que el oficio realmente requiere.
+
+---
+
+## La Analogía del Oficio
+
+A esto sigo volviendo.
+
+Construir agentes se parece más a aprender un oficio que a aprender una tecnología. De la misma forma en que la carpintería no es solo "saber qué es un formón" — es entender la veta, el diseño de las uniones, qué pasa cuando la madera se mueve con la humedad, la sensación específica de un corte que va bien versus uno que va mal. Puedes leer sobre los patrones de la veta durante un año y aun así producir muebles que se agrietan. El conocimiento vive en las manos y en la experiencia acumulada de los fracasos.
+
+La arquitectura funciona igual. Puedes conocer todos los principios — carga, ciencia de materiales, sistemas estructurales — y aun así diseñar un edificio con un defecto que solo se revela cuando el viento golpea desde una dirección específica en una estación específica. La disciplina se construye a partir del reconocimiento de patrones acumulado a través del encuentro con sistemas reales.
+
+Los agentes son así. Los modelos conceptuales son necesarios pero insuficientes. En el momento en que construyes algo con requisitos reales de estado e interacciones reales con herramientas, aparecen casos extremos que ningún tutorial anticipó. Tu sistema de memoria recupera el contexto equivocado en un paso crítico y tienes que decidir: ¿agrego más lógica de recuperación, o simplifico el esquema? Tu herramienta falla a mitad de una operación de varios pasos y el agente necesita decidir si se completó o no — y tu gestión de estado o captura suficiente para recuperarse, o no. Estas son decisiones de criterio. El criterio viene de la experiencia.
+
+Por eso estoy escribiendo la serie como historias, no como especificaciones. El conocimiento de oficio vive en historias, no en documentación. La documentación te dice qué funciones existen. Las historias te dicen cuándo usarlas y qué pasa cuando no lo haces.
+
+---
+
+## Lo Que Viene
+
+Antes de que podamos construir algo significativo, necesitamos cuestionar lo que creemos saber sobre lo que un agente realmente es.
+
+En el próximo capítulo, voy a desmontar el modelo mental más persistente del campo — "un agente es un prompt con herramientas" — y reemplazarlo con algo que se ajusta mucho más de cerca a lo que los sistemas reales requieren.
+
+¿Esa primera demo que le mostré a mi colega? Era real. Era impresionante. Pero lo que ninguno de los dos vio — lo que la mayoría de las personas que ven demos de agentes todavía no ven — es todo lo que hay debajo. La magia no está en el modelo. Está en todo lo que lo rodea. De eso trata esta serie.
+
+---
+
+## Recursos
+
+- [Anthropic: Building Effective Agents](https://docs.anthropic.com/en/docs/build-with-claude/agent-patterns) — Guía fundamental sobre patrones de diseño de agentes de Anthropic; la referencia más clara para pensar en la arquitectura de agentes
+- [Andrew Ng: Agentic Design Patterns](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/) — La taxonomía canónica: reflexión, uso de herramientas, planificación, múltiples agentes; modelos mentales útiles para estructurar el comportamiento de los agentes
+- [Lilian Weng: LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) — Un estudio académico profundo sobre arquitecturas de agentes que se mantiene como referencia sólida años después de su publicación
+- [Chip Huyen: Building A Generative AI Platform](https://huyenchip.com/2024/07/25/genai-platform.html) — Marco de disciplina de ingeniería para sistemas de IA; cómo funciona realmente la infraestructura de IA en producción
+- [Swyx: Rise of the AI Engineer](https://www.latent.space/p/ai-engineer) — El ensayo que acuñó el rol y definió el conjunto de habilidades; todavía la mejor articulación de lo que separa la ingeniería de IA de las disciplinas adyacentes
+- [LangGraph Documentation](https://langchain-ai.github.io/langgraph/) — El tratamiento de framework más explícito sobre estado y orquestación de agentes disponible en código abierto
+- [Harrison Chase: What is a Cognitive Architecture?](https://blog.langchain.dev/what-is-a-cognitive-architecture/) — El concepto de sistemas de agentes como arquitecturas cognitivas; un reencuadre útil que conecta el diseño de agentes con cómo razonan los sistemas
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) — El estándar abierto para conectar IA a herramientas y fuentes de datos; ahora bajo la gestión de la Agentic AI Foundation
+- [Claude Agent SDK](https://docs.anthropic.com/en/docs/agents/overview) — El SDK de primera parte de Anthropic para construir sistemas de agentes con Claude
+- [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) — El framework de agentes de OpenAI, con buena documentación sobre transferencias y salvaguardas
+- [Simon Willison's Weblog](https://simonwillison.net/) — La perspectiva más consistentemente honesta y fundamentada sobre herramientas de IA y capacidades de agentes; se lee menos como hype, más como notas de campo
+- [Hamel Husain: Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/) — Enfoques prácticos para construir pipelines de evaluación para sistemas basados en LLMs; la capa que la mayoría omite
