@@ -147,7 +147,7 @@ The framework doesn't teach you: how to design state for your specific workflow,
 
 Django doesn't teach you to build a good web app. Rails doesn't teach you good database design. LangGraph doesn't teach you good agent design. These tools implement patterns well. They don't choose the patterns for you.
 
-This doesn't mean frameworks are bad — I'd be struggling a lot more without LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing. The LangChain community has produced more useful agent patterns than anywhere else I've found. These tools are necessary. They're just not sufficient.
+This doesn't mean frameworks are bad — LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing have become standard tools for good reason. The LangChain community has produced more useful agent patterns than anywhere else in the ecosystem. These tools are necessary. They're just not sufficient.
 
 The architectural decisions — the ones that actually determine whether your agent is useful or not — are above the framework layer. That's what this series is about.
 
