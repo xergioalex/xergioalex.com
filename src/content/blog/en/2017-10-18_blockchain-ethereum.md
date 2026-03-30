@@ -27,7 +27,10 @@ The talk had four parts:
 
 I started with Bitcoin because that's where most people's curiosity begins. Once you understand how Bitcoin works, blockchain clicks. And once you understand blockchain, Ethereum's value proposition — "What if the blockchain could run programs?" — makes perfect sense.
 
-![PereiraJs meetup — blockchain and cryptocurrencies](/images/blog/posts/blockchain-ethereum/pereira-js-meetup-audience.webp)
+<figure>
+  <img src="/images/blog/posts/blockchain-ethereum/pereira-js-meetup-audience.webp" alt="PereiraJs meetup — blockchain and cryptocurrencies" loading="lazy" />
+  <figcaption>The PereiraJs audience packed in for the blockchain and Ethereum session in October 2017.</figcaption>
+</figure>
 
 ---
 

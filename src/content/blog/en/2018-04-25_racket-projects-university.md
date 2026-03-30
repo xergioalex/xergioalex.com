@@ -111,7 +111,10 @@ You could type a mathematical function, and the program would:
 4. **Compute the derivative** symbolically — not numerically, but actually applying differentiation rules
 5. **Graph the derivative** alongside the original function
 
-![Function Plotter and Integrator](/images/blog/posts/racket-projects-university/hero.gif)
+<figure>
+  <img src="/images/blog/posts/racket-projects-university/hero.gif" alt="Function Plotter and Integrator" loading="lazy" />
+  <figcaption>The function plotter in action — parsing a polynomial, drawing it on a coordinate plane, and computing its symbolic derivative.</figcaption>
+</figure>
 
 The main file — `integrador y derivador.scm` — was a massive amount of Scheme code for such a concise language. We built a modular architecture before we even knew what "modular architecture" meant: a graphing engine (`graficador.scm`), an integrator (`integrador_final.scm`), a number parser (`convertir_a_numero.scm`), a polynomial validator (`verificar polinomio.scm`), and a coefficient/exponent handler.
 

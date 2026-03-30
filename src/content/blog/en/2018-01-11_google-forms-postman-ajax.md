@@ -20,11 +20,17 @@ First, go to [Google Forms](https://www.google.com/forms/about/) and create a fo
 
 Next, open the [form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) and inspect each field to find the `name` attributes of the inputs, which follow the format `entry.{id}`:
 
-![Inspecting form field names in browser DevTools](/images/blog/posts/google-forms-postman-ajax/postman-1.webp)
+<figure>
+  <img src="/images/blog/posts/google-forms-postman-ajax/postman-1.webp" alt="Inspecting form field names in browser DevTools" loading="lazy" />
+  <figcaption>Using browser DevTools to locate the <code>entry.*</code> input names needed to submit the form programmatically.</figcaption>
+</figure>
 
 > **Tip:** Another quick way to find all the field IDs is to inspect near the `<form>` tag, where you'll find `hidden` inputs whose `name` attributes start with `entry.`, containing all the form field identifiers:
 
-![Hidden fields with entry IDs inside the form tag](/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.webp)
+<figure>
+  <img src="/images/blog/posts/google-forms-postman-ajax/form-hidden-entries.webp" alt="Hidden fields with entry IDs inside the form tag" loading="lazy" />
+  <figcaption>The hidden <code>entry.*</code> inputs near the <code>&lt;form&gt;</code> tag — a quick alternative to inspecting each field individually.</figcaption>
+</figure>
 
 Once you have all the `name` values, you can submit the form by sending an HTTP request with [Postman](https://www.getpostman.com/):
 
@@ -37,11 +43,17 @@ https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5Spo
 
 2. Use `text/xml` as the `Content-Type` in the Headers:
 
-![Postman headers with Content-Type text/xml](/images/blog/posts/google-forms-postman-ajax/postman-2.webp)
+<figure>
+  <img src="/images/blog/posts/google-forms-postman-ajax/postman-2.webp" alt="Postman headers with Content-Type text/xml" loading="lazy" />
+  <figcaption>Postman request headers — setting <code>Content-Type: text/xml</code> as required by the Google Forms endpoint.</figcaption>
+</figure>
 
 3. Define the body content. For [this example form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform), the `name` values for name, email, phone, and message are `entry.568194084`, `entry.1303875942`, `entry.807958025`, and `entry.703388132` respectively:
 
-![Postman body with form entry fields](/images/blog/posts/google-forms-postman-ajax/postman-3.webp)
+<figure>
+  <img src="/images/blog/posts/google-forms-postman-ajax/postman-3.webp" alt="Postman body with form entry fields" loading="lazy" />
+  <figcaption>Postman request body with the four <code>entry.*</code> fields mapped to the form's name, email, phone, and message inputs.</figcaption>
+</figure>
 
 If you followed the steps above, you should be able to submit responses to the Google Form using Postman. Feel free to use [my example form](https://docs.google.com/forms/d/e/1FAIpQLSdnW7ixrovoi7V7sJQihWouPztZL4GoRMAP5SpoVh2UfMhxOQ/viewform) for testing; responses appear in this [spreadsheet](https://docs.google.com/spreadsheets/d/1r0O9A4oRT81jgzIodJRNL_1GA9WYgJsdRxWVjQULv00/edit#gid=1264787793).
 

@@ -52,7 +52,10 @@ That list captures most of the work. And importantly: **everything was built fro
 
 Here's the database schema I designed for the music library:
 
-![Database model for the music library](/images/blog/posts/music-library-php-my-first-website/db-model.webp)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/db-model.webp" alt="Database model for the music library" loading="lazy" />
+  <figcaption>SQLite schema with six tables: users, songs, artists, genres, albums, and a join table for user playlists.</figcaption>
+</figure>
 
 ---
 
@@ -62,19 +65,31 @@ I've kept the project on GitHub all these years. Here are some GIFs that show ho
 
 ### Homepage
 
-![Music Library PHP homepage](/images/blog/posts/music-library-php-my-first-website/home.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/home.gif" alt="Music Library PHP homepage" loading="lazy" />
+  <figcaption>The Music Library homepage — a simple PHP/HTML interface with navigation and featured content.</figcaption>
+</figure>
 
 ### User Registration and Login
 
-![User registration and login flow](/images/blog/posts/music-library-php-my-first-website/login-and-list-music.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/login-and-list-music.gif" alt="User registration and login flow" loading="lazy" />
+  <figcaption>Registration, login, and the user's personal song list — all built from scratch with PHP sessions.</figcaption>
+</figure>
 
 ### Browsing and Managing Songs
 
-![Adding songs, artists, genres, and albums](/images/blog/posts/music-library-php-my-first-website/add-song.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/add-song.gif" alt="Adding songs, artists, genres, and albums" loading="lazy" />
+  <figcaption>CRUD in action — adding new songs with artist, genre, and album metadata stored in SQLite.</figcaption>
+</figure>
 
 ### Search
 
-![Searching for songs](/images/blog/posts/music-library-php-my-first-website/search.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/search.gif" alt="Searching for songs" loading="lazy" />
+  <figcaption>The search feature, filtering songs by name in real time using PHP and SQLite queries.</figcaption>
+</figure>
 
 ---
 
