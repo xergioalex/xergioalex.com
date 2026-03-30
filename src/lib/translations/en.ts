@@ -969,6 +969,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'trading-journey': 'Trading Journey: From Futures to Algorithms',
     'aeo-from-invisible-to-cited': 'AEO: From Invisible to Cited',
     'working-with-agents': 'Working with Agents',
+    'building-agents': 'Building Agents',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -979,6 +980,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'How to build a website that AI answer engines can find, understand, and reference.',
     'working-with-agents':
       'From writing code to orchestrating AI agents — exploring the new role, real workflows, what breaks, judgment, context, and team adoption.',
+    'building-agents':
+      'What it actually takes to go from using AI tools to engineering reliable agent systems — architecture, skills, and mental models behind real AI agents.',
   },
 
   // Date formatting
