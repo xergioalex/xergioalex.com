@@ -36,7 +36,10 @@ Sé cómo se ve esto desde adentro. Me he pillado un fin de semana empezando un 
 
 Este es el ciclo. **Idea → agente → resultado → dopamina → idea → agente → resultado → dopamina.** No para. No tiene un punto final natural. Porque la fricción que antes te frenaba — las horas de debugging, la configuración, el código repetitivo — desapareció. La barrera entre "quiero construir esto" y "ya existe" colapsó a casi nada.
 
+<figure>
 <img src="/images/blog/posts/the-permanent-hackathon/dopamine-cycle-es.webp" alt="El ciclo de dopamina del desarrollo con agentes de IA: Idea lleva a Agente, Agente produce Resultado, Resultado dispara Dopamina, Dopamina genera la siguiente Idea — un ciclo sin fin" width="800" height="650" loading="lazy" style="max-width: 50%; display: block; margin: 0 auto;" />
+<figcaption>El ciclo de cuatro partes — sin punto de salida natural, porque la fricción que antes lo interrumpía desapareció con los agentes.</figcaption>
+</figure>
 
 Yo pensé que era el único que sentía esto hasta esa conversación en el meetup. No lo soy. Y no creo que seamos un grupo pequeño.
 

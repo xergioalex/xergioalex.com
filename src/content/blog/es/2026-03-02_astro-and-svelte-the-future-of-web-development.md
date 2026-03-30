@@ -281,11 +281,17 @@ En mi propio sitio, [xergioalex.com](https://xergioalex.com), los resultados son
 
 **Desktop — 100/100/100/100:**
 
+<figure>
 <img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-desktop.webp" alt="Resultados de Google PageSpeed Insights en desktop para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.3s First Contentful Paint, 0.3s LCP, 0ms Total Blocking Time, 0 CLS y 0.5s Speed Index" width="1208" height="932" loading="lazy" />
+<figcaption>Resultados en escritorio — LCP de 0.3s, TBT de 0ms. Un sitio Astro + Svelte completo con búsqueda, timelines y modo oscuro, no una demo recortada.</figcaption>
+</figure>
 
 **Mobile — 100/100/100/100:**
 
+<figure>
 <img src="/images/blog/posts/astro-and-svelte-the-future-of-web-development/pagespeed-mobile.webp" alt="Resultados de Google PageSpeed Insights en mobile para xergioalex.com mostrando puntajes perfectos de 100 en Performance, Accessibility, Best Practices y SEO — con 0.9s First Contentful Paint, 1.5s LCP, 0ms Total Blocking Time, 0 CLS y 0.9s Speed Index" width="1208" height="932" loading="lazy" />
+<figcaption>Resultados en móvil — el entorno con throttling de Google, el objetivo más difícil. TBT y CLS en cero, FCP por debajo de 1s.</figcaption>
+</figure>
 
 Desktop: 0.3s FCP, 0.3s LCP, 0ms TBT, 0 CLS. Mobile: 0.9s FCP, 1.5s LCP, 0ms TBT. Lograr un cuádruple 100 en desktop ya es bueno, pero en mobile — donde el throttling de Google es agresivo — es donde se complica de verdad. Con Astro + Svelte, la arquitectura trabaja *contigo*. Los defaults ya son rápidos; solo evitas frenarlo activamente.
 

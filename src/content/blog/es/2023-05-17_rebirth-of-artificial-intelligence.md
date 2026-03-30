@@ -42,6 +42,7 @@ Terminé con dos palabras: **transformación** y **oportunidad**. Las herramient
 
 ## Memorias del evento
 
+<figure>
 <div class="grid grid-cols-2 gap-4 md:grid-cols-3 not-prose">
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/title-slide-presentation.webp" alt="Presentación AI Rebirth con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/gartner-hype-cycle-slide.webp" alt="Slide del Gartner Hype Cycle" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
@@ -50,6 +51,8 @@ Terminé con dos palabras: **transformación** y **oportunidad**. Las herramient
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/audience-during-talk.webp" alt="Audiencia durante la charla" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/podium-and-audience.webp" alt="Pódium y audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Pereira Tech Talks, mayo de 2023 — slides, audiencia y el encuentro después del evento donde ocurrieron las conversaciones más interesantes.</figcaption>
+</figure>
 
 ---
 

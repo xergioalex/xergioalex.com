@@ -30,17 +30,26 @@ Pero no todos los crawlers se anuncian claramente. Una segunda capa captura bots
 
 Escribí sobre la implementación completa en [Rastreando lo Invisible: Cómo Construí Analíticas para Bots de IA](/es/blog/tracking-invisible-ai-bot-analytics). Así se ven los datos de las últimas 24 horas:
 
-![Dashboard de Umami mostrando eventos ai_bot_visit por bot: Amazonbot 56%, OAI-SearchBot 9%, Meta-ExternalAgent 9%, ClaudeBot 7%, Bytespider 6%, ChatGPT-User 6%, GPTBot 4%, PerplexityBot 3%](/images/blog/posts/aeo-the-scorecard/umami-ai-bot-visit.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-ai-bot-visit.webp" alt="Dashboard de Umami mostrando eventos ai_bot_visit por bot: Amazonbot 56%, OAI-SearchBot 9%, Meta-ExternalAgent 9%, ClaudeBot 7%, Bytespider 6%, ChatGPT-User 6%, GPTBot 4%, PerplexityBot 3%" loading="lazy" />
+<figcaption>Desglose de bots de IA — el dominio del 56% de Amazonbot fue inesperado. Los bots de OpenAI juntos representan alrededor del 19% combinados.</figcaption>
+</figure>
 
 La distribución me sorprendió. Amazonbot domina con el 56% de todas las visitas de bots de IA — no es lo que esperaba cuando configuré esto por primera vez. Los bots de OpenAI (OAI-SearchBot + ChatGPT-User + GPTBot) suman alrededor del 19%, Meta-ExternalAgent se ubica en el 9%, y ClaudeBot en el 7%. PerplexityBot es el más pequeño con el 3%, lo cual es interesante considerando cuánto ha crecido Perplexity como producto.
 
 El dashboard de bots desconocidos cuenta una historia diferente:
 
-![Dashboard de Umami mostrando eventos unknown_bot_visit: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-visit.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-visit.webp" alt="Dashboard de Umami mostrando eventos unknown_bot_visit: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%" loading="lazy" />
+<figcaption>Bots desconocidos — en su mayoría herramientas SEO y crawlers de redes sociales, no sistemas de IA. El 23% de entradas "Mozilla" son scrapers disfrazándose de navegadores reales.</figcaption>
+</figure>
 
 La mayoría de estos son herramientas SEO (AwarioBot, SERankingBacklinksBot) o crawlers de redes sociales (Twitterbot), no sistemas de IA. El 23% etiquetado como "Mozilla" tiene más sentido cuando ves los strings completos de User-Agent:
 
-![Dashboard de Umami mostrando strings de User-Agent de unknown_bot_visit: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla/Macintosh AppleWebKit 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-user-agent.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-user-agent.webp" alt="Dashboard de Umami mostrando strings de User-Agent de unknown_bot_visit: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla/Macintosh AppleWebKit 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%" loading="lazy" />
+<figcaption>Strings completos de User-Agent — las entradas "Mozilla/5.0 (Macintosh...)" son scrapers automatizados disfrazándose de navegadores Safari en escritorio.</figcaption>
+</figure>
 
 Esas entradas de "Mozilla" están usando `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit...` — un string completo de User-Agent de Safari en escritorio. Son scrapers automatizados disfrazándose de navegadores reales. Exactamente el tipo de bot que es imposible de clasificar sin un análisis más profundo. Esta capa es útil como mecanismo de descubrimiento: cuando aparezca un nuevo crawler de IA, lo voy a ver acá primero.
 
@@ -59,7 +68,10 @@ El mismo middleware rastrea una segunda señal: cuando los agentes solicitan con
 
 El campo `source` es el más interesante. Si los agentes empiezan a enviar headers `Accept: text/markdown` — la manera "correcta" de solicitar [Markdown for Agents](/es/blog/aeo-markdown-for-agents) — aparece como `content_negotiation`. Si simplemente están accediendo a URLs `.md` que encontraron en algún lugar, aparece como `direct_url`. La proporción te dice algo sobre cuánto conocen los agentes la convención.
 
-![Dashboard de Umami mostrando eventos markdown_request por fuente: content_negotiation con 52 (51%) vs direct_url con 49 (49%)](/images/blog/posts/aeo-the-scorecard/umami-markdown-request-source.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-markdown-request-source.webp" alt="Dashboard de Umami mostrando eventos markdown_request por fuente: content_negotiation con 52 (51%) vs direct_url con 49 (49%)" loading="lazy" />
+<figcaption>Fuentes de solicitudes Markdown — una división casi pareja entre agentes que usan headers de negociación de contenido y los que acceden directamente a URLs .md.</figcaption>
+</figure>
 
 Los datos apenas están empezando a llegar — implementé esto recientemente y todavía es pronto para sacar conclusiones. Pero a futuro, esta señal me va a permitir entender si el estándar realmente se está empezando a adoptar y qué tanto los bots de IA están pidiendo contenido Markdown en mi sitio.
 
