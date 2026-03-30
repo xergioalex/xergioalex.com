@@ -38,19 +38,16 @@ Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que espera
 
 [Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 
-<div class="dark-bg-container">
-  <img src="/images/blog/posts/an-agent-is-not-a-prompt/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1536" height="1024" loading="lazy" />
-</div>
+<figure class="dark-bg-container">
+  <img src="/images/blog/posts/an-agent-is-not-a-prompt/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1409" height="915" loading="lazy" />
+  <figcaption>Una demo de agente necesita 3 componentes. Un agente en producción necesita al menos 11 capas de ingeniería.</figcaption>
+</figure>
 
 ---
 
 ## Lo Que un Agente Real Realmente Contiene
 
-Aquí está la lista honesta. Lo que un sistema de agentes en producción realmente requiere — capa por capa, desde la base hacia arriba:
-
-<div class="dark-bg-container">
-  <img src="/images/blog/posts/an-agent-is-not-a-prompt/agent-architecture-stack.webp" alt="Diagrama de arquitectura en capas que muestra las capas de un sistema de agentes de abajo a arriba: Modelo, Ingeniería de Prompts, Gestión de Estado, Memoria (corto y largo plazo), Recuperación de Conocimiento, Ecosistema de Herramientas, Orquestación del Flujo de Trabajo, Aprobación y Seguridad, Observabilidad, Evaluación" width="1200" height="800" loading="lazy" />
-</div>
+Aquí está la lista honesta. Lo que un sistema de agentes en producción realmente requiere:
 
 **Capa de modelo** — Qué modelo, qué proveedor, cómo manejar los límites de tasa y los fallos. Más fácil de lo que suena hasta que necesitas fallbacks.
 
