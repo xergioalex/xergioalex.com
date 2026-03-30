@@ -10,15 +10,11 @@ series: "building-agents"
 seriesOrder: 1
 ---
 
-If you read the first hundred tutorials that appear when you search for "how to build an AI agent," you'll get a remarkably consistent mental model:
+When you think about building an AI agent today, the picture in your head is probably something like this: take an LLM, give it a system prompt, wire up a few functions it can call, put everything in a loop. The model reasons, picks a tool, gets a result, reasons again. Seventeen lines of Python. Done.
 
-> An agent is an LLM that can use tools.
+That mental model isn't wrong, exactly. An agent does need a model, and it does need tools. But calling that an agent is like calling a web application "a server that returns HTML." Technically true. Practically useless as a design principle. The moment you try to build something that survives real usage — real users, real failures, real stakes — the seventeen-line picture collapses.
 
-That's it. The quickstart code looks something like: define a few functions, tell the model about them, put them in a loop, print the output. Seventeen lines of Python. "You've built an agent."
-
-The model isn't entirely wrong. An agent does need a model, and it does need tools. But calling that an agent is like calling a web application "a server that returns HTML." Technically true. Practically useless as a design principle. The moment you try to build something that survives real usage, the seventeen-line mental model collapses.
-
-Where does this model come from? Mostly from demos. Framework quickstarts are optimized for the "aha moment" — getting something working in five minutes. That's fine for marketing. It's actively misleading for engineering. The quickstart doesn't show you what happens when the agent needs to remember something from three steps ago. It doesn't show you what happens when a tool fails and the agent needs to decide whether to retry or escalate. It doesn't show you how to know if the agent is actually working correctly, or just producing plausible-sounding output.
+The quickstarts and demos reinforce this. They're optimized for the "aha moment" — getting something working in five minutes. That's fine for marketing. It's actively misleading for engineering. The quickstart doesn't show you what happens when the agent needs to remember something from three steps ago. It doesn't show you what happens when a tool fails and the agent needs to decide whether to retry or escalate. It doesn't show you how to know if the agent is actually working correctly, or just producing plausible-sounding output.
 
 I spent about two months treating frameworks as the answer. I picked [LangChain](https://www.langchain.com/) because it had the most tutorials. Then I hit the state management problem and switched to [LangGraph](https://langchain-ai.github.io/langgraph/). LangGraph is actually excellent — arguably the most explicit treatment of state and agent orchestration available right now — but switching frameworks didn't solve my architecture problems. It gave me better tools for implementing solutions I still had to design myself.
 

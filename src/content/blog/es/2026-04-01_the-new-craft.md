@@ -10,15 +10,11 @@ series: "building-agents"
 seriesOrder: 1
 ---
 
-Si lees los primeros cien tutoriales que aparecen cuando buscas "cómo construir un agente de IA," obtienes un modelo mental sorprendentemente consistente:
+Cuando piensas hoy en construir un agente de IA, la imagen que tienes en la cabeza probablemente es algo así: toma un LLM, dale un system prompt, conéctale unas cuantas funciones que pueda llamar, pon todo en un bucle. El modelo razona, elige una herramienta, obtiene un resultado, razona de nuevo. Diecisiete líneas de Python. Listo.
 
-> Un agente es un LLM que puede usar herramientas.
+Ese modelo mental no está del todo equivocado. Un agente sí necesita un modelo, y sí necesita herramientas. Pero llamar a eso un agente es como llamar a una aplicación web "un servidor que devuelve HTML." Técnicamente cierto. Prácticamente inútil como principio de diseño. En el momento en que intentas construir algo que sobreviva al uso real — usuarios reales, fallas reales, consecuencias reales — la imagen de las diecisiete líneas se derrumba.
 
-Eso es todo. El código de inicio rápido se ve algo así: define unas cuantas funciones, cuéntale al modelo sobre ellas, ponlas en un bucle, imprime el resultado. Diecisiete líneas de Python. "Ya construiste un agente."
-
-El modelo no está del todo equivocado. Un agente sí necesita un modelo, y sí necesita herramientas. Pero llamar a eso un agente es como llamar a una aplicación web "un servidor que devuelve HTML." Técnicamente cierto. Prácticamente inútil como principio de diseño. En el momento en que intentas construir algo que sobreviva al uso real, el modelo mental de diecisiete líneas se derrumba.
-
-¿De dónde viene este modelo? Principalmente de las demos. Los inicios rápidos de los frameworks están optimizados para el "momento aha" — lograr que algo funcione en cinco minutos. Eso está bien para el marketing. Es activamente engañoso para la ingeniería. El inicio rápido no te muestra qué pasa cuando el agente necesita recordar algo de tres pasos atrás. No te muestra qué pasa cuando una herramienta falla y el agente necesita decidir si reintentar o escalar. No te muestra cómo saber si el agente está funcionando correctamente, o si simplemente produce resultados que suenan plausibles.
+Los inicios rápidos y las demos refuerzan esto. Están optimizados para el "momento aha" — lograr que algo funcione en cinco minutos. Eso está bien para el marketing. Es activamente engañoso para la ingeniería. El inicio rápido no te muestra qué pasa cuando el agente necesita recordar algo de tres pasos atrás. No te muestra qué pasa cuando una herramienta falla y el agente necesita decidir si reintentar o escalar. No te muestra cómo saber si el agente está funcionando correctamente, o si simplemente produce resultados que suenan plausibles.
 
 Pasé unos dos meses tratando los frameworks como la respuesta. Elegí [LangChain](https://www.langchain.com/) porque tenía más tutoriales. Luego me topé con el problema de gestión de estado y cambié a [LangGraph](https://langchain-ai.github.io/langgraph/). LangGraph es realmente excelente — posiblemente el tratamiento más explícito de estado y orquestación de agentes disponible ahora mismo — pero cambiar de framework no resolvió mis problemas de arquitectura. Me dio mejores herramientas para implementar soluciones que yo igual tenía que diseñar.
 
