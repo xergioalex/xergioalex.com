@@ -59,7 +59,7 @@ Aquí está la lista honesta. Lo que un sistema de agentes en producción realme
 
 **Memoria de largo plazo** — Lo que el agente recuerda entre sesiones. Requiere almacenamiento, recuperación y decisiones sobre qué vale la pena recordar. La mayoría de las demos se saltan esto por completo.
 
-**Recuperación de conocimiento (RAG)** — Cómo el agente accede al conocimiento externo. Estrategia de fragmentación, elección de embeddings, método de recuperación, reranking. Una disciplina de ingeniería distinta con sus propios modos de fallo.
+**Recuperación de conocimiento (RAG)** — Cómo el agente accede a conocimiento con el que el modelo no fue entrenado — documentación de la empresa, políticas internas, datos de dominio. Estrategia de fragmentación, elección de embeddings, método de recuperación, reranking. Una disciplina de ingeniería distinta con sus propios modos de fallo.
 
 **Ecosistema de herramientas** — No solo "funciones que el modelo puede llamar" sino: diseño de esquemas, validación de parámetros, manejo de errores, gestión de efectos secundarios, límites de permisos. Cada herramienta es una superficie para el fallo.
 

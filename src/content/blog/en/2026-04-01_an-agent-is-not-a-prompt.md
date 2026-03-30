@@ -59,7 +59,7 @@ Here's the honest list. What a production agent system actually requires:
 
 **Long-term memory** — What the agent remembers across sessions. Requires storage, retrieval, and decisions about what's worth remembering. Most demos skip this entirely.
 
-**Knowledge retrieval (RAG)** — How the agent accesses external knowledge. Chunking strategy, embedding choice, retrieval method, reranking. A distinct engineering discipline with its own set of failure modes.
+**Knowledge retrieval (RAG)** — How the agent accesses knowledge the model wasn't trained on — company docs, internal policies, domain-specific data. Chunking strategy, embedding choice, retrieval method, reranking. A distinct engineering discipline with its own set of failure modes.
 
 **Tool ecosystem** — Not just "functions the model can call" but: schema design, parameter validation, error handling, side effect management, permission boundaries. Each tool is a surface for failure.
 
