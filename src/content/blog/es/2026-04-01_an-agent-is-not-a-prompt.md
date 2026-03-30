@@ -149,7 +149,7 @@ Django no te enseña a construir una buena aplicación web. Rails no te enseña 
 
 Esto no significa que los frameworks sean malos — el modelo de estado explícito de LangGraph y las trazas de [LangSmith](https://smith.langchain.com/) se han convertido en herramientas estándar por buenas razones. La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar del ecosistema. Estas herramientas son necesarias — pero las decisiones arquitectónicas que realmente determinan si un agente funciona o no viven por encima de la capa del framework.
 
-Las decisiones arquitectónicas — las que realmente determinan si tu agente es útil o no — están por encima de la capa del framework. De eso se trata [Construyendo Agentes](/es/blog/series/building-agents/).
+Las decisiones arquitectónicas — las que realmente determinan si tu agente es útil o no — están por encima de la capa del framework. De eso se trata esta serie: [Construyendo Agentes](/es/blog/series/building-agents/).
 
 ---
 
