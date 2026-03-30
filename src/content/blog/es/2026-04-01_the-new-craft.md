@@ -22,23 +22,19 @@ Esa conclusión es de lo que trata esta serie.
 
 ---
 
-## La Brecha de la Que Nadie Habla
+## Donde el Modelo Simple se Rompe
 
-Recuerdo la primera vez que funcionó una demo de agentes y pensé que entendía lo que significaba construir agentes. Había conectado un modelo a un lector de archivos, una herramienta de búsqueda web y un ejecutor de código, y escribí: "Investiga este tema y escribe un resumen con ejemplos de código." Funcionó — no a la perfección, pero lo suficiente como para sentir un atisbo de algo nuevo. Se lo mostré a un colega. Los dos tuvimos la misma reacción: "Si esto funciona así ahora, imagínate dónde estará en un año."
+La distancia entre una demo que funciona y un sistema que funciona no es incremental — es arquitectónica. Y aparece rápido. Toma un escenario común: un agente que recopila investigación de múltiples fuentes, la sintetiza, redacta un documento estructurado y señala lo que necesita revisión humana. Tres herramientas, un objetivo claro, unas 200 líneas de código de orquestación. Debería ser sencillo.
 
-Meses después, intenté usar el mismo enfoque en algo real.
+En la práctica, estos sistemas tienden a funcionar un 60% de las veces. El otro 40% es una mezcla de fallas difíciles de predecir y más difíciles aún de depurar:
 
-Estaba construyendo un agente para automatizar una parte de nuestro flujo de contenido — recopilar investigación de múltiples fuentes, sintetizarla, redactar un documento estructurado y señalar todo lo que necesitara revisión humana. Debería haber sido sencillo. Tres herramientas, un objetivo claro, unas 200 líneas de código de orquestación.
+**Colapso de contexto.** Después de tres o cuatro llamadas a herramientas, la ventana de contexto se llena con resultados intermedios y el modelo empieza a tratar observaciones antiguas como si fueran nuevas. El agente pierde el hilo de dónde está en el flujo de trabajo — no porque las herramientas fallen, sino porque nadie diseñó el estado para sobrevivir más de unos pocos turnos.
 
-Tres semanas después, tenía algo que funcionaba quizás el 60% de las veces. El otro 40% era una mezcla de fallas que no podía predecir:
+**Mal uso de herramientas.** El agente llama a la herramienta correcta con los parámetros incorrectos — no incorrectos de forma aleatoria, sino incorrectos con confianza. Construye una interpretación plausible de lo que la herramienta espera, y resulta que esa interpretación es equivocada. Generalmente es señal de que los esquemas de las herramientas son ambiguos, no de que el modelo esté roto.
 
-El agente perdía el hilo de dónde estaba en el flujo de trabajo después de tres o cuatro llamadas a herramientas — no porque las herramientas fallaran, sino porque la ventana de contexto se estaba llenando con resultados intermedios y el modelo empezaba a tratar observaciones antiguas como si fueran nuevas. Lo llamé "amnesia de estado" en mis notas. El nombre real es colapso de contexto.
+**Bucles de alucinación.** El agente repite la misma consulta de búsqueda con frases ligeramente distintas, cada vez obteniendo resultados levemente diferentes, ninguno satisfactorio, hasta que se agota el tiempo o produce un resumen confuso que mezcla hechos de cuatro iteraciones distintas. Sin detección de bucles, sin condición de salida — el sistema simplemente entra en espiral.
 
-A veces llamaba a la herramienta correcta con los parámetros incorrectos — no incorrectos de forma aleatoria, sino incorrectos con confianza, de un modo que sugería que había construido una interpretación plausible pero equivocada de lo que la herramienta esperaba. Mal uso de herramientas, y no era un problema del modelo — los esquemas de las herramientas eran ambiguos.
-
-Ocasionalmente entraba en lo que empecé a llamar "bucles de alucinación" — repitiendo la misma consulta de búsqueda con frases ligeramente distintas, cada vez obteniendo resultados levemente diferentes, ninguno satisfactorio, hasta que se agotaba el tiempo o producía un resumen confuso que mezclaba hechos de cuatro bucles distintos.
-
-Ninguno de estos era un fallo del modelo. El modelo hacía exactamente lo que esperarías que hiciera un modelo de lenguaje dados los inputs que recibía. Eran fallas de arquitectura. El sistema no tenía una gestión de estado adecuada. Las definiciones de las herramientas no imponían contratos de parámetros. No había detección de bucles, ni mecanismo de puntos de control, ni forma de inspeccionar lo que realmente estaba pasando dentro de una ejecución de varios pasos.
+Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que esperarías que hiciera un modelo de lenguaje dados los inputs que recibe. Son fallas de arquitectura. El sistema no tiene una gestión de estado adecuada. Las definiciones de las herramientas no imponen contratos de parámetros. No hay mecanismo de puntos de control, ni forma de inspeccionar lo que realmente está pasando dentro de una ejecución de varios pasos.
 
 [Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 

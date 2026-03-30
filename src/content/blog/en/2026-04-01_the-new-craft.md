@@ -22,23 +22,19 @@ That realization is what this series is about.
 
 ---
 
-## The Gap Nobody Talks About
+## Where the Simple Model Breaks
 
-I remember the first time an agent demo worked and I thought I understood what building agents meant. I had connected a model to a file reader, a web search tool, and a code executor, then typed: "Research this topic and write a summary with code examples." It worked — not perfectly, but well enough to feel like a glimpse of something new. I showed it to a colleague. We both had the same reaction: "If this works now, imagine where it'll be in a year."
+The gap between a working demo and a working system is not incremental — it's architectural. And it shows up fast. Take a common scenario: an agent that gathers research from multiple sources, synthesizes it, drafts a structured document, and flags what needs human review. Three tools, one clear goal, maybe 200 lines of orchestration code. Should be straightforward.
 
-Months later, I tried to use the same approach in something real.
+In practice, these systems tend to work about 60% of the time. The other 40% is a mix of failures that are hard to predict and harder to debug:
 
-I was building an agent to automate a chunk of our content workflow — gathering research from multiple sources, synthesizing it, drafting a structured document, and flagging anything that needed human review. Should have been straightforward. Three tools, one clear goal, about 200 lines of orchestration code.
+**Context collapse.** After three or four tool calls, the context window fills up with intermediate results and the model starts treating old observations as new ones. The agent loses track of where it is in the workflow — not because the tools failed, but because nobody designed the state to survive more than a few turns.
 
-Three weeks in, I had something that worked maybe 60% of the time. The other 40% was a mix of failures I couldn't predict:
+**Tool misuse.** The agent calls the right tool with the wrong parameters — not randomly wrong, but confidently wrong. It constructs a plausible interpretation of what the tool expects, and that interpretation happens to be incorrect. Usually a sign that the tool schemas are ambiguous, not that the model is broken.
 
-The agent would lose track of where it was in the workflow after three or four tool calls — not because the tools failed, but because the context window was filling up with intermediate results and the model started treating old observations as new ones. I called it "state amnesia" in my notes. The real name is context collapse.
+**Hallucination loops.** The agent repeats the same search query with slightly different phrasing, each time getting slightly different results, none satisfying, until it times out or produces a confused summary that mixes facts from four different iterations. No loop detection, no exit condition — the system just spirals.
 
-Sometimes it would call the right tool with the wrong parameters — not randomly wrong, but confidently wrong in a way that suggested it had constructed a plausible but incorrect interpretation of what the tool expected. Tool misuse, and not a model problem — the tool schemas were ambiguous.
-
-Occasionally it would enter what I started calling "hallucination loops" — repeating the same search query with slightly different phrasing, each time getting slightly different results, none of them satisfying, until it either timed out or produced a confused summary that mixed up facts from four different loops.
-
-None of these were model failures. The model was doing exactly what you'd expect a language model to do given the inputs it received. They were architecture failures. The system didn't have proper state management. The tool definitions didn't enforce parameter contracts. There was no loop detection, no checkpoint mechanism, no way to inspect what was actually happening inside a multi-step run.
+None of these are model failures. The model does exactly what you'd expect a language model to do given the inputs it receives. These are architecture failures. The system doesn't have proper state management. The tool definitions don't enforce parameter contracts. There's no checkpoint mechanism, no way to inspect what's actually happening inside a multi-step run.
 
 [Simon Willison](https://simonwillison.net/) has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
 
