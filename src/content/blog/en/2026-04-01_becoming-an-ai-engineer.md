@@ -18,7 +18,7 @@ The quickstarts and demos reinforce this. They're optimized for the "aha moment"
 
 This is precisely why frameworks like [LangChain](https://www.langchain.com/) and [LangGraph](https://langchain-ai.github.io/langgraph/) exist — to handle the complexity that the quickstart version ignores. State management, multi-step orchestration, tool coordination, checkpointing. These frameworks are real engineering tools, and some of them are excellent. But here's the thing I keep running into: the framework gives you better tools for implementing solutions. It doesn't design the solutions for you. The architecture — the decisions about what to keep in state, how memory should work, which tools need safety gates — that's still on you.
 
-That realization — that building agents is less about learning a library and more about becoming a new kind of engineer — is what this series is about.
+That realization — that building agents is less about learning a library and more about becoming a new kind of engineer — is what [Building Agents](/blog/series/building-agents/) is about.
 
 ---
 

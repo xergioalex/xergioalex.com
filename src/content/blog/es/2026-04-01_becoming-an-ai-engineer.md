@@ -18,7 +18,7 @@ Los inicios rápidos y las demos refuerzan esto. Están optimizados para el "mom
 
 Por eso existen frameworks como [LangChain](https://www.langchain.com/) y [LangGraph](https://langchain-ai.github.io/langgraph/) — para manejar la complejidad que la versión del quickstart ignora. Gestión de estado, orquestación de múltiples pasos, coordinación de herramientas, puntos de control. Son herramientas de ingeniería reales, y algunas son excelentes. Pero hay algo con lo que me sigo encontrando: el framework te da mejores herramientas para implementar soluciones. No diseña las soluciones por ti. La arquitectura — las decisiones sobre qué mantener en el estado, cómo debería funcionar la memoria, qué herramientas necesitan puertas de seguridad — eso sigue siendo tu responsabilidad.
 
-Esa conclusión — que construir agentes se trata menos de aprender una librería y más de convertirte en un nuevo tipo de ingeniero — es de lo que trata esta serie.
+Esa conclusión — que construir agentes se trata menos de aprender una librería y más de convertirte en un nuevo tipo de ingeniero — es de lo que se trata [Construyendo Agentes](/es/blog/series/building-agents/).
 
 ---
 
