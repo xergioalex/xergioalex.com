@@ -1,42 +1,36 @@
 ---
-title: "Construyendo Agentes #1 — El nuevo oficio: Por qué construir agentes es un tipo diferente de ingeniería"
-description: "Construir agentes no se trata de aprender una librería. Es aprender un nuevo oficio de ingeniería — basado en estado, memoria, herramientas y criterio."
+title: "Aprendiendo a construir agentes: Un agente no es un prompt"
+description: "La mayoría piensa que un agente es un LLM con herramientas. Un agente real es un sistema — y construirlo requiere otra clase de ingeniería."
 pubDate: "2026-04-01"
 heroImage: "/images/blog/posts/the-new-craft/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
-keywords: ["construir agentes de IA 2026", "ingeniero de IA oficio", "capas de arquitectura de agentes", "diseño de sistemas de agentes LLM", "de prompt a sistema IA", "disciplina de ingeniería de IA", "ecosistema de frameworks de agentes 2026"]
+keywords: ["construir agentes de IA 2026", "ingeniero de IA oficio", "capas de arquitectura de agentes", "diseño de sistemas de agentes LLM", "un agente no es un prompt", "disciplina de ingeniería de IA", "ecosistema de frameworks de agentes 2026"]
 series: "building-agents"
 seriesOrder: 1
 ---
 
-Todo el mundo recuerda su primera demo de agentes.
+Si lees los primeros cien tutoriales que aparecen cuando buscas "cómo construir un agente de IA," obtienes un modelo mental sorprendentemente consistente:
 
-La mía fue a finales de 2024. Conecté a Claude con un lector de archivos, una herramienta de búsqueda web y un ejecutor de código, y escribí: "Investiga este tema y escribe un resumen con ejemplos de código." Funcionó. No a la perfección — alucinó una URL y se confundió en la tercera llamada a una herramienta — pero lo suficientemente bien como para que me recostara en la silla y sintiera algo que no había sentido desde la primera vez que vi una página web cargada desde un servidor que yo mismo había construido. Se lo mostré a un colega y los dos tuvimos la misma reacción: "Si esto funciona así ahora, imagínate dónde estará en un año."
+> Un agente es un LLM que puede usar herramientas.
 
-Un año después, puedo decirte exactamente dónde está. Y la respuesta no es lo que ninguno de los dos esperaba.
+Eso es todo. El código de inicio rápido se ve algo así: define unas cuantas funciones, cuéntale al modelo sobre ellas, ponlas en un bucle, imprime el resultado. Diecisiete líneas de Python. "Ya construiste un agente."
 
-He pasado meses construyendo sistemas de agentes — no demos, no prototipos, sino sistemas que corren en producción, manejan tareas reales y fallan ocasionalmente de formas que me enseñan más que cualquier tutorial. La lección más grande no fue sobre un framework específico ni sobre qué modelo llamar. Fue esta: construir agentes no se trata de aprender una librería. Se trata de aprender un nuevo tipo de ingeniería.
+El modelo no está del todo equivocado. Un agente sí necesita un modelo, y sí necesita herramientas. Pero llamar a eso un agente es como llamar a una aplicación web "un servidor que devuelve HTML." Técnicamente cierto. Prácticamente inútil como principio de diseño. En el momento en que intentas construir algo que sobreviva al uso real, el modelo mental de diecisiete líneas se derrumba.
+
+¿De dónde viene este modelo? Principalmente de las demos. Los inicios rápidos de los frameworks están optimizados para el "momento aha" — lograr que algo funcione en cinco minutos. Eso está bien para el marketing. Es activamente engañoso para la ingeniería. El inicio rápido no te muestra qué pasa cuando el agente necesita recordar algo de tres pasos atrás. No te muestra qué pasa cuando una herramienta falla y el agente necesita decidir si reintentar o escalar. No te muestra cómo saber si el agente está funcionando correctamente, o si simplemente produce resultados que suenan plausibles.
+
+Pasé unos dos meses tratando los frameworks como la respuesta. Elegí LangChain porque tenía más tutoriales. Luego me topé con el problema de gestión de estado y cambié a LangGraph. LangGraph es realmente excelente — posiblemente el tratamiento más explícito de estado y orquestación de agentes disponible ahora mismo — pero cambiar de framework no resolvió mis problemas de arquitectura. Me dio mejores herramientas para implementar soluciones que yo igual tenía que diseñar.
 
 Esa conclusión es de lo que trata esta serie.
 
 ---
 
-## La Seducción de la Demo
-
-Las demos son, de verdad, impresionantes. Ese es el problema — o al menos, ahí es donde empieza el problema.
-
-Mira el video de lanzamiento de Devin y verás un agente levantando un entorno de desarrollo, escribiendo pruebas, enviando un fix a un repositorio y publicando una actualización en Slack. Mira a Claude Computer Use navegar un navegador, llenar un formulario y extraer resultados a una hoja de cálculo. Mira una sesión de AutoGPT de 2023 — incluso la versión temprana y torpe — investigando un tema de forma recursiva, escribiéndose subtareas a sí mismo y produciendo un informe estructurado. La reacción emocional es inmediata: *esto cambia todo.*
-
-Hay un patrón de pensamiento específico que sigue a cada demo poderosa. Va más o menos así: "Solo necesito descubrir sobre qué framework corre esto, pasar un fin de semana aprendiendo la API, y puedo construir algo parecido." La demo hace que el trabajo parezca incremental. Eliges una librería, escribes unos cuantos prompts, conectas algunas herramientas. Listo.
-
-No le voy a echar la culpa a nadie por pensar eso. Yo pensé exactamente lo mismo.
-
----
-
 ## La Brecha de la Que Nadie Habla
 
-La demo funcionó. Luego intenté usarla en algo real.
+Recuerdo la primera vez que funcionó una demo de agentes y pensé que entendía lo que significaba construir agentes. Había conectado un modelo a un lector de archivos, una herramienta de búsqueda web y un ejecutor de código, y escribí: "Investiga este tema y escribe un resumen con ejemplos de código." Funcionó — no a la perfección, pero lo suficiente como para sentir un atisbo de algo nuevo. Se lo mostré a un colega. Los dos tuvimos la misma reacción: "Si esto funciona así ahora, imagínate dónde estará en un año."
+
+Meses después, intenté usar el mismo enfoque en algo real.
 
 Estaba construyendo un agente para automatizar una parte de nuestro flujo de contenido — recopilar investigación de múltiples fuentes, sintetizarla, redactar un documento estructurado y señalar todo lo que necesitara revisión humana. Debería haber sido sencillo. Tres herramientas, un objetivo claro, unas 200 líneas de código de orquestación.
 
@@ -55,22 +49,6 @@ Simon Willison tiene un marco útil para esto: las herramientas funcionan, el mo
 <div class="dark-bg-container">
   <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo (modelo, prompt, 2 herramientas) frente a lo que necesita un sistema de agentes en producción (estado, memoria, manejo de errores, observabilidad, evaluación y más)" width="1200" height="700" loading="lazy" />
 </div>
-
----
-
-## Lo Que la Mayoría Cree Que Es un Agente
-
-Si lees los primeros cien tutoriales que aparecen cuando buscas "cómo construir un agente de IA," obtienes un modelo mental sorprendentemente consistente:
-
-> Un agente es un LLM que puede usar herramientas.
-
-Eso es todo. El código de inicio rápido se ve algo así: define unas cuantas funciones, cuéntale al modelo sobre ellas, ponlas en un bucle, imprime el resultado. Diecisiete líneas de Python. "Ya construiste un agente."
-
-El modelo no está del todo equivocado. Un agente sí necesita un modelo, y sí necesita herramientas. Pero llamar a eso un agente es como llamar a una aplicación web "un servidor que devuelve HTML." Técnicamente cierto. Prácticamente inútil como principio de diseño. En el momento en que intentas construir algo que sobreviva al uso real, el modelo mental de diecisiete líneas se derrumba.
-
-¿De dónde viene este modelo? Principalmente de las demos. Los inicios rápidos de los frameworks están optimizados para el "momento aha" — lograr que algo funcione en cinco minutos. Eso está bien para el marketing. Es activamente engañoso para la ingeniería. El inicio rápido no te muestra qué pasa cuando el agente necesita recordar algo de tres pasos atrás. No te muestra qué pasa cuando una herramienta falla y el agente necesita decidir si reintentar o escalar. No te muestra cómo saber si el agente está funcionando correctamente, o si simplemente produce resultados que suenan plausibles.
-
-Pasé unos dos meses tratando los frameworks como la respuesta. Elegí LangChain porque tenía más tutoriales. Luego me topé con el problema de gestión de estado y cambié a LangGraph. LangGraph es realmente excelente — posiblemente el tratamiento más explícito de estado y orquestación de agentes disponible ahora mismo — pero cambiar de framework no resolvió mis problemas de arquitectura. Me dio mejores herramientas para implementar soluciones que yo igual tenía que diseñar.
 
 ---
 
@@ -238,9 +216,7 @@ Por eso estoy escribiendo la serie como historias, no como especificaciones. El 
 
 ## Lo Que Viene
 
-Antes de que podamos construir algo significativo, necesitamos cuestionar lo que creemos saber sobre lo que un agente realmente es.
-
-En el próximo capítulo, voy a desmontar el modelo mental más persistente del campo — "un agente es un prompt con herramientas" — y reemplazarlo con algo que se ajusta mucho más de cerca a lo que los sistemas reales requieren.
+Lo siguiente: la primera capa del stack real. Estado — lo que el agente sabe, lleva consigo y olvida en cada paso. Por qué es la base sobre la que se construye todo lo demás, y por qué el mal diseño de estado es la causa más común de fallas en agentes.
 
 ¿Esa primera demo que le mostré a mi colega? Era real. Era impresionante. Pero lo que ninguno de los dos vio — lo que la mayoría de las personas que ven demos de agentes todavía no ven — es todo lo que hay debajo. La magia no está en el modelo. Está en todo lo que lo rodea. De eso trata esta serie.
 

@@ -1,42 +1,36 @@
 ---
-title: "Building Agents #1 — The New Craft: Why Building Agents Is a Different Kind of Engineering"
-description: "Building agents is not about learning a library. It's about learning a new engineering craft — one built on state, memory, tools, and judgment."
+title: "Learning to Build Agents: An Agent Is Not a Prompt"
+description: "Most people think an agent is an LLM with tools. They're wrong. A real agent is a system — and building one requires a different kind of engineering."
 pubDate: "2026-04-01"
 heroImage: "/images/blog/posts/the-new-craft/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
-keywords: ["building AI agents 2026", "AI engineer craft", "agent architecture layers", "LLM agent systems design", "from prompt to system AI", "AI engineering discipline", "agent frameworks landscape 2026"]
+keywords: ["building AI agents 2026", "AI engineer craft", "agent architecture layers", "LLM agent systems design", "agent is not a prompt", "AI engineering discipline", "agent frameworks landscape 2026"]
 series: "building-agents"
 seriesOrder: 1
 ---
 
-Everyone remembers their first agent demo.
+If you read the first hundred tutorials that appear when you search for "how to build an AI agent," you'll get a remarkably consistent mental model:
 
-Mine was sometime in late 2024. I connected Claude to a file reader, a web search tool, and a code executor, then typed: "Research this topic and write a summary with code examples." It worked. Not perfectly — it hallucinated one URL and got confused on the third tool call — but well enough that I sat back in my chair and felt something I hadn't felt since the first time I saw a web page load from a server I'd built myself. I showed it to a colleague and we both had the same reaction: "If this works now, imagine where it'll be in a year."
+> An agent is an LLM that can use tools.
 
-A year later, I can tell you exactly where it is. And the answer isn't what either of us expected.
+That's it. The quickstart code looks something like: define a few functions, tell the model about them, put them in a loop, print the output. Seventeen lines of Python. "You've built an agent."
 
-I've spent months building agent systems — not demos, not prototypes, but systems that run in production, handle real tasks, and occasionally fail in ways that teach me more than any tutorial ever could. The biggest lesson wasn't about a specific framework or which model to call. It was this: building agents is not about learning a library. It's about learning a new kind of engineering.
+The model isn't entirely wrong. An agent does need a model, and it does need tools. But calling that an agent is like calling a web application "a server that returns HTML." Technically true. Practically useless as a design principle. The moment you try to build something that survives real usage, the seventeen-line mental model collapses.
+
+Where does this model come from? Mostly from demos. Framework quickstarts are optimized for the "aha moment" — getting something working in five minutes. That's fine for marketing. It's actively misleading for engineering. The quickstart doesn't show you what happens when the agent needs to remember something from three steps ago. It doesn't show you what happens when a tool fails and the agent needs to decide whether to retry or escalate. It doesn't show you how to know if the agent is actually working correctly, or just producing plausible-sounding output.
+
+I spent about two months treating frameworks as the answer. I picked LangChain because it had the most tutorials. Then I hit the state management problem and switched to LangGraph. LangGraph is actually excellent — arguably the most explicit treatment of state and agent orchestration available right now — but switching frameworks didn't solve my architecture problems. It gave me better tools for implementing solutions I still had to design myself.
 
 That realization is what this series is about.
 
 ---
 
-## The Allure of the Demo
-
-The demos are actually impressive. That's the problem — or at least, that's where the problem starts.
-
-Watch Devin's launch video and you'll see an agent spinning up a development environment, writing tests, shipping a fix to a repo, and posting an update to Slack. Watch Claude Computer Use navigate a browser, fill out a form, and extract results into a spreadsheet. Watch an AutoGPT session from 2023 — even the early, clunky version — recursively research a topic, write subtasks for itself, and produce a structured report. The emotional response is immediate: *oh, this changes everything.*
-
-There's a specific thought pattern that follows every strong demo. It goes something like: "I just need to figure out which framework this runs on, spend a weekend learning the API, and I can build something like this." The demo makes the work look incremental. Pick a library, write a few prompts, connect some tools. You're off.
-
-I don't blame anyone for thinking that. I thought exactly the same thing.
-
----
-
 ## The Gap Nobody Talks About
 
-The demo worked. Then I tried to use it in something real.
+I remember the first time an agent demo worked and I thought I understood what building agents meant. I had connected a model to a file reader, a web search tool, and a code executor, then typed: "Research this topic and write a summary with code examples." It worked — not perfectly, but well enough to feel like a glimpse of something new. I showed it to a colleague. We both had the same reaction: "If this works now, imagine where it'll be in a year."
+
+Months later, I tried to use the same approach in something real.
 
 I was building an agent to automate a chunk of our content workflow — gathering research from multiple sources, synthesizing it, drafting a structured document, and flagging anything that needed human review. Should have been straightforward. Three tools, one clear goal, about 200 lines of orchestration code.
 
@@ -55,22 +49,6 @@ Simon Willison has a useful frame for this: the tools work, the model works, but
 <div class="dark-bg-container">
   <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2 tools) versus what a production agent system needs (state, memory, error handling, observability, evaluation, and more)" width="1200" height="700" loading="lazy" />
 </div>
-
----
-
-## What Most People Think an Agent Is
-
-If you read the first hundred tutorials that appear when you search for "how to build an AI agent," you'll get a remarkably consistent mental model:
-
-> An agent is an LLM that can use tools.
-
-That's it. The quickstart code looks something like: define a few functions, tell the model about them, put them in a loop, print the output. Seventeen lines of Python. "You've built an agent."
-
-The model isn't entirely wrong. An agent does need a model, and it does need tools. But calling that an agent is like calling a web application "a server that returns HTML." Technically true. Practically useless as a design principle. The moment you try to build something that survives real usage, the seventeen-line mental model collapses.
-
-Where does this model come from? Mostly from demos. Framework quickstarts are optimized for the "aha moment" — getting something working in five minutes. That's fine for marketing. It's actively misleading for engineering. The quickstart doesn't show you what happens when the agent needs to remember something from three steps ago. It doesn't show you what happens when a tool fails and the agent needs to decide whether to retry or escalate. It doesn't show you how to know if the agent is actually working correctly, or just producing plausible-sounding output.
-
-I spent about two months treating frameworks as the answer. I picked LangChain because it had the most tutorials. Then I hit the state management problem and switched to LangGraph. LangGraph is actually excellent — arguably the most explicit treatment of state and agent orchestration available right now — but switching frameworks didn't solve my architecture problems. It gave me better tools for implementing solutions I still had to design myself.
 
 ---
 
@@ -238,9 +216,7 @@ This is why I'm writing the series as stories, not specifications. Craft knowled
 
 ## What's Next
 
-Before we can build anything meaningful, we need to challenge what we think we know about what an agent actually is.
-
-In the next chapter, I'll take apart the most persistent mental model in the field — "an agent is a prompt with tools" — and replace it with something that maps much more closely to what real systems require.
+Next up: the first layer of the real stack. State — what the agent knows, carries forward, and forgets at each step. Why it's the foundation everything else is built on, and why bad state design is the single most common cause of agent failures.
 
 That first demo I showed my colleague? It was real. It was impressive. But what neither of us saw — what most people who watch agent demos still don't see — is everything underneath it. The magic isn't in the model. It's in everything around it. This series is about that everything.
 
