@@ -44,19 +44,31 @@ Then I looked at **Cloudflare Pages**. Unlimited bandwidth, 500 builds a month, 
 
 The process was ridiculously short. In the Cloudflare dashboard, **+ Add** > **Pages**:
 
+<figure>
 <img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Cloudflare menu with Pages option selected" class="prose-img-narrow" width="800" height="450" loading="lazy" />
+<figcaption>The Cloudflare "+ Add" menu — Pages sits alongside Workers, R2, and domain tools as a first-class option.</figcaption>
+</figure>
 
 Two options — import a Git repository or upload files. The first one:
 
-![Cloudflare Pages getting started screen with Git repository import option](/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.webp)
+<figure>
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.webp" alt="Cloudflare Pages getting started screen with Git repository import option" loading="lazy" />
+<figcaption>Step two — connect a Git repository or upload files directly. The Git path triggers automatic deployments on every push.</figcaption>
+</figure>
 
 Select your GitHub account and the repository:
 
-![GitHub account and repository selection showing xergioalex.com](/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.webp)
+<figure>
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.webp" alt="GitHub account and repository selection showing xergioalex.com" loading="lazy" />
+<figcaption>Repository picker — authorize Cloudflare's GitHub app and select the repo. One-time setup per account.</figcaption>
+</figure>
 
 And here Cloudflare auto-detected Astro. It populated the build command, the output directory, the production branch — everything:
 
-![Build configuration with Astro detected, npm run build command and dist directory](/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.webp)
+<figure>
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.webp" alt="Build configuration with Astro detected, npm run build command and dist directory" loading="lazy" />
+<figcaption>Build settings auto-detected from the repo — Astro recognized, build command and output directory pre-filled without any manual configuration.</figcaption>
+</figure>
 
 Click **Save and Deploy**. Forty seconds later the site was live on a `pages.dev` subdomain. That was it.
 

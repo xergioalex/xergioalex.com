@@ -81,10 +81,13 @@ I ended with a few pointers so they could start right away:
 
 ## Workshop Memories
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.webp" alt="Illustration of human orchestrating AI agents — programmer as conductor" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.webp" alt="Slide: New role of developers — orchestrators and supervisors" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Two slides from the Vibe Coding e IA workshop — the conductor metaphor and the core thesis about the developer's new role.</figcaption>
+</figure>
 
 ---
 

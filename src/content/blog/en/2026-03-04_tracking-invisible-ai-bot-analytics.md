@@ -252,15 +252,24 @@ In Umami, `ai_bot_visit` events show up in the custom events section with the bo
 
 This is what the activity feed looks like — each `ai_bot_visit` event with the page the bot crawled:
 
-![Umami activity feed showing ai_bot_visit events on different pages of the site](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.webp)
+<figure>
+<img src="/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.webp" alt="Umami activity feed showing ai_bot_visit events on different pages of the site" loading="lazy" />
+<figcaption>The Umami activity feed — each row is a real AI crawler visit, with the specific page it crawled attached to the event.</figcaption>
+</figure>
 
 And in the events chart, the `ai_bot_visit` events start showing up alongside the rest of the site's analytics — same dashboard, same timeline:
 
-![Umami events chart showing ai_bot_visit traffic alongside other site events](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.webp)
+<figure>
+<img src="/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.webp" alt="Umami events chart showing ai_bot_visit traffic alongside other site events" loading="lazy" />
+<figcaption>Bot events alongside human traffic in the same dashboard — same timeline, which makes correlations visible that separate dashboards would hide.</figcaption>
+</figure>
 
 Because each event carries the `bot` property, I can break down traffic by crawler. Filtering by the `bot` property on `ai_bot_visit` gives me this — a clear picture of who's actually coming through the door:
 
-![Umami properties breakdown showing ai_bot_visit events by bot type](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.webp)
+<figure>
+<img src="/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.webp" alt="Umami properties breakdown showing ai_bot_visit events by bot type" loading="lazy" />
+<figcaption>Traffic by crawler — the `bot` property on each event makes it possible to filter and see which AI system visits which pages most.</figcaption>
+</figure>
 
 With client-side analytics none of this existed. With one middleware file, now it does.
 

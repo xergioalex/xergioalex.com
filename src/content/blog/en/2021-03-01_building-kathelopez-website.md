@@ -56,7 +56,10 @@ Simple CSS animation. Gives visitors an immediate sense of what she does without
 
 Her professional bio — who she is, her philosophy, her approach to therapy. The tone is warm and direct: she describes herself as empathetic, organized, and committed to improving her patients' psychological wellbeing. There's a professional photo next to the text.
 
-![The "About Me" section of kathelopez.com with professional photo and bio](/images/blog/posts/building-kathelopez-website/about-section.webp)
+<figure>
+<img src="/images/blog/posts/building-kathelopez-website/about-section.webp" alt="The &quot;About Me&quot; section of kathelopez.com with professional photo and bio" loading="lazy" />
+<figcaption>The final About section — warm tone, clear credentials, and a photo that reads as professional without feeling corporate.</figcaption>
+</figure>
 
 The resume section uses a tabbed layout — Experience, Education, Certifications, Skills — so visitors can go straight to what they're looking for. Services is focused on in-home ABA therapy: Katherine goes to the child's home, not the other way around. That's the real differentiator. For the polish, [AOS](https://michalsnik.github.io/aos/) for subtle scroll animations, Bootstrap handling the responsive layout without a single hand-written media query, and a decorative parallax effect on a few sections.
 
@@ -80,16 +83,22 @@ The initial version used a generic color scheme and no logo. In February 2021 we
 
 The logo is a fusion of the letter **K** for Katherine and the psychology symbol — the Greek letter psi (Ψ). The final result merges both shapes into a monogram that reads as **AK** — her initials, Astrid Katherine — but that any psychologist would recognize instantly.
 
+<figure>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 1.5rem 0;">
   <img src="/images/blog/posts/building-kathelopez-website/psychology-symbol.webp" alt="The psychology symbol (Ψ), the Greek letter psi" width="400" height="400" loading="lazy" />
   <img src="/images/blog/posts/building-kathelopez-website/logo.webp" alt="kathelopez.com final logo — AK monogram with blue-to-pink gradient" width="400" height="400" loading="lazy" />
 </div>
+<figcaption>The psi symbol (left) fused with the letter K to create the AK monogram (right) — any psychologist recognizes both instantly.</figcaption>
+</figure>
 
 The primary color is **#c82c75** — a vibrant pink/magenta she picked. Not my first choice, honestly. I would have gone with something more muted. But it's her site, her brand, her personality. And looking at it now, it works. Poppins from Google Fonts for the typography, and that's it.
 
 The logo appears in the SEO card when someone shares the link — her monogram, her services, her contact info. Clean, recognizable.
 
-![kathelopez.com SEO card with the AK monogram, services, and contact details](/images/blog/posts/building-kathelopez-website/seo-card.webp)
+<figure>
+<img src="/images/blog/posts/building-kathelopez-website/seo-card.webp" alt="kathelopez.com SEO card with the AK monogram, services, and contact details" loading="lazy" />
+<figcaption>The Open Graph card — the first thing someone sees when a link to the site is shared on WhatsApp or social media.</figcaption>
+</figure>
 
 ---
 

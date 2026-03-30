@@ -36,7 +36,10 @@ I know what this looks like from the inside. I've caught myself on a weekend sta
 
 This is the loop. **Idea → agent → result → dopamine → idea → agent → result → dopamine.** It doesn't stop. It doesn't have a natural endpoint. Because the friction that used to slow you down — the hours of debugging, the setup, the boilerplate — is gone. The barrier between "I want to build this" and "it exists" collapsed to almost nothing.
 
+<figure>
 <img src="/images/blog/posts/the-permanent-hackathon/dopamine-cycle.webp" alt="The dopamine loop of AI agent-assisted development: Idea leads to Agent, Agent produces Result, Result triggers Dopamine, Dopamine sparks the next Idea — an endless cycle" width="800" height="650" loading="lazy" style="max-width: 50%; display: block; margin: 0 auto;" />
+<figcaption>The four-part loop — no natural exit point, because the friction that used to end it has been removed by the agents.</figcaption>
+</figure>
 
 I thought I was the only one feeling this way until that meetup conversation. I'm not. And I don't think we're a small group.
 

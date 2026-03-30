@@ -42,6 +42,7 @@ I ended with two words: **transformation** and **opportunity**. The tools are he
 
 ## Event Memories
 
+<figure>
 <div class="grid grid-cols-2 gap-4 md:grid-cols-3 not-prose">
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/title-slide-presentation.webp" alt="AI Rebirth presentation with title slide" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/gartner-hype-cycle-slide.webp" alt="Gartner Hype Cycle slide" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
@@ -50,6 +51,8 @@ I ended with two words: **transformation** and **opportunity**. The tools are he
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/audience-during-talk.webp" alt="Audience during the talk" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/rebirth-of-artificial-intelligence/podium-and-audience.webp" alt="Podium and audience" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Pereira Tech Talks, May 2023 — slides, audience, and the post-event gathering where the real conversations happened.</figcaption>
+</figure>
 
 ---
 
