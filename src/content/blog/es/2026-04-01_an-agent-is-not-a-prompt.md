@@ -155,7 +155,7 @@ Las decisiones arquitectónicas — las que realmente determinan si tu agente es
 
 ## El Nuevo Stack
 
-Esto es lo que he encontrado que realmente necesitas pensar, capa por capa. Cada una tiene su propio capítulo.
+Esto es lo que he encontrado que realmente necesitas pensar, capa por capa. Cada una seguramente necesitará su propio capítulo.
 
 **Estado** — La base. Todo lo que el agente sabe, recuerda y lleva entre pasos. El mal diseño de estado causa más fallas en agentes que cualquier otro factor individual. Capítulo 3.
 

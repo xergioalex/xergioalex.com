@@ -471,8 +471,9 @@ seriesOrder: 2                   # Chapter number (1, 2, 3...)
 ### Creating a New Series
 
 1. Create `src/content/series/{series-slug}.md` with `name`, `title`, `description`, `order`
-2. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
-3. The `SeriesNavigation` component renders automatically on posts with series metadata
+2. **Add `seriesNames[slug]` and `seriesDescriptions[slug]` to BOTH `src/lib/translations/en.ts` and `es.ts`** — without this, the ES series page falls back to the English title/description
+3. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
+4. The `SeriesNavigation` component renders automatically on posts with series metadata
 
 ### SeriesNavigation Component
 
@@ -507,7 +508,7 @@ This pattern mirrors the `ScrollToTimeline.svelte` component used on portfolio a
 | `src/lib/types.ts` | `SeriesInfo`, `SeriesPost` types |
 | `src/components/blog/SeriesNavigation.astro` | Navigation panel (TOC + prev/next) |
 | `src/components/blog/SeriesIndicator.svelte` | Floating chapter indicator |
-| `src/lib/translations/{en,es}.ts` | Series translation keys (`seriesPartOf`, `seriesChapterOf`, etc.) |
+| `src/lib/translations/{en,es}.ts` | Series translation keys (`seriesNames[slug]`, `seriesDescriptions[slug]`, `seriesPartOf`, `seriesChapterOf`, etc.) |
 
 ### Resources Section — Avoid Redundancy with Series Navigation
 

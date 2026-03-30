@@ -155,7 +155,7 @@ The architectural decisions — the ones that actually determine whether your ag
 
 ## The New Stack
 
-Here's what I've found you actually need to think about, layer by layer. Each of these gets its own chapter.
+Here's what I've found you actually need to think about, layer by layer. Each of these will probably need its own chapter.
 
 **State** — The foundation. Everything the agent knows, remembers, and carries between steps. Bad state design causes more agent failures than any other single factor. Chapter 3.
 
