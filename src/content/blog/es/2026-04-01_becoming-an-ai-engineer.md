@@ -24,7 +24,7 @@ Esa conclusión — que construir agentes se trata menos de aprender una librer�
 
 ## Donde el Modelo Simple se Rompe
 
-La distancia entre una demo que funciona y un sistema que funciona no es incremental — es arquitectónica. Y aparece rápido. Toma un escenario común: un agente que recopila investigación de múltiples fuentes, la sintetiza, redacta un documento estructurado y señala lo que necesita revisión humana. Tres herramientas, un objetivo claro, unas 200 líneas de código de orquestación. Debería ser sencillo.
+La distancia entre un agente simple y uno confiable no es incremental — es arquitectónica. Y aparece rápido. Toma un escenario común: un agente que recopila investigación de múltiples fuentes, la sintetiza, redacta un documento estructurado y señala lo que necesita revisión humana. Tres herramientas, un objetivo claro, unas 200 líneas de código de orquestación. Debería ser sencillo.
 
 En la práctica, estos sistemas tienden a funcionar un 60% de las veces. El otro 40% es una mezcla de fallas difíciles de predecir y más difíciles aún de depurar:
 
@@ -71,7 +71,7 @@ Aquí está la lista honesta. Lo que un sistema de agentes en producción realme
 
 **Evaluación** — ¿Cómo sabes si el agente está funcionando correctamente? No solo "¿produjo una salida?" sino "¿produjo la salida correcta?" Esta es probablemente la capa menos discutida en todo el campo.
 
-Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ellas no existía como campo con nombre hace cinco años. Todas son necesarias. Puedes ignorar algunas en una demo. No puedes ignorar ninguna en producción.
+Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ellas no existía como campo con nombre hace cinco años. Todas son necesarias. Puedes saltarte algunas en un agente simple. No puedes saltarte ninguna en uno serio.
 
 Esta serie va a explorar cada una de estas capas — qué involucran realmente, dónde fallan, y qué se necesita para hacerlas bien.
 

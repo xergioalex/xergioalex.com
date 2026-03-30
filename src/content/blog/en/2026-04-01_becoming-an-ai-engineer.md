@@ -24,7 +24,7 @@ That realization — that building agents is less about learning a library and m
 
 ## Where the Simple Model Breaks
 
-The gap between a working demo and a working system is not incremental — it's architectural. And it shows up fast. Take a common scenario: an agent that gathers research from multiple sources, synthesizes it, drafts a structured document, and flags what needs human review. Three tools, one clear goal, maybe 200 lines of orchestration code. Should be straightforward.
+The gap between a simple agent and a reliable one is not incremental — it's architectural. And it shows up fast. Take a common scenario: an agent that gathers research from multiple sources, synthesizes it, drafts a structured document, and flags what needs human review. Three tools, one clear goal, maybe 200 lines of orchestration code. Should be straightforward.
 
 In practice, these systems tend to work about 60% of the time. The other 40% is a mix of failures that are hard to predict and harder to debug:
 
@@ -71,7 +71,7 @@ Here's the honest list. What a production agent system actually requires:
 
 **Evaluation** — How do you know if the agent is working correctly? Not just "did it produce output" but "did it produce the right output?" This is probably the most under-discussed layer in the entire field.
 
-Each of these is a distinct engineering discipline. Most of them didn't exist as a named field five years ago. All of them are required. You can ignore some of them in a demo. You cannot ignore any of them in production.
+Each of these is a distinct engineering discipline. Most of them didn't exist as a named field five years ago. All of them are required. You can skip some of them in a simple agent. You cannot skip any of them in a serious one.
 
 This series will explore each of these layers — what they actually involve, where they break, and what it takes to get them right.
 
