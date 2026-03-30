@@ -169,11 +169,13 @@ Por eso estoy escribiendo la serie como historias, no como especificaciones. El 
 
 ---
 
-## Lo Que Viene
+## Hacia Dónde Va Esto
 
-Lo siguiente: la primera capa del stack real. Estado — lo que el agente sabe, lleva consigo y olvida en cada paso. Por qué es la base sobre la que se construye todo lo demás, y por qué el mal diseño de estado es la causa más común de fallas en agentes.
+Un agente que funciona una vez es una demo. Un agente que funciona de forma confiable es arquitectura. La distancia entre los dos es de lo que se trata esta serie.
 
-¿Esa primera demo que le mostré a mi colega? Era real. Era impresionante. Pero lo que ninguno de los dos vio — lo que la mayoría de las personas que ven demos de agentes todavía no ven — es todo lo que hay debajo. La magia no está en el modelo. Está en todo lo que lo rodea. De eso trata esta serie.
+Si alguna vez construiste un agente que funcionaba en pruebas y se cayó en producción — o si estás a punto de empezar a construir uno y quieres ahorrarte parte del dolor — los próximos capítulos van a profundizar en cada capa: estado, memoria, recuperación, herramientas, confiabilidad, observabilidad. No como teoría, sino como problemas de ingeniería que tienen soluciones reales y compromisos reales.
+
+El modelo mental que la mayoría carga — LLM más herramientas, unas pocas líneas de código — no está mal como punto de partida. Pero es el punto de partida de un camino que resulta ser mucho más largo e interesante de lo que parece desde afuera.
 
 ---
 

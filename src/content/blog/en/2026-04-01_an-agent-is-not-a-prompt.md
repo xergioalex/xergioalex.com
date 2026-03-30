@@ -169,11 +169,13 @@ This is why I'm writing the series as stories, not specifications. Craft knowled
 
 ---
 
-## What's Next
+## Where This Goes
 
-Next up: the first layer of the real stack. State — what the agent knows, carries forward, and forgets at each step. Why it's the foundation everything else is built on, and why bad state design is the single most common cause of agent failures.
+An agent that works once is a demo. An agent that works reliably is architecture. The distance between the two is everything this series is about.
 
-That first demo I showed my colleague? It was real. It was impressive. But what neither of us saw — what most people who watch agent demos still don't see — is everything underneath it. The magic isn't in the model. It's in everything around it. This series is about that everything.
+If you've ever built an agent that worked in testing and fell apart in production — or if you're about to start building one and want to skip some of the pain — the next chapters will go deep into each layer: state, memory, retrieval, tools, reliability, observability. Not as theory, but as engineering problems that have real solutions and real tradeoffs.
+
+The mental model most people carry — LLM plus tools, a few lines of code — isn't wrong as a starting point. But it's a starting point for a journey that turns out to be much longer and more interesting than it looks from the outside.
 
 ---
 
