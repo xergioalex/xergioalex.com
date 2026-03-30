@@ -6,7 +6,7 @@
 
 [![Code Check](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml/badge.svg)](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01?logo=astro)](https://astro.build)
+[![Astro](https://img.shields.io/badge/Astro-6.x-FF5D01?logo=astro)](https://astro.build)
 
 [🌐 Live Site](https://xergioalex.com) · [📖 Architecture](./docs/ARCHITECTURE.md) · [📋 Product Spec](./docs/PRODUCT_SPEC.md)
 
@@ -38,15 +38,18 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 
 | Layer | Technology |
 | :---- | :--------- |
-| Framework | [Astro](https://astro.build) 5.x |
+| Framework | [Astro](https://astro.build) 6.x |
 | UI | [Svelte](https://svelte.dev) 5.x |
 | Styling | [Tailwind CSS](https://tailwindcss.com) 4.x |
+| Linting | [Biome](https://biomejs.dev) 2.x |
 | Content | Markdown, MDX |
 | Hosting | [Cloudflare Pages](https://pages.cloudflare.com) |
 
 ---
 
 ## 🚀 Quick Start
+
+> Requires **Node.js 22+**
 
 ```bash
 npm install
@@ -97,6 +100,10 @@ Visit **http://localhost:4444** to preview.
 | [Architecture](./docs/ARCHITECTURE.md) | Technical implementation and patterns |
 | [Development Commands](./docs/DEVELOPMENT_COMMANDS.md) | Build scripts and workflows |
 | [Standards](./docs/STANDARDS.md) | Coding conventions |
+| [Blog Posts](./docs/features/BLOG_POSTS.md) | Blog content structure and workflows |
+| [I18N Guide](./docs/I18N_GUIDE.md) | Multilingual content and translations |
+| [Testing](./docs/TESTING_GUIDE.md) | Vitest setup and test conventions |
+| [Accessibility](./docs/ACCESSIBILITY.md) | WCAG AA standards and patterns |
 | [Security](./docs/SECURITY.md) | Security best practices |
 
 ---
