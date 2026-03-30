@@ -38,16 +38,16 @@ None of these are model failures. The model does exactly what you'd expect a lan
 
 [Simon Willison](https://simonwillison.net/) has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
 
-<figure class="dark-bg-container">
-  <img src="/images/blog/posts/becoming-an-ai-engineer/demo-vs-system-en.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2-3 tools) versus what a production agent system needs — 11 layers from model and state management to observability and evaluation" width="2048" height="1268" loading="lazy" />
-  <figcaption>An agent demo needs 3 components. A production agent needs at least 11 engineering layers.</figcaption>
-</figure>
-
 ---
 
 ## What a Real Agent Actually Contains
 
 Here's the honest list. What a production agent system actually requires:
+
+<figure class="dark-bg-container">
+  <img src="/images/blog/posts/becoming-an-ai-engineer/demo-vs-system-en.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2-3 tools) versus what a production agent system needs — 11 layers from model and state management to observability and evaluation" width="2048" height="1268" loading="lazy" />
+  <figcaption>An agent demo needs 3 components. A production agent needs at least 11 engineering layers.</figcaption>
+</figure>
 
 **Model layer** — Which model, which provider, how to handle rate limits and failures. Easier than it sounds until you need fallbacks.
 
