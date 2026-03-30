@@ -10,13 +10,13 @@ series: "building-agents"
 seriesOrder: 1
 ---
 
-When you think about building an AI agent today, the picture in your head is probably something like this: take an LLM, give it a system prompt, wire up a few functions it can call, put everything in a loop. The model reasons, picks a tool, gets a result, reasons again. Seventeen lines of Python. Done.
+When you think about building an AI agent today, the picture in your head is probably something like this: take an LLM, give it a system prompt, wire up a few functions it can call, put everything in a loop. The model reasons, picks a tool, gets a result, reasons again. A few lines of Python. Done.
 
-That mental model isn't wrong, exactly. An agent does need a model, and it does need tools. But calling that an agent is like calling a web application "a server that returns HTML." Technically true. Practically useless as a design principle. The moment you try to build something that survives real usage — real users, real failures, real stakes — the seventeen-line picture collapses.
+That mental model isn't wrong, exactly. An agent does need a model, and it does need tools. But calling that an agent is like calling a web application "a server that returns HTML." Technically true. Practically useless as a design principle. The moment you try to build something that survives real usage — real users, real failures, real stakes — that simple picture collapses.
 
 The quickstarts and demos reinforce this. They're optimized for the "aha moment" — getting something working in five minutes. That's fine for marketing. It's actively misleading for engineering. The quickstart doesn't show you what happens when the agent needs to remember something from three steps ago. It doesn't show you what happens when a tool fails and the agent needs to decide whether to retry or escalate. It doesn't show you how to know if the agent is actually working correctly, or just producing plausible-sounding output.
 
-This is precisely why frameworks like [LangChain](https://www.langchain.com/) and [LangGraph](https://langchain-ai.github.io/langgraph/) exist — to handle the complexity that the seventeen-line version ignores. State management, multi-step orchestration, tool coordination, checkpointing. These frameworks are real engineering tools, and some of them are excellent. But here's the thing I keep running into: the framework gives you better tools for implementing solutions. It doesn't design the solutions for you. The architecture — the decisions about what to keep in state, how memory should work, which tools need safety gates — that's still on you.
+This is precisely why frameworks like [LangChain](https://www.langchain.com/) and [LangGraph](https://langchain-ai.github.io/langgraph/) exist — to handle the complexity that the quickstart version ignores. State management, multi-step orchestration, tool coordination, checkpointing. These frameworks are real engineering tools, and some of them are excellent. But here's the thing I keep running into: the framework gives you better tools for implementing solutions. It doesn't design the solutions for you. The architecture — the decisions about what to keep in state, how memory should work, which tools need safety gates — that's still on you.
 
 That realization is what this series is about.
 
