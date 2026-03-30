@@ -20,7 +20,7 @@ The model isn't entirely wrong. An agent does need a model, and it does need too
 
 Where does this model come from? Mostly from demos. Framework quickstarts are optimized for the "aha moment" — getting something working in five minutes. That's fine for marketing. It's actively misleading for engineering. The quickstart doesn't show you what happens when the agent needs to remember something from three steps ago. It doesn't show you what happens when a tool fails and the agent needs to decide whether to retry or escalate. It doesn't show you how to know if the agent is actually working correctly, or just producing plausible-sounding output.
 
-I spent about two months treating frameworks as the answer. I picked LangChain because it had the most tutorials. Then I hit the state management problem and switched to LangGraph. LangGraph is actually excellent — arguably the most explicit treatment of state and agent orchestration available right now — but switching frameworks didn't solve my architecture problems. It gave me better tools for implementing solutions I still had to design myself.
+I spent about two months treating frameworks as the answer. I picked [LangChain](https://www.langchain.com/) because it had the most tutorials. Then I hit the state management problem and switched to [LangGraph](https://langchain-ai.github.io/langgraph/). LangGraph is actually excellent — arguably the most explicit treatment of state and agent orchestration available right now — but switching frameworks didn't solve my architecture problems. It gave me better tools for implementing solutions I still had to design myself.
 
 That realization is what this series is about.
 
@@ -44,7 +44,7 @@ Occasionally it would enter what I started calling "hallucination loops" — rep
 
 None of these were model failures. The model was doing exactly what you'd expect a language model to do given the inputs it received. They were architecture failures. The system didn't have proper state management. The tool definitions didn't enforce parameter contracts. There was no loop detection, no checkpoint mechanism, no way to inspect what was actually happening inside a multi-step run.
 
-Simon Willison has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
+[Simon Willison](https://simonwillison.net/) has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
 
 <div class="dark-bg-container">
   <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2 tools) versus what a production agent system needs (state, memory, error handling, observability, evaluation, and more)" width="1200" height="700" loading="lazy" />
@@ -90,11 +90,11 @@ Each of these is a distinct engineering discipline. Most of them didn't exist as
 
 The ecosystem that's grown up around agent building is — honestly — staggering. Not in a hype way. In a "this signals something real" way.
 
-On the framework and SDK side: **LangChain/LangGraph** has become the incumbent with over 100K GitHub stars, the most mature ecosystem, and probably the most explicit treatment of agent state available in open-source tooling. **CrewAI** focuses on multi-agent orchestration — multiple agents collaborating on tasks — and has found a strong following for that specific pattern. **AutoGen/AG2**, Microsoft's approach, takes a conversational multi-agent model. **Mastra** is a TypeScript-first framework that's worth watching if you're building in a JavaScript ecosystem. **Vercel AI SDK** goes web-native, streaming-first.
+On the framework and SDK side: **[LangChain](https://www.langchain.com/)/[LangGraph](https://langchain-ai.github.io/langgraph/)** has become the incumbent with over 100K GitHub stars, the most mature ecosystem, and probably the most explicit treatment of agent state available in open-source tooling. **[CrewAI](https://www.crewai.com/)** focuses on multi-agent orchestration — multiple agents collaborating on tasks — and has found a strong following for that specific pattern. **[AutoGen/AG2](https://github.com/ag2ai/ag2)**, Microsoft's approach, takes a conversational multi-agent model. **[Mastra](https://mastra.ai/)** is a TypeScript-first framework worth watching if you're building in a JavaScript ecosystem. **[Vercel AI SDK](https://sdk.vercel.ai/)** goes web-native, streaming-first.
 
-Then there are the first-party SDKs from the model providers themselves. Anthropic shipped the **Claude Agent SDK**. OpenAI launched their **Agents SDK**. Google released **ADK** (Agent Development Kit). When model providers start shipping opinionated frameworks for building with their own models, it means they've moved past "here's the API" to "here's how to actually build with this."
+Then there are the first-party SDKs from the model providers themselves. Anthropic shipped the **[Claude Agent SDK](https://docs.anthropic.com/en/docs/agents/overview)**. OpenAI launched their **[Agents SDK](https://openai.github.io/openai-agents-python/)**. Google released **[ADK](https://google.github.io/adk-docs/)** (Agent Development Kit). When model providers start shipping opinionated frameworks for building with their own models, it means they've moved past "here's the API" to "here's how to actually build with this."
 
-And underneath everything, there's the protocol layer. **MCP — Model Context Protocol** — hit 97 million monthly SDK downloads before being donated to the Agentic AI Foundation for open stewardship. Google's **A2A** (Agent-to-Agent) protocol and OpenAI's **ACP** are tackling agent interoperability. These are boring infrastructure moves. Boring infrastructure moves matter.
+And underneath everything, there's the protocol layer. **[MCP — Model Context Protocol](https://modelcontextprotocol.io/)** — hit 97 million monthly SDK downloads before being donated to the Agentic AI Foundation for open stewardship. Google's **[A2A](https://google.github.io/A2A/)** (Agent-to-Agent) protocol and OpenAI's **ACP** are tackling agent interoperability. These are boring infrastructure moves. Boring infrastructure moves matter.
 
 The observation I keep returning to: when Stripe, Coinbase, Google, Anthropic, Microsoft, and dozens of well-funded startups are all building agent infrastructure simultaneously, something real is happening. Not necessarily in the direction any individual company predicts, but real. This is not a fad that's going to be footnoted in five years.
 
@@ -104,7 +104,7 @@ I have no idea which specific frameworks will win. That's a separate question. W
 
 ## Why "AI Engineer" Is Starting to Mean Something
 
-Swyx coined the term "AI Engineer" in 2023 in an essay on Latent Space. At the time it felt aspirational — a way of describing what some people were starting to do before the role had a name. Three years later it's a job title in thousands of postings, with specific expectations attached.
+Swyx coined the term "AI Engineer" in 2023 in [an essay on Latent Space](https://www.latent.space/p/ai-engineer). At the time it felt aspirational — a way of describing what some people were starting to do before the role had a name. Three years later it's a job title in thousands of postings, with specific expectations attached.
 
 Here's what companies are actually hiring for: not "can you call the OpenAI API" — anyone can do that in an afternoon. They want: can you design state management for a multi-turn agent workflow? Can you implement a memory system that scales? Can you debug an agent that's producing subtly wrong outputs? Can you build an evaluation pipeline that tells you whether a new model version is actually better? Can you design tool schemas that reduce misuse without over-constraining the model's flexibility?
 
@@ -144,7 +144,7 @@ The first real debugging session that changed my perspective was a state managem
 
 That's when I stopped thinking "I'm learning a framework" and started thinking "I'm learning a craft."
 
-The companion series I've been writing — Working with Agents — explores what it's like to *work with* agents day-to-day: the productivity shift, the workflow changes, what it does to how you think about work. This series is about what I discovered when I tried to *build* them. It's the layer underneath that experience.
+The companion series I've been writing — [Working with Agents](/blog/series/working-with-agents/) — explores what it's like to *work with* agents day-to-day: the productivity shift, the workflow changes, what it does to how you think about work. This series is about what I discovered when I tried to *build* them. It's the layer underneath that experience.
 
 ---
 
@@ -158,7 +158,7 @@ The framework doesn't teach you: how to design state for your specific workflow,
 
 Django doesn't teach you to build a good web app. Rails doesn't teach you good database design. LangGraph doesn't teach you good agent design. These tools implement patterns well. They don't choose the patterns for you.
 
-This doesn't mean frameworks are bad — I'd be struggling a lot more without LangGraph's explicit state model and LangSmith's tracing. The LangChain community has produced more useful agent patterns than anywhere else I've found. These tools are necessary. They're just not sufficient.
+This doesn't mean frameworks are bad — I'd be struggling a lot more without LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing. The LangChain community has produced more useful agent patterns than anywhere else I've found. These tools are necessary. They're just not sufficient.
 
 The architectural decisions — the ones that actually determine whether your agent is useful or not — are above the framework layer. That's what this series is about.
 

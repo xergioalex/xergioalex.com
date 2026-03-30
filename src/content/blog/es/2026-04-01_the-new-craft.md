@@ -20,7 +20,7 @@ El modelo no está del todo equivocado. Un agente sí necesita un modelo, y sí 
 
 ¿De dónde viene este modelo? Principalmente de las demos. Los inicios rápidos de los frameworks están optimizados para el "momento aha" — lograr que algo funcione en cinco minutos. Eso está bien para el marketing. Es activamente engañoso para la ingeniería. El inicio rápido no te muestra qué pasa cuando el agente necesita recordar algo de tres pasos atrás. No te muestra qué pasa cuando una herramienta falla y el agente necesita decidir si reintentar o escalar. No te muestra cómo saber si el agente está funcionando correctamente, o si simplemente produce resultados que suenan plausibles.
 
-Pasé unos dos meses tratando los frameworks como la respuesta. Elegí LangChain porque tenía más tutoriales. Luego me topé con el problema de gestión de estado y cambié a LangGraph. LangGraph es realmente excelente — posiblemente el tratamiento más explícito de estado y orquestación de agentes disponible ahora mismo — pero cambiar de framework no resolvió mis problemas de arquitectura. Me dio mejores herramientas para implementar soluciones que yo igual tenía que diseñar.
+Pasé unos dos meses tratando los frameworks como la respuesta. Elegí [LangChain](https://www.langchain.com/) porque tenía más tutoriales. Luego me topé con el problema de gestión de estado y cambié a [LangGraph](https://langchain-ai.github.io/langgraph/). LangGraph es realmente excelente — posiblemente el tratamiento más explícito de estado y orquestación de agentes disponible ahora mismo — pero cambiar de framework no resolvió mis problemas de arquitectura. Me dio mejores herramientas para implementar soluciones que yo igual tenía que diseñar.
 
 Esa conclusión es de lo que trata esta serie.
 
@@ -44,7 +44,7 @@ Ocasionalmente entraba en lo que empecé a llamar "bucles de alucinación" — r
 
 Ninguno de estos era un fallo del modelo. El modelo hacía exactamente lo que esperarías que hiciera un modelo de lenguaje dados los inputs que recibía. Eran fallas de arquitectura. El sistema no tenía una gestión de estado adecuada. Las definiciones de las herramientas no imponían contratos de parámetros. No había detección de bucles, ni mecanismo de puntos de control, ni forma de inspeccionar lo que realmente estaba pasando dentro de una ejecución de varios pasos.
 
-Simon Willison tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
+[Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 
 <div class="dark-bg-container">
   <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo (modelo, prompt, 2 herramientas) frente a lo que necesita un sistema de agentes en producción (estado, memoria, manejo de errores, observabilidad, evaluación y más)" width="1200" height="700" loading="lazy" />
@@ -90,11 +90,11 @@ Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ella
 
 El ecosistema que ha crecido alrededor de la construcción de agentes es — sinceramente — impresionante. No en el sentido del hype. En el sentido de "esto señala algo real."
 
-En el lado de frameworks y SDKs: **LangChain/LangGraph** se ha convertido en el referente con más de 100K estrellas en GitHub, el ecosistema más maduro y probablemente el tratamiento más explícito del estado de agentes disponible en herramientas de código abierto. **CrewAI** se enfoca en la orquestación de múltiples agentes — varios agentes colaborando en tareas — y ha encontrado un seguimiento sólido para ese patrón específico. **AutoGen/AG2**, el enfoque de Microsoft, adopta un modelo conversacional de múltiples agentes. **Mastra** es un framework con TypeScript como primera clase que vale la pena seguir si estás construyendo en un ecosistema JavaScript. **Vercel AI SDK** apuesta por lo web-nativo y el streaming.
+En el lado de frameworks y SDKs: **[LangChain](https://www.langchain.com/)/[LangGraph](https://langchain-ai.github.io/langgraph/)** se ha convertido en el referente con más de 100K estrellas en GitHub, el ecosistema más maduro y probablemente el tratamiento más explícito del estado de agentes disponible en herramientas de código abierto. **[CrewAI](https://www.crewai.com/)** se enfoca en la orquestación de múltiples agentes — varios agentes colaborando en tareas — y ha encontrado un seguimiento sólido para ese patrón específico. **[AutoGen/AG2](https://github.com/ag2ai/ag2)**, el enfoque de Microsoft, adopta un modelo conversacional de múltiples agentes. **[Mastra](https://mastra.ai/)** es un framework con TypeScript como primera clase que vale la pena seguir si estás construyendo en un ecosistema JavaScript. **[Vercel AI SDK](https://sdk.vercel.ai/)** apuesta por lo web-nativo y el streaming.
 
-Luego están los SDKs de primera parte de los propios proveedores de modelos. Anthropic lanzó el **Claude Agent SDK**. OpenAI lanzó su **Agents SDK**. Google publicó **ADK** (Agent Development Kit). Cuando los proveedores de modelos empiezan a lanzar frameworks con opiniones propias para construir con sus modelos, significa que han pasado de "aquí está la API" a "así es como realmente construyes con esto."
+Luego están los SDKs de primera parte de los propios proveedores de modelos. Anthropic lanzó el **[Claude Agent SDK](https://docs.anthropic.com/en/docs/agents/overview)**. OpenAI lanzó su **[Agents SDK](https://openai.github.io/openai-agents-python/)**. Google publicó **[ADK](https://google.github.io/adk-docs/)** (Agent Development Kit). Cuando los proveedores de modelos empiezan a lanzar frameworks con opiniones propias para construir con sus modelos, significa que han pasado de "aquí está la API" a "así es como realmente construyes con esto."
 
-Y por debajo de todo, está la capa de protocolo. **MCP — Model Context Protocol** — alcanzó 97 millones de descargas mensuales del SDK antes de ser donado a la Agentic AI Foundation para su gestión abierta. **A2A** (Agent-to-Agent) de Google y **ACP** de OpenAI están atacando la interoperabilidad entre agentes. Estos son movimientos de infraestructura aburridos. Los movimientos de infraestructura aburridos importan.
+Y por debajo de todo, está la capa de protocolo. **[MCP — Model Context Protocol](https://modelcontextprotocol.io/)** — alcanzó 97 millones de descargas mensuales del SDK antes de ser donado a la Agentic AI Foundation para su gestión abierta. **[A2A](https://google.github.io/A2A/)** (Agent-to-Agent) de Google y **ACP** de OpenAI están atacando la interoperabilidad entre agentes. Estos son movimientos de infraestructura aburridos. Los movimientos de infraestructura aburridos importan.
 
 La observación a la que sigo volviendo: cuando Stripe, Coinbase, Google, Anthropic, Microsoft y decenas de startups bien financiadas están todas construyendo infraestructura para agentes simultáneamente, algo real está pasando. No necesariamente en la dirección que ninguna empresa individual predice, pero real. Esto no es una moda que quedará como nota al pie en cinco años.
 
@@ -104,7 +104,7 @@ No tengo idea de qué frameworks específicos van a ganar. Esa es una pregunta a
 
 ## Por Qué "AI Engineer" Está Empezando a Significar Algo
 
-Swyx acuñó el término "AI Engineer" en 2023 en un ensayo en Latent Space. En ese momento se sentía aspiracional — una forma de describir lo que algunas personas empezaban a hacer antes de que el rol tuviera nombre. Tres años después es un título de trabajo en miles de ofertas, con expectativas específicas asociadas.
+Swyx acuñó el término "AI Engineer" en 2023 en [un ensayo en Latent Space](https://www.latent.space/p/ai-engineer). En ese momento se sentía aspiracional — una forma de describir lo que algunas personas empezaban a hacer antes de que el rol tuviera nombre. Tres años después es un título de trabajo en miles de ofertas, con expectativas específicas asociadas.
 
 Esto es lo que las empresas realmente están buscando contratar: no "¿puedes llamar la API de OpenAI?" — cualquiera puede hacer eso en una tarde. Quieren saber: ¿puedes diseñar la gestión de estado para un flujo de trabajo de agentes de múltiples turnos? ¿Puedes implementar un sistema de memoria que escale? ¿Puedes depurar un agente que produce resultados sutilmente incorrectos? ¿Puedes construir un pipeline de evaluación que te diga si una nueva versión del modelo es realmente mejor? ¿Puedes diseñar esquemas de herramientas que reduzcan el mal uso sin sobre-restringir la flexibilidad del modelo?
 
@@ -144,7 +144,7 @@ La primera sesión de depuración real que cambió mi perspectiva fue un bug de 
 
 Fue entonces cuando dejé de pensar "estoy aprendiendo un framework" y empecé a pensar "estoy aprendiendo un oficio."
 
-La serie paralela que he estado escribiendo — Working with Agents — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que descubrí cuando intenté *construirlos*. Es la capa que está debajo de esa experiencia.
+La serie paralela que he estado escribiendo — [Working with Agents](/es/blog/series/working-with-agents/) — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que descubrí cuando intenté *construirlos*. Es la capa que está debajo de esa experiencia.
 
 ---
 
@@ -158,7 +158,7 @@ El framework no te enseña: cómo diseñar el estado para tu flujo de trabajo es
 
 Django no te enseña a construir una buena aplicación web. Rails no te enseña buen diseño de bases de datos. LangGraph no te enseña buen diseño de agentes. Estas herramientas implementan patrones bien. No eligen los patrones por ti.
 
-Esto no significa que los frameworks sean malos — estaría pasándola mucho más difícil sin el modelo de estado explícito de LangGraph y las trazas de LangSmith. La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar que haya encontrado. Estas herramientas son necesarias. Simplemente no son suficientes.
+Esto no significa que los frameworks sean malos — estaría pasándola mucho más difícil sin el modelo de estado explícito de LangGraph y las trazas de [LangSmith](https://smith.langchain.com/). La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar que haya encontrado. Estas herramientas son necesarias. Simplemente no son suficientes.
 
 Las decisiones arquitectónicas — las que realmente determinan si tu agente es útil o no — están por encima de la capa del framework. De eso trata esta serie.
 
