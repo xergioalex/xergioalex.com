@@ -157,17 +157,17 @@ Las decisiones arquitectónicas — las que realmente determinan si tu agente es
 
 Esto es lo que he encontrado que realmente necesitas pensar, capa por capa. Cada una seguramente necesitará su propio capítulo.
 
-**Estado** — La base. Todo lo que el agente sabe, recuerda y lleva entre pasos. El mal diseño de estado causa más fallas en agentes que cualquier otro factor individual. Capítulo 3.
+**Estado** — La base. Todo lo que el agente sabe, recuerda y lleva entre pasos. El mal diseño de estado causa más fallas en agentes que cualquier otro factor individual.
 
-**Memoria** — No es lo mismo que el contexto. Los problemas distintos de qué retiene el agente dentro de una sesión, qué persiste entre sesiones, cómo funciona la recuperación, y cuándo la memoria empeora las cosas en lugar de mejorarlas. Capítulo 4.
+**Memoria** — No es lo mismo que el contexto. Los problemas distintos de qué retiene el agente dentro de una sesión, qué persiste entre sesiones, cómo funciona la recuperación, y cuándo la memoria empeora las cosas en lugar de mejorarlas.
 
-**Conocimiento y recuperación** — Cómo los agentes acceden a información externa. RAG, fragmentación, embeddings, reranking, y el problema sorprendentemente difícil de saber cuándo el contenido recuperado es realmente relevante. Capítulo 5.
+**Conocimiento y recuperación** — Cómo los agentes acceden a información que el modelo no tiene. RAG, fragmentación, embeddings, reranking, y el problema sorprendentemente difícil de saber cuándo el contenido recuperado es realmente relevante.
 
-**Herramientas** — En el momento en que un agente puede actuar, el problema de diseño cambia. Esquemas de herramientas, límites de permisos, efectos secundarios, flujos de aprobación. Aquí es donde los agentes se convierten en operadores en lugar de asistentes. Capítulo 6.
+**Herramientas** — En el momento en que un agente puede actuar, el problema de diseño cambia. Esquemas de herramientas, límites de permisos, efectos secundarios, flujos de aprobación. Aquí es donde los agentes se convierten en operadores en lugar de asistentes.
 
-**Confiabilidad** — Hacer que un sistema probabilístico se comporte de forma consistente. Outputs estructurados, validación, reintentos, manejo de errores, patrones de humano en el bucle. Capítulo 7.
+**Confiabilidad** — Hacer que un sistema probabilístico se comporte de forma consistente. Outputs estructurados, validación, reintentos, manejo de errores, patrones de humano en el bucle.
 
-**Observabilidad** — Si no puedes ver el interior de un agente en ejecución, estás volando a ciegas. Trazas, árboles de ejecución, inspección de herramientas, datasets de evaluación. La capa más omitida, y la más necesaria. Capítulo 8.
+**Observabilidad** — Si no puedes ver el interior de un agente en ejecución, estás volando a ciegas. Trazas, árboles de ejecución, inspección de herramientas, datasets de evaluación. La capa más omitida, y la más necesaria.
 
 Al final de esta serie, tendrás una imagen completa de lo que realmente se necesita para construir sistemas de agentes que funcionen de forma confiable — no solo en demos, sino en producción.
 

@@ -157,17 +157,17 @@ The architectural decisions — the ones that actually determine whether your ag
 
 Here's what I've found you actually need to think about, layer by layer. Each of these will probably need its own chapter.
 
-**State** — The foundation. Everything the agent knows, remembers, and carries between steps. Bad state design causes more agent failures than any other single factor. Chapter 3.
+**State** — The foundation. Everything the agent knows, remembers, and carries between steps. Bad state design causes more agent failures than any other single factor.
 
-**Memory** — Not the same as context. The distinct problems of what the agent retains within a session, what persists across sessions, how retrieval works, and when memory makes things worse instead of better. Chapter 4.
+**Memory** — Not the same as context. The distinct problems of what the agent retains within a session, what persists across sessions, how retrieval works, and when memory makes things worse instead of better.
 
-**Knowledge and retrieval** — How agents access external information. RAG, chunking, embedding, reranking, and the surprisingly hard problem of knowing when retrieved content is actually relevant. Chapter 5.
+**Knowledge and retrieval** — How agents access external information. RAG, chunking, embedding, reranking, and the surprisingly hard problem of knowing when retrieved content is actually relevant.
 
-**Tools** — The moment an agent can act, the design problem changes. Tool schemas, permission boundaries, side effects, approval flows. This is where agents become operators rather than assistants. Chapter 6.
+**Tools** — The moment an agent can act, the design problem changes. Tool schemas, permission boundaries, side effects, approval flows. This is where agents become operators rather than assistants.
 
-**Reliability** — Making a probabilistic system behave consistently. Structured outputs, validation, retries, error handling, human-in-the-loop patterns. Chapter 7.
+**Reliability** — Making a probabilistic system behave consistently. Structured outputs, validation, retries, error handling, human-in-the-loop patterns.
 
-**Observability** — If you can't see inside a running agent, you're flying blind. Traces, run trees, tool inspection, evaluation datasets. The layer most skipped, and most needed. Chapter 8.
+**Observability** — If you can't see inside a running agent, you're flying blind. Traces, run trees, tool inspection, evaluation datasets. The layer most skipped, and most needed.
 
 By the end of this series, you'll have a complete picture of what it actually takes to build agent systems that work reliably — not just in demos, but in production.
 
