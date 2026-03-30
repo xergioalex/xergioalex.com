@@ -18,7 +18,7 @@ Los inicios rápidos y las demos refuerzan esto. Están optimizados para el "mom
 
 Por eso existen frameworks como [LangChain](https://www.langchain.com/) y [LangGraph](https://langchain-ai.github.io/langgraph/) — para manejar la complejidad que la versión del quickstart ignora. Gestión de estado, orquestación de múltiples pasos, coordinación de herramientas, puntos de control. Son herramientas de ingeniería reales, y algunas son excelentes. Pero hay algo con lo que me sigo encontrando: el framework te da mejores herramientas para implementar soluciones. No diseña las soluciones por ti. La arquitectura — las decisiones sobre qué mantener en el estado, cómo debería funcionar la memoria, qué herramientas necesitan puertas de seguridad — eso sigue siendo tu responsabilidad.
 
-Esa conclusión es de lo que trata esta serie.
+Esa conclusión — que construir agentes se trata menos de aprender una librería y más de convertirte en un nuevo tipo de ingeniero — es de lo que trata esta serie.
 
 ---
 
@@ -59,7 +59,7 @@ Aquí está la lista honesta. Lo que un sistema de agentes en producción realme
 
 **Memoria de largo plazo** — Lo que el agente recuerda entre sesiones. Requiere almacenamiento, recuperación y decisiones sobre qué vale la pena recordar. La mayoría de las demos se saltan esto por completo.
 
-**Recuperación de conocimiento (RAG)** — Cómo el agente accede a conocimiento con el que el modelo no fue entrenado — documentación de la empresa, políticas internas, datos de dominio. Estrategia de fragmentación, elección de embeddings, método de recuperación, reranking. Una disciplina de ingeniería distinta con sus propios modos de fallo.
+**Recuperación de conocimiento (RAG)** — Cómo el agente accede a conocimiento con el que el modelo no fue entrenado — documentación de la empresa, políticas internas, datos de dominio. Estrategia de fragmentación, elección de embeddings, método de recuperación, reranking. Un campo con sus propios modos de fallo.
 
 **Ecosistema de herramientas** — No solo "funciones que el modelo puede llamar" sino: diseño de esquemas, validación de parámetros, manejo de errores, gestión de efectos secundarios, límites de permisos. Cada herramienta es una superficie para el fallo.
 
@@ -149,9 +149,7 @@ El framework no te enseña: cómo diseñar el estado para tu flujo de trabajo es
 
 Django no te enseña a construir una buena aplicación web. Rails no te enseña buen diseño de bases de datos. LangGraph no te enseña buen diseño de agentes. Estas herramientas implementan patrones bien. No eligen los patrones por ti.
 
-Esto no significa que los frameworks sean malos — el modelo de estado explícito de LangGraph y las trazas de [LangSmith](https://smith.langchain.com/) se han convertido en herramientas estándar por buenas razones. La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar del ecosistema. Estas herramientas son necesarias — pero las decisiones arquitectónicas que realmente determinan si un agente funciona o no viven por encima de la capa del framework.
-
-Las decisiones arquitectónicas — las que realmente determinan si tu agente es útil o no — están por encima de la capa del framework. De eso se trata esta serie: [Construyendo Agentes](/es/blog/series/building-agents/).
+Esto no significa que los frameworks sean malos — el modelo de estado explícito de LangGraph y las trazas de [LangSmith](https://smith.langchain.com/) se han convertido en herramientas estándar por buenas razones. La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar del ecosistema. Estas herramientas son necesarias — pero las decisiones de diseño que realmente determinan si un agente funciona o no viven por encima de la capa del framework. De eso se trata esta serie: [Construyendo Agentes](/es/blog/series/building-agents/).
 
 ---
 

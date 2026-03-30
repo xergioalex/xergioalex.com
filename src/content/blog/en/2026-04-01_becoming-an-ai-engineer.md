@@ -18,7 +18,7 @@ The quickstarts and demos reinforce this. They're optimized for the "aha moment"
 
 This is precisely why frameworks like [LangChain](https://www.langchain.com/) and [LangGraph](https://langchain-ai.github.io/langgraph/) exist — to handle the complexity that the quickstart version ignores. State management, multi-step orchestration, tool coordination, checkpointing. These frameworks are real engineering tools, and some of them are excellent. But here's the thing I keep running into: the framework gives you better tools for implementing solutions. It doesn't design the solutions for you. The architecture — the decisions about what to keep in state, how memory should work, which tools need safety gates — that's still on you.
 
-That realization is what this series is about.
+That realization — that building agents is less about learning a library and more about becoming a new kind of engineer — is what this series is about.
 
 ---
 
@@ -59,7 +59,7 @@ Here's the honest list. What a production agent system actually requires:
 
 **Long-term memory** — What the agent remembers across sessions. Requires storage, retrieval, and decisions about what's worth remembering. Most demos skip this entirely.
 
-**Knowledge retrieval (RAG)** — How the agent accesses knowledge the model wasn't trained on — company docs, internal policies, domain-specific data. Chunking strategy, embedding choice, retrieval method, reranking. A distinct engineering discipline with its own set of failure modes.
+**Knowledge retrieval (RAG)** — How the agent accesses knowledge the model wasn't trained on — company docs, internal policies, domain-specific data. Chunking strategy, embedding choice, retrieval method, reranking. A field with its own set of failure modes.
 
 **Tool ecosystem** — Not just "functions the model can call" but: schema design, parameter validation, error handling, side effect management, permission boundaries. Each tool is a surface for failure.
 
@@ -149,9 +149,7 @@ The framework doesn't teach you: how to design state for your specific workflow,
 
 Django doesn't teach you to build a good web app. Rails doesn't teach you good database design. LangGraph doesn't teach you good agent design. These tools implement patterns well. They don't choose the patterns for you.
 
-This doesn't mean frameworks are bad — LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing have become standard tools for good reason. The LangChain community has produced more useful agent patterns than anywhere else in the ecosystem. These tools are necessary — but the architectural decisions that actually determine whether an agent works or not live above the framework layer.
-
-The architectural decisions — the ones that actually determine whether your agent is useful or not — are above the framework layer. That's what this series is about: [Building Agents](/blog/series/building-agents/).
+This doesn't mean frameworks are bad — LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing have become standard tools for good reason. The LangChain community has produced more useful agent patterns than anywhere else in the ecosystem. These tools are necessary — but the design decisions that actually determine whether an agent works or not live above the framework layer. That's what this series is about: [Building Agents](/blog/series/building-agents/).
 
 ---
 
