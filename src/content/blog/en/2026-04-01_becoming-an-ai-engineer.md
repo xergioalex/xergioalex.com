@@ -2,7 +2,7 @@
 title: "Becoming an AI Engineer: An Agent Is Not a Prompt"
 description: "Most people think an agent is an LLM with tools. They're wrong. A real agent is a system — and building one requires a different kind of engineering."
 pubDate: "2026-04-01"
-heroImage: "/images/blog/posts/becoming-an-ai-engineer/hero.webp"
+heroImage: "/images/blog/posts/becoming-an-ai-engineer/hero-en.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
 keywords: ["building AI agents 2026", "AI engineer craft", "agent architecture layers", "LLM agent systems design", "agent is not a prompt", "AI engineering discipline", "agent frameworks landscape 2026"]
