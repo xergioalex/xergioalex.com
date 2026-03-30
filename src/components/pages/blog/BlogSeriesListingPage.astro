@@ -37,7 +37,10 @@ const seriesWithMeta: SeriesListingEntry[] = (
         description: series.data.description || '',
         order: series.data.order,
         postCount: posts.length,
-        heroImage: series.data.heroImage || null,
+        heroImage:
+          (lang === 'es' && series.data.heroImageEs) ||
+          series.data.heroImage ||
+          null,
         firstPostHero: posts[0]?.heroImage || null,
         lastPostDate,
       };

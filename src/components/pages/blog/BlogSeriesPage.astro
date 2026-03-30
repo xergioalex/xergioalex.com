@@ -40,7 +40,10 @@ const localizedDescription =
   t.seriesDescriptions[slug] || series.data.description || '';
 
 const firstPostHero = allPosts[0]?.heroImage || undefined;
-const seriesHeroImage = series.data.heroImage || firstPostHero;
+const seriesHeroImage =
+  (lang === 'es' && series.data.heroImageEs) ||
+  series.data.heroImage ||
+  firstPostHero;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
