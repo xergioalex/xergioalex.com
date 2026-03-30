@@ -58,7 +58,10 @@ También mostré proyectos de inspiración: A-Painter de Mozilla, A-Frame City B
 - **Demos en CodePen:** [Primitivos](https://codepen.io/xergioalex/pen/jZxbdo), [Sky e inspector](https://codepen.io/xergioalex/pen/PQeZYy), [Texturas](https://codepen.io/xergioalex/pen/VQxepd), [Modelos 3D](https://codepen.io/xergioalex/pen/JpvXrz), [Física](https://codepen.io/xergioalex/pen/wyjowM), [Laberinto](https://github.com/xergioalex/webvr-maze)
 - [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.org/realidad-virtual-para-la-web-con-a-frame-y-point-free-javascript-con-ramdajs) — resumen del evento
 
-![Memorias del evento](/images/blog/posts/webvr-aframe/webvr-aframe-event-memories.webp)
+<figure>
+  <img src="/images/blog/posts/webvr-aframe/webvr-aframe-event-memories.webp" alt="Memorias del evento" loading="lazy" />
+  <figcaption>La audiencia de Pereira Tech Talks explorando demos en vivo de A-Frame WebVR en sus teléfonos durante la charla.</figcaption>
+</figure>
 
 ---
 

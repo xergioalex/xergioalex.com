@@ -14,7 +14,10 @@ Quería cortar a través del ruido. Así que cuando la Universidad de Caldas me 
 
 La audiencia era una mezcla de estudiantes, profesores y desarrolladores locales. Muchos eran escépticos (con razón — la locura de los ICOs estaba fuera de control). No quería venderles blockchain. Quería ayudarles a entenderlo lo suficientemente bien como para formar sus propias opiniones.
 
-![Charla de blockchain en la Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-1.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-1.webp" alt="Charla de blockchain en la Universidad de Caldas" loading="lazy" />
+  <figcaption>Abriendo la charla de blockchain en la Universidad de Caldas en octubre de 2017, trazando la historia del dinero hasta Bitcoin.</figcaption>
+</figure>
 
 ---
 
@@ -73,7 +76,10 @@ Para 2017, DeFi todavía estaba en su infancia, pero la visión era clara: recon
 
 Fui honesto sobre las limitaciones: blockchain es lento, costoso, y consume mucha energía (prueba de trabajo). No es una solución para todos los problemas. Pero para ciertos casos de uso — especialmente donde la confianza es costosa o no está disponible — es transformador.
 
-![Taller de blockchain en la Universidad de Caldas — audiencia durante la sesión práctica](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-2.webp" alt="Taller de blockchain en la Universidad de Caldas — audiencia durante la sesión práctica" loading="lazy" />
+  <figcaption>Estudiantes y desarrolladores atentos durante el segmento práctico de Web3.js en el taller.</figcaption>
+</figure>
 
 ---
 
@@ -87,9 +93,15 @@ Mostré un ejemplo simple: desplegar un contrato inteligente a una red de prueba
 
 También enfaticé la importancia de entender los trade-offs. Escribir datos al blockchain cuesta gas (tarifas de transacción), así que no puedes simplemente arrojar datos a él como una base de datos tradicional. Necesitas diseñar con cuidado.
 
-![Charla de blockchain en la Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-3.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-3.webp" alt="Charla de blockchain en la Universidad de Caldas" loading="lazy" />
+  <figcaption>La segunda mitad práctica de la sesión — conectándonos a Ethereum y desplegando smart contracts con Web3.js.</figcaption>
+</figure>
 
-![Taller de blockchain](/images/blog/posts/what-is-blockchain/blockchain-4.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-4.webp" alt="Taller de blockchain" loading="lazy" />
+  <figcaption>Asistentes siguiendo el demo en vivo del contrato inteligente en una red de prueba.</figcaption>
+</figure>
 
 ---
 

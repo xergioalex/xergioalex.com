@@ -52,7 +52,10 @@ Esa lista resume la mayor parte del trabajo. Y algo importante: **todo se hizo d
 
 Este es el esquema de base de datos que diseñé para la biblioteca musical:
 
-![Modelo de datos de la biblioteca musical](/images/blog/posts/music-library-php-my-first-website/db-model.webp)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/db-model.webp" alt="Modelo de datos de la biblioteca musical" loading="lazy" />
+  <figcaption>Esquema SQLite con seis tablas: usuarios, canciones, artistas, géneros, álbumes y una tabla intermedia para las listas de reproducción.</figcaption>
+</figure>
 
 ---
 
@@ -62,19 +65,31 @@ He mantenido el proyecto en GitHub todos estos años. Aquí hay algunos GIFs que
 
 ### Página de inicio
 
-![Página de inicio de Music Library PHP](/images/blog/posts/music-library-php-my-first-website/home.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/home.gif" alt="Página de inicio de Music Library PHP" loading="lazy" />
+  <figcaption>La página de inicio de Music Library — una interfaz sencilla en PHP/HTML con navegación y contenido destacado.</figcaption>
+</figure>
 
 ### Registro e inicio de sesión
 
-![Flujo de registro e inicio de sesión](/images/blog/posts/music-library-php-my-first-website/login-and-list-music.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/login-and-list-music.gif" alt="Flujo de registro e inicio de sesión" loading="lazy" />
+  <figcaption>Registro, inicio de sesión y la lista personal de canciones del usuario — todo construido desde cero con sesiones de PHP.</figcaption>
+</figure>
 
 ### Navegación y gestión de canciones
 
-![Agregar canciones, artistas, géneros y álbumes](/images/blog/posts/music-library-php-my-first-website/add-song.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/add-song.gif" alt="Agregar canciones, artistas, géneros y álbumes" loading="lazy" />
+  <figcaption>CRUD en acción — agregar canciones nuevas con metadatos de artista, género y álbum almacenados en SQLite.</figcaption>
+</figure>
 
 ### Búsqueda
 
-![Búsqueda de canciones](/images/blog/posts/music-library-php-my-first-website/search.gif)
+<figure>
+  <img src="/images/blog/posts/music-library-php-my-first-website/search.gif" alt="Búsqueda de canciones" loading="lazy" />
+  <figcaption>El buscador, filtrando canciones por nombre en tiempo real con consultas de PHP y SQLite.</figcaption>
+</figure>
 
 ---
 

@@ -32,7 +32,10 @@ Y está el escenario académico: aprender cómo se comporta cada motor, cómo di
 
 El corazón del proyecto es un contenedor central corriendo **Python con Django**, **Factory Boy** para generación de datos de prueba, y **uWSGI** como servidor de aplicaciones. Ese contenedor central se conecta, a través de la red interna de Docker, a diez contenedores de bases de datos — cinco SQL y cinco NoSQL.
 
-<img src="/images/blog/posts/django-multiple-databases-university/docker-stack.webp" alt="Diagrama de arquitectura Docker de BSolutions mostrando un contenedor central de Django conectado a 10 contenedores de bases de datos — PostgreSQL, MySQL, MariaDB, Oracle, SQL Server (SQL) y MongoDB, Redis, CouchDB, Cassandra, Neo4j (NoSQL) — más Nginx, Certbot, Celery y Flower" width="972" height="1153" loading="lazy" />
+<figure class="dark-bg-container" style="background:#1a1a2e;border-radius:8px;padding:1.5rem;margin:2rem 0;display:flex;flex-direction:column;align-items:center;">
+<img src="/images/blog/posts/django-multiple-databases-university/docker-stack.webp" alt="Diagrama de arquitectura Docker de BSolutions mostrando un contenedor central de Django conectado a 10 contenedores de bases de datos — PostgreSQL, MySQL, MariaDB, Oracle, SQL Server (SQL) y MongoDB, Redis, CouchDB, Cassandra, Neo4j (NoSQL) — más Nginx, Certbot, Celery y Flower" width="972" height="1153" loading="lazy" style="max-width:100%;height:auto;" />
+<figcaption style="color:#d1d5db;margin-top:0.75rem;">Stack Docker de BSolutions: un core central de Django/uWSGI conectado a 10 contenedores de bases de datos aislados, más Nginx, Celery y Flower.</figcaption>
+</figure>
 
 Lo que el diagrama muestra es una topología estrella: un core central y diez spokes que son las bases de datos. Cada base de datos vive en su propio contenedor aislado, expone su puerto nativo, y la aplicación Django sabe cómo hablar con cada una de ellas.
 

@@ -12,7 +12,10 @@ PyCon Colombia 2018 fue una experiencia muy especial para mí. Di la charla *Dee
 
 Lo que más quería transmitir era que detrás de los modelos de inteligencia artificial no hay magia: hay álgebra lineal, cálculo, estadística y grafos. Conceptos que muchos vimos en la universidad y que, aplicados de la forma correcta, nos permiten construir sistemas que aprenden. Eso me parece fascinante.
 
-![Audiencia en PyCon Colombia 2018 durante la charla](/images/blog/posts/pycon-deep-learning/audience.webp)
+<figure>
+  <img src="/images/blog/posts/pycon-deep-learning/audience.webp" alt="Audiencia en PyCon Colombia 2018 durante la charla" loading="lazy" />
+  <figcaption>Auditorio lleno en PyCon Colombia 2018 en Medellín para la sesión "Deep Learning: De la Academia a la Práctica".</figcaption>
+</figure>
 
 ---
 
@@ -79,7 +82,10 @@ Hay dos fases fundamentales:
 
 Cerramos con **computer vision**. Hablé de **espectrogramas** — representaciones de señales en el dominio de la frecuencia — y de **redes neuronales convolucionales (CNN)**, que son la base de la visión por computadora moderna.
 
-![Presentando la sección de Computer Vision en Universidad EAFIT](/images/blog/posts/pycon-deep-learning/computer-vision.webp)
+<figure>
+  <img src="/images/blog/posts/pycon-deep-learning/computer-vision.webp" alt="Presentando la sección de Computer Vision en Universidad EAFIT" loading="lazy" />
+  <figcaption>Cerrando con redes neuronales convolucionales y espectrogramas en la Universidad EAFIT durante PyCon Colombia 2018.</figcaption>
+</figure>
 
 Las CNN aprenden filtros que detectan bordes, texturas y formas. Apilando capas convolucionales, el modelo puede reconocer objetos complejos. Mencioné [deeplearning.ai](https://www.deeplearning.ai/) como recurso para profundizar.
 

@@ -12,7 +12,10 @@ Microservicios y GraphQL — un tema que me tiene entusiasmado. He estado constr
 
 Aquí están los conceptos que cubrí. Si prefieres ver los slides directamente, [aquí están](https://slides.com/xergioalex/microservices-architecture-and-apis-with-graphql).
 
-![Audience during the talk](/images/blog/posts/microservices-architecture-graphql/audience.webp)
+<figure>
+  <img src="/images/blog/posts/microservices-architecture-graphql/audience.webp" alt="Audience during the talk" loading="lazy" />
+  <figcaption>Asistentes en la sesión de microservicios y GraphQL de Pereira Tech Talks en noviembre de 2017.</figcaption>
+</figure>
 
 ---
 
@@ -20,7 +23,10 @@ Aquí están los conceptos que cubrí. Si prefieres ver los slides directamente,
 
 El principio central detrás de los microservicios es simple: **divide y conquista**. En lugar de construir una aplicación monolítica que hace todo, dividimos el sistema en servicios más pequeños y enfocados. Cada microservicio hace una cosa y la hace bien — una filosofía que heredé de la tradición Unix y que me ha servido mucho para arquitecturas escalables y mantenibles.
 
-![Divide y conquista — el principio estratégico detrás de los microservicios](/images/blog/posts/microservices-architecture-graphql/divide-and-conquer.webp)
+<figure>
+  <img src="/images/blog/posts/microservices-architecture-graphql/divide-and-conquer.webp" alt="Divide y conquista — el principio estratégico detrás de los microservicios" loading="lazy" />
+  <figcaption>El clásico principio de "divide y conquista" visualizado — la filosofía central detrás de dividir un monolito en servicios.</figcaption>
+</figure>
 
 ---
 
