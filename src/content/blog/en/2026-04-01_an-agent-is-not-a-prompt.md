@@ -121,19 +121,19 @@ Civil engineers learned to build with wood, then steel, then concrete. Each mate
 
 ---
 
-## My Own Discovery
+## The Discovery That Keeps Repeating
 
-Honestly, I didn't realize how deep this went until I was already in it.
+There's a pattern that almost everyone building agents goes through. It looks something like this:
 
-My progression looked like this: "I'll just use LangChain" → "why does state keep getting weird?" → "okay I need LangGraph and proper state design" → "wait, the memory system I assumed would be straightforward is its own entire problem" → "these tool schemas are causing misuse, I need to rethink the interfaces" → "I have no idea if this is actually working correctly, I need evaluation" → "I can't debug this without traces."
+"I'll just use a framework" → "why does state keep getting weird?" → "okay I need proper state design" → "wait, memory is its own entire problem" → "these tool schemas are causing misuse" → "I have no idea if this is actually working correctly" → "I can't debug this without traces."
 
-Each new capability revealed a new layer. Each layer had its own failure modes, its own design patterns, its own body of knowledge to absorb.
+Each new capability reveals a new layer. Each layer has its own failure modes, its own design patterns, its own body of knowledge. You don't see the next layer until the previous one forces you to look.
 
-The first real debugging session that changed my perspective was a state management bug in that content workflow agent. I spent three hours trying to figure out why the agent was treating a task it had already completed as if it were pending. The bug wasn't in any single line of code — it was in the state schema. I had designed the state as a flat dictionary, and two different parts of the workflow were writing to the same key with different assumptions about what the value represented. The model wasn't wrong. My state design was wrong.
+The debugging sessions are what change your perspective. An agent treats a task it already completed as if it were still pending — and the bug isn't in any single line of code. It's in the state schema. Two different parts of the workflow write to the same key with different assumptions about what the value represents. The model isn't wrong. The state design is wrong. That kind of failure doesn't appear in any quickstart tutorial. It only appears when the system is complex enough to have competing assumptions — which is to say, when it starts resembling a real system.
 
-That's when I stopped thinking "I'm learning a framework" and started thinking "I'm learning a craft."
+This is the moment most builders shift from "I'm learning a framework" to "I'm learning a craft." The framework handles the plumbing. The craft is everything above it: the decisions about structure, boundaries, trust, and failure recovery that no library can make for you.
 
-The companion series I've been writing — [Working with Agents](/blog/series/working-with-agents/) — explores what it's like to *work with* agents day-to-day: the productivity shift, the workflow changes, what it does to how you think about work. This series is about what I discovered when I tried to *build* them. It's the layer underneath that experience.
+The companion series — [Working with Agents](/blog/series/working-with-agents/) — explores what it's like to *work with* agents day-to-day: the productivity shift, the workflow changes, what it does to how you think about work. This series is about what happens when you try to *build* them. It's the layer underneath that experience.
 
 ---
 

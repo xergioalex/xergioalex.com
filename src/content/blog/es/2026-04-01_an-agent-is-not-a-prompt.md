@@ -121,19 +121,19 @@ Los ingenieros civiles aprendieron a construir con madera, luego con acero, lueg
 
 ---
 
-## Mi Propio Descubrimiento
+## El Descubrimiento Que Se Repite
 
-Honestamente, no me di cuenta de lo profundo que iba esto hasta que ya estaba dentro.
+Hay un patrón por el que pasa casi todo el que construye agentes. Se ve más o menos así:
 
-Mi progresión fue así: "Solo voy a usar LangChain" → "¿por qué el estado sigue comportándose raro?" → "bien, necesito LangGraph y un diseño de estado adecuado" → "espera, el sistema de memoria que asumí que sería sencillo es su propio problema completo" → "estos esquemas de herramientas están causando mal uso, necesito repensar las interfaces" → "no tengo idea si esto está funcionando correctamente, necesito evaluación" → "no puedo depurar esto sin trazas."
+"Solo voy a usar un framework" → "¿por qué el estado sigue comportándose raro?" → "bien, necesito un diseño de estado adecuado" → "espera, la memoria es su propio problema completo" → "estos esquemas de herramientas están causando mal uso" → "no tengo idea si esto está funcionando correctamente" → "no puedo depurar esto sin trazas."
 
-Cada nueva capacidad revelaba una nueva capa. Cada capa tenía sus propios modos de fallo, sus propios patrones de diseño, su propio cuerpo de conocimiento que absorber.
+Cada nueva capacidad revela una nueva capa. Cada capa tiene sus propios modos de fallo, sus propios patrones de diseño, su propio cuerpo de conocimiento. No ves la siguiente capa hasta que la anterior te obliga a mirar.
 
-La primera sesión de depuración real que cambió mi perspectiva fue un bug de gestión de estado en ese agente de flujo de contenido. Pasé tres horas tratando de entender por qué el agente trataba una tarea que ya había completado como si estuviera pendiente. El bug no estaba en ninguna línea de código individual — estaba en el esquema de estado. Había diseñado el estado como un diccionario plano, y dos partes diferentes del flujo de trabajo estaban escribiendo en la misma clave con suposiciones diferentes sobre lo que representaba el valor. El modelo no estaba equivocado. Mi diseño de estado estaba equivocado.
+Las sesiones de depuración son las que cambian la perspectiva. Un agente trata una tarea que ya completó como si todavía estuviera pendiente — y el bug no está en ninguna línea de código individual. Está en el esquema de estado. Dos partes diferentes del flujo de trabajo escriben en la misma clave con suposiciones diferentes sobre lo que representa el valor. El modelo no está equivocado. El diseño de estado está equivocado. Ese tipo de falla no aparece en ningún tutorial de inicio rápido. Solo aparece cuando el sistema es lo suficientemente complejo como para tener suposiciones en conflicto — es decir, cuando empieza a parecerse a un sistema real.
 
-Fue entonces cuando dejé de pensar "estoy aprendiendo un framework" y empecé a pensar "estoy aprendiendo un oficio."
+Este es el momento en que la mayoría de los constructores pasan de "estoy aprendiendo un framework" a "estoy aprendiendo un oficio." El framework maneja la fontanería. El oficio es todo lo que está por encima: las decisiones sobre estructura, límites, confianza y recuperación de fallos que ninguna librería puede tomar por ti.
 
-La serie paralela que he estado escribiendo — [Working with Agents](/es/blog/series/working-with-agents/) — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que descubrí cuando intenté *construirlos*. Es la capa que está debajo de esa experiencia.
+La serie paralela — [Working with Agents](/es/blog/series/working-with-agents/) — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que pasa cuando intentas *construirlos*. Es la capa que está debajo de esa experiencia.
 
 ---
 
