@@ -2,7 +2,7 @@
 title: "Aprendiendo a construir agentes: Un agente no es un prompt"
 description: "La mayoría piensa que un agente es un LLM con herramientas. Un agente real es un sistema — y construirlo requiere otra clase de ingeniería."
 pubDate: "2026-04-01"
-heroImage: "/images/blog/posts/the-new-craft/hero.webp"
+heroImage: "/images/blog/posts/an-agent-is-not-a-prompt/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
 keywords: ["construir agentes de IA 2026", "ingeniero de IA oficio", "capas de arquitectura de agentes", "diseño de sistemas de agentes LLM", "un agente no es un prompt", "disciplina de ingeniería de IA", "ecosistema de frameworks de agentes 2026"]
@@ -39,7 +39,7 @@ Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que espera
 [Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 
 <div class="dark-bg-container">
-  <img src="/images/blog/posts/the-new-craft/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1536" height="1024" loading="lazy" />
+  <img src="/images/blog/posts/an-agent-is-not-a-prompt/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1536" height="1024" loading="lazy" />
 </div>
 
 ---
@@ -71,7 +71,7 @@ Aquí está la lista honesta. Lo que un sistema de agentes en producción realme
 **Evaluación** — ¿Cómo sabes si el agente está funcionando correctamente? No solo "¿produjo una salida?" sino "¿produjo la salida correcta?" Esta es probablemente la capa menos discutida en todo el campo.
 
 <div class="dark-bg-container">
-  <img src="/images/blog/posts/the-new-craft/agent-architecture-stack.webp" alt="Diagrama de arquitectura en capas que muestra las capas de un sistema de agentes de abajo a arriba: Modelo, Ingeniería de Prompts, Gestión de Estado, Memoria (corto y largo plazo), Recuperación de Conocimiento, Ecosistema de Herramientas, Orquestación del Flujo de Trabajo, Aprobación y Seguridad, Observabilidad, Evaluación" width="1200" height="800" loading="lazy" />
+  <img src="/images/blog/posts/an-agent-is-not-a-prompt/agent-architecture-stack.webp" alt="Diagrama de arquitectura en capas que muestra las capas de un sistema de agentes de abajo a arriba: Modelo, Ingeniería de Prompts, Gestión de Estado, Memoria (corto y largo plazo), Recuperación de Conocimiento, Ecosistema de Herramientas, Orquestación del Flujo de Trabajo, Aprobación y Seguridad, Observabilidad, Evaluación" width="1200" height="800" loading="lazy" />
 </div>
 
 Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ellas no existía como campo con nombre hace cinco años. Todas son necesarias. Puedes ignorar algunas en una demo. No puedes ignorar ninguna en producción.
