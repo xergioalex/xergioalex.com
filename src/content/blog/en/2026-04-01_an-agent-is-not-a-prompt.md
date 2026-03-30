@@ -73,6 +73,8 @@ Here's the honest list. What a production agent system actually requires:
 
 Each of these is a distinct engineering discipline. Most of them didn't exist as a named field five years ago. All of them are required. You can ignore some of them in a demo. You cannot ignore any of them in production.
 
+This series will explore each of these layers — what they actually involve, where they break, and what it takes to get them right.
+
 ---
 
 ## The Landscape Right Now
@@ -150,26 +152,6 @@ Django doesn't teach you to build a good web app. Rails doesn't teach you good d
 This doesn't mean frameworks are bad — LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing have become standard tools for good reason. The LangChain community has produced more useful agent patterns than anywhere else in the ecosystem. These tools are necessary — but the architectural decisions that actually determine whether an agent works or not live above the framework layer.
 
 The architectural decisions — the ones that actually determine whether your agent is useful or not — are above the framework layer. That's what this series is about: [Building Agents](/blog/series/building-agents/).
-
----
-
-## The New Stack
-
-Here's what I've found you actually need to think about, layer by layer. Each of these will probably need its own chapter.
-
-**State** — The foundation. Everything the agent knows, remembers, and carries between steps. Bad state design causes more agent failures than any other single factor.
-
-**Memory** — Not the same as context. The distinct problems of what the agent retains within a session, what persists across sessions, how retrieval works, and when memory makes things worse instead of better.
-
-**Knowledge and retrieval** — How agents access external information. RAG, chunking, embedding, reranking, and the surprisingly hard problem of knowing when retrieved content is actually relevant.
-
-**Tools** — The moment an agent can act, the design problem changes. Tool schemas, permission boundaries, side effects, approval flows. This is where agents become operators rather than assistants.
-
-**Reliability** — Making a probabilistic system behave consistently. Structured outputs, validation, retries, error handling, human-in-the-loop patterns.
-
-**Observability** — If you can't see inside a running agent, you're flying blind. Traces, run trees, tool inspection, evaluation datasets. The layer most skipped, and most needed.
-
-By the end of this series, you'll have a complete picture of what it actually takes to build agent systems that work reliably — not just in demos, but in production.
 
 ---
 

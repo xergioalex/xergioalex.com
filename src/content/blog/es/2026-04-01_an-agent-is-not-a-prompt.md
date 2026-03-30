@@ -73,6 +73,8 @@ Aquí está la lista honesta. Lo que un sistema de agentes en producción realme
 
 Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ellas no existía como campo con nombre hace cinco años. Todas son necesarias. Puedes ignorar algunas en una demo. No puedes ignorar ninguna en producción.
 
+Esta serie va a explorar cada una de estas capas — qué involucran realmente, dónde fallan, y qué se necesita para hacerlas bien.
+
 ---
 
 ## El Ecosistema Hoy
@@ -150,26 +152,6 @@ Django no te enseña a construir una buena aplicación web. Rails no te enseña 
 Esto no significa que los frameworks sean malos — el modelo de estado explícito de LangGraph y las trazas de [LangSmith](https://smith.langchain.com/) se han convertido en herramientas estándar por buenas razones. La comunidad de LangChain ha producido más patrones útiles de agentes que cualquier otro lugar del ecosistema. Estas herramientas son necesarias — pero las decisiones arquitectónicas que realmente determinan si un agente funciona o no viven por encima de la capa del framework.
 
 Las decisiones arquitectónicas — las que realmente determinan si tu agente es útil o no — están por encima de la capa del framework. De eso se trata esta serie: [Construyendo Agentes](/es/blog/series/building-agents/).
-
----
-
-## El Nuevo Stack
-
-Esto es lo que he encontrado que realmente necesitas pensar, capa por capa. Cada una seguramente necesitará su propio capítulo.
-
-**Estado** — La base. Todo lo que el agente sabe, recuerda y lleva entre pasos. El mal diseño de estado causa más fallas en agentes que cualquier otro factor individual.
-
-**Memoria** — No es lo mismo que el contexto. Los problemas distintos de qué retiene el agente dentro de una sesión, qué persiste entre sesiones, cómo funciona la recuperación, y cuándo la memoria empeora las cosas en lugar de mejorarlas.
-
-**Conocimiento y recuperación** — Cómo los agentes acceden a información que el modelo no tiene. RAG, fragmentación, embeddings, reranking, y el problema sorprendentemente difícil de saber cuándo el contenido recuperado es realmente relevante.
-
-**Herramientas** — En el momento en que un agente puede actuar, el problema de diseño cambia. Esquemas de herramientas, límites de permisos, efectos secundarios, flujos de aprobación. Aquí es donde los agentes se convierten en operadores en lugar de asistentes.
-
-**Confiabilidad** — Hacer que un sistema probabilístico se comporte de forma consistente. Outputs estructurados, validación, reintentos, manejo de errores, patrones de humano en el bucle.
-
-**Observabilidad** — Si no puedes ver el interior de un agente en ejecución, estás volando a ciegas. Trazas, árboles de ejecución, inspección de herramientas, datasets de evaluación. La capa más omitida, y la más necesaria.
-
-Al final de esta serie, tendrás una imagen completa de lo que realmente se necesita para construir sistemas de agentes que funcionen de forma confiable — no solo en demos, sino en producción.
 
 ---
 
