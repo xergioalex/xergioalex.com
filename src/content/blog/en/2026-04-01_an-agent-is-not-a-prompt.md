@@ -149,7 +149,7 @@ Django doesn't teach you to build a good web app. Rails doesn't teach you good d
 
 This doesn't mean frameworks are bad — LangGraph's explicit state model and [LangSmith](https://smith.langchain.com/)'s tracing have become standard tools for good reason. The LangChain community has produced more useful agent patterns than anywhere else in the ecosystem. These tools are necessary — but the architectural decisions that actually determine whether an agent works or not live above the framework layer.
 
-The architectural decisions — the ones that actually determine whether your agent is useful or not — are above the framework layer. That's what this series is about.
+The architectural decisions — the ones that actually determine whether your agent is useful or not — are above the framework layer. That's what [Building Agents](/blog/series/building-agents/) is about.
 
 ---
 
