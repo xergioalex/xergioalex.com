@@ -1,7 +1,7 @@
 ---
 title: "The Agent Economy: When AI Gets Its Own Money"
 description: "AI agents now have payment cards, wallets, email, and social networks. A new economy is forming — and it's not what I predicted in 2018."
-pubDate: "2026-03-29"
+pubDate: "2026-03-30"
 heroImage: "/images/blog/posts/the-agent-economy/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "blockchain", "personal"]

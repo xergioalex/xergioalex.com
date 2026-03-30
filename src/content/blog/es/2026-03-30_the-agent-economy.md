@@ -1,7 +1,7 @@
 ---
 title: "La Economía de los Agentes: Cuando la IA Tiene Su Propio Dinero"
 description: "Los agentes de IA ya tienen tarjetas, billeteras y correos propios. Se está formando una nueva economía — y no es lo que predije en 2018."
-pubDate: "2026-03-29"
+pubDate: "2026-03-30"
 heroImage: "/images/blog/posts/the-agent-economy/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "blockchain", "personal"]
