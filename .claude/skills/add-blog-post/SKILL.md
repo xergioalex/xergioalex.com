@@ -184,6 +184,14 @@ Create `src/content/blog/{$LANG}/YYYY-MM-DD_{slug}.md`
   </div>
   ```
 - Include alt text for all images
+- **MANDATORY: Wrap every inline image in `<figure>` + `<figcaption>`:**
+  ```html
+  <figure>
+    <img src="/images/blog/posts/{slug}/image.webp" alt="Alt text" loading="lazy" />
+    <figcaption>Short caption adding context the image alone doesn't provide.</figcaption>
+  </figure>
+  ```
+  Captions must be short (one line), additive (never repeat alt text), and exist in both EN and ES.
 
 **Markdown template:**
 

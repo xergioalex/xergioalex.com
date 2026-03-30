@@ -157,6 +157,7 @@ grep -n '<img\|!\[' src/content/blog/en/*_${SLUG}.md
 | `width` and `height` | Every `<img>` tag has both attributes | WARN if missing (markdown images exempt) |
 | `loading="lazy"` | Inline images (not hero) should have `loading="lazy"` | WARN if missing on `<img>` tags |
 | Markdown images | `![alt text](/path)` — alt text is present and descriptive | WARN if empty alt text |
+| `<figure>` + `<figcaption>` | Every inline image wrapped in `<figure>` with a short `<figcaption>` | WARN if missing figcaption |
 
 **4c. Iframes:**
 
