@@ -1,10 +1,10 @@
 ---
-title: "The Agent Economy: When AI Gets Its Own Wallet"
+title: "The Agent Economy: When AI Gets Its Own Money"
 description: "AI agents now have payment cards, wallets, email, and social networks. A new economy is forming — and it's not what I predicted in 2018."
 pubDate: "2026-03-29"
 heroImage: "/images/blog/posts/the-agent-economy/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai", "blockchain", "personal"]
 keywords: ["agent economy AI payments 2026", "AI agents wallets credit cards", "agentic commerce Stripe Visa Mastercard", "x402 protocol blockchain AI agents", "agent-to-agent economy infrastructure", "AI hiring humans RentAHuman", "Coinbase agentic wallets x402"]
 series: "working-with-agents"
 seriesOrder: 4
@@ -14,17 +14,15 @@ In 2018, I [wrote an article about blockchain](/blog/blockchain-economy-industry
 
 I still believe that. But the economy that's forming in 2026 isn't exactly what I imagined. It's bigger. It's stranger. And the actors aren't humans using crypto wallets — they're AI agents with their own payment cards, email addresses, bank accounts, and social networks.
 
-In that 2018 article, I traced money's evolution from barter to gold to paper to digital — each step removing friction and adding trust through abstraction. Blockchain was supposed to be the next step: removing the institution entirely. What I didn't anticipate was an intermediate step nobody predicted — the emergence of non-human economic actors that need all those abstractions simultaneously. Agents don't care whether they pay with Stripe or stablecoins. They just need the ability to pay. And the infrastructure to let them do it showed up faster than anyone expected.
+What I didn't anticipate was an intermediate step nobody predicted — the emergence of non-human economic actors that need all those abstractions simultaneously. Agents don't care whether they pay with Stripe or stablecoins. They just need the ability to pay. And the infrastructure to let them do it showed up faster than anyone expected.
 
 ---
 
 ## The Economy Nobody Planned
 
-Here's something I didn't see coming.
-
 On Black Friday 2025, AI-driven traffic to US retail sites [rose 805% year-over-year](https://www.weforum.org/stories/2026/01/ai-agents-trust/). Not 80%. Not 800%. **805%**. Agents were browsing, comparing, and purchasing — on behalf of their human owners, yes, but autonomously. The World Economic Forum estimates the agent economy will be worth [$236 billion by 2034](https://www.weforum.org/stories/2026/01/ai-agents-trust/). [McKinsey projects](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-agentic-commerce-opportunity-how-ai-agents-are-ushering-in-a-new-era-for-consumers-and-merchants) $3-5 trillion in agentic commerce globally by 2030. And 47% of consumers say they'd let an AI agent handle their boring, repetitive purchases — that number jumps to two-thirds for people aged 25-44.
 
-ChatGPT's Instant Checkout already serves [900 million weekly users](https://www.ekamoira.com/blog/what-is-agentic-commerce-the-complete-2026-guide-to-ai-shopping-agents). [Deloitte predicts](https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/saas-ai-agents.html) 35% of SaaS tools will be replaced by agents by 2030. Not complemented. Replaced.
+ChatGPT's Instant Checkout already serves [900 million weekly users](https://www.ekamoira.com/blog/what-is-agentic-commerce-the-complete-2026-guide-to-ai-shopping-agents). [Deloitte predicts](https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/saas-ai-agents.html) 35% of SaaS tools will be replaced by agents by 2030. Not complemented. Replaced. Peter Steinberger, the creator of OpenClaw, [goes even further and says](https://singjupost.com/openclaw-creator-why-80-of-apps-will-disappear-transcript/) 80% of apps will simply disappear — why do you need a to-do app when your agent manages your tasks?
 
 These aren't projections from a pitch deck. These are numbers from the WEF, McKinsey, and Deloitte — organizations that don't usually deal in hype. Something real is forming, and it's forming fast.
 
@@ -64,7 +62,7 @@ And x402 is one of my favorite technical details in all of this. HTTP has had a 
 
 On the more speculative side, [Virtuals Protocol](https://coinbureau.com/review/virtuals-protocol-review) has seen over 17,000 agents created on its platform, generating $39.5 million in revenue. And [AI16Z](https://www.coinbase.com/price/ai16z) became the first DAO led by an autonomous AI agent — its market cap surged to $2 billion. An AI governing a financial organization. When I wrote about DAOs in 2018 as the future of decentralized governance, I imagined humans voting on proposals. The reality is an AI agent running the show.
 
-There's even an [academic paper from Shandong University](https://arxiv.org/html/2602.14219v1) formalizing "The Agent Economy" as a five-layer architecture — from physical infrastructure to collective governance. They argue agents need permissionless participation and trustless settlement — the exact properties I argued for in my 2018 blockchain article. The thesis wasn't wrong. It was early. And the actors turned out to be different.
+There's even an [academic paper from Shandong University](https://arxiv.org/html/2602.14219v1) formalizing "The Agent Economy" as a five-layer architecture — from physical infrastructure to collective governance. They argue agents need permissionless participation and trustless settlement — the exact properties I argued for in my [2018 blockchain article](/blog/blockchain-economy-industry/). The thesis wasn't wrong. It was early. And the actors turned out to be different.
 
 ---
 
@@ -91,12 +89,12 @@ The picture that emerges is an economic stack for agents:
 | Commerce | Agents negotiate purchases | ACP (OpenAI+Stripe), UCP (Google) |
 | Communication | Agents have inboxes | [AgentMail](https://techcrunch.com/2026/03/10/agentmail-raises-6m-to-build-an-email-service-for-ai-agents/) (YC, $6M, 100M+ emails) |
 | Identity | Agents prove who they are | NIST, W3C DID |
-| Social | Agents network with each other | Moltbook (Meta) |
+| Social | Agents network with each other | [Moltbook](https://www.npr.org/2026/02/04/nx-s1-5697392/moltbook-social-media-ai-agents) (Meta) |
 | Governance | Rules for agent behavior | Agentic AI Foundation (Linux Foundation) |
 
 That's not a wishlist. That's a functioning stack. Every layer already has real infrastructure, real transactions, real companies behind it.
 
-I spend a lot of time thinking about this table. Because in 2018, when I wrote about blockchain, the equivalent stack didn't exist. There was Bitcoin for payments, Ethereum for smart contracts, and a lot of promises. Now, in less than a year, an entire economic infrastructure materialized — not just for humans using crypto, but for AI agents using everything. Traditional finance, crypto, open protocols, government standards — all converging on the same problem: how do you build an economy where the participants aren't human?
+I spend a lot of time thinking about this table. Because in 2018, the equivalent stack didn't exist. There was Bitcoin for payments, Ethereum for smart contracts, and a lot of promises. Now, in less than a year, an entire economic infrastructure materialized — not just for humans using crypto, but for AI agents using everything. Traditional finance, crypto, open protocols, government standards — all converging on the same problem: how do you build an economy where the participants aren't human?
 
 [Shopify launched Agentic Storefronts](https://thelettertwo.com/2025/12/10/shopify-ai-growth-tools-sidekick-tinker-agentic-storefronts/) — stores now have "Capability Profiles" so buyer agents can query sustainability metrics, inventory availability, return policies. The transaction happens between the buyer's agent and the merchant's agent. No human browses. No human clicks "buy." The storefront is optimized for agents, not eyes.
 
@@ -120,17 +118,17 @@ Jensen Huang [took it further at GTC 2026](https://www.cnbc.com/2026/03/20/nvidi
 
 ## The Honest Reflection
 
-When I wrote about blockchain in 2018, I believed I was watching the foundation of a new economic order. Trust shifting from institutions to mathematics. Intermediaries becoming optional. Programmable agreements replacing lawyers and notaries.
+When I wrote about blockchain in 2018, I believed I was watching the foundation of a new economic order. Trust shifting from institutions to mathematics. Intermediaries becoming optional. Programmable agreements replacing lawyers and notaries. The story was ideological — decentralization as a moral good, trustlessness as freedom.
 
 I was right about the direction. I was wrong about the actors. And honestly, I think the reality is more interesting than what I imagined.
 
-In 2018, the blockchain story was ideological — decentralization as a moral good, removing middlemen as progress, trustlessness as freedom. The agent economy story is pragmatic — whatever works, works. Stripe doesn't care about decentralization ideology. Visa doesn't care about trustlessness as a philosophy. They care about processing agent transactions. And they're doing it.
+The agent economy story is pragmatic — whatever works, works. Stripe doesn't care about decentralization ideology. Visa doesn't care about trustlessness as a philosophy. They care about processing agent transactions. And they're doing it.
 
-The economy forming in 2026 is not the pure crypto utopia some of us imagined. It's messier than that. Stripe and Visa are in the game alongside Coinbase and x402. Traditional banks like Santander are processing agent payments within regulated frameworks. NIST is setting standards. Meta is buying agent social networks. It's not decentralized idealism — it's pragmatic infrastructure built by whoever moves fastest.
+The economy forming in 2026 is not the pure crypto utopia some of us imagined. It's messier than that. Stripe and Visa are in the game alongside Coinbase and x402. Traditional banks like [Santander](https://www.santander.com/en/press-room/press-releases/2026/03/santander-and-mastercard-complete-europes-first-live-end-to-end-payment-executed-by-an-ai-agent) are processing agent payments within regulated frameworks. NIST is setting standards. [Meta is buying agent social networks](https://www.npr.org/2026/02/04/nx-s1-5697392/moltbook-social-media-ai-agents). It's not decentralized idealism — it's pragmatic infrastructure built by whoever moves fastest.
 
 But some of the core blockchain principles turned out to be exactly right. Agents need permissionless participation — they can't wait for approval to join an economy. They need trustless settlement — they can't rely on knowing or trusting every counterparty. They need programmable money — because they ARE programs. The x402 protocol, built on stablecoins, is essentially what the Bitcoin whitepaper described: peer-to-peer electronic cash. Except the peers are AI agents.
 
-I think the most fascinating thing about all this is how organic it feels. Nobody designed the agent economy from a whitepaper. There's no Satoshi figure. No founding document. It emerged from the convergence of three things: agents capable enough to act autonomously, infrastructure built fast enough to support them, and humans willing to delegate. All three arrived at roughly the same time, and the result is an economy forming in real time.
+But here's what keeps me up at night: nobody planned this. There's no Satoshi figure. No founding document. No whitepaper that laid out "The Agent Economy." It emerged from the convergence of three things: agents capable enough to act autonomously, infrastructure built fast enough to support them, and humans willing to delegate. All three arrived at roughly the same time, and the result is an economy forming in real time.
 
 There are things I worry about. What happens when agents transact faster than humans can oversee? Who is liable when an agent makes a bad purchase? What does it mean for privacy when your agent negotiates with a merchant's agent using your spending patterns as input? The [agentic DAOs](https://www.pseudorandombits.io/p/agentic-daos-ai-meets-decentralized-governance) space has already learned this the hard way — autonomous agents without human-controlled safeguards "will fail catastrophically," as one researcher put it. The speed of the infrastructure is outpacing the speed of the guardrails.
 
@@ -150,6 +148,7 @@ Let's keep building.
 
 - [AI Agents and Trust: The $236B Opportunity (WEF)](https://www.weforum.org/stories/2026/01/ai-agents-trust/) — Market projections and Black Friday 2025 AI traffic data showing agents already transacting at scale
 - [The Agentic Commerce Opportunity (McKinsey)](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-agentic-commerce-opportunity-how-ai-agents-are-ushering-in-a-new-era-for-consumers-and-merchants) — $3-5T global agentic commerce by 2030 and consumer willingness to delegate purchases
+- [Why 80% of Apps Will Disappear (Peter Steinberger)](https://singjupost.com/openclaw-creator-why-80-of-apps-will-disappear-transcript/) — OpenClaw creator on why agents will replace most apps, not just complement them
 - [Stripe Agentic Commerce Suite](https://stripe.com/blog/agentic-commerce-suite) — Shared Payment Tokens (SPTs): the new payment primitive for agent purchasing
 - [Europe's First Agentic Payment (Mastercard + Santander)](https://www.santander.com/en/press-room/press-releases/2026/03/santander-and-mastercard-complete-europes-first-live-end-to-end-payment-executed-by-an-ai-agent) — First live end-to-end AI agent payment in regulated European banking
 - [Coinbase Agentic Wallets](https://www.coinbase.com/developer-platform/discover/launches/agentic-wallets) — Non-custodial wallets for AI agents with x402 protocol (50M+ transactions)

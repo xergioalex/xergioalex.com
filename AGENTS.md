@@ -66,7 +66,23 @@ src/
 public/images/blog/      # Blog images: posts/{slug}/, shared/, _staging/
 scripts/                 # Build utilities (image optimization)
 docs/                    # Project documentation
+tmp/                     # Temporary workspace (git-ignored, see below)
 ```
+
+## Temporary Workspace (`tmp/`)
+
+The `tmp/` directory at the project root is a **git-ignored scratch space** for agents and developers.
+
+**Use it for:**
+- Temporary prompts, outputs, or drafts
+- One-off analysis results or debug logs
+- Any ephemeral file that should NOT be committed
+
+**Rules:**
+- Everything inside `tmp/` is ignored by git (except `.gitkeep`)
+- Do NOT store anything permanent or important here — it can be deleted at any time
+- When a user asks for a temporary file, prompt output, or scratch artifact, **write it to `tmp/`**
+- Subdirectories are fine (e.g., `tmp/prompts/`, `tmp/analysis/`)
 
 ## CRITICAL: Mandatory Requirements
 

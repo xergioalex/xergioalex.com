@@ -45,7 +45,10 @@ export const GET: APIRoute = async ({ params }) => {
         description: series.data.description || '',
         order: series.data.order,
         postCount: posts.length,
-        heroImage: series.data.heroImage || null,
+        heroImage:
+          (lang === 'es' && series.data.heroImageEs) ||
+          series.data.heroImage ||
+          null,
         firstPostHero,
         lastPostDate,
       });
