@@ -155,22 +155,6 @@ The architectural decisions — the ones that actually determine whether your ag
 
 ---
 
-## What This Series Will Not Be
-
-Worth being direct about this.
-
-This is not a tutorial. You will not be able to copy-paste anything from this series and have a working agent. The goal isn't to hand you code — it's to change how you think about the problems the code has to solve.
-
-This is not a framework comparison. "LangChain vs CrewAI" is not the point. The underlying engineering problems exist regardless of which framework you use. If I focus on specific tools, it's to illustrate a pattern, not to recommend a winner.
-
-This is not documentation. I'm not going to explain how to initialize an `AgentExecutor`. The SDKs do that better than I can. What SDKs don't do is explain the design thinking behind why you'd want certain patterns, where those patterns break, and what to do when they do.
-
-This is not hype. Building agents is interesting and the field is developing fast. It's also hard, and some things people claim are easy are actually not. I'll be honest about both sides.
-
-What it will be: a story-driven exploration of each engineering layer, opening with something concrete — a real failure, a surprising discovery, a misconception I held — and building toward the technical insight, then the deeper lesson about what the craft actually requires.
-
----
-
 ## The Craft Analogy
 
 I keep coming back to this.

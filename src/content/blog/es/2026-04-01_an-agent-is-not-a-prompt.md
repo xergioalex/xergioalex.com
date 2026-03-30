@@ -155,22 +155,6 @@ Las decisiones arquitectónicas — las que realmente determinan si tu agente es
 
 ---
 
-## Lo Que Esta Serie No Será
-
-Vale la pena ser directo al respecto.
-
-Esto no es un tutorial. No podrás copiar y pegar nada de esta serie y tener un agente funcionando. El objetivo no es darte código — es cambiar cómo piensas sobre los problemas que el código tiene que resolver.
-
-Esto no es una comparación de frameworks. "LangChain vs CrewAI" no es el punto. Los problemas de ingeniería subyacentes existen independientemente del framework que uses. Si me enfoco en herramientas específicas, es para ilustrar un patrón, no para recomendar un ganador.
-
-Esto no es documentación. No voy a explicar cómo inicializar un `AgentExecutor`. Los SDKs hacen eso mejor de lo que yo podría. Lo que los SDKs no hacen es explicar el pensamiento de diseño detrás de por qué querrías ciertos patrones, dónde esos patrones fallan, y qué hacer cuando lo hacen.
-
-Esto no es hype. Construir agentes es interesante y el campo está evolucionando rápido. También es difícil, y algunas cosas que la gente afirma que son fáciles en realidad no lo son. Voy a ser honesto sobre ambos lados.
-
-Lo que sí será: una exploración narrativa de cada capa de ingeniería, que abre con algo concreto — un fallo real, un descubrimiento sorpresivo, una idea equivocada que yo tenía — y avanza hacia la perspectiva técnica, luego hacia la lección más profunda sobre lo que el oficio realmente requiere.
-
----
-
 ## La Analogía del Oficio
 
 A esto sigo volviendo.
