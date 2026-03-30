@@ -46,7 +46,11 @@ None of these are model failures. The model does exactly what you'd expect a lan
 
 ## What a Real Agent Actually Contains
 
-Here's the honest list. What a production agent system actually requires:
+Here's the honest list. What a production agent system actually requires — layer by layer, from the foundation up:
+
+<div class="dark-bg-container">
+  <img src="/images/blog/posts/an-agent-is-not-a-prompt/agent-architecture-stack.webp" alt="Layered architecture diagram showing agent system layers from bottom to top: Model, Prompt Engineering, State Management, Memory (short + long-term), Knowledge Retrieval, Tool Ecosystem, Workflow Orchestration, Approval and Safety, Observability, Evaluation" width="1200" height="800" loading="lazy" />
+</div>
 
 **Model layer** — Which model, which provider, how to handle rate limits and failures. Easier than it sounds until you need fallbacks.
 
@@ -69,10 +73,6 @@ Here's the honest list. What a production agent system actually requires:
 **Observability and tracing** — Can you see what the agent actually did? Which tool calls were made, with what parameters, in what order, with what results? Without this, debugging is guessing.
 
 **Evaluation** — How do you know if the agent is working correctly? Not just "did it produce output" but "did it produce the right output?" This is probably the most under-discussed layer in the entire field.
-
-<div class="dark-bg-container">
-  <img src="/images/blog/posts/an-agent-is-not-a-prompt/agent-architecture-stack.webp" alt="Layered architecture diagram showing agent system layers from bottom to top: Model, Prompt Engineering, State Management, Memory (short + long-term), Knowledge Retrieval, Tool Ecosystem, Workflow Orchestration, Approval and Safety, Observability, Evaluation" width="1200" height="800" loading="lazy" />
-</div>
 
 Each of these is a distinct engineering discipline. Most of them didn't exist as a named field five years ago. All of them are required. You can ignore some of them in a demo. You cannot ignore any of them in production.
 

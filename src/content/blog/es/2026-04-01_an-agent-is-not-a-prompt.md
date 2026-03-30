@@ -46,7 +46,11 @@ Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que espera
 
 ## Lo Que un Agente Real Realmente Contiene
 
-Aquí está la lista honesta. Lo que un sistema de agentes en producción realmente requiere:
+Aquí está la lista honesta. Lo que un sistema de agentes en producción realmente requiere — capa por capa, desde la base hacia arriba:
+
+<div class="dark-bg-container">
+  <img src="/images/blog/posts/an-agent-is-not-a-prompt/agent-architecture-stack.webp" alt="Diagrama de arquitectura en capas que muestra las capas de un sistema de agentes de abajo a arriba: Modelo, Ingeniería de Prompts, Gestión de Estado, Memoria (corto y largo plazo), Recuperación de Conocimiento, Ecosistema de Herramientas, Orquestación del Flujo de Trabajo, Aprobación y Seguridad, Observabilidad, Evaluación" width="1200" height="800" loading="lazy" />
+</div>
 
 **Capa de modelo** — Qué modelo, qué proveedor, cómo manejar los límites de tasa y los fallos. Más fácil de lo que suena hasta que necesitas fallbacks.
 
@@ -69,10 +73,6 @@ Aquí está la lista honesta. Lo que un sistema de agentes en producción realme
 **Observabilidad y trazabilidad** — ¿Puedes ver lo que el agente realmente hizo? ¿Qué llamadas a herramientas se hicieron, con qué parámetros, en qué orden, con qué resultados? Sin esto, depurar es adivinar.
 
 **Evaluación** — ¿Cómo sabes si el agente está funcionando correctamente? No solo "¿produjo una salida?" sino "¿produjo la salida correcta?" Esta es probablemente la capa menos discutida en todo el campo.
-
-<div class="dark-bg-container">
-  <img src="/images/blog/posts/an-agent-is-not-a-prompt/agent-architecture-stack.webp" alt="Diagrama de arquitectura en capas que muestra las capas de un sistema de agentes de abajo a arriba: Modelo, Ingeniería de Prompts, Gestión de Estado, Memoria (corto y largo plazo), Recuperación de Conocimiento, Ecosistema de Herramientas, Orquestación del Flujo de Trabajo, Aprobación y Seguridad, Observabilidad, Evaluación" width="1200" height="800" loading="lazy" />
-</div>
 
 Cada una de estas es una disciplina de ingeniería distinta. La mayoría de ellas no existía como campo con nombre hace cinco años. Todas son necesarias. Puedes ignorar algunas en una demo. No puedes ignorar ninguna en producción.
 
