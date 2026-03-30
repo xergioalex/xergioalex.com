@@ -39,7 +39,7 @@ Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que espera
 [Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 
 <div class="dark-bg-container">
-  <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo (modelo, prompt, 2 herramientas) frente a lo que necesita un sistema de agentes en producción (estado, memoria, manejo de errores, observabilidad, evaluación y más)" width="1200" height="700" loading="lazy" />
+  <img src="/images/blog/posts/the-new-craft/demo-vs-system-es.webp" alt="Diagrama de dos columnas que compara lo que tiene una demo de agente (modelo, prompt, 2-3 herramientas) frente a lo que necesita un sistema de agentes real — 11 capas desde modelo y gestión de estado hasta observabilidad y evaluación" width="1536" height="1024" loading="lazy" />
 </div>
 
 ---

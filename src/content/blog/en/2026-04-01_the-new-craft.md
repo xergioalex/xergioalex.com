@@ -39,7 +39,7 @@ None of these are model failures. The model does exactly what you'd expect a lan
 [Simon Willison](https://simonwillison.net/) has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
 
 <div class="dark-bg-container">
-  <img src="/images/blog/posts/the-new-craft/demo-vs-system.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2 tools) versus what a production agent system needs (state, memory, error handling, observability, evaluation, and more)" width="1200" height="700" loading="lazy" />
+  <img src="/images/blog/posts/the-new-craft/demo-vs-system-en.webp" alt="Two-column diagram comparing what a demo has (model, prompt, 2-3 tools) versus what a production agent system needs — 11 layers from model and state management to observability and evaluation" width="1238" height="891" loading="lazy" />
 </div>
 
 ---
