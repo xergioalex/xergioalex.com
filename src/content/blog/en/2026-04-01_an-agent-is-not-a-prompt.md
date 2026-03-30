@@ -133,7 +133,7 @@ The debugging sessions are what change your perspective. An agent treats a task 
 
 This is the moment most builders shift from "I'm learning a framework" to "I'm learning a craft." The framework handles the plumbing. The craft is everything above it: the decisions about structure, boundaries, trust, and failure recovery that no library can make for you.
 
-The companion series — [Working with Agents](/blog/series/working-with-agents/) — explores what it's like to *work with* agents day-to-day: the productivity shift, the workflow changes, what it does to how you think about work. This series is about what happens when you try to *build* them. It's the layer underneath that experience.
+The companion series I've been writing — [Working with Agents](/blog/series/working-with-agents/) — explores what it's like to *work with* agents day-to-day: the productivity shift, the workflow changes, what it does to how you think about work. This series is about what happens when you try to *build* them. It's the layer underneath that experience.
 
 ---
 

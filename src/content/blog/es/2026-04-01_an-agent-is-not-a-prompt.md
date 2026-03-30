@@ -133,7 +133,7 @@ Las sesiones de depuración son las que cambian la perspectiva. Un agente trata 
 
 Este es el momento en que la mayoría de los constructores pasan de "estoy aprendiendo un framework" a "estoy aprendiendo un oficio." El framework maneja la fontanería. El oficio es todo lo que está por encima: las decisiones sobre estructura, límites, confianza y recuperación de fallos que ninguna librería puede tomar por ti.
 
-La serie paralela — [Working with Agents](/es/blog/series/working-with-agents/) — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que pasa cuando intentas *construirlos*. Es la capa que está debajo de esa experiencia.
+La serie paralela que estoy escribiendo — [Trabajando con Agentes](/es/blog/series/working-with-agents/) — explora cómo es *trabajar con* agentes día a día: el cambio de productividad, los cambios en el flujo de trabajo, lo que le hace a cómo piensas sobre el trabajo. Esta serie es sobre lo que pasa cuando intentas *construirlos*. Es la capa que está debajo de esa experiencia.
 
 ---
 
