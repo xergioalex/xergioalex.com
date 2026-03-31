@@ -3,7 +3,7 @@ title: "Astro and Svelte: Why I Believe They're the Future of Web Development"
 description: "Why Astro and Svelte simplify modern web development—State of JS 2025 data, benchmarks, and practical lessons from building this website."
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
-heroLayout: "banner"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "javascript"]
 keywords: ["Astro vs Next.js performance comparison", "Svelte 5 runes reactivity", "Astro Svelte web development 2025", "State of JS 2025 Astro satisfaction", "Astro zero JavaScript default", "Svelte compiled framework runtime", "Cloudflare acquires Astro"]
 ---
