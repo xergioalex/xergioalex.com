@@ -146,8 +146,6 @@ PreTeXt isn't just "faster DOM measurement." It enables patterns that were previ
 
 **LLM streaming layouts.** Size a chat bubble as text streams in without relying on repeated DOM measurement. Less jumping, less scroll jank. Try the [streaming text demo](https://pretext.xergioalex.com/demos/streaming-text/).
 
-**Responsive document reflow.** The [PDF Reflow Engine](https://pretext.xergioalex.com/demos/pdf-reflow-engine/) takes one article and reformats it across phone, tablet, editorial spread, and poster layouts — all computed from the same source content with measured text flow. No manual per-breakpoint tweaking. And the [Living Document](https://pretext.xergioalex.com/demos/living-document/) goes further: a real-time news feed that dynamically ranks, expands, and repacks stories based on urgency — all without touching the DOM for measurement.
-
 It also handles Unicode seriously — thanks to [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter), CJK text can break between characters, Arabic and Hebrew run right-to-left, Thai uses dictionary-based word breaking, emoji clusters stay together. Try the [multilingual stress test](https://pretext.xergioalex.com/demos/i18n-stress/) — the demo covers 9 writing-system samples and edge cases. A lot of lightweight JavaScript text utilities start to show cracks once you leave plain Latin text. PreTeXt is clearly aiming at that harder problem space. Zero external dependencies — just browser APIs that already exist.
 
 I think we'll see this kind of separation — expensive analysis once, cheap computation forever — show up in more areas beyond text. PreTeXt just found it first.
