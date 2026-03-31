@@ -14,7 +14,10 @@ I wanted to cut through the noise. So when Universidad de Caldas invited me to g
 
 The audience was a mix of students, professors, and local developers. Many were skeptical (rightfully so — the ICO craze was out of control). I didn't want to sell them on blockchain. I wanted to help them understand it well enough to form their own opinions.
 
-![Blockchain talk at Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-1.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-1.webp" alt="Blockchain talk at Universidad de Caldas" loading="lazy" />
+  <figcaption>Opening the blockchain talk at Universidad de Caldas in October 2017, tracing the history of money to Bitcoin.</figcaption>
+</figure>
 
 ---
 
@@ -73,7 +76,10 @@ By 2017, DeFi was still in its infancy, but the vision was clear: rebuild the fi
 
 I was honest about the limitations: blockchain is slow, expensive, and energy-intensive (proof-of-work). It's not a solution to every problem. But for certain use cases — especially where trust is expensive or unavailable — it's transformative.
 
-![Blockchain workshop at Universidad de Caldas — audience during the hands-on session](/images/blog/posts/what-is-blockchain/blockchain-2.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-2.webp" alt="Blockchain workshop at Universidad de Caldas — audience during the hands-on session" loading="lazy" />
+  <figcaption>Students and developers engaged during the hands-on Web3.js segment of the workshop.</figcaption>
+</figure>
 
 ---
 
@@ -87,9 +93,15 @@ I walked through a simple example: deploying a smart contract to a test network,
 
 I also emphasized the importance of understanding the trade-offs. Writing data to the blockchain costs gas (transaction fees), so you can't just throw data at it like a traditional database. You need to design carefully.
 
-![Blockchain talk at Universidad de Caldas](/images/blog/posts/what-is-blockchain/blockchain-3.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-3.webp" alt="Blockchain talk at Universidad de Caldas" loading="lazy" />
+  <figcaption>The practical second half of the session — connecting to Ethereum and deploying smart contracts with Web3.js.</figcaption>
+</figure>
 
-![Blockchain workshop](/images/blog/posts/what-is-blockchain/blockchain-4.webp)
+<figure>
+  <img src="/images/blog/posts/what-is-blockchain/blockchain-4.webp" alt="Blockchain workshop" loading="lazy" />
+  <figcaption>Attendees following along during the live smart contract demo on a test network.</figcaption>
+</figure>
 
 ---
 

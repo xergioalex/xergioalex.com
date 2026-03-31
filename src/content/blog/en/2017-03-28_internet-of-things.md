@@ -24,7 +24,10 @@ Think about it: your thermostat adjusts the temperature based on your location, 
 
 What excites me most about IoT is that it extends software into the real world. Instead of just manipulating data on screens, you're controlling motors, reading temperature sensors, and automating physical processes. It's programming with consequences you can see and touch.
 
-![IoT talk at Pereira Tech Talks](/images/blog/posts/internet-of-things/iot-1.webp)
+<figure>
+  <img src="/images/blog/posts/internet-of-things/iot-1.webp" alt="IoT talk at Pereira Tech Talks" loading="lazy" />
+  <figcaption>Presenting the IoT fundamentals session at Pereira Tech Talks in March 2017.</figcaption>
+</figure>
 
 ---
 
@@ -42,7 +45,10 @@ Together they form feedback loops: sense → decide → act. A motion sensor det
 
 In the talk, I walked through examples of each component and showed how they work together. The audience was curious — many had heard of Arduino but hadn't realized how accessible it was to get started.
 
-![IoT components and robotics](/images/blog/posts/internet-of-things/iot-2.webp)
+<figure>
+  <img src="/images/blog/posts/internet-of-things/iot-2.webp" alt="IoT components and robotics" loading="lazy" />
+  <figcaption>Demonstrating sensors, actuators, and controllers — the three essential building blocks of any IoT system.</figcaption>
+</figure>
 
 ---
 
@@ -68,9 +74,15 @@ What struck me most during the Q&A was how many people had ideas they wanted to 
 
 ## Event Memories
 
-![Pereira Tech Talks meetup — Jonathan Alvarez inviting to JsConf](/images/blog/posts/internet-of-things/iot-3.webp)
+<figure>
+  <img src="/images/blog/posts/internet-of-things/iot-3.webp" alt="Pereira Tech Talks meetup — Jonathan Alvarez inviting to JsConf" loading="lazy" />
+  <figcaption>Jonathan Alvarez taking the mic to invite the Pereira community to JsConf Colombia in Medellin.</figcaption>
+</figure>
 
-![Pereira Tech Talks meetup](/images/blog/posts/internet-of-things/iot-4.webp)
+<figure>
+  <img src="/images/blog/posts/internet-of-things/iot-4.webp" alt="Pereira Tech Talks meetup" loading="lazy" />
+  <figcaption>The Pereira Tech Talks audience — a growing local tech community connecting to the national JavaScript scene.</figcaption>
+</figure>
 
 One of the best parts of the event was seeing [Jonathan Alvarez](https://twitter.com/jonalvarezz) invite the community to attend [JsConf Colombia](https://jsconf.co/) in Medellin. JsConf was a big deal — a chance to connect with the broader JavaScript community and see what people were building across Latin America.
 

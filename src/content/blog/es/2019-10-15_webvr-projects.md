@@ -129,7 +129,10 @@ El concepto era simple: cargar 18 imágenes panorámicas equirectangulares, orga
 
 Una línea para la miniatura. Una línea para el cielo. Una función de JavaScript de tres líneas para intercambiarlos. La galería entera — 18 panorámicas, navegación interactiva, lista para VR — era un solo archivo HTML.
 
-![Panorámica 360° de la galería](/images/blog/posts/webvr-projects/gallery-panorama.webp)
+<figure>
+  <img src="/images/blog/posts/webvr-projects/gallery-panorama.webp" alt="Panorámica 360° de la galería" loading="lazy" />
+  <figcaption>Una de las 18 fotografías equirectangulares renderizadas como cielo 360° completo — navegable con ratón, toque o un visor Cardboard.</figcaption>
+</figure>
 
 Le agregué un cubo flotante y giratorio con el logo de PereiraJS como easter egg, un cursor de mirada para interacción en VR (mirá una miniatura por 800ms y se activa), y controles de cámara para escritorio y móvil.
 

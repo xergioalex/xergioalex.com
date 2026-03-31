@@ -22,7 +22,10 @@ Así que decidí construir uno de verdad.
 
 Esto es lo que tuve durante mucho tiempo:
 
-![Mi antiguo sitio web personal — una landing simple con foto de perfil, nombre y enlaces sociales](/images/blog/posts/building-xergioalex-website/old-site.webp)
+<figure>
+<img src="/images/blog/posts/building-xergioalex-website/old-site.webp" alt="Mi antiguo sitio web personal — una landing simple con foto de perfil, nombre y enlaces sociales" loading="lazy" />
+<figcaption>El sitio anterior — una foto, un título y seis links de iconos. Funcional, pero sin nada sobre DailyBot, charlas, proyectos open source ni una década de trabajo.</figcaption>
+</figure>
 
 Súper simple. Solo una foto y enlaces a mis redes. Cumplía su función, pero no reflejaba el alcance de todo lo que había estado construyendo — DailyBot (un producto respaldado por Y Combinator), Pereira Tech Talks, proyectos open source, docenas de charlas técnicas, artículos, experimentos de trading, proyectos de hardware. Quería un lugar que pudiera contener todo eso y aun así sentirse rápido, limpio y fácil de mantener.
 

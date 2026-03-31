@@ -299,6 +299,35 @@ heroImage: '/images/blog/posts/my-post-slug/hero.webp'
 ![Description](/images/blog/posts/my-post-slug/screenshot.webp)
 ```
 
+### Inline Image Captions (MANDATORY)
+
+Every inline image in a blog post body **MUST** be wrapped in `<figure>` with a `<figcaption>`. This applies to all image types (markdown images, HTML img tags, dark-bg-container images).
+
+**Standard pattern:**
+
+```html
+<figure>
+  <img src="/images/blog/posts/{slug}/image-name.webp" alt="Descriptive alt text" width="800" height="400" loading="lazy" />
+  <figcaption>Short caption adding context the image alone doesn't provide.</figcaption>
+</figure>
+```
+
+**For dark background containers:**
+
+```html
+<figure class="dark-bg-container">
+  <img src="/images/blog/posts/{slug}/diagram.webp" alt="Alt text" width="1200" height="700" loading="lazy" />
+  <figcaption>Caption text here.</figcaption>
+</figure>
+```
+
+**Caption guidelines:**
+
+- One line, under 100 characters when possible
+- Add context the image alone doesn't provide — never repeat the alt text
+- Both EN and ES versions must exist with matching meaning
+- CSS is handled globally via `.prose figcaption` in `global.css` (`text-sm`, centered, accessible colors)
+
 ## Image Optimization
 
 Blog images are optimized using a **sharp-based pipeline**. See [IMAGE_OPTIMIZATION.md](./IMAGE_OPTIMIZATION.md) for the complete guide on:
@@ -471,8 +500,9 @@ seriesOrder: 2                   # Chapter number (1, 2, 3...)
 ### Creating a New Series
 
 1. Create `src/content/series/{series-slug}.md` with `name`, `title`, `description`, `order`
-2. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
-3. The `SeriesNavigation` component renders automatically on posts with series metadata
+2. **Add `seriesNames[slug]` and `seriesDescriptions[slug]` to BOTH `src/lib/translations/en.ts` and `es.ts`** — without this, the ES series page falls back to the English title/description
+3. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
+4. The `SeriesNavigation` component renders automatically on posts with series metadata
 
 ### SeriesNavigation Component
 
@@ -507,7 +537,7 @@ This pattern mirrors the `ScrollToTimeline.svelte` component used on portfolio a
 | `src/lib/types.ts` | `SeriesInfo`, `SeriesPost` types |
 | `src/components/blog/SeriesNavigation.astro` | Navigation panel (TOC + prev/next) |
 | `src/components/blog/SeriesIndicator.svelte` | Floating chapter indicator |
-| `src/lib/translations/{en,es}.ts` | Series translation keys (`seriesPartOf`, `seriesChapterOf`, etc.) |
+| `src/lib/translations/{en,es}.ts` | Series translation keys (`seriesNames[slug]`, `seriesDescriptions[slug]`, `seriesPartOf`, `seriesChapterOf`, etc.) |
 
 ### Resources Section — Avoid Redundancy with Series Navigation
 

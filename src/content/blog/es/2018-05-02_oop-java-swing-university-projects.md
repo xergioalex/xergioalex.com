@@ -142,7 +142,10 @@ La capa visual se construyó alrededor de una cuadrícula 9x9 de objetos `JPanel
 
 **Botón de resolver.** Ejecuta el algoritmo completo de backtracking sobre el estado actual del tablero y rellena la solución. Ver cómo funcionaba con un puzzle difícil era genuinamente satisfactorio.
 
-![Demo del solucionador de Sudoku — regiones con código de colores, visualización de candidatos, clic para resolver celdas, y la función de resolución automática en acción](/images/blog/posts/oop-java-swing-university-projects/hero.gif)
+<figure>
+  <img src="/images/blog/posts/oop-java-swing-university-projects/hero.gif" alt="Demo del solucionador de Sudoku — regiones con código de colores, visualización de candidatos, clic para resolver celdas, y la función de resolución automática en acción" loading="lazy" />
+  <figcaption>El solucionador de Sudoku: cuadrantes 3×3 con código de colores, mini-grids de candidatos en cada celda, y el solver de backtracking completando el tablero con un clic.</figcaption>
+</figure>
 
 ---
 
@@ -174,7 +177,10 @@ La arquitectura era sencilla y deliberadamente limpia:
 
 **Persistencia en archivos** mediante `contactos.txt`. Los contactos se serializaban como líneas delimitadas por espacios al guardar, y se parseaban de vuelta con `BufferedReader` y `StringTokenizer` al inicio. No es lo más glamoroso, pero funcionaba, y los contactos sobrevivían al cerrar y reabrir la aplicación — lo que, para un estudiante de segundo año, se sentía como magia de persistencia real.
 
-![Demo de la agenda de contactos — agregar contactos, ver la lista en el JTable, y gestionar entradas](/images/blog/posts/oop-java-swing-university-projects/agenda-demo.gif)
+<figure>
+  <img src="/images/blog/posts/oop-java-swing-university-projects/agenda-demo.gif" alt="Demo de la agenda de contactos — agregar contactos, ver la lista en el JTable, y gestionar entradas" loading="lazy" />
+  <figcaption>La app de agenda de contactos — agregando y buscando contactos en un JTable de Swing, con validación y persistencia en archivos.</figcaption>
+</figure>
 
 La agenda no tenía el patrón Observer ni backtracking ni ninguna de las cosas ingeniosas que hacían interesante al solucionador de Sudoku. Lo que tenía era claridad. Cada clase tenía un solo trabajo. El modelo de datos no sabía que existía la pantalla. La UI no implementaba ninguna lógica. La validación estaba centralizada. Era la aplicación directa de los principios que el curso enseñaba — y construirla primero hizo que la arquitectura del Sudoku se sintiera como una escalada natural, no como un salto.
 

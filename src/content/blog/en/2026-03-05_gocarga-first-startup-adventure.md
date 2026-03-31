@@ -34,11 +34,17 @@ The opportunity felt obvious: build the platform that connects them. In real tim
 
 That was GoCarga.
 
+<figure>
 <div class="my-6 flex w-full justify-center rounded-lg px-6 py-4" style="background-color: #002f78">
   <img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga.webp" alt="GoCarga logo" width="200" height="80" loading="lazy" />
 </div>
+<figcaption>The GoCarga logo on its brand navy background — a name designed to be immediately understood by Colombian freight drivers.</figcaption>
+</figure>
 
-![GoCarga brand banner — logo on orange geometric background](/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/logo-gocarga-banner.webp" alt="GoCarga brand banner — logo on orange geometric background" loading="lazy" />
+<figcaption>The brand banner — orange and navy, the colors chosen to signal energy and trust to the freight industry audience.</figcaption>
+</figure>
 
 ---
 
@@ -50,7 +56,10 @@ For eight weeks, we were in Cali at Universidad ICESI, going through the Lean La
 
 Our mentors — Ana Lucía Alzate and Andrés Felipe Millán — pushed us hard on something I hadn't fully appreciated yet: **get out of the building**. Stop theorizing. Go talk to real people.
 
-![GoCarga team with Apps.co mentors at Universidad ICESI](/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/team-apps-co.webp" alt="GoCarga team with Apps.co mentors at Universidad ICESI" loading="lazy" />
+<figcaption>Eight weeks at Universidad ICESI, Cali — the Lean LaunchPad cohort where the team learned to leave the building and talk to real truckers.</figcaption>
+</figure>
 
 So we did. We interviewed over 80 transporters and more than 20 companies. And somewhere around interview 30 or 40, we stumbled onto something we hadn't planned for: **freight brokers** — *comisionistas* in Spanish. These were the people who had been sitting in the middle of every cargo transaction, connecting supply with demand through personal networks and phone calls. They weren't in our original business model. They turned out to be among the most critical stakeholders in the entire ecosystem.
 
@@ -64,17 +73,35 @@ GoCarga was a web platform where companies could post cargo shipment needs and i
 
 We went through several prototypes. Each one a little closer to something real:
 
-![Welcome prototype — GoCarga mascot, onboarding page with government and university sponsors](/images/blog/posts/gocarga-apps-co-adventure/prototype-welcome.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/prototype-welcome.webp" alt="Welcome prototype — GoCarga mascot, onboarding page with government and university sponsors" loading="lazy" />
+<figcaption>Welcome screen from an early prototype — the mascot, government logos, and university sponsors gave the product institutional credibility.</figcaption>
+</figure>
 
-![Home prototype — Two-sided marketplace: companies and transporters, transparent, secure and profitable connection](/images/blog/posts/gocarga-apps-co-adventure/prototype-home.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/prototype-home.webp" alt="Home prototype — Two-sided marketplace: companies and transporters, transparent, secure and profitable connection" loading="lazy" />
+<figcaption>Home screen prototype — the two-sided marketplace pitch visible at a glance: companies need cargo moved, transporters have empty trucks.</figcaption>
+</figure>
 
-![Main landing prototype — Transparent, secure and profitable connection](/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/prototype-landing-principal.webp" alt="Main landing prototype — Transparent, secure and profitable connection" loading="lazy" />
+<figcaption>Main landing iteration — the tagline "Transparent, Secure and Profitable Connection" went through several refinements across the prototypes.</figcaption>
+</figure>
 
-![Route results prototype — Medellín / Pereira search, active loads](/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/prototype-ruta-resultados.webp" alt="Route results prototype — Medellín / Pereira search, active loads" loading="lazy" />
+<figcaption>Route search results — a trucker entering Medellín–Pereira could see available cargo loads matching their return route in real time.</figcaption>
+</figure>
 
-![Cargo listing prototype — Matching cargo with transporters](/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-listing.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/prototype-cargo-listing.webp" alt="Cargo listing prototype — Matching cargo with transporters" loading="lazy" />
+<figcaption>Cargo listing view — companies posting shipment needs, transporters browsing available loads by route and weight class.</figcaption>
+</figure>
 
-![GoCarga web platform screenshot](/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/gocarga-platform.webp" alt="GoCarga web platform screenshot" loading="lazy" />
+<figcaption>The GoCarga platform — a working product that solved a real problem, even if building the network around it proved harder than the code.</figcaption>
+</figure>
 
 It wasn't perfect. But it was real. And it was solving a real problem that real people experienced every single day.
 
@@ -82,7 +109,10 @@ It wasn't perfect. But it was real. And it was solving a real problem that real 
 
 ## Expocamello and the Angel Investor Stage
 
-![Expocamello 2014 banner — 10 years, September 25-27 at Expofuturo Pereira](/images/blog/posts/gocarga-apps-co-adventure/expocamello-banner.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/expocamello-banner.webp" alt="Expocamello 2014 banner — 10 years, September 25-27 at Expofuturo Pereira" loading="lazy" />
+<figcaption>Expocamello's 10th anniversary — the fair where GoCarga pitched to angel investors from the Red Nacional de Ángeles Inversionistas.</figcaption>
+</figure>
 
 Later that year, Pereira's Chamber of Commerce held the 10th edition of Expocamello — an entrepreneurship fair that draws projects from across the region. We submitted GoCarga and were selected as one of 5 to 6 finalists from a pool of over 200 projects.
 
@@ -90,16 +120,25 @@ We presented on stage to members of the Red Nacional de Ángeles Inversionistas,
 
 Building our stand was one of the things I remember most fondly. It was our first one ever — we designed the banner, picked the colors, figured out the layout. We even had business cards made. Real ones, with everyone's name and role. Looking at them now feels like a time capsule — four university students who gave themselves titles and printed them on cardstock.
 
-![Original banner design for the GoCarga stand — ¡Conéctate! y consigue tu carga con Rentabilidad](/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/stand-banner-design.webp" alt="Original banner design for the GoCarga stand — ¡Conéctate! y consigue tu carga con Rentabilidad" loading="lazy" />
+<figcaption>The stand banner design — four university students who gave themselves titles, printed business cards, and stood in front of real investors.</figcaption>
+</figure>
 
+<figure>
 <div class="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
   <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-front.webp" alt="GoCarga business card front — Logo, tagline: Conexión Transparente, Segura & Rentable, sponsor logos" width="510" height="288" loading="lazy" />
   <img src="/images/blog/posts/gocarga-apps-co-adventure/business-card-back.webp" alt="GoCarga business card back — Team: Alejandro Pinto (CEO), Sergio Alexander Flórez (Tech), Andrés Julián Vinasco (Operations), Jose Miguel Beltran (Creative)" width="510" height="288" loading="lazy" />
 </div>
+<figcaption>Front and back of the actual business cards — the roles printed on cardstock made it feel real in a way that a GitHub repo never does.</figcaption>
+</figure>
 
 When we saw it all printed and set up in the venue, it felt like GoCarga had become something real in a way that code on a screen never quite achieves.
 
-![GoCarga stand at Expocamello 2014 — Connect and get your cargo with profitability](/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.webp)
+<figure>
+<img src="/images/blog/posts/gocarga-apps-co-adventure/stand-expocamello.webp" alt="GoCarga stand at Expocamello 2014 — Connect and get your cargo with profitability" loading="lazy" />
+<figcaption>The GoCarga stand at Expocamello — when it was finally set up in the venue, the project felt real in a way that code on a screen never had.</figcaption>
+</figure>
 
 I don't have the words to fully describe what it feels like the first time you pitch your idea in that kind of environment. Everything you've built — every spreadsheet, every interview, every whiteboard session — compresses into 10 minutes where you either make someone believe or you don't.
 

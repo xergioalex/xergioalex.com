@@ -65,7 +65,10 @@ Con esto ya estaba todo listo. Solo faltaba dejar corriendo `runTest.c` en una m
 
 Para eso creé dos droplets en Digital Ocean:
 
-![Digital Ocean droplets](/images/blog/posts/analysis-of-sorting-algorithms/digital-ocean-droplets.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/digital-ocean-droplets.webp" alt="Digital Ocean droplets" loading="lazy" />
+  <figcaption>Los dos droplets de DigitalOcean usados como máquinas de benchmark — M1 (1 núcleo, 1 GB RAM) y M2 (2 núcleos, 2 GB RAM).</figcaption>
+</figure>
 
 El segundo servidor tenía el doble de recursos, así que en teoría debía rendir mejor.
 
@@ -109,51 +112,123 @@ M2 = Máquina 2 (2 núcleos, 2GB RAM)
 
 ### Burbuja (Bubble Sort): O(n^2)
 
-![Bubble Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1.webp)
-![Bubble Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m2.webp)
-![Bubble Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1.webp" alt="Bubble Sort M1" loading="lazy" />
+  <figcaption>Bubble Sort en Máquina 1 — el tiempo de ejecución crece rápidamente al superar el millón de elementos.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m2.webp" alt="Bubble Sort M2" loading="lazy" />
+  <figcaption>Bubble Sort en Máquina 2 — la frecuencia por núcleo más baja (1,8 GHz vs 2,4 GHz) resulta en peor rendimiento a pesar de tener más RAM.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1-m2.webp" alt="Bubble Sort M1 vs M2" loading="lazy" />
+  <figcaption>Bubble Sort M1 vs M2 — el crecimiento cuadrático O(n²) es claramente visible; M1 supera a M2 gracias a su mayor frecuencia de CPU.</figcaption>
+</figure>
 
 ### Conteo (Counting Sort): O(n+k)
 
-![Counting Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1.webp)
-![Counting Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m2.webp)
-![Counting Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1.webp" alt="Counting Sort M1" loading="lazy" />
+  <figcaption>Counting Sort en Máquina 1 — curva casi plana O(n+k), terminando en milisegundos incluso con 1,6 M de elementos.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m2.webp" alt="Counting Sort M2" loading="lazy" />
+  <figcaption>Counting Sort en Máquina 2 — crecimiento igualmente plano; la ventaja O(n+k) se mantiene sin importar el nivel de hardware.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1-m2.webp" alt="Counting Sort M1 vs M2" loading="lazy" />
+  <figcaption>Counting Sort M1 vs M2 — ambas máquinas muestran tiempos casi idénticos por debajo del milisegundo, confirmando la cota O(n+k).</figcaption>
+</figure>
 
 ### Montones (Heapsort): O(n log n)
 
-![Heap Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1.webp)
-![Heap Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m2.webp)
-![Heap Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1.webp" alt="Heap Sort M1" loading="lazy" />
+  <figcaption>Heap Sort en Máquina 1 — crecimiento O(n log n), manteniéndose bien por debajo de 2 segundos con 1,6 M de elementos.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m2.webp" alt="Heap Sort M2" loading="lazy" />
+  <figcaption>Heap Sort en Máquina 2 — rendimiento O(n log n) consistente; ligeramente más lento que M1 por la menor frecuencia de reloj.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1-m2.webp" alt="Heap Sort M1 vs M2" loading="lazy" />
+  <figcaption>Heap Sort M1 vs M2 — las curvas superpuestas confirman que en tareas de un solo hilo la frecuencia de CPU es la variable decisiva.</figcaption>
+</figure>
 
 ### Inserción (Insertion Sort): O(n^2)
 
-![Insertion Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1.webp)
-![Insertion Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m2.webp)
-![Insertion Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1.webp" alt="Insertion Sort M1" loading="lazy" />
+  <figcaption>Insertion Sort en Máquina 1 — curva O(n²) más pronunciada que Selection Sort, pero muy por debajo de Bubble Sort.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m2.webp" alt="Insertion Sort M2" loading="lazy" />
+  <figcaption>Insertion Sort en Máquina 2 — la menor velocidad por núcleo hace más evidente la penalización O(n²) con entradas grandes.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1-m2.webp" alt="Insertion Sort M1 vs M2" loading="lazy" />
+  <figcaption>Insertion Sort M1 vs M2 — M1 lidera en todo momento, reforzando que la frecuencia de reloj domina en algoritmos secuenciales.</figcaption>
+</figure>
 
 ### Mezcla (Merge Sort): O(n log n)
 
-![Merge Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1.webp)
-![Merge Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m2.webp)
-![Merge Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1.webp" alt="Merge Sort M1" loading="lazy" />
+  <figcaption>Merge Sort en Máquina 1 — curva O(n log n) estable, competitiva con Heap Sort y Quicksort.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m2.webp" alt="Merge Sort M2" loading="lazy" />
+  <figcaption>Merge Sort en Máquina 2 — rendimiento consistente; la RAM adicional puede ayudar con las asignaciones de memoria que requiere este algoritmo.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1-m2.webp" alt="Merge Sort M1 vs M2" loading="lazy" />
+  <figcaption>Merge Sort M1 vs M2 — los resultados son cercanos, mostrando que el uso de memoria del algoritmo puede compensar parcialmente la diferencia de frecuencia de CPU.</figcaption>
+</figure>
 
 ### Rápido (Quicksort): O(n log n)
 
-![Quick Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1.webp)
-![Quick Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m2.webp)
-![Quick Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1.webp" alt="Quick Sort M1" loading="lazy" />
+  <figcaption>Quicksort en Máquina 1 — segundo más rápido en general, manteniéndose consistentemente por debajo de 0,5 segundos hasta 1,6 M de elementos.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m2.webp" alt="Quick Sort M2" loading="lazy" />
+  <figcaption>Quicksort en Máquina 2 — ligeramente más lento que M1, pero sigue dentro del grupo rápido O(n log n).</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1-m2.webp" alt="Quick Sort M1 vs M2" loading="lazy" />
+  <figcaption>Quicksort M1 vs M2 — ambas máquinas se comportan de forma similar, confirmando la eficiencia práctica de Quicksort con datos aleatorios.</figcaption>
+</figure>
 
 ### Selección (Selection Sort): O(n^2)
 
-![Selection Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1.webp)
-![Selection Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m2.webp)
-![Selection Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1.webp" alt="Selection Sort M1" loading="lazy" />
+  <figcaption>Selection Sort en Máquina 1 — crecimiento O(n²), más rápido que Bubble Sort pero muy por detrás del grupo O(n log n).</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m2.webp" alt="Selection Sort M2" loading="lazy" />
+  <figcaption>Selection Sort en Máquina 2 — escalado cuadrático similar; menos intercambios que Bubble Sort pero la misma cota asintótica.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1-m2.webp" alt="Selection Sort M1 vs M2" loading="lazy" />
+  <figcaption>Selection Sort M1 vs M2 — M1 consistentemente más rápido; la ventaja de frecuencia de reloj es el factor decisivo en trabajo O(n²) de un solo hilo.</figcaption>
+</figure>
 
 ### Gráfica comparativa de todos los algoritmos
 
-![All algorithms M1](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1.webp)
-![All algorithms M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m2.webp)
-![All algorithms M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1.webp" alt="All algorithms M1" loading="lazy" />
+  <figcaption>Los siete algoritmos en Máquina 1 — el grupo O(n²) domina la escala; el grupo rápido se agrupa cerca del eje x.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m2.webp" alt="All algorithms M2" loading="lazy" />
+  <figcaption>Los siete algoritmos en Máquina 2 — el mismo patrón que M1; la curva de Bubble Sort eclipsa a todo lo demás.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1-m2.webp" alt="All algorithms M1 vs M2" loading="lazy" />
+  <figcaption>Todos los algoritmos en ambas máquinas — la mayor frecuencia de reloj de M1 la mantiene más rápida a pesar del mayor número de núcleos y RAM de M2.</figcaption>
+</figure>
 
 En esa comparativa, los cuatro algoritmos rápidos (`quickSort`, `mergeSort`, `heapSort`, `countingSort`) se solapan por escala. El perdedor claro fue `bubbleSort`, seguido por `insertionSort` y `selectionSort`.
 
@@ -193,9 +268,18 @@ Esto refleja un reto clásico en computación: para un mismo problema hay muchas
 
 Al graficar solo los algoritmos eficientes (`quickSort`, `mergeSort`, `heapSort`, `countingSort`), casi ninguno superó 1 segundo con 1.600.000 datos.
 
-![Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1.webp)
-![Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m2.webp)
-![Comparación de algoritmos de ordenamiento más rápidos — Máquina 1 vs Máquina 2 lado a lado](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1.webp" alt="Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Algoritmos rápidos en Máquina 1 — Counting Sort lidera con tiempo casi nulo; Quicksort y Heap Sort le siguen de cerca.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m2.webp" alt="Comparación de algoritmos de ordenamiento más rápidos — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Algoritmos rápidos en Máquina 2 — Counting Sort sigue dominando; se nota un ligero incremento en Heap Sort con tamaños grandes.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1-m2.webp" alt="Comparación de algoritmos de ordenamiento más rápidos — Máquina 1 vs Máquina 2 lado a lado" loading="lazy" />
+  <figcaption>Algoritmos rápidos lado a lado en ambas máquinas — la diferencia de rendimiento entre algoritmos supera la diferencia de hardware.</figcaption>
+</figure>
 
 El ganador fue `countingSort` (`O(n+k)`), pero no es una bala de plata:
 
@@ -219,8 +303,14 @@ Eso deja la comparación más ligada a frecuencia de CPU por núcleo:
 
 ### Información del sistema
 
-![Arquitectura del sistema de la Máquina 1 de benchmark — especificaciones del droplet de DigitalOcean](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m1.webp)
-![Arquitectura del sistema de la Máquina 2 de benchmark — especificaciones del droplet de DigitalOcean](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/architecture-m1.webp" alt="Arquitectura del sistema de la Máquina 1 de benchmark — especificaciones del droplet de DigitalOcean" loading="lazy" />
+  <figcaption>Especificaciones de Máquina 1 con <code>lscpu</code>: 1 núcleo a 2399.998 MHz — la mayor frecuencia de reloj compensó el menor número de recursos.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/architecture-m2.webp" alt="Arquitectura del sistema de la Máquina 2 de benchmark — especificaciones del droplet de DigitalOcean" loading="lazy" />
+  <figcaption>Especificaciones de Máquina 2 con <code>lscpu</code>: 2 núcleos a 1799.998 MHz — más núcleos y RAM, pero menor frecuencia por núcleo.</figcaption>
+</figure>
 
 Las unidades de frecuencia:
 
@@ -242,40 +332,91 @@ $ lscpu
 
 Luego extendí el experimento enfocándome en algoritmos eficientes para ver cuánto soportaban las máquinas por memoria disponible:
 
-![Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m1.webp)
-![Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m1.webp" alt="Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Algoritmos rápidos llevados al límite de memoria de M1 — las curvas se separan a medida que el tamaño del dataset se acerca a la RAM disponible.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m2.webp" alt="Algoritmos rápidos a máxima capacidad de memoria — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Algoritmos rápidos en el techo de memoria de M2 — la RAM adicional extiende el rango viable del dataset antes de que aparezca la degradación.</figcaption>
+</figure>
 
 Aquí M2 (2GB RAM) sí logró procesar más volumen en varios casos.
 
 ### Counting Sort hasta máximo volumen
 
-![Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1.webp)
-![Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m2.webp)
-![Counting Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1.webp" alt="Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Counting Sort a máxima escala en M1 — sigue siendo casi lineal, pero las restricciones de memoria limitan el techo práctico.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m2.webp" alt="Counting Sort a máxima escala de memoria — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Counting Sort a máxima escala en M2 — la RAM adicional le permite manejar rangos de enteros más grandes antes de alcanzar su cota de memoria.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1-m2.webp" alt="Counting Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2" loading="lazy" />
+  <figcaption>Counting Sort M1 vs M2 a máxima escala — la RAM adicional de M2 proporciona una ventaja clara con datasets de enteros grandes.</figcaption>
+</figure>
 
 ### Heap Sort hasta máximo volumen
 
-![Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1.webp)
-![Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m2.webp)
-![Heap Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1.webp" alt="Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Heap Sort a máxima escala en M1 — la curva O(n log n) se mantiene bien comportada incluso con datasets muy grandes.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m2.webp" alt="Heap Sort a máxima escala de memoria — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Heap Sort a máxima escala en M2 — ligeramente más lento que M1 pero estable; el ordenamiento in-place mantiene el uso de memoria bajo.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1-m2.webp" alt="Heap Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2" loading="lazy" />
+  <figcaption>Heap Sort M1 vs M2 a máxima escala — la brecha por frecuencia de CPU se amplía ligeramente con entradas más grandes.</figcaption>
+</figure>
 
 ### Merge Sort hasta máximo volumen
 
-![Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1.webp)
-![Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m2.webp)
-![Merge Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1.webp" alt="Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Merge Sort a máxima escala en M1 — las asignaciones de memoria auxiliar se hacen perceptibles con entradas muy grandes.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m2.webp" alt="Merge Sort a máxima escala de memoria — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Merge Sort a máxima escala en M2 — la RAM adicional reduce la presión de memoria, manteniendo la curva comparativamente suave.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1-m2.webp" alt="Merge Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2" loading="lazy" />
+  <figcaption>Merge Sort M1 vs M2 a máxima escala — la RAM extra de M2 ayuda a compensar la menor frecuencia de reloj en este algoritmo intensivo en memoria.</figcaption>
+</figure>
 
 ### Quick Sort hasta máximo volumen
 
-![Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1.webp)
-![Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m2.webp)
-![Quick Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1.webp" alt="Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Quicksort a máxima escala en M1 — sigue entre los más rápidos; su diseño in-place mantiene la sobrecarga de memoria al mínimo.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m2.webp" alt="Quick Sort a máxima escala de memoria — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Quicksort a máxima escala en M2 — comparable a M1; la entrada aleatoria evita la degradación al caso peor O(n²).</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1-m2.webp" alt="Quick Sort a máxima escala de memoria — comparación Máquina 1 vs Máquina 2" loading="lazy" />
+  <figcaption>Quicksort M1 vs M2 a máxima escala — las curvas casi se superponen; ninguna máquina obtiene una ventaja decisiva.</figcaption>
+</figure>
 
 ### Comparativa final de algoritmos eficientes
 
-![Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 1](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1.webp)
-![Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m2.webp)
-![Todos los algoritmos rápidos a máxima escala de memoria — comparación Máquina 1 vs Máquina 2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1.webp" alt="Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 1" loading="lazy" />
+  <figcaption>Todos los algoritmos rápidos en el techo de memoria de M1 — las curvas se separan claramente, revelando el orden práctico: Counting, Quick, Merge, Heap.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m2.webp" alt="Todos los algoritmos rápidos a máxima escala de memoria — resultados de benchmark Máquina 2" loading="lazy" />
+  <figcaption>Todos los algoritmos rápidos en el techo de memoria de M2 — la RAM adicional permite extender la comparación antes de que los resultados pierdan fiabilidad.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1-m2.webp" alt="Todos los algoritmos rápidos a máxima escala de memoria — comparación Máquina 1 vs Máquina 2" loading="lazy" />
+  <figcaption>Comparativa final a máxima escala en ambas máquinas — el comportamiento se alinea con la complejidad teórica para valores grandes de n.</figcaption>
+</figure>
 
 Al extender el experimento con mayor volumen de datos, las curvas se volvieron más uniformes y comparables con sus funciones de complejidad teórica.
 

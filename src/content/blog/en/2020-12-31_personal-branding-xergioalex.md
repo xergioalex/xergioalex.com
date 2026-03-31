@@ -134,45 +134,46 @@ The brand has a few different configurations depending on the context:
 
 The complete thing: ninja character + name banner. This is what you use when you have space — headers, hero sections, presentations.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
-
-![XergioAleX full logo with ninja character and name text in white](/images/blog/posts/personal-branding-xergioalex/full-logo-white.webp)
-
-</div>
+<figure style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+  <img src="/images/blog/posts/personal-branding-xergioalex/full-logo-white.webp" alt="XergioAleX full logo with ninja character and name text in white" loading="lazy" />
+  <figcaption style="color:#d1d5db;margin-top:0.75rem;">The full lockup logo — ninja character, "XERGIO ALEX" banner, and "Full Stack Entrepreneur" subtitle, designed by Koru.</figcaption>
+</figure>
 
 ### Isologo (Icon)
 
 Just the ninja, no text. Good for favicons, app icons, social media avatars, and anywhere the full logo would be too small to read.
 
-![XergioAleX isologo — ninja character icon without text, white version](/images/blog/posts/personal-branding-xergioalex/isologo-white.webp)
+<figure>
+  <img src="/images/blog/posts/personal-branding-xergioalex/isologo-white.webp" alt="XergioAleX isologo — ninja character icon without text, white version" loading="lazy" />
+  <figcaption>The isologo: just the hooded ninja, with the <code>&lt;&gt;</code> code symbol on the forehead — used for avatars, icons, and tight spaces.</figcaption>
+</figure>
 
 ### Ninja Face (Compact Icon)
 
 A close-up of just the ninja's face — even more minimal than the isologo. This is the version used in the site favicon and very small contexts where you only need the essence of the character.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;display:flex;justify-content:center">
+<figure style="background:#0F1124;border-radius:12px;padding:2rem;display:flex;flex-direction:column;align-items:center">
   <img src="/images/isologo.svg" alt="XergioAleX ninja face icon — compact version for favicon and avatars" style="max-height:160px" width="160" height="160" loading="lazy" />
-</div>
+  <figcaption style="color:#d1d5db;margin-top:0.75rem;">The ninja face icon — the most compact form, used as the site favicon and for very small display contexts.</figcaption>
+</figure>
 
 ### Logotype (Wordmark)
 
 Just the "XERGIO ALEX" text with the shuriken X's. Works well for horizontal layouts, email signatures, or when you want something more subtle.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
-
-![XergioAleX logotype — text wordmark with shuriken styling, white version](/images/blog/posts/personal-branding-xergioalex/logo-text-white.webp)
-
-</div>
+<figure style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+  <img src="/images/blog/posts/personal-branding-xergioalex/logo-text-white.webp" alt="XergioAleX logotype — text wordmark with shuriken styling, white version" loading="lazy" />
+  <figcaption style="color:#d1d5db;margin-top:0.75rem;">The logotype wordmark — "XERGIO ALEX" with shuriken-styled X's, for horizontal layouts and email signatures.</figcaption>
+</figure>
 
 ### Small Version (Horizontal)
 
 The ninja face paired with the text in a compact horizontal layout. This is the version you see in the site header — it works great for navigation bars and tight horizontal spaces.
 
-<div style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
-
-![XergioAleX small version logo — ninja face with horizontal text, white](/images/logo_small_version_white.svg)
-
-</div>
+<figure style="background:#0F1124;border-radius:12px;padding:2rem;text-align:center">
+  <img src="/images/logo_small_version_white.svg" alt="XergioAleX small version logo — ninja face with horizontal text, white" loading="lazy" />
+  <figcaption style="color:#d1d5db;margin-top:0.75rem;">Small horizontal version — ninja face paired with the name text, the layout used in the site header and navigation bars.</figcaption>
+</figure>
 
 ### Color Modes
 
@@ -198,9 +199,15 @@ A quick rundown of how the brand shows up across different places:
 - Stickers (one of my favorites)
 - Business cards
 
-![Sticker Mockup](/images/blog/posts/personal-branding-xergioalex/social-media-5.webp)
+<figure>
+  <img src="/images/blog/posts/personal-branding-xergioalex/social-media-5.webp" alt="Sticker Mockup" loading="lazy" />
+  <figcaption>The XergioAleX brand as a die-cut sticker — the full lockup on a dark wooden surface.</figcaption>
+</figure>
 
-![Business Card Mockup](/images/blog/posts/personal-branding-xergioalex/social-media-3.webp)
+<figure>
+  <img src="/images/blog/posts/personal-branding-xergioalex/social-media-3.webp" alt="Business Card Mockup" loading="lazy" />
+  <figcaption>Business card mockup showing multiple orientations — Ninja Navy background with the isologo and logotype variants.</figcaption>
+</figure>
 
 ---
 

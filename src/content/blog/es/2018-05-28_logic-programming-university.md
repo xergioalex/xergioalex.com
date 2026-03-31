@@ -145,7 +145,10 @@ Los matemáticos probaron en 1976 — con ayuda computacional — que cualquier 
 
 Para la tarea final, lo aplicamos a algo que conocíamos: los 31 departamentos de Colombia.
 
-![Mapa en blanco de los departamentos de Colombia antes de colorear](/images/blog/posts/logic-programming-university/blank-map.webp)
+<figure>
+  <img src="/images/blog/posts/logic-programming-university/blank-map.webp" alt="Mapa en blanco de los departamentos de Colombia antes de colorear" loading="lazy" />
+  <figcaption>Los 31 departamentos de Colombia sin colorear — el punto de partida para la implementación del Teorema de los Cuatro Colores en tres paradigmas.</figcaption>
+</figure>
 
 El reto no era solo implementar la coloración de mapas — eso es un problema de libro de texto. El reto era implementarlo en tres lenguajes diferentes, con tres paradigmas de programación distintos, y entender por qué cada enfoque lucía como lucía.
 
@@ -213,7 +216,10 @@ Eso es esencialmente el solver completo. `{FD.record color Deptos 1#NroColores C
 
 No hay backtracking explícito. No hay un ciclo de prueba y error. No hay código de rollback. Declaraste la restricción de que las regiones adyacentes no pueden compartir color, y el solver encontró una asignación que satisface todas las restricciones de los 31 departamentos simultáneamente.
 
-![Los 31 departamentos de Colombia coloreados con cuatro colores — ningún departamento adyacente comparte el mismo color](/images/blog/posts/logic-programming-university/hero.webp)
+<figure>
+  <img src="/images/blog/posts/logic-programming-university/hero.webp" alt="Los 31 departamentos de Colombia coloreados con cuatro colores — ningún departamento adyacente comparte el mismo color" loading="lazy" />
+  <figcaption>El resultado del solver de restricciones de Mozart/Oz: los 31 departamentos coloreados con cuatro colores, sin que dos adyacentes compartan el mismo.</figcaption>
+</figure>
 
 La versión en Java y la de Racket exploran el mismo espacio, solo descritos de manera diferente. La versión en Mozart/Oz describe el espacio de soluciones válidas y delega toda la búsqueda al motor de restricciones. Unas 50 líneas frente a unas 100. Y lo que es más importante, la versión en Oz es más fácil de razonar — no hay lógica de búsqueda que pueda tener bugs sutiles, no hay condición de retroceso que se haya omitido, no hay caso borde en el rollback.
 

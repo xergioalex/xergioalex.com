@@ -81,10 +81,13 @@ Terminé con algunos enlaces para que pudieran empezar de inmediato:
 
 ## Memorias del Workshop
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrator-flute.webp" alt="Ilustración de humano orquestando agentes de IA — programador como director" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/orchestrators-slide.webp" alt="Slide: Nuevo rol de los desarrolladores — orquestadores y supervisores" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Dos slides del workshop Vibe Coding e IA — la metáfora del director y la tesis central sobre el nuevo rol del desarrollador.</figcaption>
+</figure>
 
 ---
 

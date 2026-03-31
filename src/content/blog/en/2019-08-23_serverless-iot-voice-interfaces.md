@@ -24,7 +24,10 @@ A good example is [Bambú Meditación](https://appbambu.com/alexa/), an Alexa sk
 4. **Slots** — Variable data extracted from utterances. "rest", "morning", "focus".
 5. **Intent** — The action the app must execute. Play a specific meditation. Resume session. Provide help.
 
-![Voice interface flow: wake word, invocation, utterances, slots, intent](/images/blog/posts/serverless-iot-voice-interfaces/voice-interface.webp)
+<figure>
+  <img src="/images/blog/posts/serverless-iot-voice-interfaces/voice-interface.webp" alt="Voice interface flow: wake word, invocation, utterances, slots, intent" loading="lazy" />
+  <figcaption>The Alexa interaction pipeline: wake word → invocation name → utterance parsing → slot extraction → intent dispatched to Lambda.</figcaption>
+</figure>
 
 The backend — in this case, an AWS Lambda function — receives the intent and slots, fetches the appropriate audio or data, and returns a response. The user hears a meditation track or a confirmation. The entire interaction is event-driven. No long-running server. No idle resources. Just a function that wakes up when spoken to.
 

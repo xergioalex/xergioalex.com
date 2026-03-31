@@ -64,7 +64,10 @@ I ran this in a small controlled environment to minimize interference from other
 
 I created two Digital Ocean droplets:
 
-![Digital Ocean droplets](/images/blog/posts/analysis-of-sorting-algorithms/digital-ocean-droplets.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/digital-ocean-droplets.webp" alt="Digital Ocean droplets" loading="lazy" />
+  <figcaption>The two DigitalOcean droplets used as benchmark machines — M1 (1 core, 1 GB RAM) and M2 (2 cores, 2 GB RAM).</figcaption>
+</figure>
 
 The second machine had double resources, so better performance seemed expected.
 
@@ -103,51 +106,123 @@ M2 = Machine 2 (2 cores, 2GB RAM)
 
 ### Bubble Sort: O(n^2)
 
-![Bubble Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1.webp)
-![Bubble Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m2.webp)
-![Bubble Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1.webp" alt="Bubble Sort M1" loading="lazy" />
+  <figcaption>Bubble Sort on Machine 1 — execution time grows sharply as input size increases past ~1 million elements.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m2.webp" alt="Bubble Sort M2" loading="lazy" />
+  <figcaption>Bubble Sort on Machine 2 — slower per-core clock (1.8 GHz vs 2.4 GHz) results in worse performance despite more RAM.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/bubble-sort-m1-m2.webp" alt="Bubble Sort M1 vs M2" loading="lazy" />
+  <figcaption>Bubble Sort M1 vs M2 — single-threaded O(n²) growth clearly visible; M1 outperforms due to higher CPU frequency.</figcaption>
+</figure>
 
 ### Counting Sort: O(n+k)
 
-![Counting Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1.webp)
-![Counting Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m2.webp)
-![Counting Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1.webp" alt="Counting Sort M1" loading="lazy" />
+  <figcaption>Counting Sort on Machine 1 — near-flat O(n+k) curve, finishing in milliseconds even at 1.6M elements.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m2.webp" alt="Counting Sort M2" loading="lazy" />
+  <figcaption>Counting Sort on Machine 2 — similar flat growth; the O(n+k) advantage holds regardless of hardware tier.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-m1-m2.webp" alt="Counting Sort M1 vs M2" loading="lazy" />
+  <figcaption>Counting Sort M1 vs M2 — both machines show nearly identical sub-millisecond times, confirming the O(n+k) bound.</figcaption>
+</figure>
 
 ### Heap Sort: O(n log n)
 
-![Heap Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1.webp)
-![Heap Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m2.webp)
-![Heap Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1.webp" alt="Heap Sort M1" loading="lazy" />
+  <figcaption>Heap Sort on Machine 1 — O(n log n) growth, staying well under 2 seconds at 1.6M elements.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m2.webp" alt="Heap Sort M2" loading="lazy" />
+  <figcaption>Heap Sort on Machine 2 — consistent O(n log n) performance; slightly slower than M1 due to lower clock speed.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-m1-m2.webp" alt="Heap Sort M1 vs M2" loading="lazy" />
+  <figcaption>Heap Sort M1 vs M2 — overlapping curves confirm that single-threaded performance favors higher CPU frequency.</figcaption>
+</figure>
 
 ### Insertion Sort: O(n^2)
 
-![Insertion Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1.webp)
-![Insertion Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m2.webp)
-![Insertion Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1.webp" alt="Insertion Sort M1" loading="lazy" />
+  <figcaption>Insertion Sort on Machine 1 — O(n²) curve steeper than Selection Sort but far below Bubble Sort.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m2.webp" alt="Insertion Sort M2" loading="lazy" />
+  <figcaption>Insertion Sort on Machine 2 — slower per-core speed makes the O(n²) penalty more apparent at larger inputs.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/insertion-sort-m1-m2.webp" alt="Insertion Sort M1 vs M2" loading="lazy" />
+  <figcaption>Insertion Sort M1 vs M2 — M1 leads throughout, reinforcing that clock speed dominates for sequential algorithms.</figcaption>
+</figure>
 
 ### Merge Sort: O(n log n)
 
-![Merge Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1.webp)
-![Merge Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m2.webp)
-![Merge Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1.webp" alt="Merge Sort M1" loading="lazy" />
+  <figcaption>Merge Sort on Machine 1 — stable O(n log n) curve, competitive with Heap Sort and Quicksort.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m2.webp" alt="Merge Sort M2" loading="lazy" />
+  <figcaption>Merge Sort on Machine 2 — consistent performance; extra RAM may help with the memory allocations Merge Sort requires.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-m1-m2.webp" alt="Merge Sort M1 vs M2" loading="lazy" />
+  <figcaption>Merge Sort M1 vs M2 — results are close, showing the algorithm's memory usage can partially offset the CPU frequency gap.</figcaption>
+</figure>
 
 ### Quicksort: O(n log n)
 
-![Quick Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1.webp)
-![Quick Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m2.webp)
-![Quick Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1.webp" alt="Quick Sort M1" loading="lazy" />
+  <figcaption>Quicksort on Machine 1 — second fastest overall, staying consistently under 0.5 seconds up to 1.6M elements.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m2.webp" alt="Quick Sort M2" loading="lazy" />
+  <figcaption>Quicksort on Machine 2 — slightly slower than M1 but still well within the O(n log n) fast group.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-m1-m2.webp" alt="Quick Sort M1 vs M2" loading="lazy" />
+  <figcaption>Quicksort M1 vs M2 — both machines track closely, confirming Quicksort's practical efficiency on random data.</figcaption>
+</figure>
 
 ### Selection Sort: O(n^2)
 
-![Selection Sort M1](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1.webp)
-![Selection Sort M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m2.webp)
-![Selection Sort M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1.webp" alt="Selection Sort M1" loading="lazy" />
+  <figcaption>Selection Sort on Machine 1 — O(n²) growth, faster than Bubble Sort but still far behind the O(n log n) group.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m2.webp" alt="Selection Sort M2" loading="lazy" />
+  <figcaption>Selection Sort on Machine 2 — similar quadratic scaling; fewer swaps than Bubble Sort but same asymptotic bound.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/selection-sort-m1-m2.webp" alt="Selection Sort M1 vs M2" loading="lazy" />
+  <figcaption>Selection Sort M1 vs M2 — M1 consistently faster; clock speed advantage is the deciding factor for single-threaded O(n²) work.</figcaption>
+</figure>
 
 ### Full comparison chart
 
-![All algorithms M1](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1.webp)
-![All algorithms M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m2.webp)
-![All algorithms M1 vs M2](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1.webp" alt="All algorithms M1" loading="lazy" />
+  <figcaption>All seven algorithms on Machine 1 — the O(n²) group dominates the scale; the fast group clusters near the x-axis.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m2.webp" alt="All algorithms M2" loading="lazy" />
+  <figcaption>All seven algorithms on Machine 2 — same pattern as M1; Bubble Sort's curve dwarfs everything else.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-m1-m2.webp" alt="All algorithms M1 vs M2" loading="lazy" />
+  <figcaption>All algorithms on both machines — M1's higher clock speed keeps it faster despite M2's greater core count and RAM.</figcaption>
+</figure>
 
 As expected, Bubble Sort is the clear loser. The fast group (`quickSort`, `mergeSort`, `heapSort`, `countingSort`) overlaps because of chart scale.
 
@@ -183,9 +258,18 @@ As expected, Bubble Sort is the clear loser. The fast group (`quickSort`, `merge
 
 ## Fast algorithms only
 
-![Fastest sorting algorithms comparison — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1.webp)
-![Fastest sorting algorithms comparison — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m2.webp)
-![Fastest sorting algorithms comparison — Machine 1 vs Machine 2 side-by-side](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1.webp" alt="Fastest sorting algorithms comparison — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>Fast algorithms on Machine 1 — Counting Sort leads at near-zero time; Quicksort and Heap Sort trail closely.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m2.webp" alt="Fastest sorting algorithms comparison — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>Fast algorithms on Machine 2 — Counting Sort still dominates; note slight uptick in Heap Sort at larger sizes.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-m1-m2.webp" alt="Fastest sorting algorithms comparison — Machine 1 vs Machine 2 side-by-side" loading="lazy" />
+  <figcaption>Fast algorithms side-by-side on both machines — the performance gap between algorithms outweighs hardware differences.</figcaption>
+</figure>
 
 Counting Sort wins in this setup (`O(n+k)`), but it has practical limits:
 
@@ -209,8 +293,14 @@ Per-core frequency mattered:
 
 ### System architecture screenshots
 
-![System architecture of benchmark Machine 1 — DigitalOcean droplet specifications](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m1.webp)
-![System architecture of benchmark Machine 2 — DigitalOcean droplet specifications](/images/blog/posts/analysis-of-sorting-algorithms/architecture-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/architecture-m1.webp" alt="System architecture of benchmark Machine 1 — DigitalOcean droplet specifications" loading="lazy" />
+  <figcaption>Machine 1 specs via <code>lscpu</code>: 1 core at 2399.998 MHz — higher clock speed compensated for the smaller resource pool.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/architecture-m2.webp" alt="System architecture of benchmark Machine 2 — DigitalOcean droplet specifications" loading="lazy" />
+  <figcaption>Machine 2 specs via <code>lscpu</code>: 2 cores at 1799.998 MHz — more cores and RAM but lower per-core frequency.</figcaption>
+</figure>
 
 Frequency units:
 
@@ -232,40 +322,91 @@ $ lscpu
 
 To better use machine resources, I ran only the efficient algorithms at larger scales:
 
-![Fast algorithms at maximum memory capacity — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m1.webp)
-![Fast algorithms at maximum memory capacity — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m1.webp" alt="Fast algorithms at maximum memory capacity — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>Fast algorithms pushed to M1's memory limit — curves diverge as dataset size approaches available RAM.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/fastest-algorithms-memory-test-m2.webp" alt="Fast algorithms at maximum memory capacity — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>Fast algorithms at M2's memory ceiling — extra RAM extends the viable dataset range before degradation.</figcaption>
+</figure>
 
 This is where M2's extra RAM clearly helped.
 
 ### Counting Sort at max scale
 
-![Counting Sort at maximum memory scale — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1.webp)
-![Counting Sort at maximum memory scale — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m2.webp)
-![Counting Sort at maximum memory scale — Machine 1 vs Machine 2 comparison](/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1.webp" alt="Counting Sort at maximum memory scale — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>Counting Sort at max scale on M1 — still near-linear, but memory constraints cap the practical upper limit.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m2.webp" alt="Counting Sort at maximum memory scale — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>Counting Sort at max scale on M2 — extra RAM lets it handle larger integer ranges before hitting its memory bound.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/counting-sort-max-memory-m1-m2.webp" alt="Counting Sort at maximum memory scale — Machine 1 vs Machine 2 comparison" loading="lazy" />
+  <figcaption>Counting Sort M1 vs M2 at max scale — M2's additional RAM provides a clear advantage for large integer datasets.</figcaption>
+</figure>
 
 ### Heap Sort at max scale
 
-![Heap Sort at maximum memory scale — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1.webp)
-![Heap Sort at maximum memory scale — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m2.webp)
-![Heap Sort at maximum memory scale — Machine 1 vs Machine 2 comparison](/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1.webp" alt="Heap Sort at maximum memory scale — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>Heap Sort at max scale on M1 — O(n log n) curve remains well-behaved even as dataset size grows large.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m2.webp" alt="Heap Sort at maximum memory scale — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>Heap Sort at max scale on M2 — slightly slower than M1 but stable; in-place sorting keeps memory usage low.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/heap-sort-max-memory-m1-m2.webp" alt="Heap Sort at maximum memory scale — Machine 1 vs Machine 2 comparison" loading="lazy" />
+  <figcaption>Heap Sort M1 vs M2 at max scale — the CPU frequency gap widens slightly with larger inputs.</figcaption>
+</figure>
 
 ### Merge Sort at max scale
 
-![Merge Sort at maximum memory scale — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1.webp)
-![Merge Sort at maximum memory scale — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m2.webp)
-![Merge Sort at maximum memory scale — Machine 1 vs Machine 2 comparison](/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1.webp" alt="Merge Sort at maximum memory scale — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>Merge Sort at max scale on M1 — auxiliary memory allocations become measurable at very large inputs.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m2.webp" alt="Merge Sort at maximum memory scale — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>Merge Sort at max scale on M2 — extra RAM reduces memory pressure, keeping the curve comparatively smooth.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/merge-sort-max-memory-m1-m2.webp" alt="Merge Sort at maximum memory scale — Machine 1 vs Machine 2 comparison" loading="lazy" />
+  <figcaption>Merge Sort M1 vs M2 at max scale — M2's extra RAM helps offset the lower clock speed for this memory-intensive algorithm.</figcaption>
+</figure>
 
 ### Quick Sort at max scale
 
-![Quick Sort at maximum memory scale — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1.webp)
-![Quick Sort at maximum memory scale — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m2.webp)
-![Quick Sort at maximum memory scale — Machine 1 vs Machine 2 comparison](/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1.webp" alt="Quick Sort at maximum memory scale — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>Quicksort at max scale on M1 — remains among the fastest; in-place design keeps memory overhead minimal.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m2.webp" alt="Quick Sort at maximum memory scale — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>Quicksort at max scale on M2 — comparable to M1; randomized input avoids worst-case O(n²) degradation.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/quick-sort-max-memory-m1-m2.webp" alt="Quick Sort at maximum memory scale — Machine 1 vs Machine 2 comparison" loading="lazy" />
+  <figcaption>Quicksort M1 vs M2 at max scale — curves nearly overlap; neither machine gains a decisive edge over the other.</figcaption>
+</figure>
 
 ### Final fast-algorithm comparison
 
-![All fast algorithms at maximum memory scale — Machine 1 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1.webp)
-![All fast algorithms at maximum memory scale — Machine 2 benchmark results](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m2.webp)
-![All fast algorithms at maximum memory scale — Machine 1 vs Machine 2 comparison](/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1-m2.webp)
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1.webp" alt="All fast algorithms at maximum memory scale — Machine 1 benchmark results" loading="lazy" />
+  <figcaption>All fast algorithms at M1's memory ceiling — curves separate clearly, revealing the practical ordering: Counting, Quick, Merge, Heap.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m2.webp" alt="All fast algorithms at maximum memory scale — Machine 2 benchmark results" loading="lazy" />
+  <figcaption>All fast algorithms at M2's memory ceiling — extra RAM lets the comparison extend further before results become unreliable.</figcaption>
+</figure>
+<figure>
+  <img src="/images/blog/posts/analysis-of-sorting-algorithms/all-algorithms-max-memory-m1-m2.webp" alt="All fast algorithms at maximum memory scale — Machine 1 vs Machine 2 comparison" loading="lazy" />
+  <figcaption>Final comparison at max scale on both machines — behavior aligns with theoretical complexity at large n.</figcaption>
+</figure>
 
 With larger input volumes, curves became more stable and easier to compare against theoretical complexity behavior.
 

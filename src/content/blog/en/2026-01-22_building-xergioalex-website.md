@@ -22,7 +22,10 @@ So I decided to build a real one.
 
 This is what I had for a long time:
 
-![My old personal website — a simple landing page with profile photo, name, and social links](/images/blog/posts/building-xergioalex-website/old-site.webp)
+<figure>
+<img src="/images/blog/posts/building-xergioalex-website/old-site.webp" alt="My old personal website — a simple landing page with profile photo, name, and social links" loading="lazy" />
+<figcaption>The old site — a photo, a title, and six icon links. Functional, but nothing about DailyBot, talks, open source projects, or a decade of work.</figcaption>
+</figure>
 
 Super simple. Just a photo and links to my networks. It did the job, but it didn't reflect what I'd actually been working on — DailyBot, Pereira Tech Talks, open source projects, dozens of tech talks, blog posts, trading experiments, hardware projects. I wanted a place that could hold all of that and still feel fast, clean, and easy to maintain.
 

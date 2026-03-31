@@ -142,7 +142,10 @@ The visual layer was built around a 9x9 grid of `JPanel` objects, each 60x60 pix
 
 **Solve button.** Runs the full backtracking algorithm against the current board state and fills in the solution. Watching it run on a hard puzzle was genuinely satisfying.
 
-![Sudoku solver demo — color-coded regions, candidate display, clicking to solve cells, and the automatic solve feature in action](/images/blog/posts/oop-java-swing-university-projects/hero.gif)
+<figure>
+  <img src="/images/blog/posts/oop-java-swing-university-projects/hero.gif" alt="Sudoku solver demo — color-coded regions, candidate display, clicking to solve cells, and the automatic solve feature in action" loading="lazy" />
+  <figcaption>The Sudoku solver: color-coded 3×3 boxes, candidate mini-grids in each cell, and the one-click backtracking solver completing the board.</figcaption>
+</figure>
 
 ---
 
@@ -174,7 +177,10 @@ The architecture was straightforward and deliberately clean:
 
 **File persistence** via `contactos.txt`. Contacts were serialized as space-delimited lines on save and parsed back with `BufferedReader` and `StringTokenizer` on startup. Not glamorous, but it worked, and the contacts survived closing and reopening the application — which, to a second-year student, felt like genuine persistence magic.
 
-![Contact agenda demo — adding contacts, viewing the list in the JTable, and managing entries](/images/blog/posts/oop-java-swing-university-projects/agenda-demo.gif)
+<figure>
+  <img src="/images/blog/posts/oop-java-swing-university-projects/agenda-demo.gif" alt="Contact agenda demo — adding contacts, viewing the list in the JTable, and managing entries" loading="lazy" />
+  <figcaption>The contact agenda app — adding and searching contacts in a Swing JTable, with validation and file-backed persistence.</figcaption>
+</figure>
 
 The agenda didn't have the Observer pattern or backtracking or any of the cleverness that made the Sudoku solver interesting. What it had was clarity. Every class had one job. The data model didn't know the screen existed. The UI didn't implement any logic. The validation was centralized. It was the straightforward application of the principles the course was teaching — and building it first made the Sudoku architecture feel like a natural escalation rather than a leap.
 

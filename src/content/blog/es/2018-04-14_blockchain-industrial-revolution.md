@@ -160,9 +160,15 @@ Y la confianza es la base de toda economía, toda institución, todo sistema. Cu
 
 ---
 
-![Meetup de Bitcoin y Blockchain en Pereira Tech Talks — audiencia asistiendo a la charla](/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp)
+<figure>
+  <img src="/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp" alt="Meetup de Bitcoin y Blockchain en Pereira Tech Talks — audiencia asistiendo a la charla" loading="lazy" />
+  <figcaption>La audiencia de Pereira Tech Talks siguiendo la charla de blockchain como revolución industrial en abril de 2018.</figcaption>
+</figure>
 
-![Pereira Tech Talks — noche de blockchain](/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp)
+<figure>
+  <img src="/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp" alt="Pereira Tech Talks — noche de blockchain" loading="lazy" />
+  <figcaption>La noche de blockchain en Pereira Tech Talks — una de las sesiones más concurridas del año dado el boom cripto de 2017-2018.</figcaption>
+</figure>
 
 - [Ver slides](https://slides.com/xergioalex/blockchain-industrial-revolution-of-internet)
 - [Post del blog de Pereira Tech Talks](https://www.pereiratechtalks.org/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) — resumen del evento

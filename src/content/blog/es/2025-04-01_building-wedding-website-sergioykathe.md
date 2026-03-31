@@ -45,15 +45,19 @@ Antes de escribir una sola línea de código, necesitaba definir la identidad vi
 
 Diseñé un logo que combina las letras **S** y **K** — Sergio y Katherinerine — entrelazadas de una forma que se siente elegante y personal. Se convirtió en el favicon, la marca del header, y el ancla visual de todo el sitio.
 
+<figure>
 <div style="background:#FFFFFF;border-radius:12px;padding:2rem;text-align:center">
-
-![Logo S&K de sergioykathe.com — las letras S de Sergio y K de Katherinerine entrelazadas en un monograma elegante](/images/blog/posts/building-wedding-website-sergioykathe/logo.png)
-
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/logo.png" alt="Logo S&amp;K de sergioykathe.com — las letras S de Sergio y K de Katherinerine entrelazadas en un monograma elegante" loading="lazy" />
 </div>
+<figcaption>La marca S&amp;K — siluetas de novios integradas en las letras, usada como favicon, ancla del header e identidad visual en todo el sitio.</figcaption>
+</figure>
 
 También creé una imagen de SEO personalizada — la tarjeta de Open Graph que aparece cuando alguien comparte el enlace en WhatsApp, Instagram o cualquier red social. Esto era importante porque las invitaciones se iban a compartir como URLs. La primera impresión del sitio para la mayoría de los invitados sería esta tarjeta de vista previa en un mensaje de chat.
 
-![Imagen SEO Open Graph de sergioykathe.com — la tarjeta de vista previa que los invitados verían al recibir el enlace de invitación por WhatsApp o redes sociales](/images/blog/posts/building-wedding-website-sergioykathe/seo.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/seo.webp" alt="Imagen SEO Open Graph de sergioykathe.com — la tarjeta de vista previa que los invitados verían al recibir el enlace de invitación por WhatsApp o redes sociales" loading="lazy" />
+<figcaption>La tarjeta de vista previa de Open Graph — como las invitaciones se enviaban como URLs, esta era la primera impresión visual que recibían los invitados en un mensaje de chat.</figcaption>
+</figure>
 
 Detalles pequeños. Pero del tipo que marcan la diferencia entre "aquí tienes un enlace" y "aquí está nuestra boda."
 
@@ -65,15 +69,24 @@ El sitio es una página de scroll continuo con nueve componentes, cada uno en un
 
 **WeddingHero** es lo primero que ven los invitados: "Únete a nuestra historia" con nuestra foto, la fecha de la boda (22 de marzo de 2025), y dos CTAs. La navegación superior enlaza a cada sección.
 
-![Sección hero de sergioykathe.com — "Únete a nuestra historia" con foto de la pareja, fecha de la boda y botones de acción](/images/blog/posts/building-wedding-website-sergioykathe/hero.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/hero.webp" alt="Sección hero de sergioykathe.com — &quot;Únete a nuestra historia&quot; con foto de la pareja, fecha de la boda y botones de acción" loading="lazy" />
+<figcaption>La sección hero que los invitados veían primero — fecha, foto y dos CTAs visibles antes de hacer scroll.</figcaption>
+</figure>
 
 **WeddingEvents** muestra los detalles de la ceremonia y la recepción. Cada lugar tiene un botón que abre un modal de Google Maps — un componente Svelte que carga el mapa embebido al hacer clic. Por poco usé imágenes estáticas con enlaces fijos. Luego pensé en los invitados navegando desde diferentes puntos, abriéndolo en el celular. El modal era la decisión correcta.
 
-![Sección de eventos mostrando la ceremonia en la Iglesia Nuestra Señora del Carmen a las 4:30 p.m. y la fiesta en Finca San Francisco a las 8:00 p.m., con botones de mapa y calendario](/images/blog/posts/building-wedding-website-sergioykathe/events.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/events.webp" alt="Sección de eventos mostrando la ceremonia en la Iglesia Nuestra Señora del Carmen a las 4:30 p.m. y la fiesta en Finca San Francisco a las 8:00 p.m., con botones de mapa y calendario" loading="lazy" />
+<figcaption>Dos lugares, dos horarios — los botones del mapa abren un modal Svelte con Google Maps embebido para navegar desde cualquier punto de partida.</figcaption>
+</figure>
 
 **WeddingCountdown** — un contador regresivo en vivo con días, horas, minutos y segundos. Otro componente Svelte. Un invitado que visitara el sitio seis meses antes vería el conteo completo; la mañana de la boda, mucho menos. Hay algo satisfactorio en un número que realmente va bajando.
 
-![Sección del contador regresivo mostrando 90 días, 10 horas, 20 minutos y 30 segundos restantes para la boda](/images/blog/posts/building-wedding-website-sergioykathe/countdown.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/countdown.webp" alt="Sección del contador regresivo mostrando 90 días, 10 horas, 20 minutos y 30 segundos restantes para la boda" loading="lazy" />
+<figcaption>El contador Svelte en vivo — un invitado que visitara el sitio con meses de anticipación vería el conteo completo bajando en tiempo real.</figcaption>
+</figure>
 
 **WeddingTips** cubría la información práctica: parqueadero en ambos lugares, llegar 15-20 minutos antes (la ceremonia empieza puntual, sin excepciones), evento solo para adultos, fotógrafos profesionales presentes, y dos códigos QR que los invitados podrían escanear el día del evento para compartir momentos.
 
@@ -114,13 +127,19 @@ Esa limpieza de la URL era importante. Un invitado abre `sergioykathe.com?invite
 
 Esto es lo que Julian veía cuando abría su enlace personalizado — la sección hero se transforma para mostrar su nombre, su cantidad de invitaciones, y sus cupos de alojamiento:
 
-![Sección hero personalizada para Julian — mostrando su nombre, 1 invitación de fiesta y 1 cupo de alojamiento, todo cargado desde su código de invitación único](/images/blog/posts/building-wedding-website-sergioykathe/personalized-hero-julian.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/personalized-hero-julian.webp" alt="Sección hero personalizada para Julian — mostrando su nombre, 1 invitación de fiesta y 1 cupo de alojamiento, todo cargado desde su código de invitación único" loading="lazy" />
+<figcaption>La vista personalizada de Julian — el hero se transforma con datos obtenidos desde un archivo JSON local a través de su código de invitación único en la URL.</figcaption>
+</figure>
 
 `InviteHandler.svelte` maneja la lógica de coincidencia: carga el JSON, encuentra el código, pasa los datos del invitado a los componentes del RSVP. Si no se encuentra un código válido — alguien llegó al sitio sin su enlace personalizado — un modal explica la situación.
 
 Más abajo en la página, la sección de RSVP saluda a Julian por su nombre y le muestra exactamente cuántas personas puede llevar y cuántos cupos de alojamiento tiene:
 
-![Sección RSVP personalizada para Julian — "¡Hola, Julian!" con los detalles específicos de su invitación y un botón para confirmar asistencia](/images/blog/posts/building-wedding-website-sergioykathe/rsvp-julian.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/rsvp-julian.webp" alt="Sección RSVP personalizada para Julian — &quot;¡Hola, Julian!&quot; con los detalles específicos de su invitación y un botón para confirmar asistencia" loading="lazy" />
+<figcaption>La sección RSVP saludando a Julian por su nombre — cantidad de invitaciones y cupos de alojamiento ya preconfigurados para su registro específico.</figcaption>
+</figure>
 
 Empezamos a enviar las invitaciones meses antes de la boda. A medida que se acercaba la fecha límite de confirmación, usamos el mismo sitio para hacer seguimiento — compartiendo los enlaces personalizados, recordándole a la gente que su URL específica estaba esperándolos. El sistema funcionó exactamente como estaba diseñado.
 
@@ -140,7 +159,10 @@ await fetch(GOOGLE_FORM_URL, {
 
 Así se veía el modal de confirmación para Julian — dropdowns para la cantidad de asistentes y alojamiento, un campo de mensaje, y un solo botón para confirmar:
 
-![Modal de confirmación RSVP para Julian — formulario con dropdowns para número de asistentes y cupos de alojamiento, campo de mensaje y botón de confirmar](/images/blog/posts/building-wedding-website-sergioykathe/confirm-modal-julian.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/confirm-modal-julian.webp" alt="Modal de confirmación RSVP para Julian — formulario con dropdowns para número de asistentes y cupos de alojamiento, campo de mensaje y botón de confirmar" loading="lazy" />
+<figcaption>El modal de confirmación — los envíos hacen POST directamente a un endpoint de Google Forms, escribiendo filas en una hoja de cálculo sin necesidad de backend.</figcaption>
+</figure>
 
 El modo `no-cors` significa que no recibimos respuesta — pero el envío llega. Google lo captura, escribe una fila en una hoja de cálculo, y esa hoja se convirtió en nuestro tablero de confirmaciones en tiempo real. Katherinerine podía abrirla en cualquier momento y ver quién había confirmado, cuántas personas venían, quiénes necesitaban alojamiento. Sin base de datos, sin panel de administración, sin costo de backend. Solo una hoja de cálculo con marcas de tiempo automáticas.
 

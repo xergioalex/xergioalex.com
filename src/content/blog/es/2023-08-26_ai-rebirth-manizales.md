@@ -66,11 +66,14 @@ Terminé con lo que había aprendido en la práctica desde mayo:
 
 ## Memorias del evento
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/ai-rebirth-manizales/talk-title-slide.webp" alt="Presentación con slide de título" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/ai-rebirth-manizales/speaker-presenting-to-audience.webp" alt="Presentador hablando a la audiencia" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/ai-rebirth-manizales/state-of-the-art-slide.webp" alt="Slide State of the art durante la charla AI Rebirth" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Manizales Tech Talks, agosto de 2023 — tres meses después de Pereira, un espacio más pequeño pero con una audiencia más afilada que ya hacía preguntas prácticas.</figcaption>
+</figure>
 
 ---
 

@@ -111,7 +111,10 @@ Podías escribir una función matemática, y el programa:
 4. **Calculaba la derivada** simbólicamente — no numéricamente, sino realmente aplicando las reglas de derivación
 5. **Graficaba la derivada** junto a la función original
 
-![Graficador de Funciones e Integrador](/images/blog/posts/racket-projects-university/hero.gif)
+<figure>
+  <img src="/images/blog/posts/racket-projects-university/hero.gif" alt="Graficador de Funciones e Integrador" loading="lazy" />
+  <figcaption>El graficador de funciones en acción — parseando un polinomio, dibujándolo en un plano de coordenadas y calculando su derivada simbólica.</figcaption>
+</figure>
 
 El archivo principal — `integrador y derivador.scm` — tenía una cantidad enorme de código Scheme para un lenguaje tan conciso. Construimos una arquitectura modular antes de siquiera saber qué significaba "arquitectura modular": un motor gráfico (`graficador.scm`), un integrador (`integrador_final.scm`), un parser de números (`convertir_a_numero.scm`), un validador de polinomios (`verificar polinomio.scm`), y un manejador de coeficientes y exponentes.
 

@@ -160,9 +160,15 @@ And trust is the foundation of every economy, every institution, every system. W
 
 ---
 
-![Bitcoin and Blockchain meetup at Pereira Tech Talks — audience attending the talk](/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp)
+<figure>
+  <img src="/images/blog/posts/blockchain-industrial-revolution/blockchain-3.webp" alt="Bitcoin and Blockchain meetup at Pereira Tech Talks — audience attending the talk" loading="lazy" />
+  <figcaption>The Pereira Tech Talks audience following along for the blockchain-as-industrial-revolution talk in April 2018.</figcaption>
+</figure>
 
-![Pereira Tech Talks — blockchain night](/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp)
+<figure>
+  <img src="/images/blog/posts/blockchain-industrial-revolution/blockchain-4.webp" alt="Pereira Tech Talks — blockchain night" loading="lazy" />
+  <figcaption>Blockchain night at Pereira Tech Talks — one of the most attended sessions of the year given the 2017-2018 crypto boom.</figcaption>
+</figure>
 
 - [View slides](https://slides.com/xergioalex/blockchain-industrial-revolution-of-internet)
 - [Pereira Tech Talks blog post](https://www.pereiratechtalks.org/introduccion-a-bitcoin-y-blockchain-conoce-la-nueva-revolucion-tecnologica) — event recap
