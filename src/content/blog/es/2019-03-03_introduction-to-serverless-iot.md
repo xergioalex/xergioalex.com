@@ -12,7 +12,10 @@ Recuerdo la primera vez que desplegué una función Lambda. Se sintió como magi
 
 El término **serverless** es hermoso y engañoso al mismo tiempo. *Server-less* literalmente significa "sin servidor" — pero spoiler: aún hay servidores 😄. Simplemente no los administras. Alguien más se encarga de la infraestructura mientras vos te enfocas en código y lógica. Para aplicaciones IoT, donde los dispositivos disparan eventos constantemente y de forma impredecible, este modelo tiene un sentido increíble.
 
-![Demos de la charla: Bambú, IoT Light Bulb, DailyBot, Twitter Bot](/images/blog/posts/introduction-to-serverless-iot/demo.webp)
+<figure>
+  <img src="/images/blog/posts/introduction-to-serverless-iot/demo.webp" alt="Demos de la charla: Bambú, IoT Light Bulb, DailyBot, Twitter Bot" loading="lazy" />
+  <figcaption>Cuatro demos en vivo mostradas en la charla: la skill de meditación Bambú, un bombillo controlado de forma serverless, DailyBot y un bot de Twitter.</figcaption>
+</figure>
 
 ## Backend as a Service vs Functions as a Service
 
@@ -77,21 +80,36 @@ Mostré cuatro demos en vivo para ilustrar serverless en acción:
 
 **[Bambú Meditación](https://appbambu.com/alexa/)** — Una skill de Alexa para meditación guiada impulsada por AWS Lambda. Los usuarios dicen "Alexa, abre Bambú" y Lambda maneja la lógica de conversación, obtiene el audio de meditación y administra el estado de la sesión. Sin servidores. Solo funciones respondiendo a eventos de voz.
 
-![Demo de Bambú Meditación con Alexa y AWS Lambda](/images/blog/posts/introduction-to-serverless-iot/alexa-demo.webp)
+<figure>
+  <img src="/images/blog/posts/introduction-to-serverless-iot/alexa-demo.webp" alt="Demo de Bambú Meditación con Alexa y AWS Lambda" loading="lazy" />
+  <figcaption>Arquitectura de Bambú Meditación: una skill de Alexa que activa AWS Lambda para servir audio de meditación guiada bajo demanda.</figcaption>
+</figure>
 
 **[IoT Light Bulb](https://github.com/xergioalex/serverless-ligth-bulb)** — Un bombillo controlado por serverless usando ESP8266, módulos wireless NRF24L01+ y Lambda. El bombillo escucha comandos enviados vía una API HTTP. Lambda recibe la petición, la procesa y envía una señal al bombillo. Todo el flujo de control es orientado a eventos.
 
-![Circuito del demo IoT: ESP8266, NRF24L01+, LEDs en breadboard](/images/blog/posts/introduction-to-serverless-iot/iot-circuit.webp)
+<figure>
+  <img src="/images/blog/posts/introduction-to-serverless-iot/iot-circuit.webp" alt="Circuito del demo IoT: ESP8266, NRF24L01+, LEDs en breadboard" loading="lazy" />
+  <figcaption>El hardware del bombillo IoT: módulos ESP8266 y NRF24L01+ conectados en una breadboard, controlados mediante Lambda.</figcaption>
+</figure>
 
-![Bombillo real funcionando — controlado por Lambda](/images/blog/posts/introduction-to-serverless-iot/iot-bulb.webp)
+<figure>
+  <img src="/images/blog/posts/introduction-to-serverless-iot/iot-bulb.webp" alt="Bombillo real funcionando — controlado por Lambda" loading="lazy" />
+  <figcaption>El bombillo real encendiéndose en respuesta a una llamada HTTP a AWS Lambda — control IoT serverless hecho físico.</figcaption>
+</figure>
 
 **[DailyBot](https://www.dailybot.com/)** — Un bot asistente de equipos para Slack y otras plataformas. DailyBot usa funciones serverless para enviar recordatorios diarios de standup, recolectar respuestas y generar reportes. Todo disparado por eventos programados o mensajes de usuarios.
 
-![Diagrama de la demo DailyBot con serverless](/images/blog/posts/introduction-to-serverless-iot/dailybot-demo.webp)
+<figure>
+  <img src="/images/blog/posts/introduction-to-serverless-iot/dailybot-demo.webp" alt="Diagrama de la demo DailyBot con serverless" loading="lazy" />
+  <figcaption>La arquitectura serverless de DailyBot — funciones Lambda programadas que recolectan respuestas de standup y generan reportes de equipo.</figcaption>
+</figure>
 
 **[Twitter Bot](https://x.com/XergioAleXBot)** — Un bot automatizado que tuitea según una programación usando Lambda. Un evento de CloudWatch dispara la función cada pocas horas, la función genera un tweet (o retuitea contenido) y publica vía la API de Twitter. Simple, económico y requiere cero infraestructura.
 
-![Bot de Twitter funcionando — @XergioAleXBot](/images/blog/posts/introduction-to-serverless-iot/twitter-bot-demo.webp)
+<figure>
+  <img src="/images/blog/posts/introduction-to-serverless-iot/twitter-bot-demo.webp" alt="Bot de Twitter funcionando — @XergioAleXBot" loading="lazy" />
+  <figcaption>@XergioAleXBot en X — un bot de publicación automática activado por eventos de CloudWatch, sin infraestructura de servidor dedicada.</figcaption>
+</figure>
 
 Estos demos mostraron la misma idea desde diferentes ángulos: pequeñas funciones orientadas a eventos impulsando aplicaciones reales sin administrar servidores.
 

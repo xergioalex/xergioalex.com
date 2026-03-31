@@ -18,7 +18,10 @@ Hace dos días di la charla [Astro en Acción](/es/blog/astro-in-action/) en Per
 
 Ghost era una buena opción. Open source, construido en Node.js, editor limpio, pensado específicamente para blogging. Era el antídoto a WordPress — sin plugins infinitos, sin base de código inflada. Solo escribir, publicar, compartir.
 
+<figure>
 <img src="/images/blog/posts/pereira-tech-talks-migration/ghost-cms.webp" alt="Ghost CMS — independent technology for modern publishing" width="1200" height="675" loading="lazy" />
+<figcaption>La página de Ghost en 2014 — el "antídoto a WordPress" que impulsó pereiratechtalks.org durante una década antes de la migración.</figcaption>
+</figure>
 
 Lo montamos y funcionó bien durante años. La comunidad creció. Los eventos se llenaron. Los posts del blog llegaban. Todo corría en Digital Ocean — inicialmente $5/mes, después $8.43 con backups activados. Pequeño, manejable, nuestro.
 
@@ -28,7 +31,10 @@ Lo montamos y funcionó bien durante años. La comunidad creció. Los eventos se
 
 Para mantener todo ordenado, construimos una arquitectura Docker con cuatro contenedores: **MySQL** como base de datos, **Ghost** como CMS, **Nginx** como proxy reverso y **Certbot** para los certificados SSL. Cada pieza en su lugar, orquestada con Docker Compose.
 
+<figure>
 <img src="/images/blog/posts/pereira-tech-talks-migration/docker-architecture.webp" alt="Arquitectura Docker para pereiratechtalks.org — contenedores MySQL, Ghost, Nginx y Certbot" width="1200" height="675" loading="lazy" />
+<figcaption>La configuración Docker de cuatro contenedores que mantuvo el sitio funcionando durante años — y que requería migraciones manuales de MySQL cada vez que Ghost se actualizaba.</figcaption>
+</figure>
 
 El repositorio está en [github.com/pereira-tech-talks/ghostDocker](https://github.com/pereira-tech-talks/ghostDocker). Funcionaba. Era estable. Era lo que necesitábamos en ese momento.
 
@@ -104,13 +110,19 @@ Los posts del blog se escriben en Markdown y se publican vía pull request — e
 
 Una de las cosas que me sorprendió fue que Ghost no tenía malos números. Una instalación bien configurada de Ghost con Nginx y caché tiene rendimiento decente:
 
+<figure>
 <img src="/images/blog/posts/pereira-tech-talks-migration/lighthouse-ghost.webp" alt="Puntuaciones Lighthouse para la versión Ghost — Rendimiento 90, Accesibilidad 91, Mejores Prácticas 100, SEO 100" width="1200" height="400" loading="lazy" />
+<figcaption>Puntajes Lighthouse de Ghost antes de la migración — un rendimiento de 90 es sólido para un CMS con base de datos, pero requería una configuración de servidor bien afinada.</figcaption>
+</figure>
 
 Rendimiento 90, Accesibilidad 91, Mejores Prácticas 100, SEO 100. Nada de qué avergonzarse.
 
 Pero Astro llegó a otros números casi sin esfuerzo:
 
+<figure>
 <img src="/images/blog/posts/pereira-tech-talks-migration/lighthouse-astro.webp" alt="Puntuaciones Lighthouse para la versión Astro — Rendimiento 99, Accesibilidad 96, Mejores Prácticas 100, SEO 100" width="1200" height="400" loading="lazy" />
+<figcaption>Puntajes Lighthouse de Astro después de la migración — rendimiento de 99 con HTML estático en un CDN, sin optimización manual.</figcaption>
+</figure>
 
 Rendimiento 99, Accesibilidad 96, Mejores Prácticas 100, SEO 100. La diferencia entre 90 y 99 en rendimiento puede sonar pequeña en papel — pero en velocidad de carga real, en Core Web Vitals, en experiencia de usuario en conexiones lentas, esos 9 puntos son significativos.
 

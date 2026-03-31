@@ -164,6 +164,7 @@ When evaluating existing content for refinement, use this grading system:
 
 - Draft a section outline
 - Identify where images, tables, or code blocks add value
+- **Every inline image MUST use `<figure>` + `<figcaption>`** — captions should be short (one line), add context the image alone doesn't provide, and never repeat the alt text. Both EN and ES versions required.
 - Plan the narrative arc (opening hook -> core story -> closing)
 - Determine frontmatter values (title, description, pubDate, heroImage, tags)
 

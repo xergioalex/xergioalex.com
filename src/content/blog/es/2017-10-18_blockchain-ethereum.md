@@ -27,7 +27,10 @@ La charla tuvo cuatro partes:
 
 Empecé con Bitcoin porque ahí es donde empieza la curiosidad de la mayoría. Una vez entiendes cómo funciona Bitcoin, blockchain tiene sentido. Y una vez entiendes blockchain, la propuesta de valor de Ethereum — "¿Y si el blockchain pudiera correr programas?" — hace perfecto sentido.
 
-![Meetup de PereiraJs — blockchain y criptomonedas](/images/blog/posts/blockchain-ethereum/pereira-js-meetup-audience.webp)
+<figure>
+  <img src="/images/blog/posts/blockchain-ethereum/pereira-js-meetup-audience.webp" alt="Meetup de PereiraJs — blockchain y criptomonedas" loading="lazy" />
+  <figcaption>La audiencia de PereiraJs reunida para la sesión de blockchain y Ethereum en octubre de 2017.</figcaption>
+</figure>
 
 ---
 

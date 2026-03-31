@@ -66,11 +66,14 @@ I ended with what I'd learned in practice since May:
 
 ## Event Memories
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/ai-rebirth-manizales/talk-title-slide.webp" alt="Talk presentation with title slide" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/ai-rebirth-manizales/speaker-presenting-to-audience.webp" alt="Speaker presenting to audience" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/ai-rebirth-manizales/state-of-the-art-slide.webp" alt="State of the art slide during AI Rebirth talk" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Manizales Tech Talks, August 2023 — three months after Pereira, a smaller venue, but a sharper audience already asking practical questions.</figcaption>
+</figure>
 
 ---
 

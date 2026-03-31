@@ -12,7 +12,10 @@ PyCon Colombia 2018 was a very special experience for me. I gave the talk *Deep 
 
 What I most wanted to convey was that behind AI models there's no magic: there's linear algebra, calculus, statistics, and graphs. Concepts many of us saw in university that, applied the right way, let us build systems that learn. I find that fascinating.
 
-![Audience at PyCon Colombia 2018 during the talk](/images/blog/posts/pycon-deep-learning/audience.webp)
+<figure>
+  <img src="/images/blog/posts/pycon-deep-learning/audience.webp" alt="Audience at PyCon Colombia 2018 during the talk" loading="lazy" />
+  <figcaption>Packed auditorium at PyCon Colombia 2018 in Medellín for the "Deep Learning: From Academia to Practice" session.</figcaption>
+</figure>
 
 ---
 
@@ -79,7 +82,10 @@ There are two fundamental phases:
 
 We closed with **computer vision**. I talked about **spectrograms** — representations of signals in the frequency domain — and **convolutional neural networks (CNNs)**, which are the foundation of modern computer vision.
 
-![Presenting the Computer Vision section at Universidad EAFIT](/images/blog/posts/pycon-deep-learning/computer-vision.webp)
+<figure>
+  <img src="/images/blog/posts/pycon-deep-learning/computer-vision.webp" alt="Presenting the Computer Vision section at Universidad EAFIT" loading="lazy" />
+  <figcaption>Wrapping up with convolutional neural networks and spectrograms at Universidad EAFIT during PyCon Colombia 2018.</figcaption>
+</figure>
 
 CNNs learn filters that detect edges, textures, and shapes. By stacking convolutional layers, the model can recognize complex objects. I mentioned [deeplearning.ai](https://www.deeplearning.ai/) as a resource to go deeper.
 

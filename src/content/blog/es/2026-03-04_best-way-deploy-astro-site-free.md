@@ -44,19 +44,31 @@ Entonces miré **Cloudflare Pages**. Ancho de banda ilimitado, 500 builds al mes
 
 El proceso fue ridículamente corto. En el panel de Cloudflare, **+ Add** > **Pages**:
 
+<figure>
 <img src="/images/blog/posts/best-way-deploy-astro-site-free/step-1-add-pages.webp" alt="Menú de Cloudflare con la opción Pages seleccionada" class="prose-img-narrow" width="800" height="450" loading="lazy" />
+<figcaption>El menú "+ Add" de Cloudflare — Pages aparece junto a Workers, R2 y herramientas de dominio como una opción de primera clase.</figcaption>
+</figure>
 
 Te da dos opciones — importar un repositorio de Git o subir archivos. La primera:
 
-![Pantalla de inicio de Cloudflare Pages con la opción de importar repositorio Git](/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.webp)
+<figure>
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-2-get-started.webp" alt="Pantalla de inicio de Cloudflare Pages con la opción de importar repositorio Git" width="800" height="450" loading="lazy" />
+<figcaption>Paso dos — conectar un repositorio Git o subir archivos directamente. La opción Git dispara despliegues automáticos con cada push.</figcaption>
+</figure>
 
 Seleccionas tu cuenta de GitHub y el repositorio:
 
-![Selección de cuenta GitHub y repositorio xergioalex.com](/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.webp)
+<figure>
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-3-select-repo.webp" alt="Selección de cuenta GitHub y repositorio xergioalex.com" width="800" height="450" loading="lazy" />
+<figcaption>Selector de repositorio — autoriza la app de GitHub de Cloudflare y selecciona el repo. Configuración única por cuenta.</figcaption>
+</figure>
 
 Y acá Cloudflare detectó Astro automáticamente. Completó el comando de build, el directorio de salida, la rama de producción — todo:
 
-![Configuración del build con Astro detectado, comando npm run build y directorio dist](/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.webp)
+<figure>
+<img src="/images/blog/posts/best-way-deploy-astro-site-free/step-4-build-settings.webp" alt="Configuración del build con Astro detectado, comando npm run build y directorio dist" width="800" height="450" loading="lazy" />
+<figcaption>Configuración del build detectada automáticamente desde el repo — Astro reconocido, comando de build y directorio de salida completados sin configuración manual.</figcaption>
+</figure>
 
 Clic en **Save and Deploy**. Cuarenta segundos después el sitio estaba en un subdominio `pages.dev`. Eso fue todo.
 

@@ -76,7 +76,10 @@ This exercise teaches:
 
 My solution: [movies-page-css-grid](https://github.com/xergioalex/movies-page-css-grid)
 
-![Movies Page exercise with CSS Grid](/images/blog/posts/css-grid-layout/movies-demo.webp)
+<figure>
+  <img src="/images/blog/posts/css-grid-layout/movies-demo.webp" alt="Movies Page exercise with CSS Grid" loading="lazy" />
+  <figcaption>The Movies Page exercise: a responsive card grid using <code>auto-fit</code>, <code>minmax()</code>, and <code>gap</code> — no media queries needed.</figcaption>
+</figure>
 
 ### Exercise 2: Videos Player
 
@@ -93,7 +96,10 @@ This exercise teaches:
 Repo: [videos-player-css-grid](https://github.com/xergioalex/videos-player-css-grid)
 Live demo: [videos-player-css-grid.xergioalex.com](https://videos-player-css-grid.xergioalex.com/)
 
-![Videos Player exercise with CSS Grid](/images/blog/posts/css-grid-layout/videos-demo.webp)
+<figure>
+  <img src="/images/blog/posts/css-grid-layout/videos-demo.webp" alt="Videos Player exercise with CSS Grid" loading="lazy" />
+  <figcaption>The Videos Player exercise: sidebar, main player, and controls laid out with named <code>grid-template-areas</code> and <code>fr</code> units.</figcaption>
+</figure>
 
 I also put together a full course with more examples and interactive demos:
 

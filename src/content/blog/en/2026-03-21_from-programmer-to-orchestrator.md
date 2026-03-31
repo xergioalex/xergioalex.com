@@ -52,7 +52,10 @@ Everything I just told you might sound like personal anecdotes from someone who'
 
 But the data point that fascinates me most comes from [METR](https://metr.org/time-horizons/), an AI safety research organization. They've been measuring the length of tasks that AI agents can complete autonomously — what they call "time horizons." This metric has been **doubling every seven months** for the past six years. Since 2023, it's accelerated to [doubling every 4.3 months](https://metr.org/blog/2026-1-29-time-horizon-1-1/). MIT Technology Review called it ["the most misunderstood graph in AI"](https://www.technologyreview.com/2026/02/05/1132254/this-is-the-most-misunderstood-graph-in-ai/).
 
+<figure>
 <img src="/images/blog/posts/from-programmer-to-orchestrator/metr-time-horizons.webp" alt="METR time horizons chart showing the exponential growth in task duration that AI models can complete — from GPT-2 at 4 seconds to Claude Opus 4.6 at 10 hours, doubling every few months" width="1896" height="946" loading="lazy" />
+<figcaption>METR's "time horizons" chart — GPT-2 completed 4-second tasks; Claude Opus 4.6 handles 10-hour tasks. Doubling every 4.3 months since 2023.</figcaption>
+</figure>
 
 A new Moore's Law. But for intelligence, not transistors. And it confirms exactly what I described above: the agents I leave running overnight on complex tasks aren't an anomaly — they're the trend line made real. What not long ago sounded like a future prediction — leaving agents running 24/7, coming back to find finished work — is already part of the daily workflow. The chart just puts a number on what many of us are already living.
 
@@ -64,7 +67,10 @@ Now here's where it gets interesting — and a little unsettling.
 
 A chart went viral on LinkedIn and X, and I want you to really sit with it. Someone even built an [interactive version](https://global-ai-adoption.netlify.app/) worth exploring:
 
+<figure>
 <img src="/images/blog/posts/from-programmer-to-orchestrator/ai-usage-gap-chart.webp" alt="Chart showing each dot represents 3.2 million people — 84% of humanity has never used AI, 16% uses free chatbots, 0.3% pays for AI, and only 0.04% uses AI coding tools" width="1034" height="1200" loading="lazy" style="max-width: 50%; display: block; margin: 0 auto;" />
+<figcaption>Each dot is 3.2 million people — the red pixel at the bottom right is the 0.04% using AI coding scaffolds to build software.</figcaption>
+</figure>
 
 I looked for a verified study or source backing these exact numbers and couldn't find one — the data appears to be an estimate compiled from various public sources. But the chart went viral for a reason: it represents something that, if it's close to reality, is striking.
 
@@ -128,7 +134,10 @@ If there's one project that captures where everything is headed, it's [OpenClaw]
 
 What started as a weekend project by Austrian developer Peter Steinberger in late 2025 has become [the fastest-growing open-source project in the history of computing](https://www.cnbc.com/2026/03/17/nvidia-ceo-jensen-huang-says-openclaw-is-definitely-the-next-chatgpt.html). Over 250,000 GitHub stars — surpassing React, with a growth curve unlike anything we've seen before:
 
+<figure>
 <img src="/images/blog/posts/from-programmer-to-orchestrator/openclaw-github-stars.webp" alt="Star History chart showing how OpenClaw surpassed React and Linux in GitHub stars in a matter of months, with a near-vertical growth curve" width="800" height="533" loading="lazy" />
+<figcaption>OpenClaw's GitHub star growth — React and Linux took years to reach 200K; OpenClaw's curve is nearly vertical on the same scale.</figcaption>
+</figure>
 
 Jensen Huang dedicated a significant part of GTC 2026 to it and said something that stuck with me: *"Mac and Windows are the operating systems for the personal computer. [OpenClaw is the operating system for personal AI](https://nvidianews.nvidia.com/news/nvidia-announces-nemoclaw)."*
 

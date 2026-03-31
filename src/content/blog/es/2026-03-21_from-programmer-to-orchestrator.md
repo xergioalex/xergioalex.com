@@ -52,7 +52,10 @@ Todo lo que acabo de contar puede sonar a anécdotas personales de alguien que e
 
 Pero el dato que más me fascina viene de [METR](https://metr.org/time-horizons/), una organización de investigación en seguridad de IA. Llevan años midiendo la duración de las tareas que los agentes de IA pueden completar de forma autónoma — lo que llaman "horizontes de tiempo." Esta métrica se ha estado **duplicando cada siete meses** durante los últimos seis años. Desde 2023, se ha acelerado a [duplicarse cada 4.3 meses](https://metr.org/blog/2026-1-29-time-horizon-1-1/). MIT Technology Review lo llamó ["la gráfica más malinterpretada de la IA"](https://www.technologyreview.com/2026/02/05/1132254/this-is-the-most-misunderstood-graph-in-ai/).
 
+<figure>
 <img src="/images/blog/posts/from-programmer-to-orchestrator/metr-time-horizons.webp" alt="Gráfica de horizontes de tiempo de METR mostrando el crecimiento exponencial en la duración de tareas que los modelos de IA pueden completar — desde GPT-2 a 4 segundos hasta Claude Opus 4.6 a 10 horas, duplicándose cada pocos meses" width="1896" height="946" loading="lazy" />
+<figcaption>La gráfica de "horizontes de tiempo" de METR — GPT-2 completaba tareas de 4 segundos; Claude Opus 4.6 maneja tareas de 10 horas. Duplicándose cada 4.3 meses desde 2023.</figcaption>
+</figure>
 
 Una nueva ley de Moore. Pero para inteligencia, no transistores. Y confirma exactamente lo que describí arriba: los agentes que dejo corriendo toda la noche en tareas complejas no son una anomalía — son la línea de tendencia hecha realidad. Lo que hace poco sonaba a predicción futurista — dejar agentes corriendo 24/7, volver y encontrar el trabajo terminado — ya es parte del día a día. La gráfica simplemente le pone un número a lo que muchos de nosotros ya estamos viviendo.
 
@@ -64,7 +67,10 @@ Ahora es donde se pone interesante — y un poco inquietante.
 
 Una gráfica se hizo viral en LinkedIn y X, y quiero que realmente la mires con atención. Alguien incluso creó una [versión interactiva](https://global-ai-adoption.netlify.app/) que vale la pena explorar:
 
+<figure>
 <img src="/images/blog/posts/from-programmer-to-orchestrator/ai-usage-gap-chart.webp" alt="Gráfica donde cada punto representa 3.2 millones de personas — 84% de la humanidad nunca ha usado IA, 16% usa chatbots gratis, 0.3% paga por IA, y solo 0.04% usa herramientas de código con IA" width="1034" height="1200" loading="lazy" style="max-width: 50%; display: block; margin: 0 auto;" />
+<figcaption>Cada punto representa 3.2 millones de personas — el píxel rojo en la esquina inferior derecha es el 0.04% que usa scaffolds de código con IA para construir software.</figcaption>
+</figure>
 
 Busqué un estudio o fuente verificada que respalde estos números exactos y no encontré ninguno — los datos parecen ser una estimación compilada a partir de varias fuentes públicas. Pero la gráfica se hizo viral por una razón: representa algo que, si se acerca a la realidad, es impactante.
 
@@ -128,7 +134,10 @@ Si hay un proyecto que captura hacia dónde va todo, es [OpenClaw](https://openc
 
 Lo que empezó como un proyecto de fin de semana del desarrollador austríaco Peter Steinberger a finales de 2025 se convirtió en [el proyecto open-source de más rápido crecimiento en la historia de la computación](https://www.cnbc.com/2026/03/17/nvidia-ceo-jensen-huang-says-openclaw-is-definitely-the-next-chatgpt.html). Más de 250,000 estrellas en GitHub — superando a React, y con una curva de crecimiento que no se parece a nada que hayamos visto antes:
 
+<figure>
 <img src="/images/blog/posts/from-programmer-to-orchestrator/openclaw-github-stars.webp" alt="Gráfica de Star History mostrando cómo OpenClaw superó a React y Linux en estrellas de GitHub en cuestión de meses, con una curva de crecimiento vertical" width="800" height="533" loading="lazy" />
+<figcaption>El crecimiento de estrellas en GitHub de OpenClaw — React y Linux tardaron años en llegar a 200K; la curva de OpenClaw es casi vertical en la misma escala.</figcaption>
+</figure>
 
 Jensen Huang le dedicó una parte importante de GTC 2026 y dijo algo que se me quedó grabado: *"Mac y Windows son los sistemas operativos de la computadora personal. [OpenClaw es el sistema operativo de la IA personal](https://nvidianews.nvidia.com/news/nvidia-announces-nemoclaw)."*
 

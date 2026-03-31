@@ -30,17 +30,26 @@ But not every crawler announces itself clearly. A second layer catches unrecogni
 
 I wrote about the full implementation story in [Tracking the Invisible: How I Built AI Bot Analytics](/blog/tracking-invisible-ai-bot-analytics). Here's what the data looks like from the last 24 hours:
 
-![Umami dashboard showing ai_bot_visit events by bot: Amazonbot 56%, OAI-SearchBot 9%, Meta-ExternalAgent 9%, ClaudeBot 7%, Bytespider 6%, ChatGPT-User 6%, GPTBot 4%, PerplexityBot 3%](/images/blog/posts/aeo-the-scorecard/umami-ai-bot-visit.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-ai-bot-visit.webp" alt="Umami dashboard showing ai_bot_visit events by bot: Amazonbot 56%, OAI-SearchBot 9%, Meta-ExternalAgent 9%, ClaudeBot 7%, Bytespider 6%, ChatGPT-User 6%, GPTBot 4%, PerplexityBot 3%" loading="lazy" />
+<figcaption>AI bot breakdown — Amazonbot's 56% dominance was unexpected. OpenAI's bots together account for about 19% when combined.</figcaption>
+</figure>
 
 The distribution surprised me. Amazonbot dominates at 56% of all AI bot visits — not what I expected when I first set this up. OpenAI's bots (OAI-SearchBot + ChatGPT-User + GPTBot) collectively account for about 19%, Meta-ExternalAgent sits at 9%, and ClaudeBot at 7%. PerplexityBot is the smallest at 3%, which is interesting given how much Perplexity has grown as a product.
 
 The unknown bot dashboard tells a different story:
 
-![Umami dashboard showing unknown_bot_visit events: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-visit.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-visit.webp" alt="Umami dashboard showing unknown_bot_visit events: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%" loading="lazy" />
+<figcaption>Unknown bots — mostly SEO tools and social crawlers, not AI systems. The 23% "Mozilla" entries are scrapers disguising themselves as real browsers.</figcaption>
+</figure>
 
 Most of these are SEO tools (AwarioBot, SERankingBacklinksBot) or social media crawlers (Twitterbot), not AI systems. The 23% labeled "Mozilla" makes more sense when you look at the full User-Agent strings:
 
-![Umami dashboard showing unknown_bot_visit User-Agent strings: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla/Macintosh AppleWebKit 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%](/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-user-agent.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-unknown-bot-user-agent.webp" alt="Umami dashboard showing unknown_bot_visit User-Agent strings: AwarioBot 39%, SERankingBacklinksBot 30%, Mozilla/Macintosh AppleWebKit 23%, Twitterbot 4%, SeznamBot 3%, DotBot 1%, meta-webindexer 0%" loading="lazy" />
+<figcaption>Full User-Agent strings — the "Mozilla/5.0 (Macintosh...)" entries are automated scrapers pretending to be desktop Safari browsers.</figcaption>
+</figure>
 
 Those "Mozilla" entries are using `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit...` — a full desktop Safari User-Agent string. Automated scrapers disguising themselves as real browsers. Exactly the kind of bot that's impossible to classify without deeper analysis. This layer is useful as a discovery mechanism: when a new AI crawler appears, I'll see it here first.
 
@@ -59,7 +68,10 @@ The same middleware tracks a second signal: when agents request Markdown content
 
 The `source` field is the most interesting one. If agents start sending `Accept: text/markdown` headers — the "proper" way to request [Markdown for Agents](/blog/aeo-markdown-for-agents) — it shows up as `content_negotiation`. If they're just hitting `.md` URLs they found somewhere, it appears as `direct_url`. The ratio tells you something about how aware agents are of the convention.
 
-![Umami dashboard showing markdown_request events by source: content_negotiation at 52 (51%) vs direct_url at 49 (49%)](/images/blog/posts/aeo-the-scorecard/umami-markdown-request-source.webp)
+<figure>
+<img src="/images/blog/posts/aeo-the-scorecard/umami-markdown-request-source.webp" alt="Umami dashboard showing markdown_request events by source: content_negotiation at 52 (51%) vs direct_url at 49 (49%)" loading="lazy" />
+<figcaption>Markdown request sources — a nearly even split between agents using content negotiation headers and those hitting .md URLs directly.</figcaption>
+</figure>
 
 The data is just starting to come in — I implemented this recently and it's still too early to draw conclusions. But going forward, this signal will let me understand whether the standard is actually gaining adoption and how much AI bots are requesting Markdown content on my site.
 

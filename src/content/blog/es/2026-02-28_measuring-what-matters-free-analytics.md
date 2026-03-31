@@ -94,7 +94,10 @@ Si la variable de entorno no está configurada — como en desarrollo local — 
 
 Así se ve el dashboard de Umami un día después de ponerlo en producción — visitantes, vistas, bounce rate, duración de visita, todo en un solo lugar:
 
-![Dashboard de Umami mostrando 305 visitantes, 333 visitas, 473 vistas, 85% bounce rate y 1m 8s de duración de visita con gráfico de tráfico de 24 horas](/images/blog/posts/measuring-what-matters-free-analytics/umami-dashboard-overview.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-dashboard-overview.webp" alt="Dashboard de Umami mostrando 305 visitantes, 333 visitas, 473 vistas, 85% bounce rate y 1m 8s de duración de visita con gráfico de tráfico de 24 horas" loading="lazy" />
+<figcaption>Datos del primer día — 305 visitantes, 85% bounce rate, 1m 8s de sesión promedio. Una historia de tráfico real desde un script de 2KB sin cookies.</figcaption>
+</figure>
 
 ### Eventos Personalizados de Umami — Clics Sin Peso Extra
 
@@ -109,7 +112,10 @@ La instrumentación es explícita y privacy-first: solo se envían los eventos q
 
 Así se ve la sección de eventos — cada tipo de evento con su color en el gráfico, con los conteos abajo:
 
-![Dashboard de eventos de Umami mostrando 243 eventos en 8 tipos incluyendo scroll_depth, nav_click, blog_card_click y ai_bot_visit](/images/blog/posts/measuring-what-matters-free-analytics/umami-events-chart.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-events-chart.webp" alt="Dashboard de eventos de Umami mostrando 243 eventos en 8 tipos incluyendo scroll_depth, nav_click, blog_card_click y ai_bot_visit" loading="lazy" />
+<figcaption>Eventos personalizados rastreados el primer día — cada tipo de evento elegido deliberadamente, solo las interacciones que vale la pena medir explícitamente.</figcaption>
+</figure>
 
 ### Google Search Console + Bing Webmaster Tools — La Capa SEO
 
@@ -211,23 +217,38 @@ Un día después de configurar todo, el dashboard ya estaba contando una histori
 
 Qué páginas reciben más visitas — el primer post de la serie dominó con el 82% del tráfico:
 
-![Reporte de páginas en Umami mostrando las páginas más visitadas, lideradas por el post de Astro y Svelte con 82%](/images/blog/posts/measuring-what-matters-free-analytics/umami-top-pages.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-top-pages.webp" alt="Reporte de páginas en Umami mostrando las páginas más visitadas, lideradas por el post de Astro y Svelte con 82%" loading="lazy" />
+<figcaption>Páginas más visitadas después del primer día — el primer post de la serie dominó el tráfico con un 82%, confirmando de dónde venía la audiencia inicial.</figcaption>
+</figure>
 
 Sesiones individuales de visitantes — país, ciudad, navegador, dispositivo, todo sin cookies:
 
-![Tabla de actividad en Umami mostrando sesiones individuales de Colombia, Estados Unidos, Canadá, Alemania, Portugal con detalles de navegador y dispositivo](/images/blog/posts/measuring-what-matters-free-analytics/umami-sessions-activity.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-sessions-activity.webp" alt="Tabla de actividad en Umami mostrando sesiones individuales de Colombia, Estados Unidos, Canadá, Alemania, Portugal con detalles de navegador y dispositivo" loading="lazy" />
+<figcaption>Sesiones individuales — país, ciudad, navegador y dispositivo visibles sin una sola cookie ni banner de consentimiento.</figcaption>
+</figure>
 
 El desglose de navegadores — Chrome lidera con 39%, seguido por iOS y Safari:
 
-![Panel de entorno en Umami mostrando distribución de navegadores: Chrome 39%, iOS 25%, Safari 13%, Firefox 9%](/images/blog/posts/measuring-what-matters-free-analytics/umami-browsers.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-browsers.webp" alt="Panel de entorno en Umami mostrando distribución de navegadores: Chrome 39%, iOS 25%, Safari 13%, Firefox 9%" loading="lazy" />
+<figcaption>Distribución de navegadores después de 24 horas — Chrome lidera, pero iOS y Safari juntos representan el 38%, una señal móvil importante.</figcaption>
+</figure>
 
 De dónde vienen los visitantes — 11 países en las primeras 24 horas, con Estados Unidos al 55% y Colombia al 7%:
 
-![Panel de ubicación en Umami mostrando países de visitantes: Estados Unidos 55%, Canadá 9%, Colombia 7%, Alemania 7%, Reino Unido 5%](/images/blog/posts/measuring-what-matters-free-analytics/umami-countries.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-countries.webp" alt="Panel de ubicación en Umami mostrando países de visitantes: Estados Unidos 55%, Canadá 9%, Colombia 7%, Alemania 7%, Reino Unido 5%" loading="lazy" />
+<figcaption>Países de visitantes en las primeras 24 horas — 11 países, Estados Unidos liderando con 55%, un alcance geográfico más amplio de lo esperado para un sitio nuevo.</figcaption>
+</figure>
 
 Y la vista geográfica con el mapa de calor de tráfico — cuándo llegan los visitantes durante la semana:
 
-![Mapa mundial mostrando ubicación de visitantes y mapa de calor de tráfico por día y hora](/images/blog/posts/measuring-what-matters-free-analytics/umami-world-map-traffic.webp)
+<figure>
+<img src="/images/blog/posts/measuring-what-matters-free-analytics/umami-world-map-traffic.webp" alt="Mapa mundial mostrando ubicación de visitantes y mapa de calor de tráfico por día y hora" loading="lazy" />
+<figcaption>Vista geográfica y mapa de calor de tráfico — el patrón semanal que muestra cuándo llegan los visitantes por día y hora.</figcaption>
+</figure>
 
 Todo esto con un script de 2KB, sin cookies, y cero impacto en los puntajes de Lighthouse.
 

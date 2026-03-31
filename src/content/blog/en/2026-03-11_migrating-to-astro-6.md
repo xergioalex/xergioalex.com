@@ -12,7 +12,10 @@ seriesOrder: 9
 
 People who know me know I love Astro — I've [written about why](/blog/astro-and-svelte-the-future-of-web-development/). So when they dropped [this on X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — I was already watching.
 
-![Astro's teaser tweet for version 6.0 — "4... 3... 2... 1..." with a glowing "6.0" image](/images/blog/posts/migrating-to-astro-6/astro-6-teaser-tweet.webp)
+<figure>
+<img src="/images/blog/posts/migrating-to-astro-6/astro-6-teaser-tweet.webp" alt="Astro's teaser tweet for version 6.0 — &quot;4... 3... 2... 1...&quot; with a glowing &quot;6.0&quot; image" loading="lazy" />
+<figcaption>The teaser tweet from @astrodotbuild — 72.7K views before the release landed, which says something about the level of community anticipation.</figcaption>
+</figure>
 
 Astro 6 launched on March 10, 2026. Shortly after, this site was already running it. Not because I'm reckless — because I was ready. Every dependency current, codebase on the latest APIs, Vite warnings already cleaned up. And Astro's migration tooling is solid enough that I trusted the process. When you're on top of things, a major jump is just one more step.
 
@@ -216,7 +219,10 @@ And then came the surprise.
 
 I deployed to production, opened the site, and saw this:
 
-![Homepage with raw CSS rendered as visible text — the typewriter animation's style tag escaped by the Rust compiler](/images/blog/posts/migrating-to-astro-6/rust-compiler-style-bug.webp)
+<figure>
+<img src="/images/blog/posts/migrating-to-astro-6/rust-compiler-style-bug.webp" alt="Homepage with raw CSS rendered as visible text — the typewriter animation's style tag escaped by the Rust compiler" loading="lazy" />
+<figcaption>The Rust compiler bug in production — hundreds of lines of CSS keyframes rendered as visible text because a style tag was escaped instead of injected.</figcaption>
+</figure>
 
 The entire CSS for my typewriter animation — hundreds of lines of keyframes — rendered as plain text on the homepage. Right there, in front of visitors. The `<style>` tag had been escaped to `&lt;style&gt;`.
 

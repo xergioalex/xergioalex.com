@@ -56,6 +56,7 @@ Llevé un robot con ruedas mecanum para hacer la demo. Verlo moverse en respuest
 
 ## Memorias del Evento
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/poster.webp" alt="Póster promocional del meetup El futuro de la IA: Código, Hardware y Agentes en la UTP" width="600" height="400" class="col-span-2 rounded-xl object-contain w-full" loading="lazy" />
   <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/ten-people-ai-presentation.webp" alt="Presentación 10 People + AI en la UTP" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
@@ -64,6 +65,8 @@ Llevé un robot con ruedas mecanum para hacer la demo. Verlo moverse en respuest
   <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/sergio-demonstrating-robotics.webp" alt="Sergio demostrando robótica con robot de ruedas mecanum" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/the-future-of-ai-code-hardware-and-agents/group-photo-attendees.webp" alt="Foto grupal de asistentes a El futuro de la IA: Código, Hardware y Agentes" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>Pereira Tech Talks, diciembre de 2026 — el último meetup del año co-presentado con Sebastián Mora, incluyendo una demo en vivo con un robot de ruedas mecanum.</figcaption>
+</figure>
 
 ---
 

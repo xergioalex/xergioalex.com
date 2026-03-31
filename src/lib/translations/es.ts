@@ -980,6 +980,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'trading-journey': 'Viaje de Trading: De Futuros a Algoritmos',
     'aeo-from-invisible-to-cited': 'AEO: De Invisible a Citado',
     'working-with-agents': 'Trabajando con Agentes',
+    'building-agents': 'Construyendo Agentes',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -990,6 +991,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Cómo construir un sitio web que los motores de respuesta de IA encuentren, entiendan y referencien.',
     'working-with-agents':
       'De escribir código a orquestar agentes de IA — explorando el nuevo rol, flujos reales de trabajo, lo que falla, criterio, contexto y adopción en equipos.',
+    'building-agents':
+      'Lo que realmente se necesita para pasar de usar herramientas de IA a construir sistemas de agentes confiables — arquitectura, habilidades y modelos mentales detrás de los agentes reales.',
   },
 
   // Date formatting

@@ -64,17 +64,23 @@ The main outcome of the talk was the migration itself. [Pereira Tech Talks](http
 
 We rebuilt it with Astro. [v2.pereiratechtalks.org](https://v2.pereiratechtalks.org/) became the live demo — static and dynamic, blogging, landing page, easy to maintain, connected to simple storage, real-time support where needed. One developer. Two weeks. The site is now lighter, faster, and easier to contribute to.
 
-![Promotional poster for Astro in Action talk at Camellando Coworking](/images/blog/posts/astro-in-action/poster.webp)
+<figure>
+<img src="/images/blog/posts/astro-in-action/poster.webp" alt="Promotional poster for Astro in Action talk at Camellando Coworking" loading="lazy" />
+<figcaption>The event poster — August 1, Camellando Coworking, Pereira. The talk used the live Pereira Tech Talks migration as its main demo.</figcaption>
+</figure>
 
 ---
 
 ## Event Memories
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/astro-in-action/sergio-presenting-astro-talk.webp" alt="Sergio during the Astro in Action talk" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/astro-in-action/audience-at-meetup.webp" alt="Audience at the Astro in Action meetup" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/astro-in-action/group-photo-attendees.webp" alt="Group photo of attendees at Astro in Action meetup" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>The Astro in Action meetup crowd — developers who came to see whether the framework could deliver on its promise in a live demo.</figcaption>
+</figure>
 
 ---
 

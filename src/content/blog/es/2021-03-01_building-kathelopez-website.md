@@ -56,7 +56,10 @@ Animación CSS simple. Le da a los visitantes una idea inmediata de lo que hace 
 
 Su biografía profesional — quién es, su filosofía, su enfoque terapéutico. El tono es cálido y directo: se describe como empática, organizada y comprometida con mejorar el bienestar psicológico de sus pacientes. Hay una foto profesional al lado del texto.
 
-![Sección "Sobre Mí" de kathelopez.com con foto profesional y biografía](/images/blog/posts/building-kathelopez-website/about-section.webp)
+<figure>
+<img src="/images/blog/posts/building-kathelopez-website/about-section.webp" alt="Sección &quot;Sobre Mí&quot; de kathelopez.com con foto profesional y biografía" loading="lazy" />
+<figcaption>La sección Sobre Mí definitiva — tono cálido, credenciales claras y una foto que se lee como profesional sin verse corporativa.</figcaption>
+</figure>
 
 La hoja de vida usa un layout con pestañas — Experiencia, Educación, Certificaciones, Habilidades — para que los visitantes vayan directo a lo que buscan. Servicios está centrado en terapia ABA domiciliaria: Kathe va a la casa del niño, no al revés. Ese es el diferenciador real. Para el acabado, [AOS](https://michalsnik.github.io/aos/) para animaciones sutiles al hacer scroll, Bootstrap manejando el responsive sin un solo media query escrito a mano, y un efecto parallax decorativo en algunas secciones.
 
@@ -80,16 +83,22 @@ La versión inicial usaba una paleta genérica y no tenía logo propio. En febre
 
 El logo es una fusión entre la letra **K** de Katherine y el símbolo de la psicología — la letra griega psi (Ψ) — con un degradado de azul a rosa. El resultado mezcla las dos formas en un monograma que se lee como **AK** — sus iniciales, Astrid Katherine — pero que cualquier psicólogo reconoce de inmediato.
 
+<figure>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 1.5rem 0;">
   <img src="/images/blog/posts/building-kathelopez-website/psychology-symbol.webp" alt="El símbolo de la psicología (Ψ), la letra griega psi" width="400" height="400" loading="lazy" />
   <img src="/images/blog/posts/building-kathelopez-website/logo.webp" alt="Logo final de kathelopez.com — monograma AK con degradado de azul a rosa" width="400" height="400" loading="lazy" />
 </div>
+<figcaption>El símbolo psi (izquierda) fusionado con la letra K para crear el monograma AK (derecha) — cualquier psicólogo reconoce ambas formas de inmediato.</figcaption>
+</figure>
 
 El color principal es **#c82c75** — un rosa/magenta que ella eligió. No era mi primera opción, honestamente. Yo habría ido con algo más sobrio. Pero es su sitio, su marca, su personalidad. Y viéndolo ahora, funciona. Poppins de Google Fonts para la tipografía, y listo.
 
 El logo aparece en la tarjeta SEO cuando alguien comparte el enlace — su monograma, sus servicios, su información de contacto. Limpia, reconocible.
 
-![Tarjeta SEO de kathelopez.com con el monograma AK, servicios e información de contacto](/images/blog/posts/building-kathelopez-website/seo-card.webp)
+<figure>
+<img src="/images/blog/posts/building-kathelopez-website/seo-card.webp" alt="Tarjeta SEO de kathelopez.com con el monograma AK, servicios e información de contacto" loading="lazy" />
+<figcaption>La tarjeta de Open Graph — lo primero que ve alguien cuando comparten el enlace del sitio por WhatsApp o redes sociales.</figcaption>
+</figure>
 
 ---
 

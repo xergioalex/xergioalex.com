@@ -39,6 +39,11 @@
   .prose .prose-img-narrow {
     @apply md:max-w-[50%];
   }
+
+  /* Image captions inside blog posts */
+  .prose figcaption {
+    @apply text-sm text-center text-gray-600 dark:text-gray-300 mt-3;
+  }
 }
 
 @layer base {

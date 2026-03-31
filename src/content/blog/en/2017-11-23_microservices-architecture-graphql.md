@@ -12,7 +12,10 @@ Microservices and GraphQL — a topic I'm excited about. I've been building dist
 
 Here are the concepts I covered. If you prefer to see the slides directly, [here they are](https://slides.com/xergioalex/microservices-architecture-and-apis-with-graphql).
 
-![Audience during the talk at Pereira Tech Talks](/images/blog/posts/microservices-architecture-graphql/audience.webp)
+<figure>
+  <img src="/images/blog/posts/microservices-architecture-graphql/audience.webp" alt="Audience during the talk at Pereira Tech Talks" loading="lazy" />
+  <figcaption>Attendees at the Pereira Tech Talks microservices and GraphQL session in November 2017.</figcaption>
+</figure>
 
 ---
 
@@ -20,7 +23,10 @@ Here are the concepts I covered. If you prefer to see the slides directly, [here
 
 The core principle behind microservices is simple: **divide and conquer**. Instead of building a monolithic application that does everything, we break the system into smaller, focused services. Each microservice does one thing and does it well — a philosophy I inherited from the Unix tradition and that has served me well for scalable, maintainable architectures.
 
-![Divide and conquer — the strategic principle behind microservices](/images/blog/posts/microservices-architecture-graphql/divide-and-conquer.webp)
+<figure>
+  <img src="/images/blog/posts/microservices-architecture-graphql/divide-and-conquer.webp" alt="Divide and conquer — the strategic principle behind microservices" loading="lazy" />
+  <figcaption>The classic "divide and conquer" principle visualized — the core philosophy behind splitting a monolith into services.</figcaption>
+</figure>
 
 ---
 

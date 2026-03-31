@@ -12,7 +12,10 @@ seriesOrder: 9
 
 Los que me conocen saben que me gusta mucho Astro — ya [escribí un poco al respecto](/es/blog/astro-and-svelte-the-future-of-web-development/). Así que cuando publicaron [esto en X](https://x.com/astrodotbuild/status/2029993695555043348) — "4... 3... 2... 1..." — ya estaba a la expectativa.
 
-![Tweet teaser de Astro para la versión 6.0 — "4... 3... 2... 1..." con una imagen brillante del "6.0"](/images/blog/posts/migrating-to-astro-6/astro-6-teaser-tweet.webp)
+<figure>
+<img src="/images/blog/posts/migrating-to-astro-6/astro-6-teaser-tweet.webp" alt="Tweet teaser de Astro para la versión 6.0 — '4... 3... 2... 1...' con una imagen brillante del '6.0'" loading="lazy" />
+<figcaption>El tweet teaser de @astrodotbuild — 72,700 vistas antes de que saliera el release, lo que dice mucho del nivel de expectativa en la comunidad.</figcaption>
+</figure>
 
 Astro 6 se lanzó el 10 de marzo de 2026. Poco después, este sitio ya está corriendo sobre él. No por imprudencia — porque estaba listo. Cada dependencia actualizada, el código en las APIs más recientes, los warnings de Vite ya limpios. Y el tooling de migración de Astro es lo suficientemente sólido como para confiar en el proceso. Cuando ya estás on top de todo, un salto de versión es solo un paso más.
 
@@ -216,7 +219,10 @@ Y entonces llegó la sorpresa.
 
 Desplegué a producción, abrí el sitio, y vi esto:
 
-![Homepage con CSS crudo renderizado como texto visible — el style tag de la animación typewriter escapado por el compilador Rust](/images/blog/posts/migrating-to-astro-6/rust-compiler-style-bug.webp)
+<figure>
+<img src="/images/blog/posts/migrating-to-astro-6/rust-compiler-style-bug.webp" alt="Homepage con CSS crudo renderizado como texto visible — el style tag de la animación typewriter escapado por el compilador Rust" loading="lazy" />
+<figcaption>El bug del compilador Rust en producción — cientos de líneas de CSS keyframes renderizadas como texto visible porque el tag style fue escapado en lugar de inyectado.</figcaption>
+</figure>
 
 Todo el CSS de mi animación typewriter — cientos de líneas de keyframes — renderizado como texto plano en la homepage. Ahí, frente a los visitantes. El tag `<style>` se había escapado a `&lt;style&gt;`.
 

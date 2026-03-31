@@ -252,15 +252,24 @@ En Umami, los eventos `ai_bot_visit` aparecen en la sección de eventos personal
 
 Así se ve el feed de actividad — cada evento `ai_bot_visit` con la página que el bot rastreó:
 
-![Feed de actividad en Umami mostrando eventos ai_bot_visit en diferentes páginas del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.webp)
+<figure>
+<img src="/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-activity-ai-bot-visits.webp" alt="Feed de actividad en Umami mostrando eventos ai_bot_visit en diferentes páginas del sitio" width="800" height="450" loading="lazy" />
+<figcaption>El feed de actividad de Umami — cada fila es una visita real de un crawler de IA, con la página específica que rastreó adjunta al evento.</figcaption>
+</figure>
 
 Y en el gráfico de eventos, los `ai_bot_visit` empiezan a aparecer junto al resto de analíticas del sitio — mismo dashboard, misma línea de tiempo:
 
-![Gráfico de eventos en Umami mostrando tráfico ai_bot_visit junto a otros eventos del sitio](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.webp)
+<figure>
+<img src="/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-chart-ai-bot-visits.webp" alt="Gráfico de eventos en Umami mostrando tráfico ai_bot_visit junto a otros eventos del sitio" width="800" height="450" loading="lazy" />
+<figcaption>Eventos de bot junto al tráfico humano en el mismo dashboard — misma línea de tiempo, lo que hace visibles correlaciones que dashboards separados ocultarían.</figcaption>
+</figure>
 
 Como cada evento lleva la propiedad `bot`, puedo desglosar el tráfico por crawler. Filtrando por la propiedad `bot` en `ai_bot_visit` me da esto — una imagen clara de quién está entrando realmente por la puerta:
 
-![Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot](/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.webp)
+<figure>
+<img src="/images/blog/posts/tracking-invisible-ai-bot-analytics/umami-bot-breakdown-pie-chart.webp" alt="Desglose de propiedades en Umami mostrando eventos ai_bot_visit por tipo de bot" width="800" height="450" loading="lazy" />
+<figcaption>Tráfico por crawler — la propiedad `bot` en cada evento permite filtrar y ver qué sistema de IA visita qué páginas con más frecuencia.</figcaption>
+</figure>
 
 Con analíticas del lado del cliente nada de esto existía. Con un archivo de middleware, ahora sí.
 

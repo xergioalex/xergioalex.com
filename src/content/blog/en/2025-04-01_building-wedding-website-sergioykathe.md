@@ -45,15 +45,19 @@ Before writing a single line of code, I needed to figure out the visual identity
 
 I designed a logo that combines the letters **S** and **K** — Sergio and Katherinerine — intertwined in a way that feels both elegant and personal. It became the favicon, the header mark, and the visual anchor of the whole site.
 
+<figure>
 <div style="background:#FFFFFF;border-radius:12px;padding:2rem;text-align:center">
-
-![The S&K logo for sergioykathe.com — the letters S for Sergio and K for Katherinerine intertwined in an elegant monogram](/images/blog/posts/building-wedding-website-sergioykathe/logo.png)
-
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/logo.png" alt="The S&amp;K logo for sergioykathe.com — the letters S for Sergio and K for Katherinerine intertwined in an elegant monogram" loading="lazy" />
 </div>
+<figcaption>The S&amp;K mark — bride and groom silhouettes built into the letters, used as favicon, header anchor, and visual identity throughout the site.</figcaption>
+</figure>
 
 I also created a custom SEO image — the Open Graph card that appears when someone shares the link on WhatsApp, Instagram, or any social platform. This was important because the invitations were going to be shared as URLs. The first impression of the site for most guests would be this preview card in a chat message.
 
-![The SEO Open Graph image for sergioykathe.com — the preview card guests would see when receiving the invitation link on WhatsApp or social media](/images/blog/posts/building-wedding-website-sergioykathe/seo.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/seo.webp" alt="The SEO Open Graph image for sergioykathe.com — the preview card guests would see when receiving the invitation link on WhatsApp or social media" loading="lazy" />
+<figcaption>The Open Graph preview card — since invitations were sent as URLs, this was the first visual impression guests got in a chat message.</figcaption>
+</figure>
 
 Small details. But the kind that make the difference between "here's a link" and "here's our wedding."
 
@@ -65,15 +69,24 @@ The site is a single long-scroll page with nine components, each one a separate 
 
 **WeddingHero** is what guests see first: "Únete a nuestra historia" with our photo, the wedding date (March 22, 2025), and two CTAs. Navigation at the top links to every section. Simple, immediate.
 
-![The hero section of sergioykathe.com — "Únete a nuestra historia" with couple photo, wedding date, and call-to-action buttons](/images/blog/posts/building-wedding-website-sergioykathe/hero.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/hero.webp" alt="The hero section of sergioykathe.com — &quot;Únete a nuestra historia&quot; with couple photo, wedding date, and call-to-action buttons" loading="lazy" />
+<figcaption>The hero section guests landed on first — date, photo, and two CTAs visible before any scrolling.</figcaption>
+</figure>
 
 **WeddingEvents** shows ceremony and reception details. Each venue has a button that opens a Google Maps modal — a Svelte component that loads an embedded map on click. I almost went with static images and hardcoded links. Then I thought about guests trying to navigate from different starting points, opening it on mobile. The modal was the right call.
 
-![The events section showing ceremony at Iglesia Nuestra Señora del Carmen at 4:30 p.m. and party at Finca San Francisco at 8:00 p.m., with map and calendar buttons](/images/blog/posts/building-wedding-website-sergioykathe/events.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/events.webp" alt="The events section showing ceremony at Iglesia Nuestra Señora del Carmen at 4:30 p.m. and party at Finca San Francisco at 8:00 p.m., with map and calendar buttons" loading="lazy" />
+<figcaption>Two venues, two time slots — the map buttons open a Svelte modal with embedded Google Maps for navigation from any starting point.</figcaption>
+</figure>
 
 **WeddingCountdown** — a live countdown in days, hours, minutes, and seconds. Another Svelte component. A guest visiting six months out would see the full count; the morning of the wedding, much less. There's something satisfying about a number that actually goes down.
 
-![The countdown section showing 90 days, 10 hours, 20 minutes, and 30 seconds remaining until the wedding](/images/blog/posts/building-wedding-website-sergioykathe/countdown.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/countdown.webp" alt="The countdown section showing 90 days, 10 hours, 20 minutes, and 30 seconds remaining until the wedding" loading="lazy" />
+<figcaption>The live Svelte countdown — a guest visiting months out would see the full count ticking down in real time.</figcaption>
+</figure>
 
 **WeddingTips** covered the practical information: parking at both venues, arrive 15-20 minutes early (the ceremony starts on time, no exceptions), adult-only event, professional photographers on site, and two QR codes guests could scan on the day to share moments. The RSVP deadline was February 28th.
 
@@ -114,13 +127,19 @@ That URL cleaning was important. A guest opens `sergioykathe.com?invite=JU1330QY
 
 Here's what Julian saw when he opened his personalized link — the hero section transforms to show his name, his invitation count, and his accommodation slots:
 
-![The personalized hero section for Julian — showing his name, 1 guest invitation, and 1 accommodation slot, all loaded from his unique invite code](/images/blog/posts/building-wedding-website-sergioykathe/personalized-hero-julian.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/personalized-hero-julian.webp" alt="The personalized hero section for Julian — showing his name, 1 guest invitation, and 1 accommodation slot, all loaded from his unique invite code" loading="lazy" />
+<figcaption>Julian's personalized view — the hero transforms using data fetched from a local JSON file via his unique invite code in the URL.</figcaption>
+</figure>
 
 `InviteHandler.svelte` handles the matching logic: loads the JSON, finds the code, passes the guest data to the RSVP components. If no valid code is found — someone arrived without a personalized link — a modal explains the situation.
 
 Further down the page, the RSVP section greets Julian by name and shows him exactly how many people he can bring and how many accommodation slots he has:
 
-![The RSVP section personalized for Julian — "¡Hola, Julian!" with his specific invitation details and a confirm attendance button](/images/blog/posts/building-wedding-website-sergioykathe/rsvp-julian.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/rsvp-julian.webp" alt="The RSVP section personalized for Julian — &quot;¡Hola, Julian!&quot; with his specific invitation details and a confirm attendance button" loading="lazy" />
+<figcaption>The RSVP section greeting Julian by name — invitation count and accommodation slots already pre-configured for his specific record.</figcaption>
+</figure>
 
 We started sending invitations months before the wedding. As the RSVP deadline approached, we used the site itself to follow up — sharing personalized links, reminding people their specific URL was waiting. The system worked exactly as designed.
 
@@ -140,7 +159,10 @@ await fetch(GOOGLE_FORM_URL, {
 
 This is what the confirmation modal looked like for Julian — dropdowns for party count and accommodation, a message field, and a single button to confirm:
 
-![The RSVP confirmation modal for Julian — form with dropdowns for number of attendees and accommodation slots, a message field, and a confirm button](/images/blog/posts/building-wedding-website-sergioykathe/confirm-modal-julian.webp)
+<figure>
+<img src="/images/blog/posts/building-wedding-website-sergioykathe/confirm-modal-julian.webp" alt="The RSVP confirmation modal for Julian — form with dropdowns for number of attendees and accommodation slots, a message field, and a confirm button" loading="lazy" />
+<figcaption>The confirmation modal — submissions POST directly to a Google Form endpoint, writing rows to a Spreadsheet with no backend required.</figcaption>
+</figure>
 
 `no-cors` mode means we don't get a response back — but the submission goes through. Google captures it, writes a row to a Spreadsheet, and that Spreadsheet became our live confirmation dashboard. Katherinerine could open it at any time and see who had confirmed, how many people were coming, who needed accommodation. No database, no admin panel, no backend bill. Just a Spreadsheet with automatic timestamps.
 

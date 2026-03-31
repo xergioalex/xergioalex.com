@@ -64,17 +64,23 @@ El resultado principal de la charla fue la migración misma. [Pereira Tech Talks
 
 Lo reconstruimos con Astro. [v2.pereiratechtalks.org](https://v2.pereiratechtalks.org/) se convirtió en la demo en vivo — estático y dinámico, blog, landing page, fácil de mantener, conectado a storage simple, soporte en tiempo real donde hacía falta. Un desarrollador. Dos semanas. El sitio ahora es más ligero, más rápido y más fácil de contribuir.
 
-![Póster promocional de la charla Astro en Acción en Camellando Coworking](/images/blog/posts/astro-in-action/poster.webp)
+<figure>
+<img src="/images/blog/posts/astro-in-action/poster.webp" alt="Póster promocional de la charla Astro en Acción en Camellando Coworking" loading="lazy" />
+<figcaption>El póster del evento — 1 de agosto, Camellando Coworking, Pereira. La charla usó la migración de Pereira Tech Talks en vivo como demo principal.</figcaption>
+</figure>
 
 ---
 
 ## Memorias del Evento
 
+<figure>
 <div class="grid grid-cols-2 gap-4 not-prose">
   <img src="/images/blog/posts/astro-in-action/sergio-presenting-astro-talk.webp" alt="Sergio durante la charla Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/astro-in-action/audience-at-meetup.webp" alt="Audiencia en el meetup Astro en Acción" width="600" height="400" class="rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
   <img src="/images/blog/posts/astro-in-action/group-photo-attendees.webp" alt="Foto grupal de asistentes al meetup Astro en Acción" width="600" height="400" class="col-span-2 rounded-xl object-cover w-full aspect-[4/3]" loading="lazy" />
 </div>
+<figcaption>La asistencia al meetup de Astro en Acción — desarrolladores que vinieron a ver si el framework podía cumplir su promesa en una demo en vivo.</figcaption>
+</figure>
 
 ---
 
