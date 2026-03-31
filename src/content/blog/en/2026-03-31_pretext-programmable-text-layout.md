@@ -56,7 +56,7 @@ And you can't cache the results, because the height changes every time the conta
 
 [PreTeXt](https://github.com/chenglou/pretext) is by [Cheng Lou](https://github.com/chenglou) — if you've been around React long enough, you know that name. He's a longtime React contributor, the creator of [react-motion](https://github.com/chenglou/react-motion), and someone closely associated with the Reason/ReScript world. He's currently at [Midjourney](https://venturebeat.com/technology/midjourney-engineer-debuts-new-vibe-coded-open-source-standard-pretext-to). He tends to gravitate toward foundational problems.
 
-His idea with PreTeXt is almost deceptively simple: separate the expensive work from the repeated work.
+His idea with PreTeXt is almost deceptively simple: separate the expensive work from the repeated work. Even Cheng Lou himself [downplays it](https://x.com/_chenglou/status/2038486958708851074): *"supposedly 'innovative' text layout library / looks inside / just a parser and a cache."* And honestly, that's what makes it interesting — the power isn't in complexity, it's in what that parser and cache make possible.
 
 **Phase 1 — `prepare(text, font)`:** Do all the heavy lifting once. Unicode text segmentation via [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter), word boundary detection, font measurement via [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText). This phase figures out where every possible line break could go and how wide each segment of text is. In the current benchmark snapshot from the repo, this step takes about 19ms for a shared batch of 500 texts.
 
