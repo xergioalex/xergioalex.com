@@ -16,7 +16,7 @@ $: t = getTranslations(lang);
 
 {#if posts && posts.length > 0}
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-    {#each posts as post, index}
+    {#each posts as post (post.id || post.slug || post.title)}
       <BlogCard {post} {lang} {topicTagNames} />
     {/each}
   </div>
