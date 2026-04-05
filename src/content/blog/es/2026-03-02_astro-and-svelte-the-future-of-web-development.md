@@ -3,7 +3,7 @@ title: "Astro y Svelte: Por Qué Creo Que Son el Futuro del Desarrollo Web"
 description: "Por qué Astro y Svelte devuelven simplicidad al desarrollo web: datos del State of JS 2025, benchmarks y lecciones prácticas de este sitio."
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
-heroLayout: "banner"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "javascript"]
 keywords: ["Astro y Svelte para desarrollo web", "por qué Astro es mejor que React para sitios estáticos", "Svelte vs React comparación 2025", "State of JS Astro y Svelte", "frameworks web modernos sin sobre-ingeniería", "Astro islands arquitectura explicada", "futuro del desarrollo web con Astro"]
 ---
@@ -297,7 +297,9 @@ Desktop: 0.3s FCP, 0.3s LCP, 0ms TBT, 0 CLS. Mobile: 0.9s FCP, 1.5s LCP, 0ms TBT
 
 Si quieres la historia completa — el Typewriter CSS-only, la auditoría WCAG AA, la optimización de directivas de hydration — escribí un deep dive: [El Camino al 100: Cómo Logré Puntajes Perfectos de Lighthouse en Cada Categoría](/es/blog/lighthouse-perfect-scores/).
 
-El rendimiento importa porque impacta directamente la experiencia de usuario, el SEO, la accesibilidad en conexiones lentas y los costos de hosting. Cuando un stack entrega estos resultados por defecto, eso es una ventaja real.
+Estas bases de rendimiento también habilitaron algo que no había planeado inicialmente: optimizar el sitio para que los agentes de IA lo encuentren y lo citen. En mi serie [AEO: De Invisible a Citado](/es/blog/series/aeo-from-invisible-to-cited/), documento cómo pasé de ser completamente invisible para los motores de IA a ser citado por ChatGPT, Perplexity y otros — y la arquitectura static-first de Astro fue un habilitador clave. Tiempos de carga rápidos, HTML semántico limpio y datos estructurados son exactamente lo que los crawlers de IA necesitan, y Astro entrega todo eso por defecto. Además, el soporte nativo de Markdown y MDX de Astro resultó ser una ventaja enorme — estamos en la era del [Markdown for Agents](/es/blog/aeo-markdown-for-agents/), donde los modelos de IA consumen contenido en Markdown mucho mejor que HTML crudo, y Astro ya trabaja en ese formato de forma natural.
+
+El rendimiento importa porque impacta todo lo que se construye encima — experiencia de usuario, SEO, accesibilidad en conexiones lentas, costos de hosting, y ahora también, que los agentes de IA encuentren tu contenido. Cuando un stack te da todo eso por defecto, no es un extra. Es una ventaja compuesta.
 
 ---
 
@@ -308,6 +310,8 @@ En enero de 2026, [Cloudflare adquirió The Astro Technology Company](https://as
 Lo que importa: Astro sigue siendo MIT-licensed, open-source y agnóstico de plataforma. Puedes seguir deployando en cualquier lugar. El equipo puede enfocarse en el framework en lugar de construir un negocio alrededor de él. Y ahora hay dinero institucional respaldando el ecosistema — Webflow ($150K), Cloudflare ($150K), Mux, Netlify, Wix y Sentry contribuyendo al Astro Ecosystem Fund.
 
 Esto ya no es un experimento de startup. Empresas como Microsoft (Fluent 2 Design System), Google, Firebase (que migró su blog de Blogger a Astro), Trivago, Visa, NBC News y Unilever usan Astro en producción. **87% de los usuarios de Astro** planean seguir usándolo — la intención de retención más alta entre todos los SSGs encuestados.
+
+Este mismo sitio corre sobre Cloudflare Pages. Migré desde GitHub Pages y la diferencia fue inmediata — CDN global, preview deployments por branch, y cero configuración para Astro. Si te interesa el proceso, escribí sobre eso: [La Mejor Forma de Desplegar tu Sitio Astro Gratis](/es/blog/best-way-deploy-astro-site-free/).
 
 ---
 

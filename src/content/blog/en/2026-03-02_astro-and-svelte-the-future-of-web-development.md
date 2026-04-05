@@ -3,7 +3,7 @@ title: "Astro and Svelte: Why I Believe They're the Future of Web Development"
 description: "Why Astro and Svelte simplify modern web development—State of JS 2025 data, benchmarks, and practical lessons from building this website."
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
-heroLayout: "banner"
+heroLayout: "side-by-side"
 tags: ["tech", "web-development", "javascript"]
 keywords: ["Astro vs Next.js performance comparison", "Svelte 5 runes reactivity", "Astro Svelte web development 2025", "State of JS 2025 Astro satisfaction", "Astro zero JavaScript default", "Svelte compiled framework runtime", "Cloudflare acquires Astro"]
 ---
@@ -297,7 +297,9 @@ Desktop: 0.3s FCP, 0.3s LCP, 0ms TBT, 0 CLS. Mobile: 0.9s FCP, 1.5s LCP, 0ms TBT
 
 If you want the full story — the CSS-only Typewriter, the WCAG AA audit, the hydration directive audit — I wrote a deep dive: [The Road to 100: How I Achieved Perfect Lighthouse Scores on Every Category](/blog/lighthouse-perfect-scores/).
 
-Performance matters because it directly impacts user experience, SEO rankings, accessibility on slow connections, and hosting costs. When a stack delivers these results by default, that's a real advantage.
+These performance foundations also enabled something I didn't initially plan for: optimizing the site so AI agents can find and cite it. In my series [AEO: From Invisible to Cited](/blog/series/aeo-from-invisible-to-cited/), I document how I went from being completely invisible to AI engines to getting cited by ChatGPT, Perplexity, and others — and Astro's static-first architecture was a key enabler. Fast load times, clean semantic HTML, and structured data are exactly what AI crawlers need, and Astro delivers all of that by default. On top of that, Astro's native Markdown and MDX support turned out to be a huge advantage — we're in the era of [Markdown for Agents](/blog/aeo-markdown-for-agents/), where AI models consume Markdown content far better than raw HTML, and Astro already works in that format naturally.
+
+Performance matters because it impacts everything built on top of it — user experience, SEO, accessibility on slow connections, hosting costs, and now, whether AI agents can even find your content. When a stack gives you all of that by default, it's not an extra. It's a compounding advantage.
 
 ---
 
@@ -308,6 +310,8 @@ In January 2026, [Cloudflare acquired The Astro Technology Company](https://astr
 What matters: Astro remains MIT-licensed, open-source, and platform-agnostic. You can still deploy anywhere. The team gets to focus on the framework instead of building a business around it. And there's now institutional money backing the ecosystem — Webflow ($150K), Cloudflare ($150K), Mux, Netlify, Wix, and Sentry all contributing to the Astro Ecosystem Fund.
 
 This isn't a startup experiment anymore. Companies like Microsoft (Fluent 2 Design System), Google, Firebase (migrated their blog from Blogger to Astro), Trivago, Visa, NBC News, and Unilever use Astro in production. **87% of Astro users** plan to keep using it — the highest retention intent among all SSGs surveyed.
+
+This very site runs on Cloudflare Pages. I migrated from GitHub Pages and the difference was immediate — global CDN, preview deployments per branch, and zero config for Astro. If you're curious about the process, I wrote about it: [The Best Way to Deploy Your Astro Site for Free](/blog/best-way-deploy-astro-site-free/).
 
 ---
 
