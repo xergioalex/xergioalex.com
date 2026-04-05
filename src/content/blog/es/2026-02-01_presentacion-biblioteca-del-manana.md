@@ -2,7 +2,8 @@
 title: 'La Biblioteca del Mañana: donde la ciencia ficción se encuentra con la realidad'
 description: 'Nace un club de lectura de ciencia ficción dentro de la comunidad de Pereira Tech Talks. En esta serie comparto reseñas y reflexiones sobre los relatos, películas e historias que leemos y vemos cada semana.'
 pubDate: '2026-02-01'
-heroLayout: 'none'
+heroImage: '/images/blog/posts/presentacion-biblioteca-del-manana/hero.webp'
+heroLayout: 'side-by-side'
 tags: ['personal', 'ai']
 keywords: ['club de lectura ciencia ficción', 'Isaac Asimov reseñas', 'ciencia ficción e inteligencia artificial', 'Pereira Tech Talks', 'reseñas libros ciencia ficción', 'robots e IA en la ficción']
 series: 'la-biblioteca-del-manana'
@@ -19,7 +20,7 @@ Fue un momento de esos donde dices "¿en serio? yo también". Y así, de la nada
 
 ## La Biblioteca del Mañana
 
-Así le pusimos al grupo. La Biblioteca del Mañana. El nombre surgió porque lo que leemos — escrito hace décadas — se siente como si estuviera describiendo lo que está pasando ahora. Asimov escribió sobre robots con capacidad de razonamiento autónomo en los años 50 y 60, y hoy tenemos agentes de IA operando en Marte. No es una metáfora, es literal.
+Así le pusimos al grupo. La Biblioteca del Mañana. El nombre surgió porque lo que leemos — escrito hace décadas — se siente como si estuviera describiendo lo que está pasando ahora. Asimov escribió sobre robots con capacidad de razonamiento autónomo en los años 50 y 60, y hoy tenemos [agentes de IA operando en Marte](https://www.anthropic.com/features/claude-on-mars). No es una metáfora, es literal.
 
 La idea inicial era simple: cada semana leemos un relato de Asimov, lo compartimos en el grupo, y cada quien da su opinión. Sin filtros, sin pretensiones académicas. Solo conversaciones honestas sobre lo que nos genera cada historia.
 
@@ -52,3 +53,13 @@ Leer a Asimov hoy no es un ejercicio nostálgico. Es casi un manual de lo que vi
 Así que bienvenidos a La Biblioteca del Mañana. Aquí vamos a hablar de libros, películas, relatos e historias que nos hacen pensar en el futuro. Y de cómo ese futuro ya está aquí.
 
 A seguir leyendo.
+
+---
+
+## Recursos
+
+- [Isaac Asimov en Wikipedia](https://es.wikipedia.org/wiki/Isaac_Asimov) — biografía y bibliografía completa del autor que más leemos en este club
+- [Pereira Tech Talks](https://www.meetup.com/pelotonpereira/) — la comunidad tech de Pereira donde nació La Biblioteca del Mañana
+- [Claude on Mars — Anthropic](https://www.anthropic.com/features/claude-on-mars) — robots con IA de Claude operando en Marte, la ficción hecha realidad
+- [Love, Death + Robots en IMDB](https://www.imdb.com/title/tt9561862/) — una de las series que vemos y discutimos en el club
+- [Las tres leyes de la robótica](https://es.wikipedia.org/wiki/Tres_leyes_de_la_rob%C3%B3tica) — la base de muchos de los relatos de Asimov que exploraremos en esta serie

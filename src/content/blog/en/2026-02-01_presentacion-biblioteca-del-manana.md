@@ -2,7 +2,8 @@
 title: 'The Library of Tomorrow: where science fiction meets reality'
 description: 'A sci-fi reading club is born inside the Pereira Tech Talks community. In this series I share reviews and reflections on the stories, movies, and tales we read and watch each week.'
 pubDate: '2026-02-01'
-heroLayout: 'none'
+heroImage: '/images/blog/posts/presentacion-biblioteca-del-manana/hero.webp'
+heroLayout: 'side-by-side'
 tags: ['personal', 'ai']
 keywords: ['science fiction book club', 'Isaac Asimov reviews', 'sci-fi and artificial intelligence', 'Pereira Tech Talks', 'sci-fi book reviews', 'robots and AI in fiction']
 series: 'la-biblioteca-del-manana'
@@ -19,7 +20,7 @@ It was one of those moments where you go "wait, you too?". And just like that, o
 
 ## The Library of Tomorrow
 
-That's what we called it. La Biblioteca del Mañana — The Library of Tomorrow. The name came up because what we read — written decades ago — feels like it's describing what's happening right now. Asimov wrote about robots with autonomous reasoning capabilities in the 50s and 60s, and today we have AI agents operating on Mars. That's not a metaphor, it's literal.
+That's what we called it. La Biblioteca del Mañana — The Library of Tomorrow. The name came up because what we read — written decades ago — feels like it's describing what's happening right now. Asimov wrote about robots with autonomous reasoning capabilities in the 50s and 60s, and today we have [AI agents operating on Mars](https://www.anthropic.com/features/claude-on-mars). That's not a metaphor, it's literal.
 
 The initial idea was simple: every week we read an Asimov story, share it in the group, and everyone gives their opinion. No filters, no academic pretensions. Just honest conversations about what each story sparks in us.
 
@@ -52,3 +53,13 @@ Reading Asimov today isn't a nostalgic exercise. It's almost a manual for what's
 So welcome to The Library of Tomorrow. Here we're going to talk about books, movies, stories, and tales that make us think about the future. And about how that future is already here.
 
 Let's keep reading.
+
+---
+
+## Resources
+
+- [Isaac Asimov on Wikipedia](https://en.wikipedia.org/wiki/Isaac_Asimov) — full biography and bibliography of the author we read most in this club
+- [Pereira Tech Talks](https://www.meetup.com/pelotonpereira/) — the tech community in Pereira where The Library of Tomorrow was born
+- [Claude on Mars — Anthropic](https://www.anthropic.com/features/claude-on-mars) — AI-powered robots operating on Mars, fiction made reality
+- [Love, Death + Robots on IMDB](https://www.imdb.com/title/tt9561862/) — one of the series we watch and discuss in the club
+- [Three Laws of Robotics](https://en.wikipedia.org/wiki/Three_Laws_of_Robotics) — the foundation of many Asimov stories we'll explore in this series
