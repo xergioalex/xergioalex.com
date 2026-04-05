@@ -1,7 +1,7 @@
 ---
 title: "Convirtiéndote en AI Engineer: Un agente no es un prompt"
 description: "La mayoría piensa que un agente es un LLM con herramientas. Un agente real es un sistema — y construirlo requiere otra clase de ingeniería."
-pubDate: "2026-04-02"
+pubDate: "2026-04-05"
 heroImage: "/images/blog/posts/becoming-an-ai-engineer/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai"]
