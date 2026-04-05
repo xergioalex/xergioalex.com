@@ -798,6 +798,10 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       { value: 'project', label: 'Project / Work inquiry' },
       { value: 'dailybot', label: 'Question about DailyBot' },
       { value: 'trading', label: 'Questions about my trading' },
+      {
+        value: 'biblioteca-del-manana',
+        label: 'Join The Library of Tomorrow',
+      },
       { value: 'other', label: 'Other' },
     ],
     subjectLabel: 'Subject',

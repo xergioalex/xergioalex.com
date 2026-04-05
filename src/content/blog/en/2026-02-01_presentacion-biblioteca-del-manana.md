@@ -28,7 +28,7 @@ The initial idea was simple: every week we read an Asimov story, share it in the
 
 ## From Asimov to everything else
 
-What started as an Asimov-focused club grew naturally. We started talking about other authors. Someone suggested watching a movie. Another person shared a documentary. And suddenly we weren't just reading short stories — we were watching Love, Death + Robots episodes, sitting down with Blade Runner, and debating whether the future would really be as dark as cyberpunk wants us to believe.
+What started as an Asimov-focused club grew naturally. We started talking about other authors. Someone suggested watching a movie. Another person shared a documentary. And suddenly we weren't just reading short stories — we were watching [Love, Death + Robots](https://www.imdb.com/title/tt9561862/) episodes, sitting down with [Blade Runner](https://www.imdb.com/title/tt0083658/), debating whether the future would really be as dark as cyberpunk wants us to believe, or talking about [Black Mirror](https://www.imdb.com/title/tt2085059/) episodes that feel less like fiction and more like next year's headlines.
 
 The common thread is always the same: science fiction as a lens for understanding what we're living through. And when you read Asimov today, with everything happening with AI, with robots, with automation — you realize the guy was way ahead of his time. Impressively ahead.
 
@@ -51,6 +51,12 @@ We're living in a unique moment. The things we used to read in sci-fi books are 
 Reading Asimov today isn't a nostalgic exercise. It's almost a manual for what's coming. And discussing it in a group, with people who also make a living from technology and understand its implications, adds a layer of depth you don't get reading alone.
 
 So welcome to The Library of Tomorrow. Here we're going to talk about books, movies, stories, and tales that make us think about the future. And about how that future is already here.
+
+---
+
+## Want to join?
+
+If you're interested in being part of The Library of Tomorrow, you should know it's a Spanish-speaking community. We meet virtually every week to discuss a story, a movie, or whatever we're exploring at the time. If you want to join, reach out through my [social media](https://linktr.ee/xergioalex) or fill out the [contact form](/contact?topic=biblioteca-del-manana&subject=I%20want%20to%20join%20The%20Library%20of%20Tomorrow) on this site selecting the topic "Join The Library of Tomorrow". Leave me a link to your social profiles so I can learn more about you.
 
 Let's keep reading.
 

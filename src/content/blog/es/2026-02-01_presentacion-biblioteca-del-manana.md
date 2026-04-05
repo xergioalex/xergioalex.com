@@ -28,7 +28,7 @@ La idea inicial era simple: cada semana leemos un relato de Asimov, lo compartim
 
 ## De Asimov a todo lo demás
 
-Lo que empezó como un club enfocado en Asimov fue creciendo de forma natural. Empezamos a hablar de otros autores. Alguien propuso ver una película. Otro compartió un documental. Y de repente ya no solo leíamos cuentos, sino que veíamos capítulos de Love, Death + Robots, nos sentábamos a ver Blade Runner y discutíamos si el futuro iba a ser tan oscuro como el cyberpunk nos quiere hacer creer.
+Lo que empezó como un club enfocado en Asimov fue creciendo de forma natural. Empezamos a hablar de otros autores. Alguien propuso ver una película. Otro compartió un documental. Y de repente ya no solo leíamos cuentos, sino que veíamos capítulos de [Love, Death + Robots](https://www.imdb.com/title/tt9561862/), nos sentábamos a ver [Blade Runner](https://www.imdb.com/title/tt0083658/) y discutíamos si el futuro iba a ser tan oscuro como el cyberpunk nos quiere hacer creer, o hablábamos de episodios de [Black Mirror](https://www.imdb.com/title/tt2085059/) que cada vez se parecen menos a ficción y más a noticias del próximo año.
 
 El hilo conductor siempre es el mismo: la ciencia ficción como lente para entender lo que estamos viviendo. Y es que cuando lees a Asimov hoy, con todo lo que está pasando con la IA, con los robots, con la automatización — te das cuenta de que el tipo estaba muy adelantado a su época. Impresionantemente adelantado.
 
@@ -51,6 +51,12 @@ Vivimos en un momento único. Las cosas que leíamos en libros de ciencia ficci�
 Leer a Asimov hoy no es un ejercicio nostálgico. Es casi un manual de lo que viene. Y discutirlo en grupo, con personas que también viven de la tecnología y entienden sus implicaciones, le agrega una capa de profundidad que no consigues leyendo solo.
 
 Así que bienvenidos a La Biblioteca del Mañana. Aquí vamos a hablar de libros, películas, relatos e historias que nos hacen pensar en el futuro. Y de cómo ese futuro ya está aquí.
+
+---
+
+## Quieres unirte?
+
+Si te interesa ser parte de La Biblioteca del Mañana, debes saber que es una comunidad en español. Nos reunimos virtualmente cada semana para discutir un relato, una película o lo que sea que estemos explorando en ese momento. Si quieres unirte, escríbeme por mis [redes sociales](https://linktr.ee/xergioalex) o llena el [formulario de contacto](/es/contact?topic=biblioteca-del-manana&subject=Quiero%20unirme%20a%20La%20Biblioteca%20del%20Mañana) de este sitio seleccionando el tema "Unirme a La Biblioteca del Mañana". Déjame un enlace a tus redes para conocer más sobre ti.
 
 A seguir leyendo.
 

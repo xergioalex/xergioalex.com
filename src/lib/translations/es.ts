@@ -806,6 +806,10 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       { value: 'project', label: 'Proyecto / Consulta laboral' },
       { value: 'dailybot', label: 'Pregunta sobre DailyBot' },
       { value: 'trading', label: 'Preguntas sobre mi trading' },
+      {
+        value: 'biblioteca-del-manana',
+        label: 'Unirme a La Biblioteca del Mañana',
+      },
       { value: 'other', label: 'Otro' },
     ],
     subjectLabel: 'Asunto',
