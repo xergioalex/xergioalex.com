@@ -36,7 +36,7 @@ En la práctica, estos sistemas tienden a funcionar un 60% de las veces. El otro
 
 Ninguna de estas son fallas del modelo. El modelo hace exactamente lo que esperarías que hiciera un modelo de lenguaje dados los inputs que recibe. Son fallas de arquitectura. El sistema no tiene una gestión de estado adecuada. Las definiciones de las herramientas no imponen contratos de parámetros. No hay mecanismo de puntos de control, ni forma de inspeccionar lo que realmente está pasando dentro de una ejecución de varios pasos.
 
-[Simon Willison](https://simonwillison.net/) tiene un marco útil para esto: las herramientas funcionan, el modelo funciona, pero nadie pensó en qué pasa entre las llamadas a las herramientas. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
+La guía [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) de Anthropic traza esta línea con claridad: lo que separa una demo funcional de un sistema funcional es todo lo que sucede entre las llamadas a las herramientas — la orquestación, las transiciones de estado, las decisiones de enrutamiento. Ese "entre" es donde la mayoría de los sistemas de agentes se desmoronan.
 
 ---
 
@@ -189,5 +189,5 @@ El modelo mental que la mayoría carga — LLM más herramientas, unas pocas lí
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) — El estándar abierto para conectar IA a herramientas y fuentes de datos; ahora bajo la gestión de la Agentic AI Foundation
 - [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript) — El SDK de primera parte de Anthropic para construir sistemas de agentes con Claude
 - [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) — El framework de agentes de OpenAI, con buena documentación sobre transferencias y salvaguardas
-- [Simon Willison's Weblog](https://simonwillison.net/) — La perspectiva más consistentemente honesta y fundamentada sobre herramientas de IA y capacidades de agentes; se lee menos como hype, más como notas de campo
+- [Simon Willison: Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/) — Patrones prácticos para construir con agentes de código; la perspectiva más fundamentada y honesta sobre qué funciona y qué no
 - [Hamel Husain: Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/) — Enfoques prácticos para construir pipelines de evaluación para sistemas basados en LLMs; la capa que la mayoría omite

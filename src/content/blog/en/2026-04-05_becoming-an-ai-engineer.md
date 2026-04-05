@@ -36,7 +36,7 @@ In practice, these systems tend to work about 60% of the time. The other 40% is 
 
 None of these are model failures. The model does exactly what you'd expect a language model to do given the inputs it receives. These are architecture failures. The system doesn't have proper state management. The tool definitions don't enforce parameter contracts. There's no checkpoint mechanism, no way to inspect what's actually happening inside a multi-step run.
 
-[Simon Willison](https://simonwillison.net/) has a useful frame for this: the tools work, the model works, but nobody thought about what happens between tool calls. That "between" is where most agent systems fall apart.
+Anthropic's [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) guide draws this line clearly: what separates a working demo from a working system is everything that happens between tool calls — the orchestration, the state transitions, the routing decisions. That "between" is where most agent systems fall apart.
 
 ---
 
@@ -189,5 +189,5 @@ The mental model most people carry — LLM plus tools, a few lines of code — i
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) — The open standard for connecting AI to tools and data sources; now stewarded by the Agentic AI Foundation
 - [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript) — Anthropic's first-party SDK for building agent systems with Claude
 - [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) — OpenAI's agent framework, with good documentation on handoffs and guardrails
-- [Simon Willison's Weblog](https://simonwillison.net/) — The most consistently honest and grounded perspective on AI tools and agent capabilities; reads less like hype, more like field notes
+- [Simon Willison: Agentic Engineering Patterns](https://simonwillison.net/guides/agentic-engineering-patterns/) — Practical patterns for building with coding agents; the most grounded and honest perspective on what actually works
 - [Hamel Husain: Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/) — Practical approaches to building evaluation pipelines for LLM-based systems; the layer most people skip
