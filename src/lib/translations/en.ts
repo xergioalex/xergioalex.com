@@ -970,6 +970,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'aeo-from-invisible-to-cited': 'AEO: From Invisible to Cited',
     'working-with-agents': 'Working with Agents',
     'building-agents': 'Building Agents',
+    'la-biblioteca-del-manana': 'The Library of Tomorrow',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -982,6 +983,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'From writing code to orchestrating AI agents — exploring the new role, real workflows, what breaks, judgment, context, and team adoption.',
     'building-agents':
       'What it actually takes to go from using AI tools to engineering reliable agent systems — architecture, skills, and mental models behind real AI agents.',
+    'la-biblioteca-del-manana':
+      "Reviews and reflections on sci-fi books, movies, and stories — where classic science fiction meets today's AI revolution. Born from a reading club inside the Pereira Tech Talks community.",
   },
 
   // Date formatting
