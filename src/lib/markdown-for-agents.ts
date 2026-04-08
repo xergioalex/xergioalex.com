@@ -2,6 +2,108 @@ import type { CollectionEntry } from 'astro:content';
 
 const SITE_URL = 'https://xergioalex.com';
 
+/**
+ * Site navigation structure shared across all agent markdown outputs.
+ * Mirrors the navbar + footer links so AI agents can discover all pages
+ * from any entry point — just like a browser user sees global navigation.
+ */
+interface NavLink {
+  label: Record<string, string>;
+  path: string;
+  external?: boolean;
+}
+
+interface NavSection {
+  title: Record<string, string>;
+  links: NavLink[];
+}
+
+const SITE_NAV_SECTIONS: NavSection[] = [
+  {
+    title: { en: 'Main', es: 'Principal' },
+    links: [
+      { label: { en: 'Home', es: 'Inicio' }, path: '/' },
+      { label: { en: 'Blog', es: 'Blog' }, path: '/blog' },
+      {
+        label: { en: 'Blog Series', es: 'Series del Blog' },
+        path: '/blog/series/',
+      },
+      { label: { en: 'Contact', es: 'Contacto' }, path: '/contact' },
+    ],
+  },
+  {
+    title: { en: 'Work', es: 'Trabajo' },
+    links: [
+      { label: { en: 'Portfolio', es: 'Portafolio' }, path: '/portfolio' },
+      { label: { en: 'DailyBot', es: 'DailyBot' }, path: '/dailybot' },
+      { label: { en: 'Tech Talks', es: 'Charlas Tech' }, path: '/tech-talks' },
+      { label: { en: 'Trading', es: 'Trading' }, path: '/trading' },
+    ],
+  },
+  {
+    title: { en: 'About', es: 'Acerca de' },
+    links: [
+      { label: { en: 'About Me', es: 'Sobre mí' }, path: '/about' },
+      { label: { en: 'CV', es: 'CV' }, path: '/cv' },
+      {
+        label: { en: 'Entrepreneur', es: 'Emprendedor' },
+        path: '/entrepreneur',
+      },
+      { label: { en: 'Foodie', es: 'Foodie' }, path: '/foodie' },
+      { label: { en: 'Hobbies', es: 'Hobbies' }, path: '/hobbies' },
+    ],
+  },
+  {
+    title: { en: 'Connect', es: 'Conectar' },
+    links: [
+      {
+        label: { en: 'GitHub', es: 'GitHub' },
+        path: 'https://github.com/xergioalex',
+        external: true,
+      },
+      {
+        label: { en: 'LinkedIn', es: 'LinkedIn' },
+        path: 'https://www.linkedin.com/in/xergioalex/',
+        external: true,
+      },
+      {
+        label: { en: 'X/Twitter', es: 'X/Twitter' },
+        path: 'https://x.com/XergioAleX',
+        external: true,
+      },
+      {
+        label: { en: 'Instagram', es: 'Instagram' },
+        path: 'https://www.instagram.com/xergioalex',
+        external: true,
+      },
+    ],
+  },
+];
+
+/**
+ * Generate a site-wide navigation section for agent markdown.
+ * Appended to all serialized outputs so AI agents can discover
+ * every page from any entry point — mirrors the HTML navbar/footer.
+ */
+function generateSiteNavigation(lang: string): string {
+  const prefix = buildUrlPrefix(lang);
+  const heading = lang === 'es' ? 'Navegación del Sitio' : 'Site Navigation';
+  const lines: string[] = ['', '---', '', `## ${heading}`, ''];
+
+  for (const section of SITE_NAV_SECTIONS) {
+    const sectionTitle = section.title[lang] || section.title.en;
+    lines.push(`**${sectionTitle}:**`);
+    for (const link of section.links) {
+      const label = link.label[lang] || link.label.en;
+      const url = link.external ? link.path : `${prefix}${link.path}`;
+      lines.push(`- [${label}](${url})`);
+    }
+    lines.push('');
+  }
+
+  return lines.join('\n');
+}
+
 interface PostSerializeOptions {
   slug: string;
   lang: string;
@@ -74,6 +176,8 @@ export function serializePostToAgentMarkdown(
     lines.push(post.body.trim());
   }
 
+  lines.push(generateSiteNavigation(lang));
+
   return `${lines.join('\n')}\n`;
 }
 
@@ -111,6 +215,8 @@ export function serializeBlogIndexToMarkdown(
       `- [${entry.title}](${postMdUrl}) — ${entry.description} (${date})`
     );
   }
+
+  lines.push(generateSiteNavigation(lang));
 
   return `${lines.join('\n')}\n`;
 }
@@ -166,6 +272,8 @@ export function serializeSeriesIndexToMarkdown(
     );
   }
 
+  lines.push(generateSiteNavigation(lang));
+
   return `${lines.join('\n')}\n`;
 }
 
@@ -203,6 +311,8 @@ export function serializePageToAgentMarkdown(
   if (page.body) {
     lines.push(page.body.trim());
   }
+
+  lines.push(generateSiteNavigation(lang));
 
   return `${lines.join('\n')}\n`;
 }

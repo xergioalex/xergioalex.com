@@ -21,6 +21,7 @@ For AI agents and assistants, new blog post creation in `src/content/blog/` must
 - The date prefix uses the post's `pubDate` value
 - The separator is an underscore (`_`)
 - The slug is kebab-case derived from the title
+- **Slugs MUST always be in English**, even for Spanish posts — both `en/` and `es/` versions share the same English slug
 - The date prefix is **stripped from URLs** (clean slugs: `/blog/my-post/`)
 
 **Examples:**
@@ -29,7 +30,7 @@ For AI agents and assistants, new blog post creation in `src/content/blog/` must
 |-------|---------|----------|
 | Getting Started with Astro | 2026-01-15 | `2026-01-15_getting-started-with-astro.md` |
 | My Travel Adventures | 2024-03-20 | `2024-03-20_my-travel-adventures.md` |
-| Mi Experiencia con Astro | 2026-02-01 | `2026-02-01_mi-experiencia-con-astro.md` |
+| Mi Experiencia con Astro | 2026-02-01 | `2026-02-01_my-experience-with-astro.md` |
 
 **Slug extraction:** The `getPostSlug()` utility in `src/lib/blog.ts` strips both the language prefix and date prefix from post IDs:
 
@@ -500,6 +501,8 @@ seriesOrder: 2                   # Chapter number (1, 2, 3...)
 ### Creating a New Series
 
 1. Create `src/content/series/{series-slug}.md` with `name`, `title`, `description`, `order`
+   - **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow.md`, not `la-biblioteca-del-manana.md`)
+   - The `name` field inside the file must match the filename slug
 2. **Add `seriesNames[slug]` and `seriesDescriptions[slug]` to BOTH `src/lib/translations/en.ts` and `es.ts`** — without this, the ES series page falls back to the English title/description
 3. Add `series` and `seriesOrder` to each post's frontmatter (both EN and ES)
 4. The `SeriesNavigation` component renders automatically on posts with series metadata
