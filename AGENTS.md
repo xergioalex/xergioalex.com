@@ -305,11 +305,11 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 > Full reference: **[Blog Posts Guide](docs/features/BLOG_POSTS.md)**
 
-**File naming:** `YYYY-MM-DD_slug.{md,mdx}` in `src/content/blog/{en,es}/`. Date prefix stripped from URLs.
+**File naming:** `YYYY-MM-DD_slug.{md,mdx}` in `src/content/blog/{en,es}/`. Date prefix stripped from URLs. **Slugs MUST always be in English** — both `en/` and `es/` versions use the same English slug.
 
 **Tags:** Flat `tags` array in frontmatter. Tiers (primary/secondary/subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 1-3 secondary). Never auto-create tags without user approval.
 
-**Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}` in frontmatter. Series defined in `src/content/series/`. Navigation renders automatically.
+**Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}` in frontmatter. Series defined in `src/content/series/`. Navigation renders automatically. **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow`, not `la-biblioteca-del-manana`).
 
 **Resources section:** Include external links (docs, repos, tools). Do NOT list related articles or previous chapters — they appear in the series navigation below.
 
@@ -349,6 +349,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 18. Write Spanish content without proper accents/tildes/ñ
 19. List related articles or previous chapters in the Resources section when the post belongs to a series — they already appear in `#series-navigation` below; listing them is redundant
 20. **Leave placeholder content in blog posts** — `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" text. Published posts must be complete. Zero tolerance.
+21. **Use Spanish slugs for blog posts or series** — all slugs (filenames, series names, image directories) MUST be in English, even for Spanish content
 
 ### DO:
 

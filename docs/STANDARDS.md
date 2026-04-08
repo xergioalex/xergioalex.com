@@ -412,7 +412,7 @@ seriesOrder: 1                                            # Optional (required w
 ---
 ```
 
-**File naming:** `YYYY-MM-DD_slug.{md,mdx}` (date prefix stripped from URLs).
+**File naming:** `YYYY-MM-DD_slug.{md,mdx}` (date prefix stripped from URLs). **Slugs MUST always be in English** — both `en/` and `es/` versions share the same English slug. Series slugs must also be in English.
 
 ### Blog Post Creation Workflow (MANDATORY)
 

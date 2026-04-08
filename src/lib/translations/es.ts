@@ -806,6 +806,10 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       { value: 'project', label: 'Proyecto / Consulta laboral' },
       { value: 'dailybot', label: 'Pregunta sobre DailyBot' },
       { value: 'trading', label: 'Preguntas sobre mi trading' },
+      {
+        value: 'the-library-of-tomorrow',
+        label: 'Unirme a La Biblioteca del Mañana',
+      },
       { value: 'other', label: 'Otro' },
     ],
     subjectLabel: 'Asunto',
@@ -981,6 +985,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'aeo-from-invisible-to-cited': 'AEO: De Invisible a Citado',
     'working-with-agents': 'Trabajando con Agentes',
     'building-agents': 'Construyendo Agentes',
+    'the-library-of-tomorrow': 'La Biblioteca del Mañana',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -993,6 +998,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'De escribir código a orquestar agentes de IA — explorando el nuevo rol, flujos reales de trabajo, lo que falla, criterio, contexto y adopción en equipos.',
     'building-agents':
       'Lo que realmente se necesita para pasar de usar herramientas de IA a construir sistemas de agentes confiables — arquitectura, habilidades y modelos mentales detrás de los agentes reales.',
+    'the-library-of-tomorrow':
+      'Reseñas y reflexiones sobre libros, películas e historias de ciencia ficción — donde la ciencia ficción clásica se encuentra con la revolución actual de la IA. Nacida de un club de lectura dentro de la comunidad de Pereira Tech Talks.',
   },
 
   // Date formatting
