@@ -71,7 +71,7 @@ Tags: tag1, tag2
 - Simple key-value metadata — easy to parse
 - Canonical URL — always points to the HTML version
 - Separator before body — clear content boundary
-- No footer, nav, or UI chrome
+- Site navigation footer — global nav links appended to every output (see below)
 
 ## Technical Implementation
 
@@ -95,7 +95,22 @@ Tags: tag1, tag2
 
 - `serializePostToAgentMarkdown(post, { slug, lang })` — blog posts
 - `serializeBlogIndexToMarkdown(entries, { lang, title, description })` — blog index
+- `serializeSeriesIndexToMarkdown(entries, { slug, seriesTitle, seriesDescription, lang })` — series index
 - `serializePageToAgentMarkdown(page, { slug, lang })` — non-blog pages
+
+### Site Navigation Partial
+
+Every serialized markdown output includes a **Site Navigation** section appended at the end. This mirrors the HTML navbar and footer, ensuring AI agents can discover all site pages from any entry point.
+
+The navigation is generated programmatically by `generateSiteNavigation(lang)` in `markdown-for-agents.ts` — a single source of truth that is language-aware (applies the correct URL prefix for EN/ES). The navigation structure is defined as data (`SITE_NAV_SECTIONS`) in the same file, organized into sections: Main, Work, About, and Connect (social links).
+
+**Why programmatic instead of a `.md` partial file?**
+- Language-aware: automatically applies `/es/` prefix for Spanish pages
+- Single definition: one data structure generates both EN and ES navigation
+- No manual sync: adding the nav to new serialization functions requires only one line (`generateSiteNavigation(lang)`)
+- Always consistent: impossible for individual page markdown files to have stale navigation
+
+**When to update:** If a new page is added to the site navbar, add it to `SITE_NAV_SECTIONS` in `src/lib/markdown-for-agents.ts`.
 
 ### Content Collections
 
