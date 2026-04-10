@@ -975,6 +975,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'working-with-agents': 'Working with Agents',
     'building-agents': 'Building Agents',
     'the-library-of-tomorrow': 'The Library of Tomorrow',
+    'mastering-openclaw': 'Mastering OpenClaw',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -989,6 +990,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'What it actually takes to go from using AI tools to engineering reliable agent systems — architecture, skills, and mental models behind real AI agents.',
     'the-library-of-tomorrow':
       "Reviews and reflections on sci-fi books, movies, and stories — where classic science fiction meets today's AI revolution. Born from a reading club inside the Pereira Tech Talks community.",
+    'mastering-openclaw':
+      "A deep dive into OpenClaw — the personal AI agent that broke GitHub records. From Peter Steinberger's story to installation, Skills, security, and where personal AI is heading.",
   },
 
   // Date formatting
