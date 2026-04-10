@@ -5,14 +5,14 @@ pubDate: "2026-04-07"
 heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "personal"]
-keywords: ["Claude Mythos Preview zero-day exploits", "Project Glasswing Anthropic cybersecurity", "AI vulnerability discovery 2026", "Claude Mythos benchmarks BrowseComp", "AI cybersecurity revolution zero-day", "Anthropic $100M security coalition", "AI finds 27-year-old OpenBSD bug"]
+keywords: ["Claude Mythos Preview zero-day exploits", "Project Glasswing Anthropic cybersecurity", "AI vulnerability discovery 2026", "Claude Mythos benchmarks BrowseComp", "AI cybersecurity revolution zero-day", "Anthropic $100M security coalition", "AI finds 28-year-old OpenBSD bug"]
 series: "working-with-agents"
 seriesOrder: 5
 ---
 
 It seemed like a normal day until I checked my feeds and saw trending that Anthropic had built a model so powerful they refuse to release it to the public. I couldn't stop reading. I spent a couple of hours jumping from thread to thread, article to article, trying to grasp the scale of what was happening.
 
-This isn't "a model that performs well on benchmarks." Or "an incremental improvement over the last generation." This is a model that the company that built it considers too dangerous to put in anyone's hands. Claude Mythos Preview found thousands of unknown security flaws — what the industry calls "zero-days" — in every major operating system and every major web browser. Flaws that had been hiding for 27 years. Some allow taking complete control of a server from anywhere in the world, no password needed. The cost to find some of them? Under fifty dollars.
+This isn't "a model that performs well on benchmarks." Or "an incremental improvement over the last generation." This is a model that the company that built it considers too dangerous to put in anyone's hands. Claude Mythos Preview found thousands of unknown security flaws — what the industry calls "zero-days" — in every major operating system and every major web browser. Flaws that had been hiding for 28 years. Some allow taking complete control of a server from anywhere in the world, no password needed. The cost to find some of them? Under fifty dollars.
 
 If that's real — and the [evidence](https://red.anthropic.com/2026/mythos-preview/) says it is — we're looking at one of those moments that divides the timeline into before and after.
 
@@ -56,19 +56,19 @@ And these weren't easy wins — they were the kinds of findings that previously 
 
 The specific flaws it found tell the story better than any summary.
 
-**The OpenBSD bug — 27 years old, found for $50.**
+**The OpenBSD bug — 28 years old, found for $50.**
 
-[OpenBSD](https://www.openbsd.org/) is one of the most security-hardened operating systems ever built. Its entire identity is security — it's what banks and governments run when they need software that doesn't break. Mythos found a flaw in how it handles network connections, buried deep in the code since 1999. The kind of bug that passes every automated test and every code review because it only triggers under very specific conditions. The specific run that found it cost about $50. A thousand runs to thoroughly scan that area cost under $20,000 total.
+[OpenBSD](https://www.openbsd.org/) is one of the most security-hardened operating systems ever built. Its entire identity is security — it's what banks and governments run when they need software that doesn't break. Mythos found a flaw in how it handles network connections, buried deep in the code since 1998. The kind of bug that passes every automated test and every code review because it only triggers under very specific conditions. The specific run that found it cost about $50. A thousand runs to thoroughly scan that area cost under $20,000 total.
 
-$50. To find something that the best security researchers in the world missed for 27 years.
+$50. To find something that the best security researchers in the world missed for 28 years.
 
-**Full control of FreeBSD — fully autonomous, under $1,000.**
+**Full control of FreeBSD — fully autonomous, under $2,000.**
 
 This one is the scariest. [FreeBSD](https://www.freebsd.org/) is another operating system widely used in servers, network infrastructure, and services like Netflix and WhatsApp. Mythos found a flaw in its file-sharing system — a place where the software doesn't properly check how much data it's receiving. And then, without any human help, it built a complete attack from scratch.
 
 It figured out how to talk to the server, found a way to trick it into running its own code, and ended up granting itself full administrator access — the kind that lets you do anything to the machine. Read any file. Install any program. Take over completely.
 
-Full control of the server, no password needed, from anywhere in the world. "Several hours" of autonomous work. Cost: under $1,000.
+Full control of the server, no password needed, from anywhere in the world. "Several hours" of autonomous work. Cost: under $2,000.
 
 A top-tier security consultant charges around $200/hour. This model did in a few hours what a team of them would take weeks to accomplish, for less than the cost of a single consultant's day.
 
@@ -82,7 +82,7 @@ This comparison stopped me cold. Anthropic's security team asked two models to d
 
 Claude Opus 4.6 — one of the most powerful frontier reasoning models available today — succeeded 2 times out of several hundred attempts.
 
-Mythos: **181 out of 210 attempts.**
+Mythos: **181 successful exploits out of several hundred attempts.** Plus 29 more where it achieved partial control.
 
 2 versus 181. Same flaws. Same test. That's not an incremental improvement. That's a completely different category of capability.
 
@@ -141,11 +141,11 @@ They didn't release the model. They didn't make it available with a waitlist. Th
 
 $100 million in Mythos Preview usage credits for these partners. $4 million in direct donations to organizations that maintain open-source software — the kind of free software that serves as the foundation for most of the world's systems. These are the people who maintain the code that everything else runs on, and they've historically done it largely alone.
 
-The framework is careful. They're using cryptographic commitments — mathematical proof that they found specific vulnerabilities, without revealing what they are, so they can demonstrate their findings later once patches are in place. A 90-day coordinated disclosure timeline. 89% exact severity agreement between the model's assessments and expert human validators. A verification program for legitimate security professionals who want access.
+The framework is careful. They're using cryptographic commitments — mathematical proof that they found specific vulnerabilities, without revealing what they are, so they can demonstrate their findings later once patches are in place. A 90+45 day coordinated disclosure timeline. 89% exact severity agreement between the model's assessments and expert human validators. A verification program for legitimate security professionals who want access.
 
 The pricing, when it does go live for approved participants: $25 for every million words you feed it, $125 for every million it sends back. Not cheap. But given what it can find, potentially the best security investment anyone can make.
 
-CrowdStrike's CTO [said it well](https://www.crowdstrike.com/en-us/blog/crowdstrike-founding-member-anthropic-mythos-frontier-model-to-secure-ai/): *"This is not a reason to slow down; it's a reason to move together, faster."*
+As CrowdStrike [put it](https://www.crowdstrike.com/en-us/blog/crowdstrike-founding-member-anthropic-mythos-frontier-model-to-secure-ai/): *"This is not a reason to slow down; it's a reason to move together, faster."*
 
 ---
 
@@ -157,9 +157,9 @@ The reactions from people who actually work in security tell you this is real �
 
 Greg Kroah-Hartman, one of the people responsible for maintaining the core of the Linux operating system, [noticed the shift](https://www.theregister.com/2026/03/26/greg_kroahhartman_ai_kernel/) before the announcement: *"Something happened a month ago... Now we have real reports... good, and real."* AI-generated vulnerability reports went from being noise — what Daniel Stenberg, creator of one of the internet's most widely used tools (curl), [called](https://mastodon.social/@bagder/116336957584445742) an *"AI slop tsunami"* — to being a *"plain security report tsunami."* Real findings. Real flaws. Real working attacks.
 
-The market felt it too. When Fortune [reported on Mythos in March](https://fortune.com/2026/04/07/anthropic-claude-mythos-model-project-glasswing-cybersecurity/), cybersecurity stocks dropped 5-11%. CrowdStrike, Palo Alto Networks, Zscaler, SentinelOne, Okta — all hit. Investors worried that AI-powered vulnerability discovery could undermine demand for traditional security products.
+The market felt it too. When [news about Mythos broke](https://fortune.com/2026/04/07/anthropic-claude-mythos-model-project-glasswing-cybersecurity/), cybersecurity stocks dropped 5-11%. CrowdStrike, Palo Alto Networks, Zscaler, SentinelOne, Okta — all hit. Investors worried that AI-powered vulnerability discovery could undermine demand for traditional security products.
 
-Igor Tsyganskiy, Microsoft's Executive Vice President of Cybersecurity, [framed it](https://www.anthropic.com/glasswing) in terms that should make everyone pay attention: *"The window between vulnerability discovery and exploitation has collapsed — now minutes with AI."*
+Elia Zaitsev, CrowdStrike's CTO, [framed it](https://www.anthropic.com/glasswing) in terms that should make everyone pay attention: *"The window between vulnerability discovery and exploitation has collapsed — now minutes with AI."*
 
 Minutes. Not weeks. Not days. Minutes.
 
@@ -185,7 +185,7 @@ The same model that finds security flaws could be the one reviewing your code fo
 
 That cuts both ways. Today AI agents ship features, write documentation, build interfaces. And they're powered by the same kind of intelligence that just found thousands of zero-days. Anyone working with these models should be reviewing their own security configurations after this announcement.
 
-Jim Zemlin, CEO of the Linux Foundation, [captured the urgency](https://www.linuxfoundation.org/blog/project-glasswing-gives-maintainers-advanced-ai-to-secure-open-source): *"Open source maintainers — whose software underpins critical infrastructure — have historically managed security alone."* They've been outgunned for years. Now they're getting access to the same level of capability that's been finding their bugs.
+Jim Zemlin, Executive Director of the Linux Foundation, [captured the urgency](https://www.linuxfoundation.org/blog/project-glasswing-gives-maintainers-advanced-ai-to-secure-open-source): open source maintainers — whose software underpins most of the world's critical infrastructure — have been left to figure out security on their own. They've been outgunned for years. Now they're getting access to the same level of capability that's been finding their bugs.
 
 The arms race metaphor is tempting but incomplete. This isn't just offense vs. defense. It's about the speed at which both sides can operate. And right now, the speed is increasing faster than anyone's institutional processes can keep up with.
 
@@ -197,7 +197,7 @@ When I started [this series](/blog/from-programmer-to-orchestrator/), I wanted t
 
 Mythos changes the conversation. Not because the revolution is different — it's the same exponential curve. But because now the implications extend beyond productivity and economics. When AI can find and exploit vulnerabilities at this scale and cost, the stakes aren't just about who codes faster or who ships more features. They're about infrastructure. National security. The systems that everything depends on.
 
-I'm still an optimist. And precisely because of that, I think it's worth paying attention: the same technology that helps us build just found a 27-year-old bug in one of the most secure operating systems on the planet. For fifty bucks. The future is promising — but only if we take it seriously.
+I'm still an optimist. And precisely because of that, I think it's worth paying attention: the same technology that helps us build just found a 28-year-old bug in one of the most secure operating systems on the planet. For fifty bucks. The future is promising — but only if we take it seriously.
 
 The revolution was never going to stay silent. And this is just the beginning.
 

@@ -47,7 +47,21 @@ function toggleMenu() {
   open = !open;
   trackEvent(EVENTS.MOBILE_MENU_TOGGLE, { action: open ? 'open' : 'close' });
 }
+
+function openDropdown(which: string) {
+  workOpen = which === 'work';
+  aboutOpen = which === 'about';
+  languageOpen = which === 'language';
+}
+
+function closeAllDropdowns() {
+  workOpen = false;
+  aboutOpen = false;
+  languageOpen = false;
+}
 </script>
+
+<svelte:window on:click={closeAllDropdowns} />
 
 <header class="bg-main text-white sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
   <nav class="main-container flex items-center justify-between">
@@ -74,8 +88,9 @@ function toggleMenu() {
         <div
           role="group"
           class="relative group"
-          on:mouseenter={() => workOpen = true}
+          on:mouseenter={() => openDropdown('work')}
           on:mouseleave={() => workOpen = false}
+          on:click|stopPropagation={() => {}}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
@@ -83,6 +98,7 @@ function toggleMenu() {
             aria-haspopup="true"
             aria-controls="work-dropdown"
             type="button"
+            on:click={() => workOpen ? closeAllDropdowns() : openDropdown('work')}
           >
             {t.nav.work}
             <svg
@@ -116,8 +132,9 @@ function toggleMenu() {
         <div
           role="group"
           class="relative group"
-          on:mouseenter={() => aboutOpen = true}
+          on:mouseenter={() => openDropdown('about')}
           on:mouseleave={() => aboutOpen = false}
+          on:click|stopPropagation={() => {}}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
@@ -125,6 +142,7 @@ function toggleMenu() {
             aria-haspopup="true"
             aria-controls="about-dropdown"
             type="button"
+            on:click={() => aboutOpen ? closeAllDropdowns() : openDropdown('about')}
           >
             {t.nav.about}
             <svg
@@ -160,8 +178,9 @@ function toggleMenu() {
         <div
           role="group"
           class="relative group"
-          on:mouseenter={() => languageOpen = true}
+          on:mouseenter={() => openDropdown('language')}
           on:mouseleave={() => languageOpen = false}
+          on:click|stopPropagation={() => {}}
         >
           <button
             class="nav-link flex items-center gap-1 cursor-pointer select-none"
@@ -169,6 +188,7 @@ function toggleMenu() {
             aria-haspopup="true"
             aria-controls="language-dropdown"
             type="button"
+            on:click={() => languageOpen ? closeAllDropdowns() : openDropdown('language')}
           >
             <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
             <svg
