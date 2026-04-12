@@ -1,8 +1,8 @@
 ---
 title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas. — Cómo se convirtió en un movimiento'
-description: 'La historia detrás de OpenClaw — el agente de IA personal que pasó de un hack de WhatsApp a 340K estrellas en GitHub. Peter Steinberger, la onda expansiva en la industria y los problemas de seguridad.'
+description: 'La historia de OpenClaw y el nacimiento de los asistentes personales de IA — un paradigma de agentes locales, abiertos y tuyos, no de una empresa.'
 pubDate: '2026-04-11'
-heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero.webp'
+heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero-es.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'ai']
 keywords: ['OpenClaw qué es', 'agente de IA personal código abierto', 'Peter Steinberger historia', 'OpenClaw configuración Markdown', 'proyecto open source más popular GitHub', 'NemoClaw NVIDIA seguridad agentes', 'OpenClaw 2026 reseña']

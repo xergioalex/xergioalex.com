@@ -1,6 +1,6 @@
 ---
 title: 'OpenClaw: Your Assistant. Your Machine. Your Rules. — How It Became a Movement'
-description: 'The story behind OpenClaw — the personal AI agent that went from a WhatsApp hack to 340K GitHub stars. Peter Steinberger, the industry shockwave, and the security mess.'
+description: 'The story of OpenClaw and the birth of personal AI assistants — a new paradigm of local, open agents owned by you, not by a company.'
 pubDate: '2026-04-11'
 heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero.webp'
 heroLayout: 'side-by-side'
