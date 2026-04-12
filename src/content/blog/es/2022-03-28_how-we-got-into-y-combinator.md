@@ -16,7 +16,7 @@ Esto es lo que cambió entre cada aplicación, cómo fue la entrevista de YC y q
 
 ## Por qué seguimos aplicando
 
-Y Combinator no fue la meta desde el día uno. Cuando empezamos DailyBot en 2017 en una hackathon interna de Rocka.co, solo estábamos tratando de resolver nuestro propio problema: demasiado tiempo gastado en check-ins manuales, standups y trabajo admin repetitivo en Slack.
+Y Combinator no fue la meta desde el día uno. Cuando [Mauricio Morales](https://www.linkedin.com/in/maomorales/) — mi co-fundador y CEO de DailyBot — y yo empezamos el prototipo en 2017 en una hackathon interna de [Rocka.co](/es/blog/building-rocka-co-website), solo estábamos tratando de resolver nuestro propio problema: demasiado tiempo gastado en check-ins manuales, standups y trabajo admin repetitivo en Slack. Hay un detalle que siempre me gusta recordar: Mauricio estudió Ciencias de la Computación en la misma UTP donde años después terminaríamos contando esta historia. Hay algo perfecto en ese círculo.
 
 Pero a medida que DailyBot empezó a tener tracción real — equipos usándolo diario, crecimiento orgánico por boca a boca, retención fuerte — empezamos a pensar en grande. Queríamos escalar más rápido. Queríamos mentoría de gente que había construido empresas de miles de millones de dólares. Queríamos ser parte de una red que pudiera ayudarnos a evitar los errores que estábamos por cometer.
 
@@ -52,7 +52,7 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 **Tracción:** ~$5K MRR. Retención decente (70%+ mensual). A los usuarios les encantaba una vez que lo probaban, pero lograr que lo probaran en primer lugar era difícil. Nuestro funnel tenía fugas.
 
-**Lo que aprendimos:** Product-market fit no es solo "la gente usa tu producto." Es "la gente usa tu producto *y* puedes adquirir más de ellos de forma predecible." Teníamos la primera parte, pero no la segunda. YC probablemente vio que todavía estábamos descubriendo la distribución.
+**Lo que aprendimos:** [Product-market fit](/es/blog/looking-for-product-market-fit) no es solo "la gente usa tu producto." Es "la gente usa tu producto *y* puedes adquirir más de ellos de forma predecible." Teníamos la primera parte, pero no la segunda. YC probablemente vio que todavía estábamos descubriendo la distribución.
 
 **Lo que cambiamos:** Nos enfocamos el doble en content marketing, SEO y partnerships de integración (Slack App Directory, marketplace de Microsoft Teams). Empezamos a medir cada paso del funnel: signup -> activación -> primer valor -> retención. Nos pusimos serios sobre entender *cómo* nos descubrían los equipos y qué los hacía quedarse.
 
@@ -84,7 +84,7 @@ Esto es lo que recuerdo:
 
 **Primera pregunta:** "¿Qué hace DailyBot?"
 
-Teníamos 30 segundos para explicarlo. Dije: "DailyBot automatiza standups, check-ins y workflows de equipo dentro de Slack y Teams. Los equipos remotos nos usan para reemplazar meetings de status con actualizaciones asíncronas. Ahorra horas cada semana."
+Teníamos 30 segundos para explicarlo. Respondimos: "DailyBot automatiza standups, check-ins y workflows de equipo dentro de Slack y Teams. Los equipos remotos nos usan para reemplazar meetings de status con actualizaciones asíncronas. Ahorra horas cada semana."
 
 **Las siguientes preguntas vinieron rápido:**
 - "¿Cuánto revenue?" → "$15K MRR, creciendo 15-20% mensual."
@@ -96,13 +96,13 @@ Teníamos 30 segundos para explicarlo. Dije: "DailyBot automatiza standups, chec
 
 Luego hicieron la pregunta más difícil: **"¿Qué pasa si Slack los copia?"**
 
-Dije: "Podrían. Pero Slack quiere vender seats. Nosotros queremos vender productividad. Nuestros incentivos son diferentes. Y para cuando lo construyan, habremos avanzado a la siguiente cosa."
+Respondimos: "Podrían. Pero Slack quiere vender seats. Nosotros queremos vender productividad. Nuestros incentivos son diferentes. Y para cuando lo construyan, habremos avanzado a la siguiente cosa."
 
 Creo que esa respuesta aterrizó.
 
 Toda la entrevista fue bajo 10 minutos. Nos agradecieron. Nos fuimos.
 
-Dos semanas después: **Aceptados en el batch W21 de YC.**
+Dos semanas después: **[Aceptados en el batch S21 de YC](https://www.ycombinator.com/companies/dailybot).**
 
 ---
 

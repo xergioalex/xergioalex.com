@@ -16,7 +16,7 @@ This is what changed between each application, what the YC interview was like, a
 
 ## Why We Kept Applying
 
-Y Combinator wasn't the goal from day one. When we started DailyBot in 2017 at a Rocka.co internal hackathon, we were just trying to solve our own problem: too much time spent on manual check-ins, standups, and repetitive Slack admin work.
+Y Combinator wasn't the goal from day one. When [Mauricio Morales](https://www.linkedin.com/in/maomorales/) — my co-founder and CEO of DailyBot — and I started the prototype in 2017 at a [Rocka.co](/blog/building-rocka-co-website) internal hackathon, we were just trying to solve our own problem: too much time spent on manual check-ins, standups, and repetitive Slack admin work. There's a detail I always love to remember: Mauricio studied Computer Science at the same UTP where years later we'd end up telling this story. There's something perfect about that loop.
 
 But as DailyBot started getting real traction — teams using it daily, organic growth through word of mouth, strong retention — we started thinking bigger. We wanted to scale faster. We wanted mentorship from people who'd built billion-dollar companies. We wanted to be part of a network that could help us avoid the mistakes we were about to make.
 
@@ -52,7 +52,7 @@ Each rejection stung, but each one also taught us something.
 
 **Traction:** ~$5K MRR. Decent retention (70%+ monthly). Users loved it once they tried it, but getting them to try it in the first place was hard. Our funnel was leaky.
 
-**What we learned:** Product-market fit isn't just "people use your product." It's "people use your product *and* you can predictably acquire more of them." We had the first part, but not the second. YC probably saw that we were still figuring out distribution.
+**What we learned:** [Product-market fit](/blog/looking-for-product-market-fit) isn't just "people use your product." It's "people use your product *and* you can predictably acquire more of them." We had the first part, but not the second. YC probably saw that we were still figuring out distribution.
 
 **What we changed:** We doubled down on content marketing, SEO, and integration partnerships (Slack App Directory, Microsoft Teams marketplace). We started measuring every step of the funnel: signup -> activation -> first value -> retention. We got serious about understanding *how* teams discovered us and what made them stick.
 
@@ -84,7 +84,7 @@ Here's what I remember:
 
 **First question:** "What does DailyBot do?"
 
-We had 30 seconds to explain it. I said: "DailyBot automates standups, check-ins, and team workflows inside Slack and Teams. Remote teams use us to replace status meetings with async updates. Saves hours every week."
+We had 30 seconds to explain it. We answered: "DailyBot automates standups, check-ins, and team workflows inside Slack and Teams. Remote teams use us to replace status meetings with async updates. Saves hours every week."
 
 **Next questions came fast:**
 - "How much revenue?" → "$15K MRR, growing 15-20% monthly."
@@ -96,13 +96,13 @@ We had 30 seconds to explain it. I said: "DailyBot automates standups, check-ins
 
 Then they asked the hardest question: **"What if Slack copies you?"**
 
-I said: "They could. But Slack wants to sell seats. We want to sell productivity. Our incentives are different. And by the time they build it, we'll have moved to the next thing."
+We answered: "They could. But Slack wants to sell seats. We want to sell productivity. Our incentives are different. And by the time they build it, we'll have moved to the next thing."
 
 I think that answer landed.
 
 The whole interview was under 10 minutes. They thanked us. We left.
 
-Two weeks later: **Accepted into YC W21 batch.**
+Two weeks later: **[Accepted into YC's S21 batch](https://www.ycombinator.com/companies/dailybot).**
 
 ---
 
