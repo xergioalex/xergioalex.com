@@ -1,6 +1,6 @@
 ---
 title: 'Primeros pasos con OpenClaw: tu primer agente de IA personal'
-description: 'Guía práctica para instalar, configurar y poner en marcha OpenClaw — el framework de agentes personales con 354K estrellas en GitHub. Desde los requisitos del sistema hasta tu primera conversación.'
+description: 'Guía práctica para instalar, configurar y poner en marcha OpenClaw — el framework de agentes personales con 340K+ estrellas en GitHub. Desde los requisitos del sistema hasta tu primera conversación.'
 pubDate: '2026-04-12'
 heroImage: '/images/blog/posts/getting-started-with-openclaw/hero.webp'
 heroLayout: 'side-by-side'
@@ -14,7 +14,7 @@ Después de todo lo que te conté sobre OpenClaw en el capítulo anterior — el
 
 Este capítulo es práctico. Vamos a poner tu propio agente de IA personal corriendo en tu máquina, configurado con tu personalidad, conectado a tus canales de comunicación, y listo para hacer cosas reales. Al final vas a tener un agente que puedes usar desde WhatsApp, Telegram o la terminal — uno que conoce tu nombre, tu zona horaria, tus preferencias, y que responde con la voz que tú le definas.
 
-Tiempo estimado: unos 30 minutos desde cero hasta la primera conversación. A mí me tomó como 45 la primera vez porque me tropecé con un problema de versión de Node que no vi venir, pero más de eso adelante.
+Tiempo estimado: unos 30 minutos desde cero hasta la primera conversación. A mí me tomó casi una hora la primera vez porque me tropecé con un problema de versión de Node que no vi venir, pero más de eso adelante.
 
 ---
 
@@ -165,7 +165,7 @@ Un detalle que me tomó tiempo agregar: especificar "asume competencia técnica.
 
 ```markdown
 ## Herramientas disponibles
-- read, write, exec, browser
+- read, write, exec, browser, search
 
 ## Notas de uso
 - Timeout de 60s para scripts
@@ -191,7 +191,7 @@ El archivo que convierte un chatbot reactivo en algo que realmente hace cosas po
 
 ## Al arrancar
 - Confirmar que los archivos del workspace están intactos
-- Registrar timestamp de inicio en MEMORY.md
+- Registrar timestamp de inicio en memory/startup-log.md
 ```
 
 Sin sintaxis de cron. Lenguaje natural. El agente interpreta "cada lunes a las 08:00 hora local" usando tu zona horaria de USER.md.
@@ -285,7 +285,7 @@ Tu agente ya funciona, pero de fábrica hace lo básico: conversar, leer archivo
 
 Son archivos Markdown que le enseñan nuevas capacidades a tu agente. Piénsalos como recetas — instrucciones paso a paso para tareas específicas. Cada Skill en ClawHub es un servidor MCP por dentro, pero no necesitas saber eso para usarlos.
 
-**ClawHub** es el marketplace. A abril de 2026 tiene más de 44,000 Skills — creció de 5,700 en febrero a 44,000 en dos meses. Los más populares:
+**ClawHub** es el marketplace. A abril de 2026 tiene miles de Skills — y sigue creciendo rápido. Los más populares:
 
 - **Capability Evolver** (35K descargas) — hace que tu agente mejore sus propias habilidades con el tiempo
 - **Gog** Google Workspace (14K descargas) — Gmail, Calendar, Drive
@@ -305,7 +305,7 @@ El Skill se descarga, se registra en tu workspace, y tu agente lo puede usar inm
 2. Un Skill de briefing diario
 3. Un Skill de calendario (si usas Google Calendar o Outlook)
 
-No instales todo de una vez. En serio. La tentación es enorme — 44,000 Skills y quieres probarlos todos. Pero empezar con demasiados Skills es confuso tanto para ti como para el agente. Agrega uno por semana.
+No instales todo de una vez. En serio. La tentación es enorme — miles de Skills y quieres probarlos todos. Pero empezar con demasiados Skills es confuso tanto para ti como para el agente. Agrega uno por semana.
 
 **Crear tu propio Skill:**
 
@@ -373,7 +373,7 @@ Después de configurar mi agente y de leer decenas de hilos en Discord de gente 
 3. ¿Es válida tu API key?
 4. ¿Hay errores en el log del gateway? `openclaw logs`
 
-El 80% de los problemas que veo en Discord se resuelven con uno de estos cuatro pasos.
+Nueve de cada diez problemas que veo en Discord se resuelven con uno de estos cuatro pasos.
 
 **Mantén MEMORY.md podado.** Revísalo cada mes. Borra lo que ya no sea relevante. Máximo unas 100 líneas.
 
@@ -397,6 +397,7 @@ A seguir construyendo.
 ## Recursos
 
 - [Documentación de OpenClaw](https://docs.openclaw.ai/) — Guías de instalación, referencia de API, y todo lo que necesitas para profundizar
-- [ClawHub — Marketplace de Skills](https://clawhub.ai/) — El registro público con más de 44,000 Skills disponibles para tu agente
+- [OpenClaw en GitHub](https://github.com/openclaw/openclaw) — El repositorio del proyecto con 340K+ estrellas y 1,200+ contribuidores
+- [ClawHub — Marketplace de Skills](https://clawhub.ai/) — El registro público de Skills comunitarios
 - [MCP — Model Context Protocol](https://modelcontextprotocol.io/) — La especificación del protocolo que conecta agentes con herramientas externas
-- [OpenClaw en GitHub](https://github.com/openclaw/openclaw) — El repositorio del proyecto con ~354K estrellas y 1,200+ contribuidores
+- [Avisos de seguridad de OpenClaw](https://github.com/openclaw/openclaw/security/advisories) — CVEs conocidos y parches

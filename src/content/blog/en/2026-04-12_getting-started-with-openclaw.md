@@ -1,6 +1,6 @@
 ---
 title: 'Getting Started with OpenClaw: Your First Personal AI Agent'
-description: 'A hands-on guide to installing, configuring, and running OpenClaw — the personal AI agent framework with 354K GitHub stars. From system requirements to your first conversation.'
+description: 'A hands-on guide to installing, configuring, and running OpenClaw — the personal AI agent framework with 340K+ GitHub stars. From system requirements to your first conversation.'
 pubDate: '2026-04-12'
 heroImage: '/images/blog/posts/getting-started-with-openclaw/hero.webp'
 heroLayout: 'side-by-side'
@@ -14,7 +14,7 @@ After everything I told you about OpenClaw in the last chapter -- the record-bre
 
 Let's get your own personal AI agent running on your machine. This is a practical walkthrough. Not theory, not hype analysis, not "the future of computing." Just: here's how you get a thing working, and here's what I learned while doing it.
 
-By the end of this chapter, you'll have a working personal AI agent you can talk to from WhatsApp, Telegram, or your terminal. You'll understand the 7 Markdown files that define everything about how it behaves. And you'll have your first Skills installed. The whole process should take about 30 minutes from zero to first conversation -- though I'll be honest, it took me closer to an hour on my first attempt because I hit two problems I'll tell you about.
+By the end of this chapter, you'll have a working personal AI agent you can talk to from WhatsApp, Telegram, or your terminal. You'll understand the 7 Markdown files that define everything about how it behaves. And you'll have your first Skills installed. The whole process should take about 30 minutes from zero to first conversation -- though I'll be honest, it took me closer to an hour on my first attempt because I hit a Node version problem I'll tell you about.
 
 What you need: a computer running macOS, Linux, or Windows with WSL2. Node.js. And an API key for at least one model provider -- OpenAI, Anthropic, Google, or a local model running through Ollama. That's it.
 
@@ -266,7 +266,7 @@ Try a few things in that first session: ask it something that should trigger a h
 
 This is where OpenClaw goes from "interesting personal chatbot" to "actual useful agent." Skills are Markdown files that teach your agent new capabilities. Every Skill you install from ClawHub is technically an MCP server under the hood -- but you don't need to know that to use them.
 
-**ClawHub** is the marketplace. Over 44,000 community-built Skills across categories like Productivity, Development, Automation, Communication, Finance, and Health. Some of the most popular:
+**ClawHub** is the marketplace. Thousands of community-built Skills across categories like Productivity, Development, Automation, Communication, Finance, and Health. Some of the most popular:
 
 - **Capability Evolver** -- 35,000+ downloads. Helps your agent learn new skills autonomously.
 - **Gog** (Google Workspace integration) -- 14,000+ downloads. Gmail, Calendar, Drive access.
@@ -374,7 +374,8 @@ Let's keep building.
 
 ## Resources
 
-- [OpenClaw Documentation](https://docs.openclaw.ai/)
-- [ClawHub — Skills Marketplace](https://clawhub.ai/)
-- [MCP — Model Context Protocol](https://modelcontextprotocol.io/)
-- [OpenClaw on GitHub](https://github.com/openclaw/openclaw)
+- [OpenClaw Documentation](https://docs.openclaw.ai/) -- Installation guides, API reference, and everything you need to go deeper
+- [OpenClaw on GitHub](https://github.com/openclaw/openclaw) -- The repository with 340K+ stars and 1,200+ contributors
+- [ClawHub — Skills Marketplace](https://clawhub.ai/) -- Community-built skills registry
+- [MCP — Model Context Protocol](https://modelcontextprotocol.io/) -- The protocol specification that connects agents to external tools
+- [OpenClaw Security Advisories](https://github.com/openclaw/openclaw/security/advisories) -- Known CVEs and patches
