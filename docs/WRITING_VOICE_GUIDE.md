@@ -1,5 +1,7 @@
 # Writing Voice Guide
 
+> **Companion doc:** [Writing Craft Guide](./WRITING_CRAFT_GUIDE.md) — covers narrative structure, fact verification, quote handling, figure markup, refinement patterns, and case studies. This guide focuses on **voice** (vocabulary, tone, anti-AI-slop); the craft guide focuses on **how to build an article**. Both are mandatory reading.
+
 ## 1. Purpose
 
 Avoiding AI slop in blog content is critical. An internal audit identified 6 specific patterns that trigger the perception of AI-generated writing, and this document captures the author's authentic voice characteristics and provides a checklist to prevent AI-sloppy content going forward.

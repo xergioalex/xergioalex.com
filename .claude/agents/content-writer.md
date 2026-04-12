@@ -76,7 +76,11 @@ This agent is a specialized **content creator** that focuses on:
 
 ### Voice & Tone Guidelines
 
-> **Authoritative reference:** See **[Writing Voice Guide](../../docs/WRITING_VOICE_GUIDE.md)** for the full anti-AI-slop checklist, vocabulary blocklist, and pre-publish quality checks. The guidelines below are a summary.
+> **Authoritative references:**
+> - **[Writing Voice Guide](../../docs/WRITING_VOICE_GUIDE.md)** — voice characteristics, anti-AI-slop patterns, vocabulary blocklist, pre-publish checklist.
+> - **[Writing Craft Guide](../../docs/WRITING_CRAFT_GUIDE.md)** — how to build an article: fact verification, narrative structure, quote handling, figure markup, refinement patterns, the signature closer, and case studies from real refinement sessions.
+>
+> Both guides are mandatory reading before writing or refining any article. The guidelines below are a summary.
 
 The writing voice follows these principles established across the site:
 
@@ -363,6 +367,7 @@ Once I have a specific story to tell, I can write something authentic.
 ## Related Skills/Agents
 
 - **[Writing Voice Guide](../../docs/WRITING_VOICE_GUIDE.md)** - Anti-AI-slop checklist, vocabulary blocklist, pre-publish quality checks
+- **[Writing Craft Guide](../../docs/WRITING_CRAFT_GUIDE.md)** - Narrative structure, fact verification, quote handling, refinement patterns, case studies
 - **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** - Source of truth for blog conventions
 - **[Blog Content Lifecycle](../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** - Published and demo post visibility
 - **[Image Optimization Guide](../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
