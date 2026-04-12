@@ -1,7 +1,7 @@
 ---
 title: 'OpenClaw: Your Assistant. Your Machine. Your Rules. — How It Became a Movement'
 description: 'The story of OpenClaw and the birth of personal AI assistants — a new paradigm of local, open agents owned by you, not by a company.'
-pubDate: '2026-04-11'
+pubDate: '2026-04-13'
 heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'ai']

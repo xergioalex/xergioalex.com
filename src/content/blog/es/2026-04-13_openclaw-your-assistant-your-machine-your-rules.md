@@ -1,7 +1,7 @@
 ---
 title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas. — Cómo se convirtió en un movimiento'
 description: 'La historia de OpenClaw y el nacimiento de los asistentes personales de IA — un paradigma de agentes locales, abiertos y tuyos, no de una empresa.'
-pubDate: '2026-04-11'
+pubDate: '2026-04-13'
 heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero-es.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'ai']
