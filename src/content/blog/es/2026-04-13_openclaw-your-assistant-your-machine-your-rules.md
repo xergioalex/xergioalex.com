@@ -20,7 +20,7 @@ Esa descripción ya suena poderosa. Pero ni siquiera captura lo que pasó despu�
 
 Pero hizo todo eso. Y creo que la razón es simple: OpenClaw no resolvió un problema técnico. Resolvió uno humano. La idea de que tu asistente de IA debería ser *tuyo* — no alquilado, no encerrado detrás de una suscripción, no controlado por una plataforma — resulta que era algo que mucha gente estaba esperando sin saberlo.
 
-Ya había escrito sobre OpenClaw en mi serie [Working with Agents](/es/blog/series/working-with-agents). Pero este proyecto merece su propio espacio. La persona detrás, las decisiones técnicas, el caos comunitario, los problemas de seguridad, la explosión del ecosistema — entender OpenClaw es entender hacia dónde va la computación personal.
+Ya había escrito sobre OpenClaw en mi serie [Trabajando con Agentes](/es/blog/series/working-with-agents). Pero este proyecto merece su propio espacio. La persona detrás, las decisiones técnicas, el caos comunitario, los problemas de seguridad, la explosión del ecosistema — entender OpenClaw es entender hacia dónde va la computación personal.
 
 Empecemos por la persona. Porque esta historia no tiene sentido sin él.
 
@@ -49,7 +49,7 @@ En mayo de 2025, [tuiteó](https://x.com/steipete/status/1925983535958999393) un
 <figcaption>Peter Steinberger en X, mayo 2025: "When you get your spark back." — <a href="https://x.com/steipete/status/1925983535958999393">Ver tweet original</a>.</figcaption>
 </figure>
 
-Un mes después publicó [*"Finding My Spark Again"*](https://steipete.me/posts/2025/finding-my-spark-again) en su blog — un post donde cuenta todo el proceso, desde el vacío hasta el momento en que se sentó frente a la terminal y algo hizo click de nuevo.
+Un mes después publicó [*"Finding My Spark Again"*](https://steipete.me/posts/2025/finding-my-spark-again) ("Encontrando mi chispa de nuevo") en su blog — un post donde cuenta todo el proceso, desde el vacío hasta el momento en que se sentó frente a la terminal y algo hizo click de nuevo.
 
 Volvió distinto. Más ligero. Más directo sobre lo que quería. Lo resumió en [una frase que luego citó Frederick AI](https://www.frederick.ai/blog/peter-steinberger-openclaw): *"I don't do this for the money. I want to have fun and have impact."* ("No hago esto por el dinero. Quiero divertirme y tener impacto.")
 
