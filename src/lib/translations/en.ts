@@ -991,7 +991,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'the-library-of-tomorrow':
       "Reviews and reflections on sci-fi books, movies, and stories — where classic science fiction meets today's AI revolution. Born from a reading club inside the Pereira Tech Talks community.",
     'mastering-openclaw':
-      "A deep dive into OpenClaw — the personal AI agent that broke GitHub records. From Peter Steinberger's story to installation, Skills, security, and where personal AI is heading.",
+      'A deep dive into OpenClaw — the personal AI agent that lives on your machine, follows your rules, and gave rise to a new paradigm of local AI.',
   },
 
   // Date formatting

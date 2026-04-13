@@ -12,16 +12,27 @@ import { EVENTS, trackEvent } from '@/lib/analytics';
 interface ImageInfo {
   src: string;
   alt: string;
+  caption: string;
 }
 
 let dialog: HTMLDialogElement;
 let images: ImageInfo[] = [];
 let currentIndex = 0;
 let currentAlt = '';
+let currentCaption = '';
 let touchStartX = 0;
 
 function getImageSrc(img: HTMLImageElement): string {
   return img.currentSrc || img.src;
+}
+
+function getImageCaption(img: HTMLImageElement): string {
+  const figure = img.closest('figure');
+  if (figure) {
+    const figcaption = figure.querySelector('figcaption');
+    if (figcaption) return figcaption.innerHTML.trim();
+  }
+  return img.alt || '';
 }
 
 function openLightbox(img: HTMLImageElement): void {
@@ -31,10 +42,15 @@ function openLightbox(img: HTMLImageElement): void {
   const allImgs = Array.from(
     article.querySelectorAll<HTMLImageElement>('img')
   ).filter((i) => !i.closest('aside'));
-  images = allImgs.map((i) => ({ src: getImageSrc(i), alt: i.alt || '' }));
+  images = allImgs.map((i) => ({
+    src: getImageSrc(i),
+    alt: i.alt || '',
+    caption: getImageCaption(i),
+  }));
   currentIndex = allImgs.indexOf(img);
-  currentAlt = img.alt || '';
   if (currentIndex < 0) currentIndex = 0;
+  currentAlt = images[currentIndex]?.alt ?? '';
+  currentCaption = images[currentIndex]?.caption ?? '';
 
   dialog?.showModal();
   trackEvent(EVENTS.LIGHTBOX_OPEN);
@@ -53,11 +69,13 @@ function handleImageActivate(e: Event): void {
 function goPrev(): void {
   currentIndex = currentIndex <= 0 ? images.length - 1 : currentIndex - 1;
   currentAlt = images[currentIndex]?.alt ?? '';
+  currentCaption = images[currentIndex]?.caption ?? '';
 }
 
 function goNext(): void {
   currentIndex = currentIndex >= images.length - 1 ? 0 : currentIndex + 1;
   currentAlt = images[currentIndex]?.alt ?? '';
+  currentCaption = images[currentIndex]?.caption ?? '';
 }
 
 function handleKeydown(e: KeyboardEvent): void {
@@ -162,14 +180,15 @@ onMount(() => {
 					<polyline points="15 18 9 12 15 6" />
 				</svg>
 			</button>
-			<button
-				type="button"
-				class="lightbox-image-wrap"
-				aria-label="Close image viewer"
-				on:click={handleImageWrapClick}
-				on:touchstart={handleTouchStart}
-				on:touchend={handleTouchEnd}
-			>
+		<button
+			type="button"
+			class="lightbox-image-wrap"
+			aria-label="Close image viewer"
+			on:click={handleImageWrapClick}
+			on:touchstart={handleTouchStart}
+			on:touchend={handleTouchEnd}
+		>
+			<div class="lightbox-figure">
 				<img
 					src={images[currentIndex]?.src}
 					alt={currentAlt}
@@ -177,7 +196,11 @@ onMount(() => {
 					loading="eager"
 					decoding="async"
 				/>
-			</button>
+				{#if currentCaption}
+					<p class="lightbox-caption">{@html currentCaption}</p>
+				{/if}
+			</div>
+		</button>
 			<button
 				type="button"
 				class="lightbox-nav lightbox-next"
@@ -279,12 +302,41 @@ onMount(() => {
 		font: inherit;
 	}
 
-	.lightbox-image {
+	.lightbox-figure {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		max-width: 100%;
 		max-height: min(85vh, 85dvh);
+	}
+
+	.lightbox-image {
+		max-width: 100%;
+		max-height: min(78vh, 78dvh);
 		width: auto;
 		height: auto;
 		object-fit: contain;
+	}
+
+	.lightbox-caption {
+		margin: 0.75rem 0 0;
+		padding: 0 1rem;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 0.875rem;
+		line-height: 1.4;
+		text-align: center;
+		max-width: 48rem;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+	}
+
+	.lightbox-caption :global(a) {
+		color: rgba(200, 220, 255, 0.95);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.lightbox-caption :global(a:hover) {
+		color: white;
 	}
 
 	.lightbox-nav {
@@ -377,8 +429,17 @@ onMount(() => {
 			max-height: min(80vh, 80dvh);
 		}
 
-		.lightbox-image {
+		.lightbox-figure {
 			max-height: min(80vh, 80dvh);
+		}
+
+		.lightbox-image {
+			max-height: min(72vh, 72dvh);
+		}
+
+		.lightbox-caption {
+			font-size: 0.8125rem;
+			margin-top: 0.5rem;
 		}
 
 		.lightbox-prev {

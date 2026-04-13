@@ -1002,7 +1002,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'the-library-of-tomorrow':
       'Reseñas y reflexiones sobre libros, películas e historias de ciencia ficción — donde la ciencia ficción clásica se encuentra con la revolución actual de la IA. Nacida de un club de lectura dentro de la comunidad de Pereira Tech Talks.',
     'mastering-openclaw':
-      'Una inmersión profunda en OpenClaw — el agente de IA personal que rompió todos los récords de GitHub. Desde la historia de Peter Steinberger hasta instalación, Skills, seguridad y hacia dónde va la IA personal.',
+      'Una inmersión profunda en OpenClaw — el agente de IA personal que vive en tu máquina, sigue tus reglas, y marcó un nuevo paradigma de IA local.',
   },
 
   // Date formatting
