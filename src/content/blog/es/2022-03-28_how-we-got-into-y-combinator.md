@@ -16,7 +16,7 @@ Esto es lo que cambió entre cada aplicación, cómo fue la entrevista de YC y q
 
 ## Por qué seguimos aplicando
 
-Y Combinator no fue la meta desde el día uno. Cuando empezamos DailyBot en 2017 en una hackathon interna de Rocka.co, solo estábamos tratando de resolver nuestro propio problema: demasiado tiempo gastado en check-ins manuales, standups y trabajo admin repetitivo en Slack.
+Y Combinator no fue la meta desde el día uno. Cuando [Mauricio Morales](https://www.linkedin.com/in/maomorales/) — mi co-fundador y CEO de DailyBot — y yo empezamos el prototipo en 2017 en una hackathon interna de [Rocka.co](/es/blog/building-rocka-co-website), solo estábamos tratando de resolver nuestro propio problema: demasiado tiempo gastado en check-ins manuales, standups y trabajo admin repetitivo en Slack.
 
 Pero a medida que DailyBot empezó a tener tracción real — equipos usándolo diario, crecimiento orgánico por boca a boca, retención fuerte — empezamos a pensar en grande. Queríamos escalar más rápido. Queríamos mentoría de gente que había construido empresas de miles de millones de dólares. Queríamos ser parte de una red que pudiera ayudarnos a evitar los errores que estábamos por cometer.
 
@@ -36,9 +36,9 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 **El problema:** No éramos suficientemente específicos. "Automatiza trabajo" podía significar cualquier cosa. El producto hacía demasiadas cosas y no habíamos descubierto cuál era el valor central todavía. Nuestro pitch se sentía vago porque *nosotros* todavía estábamos vagos sobre qué estábamos construyendo.
 
-**Tracción:** Unas pocas docenas de equipos usándolo. Algunos clientes pagando, pero no suficientes para mostrar momentum real. Los ingresos recurrentes mensuales estaban bajo $1K. El crecimiento era lento y mayormente impulsado por nosotros contactando gente manualmente.
+**Tracción:** Unos cientos de equipos usándolo. Algunos clientes pagando, pero no suficientes para mostrar momentum real. Los ingresos recurrentes mensuales estaban bajo $1K. El crecimiento era lento y mayormente impulsado por nosotros contactando gente manualmente.
 
-**Lo que aprendimos:** YC no financia ideas. Financian tracción. No teníamos suficiente prueba de que la gente realmente quería esto todavía. El producto funcionaba, pero el mercado no lo estaba jalando de nosotros — nosotros lo estábamos empujando.
+**Lo que aprendimos:** YC no financia ideas. Financian tracción. No teníamos suficiente prueba de que la gente realmente quería esto todavía. El producto funcionaba, pero el mercado no lo estaba pidiendo — nosotros lo estábamos empujando.
 
 **Lo que cambiamos:** Dejamos de intentar ser todo para todos. Nos enfocamos en un caso de uso central: **standups y check-ins asincrónicos para equipos remotos**. Empezamos a hablar más con usuarios, construir features que realmente pedían y rastrear la retención obsesivamente.
 
@@ -52,7 +52,7 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 **Tracción:** ~$5K MRR. Retención decente (70%+ mensual). A los usuarios les encantaba una vez que lo probaban, pero lograr que lo probaran en primer lugar era difícil. Nuestro funnel tenía fugas.
 
-**Lo que aprendimos:** Product-market fit no es solo "la gente usa tu producto." Es "la gente usa tu producto *y* puedes adquirir más de ellos de forma predecible." Teníamos la primera parte, pero no la segunda. YC probablemente vio que todavía estábamos descubriendo la distribución.
+**Lo que aprendimos:** [Product-market fit](/es/blog/looking-for-product-market-fit) no es solo "la gente usa tu producto." Es "la gente usa tu producto *y* puedes adquirir más de ellos de forma predecible." Teníamos la primera parte, pero no la segunda. YC probablemente vio que todavía estábamos descubriendo la distribución.
 
 **Lo que cambiamos:** Nos enfocamos el doble en content marketing, SEO y partnerships de integración (Slack App Directory, marketplace de Microsoft Teams). Empezamos a medir cada paso del funnel: signup -> activación -> primer valor -> retención. Nos pusimos serios sobre entender *cómo* nos descubrían los equipos y qué los hacía quedarse.
 
@@ -64,13 +64,13 @@ Cada rechazo dolió, pero cada uno también nos enseñó algo.
 
 **El problema:** Esta vez, no había uno. El pitch era apretado. El producto estaba enfocado. La tracción era real.
 
-**Tracción:** ~$15K MRR y creciendo 15-20% mes a mes. Cientos de equipos pagando. Canales de adquisición claros (Slack App Directory estaba impulsando 40% de los signups). Retención fuerte (75%+ mensual, 85%+ anual). Teníamos referencias de clientes que hablaban maravillas de nosotros.
+**Tracción:** Unos miles de dólares al mes en MRR y creciendo 15-20% mes a mes. Cientos de equipos pagando. Canales de adquisición claros (Slack App Directory estaba impulsando 40% de los signups). Retención fuerte. Teníamos referencias de clientes que hablaban maravillas de nosotros.
 
 **Lo que cambió:** Ya no estábamos adivinando. Sabíamos quiénes eran nuestros clientes (empresas tech remote-first, 10-100 empleados), sabíamos por qué compraban (querían reducir overhead de meetings y mejorar comunicación asíncrona), y sabíamos cómo nos encontraban (app directories, contenido, boca a boca).
 
 También aprendimos a contar mejor la historia. En vez de listar features, nos enfocamos en el *resultado*: "Los equipos ahorran 5+ horas por semana automatizando trabajo repetitivo." Eso resonó.
 
-**La aplicación:** La reescribimos desde cero. Fuimos honestos sobre qué funcionaba y qué no. Mostramos la gráfica de crecimiento. Explicamos nuestro wedge (standups asincrónicos) y nuestra visión a largo plazo (convertirnos en el OS para automatización de trabajo remoto). Nombramos a nuestros competidores más grandes (Geekbot, Polly) y explicamos por qué estábamos ganando.
+**La aplicación:** La reescribimos desde cero. Fuimos honestos sobre qué funcionaba y qué no. Mostramos la gráfica de crecimiento. Explicamos nuestro wedge (standups asincrónicos) y nuestra visión a largo plazo (convertirnos en el OS para automatización de trabajo remoto). Nombramos a nuestros competidores más grandes y explicamos cómo estábamos compitiendo a la par.
 
 Esta vez, conseguimos una entrevista.
 
@@ -78,31 +78,39 @@ Esta vez, conseguimos una entrevista.
 
 ## La entrevista de Y Combinator
 
-La entrevista de YC son 10 minutos. Eso es todo. Estás en una videollamada con 3-5 partners, y hacen preguntas rápidas. Sin slides. Sin pitch deck. Solo tú, tus co-fundadores y una conversación.
+La entrevista de YC son 10 minutos. Eso es todo. Diez minutos con 3-5 partners donde tienes que convencerlos de que lo que estás construyendo importa. Sin slides. Sin pitch deck. Solo tú, tus co-fundadores y esas preguntas rápidas.
+
+Antes de 2020, esos 10 minutos implicaban volar hasta San Francisco — miles de dólares en vuelos, hotel y comida — todo por una conversación corta. La pandemia cambió eso: YC movió todo a videollamada y ese formato se quedó. Las entrevistas siguen siendo virtuales hoy, aunque el programa del batch — una vez aceptado — sigue siendo presencial.
+
+A nosotros nos tocó exactamente esa transición. La tercera aplicación cayó en 2021, así que nuestra entrevista fue por videollamada. Nos ahorramos el viaje: esos 10 minutos pasaron desde una pantalla en vez de desde un conference room en Silicon Valley.
 
 Esto es lo que recuerdo:
 
 **Primera pregunta:** "¿Qué hace DailyBot?"
 
-Teníamos 30 segundos para explicarlo. Dije: "DailyBot automatiza standups, check-ins y workflows de equipo dentro de Slack y Teams. Los equipos remotos nos usan para reemplazar meetings de status con actualizaciones asíncronas. Ahorra horas cada semana."
+Teníamos 30 segundos para explicarlo. Respondimos: "DailyBot automatiza standups, check-ins y workflows de equipo dentro de Slack y Teams. Los equipos remotos nos usan para reemplazar meetings de status con actualizaciones asíncronas. Ahorra horas cada semana."
 
 **Las siguientes preguntas vinieron rápido:**
-- "¿Cuánto revenue?" → "$15K MRR, creciendo 15-20% mensual."
-- "¿Cómo te encuentra la gente?" → "Slack App Directory, contenido, integraciones."
-- "¿Quiénes son tus competidores?" → "Geekbot, Polly. Tenemos mejor IA, más integraciones y workflows asincrónicos más fuertes."
+- "¿Cuánto revenue?" → "Unos miles de dólares al mes en MRR, creciendo 15-20% mensual."
+- "¿Cómo te encuentra la gente?" → "Los app directories de las plataformas donde teníamos integraciones — Slack, Microsoft Teams, Google Chat — más contenido y SEO."
+- "¿Quiénes son tus competidores?" → "Los nombramos. Tenemos mejor IA, más integraciones y workflows asincrónicos más fuertes."
 - "¿Cuál es tu wedge?" → "Standups asincrónicos. Una vez que los equipos nos usan para standups, expandimos a encuestas, workflows, kudos, todo dentro del chat."
 - "¿Cuál es el mayor riesgo?" → "Slack o Microsoft podrían construir esto. Pero no lo han hecho en 5 años, y nos movemos más rápido."
 - "¿Por qué ustedes?" → "Hemos sido remote-first por años. Construimos esto para nosotros mismos. Conocemos el dolor."
 
 Luego hicieron la pregunta más difícil: **"¿Qué pasa si Slack los copia?"**
 
-Dije: "Podrían. Pero Slack quiere vender seats. Nosotros queremos vender productividad. Nuestros incentivos son diferentes. Y para cuando lo construyan, habremos avanzado a la siguiente cosa."
+Respondimos: "Podrían. Pero Slack quiere vender seats. Nosotros queremos vender productividad. Nuestros incentivos son diferentes. Y para cuando lo construyan, habremos avanzado a la siguiente cosa."
 
 Creo que esa respuesta aterrizó.
 
+Y antes de cerrar nos lanzaron una última pregunta: **"¿Qué sigue? ¿Hacia dónde quieren llegar?"**
+
+Con base en lo que recuerdo, respondimos algo parecido a esto: "Convertirnos en el sistema operativo del trabajo asincrónico. Los standups son solo nuestro punto de entrada. La visión a largo plazo es que cualquier cosa que hoy requiera un meeting de status — encuestas, check-ins, workflows, reportes, kudos — pueda resolverse dentro del chat, sin interrumpir a nadie, con automatización que se adapte al ritmo de cada equipo. Queremos ser la capa que absorbe todo el trabajo de comunicación asincrónica que hoy se pierde en meetings innecesarios."
+
 Toda la entrevista fue bajo 10 minutos. Nos agradecieron. Nos fuimos.
 
-Dos semanas después: **Aceptados en el batch W21 de YC.**
+Dos semanas después: **[Aceptados en el batch S21 de YC](https://www.ycombinator.com/companies/dailybot).**
 
 ---
 
@@ -176,7 +184,7 @@ Si estás pensando en aplicar a YC, esto es lo que te diría:
 
 ## Dónde estamos ahora
 
-En 2022, DailyBot fue reconocido como una de las [Top Companies de Y Combinator](https://www.ycombinator.com/companies/dailybot). Hemos crecido a miles de equipos, expandido a nuevos mercados y construido features que no podríamos haber imaginado en 2017.
+Hoy DailyBot sigue creciendo. Miles de equipos lo usan, nos hemos expandido a nuevos mercados y hemos construido features que probablemente no habríamos imaginado si no hubiéramos entrado a YC.
 
 Pero lo más importante que aprendimos — de construir en Rocka, de fallar repetidamente, de ser rechazados por YC dos veces, de finalmente entrar — es esto:
 

@@ -422,6 +422,8 @@ $TOPIC: AI
 
 ## Related
 
+- **[Writing Voice Guide](../../../docs/WRITING_VOICE_GUIDE.md)** — MANDATORY READ before topic mode. Voice characteristics, AI-slop blocklist, vocabulary to avoid, pre-publish checklist.
+- **[Writing Craft Guide](../../../docs/WRITING_CRAFT_GUIDE.md)** — MANDATORY READ before topic mode. Narrative structure, fact verification (every claim must be sourced), quote handling, figure markup, refinement patterns, case studies.
 - **[Blog Posts Feature Guide](../../../docs/features/BLOG_POSTS.md)** - Source of truth for blog conventions
 - **[Image Optimization Guide](../../../docs/features/IMAGE_OPTIMIZATION.md)** - Image pipeline and staging workflow
 - [`content-writer`](../../agents/content-writer.md) - Agent persona for complex content projects

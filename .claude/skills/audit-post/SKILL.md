@@ -62,6 +62,7 @@ Before running this skill, ensure:
 - **[Accessibility Guide](../../../docs/ACCESSIBILITY.md)** — Contrast, alt text, heading hierarchy, ARIA
 - **[AEO / Markdown for Agents](../../../docs/aeo/MARKDOWN_FOR_AGENTS.md)** — Agent-friendly Markdown endpoints
 - **[Writing Voice Guide](../../../docs/WRITING_VOICE_GUIDE.md)** — AI slop blocklist, voice patterns, placeholder checks
+- **[Writing Craft Guide](../../../docs/WRITING_CRAFT_GUIDE.md)** — Narrative structure, fact verification, quote handling, figure markup, refinement patterns
 - **[Blog Content Lifecycle](../../../docs/features/BLOG_CONTENT_LIFECYCLE.md)** — Published, scheduled, demo visibility
 
 ## Steps
@@ -244,7 +245,7 @@ grep -rni 'genuinely\|comprehensive\|best-in-class\|beautifully\|radical premise
 
 **6e. Writing voice & personal tone:**
 
-Read the **[Writing Voice Guide](../../../docs/WRITING_VOICE_GUIDE.md)** completely before evaluating. The author's voice has specific characteristics that must be present:
+Read BOTH the **[Writing Voice Guide](../../../docs/WRITING_VOICE_GUIDE.md)** (voice, vocabulary, AI-slop blocklist) and the **[Writing Craft Guide](../../../docs/WRITING_CRAFT_GUIDE.md)** (narrative structure, fact verification, quote handling, figure markup, refinement patterns) completely before evaluating. The author's voice has specific characteristics that must be present:
 
 **Authority style — hard-won, not assumed:**
 - Uses "I learned...", "I noticed...", "In my experience..." — NOT "Studies show...", "Research indicates..."

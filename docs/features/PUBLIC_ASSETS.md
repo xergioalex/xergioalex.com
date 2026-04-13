@@ -147,12 +147,12 @@ public/images/blog/
 
 | Script | Purpose |
 |--------|---------|
-| (inline in layouts) | Theme script inlined — checks `localStorage`, applies `dark` class to `<html>` (no external file) |
+| (inline in layouts) | Theme script inlined — checks `localStorage` then system `prefers-color-scheme`, applies `dark` class to `<html>` (no external file) |
 
 Loaded inline in `MainLayout.astro` to prevent flash of wrong theme:
 
 ```html
-<script is:inline>(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');else{document.documentElement.classList.remove('dark');localStorage.setItem('theme','light');}})();</script>
+<script is:inline>(function(){var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark')document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');})();</script>
 ```
 
 ## Blog Image Conventions
