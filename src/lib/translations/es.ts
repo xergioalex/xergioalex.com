@@ -986,6 +986,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'working-with-agents': 'Trabajando con Agentes',
     'building-agents': 'Construyendo Agentes',
     'the-library-of-tomorrow': 'La Biblioteca del Mañana',
+    'mastering-openclaw': 'Dominando OpenClaw',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1000,6 +1001,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Lo que realmente se necesita para pasar de usar herramientas de IA a construir sistemas de agentes confiables — arquitectura, habilidades y modelos mentales detrás de los agentes reales.',
     'the-library-of-tomorrow':
       'Reseñas y reflexiones sobre libros, películas e historias de ciencia ficción — donde la ciencia ficción clásica se encuentra con la revolución actual de la IA. Nacida de un club de lectura dentro de la comunidad de Pereira Tech Talks.',
+    'mastering-openclaw':
+      'Una inmersión profunda en OpenClaw — el agente de IA personal que vive en tu máquina, sigue tus reglas, y marcó un nuevo paradigma de IA local.',
   },
 
   // Date formatting

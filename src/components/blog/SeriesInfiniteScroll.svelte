@@ -19,6 +19,28 @@ export let emptyStateMessage: string = '';
 export let topicTagNames: string[] = [];
 export let shareUrl: string = '';
 
+let heroDialog: HTMLDialogElement;
+
+function openHeroLightbox(): void {
+  heroDialog?.showModal();
+  trackEvent(EVENTS.LIGHTBOX_OPEN);
+}
+
+function closeHeroLightbox(): void {
+  heroDialog?.close();
+}
+
+function handleHeroBackdropClick(e: MouseEvent): void {
+  if (e.target === e.currentTarget) closeHeroLightbox();
+}
+
+function handleHeroKeydown(e: KeyboardEvent): void {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openHeroLightbox();
+  }
+}
+
 $: encodedTitle = encodeURIComponent(seriesTitle);
 $: encodedUrl = encodeURIComponent(shareUrl);
 $: shareLinks = [
@@ -183,14 +205,21 @@ function formatDate(pubDate: string): string {
       <!-- Image column -->
       {#if seriesHeroImage}
         <div class="overflow-hidden rounded-xl">
-          <img
-            src={seriesHeroImage}
-            alt=""
-            class="block w-full h-auto md:h-96 rounded-xl object-cover shadow-lg ring-1 ring-gray-200 dark:ring-gray-700"
-            loading="eager"
-            width="600"
-            height="400"
-          />
+          <button
+            type="button"
+            class="hero-image-button"
+            aria-label="{seriesTitle} — View full size"
+            on:click={openHeroLightbox}
+          >
+            <img
+              src={seriesHeroImage}
+              alt={seriesTitle}
+              class="block w-full h-auto md:h-96 rounded-xl object-cover shadow-lg ring-1 ring-gray-200 dark:ring-gray-700"
+              loading="eager"
+              width="600"
+              height="400"
+            />
+          </button>
         </div>
       {/if}
     </div>
@@ -336,4 +365,172 @@ function formatDate(pubDate: string): string {
       </div>
     </div>
   {/if}
+
+  <!-- Hero image lightbox -->
+  {#if seriesHeroImage}
+    <dialog
+      bind:this={heroDialog}
+      class="hero-lightbox-dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+    >
+      <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
+      <div
+        class="hero-lightbox-overlay"
+        role="button"
+        aria-label="Close"
+        on:click={handleHeroBackdropClick}
+      >
+        <div class="hero-lightbox-figure">
+          <img
+            src={seriesHeroImage}
+            alt={seriesTitle}
+            class="hero-lightbox-image"
+            loading="eager"
+            decoding="async"
+          />
+          <p class="hero-lightbox-caption">{seriesTitle}</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="hero-lightbox-close"
+        aria-label="Close"
+        on:click={closeHeroLightbox}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </dialog>
+  {/if}
 {/if}
+
+<style>
+	.hero-image-button {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: zoom-in;
+	}
+
+	.hero-lightbox-dialog {
+		margin: 0;
+		padding: 0;
+		border: none;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		max-width: 100vw;
+		max-width: 100dvw;
+		max-height: 100vh;
+		max-height: 100dvh;
+		background: transparent;
+	}
+
+	.hero-lightbox-dialog::backdrop {
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
+	}
+
+	.hero-lightbox-overlay {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(0, 0, 0, 0.45);
+		cursor: pointer;
+		padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+			max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+		box-sizing: border-box;
+	}
+
+	.hero-lightbox-figure {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: min(90vw, 1200px);
+		max-height: min(85vh, 85dvh);
+	}
+
+	.hero-lightbox-image {
+		max-width: 100%;
+		max-height: min(78vh, 78dvh);
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		cursor: default;
+	}
+
+	.hero-lightbox-caption {
+		margin: 0.75rem 0 0;
+		padding: 0 1rem;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 0.875rem;
+		line-height: 1.4;
+		text-align: center;
+		max-width: 48rem;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+	}
+
+	.hero-lightbox-close {
+		position: absolute;
+		z-index: 2;
+		top: max(1rem, env(safe-area-inset-top));
+		right: max(1rem, env(safe-area-inset-right));
+		width: 2.5rem;
+		height: 2.5rem;
+		min-width: 44px;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.1);
+		border: none;
+		border-radius: 50%;
+		color: white;
+		cursor: pointer;
+		transition: background 0.15s ease;
+		touch-action: manipulation;
+	}
+
+	.hero-lightbox-close:hover {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.hero-lightbox-close:focus-visible {
+		outline: 2px solid white;
+		outline-offset: 2px;
+	}
+
+	@media (max-width: 640px) {
+		.hero-lightbox-overlay {
+			padding: max(0.5rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right))
+				max(0.5rem, env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
+		}
+
+		.hero-lightbox-figure {
+			max-width: 95vw;
+			max-height: min(80vh, 80dvh);
+		}
+
+		.hero-lightbox-image {
+			max-height: min(72vh, 72dvh);
+		}
+
+		.hero-lightbox-caption {
+			font-size: 0.8125rem;
+			margin-top: 0.5rem;
+		}
+
+		.hero-lightbox-close {
+			top: max(0.5rem, env(safe-area-inset-top));
+			right: max(0.5rem, env(safe-area-inset-right));
+		}
+	}
+</style>

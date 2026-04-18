@@ -50,15 +50,16 @@ The theme script runs inline before the page paints to prevent flash (no externa
 
 ```javascript
 (function() {
-  const theme = localStorage.getItem('theme');
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  }
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  if (t === 'dark') document.documentElement.classList.add('dark');
+  else document.documentElement.classList.remove('dark');
 })();
 ```
+
+**Priority order:** saved `localStorage` preference > system `prefers-color-scheme` > light (default).
+
+`localStorage` is only written when the user explicitly clicks the toggle, so the site continues to follow system preference changes until the user makes a manual choice.
 
 ## ThemeToggle Component
 
@@ -208,19 +209,17 @@ Implementation note:
 
 ## Storage
 
-Theme preference is stored in `localStorage`:
+Theme preference is stored in `localStorage` only after the user manually toggles:
 
 ```javascript
-// Get
-localStorage.getItem('theme')  // 'dark' | 'light' | null
+// Get — returns 'dark', 'light', or null (no manual choice yet)
+localStorage.getItem('theme')
 
-// Set
+// Set — only written by ThemeToggle on click
 localStorage.setItem('theme', 'dark')
 ```
 
-## System Preference
-
-When no saved preference exists, the system preference is used:
+When `localStorage` has no value (`null`), the system preference is used:
 
 ```javascript
 window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -5,14 +5,14 @@ pubDate: "2026-04-07"
 heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai", "personal"]
-keywords: ["Claude Mythos Preview vulnerabilidades zero-day", "Project Glasswing Anthropic ciberseguridad", "IA descubre vulnerabilidades 2026", "Claude Mythos benchmarks rendimiento", "revolución IA ciberseguridad zero-day", "Anthropic coalición seguridad $100M", "IA encuentra bug de 27 años OpenBSD"]
+keywords: ["Claude Mythos Preview vulnerabilidades zero-day", "Project Glasswing Anthropic ciberseguridad", "IA descubre vulnerabilidades 2026", "Claude Mythos benchmarks rendimiento", "revolución IA ciberseguridad zero-day", "Anthropic coalición seguridad $100M", "IA encuentra bug de 28 años OpenBSD"]
 series: "working-with-agents"
 seriesOrder: 5
 ---
 
 Parecía un día normal hasta que me puse a revisar mis redes y vi en tendencia que Anthropic había construido un modelo tan poderoso que se niegan a liberarlo al público. No pude parar de leer. Estuve un par de horas saltando de hilo en hilo, de artículo en artículo, tratando de entender la magnitud de lo que estaba pasando.
 
-Y es que no estamos hablando de "un modelo que rinde bien en benchmarks." Ni de "una mejora incremental sobre la generación anterior." Estamos hablando de un modelo que la empresa que lo construyó considera demasiado peligroso para ponerlo en manos de cualquiera. Claude Mythos Preview encontró miles de fallas de seguridad desconocidas — lo que en la industria llaman "zero-days" — en todos los sistemas operativos principales y todos los navegadores web principales. Fallas que llevaban escondidas 27 años. Algunas permiten tomar el control total de un servidor desde cualquier parte del mundo, sin contraseña, sin permiso. El costo de encontrar algunas de ellas? Menos de cincuenta dólares.
+Y es que no estamos hablando de "un modelo que rinde bien en benchmarks." Ni de "una mejora incremental sobre la generación anterior." Estamos hablando de un modelo que la empresa que lo construyó considera demasiado peligroso para ponerlo en manos de cualquiera. Claude Mythos Preview encontró miles de fallas de seguridad desconocidas — lo que en la industria llaman "zero-days" — en todos los sistemas operativos principales y todos los navegadores web principales. Fallas que llevaban escondidas 28 años. Algunas permiten tomar el control total de un servidor desde cualquier parte del mundo, sin contraseña, sin permiso. El costo de encontrar algunas de ellas? Menos de cincuenta dólares.
 
 Si eso es real — y la [evidencia](https://red.anthropic.com/2026/mythos-preview/) dice que sí — estamos viendo uno de esos momentos que dividen la línea del tiempo en antes y después.
 
@@ -56,19 +56,19 @@ Y estos no eran hallazgos fáciles — eran del tipo que anteriormente requería
 
 Las fallas específicas que encontró cuentan la historia mejor que cualquier resumen.
 
-**El bug de OpenBSD — 27 años, encontrado por $50.**
+**El bug de OpenBSD — 28 años, encontrado por $50.**
 
-[OpenBSD](https://www.openbsd.org/) es uno de los sistemas operativos más endurecidos en seguridad jamás construidos. Toda su identidad es la seguridad — es lo que usan bancos y gobiernos cuando necesitan software que no falle. Mythos encontró una falla en cómo maneja las conexiones de red, enterrada en el código desde 1999. El tipo de bug que pasa todas las pruebas automatizadas y todas las revisiones de código porque solo se activa bajo condiciones muy específicas. La ejecución específica que la encontró costó unos $50. Mil ejecuciones para escanear esa área a fondo costaron menos de $20,000 en total.
+[OpenBSD](https://www.openbsd.org/) es uno de los sistemas operativos más endurecidos en seguridad jamás construidos. Toda su identidad es la seguridad — es lo que usan bancos y gobiernos cuando necesitan software que no falle. Mythos encontró una falla en cómo maneja las conexiones de red, enterrada en el código desde 1998. El tipo de bug que pasa todas las pruebas automatizadas y todas las revisiones de código porque solo se activa bajo condiciones muy específicas. La ejecución específica que la encontró costó unos $50. Mil ejecuciones para escanear esa área a fondo costaron menos de $20,000 en total.
 
-$50. Para encontrar algo que los mejores investigadores de seguridad del mundo pasaron por alto durante 27 años.
+$50. Para encontrar algo que los mejores investigadores de seguridad del mundo pasaron por alto durante 28 años.
 
-**El control total de FreeBSD — completamente autónomo, menos de $1,000.**
+**El control total de FreeBSD — completamente autónomo, menos de $2,000.**
 
 Este es el que más asusta. [FreeBSD](https://www.freebsd.org/) es otro sistema operativo usado ampliamente en servidores, infraestructura de red y servicios como Netflix y WhatsApp. Mythos encontró una falla en su sistema de archivos compartidos — un lugar donde el software no verifica correctamente cuántos datos está recibiendo. Y luego, sin ninguna ayuda humana, construyó un ataque completo desde cero.
 
 Descubrió cómo comunicarse con el servidor, encontró la forma de engañarlo, y terminó otorgándose acceso total de administrador — el tipo que te permite hacer cualquier cosa con la máquina. Leer cualquier archivo. Instalar cualquier programa. Tomar el control completo.
 
-Control total del servidor, sin contraseña, desde cualquier lugar del mundo. "Varias horas" de trabajo autónomo. Costo: menos de $1,000.
+Control total del servidor, sin contraseña, desde cualquier lugar del mundo. "Varias horas" de trabajo autónomo. Costo: menos de $2,000.
 
 Un consultor de seguridad de primer nivel cobra alrededor de $200/hora. Este modelo hizo en unas horas lo que un equipo de ellos tardaría semanas en lograr, por menos del costo de un solo día de consultoría.
 
@@ -82,7 +82,7 @@ Esta comparación me dejó frío. El equipo de seguridad de Anthropic le pidió 
 
 Claude Opus 4.6 — uno de los modelos de razonamiento frontera más potentes de la actualidad — lo logró 2 veces de varios cientos de intentos.
 
-Mythos: **181 de 210 intentos.**
+Mythos: **181 exploits exitosos de varios cientos de intentos.** Más 29 adicionales donde logró control parcial.
 
 2 contra 181. Las mismas fallas. La misma prueba. Eso no es una mejora incremental. Es una categoría completamente diferente de capacidad.
 
@@ -141,11 +141,11 @@ No liberaron el modelo. No lo pusieron disponible con lista de espera. Armaron [
 
 $100 millones en créditos de uso de Mythos Preview para estos socios. $4 millones en donaciones directas a organizaciones que mantienen software de código abierto — el tipo de software gratuito que sirve de base para la mayoría de los sistemas del mundo. Estas son las personas que mantienen el código sobre el que todo lo demás corre, y lo han hecho históricamente en gran medida solos.
 
-El marco es cuidadoso. Están usando compromisos criptográficos — prueba matemática de que encontraron vulnerabilidades específicas, sin revelar cuáles son, para poder demostrar sus hallazgos después cuando los parches estén en su lugar. Una línea de tiempo de divulgación coordinada de 90 días. 89% de coincidencia exacta en severidad entre las evaluaciones del modelo y los validadores humanos expertos. Un programa de verificación para profesionales de seguridad legítimos que quieran acceso.
+El marco es cuidadoso. Están usando compromisos criptográficos — prueba matemática de que encontraron vulnerabilidades específicas, sin revelar cuáles son, para poder demostrar sus hallazgos después cuando los parches estén en su lugar. Una línea de tiempo de divulgación coordinada de 90+45 días. 89% de coincidencia exacta en severidad entre las evaluaciones del modelo y los validadores humanos expertos. Un programa de verificación para profesionales de seguridad legítimos que quieran acceso.
 
 El precio, cuando entre en funcionamiento para participantes aprobados: $25 por cada millón de palabras que le das, $125 por cada millón que te responde. No es barato. Pero dado lo que puede encontrar, potencialmente la mejor inversión en seguridad que cualquiera puede hacer.
 
-El CTO de CrowdStrike [lo dijo bien](https://www.crowdstrike.com/en-us/blog/crowdstrike-founding-member-anthropic-mythos-frontier-model-to-secure-ai/): *"This is not a reason to slow down; it's a reason to move together, faster."* ("Esto no es razón para ir más despacio; es razón para movernos juntos, más rápido.")
+Como [lo expresó CrowdStrike](https://www.crowdstrike.com/en-us/blog/crowdstrike-founding-member-anthropic-mythos-frontier-model-to-secure-ai/): *"This is not a reason to slow down; it's a reason to move together, faster."* ("Esto no es razón para ir más despacio; es razón para movernos juntos, más rápido.")
 
 ---
 
@@ -157,9 +157,9 @@ Las reacciones de personas que realmente trabajan en seguridad te dicen que esto
 
 Greg Kroah-Hartman, uno de los responsables de mantener el corazón del sistema operativo Linux, [notó el cambio](https://www.theregister.com/2026/03/26/greg_kroahhartman_ai_kernel/) antes del anuncio: *"Something happened a month ago... Now we have real reports... good, and real."* ("Algo pasó hace un mes... Ahora tenemos reportes reales... buenos, y reales.") Los reportes de vulnerabilidad generados por IA pasaron de ser ruido — lo que Daniel Stenberg, creador de una de las herramientas más usadas de internet (curl), [llamó](https://mastodon.social/@bagder/116336957584445742) un *"AI slop tsunami"* ("tsunami de basura de IA") — a ser un *"plain security report tsunami"* ("tsunami de reportes de seguridad legítimos"). Hallazgos reales. Fallas reales. Ataques funcionales reales.
 
-El mercado también lo sintió. Cuando Fortune [reportó sobre Mythos en marzo](https://fortune.com/2026/04/07/anthropic-claude-mythos-model-project-glasswing-cybersecurity/), las acciones de ciberseguridad cayeron 5-11%. CrowdStrike, Palo Alto Networks, Zscaler, SentinelOne, Okta — todas afectadas. Los inversionistas temían que el descubrimiento de vulnerabilidades potenciado por IA pudiera socavar la demanda de productos de seguridad tradicionales.
+El mercado también lo sintió. Cuando [se conoció la noticia sobre Mythos](https://fortune.com/2026/04/07/anthropic-claude-mythos-model-project-glasswing-cybersecurity/), las acciones de ciberseguridad cayeron 5-11%. CrowdStrike, Palo Alto Networks, Zscaler, SentinelOne, Okta — todas afectadas. Los inversionistas temían que el descubrimiento de vulnerabilidades potenciado por IA pudiera socavar la demanda de productos de seguridad tradicionales.
 
-Igor Tsyganskiy, vicepresidente ejecutivo de Ciberseguridad de Microsoft, [lo enmarcó](https://www.anthropic.com/glasswing) en términos que deberían hacer que todos presten atención: *"The window between vulnerability discovery and exploitation has collapsed — now minutes with AI."* ("La ventana entre el descubrimiento de vulnerabilidades y la explotación se ha colapsado — ahora minutos con IA.")
+Elia Zaitsev, CTO de CrowdStrike, [lo enmarcó](https://www.anthropic.com/glasswing) en términos que deberían hacer que todos presten atención: *"The window between vulnerability discovery and exploitation has collapsed — now minutes with AI."* ("La ventana entre el descubrimiento de vulnerabilidades y la explotación se ha colapsado — ahora minutos con IA.")
 
 Minutos. No semanas. No días. Minutos.
 
@@ -185,7 +185,7 @@ El mismo modelo que encuentra zero-days podría ser el que revise tu código en 
 
 Eso corta en ambas direcciones. Hoy los agentes de IA envían features, escriben documentación, construyen interfaces. Y están impulsados por el mismo tipo de inteligencia que acaba de encontrar miles de zero-days. Cualquiera que trabaje con estos modelos debería estar revisando sus propias configuraciones de seguridad después de este anuncio.
 
-Jim Zemlin, CEO de la Linux Foundation, [capturó la urgencia](https://www.linuxfoundation.org/blog/project-glasswing-gives-maintainers-advanced-ai-to-secure-open-source): *"Open source maintainers — whose software underpins critical infrastructure — have historically managed security alone."* ("Los mantenedores de código abierto — cuyo software sustenta la infraestructura crítica — han gestionado la seguridad históricamente solos.") Han estado en desventaja durante años. Ahora obtienen acceso al mismo nivel de capacidad que ha estado encontrando sus bugs.
+Jim Zemlin, Director Ejecutivo de la Linux Foundation, [capturó la urgencia](https://www.linuxfoundation.org/blog/project-glasswing-gives-maintainers-advanced-ai-to-secure-open-source): los mantenedores de código abierto — cuyo software sustenta la mayor parte de la infraestructura crítica del mundo — han tenido que resolver la seguridad por su cuenta. Han estado en desventaja durante años. Ahora obtienen acceso al mismo nivel de capacidad que ha estado encontrando sus bugs.
 
 La metáfora de la carrera armamentista es tentadora pero incompleta. Esto no es solo ataque vs. defensa. Se trata de la velocidad a la que ambos lados pueden operar. Y ahora mismo, la velocidad está aumentando más rápido de lo que los procesos institucionales de cualquiera pueden seguir.
 
@@ -197,7 +197,7 @@ Cuando empecé [esta serie](/es/blog/from-programmer-to-orchestrator/), quería 
 
 Mythos cambia la conversación. No porque la revolución sea diferente — es la misma curva exponencial. Sino porque ahora las implicaciones se extienden más allá de la productividad y la economía. Cuando la IA puede encontrar y explotar vulnerabilidades a esta escala y costo, lo que está en juego ya no es solo quién programa más rápido o quién entrega más features. Es infraestructura. Seguridad nacional. Los sistemas de los que todo depende.
 
-Sigo siendo optimista. Y precisamente por eso creo que vale la pena prestar atención: la misma tecnología que nos ayuda a construir acaba de encontrar un bug de 27 años en uno de los sistemas operativos más seguros del planeta. Por cincuenta dólares. El futuro es prometedor — pero solo si lo tomamos en serio.
+Sigo siendo optimista. Y precisamente por eso creo que vale la pena prestar atención: la misma tecnología que nos ayuda a construir acaba de encontrar un bug de 28 años en uno de los sistemas operativos más seguros del planeta. Por cincuenta dólares. El futuro es prometedor — pero solo si lo tomamos en serio.
 
 La revolución nunca iba a quedarse en silencio. Y esto es solo el comienzo.
 
