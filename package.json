@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "prebuild": "echo 'All images are natively WebP — no pre-processing needed'",
+    "prebuild": "npm run generate:agent-skills-index",
+    "generate:agent-skills-index": "node scripts/generate-agent-skills-index.mjs",
     "astro": "astro",
     "astro:check": "astro check",
     "astro:preview": "astro preview",
