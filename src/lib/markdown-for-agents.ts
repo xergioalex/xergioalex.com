@@ -277,6 +277,61 @@ export function serializeSeriesIndexToMarkdown(
   return `${lines.join('\n')}\n`;
 }
 
+interface SeriesListingEntry {
+  slug: string;
+  title: string;
+  description: string;
+  postCount: number;
+  order: number;
+}
+
+interface SeriesListingOptions {
+  lang: string;
+  title: string;
+  description: string;
+}
+
+/**
+ * Serialize the series landing page (list of all series) to agent-friendly
+ * Markdown. Returns an ordered list with links to each series' own .md index.
+ */
+export function serializeSeriesListingToMarkdown(
+  entries: SeriesListingEntry[],
+  options: SeriesListingOptions
+): string {
+  const { lang, title, description } = options;
+  const prefix = buildUrlPrefix(lang);
+  const canonicalUrl = `${SITE_URL}${prefix}/blog/series`;
+
+  const lines: string[] = [];
+
+  lines.push(`# ${title}`);
+  lines.push('');
+  lines.push(`> ${description}`);
+  lines.push('');
+  lines.push(`Language: ${lang}`);
+  lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(`Total series: ${entries.length}`);
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+  lines.push('## Series');
+  lines.push('');
+
+  const sorted = [...entries].sort((a, b) => a.order - b.order);
+  for (const entry of sorted) {
+    const seriesMdUrl = `${prefix}/blog/series/${entry.slug}.md`;
+    const chapterCount = `${entry.postCount} ${entry.postCount === 1 ? 'chapter' : 'chapters'}`;
+    lines.push(
+      `- [${entry.title}](${seriesMdUrl}) — ${entry.description} (${chapterCount})`
+    );
+  }
+
+  lines.push(generateSiteNavigation(lang));
+
+  return `${lines.join('\n')}\n`;
+}
+
 /**
  * Serialize a non-blog page to agent-friendly Markdown.
  * Returns clean Markdown with metadata header + page body.
