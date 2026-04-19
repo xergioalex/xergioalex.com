@@ -1,24 +1,24 @@
 ---
-title: "La Web Agéntica: Todo lo que Cloudflare lanzó en la Agents Week 2026"
-description: "La lista completa de la Agents Week 2026 de Cloudflare — 30+ anuncios sobre runtime, identidad, MCP, estándares y medición, organizados por capa, explicados cortos."
+title: "La Web Agéntica: Todo lo que Cloudflare lanzó en la Semana de Agentes 2026"
+description: "Alrededor de 30 anuncios en una semana. Todo lo que Cloudflare lanzó en la Semana de Agentes 2026, organizado por capa: runtime, MCP, estándares, medición."
 pubDate: "2026-04-20T14:00:00"
-heroImage: "/images/blog/posts/aeo-the-agentic-web/hero-es.webp"
+heroImage: "/images/blog/posts/cloudflare-agents-week-2026/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["cloudflare agents week 2026", "web agéntica", "infraestructura agentes IA", "web lista para agentes", "MCP", "Project Think Cloudflare", "Sandboxes GA", "isitagentready.com"]
 ---
 
-Hace unas semanas escribía sobre cómo la optimización para motores de respuesta iba años por delante de nuestra capacidad de medirla. Era mitad diagnóstico, mitad queja: ya teníamos `llms.txt`, datos estructurados, endpoints markdown para agentes — pero ningún tablero objetivo que nos dijera si todo eso estaba funcionando.
+Hace unas semanas, en mi serie [AEO: De Invisible a Citado](/es/blog/series/aeo-from-invisible-to-cited/), escribía sobre cómo la optimización para motores de respuesta iba años por delante de nuestra capacidad de medirla. Era mitad diagnóstico, mitad queja: ya teníamos `llms.txt`, datos estructurados, endpoints markdown para agentes — pero ningún tablero objetivo que nos dijera si todo eso estaba funcionando.
 
-Luego Cloudflare lanzó una semana entera — su [Agents Week 2026](https://www.cloudflare.com/agents-week/) — tratando de cerrar esa brecha. Y lo que se puede decir de la forma en que lo hizo es más interesante que cualquier producto individual: no fue una colección de features, fue infraestructura, estándares y medición apilados uno sobre otro, todo en una misma pila.
+Luego Cloudflare respondió con alrededor de 30 anuncios en una sola semana — su [Agents Week 2026](https://www.cloudflare.com/agents-week/) — tratando de cerrar esa brecha. Y lo que se puede decir de la forma en que lo hizo es más interesante que cualquier producto individual: no fue una colección de features sueltos, fue infraestructura, estándares y medición apilados uno sobre otro.
 
-Lo que sigue es mi lista de todo lo que se anunció, organizada por capa — no por orden cronológico. Algunos ítems dan para entradas propias; iré profundizando más adelante en los que tengan sentido. Por ahora, corto y al grano.
+Lo que sigue es mi lista de todo lo que se anunció, organizada por capa — no por orden cronológico. Algunos ítems dan para posts propios; iré profundizando más adelante en los que tengan sentido. Por ahora, corto y al grano.
 
 ## 1. El sustrato: los agentes obtienen un computador
 
 El primer post de la semana abrió con un titular literal: *"Agents have their own computers with Sandboxes GA"* (los agentes tienen su propio computador con Sandboxes GA). No es exageración.
 
-1. **[Sandboxes GA](https://blog.cloudflare.com/sandbox-ga/).** Un computador real y dedicado para cada agente — no un contenedor efímero que muere después de una sola respuesta, sino un espacio de trabajo que persiste entre sesiones. El agente puede instalar paquetes, correr un shell, clonar un repo de Git, escribir archivos, exponer un puerto al internet. El SDK `@cloudflare/sandbox` expone cada una de esas acciones como método — `exec`, `gitClone`, `writeFile`, `terminal`, `exposePort`. El cobro corre sobre CPU activa: pagas por los segundos en que el agente está trabajando, no por el tiempo que está idle. Y puedes tener hasta 15.000 corriendo en paralelo en el plan Standard. Esta es la pieza donde "cada agente con su propio computador" deja de ser metáfora.
+1. **[Sandboxes GA](https://blog.cloudflare.com/sandbox-ga/).** Un computador real y dedicado para cada agente — no un contenedor efímero que muere después de una sola respuesta, sino un espacio de trabajo que persiste entre sesiones. El agente puede instalar paquetes, correr un shell, clonar un repo de Git, escribir archivos, exponer un puerto al internet. El SDK `@cloudflare/sandbox` expone cada una de esas acciones como método — `exec`, `gitClone`, `writeFile`, `terminal`, `exposePort`. El cobro corre sobre CPU activa: pagas por los segundos en que el agente está trabajando, no por el tiempo que está idle. Y puedes tener hasta 15.000 sandboxes *lite* en paralelo en el plan Standard (6.000 del tier básico, 1.000+ de tiers mayores). Esta es la pieza donde "cada agente con su propio computador" deja de ser metáfora.
 
 2. **[Sandbox auth](https://blog.cloudflare.com/sandbox-auth/).** Una capa de seguridad entre el sandbox del agente y el resto del mundo. Todo el tráfico de red que sale del sandbox pasa por un proxy zero-trust: las credenciales del usuario nunca tocan el código que el agente está ejecutando. Si el agente necesita llamar a una API interna, el proxy inyecta las credenciales correctas en el momento justo; si intenta hablar con un dominio que no debería, el proxy lo bloquea. Tú defines las reglas con un handler dinámico. El agente corre libre sin nunca ver tus secretos.
 
@@ -34,7 +34,7 @@ El primer post de la semana abrió con un titular literal: *"Agents have their o
 
 7. **[Infire](https://blog.cloudflare.com/high-performance-llms/).** Cloudflare construyó su propio motor para correr LLMs, desde cero, en Rust. En vez de usar vLLM o TGI (los motores open source típicos), tienen algo propio con tres optimizaciones: separan las dos fases internas de un LLM (la que entiende la pregunta y la que genera la respuesta) para que corran en máquinas distintas; cachean los prompts repetidos de forma más agresiva (tasa de aciertos subió de 60% a 80%); y usan RDMA — transferencias de memoria directas entre GPUs sobre red — para mover el contexto del modelo sin copiarlo por CPU. El resultado titular: **3× de aceleración corriendo Kimi K2.5** frente a su stack anterior.
 
-8. **[Unweight](https://blog.cloudflare.com/unweight-tensor-compression/).** Comprimen modelos LLM un 22% sin perder nada — cada byte que sale es idéntico al original, como si no hubieras comprimido. La técnica es codificación Huffman aplicada a la representación interna de los pesos del modelo (el formato BF16, que es lo que usan la mayoría de LLMs actuales). En Llama 3.1 8B eso significa unos 3 GB menos de VRAM por modelo — suficiente para correr un modelo más grande en la misma GPU o meter dos instancias donde antes solo cabía una. Los kernels GPU están open source en `github.com/cloudflareresearch/unweight-kernels`. (No lo confundas con el 97-99.5%: ese es el número de Shared Dictionaries, más abajo.)
+8. **[Unweight](https://blog.cloudflare.com/unweight-tensor-compression/).** Comprimen modelos LLM entre 15 y 22% sin perder nada — cada byte que sale es idéntico al original, como si no hubieras comprimido. La técnica es codificación Huffman — el mismo truco de compresión sin pérdida que usa un `.zip` — aplicada a la representación interna de los pesos del modelo (el formato BF16, que es el que usan la mayoría de LLMs actuales). En Llama 3.1 8B eso significa ~3 GB menos de VRAM por modelo — suficiente para correr un modelo más grande en la misma GPU o meter dos instancias donde antes solo cabía una. Los kernels GPU están open source en `github.com/cloudflareresearch/unweight-kernels`. (No lo confundas con el 97-99.5%: ese es el número de Shared Dictionaries, más abajo.)
 
 9. **[AI Search](https://blog.cloudflare.com/ai-search-agent-primitive/) (beta abierto, antes AutoRAG).** Un motor de búsqueda que cada agente puede indexar a su antojo. Mezcla dos técnicas clásicas — búsqueda semántica (por significado, usando embeddings vectoriales) y búsqueda por palabras clave (BM25, con tokenización Porter y trigramas) — y las combina con boosting de relevancia para que las consultas complejas funcionen bien. Antes se llamaba AutoRAG; ahora es API de producto con sus propios bindings (`ai_search_namespaces`). El almacenamiento va en R2, los vectores en Vectorize, y el crawling lo hace Browser Run. Gratis durante el beta.
 
@@ -49,7 +49,7 @@ El primer post de la semana abrió con un titular literal: *"Agents have their o
     - **Sesiones persistentes** — las conversaciones se guardan como árboles que puedes bifurcar (para explorar caminos alternativos), compactar (para no llenar la ventana de contexto) y buscar con texto completo.
     - **Código sandboxeado** — una escalera de cinco niveles desde "solo sistema de archivos" hasta "sandbox completo de OS" (el mismo Sandboxes GA del punto 1).
 
-    Si se pega como patrón, se vuelve el default para construir agentes en Cloudflare. Los previews se mueren seguido — pero este junta todas las piezas de la semana en un solo lugar.
+    Si funciona como patrón, se vuelve el default para construir agentes en Cloudflare. Los previews se mueren seguido — pero este junta todas las piezas de la semana en un solo lugar.
 
 12. **[Workflows v2](https://blog.cloudflare.com/workflows-v2/).** El motor de flujos de trabajo de Cloudflare tuvo un rediseño completo. Los números hablan solos: de 4.500 a **50.000 instancias concurrentes**, de 100 a **300 creaciones por segundo**, de 1 millón a **2 millones encoladas por workflow**. Dos componentes nuevos — *SousChef* (coordina la ejecución) y *Gatekeeper* (controla el acceso) — manejan la orquestación. La migración para los workflows existentes es sin downtime. El 10× no es matemática de marketing: es rediseño real.
 
@@ -75,7 +75,7 @@ El primer post de la semana abrió con un titular literal: *"Agents have their o
 
 21. **[Enterprise MCP + Code Mode](https://blog.cloudflare.com/enterprise-mcp/).** Una arquitectura de referencia para empresas que quieren desplegar MCP a escala, con seguridad y observabilidad. Une seis productos en un solo stack: Remote MCP Servers + Access (autenticación) + MCP Server Portals (gestión) + AI Gateway (observabilidad) + Gateway (control de tráfico) + WAF (protección contra ataques). La pieza más interesante es **Code Mode**: en vez de registrar cada herramienta MCP individualmente en el prompt del agente (lo que puede inflarlo con decenas de definiciones y desperdiciar contexto), el portal expone solo dos herramientas — `portal_codemode_search` para descubrir qué herramientas existen y `portal_codemode_execute` para ejecutarlas. Un ejemplo real cortó un prompt de **9.400 tokens a 600** — una reducción del 94%. También incluye detección de "MCP sombra" — servidores MCP desplegados sin autorización dentro de la red — mediante escaneo de hostnames, patrones en rutas URI, y regex sobre los cuerpos JSON-RPC que pasan por el Gateway.
 
-## 6. Los estándares: este es el turn real de la semana
+## 6. Los estándares: aquí la semana da el giro más interesante
 
 Si las capas anteriores fueron producto, esto es protocolo. Cada uno de estos estándares da para su propia sección; aquí va solo lo esencial.
 
@@ -103,44 +103,40 @@ Si las capas anteriores fueron producto, esto es protocolo. Cada uno de estos es
 
 28. **[Redirects for AI Training](https://blog.cloudflare.com/ai-redirects/).** Cloudflare convierte automáticamente las tags `<link rel="canonical">` de tu HTML en redirecciones HTTP 301 — pero *únicamente* cuando la request viene de un crawler de IA verificado (GPTBot, ClaudeBot, Bytespider). La implementación usa `cf.verified_bot_category`, una categoría distinta de las de AI Assistant y AI Search. ¿Por qué importa? Porque le da al autor una forma elegante de decir "esta URL es la canónica; entrena desde allí" sin los efectos raros de `noindex` ni las acrobacias que a veces hay que hacer en `robots.txt`. Canonicalización AEO con la semántica correcta, aplicada solo donde importa.
 
-29. **[Actualización de rendimiento de red](https://blog.cloudflare.com/network-performance-agents-week/).** Cloudflare ahora es la red más rápida en el 60% de las top-1.000 redes del mundo, arriba del 40% en septiembre de 2025. Tres factores detrás del cambio: un rewrite completo de FL2 (el sistema interno de forwarding) a Rust, ganancias en el soporte de HTTP/3, y 261 nuevas redes agregadas desde septiembre.
+29. **[Actualización de rendimiento de red](https://blog.cloudflare.com/network-performance-agents-week/).** Según la medición más reciente de Cloudflare (diciembre 2025), ahora son la red más rápida en el 60% de las top-1.000 redes del mundo, arriba del 40% en septiembre del mismo año. Tres factores detrás del cambio: un rewrite completo de FL2 (el sistema interno de forwarding) a Rust, ganancias en el soporte de HTTP/3, y 261 nuevas redes agregadas entre septiembre y diciembre.
 
 30. **[Flagship](https://blog.cloudflare.com/flagship) (beta privado).** Feature flags nativos dentro de la plataforma de Cloudflare. Los Workers corren la evaluación (sub-milisegundo gracias al edge), los Durable Objects sirven como plano de control (donde defines las reglas), y KV cachea la config global. El SDK es compatible con OpenFeature — el estándar abierto para feature flags — así que puedes migrar desde LaunchDarkly o similar sin reescribir tu código de aplicación. Soporta hasta 5 niveles anidados de lógica AND/OR y rollouts por porcentaje con hashing consistente (el mismo usuario siempre cae en el mismo bucket, aunque el flag cambie).
 
-## 8. El broche: isitagentready.com y el 33/100
+31. **[Agent Readiness score](https://blog.cloudflare.com/agent-readiness/) + [isitagentready.com](https://isitagentready.com/).** La herramienta que cierra la semana y que por fin convierte "¿tu sitio está listo para agentes?" de pregunta vaga en un número de 0 a 100. Evalúa cuatro dimensiones — Contenido, Descubribilidad, Control de Acceso de Bots, y APIs/Auth/MCP/Skills — chequeando por debajo todo lo que ya listamos: documentos `.well-known/`, Link headers, Content Signals, WebMCP en el navegador. Es el tablero externo que le faltaba a la conversación: *"aquí están las reglas; califica al resto de nosotros"*.
 
-31. **[Agent Readiness score](https://blog.cloudflare.com/agent-readiness/) + [isitagentready.com](https://isitagentready.com/).** La herramienta que cierra la semana. Ingresas la URL de tu sitio y te devuelve un número de 0 a 100, distribuido entre cuatro dimensiones: **Contenido, Descubribilidad, Control de Acceso de Bots, y APIs/Auth/MCP/Skills** — con un bonus extra por comercio. Internamente chequea todo lo que ya listamos: los documentos `.well-known/` (server-card, agent-skills/index, api-catalog, oauth-authorization-server), los Link headers, los Content Signals del robots.txt, la presencia de WebMCP en el navegador. Además incluye un endpoint más en la lista del scorecard (`.well-known/http-message-signatures-directory`, firmas HTTP — probablemente parte de la próxima iteración). El juego de coordinación que propone es lindo: *"aquí están las reglas; califica al resto de nosotros"*.
-
-Corrí la herramienta contra xergioalex.com.
-
-**33 de 100.**
+Para no dejarlo solo en teoría, corrí el scan contra mi sitio.
 
 <figure>
-<img src="/images/blog/posts/aeo-the-agentic-web/figure-04-scorecard-33.webp"
-     alt="Tablero de isitagentready.com para xergioalex.com mostrando una puntuación total de 33 sobre 100, etiquetada como Level 1 — Basic Web Presence. Las cuatro categorías debajo marcan: Discoverability 67, Content 100, Bot Access Control 50, APIs/Auth/MCP & Skill Discovery 0."
+<img src="/images/blog/posts/cloudflare-agents-week-2026/figure-scorecard-33.webp"
+     alt="Captura de isitagentready.com para xergioalex.com el 19 de abril de 2026: puntuación total 33, Level 1 Basic Web Presence. Las cuatro categorías marcan Discoverability 67 (2/3), Content 100 (1/1), Bot Access Control 50 (1/2), y API, Auth, MCP & Skill Discovery 0 (0/6)."
      width="1020"
-     height="815"
+     height="758"
      loading="lazy" />
-<figcaption>isitagentready.com, 18 de abril de 2026: xergioalex.com obtuvo 33/100. Contenido al máximo gracias al trabajo previo de Markdown for Agents; Descubribilidad y Control de Acceso a medias; la casilla de APIs/Auth/MCP/Skills completamente vacía. — <a href="https://isitagentready.com/">Califica tu propio sitio en isitagentready.com</a>.</figcaption>
+<figcaption>isitagentready.com, 19 de abril de 2026: punto de partida en 33/100. Contenido al máximo gracias al trabajo previo sobre Markdown for Agents; el resto de categorías son plan de trabajo concreto. — <a href="https://isitagentready.com/">Califica tu sitio</a>.</figcaption>
 </figure>
 
-Ese número — más que todo lo demás de la semana — es el que me dejó pensando. No porque 33 sea bajo (la mayoría de sitios hoy sacarían parecido), sino porque por primera vez hay un tablero externo que define qué significa "listo para agentes" en términos accionables, chequeables. El tablero dibuja la nueva línea base; cruzarla es el siguiente ejercicio.
+Contenido ya está al 100. Los otros tres — Descubribilidad, Control de Acceso de Bots, y todo el bloque de APIs/Auth/MCP/Skills — son el trabajo que queda por hacer. Y eso da para un post aparte: cómo llegar al 100 en cada uno, paso por paso.
 
 ## Qué significa todo esto
 
-Apila la semana en tres capas.
+Si miras la semana en conjunto, no son 31 productos sueltos. Son tres movimientos encadenados.
 
-**Capa uno — infraestructura.** Los agentes ahora tienen un computador (Sandboxes), un motor de orquestación (Workflows v2, Project Think), una capa de inferencia (AI Platform + Infire + Unweight), memoria persistente (Agent Memory), almacenamiento versionado (Artifacts), búsqueda (AI Search), un navegador (Browser Run), una voz (Voice SDK), un canal de email (Email Service) y un dashboard con asistente (Agent Lee).
+**Capa uno — infraestructura.** Ahora el agente tiene casi todo lo que tendría un humano frente a un computador: un espacio donde instalar cosas y ejecutarlas (Sandboxes), un motor que coordina sus tareas (Workflows v2, Project Think), una capa para pensar (AI Platform + Infire + Unweight), memoria que persiste entre conversaciones (Agent Memory), almacenamiento con versiones (Artifacts), búsqueda (AI Search), un navegador (Browser Run), una voz (Voice SDK), correo electrónico (Email Service) y un asistente dentro del dashboard (Agent Lee). Es un stack entero, no un feature suelto.
 
-**Capa dos — identidad e interfaces.** Managed OAuth for Access y los nuevos formatos de tokens le dan a los agentes credenciales reales y revocables. Cloudflare Mesh les da una red privada para llegar a sistemas internos. Enterprise MCP + Code Mode muestra el patrón para colapsar 52 herramientas en 2 portales.
+**Capa dos — identidad e interfaces.** Ahora el agente puede tener credenciales reales y revocables, del mismo tipo que usa un humano (Managed OAuth for Access + los nuevos formatos de tokens). Puede entrar a redes privadas sin necesitar un servidor puente (Cloudflare Mesh). Y donde antes cargaba con 52 herramientas distintas en su prompt, ahora basta con apuntarlo a 2 portales (Enterprise MCP + Code Mode). Traducción: el agente ya puede entrar como un usuario más, con permisos auditables.
 
-**Capa tres — estándares y medición.** Aquí es donde Cloudflare deja de venderte y empieza a vender *sobre ti*. Content Signals, Link headers, la familia `.well-known/*`, WebMCP, el RFC de Agent Skills Discovery. Y la herramienta que convierte "¿tu sitio está listo para agentes?" de pregunta vaga en un número.
+**Capa tres — estándares y medición.** Esta es la capa más interesante. Aquí Cloudflare deja de venderte productos y empieza a empujar convenciones para la web entera: Content Signals en robots.txt, Link headers, la familia `.well-known/*`, WebMCP, el RFC de Agent Skills Discovery. Más una herramienta que convierte "¿tu sitio está listo para agentes?" de pregunta vaga en un número concreto. Si estos estándares funcionan, dejan de ser producto de Cloudflare y pasan a ser plomería pública de la web — como el HTTPS, como el DNS.
 
-Esto es un solo vendor empujando un conjunto de drafts. Algunos se van a pegar; otros no. Pero la mayoría apuntan a estándares reales de los organismos oficiales de la web (IETF y WHATWG) — RFC 8288, 9727, 9728, 8414 — que existen independientemente del producto de Cloudflare. Las primitivas sobreviven incluso si la línea de producto no.
+Todo esto viene de un solo vendedor empujando una serie de propuestas. Algunas van a funcionar; otras no. Pero la mayoría apuntan a estándares reales que pertenecen a los organismos oficiales de la web (IETF y WHATWG) — los mismos que en su día definieron HTTP y HTML. Los RFC en cuestión (8288, 9727, 9728, 8414) existen por su cuenta, independientes del producto de Cloudflare. Si mañana Cloudflare cambia de rumbo, las piezas base siguen siendo válidas.
 
-La preocupación con la que abrí este post — que la medición del AEO iba años atrás de la optimización — se cerró más rápido de lo que esperaba. Al menos para una definición de "listo".
+La queja con la que abrí este post — que la medición del AEO iba años atrás de la optimización — me duró menos de lo que esperaba. Al menos para una definición de "listo".
 
-Si Cloudflare gana aquí, se vuelven la plomería de la web agéntica. Si no, las primitivas igual ganan. Esa es una apuesta rara.
+Si Cloudflare gana esta jugada, se vuelven el carril central de la web agéntica. Si no, las piezas base siguen su camino sin ellos. Para un vendedor es una apuesta rara: gane o pierda, los que construimos en la web salimos ganando.
 
 Sigo construyendo.
 
