@@ -2,7 +2,7 @@
 title: "La Web Agéntica: Todo lo que Cloudflare lanzó en la Agents Week 2026"
 description: "La lista completa de la Agents Week 2026 de Cloudflare — 30+ anuncios sobre runtime, identidad, MCP, estándares y medición, organizados por capa, explicados cortos."
 pubDate: "2026-04-20T14:00:00"
-heroImage: "/images/blog/posts/aeo-the-agentic-web/hero.webp"
+heroImage: "/images/blog/posts/aeo-the-agentic-web/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["cloudflare agents week 2026", "web agéntica", "infraestructura agentes IA", "web lista para agentes", "MCP", "Project Think Cloudflare", "Sandboxes GA", "isitagentready.com"]
