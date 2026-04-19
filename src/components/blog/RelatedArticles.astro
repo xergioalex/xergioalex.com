@@ -2,7 +2,12 @@
 import type { CollectionEntry } from 'astro:content';
 import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
-import { getPostSlug, groupPostTags } from '@/lib/blog';
+import {
+  getPostSlug,
+  groupPostTags,
+  isDraftPost,
+  isScheduledPost,
+} from '@/lib/blog';
 import { getLocalizedUrl, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -15,13 +20,21 @@ const { posts, lang } = Astro.props;
 const t = getTranslations(lang);
 const blogPrefix = getLocalizedUrl('/blog', lang);
 
-// Pre-compute grouped tags for each post (build-time only)
+// Pre-compute grouped tags + dev/preview visibility flags for each post
+// (build-time only). Badges only surface on dev and preview branches —
+// prod builds filter draft/scheduled upstream via isPostVisibleInProduction.
 const postsWithGroupedTags = await Promise.all(
   posts.map(async (post) => {
     const { primaryTags, topicTags } = await groupPostTags(
       post.data.tags || []
     );
-    return { post, primaryTags, topicTags };
+    return {
+      post,
+      primaryTags,
+      topicTags,
+      isScheduled: isScheduledPost(post),
+      isDraft: isDraftPost(post),
+    };
   })
 );
 ---
@@ -38,7 +51,7 @@ const postsWithGroupedTags = await Promise.all(
         </p>
       </div>
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {postsWithGroupedTags.map(({ post, primaryTags, topicTags }) => {
+        {postsWithGroupedTags.map(({ post, primaryTags, topicTags, isScheduled, isDraft }) => {
           const postSlug = getPostSlug(post.id);
           const href = `${blogPrefix}/${postSlug}/`;
           return (
@@ -70,8 +83,18 @@ const postsWithGroupedTags = await Promise.all(
                 <p class="mb-3 line-clamp-2 text-sm text-gray-600 dark:text-gray-300">
                   {post.data.description}
                 </p>
-                <div class="mb-3 text-xs text-gray-600 dark:text-gray-300">
+                <div class="mb-3 flex flex-wrap items-center gap-2 text-xs text-gray-600 dark:text-gray-300">
                   <FormattedDate date={post.data.pubDate} lang={lang} />
+                  {isScheduled && (
+                    <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                      {t.scheduledBadge}
+                    </span>
+                  )}
+                  {isDraft && (
+                    <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                      {t.draftBadge}
+                    </span>
+                  )}
                 </div>
                 {(primaryTags.length > 0 || topicTags.length > 0) && (
                   <div class="flex flex-wrap gap-1">

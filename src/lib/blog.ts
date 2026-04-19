@@ -37,6 +37,9 @@ export interface TimelineCardEntry {
   seriesCurrent?: number;
   seriesTotal?: number;
   seriesTitle?: string;
+
+  /** Draft flag — true when the post has draft: true in frontmatter. Only carried into payloads on dev/preview (prod builds filter drafts out upstream). */
+  isDraft?: boolean;
 }
 
 interface SeriesPosition {
@@ -392,6 +395,7 @@ export async function getTimelineIndex(
       seriesCurrent: enriched.seriesCurrent,
       seriesTotal: enriched.seriesTotal,
       seriesTitle: enriched.seriesTitle,
+      isDraft: isDraftPost(post),
     };
   });
 }
@@ -439,6 +443,7 @@ export async function getSeriesTimelineIndex(
       seriesCurrent: position?.current,
       seriesTotal: position?.total,
       seriesTitle: seriesTitleBySlug.get(seriesSlug),
+      isDraft: isDraftPost(post),
     };
   });
 }
