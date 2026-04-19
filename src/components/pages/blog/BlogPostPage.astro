@@ -251,6 +251,30 @@ const breadcrumbData = {
   })();
 </script>
 
+<script is:inline>
+  (() => {
+    const activate = (facade) => {
+      const videoId = facade.dataset.videoId;
+      if (!videoId) return;
+      const title = facade.dataset.title || 'YouTube video';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = title;
+      iframe.allow =
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.className = 'absolute inset-0 h-full w-full border-0';
+      facade.replaceChildren(iframe);
+    };
+
+    document.querySelectorAll('.youtube-facade').forEach((facade) => {
+      const button = facade.querySelector('button');
+      if (!button) return;
+      button.addEventListener('click', () => activate(facade), { once: true });
+    });
+  })();
+</script>
+
 <style>
   .reading-progress {
     position: fixed;
