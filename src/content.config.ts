@@ -28,6 +28,12 @@ const blog = defineCollection({
     // Series support — references a series slug from the series collection
     series: z.string().optional(),
     seriesOrder: z.number().optional(),
+    /**
+     * Mark a post as a work-in-progress draft. Drafts are visible in the dev
+     * server and on Cloudflare Pages preview branches, but excluded from the
+     * production build so they never reach the live site.
+     */
+    draft: z.boolean().default(false).optional(),
   }),
 });
 

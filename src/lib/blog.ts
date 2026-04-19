@@ -157,6 +157,59 @@ export function isDemoPost(post: CollectionEntry<'blog'>): boolean {
 }
 
 /**
+ * Branches that deploy to the public production site. Override with the
+ * PRODUCTION_BRANCHES env var (comma-separated) if the deployment topology
+ * changes. `master` is included as a safe default for forks.
+ */
+const PRODUCTION_BRANCHES: readonly string[] = (
+  process.env.PRODUCTION_BRANCHES ?? 'main,master'
+)
+  .split(',')
+  .map((b) => b.trim())
+  .filter(Boolean);
+
+/**
+ * Check if a post is marked as a draft. Drafts are visible in the dev server
+ * and on Cloudflare Pages preview branches, but hidden from the production
+ * build. Mark a post with `draft: true` in its frontmatter.
+ */
+export function isDraftPost(post: CollectionEntry<'blog'>): boolean {
+  return post.data.draft === true;
+}
+
+/**
+ * True when the current build should hide draft posts.
+ *
+ * Drafts are shown in the dev server and on any Cloudflare Pages preview
+ * branch (so reviewers can read work-in-progress before it ships), and
+ * hidden on production branches and in local production builds. Set
+ * `SHOW_DRAFTS=true` to force drafts into any build.
+ */
+export function shouldHideDrafts(): boolean {
+  if (import.meta.env.DEV) return false;
+  if (process.env.SHOW_DRAFTS === 'true') return false;
+  const cfBranch = process.env.CF_PAGES_BRANCH;
+  if (cfBranch) return PRODUCTION_BRANCHES.includes(cfBranch);
+  // No Cloudflare branch info (local `npm run build`): treat as production.
+  return true;
+}
+
+/**
+ * Unified visibility predicate used by every blog-listing consumer. Keeps
+ * the filter rules (demo / scheduled / draft) in one place so listings,
+ * tag pages, series pages, search, RSS, sitemap, and agent Markdown
+ * endpoints stay in sync.
+ */
+export function isPostVisibleInProduction(
+  post: CollectionEntry<'blog'>
+): boolean {
+  if (isDemoPost(post)) return false;
+  if (!import.meta.env.DEV && isScheduledPost(post)) return false;
+  if (isDraftPost(post) && shouldHideDrafts()) return false;
+  return true;
+}
+
+/**
  * Check if a post is scheduled for the future (pubDate date > today's date).
  * Uses SITE_TIMEZONE (America/Bogota) so scheduling is consistent regardless
  * of where the build runs (Cloudflare, local, etc.). A post dated "March 4"
@@ -265,10 +318,7 @@ let _searchIndexCache: Promise<SearchIndexEntry[]> | null = null;
 
 async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
   const allPosts = await getCollection('blog');
-  const visiblePosts = allPosts.filter(
-    (post) =>
-      !isDemoPost(post) && (import.meta.env.DEV || !isScheduledPost(post))
-  );
+  const visiblePosts = allPosts.filter(isPostVisibleInProduction);
   const seriesPositionById = getSeriesPositionById(visiblePosts);
   const seriesTitleBySlug = await getSeriesTitleMap();
 
@@ -362,8 +412,7 @@ export async function getSeriesTimelineIndex(
     (post) =>
       post.id.startsWith(`${lang}/`) &&
       post.data.series === seriesSlug &&
-      !isDemoPost(post) &&
-      (import.meta.env.DEV || !isScheduledPost(post))
+      isPostVisibleInProduction(post)
   );
 
   const seriesPositionById = getSeriesPositionById(filteredPosts);
@@ -403,10 +452,7 @@ export async function getBlogPosts(
   // Filter by language first (based on folder structure: en/, es/)
   const lang = params.lang || 'en';
   const langPosts = allPosts.filter(
-    (post) =>
-      post.id.startsWith(`${lang}/`) &&
-      !isDemoPost(post) &&
-      (import.meta.env.DEV || !isScheduledPost(post))
+    (post) => post.id.startsWith(`${lang}/`) && isPostVisibleInProduction(post)
   );
   const seriesPositionById = getSeriesPositionById(langPosts);
   const seriesTitleBySlug = await getSeriesTitleMap();
@@ -489,8 +535,7 @@ export async function getSeriesNavigation(
         post.id.startsWith(`${lang}/`) &&
         post.data.series === seriesSlug &&
         post.data.seriesOrder != null &&
-        !isDemoPost(post) &&
-        (import.meta.env.DEV || !isScheduledPost(post))
+        isPostVisibleInProduction(post)
     )
     .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
 
@@ -538,8 +583,7 @@ export async function getRelatedPosts(
       (post) =>
         post.id.startsWith(`${lang}/`) &&
         post.id !== currentPostId &&
-        !isDemoPost(post) &&
-        (import.meta.env.DEV || !isScheduledPost(post))
+        isPostVisibleInProduction(post)
     )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 

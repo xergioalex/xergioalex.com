@@ -11,6 +11,7 @@ interface MockPostData {
 	heroImage?: string;
 	heroLayout?: 'banner' | 'side-by-side' | 'minimal' | 'none';
 	tags?: string[];
+	draft?: boolean;
 }
 
 interface MockPost {
@@ -54,6 +55,7 @@ export const draftPost: MockPost = {
 		description: 'A draft post that should not appear in production',
 		pubDate: new Date('2024-04-01'),
 		tags: ['personal'],
+		draft: true,
 	},
 };
 
@@ -75,9 +77,10 @@ export const draftScheduledPost: MockPost = {
 	id: 'en/2099-06-01_draft-scheduled-post',
 	data: {
 		title: 'Draft and Scheduled',
-		description: 'A post with a future pubDate',
+		description: 'A post with a future pubDate and draft flag set',
 		pubDate: new Date('2099-06-01'),
 		tags: ['tech'],
+		draft: true,
 	},
 };
 

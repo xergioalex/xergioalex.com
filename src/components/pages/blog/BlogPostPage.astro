@@ -18,6 +18,7 @@ import {
   getSeriesNavigation,
   getWordCount,
   groupPostTags,
+  isDraftPost,
   isScheduledPost,
 } from '@/lib/blog';
 import { NEWSLETTER } from '@/lib/constances';
@@ -41,6 +42,7 @@ const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
 const { primaryTags, topicTags } = await groupPostTags(tags ?? []);
 const isScheduled = isScheduledPost(post);
+const isDraft = isDraftPost(post);
 const seriesInfo = post.data.series
   ? await getSeriesNavigation(post.data.series, post.id, lang)
   : null;
@@ -133,6 +135,11 @@ const breadcrumbData = {
         <span class="font-semibold text-gray-600 dark:text-gray-300 select-none" aria-hidden="true">/</span>
         <span class="truncate font-normal text-gray-600 dark:text-gray-300" aria-current="page">{title}</span>
       </nav>
+      {isDraft && (
+        <div class="mb-6 rounded-lg border border-purple-300 bg-purple-50 px-4 py-3 text-sm text-purple-800 dark:border-purple-700 dark:bg-purple-900/20 dark:text-purple-300">
+          <strong>{t.draftBannerTitle}</strong> — {t.draftBannerMessage}
+        </div>
+      )}
       {isScheduled && (
         <div class="mb-6 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-900/20 dark:text-amber-300">
           <strong>{t.scheduledBannerTitle}</strong> — {t.scheduledBannerMessage(pubDate.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }))}

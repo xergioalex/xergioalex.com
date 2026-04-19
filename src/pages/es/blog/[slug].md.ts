@@ -1,17 +1,14 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute, GetStaticPaths } from 'astro';
 
-import { getPostSlug, isDemoPost, isScheduledPost } from '@/lib/blog';
+import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { serializePostToAgentMarkdown } from '@/lib/markdown-for-agents';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getCollection('blog');
-  const posts = allPosts.filter((post) => {
-    if (!post.id.startsWith('es/')) return false;
-    if (isDemoPost(post)) return false;
-    if (isScheduledPost(post)) return false;
-    return true;
-  });
+  const posts = allPosts.filter(
+    (post) => post.id.startsWith('es/') && isPostVisibleInProduction(post)
+  );
   return posts.map((post) => ({
     params: { slug: getPostSlug(post.id) },
     props: { post },

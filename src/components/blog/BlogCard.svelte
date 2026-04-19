@@ -127,6 +127,11 @@ $: isScheduled = (() => {
   return pubDateStr > todayInTz;
 })();
 
+// Draft flag is server-computed (we pass it through the lightweight payload).
+// A draft post that slipped into the client means we're on dev or a preview
+// branch — the production build filters it upstream.
+$: isDraft = !!(post as any).isDraft || post.data?.draft === true;
+
 // Get highlighted title and description if search result is available
 $: displayTitle = searchQuery
   ? getHighlightedField(
@@ -186,6 +191,11 @@ $: displayDescription = searchQuery
         {#if isScheduled}
           <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
             {t.scheduledBadge}
+          </span>
+        {/if}
+        {#if isDraft}
+          <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+            {t.draftBadge}
           </span>
         {/if}
         {#if seriesCurrent && seriesTotal}

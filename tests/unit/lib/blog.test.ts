@@ -6,6 +6,7 @@ import {
 	getReadingTimeFromContent,
 	getWordCount,
 	isDemoPost,
+	isDraftPost,
 	isScheduledPost,
 } from '@/lib/blog';
 import { SITE_TIMEZONE } from '@/lib/constances';
@@ -138,6 +139,30 @@ describe('isScheduledPost', () => {
 
 	it('returns false for demo posts (past date)', () => {
 		expect(isScheduledPost(demoEnglishPost as never)).toBe(false);
+	});
+});
+
+// ─── isDraftPost ────────────────────────────────────────
+
+describe('isDraftPost', () => {
+	it('returns true when frontmatter sets draft: true', () => {
+		expect(isDraftPost(draftPost as never)).toBe(true);
+	});
+
+	it('returns true for a draft that is also scheduled', () => {
+		expect(isDraftPost(draftScheduledPost as never)).toBe(true);
+	});
+
+	it('returns false for a published post without the draft flag', () => {
+		expect(isDraftPost(publishedEnglishPost as never)).toBe(false);
+	});
+
+	it('returns false for a scheduled post without the draft flag', () => {
+		expect(isDraftPost(scheduledPost as never)).toBe(false);
+	});
+
+	it('returns false for a minimal post (no draft field)', () => {
+		expect(isDraftPost(minimalPost as never)).toBe(false);
 	});
 });
 

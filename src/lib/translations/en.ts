@@ -916,6 +916,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   scheduledBannerMessage: (date) =>
     `This post will be published on ${date}. It is only visible in development mode.`,
 
+  // Draft posts (dev + preview indicators)
+  draftBadge: 'Draft',
+  draftBannerTitle: 'Draft post',
+  draftBannerMessage:
+    'This post is a work in progress. It is visible here because you are on the dev server or a preview branch — it will not ship to production until the draft flag is removed.',
+
   // Tags
   postsTagged: (tag) => `Posts tagged "${tag}"`,
   allTags: 'All Tags',
@@ -983,7 +989,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'trading-journey':
       'A 3-part series about my evolution from early discretionary trading to structured analysis with Market Profile and algorithmic execution with MQL4.',
     'aeo-from-invisible-to-cited':
-      'How to build a website that AI answer engines can find, understand, and reference.',
+      'A practical guide to building websites that AI answer engines can find, understand, cite, and use — from structured data and markdown endpoints to MCP server cards, WebMCP, and agent-readiness scoring.',
     'working-with-agents':
       'From writing code to orchestrating AI agents — exploring the new role, real workflows, what breaks, judgment, context, and team adoption.',
     'building-agents':

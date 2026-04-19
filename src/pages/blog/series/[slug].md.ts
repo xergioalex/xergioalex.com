@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 
 import type { APIRoute, GetStaticPaths } from 'astro';
 
-import { getPostSlug, isDemoPost, isScheduledPost } from '@/lib/blog';
+import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { serializeSeriesIndexToMarkdown } from '@/lib/markdown-for-agents';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -20,8 +20,7 @@ export const GET: APIRoute = async ({ props }) => {
   const posts = allPosts
     .filter((post) => {
       if (!post.id.startsWith('en/')) return false;
-      if (isDemoPost(post)) return false;
-      if (isScheduledPost(post)) return false;
+      if (!isPostVisibleInProduction(post)) return false;
       if (post.data.series !== series.data.name) return false;
       return true;
     })

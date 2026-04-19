@@ -1,13 +1,12 @@
 import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
-import { getPostSlug, isDemoPost, isScheduledPost } from '@/lib/blog';
+import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/lib/constances';
 
 export async function GET(context) {
   const allPosts = await getCollection('blog');
   const posts = allPosts.filter(
-    (post) =>
-      post.id.startsWith('en/') && !isDemoPost(post) && !isScheduledPost(post)
+    (post) => post.id.startsWith('en/') && isPostVisibleInProduction(post)
   );
   return rss({
     title: SITE_TITLE,

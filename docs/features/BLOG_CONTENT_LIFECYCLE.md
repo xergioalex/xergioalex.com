@@ -1,14 +1,17 @@
 # Blog Content Lifecycle
 
-Guide to blog post visibility states: published, scheduled, and demo.
+Guide to blog post visibility states: published, scheduled, draft, and demo.
 
 ## Overview
 
-Blog posts in this project have three visibility states based on their location and `pubDate`:
+Blog posts in this project have four visibility states:
 
 1. **Published** — visible everywhere (production and dev)
 2. **Scheduled** — future `pubDate`, visible only in dev with an amber badge
-3. **Demo** — in `_demo/` folders, accessible only by direct URL in dev
+3. **Draft** — `draft: true` in frontmatter, visible in dev + preview branches with a purple badge
+4. **Demo** — in `_demo/` folders, accessible only by direct URL in dev
+
+All visibility decisions flow through one helper — `isPostVisibleInProduction()` in `src/lib/blog.ts` — so listings, tag pages, series pages, search, RSS, sitemap, and agent-markdown endpoints stay in sync.
 
 ## Post Visibility States
 
@@ -44,6 +47,48 @@ return pubDateInTz > todayInTz;
 - Detail page: Amber banner below breadcrumb with publication date
 
 **How to schedule:** Set `pubDate` to a future date. After the date passes, rebuild and deploy.
+
+### Draft Posts
+
+Draft posts are work-in-progress articles you want committed to the repo and reviewed on a preview branch without shipping to the public site. Mark a post with `draft: true` in its frontmatter.
+
+**Detection:** `isDraftPost()` in `src/lib/blog.ts` returns `true` when `post.data.draft === true`. The visibility rule lives in `shouldHideDrafts()`:
+
+```typescript
+export function shouldHideDrafts(): boolean {
+  if (import.meta.env.DEV) return false;                    // dev server: show
+  if (process.env.SHOW_DRAFTS === 'true') return false;     // explicit override
+  const cfBranch = process.env.CF_PAGES_BRANCH;
+  if (cfBranch) return PRODUCTION_BRANCHES.includes(cfBranch);
+  return true;                                              // local `npm run build`: hide
+}
+```
+
+| Environment | Drafts visible? |
+|-------------|-----------------|
+| `npm run dev` | Yes |
+| Cloudflare Pages preview branch (any non-production branch) | Yes |
+| Cloudflare Pages production (`main` / `master`) | No |
+| Local `npm run build` (no `CF_PAGES_BRANCH`) | No |
+| Any build with `SHOW_DRAFTS=true` | Yes |
+
+Override the production-branch allowlist with `PRODUCTION_BRANCHES=live,main`.
+
+**Behavior:**
+- **Production:** Completely excluded — no routes, no listings, no search, no RSS, no sitemap, no agent markdown.
+- **Preview / Dev (listings/search/tags):** Visible in all listings with a purple "Draft" badge.
+- **Preview / Dev (detail page):** Accessible with a purple banner above the article body.
+
+**Visual indicators:**
+- Blog cards: Purple pill badge next to the date (`t.draftBadge`).
+- Detail page: Purple banner below the breadcrumb (`t.draftBannerTitle` + `t.draftBannerMessage`).
+
+**Authoring workflow:**
+1. Create the post in both `src/content/blog/en/` and `src/content/blog/es/` with `draft: true`. Translate title, description, body as usual.
+2. Commit, push, and open the Cloudflare Pages preview URL to review the rendered post with the Draft banner.
+3. When ready to ship, remove `draft: true` (or set it to `false`) in all language files and merge to `main`.
+
+**Series membership:** Toggling `draft: true` leaves `series`/`seriesOrder` on disk. A draft chapter rejoins the series cleanly once the flag is removed.
 
 ### Demo Posts
 

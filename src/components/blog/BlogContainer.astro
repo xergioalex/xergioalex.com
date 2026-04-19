@@ -5,6 +5,7 @@ import {
   getPostLanguage,
   getPostSlug,
   groupPostTags,
+  isDraftPost,
   isScheduledPost,
 } from '@/lib/blog';
 import type { BlogPostsResultType } from '@/lib/types';
@@ -35,6 +36,7 @@ const lightweightPosts = await Promise.all(
       seriesTotal: (post as { seriesTotal?: number }).seriesTotal,
       seriesTitle: (post as { seriesTitle?: string }).seriesTitle,
       isScheduled: isScheduledPost(post),
+      isDraft: isDraftPost(post),
     };
   })
 );
