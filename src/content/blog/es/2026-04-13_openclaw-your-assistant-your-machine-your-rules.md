@@ -293,7 +293,7 @@ Esa anécdota era el preámbulo de la tesis central de la charla: *"The real tra
 
 Cerró con la línea [que terminó en los titulares](https://startupnews.fyi/2026/04/18/the-lobster-is-loose-and-its-not-going-back-peter-steinberger-on-building-openclaw-at-ted-2026/): *"The lobster is loose, and it's not going back into the tank."* ("La langosta se soltó, y no va a volver al tanque.")
 
-Viendo el clip de nuevo, lo que me queda no es la frase de cierre. Es lo ordinario que se ve diciéndola. El mismo tipo que, [como contó él mismo en el escenario](https://startupnews.fyi/2026/04/18/the-lobster-is-loose-and-its-not-going-back-peter-steinberger-on-building-openclaw-at-ted-2026/), pasó tres años sin encontrar "razón para levantarse de la cama" — y ahora estaba ahí, cerrando TED con una frase que llegaría a los titulares.
+Si algo le da peso a la charla no es la frase del cierre. Son los nueve segundos en los que un agente detectó su propia limitación, salió a internet a buscar una solución, encontró una API key en la máquina y se añadió una capacidad nueva a sí mismo — sin skill instalado, sin humano en el medio, sin nadie pidiéndoselo. Esa es la noticia real: los agentes ya razonan lo suficiente como para aprenderse habilidades nuevas por su cuenta. Todo lo demás — las 340 mil estrellas, la langosta, el movimiento, el slot en TED — es consecuencia de que eso haya empezado a ser posible.
 
 ---
 

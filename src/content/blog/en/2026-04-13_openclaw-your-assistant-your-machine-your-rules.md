@@ -277,7 +277,7 @@ That anecdote was the setup for the core thesis of the talk: *"The real transfor
 
 He closed with the line [that landed in the headlines](https://startupnews.fyi/2026/04/18/the-lobster-is-loose-and-its-not-going-back-peter-steinberger-on-building-openclaw-at-ted-2026/): *"The lobster is loose, and it's not going back into the tank."*
 
-Watching the clip back, what stays with me isn't the closing line. It's how ordinary he looks while saying it. The same guy who, [as he told the audience on stage](https://startupnews.fyi/2026/04/18/the-lobster-is-loose-and-its-not-going-back-peter-steinberger-on-building-openclaw-at-ted-2026/), spent three years with "no reason to be out of bed" — now closing a TED talk with a line that would land in the headlines.
+If anything gives the talk its weight, it isn't the closing line. It's the nine seconds in which an agent spotted its own limitation, searched the web for a workaround, found an API key sitting on the machine, and wired itself a new capability — no skill installed, no human in the loop, nobody asking it to. That's the real story: agents can now reason well enough to teach themselves new skills on their own. Everything else — the 340,000 stars, the lobster, the movement, the TED keynote slot — is a consequence of that becoming possible.
 
 ---
 
