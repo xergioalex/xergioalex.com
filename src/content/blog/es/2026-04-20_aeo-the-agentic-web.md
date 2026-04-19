@@ -115,6 +115,15 @@ Corrí la herramienta contra xergioalex.com.
 
 **33 de 100.**
 
+<figure>
+<img src="/images/blog/posts/aeo-the-agentic-web/figure-04-scorecard-33.webp"
+     alt="Tablero de isitagentready.com para xergioalex.com mostrando una puntuación total de 33 sobre 100, etiquetada como Level 1 — Basic Web Presence. Las cuatro categorías debajo marcan: Discoverability 67, Content 100, Bot Access Control 50, APIs/Auth/MCP & Skill Discovery 0."
+     width="1020"
+     height="815"
+     loading="lazy" />
+<figcaption>isitagentready.com, 18 de abril de 2026: xergioalex.com obtuvo 33/100. Contenido al máximo gracias al trabajo previo de Markdown for Agents; Descubribilidad y Control de Acceso a medias; la casilla de APIs/Auth/MCP/Skills completamente vacía. — <a href="https://isitagentready.com/">Califica tu propio sitio en isitagentready.com</a>.</figcaption>
+</figure>
+
 Ese número — más que todo lo demás de la semana — es el que me dejó pensando. No porque 33 sea bajo (la mayoría de sitios hoy sacarían parecido), sino porque por primera vez hay un tablero externo que define qué significa "listo para agentes" en términos accionables, chequeables. El tablero dibuja la nueva línea base; cruzarla es el siguiente ejercicio.
 
 ## Qué significa todo esto

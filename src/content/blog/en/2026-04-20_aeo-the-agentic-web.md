@@ -115,6 +115,15 @@ I ran the tool against xergioalex.com.
 
 **33 out of 100.**
 
+<figure>
+<img src="/images/blog/posts/aeo-the-agentic-web/figure-04-scorecard-33.webp"
+     alt="isitagentready.com scorecard for xergioalex.com showing an overall score of 33 out of 100, labelled Level 1 — Basic Web Presence. The four category dials below read: Discoverability 67, Content 100, Bot Access Control 50, APIs/Auth/MCP and Skill Discovery 0."
+     width="1020"
+     height="815"
+     loading="lazy" />
+<figcaption>isitagentready.com, April 18, 2026: xergioalex.com scored 33/100. Content at full marks thanks to the earlier Markdown-for-agents work; Discoverability and Bot Access partial; the APIs/Auth/MCP/Skills bucket entirely empty. — <a href="https://isitagentready.com/">Grade your own site at isitagentready.com</a>.</figcaption>
+</figure>
+
 That number — more than anything else from the week — is what stuck with me. Not because 33 is low (most sites today would score similarly), but because for the first time there's an external scorecard defining what "agent-ready" means in actionable, checkable terms. The scorecard draws the new baseline; crossing it is the next exercise.
 
 ## What this means
