@@ -873,7 +873,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     `Showing ${showing} of ${total} articles`,
   articlesAvailable: (total) =>
     `${total} article${total !== 1 ? 's' : ''} available`,
-  lastUpdatedOn: 'Last updated on',
+  lastUpdatedOn: 'Updated',
   readingTime: (minutes) => `${minutes} min read`,
   relatedArticles: 'Related Articles',
   relatedArticlesDescription: 'You might also enjoy these posts',

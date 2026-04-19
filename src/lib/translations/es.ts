@@ -884,7 +884,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     `Mostrando ${showing} de ${total} artículos`,
   articlesAvailable: (total) =>
     `${total} artículo${total !== 1 ? 's' : ''} disponible${total !== 1 ? 's' : ''}`,
-  lastUpdatedOn: 'Última actualización:',
+  lastUpdatedOn: 'Actualizado',
   readingTime: (minutes) => `${minutes} min de lectura`,
   relatedArticles: 'Artículos relacionados',
   relatedArticlesDescription: 'También te pueden interesar estos artículos',
