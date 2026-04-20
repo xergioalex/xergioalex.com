@@ -218,6 +218,8 @@ npm run astro:check        # TypeScript type checking
 npm run test               # Run unit tests
 npm run test:coverage      # Tests with coverage
 npm run images:optimize    # Process staged images
+npm run md:check           # Verify every HTML page has a matching .md for agents
+npm run md:check:strict    # Same as above; exits 1 on missing (for CI)
 npm run lighthouse         # Lighthouse audit
 npm run release            # Bump version and release commit
 npm run ncu:check          # Check for package updates

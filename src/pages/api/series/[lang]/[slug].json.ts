@@ -2,11 +2,7 @@ import { getCollection } from 'astro:content';
 
 import type { APIRoute, GetStaticPaths } from 'astro';
 
-import {
-  getSeriesTimelineIndex,
-  isDemoPost,
-  isScheduledPost,
-} from '@/lib/blog';
+import { getSeriesTimelineIndex, isPostVisibleInProduction } from '@/lib/blog';
 import type { Language } from '@/lib/i18n';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -16,9 +12,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   for (const series of allSeries) {
     for (const post of allPosts) {
-      if (isDemoPost(post) || (!import.meta.env.DEV && isScheduledPost(post))) {
-        continue;
-      }
+      if (!isPostVisibleInProduction(post)) continue;
       if (post.data.series !== series.data.name) continue;
       const lang = post.id.startsWith('en/') ? 'en' : 'es';
       combinations.add(`${lang}:${series.data.name}`);

@@ -634,6 +634,79 @@ When you catch yourself reaching for one, try to describe the thing specifically
 
 ---
 
+### Making technical content accessible (from the agentic-web refinement)
+
+The posts on this blog are technical by default. But the target reader isn't only a Cloudflare employee or an agent-standards spec author — it's anyone curious enough to open the post. These are the patterns that came out of refining the agentic-web post so that a dense 31-product roundup reads as a story, not as vendor documentation.
+
+#### Describe-before-name for technical lists
+
+When listing products by name, describe what each one *does* before naming it. The product name becomes the label, not the definition.
+
+- **Before**: *"Los agentes ahora tienen un computador (Sandboxes), un motor de orquestación (Workflows v2), una capa de inferencia (AI Platform + Infire + Unweight), memoria persistente (Agent Memory)..."*
+- **After**: *"Ahora el agente tiene casi todo lo que tendría un humano frente a un computador: un espacio donde instalar cosas y ejecutarlas (Sandboxes), un motor que coordina sus tareas (Workflows v2, Project Think), una capa para pensar (AI Platform + Infire + Unweight), memoria que persiste entre conversaciones (Agent Memory)..."*
+
+The "Before" version asks the reader to already know what "orchestration engine" or "inference layer" mean. The "After" version translates each into a human-scale action first, then names the product.
+
+#### "Traducción:" bridge after technical paragraphs
+
+After a dense technical paragraph, add a one-sentence restatement in human language. Start it with `Traducción:` / `Translation:` as an explicit signal.
+
+- **Example**: *"Managed OAuth for Access y los nuevos formatos de tokens le dan a los agentes credenciales reales y revocables. Cloudflare Mesh les da una red privada… Enterprise MCP + Code Mode muestra el patrón para colapsar 52 herramientas en 2 portales. **Traducción: el agente ya puede entrar como un usuario más, con permisos auditables.**"*
+
+The Traducción line lets the reader skip the density if they want, while still understanding the consequence. It also serves readers who are scanning — they catch the takeaway without parsing every term.
+
+#### Concrete analogies for unavoidable jargon
+
+When you can't avoid a jargon term (Huffman coding, OAuth, RDMA), pair it with a familiar analogy inline. Don't make the reader jump to a definition.
+
+- **Before**: *"La técnica es codificación Huffman aplicada a la representación interna de los pesos del modelo (el formato BF16, que es el que usan la mayoría de LLMs actuales)."*
+- **After**: *"La técnica es codificación Huffman — el mismo truco de compresión sin pérdida que usa un `.zip` — aplicada a la representación interna de los pesos del modelo (el formato BF16, que es el que usan la mayoría de LLMs actuales)."*
+
+One em-dash aside with a universal reference (`.zip`, `HTTPS`, `DNS`) is enough. The reader who knows Huffman skims it; the reader who doesn't walks away with a mental hook.
+
+Other examples from the same post:
+- *"plomería pública de la web — como el HTTPS, como el DNS"* (instead of leaving "plomería pública" abstract)
+- *"credenciales reales y revocables, del mismo tipo que usa un humano"* (instead of leaving OAuth implicit)
+- *"sin necesitar un servidor puente"* (explains Mesh's value in 4 words)
+
+#### Credit known standards bodies with familiar anchors
+
+When citing formal bodies like IETF, WHATWG, or W3C, add a short reminder of what those bodies are famous for. The reader who knows skips it; the reader who doesn't gets anchored.
+
+- **Before**: *"estándares reales que pertenecen a los organismos oficiales de la web (IETF y WHATWG)"*
+- **After**: *"estándares reales que pertenecen a los organismos oficiales de la web (IETF y WHATWG) — los mismos que en su día definieron HTTP y HTML"*
+
+The appositive ("los mismos que…") costs six words and buys universal readability.
+
+#### Specific subjects in closers
+
+Closers that rely on abstract subjects ("the web", "the ecosystem", "the industry") land flat. Replace with a specific collective that includes the reader.
+
+- **Before**: *"gane o pierda, la web queda mejor."*
+- **After**: *"gane o pierda, los que construimos en la web salimos ganando."*
+
+"La web" is a concept. "Los que construimos en la web" is a group the reader belongs to — and uses the first-person plural to pull them into the sentence.
+
+#### "Why this matters" closer per section
+
+After a long technical list, add a short sentence that tells the reader what to take away. One line is enough. It changes the list from a dump into a claim.
+
+- **Section 1 closer**: *"Es un stack entero, no un feature suelto."* — names the thesis after the list.
+- **Section 3 closer**: *"Si estos estándares funcionan, dejan de ser producto de Cloudflare y pasan a ser plomería pública de la web — como el HTTPS, como el DNS."* — makes the consequence concrete.
+
+Without these, the reader finishes the list and doesn't know what you wanted them to think. With them, the list has a point.
+
+#### Narrative openers over imperative jargon
+
+Section openers that sound like API commands ("Apila la semana en tres capas") are efficient but cold. An inviting framing costs 5–10 extra words and lets the reader in.
+
+- **Before**: *"Apila la semana en tres capas."*
+- **After**: *"Si miras la semana en conjunto, no son 31 productos sueltos. Son tres movimientos encadenados."*
+
+The "After" version does three things the "Before" doesn't: frames the perspective, sets up a contrast ("no son X, son Y"), and establishes stakes ("encadenados" implies logic). A one-sentence upgrade changes the voice of the whole section.
+
+---
+
 ## 16. Paridad EN/ES (Mandatory)
 
 Every edit applies to BOTH language versions. This is mandatory per project conventions.

@@ -1,0 +1,19 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://xergioalex.com/api/",
+      "links": [
+        {
+          "rel": "service-desc",
+          "href": "https://xergioalex.com/openapi.json",
+          "type": "application/json"
+        },
+        {
+          "rel": "service-doc",
+          "href": "https://xergioalex.com/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

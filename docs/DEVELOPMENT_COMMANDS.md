@@ -11,6 +11,8 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 | `npm run biome:check` | Check code quality |
 | `npm run biome:fix` | Auto-fix code issues |
 | `npm run astro:check` | TypeScript type checking |
+| `npm run md:check` | Verify every HTML page has a matching `.md` for agents |
+| `npm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
 
 ## Development
 
@@ -99,6 +101,20 @@ npm run astro:check
 - Runs Astro's TypeScript checker
 - Validates `.astro`, `.ts`, `.tsx` files
 - Reports type errors
+
+### Markdown-for-Agents Parity Check
+
+```bash
+npm run md:check          # Report missing .md files
+npm run md:check:strict   # Same, but exits 1 on missing (for CI)
+```
+
+- Scans `dist/` for every `index.html` and checks it has a matching `.md` counterpart
+- Catches agent-markdown coverage gaps before deployment (`MARKDOWN_FOR_AGENTS.md` endpoints)
+- Requires `npm run build` to run first (operates on the build output)
+- Excludes: `/internal/*`, `/api/*`, `/.well-known/*`, `/_astro/*`, `/images/*`, `/404`, `/rss.xml`, pagination, tag listings, and redirect pages
+- When missing files appear, the report lists them by language (EN / ES)
+- Script lives at `scripts/check-md-parity.mjs`
 
 ## Package Management
 

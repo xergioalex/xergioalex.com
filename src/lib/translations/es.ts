@@ -884,7 +884,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     `Mostrando ${showing} de ${total} artículos`,
   articlesAvailable: (total) =>
     `${total} artículo${total !== 1 ? 's' : ''} disponible${total !== 1 ? 's' : ''}`,
-  lastUpdatedOn: 'Última actualización:',
+  lastUpdatedOn: 'Actualizado',
   readingTime: (minutes) => `${minutes} min de lectura`,
   relatedArticles: 'Artículos relacionados',
   relatedArticlesDescription: 'También te pueden interesar estos artículos',
@@ -926,6 +926,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   scheduledBannerTitle: 'Post programado',
   scheduledBannerMessage: (date) =>
     `Este post será publicado el ${date}. Solo es visible en modo desarrollo.`,
+
+  // Draft posts (dev + preview indicators)
+  draftBadge: 'Borrador',
+  draftBannerTitle: 'Post en borrador',
+  draftBannerMessage:
+    'Este post está en construcción. Lo ves porque estás en el servidor local o en una rama de preview — no se publicará en producción hasta que se quite la marca de borrador.',
 
   // Tags
   postsTagged: (tag) => `Posts etiquetados con "${tag}"`,
@@ -994,7 +1000,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'trading-journey':
       'Una serie de 3 partes sobre mi evolución desde el trading discrecional temprano hasta el análisis estructurado con Market Profile y la ejecución algorítmica con MQL4.',
     'aeo-from-invisible-to-cited':
-      'Cómo construir un sitio web que los motores de respuesta de IA encuentren, entiendan y referencien.',
+      'Una guía práctica para construir sitios web que los motores de respuesta de IA puedan encontrar, entender, citar y usar — desde datos estructurados y endpoints markdown hasta MCP server cards, WebMCP y puntuación de preparación para agentes.',
     'working-with-agents':
       'De escribir código a orquestar agentes de IA — explorando el nuevo rol, flujos reales de trabajo, lo que falla, criterio, contexto y adopción en equipos.',
     'building-agents':

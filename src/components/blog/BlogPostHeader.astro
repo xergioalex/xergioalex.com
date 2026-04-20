@@ -1,5 +1,6 @@
 ---
 import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
+import UpdatedDateBadge from '@/components/blog/UpdatedDateBadge.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -53,12 +54,7 @@ const langPrefix = getUrlPrefix(lang);
           <FormattedDate date={pubDate} lang={lang} />
           <span aria-hidden="true">•</span>
           <span>{t.readingTime(readingTimeMinutes)}</span>
-          {updatedDate && (
-            <div class="italic">
-              <span aria-hidden="true">•</span>{' '}
-              {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
-            </div>
-          )}
+          {updatedDate && <UpdatedDateBadge date={updatedDate} lang={lang} />}
         </div>
         <h1 class="m-0 mb-3 text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold">{title}</h1>
         {tags && tags.length > 0 && (
@@ -99,12 +95,7 @@ const langPrefix = getUrlPrefix(lang);
           <FormattedDate date={pubDate} lang={lang} />
           <span aria-hidden="true">•</span>
           <span>{t.readingTime(readingTimeMinutes)}</span>
-          {updatedDate && (
-            <div class="italic">
-              <span aria-hidden="true">•</span>{' '}
-              {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
-            </div>
-          )}
+          {updatedDate && <UpdatedDateBadge date={updatedDate} lang={lang} />}
         </div>
         <h1 class="m-0 mb-4 text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold">{title}</h1>
         {tags && tags.length > 0 && (
@@ -169,12 +160,7 @@ const langPrefix = getUrlPrefix(lang);
             <FormattedDate date={pubDate} lang={lang} />
             <span aria-hidden="true">•</span>
             <span>{t.readingTime(readingTimeMinutes)}</span>
-            {updatedDate && (
-              <div class="italic">
-                <span aria-hidden="true">•</span>{' '}
-                {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
-              </div>
-            )}
+            {updatedDate && <UpdatedDateBadge date={updatedDate} lang={lang} />}
           </div>
           <h1 class="m-0 mb-3 text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold">{title}</h1>
           {tags && tags.length > 0 && (
@@ -215,12 +201,7 @@ const langPrefix = getUrlPrefix(lang);
         <FormattedDate date={pubDate} lang={lang} />
         <span aria-hidden="true">•</span>
         <span>{t.readingTime(readingTimeMinutes)}</span>
-        {updatedDate && (
-          <div class="italic">
-            <span aria-hidden="true">•</span>{' '}
-            {t.lastUpdatedOn} <FormattedDate date={updatedDate} lang={lang} />
-          </div>
-        )}
+        {updatedDate && <UpdatedDateBadge date={updatedDate} lang={lang} />}
       </div>
       <h1 class="m-0 mb-3 text-balance text-2xl sm:text-3xl md:text-4xl font-extrabold">{title}</h1>
       {tags && tags.length > 0 && (

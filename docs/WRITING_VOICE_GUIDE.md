@@ -132,3 +132,77 @@ Words and phrases to search for and replace before publishing:
 ```bash
 grep -rn 'genuinely\|comprehensive\|best-in-class\|beautifully\|radical premise\|worth highlighting\|worth calling out\|key insight\|key takeaway\|this is where.*shines\|game-changer\|revolutionary\|leveraging\|harnessing' src/content/blog/en/
 ```
+
+## 8. Voice for Accessible Technical Writing
+
+**Principle:** Every post on this blog is technical by default, but the voice should let anyone follow along — not only a reader who already knows the domain. This section covers the vocabulary and register moves that keep the voice approachable without softening the argument.
+
+> For the full refinement patterns (describe-before-name, "Traducción:" bridges, concrete analogies, narrative openers, etc.), see **[Writing Craft Guide § 15 — Making technical content accessible](./WRITING_CRAFT_GUIDE.md#making-technical-content-accessible-from-the-agentic-web-refinement)**. That section has before/after examples. This section covers the *voice* side of the same problem.
+
+### Avoid regional slang in broad claims
+
+Colombian / Caribbean colloquialisms are great in personal asides ("nos la pegó", "la jugada fue") but weaken broad claims where the reader expects precision. Use universal verbs when the sentence is making a case, not telling a personal story.
+
+| Avoid (regional) | Prefer (universal) |
+|------------------|--------------------|
+| "se va a pegar" / "se pegan" (meaning *catch on, take hold*) | "va a funcionar", "se va a imponer", "prospera", "prende" |
+| "el balde completo de..." (as intensifier) | "el bloque completo de...", "toda la categoría de..." |
+| "cuaja" (works in some contexts, regional in others) | "funciona", "se consolida" |
+| "nos la pegaron" (as "they succeeded") | "les salió", "funcionó" |
+
+**Rule of thumb:** if the sentence is a diagnosis or an argument, the verb should be one a Spanish-speaking reader from any country can parse without looking up. Save the regional color for personal asides.
+
+### No Spanglish in headings or claims
+
+A single English word dropped into a Spanish sentence reads as jargon-theatre. It's especially jarring in headings, which the reader parses slower.
+
+- **Bad**: `## 6. Los estándares: este es el turn real de la semana` — "turn" mid-Spanish sentence.
+- **Good**: `## 6. Los estándares: aquí la semana da el giro más interesante` — same meaning, fully Spanish.
+
+Exceptions: brand names, product names, technical terms without a clean Spanish equivalent (MCP, OAuth, RFC, webhook). These are accepted — what's not accepted is English verbs / adjectives used where Spanish has a clean alternative.
+
+### Prefer universal intensifiers over regional ones
+
+| Avoid | Prefer |
+|-------|--------|
+| "el balde completo" | "el bloque completo", "toda la categoría" |
+| "full" (in Spanish) | "al máximo", "completo", "en su totalidad" |
+| "cabal" (some regions) | "completo", "entero" |
+
+### Specific subjects in closers
+
+Closers that rely on abstractions ("la web", "el ecosistema", "la industria") land flat because there's nobody accountable in the sentence. Replace with a specific collective that includes the reader — and use first-person plural when it's honest.
+
+- **Abstract**: *"gane o pierda, la web queda mejor."*
+- **Concrete**: *"gane o pierda, los que construimos en la web salimos ganando."*
+
+The second version puts the reader in the sentence via "los que construimos" + "salimos" (we). It also makes the claim falsifiable — you're saying something about builders, not about an abstract system.
+
+### Bridge jargon with one familiar anchor, not three
+
+The temptation when a term is unfamiliar is to explain it at length. Don't. Pair it with **one** well-known reference and move on.
+
+- **Too much**: *"Huffman coding — a lossless compression scheme invented in 1952 by David Huffman at MIT, based on variable-length codes derived from symbol frequency distributions — applied to the model's weights."*
+- **Right**: *"Huffman coding — the same lossless trick a `.zip` file uses — applied to the model's weights."*
+
+One em-dash aside. One familiar anchor (`.zip`, `HTTPS`, `DNS`, `HTTP`, `HTML`). The reader learns enough to keep reading without feeling quizzed.
+
+### Signal the translation
+
+When you follow a dense technical paragraph with a plain-language restatement, mark it explicitly. `Traducción:` / `Translation:` as a sentence opener tells scanning readers "here's the takeaway" and signals to careful readers "I heard you, the previous paragraph was dense."
+
+- **Example**: *"Managed OAuth for Access y los nuevos formatos de tokens le dan a los agentes credenciales reales y revocables. Cloudflare Mesh les da una red privada… **Traducción: el agente ya puede entrar como un usuario más, con permisos auditables.**"*
+
+Use sparingly — once per major section at most. If you need it after every paragraph, the paragraphs are too dense.
+
+### Accessibility does not mean dumbing down
+
+The goal is not to remove technical substance. It's to make sure a reader who doesn't already know the term can still follow the argument. Keep the specs, keep the RFC numbers, keep the precise claims — but around each dense beat, leave a breadcrumb that a non-specialist can follow.
+
+**Pre-publish check for this section:**
+
+- [ ] Does the post have at least one concrete analogy per major technical term?
+- [ ] Is there at least one "Traducción:" / "Translation:" bridge after the densest section?
+- [ ] Are headings fully in their target language (no Spanglish)?
+- [ ] Does the closer use a specific subject (not "la web" / "the ecosystem")?
+- [ ] If a reader skimmed only the first sentence of each paragraph, would they still get the argument?

@@ -6,6 +6,7 @@ heroImage: '/images/blog/shared/blog-placeholder-5.webp'
 heroLayout: 'minimal'
 tags: ['tech', 'demo']
 keywords: ['conference talk preparation', 'tech talk planning', 'developer conference tips', 'public speaking for engineers', 'preparing technical presentations']
+draft: true
 ---
 
 This is a **draft + scheduled** post demo. It combines both states: `draft: true` AND a future `pubDate`. This is the most restrictive visibility state.

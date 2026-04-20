@@ -1,18 +1,15 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
 
-import { getPostSlug, isDemoPost, isScheduledPost } from '@/lib/blog';
+import { getPostSlug, isPostVisibleInProduction } from '@/lib/blog';
 import { serializeBlogIndexToMarkdown } from '@/lib/markdown-for-agents';
 
 export const GET: APIRoute = async () => {
   const allPosts = await getCollection('blog');
   const posts = allPosts
-    .filter((post) => {
-      if (!post.id.startsWith('es/')) return false;
-      if (isDemoPost(post)) return false;
-      if (isScheduledPost(post)) return false;
-      return true;
-    })
+    .filter(
+      (post) => post.id.startsWith('es/') && isPostVisibleInProduction(post)
+    )
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   const entries = posts.map((post) => ({

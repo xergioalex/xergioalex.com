@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute, GetStaticPaths } from 'astro';
-import { getTimelineIndex, isDemoPost, isScheduledPost } from '@/lib/blog';
+import { getTimelineIndex, isPostVisibleInProduction } from '@/lib/blog';
 import type { Language } from '@/lib/i18n';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -8,9 +8,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const combinations = new Set<string>();
 
   for (const post of allPosts) {
-    if (isDemoPost(post) || (!import.meta.env.DEV && isScheduledPost(post))) {
-      continue;
-    }
+    if (!isPostVisibleInProduction(post)) continue;
     const lang = post.id.startsWith('en/') ? 'en' : 'es';
     for (const tag of post.data.tags ?? []) {
       combinations.add(`${lang}:${tag}`);

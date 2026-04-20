@@ -2,6 +2,7 @@
 title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas. — Cómo se convirtió en un movimiento'
 description: 'La historia de OpenClaw y el nacimiento de los asistentes personales de IA — un paradigma de agentes locales, abiertos y tuyos, no de una empresa.'
 pubDate: '2026-04-13'
+updatedDate: '2026-04-19'
 heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero-es.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'ai']
@@ -256,6 +257,46 @@ Honestamente, me parece que el consejo más responsable que podría dar el cread
 
 ---
 
+## TED 2026: Cuando la langosta se volvió mainstream
+
+18 de abril de 2026. Peter subió al escenario principal de TED en Vancouver. La charla se tituló [*"How I Created OpenClaw, the Breakthrough AI Agent"*](https://www.ted.com/talks/peter_steinberger_how_i_created_openclaw_the_breakthrough_ai_agent) ("Cómo creé OpenClaw, el agente de IA que marcó un antes y un después") y cerró con un Q&A con Chris Anderson, el presidente de TED.
+
+<div class="youtube-facade relative aspect-video w-full overflow-hidden rounded-xl my-6 bg-black" data-video-id="7rzYDM6vMtI" data-title="Peter Steinberger — How I created OpenClaw, the breakthrough AI agent | TED2026">
+  <img src="https://i.ytimg.com/vi/7rzYDM6vMtI/hqdefault.jpg" alt="Peter Steinberger — How I created OpenClaw, the breakthrough AI agent | TED2026" class="absolute inset-0 h-full w-full object-cover" loading="lazy" width="480" height="360" />
+  <button type="button" aria-label="Reproducir video: cómo creé OpenClaw" class="absolute inset-0 flex h-full w-full cursor-pointer items-center justify-center border-0 bg-black/10 transition-colors hover:bg-black/30 focus-visible:bg-black/30 focus-visible:outline-none">
+    <svg viewBox="0 0 68 48" class="h-12 w-12 drop-shadow-lg md:h-16 md:w-16" aria-hidden="true">
+      <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/>
+      <path d="M45 24L27 14v20z" fill="#fff"/>
+    </svg>
+  </button>
+</div>
+
+La charla completa está en [TED.com](https://www.ted.com/talks/peter_steinberger_how_i_created_openclaw_the_breakthrough_ai_agent), y [TED Talks Daily](https://podscripts.co/podcasts/ted-talks-daily/how-i-created-openclaw-the-viral-ai-agent-peter-steinberger) la distribuyó como podcast al día siguiente.
+
+El contraste con el resto de la historia hablaba solo. Doce meses atrás Peter era un founder quemado y sin chispa; en abril de 2026 era, básicamente, un rockstar subido al escenario principal de TED. Como lo [resumió *NewClaw Times*](https://newclawtimes.com/articles/openclaw-peter-steinberger-ted-2026-founder-origin-story/) después de la charla: "hace un año, la idea de que un framework de agentes de código abierto llenara un slot principal de TED habría sonado absurda."
+
+Y entonces Peter contó la historia de Marrakech.
+
+Peter estaba viajando por Marrakech en las primeras semanas de lo que se convertiría en OpenClaw. Había construido el bot original de WhatsApp [para moverse por la ciudad](https://newclawtimes.com/articles/openclaw-peter-steinberger-ted-2026-founder-origin-story/) — navegación, recomendaciones de restaurantes, traducciones. Le había dado al agente control de su máquina y le había agregado reconocimiento de imágenes para mandar fotos desde la calle. Un par de skills más. Pero no voz — la transcripción estaba en la lista de pendientes, no la había cableado todavía.
+
+Entonces, en Marrakech, hizo lo que todo el mundo hace en WhatsApp cuando tiene las manos ocupadas: mantuvo el botón presionado y mandó una nota de voz.
+
+Y el agente le respondió.
+
+No con "perdón, no sé leer mensajes de voz." No con silencio. Con una respuesta real y correcta a lo que había preguntado. Peter [se quedó parado ahí](https://podscripts.co/podcasts/ted-talks-daily/how-i-created-openclaw-the-viral-ai-agent-peter-steinberger), mirando el celular, y escribió: *how did you do that?* ("¿cómo hiciste eso?")
+
+El agente [le explicó lo que había hecho](https://podscripts.co/podcasts/ted-talks-daily/how-i-created-openclaw-the-viral-ai-agent-peter-steinberger): miró el archivo de audio, se dio cuenta de que no sabía cómo decodificarlo, buscó en internet qué opciones existían, encontró que OpenAI tenía un modelo de voz a texto, ubicó una API key de OpenAI guardada en la máquina, y la probó. Funcionó al primer intento.
+
+Nueve segundos de principio a fin. Sin humano en el medio. Sin skill instalado. El agente había salido solo de sus propios límites, había sacado una capacidad nueva de internet, y se la había cableado a sí mismo. La frase de Peter desde el escenario: *"I'm not kidding you, the mad lad figured it out on its own."* ("No les estoy mintiendo, el muy loco lo resolvió solo.")
+
+Esa anécdota era el preámbulo de la tesis central de la charla: *"The real transformation is not the technology, it's the access."* ("La transformación real no es la tecnología, es el acceso.") Los modelos de voz a texto llevaban años existiendo. Lo nuevo era que un agente personal, corriendo en un laptop cualquiera, había estirado la mano y usado uno sin que nadie le dijera. Agencia a nivel del usuario, no de la plataforma.
+
+Cerró con la línea [que terminó en los titulares](https://startupnews.fyi/2026/04/18/the-lobster-is-loose-and-its-not-going-back-peter-steinberger-on-building-openclaw-at-ted-2026/): *"The lobster is loose, and it's not going back into the tank."* ("La langosta se soltó, y no va a volver al tanque.")
+
+Si algo le da peso a la charla no es la frase del cierre. Son los nueve segundos en los que un agente detectó su propia limitación, salió a internet a buscar una solución, encontró una API key en la máquina y se añadió una capacidad nueva a sí mismo — sin skill instalado, sin humano en el medio, sin nadie pidiéndoselo. Esa es la noticia real: los agentes ya razonan lo suficiente como para aprenderse habilidades nuevas por su cuenta. Todo lo demás — las 340 mil estrellas, la langosta, el movimiento, el slot en TED — es consecuencia de que eso haya empezado a ser posible.
+
+---
+
 ## Lo que esto significa para nosotros
 
 He dedicado mucho tiempo a pensar en qué significa OpenClaw más allá de las estrellas de GitHub y los titulares. Más allá de las guerras corporativas entre Anthropic y OpenAI. Más allá de las predicciones sobre el fin de las apps.
@@ -281,6 +322,8 @@ A seguir construyendo.
 - [OpenClaw en GitHub](https://github.com/openclaw/openclaw) — El repositorio del proyecto con 340K+ estrellas
 - [Blog de Peter Steinberger](https://steipete.me/posts/2026/openclaw) — Su anuncio sobre unirse a OpenAI y el futuro de OpenClaw
 - [Lex Fridman Podcast #491](https://lexfridman.com/peter-steinberger/) — Entrevista de 3 horas con Peter sobre la historia completa
+- [Peter Steinberger en TED2026 — TED.com](https://www.ted.com/talks/peter_steinberger_how_i_created_openclaw_the_breakthrough_ai_agent) — "How I created OpenClaw, the breakthrough AI agent," con la historia de la nota de voz en Marrakech y el Q&A con Chris Anderson
+- [Peter Steinberger en TED2026 — YouTube](https://www.youtube.com/watch?v=7rzYDM6vMtI) — Grabación completa de la charla
 - [PSPDFKit recauda EUR 100M — TechCrunch](https://techcrunch.com/2021/10/01/pspdfkit-raises-116m-its-first-outside-money-now-nearly-1b-people-use-apps-powered-by-its-collaboration-signing-and-markup-tools/) — El contexto de Peter y su década bootstrapped
 - [Jensen Huang sobre OpenClaw — CNBC](https://www.cnbc.com/2026/03/17/nvidia-ceo-jensen-huang-says-openclaw-is-definitely-the-next-chatgpt.html) — "The next ChatGPT" y "the new Linux"
 - [NemoClaw — NVIDIA](https://nvidianews.nvidia.com/news/nvidia-announces-nemoclaw) — La capa empresarial de seguridad

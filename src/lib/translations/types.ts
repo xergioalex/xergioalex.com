@@ -479,6 +479,11 @@ export interface SiteTranslations {
   scheduledBannerTitle: string;
   scheduledBannerMessage: (date: string) => string;
 
+  // Draft posts (dev + preview indicators)
+  draftBadge: string;
+  draftBannerTitle: string;
+  draftBannerMessage: string;
+
   // Tags (unified — covers primary, secondary, and subtopic tiers)
   postsTagged: (tag: string) => string;
   allTags: string;
