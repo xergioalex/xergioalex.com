@@ -66,7 +66,7 @@ const {
       <slot />
     </main>
     <Footer lang={lang} />
-    <WebMCPBridge client:idle lang={lang as 'en' | 'es'} />
+    <WebMCPBridge client:load lang={lang as 'en' | 'es'} />
     <script>
       import { setupOutboundTracking } from '@/lib/analytics';
       setupOutboundTracking();
