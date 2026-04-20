@@ -135,20 +135,30 @@ jobs:
           fi
 
       - name: Step 4 - 🧪🧪🧪 Check "TITLE" length
+        # Pass title via env var (not inline ${{ }} template) so that
+        # backticks, dollars, and other shell-meta characters in the title
+        # are not evaluated by bash as command substitution or expansion.
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           MIN_TITLE_LENGTH=5
-          PR_TITLE="${{ github.event.pull_request.title }}"
-          TITLE_LENGTH=$(echo -n "$PR_TITLE" | wc -c)
+          TITLE_LENGTH=$(printf "%s" "$PR_TITLE" | wc -c)
           if [ "$TITLE_LENGTH" -lt "$MIN_TITLE_LENGTH" ]; then
             echo "Pull request title is too short. It must have at least $MIN_TITLE_LENGTH characters."
             exit 1
           fi
 
       - name: Step 5 - 🧪🧪🧪🧪 Check "BODY" length
+        # Pass body via env var (not inline ${{ }} template). PR bodies
+        # routinely contain backticks for code spans; inlining them would
+        # make bash try to execute the content inside as command
+        # substitution. Env vars sidestep that because they are treated
+        # as literal string values, not shell source.
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
         run: |
           MIN_BODY_LENGTH=10
-          PR_BODY=$(printf "%s" "${{ github.event.pull_request.body }}")
-          BODY_LENGTH=$(echo -n "$PR_BODY" | wc -c)
+          BODY_LENGTH=$(printf "%s" "$PR_BODY" | wc -c)
           if [ "$BODY_LENGTH" -lt "$MIN_BODY_LENGTH" ]; then
             echo "Pull request body is too short. It must have at least $MIN_BODY_LENGTH characters."
             exit 1
