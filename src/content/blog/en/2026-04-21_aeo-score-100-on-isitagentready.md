@@ -2,7 +2,7 @@
 title: "What It Actually Takes to Score 100 on isitagentready.com"
 description: "Four categories, eight artifacts, two scorecards that fought each other, and one WebMCP regression — the real work behind a 100 on isitagentready.com."
 pubDate: "2026-04-21T15:00:00"
-heroImage: "/images/blog/posts/aeo-from-33-to-100/hero.webp"
+heroImage: "/images/blog/posts/aeo-score-100-on-isitagentready/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["isitagentready.com 100", "agent-ready website", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt"]
@@ -323,7 +323,7 @@ Translation: a passing scorecard is not a monument. It's a snapshot of where you
 Here's the final snapshot.
 
 <figure>
-<img src="/images/blog/posts/aeo-from-33-to-100/figure-scorecard-100.webp"
+<img src="/images/blog/posts/aeo-score-100-on-isitagentready/figure-scorecard-100.webp"
      alt="isitagentready.com scorecard for xergioalex.com showing an overall score of 100, Level 5 Agent-Native, with Discoverability 3/3, Content 1/1, Bot Access Control 2/2, and API, Auth, MCP and Skill Discovery 6/6."
      width="1020"
      height="893"

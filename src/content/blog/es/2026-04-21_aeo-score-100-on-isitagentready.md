@@ -2,7 +2,7 @@
 title: "Lo que de verdad hace falta para sacar 100 en isitagentready.com"
 description: "Cuatro categorías, ocho artefactos, dos scorecards peleándose entre sí y una regresión de WebMCP: el trabajo real tras un 100 en isitagentready.com."
 pubDate: "2026-04-21T15:00:00"
-heroImage: "/images/blog/posts/aeo-from-33-to-100/hero.webp"
+heroImage: "/images/blog/posts/aeo-score-100-on-isitagentready/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["isitagentready.com 100", "sitio listo para agentes", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt"]
@@ -323,7 +323,7 @@ Traducción: un scorecard en verde no es un monumento. Es un snapshot de dónde 
 Aquí está el snapshot final.
 
 <figure>
-<img src="/images/blog/posts/aeo-from-33-to-100/figure-scorecard-100.webp"
+<img src="/images/blog/posts/aeo-score-100-on-isitagentready/figure-scorecard-100.webp"
      alt="Scorecard de isitagentready.com para xergioalex.com mostrando un score total de 100, Level 5 Agent-Native, con Discoverability 3/3, Content 1/1, Bot Access Control 2/2, y API, Auth, MCP & Skill Discovery 6/6."
      width="1020"
      height="893"
