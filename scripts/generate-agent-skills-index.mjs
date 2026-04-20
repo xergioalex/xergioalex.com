@@ -16,46 +16,61 @@
  */
 
 import { createHash } from 'node:crypto';
-import { writeFile, mkdir } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUT_PATH = resolve(__dirname, '..', 'public', '.well-known', 'agent-skills', 'index.json');
+const OUT_PATH = resolve(
+  __dirname,
+  '..',
+  'public',
+  '.well-known',
+  'agent-skills',
+  'index.json'
+);
 const SCHEMA_URL = 'https://schemas.agentskills.io/discovery/0.2.0/schema.json';
 
 const SKILLS = [
   {
     name: 'link-headers',
-    description: 'Advertise machine-readable resources via HTTP Link response headers per RFC 8288 and RFC 9727.',
+    description:
+      'Advertise machine-readable resources via HTTP Link response headers per RFC 8288 and RFC 9727.',
   },
   {
     name: 'content-signals',
-    description: 'Declare AI content usage preferences (ai-train, search, ai-input) in robots.txt.',
+    description:
+      'Declare AI content usage preferences (ai-train, search, ai-input) in robots.txt.',
   },
   {
     name: 'api-catalog',
-    description: 'Publish an API catalog at /.well-known/api-catalog per RFC 9727, using the linkset+json format.',
+    description:
+      'Publish an API catalog at /.well-known/api-catalog per RFC 9727, using the linkset+json format.',
   },
   {
     name: 'oauth-discovery',
-    description: 'Publish OAuth 2.0 or OIDC discovery metadata so agents can discover authentication endpoints.',
+    description:
+      'Publish OAuth 2.0 or OIDC discovery metadata so agents can discover authentication endpoints.',
   },
   {
     name: 'oauth-protected-resource',
-    description: 'Publish OAuth 2.0 protected resource metadata per RFC 9728 so agents know which authorization servers govern this resource.',
+    description:
+      'Publish OAuth 2.0 protected resource metadata per RFC 9728 so agents know which authorization servers govern this resource.',
   },
   {
     name: 'mcp-server-card',
-    description: 'Publish an MCP server card at /.well-known/mcp/server-card.json so agents can discover this site as an MCP-compatible surface.',
+    description:
+      'Publish an MCP server card at /.well-known/mcp/server-card.json so agents can discover this site as an MCP-compatible surface.',
   },
   {
     name: 'agent-skills',
-    description: 'Publish an agent skills discovery index at /.well-known/agent-skills/index.json per the Cloudflare Agent Skills Discovery RFC v0.2.0.',
+    description:
+      'Publish an agent skills discovery index at /.well-known/agent-skills/index.json per the Cloudflare Agent Skills Discovery RFC v0.2.0.',
   },
   {
     name: 'webmcp',
-    description: 'Expose site tools to in-browser AI agents via the WebMCP navigator.modelContext.registerTool() API.',
+    description:
+      'Expose site tools to in-browser AI agents via the WebMCP navigator.modelContext.registerTool() API.',
   },
 ];
 
@@ -79,7 +94,9 @@ async function main() {
     try {
       digest = await sha256OfUrl(url);
     } catch (err) {
-      console.warn(`[agent-skills-index] Skipping ${skill.name} — ${err.message}`);
+      console.warn(
+        `[agent-skills-index] Skipping ${skill.name} — ${err.message}`
+      );
       continue;
     }
     entries.push({
@@ -97,9 +114,11 @@ async function main() {
   };
 
   await mkdir(dirname(OUT_PATH), { recursive: true });
-  await writeFile(OUT_PATH, JSON.stringify(index, null, 2) + '\n', 'utf8');
+  await writeFile(OUT_PATH, `${JSON.stringify(index, null, 2)}\n`, 'utf8');
 
-  console.log(`[agent-skills-index] Wrote ${entries.length} skills to ${OUT_PATH}`);
+  console.log(
+    `[agent-skills-index] Wrote ${entries.length} skills to ${OUT_PATH}`
+  );
 }
 
 main().catch((err) => {

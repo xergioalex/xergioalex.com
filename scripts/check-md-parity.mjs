@@ -26,23 +26,23 @@
  *   - /images/*      — static image assets
  */
 
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const DIST_DIR = join(process.cwd(), 'dist');
 const STRICT = process.argv.includes('--strict');
 
 const EXCLUDED_PATTERNS = [
-	/^internal(\/|$)/,
-	/^404/,
-	/^api\//,
-	/^rss\.xml/,
-	/^README$/,
-	/^\.well-known(\/|$)/,
-	/^_astro(\/|$)/,
-	/^images(\/|$)/,
-	/\/page\/\d+/,
-	/\/tag\//,
+  /^internal(\/|$)/,
+  /^404/,
+  /^api\//,
+  /^rss\.xml/,
+  /^README$/,
+  /^\.well-known(\/|$)/,
+  /^_astro(\/|$)/,
+  /^images(\/|$)/,
+  /\/page\/\d+/,
+  /\/tag\//,
 ];
 
 /**
@@ -51,81 +51,81 @@ const EXCLUDED_PATTERNS = [
  * These pages intentionally have no .md counterpart because they point elsewhere.
  */
 function isRedirectPage(pagePath) {
-	const htmlPath = join(DIST_DIR, pagePath, 'index.html');
-	if (!existsSync(htmlPath)) return false;
-	try {
-		const content = readFileSync(htmlPath, 'utf-8');
-		return content.length < 2000 && content.includes('http-equiv="refresh"');
-	} catch {
-		return false;
-	}
+  const htmlPath = join(DIST_DIR, pagePath, 'index.html');
+  if (!existsSync(htmlPath)) return false;
+  try {
+    const content = readFileSync(htmlPath, 'utf-8');
+    return content.length < 2000 && content.includes('http-equiv="refresh"');
+  } catch {
+    return false;
+  }
 }
 
 function shouldExclude(pagePath) {
-	return EXCLUDED_PATTERNS.some((pattern) => pattern.test(pagePath));
+  return EXCLUDED_PATTERNS.some((pattern) => pattern.test(pagePath));
 }
 
 function findHtmlPages(dir, base = '') {
-	const pages = [];
-	const entries = readdirSync(dir, { withFileTypes: true });
+  const pages = [];
+  const entries = readdirSync(dir, { withFileTypes: true });
 
-	for (const entry of entries) {
-		const fullPath = join(dir, entry.name);
-		const relPath = base ? `${base}/${entry.name}` : entry.name;
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    const relPath = base ? `${base}/${entry.name}` : entry.name;
 
-		if (entry.isDirectory()) {
-			pages.push(...findHtmlPages(fullPath, relPath));
-		} else if (entry.name === 'index.html') {
-			const pagePath = base || 'index';
-			pages.push(pagePath);
-		}
-	}
+    if (entry.isDirectory()) {
+      pages.push(...findHtmlPages(fullPath, relPath));
+    } else if (entry.name === 'index.html') {
+      const pagePath = base || 'index';
+      pages.push(pagePath);
+    }
+  }
 
-	return pages;
+  return pages;
 }
 
 function findExpectedMdPath(pagePath) {
-	if (pagePath === 'index') return 'index.md';
-	return `${pagePath}.md`;
+  if (pagePath === 'index') return 'index.md';
+  return `${pagePath}.md`;
 }
 
 function checkMdExists(pagePath) {
-	const primaryMd = findExpectedMdPath(pagePath);
-	const primaryPath = join(DIST_DIR, primaryMd);
-	if (existsSync(primaryPath)) {
-		return { found: true, mdPath: primaryMd };
-	}
+  const primaryMd = findExpectedMdPath(pagePath);
+  const primaryPath = join(DIST_DIR, primaryMd);
+  if (existsSync(primaryPath)) {
+    return { found: true, mdPath: primaryMd };
+  }
 
-	const indexMd = `${pagePath}/index.md`;
-	const indexPath = join(DIST_DIR, indexMd);
-	if (existsSync(indexPath)) {
-		return { found: true, mdPath: indexMd };
-	}
+  const indexMd = `${pagePath}/index.md`;
+  const indexPath = join(DIST_DIR, indexMd);
+  if (existsSync(indexPath)) {
+    return { found: true, mdPath: indexMd };
+  }
 
-	return { found: false, mdPath: primaryMd };
+  return { found: false, mdPath: primaryMd };
 }
 
 // ── Main ──────────────────────────────────────────────────
 
 if (!existsSync(DIST_DIR)) {
-	console.error('❌ dist/ directory not found. Run `npm run build` first.');
-	process.exit(1);
+  console.error('❌ dist/ directory not found. Run `npm run build` first.');
+  process.exit(1);
 }
 
 console.log('🔍 Markdown-for-Agents Parity Check\n');
 
 const allPages = findHtmlPages(DIST_DIR);
 const redirectPages = allPages.filter(
-	(p) => !shouldExclude(p) && isRedirectPage(p),
+  (p) => !shouldExclude(p) && isRedirectPage(p)
 );
 const checkablePages = allPages.filter(
-	(p) => !shouldExclude(p) && !isRedirectPage(p),
+  (p) => !shouldExclude(p) && !isRedirectPage(p)
 );
 const excludedPages = allPages.filter((p) => shouldExclude(p));
 
 const results = checkablePages.map((pagePath) => ({
-	pagePath,
-	...checkMdExists(pagePath),
+  pagePath,
+  ...checkMdExists(pagePath),
 }));
 
 const covered = results.filter((r) => r.found);
@@ -136,28 +136,32 @@ const missingEn = missing.filter((m) => !m.pagePath.startsWith('es/'));
 const missingEs = missing.filter((m) => m.pagePath.startsWith('es/'));
 
 if (missing.length > 0) {
-	console.log(`❌ Missing .md files (${missing.length}):\n`);
+  console.log(`❌ Missing .md files (${missing.length}):\n`);
 
-	if (missingEn.length > 0) {
-		console.log(`  EN (${missingEn.length}):`);
-		for (const m of missingEn.sort((a, b) => a.pagePath.localeCompare(b.pagePath))) {
-			console.log(`    ${m.pagePath} → expected: ${m.mdPath}`);
-		}
-		console.log('');
-	}
+  if (missingEn.length > 0) {
+    console.log(`  EN (${missingEn.length}):`);
+    for (const m of missingEn.sort((a, b) =>
+      a.pagePath.localeCompare(b.pagePath)
+    )) {
+      console.log(`    ${m.pagePath} → expected: ${m.mdPath}`);
+    }
+    console.log('');
+  }
 
-	if (missingEs.length > 0) {
-		console.log(`  ES (${missingEs.length}):`);
-		for (const m of missingEs.sort((a, b) => a.pagePath.localeCompare(b.pagePath))) {
-			console.log(`    ${m.pagePath} → expected: ${m.mdPath}`);
-		}
-		console.log('');
-	}
+  if (missingEs.length > 0) {
+    console.log(`  ES (${missingEs.length}):`);
+    for (const m of missingEs.sort((a, b) =>
+      a.pagePath.localeCompare(b.pagePath)
+    )) {
+      console.log(`    ${m.pagePath} → expected: ${m.mdPath}`);
+    }
+    console.log('');
+  }
 }
 
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log(
-	`📊 Coverage: ${covered.length}/${checkablePages.length} pages (${Math.round((covered.length / checkablePages.length) * 100)}%)`,
+  `📊 Coverage: ${covered.length}/${checkablePages.length} pages (${Math.round((covered.length / checkablePages.length) * 100)}%)`
 );
 console.log(`   ✅ Covered:   ${covered.length}`);
 console.log(`   ❌ Missing:   ${missing.length}`);
@@ -167,14 +171,16 @@ console.log(`   📄 Total:     ${allPages.length} HTML pages`);
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
 if (missing.length > 0 && STRICT) {
-	console.log(
-		'\n💡 To fix: add .md endpoints in src/pages/ or src/content/pages/{en,es}/',
-	);
-	console.log('   Blog posts auto-generate via src/pages/blog/[slug].md.ts');
-	console.log('   Static pages use src/content/pages/{en,es}/*.md + src/pages/*.md.ts\n');
-	process.exit(1);
+  console.log(
+    '\n💡 To fix: add .md endpoints in src/pages/ or src/content/pages/{en,es}/'
+  );
+  console.log('   Blog posts auto-generate via src/pages/blog/[slug].md.ts');
+  console.log(
+    '   Static pages use src/content/pages/{en,es}/*.md + src/pages/*.md.ts\n'
+  );
+  process.exit(1);
 }
 
 if (missing.length === 0) {
-	console.log('\n✅ All HTML pages have corresponding .md files!\n');
+  console.log('\n✅ All HTML pages have corresponding .md files!\n');
 }
