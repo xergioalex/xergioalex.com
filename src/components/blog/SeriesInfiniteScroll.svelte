@@ -274,6 +274,12 @@ function formatDate(pubDate: string): string {
                   </span>
                 {/if}
 
+                {#if post.isDraft}
+                  <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                    {t.draftBadge}
+                  </span>
+                {/if}
+
                 {#if post.tags && post.tags.length > 0}
                   {#each post.tags.filter((tag) => !topicTagNames.includes(tag)) as tag}
                     <a

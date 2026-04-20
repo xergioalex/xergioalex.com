@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import WebMCPBridge from '@/components/agent/WebMCPBridge.svelte';
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/layout/Header.svelte';
@@ -65,6 +66,7 @@ const {
       <slot />
     </main>
     <Footer lang={lang} />
+    <WebMCPBridge client:idle lang={lang as 'en' | 'es'} />
     <script>
       import { setupOutboundTracking } from '@/lib/analytics';
       setupOutboundTracking();

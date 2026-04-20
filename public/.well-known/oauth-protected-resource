@@ -1,0 +1,7 @@
+{
+  "_comment": "xergioalex.com is a static content site with no OAuth-protected resources today. This document is published for agent-readiness compliance per RFC 9728. The authorization_servers entry self-references the site's own OAuth authorization-server metadata (also a stub).",
+  "resource": "https://xergioalex.com",
+  "authorization_servers": ["https://xergioalex.com"],
+  "scopes_supported": [],
+  "bearer_methods_supported": []
+}

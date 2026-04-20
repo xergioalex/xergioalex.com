@@ -1,7 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPostPage from '@/components/pages/blog/BlogPostPage.astro';
-import { getPostSlug, isDemoPost, isScheduledPost } from '@/lib/blog';
+import {
+  getPostSlug,
+  isDemoPost,
+  isDraftPost,
+  isScheduledPost,
+  shouldHideDrafts,
+} from '@/lib/blog';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
@@ -11,6 +17,8 @@ export async function getStaticPaths() {
     if (isDemoPost(post)) return import.meta.env.DEV;
     // Scheduled posts (future pubDate) are only available in dev mode
     if (isScheduledPost(post)) return import.meta.env.DEV;
+    // Drafts are shown on dev + preview branches, hidden on production
+    if (isDraftPost(post) && shouldHideDrafts()) return false;
     return true;
   });
   return posts.map((post) => ({

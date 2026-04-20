@@ -211,6 +211,12 @@ function buildSeriesBadgeLabel(
                   </span>
                 {/if}
 
+                {#if post.isDraft}
+                  <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                    {t.draftBadge}
+                  </span>
+                {/if}
+
                 {#if post.seriesCurrent && post.seriesTotal}
                   {@const localizedSeriesTitle = (post.seriesSlug && t.seriesNames[post.seriesSlug]) || post.seriesTitle}
                   {@const seriesBadgeLabel = buildSeriesBadgeLabel(post.seriesCurrent, post.seriesTotal, localizedSeriesTitle)}
