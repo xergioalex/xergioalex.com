@@ -1011,7 +1011,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'mastering-openclaw':
       'Una inmersión profunda en OpenClaw — el agente de IA personal que vive en tu máquina, sigue tus reglas, y marcó un nuevo paradigma de IA local.',
     'learning-mobile-development':
-      'Un recorrido honesto por el desarrollo mobile — mapear el panorama, escoger las herramientas correctas y aprender a construir para Android e iOS sin fingir ser experto.',
+      'Un recorrido honesto por el desarrollo mobile — mapear el panorama, escoger herramientas y aprender a construir para Android e iOS sin fingir ser experto.',
   },
 
   // Date formatting

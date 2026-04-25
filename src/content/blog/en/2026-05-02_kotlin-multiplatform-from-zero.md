@@ -195,7 +195,7 @@ Because that's the point.
 
 Sharing code for the sake of sharing code isn't always a good idea. Sometimes sharing too much can become a burden — a common abstraction that ends up being harder to maintain than two separate implementations. That happens too.
 
-But there are parts of an app where duplication genuinely hurts: business rules, validations, models, use cases, synchronization logic, network clients, storage, calculations, data transformations.
+But there are parts of an app where duplication really hurts: business rules, validations, models, use cases, synchronization logic, network clients, storage, calculations, data transformations.
 
 That's where KMP can shine. And if the team, product, and maturity level allow for it, it can also start sharing UI with Compose Multiplatform.
 

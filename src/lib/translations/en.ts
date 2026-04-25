@@ -1000,7 +1000,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'mastering-openclaw':
       'A deep dive into OpenClaw — the personal AI agent that lives on your machine, follows your rules, and gave rise to a new paradigm of local AI.',
     'learning-mobile-development':
-      'An honest journey into mobile development — mapping the landscape, choosing the right tools, and learning to build for Android and iOS without pretending to be an expert.',
+      'An honest journey into mobile development — mapping the landscape and learning to build for Android and iOS without pretending to be an expert.',
   },
 
   // Date formatting

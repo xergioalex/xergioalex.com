@@ -45,7 +45,7 @@ This classification will feel simple once you get into the details — and it is
 
 ## Each option, without decoration
 
-Nine options. One by one. Not feature lists — an honest description of what makes each one what it is, and what it genuinely does better than the others.
+Nine options. One by one. Not feature lists — an honest description of what makes each one what it is, and what it does better than the others.
 
 ### Native Android — Kotlin + Jetpack Compose
 
@@ -63,7 +63,7 @@ Google's bet on "build once, run everywhere."[^flutter-tagline] You write Dart �
 
 Is that an advantage or a problem? Depends who's asking. For apps with strong brand identity, for internal tools, for games — total control over rendering is valuable. For apps that need to feel like a proper native Android or iOS app — it's a real cost.
 
-Flutter 3.41 shipped on February 11, 2026.[^flutter-341] The package ecosystem on pub.dev is large. The tooling — `flutter doctor`, DevTools, the VS Code and Android Studio plugins — is polished in a way that suggests Google is genuinely committed to the platform.[^flutter-homepage]
+Flutter 3.41 shipped on February 11, 2026.[^flutter-341] The package ecosystem on pub.dev is large. The tooling — `flutter doctor`, DevTools, the VS Code and Android Studio plugins — is polished in a way that suggests Google is seriously committed to the platform.[^flutter-homepage]
 
 The honest tradeoff: Dart is a language that only exists for Flutter. If you ever move on from Flutter, Dart doesn't follow. It's a bet on Google's ecosystem, not on a general-purpose language.
 
@@ -79,7 +79,7 @@ In October 2025, Meta donated React, React Native, and JSX to the React Foundati
 
 KMP is a fundamentally different bet. Where Flutter says "trust our renderer, write once," KMP says something different: share your logic, keep the UI native.[^kmp-stable]
 
-The philosophy is explicit in JetBrains' positioning: "share code across platforms while retaining the benefits of native programming." In practice: you write your data models, business logic, networking, and storage in Kotlin — once. Each platform — Android, iOS — gets its own native UI layer. On Android, that's Jetpack Compose. On iOS, that's SwiftUI. The platform feels like itself because the UI is genuinely native.
+The philosophy is explicit in JetBrains' positioning: "share code across platforms while retaining the benefits of native programming." In practice: you write your data models, business logic, networking, and storage in Kotlin — once. Each platform — Android, iOS — gets its own native UI layer. On Android, that's Jetpack Compose. On iOS, that's SwiftUI. The platform feels like itself because the UI actually is native.
 
 KMP has had a long journey since its introduction in Kotlin 1.2 in 2017.[^kmp-2017] It declared stability in November 2023.[^kmp-stable] Compose Multiplatform — the optional layer that lets you share UI too using Compose syntax — reached stability for iOS in May 2025[^compose-ios-stable], and released version 1.10.0 in January 2026.[^compose-110]
 
@@ -155,7 +155,7 @@ The honest tradeoff: Dart is a language that only exists for Flutter. If I move 
 
 KMP is a fundamentally different bet. Where Flutter says "trust our renderer, write once," KMP says something different: share your logic, keep the UI native.
 
-The most important architectural distinction is this: KMP doesn't replace the native UI — it lives under it. Your Android layer is still Jetpack Compose. Your iOS layer is still SwiftUI. What you share is the business logic — data models, networking, storage, domain rules. The platform feels like itself because the UI genuinely is native.
+The most important architectural distinction is this: KMP doesn't replace the native UI — it lives under it. Your Android layer is still Jetpack Compose. Your iOS layer is still SwiftUI. What you share is the business logic — data models, networking, storage, domain rules. The platform feels like itself because the UI is actually native.
 
 Compose Multiplatform — JetBrains' optional layer on top of KMP — goes further: it lets you share UI too, in Compose syntax, across Android, iOS, Desktop, and Web. It reached stability for iOS in May 2025.[^compose-ios-stable] So if you want Flutter-style "one UI codebase," KMP can do that now. If you prefer native UI per platform, it can do that too. It's more flexible — which also means more decisions.
 
