@@ -575,6 +575,18 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     emptyState: 'No tech talks available yet. Check back soon!',
   },
 
+  // Slides listing page
+  slidesPage: {
+    title: 'Slides',
+    subtitle: 'Presentations, decks & visual stories',
+    description:
+      'Browse all presentation decks by Sergio Alexander — from in-house Reveal.js slides to external talks hosted on other platforms.',
+    heroDescription:
+      'A collection of all my presentation decks — conference talks, meetup slides, and technical deep dives. Built in-house with Reveal.js or hosted on external platforms.',
+    emptyState: 'No slides available yet. Check back soon!',
+    viewAll: 'View all slides',
+  },
+
   // Slides / deck pages
   slides: {
     exitToCatalog: 'Back to Tech Talks',

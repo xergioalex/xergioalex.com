@@ -12,7 +12,7 @@ interface Props {
 const { deck, lang } = Astro.props;
 const prefix = getUrlPrefix(lang);
 const slug = getDeckSlug(deck.id);
-const href = `${prefix}/tech-talks/${slug}`;
+const href = `${prefix}/slides/${slug}`;
 const { title, description, heroImage, tags, eventName, eventDate, type } =
   deck.data;
 ---

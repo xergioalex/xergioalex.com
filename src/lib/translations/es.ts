@@ -582,6 +582,18 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     emptyState: '\u00A1A\u00FAn no hay charlas disponibles. Vuelve pronto!',
   },
 
+  // Slides listing page
+  slidesPage: {
+    title: 'Diapositivas',
+    subtitle: 'Presentaciones, decks e historias visuales',
+    description:
+      'Explora todas las presentaciones de Sergio Alexander — desde diapositivas creadas con Reveal.js hasta charlas externas alojadas en otras plataformas.',
+    heroDescription:
+      'Una colección de todas mis presentaciones — charlas de conferencias, slides de meetups y deep dives técnicos. Creadas internamente con Reveal.js o alojadas en plataformas externas.',
+    emptyState: 'Aún no hay diapositivas disponibles. ¡Vuelve pronto!',
+    viewAll: 'Ver todas las diapositivas',
+  },
+
   // Slides / deck pages
   slides: {
     exitToCatalog: 'Volver a Charlas Tech',

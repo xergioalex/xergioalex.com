@@ -19,7 +19,7 @@ const slug = getDeckSlug(deck.id);
 const { type } = deck.data;
 const prefix = getUrlPrefix(lang);
 const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
-const canonicalUrl = `${siteUrl}${prefix}/tech-talks/${slug}`;
+const canonicalUrl = `${siteUrl}${prefix}/slides/${slug}`;
 
 const jsonLdBase = {
   '@context': 'https://schema.org' as const,

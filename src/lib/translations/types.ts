@@ -549,6 +549,16 @@ export interface SiteTranslations {
     ctaDescription: string;
   };
 
+  // Slides listing page
+  slidesPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    heroDescription: string;
+    emptyState: string;
+    viewAll: string;
+  };
+
   // Slides / deck pages
   slides: {
     exitToCatalog: string;

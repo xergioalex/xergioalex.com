@@ -156,7 +156,17 @@ const breadcrumbSchema = {
 
   {decks.length > 0 && (
     <PageSection title={t.techTalksPage.decksTitle} description={t.techTalksPage.decksDescription} background="gray">
-      <SlidesCatalog lang={lang} />
+      <SlidesCatalog lang={lang} limit={3} />
+      {decks.length > 3 && (
+        <div class="text-center mt-8">
+          <a
+            href={`${prefix}/slides`}
+            class="inline-block px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition-colors"
+          >
+            {t.slidesPage.viewAll} &rarr;
+          </a>
+        </div>
+      )}
     </PageSection>
   )}
 
