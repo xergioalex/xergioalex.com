@@ -190,7 +190,10 @@ function closeAllDropdowns() {
             type="button"
             on:click={() => languageOpen ? closeAllDropdowns() : openDropdown('language')}
           >
-            <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            {lang.toUpperCase()}
             <svg
               class="w-4 h-4 transition-transform duration-200"
               style="transform: rotate({languageOpen ? '180deg' : '0deg'});"
@@ -204,17 +207,17 @@ function closeAllDropdowns() {
           </button>
           {#if languageOpen}
             <div
-              class="absolute left-1/2 -translate-x-1/2 top-full w-40"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-20"
               style="height: 12px; pointer-events: auto;"
             ></div>
             <div
               id="language-dropdown"
-              class="absolute left-1/2 -translate-x-1/2 top-full w-40 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
+              class="absolute left-1/2 -translate-x-1/2 top-full w-20 bg-white dark:bg-gray-800 text-black dark:text-gray-200 rounded shadow-lg z-50 overflow-hidden transition-all duration-200"
               style="pointer-events: auto; opacity: 1; transform: translateY(12px);"
             >
               {#each alternateLanguageUrls as alt}
-                <a href={alt.url} class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition flex items-center gap-2" on:click={() => trackEvent(EVENTS.LANGUAGE_SWITCH, { from: lang, to: alt.lang })}>
-                  <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.lang.toUpperCase()}
+                <a href={alt.url} class="block w-full text-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition" on:click={() => trackEvent(EVENTS.LANGUAGE_SWITCH, { from: lang, to: alt.lang })}>
+                  {alt.lang.toUpperCase()}
                 </a>
               {/each}
             </div>
