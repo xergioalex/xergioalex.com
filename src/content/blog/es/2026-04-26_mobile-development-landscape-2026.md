@@ -9,9 +9,48 @@ series: "learning-mobile-development"
 seriesOrder: 1
 ---
 
-Llevo años mirando el desarrollo mobile de lejos. Lo veo, lo admiro, ocasionalmente lo envidio. Pero siempre desde el otro lado: construyendo APIs, configurando infraestructura, diseñando sistemas que viven en servidores. El móvil siempre fue "eso que hacen otros".
+Siempre me he considerado un desarrollador full stack. Backend, frontend, infraestructura, DevOps — si hay una tecnología nueva que me llama la atención, la aprendo. Así funciono. Pero con el desarrollo mobile la historia siempre ha sido distinta. Lo miro de lejos — lo veo, lo admiro, ocasionalmente lo envidio — pero siempre termino del otro lado: construyendo APIs, levantando frontends, configurando infraestructura, diseñando sistemas que viven en servidores. El móvil siempre fue "eso que hacen otros".
 
-Este año decidí que ya era suficiente. No porque tenga un proyecto urgente que lo requiera — aunque algo hay — sino porque hay una diferencia real entre entender superficialmente un dominio y haberlo tocado de verdad. Quería pasar al segundo grupo.
+No porque no lo haya intentado.
+
+Recuerdo mis primeros años de universidad — estamos hablando de hace más de quince años — cuando necesité desarrollar una app móvil para una materia. En esa época Android Studio no existía todavía; el IDE oficial era Eclipse con el plugin ADT, y era demasiado pesado para mi humilde laptop de ese entonces. No arrancaba, o arrancaba y se comía toda la memoria, o se quedaba compilando en un loop que parecía eterno.
+
+Buscando capturas de pantalla de esa época encontré estas joyas — Eclipse Helios cargando con el plugin ADT, el editor visual de layouts y el emulador con su teclado físico virtual. Los flashbacks son inmediatos:
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-helios-loading.webp"
+     alt="Eclipse Helios IDE loading screen with the ADT plugin installed, circa 2011"
+     width="1024"
+     height="576"
+     loading="lazy" />
+<figcaption>Eclipse Helios (~2011) cargando con el plugin ADT. Esa pantalla morada era lo último que veías antes de que tu laptop decidiera si cooperaba o no.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-adt-layout-editor.webp"
+     alt="Eclipse ADT graphical layout editor showing a Hello World Android app with form widgets palette"
+     width="991"
+     height="612"
+     loading="lazy" />
+<figcaption>El editor visual de layouts en Eclipse ADT — arrastrando TextViews y Buttons sobre un Nexus One virtual. El "Hello world!" que costaba media hora de configuración.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-adt-emulator.webp"
+     alt="Eclipse ADT with the Android emulator showing a virtual phone with physical keyboard, DDMS debug panel below"
+     width="1024"
+     height="734"
+     loading="lazy" />
+<figcaption>El emulador de Android dentro de Eclipse — con teclado físico virtual, panel DDMS y una velocidad que ponía a prueba tu paciencia.</figcaption>
+</figure>
+
+Así que empecé a buscar alternativas. Cordova me permitió crear apps híbridas que sirvieron para su propósito: monté mis primeras apps móviles con HTML, CSS y JavaScript empaquetados dentro de un contenedor nativo. Funcionaba. Luego experimenté con Ionic — mismo principio, mejor tooling — y creé un par de prototipos y proyectos con estas tecnologías.
+
+El problema llegaba cuando necesitaba algo más. Cuando el proyecto requería acceso real a los componentes nativos del dispositivo — la cámara, el GPS, los sensores, las notificaciones push — el desarrollo híbrido mostraba sus costuras. Un bridge que tardaba demasiado, una API nativa que no estaba expuesta, un comportamiento que en el navegador funcionaba perfecto pero en el dispositivo se sentía como una app web disfrazada. Y lo era.
+
+Después de eso, abandoné el desarrollo mobile. De nuevo. Y ese "de nuevo" es la parte importante — porque no fue la primera vez ni fue la última. Cada cierto tiempo sentía el impulso de acercarme. Veía un framework nuevo, una demo que se veía increíble, un tutorial que prometía "build your first app in 30 minutes". Pero el desarrollo mobile, a diferencia del frontend o el backend, requiere una cantidad de artefactos que al verlos todos juntos — los certificados, los perfiles de aprovisionamiento, los emuladores, las configuraciones de Gradle o Xcode, las cuentas de desarrollador — el impulso se me iba antes de escribir la primera línea de código. En frontend puedes abrir un archivo HTML y ya tienes algo. En backend, tres líneas levantan un servidor. En mobile, antes de ver "Hello World" en tu teléfono ya pasaste por tres asistentes de configuración y un error de Gradle que te manda a Stack Overflow. La barrera de entrada no era intelectual. Era logística. Y la logística mata la motivación más rápido que la complejidad.
+
+Este año decidí que ya era suficiente. No porque tenga un proyecto urgente que lo requiera — aunque algo hay — sino porque quería entender el estado del arte actual. Encontrar el mejor camino para alguien como yo: un desarrollador full stack con experiencia sólida en backend, frontend e infraestructura, pero que no es experto en nada de mobile. Mi happy path — el que me lleve a crear apps de manera intuitiva, con los mejores estándares posibles, sin tener que pelear contra el ecosistema para empezar.
 
 Antes de escribir una sola línea de código, me senté a entender el panorama. Porque uno de los errores más comunes de quien llega desde backend o web es asumir que el desarrollo mobile es simplemente "programación normal pero en un teléfono". No lo es. Los modelos de estado son distintos. El ciclo de vida de las pantallas funciona diferente. La forma en que piensas la UI — quién la controla, cuándo se destruye, cómo persiste — tiene lógica propia. Antes de elegir una herramienta, quería entender en qué me estaba metiendo.
 
@@ -129,7 +168,7 @@ Descarté el resto bastante rápido. El razonamiento:
 
 **Native Android/iOS:** La respuesta solo tiene sentido si ya sabes para cuál de las dos plataformas estás construyendo. Yo no lo sé todavía — quiero llegar a las dos. Irme a native significaría aprender dos lenguajes, dos modelos de UI, dos ecosistemas. Es la respuesta correcta para muchos equipos. No para mí empezando desde cero.
 
-**Ionic/Capacitor:** El tradeoff es demasiado claro. Si me importa que la app se sienta nativa — y me importa — Ionic no es el lugar para empezar. Es útil si ya tienes una app web y quieres llevarla a la tienda. Yo estoy construyendo desde cero.
+**Ionic/Capacitor:** Ya pasé por esto. Cordova, Ionic — me sirvieron hace quince años para salir del paso en la universidad, pero el tradeoff lo viví en carne propia: cuando necesitas que la app se sienta nativa, el híbrido no llega. Si ya tienes una app web y quieres llevarla a la tienda, es un camino válido. Pero yo estoy construyendo desde cero, y esta vez quiero hacerlo bien.
 
 **.NET MAUI:** No vivo en el ecosistema C#. No hay razón para empezar ahí.
 
