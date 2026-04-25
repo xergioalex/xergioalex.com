@@ -1,10 +1,6 @@
 ---
-import '@/styles/global.css';
 import 'reveal.js/reveal.css';
-import 'reveal.js/theme/black.css';
-import 'reveal.js/theme/white.css';
 
-import BaseHead from '@/components/BaseHead.astro';
 import { SITE_TITLE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -23,7 +19,7 @@ const {
   lang,
   title,
   description,
-  image,
+  image = '/images/og-default.png',
   showRevealChrome = true,
   deckSlug,
   isDraft = false,
@@ -36,35 +32,63 @@ const alternateLang = lang === 'en' ? 'es' : 'en';
 const alternatePrefix = getUrlPrefix(alternateLang);
 const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
 const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
+const fullTitle = `${title} | ${SITE_TITLE}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const absoluteImageUrl = new URL(image, Astro.site ?? Astro.url).href;
 ---
 
 <html lang={lang}>
   <head>
-    <BaseHead
-      title={`${title} | ${SITE_TITLE}`}
-      description={description}
-      image={image}
-      lang={lang}
-      ogType="article"
-    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImageUrl} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={absoluteImageUrl} />
     <style is:global>
-      body.reveal-theme-dark {
-        background: #111;
+      .reveal {
+        font-family: 'Source Sans Pro', Helvetica, sans-serif;
+        font-size: 42px;
       }
-      body.reveal-theme-light {
-        background: #fff;
+      .reveal .slides section,
+      .reveal .slides section p,
+      .reveal .slides section li,
+      .reveal .slides section small {
+        color: #eee;
       }
-      body.reveal-theme-light .reveal {
-        color: #222;
+      .reveal .slides section h1,
+      .reveal .slides section h2,
+      .reveal .slides section h3,
+      .reveal .slides section h4 {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.02em;
       }
-      body.reveal-theme-dark .reveal .controls {
+      .reveal .slides section h1 { font-size: 2.5em; }
+      .reveal .slides section h2 { font-size: 1.6em; }
+      .reveal .slides section h3 { font-size: 1.15em; }
+      .reveal .slides section a {
         color: #42affa;
       }
-      body.reveal-theme-light .reveal .controls {
-        color: #2a76dd;
+      .reveal .slides section code {
+        font-family: monospace;
       }
-      body.reveal-theme-light .reveal .progress {
-        color: #2a76dd;
+      .reveal .controls {
+        color: #42affa;
+      }
+      .reveal .progress span {
+        background: #42affa;
       }
       .slide-chrome {
         position: fixed;
@@ -77,38 +101,42 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
         text-decoration: none;
         opacity: 0.7;
         transition: opacity 0.2s;
+        color: #d1d5db;
       }
       .slide-chrome a:hover,
       .slide-chrome a:focus-visible {
         opacity: 1;
-      }
-      body.reveal-theme-dark .slide-chrome a {
-        color: #d1d5db;
-      }
-      body.reveal-theme-light .slide-chrome a {
-        color: #4b5563;
       }
       .slide-chrome a:focus-visible {
         outline: 2px solid currentColor;
         outline-offset: 2px;
         border-radius: 4px;
       }
+      .slide-chrome .draft-badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 9999px;
+        background: #9333ea;
+        padding: 2px 8px;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #fff;
+      }
     </style>
     <slot name="head" />
   </head>
-  <body class="reveal-theme-dark m-0 p-0 overflow-hidden">
-    <nav class="slide-chrome top-0 left-0" aria-label="Deck navigation">
+  <body style="margin:0; padding:0; overflow:hidden; background:#111; color:#eee;">
+    <nav class="slide-chrome" style="top:0; left:0;" aria-label="Deck navigation">
       <a href={catalogUrl} aria-label={`${t.slides.exitToCatalog} — ${SITE_TITLE}`}>
         ← {SITE_TITLE.split(' - ')[0]}
       </a>
     </nav>
 
-    <nav class="slide-chrome top-0 right-0 flex items-center gap-3" aria-label="Language switcher">
+    <nav class="slide-chrome" style="top:0; right:0; display:flex; align-items:center; gap:12px;" aria-label="Language switcher">
       {isDraft && (
-        <span
-          class="inline-flex items-center rounded-full bg-purple-600 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white shadow-sm"
-          title={t.draftBadge}
-        >
+        <span class="draft-badge" title={t.draftBadge}>
           {t.draftBadge}
         </span>
       )}
@@ -118,7 +146,7 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
     </nav>
 
     {showRevealChrome && (
-      <div class="slide-chrome bottom-0 right-0">
+      <div class="slide-chrome" style="bottom:0; right:0;">
         <a href="?print-pdf" target="_blank" rel="noopener noreferrer" aria-label={t.slides.printPdf}>
           {t.slides.printPdf}
         </a>
@@ -133,31 +161,22 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
       (function() {
         var html = document.documentElement;
         var body = document.body;
-
         function syncTheme() {
           var isDark = html.classList.contains('dark');
-          body.classList.remove('reveal-theme-dark', 'reveal-theme-light');
-          body.classList.add(isDark ? 'reveal-theme-dark' : 'reveal-theme-light');
+          if (isDark) {
+            body.style.background = '#111';
+            body.style.color = '#eee';
+          } else {
+            body.style.background = '#fff';
+            body.style.color = '#222';
+          }
         }
-
         syncTheme();
-
-        var observer = new MutationObserver(function(mutations) {
-          for (var i = 0; i < mutations.length; i++) {
-            if (mutations[i].attributeName === 'class') {
-              syncTheme();
-              break;
-            }
+        new MutationObserver(function(m) {
+          for (var i = 0; i < m.length; i++) {
+            if (m[i].attributeName === 'class') { syncTheme(); break; }
           }
-        });
-        observer.observe(html, { attributes: true, attributeFilter: ['class'] });
-
-        window.addEventListener('reveal:ready', function() {
-          var deck = document.getElementById('reveal-deck');
-          if (deck) {
-            deck.classList.remove('opacity-0');
-          }
-        });
+        }).observe(html, { attributes: true, attributeFilter: ['class'] });
       })();
     </script>
   </body>
