@@ -16,11 +16,11 @@ eventUrl: "https://pereiratechtalks.org/"
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" -->
 
-# Building Products with AI Agents
+<h1 style="color:#fff">Building Products with AI Agents</h1>
 
-### From solo developer to orchestrator
+<h3 style="color:#ccc">From solo developer to orchestrator</h3>
 
-<small>Sergio Alexander Florez · Pereira Tech Talks 2026</small>
+<small style="color:#aaa">Sergio Alexander Florez · Pereira Tech Talks 2026</small>
 
 ---
 
@@ -115,10 +115,10 @@ They are the **clearest thinkers** — because agents amplify clarity and punish
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" -->
 
-## Thank you
+<h2 style="color:#fff">Thank you</h2>
 
-**@XergioAleX** · xergioalex.com
+<p style="color:#ddd"><strong>@XergioAleX</strong> · xergioalex.com</p>
 
-<small>Slides built with Reveal.js inside Astro</small>
+<small style="color:#aaa">Slides built with Reveal.js inside Astro</small>
 
 Note: Closing — invite questions. Mention that the slides themselves are built with the slides-as-code approach discussed in the talk.
