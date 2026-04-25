@@ -165,13 +165,13 @@ And it also felt wild. That's the word that best captures what using OpenClaw wa
 
 That magic has been fading. The security incidents forced the project to add confirmation layers, sandboxes, granular permissions. It was a necessary evil -- because full control by default turned out to be too dangerous at that scale, and because the project wasn't going to survive if users kept losing files, credentials, getting hacked, leaking sensitive data, or worse. But in the moment, that freedom was what generated the most impact. OpenClaw didn't just gain adoption -- it redefined the minimum bar for what it means to be an agent.
 
-The configuration is where it gets interesting, and it's the part I think will influence software design for years. OpenClaw uses 7 Markdown files to define everything about your agent:
+The configuration is where it gets interesting, and it's the part I think will influence software design for years. OpenClaw uses 7 Markdown files to define how your agent thinks and behaves:
 
 - **SOUL.md** -- Personality and values. This is the first file injected into the agent's context at the start of every session. It defines who your agent is, how it communicates, what it cares about.
 - **IDENTITY.md** -- Public-facing metadata. Name, avatar, how the agent presents itself to the world and to other agents.
 - **USER.md** -- Context about the human. Your timezone, your preferences, your access levels, things the agent should know about you.
 - **TOOLS.md** -- Capabilities and constraints. What the agent can and can't do, which integrations are enabled.
-- **HEARTBEAT.md** -- Automated tasks. Think of it as cron for your agent, written in plain English. Scheduled checks, monitoring, recurring reports.
+- **HEARTBEAT.md** -- A checklist the agent works through on its own schedule. Recurring checks, monitoring, status reports it should look at without you asking.
 - **AGENTS.md** -- Operating procedures. How the agent should handle different types of requests, workflows, escalation paths.
 - **MEMORY.md** -- Persistent learning. Things the agent remembers across conversations, patterns it has noticed, context that accumulates over time.
 

@@ -175,13 +175,13 @@ Esa sensación de magia se ha ido perdiendo con el tiempo. Los problemas de segu
 
 Y es agnóstico al modelo. Le puedes poner GPT, Gemini, Codex, DeepSeek, Llama, Mistral, Claude (con API key, ya que Anthropic bloqueó el acceso por suscripción), o cualquier modelo local que corras en tu máquina, por ejemplo con Ollama. El agente no es el modelo — el agente es la capa de arriba que decide qué hacer, cuándo hacerlo y cómo hacerlo. El modelo es el cerebro, pero OpenClaw es el cuerpo.
 
-Lo que más me sorprendió cuando empecé a estudiar la arquitectura es que todo vive en archivos Markdown. Toda la configuración, toda la personalidad, toda la lógica del agente. Son 7 archivos de texto plano:
+Lo que más me sorprendió cuando empecé a estudiar la arquitectura es que la mente del agente vive en archivos Markdown. Toda la configuración, toda la personalidad, toda la lógica del agente. Son 7 archivos de texto plano:
 
 - **SOUL.md** — La personalidad y los valores del agente. Sus límites, su tono, cómo debe comportarse. El primer archivo que se inyecta al contexto al iniciar una sesión.
 - **IDENTITY.md** — Metadatos públicos: nombre, rol, avatar. Lo que el agente le dice al mundo cuando le preguntan quién es.
 - **USER.md** — Contexto sobre ti, el humano. Tu nombre, tu zona horaria, tus preferencias, tu trabajo. Lo que hace que el agente sienta que te conoce.
 - **TOOLS.md** — Las capacidades del agente: qué herramientas tiene disponibles y cómo usarlas.
-- **HEARTBEAT.md** — Tareas automáticas programadas en lenguaje natural. "Cada 30 minutos, revisa si el disco está lleno." "Cada lunes a las 8 AM, genera el resumen semanal." Es el cron de tu agente, pero sin necesidad de saber sintaxis de cron.
+- **HEARTBEAT.md** — Una lista de chequeo que el agente repasa por su cuenta cada cierto tiempo. "Cada 30 minutos, revisa si el disco está lleno." "Cada lunes a las 8 AM, genera el resumen semanal." Cosas que el agente debería mirar sin que se las pidas, en su propio ritmo.
 - **AGENTS.md** — Procedimientos operativos. Cómo debe manejar diferentes tipos de solicitudes, flujos de trabajo, caminos de escalamiento.
 - **MEMORY.md** — Aprendizaje persistente. Lo que el agente ha aprendido de ti con el tiempo, curado a lo que más importa.
 
