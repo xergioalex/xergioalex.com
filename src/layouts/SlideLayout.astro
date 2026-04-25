@@ -60,17 +60,10 @@ const absoluteImageUrl = new URL(image, Astro.site ?? Astro.url).href;
         font-family: 'Source Sans Pro', Helvetica, sans-serif;
         font-size: 42px;
       }
-      .reveal .slides section,
-      .reveal .slides section p,
-      .reveal .slides section li,
-      .reveal .slides section small {
-        color: #eee;
-      }
       .reveal .slides section h1,
       .reveal .slides section h2,
       .reveal .slides section h3,
       .reveal .slides section h4 {
-        color: #fff;
         text-transform: uppercase;
         font-weight: 700;
         letter-spacing: 0.02em;
@@ -78,18 +71,26 @@ const absoluteImageUrl = new URL(image, Astro.site ?? Astro.url).href;
       .reveal .slides section h1 { font-size: 2.5em; }
       .reveal .slides section h2 { font-size: 1.6em; }
       .reveal .slides section h3 { font-size: 1.15em; }
-      .reveal .slides section a {
-        color: #42affa;
-      }
-      .reveal .slides section code {
-        font-family: monospace;
-      }
-      .reveal .controls {
-        color: #42affa;
-      }
-      .reveal .progress span {
-        background: #42affa;
-      }
+      .reveal .slides section a { color: #42affa; }
+      .reveal .slides section code { font-family: monospace; }
+      .reveal .controls { color: #42affa; }
+      .reveal .progress span { background: #42affa; }
+
+      /* Slide content always uses light text on dark backgrounds */
+      .reveal .slides section,
+      .reveal .slides section p,
+      .reveal .slides section li,
+      .reveal .slides section small,
+      .reveal .slides section code,
+      .reveal .slides section pre { color: #eee; }
+      .reveal .slides section h1,
+      .reveal .slides section h2,
+      .reveal .slides section h3,
+      .reveal .slides section h4 { color: #fff; }
+
+      /* Chrome adapts to site theme */
+      body[data-slide-theme="dark"] .slide-chrome a { color: #d1d5db; }
+      body[data-slide-theme="light"] .slide-chrome a { color: #4b5563; }
       .slide-chrome {
         position: fixed;
         z-index: 50;
@@ -127,7 +128,7 @@ const absoluteImageUrl = new URL(image, Astro.site ?? Astro.url).href;
     </style>
     <slot name="head" />
   </head>
-  <body style="margin:0; padding:0; overflow:hidden; background:#111; color:#eee;">
+  <body data-slide-theme="dark" style="margin:0; padding:0; overflow:hidden; background:#111; color:#eee;">
     <nav class="slide-chrome" style="top:0; left:0;" aria-label="Deck navigation">
       <a href={catalogUrl} aria-label={`${t.slides.exitToCatalog} — ${SITE_TITLE}`}>
         ← {SITE_TITLE.split(' - ')[0]}
@@ -163,13 +164,9 @@ const absoluteImageUrl = new URL(image, Astro.site ?? Astro.url).href;
         var body = document.body;
         function syncTheme() {
           var isDark = html.classList.contains('dark');
-          if (isDark) {
-            body.style.background = '#111';
-            body.style.color = '#eee';
-          } else {
-            body.style.background = '#fff';
-            body.style.color = '#222';
-          }
+          body.setAttribute('data-slide-theme', isDark ? 'dark' : 'light');
+          body.style.background = isDark ? '#111' : '#f8f8f8';
+          body.style.color = isDark ? '#eee' : '#222';
         }
         syncTheme();
         new MutationObserver(function(m) {
