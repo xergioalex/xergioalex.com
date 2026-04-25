@@ -94,38 +94,51 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
       <!-- Language toggle -->
       <a
         href={lang === 'en' ? '#' : alternateUrl}
+        data-toolbar-extra
         style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'en' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
         aria-label="English"
       >EN</a>
       <a
         href={lang === 'es' ? '#' : alternateUrl}
+        data-toolbar-extra
         style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'es' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
         aria-label="Español"
       >ES</a>
 
       <!-- Divider -->
-      <div style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
+      <div data-toolbar-extra style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
 
       <!-- Theme toggle -->
       <button
         id="theme-toggle"
         type="button"
-        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); font-size:15px; transition:all 0.15s;"
+        data-toolbar-extra
+        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); transition:all 0.15s;"
         aria-label="Toggle theme"
         title="Toggle light/dark"
       >
-        <span id="theme-icon">☀️</span>
+        <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
       </button>
 
       <!-- Fullscreen -->
       <button
         id="fullscreen-toggle"
         type="button"
-        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); font-size:15px; transition:all 0.15s;"
+        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); transition:all 0.15s;"
         aria-label="Fullscreen"
         title="Fullscreen"
       >
-        <span id="fs-icon">⛶</span>
+        <svg id="fs-icon-expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+        </svg>
+        <svg id="fs-icon-shrink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/>
+        </svg>
       </button>
 
     </div>
@@ -140,6 +153,10 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         var body = document.body;
         var toolbar = document.getElementById('slide-toolbar');
         var backLink = document.getElementById('slide-back');
+        var sunIcon = document.getElementById('theme-icon-sun');
+        var moonIcon = document.getElementById('theme-icon-moon');
+        var fsExpand = document.getElementById('fs-icon-expand');
+        var fsShrink = document.getElementById('fs-icon-shrink');
 
         function isDark() { return html.classList.contains('dark'); }
 
@@ -148,26 +165,24 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           body.classList.remove('reveal-theme-dark', 'reveal-theme-light');
           body.classList.add(dark ? 'reveal-theme-dark' : 'reveal-theme-light');
 
-          var icon = document.getElementById('theme-icon');
-          if (icon) icon.textContent = dark ? '☀️' : '🌙';
+          if (sunIcon && moonIcon) {
+            sunIcon.style.display = dark ? 'block' : 'none';
+            moonIcon.style.display = dark ? 'none' : 'block';
+          }
 
-          // Update toolbar glass background
           if (toolbar) {
             toolbar.style.background = dark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.75)';
             toolbar.style.borderColor = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
           }
-          // Update back link color
           if (backLink) {
             backLink.style.color = dark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)';
           }
-          // Update toolbar button/link colors
           var btns = toolbar ? toolbar.querySelectorAll('button, a') : [];
           for (var i = 0; i < btns.length; i++) {
             var el = btns[i];
             if (el.getAttribute('aria-label') === 'English' || el.getAttribute('aria-label') === 'Español') continue;
             el.style.color = dark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)';
           }
-          // Update lang toggle colors
           var enLink = toolbar ? toolbar.querySelector('[aria-label="English"]') : null;
           var esLink = toolbar ? toolbar.querySelector('[aria-label="Español"]') : null;
           var currentLang = html.getAttribute('lang') || 'en';
@@ -179,11 +194,24 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
             esLink.style.background = currentLang === 'es' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
             esLink.style.color = currentLang === 'es' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
           }
-          // Update dividers
           var dividers = toolbar ? toolbar.querySelectorAll('div[style*="width:1px"]') : [];
           for (var j = 0; j < dividers.length; j++) {
             dividers[j].style.background = dark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)';
           }
+        }
+
+        function syncFullscreen() {
+          var isFs = !!document.fullscreenElement;
+          if (fsExpand && fsShrink) {
+            fsExpand.style.display = isFs ? 'none' : 'block';
+            fsShrink.style.display = isFs ? 'block' : 'none';
+          }
+          var extras = toolbar ? toolbar.querySelectorAll('[data-toolbar-extra]') : [];
+          for (var i = 0; i < extras.length; i++) {
+            var tag = extras[i].tagName;
+            extras[i].style.display = isFs ? 'none' : (tag === 'A' || tag === 'BUTTON' ? 'inline-flex' : '');
+          }
+          if (backLink) backLink.style.display = isFs ? 'none' : '';
         }
 
         syncTheme();
@@ -194,7 +222,6 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           }
         }).observe(html, { attributes: true, attributeFilter: ['class'] });
 
-        // Theme toggle
         var themeBtn = document.getElementById('theme-toggle');
         if (themeBtn) {
           themeBtn.addEventListener('click', function() {
@@ -204,9 +231,7 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           });
         }
 
-        // Fullscreen toggle
         var fsBtn = document.getElementById('fullscreen-toggle');
-        var fsIcon = document.getElementById('fs-icon');
         if (fsBtn) {
           fsBtn.addEventListener('click', function() {
             if (!document.fullscreenElement) {
@@ -216,7 +241,8 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
             }
           });
           document.addEventListener('fullscreenchange', function() {
-            if (fsIcon) fsIcon.textContent = document.fullscreenElement ? '⬜' : '⛶';
+            syncFullscreen();
+            syncTheme();
           });
         }
       })();
