@@ -14,7 +14,6 @@ interface Props {
   title: string;
   description: string;
   image?: string;
-  showRevealChrome?: boolean;
   deckSlug: string;
   isDraft?: boolean;
 }
@@ -24,7 +23,6 @@ const {
   title,
   description,
   image,
-  showRevealChrome = true,
   deckSlug,
   isDraft = false,
 } = Astro.props;
@@ -85,7 +83,7 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
     <!-- Toolbar: top-right floating pill -->
     <div
       id="slide-toolbar"
-      style="position:fixed; top:10px; right:16px; z-index:100; display:flex; align-items:center; gap:4px; padding:4px; border-radius:10px; background:rgba(0,0,0,0.35); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); font-family:system-ui,sans-serif;"
+      style="position:fixed; top:10px; right:16px; z-index:100; display:flex; align-items:center; gap:4px; padding:4px; border-radius:10px; background:rgba(0,0,0,0.65); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); font-family:system-ui,sans-serif;"
     >
       {isDraft && (
         <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 8px; border-radius:6px; background:#9333ea; color:#fff;">
@@ -130,19 +128,6 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         <span id="fs-icon">⛶</span>
       </button>
 
-      {showRevealChrome && (
-        <>
-          <div style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
-          <a
-            href="?print-pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; text-decoration:none; color:rgba(255,255,255,0.6); font-size:14px; transition:all 0.15s;"
-            aria-label={t.slides.printPdf}
-            title={t.slides.printPdf}
-          >🖨</a>
-        </>
-      )}
     </div>
 
     <div class="reveal" id="reveal-deck">
@@ -168,7 +153,8 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
 
           // Update toolbar glass background
           if (toolbar) {
-            toolbar.style.background = dark ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.6)';
+            toolbar.style.background = dark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.75)';
+            toolbar.style.borderColor = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
           }
           // Update back link color
           if (backLink) {
