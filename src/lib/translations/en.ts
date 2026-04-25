@@ -982,6 +982,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'building-agents': 'Building Agents',
     'the-library-of-tomorrow': 'The Library of Tomorrow',
     'mastering-openclaw': 'Mastering OpenClaw',
+    'learning-mobile-development': 'Learning Mobile Development',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -998,6 +999,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       "Reviews and reflections on sci-fi books, movies, and stories — where classic science fiction meets today's AI revolution. Born from a reading club inside the Pereira Tech Talks community.",
     'mastering-openclaw':
       'A deep dive into OpenClaw — the personal AI agent that lives on your machine, follows your rules, and gave rise to a new paradigm of local AI.',
+    'learning-mobile-development':
+      'An honest journey into mobile development — mapping the landscape, choosing the right tools, and learning to build for Android and iOS without pretending to be an expert.',
   },
 
   // Date formatting
