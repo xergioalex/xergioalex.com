@@ -1,11 +1,12 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry as CE, CollectionEntry } from 'astro:content';
+import JsonLd from '@/components/JsonLd.astro';
 import ExternalEmbedView from '@/components/slides/ExternalEmbedView.astro';
 import ExternalLinkView from '@/components/slides/ExternalLinkView.astro';
 import RevealDeck from '@/components/slides/RevealDeck.svelte';
 import SlideLayout from '@/layouts/SlideLayout.astro';
-
 import type { Language } from '@/lib/i18n';
+import { getUrlPrefix } from '@/lib/i18n';
 import { getDeckSlug } from '@/lib/slides';
 
 interface Props {
@@ -16,6 +17,49 @@ interface Props {
 const { lang, deck } = Astro.props;
 const slug = getDeckSlug(deck.id);
 const { type } = deck.data;
+const prefix = getUrlPrefix(lang);
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+const canonicalUrl = `${siteUrl}${prefix}/tech-talks/${slug}`;
+
+const jsonLdBase = {
+  '@context': 'https://schema.org' as const,
+  name: deck.data.title,
+  description: deck.data.description,
+  datePublished: deck.data.pubDate.toISOString(),
+  inLanguage: lang,
+  author: {
+    '@type': 'Person' as const,
+    name: 'Sergio Alexander Florez Galeano',
+  },
+};
+
+const eventMeta = deck.data.eventName
+  ? {
+      about: {
+        '@type': 'Event' as const,
+        name: deck.data.eventName,
+        ...(deck.data.eventDate && {
+          startDate: deck.data.eventDate.toISOString(),
+        }),
+        ...(deck.data.eventUrl && { url: deck.data.eventUrl }),
+      },
+    }
+  : {};
+
+const jsonLd =
+  type === 'external-link'
+    ? {
+        ...jsonLdBase,
+        '@type': 'CreativeWork' as const,
+        url: deck.data.externalUrl,
+        ...eventMeta,
+      }
+    : {
+        ...jsonLdBase,
+        '@type': 'PresentationDigitalDocument' as const,
+        url: canonicalUrl,
+        ...eventMeta,
+      };
 ---
 
 {type === 'internal' && (
@@ -27,6 +71,9 @@ const { type } = deck.data;
     showRevealChrome={true}
     deckSlug={slug}
   >
+    <Fragment slot="head">
+      <JsonLd data={jsonLd} />
+    </Fragment>
     <RevealDeck
       client:only="svelte"
       theme={deck.data.theme}
@@ -47,6 +94,9 @@ const { type } = deck.data;
     showRevealChrome={false}
     deckSlug={slug}
   >
+    <Fragment slot="head">
+      <JsonLd data={jsonLd} />
+    </Fragment>
     <ExternalEmbedView
       embedUrl={deck.data.embedUrl}
       externalUrl={deck.data.externalUrl}
@@ -58,5 +108,5 @@ const { type } = deck.data;
 )}
 
 {type === 'external-link' && (
-  <ExternalLinkView deck={deck} lang={lang} />
+  <ExternalLinkView deck={deck} lang={lang} jsonLd={jsonLd} />
 )}

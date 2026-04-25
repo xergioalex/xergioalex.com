@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -7,9 +8,10 @@ import { getTranslations } from '@/lib/translations';
 interface Props {
   deck: CollectionEntry<'slides'>;
   lang: Language;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { deck, lang } = Astro.props;
+const { deck, lang, jsonLd } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
@@ -29,6 +31,11 @@ const ctaText = t.slides.externalLink.openCta.replace(
 ---
 
 <MainLayout lang={lang} title={data.title} description={data.description} image={data.heroImage}>
+  {jsonLd && (
+    <Fragment slot="head">
+      <JsonLd data={jsonLd} />
+    </Fragment>
+  )}
   <div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
     {data.heroImage && (
       <div class="mb-8 rounded-xl overflow-hidden">
