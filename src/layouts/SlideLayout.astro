@@ -91,19 +91,15 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         </span>
       )}
 
-      <!-- Language toggle -->
+      <!-- Language toggle (single button) -->
       <a
-        href={lang === 'en' ? '#' : alternateUrl}
+        id="lang-toggle"
+        href={alternateUrl}
         data-toolbar-extra
-        style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'en' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
-        aria-label="English"
-      >EN</a>
-      <a
-        href={lang === 'es' ? '#' : alternateUrl}
-        data-toolbar-extra
-        style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'es' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
-        aria-label="Español"
-      >ES</a>
+        style="display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; background:transparent; color:rgba(255,255,255,0.6);"
+        aria-label={`Switch to ${alternateLang === 'en' ? 'English' : 'Español'}`}
+        title={`Switch to ${alternateLang === 'en' ? 'English' : 'Español'}`}
+      >{lang.toUpperCase()}</a>
 
       <!-- Divider -->
       <div data-toolbar-extra style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
@@ -114,8 +110,8 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         type="button"
         data-toolbar-extra
         style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); transition:all 0.15s;"
-        aria-label="Toggle theme"
-        title="Toggle light/dark"
+        aria-label="Switch to light mode"
+        title="Switch to light mode"
       >
         <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
@@ -130,8 +126,8 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         id="fullscreen-toggle"
         type="button"
         style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); transition:all 0.15s;"
-        aria-label="Fullscreen"
-        title="Fullscreen"
+        aria-label="Enter fullscreen"
+        title="Enter fullscreen"
       >
         <svg id="fs-icon-expand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
@@ -157,6 +153,8 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         var moonIcon = document.getElementById('theme-icon-moon');
         var fsExpand = document.getElementById('fs-icon-expand');
         var fsShrink = document.getElementById('fs-icon-shrink');
+        var themeBtn = document.getElementById('theme-toggle');
+        var fsBtn = document.getElementById('fullscreen-toggle');
 
         function isDark() { return html.classList.contains('dark'); }
 
@@ -169,6 +167,11 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
             sunIcon.style.display = dark ? 'block' : 'none';
             moonIcon.style.display = dark ? 'none' : 'block';
           }
+          if (themeBtn) {
+            var tip = dark ? 'Switch to light mode' : 'Switch to dark mode';
+            themeBtn.setAttribute('title', tip);
+            themeBtn.setAttribute('aria-label', tip);
+          }
 
           if (toolbar) {
             toolbar.style.background = dark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.75)';
@@ -179,20 +182,7 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           }
           var btns = toolbar ? toolbar.querySelectorAll('button, a') : [];
           for (var i = 0; i < btns.length; i++) {
-            var el = btns[i];
-            if (el.getAttribute('aria-label') === 'English' || el.getAttribute('aria-label') === 'Español') continue;
-            el.style.color = dark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)';
-          }
-          var enLink = toolbar ? toolbar.querySelector('[aria-label="English"]') : null;
-          var esLink = toolbar ? toolbar.querySelector('[aria-label="Español"]') : null;
-          var currentLang = html.getAttribute('lang') || 'en';
-          if (enLink) {
-            enLink.style.background = currentLang === 'en' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
-            enLink.style.color = currentLang === 'en' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
-          }
-          if (esLink) {
-            esLink.style.background = currentLang === 'es' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
-            esLink.style.color = currentLang === 'es' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
+            btns[i].style.color = dark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)';
           }
           var dividers = toolbar ? toolbar.querySelectorAll('div[style*="width:1px"]') : [];
           for (var j = 0; j < dividers.length; j++) {
@@ -206,12 +196,13 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
             fsExpand.style.display = isFs ? 'none' : 'block';
             fsShrink.style.display = isFs ? 'block' : 'none';
           }
-          var extras = toolbar ? toolbar.querySelectorAll('[data-toolbar-extra]') : [];
-          for (var i = 0; i < extras.length; i++) {
-            var tag = extras[i].tagName;
-            extras[i].style.display = isFs ? 'none' : (tag === 'A' || tag === 'BUTTON' ? 'inline-flex' : '');
-          }
+          if (toolbar) toolbar.style.display = isFs ? 'none' : 'flex';
           if (backLink) backLink.style.display = isFs ? 'none' : '';
+          if (fsBtn) {
+            var tip = isFs ? 'Exit fullscreen' : 'Enter fullscreen';
+            fsBtn.setAttribute('title', tip);
+            fsBtn.setAttribute('aria-label', tip);
+          }
         }
 
         syncTheme();
@@ -222,7 +213,6 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           }
         }).observe(html, { attributes: true, attributeFilter: ['class'] });
 
-        var themeBtn = document.getElementById('theme-toggle');
         if (themeBtn) {
           themeBtn.addEventListener('click', function() {
             html.classList.toggle('dark');
@@ -231,7 +221,6 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           });
         }
 
-        var fsBtn = document.getElementById('fullscreen-toggle');
         if (fsBtn) {
           fsBtn.addEventListener('click', function() {
             if (!document.fullscreenElement) {
