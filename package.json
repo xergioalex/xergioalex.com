@@ -37,29 +37,29 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.8",
-    "@astrojs/compiler-rs": "0.1.6",
-    "@astrojs/mdx": "5.0.3",
+    "@astrojs/compiler-rs": "0.1.10",
+    "@astrojs/mdx": "5.0.4",
     "@astrojs/rss": "4.0.18",
     "@astrojs/sitemap": "3.7.2",
-    "@astrojs/svelte": "8.0.4",
-    "astro": "6.1.3",
+    "@astrojs/svelte": "8.0.5",
+    "astro": "6.1.9",
     "fuse.js": "7.3.0",
     "rehype-external-links": "3.0.0",
-    "svelte": "5.55.1",
-    "tailwindcss": "4.2.2",
+    "svelte": "5.55.5",
+    "tailwindcss": "4.2.4",
     "typescript": "5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.10",
+    "@biomejs/biome": "2.4.13",
     "@lhci/cli": "0.15.1",
     "@tailwindcss/typography": "0.5.19",
-    "@tailwindcss/vite": "4.2.2",
+    "@tailwindcss/vite": "4.2.4",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/svelte": "5.3.1",
-    "@vitest/coverage-v8": "4.1.2",
-    "happy-dom": "20.8.9",
-    "npm-check-updates": "20.0.0",
+    "@vitest/coverage-v8": "4.1.5",
+    "happy-dom": "20.9.0",
+    "npm-check-updates": "20.0.2",
     "sharp": "0.34.5",
-    "vitest": "4.1.2"
+    "vitest": "4.1.5"
   }
 }
