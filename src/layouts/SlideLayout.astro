@@ -50,7 +50,6 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
       body.reveal-theme-dark { background: #111; }
       body.reveal-theme-light { background: #fff; }
       body.reveal-theme-light .reveal { color: #222; }
-
       .reveal .slides section.has-dark-background,
       .reveal .slides section.has-dark-background h1,
       .reveal .slides section.has-dark-background h2,
@@ -66,157 +65,83 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
       .reveal .slides section[data-background-gradient] small {
         color: #fff !important;
       }
-
       body.reveal-theme-dark .reveal .controls { color: #42affa; }
       body.reveal-theme-light .reveal .controls { color: #2a76dd; }
       body.reveal-theme-light .reveal .progress { color: #2a76dd; }
-
-      /* Top-left: back link */
-      .slide-back {
-        position: fixed;
-        top: 0.75rem;
-        left: 1rem;
-        z-index: 50;
-        font-size: 0.8125rem;
-        font-family: system-ui, sans-serif;
-      }
-      .slide-back a {
-        text-decoration: none;
-        opacity: 0.6;
-        transition: opacity 0.2s;
-      }
-      .slide-back a:hover { opacity: 1; }
-      body.reveal-theme-dark .slide-back a { color: #d1d5db; }
-      body.reveal-theme-light .slide-back a { color: #4b5563; }
-
-      /* Top-right: toolbar */
-      .slide-toolbar {
-        position: fixed;
-        top: 0.6rem;
-        right: 1rem;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        font-family: system-ui, sans-serif;
-      }
-      .slide-toolbar .tb-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-        transition: background 0.15s, opacity 0.15s;
-        opacity: 0.6;
-        font-size: 16px;
-        line-height: 1;
-      }
-      .slide-toolbar .tb-btn:hover { opacity: 1; }
-      body.reveal-theme-dark .slide-toolbar .tb-btn {
-        background: rgba(255,255,255,0.08);
-        color: #d1d5db;
-      }
-      body.reveal-theme-dark .slide-toolbar .tb-btn:hover {
-        background: rgba(255,255,255,0.15);
-      }
-      body.reveal-theme-light .slide-toolbar .tb-btn {
-        background: rgba(0,0,0,0.06);
-        color: #4b5563;
-      }
-      body.reveal-theme-light .slide-toolbar .tb-btn:hover {
-        background: rgba(0,0,0,0.12);
-      }
-
-      /* Language toggle */
-      .slide-toolbar .lang-toggle {
-        display: inline-flex;
-        align-items: center;
-        border-radius: 6px;
-        overflow: hidden;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-      }
-      .slide-toolbar .lang-toggle a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6px 10px;
-        text-decoration: none;
-        transition: background 0.15s, color 0.15s;
-        height: 32px;
-      }
-      body.reveal-theme-dark .lang-toggle a {
-        background: rgba(255,255,255,0.08);
-        color: #888;
-      }
-      body.reveal-theme-dark .lang-toggle a.active {
-        background: rgba(255,255,255,0.2);
-        color: #fff;
-      }
-      body.reveal-theme-dark .lang-toggle a:hover {
-        background: rgba(255,255,255,0.15);
-      }
-      body.reveal-theme-light .lang-toggle a {
-        background: rgba(0,0,0,0.06);
-        color: #999;
-      }
-      body.reveal-theme-light .lang-toggle a.active {
-        background: rgba(0,0,0,0.15);
-        color: #222;
-      }
-      body.reveal-theme-light .lang-toggle a:hover {
-        background: rgba(0,0,0,0.1);
-      }
-
-      /* Draft badge */
-      .slide-toolbar .draft-badge {
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        padding: 3px 8px;
-        border-radius: 9999px;
-        background: #9333ea;
-        color: #fff;
-      }
     </style>
     <slot name="head" />
   </head>
-  <body class="reveal-theme-dark m-0 p-0 overflow-hidden">
+  <body class="reveal-theme-dark" style="margin:0; padding:0; overflow:hidden;">
 
-    <!-- Top-left: back to slides catalog -->
-    <div class="slide-back">
-      <a href={catalogUrl}>← {SITE_TITLE.split(' - ')[0]}</a>
-    </div>
+    <!-- Back link: top-left -->
+    <a
+      href={catalogUrl}
+      id="slide-back"
+      style="position:fixed; top:12px; left:16px; z-index:100; font:600 13px/1 system-ui,sans-serif; text-decoration:none; color:rgba(255,255,255,0.5); transition:color 0.2s;"
+    >
+      ← {SITE_TITLE.split(' - ')[0]}
+    </a>
 
-    <!-- Top-right: toolbar -->
-    <div class="slide-toolbar">
-      {isDraft && <span class="draft-badge">{t.draftBadge}</span>}
+    <!-- Toolbar: top-right floating pill -->
+    <div
+      id="slide-toolbar"
+      style="position:fixed; top:10px; right:16px; z-index:100; display:flex; align-items:center; gap:4px; padding:4px; border-radius:10px; background:rgba(0,0,0,0.35); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); font-family:system-ui,sans-serif;"
+    >
+      {isDraft && (
+        <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 8px; border-radius:6px; background:#9333ea; color:#fff;">
+          {t.draftBadge}
+        </span>
+      )}
 
-      <!-- Language toggle EN / ES -->
-      <div class="lang-toggle">
-        <a href={lang === 'en' ? '#' : alternateUrl} class={lang === 'en' ? 'active' : ''} aria-label="English">EN</a>
-        <a href={lang === 'es' ? '#' : alternateUrl} class={lang === 'es' ? 'active' : ''} aria-label="Español">ES</a>
-      </div>
+      <!-- Language toggle -->
+      <a
+        href={lang === 'en' ? '#' : alternateUrl}
+        style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'en' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
+        aria-label="English"
+      >EN</a>
+      <a
+        href={lang === 'es' ? '#' : alternateUrl}
+        style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'es' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
+        aria-label="Español"
+      >ES</a>
+
+      <!-- Divider -->
+      <div style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
 
       <!-- Theme toggle -->
-      <button class="tb-btn" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle light/dark">
+      <button
+        id="theme-toggle"
+        type="button"
+        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); font-size:15px; transition:all 0.15s;"
+        aria-label="Toggle theme"
+        title="Toggle light/dark"
+      >
         <span id="theme-icon">☀️</span>
       </button>
 
-      <!-- Fullscreen toggle -->
-      <button class="tb-btn" id="fullscreen-toggle" type="button" aria-label="Toggle fullscreen" title="Fullscreen">
+      <!-- Fullscreen -->
+      <button
+        id="fullscreen-toggle"
+        type="button"
+        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); font-size:15px; transition:all 0.15s;"
+        aria-label="Fullscreen"
+        title="Fullscreen"
+      >
         <span id="fs-icon">⛶</span>
       </button>
 
       {showRevealChrome && (
-        <a href="?print-pdf" target="_blank" rel="noopener noreferrer" class="tb-btn" aria-label={t.slides.printPdf} title={t.slides.printPdf}>
-          🖨
-        </a>
+        <>
+          <div style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
+          <a
+            href="?print-pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; text-decoration:none; color:rgba(255,255,255,0.6); font-size:14px; transition:all 0.15s;"
+            aria-label={t.slides.printPdf}
+            title={t.slides.printPdf}
+          >🖨</a>
+        </>
       )}
     </div>
 
@@ -228,6 +153,8 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
       (function() {
         var html = document.documentElement;
         var body = document.body;
+        var toolbar = document.getElementById('slide-toolbar');
+        var backLink = document.getElementById('slide-back');
 
         function isDark() { return html.classList.contains('dark'); }
 
@@ -235,8 +162,42 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
           var dark = isDark();
           body.classList.remove('reveal-theme-dark', 'reveal-theme-light');
           body.classList.add(dark ? 'reveal-theme-dark' : 'reveal-theme-light');
+
           var icon = document.getElementById('theme-icon');
           if (icon) icon.textContent = dark ? '☀️' : '🌙';
+
+          // Update toolbar glass background
+          if (toolbar) {
+            toolbar.style.background = dark ? 'rgba(0,0,0,0.35)' : 'rgba(255,255,255,0.6)';
+          }
+          // Update back link color
+          if (backLink) {
+            backLink.style.color = dark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)';
+          }
+          // Update toolbar button/link colors
+          var btns = toolbar ? toolbar.querySelectorAll('button, a') : [];
+          for (var i = 0; i < btns.length; i++) {
+            var el = btns[i];
+            if (el.getAttribute('aria-label') === 'English' || el.getAttribute('aria-label') === 'Español') continue;
+            el.style.color = dark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)';
+          }
+          // Update lang toggle colors
+          var enLink = toolbar ? toolbar.querySelector('[aria-label="English"]') : null;
+          var esLink = toolbar ? toolbar.querySelector('[aria-label="Español"]') : null;
+          var currentLang = html.getAttribute('lang') || 'en';
+          if (enLink) {
+            enLink.style.background = currentLang === 'en' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
+            enLink.style.color = currentLang === 'en' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
+          }
+          if (esLink) {
+            esLink.style.background = currentLang === 'es' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
+            esLink.style.color = currentLang === 'es' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
+          }
+          // Update dividers
+          var dividers = toolbar ? toolbar.querySelectorAll('div[style*="width:1px"]') : [];
+          for (var j = 0; j < dividers.length; j++) {
+            dividers[j].style.background = dark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)';
+          }
         }
 
         syncTheme();
@@ -252,8 +213,7 @@ const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
         if (themeBtn) {
           themeBtn.addEventListener('click', function() {
             html.classList.toggle('dark');
-            var dark = isDark();
-            localStorage.setItem('theme', dark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark() ? 'dark' : 'light');
             syncTheme();
           });
         }
