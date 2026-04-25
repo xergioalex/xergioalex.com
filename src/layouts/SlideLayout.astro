@@ -1,0 +1,154 @@
+---
+import '@/styles/global.css';
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/theme/black.css';
+import 'reveal.js/dist/theme/white.css';
+
+import BaseHead from '@/components/BaseHead.astro';
+import { SITE_TITLE } from '@/lib/constances';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  lang: Language;
+  title: string;
+  description: string;
+  image?: string;
+  showRevealChrome?: boolean;
+  deckSlug: string;
+}
+
+const {
+  lang,
+  title,
+  description,
+  image,
+  showRevealChrome = true,
+  deckSlug,
+} = Astro.props;
+
+const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+const catalogUrl = `${prefix}/tech-talks`;
+const alternateLang = lang === 'en' ? 'es' : 'en';
+const alternatePrefix = getUrlPrefix(alternateLang);
+const alternateUrl = `${alternatePrefix}/tech-talks/${deckSlug}`;
+const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead
+      title={`${title} | ${SITE_TITLE}`}
+      description={description}
+      image={image}
+      lang={lang}
+      ogType="article"
+    />
+    <style is:global>
+      body.reveal-theme-dark {
+        background: #111;
+      }
+      body.reveal-theme-light {
+        background: #fff;
+      }
+      body.reveal-theme-light .reveal {
+        color: #222;
+      }
+      body.reveal-theme-dark .reveal .controls {
+        color: #42affa;
+      }
+      body.reveal-theme-light .reveal .controls {
+        color: #2a76dd;
+      }
+      body.reveal-theme-light .reveal .progress {
+        color: #2a76dd;
+      }
+      .slide-chrome {
+        position: fixed;
+        z-index: 50;
+        padding: 0.75rem 1rem;
+        font-size: 0.8125rem;
+        font-family: system-ui, sans-serif;
+      }
+      .slide-chrome a {
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+      }
+      .slide-chrome a:hover,
+      .slide-chrome a:focus-visible {
+        opacity: 1;
+      }
+      body.reveal-theme-dark .slide-chrome a {
+        color: #d1d5db;
+      }
+      body.reveal-theme-light .slide-chrome a {
+        color: #4b5563;
+      }
+      .slide-chrome a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+    </style>
+    <slot name="head" />
+  </head>
+  <body class="reveal-theme-dark m-0 p-0 overflow-hidden">
+    <nav class="slide-chrome top-0 left-0" aria-label="Deck navigation">
+      <a href={catalogUrl} aria-label={`${t.slides.exitToCatalog} — ${SITE_TITLE}`}>
+        ← {SITE_TITLE.split(' - ')[0]}
+      </a>
+    </nav>
+
+    <nav class="slide-chrome top-0 right-0" aria-label="Language switcher">
+      <a href={alternateUrl} hreflang={alternateLang}>
+        {langSwitchLabel}
+      </a>
+    </nav>
+
+    {showRevealChrome && (
+      <div class="slide-chrome bottom-0 right-0">
+        <a href="?print-pdf" target="_blank" rel="noopener noreferrer" aria-label={t.slides.printPdf}>
+          {t.slides.printPdf}
+        </a>
+      </div>
+    )}
+
+    <div class="reveal opacity-0 transition-opacity duration-300" id="reveal-deck">
+      <slot />
+    </div>
+
+    <script is:inline>
+      (function() {
+        var html = document.documentElement;
+        var body = document.body;
+
+        function syncTheme() {
+          var isDark = html.classList.contains('dark');
+          body.classList.remove('reveal-theme-dark', 'reveal-theme-light');
+          body.classList.add(isDark ? 'reveal-theme-dark' : 'reveal-theme-light');
+        }
+
+        syncTheme();
+
+        var observer = new MutationObserver(function(mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            if (mutations[i].attributeName === 'class') {
+              syncTheme();
+              break;
+            }
+          }
+        });
+        observer.observe(html, { attributes: true, attributeFilter: ['class'] });
+
+        window.addEventListener('reveal:ready', function() {
+          var deck = document.getElementById('reveal-deck');
+          if (deck) {
+            deck.classList.remove('opacity-0');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
