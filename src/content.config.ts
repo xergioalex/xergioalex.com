@@ -71,7 +71,7 @@ const slideBaseSchema = z.object({
   draft: z.boolean().default(false),
   eventName: z.string().optional(),
   eventDate: z.coerce.date().optional(),
-  eventUrl: z.string().url().optional(),
+  eventUrl: z.url().optional(),
   relatedPost: z.string().optional(),
 });
 
@@ -87,14 +87,14 @@ const internalSlideSchema = slideBaseSchema.extend({
 
 const externalLinkSlideSchema = slideBaseSchema.extend({
   type: z.literal('external-link'),
-  externalUrl: z.string().url(),
+  externalUrl: z.url(),
   provider: z.string().optional(),
 });
 
 const externalEmbedSlideSchema = slideBaseSchema.extend({
   type: z.literal('external-embed'),
-  externalUrl: z.string().url(),
-  embedUrl: z.string().url(),
+  externalUrl: z.url(),
+  embedUrl: z.url(),
   provider: z.string().optional(),
   aspectRatio: z.enum(['16:9', '4:3', '1:1']).default('16:9'),
 });
