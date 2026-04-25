@@ -34,20 +34,18 @@ onMount(() => {
 
   async function init(): Promise<void> {
     const Reveal = (await import('reveal.js')).default;
-    const Markdown = (await import('reveal.js/plugin/markdown/markdown'))
-      .default;
-    const Notes = (await import('reveal.js/plugin/notes/notes')).default;
+    const Markdown = (await import('reveal.js/plugin/markdown')).default;
+    const Notes = (await import('reveal.js/plugin/notes')).default;
 
     const plugins = [Markdown, Notes];
 
     if (syntaxHighlight) {
-      const Highlight = (await import('reveal.js/plugin/highlight/highlight'))
-        .default;
+      const Highlight = (await import('reveal.js/plugin/highlight')).default;
       plugins.push(Highlight);
     }
 
     if (math) {
-      const MathPlugin = (await import('reveal.js/plugin/math/math')).default;
+      const MathPlugin = (await import('reveal.js/plugin/math')).default;
       plugins.push(MathPlugin);
     }
 

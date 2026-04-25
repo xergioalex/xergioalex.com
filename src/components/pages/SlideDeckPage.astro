@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ExternalEmbedView from '@/components/slides/ExternalEmbedView.astro';
+import ExternalLinkView from '@/components/slides/ExternalLinkView.astro';
+import RevealDeck from '@/components/slides/RevealDeck.svelte';
+import SlideLayout from '@/layouts/SlideLayout.astro';
+
+import type { Language } from '@/lib/i18n';
+import { getDeckSlug } from '@/lib/slides';
+
+interface Props {
+  lang: Language;
+  deck: CollectionEntry<'slides'>;
+}
+
+const { lang, deck } = Astro.props;
+const slug = getDeckSlug(deck.id);
+const { type } = deck.data;
+---
+
+{type === 'internal' && (
+  <SlideLayout
+    lang={lang}
+    title={deck.data.title}
+    description={deck.data.description}
+    image={deck.data.heroImage}
+    showRevealChrome={true}
+    deckSlug={slug}
+  >
+    <RevealDeck
+      client:only="svelte"
+      theme={deck.data.theme}
+      transition={deck.data.transition}
+      syntaxHighlight={deck.data.syntaxHighlight}
+      math={deck.data.math}
+      bodyMarkdown={deck.body || ''}
+    />
+  </SlideLayout>
+)}
+
+{type === 'external-embed' && (
+  <SlideLayout
+    lang={lang}
+    title={deck.data.title}
+    description={deck.data.description}
+    image={deck.data.heroImage}
+    showRevealChrome={false}
+    deckSlug={slug}
+  >
+    <ExternalEmbedView
+      embedUrl={deck.data.embedUrl}
+      externalUrl={deck.data.externalUrl}
+      aspectRatio={deck.data.aspectRatio}
+      title={deck.data.title}
+      lang={lang}
+    />
+  </SlideLayout>
+)}
+
+{type === 'external-link' && (
+  <ExternalLinkView deck={deck} lang={lang} />
+)}
