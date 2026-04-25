@@ -583,6 +583,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Browse all presentation decks by Sergio Alexander — from in-house Reveal.js slides to external talks hosted on other platforms.',
     heroDescription:
       'A collection of all my presentation decks — conference talks, meetup slides, and technical deep dives. Built in-house with Reveal.js or hosted on external platforms.',
+    timelineTitle: 'Slides Timeline',
     emptyState: 'No slides available yet. Check back soon!',
     viewAll: 'View all slides',
   },

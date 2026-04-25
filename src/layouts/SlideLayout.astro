@@ -16,6 +16,7 @@ interface Props {
   image?: string;
   showRevealChrome?: boolean;
   deckSlug: string;
+  isDraft?: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   image,
   showRevealChrome = true,
   deckSlug,
+  isDraft = false,
 } = Astro.props;
 
 const t = getTranslations(lang);
@@ -101,7 +103,15 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
       </a>
     </nav>
 
-    <nav class="slide-chrome top-0 right-0" aria-label="Language switcher">
+    <nav class="slide-chrome top-0 right-0 flex items-center gap-3" aria-label="Language switcher">
+      {isDraft && (
+        <span
+          class="inline-flex items-center rounded-full bg-purple-600 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white shadow-sm"
+          title={t.draftBadge}
+        >
+          {t.draftBadge}
+        </span>
+      )}
       <a href={alternateUrl} hreflang={alternateLang}>
         {langSwitchLabel}
       </a>
@@ -115,7 +125,7 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
       </div>
     )}
 
-    <div class="reveal opacity-0 transition-opacity duration-300" id="reveal-deck">
+    <div class="reveal" id="reveal-deck">
       <slot />
     </div>
 

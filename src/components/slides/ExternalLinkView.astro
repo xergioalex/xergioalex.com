@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { isDraftDeck } from '@/lib/slides';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -28,6 +29,7 @@ const ctaText = t.slides.externalLink.openCta.replace(
   '{provider}',
   providerLabel
 );
+const isDraft = isDraftDeck(deck);
 ---
 
 <MainLayout lang={lang} title={data.title} description={data.description} image={data.heroImage}>
@@ -47,6 +49,14 @@ const ctaText = t.slides.externalLink.openCta.replace(
           class="w-full h-auto object-cover"
           loading="eager"
         />
+      </div>
+    )}
+
+    {isDraft && (
+      <div class="mb-4">
+        <span class="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-purple-800 dark:bg-purple-900/40 dark:text-purple-200">
+          {t.draftBadge}
+        </span>
       </div>
     )}
 

@@ -17,7 +17,7 @@ let {
   bodyMarkdown,
 }: Props = $props();
 
-let deckContainer: HTMLDivElement | undefined = $state();
+let containerEl: HTMLDivElement | undefined = $state();
 let revealInstance: any = $state(null);
 let observer: MutationObserver | undefined = $state();
 
@@ -51,23 +51,23 @@ onMount(() => {
 
     if (destroyed) return;
 
-    const deck = new Reveal(deckContainer?.closest('.reveal') as HTMLElement, {
+    const revealEl = containerEl?.closest('.reveal') as HTMLElement;
+    const textarea = revealEl?.querySelector('textarea[data-template]');
+    if (textarea) {
+      (textarea as HTMLTextAreaElement).textContent = bodyMarkdown;
+    }
+
+    const deck = new Reveal(revealEl, {
       hash: true,
       slideNumber: 'c/t',
       controls: true,
       progress: true,
       transition,
       plugins,
-      markdown: {
-        separator: '^---$',
-        separatorVertical: '^--$',
-      },
     });
 
     await deck.initialize();
     revealInstance = deck;
-
-    window.dispatchEvent(new CustomEvent('reveal:ready'));
 
     syncTheme();
     observer = new MutationObserver((mutations) => {
@@ -98,8 +98,8 @@ onMount(() => {
 });
 </script>
 
-<div class="slides" bind:this={deckContainer}>
+<div class="slides" bind:this={containerEl}>
   <section data-markdown data-separator="^---$" data-separator-vertical="^--$">
-    <textarea data-template>{bodyMarkdown}</textarea>
+    <textarea data-template></textarea>
   </section>
 </div>

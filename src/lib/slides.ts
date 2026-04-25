@@ -1,8 +1,28 @@
 import { type CollectionEntry, getCollection, getEntry } from 'astro:content';
 
 import { shouldHideDrafts } from './blog';
+import { SITE_TIMEZONE } from './constances';
 
 import type { Language } from './i18n';
+
+/** Minimal deck schema for timeline card rendering — leaner than the full CollectionEntry. */
+export interface SlideTimelineCardEntry {
+  slug: string;
+  lang: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  tags: string[];
+  heroImage?: string;
+  type: 'internal' | 'external-link' | 'external-embed';
+  eventName?: string;
+  eventDate?: string;
+  externalUrl?: string;
+  /** Provider for external decks (e.g. "Speaker Deck", "Google Slides"). */
+  provider?: string;
+  /** Draft flag — only carried into payloads on dev/preview (prod builds filter drafts upstream). */
+  isDraft?: boolean;
+}
 
 /**
  * Get the slug from a slide deck ID (removes language prefix and date prefix).
@@ -15,8 +35,42 @@ export function getDeckSlug(id: string): string {
 }
 
 /**
+ * Whether a deck has `draft: true`. Drafts are visible in the dev server and
+ * on Cloudflare Pages preview branches, hidden on production main builds.
+ */
+export function isDraftDeck(deck: CollectionEntry<'slides'>): boolean {
+  return deck.data.draft === true;
+}
+
+/**
+ * Whether a deck's pubDate is in the future (calendar date in SITE_TIMEZONE).
+ * Scheduled decks are excluded from production builds but visible in dev mode,
+ * mirroring the blog scheduling behaviour.
+ */
+export function isScheduledDeck(deck: CollectionEntry<'slides'>): boolean {
+  const todayInTz = new Date().toLocaleDateString('en-CA', {
+    timeZone: SITE_TIMEZONE,
+  });
+  const pubDateStr = deck.data.pubDate.toISOString().slice(0, 10);
+  return pubDateStr > todayInTz;
+}
+
+/**
+ * Unified visibility predicate for slide decks. Mirrors
+ * `isPostVisibleInProduction` in src/lib/blog.ts so listings, detail routes,
+ * and the timeline API stay in sync.
+ */
+export function isDeckVisibleInProduction(
+  deck: CollectionEntry<'slides'>
+): boolean {
+  if (!import.meta.env.DEV && isScheduledDeck(deck)) return false;
+  if (isDraftDeck(deck) && shouldHideDrafts()) return false;
+  return true;
+}
+
+/**
  * Get all slide decks for a specific language.
- * Filters out drafts in production, sorts by pubDate descending.
+ * Filters out drafts/scheduled per environment, sorts by pubDate descending.
  */
 export async function getSlideDecks(
   lang: Language
@@ -25,8 +79,7 @@ export async function getSlideDecks(
 
   const filtered = allDecks.filter((deck) => {
     if (!deck.id.startsWith(`${lang}/`)) return false;
-    if (deck.data.draft && shouldHideDrafts()) return false;
-    return true;
+    return isDeckVisibleInProduction(deck);
   });
 
   return filtered.sort(
@@ -62,6 +115,41 @@ export function isExternalEmbedDeck(
   deck: CollectionEntry<'slides'>
 ): deck is CollectionEntry<'slides'> & { data: { type: 'external-embed' } } {
   return deck.data.type === 'external-embed';
+}
+
+/**
+ * Build a full timeline index for slide decks in a specific language.
+ * Returns ALL visible decks as SlideTimelineCardEntry[] (no pagination) — callers paginate client-side.
+ * Mirrors getTimelineIndex() in src/lib/blog.ts so the slides timeline component has parity.
+ */
+export async function getSlidesTimelineIndex(
+  lang: Language
+): Promise<SlideTimelineCardEntry[]> {
+  const decks = await getSlideDecks(lang);
+
+  return decks.map((deck) => {
+    const data = deck.data;
+    const base: SlideTimelineCardEntry = {
+      slug: getDeckSlug(deck.id),
+      lang,
+      title: data.title,
+      description: data.description,
+      pubDate: data.pubDate.toISOString(),
+      tags: data.tags ?? [],
+      heroImage: data.heroImage,
+      type: data.type,
+      eventName: data.eventName,
+      eventDate: data.eventDate?.toISOString(),
+      isDraft: isDraftDeck(deck),
+    };
+
+    if (data.type === 'external-link' || data.type === 'external-embed') {
+      base.externalUrl = data.externalUrl;
+      base.provider = data.provider;
+    }
+
+    return base;
+  });
 }
 
 /** Map deck type to translation badge key. */

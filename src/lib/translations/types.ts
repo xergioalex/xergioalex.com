@@ -555,6 +555,7 @@ export interface SiteTranslations {
     subtitle: string;
     description: string;
     heroDescription: string;
+    timelineTitle: string;
     emptyState: string;
     viewAll: string;
   };

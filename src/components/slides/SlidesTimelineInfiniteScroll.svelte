@@ -1,31 +1,29 @@
 <script lang="ts">
 import { onDestroy, onMount, tick } from 'svelte';
 import { EVENTS, trackEvent } from '@/lib/analytics';
-import type { TimelineCardEntry } from '@/lib/blog';
 import { SITE_TIMEZONE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
+import type { SlideTimelineCardEntry } from '@/lib/slides';
 import { getTranslations } from '@/lib/translations';
 
-export let initialPosts: TimelineCardEntry[] = [];
+export let initialDecks: SlideTimelineCardEntry[] = [];
 export let totalCount: number = 0;
 export let apiEndpoint: string;
 export let lang: Language = 'en';
-export let topicTagNames: string[] = [];
 export let pageSize: number = 30;
-/** Page identifier for analytics events (e.g. "techtalks", "dailybot") */
-export let pageName: string = 'timeline';
-/** Localised empty-state message passed from the parent page component */
+/** Page identifier for analytics events. */
+export let pageName: string = 'slides';
+/** Localised empty-state message passed from the parent page component. */
 export let emptyStateMessage: string = '';
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
 
-let renderedPosts: TimelineCardEntry[] = [...initialPosts];
-/** Full dataset fetched from apiEndpoint — null until first fetch */
-let allPosts: TimelineCardEntry[] | null = null;
+let renderedDecks: SlideTimelineCardEntry[] = [...initialDecks];
+let allDecks: SlideTimelineCardEntry[] | null = null;
 let loading = false;
 let fetchError = false;
-$: allLoaded = renderedPosts.length >= totalCount;
+$: allLoaded = renderedDecks.length >= totalCount;
 
 let sentinel: HTMLElement;
 let observer: IntersectionObserver | null = null;
@@ -52,17 +50,17 @@ async function loadMore() {
   loading = true;
   fetchError = false;
   try {
-    if (!allPosts) {
+    if (!allDecks) {
       const res = await fetch(apiEndpoint);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      allPosts = data.posts as TimelineCardEntry[];
+      allDecks = data.decks as SlideTimelineCardEntry[];
     }
-    const nextBatch = allPosts.slice(
-      renderedPosts.length,
-      renderedPosts.length + pageSize
+    const nextBatch = allDecks.slice(
+      renderedDecks.length,
+      renderedDecks.length + pageSize
     );
-    renderedPosts = [...renderedPosts, ...nextBatch];
+    renderedDecks = [...renderedDecks, ...nextBatch];
   } catch {
     fetchError = true;
   } finally {
@@ -78,7 +76,7 @@ function reobserveSentinel(): void {
   observer.observe(sentinel);
 }
 
-function isPostScheduled(pubDate: string): boolean {
+function isDeckScheduled(pubDate: string): boolean {
   const d = new Date(pubDate);
   if (Number.isNaN(d.getTime())) return false;
   const todayInTz = new Date().toLocaleDateString('en-CA', {
@@ -108,20 +106,33 @@ function getMonthName(pubDate: string): string {
   return new Date(pubDate).toLocaleDateString(t.dateLocale, { month: 'long' });
 }
 
-function buildSeriesBadgeLabel(
-  current: number,
-  total: number,
-  title?: string
-): string {
-  const chapter = t.seriesChapterOf(current, total);
-  return title ? `${title} · ${chapter}` : chapter;
+function getTypeBadgeLabel(type: SlideTimelineCardEntry['type']): string {
+  switch (type) {
+    case 'internal':
+      return t.slides.typeBadge.internal;
+    case 'external-link':
+      return t.slides.typeBadge.externalLink;
+    case 'external-embed':
+      return t.slides.typeBadge.externalEmbed;
+  }
+}
+
+function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
+  switch (type) {
+    case 'internal':
+      return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
+    case 'external-link':
+      return 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200';
+    case 'external-embed':
+      return 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200';
+  }
 }
 </script>
 
-{#if renderedPosts.length === 0 && !loading}
+{#if renderedDecks.length === 0 && !loading}
   <div class="text-center py-16">
     <p class="text-gray-600 dark:text-gray-300 text-lg">
-      {emptyStateMessage || (lang === 'es' ? 'Aún no hay posts disponibles.' : 'No posts available yet.')}
+      {emptyStateMessage || (lang === 'es' ? 'Aún no hay slides disponibles.' : 'No slides available yet.')}
     </p>
   </div>
 {:else}
@@ -129,13 +140,14 @@ function buildSeriesBadgeLabel(
     <!-- Timeline line: left on mobile, centered on desktop -->
     <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gray-300 dark:bg-gray-600"></div>
 
-    {#each renderedPosts as post, index}
+    {#each renderedDecks as deck, index}
       {@const isLeft = index % 2 === 0}
-      {@const year = getYear(post.pubDate)}
-      {@const prevPost = index > 0 ? renderedPosts[index - 1] : null}
-      {@const showYear = index === 0 || getYear(prevPost?.pubDate ?? '') !== year}
-      {@const yearMonth = getYearMonth(post.pubDate)}
-      {@const showMonth = index === 0 || getYearMonth(prevPost?.pubDate ?? '') !== yearMonth}
+      {@const year = getYear(deck.pubDate)}
+      {@const prevDeck = index > 0 ? renderedDecks[index - 1] : null}
+      {@const showYear = index === 0 || getYear(prevDeck?.pubDate ?? '') !== year}
+      {@const yearMonth = getYearMonth(deck.pubDate)}
+      {@const showMonth = index === 0 || getYearMonth(prevDeck?.pubDate ?? '') !== yearMonth}
+      {@const deckHref = `${prefix}/slides/${deck.slug}/`}
 
       <!-- Year marker -->
       {#if showYear}
@@ -153,7 +165,7 @@ function buildSeriesBadgeLabel(
         <div class="relative flex items-center h-6 mb-6 mt-4">
           <div class="absolute left-10 md:left-1/2 md:-translate-x-1/2 z-10">
             <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full capitalize translate-y-1">
-              {getMonthName(post.pubDate)}
+              {getMonthName(deck.pubDate)}
             </span>
           </div>
         </div>
@@ -172,88 +184,88 @@ function buildSeriesBadgeLabel(
             <!-- Full-card clickable link (background layer) -->
             <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
             <a
-              href={`${prefix}/blog/${post.slug}/`}
+              href={deckHref}
               class="absolute inset-0 z-0"
-              aria-label={post.title}
-              on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: pageName, slug: post.slug })}
+              aria-label={deck.title}
+              on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: pageName, slug: deck.slug })}
             ></a>
 
-            {#if post.heroImage}
-              <div>
+            {#if deck.heroImage}
+              <div class="relative">
                 <img
-                  src={post.heroImage}
-                  alt={post.title}
+                  src={deck.heroImage}
+                  alt={deck.title}
                   class="w-full h-44 object-cover"
                   loading="lazy"
                   width="800"
                   height="176"
                 />
+                <span
+                  class={`absolute top-2 right-2 inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold ${getTypeBadgeClasses(deck.type)}`}
+                >
+                  {getTypeBadgeLabel(deck.type)}
+                </span>
               </div>
             {/if}
 
             <div class="p-5">
+              {#if !deck.heroImage}
+                <div class="mb-3">
+                  <span
+                    class={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold ${getTypeBadgeClasses(deck.type)}`}
+                  >
+                    {getTypeBadgeLabel(deck.type)}
+                  </span>
+                </div>
+              {/if}
+
               <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-secondary transition-colors">
-                {post.title}
+                {deck.title}
               </h3>
 
+              {#if deck.eventName}
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                  {deck.eventName}
+                  {#if deck.eventDate}
+                    <span> · {new Date(deck.eventDate).getFullYear()}</span>
+                  {/if}
+                </p>
+              {/if}
+
               <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-3">
-                {post.description}
+                {deck.description}
               </p>
 
               <div class="relative z-10 flex flex-wrap items-center gap-2">
                 <time class="text-xs text-gray-600 dark:text-gray-300">
-                  {formatDate(post.pubDate)}
+                  {formatDate(deck.pubDate)}
                 </time>
 
-                {#if isPostScheduled(post.pubDate)}
+                {#if isDeckScheduled(deck.pubDate)}
                   <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
                     {t.scheduledBadge}
                   </span>
                 {/if}
 
-                {#if post.isDraft}
+                {#if deck.isDraft}
                   <span class="inline-flex items-center rounded-full bg-purple-100 px-2 py-0.5 text-[11px] font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
                     {t.draftBadge}
                   </span>
                 {/if}
 
-                {#if post.seriesCurrent && post.seriesTotal}
-                  {@const localizedSeriesTitle = (post.seriesSlug && t.seriesNames[post.seriesSlug]) || post.seriesTitle}
-                  {@const seriesBadgeLabel = buildSeriesBadgeLabel(post.seriesCurrent, post.seriesTotal, localizedSeriesTitle)}
-                  {#if post.seriesSlug}
-                    <a
-                      href={`${prefix}/blog/series/${post.seriesSlug}/`}
-                      class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 transition-colors hover:bg-blue-100 hover:border-blue-400 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200 dark:hover:bg-blue-900/60 dark:hover:border-blue-600"
-                      title={seriesBadgeLabel}
-                    >
-                      {post.seriesCurrent}/{post.seriesTotal}
-                    </a>
-                  {:else}
-                    <span
-                      class="inline-flex items-center rounded-full border-2 border-blue-300 bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700 dark:border-blue-700 dark:bg-blue-900/40 dark:text-blue-200"
-                      title={seriesBadgeLabel}
-                    >
-                      {post.seriesCurrent}/{post.seriesTotal}
-                    </span>
-                  {/if}
+                {#if deck.provider}
+                  <span class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 dark:border-gray-600 dark:text-gray-300">
+                    {deck.provider}
+                  </span>
                 {/if}
 
-                {#if post.tags && post.tags.length > 0}
-                  {#each post.tags.filter((tag) => !topicTagNames.includes(tag)) as tag}
-                    <a
-                      href={`${prefix}/blog/tag/${tag}/`}
-                      class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
+                {#if deck.tags && deck.tags.length > 0}
+                  {#each deck.tags as tag}
+                    <span
+                      class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
                     >
                       #{t.tagNames[tag] || tag}
-                    </a>
-                  {/each}
-                  {#each post.tags.filter((tag) => topicTagNames.includes(tag)) as topic}
-                    <a
-                      href={`${prefix}/blog/tag/${topic}/`}
-                      class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
-                    >
-                      {t.tagNames[topic] || topic}
-                    </a>
+                    </span>
                   {/each}
                 {/if}
               </div>
@@ -263,7 +275,7 @@ function buildSeriesBadgeLabel(
       </div>
     {/each}
 
-    <!-- Sentinel for IntersectionObserver (only when more posts to load) -->
+    <!-- Sentinel for IntersectionObserver (only when more decks to load) -->
     {#if !allLoaded}
       <div bind:this={sentinel} aria-hidden="true" class="h-1 w-full"></div>
     {/if}
@@ -272,7 +284,7 @@ function buildSeriesBadgeLabel(
     {#if loading}
       <div role="status" class="flex justify-center py-8">
         <span class="sr-only">
-          {lang === 'es' ? 'Cargando más posts…' : 'Loading more posts…'}
+          {lang === 'es' ? 'Cargando más slides…' : 'Loading more slides…'}
         </span>
         <div
           aria-hidden="true"
@@ -285,7 +297,7 @@ function buildSeriesBadgeLabel(
     {#if fetchError}
       <div role="alert" class="text-center py-8">
         <p class="text-gray-600 dark:text-gray-300 mb-3">
-          {lang === 'es' ? 'Error al cargar más posts.' : 'Failed to load more posts.'}
+          {lang === 'es' ? 'Error al cargar más slides.' : 'Failed to load more slides.'}
         </p>
         <button
           on:click={loadMore}
@@ -295,11 +307,10 @@ function buildSeriesBadgeLabel(
         </button>
       </div>
     {/if}
-
   </div>
 
   <!-- Timeline end cap — outside the line container so the line terminates cleanly -->
-  {#if allLoaded && renderedPosts.length > 0}
+  {#if allLoaded && renderedDecks.length > 0}
     <div class="flex flex-col items-center gap-4 pb-6">
       <div class="w-12 h-12 rounded-full bg-secondary shadow-lg shadow-secondary/25 flex items-center justify-center ring-4 ring-secondary/10 dark:ring-secondary/20">
         <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -311,7 +322,7 @@ function buildSeriesBadgeLabel(
           {lang === 'es' ? 'Has llegado al inicio' : "You've reached the beginning"}
         </p>
         <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
-          {renderedPosts.length} {lang === 'es' ? 'posts en total' : 'total posts'}
+          {renderedDecks.length} {lang === 'es' ? 'slides en total' : 'total slides'}
         </p>
       </div>
     </div>

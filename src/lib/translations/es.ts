@@ -590,6 +590,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Explora todas las presentaciones de Sergio Alexander — desde diapositivas creadas con Reveal.js hasta charlas externas alojadas en otras plataformas.',
     heroDescription:
       'Una colección de todas mis presentaciones — charlas de conferencias, slides de meetups y deep dives técnicos. Creadas internamente con Reveal.js o alojadas en plataformas externas.',
+    timelineTitle: 'Línea de tiempo de slides',
     emptyState: 'Aún no hay diapositivas disponibles. ¡Vuelve pronto!',
     viewAll: 'Ver todas las diapositivas',
   },

@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry as CE, CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import JsonLd from '@/components/JsonLd.astro';
 import ExternalEmbedView from '@/components/slides/ExternalEmbedView.astro';
 import ExternalLinkView from '@/components/slides/ExternalLinkView.astro';
@@ -7,7 +7,7 @@ import RevealDeck from '@/components/slides/RevealDeck.svelte';
 import SlideLayout from '@/layouts/SlideLayout.astro';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
-import { getDeckSlug } from '@/lib/slides';
+import { getDeckSlug, isDraftDeck } from '@/lib/slides';
 
 interface Props {
   lang: Language;
@@ -17,6 +17,7 @@ interface Props {
 const { lang, deck } = Astro.props;
 const slug = getDeckSlug(deck.id);
 const { type } = deck.data;
+const isDraft = isDraftDeck(deck);
 const prefix = getUrlPrefix(lang);
 const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
 const canonicalUrl = `${siteUrl}${prefix}/slides/${slug}`;
@@ -70,6 +71,7 @@ const jsonLd =
     image={deck.data.heroImage}
     showRevealChrome={true}
     deckSlug={slug}
+    isDraft={isDraft}
   >
     <Fragment slot="head">
       <JsonLd data={jsonLd} />
@@ -93,6 +95,7 @@ const jsonLd =
     image={deck.data.heroImage}
     showRevealChrome={false}
     deckSlug={slug}
+    isDraft={isDraft}
   >
     <Fragment slot="head">
       <JsonLd data={jsonLd} />
