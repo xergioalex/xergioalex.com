@@ -190,10 +190,61 @@ Behavior per type:
 Store deck images in `public/images/slides/<slug>/`:
 
 ```
-public/images/slides/demo-revealjs-features/hero.webp
+public/images/slides/<slug>/hero.{webp,png,jpg}        # shared between EN and ES
+public/images/slides/<slug>/hero-en.{webp,png,jpg}     # EN-specific (optional)
+public/images/slides/<slug>/hero-es.{webp,png,jpg}     # ES-specific (optional)
 ```
 
-Use `npm run images:optimize` for WebP conversion.
+### Per-language preview images
+
+Each deck file (`en/<slug>.md` and `es/<slug>.md`) sets its own `heroImage`
+in frontmatter — that's how per-language previews work. Reference whichever
+file lives in the slug's folder. There is no `heroImageEs` field; the
+language is implicit from the deck file's location.
+
+Example — same hero for both languages:
+
+```yaml
+# src/content/slides/en/2026-04-25_demo.md
+heroImage: /images/slides/demo/hero.webp
+
+# src/content/slides/es/2026-04-25_demo.md
+heroImage: /images/slides/demo/hero.webp
+```
+
+Example — different hero per language:
+
+```yaml
+# src/content/slides/en/2026-04-25_demo.md
+heroImage: /images/slides/demo/hero-en.webp
+
+# src/content/slides/es/2026-04-25_demo.md
+heroImage: /images/slides/demo/hero-es.webp
+```
+
+### Optimization
+
+The slide-image staging flow mirrors blog posts. Drop source files in the
+slides staging directory using the `{slug}--{name}.{ext}` convention:
+
+```
+public/images/slides/_staging/demo--hero.png            # → demo/hero.{jpg|webp}
+public/images/slides/_staging/demo--hero-en.png         # → demo/hero-en.{jpg|webp}
+public/images/slides/_staging/demo--hero-es.png         # → demo/hero-es.{jpg|webp}
+```
+
+Then run:
+
+```bash
+npm run images:optimize:slides              # Process slide staging
+npm run images:optimize:slides -- --webp    # Also generate WebP variants
+npm run images:optimize:slides -- --dry-run # Preview without writing
+```
+
+The optimizer applies the same hero-aware presets (1400px landscape, 800px
+square) and JPEG/WebP encoding settings used for blog posts. Optimized files
+land in `public/images/slides/<slug>/` and are removed from `_staging/` on
+success.
 
 ## Related
 

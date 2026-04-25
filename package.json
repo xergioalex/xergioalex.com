@@ -27,6 +27,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "images:optimize": "node scripts/optimize-images.mjs",
+    "images:optimize:slides": "node scripts/optimize-images.mjs --target=slides",
     "images:webp": "echo 'All images are natively WebP — no generation needed'",
     "search:budgets": "node scripts/check-search-performance-budgets.mjs",
     "md:check": "node scripts/check-md-parity.mjs",

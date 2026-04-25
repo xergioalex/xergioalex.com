@@ -1,19 +1,32 @@
 #!/usr/bin/env node
 
 /**
- * Blog Image Optimizer
+ * Image Optimizer (blog posts + slide decks)
  *
- * Processes images from public/images/blog/_staging/ and optimizes them
- * for production use.
+ * Processes images from a target collection's `_staging/` directory and
+ * optimizes them for production use, mirroring the same conventions across
+ * blog posts and slide decks.
  *
  * Staging file naming convention:
- *   {slug}--hero.{ext}     -> posts/{slug}/hero.{ext optimized}
- *   {slug}--{name}.{ext}   -> posts/{slug}/{name}.{ext optimized}
+ *   {slug}--hero.{ext}     -> {output}/{slug}/hero.{ext optimized}
+ *   {slug}--{name}.{ext}   -> {output}/{slug}/{name.ext optimized}
+ *
+ * Per-language slide hero images live in the same slug folder, e.g.:
+ *   slug--hero-en.png  -> images/slides/slug/hero-en.png
+ *   slug--hero-es.png  -> images/slides/slug/hero-es.png
+ *
+ * Targets (--target):
+ *   blog (default) — staging at public/images/blog/_staging/
+ *                    output  at public/images/blog/posts/{slug}/
+ *   slides         — staging at public/images/slides/_staging/
+ *                    output  at public/images/slides/{slug}/
  *
  * Usage:
- *   npm run images:optimize              # Process all staged images
- *   npm run images:optimize -- --webp    # Also generate WebP variants
- *   npm run images:optimize -- --dry-run # Preview what would happen
+ *   npm run images:optimize                          # Blog (default)
+ *   npm run images:optimize -- --webp                # Blog with WebP variants
+ *   npm run images:optimize -- --dry-run             # Preview blog work
+ *   npm run images:optimize:slides                   # Slides
+ *   npm run images:optimize:slides -- --webp         # Slides with WebP
  */
 
 import { existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs';
@@ -21,8 +34,21 @@ import { basename, extname, join, resolve } from 'node:path';
 import sharp from 'sharp';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const STAGING_DIR = join(ROOT, 'public/images/blog/_staging');
-const POSTS_DIR = join(ROOT, 'public/images/blog/posts');
+
+const TARGETS = {
+  blog: {
+    staging: join(ROOT, 'public/images/blog/_staging'),
+    output: join(ROOT, 'public/images/blog/posts'),
+    label: 'Blog',
+    outputLabel: 'posts',
+  },
+  slides: {
+    staging: join(ROOT, 'public/images/slides/_staging'),
+    output: join(ROOT, 'public/images/slides'),
+    label: 'Slides',
+    outputLabel: 'slides',
+  },
+};
 
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
 
@@ -38,9 +64,18 @@ const WEBP_QUALITY = 80;
 
 function parseArgs() {
   const args = process.argv.slice(2);
+  const targetArg = args.find((a) => a.startsWith('--target='));
+  const target = targetArg ? targetArg.slice('--target='.length) : 'blog';
+  if (!TARGETS[target]) {
+    console.error(
+      `Unknown --target=${target}. Valid: ${Object.keys(TARGETS).join(', ')}`
+    );
+    process.exit(1);
+  }
   return {
     webp: args.includes('--webp'),
     dryRun: args.includes('--dry-run'),
+    target,
   };
 }
 
@@ -158,20 +193,23 @@ async function optimizeImage(inputPath, outputDir, name, ext, options) {
 
 async function main() {
   const options = parseArgs();
+  const target = TARGETS[options.target];
 
   console.log('');
-  console.log('Blog Image Optimizer');
+  console.log(`${target.label} Image Optimizer`);
   console.log('====================');
   if (options.dryRun) console.log('(DRY RUN - no files will be modified)');
   if (options.webp) console.log('(WebP variants will be generated)');
   console.log('');
 
-  if (!existsSync(STAGING_DIR)) {
-    console.log('Staging directory not found. Nothing to process.');
+  if (!existsSync(target.staging)) {
+    console.log(
+      `Staging directory not found (${target.staging}). Nothing to process.`
+    );
     return;
   }
 
-  const files = readdirSync(STAGING_DIR).filter((f) => {
+  const files = readdirSync(target.staging).filter((f) => {
     const ext = extname(f).toLowerCase();
     return IMAGE_EXTENSIONS.has(ext);
   });
@@ -199,11 +237,11 @@ async function main() {
     }
 
     const { slug, name, ext } = parsed;
-    const inputPath = join(STAGING_DIR, file);
-    const outputDir = join(POSTS_DIR, slug);
+    const inputPath = join(target.staging, file);
+    const outputDir = join(target.output, slug);
 
     console.log(`  Processing: ${file}`);
-    console.log(`    -> posts/${slug}/${name}${ext}`);
+    console.log(`    -> ${target.outputLabel}/${slug}/${name}${ext}`);
 
     if (!options.dryRun) {
       mkdirSync(outputDir, { recursive: true });
