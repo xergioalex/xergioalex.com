@@ -1,6 +1,7 @@
 ---
 title: 'Anatomy of a Lobster: How OpenClaw Actually Works'
 description: "Inside OpenClaw: the Gateway, the PI agent, the seven workspace files, skills, MCP servers, heartbeat, and the sandbox layer -- the full anatomy."
+draft: true
 pubDate: '2026-05-04'
 heroImage: '/images/blog/posts/openclaw-anatomy-of-a-lobster/hero.webp'
 heroLayout: 'side-by-side'

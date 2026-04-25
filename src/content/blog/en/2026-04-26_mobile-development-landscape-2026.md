@@ -1,6 +1,7 @@
 ---
 title: "The Mobile Landscape in 2026: The Map I Made Before Writing Code"
 description: "The mobile development map I built before touching code: what's available, how each option works, and why I ended up with two serious paths."
+draft: true
 pubDate: "2026-04-26"
 heroLayout: "none"
 tags: ["tech", "mobile"]

@@ -1,6 +1,7 @@
 ---
 title: "El panorama mobile en 2026: el mapa que armé antes de escribir código"
 description: "El mapa del desarrollo mobile que construí antes de tocar código: qué hay disponible, cómo funciona cada opción y por qué terminé con dos caminos serios."
+draft: true
 pubDate: "2026-04-26"
 heroLayout: "none"
 tags: ["tech", "mobile"]

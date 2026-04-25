@@ -1,6 +1,7 @@
 ---
 title: 'Kotlin Multiplatform from zero: sharing code without giving up native'
 description: 'An introduction to Kotlin Multiplatform: its history, why it keeps gaining ground, and what makes it different from other ways to build Android and iOS apps.'
+draft: true
 pubDate: '2026-05-02'
 heroLayout: 'side-by-side'
 tags: ['tech', 'mobile', 'kotlin']
