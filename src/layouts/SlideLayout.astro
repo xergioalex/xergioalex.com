@@ -35,7 +35,6 @@ const catalogUrl = `${prefix}/slides`;
 const alternateLang = lang === 'en' ? 'es' : 'en';
 const alternatePrefix = getUrlPrefix(alternateLang);
 const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
-const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
 ---
 
 <html lang={lang}>
@@ -48,17 +47,10 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
       ogType="article"
     />
     <style is:global>
-      body.reveal-theme-dark {
-        background: #111;
-      }
-      body.reveal-theme-light {
-        background: #fff;
-      }
-      body.reveal-theme-light .reveal {
-        color: #222;
-      }
-      /* Fix: Reveal v6 black theme uses dark text (#191919) which is unreadable
-         on slides with dark backgrounds. Force white text on those slides. */
+      body.reveal-theme-dark { background: #111; }
+      body.reveal-theme-light { background: #fff; }
+      body.reveal-theme-light .reveal { color: #222; }
+
       .reveal .slides section.has-dark-background,
       .reveal .slides section.has-dark-background h1,
       .reveal .slides section.has-dark-background h2,
@@ -74,73 +66,159 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
       .reveal .slides section[data-background-gradient] small {
         color: #fff !important;
       }
-      body.reveal-theme-dark .reveal .controls {
-        color: #42affa;
-      }
-      body.reveal-theme-light .reveal .controls {
-        color: #2a76dd;
-      }
-      body.reveal-theme-light .reveal .progress {
-        color: #2a76dd;
-      }
-      .slide-chrome {
+
+      body.reveal-theme-dark .reveal .controls { color: #42affa; }
+      body.reveal-theme-light .reveal .controls { color: #2a76dd; }
+      body.reveal-theme-light .reveal .progress { color: #2a76dd; }
+
+      /* Top-left: back link */
+      .slide-back {
         position: fixed;
+        top: 0.75rem;
+        left: 1rem;
         z-index: 50;
-        padding: 0.75rem 1rem;
         font-size: 0.8125rem;
         font-family: system-ui, sans-serif;
       }
-      .slide-chrome a {
+      .slide-back a {
         text-decoration: none;
-        opacity: 0.7;
+        opacity: 0.6;
         transition: opacity 0.2s;
       }
-      .slide-chrome a:hover,
-      .slide-chrome a:focus-visible {
-        opacity: 1;
+      .slide-back a:hover { opacity: 1; }
+      body.reveal-theme-dark .slide-back a { color: #d1d5db; }
+      body.reveal-theme-light .slide-back a { color: #4b5563; }
+
+      /* Top-right: toolbar */
+      .slide-toolbar {
+        position: fixed;
+        top: 0.6rem;
+        right: 1rem;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-family: system-ui, sans-serif;
       }
-      body.reveal-theme-dark .slide-chrome a {
+      .slide-toolbar .tb-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.15s, opacity 0.15s;
+        opacity: 0.6;
+        font-size: 16px;
+        line-height: 1;
+      }
+      .slide-toolbar .tb-btn:hover { opacity: 1; }
+      body.reveal-theme-dark .slide-toolbar .tb-btn {
+        background: rgba(255,255,255,0.08);
         color: #d1d5db;
       }
-      body.reveal-theme-light .slide-chrome a {
+      body.reveal-theme-dark .slide-toolbar .tb-btn:hover {
+        background: rgba(255,255,255,0.15);
+      }
+      body.reveal-theme-light .slide-toolbar .tb-btn {
+        background: rgba(0,0,0,0.06);
         color: #4b5563;
       }
-      .slide-chrome a:focus-visible {
-        outline: 2px solid currentColor;
-        outline-offset: 2px;
-        border-radius: 4px;
+      body.reveal-theme-light .slide-toolbar .tb-btn:hover {
+        background: rgba(0,0,0,0.12);
+      }
+
+      /* Language toggle */
+      .slide-toolbar .lang-toggle {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 6px;
+        overflow: hidden;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      .slide-toolbar .lang-toggle a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 10px;
+        text-decoration: none;
+        transition: background 0.15s, color 0.15s;
+        height: 32px;
+      }
+      body.reveal-theme-dark .lang-toggle a {
+        background: rgba(255,255,255,0.08);
+        color: #888;
+      }
+      body.reveal-theme-dark .lang-toggle a.active {
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+      }
+      body.reveal-theme-dark .lang-toggle a:hover {
+        background: rgba(255,255,255,0.15);
+      }
+      body.reveal-theme-light .lang-toggle a {
+        background: rgba(0,0,0,0.06);
+        color: #999;
+      }
+      body.reveal-theme-light .lang-toggle a.active {
+        background: rgba(0,0,0,0.15);
+        color: #222;
+      }
+      body.reveal-theme-light .lang-toggle a:hover {
+        background: rgba(0,0,0,0.1);
+      }
+
+      /* Draft badge */
+      .slide-toolbar .draft-badge {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 3px 8px;
+        border-radius: 9999px;
+        background: #9333ea;
+        color: #fff;
       }
     </style>
     <slot name="head" />
   </head>
   <body class="reveal-theme-dark m-0 p-0 overflow-hidden">
-    <nav class="slide-chrome top-0 left-0" aria-label="Deck navigation">
-      <a href={catalogUrl} aria-label={`${t.slides.exitToCatalog} — ${SITE_TITLE}`}>
-        ← {SITE_TITLE.split(' - ')[0]}
-      </a>
-    </nav>
 
-    <nav class="slide-chrome top-0 right-0 flex items-center gap-3" aria-label="Language switcher">
-      {isDraft && (
-        <span
-          class="inline-flex items-center rounded-full bg-purple-600 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white shadow-sm"
-          title={t.draftBadge}
-        >
-          {t.draftBadge}
-        </span>
-      )}
-      <a href={alternateUrl} hreflang={alternateLang}>
-        {langSwitchLabel}
-      </a>
-    </nav>
+    <!-- Top-left: back to slides catalog -->
+    <div class="slide-back">
+      <a href={catalogUrl}>← {SITE_TITLE.split(' - ')[0]}</a>
+    </div>
 
-    {showRevealChrome && (
-      <div class="slide-chrome bottom-0 right-0">
-        <a href="?print-pdf" target="_blank" rel="noopener noreferrer" aria-label={t.slides.printPdf}>
-          {t.slides.printPdf}
-        </a>
+    <!-- Top-right: toolbar -->
+    <div class="slide-toolbar">
+      {isDraft && <span class="draft-badge">{t.draftBadge}</span>}
+
+      <!-- Language toggle EN / ES -->
+      <div class="lang-toggle">
+        <a href={lang === 'en' ? '#' : alternateUrl} class={lang === 'en' ? 'active' : ''} aria-label="English">EN</a>
+        <a href={lang === 'es' ? '#' : alternateUrl} class={lang === 'es' ? 'active' : ''} aria-label="Español">ES</a>
       </div>
-    )}
+
+      <!-- Theme toggle -->
+      <button class="tb-btn" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle light/dark">
+        <span id="theme-icon">☀️</span>
+      </button>
+
+      <!-- Fullscreen toggle -->
+      <button class="tb-btn" id="fullscreen-toggle" type="button" aria-label="Toggle fullscreen" title="Fullscreen">
+        <span id="fs-icon">⛶</span>
+      </button>
+
+      {showRevealChrome && (
+        <a href="?print-pdf" target="_blank" rel="noopener noreferrer" class="tb-btn" aria-label={t.slides.printPdf} title={t.slides.printPdf}>
+          🖨
+        </a>
+      )}
+    </div>
 
     <div class="reveal" id="reveal-deck">
       <slot />
@@ -151,30 +229,50 @@ const langSwitchLabel = lang === 'en' ? 'Ver en español' : 'View in English';
         var html = document.documentElement;
         var body = document.body;
 
+        function isDark() { return html.classList.contains('dark'); }
+
         function syncTheme() {
-          var isDark = html.classList.contains('dark');
+          var dark = isDark();
           body.classList.remove('reveal-theme-dark', 'reveal-theme-light');
-          body.classList.add(isDark ? 'reveal-theme-dark' : 'reveal-theme-light');
+          body.classList.add(dark ? 'reveal-theme-dark' : 'reveal-theme-light');
+          var icon = document.getElementById('theme-icon');
+          if (icon) icon.textContent = dark ? '☀️' : '🌙';
         }
 
         syncTheme();
 
-        var observer = new MutationObserver(function(mutations) {
-          for (var i = 0; i < mutations.length; i++) {
-            if (mutations[i].attributeName === 'class') {
-              syncTheme();
-              break;
-            }
+        new MutationObserver(function(m) {
+          for (var i = 0; i < m.length; i++) {
+            if (m[i].attributeName === 'class') { syncTheme(); break; }
           }
-        });
-        observer.observe(html, { attributes: true, attributeFilter: ['class'] });
+        }).observe(html, { attributes: true, attributeFilter: ['class'] });
 
-        window.addEventListener('reveal:ready', function() {
-          var deck = document.getElementById('reveal-deck');
-          if (deck) {
-            deck.classList.remove('opacity-0');
-          }
-        });
+        // Theme toggle
+        var themeBtn = document.getElementById('theme-toggle');
+        if (themeBtn) {
+          themeBtn.addEventListener('click', function() {
+            html.classList.toggle('dark');
+            var dark = isDark();
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+            syncTheme();
+          });
+        }
+
+        // Fullscreen toggle
+        var fsBtn = document.getElementById('fullscreen-toggle');
+        var fsIcon = document.getElementById('fs-icon');
+        if (fsBtn) {
+          fsBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch(function(){});
+            } else {
+              document.exitFullscreen().catch(function(){});
+            }
+          });
+          document.addEventListener('fullscreenchange', function() {
+            if (fsIcon) fsIcon.textContent = document.fullscreenElement ? '⬜' : '⛶';
+          });
+        }
       })();
     </script>
   </body>
