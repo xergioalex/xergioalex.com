@@ -9,9 +9,48 @@ series: "learning-mobile-development"
 seriesOrder: 1
 ---
 
-I've been watching mobile development from a distance for years. I see it, I respect it, I occasionally envy it. But always from the other side: building APIs, configuring infrastructure, designing systems that live on servers. Mobile was always "the thing other people do."
+I've always considered myself a full stack developer. Backend, frontend, infrastructure, DevOps — if there's a new technology that catches my attention, I learn it. That's how I work. But with mobile development the story has always been different. I watch it from a distance — I see it, I respect it, I occasionally envy it — but I always end up on the other side: building APIs, shipping frontends, configuring infrastructure, designing systems that live on servers. Mobile was always "the thing other people do."
 
-This year I decided that was enough. Not because I have an urgent project that demands it — though there's something there — but because there's a real difference between knowing a domain superficially and having actually touched it. I wanted to move to the second group.
+Not because I hadn't tried.
+
+I remember my early university years — we're talking over fifteen years ago — when I needed to build a mobile app for a course. Android Studio didn't exist yet; the official IDE was Eclipse with the ADT plugin, and it was too heavy for my humble laptop at the time. It wouldn't start, or it would start and eat all the memory, or it would get stuck compiling in a loop that felt eternal.
+
+Looking up screenshots from that era I found these gems — Eclipse Helios loading with the ADT plugin, the visual layout editor, and the emulator with its virtual physical keyboard. The flashbacks are immediate:
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-helios-loading.webp"
+     alt="Eclipse Helios IDE loading screen with the ADT plugin installed, circa 2011"
+     width="1024"
+     height="576"
+     loading="lazy" />
+<figcaption>Eclipse Helios (~2011) loading with the ADT plugin. That purple screen was the last thing you'd see before your laptop decided whether to cooperate or not.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-adt-layout-editor.webp"
+     alt="Eclipse ADT graphical layout editor showing a Hello World Android app with form widgets palette"
+     width="991"
+     height="612"
+     loading="lazy" />
+<figcaption>The visual layout editor in Eclipse ADT — dragging TextViews and Buttons onto a virtual Nexus One. The "Hello world!" that took half an hour of setup.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-adt-emulator.webp"
+     alt="Eclipse ADT with the Android emulator showing a virtual phone with physical keyboard, DDMS debug panel below"
+     width="1024"
+     height="734"
+     loading="lazy" />
+<figcaption>The Android emulator inside Eclipse — with a virtual physical keyboard, the DDMS panel, and a speed that tested your patience.</figcaption>
+</figure>
+
+So I started looking for alternatives. Cordova let me build hybrid apps that served their purpose: I shipped my first mobile apps with HTML, CSS, and JavaScript packaged inside a native container. It worked. Then I experimented with Ionic — same principle, better tooling — and built a couple of prototypes and projects with those technologies.
+
+The problem arrived when I needed more. When the project required real access to native device components — the camera, GPS, sensors, push notifications — hybrid development showed its seams. A bridge that was too slow, a native API that wasn't exposed, behavior that worked perfectly in the browser but on the actual device felt like a web app in disguise. And it was.
+
+After that, I abandoned mobile development. Again. And that "again" is the important part — because it wasn't the first time and it wasn't the last. Every now and then I'd feel the urge to come back. I'd see a new framework, a demo that looked incredible, a tutorial that promised "build your first app in 30 minutes." But mobile development, unlike frontend or backend, requires a quantity of artifacts that when you see them all together — the certificates, the provisioning profiles, the emulators, the Gradle or Xcode configurations, the developer accounts — the impulse would die before I wrote a single line of code. In frontend you can open an HTML file and you're already running. In backend, three lines spin up a server. In mobile, before seeing "Hello World" on your phone you've already gone through three setup wizards and a Gradle error that sends you to Stack Overflow. The entry barrier wasn't intellectual. It was logistical. And logistics kills motivation faster than complexity.
+
+This year I decided that was enough. Not because I have an urgent project that demands it — though there's something there — but because I wanted to understand the current state of the art. To find the best path for someone like me: a full stack developer with solid experience in backend, frontend, and infrastructure, but no expertise in mobile. My happy path — the one that gets me building apps intuitively, with the best possible standards, without having to fight the ecosystem just to get started.
 
 Before writing a single line of code, I sat down to understand the landscape. Because one of the most common mistakes people make when arriving from backend or web is assuming that mobile development is just "normal programming but on a phone." It isn't. State models are different. The lifecycle of screens works differently. The way you think about UI — who controls it, when it gets destroyed, how it persists — has its own logic. Before choosing a tool, I wanted to understand what I was getting into.
 
@@ -129,7 +168,7 @@ I ruled out the rest fairly quickly. The reasoning:
 
 **Native Android/iOS:** The answer only makes sense if you already know which platform you're building for. I don't — I want to reach both. Going native would mean learning two languages, two UI models, two ecosystems. It's the right answer for many teams. Not for me starting from zero.
 
-**Ionic/Capacitor:** The tradeoff is too clear. If I care about the app feeling native — and I do — Ionic isn't where to start. It's useful if you already have a web app and want to get it into the store. I'm building from scratch.
+**Ionic/Capacitor:** I've been through this. Cordova, Ionic — they served me fifteen years ago to get through university courses, but I lived the tradeoff firsthand: when you need the app to feel native, hybrid doesn't get there. If you already have a web app and want to get it into the store, it's a valid path. But I'm building from scratch, and this time I want to do it right.
 
 **.NET MAUI:** I don't live in the C# ecosystem. No reason to start there.
 

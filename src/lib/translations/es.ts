@@ -572,11 +572,47 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     philosophyTitle: 'Por qu\u00E9 hablo',
     philosophyText:
       'En 2016, di mi primera charla p\u00FAblica sobre Meteor.js en un meetup peque\u00F1o en Pereira. Estaba aterrado. Pero durante las preguntas, alguien me hizo una que me hizo darme cuenta de algo que yo mismo no hab\u00EDa entendido completamente sobre el framework. Ese momento lo cambi\u00F3 todo \u2014 no solo estaba compartiendo conocimiento, lo estaba profundizando.<br /><br />Cada charla que preparo me obliga a organizar mis ideas, cuestionar mis supuestos y encontrar claridad en lo complejo. Cada pregunta de la audiencia abre una perspectiva nueva que no hab\u00EDa considerado. Hablo porque ense\u00F1ar es como aprendo. Y organizo eventos de comunidad porque cuando la gente comparte abiertamente \u2014 ya sea dando su primera charla o la n\u00FAmero cincuenta \u2014 todos en la sala mejoramos. Ese es el ciclo que quiero mantener vivo.',
+    decksTitle: 'Presentaciones y Diapositivas',
+    decksDescription:
+      'Explora mis presentaciones — desde diapositivas creadas con Reveal.js hasta charlas externas alojadas en otras plataformas.',
     ctaTitle: '\u00BFQuieres que hable en tu evento?',
     ctaText:
       'Siempre me entusiasma hablar en eventos \u2014 ya sea un meetup local o una conferencia internacional. Hablemos de c\u00F3mo puedo contribuir.',
     timelineTitle: 'Mis charlas',
     emptyState: '\u00A1A\u00FAn no hay charlas disponibles. Vuelve pronto!',
+  },
+
+  // Slides listing page
+  slidesPage: {
+    title: 'Diapositivas',
+    subtitle: 'Presentaciones, decks e historias visuales',
+    description:
+      'Explora todas las presentaciones de Sergio Alexander — desde diapositivas creadas con Reveal.js hasta charlas externas alojadas en otras plataformas.',
+    heroDescription:
+      'Una colección de todas mis presentaciones — charlas de conferencias, slides de meetups y deep dives técnicos. Creadas internamente con Reveal.js o alojadas en plataformas externas.',
+    timelineTitle: 'Línea de tiempo de slides',
+    emptyState: 'Aún no hay diapositivas disponibles. ¡Vuelve pronto!',
+    viewAll: 'Ver todas las diapositivas',
+  },
+
+  // Slides / deck pages
+  slides: {
+    exitToCatalog: 'Volver a Charlas Tech',
+    printPdf: 'Imprimir a PDF',
+    languageSwitch: 'View in English',
+    externalLink: {
+      openCta: 'Abrir en {provider}',
+      backToCatalog: 'Volver al catálogo',
+    },
+    externalEmbed: {
+      openExternal: 'Abrir original',
+    },
+    languageNotice: 'La presentación original está en {lang}',
+    typeBadge: {
+      internal: 'Creación propia',
+      externalLink: 'Externo',
+      externalEmbed: 'Incrustado',
+    },
   },
 
   // Trading page

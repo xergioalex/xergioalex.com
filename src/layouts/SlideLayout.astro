@@ -1,0 +1,225 @@
+---
+import '@/styles/global.css';
+import 'reveal.js/reveal.css';
+import 'reveal.js/theme/black.css';
+import 'reveal.js/theme/white.css';
+
+import BaseHead from '@/components/BaseHead.astro';
+import { SITE_TITLE } from '@/lib/constances';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  lang: Language;
+  title: string;
+  description: string;
+  image?: string;
+  deckSlug: string;
+  isDraft?: boolean;
+}
+
+const {
+  lang,
+  title,
+  description,
+  image,
+  deckSlug,
+  isDraft = false,
+} = Astro.props;
+
+const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+const catalogUrl = `${prefix}/slides`;
+const alternateLang = lang === 'en' ? 'es' : 'en';
+const alternatePrefix = getUrlPrefix(alternateLang);
+const alternateUrl = `${alternatePrefix}/slides/${deckSlug}`;
+---
+
+<html lang={lang}>
+  <head>
+    <BaseHead
+      title={`${title} | ${SITE_TITLE}`}
+      description={description}
+      image={image}
+      lang={lang}
+      ogType="article"
+    />
+    <style is:global>
+      body.reveal-theme-dark { background: #111; }
+      body.reveal-theme-light { background: #fff; }
+      body.reveal-theme-light .reveal { color: #222; }
+      .reveal .slides section.has-dark-background,
+      .reveal .slides section.has-dark-background h1,
+      .reveal .slides section.has-dark-background h2,
+      .reveal .slides section.has-dark-background h3,
+      .reveal .slides section.has-dark-background h4,
+      .reveal .slides section.has-dark-background p,
+      .reveal .slides section.has-dark-background li,
+      .reveal .slides section.has-dark-background small,
+      .reveal .slides section[data-background-gradient] h1,
+      .reveal .slides section[data-background-gradient] h2,
+      .reveal .slides section[data-background-gradient] h3,
+      .reveal .slides section[data-background-gradient] p,
+      .reveal .slides section[data-background-gradient] small {
+        color: #fff !important;
+      }
+      body.reveal-theme-dark .reveal .controls { color: #42affa; }
+      body.reveal-theme-light .reveal .controls { color: #2a76dd; }
+      body.reveal-theme-light .reveal .progress { color: #2a76dd; }
+    </style>
+    <slot name="head" />
+  </head>
+  <body class="reveal-theme-dark" style="margin:0; padding:0; overflow:hidden;">
+
+    <!-- Back link: top-left -->
+    <a
+      href={catalogUrl}
+      id="slide-back"
+      style="position:fixed; top:12px; left:16px; z-index:100; font:600 13px/1 system-ui,sans-serif; text-decoration:none; color:rgba(255,255,255,0.5); transition:color 0.2s;"
+    >
+      ← {SITE_TITLE.split(' - ')[0]}
+    </a>
+
+    <!-- Toolbar: top-right floating pill -->
+    <div
+      id="slide-toolbar"
+      style="position:fixed; top:10px; right:16px; z-index:100; display:flex; align-items:center; gap:4px; padding:4px; border-radius:10px; background:rgba(0,0,0,0.65); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.1); font-family:system-ui,sans-serif;"
+    >
+      {isDraft && (
+        <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 8px; border-radius:6px; background:#9333ea; color:#fff;">
+          {t.draftBadge}
+        </span>
+      )}
+
+      <!-- Language toggle -->
+      <a
+        href={lang === 'en' ? '#' : alternateUrl}
+        style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'en' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
+        aria-label="English"
+      >EN</a>
+      <a
+        href={lang === 'es' ? '#' : alternateUrl}
+        style={`display:inline-flex; align-items:center; justify-content:center; padding:0 10px; height:30px; border-radius:6px; font-size:11px; font-weight:700; text-decoration:none; transition:all 0.15s; ${lang === 'es' ? 'background:rgba(255,255,255,0.2); color:#fff;' : 'background:transparent; color:rgba(255,255,255,0.45);'}`}
+        aria-label="Español"
+      >ES</a>
+
+      <!-- Divider -->
+      <div style="width:1px; height:18px; background:rgba(255,255,255,0.15); margin:0 2px;"></div>
+
+      <!-- Theme toggle -->
+      <button
+        id="theme-toggle"
+        type="button"
+        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); font-size:15px; transition:all 0.15s;"
+        aria-label="Toggle theme"
+        title="Toggle light/dark"
+      >
+        <span id="theme-icon">☀️</span>
+      </button>
+
+      <!-- Fullscreen -->
+      <button
+        id="fullscreen-toggle"
+        type="button"
+        style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:6px; border:none; cursor:pointer; background:transparent; color:rgba(255,255,255,0.6); font-size:15px; transition:all 0.15s;"
+        aria-label="Fullscreen"
+        title="Fullscreen"
+      >
+        <span id="fs-icon">⛶</span>
+      </button>
+
+    </div>
+
+    <div class="reveal" id="reveal-deck">
+      <slot />
+    </div>
+
+    <script is:inline>
+      (function() {
+        var html = document.documentElement;
+        var body = document.body;
+        var toolbar = document.getElementById('slide-toolbar');
+        var backLink = document.getElementById('slide-back');
+
+        function isDark() { return html.classList.contains('dark'); }
+
+        function syncTheme() {
+          var dark = isDark();
+          body.classList.remove('reveal-theme-dark', 'reveal-theme-light');
+          body.classList.add(dark ? 'reveal-theme-dark' : 'reveal-theme-light');
+
+          var icon = document.getElementById('theme-icon');
+          if (icon) icon.textContent = dark ? '☀️' : '🌙';
+
+          // Update toolbar glass background
+          if (toolbar) {
+            toolbar.style.background = dark ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.75)';
+            toolbar.style.borderColor = dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+          }
+          // Update back link color
+          if (backLink) {
+            backLink.style.color = dark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.4)';
+          }
+          // Update toolbar button/link colors
+          var btns = toolbar ? toolbar.querySelectorAll('button, a') : [];
+          for (var i = 0; i < btns.length; i++) {
+            var el = btns[i];
+            if (el.getAttribute('aria-label') === 'English' || el.getAttribute('aria-label') === 'Español') continue;
+            el.style.color = dark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)';
+          }
+          // Update lang toggle colors
+          var enLink = toolbar ? toolbar.querySelector('[aria-label="English"]') : null;
+          var esLink = toolbar ? toolbar.querySelector('[aria-label="Español"]') : null;
+          var currentLang = html.getAttribute('lang') || 'en';
+          if (enLink) {
+            enLink.style.background = currentLang === 'en' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
+            enLink.style.color = currentLang === 'en' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
+          }
+          if (esLink) {
+            esLink.style.background = currentLang === 'es' ? (dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.12)') : 'transparent';
+            esLink.style.color = currentLang === 'es' ? (dark ? '#fff' : '#222') : (dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.35)');
+          }
+          // Update dividers
+          var dividers = toolbar ? toolbar.querySelectorAll('div[style*="width:1px"]') : [];
+          for (var j = 0; j < dividers.length; j++) {
+            dividers[j].style.background = dark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)';
+          }
+        }
+
+        syncTheme();
+
+        new MutationObserver(function(m) {
+          for (var i = 0; i < m.length; i++) {
+            if (m[i].attributeName === 'class') { syncTheme(); break; }
+          }
+        }).observe(html, { attributes: true, attributeFilter: ['class'] });
+
+        // Theme toggle
+        var themeBtn = document.getElementById('theme-toggle');
+        if (themeBtn) {
+          themeBtn.addEventListener('click', function() {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', isDark() ? 'dark' : 'light');
+            syncTheme();
+          });
+        }
+
+        // Fullscreen toggle
+        var fsBtn = document.getElementById('fullscreen-toggle');
+        var fsIcon = document.getElementById('fs-icon');
+        if (fsBtn) {
+          fsBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch(function(){});
+            } else {
+              document.exitFullscreen().catch(function(){});
+            }
+          });
+          document.addEventListener('fullscreenchange', function() {
+            if (fsIcon) fsIcon.textContent = document.fullscreenElement ? '⬜' : '⛶';
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
