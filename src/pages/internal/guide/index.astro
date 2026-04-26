@@ -30,7 +30,7 @@ const principles = [
   {
     title: 'Content Collections',
     description:
-      'Structured content with Zod schemas. Blog posts, tags, and other collections use Astro Content Collections.',
+      'Structured content with Zod schemas. Blog posts, slides, tags, series, and pages use Astro Content Collections.',
   },
 ];
 
@@ -66,6 +66,42 @@ const guidePages = [
     description:
       'PageSpeed optimizations, WebP image pipeline, and deployment flow.',
   },
+  {
+    title: 'Slide System',
+    href: '/internal/guide/slides',
+    description:
+      'Reveal.js presentation decks — layouts, theming, chrome UI, and CSS helpers.',
+  },
+  {
+    title: 'Content Collections',
+    href: '/internal/guide/content-collections',
+    description:
+      'Schemas and structure for blog, slides, tags, series, and pages.',
+  },
+  {
+    title: 'Blog System',
+    href: '/internal/guide/blog',
+    description:
+      'Blog authoring workflow, frontmatter, hero layouts, tags, and writing rules.',
+  },
+  {
+    title: 'Internationalization',
+    href: '/internal/guide/i18n',
+    description:
+      'Multilingual content system — routing, translations, Spanish rules.',
+  },
+  {
+    title: 'SEO & AEO',
+    href: '/internal/guide/seo',
+    description:
+      'Meta tags, JSON-LD, Markdown twins for AI agents, sitemap, and keywords.',
+  },
+  {
+    title: 'AI Skills & Agents',
+    href: '/internal/guide/ai-skills',
+    description:
+      'AI-powered development tools — skills catalog, agents, mandatory policies.',
+  },
 ];
 ---
 
@@ -88,7 +124,7 @@ const guidePages = [
         <div
           class="rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-3 text-center"
         >
-          <div class="text-sm font-bold">Astro 5</div>
+          <div class="text-sm font-bold">Astro 6</div>
           <div class="text-xs text-gray-600 dark:text-gray-300">
             Static Site Gen
           </div>
@@ -132,6 +168,14 @@ const guidePages = [
         <span
           class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium"
           >RSS Feed</span
+        >
+        <span
+          class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium"
+          >Reveal.js Slides</span
+        >
+        <span
+          class="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary font-medium"
+          >AI Skills & Agents</span
         >
       </div>
     </div>

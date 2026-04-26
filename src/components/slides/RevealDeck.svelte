@@ -63,11 +63,21 @@ onMount(() => {
       controls: true,
       progress: true,
       transition,
+      width: 1280,
+      height: 720,
       plugins,
     });
 
     await deck.initialize();
     revealInstance = deck;
+
+    for (const bg of revealEl.querySelectorAll('.slide-background')) {
+      const idx = Array.from(bg.parentElement?.children ?? []).indexOf(bg);
+      const section = revealEl.querySelectorAll('.slides > section')[idx];
+      if (section?.hasAttribute('data-background-image')) {
+        (bg as HTMLElement).style.backgroundColor = '#000';
+      }
+    }
 
     syncTheme();
     observer = new MutationObserver((mutations) => {

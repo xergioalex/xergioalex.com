@@ -16,7 +16,7 @@ eventDate: 2026-04-25
 
 <!-- ==================== Portada ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
 # Slides v2 — Kitchen Sink
 
@@ -30,7 +30,7 @@ Note: La portada. Usa un patrón title-hero con un gradiente fuerte para fijar e
 
 <!-- ==================== Sección: Layouts ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 01</span>
@@ -213,7 +213,7 @@ async function fetchUser(id: string) {
 
 <!-- ==================== Sección: Fondos ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 02</span>
@@ -230,7 +230,7 @@ Texto blanco automático vía has-dark-background.
 
 ---
 
-<!-- .slide: data-background-gradient="radial-gradient(circle at top, #2a76dd 0%, #0f172a 80%)" -->
+<!-- .slide: data-background-gradient="radial-gradient(circle at top, #d81540 0%, #0f1124 80%)" -->
 
 ## Gradiente
 
@@ -264,7 +264,7 @@ CSS-only con sensación de blueprint.
 
 <!-- ==================== Sección: Features de Reveal ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 03</span>
@@ -328,11 +328,106 @@ $$e^{i\pi} + 1 = 0$$
 
 ---
 
-## Video Inline
+<!-- ==================== Layouts de medios ==================== -->
 
-<video data-autoplay loop muted width="640" height="360">
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 50%, #1a3a5a 100%)" -->
+
+<div class="slide-section-divider">
+  <span class="eyebrow">Parte 04</span>
+
+## Layouts de Medios
+
+</div>
+
+---
+
+## Video Centrado
+
+<video data-autoplay loop muted class="slide-video" width="960" height="540">
   <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
 </video>
+
+---
+
+## Video a la Izquierda
+
+<div class="slide-grid-2 slide-grid--align-center">
+  <div>
+    <video data-autoplay loop muted class="slide-video" width="640" height="360">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div>
+    <h3>Ancla lo visual</h3>
+    <p>Guía a la audiencia por lo que están viendo y cierra con una conclusión clave.</p>
+  </div>
+</div>
+
+---
+
+## Video a la Derecha
+
+<div class="slide-grid-2 slide-grid--align-center">
+  <div>
+    <h3>Lidera con la idea</h3>
+    <p>Dilo primero y ancla visualmente con el clip. Útil para momentos narrativos.</p>
+  </div>
+  <div>
+    <video data-autoplay loop muted class="slide-video" width="640" height="360">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+---
+
+## Imagen Centrada
+
+<img src="https://picsum.photos/seed/centered/960/540" alt="Foto de paisaje" width="960" height="540" class="slide-image-full" />
+
+<small>Una sola imagen con título y pie de foto opcional</small>
+
+---
+
+## Video Contenido
+
+<video data-autoplay loop muted class="slide-media-contained" width="960" height="540">
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+</video>
+
+<small>Centrado con espacio alrededor</small>
+
+---
+
+## Imagen Contenida
+
+<img src="https://picsum.photos/seed/contained/960/540" alt="Foto de paisaje" width="960" height="540" class="slide-media-contained" />
+
+<small>Centrada con espacio alrededor</small>
+
+---
+
+<!-- .slide: data-background-video="https://www.w3schools.com/html/mov_bbb.mp4" data-background-video-loop data-background-video-muted data-background-size="cover" -->
+
+&nbsp;
+
+Note: Video pantalla completa — sin texto, puro impacto visual. El clip llena todo el slide.
+
+---
+
+<!-- .slide: data-background-image="https://picsum.photos/seed/fullscreen/1920/1080" data-background-size="cover" data-background-position="center" -->
+
+&nbsp;
+
+Note: Imagen pantalla completa — sin texto, puro impacto visual. La foto llena todo el slide.
+
+---
+
+<!-- .slide: data-background-video="https://www.w3schools.com/html/mov_bbb.mp4" data-background-video-loop data-background-video-muted data-background-size="cover" class="slide-bg-overlay--dark" -->
+
+## Video de Fondo con Texto
+
+Un clip en loop detrás del contenido — el overlay garantiza la legibilidad del texto.
 
 ---
 
@@ -364,7 +459,7 @@ Note: Las notas del presentador son visibles solo en la vista del presentador. �
 
 <!-- ==================== Cierre ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
 ## Gracias
 

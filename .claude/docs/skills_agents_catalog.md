@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 13             | 6                  | 0              | 19    |
+| Skills | 13             | 7                  | 0              | 20    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **13**      | **11**             | **1**          | **25** |
+| **Total** | **13**      | **12**             | **1**          | **26** |
 
 ---
 
@@ -43,6 +43,7 @@ Everyday development work.
 | Skill         | Intent   | Invocation       | Model  | Description                                                              |
 |---------------|----------|------------------|--------|--------------------------------------------------------------------------|
 | add-blog-post | create   | `/add-blog-post` | sonnet | **Mandatory for new blog posts** — topic mode (writes content) or content mode (scaffolding). |
+| add-slide-deck | create  | `/add-slide-deck` | sonnet | **Mandatory for new slide decks** — internal Reveal.js, external-embed, or external-link. |
 | audit-post    | review   | `/audit-post`    | sonnet | Pre-publication audit for blog posts — SEO, AEO, accessibility, images, content quality, i18n parity, and project conventions. |
 | audit-series  | review   | `/audit-series`  | sonnet | Pre-publication audit for blog series — series definition, post ordering, cross-post consistency, navigation, and individual post summary checks. |
 | promote-post  | create   | `/promote-post`  | sonnet | Generate social media content for any blog post (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) |
@@ -109,6 +110,7 @@ This diagram shows how skills and agents interact during typical workflows.
   │                                          ┌────────────────┐  │
   │                                          │ Tier 2 Skills  │  │
   │                                          │ add-blog-post  │  │
+  │                                          │ add-slide-deck │  │
   │                                          │ audit-post     │  │
   │                                          │ audit-series   │  │
   │                                          │ write-tests    │  │
@@ -173,7 +175,22 @@ Skills, commands, and agents for creating and managing blog content.
 
 **Mandatory policy:** Any new file creation in `src/content/blog/` must go through `add-blog-post` to enforce multilingual parity and schema/frontmatter consistency.
 
-### 2. i18n & Translation
+### 2. Slides & Presentations
+
+Skills and resources for creating and managing presentation decks (Reveal.js internal, external-embed, external-link).
+
+| Resource | Type | Description |
+|----------|------|-------------|
+| add-slide-deck | Skill (T2) | **Mandatory for new decks** — creates internal Reveal.js, external-embed, or external-link deck files |
+| optimize-image | Skill (T1) | Convert and optimize hero images to WebP for slide decks |
+| translate-sync | Skill (T1) | Synchronize deck content between EN and ES versions |
+| i18n-guardian | Agent (T2) | Translation quality verification for deck metadata |
+
+**Relationship:** `/add-slide-deck` creates the deck files in `src/content/slides/{en,es}/`. Use `/optimize-image` for hero images in `public/images/slides/<slug>/`. The feature documentation lives in `docs/features/SLIDES.md`.
+
+**Mandatory policy:** Any new file creation in `src/content/slides/` must go through `add-slide-deck` to enforce multilingual parity, schema consistency, and correct slug conventions.
+
+### 3. i18n & Translation
 
 Resources for multilingual content management (currently English/Spanish, N-language ready).
 
@@ -184,7 +201,7 @@ Resources for multilingual content management (currently English/Spanish, N-lang
 | add-blog-post | Skill (T2) | Create multilingual blog posts — topic or content mode |
 | i18n-guardian | Agent (T2) | Translation quality specialist; multilingual consistency enforcer |
 
-### 3. Code Quality & Review
+### 4. Code Quality & Review
 
 Resources for maintaining code quality and reviewing changes.
 
@@ -198,7 +215,7 @@ Resources for maintaining code quality and reviewing changes.
 | refactor-safe | Skill (T2) | Safe refactor in bounded scope |
 | reviewer | Agent (T2) | Thorough PR review; Astro/Svelte patterns, quality |
 
-### 4. Security
+### 5. Security
 
 Resources for security review and auditing.
 
@@ -207,7 +224,7 @@ Resources for security review and auditing.
 | security-check | Skill (T1) | Quick security checklist (secrets, API routes, client exposure) |
 | security-auditor | Agent (T2) | Static site security; API routes, secrets, client exposure |
 
-### 5. Component & Page Creation
+### 6. Component & Page Creation
 
 Resources for creating new UI components and pages.
 
@@ -356,9 +373,9 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-04-26 | add-slide-deck skill added | New Tier 2 skill for creating slide decks — internal Reveal.js, external-embed, or external-link. Mandatory for new files in `src/content/slides/`. Added Slides & Presentations domain section (#2). |
 | 2026-03-23 | audit-series skill added | New Tier 2 skill for pre-publication blog series auditing — 9-step review covering series definition, post discovery, ordering validation, cross-post consistency, i18n parity, individual post summary checks, build validation, and final report. Companion to audit-post. |
 | 2026-03-23 | audit-post skill added | New Tier 2 skill for pre-publication blog post auditing — 10-step comprehensive review covering frontmatter, SEO, AEO, images, accessibility, content quality, i18n parity, resources, build validation. |
-| 2026-03-09 | add-timeline-page skill added | New Tier 1 skill for adding tag-filtered infinite-scroll timeline pages. Extracted from PLAN_timeline_infinite_scroll_pagination. |
 
 ---
 

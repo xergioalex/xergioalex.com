@@ -9,26 +9,24 @@
 /* ---------- 1. Token system ---------- */
 
 :root {
-  /* Chrome */
+  /* Chrome — aligned with site brand palette (docs/BRAND_GUIDE.md) */
   --slide-bg: #ffffff;
-  --slide-surface: #f9fafb;
-  --slide-text: #111827;
-  --slide-text-muted: #4b5563;
-  --slide-accent: #2a76dd;
-  --slide-border: rgba(0, 0, 0, 0.1);
+  --slide-surface: #f1f5f9;
+  --slide-text: #0f1124;
+  --slide-text-muted: #637996;
+  --slide-accent: #d81540;
+  --slide-border: rgba(15, 17, 36, 0.1);
   --slide-toolbar-bg: rgba(255, 255, 255, 0.78);
   --slide-toolbar-fg: rgba(0, 0, 0, 0.55);
   --slide-toolbar-fg-hover: rgba(0, 0, 0, 0.9);
   --slide-toolbar-border: rgba(0, 0, 0, 0.1);
-  --slide-back-link-fg: rgba(0, 0, 0, 0.5);
-  --slide-back-link-fg-hover: rgba(0, 0, 0, 0.85);
 
   /* Reveal.js variable overrides — drive Reveal directly via its public API */
   --r-background-color: var(--slide-bg);
   --r-main-font:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --r-main-font-size: 36px;
+  --r-main-font-size: 32px;
   --r-main-color: var(--slide-text);
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
@@ -40,7 +38,7 @@
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 700;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 2.4em;
+  --r-heading1-size: 2.5em;
   --r-heading2-size: 1.6em;
   --r-heading3-size: 1.3em;
   --r-heading4-size: 1em;
@@ -48,8 +46,8 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --r-link-color: var(--slide-accent);
-  --r-link-color-dark: #1d4ed8;
-  --r-link-color-hover: #60a5fa;
+  --r-link-color-dark: #b01235;
+  --r-link-color-hover: #e8456a;
   --r-selection-background-color: var(--slide-accent);
   --r-selection-color: #ffffff;
   --r-overlay-element-bg-color: 0, 0, 0;
@@ -59,19 +57,17 @@
 }
 
 .dark {
-  /* Chrome */
-  --slide-bg: #0f0f0f;
-  --slide-surface: #1f2937;
+  /* Chrome — dark mode brand palette */
+  --slide-bg: #0f1124;
+  --slide-surface: #152e45;
   --slide-text: #f3f4f6;
-  --slide-text-muted: #d1d5db;
-  --slide-accent: #42affa;
+  --slide-text-muted: #9bb0c9;
+  --slide-accent: #cd3553;
   --slide-border: rgba(255, 255, 255, 0.12);
   --slide-toolbar-bg: rgba(0, 0, 0, 0.65);
   --slide-toolbar-fg: rgba(255, 255, 255, 0.65);
   --slide-toolbar-fg-hover: rgba(255, 255, 255, 0.95);
   --slide-toolbar-border: rgba(255, 255, 255, 0.1);
-  --slide-back-link-fg: rgba(255, 255, 255, 0.55);
-  --slide-back-link-fg-hover: rgba(255, 255, 255, 0.9);
 
   /* Reveal overrides */
   --r-background-color: var(--slide-bg);
@@ -79,9 +75,9 @@
   --r-heading-color: var(--slide-text);
   --r-link-color: var(--slide-accent);
   --r-link-color-dark: var(--slide-accent);
-  --r-link-color-hover: #93c5fd;
+  --r-link-color-hover: #e8456a;
   --r-selection-background-color: var(--slide-accent);
-  --r-selection-color: #0f0f0f;
+  --r-selection-color: #ffffff;
   --r-overlay-element-bg-color: 255, 255, 255;
   --r-overlay-element-fg-color: 15, 15, 15;
   --r-controls-color: var(--slide-accent);
@@ -96,7 +92,24 @@ body.reveal-theme-dark {
 
 /* ---------- 2. Reveal text — explicit cascade so theme variables actually win ---------- */
 
-.reveal,
+.reveal {
+  font-family: var(--r-main-font);
+  font-size: var(--r-main-font-size);
+  color: var(--slide-text);
+}
+
+.reveal .slides section {
+  padding: 40px 48px;
+}
+
+.reveal p {
+  margin: 0.6em 0;
+}
+
+.reveal li {
+  margin: 0.4em 0;
+}
+
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -124,6 +137,23 @@ body.reveal-theme-dark {
   font-family: var(--r-heading-font);
   font-weight: var(--r-heading-font-weight);
   line-height: var(--r-heading-line-height);
+  text-transform: var(--r-heading-text-transform);
+  text-shadow: var(--r-heading-text-shadow);
+  letter-spacing: var(--r-heading-letter-spacing);
+  margin: var(--r-heading-margin);
+}
+
+.reveal h1 {
+  font-size: var(--r-heading1-size);
+}
+.reveal h2 {
+  font-size: var(--r-heading2-size);
+}
+.reveal h3 {
+  font-size: var(--r-heading3-size);
+}
+.reveal h4 {
+  font-size: var(--r-heading4-size);
 }
 
 .reveal a {
@@ -154,20 +184,22 @@ body.reveal-theme-dark {
 }
 
 .reveal pre {
+  position: relative;
   background: var(--slide-surface);
   border: 1px solid var(--slide-border);
   border-radius: 0.5em;
-  padding: 0.5em 1em;
+  padding: 0;
   width: 100%;
   margin: 1em auto;
   font-size: 0.6em;
   line-height: 1.4;
+  text-align: left;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .reveal pre code {
   display: block;
-  padding: 0.5em;
+  padding: 0.8em 1em;
   overflow: auto;
   max-height: 60vh;
   word-wrap: normal;
@@ -215,7 +247,27 @@ body.reveal-theme-dark {
 .reveal .slides section[data-background-gradient] li,
 .reveal .slides section[data-background-gradient] small,
 .reveal .slides section[data-background-gradient] blockquote,
-.reveal .slides section[data-background-gradient] cite {
+.reveal .slides section[data-background-gradient] cite,
+.reveal .slides section[data-background-image],
+.reveal .slides section[data-background-image] h1,
+.reveal .slides section[data-background-image] h2,
+.reveal .slides section[data-background-image] h3,
+.reveal .slides section[data-background-image] h4,
+.reveal .slides section[data-background-image] p,
+.reveal .slides section[data-background-image] li,
+.reveal .slides section[data-background-image] small,
+.reveal .slides section[data-background-image] blockquote,
+.reveal .slides section[data-background-image] cite,
+.reveal .slides section.slide-bg-overlay--dark,
+.reveal .slides section.slide-bg-overlay--dark h1,
+.reveal .slides section.slide-bg-overlay--dark h2,
+.reveal .slides section.slide-bg-overlay--dark h3,
+.reveal .slides section.slide-bg-overlay--dark h4,
+.reveal .slides section.slide-bg-overlay--dark p,
+.reveal .slides section.slide-bg-overlay--dark li,
+.reveal .slides section.slide-bg-overlay--dark small,
+.reveal .slides section.slide-bg-overlay--dark blockquote,
+.reveal .slides section.slide-bg-overlay--dark cite {
   color: #ffffff;
 }
 
@@ -233,15 +285,51 @@ body.reveal-theme-dark {
   color: #111111;
 }
 
-/* Reveal controls + progress already reference --r-controls-color / --r-progress-color */
+/* Reveal controls + progress: reveal.css hardcodes .controls{color:#000}.
+   Without a theme loaded, we must override that explicitly. */
+
+.reveal .controls {
+  color: var(--r-controls-color);
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+}
+
+.reveal .slide-number {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+}
+
+.reveal .slide-number a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.reveal .progress span {
+  background: var(--r-progress-color);
+}
 
 /* ---------- 4. Chrome — toolbar + back link ---------- */
 
 .slide-back-link {
   position: fixed;
-  top: max(12px, env(safe-area-inset-top));
+  top: max(10px, env(safe-area-inset-top));
   left: max(16px, env(safe-area-inset-left));
   z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #0f1124;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font:
     600 13px / 1 ui-sans-serif,
     system-ui,
@@ -250,27 +338,34 @@ body.reveal-theme-dark {
     Roboto,
     sans-serif;
   text-decoration: none;
-  color: var(--slide-back-link-fg);
-  transition: color 0.2s ease;
+  color: rgba(255, 255, 255, 0.65);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .slide-back-link:hover,
 .slide-back-link:focus-visible {
-  color: var(--slide-back-link-fg-hover);
+  color: rgba(255, 255, 255, 0.95);
+  background: #161836;
 }
 
 .slide-back-link:focus-visible {
   outline: 2px solid var(--slide-accent);
-  outline-offset: 4px;
-  border-radius: 4px;
+  outline-offset: 2px;
+}
+
+.slide-back-link__logo {
+  height: 18px;
+  width: auto;
+  display: block;
+  margin-left: 4px;
+  filter: brightness(1.6) contrast(0.9);
 }
 
 @media (max-width: 480px) {
-  .slide-back-link {
-    font-size: 16px;
-    /* On small viewports, show only the arrow to avoid colliding with slide titles */
-  }
-  .slide-back-link__label {
+  .slide-back-link__logo {
     display: none;
   }
 }
@@ -535,11 +630,12 @@ body.reveal-theme-dark {
 }
 
 .slide-team {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
   max-width: 90%;
   margin: 1rem auto;
+  flex-wrap: wrap;
 }
 
 .slide-team figure {
@@ -548,6 +644,8 @@ body.reveal-theme-dark {
 }
 
 .slide-team img {
+  display: block;
+  margin: 0 auto;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -574,6 +672,7 @@ body.reveal-theme-dark {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
+  margin-top: 0.8em;
   padding: 0.8em 1.6em;
   background: var(--slide-accent);
   color: #ffffff !important;
@@ -595,6 +694,21 @@ body.reveal-theme-dark {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
+.slide-video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.slide-media-contained {
+  display: block;
+  margin: 0 auto;
+  max-width: 75%;
+  max-height: 55vh;
+  border-radius: 0.75rem;
+}
+
 .slide-caption-overlay {
   position: absolute;
   left: 0;
@@ -613,12 +727,14 @@ body.reveal-theme-dark {
   top: 0;
 }
 
-/* Background overlays — drop on a section with an image/video background to guarantee text readability */
+/* Background overlays — drop on a section with an image/video background to guarantee text readability.
+   The ::after layer adds a solid black base so that data-background-opacity
+   composites over black, not the theme color — ensuring identical look in light and dark mode. */
 .reveal .slides section.slide-bg-overlay--dark::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   pointer-events: none;
   z-index: 0;
 }
@@ -665,7 +781,7 @@ body.reveal-theme-dark {
   font-size: 0.5em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--slide-accent);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1rem;
 }
 
