@@ -221,9 +221,9 @@ Helper classes (`.slide-grid-2`, `.slide-grid-3`, `.slide-card`, `.slide-quote`,
 ### Gradient presets
 
 ```
-Cool blue:    linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)
+Void-Navy:    linear-gradient(135deg, #0f1124 0%, #152e45 100%)
 Warm sunset:  linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%)
-Brand:        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)
+Brand:        linear-gradient(135deg, #0f1124 0%, #152e45 50%, #1a3a5a 100%)
 Neutral:      linear-gradient(180deg, #1f2937 0%, #111827 100%)
 Radial:       radial-gradient(circle at top, #d81540 0%, #0f1124 80%)
 ```

@@ -16,7 +16,7 @@ eventDate: 2026-04-25
 
 <!-- ==================== Portada ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
 # Slides v2 — Kitchen Sink
 
@@ -30,7 +30,7 @@ Note: La portada. Usa un patrón title-hero con un gradiente fuerte para fijar e
 
 <!-- ==================== Sección: Layouts ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 01</span>
@@ -213,7 +213,7 @@ async function fetchUser(id: string) {
 
 <!-- ==================== Sección: Fondos ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 02</span>
@@ -264,7 +264,7 @@ CSS-only con sensación de blueprint.
 
 <!-- ==================== Sección: Features de Reveal ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 03</span>
@@ -330,7 +330,7 @@ $$e^{i\pi} + 1 = 0$$
 
 <!-- ==================== Layouts de medios ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 50%, #1a3a5a 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 04</span>
@@ -459,7 +459,7 @@ Note: Las notas del presentador son visibles solo en la vista del presentador. �
 
 <!-- ==================== Cierre ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
 ## Gracias
 

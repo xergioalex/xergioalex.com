@@ -16,7 +16,7 @@ eventDate: 2026-04-25
 
 <!-- ==================== Cover ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
 # Slides v2 — Kitchen Sink
 
@@ -30,7 +30,7 @@ Note: The opening slide. Use a title-hero pattern with a strong gradient to set 
 
 <!-- ==================== Section: Layouts ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Part 01</span>
@@ -213,7 +213,7 @@ async function fetchUser(id: string) {
 
 <!-- ==================== Section: Backgrounds ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Part 02</span>
@@ -264,7 +264,7 @@ CSS-only blueprint feel.
 
 <!-- ==================== Section: Existing Reveal Features ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Part 03</span>
@@ -330,7 +330,7 @@ $$e^{i\pi} + 1 = 0$$
 
 <!-- ==================== Media Layouts ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 50%, #1a3a5a 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Part 04</span>
@@ -459,7 +459,7 @@ Note: Speaker notes are visible only in speaker view. Use them for talking point
 
 <!-- ==================== Closing ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
 ## Thank You
 
