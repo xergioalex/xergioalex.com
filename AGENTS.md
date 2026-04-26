@@ -333,15 +333,19 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **File naming:** `YYYY-MM-DD_slug.md` in `src/content/slides/{en,es}/`. **Slugs MUST be in English** on both languages.
 
-**URL surface:** `/tech-talks/<slug>` (and `/es/tech-talks/<slug>`). The collection is named `slides` (internal); the URL is `/tech-talks/` (user-facing). Do NOT create `/slides/` routes.
+**URL surface:** `/slides/<slug>` (and `/es/slides/<slug>`). Catalog at `/slides` and `/es/slides`.
 
-**Catalog:** The "Decks & Slides" section is inside `TechTalksPage.astro`, between Philosophy and the Speaking-invitation CTA. It renders only when decks exist.
+**Reveal.js config:** Virtual canvas 1280×720 (16:9), base font 32px, scaled by Reveal to fit any viewport/projector.
+
+**Chrome UI:** Back-link (top-left) uses site logo on `#0f1124` background; toolbar (top-right) with language toggle, theme toggle (sun=light, moon=dark), fullscreen. Slide number in dark pill, readable on any background.
 
 **Asset isolation:** Reveal.js CSS/JS only loads on internal deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
 
 **Images:** Stored in `public/images/slides/<slug>/`. Hero: `hero.{ext}`.
 
 **Hydration:** `RevealDeck.svelte` uses `client:only="svelte"` (documented exception to `client:visible` preference — Reveal needs DOM).
+
+**New deck workflow:** Use `/add-slide-deck` skill (mandatory). Do not create slide deck files manually.
 
 ## Documentation Standards
 
@@ -411,9 +415,9 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 
 ## Skills & Agents
 
-- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `promote-post`, `optimize-image`
+- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `add-slide-deck`, `promote-post`, `optimize-image`
 - **Agents** — Specialized workers: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`
-- **Critical policy:** New blog posts MUST use `/add-blog-post` skill
+- **Critical policy:** New blog posts MUST use `/add-blog-post` skill; new slide decks MUST use `/add-slide-deck` skill
 - **Management:** `/skill-list`, `/agent-list`, `/skill-create`, `/agent-create`
 - **Full catalog:** [Skills & Agents Catalog](.claude/docs/skills_agents_catalog.md)
 

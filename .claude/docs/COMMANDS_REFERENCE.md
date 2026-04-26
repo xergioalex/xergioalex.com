@@ -63,6 +63,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 |---------|---------------|-------------|
 | `/new-post` | `.claude/commands/new-post.md` | Create a new blog post (interactive guided flow) |
 | `/add-blog-post` | `.claude/skills/add-blog-post/SKILL.md` | Create blog posts — topic mode (writes content) or content mode (scaffolding) |
+| `/add-slide-deck` | `.claude/skills/add-slide-deck/SKILL.md` | Create slide decks — internal Reveal.js, external-embed, or external-link |
 | `/promote-post` | `.claude/skills/promote-post/SKILL.md` | Generate social media content for blog posts across multiple platforms |
 | `/optimize-image` | `.claude/skills/optimize-image/SKILL.md` | Convert and optimize images to WebP for blog posts |
 | `/audit-post` | `.claude/skills/audit-post/SKILL.md` | Pre-publication audit for blog posts (SEO, AEO, accessibility, images, content quality, i18n) |
