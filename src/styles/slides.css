@@ -173,10 +173,11 @@ body.reveal-theme-dark {
 }
 
 .reveal pre {
+  position: relative;
   background: var(--slide-surface);
   border: 1px solid var(--slide-border);
   border-radius: 0.5em;
-  padding: 0.5em 1em;
+  padding: 0;
   width: 100%;
   margin: 1em auto;
   font-size: 0.6em;
@@ -186,7 +187,7 @@ body.reveal-theme-dark {
 
 .reveal pre code {
   display: block;
-  padding: 0.5em;
+  padding: 0.8em 1em;
   overflow: auto;
   max-height: 60vh;
   word-wrap: normal;
