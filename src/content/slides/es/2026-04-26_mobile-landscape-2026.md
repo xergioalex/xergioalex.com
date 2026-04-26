@@ -2,9 +2,9 @@
 type: internal
 title: "El panorama móvil en 2026"
 description: "El mapa que armé antes de escribir código: nueve frameworks, cuatro categorías, y por qué Flutter y KMP quedaron como los dos caminos serios."
-pubDate: 2026-04-26
+pubDate: 2026-04-25
 tags: [tech, mobile, talks]
-draft: true
+draft: false
 theme: dark
 transition: slide
 syntaxHighlight: true
