@@ -15,11 +15,11 @@ eventDate: 2026-01-15
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" -->
 
-<h1 style="color:#fff">From Idea to Y Combinator</h1>
+# From Idea to Y Combinator
 
-<h3 style="color:#ccc">The DailyBot Story</h3>
+### The DailyBot Story
 
-<small style="color:#aaa">Sergio Alexander Florez · Startup Grind Pereira · 2026</small>
+<small>Sergio Alexander Florez · Startup Grind Pereira · 2026</small>
 
 ---
 

@@ -16,11 +16,11 @@ eventUrl: "https://pereiratechtalks.org/"
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" -->
 
-<h1 style="color:#fff">Construyendo productos con agentes de IA</h1>
+# Construyendo productos con agentes de IA
 
-<h3 style="color:#ccc">De desarrollador solitario a orquestador</h3>
+### De desarrollador solitario a orquestador
 
-<small style="color:#aaa">Sergio Alexander Florez · Pereira Tech Talks 2026</small>
+<small>Sergio Alexander Florez · Pereira Tech Talks 2026</small>
 
 ---
 
@@ -115,10 +115,10 @@ Son los que **piensan con más claridad** — porque los agentes amplifican la c
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" -->
 
-<h2 style="color:#fff">Gracias</h2>
+## Gracias
 
-<p style="color:#ddd"><strong>@XergioAleX</strong> · xergioalex.com</p>
+**@XergioAleX** · xergioalex.com
 
-<small style="color:#aaa">Diapositivas construidas con Reveal.js dentro de Astro</small>
+<small>Diapositivas construidas con Reveal.js dentro de Astro</small>
 
 Note: Cierre — invitar preguntas. Mencionar que estas mismas diapositivas están construidas con el enfoque slides-as-code.
