@@ -230,7 +230,7 @@ White text auto-applies via has-dark-background.
 
 ---
 
-<!-- .slide: data-background-gradient="radial-gradient(circle at top, #2a76dd 0%, #0f172a 80%)" -->
+<!-- .slide: data-background-gradient="radial-gradient(circle at top, #d81540 0%, #0f1124 80%)" -->
 
 ## Gradient
 

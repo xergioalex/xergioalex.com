@@ -9,13 +9,13 @@
 /* ---------- 1. Token system ---------- */
 
 :root {
-  /* Chrome */
+  /* Chrome — aligned with site brand palette (docs/BRAND_GUIDE.md) */
   --slide-bg: #ffffff;
-  --slide-surface: #f9fafb;
-  --slide-text: #111827;
-  --slide-text-muted: #4b5563;
-  --slide-accent: #2a76dd;
-  --slide-border: rgba(0, 0, 0, 0.1);
+  --slide-surface: #f1f5f9;
+  --slide-text: #0f1124;
+  --slide-text-muted: #637996;
+  --slide-accent: #d81540;
+  --slide-border: rgba(15, 17, 36, 0.1);
   --slide-toolbar-bg: rgba(255, 255, 255, 0.78);
   --slide-toolbar-fg: rgba(0, 0, 0, 0.55);
   --slide-toolbar-fg-hover: rgba(0, 0, 0, 0.9);
@@ -46,8 +46,8 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --r-link-color: var(--slide-accent);
-  --r-link-color-dark: #1d4ed8;
-  --r-link-color-hover: #60a5fa;
+  --r-link-color-dark: #b01235;
+  --r-link-color-hover: #e8456a;
   --r-selection-background-color: var(--slide-accent);
   --r-selection-color: #ffffff;
   --r-overlay-element-bg-color: 0, 0, 0;
@@ -57,12 +57,12 @@
 }
 
 .dark {
-  /* Chrome */
-  --slide-bg: #0f0f0f;
-  --slide-surface: #1f2937;
+  /* Chrome — dark mode brand palette */
+  --slide-bg: #0f1124;
+  --slide-surface: #152e45;
   --slide-text: #f3f4f6;
-  --slide-text-muted: #d1d5db;
-  --slide-accent: #42affa;
+  --slide-text-muted: #9bb0c9;
+  --slide-accent: #cd3553;
   --slide-border: rgba(255, 255, 255, 0.12);
   --slide-toolbar-bg: rgba(0, 0, 0, 0.65);
   --slide-toolbar-fg: rgba(255, 255, 255, 0.65);
@@ -75,9 +75,9 @@
   --r-heading-color: var(--slide-text);
   --r-link-color: var(--slide-accent);
   --r-link-color-dark: var(--slide-accent);
-  --r-link-color-hover: #93c5fd;
+  --r-link-color-hover: #e8456a;
   --r-selection-background-color: var(--slide-accent);
-  --r-selection-color: #0f0f0f;
+  --r-selection-color: #ffffff;
   --r-overlay-element-bg-color: 255, 255, 255;
   --r-overlay-element-fg-color: 15, 15, 15;
   --r-controls-color: var(--slide-accent);
@@ -775,7 +775,7 @@ body.reveal-theme-dark {
   font-size: 0.5em;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--slide-accent);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1rem;
 }
 

@@ -225,7 +225,7 @@ Cool blue:    linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)
 Warm sunset:  linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%)
 Brand:        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)
 Neutral:      linear-gradient(180deg, #1f2937 0%, #111827 100%)
-Radial:       radial-gradient(circle at top, #2a76dd 0%, #0f172a 80%)
+Radial:       radial-gradient(circle at top, #d81540 0%, #0f1124 80%)
 ```
 
 ## Responsive Authoring
