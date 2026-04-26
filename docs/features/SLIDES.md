@@ -175,7 +175,7 @@ For text over arbitrary images/videos, drop the helper overlay class:
 
 ## Layouts Catalog
 
-15 reusable layout primitives ship as Markdown snippets in `src/content/slides/_layouts/`. Each snippet is a copy-paste reference with a header describing when to use it. The `_layouts/` directory is excluded from the `slides` content collection glob, so snippets never appear as deck pages.
+19 reusable layout primitives ship as Markdown snippets in `src/content/slides/_layouts/`. Each snippet is a copy-paste reference with a header describing when to use it. The `_layouts/` directory is excluded from the `slides` content collection glob, so snippets never appear as deck pages.
 
 The kitchen-sink reference deck is `/slides/demo-revealjs-features` (and `/es/slides/demo-revealjs-features`).
 
@@ -196,19 +196,25 @@ The kitchen-sink reference deck is `/slides/demo-revealjs-features` (and `/es/sl
 | `timeline` | 4-8 dated events forming a story arc | [`timeline.md`](../../src/content/slides/_layouts/timeline.md) |
 | `team-avatars` | Introduce your team or co-presenters | [`team-avatars.md`](../../src/content/slides/_layouts/team-avatars.md) |
 | `closing-cta` | Final slide with CTA + contact channels | [`closing-cta.md`](../../src/content/slides/_layouts/closing-cta.md) |
+| `video-centered` | Single video centered with title and optional caption | [`video-centered.md`](../../src/content/slides/_layouts/video-centered.md) |
+| `video-left` | Video on left, text on right (mirrors image-left) | [`video-left.md`](../../src/content/slides/_layouts/video-left.md) |
+| `video-right` | Text on left, video on right (mirrors image-right) | [`video-right.md`](../../src/content/slides/_layouts/video-right.md) |
+| `image-centered` | Single image centered with title and optional caption | [`image-centered.md`](../../src/content/slides/_layouts/image-centered.md) |
 
-Helper classes (`.slide-grid-2`, `.slide-grid-3`, `.slide-card`, `.slide-quote`, `.slide-stat`, `.slide-table`, `.slide-steps`, `.slide-timeline`, `.slide-team`, `.slide-cta`, `.slide-section-divider`, `.slide-image-full`, `.slide-caption-overlay`) are defined in `src/styles/slides.css`. All scale responsively (stack vertically below 768px) and use the token system.
+Helper classes (`.slide-grid-2`, `.slide-grid-3`, `.slide-card`, `.slide-quote`, `.slide-stat`, `.slide-table`, `.slide-steps`, `.slide-timeline`, `.slide-team`, `.slide-cta`, `.slide-section-divider`, `.slide-image-full`, `.slide-video`, `.slide-caption-overlay`) are defined in `src/styles/slides.css`. All scale responsively (stack vertically below 768px) and use the token system.
 
 ## Backgrounds Catalog
 
-6 background modes documented in `src/content/slides/_layouts/backgrounds/`. Each snippet documents its dark/light text contract.
+8 background modes documented in `src/content/slides/_layouts/backgrounds/`. Each snippet documents its dark/light text contract.
 
 | Mode | Snippet | Text contract |
 |---|---|---|
 | Solid color | [`solid-color.md`](../../src/content/slides/_layouts/backgrounds/solid-color.md) | Reveal auto-applies `has-dark-background` by luminance |
 | Gradient | [`gradient.md`](../../src/content/slides/_layouts/backgrounds/gradient.md) | Forced white via `[data-background-gradient]` cascade |
-| Image | [`image.md`](../../src/content/slides/_layouts/backgrounds/image.md) | Add `slide-bg-overlay--dark` for guaranteed contrast |
-| Video | [`video.md`](../../src/content/slides/_layouts/backgrounds/video.md) | Must be muted to autoplay (iOS); same overlay rule |
+| Image + text | [`image.md`](../../src/content/slides/_layouts/backgrounds/image.md) | Add `slide-bg-overlay--dark` for guaranteed contrast |
+| Image fullscreen | [`image-fullscreen.md`](../../src/content/slides/_layouts/backgrounds/image-fullscreen.md) | No text — pure visual impact slide |
+| Video + text | [`video.md`](../../src/content/slides/_layouts/backgrounds/video.md) | Must be muted to autoplay (iOS); same overlay rule |
+| Video fullscreen | [`video-fullscreen.md`](../../src/content/slides/_layouts/backgrounds/video-fullscreen.md) | No text — cinematic mood slide; muted + looped |
 | Pattern (CSS) | [`pattern.md`](../../src/content/slides/_layouts/backgrounds/pattern.md) | `slide-bg-pattern--dots` / `slide-bg-pattern--grid` helpers |
 | Iframe | [`iframe.md`](../../src/content/slides/_layouts/backgrounds/iframe.md) | Heavy; X-Frame-Options blocks some sites |
 
