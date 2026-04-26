@@ -141,7 +141,6 @@ The slide system v2 (April 2026) replaces ad-hoc inline styles with a token laye
 --slide-bg / --slide-surface / --slide-text / --slide-text-muted
 --slide-accent / --slide-border
 --slide-toolbar-bg / --slide-toolbar-fg / --slide-toolbar-fg-hover / --slide-toolbar-border
---slide-back-link-fg / --slide-back-link-fg-hover
 ```
 
 **Reveal.js (full set documented at https://revealjs.com/themes/):**
@@ -171,12 +170,12 @@ Slides with explicit dark backgrounds always render white text:
 
 For text over arbitrary images/videos, drop the helper overlay class:
 
-- `class="slide-bg-overlay--dark"` — 55% black scrim
+- `class="slide-bg-overlay--dark"` — 60% black scrim (image backgrounds composite over forced-black base for theme-independent rendering)
 - `class="slide-bg-overlay--light"` — 65% white scrim
 
 ## Layouts Catalog
 
-15 reusable layout primitives ship as Markdown snippets in `src/content/slides/_layouts/`. Each snippet is a copy-paste reference with a header describing when to use it. The `_layouts/` directory is excluded from the `slides` content collection glob, so snippets never appear as deck pages.
+19 reusable layout primitives ship as Markdown snippets in `src/content/slides/_layouts/`. Each snippet is a copy-paste reference with a header describing when to use it. The `_layouts/` directory is excluded from the `slides` content collection glob, so snippets never appear as deck pages.
 
 The kitchen-sink reference deck is `/slides/demo-revealjs-features` (and `/es/slides/demo-revealjs-features`).
 
@@ -197,30 +196,36 @@ The kitchen-sink reference deck is `/slides/demo-revealjs-features` (and `/es/sl
 | `timeline` | 4-8 dated events forming a story arc | [`timeline.md`](../../src/content/slides/_layouts/timeline.md) |
 | `team-avatars` | Introduce your team or co-presenters | [`team-avatars.md`](../../src/content/slides/_layouts/team-avatars.md) |
 | `closing-cta` | Final slide with CTA + contact channels | [`closing-cta.md`](../../src/content/slides/_layouts/closing-cta.md) |
+| `video-centered` | Single video centered with title and optional caption | [`video-centered.md`](../../src/content/slides/_layouts/video-centered.md) |
+| `video-left` | Video on left, text on right (mirrors image-left) | [`video-left.md`](../../src/content/slides/_layouts/video-left.md) |
+| `video-right` | Text on left, video on right (mirrors image-right) | [`video-right.md`](../../src/content/slides/_layouts/video-right.md) |
+| `image-centered` | Single image centered with title and optional caption | [`image-centered.md`](../../src/content/slides/_layouts/image-centered.md) |
 
-Helper classes (`.slide-grid-2`, `.slide-grid-3`, `.slide-card`, `.slide-quote`, `.slide-stat`, `.slide-table`, `.slide-steps`, `.slide-timeline`, `.slide-team`, `.slide-cta`, `.slide-section-divider`, `.slide-image-full`, `.slide-caption-overlay`) are defined in `src/styles/slides.css`. All scale responsively (stack vertically below 768px) and use the token system.
+Helper classes (`.slide-grid-2`, `.slide-grid-3`, `.slide-card`, `.slide-quote`, `.slide-stat`, `.slide-table`, `.slide-steps`, `.slide-timeline`, `.slide-team`, `.slide-cta`, `.slide-section-divider`, `.slide-image-full`, `.slide-video`, `.slide-caption-overlay`) are defined in `src/styles/slides.css`. All scale responsively (stack vertically below 768px) and use the token system.
 
 ## Backgrounds Catalog
 
-6 background modes documented in `src/content/slides/_layouts/backgrounds/`. Each snippet documents its dark/light text contract.
+8 background modes documented in `src/content/slides/_layouts/backgrounds/`. Each snippet documents its dark/light text contract.
 
 | Mode | Snippet | Text contract |
 |---|---|---|
 | Solid color | [`solid-color.md`](../../src/content/slides/_layouts/backgrounds/solid-color.md) | Reveal auto-applies `has-dark-background` by luminance |
 | Gradient | [`gradient.md`](../../src/content/slides/_layouts/backgrounds/gradient.md) | Forced white via `[data-background-gradient]` cascade |
-| Image | [`image.md`](../../src/content/slides/_layouts/backgrounds/image.md) | Add `slide-bg-overlay--dark` for guaranteed contrast |
-| Video | [`video.md`](../../src/content/slides/_layouts/backgrounds/video.md) | Must be muted to autoplay (iOS); same overlay rule |
+| Image + text | [`image.md`](../../src/content/slides/_layouts/backgrounds/image.md) | Add `slide-bg-overlay--dark` for guaranteed contrast |
+| Image fullscreen | [`image-fullscreen.md`](../../src/content/slides/_layouts/backgrounds/image-fullscreen.md) | No text — pure visual impact slide |
+| Video + text | [`video.md`](../../src/content/slides/_layouts/backgrounds/video.md) | Must be muted to autoplay (iOS); same overlay rule |
+| Video fullscreen | [`video-fullscreen.md`](../../src/content/slides/_layouts/backgrounds/video-fullscreen.md) | No text — cinematic mood slide; muted + looped |
 | Pattern (CSS) | [`pattern.md`](../../src/content/slides/_layouts/backgrounds/pattern.md) | `slide-bg-pattern--dots` / `slide-bg-pattern--grid` helpers |
 | Iframe | [`iframe.md`](../../src/content/slides/_layouts/backgrounds/iframe.md) | Heavy; X-Frame-Options blocks some sites |
 
 ### Gradient presets
 
 ```
-Cool blue:    linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)
+Void-Navy:    linear-gradient(135deg, #0f1124 0%, #152e45 100%)
 Warm sunset:  linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%)
-Brand:        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)
+Brand:        linear-gradient(135deg, #0f1124 0%, #152e45 50%, #1a3a5a 100%)
 Neutral:      linear-gradient(180deg, #1f2937 0%, #111827 100%)
-Radial:       radial-gradient(circle at top, #2a76dd 0%, #0f172a 80%)
+Radial:       radial-gradient(circle at top, #d81540 0%, #0f1124 80%)
 ```
 
 ## Responsive Authoring
@@ -288,15 +293,69 @@ To improve a deck's AEO surface:
 
 Internal decks sync with the site's dark/light mode toggle:
 
-- `SlideLayout.astro` loads both Reveal themes (black + white)
+- `SlideLayout.astro` loads `reveal.js/reveal.css` (base only) + custom `slides.css` (no official theme files)
 - `RevealDeck.svelte` observes `<html class="dark">` changes via MutationObserver
 - Theme switches instantly without page reload
+
+## Reveal.js Configuration
+
+RevealDeck.svelte initializes Reveal with these settings:
+
+| Setting | Value | Rationale |
+|---------|-------|-----------|
+| `width` | 1280 | 16:9 widescreen, matches modern projectors |
+| `height` | 720 | Standard 720p virtual canvas |
+| `hash` | true | URL updates with slide number for sharing |
+| `slideNumber` | `'c/t'` | Shows "current / total" counter |
+| `controls` | true | Navigation arrows visible |
+| `progress` | true | Bottom progress bar |
+| `transition` | per-deck | Configurable via frontmatter |
+
+### Font Sizing
+
+- **Base font:** `--r-main-font-size: 32px` in the 1280×720 virtual canvas
+- **h1:** 2.5em (80px effective) — titles, hero slides
+- **h2:** 1.6em (51px effective) — section headings
+- **h3:** 1.3em (42px effective) — sub-headings
+- **h4:** 1em (32px effective) — detail headings
+
+Reveal.js scales the entire canvas to fit the viewport. On a 1080p projector, scale ≈ 1.5×; on a 4K monitor, scale ≈ 3×. Content looks identical on every display.
+
+### Post-Init Hooks
+
+After `deck.initialize()`, RevealDeck runs:
+- **Image background fix:** Sets `background-color: #000` on `.slide-background` elements for slides with `data-background-image`, ensuring the semi-transparent image composites over black regardless of theme. This makes light/dark mode look identical on image slides.
+
+## Chrome UI
+
+The slide chrome (back-link and toolbar) floats above the deck and auto-hides in fullscreen.
+
+### Back Link (top-left)
+
+- Displays the site logo SVG (`/images/logo_small_version_white.svg`) with a `←` arrow
+- **Always uses dark background** (`#0f1124`, the site's `bg-main` color) regardless of theme
+- Inline `style="height:18px;width:auto;"` prevents FOUC before CSS loads
+- Hidden on mobile (< 480px) — only the arrow shows
+- Links to the slides catalog (`{prefix}/slides`)
+
+### Toolbar (top-right)
+
+- **Language toggle:** EN/ES switch linking to the alternate-language deck
+- **Theme toggle:** Sun/moon icons show current state (sun = light mode, moon = dark mode)
+- **Fullscreen:** Enter/exit fullscreen; hides both toolbar and back-link when active
+- **Draft badge:** Purple badge appears when `draft: true`
+
+### Slide Number (bottom-right)
+
+- Dark translucent pill (`rgba(0,0,0,0.45)`) with white text
+- Readable on any background (light slides, dark slides, images, gradients)
+- Navigation arrows have `drop-shadow` for contrast on all backgrounds
 
 ## Performance
 
 - **Asset isolation**: Reveal.js CSS and JS only load on internal deck pages. No Reveal bytes on home, blog, `/tech-talks` index, or any other route.
 - **Build-time rendering**: Deck Markdown is embedded in static HTML. Reveal parses it on hydration.
-- **Anti-FOUC**: Deck container starts `opacity-0`, fades in after `Reveal:ready` event.
+- **Anti-FOUC**: Logo back-link uses inline `style="height:18px;width:auto;"` to prevent flash at native SVG size.
 - **Lazy plugin loading**: Highlight and Math plugins loaded only when enabled in frontmatter.
 - **`client:only="svelte"`**: RevealDeck uses `client:only` since Reveal needs DOM access.
 
@@ -304,8 +363,8 @@ Internal decks sync with the site's dark/light mode toggle:
 
 Every deck has a Markdown twin endpoint:
 
-- `/tech-talks/<slug>.md` (EN)
-- `/es/tech-talks/<slug>.md` (ES)
+- `/slides/<slug>.md` (EN)
+- `/es/slides/<slug>.md` (ES)
 
 Behavior per type:
 - **Internal**: serves the raw Markdown body (human and agent readable)

@@ -1,6 +1,6 @@
 ---
-title: "El panorama mobile en 2026: el mapa que armé antes de escribir código"
-description: "El mapa del desarrollo mobile que construí antes de tocar código: qué hay disponible, cómo funciona cada opción y por qué terminé con dos caminos serios."
+title: "Desarrollo mobile en 2026: estado del arte y por dónde empezar hoy"
+description: "Estado del arte del desarrollo mobile en 2026: las opciones disponibles, cómo funciona cada una y por dónde tiene sentido empezar hoy."
 draft: true
 pubDate: "2026-04-26"
 heroLayout: "none"
@@ -10,11 +10,11 @@ series: "learning-mobile-development"
 seriesOrder: 1
 ---
 
-Siempre me he considerado un desarrollador full stack. Backend, frontend, infraestructura, DevOps — si hay una tecnología nueva que me llama la atención, la aprendo. Así funciono. Pero con el desarrollo mobile la historia siempre ha sido distinta. Lo miro de lejos — lo veo, lo admiro, ocasionalmente lo envidio — pero siempre termino del otro lado: construyendo APIs, levantando frontends, configurando infraestructura, diseñando sistemas que viven en servidores. El móvil siempre fue "eso que hacen otros".
+Como desarrollador full stack, siempre he procurado aprender un poco de todo: backend, frontend, infraestructura, DevOps. Si hay una tecnología nueva que me llama la atención, la exploro. Así funciono. Pero con el desarrollo mobile la historia ha sido distinta. Lo miro de lejos — lo veo, lo admiro, a veces lo envidio — pero siempre termino del otro lado, construyendo APIs, interfaces e infraestructura — sistemas que viven en servidores. El móvil siempre fue ese "algún día" que nunca llegaba.
 
 No porque no lo haya intentado.
 
-Recuerdo mis primeros años de universidad — estamos hablando de hace más de quince años — cuando necesité desarrollar una app móvil para una materia. En esa época Android Studio no existía todavía; el IDE oficial era Eclipse con el plugin ADT, y era demasiado pesado para mi humilde laptop de ese entonces. No arrancaba, o arrancaba y se comía toda la memoria, o se quedaba compilando en un loop que parecía eterno.
+Recuerdo mis primeros años de universidad — estamos hablando de hace alrededor de quince años — cuando necesité desarrollar una app móvil para una materia. En esa época Android Studio no existía todavía; el IDE oficial era Eclipse con el plugin ADT, y era demasiado pesado para mi humilde laptop de ese entonces. No arrancaba, o arrancaba y se comía toda la memoria, o se quedaba compilando en un loop que parecía eterno.
 
 Buscando capturas de pantalla de esa época encontré estas joyas — Eclipse Helios cargando con el plugin ADT, el editor visual de layouts y el emulador con su teclado físico virtual. Los flashbacks son inmediatos:
 
@@ -55,7 +55,7 @@ Este año decidí que ya era suficiente. No porque tenga un proyecto urgente que
 
 Antes de escribir una sola línea de código, me senté a entender el panorama. Porque uno de los errores más comunes de quien llega desde backend o web es asumir que el desarrollo mobile es simplemente "programación normal pero en un teléfono". No lo es. Los modelos de estado son distintos. El ciclo de vida de las pantallas funciona diferente. La forma en que piensas la UI — quién la controla, cuándo se destruye, cómo persiste — tiene lógica propia. Antes de elegir una herramienta, quería entender en qué me estaba metiendo.
 
-Este post es ese mapa que armé para mí mismo.
+Este post es ese estado del arte que me senté a entender.
 
 ## El problema real no es elegir el framework
 
@@ -67,7 +67,7 @@ En una solicitud web, el estado vive en el servidor. Haces una petición, el ser
 
 No es que el backend no tenga complejidad — la tiene. Es que la complejidad es diferente, y el instinto de "pequeño servidor" que te formaste durante años no te sirve directamente acá.[^hook-f]
 
-Eso dicho: el framework sí importa. Y hay demasiados para elegir sin hacer un mapa primero.
+Eso dicho: el framework sí importa. Y hay demasiados para elegir sin entender primero el terreno.
 
 ## Cuatro categorías antes de la lista
 
@@ -221,7 +221,7 @@ Para alguien que está aprendiendo, Flutter es probablemente el comienzo más r�
 
 Esta serie va a ir profundo en KMP primero. Ahí aterrizó mi curiosidad. Pero este capítulo no es el veredicto.
 
-Lo que sí sé: no estoy aquí solo para entender el panorama. Quiero construir algo que corra en mi teléfono.[^hook-e] Un mapa no es el territorio. Y el territorio es lo que vine a conocer.
+Lo que sí sé: no estoy aquí solo para entender el panorama. Quiero construir algo que corra en mi teléfono.[^hook-e] La documentación no es el código. Y el código es lo que vine a escribir.
 
 A seguir construyendo.
 
@@ -273,7 +273,7 @@ A seguir construyendo.
 
 [^pwa-limits]: El soporte de iOS/Safari para APIs web avanzadas — background sync, Bluetooth, procesamiento en segundo plano — sigue siendo más limitado que en Android. Fuente: [Wikipedia — Progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app)
 
-[^hook-c]: Esta tabla es el mapa desde la documentación y los changelogs. No desde el uso real. Espero que se vea diferente después de meses con las dos opciones que me interesan.
+[^hook-c]: Esta tabla es la lectura desde la documentación y los changelogs. No desde el uso real. Espero que se vea diferente después de meses con las dos opciones que me interesan.
 
 [^hook-d]: La pregunta de cuánto código puedes realmente compartir — y cuándo tiene sentido hacerlo — no tiene respuesta limpia desde la documentación. Es una pregunta práctica, y el siguiente capítulo va a intentar empezar a responderla.
 
