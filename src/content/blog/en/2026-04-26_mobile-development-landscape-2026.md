@@ -14,7 +14,7 @@ As a full stack developer, I've always tried to learn a bit of everything: backe
 
 Not because I hadn't tried.
 
-I remember my early university years — we're talking over fifteen years ago — when I needed to build a mobile app for a course. Android Studio didn't exist yet; the official IDE was Eclipse with the ADT plugin, and it was too heavy for my humble laptop at the time. It wouldn't start, or it would start and eat all the memory, or it would get stuck compiling in a loop that felt eternal.
+I remember my early university years — we're talking around fifteen years ago — when I needed to build a mobile app for a course. Android Studio didn't exist yet; the official IDE was Eclipse with the ADT plugin, and it was too heavy for my humble laptop at the time. It wouldn't start, or it would start and eat all the memory, or it would get stuck compiling in a loop that felt eternal.
 
 Looking up screenshots from that era I found these gems — Eclipse Helios loading with the ADT plugin, the visual layout editor, and the emulator with its virtual physical keyboard. The flashbacks are immediate:
 
