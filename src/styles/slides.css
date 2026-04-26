@@ -26,7 +26,7 @@
   --r-main-font:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --r-main-font-size: 36px;
+  --r-main-font-size: 32px;
   --r-main-color: var(--slide-text);
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
@@ -38,7 +38,7 @@
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 700;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 2.4em;
+  --r-heading1-size: 2.5em;
   --r-heading2-size: 1.6em;
   --r-heading3-size: 1.3em;
   --r-heading4-size: 1em;
@@ -90,9 +90,19 @@ body.reveal-theme-dark {
   background: var(--slide-bg);
 }
 
+
 /* ---------- 2. Reveal text — explicit cascade so theme variables actually win ---------- */
 
-.reveal,
+.reveal {
+  font-family: var(--r-main-font);
+  font-size: var(--r-main-font-size);
+  color: var(--slide-text);
+}
+
+.reveal .slides section {
+  padding: 40px 48px;
+}
+
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -120,7 +130,16 @@ body.reveal-theme-dark {
   font-family: var(--r-heading-font);
   font-weight: var(--r-heading-font-weight);
   line-height: var(--r-heading-line-height);
+  text-transform: var(--r-heading-text-transform);
+  text-shadow: var(--r-heading-text-shadow);
+  letter-spacing: var(--r-heading-letter-spacing);
+  margin: var(--r-heading-margin);
 }
+
+.reveal h1 { font-size: var(--r-heading1-size); }
+.reveal h2 { font-size: var(--r-heading2-size); }
+.reveal h3 { font-size: var(--r-heading3-size); }
+.reveal h4 { font-size: var(--r-heading4-size); }
 
 .reveal a {
   color: var(--slide-accent);
@@ -211,7 +230,27 @@ body.reveal-theme-dark {
 .reveal .slides section[data-background-gradient] li,
 .reveal .slides section[data-background-gradient] small,
 .reveal .slides section[data-background-gradient] blockquote,
-.reveal .slides section[data-background-gradient] cite {
+.reveal .slides section[data-background-gradient] cite,
+.reveal .slides section[data-background-image],
+.reveal .slides section[data-background-image] h1,
+.reveal .slides section[data-background-image] h2,
+.reveal .slides section[data-background-image] h3,
+.reveal .slides section[data-background-image] h4,
+.reveal .slides section[data-background-image] p,
+.reveal .slides section[data-background-image] li,
+.reveal .slides section[data-background-image] small,
+.reveal .slides section[data-background-image] blockquote,
+.reveal .slides section[data-background-image] cite,
+.reveal .slides section.slide-bg-overlay--dark,
+.reveal .slides section.slide-bg-overlay--dark h1,
+.reveal .slides section.slide-bg-overlay--dark h2,
+.reveal .slides section.slide-bg-overlay--dark h3,
+.reveal .slides section.slide-bg-overlay--dark h4,
+.reveal .slides section.slide-bg-overlay--dark p,
+.reveal .slides section.slide-bg-overlay--dark li,
+.reveal .slides section.slide-bg-overlay--dark small,
+.reveal .slides section.slide-bg-overlay--dark blockquote,
+.reveal .slides section.slide-bg-overlay--dark cite {
   color: #ffffff;
 }
 
@@ -652,15 +691,18 @@ body.reveal-theme-dark {
   top: 0;
 }
 
-/* Background overlays — drop on a section with an image/video background to guarantee text readability */
+/* Background overlays — drop on a section with an image/video background to guarantee text readability.
+   The ::after layer adds a solid black base so that data-background-opacity
+   composites over black, not the theme color — ensuring identical look in light and dark mode. */
 .reveal .slides section.slide-bg-overlay--dark::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   pointer-events: none;
   z-index: 0;
 }
+
 
 .reveal .slides section.slide-bg-overlay--light::before {
   content: "";
