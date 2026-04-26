@@ -90,7 +90,6 @@ body.reveal-theme-dark {
   background: var(--slide-bg);
 }
 
-
 /* ---------- 2. Reveal text — explicit cascade so theme variables actually win ---------- */
 
 .reveal {
@@ -144,10 +143,18 @@ body.reveal-theme-dark {
   margin: var(--r-heading-margin);
 }
 
-.reveal h1 { font-size: var(--r-heading1-size); }
-.reveal h2 { font-size: var(--r-heading2-size); }
-.reveal h3 { font-size: var(--r-heading3-size); }
-.reveal h4 { font-size: var(--r-heading4-size); }
+.reveal h1 {
+  font-size: var(--r-heading1-size);
+}
+.reveal h2 {
+  font-size: var(--r-heading2-size);
+}
+.reveal h3 {
+  font-size: var(--r-heading3-size);
+}
+.reveal h4 {
+  font-size: var(--r-heading4-size);
+}
 
 .reveal a {
   color: var(--slide-accent);
@@ -731,7 +738,6 @@ body.reveal-theme-dark {
   pointer-events: none;
   z-index: 0;
 }
-
 
 .reveal .slides section.slide-bg-overlay--light::before {
   content: "";

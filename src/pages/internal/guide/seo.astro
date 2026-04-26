@@ -2,57 +2,198 @@
 import InternalLayout from '@/layouts/InternalLayout.astro';
 
 const metaTags = [
-  { tag: 'title', source: 'BaseHead.astro', description: 'Page title with site name suffix. Format: "Page Title | XergioAleX"' },
-  { tag: 'meta description', source: 'BaseHead.astro', description: 'From page translations or blog frontmatter. Target: 130-160 characters.' },
-  { tag: 'og:title', source: 'BaseHead.astro', description: 'Open Graph title for social sharing (Facebook, LinkedIn)' },
-  { tag: 'og:description', source: 'BaseHead.astro', description: 'Open Graph description for social previews' },
-  { tag: 'og:image', source: 'BaseHead.astro', description: 'Social sharing image. Blog posts use heroImage; pages use default OG image.' },
-  { tag: 'og:type', source: 'BaseHead.astro', description: '"article" for blog posts, "website" for other pages' },
-  { tag: 'twitter:card', source: 'BaseHead.astro', description: 'summary_large_image for posts with hero, summary otherwise' },
-  { tag: 'twitter:title', source: 'BaseHead.astro', description: 'Twitter/X card title' },
-  { tag: 'twitter:description', source: 'BaseHead.astro', description: 'Twitter/X card description' },
+  {
+    tag: 'title',
+    source: 'BaseHead.astro',
+    description:
+      'Page title with site name suffix. Format: "Page Title | XergioAleX"',
+  },
+  {
+    tag: 'meta description',
+    source: 'BaseHead.astro',
+    description:
+      'From page translations or blog frontmatter. Target: 130-160 characters.',
+  },
+  {
+    tag: 'og:title',
+    source: 'BaseHead.astro',
+    description: 'Open Graph title for social sharing (Facebook, LinkedIn)',
+  },
+  {
+    tag: 'og:description',
+    source: 'BaseHead.astro',
+    description: 'Open Graph description for social previews',
+  },
+  {
+    tag: 'og:image',
+    source: 'BaseHead.astro',
+    description:
+      'Social sharing image. Blog posts use heroImage; pages use default OG image.',
+  },
+  {
+    tag: 'og:type',
+    source: 'BaseHead.astro',
+    description: '"article" for blog posts, "website" for other pages',
+  },
+  {
+    tag: 'twitter:card',
+    source: 'BaseHead.astro',
+    description: 'summary_large_image for posts with hero, summary otherwise',
+  },
+  {
+    tag: 'twitter:title',
+    source: 'BaseHead.astro',
+    description: 'Twitter/X card title',
+  },
+  {
+    tag: 'twitter:description',
+    source: 'BaseHead.astro',
+    description: 'Twitter/X card description',
+  },
 ];
 
 const jsonLdTypes = [
-  { type: 'Article', usedOn: 'Blog post pages', description: 'Structured data for individual blog posts with author, datePublished, dateModified, image', schema: 'schema.org/Article' },
-  { type: 'PresentationDigitalDocument', usedOn: 'Slide deck pages', description: 'Structured data for presentation decks with event, date, description', schema: 'schema.org/PresentationDigitalDocument' },
-  { type: 'BreadcrumbList', usedOn: 'All pages with breadcrumbs', description: 'Navigation breadcrumb trail for search engines', schema: 'schema.org/BreadcrumbList' },
-  { type: 'WebSite', usedOn: 'Homepage', description: 'Site-level structured data with name, URL, search action', schema: 'schema.org/WebSite' },
+  {
+    type: 'Article',
+    usedOn: 'Blog post pages',
+    description:
+      'Structured data for individual blog posts with author, datePublished, dateModified, image',
+    schema: 'schema.org/Article',
+  },
+  {
+    type: 'PresentationDigitalDocument',
+    usedOn: 'Slide deck pages',
+    description:
+      'Structured data for presentation decks with event, date, description',
+    schema: 'schema.org/PresentationDigitalDocument',
+  },
+  {
+    type: 'BreadcrumbList',
+    usedOn: 'All pages with breadcrumbs',
+    description: 'Navigation breadcrumb trail for search engines',
+    schema: 'schema.org/BreadcrumbList',
+  },
+  {
+    type: 'WebSite',
+    usedOn: 'Homepage',
+    description: 'Site-level structured data with name, URL, search action',
+    schema: 'schema.org/WebSite',
+  },
 ];
 
 const markdownTwins = [
-  { htmlPath: '/about', mdPath: '/about.md', contentPath: 'src/content/pages/{en,es}/about.md' },
-  { htmlPath: '/blog', mdPath: '/blog.md', contentPath: 'src/content/pages/{en,es}/blog.md' },
-  { htmlPath: '/blog/{slug}', mdPath: '/blog/{slug}.md', contentPath: 'Auto-generated from blog content' },
-  { htmlPath: '/tech-talks', mdPath: '/tech-talks.md', contentPath: 'src/content/pages/{en,es}/tech-talks.md' },
-  { htmlPath: '/tech-talks/{slug}', mdPath: '/tech-talks/{slug}.md', contentPath: 'Auto-generated from slide content' },
-  { htmlPath: '/projects', mdPath: '/projects.md', contentPath: 'src/content/pages/{en,es}/projects.md' },
+  {
+    htmlPath: '/about',
+    mdPath: '/about.md',
+    contentPath: 'src/content/pages/{en,es}/about.md',
+  },
+  {
+    htmlPath: '/blog',
+    mdPath: '/blog.md',
+    contentPath: 'src/content/pages/{en,es}/blog.md',
+  },
+  {
+    htmlPath: '/blog/{slug}',
+    mdPath: '/blog/{slug}.md',
+    contentPath: 'Auto-generated from blog content',
+  },
+  {
+    htmlPath: '/tech-talks',
+    mdPath: '/tech-talks.md',
+    contentPath: 'src/content/pages/{en,es}/tech-talks.md',
+  },
+  {
+    htmlPath: '/tech-talks/{slug}',
+    mdPath: '/tech-talks/{slug}.md',
+    contentPath: 'Auto-generated from slide content',
+  },
+  {
+    htmlPath: '/projects',
+    mdPath: '/projects.md',
+    contentPath: 'src/content/pages/{en,es}/projects.md',
+  },
 ];
 
 const sitemapRules = [
-  { rule: 'Auto-generated', description: 'Astro sitemap integration builds sitemap.xml at build time from all pages' },
-  { rule: 'Internal pages excluded', description: 'Pages under /internal/ are filtered out via sitemap configuration' },
-  { rule: 'Demo posts excluded', description: 'Posts in _demo/ folders are not included in the sitemap' },
-  { rule: 'Draft posts excluded', description: 'Posts with draft: true are excluded from the sitemap' },
-  { rule: 'Both languages included', description: 'EN and ES versions of every page appear in the sitemap with hreflang' },
+  {
+    rule: 'Auto-generated',
+    description:
+      'Astro sitemap integration builds sitemap.xml at build time from all pages',
+  },
+  {
+    rule: 'Internal pages excluded',
+    description:
+      'Pages under /internal/ are filtered out via sitemap configuration',
+  },
+  {
+    rule: 'Demo posts excluded',
+    description: 'Posts in _demo/ folders are not included in the sitemap',
+  },
+  {
+    rule: 'Draft posts excluded',
+    description: 'Posts with draft: true are excluded from the sitemap',
+  },
+  {
+    rule: 'Both languages included',
+    description:
+      'EN and ES versions of every page appear in the sitemap with hreflang',
+  },
 ];
 
 const canonicalRules = [
-  { feature: 'Canonical URL', description: 'Every page sets <link rel="canonical"> pointing to itself. Prevents duplicate content issues.' },
-  { feature: 'hreflang (EN)', description: '<link rel="alternate" hreflang="en" href="..."> points to the English version' },
-  { feature: 'hreflang (ES)', description: '<link rel="alternate" hreflang="es" href="..."> points to the Spanish version' },
-  { feature: 'x-default', description: '<link rel="alternate" hreflang="x-default" href="..."> points to English as the default' },
+  {
+    feature: 'Canonical URL',
+    description:
+      'Every page sets <link rel="canonical"> pointing to itself. Prevents duplicate content issues.',
+  },
+  {
+    feature: 'hreflang (EN)',
+    description:
+      '<link rel="alternate" hreflang="en" href="..."> points to the English version',
+  },
+  {
+    feature: 'hreflang (ES)',
+    description:
+      '<link rel="alternate" hreflang="es" href="..."> points to the Spanish version',
+  },
+  {
+    feature: 'x-default',
+    description:
+      '<link rel="alternate" hreflang="x-default" href="..."> points to English as the default',
+  },
 ];
 
 const verificationRules = [
-  { service: 'Google Search Console', method: 'DNS TXT record only', notes: 'Domain property verification. NO meta tags in HTML. Do NOT add PUBLIC_GOOGLE_SITE_VERIFICATION.' },
-  { service: 'Bing Webmaster Tools', method: 'Optional env var', notes: 'Meta tag via PUBLIC_BING_SITE_VERIFICATION env var. Only rendered if env var is set.' },
+  {
+    service: 'Google Search Console',
+    method: 'DNS TXT record only',
+    notes:
+      'Domain property verification. NO meta tags in HTML. Do NOT add PUBLIC_GOOGLE_SITE_VERIFICATION.',
+  },
+  {
+    service: 'Bing Webmaster Tools',
+    method: 'Optional env var',
+    notes:
+      'Meta tag via PUBLIC_BING_SITE_VERIFICATION env var. Only rendered if env var is set.',
+  },
 ];
 
 const keywordsRules = [
-  { rule: '5-8 keywords per post', description: 'Each blog post frontmatter includes a keywords array with 5-8 targeted terms' },
-  { rule: 'Per-language keywords', description: 'EN and ES posts have independently chosen keywords appropriate to each language' },
-  { rule: 'Frontmatter array', description: 'keywords: ["astro", "static site", "blog", "web development", "performance"]' },
+  {
+    rule: '5-8 keywords per post',
+    description:
+      'Each blog post frontmatter includes a keywords array with 5-8 targeted terms',
+  },
+  {
+    rule: 'Per-language keywords',
+    description:
+      'EN and ES posts have independently chosen keywords appropriate to each language',
+  },
+  {
+    rule: 'Frontmatter array',
+    description:
+      'keywords: ["astro", "static site", "blog", "web development", "performance"]',
+  },
 ];
 ---
 

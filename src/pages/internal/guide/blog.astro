@@ -2,35 +2,130 @@
 import InternalLayout from '@/layouts/InternalLayout.astro';
 
 const lifecycle = [
-  { status: 'Published', description: 'Live post with pubDate in the past. Appears in listings, search, RSS, and sitemap.', indicator: 'draft: false (or omitted)' },
-  { status: 'Scheduled', description: 'Post with a future pubDate. Built but hidden from listings until the date arrives.', indicator: 'pubDate > today' },
-  { status: 'Demo', description: 'Test posts in _demo/ folders. Never shown in listings or search. Direct URL access in dev only.', indicator: '_demo/ directory' },
+  {
+    status: 'Published',
+    description:
+      'Live post with pubDate in the past. Appears in listings, search, RSS, and sitemap.',
+    indicator: 'draft: false (or omitted)',
+  },
+  {
+    status: 'Scheduled',
+    description:
+      'Post with a future pubDate. Built but hidden from listings until the date arrives.',
+    indicator: 'pubDate > today',
+  },
+  {
+    status: 'Demo',
+    description:
+      'Test posts in _demo/ folders. Never shown in listings or search. Direct URL access in dev only.',
+    indicator: '_demo/ directory',
+  },
 ];
 
 const frontmatterFields = [
-  { field: 'title', type: 'string', required: true, description: 'Post title (translated per language)' },
-  { field: 'description', type: 'string', required: true, description: 'Meta description, 130-160 characters' },
-  { field: 'pubDate', type: 'date', required: true, description: 'Publication date (ISO format)' },
-  { field: 'updatedDate', type: 'date', required: false, description: 'Last significant update' },
-  { field: 'heroImage', type: 'string', required: false, description: 'Path: /images/blog/posts/{slug}/hero.{ext}' },
-  { field: 'heroLayout', type: 'enum', required: false, description: 'banner | side-by-side | minimal | none' },
-  { field: 'tags', type: 'string[]', required: true, description: 'Tag slugs, max 5 (1-2 primary + 1-3 secondary)' },
-  { field: 'keywords', type: 'string[]', required: false, description: 'SEO keywords, 5-8 per language' },
-  { field: 'series', type: 'string', required: false, description: 'Series slug (English only)' },
-  { field: 'seriesOrder', type: 'number', required: false, description: 'Position in series (1-based)' },
-  { field: 'draft', type: 'boolean', required: false, description: 'Exclude from production if true' },
+  {
+    field: 'title',
+    type: 'string',
+    required: true,
+    description: 'Post title (translated per language)',
+  },
+  {
+    field: 'description',
+    type: 'string',
+    required: true,
+    description: 'Meta description, 130-160 characters',
+  },
+  {
+    field: 'pubDate',
+    type: 'date',
+    required: true,
+    description: 'Publication date (ISO format)',
+  },
+  {
+    field: 'updatedDate',
+    type: 'date',
+    required: false,
+    description: 'Last significant update',
+  },
+  {
+    field: 'heroImage',
+    type: 'string',
+    required: false,
+    description: 'Path: /images/blog/posts/{slug}/hero.{ext}',
+  },
+  {
+    field: 'heroLayout',
+    type: 'enum',
+    required: false,
+    description: 'banner | side-by-side | minimal | none',
+  },
+  {
+    field: 'tags',
+    type: 'string[]',
+    required: true,
+    description: 'Tag slugs, max 5 (1-2 primary + 1-3 secondary)',
+  },
+  {
+    field: 'keywords',
+    type: 'string[]',
+    required: false,
+    description: 'SEO keywords, 5-8 per language',
+  },
+  {
+    field: 'series',
+    type: 'string',
+    required: false,
+    description: 'Series slug (English only)',
+  },
+  {
+    field: 'seriesOrder',
+    type: 'number',
+    required: false,
+    description: 'Position in series (1-based)',
+  },
+  {
+    field: 'draft',
+    type: 'boolean',
+    required: false,
+    description: 'Exclude from production if true',
+  },
 ];
 
 const heroLayouts = [
-  { layout: 'banner', aspect: 'Landscape', description: 'Full-width banner image above the title. Default layout for most posts.', usage: 'Wide/panoramic hero images' },
-  { layout: 'side-by-side', aspect: 'Square', description: 'Image on one side, title and meta on the other. Good for portrait or square art.', usage: 'Square or portrait hero images' },
-  { layout: 'minimal', aspect: 'Thumbnail', description: 'Small thumbnail beside the title. Minimal visual footprint.', usage: 'When image is secondary to content' },
-  { layout: 'none', aspect: 'N/A', description: 'No hero image displayed. Text-only header.', usage: 'Text-focused posts, no image needed' },
+  {
+    layout: 'banner',
+    aspect: 'Landscape',
+    description:
+      'Full-width banner image above the title. Default layout for most posts.',
+    usage: 'Wide/panoramic hero images',
+  },
+  {
+    layout: 'side-by-side',
+    aspect: 'Square',
+    description:
+      'Image on one side, title and meta on the other. Good for portrait or square art.',
+    usage: 'Square or portrait hero images',
+  },
+  {
+    layout: 'minimal',
+    aspect: 'Thumbnail',
+    description: 'Small thumbnail beside the title. Minimal visual footprint.',
+    usage: 'When image is secondary to content',
+  },
+  {
+    layout: 'none',
+    aspect: 'N/A',
+    description: 'No hero image displayed. Text-only header.',
+    usage: 'Text-focused posts, no image needed',
+  },
 ];
 
 const primaryTags = [
   { slug: 'tech', description: 'Technology and software engineering' },
-  { slug: 'personal', description: 'Personal reflections and life experiences' },
+  {
+    slug: 'personal',
+    description: 'Personal reflections and life experiences',
+  },
   { slug: 'talks', description: 'Conference talks and presentations' },
   { slug: 'trading', description: 'Trading and financial markets' },
   { slug: 'portfolio', description: 'Portfolio projects and case studies' },
@@ -51,19 +146,55 @@ const secondaryTags = [
 ];
 
 const commands = [
-  { command: 'npm run images:optimize', description: 'Process staged images in _staging/ to WebP' },
-  { command: 'npm run build', description: 'Full production build (includes image processing)' },
-  { command: 'npm run dev', description: 'Dev server with hot reload at localhost:4444' },
-  { command: 'npm run md:check', description: 'Verify every HTML page has a matching .md for agents' },
+  {
+    command: 'npm run images:optimize',
+    description: 'Process staged images in _staging/ to WebP',
+  },
+  {
+    command: 'npm run build',
+    description: 'Full production build (includes image processing)',
+  },
+  {
+    command: 'npm run dev',
+    description: 'Dev server with hot reload at localhost:4444',
+  },
+  {
+    command: 'npm run md:check',
+    description: 'Verify every HTML page has a matching .md for agents',
+  },
 ];
 
 const writingRules = [
-  { rule: 'Personal voice', description: 'First person, conversational tone. Author shares real experiences and opinions.' },
-  { rule: 'Tuteo for Spanish', description: 'Use "tú" form (tuteo), never "vos" (voseo). Colombian Spanish phrasing.' },
-  { rule: 'No placeholders', description: 'Zero tolerance for [AUTHOR: ...], [TODO: ...], [TBD], or any bracketed fill-in-later text.' },
-  { rule: 'Keywords', description: '5-8 SEO keywords per post, per language. Placed in frontmatter keywords array.' },
-  { rule: 'Diacritical marks', description: 'Spanish content MUST have proper ñ, á, é, í, ó, ú. Validate before committing.' },
-  { rule: 'English slugs only', description: 'All filenames, series slugs, and image directories use English slugs, even for Spanish content.' },
+  {
+    rule: 'Personal voice',
+    description:
+      'First person, conversational tone. Author shares real experiences and opinions.',
+  },
+  {
+    rule: 'Tuteo for Spanish',
+    description:
+      'Use "tú" form (tuteo), never "vos" (voseo). Colombian Spanish phrasing.',
+  },
+  {
+    rule: 'No placeholders',
+    description:
+      'Zero tolerance for [AUTHOR: ...], [TODO: ...], [TBD], or any bracketed fill-in-later text.',
+  },
+  {
+    rule: 'Keywords',
+    description:
+      '5-8 SEO keywords per post, per language. Placed in frontmatter keywords array.',
+  },
+  {
+    rule: 'Diacritical marks',
+    description:
+      'Spanish content MUST have proper ñ, á, é, í, ó, ú. Validate before committing.',
+  },
+  {
+    rule: 'English slugs only',
+    description:
+      'All filenames, series slugs, and image directories use English slugs, even for Spanish content.',
+  },
 ];
 ---
 
