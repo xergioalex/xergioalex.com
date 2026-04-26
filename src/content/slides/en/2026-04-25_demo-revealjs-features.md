@@ -389,6 +389,24 @@ $$e^{i\pi} + 1 = 0$$
 
 ---
 
+## Video Contained
+
+<video data-autoplay loop muted class="slide-media-contained" width="960" height="540">
+  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+</video>
+
+<small>Centered with breathing room on all sides</small>
+
+---
+
+## Image Contained
+
+<img src="https://picsum.photos/seed/contained/960/540" alt="Landscape photo" width="960" height="540" class="slide-media-contained" />
+
+<small>Centered with breathing room on all sides</small>
+
+---
+
 <!-- .slide: data-background-video="https://www.w3schools.com/html/mov_bbb.mp4" data-background-video-loop data-background-video-muted data-background-size="cover" -->
 
 &nbsp;

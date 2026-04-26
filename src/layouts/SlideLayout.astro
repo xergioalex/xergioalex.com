@@ -127,6 +127,7 @@ const backLabel = SITE_TITLE.split(' - ')[0];
         var body = document.body;
         var toolbar = document.getElementById('slide-toolbar');
         var backLink = document.getElementById('slide-back');
+        var langToggle = document.getElementById('lang-toggle');
         var sunIcon = document.getElementById('theme-icon-sun');
         var moonIcon = document.getElementById('theme-icon-moon');
         var fsExpand = document.getElementById('fs-icon-expand');
@@ -184,6 +185,16 @@ const backLabel = SITE_TITLE.split(' - ')[0];
             html.classList.toggle('dark');
             try { localStorage.setItem('theme', isDark() ? 'dark' : 'light'); } catch (e) {}
             syncThemeBody();
+          });
+        }
+
+        if (langToggle) {
+          langToggle.addEventListener('click', function(e) {
+            var hash = window.location.hash;
+            if (hash) {
+              e.preventDefault();
+              window.location.href = langToggle.getAttribute('href') + hash;
+            }
           });
         }
 
