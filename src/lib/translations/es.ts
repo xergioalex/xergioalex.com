@@ -613,6 +613,14 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       externalLink: 'Externo',
       externalEmbed: 'Incrustado',
     },
+    toolbar: {
+      backToCatalog: 'Volver al catálogo',
+      switchLang: 'Cambiar a {lang}',
+      themeToLight: 'Cambiar a modo claro',
+      themeToDark: 'Cambiar a modo oscuro',
+      enterFullscreen: 'Pantalla completa',
+      exitFullscreen: 'Salir de pantalla completa',
+    },
   },
 
   // Trading page

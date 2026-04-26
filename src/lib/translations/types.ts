@@ -578,6 +578,14 @@ export interface SiteTranslations {
       externalLink: string;
       externalEmbed: string;
     };
+    toolbar: {
+      backToCatalog: string;
+      switchLang: string;
+      themeToLight: string;
+      themeToDark: string;
+      enterFullscreen: string;
+      exitFullscreen: string;
+    };
   };
 
   // Errors
