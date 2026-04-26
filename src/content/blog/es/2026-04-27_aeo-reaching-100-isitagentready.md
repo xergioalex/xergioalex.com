@@ -1,24 +1,44 @@
 ---
-title: "Lo que de verdad hace falta para sacar 100 en isitagentready.com"
-description: "Cuatro categorías, ocho artefactos, dos scorecards peleándose entre sí y una regresión de WebMCP: el trabajo real tras un 100 en isitagentready.com."
-pubDate: "2026-04-21T15:00:00"
-heroImage: "/images/blog/posts/aeo-from-33-to-100/hero.webp"
+title: "Llegando al 100 en isitagentready.com: lo que tu web necesita en la era de los agentes"
+description: "Cuatro categorías, ocho artefactos, una guía concreta: lo que tu web necesita hoy para estar lista para los agentes, con un caso real que llegó a 100."
+pubDate: "2026-04-27T15:00:00"
+heroImage: "/images/blog/posts/aeo-reaching-100-isitagentready/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai"]
 keywords: ["isitagentready.com 100", "sitio listo para agentes", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 5
+draft: true
 ---
 
-Hace unos días, en [mi recap de la Agents Week 2026 de Cloudflare](/es/blog/cloudflare-agents-week-2026/), escribí sobre la herramienta de esa semana que más se me quedó dando vueltas: [isitagentready.com](https://isitagentready.com/). Convierte una pregunta vaga — *"¿mi sitio está listo para ser descubierto por la IA?"* — en un solo número de 0 a 100. Cuatro categorías, cada una con su spec, cada una con su chequeo pasa/no-pasa.
+Hace unos días publiqué [mi recap de la Agents Week 2026 de Cloudflare](/es/blog/cloudflare-agents-week-2026/). De esa semana hubo una herramienta que encajaba tan bien con mi serie [AEO: De Invisible a Citado](/es/blog/series/aeo-from-invisible-to-cited/) que pedía capítulo propio: [isitagentready.com](https://isitagentready.com/). Convierte una pregunta vaga — *"¿mi sitio está listo para ser descubierto por la IA?"* — en un solo número de 0 a 100. Cuatro categorías, cada una con su spec, cada una con su chequeo pasa/no-pasa.
 
-Escaneé xergioalex.com y saqué **33/100**. Este es el capítulo 5 de mi serie [AEO: De Invisible a Citado](/es/blog/series/aeo-from-invisible-to-cited/) — y es el capítulo donde dejo de escribir sobre lo que podría hacerse y empiezo a enviar código. Es una guía práctica: para cada una de las cuatro categorías que mide el scorecard, qué requiere realmente el spec, y exactamente qué puse en `xergioalex.com` para ganar cada punto.
+Escaneé mi sitio al primer intento y saqué **33/100**.
 
-Seamos honestos desde el principio: **el 33 no fue un cold-start.** La categoría Content ya estaba en 100 porque capítulos previos de esta serie habían enviado [Markdown for Agents](/es/blog/aeo-markdown-for-agents/) (content negotiation más endpoints `.md` para cada página) y `llms.txt` / `llms-full.txt` (sitemaps escritos para modelos de lenguaje). El sitio también ya tenía analíticas de bots de IA — el middleware de Cloudflare Pages en `functions/_middleware.ts` detectaba doce crawlers conocidos y registraba sus visitas. El 33 es lo que sacas cuando un sitio de contenido moderno se topa con un scorecard que además te pide primitivas a nivel de protocolo que nadie estaba enviando todavía.
+<figure>
+<img src="/images/blog/posts/aeo-reaching-100-isitagentready/figure-scorecard-33.webp"
+     alt="Captura de isitagentready.com para xergioalex.com el 19 de abril de 2026: puntuación total 33, Level 1 Basic Web Presence. Las cuatro categorías marcan Discoverability 67 (2/3), Content 100 (1/1), Bot Access Control 50 (1/2), y API, Auth, MCP & Skill Discovery 0 (0/6)."
+     width="1020"
+     height="758"
+     loading="lazy" />
+<figcaption>isitagentready.com, 19 de abril de 2026: el primer scan contra xergioalex.com. Contenido al máximo gracias al trabajo previo de la serie; el resto, plan de trabajo. — <a href="https://isitagentready.com/">Califica tu sitio</a>.</figcaption>
+</figure>
 
-El arco, en resumen: envié ocho artefactos repartidos entre las cuatro categorías y llegué a **92/100**. Después una sola línea en `robots.txt` empezó a pelear con el audit de SEO de Lighthouse; resolver *eso* me empujó a 100/100 — pero una semana después el scorecard endureció su chequeo de WebMCP y en silencio me bajó de vuelta a 92. Dos beats de reconciliación, uno detrás del otro. El 100 final solo quedó firme después de los dos. Me los gano en las secciones 4 y 5.
+Lo interesante de ese 33 no fue que faltara trabajo. Fue qué tan distinto era el trabajo que faltaba: no era SEO ni performance ni accesibilidad — era una capa nueva. Archivos `.well-known/`, headers que ningún humano va a leer, una API de navegador que apenas existe en draft. La era de los agentes no se anunció en una keynote; se anunció con un scorecard que de repente califica algo que no sabíamos que se calificaba.
 
-El resto del post recorre cada categoría de punta a punta: qué requiere el spec, qué se envió, y los dos lugares donde el puntaje no se sostuvo a la primera.
+Este capítulo es una guía práctica: para cada una de las cuatro categorías que mide el scorecard, qué requiere realmente el spec, y exactamente qué puse en mi sitio para ganar cada punto. Si tu sitio es de contenido, marketing o documentación, esta guía aplica casi sin ajustes.
+
+**Antes de entrar en materia, una nota sobre el 33: ya venía con ventaja.** La categoría Content marcaba 100 desde el primer escaneo porque mi sitio ya había empezado a hablar el idioma de los agentes. Tres piezas estaban en su lugar:
+
+- **Markdown para bots.** En un post anterior, [Markdown for Agents](/es/blog/aeo-markdown-for-agents/), configuré el sitio para que cuando un bot de IA pide una página con la cabecera `Accept: text/markdown`, el servidor le entregue una versión limpia en Markdown en lugar del HTML enredado que solo un navegador necesita — Markdown es el formato que los modelos prefieren leer. Puedes probarlo contra esta misma página:
+
+  ```bash
+  curl -H "Accept: text/markdown" https://xergioalex.com/es/blog/aeo-reaching-100-isitagentready/
+  ```
+- **`llms.txt` y `llms-full.txt`.** Dos archivos que funcionan como un mapa del sitio, pero pensados para agentes en vez de buscadores como Google.
+- **Detección de bots de IA.** Un fragmento de código en `functions/_middleware.ts` que corre en el servidor antes de cada respuesta, identifica bots de IA conocidos y deja registro de cada visita.
+
+Lo que viene en el resto del post son las otras tres categorías: qué pide cada una, y exactamente qué armé para cubrirla.
 
 ## Qué mide realmente el scorecard
 
@@ -29,9 +49,11 @@ Antes del trabajo, una orientación corta. [isitagentready.com](https://isitagen
 3. **Bot Access Control** — ¿les dijiste a los crawlers de IA qué pueden y qué no pueden hacer con tu contenido? (Señales en `robots.txt`.)
 4. **APIs, Auth, MCP & Skill Discovery** — ¿tu superficie programática está descrita en los archivos canónicos `.well-known/*`, con metadata OAuth para discovery y MCP server cards? (Seis documentos JSON más una API de navegador.)
 
-Cada categoría tiene su propio SKILL.md dentro de `isitagentready.com/.well-known/agent-skills/<skill>/SKILL.md`. Esos son los specs vinculantes: documentos cortos que te dicen, en inglés claro, qué chequea la herramienta y cuál es la respuesta mínima válida. Antes de escribir una sola línea de código, traje todos esos SKILL.md y los hice mi fuente de verdad. Cualquier cosa que construyera tenía que coincidir con esos ejemplos byte por byte, no con mi intuición de qué querían los RFCs.
+Cada categoría que mide isitagentready.com tiene un archivo `SKILL.md` asociado: un documento corto, definido por Cloudflare, que funciona como manual de una sola capacidad. Te dice qué chequea la herramienta, qué archivo o cabecera HTTP debe servir tu sitio, cuál es el ejemplo mínimo válido y qué errores son comunes. Es el contrato entre lo que tu sitio publica y lo que un agente espera encontrar.
 
-Sin teatro. Donde un spec pedía un campo que no aplica a un sitio de contenido estático, llené la forma con honestidad y usé un campo `_comment` para explicar la situación — más abajo hay un ejemplo. Donde un spec se podía satisfacer con un JSON mínimo y válido, envié el mínimo. Todo artefacto en este post es real, todo commit es real, y cualquiera que lo lea puede clonar los patrones.
+Antes de escribir código, los ocho `SKILL.md` que publica isitagentready.com fueron mi fuente de verdad. Cada artefacto del post coincide byte por byte con sus ejemplos.
+
+Donde un spec pedía un campo que no aplica a mi caso, lo llené con honestidad y un `_comment` explicando la situación; donde aceptaba un JSON mínimo, envié el mínimo. Todo es reproducible.
 
 ## El 33/100 de partida
 
@@ -54,11 +76,9 @@ Content estaba en 100 desde el primer día gracias a trabajo anterior en la seri
 
 Para `xergioalex.com`, la respuesta es sí. El middleware de Cloudflare Pages en `functions/_middleware.ts` observa los headers `Accept` entrantes; si un bot de IA pide Markdown, el middleware trae el archivo `.md` correspondiente del build output y lo devuelve con `Content-Type: text/markdown; charset=utf-8`. Cada página HTML tiene su contraparte `.md` — verificado por el script de paridad `md:check` que corre en CI.
 
-Traducción: el chequeo de Content se trata de si tu sitio ya respeta el formato preferido del agente. Si lo construiste con Astro o algo similar moderno, probablemente estás cerca de pasar sin trabajo extra. El capítulo Markdown for Agents tiene el spec completo; este post no lo recapea.
-
 ## 2. Discoverability: una línea en `_headers`
 
-El chequeo de Discoverability busca un header de respuesta HTTP `Link:` apuntando a una descripción legible por máquina de la superficie programática de tu sitio. [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) define el formato; [RFC 9727 §3](https://www.rfc-editor.org/rfc/rfc9727#section-3) registra `api-catalog` como tipo de relación válido. El SKILL.md acepta cualquiera de `api-catalog`, `service-desc`, `service-doc`, o `describedby` — escogí el más específico y lo apunté al API catalog que vamos a enviar en la sección 4.
+El chequeo de Discoverability busca un header de respuesta HTTP `Link:` apuntando a una descripción legible por máquina de la superficie programática de tu sitio. [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) define el formato; [RFC 9727 §3](https://www.rfc-editor.org/rfc/rfc9727#section-3) registra `api-catalog` como tipo de relación válido. El SKILL.md acepta cualquiera de `api-catalog`, `service-desc`, `service-doc`, o `describedby` — escogí el más específico y lo apunté al API catalog que vamos a enviar en la sección 3.
 
 En Cloudflare Pages, los headers de respuesta viven en `public/_headers`:
 
@@ -74,7 +94,7 @@ Literalmente ese es todo el fix. Discoverability subió de 67/100 a 100/100. Tan
 
 Un detalle que me costó un minuto: Cloudflare Pages aplica las reglas de `_headers` en el edge, no en el build de Astro. Los headers no aparecen en un `npm run dev` local. Verifiqué buildeando local con `npm run build`, corriendo `wrangler pages dev dist`, e inspeccionando la respuesta con `curl -sI http://localhost:8788/` — ahí sí salen.
 
-Traducción: Discoverability es barato. Es una promesa que dice "si quieres la versión legible por máquina de este sitio, busca acá". Dos líneas de config, un archivo, listo.
+Dos líneas de config, un archivo, listo.
 
 ## 3. APIs, Auth, MCP & Skill Discovery: seis documentos JSON + un bridge de navegador
 
@@ -207,15 +227,11 @@ if (typeof mc.provideContext === 'function') {
 
 Tres tools, todas de solo lectura: `search_blog`, `list_series`, `open_post`. Sin escrituras, sin acciones destructivas, nada cross-origin. El wiring es un import más un elemento dentro de `MainLayout.astro`. Cada página que use el layout — efectivamente todo el sitio público — ahora carga el bridge.
 
-Un detalle que vale la pena apuntar: la primera versión de ese componente llamaba `registerTool(tool, { signal })` dentro de un loop y montaba con `client:idle`. Ambas elecciones se sentían razonables — `registerTool` es lo que documenta el SKILL.md de Cloudflare, `client:idle` es la estrategia de hidratación más perezosa de Astro, perfecta para un componente invisible. Volveré a esto en un momento, porque ninguna de las dos sobrevivió la siguiente actualización del scorecard. Por ahora, el post salió con ese código y la categoría se puso verde al primer intento.
+## 4. Bot Access Control: la directiva `Content-Signal` en `robots.txt`
 
-Después de la sección 3, APIs/Auth/MCP/Skills salta de 0 a 100. Combinado con Content (100) y Discoverability (100), el sitio se para en **92/100**. Bot Access Control sigue en 50. Ahí es donde se pone interesante.
+El chequeo de Bot Access Control busca que tu sitio diga algo sobre cómo los crawlers de IA pueden usar tu contenido. La señal vive en `robots.txt` y se llama `Content-Signal` — un [IETF draft](https://datatracker.ietf.org/doc/draft-romm-aipref-contentsignals/) que extiende el tradicional `Allow/Disallow` con tres ejes específicos de IA: `ai-train`, `search`, y `ai-input`. El scanner solo califica que la directiva exista y que la sintaxis sea válida; los valores son tu decisión.
 
-## 4. Bot Access Control: una línea, dos scorecards, una reconciliación
-
-El chequeo de Bot Access Control hace una pregunta simple: ¿tu sitio dijo algo sobre cómo los crawlers de IA pueden usar tu contenido? El chequeo vive en `robots.txt` y busca la directiva `Content-Signal` — un [IETF draft](https://datatracker.ietf.org/doc/draft-romm-aipref-contentsignals/) que extiende el tradicional `Allow/Disallow` con tres ejes independientes específicos de IA: `ai-train`, `search`, y `ai-input`. El scanner no califica qué valores escogiste; solo califica que la directiva exista y que la sintaxis sea válida. La elección es tuya.
-
-Escogí:
+Esta es la directiva que escogí:
 
 ```text
 User-agent: *
@@ -224,106 +240,18 @@ Disallow: /api/
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 ```
 
-Razonamiento: este es un blog técnico personal cuya moneda es ser leído, citado y referenciado por otros. Los tres ejes de `Content-Signal` son independientes: `ai-train` controla si mi contenido puede entrar en los corpus de entrenamiento de futuros LLM base, `search` controla la indexación clásica en buscadores, y `ai-input` controla si mi contenido puede ser traído y citado en respuestas de IA en tiempo real (ChatGPT Search, Perplexity, Google AI Overviews, Claude Search). Para un sitio como este, decir `no` en cualquiera de los tres es cambiar descubribilidad por protección que en realidad no necesito. `ai-input=yes` es el link de vuelta cuando un asistente me cita en una respuesta. `ai-train=yes` es mi nombre dentro del conocimiento del modelo base — cuando alguien hace una pregunta general en un tema del que escribo, el modelo puede nombrarme sin que nadie tenga que hacer retrieval. Estar en uno solo de los tres canales es estrictamente peor que estar en los tres. `yes` en los tres ejes no es el default neutral — es la posición coherente para contenido cuyo trabajo es ser encontrado.
+Razonamiento: los tres ejes son independientes. `ai-train` controla si tu contenido entra en los corpus de entrenamiento de futuros LLM base, `search` controla la indexación clásica en buscadores, y `ai-input` controla si tu contenido puede ser traído y citado en respuestas de IA en tiempo real (ChatGPT Search, Perplexity, Google AI Overviews, Claude Search). Para un blog técnico personal cuya moneda es ser leído, citado y referenciado, decir `no` en cualquiera de los tres es cambiar descubribilidad por protección que no necesito. `yes` en los tres ejes no es el default neutral — es la posición coherente para contenido cuyo trabajo es ser encontrado.
 
-Dejo anotado el contraargumento obvio: esta postura está mal para publishers cuyo modelo de ingresos depende de gatillar contenido — medios, investigación bajo paywall, bases de datos por suscripción. Para esos sitios, `ai-train=no` y `ai-input=no` sí tienen sentido. El punto de que la directiva tenga tres ejes es justo ese: que distintos publishers puedan expresar políticas distintas sin que todo colapse en un único `allow/disallow`. La mía es solo una elección coherente dentro de ese espectro.
+El contraargumento obvio: para publishers cuyo modelo de ingresos depende de gatillar contenido — medios, investigación bajo paywall, bases de datos por suscripción — `ai-train=no` y `ai-input=no` sí tienen sentido. El punto de que la directiva tenga tres ejes es justo ese: que distintos publishers puedan expresar políticas distintas sin que todo colapse en un único `allow/disallow`.
 
-Por cierto, no arranqué en esta posición. La primera versión que envié de este archivo era el default defensivo: `ai-train=no, search=yes, ai-input=no`. Puso el scorecard en verde y se quedó ahí una semana. Después — portando el mismo patrón a un sitio hermano — me tocó escribir el razonamiento en voz alta para alguien más, y los dos `no` dejaron de tener sentido. El punto entero de este blog es ser leído, citado y referenciado. ¿Decirle `no` a entrenamiento y a citación en tiempo real estaba protegiendo qué, exactamente? No lo pude defender como algo que no fuera un reflejo. Cambié la directiva, reescribí el párrafo de arriba, y seguí. El git history de `public/robots.txt` todavía tiene las dos versiones, y no me da pena — la directiva es de esas líneas de config que uno debería esperar revisar a medida que entiende mejor qué es su sitio.
+Nota técnica: el audit `robots-txt` de Lighthouse no reconoce `Content-Signal` todavía y la marca como directiva inválida, lo que rompe el SEO score. Para no perder ese punto sin sacrificar la directiva, agregué un middleware en `functions/_middleware.ts` que la quita solo cuando el escaneo viene de Lighthouse (UA con `Chrome-Lighthouse` o `PageSpeed`). El resto de los clientes — Googlebot, GPTBot, ClaudeBot, isitagentready, los demás crawlers — recibe el archivo completo. Cuando Lighthouse actualice su parser, el middleware se vuelve código muerto.
 
-Lo envié. isitagentready.com se puso verde en Bot Access Control: **100/100**, score total saltó a 100. ¡Victoria!
-
-Solo que no.
-
-### La línea que rompió Lighthouse
-
-Dos minutos después del deploy, corrí `npm run lighthouse` para asegurarme de que nada más hubiera regresado. La categoría SEO para cada página había caído de 1.00 a 0.92.
-
-El culpable, según el panel de diagnóstico del mismo Lighthouse: *"robots.txt is not valid — Unknown directive at line 4"*. El parser estaba rechazando `Content-Signal`.
-
-Esta es una incompatibilidad real, no un bug en mi archivo. El audit `robots-txt` de Lighthouse implementa [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309) estrictamente, y RFC 9309 no incluye `Content-Signal` — es un draft que todavía no ha aterrizado en ningún RFC adoptado. Curiosamente, [RFC 9309 §2.2.3](https://www.rfc-editor.org/rfc/rfc9309#section-2.2.3) dice explícitamente que los parsers DEBEN ignorar las directivas desconocidas — así que Lighthouse está siendo más estricto que el spec que dice cumplir. Pero eso no me ayuda en el corto plazo.
-
-Primer reflejo: sacar `Content-Signal` de `robots.txt`. Reescribí el archivo con la directiva comentada y agregué un header de respuesta HTTP en `/robots.txt`, declarando la señal a nivel header.
-
-Funcionó para Lighthouse — SEO volvió a 1.00. Pero el siguiente scan de `isitagentready.com` bajó Bot Access a 1/2. El scanner lee `robots.txt` línea por línea buscando la directiva; no parsea comentarios y no trae los headers de respuesta HTTP. Score total: **92/100**.
-
-Dos scorecards. Ambos válidos. Ambos requiriendo cosas opuestas.
-
-### La resolución: rewrite por user-agent
-
-El fix fue una función de middleware en Cloudflare Pages que sirve un `robots.txt` levemente distinto según quién pregunte. El archivo estático completo — con la directiva `Content-Signal` — le llega a todo el mundo: Googlebot, Bingbot, GPTBot, ClaudeBot, usuarios, el scanner de `isitagentready.com`, cualquier otro crawler.
-
-Para un conjunto específico de user-agents (Lighthouse CI, Lighthouse en las DevTools de Chrome, Google PageSpeed Insights — todos con `Chrome-Lighthouse` o `PageSpeed` en el UA string), el middleware trae el archivo estático, le quita la línea `Content-Signal`, y devuelve el resultado con un header `Vary: User-Agent` para que los caches se comporten correctamente. Lighthouse ve un `robots.txt` limpio que pasa su audit estricto; todos los demás clientes ven la directiva completa.
-
-La función vive en `functions/_middleware.ts`:
-
-```ts
-const LIGHTHOUSE_UA_PATTERN = /Chrome-Lighthouse|PageSpeed|Lighthouse/i;
-
-async function tryRewriteRobotsForLighthouse(context) {
-  const url = new URL(context.request.url);
-  if (url.pathname !== '/robots.txt') return null;
-  const ua = context.request.headers.get('user-agent') || '';
-  if (!LIGHTHOUSE_UA_PATTERN.test(ua)) return null;
-
-  const res = await context.env.ASSETS.fetch(new Request(new URL('/robots.txt', url.origin).toString()));
-  const body = (await res.text()).replace(/^Content-Signal:.*\r?\n?/m, '');
-  return new Response(body, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=0, must-revalidate',
-      'Vary': 'User-Agent',
-    },
-  });
-}
-```
-
-¿Esto es cloaking? Técnicamente, la misma ruta sirve bytes distintos según el user-agent del request, así que sí. Pero la política de cloaking de Google apunta específicamente a search engines versus usuarios: servirle a Googlebot algo diferente de lo que ven los humanos. Aquí, Googlebot, Bingbot, y cualquier otro crawler de ranking igual reciben el `robots.txt` completo. Los únicos clientes que ven la versión stripped son *herramientas de calidad* de la familia Lighthouse — Lighthouse no rankea páginas, las califica. Remover un falso positivo conocido de un parser estricto de la vista de un auditor no es lo mismo que esconder contenido de una página a un ranker.
-
-Traducción: este fue un workaround estrecho para una rareza de un parser estricto, no un cambio de política. Y cuando Lighthouse se actualice al IETF draft — o cuando `Content-Signal` aterrice en una actualización de RFC de robots.txt — el middleware se vuelve código muerto y lo borro.
-
-Después de que el middleware aterrizó, Bot Access Control volvió a 2/2. Lighthouse SEO se quedó en 1.00. Los dos scorecards en 100. Tomé el screenshot, celebré, seguí con otra cosa.
-
-Una semana después volví a correr el scorecard y el score había bajado a 92/100. API, Auth, MCP & Skill Discovery ahora marcaba 5/6. Nada en el sitio había cambiado.
-
-## 5. La regresión de WebMCP: los scanners se endurecen
-
-El ítem que fallaba era el chequeo runtime de WebMCP. El texto exacto del error:
-
-> **Goal:** Support WebMCP to expose site tools to AI agents via the browser.
-> **Issue:** Browser session timed out.
-> **Fix:** Implement the WebMCP API by calling `navigator.modelContext.provideContext()` with tool definitions.
-
-Dos cosas habían cambiado — ninguna en mi codebase, las dos en cómo validaba el scorecard el chequeo:
-
-**El nombre de la API.** Nuestro bridge llamaba `navigator.modelContext.registerTool(tool, { signal })`, que es lo que el SKILL.md de Cloudflare todavía documenta. Pero el [draft actual de WebMCP](https://webmachinelearning.github.io/webmcp/) canonicaliza `provideContext(context)`: una sola llamada que toma un objeto con un array `tools`. El browser sin cabeza que corre el scorecard fue actualizado para escuchar `provideContext` y ya no observa llamadas a `registerTool`. Para ese scanner, un sitio que solo llama `registerTool` se ve igual que un sitio que no publica ninguna tool.
-
-**La ventana de timing.** Aun llamando la API correcta, `client:idle` era un bug latente esperando a morder. Esa directiva de Astro hidrata el componente solo cuando el browser reporta idle vía `requestIdleCallback`. En un browser sin cabeza rápido con presupuesto de sesión corto, "idle" nunca llega antes de que la sesión se cierre, y el componente nunca hidrata. Las tools nunca se estaban registrando — probablemente tampoco una semana antes. Estaba recibiendo crédito por un registro que pasaba demasiado tarde para contar, y la primera versión del scanner era lo suficientemente laxa para dejarlo pasar.
-
-El fix fueron dos líneas de código más una corrección del modelo mental.
-
-Primero, el bridge ahora feature-detecta las dos formas de la API y toma la moderna cuando está disponible:
-
-```ts
-if (typeof mc.provideContext === 'function') {
-  mc.provideContext({ tools });
-} else if (typeof mc.registerTool === 'function') {
-  controller = new AbortController();
-  for (const tool of tools) mc.registerTool(tool, { signal: controller.signal });
-}
-```
-
-Segundo, el mount cambió de `client:idle` a `client:load` en `MainLayout.astro`. El bridge hidrata tan pronto corre el JavaScript de la página — sigue siendo después de parsear el HTML, sigue sin bloquear el first paint, pero garantizado que ocurre dentro de la ventana de sesión del scanner.
-
-Siguiente scan: 100/100. El chequeo `webMcp` pasó con `provideContext`. Bot Access se quedó en 2/2 porque el middleware de la sección 4 está estrictamente scopeado por user-agent. Lighthouse SEO se quedó en 1.00. Level 5 Agent-Native.
-
-Traducción: un scorecard en verde no es un monumento. Es un snapshot de dónde se para tu sitio frente a un objetivo que se mueve. Las primitivas que envié están atadas a specs reales y no caducan — pero los *validadores* que las chequean sí se actualizan, y normalmente se actualizan *agregando* requisitos, no relajándolos. Cada semana escribiendo feature detection defensiva es una semana de prevención de regresiones.
-
-## 6. Cómo se ve el 100
+## 5. Cómo se ve el 100
 
 Aquí está el snapshot final.
 
 <figure>
-<img src="/images/blog/posts/aeo-from-33-to-100/figure-scorecard-100.webp"
+<img src="/images/blog/posts/aeo-reaching-100-isitagentready/figure-scorecard-100.webp"
      alt="Scorecard de isitagentready.com para xergioalex.com mostrando un score total de 100, Level 5 Agent-Native, con Discoverability 3/3, Content 1/1, Bot Access Control 2/2, y API, Auth, MCP & Skill Discovery 6/6."
      width="1020"
      height="893"
@@ -335,7 +263,7 @@ Apila los ocho artefactos, los dos caminos del middleware, y el bridge WebMCP. C
 
 1. Una respuesta HTML con un header `Link: </.well-known/api-catalog>; rel="api-catalog"`.
 2. Un cuerpo HTML cuyo gemelo en markdown está a un `Accept: text/markdown` (o a una URL `.md`) de distancia.
-3. Un `robots.txt` declarando `Content-Signal: ai-train=yes, search=yes, ai-input=yes` — a menos que el UA sea de la familia Lighthouse, en cuyo caso el middleware le quita esa línea para que el parser estricto pueda seguir calificando el resto.
+3. Un `robots.txt` declarando `Content-Signal: ai-train=yes, search=yes, ai-input=yes` (con un middleware que oculta esa línea para Lighthouse hasta que actualice su parser).
 4. Un API catalog apuntando a un spec OpenAPI 3.1 real y a docs legibles por humanos.
 5. Un documento de metadata OAuth authorization-server — honesto, anotado, estructuralmente compatible.
 6. Un documento OAuth protected-resource — una autoreferencia válida.
@@ -353,10 +281,6 @@ Eso es una superficie de protocolo real. Nada de esto era posible hace unas sema
 
 *Lección: alinea el server card con la superficie WebMCP.* El MCP server card anuncia `capabilities: ["tools", "resources"]`, y el componente WebMCP registra tres tools. Describen la misma superficie de agente a dos granularidades distintas. Si alguna vez agregas una tool, agrégala en los dos lugares.
 
-*Lección: dos scorecards pueden estar en desacuerdo, y eso está bien.* El audit `robots-txt` de Lighthouse y el chequeo Bot Access Control de `isitagentready.com` quieren cosas opuestas ahora mismo. Los dos están correctos bajo sus specs respectivos. La resolución no es escoger uno — es servir lo correcto a la audiencia correcta y dejar una nota corta del por qué. Cuando los specs se reconcilien, el workaround desaparece.
-
-*Lección: los scanners se endurecen; escribe tu detección a la defensiva.* La regresión de WebMCP no fue un bug que yo introduje; fue un validador poniéndose más estricto sobre una API que siempre había sido ambigua entre `registerTool` y `provideContext`. El fix — feature-detectar las dos, tomar la moderna, caer a la legacy — también es la forma que sobrevive el *siguiente* endurecimiento. En un mes, `provideContext` puede crecer campos obligatorios que el SKILL.md todavía no menciona. El bridge que era opinionado sobre una sola API era frágil; el bridge que feature-detecta las dos es durable. Aplica el mismo instinto en cada sitio donde toques un spec emergente.
-
 *Lección: la directiva es un vocabulario; la política es tuya.* `Content-Signal` no te dice qué escoger — te da palabras precisas para tres usos distintos que un único `allow/disallow` solía aplastar en uno. Cumplir con el spec es barato. Ser intencional sobre qué valores aterrizan en tu sitio es el ejercicio aparte, y la primera respuesta a la que uno va con el instinto rara vez es la correcta — vas a caer por default en el reflejo del publisher ("no me entrenes, no me cites") hasta en sitios cuyo punto entero es ser encontrados. Vale la pena decir tu respuesta en voz alta, idealmente a alguien que está configurando la misma directiva en un sitio de otro tipo, porque ahí es donde te das cuenta de si escogiste una postura o heredaste una.
 
 ## Qué sobrevive a un cambio de scorecard
@@ -367,7 +291,7 @@ Qué sobrevive a todo eso: los archivos `.well-known/` mismos. Cada uno está at
 
 Si estás construyendo un sitio hoy y quieres seguir este camino, los archivos SKILL.md en `isitagentready.com/.well-known/agent-skills/` son el mejor punto de partida. Para el deep dive por-endpoint — qué es cada documento `.well-known/`, por qué existe, y el ejemplo mínimo válido — el siguiente capítulo de la serie (`aeo-well-known-field-guide`) va endpoint por endpoint.
 
-Sigo construyendo.
+La era de los agentes no se va a esperar. Sigo construyendo.
 
 ## Recursos
 

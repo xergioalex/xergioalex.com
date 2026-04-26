@@ -55,6 +55,7 @@ src/
 │   └── pages/           # Shared page components (*Page.astro)
 ├── content/             # Content Collections (blog posts, tags, series)
 │   ├── blog/{en,es}/    # Blog posts by language (YYYY-MM-DD_slug.md)
+│   ├── slides/{en,es}/  # Slide decks by language (3 types: internal/external-link/external-embed)
 │   ├── tags/            # Tag definitions (.md files with tier/order)
 │   └── series/          # Series definitions
 ├── layouts/             # MainLayout, InternalLayout, ShowcaseLayout
@@ -324,6 +325,24 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **New post workflow:** Use `/add-blog-post` skill (mandatory). Do not create blog post files manually.
 
+## Slides Conventions
+
+> Full reference: **[Slides Guide](docs/features/SLIDES.md)**
+
+**Three deck types:** `internal` (Reveal.js Markdown), `external-embed` (iframe), `external-link` (stub info page). All three share one `slides` Zod discriminated-union collection in `src/content.config.ts`.
+
+**File naming:** `YYYY-MM-DD_slug.md` in `src/content/slides/{en,es}/`. **Slugs MUST be in English** on both languages.
+
+**URL surface:** `/tech-talks/<slug>` (and `/es/tech-talks/<slug>`). The collection is named `slides` (internal); the URL is `/tech-talks/` (user-facing). Do NOT create `/slides/` routes.
+
+**Catalog:** The "Decks & Slides" section is inside `TechTalksPage.astro`, between Philosophy and the Speaking-invitation CTA. It renders only when decks exist.
+
+**Asset isolation:** Reveal.js CSS/JS only loads on internal deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
+
+**Images:** Stored in `public/images/slides/<slug>/`. Hero: `hero.{ext}`.
+
+**Hydration:** `RevealDeck.svelte` uses `client:only="svelte"` (documented exception to `client:visible` preference — Reveal needs DOM).
+
 ## Documentation Standards
 
 Update docs after: adding components/pages, changing schemas, updating config, adding npm scripts, establishing patterns. See **[Documentation Guide](docs/DOCUMENTATION_GUIDE.md)**.
@@ -353,6 +372,9 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 19. List related articles or previous chapters in the Resources section when the post belongs to a series — they already appear in `#series-navigation` below; listing them is redundant
 20. **Leave placeholder content in blog posts** — `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" text. Published posts must be complete. Zero tolerance.
 21. **Use Spanish slugs for blog posts or series** — all slugs (filenames, series names, image directories) MUST be in English, even for Spanish content
+22. **Create slide routes outside `/tech-talks/*`** — the URL surface is `/tech-talks/<slug>`, not `/slides/<slug>`
+23. **Import Reveal CSS outside `SlideLayout`** — Reveal styles must not leak to non-deck routes
+24. **Add a new top-level page without updating `src/middleware.ts`** — the middleware has a hardcoded allowlist (`KNOWN_ROOT_PATHS` / `KNOWN_ES_PATHS`). New top-level routes (`/foo`, `/es/foo`) return 404 until added to the allowlist. Symptom: dev log shows `[404] (rewrite) /foo` (the `(rewrite)` is the smoking gun — it comes from `context.rewrite()` in the middleware, not from Astro routing). Multi-segment paths like `/foo/bar` and any path containing `.` bypass the rule, which is why deck detail pages can work while the listing page 404s. See [Architecture → Middleware Allowlist](docs/ARCHITECTURE.md#middleware-allowlist-critical).
 
 ### DO:
 
@@ -367,6 +389,8 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 9. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 10. Verify Spanish diacritical marks before committing
 11. Ensure no placeholder content in blog posts (`grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/` → zero matches)
+12. Use discriminated union narrowing for deck type checks (`if (deck.data.type === 'internal')`)
+13. Add both EN and ES versions for all slide deck types
 
 ## Pre-Commit Checklist
 
