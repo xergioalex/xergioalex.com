@@ -12,36 +12,53 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const GET: APIRoute = ({ props }) => {
   const { deck } = props;
+  const data = deck.data;
   let markdown = '';
 
-  markdown += `# ${deck.data.title}\n\n`;
-  markdown += `> ${deck.data.description}\n\n`;
+  markdown += `# ${data.title}\n\n`;
+  markdown += `> ${data.description}\n\n`;
 
-  if (deck.data.eventName) {
-    markdown += `**Evento:** ${deck.data.eventName}`;
-    if (deck.data.eventDate) {
-      markdown += ` (${deck.data.eventDate.toISOString().split('T')[0]})`;
+  // Bloque de metadatos (legible por agentes)
+  markdown += '## Metadatos\n\n';
+  markdown += `- **Tipo:** ${data.type}\n`;
+  markdown += `- **Idioma:** es\n`;
+  markdown += `- **Publicado:** ${data.pubDate.toISOString().split('T')[0]}\n`;
+  if (data.updatedDate) {
+    markdown += `- **Actualizado:** ${data.updatedDate.toISOString().split('T')[0]}\n`;
+  }
+  if (data.tags && data.tags.length > 0) {
+    markdown += `- **Tags:** ${data.tags.join(', ')}\n`;
+  }
+  if (data.eventName) {
+    markdown += `- **Evento:** ${data.eventName}`;
+    if (data.eventDate) {
+      markdown += ` (${data.eventDate.toISOString().split('T')[0]})`;
     }
-    markdown += '\n\n';
+    if (data.eventUrl) markdown += ` — ${data.eventUrl}`;
+    markdown += '\n';
+  }
+  if (data.relatedPost) {
+    markdown += `- **Artículo relacionado:** /es/blog/${data.relatedPost}\n`;
+  }
+  markdown += '- **Autor:** Sergio Alexander Florez Galeano (XergioAleX)\n';
+  markdown += '\n';
+
+  if (data.type === 'external-link') {
+    markdown += '## Presentación Externa\n\n';
+    markdown += `- **URL:** ${data.externalUrl}\n`;
+    if (data.provider) markdown += `- **Proveedor:** ${data.provider}\n`;
+    markdown += '\n';
+  } else if (data.type === 'external-embed') {
+    markdown += '## Presentación Incrustada\n\n';
+    markdown += `- **URL canónica:** ${data.externalUrl}\n`;
+    markdown += `- **URL de incrustación:** ${data.embedUrl}\n`;
+    if (data.provider) markdown += `- **Proveedor:** ${data.provider}\n`;
+    markdown += '\n';
   }
 
-  if (deck.data.type === 'internal') {
-    markdown += deck.body || '';
-  } else if (deck.data.type === 'external-link') {
-    markdown += `**Tipo:** Presentación externa\n`;
-    markdown += `**URL:** ${deck.data.externalUrl}\n`;
-    if (deck.data.provider)
-      markdown += `**Proveedor:** ${deck.data.provider}\n`;
-    markdown += '\n';
-    if (deck.body) markdown += deck.body;
-  } else if (deck.data.type === 'external-embed') {
-    markdown += `**Tipo:** Presentación incrustada\n`;
-    markdown += `**URL:** ${deck.data.externalUrl}\n`;
-    markdown += `**URL de incrustación:** ${deck.data.embedUrl}\n`;
-    if (deck.data.provider)
-      markdown += `**Proveedor:** ${deck.data.provider}\n`;
-    markdown += '\n';
-    if (deck.body) markdown += deck.body;
+  if (deck.body?.trim()) {
+    markdown += '## Contenido\n\n';
+    markdown += deck.body;
   }
 
   return new Response(markdown, {

@@ -108,7 +108,8 @@ const slideSchema = z.discriminatedUnion('type', [
 const slides = defineCollection({
   loader: glob({
     base: './src/content/slides',
-    pattern: '**/*.{md,mdx}',
+    // Exclude `_*` files and any path under `_layouts/` — author-only snippets, never decks.
+    pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'],
     generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/i, ''),
   }),
   schema: slideSchema,

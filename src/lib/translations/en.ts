@@ -606,6 +606,14 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       externalLink: 'External',
       externalEmbed: 'Embedded',
     },
+    toolbar: {
+      backToCatalog: 'Back to catalog',
+      switchLang: 'Switch to {lang}',
+      themeToLight: 'Switch to light mode',
+      themeToDark: 'Switch to dark mode',
+      enterFullscreen: 'Enter fullscreen',
+      exitFullscreen: 'Exit fullscreen',
+    },
   },
 
   // Trading page

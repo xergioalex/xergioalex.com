@@ -129,6 +129,141 @@ Set `math: true` in frontmatter, then use LaTeX:
 $$e^{i\pi} + 1 = 0$$
 ```
 
+## Theming & Tokens
+
+The slide system v2 (April 2026) replaces ad-hoc inline styles with a token layer driven by CSS custom properties. Tokens live in `src/styles/slides.css` — imported only by `src/layouts/SlideLayout.astro` so Reveal.js styles never leak to non-deck routes.
+
+### Token names
+
+**Chrome (toolbar, back link):**
+
+```
+--slide-bg / --slide-surface / --slide-text / --slide-text-muted
+--slide-accent / --slide-border
+--slide-toolbar-bg / --slide-toolbar-fg / --slide-toolbar-fg-hover / --slide-toolbar-border
+--slide-back-link-fg / --slide-back-link-fg-hover
+```
+
+**Reveal.js (full set documented at https://revealjs.com/themes/):**
+
+```
+--r-background-color / --r-main-color / --r-heading-color
+--r-link-color / --r-link-color-hover
+--r-controls-color / --r-progress-color
+--r-main-font / --r-heading-font / --r-code-font
+--r-heading{1,2,3,4}-size / --r-main-font-size
+--r-selection-background-color / --r-selection-color
+```
+
+### How light/dark cascade
+
+`<html class="dark">` (set by the site's theme toggle) flips the `.dark` selector inside `slides.css`. Tokens redefine themselves; Reveal's variables override automatically; the body class `reveal-theme-{dark,light}` swaps backgrounds. There is **one** source of truth — change a token once, every deck and every primitive updates.
+
+### Forced-readable rules
+
+Slides with explicit dark backgrounds always render white text:
+
+- `<!-- .slide: data-background-color="#1a1a2e" -->`
+- `<!-- .slide: data-background-gradient="..." -->`
+- `<!-- .slide: data-background-image="..." -->`
+- `<!-- .slide: class="has-dark-background" -->` (manual override)
+- `<!-- .slide: class="has-light-background" -->` (force dark text)
+
+For text over arbitrary images/videos, drop the helper overlay class:
+
+- `class="slide-bg-overlay--dark"` — 55% black scrim
+- `class="slide-bg-overlay--light"` — 65% white scrim
+
+## Layouts Catalog
+
+15 reusable layout primitives ship as Markdown snippets in `src/content/slides/_layouts/`. Each snippet is a copy-paste reference with a header describing when to use it. The `_layouts/` directory is excluded from the `slides` content collection glob, so snippets never appear as deck pages.
+
+The kitchen-sink reference deck is `/slides/demo-revealjs-features` (and `/es/slides/demo-revealjs-features`).
+
+| Primitive | When to use | Source |
+|---|---|---|
+| `title-hero` | Opening cover with title, subtitle, author, event | [`title-hero.md`](../../src/content/slides/_layouts/title-hero.md) |
+| `section-divider` | Announce a new chapter / section | [`section-divider.md`](../../src/content/slides/_layouts/section-divider.md) |
+| `two-column-split` | Compare two ideas, before/after, problem/solution | [`two-column-split.md`](../../src/content/slides/_layouts/two-column-split.md) |
+| `three-column-cards` | Three parallel concepts with icon + title + body | [`three-column-cards.md`](../../src/content/slides/_layouts/three-column-cards.md) |
+| `image-left` | Walk through screenshot/photo/diagram with text | [`image-left.md`](../../src/content/slides/_layouts/image-left.md) |
+| `image-right` | Same with text-first reading flow | [`image-right.md`](../../src/content/slides/_layouts/image-right.md) |
+| `image-full-bleed` | Image IS the message (hero, chart, photo) | [`image-full-bleed.md`](../../src/content/slides/_layouts/image-full-bleed.md) |
+| `quote` | Single short pull quote + attribution | [`quote.md`](../../src/content/slides/_layouts/quote.md) |
+| `code-with-callout` | Explain code with side-by-side notes | [`code-with-callout.md`](../../src/content/slides/_layouts/code-with-callout.md) |
+| `big-stat` | A single big number that lands a point | [`big-stat.md`](../../src/content/slides/_layouts/big-stat.md) |
+| `comparison-table` | 2-4 options across 3-5 attributes | [`comparison-table.md`](../../src/content/slides/_layouts/comparison-table.md) |
+| `process-steps` | 3-5 step linear process or workflow | [`process-steps.md`](../../src/content/slides/_layouts/process-steps.md) |
+| `timeline` | 4-8 dated events forming a story arc | [`timeline.md`](../../src/content/slides/_layouts/timeline.md) |
+| `team-avatars` | Introduce your team or co-presenters | [`team-avatars.md`](../../src/content/slides/_layouts/team-avatars.md) |
+| `closing-cta` | Final slide with CTA + contact channels | [`closing-cta.md`](../../src/content/slides/_layouts/closing-cta.md) |
+
+Helper classes (`.slide-grid-2`, `.slide-grid-3`, `.slide-card`, `.slide-quote`, `.slide-stat`, `.slide-table`, `.slide-steps`, `.slide-timeline`, `.slide-team`, `.slide-cta`, `.slide-section-divider`, `.slide-image-full`, `.slide-caption-overlay`) are defined in `src/styles/slides.css`. All scale responsively (stack vertically below 768px) and use the token system.
+
+## Backgrounds Catalog
+
+6 background modes documented in `src/content/slides/_layouts/backgrounds/`. Each snippet documents its dark/light text contract.
+
+| Mode | Snippet | Text contract |
+|---|---|---|
+| Solid color | [`solid-color.md`](../../src/content/slides/_layouts/backgrounds/solid-color.md) | Reveal auto-applies `has-dark-background` by luminance |
+| Gradient | [`gradient.md`](../../src/content/slides/_layouts/backgrounds/gradient.md) | Forced white via `[data-background-gradient]` cascade |
+| Image | [`image.md`](../../src/content/slides/_layouts/backgrounds/image.md) | Add `slide-bg-overlay--dark` for guaranteed contrast |
+| Video | [`video.md`](../../src/content/slides/_layouts/backgrounds/video.md) | Must be muted to autoplay (iOS); same overlay rule |
+| Pattern (CSS) | [`pattern.md`](../../src/content/slides/_layouts/backgrounds/pattern.md) | `slide-bg-pattern--dots` / `slide-bg-pattern--grid` helpers |
+| Iframe | [`iframe.md`](../../src/content/slides/_layouts/backgrounds/iframe.md) | Heavy; X-Frame-Options blocks some sites |
+
+### Gradient presets
+
+```
+Cool blue:    linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)
+Warm sunset:  linear-gradient(135deg, #7c2d12 0%, #f59e0b 100%)
+Brand:        linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)
+Neutral:      linear-gradient(180deg, #1f2937 0%, #111827 100%)
+Radial:       radial-gradient(circle at top, #2a76dd 0%, #0f172a 80%)
+```
+
+## Responsive Authoring
+
+- **When to use Tailwind grid vs Reveal `r-stretch`:** use `.slide-grid-2` / `.slide-grid-3` for content layouts that should adapt to mobile (the helpers stack vertically below 768px). Use Reveal's `r-stretch` only when you want a single element to fill remaining vertical space (rare on slides).
+- **Image sizing:** always include `width` and `height` attributes (CLS protection). Use `class="slide-image-full"` for a full-width image with shadow + rounded corners. For backgrounds, `data-background-size="cover"` works at every viewport; switch to `"contain"` for tall portrait images.
+- **Font scaling:** Reveal scales the slide container based on viewport; let it do the work. Use `em` (not `px`) for content text inside slides so it scales with the deck.
+- **Mobile fallbacks:** tables shrink font-size below 640px (`.slide-table` rule). Process steps switch to vertical below 768px. Three-column grids stack at the same breakpoint.
+- **Verify before shipping:** open every new slide at 375px / 768px / 1440px in both light and dark themes. Don't ship visual work without a real browser pass.
+
+## Anti-patterns
+
+| Don't | Do |
+|---|---|
+| `<h1 style="color:#fff">…</h1>` | `# …` — let `slides.css` cascade handle color via the `data-background-*` rules |
+| `<div style="width:800px">…</div>` | Use a responsive helper (`.slide-grid-2`, `.slide-image-full`, etc.) so it adapts on mobile |
+| Text directly on a busy photo | Add `class="slide-bg-overlay--dark"` (or `--light`) to the slide |
+| `<img src="…">` without `width`/`height` | Always include both attributes — prevents layout shift |
+| Skip a heading level (`h1` → `h3`) | Keep the hierarchy — speaker view and AEO twins read it |
+| `style="background:#1a1a2e"` on a section | `<!-- .slide: data-background-color="#1a1a2e" -->` |
+| Hardcoded English in the deck UI | Translate via `src/lib/translations/{en,es}.ts` |
+| New deck in only one language | Both `src/content/slides/en/` and `es/` versions, identical slug |
+
+## SEO & AEO
+
+Every internal deck ships with:
+
+- **Per-deck `<title>`, meta description, keywords.** Keywords derived from frontmatter `tags` plus a base set per language (`SlideDeckPage.astro`).
+- **Open Graph + Twitter card** via `BaseHead.astro`, including `heroImage` if defined in frontmatter.
+- **Canonical URL** + **hreflang** to the alternate-language version.
+- **JSON-LD `PresentationDigitalDocument`** with `name`, `description`, `datePublished`, `dateModified` (when `updatedDate` is set), `inLanguage`, `image`, `keywords`, `author`, `url`, plus `about: Event` if the deck has `eventName`.
+- **Markdown twin endpoint** at `/slides/<slug>.md` (and `/es/slides/<slug>.md`) with a structured `## Metadata` block (type, language, dates, tags, event, related post, author) and the full slide body — the canonical AEO surface.
+- **Sitemap inclusion** automatic via Astro's sitemap integration.
+
+External-link decks emit `CreativeWork` JSON-LD instead of `PresentationDigitalDocument`. External-embed decks add `embedUrl` to their twin.
+
+To improve a deck's AEO surface:
+
+1. Write a tight `description` (130-160 chars) that summarizes the talk's thesis.
+2. Set 2-4 specific `tags` — they become both keywords and JSON-LD entries.
+3. If the deck reflects a published blog post, set `relatedPost: <blog-slug>` (no leading `/blog/`).
+4. If you update the deck, set `updatedDate` so `dateModified` lands in JSON-LD.
+
 ## Adding External Decks
 
 ### External Embed
