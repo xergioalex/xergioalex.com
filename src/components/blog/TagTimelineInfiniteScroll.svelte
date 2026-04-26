@@ -299,7 +299,7 @@ function buildSeriesBadgeLabel(
   </div>
 
   <!-- Timeline end cap — outside the line container so the line terminates cleanly -->
-  {#if allLoaded && renderedPosts.length > pageSize}
+  {#if allLoaded && renderedPosts.length > 0}
     <div class="flex flex-col items-center gap-4 pb-6">
       <div class="w-12 h-12 rounded-full bg-secondary shadow-lg shadow-secondary/25 flex items-center justify-center ring-4 ring-secondary/10 dark:ring-secondary/20">
         <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">

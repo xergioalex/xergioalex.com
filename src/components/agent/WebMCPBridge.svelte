@@ -7,17 +7,17 @@ interface Props {
 
 const { lang = 'en' }: Props = $props();
 
+type WebMCPContext = {
+  provideContext?: (ctx: { tools: unknown[] }) => void;
+  registerTool?: Function;
+};
+
 let controller: AbortController | null = null;
 
 onMount(() => {
-  const mc = (
-    navigator as unknown as { modelContext?: { registerTool?: Function } }
-  ).modelContext;
-  if (!mc || typeof mc.registerTool !== 'function') return;
-
-  controller = new AbortController();
-  const signal = controller.signal;
-  const base = lang === 'es' ? '/es' : '';
+  const mc = (navigator as unknown as { modelContext?: WebMCPContext })
+    .modelContext;
+  if (!mc) return;
 
   const tools = [
     {
@@ -98,19 +98,32 @@ onMount(() => {
     },
   ];
 
-  for (const tool of tools) {
+  if (typeof mc.provideContext === 'function') {
     try {
-      mc.registerTool(tool, { signal });
+      mc.provideContext({ tools });
+      return;
     } catch (err) {
       console.warn(
-        '[WebMCPBridge] registerTool failed:',
+        '[WebMCPBridge] provideContext failed:',
         (err as Error).message
       );
     }
   }
 
-  // touch `base` so TS doesn't flag the unused-let in a future refactor
-  void base;
+  if (typeof mc.registerTool === 'function') {
+    controller = new AbortController();
+    const signal = controller.signal;
+    for (const tool of tools) {
+      try {
+        mc.registerTool(tool, { signal });
+      } catch (err) {
+        console.warn(
+          '[WebMCPBridge] registerTool failed:',
+          (err as Error).message
+        );
+      }
+    }
+  }
 });
 
 onDestroy(() => {

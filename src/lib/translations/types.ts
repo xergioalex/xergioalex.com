@@ -280,6 +280,8 @@ export interface SiteTranslations {
     topics: HighlightItem[];
     philosophyTitle: string;
     philosophyText: string;
+    decksTitle: string;
+    decksDescription: string;
     ctaTitle: string;
     ctaText: string;
     timelineTitle: string;
@@ -545,6 +547,45 @@ export interface SiteTranslations {
     // End-of-post CTA
     ctaTitle: string;
     ctaDescription: string;
+  };
+
+  // Slides listing page
+  slidesPage: {
+    title: string;
+    subtitle: string;
+    description: string;
+    heroDescription: string;
+    timelineTitle: string;
+    emptyState: string;
+    viewAll: string;
+  };
+
+  // Slides / deck pages
+  slides: {
+    exitToCatalog: string;
+    printPdf: string;
+    languageSwitch: string;
+    externalLink: {
+      openCta: string;
+      backToCatalog: string;
+    };
+    externalEmbed: {
+      openExternal: string;
+    };
+    languageNotice: string;
+    typeBadge: {
+      internal: string;
+      externalLink: string;
+      externalEmbed: string;
+    };
+    toolbar: {
+      backToCatalog: string;
+      switchLang: string;
+      themeToLight: string;
+      themeToDark: string;
+      enterFullscreen: string;
+      exitFullscreen: string;
+    };
   };
 
   // Errors

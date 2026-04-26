@@ -174,7 +174,10 @@ onDestroy(() => {
       aria-controls="language-dropdown"
       type="button"
     >
-      <span role="img" aria-label={currentLangConfig.name}>{currentLangConfig.flag}</span> {lang.toUpperCase()}
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      {lang.toUpperCase()}
       <svg
         class="w-5 h-5 transition-transform duration-200"
         class:rotate-180={languageOpen}
@@ -194,7 +197,7 @@ onDestroy(() => {
       >
         {#each alternateLanguageUrls as alt}
           <a href={alt.url} class="nav-link text-base sm:text-lg text-gray-300 text-center py-1 hover:text-blue-400 transition flex items-center gap-2" on:click={() => { trackEvent(EVENTS.LANGUAGE_SWITCH, { from: lang, to: alt.lang }); toggleMenu(); }}>
-            <span role="img" aria-label={alt.nativeName}>{alt.flag}</span> {alt.nativeName}
+            {alt.nativeName}
           </a>
         {/each}
       </div>

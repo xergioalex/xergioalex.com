@@ -5,9 +5,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-
-# Content preferences for AI crawlers (draft spec — delivered via HTTP Content-Signal header too; kept here as a human-readable declaration)
-# Content-Signal: ai-train=no, search=yes, ai-input=yes
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Sitemap location
 Sitemap: https://xergioalex.com/sitemap-index.xml

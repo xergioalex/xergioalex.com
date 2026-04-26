@@ -422,6 +422,30 @@ const { Content } = await render(post);
 </MainLayout>
 ```
 
+### Middleware Allowlist (CRITICAL)
+
+`src/middleware.ts` enforces a **hardcoded allowlist** of single-segment top-level paths via `KNOWN_ROOT_PATHS` and `KNOWN_ES_PATHS`. Any single-segment URL not in the set is rewritten to `/404` — **even if the file exists at `src/pages/<name>/index.astro`**.
+
+**Why it matters when adding a new page:**
+
+When you add a new top-level page (e.g. `/slides`, `/foo`), you MUST also add `'<name>'` to:
+
+- `KNOWN_ROOT_PATHS` — for the English version (`/<name>`)
+- `KNOWN_ES_PATHS` — for the Spanish version (`/es/<name>`), if it exists
+
+**Symptoms of forgetting:**
+
+| URL | Result | Explanation |
+|-----|--------|-------------|
+| `/<name>` | 404 | Single segment, not in allowlist → middleware rewrites to /404 |
+| `/<name>/` | 404 | Same as above |
+| `/<name>/sub-path` | 200 | Multi-segment, allowlist rule does not apply |
+| `/<name>/index.html` | 200 | Path contains `.`, middleware skips the check |
+
+**The smoking gun:** dev server logs show `[404] (rewrite) /<name>` — the `(rewrite)` literal is the marker. It comes from `context.rewrite()` in the middleware, NOT from Astro's router. Do NOT debug Astro routing, file-system caches, or `[...slug]` vs `[slug]` before checking this allowlist first.
+
+The bypass conditions (path contains `.` or starts with `/_astro/`, `/__vite`, `/@`) exist to let assets, HMR, and build artifacts through.
+
 ## API Routes
 
 ### Endpoint Pattern

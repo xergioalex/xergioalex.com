@@ -1,0 +1,45 @@
+---
+import type { Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  embedUrl: string;
+  externalUrl: string;
+  aspectRatio: '16:9' | '4:3' | '1:1';
+  title: string;
+  lang: Language;
+}
+
+const { embedUrl, externalUrl, aspectRatio, title, lang } = Astro.props;
+const t = getTranslations(lang);
+
+const aspectMap: Record<string, string> = {
+  '16:9': 'aspect-video',
+  '4:3': 'aspect-[4/3]',
+  '1:1': 'aspect-square',
+};
+const aspectClass = aspectMap[aspectRatio] || 'aspect-video';
+---
+
+<div class="flex flex-col items-center justify-center w-full h-full p-2 sm:p-4 overflow-hidden">
+  <div class={`w-full max-w-6xl ${aspectClass} relative overflow-hidden rounded-lg`}>
+    <iframe
+      src={embedUrl}
+      title={title}
+      class="absolute inset-0 w-full h-full border-0"
+      sandbox="allow-scripts allow-same-origin allow-popups"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+  <div class="mt-4 text-center">
+    <a
+      href={externalUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm text-gray-600 dark:text-gray-300 hover:underline"
+    >
+      {t.slides.externalEmbed.openExternal} ↗
+    </a>
+  </div>
+</div>

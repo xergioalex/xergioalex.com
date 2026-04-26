@@ -565,11 +565,55 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     philosophyTitle: 'Why I Speak',
     philosophyText:
       'In 2016, I gave my first public talk about Meteor.js at a small meetup in Pereira. I was terrified. But during Q&A, someone asked a question that made me realize something I hadn\u2019t fully understood about the framework myself. That moment changed everything \u2014 I wasn\u2019t just sharing knowledge, I was deepening it.<br /><br />Every talk I prepare forces me to organize my thoughts, question my assumptions, and find clarity in complexity. Every question from the audience opens a new perspective I hadn\u2019t considered. I speak because teaching is how I learn. And I organize community events because when people share openly \u2014 whether they\u2019re giving their first talk or their fiftieth \u2014 everyone in the room gets better. That\u2019s the cycle I want to keep alive.',
+    decksTitle: 'Decks & Slides',
+    decksDescription:
+      'Browse my presentation decks — from in-house Reveal.js slides to external talks hosted elsewhere.',
     ctaTitle: 'Want Me to Speak at Your Event?',
     ctaText:
       'I\u2019m always excited about speaking opportunities \u2014 whether it\u2019s a local meetup or an international conference. Let\u2019s chat about how I can contribute.',
     timelineTitle: 'My Talks',
     emptyState: 'No tech talks available yet. Check back soon!',
+  },
+
+  // Slides listing page
+  slidesPage: {
+    title: 'Slides',
+    subtitle: 'Presentations, decks & visual stories',
+    description:
+      'Browse all presentation decks by Sergio Alexander — from in-house Reveal.js slides to external talks hosted on other platforms.',
+    heroDescription:
+      'A collection of all my presentation decks — conference talks, meetup slides, and technical deep dives. Built in-house with Reveal.js or hosted on external platforms.',
+    timelineTitle: 'Slides Timeline',
+    emptyState: 'No slides available yet. Check back soon!',
+    viewAll: 'View all slides',
+  },
+
+  // Slides / deck pages
+  slides: {
+    exitToCatalog: 'Back to Tech Talks',
+    printPdf: 'Print to PDF',
+    languageSwitch: 'Ver en español',
+    externalLink: {
+      openCta: 'Open on {provider}',
+      backToCatalog: 'Back to catalog',
+    },
+    externalEmbed: {
+      openExternal: 'Open original',
+    },
+    languageNotice: 'Original deck is in {lang}',
+    typeBadge: {
+      internal: 'Built in-house',
+      externalLink: 'External',
+      externalEmbed: 'Embedded',
+    },
+    toolbar: {
+      backToCatalog: 'Back to catalog',
+      switchLang: 'Switch to {lang}',
+      themeToLight: 'Switch to light mode',
+      themeToDark: 'Switch to dark mode',
+      enterFullscreen: 'Enter fullscreen',
+      exitFullscreen: 'Exit fullscreen',
+    },
   },
 
   // Trading page
@@ -982,6 +1026,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'building-agents': 'Building Agents',
     'the-library-of-tomorrow': 'The Library of Tomorrow',
     'mastering-openclaw': 'Mastering OpenClaw',
+    'learning-mobile-development': 'Learning Mobile Development',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -998,6 +1043,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       "Reviews and reflections on sci-fi books, movies, and stories — where classic science fiction meets today's AI revolution. Born from a reading club inside the Pereira Tech Talks community.",
     'mastering-openclaw':
       'A deep dive into OpenClaw — the personal AI agent that lives on your machine, follows your rules, and gave rise to a new paradigm of local AI.',
+    'learning-mobile-development':
+      'An honest journey into mobile development — mapping the landscape and learning to build for Android and iOS without pretending to be an expert.',
   },
 
   // Date formatting

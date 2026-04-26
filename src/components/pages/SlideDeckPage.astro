@@ -1,0 +1,136 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import JsonLd from '@/components/JsonLd.astro';
+import ExternalEmbedView from '@/components/slides/ExternalEmbedView.astro';
+import ExternalLinkView from '@/components/slides/ExternalLinkView.astro';
+import RevealDeck from '@/components/slides/RevealDeck.svelte';
+import SlideLayout from '@/layouts/SlideLayout.astro';
+import type { Language } from '@/lib/i18n';
+import { getUrlPrefix } from '@/lib/i18n';
+import { getDeckSlug, isDraftDeck } from '@/lib/slides';
+
+interface Props {
+  lang: Language;
+  deck: CollectionEntry<'slides'>;
+}
+
+const { lang, deck } = Astro.props;
+const slug = getDeckSlug(deck.id);
+const { type } = deck.data;
+const isDraft = isDraftDeck(deck);
+const prefix = getUrlPrefix(lang);
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+const canonicalUrl = `${siteUrl}${prefix}/slides/${slug}`;
+
+const tags = deck.data.tags ?? [];
+const baseKeywords =
+  lang === 'en'
+    ? ['slides', 'tech talk', 'presentation', 'Reveal.js', 'Sergio Florez']
+    : [
+        'diapositivas',
+        'charla técnica',
+        'presentación',
+        'Reveal.js',
+        'Sergio Florez',
+      ];
+const keywords = Array.from(new Set([...tags, ...baseKeywords]));
+
+const jsonLdBase = {
+  '@context': 'https://schema.org' as const,
+  name: deck.data.title,
+  description: deck.data.description,
+  datePublished: deck.data.pubDate.toISOString(),
+  ...(deck.data.updatedDate && {
+    dateModified: deck.data.updatedDate.toISOString(),
+  }),
+  inLanguage: lang,
+  ...(deck.data.heroImage && {
+    image: new URL(deck.data.heroImage, Astro.site ?? Astro.url).href,
+  }),
+  ...(tags.length > 0 && { keywords: tags.join(', ') }),
+  author: {
+    '@type': 'Person' as const,
+    name: 'Sergio Alexander Florez Galeano',
+    url: siteUrl,
+  },
+};
+
+const eventMeta = deck.data.eventName
+  ? {
+      about: {
+        '@type': 'Event' as const,
+        name: deck.data.eventName,
+        ...(deck.data.eventDate && {
+          startDate: deck.data.eventDate.toISOString(),
+        }),
+        ...(deck.data.eventUrl && { url: deck.data.eventUrl }),
+      },
+    }
+  : {};
+
+const jsonLd =
+  type === 'external-link'
+    ? {
+        ...jsonLdBase,
+        '@type': 'CreativeWork' as const,
+        url: deck.data.externalUrl,
+        ...eventMeta,
+      }
+    : {
+        ...jsonLdBase,
+        '@type': 'PresentationDigitalDocument' as const,
+        url: canonicalUrl,
+        ...eventMeta,
+      };
+---
+
+{type === 'internal' && (
+  <SlideLayout
+    lang={lang}
+    title={deck.data.title}
+    description={deck.data.description}
+    image={deck.data.heroImage}
+    deckSlug={slug}
+    isDraft={isDraft}
+    keywords={keywords}
+  >
+    <Fragment slot="head">
+      <JsonLd data={jsonLd} />
+    </Fragment>
+    <RevealDeck
+      client:only="svelte"
+      theme={deck.data.theme}
+      transition={deck.data.transition}
+      syntaxHighlight={deck.data.syntaxHighlight}
+      math={deck.data.math}
+      bodyMarkdown={deck.body || ''}
+    />
+  </SlideLayout>
+)}
+
+{type === 'external-embed' && (
+  <SlideLayout
+    lang={lang}
+    title={deck.data.title}
+    description={deck.data.description}
+    image={deck.data.heroImage}
+    deckSlug={slug}
+    isDraft={isDraft}
+    keywords={keywords}
+  >
+    <Fragment slot="head">
+      <JsonLd data={jsonLd} />
+    </Fragment>
+    <ExternalEmbedView
+      embedUrl={deck.data.embedUrl}
+      externalUrl={deck.data.externalUrl}
+      aspectRatio={deck.data.aspectRatio}
+      title={deck.data.title}
+      lang={lang}
+    />
+  </SlideLayout>
+)}
+
+{type === 'external-link' && (
+  <ExternalLinkView deck={deck} lang={lang} jsonLd={jsonLd} />
+)}

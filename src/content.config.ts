@@ -61,6 +61,60 @@ const series = defineCollection({
   }),
 });
 
+const slideBaseSchema = z.object({
+  title: z.string().max(100),
+  description: z.string().min(130).max(160),
+  pubDate: z.coerce.date(),
+  updatedDate: z.coerce.date().optional(),
+  heroImage: z.string().optional(),
+  tags: z.array(z.string()).max(5).optional(),
+  draft: z.boolean().default(false),
+  eventName: z.string().optional(),
+  eventDate: z.coerce.date().optional(),
+  eventUrl: z.url().optional(),
+  relatedPost: z.string().optional(),
+});
+
+const internalSlideSchema = slideBaseSchema.extend({
+  type: z.literal('internal'),
+  theme: z.enum(['dark', 'light']).default('dark'),
+  transition: z
+    .enum(['none', 'fade', 'slide', 'convex', 'concave', 'zoom'])
+    .default('slide'),
+  syntaxHighlight: z.boolean().default(true),
+  math: z.boolean().default(false),
+});
+
+const externalLinkSlideSchema = slideBaseSchema.extend({
+  type: z.literal('external-link'),
+  externalUrl: z.url(),
+  provider: z.string().optional(),
+});
+
+const externalEmbedSlideSchema = slideBaseSchema.extend({
+  type: z.literal('external-embed'),
+  externalUrl: z.url(),
+  embedUrl: z.url(),
+  provider: z.string().optional(),
+  aspectRatio: z.enum(['16:9', '4:3', '1:1']).default('16:9'),
+});
+
+const slideSchema = z.discriminatedUnion('type', [
+  internalSlideSchema,
+  externalLinkSlideSchema,
+  externalEmbedSlideSchema,
+]);
+
+const slides = defineCollection({
+  loader: glob({
+    base: './src/content/slides',
+    // Exclude `_*` files and any path under `_layouts/` — author-only snippets, never decks.
+    pattern: ['**/*.{md,mdx}', '!**/_*/**', '!**/_*.{md,mdx}'],
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/i, ''),
+  }),
+  schema: slideSchema,
+});
+
 const pages = defineCollection({
   // Markdown source files for agent-friendly .md endpoints (non-blog pages)
   loader: glob({
@@ -75,4 +129,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { blog, tags, series, pages };
+export const collections = { blog, tags, series, slides, pages };
