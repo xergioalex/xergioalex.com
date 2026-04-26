@@ -12,34 +12,56 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const GET: APIRoute = ({ props }) => {
   const { deck } = props;
+  const data = deck.data;
   let markdown = '';
 
-  markdown += `# ${deck.data.title}\n\n`;
-  markdown += `> ${deck.data.description}\n\n`;
+  // Title and description
+  markdown += `# ${data.title}\n\n`;
+  markdown += `> ${data.description}\n\n`;
 
-  if (deck.data.eventName) {
-    markdown += `**Event:** ${deck.data.eventName}`;
-    if (deck.data.eventDate) {
-      markdown += ` (${deck.data.eventDate.toISOString().split('T')[0]})`;
+  // Metadata block (machine-readable for AI agents)
+  markdown += '## Metadata\n\n';
+  markdown += `- **Type:** ${data.type}\n`;
+  markdown += `- **Language:** en\n`;
+  markdown += `- **Published:** ${data.pubDate.toISOString().split('T')[0]}\n`;
+  if (data.updatedDate) {
+    markdown += `- **Updated:** ${data.updatedDate.toISOString().split('T')[0]}\n`;
+  }
+  if (data.tags && data.tags.length > 0) {
+    markdown += `- **Tags:** ${data.tags.join(', ')}\n`;
+  }
+  if (data.eventName) {
+    markdown += `- **Event:** ${data.eventName}`;
+    if (data.eventDate) {
+      markdown += ` (${data.eventDate.toISOString().split('T')[0]})`;
     }
-    markdown += '\n\n';
+    if (data.eventUrl) markdown += ` — ${data.eventUrl}`;
+    markdown += '\n';
+  }
+  if (data.relatedPost) {
+    markdown += `- **Related post:** /blog/${data.relatedPost}\n`;
+  }
+  markdown += '- **Author:** Sergio Alexander Florez Galeano (XergioAleX)\n';
+  markdown += '\n';
+
+  // Type-specific fields
+  if (data.type === 'external-link') {
+    markdown += '## External Presentation\n\n';
+    markdown += `- **URL:** ${data.externalUrl}\n`;
+    if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;
+    markdown += '\n';
+  } else if (data.type === 'external-embed') {
+    markdown += '## Embedded Presentation\n\n';
+    markdown += `- **Canonical URL:** ${data.externalUrl}\n`;
+    markdown += `- **Embed URL:** ${data.embedUrl}\n`;
+    if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;
+    markdown += '\n';
   }
 
-  if (deck.data.type === 'internal') {
-    markdown += deck.body || '';
-  } else if (deck.data.type === 'external-link') {
-    markdown += `**Type:** External presentation\n`;
-    markdown += `**URL:** ${deck.data.externalUrl}\n`;
-    if (deck.data.provider) markdown += `**Provider:** ${deck.data.provider}\n`;
-    markdown += '\n';
-    if (deck.body) markdown += deck.body;
-  } else if (deck.data.type === 'external-embed') {
-    markdown += `**Type:** Embedded presentation\n`;
-    markdown += `**URL:** ${deck.data.externalUrl}\n`;
-    markdown += `**Embed URL:** ${deck.data.embedUrl}\n`;
-    if (deck.data.provider) markdown += `**Provider:** ${deck.data.provider}\n`;
-    markdown += '\n';
-    if (deck.body) markdown += deck.body;
+  // Body — full slide content for internal decks, supplementary copy for externals
+  if (deck.body?.trim()) {
+    markdown += '## Content\n\n';
+    markdown += deck.body;
   }
 
   return new Response(markdown, {

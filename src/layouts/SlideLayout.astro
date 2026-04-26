@@ -15,6 +15,7 @@ interface Props {
   image?: string;
   deckSlug: string;
   isDraft?: boolean;
+  keywords?: string[];
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   image,
   deckSlug,
   isDraft = false,
+  keywords,
 } = Astro.props;
 
 const t = getTranslations(lang);
@@ -43,6 +45,7 @@ const backLabel = SITE_TITLE.split(' - ')[0];
       description={description}
       image={image}
       lang={lang}
+      keywords={keywords}
       ogType="article"
     />
     <slot name="head" />
