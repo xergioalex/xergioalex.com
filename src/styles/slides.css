@@ -20,8 +20,6 @@
   --slide-toolbar-fg: rgba(0, 0, 0, 0.55);
   --slide-toolbar-fg-hover: rgba(0, 0, 0, 0.9);
   --slide-toolbar-border: rgba(0, 0, 0, 0.1);
-  --slide-back-link-fg: rgba(0, 0, 0, 0.5);
-  --slide-back-link-fg-hover: rgba(0, 0, 0, 0.85);
 
   /* Reveal.js variable overrides — drive Reveal directly via its public API */
   --r-background-color: var(--slide-bg);
@@ -70,8 +68,6 @@
   --slide-toolbar-fg: rgba(255, 255, 255, 0.65);
   --slide-toolbar-fg-hover: rgba(255, 255, 255, 0.95);
   --slide-toolbar-border: rgba(255, 255, 255, 0.1);
-  --slide-back-link-fg: rgba(255, 255, 255, 0.55);
-  --slide-back-link-fg-hover: rgba(255, 255, 255, 0.9);
 
   /* Reveal overrides */
   --r-background-color: var(--slide-bg);
@@ -233,15 +229,51 @@ body.reveal-theme-dark {
   color: #111111;
 }
 
-/* Reveal controls + progress already reference --r-controls-color / --r-progress-color */
+/* Reveal controls + progress: reveal.css hardcodes .controls{color:#000}.
+   Without a theme loaded, we must override that explicitly. */
+
+.reveal .controls {
+  color: var(--r-controls-color);
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+}
+
+.reveal .slide-number {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+}
+
+.reveal .slide-number a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.reveal .progress span {
+  background: var(--r-progress-color);
+}
 
 /* ---------- 4. Chrome — toolbar + back link ---------- */
 
 .slide-back-link {
   position: fixed;
-  top: max(12px, env(safe-area-inset-top));
+  top: max(10px, env(safe-area-inset-top));
   left: max(16px, env(safe-area-inset-left));
   z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #0f1124;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font:
     600 13px / 1 ui-sans-serif,
     system-ui,
@@ -250,27 +282,34 @@ body.reveal-theme-dark {
     Roboto,
     sans-serif;
   text-decoration: none;
-  color: var(--slide-back-link-fg);
-  transition: color 0.2s ease;
+  color: rgba(255, 255, 255, 0.65);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .slide-back-link:hover,
 .slide-back-link:focus-visible {
-  color: var(--slide-back-link-fg-hover);
+  color: rgba(255, 255, 255, 0.95);
+  background: #161836;
 }
 
 .slide-back-link:focus-visible {
   outline: 2px solid var(--slide-accent);
-  outline-offset: 4px;
-  border-radius: 4px;
+  outline-offset: 2px;
+}
+
+.slide-back-link__logo {
+  height: 18px;
+  width: auto;
+  display: block;
+  margin-left: 4px;
+  filter: brightness(1.6) contrast(0.9);
 }
 
 @media (max-width: 480px) {
-  .slide-back-link {
-    font-size: 16px;
-    /* On small viewports, show only the arrow to avoid colliding with slide titles */
-  }
-  .slide-back-link__label {
+  .slide-back-link__logo {
     display: none;
   }
 }
