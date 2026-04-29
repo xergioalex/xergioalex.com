@@ -647,9 +647,9 @@ Note: Full CRUD with SQLDelight persistence, Material 3, dark mode, and native s
 ## 4. KMP Tap Duel Game
 
 <div style="display:flex;justify-content:center;gap:0.3em;">
-  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-1.webp" alt="Tap Duel - start" width="108" height="192" style="border-radius:6px;">
-  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-2.webp" alt="Tap Duel - playing" width="108" height="192" style="border-radius:6px;">
-  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-3.webp" alt="Tap Duel - winner" width="108" height="192" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-1.webp" alt="Tap Duel - start" width="120" height="213" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-2.webp" alt="Tap Duel - playing" width="120" height="213" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-3.webp" alt="Tap Duel - winner" width="120" height="213" style="border-radius:6px;">
 </div>
 
 <p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Local 2-player duel — shared UI smooth even in a game</p>
