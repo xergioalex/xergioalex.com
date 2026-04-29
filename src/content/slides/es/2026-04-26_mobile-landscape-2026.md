@@ -30,7 +30,7 @@ Note: Abrir con el ángulo personal. Esto no es un reporte comparativo — es el
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Parte 01</span>
+  <span class="eyebrow">Acto 1</span>
   <h2>Por qué desarrollo móvil para mí siempre fue "algún día"</h2>
 </div>
 
@@ -100,189 +100,253 @@ Note: La primera barrera real: hardware insuficiente. Eclipse + ADT + emulador n
 
 ---
 
-## Después probé híbrido
+## Buscando alternativas encontré PhoneGap
 
-<div class="slide-grid-2">
-  <div>
-    <h3>Lo que funcionó</h3>
-    <ul>
-      <li>Cordova → primeras apps en producción</li>
-      <li>Ionic → mejor tooling, prototipos reales</li>
-      <li>HTML + CSS + JS dentro de un contenedor nativo</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Dónde se rompió</h3>
-    <ul>
-      <li>Cámara, GPS, sensores, push</li>
-      <li>El bridge era demasiado lento</li>
-      <li>Se sentía como una app web — porque lo era</li>
-    </ul>
-  </div>
-</div>
+<img src="/images/slides/mobile-landscape-2026/phonegap-cordova.webp" alt="PhoneGap y Apache Cordova: HTML5, CSS3 y JavaScript compilando a iOS, Android y Windows" width="1024" height="576" class="slide-image-full" />
+
+Note: PhoneGap / Apache Cordova fue la primera alternativa real. HTML + CSS + JS empaquetado como app nativa. La promesa: escribir una vez, correr en todas las plataformas. Para un estudiante sin recursos, era la salida.
 
 ---
 
-<!-- ==================== Sección 02 — La diferencia real ==================== -->
+## Ahora faltaba la idea
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
+<img src="/images/slides/mobile-landscape-2026/idea-lightbulb.webp" alt="Bombilla encendida representando una idea" width="400" height="400" style="display:block;margin:0 auto;" />
 
-<div class="slide-section-divider">
-  <span class="eyebrow">Parte 02</span>
-  <h2>La diferencia real no es el framework</h2>
-</div>
+Note: Tenía la herramienta pero no el proyecto. La barrera técnica estaba resuelta — ahora el problema era otro: ¿qué construir?
 
 ---
 
-## El runtime ya no es tuyo
+## El equipo
+
+<img src="/images/slides/mobile-landscape-2026/university-team.webp" alt="Equipo del proyecto universitario: Sergio Alexander Florez Galeano (líder y desarrollador), Camilo Fernández Bernal (administración y marketing), Miguel Angel Acevedo Franco (experto en karate y comunicador)" width="1024" height="576" class="slide-image-full" />
+
+Note: El equipo de la materia de emprendimiento. Tres perfiles distintos — un desarrollador, un administrador y un comunicador. La app móvil era el producto del proyecto final.
+
+---
+
+## La sesión de fotos para la app de karate
+
+<img src="/images/slides/mobile-landscape-2026/karate-photos.webp" alt="Galería de fotos de una sesión fotográfica de karate para la app móvil del proyecto universitario" width="850" height="478" style="display:block;margin:0 auto;" />
+
+Note: La idea fue una app de karate. Hicimos una sesión de fotos completa para tener el contenido. El proyecto era real — no un ejercicio académico de mentira.
+
+---
+
+<img src="/images/slides/mobile-landscape-2026/img_2070.webp" alt="Selfie del equipo durante la sesión de fotos de karate" width="520" height="390" style="display:block;margin:0 auto;" />
+
+Note: La selfie del día de la sesión. Dos amigos, un proyecto universitario y una cámara.
+
+---
 
 <div class="slide-grid-2 slide-grid--align-center">
   <div>
-
-```kotlin
-class MainActivity : AppCompatActivity() {
-  override fun onCreate(
-    savedInstanceState: Bundle?
-  ) {
-    super.onCreate(savedInstanceState)
-    // La pantalla que ves ya fue
-    // destruida y recreada por el SO.
-    // Rehidrata desde disco, no de memoria.
-  }
-}
-```
-
+    <img src="/images/slides/mobile-landscape-2026/img_1923.webp" alt="Kata de karate — posición de golpe" width="480" height="640" style="display:block;margin:0 auto;" />
   </div>
   <div>
-    <h3>Mira el parámetro</h3>
-    <ul>
-      <li><code>savedInstanceState</code> existe porque el SO puede matar tu pantalla en cualquier momento</li>
-      <li>El estado tiene que sobrevivir en disco, no en RAM</li>
-      <li>No eres dueño del ciclo de vida — el SO lo es</li>
-    </ul>
-  </div>
-</div>
-
-Note: Una pequeña pieza de código hace más trabajo que un párrafo entero acá. La presencia de `savedInstanceState` en la firma más básica de Android es toda la historia del ciclo de vida móvil comprimida en una línea.
-
----
-
-## Instinto de backend vs realidad móvil
-
-<div class="slide-grid-2">
-  <div>
-    <h3>Lo que sabía</h3>
-    <ul>
-      <li>El estado vive en el servidor</li>
-      <li>Request → response → snapshot</li>
-      <li>Tres líneas levantan un servidor</li>
-      <li>El navegador es una pestaña predecible</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Lo que el mundo móvil realmente es</h3>
-    <ul>
-      <li>El estado vive en la pantalla</li>
-      <li>El SO la destruye y la recrea</li>
-      <li>El ciclo de vida ramifica cada decisión</li>
-      <li>El runtime es de Android o iOS</li>
-    </ul>
+    <img src="/images/slides/mobile-landscape-2026/img_1954.webp" alt="Kata de karate — patada lateral" width="480" height="640" style="display:block;margin:0 auto;" />
   </div>
 </div>
 
 ---
 
-<!-- ==================== Sección 03 — Cuatro categorías ==================== -->
+<div class="slide-grid-2 slide-grid--align-center">
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/img_2037.webp" alt="Kata de karate — patada alta" width="480" height="640" style="display:block;margin:0 auto;" />
+  </div>
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/img_2049.webp" alt="Kata de karate — posición defensiva" width="480" height="640" style="display:block;margin:0 auto;" />
+  </div>
+</div>
+
+---
+
+<div class="slide-grid-2 slide-grid--align-center">
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/img_2045.webp" alt="Kata de karate — posición de guardia" width="480" height="640" style="display:block;margin:0 auto;" />
+  </div>
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/img_2044.webp" alt="Kata de karate — posición de bloqueo" width="480" height="640" style="display:block;margin:0 auto;" />
+  </div>
+</div>
+
+---
+
+<img src="/images/slides/mobile-landscape-2026/dosensei-logo.webp" alt="DoSensei — logo de la app de karate con karateka en posición de bloqueo" width="900" height="450" style="display:block;margin:0 auto;" />
+
+Note: DoSensei — el nombre de la app. El primer proyecto móvil real, nacido de una materia de emprendimiento.
+
+---
+
+<div class="slide-grid-3">
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/dosensei-screen1.webp" alt="DoSensei — pantalla principal con secciones de Karate y Defensa Personal" width="380" height="380" style="display:block;margin:0 auto;" />
+  </div>
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/dosensei-screen2.webp" alt="DoSensei — menú de Karate con Historia, Glosario y Guías" width="380" height="380" style="display:block;margin:0 auto;" />
+  </div>
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/dosensei-screen3.webp" alt="DoSensei — guías de karate por cinturón desde blanco hasta negro" width="380" height="700" style="display:block;margin:0 auto;" />
+  </div>
+</div>
+
+Note: Los screenshots reales de DoSensei. Una app hecha con PhoneGap — HTML, CSS y JS empaquetado como app nativa. Funcionaba, se veía bien para la época, y fue mi primera app móvil en producción.
+
+---
+
+<div class="slide-grid-3">
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/dosensei-screen4.webp" alt="DoSensei — detalle de técnica Kihon Tettsui-uchi con foto y descripción" width="380" height="620" style="display:block;margin:0 auto;" />
+  </div>
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/dosensei-screen5.webp" alt="DoSensei — detalle de técnica Kihon Oi-zuki con foto y descripción" width="380" height="620" style="display:block;margin:0 auto;" />
+  </div>
+  <div>
+    <img src="/images/slides/mobile-landscape-2026/dosensei-screen6.webp" alt="DoSensei — detalle de técnica Kihon Gedan-barai con foto y descripción" width="380" height="620" style="display:block;margin:0 auto;" />
+  </div>
+</div>
+
+Note: Las pantallas de detalle de cada técnica — foto real de la sesión + descripción del movimiento. El contenido era nuestro, no de stock. Eso hacía la diferencia.
+
+---
+
+## 🚀 KDoSensei — demo web
+
+<p style="text-align:center;font-size:1.2em;"><a href="https://kdosensei.xergioalex.com/" target="_blank">kdosensei.xergioalex.com</a></p>
+
+Note: La demo web original de la app de karate sigue viva. Es la versión web de lo que era la app híbrida — HTML, CSS y JS puro. La audiencia puede explorarla después de la charla.
+
+---
+
+## ✅ Lo híbrido me gustó
+
+<ul>
+  <li>KDoSensei fue funcional — y fue sencillo de construir</li>
+  <li>Una web embebida dentro de un contenedor nativo</li>
+  <li>Para apps basadas en contenido simple, brillan</li>
+  <li>HTML + CSS + JS → el stack que ya conocía</li>
+  <li>Sin compilar para cada plataforma por separado</li>
+</ul>
+
+Note: Hay que ser honesto — lo híbrido resolvió el problema real. Para una app de contenido como DoSensei, era más que suficiente. La barrera de entrada desapareció.
+
+---
+
+## 🔁 Otros intentos a lo largo de los años
+
+<ul>
+  <li><strong>Ionic</strong> — mejor tooling, prototipos más rápidos</li>
+  <li><strong>Meteor + Cordova</strong> — reactivo, pero frágil en producción</li>
+  <li><strong>React Native</strong> — más cerca de nativo, pero con sus propias fricciones</li>
+  <li>Cada intento me muestra los límites del anterior</li>
+  <li>Y todos comparten el mismo problema de fondo...</li>
+</ul>
+
+Note: No fue un solo intento. Son años probando variantes — cada una mejor que la anterior, pero todas con el mismo techo. El siguiente slide lo hace explícito.
+
+---
+
+## <span style="color:#f59e0b;">⚠</span> Las costuras siempre se notan
+
+<ul>
+  <li>Cámara, GPS, sensores, push → el bridge es lento</li>
+  <li>Animaciones complejas → se siente como una web</li>
+  <li>UX nativa → imposible de replicar en un WebView</li>
+  <li>Performance en dispositivos de gama baja → inaceptable</li>
+  <li>Las app stores penalizan la experiencia no-nativa</li>
+</ul>
+
+Note: Lo híbrido tiene un techo. Y ese techo se siente rápido cuando necesitás algo más que mostrar contenido. Las costuras entre web y nativo son visibles para el usuario.
+
+---
+
+## Y de nuevo me alejé del desarrollo móvil
+
+<img src="/images/slides/mobile-landscape-2026/walked-away-from-mobile.webp" alt="Desarrollador alejándose del teléfono móvil hacia su zona de confort: servidores, terminales, Docker, bases de datos y APIs" width="1024" height="576" class="slide-image-full" />
+
+Note: Momento de honestidad con la audiencia: después de varios intentos frustrados, la decisión fue volver a lo conocido — backend, infra, DevOps. El móvil quedó como "algún día". Muchos en la audiencia van a reconocerse.
+
+---
+
+## Charlas de desarrollo móvil
+
+<table class="slide-table" style="font-size:0.55em;">
+  <thead>
+    <tr><th>#</th><th>Fecha</th><th>Post / Evento</th><th>Charla móvil</th><th>Speaker</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>2017-07-04</td><td><a href="https://www.pereiratechtalks.org/ionic-angular-blockchain-bitcoin-ethereum-y-solidity-3" target="_blank">Ionic + Angular && Blockchain</a></td><td>Desarrollo móvil con Ionic + Angular</td><td>Julian Patiño</td></tr>
+    <tr><td>2</td><td>2017-08-01</td><td><a href="https://www.pereiratechtalks.org/react-native-seguridad-en-npm" target="_blank">React Native && Seguridad en npm</a></td><td>Introducción a React Native</td><td>Carlos Álvaro González</td></tr>
+    <tr><td>3</td><td>2019-03-16</td><td><a href="https://www.pereiratechtalks.org/259646321-pereira-girls-day" target="_blank">Pereira Girls Day</a></td><td>Product Flavors en Android</td><td>Zorayda Gutiérrez</td></tr>
+    <tr><td>4</td><td>2019-09-07</td><td><a href="https://www.pereiratechtalks.org/264304830-pereira-saturday-tec" target="_blank">Pereira – Saturday Tech Talks</a></td><td>Patrones de arquitectura – Android (MVP/MVVM)</td><td>Zorayda Gutiérrez</td></tr>
+    <tr><td>5</td><td>2022-09-29</td><td><a href="https://www.pereiratechtalks.org/288702513-noche-de-accesibilid" target="_blank">Noche de Accesibilidad, diseño y desarrollo iOS</a></td><td>Cómo comenzar en el desarrollo de iOS</td><td>Yennifer Hurtado Arce</td></tr>
+  </tbody>
+</table>
+
+Note: Charlas de desarrollo móvil que hemos organizado en la comunidad. El tema siempre estuvo presente — pero siempre desde la perspectiva de otros speakers. Ahora es mi turno.
+
+---
+
+<!-- ==================== Sección 02 — El panorama móvil 2026 ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Parte 03</span>
-  <h2>Cuatro categorías antes de la lista</h2>
+  <span class="eyebrow">Acto 2</span>
+  <h2>El panorama móvil en 2026</h2>
 </div>
 
 ---
 
 ## Las cuatro formas que toma el ecosistema
 
-<div class="slide-grid-2">
-  <div class="slide-card">
+<div class="slide-grid-2" style="max-height:380px;align-content:start;gap:0.4em;font-size:0.7em;margin-top:0.2em;">
+  <div class="slide-card" style="padding:0.5em;">
     <span class="slide-card__icon">🔒</span>
     <h3>Nativo</h3>
     <p>Una plataforma, un lenguaje, acceso total al SO. <strong>Máximo control, máximo lock-in.</strong></p>
+    <p style="margin-top:0.3em;font-size:0.85em;color:#64748b;">Swift · Kotlin · Jetpack Compose · SwiftUI</p>
   </div>
-  <div class="slide-card">
+  <div class="slide-card" style="padding:0.5em;">
     <span class="slide-card__icon">🔀</span>
     <h3>Cross-platform, UI nativa</h3>
     <p>Lógica o UI compartida que compila a nativo. <strong>KMP y Flutter viven acá — filosofías distintas.</strong></p>
+    <p style="margin-top:0.3em;font-size:0.85em;color:#64748b;">Flutter · KMP · React Native · .NET MAUI</p>
   </div>
-  <div class="slide-card">
+  <div class="slide-card" style="padding:0.5em;">
     <span class="slide-card__icon">📦</span>
     <h3>Híbrido</h3>
     <p>Tecnología web dentro de un shell nativo. <strong>Mínima fricción, techos reales.</strong></p>
+    <p style="margin-top:0.3em;font-size:0.85em;color:#64748b;">Ionic · Capacitor · Cordova · Tauri Mobile</p>
   </div>
-  <div class="slide-card">
+  <div class="slide-card" style="padding:0.5em;">
     <span class="slide-card__icon">🌐</span>
     <h3>Web / PWA</h3>
     <p>Un sitio que instalas en la pantalla de inicio. <strong>Sin app store. Sin sensación nativa.</strong></p>
+    <p style="margin-top:0.3em;font-size:0.85em;color:#64748b;">Service Workers · Web APIs · Workbox · PWABuilder</p>
   </div>
 </div>
 
 ---
 
-## Como pilas de arquitectura
+<img src="/images/blog/posts/mobile-development-landscape-2026/categories-es.webp" alt="Diagrama de cuatro torres de arquitectura comparando Nativo, Cross-platform UI nativa, Híbrido y Web/PWA. Cada torre muestra las capas entre el código del desarrollador y el hardware del dispositivo." width="1050" height="657" style="display:block;margin:0 auto;" />
 
-<img src="/images/blog/posts/mobile-development-landscape-2026/categories-es.webp" alt="Diagrama de cuatro torres de arquitectura comparando Nativo, Cross-platform UI nativa, Híbrido y Web/PWA. Cada torre muestra las capas entre el código del desarrollador y el hardware del dispositivo." width="1400" height="876" class="slide-image-full" />
-
-<small>De izquierda a derecha: más capas entre tu código y el dispositivo. Nativo es el camino más directo; PWA, además de capas, está restringido por el sandbox del navegador.</small>
-
-Note: Este es el diagrama del blog post. Recórrelo de izquierda a derecha. La audiencia recordará este diagrama más tiempo que cualquier lista.
+Note: De izquierda a derecha: más capas entre tu código y el dispositivo. Nativo es el camino más directo; PWA, además de capas, está restringido por el sandbox del navegador.
 
 ---
 
-<!-- ==================== Sección 04 — Nueve opciones ==================== -->
-
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
-
-<div class="slide-section-divider">
-  <span class="eyebrow">Parte 04</span>
-  <h2>Nueve opciones en el mapa</h2>
-</div>
-
----
-
-## Las que vale la pena considerar
-
-- **Android nativo** — Kotlin + Jetpack Compose <!-- .element: class="fragment fade-up" -->
-- **iOS nativo** — Swift + SwiftUI <!-- .element: class="fragment fade-up" -->
-- **Flutter** — Dart + motor Impeller <!-- .element: class="fragment fade-up" -->
-- **React Native** — JS/TS, nativo vía JSI <!-- .element: class="fragment fade-up" -->
-- **Kotlin Multiplatform** — lógica compartida, UI nativa <!-- .element: class="fragment fade-up" -->
-- **Ionic + Capacitor** — web dentro de un WebView <!-- .element: class="fragment fade-up" -->
-- **.NET MAUI** — C#, sucesor de Xamarin <!-- .element: class="fragment fade-up" -->
-- **PWA** — sitio instalable <!-- .element: class="fragment fade-up" -->
-- **~~Xamarin~~** — EOL Mayo 2024 · no empieces acá <!-- .element: class="fragment fade-up" -->
-
-Note: Revelar uno por uno. Unos 10 segundos por opción. El punto es el volumen — la audiencia tiene que sentir el tamaño del espacio de decisión antes de que lo reduzcamos.
-
----
-
-## Lado a lado
-
-<table class="slide-table">
+<table class="slide-table" style="font-size:0.75em;">
   <thead>
-    <tr><th>Opción</th><th>Lenguaje</th><th>Plataformas</th><th>UI</th></tr>
+    <tr><th></th><th>Opción</th><th>Lenguaje</th><th>Plataformas</th><th>UI</th></tr>
   </thead>
   <tbody>
-    <tr><td>Android nativo</td><td>Kotlin + Compose</td><td>Android</td><td>Nativa</td></tr>
-    <tr><td>iOS nativo</td><td>Swift + SwiftUI</td><td>Apple</td><td>Nativa</td></tr>
-    <tr><td>Kotlin Multiplatform</td><td>Kotlin</td><td>Android, iOS, Desktop, Web</td><td>Nativa (o Compose MP)</td></tr>
-    <tr><td>Flutter</td><td>Dart</td><td>Android, iOS, Web, Desktop</td><td>Custom (Impeller)</td></tr>
-    <tr><td>React Native</td><td>JS / TS</td><td>Android, iOS</td><td>Nativa vía JSI</td></tr>
-    <tr><td>.NET MAUI</td><td>C#</td><td>Android, iOS, Win, macOS</td><td>Nativa vía .NET</td></tr>
-    <tr><td>Ionic + Capacitor</td><td>HTML / CSS / JS</td><td>Android, iOS, Web</td><td>WebView</td></tr>
-    <tr><td>PWA</td><td>HTML / CSS / JS</td><td>Cualquier navegador</td><td>Web</td></tr>
-    <tr><td><s>Xamarin</s></td><td><s>C#</s></td><td>—</td><td>EOL Mayo 2024</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-android.webp" alt="Android" width="28" height="28" /></td><td>Android nativo</td><td>Kotlin + Compose</td><td>Android</td><td>Nativa</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-ios.webp" alt="iOS" width="28" height="28" /> <img src="/images/slides/mobile-landscape-2026/logo-swift.webp" alt="Swift" width="28" height="28" /></td><td>iOS nativo</td><td>Swift + SwiftUI</td><td>Apple</td><td>Nativa</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="Kotlin" width="28" height="28" /></td><td>Kotlin Multiplatform</td><td>Kotlin</td><td>Android, iOS, Desktop, Web</td><td>Nativa (o Compose MP)</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-flutter.webp" alt="Flutter" width="28" height="28" /></td><td>Flutter</td><td>Dart</td><td>Android, iOS, Web, Desktop</td><td>Custom (Impeller)</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-react-native.webp" alt="React Native" width="28" height="28" /></td><td>React Native</td><td>JS / TS</td><td>Android, iOS, Web, Desktop</td><td>Nativa vía JSI</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-dotnet-maui.webp" alt=".NET MAUI" width="28" height="28" /></td><td>.NET MAUI</td><td>C#</td><td>Android, iOS, Win, macOS</td><td>Nativa vía .NET</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-ionic.webp" alt="Ionic" width="28" height="28" /></td><td>Ionic + Capacitor</td><td>HTML / CSS / JS</td><td>Android, iOS, Web, Desktop</td><td>WebView</td></tr>
+    <tr><td><img src="/images/slides/mobile-landscape-2026/logo-pwa.webp" alt="PWA" width="28" height="28" /></td><td>PWA</td><td>HTML / CSS / JS</td><td>Web</td><td>Web</td></tr>
   </tbody>
 </table>
 
@@ -293,97 +357,134 @@ Note: Revelar uno por uno. Unos 10 segundos por opción. El punto es el volumen 
 ## Descartes rápidos
 
 <div class="slide-grid-2">
-  <div>
+  <div class="fragment fade-up">
     <h3>Fuera</h3>
-    <ul>
-      <li><strong>Solo nativo</strong> — quiero llegar a ambas</li>
-      <li><strong>Ionic / Capacitor</strong> — viví esto, choqué el techo</li>
-      <li><strong>.NET MAUI</strong> — no estoy en el mundo C#</li>
-      <li><strong>PWA</strong> — necesito acceso real al dispositivo</li>
-      <li><strong>Xamarin</strong> — EOL</li>
+    <ul style="font-size:0.75em;list-style:none;padding-left:0;">
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-android.webp" alt="" width="22" height="22" /><img src="/images/slides/mobile-landscape-2026/logo-ios.webp" alt="" width="22" height="22" /> <strong>Solo nativo</strong> — quiero llegar a ambas</li>
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-ionic.webp" alt="" width="22" height="22" /> <strong>Ionic / Capacitor</strong> — viví esto, choqué el techo</li>
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-dotnet-maui.webp" alt="" width="22" height="22" /> <strong>.NET MAUI</strong> — no estoy en el mundo C#</li>
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-pwa.webp" alt="" width="22" height="22" /> <strong>PWA</strong> — necesito acceso real al dispositivo</li>
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-react-native.webp" alt="" width="22" height="22" /> <strong>React Native</strong> — sólido, pero raíces JS</li>
     </ul>
   </div>
-  <div>
-    <h3>Quizás</h3>
-    <ul>
-      <li><strong>React Native</strong> — sólido, pero raíces JS</li>
-    </ul>
+  <div class="fragment fade-up">
     <h3>Quedan</h3>
-    <ul>
-      <li><strong>Flutter</strong> — el camino más rápido a un primer resultado</li>
-      <li><strong>Kotlin Multiplatform</strong> — la apuesta más defendible a largo plazo</li>
+    <ul style="font-size:0.75em;list-style:none;padding-left:0;">
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-flutter.webp" alt="" width="22" height="22" /> <strong>Flutter</strong> — el camino más rápido a un primer resultado</li>
+      <li style="display:flex;align-items:center;gap:0.3em;margin-bottom:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="" width="22" height="22" /> <strong>Kotlin Multiplatform</strong> — la apuesta más defendible a largo plazo</li>
     </ul>
   </div>
 </div>
 
 ---
 
-<!-- ==================== Sección 05 — Dos caminos ==================== -->
-
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #2a76dd 0%, #0f1124 100%)" -->
-
-<div class="slide-section-divider">
-  <span class="eyebrow">Parte 05</span>
-  <h2>Dos apuestas sobre "cross-platform"</h2>
-</div>
-
----
-
-## Dos filosofías, un mismo cuarto
+## Dos filosofías, un mismo camino
 
 <div class="slide-grid-2">
   <div>
-    <h3>🐦 Flutter</h3>
+    <h3 style="display:flex;align-items:center;justify-content:center;gap:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-flutter.webp" alt="" width="32" height="32" /> Flutter</h3>
     <p><em>"Confía en nuestro renderer, escribe una vez."</em></p>
     <ul>
       <li>Dart + motor Impeller</li>
       <li>Misma UI en todas las plataformas — por diseño</li>
-      <li>Hot reload, pub.dev maduro</li>
-      <li><strong>3.41</strong> · Feb 2026</li>
+      <li>Hot reload, ecosistema maduro</li>
     </ul>
   </div>
   <div>
-    <h3>🟣 Kotlin Multiplatform</h3>
+    <h3 style="display:flex;align-items:center;justify-content:center;gap:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="" width="32" height="32" /> Kotlin Multiplatform</h3>
     <p><em>"Comparte la lógica, mantén la UI nativa."</em></p>
     <ul>
       <li>Capa Kotlin compartida · UI nativa por plataforma</li>
       <li>Jetpack Compose ↔ SwiftUI a cada lado</li>
-      <li>Estable desde Nov 2023</li>
-      <li>Compose MP <strong>1.10</strong> · Ene 2026</li>
+      <li>Reciente pero estable</li>
     </ul>
   </div>
 </div>
 
 ---
 
-## Cómo se ve la "lógica compartida" en KMP
+<img src="/images/slides/mobile-landscape-2026/flutter-vs-kmp-structure-es.webp" alt="Comparativa de estructura de carpetas: Flutter con un solo directorio lib/ vs KMP con shared/, androidApp/ y iosApp/ como tres bloques coordinados" width="980" height="551" style="display:block;margin:0 auto;" />
 
-```kotlin [1-2|4-9|11-15]
-// commonMain — corre en Android Y en iOS
-package com.example.shared
+Note: Esta imagen muestra la diferencia arquitectónica clave. En Flutter todo vive en lib/ — un solo lugar. En KMP tenés tres mundos: shared/ para lógica común, androidApp/ con Jetpack Compose, iosApp/ con SwiftUI. KMP no reemplaza a SwiftUI ni a Compose, vive debajo de ellos.
 
-class UserRepository(private val api: HttpClient) {
-  suspend fun getUser(id: String): User {
-    val response = api.get("/users/$id")
-    if (!response.ok) throw NotFoundException()
-    return response.body()
-  }
-}
+---
 
-// androidMain → consumido por Jetpack Compose
-// iosMain     → consumido por SwiftUI
-// Mismo modelo de datos. Misma llamada de red.
-// Cada plataforma se queda con su propia UI.
-```
+<img src="/images/slides/mobile-landscape-2026/flutter-vs-kmp-architecture-es.webp" alt="Diagrama de arquitectura interna: Flutter con un motor Impeller que dibuja toda la UI vs KMP con UI nativa por plataforma y lógica compartida en Kotlin" width="980" height="551" style="display:block;margin:0 auto;" />
 
-Note: Highlight por pasos. Primero el package — código común. Después la función — la lógica que de verdad se comparte. Después el bloque de comentarios — donde vive la UI. El punto: KMP no reemplaza a SwiftUI ni a Compose, vive debajo de ellos.
+Note: El contraste clave: Flutter pasa todo por su propio motor gráfico (Impeller/Skia) — un motor dibuja todo. KMP deja que cada plataforma dibuje su propia UI nativa y solo comparte la lógica de abajo. Ambos son cross-platform, pero con filosofías opuestas.
+
+---
+
+## Lo mejor de cada uno
+
+<div class="slide-grid-2">
+  <div>
+    <h3 style="display:flex;align-items:center;justify-content:center;gap:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-flutter.webp" alt="" width="28" height="28" /> Flutter</h3>
+    <ul>
+      <li>🚀 Hot reload instantáneo — iteración ultrarrápida</li>
+      <li>🎨 Una sola UI para todas las plataformas</li>
+      <li>📦 Ecosistema maduro (pub.dev, plugins, comunidad)</li>
+      <li>⚡ Motor Impeller — 60fps consistentes</li>
+    </ul>
+  </div>
+  <div>
+    <h3 style="display:flex;align-items:center;justify-content:center;gap:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="" width="28" height="28" /> KMP</h3>
+    <ul>
+      <li>🔧 UI 100% nativa en cada plataforma</li>
+      <li>🔄 Lógica compartida, sin comprometer la UX</li>
+      <li>🏢 Respaldo de JetBrains + soporte oficial de Google</li>
+      <li>📈 Adopción migrable — se integra en apps existentes</li>
+    </ul>
+  </div>
+</div>
+
+<p style="text-align:center;margin-top:0.8em;font-size:0.85em;color:#64748b;"><em>Ambos son apuestas sólidas — pero resuelven problemas distintos.</em></p>
+
+---
+
+## Nada es gratis
+
+<div class="slide-grid-2">
+  <div>
+    <h3 style="display:flex;align-items:center;justify-content:center;gap:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-flutter.webp" alt="" width="28" height="28" /> Flutter</h3>
+    <ul>
+      <li>⚠️ Dart solo existe para Flutter</li>
+      <li>⚠️ La UI no termina de pertenecer a ninguna plataforma</li>
+      <li>❌ Renderer custom ≠ sensación nativa real</li>
+    </ul>
+  </div>
+  <div>
+    <h3 style="display:flex;align-items:center;justify-content:center;gap:0.3em;"><img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="" width="28" height="28" /> KMP</h3>
+    <ul>
+      <li>⚠️ Curva de aprendizaje más empinada</li>
+      <li>⚠️ Dos capas de UI que mantener (a menos que uses Compose MP)</li>
+      <li>❌ Integración con Xcode todavía áspera en los bordes</li>
+    </ul>
+  </div>
+</div>
+
+<p style="text-align:center;margin-top:0.8em;font-size:0.85em;color:#64748b;"><em>Cada camino cobra peaje — la pregunta es cuál estás dispuesto a pagar.</em></p>
+
+---
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #7F52FF 0%, #0f1124 100%)" -->
+
+<div style="text-align:center;">
+  <span class="eyebrow" style="color:#c4b5fd;">Acto 3</span>
+  <p style="font-size:1.4em;color:#c4b5fd;margin-bottom:0.2em;">Mi elección</p>
+  <img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="Kotlin" width="80" height="80" style="display:block;margin:0.4em auto;" />
+  <h2 style="font-size:2.2em;color:#ffffff;margin:0.2em 0;">Kotlin Multiplatform</h2>
+  <p style="font-size:1em;color:#e2e8f0;margin-top:0.5em;">UI nativa real · lógica compartida · migración progresiva<br/>El largo plazo vale la curva de aprendizaje.</p>
+</div>
+
+Note: Este es el momento de declarar la apuesta. KMP no es el camino fácil — es el camino defendible. UI nativa en cada plataforma, lógica compartida en Kotlin, y la posibilidad de migrar apps existentes sin reescribir todo.
 
 ---
 
 <div class="slide-stat">
   <span class="slide-stat__number">7% → 18%</span>
   <span class="slide-stat__label">Crecimiento de adopción de KMP entre desarrolladores en un solo año</span>
-  <p class="slide-stat__context">Fuente: JetBrains Developer Ecosystem Survey</p>
+  <p class="slide-stat__context">Fuente: <a href="https://www.jetbrains.com/lp/devecosystem-2025/" target="_blank">JetBrains Developer Ecosystem Survey 2024–2025</a></p>
 </div>
 
 ---
@@ -400,116 +501,108 @@ Note: Highlight por pasos. Primero el package — código común. Después la fu
 
 ---
 
-## Lo que cuesta cada uno
+## ¿Quién ya está usando KMP en producción?
+
+<table class="slide-table" style="font-size:0.6em;">
+  <thead>
+    <tr><th>Empresa</th><th>Code Sharing</th><th>Impacto</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>McDonald's</strong></td><td>70%+</td><td>6.5M compras/mes · 69M clientes diarios · 50+ países</td></tr>
+    <tr><td><strong>Duolingo</strong></td><td>80%</td><td>40M+ usuarios activos/semana · releases simultáneos iOS y Android</td></tr>
+    <tr><td><strong>Airbnb</strong></td><td>95%</td><td>Ciclo de release de mensual a semanal en 6 meses</td></tr>
+    <tr><td><strong>Google Docs</strong></td><td>—</td><td>Google Docs para iOS corre KMP en producción</td></tr>
+    <tr><td><strong>Netflix</strong></td><td>~50%</td><td>Apps de producción de TV/cine · offline-first</td></tr>
+    <tr><td><strong>Cash App</strong></td><td>—</td><td>7+ años en producción · transacciones financieras reales</td></tr>
+    <tr><td><strong>Forbes</strong></td><td>80%+</td><td>Features simultáneos en ambas plataformas</td></tr>
+    <tr><td><strong>Philips</strong></td><td>—</td><td>SDK de dispositivos médicos (HealthSuite)</td></tr>
+  </tbody>
+</table>
+
+<p style="text-align:center;margin-top:0.5em;font-size:0.55em;color:#64748b;">Fuentes: <a href="https://kotlinlang.org/case-studies/" target="_blank">Kotlin Case Studies</a> · <a href="https://blog.jetbrains.com/kotlin/2025/12/industry-leaders-on-the-kotlinconf25-stage/" target="_blank">KotlinConf 2025</a> · <a href="https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23" target="_blank">Netflix TechBlog</a></p>
+
+Note: No es hype — son empresas procesando millones de transacciones reales. McDonald's con 6.5 millones de compras al mes. Cash App con 7 años en producción manejando dinero real. Google usando KMP en su propio Google Docs. La pregunta ya no es "¿está listo?" sino "¿cuándo empezamos?"
+
+---
+
+## La comunidad y el respaldo detrás de Kotlin
 
 <div class="slide-grid-2">
   <div>
-    <h3>Flutter — tradeoffs honestos</h3>
-    <ul>
-      <li>Dart solo existe para Flutter</li>
-      <li>La UI no termina de pertenecer a ninguna plataforma</li>
-      <li>Renderer custom ≠ sensación nativa real</li>
+    <h3>📊 Números</h3>
+    <ul style="font-size:0.8em;">
+      <li><strong>2.5 millones</strong> de desarrolladores en el mundo</li>
+      <li><strong>1.65M</strong> repositorios en GitHub</li>
+      <li><strong>100K+</strong> miembros en Kotlin Slack</li>
+      <li><strong>400+</strong> universidades enseñando Kotlin</li>
+      <li><strong>100+</strong> ingenieros en el core team (JetBrains + Google)</li>
+      <li><strong>350+</strong> contribuidores independientes</li>
     </ul>
   </div>
   <div>
-    <h3>KMP — tradeoffs honestos</h3>
-    <ul>
-      <li>Curva de aprendizaje más empinada</li>
-      <li>Dos capas de UI que mantener (a menos que uses Compose MP)</li>
-      <li>Integración con Xcode todavía áspera en los bordes</li>
+    <h3>🏛️ Kotlin Foundation</h3>
+    <ul style="font-size:0.8em;">
+      <li><strong>JetBrains</strong> — creadores del lenguaje</li>
+      <li><strong>Google</strong> — lenguaje oficial de Android</li>
+      <li><strong>Meta</strong> — primer Gold Member (2025)</li>
+      <li><strong>Uber · Block · Gradle</strong></li>
+      <li><strong>Touchlab · Kotzilla</strong></li>
+      <li>Spring Boot — partnership formal (2025)</li>
     </ul>
   </div>
 </div>
 
+<p style="text-align:center;margin-top:0.5em;font-size:0.55em;color:#64748b;">Fuente: <a href="https://kotlinfoundation.org/" target="_blank">Kotlin Foundation</a> · <a href="https://devnewsletter.com/p/state-of-kotlin-2026" target="_blank">State of Kotlin 2026</a></p>
+
+Note: Kotlin no es un proyecto de un solo actor. Tiene una fundación con Google, Meta, Uber y Block como miembros. 2.5 millones de desarrolladores. Spring Boot como partnership oficial. Esto no desaparece mañana.
+
 ---
 
-<!-- ==================== Sección 06 — El plan ==================== -->
+## No necesitás ser experto para empezar <!-- .element: style="font-size:1.3em;" -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
-
-<div class="slide-section-divider">
-  <span class="eyebrow">Parte 06</span>
-  <h2>El plan desde acá</h2>
+<div class="fragment fade-up" style="text-align:center;margin-top:0.6em;">
+  <p style="font-size:1.1em;color:#E51641;">🤖 La IA cambió las reglas del juego</p>
 </div>
 
----
-
-## Proceso — qué viene
-
-<ol class="slide-steps">
-  <li><strong>Mapa</strong><br/>Entender el panorama (este capítulo).</li>
-  <li><strong>KMP primero</strong><br/>Donde aterrizó la curiosidad. Construir algo real.</li>
-  <li><strong>Después Flutter</strong><br/>El mismo ejercicio. La misma vara.</li>
-  <li><strong>Decidir</strong><br/>Después de ambos, con evidencia — no con vibras.</li>
-</ol>
-
----
-
-<blockquote class="slide-quote">
-  "Un mapa no es el territorio. El territorio es a lo que vine a aprender."
-</blockquote>
-<cite class="slide-quote-cite">— Cierre del capítulo</cite>
-
----
-
-## Lo que esta serie NO va a ser
-
-<div class="slide-grid-3">
-  <div class="slide-card">
-    <span class="slide-card__icon">❌</span>
-    <h3>Una mirada de experto</h3>
-    <p>Estoy arrancando desde cero. La arrogancia de la llegada todavía no apareció.</p>
-  </div>
-  <div class="slide-card">
-    <span class="slide-card__icon">❌</span>
-    <h3>Un doc "Flutter vs KMP"</h3>
-    <p>Los documentos comparativos fingen que la respuesta es universal. No lo es.</p>
-  </div>
-  <div class="slide-card">
-    <span class="slide-card__icon">✅</span>
-    <h3>Un viaje real</h3>
-    <p>Construido en público, con tradeoffs nombrados, decisiones registradas, errores publicados.</p>
-  </div>
+<div class="fragment fade-up" style="margin-top:0.5em;">
+  <ul style="font-size:0.85em;">
+    <li>Antes: aprender un ecosistema nuevo = <strong>meses de curva</strong></li>
+    <li>Ahora: con <strong>coding agents</strong> + la dirección correcta = avance exponencial</li>
+    <li>La IA no reemplaza tu criterio — <strong>amplifica tu velocidad</strong></li>
+  </ul>
 </div>
 
----
-
-## ¿Preguntas antes de aterrizar?
-
-<div class="slide-grid-2 slide-grid--align-center">
-  <div>
-    <h3>Cosas que vale la pena preguntar</h3>
-    <ul>
-      <li>¿Cuál es el lenguaje actual de tu equipo?</li>
-      <li>¿Una plataforma primero, o las dos a la vez?</li>
-      <li>¿Cuánta fidelidad de UI necesitas?</li>
-      <li>¿Ya tienes una app web para portar?</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Cosas que no vale la pena preguntar</h3>
-    <ul>
-      <li>"¿Cuál es objetivamente mejor?"</li>
-      <li>"¿Qué usa la empresa X?"</li>
-      <li>"¿Dart se está muriendo?"</li>
-    </ul>
-  </div>
+<div class="fragment fade-up" style="text-align:center;margin-top:0.8em;padding:0.6em;background:linear-gradient(135deg,rgba(229,22,65,0.1),rgba(21,46,69,0.15));border-radius:12px;">
+  <p style="font-size:1em;margin:0;">🧭 <strong>Investigar</strong> + 🤖 <strong>IA como copiloto</strong> + 🎯 <strong>Dirección clara</strong></p>
+  <p style="font-size:1.2em;margin-top:0.4em;color:#E51641;"><em>= Ya no hay excusa para no empezar</em></p>
 </div>
 
-Note: Puente opcional para Q&A. Saltar si vas largo. La asimetría entre las dos columnas es el remate.
+Note: El cierre conecta todo: la barrera de entrada que tenía hace años ya no existe de la misma forma. Los coding agents permiten que alguien con experiencia en backend pueda explorar mobile con velocidad real. No necesitás ser experto — necesitás dirección y las herramientas correctas.
 
 ---
 
-<!-- ==================== Cierre ==================== -->
+## 📖 Serie: Trabajando con Agentes <!-- .element: style="font-size:1.1em;" -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #2a76dd 100%)" -->
+<img src="/images/blog/series/working-with-agents/hero-es.webp" alt="Serie Trabajando con Agentes" width="580" height="326" style="display:block;margin:0 auto;border-radius:10px;">
 
-## Lee la serie
+<p style="text-align:center;margin-top:0.4em;font-size:0.7em;">De escribir código a orquestar agentes de IA — el nuevo rol, flujos reales, qué se rompe, criterio, contexto y adopción en equipos.</p>
 
-<p>El capítulo completo (y los siguientes) viven en el blog:</p>
+<p style="text-align:center;margin-top:0.3em;font-size:0.85em;"><a href="https://xergioalex.com/es/blog/series/working-with-agents" target="_blank">xergioalex.com/es/blog/series/working-with-agents</a></p>
 
-<a href="/es/blog/series/learning-mobile-development" class="slide-cta">Abrir la serie →</a>
+Note: Plug natural de la serie. Conecta directamente con el slide anterior sobre coding agents y IA. La serie profundiza en todo lo que apenas se menciona aquí.
 
-<small>xergioalex.com · @XergioAleX</small>
+---
 
-Note: Cierre — invita a la audiencia a seguir la serie. Se construye en público; el capítulo 2 entra a KMP desde cero.
+<!-- .slide: data-background="#0f1124" -->
+
+<p style="font-size:0.7em;text-transform:uppercase;letter-spacing:0.2em;color:#64748b;margin-bottom:0.2em;">ACTO 4</p>
+
+<div style="display:flex;align-items:center;justify-content:center;gap:0.4em;">
+  <img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="Kotlin" width="48" height="48" />
+  <h2 style="margin:0;font-size:1.8em;">Demos</h2>
+</div>
+
+<img src="/images/slides/mobile-landscape-2026/homers-web-page.gif" alt="Homer's Web Page" width="480" height="300" style="display:block;margin:0.6em auto;border-radius:10px;">
+
+Note: Momento de mostrar código real y apps funcionando. Homer's Web Page como metáfora de los primeros intentos web que todos hemos hecho.
+
