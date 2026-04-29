@@ -31,6 +31,8 @@ function syncTheme(): void {
 
 onMount(() => {
   let destroyed = false;
+  let slidesWrapCleanup: Element | null = null;
+  let navigateClickHandler: ((ev: Event) => void) | undefined;
 
   async function init(): Promise<void> {
     const Reveal = (await import('reveal.js')).default;
@@ -71,6 +73,56 @@ onMount(() => {
     await deck.initialize();
     revealInstance = deck;
 
+    /**
+     * Click-to-advance: single click on slide content goes to next fragment or slide,
+     * matching common presentation UX (arrows / space unchanged).
+     * Ignores real links, in-deck hash links, buttons, inputs, and media embeds.
+     */
+    const slidesWrap = revealEl.querySelector('.slides');
+    function shouldIgnoreNavigateClick(
+      ev: MouseEvent,
+      target: EventTarget | null
+    ): boolean {
+      if (!(target instanceof Element)) return true;
+      if (
+        ev.button !== 0 ||
+        ev.ctrlKey ||
+        ev.metaKey ||
+        ev.shiftKey ||
+        ev.altKey
+      ) {
+        return true;
+      }
+
+      const a = target.closest('a[href]');
+      if (a) {
+        const href = a.getAttribute('href') ?? '';
+        if (href !== '' && href !== '#') {
+          return true;
+        }
+      }
+
+      if (
+        target.closest(
+          'button, input, textarea, select, label, iframe, video, audio, summary, details'
+        )
+      ) {
+        return true;
+      }
+
+      return false;
+    }
+
+    if (slidesWrap) {
+      navigateClickHandler = (ev: Event) => {
+        if (!(ev instanceof MouseEvent)) return;
+        if (shouldIgnoreNavigateClick(ev, ev.target)) return;
+        deck.next();
+      };
+      slidesWrap.addEventListener('click', navigateClickHandler);
+      slidesWrapCleanup = slidesWrap;
+    }
+
     for (const bg of revealEl.querySelectorAll('.slide-background')) {
       const idx = Array.from(bg.parentElement?.children ?? []).indexOf(bg);
       const section = revealEl.querySelectorAll('.slides > section')[idx];
@@ -98,6 +150,9 @@ onMount(() => {
 
   return () => {
     destroyed = true;
+    if (slidesWrapCleanup && navigateClickHandler) {
+      slidesWrapCleanup.removeEventListener('click', navigateClickHandler);
+    }
     if (revealInstance) {
       revealInstance.destroy();
     }
