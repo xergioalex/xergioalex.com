@@ -1,8 +1,9 @@
 ---
 type: internal
 title: "El panorama móvil en 2026"
-description: "El mapa que armé antes de escribir código: nueve frameworks, cuatro categorías, y por qué Flutter y KMP quedaron como los dos caminos serios."
-pubDate: 2026-04-25
+description: "El mapa que armé antes de escribir código: nueve frameworks móviles, cuatro categorías y por qué Flutter y KMP son los dos caminos que sigo considerando."
+pubDate: 2026-04-26
+heroImage: "/images/slides/mobile-landscape-2026/hero.webp"
 tags: [tech, mobile, talks]
 draft: false
 theme: dark
@@ -16,55 +17,153 @@ relatedPost: mobile-development-landscape-2026
 
 <!-- ==================== Portada ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #2a76dd 100%)" -->
+<!-- .slide: data-background-image="/images/slides/mobile-landscape-2026/hero-es.webp" data-background-size="cover" data-background-position="center" -->
 
-# Móvil en 2026
+&nbsp;
 
-### El mapa que armé antes de escribir código
-
-<small>Sergio Alexander Florez · Abril 2026</small>
-
-Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un mapa que dibujé para mí antes de aprender móvil desde cero como desarrollador backend.
+Note: Abrir con el ángulo personal. Esto no es un reporte comparativo — es el mapa que dibujé para mí antes de aprender desarrollo móvil desde cero como desarrollador backend. Marcar el tono: honesto, en primera persona, sin pose de experto. La imagen de portada va full-bleed — sin texto encima, el diseño habla por sí mismo.
 
 ---
 
-<!-- ==================== Sección 01 ==================== -->
+<!-- ==================== Sección 01 — La atracción ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Parte 01</span>
-  <h2>Por qué lo seguía evitando</h2>
+  <h2>Por qué desarrollo móvil para mí siempre fue "algún día"</h2>
 </div>
 
 ---
 
-<div class="slide-stat">
-  <span class="slide-stat__number">15+</span>
-  <span class="slide-stat__label">años llamándome "full stack" mientras esquivaba móvil por completo</span>
-  <p class="slide-stat__context">Backend, frontend, infra, DevOps — pero móvil siempre fue "lo que hacen los demás".</p>
+<img src="/images/slides/mobile-landscape-2026/full-stack-not-mobile-es.webp" alt="Infografía: 15+ años considerándome full stack — Backend, Web, Infra, APIs, Base de datos, Cloud, DevOps — pero el desarrollo móvil siempre lo fui dejando para después" width="1024" height="576" class="slide-image-full" />
+
+Note: La imagen ancla la charla en lo personal. 15+ años de carrera completa en todo menos mobile. La barrera al final del camino hacia el celular es el remate visual — la audiencia va a sentir la identificación.
+
+---
+
+## Mi problema con el desarrollo móvil
+
+<img src="/images/slides/mobile-landscape-2026/mobile-dev-problem-es.webp" alt="Diagrama caótico de la configuración de desarrollo móvil: descarga del IDE, instalación del SDK, emuladores, herramientas de compilación, plugins, permisos, certificados y conflictos conectados por cables enredados" width="1024" height="576" class="slide-image-full" />
+
+Note: Dejar que la imagen hable. El caos visual — cables, warnings, pasos interminables — es exactamente lo que siente cualquiera que intenta arrancar en desarrollo móvil por primera vez. No explicar demasiado; la audiencia va a reconocer el dolor.
+
+---
+
+<img src="/images/slides/mobile-landscape-2026/tried-several-times-es.webp" alt="Infografía: Lo intenté varias veces — cuatro intentos de arrancar en desarrollo móvil, cada uno bloqueado por configuración de IDE, SDK, emuladores, plugins, certificados y conflictos de build" width="1024" height="576" class="slide-image-full" />
+
+Note: La imagen cuenta la historia sola. Cuatro intentos, todos bloqueados por logística antes de escribir código útil. Dejar que la audiencia la lea — el reconocimiento es inmediato.
+
+---
+
+## Mi primer proyecto móvil fue en la universidad
+
+<img src="/images/slides/mobile-landscape-2026/84-years-meme.webp" alt="Meme de Rose en Titanic: Han pasado 84 años" width="520" height="291" style="display:block;margin:0 auto;" />
+
+<p style="text-align:center;">Durante una materia de emprendimiento</p>
+
+Note: El meme rompe la tensión. La audiencia se ríe y conecta — todos tienen esa historia de un proyecto universitario que fue su único contacto real con mobile. Pausa corta para la risa, después seguir.
+
+---
+
+<img src="/images/slides/mobile-landscape-2026/business-model-canvas.webp" alt="The Business Model Canvas — plantilla de modelo de negocio con secciones de socios clave, actividades, propuesta de valor, relaciones con clientes, segmentos, canales, estructura de costos y fuentes de ingreso" width="720" height="480" style="display:block;margin:0 auto;" />
+
+Note: El Business Model Canvas como contexto visual — en esa materia de emprendimiento usábamos esta herramienta. La app móvil era parte del proyecto final. No hace falta explicar cada casilla, solo que la audiencia reconozca el canvas.
+
+---
+
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-helios-loading.webp" alt="Pantalla de carga de Eclipse Helios con el plugin ADT, alrededor de 2011" width="1024" height="576" class="slide-image-full" />
+
+Note: La pantalla morada de carga de Eclipse Helios. La audiencia que vivió esa época va a reconocerla al instante. Para los más jóvenes, es evidencia visual de lo áspero que era el tooling.
+
+---
+
+## Eclipse con plugin ADT
+
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-adt-layout-editor.webp" alt="Editor gráfico de layouts de Eclipse ADT mostrando una app Hello World de Android con la paleta de widgets" width="991" height="612" class="slide-image-full" />
+
+---
+
+## Y el emulador
+
+<img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-adt-emulator.webp" alt="Emulador de Android dentro de Eclipse con teclado físico virtual y panel DDMS" width="1024" height="576" class="slide-image-full" />
+
+Note: La tercera imagen de Eclipse. La mitad menor de 30 nunca vio esto y la mayor está haciendo muecas.
+
+---
+
+## Mi computador no corría Eclipse con plugin ADT
+
+<img src="/images/slides/mobile-landscape-2026/low-resources-barrier.webp" alt="Desarrollador frustrado frente a un laptop viejo con Eclipse trabado, íconos de recursos insuficientes y un muro bloqueando el camino hacia el desarrollo móvil" width="1024" height="576" class="slide-image-full" />
+
+Note: La primera barrera real: hardware insuficiente. Eclipse + ADT + emulador necesitaban más de lo que el laptop del estudiante podía dar. La barrera no era intelectual — era logística.
+
+---
+
+## Después probé híbrido
+
+<div class="slide-grid-2">
+  <div>
+    <h3>Lo que funcionó</h3>
+    <ul>
+      <li>Cordova → primeras apps en producción</li>
+      <li>Ionic → mejor tooling, prototipos reales</li>
+      <li>HTML + CSS + JS dentro de un contenedor nativo</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Dónde se rompió</h3>
+    <ul>
+      <li>Cámara, GPS, sensores, push</li>
+      <li>El bridge era demasiado lento</li>
+      <li>Se sentía como una app web — porque lo era</li>
+    </ul>
+  </div>
 </div>
 
 ---
 
-## Dónde empezó
+<!-- ==================== Sección 02 — La diferencia real ==================== -->
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
+
+<div class="slide-section-divider">
+  <span class="eyebrow">Parte 02</span>
+  <h2>La diferencia real no es el framework</h2>
+</div>
+
+---
+
+## El runtime ya no es tuyo
 
 <div class="slide-grid-2 slide-grid--align-center">
   <div>
-    <img src="/images/blog/posts/mobile-development-landscape-2026/eclipse-helios-loading.webp" alt="Pantalla de carga de Eclipse Helios con el plugin ADT, alrededor de 2011" width="1024" height="576" class="slide-image-full" />
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+  override fun onCreate(
+    savedInstanceState: Bundle?
+  ) {
+    super.onCreate(savedInstanceState)
+    // La pantalla que ves ya fue
+    // destruida y recreada por el SO.
+    // Rehidrata desde disco, no de memoria.
+  }
+}
+```
+
   </div>
   <div>
-    <h3>~2011 · Curso universitario</h3>
-    <p>Eclipse Helios + plugin ADT. El IDE que se comía cada byte de RAM de mi laptop. Antes del "Hello World" ya habías pasado por tres asistentes de configuración.</p>
+    <h3>Mira el parámetro</h3>
+    <ul>
+      <li><code>savedInstanceState</code> existe porque el SO puede matar tu pantalla en cualquier momento</li>
+      <li>El estado tiene que sobrevivir en disco, no en RAM</li>
+      <li>No eres dueño del ciclo de vida — el SO lo es</li>
+    </ul>
   </div>
 </div>
 
----
-
-<blockquote class="slide-quote">
-  "La logística mata la motivación más rápido que la complejidad."
-</blockquote>
-<cite class="slide-quote-cite">— Sergio Florez · Panorama móvil 2026</cite>
+Note: Una pequeña pieza de código hace más trabajo que un párrafo entero acá. La presencia de `savedInstanceState` en la firma más básica de Android es toda la historia del ciclo de vida móvil comprimida en una línea.
 
 ---
 
@@ -77,61 +176,94 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
       <li>El estado vive en el servidor</li>
       <li>Request → response → snapshot</li>
       <li>Tres líneas levantan un servidor</li>
+      <li>El navegador es una pestaña predecible</li>
     </ul>
   </div>
   <div>
-    <h3>Lo que móvil realmente es</h3>
+    <h3>Lo que el mundo móvil realmente es</h3>
     <ul>
       <li>El estado vive en la pantalla</li>
-      <li>El SO puede destruirla y recrearla</li>
+      <li>El SO la destruye y la recrea</li>
       <li>El ciclo de vida ramifica cada decisión</li>
+      <li>El runtime es de Android o iOS</li>
     </ul>
   </div>
 </div>
 
 ---
 
-<!-- ==================== Sección 02 ==================== -->
+<!-- ==================== Sección 03 — Cuatro categorías ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Parte 02</span>
+  <span class="eyebrow">Parte 03</span>
   <h2>Cuatro categorías antes de la lista</h2>
 </div>
 
 ---
 
-## Las cuatro categorías
+## Las cuatro formas que toma el ecosistema
 
-<div class="slide-grid-3">
+<div class="slide-grid-2">
   <div class="slide-card">
     <span class="slide-card__icon">🔒</span>
-    <h3>Native</h3>
-    <p>Una plataforma, un lenguaje, acceso total al SO. Máximo control, máximo lock-in.</p>
+    <h3>Nativo</h3>
+    <p>Una plataforma, un lenguaje, acceso total al SO. <strong>Máximo control, máximo lock-in.</strong></p>
   </div>
   <div class="slide-card">
     <span class="slide-card__icon">🔀</span>
-    <h3>Cross-platform</h3>
-    <p>Lógica o UI compartida que compila a nativo. KMP y Flutter viven aquí — filosofías distintas.</p>
+    <h3>Cross-platform, UI nativa</h3>
+    <p>Lógica o UI compartida que compila a nativo. <strong>KMP y Flutter viven acá — filosofías distintas.</strong></p>
+  </div>
+  <div class="slide-card">
+    <span class="slide-card__icon">📦</span>
+    <h3>Híbrido</h3>
+    <p>Tecnología web dentro de un shell nativo. <strong>Mínima fricción, techos reales.</strong></p>
   </div>
   <div class="slide-card">
     <span class="slide-card__icon">🌐</span>
-    <h3>Hybrid / Web</h3>
-    <p>Tecnología web dentro de un shell nativo, o una PWA que instalas. Mínima fricción, techos reales.</p>
+    <h3>Web / PWA</h3>
+    <p>Un sitio que instalas en la pantalla de inicio. <strong>Sin app store. Sin sensación nativa.</strong></p>
   </div>
 </div>
 
 ---
 
-<!-- ==================== Sección 03 ==================== -->
+## Como pilas de arquitectura
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<img src="/images/blog/posts/mobile-development-landscape-2026/categories-es.webp" alt="Diagrama de cuatro torres de arquitectura comparando Nativo, Cross-platform UI nativa, Híbrido y Web/PWA. Cada torre muestra las capas entre el código del desarrollador y el hardware del dispositivo." width="1400" height="876" class="slide-image-full" />
+
+<small>De izquierda a derecha: más capas entre tu código y el dispositivo. Nativo es el camino más directo; PWA, además de capas, está restringido por el sandbox del navegador.</small>
+
+Note: Este es el diagrama del blog post. Recórrelo de izquierda a derecha. La audiencia recordará este diagrama más tiempo que cualquier lista.
+
+---
+
+<!-- ==================== Sección 04 — Nueve opciones ==================== -->
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Parte 03</span>
+  <span class="eyebrow">Parte 04</span>
   <h2>Nueve opciones en el mapa</h2>
 </div>
+
+---
+
+## Las que vale la pena considerar
+
+- **Android nativo** — Kotlin + Jetpack Compose <!-- .element: class="fragment fade-up" -->
+- **iOS nativo** — Swift + SwiftUI <!-- .element: class="fragment fade-up" -->
+- **Flutter** — Dart + motor Impeller <!-- .element: class="fragment fade-up" -->
+- **React Native** — JS/TS, nativo vía JSI <!-- .element: class="fragment fade-up" -->
+- **Kotlin Multiplatform** — lógica compartida, UI nativa <!-- .element: class="fragment fade-up" -->
+- **Ionic + Capacitor** — web dentro de un WebView <!-- .element: class="fragment fade-up" -->
+- **.NET MAUI** — C#, sucesor de Xamarin <!-- .element: class="fragment fade-up" -->
+- **PWA** — sitio instalable <!-- .element: class="fragment fade-up" -->
+- **~~Xamarin~~** — EOL Mayo 2024 · no empieces acá <!-- .element: class="fragment fade-up" -->
+
+Note: Revelar uno por uno. Unos 10 segundos por opción. El punto es el volumen — la audiencia tiene que sentir el tamaño del espacio de decisión antes de que lo reduzcamos.
 
 ---
 
@@ -186,18 +318,18 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
 
 ---
 
-<!-- ==================== Sección 04 ==================== -->
+<!-- ==================== Sección 05 — Dos caminos ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #2a76dd 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #2a76dd 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Parte 04</span>
-  <h2>Dos caminos, dos filosofías</h2>
+  <span class="eyebrow">Parte 05</span>
+  <h2>Dos apuestas sobre "cross-platform"</h2>
 </div>
 
 ---
 
-## Dos apuestas sobre "cross-platform"
+## Dos filosofías, un mismo cuarto
 
 <div class="slide-grid-2">
   <div>
@@ -224,9 +356,33 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
 
 ---
 
+## Cómo se ve la "lógica compartida" en KMP
+
+```kotlin [1-2|4-9|11-15]
+// commonMain — corre en Android Y en iOS
+package com.example.shared
+
+class UserRepository(private val api: HttpClient) {
+  suspend fun getUser(id: String): User {
+    val response = api.get("/users/$id")
+    if (!response.ok) throw NotFoundException()
+    return response.body()
+  }
+}
+
+// androidMain → consumido por Jetpack Compose
+// iosMain     → consumido por SwiftUI
+// Mismo modelo de datos. Misma llamada de red.
+// Cada plataforma se queda con su propia UI.
+```
+
+Note: Highlight por pasos. Primero el package — código común. Después la función — la lógica que de verdad se comparte. Después el bloque de comentarios — donde vive la UI. El punto: KMP no reemplaza a SwiftUI ni a Compose, vive debajo de ellos.
+
+---
+
 <div class="slide-stat">
   <span class="slide-stat__number">7% → 18%</span>
-  <span class="slide-stat__label">Crecimiento de adopción de KMP entre desarrolladores en un año</span>
+  <span class="slide-stat__label">Crecimiento de adopción de KMP entre desarrolladores en un solo año</span>
   <p class="slide-stat__context">Fuente: JetBrains Developer Ecosystem Survey</p>
 </div>
 
@@ -259,7 +415,7 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
     <h3>KMP — tradeoffs honestos</h3>
     <ul>
       <li>Curva de aprendizaje más empinada</li>
-      <li>Dos capas de UI que mantener</li>
+      <li>Dos capas de UI que mantener (a menos que uses Compose MP)</li>
       <li>Integración con Xcode todavía áspera en los bordes</li>
     </ul>
   </div>
@@ -267,12 +423,12 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
 
 ---
 
-<!-- ==================== Sección 05 ==================== -->
+<!-- ==================== Sección 06 — El plan ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Parte 05</span>
+  <span class="eyebrow">Parte 06</span>
   <h2>El plan desde acá</h2>
 </div>
 
@@ -292,7 +448,7 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
 <blockquote class="slide-quote">
   "Un mapa no es el territorio. El territorio es a lo que vine a aprender."
 </blockquote>
-<cite class="slide-quote-cite">— Sergio Florez · Cierre del capítulo</cite>
+<cite class="slide-quote-cite">— Cierre del capítulo</cite>
 
 ---
 
@@ -318,9 +474,35 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
 
 ---
 
+## ¿Preguntas antes de aterrizar?
+
+<div class="slide-grid-2 slide-grid--align-center">
+  <div>
+    <h3>Cosas que vale la pena preguntar</h3>
+    <ul>
+      <li>¿Cuál es el lenguaje actual de tu equipo?</li>
+      <li>¿Una plataforma primero, o las dos a la vez?</li>
+      <li>¿Cuánta fidelidad de UI necesitas?</li>
+      <li>¿Ya tienes una app web para portar?</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Cosas que no vale la pena preguntar</h3>
+    <ul>
+      <li>"¿Cuál es objetivamente mejor?"</li>
+      <li>"¿Qué usa la empresa X?"</li>
+      <li>"¿Dart se está muriendo?"</li>
+    </ul>
+  </div>
+</div>
+
+Note: Puente opcional para Q&A. Saltar si vas largo. La asimetría entre las dos columnas es el remate.
+
+---
+
 <!-- ==================== Cierre ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f172a 0%, #2a76dd 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #2a76dd 100%)" -->
 
 ## Lee la serie
 
@@ -330,4 +512,4 @@ Note: Abrir con el ángulo personal — esto no es un reporte comparativo; es un
 
 <small>xergioalex.com · @XergioAleX</small>
 
-Note: Cierre — invitar a la audiencia a seguir la serie. Se construye en público; el capítulo 2 entra a KMP desde cero.
+Note: Cierre — invita a la audiencia a seguir la serie. Se construye en público; el capítulo 2 entra a KMP desde cero.
