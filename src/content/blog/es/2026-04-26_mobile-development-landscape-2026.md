@@ -45,7 +45,7 @@ Buscando capturas de pantalla de esa época encontré estas joyas — Eclipse He
 <figcaption>El emulador de Android dentro de Eclipse — con teclado físico virtual, panel DDMS y una velocidad que ponía a prueba tu paciencia.</figcaption>
 </figure>
 
-Así que empecé a buscar alternativas. Cordova me permitió crear apps híbridas que sirvieron para su propósito: monté mis primeras apps móviles con HTML, CSS y JavaScript empaquetados dentro de un contenedor nativo. Funcionaba. Luego experimenté con Ionic — mismo principio, mejor tooling — y creé un par de prototipos y proyectos con estas tecnologías.
+Así que empecé a buscar alternativas. [Cordova](https://cordova.apache.org/) me permitió crear apps híbridas que sirvieron para su propósito: monté mis primeras apps móviles con HTML, CSS y JavaScript empaquetados dentro de un contenedor nativo. Funcionaba. Luego experimenté con Ionic — mismo principio, mejor tooling — y creé un par de prototipos y proyectos con estas tecnologías.
 
 El problema llegaba cuando necesitaba algo más. Cuando el proyecto requería acceso real a los componentes nativos del dispositivo — la cámara, el GPS, los sensores, las notificaciones push — el desarrollo híbrido mostraba sus costuras. Un bridge que tardaba demasiado, una API nativa que no estaba expuesta, un comportamiento que en el navegador funcionaba perfecto pero en el dispositivo se sentía como una app web disfrazada. Y lo era.
 
@@ -59,13 +59,15 @@ Este post es ese estado del arte que me senté a entender.
 
 ## El problema real no es elegir el framework
 
-Antes de hablar de opciones, hay que nombrar el problema de fondo. La gente que llega desde backend tiende a hacer la pregunta equivocada: "¿qué framework uso?". La pregunta correcta es anterior: "¿qué tiene de diferente este dominio?".
+Antes de hablar de opciones, hay que nombrar el problema de fondo. Quien llega desde el desarrollo web — sea backend o frontend — tiende a hacer la pregunta equivocada: "¿qué framework uso?". La pregunta correcta es anterior: "¿qué tiene de diferente este dominio?".
 
 La respuesta más honesta: bastante.
 
-En una solicitud web, el estado vive en el servidor. Haces una petición, el servidor procesa, te devuelve una respuesta. La pantalla que ve el usuario es un snapshot. En una app móvil, el estado vive en la pantalla misma — y cuando el usuario navega hacia otra pantalla, esa pantalla puede destruirse y recrearse. Ese ciclo de vida propio ramifica a través de cada decisión arquitectónica que tomas. ¿Dónde guardas los datos? ¿Quién los actualiza cuando la pantalla vuelve? ¿Qué pasa cuando el sistema operativo mata tu app por falta de memoria?
+Una app web se ejecuta dentro del navegador, un entorno relativamente predecible: una pestaña abierta, memoria disponible, una URL que ancla el estado. Si la pestaña se cierra, el usuario lo decidió. En móvil esa predictibilidad desaparece. El sistema operativo decide cuándo tu aplicación se ejecuta, cuándo pasa a segundo plano y cuándo termina su proceso para liberar memoria — sin previo aviso a tu código. La pantalla que el usuario ve puede destruirse y recrearse en cualquier momento, y cuando vuelva tienes que rehidratar el estado desde almacenamiento persistente, no desde memoria. Ese ciclo de vida propio ramifica a través de cada decisión arquitectónica: ¿dónde guardas los datos para que sobrevivan?, ¿quién los rehidrata cuando la pantalla vuelve?, ¿qué margen tienes para serializar el estado antes de que el sistema operativo termine el proceso?
 
-No es que el backend no tenga complejidad — la tiene. Es que la complejidad es diferente, y el instinto de "pequeño servidor" que te formaste durante años no te sirve directamente acá.[^hook-f]
+No es que el desarrollo web no tenga complejidad — la tiene, sea backend o frontend. Es que la complejidad es diferente: el instinto que te formaste manejando peticiones o reactividad de componentes no se traslada directamente a este dominio, porque el runtime ya no es tuyo — es del sistema operativo.
+
+Es un patrón que voy a encontrar una y otra vez en esta serie: los instintos del desarrollo web son válidos, pero no se trasladan directamente. Parte de aprender mobile es aprender cuándo confiar en lo que ya sabes y cuándo ponerlo en pausa.
 
 Eso dicho: el framework sí importa. Y hay demasiados para elegir sin entender primero el terreno.
 
@@ -73,88 +75,95 @@ Eso dicho: el framework sí importa. Y hay demasiados para elegir sin entender p
 
 Antes de nombrar cada opción, vale la pena establecer las categorías. El ecosistema mobile se organiza en cuatro tipos fundamentales:
 
-**Native** — una plataforma, un lenguaje, acceso completo a las APIs del sistema operativo. Máximo control, máximo lock-in por plataforma. Si construyes native Android, tu app solo corre en Android.
+**Nativo** — una plataforma, un lenguaje, acceso completo a las APIs del sistema operativo. Kotlin con Jetpack Compose en Android; Swift con SwiftUI en iOS. Máximo control, máximo lock-in por plataforma: si construyes nativo Android tu app solo corre en Android, y llegar a iOS significa reescribirla en otro lenguaje y otro ecosistema.
 
 **Cross-platform con UI nativa** — lógica o UI compartida, compilada a nativo. Aquí viven Kotlin Multiplatform (KMP) y Flutter, aunque con filosofías fundamentalmente distintas. Los dos son "cross-platform", pero lo que eso significa para cada uno es diferente.
 
-**Híbrido** — tecnologías web corriendo dentro de un contenedor nativo. React Native mapea componentes JavaScript a vistas nativas — técnicamente no es un híbrido clásico, aunque a menudo se clasifica junto a ellos. Ionic/Capacitor sí es un híbrido más puro: tu HTML y CSS corren en un WebView.
+**Híbrido** — tecnologías web corriendo dentro de un contenedor nativo. React Native mapea componentes JavaScript a vistas nativas — técnicamente no es un híbrido clásico, aunque a menudo se clasifica junto a ellos. Ionic/Capacitor sí es un híbrido más puro: tu HTML y CSS corren en un WebView (un navegador embebido dentro de la app).
 
 **Web / PWA** — un sitio web que se puede instalar en la pantalla principal. No hay compilación nativa. Funciona muy bien para apps orientadas a contenido; llega a sus límites cuando necesitas integración profunda con el dispositivo.
 
-Esta clasificación va a parecer simple cuando llegues a los detalles — y lo es, un poco. La realidad es que "cross-platform" no es una categoría monolítica. KMP y Flutter son dos apuestas muy distintas sobre qué significa compartir código, y ese matiz importa más de lo que parece al principio.
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/categories-es.webp"
+     alt="Diagrama de cuatro torres arquitectónicas comparando Native, Cross-platform UI nativa, Híbrido y Web/PWA. Cada torre muestra las capas entre el código del desarrollador y el hardware del dispositivo, con altura creciente de izquierda a derecha. PWA es la torre más alta e incluye un marcador de sandbox del navegador."
+     width="1400"
+     height="876"
+     loading="lazy" />
+<figcaption>Las cuatro categorías como stacks arquitectónicos: el código (en terracota) atraviesa más capas de izquierda a derecha. Native es el camino más directo; PWA, además de añadir capas, queda restringido por el sandbox del navegador.</figcaption>
+</figure>
+
+Esta clasificación va a parecer simple cuando lleguemos a los detalles — y lo es, un poco. La realidad es que "cross-platform" no es una categoría monolítica. KMP y Flutter son dos apuestas muy distintas sobre qué significa compartir código, y ese matiz importa más de lo que parece al principio.
 
 ## Cada opción, sin adornos
 
-Nueve opciones. Una por una. No listas de características — la descripción honesta de qué hace a cada una lo que es, y en qué gana a las demás.
+Nueve opciones: las que tienen sentido considerar hoy en el panorama mobile, en 2026. Una por una. Qué define a cada una, qué pide a cambio, y dónde encaja mejor.
 
-### Native Android — Kotlin + Jetpack Compose
+### Android nativo — Kotlin + Jetpack Compose
 
-Escribes Kotlin con Jetpack Compose. Tu app es exactamente lo que Google diseñó Android para correr.[^kotlin-google] El sistema operativo te da acceso directo a todas sus APIs, los animations se sienten nativos porque lo son, y nada te va a sorprender en términos de compatibilidad. El costo es sencillo: solo corre en Android. Si algún día necesitas llegar a iOS, estás de vuelta en el punto de partida.
+Escribes [Kotlin](https://developer.android.com/kotlin) con Jetpack Compose. Tu app es exactamente lo que Google diseñó Android para correr — Kotlin es, en palabras de Google, *"the preferred language for Android app development"* (el lenguaje preferido para desarrollo de Android). El sistema operativo te da acceso directo a todas sus APIs, las animaciones se sienten nativas porque lo son, y nada te va a sorprender en términos de compatibilidad. El costo es claro: solo corre en Android. Si algún día necesitas llegar a iOS, vuelves al punto de partida con otro lenguaje y otro stack.
 
-Jetpack Compose 1.10.1 salió en enero de 2026.[^compose-1101] El ecosistema lleva años madurando.
+### iOS nativo — Swift + SwiftUI
 
-### Native iOS — Swift + SwiftUI
-
-La misma lógica, del lado de Apple. Swift desde 2014[^swift-release], SwiftUI desde 2019[^swiftui-release]. Para 2026 ya van en Swift 6.2 y SwiftUI para iOS 26.[^swift-2026] El ecosistema Apple es hermético y consistente — si te quedas dentro del jardín, todo funciona junto muy bien. El costo es el mismo: solo corre en plataformas Apple.
+La misma lógica, del lado de Apple. [Swift](https://en.wikipedia.org/wiki/Swift_%28programming_language%29) desde 2014, [SwiftUI](https://developer.apple.com/videos/play/wwdc2019/204/) desde 2019. Para 2026, Swift está en 6.2 y SwiftUI [llegó hasta iOS 26](https://www.hackingwithswift.com/articles/278/whats-new-in-swiftui-for-ios-26). El ecosistema Apple es hermético y consistente — dentro del jardín, las piezas encajan entre sí: APIs, tooling, distribución. El costo es el mismo: solo corre en plataformas Apple.
 
 ### Flutter
 
-La apuesta de Google en "build once, run everywhere" (construye una vez, corre en todas partes).[^flutter-tagline] Escribes en Dart — un lenguaje que casi con seguridad no conoces — y Flutter renderiza todo a través de su propio motor gráfico, Impeller, independientemente de los controles nativos de la plataforma.[^flutter-impeller] Eso es tanto su fortaleza como su particularidad: la UI se ve igual en Android y en iOS porque Flutter la dibuja ella misma, no porque adopte los widgets nativos de cada sistema.
+La apuesta de [Google con Flutter](https://flutter.dev) en "build once, run everywhere" (construye una vez, corre en todas partes). Escribes en Dart — un lenguaje que casi con seguridad no conoces — y Flutter renderiza todo a través de su propio motor gráfico, [Impeller](https://docs.flutter.dev/perf/impeller) — que pinta directo sobre Metal en iOS y Vulkan en Android, las APIs por las que las apps de alto rendimiento hablan directo con la GPU del dispositivo. Esa es a la vez su fortaleza y su particularidad: la UI se ve igual en Android y en iOS porque Flutter la dibuja ella misma, no porque adopte los widgets nativos de cada sistema.
 
-¿Eso es una ventaja o un problema? Depende de quién lo pregunte. Para apps con identidad de marca fuerte, para herramientas internas, para juegos — el control total sobre el renderizado es valioso. Para apps que necesitan sentirse exactamente como una app nativa de iOS o de Android — es un costo real.
+¿Es eso una ventaja o un problema? Depende de quién pregunte. Para apps con identidad de marca fuerte, para herramientas internas, para juegos — el control total sobre el renderizado es valioso. Para apps que deben sentirse como una app nativa de iOS o de Android — es un costo real.
 
-Flutter 3.41 salió el 11 de febrero de 2026.[^flutter-341] El ecosistema de paquetes en pub.dev es grande. El tooling — `flutter doctor`, DevTools, los plugins de VS Code y Android Studio — está pulido de una manera que sugiere que Google está comprometido seriamente con esto.[^flutter-homepage]
+[Flutter 3.41](https://docs.flutter.dev/release/whats-new) salió el 11 de febrero de 2026. El ecosistema de paquetes en pub.dev es amplio. El tooling — `flutter doctor`, DevTools, los plugins de VS Code y Android Studio — está pulido de un modo que sugiere compromiso real de Google con el proyecto.
 
-El tradeoff honesto: Dart es un lenguaje que solo usas para Flutter. Si en algún momento te alejas de Flutter, Dart no te acompaña. Es una apuesta sobre el ecosistema de Google, no sobre un lenguaje de propósito general.
+El tradeoff honesto: Dart es un lenguaje que solo usas para Flutter. Si en algún momento te alejas, Dart no te acompaña. Es una apuesta sobre el ecosistema de Google, no sobre un lenguaje de propósito general.
 
 ### React Native
 
-La apuesta de Meta en que los desarrolladores web no deberían tener que aprender un nuevo paradigma.[^rn-tagline] Escribes JavaScript o TypeScript y obtienes UI nativa — no un WebView, sino componentes mapeados a vistas nativas reales del sistema operativo.
+La apuesta de Meta en que los desarrolladores web no deberían tener que aprender un paradigma nuevo. El tagline de [React Native](https://reactnative.dev) es directo: *"Learn once, write anywhere"*. Escribes JavaScript o TypeScript y obtienes UI nativa — no un WebView, sino componentes mapeados a vistas nativas reales del sistema operativo.
 
-La Nueva Arquitectura (New Architecture) — que eliminó el antiguo bridge y lo reemplazó con JSI, una interfaz C++ real — es ahora obligatoria desde la versión 0.82 y viene por defecto en 0.84.[^rn-084] Eso hace a React Native significativamente más rápido y confiable que el React Native de 2018. Si ya conoces React, este es el camino de menor fricción al móvil.
+La Nueva Arquitectura (New Architecture) reemplazó el antiguo bridge — la capa intermedia, lenta y asíncrona, que conectaba JavaScript con código nativo — por JSI, una interfaz directa en C++. Es obligatoria desde la versión 0.82 y viene por defecto en [0.84](https://reactnative.dev/blog/2026/02/11/react-native-0.84). Eso hace a React Native significativamente más rápido y confiable que su versión de 2018. Si ya conoces React, este es el camino de menor fricción hacia mobile.
 
-En octubre de 2025, Meta donó React, React Native y JSX a la React Foundation — parte de la Linux Foundation — haciendo el proyecto formalmente independiente de cualquier empresa.[^react-foundation]
+En octubre de 2025, Meta donó React, React Native y JSX a la [React Foundation](https://engineering.fb.com/2025/10/07/open-source/introducing-the-react-foundation-the-new-home-for-react-react-native/) — parte de la Linux Foundation — haciendo el proyecto formalmente independiente de cualquier empresa.
 
 ### Kotlin Multiplatform
 
-KMP es una apuesta fundamentalmente distinta. Donde Flutter dice "confía en nuestro renderer, escribe una vez", KMP dice "comparte tu lógica, mantén la UI nativa".[^kmp-stable]
+KMP es una apuesta fundamentalmente distinta. Donde Flutter dice "confía en nuestro renderer, escribe una vez", KMP dice "comparte tu lógica, mantén la UI nativa".
 
-La filosofía es explícita en el posicionamiento de JetBrains: *"share code across platforms while retaining the benefits of native programming"* (compartir código entre plataformas preservando los beneficios de la programación nativa). En la práctica: escribes tus modelos de datos, lógica de negocio, networking y almacenamiento en Kotlin — una vez. Cada plataforma — Android, iOS — tiene su propia capa de UI escrita de forma nativa. En Android, eso es Jetpack Compose. En iOS, eso es SwiftUI. La plataforma se siente como ella misma porque la UI es nativa.
+El posicionamiento de JetBrains es explícito: *"share code across platforms while retaining the benefits of native programming"* (compartir código entre plataformas preservando los beneficios de la programación nativa). En la práctica: escribes tus modelos de datos, lógica de negocio, networking y almacenamiento en Kotlin — una sola vez. Cada plataforma — Android, iOS — tiene su propia capa de UI nativa: Jetpack Compose en Android, SwiftUI en iOS. La plataforma se siente nativa porque su UI lo es.
 
-KMP lleva un camino largo desde su introducción en Kotlin 1.2 en 2017.[^kmp-2017] Declaró estabilidad en noviembre de 2023.[^kmp-stable] Compose Multiplatform — la capa opcional que te permite compartir también la UI en sintaxis Compose — llegó a estabilidad para iOS en mayo de 2025[^compose-ios-stable], y lanzó la versión 1.10.0 en enero de 2026.[^compose-110]
+KMP lleva un camino largo desde su [introducción en Kotlin 1.2 en 2017](https://www.droidcon.com/2022/09/29/kotlin-multiplatform-at-five-years/). [Declaró estabilidad en noviembre de 2023](https://blog.jetbrains.com/kotlin/2023/11/kotlin-multiplatform-stable/). Compose Multiplatform — la capa opcional que te permite compartir también la UI en sintaxis Compose — [llegó a estabilidad para iOS en mayo de 2025](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/), y [lanzó la versión 1.10.0](https://blog.jetbrains.com/kotlin/2026/01/compose-multiplatform-1-10-0/) en enero de 2026.
 
-La pregunta que KMP deja abierta — cuánto código puedes realmente compartir y cuándo tiene sentido hacerlo — es la más interesante de todo el ecosistema cross-platform. No la voy a responder acá. Esa es la pregunta que exploraré en el siguiente capítulo.[^hook-d]
+La pregunta que KMP deja abierta — cuánto código puedes realmente compartir y cuándo tiene sentido hacerlo — es la más interesante del ecosistema cross-platform. No la voy a responder acá: es justamente lo que exploraré en el siguiente capítulo.
 
 ### Ionic + Capacitor
 
-Una app web dentro de un contenedor nativo. Tu HTML, CSS y JavaScript corren en un WebView; Capacitor provee un puente a las APIs nativas del dispositivo.[^capacitor-8] Si eres desarrollador web y necesitas una app en la tienda, este es el camino de menor resistencia. El tradeoff es honesto: se siente como una app web porque lo es. Para muchos casos de uso eso está bien. Para otros, no.
+Una app web dentro de un contenedor nativo. Tu HTML, CSS y JavaScript corren en un WebView; [Capacitor](https://ionic.io/blog/announcing-capacitor-8) expone un puente a las APIs nativas del dispositivo. Si eres desarrollador web y necesitas una app en la tienda, es el camino de menor resistencia. El tradeoff es honesto: se siente como una app web porque lo es. Para muchos casos de uso eso está bien. Para otros, no.
 
-Capacitor 8 se anunció en diciembre de 2025 y la versión 8.3.0 salió en marzo de 2026.[^capacitor-830]
+Capacitor 8 se anunció en diciembre de 2025 y [la versión 8.3.0](https://github.com/ionic-team/capacitor/releases) salió el 25 de marzo de 2026.
 
 ### .NET MAUI
 
-La apuesta cross-platform de Microsoft para el ecosistema .NET — el sucesor de Xamarin.[^maui-tagline] Corre en Android, iOS, Windows y macOS. Si tu equipo vive en C# y Visual Studio, y ya tienes código .NET, aquí es donde aterrizas. Para alguien que llega desde fuera del ecosistema Microsoft, el punto de entrada es más alto sin un beneficio claro.
+La apuesta cross-platform de Microsoft para el ecosistema .NET — [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui), el sucesor de Xamarin. Corre en Android, iOS, Windows y macOS. Si tu equipo vive en C# y Visual Studio, y ya tiene código .NET, esta es la elección natural. Para alguien que llega desde fuera del ecosistema Microsoft, el punto de entrada es más alto sin un beneficio claro a cambio.
 
-.NET MAUI 10 salió con .NET 10 en 2026.[^maui-10]
+[.NET MAUI 10](https://www.infoq.com/news/2026/03/net-11-preview2-maui/) salió con .NET 10 en 2026.
 
 ### Xamarin
 
-Llegó al fin de su vida útil en mayo de 2024.[^xamarin-eol] Microsoft apuntó a todos hacia .NET MAUI. No hay razón para empezar nada nuevo en Xamarin.
+[Alcanzó el fin de soporte](https://dotnet.microsoft.com/en-us/platform/support/policy/xamarin) el 1 de mayo de 2024. Microsoft redirigió a todos hacia .NET MAUI. No hay razón para empezar nada nuevo en Xamarin.
 
 ### PWA — Progressive Web Apps
 
-Un sitio web que se puede instalar en la pantalla principal. Funciona sorprendentemente bien para apps orientadas a contenido: sin compilación nativa, sin aprobación de tienda, una sola base de código para web y móvil. Los límites llegan rápido cuando necesitas integración real con el dispositivo — acceso a cámara avanzado, Bluetooth, procesamiento en segundo plano — especialmente en iOS, donde el soporte de Safari para APIs web modernas sigue siendo más restrictivo que en Android.[^pwa-limits]
+Un sitio web que se puede instalar en la pantalla principal. Funciona sorprendentemente bien para apps orientadas a contenido: sin compilación nativa, sin aprobación de tienda, una sola base de código para web y móvil. [Los límites llegan rápido](https://en.wikipedia.org/wiki/Progressive_web_app) cuando necesitas integración real con el dispositivo — acceso avanzado a cámara, Bluetooth, procesamiento en segundo plano — sobre todo en iOS, donde Safari sigue más restringido que Chrome para APIs web modernas.
 
 Para ciertos casos de uso, una PWA es la respuesta correcta. Para lo que yo quiero construir, no lo es.
 
 ## Antes de elegir: el panorama en una tabla
 
-Antes de ir más a fondo sobre las dos opciones que más me interesan, aquí está cómo se ven todas juntas contra los criterios que me importan. Una advertencia: esta tabla representa mi lectura del panorama desde la documentación y los changelogs. No desde el uso real. Después de meses con dos de ellas, la tabla va a verse diferente en mi cabeza.[^hook-c]
+Antes de ir más a fondo sobre las dos opciones que más me interesan, aquí está cómo se ven todas juntas contra los criterios que me importan. Una advertencia: esta tabla representa mi lectura del panorama desde la documentación y los changelogs. No desde el uso real. Después de meses con dos de ellas, la tabla va a verse diferente en mi cabeza.
 
 | Opción | Lenguaje(s) | Plataformas | Enfoque de UI | Mantenida por | Mejor para |
 |---|---|---|---|---|---|
-| Native Android | Kotlin + Jetpack Compose | Android | 100% UI nativa Android | Google | Apps solo Android; equipos que viven en el ecosistema Android |
-| Native iOS | Swift + SwiftUI | Plataformas Apple | 100% UI nativa Apple | Apple | Apps solo iOS/macOS; equipos que solo publican en Apple |
+| Android nativo | Kotlin + Jetpack Compose | Android | 100% UI nativa Android | Google | Apps solo Android; equipos que viven en el ecosistema Android |
+| iOS nativo | Swift + SwiftUI | Plataformas Apple | 100% UI nativa Apple | Apple | Apps solo iOS/macOS; equipos que solo publican en Apple |
 | Kotlin Multiplatform | Kotlin | Android, iOS, Desktop, Web | Lógica compartida; UI nativa por plataforma (o Compose Multiplatform para UI compartida) | JetBrains + Google | Equipos que quieren lógica compartida con UI de calidad nativa por plataforma |
 | Flutter | Dart | Android, iOS, Web, Desktop | Motor de renderizado propio (Impeller) — misma UI en todas las plataformas | Google | Equipos que quieren una sola base de código UI; prototipado cross-platform rápido |
 | React Native | JavaScript / TypeScript | Android, iOS | Mapea componentes JS a vistas nativas | React Foundation (Meta + comunidad) | Equipos web que pasan a mobile; codebases React/JS existentes |
@@ -167,7 +176,7 @@ Antes de ir más a fondo sobre las dos opciones que más me interesan, aquí est
 
 Descarté el resto bastante rápido. El razonamiento:
 
-**Native Android/iOS:** La respuesta solo tiene sentido si ya sabes para cuál de las dos plataformas estás construyendo. Yo no lo sé todavía — quiero llegar a las dos. Irme a native significaría aprender dos lenguajes, dos modelos de UI, dos ecosistemas. Es la respuesta correcta para muchos equipos. No para mí empezando desde cero.
+**Android/iOS nativo:** La respuesta solo tiene sentido si ya sabes para cuál de las dos plataformas estás construyendo. Yo no lo sé todavía — quiero llegar a las dos. Irme a nativo significaría aprender dos lenguajes, dos modelos de UI, dos ecosistemas. Es la respuesta correcta para muchos equipos. No para mí empezando desde cero.
 
 **Ionic/Capacitor:** Ya pasé por esto. Cordova, Ionic — me sirvieron hace quince años para salir del paso en la universidad, pero el tradeoff lo viví en carne propia: cuando necesitas que la app se sienta nativa, el híbrido no llega. Si ya tienes una app web y quieres llevarla a la tienda, es un camino válido. Pero yo estoy construyendo desde cero, y esta vez quiero hacerlo bien.
 
@@ -183,7 +192,7 @@ Eso deja dos.
 
 Flutter es probablemente el punto de entrada más directo para alguien que viene de fuera del mobile. La razón no es Dart — Dart está bien, pero no es en sí mismo una razón. La razón es que Flutter elimina una categoría entera de confusión: las diferencias de UI entre plataformas.
 
-Cuando escribes una app en Flutter, los widgets que construyes se ven igual en Android y en iOS porque Flutter los renderiza ella misma a través de Impeller. No necesitas entender UIKit ni el sistema de Views de Android. Aprendes el árbol de widgets, aprendes manejo de estado — hay buenas opciones: Riverpod, Bloc, el enfoque incorporado con `setState` — y construyes. El ciclo de retroalimentación es rápido. El hot reload funciona de verdad.
+Cuando escribes una app en Flutter, los widgets que construyes se ven igual en Android y en iOS porque Flutter los renderiza ella misma a través de Impeller. No necesitas entender UIKit ni el sistema de Views de Android. Aprendes el árbol de widgets, aprendes manejo de estado — hay buenas opciones: librerías como Riverpod o Bloc, o el enfoque incorporado con `setState` — y construyes. El ciclo de retroalimentación es rápido. El hot reload funciona de verdad.
 
 El ecosistema es maduro. Flutter 3.41 — lanzado el 11 de febrero de 2026 — llegó tres años después del inicio de la era estable. El ecosistema de paquetes en pub.dev ya tiene lo que necesitarías para la mayoría de integraciones.
 
@@ -197,13 +206,13 @@ KMP es una apuesta fundamentalmente diferente. Donde Flutter dice "confía en nu
 
 La distinción arquitectónica más importante es esta: KMP no reemplaza la UI nativa — vive debajo de ella. Tu capa de Android sigue siendo Jetpack Compose. Tu capa de iOS sigue siendo SwiftUI. Lo que compartes es la lógica de negocio — modelos de datos, networking, almacenamiento, reglas de dominio. La plataforma se siente como ella misma porque la UI es nativa de verdad.
 
-Compose Multiplatform — la capa opcional de JetBrains sobre KMP — va más lejos: te permite compartir también la UI en sintaxis Compose, para Android, iOS, Desktop y Web. Llegó a estabilidad para iOS en mayo de 2025.[^compose-ios-stable] Así que si quieres el estilo Flutter de "una sola base de código UI", KMP puede hacer eso ahora. Si prefieres UI nativa por plataforma, también puede hacer eso. Es más flexible — lo que también significa más decisiones.
+Compose Multiplatform — la capa opcional de JetBrains sobre KMP — va más lejos: te permite compartir también la UI en sintaxis Compose, para Android, iOS, Desktop y Web. [Llegó a estabilidad para iOS en mayo de 2025](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/). Así que si quieres el estilo Flutter de "una sola base de código UI", KMP puede hacer eso ahora. Si prefieres UI nativa por plataforma, también puede hacer eso. Es más flexible — lo que también significa más decisiones.
 
-La señal de adopción es fuerte. Según el JetBrains Developer Ecosystem Survey, el uso de KMP creció del 7% al 18% de los desarrolladores en un año.[^kmp-adoption] Google ha estado migrando sus propias librerías Jetpack a KMP — Room, DataStore, ViewModel, Lifecycle. Netflix, Philips, Cash App y Quizlet son usuarios en producción.[^kmp-stable]
+La señal de adopción es fuerte. Según el [JetBrains Developer Ecosystem Survey](https://kotlinlang.org/docs/multiplatform/multiplatform-reasons-to-try.html), el uso de KMP creció del 7% al 18% de los desarrolladores en un año. Google ha estado migrando sus propias librerías Jetpack a KMP — Room, DataStore, ViewModel, Lifecycle. [Netflix, Philips, Cash App y Quizlet](https://blog.jetbrains.com/kotlin/2023/11/kotlin-multiplatform-stable/) son usuarios en producción.
 
 El tradeoff honesto: la curva de aprendizaje es más pronunciada. Trabajas en Kotlin — un lenguaje excelente, pero si no lo conoces ya estás aprendiendo eso también. El tooling para iOS, aunque está mejorando, implica una integración con Xcode que puede ser frustrante al principio. La documentación tiene huecos en los bordes.
 
-Pero para un desarrollador con experiencia en backend o en el ecosistema JVM, la rampa es más corta de lo que parece desde afuera. Y la filosofía arquitectónica — comparte la lógica, mantén la UI nativa — describe cómo funcionan en la práctica la mayoría de las apps en producción.
+Pero para un desarrollador con experiencia en backend o en el ecosistema Java/Kotlin, la rampa es más corta de lo que parece desde afuera. Y la filosofía arquitectónica — comparte la lógica, mantén la UI nativa — describe cómo funcionan en la práctica la mayoría de las apps en producción.
 
 Si eso se sostiene en la realidad o solo suena bien en el papel, es la pregunta que viene después.
 
@@ -217,68 +226,10 @@ Flutter dice: una base de código, un motor de renderizado, UI consistente en to
 
 KMP dice: una base de código para la lógica, UI nativa por plataforma. El precio es más complejidad, más código cuando apuntas a las dos plataformas, y un umbral de entrada más alto para empezar.
 
-Para alguien que está aprendiendo, Flutter es probablemente el comienzo más rápido. El ciclo de retroalimentación es más corto. El momento de "tengo algo corriendo" llega antes. Para alguien que está construyendo software en producción que necesita coexistir con codebases nativos — o que necesita sentirse en casa en cada plataforma — KMP es la elección más defendible a largo plazo.[^hook-a]
+Para alguien que está aprendiendo, Flutter es probablemente el comienzo más rápido. El ciclo de retroalimentación es más corto. El momento de "tengo algo corriendo" llega antes. Para alguien que está construyendo software en producción que necesita coexistir con codebases nativos — o que necesita sentirse en casa en cada plataforma — KMP es la elección más defendible a largo plazo.
 
 Esta serie va a ir profundo en KMP primero. Ahí aterrizó mi curiosidad. Pero este capítulo no es el veredicto.
 
-Lo que sí sé: no estoy aquí solo para entender el panorama. Quiero construir algo que corra en mi teléfono.[^hook-e] La documentación no es el código. Y el código es lo que vine a escribir.
+Lo que sí sé: no estoy aquí solo para entender el panorama. Quiero construir algo que corra en mi teléfono — algo que todavía no tiene nombre en este capítulo, pero existe. El destino de esta serie no es un documento de comparación. La documentación no es el código. Y el código es lo que vine a escribir.
 
 A seguir construyendo.
-
----
-
-[^hook-f]: Este es el patrón que voy a encontrar una y otra vez: los instintos que te formas en backend son válidos, pero no se trasladan directamente. Parte de aprender mobile es aprender cuándo confiar en lo que ya sabes y cuándo ponerlo en pausa.
-
-[^kotlin-google]: Según la documentación oficial de Google para Android: *"Kotlin is Google's preferred language for Android app development."* — [developer.android.com/kotlin](https://developer.android.com/kotlin)
-
-[^compose-1101]: Jetpack Compose 1.10.1, lanzado el 14 de enero de 2026. Fuente: [developer.android.com — Jetpack Compose releases](https://developer.android.com/jetpack/androidx/releases/compose)
-
-[^swift-release]: Swift 1.0 fue lanzado el 9 de septiembre de 2014 con Xcode 6.0 GM. Fuente: [Wikipedia — Swift (programming language)](https://en.wikipedia.org/wiki/Swift_(programming_language))
-
-[^swiftui-release]: SwiftUI fue presentado en WWDC el 3 de junio de 2019. Fuente: [developer.apple.com — WWDC19 session 204](https://developer.apple.com/videos/play/wwdc2019/204/)
-
-[^swift-2026]: Swift 6.2 y SwiftUI para iOS 26 son las versiones activas en 2026. Fuente: [hackingwithswift.com — What's new in SwiftUI for iOS 26](https://www.hackingwithswift.com/articles/278/whats-new-in-swiftui-for-ios-26)
-
-[^flutter-tagline]: Tagline oficial: *"Flutter is an open-source framework for building beautiful, natively compiled, multi-platform applications from a single codebase."* — [flutter.dev](https://flutter.dev)
-
-[^flutter-impeller]: Impeller reemplazó a Skia como renderer por defecto en Flutter: primero en iOS con Flutter 3.10 (mayo 2023), luego en Android con Flutter 3.22 (mayo 2024). Fuente: [docs.flutter.dev — What's new](https://docs.flutter.dev/release/whats-new)
-
-[^flutter-341]: Flutter 3.41 fue lanzado el 11 de febrero de 2026. Fuente: [docs.flutter.dev — What's new](https://docs.flutter.dev/release/whats-new)
-
-[^flutter-homepage]: [flutter.dev](https://flutter.dev)
-
-[^rn-tagline]: Tagline oficial: *"Learn once, write anywhere."* — [reactnative.dev](https://reactnative.dev)
-
-[^rn-084]: React Native 0.84, lanzado el 11 de febrero de 2026, con Hermes V1 como motor por defecto y la Nueva Arquitectura obligatoria desde 0.82. Fuente: [reactnative.dev/blog/2026/02/11/react-native-0.84](https://reactnative.dev/blog/2026/02/11/react-native-0.84)
-
-[^react-foundation]: En octubre de 2025, Meta donó React, React Native y JSX a la React Foundation (parte de la Linux Foundation). Fuente: [engineering.fb.com — Introducing the React Foundation](https://engineering.fb.com/2025/10/07/open-source/introducing-the-react-foundation-the-new-home-for-react-react-native/)
-
-[^kmp-stable]: KMP declaró estabilidad el 1 de noviembre de 2023. Posicionamiento oficial de JetBrains: *"An open-source technology built by JetBrains that allows developers to share code across platforms while retaining the benefits of native programming."* Fuente: [blog.jetbrains.com — Kotlin Multiplatform Stable](https://blog.jetbrains.com/kotlin/2023/11/kotlin-multiplatform-stable/)
-
-[^kmp-2017]: KMP fue introducido en Kotlin 1.2, presentado en KotlinConf en noviembre de 2017. Fuente: [droidcon.com — Kotlin Multiplatform at Five Years](https://www.droidcon.com/2022/09/29/kotlin-multiplatform-at-five-years/)
-
-[^compose-ios-stable]: Compose Multiplatform para iOS declaró estabilidad en mayo de 2025 con la versión 1.8.0. Fuente: [blog.jetbrains.com — Compose Multiplatform 1.8.0](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/)
-
-[^compose-110]: Compose Multiplatform 1.10.0 lanzado en enero de 2026. Fuente: [blog.jetbrains.com — Compose Multiplatform 1.10.0](https://blog.jetbrains.com/kotlin/2026/01/compose-multiplatform-1-10-0/)
-
-[^capacitor-8]: Capacitor 8 fue anunciado en diciembre de 2025. Fuente: [ionic.io/blog/announcing-capacitor-8](https://ionic.io/blog/announcing-capacitor-8)
-
-[^capacitor-830]: Capacitor 8.3.0 lanzado el 25 de marzo de 2026. Fuente: [github.com/ionic-team/capacitor/releases](https://github.com/ionic-team/capacitor/releases)
-
-[^maui-tagline]: Tagline oficial: *"Build native, cross-platform desktop and mobile apps all in one framework."* — [dotnet.microsoft.com/en-us/apps/maui](https://dotnet.microsoft.com/en-us/apps/maui)
-
-[^maui-10]: .NET MAUI 10.0 se lanzó con .NET 10. Fuente: [infoq.com — .NET 11 Preview 2 MAUI](https://www.infoq.com/news/2026/03/net-11-preview2-maui/)
-
-[^xamarin-eol]: Xamarin llegó al fin de su vida útil el 1 de mayo de 2024. Fuente: [dotnet.microsoft.com — Xamarin Support Policy](https://dotnet.microsoft.com/en-us/platform/support/policy/xamarin)
-
-[^pwa-limits]: El soporte de iOS/Safari para APIs web avanzadas — background sync, Bluetooth, procesamiento en segundo plano — sigue siendo más limitado que en Android. Fuente: [Wikipedia — Progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app)
-
-[^hook-c]: Esta tabla es la lectura desde la documentación y los changelogs. No desde el uso real. Espero que se vea diferente después de meses con las dos opciones que me interesan.
-
-[^hook-d]: La pregunta de cuánto código puedes realmente compartir — y cuándo tiene sentido hacerlo — no tiene respuesta limpia desde la documentación. Es una pregunta práctica, y el siguiente capítulo va a intentar empezar a responderla.
-
-[^kmp-adoption]: Según el JetBrains Developer Ecosystem Survey, el uso de KMP creció del 7% al 18% de los desarrolladores en un año. Fuente: [kotlinlang.org — Reasons to try KMP](https://kotlinlang.org/docs/multiplatform/multiplatform-reasons-to-try.html)
-
-[^hook-a]: La serie va a ir profundo en KMP primero — eso es donde mi curiosidad aterrizó — y después en Flutter. Después de los dos, una elección. La elección no está tomada todavía.
-
-[^hook-e]: Lo que quiero construir todavía no tiene nombre en este capítulo. Pero existe. El destino de esta serie no es un documento de comparación.
