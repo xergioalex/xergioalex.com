@@ -602,7 +602,122 @@ Note: Plug natural de la serie. Conecta directamente con el slide anterior sobre
   <h2 style="margin:0;font-size:1.8em;">Demos</h2>
 </div>
 
-<img src="/images/slides/mobile-landscape-2026/homers-web-page.gif" alt="Homer's Web Page" width="480" height="300" style="display:block;margin:0.6em auto;border-radius:10px;">
+<img src="/images/slides/mobile-landscape-2026/homers-web-page.gif" alt="Homer's Web Page" width="380" height="238" style="display:block;margin:0.35em auto;border-radius:10px;">
 
 Note: Momento de mostrar código real y apps funcionando. Homer's Web Page como metáfora de los primeros intentos web que todos hemos hecho.
+
+---
+
+## 1. KMP Starter
+
+<img src="/images/slides/mobile-landscape-2026/demo-kmpstarter.webp" alt="KMP Starter en Android" width="165" height="294" style="display:block;margin:0 auto;border-radius:8px;">
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Template base — Android, iOS, Desktop, Web desde un solo módulo</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/kmpstarter" target="_blank">github.com/xergioalex/kmpstarter</a></p>
+
+Note: Template reutilizable. Todas las apps que siguen nacieron de este starter con AGENTS.md preparado para coding agents.
+
+---
+
+## 2. Flutter Starter
+
+<img src="/images/slides/mobile-landscape-2026/demo-flutterstarter.webp" alt="Flutter Starter en Android" width="165" height="294" style="display:block;margin:0 auto;border-radius:8px;">
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Template base Flutter — comparar DX lado a lado con KMP</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/flutterstarter" target="_blank">github.com/xergioalex/flutterstarter</a></p>
+
+Note: Mismo concepto de starter pero en Flutter. Permite comparar DX, estructura, y velocidad de iteración entre ambos frameworks.
+
+---
+
+## 3. KMP Todo App
+
+<img src="/images/slides/mobile-landscape-2026/demo-kmptodoapp.webp" alt="KMP Todo App en Android" width="165" height="294" style="display:block;margin:0 auto;border-radius:8px;">
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">CRUD completo — filtros, búsqueda, temas, i18n, SQLite</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/kmptodoapp" target="_blank">github.com/xergioalex/kmptodoapp</a></p>
+
+Note: CRUD completo con persistencia SQLDelight, Material 3, dark mode, y share nativo por plataforma. Demuestra que KMP sirve para apps reales.
+
+---
+
+## 4. KMP Tap Duel Game
+
+<div style="display:flex;justify-content:center;gap:0.3em;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-1.webp" alt="Tap Duel - inicio" width="108" height="192" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-2.webp" alt="Tap Duel - jugando" width="108" height="192" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmptapduel-3.webp" alt="Tap Duel - ganador" width="108" height="192" style="border-radius:6px;">
+</div>
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Duelo local 2 jugadores — UI compartida fluida incluso en un juego</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/kmptapduelgame" target="_blank">github.com/xergioalex/kmptapduelgame</a></p>
+
+Note: Motor de juego puro Kotlin en commonMain con unit tests. Compose Multiplatform manejando input de gestos rápidos en todas las plataformas.
+
+---
+
+## 5. KMP AI Chat
+
+<div style="display:flex;justify-content:center;gap:0.4em;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmpaichat-1.webp" alt="KMP AI Chat - vacío" width="148" height="265" style="border-radius:8px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmpaichat-2.webp" alt="KMP AI Chat - conversación" width="148" height="265" style="border-radius:8px;">
+</div>
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Chat con IA — OpenAI API + Ktor + UI reactiva</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/kmpaichat" target="_blank">github.com/xergioalex/kmpaichat</a></p>
+
+Note: Demuestra integración de APIs externas, manejo de BuildConfig para API keys, y estados de UI con StateFlow.
+
+---
+
+## 6. KMP AI Voice Chat
+
+<img src="/images/slides/mobile-landscape-2026/demo-kmpaivoicechat.webp" alt="KMP AI Voice Chat en iOS" width="165" height="294" style="display:block;margin:0 auto;border-radius:8px;">
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Texto + voz + conversación en tiempo real vía WebSocket</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/kmpaivoicechat" target="_blank">github.com/xergioalex/kmpaivoicechat</a></p>
+
+Note: expect/actual para audio nativo (AudioRecord en Android, AVAudioEngine en iOS). WebSocket streaming PCM16 24kHz. El demo más avanzado a nivel de integración nativa.
+
+---
+
+## 7. KMP PTT Dynamics
+
+<div style="display:flex;justify-content:center;gap:0.3em;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmppttdynamics-1.webp" alt="PTT Dynamics - perfil" width="100" height="178" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmppttdynamics-2.webp" alt="PTT Dynamics - lobby" width="100" height="178" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmppttdynamics-3.webp" alt="PTT Dynamics - avatares" width="100" height="178" style="border-radius:6px;">
+  <img src="/images/slides/mobile-landscape-2026/demo-kmppttdynamics-4.webp" alt="PTT Dynamics - sala" width="100" height="178" style="border-radius:6px;">
+</div>
+
+<p style="text-align:center;font-size:0.65em;margin-top:0.2em;color:#374151;">Dinámicas en vivo para meetups — la app que usaremos hoy</p>
+
+<p style="text-align:center;margin-top:0.2em;font-size:0.7em;"><a href="https://github.com/xergioalex/kmppttdynamics" target="_blank">github.com/xergioalex/kmppttdynamics</a></p>
+
+Note: App con backend real (Firebase/Supabase), múltiples dinámicas simultáneas, y actualización en tiempo real en todos los dispositivos conectados. La que vamos a probar en vivo.
+
+---
+
+<!-- .slide: data-background="#0f1124" -->
+
+<img src="/images/slides/mobile-landscape-2026/speaker-photo.webp" alt="Sergio Alexander Flórez" width="180" height="180" style="display:block;margin:0 auto;border-radius:50%;border:3px solid #E51641;">
+
+<h2 style="margin-top:0.5em;color:#ffffff;">¡Gracias!</h2>
+
+<p style="text-align:center;font-size:0.85em;color:#e2e8f0;margin-top:0.3em;">Sergio Alexander Flórez Galeano</p>
+
+<div style="text-align:center;margin-top:0.5em;font-size:0.8em;">
+  <p>🌐 <a href="https://xergioalex.com" target="_blank">xergioalex.com</a></p>
+  <p>🐦 <a href="https://twitter.com/xergioalex" target="_blank">@xergioalex</a></p>
+  <p>💻 <a href="https://github.com/xergioalex" target="_blank">github.com/xergioalex</a></p>
+  <p>💼 <a href="https://linkedin.com/in/xergioalex" target="_blank">linkedin.com/in/xergioalex</a></p>
+</div>
+
+Note: Slide de cierre. Agradecer a la audiencia y dejar los canales de contacto.
 
