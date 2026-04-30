@@ -31,8 +31,9 @@ function syncTheme(): void {
 
 onMount(() => {
   let destroyed = false;
-  let slidesWrapCleanup: Element | null = null;
+  let navigateClickRootCleanup: Element | null = null;
   let navigateClickHandler: ((ev: Event) => void) | undefined;
+  let teardownOverviewFix: (() => void) | undefined;
 
   async function init(): Promise<void> {
     const Reveal = (await import('reveal.js')).default;
@@ -74,11 +75,61 @@ onMount(() => {
     revealInstance = deck;
 
     /**
+     * Overview thumbnails fix.
+     *
+     * Reveal applies the `hidden` HTML attribute to every non-present slide
+     * (and inline `style="display:none"` to slides outside the hardcoded
+     * overview viewDistance of 10 / 6). The universal CSS reset rule
+     * `[hidden]:where(:not([hidden="until-found"])) { display: none !important }`
+     * (Tailwind preflight) wins over any author CSS we can write, including
+     * `!important` rules with higher specificity, because of how the cascade
+     * resolves !important attribute-selector rules. Removing the attribute
+     * is the only reliable fix.
+     *
+     * On `overviewshown` and on every `slidechanged` while overview is
+     * active, we strip `hidden` + `aria-hidden` from every section, clear
+     * any inline `display:none`, and re-run `loadSlide` so lazy media and
+     * `data-background-image` styles get restored on previously-unloaded
+     * thumbnails. On `overviewhidden` we let Reveal restore its own state.
+     */
+    function hydrateAllOverviewSlides(): void {
+      if (destroyed || !deck.isOverview()) return;
+
+      for (const slide of deck.getSlides() as HTMLElement[]) {
+        deck.loadSlide(slide);
+        slide.removeAttribute('hidden');
+        slide.removeAttribute('aria-hidden');
+        if (slide.style.display === 'none') {
+          slide.style.removeProperty('display');
+        }
+      }
+      for (const bg of revealEl.querySelectorAll(
+        '.slide-background'
+      ) as NodeListOf<HTMLElement>) {
+        bg.removeAttribute('hidden');
+        if (bg.style.display === 'none') {
+          bg.style.removeProperty('display');
+        }
+      }
+    }
+
+    const onOverviewShown = (): void => hydrateAllOverviewSlides();
+    const onSlideChanged = (): void => {
+      if (deck.isOverview()) hydrateAllOverviewSlides();
+    };
+
+    deck.addEventListener('overviewshown', onOverviewShown);
+    deck.addEventListener('slidechanged', onSlideChanged);
+    teardownOverviewFix = () => {
+      deck.removeEventListener('overviewshown', onOverviewShown);
+      deck.removeEventListener('slidechanged', onSlideChanged);
+    };
+
+    /**
      * Click-to-advance: single click on slide content goes to next fragment or slide,
      * matching common presentation UX (arrows / space unchanged).
      * Ignores real links, in-deck hash links, buttons, inputs, and media embeds.
      */
-    const slidesWrap = revealEl.querySelector('.slides');
     function shouldIgnoreNavigateClick(
       ev: MouseEvent,
       target: EventTarget | null
@@ -110,17 +161,28 @@ onMount(() => {
         return true;
       }
 
+      /** Reveal UI: progress navigates on its own and does not stopPropagation. */
+      if (target.closest('.progress, .slide-number')) {
+        return true;
+      }
+
       return false;
     }
 
-    if (slidesWrap) {
+    /**
+     * Attach to `.reveal` (not only `.slides`) so clicks on:
+     * - full-bleed `data-background-image` (`.slide-background`, sibling of `.slides`)
+     * - letterboxed margins around the scaled 1280×720 canvas
+     * still advance. Links and Reveal chrome stay excluded above.
+     */
+    if (revealEl) {
       navigateClickHandler = (ev: Event) => {
         if (!(ev instanceof MouseEvent)) return;
         if (shouldIgnoreNavigateClick(ev, ev.target)) return;
         deck.next();
       };
-      slidesWrap.addEventListener('click', navigateClickHandler);
-      slidesWrapCleanup = slidesWrap;
+      revealEl.addEventListener('click', navigateClickHandler);
+      navigateClickRootCleanup = revealEl;
     }
 
     for (const bg of revealEl.querySelectorAll('.slide-background')) {
@@ -150,8 +212,12 @@ onMount(() => {
 
   return () => {
     destroyed = true;
-    if (slidesWrapCleanup && navigateClickHandler) {
-      slidesWrapCleanup.removeEventListener('click', navigateClickHandler);
+    teardownOverviewFix?.();
+    if (navigateClickRootCleanup && navigateClickHandler) {
+      navigateClickRootCleanup.removeEventListener(
+        'click',
+        navigateClickHandler
+      );
     }
     if (revealInstance) {
       revealInstance.destroy();
