@@ -314,6 +314,28 @@ body.reveal-theme-dark {
   background: var(--r-progress-color);
 }
 
+/* Overview thumbnails fix.
+ * Reveal hardcodes viewDistance=10/6 inside updateSlidesVisibility() during
+ * overview, so every slide outside that radius gets slideContent.unload(),
+ * which sets inline `style="display:none"` on both the <section> and its
+ * matching `.slide-background`. Reveal's own overview CSS only forces
+ * opacity/visibility — it never touches display. The rules below override
+ * the inline display:none (author !important beats inline non-important).
+ * The JS hook in RevealDeck.svelte additionally re-loads lazy media and
+ * background-image styles, but the CSS alone keeps thumbnails visible. */
+.reveal.overview .slides section,
+.reveal.overview .slides section.past,
+.reveal.overview .slides section.future {
+  display: block !important;
+}
+
+/* During overview Reveal moves `.backgrounds` inside `.slides`; the
+ * descendant selector still matches before and after the move. */
+.reveal.overview .backgrounds .slide-background,
+.reveal.overview .backgrounds .slide-background-content {
+  display: block !important;
+}
+
 /* ---------- 4. Chrome — toolbar + back link ---------- */
 
 .slide-back-link {

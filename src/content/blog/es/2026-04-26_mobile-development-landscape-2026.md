@@ -14,7 +14,7 @@ Como desarrollador full stack, siempre he procurado aprender un poco de todo: ba
 
 No porque no lo haya intentado.
 
-Recuerdo mis primeros años de universidad — estamos hablando de hace alrededor de quince años — cuando necesité desarrollar una app móvil para una materia. En esa época Android Studio no existía todavía; el IDE oficial era Eclipse con el plugin ADT, y era demasiado pesado para mi humilde laptop de ese entonces. No arrancaba, o arrancaba y se comía toda la memoria, o se quedaba compilando en un loop que parecía eterno.
+Recuerdo mis últimos años de universidad — estamos hablando de hace alrededor de quince años — cuando necesité desarrollar una app móvil para una materia de emprendimiento. En esa época Android Studio no existía todavía; el IDE oficial era Eclipse con el plugin ADT, y era demasiado pesado para mi humilde laptop de ese entonces. No arrancaba, o arrancaba y se comía toda la memoria, o se quedaba compilando en un loop que parecía eterno.
 
 Buscando capturas de pantalla de esa época encontré estas joyas — Eclipse Helios cargando con el plugin ADT, el editor visual de layouts y el emulador con su teclado físico virtual. Los flashbacks son inmediatos:
 
@@ -45,17 +45,61 @@ Buscando capturas de pantalla de esa época encontré estas joyas — Eclipse He
 <figcaption>El emulador de Android dentro de Eclipse — con teclado físico virtual, panel DDMS y una velocidad que ponía a prueba tu paciencia.</figcaption>
 </figure>
 
-Así que empecé a buscar alternativas. [Cordova](https://cordova.apache.org/) me permitió crear apps híbridas que sirvieron para su propósito: monté mis primeras apps móviles con HTML, CSS y JavaScript empaquetados dentro de un contenedor nativo. Funcionaba. Luego experimenté con Ionic — mismo principio, mejor tooling — y creé un par de prototipos y proyectos con estas tecnologías.
+Así que empecé a buscar alternativas. [PhoneGap](https://en.wikipedia.org/wiki/Apache_Cordova) — más adelante [Apache Cordova](https://cordova.apache.org/) — me abrió las puertas a desarrollar mis primeras apps híbridas: el mismo stack web empaquetado dentro de un contenedor nativo, una salida que tenía sentido porque en la laptop que tenía en ese entonces el combo Eclipse + ADT + emulador no llegaba a funcionar.
 
-El problema llegaba cuando necesitaba algo más. Cuando el proyecto requería acceso real a los componentes nativos del dispositivo — la cámara, el GPS, los sensores, las notificaciones push — el desarrollo híbrido mostraba sus costuras. Un bridge que tardaba demasiado, una API nativa que no estaba expuesta, un comportamiento que en el navegador funcionaba perfecto pero en el dispositivo se sentía como una app web disfrazada. Y lo era.
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/phonegap-cordova.webp"
+     alt="PhoneGap / Apache Cordova diagram showing HTML5, CSS3 and JavaScript logos bridging to iOS, Android and Windows platforms"
+     width="1024"
+     height="462"
+     loading="lazy" />
+<figcaption>PhoneGap y Cordova: la promesa del desarrollo híbrido — escribe HTML, CSS y JavaScript, y despliega en iOS, Android y Windows desde una sola base de código.</figcaption>
+</figure>
 
-Después de eso, abandoné el desarrollo mobile. De nuevo. Y ese "de nuevo" es la parte importante — porque no fue la primera vez ni fue la última. Cada cierto tiempo sentía el impulso de acercarme. Veía un framework nuevo, una demo que se veía increíble, un tutorial que prometía "build your first app in 30 minutes". Pero el desarrollo mobile, a diferencia del frontend o el backend, requiere una cantidad de artefactos que al verlos todos juntos — los certificados, los perfiles de aprovisionamiento, los emuladores, las configuraciones de Gradle o Xcode, las cuentas de desarrollador — el impulso se me iba antes de escribir la primera línea de código. En frontend puedes abrir un archivo HTML y ya tienes algo. En backend, tres líneas levantan un servidor. En mobile, antes de ver "Hello World" en tu teléfono ya pasaste por tres asistentes de configuración y un error de Gradle que te manda a Stack Overflow. La barrera de entrada no era intelectual. Era logística. Y la logística mata la motivación más rápido que la complejidad.
+En el proyecto de la universidad mi grupo lo conformábamos Camilo, Miguel y yo: los dos son buenos amigos desde la carrera. Miguel practicaba karate entonces; hicimos una sesión de fotos y empaquetamos el material en una app sencilla de instructor — un asistente para repasar y aprender desde el móvil. La llamamos **KDoSensei**. El MVP era simple y, con la perspectiva de hoy, arcaico: hace casi quince años las interfaces no tenían el pulido actual; aun así era funcional.
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-hero.webp"
+     alt="Marca del proyecto KDoSensei: karateka en gi con cinturón verde en posición de bloqueo y el nombre en tipografía blanca sobre fondo negro"
+     width="1024"
+     height="522"
+     loading="lazy" />
+<figcaption>Identidad visual del proyecto: contraste blanco y negro con el cinturón verde como único color de acento.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-screens-overview.webp"
+     alt="Tres capturas de KDoSensei: inicio con Karate y Defensa Personal, menú de Karate con Historia, Glosario y Guías, y lista de guías por color de cinturón"
+     width="1024"
+     height="800"
+     loading="lazy" />
+<figcaption>Capturas del MVP: entrada a Karate y Defensa Personal, menús de contenido y guías por cinturón — UI de su época, funcional.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-screens-techniques.webp"
+     alt="Tres capturas de KDoSensei con detalle de técnicas kihon: Tettsui-uchi, Oi-zuki y Gedan-barai, cada una con foto del movimiento y texto explicativo"
+     width="1024"
+     height="548"
+     loading="lazy" />
+<figcaption>Detalle de tres kihon con las fotos de la sesión al aire libre y la descripción del movimiento.</figcaption>
+</figure>
+
+Años después desempolvé mis archivos de la universidad, encontré el código fuente e incluso los APK originales de Android. Esos binarios ya no funcionan en equipos de ahora — las versiones nuevas del sistema los fueron dejando atrás —, pero pude rescatar la capa web: en el fondo, una app híbrida así es una web embebida dentro del contenedor móvil. Ese mismo frontend lo desplegué como sitio estático en [Cloudflare Pages](https://pages.cloudflare.com/) en [kdosensei.xergioalex.com](https://kdosensei.xergioalex.com/).
+
+No cerré el capítulo ahí. En los años siguientes probé [Ionic](https://ionicframework.com/) — mismo espíritu, mejor tooling, prototipos más rápidos —, **Meteor** empaquetado con Cordova (reactivo y tentador hasta que en producción se sentía frágil) y también algún experimento con **React Native**, más cercano a lo nativo pero con fricciones propias. Cada intento me enseñó el techo del anterior.
+
+El problema llegaba cuando necesitaba algo más que pantallas y texto. Cuando el proyecto requería acceso real a componentes nativos — cámara, GPS, sensores, notificaciones push — el híbrido mostraba costuras visibles: un bridge lento o una API simplemente no expuesta. Si sumabas animaciones complejas o exigías una UX verdaderamente nativa, seguías sintiendo la web dentro del contenedor; en equipos modestos el rendimiento se iba rápido. Lo que “volaba” en el navegador de escritorio podía caer como app disfrazada en el teléfono — y para el usuario, esa diferencia cuenta.
+
+Después de eso, abandoné el desarrollo mobile — otra vez, y más de una — y en la práctica volví a lo que ya dominaba: APIs, servidores, infraestructura y bases de datos. El teléfono quedó otra vez en el cajón del "algún día".
+
+Y ese "de nuevo" es la parte importante — porque no fue la primera vez ni fue la última. Cada cierto tiempo sentía el impulso de acercarme. Veía un framework nuevo, una demo que se veía increíble, un tutorial que prometía "build your first app in 30 minutes". Pero el desarrollo mobile, a diferencia del frontend o el backend, requiere una cantidad de artefactos que al verlos todos juntos — los certificados, los perfiles de aprovisionamiento, los emuladores, las configuraciones de Gradle o Xcode, las cuentas de desarrollador — el impulso se me iba antes de escribir la primera línea de código. En frontend puedes abrir un archivo HTML y ya tienes algo. En backend, tres líneas levantan un servidor. En mobile, antes de ver "Hello World" en tu teléfono ya pasaste por tres asistentes de configuración y un error de Gradle que te manda a Stack Overflow. La barrera de entrada no era intelectual. Era logística. Y la logística mata la motivación más rápido que la complejidad.
 
 Este año decidí que ya era suficiente. No porque tenga un proyecto urgente que lo requiera — aunque algo hay — sino porque quería entender el estado del arte actual. Encontrar el mejor camino para alguien como yo: un desarrollador full stack con experiencia sólida en backend, frontend e infraestructura, pero que no es experto en nada de mobile. Mi happy path — el que me lleve a crear apps de manera intuitiva, con los mejores estándares posibles, sin tener que pelear contra el ecosistema para empezar.
 
 Antes de escribir una sola línea de código, me senté a entender el panorama. Porque uno de los errores más comunes de quien llega desde backend o web es asumir que el desarrollo mobile es simplemente "programación normal pero en un teléfono". No lo es. Los modelos de estado son distintos. El ciclo de vida de las pantallas funciona diferente. La forma en que piensas la UI — quién la controla, cuándo se destruye, cómo persiste — tiene lógica propia. Antes de elegir una herramienta, quería entender en qué me estaba metiendo.
 
-Este post es ese estado del arte que me senté a entender.
+Este post es ese estado del arte que me senté a entender. La misma historia personal — con el equipo, las fotos del proyecto y el ritmo de una presentación — la cuenta con más detalle visual el deck [/es/slides/mobile-landscape-2026/](/es/slides/mobile-landscape-2026/); aquí el foco es el mapa técnico.
 
 ## El problema real no es elegir el framework
 
@@ -178,7 +222,7 @@ Descarté el resto bastante rápido. El razonamiento:
 
 **Android/iOS nativo:** La respuesta solo tiene sentido si ya sabes para cuál de las dos plataformas estás construyendo. Yo no lo sé todavía — quiero llegar a las dos. Irme a nativo significaría aprender dos lenguajes, dos modelos de UI, dos ecosistemas. Es la respuesta correcta para muchos equipos. No para mí empezando desde cero.
 
-**Ionic/Capacitor:** Ya pasé por esto. Cordova, Ionic — me sirvieron hace quince años para salir del paso en la universidad, pero el tradeoff lo viví en carne propia: cuando necesitas que la app se sienta nativa, el híbrido no llega. Si ya tienes una app web y quieres llevarla a la tienda, es un camino válido. Pero yo estoy construyendo desde cero, y esta vez quiero hacerlo bien.
+**Ionic/Capacitor:** Ya pasé por esto. PhoneGap, Cordova, Meteor, Ionic — me sirvieron hace quince años para salir del paso en la universidad, pero el tradeoff lo viví en carne propia: cuando necesitas que la app se sienta nativa, el híbrido no llega. Si ya tienes una app web y quieres llevarla a la tienda, es un camino válido. Pero yo estoy construyendo desde cero, y esta vez quiero hacerlo bien.
 
 **.NET MAUI:** No vivo en el ecosistema C#. No hay razón para empezar ahí.
 
