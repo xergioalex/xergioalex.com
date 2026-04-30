@@ -145,6 +145,20 @@ onMount(() => {
         return true;
       }
 
+      /** Overview mode: Reveal's own capture-phase listener navigates to the
+       * clicked thumbnail and *deactivates* overview synchronously, then adds
+       * the transient `overview-deactivating` class for 1ms. By the time our
+       * bubble handler runs, `isOverview()` already returns false but the
+       * class is still on `.reveal`, so we have to check both. Without this
+       * guard, clicking a thumbnail navigates to it AND then advances one
+       * extra slide. */
+      if (
+        deck.isOverview() ||
+        revealEl.classList.contains('overview-deactivating')
+      ) {
+        return true;
+      }
+
       const a = target.closest('a[href]');
       if (a) {
         const href = a.getAttribute('href') ?? '';
