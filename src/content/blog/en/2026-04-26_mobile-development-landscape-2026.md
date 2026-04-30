@@ -14,7 +14,7 @@ As a full stack developer, I've always tried to learn a bit of everything: backe
 
 Not because I hadn't tried.
 
-I remember my early university years — we're talking around fifteen years ago — when I needed to build a mobile app for a course. Android Studio didn't exist yet; the official IDE was Eclipse with the ADT plugin, and it was too heavy for my humble laptop at the time. It wouldn't start, or it would start and eat all the memory, or it would get stuck compiling in a loop that felt eternal.
+I remember my final university years — we're talking around fifteen years ago — when I needed to build a mobile app for an entrepreneurship course. Android Studio didn't exist yet; the official IDE was Eclipse with the ADT plugin, and it was too heavy for my humble laptop at the time. It wouldn't start, or it would start and eat all the memory, or it would get stuck compiling in a loop that felt eternal.
 
 Looking up screenshots from that era I found these gems — Eclipse Helios loading with the ADT plugin, the visual layout editor, and the emulator with its virtual physical keyboard. The flashbacks are immediate:
 
@@ -45,17 +45,61 @@ Looking up screenshots from that era I found these gems — Eclipse Helios loadi
 <figcaption>The Android emulator inside Eclipse — with a virtual physical keyboard, the DDMS panel, and a speed that tested your patience.</figcaption>
 </figure>
 
-So I started looking for alternatives. [Cordova](https://cordova.apache.org/) let me build hybrid apps that served their purpose: I shipped my first mobile apps with HTML, CSS, and JavaScript packaged inside a native container. It worked. Then I experimented with Ionic — same principle, better tooling — and built a couple of prototypes and projects with those technologies.
+So I started looking for alternatives. [PhoneGap](https://en.wikipedia.org/wiki/Apache_Cordova) — later [Apache Cordova](https://cordova.apache.org/) — opened the door to my first hybrid apps: the same web stack packaged inside a native shell, a route that actually made sense because on the laptop I had back then Eclipse + ADT + emulator never really worked.
 
-The problem arrived when I needed more. When the project required real access to native device components — the camera, GPS, sensors, push notifications — hybrid development showed its seams. A bridge that was too slow, a native API that wasn't exposed, behavior that worked perfectly in the browser but on the actual device felt like a web app in disguise. And it was.
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/phonegap-cordova.webp"
+     alt="PhoneGap / Apache Cordova diagram showing HTML5, CSS3 and JavaScript logos bridging to iOS, Android and Windows platforms"
+     width="1024"
+     height="462"
+     loading="lazy" />
+<figcaption>PhoneGap and Cordova: the hybrid development promise — write HTML, CSS, and JavaScript, and deploy to iOS, Android, and Windows from a single codebase.</figcaption>
+</figure>
 
-After that, I abandoned mobile development. Again. And that "again" is the important part — because it wasn't the first time and it wasn't the last. Every now and then I'd feel the urge to come back. I'd see a new framework, a demo that looked incredible, a tutorial that promised "build your first app in 30 minutes." But mobile development, unlike frontend or backend, requires a quantity of artifacts that when you see them all together — the certificates, the provisioning profiles, the emulators, the Gradle or Xcode configurations, the developer accounts — the impulse would die before I wrote a single line of code. In frontend you can open an HTML file and you're already running. In backend, three lines spin up a server. In mobile, before seeing "Hello World" on your phone you've already gone through three setup wizards and a Gradle error that sends you to Stack Overflow. The entry barrier wasn't intellectual. It was logistical. And logistics kills motivation faster than complexity.
+For the university course, our team was Camilo, Miguel, and me. Camilo and Miguel are close friends from school; Miguel was practicing karate at the time. We staged a photo shoot and wrapped the material into a simple instructor-style app — a pocket reference to review and learn from the phone — and shipped it as **KDoSensei**. The MVP was plain and, by today's standard, dated: we're talking nearly fifteen years ago, before UIs were as polished as they are now; it still worked.
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-hero.webp"
+     alt="KDoSensei project branding: karate practitioner in a white gi with green belt in a blocking stance and the product name in white type on a black background"
+     width="1024"
+     height="522"
+     loading="lazy" />
+<figcaption>Project branding: high-contrast black and white with the green belt as the only accent color.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-screens-overview.webp"
+     alt="Three KDoSensei screenshots: home with Karate and Self-Defense sections, Karate menu with History, Glossary, and Guides, and belt-based guide list"
+     width="1024"
+     height="800"
+     loading="lazy" />
+<figcaption>MVP screenshots: landing, content navigation, and belt-based guides — very much of its time, but it worked.</figcaption>
+</figure>
+
+<figure>
+<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-screens-techniques.webp"
+     alt="Three KDoSensei technique detail screens for kihon moves Tettsui-uchi, Oi-zuki, and Gedan-barai, each with an outdoor photo and explanatory Spanish text"
+     width="1024"
+     height="548"
+     loading="lazy" />
+<figcaption>Three kihon detail screens using the outdoor shoot photos and short movement notes.</figcaption>
+</figure>
+
+Years later I dug up my course files — source included — along with the original Android APKs. Those packages don't run cleanly on today's devices anymore — newer OS releases have mostly left them behind — but the web layer was worth saving. Hybrid apps like that are still, at heart, embedded web inside a native shell. I put that same frontend online as a static site on [Cloudflare Pages](https://pages.cloudflare.com/) at [kdosensei.xergioalex.com](https://kdosensei.xergioalex.com/).
+
+I didn't close the book there. Over the years I tried [Ionic](https://ionicframework.com/) — same idea, better tooling, faster prototypes — **Meteor** bundled with Cordova (reactive and tempting until production felt fragile), and some experiments with **React Native**, closer to native but with its own friction. Each round taught me the ceiling of the last one.
+
+The problem arrived when I needed more than screens and copy. When a project needed real access to native pieces — camera, GPS, sensors, push — hybrid showed visible seams: a slow bridge or an API that simply wasn't there. If you layered complex animations or expected genuinely native UX, you still felt the web inside the shell; on modest hardware, performance fell apart fast. What "flew" in a desktop browser could land on a phone like a dressed-up web app — and users notice that gap.
+
+After that, I walked away from mobile development — more than once — and drifted back to what I already knew: APIs, servers, infrastructure, and databases. The phone went back into the "someday" drawer.
+
+And that "again" is the important part — because it wasn't the first time and it wasn't the last. Every now and then I'd feel the urge to come back. I'd see a new framework, a demo that looked incredible, a tutorial that promised "build your first app in 30 minutes." But mobile development, unlike frontend or backend, requires a quantity of artifacts that when you see them all together — the certificates, the provisioning profiles, the emulators, the Gradle or Xcode configurations, the developer accounts — the impulse would die before I wrote a single line of code. In frontend you can open an HTML file and you're already running. In backend, three lines spin up a server. In mobile, before seeing "Hello World" on your phone you've already gone through three setup wizards and a Gradle error that sends you to Stack Overflow. The entry barrier wasn't intellectual. It was logistical. And logistics kills motivation faster than complexity.
 
 This year I decided that was enough. Not because I have an urgent project that demands it — though there's something there — but because I wanted to understand the current state of the art. To find the best path for someone like me: a full stack developer with solid experience in backend, frontend, and infrastructure, but no expertise in mobile. My happy path — the one that gets me building apps intuitively, with the best possible standards, without having to fight the ecosystem just to get started.
 
 Before writing a single line of code, I sat down to understand the landscape. Because one of the most common mistakes people make when arriving from backend or web is assuming that mobile development is just "normal programming but on a phone." It isn't. State models are different. The lifecycle of screens works differently. The way you think about UI — who controls it, when it gets destroyed, how it persists — has its own logic. Before choosing a tool, I wanted to understand what I was getting into.
 
-This post is that state of the art I sat down to understand.
+This post is that state of the art I sat down to understand. I tell the same personal story — team, shoot, screenshots — with more visual runway in [this slide deck](/slides/mobile-landscape-2026/); here the focus is the technical map.
 
 ## The real problem isn't choosing a framework
 
@@ -178,7 +222,7 @@ I ruled out the rest fairly quickly. The reasoning:
 
 **Native Android/iOS:** The answer only makes sense if you already know which platform you're building for. I don't — I want to reach both. Going native would mean learning two languages, two UI models, two ecosystems. It's the right answer for many teams. Not for me starting from zero.
 
-**Ionic/Capacitor:** I've been through this. Cordova, Ionic — they served me fifteen years ago to get through university courses, but I lived the tradeoff firsthand: when you need the app to feel native, hybrid doesn't get there. If you already have a web app and want to get it into the store, it's a valid path. But I'm building from scratch, and this time I want to do it right.
+**Ionic/Capacitor:** I've been through this. PhoneGap, Cordova, Meteor, Ionic — they served me fifteen years ago to get through university courses, but I lived the tradeoff firsthand: when you need the app to feel native, hybrid doesn't get there. If you already have a web app and want to get it into the store, it's a valid path. But I'm building from scratch, and this time I want to do it right.
 
 **.NET MAUI:** I don't live in the C# ecosystem. No reason to start there.
 
