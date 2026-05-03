@@ -34,7 +34,7 @@ xergioalex.com/
 ├── public/              # Static assets
 ├── docs/                # Documentation
 ├── .agent_commands/     # AI agent automation
-└── .claude/             # Skills and agents
+└── .agents/             # Skills and agents
 ```
 
 ## Critical Rules (MUST FOLLOW)

@@ -831,8 +831,8 @@ The rules exist because they come from concrete mistakes that had to be fixed. B
 - **[Standards Guide](./STANDARDS.md)** — Orthography rules, import order, and project-level standards.
 - **[I18N Guide](./I18N_GUIDE.md)** — Full multilingual content rules.
 - **[Blog Posts Feature Guide](./features/BLOG_POSTS.md)** — File naming, frontmatter schema, hero layouts.
-- **[Content Writer Agent](../.claude/agents/content-writer.md)** — The agent that uses this guide.
-- **[add-blog-post skill](../.claude/skills/add-blog-post/)** — The scaffolding skill for new posts.
+- **[Content Writer Agent](../.agents/agents/content-writer.md)** — The agent that uses this guide.
+- **[add-blog-post skill](../.agents/skills/add-blog-post/)** — The scaffolding skill for new posts.
 
 ---
 

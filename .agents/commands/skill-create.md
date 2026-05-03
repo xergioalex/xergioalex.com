@@ -133,7 +133,7 @@ Create this skill?
 
 #### Part A: Create Skill File
 
-Create at: `.claude/skills/{name}/SKILL.md`
+Create at: `.agents/skills/{name}/SKILL.md`
 
 Verify:
 - [ ] File follows template structure from `SKILL_TEMPLATE.md`
@@ -143,7 +143,7 @@ Verify:
 
 #### Part B: Update Catalog (MANDATORY)
 
-Update `.claude/docs/skills_agents_catalog.md` with ALL of the following:
+Update `.agents/docs/skills_agents_catalog.md` with ALL of the following:
 
 **B.1 — Overview Table:** Increment 4 values:
 - Skills row, Tier {N} column: +1
@@ -178,7 +178,7 @@ Update `.claude/docs/skills_agents_catalog.md` with ALL of the following:
 ✅ Skill Created: {name}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Location: .claude/skills/{name}/SKILL.md
+Location: .agents/skills/{name}/SKILL.md
 Tier: {tier}
 
 Invoke with: /{name}
@@ -209,7 +209,7 @@ User: Low - just imports, no logic changes
 Agent: Creating skill...
        
        ✅ Skill Created: fix-imports
-       Location: .claude/skills/fix-imports/SKILL.md
+       Location: .agents/skills/fix-imports/SKILL.md
        Tier: 1 (Light)
 ```
 

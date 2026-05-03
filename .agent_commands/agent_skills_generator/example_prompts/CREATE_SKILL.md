@@ -134,7 +134,7 @@ Based on the answers from Phase 1, determine the appropriate tier:
    - Testing requirements
    - Commit message format
 
-2. **Existing skills** in `.claude/skills/`
+2. **Existing skills** in `.agents/skills/`
    - Naming patterns
    - Common guardrails
    - Output formats
@@ -260,15 +260,15 @@ Include at least:
 
 ```bash
 # Create directory
-mkdir -p .claude/skills/{skill-name}
+mkdir -p .agents/skills/{skill-name}
 
 # Create skill file
-# Place content in .claude/skills/{skill-name}/SKILL.md
+# Place content in .agents/skills/{skill-name}/SKILL.md
 ```
 
 ### Update Catalog
 
-Add entry to `.claude/docs/skills_agents_catalog.md`:
+Add entry to `.agents/docs/skills_agents_catalog.md`:
 
 ```markdown
 | {skill-name} | {tier} | {intent} | `/{skill-name}` | {brief description} |
@@ -393,5 +393,5 @@ Fix ESLint errors in the specified files using auto-fix where possible.
 
 ### Phase 6: Placed
 
-- Created `.claude/skills/fix-lint/SKILL.md`
+- Created `.agents/skills/fix-lint/SKILL.md`
 - Updated catalog

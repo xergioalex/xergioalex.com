@@ -1,32 +1,32 @@
 ---
-description: List all available skills with tier and description
+description: List all available agents with tier and description
 ---
 
-# Skill List
+# Agent List
 
-Lists all available skills in the repository, organized by tier.
+Lists all available agents in the repository, organized by tier.
 
 ## Parameter Reference
 
 | Parameter | Description | Example |
 |-----------|-------------|---------|
-| (none) | List all skills | `/skill-list` |
-| `tier:N` | Filter by tier | `/skill-list tier:1` |
-| `{query}` | Search by name/description | `/skill-list review` |
+| (none) | List all agents | `/agent-list` |
+| `tier:N` | Filter by tier | `/agent-list tier:2` |
+| `{query}` | Search by name/description | `/agent-list security` |
 
 ---
 
 ## Workflow
 
-### Step 1: Scan Skills
+### Step 1: Scan Agents
 
-Read all skills from `.claude/skills/*/SKILL.md`
+Read all agents from `.agents/agents/*.md`
 
 Extract from each:
 - Name (from frontmatter)
 - Description (from frontmatter)
 - Tier (from frontmatter)
-- Intent (from frontmatter)
+- Scope (from frontmatter)
 
 ### Step 2: Apply Filters
 
@@ -37,40 +37,30 @@ If query provided, filter by name/description match.
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📚 Available Skills
+🤖 Available Agents
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-## Tier 1 (Light/Cheap)
-Fast, low-risk, pattern-following tasks
-
-| Skill | Intent | Description |
-|-------|--------|-------------|
-| `quick-fix` | fix | Small bug fixes in 1-3 files |
-| `doc-edit` | docs | Documentation updates |
-| `pr-review-lite` | review | Quick PR checklist |
-
 ## Tier 2 (Standard)
-Everyday development work
+Everyday development specialists
 
-| Skill | Intent | Description |
-|-------|--------|-------------|
-| `feature-implement` | execute | Add features with tests |
-| `write-tests` | tests | Create unit/integration tests |
-| `refactor-safe` | execute | Safe code refactoring |
+| Agent | Scope | Description |
+|-------|-------|-------------|
+| `reviewer` | Code review | Thorough code review specialist |
+| `executor` | Execution | Follows plans precisely |
+| `qa` | Testing | Quality assurance focus |
 
 ## Tier 3 (Heavy/Reasoning)
 Complex planning and architecture
 
-| Skill | Intent | Description |
-|-------|--------|-------------|
-| `deep-work-plan` | plan | Complex multi-step planning |
-| `architecture-review` | review | Design decisions |
+| Agent | Scope | Description |
+|-------|-------|-------------|
+| `architect` | Planning | System design, NO code execution |
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Total: {N} skills
+Total: {N} agents
 
-📝 Create new: /skill-create
-📖 Details: .claude/skills/{name}/SKILL.md
+📝 Create new: /agent-create
+📖 Details: .agents/agents/{name}.md
 ```
 
 ---
@@ -78,21 +68,19 @@ Total: {N} skills
 ## Filtered Output Example
 
 ```
-User: /skill-list tier:1
+User: /agent-list tier:3
 
 Agent:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📚 Tier 1 Skills (Light/Cheap)
+🤖 Tier 3 Agents (Heavy/Reasoning)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-| Skill | Intent | Description |
-|-------|--------|-------------|
-| `quick-fix` | fix | Small bug fixes in 1-3 files |
-| `doc-edit` | docs | Documentation updates |
-| `pr-review-lite` | review | Quick PR checklist |
+| Agent | Scope | Description |
+|-------|-------|-------------|
+| `architect` | Planning | System design, NO code execution |
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Showing: 3 Tier 1 skills
+Showing: 1 Tier 3 agent
 ```
 
 ---
@@ -100,32 +88,31 @@ Showing: 3 Tier 1 skills
 ## Search Example
 
 ```
-User: /skill-list review
+User: /agent-list review
 
 Agent:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📚 Skills matching "review"
+🤖 Agents matching "review"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-| Skill | Tier | Description |
+| Agent | Tier | Description |
 |-------|------|-------------|
-| `pr-review-lite` | 1 | Quick PR checklist |
-| `architecture-review` | 3 | Design decisions |
+| `reviewer` | 2 | Thorough code review specialist |
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Found: 2 skills
+Found: 1 agent
 ```
 
 ---
 
-## If No Skills Found
+## If No Agents Found
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📚 No Skills Found
+🤖 No Agents Found
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-No skills found in .claude/skills/
+No agents found in .agents/agents/
 
-To create your first skill: /skill-create
+To create your first agent: /agent-create
 ```
