@@ -10,7 +10,7 @@ This system enables AI agents to create high-quality **Skills** and **Agents** f
 
 A **Skill** is a reusable "how-to" SOP (Standard Operating Procedure):
 
-- Located in `.claude/skills/<skill-name>/SKILL.md`
+- Located in `.agents/skills/<skill-name>/SKILL.md`
 - Invoked via slash commands like `/quick-fix`
 - Must be small, atomic, and reusable
 - Skills are **"HOW it's done"**
@@ -19,7 +19,7 @@ A **Skill** is a reusable "how-to" SOP (Standard Operating Procedure):
 
 An **Agent** is a specialized worker persona:
 
-- Located in `.claude/agents/<agent-name>.md`
+- Located in `.agents/agents/<agent-name>.md`
 - Used for specialization and parallelizable work
 - Examples: reviewer, architect, executor
 - Agents are **"WHO does it"**
@@ -44,7 +44,7 @@ An **Agent** is a specialized worker persona:
     ├── SKILL_TEMPLATE.md                  ← Canonical skill template
     └── AGENT_TEMPLATE.md                  ← Canonical agent template
 
-.claude/                                   ← Where generated skills/agents live
+.agents/                                   ← Where generated skills/agents live
 ├── skills/
 │   └── {skill-name}/
 │       └── SKILL.md
@@ -134,10 +134,10 @@ See [AUDIT_REPO_FIT.md](./AUDIT_REPO_FIT.md) for how the generator fits this rep
 
 ## Output Location
 
-Generated Skills and Agents go directly to `.claude/`:
+Generated Skills and Agents go directly to `.agents/`:
 
-- Skills: `.claude/skills/{skill-name}/SKILL.md`
-- Agents: `.claude/agents/{agent-name}.md`
+- Skills: `.agents/skills/{skill-name}/SKILL.md`
+- Agents: `.agents/agents/{agent-name}.md`
 
 ## Related
 

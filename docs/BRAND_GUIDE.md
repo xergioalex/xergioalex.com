@@ -286,7 +286,7 @@ See [Public Assets](features/PUBLIC_ASSETS.md) for the complete icon inventory.
 
 ### Writing Tone
 
-The XergioAleX brand voice is **personal-professional**: authentic, conversational, and grounded in real experience. See the [`content-writer` agent](../.claude/agents/content-writer.md) for comprehensive voice guidelines.
+The XergioAleX brand voice is **personal-professional**: authentic, conversational, and grounded in real experience. See the [`content-writer` agent](../.agents/agents/content-writer.md) for comprehensive voice guidelines.
 
 **Quick reference:**
 
@@ -350,6 +350,6 @@ Dark accent tone:   #CD3553 (Softer Crimson) → auto-applied in `.dark`
 - [Dark Mode](features/DARK_MODE.md) — Theme implementation details
 - [Public Assets](features/PUBLIC_ASSETS.md) — Static asset inventory
 - [Styling Guide](../src/styles/README.md) — CSS and Tailwind technical reference
-- [Content Writer Agent](../.claude/agents/content-writer.md) — Brand voice guidelines for articles
+- [Content Writer Agent](../.agents/agents/content-writer.md) — Brand voice guidelines for articles
 - [Branding Blog Post (EN)](../src/content/blog/en/personal-branding-xergioalex.md) — Full brand story
 - [Branding Assets Repo](https://github.com/xergioalex/personal-branding) — Source design files

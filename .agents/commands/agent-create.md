@@ -138,7 +138,7 @@ Create this agent?
 
 #### Part A: Create Agent File
 
-Create at: `.claude/agents/{name}.md`
+Create at: `.agents/agents/{name}.md`
 
 Verify:
 - [ ] File follows template structure from `AGENT_TEMPLATE.md`
@@ -148,7 +148,7 @@ Verify:
 
 #### Part B: Update Catalog (MANDATORY)
 
-Update `.claude/docs/skills_agents_catalog.md` with ALL of the following:
+Update `.agents/docs/skills_agents_catalog.md` with ALL of the following:
 
 **B.1 — Overview Table:** Increment 4 values:
 - Agents row, Tier {N} column: +1
@@ -183,7 +183,7 @@ Update `.claude/docs/skills_agents_catalog.md` with ALL of the following:
 ✅ Agent Created: {name}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Location: .claude/agents/{name}.md
+Location: .agents/agents/{name}.md
 Tier: {tier}
 
 To list all agents: /agent-list
@@ -216,7 +216,7 @@ User: Yes, can create test files
 Agent: Creating agent...
        
        ✅ Agent Created: test-writer
-       Location: .claude/agents/test-writer.md
+       Location: .agents/agents/test-writer.md
        Tier: 2 (Standard)
 ```
 

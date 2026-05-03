@@ -375,9 +375,9 @@ What would you like to adjust?
    - This creates a virtuous cycle: plans → skills → better plans → better skills
 
    **Where:**
-   - Skills catalog: `.claude/docs/skills_agents_catalog.md`
-   - Skills directory: `.claude/skills/{skill-name}/SKILL.md`
-   - Agents directory: `.claude/agents/{agent-name}.md`
+   - Skills catalog: `.agents/docs/skills_agents_catalog.md`
+   - Skills directory: `.agents/skills/{skill-name}/SKILL.md`
+   - Agents directory: `.agents/agents/{agent-name}.md`
    - Skills generator: `.agent_commands/agent_skills_generator/`
 
    **Dependencies:** ALL previous user-defined tasks must be completed.
@@ -394,7 +394,7 @@ What would you like to adjust?
    Read every completed task's Completion & Log. Note new patterns, structures, components, procedures, and validation expertise.
 
    ### Step 2: Check existing catalog
-   Read `.claude/docs/skills_agents_catalog.md` to understand what already exists.
+   Read `.agents/docs/skills_agents_catalog.md` to understand what already exists.
 
    ### Step 3: Evaluate for NEW skills/agents
 
