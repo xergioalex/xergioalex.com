@@ -8,7 +8,7 @@ This document records how well the agent_skills_generator fits **this repository
 
 - **3-tier model (Tier 1/2/3)** — Aligns with cost-efficient model use; planning vs execution vs simple tasks.
 - **Two-phase pattern (Plan Tier 3 → Execute Tier 2)** — Matches intent: heavy reasoning for planning, standard model for execution.
-- **Output locations** — `.claude/skills/`, `.claude/agents/`, `.claude/docs/skills_agents_catalog.md` exist and are correct.
+- **Output locations** — `.agents/skills/`, `.agents/agents/`, `.agents/docs/skills_agents_catalog.md` exist and are correct.
 - **AGENTS.md** — MASTER_PROMPT and GUIDE already list AGENTS.md as a required/primary read.
 - **Templates and structure** — SKILL_TEMPLATE, AGENT_TEMPLATE, CREATE_SKILL.md, CREATE_AGENT.md are generic and work for any repo.
 - **GUIDE and MODEL_ROUTING** — No Python/repo-specific assumptions; tier definitions are language-agnostic.
@@ -128,7 +128,7 @@ npm run build
 
 ## Summary
 
-- **Fits:** Tier system, two-phase pattern, .claude/ output, AGENTS.md, generic templates
+- **Fits:** Tier system, two-phase pattern, .agents/ output, AGENTS.md, generic templates
 - **Updates needed:**
   - Change ESLint → Biome in skills
   - Update validation commands

@@ -182,12 +182,12 @@ Consider:
    - Coding standards
    - Existing conventions
 
-2. **Existing agents** in `.claude/agents/`
+2. **Existing agents** in `.agents/agents/`
    - Naming patterns
    - Role definitions
    - Interaction patterns
 
-3. **Existing skills** in `.claude/skills/`
+3. **Existing skills** in `.agents/skills/`
    - What skills could this agent invoke?
 
 ---
@@ -268,12 +268,12 @@ Include at least:
 
 ```bash
 # Create agent file at:
-.claude/agents/{agent-name}.md
+.agents/agents/{agent-name}.md
 ```
 
 ### Update Catalog
 
-Add entry to `.claude/docs/skills_agents_catalog.md`:
+Add entry to `.agents/docs/skills_agents_catalog.md`:
 
 ```markdown
 | {agent-name} | {tier} | {scope} | {when to use} |
@@ -424,5 +424,5 @@ A specialized reviewer focused on database query performance. Analyzes queries f
 
 ### Phase 7: Placed
 
-- Created `.claude/agents/query-reviewer.md`
+- Created `.agents/agents/query-reviewer.md`
 - Updated catalog

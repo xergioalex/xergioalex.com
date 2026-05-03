@@ -26,8 +26,8 @@
 | Brand | [Brand Guide](docs/BRAND_GUIDE.md) | Visual identity, colors, typography |
 | Analytics | [Analytics](docs/ANALYTICS.md) | Tracking, GSC, verification |
 | AI Agents | [Agent Onboarding](docs/AI_AGENT_ONBOARDING.md), [Agent Collaboration](docs/AI_AGENT_COLLAB.md) | Setup, handoff, coordination |
-| Skills/Agents | [Skills & Agents Catalog](.claude/docs/skills_agents_catalog.md) | Available skills and agents |
-| Commands | [Commands Reference](.claude/docs/COMMANDS_REFERENCE.md) | All slash commands with procedure files |
+| Skills/Agents | [Skills & Agents Catalog](.agents/docs/skills_agents_catalog.md) | Available skills and agents |
+| Commands | [Commands Reference](.agents/docs/COMMANDS_REFERENCE.md) | All slash commands with procedure files |
 
 ## Project Overview
 
@@ -68,6 +68,9 @@ src/
 public/images/blog/      # Blog images: posts/{slug}/, shared/, _staging/
 scripts/                 # Build utilities (image optimization)
 docs/                    # Project documentation
+.agents/                 # Cross-agent skills, commands, agents, settings (canonical)
+.claude → .agents        # Backward-compat symlink for Claude Code
+.agent_commands/         # Deep work plan templates and skill/agent generators
 tmp/                     # Temporary workspace (git-ignored, see below)
 ```
 
@@ -85,6 +88,41 @@ The `tmp/` directory at the project root is a **git-ignored scratch space** for 
 - Do NOT store anything permanent or important here — it can be deleted at any time
 - When a user asks for a temporary file, prompt output, or scratch artifact, **write it to `tmp/`**
 - Subdirectories are fine (e.g., `tmp/prompts/`, `tmp/analysis/`)
+
+## Skills, Commands, and Agents (`.agents/`)
+
+The `.agents/` directory is the **canonical, cross-agent home** for everything that defines how AI assistants behave in this repo: skills, slash commands, agent definitions, internal documentation, and settings. The same content is consumed by Claude Code, Cursor AI, OpenAI Codex, Gemini, and any other coding agent that picks up local skills/commands.
+
+```
+.agents/
+├── agents/        # Agent definitions (architect, executor, reviewer, ...)
+├── commands/      # Slash commands (commit, pr, branch, dwp-*, ...)
+├── skills/        # Skill procedures (add-blog-post, fix-lint, ...)
+├── docs/          # Catalogs and references (skills_agents_catalog.md, COMMANDS_REFERENCE.md)
+├── README.md      # Conventions for authoring skills, agents, and commands
+├── settings.json           # Claude Code env (env vars, experimental flags)
+└── settings.local.json     # Claude Code local permissions (git-tracked)
+```
+
+**Backward compatibility — `.claude/` symlink:**
+
+Claude Code historically reads from `.claude/` at the repo root. To keep that working without duplicating files, **`.claude` is a symlink to `.agents`**:
+
+```bash
+ls -la .claude
+# .claude -> .agents
+```
+
+This means every `.claude/...` path (e.g., `.claude/skills/foo/SKILL.md`) resolves transparently to `.agents/skills/foo/SKILL.md`. No tool, hook, or settings file needs to change for Claude Code to keep working.
+
+**Authoring rules (all agents):**
+
+- Use `.agents/...` as the canonical path in **all new documentation, prompts, and skill/command files**. Do not write `.claude/...` in new content.
+- Do not edit files via the `.claude/` symlink — edit the real files under `.agents/`.
+- Settings files (`settings.json`, `settings.local.json`) are Claude Code-specific but live in `.agents/` for symmetry. They're a no-op for other agents.
+- The `.agents/README.md` documents how to add new skills, commands, and agents.
+
+**Why the rename?** The `.agents/` name signals that the folder is shared across agents, matching the project-level `AGENTS.md` convention (which is itself the canonical file that `CLAUDE.md` symlinks to). It avoids implying that the contents are Claude-only.
 
 ## CRITICAL: Mandatory Requirements
 
@@ -419,7 +457,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - **Agents** — Specialized workers: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`
 - **Critical policy:** New blog posts MUST use `/add-blog-post` skill; new slide decks MUST use `/add-slide-deck` skill
 - **Management:** `/skill-list`, `/agent-list`, `/skill-create`, `/agent-create`
-- **Full catalog:** [Skills & Agents Catalog](.claude/docs/skills_agents_catalog.md)
+- **Full catalog:** [Skills & Agents Catalog](.agents/docs/skills_agents_catalog.md)
 
 ### Execution Modes
 
@@ -449,12 +487,12 @@ See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details
 
 When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
-1. **Look up** the command in **[Commands Reference](.claude/docs/COMMANDS_REFERENCE.md)** to find its procedure file
+1. **Look up** the command in **[Commands Reference](.agents/docs/COMMANDS_REFERENCE.md)** to find its procedure file
 2. **READ** the linked procedure file completely
 3. **FOLLOW** its step-by-step instructions exactly
 4. **DO NOT** improvise or skip steps — the procedure file IS the spec
 
-> **If a user prompt starts with `#`** (e.g., `#add-blog-post`, `#quick-fix`), treat it as a command invocation — look up the command name (without `#`) in the [Commands Reference](.claude/docs/COMMANDS_REFERENCE.md) and execute its procedure.
+> **If a user prompt starts with `#`** (e.g., `#add-blog-post`, `#quick-fix`), treat it as a command invocation — look up the command name (without `#`) in the [Commands Reference](.agents/docs/COMMANDS_REFERENCE.md) and execute its procedure.
 
 ## Conventional Commits
 

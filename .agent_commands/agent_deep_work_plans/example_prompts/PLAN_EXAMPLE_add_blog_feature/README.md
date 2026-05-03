@@ -77,7 +77,7 @@ Add a "Related Posts" section to individual blog posts that displays 3-5 posts w
 | Task 5 | — | Skills & Agents Discovery |
 | Task 6 | — | Executive Report |
 
-> See the full catalog at `.claude/docs/skills_agents_catalog.md`
+> See the full catalog at `.agents/docs/skills_agents_catalog.md`
 
 ## 7. Status
 

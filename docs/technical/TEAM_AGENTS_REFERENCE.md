@@ -78,7 +78,7 @@ The lead's conversation history does **NOT** carry over to teammates.
 
 ### Enable Team Agents
 
-Set the environment variable in `.claude/settings.json`:
+Set the environment variable in `.agents/settings.json`:
 
 ```json
 {
@@ -323,5 +323,5 @@ Use hooks to enforce rules:
 
 - [AGENTS.md](../../AGENTS.md) — Root agent instructions
 - [DWP Guide](../../.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md) — Plan creation spec
-- [Skills & Agents Catalog](../../.claude/docs/skills_agents_catalog.md) — Available skills and agents
+- [Skills & Agents Catalog](../../.agents/docs/skills_agents_catalog.md) — Available skills and agents
 - [Official Claude Code Team Agents Docs](https://code.claude.com/docs/en/agent-teams) — Authoritative API reference

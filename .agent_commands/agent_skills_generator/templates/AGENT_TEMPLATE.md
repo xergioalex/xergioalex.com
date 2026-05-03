@@ -57,7 +57,7 @@ This agent is a specialized **{role description}** that focuses on:
 
 ### General Principles
 
-1. Follow `AGENTS.md` and `.claude/docs/standards.md` for all decisions
+1. Follow `AGENTS.md` and `.agents/docs/standards.md` for all decisions
 2. Stay within defined scope at all times
 3. Prefer minimal, targeted changes over broad rewrites
 4. Require confirmation for any high-risk actions
