@@ -76,8 +76,7 @@ setup_claude_persistence_for_user() {
     echo "Claude CLI persistence setup complete for ${USER_HOME}"
 }
 
-# Setup Claude persistence for both root and node user
-setup_claude_persistence_for_user "/root"
+# Setup Claude persistence for node user
 setup_claude_persistence_for_user "/home/node"
 chown -R node:node /home/node/.claude_data /home/node/.claude.json /home/node/.claude /home/node/.config/claude-code 2>/dev/null || true
 
@@ -108,8 +107,7 @@ setup_codex_persistence_for_user() {
     fi
 }
 
-# Setup Codex persistence for both root and node user
-setup_codex_persistence_for_user "/root"
+# Setup Codex persistence for node user
 setup_codex_persistence_for_user "/home/node"
 chown -R node:node /home/node/.codex_data /home/node/.codex 2>/dev/null || true
 
@@ -162,13 +160,11 @@ setup_cursor_persistence_for_user() {
         else
             mkdir -p "${CURSOR_DATA_DIR}/config_cursor"
         fi
-        # Create symlink
         ln -sf "${CURSOR_DATA_DIR}/config_cursor" "${CURSOR_CONFIG_DIR}"
     fi
 }
 
-# Setup Cursor persistence for both root and node user
-setup_cursor_persistence_for_user "/root"
+# Setup Cursor persistence for node user
 setup_cursor_persistence_for_user "/home/node"
 chown -R node:node /home/node/.cursor_data /home/node/.cursor /home/node/.config 2>/dev/null || true
 
@@ -202,8 +198,7 @@ setup_gh_persistence_for_user() {
     fi
 }
 
-# Setup GitHub CLI persistence for both root and node user
-setup_gh_persistence_for_user "/root"
+# Setup GitHub CLI persistence for node user
 setup_gh_persistence_for_user "/home/node"
 chown -R node:node /home/node/.gh_data /home/node/.config 2>/dev/null || true
 
@@ -268,16 +263,13 @@ setup_ssh_keys_for_user() {
     fi
 }
 
-# Setup SSH keys for both root and node user
-setup_ssh_keys_for_user "/root"
+# Setup SSH keys for node user
 setup_ssh_keys_for_user "/home/node"
 chown -R node:node /home/node/.ssh 2>/dev/null || true
 
 # Setup Node.js specific configurations
 setup_nodejs() {
-    # Ensure npm cache directory exists and has correct permissions for both users
-    mkdir -p /root/.npm
-    chmod 755 /root/.npm
+    # Ensure npm cache directory exists with correct ownership for node user
     mkdir -p /home/node/.npm
     chown -R node:node /home/node/.npm
 }
@@ -285,7 +277,7 @@ setup_nodejs() {
 # Setup Git configuration (simplified - main config is in Dockerfile)
 setup_git() {
     # Check if git configuration is mounted from host
-    if [ -f "/root/.gitconfig" ]; then
+    if [ -f "/home/node/.gitconfig" ]; then
         echo "Git configuration found and mounted from host"
     else
         echo "Using default Git configuration from Dockerfile"

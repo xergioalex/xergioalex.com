@@ -1,23 +1,17 @@
 FROM node:24.14.0-trixie-slim
 LABEL maintainer="xergioalex@gmail.com"
 
+# System packages (apt requires root)
 RUN apt-get update -y && \
     apt-get install -y less git curl gnupg ca-certificates openssh-client sudo nano \
     # Chromium for Lighthouse CI local audits
     chromium && \
-    # Install GitHub CLI
+    # Install GitHub CLI (binary is system-wide; per-user config lives in ~/.config/gh)
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
     chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
     apt-get update && \
     apt-get install -y gh && \
-    # Install Claude Code CLI (native installer, npm method is deprecated)
-    curl -fsSL https://claude.ai/install.sh | bash && \
-    ln -sf /root/.local/bin/claude /usr/local/bin/claude && \
-    # Clean up installer artifacts to prevent overwriting persistent volume on rebuild
-    rm -rf /root/.claude /root/.claude.json && \
-    # Install Codex CLI globally
-    npm install -g @openai/codex && \
     # --- Clean ---
     apt-get clean -y && \
     rm -rf /var/cache/apk/* && \
@@ -36,44 +30,41 @@ ENV CHROMIUM_FLAGS="--no-sandbox"
 RUN echo 'node ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/node \
     && chmod 0440 /etc/sudoers.d/node
 
-# Install Cursor CLI globally (for root)
-# The Cursor CLI installer script installs the 'agent' command
-RUN curl -fsSL https://cursor.com/install | bash \
-    && ln -sf /root/.cursor/bin/agent /usr/local/bin/agent \
-    && ln -sf /root/.cursor/bin/agent /usr/local/bin/cursor-agent
+# Make node user's CLI install dirs available on PATH (npm globals, Claude, Cursor agent)
+ENV PATH=/home/node/.npm-global/bin:/home/node/.local/bin:/home/node/.cursor/bin:$PATH
 
-# Configure Git to avoid warnings for root (can be overridden by mounted .gitconfig)
-RUN git config --global init.defaultBranch main \
-    && git config --global pull.rebase false \
-    && git config --global safe.directory '*'
+# Source custom commands for node user
+RUN echo 'source /app/docker/custom_commands.sh' >> /home/node/.bashrc \
+    && chown node:node /home/node/.bashrc
 
-# Configure Git for node user as well
-USER node
-RUN git config --global init.defaultBranch main \
-    && git config --global pull.rebase false \
-    && git config --global safe.directory '*'
-USER root
-
-# Add custom commands for container (both root and node user)
-RUN echo 'source /app/docker/custom_commands.sh' >> /root/.bashrc \
-    && echo 'source /app/docker/custom_commands.sh' >> /home/node/.bashrc
-
-# Create directories for node user that mirror root's setup
+# Pre-create persistent data dirs so the named volumes inherit node ownership on first mount
 RUN mkdir -p /home/node/.claude_data /home/node/.codex_data /home/node/.cursor_data /home/node/.gh_data /home/node/.ssh \
     && chown -R node:node /home/node
 
-# Install Claude Code CLI for node user as well
+# Install AI CLIs and configure git as node user
 USER node
+
+# Configure npm to install globals into a node-owned directory (no sudo needed)
+RUN mkdir -p /home/node/.npm-global \
+    && npm config set prefix /home/node/.npm-global
+
+# Install Claude Code CLI (native installer, npm method is deprecated).
+# Remove fresh install artifacts so the persistent volume isn't overwritten on rebuild.
 RUN curl -fsSL https://claude.ai/install.sh | bash \
     && rm -rf /home/node/.claude /home/node/.claude.json
-USER root
 
-# Install Cursor CLI for node user as well
-USER node
+# Install Cursor CLI (provides the 'agent' command in ~/.cursor/bin)
 RUN curl -fsSL https://cursor.com/install | bash
+
+# Install Codex CLI globally (resolves under /home/node/.npm-global)
+RUN npm install -g @openai/codex
+
+# Configure Git for node user (can be overridden by mounted .gitconfig)
+RUN git config --global init.defaultBranch main \
+    && git config --global pull.rebase false \
+    && git config --global safe.directory '*'
+
 USER root
-# Create symlinks to make cursor agent available system-wide for node user
-RUN ln -sf /home/node/.cursor/bin/agent /usr/local/bin/agent 2>/dev/null || true
 
 # Copy and setup entrypoint script
 COPY xergioalexcom/entrypoint.sh /usr/local/bin/entrypoint.sh
