@@ -245,7 +245,7 @@ List relevant skills and agents referenced by tasks in this plan:
 | Task 1 | `/add-page` skill | Page creation procedure |
 | Task 2 | `i18n-guardian` agent | Bilingual validation |
 
-> See the full catalog at `.claude/docs/skills_agents_catalog.md`
+> See the full catalog at `.agents/docs/skills_agents_catalog.md`
 
 ## 7. Plan Status / Notes
 
@@ -570,7 +570,7 @@ When you want Cursor, Claude, or another agent to **generate a new deep-work pla
 >     - Global guidelines
 >     - A Task List with `[ ]` items and links to each `N.task_*.md` file
 >     - Execution rules for the agent
->     - Skills & Agents used in this plan (consult `.claude/docs/skills_agents_catalog.md`)
+>     - Skills & Agents used in this plan (consult `.agents/docs/skills_agents_catalog.md`)
 >     - Reference to PROMPTS.md for ready-to-use prompts
 >   - Create `PROMPTS.md` with ready-to-use prompts for this plan:
 >     - Use the template at `.agent_commands/agent_deep_work_plans/results/plans/PROMPTS_TEMPLATE.md`
@@ -578,7 +578,7 @@ When you want Cursor, Claude, or another agent to **generate a new deep-work pla
 >     - Include prompts for: execute, resume, resume with status, check status, modify
 >   - For each task in the Task List:
 >     - Create a `N.task_{task_title}.md` file following the task template defined in `GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`.
->     - Check `.claude/docs/skills_agents_catalog.md` for relevant skills/agents to reference in each task.
+>     - Check `.agents/docs/skills_agents_catalog.md` for relevant skills/agents to reference in each task.
 >     - Ensure each task file has:
 >       - Context
 >       - Goal
@@ -807,11 +807,11 @@ When creating deep work plans, the plan generator MUST consult the project's ava
 
 Before creating any plan, the generator MUST read:
 
-1. **Skills catalog:** `.claude/docs/skills_agents_catalog.md`
+1. **Skills catalog:** `.agents/docs/skills_agents_catalog.md`
    - Lists all available skills with names, tiers, and descriptions
-2. **Individual skill files:** `.claude/skills/{skill-name}/SKILL.md`
+2. **Individual skill files:** `.agents/skills/{skill-name}/SKILL.md`
    - Contains detailed step-by-step procedures, guardrails, and validation
-3. **Agent files:** `.claude/agents/{agent-name}.md`
+3. **Agent files:** `.agents/agents/{agent-name}.md`
    - Contains specialized checklists, workflows, and validation criteria
 
 ### How to Integrate Skills into Task Files

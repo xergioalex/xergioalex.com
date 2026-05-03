@@ -512,7 +512,7 @@ In practice, use the best available model that matches the tier's requirements.
 
 The tier system is now **actively enforced** in Claude Code via the `model` field in skill/agent frontmatter.
 
-### For Skills (`.claude/skills/{name}/SKILL.md`)
+### For Skills (`.agents/skills/{name}/SKILL.md`)
 
 ```yaml
 ---
@@ -524,7 +524,7 @@ tier: 1               # Documentation only (ignored by tools)
 ---
 ```
 
-### For Agents (`.claude/agents/{name}.md`)
+### For Agents (`.agents/agents/{name}.md`)
 
 ```yaml
 ---

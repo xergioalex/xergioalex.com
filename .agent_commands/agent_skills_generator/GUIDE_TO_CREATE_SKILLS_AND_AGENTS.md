@@ -1,6 +1,6 @@
 # GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md
 
-### How to Create Skills and Agents Under `.claude/`
+### How to Create Skills and Agents Under `.agents/`
 
 This guide defines the **official structure and workflow** for creating _Skills_ and _Agents_ for AI-assisted development.
 
@@ -21,7 +21,7 @@ Use this document whenever you need to generate a new Skill or Agent.
 
 A **Skill** is a reusable "how-to" SOP (Standard Operating Procedure):
 
-- **Location:** `.claude/skills/<skill-name>/SKILL.md`
+- **Location:** `.agents/skills/<skill-name>/SKILL.md`
 - **Invocation:** Slash commands like `/quick-fix`, `/doc-edit`, `/pr-review-lite`
 - **Characteristics:**
   - Small, atomic, and reusable
@@ -35,7 +35,7 @@ A **Skill** is a reusable "how-to" SOP (Standard Operating Procedure):
 
 An **Agent** (or Subagent) is a specialized worker persona:
 
-- **Location:** `.claude/agents/<agent-name>.md`
+- **Location:** `.agents/agents/<agent-name>.md`
 - **Usage:** Invoked by name or role, e.g., "as reviewer" or "use architect"
 - **Characteristics:**
   - Embodies a specific role/expertise
@@ -65,8 +65,8 @@ Skills and agents follow the **Agent Skills open standard** (agentskills.io) for
 
 | Tool | Skills Location | Agents Location | Standard Support |
 |------|-----------------|-----------------|------------------|
-| **Claude Code** | `.claude/skills/` | `.claude/agents/` | Full (most features) |
-| **Cursor** | `.cursor/skills/`, `.claude/skills/` | `.cursor/agents/` | Partial (basic fields) |
+| **Claude Code** | `.agents/skills/` | `.agents/agents/` | Full (most features) |
+| **Cursor** | `.cursor/skills/`, `.agents/skills/` | `.cursor/agents/` | Partial (basic fields) |
 | **Codex (OpenAI)** | `.codex/skills/`, `~/.codex/skills/` | N/A | Basic (skills only) |
 
 ### What Works Where
@@ -211,7 +211,7 @@ For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute w
 ### Skills Location
 
 ```
-.claude/skills/
+.agents/skills/
 └── {skill-name}/
     └── SKILL.md
 ```
@@ -225,7 +225,7 @@ For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute w
 ### Agents Location
 
 ```
-.claude/agents/
+.agents/agents/
 └── {agent-name}.md
 ```
 
@@ -238,7 +238,7 @@ For large tasks, use the **two-phase pattern**: plan with Tier 3, then execute w
 ### Supporting Files
 
 ```
-.claude/
+.agents/
 ├── docs/
 │   ├── skills_agents_catalog.md   # Central catalog
 │   └── model_routing.md           # Routing documentation
@@ -611,9 +611,9 @@ Escalate if:
    - Include realistic examples
 
 5. **Place the File**
-   - Create `.claude/skills/{skill-name}/SKILL.md`
-   - Update `.claude/docs/skills_agents_catalog.md`
-   - Update `.claude/docs/COMMANDS_REFERENCE.md` with new command entry
+   - Create `.agents/skills/{skill-name}/SKILL.md`
+   - Update `.agents/docs/skills_agents_catalog.md`
+   - Update `.agents/docs/COMMANDS_REFERENCE.md` with new command entry
 
 6. **Test the Skill**
    - Run with a simple case
@@ -652,8 +652,8 @@ Escalate if:
    - Include example interactions
 
 6. **Place the File**
-   - Create `.claude/agents/{agent-name}.md`
-   - Update `.claude/docs/skills_agents_catalog.md`
+   - Create `.agents/agents/{agent-name}.md`
+   - Update `.agents/docs/skills_agents_catalog.md`
 
 7. **Test the Agent**
    - Give them a sample task
@@ -666,7 +666,7 @@ Escalate if:
 
 ### Why Catalog Maintenance Matters
 
-The catalog (`.claude/docs/skills_agents_catalog.md`) is the single source of truth for discovering skills and agents. If it falls out of sync, agents cannot find the right tools, users invoke nonexistent commands, and the tier system breaks down. **Every skill or agent creation MUST include a catalog update.**
+The catalog (`.agents/docs/skills_agents_catalog.md`) is the single source of truth for discovering skills and agents. If it falls out of sync, agents cannot find the right tools, users invoke nonexistent commands, and the tier system breaks down. **Every skill or agent creation MUST include a catalog update.**
 
 ### Required Updates Checklist
 
@@ -741,16 +741,16 @@ Add a new row to the top of the Changelog table. **Keep only the 3 most recent e
 
 #### 6. Commands Reference Update (REQUIRED for skills with slash commands)
 
-If the new skill or command has a slash command invocation, add an entry to the correct category table in `.claude/docs/COMMANDS_REFERENCE.md`:
+If the new skill or command has a slash command invocation, add an entry to the correct category table in `.agents/docs/COMMANDS_REFERENCE.md`:
 
 For Skills:
 ```markdown
-| `/{skill-name}` | `.claude/skills/{skill-name}/SKILL.md` | {brief description} |
+| `/{skill-name}` | `.agents/skills/{skill-name}/SKILL.md` | {brief description} |
 ```
 
 For Commands:
 ```markdown
-| `/{command-name}` | `.claude/commands/{command-name}.md` | {brief description} |
+| `/{command-name}` | `.agents/commands/{command-name}.md` | {brief description} |
 ```
 
 ### Validation Checklist
@@ -763,7 +763,7 @@ After updating the catalog, verify:
 - [ ] Domain section updated (if applicable)
 - [ ] Changelog has a new entry at the top
 - [ ] No duplicate entries in any table
-- [ ] Commands Reference updated with new command entry (`.claude/docs/COMMANDS_REFERENCE.md`)
+- [ ] Commands Reference updated with new command entry (`.agents/docs/COMMANDS_REFERENCE.md`)
 
 ### Common Mistakes to Avoid
 

@@ -287,9 +287,9 @@ Use this table to decide whether to invoke a Skill or an Agent.
 
 ### File Locations
 
-- **Skills:** `.claude/skills/{skill-name}/SKILL.md`
-- **Agents:** `.claude/agents/{agent-name}.md`
-- **Catalog:** `.claude/docs/skills_agents_catalog.md`
+- **Skills:** `.agents/skills/{skill-name}/SKILL.md`
+- **Agents:** `.agents/agents/{agent-name}.md`
+- **Catalog:** `.agents/docs/skills_agents_catalog.md`
 
 ---
 

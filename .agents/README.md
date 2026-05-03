@@ -1,11 +1,13 @@
-# Claude Code Configuration
+# `.agents/` — Cross-Agent Configuration
 
-This directory contains Claude Code configuration and custom slash commands for automating common workflows.
+This directory is the **canonical home** for skills, slash commands, agent definitions, and configuration shared across AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Gemini, GitHub Copilot, and others).
+
+> **Backward compatibility:** `.claude/` is a symlink to `.agents/`, so any tool that still expects `.claude/...` paths keeps working transparently. Always edit the real files under `.agents/` — never via the symlink. Use `.agents/...` as the canonical path in all new content.
 
 ## Directory Structure
 
 ```
-.claude/
+.agents/
 ├── README.md              # This file - documentation
 ├── settings.local.json    # Local Claude Code settings
 ├── skills/                # Reusable skills (how-to procedures)
@@ -32,7 +34,7 @@ This directory contains Claude Code configuration and custom slash commands for 
 
 This project includes reusable **Skills** (procedures) and **Agents** (specialized personas).
 
-**Full catalog:** [.claude/docs/skills_agents_catalog.md](docs/skills_agents_catalog.md)
+**Full catalog:** [.agents/docs/skills_agents_catalog.md](docs/skills_agents_catalog.md)
 
 ### Tier Breakdown
 
@@ -81,7 +83,7 @@ This project includes reusable **Skills** (procedures) and **Agents** (specializ
 ```
 
 > **IMPORTANT:** When creating new skills or agents, you MUST update the catalog
-> (`.claude/docs/skills_agents_catalog.md`) following the 5-step process (overview table, tier table,
+> (`.agents/docs/skills_agents_catalog.md`) following the 5-step process (overview table, tier table,
 > interaction map, domain section, changelog) AND update this README's quick reference tables.
 > See the [Catalog Maintenance section](../.agent_commands/agent_skills_generator/GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md) (Section 10) for detailed instructions.
 

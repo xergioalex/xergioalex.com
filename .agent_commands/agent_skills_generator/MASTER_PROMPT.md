@@ -67,9 +67,9 @@ Map these workflows:
 
 Look for:
 
-- `.claude/skills/` - Existing skills
-- `.claude/agents/` - Existing agents
-- `.claude/docs/skills_agents_catalog.md` - Catalog
+- `.agents/skills/` - Existing skills
+- `.agents/agents/` - Existing agents
+- `.agents/docs/skills_agents_catalog.md` - Catalog
 
 **Note patterns:**
 
@@ -406,7 +406,7 @@ Before finalizing, verify:
 Create file at:
 
 ```
-.claude/skills/{skill-name}/SKILL.md
+.agents/skills/{skill-name}/SKILL.md
 ```
 
 ### D.2 Agent Output
@@ -414,12 +414,12 @@ Create file at:
 Create file at:
 
 ```
-.claude/agents/{agent-name}.md
+.agents/agents/{agent-name}.md
 ```
 
 ### D.3 Update Catalog (MANDATORY — 5 Steps) and Commands Reference
 
-Update `.claude/docs/skills_agents_catalog.md` with all of the following:
+Update `.agents/docs/skills_agents_catalog.md` with all of the following:
 
 #### Step 1: Update Overview Table
 
@@ -476,10 +476,10 @@ Add a new row at the top of the Changelog table:
 
 #### Step 6: Update Commands Reference
 
-If the new skill has a slash command invocation, add an entry to the correct category table in `.claude/docs/COMMANDS_REFERENCE.md`:
+If the new skill has a slash command invocation, add an entry to the correct category table in `.agents/docs/COMMANDS_REFERENCE.md`:
 
 ```markdown
-| `/{skill-name}` | `.claude/skills/{skill-name}/SKILL.md` | {brief description} |
+| `/{skill-name}` | `.agents/skills/{skill-name}/SKILL.md` | {brief description} |
 ```
 
 #### Catalog Update Validation

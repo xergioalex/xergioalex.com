@@ -69,14 +69,14 @@ Tracking documentation coverage for XergioAleX.com.
 | [agent_library_upgrades/](../.agent_commands/agent_library_upgrades/) | ✅ Current | Library upgrade system |
 | [PLAN_EXAMPLE_add_blog_feature/](../.agent_commands/agent_deep_work_plans/example_prompts/PLAN_EXAMPLE_add_blog_feature/) | ✅ Current | Astro-specific example plan |
 
-### .claude/ Documentation
+### .agents/ Documentation
 
 | File | Status | Description |
 |------|--------|-------------|
-| [README.md](../.claude/README.md) | ✅ Current | Claude commands overview |
-| [skills/](../.claude/skills/) | ✅ Current | Reusable skills (9 total) |
-| [agents/](../.claude/agents/) | ✅ Current | Specialized agents (4 total) |
-| [docs/skills_agents_catalog.md](../.claude/docs/skills_agents_catalog.md) | ✅ Current | Catalog of skills/agents |
+| [README.md](../.agents/README.md) | ✅ Current | Claude commands overview |
+| [skills/](../.agents/skills/) | ✅ Current | Reusable skills (9 total) |
+| [agents/](../.agents/agents/) | ✅ Current | Specialized agents (4 total) |
+| [docs/skills_agents_catalog.md](../.agents/docs/skills_agents_catalog.md) | ✅ Current | Catalog of skills/agents |
 
 ## Coverage Summary
 
