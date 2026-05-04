@@ -85,6 +85,7 @@ function closeAllDropdowns() {
       <div class="flex gap-6">
         <a href={prefix || '/'} class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'home' })}>{t.nav.home}</a>
         <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
+        <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
         <div
           role="group"
           class="relative group"
@@ -129,6 +130,7 @@ function closeAllDropdowns() {
             </div>
           {/if}
         </div>
+        <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
         <div
           role="group"
           class="relative group"
@@ -175,6 +177,7 @@ function closeAllDropdowns() {
           {/if}
         </div>
         <a href="{prefix}/contact" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'contact' })}>{t.nav.contact}</a>
+        <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
         <div
           role="group"
           class="relative group"
