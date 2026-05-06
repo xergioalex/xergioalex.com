@@ -646,17 +646,19 @@ Note: Security incidents forced confirmation layers, sandboxes, granular permiss
 
 ---
 
-## Markdown as the lingua franca of agents
+<!-- .slide: class="slide-content-top" -->
 
-<ul>
-  <li><code>AGENTS.md</code> — emerging de facto standard (Codex, Cursor, Antigravity)</li>
-  <li><code>CLAUDE.md</code> — Claude Code</li>
-  <li><strong>OpenClaw — its 7 files</strong></li>
-  <li>LLMs read plain text better than any other format. So do humans.</li>
-  <li class="fragment fade-up"><strong>OpenClaw didn't invent the idea — it took it to a scale nobody had seen.</strong></li>
-</ul>
+<a href="/blog/openclaw-your-assistant-your-machine-your-rules/" target="_blank"><img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero.webp" alt="OpenClaw — Your assistant, your machine, your rules" style="max-height:65vh;width:auto;margin:0 auto;display:block;border-radius:0.5rem;cursor:pointer;"></a>
 
-Note: This is one of those rare convergences where the simplest format turns out to be the most powerful. Markdown is becoming the universal config language for agents across the industry.
+Note: Blog post hero with link. Let the image speak for itself before moving to Act 5.
+
+---
+
+<!-- .slide: class="slide-content-top" data-background="#0a0a0a" -->
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/openclaw-overview-en.png" alt="OpenClaw — Overview: channels, tools, local control and memory" style="max-height:72vh;width:auto;margin:0 auto;display:block;">
+
+Note: OpenClaw architecture diagram. Shows the four pillars: channels, tools, local control and memory.
 
 ---
 
@@ -1044,18 +1046,17 @@ Note: Same six words we opened with. Now they mean something different.
 
 <!-- .slide: data-background="#0f1124" -->
 
-## Thank you
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/speaker-photo.webp" alt="Sergio Alexander Flórez" width="180" height="180" style="display:block;margin:0 auto;border-radius:50%;border:3px solid #E51641;">
 
-<p style="text-align:center;font-size:0.9em;color:#e2e8f0;margin-top:0.4em;">Sergio Alexander Flórez Galeano</p>
+<h2 style="margin-top:0.5em;color:#ffffff;">Thank you!</h2>
 
-<div style="text-align:center;margin-top:0.4em;font-size:0.85em;">
+<p style="text-align:center;font-size:0.85em;color:#e2e8f0;margin-top:0.3em;">Sergio Alexander Flórez Galeano</p>
+
+<div style="text-align:center;margin-top:0.5em;font-size:0.8em;">
   <p>🌐 <a href="https://xergioalex.com" target="_blank">xergioalex.com</a></p>
-  <p>📝 <a href="https://xergioalex.com/blog/openclaw-your-assistant-your-machine-your-rules" target="_blank">Read the full story on the blog</a></p>
   <p>🐦 <a href="https://twitter.com/xergioalex" target="_blank">@xergioalex</a></p>
   <p>💻 <a href="https://github.com/xergioalex" target="_blank">github.com/xergioalex</a></p>
   <p>💼 <a href="https://linkedin.com/in/xergioalex" target="_blank">linkedin.com/in/xergioalex</a></p>
 </div>
 
-<small style="display:block;text-align:center;margin-top:0.5em;color:#64748b;font-size:0.6em;">Sources: Lex Fridman Podcast #491 · TED 2026 · star-history.com · The Pragmatic Engineer · VentureBeat · Bloomberg · Nature · Trend Micro · Koi Security · The Register · The New Stack.</small>
-
-Note: Closing. Thank the audience. Point them to the blog post for the full story with sources. Open the floor for questions.
+Note: Closing slide. Thank the audience and share contact channels.
