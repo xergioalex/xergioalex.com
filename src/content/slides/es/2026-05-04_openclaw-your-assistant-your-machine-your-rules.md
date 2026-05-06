@@ -196,11 +196,25 @@ Note: Finales de 2024, la IA generativa y los coding agents explotan. Peter los 
 
 ## Y entonces, mayo de 2025…
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/steipete-spark-tweet.webp" alt="Tweet de Peter Steinberger mostrando su gráfico de contribuciones en GitHub con el mensaje When you get your spark back" width="900" height="649" class="slide-image-full" />
+<a href="https://x.com/steipete/status/1925983535958999393" target="_blank"><img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/steipete-spark-tweet.webp" alt="Tweet de Peter Steinberger mostrando su gráfico de contribuciones en GitHub con el mensaje When you get your spark back" width="900" height="649" style="display:block;margin:0 auto;max-width:min(65%, 580px);border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" /></a>
 
 <small>Peter Steinberger en X, mayo 2025: "When you get your spark 🌟 back." ("Cuando recuperas tu chispa.")</small>
 
 Note: Una captura de su actividad en GitHub. Estaba codeando sin parar. Un mes después publicó "Finding My Spark Again" en su blog. Volvió más ligero, más directo. Una frase lo resume: "I don't do this for the money. I want to have fun and have impact." ("No hago esto por la plata. Quiero divertirme y tener impacto.")
+
+---
+
+<!-- ==================== Serie: Trabajando con Agentes ==================== -->
+
+<!-- .slide: class="slide-content-top" -->
+
+## Serie — Trabajando con Agentes
+
+<a href="https://xergioalex.com/es/blog/series/working-with-agents/" target="_blank"><img src="/images/blog/series/working-with-agents/hero-es.webp" alt="Trabajando con Agentes: De escribir código a orquestar agentes de IA" width="1024" height="576" style="display:block;margin:0 auto;max-height:min(48vh, 390px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" /></a>
+
+<p style="text-align:center;margin:0.4em 0 0;font-size:0.7em;"><a href="https://xergioalex.com/es/blog/series/working-with-agents/" target="_blank" style="color:#60a5fa;">xergioalex.com/es/blog/series/working-with-agents</a></p>
+
+Note: Antes de seguir con la historia de OpenClaw, hago un paréntesis personal. Esta serie — "Trabajando con Agentes" — es mi propia documentación del cambio de paradigma: de escribir código a orquestar agentes de IA. Flujos reales, lo que falla, criterio, contexto, adopción en equipos. Quien quiera profundizar, tiene los enlaces en ambos idiomas.
 
 ---
 
@@ -215,118 +229,98 @@ Note: Una captura de su actividad en GitHub. Estaba codeando sin parar. Un mes d
 
 ---
 
-## Noviembre 2025 — la molestia trivial
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/whatsapp-logo.png" alt="Logo de WhatsApp" width="80" height="80" style="display:block;margin:0 auto 0.2em;" />
+
+## Noviembre 2025 — una molestia trivial
 
 <ul>
-  <li>Peter quería hablarle a un asistente de IA <strong>desde WhatsApp</strong></li>
-  <li>No por el navegador. No por una app aparte.</li>
-  <li>Por la app que ya usaba todos los días</li>
+  <li>Peter estaba trabajando con <strong>Claude</strong> todos los días</li>
+  <li>Quería poder hablarle y darle órdenes <strong>desde WhatsApp</strong></li>
   <li>No existía nada que lo hiciera bien</li>
+  <li>Así que se sentó y lo construyó — en poco tiempo ya tenía una <strong>versión funcional</strong></li>
 </ul>
 
-<blockquote class="slide-quote" style="margin-top:0.6em;font-size:0.9em;">
-  "I was annoyed that it didn't exist, so I just prompted it into existence."<br/>
-  <span style="font-size:0.7em;color:#94a3b8;">("Me molestaba que no existiera, así que lo prompteé hasta hacerlo existir.")</span>
-</blockquote>
-<cite class="slide-quote-cite">— Peter Steinberger</cite>
-
-Note: Esta es toda la historia de origen. Sin business plan. Sin análisis de mercado. Solo molestia. La primera versión era un puente entre WhatsApp y la API de Claude. Sin memoria. Sin herramientas. Solo mensajes de ida y vuelta.
+Note: Toda la historia de origen en un slide. Peter usaba Claude a diario, quería controlarlo desde WhatsApp, no había nada que lo hiciera bien, y lo construyó él mismo en una hora. Un puente WhatsApp ↔ API de Claude. Sin memoria, sin herramientas, solo mensajes de ida y vuelta. Ironía: el proyecto se llamó como Claude, pero la mayoría del código lo escribió Codex de OpenAI — Peter ponía 5–10 agentes Codex en paralelo como su equipo.
 
 ---
 
-## Construido en aproximadamente una hora
+<p style="text-align:center;font-size:2.5em;margin:0;">🦞</p>
 
-<div class="slide-grid-2">
-  <div>
-    <h3>La primera versión</h3>
-    <ul>
-      <li>WhatsApp ↔ API de Claude</li>
-      <li>Sin memoria</li>
-      <li>Sin herramientas</li>
-      <li>Mensajes de ida y vuelta</li>
-    </ul>
-  </div>
-  <div>
-    <h3>El giro de la historia</h3>
-    <ul>
-      <li>Nacido con <strong>Claude</strong></li>
-      <li>Pero construido casi todo con <strong>Codex de OpenAI</strong></li>
-      <li>Peter ponía <strong>5–10 agentes Codex</strong> en paralelo como su equipo</li>
-      <li>"El anuncio gratuito más grande de Codex"</li>
-    </ul>
-  </div>
-</div>
-
-Note: La ironía importa. El proyecto se llamó como Claude, pero la mayoría del código lo escribió un agente de OpenAI. El nombre "Clawd" lo sugirió la propia IA cuando Peter le preguntó cómo se debería llamar.
-
----
-
-## "Clawd" — Claude le puso el nombre
+## Clawdbot
 
 <ul>
-  <li>Peter le preguntó a la IA cómo llamar al proyecto</li>
-  <li>Sugirió "<strong>Clawd</strong>" — juego de palabras con claw (garra) y Claude</li>
-  <li>La langosta llegó natural — pinzas, mudas, crecimiento</li>
+  <li>Peter le preguntó a <strong>Claude</strong> cómo llamar al proyecto</li>
+  <li>Sugirió "<strong>Clawdbot</strong>" — juego de palabras con claw (garra) y Claude</li>
   <li>Peter lo subió a GitHub. Compartió el link. Se fue a dormir.</li>
 </ul>
 
-Note: Publicó, compartió y durmió. Al principio no pasó nada extraordinario. Unos cientos de devs lo encontraron. A las dos semanas, apenas 2,000 estrellas. Dos meses de crecimiento lento, casi silencioso. Y entonces…
+Note: Publicó, compartió y durmió.
+
+---
+
+## Pero al principio no pasó mucho
+
+<ul>
+  <li>Unos cientos de desarrolladores lo descubrieron</li>
+  <li>A las dos semanas: <strong>~2.000 estrellas</strong> — nada mal para un proyecto indie</li>
+  <li>Pero era más que todo una curiosidad</li>
+  <li>Peter siguió trabajando y agregó:</li>
+</ul>
+
+<div style="display:flex;justify-content:center;gap:1.5em;flex-wrap:wrap;margin-top:0.4em;font-size:0.85em;">
+  <span>🧠 Memoria persistente</span>
+  <span>📁 Acceso a archivos</span>
+  <span>⏰ Tareas programadas</span>
+  <span>💬 Telegram · Discord · Signal</span>
+</div>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>Cada función nueva atraía nuevos desarrolladores.</em></small>
+
+Note: Durante dos meses el crecimiento fue lento, casi silencioso. Peter no paró: memoria persistente para que el agente recordara conversaciones pasadas, acceso a archivos en tu disco, tareas programadas que corrían sin intervención, y soporte para Telegram, Discord y Signal además de WhatsApp. Cada feature nueva atraía una ola nueva de developers. Y entonces llegó finales de enero…
 
 ---
 
 ## Llegó finales de enero de 2026
 
-<div class="slide-stat">
-  <span class="slide-stat__number">9.000 → 34.000 → 180.000</span>
-  <span class="slide-stat__label">estrellas en 1 día → 48 horas → 2 semanas</span>
-  <p class="slide-stat__context">De curiosidad de nicho a tendencia dominante de GitHub en cuestión de días.</p>
+<div style="text-align:center;">
+  <p style="font-size:2.2em;font-weight:800;color:#dc2626;margin:0;line-height:1.2;">9.000 → 34.000 → 180.000</p>
+  <p style="font-size:1.3em;color:var(--slide-text);margin:0.3em 0 0;font-weight:500;">estrellas en 1 día → 48 horas → 2 semanas</p>
+  <p style="font-size:0.85em;color:var(--slide-text);margin:0.6em 0 0;font-style:italic;opacity:0.85;">De curiosidad de nicho a tendencia dominante de GitHub en cuestión de días.</p>
 </div>
 
 Note: Algo se rompió. El proyecto pasó de experimento indie a tendencia dominante de GitHub en días. Llevo años viendo crecer proyectos open source. Nunca he visto una trayectoria ni cerca de esta.
 
 ---
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/star-history-openclaw-react-linux.webp" alt="Gráfico de star history comparando OpenClaw, React y Linux en GitHub. La curva de OpenClaw sube casi verticalmente en 2026 y supera a React y Linux en pocas semanas" width="1024" height="687" class="slide-image-full" />
+<!-- .slide: class="slide-content-top" -->
 
-<small>Star history: OpenClaw vs React vs Linux. Fuente: star-history.com</small>
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/star-history-openclaw-react-linux.webp" alt="Gráfico de star history comparando OpenClaw, React y Linux en GitHub. La curva de OpenClaw sube casi verticalmente en 2026 y supera a React y Linux en pocas semanas" width="1024" height="687" style="display:block;margin:0 auto;max-height:min(70vh, 540px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+<small style="display:block;text-align:center;margin-top:0.4em;">Star history: OpenClaw vs React vs Linux. Fuente: star-history.com</small>
 
 Note: Esa línea roja vertical en 2026 es OpenClaw. No es un glitch del gráfico. React tardó una década en llegar a 250K estrellas — OpenClaw las superó alrededor del 3 de marzo de 2026, unos 60 días después del lanzamiento. El kernel de Linux está en ~225K después de 30+ años. OpenClaw lo pasó en menos de dos meses.
 
 ---
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/star-history-openclaw-solo.webp" alt="Gráfico de star history de OpenClaw desde diciembre de 2025 hasta abril de 2026 mostrando un crecimiento explosivo desde finales de enero" width="1024" height="690" class="slide-image-full" />
+<!-- .slide: class="slide-content-top" -->
 
-<small>Star history solo de OpenClaw, dic 2025 – abr 2026.</small>
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/star-history-openclaw-solo.webp" alt="Gráfico de star history de OpenClaw desde diciembre de 2025 hasta abril de 2026 mostrando un crecimiento explosivo desde finales de enero" width="1024" height="690" style="display:block;margin:0 auto;max-height:min(70vh, 540px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+<small style="display:block;text-align:center;margin-top:0.4em;">Star history solo de OpenClaw, dic 2025 – abr 2026.</small>
 
 Note: Acercas la curva de OpenClaw sola. De noviembre a finales de enero, casi plana. Después se dispara y no para. A abril de 2026 sigue subiendo — adopción sostenida, no un pico viral.
 
 ---
 
-## Adopción real, no solo estrellas
+<!-- .slide: class="slide-content-top" -->
 
-<div class="slide-grid-2">
-  <div class="slide-card">
-    <h3>La señal</h3>
-    <ul>
-      <li><strong>70.000+</strong> forks</li>
-      <li><strong>14.000+</strong> commits</li>
-      <li><strong>1.200+</strong> contribuidores</li>
-    </ul>
-  </div>
-  <div class="slide-card">
-    <h3>El ruido</h3>
-    <ul>
-      <li>Saltos de un solo día por encima de 25K estrellas</li>
-      <li>Timestamps casi idénticos — sospechosos</li>
-      <li>El instalador podría estar empujando a la gente a darle estrella</li>
-      <li>Ninguna auditoría formal confirmó manipulación</li>
-    </ul>
-  </div>
-</div>
+## Números actuales del repo
 
-<small style="display:block;text-align:center;margin-top:0.4em;"><em>La gente no forkea un repo por moda. Lo forkea porque lo usa.</em></small>
+<a href="https://github.com/openclaw/openclaw" target="_blank"><img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/openclaw-github-repo.png" alt="Repositorio de OpenClaw en GitHub: 369K estrellas, 76.1K forks, 41,795 commits" width="1024" height="576" style="display:block;margin:0 auto;max-height:min(55vh, 420px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" /></a>
 
-Note: Sé honesto con el público: las estrellas tienen ruido. Pero los forks, commits y contribuidores son difíciles de inflar. El fenómeno es real, aunque el contador tenga algo de inflación.
+<small style="display:block;text-align:center;margin-top:0.4em;"><em>369K ⭐ · 76.1K forks · 41,795 commits · 138 releases</em></small>
+
+Note: Captura real del repo hoy. 369K estrellas, 76K forks, casi 42 mil commits, 138 releases. Los forks y commits son difíciles de inflar — eso es adopción real, no solo vanity metrics.
 
 ---
 
@@ -339,19 +333,105 @@ Note: Sé honesto con el público: las estrellas tienen ruido. Pero los forks, c
   <h2>El triple rebrand</h2>
 </div>
 
-Note: Aquí la historia se sale de control. Abogados corporativos, estafadores de cripto y una metáfora de langosta mudando de caparazón — todo en una semana.
+Note: Aquí la historia se sale de control. Abogados corporativos, estafadores de crypto y una metáfora de langosta mudando de caparazón — todo en una semana.
 
 ---
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/google-trends-clawdbot-vs-claude.webp" alt="Google Trends al 27 de enero de 2026: las búsquedas de clawdbot superan a claude code y codex" width="900" height="727" class="slide-image-full" />
+<!-- .slide: class="slide-content-top" -->
 
-<small>Google Trends, 27 de enero de 2026: "clawdbot" supera a "claude code" y "codex."</small>
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/google-trends-clawdbot-vs-claude.webp" alt="Google Trends al 27 de enero de 2026: las búsquedas de clawdbot superan a claude code y codex" width="900" height="727" style="display:block;margin:0 auto;max-height:min(65vh, 500px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+<small style="display:block;text-align:center;margin-top:0.4em;">Google Trends, 27 de enero de 2026: "clawdbot" supera a "claude code" y "codex."</small>
 
 Note: La gente buscaba "clawdbot" más que el propio producto de Anthropic. La confusión entre los nombres no le hizo gracia a la empresa detrás de Claude.
 
 ---
 
-## La respuesta de Anthropic
+<!-- .slide: class="slide-content-top" -->
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/anthropic-cease-desist-es.png" alt="Ilustración: Peter recibe una carta de cese y desista de Anthropic pidiendo renombrar Clawdbot por ser demasiado similar a Claude" width="1024" height="576" style="display:block;margin:0 auto;max-height:min(70vh, 540px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+Note: Ilustración del momento: los abogados de Anthropic llegan con la carta de cese y desista. "Please rename Clawdbot. Too similar to Claude." Peter no tuvo opción.
+
+---
+
+## Lluvia de ideas en Discord a las 5 AM → "Moltbot"
+
+<ul>
+  <li><strong>Molt</strong> = mudar — las langostas sueltan el caparazón viejo para crecer uno más grande</li>
+  <li>Encajaba con la mascota. Encajaba con la situación del rebrand.</li>
+  <li>Peter cambió el nombre en GitHub, en X y en todas partes</li>
+</ul>
+
+Note: Molt es mudar: soltar la cáscara vieja para crecer una nueva. Una metáfora perfecta para lo que estaba pasando con el proyecto. Peter renombró @clawdbot → @moltbot y lo lanzó.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+## De Clawdbot a Moltbot
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/rebrand-clawdbot-moltbot-es.png" alt="Ilustración: rebranding de Clawdbot a Moltbot — actualización del perfil en X de @clawdbot a @moltbot con notificación de usuario actualizado" width="1024" height="576" style="display:block;margin:0 auto;max-height:min(70vh, 540px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+Note: Visual del cambio real: @clawdbot tachado, @moltbot con check, en X y en todo el ecosistema público del proyecto.
+
+---
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #7c2d12 0%, #0f1124 100%)" -->
+
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:2rem;">
+<p style="margin:0 0 0.2em;font-size:clamp(3rem, 10vw, 4.5rem);line-height:1;" role="img" aria-label="Advertencia">⚠️</p>
+<h1 style="margin:0;font-size:clamp(2rem, 5vw, 3.2rem);font-weight:800;line-height:1.25;">Y entonces aparecieron<br/>los estafadores</h1>
+</div>
+
+Note: Corta antes de revelar quiénes fueron — deja respirar al público un segundo.
+
+---
+
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55vh;text-align:center;padding:1rem;">
+<p style="margin:0;font-size:clamp(2.75rem, 9vw, 4rem);line-height:1;" aria-hidden="true">₿</p>
+<h1 style="margin:0.2em 0 0;font-size:clamp(3.5rem, 12vw, 6rem);font-weight:800;line-height:1.05;">Los crypto bros</h1>
+</div>
+
+Note: No son la comunidad técnica de siempre — es la cara agresiva del especulativo en redes.
+
+---
+
+<ul style="font-size:1em;line-height:1.55;max-width:38em;margin:0 auto;text-align:left;">
+  <li>Después del cambio de nombre en X de <strong>@clawdbot</strong> a <strong>@moltbot</strong>, el handle viejo quedó <strong>libre</strong>.</li>
+  <li>Los <strong>crypto bros</strong> lo agarraron y <strong>se hicieron pasar por</strong> el proyecto original.</li>
+  <li>Lanzaron una criptomoneda llamada <strong>$CLAWD</strong> — típico <em>pump and dump</em>: inflaron, vendieron y desaparecieron.</li>
+</ul>
+
+Note: La estafa fue rápida y predecible. Lo peor no fue la estafa — fue el acoso que vino después (ver más adelante). El siguiente slide visualiza la presión crypto.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+## Presión desde el mundo crypto
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/crypto-bros-pressure-es.png" alt="Ilustración satírica: presión sobre el proyecto con hype de tokens, lanzamientos y cultura crypto frente al plan original de construir despacio para usuarios reales" width="1024" height="576" style="display:block;margin:0 auto;max-height:min(70vh, 540px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+Note: Contraste brutal: construir bien vs. número sube. Handle libre → token espurio → ola de ruido para que todo sea moneda ya.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+## El acoso fue peor que la estafa
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/harassment-backlash-es.png" alt="Ilustración: multidión de crypto bros enfadados, notificaciones masivas en redes, acusaciones de estafa y rug pull en torno al rebranding Clawdbot a Moltbot" width="1024" height="576" style="display:block;margin:0 auto;max-height:min(62vh, 480px);width:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+Note: Imagen que condensa el tsunami: miles de menciones, insultos, culpa directa a Peter. No es metáfora exagerada — así se sintió el lado humano del caos.
+
+---
+
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/steipete-stop-harassing-tweet.webp" alt="Tweet de Peter Steinberger pidiéndole a la gente de crypto que deje de hostigarlo por el token CLAWD" width="900" height="492" style="display:block;margin:0 auto;max-width:min(92%, 820px);max-height:min(68vh, 560px);width:auto;height:auto;border-radius:0.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.22);" />
+
+Note: El acoso vino de las mismas víctimas, no de los estafadores. La gente que perdió plata lo culpaba a él. Le exigían que "asumiera la responsabilidad" y avalara proyectos que no conocía. Tuvo que pedir públicamente que pararan. En el podcast con Lex Fridman, Peter dijo algo que resume el tono: la peor forma de acoso en línea que había vivido ("The worst form of online harassment that I've experienced").
+
+---
 
 <img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/steipete-anthropic-rename-tweet.webp" alt="Tweet de Peter Steinberger: I was forced to rename the account by Anthropic. Wasn't my decision." width="900" height="332" class="slide-image-full" />
 
@@ -361,82 +441,121 @@ Note: Una carta de cese y desista. "Clawd" sonaba demasiado parecido a "Claude."
 
 ---
 
-## Lluvia de ideas en Discord a las 5 AM → "Moltbot"
+<p style="text-align:center;font-size:2.5em;margin:0;">🌪️</p>
+
+## En medio de todo ese caos
+
+Peter se dio cuenta de que **Moltbot** ya no tenía salvación.
 
 <ul>
-  <li>Las langostas mudan — sueltan el caparazón viejo para crecer uno más grande</li>
-  <li>Encajaba con la mascota. Encajaba con la situación del rebrand.</li>
-  <li>Listo. Lo lanzamos.</li>
+  <li>Las <strong>búsquedas</strong> seguían atándolo a la estafa de <strong>$CLAWD</strong>; el proyecto real quedaba tapado por el ruido.</li>
+  <li>Y confesó algo menor pero honesto: <strong>nunca le había gustado del todo</strong> cómo sonaba al decirlo en voz alta.</li>
 </ul>
 
-<p style="text-align:center;margin-top:0.6em;font-size:1.1em;color:#f59e0b;"><em>Y entonces aparecieron los estafadores.</em></p>
-
-Note: Cuando Peter renombró @clawdbot → @moltbot, el handle original quedó libre. En segundos los estafadores lo agarraron y lanzaron $CLAWD — una criptomoneda. Inflaron el precio, vendieron de golpe y desaparecieron. La estafa clásica.
+Note: Engancha con «Rebrand otra vez»: tercer nombre en días → luego OpenClaw con la langosta.
 
 ---
 
-## El acoso fue peor que la estafa
+<p style="text-align:center;font-size:2.5em;margin:0;">🔄</p>
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/steipete-stop-harassing-tweet.webp" alt="Tweet de Peter Steinberger pidiéndole a la gente de crypto que deje de hostigarlo por el token CLAWD" width="900" height="492" class="slide-image-full" />
+<h2 style="text-align:center;font-size:clamp(2.4rem, 5.5vw, 3.4rem);margin:0.2em 0 0;line-height:1.12;font-weight:800;">Rebrand otra vez</h2>
 
-<blockquote class="slide-quote" style="font-size:0.85em;margin-top:0.3em;">
-  "The worst form of online harassment that I've experienced."<br/>
-  <span style="font-size:0.75em;color:#94a3b8;">("La peor forma de acoso online que he experimentado.")</span>
-</blockquote>
-<cite class="slide-quote-cite">— Peter Steinberger</cite>
+<p style="text-align:center;margin-top:0.65em;"><strong>Tercer nombre en menos de una semana.</strong></p>
 
-Note: El acoso vino de las mismas víctimas, no de los estafadores. La gente que perdió plata lo culpaba a él. Le exigían que "asumiera la responsabilidad" y avalara proyectos que no conocía. Tuvo que pedir públicamente que pararan.
+Note: Punto de inflexión — deja caer el ritmo antes de presentar el nombre definitivo.
 
 ---
 
-## Decisión: rebrand otra vez
+<p style="text-align:center;font-size:2.5em;margin:0;">🦞</p>
 
-<div class="slide-grid-2">
-  <div>
-    <h3>Por qué "Moltbot" debía morir</h3>
-    <ul>
-      <li>Búsquedas dominadas por la estafa de $CLAWD</li>
-      <li>El nombre no rodaba bien</li>
-      <li>Nació muerto, lo enterró la estafa</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Por qué <strong>Open</strong>Claw</h3>
-    <ul>
-      <li>Señal de una <em>fundación</em> open source, no una empresa</li>
-      <li>Independiente, gobernada por la comunidad</li>
-      <li>"Moltbot" sonaba a producto. <strong>OpenClaw sonaba a movimiento.</strong></li>
-    </ul>
-  </div>
-</div>
+## Y así nace OpenClaw
 
-Note: $10.000 por una cuenta business de X. Ese pago hizo tres cosas a la vez: reclamó el handle @OpenClaw (sin usar desde 2016), le dio verificación oficial para que los estafadores no lo clonaran, y le devolvió un canal directo con la comunidad.
+<ul>
+  <li>Señal de una <em>fundación</em> open source, no una empresa</li>
+  <li>Independiente y gobernada por la comunidad</li>
+  <li><strong>OpenClaw sonaba a movimiento</strong> — abierto, fuera de una caja de producto</li>
+</ul>
+
+Note: El nombre ya está; el siguiente cabo suelto es **cómo ejecutar el cambio en serio** cuando la reputación y las estafas aprietan.
 
 ---
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/openclaw-final-form-tweet.webp" alt="Tweet oficial de OpenClaw anunciando el rebrand final: The lobster has molted into its final form. Clawd → Moltbot → OpenClaw. 100k+ GitHub stars. 2M visitors in a week. Your assistant. Your machine. Your rules." width="700" height="745" style="display:block;margin:0 auto;border-radius:8px;" />
+<p style="text-align:center;font-size:2.5em;margin:0;">💸</p>
 
-<small style="display:block;text-align:center;">Cuenta oficial de @OpenClaw en X, 30 de enero de 2026.</small>
+## Hacerlo bien salió caro
 
-Note: "The lobster has molted into its final form." ("La langosta ha completado su muda final.") Tres nombres en menos de una semana. El logo se quedó. La langosta se quedó. El proyecto siguió creciendo a través de todo el caos.
+<ul>
+  <li>El rebrand final también había que <strong>hacerlo bien</strong> — no era solo un nuevo <strong>nombre</strong>.</li>
+  <li>La solución le costó: <strong>USD 10.000</strong> por una cuenta <strong>business de X</strong>.</li>
+</ul>
+
+Note: Línea viene del post: “Y esta vez decidió hacerlo bien. La solución salió cara…” Pausa antes de desglosar en qué se convirtió ese pago.
 
 ---
 
-<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/openclaw-evolution-meme.webp" alt="Ilustración mostrando la evolución de OpenClaw: de Clawdbot a Moltbot a OpenClaw" width="900" height="610" class="slide-image-full" />
+<p style="text-align:center;font-size:2.5em;margin:0;">✅</p>
 
-<small>La evolución de OpenClaw: Clawdbot → Moltbot → OpenClaw.</small>
+## Ese dinero le sirvió para…
+
+<ul>
+  <li class="fragment fade-up">Reclamar el handle <strong>@OpenClaw</strong> — llevaba <strong>sin usarse desde 2016</strong>.</li>
+  <li class="fragment fade-up">Obtener <strong>verificación oficial</strong> para que fuera más difícil que los estafadores <strong>clonaran su presencia</strong>.</li>
+  <li class="fragment fade-up">Recuperar un <strong>canal directo</strong> con la comunidad para <strong>desmentir la estafa en tiempo real</strong>.</li>
+</ul>
+
+Note: Tres fragments (un clic cada uno): handle, verificación/canales y comunidad tiempo real — luego el tweet en la siguiente diapo.
+
+---
+
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/openclaw-final-form-tweet.webp" alt="Tweet oficial de OpenClaw anunciando el rebrand final: The lobster has molted into its final form. Clawd → Moltbot → OpenClaw. 100k+ GitHub stars. 2M visitors in a week. Your assistant. Your machine. Your rules." width="700" height="745" style="display:block;margin:0 auto;border-radius:8px;max-width:min(92%,600px);max-height:min(64vh,520px);width:auto;height:auto;box-shadow:0 8px 24px rgba(0,0,0,0.25);" />
+
+Note: Tweet oficial @OpenClaw, 30 de enero de 2026. "The lobster has molted into its final form." ("La langosta ha completado su muda final.") Tres nombres en menos de una semana. El logo se quedó. La langosta se quedó. El proyecto siguió creciendo a través de todo el caos.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/meme-triple-rebrand-spiderman.jpg" alt="Meme tipo Spider‑Man señalándose entre tres: tres robots rojos idénticos con etiquetas Clawdbot, Moltbot y OpenClaw en un almacén" width="1024" height="682" class="slide-image-full" style="display:block;margin:0 auto;max-width:min(97%,920px);max-height:min(66vh,540px);width:auto;height:auto;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-radius:0.5rem;" />
+
+Note: Otro formato del chiste «tres nombres, un solo proyecto»: el meme de tres Spider‑Man aplicado a los rebrands.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/meme-triple-rebrand-in-progress-evolution.jpg" alt="Ilustración con logo IN‑PROGRESS y CLAW al estilo cartoon: línea evolutiva de Clawd a Moltbot y OpenClaw, figuras rojas tipo cangrejo mecánico cada vez más grandes" width="1024" height="918" class="slide-image-full" style="display:block;margin:0 auto;max-width:min(96%,860px);max-height:min(72vh,600px);width:auto;height:auto;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-radius:0.5rem;" />
+
+Note: Versión tipo «evolución de personaje»: de Clawd a OpenClaw, con gag visual de marca en curso.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/meme-triple-rebrand-googly-evolution.jpg" alt="Variante caricaturesca del triple rebrand: tres criaturas rojas con ojos saltones de estilo caricatura, etiquetadas Clawd, Moltbot y OpenClaw, de menor a mayor tamaño" width="1024" height="682" class="slide-image-full" style="display:block;margin:0 auto;max-width:min(97%,920px);max-height:min(66vh,540px);width:auto;height:auto;box-shadow:0 8px 24px rgba(0,0,0,0.2);border-radius:0.5rem;" />
+
+Note: Tonito más meme / derpy — misma historia de nombres, otro autor en la comunidad.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+<img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/openclaw-evolution-meme.webp" alt="Ilustración mostrando la evolución de OpenClaw: de Clawdbot a Moltbot a OpenClaw" width="900" height="610" class="slide-image-full" style="display:block;margin:0 auto;max-width:min(97%,900px);max-height:min(62vh,520px);width:auto;height:auto;" />
+
+<small style="display:block;text-align:center;margin-top:0.5em;">La evolución de OpenClaw: Clawdbot → Moltbot → OpenClaw.</small>
 
 Note: Alguien en Reddit lo llamó "el triple rebrand más rápido en la historia del open source." La comunidad hizo memes. Este es el mío.
 
 ---
 
-<!-- ==================== Acto 4 — Qué es realmente ==================== -->
+<!-- ==================== Acto 4 — OpenClaw ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
   <span class="eyebrow">Acto 4</span>
-  <h2>Qué es realmente OpenClaw</h2>
+  <p style="margin:0 auto 0.2em;font-size:2.5em;line-height:1;">🦞</p>
+  <h2>OpenClaw</h2>
+  <p style="margin:0.65em 1rem 0;font-size:1.2em;font-weight:500;line-height:1.35;color:rgba(255,255,255,0.85);letter-spacing:0.03em;">Tu asistente. Tu máquina. Tus reglas.</p>
 </div>
 
 ---
@@ -456,8 +575,8 @@ Note: Alguien en Reddit lo llamó "el triple rebrand más rápido en la historia
   </div>
   <div class="slide-card">
     <span class="slide-card__icon">💬</span>
-    <h3>Te habla donde vives</h3>
-    <p>WhatsApp, Telegram, Slack, Discord, Signal, iMessage — 20+ canales.</p>
+    <h3>Lo controlas desde cualquier lugar</h3>
+    <p>Vía WhatsApp, Telegram, Slack, Discord, Signal, iMessage — 20+ canales.</p>
   </div>
 </div>
 
@@ -465,45 +584,13 @@ Note: Si quitas el ruido: es un agente de IA personal que corre donde tú quiera
 
 ---
 
-## Ojos y manos
+<p style="text-align:center;font-size:2.5em;margin:0 0 -0.1em;">🦞🎨</p>
 
-<div class="slide-grid-2">
-  <div>
-    <h3>Lo que eran ChatGPT y Claude.ai</h3>
-    <ul>
-      <li>Pestañas del navegador</li>
-      <li>Preguntas y respuestas</li>
-      <li>Tú preguntas, ellos responden</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Lo que era OpenClaw</h3>
-    <ul>
-      <li>Navega la web</li>
-      <li>Lee y escribe archivos en tu disco</li>
-      <li>Ejecuta comandos en tu terminal</li>
-      <li>Manda mensajes en tu nombre</li>
-      <li>Actúa en el mundo real, no solo habla de él</li>
-    </ul>
-  </div>
-</div>
+## Lo personalizas a tu gusto
 
-Note: Esa brecha se está cerrando — todos los grandes agentes ya tienen capacidades parecidas. Pero OpenClaw lo hizo abierto y con control total por defecto. Sin permisos escondidos. Sin sandbox opaco. Le dabas acceso y lo usaba.
+<p style="text-align:center;font-size:clamp(1.35rem,3.8vw,1.75rem);font-weight:400;line-height:1.4;max-width:38rem;margin:0.4em auto 0;padding:0 1.25rem;color:var(--slide-text);">Dale nombre, voz y personalidad. Conviértelo en tu asistente personal: que te organice la agenda, automatice tus tareas, gestione tu casa inteligente o te resuma las noticias cada mañana. Tú decides qué hace y cómo lo hace.</p>
 
----
-
-## "Salvaje" — esa es la palabra
-
-<ul>
-  <li>Sin "¿estás seguro?" antes de cada acción</li>
-  <li>Sin logs amigables. Sin recuperación.</li>
-  <li>Si la cagabas, la cagabas.</li>
-  <li class="fragment fade-up"><strong>Y paradójicamente, ese riesgo era parte de la magia.</strong></li>
-</ul>
-
-<small style="display:block;text-align:center;margin-top:0.6em;"><em>Se sentía real. Como manejar algo poderoso de verdad. No un juguete con chaleco salvavidas.</em></small>
-
-Note: Los problemas de seguridad obligaron a agregar capas de confirmación, sandboxes, permisos granulares. Males necesarios. Pero en su momento, esa libertad fue lo que más impacto generó. OpenClaw redefinió el estándar mínimo de lo que significa ser un agente.
+Note: Es la diferencia con cualquier chatbot genérico: este lo moldeas tú, y vive donde tú quieras.
 
 ---
 
@@ -529,6 +616,33 @@ Note: Los problemas de seguridad obligaron a agregar capas de confirmación, san
 </div>
 
 Note: Las Skills también son Markdown — instrucciones paso a paso en texto plano. Reservar un vuelo. Manejar un calendario. Llamar una API. Sin código. La barrera de personalización es tan baja que gente que nunca ha escrito una línea de código está armando agentes reales.
+
+---
+
+<p style="text-align:center;font-size:2.5em;margin:0 0 -0.1em;">🦞🖥️</p>
+
+## Tiene control total de la máquina
+
+<p style="text-align:center;font-size:clamp(1.35rem,3.8vw,1.75rem);font-weight:400;line-height:1.4;max-width:38rem;margin:0.4em auto 0;padding:0 1.25rem;color:var(--slide-text);">Ejecuta comandos, lee archivos, instala paquetes, gestiona procesos. Sin simulaciones. Acceso real al sistema operativo, limitado solo por lo que tú le permitas.</p>
+
+Note: Deja resonar medio segundo y pasa al slide «Salvaje» como contragolpe.
+
+---
+
+<p style="text-align:center;font-size:2.5em;margin:0 0 -0.1em;">🔥</p>
+
+## Los primeros días de OpenClaw se sentían salvajes
+
+<ul>
+  <li>Sin "¿estás seguro?" antes de cada acción</li>
+  <li>Sin logs amigables. Sin recuperación.</li>
+  <li>Si la cagabas, la cagabas.</li>
+  <li><strong>Y paradójicamente, ese riesgo era parte de la magia.</strong></li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.6em;"><em>Se sentía real. Como manejar algo poderoso de verdad. No un juguete con chaleco salvavidas.</em></small>
+
+Note: Los problemas de seguridad obligaron a agregar capas de confirmación, sandboxes, permisos granulares. Males necesarios. Pero en su momento, esa libertad fue lo que más impacto generó. OpenClaw redefinió el estándar mínimo de lo que significa ser un agente.
 
 ---
 
