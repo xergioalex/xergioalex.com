@@ -495,11 +495,32 @@ body.reveal-theme-dark {
   align-items: center;
 }
 
+/* Image + text: left column shrinks to image width so text sits closer */
+.slide-grid-2.slide-grid-2--compact-media {
+  grid-template-columns: auto 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* Top-align slide body — Reveal vertically centers sections by default */
+.reveal .slides section.slide-content-top {
+  top: 0 !important;
+}
+
+.reveal .slides section.slide-content-top > h2:first-of-type {
+  margin-top: 0;
+  margin-bottom: 0.65em;
+}
+
 @media (max-width: 768px) {
   .slide-grid-2,
   .slide-grid-3 {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .slide-grid-2.slide-grid-2--compact-media {
+    grid-template-columns: 1fr;
   }
 }
 
