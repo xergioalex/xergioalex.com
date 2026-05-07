@@ -1,7 +1,7 @@
 ---
 type: internal
 title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas. — La revolución de los agentes personales'
-description: 'OpenClaw propone una nueva generación de agentes personales que se ejecutan bajo tus reglas y en tu propio equipo. Presentación del proyecto, arquitectura y demos en vivo de casos de uso reales.'
+description: 'Agentes personales que corren bajo tus reglas y en tu propio equipo. Presentación del proyecto, arquitectura y demos en vivo.'
 pubDate: 2026-05-04
 heroImage: '/images/slides/openclaw-your-assistant-your-machine-your-rules/cover-es.webp'
 tags: [tech, ai, talks]

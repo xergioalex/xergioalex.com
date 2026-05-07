@@ -1,7 +1,7 @@
 ---
 type: internal
 title: 'OpenClaw: Your Assistant. Your Machine. Your Rules. — The personal agent revolution'
-description: 'OpenClaw introduces a new generation of personal agents that run under your rules and on your own hardware. Project overview, architecture, and live demos of real use cases.'
+description: 'A new generation of personal agents running under your rules, on your own machine. Project overview, architecture and live demos.'
 pubDate: 2026-05-04
 heroImage: '/images/slides/openclaw-your-assistant-your-machine-your-rules/cover-en.webp'
 tags: [tech, ai, talks]
