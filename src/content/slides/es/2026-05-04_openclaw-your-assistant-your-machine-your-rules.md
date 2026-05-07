@@ -1009,30 +1009,30 @@ Note: La frase de cierre que terminó en los titulares. Léela. Y haz pausa.
 
 <!-- ==================== Cierre ==================== -->
 
-## La pregunta cambió
+## Lo que OpenClaw nos recuerda
 
-<div class="slide-grid-2">
-  <div>
-    <h3>Pregunta vieja</h3>
-    <p style="font-size:1.05em;"><em>"¿Van a existir los agentes personales?"</em></p>
-    <p style="margin-top:0.4em;font-size:0.9em;">Esa discusión se cerró a finales de enero de 2026, cuando cientos de miles de máquinas empezaron a correr OpenClaw al mismo tiempo.</p>
-  </div>
-  <div>
-    <h3>Pregunta nueva</h3>
-    <p style="font-size:1.05em;color:#f59e0b;"><em>"¿Qué tan abiertos los vamos a dejar ser?"</em></p>
-    <p style="margin-top:0.4em;font-size:0.9em;">OpenClaw no es perfecto. Los problemas de seguridad son reales. El caos agota. Pero la dirección no va a cambiar.</p>
-  </div>
-</div>
+<p style="font-size:clamp(1.6rem,5vw,2.1rem);margin-top:0.5em;color:var(--slide-text);text-align:center;line-height:1.5;">
+Linux le dio un sistema operativo al mundo.<br/>
+WordPress le dio una voz en internet.<br/>
+OpenClaw le dio un agente personal.
+</p>
 
-Note: Esta es la pregunta con la que quiero que se vaya el público. No si los agentes van a pasar — eso ya está. Si los mantenemos abiertos.
+<p style="font-size:clamp(1.6rem,5vw,2.1rem);margin-top:0.6em;color:var(--slide-text);text-align:center;line-height:1.5;">
+El open source no es solo código libre —<br/>
+<strong>es la idea radical de que compartir multiplica.</strong>
+</p>
+
+Note: La tesis final. OpenClaw no es una anomalía — es la continuación de una tradición que lleva décadas. Linux, Wikipedia, OpenClaw. Cada uno demostró que compartir > acumular.
 
 ---
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
 
+<p style="font-size:2.5em;margin-bottom:0.2em;">🦞🦞🦞</p>
+
 # Tu asistente.<br/>Tu máquina.<br/>Tus reglas.
 
-<p style="margin-top:0.6em;font-size:1.1em;">A seguir construyendo.</p>
+<p style="margin-top:0.6em;font-size:1.1em;">Sigamos construyendo.</p>
 
 Note: Las mismas seis palabras con las que abrimos. Ahora significan algo distinto.
 

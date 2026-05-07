@@ -1009,26 +1009,26 @@ Note: The closing line that landed in the headlines. Read it. Then pause.
 
 <!-- ==================== Closing ==================== -->
 
-## The question shifted
+## What OpenClaw reminds us
 
-<div class="slide-grid-2">
-  <div>
-    <h3>Old question</h3>
-    <p style="font-size:1.05em;"><em>"Will personal AI agents exist?"</em></p>
-    <p style="margin-top:0.4em;font-size:0.9em;">That conversation closed in late January 2026, when hundreds of thousands of machines started running OpenClaw at the same time.</p>
-  </div>
-  <div>
-    <h3>New question</h3>
-    <p style="font-size:1.05em;color:#f59e0b;"><em>"How open are we going to let them be?"</em></p>
-    <p style="margin-top:0.4em;font-size:0.9em;">OpenClaw isn't perfect. Security problems are real. The chaos is exhausting. But the direction won't change.</p>
-  </div>
-</div>
+<p style="font-size:clamp(1.6rem,5vw,2.1rem);margin-top:0.5em;color:var(--slide-text);text-align:center;line-height:1.5;">
+Linux gave the world an operating system.<br/>
+WordPress gave it a voice on the internet.<br/>
+OpenClaw gave it a personal agent.
+</p>
 
-Note: This is the question I want the audience to leave with. Not whether agents will happen — that's done. Whether we keep them open.
+<p style="font-size:clamp(1.6rem,5vw,2.1rem);margin-top:0.6em;color:var(--slide-text);text-align:center;line-height:1.5;">
+Open source isn't just free code —<br/>
+<strong>it's the radical idea that sharing multiplies.</strong>
+</p>
+
+Note: The final thesis. OpenClaw is not an anomaly — it's the continuation of a tradition decades old. Linux, Wikipedia, OpenClaw. Each proved that sharing > hoarding.
 
 ---
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
+
+<p style="font-size:2.5em;margin-bottom:0.2em;">🦞🦞🦞</p>
 
 # Your assistant.<br/>Your machine.<br/>Your rules.
 
