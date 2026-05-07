@@ -35,7 +35,9 @@ By 2011, he'd co-founded [PSPDFKit](https://pspdfkit.com/) with Martin Schurrer.
 
 In October 2021, [Insight Partners put EUR 100 million into PSPDFKit](https://techcrunch.com/2021/10/01/pspdfkit-raises-116m-its-first-outside-money-now-nearly-1b-people-use-apps-powered-by-its-collaboration-signing-and-markup-tools/). Their first external money. After ten years of self-funding. That's an unusual level of patience, and it says something about both Peter and the business. Most founders would have taken money in year two or three. Peter held out until the terms made sense on his terms.
 
-Then came the part of the story that matters most for understanding what happened next: burnout. Not the "I need a vacation" kind. The real kind. Two to three years where Peter couldn't write code. Couldn't think about code. The thing that had defined his identity since he was fourteen -- gone.
+In the same transaction -- October 2021, when Insight invested in PSPDFKit -- Peter **sold most of his shares** to **pursue new endeavours**. That was not only growth capital for the company in the press release -- it was personal liquidity, a deliberate turn of the page after years as the founder at the center of the cap table, and room to go build something else.
+
+Then came the part success stories rarely print next to the funding headline: **burnout**. Not the "I need a vacation" kind. The real kind. Two to three years where Peter couldn't write code. Couldn't think about code. The thing that had defined his identity since he was fourteen -- gone.
 
 In his [interview with Lex Fridman](https://lexfridman.com/peter-steinberger/), he said: *"If you wake up in the morning, and you have nothing to look forward to, that gets very boring, very fast."* And then: *"I felt like Austin Powers where they suck the mojo out. I couldn't get code out anymore. I was just, like, staring and feeling empty."* He used an Austin Powers reference: the scene where they extract his mojo, the creative energy that defines him. Without mojo, Austin Powers is just some guy. Without code, Peter felt like a founder without purpose.
 
