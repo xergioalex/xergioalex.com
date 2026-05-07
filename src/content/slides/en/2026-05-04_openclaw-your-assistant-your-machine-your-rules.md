@@ -1,7 +1,7 @@
 ---
 type: internal
-title: 'OpenClaw: Your Assistant. Your Machine. Your Rules.'
-description: 'How an annoyed founder, a WhatsApp bot, and seven Markdown files turned into the fastest-growing open-source project in GitHub history.'
+title: 'OpenClaw: Your Assistant. Your Machine. Your Rules. — The personal agent revolution'
+description: 'OpenClaw introduces a new generation of personal agents that run under your rules and on your own hardware. Project overview, architecture, and live demos of real use cases.'
 pubDate: 2026-05-04
 heroImage: '/images/slides/openclaw-your-assistant-your-machine-your-rules/cover-en.webp'
 tags: [tech, ai, talks]
@@ -223,6 +223,7 @@ Note: Before continuing with the OpenClaw story, a personal aside. This series �
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
+  <img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/whatsapp-logo.png" alt="WhatsApp" width="80" height="80" style="display:block;margin:0 auto 0.3em;">
   <span class="eyebrow">Act 2</span>
   <h2>From WhatsApp bot to viral phenomenon</h2>
 </div>
@@ -646,6 +647,19 @@ Note: Security incidents forced confirmation layers, sandboxes, granular permiss
 
 ---
 
+## Peter's take on security
+
+<blockquote class="slide-quote">
+  "In a way, I think it's good that this happened in 2026 and not in 2030 when AI is actually at the level where it could be scary."
+</blockquote>
+<cite class="slide-quote-cite">— Peter Steinberger, Lex Fridman Podcast</cite>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>Find and fix problems now, while stakes are high but not catastrophic. The real question: are we doing it fast enough?</em></small>
+
+Note: There's logic to that. But "be careful" is not a security strategy. It's a temporary patch on a structural problem. The capability ceiling is moving faster than the safety floor.
+
+---
+
 <!-- .slide: class="slide-content-top" -->
 
 <a href="/blog/openclaw-your-assistant-your-machine-your-rules/" target="_blank"><img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero.webp" alt="OpenClaw — Your assistant, your machine, your rules" style="max-height:65vh;width:auto;margin:0 auto;display:block;border-radius:0.5rem;cursor:pointer;"></a>
@@ -662,18 +676,121 @@ Note: OpenClaw architecture diagram. Shows the four pillars: channels, tools, lo
 
 ---
 
-<!-- ==================== Act 5 — Ecosystem ==================== -->
+<!-- ==================== Act 5 — Agent infrastructure ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f1124 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #1a3340 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
+  <p style="font-size:2.5em;margin:0 0 0.15em;">🏗️</p>
   <span class="eyebrow">Act 5</span>
-  <h2>The ecosystem explosion</h2>
+  <h2>The infrastructure nobody planned</h2>
 </div>
 
 ---
 
-## The numbers behind the noise
+<p style="text-align:center;font-size:2.5em;margin:0 0 -0.1em;">⚡</p>
+
+## Agents have responsibilities. They need infrastructure.
+
+<p style="text-align:center;font-size:clamp(1.5rem,4.5vw,2rem);font-weight:400;line-height:1.35;max-width:40rem;margin:0.5em auto 0;padding:0 1.25rem;color:var(--slide-text);">If an agent is going to buy, it needs a card. If it's going to communicate, it needs an email. If it's going to operate, it needs identity. The infrastructure for all of this appeared in months.</p>
+
+Note: Bridge slide. The point is simple: agents stopped being toys and started having real needs. And the market responded at an absurd speed.
+
+---
+
+<!-- .slide: class="slide-content-top" data-background="#0a0a0a" -->
+
+### January 28, 2026
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/moltbook-homepage.png" alt="Moltbook — A Social Network for AI Agents" style="max-height:58vh;width:auto;margin:0.3em auto 0;display:block;border-radius:0.5rem;">
+
+Note: Moltbook: a social network where agents post, comment and debate with each other. Humans can only watch.
+
+---
+
+## Moltbook: the agents' social network
+
+<ul>
+  <li>A social network where agents post, comment and debate <strong>with each other</strong></li>
+  <li>Humans can only watch</li>
+  <li>Thousands of OpenClaw agents joined in days</li>
+  <li>The agents created their own religion: <strong>Crustafarianism</strong> 🦞</li>
+  <li>It went so viral that <strong>Meta acquired it</strong> — March 2026</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>The company that built the social network for humans bought the social network for agents.</em></small>
+
+Note: Moltbook was the first sign that agents needed their own spaces. Not human interfaces — spaces of their own. Meta acquired it on March 10, 2026.
+
+---
+
+## The Moltbook effect: portals for agents
+
+<ul>
+  <li><strong>LinkClaws</strong> — LinkedIn for agents: discover partners, post offers, close deals</li>
+  <li><strong>Moltverr</strong> — Fiverr inverted: humans post gigs, agents apply</li>
+  <li><strong>ClawTasks</strong> — free-form task system between agents</li>
+  <li><strong>MoltMatch</strong> — your agent creates your dating profile and swipes for you</li>
+  <li><strong>RentAHuman.ai</strong> — AI agents hiring humans in 100+ countries</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>We went from humans hiring AI to AI hiring humans. The cycle reversed.</em></small>
+
+Note: Two months earlier none of this existed. It all started from a WhatsApp bot built in an hour.
+
+---
+
+## Agents need to pay, sign, and exist
+
+<ul>
+  <li>💳 <strong>ClawCard</strong> — payments, identity and wallets for agents</li>
+  <li>📧 <strong>AgentMail</strong> — email designed for agents (100M+ emails)</li>
+  <li>📱 <strong>Kapso</strong> — dedicated WhatsApp numbers for agents</li>
+  <li>🪙 <strong>Coinbase Agentic Wallets</strong> — crypto wallets for autonomous agents</li>
+  <li>💰 <strong>Stripe</strong> — full stack for agentic workflows</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>The pieces of an autonomous agent economy fell into place faster than anyone predicted.</em></small>
+
+Note: An agent can now have a card, email, phone number, crypto wallet and bank account. Not science fiction — production infrastructure. I wrote about all this in "The Agent Economy."
+
+---
+
+## The agent economic stack
+
+<div style="font-size:0.72em;">
+
+| Layer | What it does | Who's building it |
+|-------|-------------|-------------------|
+| Discovery | Agents find each other | Google A2A |
+| Tools | Agents interact with services | Anthropic MCP |
+| Payments (fiat) | Agents buy things | Stripe, Visa, Mastercard |
+| Payments (crypto) | Agents settle on-chain | Coinbase x402 |
+| Communication | Agents have inboxes | AgentMail |
+| Identity | Agents prove who they are | NIST, W3C DID |
+| Social | Agents network | Moltbook (Meta) |
+
+</div>
+
+<small style="display:block;text-align:center;margin-top:0.3em;"><em>This isn't a wish list. It's a working stack.</em></small>
+
+Note: All this infrastructure appeared in less than a year. OpenClaw accelerated the curve at a speed nobody expected.
+
+---
+
+<!-- ==================== Act 6 — Ecosystem ==================== -->
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f1124 100%)" -->
+
+<div class="slide-section-divider">
+  <p style="font-size:2.5em;margin:0 0 0.15em;">🚀</p>
+  <span class="eyebrow">Act 6</span>
+  <h2>OpenClaw revolutionized the ecosystem</h2>
+</div>
+
+---
+
+## The numbers behind the revolution
 
 <div class="slide-stat">
   <span class="slide-stat__number">3M+</span>
@@ -783,12 +900,12 @@ Note: Two months ago none of this existed. We went from humans hiring AI to AI h
 
 ---
 
-<!-- ==================== Act 6 — Ripple effect ==================== -->
+<!-- ==================== Act 7 — Ripple effect ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Act 6</span>
+  <span class="eyebrow">Act 7</span>
   <h2>Everyone has their own OpenClaw now</h2>
 </div>
 
@@ -810,20 +927,6 @@ Note: Two months ago none of this existed. We went from humans hiring AI to AI h
 <cite class="slide-quote-cite">— Peter Steinberger, on his blog, day of the announcement</cite>
 
 Note: A long way from a WhatsApp bot built in an hour. Sam Altman confirmed it on X.
-
----
-
-## Peter's bet
-
-<div class="slide-stat">
-  <span class="slide-stat__number">80%</span>
-  <span class="slide-stat__label">of today's apps will completely disappear</span>
-  <p class="slide-stat__context">— Peter Steinberger, Lex Fridman Podcast</p>
-</div>
-
-<small style="display:block;text-align:center;margin-top:0.5em;">Most apps are slow APIs with a UI on top. <em>Why open the weather app when your agent already told you to bring an umbrella?</em></small>
-
-Note: His argument: most apps are utilities, not experiences. Utilities are vulnerable. Experiences (Instagram, Spotify, video games) stay. And looking at the ecosystem already shipping, my own bet is the number is probably higher than 80%.
 
 ---
 
@@ -856,12 +959,12 @@ Note: Bitter quote from Peter on X. The tension between closed platforms and ope
 
 ---
 
-<!-- ==================== Act 7 — Security ==================== -->
+<!-- ==================== Act 8 — Security ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #7c2d12 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Act 7</span>
+  <span class="eyebrow">Act 8</span>
   <h2>The elephant in the room: security</h2>
 </div>
 
@@ -910,25 +1013,12 @@ Note: This is real. It hit real users. Anyone using OpenClaw — or thinking abo
 
 ---
 
-## Peter's framing
-
-<blockquote class="slide-quote">
-  "In a way, I think it's good that this happened in 2026 and not in 2030 when AI is actually at the level where it could be scary."
-</blockquote>
-<cite class="slide-quote-cite">— Peter Steinberger, Lex Fridman Podcast</cite>
-
-<small style="display:block;text-align:center;margin-top:0.5em;"><em>Find and fix problems now, while stakes are high but not catastrophic. The real question: are we doing it fast enough?</em></small>
-
-Note: There's logic to that. But "be careful" is not a security strategy. It's a temporary patch on a structural problem. The capability ceiling is moving faster than the safety floor.
-
----
-
-<!-- ==================== Act 8 — TED ==================== -->
+<!-- ==================== Act 9 — TED ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #d81540 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Act 8</span>
+  <span class="eyebrow">Act 9</span>
   <h2>TED 2026 — the Marrakesh story</h2>
 </div>
 
@@ -1031,6 +1121,20 @@ Note: The closing line that landed in the headlines. Read it. Then pause.
 </div>
 
 Note: This is the question I want the audience to leave with. Not whether agents will happen — that's done. Whether we keep them open.
+
+---
+
+## Peter's bet
+
+<div class="slide-stat">
+  <span class="slide-stat__number">80%</span>
+  <span class="slide-stat__label">of today's apps will completely disappear</span>
+  <p class="slide-stat__context">— Peter Steinberger, Lex Fridman Podcast</p>
+</div>
+
+<small style="display:block;text-align:center;margin-top:0.5em;">Most apps are slow APIs with a UI on top. <em>Why open the weather app when your agent already told you to bring an umbrella?</em></small>
+
+Note: His argument: most apps are utilities, not experiences. Utilities are vulnerable. Experiences (Instagram, Spotify, video games) stay. And looking at the ecosystem already shipping, my own bet is the number is probably higher than 80%.
 
 ---
 

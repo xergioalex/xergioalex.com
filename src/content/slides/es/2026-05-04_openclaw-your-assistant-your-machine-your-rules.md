@@ -1,7 +1,7 @@
 ---
 type: internal
-title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas.'
-description: 'Cómo un founder fastidiado, un bot de WhatsApp y siete archivos Markdown se volvieron el open source más viral en la historia de GitHub.'
+title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas. — La revolución de los agentes personales'
+description: 'OpenClaw propone una nueva generación de agentes personales que se ejecutan bajo tus reglas y en tu propio equipo. Presentación del proyecto, arquitectura y demos en vivo de casos de uso reales.'
 pubDate: 2026-05-04
 heroImage: '/images/slides/openclaw-your-assistant-your-machine-your-rules/cover-es.webp'
 tags: [tech, ai, talks]
@@ -223,6 +223,7 @@ Note: Antes de seguir con la historia de OpenClaw, hago un paréntesis personal.
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
+  <img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/whatsapp-logo.png" alt="WhatsApp" width="80" height="80" style="display:block;margin:0 auto 0.3em;">
   <span class="eyebrow">Acto 2</span>
   <h2>De un bot de WhatsApp a fenómeno viral</h2>
 </div>
@@ -646,6 +647,19 @@ Note: Los problemas de seguridad obligaron a agregar capas de confirmación, san
 
 ---
 
+## La lectura de Peter sobre la seguridad
+
+<blockquote class="slide-quote">
+  "De alguna manera, creo que es bueno que esto haya pasado en 2026 y no en 2030 cuando la IA realmente esté en un nivel que dé miedo."
+</blockquote>
+<cite class="slide-quote-cite">— Peter Steinberger, Lex Fridman Podcast</cite>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>Encontrar y arreglar problemas ahora, mientras las consecuencias todavía son manejables. La pregunta real: ¿lo estamos haciendo lo suficientemente rápido?</em></small>
+
+Note: Hay lógica en eso. Pero "ten cuidado" no es una estrategia de seguridad. Es un parche temporal sobre un problema estructural. El techo de capacidad se está moviendo más rápido que el piso de seguridad.
+
+---
+
 <!-- .slide: class="slide-content-top" -->
 
 <a href="/es/blog/openclaw-your-assistant-your-machine-your-rules/" target="_blank"><img src="/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero-es.webp" alt="OpenClaw — Tu asistente, tu máquina, tus reglas" style="max-height:65vh;width:auto;margin:0 auto;display:block;border-radius:0.5rem;cursor:pointer;"></a>
@@ -662,18 +676,121 @@ Note: Diagrama de arquitectura de OpenClaw. Muestra los cuatro pilares: canales,
 
 ---
 
-<!-- ==================== Acto 5 — Ecosistema ==================== -->
+<!-- ==================== Acto 5 — Infraestructura para agentes ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f1124 100%)" -->
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #1a3340 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
+  <p style="font-size:2.5em;margin:0 0 0.15em;">🏗️</p>
   <span class="eyebrow">Acto 5</span>
-  <h2>La explosión del ecosistema</h2>
+  <h2>La infraestructura que nadie planeó</h2>
 </div>
 
 ---
 
-## Los números detrás del ruido
+<p style="text-align:center;font-size:2.5em;margin:0 0 -0.1em;">⚡</p>
+
+## Los agentes tienen responsabilidades. Necesitan infraestructura.
+
+<p style="text-align:center;font-size:clamp(1.5rem,4.5vw,2rem);font-weight:400;line-height:1.35;max-width:40rem;margin:0.5em auto 0;padding:0 1.25rem;color:var(--slide-text);">Si un agente va a comprar, necesita una tarjeta. Si va a comunicarse, necesita un correo. Si va a operar, necesita identidad. La infraestructura para todo esto apareció en meses.</p>
+
+Note: Slide puente. La idea es simple: los agentes dejaron de ser juguetes y empezaron a tener necesidades reales. Y el mercado respondió a una velocidad absurda.
+
+---
+
+<!-- .slide: class="slide-content-top" data-background="#0a0a0a" -->
+
+### 28 de enero de 2026
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/moltbook-homepage.png" alt="Moltbook — A Social Network for AI Agents" style="max-height:58vh;width:auto;margin:0.3em auto 0;display:block;border-radius:0.5rem;">
+
+Note: Moltbook: una red social donde los agentes publican, comentan y discuten entre ellos. Los humanos solo pueden mirar.
+
+---
+
+## Moltbook: la red social de los agentes
+
+<ul>
+  <li>Una red social donde los agentes publican, comentan y discuten <strong>entre ellos</strong></li>
+  <li>Los humanos solo pueden mirar</li>
+  <li>Miles de agentes OpenClaw se unieron en días</li>
+  <li>Los agentes crearon su propia religión: <strong>Crustafarianism</strong> 🦞</li>
+  <li>Se volvió tan viral que <strong>Meta lo compró</strong> — marzo 2026</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>La empresa que construyó la red social para humanos compró la red social para agentes.</em></small>
+
+Note: Moltbook fue la primera señal de que los agentes necesitaban sus propios espacios. No interfaces para humanos — espacios propios. Meta lo compró el 10 de marzo de 2026.
+
+---
+
+## El efecto Moltbook: portales para agentes
+
+<ul>
+  <li><strong>LinkClaws</strong> — el LinkedIn de los agentes: descubren socios, publican ofertas, cierran tratos</li>
+  <li><strong>Moltverr</strong> — Fiverr invertido: humanos publican gigs, agentes aplican</li>
+  <li><strong>ClawTasks</strong> — sistema de tareas libres entre agentes</li>
+  <li><strong>MoltMatch</strong> — tu agente crea tu perfil de citas y desliza por ti</li>
+  <li><strong>RentAHuman.ai</strong> — agentes de IA contratando humanos en 100+ países</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>Pasamos de humanos contratando IA a IA contratando humanos. El ciclo se invirtió.</em></small>
+
+Note: Dos meses atrás nada de esto existía. Todo nació de un bot de WhatsApp construido en una hora.
+
+---
+
+## Los agentes necesitan pagar, firmar y existir
+
+<ul>
+  <li>💳 <strong>ClawCard</strong> — pagos, identidad y wallets para agentes</li>
+  <li>📧 <strong>AgentMail</strong> — correo electrónico diseñado para agentes (100M+ correos)</li>
+  <li>📱 <strong>Kapso</strong> — números de WhatsApp propios para agentes</li>
+  <li>🪙 <strong>Coinbase Agentic Wallets</strong> — billeteras cripto para agentes autónomos</li>
+  <li>💰 <strong>Stripe</strong> — stack completo para flujos de trabajo agénticos</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.5em;"><em>Las piezas de una economía autónoma de agentes cayeron en su lugar más rápido de lo que nadie predijo.</em></small>
+
+Note: El agente ya puede tener tarjeta, correo, teléfono, billetera cripto y cuenta bancaria. No es ciencia ficción — es infraestructura en producción. Escribí sobre todo esto en "La Economía de los Agentes."
+
+---
+
+## El stack económico de los agentes
+
+<div style="font-size:0.72em;">
+
+| Capa | Qué hace | Quién la construye |
+|------|---------|-------------------|
+| Descubrimiento | Los agentes se encuentran | Google A2A |
+| Herramientas | Los agentes interactúan con servicios | Anthropic MCP |
+| Pagos (fiat) | Los agentes compran cosas | Stripe, Visa, Mastercard |
+| Pagos (cripto) | Los agentes liquidan on-chain | Coinbase x402 |
+| Comunicación | Los agentes tienen bandejas de entrada | AgentMail |
+| Identidad | Los agentes prueban quiénes son | NIST, W3C DID |
+| Social | Los agentes hacen networking | Moltbook (Meta) |
+
+</div>
+
+<small style="display:block;text-align:center;margin-top:0.3em;"><em>Esto no es una lista de deseos. Es un stack funcionando.</em></small>
+
+Note: Toda esta infraestructura apareció en menos de un año. OpenClaw aceleró la curva a una velocidad que nadie esperaba.
+
+---
+
+<!-- ==================== Acto 6 — Ecosistema ==================== -->
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f1124 100%)" -->
+
+<div class="slide-section-divider">
+  <p style="font-size:2.5em;margin:0 0 0.15em;">🚀</p>
+  <span class="eyebrow">Acto 6</span>
+  <h2>OpenClaw revolucionó el ecosistema</h2>
+</div>
+
+---
+
+## Los números detrás de la revolución
 
 <div class="slide-stat">
   <span class="slide-stat__number">3M+</span>
@@ -783,12 +900,12 @@ Note: Hace dos meses nada de esto existía. Pasamos de humanos contratando IA a 
 
 ---
 
-<!-- ==================== Acto 6 — Efecto dominó ==================== -->
+<!-- ==================== Acto 7 — Efecto dominó ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Acto 6</span>
+  <span class="eyebrow">Acto 7</span>
   <h2>Ahora todos tienen su propio OpenClaw</h2>
 </div>
 
@@ -811,20 +928,6 @@ Note: Hace dos meses nada de esto existía. Pasamos de humanos contratando IA a 
 <cite class="slide-quote-cite">— Peter Steinberger, en su blog, día del anuncio</cite>
 
 Note: Lejísimos de un bot de WhatsApp construido en una hora. Sam Altman lo confirmó en X.
-
----
-
-## La apuesta de Peter
-
-<div class="slide-stat">
-  <span class="slide-stat__number">80%</span>
-  <span class="slide-stat__label">de las apps de hoy van a desaparecer completamente</span>
-  <p class="slide-stat__context">— Peter Steinberger, Lex Fridman Podcast</p>
-</div>
-
-<small style="display:block;text-align:center;margin-top:0.5em;">La mayoría de las apps son APIs lentas con UI encima. <em>¿Para qué abrir la app del clima cuando tu agente ya te dijo que llevaras paraguas?</em></small>
-
-Note: Su argumento: la mayoría de las apps son utilidades, no experiencias. Las utilidades son vulnerables. Las experiencias (Instagram, Spotify, videojuegos) se quedan. Y mirando el ecosistema que ya está saliendo, mi propia apuesta es que el número probablemente sea más alto que 80%.
 
 ---
 
@@ -858,12 +961,12 @@ Note: Frase amarga de Peter en X. La tensión entre plataformas cerradas y herra
 
 ---
 
-<!-- ==================== Acto 7 — Seguridad ==================== -->
+<!-- ==================== Acto 8 — Seguridad ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #7c2d12 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Acto 7</span>
+  <span class="eyebrow">Acto 8</span>
   <h2>El elefante en la habitación: seguridad</h2>
 </div>
 
@@ -912,26 +1015,12 @@ Note: Esto es real. Le pegó a usuarios reales. Cualquiera que use OpenClaw — 
 
 ---
 
-## La lectura de Peter
-
-<blockquote class="slide-quote">
-  "In a way, I think it's good that this happened in 2026 and not in 2030 when AI is actually at the level where it could be scary."<br/>
-  <span style="font-size:0.7em;color:#94a3b8;">("De alguna manera, creo que es bueno que esto haya pasado en 2026 y no en 2030 cuando la IA realmente esté en un nivel que dé miedo.")</span>
-</blockquote>
-<cite class="slide-quote-cite">— Peter Steinberger, Lex Fridman Podcast</cite>
-
-<small style="display:block;text-align:center;margin-top:0.5em;"><em>Encontrar y arreglar problemas ahora, mientras las consecuencias todavía son manejables. La pregunta real: ¿lo estamos haciendo lo suficientemente rápido?</em></small>
-
-Note: Hay lógica en eso. Pero "ten cuidado" no es una estrategia de seguridad. Es un parche temporal sobre un problema estructural. El techo de capacidad se está moviendo más rápido que el piso de seguridad.
-
----
-
-<!-- ==================== Acto 8 — TED ==================== -->
+<!-- ==================== Acto 9 — TED ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #d81540 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Acto 8</span>
+  <span class="eyebrow">Acto 9</span>
   <h2>TED 2026 — la historia de Marrakech</h2>
 </div>
 
@@ -1035,6 +1124,20 @@ Note: La frase de cierre que terminó en los titulares. Léela. Y haz pausa.
 </div>
 
 Note: Esta es la pregunta con la que quiero que se vaya el público. No si los agentes van a pasar — eso ya está. Si los mantenemos abiertos.
+
+---
+
+## La apuesta de Peter
+
+<div class="slide-stat">
+  <span class="slide-stat__number">80%</span>
+  <span class="slide-stat__label">de las apps de hoy van a desaparecer completamente</span>
+  <p class="slide-stat__context">— Peter Steinberger, Lex Fridman Podcast</p>
+</div>
+
+<small style="display:block;text-align:center;margin-top:0.5em;">La mayoría de las apps son APIs lentas con UI encima. <em>¿Para qué abrir la app del clima cuando tu agente ya te dijo que llevaras paraguas?</em></small>
+
+Note: Su argumento: la mayoría de las apps son utilidades, no experiencias. Las utilidades son vulnerables. Las experiencias (Instagram, Spotify, videojuegos) se quedan. Y mirando el ecosistema que ya está saliendo, mi propia apuesta es que el número probablemente sea más alto que 80%.
 
 ---
 
