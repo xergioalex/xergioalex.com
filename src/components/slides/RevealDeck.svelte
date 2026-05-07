@@ -34,6 +34,9 @@ onMount(() => {
   let navigateClickRootCleanup: Element | null = null;
   let navigateClickHandler: ((ev: Event) => void) | undefined;
   let teardownOverviewFix: (() => void) | undefined;
+  /** Re-layout RAF id for vertical centering vs late-loaded images — see docs/features/SLIDES.md */
+  let layoutImagesRaf = 0;
+  let teardownLayoutImageHooks: (() => void) | undefined;
 
   async function init(): Promise<void> {
     const Reveal = (await import('reveal.js')).default;
@@ -73,6 +76,64 @@ onMount(() => {
 
     await deck.initialize();
     revealInstance = deck;
+
+    /**
+     * Vertical centering vs late image decode (root fix for “content stuck at bottom” / clipped).
+     *
+     * With `center: true`, Reveal sets `section.style.top` from `(slideHeight - scrollHeight) / 2`
+     * during `layout()`. If images are not decoded yet, `scrollHeight` is too small → `top` is too
+     * large → once the image paints, the slide content sits low and can clip off the canvas.
+     *
+     * Re-run `layout()` when slide images finish loading. See `docs/features/SLIDES.md`.
+     */
+    function scheduleLayoutFromImages(): void {
+      if (destroyed) return;
+      if (layoutImagesRaf) cancelAnimationFrame(layoutImagesRaf);
+      layoutImagesRaf = requestAnimationFrame(() => {
+        layoutImagesRaf = 0;
+        if (destroyed || typeof deck.layout !== 'function') return;
+        deck.layout();
+      });
+    }
+
+    function wireSlideImagesForLayout(
+      root: ParentNode | null | undefined
+    ): void {
+      if (!root) return;
+      for (const img of root.querySelectorAll('img')) {
+        const el = img as HTMLImageElement;
+        if (el.complete) continue;
+        el.addEventListener('load', scheduleLayoutFromImages, { once: true });
+        el.addEventListener('error', scheduleLayoutFromImages, { once: true });
+      }
+    }
+
+    function wireAllDeckImagesForLayout(): void {
+      for (const slide of deck.getSlides() as HTMLElement[]) {
+        wireSlideImagesForLayout(slide);
+      }
+    }
+
+    const onRevealReadyForLayout = (): void => {
+      wireAllDeckImagesForLayout();
+      scheduleLayoutFromImages();
+    };
+
+    const onSlideChangedForLayout = (): void => {
+      wireSlideImagesForLayout(deck.getCurrentSlide() as HTMLElement | null);
+      scheduleLayoutFromImages();
+    };
+
+    deck.on('ready', onRevealReadyForLayout);
+    deck.on('slidechanged', onSlideChangedForLayout);
+    teardownLayoutImageHooks = () => {
+      if (layoutImagesRaf) {
+        cancelAnimationFrame(layoutImagesRaf);
+        layoutImagesRaf = 0;
+      }
+      deck.off('ready', onRevealReadyForLayout);
+      deck.off('slidechanged', onSlideChangedForLayout);
+    };
 
     /**
      * Overview thumbnails fix.
@@ -226,6 +287,7 @@ onMount(() => {
 
   return () => {
     destroyed = true;
+    teardownLayoutImageHooks?.();
     teardownOverviewFix?.();
     if (navigateClickRootCleanup && navigateClickHandler) {
       navigateClickRootCleanup.removeEventListener(

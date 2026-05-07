@@ -236,6 +236,20 @@ Radial:       radial-gradient(circle at top, #d81540 0%, #0f1124 80%)
 - **Mobile fallbacks:** tables shrink font-size below 640px (`.slide-table` rule). Process steps switch to vertical below 768px. Three-column grids stack at the same breakpoint.
 - **Verify before shipping:** open every new slide at 375px / 768px / 1440px in both light and dark themes. Don't ship visual work without a real browser pass.
 
+### Vertical centering and images (Reveal.js)
+
+Reveal’s default `center: true` positions each slide by setting an inline `top` on `<section>`:
+
+`top = max((slideHeight − section.scrollHeight) / 2, 0)` inside `layout()` (see Reveal source: `layout()` in `reveal.js`).
+
+That runs **whenever `layout()` runs** — often **before** raster images have finished decoding. While `scrollHeight` is still too small, `top` is computed too large; after the image paints, the block sits **too low** with empty space above and the **bottom may clip** off the 1280×720 canvas. This is not a Tailwind bug; it’s a timing interaction with Reveal’s vertical centering.
+
+**What we do:** `RevealDeck.svelte` wires `load` / `error` (once) on `<img>` elements in each slide and schedules `deck.layout()` on the next animation frame so centering uses the final `scrollHeight`.
+
+**What authors should still do:** keep `width` and `height` on every `<img>` (intrinsic box before decode), avoid single-huge unbounded images without `max-height`, and use `.slide-content-top` when you intentionally want top-aligned content (see `src/styles/slides.css`).
+
+If you add another Reveal host (second deck component), mirror the same image → `layout()` hook or you may see the regression again.
+
 ## Anti-patterns
 
 | Don't | Do |
@@ -248,6 +262,7 @@ Radial:       radial-gradient(circle at top, #d81540 0%, #0f1124 80%)
 | `style="background:#1a1a2e"` on a section | `<!-- .slide: data-background-color="#1a1a2e" -->` |
 | Hardcoded English in the deck UI | Translate via `src/lib/translations/{en,es}.ts` |
 | New deck in only one language | Both `src/content/slides/en/` and `es/` versions, identical slug |
+| Image-only slide: huge empty area on top, image clipped at bottom after load | Reveal `center` uses `scrollHeight` before images decode — fixed globally in `RevealDeck.svelte` (`layout()` after `img` load); still author `width`/`height` and sensible `max-height` |
 
 ## SEO & AEO
 
