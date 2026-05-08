@@ -85,7 +85,7 @@ For the university course, our team was Camilo, Miguel, and me. Camilo and Migue
 <figcaption>Three kihon detail screens using the outdoor shoot photos and short movement notes.</figcaption>
 </figure>
 
-Years later I dug up my course files — source included — along with the original Android APKs. Those packages don't run cleanly on today's devices anymore — newer OS releases have mostly left them behind — but the web layer was worth saving. Hybrid apps like that are still, at heart, embedded web inside a native shell. I put that same frontend online as a static site on [Cloudflare Pages](https://pages.cloudflare.com/) at [kdosensei.xergioalex.com](https://kdosensei.xergioalex.com/).
+Years later I dug up my course files — source included — along with the original Android APKs. Those packages don't run cleanly on today's devices anymore — newer OS releases have mostly left them behind — but the web layer was worth saving. Hybrid apps like that are still, at heart, embedded web inside a native shell. I put that same frontend online as a static site on [Cloudflare Pages](https://pages.cloudflare.com/) at [kdosensei.xergioalex.com](https://kdosensei.xergioalex.com/), and collected the recovered files in the [xergioalex/kdosensei](https://github.com/xergioalex/kdosensei) repo — a time-machine snapshot of that semester, the team, and the hybrid tooling, kept intact instead of vanishing in some forgotten zip on an old drive.
 
 I didn't close the book there. Over the years I tried [Ionic](https://ionicframework.com/) — same idea, better tooling, faster prototypes — **Meteor** bundled with Cordova (reactive and tempting until production felt fragile), and some experiments with **React Native**, closer to native but with its own friction. Each round taught me the ceiling of the last one.
 
@@ -111,9 +111,7 @@ A web app runs inside the browser, a relatively predictable environment: an open
 
 It's not that web doesn't have complexity — it does, whether backend or frontend. It's that the complexity is different: the instinct you've built up handling requests or component reactivity doesn't transfer directly to this domain, because the runtime isn't yours anymore — it's the operating system's.
 
-It's a pattern I'm going to find over and over in this series: the instincts you build up in web development are valid, but they don't transfer directly. Part of learning mobile is figuring out when to trust what you already know and when to set it aside.
-
-That said: the framework does matter. And there are too many to choose from without understanding the terrain first.
+That said: the framework does matter, and it's worth understanding the terrain before choosing.
 
 ## Four categories before the list
 
