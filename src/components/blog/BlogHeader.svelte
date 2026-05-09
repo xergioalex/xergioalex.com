@@ -75,7 +75,7 @@ $: availableText = t.articlesAvailable(totalPosts);
   <!-- Link to all articles -->
   <a
     href={`${basePrefix}/blog/`}
-    class={`rounded px-3 py-1 text-xs font-semibold transition-colors ${
+    class={`inline-flex items-center rounded px-3 py-1 text-xs font-semibold transition-colors ${
       !currentTag
         ? "bg-blue-600 text-white shadow-sm"
         : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
@@ -88,7 +88,7 @@ $: availableText = t.articlesAvailable(totalPosts);
   {#each tagsResult as tag}
     <a
       href={`${basePrefix}/blog/tag/${tag}/`}
-      class={`rounded px-3 py-1 text-xs font-semibold transition-colors ${
+      class={`inline-flex items-center rounded px-3 py-1 text-xs font-semibold transition-colors ${
         currentTag === tag
           ? "bg-blue-600 text-white shadow-sm"
           : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
@@ -109,7 +109,7 @@ $: availableText = t.articlesAvailable(totalPosts);
         class={`rounded px-2.5 py-0.5 text-xs transition-colors ${
           currentTag === topic
             ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
-            : "border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+            : "border border-gray-200 bg-white text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
         }`}
         on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: topic })}
       >
@@ -125,7 +125,7 @@ $: availableText = t.articlesAvailable(totalPosts);
     {#each subtopicTags as sub}
       <a
         href={`${basePrefix}/blog/tag/${sub}/`}
-        class={`inline-flex items-center rounded px-2 py-0.5 font-mono text-xs transition-colors ${
+        class={`inline-flex items-center rounded px-2 py-0.5 font-mono text-[13px] transition-colors ${
           currentTag === sub
             ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
             : "bg-gray-50 text-gray-700 border border-dashed border-gray-300 hover:bg-gray-100 hover:border-gray-500 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-400 dark:hover:text-gray-100"
