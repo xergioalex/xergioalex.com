@@ -2,7 +2,7 @@
 title: "Construyendo un sistema de diapositivas multilingüe dentro de Astro con Reveal.js"
 description: "Cómo construí un catálogo de presentaciones de tres tipos dentro de mi sitio Astro — uniones discriminadas, gemelos AEO, aislamiento de assets y más."
 pubDate: 2026-04-27
-tags: [tech, web-development, talks]
+tags: ["tech", "web-development", "talks", "astro", "svelte"]
 series: "slides-as-code"
 seriesOrder: 2
 heroLayout: none

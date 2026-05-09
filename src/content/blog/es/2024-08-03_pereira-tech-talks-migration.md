@@ -4,7 +4,7 @@ description: "pereiratechtalks.org: de Ghost dockerizado con costos mensuales a 
 pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.webp"
 heroLayout: "banner"
-tags: ["portfolio", "tech", "web-development", "devops"]
+tags: ["portfolio", "tech", "web-development", "devops", "astro"]
 keywords: ["migrar de Ghost a Astro", "Astro vs Ghost CMS", "sitio estático gratis con Astro", "GitHub Pages con Astro", "migración de blog a sitio estático", "Pereira Tech Talks historia y rediseño", "cómo migrar un blog a Astro"]
 ---
 

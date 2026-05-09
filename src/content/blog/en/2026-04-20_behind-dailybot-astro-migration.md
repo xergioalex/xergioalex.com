@@ -3,7 +3,7 @@ title: "Behind dailybot.com's Astro migration: the engineer's view"
 description: "I led dailybot.com's migration from a visual-editor CMS to Astro. The team's story is on the dailybot.com blog. Here's the engineering underneath it."
 pubDate: "2026-04-20"
 heroLayout: "none"
-tags: ["portfolio", "tech", "web-development", "dailybot", "ai"]
+tags: ["portfolio", "tech", "web-development", "dailybot", "astro"]
 keywords:
   - "dailybot astro migration engineer"
   - "astro content collections multilingual case study"

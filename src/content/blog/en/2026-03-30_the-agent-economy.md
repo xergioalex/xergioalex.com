@@ -4,7 +4,7 @@ description: "AI agents now have payment cards, wallets, email, and social netwo
 pubDate: "2026-03-30"
 heroImage: "/images/blog/posts/the-agent-economy/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "blockchain", "personal"]
+tags: ["tech", "ai", "blockchain", "personal", "openclaw"]
 keywords: ["agent economy AI payments 2026", "AI agents wallets credit cards", "agentic commerce Stripe Visa Mastercard", "x402 protocol blockchain AI agents", "agent-to-agent economy infrastructure", "AI hiring humans RentAHuman", "Coinbase agentic wallets x402"]
 series: "working-with-agents"
 seriesOrder: 4

@@ -4,7 +4,7 @@ description: "Por qué Astro y Svelte devuelven simplicidad al desarrollo web: d
 pubDate: "2026-03-02"
 heroImage: "/images/blog/posts/astro-and-svelte-the-future-of-web-development/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "javascript"]
+tags: ["tech", "web-development", "javascript", "astro", "svelte"]
 keywords: ["Astro y Svelte para desarrollo web", "por qué Astro es mejor que React para sitios estáticos", "Svelte vs React comparación 2025", "State of JS Astro y Svelte", "frameworks web modernos sin sobre-ingeniería", "Astro islands arquitectura explicada", "futuro del desarrollo web con Astro"]
 ---
 

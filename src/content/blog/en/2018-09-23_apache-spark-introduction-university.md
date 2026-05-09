@@ -4,7 +4,7 @@ description: "From RDDs to streaming: notebooks, a Docker cluster, and a present
 pubDate: "2018-09-23"
 heroImage: "/images/blog/posts/apache-spark-introduction-university/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "talks", "python", "database", "university"]
+tags: ["tech", "talks", "python", "university", "docker"]
 keywords: ["Apache Spark introduction Python", "Spark RDDs DataFrames tutorial", "Docker Spark cluster setup", "big data processing Spark", "PySpark university project", "distributed computing Spark", "Spark streaming real-time processing"]
 ---
 

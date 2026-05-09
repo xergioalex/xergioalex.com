@@ -1002,6 +1002,13 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     design: 'Diseño',
     mobile: 'Móvil',
     // Subtopic tags
+    astro: 'Astro',
+    svelte: 'Svelte',
+    cloudflare: 'Cloudflare',
+    docker: 'Docker',
+    graphql: 'GraphQL',
+    django: 'Django',
+    openclaw: 'OpenClaw',
     kotlin: 'Kotlin',
   },
   tagDescriptions: {
@@ -1032,6 +1039,20 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     mobile:
       'Desarrollo móvil — Android, iOS, frameworks multiplataforma y el camino para aprender a publicar en dispositivos.',
     // Subtopic tags
+    astro:
+      'Framework Astro — arquitectura por islas, Content Collections, MDX y builds estáticos.',
+    svelte:
+      'Svelte y SvelteKit — componentes reactivos, runes y patrones de hidratación.',
+    cloudflare:
+      'Cloudflare Pages, Workers, R2 y la plataforma agentic-web.',
+    docker:
+      'Contenedores Docker, escritura de Dockerfile y orquestación multi-servicio.',
+    graphql:
+      'APIs GraphQL — esquemas, resolvers, federación y patrones de cliente.',
+    django:
+      'Framework Django — ORM, configuraciones multi-base, admin y despliegue.',
+    openclaw:
+      'OpenClaw — el agente personal de IA local y su filosofía de diseño.',
     kotlin:
       'Lenguaje y ecosistema Kotlin — Kotlin Multiplatform, Compose Multiplatform, Android y herramientas para JVM.',
   },

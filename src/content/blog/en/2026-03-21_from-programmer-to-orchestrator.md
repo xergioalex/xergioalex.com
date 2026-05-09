@@ -4,7 +4,7 @@ description: "How I went from writing every line of code to orchestrating AI age
 pubDate: "2026-03-21"
 heroImage: "/images/blog/posts/from-programmer-to-orchestrator/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai", "personal", "openclaw"]
 keywords: ["AI coding agents orchestration 2026", "programmer to orchestrator AI shift", "future of programming AI agents", "silent AI revolution frontier models", "Claude Code remote agents workflow", "METR AI task doubling Moore's Law", "AI replacing software engineers nuanced debate"]
 series: "working-with-agents"
 seriesOrder: 1

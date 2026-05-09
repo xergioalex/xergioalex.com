@@ -4,7 +4,7 @@ description: "Los agentes de IA ya tienen tarjetas, billeteras y correos propios
 pubDate: "2026-03-30"
 heroImage: "/images/blog/posts/the-agent-economy/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "blockchain", "personal"]
+tags: ["tech", "ai", "blockchain", "personal", "openclaw"]
 keywords: ["economía de agentes de IA pagos 2026", "agentes IA billeteras tarjetas crédito", "comercio agéntico Stripe Visa Mastercard", "protocolo x402 blockchain agentes IA", "infraestructura economía agente a agente", "IA contratando humanos RentAHuman", "billeteras agénticas Coinbase x402"]
 series: "working-with-agents"
 seriesOrder: 4

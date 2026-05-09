@@ -991,6 +991,13 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     design: 'Design',
     mobile: 'Mobile',
     // Subtopic tags
+    astro: 'Astro',
+    svelte: 'Svelte',
+    cloudflare: 'Cloudflare',
+    docker: 'Docker',
+    graphql: 'GraphQL',
+    django: 'Django',
+    openclaw: 'OpenClaw',
     kotlin: 'Kotlin',
   },
   tagDescriptions: {
@@ -1021,6 +1028,20 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     mobile:
       'Mobile development — Android, iOS, cross-platform frameworks, and the journey of learning to ship for handhelds.',
     // Subtopic tags
+    astro:
+      'Astro framework — islands architecture, Content Collections, MDX, and static-site builds.',
+    svelte:
+      'Svelte and SvelteKit — reactive components, runes, and hydration patterns.',
+    cloudflare:
+      'Cloudflare Pages, Workers, R2, and the agentic-web platform.',
+    docker:
+      'Docker containers, Dockerfile authoring, and multi-service orchestration.',
+    graphql:
+      'GraphQL APIs — schemas, resolvers, federation, and client patterns.',
+    django:
+      'Django framework — ORM, multi-database setups, admin, and deployment.',
+    openclaw:
+      'OpenClaw — the local-first personal AI agent and its design philosophy.',
     kotlin:
       'Kotlin language and ecosystem — Kotlin Multiplatform, Compose Multiplatform, Android, JVM tooling.',
   },

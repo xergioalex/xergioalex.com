@@ -4,7 +4,7 @@ description: "Tras años persiguiendo upgrades de ESLint y conflictos con Pretti
 pubDate: '2026-03-06'
 heroImage: '/images/blog/posts/why-i-ditched-eslint-prettier-for-biome/hero.webp'
 heroLayout: 'side-by-side'
-tags: ['tech', 'web-development', 'javascript']
+tags: ["tech", "web-development", "javascript", "astro"]
 keywords: ["reemplazar ESLint y Prettier por Biome", "qué es Biome linter formatter", "Biome vs ESLint Prettier comparación", "cómo configurar Biome en proyecto JavaScript", "linter y formatter todo en uno", "migrar de ESLint a Biome", "Biome para proyectos TypeScript Astro"]
 ---
 

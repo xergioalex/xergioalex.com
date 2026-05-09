@@ -4,7 +4,7 @@ description: "A fully static wedding invitation site built with Astro, Svelte, a
 pubDate: "2025-04-01"
 heroImage: "/images/blog/posts/building-wedding-website-sergioykathe/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "personal", "web-development", "design"]
+tags: ["portfolio", "tech", "web-development", "astro", "svelte"]
 keywords: ["wedding website Astro GitHub Pages", "wedding invitation website personalized codes", "Google Forms RSVP no backend", "static wedding site Astro Svelte", "sergioykathe.com wedding website", "wedding RSVP Google Sheets database", "personalized wedding invitation URL code"]
 ---
 
