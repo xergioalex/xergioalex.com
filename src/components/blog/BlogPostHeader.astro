@@ -88,9 +88,9 @@ const langPrefix = getUrlPrefix(lang);
             {subtopics.map((sub) => (
               <a
                 href={`${langPrefix}/blog/tag/${sub}/`}
-                class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                class="inline-flex items-center rounded border border-dashed border-gray-300 px-1.5 py-0.5 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
               >
-                {t.tagNames[sub] || sub}
+                <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
               </a>
             ))}
           </div>
@@ -141,9 +141,9 @@ const langPrefix = getUrlPrefix(lang);
             {subtopics.map((sub) => (
               <a
                 href={`${langPrefix}/blog/tag/${sub}/`}
-                class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                class="inline-flex items-center rounded border border-dashed border-gray-300 px-1.5 py-0.5 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
               >
-                {t.tagNames[sub] || sub}
+                <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
               </a>
             ))}
           </div>
@@ -271,9 +271,9 @@ const langPrefix = getUrlPrefix(lang);
           {subtopics.map((sub) => (
             <a
               href={`${langPrefix}/blog/tag/${sub}/`}
-              class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+              class="inline-flex items-center rounded border border-dashed border-gray-300 px-1.5 py-0.5 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
             >
-              {t.tagNames[sub] || sub}
+              <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
             </a>
           ))}
         </div>

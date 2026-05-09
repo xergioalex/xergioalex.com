@@ -256,9 +256,9 @@ $: displayDescription = searchQuery
           {#each postData.subtopics as sub}
             <a
               href={`${prefix}/blog/tag/${sub}/`}
-              class="text-xs px-2 py-1 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+              class="inline-flex items-center text-xs px-1.5 py-0.5 rounded border border-dashed border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
             >
-              {t.tagNames[sub] || sub}
+              <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
             </a>
           {/each}
         </div>

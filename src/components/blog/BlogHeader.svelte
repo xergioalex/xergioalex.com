@@ -6,6 +6,7 @@ import { getTranslations } from '@/lib/translations';
 export let currentTag;
 export let tagsResult;
 export let topicTags = [];
+export let subtopicTags = [];
 export let totalPosts = 0;
 export let currentPagePosts = 0;
 export let currentPage = 1;
@@ -17,6 +18,9 @@ $: basePrefix = getUrlPrefix(lang);
 
 // Check if currentTag is a topic (secondary) tag
 $: isTopicActive = topicTags.includes(currentTag);
+
+// Secondary-only list (excludes subtopics for the dedicated subtopic row).
+$: secondaryOnly = topicTags.filter((t) => !subtopicTags.includes(t));
 
 // Translations for header content
 $: headerTitle = currentTag
@@ -96,9 +100,9 @@ $: availableText = t.articlesAvailable(totalPosts);
 </div>
 
 <!-- Topic tag pills (secondary tier) -->
-{#if topicTags && topicTags.length > 0}
-  <div class="mb-10 flex flex-wrap gap-1.5">
-    {#each topicTags as topic}
+{#if secondaryOnly.length > 0}
+  <div class="mb-3 flex flex-wrap gap-1.5">
+    {#each secondaryOnly as topic}
       <a
         href={`${basePrefix}/blog/tag/${topic}/`}
         class={`rounded-full px-2.5 py-0.5 text-xs transition-colors ${
@@ -109,6 +113,25 @@ $: availableText = t.articlesAvailable(totalPosts);
         on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: topic })}
       >
         {t.tagNames[topic] || topic}
+      </a>
+    {/each}
+  </div>
+{/if}
+
+<!-- Subtopic tag pills (tier 3) — visually subordinate: dashed border, chevron prefix, smaller text. -->
+{#if subtopicTags && subtopicTags.length > 0}
+  <div class="mb-10 flex flex-wrap gap-1.5">
+    {#each subtopicTags as sub}
+      <a
+        href={`${basePrefix}/blog/tag/${sub}/`}
+        class={`inline-flex items-center rounded-full px-2 py-0.5 text-xs transition-colors ${
+          currentTag === sub
+            ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
+            : "border border-dashed border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+        }`}
+        on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: sub })}
+      >
+        <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
       </a>
     {/each}
   </div>

@@ -252,6 +252,7 @@ onMount(() => {
     {currentTag}
     tagsResult={primaryTags}
     topicTags={topicTags}
+    subtopicTags={subtopicTags}
     totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
     currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
