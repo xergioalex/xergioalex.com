@@ -4,7 +4,7 @@ description: "Around 30 launches in one week. Everything Cloudflare shipped at A
 pubDate: "2026-04-20T14:00:00"
 heroImage: "/images/blog/posts/cloudflare-agents-week-2026/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai", "cloudflare"]
+tags: ["tech", "web-development", "ai-agents", "cloudflare", "mcp"]
 keywords: ["cloudflare agents week 2026", "agentic web", "AI agents infrastructure", "agent-ready web", "MCP", "Project Think Cloudflare", "Sandboxes GA", "isitagentready.com"]
 ---
 

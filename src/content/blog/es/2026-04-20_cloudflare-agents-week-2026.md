@@ -4,7 +4,7 @@ description: "Alrededor de 30 anuncios en una semana. Todo lo que Cloudflare lan
 pubDate: "2026-04-20T14:00:00"
 heroImage: "/images/blog/posts/cloudflare-agents-week-2026/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai", "cloudflare"]
+tags: ["tech", "web-development", "ai-agents", "cloudflare", "mcp"]
 keywords: ["cloudflare agents week 2026", "web agéntica", "infraestructura agentes IA", "web lista para agentes", "MCP", "Project Think Cloudflare", "Sandboxes GA", "isitagentready.com"]
 ---
 

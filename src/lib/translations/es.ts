@@ -1001,6 +1001,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     iot: 'IoT',
     design: 'Diseño',
     mobile: 'Móvil',
+    'ai-agents': 'Agentes de IA',
     // Subtopic tags
     astro: 'Astro',
     svelte: 'Svelte',
@@ -1010,6 +1011,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     django: 'Django',
     openclaw: 'OpenClaw',
     kotlin: 'Kotlin',
+    claude: 'Claude',
+    mcp: 'MCP',
+    flutter: 'Flutter',
   },
   tagDescriptions: {
     // Primary tags
@@ -1038,6 +1042,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     design: 'Diseño visual, branding, diseño web y UX.',
     mobile:
       'Desarrollo móvil — Android, iOS, frameworks multiplataforma y el camino para aprender a publicar en dispositivos.',
+    'ai-agents':
+      'Agentes de IA y la agentic web — sistemas autónomos, uso de herramientas, patrones de orquestación, MCP y los estándares .well-known.',
     // Subtopic tags
     astro:
       'Framework Astro — arquitectura por islas, Content Collections, MDX y builds estáticos.',
@@ -1054,6 +1060,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'OpenClaw — el agente personal de IA local y su filosofía de diseño.',
     kotlin:
       'Lenguaje y ecosistema Kotlin — Kotlin Multiplatform, Compose Multiplatform, Android y herramientas para JVM.',
+    claude:
+      'Claude — la familia de modelos de Anthropic y los runtimes de agente construidos encima (Claude Code, Skills, Files API).',
+    mcp:
+      'Model Context Protocol — comunicación estandarizada agente↔herramienta, server cards y la capa de estándares para la agentic web.',
+    flutter:
+      'Flutter — framework móvil multiplataforma basado en Dart, widgets y los trade-offs frente a nativo y Kotlin Multiplatform.',
   },
 
   // Series names and descriptions (keyed by series slug)

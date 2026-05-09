@@ -4,7 +4,7 @@ description: "Pereira Tech Talks con Sebastián Mora: de escribir código a orqu
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "ai"]
+tags: ["talks", "tech", "ai-agents"]
 keywords: ["futuro de la IA en programación", "agentes de IA para desarrolladores", "MCPs y agentes de código", "orquestación de agentes con IA", "IA reemplazando tareas de programación", "Pereira Tech Talks futuro IA 2025", "cómo la IA cambia el trabajo del programador"]
 ---
 

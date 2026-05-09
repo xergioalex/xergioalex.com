@@ -4,7 +4,7 @@ description: "Guía práctica a la familia .well-known: Link headers RFC 8288, A
 pubDate: "2026-04-22T16:00:00"
 heroImage: "/images/blog/posts/aeo-well-known-field-guide/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai", "cloudflare"]
+tags: ["tech", "web-development", "ai-agents", "cloudflare", "mcp"]
 keywords: ["well-known endpoints", "estándares de agentes 2026", "RFC 8288 Link headers", "RFC 9727 API Catalog", "RFC 9728 OAuth Protected Resource Metadata", "MCP Server Card SEP-1649", "Agent Skills Discovery RFC", "WebMCP browser API"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 6

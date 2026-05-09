@@ -321,6 +321,7 @@ const SUBTOPIC_ACCENT_BY_PARENT: Record<string, string> = {
   devops: 'text-orange-500 dark:text-orange-400',
   python: 'text-amber-500 dark:text-amber-400',
   ai: 'text-violet-500 dark:text-violet-400',
+  'ai-agents': 'text-fuchsia-500 dark:text-fuchsia-400',
   mobile: 'text-emerald-500 dark:text-emerald-400',
   blockchain: 'text-green-500 dark:text-green-400',
   design: 'text-pink-500 dark:text-pink-400',

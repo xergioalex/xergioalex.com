@@ -4,7 +4,7 @@ description: "Cuatro categorías, ocho artefactos, una guía concreta: lo que tu
 pubDate: "2026-04-27T15:00:00"
 heroImage: "/images/blog/posts/aeo-reaching-100-isitagentready/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai-agents", "mcp"]
 keywords: ["isitagentready.com 100", "sitio listo para agentes", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 5
