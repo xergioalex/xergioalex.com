@@ -1,8 +1,7 @@
 ---
 title: "Mobile Development in 2026: State of the Art and Where to Start Today"
 description: "State of the art of mobile development in 2026: the available options, how each one works, and where it actually makes sense to start today."
-draft: true
-pubDate: "2026-04-26"
+pubDate: "2026-05-11"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "mobile"]

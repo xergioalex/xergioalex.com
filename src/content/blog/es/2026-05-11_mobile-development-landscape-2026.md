@@ -1,8 +1,7 @@
 ---
 title: "Desarrollo mobile en 2026: estado del arte y por dónde empezar hoy"
 description: "Estado del arte del desarrollo mobile en 2026: las opciones disponibles, cómo funciona cada una y por dónde tiene sentido empezar hoy."
-draft: true
-pubDate: "2026-04-26"
+pubDate: "2026-05-11"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "mobile"]
