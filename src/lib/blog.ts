@@ -309,6 +309,48 @@ async function validateTagHierarchy(): Promise<void> {
   }
 }
 
+/**
+ * Per-domain accent colors for subtopic tag chevrons. Each subtopic inherits
+ * its parent secondary tag's domain color, creating a visual "this belongs to
+ * that family" cue. Class strings are kept literal so Tailwind's content
+ * scanner picks them up.
+ */
+const SUBTOPIC_ACCENT_BY_PARENT: Record<string, string> = {
+  'web-development': 'text-blue-500 dark:text-blue-400',
+  javascript: 'text-yellow-500 dark:text-yellow-400',
+  devops: 'text-orange-500 dark:text-orange-400',
+  python: 'text-amber-500 dark:text-amber-400',
+  ai: 'text-violet-500 dark:text-violet-400',
+  mobile: 'text-emerald-500 dark:text-emerald-400',
+  blockchain: 'text-green-500 dark:text-green-400',
+  design: 'text-pink-500 dark:text-pink-400',
+  iot: 'text-cyan-500 dark:text-cyan-400',
+  database: 'text-indigo-500 dark:text-indigo-400',
+  university: 'text-rose-500 dark:text-rose-400',
+};
+
+const SUBTOPIC_ACCENT_FALLBACK = 'text-gray-600 dark:text-gray-300';
+
+let _subtopicAccentCache: Record<string, string> | null = null;
+
+/**
+ * Build a subtopic-slug → tailwind chevron color class map. Only includes tags
+ * whose tier is `subtopic`. Cached once per build.
+ */
+export async function getSubtopicAccentMap(): Promise<Record<string, string>> {
+  if (_subtopicAccentCache) return _subtopicAccentCache;
+  const allTags = await getCollection('tags');
+  const map: Record<string, string> = {};
+  for (const tag of allTags) {
+    if (tag.data.tier !== 'subtopic') continue;
+    const parent = tag.data.parent;
+    map[tag.data.name] =
+      (parent && SUBTOPIC_ACCENT_BY_PARENT[parent]) || SUBTOPIC_ACCENT_FALLBACK;
+  }
+  _subtopicAccentCache = map;
+  return map;
+}
+
 async function getTagTierMap(): Promise<Map<string, string>> {
   if (_tagTierCache) return _tagTierCache;
   const allTags = await getCollection('tags');

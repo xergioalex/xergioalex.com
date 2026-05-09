@@ -7,7 +7,7 @@ import PageSection from '@/components/pages/PageSection.astro';
 import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
 import TradingTimeline from '@/components/trading/TradingTimeline.svelte';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getBlogPosts } from '@/lib/blog';
+import { getBlogPosts, getSubtopicAccentMap } from '@/lib/blog';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -39,6 +39,7 @@ const topicTagNames = allTags
 const subtopicTagNames = allTags
   .filter((tag) => tag.data.tier === 'subtopic')
   .map((tag) => tag.data.name);
+const subtopicAccentByName = await getSubtopicAccentMap();
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -111,7 +112,7 @@ const breadcrumbSchema = {
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8">
         {t.tradingPage.timelineTitle}
       </h2>
-      <TradingTimeline client:visible posts={posts} lang={lang} {topicTagNames} {subtopicTagNames} />
+      <TradingTimeline client:visible posts={posts} lang={lang} {topicTagNames} {subtopicTagNames} {subtopicAccentByName} />
     </div>
   </section>
 

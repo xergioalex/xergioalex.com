@@ -2,6 +2,7 @@
 import BlogHeroImage from '@/components/blog/BlogHeroImage.astro';
 import UpdatedDateBadge from '@/components/blog/UpdatedDateBadge.astro';
 import FormattedDate from '@/components/FormattedDate.astro';
+import { getSubtopicAccentMap } from '@/lib/blog';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -33,6 +34,7 @@ const {
 
 const t = getTranslations(lang);
 const langPrefix = getUrlPrefix(lang);
+const subtopicAccentByName = await getSubtopicAccentMap();
 ---
 
 {/* Banner layout: Full-width image above title (landscape/wide images) */}
@@ -88,9 +90,9 @@ const langPrefix = getUrlPrefix(lang);
             {subtopics.map((sub) => (
               <a
                 href={`${langPrefix}/blog/tag/${sub}/`}
-                class="inline-flex items-center rounded border border-dashed border-gray-300 px-1.5 py-0.5 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                class="inline-flex items-center rounded bg-gray-50 px-2 py-0.5 font-mono text-xs text-gray-700 border border-gray-200 transition-colors hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:hover:text-gray-100"
               >
-                <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
+                <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-gray-600 dark:text-gray-300'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
               </a>
             ))}
           </div>
@@ -141,9 +143,9 @@ const langPrefix = getUrlPrefix(lang);
             {subtopics.map((sub) => (
               <a
                 href={`${langPrefix}/blog/tag/${sub}/`}
-                class="inline-flex items-center rounded border border-dashed border-gray-300 px-1.5 py-0.5 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                class="inline-flex items-center rounded bg-gray-50 px-2 py-0.5 font-mono text-xs text-gray-700 border border-gray-200 transition-colors hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:hover:text-gray-100"
               >
-                <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
+                <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-gray-600 dark:text-gray-300'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
               </a>
             ))}
           </div>
@@ -271,9 +273,9 @@ const langPrefix = getUrlPrefix(lang);
           {subtopics.map((sub) => (
             <a
               href={`${langPrefix}/blog/tag/${sub}/`}
-              class="inline-flex items-center rounded border border-dashed border-gray-300 px-1.5 py-0.5 text-xs text-gray-700 transition-colors hover:border-gray-500 hover:text-gray-900 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+              class="inline-flex items-center rounded bg-gray-50 px-2 py-0.5 font-mono text-xs text-gray-700 border border-gray-200 transition-colors hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-700 dark:hover:bg-gray-800 dark:hover:border-gray-600 dark:hover:text-gray-100"
             >
-              <span class="mr-0.5 opacity-60" aria-hidden="true">›</span>{t.tagNames[sub] || sub}
+              <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-gray-600 dark:text-gray-300'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
             </a>
           ))}
         </div>

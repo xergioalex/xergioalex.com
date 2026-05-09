@@ -4,6 +4,7 @@ import StaticBlogSearch from '@/components/blog/StaticBlogSearch.svelte';
 import {
   getPostLanguage,
   getPostSlug,
+  getSubtopicAccentMap,
   groupPostTags,
   isDraftPost,
   isScheduledPost,
@@ -16,6 +17,7 @@ export interface Props {
   lang?: string;
 }
 const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
+const subtopicAccentByName = await getSubtopicAccentMap();
 
 const lightweightPosts = await Promise.all(
   blogPostsResult.postsResult.map(async (post) => {
@@ -52,5 +54,6 @@ const lightweightPosts = await Promise.all(
   tagsResult={blogPostsResult.tagsResult}
   totalPostsAvailable={blogPostsResult.totalPostsAvailable}
   lang={lang}
+  subtopicAccentByName={subtopicAccentByName}
   client:idle
 />

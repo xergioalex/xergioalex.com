@@ -8,7 +8,7 @@ import PageSection from '@/components/pages/PageSection.astro';
 import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
 // import SlidesCatalog from '@/components/slides/SlidesCatalog.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getTimelineIndex } from '@/lib/blog';
+import { getSubtopicAccentMap, getTimelineIndex } from '@/lib/blog';
 import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 // import { getSlideDecks } from '@/lib/slides';
@@ -42,6 +42,7 @@ const topicTagNames = allTags
 const subtopicTagNames = allTags
   .filter((tag) => tag.data.tier === 'subtopic')
   .map((tag) => tag.data.name);
+const subtopicAccentByName = await getSubtopicAccentMap();
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -198,6 +199,7 @@ const breadcrumbSchema = {
         {lang}
         {topicTagNames}
         {subtopicTagNames}
+        {subtopicAccentByName}
         pageSize={BLOG_PAGE_SIZE}
         pageName="techtalks"
         emptyStateMessage={t.techTalksPage.emptyState}
