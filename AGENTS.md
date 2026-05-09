@@ -349,7 +349,7 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **File naming:** `YYYY-MM-DD_slug.{md,mdx}` in `src/content/blog/{en,es}/`. Date prefix stripped from URLs. **Slugs MUST always be in English** — both `en/` and `es/` versions use the same English slug.
 
-**Tags:** Flat `tags` array in frontmatter. Tiers (primary/secondary/subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 1-3 secondary). Never auto-create tags without user approval.
+**Tags:** Flat `tags` array in frontmatter. Three tiers (primary / secondary / subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 0-3 secondary + 0-3 subtopic; max 3 subtopics; ≥ 1 primary required). Never auto-create tags without user approval — propose with [`/audit-taxonomy`](.agents/skills/audit-taxonomy/SKILL.md) and let the user approve. See [Tag Taxonomy in BLOG_POSTS.md](docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection) for the full tier table.
 
 **Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}` in frontmatter. Series defined in `src/content/series/`. Navigation renders automatically. **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow`, not `la-biblioteca-del-manana`).
 

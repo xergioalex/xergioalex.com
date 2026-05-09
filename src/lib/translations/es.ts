@@ -1043,8 +1043,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Framework Astro — arquitectura por islas, Content Collections, MDX y builds estáticos.',
     svelte:
       'Svelte y SvelteKit — componentes reactivos, runes y patrones de hidratación.',
-    cloudflare:
-      'Cloudflare Pages, Workers, R2 y la plataforma agentic-web.',
+    cloudflare: 'Cloudflare Pages, Workers, R2 y la plataforma agentic-web.',
     docker:
       'Contenedores Docker, escritura de Dockerfile y orquestación multi-servicio.',
     graphql:

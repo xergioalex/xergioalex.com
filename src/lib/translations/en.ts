@@ -1032,8 +1032,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Astro framework — islands architecture, Content Collections, MDX, and static-site builds.',
     svelte:
       'Svelte and SvelteKit — reactive components, runes, and hydration patterns.',
-    cloudflare:
-      'Cloudflare Pages, Workers, R2, and the agentic-web platform.',
+    cloudflare: 'Cloudflare Pages, Workers, R2, and the agentic-web platform.',
     docker:
       'Docker containers, Dockerfile authoring, and multi-service orchestration.',
     graphql:
