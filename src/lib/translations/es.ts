@@ -1000,6 +1000,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     database: 'Bases de Datos',
     iot: 'IoT',
     design: 'Diseño',
+    mobile: 'Móvil',
+    // Subtopic tags
+    kotlin: 'Kotlin',
   },
   tagDescriptions: {
     // Primary tags
@@ -1026,6 +1029,11 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     database: 'SQL, NoSQL, MongoDB y arquitectura multi-base de datos.',
     iot: 'Internet de las Cosas, sensores, hardware e interfaces de voz.',
     design: 'Diseño visual, branding, diseño web y UX.',
+    mobile:
+      'Desarrollo móvil — Android, iOS, frameworks multiplataforma y el camino para aprender a publicar en dispositivos.',
+    // Subtopic tags
+    kotlin:
+      'Lenguaje y ecosistema Kotlin — Kotlin Multiplatform, Compose Multiplatform, Android y herramientas para JVM.',
   },
 
   // Series names and descriptions (keyed by series slug)

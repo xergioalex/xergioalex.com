@@ -240,7 +240,12 @@ let _hierarchyValidated = false;
 
 /**
  * Validate tag hierarchy integrity at build time.
- * Logs warnings for: orphaned parents, primary tags with parent, non-primary parents.
+ * Rules:
+ *  - parent must resolve to a known tag
+ *  - primary tags must NOT have a parent
+ *  - secondary tags must parent to a primary tag
+ *  - subtopic tags should have a parent (warns if missing)
+ *  - subtopic tags should parent to a secondary tag (parenting to primary is allowed but flagged)
  * Runs once per build — does NOT throw (warnings only).
  */
 async function validateTagHierarchy(): Promise<void> {
@@ -249,23 +254,51 @@ async function validateTagHierarchy(): Promise<void> {
 
   const allTags = await getCollection('tags');
   const tagNames = new Set(allTags.map((t) => t.data.name));
+  const tierByName = new Map<string, string>(
+    allTags.map((t) => [t.data.name, t.data.tier])
+  );
 
   for (const tag of allTags) {
-    if (tag.data.parent && !tagNames.has(tag.data.parent)) {
+    const { name, tier, parent } = tag.data;
+
+    if (parent && !tagNames.has(parent)) {
       console.warn(
-        `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which does not exist`
+        `[tag-validation] Tag "${name}" has parent "${parent}" which does not exist`
       );
+      continue;
     }
-    if (tag.data.tier === 'primary' && tag.data.parent) {
+
+    if (tier === 'primary' && parent) {
       console.warn(
-        `[tag-validation] Primary tag "${tag.data.name}" should not have a parent`
+        `[tag-validation] Primary tag "${name}" should not have a parent`
       );
+      continue;
     }
-    if (tag.data.parent) {
-      const parentTag = allTags.find((t) => t.data.name === tag.data.parent);
-      if (parentTag && parentTag.data.tier !== 'primary') {
+
+    if (tier === 'secondary' && parent) {
+      const parentTier = tierByName.get(parent);
+      if (parentTier !== 'primary') {
         console.warn(
-          `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which is not a primary tag`
+          `[tag-validation] Secondary tag "${name}" has parent "${parent}" which is not a primary tag (tier: ${parentTier})`
+        );
+      }
+    }
+
+    if (tier === 'subtopic') {
+      if (!parent) {
+        console.warn(
+          `[tag-validation] Subtopic tag "${name}" has no parent — subtopic tags should parent to a secondary or primary tag`
+        );
+        continue;
+      }
+      const parentTier = tierByName.get(parent);
+      if (parentTier !== 'secondary' && parentTier !== 'primary') {
+        console.warn(
+          `[tag-validation] Subtopic tag "${name}" has parent "${parent}" which is not a secondary or primary tag (tier: ${parentTier})`
+        );
+      } else if (parentTier === 'primary') {
+        console.warn(
+          `[tag-validation] Subtopic tag "${name}" parents directly to primary tag "${parent}" — consider parenting to a secondary tag instead`
         );
       }
     }

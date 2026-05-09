@@ -989,6 +989,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     database: 'Databases',
     iot: 'IoT',
     design: 'Design',
+    mobile: 'Mobile',
+    // Subtopic tags
+    kotlin: 'Kotlin',
   },
   tagDescriptions: {
     // Primary tags
@@ -1015,6 +1018,11 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     database: 'SQL, NoSQL, MongoDB, and multi-database architecture.',
     iot: 'Internet of Things, sensors, hardware, and voice interfaces.',
     design: 'Visual design, branding, web design, and UX.',
+    mobile:
+      'Mobile development — Android, iOS, cross-platform frameworks, and the journey of learning to ship for handhelds.',
+    // Subtopic tags
+    kotlin:
+      'Kotlin language and ecosystem — Kotlin Multiplatform, Compose Multiplatform, Android, JVM tooling.',
   },
 
   // Series names and descriptions (keyed by series slug)
