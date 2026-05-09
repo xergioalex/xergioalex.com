@@ -85,7 +85,7 @@ En el proyecto de la universidad mi grupo lo conformábamos Camilo, Miguel y yo:
 <figcaption>Detalle de tres kihon con las fotos de la sesión al aire libre y la descripción del movimiento.</figcaption>
 </figure>
 
-Años después desempolvé mis archivos de la universidad, encontré el código fuente e incluso los APK originales de Android. Esos binarios ya no funcionan en equipos de ahora — las versiones nuevas del sistema los fueron dejando atrás —, pero pude rescatar la capa web: en el fondo, una app híbrida así es una web embebida dentro del contenedor móvil. Ese mismo frontend lo desplegué como sitio estático en [Cloudflare Pages](https://pages.cloudflare.com/) en [kdosensei.xergioalex.com](https://kdosensei.xergioalex.com/).
+Años después desempolvé mis archivos de la universidad, encontré el código fuente e incluso los APK originales de Android. Esos binarios ya no funcionan en equipos de ahora — las versiones nuevas del sistema los fueron dejando atrás —, pero pude rescatar la capa web: en el fondo, una app híbrida así es una web embebida dentro del contenedor móvil. Ese mismo frontend lo desplegué como sitio estático en [Cloudflare Pages](https://pages.cloudflare.com/) en [kdosensei.xergioalex.com](https://kdosensei.xergioalex.com/), y reuní los archivos recuperados en el repositorio [xergioalex/kdosensei](https://github.com/xergioalex/kdosensei) — una cápsula del tiempo de ese semestre, el equipo y el tooling híbrido, conservada en vez de perderse en un zip olvidado de algún disco viejo.
 
 No cerré el capítulo ahí. En los años siguientes probé [Ionic](https://ionicframework.com/) — mismo espíritu, mejor tooling, prototipos más rápidos —, **Meteor** empaquetado con Cordova (reactivo y tentador hasta que en producción se sentía frágil) y también algún experimento con **React Native**, más cercano a lo nativo pero con fricciones propias. Cada intento me enseñó el techo del anterior.
 
@@ -111,9 +111,7 @@ Una app web se ejecuta dentro del navegador, un entorno relativamente predecible
 
 No es que el desarrollo web no tenga complejidad — la tiene, sea backend o frontend. Es que la complejidad es diferente: el instinto que te formaste manejando peticiones o reactividad de componentes no se traslada directamente a este dominio, porque el runtime ya no es tuyo — es del sistema operativo.
 
-Es un patrón que voy a encontrar una y otra vez en esta serie: los instintos del desarrollo web son válidos, pero no se trasladan directamente. Parte de aprender mobile es aprender cuándo confiar en lo que ya sabes y cuándo ponerlo en pausa.
-
-Eso dicho: el framework sí importa. Y hay demasiados para elegir sin entender primero el terreno.
+Dicho esto: el framework sí importa, y es bueno entender primero el terreno antes de elegir.
 
 ## Cuatro categorías antes de la lista
 
