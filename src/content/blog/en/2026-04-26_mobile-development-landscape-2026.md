@@ -14,6 +14,8 @@ As a full stack developer, I've always tried to learn a bit of everything: backe
 
 Not because I hadn't tried.
 
+## My history with mobile development
+
 I remember my final university years — we're talking around fifteen years ago — when I needed to build a mobile app for an entrepreneurship course. Android Studio didn't exist yet; the official IDE was Eclipse with the ADT plugin, and it was too heavy for my humble laptop at the time. It wouldn't start, or it would start and eat all the memory, or it would get stuck compiling in a loop that felt eternal.
 
 Looking up screenshots from that era I found these gems — Eclipse Helios loading with the ADT plugin, the visual layout editor, and the emulator with its virtual physical keyboard. The flashbacks are immediate:
@@ -89,31 +91,23 @@ Years later I dug up my course files — source included — along with the orig
 
 I didn't close the book there. Over the years I tried [Ionic](https://ionicframework.com/) — same idea, better tooling, faster prototypes — **Meteor** bundled with Cordova (reactive and tempting until production felt fragile), and some experiments with **React Native**, closer to native but with its own friction. Each round taught me the ceiling of the last one.
 
-The problem arrived when I needed more than screens and copy. When a project needed real access to native pieces — camera, GPS, sensors, push — hybrid showed visible seams: a slow bridge or an API that simply wasn't there. If you layered complex animations or expected genuinely native UX, you still felt the web inside the shell; on modest hardware, performance fell apart fast. What "flew" in a desktop browser could land on a phone like a dressed-up web app — and users notice that gap.
+The problem arrived when I needed more than screens and copy. When a project needed real access to camera, GPS, sensors, or push, hybrid showed visible seams: a slow bridge or an API that simply wasn't there. Layer in animations or expect genuinely native UX and you still felt the web inside the shell; on modest hardware, performance fell apart fast. What "flew" in a desktop browser landed on a phone like a dressed-up web app — and users notice that gap.
 
-After that, I walked away from mobile development — more than once — and drifted back to what I already knew: APIs, servers, infrastructure, and databases. The phone went back into the "someday" drawer.
+After that, I walked away from mobile — more than once — and drifted back to what I already knew: APIs, servers, infrastructure, databases. The phone went back into the "someday" drawer.
 
-And that "again" is the important part — because it wasn't the first time and it wasn't the last. Every now and then I'd feel the urge to come back. I'd see a new framework, a demo that looked incredible, a tutorial that promised "build your first app in 30 minutes." But mobile development, unlike frontend or backend, requires a quantity of artifacts that when you see them all together — the certificates, the provisioning profiles, the emulators, the Gradle or Xcode configurations, the developer accounts — the impulse would die before I wrote a single line of code. In frontend you can open an HTML file and you're already running. In backend, three lines spin up a server. In mobile, before seeing "Hello World" on your phone you've already gone through three setup wizards and a Gradle error that sends you to Stack Overflow. The entry barrier wasn't intellectual. It was logistical. And logistics kills motivation faster than complexity.
+It wasn't the first time and it wasn't the last. Every so often a new framework, an incredible demo, or a "build your first app in 30 minutes" tutorial would pull me back. But mobile demands so many artifacts — certificates, provisioning profiles, emulators, Gradle or Xcode configs, developer accounts — that the impulse would die before the first line of code. In frontend you open an HTML file and you're running; in backend, three lines spin up a server; in mobile, before "Hello World" you've already cleared three setup wizards and a Gradle error that sends you to Stack Overflow. The barrier wasn't intellectual. It was logistical. And logistics kills motivation faster than complexity.
 
-This year I decided that was enough. Not because I have an urgent project that demands it — though there's something there — but because I wanted to understand the current state of the art. To find the best path for someone like me: a full stack developer with solid experience in backend, frontend, and infrastructure, but no expertise in mobile. My happy path — the one that gets me building apps intuitively, with the best possible standards, without having to fight the ecosystem just to get started.
-
-Before writing a single line of code, I sat down to understand the landscape. Because one of the most common mistakes people make when arriving from backend or web is assuming that mobile development is just "normal programming but on a phone." It isn't. State models are different. The lifecycle of screens works differently. The way you think about UI — who controls it, when it gets destroyed, how it persists — has its own logic. Before choosing a tool, I wanted to understand what I was getting into.
-
-This post is that state of the art I sat down to understand. I tell the same personal story — team, shoot, screenshots — with more visual runway in [this slide deck](/slides/mobile-landscape-2026/); here the focus is the technical map.
+This year I decided that was enough. Not because I have an urgent project — though there's something there — but because I wanted to understand the current state of the art and find my happy path: the one that lets me build apps with real standards without fighting the ecosystem just to get started. Before writing a single line, I sat down to understand the landscape — not out of curiosity, but because I wanted to know what I was getting into before picking a tool.
 
 ## The real problem isn't choosing a framework
 
-Before talking about options, you have to name the underlying problem. People arriving from web development — whether backend or frontend — tend to ask the wrong question: "what framework should I use?" The right question comes before that: "what's actually different about this domain?"
+People arriving from web tend to ask the wrong question: "what framework should I use?" The right one comes before that: "what's actually different about this domain?" The honest answer: quite a bit.
 
-The honest answer: quite a bit.
+A web app runs inside the browser — a tab, available memory, a URL that anchors state. If the tab closes, the user decided so. On mobile, that predictability disappears: the operating system decides when your app runs, when it backgrounds, and when it kills the process to free memory — without warning. The screen can be destroyed and recreated at any moment, and when it comes back you rehydrate state from persistent storage, not from memory. That lifecycle ramifies through every architectural decision: where you store data so it survives, who rehydrates it, how much time you have to serialize before the OS pulls the plug.
 
-A web app runs inside the browser, a relatively predictable environment: an open tab, available memory, a URL that anchors state. If the tab closes, the user decided so. On mobile, that predictability disappears. The operating system decides when your application runs, when it moves to the background, and when it terminates the process to free memory — without prior notice to your code. The screen the user sees can be destroyed and recreated at any moment, and when it comes back you have to rehydrate state from persistent storage, not from memory. That lifecycle has its own logic, and it ramifies through every architectural decision: where do you store data so it survives?, who rehydrates it when the screen comes back?, how much time do you have to serialize state before the operating system terminates the process?
+Web has complexity too — backend or frontend — but the complexity is different: the runtime isn't yours anymore, it's the operating system's. That said: the framework does matter, and it's worth understanding the terrain before choosing.
 
-It's not that web doesn't have complexity — it does, whether backend or frontend. It's that the complexity is different: the instinct you've built up handling requests or component reactivity doesn't transfer directly to this domain, because the runtime isn't yours anymore — it's the operating system's.
-
-That said: the framework does matter, and it's worth understanding the terrain before choosing.
-
-## Four categories before the list
+## The ecosystem, in four categories
 
 Before naming each option, it helps to establish the categories. The mobile ecosystem organizes into four fundamental types:
 
@@ -138,7 +132,7 @@ This classification will feel simple once we get into the details — and it is,
 
 ## Each option, without decoration
 
-Nine options: the ones worth considering in mobile development today, in 2026. One by one. What defines each, what it costs to use, and where it fits best.
+Eight options: the ones worth considering in mobile development today, in 2026. One by one. What defines each, what it costs to use, and where it fits best.
 
 ### Native Android — Kotlin + Jetpack Compose
 
@@ -154,49 +148,35 @@ Same logic, Apple side. [Swift](https://en.wikipedia.org/wiki/Swift_%28programmi
 
 Is that an advantage or a problem? Depends on who's asking. For apps with strong brand identity, for internal tools, for games — total control over rendering is valuable. For apps that need to feel like a proper native Android or iOS app — it's a real cost.
 
-[Flutter 3.41](https://docs.flutter.dev/release/whats-new) shipped on February 11, 2026. The package ecosystem on pub.dev is broad. The tooling — `flutter doctor`, DevTools, the VS Code and Android Studio plugins — is polished in a way that signals real Google commitment to the project.
-
 The honest tradeoff: Dart is a language that only exists for Flutter. If you ever step away, Dart doesn't follow. It's a bet on Google's ecosystem, not on a general-purpose language.
-
-### React Native
-
-Meta's bet that web developers shouldn't have to learn a new paradigm. The [React Native](https://reactnative.dev) tagline is direct: *"Learn once, write anywhere."* You write JavaScript or TypeScript and you get native UI — not a WebView, but components mapped to real native platform views.
-
-The New Architecture replaced the old bridge — the slow, asynchronous layer between JavaScript and native code — with JSI, a direct C++ interface. It's mandatory from version 0.82 and the default in [0.84](https://reactnative.dev/blog/2026/02/11/react-native-0.84). That makes React Native significantly faster and more reliable than its 2018 incarnation. If you already know React, this is the lowest-friction path to mobile.
-
-In October 2025, Meta donated React, React Native, and JSX to the [React Foundation](https://engineering.fb.com/2025/10/07/open-source/introducing-the-react-foundation-the-new-home-for-react-react-native/) — part of the Linux Foundation — making the project formally independent of any single company.
 
 ### Kotlin Multiplatform
 
 KMP is a fundamentally different bet. Where Flutter says "trust our renderer, write once," KMP says something different: share your logic, keep the UI native.
 
-JetBrains' positioning is explicit: *"share code across platforms while retaining the benefits of native programming."* In practice: you write your data models, business logic, networking, and storage in Kotlin — once. Each platform — Android, iOS — keeps its own native UI layer: Jetpack Compose on Android, SwiftUI on iOS. The platform feels native because the UI is.
+JetBrains' positioning is explicit: *"share code across platforms while retaining the benefits of native programming."* In practice: you write your data models, business logic, networking, and storage in Kotlin — once. Each platform — Android, iOS — keeps its own native UI layer: Jetpack Compose on Android, SwiftUI on iOS. The platform feels native because the UI is. And if at some point you want to share the UI too, Compose Multiplatform — the optional layer on top of KMP — lets you do that in Compose syntax.
 
-KMP has had a long journey since its [introduction in Kotlin 1.2 in 2017](https://www.droidcon.com/2022/09/29/kotlin-multiplatform-at-five-years/). It [declared stability in November 2023](https://blog.jetbrains.com/kotlin/2023/11/kotlin-multiplatform-stable/). Compose Multiplatform — the optional layer that lets you share UI too using Compose syntax — [reached stability for iOS in May 2025](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/), and [released version 1.10.0](https://blog.jetbrains.com/kotlin/2026/01/compose-multiplatform-1-10-0/) in January 2026.
+The question KMP leaves open — how much code can you actually share, and when does it make sense — is the most interesting one in the cross-platform ecosystem.
 
-The question KMP leaves open — how much code can you actually share, and when does it make sense — is the most interesting one in the cross-platform ecosystem. I won't answer it here: that's exactly what I'll explore in the next chapter.
+### React Native
+
+Meta's bet that web developers shouldn't have to learn a new paradigm. The [React Native](https://reactnative.dev) tagline is direct: *"Learn once, write anywhere."* You write JavaScript or TypeScript and you get native UI — not a WebView, but components mapped to real native platform views.
+
+The New Architecture replaced the old bridge — the slow, asynchronous layer between JavaScript and native code — with JSI, a direct C++ interface. If you already know React, this is the lowest-friction path to mobile.
+
+In October 2025, Meta donated React, React Native, and JSX to the [React Foundation](https://engineering.fb.com/2025/10/07/open-source/introducing-the-react-foundation-the-new-home-for-react-react-native/) — part of the Linux Foundation — making the project formally independent of any single company.
 
 ### Ionic + Capacitor
 
 A web app inside a native container. Your HTML, CSS, and JavaScript run in a WebView; [Capacitor](https://ionic.io/blog/announcing-capacitor-8) exposes a bridge to native device APIs. If you're a web developer who needs an app in the store, it's the path of least resistance. The tradeoff is honest: it feels like a web app because it is one. For many use cases that's fine. For others, it's not.
 
-Capacitor 8 was announced in December 2025 and [version 8.3.0](https://github.com/ionic-team/capacitor/releases) shipped on March 25, 2026.
-
 ### .NET MAUI
 
 Microsoft's cross-platform framework for the .NET ecosystem — [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui), the successor to Xamarin. Runs on Android, iOS, Windows, and macOS. If your team lives in C# and Visual Studio and already has .NET code, this is the natural landing place. For anyone coming from outside the Microsoft ecosystem, the entry point is higher with no clear benefit in return.
 
-[.NET MAUI 10](https://www.infoq.com/news/2026/03/net-11-preview2-maui/) shipped with .NET 10 in 2026.
-
-### Xamarin
-
-[Reached end of support](https://dotnet.microsoft.com/en-us/platform/support/policy/xamarin) on May 1, 2024. Microsoft pointed everyone toward .NET MAUI. There's no reason to start anything new on Xamarin.
-
 ### PWA — Progressive Web Apps
 
 A website you can install on the home screen. Works surprisingly well for content-first apps: no native compilation, no app store approval, one codebase for both web and mobile. [The limits arrive fast](https://en.wikipedia.org/wiki/Progressive_web_app) when you need real device integration — advanced camera access, Bluetooth, background processing — especially on iOS, where Safari remains more restrictive than Chrome for modern web APIs.
-
-For certain use cases, a PWA is the right answer. For what I want to build, it isn't.
 
 ## Before choosing: the landscape in a table
 
@@ -212,7 +192,6 @@ Before going deeper on the two options that interest me most, here's how they al
 | .NET MAUI | C# | Android, iOS, Windows, macOS | Native UI controls per platform via .NET abstraction | Microsoft | .NET/C# teams; enterprise apps already in the Microsoft ecosystem |
 | Ionic + Capacitor | HTML, CSS, JS/TS | Android, iOS, Web | WebViews inside a native shell | Ionic team | Web teams; existing web apps that need installable mobile presence |
 | PWA | HTML, CSS, JS | Any browser | Standard web UI (no native controls) | W3C / browser vendors | Content-first apps; teams that want installability without app store submission |
-| Xamarin | C# | — | — | Microsoft (deprecated) | **Do not start new projects on Xamarin.** EOL: May 2024. Migrate to .NET MAUI. |
 
 ## Why Flutter + KMP are the two serious options for me
 
