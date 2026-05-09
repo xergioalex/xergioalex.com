@@ -13,6 +13,7 @@ interface Props {
   heroLayout?: 'banner' | 'side-by-side' | 'minimal' | 'none';
   tags?: string[];
   topics?: string[];
+  subtopics?: string[];
   lang: Language;
   readingTimeMinutes: number;
 }
@@ -25,6 +26,7 @@ const {
   heroLayout = 'banner',
   tags,
   topics,
+  subtopics,
   lang,
   readingTimeMinutes,
 } = Astro.props;
@@ -81,6 +83,18 @@ const langPrefix = getUrlPrefix(lang);
             ))}
           </div>
         )}
+        {subtopics && subtopics.length > 0 && (
+          <div class="mt-1.5 flex flex-wrap justify-center gap-1.5">
+            {subtopics.map((sub) => (
+              <a
+                href={`${langPrefix}/blog/tag/${sub}/`}
+                class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+              >
+                {t.tagNames[sub] || sub}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -118,6 +132,18 @@ const langPrefix = getUrlPrefix(lang);
                 class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
               >
                 {t.tagNames[topic] || topic}
+              </a>
+            ))}
+          </div>
+        )}
+        {subtopics && subtopics.length > 0 && (
+          <div class="mt-1.5 flex flex-wrap gap-1.5">
+            {subtopics.map((sub) => (
+              <a
+                href={`${langPrefix}/blog/tag/${sub}/`}
+                class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+              >
+                {t.tagNames[sub] || sub}
               </a>
             ))}
           </div>
@@ -187,6 +213,18 @@ const langPrefix = getUrlPrefix(lang);
               ))}
             </div>
           )}
+          {subtopics && subtopics.length > 0 && (
+            <div class="mt-1.5 flex flex-wrap gap-1.5">
+              {subtopics.map((sub) => (
+                <a
+                  href={`${langPrefix}/blog/tag/${sub}/`}
+                  class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                >
+                  {t.tagNames[sub] || sub}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -224,6 +262,18 @@ const langPrefix = getUrlPrefix(lang);
               class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
             >
               {t.tagNames[topic] || topic}
+            </a>
+          ))}
+        </div>
+      )}
+      {subtopics && subtopics.length > 0 && (
+        <div class="mt-1.5 flex flex-wrap justify-center gap-1.5">
+          {subtopics.map((sub) => (
+            <a
+              href={`${langPrefix}/blog/tag/${sub}/`}
+              class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+            >
+              {t.tagNames[sub] || sub}
             </a>
           ))}
         </div>

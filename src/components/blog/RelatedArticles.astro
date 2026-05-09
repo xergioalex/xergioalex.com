@@ -25,13 +25,14 @@ const blogPrefix = getLocalizedUrl('/blog', lang);
 // prod builds filter draft/scheduled upstream via isPostVisibleInProduction.
 const postsWithGroupedTags = await Promise.all(
   posts.map(async (post) => {
-    const { primaryTags, topicTags } = await groupPostTags(
+    const { primaryTags, secondaryTags, subtopicTags } = await groupPostTags(
       post.data.tags || []
     );
     return {
       post,
       primaryTags,
-      topicTags,
+      secondaryTags,
+      subtopicTags,
       isScheduled: isScheduledPost(post),
       isDraft: isDraftPost(post),
     };
@@ -51,7 +52,7 @@ const postsWithGroupedTags = await Promise.all(
         </p>
       </div>
       <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {postsWithGroupedTags.map(({ post, primaryTags, topicTags, isScheduled, isDraft }) => {
+        {postsWithGroupedTags.map(({ post, primaryTags, secondaryTags, subtopicTags, isScheduled, isDraft }) => {
           const postSlug = getPostSlug(post.id);
           const href = `${blogPrefix}/${postSlug}/`;
           return (
@@ -96,7 +97,7 @@ const postsWithGroupedTags = await Promise.all(
                     </span>
                   )}
                 </div>
-                {(primaryTags.length > 0 || topicTags.length > 0) && (
+                {(primaryTags.length > 0 || secondaryTags.length > 0 || subtopicTags.length > 0) && (
                   <div class="flex flex-wrap gap-1">
                     {primaryTags.slice(0, 3).map((tag) => (
                       <a
@@ -106,12 +107,20 @@ const postsWithGroupedTags = await Promise.all(
                         #{t.tagNames[tag] || tag}
                       </a>
                     ))}
-                    {topicTags.slice(0, 2).map((topic) => (
+                    {secondaryTags.slice(0, 2).map((topic) => (
                       <a
                         href={`${blogPrefix}/tag/${topic}/`}
                         class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
                       >
                         {t.tagNames[topic] || topic}
+                      </a>
+                    ))}
+                    {subtopicTags.slice(0, 2).map((sub) => (
+                      <a
+                        href={`${blogPrefix}/tag/${sub}/`}
+                        class="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 transition-colors hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+                      >
+                        {t.tagNames[sub] || sub}
                       </a>
                     ))}
                   </div>

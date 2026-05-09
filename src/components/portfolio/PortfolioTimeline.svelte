@@ -27,6 +27,7 @@ interface SeriesPosition {
 export let posts: PostData[] = [];
 export let lang: Language = 'en';
 export let topicTagNames: string[] = [];
+export let subtopicTagNames: string[] = [];
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);

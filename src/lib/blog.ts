@@ -11,8 +11,12 @@ export interface SearchIndexEntry {
   title: string;
   description: string;
   pubDate: string;
+  /** Primary-tier tag slugs only. */
   tags: string[];
+  /** Secondary-tier tag slugs only (no longer merged with subtopic). */
   topics: string[];
+  /** Subtopic-tier tag slugs (tier 3). */
+  subtopics: string[];
   heroImage?: string;
 
   series?: string;
@@ -29,7 +33,7 @@ export interface TimelineCardEntry {
   title: string;
   description: string;
   pubDate: string;
-  /** All post tags (primary + subtopic combined). Callers derive topics client-side via topicTagNames. */
+  /** All post tag slugs (every tier). Callers derive tier groups client-side via topicTagNames + subtopicTagNames. */
   tags: string[];
   heroImage?: string;
 
@@ -326,23 +330,29 @@ export async function getTagTier(
 }
 
 /**
- * Split a post's tags into primary and secondary groups using the tags collection.
+ * Split a post's tags into primary, secondary, and subtopic groups using the tags collection.
+ * Tags whose tier cannot be resolved fall back to `primaryTags`.
  */
-export async function groupPostTags(
-  tags: string[]
-): Promise<{ primaryTags: string[]; topicTags: string[] }> {
+export async function groupPostTags(tags: string[]): Promise<{
+  primaryTags: string[];
+  secondaryTags: string[];
+  subtopicTags: string[];
+}> {
   const tierMap = await getTagTierMap();
   const primaryTags: string[] = [];
-  const topicTags: string[] = [];
+  const secondaryTags: string[] = [];
+  const subtopicTags: string[] = [];
   for (const tag of tags) {
     const tier = tierMap.get(tag) || 'primary';
-    if (tier === 'secondary' || tier === 'subtopic') {
-      topicTags.push(tag);
+    if (tier === 'secondary') {
+      secondaryTags.push(tag);
+    } else if (tier === 'subtopic') {
+      subtopicTags.push(tag);
     } else {
       primaryTags.push(tag);
     }
   }
-  return { primaryTags, topicTags };
+  return { primaryTags, secondaryTags, subtopicTags };
 }
 
 /**
@@ -361,7 +371,8 @@ async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
   return Promise.all(
     visiblePosts.map(async (post) => {
       const allTags = post.data.tags || [];
-      const { primaryTags, topicTags } = await groupPostTags(allTags);
+      const { primaryTags, secondaryTags, subtopicTags } =
+        await groupPostTags(allTags);
       const seriesPosition = seriesPositionById.get(post.id);
       const seriesSlug = post.data.series;
       return {
@@ -372,7 +383,8 @@ async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
         description: post.data.description,
         pubDate: post.data.pubDate.toISOString(),
         tags: primaryTags,
-        topics: topicTags,
+        topics: secondaryTags,
+        subtopics: subtopicTags,
         heroImage: post.data.heroImage,
         series: seriesSlug,
         seriesOrder: post.data.seriesOrder,

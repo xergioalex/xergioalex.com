@@ -29,6 +29,9 @@ const topicTagNames = allTags
     (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
   )
   .map((tag) => tag.data.name);
+const subtopicTagNames = allTags
+  .filter((tag) => tag.data.tier === 'subtopic')
+  .map((tag) => tag.data.name);
 
 const allPosts = await getSeriesTimelineIndex(slug, lang);
 const initialPosts = allPosts.slice(0, BLOG_PAGE_SIZE);
@@ -78,6 +81,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         pageSize={BLOG_PAGE_SIZE}
         emptyStateMessage={t.seriesPage.emptyState}
         {topicTagNames}
+        {subtopicTagNames}
         shareUrl={canonicalURL.href}
       />
     </div>

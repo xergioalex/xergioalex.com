@@ -34,6 +34,10 @@ $: topicTags = tagsResult
   )
   .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   .map((tag) => tag.data.name);
+$: subtopicTags = tagsResult
+  .filter((tag) => tag.data.tier === 'subtopic')
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .map((tag) => tag.data.name);
 
 let searchQuery = '';
 let searchResults = [];
@@ -298,7 +302,7 @@ onMount(() => {
       <p class="mt-2 text-gray-600 dark:text-gray-300">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} topicTagNames={topicTags} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} topicTagNames={topicTags} subtopicTagNames={subtopicTags} />
     {#if searchPagination.totalPages > 1}
       <BlogPagination
         currentPage={searchPagination.currentPage}
@@ -318,6 +322,7 @@ onMount(() => {
       {currentTag}
       {lang}
       topicTagNames={topicTags}
+      subtopicTagNames={subtopicTags}
     />
 
     {#if totalPages > 1}

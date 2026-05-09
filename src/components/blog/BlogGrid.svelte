@@ -10,6 +10,7 @@ export const totalPages = 1;
 export const currentTag = undefined;
 export let lang = 'en';
 export let topicTagNames = [];
+export let subtopicTagNames = [];
 
 $: t = getTranslations(lang);
 </script>
@@ -17,7 +18,7 @@ $: t = getTranslations(lang);
 {#if posts && posts.length > 0}
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
     {#each posts as post (post.id || post.slug || post.title)}
-      <BlogCard {post} {lang} {topicTagNames} />
+      <BlogCard {post} {lang} {topicTagNames} {subtopicTagNames} />
     {/each}
   </div>
 {:else}

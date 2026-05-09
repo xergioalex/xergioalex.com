@@ -36,6 +36,9 @@ const topicTagNames = allTags
     (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
   )
   .map((tag) => tag.data.name);
+const subtopicTagNames = allTags
+  .filter((tag) => tag.data.tier === 'subtopic')
+  .map((tag) => tag.data.name);
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -142,6 +145,7 @@ const breadcrumbSchema = {
         apiEndpoint={timelineApiEndpoint}
         {lang}
         {topicTagNames}
+        {subtopicTagNames}
         pageSize={BLOG_PAGE_SIZE}
         pageName="dailybot"
         emptyStateMessage={t.dailybotPage.emptyState}

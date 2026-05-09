@@ -11,6 +11,7 @@ export let totalCount: number = 0;
 export let apiEndpoint: string;
 export let lang: Language = 'en';
 export let topicTagNames: string[] = [];
+export let subtopicTagNames: string[] = [];
 export let pageSize: number = 30;
 /** Page identifier for analytics events (e.g. "techtalks", "dailybot") */
 export let pageName: string = 'timeline';

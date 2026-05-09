@@ -17,6 +17,7 @@ export let seriesHeroImage: string | undefined = undefined;
 export let pageSize: number = 30;
 export let emptyStateMessage: string = '';
 export let topicTagNames: string[] = [];
+export let subtopicTagNames: string[] = [];
 export let shareUrl: string = '';
 
 let heroDialog: HTMLDialogElement;
