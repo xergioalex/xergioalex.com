@@ -125,7 +125,7 @@ $: availableText = t.articlesAvailable(totalPosts);
     {#each subtopicTags as sub}
       <a
         href={`${basePrefix}/blog/tag/${sub}/`}
-        class={`inline-flex items-center rounded px-2 py-0.5 font-mono text-[13px] transition-colors ${
+        class={`inline-flex items-center rounded px-2 py-0.5 text-xs transition-colors ${
           currentTag === sub
             ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
             : "bg-gray-50 text-gray-700 border border-dashed border-gray-300 hover:bg-gray-100 hover:border-gray-500 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-400 dark:hover:text-gray-100"
