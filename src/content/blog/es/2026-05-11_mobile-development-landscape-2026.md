@@ -1,9 +1,9 @@
 ---
 title: "Desarrollo mobile en 2026: estado del arte y por dónde empezar hoy"
 description: "Estado del arte del desarrollo mobile en 2026: las opciones disponibles, cómo funciona cada una y por dónde tiene sentido empezar hoy."
-draft: true
-pubDate: "2026-04-26"
-heroLayout: "none"
+pubDate: "2026-05-11"
+heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero-es.webp"
+heroLayout: "side-by-side"
 tags: ["tech", "mobile"]
 keywords: ["desarrollo mobile 2026", "frameworks mobile", "Flutter", "Kotlin Multiplatform", "KMP", "Android iOS", "React Native", "desarrollo multiplataforma", "aprender mobile", "panorama mobile"]
 series: "learning-mobile-development"
@@ -61,15 +61,6 @@ Así que empecé a buscar alternativas. [PhoneGap](https://en.wikipedia.org/wiki
 En el proyecto de la universidad mi grupo lo conformábamos Camilo, Miguel y yo: los dos son buenos amigos desde la carrera. Miguel practicaba karate entonces; hicimos una sesión de fotos y empaquetamos el material en una app sencilla de instructor — un asistente para repasar y aprender desde el móvil. La llamamos **KDoSensei**. El MVP era simple y, con la perspectiva de hoy, arcaico: hace casi quince años las interfaces no tenían el pulido actual; aun así era funcional.
 
 <figure>
-<img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-hero.webp"
-     alt="Marca del proyecto KDoSensei: karateka en gi con cinturón verde en posición de bloqueo y el nombre en tipografía blanca sobre fondo negro"
-     width="1024"
-     height="522"
-     loading="lazy" />
-<figcaption>Identidad visual del proyecto: contraste blanco y negro con el cinturón verde como único color de acento.</figcaption>
-</figure>
-
-<figure>
 <img src="/images/blog/posts/mobile-development-landscape-2026/kdosensei-screens-overview.webp"
      alt="Tres capturas de KDoSensei: inicio con Karate y Defensa Personal, menú de Karate con Historia, Glosario y Guías, y lista de guías por color de cinturón"
      width="1024"
@@ -101,7 +92,7 @@ Este año decidí que ya era suficiente. No porque tenga un proyecto urgente —
 
 ## El problema real no es elegir el framework
 
-Quien llega desde la web tiende a hacer la pregunta equivocada: "¿qué framework uso?". La correcta viene antes: "¿qué tiene de diferente este dominio?". La respuesta honesta: bastante.
+Quien llega desde la web tiende a enfocarse primero en lo menos importante: "¿qué framework uso?". Pero la pregunta que vale la pena viene antes: "¿qué tiene de diferente este dominio?". La respuesta honesta: bastante.
 
 Una app web se ejecuta dentro del navegador — una pestaña, memoria disponible, una URL que ancla el estado. Si se cierra, lo decidió el usuario. En móvil esa predictibilidad desaparece: el sistema operativo decide cuándo corre tu app, cuándo pasa a segundo plano y cuándo termina el proceso para liberar memoria, sin avisarte. La pantalla puede destruirse y recrearse en cualquier momento, y cuando vuelva tienes que rehidratar el estado desde almacenamiento persistente, no desde memoria. Ese ciclo de vida ramifica cada decisión arquitectónica: dónde guardas los datos para que sobrevivan, quién los rehidrata, cuánto margen tienes para serializar antes de que el sistema operativo te corte.
 
@@ -178,79 +169,104 @@ La apuesta cross-platform de Microsoft para el ecosistema .NET — [.NET MAUI](h
 
 Un sitio web que se puede instalar en la pantalla principal. Funciona sorprendentemente bien para apps orientadas a contenido: sin compilación nativa, sin aprobación de tienda, una sola base de código para web y móvil. [Los límites llegan rápido](https://en.wikipedia.org/wiki/Progressive_web_app) cuando necesitas integración real con el dispositivo — acceso avanzado a cámara, Bluetooth, procesamiento en segundo plano — sobre todo en iOS, donde Safari sigue más restringido que Chrome para APIs web modernas.
 
-## Antes de elegir: el panorama en una tabla
+## El panorama completo en una tabla
 
-Antes de ir más a fondo sobre las dos opciones que más me interesan, aquí está cómo se ven todas juntas contra los criterios que me importan. Una advertencia: esta tabla representa mi lectura del panorama desde la documentación y los changelogs. No desde el uso real. Después de meses con dos de ellas, la tabla va a verse diferente en mi cabeza.
+Con tantas opciones sobre la mesa, vale la pena ponerlas lado a lado y ver cómo se comparan contra los criterios que más pesan — demos un vistazo.
 
-| Opción | Lenguaje(s) | Plataformas | Enfoque de UI | Mantenida por | Mejor para |
-|---|---|---|---|---|---|
-| Android nativo | Kotlin + Jetpack Compose | Android | 100% UI nativa Android | Google | Apps solo Android; equipos que viven en el ecosistema Android |
-| iOS nativo | Swift + SwiftUI | Plataformas Apple | 100% UI nativa Apple | Apple | Apps solo iOS/macOS; equipos que solo publican en Apple |
-| Kotlin Multiplatform | Kotlin | Android, iOS, Desktop, Web | Lógica compartida; UI nativa por plataforma (o Compose Multiplatform para UI compartida) | JetBrains + Google | Equipos que quieren lógica compartida con UI de calidad nativa por plataforma |
-| Flutter | Dart | Android, iOS, Web, Desktop | Motor de renderizado propio (Impeller) — misma UI en todas las plataformas | Google | Equipos que quieren una sola base de código UI; prototipado cross-platform rápido |
-| React Native | JavaScript / TypeScript | Android, iOS | Mapea componentes JS a vistas nativas | React Foundation (Meta + comunidad) | Equipos web que pasan a mobile; codebases React/JS existentes |
-| .NET MAUI | C# | Android, iOS, Windows, macOS | Controles UI nativos por plataforma vía abstracción .NET | Microsoft | Equipos .NET/C#; apps enterprise en el ecosistema Microsoft |
-| Ionic + Capacitor | HTML, CSS, JS/TS | Android, iOS, Web | WebViews dentro de un contenedor nativo | Equipo de Ionic | Equipos web; apps web existentes que necesitan presencia mobile instalable |
-| PWA | HTML, CSS, JS | Cualquier navegador | UI web estándar (sin controles nativos) | W3C / fabricantes de navegadores | Apps orientadas a contenido; equipos que quieren instalabilidad sin tienda |
+<div class="table-responsive">
+<table>
+<thead>
+<tr><th>Opción</th><th>Lenguaje(s)</th><th>Plataformas</th><th>Enfoque de UI</th><th>Mantenida por</th><th>Mejor para</th></tr>
+</thead>
+<tbody>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-android.webp" alt="" width="22" height="22" style="margin:0;" /> Android nativo</span></td><td>Kotlin + Jetpack Compose</td><td>Android</td><td>100% UI nativa Android</td><td>Google</td><td>Apps solo Android; equipos que viven en el ecosistema Android</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-ios.webp" alt="" width="22" height="22" style="margin:0;" /> iOS nativo</span></td><td>Swift + SwiftUI</td><td>Plataformas Apple</td><td>100% UI nativa Apple</td><td>Apple</td><td>Apps solo iOS/macOS; equipos que solo publican en Apple</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-kotlin.webp" alt="" width="22" height="22" style="margin:0;" /> Kotlin Multiplatform</span></td><td>Kotlin</td><td>Android, iOS, Desktop, Web</td><td>Lógica compartida; UI nativa por plataforma (o Compose Multiplatform para UI compartida)</td><td>JetBrains + Google</td><td>Equipos que quieren lógica compartida con UI de calidad nativa por plataforma</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-flutter.webp" alt="" width="22" height="22" style="margin:0;" /> Flutter</span></td><td>Dart</td><td>Android, iOS, Web, Desktop</td><td>Motor de renderizado propio (Impeller) — misma UI en todas las plataformas</td><td>Google</td><td>Equipos que quieren una sola base de código UI; prototipado cross-platform rápido</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-react-native.webp" alt="" width="22" height="22" style="margin:0;" /> React Native</span></td><td>JavaScript / TypeScript</td><td>Android, iOS</td><td>Mapea componentes JS a vistas nativas</td><td>React Foundation (Meta + comunidad)</td><td>Equipos web que pasan a mobile; codebases React/JS existentes</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-dotnet-maui.webp" alt="" width="22" height="22" style="margin:0;" /> .NET MAUI</span></td><td>C#</td><td>Android, iOS, Windows, macOS</td><td>Controles UI nativos por plataforma vía abstracción .NET</td><td>Microsoft</td><td>Equipos .NET/C#; apps enterprise en el ecosistema Microsoft</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-ionic.webp" alt="" width="22" height="22" style="margin:0;" /> Ionic + Capacitor</span></td><td>HTML, CSS, JS/TS</td><td>Android, iOS, Web</td><td>WebViews dentro de un contenedor nativo</td><td>Equipo de Ionic</td><td>Equipos web; apps web existentes que necesitan presencia mobile instalable</td></tr>
+<tr><td><span style="display:inline-flex;align-items:center;gap:0.4em;"><img src="/images/slides/mobile-landscape-2026/logo-pwa.webp" alt="" width="22" height="22" style="margin:0;" /> PWA</span></td><td>HTML, CSS, JS</td><td>Cualquier navegador</td><td>UI web estándar (sin controles nativos)</td><td>W3C / fabricantes de navegadores</td><td>Apps orientadas a contenido; equipos que quieren instalabilidad sin tienda</td></tr>
+</tbody>
+</table>
+</div>
 
-## Por qué Flutter + KMP son las dos opciones serias para mí
+## Las dos apuestas más serias para empezar
 
-Descarté el resto bastante rápido. El razonamiento:
+Analizando las opciones del panorama, he descartado varias buscando algo que me permita ir ágil, en un ecosistema serio y con una base técnica que escale a largo plazo:
 
-**Android/iOS nativo:** La respuesta solo tiene sentido si ya sabes para cuál de las dos plataformas estás construyendo. Yo no lo sé todavía — quiero llegar a las dos. Irme a nativo significaría aprender dos lenguajes, dos modelos de UI, dos ecosistemas. Es la respuesta correcta para muchos equipos. No para mí empezando desde cero.
+**Android/iOS nativo:** Solo tiene sentido si ya se sabe para cuál de las dos plataformas se construye. Si el objetivo es llegar a ambas, ir nativo significa aprender dos lenguajes, dos modelos de UI, dos ecosistemas completos. Es la respuesta correcta para muchos equipos — no es el punto de entrada más eficiente para quien empieza desde cero.
 
-**Ionic/Capacitor:** Ya pasé por esto. PhoneGap, Cordova, Meteor, Ionic — me sirvieron hace quince años para salir del paso en la universidad, pero el tradeoff lo viví en carne propia: cuando necesitas que la app se sienta nativa, el híbrido no llega. Si ya tienes una app web y quieres llevarla a la tienda, es un camino válido. Pero yo estoy construyendo desde cero, y esta vez quiero hacerlo bien.
+**Ionic/Capacitor:** Yo pasé por esto. PhoneGap, Cordova, Meteor, Ionic — me sirvieron hace quince años para salir del paso en la universidad, pero el tradeoff lo viví en carne propia: cuando necesitas que la app se sienta nativa, el híbrido no llega. Si ya existe una app web y el objetivo es llevarla a la tienda, es un camino válido. Pero para construir desde cero con estándares actuales, hay mejores opciones.
 
-**.NET MAUI:** No vivo en el ecosistema C#. No hay razón para empezar ahí.
+**.NET MAUI:** A menos que el equipo ya viva en el ecosistema C#/.NET, no hay razón de peso para empezar ahí.
 
-**PWA:** Para el proyecto que tengo en mente, necesito acceso real al dispositivo. Una PWA no llega ahí.
+**PWA:** Para proyectos que requieren acceso real al dispositivo — cámara, sensores, notificaciones push — una PWA no llega.
 
-**React Native:** Es una opción seria. La Nueva Arquitectura la hizo una plataforma mucho más sólida de lo que era. Si ya tuviera una base de código React grande, el cálculo cambiaría. Pero no la tengo, y el ecosistema Dart/Flutter o Kotlin para alguien que no llega del mundo JS tiene más coherencia como punto de entrada.
+**React Native:** Es una opción seria. La Nueva Arquitectura la hizo una plataforma mucho más sólida de lo que era. Si ya existe una base de código React grande, el cálculo cambia. Pero trabajar con React/JS para mobile sigue sin sentirse lo suficientemente nativo — al final sigues en un puente entre JavaScript y las APIs de la plataforma, y esa capa intermedia se nota.
 
-Eso deja dos.
+Eso deja dos opciones con mucho sentido para cualquiera que quiera empezar en un ecosistema ágil y serio: **Flutter** y **Kotlin Multiplatform**. Ambas combinan alcance cross-platform real, un gran respaldo corporativo, una comunidad seria y una filosofía técnica que no se siente como un parche — sino como una apuesta de largo plazo.
 
-### Flutter: el camino más directo al primer resultado
+### Dos filosofías, un mismo camino
 
-Flutter es probablemente el punto de entrada más directo para alguien que viene de fuera del mobile. La razón no es Dart — Dart está bien, pero no es en sí mismo una razón. La razón es que Flutter elimina una categoría entera de confusión: las diferencias de UI entre plataformas.
+Flutter y KMP persiguen el mismo objetivo — desarrollo mobile cross-platform — pero lo atacan desde filosofías opuestas.
 
-Cuando escribes una app en Flutter, los widgets que construyes se ven igual en Android y en iOS porque Flutter los renderiza ella misma a través de Impeller. No necesitas entender UIKit ni el sistema de Views de Android. Aprendes el árbol de widgets, aprendes manejo de estado — hay buenas opciones: librerías como Riverpod o Bloc, o el enfoque incorporado con `setState` — y construyes. El ciclo de retroalimentación es rápido. El hot reload funciona de verdad.
+**Flutter:** *"Confía en nuestro renderer, escribe una vez."* Dart como lenguaje, el motor [Impeller](https://docs.flutter.dev/perf/impeller) como renderer gráfico, la misma UI en todas las plataformas. Hot reload instantáneo. Ecosistema maduro con [pub.dev](https://pub.dev) y una comunidad consolidada.
 
-El ecosistema es maduro. Flutter 3.41 — lanzado el 11 de febrero de 2026 — llegó tres años después del inicio de la era estable. El ecosistema de paquetes en pub.dev ya tiene lo que necesitarías para la mayoría de integraciones.
+**KMP:** *"Comparte la lógica, mantén la UI nativa."* Kotlin como capa compartida para modelos de datos, networking, almacenamiento y lógica de negocio. UI nativa por plataforma — Jetpack Compose en Android, SwiftUI en iOS. [Compose Multiplatform llegó a estabilidad para iOS en mayo de 2025](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/), así que la opción de compartir también la UI existe. Según el [JetBrains Developer Ecosystem Survey](https://kotlinlang.org/docs/multiplatform/multiplatform-reasons-to-try.html), el uso de KMP creció del 7% al 18% en un solo año. [Netflix, Philips, Cash App y Quizlet](https://blog.jetbrains.com/kotlin/2023/11/kotlin-multiplatform-stable/) ya lo usan en producción.
 
-Para un desarrollador que quiere ir de "nunca he publicado una app mobile" a "tengo algo corriendo en Android y en iOS lo más rápido posible" — Flutter es el camino más directo.
+La diferencia entre ambos se entiende mejor mirando cómo organizan el código y cómo fluye la UI desde el código hasta la pantalla.
 
-El tradeoff honesto: Dart es un lenguaje que solo existe para Flutter. Si me alejo de Flutter, el conocimiento de Dart no viaja conmigo. La uniformidad de UI también es una apuesta filosófica — tu app va a verse como una app Flutter, no como una app Android ni como una app iOS. Para ciertos casos de uso eso está bien. Para apps que necesitan sentirse en casa en cada plataforma, es un costo real.
+<figure>
+<img src="/images/slides/mobile-landscape-2026/flutter-vs-kmp-structure-es.webp"
+     alt="Comparativa de estructura de carpetas: Flutter con un solo directorio lib/ vs KMP con shared/, androidApp/ y iosApp/ como tres bloques coordinados"
+     width="980"
+     height="551"
+     loading="lazy" />
+<figcaption>Estructura de carpetas: Flutter mantiene todo en <code>lib/</code>. KMP separa en tres bloques — <code>shared/</code> para lógica común, <code>androidApp/</code> con Jetpack Compose, <code>iosApp/</code> con SwiftUI.</figcaption>
+</figure>
 
-### KMP: la apuesta más sólida para el largo plazo
+<figure>
+<img src="/images/slides/mobile-landscape-2026/flutter-vs-kmp-architecture-es.webp"
+     alt="Diagrama de arquitectura interna: Flutter con un motor Impeller que dibuja toda la UI vs KMP con UI nativa por plataforma y lógica compartida en Kotlin"
+     width="980"
+     height="551"
+     loading="lazy" />
+<figcaption>Arquitectura interna: Flutter pasa todo por su motor gráfico (Impeller). KMP deja que cada plataforma dibuje su propia UI y solo comparte la lógica de negocio.</figcaption>
+</figure>
 
-KMP es una apuesta fundamentalmente diferente. Donde Flutter dice "confía en nuestro renderer, escribe una vez", KMP dice algo distinto: comparte tu lógica, mantén la UI nativa.
+### Lo mejor de cada uno
 
-La distinción arquitectónica más importante es esta: KMP no reemplaza la UI nativa — vive debajo de ella. Tu capa de Android sigue siendo Jetpack Compose. Tu capa de iOS sigue siendo SwiftUI. Lo que compartes es la lógica de negocio — modelos de datos, networking, almacenamiento, reglas de dominio. La plataforma se siente como ella misma porque la UI es nativa de verdad.
+**Flutter:**
 
-Compose Multiplatform — la capa opcional de JetBrains sobre KMP — va más lejos: te permite compartir también la UI en sintaxis Compose, para Android, iOS, Desktop y Web. [Llegó a estabilidad para iOS en mayo de 2025](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/). Así que si quieres el estilo Flutter de "una sola base de código UI", KMP puede hacer eso ahora. Si prefieres UI nativa por plataforma, también puede hacer eso. Es más flexible — lo que también significa más decisiones.
+- Hot reload instantáneo — iteración ultrarrápida
+- Una sola UI para todas las plataformas
+- Ecosistema maduro (pub.dev, plugins, comunidad)
+- Motor Impeller — 60fps consistentes
+- No solo mobile — también exporta a web y desktop (Windows, macOS, Linux) desde la misma base de código
 
-La señal de adopción es fuerte. Según el [JetBrains Developer Ecosystem Survey](https://kotlinlang.org/docs/multiplatform/multiplatform-reasons-to-try.html), el uso de KMP creció del 7% al 18% de los desarrolladores en un año. Google ha estado migrando sus propias librerías Jetpack a KMP — Room, DataStore, ViewModel, Lifecycle. [Netflix, Philips, Cash App y Quizlet](https://blog.jetbrains.com/kotlin/2023/11/kotlin-multiplatform-stable/) son usuarios en producción.
+**KMP:**
 
-El tradeoff honesto: la curva de aprendizaje es más pronunciada. Trabajas en Kotlin — un lenguaje excelente, pero si no lo conoces ya estás aprendiendo eso también. El tooling para iOS, aunque está mejorando, implica una integración con Xcode que puede ser frustrante al principio. La documentación tiene huecos en los bordes.
+- UI 100% nativa en cada plataforma
+- Lógica compartida, sin comprometer la UX
+- Respaldo de JetBrains + soporte oficial de Google
+- Adopción migrable — se integra en apps existentes
+- Con Compose Multiplatform, también alcanza desktop y web — mismo Kotlin, mismas abstracciones
 
-Pero para un desarrollador con experiencia en backend o en el ecosistema Java/Kotlin, la rampa es más corta de lo que parece desde afuera. Y la filosofía arquitectónica — comparte la lógica, mantén la UI nativa — describe cómo funcionan en la práctica la mayoría de las apps en producción.
+Ambos son apuestas sólidas — pero resuelven problemas distintos. Y ambos van más allá del móvil: las dos plataformas apuntan a ser soluciones multiplataforma completas que cubren mobile, desktop y web desde un solo ecosistema.
 
-Si eso se sostiene en la realidad o solo suena bien en el papel, es la pregunta que viene después.
+## El mejor momento para empezar es ahora
 
-## Lo que no sé todavía
+Años atrás, entrar al desarrollo mobile cross-platform significaba apostar en herramientas inmaduras, ecosistemas fragmentados y documentación incompleta. Hoy el panorama es radicalmente distinto.
 
-Honestamente: no sé cuál de las dos voy a terminar eligiendo.
+Flutter tiene un motor gráfico propio que rinde a 60fps consistentes, un ecosistema de paquetes con miles de integraciones listas, y una comunidad que resuelve problemas en tiempo real. KMP tiene el respaldo de JetBrains y Google, empresas como McDonald's, Netflix y Airbnb validándolo en producción, y una arquitectura que respeta la UI nativa de cada plataforma.
 
-Las dos son apuestas serias. Las dos tienen filosofías coherentes. Las dos tienen producción real detrás. La diferencia no es que una sea objetivamente mejor — es que responden preguntas distintas sobre qué significa "cross-platform".
+Lo que antes requería equipos dedicados por plataforma — con presupuestos y timelines separados — hoy lo puede hacer un desarrollador con la herramienta correcta. No es exageración: la barrera de entrada nunca fue tan baja, y la calidad del resultado nunca fue tan alta.
 
-Flutter dice: una base de código, un motor de renderizado, UI consistente en todas partes. El precio es Dart, un renderer propio, y una UI que no pertenece del todo a ninguna plataforma.
+Y hay un acelerador que cambia las reglas todavía más: los agentes de IA. En la [serie sobre trabajar con agentes](/es/blog/series/working-with-agents/) lo he explorado a fondo — hoy es posible pasar de una idea a una implementación funcional en una fracción del tiempo que tomaba antes. Un agente puede generar scaffolding, resolver errores de compilación, sugerir patrones de arquitectura y hasta escribir tests mientras iteras sobre la UI. Eso aplicado al desarrollo mobile — donde el ciclo de build, deploy y prueba siempre fue lento — es un multiplicador brutal de productividad.
 
-KMP dice: una base de código para la lógica, UI nativa por plataforma. El precio es más complejidad, más código cuando apuntas a las dos plataformas, y un umbral de entrada más alto para empezar.
+Si vienes del backend, del frontend web, o simplemente quieres construir algo que corra en un teléfono — las herramientas están listas, los ecosistemas están maduros, y ahora además tienes agentes que acortan la distancia entre la idea y el código funcionando. Hay suficiente producción real detrás de ambas opciones como para saber que no estás apostando en el vacío.
 
-Para alguien que está aprendiendo, Flutter es probablemente el comienzo más rápido. El ciclo de retroalimentación es más corto. El momento de "tengo algo corriendo" llega antes. Para alguien que está construyendo software en producción que necesita coexistir con codebases nativos — o que necesita sentirse en casa en cada plataforma — KMP es la elección más defendible a largo plazo.
-
-Esta serie va a ir profundo en KMP primero. Ahí aterrizó mi curiosidad. Pero este capítulo no es el veredicto.
-
-Lo que sí sé: no estoy aquí solo para entender el panorama. Quiero construir algo que corra en mi teléfono — algo que todavía no tiene nombre en este capítulo, pero existe. El destino de esta serie no es un documento de comparación. La documentación no es el código. Y el código es lo que vine a escribir.
+La pregunta ya no es *si* vale la pena aprender desarrollo mobile. La pregunta es qué vas a construir primero.
 
 A seguir construyendo.
