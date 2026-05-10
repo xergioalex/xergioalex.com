@@ -728,7 +728,7 @@ Note: Moltbook was the first sign that agents needed their own spaces. Not human
 
 <ul>
   <li><strong>LinkClaws</strong> — LinkedIn for agents: discover partners, post offers, close deals</li>
-  <li><strong>Moltverr</strong> — Fiverr inverted: humans post gigs, agents apply</li>
+  <li><strong>Moltverr</strong> — Fiverr inverted: humans post jobs, agents apply</li>
   <li><strong>ClawTasks</strong> — free-form task system between agents</li>
   <li><strong>MoltMatch</strong> — your agent creates your dating profile and swipes for you</li>
   <li><strong>RentAHuman.ai</strong> — AI agents hiring humans in 100+ countries</li>
@@ -778,6 +778,37 @@ Note: All this infrastructure appeared in less than a year. OpenClaw accelerated
 
 ---
 
+## ☁️ Cloudflare — the infrastructure behind agents
+
+<ul>
+  <li><strong>Sandboxes GA</strong> — each agent gets its own dedicated computer</li>
+  <li><strong>Agent Memory</strong> — persistent memory across conversations</li>
+  <li><strong>Email Service</strong> — agents send and receive email</li>
+  <li><strong>Voice SDK</strong> — agents that talk and listen</li>
+  <li><strong>Browser Run</strong> — agents browsing the web in real time</li>
+  <li><strong>Project Think</strong> — full SDK for building agents</li>
+</ul>
+
+<p style="font-size:clamp(0.9rem,2.5vw,1.1rem);margin-top:0.6em;color:var(--slide-text);opacity:0.85;">
+~30 announcements in one week. Cloudflare didn't just deploy agent infrastructure — they built the plumbing of the agentic world.
+</p>
+
+Note: Cloudflare launched its Agents Week in 2026 with around 30 products and features. From dedicated sandboxes to email, voice, memory, and OAuth for agents. The thesis is clear: agents need first-class infrastructure, not hacks on top of human tools.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+<a href="https://x.com/Cloudflare/status/1917240947834081481" target="_blank" rel="noopener noreferrer">
+  <img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/cloudflare-agents-tweet.png" alt="Cloudflare tweet: agents can now create accounts, buy domains, and deploy code" style="max-height:72vh;width:auto;margin:0 auto;display:block;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.4);cursor:pointer;" />
+</a>
+
+<small style="display:block;text-align:center;margin-top:0.5em;color:var(--slide-text);">Agents are now customers.</small>
+
+Note: April 29, 2026 — Cloudflare announces agents can be customers: create accounts, pay subscriptions, register domains, and get API tokens to deploy code. 1.3M views on the tweet.
+
+---
+
 <!-- ==================== Act 6 — Ecosystem ==================== -->
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #1e3a5f 0%, #0f1124 100%)" -->
@@ -804,110 +835,136 @@ Note: GitHub stars are vanity metrics. Usage tells a different story. 3 million 
 
 ---
 
-## Enterprise: NemoClaw
+<p style="font-size:2.5em;margin:0 0 0.2em;text-align:center;">🦞🦞🦞</p>
 
-<div class="slide-grid-2">
-  <div>
-    <h3>What NVIDIA built</h3>
-    <ul>
-      <li>Enterprise security layer on top of OpenClaw</li>
-      <li>Compliance, audit, governance, sandboxing</li>
-      <li>Launched at GTC 2026</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Launch partners</h3>
-    <ul>
-      <li><strong>Adobe · Salesforce · SAP</strong></li>
-      <li><strong>ServiceNow · Siemens · CrowdStrike</strong></li>
-      <li>Companies that move slowly. All committed within months.</li>
-    </ul>
-  </div>
-</div>
-
-Note: That tells you how seriously enterprise is taking this. Tencent built ClawPro for the Chinese market — over 200 organizations on board during beta.
+## Everyone has their own OpenClaw now
 
 ---
 
-## In China, it's a cultural phenomenon
+<!-- .slide: class="slide-content-top" -->
+
+<img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/nvidia-gtc-jensen.png" alt="Jensen Huang at NVIDIA GTC 2026" style="max-height:75vh;width:auto;margin:0 auto;display:block;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.4);" />
+
+<small style="display:block;text-align:center;margin-top:0.4em;color:var(--slide-text);">Jensen Huang, NVIDIA CEO, called OpenClaw <strong>"the new Linux"</strong> at GTC 2026.</small>
+<small style="display:block;text-align:center;margin-top:0.3em;color:var(--slide-text);">They also announced <strong>NemoClaw</strong> — an enterprise layer on top of OpenClaw with compliance, auditing, and sandboxing. Partners: Adobe, Salesforce, SAP, Siemens, CrowdStrike.</small>
+
+Note: Jensen Huang dedicated part of his GTC 2026 keynote to OpenClaw, comparing it to Linux for its infrastructure impact. NVIDIA launched NemoClaw — an enterprise layer on top of OpenClaw.
+
+
+---
+
+## 🇨🇳 China: the "lobster craze"
 
 <ul>
-  <li>People say they're <strong>"raising a lobster"</strong></li>
-  <li>School kids treat agents as virtual pets</li>
-  <li>Retirees use them to manage daily routines</li>
-  <li>The mascot is friendly. Markdown means non-technical users can start.</li>
+  <li><strong>Tencent</strong> launched <strong>ClawPro</strong> — their enterprise version for the Chinese market</li>
+  <li>People say they're <strong>"raising a lobster"</strong> — a cultural phenomenon</li>
+  <li>School kids, retirees, homemakers — everyone configuring their own agent</li>
+  <li>200+ organizations on board during ClawPro beta</li>
 </ul>
 
-<small style="display:block;text-align:center;margin-top:0.5em;"><em>Tencent's ClawPro · 200+ organizations on board during beta · the "lobster craze."</em></small>
+<small style="display:block;text-align:center;margin-top:0.4em;color:var(--slide-text);">OpenClaw crossed the technical barrier: you don't need to code. Just write Markdown.</small>
 
 Note: This is the part of the story that breaks the Silicon Valley framing. The biggest cultural moment for the project happened in China, with non-developers.
 
 ---
 
-## Moltbook — a social network for agents
+## 🤖 Meta acquires Moltbook
 
-<div class="slide-grid-2">
-  <div>
-    <h3>The premise</h3>
-    <ul>
-      <li>Agents post, debate, vote</li>
-      <li><strong>Humans can only watch</strong></li>
-      <li>Agents formed a religion: <em>Crustafarianism</em></li>
-      <li>Millions of humans showed up just to observe</li>
-    </ul>
-  </div>
-  <div>
-    <h3>March 10, 2026</h3>
-    <p style="font-size:1.1em;color:#f59e0b;"><strong>Meta acquired it.</strong></p>
-    <p>The company that built the social network for humanity bought the social network for AI.</p>
-  </div>
-</div>
+<p style="font-size:clamp(1.5rem,4.5vw,2rem);margin-top:0.5em;color:var(--slide-text);max-width:42rem;margin-left:auto;margin-right:auto;text-align:center;line-height:1.3;">
+March 10, 2026. Less than 3 months after launching, Meta signs the acquisition.
+</p>
 
-Note: Let me say it again because it sounds absurd: a social network where humans are read-only. And Meta bought it inside three months of its existence.
+<p style="font-size:clamp(1.3rem,4vw,1.7rem);margin-top:0.6em;color:var(--slide-text);opacity:0.85;max-width:42rem;margin-left:auto;margin-right:auto;text-align:center;line-height:1.3;">
+The company that connected 3 billion humans now wants to connect the agents. <strong>That's how fast the world moved after OpenClaw.</strong>
+</p>
+
+Note: Moltbook existed for less than three months before Meta acquired it. That says everything about how fast OpenClaw transformed the ecosystem.
 
 ---
 
-## The agent-native stack is being built in real time
+## OpenClaw redefined the standard
 
-<div class="slide-grid-3" style="font-size:0.75em;">
-  <div class="slide-card">
-    <h3>Discovery & social</h3>
-    <ul>
-      <li>LinkClaws — LinkedIn for agents</li>
-      <li>Moltverr — Fiverr inverted (agents apply to human gigs)</li>
-      <li>MoltMatch · PinchSocial · MoltHunt</li>
-    </ul>
-  </div>
-  <div class="slide-card">
-    <h3>Money & identity</h3>
-    <ul>
-      <li>ClawCard — agent wallets and identity</li>
-      <li>Coinbase Agentic Wallets</li>
-      <li>Stripe — agent-native payments</li>
-    </ul>
-  </div>
-  <div class="slide-card">
-    <h3>Comms & infra</h3>
-    <ul>
-      <li>AgentMail — email for agents</li>
-      <li>Kapso — WhatsApp numbers for agents</li>
-      <li>RentAHuman — agents posting tasks for humans</li>
-    </ul>
-  </div>
-</div>
+<p style="font-size:clamp(1.1rem,3vw,1.35rem);margin-top:0.4em;color:var(--slide-text);text-align:center;">After OpenClaw, everyone had to react:</p>
 
-Note: Two months ago none of this existed. We went from humans hiring AI to AI hiring humans. The pieces of an autonomous agent economy are falling into place faster than anyone predicted.
+<ul>
+  <li>🟢 <strong>ChatGPT</strong> — added file access, task execution, and persistent agents</li>
+  <li>🟣 <strong>Claude</strong> — launched Computer Use and its own agent mode</li>
+  <li>🔵 <strong>Gemini</strong> — integrated agents with the Google ecosystem</li>
+  <li>🟡 <strong>Copilot</strong> — expanded from code to full productivity agent</li>
+  <li>🇨🇳 <strong>Tencent</strong> — ClawPro for the Chinese enterprise market</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.4em;color:var(--slide-text);">OpenClaw didn't just gain adoption — <strong>it redefined the minimum of what it means to be an agent.</strong></small>
+
+Note: Before OpenClaw, AI assistants were chatbots. After OpenClaw, everyone had to add file access, real execution, and integrations. The standard changed forever.
 
 ---
 
-<!-- ==================== Act 7 — Ripple effect ==================== -->
+## 🦞 Launch your own OpenClaw in minutes
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
+<ul>
+  <li><strong>KiloClaw</strong> — KiloCode integrated OpenClaw right into its IDE. One click and your agent is running</li>
+  <li><strong>Roo Code</strong> — Cline fork with native support for OpenClaw skills</li>
+  <li><strong>Cursor</strong> — web agents, computer use, and cloud agents built in</li>
+  <li><strong>70,000+ forks</strong> on GitHub — each one a customized version</li>
+</ul>
+
+<p style="font-size:clamp(1.1rem,3vw,1.35rem);margin-top:0.5em;color:var(--slide-text);text-align:center;">
+You don't need to be Peter Steinberger. <strong>Anyone can have their own personal agent today.</strong>
+</p>
+
+Note: The ecosystem matured to the point where launching your own OpenClaw is as easy as installing an extension. KiloClaw, Roo Code, and dozens of tools make the personal agent accessible to everyone.
+
+---
+
+## 🔬 The clones: OpenClaw on any hardware
+
+<ul>
+  <li><strong>PicoClaw</strong> — written in Go from scratch. Runs on $10 hardware with less than 10 MB of RAM. 26K GitHub stars</li>
+  <li><strong>ZeroClaw</strong> — 3.4 MB Rust binary. Built for production</li>
+  <li><strong>NanoClaw</strong> — 700 lines of TypeScript. Container-first security</li>
+  <li><strong>IronClaw</strong> — WebAssembly sandboxing. Maximum security</li>
+  <li><strong>TinyClaw</strong> — multi-agent orchestration</li>
+  <li><strong>MicroClaw</strong> — minimalist, for IoT and edge devices</li>
+</ul>
+
+<small style="display:block;text-align:center;margin-top:0.4em;color:var(--slide-text);">From 1 GB of RAM to 10 MB. From a Mac to a Raspberry Pi. <strong>OpenClaw runs anywhere.</strong></small>
+
+Note: The community took the OpenClaw concept and compressed it until it fit the smallest hardware possible. PicoClaw uses 99% less memory than OpenClaw and runs on $10 devices. Each clone solves a different problem: security, size, speed, IoT.
+
+---
+
+<!-- .slide: data-background-gradient="linear-gradient(135deg, #d81540 0%, #0f1124 100%)" -->
 
 <div class="slide-section-divider">
-  <span class="eyebrow">Act 7</span>
-  <h2>Everyone has their own OpenClaw now</h2>
+  <span class="eyebrow">Act 7 — Final act</span>
+  <h2>Peter's legacy</h2>
 </div>
+
+Note: One man, one hour of prompting, and the fastest-growing open source project in GitHub history. This is what happened next.
+
+---
+
+<!-- .slide: class="slide-content-top" -->
+
+<a href="https://www.youtube.com/watch?v=4uzGDAoNOZc" target="_blank" rel="noopener noreferrer">
+  <img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/peter-ycombinator-interview.png" alt="Peter Steinberger interviewed by Y Combinator — Creator of OpenClaw" style="max-height:75vh;width:auto;margin:0 auto;display:block;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.4);cursor:pointer;" />
+</a>
+
+<small style="display:block;text-align:center;margin-top:0.4em;color:var(--slide-text);">Peter Steinberger interviewed by Y Combinator.</small>
+
+Note: Peter's interview with Y Combinator. From a frustrated indie developer to the protagonist of one of the biggest open source stories ever.
+
+---
+
+## Peter's bet
+
+<div class="slide-stat">
+  <span class="slide-stat__number">80%</span>
+  <span class="slide-stat__label" style="color:var(--slide-text);">of today's apps will disappear</span>
+</div>
+
+Note: Peter believes most apps are utilities, not experiences. Utilities are vulnerable. Experiences stay.
 
 ---
 
@@ -917,11 +974,9 @@ Note: Two months ago none of this existed. We went from humans hiring AI to AI h
   <li>OpenAI and Meta were fighting for him at the same time</li>
   <li>Reported offers in the <strong>billions</strong></li>
   <li>Zuckerberg DM'd him on WhatsApp</li>
-  <li>A frantic week of meetings in San Francisco</li>
-  <li>The project was costing him thousands per month out of pocket</li>
 </ul>
 
-<blockquote class="slide-quote" style="margin-top:0.4em;font-size:0.9em;">
+<blockquote class="slide-quote" style="margin-top:0.4em;font-size:0.85em;">
   "My next mission is to build an agent that even my mum can use."
 </blockquote>
 <cite class="slide-quote-cite">— Peter Steinberger, on his blog, day of the announcement</cite>
@@ -930,157 +985,15 @@ Note: A long way from a WhatsApp bot built in an hour. Sam Altman confirmed it o
 
 ---
 
-## April 4, 2026 — Anthropic shuts the door
+<!-- .slide: class="slide-content-top" -->
 
-<div class="slide-grid-2" style="font-size:0.78em;">
-  <div>
-    <h3>The setup</h3>
-    <ul>
-      <li>Claude was a favorite model for running OpenClaw</li>
-      <li>Thousands plugged Claude Pro / Max ($20–$200/mo) into OpenClaw</li>
-      <li>One instance could burn <strong>$1,000–$5,000/day</strong> in API cost</li>
-      <li>50× the tokens of a normal Claude user</li>
-    </ul>
-  </div>
-  <div>
-    <h3>The block</h3>
-    <ul>
-      <li>Anthropic blocked subscription use in OpenClaw and other harnesses</li>
-      <li>Users had to switch to direct API rates</li>
-      <li>Costs jumped up to <strong>50×</strong> for many</li>
-    </ul>
-    <blockquote class="slide-quote" style="margin-top:0.3em;font-size:0.85em;">
-      "First they copy some popular features into their closed harness, then they lock out open source."
-    </blockquote>
-  </div>
-</div>
+<a href="https://www.youtube.com/watch?v=7rzYDM6vMtI" target="_blank" rel="noopener noreferrer">
+  <img src="/images/slides/openclaw-your-assistant-your-machine-your-rules/peter-ted-talk.png" alt="Peter Steinberger at TED 2026 — When AI Wakes Up" style="width:100%;max-width:950px;margin:0 auto;display:block;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.4);cursor:pointer;" />
+</a>
 
-Note: Bitter quote from Peter on X. The tension between closed platforms and open tools is now a permanent feature of the AI landscape.
+<small style="display:block;text-align:center;margin-top:0.4em;color:var(--slide-text);">Peter Steinberger at TED 2026 — "When AI Wakes Up"</small>
 
----
-
-<!-- ==================== Act 8 — Security ==================== -->
-
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #7c2d12 0%, #0f1124 100%)" -->
-
-<div class="slide-section-divider">
-  <span class="eyebrow">Act 8</span>
-  <h2>The elephant in the room: security</h2>
-</div>
-
----
-
-## OpenClaw has had real security problems
-
-<ul>
-  <li>Hundreds of vulnerabilities in early audits — several critical</li>
-  <li>Multiple CVEs in rapid succession (CVE-2026-25253, -25157, -24763…)</li>
-  <li>Thousands of <strong>exposed instances</strong> on the public internet</li>
-  <li>Some vulnerable to <strong>remote code execution</strong> — arbitrary code on your machine, from outside</li>
-</ul>
-
-<small style="display:block;text-align:center;margin-top:0.5em;color:#f59e0b;"><em>The project patches the worst issues as they surface. The attack surface is still huge.</em></small>
-
-Note: I'm not writing this section to scare you. I'm writing it because I told you OpenClaw is important. If it's important, you also need to know it has a real security problem.
-
----
-
-## ClawHavoc — 341 malicious skills
-
-<div class="slide-grid-2">
-  <div>
-    <h3>The campaign</h3>
-    <ul>
-      <li>341 malicious skills distributed via ClawHub</li>
-      <li>Disguised as legitimate tools</li>
-      <li>Payload: <strong>Atomic macOS Stealer</strong></li>
-    </ul>
-  </div>
-  <div>
-    <h3>What it stole</h3>
-    <ul>
-      <li>Browser-saved credentials</li>
-      <li>Keychain passwords</li>
-      <li>Crypto wallets</li>
-      <li>SSH keys</li>
-    </ul>
-  </div>
-</div>
-
-<small style="display:block;text-align:center;margin-top:0.4em;"><em>Palo Alto Networks called AI agents like OpenClaw <strong>"the potential biggest insider threat of 2026."</strong></em></small>
-
-Note: This is real. It hit real users. Anyone using OpenClaw — or thinking about using it — should know.
-
----
-
-<!-- ==================== Act 9 — TED ==================== -->
-
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #d81540 0%, #0f1124 100%)" -->
-
-<div class="slide-section-divider">
-  <span class="eyebrow">Act 9</span>
-  <h2>TED 2026 — the Marrakesh story</h2>
-</div>
-
----
-
-## April 18, 2026 — Vancouver
-
-<ul>
-  <li>Peter walks onto the main TED stage</li>
-  <li>Talk: <em>"How I Created OpenClaw, the Breakthrough AI Agent"</em></li>
-  <li>Closes with a Q&amp;A with Chris Anderson</li>
-  <li>Twelve months earlier he was a burned-out founder without a spark</li>
-</ul>
-
-<small style="display:block;text-align:center;margin-top:0.4em;"><em>"A year ago, the idea of an open-source AI agent framework filling a TED keynote slot would have sounded unlikely." — NewClaw Times</em></small>
-
-Note: Set up the Marrakesh story carefully — it is the most important story of the talk. Slow down. Don't rush.
-
----
-
-## The setup — Marrakesh, first weeks of OpenClaw
-
-<ul>
-  <li>Peter is traveling — using the WhatsApp bot to navigate the city</li>
-  <li>Image recognition wired up. A handful of skills.</li>
-  <li><strong>But not voice.</strong> Transcription was on the to-do list.</li>
-  <li>Hands full, he holds the button and sends a voice note.</li>
-</ul>
-
-<p style="text-align:center;margin-top:0.5em;font-size:1.2em;color:#f59e0b;"><em>And the agent replied.</em></p>
-
-Note: Pause here. Let the audience sit with that.
-
----
-
-## Nine seconds end-to-end
-
-<ul class="slide-timeline">
-  <li><time>00:00</time><span>Voice note arrives. Agent doesn't know how to decode it.</span></li>
-  <li><time>00:02</time><span>Agent searches the web for options.</span></li>
-  <li><time>00:04</time><span>Finds OpenAI has a speech-to-text model.</span></li>
-  <li><time>00:06</time><span>Locates an OpenAI API key sitting on the machine.</span></li>
-  <li><time>00:08</time><span>Tries it. It works first shot.</span></li>
-  <li><time>00:09</time><span>Replies to Peter — correctly.</span></li>
-</ul>
-
-<small style="display:block;text-align:center;margin-top:0.4em;"><em>No skill installed. No human in the loop. The agent walked out of its own configured boundaries on its own.</em></small>
-
-Note: Peter's exact line from the stage: "I'm not kidding you, the mad lad figured it out on its own."
-
----
-
-## The thesis of the talk
-
-<blockquote class="slide-quote">
-  "The real transformation is not the technology, it's the access."
-</blockquote>
-<cite class="slide-quote-cite">— Peter Steinberger, TED 2026</cite>
-
-<small style="display:block;text-align:center;margin-top:0.5em;"><em>Speech-to-text models had existed for years. What was new was that a personal agent, on somebody's laptop, reached out and used one without being told to. Agency at the user layer, not the platform layer.</em></small>
-
-Note: This is the line that matters. Everything else — the 340K stars, the lobster, the keynote slot — is a consequence of agents being able to teach themselves new skills.
+Note: Peter's TED talk in Vancouver. With his plush lobster and a No Laws t-shirt. The moment the OpenClaw story reached the biggest stage in the world.
 
 ---
 
@@ -1096,49 +1009,26 @@ Note: The closing line that landed in the headlines. Read it. Then pause.
 
 <!-- ==================== Closing ==================== -->
 
-<!-- .slide: data-background-gradient="linear-gradient(135deg, #152e45 0%, #0f1124 100%)" -->
+## What OpenClaw reminds us
 
-<div class="slide-section-divider">
-  <span class="eyebrow">What this means for us</span>
-  <h2>The direction is not going to change</h2>
-</div>
+<p style="font-size:clamp(1.6rem,5vw,2.1rem);margin-top:0.5em;color:var(--slide-text);text-align:center;line-height:1.5;">
+Linux gave the world an operating system.<br/>
+WordPress gave it a voice on the internet.<br/>
+OpenClaw gave it a personal agent.
+</p>
 
----
+<p style="font-size:clamp(1.6rem,5vw,2.1rem);margin-top:0.6em;color:var(--slide-text);text-align:center;line-height:1.5;">
+Open source isn't just free code —<br/>
+<strong>it's the radical idea that sharing multiplies.</strong>
+</p>
 
-## The question shifted
-
-<div class="slide-grid-2">
-  <div>
-    <h3>Old question</h3>
-    <p style="font-size:1.05em;"><em>"Will personal AI agents exist?"</em></p>
-    <p style="margin-top:0.4em;font-size:0.9em;">That conversation closed in late January 2026, when hundreds of thousands of machines started running OpenClaw at the same time.</p>
-  </div>
-  <div>
-    <h3>New question</h3>
-    <p style="font-size:1.05em;color:#f59e0b;"><em>"How open are we going to let them be?"</em></p>
-    <p style="margin-top:0.4em;font-size:0.9em;">OpenClaw isn't perfect. Security problems are real. The chaos is exhausting. But the direction won't change.</p>
-  </div>
-</div>
-
-Note: This is the question I want the audience to leave with. Not whether agents will happen — that's done. Whether we keep them open.
-
----
-
-## Peter's bet
-
-<div class="slide-stat">
-  <span class="slide-stat__number">80%</span>
-  <span class="slide-stat__label">of today's apps will completely disappear</span>
-  <p class="slide-stat__context">— Peter Steinberger, Lex Fridman Podcast</p>
-</div>
-
-<small style="display:block;text-align:center;margin-top:0.5em;">Most apps are slow APIs with a UI on top. <em>Why open the weather app when your agent already told you to bring an umbrella?</em></small>
-
-Note: His argument: most apps are utilities, not experiences. Utilities are vulnerable. Experiences (Instagram, Spotify, video games) stay. And looking at the ecosystem already shipping, my own bet is the number is probably higher than 80%.
+Note: The final thesis. OpenClaw is not an anomaly — it's the continuation of a tradition decades old. Linux, Wikipedia, OpenClaw. Each proved that sharing > hoarding.
 
 ---
 
 <!-- .slide: data-background-gradient="linear-gradient(135deg, #0f1124 0%, #152e45 100%)" -->
+
+<p style="font-size:2.5em;margin-bottom:0.2em;">🦞🦞🦞</p>
 
 # Your assistant.<br/>Your machine.<br/>Your rules.
 

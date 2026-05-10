@@ -44,6 +44,20 @@
   .prose figcaption {
     @apply text-sm text-center text-gray-600 dark:text-gray-300 mt-3;
   }
+
+  /* Mobile horizontal scroll for wide tables */
+  @media (max-width: 768px) {
+    .table-responsive {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-responsive > table,
+    .table-responsive > :where(table) {
+      width: max-content !important;
+      min-width: 100%;
+      font-size: 0.875rem;
+    }
+  }
 }
 
 @layer base {
