@@ -1051,8 +1051,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Kotlin language and ecosystem — Kotlin Multiplatform, Compose Multiplatform, Android, JVM tooling.',
     claude:
       "Claude — Anthropic's model family and the agent runtimes built on top (Claude Code, Skills, Files API).",
-    mcp:
-      'Model Context Protocol — standardized agent↔tool communication, server cards, and the agentic-web standards layer.',
+    mcp: 'Model Context Protocol — standardized agent↔tool communication, server cards, and the agentic-web standards layer.',
     flutter:
       'Flutter — Dart-based cross-platform mobile framework, widgets, and the trade-offs versus native and Kotlin Multiplatform.',
   },
