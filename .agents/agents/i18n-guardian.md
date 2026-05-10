@@ -42,7 +42,7 @@ This agent is a specialized **i18n expert** that focuses on:
 - Auditing multilingual content completeness (find missing translations)
 - Reviewing translation quality (natural phrasing, cultural appropriateness)
 - Validating `src/lib/translations/` completeness (no missing keys across locale files)
-- Verifying blog post parity between `en/` and `es/` folders
+- Verifying blog post parity between `en/` and `es/` folders, including frontmatter `tags:` arrays (every EN post MUST have the same English tag slugs in its ES counterpart — slugs are English-only across both languages per [Tag governance](../../docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection))
 - Verifying page parity between `src/pages/` and `src/pages/es/`
 - Checking components for hardcoded text that should use `getTranslations()`
 - Providing translation suggestions for new content

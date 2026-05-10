@@ -4,7 +4,7 @@ description: "Inside OpenClaw: the Gateway, the PI agent, the seven workspace fi
 draft: true
 pubDate: '2026-05-04'
 heroLayout: 'none'
-tags: ['tech', 'ai']
+tags: ["tech", "ai-agents", "openclaw", "claude"]
 keywords: ['OpenClaw architecture', 'OpenClaw PI agent', 'OpenClaw workspace files', 'OpenClaw Gateway 18789', 'OpenClaw MCP servers', 'SOUL.md AGENTS.md HEARTBEAT.md MEMORY.md', 'OpenClaw skills ClawHub', 'OpenClaw sandboxing permissions']
 series: 'mastering-openclaw'
 seriesOrder: 2

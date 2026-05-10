@@ -4,7 +4,7 @@ description: "Advanced Databases class project: Django talking to ten SQL and No
 pubDate: "2018-12-01"
 heroImage: "/images/blog/posts/django-multiple-databases-university/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "python", "database", "university"]
+tags: ["tech", "python", "university", "django", "docker"]
 keywords: ["Django multiple database engines", "Django PostgreSQL MySQL MongoDB", "multi-database Django project", "Django Docker database containers", "Django Redis Neo4j integration", "10 databases Django project", "university advanced databases Django"]
 ---
 

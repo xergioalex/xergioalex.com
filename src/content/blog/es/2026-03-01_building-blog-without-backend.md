@@ -4,7 +4,7 @@ description: 'Cómo escala el blog sin backend: Content Collections, taxonomía 
 pubDate: '2026-03-01'
 heroImage: '/images/blog/posts/building-blog-without-backend/hero.webp'
 heroLayout: 'side-by-side'
-tags: ['tech', 'web-development']
+tags: ["tech", "web-development", "astro", "svelte"]
 keywords: ["blog estático sin backend", "arquitectura de blog con Astro Content Collections", "búsqueda de blog del lado del cliente", "sistema de tags para blog Astro", "blog bilingüe con Astro", "series de posts en Astro", "blog escalable sin servidor"]
 series: "building-xergioalex"
 seriesOrder: 5

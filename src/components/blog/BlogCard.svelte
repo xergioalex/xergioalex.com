@@ -11,12 +11,15 @@ export let lang: Language = 'en';
 export let searchQuery: string = '';
 export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
+export let subtopicTagNames: string[] = [];
+export let subtopicAccentByName: Record<string, string> = {};
 let postData: {
   title: string;
   description: string;
   pubDate: Date;
   tags: string[];
   topics: string[];
+  subtopics: string[];
   heroImage?: string;
 };
 let postSlug = '';
@@ -46,16 +49,20 @@ function getPostSlug(): string {
 function getPostData() {
   // If post has data property (CollectionEntry structure)
   if (post.data) {
-    // Split unified tags array using topicTagNames lookup
+    // Split unified tags array using tier name lookups
     const allTags: string[] = post.data.tags || [];
+    const subtopic = allTags.filter((t) => subtopicTagNames.includes(t));
+    const secondary = allTags.filter(
+      (t) => topicTagNames.includes(t) && !subtopicTagNames.includes(t)
+    );
     const primary = allTags.filter((t) => !topicTagNames.includes(t));
-    const secondary = allTags.filter((t) => topicTagNames.includes(t));
     return {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
       tags: primary,
       topics: secondary,
+      subtopics: subtopic,
       heroImage: post.data.heroImage,
     };
   }
@@ -66,14 +73,16 @@ function getPostData() {
     pubDate: new Date(post.pubDate),
     tags: post.tags || [],
     topics: post.topics || [],
+    subtopics: post.subtopics || [],
     heroImage: post.heroImage,
   };
 }
 
-// Reference post and topicTagNames so Svelte re-runs when they change
+// Reference reactive inputs so Svelte re-runs when they change
 $: {
   post;
   topicTagNames;
+  subtopicTagNames;
   postData = getPostData();
 }
 $: postSlug = getPostSlug();
@@ -227,7 +236,7 @@ $: displayDescription = searchQuery
           </div>
         {/if}
       </div>
-      {#if (postData.tags && postData.tags.length > 0) || (postData.topics && postData.topics.length > 0)}
+      {#if (postData.tags && postData.tags.length > 0) || (postData.topics && postData.topics.length > 0) || (postData.subtopics && postData.subtopics.length > 0)}
         <div class="flex flex-wrap gap-1.5">
           {#each postData.tags as tag}
             <a
@@ -240,9 +249,17 @@ $: displayDescription = searchQuery
           {#each postData.topics as topic}
             <a
               href={`${prefix}/blog/tag/${topic}/`}
-              class="text-xs px-2 py-1 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+              class="text-xs px-2 py-1 rounded border border-gray-200 bg-white text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
             >
               {t.tagNames[topic] || topic}
+            </a>
+          {/each}
+          {#each postData.subtopics as sub}
+            <a
+              href={`${prefix}/blog/tag/${sub}/`}
+              class="inline-flex items-center text-xs px-2 py-1 rounded bg-gray-50 text-gray-700 border border-dashed border-gray-300 hover:bg-gray-100 hover:border-gray-500 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+            >
+              <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-gray-600 dark:text-gray-300'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
             </a>
           {/each}
         </div>

@@ -3,7 +3,7 @@ title: "Detrás de la migración de dailybot.com a Astro: la vista del ingeniero
 description: "Lideré la migración de dailybot.com de un CMS visual a Astro. La historia del equipo está en el blog de DailyBot. Acá va la ingeniería de abajo."
 pubDate: "2026-04-20"
 heroLayout: "none"
-tags: ["portfolio", "tech", "web-development", "dailybot", "ai"]
+tags: ["portfolio", "tech", "web-development", "dailybot", "astro"]
 keywords:
   - "migración dailybot a astro ingeniero"
   - "astro content collections multilenguaje caso de estudio"

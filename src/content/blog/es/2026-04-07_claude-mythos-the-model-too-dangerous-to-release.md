@@ -4,7 +4,7 @@ description: "Anthropic creó un modelo que encontró miles de zero-days en todo
 pubDate: "2026-04-07"
 heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai-agents", "personal", "claude"]
 keywords: ["Claude Mythos Preview vulnerabilidades zero-day", "Project Glasswing Anthropic ciberseguridad", "IA descubre vulnerabilidades 2026", "Claude Mythos benchmarks rendimiento", "revolución IA ciberseguridad zero-day", "Anthropic coalición seguridad $100M", "IA encuentra bug de 28 años OpenBSD"]
 series: "working-with-agents"
 seriesOrder: 5

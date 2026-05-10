@@ -1000,6 +1000,20 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     database: 'Bases de Datos',
     iot: 'IoT',
     design: 'Diseño',
+    mobile: 'Móvil',
+    'ai-agents': 'Agentes de IA',
+    // Subtopic tags
+    astro: 'Astro',
+    svelte: 'Svelte',
+    cloudflare: 'Cloudflare',
+    docker: 'Docker',
+    graphql: 'GraphQL',
+    django: 'Django',
+    openclaw: 'OpenClaw',
+    kotlin: 'Kotlin',
+    claude: 'Claude',
+    mcp: 'MCP',
+    flutter: 'Flutter',
   },
   tagDescriptions: {
     // Primary tags
@@ -1026,6 +1040,31 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     database: 'SQL, NoSQL, MongoDB y arquitectura multi-base de datos.',
     iot: 'Internet de las Cosas, sensores, hardware e interfaces de voz.',
     design: 'Diseño visual, branding, diseño web y UX.',
+    mobile:
+      'Desarrollo móvil — Android, iOS, frameworks multiplataforma y el camino para aprender a publicar en dispositivos.',
+    'ai-agents':
+      'Agentes de IA y la agentic web — sistemas autónomos, uso de herramientas, patrones de orquestación, MCP y los estándares .well-known.',
+    // Subtopic tags
+    astro:
+      'Framework Astro — arquitectura por islas, Content Collections, MDX y builds estáticos.',
+    svelte:
+      'Svelte y SvelteKit — componentes reactivos, runes y patrones de hidratación.',
+    cloudflare: 'Cloudflare Pages, Workers, R2 y la plataforma agentic-web.',
+    docker:
+      'Contenedores Docker, escritura de Dockerfile y orquestación multi-servicio.',
+    graphql:
+      'APIs GraphQL — esquemas, resolvers, federación y patrones de cliente.',
+    django:
+      'Framework Django — ORM, configuraciones multi-base, admin y despliegue.',
+    openclaw:
+      'OpenClaw — el agente personal de IA local y su filosofía de diseño.',
+    kotlin:
+      'Lenguaje y ecosistema Kotlin — Kotlin Multiplatform, Compose Multiplatform, Android y herramientas para JVM.',
+    claude:
+      'Claude — la familia de modelos de Anthropic y los runtimes de agente construidos encima (Claude Code, Skills, Files API).',
+    mcp: 'Model Context Protocol — comunicación estandarizada agente↔herramienta, server cards y la capa de estándares para la agentic web.',
+    flutter:
+      'Flutter — framework móvil multiplataforma basado en Dart, widgets y los trade-offs frente a nativo y Kotlin Multiplatform.',
   },
 
   // Series names and descriptions (keyed by series slug)
@@ -1037,7 +1076,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'building-agents': 'Construyendo Agentes',
     'the-library-of-tomorrow': 'La Biblioteca del Mañana',
     'mastering-openclaw': 'Dominando OpenClaw',
-    'learning-mobile-development': 'Aprendiendo Desarrollo Mobile',
+    'learning-mobile-development': 'Aprendiendo Desarrollo Móvil',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1055,7 +1094,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'mastering-openclaw':
       'Una inmersión profunda en OpenClaw — el agente de IA personal que vive en tu máquina, sigue tus reglas, y marcó un nuevo paradigma de IA local.',
     'learning-mobile-development':
-      'Un recorrido honesto por el desarrollo mobile — mapear el panorama, escoger herramientas y aprender a construir para Android e iOS sin fingir ser experto.',
+      'Un recorrido honesto por el desarrollo móvil — el estado del arte, escoger herramientas y aprender a construir para Android e iOS documentando cada paso.',
   },
 
   // Date formatting

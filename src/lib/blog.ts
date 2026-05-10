@@ -11,8 +11,12 @@ export interface SearchIndexEntry {
   title: string;
   description: string;
   pubDate: string;
+  /** Primary-tier tag slugs only. */
   tags: string[];
+  /** Secondary-tier tag slugs only (no longer merged with subtopic). */
   topics: string[];
+  /** Subtopic-tier tag slugs (tier 3). */
+  subtopics: string[];
   heroImage?: string;
 
   series?: string;
@@ -29,7 +33,7 @@ export interface TimelineCardEntry {
   title: string;
   description: string;
   pubDate: string;
-  /** All post tags (primary + subtopic combined). Callers derive topics client-side via topicTagNames. */
+  /** All post tag slugs (every tier). Callers derive tier groups client-side via topicTagNames + subtopicTagNames. */
   tags: string[];
   heroImage?: string;
 
@@ -240,7 +244,12 @@ let _hierarchyValidated = false;
 
 /**
  * Validate tag hierarchy integrity at build time.
- * Logs warnings for: orphaned parents, primary tags with parent, non-primary parents.
+ * Rules:
+ *  - parent must resolve to a known tag
+ *  - primary tags must NOT have a parent
+ *  - secondary tags must parent to a primary tag
+ *  - subtopic tags should have a parent (warns if missing)
+ *  - subtopic tags should parent to a secondary tag (parenting to primary is allowed but flagged)
  * Runs once per build — does NOT throw (warnings only).
  */
 async function validateTagHierarchy(): Promise<void> {
@@ -249,27 +258,98 @@ async function validateTagHierarchy(): Promise<void> {
 
   const allTags = await getCollection('tags');
   const tagNames = new Set(allTags.map((t) => t.data.name));
+  const tierByName = new Map<string, string>(
+    allTags.map((t) => [t.data.name, t.data.tier])
+  );
 
   for (const tag of allTags) {
-    if (tag.data.parent && !tagNames.has(tag.data.parent)) {
+    const { name, tier, parent } = tag.data;
+
+    if (parent && !tagNames.has(parent)) {
       console.warn(
-        `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which does not exist`
+        `[tag-validation] Tag "${name}" has parent "${parent}" which does not exist`
       );
+      continue;
     }
-    if (tag.data.tier === 'primary' && tag.data.parent) {
+
+    if (tier === 'primary' && parent) {
       console.warn(
-        `[tag-validation] Primary tag "${tag.data.name}" should not have a parent`
+        `[tag-validation] Primary tag "${name}" should not have a parent`
       );
+      continue;
     }
-    if (tag.data.parent) {
-      const parentTag = allTags.find((t) => t.data.name === tag.data.parent);
-      if (parentTag && parentTag.data.tier !== 'primary') {
+
+    if (tier === 'secondary' && parent) {
+      const parentTier = tierByName.get(parent);
+      if (parentTier !== 'primary') {
         console.warn(
-          `[tag-validation] Tag "${tag.data.name}" has parent "${tag.data.parent}" which is not a primary tag`
+          `[tag-validation] Secondary tag "${name}" has parent "${parent}" which is not a primary tag (tier: ${parentTier})`
+        );
+      }
+    }
+
+    if (tier === 'subtopic') {
+      if (!parent) {
+        console.warn(
+          `[tag-validation] Subtopic tag "${name}" has no parent — subtopic tags should parent to a secondary or primary tag`
+        );
+        continue;
+      }
+      const parentTier = tierByName.get(parent);
+      if (parentTier !== 'secondary' && parentTier !== 'primary') {
+        console.warn(
+          `[tag-validation] Subtopic tag "${name}" has parent "${parent}" which is not a secondary or primary tag (tier: ${parentTier})`
+        );
+      } else if (parentTier === 'primary') {
+        console.warn(
+          `[tag-validation] Subtopic tag "${name}" parents directly to primary tag "${parent}" — consider parenting to a secondary tag instead`
         );
       }
     }
   }
+}
+
+/**
+ * Per-domain accent colors for subtopic tag chevrons. Each subtopic inherits
+ * its parent secondary tag's domain color, creating a visual "this belongs to
+ * that family" cue. Class strings are kept literal so Tailwind's content
+ * scanner picks them up.
+ */
+const SUBTOPIC_ACCENT_BY_PARENT: Record<string, string> = {
+  'web-development': 'text-blue-500 dark:text-blue-400',
+  javascript: 'text-yellow-500 dark:text-yellow-400',
+  devops: 'text-orange-500 dark:text-orange-400',
+  python: 'text-amber-500 dark:text-amber-400',
+  ai: 'text-violet-500 dark:text-violet-400',
+  'ai-agents': 'text-fuchsia-500 dark:text-fuchsia-400',
+  mobile: 'text-emerald-500 dark:text-emerald-400',
+  blockchain: 'text-green-500 dark:text-green-400',
+  design: 'text-pink-500 dark:text-pink-400',
+  iot: 'text-cyan-500 dark:text-cyan-400',
+  database: 'text-indigo-500 dark:text-indigo-400',
+  university: 'text-rose-500 dark:text-rose-400',
+};
+
+const SUBTOPIC_ACCENT_FALLBACK = 'text-gray-600 dark:text-gray-300';
+
+let _subtopicAccentCache: Record<string, string> | null = null;
+
+/**
+ * Build a subtopic-slug → tailwind chevron color class map. Only includes tags
+ * whose tier is `subtopic`. Cached once per build.
+ */
+export async function getSubtopicAccentMap(): Promise<Record<string, string>> {
+  if (_subtopicAccentCache) return _subtopicAccentCache;
+  const allTags = await getCollection('tags');
+  const map: Record<string, string> = {};
+  for (const tag of allTags) {
+    if (tag.data.tier !== 'subtopic') continue;
+    const parent = tag.data.parent;
+    map[tag.data.name] =
+      (parent && SUBTOPIC_ACCENT_BY_PARENT[parent]) || SUBTOPIC_ACCENT_FALLBACK;
+  }
+  _subtopicAccentCache = map;
+  return map;
 }
 
 async function getTagTierMap(): Promise<Map<string, string>> {
@@ -293,23 +373,29 @@ export async function getTagTier(
 }
 
 /**
- * Split a post's tags into primary and secondary groups using the tags collection.
+ * Split a post's tags into primary, secondary, and subtopic groups using the tags collection.
+ * Tags whose tier cannot be resolved fall back to `primaryTags`.
  */
-export async function groupPostTags(
-  tags: string[]
-): Promise<{ primaryTags: string[]; topicTags: string[] }> {
+export async function groupPostTags(tags: string[]): Promise<{
+  primaryTags: string[];
+  secondaryTags: string[];
+  subtopicTags: string[];
+}> {
   const tierMap = await getTagTierMap();
   const primaryTags: string[] = [];
-  const topicTags: string[] = [];
+  const secondaryTags: string[] = [];
+  const subtopicTags: string[] = [];
   for (const tag of tags) {
     const tier = tierMap.get(tag) || 'primary';
-    if (tier === 'secondary' || tier === 'subtopic') {
-      topicTags.push(tag);
+    if (tier === 'secondary') {
+      secondaryTags.push(tag);
+    } else if (tier === 'subtopic') {
+      subtopicTags.push(tag);
     } else {
       primaryTags.push(tag);
     }
   }
-  return { primaryTags, topicTags };
+  return { primaryTags, secondaryTags, subtopicTags };
 }
 
 /**
@@ -328,7 +414,8 @@ async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
   return Promise.all(
     visiblePosts.map(async (post) => {
       const allTags = post.data.tags || [];
-      const { primaryTags, topicTags } = await groupPostTags(allTags);
+      const { primaryTags, secondaryTags, subtopicTags } =
+        await groupPostTags(allTags);
       const seriesPosition = seriesPositionById.get(post.id);
       const seriesSlug = post.data.series;
       return {
@@ -339,7 +426,8 @@ async function buildSearchIndex(): Promise<SearchIndexEntry[]> {
         description: post.data.description,
         pubDate: post.data.pubDate.toISOString(),
         tags: primaryTags,
-        topics: topicTags,
+        topics: secondaryTags,
+        subtopics: subtopicTags,
         heroImage: post.data.heroImage,
         series: seriesSlug,
         seriesOrder: post.data.seriesOrder,

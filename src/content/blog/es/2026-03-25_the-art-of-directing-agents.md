@@ -4,7 +4,7 @@ description: "Los agentes de IA no son multiplicadores de productividad — son 
 pubDate: "2026-03-25"
 heroImage: "/images/blog/posts/the-art-of-directing-agents/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai-agents", "personal"]
 keywords: ["arte de dirigir agentes IA", "mejores instrucciones agentes IA", "delegar en agentes de código", "cómo trabajar con agentes IA", "dirigir vs prompting agentes IA", "mismo modelo resultados diferentes IA", "enmarcar trabajo para agentes IA"]
 series: "working-with-agents"
 seriesOrder: 2

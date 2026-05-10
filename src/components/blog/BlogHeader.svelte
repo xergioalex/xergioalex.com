@@ -6,6 +6,8 @@ import { getTranslations } from '@/lib/translations';
 export let currentTag;
 export let tagsResult;
 export let topicTags = [];
+export let subtopicTags = [];
+export let subtopicAccentByName = {};
 export let totalPosts = 0;
 export let currentPagePosts = 0;
 export let currentPage = 1;
@@ -17,6 +19,9 @@ $: basePrefix = getUrlPrefix(lang);
 
 // Check if currentTag is a topic (secondary) tag
 $: isTopicActive = topicTags.includes(currentTag);
+
+// Secondary-only list (excludes subtopics for the dedicated subtopic row).
+$: secondaryOnly = topicTags.filter((t) => !subtopicTags.includes(t));
 
 // Translations for header content
 $: headerTitle = currentTag
@@ -70,7 +75,7 @@ $: availableText = t.articlesAvailable(totalPosts);
   <!-- Link to all articles -->
   <a
     href={`${basePrefix}/blog/`}
-    class={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+    class={`inline-flex items-center rounded px-3 py-1 text-xs font-semibold transition-colors ${
       !currentTag
         ? "bg-blue-600 text-white shadow-sm"
         : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
@@ -83,7 +88,7 @@ $: availableText = t.articlesAvailable(totalPosts);
   {#each tagsResult as tag}
     <a
       href={`${basePrefix}/blog/tag/${tag}/`}
-      class={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+      class={`inline-flex items-center rounded px-3 py-1 text-xs font-semibold transition-colors ${
         currentTag === tag
           ? "bg-blue-600 text-white shadow-sm"
           : "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800"
@@ -96,19 +101,38 @@ $: availableText = t.articlesAvailable(totalPosts);
 </div>
 
 <!-- Topic tag pills (secondary tier) -->
-{#if topicTags && topicTags.length > 0}
-  <div class="mb-10 flex flex-wrap gap-1.5">
-    {#each topicTags as topic}
+{#if secondaryOnly.length > 0}
+  <div class="mb-3 flex flex-wrap gap-1.5">
+    {#each secondaryOnly as topic}
       <a
         href={`${basePrefix}/blog/tag/${topic}/`}
-        class={`rounded-full px-2.5 py-0.5 text-xs transition-colors ${
+        class={`rounded px-2.5 py-0.5 text-xs transition-colors ${
           currentTag === topic
             ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
-            : "border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
+            : "border border-gray-200 bg-white text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100"
         }`}
         on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: topic })}
       >
         {t.tagNames[topic] || topic}
+      </a>
+    {/each}
+  </div>
+{/if}
+
+<!-- Subtopic tag pills (tier 3) — code-identifier style: monospace + faint fill + parent-domain chevron. -->
+{#if subtopicTags && subtopicTags.length > 0}
+  <div class="mb-10 flex flex-wrap gap-1.5">
+    {#each subtopicTags as sub}
+      <a
+        href={`${basePrefix}/blog/tag/${sub}/`}
+        class={`inline-flex items-center rounded px-2 py-0.5 text-xs transition-colors ${
+          currentTag === sub
+            ? "border border-gray-800 bg-gray-800 text-white dark:border-gray-200 dark:bg-gray-200 dark:text-gray-900"
+            : "bg-gray-50 text-gray-700 border border-dashed border-gray-300 hover:bg-gray-100 hover:border-gray-500 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-400 dark:hover:text-gray-100"
+        }`}
+        on:click={() => trackEvent(EVENTS.TAG_FILTER, { tag: sub })}
+      >
+        <span class={`mr-1 ${currentTag === sub ? 'opacity-70' : (subtopicAccentByName[sub] || 'text-gray-600 dark:text-gray-300')}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
       </a>
     {/each}
   </div>

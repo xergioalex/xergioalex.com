@@ -17,6 +17,7 @@ export let currentPage;
 export let tagsResult = [];
 export let totalPostsAvailable = 0;
 export let lang = 'en';
+export let subtopicAccentByName = {};
 
 // Performance: Debounce timing (reduced for snappier feel)
 const DEBOUNCE_MS = 200;
@@ -32,6 +33,10 @@ $: topicTags = tagsResult
   .filter(
     (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
   )
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .map((tag) => tag.data.name);
+$: subtopicTags = tagsResult
+  .filter((tag) => tag.data.tier === 'subtopic')
   .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   .map((tag) => tag.data.name);
 
@@ -248,6 +253,8 @@ onMount(() => {
     {currentTag}
     tagsResult={primaryTags}
     topicTags={topicTags}
+    subtopicTags={subtopicTags}
+    {subtopicAccentByName}
     totalPosts={isSearching ? searchPagination.totalPosts : (currentTag ? postsResult.length : totalPostsAvailable)}
     currentPagePosts={isSearching ? searchResults.length : postsResult.length}
     currentPage={isSearching ? searchPagination.currentPage : currentPage}
@@ -298,7 +305,7 @@ onMount(() => {
       <p class="mt-2 text-gray-600 dark:text-gray-300">{t.searching}</p>
     </div>
   {:else if isSearching}
-    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} topicTagNames={topicTags} />
+    <SearchResults filteredPosts={searchResults} {searchQuery} {lang} searchResultsWithMatches={searchResultsWithMatches} topicTagNames={topicTags} subtopicTagNames={subtopicTags} {subtopicAccentByName} />
     {#if searchPagination.totalPages > 1}
       <BlogPagination
         currentPage={searchPagination.currentPage}
@@ -318,6 +325,8 @@ onMount(() => {
       {currentTag}
       {lang}
       topicTagNames={topicTags}
+      subtopicTagNames={subtopicTags}
+      {subtopicAccentByName}
     />
 
     {#if totalPages > 1}

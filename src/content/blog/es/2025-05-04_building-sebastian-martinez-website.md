@@ -4,7 +4,7 @@ description: "Cómo construí con Astro y Svelte el sitio web de Sebastián Mart
 pubDate: "2025-05-04"
 heroImage: "/images/blog/posts/building-sebastian-martinez-website/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "personal", "web-development", "design"]
+tags: ["portfolio", "tech", "web-development", "astro", "svelte"]
 keywords: ["sitio web poeta Astro Svelte portafolio", "Sebastián Martínez Vanegas sitio web", "construir sitio web personal para poeta", "Astro portafolio GitHub Pages", "poeta colombiano Premio Emilio Prados", "sitio web autor moderno modo oscuro", "sebastianmartinezvanegas.com"]
 ---
 

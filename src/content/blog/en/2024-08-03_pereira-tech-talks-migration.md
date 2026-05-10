@@ -4,7 +4,7 @@ description: "Migrating pereiratechtalks.org from Dockerized Ghost to static Ast
 pubDate: "2024-08-03"
 heroImage: "/images/blog/posts/pereira-tech-talks-migration/hero.webp"
 heroLayout: "banner"
-tags: ["portfolio", "tech", "web-development", "devops"]
+tags: ["portfolio", "tech", "web-development", "devops", "astro"]
 keywords: ["Ghost to Astro migration", "Pereira Tech Talks Astro site", "static site Ghost replacement", "GitHub Pages free hosting Astro", "Lighthouse Ghost vs Astro scores", "Docker Ghost migration static", "free static blog Astro GitHub Pages"]
 ---
 

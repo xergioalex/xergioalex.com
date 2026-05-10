@@ -4,7 +4,7 @@ description: "Cómo migré XergioAleX.com a Astro 6 en minutos, qué se rompió,
 pubDate: "2026-03-11"
 heroImage: "/images/blog/posts/migrating-to-astro-6/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "javascript"]
+tags: ["tech", "web-development", "javascript", "astro"]
 keywords: ["migrar Astro 5 a 6 guía", "Astro 6 cambios importantes Vite 7", "compilador Rust Astro 6 benchmark", "compilador Rust Astro 6 rendimiento", "Astro 6 velocidad dev server", "Astro 6 Zod 4 content collections", "cómo actualizar Astro a versión 6", "Astro 6 novedades migración"]
 series: "building-xergioalex"
 seriesOrder: 9

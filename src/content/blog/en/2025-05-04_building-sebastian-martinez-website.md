@@ -4,7 +4,7 @@ description: "Astro and Svelte portfolio site for Sebastián Martínez Vanegas, 
 pubDate: "2025-05-04"
 heroImage: "/images/blog/posts/building-sebastian-martinez-website/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "personal", "web-development", "design"]
+tags: ["portfolio", "tech", "web-development", "astro", "svelte"]
 keywords: ["poet website Astro Svelte portfolio", "Sebastián Martínez Vanegas website", "building personal website for poet", "Astro portfolio site GitHub Pages", "Colombian poet Emilio Prados prize", "modern author website dark mode", "sebastianmartinezvanegas.com"]
 ---
 

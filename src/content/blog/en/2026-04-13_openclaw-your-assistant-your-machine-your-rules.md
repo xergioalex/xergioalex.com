@@ -5,7 +5,7 @@ pubDate: '2026-04-13'
 updatedDate: '2026-04-19'
 heroImage: '/images/blog/posts/openclaw-your-assistant-your-machine-your-rules/hero.webp'
 heroLayout: 'side-by-side'
-tags: ['tech', 'ai']
+tags: ["tech", "ai-agents", "cloudflare", "openclaw", "claude"]
 keywords: ['OpenClaw personal AI agent', 'Peter Steinberger OpenAI', 'fastest growing open source project GitHub', 'personal AI agent markdown configuration', 'ClawHub skills marketplace', 'NemoClaw NVIDIA security', 'OpenClaw review 2026']
 series: 'mastering-openclaw'
 seriesOrder: 1
