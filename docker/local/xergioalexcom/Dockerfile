@@ -1,4 +1,4 @@
-FROM node:24.14.0-trixie-slim
+FROM node:24.15.0-trixie-slim
 LABEL maintainer="xergioalex@gmail.com"
 
 # System packages (apt requires root)
