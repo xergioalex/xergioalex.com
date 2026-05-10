@@ -4,7 +4,7 @@ description: 'GraphQL cambió cómo construyo APIs: tipado fuerte, consultas del
 pubDate: '2018-10-20'
 heroImage: '/images/blog/posts/apis-with-graphql/hero.webp'
 heroLayout: 'banner'
-tags: ["talks", "tech", "web-development", "devops"]
+tags: ["talks", "tech", "web-development", "devops", "graphql"]
 keywords: ["introducción a GraphQL", "qué es GraphQL y cómo funciona", "GraphQL vs REST APIs", "consultas con GraphQL", "lenguaje de consulta para APIs", "GraphQL tipado fuerte", "cómo implementar GraphQL"]
 ---
 

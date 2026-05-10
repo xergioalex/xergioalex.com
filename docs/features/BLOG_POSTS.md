@@ -65,16 +65,25 @@ src/content/
     ├── portfolio.md                   # tier: primary
     ├── dailybot.md                    # tier: primary
     ├── demo.md                        # tier: primary (dev only)
-    ├── web-development.md             # tier: secondary, order: 1
-    ├── javascript.md                  # tier: secondary, order: 2
-    ├── ai.md                          # tier: secondary, order: 3
-    ├── blockchain.md                  # tier: secondary, order: 4
-    ├── devops.md                      # tier: secondary, order: 5
-    ├── python.md                      # tier: secondary, order: 6
-    ├── university.md                  # tier: secondary, order: 7
-    ├── database.md                    # tier: secondary, order: 8
-    ├── iot.md                         # tier: secondary, order: 9
-    └── design.md                      # tier: secondary, order: 10
+    ├── web-development.md             # tier: secondary, order: 1, parent: tech
+    ├── javascript.md                  # tier: secondary, order: 2, parent: tech
+    ├── ai.md                          # tier: secondary, order: 3, parent: tech
+    ├── blockchain.md                  # tier: secondary, order: 4, parent: tech
+    ├── devops.md                      # tier: secondary, order: 5, parent: tech
+    ├── python.md                      # tier: secondary, order: 6, parent: tech
+    ├── university.md                  # tier: secondary, order: 7, parent: tech
+    ├── database.md                    # tier: secondary, order: 8, parent: tech
+    ├── iot.md                         # tier: secondary, order: 9, parent: tech
+    ├── design.md                      # tier: secondary, order: 10, parent: tech
+    ├── mobile.md                      # tier: secondary, order: 11, parent: tech
+    ├── kotlin.md                      # tier: subtopic,  order: 1,  parent: mobile
+    ├── astro.md                       # tier: subtopic,  order: 51, parent: web-development
+    ├── svelte.md                      # tier: subtopic,  order: 52, parent: web-development
+    ├── cloudflare.md                  # tier: subtopic,  order: 53, parent: devops
+    ├── docker.md                      # tier: subtopic,  order: 54, parent: devops
+    ├── graphql.md                     # tier: subtopic,  order: 55, parent: web-development
+    ├── django.md                      # tier: subtopic,  order: 56, parent: python
+    └── openclaw.md                    # tier: subtopic,  order: 57, parent: ai
 ```
 
 **Bilingual requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**. Never create a post in only one language.
@@ -341,23 +350,23 @@ Blog images are optimized using a **sharp-based pipeline**. See [IMAGE_OPTIMIZAT
 
 ## Tag Taxonomy (Unified Collection)
 
-Tags use a **unified taxonomy collection** with 3 tiers. Blog posts store a single `tags` array in frontmatter — the tier of each tag is resolved at build time from the tags collection.
+Tags use a **unified three-tier taxonomy collection**. Blog posts store a single `tags` array in frontmatter — the tier of each tag is resolved at build time from the tags collection.
 
 ### Architecture
 
 ```
-Blog Post: tags: ["tech", "python", "database"]
-                    │          │          │
-                    ▼          ▼          ▼
-Tags Collection:  primary   secondary  secondary
-                    │          │          │
-                    ▼          ▼          ▼
-UI Display:      [blue]     [gray]     [gray]
+Blog Post: tags: ["tech", "web-development", "astro", "mobile", "kotlin"]
+                    │            │              │         │         │
+                    ▼            ▼              ▼         ▼         ▼
+Tags Collection:  primary    secondary       subtopic  secondary  subtopic
+                    │            │              │         │         │
+                    ▼            ▼              ▼         ▼         ▼
+UI Display:    [blue #tag]  [gray outlined]  [dashed › tag]  …
 ```
 
 **Key files:**
-- `src/content/tags/*.md` — Tag definitions with tier, parent, order
-- `src/lib/blog.ts` — `groupPostTags()`, `getTagTierMap()` (cached build-time lookup)
+- `src/content/tags/*.md` — Tag definitions with `tier`, `parent`, `order`
+- `src/lib/blog.ts` — `groupPostTags()` returns `{ primaryTags, secondaryTags, subtopicTags }`; `validateTagHierarchy()` enforces parent rules at build time
 - `src/lib/translations/{en,es}.ts` — `tagNames` and `tagDescriptions` for all tiers
 
 ### Tag Collection Schema
@@ -366,15 +375,15 @@ Each tag is a `.md` file in `src/content/tags/`:
 
 ```yaml
 ---
-name: "python"                    # Identifier (matches what's used in blog posts)
-description: "Python ecosystem"   # Optional description
-tier: secondary                   # primary | secondary | subtopic
-parent: "tech"                    # Optional — for future hierarchical browsing
-order: 6                          # Sort order within tier (secondary/subtopic)
+name: "kotlin"                                   # slug — matches array entries in posts
+description: "Kotlin ecosystem — KMP, Compose"   # short description
+tier: subtopic                                   # primary | secondary | subtopic
+parent: "mobile"                                 # subtopic → secondary preferred
+order: 1                                         # sort order within tier
 ---
 ```
 
-### All Tags (17 total)
+### All Tags (26 total — 7 primary + 11 secondary + 8 subtopic)
 
 #### Primary Tags (7) — Section/Category
 
@@ -388,7 +397,7 @@ order: 6                          # Sort order within tier (secondary/subtopic)
 | `dailybot` | 6 | DailyBot product | Product-specific |
 | `demo` | 99 | Demo posts | Dev only (`_demo/` folders) |
 
-#### Secondary Tags (10) — Content/Technology Topics
+#### Secondary Tags (11) — Content/Technology Topics
 
 All secondary tags have `parent: "tech"`.
 
@@ -404,55 +413,73 @@ All secondary tags have `parent: "tech"`.
 | `database` | 8 | `tech` | Database systems (SQL, NoSQL, MongoDB) |
 | `iot` | 9 | `tech` | Internet of Things, hardware, sensors |
 | `design` | 10 | `tech` | UI/UX design, WebVR, creative tech |
+| `mobile` | 11 | `tech` | Mobile development — Android, iOS, cross-platform |
 
-#### Subtopic Tags (0) — Fine-Grained (Future)
+#### Subtopic Tags (8) — Fine-Grained Technology Handles
 
-No subtopic tags exist yet. The tier is supported in schema and code. When needed, create tags with `tier: subtopic` and `parent: "python"` (for example).
+Subtopic tags name a single concrete technology, framework, language, or product. They sit under a `secondary` parent (preferred) or, when no fitting secondary exists, a `primary` parent (allowed but flagged by validation).
+
+| Tag ID | Order | Parent | Description |
+|--------|-------|--------|-------------|
+| `kotlin` | 1 | `mobile` | Kotlin / KMP / Compose Multiplatform / Android JVM tooling |
+| `astro` | 51 | `web-development` | Astro framework — islands, Content Collections, MDX, SSG |
+| `svelte` | 52 | `web-development` | Svelte / SvelteKit — reactive components, runes, hydration |
+| `cloudflare` | 53 | `devops` | Cloudflare Pages, Workers, R2, agentic-web platform |
+| `docker` | 54 | `devops` | Docker containers, Dockerfile authoring, multi-service orchestration |
+| `graphql` | 55 | `web-development` | GraphQL APIs — schemas, resolvers, federation, client patterns |
+| `django` | 56 | `python` | Django framework — ORM, multi-db, admin, deployment |
+| `openclaw` | 57 | `ai` | OpenClaw — local-first personal AI agent and design philosophy |
 
 ### Assigning Tags to Posts
 
-1. Choose 1-2 **primary tags** for section classification
-2. Choose 1-3 **secondary tags** for content topics
-3. Put ALL in a single `tags` array:
+1. Choose **1-2 primary tags** for section classification.
+2. Choose **0-3 secondary tags** for content topics.
+3. Choose **0-3 subtopic tags** for specific technologies/frameworks/products.
+4. Put ALL in a single `tags` array (any order — the tier is resolved at build time):
 
 ```yaml
-tags: ["tech", "portfolio", "python", "database"]
+tags: ["tech", "web-development", "astro", "svelte", "cloudflare"]
 ```
 
 ### Adding a New Tag
 
-1. **Verify criteria**: Tag applies to 3+ existing posts AND is expected to recur
-2. Create `src/content/tags/{tag-name}.md` with `name`, `description`, `tier`, `order`, and `parent`
-3. Add translations to `src/lib/translations/en.ts` and `es.ts` (`tagNames` + `tagDescriptions`)
-4. Use it in blog posts — no schema or code changes needed
-5. Build-time `validateTagHierarchy()` will verify parent references are valid
+1. **Verify criteria** (see Tag Governance below): tag applies to 3+ existing posts AND is expected to recur. Run [`/audit-taxonomy`](../../.agents/skills/audit-taxonomy/SKILL.md) to surface candidates with hard data.
+2. Create `src/content/tags/{tag-name}.md` with `name`, `description`, `tier`, `order`, and `parent`.
+3. Add translations to `src/lib/translations/en.ts` and `es.ts` (`tagNames` + `tagDescriptions`). Spanish uses Tuteo and proper accents.
+4. Use it in blog posts — no schema or code changes needed.
+5. Build-time `validateTagHierarchy()` will warn about invalid parent references.
 
 ### Tag Governance
 
 **Creation criteria by tier:**
 
-| Tier | When to create | Who decides | Cap |
-|------|---------------|-------------|-----|
-| Primary | New site section (almost never) | User only | ~8 |
-| Secondary | 3+ posts use it AND expected to recur | Agent proposes, user approves | ~20 |
-| Subtopic | 3+ posts within parent use it | Agent proposes, user approves | ~15 |
+| Tier | When to create | Parenting rule | Who decides | Cap |
+|------|---------------|---------------|-------------|-----|
+| Primary | New site section (almost never) | No parent | User only | ~8 |
+| Secondary | 3+ posts use it AND expected to recur | Parent must be primary | Agent proposes via `/audit-taxonomy`, user approves | ~20 |
+| Subtopic | 3+ posts focus on the tech (passing mentions don't count) | Parent should be secondary; primary fallback flagged | Agent proposes via `/audit-taxonomy`, user approves | ~15 |
 
 **Rules:**
-- Naming: lowercase, kebab-case (e.g., `web-development`)
-- Max 5 tags per post (1-2 primary + 1-3 secondary/subtopic)
-- Agents must NEVER auto-create tags without user approval
-- Audit every ~20 posts: check for tags with <3 posts (merge/remove candidates)
-- All routes unified: `/blog/tag/{tag}/` (all tiers share the same route)
-- Build-time validation warns about invalid parent references
+
+- **Naming**: lowercase, kebab-case (`web-development`), English-only — even on Spanish posts.
+- **Tag caps**: max 5 tags per post total; max 3 subtopics per post; at least 1 primary required.
+- **Subtopic naming**: a single concrete technology/framework/language/product (e.g., `astro`, `svelte`, `golang`). Avoid broad categories (those are secondary) and feature-level slivers (out of scope).
+- **Agents must NEVER auto-create tags** without user approval.
+- **Audit cadence**: run [`/audit-taxonomy`](../../.agents/skills/audit-taxonomy/SKILL.md) quarterly OR after any content drop of 5+ posts. The skill reports tag drift, orphans, and new candidates against thresholds.
+- **All routes unified**: `/blog/tag/{tag}/` (all tiers share the same route).
+- **Build-time validation** warns about: parents that don't resolve, primary tags with parents, secondary tags whose parent is not primary, subtopic tags without parents, and subtopic tags whose parent is itself a subtopic.
 
 ### Visual Rendering by Tier
 
-| Context | Primary | Secondary/Subtopic |
-|---------|---------|-------------------|
-| Blog listing header | Blue filled pills | Gray bordered pills |
-| Blog cards | Blue `#tag` badges | Gray bordered badges |
-| Post detail header | Blue `#tag` badges | Gray bordered badges |
-| Related articles | Blue (max 3) | Gray bordered (max 2) |
+Each tier has a distinct visual style across every surface where blog tags appear (blog cards, post detail header, blog listing pill rows, related-posts strip, tag detail pages, search hits):
+
+| Tier | Light mode | Dark mode | Prefix | Shape |
+|---|---|---|---|---|
+| Primary | `bg-blue-100 text-blue-800` filled pill, `text-sm` | `bg-blue-900 dark:text-blue-200` | `#` | rounded |
+| Secondary | `border-gray-200 text-gray-600` outlined pill, `text-sm` | `dark:border-gray-600 dark:text-gray-300` | none | rounded |
+| Subtopic | `border-dashed border-gray-300 text-gray-700` smaller pill, `text-xs` | `dark:border-gray-600 dark:text-gray-300` | `›` chevron at `opacity-60` | rounded |
+
+All combinations meet WCAG AA (most are AAA). The forbidden classes `text-gray-400`, `text-gray-500`, `dark:text-gray-400`, `dark:text-gray-500` are NOT used in any tag rendering block.
 
 ### Search Support
 

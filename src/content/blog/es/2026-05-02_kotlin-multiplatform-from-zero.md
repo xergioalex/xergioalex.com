@@ -4,7 +4,7 @@ description: 'Una introducción a Kotlin Multiplatform: su historia, por qué ga
 draft: true
 pubDate: '2026-05-02'
 heroLayout: 'side-by-side'
-tags: ['tech', 'mobile', 'kotlin']
+tags: ["tech", "mobile", "kotlin", "flutter"]
 keywords: ['Kotlin Multiplatform', 'KMP', 'desarrollo mobile', 'Android iOS', 'Compose Multiplatform', 'apps multiplataforma']
 series: 'learning-mobile-development'
 seriesOrder: 2

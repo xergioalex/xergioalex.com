@@ -4,7 +4,7 @@ description: "Why cross-platform development matters and how Flutter's widget mo
 pubDate: "2019-07-05"
 heroImage: "/images/blog/posts/lets-talk-about-flutter/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech"]
+tags: ["talks", "tech", "mobile", "flutter"]
 keywords: ["Flutter introduction Dart", "Flutter vs React Native comparison", "Flutter widget model explained", "cross-platform mobile Flutter", "Flutter 1.0 mobile development", "Dart Flutter beginners", "Flutter Google mobile framework"]
 ---
 

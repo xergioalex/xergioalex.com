@@ -27,6 +27,8 @@ interface SeriesPosition {
 export let posts: PostData[] = [];
 export let lang: Language = 'en';
 export let topicTagNames: string[] = [];
+export let subtopicTagNames: string[] = [];
+export let subtopicAccentByName: Record<string, string> = {};
 
 $: t = getTranslations(lang);
 $: prefix = getUrlPrefix(lang);
@@ -247,12 +249,20 @@ function getHeroImageClass(slug: string): string {
                       #{t.tagNames[tag] || tag}
                     </a>
                   {/each}
-                  {#each post.data.tags.filter((tag) => topicTagNames.includes(tag)) as topic}
+                  {#each post.data.tags.filter((tag) => topicTagNames.includes(tag) && !subtopicTagNames.includes(tag)) as topic}
                     <a
                       href={`${prefix}/blog/tag/${topic}/`}
-                      class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+                      class="text-xs px-2 py-0.5 rounded border border-gray-200 bg-white text-gray-600 hover:border-gray-400 hover:text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
                     >
                       {t.tagNames[topic] || topic}
+                    </a>
+                  {/each}
+                  {#each post.data.tags.filter((tag) => subtopicTagNames.includes(tag)) as sub}
+                    <a
+                      href={`${prefix}/blog/tag/${sub}/`}
+                      class="inline-flex items-center text-xs px-2 py-1 rounded bg-gray-50 text-gray-700 border border-dashed border-gray-300 hover:bg-gray-100 hover:border-gray-500 hover:text-gray-900 dark:bg-gray-800/60 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-400 dark:hover:text-gray-100 transition-colors"
+                    >
+                      <span class={`mr-1 ${subtopicAccentByName[sub] || 'text-gray-600 dark:text-gray-300'}`} aria-hidden="true">›</span>{t.tagNames[sub] || sub}
                     </a>
                   {/each}
                 {/if}

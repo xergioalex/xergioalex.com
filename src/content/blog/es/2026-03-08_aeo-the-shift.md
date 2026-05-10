@@ -4,7 +4,7 @@ description: "El panorama de la búsqueda cambió — y la mayoría de los sitio
 pubDate: "2026-03-08T14:00:00"
 heroImage: "/images/blog/posts/aeo-the-shift/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai-agents", "claude"]
 keywords: ["optimización para motores de respuesta AEO guía", "qué es AEO vs SEO", "cómo funcionan los motores de búsqueda con IA", "optimización Google AI Overviews", "citas de contenido ChatGPT Perplexity", "implementación llms.txt", "datos estructurados JSON-LD AEO", "E-E-A-T datos estructurados schema"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 2

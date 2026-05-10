@@ -4,7 +4,7 @@ description: "La mayoría piensa que un agente es un LLM con herramientas. Un ag
 pubDate: "2026-04-05"
 heroImage: "/images/blog/posts/becoming-an-ai-engineer/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai"]
+tags: ["tech", "ai-agents", "mcp"]
 keywords: ["construir agentes de IA 2026", "ingeniero de IA oficio", "capas de arquitectura de agentes", "diseño de sistemas de agentes LLM", "un agente no es un prompt", "disciplina de ingeniería de IA", "ecosistema de frameworks de agentes 2026"]
 series: "building-agents"
 seriesOrder: 1

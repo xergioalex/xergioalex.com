@@ -4,7 +4,7 @@ description: 'An introduction to Kotlin Multiplatform: its history, why it keeps
 draft: true
 pubDate: '2026-05-02'
 heroLayout: 'side-by-side'
-tags: ['tech', 'mobile', 'kotlin']
+tags: ["tech", "mobile", "kotlin", "flutter"]
 keywords: ['Kotlin Multiplatform', 'KMP', 'mobile development', 'Android iOS', 'Compose Multiplatform', 'cross-platform apps']
 series: 'learning-mobile-development'
 seriesOrder: 2

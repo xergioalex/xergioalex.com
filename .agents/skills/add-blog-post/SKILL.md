@@ -92,13 +92,24 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **Image path:** `/images/blog/posts/{slug}/hero.{ext}` (ES variant: `hero-es.{ext}` when image has localized text)
 
-**Tags (unified array):** All tags go in a single `tags` array. The tier (primary/secondary) is determined by the tags collection, NOT by position in the array.
+**Tags (unified array):** All tags go in a single `tags` array. The tier (primary / secondary / subtopic) is resolved at build time from the tags collection — NOT by position in the array.
 
-**Primary tags** (1-2 per post): `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders)
+**Primary tags** (1-2 per post): `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders).
 
-**Secondary tags** (1-3 per post): `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`
+**Secondary tags** (0-3 per post): `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`, `mobile`.
 
-**Example:** `tags: ["tech", "portfolio", "python", "database"]` — primary and secondary in one array.
+**Subtopic tags** (0-3 per post — tier 3, fine-grained technology handles): `kotlin` (parent: `mobile`), `astro`/`svelte`/`graphql` (parent: `web-development`), `cloudflare`/`docker` (parent: `devops`), `django` (parent: `python`), `openclaw` (parent: `ai`).
+
+**Caps:** max 5 tags per post total; max 3 subtopics per post; at least 1 primary required.
+
+**When to use a subtopic tag:** the post is FOCUSED on that specific technology/framework/product (not just mentions it in passing). If you're unsure whether a candidate qualifies, run [`/audit-taxonomy`](../audit-taxonomy/SKILL.md) to see the data.
+
+**Examples:**
+- `tags: ["tech", "portfolio", "python", "database"]` — primary + secondary only.
+- `tags: ["tech", "web-development", "astro", "svelte"]` — primary + secondary + 2 subtopics (Astro+Svelte tech post).
+- `tags: ["tech", "mobile", "kotlin"]` — primary + secondary + subtopic (mobile post focused on Kotlin).
+
+**Full taxonomy reference:** see [Tag Taxonomy in BLOG_POSTS.md](../../../docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection) for the complete tier table, governance, and visual rendering rules.
 
 **Series** (optional): If the post belongs to a series, add `series: "{series-slug}"` and `seriesOrder: {n}`. Available series are defined in `src/content/series/`. The `SeriesNavigation` panel and `SeriesIndicator` floating button render automatically — no component imports or page changes needed.
 

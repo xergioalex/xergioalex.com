@@ -4,7 +4,7 @@ description: "AI agents aren't productivity multipliers — they're judgment mul
 pubDate: "2026-03-25"
 heroImage: "/images/blog/posts/the-art-of-directing-agents/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai-agents", "personal"]
 keywords: ["art of directing agents", "better instructions AI agents", "delegating to coding agents", "how to work with AI agents", "AI agent direction vs prompting", "same model different results AI", "framing work for AI agents"]
 series: "working-with-agents"
 seriesOrder: 2

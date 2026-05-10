@@ -85,8 +85,8 @@ describe('BlogCard', () => {
       render(BlogCard, {
         props: { post: publishedEnglishPost as never },
       });
-      // Tags are rendered as links with # prefix
-      const tagLinks = screen.getAllByText(/#(tech|astro)/);
+      // Tags are rendered as links with # prefix; translation may capitalize.
+      const tagLinks = screen.getAllByText(/#(tech|astro)/i);
       expect(tagLinks.length).toBeGreaterThan(0);
     });
 

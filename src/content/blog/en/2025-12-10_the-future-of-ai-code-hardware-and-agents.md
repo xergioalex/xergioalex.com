@@ -4,7 +4,7 @@ description: "Pereira Tech Talks with Sebastián Mora — from writing code to o
 pubDate: "2025-12-10"
 heroImage: "/images/blog/posts/the-future-of-ai-code-hardware-and-agents/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "ai"]
+tags: ["talks", "tech", "ai-agents"]
 keywords: ["AI agents MCP model context protocol", "physical AI robotics programming", "AI engineer orchestrator role", "Pereira Tech Talks AI 2025", "orchestrating LLMs agents", "MCP universal AI tool adapter", "AI code hardware future talk"]
 ---
 

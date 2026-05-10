@@ -40,7 +40,9 @@ const { heroImage, pubDate, updatedDate, title, description, tags, keywords } =
 const { Content } = await render(post);
 const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
-const { primaryTags, topicTags } = await groupPostTags(tags ?? []);
+const { primaryTags, secondaryTags, subtopicTags } = await groupPostTags(
+  tags ?? []
+);
 const isScheduled = isScheduledPost(post);
 const isDraft = isDraftPost(post);
 const seriesInfo = post.data.series
@@ -168,7 +170,8 @@ const breadcrumbData = {
         heroImage={heroImage}
         heroLayout={post.data.heroLayout}
         tags={primaryTags}
-        topics={topicTags}
+        topics={secondaryTags}
+        subtopics={subtopicTags}
         lang={lang}
         readingTimeMinutes={readingTimeMinutes}
       />

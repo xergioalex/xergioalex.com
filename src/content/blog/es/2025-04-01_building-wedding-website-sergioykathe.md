@@ -4,7 +4,7 @@ description: "Invitación de boda estática: Astro, Svelte, GitHub Pages, sin ba
 pubDate: "2025-04-01"
 heroImage: "/images/blog/posts/building-wedding-website-sergioykathe/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "personal", "web-development", "design"]
+tags: ["portfolio", "tech", "web-development", "astro", "svelte"]
 keywords: ["sitio web de boda con Astro y Svelte", "invitaciones de boda personalizadas con código único", "RSVP boda con Google Forms sin backend", "página web matrimonio estática GitHub Pages", "cómo crear sitio web de boda gratis", "sistema confirmación asistencia boda Google Sheets", "invitación de boda personalizada URL única"]
 ---
 

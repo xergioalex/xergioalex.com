@@ -4,7 +4,7 @@ description: "What I shared in a talk on Docker and microservice-oriented archit
 pubDate: "2018-12-13"
 heroImage: "/images/blog/posts/docker-introduction/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "devops"]
+tags: ["talks", "tech", "devops", "docker"]
 keywords: ["Docker introduction containers", "Docker microservices architecture", "Docker Compose tutorial", "containers vs virtual machines", "Docker for developers", "microservice oriented architecture Docker", "Docker containers explained"]
 ---
 

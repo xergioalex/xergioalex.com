@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 13             | 7                  | 0              | 20    |
+| Skills | 13             | 8                  | 0              | 21    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **13**      | **12**             | **1**          | **26** |
+| **Total** | **13**      | **13**             | **1**          | **27** |
 
 ---
 
@@ -46,6 +46,7 @@ Everyday development work.
 | add-slide-deck | create  | `/add-slide-deck` | sonnet | **Mandatory for new slide decks** — internal Reveal.js, external-embed, or external-link. |
 | audit-post    | review   | `/audit-post`    | sonnet | Pre-publication audit for blog posts — SEO, AEO, accessibility, images, content quality, i18n parity, and project conventions. |
 | audit-series  | review   | `/audit-series`  | sonnet | Pre-publication audit for blog series — series definition, post ordering, cross-post consistency, navigation, and individual post summary checks. |
+| audit-taxonomy | review  | `/audit-taxonomy` | sonnet | Read-only audit of the blog tag taxonomy — frequency, orphans, hierarchy, and proposals for new subtopic tags. Writes report to `tmp/audit-taxonomy/`. See [Blog Posts → Tags](../../docs/features/BLOG_POSTS.md). |
 | promote-post  | create   | `/promote-post`  | sonnet | Generate social media content for any blog post (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |

@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 import SeriesInfiniteScroll from '@/components/blog/SeriesInfiniteScroll.svelte';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { getSeriesTimelineIndex } from '@/lib/blog';
+import { getSeriesTimelineIndex, getSubtopicAccentMap } from '@/lib/blog';
 import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
@@ -29,6 +29,10 @@ const topicTagNames = allTags
     (tag) => tag.data.tier === 'secondary' || tag.data.tier === 'subtopic'
   )
   .map((tag) => tag.data.name);
+const subtopicTagNames = allTags
+  .filter((tag) => tag.data.tier === 'subtopic')
+  .map((tag) => tag.data.name);
+const subtopicAccentByName = await getSubtopicAccentMap();
 
 const allPosts = await getSeriesTimelineIndex(slug, lang);
 const initialPosts = allPosts.slice(0, BLOG_PAGE_SIZE);
@@ -78,6 +82,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         pageSize={BLOG_PAGE_SIZE}
         emptyStateMessage={t.seriesPage.emptyState}
         {topicTagNames}
+        {subtopicTagNames}
+        {subtopicAccentByName}
         shareUrl={canonicalURL.href}
       />
     </div>

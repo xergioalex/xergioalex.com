@@ -4,7 +4,7 @@ description: "Tras años en GitHub Pages, evalué opciones gratuitas y elegí Cl
 pubDate: "2026-03-04T10:00:00"
 heroImage: "/images/blog/posts/best-way-deploy-astro-site-free/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development"]
+tags: ["tech", "web-development", "astro"]
 keywords: ["cómo desplegar sitio Astro gratis", "Cloudflare Pages vs GitHub Pages Astro", "mejor plataforma para desplegar Astro", "despliegue gratuito de sitio estático", "Cloudflare Pages para sitios Astro", "GitHub Pages vs Cloudflare Pages comparación", "hosting gratuito para sitio web"]
 series: "building-xergioalex"
 seriesOrder: 7
