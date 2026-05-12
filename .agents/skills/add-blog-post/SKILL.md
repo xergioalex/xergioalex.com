@@ -122,6 +122,16 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **Creating a NEW series:** Create `src/content/series/{slug}.md` with `name`, `title`, `description`, `order` fields. Then add the series fields to each post's frontmatter.
 
+**Author** (optional): If the post belongs to an author other than the default, add `author: "{author-slug}"` to the frontmatter. Available authors are YAML files in `src/content/authors/`. When omitted, the post defaults to `sergio-florez`. Both EN and ES versions of a post **must** use the same `author` slug — authorship doesn't translate. The `AuthorCard` renders automatically at the end of the post and pulls localized `role` and `bio` from the author's YAML.
+
+**Author workflow (when adding a new author):**
+1. Create `src/content/authors/{slug}.yaml` with `name`, `slug`, `avatar`, `role.{en,es}`, `bio.{en,es}`, and optional `social` (x, linkedin, github, instagram, website)
+2. Add the avatar at `public/images/authors/{slug}.webp` (WebP, ~160x160 px)
+3. Reference the slug in `author:` on both EN and ES versions of the post
+4. Verify at `/internal/authors` in dev mode
+
+**Full reference:** [features/AUTHORS.md](../../../docs/features/AUTHORS.md)
+
 **Content lifecycle:**
 - Posts are **published** (visible in production and dev)
 - Files in `_demo/` folder: **demo** posts (accessible only by direct URL in local dev mode, never in production or listings)
@@ -215,6 +225,10 @@ heroImage: '/images/blog/posts/post-title-here/hero.jpg'
 heroLayout: 'banner'
 tags: ['tech', 'web-development', 'javascript']
 keywords: ['specific search phrase 1', 'long-tail keyword phrase 2', 'technology name tutorial', 'how to do X with Y', 'comparison A vs B']
+# author: 'sergio-florez'      # Optional — slug from src/content/authors/. Defaults to 'sergio-florez'
+# series: 'series-slug'         # Optional — must match a slug in src/content/series/
+# seriesOrder: 1                # Required when series is set — positive integer, unique within the series
+# draft: true                   # Optional — hides post from production
 ---
 
 ## Introduction
@@ -266,7 +280,7 @@ series: "optional-series"
 **Translation rules:**
 - Translate IDEAS, not words — should read as if originally written in that language
 - Translate: `title`, `description`, `keywords`, all body content, alt text
-- Preserve exactly: `pubDate`, `updatedDate`, `heroLayout`, `tags`, code blocks, URLs
+- Preserve exactly: `pubDate`, `updatedDate`, `heroLayout`, `tags`, `author`, `series`, `seriesOrder`, code blocks, URLs
 - `heroImage`: Use the same path as EN by default. If a `hero-es.{ext}` variant exists, use it in the ES frontmatter
 - Adapt idioms and expressions to sound natural
 - **Keywords:** Generate language-specific keywords (adapted, not translated) — see Step 4

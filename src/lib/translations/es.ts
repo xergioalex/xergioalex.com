@@ -1121,11 +1121,6 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
 
   // Blog post engagement
   engagement: {
-    // Author bio
-    authorBioTitle: 'Sobre el Autor',
-    authorBioDescription:
-      'CTO y Cofundador en DailyBot (YC S21). Escribo sobre desarrollo de productos, startups y el arte de la ingeniería de software.',
-
     // Share buttons
     shareTitle: 'Comparte este artículo',
     shareSeriesTitle: 'Comparte esta serie',
@@ -1156,6 +1151,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     ctaTitle: '¿Te gustó este artículo?',
     ctaDescription:
       'Compártelo con tu red o suscríbete para recibir mis nuevas publicaciones.',
+  },
+
+  // Blog engagement (author + share)
+  blogEngagement: {
+    aboutAuthor: 'Sobre el autor',
+    writtenBy: 'Escrito por',
   },
 
   // Errors

@@ -1,7 +1,7 @@
 ---
 title: "Desarrollo móvil en 2026: estado del arte y por dónde empezar hoy"
 description: "Estado del arte del desarrollo móvil en 2026: las opciones disponibles, cómo funciona cada una y por dónde tiene sentido empezar hoy."
-pubDate: "2026-05-11"
+pubDate: "2026-05-12"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "mobile", "flutter"]
@@ -203,9 +203,9 @@ Analizando las opciones del panorama, he descartado varias buscando algo que me 
 
 **PWA:** Para proyectos que requieren acceso real al dispositivo — cámara, sensores, notificaciones push — una PWA no llega.
 
-**React Native:** Es una opción seria. La Nueva Arquitectura la hizo una plataforma mucho más sólida de lo que era. Si ya existe una base de código React grande, el cálculo cambia. Pero trabajar con React/JS para móvil sigue sin sentirse lo suficientemente nativo — al final sigues en un puente entre JavaScript y las APIs de la plataforma, y esa capa intermedia se nota.
+**React Native:** Es una opción seria. La Nueva Arquitectura la hizo una plataforma mucho más sólida de lo que era. Si ya existe una base de código React grande, el cálculo cambia. Pero trabajar con React/JS para móvil sigue sin sentirse lo suficientemente nativo, al menos en mi opinión — al final sigues en un puente entre JavaScript y las APIs de la plataforma, y esa capa intermedia se nota.
 
-Eso deja dos opciones con mucho sentido para cualquiera que quiera empezar en un ecosistema ágil y serio: **Flutter** y **Kotlin Multiplatform**. Ambas combinan alcance cross-platform real, un gran respaldo corporativo, una comunidad seria y una filosofía técnica que no se siente como un parche — sino como una apuesta de largo plazo.
+Eso deja dos opciones con mucho sentido para cualquiera que quiera empezar en un ecosistema ágil y serio: **Flutter** y **Kotlin Multiplatform (KMP)**. Ambas combinan alcance cross-platform real, un gran respaldo corporativo, una comunidad seria y una filosofía técnica que no se siente como un parche — sino como una apuesta de largo plazo.
 
 ### Dos filosofías, un mismo camino
 

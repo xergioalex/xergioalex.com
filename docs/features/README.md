@@ -6,7 +6,9 @@ This directory contains detailed documentation for specific features implemented
 
 | Feature | File | Description |
 |---------|------|-------------|
+| Authors | [AUTHORS.md](./AUTHORS.md) | Multi-author support: YAML schema, AuthorCard, JSON-LD integration |
 | Blog Posts | [BLOG_POSTS.md](./BLOG_POSTS.md) | Post structure, naming, frontmatter, hero layouts |
+| Blog Content Lifecycle | [BLOG_CONTENT_LIFECYCLE.md](./BLOG_CONTENT_LIFECYCLE.md) | Draft, scheduled, published, demo visibility rules |
 | Blog Search | [BLOG_SEARCH.md](./BLOG_SEARCH.md) | Client-side search functionality |
 | Dark Mode | [DARK_MODE.md](./DARK_MODE.md) | Theme toggle and persistence |
 | Image Optimization | [IMAGE_OPTIMIZATION.md](./IMAGE_OPTIMIZATION.md) | Sharp-based image pipeline and staging workflow |

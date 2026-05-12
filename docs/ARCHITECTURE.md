@@ -108,6 +108,7 @@ src/
 │       └── MobileMenu.svelte    # Mobile nav menu
 │
 ├── content/                 # Content Collections
+│   ├── authors/             # Author definitions (YAML, one per author)
 │   ├── blog/                # Blog posts (auto-generates .md endpoints)
 │   ├── pages/               # Page Markdown for AI agents
 │   │   ├── en/              # English page content (.md endpoints)
@@ -115,7 +116,7 @@ src/
 │   ├── series/              # Blog series definitions
 │   └── tags/                # Tag definitions
 │
-├── content.config.ts        # Collection schemas (blog, tags, series, pages)
+├── content.config.ts        # Collection schemas (blog, tags, series, slides, pages, authors)
 ├── env.d.ts                 # TypeScript environment
 │
 ├── layouts/
@@ -298,6 +299,7 @@ const blog = defineCollection({
     heroLayout: z.enum(['banner', 'side-by-side', 'minimal', 'none'])
       .default('banner').optional(),
     tags: z.array(z.string()).optional(),
+    author: z.string().default('sergio-florez'),
   }),
 });
 
@@ -308,8 +310,28 @@ const tags = defineCollection({
   }),
 });
 
-export const collections = { blog, tags };
+const authors = defineCollection({
+  loader: glob({ base: './src/content/authors', pattern: '**/*.yaml' }),
+  schema: z.object({
+    name: z.string(),
+    slug: z.string(),
+    avatar: z.string(),
+    role: z.object({ en: z.string(), es: z.string() }),
+    bio: z.object({ en: z.string(), es: z.string() }),
+    social: z.object({
+      x: z.string().optional(),
+      linkedin: z.string().optional(),
+      github: z.string().optional(),
+      instagram: z.string().optional(),
+      website: z.string().optional(),
+    }).optional(),
+  }),
+});
+
+export const collections = { blog, tags, series, slides, pages, authors };
 ```
+
+> **See:** [Authors](./features/AUTHORS.md) for the full multi-author guide.
 
 ### Querying Content
 
@@ -336,6 +358,8 @@ Files use date-prefix naming: `YYYY-MM-DD_slug.{md,mdx}`. The date prefix is str
 
 ```
 src/content/
+├── authors/
+│   └── sergio-florez.yaml               # One YAML file per author
 ├── blog/
 │   ├── en/                              # English posts
 │   │   ├── 2020-12-31_personal-branding-xergioalex.md

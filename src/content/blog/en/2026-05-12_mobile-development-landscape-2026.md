@@ -1,7 +1,7 @@
 ---
 title: "Mobile Development in 2026: State of the Art and Where to Start Today"
 description: "State of the art of mobile development in 2026: the available options, how each one works, and where it actually makes sense to start today."
-pubDate: "2026-05-11"
+pubDate: "2026-05-12"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "mobile", "flutter"]
@@ -203,9 +203,9 @@ After analyzing the options across the landscape, I've ruled out several — loo
 
 **PWA:** For projects that require real device access — camera, sensors, push notifications — a PWA doesn't get there.
 
-**React Native:** This is a serious option. The New Architecture made it a much more solid platform than it used to be. If a large React codebase already exists, the calculation changes. But working with React/JS for mobile still doesn't feel native enough — at the end of the day you're still on a bridge between JavaScript and the platform APIs, and that intermediate layer shows.
+**React Native:** This is a serious option. The New Architecture made it a much more solid platform than it used to be. If a large React codebase already exists, the calculation changes. But working with React/JS for mobile still doesn't feel native enough, at least in my opinion — at the end of the day you're still on a bridge between JavaScript and the platform APIs, and that intermediate layer shows.
 
-That leaves two options that make a lot of sense for anyone looking to start in an agile and serious ecosystem: **Flutter** and **Kotlin Multiplatform**. Both combine real cross-platform reach, strong corporate backing, a serious community, and a technical philosophy that doesn't feel like a patch — but like a long-term bet.
+That leaves two options that make a lot of sense for anyone looking to start in an agile and serious ecosystem: **Flutter** and **Kotlin Multiplatform (KMP)**. Both combine real cross-platform reach, strong corporate backing, a serious community, and a technical philosophy that doesn't feel like a patch — but like a long-term bet.
 
 ### Two philosophies, one path
 

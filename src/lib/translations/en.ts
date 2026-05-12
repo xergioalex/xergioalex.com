@@ -1110,11 +1110,6 @@ I currently focus on AI applications, developer productivity, and high-impact pr
 
   // Blog post engagement
   engagement: {
-    // Author bio
-    authorBioTitle: 'About the Author',
-    authorBioDescription:
-      'CTO & Co-founder at DailyBot (YC S21). I write about building products, startups, and the craft of software engineering.',
-
     // Share buttons
     shareTitle: 'Share this post',
     shareSeriesTitle: 'Share this series',
@@ -1144,6 +1139,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     ctaTitle: 'Enjoyed this post?',
     ctaDescription:
       'Share it with your network or subscribe to get my latest posts delivered to your inbox.',
+  },
+
+  // Blog engagement (author + share)
+  blogEngagement: {
+    aboutAuthor: 'About the author',
+    writtenBy: 'Written by',
   },
 
   // Errors

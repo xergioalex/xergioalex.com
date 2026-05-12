@@ -12,6 +12,7 @@
 | Standards | [Standards](docs/STANDARDS.md) | Canonical coding rules, orthography, import order |
 | Blog | [Blog Posts](docs/features/BLOG_POSTS.md) | Tags, series, hero layouts, images, content lifecycle |
 | Blog Lifecycle | [Blog Content Lifecycle](docs/features/BLOG_CONTENT_LIFECYCLE.md) | End-to-end blog workflow |
+| Authors | [Authors](docs/features/AUTHORS.md) | Multi-author support, YAML schema, AuthorCard, JSON-LD |
 | Writing Voice | [Writing Voice Guide](docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop checklist, author voice, vocabulary blocklist |
 | Writing Craft | [Writing Craft Guide](docs/WRITING_CRAFT_GUIDE.md) | Narrative structure, fact verification, quote handling, figure markup, refinement patterns, case studies |
 | Testing | [Testing](docs/TESTING_GUIDE.md) | Vitest setup, conventions, writing tests |
@@ -53,7 +54,8 @@ src/
 │   ├── home/            # Homepage sections (Hero, Projects, Blog preview)
 │   ├── layout/          # Header.svelte, MobileMenu.svelte
 │   └── pages/           # Shared page components (*Page.astro)
-├── content/             # Content Collections (blog posts, tags, series)
+├── content/             # Content Collections (blog posts, tags, series, authors)
+│   ├── authors/         # Author definitions (.yaml files, one per author)
 │   ├── blog/{en,es}/    # Blog posts by language (YYYY-MM-DD_slug.md)
 │   ├── slides/{en,es}/  # Slide decks by language (3 types: internal/external-link/external-embed)
 │   ├── tags/            # Tag definitions (.md files with tier/order)
@@ -194,7 +196,8 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 **Content type rules:**
 
 - **Pages:** Create 1 shared `*Page.astro` in `src/components/pages/` + thin 3-line wrappers in `src/pages/` and `src/pages/es/` passing `lang` as string literal
-- **Blog Posts:** Both `src/content/blog/en/` and `src/content/blog/es/` MUST have the equivalent post. Translate `title`, `description`, and body. Preserve `pubDate`, `heroImage`, `tags`, code blocks. **Use `/add-blog-post` skill for new posts.**
+- **Blog Posts:** Both `src/content/blog/en/` and `src/content/blog/es/` MUST have the equivalent post. Translate `title`, `description`, and body. Preserve `pubDate`, `heroImage`, `tags`, `author`, code blocks. **Use `/add-blog-post` skill for new posts.**
+- **Authors:** Defined as YAML in `src/content/authors/{slug}.yaml`. Localization lives inside the YAML — both `role.en`/`role.es` and `bio.en`/`bio.es` are required by the schema. Posts reference an author by slug; the same slug applies to EN and ES versions. See [Authors](docs/features/AUTHORS.md).
 - **Translation Strings:** Add to BOTH `src/lib/translations/en.ts` and `es.ts`. Update `types.ts` with any new interface keys
 - **Components:** Use `getTranslations(lang)` from `@/lib/translations`. Never hardcode user-visible strings
 - **Agent-Friendly Markdown (MANDATORY):** When page or translation content changes, update the corresponding `src/content/pages/{en,es}/*.md` files. These serve as Markdown endpoints for AI agents and MUST stay in sync with the HTML content. See **[Markdown for Agents](docs/aeo/MARKDOWN_FOR_AGENTS.md)**.
@@ -203,6 +206,8 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 
 - [ ] Pages exist in both `src/pages/` and `src/pages/es/`
 - [ ] Blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
+- [ ] Same `author` slug used in EN and ES versions of a post
+- [ ] New/updated authors have both `role.en`/`role.es` and `bio.en`/`bio.es` filled in (`src/content/authors/`)
 - [ ] UI strings in both `en.ts` and `es.ts`
 - [ ] No hardcoded user-visible text
 - [ ] Page Markdown files updated in both `src/content/pages/en/` and `src/content/pages/es/`
@@ -352,6 +357,8 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 **Tags:** Flat `tags` array in frontmatter. Three tiers (primary / secondary / subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 0-3 secondary + 0-3 subtopic; max 3 subtopics; ≥ 1 primary required). Never auto-create tags without user approval — propose with [`/audit-taxonomy`](.agents/skills/audit-taxonomy/SKILL.md) and let the user approve. See [Tag Taxonomy in BLOG_POSTS.md](docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection) for the full tier table.
 
 **Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}` in frontmatter. Series defined in `src/content/series/`. Navigation renders automatically. **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow`, not `la-biblioteca-del-manana`).
+
+**Authors:** Posts reference `author: "{slug}"` (optional, defaults to `sergio-florez`). Authors defined as YAML in `src/content/authors/{slug}.yaml` with localized `role`/`bio` (en/es) and avatar at `public/images/authors/{slug}.webp`. Both EN and ES versions of a post must use the same `author` slug. Full reference: [features/AUTHORS.md](docs/features/AUTHORS.md). Internal directory: `/internal/authors`.
 
 **Resources section:** Include external links (docs, repos, tools). Do NOT list related articles or previous chapters — they appear in the series navigation below.
 

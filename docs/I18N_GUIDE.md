@@ -252,13 +252,27 @@ const posts = allPosts.filter((post) => post.id.startsWith('es/'));
 **Frontmatter requirements:**
 
 - `title` and `description` must be translated
-- `pubDate`, `updatedDate`, `heroImage`, and `tags` must be identical between language pairs
+- `pubDate`, `updatedDate`, `heroImage`, `tags`, and `author` must be identical between language pairs
 - Post filenames must match between `en/` and `es/` folders
 
 **Spanish content voice:**
 
 - Use **tuteo** (tú/tienes/puedes), NOT **voseo** (vos/tenés/podés) — the register is informal-professional with Colombian Spanish phrasing
 - Proper diacritical marks are mandatory (see [Standards](STANDARDS.md))
+
+### Authors
+
+Authors are defined in `src/content/authors/{slug}.yaml`. The localization happens **inside the YAML** (not at the post level): each author has `role.en` / `role.es` and `bio.en` / `bio.es`. Blog posts reference an author by slug, so the same `author:` value applies to both EN and ES versions of a post.
+
+**Translation requirements:**
+
+- Both `role.en` and `role.es` are mandatory by the schema — a missing language fails the Zod validation at build time
+- Both `bio.en` and `bio.es` are mandatory by the schema
+- Spanish role / bio must use proper diacritics (`Cofundador`, `años`, `diseño`, etc.) and tuteo register
+- The `name` field is the same in all languages (proper names don't translate)
+- Social URLs are language-agnostic
+
+See [features/AUTHORS.md](./features/AUTHORS.md) for the full schema and validation checklist.
 
 ### Pages
 
@@ -411,6 +425,8 @@ Before committing any content change, verify:
 
 - [ ] All new/modified pages exist in both `src/pages/` and `src/pages/es/`
 - [ ] All new/modified blog posts exist in both `src/content/blog/en/` and `src/content/blog/es/`
+- [ ] When introducing or updating an author, both `role.en`/`role.es` and `bio.en`/`bio.es` are populated in `src/content/authors/{slug}.yaml`
+- [ ] Same `author` slug used in EN and ES versions of a post
 - [ ] All new UI strings in `translations.ts` have both English and Spanish values
 - [ ] No hardcoded user-visible text in components (use `getTranslations()`)
 - [ ] Tag names use `t.tagNames[slug] || slug` pattern for display

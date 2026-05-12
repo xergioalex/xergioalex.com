@@ -1,14 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { render } from 'astro:content';
-import AuthorBioCard from '@/components/blog/AuthorBioCard.astro';
+import { getCollection, render } from 'astro:content';
 import BlogImageLightbox from '@/components/blog/BlogImageLightbox.svelte';
+import BlogPostFooter from '@/components/blog/BlogPostFooter.astro';
 import BlogPostHeader from '@/components/blog/BlogPostHeader.astro';
 import NewsletterForm from '@/components/blog/NewsletterForm.svelte';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
-import ShareButtons from '@/components/blog/ShareButtons.astro';
 import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
@@ -35,8 +34,16 @@ const { lang, post } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
-const { heroImage, pubDate, updatedDate, title, description, tags, keywords } =
-  post.data;
+const {
+  heroImage,
+  pubDate,
+  updatedDate,
+  title,
+  description,
+  tags,
+  keywords,
+  author: authorSlug,
+} = post.data;
 const { Content } = await render(post);
 const readingTimeMinutes = getReadingTimeFromContent(post.body ?? '');
 const wordCount = getWordCount(post.body ?? '');
@@ -55,6 +62,15 @@ const relatedPosts = await getRelatedPosts({
   limit: 3,
 });
 
+let authorData: { name: string; avatar: string } | undefined;
+if (authorSlug) {
+  const authors = await getCollection('authors');
+  const match = authors.find((a) => a.data.slug === authorSlug);
+  if (match) {
+    authorData = match.data;
+  }
+}
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const articleSection = tags?.[0] ? t.tagNames[tags[0]] || tags[0] : 'Blog';
 const blogPostingData = {
@@ -67,9 +83,10 @@ const blogPostingData = {
   dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
   author: {
     '@type': 'Person',
-    name: 'Sergio Alexander Florez Galeano',
+    name: authorData?.name ?? 'Sergio Alexander Florez Galeano',
     url: new URL('/about/', Astro.site).href,
-    image: new URL('/images/profile.png', Astro.site).href,
+    image: new URL(authorData?.avatar ?? '/images/profile.png', Astro.site)
+      .href,
   },
   publisher: {
     '@type': 'Person',
@@ -178,16 +195,22 @@ const breadcrumbData = {
       <div class="prose prose-lg prose-slate mx-auto max-w-4xl dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:block prose-img:mx-auto">
         <Content components={{ TypewriterDemo }} />
       </div>
-      <section class="mx-auto mt-12 max-w-4xl space-y-8" aria-label={t.engagement.ctaTitle}>
-        <AuthorBioCard lang={lang} />
-        <ShareButtons lang={lang} title={title} url={canonicalURL.href} />
-        <NewsletterForm
-          client:visible
+      <div class="mt-12 space-y-8">
+        <BlogPostFooter
+          authorSlug={authorSlug}
           lang={lang}
-          formUrl={NEWSLETTER.googleForms.formUrl}
-          entries={NEWSLETTER.googleForms.entries}
+          title={title}
+          url={canonicalURL.href}
         />
-      </section>
+        <section class="mx-auto max-w-4xl" aria-label={t.engagement.ctaTitle}>
+          <NewsletterForm
+            client:visible
+            lang={lang}
+            formUrl={NEWSLETTER.googleForms.formUrl}
+            entries={NEWSLETTER.googleForms.entries}
+          />
+        </section>
+      </div>
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
