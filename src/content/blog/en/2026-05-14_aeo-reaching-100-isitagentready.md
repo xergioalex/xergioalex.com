@@ -1,14 +1,13 @@
 ---
 title: "Reaching 100 on isitagentready.com: What Your Site Needs in the Era of Agents"
-description: "Four categories, eight artifacts, one concrete guide: what your site needs today to be ready for agents, with a real case that reached 100."
-pubDate: "2026-04-27T15:00:00"
+description: "Five categories, eight artifacts, one concrete guide: what your site needs to be agent-ready — including the commerce layer I deliberately don't fake."
+pubDate: "2026-05-14T15:00:00"
 heroImage: "/images/blog/posts/aeo-reaching-100-isitagentready/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "web-development", "ai-agents", "mcp"]
-keywords: ["isitagentready.com 100", "agent-ready website", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt"]
+keywords: ["isitagentready.com 100", "agent-ready website", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt", "x402 payment protocol", "agentic commerce protocol acp", "machine payment protocol mpp"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 5
-draft: true
 ---
 
 A few days ago I published [my recap of Cloudflare's Agents Week 2026](/blog/cloudflare-agents-week-2026/). One tool from that week fit so well with my series [AEO: From Invisible to Cited](/blog/series/aeo-from-invisible-to-cited/) that it deserved its own post: [isitagentready.com](https://isitagentready.com/). It turns a vague question — *"is my site ready to be discovered by AI?"* — into a single number between 0 and 100. Four categories, each with its own spec, each with a pass/fail check.
@@ -54,9 +53,11 @@ Before the work, a short orientation. [isitagentready.com](https://isitagentread
 
 Each category that isitagentready.com checks has an associated `SKILL.md` file: a short document, defined by Cloudflare, that acts as a manual for a single capability. It tells you what the tool checks, what file or HTTP header your site must serve, what the minimum valid example looks like, and what common mistakes to avoid. It's the contract between what your site publishes and what an agent expects to find.
 
-Before writing any code, the eight `SKILL.md` documents that isitagentready.com publishes were my source of truth. Every artifact in this post matches their examples byte for byte.
+Before writing any code, the eight `SKILL.md` documents covering those four categories were my source of truth. Every artifact in this post matches their examples byte for byte.
 
 Where a spec required a field that doesn't apply to my case, I filled it honestly and added a `_comment` explaining the situation; where it accepted a minimal JSON, I shipped the minimum. Everything is reproducible.
+
+One heads-up before the work. Since I first published this, isitagentready.com has added a fifth category — **Commerce** — that checks whether AI agents can pay your site. For a content site that sells nothing it reports *not checked*, which is the right call. I cover what it checks, and why I'm leaving that circle gray, a bit further down.
 
 ## The 33/100 baseline
 
@@ -73,15 +74,15 @@ Most content sites today would land in roughly the same place. That's the point 
 
 Time to go category by category.
 
-## 1. Content: already at 100 (thanks to earlier work)
+## Content: already at 100 (thanks to earlier work)
 
 Content was at 100 from day one because of earlier work in the series. [Markdown for Agents](/blog/aeo-markdown-for-agents/) set up a content-negotiation layer that serves clean Markdown versions of every page to AI crawlers — and standalone `.md` endpoints at predictable paths. The scorecard's Content check looks for that structure: if a crawler sends `Accept: text/markdown`, does the server respond with real Markdown instead of an HTML soup it has to scrape?
 
 For `xergioalex.com`, the answer is yes. The Cloudflare Pages middleware at `functions/_middleware.ts` watches incoming `Accept` headers; if an AI bot asks for Markdown, the middleware pulls the matching `.md` file from the build output and returns it with a `Content-Type: text/markdown; charset=utf-8` header. Every HTML page has a matching `.md` counterpart — verified by the `md:check` parity script that runs as part of CI.
 
-## 2. Discoverability: one line in `_headers`
+## Discoverability: one line in `_headers`
 
-The Discoverability check looks for a `Link:` HTTP response header pointing at a machine-readable description of your site's programmatic surface. [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) defines the format; [RFC 9727 §3](https://www.rfc-editor.org/rfc/rfc9727#section-3) registers `api-catalog` as a valid relation type. The SKILL.md accepts any of `api-catalog`, `service-desc`, `service-doc`, or `describedby` — I picked the most specific one and pointed it at the API catalog we'll ship in section 3.
+The Discoverability check looks for a `Link:` HTTP response header pointing at a machine-readable description of your site's programmatic surface. [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) defines the format; [RFC 9727 §3](https://www.rfc-editor.org/rfc/rfc9727#section-3) registers `api-catalog` as a valid relation type. The SKILL.md accepts any of `api-catalog`, `service-desc`, `service-doc`, or `describedby` — I picked the most specific one and pointed it at the API catalog we build later in this post.
 
 On Cloudflare Pages, response headers live in `public/_headers`:
 
@@ -99,7 +100,7 @@ One caveat that cost me a minute: Cloudflare Pages applies `_headers` rules at t
 
 Two lines of config, one file, done.
 
-## 3. APIs, Auth, MCP & Skill Discovery: six JSON documents + one browser bridge
+## APIs, Auth, MCP & Skill Discovery: six JSON documents + one browser bridge
 
 This is the category where 0 becomes 100 in one shot — six of my eight artifacts live here, plus the WebMCP bridge. The scorecard checks for:
 
@@ -230,7 +231,7 @@ if (typeof mc.provideContext === 'function') {
 
 Three tools, all read-only: `search_blog`, `list_series`, `open_post`. No writes, no destructive actions, nothing cross-origin. Wiring is one import plus one element inside `MainLayout.astro`. Every page using the layout — effectively the entire public site — now ships the bridge.
 
-## 4. Bot Access Control: the `Content-Signal` directive in `robots.txt`
+## Bot Access Control: the `Content-Signal` directive in `robots.txt`
 
 The Bot Access Control check looks for your site to say something about how AI crawlers can use your content. The signal lives in `robots.txt` and is called `Content-Signal` — an [IETF draft](https://datatracker.ietf.org/doc/draft-romm-aipref-contentsignals/) that extends traditional `Allow/Disallow` with three AI-specific axes: `ai-train`, `search`, and `ai-input`. The scanner only grades that the directive is present and syntactically valid; the values are your choice.
 
@@ -249,7 +250,7 @@ The obvious counter-argument: for publishers whose revenue model depends on gati
 
 Technical note: Lighthouse's `robots-txt` audit doesn't recognize `Content-Signal` yet and flags it as an invalid directive, which breaks the SEO score. To not lose that point without sacrificing the directive, I added a middleware in `functions/_middleware.ts` that strips it only when the scan comes from Lighthouse (UA containing `Chrome-Lighthouse` or `PageSpeed`). All other clients — Googlebot, GPTBot, ClaudeBot, isitagentready, the rest of the crawlers — receive the full file. When Lighthouse catches up to the draft, the middleware becomes dead code.
 
-## 5. What 100 looks like
+## What 100 looks like
 
 Here's the final snapshot.
 
@@ -276,25 +277,65 @@ Stack up the eight artifacts, two middleware paths, and the WebMCP bridge. Any A
 
 That's a real protocol surface. None of this was possible a few weeks ago — none of the drafts above existed as shipped specs yet. The whole thing came together on top of a concern I'd been writing about for months: that AEO measurement was running years behind AEO optimization. Today, it isn't.
 
-## Lessons
+## The fifth category: agent-native commerce
 
-*Lesson: honesty beats theatre.* OAuth documents that point at nothing are better than OAuth documents that lie. The `_comment` field is not a cheat; it's a spec-compliant way to say "the shape is here; the function isn't". Agents can reason about that. Fabricating working endpoints would have been worse — both for trust and for maintenance when someone later wonders what `/oauth/authorize` actually does.
+I shipped the eight artifacts, watched the scorecard hit 100, and moved on. A few days later, isitagentready.com grew a fifth category: **Commerce**. Four new checks, four new `SKILL.md` files, one new question — *can an AI agent pay your site?*
 
-*Lesson: the `.well-known/` directory is just JSON.* Most of the work is reading the canonical SKILL.md examples and matching them byte for byte. I rebuilt twice: once for the wrong Content-Type on the API catalog, once for the wrong SHA-256 encoding on the skills index. Both were small mistakes the SKILL.md had warned me about in its pitfalls section. Read your specs, even when you think you already know what they'll say.
+<figure>
+<img src="/images/blog/posts/aeo-reaching-100-isitagentready/figure-scorecard-commerce.webp"
+     alt="isitagentready.com scorecard for xergioalex.com after the Commerce category was added: overall score still 100, Level 5 Agent-Native. Discoverability 100 (3/3), Content 100 (1/1), Bot Access Control 100 (2/2), API, Auth, MCP & Skill Discovery 100 (6/6), and a fifth circle — Commerce — grayed out with a dash and the label 'Not checked'."
+     width="1020"
+     height="930"
+     loading="lazy" />
+<figcaption>isitagentready.com against xergioalex.com after the Commerce category landed: still 100, Level 5 Agent-Native — Commerce shows <em>not checked</em>. A content site that sells nothing has nothing to declare there, and the scorecard agrees. — <a href="https://isitagentready.com/">Grade your own site</a>.</figcaption>
+</figure>
 
-*Lesson: align the server card and the WebMCP surface.* The MCP server card advertises `capabilities: ["tools", "resources"]`, and the WebMCP component registers three tools. They describe the same agent surface at two different granularities. If you ever add a tool, add it in both places.
+My score didn't move. It still says 100. The new category sits at the end of the row, grayed out, labeled **"not checked"** — and each of its four sub-checks reports the same diagnosis: *not a commerce site*. That's not a deduction. The scorecard treats Commerce as **conditional**: it grades it only if you're a merchant, and a content site isn't one. So, strictly, there's nothing to do here.
 
-*Lesson: the directive is a vocabulary; your policy is yours.* `Content-Signal` doesn't tell you what to pick — it gives you precise words for three distinct uses that a single `allow/disallow` used to squash together. Being spec-compliant is cheap. Being intentional about which values land on your site is the separate exercise, and the first answer you reach for is rarely the right one — you'll default to the publisher reflex ("don't train on me, don't quote me") even on a site whose whole purpose is being found. It's worth saying your answer out loud, ideally to someone setting up the same directive on a different kind of site, because that's when you find out whether you picked a stance or inherited one.
+But "nothing to do" and "nothing I *could* do" aren't the same. I could ship the four artifacts anyway and turn that gray circle green. Here's what each one is — and why I'm leaving it unchecked for this site.
 
-## What survives a scorecard change
+### The four commerce checks
 
-`isitagentready.com` is one vendor's scorecard, and the definitions may change. Lighthouse will update its parser eventually. The `Content-Signal` draft may or may not become an RFC.
+**1. x402 — `HTTP 402`, finally used for something.** [x402](https://x402.org/) is Coinbase's revival of the long-dormant `402 Payment Required` status code. You add a payment middleware (`@x402/express`, `@x402/hono`, or `@x402/next`) to your routes, configure a **facilitator URL** and a **wallet address**, and protected routes start answering with `HTTP 402` plus machine-readable payment requirements. An agent reads the 402, pays through the facilitator, retries, gets the resource — no human in the loop. The scanner passes when `checks.commerce.x402.status` is `pass`. I unpack how this protocol works, and why it matters, in [The Agent Economy](/blog/the-agent-economy/) — x402 is one of its central pieces.
 
-What survives all of that: the `.well-known/` files themselves. Each one is tied to a real IETF or WHATWG standard — [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288), [RFC 9727](https://www.rfc-editor.org/rfc/rfc9727), [RFC 9728](https://www.rfc-editor.org/rfc/rfc9728), [RFC 8414](https://www.rfc-editor.org/rfc/rfc8414). Those don't go anywhere. Even if every scorecard tool disappears tomorrow, the primitives I shipped stay valid and keep doing their job for any AI crawler that respects the standards.
+**2. MPP — payment hints inside your OpenAPI doc.** [Machine Payment Protocol](https://mpp.dev/) reuses an artifact I already ship: `/openapi.json`. You attach an `x-payment-info` extension to every *payable* operation, declaring `intent` (`charge` or `session`), `method` (`tempo`, `stripe`, `lightning`, or `card`), and `amount`. Minimum shape:
 
-If you're building a site today and want to follow this path, the SKILL.md files at `isitagentready.com/.well-known/agent-skills/` are the best starting point. For the per-endpoint deep dive — what each `.well-known/` document is, why it exists, and the minimum valid example — the next chapter in this series (`aeo-well-known-field-guide`) goes endpoint by endpoint.
+```json
+"x-payment-info": { "intent": "charge", "method": "stripe", "amount": 2999 }
+```
 
-The era of agents isn't going to wait. I'll keep building.
+There's an SDK — `mppx` for TypeScript, `pympp` for Python — and middleware for Hono, Express, Next.js, and Elysia. The scanner passes when `/openapi.json` returns `200` and at least one operation carries a valid `x-payment-info`.
+
+**3. UCP — a commerce profile at `/.well-known/ucp`.** [Universal Commerce Protocol](https://ucp.dev/specification/overview/) wants a JSON document at `/.well-known/ucp` with four required keys — `protocol_version`, `services`, `capabilities`, `endpoints` — and any spec URLs or schemas it references have to actually resolve. The scanner passes when `checks.commerce.ucp.status` is `pass`.
+
+**4. ACP — discovery metadata at `/.well-known/acp.json`.** [Agentic Commerce Protocol](https://agenticcommerce.dev/) wants a discovery document at the origin root: `protocol.name` equal to `"acp"`, a `protocol.version`, an absolute `api_base_url`, a non-empty `transports` array, and a non-empty `capabilities.services` array. Minimum shape:
+
+```json
+{
+  "protocol": { "name": "acp", "version": "1.0" },
+  "api_base_url": "https://api.example.com",
+  "transports": ["http"],
+  "capabilities": { "services": ["payment"] }
+}
+```
+
+By the standards of this post, that's an afternoon: two static JSON files under `.well-known/`, one extension block in a file I already serve, one middleware. The cost isn't the work — it's what each document claims.
+
+Those four documents have something in common: the existence of each one *is* a declaration that the site is a merchant — they only make sense if you actually sell something. Serving `/.well-known/acp.json` announces "I'm an agentic-commerce merchant; here's my API base URL"; standing up x402 points at a real wallet ready to charge. And there's no `_comment` that rescues it: "ACP merchant document, but the site isn't a merchant" isn't an honest caveat — it's a contradiction in the same breath. This whole post has one recurring lesson, *honesty beats theatre*, and the Commerce category is where it stops being a tidy aside and becomes the entire decision: the honest answer here isn't 100 — it's *not applicable*.
+
+And that's what makes this fifth category different: the scorecard treats it as **conditional**, not mandatory. *Not checked* isn't *failed* — it's the tool acknowledging that "missing" and "doesn't apply" aren't the same thing. Few measurement systems make that distinction; most read every empty box as an outstanding debt. This one makes it, and that speaks well of it. The day `xergioalex.com` sells something — a paid course, a metered API tier, sponsored access to a tool — these four artifacts flip from theatre to truth and I'll ship whichever ones fit. Until then, the agent-ready state of a content site is exactly what the screenshot shows: four categories maxed, one left blank on purpose — and that *is* the complete answer, not a partial one.
+
+## The web's number-one reader
+
+This whole chapter — the eight artifacts, the scorecard at 100 — is a site catching up to a change that already happened: the web's number-one reader is barely a person with a browser anymore. It's an agent. It doesn't skim ten results or click a blue link — it asks, reads whatever it finds, assembles an answer, and hands it to someone who will never see your page. The earlier chapters in this series have the numbers behind that: search traffic eroding, sites that lost almost all of their organic. That shift is already here; the scorecard just put a number on it.
+
+And the good news is that catching up is cheap. The foundations for an agent to read you well are a handful of text files and two lines of config — an afternoon's work. If you want to start on your own site, the `SKILL.md` files at `isitagentready.com/.well-known/agent-skills/` are the best starting point, and [the `.well-known/` field guide](/blog/aeo-well-known-field-guide/) opens each document one by one: what it is, why it exists, what the minimum valid version looks like.
+
+Don't fixate on the number itself. `isitagentready.com` is one team's yardstick, and the definitions move: this one grew a category mid-series, Lighthouse will rewrite its parser at some point, tomorrow another tool ships with another rubric. Today's 100 could be an 80 a year from now without my touching a line. What lasts isn't the score — it's the files underneath, tied to open standards and not to the tool that grades them. Even if every scorecard disappears tomorrow, they stay there doing their job for any agent that respects the standards.
+
+The expensive option is the other one: staying illegible while the ground moves. It doesn't feel like a drop — it feels like a site that slowly stops showing up in the answers, with no one telling you. The era of agents won't wait for you to be ready. I'd rather be on the side that already speaks its language.
+
+I'll keep building.
 
 ## Resources
 
@@ -311,3 +352,8 @@ The era of agents isn't going to wait. I'll keep building.
 - [MCP Server Card — SEP-1649 / PR #2127](https://github.com/modelcontextprotocol/modelcontextprotocol)
 - [WebMCP](https://webmachinelearning.github.io/webmcp/)
 - [Cloudflare Pages `_headers` docs](https://developers.cloudflare.com/pages/configuration/headers/)
+- [x402 — agent-native HTTP payments](https://x402.org/)
+- [x402 on GitHub (Coinbase)](https://github.com/coinbase/x402)
+- [MPP — Machine Payment Protocol](https://mpp.dev/)
+- [UCP — Universal Commerce Protocol](https://ucp.dev/specification/overview/)
+- [ACP — Agentic Commerce Protocol](https://agenticcommerce.dev/)

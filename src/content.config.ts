@@ -28,6 +28,8 @@ const blog = defineCollection({
     // Series support — references a series slug from the series collection
     series: z.string().optional(),
     seriesOrder: z.number().optional(),
+    // Author slug — must match a file in `src/content/authors/`.
+    author: z.string().default('sergio-florez'),
     /**
      * Mark a post as a work-in-progress draft. Drafts are visible in the dev
      * server and on Cloudflare Pages preview branches, but excluded from the
@@ -129,4 +131,30 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { blog, tags, series, slides, pages };
+const authors = defineCollection({
+  loader: glob({ base: './src/content/authors', pattern: '**/*.yaml' }),
+  schema: z.object({
+    name: z.string(),
+    slug: z.string(),
+    avatar: z.string(),
+    role: z.object({
+      en: z.string(),
+      es: z.string(),
+    }),
+    bio: z.object({
+      en: z.string(),
+      es: z.string(),
+    }),
+    social: z
+      .object({
+        x: z.string().optional(),
+        linkedin: z.string().optional(),
+        github: z.string().optional(),
+        instagram: z.string().optional(),
+        website: z.string().optional(),
+      })
+      .optional(),
+  }),
+});
+
+export const collections = { blog, tags, series, slides, pages, authors };

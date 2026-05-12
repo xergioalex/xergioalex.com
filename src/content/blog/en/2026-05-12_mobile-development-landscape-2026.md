@@ -1,7 +1,7 @@
 ---
 title: "Mobile Development in 2026: State of the Art and Where to Start Today"
 description: "State of the art of mobile development in 2026: the available options, how each one works, and where it actually makes sense to start today."
-pubDate: "2026-05-11"
+pubDate: "2026-05-12"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "mobile", "flutter"]
@@ -203,9 +203,9 @@ After analyzing the options across the landscape, I've ruled out several — loo
 
 **PWA:** For projects that require real device access — camera, sensors, push notifications — a PWA doesn't get there.
 
-**React Native:** This is a serious option. The New Architecture made it a much more solid platform than it used to be. If a large React codebase already exists, the calculation changes. But working with React/JS for mobile still doesn't feel native enough — at the end of the day you're still on a bridge between JavaScript and the platform APIs, and that intermediate layer shows.
+**React Native:** This is a serious option. The New Architecture made it a much more solid platform than it used to be. If a large React codebase already exists, the calculation changes. But working with React/JS for mobile still doesn't feel native enough, at least in my opinion — at the end of the day you're still on a bridge between JavaScript and the platform APIs, and that intermediate layer shows.
 
-That leaves two options that make a lot of sense for anyone looking to start in an agile and serious ecosystem: **Flutter** and **Kotlin Multiplatform**. Both combine real cross-platform reach, strong corporate backing, a serious community, and a technical philosophy that doesn't feel like a patch — but like a long-term bet.
+That leaves two options that make a lot of sense for anyone looking to start in an agile and serious ecosystem: **Flutter** and **Kotlin Multiplatform (KMP)**. Both combine real cross-platform reach, strong corporate backing, a serious community, and a technical philosophy that doesn't feel like a patch — but like a long-term bet.
 
 ### Two philosophies, one path
 
@@ -270,3 +270,20 @@ Whether you're coming from backend, frontend web, or you simply want to build so
 The question is no longer *whether* it's worth learning mobile development. The question is what you're going to build first.
 
 Let's keep building.
+
+---
+
+## Resources
+
+- [Flutter](https://flutter.dev) — Google's cross-platform framework; Dart language, [Impeller](https://docs.flutter.dev/perf/impeller) rendering engine
+- [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) — JetBrains' approach to sharing logic while keeping native UI per platform
+- [Compose Multiplatform 1.8.0 — iOS is stable](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/) — the milestone that made shared UI production-ready on iOS
+- [React Native](https://reactnative.dev) — Meta's "learn once, write anywhere"; now governed by the [React Foundation](https://engineering.fb.com/2025/10/07/open-source/introducing-the-react-foundation-the-new-home-for-react-react-native/)
+- [Kotlin for Android](https://developer.android.com/kotlin) — Google's preferred language for native Android development
+- [SwiftUI](https://developer.apple.com/xcode/swiftui/) — Apple's declarative UI framework for native iOS/macOS apps
+- [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui) — Microsoft's cross-platform framework for the .NET ecosystem, successor to Xamarin
+- [Ionic Framework](https://ionicframework.com/) + [Capacitor](https://capacitorjs.com/) — web stack inside a native shell, with a bridge to device APIs
+- [Apache Cordova](https://cordova.apache.org/) — the original hybrid runtime (formerly PhoneGap), where my own mobile story started
+- [Progressive Web Apps — web.dev](https://web.dev/explore/progressive-web-apps) — installable websites: how far they go and where they hit their limits
+- [KDoSensei](https://kdosensei.xergioalex.com/) — the hybrid app from my university days, recovered and re-hosted as a static site
+- [xergioalex/kdosensei](https://github.com/xergioalex/kdosensei) — the recovered source and APKs from that project

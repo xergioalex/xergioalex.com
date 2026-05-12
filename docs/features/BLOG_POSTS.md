@@ -107,6 +107,8 @@ schema: z.object({
   keywords: z.array(z.string()).optional(), // Optional - SEO search phrases (5-8 per post)
   series: z.string().optional(),        // Optional - references src/content/series/{slug}.md
   seriesOrder: z.number().optional(),   // Optional - chapter order when series is set
+  author: z.string().default('sergio-florez'), // Optional - slug from src/content/authors/
+  draft: z.boolean().default(false).optional(), // Optional - hides post from production
 })
 ```
 
@@ -124,6 +126,8 @@ schema: z.object({
 | `keywords` | No | Array of 5-8 SEO search phrases. Specific to post content, internationalized per language. Used in `<meta name="keywords">` and JSON-LD. |
 | `series` | No | Series slug from `src/content/series/`. Required together with `seriesOrder`. |
 | `seriesOrder` | No | Chapter number within the series. Required together with `series`. |
+| `author` | No | Author slug from `src/content/authors/`. Defaults to `'sergio-florez'`. Both EN and ES versions of a post must use the same slug. See [Authors](./AUTHORS.md). |
+| `draft` | No | When `true`, the post is excluded from the production build but visible in dev and Cloudflare preview branches. |
 
 ### Frontmatter Examples
 
@@ -150,7 +154,7 @@ keywords: ['XergioAleX personal branding', 'ninja coder logo design', 'developer
 When creating the translated version:
 
 - **Translate:** `title`, `description`, and all body content
-- **Preserve exactly:** `pubDate`, `updatedDate`, `heroLayout`, `tags`, code blocks, formatting
+- **Preserve exactly:** `pubDate`, `updatedDate`, `heroLayout`, `tags`, `author`, code blocks, formatting
 - **heroImage:** Use the same path as EN by default. If the hero contains English text, use a localized variant (see [Multilingual Hero Images](#multilingual-hero-images))
 - Use natural, idiomatic translations (not literal word-for-word)
 - **Spanish register:** Use tuteo (tú/tienes/puedes), NOT voseo (vos/tenés/podés). Prefer Colombian Spanish phrasing.
@@ -486,6 +490,24 @@ All combinations meet WCAG AA (most are AAA). The forbidden classes `text-gray-4
 Topics are fully searchable. The API (`posts.json`) pre-groups tags by tier. Search scoring: title (0.0) > primary tags (0.1) > topics (0.15) > description (0.2).
 
 **Note:** The `demo` tag is only used by demo posts in `_demo/` folders. Demo posts are never visible in production or in blog listings. They are only accessible by direct URL in local dev mode.
+
+## Authors
+
+Each post is attributed to an author defined in the `authors` content collection (`src/content/authors/{slug}.yaml`). The author is referenced by `slug` in the post frontmatter:
+
+```yaml
+author: 'sergio-florez'   # Optional — defaults to 'sergio-florez'
+```
+
+At build time, `BlogPostFooter.astro` resolves the slug, fetches the author's localized `role` and `bio`, and renders an `AuthorCard` below the post body. The resolved author also populates the `BlogPosting` JSON-LD `author` field for SEO.
+
+**Key rules:**
+
+- Both `en/` and `es/` versions of a post **must** use the same `author` slug — authorship doesn't translate.
+- The default author when `author` is omitted is `sergio-florez`.
+- To add a new author: create `src/content/authors/{slug}.yaml`, add the avatar at `public/images/authors/{slug}.webp`, and reference the slug in the post frontmatter.
+
+**Full reference:** [AUTHORS.md](./AUTHORS.md) — YAML schema, components, JSON-LD impact, validation checklist.
 
 ## Blog Post Series
 
