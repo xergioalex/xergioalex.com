@@ -270,3 +270,20 @@ Si vienes del backend, del frontend web, o simplemente quieres construir algo qu
 La pregunta ya no es *si* vale la pena aprender desarrollo móvil. La pregunta es qué vas a construir primero.
 
 A seguir construyendo.
+
+---
+
+## Recursos
+
+- [Flutter](https://flutter.dev) — el framework cross-platform de Google; lenguaje Dart, motor de renderizado [Impeller](https://docs.flutter.dev/perf/impeller)
+- [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) — el enfoque de JetBrains para compartir lógica manteniendo UI nativa en cada plataforma
+- [Compose Multiplatform 1.8.0 — iOS estable](https://blog.jetbrains.com/kotlin/2025/05/compose-multiplatform-1-8-0-released-compose-multiplatform-for-ios-is-stable-and-production-ready/) — el hito que hizo la UI compartida lista para producción en iOS
+- [React Native](https://reactnative.dev) — el "learn once, write anywhere" de Meta; ahora gobernado por la [React Foundation](https://engineering.fb.com/2025/10/07/open-source/introducing-the-react-foundation-the-new-home-for-react-react-native/)
+- [Kotlin para Android](https://developer.android.com/kotlin) — el lenguaje preferido por Google para el desarrollo nativo de Android
+- [SwiftUI](https://developer.apple.com/xcode/swiftui/) — el framework declarativo de UI de Apple para apps nativas de iOS/macOS
+- [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui) — el framework cross-platform de Microsoft para el ecosistema .NET, sucesor de Xamarin
+- [Ionic Framework](https://ionicframework.com/) + [Capacitor](https://capacitorjs.com/) — stack web dentro de un contenedor nativo, con un puente hacia las APIs del dispositivo
+- [Apache Cordova](https://cordova.apache.org/) — el runtime híbrido original (antes PhoneGap), donde empezó mi propia historia con el móvil
+- [Progressive Web Apps — web.dev](https://web.dev/explore/progressive-web-apps) — sitios web instalables: hasta dónde llegan y dónde encuentran sus límites
+- [KDoSensei](https://kdosensei.xergioalex.com/) — la app híbrida de mis años de universidad, recuperada y re-publicada como sitio estático
+- [xergioalex/kdosensei](https://github.com/xergioalex/kdosensei) — el código fuente y los APKs recuperados de ese proyecto
