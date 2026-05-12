@@ -518,10 +518,6 @@ export interface SiteTranslations {
 
   // Blog post engagement
   engagement: {
-    // Author bio
-    authorBioTitle: string;
-    authorBioDescription: string;
-
     // Share buttons
     shareTitle: string;
     shareSeriesTitle: string;
@@ -586,6 +582,12 @@ export interface SiteTranslations {
       enterFullscreen: string;
       exitFullscreen: string;
     };
+  };
+
+  // Blog engagement (author + share)
+  blogEngagement: {
+    aboutAuthor: string;
+    writtenBy: string;
   };
 
   // Errors

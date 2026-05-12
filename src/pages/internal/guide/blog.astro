@@ -84,6 +84,13 @@ const frontmatterFields = [
     description: 'Position in series (1-based)',
   },
   {
+    field: 'author',
+    type: 'string',
+    required: false,
+    description:
+      'Author slug from src/content/authors/ (defaults to sergio-florez)',
+  },
+  {
     field: 'draft',
     type: 'boolean',
     required: false,
@@ -391,6 +398,84 @@ const writingRules = [
           <p class="text-sm text-gray-600 dark:text-gray-300">{r.description}</p>
         </div>
       ))}
+    </div>
+  </section>
+
+  <section class="mb-8">
+    <h2 class="text-xl md:text-2xl font-bold mb-4">Authors</h2>
+    <div class="space-y-4">
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 space-y-2">
+        <h3 class="font-semibold">Overview</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          Authors are stored as YAML files in
+          <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">src/content/authors/</code>
+          and resolved at build time via the <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">authors</code> content collection.
+          Each post references an author by slug; when omitted, it defaults to
+          <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">sergio-florez</code>.
+        </p>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">BlogPostFooter.astro</code>
+          renders the <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">AuthorCard</code>
+          at the bottom of every post; the resolved author also drives the
+          <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">BlogPosting</code>
+          JSON-LD <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">author</code> field.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 space-y-2">
+        <h3 class="font-semibold">YAML Schema Preview</h3>
+        <pre class="overflow-x-auto rounded-lg bg-gray-100 p-3 text-xs dark:bg-gray-900"><code>name: Sergio Alexander Florez Galeano
+slug: sergio-florez
+avatar: /images/authors/sergio-florez.webp
+role:
+  en: CTO & Co-founder at DailyBot
+  es: CTO y Cofundador en DailyBot
+bio:
+  en: ...
+  es: ...
+social:
+  x: https://x.com/XergioAleX
+  linkedin: https://www.linkedin.com/in/xergioalex/
+  github: https://github.com/xergioalex
+  instagram: https://www.instagram.com/xergioalex
+  website: https://xergioalex.com/</code></pre>
+        <p class="text-xs text-gray-600 dark:text-gray-300">
+          Required: <code class="text-xs">name</code>, <code class="text-xs">slug</code>,
+          <code class="text-xs">avatar</code>, <code class="text-xs">role.{'{'}en,es{'}'}</code>,
+          <code class="text-xs">bio.{'{'}en,es{'}'}</code>. All social fields optional.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 space-y-2">
+        <h3 class="font-semibold">Adding a New Author</h3>
+        <ol class="list-decimal pl-5 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+          <li>Create <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">src/content/authors/{'{'}slug{'}'}.yaml</code></li>
+          <li>Add avatar at <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">public/images/authors/{'{'}slug{'}'}.webp</code> (160x160 px, WebP)</li>
+          <li>Fill both <code class="text-xs">role.en</code>/<code class="text-xs">role.es</code> and <code class="text-xs">bio.en</code>/<code class="text-xs">bio.es</code> (Zod-enforced)</li>
+          <li>Reference by slug in post frontmatter: <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">author: '{'{'}slug{'}'}'</code> (same slug in EN and ES)</li>
+          <li>Run <code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">npm run astro:check</code> to validate the schema</li>
+          <li>Preview at <a href="/internal/authors" class="text-blue-600 hover:underline dark:text-blue-400">/internal/authors</a></li>
+        </ol>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 space-y-2">
+        <h3 class="font-semibold">i18n & Validation</h3>
+        <ul class="list-disc pl-5 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+          <li>Author slug is identical in EN and ES versions of a post — authorship doesn't translate.</li>
+          <li>Spanish <code class="text-xs">role</code>/<code class="text-xs">bio</code> must use proper diacritics (e.g., <em>Cofundador</em>, <em>años</em>) and tuteo (no voseo).</li>
+          <li>Missing <code class="text-xs">role.en</code>, <code class="text-xs">role.es</code>, <code class="text-xs">bio.en</code>, or <code class="text-xs">bio.es</code> fails build via Zod validation.</li>
+          <li>Unknown slug in <code class="text-xs">author</code>: AuthorCard is silently omitted (JSON-LD falls back). Always verify <code class="text-xs">astro:check</code> passes.</li>
+        </ul>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 p-4 space-y-2">
+        <h3 class="font-semibold">References</h3>
+        <ul class="list-disc pl-5 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+          <li><a href="/internal/authors" class="text-blue-600 hover:underline dark:text-blue-400">/internal/authors</a> — Browse all registered authors with live preview</li>
+          <li><code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">docs/features/AUTHORS.md</code> — Full schema, components, JSON-LD, validation checklist</li>
+          <li><code class="rounded bg-gray-100 px-1.5 py-0.5 text-xs dark:bg-gray-800">docs/features/BLOG_POSTS.md#authors</code> — Author field in blog frontmatter</li>
+        </ul>
+      </div>
     </div>
   </section>
 
