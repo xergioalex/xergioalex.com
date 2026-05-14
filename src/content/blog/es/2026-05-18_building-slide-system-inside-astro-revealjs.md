@@ -1,11 +1,12 @@
 ---
 title: "Construyendo un sistema de diapositivas multilingüe dentro de Astro con Reveal.js"
 description: "Cómo construí un catálogo de presentaciones de tres tipos dentro de mi sitio Astro — uniones discriminadas, gemelos AEO, aislamiento de assets y más."
-pubDate: 2026-04-27
+pubDate: 2026-05-18T10:00:00Z
 tags: ["web-development", "talks", "astro", "svelte", "portfolio"]
 series: "slides-as-code"
 seriesOrder: 2
-heroLayout: none
+heroImage: "/images/blog/posts/building-slide-system-inside-astro-revealjs/hero-es.webp"
+heroLayout: side-by-side
 draft: true
 keywords: [astro diapositivas, integración reveal.js astro, slides como contenido, esquema unión discriminada, gemelos AEO markdown, sistema de presentaciones]
 ---
