@@ -1,20 +1,21 @@
 ---
 title: "The Best Presentation Tools for Developers in 2026"
 description: "A hands-on comparison of Reveal.js, Slidev, Marp, Spectacle, and more — with a full feature matrix to help you pick the right slides-as-code tool."
-pubDate: 2026-04-26
+pubDate: 2026-05-18
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
-heroLayout: none
+heroImage: "/images/blog/posts/best-presentation-tools-for-developers-2026/hero.webp"
+heroLayout: banner
 draft: true
 keywords: [presentation tools, slides as code, reveal.js, slidev, marp, spectacle, developer presentations, markdown slides]
 ---
 
-If you've ever built a PowerPoint deck for a conference talk, you know the pain: dragging boxes around, fighting with alignment, losing your code formatting every time you paste a snippet, and — worst of all — having zero version control. You can `git diff` your source code but not your slides.
+If you've ever built a presentation in PowerPoint, Google Slides, Keynote, or similar tools, you know the manual work it takes: dragging boxes, thinking through the visual design of every idea so it lands, nudging images pixel by pixel, losing your content formatting every time you paste from another source, and no version control. You can `git diff` your source code but not your slides.
 
-That changed. A growing ecosystem of **slides-as-code tools** lets developers write presentations the same way they write documentation: in Markdown, in their IDE, version-controlled, CI/CD-friendly, and shareable as static HTML.
+In the age of agents, I'd rather delegate all that manual work and focus on what actually matters: the narrative. Let the agent handle the layout, styling, and composition; I'll concentrate on the story. That's why a growing ecosystem of **slides-as-code tools** caught my attention: it lets developers write presentations the same way they write documentation — in Markdown, in their IDE, version-controlled, CI/CD-friendly, and shareable as static HTML. And because the format is text-based and structured, agents can generate it with near-zero error rate.
 
-I recently [built a full slide deck system into my Astro website](/blog/building-slide-system-inside-astro-revealjs) and evaluated every serious option before picking one. This post is the comparison I wish I'd had when I started.
+I recently [built a full slide deck system into my Astro website](/blog/building-slide-system-inside-astro-revealjs) and evaluated every serious option before picking one. This post is the comparison I put together to make that decision.
 
 ## What Makes a Good Developer Presentation Tool?
 
@@ -35,7 +36,7 @@ Before diving into tools, here's what I was evaluating:
 
 **[revealjs.com](https://revealjs.com)** · ~71k GitHub stars · Vanilla JavaScript · v6.0 (March 2026)
 
-Reveal.js is the grandfather of web-based presentations. Created by Hakim El Hattab over 16 years ago, it remains the most starred HTML presentation framework by a wide margin.
+Reveal.js is the grandfather of web-based presentations. Created by [Hakim El Hattab](https://hakim.se) almost 15 years ago, it remains the most starred HTML presentation framework by a wide margin.
 
 **What makes it stand out:**
 - **Zero framework dependency.** Vanilla JS. Works with Astro, Next, Svelte, plain HTML — anything that serves a webpage.
@@ -47,13 +48,13 @@ Reveal.js is the grandfather of web-based presentations. Created by Hakim El Hat
 - **PDF export.** Append `?print-pdf` to any deck URL and Chrome prints it perfectly.
 - **v6 in 2026.** The latest release brought Vite-based builds, TypeScript types included in the package, and an official React wrapper.
 
-**The tradeoff:** Reveal requires more scaffolding than Slidev or Marp. Slides are HTML `<section>` elements (with an optional Markdown plugin), so you're closer to the metal. The upside is total control. The downside is that out-of-the-box, it looks plainer than Slidev.
+**The tradeoff:** Compared to other tools, Reveal asks for a bit more initial setup and has a slightly steeper learning curve. Slides are HTML `<section>` elements (with an optional Markdown plugin), so you're closer to the metal. The upside is total control.
 
 **Best for:** Highly customized presentations, portfolio showcases, embedding inside existing websites, teams that need plugin extensibility without framework lock-in.
 
 ## Slidev — The DX King
 
-**[sli.dev](https://sli.dev)** · ~44k GitHub stars · Vue 3 + Vite
+**[sli.dev](https://sli.dev)** · ~46k GitHub stars · Vue 3 + Vite
 
 Slidev is what happens when someone says "what if the IDE experience for slides was as good as for code?" It's purpose-built for developers presenting technical content, and it shows.
 
@@ -72,7 +73,7 @@ Slidev is what happens when someone says "what if the IDE experience for slides 
 
 ## Marp — The Minimalist
 
-**[marp.app](https://marp.app)** · ~3k stars (CLI) · Marpit framework · CommonMark
+**[marp.app](https://marp.app)** · ~3.5k stars (CLI) · Marpit framework · CommonMark
 
 Marp is the tool that proves constraints breed clarity. Write CommonMark Markdown. Add a YAML frontmatter for theme and pagination. Use `---` to separate slides. Done.
 
@@ -99,7 +100,7 @@ Spectacle takes the opposite approach from Marp: if you know React, you already 
 - **Live code preview.** Show running code alongside its source, editable in real-time.
 - **Markdown support.** Via `MarkdownSlideSet` component, for those who prefer writing over JSX.
 - **Multiple starter templates.** One-page HTML, Markdown, Vite, or webpack.
-- **Active maintenance.** v10.2.3 (Oct 2025), 160 contributors over 10 years.
+- **Active maintenance.** v10.2.3 (Oct 2025), 180+ contributors over 10 years.
 
 **The tradeoff:** Requires React 18+. The bundle is heavier than Reveal or Marp. If your site isn't React, adding Spectacle means adding a second framework runtime. The JSX-first authoring model is powerful but has a steeper learning curve for non-React developers.
 
@@ -142,12 +143,14 @@ These platforms solve different problems than slides-as-code. If your audience i
 | **Embeddable** | Yes | No (standalone) | Limited | No (standalone) |
 | **VS Code ext.** | No | No | Yes | No |
 | **Recording** | No | Built-in | No | No |
-| **GitHub stars** | ~71k | ~44k | ~3k | ~10k |
+| **GitHub stars** | ~71k | ~46k | ~3.5k | ~10k |
 | **Learning curve** | Medium | Medium (Vue helps) | Low | Medium (React) |
 
-## Our Pick — and Why
+## My Pick — and Why
 
-For [xergioalex.com](https://xergioalex.com), I chose **Reveal.js**. The deciding factor wasn't that Reveal has the best DX (Slidev wins there) or the flattest learning curve (Marp wins). It was **embeddability**.
+I wanted to integrate a slide system into my own site for my tech talks — to have [xergioalex.com](https://xergioalex.com) itself host the decks, not an external service. That's why I chose **Reveal.js**.
+
+The deciding factor wasn't that Reveal has the best DX (Slidev wins there) or the flattest learning curve (Marp wins). It was **embeddability**.
 
 I needed slides to live *inside* my Astro website — as first-class content, with the same multilingual support, the same theme system, the same SEO and AEO infrastructure as my blog posts. Reveal is vanilla JS that I can initialize in a Svelte component, inside an Astro layout, importing CSS only on deck pages. No second framework runtime. No separate build pipeline.
 
