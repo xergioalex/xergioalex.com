@@ -1,20 +1,21 @@
 ---
-title: "Las mejores herramientas de presentación para desarrolladores en 2026"
+title: "Las mejores herramientas de presentación para devs en 2026"
 description: "Una comparación práctica de Reveal.js, Slidev, Marp, Spectacle y más — con una matriz completa de características para elegir la herramienta ideal."
-pubDate: 2026-04-26
+pubDate: 2026-05-18
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
-heroLayout: none
+heroImage: "/images/blog/posts/best-presentation-tools-for-developers-2026/hero-es.webp"
+heroLayout: banner
 draft: true
 keywords: [herramientas de presentación, slides como código, reveal.js, slidev, marp, spectacle, presentaciones para desarrolladores, slides en markdown]
 ---
 
-Si alguna vez construiste un PowerPoint para una charla de conferencia, conoces el dolor: arrastrar cajas, pelear con la alineación, perder el formato de tu código cada vez que pegas un snippet y — lo peor de todo — no tener control de versiones. Puedes hacer `git diff` de tu código fuente pero no de tus diapositivas.
+Si alguna vez construiste una presentación en PowerPoint, Google Slides, Keynote, entre otras, sabes el trabajo manual que implica: arrastrar cajas, pensar en cómo diseñar visualmente cada idea para que se entienda, acomodar imágenes pixel por pixel, perder el formato de tu contenido cada vez que lo pegas desde otra fuente y no tener control de versiones. Puedes hacer `git diff` de tu código fuente, pero no de tus diapositivas.
 
-Eso cambió. Un ecosistema creciente de **herramientas de slides-as-code** permite a los desarrolladores escribir presentaciones de la misma forma que escriben documentación: en Markdown, en su IDE, con control de versiones, compatibles con CI/CD, y compartibles como HTML estático.
+En la era de los agentes, prefiero delegar todo ese trabajo manual y enfocarme en lo que realmente importa: la narrativa. Que el agente se encargue del layout, los estilos y la maquetación; yo me concentro en la historia. Por eso me llamó la atención el ecosistema creciente de **herramientas de slides-as-code**: permite a los desarrolladores escribir presentaciones como escriben documentación — en Markdown, en su IDE, con control de versiones, compatibles con CI/CD, y compartibles como HTML estático. Y como el formato es textual y estructurado, los agentes pueden generarlo casi sin error.
 
-Hace poco [construí un sistema completo de diapositivas dentro de mi sitio web Astro](/es/blog/building-slide-system-inside-astro-revealjs) y evalué cada opción seria antes de elegir una. Este post es la comparación que me hubiera gustado tener cuando empecé.
+Hace poco [construí un sistema completo de diapositivas dentro de mi sitio web Astro](/es/blog/building-slide-system-inside-astro-revealjs) y evalué cada opción seria antes de elegir una. Este post es la comparación que armé para tomar esa decisión.
 
 ## ¿Qué hace buena a una herramienta de presentación para desarrolladores?
 
@@ -35,7 +36,7 @@ Antes de entrar en las herramientas, estos son los criterios que evalué:
 
 **[revealjs.com](https://revealjs.com)** · ~71k estrellas en GitHub · JavaScript vanilla · v6.0 (marzo 2026)
 
-Reveal.js es el abuelo de las presentaciones web. Creado por Hakim El Hattab hace más de 16 años, sigue siendo el framework de presentaciones HTML más destacado por amplio margen.
+Reveal.js es el abuelo de las presentaciones web. Creado por [Hakim El Hattab](https://hakim.se) hace casi 15 años, sigue siendo el framework de presentaciones HTML más destacado por amplio margen.
 
 **Lo que lo distingue:**
 - **Cero dependencia de framework.** JavaScript vanilla. Funciona con Astro, Next, Svelte, HTML plano — cualquier cosa que sirva una página web.
@@ -47,13 +48,13 @@ Reveal.js es el abuelo de las presentaciones web. Creado por Hakim El Hattab hac
 - **Exportación a PDF.** Agrega `?print-pdf` a cualquier URL de presentación y Chrome lo imprime perfectamente.
 - **v6 en 2026.** La última versión trajo builds basados en Vite, tipos TypeScript incluidos, y un wrapper oficial para React.
 
-**La compensación:** Reveal requiere más estructura inicial que Slidev o Marp. Las diapositivas son elementos HTML `<section>` (con un plugin opcional de Markdown), así que estás más cerca del metal. La ventaja es control total. La desventaja es que por defecto, se ve más simple que Slidev.
+**La compensación:** Comparado con otras herramientas, Reveal pide un poco más de setup inicial y la curva de aprendizaje es algo más pronunciada. Las diapositivas son elementos HTML `<section>` (con un plugin opcional de Markdown), así que estás más cerca del metal. La ventaja es control total.
 
 **Ideal para:** Presentaciones altamente personalizadas, portafolios, incrustación dentro de sitios existentes, equipos que necesitan extensibilidad de plugins sin atarse a un framework.
 
 ## Slidev — El rey de la experiencia de desarrollo
 
-**[sli.dev](https://sli.dev)** · ~44k estrellas en GitHub · Vue 3 + Vite
+**[sli.dev](https://sli.dev)** · ~46k estrellas en GitHub · Vue 3 + Vite
 
 Slidev es lo que pasa cuando alguien dice "¿qué tal si la experiencia de IDE para diapositivas fuera tan buena como para código?" Está construido específicamente para desarrolladores presentando contenido técnico, y se nota.
 
@@ -71,7 +72,7 @@ Slidev es lo que pasa cuando alguien dice "¿qué tal si la experiencia de IDE p
 
 ## Marp — El minimalista
 
-**[marp.app](https://marp.app)** · ~3k estrellas (CLI) · Framework Marpit · CommonMark
+**[marp.app](https://marp.app)** · ~3.5k estrellas (CLI) · Framework Marpit · CommonMark
 
 Marp es la herramienta que demuestra que las restricciones generan claridad. Escribe CommonMark Markdown. Agrega un frontmatter YAML para tema y paginación. Usa `---` para separar diapositivas. Listo.
 
@@ -96,7 +97,7 @@ Spectacle toma el enfoque opuesto a Marp: si conoces React, ya conoces Spectacle
 - **Ecosistema completo de React.** Cualquier librería de React funciona en tus diapositivas — gráficos, mapas, visualización de datos, demos interactivas.
 - **Vista previa de código en vivo.** Muestra código ejecutándose junto a su fuente, editable en tiempo real.
 - **Soporte Markdown.** Via el componente `MarkdownSlideSet`, para quienes prefieren escribir sobre JSX.
-- **Mantenimiento activo.** v10.2.3 (octubre 2025), 160 contribuidores en 10 años.
+- **Mantenimiento activo.** v10.2.3 (octubre 2025), más de 180 contribuidores en 10 años.
 
 **La compensación:** Requiere React 18+. El bundle es más pesado que Reveal o Marp. Si tu sitio no es React, agregar Spectacle significa agregar un segundo runtime de framework.
 
@@ -137,12 +138,14 @@ No todo necesita ser código. Aquí es cuando las plataformas en la nube tienen 
 | **Incrustable** | Sí | No (independiente) | Limitado | No (independiente) |
 | **Ext. VS Code** | No | No | Sí | No |
 | **Grabación** | No | Integrada | No | No |
-| **Estrellas GitHub** | ~71k | ~44k | ~3k | ~10k |
+| **Estrellas GitHub** | ~71k | ~46k | ~3.5k | ~10k |
 | **Curva aprendizaje** | Media | Media (Vue ayuda) | Baja | Media (React) |
 
-## Nuestra elección — y por qué
+## Mi elección — y por qué
 
-Para [xergioalex.com](https://xergioalex.com), elegí **Reveal.js**. El factor decisivo no fue que Reveal tenga la mejor experiencia de desarrollo (Slidev gana ahí) ni la curva de aprendizaje más plana (Marp gana). Fue la **incrustabilidad**.
+Quería integrar un sistema de diapositivas dentro de mi propio sitio para mis charlas técnicas — que [xergioalex.com](https://xergioalex.com) mismo fuera el host de los decks, no un servicio externo. Por eso elegí **Reveal.js**.
+
+El factor decisivo no fue que Reveal tenga la mejor experiencia de desarrollo (Slidev gana ahí) ni la curva de aprendizaje más plana (Marp gana). Fue la **incrustabilidad**.
 
 Necesitaba que las diapositivas vivieran *dentro* de mi sitio web Astro — como contenido de primera clase, con el mismo soporte multilingüe, el mismo sistema de temas, la misma infraestructura SEO y AEO que mis posts del blog. Reveal es JavaScript vanilla que puedo inicializar en un componente Svelte, dentro de un layout Astro, importando CSS solo en las páginas de presentación. Sin segundo runtime de framework. Sin pipeline de build separado.
 

@@ -1077,6 +1077,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'the-library-of-tomorrow': 'La Biblioteca del Mañana',
     'mastering-openclaw': 'Dominando OpenClaw',
     'learning-mobile-development': 'Aprendiendo Desarrollo Móvil',
+    'slides-as-code': 'Slides as Code',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1095,6 +1096,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Una inmersión profunda en OpenClaw — el agente de IA personal que vive en tu máquina, sigue tus reglas, y marcó un nuevo paradigma de IA local.',
     'learning-mobile-development':
       'Un recorrido honesto por el desarrollo móvil — el estado del arte, escoger herramientas y aprender a construir para Android e iOS documentando cada paso.',
+    'slides-as-code':
+      'Una serie que explora herramientas de presentación orientadas a desarrolladores, compara alternativas y documenta cómo construir un sistema de diapositivas multilingüe dentro de un framework web moderno.',
   },
 
   // Date formatting
