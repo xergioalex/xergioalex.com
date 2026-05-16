@@ -12,7 +12,7 @@ The project uses two Node.js scripts powered by `sharp` (installed as a dev depe
 
 | Script | Command | Purpose |
 |--------|---------|---------|
-| `scripts/optimize-images.mjs` | `npm run images:optimize` | Process new images from staging |
+| `scripts/optimize-images.mjs` | `pnpm run images:optimize` | Process new images from staging |
 | `scripts/optimize-existing-images.mjs` | `node scripts/optimize-existing-images.mjs` | One-off bulk optimization |
 
 ## Staging Workflow
@@ -22,7 +22,7 @@ The primary workflow for adding new blog images.
 ### How It Works
 
 1. Drop images into `public/images/blog/_staging/` using the naming convention
-2. Run `npm run images:optimize`
+2. Run `pnpm run images:optimize`
 3. Images are resized, compressed, and moved to `public/images/blog/posts/{slug}/`
 4. Staging files are deleted after successful processing
 
@@ -46,16 +46,16 @@ The double-dash (`--`) separates the post slug from the image name.
 
 ```bash
 # Process all staged images
-npm run images:optimize
+pnpm run images:optimize
 
 # Preview what would happen (no files modified)
-npm run images:optimize -- --dry-run
+pnpm run images:optimize -- --dry-run
 
 # Process and also generate WebP variants
-npm run images:optimize -- --webp
+pnpm run images:optimize -- --webp
 
 # Combine flags
-npm run images:optimize -- --dry-run --webp
+pnpm run images:optimize -- --dry-run --webp
 ```
 
 ### Example Output
@@ -242,7 +242,7 @@ Complete workflow for adding images when creating a new blog post:
    ```
    ```bash
    cp my-new-post--hero.jpg public/images/blog/_staging/
-   npm run images:optimize -- --webp
+   pnpm run images:optimize -- --webp
    ```
 
 3. **Verify output:**

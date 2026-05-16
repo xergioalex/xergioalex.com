@@ -759,14 +759,14 @@ Tags use slug-based identifiers with localized display names from `translations.
 
 ```bash
 # Development
-npm run dev              # Start dev server
+pnpm run dev              # Start dev server
 
 # Production build
-npm run build            # Build with type checking
-npm run astro:preview    # Preview production build
+pnpm run build            # Build with type checking
+pnpm run astro:preview    # Preview production build
 
 # Cloudflare Pages
-npm run build            # Build to dist/ folder (prebuild runs images:webp)
+pnpm run build            # Build to dist/ folder (prebuild runs images:webp)
 ```
 
 ### Output Structure
@@ -787,7 +787,7 @@ dist/                    # Build output (Cloudflare Pages)
 ### Cloudflare Pages Configuration
 
 - Output directory: `dist/`
-- Build command: `npm run build`
+- Build command: `pnpm run build`
 - Custom domain configured in Cloudflare dashboard
 
 ## Performance Considerations

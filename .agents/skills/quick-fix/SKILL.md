@@ -78,8 +78,8 @@ Before running this skill, ensure:
 Run validation commands for this repo:
 
 ```bash
-npm run biome:check
-npm run astro:check
+pnpm run biome:check
+pnpm run astro:check
 ```
 
 ## Output Format
@@ -147,8 +147,8 @@ Before making changes:
 ## Definition of Done
 
 - [ ] Issue is resolved
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
 - [ ] Change follows existing patterns
 - [ ] Change is minimal (no over-engineering)
 
@@ -179,7 +179,7 @@ $FILES: src/components/home/HeroSection/HeroSection.astro
 
 **Execution:**
 1. Open file, find typo, replace
-2. Run `npm run biome:check` and `npm run astro:check`
+2. Run `pnpm run biome:check` and `pnpm run astro:check`
 3. Commit with `fix: correct typo in hero section`
 
 ### Example 2: Fix Dark Mode Issue
@@ -194,7 +194,7 @@ $FILES: src/components/Footer.astro
 
 **Execution:**
 1. Open file, add `dark:text-gray-100` classes
-2. Run `npm run biome:check`
+2. Run `pnpm run biome:check`
 3. Commit with `fix: add dark mode support to footer`
 
 ### Example 3: Escalation

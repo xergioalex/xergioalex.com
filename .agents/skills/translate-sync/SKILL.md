@@ -110,9 +110,9 @@ Translate the content following these rules:
 ls -la {source_file} {target_file}
 
 # Run code quality checks
-npm run biome:check
-npm run astro:check
-npm run build
+pnpm run biome:check
+pnpm run astro:check
+pnpm run build
 ```
 
 ## Output Format
@@ -177,9 +177,9 @@ Stop and ask if:
 - [ ] Code blocks, commands, and technical content are preserved untranslated
 - [ ] `lang` value is correct in target page files
 - [ ] Spanish text has correct diacritical marks (ñ, accents — no `pequeno`, `tamano`, `numero`, `codigo`)
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
-- [ ] `npm run build` passes
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run build` passes
 
 ## Escalation Conditions
 

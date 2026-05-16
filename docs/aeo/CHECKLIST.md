@@ -49,7 +49,7 @@ Record results:
 
 ## 6. Performance
 
-- [ ] Run Lighthouse on homepage: `npm run lighthouse` (or Chrome DevTools)
+- [ ] Run Lighthouse on homepage: `pnpm run lighthouse` (or Chrome DevTools)
 - [ ] Confirm all scores remain at 100 (or 90+ minimum)
 - [ ] Check Core Web Vitals in Google Search Console
 - [ ] Verify no new JS was accidentally added (check bundle size)
@@ -81,7 +81,7 @@ Run these commands before deploying:
 
 ```bash
 # Full validation suite
-npm run biome:check && npm run astro:check && npm run build && npm run test
+pnpm run biome:check && pnpm run astro:check && pnpm run build && pnpm run test
 
 # Check llms.txt files are in build output
 ls -la dist/llms.txt dist/llms-full.txt

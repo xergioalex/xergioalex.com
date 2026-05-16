@@ -177,7 +177,7 @@ npm audit
 npm audit fix
 
 # Check for outdated packages
-npm run ncu:check
+pnpm run ncu:check
 ```
 
 ### Package Selection
@@ -191,7 +191,7 @@ When adding dependencies:
 
 ### Lock Files
 
-Always commit `package-lock.json` to ensure reproducible builds.
+Always commit `pnpm-lock.yaml` to ensure reproducible builds. The lockfile is consumed by `corepack pnpm install --frozen-lockfile` in CI and Cloudflare Pages.
 
 ## Build Security
 
@@ -200,7 +200,7 @@ Always commit `package-lock.json` to ensure reproducible builds.
 The site deploys to Cloudflare Pages from the `dist/` folder:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Security considerations:
@@ -216,7 +216,7 @@ If you need secrets during build (e.g., fetching from a CMS):
 
 ```bash
 # In CI/CD, set environment variables
-PRIVATE_CMS_TOKEN=xxx npm run build
+PRIVATE_CMS_TOKEN=xxx pnpm run build
 ```
 
 The secret is used at build time but not included in output.

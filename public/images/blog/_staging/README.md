@@ -5,7 +5,7 @@ Drop raw/unprocessed images here. They will be optimized and moved to their fina
 ## Workflow
 
 1. Drop image(s) here
-2. Run `npm run images:optimize`
+2. Run `pnpm run images:optimize`
 3. Optimized images are moved to `public/images/blog/posts/{slug}/`
 
 ## Naming Convention

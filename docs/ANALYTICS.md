@@ -113,10 +113,10 @@ These tools add small tracking scripts to `BaseHead.astro`. Scripts load conditi
 | **What it measures** | Performance, Accessibility, Best Practices, SEO scores per page |
 | **Cost** | Free (GitHub Actions + local CLI) |
 | **Script size** | None (runs in CI/locally, not on the site) |
-| **Runs on** | Every pull request to `main` and `dev` branches, and locally via `npm run lighthouse` |
+| **Runs on** | Every pull request to `main` and `dev` branches, and locally via `pnpm run lighthouse` |
 | **Config** | `lighthouserc.cjs` at project root |
 
-**Setup:** Integrated into the Code Check workflow (`.github/workflows/code_check.yml`). Also available locally via `npm run lighthouse` (requires Chrome). Tests the built `dist/` folder against performance budgets.
+**Setup:** Integrated into the Code Check workflow (`.github/workflows/code_check.yml`). Also available locally via `pnpm run lighthouse` (requires Chrome). Tests the built `dist/` folder against performance budgets.
 
 **Budgets:**
 - Performance: >= 95
@@ -225,7 +225,7 @@ Bots in the watchlist are currently ignored but should be reviewed periodically 
 
 1. **Real-time logs:** Cloudflare Dashboard → Pages → Project → Functions → Real-time Logs. Look for `[AI Bot]` log lines
 2. **Umami dashboard:** Events tab → filter by `ai_bot_visit` to see bot names, paths, and frequency
-3. **Local testing:** `curl -H "User-Agent: GPTBot/1.0" http://localhost:8788/` (requires `npx wrangler pages dev dist/`)
+3. **Local testing:** `curl -H "User-Agent: GPTBot/1.0" http://localhost:8788/` (requires `pnpm exec wrangler pages dev dist/`)
 
 **Maintenance:** When new AI crawlers emerge, add them to both `robots.txt` and the `AI_BOT_PATTERNS` array in `functions/_middleware.ts`.
 
@@ -279,7 +279,7 @@ Both flows attempt to identify the requester using the same bot detection logic 
 
 1. **Umami dashboard:** Events tab → filter by `markdown_request`
 2. **Real-time logs:** Cloudflare Functions logs → look for `[Markdown content_negotiation]` or `[Markdown direct_url]`
-3. **Local testing:** `curl -H "Accept: text/markdown" http://localhost:8788/about` (requires `npx wrangler pages dev dist/`)
+3. **Local testing:** `curl -H "Accept: text/markdown" http://localhost:8788/about` (requires `pnpm exec wrangler pages dev dist/`)
 
 #### Performance impact
 
@@ -341,7 +341,7 @@ Umami custom events are used to track specific user interactions beyond page vie
 
 ### How to Verify Events
 
-1. Run `npm run dev` and open the site in a browser
+1. Run `pnpm run dev` and open the site in a browser
 2. Open DevTools → **Network** tab
 3. Filter requests by `api/send` (Umami's event endpoint)
 4. Perform an interaction (e.g., click a nav link)

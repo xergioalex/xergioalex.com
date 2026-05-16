@@ -327,12 +327,12 @@ If the post has a Resources / Recursos section:
 ### Step 9: Build Validation
 
 ```bash
-npm run build 2>&1 | tail -20
+pnpm run build 2>&1 | tail -20
 ```
 
 | Check | Rule | Severity |
 |-------|------|----------|
-| Build passes | `npm run build` exits with code 0 | FAIL if build fails |
+| Build passes | `pnpm run build` exits with code 0 | FAIL if build fails |
 | No warnings for this post | No build warnings mentioning the post slug | WARN if warnings found |
 
 ### Step 10: Final Report

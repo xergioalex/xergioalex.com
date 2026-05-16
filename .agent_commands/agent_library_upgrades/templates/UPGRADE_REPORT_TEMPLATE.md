@@ -62,13 +62,13 @@ Use this template when generating upgrade reports.
 ## Files Modified
 
 - ✅ `package.json` - Updated package versions
-- ✅ `package-lock.json` - Regenerated lock file
+- ✅ `pnpm-lock.yaml` - Regenerated lock file
 
 ---
 
 ## Validation Results
 
-### npm install
+### pnpm install
 
 - **Status:** ✅ Success / ❌ Failed
 - **Details:** [Any warnings or notes]
@@ -80,13 +80,13 @@ Use this template when generating upgrade reports.
 
 ### Code Quality Checks
 
-- **Command:** `npm run eslint:check && npm run prettier:check`
+- **Command:** `pnpm run eslint:check && pnpm run prettier:check`
 - **Status:** ✅ Passed / ❌ Failed
 - **Details:** [Any warnings or errors]
 
 ### Tests
 
-- **Command:** `npm run test` or `codecheck`
+- **Command:** `pnpm run test` or `codecheck`
 - **Status:** ✅ Passed / ❌ Failed
 - **Details:** [Any test failures]
 
@@ -107,7 +107,7 @@ If retries were needed:
 
 ### Immediate Actions
 
-- [ ] Review changes in `package.json` and `package-lock.json`
+- [ ] Review changes in `package.json` and `pnpm-lock.yaml`
 - [ ] Test application functionality
 - [ ] Review failed packages (if any)
 - [ ] Commit changes if everything looks good

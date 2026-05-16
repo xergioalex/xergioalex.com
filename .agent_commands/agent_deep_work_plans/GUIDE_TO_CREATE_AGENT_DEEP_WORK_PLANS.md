@@ -192,7 +192,7 @@ Some examples:
 
 - Always work in a feature branch, never directly on `main`.
 - Use small, incremental, well-described commits.
-- Run code quality checks (`npm run biome:check`, `npm run astro:check`) as specified in each task.
+- Run code quality checks (`pnpm run biome:check`, `pnpm run astro:check`) as specified in each task.
 - Use TypeScript with type annotations where practical.
 - Follow import order: Node.js native → third-party → internal (using @) → types.
 - Support dark mode in all UI components (use Tailwind's `dark:` variant).
@@ -347,9 +347,9 @@ Examples:
 
 - All required functionality is implemented.
 - Code matches the patterns in `docs/ARCHITECTURE.md`.
-- No TypeScript errors (`npm run astro:check` passes).
-- Biome checks pass (`npm run biome:check`).
-- Build succeeds (`npm run build`).
+- No TypeScript errors (`pnpm run astro:check` passes).
+- Biome checks pass (`pnpm run biome:check`).
+- Build succeeds (`pnpm run build`).
 - Dark mode is supported in UI components.
 - Naming and structure follow existing conventions in `docs/STANDARDS.md`.
 
@@ -369,14 +369,14 @@ Example:
 
 ```bash
 # Run code quality checks
-npm run biome:check        # Lint and format check
-npm run astro:check        # TypeScript checking
-npm run build              # Verify production build works
+pnpm run biome:check        # Lint and format check
+pnpm run astro:check        # TypeScript checking
+pnpm run build              # Verify production build works
 ```
 
 If any of these fail, the agent must **stop, log the issue, and not mark the task as complete**.
 
-**Note:** Testing is not configured in this project. When tests are added, include `npm run test` in validation.
+**Note:** Testing is not configured in this project. When tests are added, include `pnpm run test` in validation.
 
 ## 8. Rollback (optional)
 
@@ -849,9 +849,9 @@ When writing a task file (`N.task_*.md`), the plan generator MUST:
 
    Standard validations:
    ```bash
-   npm run biome:check
-   npm run astro:check
-   npm run build
+   pnpm run biome:check
+   pnpm run astro:check
+   pnpm run build
    ```
 
    Agent-based validation:

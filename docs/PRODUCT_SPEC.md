@@ -294,7 +294,7 @@ Blog Index
 
 ### Process
 
-1. Build with `npm run build`
+1. Build with `pnpm run build`
 2. Output to `docs/` directory
 3. Commit and push to repository
 4. Cloudflare Pages serves from `dist/`

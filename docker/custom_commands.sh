@@ -14,7 +14,7 @@ function print.error {
 
 function check() {
   print.success "Running astro checks..."
-	npm run astro:check
+	corepack pnpm run astro:check
 	if [ $? != 0 ]; then
     echo ''
 		print.error "⚠️ Astro checks failed, skipping astro checks..."
@@ -22,12 +22,12 @@ function check() {
 	fi
 
 	print.success "Running biome checks..."
-	npm run biome:check
+	corepack pnpm run biome:check
 }
 
 function fix() {
   print.success "Running astro checks..."
-	npm run astro:check
+	corepack pnpm run astro:check
 	if [ $? != 0 ]; then
     echo ''
 		print.error "⚠️ Astro checks failed, skipping astro checks..."
@@ -35,23 +35,23 @@ function fix() {
 	fi
 
 	print.success "Running biome checks && apply automatic fixes..."
-	npm run biome:fix
+	corepack pnpm run biome:fix
 }
 
 function test() {
   print.success "Running tests..."
-	npm run test
+	corepack pnpm run test
 }
 
 function lighthouse() {
 	print.success "Building site for Lighthouse audit..."
-	npm run build
+	corepack pnpm run build
 	if [ $? != 0 ]; then
 		print.error "⚠️ Build failed, skipping Lighthouse audit..."
 		return 1
 	fi
 	print.success "Running Lighthouse audit..."
-	npm run lighthouse
+	corepack pnpm run lighthouse
 }
 
 function codecheck() {
@@ -62,13 +62,13 @@ function codecheck() {
 		return 1
 	fi
 	print.success "Checking Markdown parity (EN/ES)..."
-	npm run md:check
+	corepack pnpm run md:check
 	if [ $? != 0 ]; then
 		print.error "⚠️ Markdown parity check failed..."
 		return 1
 	fi
 	print.success "Generating WebP images (skips if up to date)..."
-	npm run images:webp
+	corepack pnpm run images:webp
 	if [ $? != 0 ]; then
 		print.error "⚠️ WebP generation failed..."
 		return 1
@@ -82,8 +82,8 @@ function codecheck() {
 }
 
 function install() {
-  print.success "Running npm install..."
-	npm install
+  print.success "Running pnpm install..."
+	corepack pnpm install
 }
 
 # ================================
@@ -316,7 +316,7 @@ function show_welcome() {
     echo "  • test                 - Run tests"
     echo "  • lighthouse           - Build site + run Lighthouse audit"
     echo "  • codecheck            - Run all checks (fix + md:check + images:webp + test + lighthouse)"
-    echo "  • install              - Run npm install"
+    echo "  • install              - Run pnpm install"
     echo ""
     echo "AI Assistant commands:"
     echo "  • claude            - Claude Code CLI"

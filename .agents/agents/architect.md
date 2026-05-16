@@ -93,7 +93,7 @@ This agent focuses on:
 #### Step 1: {Name}
 **Files:** {files}
 **Changes:** {what}
-**Validation:** npm run biome:check, npm run astro:check
+**Validation:** pnpm run biome:check, pnpm run astro:check
 
 ### Success Criteria
 - [ ] {Criterion}

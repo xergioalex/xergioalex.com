@@ -367,7 +367,7 @@ Upgrade project dependencies (npm packages via npm-check-updates).
 3. Categorize packages: patch, minor, major
 4. Show comprehensive report
 5. Execute upgrades with automatic rollback on failures
-6. Validate with `codecheck` or `npm run test`
+6. Validate with `codecheck` or `pnpm run test`
 7. Generate comprehensive report
 
 **Interactive Menu:**
@@ -593,7 +593,7 @@ NEW (1-2 commands):
 #    4. Select specific packages
 #    5. Cancel
 # → Select option (e.g., "2" for patch + minor)
-# → Runs `ncu -u --target minor && npm install`
+# → Runs `ncu -u --target minor && pnpm install`
 # → Validates with codecheck
 # → After minor complete, asks about major upgrades
 # → Generates comprehensive report

@@ -317,7 +317,7 @@ Update documentation when:
 
 ```bash
 # Check for broken links (if tool installed)
-npx markdown-link-check docs/*.md
+pnpm exec markdown-link-check docs/*.md
 ```
 
 ### Formatting
@@ -335,7 +335,7 @@ Use consistent formatting:
 ### Command Name
 
 \`\`\`bash
-npm run command
+pnpm run command
 \`\`\`
 
 **What it does:** Brief description.

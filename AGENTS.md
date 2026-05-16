@@ -172,9 +172,9 @@ Prefer explicit types on function signatures. Biome allows `any` for flexibility
 ### 5. Code Quality (MANDATORY)
 
 ```bash
-npm run biome:check        # Check linting and formatting
-npm run biome:fix          # Auto-fix issues
-npm run biome:fix:unsafe   # Fix with unsafe transformations
+pnpm run biome:check        # Check linting and formatting
+pnpm run biome:fix          # Auto-fix issues
+pnpm run biome:fix:unsafe   # Fix with unsafe transformations
 ```
 
 **DO NOT use ESLint or Prettier** — this project uses Biome exclusively.
@@ -182,9 +182,9 @@ npm run biome:fix:unsafe   # Fix with unsafe transformations
 ### 6. Testing
 
 ```bash
-npm run test               # Run all tests (single run)
-npm run test:watch         # Watch mode
-npm run test:coverage      # With coverage report
+pnpm run test               # Run all tests (single run)
+pnpm run test:watch         # Watch mode
+pnpm run test:coverage      # With coverage report
 ```
 
 Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib/`. See **[Testing Guide](docs/TESTING_GUIDE.md)**.
@@ -223,7 +223,7 @@ Tests use `*.test.ts` naming in `tests/unit/`. Coverage target: 80%+ on `src/lib
 5. **Optimize images** — always include dimensions, lazy load below-fold content
 6. **Avoid layout shifts** — reserve space for async content, `font-display: swap`
 7. **Keep search payload lean** — use language-sharded endpoints, minimal index schema
-8. **Protect Lighthouse scores** — run `npm run search:budgets` after search changes
+8. **Protect Lighthouse scores** — run `pnpm run search:budgets` after search changes
 
 See **[Performance Guide](docs/PERFORMANCE.md)**.
 
@@ -253,20 +253,20 @@ Multiple AI agents collaborate on this codebase. When updating agent guidance, m
 ## Quick Commands
 
 ```bash
-npm run dev                # Dev server (http://localhost:4444)
-npm run build              # Production build (prebuild runs images:webp)
-npm run astro:preview      # Preview production build
-npm run biome:check        # Lint and format check
-npm run biome:fix          # Auto-fix lint issues
-npm run astro:check        # TypeScript type checking
-npm run test               # Run unit tests
-npm run test:coverage      # Tests with coverage
-npm run images:optimize    # Process staged images
-npm run md:check           # Verify every HTML page has a matching .md for agents
-npm run md:check:strict    # Same as above; exits 1 on missing (for CI)
-npm run lighthouse         # Lighthouse audit
-npm run release            # Bump version and release commit
-npm run ncu:check          # Check for package updates
+pnpm run dev                # Dev server (http://localhost:4444)
+pnpm run build              # Production build (prebuild runs images:webp)
+pnpm run astro:preview      # Preview production build
+pnpm run biome:check        # Lint and format check
+pnpm run biome:fix          # Auto-fix lint issues
+pnpm run astro:check        # TypeScript type checking
+pnpm run test               # Run unit tests
+pnpm run test:coverage      # Tests with coverage
+pnpm run images:optimize    # Process staged images
+pnpm run md:check           # Verify every HTML page has a matching .md for agents
+pnpm run md:check:strict    # Same as above; exits 1 on missing (for CI)
+pnpm run lighthouse         # Lighthouse audit
+pnpm run release            # Bump version and release commit
+pnpm run ncu:check          # Check for package updates
 ```
 
 Full command reference: **[Development Commands](docs/DEVELOPMENT_COMMANDS.md)**.
@@ -366,7 +366,7 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **Demo posts:** In `_demo/` folders only. Never shown in listings/search. Accessible by direct URL in dev only.
 
-**Images:** Stored in `public/images/blog/posts/{slug}/`. Hero: `hero.{ext}`. Use `npm run images:optimize` for staged images.
+**Images:** Stored in `public/images/blog/posts/{slug}/`. Hero: `hero.{ext}`. Use `pnpm run images:optimize` for staged images.
 
 **New post workflow:** Use `/add-blog-post` skill (mandatory). Do not create blog post files manually.
 
@@ -427,7 +427,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 
 ### DO:
 
-1. Use Biome for linting (`npm run biome:check` before commits)
+1. Use Biome for linting (`pnpm run biome:check` before commits)
 2. Use Svelte for interactive components with appropriate `client:*` directive
 3. Support dark mode with Tailwind's `dark:` variant
 4. Use `@` path alias for imports
@@ -444,10 +444,10 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 ## Pre-Commit Checklist
 
 - [ ] All code in English
-- [ ] `npm run test` passes
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
-- [ ] `npm run build` succeeds
+- [ ] `pnpm run test` passes
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run build` succeeds
 - [ ] Dark mode works in new components
 - [ ] Content in both English and Spanish
 - [ ] Translation strings in both locale files

@@ -68,17 +68,17 @@ xergioalex.com/
 
 ```bash
 # Development
-npm run dev              # Start dev server
-npm run build            # Production build
-npm run astro:preview    # Preview build
+pnpm run dev              # Start dev server
+pnpm run build            # Production build
+pnpm run astro:preview    # Preview build
 
 # Code Quality
-npm run biome:check      # Check linting/formatting
-npm run biome:fix        # Auto-fix issues
-npm run astro:check      # TypeScript checking
+pnpm run biome:check      # Check linting/formatting
+pnpm run biome:fix        # Auto-fix issues
+pnpm run astro:check      # TypeScript checking
 
 # Deployment
-npm run build            # Production build (Cloudflare Pages)
+pnpm run build            # Production build (Cloudflare Pages)
 ```
 
 ## Key Concepts
@@ -119,7 +119,7 @@ If you're an AI coding assistant, start here:
 
 1. Follow the coding standards in [STANDARDS.md](STANDARDS.md)
 2. Update relevant documentation after changes
-3. Run `npm run biome:check` before committing
+3. Run `pnpm run biome:check` before committing
 4. Use conventional commit messages
 
 ## Documentation Maintenance

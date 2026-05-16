@@ -183,7 +183,7 @@ Which layout? (Enter for recommended: {layout})
 
 **If image is not already in the correct location** (`public/images/blog/posts/{slug}/hero.{ext}`):
 - Copy/move the image to the correct location
-- Run `npm run images:optimize` if the image is placed in staging (see Image Optimization Guide)
+- Run `pnpm run images:optimize` if the image is placed in staging (see Image Optimization Guide)
 - Inform the user about the optimization results
 
 **2.7 Publication date**
@@ -259,7 +259,7 @@ This is where you delegate. Pass all gathered information to the execution layer
 
 **4.1 Handle image (if provided):**
 - If image is not in the correct location, copy it to `public/images/blog/posts/{slug}/hero.{ext}`
-- If image was placed in `_staging/`, run `npm run images:optimize` (see Image Optimization Guide for presets)
+- If image was placed in `_staging/`, run `pnpm run images:optimize` (see Image Optimization Guide for presets)
 - Report optimization results
 
 **4.2 Write the blog post — Delegate to content-writer agent:**
@@ -287,7 +287,7 @@ Creating your blog post...
 ```
 
 **4.3 Validate:**
-- Run `npm run build`
+- Run `pnpm run build`
 - Verify both files exist
 - Verify image paths are correct
 
@@ -325,7 +325,7 @@ What would you like to do?
 ```
 
 **Handle response:**
-- **Option 1:** Run `npm run dev` and show the URL
+- **Option 1:** Run `pnpm run dev` and show the URL
 - **Option 2:** Create a commit with message `content: add blog post "{title}" (en + es)`
 - **Option 3:** End with reminder about uncommitted changes
 
@@ -394,7 +394,7 @@ Agent: Write a brief description (1-2 sentences)...
 [continues through all questions: description, tags, hero image, date, language, context]
 [shows preview, asks confirmation]
 [delegates to content-writer agent + add-blog-post skill]
-[validates with npm run build]
+[validates with pnpm run build]
 ```
 
 **2. Topic provided:**

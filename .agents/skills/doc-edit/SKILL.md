@@ -86,7 +86,7 @@ Before running this skill, ensure:
 - Run lint if touching code files with comments only:
 
 ```bash
-npm run biome:check
+pnpm run biome:check
 ```
 
 ## Output Format

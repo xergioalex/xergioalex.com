@@ -131,7 +131,7 @@ Added client-side blog search functionality.
 
 ## Notes for Reviewers
 Search is static-first and shard-based for scale. Keep
-`npm run search:budgets` green to avoid payload regressions.
+`pnpm run search:budgets` green to avoid payload regressions.
 ```
 
 ## Conflict Resolution
@@ -150,7 +150,7 @@ If conflicts arise:
 2. Merge manually if complex
 3. Run validation:
    ```bash
-   npm run biome:check && npm run astro:check && npm run build
+   pnpm run biome:check && pnpm run astro:check && pnpm run build
    ```
 4. Test affected features
 
@@ -171,7 +171,7 @@ If conflicts arise:
 2. [ ] Check git status
 3. [ ] Review recent commits
 4. [ ] Understand current task scope
-5. [ ] Verify dev environment works (npm run dev)
+5. [ ] Verify dev environment works (pnpm run dev)
 ```
 
 ### Session End Checklist

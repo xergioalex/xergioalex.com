@@ -79,8 +79,8 @@ Before running this skill, ensure:
 - Verify the fix addresses the issue
 
 ```bash
-npm run test -- --related
-npm run lint
+pnpm run test -- --related
+pnpm run lint
 ```
 
 ## Output Format

@@ -55,11 +55,14 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 
 ## 🚀 Quick Start
 
-> Requires **Node.js 24+** (CI runs on 24.14.0)
+> Requires **Node.js 24+** (CI runs on 24.15.0). The package manager is
+> **pnpm**, pinned via Corepack in `package.json#packageManager`. Enable it
+> once with `corepack enable`; the dev container does this automatically.
 
 ```bash
-npm install
-npm run dev
+corepack enable
+pnpm install
+pnpm run dev
 ```
 
 Visit **http://localhost:4444** to preview.
@@ -70,21 +73,21 @@ Visit **http://localhost:4444** to preview.
 
 | Command | Description |
 | :------ | :---------- |
-| `npm run dev` | Start dev server at `localhost:4444` |
-| `npm run build` | Production build with type check |
-| `npm run astro:preview` | Preview production build locally |
-| `npm run biome:check` | Lint and format check |
-| `npm run biome:fix` | Auto-fix lint and format issues |
-| `npm run astro:check` | TypeScript type checking |
-| `npm run test` | Run unit tests (Vitest) |
-| `npm run test:watch` | Vitest in watch mode |
-| `npm run test:coverage` | Tests with coverage report |
-| `npm run images:optimize` | Convert staged images to WebP |
-| `npm run md:check` | Verify HTML / Markdown agent-endpoint parity |
-| `npm run search:budgets` | Check search index performance budgets |
-| `npm run lighthouse` | Run Lighthouse CI audit |
-| `npm run ncu:check` | Check for dependency updates |
-| `npm run release` | Bump version and create release commit |
+| `pnpm run dev` | Start dev server at `localhost:4444` |
+| `pnpm run build` | Production build with type check |
+| `pnpm run astro:preview` | Preview production build locally |
+| `pnpm run biome:check` | Lint and format check |
+| `pnpm run biome:fix` | Auto-fix lint and format issues |
+| `pnpm run astro:check` | TypeScript type checking |
+| `pnpm run test` | Run unit tests (Vitest) |
+| `pnpm run test:watch` | Vitest in watch mode |
+| `pnpm run test:coverage` | Tests with coverage report |
+| `pnpm run images:optimize` | Convert staged images to WebP |
+| `pnpm run md:check` | Verify HTML / Markdown agent-endpoint parity |
+| `pnpm run search:budgets` | Check search index performance budgets |
+| `pnpm run lighthouse` | Run Lighthouse CI audit |
+| `pnpm run ncu:check` | Check for dependency updates |
+| `pnpm run release` | Bump version and create release commit |
 
 ---
 
@@ -146,7 +149,7 @@ Visit **http://localhost:4444** to preview.
 Deployed to **Cloudflare Pages** on every push to `main`:
 
 1. Cloudflare triggers a build
-2. Runs `npm run build` (WebP generation + Astro build)
+2. Runs `pnpm run build` (WebP generation + Astro build)
 3. Serves the `dist/` folder from its global CDN
 
 Live at **[xergioalex.com](https://xergioalex.com)**.

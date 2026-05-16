@@ -131,13 +131,13 @@ This project uses **Biome** exclusively for linting and formatting.
 
 ```bash
 # Check for issues
-npm run biome:check
+pnpm run biome:check
 
 # Auto-fix issues
-npm run biome:fix
+pnpm run biome:fix
 
 # Fix with unsafe transformations
-npm run biome:fix:unsafe
+pnpm run biome:fix:unsafe
 ```
 
 **❌ DO NOT use ESLint or Prettier** - They are not configured in this project.
@@ -156,8 +156,8 @@ Key settings in `biome.json`:
 Always run before committing:
 
 ```bash
-npm run biome:check
-npm run astro:check
+pnpm run biome:check
+pnpm run astro:check
 ```
 
 ## Component Standards
@@ -540,8 +540,8 @@ Before committing, verify:
 
 - [ ] Code is in English (variables, comments, docs)
 - [ ] Import order follows convention
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
 - [ ] Dark mode is supported in new UI
 - [ ] Meta descriptions are 130-160 characters (pages in translations, blog posts in frontmatter)
 - [ ] Documentation is updated if needed

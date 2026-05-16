@@ -175,9 +175,9 @@ Create `src/content/pages/en/$SLUG.md` and `src/content/pages/es/$SLUG.md` follo
 ### Step 6: Validate
 
 ```bash
-npm run biome:check
-npm run astro:check
-npm run build
+pnpm run biome:check
+pnpm run astro:check
+pnpm run build
 ```
 
 Verify the new page appears in the build and the AEO `.md` endpoint is generated.
@@ -242,9 +242,9 @@ This skill is **complete** when ALL of the following are true:
 - [ ] Translation keys in both `en.ts` and `es.ts` and `types.ts`
 - [ ] AEO markdown in both `en/$SLUG.md` and `es/$SLUG.md`
 - [ ] Spanish content has correct diacritical marks
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
-- [ ] `npm run build` succeeds
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run build` succeeds
 - [ ] New page appears at `/$SLUG` in the build output
 
 ## Escalation Conditions

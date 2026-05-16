@@ -178,11 +178,11 @@ The `NewsletterForm` is rendered separately by `BlogPostPage.astro` — it is **
 ## How to Add a New Author
 
 1. **Create the YAML file** at `src/content/authors/{slug}.yaml`. Use kebab-case for the slug; it must match the filename (without `.yaml`).
-2. **Add the avatar** at `public/images/authors/{slug}.webp`. Recommended: 160x160 px (rendered at 80x80 + 2x retina). Use `npm run images:optimize` to convert from staged sources.
+2. **Add the avatar** at `public/images/authors/{slug}.webp`. Recommended: 160x160 px (rendered at 80x80 + 2x retina). Use `pnpm run images:optimize` to convert from staged sources.
 3. **Fill out all required fields:** `name`, `slug`, `avatar`, `role.en`, `role.es`, `bio.en`, `bio.es`. Spanish must use proper diacritics and tuteo register.
 4. **(Optional) Add social links** — only include the platforms the author actually uses; omit the rest.
 5. **Reference in blog posts** by setting `author: '{slug}'` in the post frontmatter (both EN and ES versions must use the same slug).
-6. **Verify in the internal directory:** Run `npm run dev` and open `/internal/authors` to confirm the new card renders correctly in both languages.
+6. **Verify in the internal directory:** Run `pnpm run dev` and open `/internal/authors` to confirm the new card renders correctly in both languages.
 
 ## Translation Strings
 
@@ -205,8 +205,8 @@ Before merging a new author or modifying an existing one:
 - [ ] Both `bio.en` and `bio.es` are present, non-empty, and use natural prose (no machine-translated artifacts)
 - [ ] Spanish role and bio use proper diacritics (`Cofundador`, `años`, `diseño`, etc.) and tuteo (no voseo)
 - [ ] Social URLs are full URLs (with `https://`)
-- [ ] `npm run astro:check` passes (validates the Zod schema)
-- [ ] `npm run build` succeeds and the post listing renders the new author card
+- [ ] `pnpm run astro:check` passes (validates the Zod schema)
+- [ ] `pnpm run build` succeeds and the post listing renders the new author card
 - [ ] `/internal/authors` lists the new author with the correct preview in both languages
 
 ## Key Files

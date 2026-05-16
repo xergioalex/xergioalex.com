@@ -22,11 +22,11 @@
  *                    output  at public/images/slides/{slug}/
  *
  * Usage:
- *   npm run images:optimize                          # Blog (default)
- *   npm run images:optimize -- --webp                # Blog with WebP variants
- *   npm run images:optimize -- --dry-run             # Preview blog work
- *   npm run images:optimize:slides                   # Slides
- *   npm run images:optimize:slides -- --webp         # Slides with WebP
+ *   pnpm run images:optimize                          # Blog (default)
+ *   pnpm run images:optimize -- --webp                # Blog with WebP variants
+ *   pnpm run images:optimize -- --dry-run             # Preview blog work
+ *   pnpm run images:optimize:slides                   # Slides
+ *   pnpm run images:optimize:slides -- --webp         # Slides with WebP
  */
 
 import { existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs';

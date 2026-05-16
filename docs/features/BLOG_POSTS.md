@@ -347,7 +347,7 @@ Every inline image in a blog post body **MUST** be wrapped in `<figure>` with a 
 Blog images are optimized using a **sharp-based pipeline**. See [IMAGE_OPTIMIZATION.md](./IMAGE_OPTIMIZATION.md) for the complete guide on:
 
 - Staging workflow (`_staging/` directory)
-- `npm run images:optimize` command
+- `pnpm run images:optimize` command
 - Optimization presets and quality settings
 - WebP variant generation
 - One-off optimization of existing images
@@ -661,8 +661,8 @@ Posts with a `pubDate` set to a **future date** are treated as scheduled posts. 
 
 | Environment | Visibility | Badge |
 |-------------|-----------|-------|
-| `npm run dev` | Visible in all listings, search, series nav | Amber "Scheduled" badge on cards and detail page |
-| `npm run build` (production) | Completely excluded — no routes, no listings, no RSS, no search | N/A |
+| `pnpm run dev` | Visible in all listings, search, series nav | Amber "Scheduled" badge on cards and detail page |
+| `pnpm run build` (production) | Completely excluded — no routes, no listings, no RSS, no search | N/A |
 
 ### How to Schedule a Post
 
@@ -670,8 +670,8 @@ Posts with a `pubDate` set to a **future date** are treated as scheduled posts. 
    ```yaml
    pubDate: '2026-06-15'
    ```
-2. The post is immediately visible in `npm run dev` with a "Scheduled" badge
-3. When you deploy (`npm run build`), the post is excluded from the build output
+2. The post is immediately visible in `pnpm run dev` with a "Scheduled" badge
+3. When you deploy (`pnpm run build`), the post is excluded from the build output
 4. After the `pubDate` passes, rebuild and deploy — the post becomes a normal published post
 
 ### Visual Indicators (Dev Only)

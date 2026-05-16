@@ -22,7 +22,7 @@ Convert user-provided images (PNG, JPG, etc.) to optimized WebP format and place
 - Does NOT create or modify blog post content (use `/add-blog-post` for that)
 - Does NOT handle image generation or design
 - Does NOT modify the image optimization scripts themselves
-- Does NOT process images in bulk across all posts (use `npm run images:optimize` for staging pipeline)
+- Does NOT process images in bulk across all posts (use `pnpm run images:optimize` for staging pipeline)
 
 ## Tier Classification
 

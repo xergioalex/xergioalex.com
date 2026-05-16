@@ -16,13 +16,13 @@ E2E testing (Playwright) is not yet configured.
 
 ```bash
 # Run all tests (single run)
-npm run test
+pnpm run test
 
 # Watch mode (re-runs on file changes)
-npm run test:watch
+pnpm run test:watch
 
 # Run with coverage report
-npm run test:coverage
+pnpm run test:coverage
 ```
 
 ## Test Structure

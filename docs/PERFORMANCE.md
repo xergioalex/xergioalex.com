@@ -14,7 +14,7 @@ When working on this codebase, **always apply these principles:**
 2. **Choose the laziest hydration possible.** Default to `client:visible` or `client:idle`. Only use `client:load` for components that need immediate interactivity (header, navigation). Never add `client:load` without justification.
 3. **Minimize JavaScript payload.** Every byte of JS increases Time to Interactive. Avoid heavy libraries. Prefer CSS-only solutions (transitions, animations, scroll-behavior) over JS equivalents.
 4. **Use native browser features first.** CSS `scroll-behavior: smooth` over JS scroll libraries. IntersectionObserver over scroll event listeners. Native `<details>` over JS accordions. HTML `loading="lazy"` over JS lazy-loaders.
-5. **Optimize images.** Always include width/height to prevent layout shifts. Use `loading="lazy"` for below-fold images. Use the image optimization pipeline (`npm run images:optimize`).
+5. **Optimize images.** Always include width/height to prevent layout shifts. Use `loading="lazy"` for below-fold images. Use the image optimization pipeline (`pnpm run images:optimize`).
 6. **Avoid layout shifts.** Reserve space for images, fonts, and dynamic content. Use `font-display: swap`. Set explicit dimensions on media elements.
 7. **Keep builds fast.** Minimize content collection processing. Use efficient glob patterns. Pre-optimize assets before committing.
 
@@ -203,10 +203,10 @@ Monitor build times:
 
 ```bash
 # Time the build
-time npm run build
+time pnpm run build
 
 # Verbose output
-npm run build -- --verbose
+pnpm run build -- --verbose
 ```
 
 ### Reducing Build Time
@@ -221,7 +221,7 @@ Check bundle sizes:
 
 ```bash
 # Build and check output
-npm run build
+pnpm run build
 
 # Check dist/ folder size
 du -sh dist/
@@ -256,7 +256,7 @@ const posts = await response.json();
 | Diagnostic | Mitigation |
 |------------|------------|
 | **Render-blocking requests** | Theme script inlined in MainLayout; CSS inlined via `build.inlineStylesheets: 'always'` |
-| **Improve image delivery** | WebP pipeline (`npm run images:webp`): homepage, blog shared, blog post heroes; `<picture>` with `source type="image/webp"` in BlogHeroImage, HomeSectionImage, PageHero |
+| **Improve image delivery** | WebP pipeline (`pnpm run images:webp`): homepage, blog shared, blog post heroes; `<picture>` with `source type="image/webp"` in BlogHeroImage, HomeSectionImage, PageHero |
 | **LCP request discovery** | Preload hero logo on homepage; `fetchpriority="high"` on above-fold images |
 | **Forced reflow** | MobileMenu: scroll lock deferred with `requestAnimationFrame`; `transition:fade` instead of `transition:slide` |
 | **Network dependency tree** | Typewriter replaced with CSS-only `TypewriterWords.astro` (zero JS, no critical chain) |
@@ -271,7 +271,7 @@ The project uses a **WebP generation pipeline** that runs automatically before b
 | `generate-webp-blog-shared.mjs` | `public/images/blog/shared/` (placeholders) | `.webp` at 400px width |
 | `generate-webp-blog-posts.mjs` | `public/images/blog/posts/{slug}/hero.*` | `hero.webp` at 1020px max width |
 
-**When it runs:** `prebuild` hook (before `npm run build`), `images:webp` script, and `codecheck` (Docker). Scripts skip images that already have a valid `.webp` (same or newer mtime).
+**When it runs:** `prebuild` hook (before `pnpm run build`), `images:webp` script, and `codecheck` (Docker). Scripts skip images that already have a valid `.webp` (same or newer mtime).
 
 **Components using WebP:** `BlogHeroImage.astro`, `HomeSectionImage.astro`, `PageHero.astro`, `BlogCard.svelte`, timeline components (TradingTimeline, etc.) — all use `<picture>` with WebP source when the image is PNG/JPG.
 
@@ -286,7 +286,7 @@ Run regular Lighthouse audits:
 # 3. Run audit for Performance
 
 # Or use CLI
-npx lighthouse https://xergioalex.com --view
+pnpm exec lighthouse https://xergioalex.com --view
 ```
 
 ### Key Metrics to Track
@@ -323,7 +323,7 @@ npx lighthouse https://xergioalex.com --view
 3. **Preload critical fonts**
 4. **Set image dimensions** to prevent CLS
 5. **Minimize third-party scripts**
-6. **Run `npm run images:webp`** before deploy (or rely on `prebuild`) — generates WebP for homepage, blog shared, and blog post heroes (~1.3 MB total savings)
+6. **Run `pnpm run images:webp`** before deploy (or rely on `prebuild`) — generates WebP for homepage, blog shared, and blog post heroes (~1.3 MB total savings)
 
 ## Accessibility & Performance Overlap
 

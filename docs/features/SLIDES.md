@@ -445,9 +445,9 @@ public/images/slides/_staging/demo--hero-es.png         # → demo/hero-es.{jpg|
 Then run:
 
 ```bash
-npm run images:optimize:slides              # Process slide staging
-npm run images:optimize:slides -- --webp    # Also generate WebP variants
-npm run images:optimize:slides -- --dry-run # Preview without writing
+pnpm run images:optimize:slides              # Process slide staging
+pnpm run images:optimize:slides -- --webp    # Also generate WebP variants
+pnpm run images:optimize:slides -- --dry-run # Preview without writing
 ```
 
 The optimizer applies the same hero-aware presets (1400px landscape, 800px

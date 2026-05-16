@@ -189,7 +189,7 @@ See **[Blog Posts Feature Guide](../../docs/features/BLOG_POSTS.md)** for comple
 - Verify both files have matching frontmatter structure
 - Check all image paths are correct and files exist
 - Ensure tags reference existing tag definitions
-- Run `npm run build` to verify no build errors
+- Run `pnpm run build` to verify no build errors
 
 ## Output Format
 

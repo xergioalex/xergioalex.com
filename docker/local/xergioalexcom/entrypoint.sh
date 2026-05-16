@@ -269,9 +269,10 @@ chown -R node:node /home/node/.ssh 2>/dev/null || true
 
 # Setup Node.js specific configurations
 setup_nodejs() {
-    # Ensure npm cache directory exists with correct ownership for node user
-    mkdir -p /home/node/.npm
-    chown -R node:node /home/node/.npm
+    # Ensure pnpm store and state directories exist with correct ownership.
+    # pnpm uses ~/.local/share/pnpm (store + global bin) — npm's ~/.npm is unused.
+    mkdir -p /home/node/.local/share/pnpm
+    chown -R node:node /home/node/.local/share/pnpm 2>/dev/null || true
 }
 
 # Setup Git configuration (simplified - main config is in Dockerfile)

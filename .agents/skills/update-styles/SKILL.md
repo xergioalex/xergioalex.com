@@ -200,8 +200,8 @@ Minimum 44px touch targets for interactive elements:
 ### Step 3: Validate
 
 ```bash
-npm run biome:check
-npm run dev  # Visual inspection
+pnpm run biome:check
+pnpm run dev  # Visual inspection
 ```
 
 ## Output Format
@@ -256,7 +256,7 @@ style: {description}
 - [ ] Styling changes applied
 - [ ] Dark mode supported
 - [ ] Looks correct in both themes
-- [ ] `npm run biome:check` passes
+- [ ] `pnpm run biome:check` passes
 
 ## Common Patterns
 

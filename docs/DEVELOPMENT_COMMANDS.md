@@ -6,20 +6,20 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build with type check |
-| `npm run biome:check` | Check code quality |
-| `npm run biome:fix` | Auto-fix code issues |
-| `npm run astro:check` | TypeScript type checking |
-| `npm run md:check` | Verify every HTML page has a matching `.md` for agents |
-| `npm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
+| `pnpm run dev` | Start development server |
+| `pnpm run build` | Production build with type check |
+| `pnpm run biome:check` | Check code quality |
+| `pnpm run biome:fix` | Auto-fix code issues |
+| `pnpm run astro:check` | TypeScript type checking |
+| `pnpm run md:check` | Verify every HTML page has a matching `.md` for agents |
+| `pnpm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
 
 ## Development
 
 ### Start Dev Server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 - Starts Astro development server at `http://localhost:4444`
@@ -29,7 +29,7 @@ npm run dev
 ### Preview Production Build
 
 ```bash
-npm run astro:preview
+pnpm run astro:preview
 ```
 
 - Previews the production build locally
@@ -40,7 +40,7 @@ npm run astro:preview
 ### Production Build
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 - Runs TypeScript checking (`astro check`)
@@ -50,7 +50,7 @@ npm run build
 ### Production Build (Cloudflare Pages)
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 This command:
@@ -77,17 +77,17 @@ dist/
 
 **Check for issues:**
 ```bash
-npm run biome:check
+pnpm run biome:check
 ```
 
 **Auto-fix issues:**
 ```bash
-npm run biome:fix
+pnpm run biome:fix
 ```
 
 **Fix with unsafe transformations:**
 ```bash
-npm run biome:fix:unsafe
+pnpm run biome:fix:unsafe
 ```
 
 Biome handles both linting and formatting. It replaces ESLint and Prettier.
@@ -95,7 +95,7 @@ Biome handles both linting and formatting. It replaces ESLint and Prettier.
 ### TypeScript Checking
 
 ```bash
-npm run astro:check
+pnpm run astro:check
 ```
 
 - Runs Astro's TypeScript checker
@@ -105,13 +105,13 @@ npm run astro:check
 ### Markdown-for-Agents Parity Check
 
 ```bash
-npm run md:check          # Report missing .md files
-npm run md:check:strict   # Same, but exits 1 on missing (for CI)
+pnpm run md:check          # Report missing .md files
+pnpm run md:check:strict   # Same, but exits 1 on missing (for CI)
 ```
 
 - Scans `dist/` for every `index.html` and checks it has a matching `.md` counterpart
 - Catches agent-markdown coverage gaps before deployment (`MARKDOWN_FOR_AGENTS.md` endpoints)
-- Requires `npm run build` to run first (operates on the build output)
+- Requires `pnpm run build` to run first (operates on the build output)
 - Excludes: `/internal/*`, `/api/*`, `/.well-known/*`, `/_astro/*`, `/images/*`, `/404`, `/rss.xml`, pagination, tag listings, and redirect pages
 - When missing files appear, the report lists them by language (EN / ES)
 - Script lives at `scripts/check-md-parity.mjs`
@@ -121,7 +121,7 @@ npm run md:check:strict   # Same, but exits 1 on missing (for CI)
 ### Check for Updates
 
 ```bash
-npm run ncu:check
+pnpm run ncu:check
 ```
 
 - Uses `npm-check-updates` to list available updates
@@ -130,16 +130,16 @@ npm run ncu:check
 ### Upgrade All Packages
 
 ```bash
-npm run ncu:upgrade
+pnpm run ncu:upgrade
 ```
 
 - Updates all dependencies in `package.json`
-- Run `npm install` after to apply changes
+- Run `pnpm install` after to apply changes
 
 ### Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Lighthouse
@@ -147,11 +147,11 @@ npm install
 ### Run Lighthouse Audit
 
 ```bash
-npm run lighthouse
+pnpm run lighthouse
 ```
 
 - Runs Lighthouse CI against the built `dist/` folder
-- Requires a prior `npm run build` (the `dist/` directory must exist)
+- Requires a prior `pnpm run build` (the `dist/` directory must exist)
 - Requires Chrome installed locally
 - Tests pages defined in `lighthouserc.cjs`: `/`, `/about/`, `/blog/`, `/es/`
 - Asserts performance budgets: Performance >= 95, Accessibility = 100, Best Practices >= 95, SEO >= 95
@@ -161,7 +161,7 @@ npm run lighthouse
 ### Create Release
 
 ```bash
-npm run release
+pnpm run release
 ```
 
 - Bumps patch version
@@ -170,17 +170,17 @@ npm run release
 
 ## Astro CLI
 
-The Astro CLI is available via `npm run astro`:
+The Astro CLI is available via `pnpm run astro`:
 
 ```bash
 # General help
-npm run astro -- --help
+pnpm run astro -- --help
 
 # Add integration
-npm run astro -- add svelte
+pnpm run astro -- add svelte
 
 # Sync content collections
-npm run astro -- sync
+pnpm run astro -- sync
 ```
 
 ### Common Astro Commands
@@ -200,38 +200,38 @@ npm run astro -- sync
 
 ```bash
 # Start working
-npm run dev
+pnpm run dev
 
 # Before committing
-npm run biome:check
-npm run astro:check
+pnpm run biome:check
+pnpm run astro:check
 ```
 
 ### Before Pull Request
 
 ```bash
 # Full validation
-npm run biome:check && npm run astro:check && npm run build
+pnpm run biome:check && pnpm run astro:check && pnpm run build
 ```
 
 ### Deploy (Cloudflare Pages)
 
-Cloudflare Pages deploys automatically on push to `main`. No manual deploy step needed. Ensure `npm run build` succeeds locally before pushing.
+Cloudflare Pages deploys automatically on push to `main`. No manual deploy step needed. Ensure `pnpm run build` succeeds locally before pushing.
 
 ### Update Dependencies
 
 ```bash
 # Check what's available
-npm run ncu:check
+pnpm run ncu:check
 
 # Upgrade packages
-npm run ncu:upgrade
+pnpm run ncu:upgrade
 
 # Install updated packages
-npm install
+pnpm install
 
 # Verify everything works
-npm run build
+pnpm run build
 ```
 
 ## Environment Variables
@@ -265,7 +265,7 @@ rm -rf .astro
 
 # Remove node_modules and reinstall
 rm -rf node_modules
-npm install
+pnpm install
 ```
 
 ### Reset Build
@@ -275,7 +275,7 @@ npm install
 rm -rf dist
 
 # Rebuild
-npm run build
+pnpm run build
 ```
 
 ### Port Already in Use
@@ -285,7 +285,7 @@ npm run build
 lsof -ti:4444 | xargs kill -9
 
 # Or use different port
-npm run dev -- --port 3000
+pnpm run dev -- --port 3000
 ```
 
 ### Devcontainer (Cursor / VS Code)
@@ -311,7 +311,7 @@ Full `package.json` scripts:
     "ncu:check": "ncu",
     "ncu:upgrade": "ncu -u",
     "test": "echo 'Running tests...'",
-    "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
+    "release": "bash .github/scripts/prepare_release.sh"
   }
 }
 ```
@@ -322,11 +322,11 @@ Testing is not yet configured. When implemented:
 
 ```bash
 # Unit tests (Vitest)
-npm run test
+pnpm run test
 
 # E2E tests (Playwright)
-npm run test:e2e
+pnpm run test:e2e
 
 # Watch mode
-npm run test:watch
+pnpm run test:watch
 ```

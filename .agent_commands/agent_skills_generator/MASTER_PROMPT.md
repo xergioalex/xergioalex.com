@@ -81,23 +81,23 @@ Look for:
 
 Find and verify:
 
-- **Code quality**: `npm run biome:check` / `npm run biome:fix` - Linting and formatting
-- **Type checking**: `npm run astro:check` - TypeScript validation
-- **Build**: `npm run build` - Production build
-- **Development**: `npm run dev` - Development server
+- **Code quality**: `pnpm run biome:check` / `pnpm run biome:fix` - Linting and formatting
+- **Type checking**: `pnpm run astro:check` - TypeScript validation
+- **Build**: `pnpm run build` - Production build
+- **Development**: `pnpm run dev` - Development server
 - **Testing**: Check if configured (may not exist in all repos)
 
 **For this repository (XergioAleX.com - Astro):**
 
 ```bash
-npm run biome:check      # Lint and format check
-npm run biome:fix        # Auto-fix issues
-npm run astro:check      # TypeScript checking
-npm run build            # Production build
-npm run dev              # Development server
+pnpm run biome:check      # Lint and format check
+pnpm run biome:fix        # Auto-fix issues
+pnpm run astro:check      # TypeScript checking
+pnpm run build            # Production build
+pnpm run dev              # Development server
 ```
 
-**Note:** Testing is NOT configured in this repo. `npm run test` is a placeholder.
+**Note:** Testing is NOT configured in this repo. `pnpm run test` is a placeholder.
 
 **Mark as "NEEDS VERIFICATION" if not confirmed.**
 
