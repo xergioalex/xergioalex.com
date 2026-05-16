@@ -79,7 +79,7 @@ Before running this skill, ensure:
 
 ```bash
 # If markdown linting available
-npm run lint:md
+pnpm run lint:md
 ```
 
 ## Output Format

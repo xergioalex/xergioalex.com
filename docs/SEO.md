@@ -281,7 +281,7 @@ Always include `width` and `height` attributes to prevent CLS (Cumulative Layout
 
 ```bash
 # Drop images in public/images/blog/_staging/ with naming: {slug}--{name}.{ext}
-npm run images:optimize
+pnpm run images:optimize
 ```
 
 ## PageSpeed & Core Web Vitals
@@ -370,9 +370,9 @@ Structure:
 
 ### Pre-Deploy SEO Checklist
 
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
-- [ ] `npm run build` succeeds
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run build` succeeds
 - [ ] Sitemap generates correctly
 - [ ] `llms.txt` and `llms-full.txt` are current
 - [ ] No empty alt attributes on content images

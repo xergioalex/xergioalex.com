@@ -125,7 +125,7 @@ When generating Skills and Agents **for this repository**, use the following so 
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Stack**       | TypeScript 5.9.2, Node.js 20.x, AWS Lambda, Serverless Framework, Mocha, ESLint, Prettier                                                              |
 | **Key docs**    | AGENTS.md (single source of truth), docs/ARCHITECTURE.md, docs/PRODUCT_SPEC.md, docs/STANDARDS.md, docs/TESTING_GUIDE.md, docs/DEVELOPMENT_COMMANDS.md |
-| **Validation**  | `npm run test`, `npm run eslint:check`, `npm run prettier:check`                                                                                       |
+| **Validation**  | `pnpm run test`, `pnpm run eslint:check`, `pnpm run prettier:check`                                                                                       |
 | **Test naming** | `*.spec.ts` (Mocha); never `test_*.ts` or `*_test.ts`                                                                                                  |
 | **Logging**     | Logger from `src/common/logger.ts` only; never `console.*`                                                                                             |
 | **Types**       | Explicit TypeScript annotations; no `any` (strict mode)                                                                                                |

@@ -9,7 +9,7 @@ This guide provides **step-by-step instructions** for AI agents to execute libra
 **Tools used:**
 
 - `ncu` (npm-check-updates) - Check for available updates
-- `npm install` - Install updated packages
+- `pnpm install` - Install updated packages
 
 ---
 
@@ -197,17 +197,17 @@ ncu -u --filter "typescript eslint"
 
 **Step 3.3: Install Updated Packages**
 
-Run npm install to apply the changes:
+Run pnpm install to apply the changes:
 
 ```bash
-npm install
+pnpm install
 ```
 
 **What this command does:**
 
 1. Reads updated `package.json`
 2. Resolves dependencies
-3. Updates `package-lock.json` automatically
+3. Updates `pnpm-lock.yaml` automatically
 4. Installs/updates packages in `node_modules/`
 5. Checks for peer dependency conflicts
 
@@ -231,11 +231,11 @@ found 0 vulnerabilities
 
 **Step 4.1: Check Installation Success**
 
-**If `npm install` succeeds:**
+**If `pnpm install` succeeds:**
 
 - ✅ Proceed to Step 4.2 (Run Tests)
 
-**If `npm install` fails:**
+**If `pnpm install` fails:**
 
 - ❌ Proceed to Phase 5 (Error Handling)
 
@@ -248,9 +248,9 @@ Run comprehensive validation:
 codecheck
 
 # Fallback when codecheck is unavailable
-npm run biome:check       # Check linting and formatting
-npm run astro:check       # TypeScript checking
-npm run build             # Verify production build works
+pnpm run biome:check       # Check linting and formatting
+pnpm run astro:check       # TypeScript checking
+pnpm run build             # Verify production build works
 ```
 
 **Important:** `codecheck` must be attempted first after upgrades. If it fails, fix issues and rerun `codecheck` (or the fallback checks above if `codecheck` is unavailable).
@@ -259,10 +259,10 @@ npm run build             # Verify production build works
 
 - ✅ Biome checks pass (no linting/formatting errors)
 - ✅ TypeScript checks pass (`astro:check`)
-- ✅ Build succeeds (`npm run build`)
+- ✅ Build succeeds (`pnpm run build`)
 - ✅ No runtime errors
 
-**Note:** Testing is not configured in this project. When tests are added, include `npm run test` in validation.
+**Note:** Testing is not configured in this project. When tests are added, include `pnpm run test` in validation.
 
 **Step 4.3: Verify Functionality**
 
@@ -270,7 +270,7 @@ npm run build             # Verify production build works
 
 ```bash
 # Start development server
-npm run dev
+pnpm run dev
 
 # Open http://localhost:4444
 # Navigate to key pages (home, blog, about)
@@ -281,7 +281,7 @@ npm run dev
 
 ### Phase 5: Error Handling
 
-**Error Scenario 1: npm install fails with dependency conflict**
+**Error Scenario 1: pnpm install fails with dependency conflict**
 
 **Example Error:**
 
@@ -304,12 +304,12 @@ npm ERR! peer typescript@"^5.0.0" from @typescript-eslint/parser@6.0.0
    git checkout package.json
 
    # Or manually revert specific package version
-   npm install typescript@5.4.0
+   pnpm install typescript@5.4.0
    ```
 
 3. **Try alternative:**
    - Upgrade the dependent package too: `ncu -u --filter "typescript @typescript-eslint"`
-   - Or use `npm install --legacy-peer-deps` (not recommended)
+   - Or use `pnpm install` (not recommended)
 
 4. **Document in failure report**
 
@@ -321,13 +321,13 @@ npm ERR! peer typescript@"^5.0.0" from @typescript-eslint/parser@6.0.0
 
    ```bash
    # Rollback all changes
-   git checkout package.json package-lock.json
-   npm install
+   git checkout package.json pnpm-lock.yaml
+   pnpm install
 
    # Upgrade packages one by one to isolate issue
    ncu -u --filter "typescript"
-   npm install
-   npm run test  # Does this fail?
+   pnpm install
+   pnpm run test  # Does this fail?
    ```
 
 2. **Check package changelog for breaking changes:**
@@ -434,7 +434,7 @@ Create comprehensive report:
 ## Files Changed
 
 - package.json
-- package-lock.json
+- pnpm-lock.yaml
 
 ## Recommendations
 
@@ -444,7 +444,7 @@ Create comprehensive report:
 
 ## Next Steps
 
-- [ ] Commit changes: `git add package.json package-lock.json && git commit -m "chore(deps): upgrade 12 packages"`
+- [ ] Commit changes: `git add package.json pnpm-lock.yaml && git commit -m "chore(deps): upgrade 12 packages"`
 - [ ] Deploy to dev environment for testing
 - [ ] Monitor for issues
 ```
@@ -463,7 +463,7 @@ Enter option (1-2):
 **If user selects "Yes":**
 
 ```bash
-git add package.json package-lock.json
+git add package.json pnpm-lock.yaml
 git commit -m "chore(deps): upgrade 12 packages (patch + minor)"
 ```
 
@@ -514,8 +514,8 @@ git commit -m "chore(deps): upgrade 12 packages (patch + minor)"
 
 ```bash
 # Clear node_modules and reinstall
-rm -rf node_modules package-lock.json
-npm install
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
 ```
 
 ### Biome errors after TypeScript upgrade
@@ -527,7 +527,7 @@ npm install
 ```bash
 # Upgrade Biome alongside TypeScript
 ncu -u --filter "typescript @biomejs/biome"
-npm install
+pnpm install
 ```
 
 ### Tests timeout after upgrade
@@ -552,26 +552,26 @@ ncu
 ncu --filter "typescript eslint"
 
 # Upgrade patch only
-ncu -u --target patch && npm install
+ncu -u --target patch && pnpm install
 
 # Upgrade minor (includes patch)
-ncu -u --target minor && npm install
+ncu -u --target minor && pnpm install
 
 # Upgrade all (includes major)
-ncu -u --target latest && npm install
+ncu -u --target latest && pnpm install
 
 # Upgrade specific packages
-ncu -u --filter "typescript eslint" && npm install
+ncu -u --filter "typescript eslint" && pnpm install
 
 # Validation
 codecheck                     # Preferred project-wide validation
-npm run biome:check       # Lint and format check
-npm run astro:check       # TypeScript checking
-npm run build             # Production build
+pnpm run biome:check       # Lint and format check
+pnpm run astro:check       # TypeScript checking
+pnpm run build             # Production build
 
 # Rollback
-git checkout package.json package-lock.json
-npm install
+git checkout package.json pnpm-lock.yaml
+pnpm install
 ```
 
 ---
@@ -580,6 +580,6 @@ npm install
 
 - [npm-check-updates documentation](https://github.com/raineorshine/npm-check-updates)
 - [Semantic Versioning (semver)](https://semver.org/)
-- [npm install documentation](https://docs.npmjs.com/cli/v10/commands/npm-install)
+- [pnpm install documentation](https://docs.npmjs.com/cli/v10/commands/npm-install)
 - [Project Standards](../../docs/STANDARDS.md)
 - [Development Commands](../../docs/DEVELOPMENT_COMMANDS.md)

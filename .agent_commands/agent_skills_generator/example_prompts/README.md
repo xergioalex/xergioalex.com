@@ -3,7 +3,7 @@
 This folder contains the prompts and examples for creating Skills and Agents.
 
 > **Note:** These examples are for **Node.js/TypeScript** repositories.
-> Commands use `npm run test`, `npm run lint`, and TypeScript file patterns (`.ts`, `.tsx`).
+> Commands use `pnpm run test`, `pnpm run lint`, and TypeScript file patterns (`.ts`, `.tsx`).
 
 ## Contents
 

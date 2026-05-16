@@ -189,7 +189,7 @@ Each event captures: bot name (or `"unknown"`), requested path, source, and User
 - **Include internal links** — page Markdown should contain links to other site pages so agents can discover the full site structure
 - **Full content, not summaries** — page Markdown should match the semantic content of the HTML page (strip presentation chrome, keep all text, links, and structure)
 - **Discovery files** — `llms.txt` and `llms-full.txt` reference the endpoints
-- **Tests** — `npm run test` covers serialization correctness
+- **Tests** — `pnpm run test` covers serialization correctness
 
 ### Sync Rule for AI Agents
 

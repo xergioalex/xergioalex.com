@@ -10,10 +10,14 @@
   },
   "type": "module",
   "version": "1.0.30",
+  "packageManager": "pnpm@11.1.2",
+  "engines": {
+    "node": ">=24.15.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "prebuild": "npm run generate:agent-skills-index",
+    "prebuild": "pnpm run generate:agent-skills-index",
     "generate:agent-skills-index": "node scripts/generate-agent-skills-index.mjs",
     "astro": "astro",
     "astro:check": "astro check",
@@ -34,7 +38,7 @@
     "md:check:strict": "node scripts/check-md-parity.mjs --strict",
     "lighthouse": "lhci autorun",
     "lighthouse:full": "lhci autorun --config=lighthouserc.full.cjs",
-    "release": "npm version patch -m \"[🤖 Sergio Alexander Florez Galeano] New release to v%s launched 🚀\""
+    "release": "bash .github/scripts/prepare_release.sh"
   },
   "dependencies": {
     "@astrojs/check": "0.9.8",

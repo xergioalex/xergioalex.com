@@ -12,7 +12,7 @@ Process:
    - If upgrade available: Update to latest version in `package.json`
    - If no upgrade: Report that package is already at latest version
    - If major upgrade: Ask for approval before proceeding
-4. Execute `npm install` to update lock file and install packages
+4. Execute `pnpm install` to update lock file and install packages
 5. If any package fails, rollback that package and retry (max 3 attempts)
 6. Run validation (`codecheck`) after successful upgrade
 7. Generate a report listing:

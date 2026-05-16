@@ -32,7 +32,7 @@ Add a "Related Posts" section to individual blog posts that displays 3-5 posts w
 
 1. **Branch:** Work on `dev` branch
 2. **Commits:** Small commits after each task
-3. **Validation:** Run `npm run biome:check` and `npm run astro:check`
+3. **Validation:** Run `pnpm run biome:check` and `pnpm run astro:check`
 4. **Standards:** Follow docs/STANDARDS.md
 5. **Testing:** Manual testing (no automated tests configured yet)
 
@@ -106,10 +106,10 @@ Reports and artifacts generated during plan execution are stored in `analysis_re
 
 **Validation Commands:**
 ```bash
-npm run biome:check
-npm run astro:check
-npm run build
-npm run dev  # Manual testing
+pnpm run biome:check
+pnpm run astro:check
+pnpm run build
+pnpm run dev  # Manual testing
 ```
 
 **Commit Format:**

@@ -62,7 +62,7 @@ Objective: Refactor botFlow handler system for better maintainability
 Context:
 - Location: src/functions/botFlow/handlers/
 - Constraints: TypeScript strict mode with explicit types, *.spec.ts test naming, Logger only (no console.*)
-- Validation: npm run test && npm run eslint:check after each task
+- Validation: pnpm run test && pnpm run eslint:check after each task
 
 Tasks:
 1. Extract common handler logic to base class
@@ -107,7 +107,7 @@ Objective: Improve test coverage for botFlow event processing
 
 Context:
 - Location: test/functions/botFlow/
-- Constraints: Use *.spec.ts naming (NOT test_*.ts or *_test.ts), npm run test must pass
+- Constraints: Use *.spec.ts naming (NOT test_*.ts or *_test.ts), pnpm run test must pass
 - Follow mock patterns in: test/functions/botFlow/mocks/
 
 Tasks:

@@ -60,16 +60,16 @@ export function shouldHideDrafts(): boolean {
   if (process.env.SHOW_DRAFTS === 'true') return false;     // explicit override
   const cfBranch = process.env.CF_PAGES_BRANCH;
   if (cfBranch) return PRODUCTION_BRANCHES.includes(cfBranch);
-  return true;                                              // local `npm run build`: hide
+  return true;                                              // local `pnpm run build`: hide
 }
 ```
 
 | Environment | Drafts visible? |
 |-------------|-----------------|
-| `npm run dev` | Yes |
+| `pnpm run dev` | Yes |
 | Cloudflare Pages preview branch (any non-production branch) | Yes |
 | Cloudflare Pages production (`main` / `master`) | No |
-| Local `npm run build` (no `CF_PAGES_BRANCH`) | No |
+| Local `pnpm run build` (no `CF_PAGES_BRANCH`) | No |
 | Any build with `SHOW_DRAFTS=true` | Yes |
 
 Override the production-branch allowlist with `PRODUCTION_BRANCHES=live,main`.
@@ -211,7 +211,7 @@ Blog post Markdown endpoints (`.md` files) follow the same visibility rules as H
 
 ### Verification
 
-After building for production (`npm run build`), verify:
+After building for production (`pnpm run build`), verify:
 
 ```bash
 # No demo tag page in production

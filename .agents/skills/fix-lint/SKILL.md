@@ -17,7 +17,7 @@ max-loc: 100
 
 ## Objective
 
-Fix Biome linting and formatting errors in specified files: run `npm run biome:fix` (or equivalent), then resolve any remaining issues with minimal manual edits. Adapted for this repo: Astro, TypeScript, Biome; no logic changes; follow AGENTS.md conventions.
+Fix Biome linting and formatting errors in specified files: run `pnpm run biome:fix` (or equivalent), then resolve any remaining issues with minimal manual edits. Adapted for this repo: Astro, TypeScript, Biome; no logic changes; follow AGENTS.md conventions.
 
 ## Non-Goals
 
@@ -54,9 +54,9 @@ Before running this skill, ensure:
 ### Step 1: Run Auto-Fix
 
 ```bash
-npm run biome:fix
+pnpm run biome:fix
 # or for specific files:
-npx biome check --write "path/to/files"
+pnpm exec biome check --write "path/to/files"
 ```
 
 ### Step 2: Address Remaining Issues
@@ -68,8 +68,8 @@ npx biome check --write "path/to/files"
 ### Step 3: Validate
 
 ```bash
-npm run biome:check
-npm run astro:check
+pnpm run biome:check
+pnpm run astro:check
 ```
 
 ## Output Format
@@ -84,8 +84,8 @@ npm run astro:check
 - `{file2}`: {what was fixed}
 
 ### Validation
-- npm run biome:check: ✅
-- npm run astro:check: ✅
+- pnpm run biome:check: ✅
+- pnpm run astro:check: ✅
 
 ### Commit Message
 style: fix Biome issues in {files}
@@ -121,8 +121,8 @@ Escalate to Tier 2 or use quick-fix for logical issues.
 
 ## Definition of Done
 
-- [ ] `npm run biome:check` passes for modified files
-- [ ] `npm run astro:check` passes
+- [ ] `pnpm run biome:check` passes for modified files
+- [ ] `pnpm run astro:check` passes
 - [ ] No behavior change
 
 ## Related

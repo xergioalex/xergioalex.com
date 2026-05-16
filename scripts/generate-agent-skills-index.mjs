@@ -12,7 +12,7 @@
  * time to compute the SHA-256 digest so the index stays in sync with what
  * Cloudflare actually serves.
  *
- * Run: `node scripts/generate-agent-skills-index.mjs` or via `npm run generate:agent-skills-index`.
+ * Run: `node scripts/generate-agent-skills-index.mjs` or via `pnpm run generate:agent-skills-index`.
  */
 
 import { createHash } from 'node:crypto';

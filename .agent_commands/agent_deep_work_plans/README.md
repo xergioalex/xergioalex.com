@@ -245,7 +245,7 @@ This system follows all project standards defined in `CLAUDE.md`:
 - ✅ **Import order** - Follow convention: Node.js native → third-party → internal → types
 - ✅ **Logging** - Use Logger from `src/common/logger.ts` (NEVER `console.*`)
 - ✅ **Documentation updates** - Tasks should update relevant docs
-- ✅ **Code quality** - Tasks must run `codecheck` or individual validations (`npm run eslint:check`, `npm run test`)
+- ✅ **Code quality** - Tasks must run `codecheck` or individual validations (`pnpm run eslint:check`, `pnpm run test`)
 
 Plans should reference and enforce these standards in their global guidelines.
 

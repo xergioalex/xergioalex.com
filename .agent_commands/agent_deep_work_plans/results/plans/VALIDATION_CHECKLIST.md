@@ -190,7 +190,7 @@ migrate
 build_static
 
 # Manual process
-cd app/static && npm run build:css          # Build CSS
+cd app/static && pnpm run build:css          # Build CSS
 python manage.py collectstatic --noinput   # Collect static files
 ```
 

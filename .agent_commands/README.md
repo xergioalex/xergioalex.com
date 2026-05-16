@@ -187,7 +187,7 @@ Key requirements:
 - ✅ **Type hints** - All generated code should use TypeScript with type annotations where practical
 - ✅ **Testing** - Testing not yet configured; validation uses build and lint checks
 - ✅ **Documentation updates** - Update relevant docs after changes
-- ✅ **Code quality** - Run `npm run biome:check` and `npm run astro:check`
+- ✅ **Code quality** - Run `pnpm run biome:check` and `pnpm run astro:check`
 
 ---
 

@@ -134,8 +134,8 @@ const t = getTranslations(lang);
 ### Step 3: Validate
 
 ```bash
-npm run biome:check
-npm run astro:check
+pnpm run biome:check
+pnpm run astro:check
 ```
 
 ## Output Format
@@ -203,8 +203,8 @@ feat: add {ComponentName} component
 - [ ] No hardcoded user-visible text (uses `getTranslations()` if text is displayed)
 - [ ] New translation keys added for both languages (if applicable)
 - [ ] Component accepts `lang` prop if it displays text
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
 
 ## Examples
 

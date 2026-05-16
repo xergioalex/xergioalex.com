@@ -9,7 +9,7 @@ Process:
 1. Run `ncu` to discover available upgrades
 2. Filter to only minor/patch upgrades (exclude major version bumps)
 3. Update `package.json` with new versions using `ncu -u --target minor`
-4. Execute `npm install` to update lock file and install packages
+4. Execute `pnpm install` to update lock file and install packages
 5. If any package fails, rollback that package and retry (max 3 attempts)
 6. Run validation (`codecheck`) after successful upgrade
 7. Generate a report listing:

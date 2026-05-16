@@ -147,8 +147,8 @@ describe('BlogCard', () => {
 ### Step 4: Validate
 
 ```bash
-npm run test           # Run tests
-npm run biome:check    # Lint check
+pnpm run test           # Run tests
+pnpm run biome:check    # Lint check
 ```
 
 ## Output Format
@@ -168,8 +168,8 @@ npm run biome:check    # Lint check
 - {list of cases covered}
 
 ### Validation
-- npm run test: pass
-- npm run biome:check: pass
+- pnpm run test: pass
+- pnpm run biome:check: pass
 
 ### Commit Message
 test: add|expand tests for {target}
@@ -195,8 +195,8 @@ test: add|expand tests for {target}
 ## Definition of Done
 
 - [ ] New or updated test files
-- [ ] All tests pass (`npm run test`)
-- [ ] `npm run biome:check` passes
+- [ ] All tests pass (`pnpm run test`)
+- [ ] `pnpm run biome:check` passes
 - [ ] Tests are meaningful (not only coverage padding)
 
 ## Escalation Conditions

@@ -248,12 +248,12 @@ done
 Run the project build to verify series navigation renders correctly:
 
 ```bash
-npm run build 2>&1 | tail -30
+pnpm run build 2>&1 | tail -30
 ```
 
 | Check | Rule | Severity |
 |-------|------|----------|
-| Build passes | `npm run build` exits with code 0 | FAIL if build fails |
+| Build passes | `pnpm run build` exits with code 0 | FAIL if build fails |
 | No series warnings | No build warnings mentioning any post in the series | WARN if warnings found |
 
 ### Step 8: Final Report

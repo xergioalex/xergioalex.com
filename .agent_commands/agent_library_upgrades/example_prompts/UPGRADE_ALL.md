@@ -11,7 +11,7 @@ Process:
 3. Prioritize minor upgrades first
 4. Ask me for approval before upgrading major versions
 5. Update `package.json` with new versions using `ncu -u`
-6. Execute `npm install` to update lock file and install packages
+6. Execute `pnpm install` to update lock file and install packages
 7. If any package fails, rollback that package and retry (max 3 attempts)
 8. Run validation (`codecheck`) after successful upgrade
 9. Generate a comprehensive report with:

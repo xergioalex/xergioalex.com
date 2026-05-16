@@ -142,9 +142,9 @@ These files are automatically served as `/{name}.md` and `/es/{name}.md` endpoin
 ### Step 5: Validate
 
 ```bash
-npm run astro:check
-npm run biome:check
-npm run build
+pnpm run astro:check
+pnpm run biome:check
+pnpm run build
 ```
 
 ## Output Format
@@ -212,8 +212,8 @@ feat: add {name} page (en + es)
 - [ ] Shared component uses `MainLayout` with `lang` prop and `getUrlPrefix(lang)` for URLs
 - [ ] SEO props provided for all active languages
 - [ ] New UI strings added to `translations.ts` for all active languages (if applicable)
-- [ ] `npm run astro:check` passes
-- [ ] `npm run build` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run build` passes
 
 ## Examples
 

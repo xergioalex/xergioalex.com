@@ -79,8 +79,8 @@ Before running this skill, ensure:
 
 ```bash
 # Example validation commands
-npm run test
-npm run lint
+pnpm run test
+pnpm run lint
 ```
 
 ## Output Format

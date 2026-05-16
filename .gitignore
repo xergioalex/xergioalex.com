@@ -12,6 +12,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# pnpm
+.pnpm-store/
+
 
 # test coverage
 coverage/

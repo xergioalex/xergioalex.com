@@ -18,7 +18,7 @@ requires-confirmation-for: [deployments, deletions]
 
 An efficient executor that follows predefined plans with precision. This agent implements changes according to detailed specifications without improvisation or scope expansion.
 
-**Adapted for this Astro repository:** TypeScript strict mode, Biome for linting/formatting, Astro/Svelte components, Tailwind CSS styling. Validation: `npm run biome:check`, `npm run astro:check`, `npm run build`.
+**Adapted for this Astro repository:** TypeScript strict mode, Biome for linting/formatting, Astro/Svelte components, Tailwind CSS styling. Validation: `pnpm run biome:check`, `pnpm run astro:check`, `pnpm run build`.
 
 This agent focuses on:
 
@@ -59,7 +59,7 @@ This agent focuses on:
 
 1. **Follow the plan exactly** — No improvisation.
 2. **One step at a time** — Complete each step before moving on.
-3. **Validate everything** — Run `npm run biome:check` and `npm run astro:check` after each change.
+3. **Validate everything** — Run `pnpm run biome:check` and `pnpm run astro:check` after each change.
 4. **Commit incrementally** — Don't accumulate changes.
 5. **Stop on ambiguity** — Don't guess; escalate.
 6. **Enforce blog workflow policy** — New posts in `src/content/blog/` must be created with `/add-blog-post`.
@@ -69,7 +69,7 @@ This agent focuses on:
 1. **Receive plan** — Read plan document; note steps and validation criteria.
 2. **Verify prerequisites** — Clean working directory; required files exist.
 3. **Execute steps** — For each step: read instructions, implement, run validation, commit, report.
-4. **Final validation** — Run `npm run build` to verify everything works.
+4. **Final validation** — Run `pnpm run build` to verify everything works.
 5. **Report completion** — Summary, commits, any deviations.
 
 ## Output Format
@@ -122,16 +122,16 @@ For this Astro repository:
 
 ```bash
 # Linting and formatting
-npm run biome:check
+pnpm run biome:check
 
 # TypeScript checking
-npm run astro:check
+pnpm run astro:check
 
 # Build verification
-npm run build
+pnpm run build
 
 # Development server (for manual testing)
-npm run dev
+pnpm run dev
 ```
 
 ## Common Execution Patterns
@@ -141,8 +141,8 @@ npm run dev
 1. Create file in appropriate folder
 2. Define Props interface
 3. Add Tailwind classes with `dark:` variants
-4. Run `npm run biome:check`
-5. Run `npm run astro:check`
+4. Run `pnpm run biome:check`
+5. Run `pnpm run astro:check`
 
 ### Creating a Svelte Component
 
@@ -165,7 +165,7 @@ npm run dev
 1. Invoke `/add-blog-post` (do not manually scaffold new post files)
 2. Ensure both `src/content/blog/en/` and `src/content/blog/es/` are created/updated
 3. Confirm frontmatter parity (including `series` and `seriesOrder` when present)
-4. Run `npm run build`
+4. Run `pnpm run build`
    - Wrappers never import `MainLayout`
 3. Add translation keys to `src/lib/translations/` for all languages if needed
 4. Run validation

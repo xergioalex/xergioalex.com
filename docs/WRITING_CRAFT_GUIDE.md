@@ -353,7 +353,7 @@ Otherwise markdown in the next paragraph won't render correctly. This is a recur
 
 1. Drop the source image in the project root (e.g., `image.png`).
 2. Copy it to the post directory: `public/images/blog/posts/{slug}/{descriptive-name}.png`.
-3. Convert to WebP: `npx sharp-cli -i {input}.png -o {output}.webp --format webp`.
+3. Convert to WebP: `pnpm exec sharp-cli -i {input}.png -o {output}.webp --format webp`.
 4. Remove the source PNG (keep only WebP).
 5. Get dimensions: `node -e "const sharp=require('sharp'); sharp('{path}').metadata().then(m=>console.log(m.width,m.height))"`.
 6. Write the figure tag with the actual width/height.
@@ -771,8 +771,8 @@ Before marking an article as done, run through this:
 - [ ] Dates verified against original announcements
 
 ### Build
-- [ ] `npm run biome:check` passes
-- [ ] `npm run build` succeeds
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run build` succeeds
 - [ ] No placeholder content (`[TODO:`, `[AUTHOR:`, etc.)
 
 ---
