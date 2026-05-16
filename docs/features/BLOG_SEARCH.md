@@ -66,7 +66,7 @@ All endpoints return lightweight metadata only (no full post body).
 
 ## Performance Strategy
 
-- Keep blog listing/tag HTML under budget (see `npm run search:budgets`)
+- Keep blog listing/tag HTML under budget (see `pnpm run search:budgets`)
 - Keep shard payloads compressed and language-scoped
 - Avoid embedding full search index into page HTML
 - Cache results in memory (`max 50` queries)
@@ -74,10 +74,10 @@ All endpoints return lightweight metadata only (no full post body).
 ## Validation
 
 ```bash
-npm run astro:check
-npm run build
-npm run search:budgets
-npm run test -- tests/unit/lib/search.test.ts tests/unit/components/StaticBlogSearch.test.ts
+pnpm run astro:check
+pnpm run build
+pnpm run search:budgets
+pnpm run test -- tests/unit/lib/search.test.ts tests/unit/components/StaticBlogSearch.test.ts
 ```
 
 ## Troubleshooting

@@ -184,7 +184,7 @@ After the 2026-02-16 audit, all images follow these targets:
 
 1. Name with staging convention: `{slug}--{name}.{ext}`
 2. Drop into `public/images/blog/_staging/`
-3. Run `npm run images:optimize`
+3. Run `pnpm run images:optimize`
 4. Reference in post frontmatter or body
 
 ### Adding a Site Image

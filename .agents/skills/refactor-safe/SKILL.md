@@ -47,7 +47,7 @@ Refactor code in a bounded scope (1-10 files, up to ~500 LOC) without changing o
 
 Before running this skill, ensure:
 
-- [ ] Build passes (`npm run build`)
+- [ ] Build passes (`pnpm run build`)
 - [ ] Scope is clear and bounded (1-10 files)
 - [ ] No concurrent changes to same files
 
@@ -67,15 +67,15 @@ Before running this skill, ensure:
 ### Step 3: Execute Step by Step
 
 - One logical change at a time
-- Run `npm run biome:check` and `npm run astro:check` after each step
+- Run `pnpm run biome:check` and `pnpm run astro:check` after each step
 - Commit after each step if desired (incremental commits)
 
 ### Step 4: Final Validation
 
 ```bash
-npm run biome:check
-npm run astro:check
-npm run build
+pnpm run biome:check
+pnpm run astro:check
+pnpm run build
 ```
 
 ## Output Format
@@ -97,9 +97,9 @@ npm run build
 - Build passes
 
 ### Validation
-- npm run biome:check: ✅
-- npm run astro:check: ✅
-- npm run build: ✅
+- pnpm run biome:check: ✅
+- pnpm run astro:check: ✅
+- pnpm run build: ✅
 
 ### Commit Message
 refactor: {brief description}
@@ -125,9 +125,9 @@ refactor: {brief description}
 ## Definition of Done
 
 - [ ] Refactor goal achieved within scope
-- [ ] `npm run biome:check` passes
-- [ ] `npm run astro:check` passes
-- [ ] `npm run build` passes
+- [ ] `pnpm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run build` passes
 - [ ] No intentional behavior change
 
 ## Escalation Conditions

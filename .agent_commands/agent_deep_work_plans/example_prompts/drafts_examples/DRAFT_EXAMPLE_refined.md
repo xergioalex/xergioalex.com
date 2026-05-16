@@ -46,7 +46,7 @@ Add an estimated reading time indicator to all blog posts, displayed both on ind
 - Must follow existing component patterns (Astro for static, Svelte for interactive)
 - Must use `getTranslations()` for all user-visible text
 - All code and comments in English
-- Must pass `npm run biome:check` and `npm run astro:check`
+- Must pass `pnpm run biome:check` and `pnpm run astro:check`
 - Must use `@` path alias for imports
 
 **Related Documentation:**
@@ -102,11 +102,11 @@ Add an estimated reading time indicator to all blog posts, displayed both on ind
 
 - **Branch:** Work on `dev` branch
 - **Commits:** Use conventional commit format: `feat(blog): description`
-- **Validation:** Run `npm run biome:check` and `npm run astro:check` after each task
+- **Validation:** Run `pnpm run biome:check` and `pnpm run astro:check` after each task
 - **Standards:** Follow `docs/STANDARDS.md` and `AGENTS.md`
 - **Bilingual:** All content changes must exist in both English and Spanish
 - **Dark mode:** All new UI elements must support dark mode
-- **Testing:** Manual testing via `npm run dev` (no automated tests configured yet)
+- **Testing:** Manual testing via `pnpm run dev` (no automated tests configured yet)
 - **Skill usage:** Use `/add-component` skill for component creation, `/translate-sync` for bilingual content
 
 ---

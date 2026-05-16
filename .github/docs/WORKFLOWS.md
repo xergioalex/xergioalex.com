@@ -2,7 +2,7 @@
 
 Complete reference for all GitHub Actions workflows in this repository.
 
-**Stack:** Node.js 24.14.0, ubuntu-latest runners, Astro static site.
+**Stack:** Node.js 24.15.0, pnpm (via Corepack), ubuntu-latest runners, Astro static site.
 
 ---
 
@@ -18,19 +18,19 @@ Complete reference for all GitHub Actions workflows in this repository.
 | Step | Name | What it does |
 |------|------|-------------|
 | — | Checkout | `actions/checkout@v4` |
-| — | Setup Node | `actions/setup-node@v4` (24.14.0) |
-| 0 | Cache node modules | `actions/cache@v4` — caches `~/.npm` + `node_modules` |
-| 1 | Install Dependencies | `npm install` + CI-specific x64 binaries (conditional on cache miss) |
-| 2 | Astro checks | `npm run astro:check` — TypeScript validation |
-| 3 | Biome checks | `npm run biome:check` — linting & formatting |
-| 4 | Tests | `npm run test` |
-| 5 | Build | `npm run build` (includes prebuild → images:webp) |
+| — | Setup Node | `actions/setup-node@v4` (24.15.0) |
+| 0 | Get pnpm store path | Resolves `corepack pnpm store path` |
+| 0a | Cache pnpm store | `actions/cache@v4` — caches the pnpm content-addressable store, keyed on `pnpm-lock.yaml` |
+| 1 | Install Dependencies | `corepack pnpm install --frozen-lockfile` |
+| 2 | Astro checks | `corepack pnpm run astro:check` — TypeScript validation |
+| 3 | Biome checks | `corepack pnpm run biome:check` — linting & formatting |
+| 4 | Tests | `corepack pnpm run test` |
+| 5 | Build | `corepack pnpm run build` (includes prebuild → images:webp) |
 
 **Secrets:** None (uses default `GITHUB_TOKEN`).
 
 **Notes:**
-- CI-specific native binaries installed: `@rollup/rollup-linux-x64-gnu`, `lightningcss-linux-x64-gnu`, `@esbuild/linux-x64`
-- These versions are hardcoded and may drift after package upgrades
+- pnpm resolves platform-specific native bindings (`@rollup/rollup-linux-x64-gnu`, `@esbuild/linux-x64`, etc.) through `optionalDependencies` in the lockfile — no `--no-save` workaround needed.
 
 ---
 
@@ -82,20 +82,20 @@ For L/XL/XXL PRs, a warning comment is automatically posted.
 | Step | Name | What it does |
 |------|------|-------------|
 | — | Checkout | `actions/checkout@v4` with `AUTOMATION_GITHUB_TOKEN` |
-| — | Setup Node | 24.14.0 with npm registry |
+| — | Setup Node | 24.15.0 with npm registry |
 | 1 | Setup GitHub Config | Commits as "DailyBot" |
 | 2 | Check/create branch | Creates `feature__packages_versions_update` if it doesn't exist |
-| 3 | Install Dependencies | `npm install` |
+| 3 | Install Dependencies | `corepack pnpm install --frozen-lockfile` |
 | 4 | Check Packages | Runs `scripts/get_packages_upgrades.sh` |
 | 5 | Check Git Status | Checks if `packages_upgrades_output.txt` was created |
-| 6 | Reinstall | `npm install` with upgraded versions |
+| 6 | Reinstall | `corepack pnpm install --no-frozen-lockfile` with upgraded versions |
 | 7 | Commit and push | Commits changes to upgrade branch |
 | 8 | Create PR | `gh pr create` to `main` |
 
 **Secrets:** `AUTOMATION_GITHUB_TOKEN`
 
 **Helper script:** `scripts/get_packages_upgrades.sh`
-- Runs `npm run ncu:upgrade`
+- Runs `corepack pnpm run ncu:upgrade`
 - Extracts lines with `→` (upgrade arrows)
 - Creates `packages_upgrades_output.txt` as PR body
 
@@ -113,7 +113,7 @@ For L/XL/XXL PRs, a warning comment is automatically posted.
 | Step | Name | What it does |
 |------|------|-------------|
 | — | Checkout | `actions/checkout@v4` with `AUTOMATION_GITHUB_TOKEN` |
-| — | Setup Node | 24.14.0 |
+| — | Setup Node | 24.15.0 |
 | 1 | Setup GitHub Config | Git config + `gh auth login` |
 | 2 | Find PR | Search for open PR from `feature__packages_versions_update` |
 | — | Get PR body | Retrieve PR metadata |
@@ -142,10 +142,10 @@ Extracts the PR's size label and maps to emoji for the workflow summary.
 
 | Step | Name | What it does |
 |------|------|-------------|
-| 0-1 | Cache | node_modules + dist |
+| 0-0a | Cache | pnpm store, keyed on `pnpm-lock.yaml` |
 | 2 | Setup GitHub Config | Git config |
 | 3 | Release notes | Runs `scripts/get_github_release_log.sh` |
-| 4 | Prepare release | `npm run release` + push tags to main |
+| 4 | Prepare release | `corepack pnpm install --frozen-lockfile && corepack pnpm run release` + push tags to main |
 | 5 | Get release tag | Extract latest tag |
 | 6 | Publish release | `ncipollo/release-action@v1` |
 

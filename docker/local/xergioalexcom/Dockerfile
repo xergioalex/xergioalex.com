@@ -30,8 +30,28 @@ ENV CHROMIUM_FLAGS="--no-sandbox"
 RUN echo 'node ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/node \
     && chmod 0440 /etc/sudoers.d/node
 
-# Make node user's CLI install dirs available on PATH (npm globals, Claude, Cursor agent)
-ENV PATH=/home/node/.npm-global/bin:/home/node/.local/bin:/home/node/.cursor/bin:$PATH
+# Enable corepack so pnpm is provisioned from the version pinned in
+# package.json's "packageManager" field. Avoid `npm install -g pnpm` —
+# it defeats the pin.
+RUN corepack enable
+
+# pnpm global install location. pnpm writes binaries to ${PNPM_HOME}/bin,
+# so that subdirectory must be on PATH for `corepack pnpm add -g <pkg>` to succeed.
+ENV PNPM_HOME=/usr/local/share/pnpm
+RUN mkdir -p "${PNPM_HOME}/bin" \
+    && chown -R node:node "${PNPM_HOME}"
+
+# Make node user's CLI install dirs available on PATH (pnpm globals, Claude, Cursor agent)
+ENV PATH=${PNPM_HOME}/bin:${PNPM_HOME}:/home/node/.local/bin:/home/node/.cursor/bin:$PATH
+
+# Redirect any `npm` invocation to pnpm — this repo uses pnpm exclusively,
+# so running npm would corrupt node_modules and pnpm-lock.yaml. Replace the
+# real npm symlink at /usr/local/bin/npm (always in PATH, regardless of how
+# the shell is launched — interactive, Remote SSH, exec, scripts).
+RUN rm -f /usr/local/bin/npm && \
+    printf '#!/bin/bash\necho "[npm→pnpm] Redirecting \"npm $*\" to pnpm (this repo uses pnpm)." >&2\nexec corepack pnpm "$@"\n' \
+    > /usr/local/bin/npm \
+    && chmod +x /usr/local/bin/npm
 
 # Source custom commands for node user
 RUN echo 'source /app/docker/custom_commands.sh' >> /home/node/.bashrc \
@@ -44,10 +64,6 @@ RUN mkdir -p /home/node/.claude_data /home/node/.codex_data /home/node/.cursor_d
 # Install AI CLIs and configure git as node user
 USER node
 
-# Configure npm to install globals into a node-owned directory (no sudo needed)
-RUN mkdir -p /home/node/.npm-global \
-    && npm config set prefix /home/node/.npm-global
-
 # Install Claude Code CLI (native installer, npm method is deprecated).
 # Remove fresh install artifacts so the persistent volume isn't overwritten on rebuild.
 RUN curl -fsSL https://claude.ai/install.sh | bash \
@@ -56,8 +72,8 @@ RUN curl -fsSL https://claude.ai/install.sh | bash \
 # Install Cursor CLI (provides the 'agent' command in ~/.cursor/bin)
 RUN curl -fsSL https://cursor.com/install | bash
 
-# Install Codex CLI globally (resolves under /home/node/.npm-global)
-RUN npm install -g @openai/codex
+# Install Codex CLI globally via pnpm (resolves under ${PNPM_HOME})
+RUN corepack pnpm add -g @openai/codex
 
 # Configure Git for node user (can be overridden by mounted .gitconfig)
 RUN git config --global init.defaultBranch main \

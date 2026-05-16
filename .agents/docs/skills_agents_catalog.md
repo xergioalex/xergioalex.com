@@ -358,8 +358,8 @@ Task 3 -> Task 4         |<---- result             |<---- messages
 All skills and agents are adapted for this Astro repository:
 
 - **Linting:** Biome (not ESLint)
-- **Type checking:** `npm run astro:check`
-- **Build:** `npm run build`
+- **Type checking:** `pnpm run astro:check`
+- **Build:** `pnpm run build`
 - **Components:** Astro (.astro) and Svelte (.svelte)
 - **Styling:** Tailwind CSS with dark mode
 - **Content:** Content Collections in `src/content/`

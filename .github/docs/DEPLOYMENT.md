@@ -19,8 +19,9 @@ Cloudflare Pages                      release_and_publish.yml
 ┌──────────────────────────────────┐
 │ Cloudflare Pages Build          │
 │                                  │
-│ 1. npm install                   │
-│ 2. npm run build                 │
+│ 1. corepack pnpm install         │
+│      --frozen-lockfile           │
+│ 2. corepack pnpm run build       │
 │    └→ prebuild runs images:webp  │
 │    └→ Astro builds to dist/      │
 │ 3. Deploy dist/ to CDN           │
@@ -32,7 +33,7 @@ Cloudflare Pages                      release_and_publish.yml
 **Cloudflare Pages** is connected to the GitHub repository. On every push to `main`:
 
 1. Cloudflare detects the push
-2. Runs `npm run build` (which triggers `prebuild` → WebP generation → Astro build)
+2. Runs `pnpm run build` (which triggers `prebuild` → WebP generation → Astro build)
 3. Serves the `dist/` folder from its global CDN
 
 ### Branch Protection (Recommended)
@@ -61,7 +62,7 @@ This ensures:
 
 | Setting | Value |
 |---------|-------|
-| **Build command** | `npm run build` |
+| **Build command** | `corepack pnpm install --frozen-lockfile && corepack pnpm run build` |
 | **Build output directory** | `dist` |
 | **Root directory** | (empty) |
 | **Node.js version** | 24 (or match `.nvmrc` if present) |
@@ -76,7 +77,7 @@ If the project uses environment variables (e.g. analytics), configure them in **
 
 **Possible cause:** Astro build error, missing dependency, or WebP script failure.
 
-**Fix:** Run `npm run build` locally to reproduce. Ensure `npm run images:webp` succeeds (runs automatically via prebuild).
+**Fix:** Run `pnpm run build` locally to reproduce. Ensure `pnpm run images:webp` succeeds (runs automatically via prebuild).
 
 ### Site not updating after deployment
 
@@ -85,11 +86,11 @@ If the project uses environment variables (e.g. analytics), configure them in **
 2. Browser caching — hard refresh (Ctrl+Shift+R)
 3. Check Cloudflare Pages deployment logs for build status
 
-### npm install fails in Cloudflare
+### pnpm install fails in Cloudflare
 
 **Possible cause:** Lockfile mismatch or platform-specific native dependencies.
 
-**Fix:** Ensure `package-lock.json` is committed and `npm ci` works locally. Cloudflare uses Linux runners.
+**Fix:** Ensure `pnpm-lock.yaml` is committed and `corepack pnpm install --frozen-lockfile` works locally. Cloudflare uses Linux runners.
 
 ## FAQ
 

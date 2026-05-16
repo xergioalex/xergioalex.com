@@ -42,15 +42,15 @@ This document records how well the agent_skills_generator fits **this repository
 
 ```bash
 # Code quality (REQUIRED before commits)
-npm run biome:check          # Lint and format check
-npm run biome:fix            # Auto-fix issues
-npm run astro:check          # TypeScript checking
+pnpm run biome:check          # Lint and format check
+pnpm run biome:fix            # Auto-fix issues
+pnpm run astro:check          # TypeScript checking
 
 # Build validation
-npm run build                # Full production build
+pnpm run build                # Full production build
 ```
 
-**Note:** Testing is NOT configured. `npm run test` is a placeholder.
+**Note:** Testing is NOT configured. `pnpm run test` is a placeholder.
 
 ---
 
@@ -97,16 +97,16 @@ npm run build                # Full production build
 
 **Old (serverless):**
 ```bash
-npm run test
-npm run eslint:check
-npm run prettier:check
+pnpm run test
+pnpm run eslint:check
+pnpm run prettier:check
 ```
 
 **New (Astro):**
 ```bash
-npm run biome:check
-npm run astro:check
-npm run build
+pnpm run biome:check
+pnpm run astro:check
+pnpm run build
 ```
 
 ### 2. Test Naming

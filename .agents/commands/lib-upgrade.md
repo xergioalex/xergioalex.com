@@ -12,19 +12,19 @@ Guide the user through upgrading project dependencies with validation, testing, 
 
 **🚨 CRITICAL BEHAVIOR - READ THIS FIRST:**
 - When `/lib-upgrade` is called WITHOUT parameters, you MUST:
-  1. Run discovery (`npx npm-check-updates`) - READ ONLY, NO CHANGES
+  1. Run discovery (`pnpm exec npm-check-updates`) - READ ONLY, NO CHANGES
   2. Show the report with categorized upgrades - DISPLAY ONLY
   3. Present the interactive menu - DISPLAY ONLY
   4. **STOP and WAIT for user input** - DO NOT proceed until user selects an option
   5. **DO NOT execute any `ncu -u` commands** until user explicitly confirms
   6. **DO NOT modify package.json** until user explicitly confirms
-  7. **DO NOT run `npm install`** until user explicitly confirms
+  7. **DO NOT run `pnpm install`** until user explicitly confirms
 
 - **NEVER proceed with upgrades without explicit user confirmation**
 - **NEVER run `ncu -u` or modify files without user approval**
 - Always show what will be upgraded before asking for permission
 - The ONLY commands you should run without user input are:
-  - `npx npm-check-updates` (read-only, to show available upgrades)
+  - `pnpm exec npm-check-updates` (read-only, to show available upgrades)
   - `git status` (to check repository state)
 
 ## Parameter Support
@@ -66,11 +66,11 @@ Guide the user through upgrading project dependencies with validation, testing, 
 
 **🚨 CRITICAL: This step runs automatically when no parameters are provided. You MUST wait for user input before proceeding.**
 
-**⚠️ IMPORTANT: In this step, you ONLY run READ-ONLY commands. DO NOT execute any upgrade commands (`ncu -u`, `npm install`, etc.)**
+**⚠️ IMPORTANT: In this step, you ONLY run READ-ONLY commands. DO NOT execute any upgrade commands (`ncu -u`, `pnpm install`, etc.)**
 
 1. **First, run discovery automatically (READ-ONLY, NO CHANGES):**
    ```bash
-   npx npm-check-updates
+   pnpm exec npm-check-updates
    ```
    **This command only shows available upgrades. It does NOT modify any files.**
 
@@ -149,7 +149,7 @@ Guide the user through upgrading project dependencies with validation, testing, 
 
 1. **Run discovery command:**
    ```bash
-   npx npm-check-updates
+   pnpm exec npm-check-updates
    ```
 
 2. **Parse and show report** (same format as Step 1)
@@ -373,18 +373,18 @@ Enter option (1-3):
 **For upgrade plan:**
 
 1. **Update `package.json` using ncu:**
-   - For minor upgrades: `npx npm-check-updates -u --target minor`
-   - For patch upgrades: `npx npm-check-updates -u --target patch`
-   - For specific packages: `npx npm-check-updates -u --filter "package1 package2"`
+   - For minor upgrades: `pnpm exec npm-check-updates -u --target minor`
+   - For patch upgrades: `pnpm exec npm-check-updates -u --target patch`
+   - For specific packages: `pnpm exec npm-check-updates -u --filter "package1 package2"`
    - Show the changes: `package: old_version → new_version`
 
 2. **Install updated packages:**
    ```bash
-   npm install
+   pnpm install
    ```
    This will:
    - Install new package versions
-   - Update `package-lock.json` automatically
+   - Update `pnpm-lock.yaml` automatically
    - Resolve dependencies
 
 3. **Monitor for errors:**
@@ -393,7 +393,7 @@ Enter option (1-3):
 
 ### Step 5: Failure Handling
 
-**If `npm install` fails:**
+**If `pnpm install` fails:**
 
 1. **Identify problematic package:**
    - Parse error messages
@@ -432,9 +432,9 @@ Enter option (1-3):
    codecheck
 
    # Fallback when codecheck is unavailable
-   npm run biome:check       # Check linting and formatting
-   npm run astro:check       # TypeScript checking
-   npm run build             # Verify production build works
+   pnpm run biome:check       # Check linting and formatting
+   pnpm run astro:check       # TypeScript checking
+   pnpm run build             # Verify production build works
    ```
 
    **Important:** Always attempt `codecheck` first after upgrades. If it fails, fix issues and rerun `codecheck` (or fallback checks if `codecheck` is unavailable).
@@ -488,7 +488,7 @@ Major upgrades:
 ─────────────────────────────────────────────────────────────
 
 🧪 Validation Results:
-✓ npm install: Success
+✓ pnpm install: Success
 ✓ Tests: All 127 tests passed
 ✓ ESLint: No errors
 ✓ Prettier: Formatted correctly
@@ -521,7 +521,7 @@ Enter option (1, 2, "yes", or "no"):
 ```
 
 **If user selects 1 or "yes":**
-- Stage `package.json` and `package-lock.json`
+- Stage `package.json` and `pnpm-lock.yaml`
 - Suggest commit message: `chore(deps): upgrade {N} packages`
 - Use `/commit` or create commit directly
 
@@ -534,20 +534,20 @@ Enter option (1, 2, "yes", or "no"):
 - **🚨 CRITICAL: Always wait for user input** - Never proceed with upgrades without explicit user confirmation
 - **🚨 NEVER execute `ncu -u` or modify package.json** until user explicitly confirms in Step 2
 - **🚨 When called without parameters:** Only show report and menu, then STOP and WAIT for user selection
-- **Show report first:** Always run discovery (`npx npm-check-updates` - read-only) and show the report before asking what to upgrade
+- **Show report first:** Always run discovery (`pnpm exec npm-check-updates` - read-only) and show the report before asking what to upgrade
 - **No automatic execution:** The command `/lib-upgrade` without parameters is READ-ONLY. It only shows options, it does NOT make changes
 - **Follow guide:** Always reference `.agent_commands/agent_library_upgrades/GUIDE.md`
 - **Patch/Minor first:** Always upgrade patch and minor versions before major
 - **User approval for major:** Always ask before applying major upgrades
 - **Automatic rollback:** Rollback on failures automatically
-- **Validation required:** Always run `codecheck` first after upgrades. If unavailable, run `npm run biome:check`, `npm run astro:check`, and `npm run build`
+- **Validation required:** Always run `codecheck` first after upgrades. If unavailable, run `pnpm run biome:check`, `pnpm run astro:check`, and `pnpm run build`
 - **Commit after success:** Recommend committing successful upgrades
 
 ## Error Handling
 
 **If `ncu` command not found:**
 - Check npm-check-updates installation
-- Suggest: `npm install -g npm-check-updates`
+- Suggest: `pnpm install -g npm-check-updates`
 - Report error and ask user to install
 
 **If `package.json` is invalid:**

@@ -39,7 +39,7 @@ This skill is the mandatory workflow for creating new slide decks in this reposi
 
 - Does NOT modify the Content Collections schema (`src/content.config.ts`)
 - Does NOT create new tags (uses existing tags from `src/content/tags/`)
-- Does NOT create or optimize images (use `/optimize-image` skill or `npm run images:optimize:slides`)
+- Does NOT create or optimize images (use `/optimize-image` skill or `pnpm run images:optimize:slides`)
 - Does NOT modify existing decks (use `doc-edit` for minor edits)
 - Does NOT create pages or routes (deck routing is already handled by `src/pages/`)
 - Does NOT create interactive Svelte components
@@ -256,7 +256,7 @@ For external-embed and external-link decks, the body content is a brief descript
 ### Step 6: Validate
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Verify:
@@ -264,7 +264,7 @@ Verify:
 - All image paths reference existing files
 - Tags reference existing tag definitions
 - Slugs are English-only in both versions
-- `npm run build` passes
+- `pnpm run build` passes
 - No placeholder content
 - `/add-slide-deck` workflow was used for creation (no manual bypass)
 
@@ -343,7 +343,7 @@ content: add slide deck "{title}" (en + es)
 - [ ] Type-specific required fields are present and valid
 - [ ] No placeholder content (`[TODO:`, `[TBD]`, `[FIXME]` — zero in final deck)
 - [ ] All referenced images exist
-- [ ] `npm run build` passes
+- [ ] `pnpm run build` passes
 
 ## Escalation Conditions
 
@@ -432,4 +432,4 @@ $TYPE: external-embed
 
 | Version | Date       | Changes |
 | ------- | ---------- | ------- |
-| 1.0.0   | 2026-04-26 | Initial skill: three deck types (internal, external-embed, external-link), multilingual creation, layout scaffolding for internal decks, full parameter set, validation via `npm run build`. |
+| 1.0.0   | 2026-04-26 | Initial skill: three deck types (internal, external-embed, external-link), multilingual creation, layout scaffolding for internal decks, full parameter set, validation via `pnpm run build`. |

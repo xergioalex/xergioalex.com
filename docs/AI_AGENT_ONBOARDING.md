@@ -48,8 +48,8 @@ xergioalex.com/
 **Use Biome** (NOT ESLint/Prettier):
 
 ```bash
-npm run biome:check    # Check issues
-npm run biome:fix      # Auto-fix
+pnpm run biome:check    # Check issues
+pnpm run biome:fix      # Auto-fix
 ```
 
 ### 3. TypeScript
@@ -57,7 +57,7 @@ npm run biome:fix      # Auto-fix
 **Run type checking**:
 
 ```bash
-npm run astro:check
+pnpm run astro:check
 ```
 
 ### 4. Import Order
@@ -101,7 +101,7 @@ New blog posts MUST be created with the `/add-blog-post` skill (not manual file 
 - Create both language files in the same task: `src/content/blog/en/` and `src/content/blog/es/`
 - Use date-prefix naming: `YYYY-MM-DD_slug.md`
 - Keep frontmatter synchronized across languages (`pubDate`, `heroImage`, `heroLayout`, `tags`, `series`, `seriesOrder`)
-- Validate with `npm run build`
+- Validate with `pnpm run build`
 
 ### 8. Blog Search Performance Guardrails
 
@@ -111,8 +111,8 @@ New blog posts MUST be created with the `/add-blog-post` skill (not manual file 
 - For search-related changes, run:
 
 ```bash
-npm run build
-npm run search:budgets
+pnpm run build
+pnpm run search:budgets
 ```
 
 ### 9. Analytics Verification Policy
@@ -125,17 +125,17 @@ npm run search:budgets
 
 ```bash
 # Development
-npm run dev              # Start dev server (localhost:4444)
-npm run build            # Production build
-npm run astro:preview    # Preview build
+pnpm run dev              # Start dev server (localhost:4444)
+pnpm run build            # Production build
+pnpm run astro:preview    # Preview build
 
 # Code Quality
-npm run biome:check      # Lint check
-npm run biome:fix        # Auto-fix
-npm run astro:check      # Type check
+pnpm run biome:check      # Lint check
+pnpm run biome:fix        # Auto-fix
+pnpm run astro:check      # Type check
 
 # Deployment
-npm run build            # Production build (Cloudflare Pages)
+pnpm run build            # Production build (Cloudflare Pages)
 ```
 
 ## Key Patterns
@@ -202,7 +202,7 @@ export const GET: APIRoute = async () => {
 1. Use `/add-blog-post` (mandatory workflow)
 2. Ensure EN + ES files are both created/updated in `src/content/blog/{lang}/`
 3. Verify frontmatter includes required fields and optional series fields when applicable
-4. Run `npm run build` to validate Content Collections
+4. Run `pnpm run build` to validate Content Collections
 
 ### Add a Component
 
@@ -220,10 +220,10 @@ export const GET: APIRoute = async () => {
 
 ❌ Write code in Spanish
 ❌ Use ESLint or Prettier
-❌ Skip `npm run biome:check`
+❌ Skip `pnpm run biome:check`
 ❌ Forget dark mode support
 ❌ Skip `client:load` on interactive Svelte
-❌ Expect `npm run test` to work (not configured)
+❌ Expect `pnpm run test` to work (not configured)
 
 ## Documents to Read
 
@@ -237,7 +237,7 @@ export const GET: APIRoute = async () => {
 Before any commit:
 
 ```bash
-npm run biome:check && npm run astro:check && npm run build
+pnpm run biome:check && pnpm run astro:check && pnpm run build
 ```
 
 All three must pass.

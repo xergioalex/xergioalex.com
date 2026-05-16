@@ -78,21 +78,20 @@ jobs:
           token: ${{ secrets.AUTOMATION_GITHUB_TOKEN }}
       - uses: actions/setup-node@v4
         with:
-          node-version: '24.14.0'
+          node-version: '24.15.0'
           registry-url: https://registry.npmjs.org/
-      - name: Step 0 - 📁 Cache node modules
+      - name: Step 0 - 📁 Get pnpm store path
+        id: pnpm-store
+        run: |
+          STORE_PATH=$(corepack pnpm store path --silent)
+          echo "STORE_PATH=${STORE_PATH}" >> "$GITHUB_OUTPUT"
+      - name: Step 0a - 📁 Cache pnpm store
         uses: actions/cache@v4
-        id: cache-npm
-        env:
-          cache-name: cache-node-modules
         with:
-          path: |
-            ~/.npm
-            node_modules
-            dist
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-pnpm-store-
       - name: Step 1 - ⚙️ Setup GitHub Config
         run: |
           git config user.name "Sergio Alexander Florez Galeano"
@@ -107,7 +106,8 @@ jobs:
           fi
       - name: Step 3 - 🔄 Prepare release
         run: |
-          npm run release
+          corepack pnpm install --frozen-lockfile
+          corepack pnpm run release
           git push --follow-tags origin main
       - name: Step 4 - 🏷️ Set GitHub release "TAG" env vars
         run: |

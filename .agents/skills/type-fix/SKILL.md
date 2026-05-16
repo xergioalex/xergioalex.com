@@ -54,7 +54,7 @@ Before running this skill, ensure:
 
 ### Step 1: Identify Errors
 
-- Run `npm run astro:check` or read IDE errors for the target files
+- Run `pnpm run astro:check` or read IDE errors for the target files
 - List missing types, incompatible signatures
 
 ### Step 2: Apply Type Fixes
@@ -68,8 +68,8 @@ Before running this skill, ensure:
 ### Step 3: Validate
 
 ```bash
-npm run astro:check
-npm run biome:check
+pnpm run astro:check
+pnpm run biome:check
 ```
 
 ## Output Format
@@ -85,8 +85,8 @@ npm run biome:check
 
 ### Validation
 - TypeScript: ✅ No errors
-- npm run astro:check: ✅
-- npm run biome:check: ✅
+- pnpm run astro:check: ✅
+- pnpm run biome:check: ✅
 
 ### Commit Message
 fix: resolve TypeScript types in {files}
@@ -123,8 +123,8 @@ Escalate to Tier 2 or architect for type design.
 ## Definition of Done
 
 - [ ] No TypeScript errors in target files
-- [ ] `npm run astro:check` passes
-- [ ] `npm run biome:check` passes
+- [ ] `pnpm run astro:check` passes
+- [ ] `pnpm run biome:check` passes
 
 ## Common Astro Types
 
