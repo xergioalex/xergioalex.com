@@ -326,6 +326,7 @@ body.reveal-theme-dark {
 .reveal.overview .slides section,
 .reveal.overview .slides section.past,
 .reveal.overview .slides section.future {
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Reveal's inline `style="display:none"` on past/future slides during overview — author !important beats inline non-important per CSS spec */
   display: block !important;
 }
 
@@ -333,6 +334,7 @@ body.reveal-theme-dark {
  * descendant selector still matches before and after the move. */
 .reveal.overview .backgrounds .slide-background,
 .reveal.overview .backgrounds .slide-background-content {
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Reveal's inline `style="display:none"` on background containers during overview */
   display: block !important;
 }
 
@@ -472,6 +474,7 @@ body.reveal-theme-dark {
 /* Hidden when fullscreen — applied via JS toggling [hidden] */
 .slide-toolbar[hidden],
 .slide-back-link[hidden] {
+  /* biome-ignore lint/complexity/noImportantStyles: must beat the `.slide-toolbar`/`.slide-back-link` `display:flex` positioning rules above when JS toggles the [hidden] attribute */
   display: none !important;
 }
 
@@ -504,6 +507,7 @@ body.reveal-theme-dark {
 
 /* Top-align slide body — Reveal vertically centers sections by default */
 .reveal .slides section.slide-content-top {
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Reveal's JS-applied inline `top` used for vertical centering */
   top: 0 !important;
 }
 
@@ -706,6 +710,7 @@ body.reveal-theme-dark {
   color: var(--slide-text);
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: targets `.slide-team figcaption span` only; the earlier `.reveal .progress span` selector matches a different element and never overlaps */
 .slide-team figcaption span {
   color: var(--slide-text-muted);
   font-size: 0.85em;
@@ -718,6 +723,7 @@ body.reveal-theme-dark {
   margin-top: 0.8em;
   padding: 0.8em 1.6em;
   background: var(--slide-accent);
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Reveal's prose link-color reset (`a { color: ... }`) applied via deck-wide selectors */
   color: #ffffff !important;
   border-radius: 0.5em;
   font-weight: 700;
@@ -843,7 +849,9 @@ body.reveal-theme-dark {
   .reveal .progress,
   .reveal .controls path,
   .reveal .fragment {
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility — prefers-reduced-motion must beat every transition/animation declared elsewhere (Reveal's own + ours), regardless of specificity */
     transition: none !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility — prefers-reduced-motion must beat every animation declared elsewhere, regardless of specificity */
     animation: none !important;
   }
 }
