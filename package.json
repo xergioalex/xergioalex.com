@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "prebuild": "pnpm run generate:agent-skills-index",
+    "prebuild": "node scripts/generate-agent-skills-index.mjs",
     "generate:agent-skills-index": "node scripts/generate-agent-skills-index.mjs",
     "astro": "astro",
     "astro:check": "astro check",
