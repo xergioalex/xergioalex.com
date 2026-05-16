@@ -1,6 +1,6 @@
 ---
-title: "La IA está acelerando los ataques a la cadena de suministro del open source: por qué me pasé de npm a pnpm en 2026"
-description: "En 18 meses, npm, PyPI, RubyGems, Maven y Crates han distribuido malware. La IA lo está acelerando. Esta es la ola — y lo que cambié en mi CI para defenderme de la próxima."
+title: "Ataques a la cadena de suministro en la era de la IA: el estado del open source en 2026"
+description: "En 18 meses, npm, PyPI, RubyGems, Maven y Crates han distribuido malware. La IA acelera los dos lados del libreto. Un recorrido por lo que está pasando, con la línea base defensiva al final."
 pubDate: 2026-05-19T10:00:00Z
 tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["ataque cadena de suministro 2026", "qué es minimumReleaseAge pnpm", "gusano Shai-Hulud npm", "CVE-2025-30066 tj-actions", "slopsquatting paquetes alucinados", "compromiso axios npm 2026", "Bitwarden CLI malicioso", "postmortem TanStack npm", "PyPI Trusted Publishing", "seguridad open source 2026"]
@@ -9,13 +9,11 @@ heroLayout: banner
 draft: false
 ---
 
-El fin de semana pasado reescribí cómo este sitio instala paquetes de JavaScript. El diff fue pequeño — unos noventa archivos, casi todos sustituciones de texto en scripts y docs, [un solo PR](https://github.com/xergioalex/xergioalex.com/pull/131). Pero la razón por la que lo hice no es pequeña.
+Hace ocho días, [42 paquetes de npm bajo `@tanstack/*` fueron comprometidos](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) dentro de una ventana de seis minutos. Tres semanas antes, [el CLI de Bitwarden en npm](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) fue secuestrado por noventa minutos — y el payload buscaba específicamente asistentes de IA para programar instalados en la máquina. El mes pasado: [axios](https://socket.dev/blog/axios-npm-package-compromised), un paquete con más de 100 millones de descargas semanales. El trimestre pasado: [la librería YOLO en PyPI](https://www.reversinglabs.com/blog/compromised-ultralytics-pypi-package-delivers-crypto-coinminer). En septiembre pasado: [el primer gusano auto-replicante real en la historia de npm](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised), infectando cientos de paquetes en cuestión de días.
 
-Hace ocho días, los [paquetes `@tanstack/*` fueron comprometidos](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) — 42 paquetes, 84 versiones maliciosas, publicadas dentro de una ventana de seis minutos. La cadena de ataque terminó con el adversario leyendo el token OIDC desde la memoria del proceso Runner.Worker dentro de los propios GitHub Actions de TanStack, y usándolo para publicar directamente en npm como si fuera el maintainer. OpenAI [confirmó después](https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack/) que algunas máquinas de desarrollo de sus empleados fueron comprometidas a través de este ataque. Unas semanas antes, [el CLI de Bitwarden en npm](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) fue secuestrado por unos noventa minutos. El payload malicioso escaneaba la máquina víctima buscando asistentes de IA para programar — Claude, Cursor, entre otros — e intentaba inyectarles ganchos de prompt persistentes.
+Si construyes software en 2026, los registros públicos de los que dependes están bajo ataque coordinado. El volumen no es lo nuevo — los paquetes maliciosos han existido siempre. Lo nuevo es que la IA está acelerando los dos lados del libreto. A los atacantes más que a los defensores, por ahora.
 
-No soy paranoico. Estoy haciendo la cuenta.
-
-Este post es un recorrido por la ola que golpeó al ecosistema open source en 2025 y 2026, una mirada honesta a cómo la IA la está acelerando, y las cosas muy específicas que cambié en mi propio setup para volverme un blanco menos cómodo. No creo que ninguna de estas defensas sea heroica. Son la nueva línea base.
+Este post es un recorrido por el estado del arte. Qué está pasando, a quién están golpeando, cómo la IA está reescribiendo el libreto por ambos lados, y al final la línea base defensiva que acabo de aterrizar en este mismo sitio como un ejemplo trabajado. Casi todas las citas enlazan a una fuente primaria — postmortems de los proveedores, investigación de firmas de seguridad, alertas de CISA. Nada de esto es especulación.
 
 ---
 
@@ -87,9 +85,9 @@ Honestamente, no creo que las piezas verificadas necesiten una versión exagerad
 
 ---
 
-## Lo que hice al respecto
+## La línea base defensiva
 
-La nueva línea base no es heroica. Casi todos estos son cambios de una línea — lo difícil es hacerlos todos, no solo uno.
+La mayoría de los arreglos del lado del registro — Trusted Publishing, 2FA obligatorio, attestations de Sigstore — pasan en el lado del *publish* y no afectan lo que termina en tu `node_modules` el próximo martes. La línea base del lado del install nos toca a nosotros. Nada de lo que sigue es heroico, y casi todo son cambios de una línea. Lo difícil es hacerlos todos, no solo uno. Acabo de aterrizar exactamente este stack en este mismo sitio en el [PR #131](https://github.com/xergioalex/xergioalex.com/pull/131); los snippets de abajo están tomados de ese diff tal cual.
 
 ### Pinear el package manager vía Corepack
 
@@ -168,9 +166,9 @@ Cosita pequeña, pero los commits implícitos de `npm version` eran el tipo de m
 
 ---
 
-## Lo que *no* hice (todavía)
+## Lo que esta línea base *no* arregla
 
-Algunas cosas que consideré y aún no he aterrizado, para ser honesto:
+Algunas brechas que vale la pena nombrar, en términos claros:
 
 - **Attestations de Sigstore en mis propias publicaciones.** Este sitio no publica a npm, así que no aplica. Pero para cualquier paquete que sí publique, [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) más [provenance attestations](https://docs.npmjs.com/generating-provenance-statements/) es la respuesta — sin llaves, respaldado por OIDC, consultable. El maintainer de axios tenía Trusted Publishing configurado al lado de un token legacy de larga duración; el token legacy fue lo que se comprometió. Migra completo o no migres.
 - **Generación de SBOM en CI.** No lo he conectado. Para un sitio personal es marginal; para cualquier cosa que envíes a otras personas no.

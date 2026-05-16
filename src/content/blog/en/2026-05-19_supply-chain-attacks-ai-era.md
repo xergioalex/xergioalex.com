@@ -1,6 +1,6 @@
 ---
-title: "AI is accelerating open source supply chain attacks: why I moved off npm in 2026"
-description: "In 18 months, npm, PyPI, RubyGems, Maven and Crates have all shipped malware. AI is making it worse. Here's the wave — and what I changed in my CI to defend against the next one."
+title: "Supply chain attacks in the AI era: the state of open source in 2026"
+description: "In 18 months, npm, PyPI, RubyGems, Maven and Crates have all shipped malware. AI is accelerating both sides of the playbook. A tour of what's happening, with the defensive baseline at the end."
 pubDate: 2026-05-19T10:00:00Z
 tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["supply chain attack 2026", "npm pnpm minimumReleaseAge", "Shai-Hulud worm", "tj-actions changed-files CVE-2025-30066", "slopsquatting", "axios npm compromise 2026", "Bitwarden CLI malicious 2026.4.0", "TanStack npm postmortem", "PyPI Trusted Publishing", "open source security 2026"]
@@ -9,13 +9,11 @@ heroLayout: banner
 draft: false
 ---
 
-Last weekend I rewrote how this site installs JavaScript packages. The diff itself was small — about ninety files, mostly text substitutions in scripts and docs, [one PR](https://github.com/xergioalex/xergioalex.com/pull/131). But the reason I did it is not small.
+Eight days ago, [42 npm packages under `@tanstack/*` were compromised](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) inside a six-minute window. Three weeks before that, [Bitwarden's CLI on npm](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) was hijacked for ninety minutes — and the payload specifically probed for installed AI coding assistants. Last month: [axios](https://socket.dev/blog/axios-npm-package-compromised), a package with over 100 million weekly downloads. Last quarter: [the YOLO library on PyPI](https://www.reversinglabs.com/blog/compromised-ultralytics-pypi-package-delivers-crypto-coinminer). Last September: [the first true self-replicating worm in npm's history](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised), infecting hundreds of packages in days.
 
-Eight days ago, the [`@tanstack/*` packages were compromised](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) — 42 packages, 84 malicious versions, all published inside a six-minute window. The attack chain ended with the adversary reading the OIDC token out of the Runner.Worker process memory inside TanStack's own GitHub Actions, and then using it to publish directly to npm as if they were the maintainer. OpenAI [confirmed afterwards](https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack/) that some of their employees' developer machines were compromised through this attack. A few weeks earlier, [Bitwarden's CLI on npm](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) was hijacked for about ninety minutes. The malicious payload scanned the victim machine for installed AI coding assistants — Claude, Cursor, and others — and tried to inject persistent prompt hooks into them.
+If you ship software in 2026, the public registries you depend on are under coordinated attack. The volume is not the new thing — malicious packages have always existed. The new thing is that AI is accelerating both sides of the playbook. Attackers more than defenders, for now.
 
-I'm not paranoid. I'm doing the math.
-
-This post is a tour of the wave that hit the open source ecosystem in 2025 and 2026 — how AI is accelerating it, and the specific things I changed in my own setup to make me a less convenient target. None of these defenses are heroic. They're the new baseline.
+This post is a tour of the state of the art. What's happening, who's being hit, how AI is reshaping the playbook on both sides, and at the end the defensive baseline I just shipped on this site as one worked example. Almost every citation links to a primary source — vendor postmortems, security-firm research, CISA advisories. None of this is speculation.
 
 ---
 
@@ -87,9 +85,9 @@ Honestly, I don't think the verified pieces need an exaggerated version. Slopsqu
 
 ---
 
-## What I did about it
+## The defensive baseline
 
-The new baseline isn't heroic. Most of these are one-line changes — the hard part is doing all of them, not just one.
+Most of the registry-side fixes — Trusted Publishing, mandatory 2FA, Sigstore attestations — happen on the *publish* side and don't affect what shows up in your `node_modules` next Tuesday. The install-side baseline is on us. None of what follows is heroic, and most of it is one-line changes. The hard part is doing all of them, not just one. I just shipped this exact stack on this site in [PR #131](https://github.com/xergioalex/xergioalex.com/pull/131); the snippets below are taken from that diff verbatim.
 
 ### Pin the package manager via Corepack
 
@@ -168,9 +166,9 @@ Small thing, but the implicit git commits from `npm version` were the kind of ba
 
 ---
 
-## What I didn't do (yet)
+## What this baseline doesn't fix
 
-A few things I considered and haven't shipped, for honesty:
+A few gaps worth naming, in plain terms:
 
 - **Sigstore attestations on my own publishes.** This site doesn't publish to npm, so it doesn't apply. But for any package I ship, [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) plus [provenance attestations](https://docs.npmjs.com/generating-provenance-statements/) is the answer — keyless, OIDC-backed, queryable. The axios maintainer had Trusted Publishing set up alongside a legacy long-lived token; the legacy token is what got compromised. Migrate fully or don't migrate.
 - **SBOM generation in CI.** I haven't wired this up. For a personal site it's marginal; for anything you ship to other people it's not.
