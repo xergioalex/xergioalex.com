@@ -45,14 +45,19 @@
     @apply text-sm text-center text-gray-600 dark:text-gray-300 mt-3;
   }
 
-  /* Mobile horizontal scroll for wide tables */
+  /* Mobile horizontal scroll for wide tables.
+   * The !important rules below override Tailwind Typography's `.prose table`
+   * styles, which have equal or higher specificity than `.table-responsive`
+   * once nested inside a prose container. Without !important, prose wins. */
   @media (max-width: 768px) {
     .table-responsive {
+      /* biome-ignore lint/complexity/noImportantStyles: overrides equal-specificity Tailwind Typography `.prose table` rules nested inside prose containers */
       overflow-x: auto !important;
       -webkit-overflow-scrolling: touch;
     }
     .table-responsive > table,
     .table-responsive > :where(table) {
+      /* biome-ignore lint/complexity/noImportantStyles: overrides equal-specificity Tailwind Typography `.prose table` rules nested inside prose containers */
       width: max-content !important;
       min-width: 100%;
       font-size: 0.875rem;
