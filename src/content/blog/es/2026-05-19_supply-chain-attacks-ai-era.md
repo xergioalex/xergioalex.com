@@ -6,7 +6,7 @@ tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["ataque cadena de suministro 2026", "qué es minimumReleaseAge pnpm", "gusano Shai-Hulud npm", "CVE-2025-30066 tj-actions", "slopsquatting paquetes alucinados", "compromiso axios npm 2026", "Bitwarden CLI malicioso", "postmortem TanStack npm", "PyPI Trusted Publishing", "seguridad open source 2026"]
 heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero.webp"
 heroLayout: banner
-draft: false
+draft: true
 ---
 
 Hace ocho días, [42 paquetes de npm bajo `@tanstack/*` fueron comprometidos](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) dentro de una ventana de seis minutos. Tres semanas antes, [el CLI de Bitwarden en npm](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) fue secuestrado por noventa minutos — y el payload buscaba específicamente asistentes de IA para programar instalados en la máquina. El mes pasado: [axios](https://socket.dev/blog/axios-npm-package-compromised), un paquete con más de 100 millones de descargas semanales. El trimestre pasado: [la librería YOLO en PyPI](https://www.reversinglabs.com/blog/compromised-ultralytics-pypi-package-delivers-crypto-coinminer). En septiembre pasado: [el primer gusano auto-replicante real en la historia de npm](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised), infectando cientos de paquetes en cuestión de días.
