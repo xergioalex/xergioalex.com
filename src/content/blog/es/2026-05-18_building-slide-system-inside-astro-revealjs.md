@@ -11,17 +11,25 @@ draft: true
 keywords: [astro diapositivas, integración reveal.js astro, slides como contenido, esquema unión discriminada, gemelos AEO markdown, sistema de presentaciones]
 ---
 
-Quería que mis charlas vivieran en el mismo lugar que mi blog. No repartidas entre Google Slides, un PDF colgado en algún lado y un dominio externo, sino dentro de mi sitio y tratadas como contenido de primera clase: misma Content Collection, mismo i18n, mismo SEO que cualquier post.
+Después de [investigar las herramientas de slides-as-code que hoy existen para desarrolladores](/es/blog/best-presentation-tools-for-developers-2026) —Reveal.js, Slidev, Marp, Spectacle y un puñado más— elegí [Reveal.js](https://revealjs.com) para construir el sistema de presentaciones de mi sitio.
 
-Tras [evaluar las herramientas de slides-as-code disponibles para desarrolladores](/es/blog/best-presentation-tools-for-developers-2026), elegí [Reveal.js](https://revealjs.com). Este post es el caso de estudio de cómo lo construí: las decisiones de arquitectura, los tres tipos de presentaciones que el sistema soporta, y los problemas que solo aparecieron cuando empecé a usarlo frente a audiencias reales.
+La meta era concreta: quería que mis charlas vivieran en el mismo lugar que mi blog. No repartidas entre Google Slides, un PDF colgado en algún lado y un dominio externo, sino dentro de mi sitio y tratadas como contenido de primera clase: misma Content Collection, mismo i18n, mismo SEO que cualquier post.
 
-## ¿Por qué no Slidev?
+Y había una segunda condición: que el sistema se pudiera pilotar con agentes de IA. Si las slides son texto plano —archivos `.md` en el repo— un agente puede generar una, reordenar una sección o traducir un deck entero igual que edita cualquier otro archivo, y yo me quedo con lo que de verdad importa: la narrativa.
 
-Lo cubrí brevemente en el [post de comparación](/es/blog/best-presentation-tools-for-developers-2026), pero la incompatibilidad de fondo merece una explicación. La razón corta es que Slidev no es una librería, es una aplicación.
+Este post es el caso de estudio de cómo lo construí: las decisiones de arquitectura, los tres tipos de presentaciones que el sistema soporta, y los problemas que solo aparecieron cuando empecé a usarlo frente a audiencias reales.
 
-Para usarlo en un sitio Astro tendría que mantener dos universos en paralelo: el `package.json` de Astro y el de Slidev, con Vue, Vite y todo su árbol de dependencias. Dos pipelines de build. Dos sistemas de tema que no se hablan entre sí — el de UnoCSS de Slidev y el de Tailwind v4 mío, que vive en `<html class="dark">`. Y, sobre todo, perdería las Content Collections de Astro: sin validación Zod, sin filtrado de borradores, sin `getCollection()`. La salida de Slidev es una SPA con routing basado en hash, invisible para `@astrojs/sitemap`.
+## ¿Por qué Reveal.js?
 
-Reveal.js evita todo esto porque es una librería, no una aplicación. Lo importo en un componente Svelte, lo inicializo al montar, y el resto de la página sigue siendo Astro estándar. Mismo build, mismas collections, mismo i18n, mismo SEO. La frontera de integración cabe en unas pocas decenas de líneas.
+La comparación completa, herramienta por herramienta, vive en [un análisis aparte de las opciones de slides-as-code](/es/blog/best-presentation-tools-for-developers-2026). Aquí me interesa la otra mitad: por qué Reveal encajó en mi sitio donde las demás no. Y casi todo se reduce a una distinción: **Reveal.js es una librería; las alternativas más fuertes son aplicaciones.** Una librería la importo dentro de mi propio build; una aplicación me obliga a mantener la suya en paralelo.
+
+Reveal es JavaScript vanilla, sin dependencia de framework. Lo importo en un componente Svelte, lo inicializo al montar, y el resto de la página sigue siendo Astro estándar: mismo build, mismas Content Collections, mismo i18n, mismo SEO. La frontera de integración cabe en unas pocas decenas de líneas. Encima trae lo que necesito para charlas técnicas —Markdown nativo, fragments, auto-animate, resaltado de código por pasos— como plugins componibles, sin atarme a ningún runtime.
+
+Las demás opciones que evalué eran buenas, pero cada una chocaba con esa misma frontera. **Marp** es el más fácil de aprender, pero su interactividad es limitada —sin fragments, sin demos de código en vivo— y sus valores por defecto apuntan a un PDF de grado presentación, no a una experiencia web dentro de mi sitio. **Spectacle** es elegante si tu proyecto ya corre sobre React; el mío no, así que adoptarlo significaba meter un segundo runtime de framework solo para las diapositivas.
+
+El caso más difícil de descartar fue **Slidev**, porque tiene la mejor experiencia de autoría del grupo. Pero Slidev no es una librería, es una aplicación. Para usarlo dentro de un sitio Astro tendría que mantener dos universos en paralelo: el `package.json` de Astro y el de Slidev, con Vue, Vite y todo su árbol de dependencias. Dos pipelines de build. Dos sistemas de tema que no se hablan entre sí —el de UnoCSS de Slidev y el mío de Tailwind v4, que vive en `<html class="dark">`.
+
+Y, sobre todo, perdería las Content Collections de Astro: sin validación Zod, sin filtrado de borradores, sin `getCollection()`. La salida de Slidev es una SPA con routing basado en hash, invisible para `@astrojs/sitemap`. Reveal evita todo eso por una razón de fondo: es algo que incrusto, no algo que tengo que hospedar aparte.
 
 ## Tres tipos de decks, una sola Content Collection
 
