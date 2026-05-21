@@ -9,7 +9,7 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "packageManager": "pnpm@11.1.2",
   "engines": {
     "node": ">=24.15.0"
@@ -46,8 +46,8 @@
     "@astrojs/mdx": "5.0.4",
     "@astrojs/rss": "4.0.18",
     "@astrojs/sitemap": "3.7.2",
-    "@astrojs/svelte": "8.0.5",
-    "astro": "6.1.9",
+    "@astrojs/svelte": "8.1.0",
+    "astro": "6.3.1",
     "fuse.js": "7.3.0",
     "rehype-external-links": "3.0.0",
     "reveal.js": "^6.0.1",
