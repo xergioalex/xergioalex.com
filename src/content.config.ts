@@ -69,7 +69,6 @@ const slideBaseSchema = z.object({
   pubDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
   heroImage: z.string().optional(),
-  tags: z.array(z.string()).max(5).optional(),
   draft: z.boolean().default(false),
   eventName: z.string().optional(),
   eventDate: z.coerce.date().optional(),

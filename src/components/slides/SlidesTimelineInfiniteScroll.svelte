@@ -258,16 +258,6 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
                     {deck.provider}
                   </span>
                 {/if}
-
-                {#if deck.tags && deck.tags.length > 0}
-                  {#each deck.tags as tag}
-                    <span
-                      class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                    >
-                      #{t.tagNames[tag] || tag}
-                    </span>
-                  {/each}
-                {/if}
               </div>
             </div>
           </article>

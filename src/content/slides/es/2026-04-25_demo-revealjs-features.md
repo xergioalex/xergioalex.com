@@ -4,7 +4,6 @@ title: "Slides v2 — Demo Kitchen Sink"
 description: "Showcase completo de cada layout, fondo y feature de Reveal.js en el sistema de slides v2 — splits, imágenes full-bleed, citas, stats, tablas, math."
 pubDate: 2026-04-25
 updatedDate: 2026-05-14
-tags: [tech, talks]
 heroImage: "/images/slides/demo-revealjs-features/hero-es.webp"
 draft: false
 theme: dark

@@ -26,9 +26,6 @@ export const GET: APIRoute = ({ props }) => {
   if (data.updatedDate) {
     markdown += `- **Actualizado:** ${data.updatedDate.toISOString().split('T')[0]}\n`;
   }
-  if (data.tags && data.tags.length > 0) {
-    markdown += `- **Tags:** ${data.tags.join(', ')}\n`;
-  }
   if (data.eventName) {
     markdown += `- **Evento:** ${data.eventName}`;
     if (data.eventDate) {

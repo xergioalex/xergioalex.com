@@ -13,8 +13,7 @@ const { deck, lang } = Astro.props;
 const prefix = getUrlPrefix(lang);
 const slug = getDeckSlug(deck.id);
 const href = `${prefix}/slides/${slug}`;
-const { title, description, heroImage, tags, eventName, eventDate, type } =
-  deck.data;
+const { title, description, heroImage, eventName, eventDate, type } = deck.data;
 ---
 
 <article class="group flex flex-col bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -59,15 +58,5 @@ const { title, description, heroImage, tags, eventName, eventDate, type } =
     <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 flex-1">
       {description}
     </p>
-
-    {tags && tags.length > 0 && (
-      <div class="flex flex-wrap gap-1.5 mt-3">
-        {tags.map((tag) => (
-          <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-            {tag}
-          </span>
-        ))}
-      </div>
-    )}
   </div>
 </article>

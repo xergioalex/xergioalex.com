@@ -12,7 +12,6 @@ export interface SlideTimelineCardEntry {
   title: string;
   description: string;
   pubDate: string;
-  tags: string[];
   heroImage?: string;
   type: 'internal' | 'external-link' | 'external-embed';
   eventName?: string;
@@ -135,7 +134,6 @@ export async function getSlidesTimelineIndex(
       title: data.title,
       description: data.description,
       pubDate: data.pubDate.toISOString(),
-      tags: data.tags ?? [],
       heroImage: data.heroImage,
       type: data.type,
       eventName: data.eventName,
