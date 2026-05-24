@@ -126,6 +126,21 @@ export function getPostLanguage(postId: string): string {
 }
 
 /**
+ * Look up a blog post by its public slug (no language/date prefix).
+ * Used for cross-content references (e.g., a slide deck pointing back to its companion post).
+ * Returns undefined if no post matches the slug in the given language.
+ */
+export async function getPostBySlug(
+  slug: string,
+  lang: string
+): Promise<CollectionEntry<'blog'> | undefined> {
+  const all = await getCollection('blog');
+  return all.find(
+    (post) => post.id.startsWith(`${lang}/`) && getPostSlug(post.id) === slug
+  );
+}
+
+/**
  * Remove markdown syntax and normalize content for word counting.
  */
 function normalizeContentForWordCount(content: string): string {

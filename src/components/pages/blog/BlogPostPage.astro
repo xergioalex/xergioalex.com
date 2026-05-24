@@ -13,6 +13,7 @@ import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
+  getPostSlug,
   getReadingTimeFromContent,
   getRelatedPosts,
   getSeriesNavigation,
@@ -59,7 +60,7 @@ const seriesInfo = post.data.series
   : null;
 
 // Companion slide deck for this post (if any). Drives the floating SlideIndicator.
-const postSlug = post.id.replace(/^[a-z]{2}\//, '');
+const postSlug = getPostSlug(post.id);
 const relatedDeck = await getDeckForPost(
   postSlug,
   lang,

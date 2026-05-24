@@ -1,9 +1,10 @@
 ---
-import { type CollectionEntry, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import JsonLd from '@/components/JsonLd.astro';
 import ExternalView from '@/components/slides/ExternalView.astro';
 import RevealDeck from '@/components/slides/RevealDeck.svelte';
 import SlideLayout from '@/layouts/SlideLayout.astro';
+import { getPostBySlug } from '@/lib/blog';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
 import { getDeckSlug, isDraftDeck } from '@/lib/slides';
@@ -27,7 +28,7 @@ const canonicalUrl = `${siteUrl}${prefix}/slides/${slug}`;
 let relatedPostHref: string | undefined;
 let relatedPostTitle: string | undefined;
 if (deck.data.relatedPost) {
-  const post = await getEntry('blog', `${lang}/${deck.data.relatedPost}`);
+  const post = await getPostBySlug(deck.data.relatedPost, lang);
   if (post) {
     relatedPostHref = `${prefix}/blog/${deck.data.relatedPost}`;
     relatedPostTitle = post.data.title;
