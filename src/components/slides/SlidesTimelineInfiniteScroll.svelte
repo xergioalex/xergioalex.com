@@ -108,18 +108,18 @@ function getMonthName(pubDate: string): string {
 
 function getTypeBadgeLabel(type: SlideTimelineCardEntry['type']): string {
   switch (type) {
-    case 'internal':
-      return t.slides.typeBadge.internal;
-    case 'external-link':
-      return t.slides.typeBadge.externalLink;
+    case 'native':
+      return t.slides.typeBadge.native;
+    case 'external':
+      return t.slides.typeBadge.external;
   }
 }
 
 function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
   switch (type) {
-    case 'internal':
+    case 'native':
       return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
-    case 'external-link':
+    case 'external':
       return 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200';
   }
 }

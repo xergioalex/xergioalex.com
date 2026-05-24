@@ -561,14 +561,14 @@ export interface SiteTranslations {
     exitToCatalog: string;
     printPdf: string;
     languageSwitch: string;
-    externalLink: {
+    external: {
       openCta: string;
       backToCatalog: string;
     };
     languageNotice: string;
     typeBadge: {
-      internal: string;
-      externalLink: string;
+      native: string;
+      external: string;
     };
     toolbar: {
       backToCatalog: string;

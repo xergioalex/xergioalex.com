@@ -76,8 +76,8 @@ const slideBaseSchema = z.object({
   relatedPost: z.string().optional(),
 });
 
-const internalSlideSchema = slideBaseSchema.extend({
-  type: z.literal('internal'),
+const nativeSlideSchema = slideBaseSchema.extend({
+  type: z.literal('native'),
   theme: z.enum(['dark', 'light']).default('dark'),
   transition: z
     .enum(['none', 'fade', 'slide', 'convex', 'concave', 'zoom'])
@@ -86,15 +86,15 @@ const internalSlideSchema = slideBaseSchema.extend({
   math: z.boolean().default(false),
 });
 
-const externalLinkSlideSchema = slideBaseSchema.extend({
-  type: z.literal('external-link'),
+const externalSlideSchema = slideBaseSchema.extend({
+  type: z.literal('external'),
   externalUrl: z.url(),
   provider: z.string().optional(),
 });
 
 const slideSchema = z.discriminatedUnion('type', [
-  internalSlideSchema,
-  externalLinkSlideSchema,
+  nativeSlideSchema,
+  externalSlideSchema,
 ]);
 
 const slides = defineCollection({

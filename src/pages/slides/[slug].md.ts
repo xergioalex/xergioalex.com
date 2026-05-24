@@ -42,7 +42,7 @@ export const GET: APIRoute = ({ props }) => {
   markdown += '\n';
 
   // Type-specific fields
-  if (data.type === 'external-link') {
+  if (data.type === 'external') {
     markdown += '## External Presentation\n\n';
     markdown += `- **URL:** ${data.externalUrl}\n`;
     if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;

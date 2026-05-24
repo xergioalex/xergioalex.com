@@ -593,14 +593,14 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     exitToCatalog: 'Back to Tech Talks',
     printPdf: 'Print to PDF',
     languageSwitch: 'Ver en español',
-    externalLink: {
+    external: {
       openCta: 'Open on {provider}',
       backToCatalog: 'Back to catalog',
     },
     languageNotice: 'Original deck is in {lang}',
     typeBadge: {
-      internal: 'Native',
-      externalLink: 'External',
+      native: 'Native',
+      external: 'External',
     },
     toolbar: {
       backToCatalog: 'Back to catalog',

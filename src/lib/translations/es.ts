@@ -600,14 +600,14 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     exitToCatalog: 'Volver a Charlas Tech',
     printPdf: 'Imprimir a PDF',
     languageSwitch: 'View in English',
-    externalLink: {
+    external: {
       openCta: 'Abrir en {provider}',
       backToCatalog: 'Volver al catálogo',
     },
     languageNotice: 'La presentación original está en {lang}',
     typeBadge: {
-      internal: 'Nativo',
-      externalLink: 'Externo',
+      native: 'Nativo',
+      external: 'Externo',
     },
     toolbar: {
       backToCatalog: 'Volver al catálogo',

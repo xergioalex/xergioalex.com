@@ -13,7 +13,7 @@ export interface SlideTimelineCardEntry {
   description: string;
   pubDate: string;
   heroImage?: string;
-  type: 'internal' | 'external-link';
+  type: 'native' | 'external';
   eventName?: string;
   eventDate?: string;
   externalUrl?: string;
@@ -95,18 +95,18 @@ export async function getDeckById(
   return getEntry('slides', id);
 }
 
-/** Type guard: internal deck (authored Markdown, rendered with Reveal.js). */
-export function isInternalDeck(
+/** Type guard: native deck (authored Markdown, rendered with Reveal.js). */
+export function isNativeDeck(
   deck: CollectionEntry<'slides'>
-): deck is CollectionEntry<'slides'> & { data: { type: 'internal' } } {
-  return deck.data.type === 'internal';
+): deck is CollectionEntry<'slides'> & { data: { type: 'native' } } {
+  return deck.data.type === 'native';
 }
 
-/** Type guard: external-link deck (stub info page with CTA to external URL). */
-export function isExternalLinkDeck(
+/** Type guard: external deck (stub info page with CTA to external URL). */
+export function isExternalDeck(
   deck: CollectionEntry<'slides'>
-): deck is CollectionEntry<'slides'> & { data: { type: 'external-link' } } {
-  return deck.data.type === 'external-link';
+): deck is CollectionEntry<'slides'> & { data: { type: 'external' } } {
+  return deck.data.type === 'external';
 }
 
 /**
@@ -134,7 +134,7 @@ export async function getSlidesTimelineIndex(
       isDraft: isDraftDeck(deck),
     };
 
-    if (data.type === 'external-link') {
+    if (data.type === 'external') {
       base.externalUrl = data.externalUrl;
       base.provider = data.provider;
     }
@@ -146,11 +146,6 @@ export async function getSlidesTimelineIndex(
 /** Map deck type to translation badge key. */
 export function getDeckTypeBadgeKey(
   deck: CollectionEntry<'slides'>
-): 'internal' | 'externalLink' {
-  switch (deck.data.type) {
-    case 'internal':
-      return 'internal';
-    case 'external-link':
-      return 'externalLink';
-  }
+): 'native' | 'external' {
+  return deck.data.type;
 }

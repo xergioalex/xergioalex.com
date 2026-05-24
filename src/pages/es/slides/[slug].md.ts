@@ -40,7 +40,7 @@ export const GET: APIRoute = ({ props }) => {
   markdown += '- **Autor:** Sergio Alexander Florez Galeano (XergioAleX)\n';
   markdown += '\n';
 
-  if (data.type === 'external-link') {
+  if (data.type === 'external') {
     markdown += '## Presentación Externa\n\n';
     markdown += `- **URL:** ${data.externalUrl}\n`;
     if (data.provider) markdown += `- **Proveedor:** ${data.provider}\n`;

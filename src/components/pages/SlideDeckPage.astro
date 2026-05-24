@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import JsonLd from '@/components/JsonLd.astro';
-import ExternalLinkView from '@/components/slides/ExternalLinkView.astro';
+import ExternalView from '@/components/slides/ExternalView.astro';
 import RevealDeck from '@/components/slides/RevealDeck.svelte';
 import SlideLayout from '@/layouts/SlideLayout.astro';
 import type { Language } from '@/lib/i18n';
@@ -65,7 +65,7 @@ const eventMeta = deck.data.eventName
   : {};
 
 const jsonLd =
-  type === 'external-link'
+  type === 'external'
     ? {
         ...jsonLdBase,
         '@type': 'CreativeWork' as const,
@@ -80,7 +80,7 @@ const jsonLd =
       };
 ---
 
-{type === 'internal' && (
+{type === 'native' && (
   <SlideLayout
     lang={lang}
     title={deck.data.title}
@@ -104,6 +104,6 @@ const jsonLd =
   </SlideLayout>
 )}
 
-{type === 'external-link' && (
-  <ExternalLinkView deck={deck} lang={lang} jsonLd={jsonLd} />
+{type === 'external' && (
+  <ExternalView deck={deck} lang={lang} jsonLd={jsonLd} />
 )}

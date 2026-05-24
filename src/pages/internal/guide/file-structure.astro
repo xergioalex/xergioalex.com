@@ -161,7 +161,7 @@ public/                      # Static assets
         </summary>
         <div class="px-4 pb-4 text-sm text-gray-600 dark:text-gray-300 space-y-2">
           <p><code class="text-xs">blog/</code> — BlogCard.svelte, BlogGrid.svelte, BlogPagination.svelte, StaticBlogSearch.svelte</p>
-          <p><code class="text-xs">slides/</code> — RevealDeck.svelte, SlideCard.astro, SlidesCatalog.astro, TypeBadge.astro, ExternalLinkView.astro</p>
+          <p><code class="text-xs">slides/</code> — RevealDeck.svelte, SlideCard.astro, SlidesCatalog.astro, TypeBadge.astro, ExternalView.astro</p>
           <p><code class="text-xs">home/</code> — HeroSection/, BlogPreviewSection, ContactSection, ProjectsSection, and other homepage sections</p>
           <p><code class="text-xs">layout/</code> — Header.svelte (main nav, interactive), MobileMenu.svelte</p>
           <p><code class="text-xs">pages/</code> — Shared *Page.astro components (HomePage, AboutPage, SlideDeckPage, SlidesPage, etc.)</p>
@@ -206,7 +206,7 @@ public/                      # Static assets
         </summary>
         <div class="px-4 pb-4 text-sm text-gray-600 dark:text-gray-300 space-y-2">
           <p><code class="text-xs">blog.ts</code> — getBlogPosts(), getPostSlug(), pagination utilities</p>
-          <p><code class="text-xs">slides.ts</code> — getSlideDecks(), getDeckSlug(), type guards (isInternalDeck, etc.)</p>
+          <p><code class="text-xs">slides.ts</code> — getSlideDecks(), getDeckSlug(), type guards (isNativeDeck, isExternalDeck)</p>
           <p><code class="text-xs">i18n.ts</code> — Language type, LANGUAGES registry, getUrlPrefix()</p>
           <p><code class="text-xs">translations/</code> — Modular system: en.ts, es.ts, types.ts, index.ts</p>
           <p><code class="text-xs">constances.ts</code> — SITE_TITLE, SITE_DESCRIPTION, social URLs</p>

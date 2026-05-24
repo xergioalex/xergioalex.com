@@ -12,7 +12,7 @@ const collections = [
   {
     name: 'slides',
     path: 'src/content/slides/{en,es}/',
-    description: 'Presentation decks — internal or external-link types',
+    description: 'Presentation decks — native or external types',
     fileCount: 'Per language',
   },
   {
@@ -123,7 +123,7 @@ const slidesBaseFields = [
     field: 'type',
     type: 'enum',
     required: true,
-    description: 'internal | external-link (discriminant)',
+    description: 'native | external (discriminant)',
   },
   {
     field: 'heroImage',
@@ -153,12 +153,12 @@ const slidesBaseFields = [
 
 const slidesTypeFields = [
   {
-    type: 'internal',
+    type: 'native',
     field: '(body)',
     description: 'Markdown content with Reveal.js slide separators',
   },
   {
-    type: 'external-link',
+    type: 'external',
     field: 'externalUrl',
     description: 'URL linking to the external slide deck',
   },
