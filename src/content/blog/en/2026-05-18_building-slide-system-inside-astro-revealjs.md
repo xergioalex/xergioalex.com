@@ -7,7 +7,7 @@ series: "slides-as-code"
 seriesOrder: 2
 heroImage: "/images/blog/posts/building-slide-system-inside-astro-revealjs/hero.webp"
 heroLayout: side-by-side
-draft: false
+draft: true
 keywords: [astro slides, reveal.js astro integration, slides as content, discriminated union schema, AEO markdown twins, presentation system]
 ---
 
