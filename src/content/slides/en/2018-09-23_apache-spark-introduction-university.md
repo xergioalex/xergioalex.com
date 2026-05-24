@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Taming Big Data: An Introduction to Apache Spark"
 description: "From RDDs to streaming — my university Big Data final project: slides, Jupyter notebooks, and a Docker Spark cluster to make distributed computing approachable."
 pubDate: 2018-09-23

@@ -1,5 +1,5 @@
 ---
-type: internal
+type: native
 title: 'OpenClaw: Tu asistente. Tu máquina. Tus reglas. — La revolución de los agentes personales'
 description: 'Agentes personales que corren bajo tus reglas y en tu propio equipo. Presentación del proyecto, su arquitectura y demos en vivo de casos reales.'
 pubDate: 2026-05-04

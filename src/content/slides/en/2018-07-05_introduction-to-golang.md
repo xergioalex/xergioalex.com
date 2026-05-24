@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to GoLang"
 description: "Why Go won me over — my Pereira Tech Talks session on Go's simplicity, built-in concurrency with goroutines, and what makes it genuinely different."
 pubDate: 2018-07-05

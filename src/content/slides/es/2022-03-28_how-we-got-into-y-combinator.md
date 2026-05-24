@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Cómo entramos a Y Combinator"
 description: "Tres aplicaciones a YC, dos rechazos y una aceptación — qué cambió entre cada intento, la entrevista real y qué aprendimos escalando DailyBot después de YC."
 pubDate: 2022-03-28

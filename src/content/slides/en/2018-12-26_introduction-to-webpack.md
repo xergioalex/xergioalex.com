@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to Webpack"
 description: "How Webpack transformed front-end development — entry points, loaders, plugins, and why developer experience is more important than configuration complexity."
 pubDate: 2018-12-26

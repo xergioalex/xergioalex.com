@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "The Rebirth of Artificial Intelligence"
 description: "Why ChatGPT ended the AI winter and started a generative revolution — my Pereira Tech Talks session on GPT-4, DailyBot's AI features, and what changed in 2022."
 pubDate: 2023-05-17

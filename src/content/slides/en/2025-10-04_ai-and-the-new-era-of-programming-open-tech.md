@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "AI and the New Era of Programming at Open Tech Hackathon"
 description: "Vibe Coding workshop at Open Tech Hackathon — comparing Cursor, Codex, and Claude Code, and the conductor mindset for shipping faster with AI code agents."
 pubDate: 2025-10-04

@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Buscando el product market fit"
 description: "Fallar productos en Rocka.co — lecciones de cada experimento, señales reales de PMF y cómo DailyBot finalmente encontró el ajuste entre producto y mercado."
 pubDate: 2021-03-28

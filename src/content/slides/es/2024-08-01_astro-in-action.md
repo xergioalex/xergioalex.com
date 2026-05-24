@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Astro en acción"
 description: "Por qué Astro vale el cambio: casos de Microsoft y Firebase, mejoras de rendimiento medibles y una migración en vivo de Pereira Tech Talks."
 pubDate: 2024-08-01

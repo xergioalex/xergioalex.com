@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Serverless, IoT e interfaces conversacionales"
 description: "La voz como nueva interfaz — Manizales Tech Talks sobre skills de Alexa, modelos de eventos serverless y cómo diseñar aplicaciones IoT conversacionales."
 pubDate: 2019-08-23

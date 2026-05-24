@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "What is Blockchain and How Is It Radically Transforming the Economy and Industry?"
 description: "From Bitcoin's origins and the history of money to Ethereum smart contracts and digital ownership — blockchain's fundamental shift in how we think about trust."
 pubDate: 2018-06-01

@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Vue Vixens Talk: estilos en Vue"
 description: "Cómo Vue maneja el CSS — estilos scoped, preprocesadores y arquitectura de componentes en Vue Vixens Day Pereira, evento centrado en diversidad en tecnología."
 pubDate: 2019-10-25

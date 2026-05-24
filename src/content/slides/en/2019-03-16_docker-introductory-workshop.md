@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Docker Introductory Workshop"
 description: "Hands-on Docker at Rocka Labs — containers, images, Dockerfiles, volumes, networks, and Compose from the ground up, building real understanding of the tool."
 pubDate: 2019-03-16

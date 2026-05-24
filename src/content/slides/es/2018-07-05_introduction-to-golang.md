@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introducción a GoLang"
 description: "Por qué Go me convenció — Pereira Tech Talks sobre la simplicidad de Go, concurrencia con goroutines y lo que lo hace genuinamente diferente a otros lenguajes."
 pubDate: 2018-07-05

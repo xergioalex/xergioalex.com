@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Deep Learning: de la academia a la práctica"
 description: "PyCon Colombia 2018 — matemáticas aplicadas detrás de la IA: álgebra lineal, redes neuronales, descenso de gradiente y visión por computadora en Python."
 pubDate: 2018-02-09

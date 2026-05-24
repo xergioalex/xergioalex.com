@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "How AI is Revolutionizing Modern Application Development"
 description: "Three months after Pereira, an updated Manizales Tech Talks session on GPT-4, LangChain, RAG systems, and what had shifted in the AI ecosystem by August 2023."
 pubDate: 2023-08-26

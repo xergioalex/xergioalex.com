@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "What is Blockchain and How Will It Radically Transform the Economy?"
 description: "From the history of money to decentralized apps — a talk at Universidad de Caldas cutting through blockchain hype with real technical foundations."
 pubDate: 2017-10-18

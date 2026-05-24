@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Docker Introduction"
 description: "Containers and microservice-oriented architectures — what defines a microservice, how Docker fits in, and demos for building autonomous, scalable systems."
 pubDate: 2018-12-13

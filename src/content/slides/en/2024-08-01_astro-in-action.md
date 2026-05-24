@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Astro in Action"
 description: "Why Astro is worth the switch — Microsoft and Firebase case studies, measurable performance gains, and a live Pereira Tech Talks migration."
 pubDate: 2024-08-01

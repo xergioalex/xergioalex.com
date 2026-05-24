@@ -1,5 +1,5 @@
 ---
-type: internal
+type: native
 title: 'OpenClaw: Your Assistant. Your Machine. Your Rules. — The personal agent revolution'
 description: 'A new generation of personal agents running under your rules, on your own machine. Project overview, architecture, and live demos of real use cases.'
 pubDate: 2026-05-04

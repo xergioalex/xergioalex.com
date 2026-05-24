@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introducción a Blockchain y Ethereum"
 description: "De Bitcoin a los smart contracts de Ethereum — desmitificando cripto para PereiraJS con un demo en vivo de Solidity y sin especulación de precios ni hype."
 pubDate: 2017-10-18

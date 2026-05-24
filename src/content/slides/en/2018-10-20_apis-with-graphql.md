@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to APIs with GraphQL"
 description: "Why GraphQL changed how I build APIs — strong typing, client-driven queries, one endpoint, and why REST started feeling outdated for complex mobile clients."
 pubDate: 2018-10-20

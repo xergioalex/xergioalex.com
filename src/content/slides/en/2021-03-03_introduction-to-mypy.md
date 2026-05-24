@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to MyPy"
 description: "Why we adopted type checking at DailyBot — catching bugs before runtime, clearer function contracts, and how MyPy changed our Python development culture."
 pubDate: 2021-03-03

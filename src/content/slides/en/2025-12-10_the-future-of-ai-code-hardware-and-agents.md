@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "The Future of AI: Code, Hardware and Agents"
 description: "Co-presented with Sebastián Mora at Pereira Tech Talks — from writing code to orchestrating agents, what MCPs unlock, and AI touching physical hardware in 2025."
 pubDate: 2025-12-10

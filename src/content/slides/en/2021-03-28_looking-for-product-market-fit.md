@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Looking for Product Market Fit"
 description: "Building and failing products at Rocka.co — lessons from each experiment, reading real PMF signals, and how DailyBot finally found its product-market fit."
 pubDate: 2021-03-28

@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "CSS Grid Layout"
 description: "Cómo CSS Grid cambió mi forma de pensar los layouts — control bidimensional, áreas nombradas y cuándo elegir Grid en lugar de Flexbox en el front-end moderno."
 pubDate: 2020-02-25

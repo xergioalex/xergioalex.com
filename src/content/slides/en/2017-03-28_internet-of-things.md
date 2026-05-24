@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to the Internet of Things"
 description: "IoT fundamentals with Alejandro Rendon — sensors, controllers, and programming physical hardware with JavaScript and Johnny-five at Pereira Tech Talks."
 pubDate: 2017-03-28

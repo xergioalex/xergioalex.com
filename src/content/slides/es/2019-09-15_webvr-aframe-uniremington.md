@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "WebVR con A-Frame (Charla UniRemington)"
 description: "VR en el navegador para estudiantes — diferencias entre VR, AR y realidad mixta, A-Frame con entidad-componente y el browser como plataforma de distribución."
 pubDate: 2019-09-15

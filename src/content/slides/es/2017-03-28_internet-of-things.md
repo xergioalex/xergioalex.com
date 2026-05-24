@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introducción al Internet de las Cosas"
 description: "Fundamentos de IoT con Alejandro Rendon — sensores, controladores y cómo programar hardware físico con JavaScript y Johnny-five en Pereira Tech Talks."
 pubDate: 2017-03-28

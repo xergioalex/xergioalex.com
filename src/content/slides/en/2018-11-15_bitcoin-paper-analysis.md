@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "History, Discussion, and Analysis of the Bitcoin Paper by Satoshi Nakamoto"
 description: "A deep reading of Satoshi's nine-page paper — from the history of money and the 2008 crisis to proof of work and an elegantly simple design."
 pubDate: 2018-11-15

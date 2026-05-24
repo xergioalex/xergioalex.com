@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introducción a Serverless con énfasis en IoT"
 description: "De BaaS a FaaS e IoT — por qué serverless cambió mi visión de la infraestructura y cómo encaja con dispositivos conectados orientados a eventos."
 pubDate: 2019-03-03

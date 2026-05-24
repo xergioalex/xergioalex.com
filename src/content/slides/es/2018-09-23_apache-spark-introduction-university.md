@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Domando el Big Data: Introducción a Apache Spark"
 description: "De RDDs a streaming — proyecto de Big Data: slides, notebooks Jupyter y clúster Spark en Docker para hacer el cómputo distribuido accesible desde una laptop."
 pubDate: 2018-09-23

@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "NoSQL and MongoDB"
 description: "When SQL tables feel too rigid — an introduction to NoSQL databases, MongoDB's document model, and knowing when to trade schemas for flexibility."
 pubDate: 2016-12-13

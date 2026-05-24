@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "NoSQL y MongoDB"
 description: "Cuando SQL se vuelve rígido — bases de datos NoSQL, el modelo de documentos de MongoDB y cuándo vale la pena sacrificar el esquema por flexibilidad."
 pubDate: 2016-12-13

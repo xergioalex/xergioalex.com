@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "El renacimiento de la inteligencia artificial"
 description: "Por qué ChatGPT terminó el invierno de la IA — Pereira Tech Talks sobre GPT-4, funcionalidades de IA en DailyBot y lo que cambió en 2022 para siempre."
 pubDate: 2023-05-17

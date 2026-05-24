@@ -1,5 +1,5 @@
 ---
-type: internal
+type: native
 title: "The Mobile Landscape in 2026"
 description: "The map I drew before writing code: nine mobile frameworks, four categories, and why Flutter and KMP are the only two paths I'm still considering."
 pubDate: 2026-04-26

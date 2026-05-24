@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to TensorFlow"
 description: "My talk at the first Pereira Tech Talks meetup — Google's TensorFlow, neural network basics, and why a software engineer decided to learn machine learning."
 pubDate: 2017-10-18

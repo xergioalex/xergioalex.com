@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introduction to Vue.js"
 description: "Why Vue became my favorite framework — progressive design, reactivity, and what makes it click after years of Angular and React at Pereira Tech Talks."
 pubDate: 2018-09-29

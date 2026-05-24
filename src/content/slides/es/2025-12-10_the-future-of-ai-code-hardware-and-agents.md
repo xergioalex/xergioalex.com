@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "El futuro de la IA: código, hardware y agentes"
 description: "Con Sebastián Mora en Pereira Tech Talks — de escribir código a orquestar agentes, qué desbloquean los MCPs y la IA interactuando con hardware físico en 2025."
 pubDate: 2025-12-10

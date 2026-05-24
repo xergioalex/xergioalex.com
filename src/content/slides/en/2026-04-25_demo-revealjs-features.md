@@ -1,5 +1,5 @@
 ---
-type: internal
+type: native
 title: "Slides v2 — Kitchen Sink Demo"
 description: "Kitchen-sink showcase of every layout, background, and Reveal.js feature in the v2 slide system — splits, full-bleed images, quotes, stats, tables, math."
 pubDate: 2026-04-25

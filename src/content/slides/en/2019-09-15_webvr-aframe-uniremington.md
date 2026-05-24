@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "WebVR with A-Frame (UniRemington Talk)"
 description: "Bringing VR to a university audience — VR vs AR vs mixed reality, A-Frame's entity-component system, and the browser as the best VR distribution platform."
 pubDate: 2019-09-15

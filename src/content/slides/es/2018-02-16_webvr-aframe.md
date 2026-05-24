@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "WebVR con A-Frame"
 description: "VR con solo HTML y JavaScript — A-Frame, el framework de Mozilla que lleva la realidad virtual al navegador sin configuración compleja ni plugins especiales."
 pubDate: 2018-02-16

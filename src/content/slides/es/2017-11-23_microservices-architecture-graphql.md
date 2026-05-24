@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Arquitectura de microservicios y APIs con GraphQL"
 description: "Por qué migré de REST a GraphQL en microservicios — consultas definidas por el cliente, un solo endpoint y los trade-offs clave de los sistemas distribuidos."
 pubDate: 2017-11-23

@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Microservices Architecture and APIs with GraphQL"
 description: "Why I moved from REST to GraphQL for microservices — divide and conquer, client-defined queries, and the trade-offs you need to know before adopting both."
 pubDate: 2017-11-23

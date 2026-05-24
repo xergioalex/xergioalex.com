@@ -1,5 +1,5 @@
 ---
-type: external-link
+type: external
 title: "Introducción a Meteor.js"
 description: "Mi primera charla tech — construir un chat en tiempo real con Meteor.js desde cero, datos reactivos y por qué JavaScript full-stack se siente tan poderoso."
 pubDate: 2016-11-25
