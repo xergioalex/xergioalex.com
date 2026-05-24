@@ -39,11 +39,11 @@ Lo que más cambió al elegir Reveal no fue el runtime, fue el formato. Mis char
 
 Viven en una sola Content Collection (`slides` en [`src/content.config.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/src/content.config.ts)), con su propio schema Zod y su propio glob —exactamente como `blog`—. Reveal recibe el cuerpo del archivo en crudo y se encarga de convertirlo en slides; el tema, la transición y el resaltado de sintaxis se declaran en el frontmatter, junto al título y a la fecha del evento.
 
-El mismo frontmatter define cómo se sirve cada deck con un campo `type`: `internal` para las charlas que escribo dentro del repo y se renderizan con Reveal, y `external-link` para las que viven en otro sitio —Google Slides, slides.com, todas las que di antes de tener este sistema— y se muestran como una página con título, descripción, hero y un botón que abre el deck original. Dos situaciones, un solo schema. Migrar un deck de un tipo a otro es cambiar ese campo y nada más, sin mover archivos.
+El mismo frontmatter define cómo se sirve cada deck con un campo `type`: `native` para las charlas que escribo dentro del repo y se renderizan con Reveal, y `external` para las que viven en otro sitio —Google Slides, slides.com, todas las que di antes de tener este sistema— y se muestran como una página con título, descripción, hero y un botón que abre el deck original. Dos situaciones, un solo schema. Migrar un deck de un tipo a otro es cambiar ese campo y nada más, sin mover archivos.
 
 ## El renderizado: Reveal lee Markdown nativo
 
-Los decks internos no necesitan un parser propio. La ruta toma `deck.body` —el Markdown crudo del archivo `.md`— y lo incrusta dentro de un `<textarea>` que Reveal sabe interpretar:
+Los decks nativos no necesitan un parser propio. La ruta toma `deck.body` —el Markdown crudo del archivo `.md`— y lo incrusta dentro de un `<textarea>` que Reveal sabe interpretar:
 
 ```html
 <section data-markdown
@@ -61,7 +61,7 @@ El trade-off es claro y conviene nombrarlo: el HTML inicial no contiene las slid
 
 Una condición era innegociable: visitar `/`, `/blog`, `/about` o incluso el catálogo en [`/es/slides`](/es/slides) no debe cargar **ni un byte de Reveal.js**. No es purismo de performance. Reveal y su CSS son intrusivos —controlan el tamaño del viewport, el comportamiento del scroll, los atajos de teclado— y si esos estilos se filtran al resto del sitio, las páginas normales se rompen de formas difíciles de diagnosticar.
 
-El grafo de assets por ruta de Astro resuelve esto sin esfuerzo extra. El CSS de Reveal se importa únicamente en [`SlideLayout.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/layouts/SlideLayout.astro), y ese layout solo lo usan las rutas de decks internos e incrustados. Por lo tanto, los chunks de Reveal aparecen exclusivamente en el HTML de esas páginas. Lo confirmé tras el build buscando referencias a esos chunks en `dist/`: solo las páginas de decks las incluyen; el resto del sitio queda limpio.
+El grafo de assets por ruta de Astro resuelve esto sin esfuerzo extra. El CSS de Reveal se importa únicamente en [`SlideLayout.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/layouts/SlideLayout.astro), y ese layout solo lo usan las rutas de decks nativos. Por lo tanto, los chunks de Reveal aparecen exclusivamente en el HTML de esas páginas. Lo confirmé tras el build buscando referencias a esos chunks en `dist/`: solo las páginas de decks nativos las incluyen; el resto del sitio queda limpio.
 
 ## Gemelos AEO: una `.md` por cada `.html`
 
@@ -69,8 +69,8 @@ El sitio tiene una política explícita: cada página HTML debe tener un endpoin
 
 Las diapositivas cumplen esa política mediante endpoints `[slug].md.ts`:
 
-- En decks internos, el gemelo sirve el cuerpo Markdown en crudo. Un agente que lea [`/es/slides/demo-revealjs-features.md`](/es/slides/demo-revealjs-features.md) obtiene el contenido completo en texto legible.
-- En `external-link`, sirve un stub estructurado con título, descripción, metadatos del evento y la URL externa.
+- En decks nativos, el gemelo sirve el cuerpo Markdown en crudo. Un agente que lea [`/es/slides/demo-revealjs-features.md`](/es/slides/demo-revealjs-features.md) obtiene el contenido completo en texto legible.
+- En decks `external`, sirve un stub estructurado con título, descripción, metadatos del evento y la URL externa.
 
 El resultado es que un agente puede responder *"¿qué charlas ha publicado Sergio sobre DevOps?"* sin abrir un navegador.
 
@@ -78,7 +78,7 @@ El resultado es que un agente puede responder *"¿qué charlas ha publicado Serg
 
 Las charlas tienen su propia página en [`/es/slides`](/es/slides), separada del blog. Es un timeline con scroll infinito: el primer lote llega de entrada y el resto se carga a medida que el visitante baja, así que un catálogo con cien decks no envía cien tarjetas al cargar.
 
-Cada deck aparece con su imagen hero, una etiqueta con el tipo (interno, embebido o enlace) y los metadatos del evento. El mismo componente se reutiliza en cualquier superficie del sitio que muestre decks recientes —previews en el homepage, paneles de relacionados.
+Cada deck aparece con su imagen hero, una etiqueta con el tipo (nativo o externo) y los metadatos del evento. El mismo componente se reutiliza en cualquier superficie del sitio que muestre decks recientes —previews en el homepage, paneles de relacionados.
 
 ## Personalización, modos y multilenguaje
 
