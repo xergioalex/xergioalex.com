@@ -937,6 +937,18 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesToC: 'Todos los capítulos',
   seriesChapterOf: (current, total) => `Capítulo ${current} de ${total}`,
 
+  // Indicadores flotantes que conectan un blog post con su deck de slides (y al revés).
+  slideIndicator: {
+    label: 'Slides',
+    subtitle: 'Abrir deck →',
+    ariaLabel: 'Abrir presentación asociada',
+  },
+  postIndicator: {
+    label: 'Artículo',
+    subtitle: 'Leer post →',
+    ariaLabel: 'Leer artículo asociado',
+  },
+
   // Series pages
   seriesPage: {
     title: 'Serie',

@@ -28,6 +28,11 @@ const blog = defineCollection({
     // Series support — references a series slug from the series collection
     series: z.string().optional(),
     seriesOrder: z.number().optional(),
+    // Optional reference to a paired slide deck (slug, no date prefix). Used by
+    // the blog post page to render a floating "Open slides" indicator. The
+    // slide collection has the inverse field (`relatedPost`) so the link is
+    // bidirectional; either side can be the source of truth.
+    relatedSlide: z.string().optional(),
     // Author slug — must match a file in `src/content/authors/`.
     author: z.string().default('sergio-florez'),
     /**

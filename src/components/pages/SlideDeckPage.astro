@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import { type CollectionEntry, getEntry } from 'astro:content';
 import JsonLd from '@/components/JsonLd.astro';
 import ExternalView from '@/components/slides/ExternalView.astro';
 import RevealDeck from '@/components/slides/RevealDeck.svelte';
@@ -20,6 +20,19 @@ const isDraft = isDraftDeck(deck);
 const prefix = getUrlPrefix(lang);
 const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
 const canonicalUrl = `${siteUrl}${prefix}/slides/${slug}`;
+
+// Companion blog post (if any). Only resolve when the post exists in the same
+// language — otherwise we'd render a CTA that 404s. Drives the floating
+// PostIndicator on external decks and the toolbar entry on native decks.
+let relatedPostHref: string | undefined;
+let relatedPostTitle: string | undefined;
+if (deck.data.relatedPost) {
+  const post = await getEntry('blog', `${lang}/${deck.data.relatedPost}`);
+  if (post) {
+    relatedPostHref = `${prefix}/blog/${deck.data.relatedPost}`;
+    relatedPostTitle = post.data.title;
+  }
+}
 
 const keywords =
   lang === 'en'
@@ -89,6 +102,8 @@ const jsonLd =
     deckSlug={slug}
     isDraft={isDraft}
     keywords={keywords}
+    relatedPostHref={relatedPostHref}
+    relatedPostTitle={relatedPostTitle}
   >
     <Fragment slot="head">
       <JsonLd data={jsonLd} />
@@ -105,5 +120,11 @@ const jsonLd =
 )}
 
 {type === 'external' && (
-  <ExternalView deck={deck} lang={lang} jsonLd={jsonLd} />
+  <ExternalView
+    deck={deck}
+    lang={lang}
+    jsonLd={jsonLd}
+    relatedPostHref={relatedPostHref}
+    relatedPostTitle={relatedPostTitle}
+  />
 )}

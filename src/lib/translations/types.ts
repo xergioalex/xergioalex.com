@@ -453,6 +453,18 @@ export interface SiteTranslations {
   seriesToC: string;
   seriesChapterOf: (current: number, total: number) => string;
 
+  // Cross-content floating indicators (blog ↔ slide)
+  slideIndicator: {
+    label: string;
+    subtitle: string;
+    ariaLabel: string;
+  };
+  postIndicator: {
+    label: string;
+    subtitle: string;
+    ariaLabel: string;
+  };
+
   // Series pages
   seriesPage: {
     title: string;

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import PostIndicator from '@/components/blog/PostIndicator.svelte';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
@@ -10,9 +11,11 @@ interface Props {
   deck: CollectionEntry<'slides'>;
   lang: Language;
   jsonLd?: Record<string, unknown>;
+  relatedPostHref?: string;
+  relatedPostTitle?: string;
 }
 
-const { deck, lang, jsonLd } = Astro.props;
+const { deck, lang, jsonLd, relatedPostHref, relatedPostTitle } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
@@ -119,4 +122,12 @@ const isDraft = isDraftDeck(deck);
       </a>
     </div>
   </div>
+
+  {relatedPostHref && relatedPostTitle && (
+    <div class="fixed bottom-4 right-18 sm:right-20 z-40 flex flex-row-reverse items-center gap-2 pointer-events-none">
+      <div class="pointer-events-auto contents">
+        <PostIndicator client:idle lang={lang} href={relatedPostHref} postTitle={relatedPostTitle} />
+      </div>
+    </div>
+  )}
 </MainLayout>

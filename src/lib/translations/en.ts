@@ -926,6 +926,18 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesToC: 'All chapters',
   seriesChapterOf: (current, total) => `Chapter ${current} of ${total}`,
 
+  // Floating indicators that link a blog post to its companion slide deck (and back).
+  slideIndicator: {
+    label: 'Slides',
+    subtitle: 'Open deck →',
+    ariaLabel: 'Open companion slide deck',
+  },
+  postIndicator: {
+    label: 'Article',
+    subtitle: 'Read post →',
+    ariaLabel: 'Read companion blog post',
+  },
+
   // Series pages
   seriesPage: {
     title: 'Series',

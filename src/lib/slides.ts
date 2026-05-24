@@ -95,6 +95,31 @@ export async function getDeckById(
   return getEntry('slides', id);
 }
 
+/**
+ * Reverse lookup: find a slide deck associated with a blog post.
+ *
+ * Resolution order:
+ *   1. The blog post's own `relatedSlide` frontmatter field (explicit).
+ *   2. Scan all decks in this language for one whose `relatedPost` matches
+ *      the blog post slug (implicit — the slide knows about the post).
+ *
+ * Either side can establish the link; if both are set, the post's field wins.
+ */
+export async function getDeckForPost(
+  postSlug: string,
+  lang: Language,
+  relatedSlide?: string
+): Promise<CollectionEntry<'slides'> | undefined> {
+  const decks = await getSlideDecks(lang);
+  if (relatedSlide) {
+    const explicit = decks.find(
+      (deck) => getDeckSlug(deck.id) === relatedSlide
+    );
+    if (explicit) return explicit;
+  }
+  return decks.find((deck) => deck.data.relatedPost === postSlug);
+}
+
 /** Type guard: native deck (authored Markdown, rendered with Reveal.js). */
 export function isNativeDeck(
   deck: CollectionEntry<'slides'>
