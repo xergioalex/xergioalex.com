@@ -1,6 +1,6 @@
 ---
 title: "Building a Multilingual Slide System Inside Astro with Reveal.js"
-description: "How I built a three-type slide deck catalog inside my Astro website — discriminated unions, AEO twins, asset isolation, and live theme sync."
+description: "How I built a two-type slide deck catalog inside my Astro website — discriminated unions, AEO twins, asset isolation, and live theme sync."
 pubDate: 2026-05-18T10:00:00Z
 tags: ["web-development", "talks", "astro", "svelte", "portfolio"]
 series: "slides-as-code"
@@ -17,7 +17,7 @@ The goal was concrete: I wanted my talks to live in the same place as my blog. N
 
 There was a second condition: the system had to be drivable by AI agents. If slides are plain text —`.md` files in the repo— an agent can generate one, reorder a section, or translate an entire deck the same way it edits any other file, and I'm left with what actually matters: the narrative.
 
-This post is the case study of how I built it: the architecture decisions, the three types of presentations the system supports, and the problems that only showed up once I started using it in front of real audiences.
+This post is the case study of how I built it: the architecture decisions, the two types of presentations the system supports, and the problems that only showed up once I started using it in front of real audiences.
 
 ## Why Reveal.js?
 
@@ -31,29 +31,27 @@ The hardest one to rule out was **Slidev**, because it has the best authoring ex
 
 And, above all, I'd lose Astro's Content Collections: no Zod validation, no draft filtering, no `getCollection()`. Slidev's output is a SPA with hash-based routing, invisible to `@astrojs/sitemap`. Reveal sidesteps all of it for one underlying reason: it's something I embed, not something I have to host on the side.
 
-## Three Deck Types, One Content Collection
+## Two Deck Types, One Content Collection
 
-The system supports three types of presentations. It wasn't an upfront design decision: the three came out of taking inventory of what I already needed to show.
+The system supports two types of presentations. It wasn't an upfront design decision: they came out of taking inventory of what I already needed to show.
 
 1. **Internal decks.** Talks authored in Markdown inside the repo, which Reveal renders at build time. Theme, transition, and syntax highlighting are controlled from the frontmatter.
-2. **External-embed decks.** Presentations that already live on Google Slides or Speaker Deck and allow embedding via `<iframe>`. I show them embedded inside a page of my own, with my navigation around them (back-link, language switcher, breadcrumb).
-3. **External-link decks.** Presentations hosted on sites that block iframes with `X-Frame-Options` or CSP. For those I don't try to embed something that's going to fail: I generate an info page with title, description, event, and date, plus a button to open the deck on its original host.
+2. **External-link decks.** Presentations hosted elsewhere — Google Slides, slides.com, the talks I gave before this system existed. For those I don't try to embed something that may or may not render correctly: I generate an info page with title, description, event, hero image, and a button that opens the deck on its original host.
 
-There are three because each one answers a different situation. Without the third type, talks on restrictive sites would either fall out of the catalog or show up as a broken iframe. And keeping the two external types separate isn't redundant: it explicitly marks when the system *can* embed and when it's more honest to link out.
+Two is enough because each one answers a different situation. Internal decks are for new talks I write here; external-link decks bring the back catalog into the same timeline without forcing me to migrate every file.
 
-All three live in a single Content Collection (`slides` in [`src/content.config.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/src/content.config.ts)), with a Zod schema modeled as a discriminated union:
+Both live in a single Content Collection (`slides` in [`src/content.config.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/src/content.config.ts)), with a Zod schema modeled as a discriminated union:
 
 ```typescript
 const slideSchema = z.discriminatedUnion('type', [
   internalSlideSchema,     // type: 'internal'
-  externalLinkSlideSchema, // type: 'external-link'
-  externalEmbedSlideSchema // type: 'external-embed'
+  externalLinkSlideSchema  // type: 'external-link'
 ]);
 ```
 
-Each variant extends a base schema (title, description, event date, tags, draft) with fields specific to its type. The concrete benefit shows up in the code that consumes the decks: when I write `if (deck.data.type === 'internal')`, TypeScript already knows `deck.data.theme` exists in that branch. No casting, no extra runtime checks; the discriminated union does the work.
+Each variant extends a base schema (title, description, event date, draft) with fields specific to its type. The concrete benefit shows up in the code that consumes the decks: when I write `if (deck.data.type === 'internal')`, TypeScript already knows `deck.data.theme` exists in that branch. No casting, no extra runtime checks; the discriminated union does the work.
 
-Using one collection instead of three simplifies everything downstream. The catalog at [`/slides`](/slides) calls `getSlideDecks(lang)` once and renders all three types in a single timeline. The `.md` agent endpoints handle every type in one `getStaticPaths`. And migrating a deck from one type to another is a one-field frontmatter change, with no file moves.
+Using one collection instead of two simplifies everything downstream. The catalog at [`/slides`](/slides) calls `getSlideDecks(lang)` once and renders both types in a single timeline. The `.md` agent endpoints handle every type in one `getStaticPaths`. And migrating a deck from one type to another is a one-field frontmatter change, with no file moves.
 
 ## Rendering: Reveal Reads Native Markdown
 
@@ -75,7 +73,7 @@ The trade-off is clear and worth naming: the initial HTML doesn't contain the sl
 
 One condition was non-negotiable: visiting `/`, `/blog`, `/about`, or even the catalog at [`/slides`](/slides) must load **zero bytes of Reveal.js**. This isn't performance purism. Reveal and its CSS are intrusive —they take over viewport sizing, scroll behavior, keyboard shortcuts— and if those styles leak into the rest of the site, ordinary pages break in ways that are hard to diagnose.
 
-Astro's per-route asset graph solves this with no extra effort. Reveal's CSS is imported only in [`SlideLayout.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/layouts/SlideLayout.astro), and that layout is used only by internal-deck and external-embed routes. As a result, Reveal's chunks appear exclusively in those pages' HTML. I confirmed it after the build by grepping `dist/` for references to those chunks: only the deck pages include them; the rest of the site stays clean.
+Astro's per-route asset graph solves this with no extra effort. Reveal's CSS is imported only in [`SlideLayout.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/layouts/SlideLayout.astro), and that layout is used only by internal-deck routes. As a result, Reveal's chunks appear exclusively in those pages' HTML. I confirmed it after the build by grepping `dist/` for references to those chunks: only the internal-deck pages include them; the rest of the site stays clean.
 
 ## AEO Twins: One `.md` for Every `.html`
 
@@ -84,7 +82,7 @@ The site has an explicit policy: every HTML page must have a parallel `.md` endp
 Slides follow that policy through `[slug].md.ts` endpoints:
 
 - For internal decks, the twin serves the raw Markdown body. An agent reading [`/slides/demo-revealjs-features.md`](/slides/demo-revealjs-features.md) gets the full content as readable text.
-- For `external-link` and `external-embed`, it serves a structured stub with title, description, event metadata, and the external URL (plus the embed URL where it applies).
+- For `external-link`, it serves a structured stub with title, description, event metadata, and the external URL.
 
 The result is that an agent can answer *"what talks has Sergio published about DevOps?"* without opening a browser.
 

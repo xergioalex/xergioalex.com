@@ -1,6 +1,6 @@
 ---
 title: "Construyendo un sistema de diapositivas multilingüe dentro de Astro con Reveal.js"
-description: "Cómo construí un catálogo de presentaciones de tres tipos dentro de mi sitio Astro — uniones discriminadas, gemelos AEO, aislamiento de assets y más."
+description: "Cómo construí un catálogo de presentaciones de dos tipos dentro de mi sitio Astro — uniones discriminadas, gemelos AEO, aislamiento de assets y más."
 pubDate: 2026-05-18T10:00:00Z
 tags: ["web-development", "talks", "astro", "svelte", "portfolio"]
 series: "slides-as-code"
@@ -17,7 +17,7 @@ La meta era concreta: quería que mis charlas vivieran en el mismo lugar que mi 
 
 Y había una segunda condición: que el sistema se pudiera pilotar con agentes de IA. Si las slides son texto plano —archivos `.md` en el repo— un agente puede generar una, reordenar una sección o traducir un deck entero igual que edita cualquier otro archivo, y yo me quedo con lo que de verdad importa: la narrativa.
 
-Este post es el caso de estudio de cómo lo construí: las decisiones de arquitectura, los tres tipos de presentaciones que el sistema soporta, y los problemas que solo aparecieron cuando empecé a usarlo frente a audiencias reales.
+Este post es el caso de estudio de cómo lo construí: las decisiones de arquitectura, los dos tipos de presentaciones que el sistema soporta, y los problemas que solo aparecieron cuando empecé a usarlo frente a audiencias reales.
 
 ## ¿Por qué Reveal.js?
 
@@ -39,7 +39,7 @@ Lo que más cambió al elegir Reveal no fue el runtime, fue el formato. Mis char
 
 Viven en una sola Content Collection (`slides` en [`src/content.config.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/src/content.config.ts)), con su propio schema Zod y su propio glob —exactamente como `blog`—. Reveal recibe el cuerpo del archivo en crudo y se encarga de convertirlo en slides; el tema, la transición y el resaltado de sintaxis se declaran en el frontmatter, junto al título y a la fecha del evento.
 
-El mismo frontmatter define cómo se sirve cada deck con un campo `type`: `internal` para las charlas que escribo dentro del repo, `external-embed` para las que ya viven en Google Slides o slides.com y solo necesito embeber, y `external-link` para las que están en sitios que bloquean iframes. Tres situaciones, un solo schema. Migrar un deck de un tipo a otro es cambiar ese campo y nada más, sin mover archivos.
+El mismo frontmatter define cómo se sirve cada deck con un campo `type`: `internal` para las charlas que escribo dentro del repo y se renderizan con Reveal, y `external-link` para las que viven en otro sitio —Google Slides, slides.com, todas las que di antes de tener este sistema— y se muestran como una página con título, descripción, hero y un botón que abre el deck original. Dos situaciones, un solo schema. Migrar un deck de un tipo a otro es cambiar ese campo y nada más, sin mover archivos.
 
 ## El renderizado: Reveal lee Markdown nativo
 
@@ -70,7 +70,7 @@ El sitio tiene una política explícita: cada página HTML debe tener un endpoin
 Las diapositivas cumplen esa política mediante endpoints `[slug].md.ts`:
 
 - En decks internos, el gemelo sirve el cuerpo Markdown en crudo. Un agente que lea [`/es/slides/demo-revealjs-features.md`](/es/slides/demo-revealjs-features.md) obtiene el contenido completo en texto legible.
-- En `external-link` y `external-embed`, sirve un stub estructurado con título, descripción, metadatos del evento y la URL externa (más la de embed cuando aplica).
+- En `external-link`, sirve un stub estructurado con título, descripción, metadatos del evento y la URL externa.
 
 El resultado es que un agente puede responder *"¿qué charlas ha publicado Sergio sobre DevOps?"* sin abrir un navegador.
 
