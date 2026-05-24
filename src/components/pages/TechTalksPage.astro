@@ -6,12 +6,12 @@ import HighlightCard from '@/components/pages/HighlightCard.astro';
 import PageHero from '@/components/pages/PageHero.astro';
 import PageSection from '@/components/pages/PageSection.astro';
 import ScrollToTimeline from '@/components/pages/ScrollToTimeline.svelte';
-// import SlidesCatalog from '@/components/slides/SlidesCatalog.astro';
+import SlidesCatalog from '@/components/slides/SlidesCatalog.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getSubtopicAccentMap, getTimelineIndex } from '@/lib/blog';
 import { BLOG_PAGE_SIZE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
-// import { getSlideDecks } from '@/lib/slides';
+import { getSlideDecks } from '@/lib/slides';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -27,7 +27,7 @@ const contactCtaHref = `${prefix}/contact?${new URLSearchParams({
   subject: t.contactPage.prefillSubjects.techTalkInvitation,
 }).toString()}`;
 
-// const decks = await getSlideDecks(lang);
+const decks = await getSlideDecks(lang);
 const allTalksPosts = await getTimelineIndex('talks', lang);
 const initialPosts = allTalksPosts.slice(0, BLOG_PAGE_SIZE);
 const totalCount = allTalksPosts.length;
@@ -158,7 +158,6 @@ const breadcrumbSchema = {
 
   <PageSection title={t.techTalksPage.philosophyTitle} description={t.techTalksPage.philosophyText} />
 
-  <!-- Decks & Slides section (temporarily hidden while being polished)
   {decks.length > 0 && (
     <PageSection title={t.techTalksPage.decksTitle} description={t.techTalksPage.decksDescription} background="gray">
       <SlidesCatalog lang={lang} limit={3} />
@@ -174,7 +173,6 @@ const breadcrumbSchema = {
       )}
     </PageSection>
   )}
-  -->
 
   <section class="py-16 md:py-20 bg-gray-50 dark:bg-gray-800/50 transition-colors duration-300">
     <div class="main-container text-center">
