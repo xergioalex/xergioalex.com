@@ -7,7 +7,7 @@ series: "slides-as-code"
 seriesOrder: 2
 heroImage: "/images/blog/posts/building-slide-system-inside-astro-revealjs/hero.webp"
 heroLayout: side-by-side
-draft: true
+draft: false
 keywords: [astro slides, reveal.js astro integration, slides as content, discriminated union schema, AEO markdown twins, presentation system]
 ---
 
@@ -131,7 +131,7 @@ What convinces me most about the result is how unceremonious creating a new deck
 ## Resources
 
 - [Reveal.js v6 release notes](https://github.com/hakimel/reveal.js/releases/tag/6.0.0)
-- [Slides feature guide](/docs/features/SLIDES.md) — full authoring documentation
+- [Slides feature guide](https://github.com/xergioalex/xergioalex.com/blob/main/docs/features/SLIDES.md) — full authoring documentation in the repo
 - [Live demo deck](/slides/demo-revealjs-features) — all Reveal.js features, layouts, and background modes in action
 - [Slides catalog](/slides) — the dedicated index page with infinite scroll
 - [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/) — how collections and Zod schemas work

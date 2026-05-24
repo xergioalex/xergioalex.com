@@ -7,7 +7,7 @@ series: "slides-as-code"
 seriesOrder: 2
 heroImage: "/images/blog/posts/building-slide-system-inside-astro-revealjs/hero-es.webp"
 heroLayout: side-by-side
-draft: true
+draft: false
 keywords: [astro diapositivas, integración reveal.js astro, slides como contenido, esquema unión discriminada, gemelos AEO markdown, sistema de presentaciones]
 ---
 
@@ -131,7 +131,7 @@ Lo que más me convence del resultado es lo poco ceremonioso que se volvió crea
 ## Recursos
 
 - [Notas de la versión de Reveal.js v6](https://github.com/hakimel/reveal.js/releases/tag/6.0.0)
-- [Guía de la función de diapositivas](/docs/features/SLIDES.md) — documentación completa de autoría
+- [Guía de la función de diapositivas](https://github.com/xergioalex/xergioalex.com/blob/main/docs/features/SLIDES.md) — documentación completa de autoría en el repositorio
 - [Demo deck en vivo](/es/slides/demo-revealjs-features) — todas las características, layouts y modos de fondo en acción
 - [Catálogo de slides](/es/slides) — la página índice dedicada con scroll infinito
 - [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/) — cómo funcionan las collections y los esquemas Zod
