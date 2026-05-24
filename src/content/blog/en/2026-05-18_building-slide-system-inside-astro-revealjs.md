@@ -41,7 +41,7 @@ The system supports three types of presentations. It wasn't an upfront design de
 
 There are three because each one answers a different situation. Without the third type, talks on restrictive sites would either fall out of the catalog or show up as a broken iframe. And keeping the two external types separate isn't redundant: it explicitly marks when the system *can* embed and when it's more honest to link out.
 
-All three live in a single Content Collection (`slides` in `src/content.config.ts`), with a Zod schema modeled as a discriminated union:
+All three live in a single Content Collection (`slides` in [`src/content.config.ts`](https://github.com/xergioalex/xergioalex.com/blob/main/src/content.config.ts)), with a Zod schema modeled as a discriminated union:
 
 ```typescript
 const slideSchema = z.discriminatedUnion('type', [
@@ -73,17 +73,17 @@ The trade-off is clear and worth naming: the initial HTML doesn't contain the sl
 
 ## Asset Isolation: Zero Bytes Outside the Slides
 
-One condition was non-negotiable: visiting `/`, `/blog`, `/about`, or even the catalog at `/slides` must load **zero bytes of Reveal.js**. This isn't performance purism. Reveal and its CSS are intrusive —they take over viewport sizing, scroll behavior, keyboard shortcuts— and if those styles leak into the rest of the site, ordinary pages break in ways that are hard to diagnose.
+One condition was non-negotiable: visiting `/`, `/blog`, `/about`, or even the catalog at [`/slides`](/slides) must load **zero bytes of Reveal.js**. This isn't performance purism. Reveal and its CSS are intrusive —they take over viewport sizing, scroll behavior, keyboard shortcuts— and if those styles leak into the rest of the site, ordinary pages break in ways that are hard to diagnose.
 
-Astro's per-route asset graph solves this with no extra effort. Reveal's CSS is imported only in `SlideLayout.astro`, and that layout is used only by internal-deck and external-embed routes. As a result, Reveal's chunks appear exclusively in those pages' HTML. I confirmed it after the build by grepping `dist/` for references to those chunks: only the deck pages include them; the rest of the site stays clean.
+Astro's per-route asset graph solves this with no extra effort. Reveal's CSS is imported only in [`SlideLayout.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/layouts/SlideLayout.astro), and that layout is used only by internal-deck and external-embed routes. As a result, Reveal's chunks appear exclusively in those pages' HTML. I confirmed it after the build by grepping `dist/` for references to those chunks: only the deck pages include them; the rest of the site stays clean.
 
 ## AEO Twins: One `.md` for Every `.html`
 
-The site has an explicit policy: every HTML page must have a parallel `.md` endpoint serving `text/markdown`, so AI agents can read the content without rendering JavaScript or parsing HTML. It's documented in `docs/aeo/MARKDOWN_FOR_AGENTS.md` and enforced by `npm run md:check:strict` during the build.
+The site has an explicit policy: every HTML page must have a parallel `.md` endpoint serving `text/markdown`, so AI agents can read the content without rendering JavaScript or parsing HTML. It's documented in [`docs/aeo/MARKDOWN_FOR_AGENTS.md`](https://github.com/xergioalex/xergioalex.com/blob/main/docs/aeo/MARKDOWN_FOR_AGENTS.md) and enforced by `npm run md:check:strict` during the build. I cover the full reasoning in my series [*AEO: From Invisible to Cited*](/blog/series/aeo-from-invisible-to-cited/): how to build a site that AI answer engines can find, understand, and cite, from structured data and markdown endpoints to agent-readiness scoring.
 
 Slides follow that policy through `[slug].md.ts` endpoints:
 
-- For internal decks, the twin serves the raw Markdown body. An agent reading `/slides/demo-revealjs-features.md` gets the full content as readable text.
+- For internal decks, the twin serves the raw Markdown body. An agent reading [`/slides/demo-revealjs-features.md`](/slides/demo-revealjs-features.md) gets the full content as readable text.
 - For `external-link` and `external-embed`, it serves a structured stub with title, description, event metadata, and the external URL (plus the embed URL where it applies).
 
 The result is that an agent can answer *"what talks has Sergio published about DevOps?"* without opening a browser.
@@ -92,9 +92,9 @@ The result is that an agent can answer *"what talks has Sergio published about D
 
 The catalog has its own route at [`/slides`](/slides) and is a dedicated index page, not a section bolted onto the blog.
 
-`SlidesPage.astro` collects all non-draft decks for the current language and hands them to `SlidesTimelineInfiniteScroll.svelte`, a Svelte 5 component that loads pages progressively through a JSON endpoint. The initial render delivers the first batch, and the rest arrives as the visitor scrolls, so a catalog of a hundred decks doesn't ship a hundred cards on first paint.
+[`SlidesPage.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/components/pages/SlidesPage.astro) collects all non-draft decks for the current language and hands them to [`SlidesTimelineInfiniteScroll.svelte`](https://github.com/xergioalex/xergioalex.com/blob/main/src/components/slides/SlidesTimelineInfiniteScroll.svelte), a Svelte component that loads pages progressively through a JSON endpoint. The initial render delivers the first batch, and the rest arrives as the visitor scrolls, so a catalog of a hundred decks doesn't ship a hundred cards on first paint.
 
-Each `SlideCard.astro` shows the hero image (or a gradient placeholder), a badge with the deck type, the title, event metadata, description, and tags. The same component powers both the `/slides` index and any embedded surface —homepage previews, related-deck panels— that consumes that JSON endpoint.
+Each [`SlideCard.astro`](https://github.com/xergioalex/xergioalex.com/blob/main/src/components/slides/SlideCard.astro) shows the hero image (or a gradient placeholder), a badge with the deck type, the title, event metadata, description, and tags. The same component powers both the [`/slides`](/slides) index and any embedded surface —homepage previews, related-deck panels— that consumes that JSON endpoint.
 
 ## The Problems That Only Show Up With an Audience
 
@@ -102,7 +102,7 @@ The architecture worked on my machine long before it worked for anyone else. Thr
 
 **The overview thumbnails rendered blank.** Reveal hides off-screen slides with the `[hidden]` attribute, and Tailwind v4's preflight ships its own `[hidden] { display: none }` rule. When you press `O` to enter overview mode, Reveal tries to show every thumbnail, but Tailwind's rule keeps them hidden and the screen comes up empty. The diagnosis was the expensive part; the fix is a few lines: strip the `[hidden]` attribute on the `overviewshown` event and let Reveal's CSS regain control.
 
-**Vertical centering was computed too early.** Reveal sets each slide's `top` through its `layout()` method, roughly `(slideHeight − section.scrollHeight) / 2`. The problem is that `layout()` runs on init, usually before raster images have finished decoding. With a `scrollHeight` still too small, `top` lands too high; once the image finally paints, the block leaves empty space above it and can clip off the 1280×720 canvas. The fix lives in `RevealDeck.svelte`: wire `load` and `error` handlers on every `<img>` once, and reschedule `deck.layout()` on the next animation frame so centering uses the final `scrollHeight`. Authors still declare `width` and `height` on every image; the engine handles the timing problem.
+**Vertical centering was computed too early.** Reveal sets each slide's `top` through its `layout()` method, roughly `(slideHeight − section.scrollHeight) / 2`. The problem is that `layout()` runs on init, usually before raster images have finished decoding. With a `scrollHeight` still too small, `top` lands too high; once the image finally paints, the block leaves empty space above it and can clip off the 1280×720 canvas. The fix lives in [`RevealDeck.svelte`](https://github.com/xergioalex/xergioalex.com/blob/main/src/components/slides/RevealDeck.svelte): wire `load` and `error` handlers on every `<img>` once, and reschedule `deck.layout()` on the next animation frame so centering uses the final `scrollHeight`. Authors still declare `width` and `height` on every image; the engine handles the timing problem.
 
 **Click-to-advance collided with overview mode.** I wanted a click anywhere on the slide to advance the presentation, like a clicker. But in overview mode Reveal uses the click to *select* a slide, not to advance, and a double-advance would feel broken. The current handler listens for clicks on the slide area, ignores them while overview is active, and also ignores them when they come from a link, button, or input, so embedded interactive content keeps working. One click, one advance, no false positives.
 
@@ -110,13 +110,13 @@ The architecture worked on my machine long before it worked for anyone else. Thr
 
 The schema and the engine are half the system. The other half is authoring ergonomics, which is what decides whether I'll want to write the next deck: how fast do I go from a blank file to a presentable slide?
 
-The answer lives in `src/content/slides/_layouts/`, with **19 reusable layout primitives** as copy-paste Markdown snippets. Each one includes a header explaining when to use it, the HTML structure (Tailwind helpers plus Markdown), and a working example. The `_layouts/` directory is excluded from the slides content collection glob, so snippets never ship as deck pages.
+The answer lives in [`src/content/slides/_layouts/`](https://github.com/xergioalex/xergioalex.com/tree/main/src/content/slides/_layouts), with **19 reusable layout primitives** as copy-paste Markdown snippets. Each one includes a header explaining when to use it, the HTML structure (Tailwind helpers plus Markdown), and a working example. The `_layouts/` directory is excluded from the slides content collection glob, so snippets never ship as deck pages.
 
 The layouts cover the talk archetypes I actually use: `title-hero`, `section-divider`, `two-column-split`, `three-column-cards`, `image-left/right/centered/full-bleed`, `video-left/right/centered`, `quote`, `code-with-callout`, `big-stat`, `comparison-table`, `process-steps`, `timeline`, `team-avatars`, and `closing-cta`. They're all responsive: three-column grids stack below 768px, and tables shrink their font size below 640px.
 
-On top of the layouts sit **8 background modes** in `_layouts/backgrounds/`: solid color, gradient (with five presets, including "Void Navy" and "Brand"), image-with-text (with an overlay that guarantees contrast), full-screen image, video-with-text, full-screen video (muted and looped), CSS patterns, and iframe backgrounds.
+On top of the layouts sit **8 background modes** in [`_layouts/backgrounds/`](https://github.com/xergioalex/xergioalex.com/tree/main/src/content/slides/_layouts/backgrounds): solid color, gradient (with five presets, including "Void Navy" and "Brand"), image-with-text (with an overlay that guarantees contrast), full-screen image, video-with-text, full-screen video (muted and looped), CSS patterns, and iframe backgrounds.
 
-Everything is themed from a CSS custom-property layer in `src/styles/slides.css`. Tokens like `--slide-bg`, `--slide-surface`, and `--slide-accent`, along with Reveal's own `--r-*` variables, redefine themselves when `<html class="dark">` flips. Changing one token instantly updates every deck, every primitive, and every background mode. The [live demo deck](/slides/demo-revealjs-features) exercises every primitive and every background in sequence, and it serves as both a complete reference and a visual test whenever I adjust a token.
+Everything is themed from a CSS custom-property layer in [`src/styles/slides.css`](https://github.com/xergioalex/xergioalex.com/blob/main/src/styles/slides.css). Tokens like `--slide-bg`, `--slide-surface`, and `--slide-accent`, along with Reveal's own `--r-*` variables, redefine themselves when `<html class="dark">` flips. Changing one token instantly updates every deck, every primitive, and every background mode. The [live demo deck](/slides/demo-revealjs-features) exercises every primitive and every background in sequence, and it serves as both a complete reference and a visual test whenever I adjust a token.
 
 ## What I Left for Later
 
@@ -124,9 +124,9 @@ Everything is themed from a CSS custom-property layer in `src/styles/slides.css`
 
 **Faceted search in the catalog.** Infinite scroll handles the volume, but the order is still chronological. Once the catalog passes 50 decks, filtering by tag, event, or year will be the next thing to address. The data model already supports it; the UI is what's missing.
 
-**Homepage preview.** The homepage already has a `TechTalksPostsSection` that surfaces posts tagged `talks`. A parallel `RecentDecksSection` could surface recent decks using the same JSON endpoint that powers the `/slides` infinite scroll: the same data, the same card component, just with a smaller initial limit.
+**Homepage preview.** The homepage already has a [`TechTalksPostsSection`](https://github.com/xergioalex/xergioalex.com/blob/main/src/components/home/TechTalksPostsSection.astro) that surfaces posts tagged `talks`. A parallel `RecentDecksSection` could surface recent decks using the same JSON endpoint that powers the [`/slides`](/slides) infinite scroll: the same data, the same card component, just with a smaller initial limit.
 
-What convinces me most about the result is how unceremonious creating a new deck became. I open a `.md` file, write, review it at `/slides`, present it, and it gets archived, and the agent crawling the site can read it just like any article. There's no separate domain, no separate build, no parallel theme system. It's, in essence, a post that gets presented instead of read.
+What convinces me most about the result is how unceremonious creating a new deck became. I open a `.md` file, write, review it at [`/slides`](/slides), present it, and it gets archived, and the agent crawling the site can read it just like any article. There's no separate domain, no separate build, no parallel theme system. It's, in essence, a post that gets presented instead of read.
 
 ## Resources
 
