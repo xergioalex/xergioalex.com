@@ -5,6 +5,7 @@ description: "Showcase completo de cada layout, fondo y feature de Reveal.js en 
 pubDate: 2026-04-25
 updatedDate: 2026-05-14
 heroImage: "/images/slides/demo-revealjs-features/hero-es.webp"
+relatedPost: "building-slide-system-inside-astro-revealjs"
 draft: false
 theme: dark
 transition: slide

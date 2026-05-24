@@ -5,6 +5,7 @@ description: "Kitchen-sink showcase of every layout, background, and Reveal.js f
 pubDate: 2026-04-25
 updatedDate: 2026-05-14
 heroImage: "/images/slides/demo-revealjs-features/hero.webp"
+relatedPost: "building-slide-system-inside-astro-revealjs"
 draft: false
 theme: dark
 transition: slide
