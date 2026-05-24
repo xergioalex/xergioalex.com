@@ -47,12 +47,6 @@ export const GET: APIRoute = ({ props }) => {
     markdown += `- **URL:** ${data.externalUrl}\n`;
     if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;
     markdown += '\n';
-  } else if (data.type === 'external-embed') {
-    markdown += '## Embedded Presentation\n\n';
-    markdown += `- **Canonical URL:** ${data.externalUrl}\n`;
-    markdown += `- **Embed URL:** ${data.embedUrl}\n`;
-    if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;
-    markdown += '\n';
   }
 
   // Body — full slide content for internal decks, supplementary copy for externals

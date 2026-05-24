@@ -597,14 +597,10 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       openCta: 'Open on {provider}',
       backToCatalog: 'Back to catalog',
     },
-    externalEmbed: {
-      openExternal: 'Open original',
-    },
     languageNotice: 'Original deck is in {lang}',
     typeBadge: {
-      internal: 'Built in-house',
+      internal: 'Native',
       externalLink: 'External',
-      externalEmbed: 'Embedded',
     },
     toolbar: {
       backToCatalog: 'Back to catalog',

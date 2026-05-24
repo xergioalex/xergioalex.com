@@ -112,8 +112,6 @@ function getTypeBadgeLabel(type: SlideTimelineCardEntry['type']): string {
       return t.slides.typeBadge.internal;
     case 'external-link':
       return t.slides.typeBadge.externalLink;
-    case 'external-embed':
-      return t.slides.typeBadge.externalEmbed;
   }
 }
 
@@ -123,8 +121,6 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
       return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
     case 'external-link':
       return 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200';
-    case 'external-embed':
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200';
   }
 }
 </script>

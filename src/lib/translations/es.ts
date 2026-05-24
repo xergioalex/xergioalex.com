@@ -604,14 +604,10 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       openCta: 'Abrir en {provider}',
       backToCatalog: 'Volver al catálogo',
     },
-    externalEmbed: {
-      openExternal: 'Abrir original',
-    },
     languageNotice: 'La presentación original está en {lang}',
     typeBadge: {
-      internal: 'Creación propia',
+      internal: 'Nativo',
       externalLink: 'Externo',
-      externalEmbed: 'Incrustado',
     },
     toolbar: {
       backToCatalog: 'Volver al catálogo',

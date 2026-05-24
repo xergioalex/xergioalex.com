@@ -92,18 +92,9 @@ const externalLinkSlideSchema = slideBaseSchema.extend({
   provider: z.string().optional(),
 });
 
-const externalEmbedSlideSchema = slideBaseSchema.extend({
-  type: z.literal('external-embed'),
-  externalUrl: z.url(),
-  embedUrl: z.url(),
-  provider: z.string().optional(),
-  aspectRatio: z.enum(['16:9', '4:3', '1:1']).default('16:9'),
-});
-
 const slideSchema = z.discriminatedUnion('type', [
   internalSlideSchema,
   externalLinkSlideSchema,
-  externalEmbedSlideSchema,
 ]);
 
 const slides = defineCollection({

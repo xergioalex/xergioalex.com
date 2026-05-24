@@ -565,14 +565,10 @@ export interface SiteTranslations {
       openCta: string;
       backToCatalog: string;
     };
-    externalEmbed: {
-      openExternal: string;
-    };
     languageNotice: string;
     typeBadge: {
       internal: string;
       externalLink: string;
-      externalEmbed: string;
     };
     toolbar: {
       backToCatalog: string;

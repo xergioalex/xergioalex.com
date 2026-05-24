@@ -13,7 +13,7 @@ export interface SlideTimelineCardEntry {
   description: string;
   pubDate: string;
   heroImage?: string;
-  type: 'internal' | 'external-link' | 'external-embed';
+  type: 'internal' | 'external-link';
   eventName?: string;
   eventDate?: string;
   externalUrl?: string;
@@ -109,13 +109,6 @@ export function isExternalLinkDeck(
   return deck.data.type === 'external-link';
 }
 
-/** Type guard: external-embed deck (iframe embed from third-party provider). */
-export function isExternalEmbedDeck(
-  deck: CollectionEntry<'slides'>
-): deck is CollectionEntry<'slides'> & { data: { type: 'external-embed' } } {
-  return deck.data.type === 'external-embed';
-}
-
 /**
  * Build a full timeline index for slide decks in a specific language.
  * Returns ALL visible decks as SlideTimelineCardEntry[] (no pagination) — callers paginate client-side.
@@ -141,7 +134,7 @@ export async function getSlidesTimelineIndex(
       isDraft: isDraftDeck(deck),
     };
 
-    if (data.type === 'external-link' || data.type === 'external-embed') {
+    if (data.type === 'external-link') {
       base.externalUrl = data.externalUrl;
       base.provider = data.provider;
     }
@@ -153,13 +146,11 @@ export async function getSlidesTimelineIndex(
 /** Map deck type to translation badge key. */
 export function getDeckTypeBadgeKey(
   deck: CollectionEntry<'slides'>
-): 'internal' | 'externalLink' | 'externalEmbed' {
+): 'internal' | 'externalLink' {
   switch (deck.data.type) {
     case 'internal':
       return 'internal';
     case 'external-link':
       return 'externalLink';
-    case 'external-embed':
-      return 'externalEmbed';
   }
 }

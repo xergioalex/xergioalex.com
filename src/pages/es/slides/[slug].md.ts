@@ -45,12 +45,6 @@ export const GET: APIRoute = ({ props }) => {
     markdown += `- **URL:** ${data.externalUrl}\n`;
     if (data.provider) markdown += `- **Proveedor:** ${data.provider}\n`;
     markdown += '\n';
-  } else if (data.type === 'external-embed') {
-    markdown += '## Presentación Incrustada\n\n';
-    markdown += `- **URL canónica:** ${data.externalUrl}\n`;
-    markdown += `- **URL de incrustación:** ${data.embedUrl}\n`;
-    if (data.provider) markdown += `- **Proveedor:** ${data.provider}\n`;
-    markdown += '\n';
   }
 
   if (deck.body?.trim()) {
