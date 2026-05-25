@@ -1,7 +1,7 @@
 ---
 title: "The Best Slides-as-Code Presentation Tools for Developers"
 description: "A hands-on comparison of Reveal.js, Slidev, Marp, Spectacle, and more — with a feature matrix to pick the right slides-as-code tool for developer talks."
-pubDate: 2026-05-23
+pubDate: 2026-05-25T10:00:00Z
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
@@ -123,6 +123,7 @@ Not everything needs to be code. Here's when cloud platforms make more sense:
 | **[Gamma](https://gamma.app)** | Generate full decks from text prompts | Quick AI-generated presentations for meetings |
 | **[Pitch](https://pitch.com)** | Real-time collaborative editing | Team pitch decks, investor presentations |
 | **[Beautiful.ai](https://beautiful.ai)** | AI layout engine that auto-arranges content | Design-heavy decks without a designer |
+| **[slides.com](https://slides.com)** | WYSIWYG editor built on Reveal.js by the same author | Reveal-style decks without writing code |
 | **Google Slides** | Universal compatibility, easy sharing | Corporate environments, cross-team collaboration |
 | **Canva** | Massive template library | Non-technical presenters, social media content |
 
