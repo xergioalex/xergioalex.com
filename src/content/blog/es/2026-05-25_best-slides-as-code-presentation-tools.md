@@ -120,6 +120,7 @@ No todo necesita ser código. Aquí es cuando las plataformas en la nube tienen 
 | **[Gamma](https://gamma.app)** | Genera presentaciones completas desde prompts | Presentaciones rápidas generadas por IA |
 | **[Pitch](https://pitch.com)** | Edición colaborativa en tiempo real | Pitch decks para equipos |
 | **[Beautiful.ai](https://beautiful.ai)** | Motor de diseño IA que auto-organiza contenido | Presentaciones con diseño pesado sin diseñador |
+| **[slides.com](https://slides.com)** | Editor WYSIWYG construido sobre Reveal.js por el mismo autor | Decks estilo Reveal sin escribir código |
 | **Google Slides** | Compatibilidad universal | Entornos corporativos, colaboración entre equipos |
 | **Canva** | Biblioteca masiva de plantillas | Presentadores no técnicos |
 
