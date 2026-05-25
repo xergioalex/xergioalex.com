@@ -181,13 +181,13 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
             <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
             <a
               href={deckHref}
-              class="absolute inset-0 z-0"
+              class="absolute inset-0 z-0 cursor-pointer"
               aria-label={deck.title}
               on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: pageName, slug: deck.slug })}
             ></a>
 
             {#if deck.heroImage}
-              <div class="relative">
+              <div class="relative pointer-events-none">
                 <img
                   src={deck.heroImage}
                   alt={deck.title}
@@ -204,7 +204,7 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
               </div>
             {/if}
 
-            <div class="p-5">
+            <div class="p-5 pointer-events-none">
               {#if !deck.heroImage}
                 <div class="mb-3">
                   <span
@@ -232,7 +232,7 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
                 {deck.description}
               </p>
 
-              <div class="relative z-10 flex flex-wrap items-center gap-2">
+              <div class="flex flex-wrap items-center gap-2">
                 <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(deck.pubDate)}
                 </time>
