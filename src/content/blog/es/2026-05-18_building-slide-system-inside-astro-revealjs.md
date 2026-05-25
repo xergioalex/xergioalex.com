@@ -93,7 +93,7 @@ Y como los decks viven en una Content Collection con una carpeta por idioma (`sr
 
 Lo que más me convence del resultado no es la arquitectura, es lo que la arquitectura habilita. Si las slides son archivos `.md`, puedo pedirle a un agente que esboce un deck a partir de un outline, que adapte una charla existente para un evento nuevo, que reordene una sección o que la traduzca a otro idioma. Cosas que con un editor visual eran una hora de copy-paste pasan ahora en segundos, sobre archivos versionados y revisables.
 
-Ese es el corazón de slides-as-code: el formato deja de ser un cuello de botella. La librería se encarga de la presentación, el agente acelera la mecánica, y yo paso la mayor parte del tiempo pensando qué quiero contar. No hay un dominio aparte, ni un build aparte, ni un sistema de temas paralelo —y, sobre todo, no hay nada entre la idea y la slide.
+Ese es el corazón de slides-as-code: el formato deja de ser un cuello de botella. La librería se encarga de la presentación, el agente acelera la mecánica, y yo paso la mayor parte del tiempo pensando qué quiero contar. No hay un dominio aparte, ni un build aparte, ni un sistema de temas paralelo —y cuando todo eso se quita del camino, queda la única parte que ninguna herramienta puede hacer en mi lugar: decidir qué merece el tiempo de alguien dispuesto a escucharme. Esa sigue siendo la pregunta más difícil del oficio, y por fin puedo dedicarle el tiempo que merece.
 
 ## Recursos
 
