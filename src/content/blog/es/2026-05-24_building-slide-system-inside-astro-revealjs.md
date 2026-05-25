@@ -1,7 +1,7 @@
 ---
 title: "Construyendo un sistema de diapositivas multilingüe dentro de Astro con Reveal.js"
 description: "Cómo construí un catálogo de presentaciones de dos tipos dentro de mi sitio Astro — uniones discriminadas, gemelos AEO, aislamiento de assets y más."
-pubDate: 2026-05-18T10:00:00Z
+pubDate: 2026-05-24T10:00:00Z
 tags: ["web-development", "talks", "astro", "svelte", "portfolio"]
 series: "slides-as-code"
 seriesOrder: 2
@@ -12,7 +12,7 @@ draft: true
 keywords: [astro diapositivas, integración reveal.js astro, slides como contenido, esquema unión discriminada, gemelos AEO markdown, sistema de presentaciones]
 ---
 
-Después de [investigar las herramientas de slides-as-code que hoy existen para desarrolladores](/es/blog/best-presentation-tools-for-developers-2026) —Reveal.js, Slidev, Marp, Spectacle y un puñado más— elegí [Reveal.js](https://revealjs.com) para construir el sistema de presentaciones de mi sitio.
+Después de [investigar las herramientas slides-as-code que hoy existen para desarrolladores](/es/blog/best-slides-as-code-presentation-tools) —Reveal.js, Slidev, Marp, Spectacle y un puñado más— elegí [Reveal.js](https://revealjs.com) para construir el sistema de presentaciones de mi sitio.
 
 La meta era concreta: quería que mis charlas vivieran en el mismo lugar que mi blog. No repartidas entre Google Slides, un PDF colgado en algún lado y un dominio externo, sino dentro de mi sitio y tratadas como contenido de primera clase: misma Content Collection, mismo i18n, mismo SEO que cualquier post.
 
@@ -22,7 +22,7 @@ Este post es el caso de estudio de cómo lo construí: las decisiones de arquite
 
 ## ¿Por qué Reveal.js?
 
-La comparación completa, herramienta por herramienta, vive en [un análisis aparte de las opciones de slides-as-code](/es/blog/best-presentation-tools-for-developers-2026). Aquí me interesa la otra mitad: por qué Reveal encajó en mi sitio donde las demás no. Y casi todo se reduce a una distinción: **Reveal.js es una librería; las alternativas más fuertes son aplicaciones.** Una librería la importo dentro de mi propio build; una aplicación me obliga a mantener la suya en paralelo.
+La comparación completa, herramienta por herramienta, vive en [un análisis aparte de las opciones slides-as-code](/es/blog/best-slides-as-code-presentation-tools). Aquí me interesa la otra mitad: por qué Reveal encajó en mi sitio donde las demás no. Y casi todo se reduce a una distinción: **Reveal.js es una librería; las alternativas más fuertes son aplicaciones.** Una librería la importo dentro de mi propio build; una aplicación me obliga a mantener la suya en paralelo.
 
 Reveal es JavaScript vanilla, sin dependencia de framework. Lo importo en un componente Svelte, lo inicializo al montar, y el resto de la página sigue siendo Astro estándar: mismo build, mismas Content Collections, mismo i18n, mismo SEO. La frontera de integración cabe en unas pocas decenas de líneas. Encima trae lo que necesito para charlas técnicas —Markdown nativo, fragments, auto-animate, resaltado de código por pasos— como plugins componibles, sin atarme a ningún runtime.
 

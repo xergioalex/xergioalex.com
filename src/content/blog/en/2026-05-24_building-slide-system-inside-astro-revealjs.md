@@ -1,7 +1,7 @@
 ---
 title: "Building a Multilingual Slide System Inside Astro with Reveal.js"
 description: "How I built a two-type slide deck catalog inside my Astro website — discriminated unions, AEO twins, asset isolation, and live theme sync."
-pubDate: 2026-05-18T10:00:00Z
+pubDate: 2026-05-24T10:00:00Z
 tags: ["web-development", "talks", "astro", "svelte", "portfolio"]
 series: "slides-as-code"
 seriesOrder: 2
@@ -12,7 +12,7 @@ draft: true
 keywords: [astro slides, reveal.js astro integration, slides as content, discriminated union schema, AEO markdown twins, presentation system]
 ---
 
-After [researching the slides-as-code tools available to developers today](/blog/best-presentation-tools-for-developers-2026) —Reveal.js, Slidev, Marp, Spectacle, and a handful more— I chose [Reveal.js](https://revealjs.com) to build my site's presentation system.
+After [researching the slides-as-code tools available to developers today](/blog/best-slides-as-code-presentation-tools) —Reveal.js, Slidev, Marp, Spectacle, and a handful more— I chose [Reveal.js](https://revealjs.com) to build my site's presentation system.
 
 The goal was concrete: I wanted my talks to live in the same place as my blog. Not scattered across Google Slides, a PDF parked somewhere, and an external domain, but inside my own site and treated as first-class content: same Content Collection, same i18n, same SEO as any post.
 
@@ -22,7 +22,7 @@ This post is the case study of how I built it: the architecture decisions, the t
 
 ## Why Reveal.js?
 
-The full tool-by-tool comparison lives in [a separate breakdown of the slides-as-code options](/blog/best-presentation-tools-for-developers-2026). What I care about here is the other half: why Reveal fit my site when the others didn't. And it almost all comes down to one distinction: **Reveal.js is a library; the strongest alternatives are applications.** A library I import into my own build; an application forces me to maintain its build alongside mine.
+The full tool-by-tool comparison lives in [a separate breakdown of the slides-as-code options](/blog/best-slides-as-code-presentation-tools). What I care about here is the other half: why Reveal fit my site when the others didn't. And it almost all comes down to one distinction: **Reveal.js is a library; the strongest alternatives are applications.** A library I import into my own build; an application forces me to maintain its build alongside mine.
 
 Reveal is vanilla JavaScript, with no framework dependency. I import it in a Svelte component, initialize it on mount, and the rest of the page stays standard Astro: same build, same Content Collections, same i18n, same SEO. The integration boundary fits in a few dozen lines. On top of that it ships what I need for technical talks —native Markdown, fragments, auto-animate, step-through code highlighting— as composable plugins, without tying me to any runtime.
 
