@@ -27,9 +27,6 @@ export const GET: APIRoute = ({ props }) => {
   if (data.updatedDate) {
     markdown += `- **Updated:** ${data.updatedDate.toISOString().split('T')[0]}\n`;
   }
-  if (data.tags && data.tags.length > 0) {
-    markdown += `- **Tags:** ${data.tags.join(', ')}\n`;
-  }
   if (data.eventName) {
     markdown += `- **Event:** ${data.eventName}`;
     if (data.eventDate) {
@@ -45,15 +42,9 @@ export const GET: APIRoute = ({ props }) => {
   markdown += '\n';
 
   // Type-specific fields
-  if (data.type === 'external-link') {
+  if (data.type === 'external') {
     markdown += '## External Presentation\n\n';
     markdown += `- **URL:** ${data.externalUrl}\n`;
-    if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;
-    markdown += '\n';
-  } else if (data.type === 'external-embed') {
-    markdown += '## Embedded Presentation\n\n';
-    markdown += `- **Canonical URL:** ${data.externalUrl}\n`;
-    markdown += `- **Embed URL:** ${data.embedUrl}\n`;
     if (data.provider) markdown += `- **Provider:** ${data.provider}\n`;
     markdown += '\n';
   }

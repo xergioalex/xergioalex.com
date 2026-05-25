@@ -17,8 +17,6 @@ export const GET: APIRoute = async () => {
     markdown += `- **Date:** ${deck.data.pubDate.toISOString().split('T')[0]}\n`;
     if (deck.data.eventName)
       markdown += `- **Event:** ${deck.data.eventName}\n`;
-    if (deck.data.tags?.length)
-      markdown += `- **Tags:** ${deck.data.tags.join(', ')}\n`;
     markdown += '\n---\n\n';
   }
 

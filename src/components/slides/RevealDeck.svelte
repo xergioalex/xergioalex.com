@@ -51,8 +51,10 @@ onMount(() => {
     }
 
     if (math) {
-      const MathPlugin = (await import('reveal.js/plugin/math')).default;
-      plugins.push(MathPlugin);
+      const { createRevealKaTeXPlugin } = await import(
+        '@/lib/reveal-katex-plugin'
+      );
+      plugins.push(createRevealKaTeXPlugin());
     }
 
     if (destroyed) return;

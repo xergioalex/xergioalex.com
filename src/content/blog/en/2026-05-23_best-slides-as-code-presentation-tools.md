@@ -1,23 +1,23 @@
 ---
-title: "The Best Presentation Tools for Developers in 2026"
-description: "A hands-on comparison of Reveal.js, Slidev, Marp, Spectacle, and more — with a full feature matrix to help you pick the right slides-as-code tool."
-pubDate: 2026-05-18
+title: "The Best Slides-as-Code Presentation Tools for Developers"
+description: "A hands-on comparison of Reveal.js, Slidev, Marp, Spectacle, and more — with a feature matrix to pick the right slides-as-code tool for developer talks."
+pubDate: 2026-05-23
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
-heroImage: "/images/blog/posts/best-presentation-tools-for-developers-2026/hero.webp"
+heroImage: "/images/blog/posts/best-slides-as-code-presentation-tools/hero.webp"
 heroLayout: banner
-draft: true
-keywords: [presentation tools, slides as code, reveal.js, slidev, marp, spectacle, developer presentations, markdown slides]
+draft: false
+keywords: [slides as code, presentation tools, reveal.js, slidev, marp, spectacle, developer presentations, markdown slides]
 ---
 
-If you've ever built a presentation in PowerPoint, Google Slides, Keynote, or similar tools, you know the manual work it takes: dragging boxes, thinking through the visual design of every idea so it lands, nudging images pixel by pixel, losing your content formatting every time you paste from another source, and no version control. You can `git diff` your source code but not your slides.
+If you've ever built a presentation in PowerPoint, Google Slides, Keynote, or similar tools, you know the manual work: dragging boxes, designing every slide by hand, nudging images pixel by pixel, losing formatting on every paste, and no version control. You can `git diff` your source code — but not your slides.
 
-In the age of agents, I'd rather delegate all that manual work and focus on what actually matters: the narrative. Let the agent handle the layout, styling, and composition; I'll concentrate on the story. That's why a growing ecosystem of **slides-as-code tools** caught my attention: it lets developers write presentations the same way they write documentation — in Markdown, in their IDE, version-controlled, CI/CD-friendly, and shareable as static HTML. And because the format is text-based and structured, agents can generate it with near-zero error rate.
+**Slides-as-code** is the alternative: write presentations in Markdown, in your IDE, version-controlled, CI/CD-friendly, and shareable as static HTML. In the age of agents, that matters even more — the format is text-based and structured, so agents can draft decks with near-zero error rate while I focus on the narrative.
 
-I recently [built a full slide deck system into my Astro website](/blog/building-slide-system-inside-astro-revealjs) and evaluated every serious option before picking one. This post is the comparison I put together to make that decision.
+Before [building a slide system into my Astro site](/blog/building-slide-system-inside-astro-revealjs), I evaluated every serious option in this space. This post is that comparison — the criteria, the tools, and the tradeoffs that led to my pick.
 
-## What Makes a Good Developer Presentation Tool?
+## What Makes a Good Slides-as-Code Tool?
 
 Before diving into tools, here's what I was evaluating:
 
@@ -29,7 +29,7 @@ Before diving into tools, here's what I was evaluating:
 - **Framework dependency** — Does it force me into React, Vue, or another runtime?
 - **Embeddability** — Can I embed the output inside an existing website (not just as a standalone app)?
 - **Git-friendliness** — Is the source format diffable, mergeable, reviewable?
-- **Maintenance** — Is the project alive in 2026?
+- **Active maintenance** — Is the project still maintained?
 - **Learning curve** — How fast can I go from zero to first deck?
 
 ## Reveal.js — The Veteran
@@ -46,7 +46,7 @@ Reveal.js is the grandfather of web-based presentations. Created by [Hakim El Ha
 - **Code highlight with stepped reveal.** Write `` ```js [1-3|5|7-9] `` ` and Reveal steps through highlighted line ranges on each click.
 - **Fullscreen backgrounds.** Color, image, video (with loop/muted), or even a live iframe as a slide background.
 - **PDF export.** Append `?print-pdf` to any deck URL and Chrome prints it perfectly.
-- **v6 in 2026.** The latest release brought Vite-based builds, TypeScript types included in the package, and an official React wrapper.
+- **v6.** The latest release brought Vite-based builds, TypeScript types included in the package, and an official React wrapper.
 
 **The tradeoff:** Compared to other tools, Reveal asks for a bit more initial setup and has a slightly steeper learning curve. Slides are HTML `<section>` elements (with an optional Markdown plugin), so you're closer to the metal. The upside is total control.
 
@@ -126,7 +126,7 @@ Not everything needs to be code. Here's when cloud platforms make more sense:
 | **Google Slides** | Universal compatibility, easy sharing | Corporate environments, cross-team collaboration |
 | **Canva** | Massive template library | Non-technical presenters, social media content |
 
-These platforms solve different problems than slides-as-code. If your audience is investors or a non-technical team, Google Slides or Pitch might be the pragmatic choice. If your audience is developers and your content is code, the tools above are what you want.
+These platforms solve different problems than slides-as-code. If your audience is investors or a non-technical team, Google Slides or Pitch might be the pragmatic choice. If your audience is developers and your content is code, the slides-as-code tools above are what you want.
 
 ## The Full Comparison
 
@@ -146,9 +146,9 @@ These platforms solve different problems than slides-as-code. If your audience i
 | **GitHub stars** | ~71k | ~46k | ~3.5k | ~10k |
 | **Learning curve** | Medium | Medium (Vue helps) | Low | Medium (React) |
 
-## My Pick — and Why
+## My Pick — and Why (Slides-as-Code Inside My Own Site)
 
-I wanted to integrate a slide system into my own site for my tech talks — to have [xergioalex.com](https://xergioalex.com) itself host the decks, not an external service. That's why I chose **Reveal.js**.
+I wanted to integrate a **slides-as-code** system into my own site for my tech talks — to have [xergioalex.com](https://xergioalex.com) itself host the decks, not an external service. That's why I chose **Reveal.js**.
 
 The deciding factor wasn't that Reveal has the best DX (Slidev wins there) or the flattest learning curve (Marp wins). It was **embeddability**.
 

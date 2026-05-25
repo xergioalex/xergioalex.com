@@ -3,19 +3,16 @@ import { describe, expect, it } from 'vitest';
 import {
   getDeckSlug,
   getDeckTypeBadgeKey,
-  isExternalEmbedDeck,
-  isExternalLinkDeck,
-  isInternalDeck,
+  isExternalDeck,
+  isNativeDeck,
 } from '@/lib/slides';
 
 import {
-  draftInternalDeck,
-  externalEmbedEnglishDeck,
-  externalEmbedSpanishDeck,
-  externalLinkEnglishDeck,
-  externalLinkSpanishDeck,
-  internalEnglishDeck,
-  internalSpanishDeck,
+  draftNativeDeck,
+  externalEnglishDeck,
+  externalSpanishDeck,
+  nativeEnglishDeck,
+  nativeSpanishDeck,
 } from '../../fixtures/slides';
 
 // ─── getDeckSlug ────────────────────────────────────────
@@ -62,106 +59,62 @@ describe('getDeckSlug', () => {
   });
 });
 
-// ─── isInternalDeck ─────────────────────────────────────
+// ─── isNativeDeck ───────────────────────────────────────
 
-describe('isInternalDeck', () => {
-  it('returns true for internal deck (EN)', () => {
-    expect(isInternalDeck(internalEnglishDeck as never)).toBe(true);
+describe('isNativeDeck', () => {
+  it('returns true for native deck (EN)', () => {
+    expect(isNativeDeck(nativeEnglishDeck as never)).toBe(true);
   });
 
-  it('returns true for internal deck (ES)', () => {
-    expect(isInternalDeck(internalSpanishDeck as never)).toBe(true);
+  it('returns true for native deck (ES)', () => {
+    expect(isNativeDeck(nativeSpanishDeck as never)).toBe(true);
   });
 
-  it('returns true for draft internal deck', () => {
-    expect(isInternalDeck(draftInternalDeck as never)).toBe(true);
+  it('returns true for draft native deck', () => {
+    expect(isNativeDeck(draftNativeDeck as never)).toBe(true);
   });
 
-  it('returns false for external-link deck', () => {
-    expect(isInternalDeck(externalLinkEnglishDeck as never)).toBe(false);
-  });
-
-  it('returns false for external-embed deck', () => {
-    expect(isInternalDeck(externalEmbedEnglishDeck as never)).toBe(false);
+  it('returns false for external deck', () => {
+    expect(isNativeDeck(externalEnglishDeck as never)).toBe(false);
   });
 });
 
-// ─── isExternalLinkDeck ─────────────────────────────────
+// ─── isExternalDeck ─────────────────────────────────────
 
-describe('isExternalLinkDeck', () => {
-  it('returns true for external-link deck (EN)', () => {
-    expect(isExternalLinkDeck(externalLinkEnglishDeck as never)).toBe(true);
+describe('isExternalDeck', () => {
+  it('returns true for external deck (EN)', () => {
+    expect(isExternalDeck(externalEnglishDeck as never)).toBe(true);
   });
 
-  it('returns true for external-link deck (ES)', () => {
-    expect(isExternalLinkDeck(externalLinkSpanishDeck as never)).toBe(true);
+  it('returns true for external deck (ES)', () => {
+    expect(isExternalDeck(externalSpanishDeck as never)).toBe(true);
   });
 
-  it('returns false for internal deck', () => {
-    expect(isExternalLinkDeck(internalEnglishDeck as never)).toBe(false);
-  });
-
-  it('returns false for external-embed deck', () => {
-    expect(isExternalLinkDeck(externalEmbedEnglishDeck as never)).toBe(false);
-  });
-});
-
-// ─── isExternalEmbedDeck ────────────────────────────────
-
-describe('isExternalEmbedDeck', () => {
-  it('returns true for external-embed deck (EN)', () => {
-    expect(isExternalEmbedDeck(externalEmbedEnglishDeck as never)).toBe(true);
-  });
-
-  it('returns true for external-embed deck (ES)', () => {
-    expect(isExternalEmbedDeck(externalEmbedSpanishDeck as never)).toBe(true);
-  });
-
-  it('returns false for internal deck', () => {
-    expect(isExternalEmbedDeck(internalEnglishDeck as never)).toBe(false);
-  });
-
-  it('returns false for external-link deck', () => {
-    expect(isExternalEmbedDeck(externalLinkEnglishDeck as never)).toBe(false);
+  it('returns false for native deck', () => {
+    expect(isExternalDeck(nativeEnglishDeck as never)).toBe(false);
   });
 });
 
 // ─── getDeckTypeBadgeKey ────────────────────────────────
 
 describe('getDeckTypeBadgeKey', () => {
-  it('returns "internal" for internal deck', () => {
-    expect(getDeckTypeBadgeKey(internalEnglishDeck as never)).toBe('internal');
+  it('returns "native" for native deck', () => {
+    expect(getDeckTypeBadgeKey(nativeEnglishDeck as never)).toBe('native');
   });
 
-  it('returns "externalLink" for external-link deck', () => {
-    expect(getDeckTypeBadgeKey(externalLinkEnglishDeck as never)).toBe(
-      'externalLink'
-    );
+  it('returns "external" for external deck', () => {
+    expect(getDeckTypeBadgeKey(externalEnglishDeck as never)).toBe('external');
   });
 
-  it('returns "externalEmbed" for external-embed deck', () => {
-    expect(getDeckTypeBadgeKey(externalEmbedEnglishDeck as never)).toBe(
-      'externalEmbed'
-    );
+  it('returns correct key for Spanish native deck', () => {
+    expect(getDeckTypeBadgeKey(nativeSpanishDeck as never)).toBe('native');
   });
 
-  it('returns correct key for Spanish internal deck', () => {
-    expect(getDeckTypeBadgeKey(internalSpanishDeck as never)).toBe('internal');
-  });
-
-  it('returns correct key for Spanish external-link deck', () => {
-    expect(getDeckTypeBadgeKey(externalLinkSpanishDeck as never)).toBe(
-      'externalLink'
-    );
-  });
-
-  it('returns correct key for Spanish external-embed deck', () => {
-    expect(getDeckTypeBadgeKey(externalEmbedSpanishDeck as never)).toBe(
-      'externalEmbed'
-    );
+  it('returns correct key for Spanish external deck', () => {
+    expect(getDeckTypeBadgeKey(externalSpanishDeck as never)).toBe('external');
   });
 
   it('returns correct key for draft deck', () => {
-    expect(getDeckTypeBadgeKey(draftInternalDeck as never)).toBe('internal');
+    expect(getDeckTypeBadgeKey(draftNativeDeck as never)).toBe('native');
   });
 });

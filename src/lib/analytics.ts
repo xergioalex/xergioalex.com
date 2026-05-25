@@ -30,6 +30,8 @@ export const EVENTS = {
   COPY_LINK: 'copy_link',
   SERIES_NAV: 'series_nav',
   SERIES_INDICATOR_CLICK: 'series_indicator_click',
+  SLIDE_INDICATOR_CLICK: 'slide_indicator_click',
+  POST_INDICATOR_CLICK: 'post_indicator_click',
   LIGHTBOX_OPEN: 'lightbox_open',
   CONTACT_FORM_SUBMIT: 'contact_form_submit',
   CONTACT_FORM_ERROR: 'contact_form_error',

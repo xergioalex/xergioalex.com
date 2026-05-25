@@ -3,22 +3,16 @@ import InternalLayout from '@/layouts/InternalLayout.astro';
 
 const deckTypes = [
   {
-    type: 'internal',
+    type: 'native',
     renders: 'Full Reveal.js presentation hosted on-site',
     content: 'Markdown slides in content file',
     example: 'Conference talks, workshops',
   },
   {
-    type: 'external-embed',
-    renders: 'Iframe embedding an external slide service',
-    content: 'embedUrl pointing to Google Slides, Speakerdeck, etc.',
-    example: 'Slides hosted on third-party platforms',
-  },
-  {
-    type: 'external-link',
+    type: 'external',
     renders: 'Stub info page with link to external slides',
     content: 'externalUrl with metadata',
-    example: 'Slides only available off-site',
+    example: 'Slides hosted on third-party platforms',
   },
 ];
 

@@ -1,6 +1,7 @@
 ---
 name: slides-as-code
 title: "Slides as Code"
-description: "A series exploring developer-oriented presentation tools, comparing alternatives, and documenting how to build a multilingual slide system inside a modern web framework."
+description: "Picking a developer-first presentation tool and building a multilingual slide system around it — Reveal.js, Astro Content Collections, AI agents in the loop."
 order: 0
+heroImage: "/images/blog/series/slides-as-code/hero.webp"
 ---

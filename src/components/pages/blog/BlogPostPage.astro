@@ -8,10 +8,12 @@ import NewsletterForm from '@/components/blog/NewsletterForm.svelte';
 import RelatedArticles from '@/components/blog/RelatedArticles.astro';
 import SeriesIndicator from '@/components/blog/SeriesIndicator.svelte';
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro';
+import SlideIndicator from '@/components/blog/SlideIndicator.svelte';
 import TypewriterDemo from '@/components/blog/TypewriterDemo.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import {
+  getPostSlug,
   getReadingTimeFromContent,
   getRelatedPosts,
   getSeriesNavigation,
@@ -23,6 +25,7 @@ import {
 import { NEWSLETTER } from '@/lib/constances';
 import type { Language } from '@/lib/i18n';
 import { getUrlPrefix } from '@/lib/i18n';
+import { getDeckForPost, getDeckSlug } from '@/lib/slides';
 import { getTranslations } from '@/lib/translations';
 
 interface Props {
@@ -54,6 +57,17 @@ const isScheduled = isScheduledPost(post);
 const isDraft = isDraftPost(post);
 const seriesInfo = post.data.series
   ? await getSeriesNavigation(post.data.series, post.id, lang)
+  : null;
+
+// Companion slide deck for this post (if any). Drives the floating SlideIndicator.
+const postSlug = getPostSlug(post.id);
+const relatedDeck = await getDeckForPost(
+  postSlug,
+  lang,
+  post.data.relatedSlide
+);
+const relatedDeckHref = relatedDeck
+  ? `${prefix}/slides/${getDeckSlug(relatedDeck.id)}`
   : null;
 const relatedPosts = await getRelatedPosts({
   currentPostId: post.id,
@@ -214,14 +228,28 @@ const breadcrumbData = {
       {seriesInfo && <SeriesNavigation seriesInfo={seriesInfo} lang={lang} />}
       <RelatedArticles posts={relatedPosts} lang={lang} />
     </article>
-    {seriesInfo && (
-      <SeriesIndicator
-        client:idle
-        lang={lang}
-        currentChapter={seriesInfo.currentIndex + 1}
-        totalChapters={seriesInfo.posts.length}
-        seriesTitle={t.seriesNames[seriesInfo.name] || seriesInfo.title}
-      />
+    {(seriesInfo || relatedDeck) && (
+      <div class="fixed bottom-4 right-18 sm:right-20 z-40 flex flex-row-reverse items-center gap-2 pointer-events-none">
+        <div class="pointer-events-auto contents">
+          {seriesInfo && (
+            <SeriesIndicator
+              client:idle
+              lang={lang}
+              currentChapter={seriesInfo.currentIndex + 1}
+              totalChapters={seriesInfo.posts.length}
+              seriesTitle={t.seriesNames[seriesInfo.name] || seriesInfo.title}
+            />
+          )}
+          {relatedDeck && relatedDeckHref && (
+            <SlideIndicator
+              client:idle
+              lang={lang}
+              href={relatedDeckHref}
+              deckTitle={relatedDeck.data.title}
+            />
+          )}
+        </div>
+      </div>
     )}
     <BlogImageLightbox client:idle />
   </main>

@@ -28,6 +28,11 @@ const blog = defineCollection({
     // Series support — references a series slug from the series collection
     series: z.string().optional(),
     seriesOrder: z.number().optional(),
+    // Optional reference to a paired slide deck (slug, no date prefix). Used by
+    // the blog post page to render a floating "Open slides" indicator. The
+    // slide collection has the inverse field (`relatedPost`) so the link is
+    // bidirectional; either side can be the source of truth.
+    relatedSlide: z.string().optional(),
     // Author slug — must match a file in `src/content/authors/`.
     author: z.string().default('sergio-florez'),
     /**
@@ -69,7 +74,6 @@ const slideBaseSchema = z.object({
   pubDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
   heroImage: z.string().optional(),
-  tags: z.array(z.string()).max(5).optional(),
   draft: z.boolean().default(false),
   eventName: z.string().optional(),
   eventDate: z.coerce.date().optional(),
@@ -77,8 +81,8 @@ const slideBaseSchema = z.object({
   relatedPost: z.string().optional(),
 });
 
-const internalSlideSchema = slideBaseSchema.extend({
-  type: z.literal('internal'),
+const nativeSlideSchema = slideBaseSchema.extend({
+  type: z.literal('native'),
   theme: z.enum(['dark', 'light']).default('dark'),
   transition: z
     .enum(['none', 'fade', 'slide', 'convex', 'concave', 'zoom'])
@@ -87,24 +91,15 @@ const internalSlideSchema = slideBaseSchema.extend({
   math: z.boolean().default(false),
 });
 
-const externalLinkSlideSchema = slideBaseSchema.extend({
-  type: z.literal('external-link'),
+const externalSlideSchema = slideBaseSchema.extend({
+  type: z.literal('external'),
   externalUrl: z.url(),
   provider: z.string().optional(),
-});
-
-const externalEmbedSlideSchema = slideBaseSchema.extend({
-  type: z.literal('external-embed'),
-  externalUrl: z.url(),
-  embedUrl: z.url(),
-  provider: z.string().optional(),
-  aspectRatio: z.enum(['16:9', '4:3', '1:1']).default('16:9'),
 });
 
 const slideSchema = z.discriminatedUnion('type', [
-  internalSlideSchema,
-  externalLinkSlideSchema,
-  externalEmbedSlideSchema,
+  nativeSlideSchema,
+  externalSlideSchema,
 ]);
 
 const slides = defineCollection({
