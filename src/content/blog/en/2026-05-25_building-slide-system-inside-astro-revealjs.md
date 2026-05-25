@@ -1,7 +1,7 @@
 ---
 title: "Building a Multilingual Slide System Inside Astro with Reveal.js"
 description: "How I built a two-type slide deck catalog inside my Astro website — discriminated unions, AEO twins, asset isolation, and live theme sync."
-pubDate: 2026-05-24T10:00:00Z
+pubDate: 2026-05-25T11:00:00Z
 tags: ["web-development", "talks", "astro", "svelte", "portfolio"]
 series: "slides-as-code"
 seriesOrder: 2

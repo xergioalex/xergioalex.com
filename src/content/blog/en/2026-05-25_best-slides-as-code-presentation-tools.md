@@ -1,7 +1,7 @@
 ---
 title: "The Best Slides-as-Code Presentation Tools for Developers"
 description: "A hands-on comparison of Reveal.js, Slidev, Marp, Spectacle, and more — with a feature matrix to pick the right slides-as-code tool for developer talks."
-pubDate: 2026-05-23
+pubDate: 2026-05-25T10:00:00Z
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
