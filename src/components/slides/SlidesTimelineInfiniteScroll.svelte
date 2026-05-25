@@ -108,23 +108,19 @@ function getMonthName(pubDate: string): string {
 
 function getTypeBadgeLabel(type: SlideTimelineCardEntry['type']): string {
   switch (type) {
-    case 'internal':
-      return t.slides.typeBadge.internal;
-    case 'external-link':
-      return t.slides.typeBadge.externalLink;
-    case 'external-embed':
-      return t.slides.typeBadge.externalEmbed;
+    case 'native':
+      return t.slides.typeBadge.native;
+    case 'external':
+      return t.slides.typeBadge.external;
   }
 }
 
 function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
   switch (type) {
-    case 'internal':
+    case 'native':
       return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200';
-    case 'external-link':
+    case 'external':
       return 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200';
-    case 'external-embed':
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200';
   }
 }
 </script>
@@ -185,13 +181,13 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
             <!-- svelte-ignore a11y-click-events-have-key-events a11y-interactive-supports-focus -->
             <a
               href={deckHref}
-              class="absolute inset-0 z-0"
+              class="absolute inset-0 z-0 cursor-pointer"
               aria-label={deck.title}
               on:click={() => trackEvent(EVENTS.TIMELINE_CLICK, { page: pageName, slug: deck.slug })}
             ></a>
 
             {#if deck.heroImage}
-              <div class="relative">
+              <div class="relative pointer-events-none">
                 <img
                   src={deck.heroImage}
                   alt={deck.title}
@@ -208,7 +204,7 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
               </div>
             {/if}
 
-            <div class="p-5">
+            <div class="p-5 pointer-events-none">
               {#if !deck.heroImage}
                 <div class="mb-3">
                   <span
@@ -236,7 +232,7 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
                 {deck.description}
               </p>
 
-              <div class="relative z-10 flex flex-wrap items-center gap-2">
+              <div class="flex flex-wrap items-center gap-2">
                 <time class="text-xs text-gray-600 dark:text-gray-300">
                   {formatDate(deck.pubDate)}
                 </time>
@@ -257,16 +253,6 @@ function getTypeBadgeClasses(type: SlideTimelineCardEntry['type']): string {
                   <span class="text-xs px-2 py-0.5 rounded border border-gray-200 text-gray-600 dark:border-gray-600 dark:text-gray-300">
                     {deck.provider}
                   </span>
-                {/if}
-
-                {#if deck.tags && deck.tags.length > 0}
-                  {#each deck.tags as tag}
-                    <span
-                      class="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                    >
-                      #{t.tagNames[tag] || tag}
-                    </span>
-                  {/each}
                 {/if}
               </div>
             </div>

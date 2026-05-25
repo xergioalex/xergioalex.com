@@ -1,23 +1,23 @@
 ---
-title: "Las mejores herramientas de presentación para devs en 2026"
-description: "Una comparación práctica de Reveal.js, Slidev, Marp, Spectacle y más — con una matriz completa de características para elegir la herramienta ideal."
-pubDate: 2026-05-18
+title: "Las mejores herramientas de presentación slides-as-code para desarrolladores"
+description: "Comparación práctica de Reveal.js, Slidev, Marp, Spectacle y más — con una matriz de características para elegir tu herramienta slides-as-code ideal."
+pubDate: 2026-05-23
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
-heroImage: "/images/blog/posts/best-presentation-tools-for-developers-2026/hero-es.webp"
+heroImage: "/images/blog/posts/best-slides-as-code-presentation-tools/hero-es.webp"
 heroLayout: banner
-draft: true
-keywords: [herramientas de presentación, slides como código, reveal.js, slidev, marp, spectacle, presentaciones para desarrolladores, slides en markdown]
+draft: false
+keywords: [slides as code, herramientas de presentación, reveal.js, slidev, marp, spectacle, presentaciones para desarrolladores, slides en markdown]
 ---
 
-Si alguna vez construiste una presentación en PowerPoint, Google Slides, Keynote, entre otras, sabes el trabajo manual que implica: arrastrar cajas, pensar en cómo diseñar visualmente cada idea para que se entienda, acomodar imágenes pixel por pixel, perder el formato de tu contenido cada vez que lo pegas desde otra fuente y no tener control de versiones. Puedes hacer `git diff` de tu código fuente, pero no de tus diapositivas.
+Si alguna vez construiste una presentación en PowerPoint, Google Slides, Keynote u otras herramientas similares, conoces el trabajo manual: arrastrar cajas, diseñar cada diapositiva a mano, acomodar imágenes pixel por pixel, perder el formato al pegar contenido y no tener control de versiones. Puedes hacer `git diff` de tu código fuente — pero no de tus diapositivas.
 
-En la era de los agentes, prefiero delegar todo ese trabajo manual y enfocarme en lo que realmente importa: la narrativa. Que el agente se encargue del layout, los estilos y la maquetación; yo me concentro en la historia. Por eso me llamó la atención el ecosistema creciente de **herramientas de slides-as-code**: permite a los desarrolladores escribir presentaciones como escriben documentación — en Markdown, en su IDE, con control de versiones, compatibles con CI/CD, y compartibles como HTML estático. Y como el formato es textual y estructurado, los agentes pueden generarlo casi sin error.
+**Slides-as-code** es la alternativa: escribir presentaciones en Markdown, en tu IDE, con control de versiones, compatibles con CI/CD y compartibles como HTML estático. En la era de los agentes, eso importa aún más — el formato es textual y estructurado, así que los agentes pueden redactar decks casi sin error mientras yo me concentro en la narrativa.
 
-Hace poco [construí un sistema completo de diapositivas dentro de mi sitio web Astro](/es/blog/building-slide-system-inside-astro-revealjs) y evalué cada opción seria antes de elegir una. Este post es la comparación que armé para tomar esa decisión.
+Antes de [construir un sistema de diapositivas dentro de mi sitio Astro](/es/blog/building-slide-system-inside-astro-revealjs), evalué cada opción seria en este espacio. Este post es esa comparación — los criterios, las herramientas y los tradeoffs que llevaron a mi elección.
 
-## ¿Qué hace buena a una herramienta de presentación para desarrolladores?
+## ¿Qué hace buena a una herramienta slides-as-code?
 
 Antes de entrar en las herramientas, estos son los criterios que evalué:
 
@@ -29,7 +29,7 @@ Antes de entrar en las herramientas, estos son los criterios que evalué:
 - **Dependencia de framework** — ¿Me obliga a usar React, Vue u otro runtime?
 - **Incrustabilidad** — ¿Puedo incrustar el resultado dentro de un sitio existente (no solo como app independiente)?
 - **Compatibilidad con Git** — ¿El formato fuente es diffable, mergeable, revisable?
-- **Mantenimiento** — ¿El proyecto sigue vivo en 2026?
+- **Mantenimiento activo** — ¿El proyecto sigue mantenido?
 - **Curva de aprendizaje** — ¿Qué tan rápido puedo ir de cero a mi primera presentación?
 
 ## Reveal.js — El veterano
@@ -46,7 +46,7 @@ Reveal.js es el abuelo de las presentaciones web. Creado por [Hakim El Hattab](h
 - **Resaltado de código con revelado por pasos.** Escribe `` ```js [1-3|5|7-9] `` ` y Reveal avanza por rangos de líneas resaltadas en cada clic.
 - **Fondos de pantalla completa.** Color, imagen, video (con loop/muted), o incluso un iframe en vivo como fondo.
 - **Exportación a PDF.** Agrega `?print-pdf` a cualquier URL de presentación y Chrome lo imprime perfectamente.
-- **v6 en 2026.** La última versión trajo builds basados en Vite, tipos TypeScript incluidos, y un wrapper oficial para React.
+- **v6.** La última versión trajo builds basados en Vite, tipos TypeScript incluidos y un wrapper oficial para React.
 
 **La compensación:** Comparado con otras herramientas, Reveal pide un poco más de setup inicial y la curva de aprendizaje es algo más pronunciada. Las diapositivas son elementos HTML `<section>` (con un plugin opcional de Markdown), así que estás más cerca del metal. La ventaja es control total.
 
@@ -141,15 +141,15 @@ No todo necesita ser código. Aquí es cuando las plataformas en la nube tienen 
 | **Estrellas GitHub** | ~71k | ~46k | ~3.5k | ~10k |
 | **Curva aprendizaje** | Media | Media (Vue ayuda) | Baja | Media (React) |
 
-## Mi elección — y por qué
+## Mi elección — y por qué (slides-as-code dentro de mi propio sitio)
 
-Quería integrar un sistema de diapositivas dentro de mi propio sitio para mis charlas técnicas — que [xergioalex.com](https://xergioalex.com) mismo fuera el host de los decks, no un servicio externo. Por eso elegí **Reveal.js**.
+Quería integrar un sistema **slides-as-code** dentro de mi propio sitio para mis charlas técnicas — que [xergioalex.com](https://xergioalex.com) mismo fuera el host de los decks, no un servicio externo. Por eso elegí **Reveal.js**.
 
 El factor decisivo no fue que Reveal tenga la mejor experiencia de desarrollo (Slidev gana ahí) ni la curva de aprendizaje más plana (Marp gana). Fue la **incrustabilidad**.
 
 Necesitaba que las diapositivas vivieran *dentro* de mi sitio web Astro — como contenido de primera clase, con el mismo soporte multilingüe, el mismo sistema de temas, la misma infraestructura SEO y AEO que mis posts del blog. Reveal es JavaScript vanilla que puedo inicializar en un componente Svelte, dentro de un layout Astro, importando CSS solo en las páginas de presentación. Sin segundo runtime de framework. Sin pipeline de build separado.
 
-En el [siguiente post de esta serie](/es/blog/building-slide-system-inside-astro-revealjs), recorreré exactamente cómo lo construí: un catálogo de tres tipos de presentaciones con esquemas de unión discriminada, renderizado de Markdown en tiempo de build, aislamiento de assets, gemelos AEO, y sincronización de tema oscuro/claro en vivo.
+En el [siguiente post de esta serie](/es/blog/building-slide-system-inside-astro-revealjs), recorreré exactamente cómo lo construí: un catálogo de dos tipos de presentaciones con esquemas de unión discriminada, renderizado de Markdown en tiempo de build, aislamiento de assets, gemelos AEO, y sincronización de tema oscuro/claro en vivo.
 
 ## Recursos
 

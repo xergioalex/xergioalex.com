@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import PostIndicator from '@/components/blog/PostIndicator.svelte';
 import JsonLd from '@/components/JsonLd.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
@@ -10,14 +11,16 @@ interface Props {
   deck: CollectionEntry<'slides'>;
   lang: Language;
   jsonLd?: Record<string, unknown>;
+  relatedPostHref?: string;
+  relatedPostTitle?: string;
 }
 
-const { deck, lang, jsonLd } = Astro.props;
+const { deck, lang, jsonLd, relatedPostHref, relatedPostTitle } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
 
 const data = deck.data as CollectionEntry<'slides'>['data'] & {
-  type: 'external-link';
+  type: 'external';
   externalUrl: string;
   provider?: string;
 };
@@ -25,10 +28,7 @@ const data = deck.data as CollectionEntry<'slides'>['data'] & {
 const provider = data.provider || 'external';
 const providerLabel =
   provider.charAt(0).toUpperCase() + provider.slice(1).replace(/-/g, ' ');
-const ctaText = t.slides.externalLink.openCta.replace(
-  '{provider}',
-  providerLabel
-);
+const ctaText = t.slides.external.openCta.replace('{provider}', providerLabel);
 const isDraft = isDraftDeck(deck);
 ---
 
@@ -118,8 +118,16 @@ const isDraft = isDraftDeck(deck);
         href={`${prefix}/slides`}
         class="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
       >
-        {t.slides.externalLink.backToCatalog}
+        {t.slides.external.backToCatalog}
       </a>
     </div>
   </div>
+
+  {relatedPostHref && relatedPostTitle && (
+    <div class="fixed bottom-4 right-18 sm:right-20 z-40 flex flex-row-reverse items-center gap-2 pointer-events-none">
+      <div class="pointer-events-auto contents">
+        <PostIndicator client:idle lang={lang} href={relatedPostHref} postTitle={relatedPostTitle} />
+      </div>
+    </div>
+  )}
 </MainLayout>

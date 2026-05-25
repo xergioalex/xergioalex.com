@@ -12,9 +12,8 @@ export interface SlideTimelineCardEntry {
   title: string;
   description: string;
   pubDate: string;
-  tags: string[];
   heroImage?: string;
-  type: 'internal' | 'external-link' | 'external-embed';
+  type: 'native' | 'external';
   eventName?: string;
   eventDate?: string;
   externalUrl?: string;
@@ -96,25 +95,43 @@ export async function getDeckById(
   return getEntry('slides', id);
 }
 
-/** Type guard: internal deck (authored Markdown, rendered with Reveal.js). */
-export function isInternalDeck(
-  deck: CollectionEntry<'slides'>
-): deck is CollectionEntry<'slides'> & { data: { type: 'internal' } } {
-  return deck.data.type === 'internal';
+/**
+ * Reverse lookup: find a slide deck associated with a blog post.
+ *
+ * Resolution order:
+ *   1. The blog post's own `relatedSlide` frontmatter field (explicit).
+ *   2. Scan all decks in this language for one whose `relatedPost` matches
+ *      the blog post slug (implicit — the slide knows about the post).
+ *
+ * Either side can establish the link; if both are set, the post's field wins.
+ */
+export async function getDeckForPost(
+  postSlug: string,
+  lang: Language,
+  relatedSlide?: string
+): Promise<CollectionEntry<'slides'> | undefined> {
+  const decks = await getSlideDecks(lang);
+  if (relatedSlide) {
+    const explicit = decks.find(
+      (deck) => getDeckSlug(deck.id) === relatedSlide
+    );
+    if (explicit) return explicit;
+  }
+  return decks.find((deck) => deck.data.relatedPost === postSlug);
 }
 
-/** Type guard: external-link deck (stub info page with CTA to external URL). */
-export function isExternalLinkDeck(
+/** Type guard: native deck (authored Markdown, rendered with Reveal.js). */
+export function isNativeDeck(
   deck: CollectionEntry<'slides'>
-): deck is CollectionEntry<'slides'> & { data: { type: 'external-link' } } {
-  return deck.data.type === 'external-link';
+): deck is CollectionEntry<'slides'> & { data: { type: 'native' } } {
+  return deck.data.type === 'native';
 }
 
-/** Type guard: external-embed deck (iframe embed from third-party provider). */
-export function isExternalEmbedDeck(
+/** Type guard: external deck (stub info page with CTA to external URL). */
+export function isExternalDeck(
   deck: CollectionEntry<'slides'>
-): deck is CollectionEntry<'slides'> & { data: { type: 'external-embed' } } {
-  return deck.data.type === 'external-embed';
+): deck is CollectionEntry<'slides'> & { data: { type: 'external' } } {
+  return deck.data.type === 'external';
 }
 
 /**
@@ -135,7 +152,6 @@ export async function getSlidesTimelineIndex(
       title: data.title,
       description: data.description,
       pubDate: data.pubDate.toISOString(),
-      tags: data.tags ?? [],
       heroImage: data.heroImage,
       type: data.type,
       eventName: data.eventName,
@@ -143,7 +159,7 @@ export async function getSlidesTimelineIndex(
       isDraft: isDraftDeck(deck),
     };
 
-    if (data.type === 'external-link' || data.type === 'external-embed') {
+    if (data.type === 'external') {
       base.externalUrl = data.externalUrl;
       base.provider = data.provider;
     }
@@ -155,13 +171,6 @@ export async function getSlidesTimelineIndex(
 /** Map deck type to translation badge key. */
 export function getDeckTypeBadgeKey(
   deck: CollectionEntry<'slides'>
-): 'internal' | 'externalLink' | 'externalEmbed' {
-  switch (deck.data.type) {
-    case 'internal':
-      return 'internal';
-    case 'external-link':
-      return 'externalLink';
-    case 'external-embed':
-      return 'externalEmbed';
-  }
+): 'native' | 'external' {
+  return deck.data.type;
 }

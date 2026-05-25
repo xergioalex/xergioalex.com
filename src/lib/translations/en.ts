@@ -583,7 +583,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'Browse all presentation decks by Sergio Alexander — from in-house Reveal.js slides to external talks hosted on other platforms.',
     heroDescription:
       'A collection of all my presentation decks — conference talks, meetup slides, and technical deep dives. Built in-house with Reveal.js or hosted on external platforms.',
-    timelineTitle: 'Slides Timeline',
+    timelineTitle: 'My Slides',
     emptyState: 'No slides available yet. Check back soon!',
     viewAll: 'View all slides',
   },
@@ -593,18 +593,14 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     exitToCatalog: 'Back to Tech Talks',
     printPdf: 'Print to PDF',
     languageSwitch: 'Ver en español',
-    externalLink: {
+    external: {
       openCta: 'Open on {provider}',
       backToCatalog: 'Back to catalog',
     },
-    externalEmbed: {
-      openExternal: 'Open original',
-    },
     languageNotice: 'Original deck is in {lang}',
     typeBadge: {
-      internal: 'Built in-house',
-      externalLink: 'External',
-      externalEmbed: 'Embedded',
+      native: 'Native',
+      external: 'External',
     },
     toolbar: {
       backToCatalog: 'Back to catalog',
@@ -929,6 +925,18 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   seriesNext: 'Next chapter',
   seriesToC: 'All chapters',
   seriesChapterOf: (current, total) => `Chapter ${current} of ${total}`,
+
+  // Floating indicators that link a blog post to its companion slide deck (and back).
+  slideIndicator: {
+    label: 'Slides',
+    subtitle: 'Open deck →',
+    ariaLabel: 'Open companion slide deck',
+  },
+  postIndicator: {
+    label: 'Article',
+    subtitle: 'Read post →',
+    ariaLabel: 'Read companion blog post',
+  },
 
   // Series pages
   seriesPage: {

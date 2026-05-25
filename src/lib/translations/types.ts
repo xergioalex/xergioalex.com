@@ -453,6 +453,18 @@ export interface SiteTranslations {
   seriesToC: string;
   seriesChapterOf: (current: number, total: number) => string;
 
+  // Cross-content floating indicators (blog ↔ slide)
+  slideIndicator: {
+    label: string;
+    subtitle: string;
+    ariaLabel: string;
+  };
+  postIndicator: {
+    label: string;
+    subtitle: string;
+    ariaLabel: string;
+  };
+
   // Series pages
   seriesPage: {
     title: string;
@@ -561,18 +573,14 @@ export interface SiteTranslations {
     exitToCatalog: string;
     printPdf: string;
     languageSwitch: string;
-    externalLink: {
+    external: {
       openCta: string;
       backToCatalog: string;
     };
-    externalEmbed: {
-      openExternal: string;
-    };
     languageNotice: string;
     typeBadge: {
-      internal: string;
-      externalLink: string;
-      externalEmbed: string;
+      native: string;
+      external: string;
     };
     toolbar: {
       backToCatalog: string;

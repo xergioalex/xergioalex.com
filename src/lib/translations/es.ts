@@ -590,7 +590,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Explora todas las presentaciones de Sergio Alexander — desde diapositivas creadas con Reveal.js hasta charlas externas alojadas en otras plataformas.',
     heroDescription:
       'Una colección de todas mis presentaciones — charlas de conferencias, slides de meetups y deep dives técnicos. Creadas internamente con Reveal.js o alojadas en plataformas externas.',
-    timelineTitle: 'Línea de tiempo de slides',
+    timelineTitle: 'Mis diapositivas',
     emptyState: 'Aún no hay diapositivas disponibles. ¡Vuelve pronto!',
     viewAll: 'Ver todas las diapositivas',
   },
@@ -600,18 +600,14 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     exitToCatalog: 'Volver a Charlas Tech',
     printPdf: 'Imprimir a PDF',
     languageSwitch: 'View in English',
-    externalLink: {
+    external: {
       openCta: 'Abrir en {provider}',
       backToCatalog: 'Volver al catálogo',
     },
-    externalEmbed: {
-      openExternal: 'Abrir original',
-    },
     languageNotice: 'La presentación original está en {lang}',
     typeBadge: {
-      internal: 'Creación propia',
-      externalLink: 'Externo',
-      externalEmbed: 'Incrustado',
+      native: 'Nativo',
+      external: 'Externo',
     },
     toolbar: {
       backToCatalog: 'Volver al catálogo',
@@ -940,6 +936,18 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   seriesNext: 'Siguiente capítulo',
   seriesToC: 'Todos los capítulos',
   seriesChapterOf: (current, total) => `Capítulo ${current} de ${total}`,
+
+  // Indicadores flotantes que conectan un blog post con su deck de slides (y al revés).
+  slideIndicator: {
+    label: 'Slides',
+    subtitle: 'Abrir deck →',
+    ariaLabel: 'Abrir presentación asociada',
+  },
+  postIndicator: {
+    label: 'Artículo',
+    subtitle: 'Leer post →',
+    ariaLabel: 'Leer artículo asociado',
+  },
 
   // Series pages
   seriesPage: {
