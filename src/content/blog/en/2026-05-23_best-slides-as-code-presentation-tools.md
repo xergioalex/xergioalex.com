@@ -7,7 +7,7 @@ series: "slides-as-code"
 seriesOrder: 1
 heroImage: "/images/blog/posts/best-slides-as-code-presentation-tools/hero.webp"
 heroLayout: banner
-draft: true
+draft: false
 keywords: [slides as code, presentation tools, reveal.js, slidev, marp, spectacle, developer presentations, markdown slides]
 ---
 

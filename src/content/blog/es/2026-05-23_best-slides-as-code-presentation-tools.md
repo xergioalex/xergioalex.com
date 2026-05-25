@@ -7,7 +7,7 @@ series: "slides-as-code"
 seriesOrder: 1
 heroImage: "/images/blog/posts/best-slides-as-code-presentation-tools/hero-es.webp"
 heroLayout: banner
-draft: true
+draft: false
 keywords: [slides as code, herramientas de presentación, reveal.js, slidev, marp, spectacle, presentaciones para desarrolladores, slides en markdown]
 ---
 
@@ -149,7 +149,7 @@ El factor decisivo no fue que Reveal tenga la mejor experiencia de desarrollo (S
 
 Necesitaba que las diapositivas vivieran *dentro* de mi sitio web Astro — como contenido de primera clase, con el mismo soporte multilingüe, el mismo sistema de temas, la misma infraestructura SEO y AEO que mis posts del blog. Reveal es JavaScript vanilla que puedo inicializar en un componente Svelte, dentro de un layout Astro, importando CSS solo en las páginas de presentación. Sin segundo runtime de framework. Sin pipeline de build separado.
 
-En el [siguiente post de esta serie](/es/blog/building-slide-system-inside-astro-revealjs), recorreré exactamente cómo lo construí: un catálogo de tres tipos de presentaciones con esquemas de unión discriminada, renderizado de Markdown en tiempo de build, aislamiento de assets, gemelos AEO, y sincronización de tema oscuro/claro en vivo.
+En el [siguiente post de esta serie](/es/blog/building-slide-system-inside-astro-revealjs), recorreré exactamente cómo lo construí: un catálogo de dos tipos de presentaciones con esquemas de unión discriminada, renderizado de Markdown en tiempo de build, aislamiento de assets, gemelos AEO, y sincronización de tema oscuro/claro en vivo.
 
 ## Recursos
 
