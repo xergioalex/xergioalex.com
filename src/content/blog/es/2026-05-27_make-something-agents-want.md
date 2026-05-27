@@ -10,19 +10,9 @@ series: "working-with-agents"
 seriesOrder: 6
 ---
 
-Algo cambió en cómo la industria tech habla sobre los agentes de IA, y se puede ver con precisión en los dos posts donde ocurrió.
+Algo cambió en cómo la industria tech habla sobre los agentes de IA, y se puede ver concentrado en dos afirmaciones hechas con días de diferencia.
 
-**27 de abril de 2026.** La cuenta de Y Combinator publica un Request for Startups llamado *Software for Agents.* El cierre, escrito por [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), dice: *"So if you're Making Something Agents Want, we'd love to hear from you."* ("Así que si estás Construyendo Algo Que los Agentes Quieren, nos encantaría escucharte"). Como [alumni de YC](/es/blog/how-we-got-into-y-combinator/), la frase original — *Make something people want* ("Construye algo que la gente quiera") — lleva años en mi cabeza. Ver una sola palabra cambiada en esa misma oración es el tipo de cosa que notas en la segunda lectura. Del tipo de errores que son intencionales.
-
-**28 de abril de 2026.** La cuenta de Cloudflare publica: *"Starting today, agents can now be Cloudflare customers."* ("A partir de hoy, los agentes ya pueden ser clientes de Cloudflare.") No "los agentes ya pueden usar Cloudflare." Clientes. La palabra que carga la frase es el sustantivo.
-
-Dos posts. Cuarenta y ocho horas de diferencia. Ambos dijeron algo que la industria llevaba meses dando vueltas sin nombrarlo del todo. Y llevo pensando en los dos desde entonces.
-
----
-
-## Dos publicaciones, 48 horas
-
-El post de YC lo escribió [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), General Partner del fondo. Es parte del Request for Startups de YC para el verano de 2026 — la lista de deseos que usan los partners para señalar qué quieren ver en el próximo batch. La categoría se llama *Software for Agents.*
+**27 de abril de 2026.** La cuenta de Y Combinator publica en su [Request for Startups](https://www.ycombinator.com/rfs) una nueva categoría enfocada en *Software for Agents,* firmada por [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), General Partner del fondo. El cierre del post dice: *"So if you're Making Something Agents Want, we'd love to hear from you."* ("Así que si estás Construyendo Algo Que los Agentes Quieren, nos encantaría escucharte"). Como [alumni de YC](/es/blog/how-we-got-into-y-combinator/), la frase original — *Make something people want* ("Construye algo que la gente quiera") — lleva años en mi cabeza. Ver una sola palabra cambiada en esa misma oración es el tipo de cosa que notas en la segunda lectura. Del tipo de errores que son intencionales.
 
 <figure>
   <img src="/images/blog/posts/make-something-agents-want/figure-yc-tweet.webp"
@@ -33,9 +23,7 @@ El post de YC lo escribió [Aaron Epstein](https://www.ycombinator.com/people/aa
   <figcaption>Y Combinator, 27 de abril de 2026 — Aaron Epstein abre el RFS "Software for Agents". — <a href="https://x.com/ycombinator/status/2048834309994565832">Post original</a>.</figcaption>
 </figure>
 
-El texto completo: *"The next trillion users on the internet won't be people. They'll be AI agents, and they're already doing real work on top of software that was designed for humans clicking buttons. Every major category of software needs to be rebuilt for agents as first-class citizens, and that won't come from incumbents."* ("El próximo billón de usuarios en internet no serán personas. Serán agentes de IA, y ya están haciendo trabajo real sobre software diseñado para humanos haciendo clic en botones. Cada categoría importante de software necesita reconstruirse para los agentes como ciudadanos de primera clase, y eso no va a venir de los incumbentes.")
-
-Un día después, la cuenta de Cloudflare publicó la segunda:
+**28 de abril de 2026.** La cuenta de Cloudflare suelta una afirmación que para muchos sonó bastante salvaje: *"Starting today, agents can now be Cloudflare customers."* ("A partir de hoy, los agentes ya pueden ser clientes de Cloudflare.") No "los agentes ya pueden usar Cloudflare." Clientes. La palabra que carga la frase es el sustantivo. Y la afirmación, cuando aterriza así de directa, mueve algo distinto a cuando se dice con pinzas.
 
 <figure>
   <img src="/images/blog/posts/make-something-agents-want/figure-cloudflare-tweet.webp"
@@ -46,9 +34,7 @@ Un día después, la cuenta de Cloudflare publicó la segunda:
   <figcaption>Cloudflare, 28 de abril de 2026 — el primer gran proveedor de infraestructura en decirlo en voz alta. — <a href="https://x.com/Cloudflare/status/2049545195914498139">Post original</a>.</figcaption>
 </figure>
 
-*"Starting today, agents can now be Cloudflare customers. They can create a Cloudflare account, start a paid subscription, register a domain, and get back an API token to deploy code right away."* ("A partir de hoy, los agentes ya pueden ser clientes de Cloudflare. Pueden crear una cuenta de Cloudflare, iniciar una suscripción paga, registrar un dominio y obtener un token de API para desplegar código de inmediato.")
-
-Cualquiera de los dos habría sido la noticia principal de su semana. Juntos marcaron una bisagra. YC, la institución que ha moldeado la metodología de startups por dos décadas, le dice a los founders que diseñen para un público que no hace clic. Cloudflare, uno de los mayores proveedores de CDN y edge de la web abierta, declara que ese público ya puede sostener el contrato.
+Dos afirmaciones. Cuarenta y ocho horas de diferencia. Cualquiera de las dos habría sido la noticia principal de su semana. Juntas marcaron una bisagra. YC, la institución que ha moldeado la metodología de startups por dos décadas, le dice a los founders que diseñen para un público que no hace clic. Cloudflare, uno de los mayores proveedores de CDN y edge de la web abierta, declara que ese público ya puede sostener el contrato.
 
 Internet lo notó. Y, siendo internet, también se confundió en dos cosas.
 

@@ -10,19 +10,9 @@ series: "working-with-agents"
 seriesOrder: 6
 ---
 
-Something shifted in how the tech industry talks about AI agents, and you can see the exact two posts where it happened.
+Something shifted in how the tech industry talks about AI agents, and you can see it concentrated in two declarations made days apart.
 
-**April 27, 2026.** Y Combinator's account publishes a Request for Startups called *Software for Agents.* The kicker, written by [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), reads: *"So if you're Making Something Agents Want, we'd love to hear from you."* As [a YC alum](/blog/how-we-got-into-y-combinator/), the original phrase — *Make something people want* — has been in my head for years. Seeing one word swapped in that exact sentence is the kind of thing you notice on the second reading. The kind of misspelling that's deliberate.
-
-**April 28, 2026.** Cloudflare's account posts: *"Starting today, agents can now be Cloudflare customers."* Not "agents can now use Cloudflare." Customers. The word doing the work in that sentence is the noun.
-
-Two posts. Forty-eight hours apart. Both said something the industry had been circling for months without quite naming. And I've been thinking about both since.
-
----
-
-## Two posts, 48 hours
-
-The YC post was authored by [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), a General Partner at the firm. It's part of YC's Summer 2026 Request for Startups — the wishlist that signals what the partners want to see in the next batch. The category is called *Software for Agents.*
+**April 27, 2026.** Y Combinator's account publishes a new category in its [Request for Startups](https://www.ycombinator.com/rfs) focused on *Software for Agents,* authored by [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), a General Partner at the firm. The kicker reads: *"So if you're Making Something Agents Want, we'd love to hear from you."* As [a YC alum](/blog/how-we-got-into-y-combinator/), the original phrase — *Make something people want* — has been in my head for years. Seeing one word swapped in that exact sentence is the kind of thing you notice on the second reading. The kind of misspelling that's deliberate.
 
 <figure>
   <img src="/images/blog/posts/make-something-agents-want/figure-yc-tweet.webp"
@@ -33,9 +23,7 @@ The YC post was authored by [Aaron Epstein](https://www.ycombinator.com/people/a
   <figcaption>Y Combinator, April 27, 2026 — Aaron Epstein opens the "Software for Agents" RFS. — <a href="https://x.com/ycombinator/status/2048834309994565832">Original post</a>.</figcaption>
 </figure>
 
-The full text: *"The next trillion users on the internet won't be people. They'll be AI agents, and they're already doing real work on top of software that was designed for humans clicking buttons. Every major category of software needs to be rebuilt for agents as first-class citizens, and that won't come from incumbents."*
-
-A day later, Cloudflare's account posted the second one:
+**April 28, 2026.** Cloudflare's account drops a line that struck many as wildly bold: *"Starting today, agents can now be Cloudflare customers."* Not "agents can now use Cloudflare." Customers. The word doing the work in that sentence is the noun. And said that flatly — no hedging, no asterisks — it lands differently than it would have if anyone had tried to soften it.
 
 <figure>
   <img src="/images/blog/posts/make-something-agents-want/figure-cloudflare-tweet.webp"
@@ -46,9 +34,7 @@ A day later, Cloudflare's account posted the second one:
   <figcaption>Cloudflare, April 28, 2026 — the first major infrastructure vendor to say it out loud. — <a href="https://x.com/Cloudflare/status/2049545195914498139">Original post</a>.</figcaption>
 </figure>
 
-*"Starting today, agents can now be Cloudflare customers. They can create a Cloudflare account, start a paid subscription, register a domain, and get back an API token to deploy code right away."*
-
-Either one would have been the lead story of its week. Together they marked a hinge. YC, the institution that has shaped startup methodology for two decades, telling founders to design for an audience that doesn't click. Cloudflare, one of the largest CDN and edge providers on the open web, declaring that audience can now hold the contract.
+Two declarations. Forty-eight hours apart. Either one would have been the lead story of its week. Together they marked a hinge. YC, the institution that has shaped startup methodology for two decades, telling founders to design for an audience that doesn't click. Cloudflare, one of the largest CDN and edge providers on the open web, declaring that audience can now hold the contract.
 
 The internet noticed. And the internet, being the internet, also got two things slightly wrong.
 
