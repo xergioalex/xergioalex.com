@@ -10,13 +10,13 @@ series: "working-with-agents"
 seriesOrder: 6
 ---
 
-Aplicamos a Y Combinator tres veces. Nos rechazaron dos. La tercera, en 2021, [DailyBot entró](/es/blog/how-we-got-into-y-combinator/) — al batch S21. Para ese momento, la frase "Make something people want" ya la tenía clavada. La veía pegada en las paredes de los eventos de YC. Era la primera pregunta que hacían los partners cuando hacíamos pitch. Estuvo durante años en un sticker en mi laptop.
+Algo cambió en cómo la industria tech habla sobre los agentes de IA, y se puede ver con precisión en los dos posts donde ocurrió.
 
-Por eso, cuando el 27 de abril pasé un post de YC y lo vi cerrar con *"So if you're Making Something Agents Want, we'd love to hear from you"* ("Así que si estás Construyendo Algo Que los Agentes Quieren, nos encantaría escucharte") — leí la frase tres veces. Se sentía como ver una palabra familiar escrita ligeramente mal. Del tipo de errores que son intencionales.
+**27 de abril de 2026.** La cuenta de Y Combinator publica un Request for Startups llamado *Software for Agents.* El cierre, escrito por [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), dice: *"So if you're Making Something Agents Want, we'd love to hear from you."* ("Así que si estás Construyendo Algo Que los Agentes Quieren, nos encantaría escucharte"). Como [alumni de YC](/es/blog/how-we-got-into-y-combinator/), la frase original — *Make something people want* — lleva años en mi cabeza. Ver una sola palabra cambiada en esa misma oración es el tipo de cosa que notas en la segunda lectura. Del tipo de errores que son intencionales.
 
-A la mañana siguiente, el 28 de abril, la cuenta de Cloudflare publicó esto: *"Starting today, agents can now be Cloudflare customers."* ("A partir de hoy, los agentes ya pueden ser clientes de Cloudflare.") No "los agentes ya pueden usar Cloudflare". Clientes. La palabra que carga la frase es el sustantivo.
+**28 de abril de 2026.** La cuenta de Cloudflare publica: *"Starting today, agents can now be Cloudflare customers."* ("A partir de hoy, los agentes ya pueden ser clientes de Cloudflare.") No "los agentes ya pueden usar Cloudflare." Clientes. La palabra que carga la frase es el sustantivo.
 
-Dos posts, 48 horas de diferencia. Ambos dijeron algo que la industria llevaba meses dando vueltas sin nombrarlo del todo. Y llevo pensando en los dos desde entonces.
+Dos posts. Cuarenta y ocho horas de diferencia. Ambos dijeron algo que la industria llevaba meses dando vueltas sin nombrarlo del todo. Y llevo pensando en los dos desde entonces.
 
 ---
 
@@ -100,7 +100,7 @@ La frase "Make something people want" viene de un ensayo que Paul Graham public�
 
 YC tenía tres años cuando PG escribió eso. La frase ha sobrevivido tres ciclos económicos. Ha sobrevivido la primera década del iPhone, el auge y caída del cripto dos veces, toda la era del SaaS. La razón por la que sobrevivió todo es que es casi imposible discutirla. *Want* — querer — es algo medible. Que alguien quiera algo es lo único que el mercado realmente premia.
 
-Honestamente, pienso en esa frase cada vez que miro una idea de producto. Incluyendo este sitio que estás leyendo. Incluyendo DailyBot. Incluyendo las tres aplicaciones que escribimos para YC.
+Honestamente, pienso en esa frase cada vez que miro una idea de producto. Incluyendo este sitio que estás leyendo. Incluyendo DailyBot.
 
 Cambiarle el sustantivo no es trivial. Los agentes no *quieren* como quieren los humanos. No tienen aburrimiento, ansiedad por el estatus, un círculo de amigos al que impresionar. Lo que tienen son metas, dadas por un humano, y una ventana de contexto, y la paciencia de un proceso. Si la línea de YC significa algo, significa: construye la cosa que hace ese loop más rápido. Construye la cosa que el agente elige porque elegirla acerca la meta del humano.
 
@@ -158,9 +158,7 @@ La forma más simple de plantearlo: hace un año, la pregunta era *si mi product
 
 ## Cierre
 
-Tres aplicaciones. Dos rechazos. Una aceptación. *Make something people want* pegado a mi laptop por mucho tiempo. No la voy a despegar — el principio sigue intacto, y el principio es lo que nos hizo entrar.
-
-Lo que cambió es a quién apunta *people*. La frase de PG se escribió cuando YC tenía tres años y "usuarios" todavía significaba humanos. Veinte años después significa algo más borroso — en parte humanos, en parte los agentes actuando por ellos, y cada vez más los agentes actuando por sus propias metas dentro de los scopes que los humanos definen. La metodología aplica. El público se expandió.
+*Make something people want* no se retiró. Se generalizó. La frase de PG se escribió cuando "usuarios" significaba humanos haciendo clic. Veinte años después significa algo más borroso — en parte humanos, en parte los agentes actuando por ellos, y cada vez más los agentes actuando por sus propias metas dentro de los scopes que los humanos definen. La metodología aplica. El público se expandió.
 
 Si estás construyendo ahora, la pregunta que Aaron Epstein metió en el RFS es la que toca sostener. No como slogan. Como función forzante. *¿Un agente que funciona elegiría esto?* Si la respuesta es "sí, eventualmente, después de que rediseñemos la UI," la respuesta es no. El agente ya está decidiendo. El rediseño es el trabajo.
 

@@ -10,13 +10,13 @@ series: "working-with-agents"
 seriesOrder: 6
 ---
 
-We applied to Y Combinator three times. Got rejected twice. The third time, in 2021, [DailyBot got in](/blog/how-we-got-into-y-combinator/) — the S21 batch. By then the phrase "Make something people want" was already in my bones. It was taped to walls at YC events. It was the first thing partners asked when we pitched. It was on a sticker on my laptop for years.
+Something shifted in how the tech industry talks about AI agents, and you can see the exact two posts where it happened.
 
-So when I scrolled past a YC post on April 27 and saw it close with *"So if you're Making Something Agents Want, we'd love to hear from you"* — I read the sentence three times. It felt like seeing a familiar word slightly misspelled. The kind of misspelling that's deliberate.
+**April 27, 2026.** Y Combinator's account publishes a Request for Startups called *Software for Agents.* The kicker, written by [Aaron Epstein](https://www.ycombinator.com/people/aaron-epstein), reads: *"So if you're Making Something Agents Want, we'd love to hear from you."* As [a YC alum](/blog/how-we-got-into-y-combinator/), the original phrase — *Make something people want* — has been in my head for years. Seeing one word swapped in that exact sentence is the kind of thing you notice on the second reading. The kind of misspelling that's deliberate.
 
-The next morning, April 28, Cloudflare's account posted this: *"Starting today, agents can now be Cloudflare customers."* Not "agents can now use Cloudflare." Customers. The word doing the work in that sentence is the noun.
+**April 28, 2026.** Cloudflare's account posts: *"Starting today, agents can now be Cloudflare customers."* Not "agents can now use Cloudflare." Customers. The word doing the work in that sentence is the noun.
 
-Two posts, 48 hours apart. Both said something the rest of the industry had been circling for months without quite naming. And I've been thinking about both of them since.
+Two posts. Forty-eight hours apart. Both said something the industry had been circling for months without quite naming. And I've been thinking about both since.
 
 ---
 
@@ -100,7 +100,7 @@ The phrase "Make something people want" comes from an essay Paul Graham publishe
 
 YC was three years old when PG wrote that. The phrase has outlasted three economic cycles. It's outlasted the iPhone's first decade, the rise and fall of crypto twice, the entire SaaS era. The reason it's outlasted everything is that it's almost impossible to argue with. *Want* is a measurable thing. Wanting is the only thing the market actually rewards.
 
-Honestly, I think of that sentence every time I look at a new product idea. Including this site you're reading. Including DailyBot. Including the three YC applications we wrote.
+Honestly, I think of that sentence every time I look at a new product idea. Including this site you're reading. Including DailyBot.
 
 Inverting the noun isn't trivial. Agents don't *want* the way humans want. They don't have boredom, status anxiety, a circle of friends to impress. What they have is goals, given to them by a human, and a context window, and the patience of a process. If the YC line means anything, it means: build the thing that makes that loop faster. Build the thing the agent picks because picking it gets the human's goal closer.
 
@@ -158,9 +158,7 @@ The simpler way I'd put it: a year ago, the question was *can my product work wi
 
 ## Closing
 
-Three applications. Two rejections. One acceptance. *Make something people want* taped to my laptop for a long time. I'm not going to peel it off — the principle is intact, and the principle is what got us in.
-
-What changed is who *people* points at. PG's sentence was written when YC was three years old and "users" still meant humans. Twenty years later it means something fuzzier — partly humans, partly the agents acting for them, increasingly the agents acting on their own goals inside scopes humans set. The methodology applies. The audience expanded.
+*Make something people want* didn't get retired. It got generalized. PG's sentence was written when "users" meant humans clicking. Twenty years later it means something fuzzier — partly humans, partly the agents acting for them, increasingly the agents acting on their own goals inside scopes humans set. The methodology applies. The audience expanded.
 
 If you're building right now, the question Aaron Epstein wrote into the RFS is the one to sit with. Not as a slogan. As a forcing function. *Would a working agent pick this?* If the answer is "yes, eventually, after we redesign the UI," the answer is no. The agent is already deciding. The redesign is the work.
 
