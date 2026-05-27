@@ -8,6 +8,7 @@ tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["construye algo que los agentes quieran", "agentes como clientes Cloudflare", "Y Combinator software para agentes", "agentes IA ciudadanos primera clase", "cómo construir software para agentes", "Cloudflare Stripe protocolo agentes", "economía de agentes 2026"]
 series: "working-with-agents"
 seriesOrder: 6
+draft: true
 ---
 
 Algo cambió en cómo la industria tech habla sobre los agentes de IA, y se puede ver concentrado en dos afirmaciones hechas con días de diferencia.
