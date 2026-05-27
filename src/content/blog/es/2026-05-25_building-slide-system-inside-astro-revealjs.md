@@ -18,7 +18,7 @@ La meta era concreta: quería que mis charlas vivieran en el mismo lugar que mi 
 
 Y había una segunda condición: que el sistema se pudiera pilotar con agentes de IA. Si las slides son texto plano —archivos `.md` en el repo— un agente puede generar una, reordenar una sección o traducir un deck entero igual que edita cualquier otro archivo, y yo me quedo con lo que de verdad importa: la narrativa.
 
-Este post es el caso de estudio de cómo lo construí: las decisiones de arquitectura, los dos tipos de presentaciones que el sistema soporta, y los problemas que solo aparecieron cuando empecé a usarlo frente a audiencias reales.
+Este post es el caso de estudio de cómo lo construí: las decisiones de arquitectura y los dos tipos de presentaciones que el sistema soporta.
 
 ## ¿Por qué Reveal.js?
 
