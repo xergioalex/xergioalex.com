@@ -98,6 +98,11 @@ From here the post gets more technical — it dives into specific tool configura
 
 For the developers still reading: most of the registry-side fixes — secure authentication, mandatory 2FA, cryptographic signing on every published package — happen on the publisher side and don't affect what shows up in your `node_modules` next Tuesday. The install-side baseline is on us. None of what follows is heroic, and most of it is one-line changes. The hard part is doing all of them, not just one. I just shipped this exact stack on this site in [PR #131](https://github.com/xergioalex/xergioalex.com/pull/131); the snippets below are taken from that diff verbatim.
 
+<figure>
+<img src="/images/blog/posts/supply-chain-attacks-ai-era/diagram-defense-layers.webp" alt="Vertical five-layer diagram showing how the post's defensive baseline filters a newly-published package before it reaches node_modules. Top to bottom: (0) Corepack pin unifies the pnpm version across all machines, (1) minimumReleaseAge of 7 days rejects newly-published versions, (2) --frozen-lockfile enforces concordance between package.json and the lockfile, (3) allowBuilds blocks unauthorized postinstall by default, (4) the npm-to-pnpm redirect inside the dev container catches commands typed from muscle memory. Whatever passes all five layers reaches node_modules." width="1086" height="1448" loading="lazy" style="max-width: 70%; display: block; margin: 0 auto;" />
+<figcaption>The defensive baseline as a layered filter. Each layer maps to one subsection below; each one stops the attack chain from Diagram 1 at a different point.</figcaption>
+</figure>
+
 ### Why pnpm, not npm
 
 Tool choice matters before configuration. In npm by default, every dependency can run arbitrary code on your machine the moment you finish typing `npm install` — through the `preinstall`, `install`, and `postinstall` hooks any package can declare in its `package.json`. Every incident in the previous section — Shai-Hulud, axios, Bitwarden CLI, TanStack — relied exactly on that automatic execution to do its work. A single `npm install` during any of those attack windows was enough to get infected.

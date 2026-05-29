@@ -98,6 +98,11 @@ A partir de aquí el post se vuelve más técnico — entra en configuración es
 
 Para los developers que sigan leyendo: la mayoría de los arreglos del lado del repositorio — autenticación segura, doble factor obligatorio, firmas criptográficas en cada paquete publicado — pasan del lado de quien publica, y no afectan lo que termina en tu `node_modules` el próximo martes. La línea base del lado del install nos toca a nosotros. Nada de lo que sigue es heroico, y casi todo son cambios de una línea. Lo difícil es hacerlos todos, no solo uno. Acabo de aterrizar este stack en este mismo sitio en el [PR #131](https://github.com/xergioalex/xergioalex.com/pull/131); los snippets de abajo están tomados de ese diff tal cual.
 
+<figure>
+<img src="/images/blog/posts/supply-chain-attacks-ai-era/diagram-defense-layers-es.webp" alt="Diagrama vertical de cinco capas que muestra cómo la línea base defensiva del post filtra un paquete recién publicado antes de que llegue a node_modules. De arriba a abajo: (0) Corepack pin uniformiza la versión de pnpm en todas las máquinas, (1) minimumReleaseAge de 7 días rechaza versiones recién publicadas, (2) --frozen-lockfile enforce concordancia entre package.json y el lockfile, (3) allowBuilds bloquea postinstall no autorizados por defecto, (4) el redirect de npm a pnpm en el dev container captura los comandos por memoria muscular. Lo que atraviesa las cinco capas llega a node_modules." width="1086" height="1448" loading="lazy" style="max-width: 70%; display: block; margin: 0 auto;" />
+<figcaption>La línea base defensiva como filtro en capas. Cada capa corresponde a una subsección abajo; cada una bloquea un punto distinto de la cadena de ataque del Diagrama 1.</figcaption>
+</figure>
+
 ### Por qué pnpm, no npm
 
 Antes que cualquier configuración: la herramienta misma importa. En npm por defecto, cada dependencia puede ejecutar código arbitrario en tu máquina apenas terminas de tipear `npm install` — a través de los hooks `preinstall`, `install` y `postinstall` que cualquier paquete puede declarar en su `package.json`. Todos los incidentes de la sección anterior — Shai-Hulud, axios, Bitwarden CLI, TanStack — dependieron exactamente de esa ejecución automática para hacer su trabajo. Un solo `npm install` durante la ventana de cualquiera de esos ataques era suficiente para quedar infectado.
