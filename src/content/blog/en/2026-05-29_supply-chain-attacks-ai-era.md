@@ -223,7 +223,7 @@ I also want to flag what *won't* help. Auditing your `node_modules` after instal
 
 ---
 
-## What you can do this week
+## What you can do right now
 
 If you only have one afternoon, the highest-leverage moves are:
 

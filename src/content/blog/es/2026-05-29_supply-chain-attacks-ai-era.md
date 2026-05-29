@@ -223,7 +223,7 @@ Tambi√©n quiero marcar lo que *no* va a ayudar. Auditar tu `node_modules` despu√
 
 ---
 
-## Lo que puedes hacer esta semana
+## Lo que puedes hacer ahora mismo
 
 Si solo tienes una tarde, los movimientos de mayor palanca son:
 
