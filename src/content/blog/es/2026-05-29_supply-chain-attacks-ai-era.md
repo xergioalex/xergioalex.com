@@ -1,10 +1,10 @@
 ---
 title: "Ataques a la cadena de suministro en la era de la IA: el estado del open source en 2026"
 description: "En el último año, los repositorios públicos de paquetes han distribuido malware repetidas veces. Cómo funciona el ataque, por qué la IA cambió el juego, y cómo cerrarle el portillo."
-pubDate: 2026-05-19T10:00:00Z
+pubDate: 2026-05-29T10:00:00Z
 tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["ataque cadena de suministro 2026", "qué es minimumReleaseAge pnpm", "gusano Shai-Hulud npm", "CVE-2025-30066 tj-actions", "slopsquatting paquetes alucinados", "compromiso axios npm 2026", "Bitwarden CLI malicioso", "postmortem TanStack npm", "PyPI Trusted Publishing", "seguridad open source 2026"]
-heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero.webp"
+heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero-es.webp"
 heroLayout: banner
 draft: true
 ---

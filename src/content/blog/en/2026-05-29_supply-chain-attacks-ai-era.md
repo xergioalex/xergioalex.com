@@ -1,7 +1,7 @@
 ---
 title: "Supply chain attacks in the AI era: the state of open source in 2026"
 description: "Public package registries have shipped malware over and over this past year. What's happening, why AI changed the game, and how to lock down the install side."
-pubDate: 2026-05-19T10:00:00Z
+pubDate: 2026-05-29T10:00:00Z
 tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["supply chain attack 2026", "npm pnpm minimumReleaseAge", "Shai-Hulud worm", "tj-actions changed-files CVE-2025-30066", "slopsquatting", "axios npm compromise 2026", "Bitwarden CLI malicious 2026.4.0", "TanStack npm postmortem", "PyPI Trusted Publishing", "open source security 2026"]
 heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero.webp"
