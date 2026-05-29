@@ -75,12 +75,6 @@ In April 2026, Socket disclosed [SANDWORM_MODE](https://socket.dev/blog/sandworm
 
 And in May 2026, Socket exposed the [TrapDoor](https://socket.dev/blog/trapdoor-crypto-stealer-npm-pypi-crates) campaign — over 380 malicious versions distributed simultaneously across the Node.js, Python and Rust repositories. The second stage of the attack does something I hadn't seen before: it drops files called `.cursorrules` and `CLAUDE.md` on the computer — the files where developers store the rules and context their AI assistants should use. But those files use invisible characters from the Unicode standard: the developer opens them and only sees their own rules, while the AI assistant reads hostile hidden instructions. The next function the copilot generates may carry a backdoor the machine's owner never asked for. It's the natural evolution of slopsquatting: if the first generation poisoned the package name, this one poisons the prompt your agent is reading.
 
-### What I'm *not* claiming
-
-I have not seen a primary-source report that quantifies something like *"X% of phishing emails targeting npm developers in 2025 were AI-written."* That's an industry-consensus claim, supported by general research on phishing and language models, but I don't have a specific number to cite. Same for AI-generated typosquats at scale — the academic study I cited proves the supply side (the models hallucinate); the demand-side measurement (how many developers actually fall for it) isn't published yet.
-
-Honestly, I don't think the verified pieces need an exaggerated version. Slopsquatting + code targeting AI assistants + worms that rewrite themselves with local AI + AI keys stolen and resold — that's already a coherent system. The attacker uses AI to find names, AI to obfuscate code, AI tooling on the victim machine to expand the attack, and stolen AI keys to fund the next round. Five years ago none of those vectors existed. Today they're the foundation of several of the most active campaigns.
-
 ### When AI finds the vulnerabilities first
 
 Everything above acts *after* the vulnerability exists. The axis opening up in parallel — and the more uncomfortable one — is discovery itself.

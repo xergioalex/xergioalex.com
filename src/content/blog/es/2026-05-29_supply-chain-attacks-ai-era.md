@@ -75,12 +75,6 @@ En abril de 2026, Socket destapó [SANDWORM_MODE](https://socket.dev/blog/sandwo
 
 Y en mayo de 2026, Socket destapó la campaña [TrapDoor](https://socket.dev/blog/trapdoor-crypto-stealer-npm-pypi-crates) — más de 380 versiones maliciosas distribuidas simultáneamente en los repositorios de Node.js, Python y Rust. La segunda etapa del ataque hace algo que no había visto antes: deja en el computador archivos llamados `.cursorrules` y `CLAUDE.md` — los archivos donde los desarrolladores guardan las reglas y el contexto que sus asistentes de IA deben usar. Pero esos archivos usan caracteres invisibles del estándar Unicode: el desarrollador los abre y solo ve sus propias reglas, mientras el asistente de IA lee instrucciones hostiles ocultas. La siguiente función que el copiloto genere puede traer un backdoor que el dueño del computador nunca pidió. Es la evolución natural del slopsquatting: si la primera generación contaminaba el nombre del paquete, esta contamina el prompt que tu agente está leyendo.
 
-### Lo que *no* estoy afirmando
-
-No he visto un reporte de fuente primaria que cuantifique algo como *"X% de los correos de phishing dirigidos a desarrolladores de npm en 2025 fueron escritos por IA."* Es un consenso de la industria, respaldado por investigación general sobre phishing y modelos de lenguaje, pero no tengo un número específico para citar. Lo mismo con paquetes de nombre falso generados a escala por IA — el estudio académico que cité prueba el lado de la oferta (los modelos alucinan); la medición del lado de la demanda (cuántos desarrolladores realmente caen) todavía no está publicada.
-
-Honestamente, no creo que las piezas verificadas necesiten una versión exagerada. Slopsquatting + código que apunta a los asistentes de IA + gusanos que se reescriben con IA local + claves de IA robadas y vendidas — eso ya es un sistema coherente. El atacante usa IA para encontrar nombres, IA para ofuscar el código, herramientas de IA en la máquina víctima para expandir el ataque, y claves de IA robadas para financiar la siguiente ronda. Hace cinco años ninguno de esos vectores existía. Hoy son la base de varias de las campañas más activas.
-
 ### Cuando la IA encuentra las vulnerabilidades antes que tú
 
 Todo lo anterior actúa *después* de que la vulnerabilidad existe. El eje que se viene abriendo en paralelo — y el más incómodo — es el del descubrimiento.
