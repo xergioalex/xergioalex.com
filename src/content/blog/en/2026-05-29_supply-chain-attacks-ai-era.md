@@ -6,12 +6,12 @@ tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["supply chain attack 2026", "npm pnpm minimumReleaseAge", "Shai-Hulud worm", "tj-actions changed-files CVE-2025-30066", "slopsquatting", "axios npm compromise 2026", "Bitwarden CLI malicious 2026.4.0", "TanStack npm postmortem", "PyPI Trusted Publishing", "open source security 2026"]
 heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero.webp"
 heroLayout: banner
-draft: true
+draft: false
 ---
 
 Modern software runs on third-party dependencies. Every time a developer builds or ships an application, their package manager automatically resolves dozens — sometimes hundreds — of dependencies from public registries; and that step is increasingly run by an AI agent acting on their behalf. There are millions of packages in those registries. And over the past year, several of the most popular have been hijacked to ship malicious code.
 
-The track record from the past year speaks for itself. In September 2025, npm saw [its first self-replicating worm](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised): code that, once installed on a developer's machine, harvested their credentials and republished itself into other packages owned by the same person — infecting hundreds within days. In March, [axios](https://socket.dev/blog/axios-npm-package-compromised) — a library used by thousands of companies, with over 100 million weekly downloads — shipped two malicious versions inside a 39-minute window. In April, [Bitwarden's command-line tool](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) was under attacker control for ninety minutes, and the first thing the malware did once it landed on a machine was scan for installed AI coding assistants. Then May: [42 packages in the `@tanstack/*` organization](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) compromised in a six-minute window, and eight days later [hundreds more under `@antv/*`](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/) in a twenty-two-minute one.
+The track record from the past year speaks for itself. In September 2025, npm saw [its first self-replicating worm](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised): code that, once installed on a developer's machine, harvested their credentials and republished itself into other packages owned by the same person — infecting hundreds within days. In March, [axios](https://socket.dev/blog/axios-npm-package-compromised) — a library used by thousands of companies, with over 100 million weekly downloads — shipped two malicious versions inside a 39-minute window. In April, [Bitwarden's command-line tool](https://www.paloaltonetworks.com/blog/cloud-security/bitwardencli-supply-chain-attack/) was under attacker control for ninety minutes, and the first thing the malware did once it landed on a machine was scan for installed AI coding assistants. Then May: [42 packages in the `@tanstack/*` organization](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) compromised in a six-minute window, eight days later [hundreds more under `@antv/*`](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/) in a twenty-two-minute one, and just as I was writing this post, Microsoft caught [14 typosquats of `@opensearch-project`](https://www.microsoft.com/en-us/security/blog/2026/05/28/typosquatted-npm-packages-used-steal-cloud-ci-cd-secrets/) no longer chasing developer credentials — going straight for AWS and CI/CD pipeline secrets.
 
 If you ship software in 2026, the repositories you depend on are under coordinated attack. Malicious packages have always existed — what's new is the speed, the scale, and AI breaking into both sides of the game. On the attacker side, AI is being used to invent plausible-sounding package names, to re-obfuscate the malicious code between victims, and to target the developer's own AI coding assistants. On the victim side, those same assistants are running `npm install` for us with less and less human review. A poisoned agent writes poisoned code for months.
 
@@ -22,6 +22,11 @@ What follows is a map of what's happening, who's getting hit, and how AI is rewr
 ## The wave is not just npm
 
 The headlines are mostly about npm because it's the registry with the biggest blast radius — a single popular package can have hundreds of millions of weekly downloads. But the same playbook has been running on every major public registry.
+
+<figure class="fig-narrow fig-narrow-70">
+<img src="/images/blog/posts/supply-chain-attacks-ai-era/diagram-attack-anatomy.webp" alt="Horizontal six-stage diagram showing the typical anatomy of an npm supply-chain attack: (1) maintainer account or publishing-pipeline compromise, (2) a malicious version published in a short 6 to 90-minute window, (3) automatic download via routine npm install or the next CI build, (4) execution of the postinstall script declared in package.json, (5) credential theft — AWS, GitHub, npm publish token, 1Password vault keys — and (6) exfiltration to a public repository along with propagation to other packages owned by the same maintainer, forming the self-replicating loop that defined Shai-Hulud." width="1200" height="1200" loading="lazy" />
+<figcaption>Typical anatomy of a supply-chain attack: from maintainer compromise to exfiltration. The loop from stage 6 back to stage 2 is what turns Shai-Hulud into a worm.</figcaption>
+</figure>
 
 In its [State of the Software Supply Chain 2026](https://www.sonatype.com/state-of-the-software-supply-chain/introduction), Sonatype counted over 454,000 new malicious packages in 2025 alone — up 75% year over year. From the same report: developers accept 39% of AI-suggested code without review. Those two numbers, read together, explain why today's attacks feel different from the ones five years ago.
 
@@ -36,6 +41,8 @@ In its [State of the Software Supply Chain 2026](https://www.sonatype.com/state-
 **TanStack (May 11, 2026).** TanStack is a popular collection of libraries in the React world. The [official postmortem](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem) walks through three chained vulnerabilities in the automated system the team uses to publish new versions: someone leveraged that chain to extract the credential the pipeline uses to publish to npm, and used it to ship 84 malicious versions across 42 packages. Detection took 20–26 minutes; all of them were deprecated within an hour and 43 minutes. Fast response. Still very bad. [OpenAI published its own postmortem](https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack/) confirming two corporate devices were impacted, and responded by rolling out a specific defense (`minimumReleaseAge`, covered later in this post) across all of its internal pipelines. It's the first documented adoption at an organization of that size.
 
 **AntV (May 19, 2026).** Eight days after TanStack, another massive wave. The account of a maintainer of data-visualization packages published [637 malicious versions across 317 packages in a 22-minute window](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/), including some with real traffic (`size-sensor`, `echarts-for-react`, `timeago.js` — several million weekly downloads each). [Microsoft Security attributed the attack to TeamPCP](https://threats.wiz.io/all-actors/teampcp), the same group behind recent Shai-Hulud variants. The code stole credentials from password managers, cloud access, and infrastructure permissions. But the important thing here is the scale: 637 versions in 22 minutes isn't published by hand. The attackers automated the supply side. The defenders — review, alert, deprecate — are still human.
+
+**vpmdhaj typosquats (May 28, 2026).** Microsoft Security disclosed [14 malicious packages](https://www.microsoft.com/en-us/security/blog/2026/05/28/typosquatted-npm-packages-used-steal-cloud-ci-cd-secrets/) published over four hours by a newly-registered account under the alias `vpmdhaj`. All of them mimicked names from the official `opensearch-project` org (`opensearch-setup`, `opensearch-security-scanner`, `elastic-opensearch-helper`, among others) — classic typosquatting aimed at developers reaching for legitimate OpenSearch or ElasticSearch tooling. What's new is the target. The `preinstall` script downloads the Bun runtime directly from GitHub Releases — a signed, legitimate binary — and uses it to execute a 195 KB credential harvester. That harvester queries AWS's internal metadata services — EC2 and ECS, the endpoints that expose temporary credentials for instances and containers — enumerates AWS Secrets Manager across 16+ regions, reads HashiCorp Vault tokens, validates npm publish tokens, and captures GitHub Actions runner context. It's not personal-machine credential theft: it's targeted CI/CD and cloud infrastructure theft. And unlike the rest of the incidents on this list, Microsoft did not attribute the campaign to Shai-Hulud or TeamPCP — new actor, new target.
 
 ### PyPI — same playbook, fewer headlines
 
@@ -92,6 +99,11 @@ That doesn't invalidate the defensive baseline coming next. It puts a ceiling on
 From here the post gets more technical — it dives into specific tool configuration. If you're not a developer, the important takeaway is that **these attacks are preventable** with small, well-documented changes. If you have a technical team, send them this link.
 
 For the developers still reading: most of the registry-side fixes — secure authentication, mandatory 2FA, cryptographic signing on every published package — happen on the publisher side and don't affect what shows up in your `node_modules` next Tuesday. The install-side baseline is on us. None of what follows is heroic, and most of it is one-line changes. The hard part is doing all of them, not just one. I just shipped this exact stack on this site in [PR #131](https://github.com/xergioalex/xergioalex.com/pull/131); the snippets below are taken from that diff verbatim.
+
+<figure class="fig-narrow fig-narrow-60">
+<img src="/images/blog/posts/supply-chain-attacks-ai-era/diagram-defense-layers.webp" alt="Vertical five-layer diagram showing how the post's defensive baseline filters a newly-published package before it reaches node_modules. Top to bottom: (0) Corepack pin unifies the pnpm version across all machines, (1) minimumReleaseAge of 7 days rejects newly-published versions, (2) --frozen-lockfile enforces concordance between package.json and the lockfile, (3) allowBuilds blocks unauthorized postinstall by default, (4) the npm-to-pnpm redirect inside the dev container catches commands typed from muscle memory. Whatever passes all five layers reaches node_modules." width="1086" height="1448" loading="lazy" />
+<figcaption>The defensive baseline as a layered filter. Each layer maps to one subsection below; each one stops the attack chain from Diagram 1 at a different point.</figcaption>
+</figure>
 
 ### Why pnpm, not npm
 
@@ -213,7 +225,7 @@ I also want to flag what *won't* help. Auditing your `node_modules` after instal
 
 ---
 
-## What you can do this week
+## What you can do right now
 
 If you only have one afternoon, the highest-leverage moves are:
 
@@ -250,6 +262,7 @@ Let's keep building. Carefully.
 - [Socket axios compromise writeup](https://socket.dev/blog/axios-npm-package-compromised)
 - [StepSecurity Shai-Hulud analysis](https://www.stepsecurity.io/blog/ctrl-tinycolor-and-40-npm-packages-compromised)
 - [Microsoft Security Blog — AntV compromise analysis](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/)
+- [vpmdhaj typosquats targeting OpenSearch — Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/2026/05/28/typosquatted-npm-packages-used-steal-cloud-ci-cd-secrets/)
 - [TeamPCP (UNC6780) actor profile — Wiz](https://threats.wiz.io/all-actors/teampcp)
 - [TrapDoor campaign (`.cursorrules` / `CLAUDE.md` poisoning) — Socket](https://socket.dev/blog/trapdoor-crypto-stealer-npm-pypi-crates)
 - [Wiz analysis of tj-actions/changed-files (CVE-2025-30066)](https://www.wiz.io/blog/github-action-tj-actions-changed-files-supply-chain-attack-cve-2025-30066)

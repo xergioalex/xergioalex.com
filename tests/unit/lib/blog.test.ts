@@ -216,17 +216,56 @@ describe('getReadingTimeFromContent', () => {
   });
 
   it('returns correct reading time for long content (500 words = 3 min)', () => {
-    // 500 words / 200 WPM = 2.5, ceil = 3
+    // 500 words / 240 WPM = 2.083, ceil = 3
     expect(getReadingTimeFromContent(longContent)).toBe(3);
   });
 
-  it('returns correct reading time for 200 words (1 minute)', () => {
-    const twoHundredWords = Array(200).fill('word').join(' ');
-    expect(getReadingTimeFromContent(twoHundredWords)).toBe(1);
+  it('returns correct reading time for 240 words (1 minute)', () => {
+    const oneMinuteWorth = Array(240).fill('word').join(' ');
+    expect(getReadingTimeFromContent(oneMinuteWorth)).toBe(1);
   });
 
-  it('returns correct reading time for 201 words (2 minutes)', () => {
-    const twoHundredOneWords = Array(201).fill('word').join(' ');
-    expect(getReadingTimeFromContent(twoHundredOneWords)).toBe(2);
+  it('returns correct reading time for 241 words (2 minutes)', () => {
+    const justOverOneMinute = Array(241).fill('word').join(' ');
+    expect(getReadingTimeFromContent(justOverOneMinute)).toBe(2);
+  });
+});
+
+// ─── normalizeContentForWordCount via getWordCount ──────
+
+describe('getWordCount normalization', () => {
+  it('strips frontmatter', () => {
+    const withFm = '---\ntitle: foo\ndraft: false\n---\nOne two three.';
+    expect(getWordCount(withFm)).toBe(3);
+  });
+
+  it('strips the Resources section', () => {
+    const withResources =
+      'One two three.\n\n## Resources\n- [Link](https://example.com)\n- Another reference here';
+    expect(getWordCount(withResources)).toBe(3);
+  });
+
+  it('strips the Spanish Recursos section', () => {
+    const withRecursos =
+      'Uno dos tres.\n\n## Recursos\n- [Enlace](https://example.com)\n- Otra referencia';
+    expect(getWordCount(withRecursos)).toBe(3);
+  });
+
+  it('preserves visible text inside markdown links', () => {
+    const withLink = 'See [the report](https://example.com) for details.';
+    // 'See the report for details.' -> 5 words
+    expect(getWordCount(withLink)).toBe(5);
+  });
+
+  it('strips entire HTML figure blocks (alt text and figcaption)', () => {
+    const withFigure =
+      'Before figure.\n<figure>\n<img alt="lots of words here describing the image" />\n<figcaption>extra caption words</figcaption>\n</figure>\nAfter figure.';
+    // 'Before figure. After figure.' -> 4 words
+    expect(getWordCount(withFigure)).toBe(4);
+  });
+
+  it('strips bare HTML tags', () => {
+    const withTags = 'Hello <span class="x">world</span> here.';
+    expect(getWordCount(withTags)).toBe(3);
   });
 });

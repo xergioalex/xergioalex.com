@@ -2,7 +2,7 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import { BLOG_PAGE_SIZE, SITE_TIMEZONE } from './constances';
 import type { BlogParamsType, BlogPostsResultType, SeriesInfo } from './types';
 
-const WORDS_PER_MINUTE = 200;
+const WORDS_PER_MINUTE = 240;
 
 export interface SearchIndexEntry {
   id: string;
@@ -141,15 +141,34 @@ export async function getPostBySlug(
 }
 
 /**
- * Remove markdown syntax and normalize content for word counting.
+ * Remove markdown/HTML/non-reading content and normalize for word counting.
+ *
+ * Excludes from the count:
+ *  - Frontmatter block
+ *  - Everything from the trailing `## Recursos` / `## Resources` heading
+ *    onward (citations are skim, not prose)
+ *  - Fenced and inline code blocks (skim/copy, not read)
+ *  - Markdown image syntax `![alt](url)`
+ *  - HTML `<figure>` blocks entirely (alt text and figcaption are
+ *    author-aid / accessibility, not reader time)
+ *  - All other HTML tags
+ *  - Markdown formatting characters (#, *, _, etc.)
+ *
+ * Preserves:
+ *  - Visible text inside markdown links `[text](url)` -> `text`
+ *  - Hyphenated compounds (counted as one word)
  */
 function normalizeContentForWordCount(content: string): string {
   return content
+    .replace(/^---\n[\s\S]*?\n---\n?/, '')
+    .replace(/\n## (Recursos|Resources)\b[\s\S]*$/, '')
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/`[^`]*`/g, ' ')
     .replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
-    .replace(/\[[^\]]*\]\([^)]+\)/g, ' ')
-    .replace(/[#>*_~-]+/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/<figure[\s\S]*?<\/figure>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[#>*_~]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
