@@ -97,7 +97,7 @@ For the developers still reading: most of the registry-side fixes — secure aut
 
 Tool choice matters before configuration. In npm by default, every dependency can run arbitrary code on your machine the moment you finish typing `npm install` — through the `preinstall`, `install`, and `postinstall` hooks any package can declare in its `package.json`. Every incident in the previous section — Shai-Hulud, axios, Bitwarden CLI, TanStack — relied exactly on that automatic execution to do its work. A single `npm install` during any of those attack windows was enough to get infected.
 
-Since [pnpm 10](https://pnpm.io/blog/releases/10.0), those scripts are blocked by default. pnpm assumes no dependency has the right to run code on your machine, and you explicitly allow-list the ones that do — that's the `allowBuilds` subsection below. On top of that, `minimumReleaseAge` (also below) refuses newly-published versions. npm has no equivalent for either behavior today.
+Since [pnpm 10](https://github.com/orgs/pnpm/discussions/8945), those scripts are blocked by default. pnpm assumes no dependency has the right to run code on your machine, and you explicitly allow-list the ones that do — that's the `allowBuilds` subsection below. On top of that, `minimumReleaseAge` (also below) refuses newly-published versions. npm has no equivalent for either behavior today.
 
 That's why this site moved from npm to pnpm: not personal preference, threat model. Every subsection that follows assumes you're already on pnpm. If you're coming from npm, this is the single change that gives you the biggest surface reduction for the smallest investment.
 
