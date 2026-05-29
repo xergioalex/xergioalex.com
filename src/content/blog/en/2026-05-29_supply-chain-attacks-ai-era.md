@@ -6,7 +6,7 @@ tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["supply chain attack 2026", "npm pnpm minimumReleaseAge", "Shai-Hulud worm", "tj-actions changed-files CVE-2025-30066", "slopsquatting", "axios npm compromise 2026", "Bitwarden CLI malicious 2026.4.0", "TanStack npm postmortem", "PyPI Trusted Publishing", "open source security 2026"]
 heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero.webp"
 heroLayout: banner
-draft: true
+draft: false
 ---
 
 Modern software runs on third-party dependencies. Every time a developer builds or ships an application, their package manager automatically resolves dozens — sometimes hundreds — of dependencies from public registries; and that step is increasingly run by an AI agent acting on their behalf. There are millions of packages in those registries. And over the past year, several of the most popular have been hijacked to ship malicious code.

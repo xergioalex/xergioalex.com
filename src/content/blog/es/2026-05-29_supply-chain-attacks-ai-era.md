@@ -1,12 +1,12 @@
 ---
 title: "Ataques a la cadena de suministro en la era de la IA: el estado del open source en 2026"
-description: "En el último año, los repositorios públicos de paquetes han distribuido malware repetidas veces. Cómo funciona el ataque, por qué la IA cambió el juego, y cómo cerrarle el portillo."
+description: "Los registros públicos de paquetes distribuyeron malware una y otra vez el último año. Qué pasa, por qué la IA cambió el juego, y cómo blindar el install."
 pubDate: 2026-05-29T10:00:00Z
 tags: ["tech", "devops", "ai", "javascript"]
 keywords: ["ataque cadena de suministro 2026", "qué es minimumReleaseAge pnpm", "gusano Shai-Hulud npm", "CVE-2025-30066 tj-actions", "slopsquatting paquetes alucinados", "compromiso axios npm 2026", "Bitwarden CLI malicioso", "postmortem TanStack npm", "PyPI Trusted Publishing", "seguridad open source 2026"]
 heroImage: "/images/blog/posts/supply-chain-attacks-ai-era/hero-es.webp"
 heroLayout: banner
-draft: true
+draft: false
 ---
 
 El software moderno se construye sobre dependencias de terceros. Cada vez que un desarrollador construye o publica una aplicación, su gestor de paquetes resuelve automáticamente decenas — a veces cientos — de dependencias desde repositorios públicos; y ese paso cada vez lo ejecuta más un agente de IA actuando en su nombre. Hay millones de paquetes circulando en esos repositorios. Y en el último año, varios de los más populares han sido secuestrados para distribuir código malicioso.

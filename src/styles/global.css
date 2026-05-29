@@ -130,6 +130,10 @@
 }
 
 @media (min-width: 768px) {
-  .fig-narrow-70 img { max-width: 70%; }
-  .fig-narrow-60 img { max-width: 60%; }
+  .fig-narrow-70 img {
+    max-width: 70%;
+  }
+  .fig-narrow-60 img {
+    max-width: 60%;
+  }
 }
