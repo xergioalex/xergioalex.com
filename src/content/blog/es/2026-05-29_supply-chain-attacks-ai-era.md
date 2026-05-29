@@ -23,6 +23,11 @@ Lo que sigue es un mapa de lo que está pasando, a quién están golpeando, y c�
 
 Los titulares se concentran en npm porque es el registro con el mayor radio de impacto — un solo paquete popular puede tener cientos de millones de descargas semanales. Pero el mismo libreto viene corriendo en todos los registros públicos importantes.
 
+<figure>
+<img src="/images/blog/posts/supply-chain-attacks-ai-era/diagram-attack-anatomy-es.webp" alt="Diagrama horizontal de seis etapas que muestra la anatomía típica de un ataque a la cadena de suministro npm: (1) compromiso del mantenedor o del pipeline de publicación, (2) publicación de una versión maliciosa en una ventana corta de 6 a 90 minutos, (3) descarga automática vía npm install rutinario o el siguiente build del CI, (4) ejecución del script postinstall declarado en package.json, (5) robo de credenciales — AWS, GitHub, token de publicación de npm, accesos a 1Password — y (6) exfiltración a un repositorio público acompañada de propagación a otros paquetes del mismo dueño, formando el bucle auto-replicante que caracterizó a Shai-Hulud." width="1200" height="1200" loading="lazy" />
+<figcaption>Anatomía típica de un ataque a la cadena de suministro: del compromiso del mantenedor a la exfiltración. El bucle de la etapa 6 a la etapa 2 es lo que convierte a Shai-Hulud en gusano.</figcaption>
+</figure>
+
 En su [State of the Software Supply Chain 2026](https://www.sonatype.com/state-of-the-software-supply-chain/introduction), Sonatype contó más de 454.000 paquetes maliciosos nuevos solo en 2025 — un 75% más que el año anterior. En el mismo reporte: los desarrolladores aceptan el 39% del código sugerido por IA sin revisar. Esos dos números, leídos juntos, explican por qué los ataques de hoy se sienten distintos a los de hace cinco años.
 
 ### npm — los incidentes que hicieron ruido

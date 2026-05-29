@@ -23,6 +23,11 @@ What follows is a map of what's happening, who's getting hit, and how AI is rewr
 
 The headlines are mostly about npm because it's the registry with the biggest blast radius — a single popular package can have hundreds of millions of weekly downloads. But the same playbook has been running on every major public registry.
 
+<figure>
+<img src="/images/blog/posts/supply-chain-attacks-ai-era/diagram-attack-anatomy.webp" alt="Horizontal six-stage diagram showing the typical anatomy of an npm supply-chain attack: (1) maintainer account or publishing-pipeline compromise, (2) a malicious version published in a short 6 to 90-minute window, (3) automatic download via routine npm install or the next CI build, (4) execution of the postinstall script declared in package.json, (5) credential theft — AWS, GitHub, npm publish token, 1Password vault keys — and (6) exfiltration to a public repository along with propagation to other packages owned by the same maintainer, forming the self-replicating loop that defined Shai-Hulud." width="1200" height="1200" loading="lazy" />
+<figcaption>Typical anatomy of a supply-chain attack: from maintainer compromise to exfiltration. The loop from stage 6 back to stage 2 is what turns Shai-Hulud into a worm.</figcaption>
+</figure>
+
 In its [State of the Software Supply Chain 2026](https://www.sonatype.com/state-of-the-software-supply-chain/introduction), Sonatype counted over 454,000 new malicious packages in 2025 alone — up 75% year over year. From the same report: developers accept 39% of AI-suggested code without review. Those two numbers, read together, explain why today's attacks feel different from the ones five years ago.
 
 ### npm — the headline incidents
