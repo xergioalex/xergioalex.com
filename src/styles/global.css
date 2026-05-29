@@ -118,3 +118,18 @@
     animation: none;
   }
 }
+
+/* Constrained centered figures for blog post diagrams.
+ * Mobile: image fills full content width.
+ * Desktop (>= 768px): image is constrained for breathing room.
+ */
+.fig-narrow img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .fig-narrow-70 img { max-width: 70%; }
+  .fig-narrow-60 img { max-width: 60%; }
+}
