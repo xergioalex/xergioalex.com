@@ -228,6 +228,8 @@ None of these protect you from a determined adversary who knows you specifically
 
 The ecosystem isn't going to fix this for us. Registries are doing real work — PyPI 2FA is mandatory, npm provenance is GA, RubyGems and crates.io are on Sigstore — but the install-side responsibility is on the people who build software. That's us.
 
+We've spent years building software on a layer of trust we almost never name out loud: trust in maintainers we don't know, in registries we don't control, in tools that update themselves. That contract was always fragile. What changed this year is that we know it now. And even so, the answer isn't to stop — the software community has been through shifts like this before. From downloading tarballs over FTP to Git with verifiable hashes. From long-lived credentials to ephemeral OIDC. From fragile servers to immutable infrastructure. Every time the attack surface expanded, defaults hardened, tooling sharpened, postmortems got shared. This round is the next iteration of the same pattern. And the same reasoning capability that lets a model find a 28-year-old bug in OpenBSD is what's making us more productive than we've ever been. That's not a contradiction — it's the deal. Power that compounds in both directions.
+
 Let's keep building. Carefully.
 
 ---

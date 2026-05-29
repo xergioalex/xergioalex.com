@@ -228,6 +228,8 @@ Nada de esto te protege de un adversario determinado que te conoce a ti específ
 
 El ecosistema no va a arreglar esto por nosotros. Los registros están haciendo trabajo real — el 2FA en PyPI es obligatorio, la provenance de npm está en GA, RubyGems y crates.io están sobre Sigstore — pero la responsabilidad del lado del install la cargamos los que construimos software. O sea, nosotros.
 
+Llevamos años construyendo software sobre una capa de confianza que casi nunca verbalizamos: confianza en mantenedores que no conocemos, en registros que no controlamos, en herramientas que se actualizan solas. Ese contrato siempre fue frágil. Lo que cambió este año es que ahora lo sabemos. Y aun así, no se trata de detenerse — la comunidad de software ya pasó por giros parecidos. De descargar tarballs por FTP a Git con hashes verificables. De credenciales permanentes a OIDC efímero. De servidores frágiles a infraestructura inmutable. Cada vez que la superficie de ataque se expandió, los defaults se endurecieron, las herramientas se afinaron, los postmortems se compartieron. Esta ronda es la siguiente iteración del mismo patrón. Y la misma capacidad de razonamiento que hoy le permite a un modelo encontrar un bug de 28 años en OpenBSD es la que nos está haciendo más productivos de lo que jamás fuimos. No es una contradicción — es el trato. Poder que compone en las dos direcciones.
+
 A seguir construyendo. Con cuidado.
 
 ---
