@@ -97,9 +97,11 @@ For the developers still reading: most of the registry-side fixes — secure aut
 
 Tool choice matters before configuration. In npm by default, every dependency can run arbitrary code on your machine the moment you finish typing `npm install` — through the `preinstall`, `install`, and `postinstall` hooks any package can declare in its `package.json`. Every incident in the previous section — Shai-Hulud, axios, Bitwarden CLI, TanStack — relied exactly on that automatic execution to do its work. A single `npm install` during any of those attack windows was enough to get infected.
 
-Since [pnpm 10](https://github.com/orgs/pnpm/discussions/8945), those scripts are blocked by default. pnpm assumes no dependency has the right to run code on your machine, and you explicitly allow-list the ones that do — that's the `allowBuilds` subsection below. On top of that, `minimumReleaseAge` (also below) refuses newly-published versions. npm has no equivalent for either behavior today.
+Since [pnpm 10](https://github.com/orgs/pnpm/discussions/8945), those scripts are blocked by default. pnpm assumes no dependency has the right to run code on your machine, and you explicitly allow-list the ones that do — that's the `allowBuilds` subsection below. On top of that, `minimumReleaseAge` (also below) refuses newly-published versions. And since pnpm 11, that cooldown ships on by default.
 
-That's why this site moved from npm to pnpm: not personal preference, threat model. Every subsection that follows assumes you're already on pnpm. If you're coming from npm, this is the single change that gives you the biggest surface reduction for the smallest investment.
+npm has pieces covering the same ground, but all are opt-in and clunkier. `ignore-scripts=true` in `.npmrc` disables lifecycle scripts in bulk — with no native per-package allow-list; for that you need a third-party plugin like [`@lavamoat/allow-scripts`](https://github.com/LavaMoat/LavaMoat). And `min-release-age` [landed in npm CLI 11.10](https://socket.dev/blog/npm-introduces-minimumreleaseage-and-bulk-oidc-configuration), but it's off by default and offers no per-package exclusions.
+
+The difference is ergonomics and defaults, not absolute capability. That's why this site moved from npm to pnpm: not personal preference, threat model. Every subsection that follows assumes you're already on pnpm. If you're coming from npm, this is the single change that gives you the biggest surface reduction for the smallest investment.
 
 ### Pin the package manager via Corepack
 
@@ -215,7 +217,7 @@ I also want to flag what *won't* help. Auditing your `node_modules` after instal
 
 If you only have one afternoon, the highest-leverage moves are:
 
-1. If you're on npm, migrate to pnpm and pin the version via Corepack (`"packageManager"` in `package.json`). On pnpm, install scripts are blocked by default and `minimumReleaseAge` exists — neither has an npm equivalent today.
+1. If you're on npm, consider migrating to pnpm and pin the version via Corepack (`"packageManager"` in `package.json`). pnpm blocks install scripts with a per-package allow-list and the cooldown ships on by default since v11 — the npm equivalents (`ignore-scripts`, `min-release-age` since 11.10) exist but are opt-in and less granular.
 2. If you're on pnpm 10.16 or later, add `minimumReleaseAge` to `pnpm-workspace.yaml`. Even 24 hours is dramatically better than zero.
 3. If your stack is Python, force `pip install --only-binary=:all: --require-hashes` against a lockfile compiled with [uv](https://docs.astral.sh/uv/) or [pip-tools](https://pip-tools.readthedocs.io/). It blocks sdist execution at install time.
 4. Audit your automated pipelines. Any step that runs code from a fork before human review is a risk — that kind of setup was the foundation of the TanStack incident. If you have one, either remove it or scope its permissions to read-only.

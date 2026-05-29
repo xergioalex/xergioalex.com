@@ -97,9 +97,11 @@ Para los developers que sigan leyendo: la mayoría de los arreglos del lado del 
 
 Antes que cualquier configuración: la herramienta misma importa. En npm por defecto, cada dependencia puede ejecutar código arbitrario en tu máquina apenas terminas de tipear `npm install` — a través de los hooks `preinstall`, `install` y `postinstall` que cualquier paquete puede declarar en su `package.json`. Todos los incidentes de la sección anterior — Shai-Hulud, axios, Bitwarden CLI, TanStack — dependieron exactamente de esa ejecución automática para hacer su trabajo. Un solo `npm install` durante la ventana de cualquiera de esos ataques era suficiente para quedar infectado.
 
-Desde [pnpm 10](https://github.com/orgs/pnpm/discussions/8945), esos scripts están bloqueados por defecto. pnpm asume que ninguna dependencia tiene derecho a correr código en tu máquina, y tú declaras explícitamente cuáles sí — esa es la subsección de `allowBuilds` más abajo. A eso le suma `minimumReleaseAge` (también más abajo), que rechaza versiones recién publicadas. npm hoy no tiene equivalente para ninguno de los dos comportamientos.
+Desde [pnpm 10](https://github.com/orgs/pnpm/discussions/8945), esos scripts están bloqueados por defecto. pnpm asume que ninguna dependencia tiene derecho a correr código en tu máquina, y tú declaras explícitamente cuáles sí — esa es la subsección de `allowBuilds` más abajo. A eso le suma `minimumReleaseAge` (también más abajo), que rechaza versiones recién publicadas. Y desde pnpm 11, ese cooldown viene encendido por defecto.
 
-Esa diferencia es la razón por la que este sitio se movió de npm a pnpm: no por preferencia personal, por modelo de amenaza. El resto de subsecciones asume que ya estás en pnpm. Si vienes de npm, este es el cambio individual con mayor reducción de superficie de ataque.
+npm tiene piezas que cubren el mismo terreno, pero todas son opt-in y más toscas. `ignore-scripts=true` en `.npmrc` apaga los lifecycle scripts en bloque — sin allow-list nativa por paquete; para eso hace falta un plugin tercero como [`@lavamoat/allow-scripts`](https://github.com/LavaMoat/LavaMoat). Y `min-release-age` [aterrizó en npm CLI 11.10](https://socket.dev/blog/npm-introduces-minimumreleaseage-and-bulk-oidc-configuration), pero apagado por defecto y sin exclusiones por paquete.
+
+La diferencia es de ergonomía y defaults, no de capacidades absolutas. Por eso este sitio se movió de npm a pnpm: no por preferencia personal, por modelo de amenaza. El resto de subsecciones asume que ya estás en pnpm. Si vienes de npm, este es el cambio individual con mayor reducción de superficie de ataque por la inversión más pequeña.
 
 ### Pinear el package manager vía Corepack
 
@@ -215,7 +217,7 @@ También quiero marcar lo que *no* va a ayudar. Auditar tu `node_modules` despu�
 
 Si solo tienes una tarde, los movimientos de mayor palanca son:
 
-1. Si estás en npm, migra a pnpm y pinea la versión vía Corepack (`"packageManager"` en `package.json`). En pnpm los scripts de install están bloqueados por defecto y existe `minimumReleaseAge` — ninguno de los dos tiene equivalente en npm hoy.
+1. Si estás en npm, considera migrar a pnpm y pinea la versión vía Corepack (`"packageManager"` en `package.json`). pnpm bloquea install scripts con allow-list por paquete y el cooldown viene encendido desde v11 — los equivalentes en npm (`ignore-scripts`, `min-release-age` desde 11.10) existen pero son opt-in y menos granulares.
 2. Si estás en pnpm 10.16 o más reciente, agrega `minimumReleaseAge` a `pnpm-workspace.yaml`. Incluso 24 horas es dramáticamente mejor que cero.
 3. Si tu stack es Python, fuerza `pip install --only-binary=:all: --require-hashes` contra un lockfile compilado con [uv](https://docs.astral.sh/uv/) o [pip-tools](https://pip-tools.readthedocs.io/). Bloquea la ejecución de sdist en el momento del install.
 4. Audita tus pipelines automatizados. Cualquier paso que ejecute código que venga desde un fork antes del review humano es un riesgo — esa clase de configuración fue la base del incidente de TanStack. Si tienes uno, quítalo o limita sus permisos a solo-lectura.
