@@ -93,6 +93,14 @@ From here the post gets more technical — it dives into specific tool configura
 
 For the developers still reading: most of the registry-side fixes — secure authentication, mandatory 2FA, cryptographic signing on every published package — happen on the publisher side and don't affect what shows up in your `node_modules` next Tuesday. The install-side baseline is on us. None of what follows is heroic, and most of it is one-line changes. The hard part is doing all of them, not just one. I just shipped this exact stack on this site in [PR #131](https://github.com/xergioalex/xergioalex.com/pull/131); the snippets below are taken from that diff verbatim.
 
+### Why pnpm, not npm
+
+Tool choice matters before configuration. In npm by default, every dependency can run arbitrary code on your machine the moment you finish typing `npm install` — through the `preinstall`, `install`, and `postinstall` hooks any package can declare in its `package.json`. Every incident in the previous section — Shai-Hulud, axios, Bitwarden CLI, TanStack — relied exactly on that automatic execution to do its work. A single `npm install` during any of those attack windows was enough to get infected.
+
+Since [pnpm 10](https://pnpm.io/blog/releases/10.0), those scripts are blocked by default. pnpm assumes no dependency has the right to run code on your machine, and you explicitly allow-list the ones that do — that's the `allowBuilds` subsection below. On top of that, `minimumReleaseAge` (also below) refuses newly-published versions. npm has no equivalent for either behavior today.
+
+That's why this site moved from npm to pnpm: not personal preference, threat model. Every subsection that follows assumes you're already on pnpm. If you're coming from npm, this is the single change that gives you the biggest surface reduction for the smallest investment.
+
 ### Pin the package manager via Corepack
 
 ```json
@@ -168,6 +176,26 @@ git tag -a "v${VERSION}" -m "v${VERSION}"
 
 Small thing, but the implicit git commits from `npm version` were the kind of background magic that makes a release script hard to debug after a partial failure. Better to do each step explicitly.
 
+### If you work in other ecosystems
+
+Almost everything above is written around Node.js, where the past year's active attacks have concentrated. The threat model is very similar in pip, RubyGems, Cargo, and Go — and each one has its own collection of footguns.
+
+**Python (pip).** The npm postinstall equivalent is the **source distribution** (sdist). When a package ships as an sdist instead of a precompiled binary wheel, pip builds it locally — and "build" means executing `setup.py`, which can do anything the attacker wants. The `roulette.py` module Microsoft's `durabletask` shipped above arrived this way. The most direct defense is this:
+
+```bash
+pip install --only-binary=:all: --require-hashes -r requirements.lock
+```
+
+`--only-binary=:all:` refuses any package that has to execute to build itself; `--require-hashes` fails the install if any package doesn't match the lockfile hash. Generate that lockfile with [pip-tools](https://pip-tools.readthedocs.io/) or, better for new projects, with [uv](https://docs.astral.sh/uv/) — faster, better resolution, and lockfile + hashes native.
+
+**Ruby (Bundler).** Gems with native extensions execute `extconf.rb` at install time — same pattern as postinstall. `bundle install --frozen` (or `--deployment` in CI) fails if `Gemfile.lock` and `Gemfile` disagree. And since Ruby Central [added a WAF and hardened the registry after the May event](https://thehackernews.com/2026/05/rubygems-suspends-new-signups-after.html), the supply side also raised the bar.
+
+**Rust (Cargo).** `build.rs` can execute arbitrary code during `cargo build` — direct equivalent of postinstall. `Cargo.lock` pins versions by default, and `cargo build --frozen --offline` in CI forces nothing new to be downloaded during the build. [`cargo-audit`](https://github.com/rustsec/rustsec) (a separate package) reports known CVEs against the lockfile.
+
+**Go (modules).** The best case of the bunch: modules don't have install scripts that run on `go get`. Dependencies only execute code if you explicitly call them. On top of that, `go.sum` enforces cryptographic hashes by default, and the [transparency database (GOSUMDB)](https://sum.golang.org/) detects silent rewrites in the registry. Not immune — an `init()` in an imported dependency still runs when you execute the binary — but the install moment is secure by design.
+
+**What none of them have solved**, same as pip: the `minimumReleaseAge` equivalent. No standard flag exists today in any major registry that refuses newly-published versions. That's the sharpest gap versus the pnpm side. Meanwhile, on the publisher side, [Trusted Publishing on PyPI](https://docs.pypi.org/trusted-publishers/) and Sigstore signatures (on RubyGems and crates.io) are GA, and should be the default path for any package you publish.
+
 ---
 
 ## What this baseline doesn't fix
@@ -187,11 +215,12 @@ I also want to flag what *won't* help. Auditing your `node_modules` after instal
 
 If you only have one afternoon, the highest-leverage moves are:
 
-1. Pin your package manager via Corepack (`"packageManager"` in `package.json`).
+1. If you're on npm, migrate to pnpm and pin the version via Corepack (`"packageManager"` in `package.json`). On pnpm, install scripts are blocked by default and `minimumReleaseAge` exists — neither has an npm equivalent today.
 2. If you're on pnpm 10.16 or later, add `minimumReleaseAge` to `pnpm-workspace.yaml`. Even 24 hours is dramatically better than zero.
-3. Audit your automated pipelines. Any step that runs code from a fork before human review is a risk — that kind of setup was the foundation of the TanStack incident. If you have one, either remove it or scope its permissions to read-only.
-4. Migrate any package you publish from long-lived registry tokens to OIDC Trusted Publishing — on [npm](https://docs.npmjs.com/trusted-publishers/), [PyPI](https://blog.pypi.org/posts/2024-11-14-pypi-now-supports-digital-attestations/), or [RubyGems](https://rubycentral.org/news/ruby-centrals-oss-changelog-march-2025/). They all support it now.
-5. Pin third-party GitHub Actions to a commit SHA, not a tag. Yes, it's uglier. The uglier version doesn't get retargeted out from under you.
+3. If your stack is Python, force `pip install --only-binary=:all: --require-hashes` against a lockfile compiled with [uv](https://docs.astral.sh/uv/) or [pip-tools](https://pip-tools.readthedocs.io/). It blocks sdist execution at install time.
+4. Audit your automated pipelines. Any step that runs code from a fork before human review is a risk — that kind of setup was the foundation of the TanStack incident. If you have one, either remove it or scope its permissions to read-only.
+5. Migrate any package you publish from long-lived registry tokens to OIDC Trusted Publishing — on [npm](https://docs.npmjs.com/trusted-publishers/), [PyPI](https://blog.pypi.org/posts/2024-11-14-pypi-now-supports-digital-attestations/), or [RubyGems](https://rubycentral.org/news/ruby-centrals-oss-changelog-march-2025/). They all support it now.
+6. Pin third-party GitHub Actions to a commit SHA, not a tag. Yes, it's uglier. The uglier version doesn't get retargeted out from under you.
 
 None of these protect you from a determined adversary who knows you specifically. What they do is raise the cost of an opportunistic worm finding *you* in particular by enough that it goes after a different developer. That's all you're aiming for. Open source security is mostly about making yourself a less convenient target than the median.
 
@@ -205,6 +234,8 @@ Let's keep building. Carefully.
 
 - [pnpm 10.16 release notes — `minimumReleaseAge`](https://pnpm.io/blog/releases/10.16)
 - [Corepack documentation (Node.js)](https://nodejs.org/api/corepack.html)
+- [uv (Astral)](https://docs.astral.sh/uv/) — Python package and project manager with native lockfile + hashes
+- [pip-tools](https://pip-tools.readthedocs.io/) — requirements compilation + sync for existing pip projects
 - [npm Trusted Publishers](https://docs.npmjs.com/trusted-publishers/) and [provenance docs](https://docs.npmjs.com/generating-provenance-statements/)
 - [PyPI digital attestations](https://blog.pypi.org/posts/2024-11-14-pypi-now-supports-digital-attestations/)
 - [OpenSSF Scorecard](https://scorecard.dev/)
