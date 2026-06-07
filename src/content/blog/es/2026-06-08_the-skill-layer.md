@@ -8,7 +8,7 @@ tags: ["tech", "ai-agents", "claude"]
 keywords: ["qué son las agent skills", "estándar open agent skills SKILL.md", "instalar skill desde URL en agente IA", "skills locales en repositorio", "registro skills.sh Vercel", "agentes IA crear sus propias skills", "divulgación progresiva en agent skills"]
 series: "working-with-agents"
 seriesOrder: 5
-draft: true
+draft: false
 ---
 
 Imagínate que contratas a alguien brillante pero que nunca ha pasado por tu empresa. El primer día no sabe nada — ni de tu producto, ni de tus clientes, ni del nombre del canal de Slack al que se reportan incidentes. Lo que la vuelve competente en una semana no es su inteligencia bruta. Es haber tenido acceso a las cosas que tu equipo ya tenía escritas: manuales, runbooks, convenciones, ejemplos.

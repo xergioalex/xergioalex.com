@@ -8,7 +8,7 @@ tags: ["tech", "ai-agents", "claude"]
 keywords: ["agent skills SKILL.md standard", "open agent skills explained", "install skill from URL Claude Code", "local agent skills repository", "skills.sh registry Vercel", "AI agents authoring their own skills", "progressive disclosure agent skills"]
 series: "working-with-agents"
 seriesOrder: 5
-draft: true
+draft: false
 ---
 
 Picture hiring someone brilliant who has never set foot in your company. Day one, they know nothing — not your product, not your customers, not the name of the Slack channel where incidents get reported. What makes them competent a week in isn't raw intelligence. It's having had access to the things your team had already written down: handbooks, runbooks, conventions, examples.
