@@ -4,7 +4,7 @@ description: "I didn't get the hype around a text measurement library. So I buil
 pubDate: "2026-03-31"
 heroImage: "/images/blog/posts/pretext-programmable-text-layout/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "javascript", "web-development", "design"]
+tags: ["portfolio", "tech", "javascript", "web-development", "design"]
 keywords: ["pretext javascript text layout library", "DOM reflow text measurement alternative", "60fps text animation javascript pretext", "pretext cheng lou programmable text", "layoutNextLine variable width text", "text measurement without DOM reflow", "pretext prepare layout API demo"]
 ---
 
