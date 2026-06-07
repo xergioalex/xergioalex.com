@@ -6,8 +6,6 @@ heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/
 heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "personal", "claude"]
 keywords: ["Claude Mythos Preview vulnerabilidades zero-day", "Project Glasswing Anthropic ciberseguridad", "IA descubre vulnerabilidades 2026", "Claude Mythos benchmarks rendimiento", "revolución IA ciberseguridad zero-day", "Anthropic coalición seguridad $100M", "IA encuentra bug de 28 años OpenBSD"]
-series: "working-with-agents"
-seriesOrder: 5
 ---
 
 Parecía un día normal hasta que me puse a revisar mis redes y vi en tendencia que Anthropic había construido un modelo tan poderoso que se niegan a liberarlo al público. No pude parar de leer. Estuve un par de horas saltando de hilo en hilo, de artículo en artículo, tratando de entender la magnitud de lo que estaba pasando.

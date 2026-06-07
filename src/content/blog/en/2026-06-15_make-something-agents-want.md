@@ -1,7 +1,7 @@
 ---
 title: "Make Something Agents Want"
 description: "YC quietly echoed its 20-year-old motto. Cloudflare said agents can now be customers. Two posts, 48 hours apart, and the audience for software just changed."
-pubDate: "2026-05-27"
+pubDate: "2026-06-15"
 heroImage: "/images/blog/posts/make-something-agents-want/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]

@@ -1,7 +1,7 @@
 ---
 title: "Construye algo que los agentes quieran"
 description: "YC reescribió su lema con una palabra. Cloudflare dijo que los agentes ya pueden ser clientes. Dos posts, 48 horas, y el público del software cambió."
-pubDate: "2026-05-27"
+pubDate: "2026-06-15"
 heroImage: "/images/blog/posts/make-something-agents-want/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]
