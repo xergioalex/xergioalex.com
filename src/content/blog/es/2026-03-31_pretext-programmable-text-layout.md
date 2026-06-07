@@ -4,7 +4,7 @@ description: "No entendía el hype de una librería de medición de texto. Const
 pubDate: "2026-03-31"
 heroImage: "/images/blog/posts/pretext-programmable-text-layout/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "javascript", "web-development", "design"]
+tags: ["portfolio", "tech", "javascript", "web-development", "design"]
 keywords: ["pretext librería javascript layout texto", "alternativa medición texto DOM reflow", "animación texto 60fps javascript pretext", "pretext cheng lou texto programable", "layoutNextLine ancho variable texto", "medir texto sin DOM reflow javascript", "pretext prepare layout API demo"]
 ---
 
