@@ -41,11 +41,6 @@ coverage/
 # Deep Work Plan outputs (plans + drafts are working artifacts, not tracked source)
 .dwp/
 
-# Agent Deep Work Plans — legacy (removed during DWP v2 migration; kept until .agent_commands/ is deleted)
-.agent_commands/agent_deep_work_plans/results/drafts/
-.agent_commands/agent_deep_work_plans/results/plans/PLAN_*/
-.agent_commands/agent_deep_work_plans/results/plans/old/
-
 # Temporary workspace (agent outputs, scratch files, ephemeral content)
 tmp/*
 !tmp/.gitkeep
