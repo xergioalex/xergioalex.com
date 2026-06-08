@@ -21,7 +21,7 @@ That small move — *the agent made a mistake, so I engineered the mistake out o
 
 ## Agent = Model + Harness
 
-The cleanest way I've seen it put comes from LangChain's Vivek Trivedy, in a piece called [*The Anatomy of an Agent Harness*](https://langchain-blog.ghost.io/the-anatomy-of-an-agent-harness/): **"Agent = Model + Harness."** The model is the intelligence. The harness is everything else — and "everything else" is doing more work than it sounds. His definition is worth quoting exactly: a harness is *"every piece of code, configuration, and execution logic that isn't the model itself."*
+The cleanest way I've seen it put comes from LangChain's Vivek Trivedy, in a piece called [*The Anatomy of an Agent Harness*](https://langchain-blog.ghost.io/the-anatomy-of-an-agent-harness/): **"Agent = Model + Harness."** The model is the intelligence. The harness is everything else — and "everything else" is doing more work than it sounds. His definition is worth quoting exactly: *"A harness is every piece of code, configuration, and execution logic that isn't the model itself."*
 
 System prompts. The tools the agent can call. The skills it can read. The orchestration that decides when to spawn a sub-agent or hand off. The hooks that run a linter before a change is accepted. All of that is harness. The model sits in the middle of it like an engine sits inside a car — essential, and also not the part that keeps you on the road.
 
@@ -31,7 +31,7 @@ It rearranges it in a direction I find a little funny, because the conclusion is
 
 "Changing the harness" sounds vague until you list what's actually on the table. You can rewrite the system prompt so the agent reasons in a different order. You can hand it a sharper set of tools, or take away the ones it keeps misusing. You can change how the repository is laid out so the agent finds the right file instead of inventing one. You can add a hook that runs the test suite after every edit and refuses to accept changes that break it. You can split a job into smaller pieces so the agent never holds more in its head than it can keep straight. None of those touch the model. All of them change what the agent does. That menu — long, mundane, entirely in your control — is the surface harness engineering works on.
 
-And one of the components Trivedy lists, right alongside tools and orchestration, is *skills*. That's the bridge from [the last thing I wrote in this series](/blog/the-skill-layer/). A skill teaches an agent a capability it didn't have. The harness is the larger system that decides when that capability runs, whether the agent was allowed to run it, and whether the result is good enough to keep. Skills are a component *inside* the harness. The harness is the frame the skills hang on.
+And one of the components Trivedy lists, right alongside tools and orchestration, is *skills*. That's the bridge from [the piece on skills in this series](/blog/the-skill-layer/). A skill teaches an agent a capability it didn't have. The harness is the larger system that decides when that capability runs, whether the agent was allowed to run it, and whether the result is good enough to keep. Skills are a component *inside* the harness. The harness is the frame the skills hang on.
 
 ---
 
@@ -41,7 +41,7 @@ The term comes from [Mitchell Hashimoto](https://mitchellh.com/writing/my-ai-ado
 
 That's it. That's the discipline. Not a framework, not a product — a habit. Every mistake becomes a permanent fix, so the same mistake can't come back. My accent-checking grep is that sentence made literal.
 
-I want to be precise about what Hashimoto did and didn't invent, because the credit matters and it's easy to overstate. He named the *practice*. The thing itself — a scaffold wrapped around a model — was already in use and already being called a harness; Anthropic, for one, was describing the Claude Agent SDK as "a general-purpose agent harness" in 2025. So this isn't a new invention with a launch date. It's an old activity that finally got a name, and the name stuck because a lot of people needed it at once.
+I want to be precise about what Hashimoto did and didn't invent, because the credit matters and it's easy to overstate. He named the *practice*. The thing itself — a scaffold wrapped around a model — was already in use and already being called a harness; Anthropic, for one, was [describing the Claude Agent SDK](https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk) as "a general-purpose agent harness" in 2025. So this isn't a new invention with a launch date. It's an old activity that finally got a name, and the name stuck because a lot of people needed it at once.
 
 The reason they needed it at once is the more interesting part. For two years the bottleneck was the model: it wasn't good enough, so you waited for the next one. Sometime in the last stretch that stopped being true. The models got good enough that the limiting factor moved. The question stopped being *can it write the code* and became *can I trust it to write the code, repeatedly, without me babysitting every line*. That second question isn't a model problem. It's an engineering problem about the environment you put the model in — and engineering problems get disciplines, and disciplines get names.
 
