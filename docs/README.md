@@ -61,7 +61,7 @@ xergioalex.com/
 │   └── styles/          # Global CSS and Tailwind
 ├── public/              # Static assets (images, fonts, icons)
 ├── docs/                # This documentation folder
-└── .agent_commands/     # AI agent automation systems
+└── .dwp/                # Deep Work Plan outputs (git-ignored)
 ```
 
 ## Quick Commands

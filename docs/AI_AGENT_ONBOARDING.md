@@ -33,8 +33,8 @@ xergioalex.com/
 │   └── styles/          # Global CSS
 ├── public/              # Static assets
 ├── docs/                # Documentation
-├── .agent_commands/     # AI agent automation
-└── .agents/             # Skills and agents
+├── .agents/             # Skills, agents, commands (cross-agent canonical)
+└── .dwp/                # Deep Work Plan outputs (git-ignored)
 ```
 
 ## Critical Rules (MUST FOLLOW)

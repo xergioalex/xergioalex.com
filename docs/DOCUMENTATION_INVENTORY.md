@@ -59,15 +59,18 @@ Tracking documentation coverage for XergioAleX.com.
 | [src/content/README.md](../src/content/README.md) | ✅ Current | Content Collections |
 | [src/styles/README.md](../src/styles/README.md) | ✅ Current | Styling guide |
 
-### .agent_commands/ Documentation
+### Deep Work Plan (installed skill)
 
-| File | Status | Description |
+The DWP engine is the installed `deepworkplan` skill (cross-machine, not in-repo);
+plan/draft outputs live in the git-ignored `.dwp/`.
+
+| Resource | Status | Description |
 |------|--------|-------------|
-| [README.md](../.agent_commands/README.md) | ✅ Current | Agent commands overview |
-| [agent_skills_generator/](../.agent_commands/agent_skills_generator/) | ✅ Current | Skills creation system |
-| [agent_deep_work_plans/](../.agent_commands/agent_deep_work_plans/) | ✅ Current | Deep work plans system |
-| [agent_library_upgrades/](../.agent_commands/agent_library_upgrades/) | ✅ Current | Library upgrade system |
-| [PLAN_EXAMPLE_add_blog_feature/](../.agent_commands/agent_deep_work_plans/example_prompts/PLAN_EXAMPLE_add_blog_feature/) | ✅ Current | Astro-specific example plan |
+| `~/.claude/skills/deepworkplan/guide/GUIDE.md` | ✅ Current | DWP methodology guide |
+| `~/.claude/skills/deepworkplan/spec/` | ✅ Current | Normative DWP specification |
+| `~/.claude/skills/deepworkplan/author/` | ✅ Current | Skill/agent authoring (`/skill-create`, `/agent-create`) |
+| `~/.claude/skills/deepworkplan/addons/dependency-upgrade/` | ✅ Current | Library upgrade addon (`/lib-upgrade`) |
+| `.dwp/plans/`, `.dwp/drafts/` | ✅ Current | Plan/draft outputs (git-ignored) |
 
 ### .agents/ Documentation
 
