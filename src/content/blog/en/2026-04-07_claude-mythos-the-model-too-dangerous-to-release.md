@@ -3,8 +3,10 @@ title: "Claude Mythos: The Model Too Dangerous to Release"
 description: "Anthropic built a model that found thousands of zero-days in every major OS. They won't release it — they assembled a $100M coalition instead."
 pubDate: "2026-04-07"
 heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/hero.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
+series: "the-mythos-saga"
+seriesOrder: 1
 keywords: ["Claude Mythos Preview zero-day exploits", "Project Glasswing Anthropic cybersecurity", "AI vulnerability discovery 2026", "Claude Mythos benchmarks BrowseComp", "AI cybersecurity revolution zero-day", "Anthropic $100M security coalition", "AI finds 28-year-old OpenBSD bug"]
 ---
 
@@ -30,7 +32,7 @@ The [Mythos announcement](https://www.anthropic.com/glasswing) isn't an isolated
 
 In the span of a few weeks, Anthropic, OpenAI, and Google all released new AI models at the same time — a race where each company tries to outdo the others with increasingly advanced capabilities. Then Mythos leaked, and days later came the official announcement alongside Project Glasswing.
 
-Every week there's something that would've been a headline six months ago and now barely registers as news. As I mentioned [earlier in this series](/blog/from-programmer-to-orchestrator/), AI agent capabilities have been doubling every 4.3 months. But Mythos suggests the pace might be even faster than the data shows.
+Every week there's something that would've been a headline six months ago and now barely registers as news. As I noted when writing about [the shift from programmer to orchestrator](/blog/from-programmer-to-orchestrator/), AI agent capabilities have been doubling every 4.3 months. But Mythos suggests the pace might be even faster than the data shows.
 
 And somewhere in an Anthropic lab, while all of that was happening, a model was autonomously building a working attack against a production server. There had already been early rumors about Mythos — [internal documents](https://fortune.com/2026/04/07/anthropic-claude-mythos-model-project-glasswing-cybersecurity/) describing it as *"by far the most powerful AI model we have ever developed."*
 
@@ -191,7 +193,7 @@ The arms race metaphor is tempting but incomplete. This isn't just offense vs. d
 
 ## The Revolution Is No Longer Silent
 
-When I started [this series](/blog/from-programmer-to-orchestrator/), I wanted to capture what it feels like to live through this moment. The [productivity gains](/blog/from-programmer-to-orchestrator/), the [dopamine loops](/blog/the-permanent-hackathon/), the [new economic infrastructure](/blog/the-agent-economy/), the [art of directing agents](/blog/the-art-of-directing-agents/). All of it real, all of it happening fast, all of it mostly invisible to 99% of the world.
+When I started writing about [working with agents](/blog/series/working-with-agents/), I wanted to capture what it feels like to live through this moment. The [productivity gains](/blog/from-programmer-to-orchestrator/), the [dopamine loops](/blog/the-permanent-hackathon/), the [new economic infrastructure](/blog/the-agent-economy/), the [art of directing agents](/blog/the-art-of-directing-agents/). All of it real, all of it happening fast, all of it mostly invisible to 99% of the world.
 
 Mythos changes the conversation. Not because the revolution is different — it's the same exponential curve. But because now the implications extend beyond productivity and economics. When AI can find and exploit vulnerabilities at this scale and cost, the stakes aren't just about who codes faster or who ships more features. They're about infrastructure. National security. The systems that everything depends on.
 

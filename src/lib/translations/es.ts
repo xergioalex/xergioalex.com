@@ -1086,6 +1086,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'mastering-openclaw': 'Dominando OpenClaw',
     'learning-mobile-development': 'Aprendiendo Desarrollo Móvil',
     'slides-as-code': 'Slides as Code',
+    'the-mythos-saga': 'La saga de Mythos',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1106,6 +1107,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Un recorrido honesto por el desarrollo móvil — el estado del arte, escoger herramientas y aprender a construir para Android e iOS documentando cada paso.',
     'slides-as-code':
       'Una serie que explora herramientas de presentación orientadas a desarrolladores, compara alternativas y documenta cómo construir un sistema de diapositivas multilingüe dentro de un framework web moderno.',
+    'the-mythos-saga':
+      "Los modelos de clase Mythos de Anthropic: de 'demasiado peligroso para liberar' a disponible para todos — y lo que esa capacidad significa para nosotros.",
   },
 
   // Date formatting
