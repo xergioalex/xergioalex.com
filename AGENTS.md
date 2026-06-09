@@ -25,6 +25,7 @@
 | Documentation | [Documentation Guide](docs/DOCUMENTATION_GUIDE.md) | When and how to update docs |
 | Product | [Product Spec](docs/PRODUCT_SPEC.md) | Product vision, features, website goals |
 | Brand | [Brand Guide](docs/BRAND_GUIDE.md) | Visual identity, colors, typography |
+| Design System | [Design System](docs/DESIGN.md) | Design tokens, color roles, type scale, component patterns for agent-generated UI |
 | Analytics | [Analytics](docs/ANALYTICS.md) | Tracking, GSC, verification |
 | AI Agents | [Agent Onboarding](docs/AI_AGENT_ONBOARDING.md), [Agent Collaboration](docs/AI_AGENT_COLLAB.md) | Setup, handoff, coordination |
 | Skills/Agents | [Skills & Agents Catalog](.agents/docs/skills_agents_catalog.md) | Available skills and agents |
