@@ -3,8 +3,10 @@ title: "Claude Mythos: El modelo demasiado peligroso para ser liberado"
 description: "Anthropic creó un modelo que encontró miles de zero-days en todos los sistemas operativos. No lo van a liberar — armaron una coalición de $100M."
 pubDate: "2026-04-07"
 heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/hero-es.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
+series: "the-mythos-saga"
+seriesOrder: 1
 keywords: ["Claude Mythos Preview vulnerabilidades zero-day", "Project Glasswing Anthropic ciberseguridad", "IA descubre vulnerabilidades 2026", "Claude Mythos benchmarks rendimiento", "revolución IA ciberseguridad zero-day", "Anthropic coalición seguridad $100M", "IA encuentra bug de 28 años OpenBSD"]
 ---
 
@@ -30,7 +32,7 @@ El [anuncio de Mythos](https://www.anthropic.com/glasswing) no es un evento aisl
 
 En cuestión de semanas, Anthropic, OpenAI y Google lanzaron nuevos modelos de IA al mismo tiempo — una carrera donde cada empresa intenta superar a las otras con capacidades cada vez más avanzadas. Luego se filtró Mythos, y días después llegó el anuncio oficial junto con Project Glasswing.
 
-Cada semana hay algo que habría sido un titular hace seis meses y ahora apenas se registra como noticia. Como mencioné [antes en esta serie](/es/blog/from-programmer-to-orchestrator/), las capacidades de los agentes de IA se vienen duplicando cada 4.3 meses. Pero Mythos sugiere que el ritmo podría ser incluso más acelerado de lo que muestran los datos.
+Cada semana hay algo que habría sido un titular hace seis meses y ahora apenas se registra como noticia. Como mencioné cuando escribí sobre [el paso de programador a orquestador](/es/blog/from-programmer-to-orchestrator/), las capacidades de los agentes de IA se vienen duplicando cada 4.3 meses. Pero Mythos sugiere que el ritmo podría ser incluso más acelerado de lo que muestran los datos.
 
 Y en algún lugar de un laboratorio de Anthropic, mientras todo eso pasaba, un modelo estaba construyendo autónomamente un ataque funcional contra un servidor. Ya habían salido rumores tempranos sobre Mythos — [documentos internos](https://fortune.com/2026/04/07/anthropic-claude-mythos-model-project-glasswing-cybersecurity/) lo describían como *"by far the most powerful AI model we have ever developed"* ("con diferencia, el modelo de IA más poderoso que hemos desarrollado jamás").
 
@@ -191,7 +193,7 @@ La metáfora de la carrera armamentista es tentadora pero incompleta. Esto no es
 
 ## La revolución ya no es silenciosa
 
-Cuando empecé [esta serie](/es/blog/from-programmer-to-orchestrator/), quería capturar cómo se siente vivir este momento. Las [ganancias de productividad](/es/blog/from-programmer-to-orchestrator/), los [loops de dopamina](/es/blog/the-permanent-hackathon/), la [nueva infraestructura económica](/es/blog/the-agent-economy/), el [arte de dirigir agentes](/es/blog/the-art-of-directing-agents/). Todo real, todo sucediendo rápido, todo mayormente invisible para el 99% del mundo.
+Cuando empecé a escribir sobre [trabajar con agentes](/es/blog/series/working-with-agents/), quería capturar cómo se siente vivir este momento. Las [ganancias de productividad](/es/blog/from-programmer-to-orchestrator/), los [loops de dopamina](/es/blog/the-permanent-hackathon/), la [nueva infraestructura económica](/es/blog/the-agent-economy/), el [arte de dirigir agentes](/es/blog/the-art-of-directing-agents/). Todo real, todo sucediendo rápido, todo mayormente invisible para el 99% del mundo.
 
 Mythos cambia la conversación. No porque la revolución sea diferente — es la misma curva exponencial. Sino porque ahora las implicaciones se extienden más allá de la productividad y la economía. Cuando la IA puede encontrar y explotar vulnerabilidades a esta escala y costo, lo que está en juego ya no es solo quién programa más rápido o quién entrega más features. Es infraestructura. Seguridad nacional. Los sistemas de los que todo depende.
 

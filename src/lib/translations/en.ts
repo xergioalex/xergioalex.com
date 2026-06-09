@@ -1075,6 +1075,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'mastering-openclaw': 'Mastering OpenClaw',
     'learning-mobile-development': 'Learning Mobile Development',
     'slides-as-code': 'Slides as Code',
+    'the-mythos-saga': 'The Mythos Saga',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1095,6 +1096,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'An honest journey into mobile development — the state of the art, choosing tools, and learning to build for Android and iOS, documenting every step.',
     'slides-as-code':
       'A series exploring developer-oriented presentation tools, comparing alternatives, and documenting how to build a multilingual slide system inside a modern web framework.',
+    'the-mythos-saga':
+      "Following Anthropic's Mythos-class models from 'too dangerous to release' to available to everyone — and what frontier AI capability means for the rest of us.",
   },
 
   // Date formatting
