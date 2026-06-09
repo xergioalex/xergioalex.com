@@ -24,7 +24,7 @@ Las **skills** son lo que cambia ese escenario. Una skill es, literalmente, una 
   width="1200"
   height="1200"
   loading="lazy"
-  style="max-width: 480px; display: block; margin: 2rem auto 0.5rem;"
+  class="prose-img-md"
 />
 <figcaption>El momento después: un `SKILL.md` se acaba de instalar y el agente ya sabe usarlo. Sin training, sin SDK — solo un archivo de markdown y una lectura.</figcaption>
 </figure>

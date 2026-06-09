@@ -13,7 +13,7 @@ draft: true
 
 A while back I wrote that orchestrating agents had quietly produced a stack that didn't exist eighteen months ago. I want to start this one *inside* that stack — specifically, inside the repository this very post was written in.
 
-There's a rule in it that says Spanish text has to carry its accents and its ñ: *función*, not *funcion*; *parámetro*, not *parametro*. Obvious, except an agent doesn't find it obvious at all. The first few times I had an agent draft Spanish, it shipped flat vowels — no tildes, no ñ — and I caught them by reading. The third time it happened I stopped correcting the text and corrected the system instead: I added a command that greps the Spanish files for the usual missing-accent suspects and fails if it finds any. Now an agent can forget the rule all it wants. The mistake can't reach the published post, because something between the agent and `main` is checking for it.
+While I was researching it, an agent handed me a perfect statistic: that something like 70% of an agent's performance lives outside the model, in the harness. Clean, quotable, exactly the kind of number that anchors an essay like this one. It was also false — it traces back to no source at all. I almost shipped it; I didn't, because the plan I was following forced me to check every figure against its primary source before writing it down, and that one didn't survive the step. The agent can hand me a lie with a straight face all it wants. The mistake can't reach the published post, because something between the agent and `main` is checking for it.
 
 That small move — *the agent made a mistake, so I engineered the mistake out of existence* — turns out to have a name now. People are calling it **harness engineering**, and over the last few months it's gone from a phrase one person used in a blog post to the thing a lot of us realize we've been doing without a word for it.
 
@@ -39,7 +39,7 @@ And one of the components Trivedy lists, right alongside tools and orchestration
 
 The term comes from [Mitchell Hashimoto](https://mitchellh.com/writing/my-ai-adoption-journey) — the person behind Terraform and a lot of HashiCorp — who named it in February 2026 in an essay about his own slow, stubborn adoption of AI. One of the steps he describes is *"engineer the harness,"* and his definition is the whole idea compressed into a sentence: *"anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent never makes that mistake again."*
 
-That's it. That's the discipline. Not a framework, not a product — a habit. Every mistake becomes a permanent fix, so the same mistake can't come back. My accent-checking grep is that sentence made literal.
+That's it. That's the discipline. Not a framework, not a product — a habit. Every mistake becomes a permanent fix, so the same mistake can't come back. The verification step that caught that fabricated statistic is that sentence made literal.
 
 I want to be precise about what Hashimoto did and didn't invent, because the credit matters and it's easy to overstate. He named the *practice*. The thing itself — a scaffold wrapped around a model — was already in use and already being called a harness; Anthropic, for one, was [describing the Claude Agent SDK](https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk) as "a general-purpose agent harness" in 2025. So this isn't a new invention with a launch date. It's an old activity that finally got a name, and the name stuck because a lot of people needed it at once.
 
@@ -58,12 +58,12 @@ The most useful breakdown of *how* a harness actually works comes from [Martin F
   width="1200"
   height="1200"
   loading="lazy"
-  style="max-width: 480px; display: block; margin: 2rem auto 0.5rem;"
+  class="prose-img-md"
 />
 <figcaption>A harness has two halves: guides that steer the agent before it acts, and sensors that catch what it gets wrong after.</figcaption>
 </figure>
 
-Fowler also draws a line I keep coming back to, between two kinds of check. Some are **computational** — deterministic and fast, the kind a machine settles with a yes or no: a test passes or fails, a type checks or doesn't, a linter is happy or it isn't. Others are **inferential** — semantic and slower, where you ask another model to judge whether a piece of writing is in the right voice or a change is actually safe. You want the computational checks doing as much as they can, because they're cheap and they never get tired; you save the inferential ones for the judgments a regex can't make.
+Fowler also draws a line I keep coming back to, between two kinds of check. Some are **computational** — deterministic and fast, the kind a machine settles with a yes or no: a test passes or fails, a type checks or doesn't, a linter is happy or it isn't, a grep finds a missing accent or it doesn't. Others are **inferential** — semantic and slower, where you ask another model to judge whether a piece of writing is in the right voice or a change is actually safe. You want the computational checks doing as much as they can, because they're cheap and they never get tired; you save the inferential ones for the judgments a regex can't make.
 
 Map that onto the repo I started with and it stops being abstract. The guides are the things I wrote down so the agent reads them before it acts: the project's `CLAUDE.md` with its mandatory rules, the skills that encode how to do a specific job, the plan that forces an agent to take one task at a time instead of sprinting through ten. The sensors are everything that runs after: the build, the type check, the linter, the accent grep, the audit that reads the whole post against a checklist before it's allowed near publication. None of it makes the agent smarter. All of it makes the agent's mistakes cheaper to catch and impossible to ship.
 
@@ -77,7 +77,7 @@ The numbers behind it are the part that made me sit up. One internal beta produc
 
 I hold numbers like that loosely — it's one team, one internal product, their own estimate, and a company with an obvious interest in the result. But even discounted heavily, the shape is the point. When humans stop writing the code, the thing they spend their time on instead is the harness: the repository organized so an agent can navigate it, the invariants enforced centrally so an agent can't quietly break the architecture, the merge gates kept light so progress doesn't stall. Lopopolo's framing is that the discipline shows up in the scaffolding rather than in the code. The job didn't disappear. It moved up a layer.
 
-That's the same move, just at the far end of the dial. My accent grep and OpenAI's million agent-written lines are the same instinct at different scales: don't get better at correcting the agent, get better at building the system that makes correcting it unnecessary.
+That's the same move, just at the far end of the dial. The check that caught that fabricated statistic and OpenAI's million agent-written lines are the same instinct at different scales: don't get better at correcting the agent, get better at building the system that makes correcting it unnecessary.
 
 ---
 
@@ -97,9 +97,9 @@ Here's the part I find almost embarrassing in hindsight. I didn't read about har
 
 This blog has a folder of skills the agents use, a `CLAUDE.md` full of rules I got tired of repeating, and a set of deep work plans that march an agent through a job one checkpoint at a time. It has a publication audit that reads a draft against a long checklist before anything ships. It has the accent grep, a check that every page has a matching plain-Markdown version for other agents to read, and a voice guide with a list of words that get an automatic rewrite. None of that was planned as a system. Each piece is a scar — the residue of some specific time an agent did something I didn't want, and I decided once was enough.
 
-This very post went through it. It was written under a plan that wouldn't let the agent jump ahead: research first, then verify every quoted figure against its primary source, then lock the structure, then write, then translate, then audit. The numbers from OpenAI I just quoted exist in a fact-check file with their source URLs next to them, one row per claim, marked verified or softened or dropped.
+This very post went through it. It was written under a plan that wouldn't let the agent jump ahead: research first, then verify every quoted figure against its primary source, then lock the structure, then write, then translate, then audit. The numbers from OpenAI I cited earlier exist in a fact-check file with their source URLs next to them, one row per claim, marked verified or softened or dropped.
 
-That step earned its place. While researching this post, two tidy-sounding claims didn't survive it. One was a statistic — that something like 70% of an agent's performance lives outside the model — which reads great and traces back to nobody; it got cut. The other was a clean sentence saying spec-driven development is "a layer inside harness engineering," which I almost kept until the check made me open the source, where the author actually said something more careful: specs and harnesses are *neighbors*, one defining the target and the other enforcing it. Both of those are exactly the kind of confident, plausible, slightly-wrong thing an agent will hand you with a straight face. The harness is the reason they're in a footnote of corrections instead of in the text you're reading. Hashimoto's sentence, lived: *engineer a solution such that the agent never makes that mistake again.*
+That step earned its place. The fabricated statistic I opened this post with wasn't the only claim that didn't survive it — another tidy-sounding one didn't make it either. It was a clean sentence saying spec-driven development is "a layer inside harness engineering," which I almost kept until the check made me open the source, where the author actually said something more careful: specs and harnesses are *neighbors*, one defining the target and the other enforcing it. Both of them — the invented statistic and the bent quote — are exactly the kind of confident, plausible, slightly-wrong thing an agent will hand you with a straight face. The harness is the reason they're in a footnote of corrections instead of in the text you're reading. Hashimoto's sentence, lived: *engineer a solution such that the agent never makes that mistake again.*
 
 Even the memory the agents keep across sessions is a harness. When I correct something — "no voseo in Spanish," "don't invent details" — it doesn't stay a one-off note. It becomes a written rule the next session reads before it starts. The correction stops being something I have to remember to give and becomes something the system gives on my behalf.
 
@@ -107,7 +107,7 @@ Even the memory the agents keep across sessions is a harness. When I correct som
 
 The reason any of this matters is that it changes where your attention goes. Once the model isn't the bottleneck, getting more out of your agents stops being about chasing the next release and starts being about the system you build around the one you already have. That's a kind of work most of us already know how to do — it's just engineering, the unglamorous discipline of making a thing reliable — pointed at a new target.
 
-And it doesn't aim to push the human out. Fowler has a line about this that I think is exactly right: a good harness *"should not necessarily aim to fully eliminate human input, but to direct it to where our input is most important."* That's the honest version of the promise. Not no judgment — judgment spent where it counts, instead of leaking out one missing accent at a time.
+And it doesn't aim to push the human out. Fowler has a line about this that I think is exactly right: a good harness *"should not necessarily aim to fully eliminate human input, but to direct it to where our input is most important."* That's the honest version of the promise. Not no judgment — judgment spent where it counts, instead of leaking out one made-up number at a time.
 
 Let's keep building.
 

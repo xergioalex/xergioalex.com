@@ -45,21 +45,73 @@
     @apply text-sm text-center text-gray-600 dark:text-gray-300 mt-3;
   }
 
-  /* Mobile horizontal scroll for wide tables.
-   * The !important rules below override Tailwind Typography's `.prose table`
-   * styles, which have equal or higher specificity than `.table-responsive`
-   * once nested inside a prose container. Without !important, prose wins. */
-  @media (max-width: 768px) {
-    .table-responsive {
-      /* biome-ignore lint/complexity/noImportantStyles: overrides equal-specificity Tailwind Typography `.prose table` rules nested inside prose containers */
-      overflow-x: auto !important;
-      -webkit-overflow-scrolling: touch;
+  /*
+   * Blog prose overflow containment — wide content must scroll inside the column,
+   * never expand the page horizontally (mobile or desktop).
+   */
+  .prose {
+    container-type: inline-size;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .prose :where(figure, picture, video, iframe) {
+    max-width: 100%;
+  }
+
+  .prose :where(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Common blog image sizes — use min(..., 100%) so fixed caps never overflow */
+  .prose .prose-img-md {
+    display: block;
+    max-width: min(480px, 100%);
+    margin: 2rem auto 0.5rem;
+  }
+
+  .prose .prose-img-half {
+    display: block;
+    max-width: min(50%, 100%);
+    margin: 0 auto;
+  }
+
+  /* Safety net: when the prose column is narrow, beat any leftover inline px caps */
+  @container (max-width: 480px) {
+    .prose :where(img) {
+      /* biome-ignore lint/complexity/noImportantStyles: overrides inline max-width on blog post images in narrow columns */
+      max-width: 100% !important;
+      /* biome-ignore lint/complexity/noImportantStyles: preserves aspect ratio when width is constrained */
+      height: auto !important;
     }
+  }
+
+  .prose :where(pre) {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Wide tables: horizontal scroll inside the prose column, not the viewport */
+  .table-responsive {
+    /* biome-ignore lint/complexity/noImportantStyles: overrides equal-specificity Tailwind Typography `.prose table` rules nested inside prose containers */
+    overflow-x: auto !important;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive > table,
+  .table-responsive > :where(table) {
+    /* biome-ignore lint/complexity/noImportantStyles: overrides equal-specificity Tailwind Typography `.prose table` rules nested inside prose containers */
+    width: max-content !important;
+    min-width: 100%;
+  }
+
+  @media (max-width: 768px) {
     .table-responsive > table,
     .table-responsive > :where(table) {
-      /* biome-ignore lint/complexity/noImportantStyles: overrides equal-specificity Tailwind Typography `.prose table` rules nested inside prose containers */
-      width: max-content !important;
-      min-width: 100%;
       font-size: 0.875rem;
     }
   }

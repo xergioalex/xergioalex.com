@@ -24,7 +24,7 @@ AI agents have been stuck in the opposite scenario for years. However bright the
   width="1200"
   height="1200"
   loading="lazy"
-  style="max-width: 480px; display: block; margin: 2rem auto 0.5rem;"
+  class="prose-img-md"
 />
 <figcaption>The moment after: a `SKILL.md` has just installed and the agent already knows how to use it. No training, no SDK — just a markdown file and a read.</figcaption>
 </figure>
