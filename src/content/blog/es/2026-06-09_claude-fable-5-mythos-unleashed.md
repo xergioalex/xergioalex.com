@@ -3,7 +3,7 @@ title: "Claude Fable 5: El modelo que no querían liberar ahora está en tus man
 description: "Anthropic dijo que era demasiado peligroso para liberarlo. Luego lo liberaron — mismos pesos, otro nombre y una capa de seguridad que cambia la ecuación."
 pubDate: "2026-06-09"
 heroImage: "/images/blog/posts/claude-fable-5-mythos-unleashed/hero-es.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
 series: "the-mythos-saga"
 seriesOrder: 2
