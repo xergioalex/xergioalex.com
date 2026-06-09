@@ -85,7 +85,7 @@ This project includes reusable **Skills** (procedures) and **Agents** (specializ
 > **IMPORTANT:** When creating new skills or agents, you MUST update the catalog
 > (`.agents/docs/skills_agents_catalog.md`) following the 5-step process (overview table, tier table,
 > interaction map, domain section, changelog) AND update this README's quick reference tables.
-> See the [Catalog Maintenance section](../.agent_commands/agent_skills_generator/GUIDE_TO_CREATE_SKILLS_AND_AGENTS.md) (Section 10) for detailed instructions.
+> Use the `author` sub-skill of the installed `deepworkplan` skill (via `/skill-create` / `/agent-create`) — it walks the catalog-maintenance steps and keeps `.agents/docs/` in sync.
 
 ---
 
@@ -202,8 +202,8 @@ Create a complete deep work plan with unified flow (info → draft → refine �
 ```
 
 **Output:**
-- Drafts: `.agent_commands/agent_deep_work_plans/results/drafts/`
-- Plans: `.agent_commands/agent_deep_work_plans/results/plans/PLAN_{name}/`
+- Drafts: `.dwp/drafts/`
+- Plans: `.dwp/plans/PLAN_{name}/`
 
 ---
 
@@ -645,13 +645,12 @@ Options:
 ## File Locations
 
 ### Deep Work Plans
-- **Drafts:** `.agent_commands/agent_deep_work_plans/results/drafts/`
-- **Plans:** `.agent_commands/agent_deep_work_plans/results/plans/`
-- **Guide:** `.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md`
+- **Drafts:** `.dwp/drafts/` (gitignored)
+- **Plans:** `.dwp/plans/PLAN_{name}/` (gitignored)
+- **Engine:** the installed `deepworkplan` skill (`~/.claude/skills/deepworkplan/`)
 
 ### Library Upgrades
-- **Guide:** `.agent_commands/agent_library_upgrades/GUIDE.md`
-- **Examples:** `.agent_commands/agent_library_upgrades/example_prompts/`
+- **Engine:** the `deepworkplan` dependency-upgrade addon, invoked via `/lib-upgrade`
 
 ---
 
@@ -676,8 +675,8 @@ Options:
 
 ## Related Documentation
 
-- **[Deep Work Plans Guide](../.agent_commands/agent_deep_work_plans/GUIDE_TO_CREATE_AGENT_DEEP_WORK_PLANS.md)**
-- **[Library Upgrades Guide](../.agent_commands/agent_library_upgrades/GUIDE.md)**
+- **DeepWorkPlan methodology** — `~/.claude/skills/deepworkplan/guide/GUIDE.md` and the normative `spec/`
+- **Dependency-upgrade addon** — `~/.claude/skills/deepworkplan/addons/dependency-upgrade/SKILL.md`
 - **[Development Commands](../docs/DEVELOPMENT_COMMANDS.md)**
 - **[Repository Standards](../docs/STANDARDS.md)**
 

@@ -29,13 +29,18 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
 ## Deep Work Plans
 
+> These are **thin delegators** to the installed `deepworkplan` skill
+> (`~/.claude/skills/deepworkplan/`). Plan/draft outputs live in the git-ignored
+> `.dwp/` (`.dwp/plans/`, `.dwp/drafts/`).
+
 | Command | Procedure File | Description |
 |---------|---------------|-------------|
-| `/dwp-create` | `.agents/commands/dwp-create.md` | Create a deep work plan (unified flow: info, draft, refine, final) |
-| `/dwp-execute` | `.agents/commands/dwp-execute.md` | Execute an existing deep work plan |
+| `/dwp-create` | `.agents/commands/dwp-create.md` | Create a deep work plan (single-step refined draft → final plan) |
+| `/dwp-execute` | `.agents/commands/dwp-execute.md` | Execute an existing deep work plan task-by-task |
 | `/dwp-refine` | `.agents/commands/dwp-refine.md` | Refine a draft or modify an existing final plan |
 | `/dwp-resume` | `.agents/commands/dwp-resume.md` | Resume an interrupted deep work plan |
 | `/dwp-status` | `.agents/commands/dwp-status.md` | Check status of deep work plans without executing |
+| `/dwp-verify` | `.agents/commands/dwp-verify.md` | Verify repository + plan conformance to the DWP spec (read-only) |
 
 ## Git & Version Control
 
@@ -91,7 +96,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
 | Command | Procedure File | Description |
 |---------|---------------|-------------|
-| `/lib-upgrade` | `.agents/commands/lib-upgrade.md` | Upgrade project dependencies (npm packages via ncu) |
+| `/lib-upgrade` | `.agents/commands/lib-upgrade.md` | Safely upgrade dependencies (batched, validated, revertible) via the DWP dependency-upgrade addon |
 
 ## Skills & Agents Management
 
