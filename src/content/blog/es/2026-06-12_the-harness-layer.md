@@ -1,7 +1,7 @@
 ---
 title: "La capa del harness: el sistema alrededor del modelo"
 description: "La harness engineering es la nueva forma de dirigir agentes de IA: el sistema alrededor del modelo que revisa su trabajo y evita que repita errores."
-pubDate: "2026-06-11"
+pubDate: "2026-06-12"
 heroImage: "/images/blog/posts/the-harness-layer/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]
