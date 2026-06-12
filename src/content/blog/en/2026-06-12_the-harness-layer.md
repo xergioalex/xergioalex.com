@@ -1,7 +1,7 @@
 ---
 title: "The Harness Layer: The System Around the Model"
 description: "Harness engineering is the new way to steer AI agents — the system around the model that checks its work and stops it repeating the same mistake."
-pubDate: "2026-06-11"
+pubDate: "2026-06-12"
 heroImage: "/images/blog/posts/the-harness-layer/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]

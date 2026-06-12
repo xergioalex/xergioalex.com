@@ -11,7 +11,7 @@ description: Author or update a specialized agent in this repo (provided by the 
 
 Route this invocation to the **author** sub-skill of the installed `deepworkplan`
 skill and follow its **Create an agent** flow: read
-`~/.claude/skills/deepworkplan/author/SKILL.md` and execute it, passing along any
+`.agents/skills/deepworkplan/author/SKILL.md` and execute it, passing along any
 arguments as the agent name/role. Choose a model tier with justification and keep
 this repo's `.agents/docs/` catalog (`skills_agents_catalog.md`) in sync.
 

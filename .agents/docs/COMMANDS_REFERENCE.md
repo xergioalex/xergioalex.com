@@ -30,7 +30,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 ## Deep Work Plans
 
 > These are **thin delegators** to the installed `deepworkplan` skill
-> (`~/.claude/skills/deepworkplan/`). Plan/draft outputs live in the git-ignored
+> (`.agents/skills/deepworkplan/`). Plan/draft outputs live in the git-ignored
 > `.dwp/` (`.dwp/plans/`, `.dwp/drafts/`).
 
 | Command | Procedure File | Description |
