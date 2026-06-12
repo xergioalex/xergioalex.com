@@ -10,7 +10,7 @@ description: Refine a draft or modify an existing final plan (provided by the in
 ## What to do
 
 Route this invocation to the **refine** sub-skill of the installed `deepworkplan`
-skill and follow it: read `~/.claude/skills/deepworkplan/refine/SKILL.md` and
+skill and follow it: read `.agents/skills/deepworkplan/refine/SKILL.md` and
 execute its flow. Plan and draft outputs land in this repo's gitignored `.dwp/`
 (`.dwp/plans/`, `.dwp/drafts/`).
 

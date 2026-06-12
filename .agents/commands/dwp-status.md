@@ -10,7 +10,7 @@ description: Report status of a deep work plan without executing (provided by th
 ## What to do
 
 Route this invocation to the **status** sub-skill of the installed `deepworkplan`
-skill and follow it: read `~/.claude/skills/deepworkplan/status/SKILL.md` and
+skill and follow it: read `.agents/skills/deepworkplan/status/SKILL.md` and
 execute its flow. Plan and draft outputs land in this repo's gitignored `.dwp/`
 (`.dwp/plans/`, `.dwp/drafts/`).
 

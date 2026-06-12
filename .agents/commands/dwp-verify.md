@@ -10,7 +10,7 @@ description: Verify repository and plan conformance to the DeepWorkPlan spec (pr
 ## What to do
 
 Route this invocation to the **verify** sub-skill of the installed `deepworkplan`
-skill and follow it: read `~/.claude/skills/deepworkplan/verify/SKILL.md` and
+skill and follow it: read `.agents/skills/deepworkplan/verify/SKILL.md` and
 execute its flow. It runs read-only and produces an objective pass/fail
 conformance report against the DeepWorkPlan specification (the artifacts a repo
 MUST/SHOULD have and whether plans in `.dwp/plans/` are well-formed).
