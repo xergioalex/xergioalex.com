@@ -647,7 +647,7 @@ Options:
 ### Deep Work Plans
 - **Drafts:** `.dwp/drafts/` (gitignored)
 - **Plans:** `.dwp/plans/PLAN_{name}/` (gitignored)
-- **Engine:** the installed `deepworkplan` skill (`~/.claude/skills/deepworkplan/`)
+- **Engine:** the installed `deepworkplan` skill (`.agents/skills/deepworkplan/`)
 
 ### Library Upgrades
 - **Engine:** the `deepworkplan` dependency-upgrade addon, invoked via `/lib-upgrade`
@@ -675,8 +675,8 @@ Options:
 
 ## Related Documentation
 
-- **DeepWorkPlan methodology** — `~/.claude/skills/deepworkplan/guide/GUIDE.md` and the normative `spec/`
-- **Dependency-upgrade addon** — `~/.claude/skills/deepworkplan/addons/dependency-upgrade/SKILL.md`
+- **DeepWorkPlan methodology** — `.agents/skills/deepworkplan/guide/GUIDE.md` and the normative `spec/`
+- **Dependency-upgrade addon** — `.agents/skills/deepworkplan/addons/dependency-upgrade/SKILL.md`
 - **[Development Commands](../docs/DEVELOPMENT_COMMANDS.md)**
 - **[Repository Standards](../docs/STANDARDS.md)**
 

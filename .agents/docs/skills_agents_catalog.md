@@ -383,7 +383,7 @@ All skills and agents are adapted for this Astro repository:
 ## Related Documentation
 
 - [Commands Reference](COMMANDS_REFERENCE.md) — All slash commands with procedure files and cross-agent invocation convention
-- DeepWorkPlan `author` sub-skill — `~/.claude/skills/deepworkplan/author/SKILL.md` (creates/updates skills, agents, commands; reached via `/skill-create` and `/agent-create`)
-- Skill & agent templates — `~/.claude/skills/deepworkplan/author/templates/` (`SKILL_TEMPLATE.md`, `AGENT_TEMPLATE.md`)
+- DeepWorkPlan `author` sub-skill — `.agents/skills/deepworkplan/author/SKILL.md` (creates/updates skills, agents, commands; reached via `/skill-create` and `/agent-create`)
+- Skill & agent templates — `.agents/skills/deepworkplan/author/templates/` (`SKILL_TEMPLATE.md`, `AGENT_TEMPLATE.md`)
 - [AGENTS.md](../../AGENTS.md) - Main AI agent guidance
 - [docs/STANDARDS.md](../../docs/STANDARDS.md) - Coding standards

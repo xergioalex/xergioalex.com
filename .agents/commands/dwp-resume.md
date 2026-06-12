@@ -10,7 +10,7 @@ description: Resume an interrupted deep work plan from the first open task (prov
 ## What to do
 
 Route this invocation to the **resume** sub-skill of the installed `deepworkplan`
-skill and follow it: read `~/.claude/skills/deepworkplan/resume/SKILL.md` and
+skill and follow it: read `.agents/skills/deepworkplan/resume/SKILL.md` and
 execute its flow. Plan and draft outputs land in this repo's gitignored `.dwp/`
 (`.dwp/plans/`, `.dwp/drafts/`).
 

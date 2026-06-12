@@ -13,7 +13,7 @@ logic itself. (This replaces the repo's previous in-tree library-upgrade procedu
 ## Steps
 
 1. Invoke the dependency-upgrade addon: read
-   `~/.claude/skills/deepworkplan/addons/dependency-upgrade/SKILL.md` and follow
+   `.agents/skills/deepworkplan/addons/dependency-upgrade/SKILL.md` and follow
    its flow.
 2. Follow the addon's flow for this repo:
    - **Package manager:** pnpm (`pnpm-lock.yaml`), with `pnpm dlx npm-check-updates`

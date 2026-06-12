@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "deepworkplan": {
+      "source": "DailybotHQ/deepworkplan-skill",
+      "sourceType": "github",
+      "skillPath": "skills/deepworkplan/SKILL.md",
+      "computedHash": "ee082251381689095906db19ab63d33021c78e56fed081ad9ebd7047ef6840f5"
+    }
+  }
+}

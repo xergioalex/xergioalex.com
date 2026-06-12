@@ -66,10 +66,10 @@ plan/draft outputs live in the git-ignored `.dwp/`.
 
 | Resource | Status | Description |
 |------|--------|-------------|
-| `~/.claude/skills/deepworkplan/guide/GUIDE.md` | ✅ Current | DWP methodology guide |
-| `~/.claude/skills/deepworkplan/spec/` | ✅ Current | Normative DWP specification |
-| `~/.claude/skills/deepworkplan/author/` | ✅ Current | Skill/agent authoring (`/skill-create`, `/agent-create`) |
-| `~/.claude/skills/deepworkplan/addons/dependency-upgrade/` | ✅ Current | Library upgrade addon (`/lib-upgrade`) |
+| `.agents/skills/deepworkplan/guide/GUIDE.md` | ✅ Current | DWP methodology guide |
+| `.agents/skills/deepworkplan/spec/` | ✅ Current | Normative DWP specification |
+| `.agents/skills/deepworkplan/author/` | ✅ Current | Skill/agent authoring (`/skill-create`, `/agent-create`) |
+| `.agents/skills/deepworkplan/addons/dependency-upgrade/` | ✅ Current | Library upgrade addon (`/lib-upgrade`) |
 | `.dwp/plans/`, `.dwp/drafts/` | ✅ Current | Plan/draft outputs (git-ignored) |
 
 ### .agents/ Documentation

@@ -10,7 +10,7 @@ description: Create a deep work plan (single-step refined draft → final plan) 
 ## What to do
 
 Route this invocation to the **create** sub-skill of the installed `deepworkplan`
-skill and follow it: read `~/.claude/skills/deepworkplan/create/SKILL.md` and
+skill and follow it: read `.agents/skills/deepworkplan/create/SKILL.md` and
 execute its flow. Plan and draft outputs land in this repo's gitignored `.dwp/`
 (`.dwp/plans/`, `.dwp/drafts/`).
 

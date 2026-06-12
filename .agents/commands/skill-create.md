@@ -11,7 +11,7 @@ description: Author or update a reusable skill in this repo (provided by the ins
 
 Route this invocation to the **author** sub-skill of the installed `deepworkplan`
 skill and follow its **Create a skill** flow: read
-`~/.claude/skills/deepworkplan/author/SKILL.md` and execute it, passing along any
+`.agents/skills/deepworkplan/author/SKILL.md` and execute it, passing along any
 arguments as the skill name/intent. Keep any new command thin and keep this
 repo's `.agents/docs/` catalog (`skills_agents_catalog.md`) in sync.
 
