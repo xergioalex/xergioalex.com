@@ -147,6 +147,7 @@ const authors = defineCollection({
         github: z.string().optional(),
         instagram: z.string().optional(),
         website: z.string().optional(),
+        sponsor: z.string().optional(),
       })
       .optional(),
   }),

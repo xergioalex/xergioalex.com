@@ -875,6 +875,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     locationTitle: 'Ubicaci\u00F3n',
     locationText:
       'Ubicado en Colombia. Abierto a colaboraci\u00F3n remota en todo el mundo.',
+    sponsorTitle: 'Apoya mi trabajo',
+    sponsorText:
+      'Si mis art\u00EDculos, proyectos open source o charlas te han servido, puedes patrocinar mi trabajo en GitHub. Ayuda directamente a que siga escribiendo y creando open source de forma gratuita. \u00A1Gracias!',
     prefillSubjects: {
       generalInquiry: 'Consulta General',
       collaboration: 'Oportunidad de Colaboración',

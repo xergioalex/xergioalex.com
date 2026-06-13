@@ -396,6 +396,8 @@ export interface SiteTranslations {
     socialTitle: string;
     locationTitle: string;
     locationText: string;
+    sponsorTitle: string;
+    sponsorText: string;
     prefillSubjects: {
       generalInquiry: string;
       collaboration: string;
