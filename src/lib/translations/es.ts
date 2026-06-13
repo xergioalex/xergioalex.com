@@ -27,12 +27,16 @@ export const es: SiteTranslations = {
     trading: 'Trading',
     foodie: 'Foodie',
     hobbies: 'Hobbies',
+    sponsor: 'Patrocinar',
   },
 
   // Footer
   footer: {
     copyright: 'XergioAleX',
     allRightsReserved: 'Todos los derechos reservados.',
+    sponsor: 'Patrocina mi trabajo',
+    sponsorMessage:
+      '¿Te gustan mis posts y mi trabajo open source? Tu patrocinio me ayuda a seguir creando y compartiendo.',
   },
 
   // Homepage hero

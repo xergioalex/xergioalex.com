@@ -77,12 +77,15 @@ export interface SiteTranslations {
     trading: string;
     foodie: string;
     hobbies: string;
+    sponsor: string;
   };
 
   // Footer
   footer: {
     copyright: string;
     allRightsReserved: string;
+    sponsor: string;
+    sponsorMessage: string;
   };
 
   // Homepage hero

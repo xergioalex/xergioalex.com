@@ -37,6 +37,7 @@ export const EVENTS = {
   CONTACT_FORM_ERROR: 'contact_form_error',
   NEWSLETTER_SUBSCRIBE: 'newsletter_subscribe',
   SOCIAL_CLICK: 'social_click',
+  SPONSOR_CLICK: 'sponsor_click',
   OUTBOUND_CLICK: 'outbound_click',
   SCROLL_DEPTH: 'scroll_depth',
   SCROLL_TO_TIMELINE: 'scroll_to_timeline',
