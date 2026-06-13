@@ -82,7 +82,7 @@ function closeAllDropdowns() {
     </a>
     <!-- Desktop menu -->
     <div class="hidden md:flex items-center gap-8">
-      <div class="flex gap-6">
+      <div class="flex items-center gap-6">
         <a href={prefix || '/'} class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'home' })}>{t.nav.home}</a>
         <a href="{prefix}/blog" class="nav-link" on:click={() => trackEvent(EVENTS.NAV_CLICK, { item: 'blog' })}>{t.nav.blog}</a>
         <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
