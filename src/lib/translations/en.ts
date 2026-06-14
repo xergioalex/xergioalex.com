@@ -867,6 +867,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     socialTitle: 'Connect With Me',
     locationTitle: 'Location',
     locationText: 'Based in Colombia. Open to remote collaboration worldwide.',
+    sponsorTitle: 'Support My Work',
+    sponsorText:
+      'If my articles, open-source projects, or talks have helped you, you can sponsor my work on GitHub. It directly funds more free writing and open-source — thank you!',
     prefillSubjects: {
       generalInquiry: 'General Inquiry',
       collaboration: 'Collaboration Opportunity',

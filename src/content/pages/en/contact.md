@@ -30,6 +30,14 @@ Always open to new opportunities, collaborations, and conversations. Whether you
 
 ---
 
+## Support My Work
+
+If my articles, open-source projects, or talks have helped you, you can sponsor my work on GitHub. It directly funds more free writing and open-source.
+
+- [Sponsor on GitHub](https://github.com/sponsors/xergioalex)
+
+---
+
 ## Location
 
 Based in Colombia. Open to remote collaboration worldwide.
