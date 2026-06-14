@@ -30,6 +30,14 @@ Siempre abierto a nuevas oportunidades, colaboraciones y conversaciones. Ya sea 
 
 ---
 
+## Apoya mi trabajo
+
+Si mis artículos, proyectos open source o charlas te han servido, puedes patrocinar mi trabajo en GitHub. Ayuda directamente a que siga escribiendo y creando open source de forma gratuita.
+
+- [Patrocinar en GitHub](https://github.com/sponsors/xergioalex)
+
+---
+
 ## Ubicación
 
 Ubicado en Colombia. Abierto a colaboración remota en todo el mundo.
