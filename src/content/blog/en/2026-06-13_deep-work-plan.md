@@ -1,29 +1,29 @@
 ---
-title: "The Plan Layer: When the Repository Becomes the Harness"
+title: "Deep Work Plan: Give Your Agent a Plan and a Harness"
 description: "An agent nailed the first hour and drifted by the third. The fix wasn't a smarter model — it was a durable plan the repository itself could hold the work to."
 pubDate: "2026-06-13"
-heroImage: "/images/blog/posts/the-plan-layer/hero.webp"
+heroImage: "/images/blog/posts/deep-work-plan/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]
-keywords: ["spec-driven development for AI agents", "long-horizon agent work", "Deep Work Plan methodology", "repository as agent harness", "tool-agnostic spec-driven development", "agent acceptance criteria validation gates", "resumable agent plans state.json"]
+keywords: ["Deep Work Plan methodology", "spec-driven development for AI agents", "harness engineering for coding agents", "long-horizon agent work", "repository as agent harness", "tool-agnostic spec-driven development", "resumable agent plans state.json"]
 series: "working-with-agents"
 seriesOrder: 8
-draft: false
+draft: true
 ---
 
-The agent started strong. I gave it a multi-part job on this very blog — a content migration that touched a few dozen files — and for the first hour it was a pleasure to watch. Clean edits. Right files. It even caught an accent I'd missed in a Spanish string. Then I went to make coffee.
+This series has been building one layer at a time. First, the capabilities an agent installs to do a job — [the skill layer](/blog/the-skill-layer/), where an agent reads a `SKILL.md` and suddenly knows how to do something it couldn't before. Then the system around the model that checks its work and turns each mistake into a permanent fix — [the harness layer](/blog/the-harness-layer/), the scaffolding that decides when a skill runs and whether the result is good enough to keep. Skill by skill, scar by scar, this blog's repository got good at agent work.
 
-When I came back, it was still working. That was the problem.
+And then I watched a well-equipped agent drift anyway.
 
-Somewhere around the third hour it had quietly gone sideways. Not crashed — drifted. It had re-solved a thing it already solved, talked itself into a refactor I never asked for, and lost the thread of which files it had actually finished. The context window had filled with its own chatter, the early decisions had scrolled off the top, and the agent was now reasoning from a version of the task that no longer matched the one I gave it. The intelligence was fine. The intelligence was never the issue. What it didn't have was a place to stand.
+It was a multi-part job on this very blog — a content migration across a few dozen files. The skills were there. The harness was there: the hooks, the guides it read before acting, the sensors that catch what a change breaks. For the first hour it was a pleasure to watch — clean edits, the right files, it even caught an accent I'd missed in a Spanish string. Somewhere around the third hour of that afternoon it had quietly gone sideways. Not crashed — drifted. It re-solved a thing it had already solved, talked itself into a refactor I never asked for, and lost the thread of which files it had actually finished. The context window had filled with its own chatter, the early decisions had scrolled off the top, and the agent was reasoning from a version of the task that no longer matched the one I gave it.
 
-I've been circling this problem for a while in this series. The capabilities an agent installs to do a job — [the skill layer](/blog/the-skill-layer/). The system around the model that checks its work and turns each mistake into a permanent fix — [the harness layer](/blog/the-harness-layer/). Both of those are real and both of them help. But that afternoon made something obvious that I'd been stepping around: a harness with nothing to hold the work *to* is a control system regulating toward nothing. The agent had a harness. What it didn't have was a spec it couldn't drift from. It needed a plan.
+The intelligence was fine. The intelligence was never the issue — that was the whole lesson of the harness chapter, and here it was in front of me again. What this agent had was a harness. What it didn't have was anything that harness could hold the work *to*: a control system regulating toward nothing. It had no place to stand. It needed a plan.
 
 ---
 
 ## The thing a harness points at
 
-Here's the honest version of where I'd gotten stuck. I had skills. I had guides the agent read before it acted and sensors that caught what it broke after. The repository was, by the standards of this series, well-tuned. And the agent still went sideways on anything that took more than an hour, because nothing in the harness was the *target*. The build can tell you a change is broken. It can't tell you the change was the wrong change. The linter is happy whether or not the agent did the job you actually asked for.
+Here's the honest version of where I'd gotten stuck. The repository was, by the standards of this series, well-tuned — skills installed, guides the agent read before it acted, sensors that caught what it broke after. And it still went sideways on anything that took more than an hour, because nothing in the harness was the *target*. The build can tell you a change is broken. It can't tell you the change was the wrong change. The linter is happy whether or not the agent did the job you actually asked for.
 
 A thermostat is the cleanest way I know to say it. The harness is the thermostat — the control system that keeps measuring and correcting. But a thermostat with no temperature set on it just hums. The thing you're missing isn't a better thermostat. It's a number on the dial.
 
@@ -53,7 +53,11 @@ That's the move. The whole series has been edging toward the idea that the repos
 
 That last part is what makes a run resumable. The afternoon migration that drifted on me wasn't recoverable, because the agent's understanding of where it was lived only in a context window that was busy evaporating. When the position lives in files instead, you can close the laptop. The agent — or a different agent, or the same agent three resets later — opens the plan, reads which tasks are checked, reads the state, and picks up exactly where the last one stopped. Long-horizon work stops requiring an unbroken chat session, because the session was never where the truth lived.
 
-I've been calling the methodology that packages all of this **Deep Work Plan**. The name is the point: a plan deep enough to run agents against for hours, structured enough that they can't quietly wander off it. It's not a product I'm selling and it's not named after anyone — it's the methodology I kept rebuilding by hand on every repo until I finally wrote it down properly. Plan, atomic tasks, gates, completion, resumable state. The spec-driven loop, installed into the repository as files.
+I've been calling the methodology that packages all of this **Deep Work Plan**. The name is the point: a plan deep enough to run agents against for hours, structured enough that they can't quietly wander off it. It's not a product I'm selling and it's not named after anyone — it's the thing I kept rebuilding by hand on every repo, the same scaffolding scratched out from nothing each time, until I got tired enough of retyping it to write it down properly as a spec. Plan, atomic tasks, gates, completion, resumable state. The spec-driven loop, installed into the repository as files.
+
+Writing it down is where it stopped being a personal habit and turned into a methodology. Once the shape was on paper I could make it proportional — a one-line fix doesn't need the ceremony of a database migration — so a plan now comes in tiers: a micro plan for the small stuff, a deep one for the work that actually has to survive hours and resets. The state got more honest too: not just checkboxes but a `manifest.json` and a `state.json` that record which gate passed last and what the run is blocked on, so a fresh agent can reconstruct exactly where the previous one stood. None of it was a flash of insight. It was the slow accretion of watching the same thing break the same way and finally deciding to fix it once.
+
+Two pillars hold it up, and naming them is the cleanest way I've found to say what the methodology is. One is the harness — the context, the guardrails, the state — all of it repo-native, the thing this series has been building by hand chapter after chapter. The other is the spec-driven plan that finally gives that harness a number to hold to. Deep Work Plan is how you stop assembling both by hand and install them at once: a plan *and* a harness, dropped into a repo as files.
 
 ---
 
@@ -71,9 +75,9 @@ That's the whole argument for repo-native over tool-bound, and I'll be honest th
 
 I'm wary of methodologies that only work in the slides. So the honest test is whether I actually run this on the things I ship, and I do — this blog among them. Almost every change to this repository now starts as a Deep Work Plan: a plan file, atomic tasks, gates that have to pass, state on disk. The post you're reading was written under one. When I say the loop survives a context reset, it's because I've watched it survive one on work I cared about, not because the diagram says it should.
 
-It's not just my side projects, either. The same methodology runs in production at Dailybot, where a team uses it to keep long-horizon agent work from drifting at a scale I don't operate at solo — there's [a longer account of how a team runs this across hundreds of pages](https://www.dailybot.com/blog/how-we-run-long-horizon-agent-work/) if you want the company-scale version of the same story. And the methodology documents and ships from a repository that uses it on itself, which is about as much dogfooding as I know how to do. The proof and the artifact are the same repos.
+It's not just my side projects, either. The same methodology runs in production at Dailybot — in fact it grew out of the engineering there, where the by-hand version got rebuilt enough times across enough repos that standardizing it stopped being optional. A team uses it to keep long-horizon agent work from drifting at a scale I don't operate at solo, and there's [a longer account of how a team runs this across hundreds of pages](https://www.dailybot.com/blog/how-we-run-long-horizon-agent-work/) if you want the company-scale version of the same story. The methodology documents and ships from a repository that uses it on itself, which is about as much dogfooding as I know how to do. The proof and the artifact are the same repos.
 
-If you want to try it, the whole thing is open. The methodology, the readable spec, and the kit live at [deepworkplan.com](https://deepworkplan.com); there's a one-step adoption endpoint at [deepworkplan.com/init](https://deepworkplan.com/init) that points an agent at your repo and gets it set up; and it's packaged as an installable skill at [DailybotHQ/deepworkplan-skill](https://github.com/DailybotHQ/deepworkplan-skill), so it drops into the `.agents/skills/` layout the same way every other skill does. Install it, point an agent at your repo, generate a plan, run it.
+If you want to try it, the whole thing is open and MIT-licensed. The methodology, the readable spec, and the kit live at [deepworkplan.com](https://deepworkplan.com); there's a one-step adoption endpoint at [deepworkplan.com/init](https://deepworkplan.com/init) that points an agent at your repo and gets it set up; and it's packaged as an installable skill at [DailybotHQ/deepworkplan-skill](https://github.com/DailybotHQ/deepworkplan-skill) — a router and a handful of sub-skills that map straight onto the loop: create, execute, refine, resume, status, verify. It drops into the `.agents/skills/` layout the same way every other skill does. Install it, point an agent at your repo, generate a plan, run it.
 
 ---
 
