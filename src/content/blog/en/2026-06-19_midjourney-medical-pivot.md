@@ -8,7 +8,7 @@ tags: ["tech", "ai"]
 keywords: ["Midjourney medical scanner", "Midjourney Ultrasonic CT", "Midjourney full body ultrasound", "Midjourney Spa San Francisco", "is Midjourney pivoting to healthcare", "ultrasound tomography whole body", "Midjourney Butterfly Network deal"]
 ---
 
-You step into a shallow pool of golden light. A ring of sensors sends sound through your body from every angle. About a minute later you step out, and a 3D map of everything inside you — organs, arteries, bone — has been drawn down to a fraction of a millimeter. No needles, no radiation, no waiting.
+You step into a shallow pool of golden light. A ring of sensors sends sound through your body from every angle. About a minute later you step out, and a 3D map of everything inside you — organs, arteries, bone — has been drawn. No needles, no radiation, no waiting.
 
 It sounds like a scene from a movie — the Med-Bay from *Elysium*, half the sick-bays in science fiction. And it would be, except for one detail: the company that announced it, on a stage in San Francisco, is [Midjourney](https://www.midjourney.com/). The one you know for turning text prompts into images now wants to turn sound into a map of your body. They call it the Midjourney Scanner, and the method "Ultrasonic CT." And they want to put the first machine inside a spa. (Even the tech press did a double take — Engadget admitted it *"had to check… it wasn't April 1st."*)
 

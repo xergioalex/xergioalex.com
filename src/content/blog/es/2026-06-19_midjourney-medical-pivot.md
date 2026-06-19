@@ -8,7 +8,7 @@ tags: ["tech", "ai"]
 keywords: ["Midjourney escáner médico", "qué es Ultrasonic CT Midjourney", "ultrasonido de cuerpo completo Midjourney", "Midjourney Spa San Francisco", "Midjourney pivote a salud", "tomografía por ultrasonido cuerpo completo", "Midjourney Butterfly Network acuerdo"]
 ---
 
-Te metes a una piscina poco profunda de luz dorada. Un anillo de sensores manda sonido a través de tu cuerpo desde todos los ángulos. Cerca de un minuto después sales, y ha quedado dibujado un mapa 3D de todo lo que tienes adentro —órganos, arterias, hueso— hasta una fracción de milímetro. Sin agujas, sin radiación, sin esperas.
+Te metes a una piscina poco profunda de luz dorada. Un anillo de sensores manda sonido a través de tu cuerpo desde todos los ángulos. Cerca de un minuto después sales, y ha quedado dibujado un mapa 3D de todo lo que tienes adentro: órganos, arterias, hueso. Sin agujas, sin radiación, sin esperas.
 
 Suena a escena de película: la Med-Bay de *Elysium*, la mitad de las enfermerías de la ciencia ficción. Y lo sería, salvo por un detalle: quien lo anunció, en un escenario en San Francisco, es [Midjourney](https://www.midjourney.com/). La empresa que conoces por convertir texto en imágenes ahora quiere convertir sonido en un mapa de tu cuerpo. La llaman el Midjourney Scanner, y al método, "Ultrasonic CT". Y quieren poner la primera máquina dentro de un spa. (Hasta la prensa tecnológica hizo una doble toma: en Engadget admitieron que *"had to check… it wasn't April 1st"* ("tuvimos que revisar que no fuera 1 de abril").)
 
