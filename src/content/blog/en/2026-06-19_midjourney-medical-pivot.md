@@ -64,7 +64,7 @@ So the honest answer is: **this is an expansion, not a pivot.** Nothing in the a
 It wasn't an overnight whim, either. As [Deedy Das](https://debarghyadas.com/) — a partner at Menlo Ventures with a large tech-industry following — pointed out, *"the midjourney roadmap was public the whole time."* He resurfaced a March 2024 exchange where Holz wrote, almost in passing: *"tbh i want to open up a biomedical imaging division at midjourney to work on stuff like this."* Two years before the spa renders, the intent was already on the record. And the receipts back it up: Midjourney [announced it was getting into hardware](https://techcrunch.com/2024/08/28/midjourney-says-its-getting-into-hardware) in August 2024, hired an ex-Apple Vision Pro engineer to lead it, and signed the Butterfly deal in late 2025. The launch event was the reveal, not the beginning.
 
 <figure>
-  <img src="/images/blog/posts/midjourney-medical-pivot/deedy-das-roadmap-tweet.webp"
+  <img class="prose-img-md" src="/images/blog/posts/midjourney-medical-pivot/deedy-das-roadmap-tweet.webp"
        alt="Tweet from Deedy Das showing a March 2024 message from David Holz saying he wants to open a biomedical imaging division at Midjourney."
        width="1072"
        height="1112"
@@ -102,10 +102,10 @@ The hardware isn't vaporware either. The one hard, verifiable fact in this whole
 It even passed an eyewitness test. Ben Parr — tech journalist, author of *Captivology*, and a fixture of tech media since his Mashable years — was invited to the launch and stepped up to the scanner himself. *"I saw the inside of my arm today. And it was the future!"* he [posted on X](https://x.com/benparr/status/2067462636867142020). He could only scan his arm — *"the full machine is HUGE,"* he added — which squares with an early prototype. Hold it lightly: he was an invited guest, so it's an enthusiastic first impression, not an independent test. But it's a credible witness saying a real machine imaged him in real time, not a render.
 
 <figure>
-  <img src="/images/blog/posts/midjourney-medical-pivot/ben-parr-launch-tweet.webp"
+  <img class="prose-img-md" src="/images/blog/posts/midjourney-medical-pivot/ben-parr-launch-tweet.webp"
        alt="Tweet from Ben Parr saying he saw the inside of his arm at the Midjourney launch and that it was the future, with photos from the event."
-       width="1074"
-       height="1694"
+       width="1070"
+       height="1386"
        loading="lazy" />
   <figcaption>Ben Parr at the launch — an invited guest's first impression after trying the scanner on his arm. — Source: <a href="https://x.com/benparr/status/2067462636867142020">Ben Parr on X</a>.</figcaption>
 </figure>

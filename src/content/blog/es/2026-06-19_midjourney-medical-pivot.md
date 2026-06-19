@@ -64,7 +64,7 @@ Así que la respuesta honesta es: **esto es una expansión, no un pivote.** Nada
 Y tampoco fue un capricho de la noche a la mañana. Como señaló [Deedy Das](https://debarghyadas.com/) —partner de Menlo Ventures y una voz muy seguida en la industria—, *"the midjourney roadmap was public the whole time"* ("la hoja de ruta de Midjourney fue pública todo el tiempo"). Rescató un intercambio de marzo de 2024 en el que Holz escribió, casi al pasar: *"tbh i want to open up a biomedical imaging division at midjourney to work on stuff like this"* ("la verdad, quiero abrir una división de imágenes biomédicas en Midjourney para trabajar en cosas así"). Dos años antes de los renders del spa, la intención ya estaba sobre la mesa. Y los recibos lo respaldan: Midjourney [anunció que entraba al hardware](https://techcrunch.com/2024/08/28/midjourney-says-its-getting-into-hardware) en agosto de 2024, contrató a un ex ingeniero del Vision Pro de Apple para liderarlo, y firmó el acuerdo con Butterfly a finales de 2025. El evento de lanzamiento fue la revelación, no el comienzo.
 
 <figure>
-  <img src="/images/blog/posts/midjourney-medical-pivot/deedy-das-roadmap-tweet.webp"
+  <img class="prose-img-md" src="/images/blog/posts/midjourney-medical-pivot/deedy-das-roadmap-tweet.webp"
        alt="Tuit de Deedy Das mostrando un mensaje de marzo de 2024 de David Holz donde dice que quiere abrir una división de imágenes biomédicas en Midjourney."
        width="1072"
        height="1112"
@@ -102,10 +102,10 @@ El hardware tampoco es humo. El único hecho duro y verificable de toda esta his
 Hasta pasó la prueba del testigo presencial. Ben Parr —periodista de tecnología, autor de *Captivology* y figura de los medios tech desde sus años en Mashable— fue invitado al lanzamiento y se subió él mismo al escáner. *"I saw the inside of my arm today. And it was the future!"* ("Hoy vi el interior de mi brazo. ¡Y era el futuro!") [escribió en X](https://x.com/benparr/status/2067462636867142020). Solo pudo escanearse el brazo —*"the full machine is HUGE"* ("la máquina completa es ENORME"), agregó—, lo cual encaja con un prototipo temprano. Tómalo con calma: era un invitado, así que es una primera impresión entusiasta, no una prueba independiente. Pero es un testigo creíble diciendo que una máquina real lo escaneó en tiempo real, no un render.
 
 <figure>
-  <img src="/images/blog/posts/midjourney-medical-pivot/ben-parr-launch-tweet.webp"
+  <img class="prose-img-md" src="/images/blog/posts/midjourney-medical-pivot/ben-parr-launch-tweet.webp"
        alt="Tuit de Ben Parr diciendo que vio el interior de su brazo en el lanzamiento de Midjourney y que era el futuro, con fotos del evento."
-       width="1074"
-       height="1694"
+       width="1070"
+       height="1386"
        loading="lazy" />
   <figcaption>Ben Parr en el lanzamiento — la primera impresión de un invitado tras probar el escáner en su brazo. — Fuente: <a href="https://x.com/benparr/status/2067462636867142020">Ben Parr en X</a>.</figcaption>
 </figure>
