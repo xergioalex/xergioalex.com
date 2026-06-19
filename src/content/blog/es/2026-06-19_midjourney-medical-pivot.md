@@ -76,7 +76,7 @@ El hardware tampoco es humo. El único hecho duro y verificable de toda esta his
 
 ## Entonces, ¿funciona de verdad?
 
-Acá es donde la película choca con la física, y la física no lee el guion. Tengo que ser honesto: la distancia entre la promesa y lo que el sonido de verdad puede hacer es grande, y la gente que mejor conoce este campo no es nada suave al respecto.
+Toda buena película de ciencia ficción tiene un agujero en la trama que solo notas en la segunda vuelta. El de esta tiene nombre: física. La distancia entre la promesa y lo que el sonido de verdad puede hacer dentro de un cuerpo es enorme, y los que más saben de esto no fueron nada amables.
 
 Empecemos por el cuerpo mismo. El sonido tiene dos enemigos, y el cuerpo humano está lleno de ambos: **el aire y el hueso.** En la frontera entre el tejido blando y el aire —pulmones, gas intestinal— alrededor del 99,9% de una onda de ultrasonido se refleja de vuelta. No puede pasar. El hueso también refleja una fracción grande, dispersa el resto y distorsiona feo lo que sobreviva. Esto no es un error de ingeniería que se arregla con más sensores o más cómputo. Es la física del sonido chocando contra un pulmón lleno de aire. Un radiólogo en ejercicio lo dijo sin rodeos en Hacker News: el ultrasonido *físicamente no puede* obtener imágenes de pulmones llenos de aire ni ver a través del hueso cortical, y calificó la afirmación de "evitar el 30% de las muertes" como *"completely divorced from reality"* ("completamente divorciada de la realidad").
 

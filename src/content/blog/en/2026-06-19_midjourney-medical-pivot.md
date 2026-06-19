@@ -76,7 +76,7 @@ The hardware isn't vaporware either. The one hard, verifiable fact in this whole
 
 ## So does it actually work?
 
-This is where the movie runs into the physics — and the physics doesn't read the screenplay. I have to be honest: the gap between the pitch and what sound can actually do is wide, and the people who know this field best are not gentle about it.
+Every good science-fiction movie has a plot hole you only catch on the second watch. This one's has a name: physics. The gap between the pitch and what sound can actually do inside a body is wide — and the people who know this field best were not kind about it.
 
 Start with the body itself. Sound has two enemies, and the human body is full of both: **air and bone.** At the boundary between soft tissue and air — lungs, bowel gas — roughly 99.9% of an ultrasound wave reflects straight back. It can't get through. Bone reflects a large fraction too, scatters the rest, and badly distorts whatever survives. This is not an engineering bug you fix with more sensors or more compute. It's the physics of sound meeting an air-filled lung. A practicing radiologist on Hacker News put it bluntly: ultrasound *physically cannot* image air-filled lungs or see through cortical bone, and called the "avoid 30% of deaths" claim *"completely divorced from reality."*
 
