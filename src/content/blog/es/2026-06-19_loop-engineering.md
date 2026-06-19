@@ -1,5 +1,5 @@
 ---
-title: "Loop Engineering: el nombre de algo que ya venía construyendo en silencio"
+title: "Loop Engineering: siempre fue automatización"
 description: "Todos dicen que deberíamos escribir loops, no prompts. Quítale la novedad y es automatización — con una sola cosa nueva dentro del cuerpo del loop."
 pubDate: "2026-06-19"
 heroImage: "/images/blog/posts/loop-engineering/hero.webp"

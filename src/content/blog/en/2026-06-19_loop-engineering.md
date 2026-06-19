@@ -1,5 +1,5 @@
 ---
-title: "Loop Engineering: The Word for Something I'd Been Building Quietly"
+title: "Loop Engineering: It Was Automation All Along"
 description: "Everyone's saying we should write loops, not prompts. Strip away the novelty and it's automation — with one new thing sitting inside the loop's body."
 pubDate: "2026-06-19"
 heroImage: "/images/blog/posts/loop-engineering/hero.webp"
