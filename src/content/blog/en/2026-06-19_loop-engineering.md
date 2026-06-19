@@ -1,5 +1,5 @@
 ---
-title: "Loop Engineering: It Was Automation All Along"
+title: "Loop Engineering: Automation in the Age of AI"
 description: "Everyone's saying we should write loops, not prompts. Strip away the novelty and it's automation — with one new thing sitting inside the loop's body."
 pubDate: "2026-06-19"
 heroImage: "/images/blog/posts/loop-engineering/hero.webp"
