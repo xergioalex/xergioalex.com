@@ -8,11 +8,11 @@ tags: ["tech", "ai"]
 keywords: ["Midjourney escáner médico", "qué es Ultrasonic CT Midjourney", "ultrasonido de cuerpo completo Midjourney", "Midjourney Spa San Francisco", "Midjourney pivote a salud", "tomografía por ultrasonido cuerpo completo", "Midjourney Butterfly Network acuerdo"]
 ---
 
-**17 de junio de 2026.** Midjourney —la empresa que conoces por convertir texto en imágenes— se paró en un escenario en San Francisco y anunció una máquina a la que te metes. Te sumerges en una piscina poco profunda rodeada de sensores, el sonido atraviesa tu cuerpo desde todos los ángulos, y sale un mapa 3D de tu interior. Lo llaman el Midjourney Scanner. Bautizan el método como "Ultrasonic CT". Y quieren poner uno dentro de un spa.
+**17 de junio de 2026.** Midjourney —la empresa que conoces por convertir texto en imágenes— se paró en un escenario en San Francisco y describió una máquina a la que te subes. Te sumerges en una piscina poco profunda de luz dorada. Un anillo de sensores manda sonido a través de tu cuerpo desde todos los ángulos. Cerca de un minuto después sales, y ha quedado dibujado un mapa 3D de tu interior, hasta una fracción de milímetro. La llaman el Midjourney Scanner, y al método, "Ultrasonic CT". Y quieren poner uno dentro de un spa.
 
-Lo leí dos veces. Después revisé la fecha, porque mi primer instinto fue que alguien había publicado una broma del 1 de abril con dos meses y medio de retraso. En Engadget tuvieron la misma reacción: escribieron literalmente que *"had to check… it wasn't April 1st"* ("tuvimos que revisar que no fuera 1 de abril"). Una empresa de generación de imágenes con IA, sin historia en hardware ni trayectoria médica, dice que va a reinventar cómo miramos el interior del cuerpo humano.
+Mi primer pensamiento no fue *¿esto es real?*. Fue que ya lo había visto, en una película. Una cápsula a la que entras y de la que sales, escaneado de pies a cabeza, sin agujas, sin radiación, sin esperas. Eso es la Med-Bay de *Elysium*; es la mitad de las enfermerías de la ciencia ficción. Lo que Midjourney puso en el escenario no estaba presentado como un dispositivo médico, sino montado como una escena de una película sobre el futuro de la medicina. (Hasta la prensa tecnológica hizo una doble toma: en Engadget admitieron que *"had to check… it wasn't April 1st"* ("tuvimos que revisar que no fuera 1 de abril").)
 
-Así que me puse a investigar. No para burlarme, ni para hacerle barra, sino para entender de verdad qué anunciaron, qué significa para Midjourney como empresa, y si la cosa funciona o es un render bonito con un evento de lanzamiento pegado. Esto fue lo que encontré.
+Así que la pregunta que se me quedó no fue si es una broma. Es la que toda buena premisa de ciencia ficción tiene que responder tarde o temprano: ¿la ciencia es real, o se queda en ficción? Una empresa de imágenes con IA, sin historia en hardware ni trayectoria médica, dice que va a reinventar cómo miramos el interior del cuerpo humano. Me puse a investigar —no para burlarme, no para hacerle barra— para entender qué fue lo que de verdad anunciaron, qué significa para Midjourney como empresa, y dónde queda la línea entre la película y la máquina.
 
 ---
 
@@ -24,7 +24,7 @@ El aparato es un anillo de —según dicen— *"half a million tiny squares each
 
 Los números del titular son enormes. Un escaneo que *"looks a lot like today's MRIs but at nearly a hundred times the speed"* ("se parece mucho a las resonancias de hoy, pero a casi cien veces la velocidad"). Una meta de **50.000 escáneres en el mundo para 2031**. Una capacidad de *"a billion scans a month"* ("mil millones de escaneos al mes"). Y una afirmación —matizada, pero dicha— de que con suficiente imagen temprana el mundo *"could avoid 30% of all deaths and 50% of all healthcare costs"* ("podría evitar el 30% de todas las muertes y el 50% de todos los costos de salud").
 
-Y luego viene la parte que hace que todos volteen a mirar dos veces: el primero va en un **spa**. Un buque insignia en San Francisco, que abriría hacia finales de 2027, de unos 24 a 25.000 pies cuadrados con *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body"* ("jacuzzis, saunas, baños de inmersión fríos y salas acogedoras con piscinas de luz dorada que escanean tu cuerpo suavemente"). Abierto 24/7. Como lo ponen ellos: *"The scans are a side-effect. You barely think of them when going to the spa"* ("Los escaneos son un efecto secundario. Casi ni piensas en ellos cuando vas al spa").
+Y luego viene la parte que nadie vio venir: el primero va en un **spa**. Un buque insignia en San Francisco, que abriría hacia finales de 2027, de unos 24 a 25.000 pies cuadrados con *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body"* ("jacuzzis, saunas, baños de inmersión fríos y salas acogedoras con piscinas de luz dorada que escanean tu cuerpo suavemente"). Abierto 24/7. Como lo ponen ellos: *"The scans are a side-effect. You barely think of them when going to the spa"* ("Los escaneos son un efecto secundario. Casi ni piensas en ellos cuando vas al spa").
 
 Acá va lo primero que conviene tener presente, porque el marketing lo difumina: **los 60 segundos son una meta, no una medición.** Su propia frase es *"the goal is for this process to take no more than 60 seconds"* ("la meta es que este proceso no tome más de 60 segundos"). La cobertura del evento ubica el prototipo actual en unos **20 minutos**, usado en unas **12 personas** hasta ahora. Y el fundador, David Holz, le dijo algo a The Next Web que el demo pulido no muestra: *"We're not even using any AI in this yet, just really cool hardware and software"* ("Ni siquiera estamos usando IA en esto todavía, solo hardware y software muy chéveres"). Lo que corre hoy es procesamiento de señales, no un modelo.
 
@@ -53,7 +53,7 @@ Lo que no aclararon, marcadamente: qué pasa con la hoja de ruta del producto de
 
 ---
 
-## Lo que le da sentido
+## La ciencia detrás de la ciencia ficción
 
 Si te quedas en "empresa de imágenes construye un escáner", suena absurdo. Si miras *cómo* funciona de verdad la tomografía por ultrasonido moderna, se vuelve menos absurdo, y se entiende por qué una empresa pesada en cómputo escogió esta pelea.
 
@@ -76,7 +76,7 @@ El hardware tampoco es humo. El único hecho duro y verificable de toda esta his
 
 ## Entonces, ¿funciona de verdad?
 
-Acá tengo que ser honesto, porque la distancia entre la promesa y la física es grande, y la gente que mejor conoce este campo no es nada suave al respecto.
+Acá es donde la película choca con la física, y la física no lee el guion. Tengo que ser honesto: la distancia entre la promesa y lo que el sonido de verdad puede hacer es grande, y la gente que mejor conoce este campo no es nada suave al respecto.
 
 Empecemos por el cuerpo mismo. El sonido tiene dos enemigos, y el cuerpo humano está lleno de ambos: **el aire y el hueso.** En la frontera entre el tejido blando y el aire —pulmones, gas intestinal— alrededor del 99,9% de una onda de ultrasonido se refleja de vuelta. No puede pasar. El hueso también refleja una fracción grande, dispersa el resto y distorsiona feo lo que sobreviva. Esto no es un error de ingeniería que se arregla con más sensores o más cómputo. Es la física del sonido chocando contra un pulmón lleno de aire. Un radiólogo en ejercicio lo dijo sin rodeos en Hacker News: el ultrasonido *físicamente no puede* obtener imágenes de pulmones llenos de aire ni ver a través del hueso cortical, y calificó la afirmación de "evitar el 30% de las muertes" como *"completely divorced from reality"* ("completamente divorciada de la realidad").
 
@@ -119,7 +119,7 @@ La tercera es la **apuesta del encuadre**, y es la que más me incomoda. Lanzar 
 
 Lo que queda en el medio es más interesante que cualquiera de los dos titulares. Una empresa con una estructura inusual, dinero real, socios de hardware reales y una ventaja real en cómputo, entrando de frente a la versión más difícil de un problema, haciendo afirmaciones que su propio prototipo todavía no puede respaldar, con un encuadre diseñado para esquivar el escrutinio que esas afirmaciones normalmente invitarían. Eso vale la pena seguirlo de cerca, con curiosidad por la ambición y una mano en el escepticismo.
 
-Voy a estar pendiente de las solicitudes ante la FDA, no de los renders del spa. Ahí es donde vamos a descubrir cuál de estas apuestas era real.
+La ciencia ficción se vuelve ciencia de la forma aburrida: una solicitud ante la FDA, un resultado revisado por pares, un prototipo honesto a la vez. Así que voy a estar pendiente de las solicitudes, no de los renders del spa. Ahí es donde vamos a descubrir cuál de estas apuestas cruza desde la película, y cuál se queda en la pantalla.
 
 A seguir construyendo.
 

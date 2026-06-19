@@ -8,11 +8,11 @@ tags: ["tech", "ai"]
 keywords: ["Midjourney medical scanner", "Midjourney Ultrasonic CT", "Midjourney full body ultrasound", "Midjourney Spa San Francisco", "is Midjourney pivoting to healthcare", "ultrasound tomography whole body", "Midjourney Butterfly Network deal"]
 ---
 
-**June 17, 2026.** Midjourney — the company you know for turning text prompts into images — stood on a stage in San Francisco and announced a machine you step into. You lower yourself into a shallow pool ringed with sensors, sound passes through your body from every angle, and out comes a 3D map of your insides. They call it the Midjourney Scanner. They're branding the method "Ultrasonic CT." And they want to put one inside a spa.
+**June 17, 2026.** Midjourney — the company you know for turning text prompts into images — stood on a stage in San Francisco and described a machine you climb into. You lower yourself into a shallow pool of golden light. A ring of sensors sends sound through your body from every angle. About a minute later you step out, and a 3D map of your insides has been drawn — down to a fraction of a millimeter. They call it the Midjourney Scanner, and the method "Ultrasonic CT." They want to put one inside a spa.
 
-I read it twice. Then I checked the date, because my first instinct was that someone had shipped an April Fools' post two and a half months late. Engadget had the same reaction — they literally wrote that they *"had to check… it wasn't April 1st."* An AI image-generation company, with no hardware history and no medical track record, says it's reinventing how we look inside the human body.
+My first thought wasn't *is this real.* It was that I'd seen it before — in a movie. A pod you step into and step out of, scanned head to toe, no needles, no radiation, no waiting. That's the Med-Bay from *Elysium*; it's half the sick-bays in science fiction. What Midjourney put on stage wasn't pitched like a medical device so much as staged like a scene from a film about the future of medicine. (Even the tech press did a double take — Engadget admitted it *"had to check… it wasn't April 1st."*)
 
-So I went digging. Not to dunk on it, and not to cheerlead — to actually understand what was announced, what it means for Midjourney as a company, and whether the thing works or is a beautiful render with a launch event attached. Here's what I found.
+So the question that stuck with me wasn't whether it's a joke. It's the one every good science-fiction premise eventually has to answer: is the science real, or does it stay fiction? An AI image company with no hardware history and no medical track record says it's reinventing how we look inside the human body. I went digging — not to dunk on it, not to cheerlead — to work out what was actually announced, what it means for Midjourney as a company, and where the line falls between the movie and the machine.
 
 ---
 
@@ -24,7 +24,7 @@ The device is a ring of — they say — *"half a million tiny squares each the 
 
 The headline numbers are big. A scan that *"looks a lot like today's MRIs but at nearly a hundred times the speed."* A goal of **50,000 scanners worldwide by 2031**. A capacity of *"a billion scans a month."* A claim — hedged, but stated — that with enough early imaging *"the world could avoid 30% of all deaths and 50% of all healthcare costs."*
 
-And then the part that makes everyone do a double-take: the first one goes in a **spa**. A flagship in San Francisco, opening around the end of 2027, roughly 24–25,000 square feet of *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body."* Open 24/7. As they put it: *"The scans are a side-effect. You barely think of them when going to the spa."*
+And then the part nobody saw coming: the first one goes in a **spa**. A flagship in San Francisco, opening around the end of 2027, roughly 24–25,000 square feet of *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body."* Open 24/7. As they put it: *"The scans are a side-effect. You barely think of them when going to the spa."*
 
 Here's the first thing worth holding onto, because the marketing blurs it: **the 60 seconds is a goal, not a measurement.** Their own line is *"the goal is for this process to take no more than 60 seconds."* Reporting from the event puts the current prototype at around **20 minutes**, used on roughly **12 people** so far. And founder David Holz said something to The Next Web that the slick demo doesn't: *"We're not even using any AI in this yet, just really cool hardware and software."* The thing that's running today is signal processing, not a model.
 
@@ -53,7 +53,7 @@ What they pointedly did **not** clarify: what happens to the image product's roa
 
 ---
 
-## The part that makes it make sense
+## The science under the science fiction
 
 If you stop at "image company builds a scanner," it sounds absurd. If you look at *how* modern ultrasound tomography actually works, it gets less absurd — and you can see why a compute-heavy company picked this fight.
 
@@ -76,7 +76,7 @@ The hardware isn't vaporware either. The one hard, verifiable fact in this whole
 
 ## So does it actually work?
 
-This is where I have to be honest, because the gap between the pitch and the physics is wide, and the people who know this field best are not gentle about it.
+This is where the movie runs into the physics — and the physics doesn't read the screenplay. I have to be honest: the gap between the pitch and what sound can actually do is wide, and the people who know this field best are not gentle about it.
 
 Start with the body itself. Sound has two enemies, and the human body is full of both: **air and bone.** At the boundary between soft tissue and air — lungs, bowel gas — roughly 99.9% of an ultrasound wave reflects straight back. It can't get through. Bone reflects a large fraction too, scatters the rest, and badly distorts whatever survives. This is not an engineering bug you fix with more sensors or more compute. It's the physics of sound meeting an air-filled lung. A practicing radiologist on Hacker News put it bluntly: ultrasound *physically cannot* image air-filled lungs or see through cortical bone, and called the "avoid 30% of deaths" claim *"completely divorced from reality."*
 
@@ -119,7 +119,7 @@ Honestly? I don't know if this works. I don't think anyone does yet — includin
 
 What's left in the middle is more interesting than either headline. A company with an unusual structure, real money, real hardware partners, and a real compute advantage, walking straight into the hardest version of a problem, making claims its own prototype can't yet back, in a framing designed to sidestep the scrutiny those claims would normally invite. That's worth watching closely — with curiosity for the ambition and a hand on the skepticism.
 
-I'll be watching the FDA submissions, not the spa renders. That's where we'll find out which of these bets was real.
+Science fiction turns into science the boring way — one FDA filing, one peer-reviewed result, one honest prototype at a time. So I'll be watching the submissions, not the spa renders. That's where we find out which of these bets crosses over from the movie, and which stays on screen.
 
 Let's keep building.
 
