@@ -3,7 +3,7 @@ title: "Loop Engineering: el nombre de algo que ya venía construyendo en silenc
 description: "Todos dicen que deberíamos escribir loops, no prompts. Quítale la novedad y es automatización — con una sola cosa nueva dentro del cuerpo del loop."
 pubDate: "2026-06-19"
 heroImage: "/images/blog/posts/loop-engineering/hero.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "ai-agents", "claude"]
 keywords: ["loop engineering", "qué es loop engineering", "loops de agentes", "agentes autónomos", "agentes programados", "desarrollo guiado por especificaciones", "automatización con IA", "loops en Claude Code"]
 series: "working-with-agents"
