@@ -2,7 +2,7 @@
 title: "Midjourney quiere escanear todo tu cuerpo en 60 segundos"
 description: "Midjourney, la empresa de imágenes con IA, presentó un escáner de ultrasonido de cuerpo completo y un spa. ¿Es un pivote o una nueva división? ¿Y funciona?"
 pubDate: "2026-06-19"
-heroImage: "/images/blog/posts/midjourney-medical-pivot/hero.webp"
+heroImage: "/images/blog/posts/midjourney-medical-pivot/hero-es.webp"
 heroLayout: "banner"
 tags: ["tech", "ai"]
 keywords: ["Midjourney escáner médico", "qué es Ultrasonic CT Midjourney", "ultrasonido de cuerpo completo Midjourney", "Midjourney Spa San Francisco", "Midjourney pivote a salud", "tomografía por ultrasonido cuerpo completo", "Midjourney Butterfly Network acuerdo"]
