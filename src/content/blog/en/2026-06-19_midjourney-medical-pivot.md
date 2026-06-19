@@ -26,6 +26,22 @@ The headline numbers are big. A scan that *"looks a lot like today's MRIs but at
 
 And then the part nobody saw coming: the first one goes in a **spa**. A flagship in San Francisco, opening around the end of 2027, roughly 24–25,000 square feet of *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body."* Open 24/7. As they put it: *"The scans are a side-effect. You barely think of them when going to the spa."*
 
+<figure>
+  <video
+    src="/images/blog/posts/midjourney-medical-pivot/spa-renders.mp4"
+    width="2490"
+    height="1080"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata"
+    style="width: 100%; height: auto;"
+    aria-label="Looping concept render of the Midjourney Spa interior — pools of golden light in a dark, spa-like room."
+  ></video>
+  <figcaption>Midjourney's own concept renders of the planned spa — pools of golden light you step into, with the scan as a side effect. — Source: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
+</figure>
+
 Here's the first thing worth holding onto, because the marketing blurs it: **the 60 seconds is a goal, not a measurement.** Their own line is *"the goal is for this process to take no more than 60 seconds."* Reporting from the event puts the current prototype at around **20 minutes**, used on roughly **12 people** so far. And founder David Holz said something to The Next Web that the slick demo doesn't: *"We're not even using any AI in this yet, just really cool hardware and software."* The thing that's running today is signal processing, not a model.
 
 <figure>

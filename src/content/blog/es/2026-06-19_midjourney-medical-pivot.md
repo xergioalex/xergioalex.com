@@ -26,6 +26,22 @@ Los números del titular son enormes. Un escaneo que *"looks a lot like today's 
 
 Y luego viene la parte que nadie vio venir: el primero va en un **spa**. Un buque insignia en San Francisco, que abriría hacia finales de 2027, de unos 24 a 25.000 pies cuadrados con *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body"* ("jacuzzis, saunas, baños de inmersión fríos y salas acogedoras con piscinas de luz dorada que escanean tu cuerpo suavemente"). Abierto 24/7. Como lo ponen ellos: *"The scans are a side-effect. You barely think of them when going to the spa"* ("Los escaneos son un efecto secundario. Casi ni piensas en ellos cuando vas al spa").
 
+<figure>
+  <video
+    src="/images/blog/posts/midjourney-medical-pivot/spa-renders.mp4"
+    width="2490"
+    height="1080"
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata"
+    style="width: 100%; height: auto;"
+    aria-label="Render conceptual en bucle del interior del Midjourney Spa — piscinas de luz dorada en una sala oscura tipo spa."
+  ></video>
+  <figcaption>Los propios renders conceptuales del spa que planea Midjourney — piscinas de luz dorada a las que te metes, con el escaneo como efecto secundario. — Fuente: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
+</figure>
+
 Acá va lo primero que conviene tener presente, porque el marketing lo difumina: **los 60 segundos son una meta, no una medición.** Su propia frase es *"the goal is for this process to take no more than 60 seconds"* ("la meta es que este proceso no tome más de 60 segundos"). La cobertura del evento ubica el prototipo actual en unos **20 minutos**, usado en unas **12 personas** hasta ahora. Y el fundador, David Holz, le dijo algo a The Next Web que el demo pulido no muestra: *"We're not even using any AI in this yet, just really cool hardware and software"* ("Ni siquiera estamos usando IA en esto todavía, solo hardware y software muy chéveres"). Lo que corre hoy es procesamiento de señales, no un modelo.
 
 <figure>
