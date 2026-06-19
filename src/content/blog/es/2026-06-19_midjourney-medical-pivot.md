@@ -29,12 +29,12 @@ Y luego viene la parte que nadie vio venir: el primero va en un **spa**. Un buqu
 Acá va lo primero que conviene tener presente, porque el marketing lo difumina: **los 60 segundos son una meta, no una medición.** Su propia frase es *"the goal is for this process to take no more than 60 seconds"* ("la meta es que este proceso no tome más de 60 segundos"). La cobertura del evento ubica el prototipo actual en unos **20 minutos**, usado en unas **12 personas** hasta ahora. Y el fundador, David Holz, le dijo algo a The Next Web que el demo pulido no muestra: *"We're not even using any AI in this yet, just really cool hardware and software"* ("Ni siquiera estamos usando IA en esto todavía, solo hardware y software muy chéveres"). Lo que corre hoy es procesamiento de señales, no un modelo.
 
 <figure>
-  <img src="/images/blog/posts/midjourney-medical-pivot/reconstruction-abdomen.webp"
-       alt="Corte transversal de reconstrucción ultrasónica de la parte alta del abdomen humano producido por el Midjourney Scanner, mostrando estructuras de tejido blando."
-       width="1920"
-       height="960"
+  <img src="/images/blog/posts/midjourney-medical-pivot/reconstruction-abdomen-es.webp"
+       alt="Corte transversal del abdomen reconstruido por el Midjourney Scanner, con etiquetas anatómicas en español: aorta, hígado, bazo, riñones, costillas, médula espinal y más."
+       width="1774"
+       height="887"
        loading="lazy" />
-  <figcaption>Un corte de reconstrucción en bruto del Midjourney Scanner: una sección transversal construida solo con sonido, antes de cualquier etiquetado con IA. — Fuente: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
+  <figcaption>La segmentación con IA etiqueta lo que el escaneo identifica dentro del cuerpo: un corte del abdomen con sus estructuras nombradas. — Fuente: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
 </figure>
 
 ---
@@ -64,12 +64,12 @@ Acá está la trampa que también es la oportunidad: la inversión de onda compl
 El hardware tampoco es humo. El único hecho duro y verificable de toda esta historia es una alianza: Midjourney firmó un acuerdo de codesarrollo con **Butterfly Network**, la empresa de "ultrasonido en un chip", revelado en un documento ante la SEC en noviembre de 2025, por hasta **74 millones de dólares en cinco años**, con 40 de los módulos de chip de Butterfly en cada máquina prototipo. La acción de Butterfly subió con la noticia. El líder de hardware que contrató Midjourney, Ahmad Abbas, viene del equipo del Vision Pro de Apple. Hay ingenieros reales y silicio real detrás del render.
 
 <figure>
-  <img src="/images/blog/posts/midjourney-medical-pivot/reconstruction-thigh.webp"
-       alt="Corte transversal de reconstrucción ultrasónica de un muslo humano producido por el Midjourney Scanner, mostrando músculo y hueso."
-       width="1920"
-       height="960"
+  <img src="/images/blog/posts/midjourney-medical-pivot/reconstruction-thigh-es.webp"
+       alt="Corte transversal de dos muslos reconstruidos por el Midjourney Scanner, con etiquetas anatómicas en español: fémur, músculo sartorio, arteria femoral, vena safena mayor y más."
+       width="1774"
+       height="887"
        loading="lazy" />
-  <figcaption>Una sección transversal de muslo: tejido blando alrededor del hueso. La pierna, vale anotarlo, es una de las partes del cuerpo más fáciles de atravesar para el sonido. — Fuente: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
+  <figcaption>El mismo escaneo en el muslo, con músculos y vasos etiquetados. La pierna, vale anotarlo, es una de las partes del cuerpo más fáciles de atravesar para el sonido. — Fuente: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
 </figure>
 
 ---
