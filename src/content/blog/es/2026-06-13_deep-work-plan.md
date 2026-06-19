@@ -19,6 +19,8 @@ Era un trabajo de varias partes en este mismo blog — una migración de conteni
 
 La inteligencia estaba bien. La inteligencia nunca fue el problema — esa fue toda la lección del capítulo del harness, y aquí estaba otra vez frente a mí. Lo que este agente tenía era un harness. Lo que no tenía era nada contra lo que ese harness pudiera sostener el trabajo: un sistema de control regulando hacia nada. No tenía un lugar donde pararse. Le faltaba un plan.
 
+Ese fue el giro para mí. El arreglo nunca iba a ser un prompt más astuto ni esperar a un modelo más inteligente — los modelos importan, pero importa más aquello dentro de lo que trabajan, y la desviación era un problema estructural que había que resolver con ingeniería, no uno de prompting que se gana hablando más bonito. Un agente bien equipado, resulta, no es el que tiene el modelo más inteligente. Es el que está parado sobre un plan del que no puede irse por la tangente en silencio — y darle eso a un agente es de lo que trata todo lo demás.
+
 ---
 
 ## Aquello a lo que apunta un harness
@@ -61,6 +63,20 @@ Dos pilares lo sostienen, y nombrarlos es la forma más limpia que he encontrado
 
 ---
 
+## Qué le da eso al agente, en el día a día
+
+Vale la pena deletrear qué hace de verdad el plan una vez que está corriendo, porque ahí es donde deja de ser una lista de pendientes con esteroides — y las preguntas más filudas que me hicieron cuando lo puse frente a otra gente cayeron justo aquí. Así que déjame responderlas como las respondí entonces.
+
+Las puertas corren solas. Una puerta de validación no es una nota para mí; es un comando que el agente corre y que tiene que ver volver en verde antes de que se le permita cerrar una tarea. Cuando no vuelve en verde, el agente marca la tarea como *bloqueada* y se detiene — fuerte, en un archivo — en lugar de enterrar la falla en algún punto de una transcripción que yo tendría que ir a pescar. Mi visto bueno solo enmarca la corrida: apruebo el plan antes de que arranque y leo el diff cuando termina. El medio, la parte que antes era yo rondando encima, ahora les pertenece a las puertas.
+
+El plan describe comportamiento, no ediciones, que es lo que evita que se vuelva obsoleto. Los criterios de aceptación nombran resultados, no números de línea — así que puedo cambiar el código entre corridas y el plan sigue en pie. Las puertas simplemente se vuelven a correr contra lo que sea que el repo es ahora, y fallan fuerte si la realidad se desvió de la especificación. Un plan clavado a ediciones específicas se pudriría la primera vez que tocara un archivo a mano; uno clavado al comportamiento me sobrevive.
+
+Y cuando una tarea sencillamente está mal — mal secuenciada, o resultó significar algo que yo no había visto — el agente no improvisa para esquivarla. La marca como bloqueada y se detiene, y como el estado vive aparte de la lista de tareas, puedo reescribir la parte abierta del plan sin perder la parte que ya pasó. El refinamiento solo toca lo que todavía no ha corrido.
+
+La parte que no diseñé a propósito, y la que terminé apreciando más: cada corrida deja el repositorio un poco más listo para agentes de lo que lo encontró. Una tarea que cambia comportamiento actualiza la documentación y extiende las pruebas dentro de su propia puerta, y cada tanto saca a la luz una skill nueva que vale la pena conservar. El harness no solo sostiene el trabajo — lo capitaliza. Que es toda la serie plegándose sobre sí misma: skill, harness, plan, cada corrida abaratando la siguiente.
+
+---
+
 ## Por qué no es una herramienta
 
 La objeción obvia, y la correcta de plantear, es que esto ya existe. El desarrollo dirigido por especificaciones no es una frase que yo haya inventado — hay herramientas reales construidas alrededor de la misma idea: Spec Kit de GitHub, Kiro de Amazon, Tessl. Si has usado alguna, mucho de lo que acabo de describir te va a sonar, y es justo.
@@ -75,7 +91,7 @@ Ese es todo el argumento de repo-native sobre tool-bound, y voy a ser honesto: n
 
 Desconfío de las metodologías que solo funcionan en las diapositivas. Así que la prueba honesta es si de verdad corro esto en las cosas que publico, y sí lo hago — este blog entre ellas. Casi todo cambio en este repositorio ahora arranca como un Deep Work Plan: un archivo de plan, tareas atómicas, puertas que tienen que pasar, estado en disco. El post que estás leyendo se escribió bajo uno. Cuando digo que el bucle sobrevive un reinicio de contexto, es porque lo he visto sobrevivir uno en trabajo que me importaba, no porque el diagrama diga que debería.
 
-Y tampoco es solo en mis proyectos personales. La misma metodología corre en producción en Dailybot — de hecho nació de la ingeniería de ahí, donde la versión a mano se reconstruyó suficientes veces en suficientes repos como para que estandarizarla dejara de ser opcional. Un equipo la usa para que el trabajo de agentes de larga duración no se desvíe a una escala en la que yo no opero estando solo, y hay [un relato más largo de cómo un equipo corre esto a lo largo de cientos de páginas](https://www.dailybot.com/blog/how-we-run-long-horizon-agent-work/) si quieres la versión a escala de empresa de la misma historia. La metodología se documenta y se publica desde un repositorio que la usa sobre sí mismo, que es más o menos todo el dogfooding que sé hacer. La prueba y el artefacto son los mismos repos.
+Y tampoco es solo en mis proyectos personales. La misma metodología corre en producción en DailyBot — de hecho nació de la ingeniería de ahí, donde la versión a mano se reconstruyó suficientes veces en suficientes repos como para que estandarizarla dejara de ser opcional. Un equipo la usa para que el trabajo de agentes de larga duración no se desvíe a una escala en la que yo no opero estando solo, y hay [un relato más largo de cómo un equipo corre esto a lo largo de cientos de páginas](https://www.dailybot.com/blog/how-we-run-long-horizon-agent-work/) si quieres la versión a escala de empresa de la misma historia. La metodología se documenta y se publica desde un repositorio que la usa sobre sí mismo, que es más o menos todo el dogfooding que sé hacer. La prueba y el artefacto son los mismos repos.
 
 Si quieres probarla, todo está abierto y con licencia MIT. La metodología, la especificación legible y el kit viven en [deepworkplan.com](https://deepworkplan.com); hay un endpoint de adopción en un paso en [deepworkplan.com/init](https://deepworkplan.com/init) que apunta un agente a tu repo y lo deja listo; y está empaquetada como una skill instalable en [DailybotHQ/deepworkplan-skill](https://github.com/DailybotHQ/deepworkplan-skill) — un router y un puñado de sub-skills que mapean directo sobre el bucle: create, execute, refine, resume, status, verify. Entra en el layout `.agents/skills/` igual que cualquier otra skill. Instálala, apunta un agente a tu repo, genera un plan, córrelo.
 
@@ -84,6 +100,8 @@ Si quieres probarla, todo está abierto y con licencia MIT. La metodología, la 
 ## Qué cambió para mí
 
 El giro, mirando atrás, fue pequeño y total al mismo tiempo. Dejé de tratar de volverme mejor corrigiendo al agente a mitad de corrida, y empecé a escribir — antes de que arranque — qué significa terminado y dónde están las líneas. La corrección no desapareció. Se movió más temprano, hacia el plan, donde es una frase que escribo una vez en lugar de una interrupción que tengo que seguir haciendo.
+
+Y ahí hay una trampa, que es lo más honesto que puedo decir del método: un plan flojo falla tan en silencio como antes lo hacía la desviación. Una especificación vaga se ejecuta con toda fidelidad — las puertas pasan a verde, el build pasa, y lo que vuelve es exactamente lo que escribí, que es justo el problema cuando lo que escribí no estaba bien pensado. El agente ya no se va por la tangente; ahora soy yo el que apunta mal. Nada del andamiaje arregla eso. Escribir bien el plan — nombrar el problema real en vez del síntoma, trazar las líneas contra las que se mide el trabajo, anticipar dónde va a adivinar el agente para cerrar la brecha antes de que arranque — es la parte que sigue siendo mía, y resultó ser la parte difícil. La metodología no reemplaza ese criterio. Lo vuelve aquello de lo que depende toda la corrida.
 
 La tarde que se me desvió fue la última que se me desvió por esa razón. No porque el modelo se volviera más inteligente — es el mismo modelo. Sino porque el trabajo por fin tuvo un lugar donde pararse que el contexto no podía erosionar por debajo. El harness tenía un objetivo. El plan era el objetivo. Y el repositorio sostenía los dos.
 
