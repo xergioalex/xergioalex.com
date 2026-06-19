@@ -22,7 +22,7 @@ La promesa, en palabras de la propia Midjourney, es *"something as powerful as M
 
 El aparato es un anillo de —según dicen— *"half a million tiny squares each the size of a fine grain of sand, and each capable of acting as both a tiny speaker and a tiny microphone"* ("medio millón de cuadritos del tamaño de un grano fino de arena, cada uno capaz de actuar como un pequeño altavoz y un pequeño micrófono"). Bajas a través de ese anillo a unos 5 cm por segundo. Los cuadritos disparan ondas ultrasónicas y escuchan los ecos millones de veces por segundo, *"producing terabytes of data each second"* ("produciendo terabytes de datos cada segundo"). El software reconstruye cómo se curvan las ondas al cruzar las fronteras entre agua, grasa, músculo y hueso, y lo convierte en un *"3D map of your body, down to a fraction of a millimeter"* ("mapa 3D de tu cuerpo, hasta una fracción de milímetro").
 
-Los números del titular son enormes. Un escaneo que *"se parece mucho a las resonancias de hoy, pero a casi cien veces la velocidad"*. Una meta de **50.000 escáneres en el mundo para 2031**. Una capacidad de *"mil millones de escaneos al mes"*. Y una afirmación —matizada, pero dicha— de que con suficiente imagen temprana *"el mundo podría evitar el 30% de todas las muertes y el 50% de todos los costos de salud"*.
+Los números del titular son enormes. Un escaneo que *"looks a lot like today's MRIs but at nearly a hundred times the speed"* ("se parece mucho a las resonancias de hoy, pero a casi cien veces la velocidad"). Una meta de **50.000 escáneres en el mundo para 2031**. Una capacidad de *"a billion scans a month"* ("mil millones de escaneos al mes"). Y una afirmación —matizada, pero dicha— de que con suficiente imagen temprana el mundo *"could avoid 30% of all deaths and 50% of all healthcare costs"* ("podría evitar el 30% de todas las muertes y el 50% de todos los costos de salud").
 
 Y luego viene la parte que hace que todos volteen a mirar dos veces: el primero va en un **spa**. Un buque insignia en San Francisco, que abriría hacia finales de 2027, de unos 24 a 25.000 pies cuadrados con *"hot tubs, saunas, cold plunges, and cozy rooms with pools of golden light which softly scan your body"* ("jacuzzis, saunas, baños de inmersión fríos y salas acogedoras con piscinas de luz dorada que escanean tu cuerpo suavemente"). Abierto 24/7. Como lo ponen ellos: *"The scans are a side-effect. You barely think of them when going to the spa"* ("Los escaneos son un efecto secundario. Casi ni piensas en ellos cuando vas al spa").
 
@@ -53,7 +53,7 @@ Lo que no aclararon, marcadamente: qué pasa con la hoja de ruta del producto de
 
 ---
 
-## La parte que hace que tenga sentido
+## Lo que le da sentido
 
 Si te quedas en "empresa de imágenes construye un escáner", suena absurdo. Si miras *cómo* funciona de verdad la tomografía por ultrasonido moderna, se vuelve menos absurdo, y se entiende por qué una empresa pesada en cómputo escogió esta pelea.
 
@@ -117,7 +117,7 @@ La tercera es la **apuesta del encuadre**, y es la que más me incomoda. Lanzar 
 
 ¿Honestamente? No sé si esto funciona. No creo que nadie lo sepa todavía, incluida Midjourney, cuyo propio lenguaje está lleno de "metas" y de "creemos que es posible". De lo que sí estoy bastante seguro es de que las lecturas fáciles están las dos equivocadas. No es una empresa perdiendo el rumbo y abandonando la generación de imágenes: es una nueva división financiada por un producto que va bien. Y no es la muerte de la resonancia magnética: la física que confinó al ultrasonido al seno durante veinte años no desapareció porque apareciera una empresa de GPU.
 
-Lo que queda en el medio es más interesante que cualquiera de los dos titulares. Una empresa con una estructura inusual, dinero real, socios de hardware reales y una ventaja real en cómputo, entrando de frente a la versión más difícil de un problema, haciendo afirmaciones que su propio prototipo todavía no puede respaldar, con un encuadre diseñado para esquivar el escrutinio que esas afirmaciones normalmente invitarían. Eso vale la pena seguirlo de cerca, con curiosidad por la ambición y la mano puesta sobre el escepticismo.
+Lo que queda en el medio es más interesante que cualquiera de los dos titulares. Una empresa con una estructura inusual, dinero real, socios de hardware reales y una ventaja real en cómputo, entrando de frente a la versión más difícil de un problema, haciendo afirmaciones que su propio prototipo todavía no puede respaldar, con un encuadre diseñado para esquivar el escrutinio que esas afirmaciones normalmente invitarían. Eso vale la pena seguirlo de cerca, con curiosidad por la ambición y una mano en el escepticismo.
 
 Voy a estar pendiente de las solicitudes ante la FDA, no de los renders del spa. Ahí es donde vamos a descubrir cuál de estas apuestas era real.
 
