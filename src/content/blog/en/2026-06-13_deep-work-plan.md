@@ -19,6 +19,8 @@ It was a multi-part job on this very blog — a content migration across a few d
 
 The intelligence was fine. The intelligence was never the issue — that was the whole lesson of the harness chapter, and here it was in front of me again. What this agent had was a harness. What it didn't have was anything that harness could hold the work *to*: a control system regulating toward nothing. It had no place to stand. It needed a plan.
 
+That was the turn for me. The fix was never going to be a cleverer prompt or a wait for a smarter model — the models matter, but what they work inside matters more, and the drift was a structural problem to engineer around, not a prompting one to out-clever. A well-equipped agent, it turns out, isn't the one with the smartest model. It's the one standing on a plan it can't quietly wander off — and giving an agent that is what the rest of this is about.
+
 ---
 
 ## The thing a harness points at
@@ -61,6 +63,20 @@ Two pillars hold it up, and naming them is the cleanest way I've found to say wh
 
 ---
 
+## What that buys the agent, day to day
+
+It's worth spelling out what the plan actually does once it's running, because that's where it stops being a fancy TODO list — and the sharpest questions I got when I put it in front of other people landed exactly here. So let me answer them the way I did then.
+
+The gates run themselves. A validation gate isn't a note to me; it's a command the agent runs and has to see come back clean before it's allowed to close a task. When it doesn't, the agent marks the task *blocked* and stops — loudly, in a file — instead of burying the failure somewhere in a transcript I'd have to go fishing through. My sign-off only bookends the run: I approve the plan before it starts and read the diff when it ends. The middle, the part that used to be me hovering, belongs to the gates now.
+
+The plan describes behavior, not edits, which is what keeps it from going stale. The acceptance criteria name outcomes, not line numbers — so I can change the code between runs and the plan still holds. The gates just re-run against whatever the repo is now and fail loud if reality has drifted from the spec. A plan pinned to specific edits would rot the first time I touched a file by hand; one pinned to behavior survives me.
+
+And when a task is simply wrong — badly sequenced, or it turned out to mean something I hadn't seen — the agent doesn't improvise around it. It marks it blocked and stops, and because the state lives apart from the task list, I can rewrite the open part of the plan without losing the part that already passed. Refinement only ever touches what hasn't run yet.
+
+The part I didn't design for, and ended up liking most: every run leaves the repository a little more agent-ready than it found it. A task that changes behavior updates the docs and extends the tests inside its own gate, and every so often it surfaces a new skill worth keeping. The harness doesn't just hold the work — it compounds. Which is the whole series folding back on itself: skill, harness, plan, each run making the next one cheaper.
+
+---
+
 ## Why it isn't a tool
 
 The obvious objection, and the right one to raise, is that this already exists. Spec-driven development isn't a phrase I coined — there are real tools built around the same idea: GitHub's Spec Kit, Amazon's Kiro, Tessl. If you've used one, a lot of what I just described will sound familiar, and that's fair.
@@ -75,7 +91,7 @@ That's the whole argument for repo-native over tool-bound, and I'll be honest th
 
 I'm wary of methodologies that only work in the slides. So the honest test is whether I actually run this on the things I ship, and I do — this blog among them. Almost every change to this repository now starts as a Deep Work Plan: a plan file, atomic tasks, gates that have to pass, state on disk. The post you're reading was written under one. When I say the loop survives a context reset, it's because I've watched it survive one on work I cared about, not because the diagram says it should.
 
-It's not just my side projects, either. The same methodology runs in production at Dailybot — in fact it grew out of the engineering there, where the by-hand version got rebuilt enough times across enough repos that standardizing it stopped being optional. A team uses it to keep long-horizon agent work from drifting at a scale I don't operate at solo, and there's [a longer account of how a team runs this across hundreds of pages](https://www.dailybot.com/blog/how-we-run-long-horizon-agent-work/) if you want the company-scale version of the same story. The methodology documents and ships from a repository that uses it on itself, which is about as much dogfooding as I know how to do. The proof and the artifact are the same repos.
+It's not just my side projects, either. The same methodology runs in production at DailyBot — in fact it grew out of the engineering there, where the by-hand version got rebuilt enough times across enough repos that standardizing it stopped being optional. A team uses it to keep long-horizon agent work from drifting at a scale I don't operate at solo, and there's [a longer account of how a team runs this across hundreds of pages](https://www.dailybot.com/blog/how-we-run-long-horizon-agent-work/) if you want the company-scale version of the same story. The methodology documents and ships from a repository that uses it on itself, which is about as much dogfooding as I know how to do. The proof and the artifact are the same repos.
 
 If you want to try it, the whole thing is open and MIT-licensed. The methodology, the readable spec, and the kit live at [deepworkplan.com](https://deepworkplan.com); there's a one-step adoption endpoint at [deepworkplan.com/init](https://deepworkplan.com/init) that points an agent at your repo and gets it set up; and it's packaged as an installable skill at [DailybotHQ/deepworkplan-skill](https://github.com/DailybotHQ/deepworkplan-skill) — a router and a handful of sub-skills that map straight onto the loop: create, execute, refine, resume, status, verify. It drops into the `.agents/skills/` layout the same way every other skill does. Install it, point an agent at your repo, generate a plan, run it.
 
@@ -84,6 +100,8 @@ If you want to try it, the whole thing is open and MIT-licensed. The methodology
 ## What changed for me
 
 The shift, looking back, was small and total at the same time. I stopped trying to get better at correcting the agent mid-run, and started writing down — before it starts — what done means and where the lines are. The correcting didn't go away. It moved earlier, into the plan, where it's a sentence I write once instead of an interruption I have to keep making.
+
+There's a catch in that, and it's the most honest thing I can say about the method: a thin plan fails just as quietly as drift used to. A vague spec gets executed faithfully — the gates go green, the build passes, and what comes back is exactly what I wrote down, which is the whole problem when what I wrote down wasn't thought through. The agent doesn't wander anymore; I aim it wrong instead. None of the scaffolding fixes that. Writing the plan well — naming the real problem instead of the symptom, drawing the lines the work gets checked against, guessing where the agent will guess so I can close the gap before it starts — is the part that stays mine, and it turned out to be the hard part. The methodology doesn't replace that judgment. It makes it the thing the whole run depends on.
 
 The afternoon that drifted on me was the last one that drifted on me for that reason. Not because the model got smarter — it's the same model. Because the work finally had a place to stand that the context couldn't erode out from under it. The harness had a target. The plan was the target. And the repository was holding both.
 
