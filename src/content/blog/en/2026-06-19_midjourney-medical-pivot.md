@@ -45,6 +45,17 @@ This was my first real question, and I suspect it's yours too. The headlines sai
 
 So the honest answer is: **this is an expansion, not a pivot.** Nothing in the announcement retires image generation. There's no "we're winding down the thing that pays the bills." If anything, the image product is the *reason* this is possible — and that's the part I find most interesting.
 
+It wasn't an overnight whim, either. As [Deedy Das](https://debarghyadas.com/) — a partner at Menlo Ventures with a large tech-industry following — pointed out, *"the midjourney roadmap was public the whole time."* He resurfaced a March 2024 exchange where Holz wrote, almost in passing: *"tbh i want to open up a biomedical imaging division at midjourney to work on stuff like this."* Two years before the spa renders, the intent was already on the record. And the receipts back it up: Midjourney [announced it was getting into hardware](https://techcrunch.com/2024/08/28/midjourney-says-its-getting-into-hardware) in August 2024, hired an ex-Apple Vision Pro engineer to lead it, and signed the Butterfly deal in late 2025. The launch event was the reveal, not the beginning.
+
+<figure>
+  <img src="/images/blog/posts/midjourney-medical-pivot/deedy-das-roadmap-tweet.webp"
+       alt="Tweet from Deedy Das showing a March 2024 message from David Holz saying he wants to open a biomedical imaging division at Midjourney."
+       width="1072"
+       height="1112"
+       loading="lazy" />
+  <figcaption>Deedy Das resurfaces Holz's March 2024 post: the biomedical-imaging plan was public years before the launch. — Source: <a href="https://x.com/deedydas/status/2067631455145177300">Deedy Das on X</a>.</figcaption>
+</figure>
+
 Midjourney has **no outside investors.** It's been profitable from close to day one, reportedly around $500M in annual revenue with roughly 107 people, and it took zero venture money. That structure is the whole story here. A VC-backed startup can't credibly tell its board "we're going to spend image-generation profits building hardware for a market we've never touched, on a 5-to-10-year horizon, starting with a spa." Midjourney can, because there's no board to convince. The people it has to answer to are its subscribers.
 
 There's also a deeper thread connecting the two divisions, and it's not just "they both have the word image in them." Both are fundamentally about **reconstructing an image from data.** A diffusion model turns noise and a prompt into a coherent picture. A scanner like this turns terabytes of raw acoustic echoes into a coherent picture of your liver. The math isn't the same, but the shape of the problem — heavy compute, an inverse problem, turning a flood of signal into something a human can read — rhymes. I'll come back to why that matters, because it's the strongest argument for "why Midjourney" *and* the strongest argument for what could go wrong.
@@ -70,6 +81,17 @@ The hardware isn't vaporware either. The one hard, verifiable fact in this whole
        height="960"
        loading="lazy" />
   <figcaption>A thigh cross-section — soft tissue around bone. The leg, notably, is one of the easier parts of the body for sound to cross. — Source: <a href="https://www.midjourney.com/medical/blogpost">Midjourney</a>.</figcaption>
+</figure>
+
+It even passed an eyewitness test. Ben Parr — tech journalist, author of *Captivology*, and a fixture of tech media since his Mashable years — was invited to the launch and stepped up to the scanner himself. *"I saw the inside of my arm today. And it was the future!"* he [posted on X](https://x.com/benparr/status/2067462636867142020). He could only scan his arm — *"the full machine is HUGE,"* he added — which squares with an early prototype. Hold it lightly: he was an invited guest, so it's an enthusiastic first impression, not an independent test. But it's a credible witness saying a real machine imaged him in real time, not a render.
+
+<figure>
+  <img src="/images/blog/posts/midjourney-medical-pivot/ben-parr-launch-tweet.webp"
+       alt="Tweet from Ben Parr saying he saw the inside of his arm at the Midjourney launch and that it was the future, with photos from the event."
+       width="1074"
+       height="1694"
+       loading="lazy" />
+  <figcaption>Ben Parr at the launch — an invited guest's first impression after trying the scanner on his arm. — Source: <a href="https://x.com/benparr/status/2067462636867142020">Ben Parr on X</a>.</figcaption>
 </figure>
 
 ---
@@ -134,3 +156,5 @@ Let's keep building.
 - [Hacker News discussion](https://news.ycombinator.com/item?id=48579650) — 800+ comments, with practicing radiologists and imaging researchers on both sides of the physics.
 - [American College of Radiology — statement on total-body screening](https://www.acr.org/News-and-Publications/Media-Center/2023/ACR-Statement-on-Screening-Total-Body-MRI) — why whole-body screening of asymptomatic people is cautioned against.
 - [Tomography (2024) — review of ultrasound computed tomography](https://pmc.ncbi.nlm.nih.gov/articles/PMC11053617/) — the science of USCT and why clinical systems are breast-only.
+- [Ben Parr on X — firsthand account from the launch](https://x.com/benparr/status/2067462636867142020) — tech journalist and author of *Captivology*; tried the scanner on his arm and called it "the future."
+- [Deedy Das on X — "the roadmap was public the whole time"](https://x.com/deedydas/status/2067631455145177300) — Menlo Ventures partner resurfacing Holz's March 2024 post about opening a biomedical-imaging division.
