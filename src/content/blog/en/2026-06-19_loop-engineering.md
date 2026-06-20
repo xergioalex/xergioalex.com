@@ -13,7 +13,29 @@ draft: true
 
 For a few days my whole timeline said the same thing: stop prompting, start writing loops. Peter Steinberger ([@steipete](https://x.com/steipete/status/2063697162748260627)) put it most bluntly — you shouldn't be hand-prompting your coding agents anymore; you should be designing the loops that prompt them. The post did the numbers, hundreds of thousands of views, and then the replies turned into the kind of polite-ish brawl that only happens when a phrase hits a nerve.
 
+<figure>
+  <img src="/images/blog/posts/loop-engineering/figure-steipete-tweet.webp"
+       alt="Screenshot of Peter Steinberger's June 7, 2026 post: 'Here's your monthly reminder that you shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.'"
+       width="960"
+       height="437"
+       loading="lazy" />
+  <figcaption>Peter Steinberger, June 7, 2026 — the turn in one line: stop prompting the agent, start designing the loop it runs inside. — <a href="https://x.com/steipete/status/2063697162748260627">Original post</a>.</figcaption>
+</figure>
+
 Then the receipts showed up. Boris Cherny, who leads Claude Code at Anthropic, had said something close to it [on stage](https://workos.com/blog/boris-cherny-claude-code-acquired-interview-takeaways) a few days earlier: *"I don't prompt Claude anymore. I have loops that are running. They're the ones that are prompting Claude and figuring out what to do. My job is to write loops."* He's [described his actual setup](https://www.platformer.news/boris-cherny-interview-ai-jobs/), too — a Claude Code loop he moved into a routine that fires roughly every half hour, chewing through user feedback on its own. He says he hasn't hand-written a line of code in months. Addy Osmani gave the thing a name in [a post](https://addyosmani.com/blog/loop-engineering/) the same week and a clean definition: loop engineering is *"replacing yourself as the person who prompts the agent. You design the system that does it instead."*
+
+<figure>
+<div class="youtube-facade relative aspect-video w-full overflow-hidden rounded-xl my-6 bg-black" data-video-id="RkQQ7WEor7w" data-title="Boris Cherny: Claude Code & the Future of Engineering | Acquired Unplugged presented by WorkOS">
+  <img src="https://i.ytimg.com/vi/RkQQ7WEor7w/hqdefault.jpg" alt="Boris Cherny: Claude Code & the Future of Engineering — Acquired Unplugged interview presented by WorkOS" class="absolute inset-0 h-full w-full object-cover" loading="lazy" width="480" height="360" />
+  <button type="button" aria-label="Play video: Boris Cherny on Claude Code & the Future of Engineering" class="absolute inset-0 flex h-full w-full cursor-pointer items-center justify-center border-0 bg-black/10 transition-colors hover:bg-black/30 focus-visible:bg-black/30 focus-visible:outline-none">
+    <svg viewBox="0 0 68 48" class="h-12 w-12 drop-shadow-lg md:h-16 md:w-16" aria-hidden="true">
+      <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/>
+      <path d="M45 24L27 14v20z" fill="#fff"/>
+    </svg>
+  </button>
+</div>
+<figcaption>Boris Cherny on Claude Code and the future of engineering — <a href="https://www.youtube.com/watch?v=RkQQ7WEor7w">Acquired Unplugged</a>, presented by WorkOS.</figcaption>
+</figure>
 
 So that's the moment. A slogan, a quotable engineer, a name, and a week of everyone arguing about whether it's the future or a rebrand.
 
