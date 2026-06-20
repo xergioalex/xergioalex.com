@@ -355,6 +355,8 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **File naming:** `YYYY-MM-DD_slug.{md,mdx}` in `src/content/blog/{en,es}/`. Date prefix stripped from URLs. **Slugs MUST always be in English** — both `en/` and `es/` versions use the same English slug.
 
+**MANDATORY — date must match in both places:** the `YYYY-MM-DD` filename prefix and the frontmatter `pubDate` are one fact in two locations and must always be identical. **When changing a post's date (rescheduling/publishing/correcting), you MUST update BOTH the `pubDate` AND `git mv` the filename prefix, in both `en/` and `es/`.** Editing only the frontmatter is a defect — a stale filename prefix silently misleads anyone listing the directory. Scheduling = a future `pubDate` + `draft: false` (hidden in production until that date in `America/Bogota`). Full rule and checklist: [BLOG_POSTS.md → File Naming Convention](docs/features/BLOG_POSTS.md#file-naming-convention).
+
 **Tags:** Flat `tags` array in frontmatter. Three tiers (primary / secondary / subtopic) resolved at build time from `src/content/tags/*.md`. Max 5 tags per post (1-2 primary + 0-3 secondary + 0-3 subtopic; max 3 subtopics; ≥ 1 primary required). Never auto-create tags without user approval — propose with [`/audit-taxonomy`](.agents/skills/audit-taxonomy/SKILL.md) and let the user approve. See [Tag Taxonomy in BLOG_POSTS.md](docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection) for the full tier table.
 
 **Series:** Posts reference `series: "{slug}"` and `seriesOrder: {n}` in frontmatter. Series defined in `src/content/series/`. Navigation renders automatically. **Series slugs MUST be in English** (e.g., `the-library-of-tomorrow`, not `la-biblioteca-del-manana`).
@@ -415,7 +417,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 12. Use `MainLayout` for internal hub pages (use `InternalLayout` or `ShowcaseLayout`)
 13. Add multilingual variants for internal pages (English-only, dev-only)
 14. Reference `/internal/` pages from public pages
-15. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`)
+15. Name blog post files without date prefix (use `YYYY-MM-DD_slug.md`), or change a post's `pubDate` without also `git mv`-ing the filename prefix to match — the date MUST be identical in frontmatter **and** filename, in both `en/` and `es/`
 16. Put blog images outside `public/images/blog/posts/{slug}/`
 17. Put demo posts outside `_demo/` folders
 18. Write Spanish content without proper accents/tildes/ñ

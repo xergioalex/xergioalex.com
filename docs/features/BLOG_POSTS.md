@@ -24,6 +24,26 @@ For AI agents and assistants, new blog post creation in `src/content/blog/` must
 - **Slugs MUST always be in English**, even for Spanish posts — both `en/` and `es/` versions share the same English slug
 - The date prefix is **stripped from URLs** (clean slugs: `/blog/my-post/`)
 
+> ### ⚠️ MANDATORY: the date in the filename MUST match `pubDate`
+>
+> The `YYYY-MM-DD` prefix in the filename and the `pubDate` in the frontmatter are **one fact in two places**. They must always be identical.
+>
+> **When you change a post's date — rescheduling, publishing, correcting — you MUST update BOTH:**
+>
+> 1. The `pubDate` in the frontmatter, AND
+> 2. The `YYYY-MM-DD` prefix in the filename (use `git mv` so history is preserved), in **both** `en/` and `es/`.
+>
+> Changing only the frontmatter (or only the filename) is a defect, not a partial fix. A mismatch is never acceptable — even though URLs ignore the prefix, the filename is the human- and agent-facing record of when the post publishes, and a drifted prefix silently misleads everyone who lists the directory.
+>
+> **Checklist when rescheduling a post to date `D`:**
+> - [ ] `pubDate: "D"` in `en/` frontmatter
+> - [ ] `pubDate: "D"` in `es/` frontmatter
+> - [ ] `git mv` the `en/` file so its prefix is `D`
+> - [ ] `git mv` the `es/` file so its prefix is `D`
+> - [ ] Confirm: `ls src/content/blog/*/D_<slug>.md` returns both files and no stale-dated copies remain
+>
+> Scheduling for the future is just a future `pubDate` (+ `draft: false`); the post stays hidden in production until that date in `America/Bogota`. See [Blog Content Lifecycle](BLOG_CONTENT_LIFECYCLE.md).
+
 **Examples:**
 
 | Title | pubDate | Filename |
