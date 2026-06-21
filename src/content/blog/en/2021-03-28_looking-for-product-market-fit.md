@@ -4,7 +4,7 @@ description: "Building and failing products at Rocka.co — lessons from each ex
 pubDate: "2021-03-28"
 heroImage: "/images/blog/posts/looking-for-product-market-fit/hero.webp"
 heroLayout: "banner"
-tags: ["talks", "tech", "dailybot", "entrepreneur"]
+tags: ["talks", "dailybot", "entrepreneur"]
 keywords: ["product market fit startup journey", "DailyBot product market fit", "failed startup products lessons", "Rocka.co startup experiments", "how to find product market fit", "PMF signals recognition", "Y Combinator product market fit"]
 ---
 

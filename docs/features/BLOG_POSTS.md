@@ -77,25 +77,27 @@ src/content/
 │       │   └── ...
 │       ├── 2020-12-31_personal-branding-xergioalex.md
 │       └── ...
-└── tags/                              # Unified taxonomy (17 tags)
+└── tags/                              # Unified taxonomy (33 tags)
     ├── tech.md                        # tier: primary
     ├── personal.md                    # tier: primary
     ├── talks.md                       # tier: primary
     ├── trading.md                     # tier: primary
     ├── portfolio.md                   # tier: primary
     ├── dailybot.md                    # tier: primary
+    ├── entrepreneur.md                # tier: primary
     ├── demo.md                        # tier: primary (dev only)
-    ├── web-development.md             # tier: secondary, order: 1, parent: tech
-    ├── javascript.md                  # tier: secondary, order: 2, parent: tech
-    ├── ai.md                          # tier: secondary, order: 3, parent: tech
-    ├── blockchain.md                  # tier: secondary, order: 4, parent: tech
-    ├── devops.md                      # tier: secondary, order: 5, parent: tech
-    ├── python.md                      # tier: secondary, order: 6, parent: tech
-    ├── university.md                  # tier: secondary, order: 7, parent: tech
-    ├── database.md                    # tier: secondary, order: 8, parent: tech
-    ├── iot.md                         # tier: secondary, order: 9, parent: tech
+    ├── web-development.md             # tier: secondary, order: 1,  parent: tech
+    ├── javascript.md                  # tier: secondary, order: 2,  parent: tech
+    ├── ai.md                          # tier: secondary, order: 3,  parent: tech
+    ├── blockchain.md                  # tier: secondary, order: 4,  parent: tech
+    ├── devops.md                      # tier: secondary, order: 5,  parent: tech
+    ├── python.md                      # tier: secondary, order: 6,  parent: tech
+    ├── university.md                  # tier: secondary, order: 7,  parent: tech
+    ├── database.md                    # tier: secondary, order: 8,  parent: tech
+    ├── iot.md                         # tier: secondary, order: 9,  parent: tech
     ├── design.md                      # tier: secondary, order: 10, parent: tech
     ├── mobile.md                      # tier: secondary, order: 11, parent: tech
+    ├── ai-agents.md                   # tier: secondary, order: 12, parent: tech
     ├── kotlin.md                      # tier: subtopic,  order: 1,  parent: mobile
     ├── astro.md                       # tier: subtopic,  order: 51, parent: web-development
     ├── svelte.md                      # tier: subtopic,  order: 52, parent: web-development
@@ -103,7 +105,12 @@ src/content/
     ├── docker.md                      # tier: subtopic,  order: 54, parent: devops
     ├── graphql.md                     # tier: subtopic,  order: 55, parent: web-development
     ├── django.md                      # tier: subtopic,  order: 56, parent: python
-    └── openclaw.md                    # tier: subtopic,  order: 57, parent: ai
+    ├── openclaw.md                    # tier: subtopic,  order: 57, parent: ai-agents
+    ├── claude.md                      # tier: subtopic,  order: 58, parent: ai-agents
+    ├── mcp.md                         # tier: subtopic,  order: 59, parent: ai-agents
+    ├── flutter.md                     # tier: subtopic,  order: 60, parent: mobile
+    ├── webvr.md                       # tier: subtopic,  order: 61, parent: web-development
+    └── aeo.md                         # tier: subtopic,  order: 62, parent: web-development
 ```
 
 **Bilingual requirement:** Every post **must** exist in both `en/` and `es/` with the **same filename**. Never create a post in only one language.
@@ -428,9 +435,9 @@ order: 1                                         # sort order within tier
 ---
 ```
 
-### All Tags (26 total — 7 primary + 11 secondary + 8 subtopic)
+### All Tags (33 total — 8 primary + 12 secondary + 13 subtopic)
 
-#### Primary Tags (7) — Section/Category
+#### Primary Tags (8) — Section/Category
 
 | Tag ID | Order | Description | Notes |
 |--------|-------|-------------|-------|
@@ -440,9 +447,10 @@ order: 1                                         # sort order within tier
 | `talks` | 4 | Conference talks | Speaking events |
 | `trading` | 5 | Trading content | Financial/trading |
 | `dailybot` | 6 | DailyBot product | Product-specific |
+| `entrepreneur` | 7 | Entrepreneurship | Ventures, startups, founder journey |
 | `demo` | 99 | Demo posts | Dev only (`_demo/` folders) |
 
-#### Secondary Tags (11) — Content/Technology Topics
+#### Secondary Tags (12) — Content/Technology Topics
 
 All secondary tags have `parent: "tech"`.
 
@@ -457,10 +465,11 @@ All secondary tags have `parent: "tech"`.
 | `university` | 7 | `tech` | University projects and coursework |
 | `database` | 8 | `tech` | Database systems (SQL, NoSQL, MongoDB) |
 | `iot` | 9 | `tech` | Internet of Things, hardware, sensors |
-| `design` | 10 | `tech` | UI/UX design, WebVR, creative tech |
+| `design` | 10 | `tech` | UI/UX design, creative tech |
 | `mobile` | 11 | `tech` | Mobile development — Android, iOS, cross-platform |
+| `ai-agents` | 12 | `tech` | AI agents, the agentic web, orchestration, MCP, .well-known standards |
 
-#### Subtopic Tags (8) — Fine-Grained Technology Handles
+#### Subtopic Tags (13) — Fine-Grained Technology Handles
 
 Subtopic tags name a single concrete technology, framework, language, or product. They sit under a `secondary` parent (preferred) or, when no fitting secondary exists, a `primary` parent (allowed but flagged by validation).
 
@@ -473,14 +482,23 @@ Subtopic tags name a single concrete technology, framework, language, or product
 | `docker` | 54 | `devops` | Docker containers, Dockerfile authoring, multi-service orchestration |
 | `graphql` | 55 | `web-development` | GraphQL APIs — schemas, resolvers, federation, client patterns |
 | `django` | 56 | `python` | Django framework — ORM, multi-db, admin, deployment |
-| `openclaw` | 57 | `ai` | OpenClaw — local-first personal AI agent and design philosophy |
+| `openclaw` | 57 | `ai-agents` | OpenClaw — local-first personal AI agent and design philosophy |
+| `claude` | 58 | `ai-agents` | Claude — Anthropic's model family and agent runtimes (Claude Code, Skills) |
+| `mcp` | 59 | `ai-agents` | Model Context Protocol — agent↔tool communication, server cards |
+| `flutter` | 60 | `mobile` | Flutter — Dart-based cross-platform mobile framework |
+| `webvr` | 61 | `web-development` | WebVR / WebXR and the A-Frame framework — VR/3D in the browser |
+| `aeo` | 62 | `web-development` | Answer Engine Optimization — discoverable/citable by AI answer engines |
 
 ### Assigning Tags to Posts
 
-1. Choose **1-2 primary tags** for section classification.
-2. Choose **0-3 secondary tags** for content topics.
-3. Choose **0-3 subtopic tags** for specific technologies/frameworks/products.
+1. Choose **1-3 primary tags** for section classification (at least 1 required).
+2. Choose **0-10 secondary tags** for content topics (optional, but add what genuinely applies).
+3. Choose **0-15 subtopic tags** for specific technologies/frameworks/products.
 4. Put ALL in a single `tags` array (any order — the tier is resolved at build time):
+
+> **Add only what genuinely applies.** Higher caps exist so a post can be
+> discovered through every topic it truly covers — not to tag for the sake of
+> tagging. If a tag doesn't reflect what the post is actually about, leave it off.
 
 ```yaml
 tags: ["tech", "web-development", "astro", "svelte", "cloudflare"]
@@ -507,7 +525,7 @@ tags: ["tech", "web-development", "astro", "svelte", "cloudflare"]
 **Rules:**
 
 - **Naming**: lowercase, kebab-case (`web-development`), English-only — even on Spanish posts.
-- **Tag caps**: max 5 tags per post total; max 3 subtopics per post; at least 1 primary required.
+- **Tag caps**: per post — **1-3 primary**, **0-10 secondary**, **0-15 subtopic**. At least **1 primary** required. No fixed total cap, but only tag what the post genuinely covers (no tagging for the sake of tagging).
 - **Subtopic naming**: a single concrete technology/framework/language/product (e.g., `astro`, `svelte`, `golang`). Avoid broad categories (those are secondary) and feature-level slivers (out of scope).
 - **Agents must NEVER auto-create tags** without user approval.
 - **Audit cadence**: run [`/audit-taxonomy`](../../.agents/skills/audit-taxonomy/SKILL.md) quarterly OR after any content drop of 5+ posts. The skill reports tag drift, orphans, and new candidates against thresholds.

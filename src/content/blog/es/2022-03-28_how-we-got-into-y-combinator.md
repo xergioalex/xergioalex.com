@@ -4,7 +4,7 @@ description: "Tres aplicaciones, tres rechazos, una aceptación — qué cambió
 pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.webp"
 heroLayout: "banner"
-tags: ["talks", "tech", "dailybot", "entrepreneur"]
+tags: ["talks", "dailybot", "entrepreneur"]
 keywords: ["cómo entrar a Y Combinator", "entrevista de Y Combinator experiencia", "DailyBot Y Combinator historia", "aplicar a YC y ser aceptado", "startup acelerada por Y Combinator", "qué evalúa Y Combinator", "lecciones de Y Combinator para founders"]
 ---
 

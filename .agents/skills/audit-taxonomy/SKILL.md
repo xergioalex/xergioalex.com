@@ -108,7 +108,7 @@ For each candidate that passes Step 5's filters:
 - Proposed parent (existing secondary preferred; primary fallback flagged).
 - EN + ES name + description (≤ 1 sentence each).
 - List of posts that should receive the tag (file paths, EN side — ES counterparts mirror).
-- Per-post quota check: would adding this tag exceed the 5-tag cap? If yes, propose a tag to demote (lowest tier first; never primary).
+- Per-post quota check: would adding this tag exceed its tier cap (1-3 primary, 0-10 secondary, 0-15 subtopic)? If yes, propose a tag to demote (lowest tier first; never primary).
 
 ### Step 7: Write the report
 

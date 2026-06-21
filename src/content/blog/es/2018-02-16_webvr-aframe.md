@@ -4,7 +4,7 @@ description: 'Creando experiencias VR con HTML — charla en Pereira Tech Talks 
 pubDate: '2018-02-16'
 heroImage: '/images/blog/posts/webvr-aframe/webvr-aframe-talk-hero.webp'
 heroLayout: 'banner'
-tags: ["talks", "tech", "javascript", "web-development"]
+tags: ["talks", "tech", "javascript", "web-development", "webvr"]
 keywords: ["realidad virtual con HTML", "A-Frame WebVR tutorial", "crear experiencias VR en el navegador", "A-Frame para principiantes", "WebVR con JavaScript", "realidad virtual sin Unity", "framework VR de Mozilla A-Frame"]
 ---
 

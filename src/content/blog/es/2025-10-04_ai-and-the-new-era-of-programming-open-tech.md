@@ -4,7 +4,7 @@ description: "Workshop Vibe Coding e IA en Open Tech Hackathon: Cursor, Codex y 
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "ai"]
+tags: ["talks", "tech", "ai", "ai-agents"]
 keywords: ["Vibe Coding con IA", "Cursor vs Codex vs Claude Code", "IA para hackathon de programación", "nueva era de la programación con IA", "mentalidad de director con IA", "Open Tech Hackathon IA workshop", "cómo usar IA para entregar código más rápido"]
 ---
 

@@ -4,7 +4,7 @@ description: "WebVR con HTML y JavaScript: laberinto, galería 360° y más de 2
 pubDate: "2019-10-15"
 heroImage: "/images/blog/posts/webvr-projects/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "javascript", "web-development"]
+tags: ["portfolio", "tech", "javascript", "web-development", "webvr"]
 keywords: ["proyectos WebVR con A-Frame", "galería 360 grados en el navegador", "laberinto en realidad virtual con HTML", "A-Frame demos prácticos", "experiencias VR con JavaScript", "fotos 360 VR web", "portfolio WebVR A-Frame"]
 ---
 

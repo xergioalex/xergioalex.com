@@ -4,7 +4,7 @@ description: "AI was supposed to give us more free time. Instead, it created an 
 pubDate: "2026-03-28"
 heroImage: "/images/blog/posts/the-permanent-hackathon/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai", "personal", "ai-agents"]
 keywords: ["AI agent addiction dopamine loop", "permanent hackathon AI developers", "Jevons Paradox AI productivity", "vibe coding addiction building compulsion", "AI coding tools burnout brain fry", "developer productivity paradox AI agents", "dopamine trap coding AI 2026"]
 series: "working-with-agents"
 seriesOrder: 3

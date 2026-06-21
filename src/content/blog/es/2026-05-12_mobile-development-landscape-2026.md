@@ -4,7 +4,7 @@ description: "Estado del arte del desarrollo móvil en 2026: las opciones dispon
 pubDate: "2026-05-12"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "mobile", "flutter"]
+tags: ["tech", "mobile", "flutter", "kotlin"]
 keywords: ["desarrollo móvil 2026", "desarrollo mobile 2026", "frameworks móviles", "Flutter", "Kotlin Multiplatform", "KMP", "Android iOS", "React Native", "desarrollo multiplataforma", "aprender desarrollo móvil", "panorama móvil"]
 series: "learning-mobile-development"
 seriesOrder: 1

@@ -4,7 +4,7 @@ description: "La IA iba a darnos más tiempo libre. En cambio creó un ciclo adi
 pubDate: "2026-03-28"
 heroImage: "/images/blog/posts/the-permanent-hackathon/hero-es.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "ai", "personal"]
+tags: ["tech", "ai", "personal", "ai-agents"]
 keywords: ["adicción a agentes de IA dopamina", "hackathon permanente desarrolladores IA", "paradoja de Jevons inteligencia artificial productividad", "vibe coding adicción construir con IA", "burnout herramientas IA programadores 2026", "trampa de dopamina agentes de código", "productividad IA más trabajo no menos"]
 series: "working-with-agents"
 seriesOrder: 3

@@ -4,7 +4,7 @@ description: "How I built WebVR with HTML and JavaScript: a VR maze, a 360° gal
 pubDate: "2019-10-15"
 heroImage: "/images/blog/posts/webvr-projects/hero.webp"
 heroLayout: "side-by-side"
-tags: ["portfolio", "tech", "javascript", "web-development"]
+tags: ["portfolio", "tech", "javascript", "web-development", "webvr"]
 keywords: ["WebVR A-Frame projects portfolio", "VR maze game web browser", "360 photo gallery A-Frame", "A-Frame VR HTML JavaScript", "browser VR without headset", "WebVR Google Cardboard demos", "A-Frame interactive VR web"]
 ---
 

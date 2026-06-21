@@ -4,7 +4,7 @@ description: "La historia de XergioAleX.com: de una landing a una plataforma bil
 pubDate: "2026-01-22"
 heroImage: "/images/blog/posts/building-xergioalex-website/hero.webp"
 heroLayout: "banner"
-tags: ["tech", "web-development", "astro", "svelte", "cloudflare"]
+tags: ["portfolio", "tech", "web-development", "astro", "svelte", "cloudflare"]
 keywords: ["construir sitio web personal con Astro", "Astro y Svelte para sitio estático", "arquitectura sitio personal bilingüe", "Astro islands arquitectura", "sitio web personal con blog integrado", "cómo construí mi web personal con Astro", "Astro Svelte TypeScript Tailwind"]
 series: "building-xergioalex"
 seriesOrder: 1

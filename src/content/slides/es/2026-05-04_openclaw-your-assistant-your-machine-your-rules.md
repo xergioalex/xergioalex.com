@@ -9,9 +9,9 @@ theme: dark
 transition: slide
 syntaxHighlight: true
 math: false
-eventName: 'OpenClaw — Charla compañera del post del blog'
-eventDate: 2026-05-04
-relatedPost: openclaw-your-assistant-your-machine-your-rules
+eventName: 'FLISOL 2026 — UTP, Pereira'
+eventDate: 2026-05-07
+relatedPost: openclaw-flisol-talk
 ---
 
 <!-- ==================== Portada ==================== -->
