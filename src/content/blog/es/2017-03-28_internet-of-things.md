@@ -4,7 +4,7 @@ description: 'Me uní con Alejandro Rendón para explorar IoT — desde sensores
 pubDate: '2017-03-28'
 heroImage: '/images/blog/posts/internet-of-things/hero.webp'
 heroLayout: 'banner'
-tags: ["talks", "tech", "iot"]
+tags: ["talks", "tech", "iot", "javascript"]
 keywords: ["introducción al internet de las cosas", "qué es IoT", "Arduino con JavaScript", "Johnny-five programación de robots", "sensores y actuadores IoT", "IoT para desarrolladores web", "programar hardware con Node.js"]
 ---
 

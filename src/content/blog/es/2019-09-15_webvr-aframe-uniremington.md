@@ -4,7 +4,7 @@ description: 'Llevando realidad virtual a la web y por qué democratizar VR impo
 pubDate: '2019-09-15'
 heroImage: '/images/blog/posts/webvr-aframe-uniremington/hero.webp'
 heroLayout: 'side-by-side'
-tags: ["talks", "tech", "javascript", "web-development"]
+tags: ["talks", "tech", "javascript", "web-development", "webvr"]
 keywords: ["WebVR con A-Frame charla universitaria", "realidad virtual accesible con el navegador", "VR con smartphone y Google Cardboard", "A-Frame HTML para realidad virtual", "WebVR para estudiantes", "realidad virtual sin hardware costoso", "comunidades tech en Pereira"]
 ---
 

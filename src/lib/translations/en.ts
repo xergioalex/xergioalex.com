@@ -1018,6 +1018,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     claude: 'Claude',
     mcp: 'MCP',
     flutter: 'Flutter',
+    webvr: 'WebVR',
+    aeo: 'AEO',
   },
   tagDescriptions: {
     // Primary tags
@@ -1069,6 +1071,9 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     mcp: 'Model Context Protocol — standardized agent↔tool communication, server cards, and the agentic-web standards layer.',
     flutter:
       'Flutter — Dart-based cross-platform mobile framework, widgets, and the trade-offs versus native and Kotlin Multiplatform.',
+    webvr:
+      'WebVR / WebXR and the A-Frame framework — building VR and 3D experiences in the browser.',
+    aeo: 'Answer Engine Optimization — making content discoverable and citable by AI answer engines and agents.',
   },
 
   // Series names and descriptions (keyed by series slug)

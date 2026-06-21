@@ -1,7 +1,7 @@
 ---
 title: "Loop Engineering: Automation in the Age of AI"
 description: "Everyone's saying we should write loops, not prompts. Strip away the novelty and it's automation — with one new thing sitting inside the loop's body."
-pubDate: "2026-06-24"
+pubDate: "2026-06-22"
 heroImage: "/images/blog/posts/loop-engineering/hero-en.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]

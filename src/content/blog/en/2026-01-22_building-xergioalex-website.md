@@ -4,7 +4,7 @@ description: "From one-page landing to bilingual, AI-ready XergioAleX.com: archi
 pubDate: "2026-01-22"
 heroImage: "/images/blog/posts/building-xergioalex-website/hero.webp"
 heroLayout: "banner"
-tags: ["tech", "web-development", "astro", "svelte", "cloudflare"]
+tags: ["portfolio", "tech", "web-development", "astro", "svelte", "cloudflare"]
 keywords: ["building personal website Astro Svelte", "XergioAleX.com architecture", "Astro Svelte personal platform", "bilingual personal website Astro", "personal site Astro islands", "Ninja Coder brand website", "Astro Svelte performance personal blog"]
 series: "building-xergioalex"
 seriesOrder: 1

@@ -4,7 +4,7 @@ description: "AEO measurement is years behind AEO optimization. Here's what the 
 pubDate: "2026-03-10T14:00:00"
 heroImage: "/images/blog/posts/aeo-the-scorecard/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai", "aeo"]
 keywords: ["AEO audit methodology checklist", "track AI bot traffic analytics", "Bing AI Performance report", "measure AI search citations", "AI referral traffic growing statistics"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 4

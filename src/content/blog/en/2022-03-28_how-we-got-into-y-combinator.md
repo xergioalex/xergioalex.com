@@ -4,7 +4,7 @@ description: "Three YC applications, three rejections, one acceptance — what c
 pubDate: "2022-03-28"
 heroImage: "/images/blog/posts/how-we-got-into-y-combinator/hero.webp"
 heroLayout: "banner"
-tags: ["talks", "tech", "dailybot", "entrepreneur"]
+tags: ["talks", "dailybot", "entrepreneur"]
 keywords: ["Y Combinator application story", "DailyBot YC acceptance", "how to get into YC", "Y Combinator interview experience", "YC application three attempts", "startup Y Combinator Colombia", "YC batch DailyBot lessons"]
 ---
 

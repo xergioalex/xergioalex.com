@@ -4,7 +4,7 @@ description: "Workshop práctico de Docker en Rocka Labs: contenedores, imágene
 pubDate: "2019-03-16"
 heroImage: "/images/blog/posts/docker-introductory-workshop/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "devops"]
+tags: ["talks", "tech", "devops", "docker"]
 keywords: ["workshop Docker completo", "Docker desde cero tutorial práctico", "Dockerfiles volúmenes y redes", "Docker Compose para principiantes", "contenedores Docker paso a paso", "Docker en Rocka Labs", "cómo aprender Docker rápido"]
 ---
 

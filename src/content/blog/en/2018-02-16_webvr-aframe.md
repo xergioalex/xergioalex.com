@@ -4,7 +4,7 @@ description: "Building VR experiences with HTML — my talk at Pereira Tech Talk
 pubDate: "2018-02-16"
 heroImage: "/images/blog/posts/webvr-aframe/webvr-aframe-talk-hero.webp"
 heroLayout: "banner"
-tags: ["talks", "tech", "javascript", "web-development"]
+tags: ["talks", "tech", "javascript", "web-development", "webvr"]
 keywords: ["A-Frame WebVR tutorial", "VR web browser JavaScript", "A-Frame HTML virtual reality", "WebVR without specialized tools", "Mozilla A-Frame framework", "VR HTML JavaScript", "browser-based virtual reality"]
 ---
 

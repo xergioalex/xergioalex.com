@@ -91,7 +91,7 @@ Check the following in BOTH EN and ES versions:
 | `pubDate` | Valid date format (YYYY-MM-DD or ISO) | FAIL if missing or invalid |
 | `heroImage` | Path starts with `/images/`, referenced file exists in `public/` | WARN if missing; FAIL if path is set but file does not exist |
 | `heroLayout` | One of: `banner`, `side-by-side`, `minimal`, `none` | WARN if missing (defaults to banner); FAIL if invalid value |
-| `tags` | Present, array, max 5 total (≥1 primary + 0-3 secondary + 0-3 subtopic, ≤3 subtopics), every tag exists in `src/content/tags/` | FAIL if tag does not exist; WARN if >5 tags or >3 subtopics; WARN if no primary tag. See [Tag governance](../../../docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection) |
+| `tags` | Present, array — 1-3 primary, 0-10 secondary, 0-15 subtopic (≥1 primary required), every tag exists in `src/content/tags/` | FAIL if tag does not exist; WARN if >3 primary, >10 secondary, or >15 subtopic; WARN if no primary tag. See [Tag governance](../../../docs/features/BLOG_POSTS.md#tag-taxonomy-unified-collection) |
 | `keywords` | Present, array, 5-8 entries per language | WARN if missing; WARN if outside 5-8 range |
 | Structure match | EN and ES have the same frontmatter fields (tags, pubDate, heroLayout match) | WARN if mismatch |
 

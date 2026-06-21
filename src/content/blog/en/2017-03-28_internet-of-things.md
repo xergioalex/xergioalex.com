@@ -4,7 +4,7 @@ description: "I teamed up with Alejandro Rendon to explore IoT — from sensors 
 pubDate: "2017-03-28"
 heroImage: "/images/blog/posts/internet-of-things/hero.webp"
 heroLayout: "banner"
-tags: ["talks", "tech", "iot"]
+tags: ["talks", "tech", "iot", "javascript"]
 keywords: ["IoT introduction JavaScript", "Arduino Johnny-five tutorial", "Internet of Things JavaScript", "Node.js robotics programming", "Johnny-five Arduino framework", "JavaScript IoT development", "hardware programming JavaScript"]
 ---
 

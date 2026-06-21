@@ -4,7 +4,7 @@ description: "AI agents are now some of the most important visitors to your site
 pubDate: "2026-03-07T14:00:00"
 heroImage: "/images/blog/posts/aeo-answer-engine-optimization/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai", "aeo"]
 keywords: ["answer engine optimization AEO guide", "optimize website for AI search engines", "llms.txt structured data AEO", "how AI search engines cite sources", "AEO vs SEO practical guide", "structured data JSON-LD for AI visibility", "markdown for AI agents endpoints", "track AI bot traffic server-side analytics"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 1

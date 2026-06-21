@@ -4,7 +4,7 @@ description: "Five categories, eight artifacts, one concrete guide: what your si
 pubDate: "2026-05-14T15:00:00"
 heroImage: "/images/blog/posts/aeo-reaching-100-isitagentready/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai-agents", "cloudflare", "mcp"]
+tags: ["tech", "web-development", "ai-agents", "cloudflare", "mcp", "aeo"]
 keywords: ["isitagentready.com 100", "agent-ready website", "well-known api-catalog", "oauth protected resource metadata", "mcp server card", "webmcp provideContext", "cloudflare pages headers RFC 8288", "content signals robots.txt", "lighthouse robots-txt", "x402 payment protocol", "agentic commerce protocol acp", "machine payment protocol mpp"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 5

@@ -4,7 +4,7 @@ description: 'Diseñar un sitio Astro multilingüe desde cero: traducciones tipa
 pubDate: '2026-03-03'
 heroImage: '/images/blog/posts/building-multilingual-website/hero.webp'
 heroLayout: 'side-by-side'
-tags: ['tech', 'web-development']
+tags: ["tech", "web-development", "astro"]
 keywords: ["sitio web multilingüe con Astro", "cómo agregar múltiples idiomas en Astro", "i18n con Astro sin plugins", "sistema de traducciones tipado en TypeScript", "arquitectura multilingüe para sitios estáticos", "inglés y español con Astro", "Page Wrapper pattern Astro i18n"]
 series: "building-xergioalex"
 seriesOrder: 6

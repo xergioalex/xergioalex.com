@@ -4,7 +4,7 @@ description: "State of the art of mobile development in 2026: the available opti
 pubDate: "2026-05-12"
 heroImage: "/images/blog/posts/mobile-development-landscape-2026/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "mobile", "flutter"]
+tags: ["tech", "mobile", "flutter", "kotlin"]
 keywords: ["mobile development 2026", "mobile frameworks", "Flutter", "Kotlin Multiplatform", "KMP", "Android iOS", "React Native", "cross-platform development", "learning mobile", "mobile landscape"]
 series: "learning-mobile-development"
 seriesOrder: 1

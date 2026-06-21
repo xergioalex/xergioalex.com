@@ -1029,6 +1029,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     claude: 'Claude',
     mcp: 'MCP',
     flutter: 'Flutter',
+    webvr: 'WebVR',
+    aeo: 'AEO',
   },
   tagDescriptions: {
     // Primary tags
@@ -1080,6 +1082,9 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     mcp: 'Model Context Protocol — comunicación estandarizada agente↔herramienta, server cards y la capa de estándares para la agentic web.',
     flutter:
       'Flutter — framework móvil multiplataforma basado en Dart, widgets y los trade-offs frente a nativo y Kotlin Multiplatform.',
+    webvr:
+      'WebVR / WebXR y el framework A-Frame — crear experiencias de realidad virtual y 3D en el navegador.',
+    aeo: 'Answer Engine Optimization — hacer que el contenido sea descubrible y citable por motores de respuesta de IA y agentes.',
   },
 
   // Series names and descriptions (keyed by series slug)

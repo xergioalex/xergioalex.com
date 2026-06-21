@@ -1,7 +1,7 @@
 ---
 title: "Deep Work Plan: Give Your Agent a Plan and a Harness"
 description: "An agent nailed the first hour and drifted by the third. The fix wasn't a smarter model — it was a durable plan the repository itself could hold the work to."
-pubDate: "2026-06-22"
+pubDate: "2026-06-21"
 heroImage: "/images/blog/posts/deep-work-plan/hero-en.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "ai-agents", "claude"]

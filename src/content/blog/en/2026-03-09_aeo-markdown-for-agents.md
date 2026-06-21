@@ -4,7 +4,7 @@ description: "Markdown for Agents: content negotiation meets AI—what the patte
 pubDate: "2026-03-09T14:00:00"
 heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai", "aeo"]
 keywords: ["markdown for agents implementation", "content negotiation AI bots", "Accept text/markdown header", "Cloudflare markdown for agents", "AI-readable web content", "serve markdown to AI agents"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 3
