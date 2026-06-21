@@ -4,7 +4,7 @@ description: "My Abril Mobile talk at Universidad Católica de Pereira: how a ba
 pubDate: "2026-04-18"
 heroImage: "/images/blog/posts/mobile-dev-meetup-pereira/hero-en.webp"
 heroLayout: "banner"
-tags: ["tech", "mobile", "kotlin", "flutter"]
+tags: ["tech", "talks", "mobile", "kotlin", "flutter"]
 keywords: ["learn mobile development 2026", "Kotlin Multiplatform vs Flutter", "Pereira Tech Talks mobile", "mobile development talk", "Abril Mobile", "Kotlin Multiplatform for beginners", "mobile development with AI agents"]
 ---
 

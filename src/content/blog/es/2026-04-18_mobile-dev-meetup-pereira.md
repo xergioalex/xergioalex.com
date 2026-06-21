@@ -4,7 +4,7 @@ description: "Mi charla Abril Mobile en la Universidad Católica de Pereira: có
 pubDate: "2026-04-18"
 heroImage: "/images/blog/posts/mobile-dev-meetup-pereira/hero-es.webp"
 heroLayout: "banner"
-tags: ["tech", "mobile", "kotlin", "flutter"]
+tags: ["tech", "talks", "mobile", "kotlin", "flutter"]
 keywords: ["aprender desarrollo móvil 2026", "Kotlin Multiplatform o Flutter", "charla desarrollo móvil Pereira", "Abril Mobile Pereira Tech Talks", "Kotlin Multiplatform para principiantes", "desarrollo móvil con agentes de IA"]
 ---
 
