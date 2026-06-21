@@ -1,6 +1,6 @@
 ---
 title: "El meetup Moltys: una mañana de OpenClaw en la UTP"
-description: "Un recuento del meetup Moltys en la UTP de Pereira — un taller de la comunidad OpenClaw con Cursor donde compartí su historia, casos de uso y arquitectura."
+description: "El meetup Moltys en la UTP de Pereira — un taller de la comunidad OpenClaw con Cursor donde recorro su historia, casos de uso y la arquitectura detrás."
 pubDate: "2026-04-11"
 heroImage: "/images/blog/posts/openclaw-moltys-meetup-utp/hero-es.webp"
 heroLayout: "side-by-side"
@@ -8,9 +8,9 @@ tags: ["talks", "tech", "ai-agents", "openclaw"]
 keywords: ["meetup OpenClaw", "comunidad Moltys", "taller OpenClaw UTP Pereira", "evento Cursor OpenClaw", "casos de uso arquitectura OpenClaw", "comunidad OpenClaw Colombia"]
 ---
 
-El 11 de abril de 2026 pasé una mañana en la Universidad Tecnológica de Pereira con un salón lleno de gente que llevaba pequeñas tenazas rojas de langosta en la cabeza. El evento era un **meetup Moltys** — un encuentro de la comunidad OpenClaw — con el apoyo de [Cursor](https://cursor.com), y yo fui uno de los que estuvo liderando el taller. Si conoces OpenClaw, las diademas de langosta tienen todo el sentido; si no, eso es lo primero que vale la pena explicar.
+La forma más fácil de reconocer un **meetup Moltys** es el salón lleno de gente que lleva pequeñas tenazas rojas de langosta en la cabeza. Es un encuentro de la comunidad OpenClaw, y este es en la Universidad Tecnológica de Pereira, con el apoyo de [Cursor](https://cursor.com), conmigo como uno de los que está liderando el taller. Si conoces OpenClaw, las diademas de langosta tienen todo el sentido; si no, eso es lo primero que vale la pena explicar.
 
-Un meetup Moltys no es una charla de conferencia donde una persona presenta y el resto escucha. La idea era justo la contraria: abrir el espacio y dejar que la comunidad mostrara lo que de verdad está construyendo con OpenClaw. La gente llegó a compartir sus propias configuraciones, sus experimentos, las cosas raras y útiles que habían conectado — y la mañana se volvió un ida y vuelta en lugar de una conferencia. Ese formato es la parte que más me gustó. Aprendes mucho más de los proyectos reales de diez personas que de un buen deck de diapositivas.
+Un meetup Moltys no es una charla de conferencia donde una persona presenta y el resto escucha. La idea es justo la contraria: abrir el espacio y dejar que la comunidad muestre lo que de verdad está construyendo con OpenClaw. La gente llega a compartir sus propias configuraciones, sus experimentos, las cosas raras y útiles que han conectado — y la mañana se vuelve un ida y vuelta en lugar de una conferencia. Ese formato es la parte que más me gusta. Aprendes mucho más de los proyectos reales de diez personas que de un buen deck de diapositivas.
 
 <figure>
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-03.webp"
@@ -18,16 +18,16 @@ Un meetup Moltys no es una charla de conferencia donde una persona presenta y el
      width="960"
      height="1280"
      loading="lazy" />
-<figcaption>La langosta es la mascota de OpenClaw — así que el salón llegó con tenazas. El uniforme no oficial de un meetup Moltys.</figcaption>
+<figcaption>La langosta es la mascota de OpenClaw — así que el salón llega con tenazas. El uniforme no oficial de un meetup Moltys.</figcaption>
 </figure>
 
 ## Mi parte: historia, casos de uso, arquitectura
 
-Mi trabajo era poner la mesa — compartir mi propia experiencia con OpenClaw para que el resto de la mañana tuviera un punto de partida común. Lo dejé en tres cosas: de dónde viene, para qué lo usa la gente de verdad, y cómo está armado por dentro.
+Mi trabajo es poner la mesa — compartir mi propia experiencia con OpenClaw para que el resto de la mañana tenga un punto de partida común. Lo dejo en tres cosas: de dónde viene, para qué lo usa la gente de verdad, y cómo está armado por dentro.
 
-La historia es una buena historia, y no la voy a contar entera aquí — eso es justo lo que me empujó a escribir un texto aparte, mucho más largo, un par de días después. La versión corta sobre la tarima fue el arco: un agente de IA personal que corre en tu propia máquina, configurado en Markdown plano, que te habla por las apps de mensajería que ya usas y se conecta al modelo que tú elijas. De ahí creció hasta convertirse en uno de los proyectos open source que más rápido se ha movido.
+La historia es una buena historia, y no la voy a contar entera aquí — es justo lo que me empuja a escribir un texto aparte, mucho más largo, sobre OpenClaw. La versión corta es el arco: un agente de IA personal que corre en tu propia máquina, configurado en Markdown plano, que te habla por las apps de mensajería que ya usas y se conecta al modelo que tú elijas. De ahí creció hasta convertirse en uno de los proyectos open source que más rápido se ha movido.
 
-Para la arquitectura me fui al tablero, porque es más fácil dibujarla que describirla. Un agente arriba, OpenClaw en el medio, un gateway que se abre hacia Telegram, WhatsApp y Slack, y un conjunto de herramientas colgando del lado — APIs, skills, herramientas MCP, shells. Ese solo dibujo explica la mayor parte de lo que hace que esto funcione.
+Para la arquitectura me voy al tablero, porque es más fácil dibujarla que describirla. Un agente arriba, OpenClaw en el medio, un gateway que se abre hacia Telegram, WhatsApp y Slack, y un conjunto de herramientas colgando del lado — APIs, skills, herramientas MCP, shells. Ese solo dibujo explica la mayor parte de lo que hace que esto funcione.
 
 <figure>
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-01.webp"
@@ -38,11 +38,11 @@ Para la arquitectura me fui al tablero, porque es más fácil dibujarla que desc
 <figcaption>La arquitectura en un tablero: agente → OpenClaw → gateway → Telegram/WhatsApp/Slack, con las herramientas (APIs, skills, MCP, shells) al lado.</figcaption>
 </figure>
 
-Si quieres la versión completa — la persona detrás de OpenClaw, las decisiones técnicas, el caos de la comunidad y hacia dónde va la computación personal — ese es el post en el que terminó convirtiéndose la charla: [OpenClaw: Tu asistente. Tu máquina. Tus reglas.](/es/blog/openclaw-your-assistant-your-machine-your-rules/). Prepararme para esta mañana es lo que me hizo sentarme a escribirlo.
+Si quieres la versión completa — la persona detrás de OpenClaw, las decisiones técnicas, el caos de la comunidad y hacia dónde va la computación personal — ese es el texto donde entro a fondo: [OpenClaw: Tu asistente. Tu máquina. Tus reglas.](/es/blog/openclaw-your-assistant-your-machine-your-rules/). Prepararme para una mañana como esta es justo lo que me dan ganas de sentarme a escribirlo bien.
 
-## Lo mejor fue el salón
+## Lo mejor es el salón
 
-Las diapositivas y el tablero eran la excusa; la gente era el punto. Lo que hizo buena la mañana fue compartir unas horas con una comunidad que de verdad tiene curiosidad por esto — comparando configuraciones, haciendo el tipo de preguntas que solo salen de quien ya intentó algo y se topó con una pared, e intercambiando los trucos pequeños que nunca llegan a la documentación.
+Las diapositivas y el tablero son la excusa; la gente es el punto. Lo que hace buena la mañana es compartir unas horas con una comunidad que de verdad tiene curiosidad por esto — comparando configuraciones, haciendo el tipo de preguntas que solo salen de quien ya intentó algo y se topó con una pared, e intercambiando los trucos pequeños que nunca llegan a la documentación.
 
 <figure>
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-02.webp"
@@ -50,10 +50,10 @@ Las diapositivas y el tablero eran la excusa; la gente era el punto. Lo que hizo
      width="960"
      height="1280"
      loading="lazy" />
-<figcaption>Taller, no conferencia — el espacio fue pasando de uno a otro según quién tuviera algo para mostrar.</figcaption>
+<figcaption>Taller, no conferencia — el espacio va pasando de uno a otro según quién tenga algo para mostrar.</figcaption>
 </figure>
 
-Gracias a la UTP por recibirnos, a Cursor por apoyar el evento, y a todos los que llegaron con sus proyectos y sus tenazas puestas. Mañanas como esta son la razón por la que las comunidades locales importan — sales con más de lo que entraste.
+Gracias a la UTP por recibirnos, a Cursor por apoyar el evento, y a todos los que llegan con sus proyectos y sus tenazas puestas. Mañanas como esta son la razón por la que las comunidades locales importan — sales con más de lo que entraste.
 
 ## Memorias del evento
 
@@ -81,7 +81,7 @@ Gracias a la UTP por recibirnos, a Cursor por apoyar el evento, y a todos los qu
      width="960"
      height="1280"
      loading="lazy" />
-<figcaption>Detrás de cámaras — el equipo que mantuvo viva la transmisión y la grabación.</figcaption>
+<figcaption>Detrás de cámaras — el equipo que mantiene viva la transmisión y la grabación.</figcaption>
 </figure>
 
 <figure>
@@ -99,7 +99,7 @@ Sigamos construyendo.
 
 ## Recursos
 
-- [OpenClaw](https://openclaw.ai) — el agente de IA personal del que se trató toda la mañana ([documentación](https://docs.openclaw.ai))
-- [OpenClaw: Tu asistente. Tu máquina. Tus reglas.](/es/blog/openclaw-your-assistant-your-machine-your-rules/) — la historia a fondo en la que se convirtió esta charla
-- [Cursor](https://cursor.com) — el editor de código con IA que apoyó el evento
+- [OpenClaw](https://openclaw.ai) — el agente de IA personal del que se trata toda la mañana ([documentación](https://docs.openclaw.ai))
+- [OpenClaw: Tu asistente. Tu máquina. Tus reglas.](/es/blog/openclaw-your-assistant-your-machine-your-rules/) — la historia a fondo detrás de la charla
+- [Cursor](https://cursor.com) — el editor de código con IA que apoya el evento
 - [Universidad Tecnológica de Pereira](https://www.utp.edu.co) — nuestros anfitriones de la mañana
