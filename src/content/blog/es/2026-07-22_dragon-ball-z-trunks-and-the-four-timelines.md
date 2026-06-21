@@ -8,6 +8,7 @@ tags: ['science-fiction', 'time-travel', 'personal']
 keywords: ['líneas temporales de Dragon Ball Z explicadas', 'línea temporal de Trunks del futuro', 'cuatro líneas temporales Dragon Ball Z', 'Trunks viaje en el tiempo Cell', 'líneas temporales que se bifurcan Dragon Ball', 'cuántas líneas temporales hay en DBZ']
 series: 'playing-with-time'
 seriesOrder: 5
+draft: true
 ---
 
 He venido construyendo hacia este artículo toda la serie, y no voy a fingir que soy objetivo. *Dragon Ball Z* es una de mis historias favoritas de todos los tiempos. Crecí con ella. Y enterrado bajo todos los gritos y las transformaciones hay uno de los ejemplos más limpios y gloriosamente enredados de viaje en el tiempo con bifurcación que existe en la ficción — el arco donde Trunks del futuro viaja al pasado para salvar a los Guerreros Z, y termina partiendo la historia en *cuatro* líneas temporales distintas.

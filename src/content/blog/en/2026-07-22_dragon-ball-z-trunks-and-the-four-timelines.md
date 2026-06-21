@@ -8,6 +8,7 @@ tags: ['science-fiction', 'time-travel', 'personal']
 keywords: ['Dragon Ball Z timelines explained', 'Future Trunks timeline', 'four timelines Dragon Ball Z', 'Trunks time travel Cell', 'Dragon Ball branching timelines', 'how many timelines in DBZ']
 series: 'playing-with-time'
 seriesOrder: 5
+draft: true
 ---
 
 I've been building toward this one the whole series, and I'm not going to pretend to be objective about it. *Dragon Ball Z* is one of my favorite stories of all time. I grew up with it. And buried inside all the shouting and the power-ups is one of the cleanest, most gloriously tangled examples of branching time travel anywhere in fiction — the arc where Future Trunks travels to the past to save the Z Fighters, and ends up spinning the story into *four* separate timelines.
