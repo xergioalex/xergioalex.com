@@ -1,7 +1,7 @@
 ---
 title: "Deep Work Plan: dale a tu agente un plan y un harness"
 description: "Un agente clavó la primera hora y a la tercera se desvió. El arreglo no fue un mejor modelo: fue un plan estable que el repositorio sostiene como objetivo."
-pubDate: "2026-06-22"
+pubDate: "2026-06-21"
 heroImage: "/images/blog/posts/deep-work-plan/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "ai-agents", "claude"]
