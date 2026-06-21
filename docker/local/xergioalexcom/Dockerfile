@@ -30,6 +30,29 @@ ENV CHROMIUM_FLAGS="--no-sandbox"
 RUN echo 'node ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/node \
     && chmod 0440 /etc/sudoers.d/node
 
+# Ensure the container's image-installed Node (/usr/local/bin) precedes any
+# IDE-bundled Node that gets prepended to PATH at shell startup — Cursor Server
+# (~/.cursor-server/bin/<commit>/node), VS Code Server, etc. Without this,
+# `node`/`npx`/`pnpm` in agent shells resolves to the IDE's bundled binary
+# (often an older LTS), even though `FROM node:24-...` installs the right one.
+# Login shells source /etc/profile.d/*; this is the most universal anchor.
+# NOTE: This only helps LOGIN shells (interactive terminals, agent CLIs that
+# spawn via `bash -l`). It does NOT affect MCP servers launched by Cursor via
+# child_process.spawn — those need absolute paths in .cursor/mcp.json (e.g.
+# `"command": "/usr/local/bin/npx"`) to bypass the IDE's manipulated PATH.
+RUN printf '%s\n' \
+    '# Container-installed Node must win over IDE-bundled Node (Cursor Server, etc.).' \
+    '# This drop-in is idempotent and safe for any POSIX-ish shell.' \
+    'if [ -x /usr/local/bin/node ]; then' \
+    '  case ":${PATH}:" in' \
+    '    ":/usr/local/bin:"*) : ;;  # already at the front' \
+    '    *) PATH="/usr/local/bin:${PATH}" ;;' \
+    '  esac' \
+    '  export PATH' \
+    'fi' \
+    > /etc/profile.d/00-container-node-first.sh \
+    && chmod 0644 /etc/profile.d/00-container-node-first.sh
+
 # Enable corepack so pnpm is provisioned from the version pinned in
 # package.json's "packageManager" field. Avoid `npm install -g pnpm` —
 # it defeats the pin.
