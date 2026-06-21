@@ -4,7 +4,7 @@ description: "Por qué me moví de REST a GraphQL para microservicios — divide
 pubDate: "2017-11-23"
 heroImage: "/images/blog/posts/microservices-architecture-graphql/hero.webp"
 heroLayout: "banner"
-tags: ["talks", "tech", "web-development", "docker", "graphql"]
+tags: ["talks", "tech", "web-development", "devops", "docker", "graphql"]
 keywords: ["arquitectura de microservicios", "GraphQL vs REST", "APIs con GraphQL", "microservicios con GraphQL", "consultas definidas por el cliente", "dividir y conquistar en APIs", "cómo migrar de REST a GraphQL"]
 ---
 
