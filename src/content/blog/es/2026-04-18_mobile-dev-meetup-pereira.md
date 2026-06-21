@@ -78,30 +78,39 @@ Entre los dos, el meetup completo terminó siendo una sola conversación sobre m
 Lo mejor de una noche de Pereira Tech Talks nunca son solo las diapositivas — es el salón. Una sala llena en la Universidad Católica de Pereira, una comunidad que ha mantenido el móvil en la agenda durante años, y el tipo de preguntas que solo salen de gente que de verdad quiere construir algo.
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-06.webp"
      alt="Sergio presentando la diapositiva 'Mi problema con el desarrollo móvil' ante la audiencia en la Universidad Católica de Pereira"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Abriendo la charla con "mi problema con el desarrollo móvil" — el diagrama enredado de configuración que cualquiera que lo ha intentado reconoce al instante.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-03.webp"
      alt="Sergio hablando con un micrófono, con la mesa y las banderas de la Universidad Católica de Pereira detrás"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>A mitad de la charla, exponiendo el caso — con la Universidad Católica de Pereira como anfitriona.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Sobre la tarima en la Universidad Católica de Pereira — abriendo con "mi problema con el desarrollo móvil" y, a mitad de charla, exponiendo el caso.</figcaption>
 </figure>
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
+<img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-01.webp"
+     alt="Sergio en el podio presentando, con la diapositiva 'por qué el desarrollo móvil siempre fue algún día' detrás"
+     width="960"
+     height="1280"
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-07.webp"
      alt="La audiencia de Abril Mobile sentada y atenta a la charla"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>El salón — una comunidad que sigue apareciendo para estas cosas.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Del podio a las sillas — un salón lleno que no paró de hacer preguntas.</figcaption>
 </figure>
 
 <figure>

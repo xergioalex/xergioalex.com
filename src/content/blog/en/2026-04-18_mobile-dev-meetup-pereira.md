@@ -78,30 +78,39 @@ Between the two of us, the whole meetup ended up being a single conversation abo
 The best part of a Pereira Tech Talks night is never just the slides — it's the room. A full house at Universidad Católica de Pereira, a community that has kept mobile on the agenda for years, and the kind of questions that only come from people who actually want to build something.
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-06.webp"
      alt="Sergio presenting the 'Mi problema con el desarrollo móvil' slide to the audience at Universidad Católica de Pereira"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Opening the talk with "my problem with mobile development" — the tangled setup diagram everyone who's tried to start recognizes instantly.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-03.webp"
      alt="Sergio speaking with a microphone, the Universidad Católica de Pereira table and flags behind him"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Mid-talk, making the case — Universidad Católica de Pereira hosting.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>On stage at Universidad Católica de Pereira — opening with "my problem with mobile development," then mid-talk making the case.</figcaption>
 </figure>
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
+<img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-01.webp"
+     alt="Sergio at the podium presenting, with the 'why mobile development was always someday' slide behind him"
+     width="960"
+     height="1280"
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/mobile-dev-meetup-pereira/memories-07.webp"
      alt="The Abril Mobile audience seated and watching the talk"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>The room — a community that keeps showing up for this stuff.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>From the podium to the seats — a full room that kept the questions coming.</figcaption>
 </figure>
 
 <figure>
