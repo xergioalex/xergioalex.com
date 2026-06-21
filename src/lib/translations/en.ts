@@ -1088,6 +1088,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'learning-mobile-development': 'Learning Mobile Development',
     'slides-as-code': 'Slides as Code',
     'the-mythos-saga': 'The Mythos Saga',
+    'playing-with-time': 'Playing With Time',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1110,6 +1111,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       'A series exploring developer-oriented presentation tools, comparing alternatives, and documenting how to build a multilingual slide system inside a modern web framework.',
     'the-mythos-saga':
       "Following Anthropic's Mythos-class models from 'too dangerous to release' to available to everyone — and what frontier AI capability means for the rest of us.",
+    'playing-with-time':
+      'Science, paradoxes, and fiction — what really happens when you mess with time. From relativistic time dilation and wormholes to the tangled timelines of Dragon Ball Z.',
   },
 
   // Date formatting

@@ -1099,6 +1099,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'learning-mobile-development': 'Aprendiendo Desarrollo Móvil',
     'slides-as-code': 'Slides as Code',
     'the-mythos-saga': 'La saga de Mythos',
+    'playing-with-time': 'Jugando con el Tiempo',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1121,6 +1122,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Una serie que explora herramientas de presentación orientadas a desarrolladores, compara alternativas y documenta cómo construir un sistema de diapositivas multilingüe dentro de un framework web moderno.',
     'the-mythos-saga':
       "Los modelos de clase Mythos de Anthropic: de 'demasiado peligroso para liberar' a disponible para todos — y lo que esa capacidad significa para nosotros.",
+    'playing-with-time':
+      'Ciencia, paradojas y ficción — qué pasa de verdad cuando te metes con el tiempo. Desde la dilatación temporal y los agujeros de gusano hasta las enredadas líneas temporales de Dragon Ball Z.',
   },
 
   // Date formatting
