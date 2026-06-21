@@ -199,7 +199,7 @@ For each post in the series, run the following summary checks. These are a subse
 |-------|------|----------|
 | `title` | Present, non-empty | FAIL if missing |
 | `description` | Present, 130-160 characters | FAIL if outside range |
-| `tags` | Present (1-3 primary, 1-10 secondary, 0-15 subtopic; ≥1 primary AND ≥1 secondary), all exist in `src/content/tags/` | FAIL if tag does not exist |
+| `tags` | Present (1-3 primary, 0-10 secondary, 0-15 subtopic; ≥1 primary), all exist in `src/content/tags/` | FAIL if tag does not exist |
 | `keywords` | Present, 5-8 entries | WARN if missing or outside range |
 | Hero image exists | If `heroImage` is set, file exists at `public${heroImage}` | FAIL if path set but file missing |
 | Images are WebP | Post images in `public/images/blog/posts/{slug}/` are `.webp` | WARN if non-WebP found |

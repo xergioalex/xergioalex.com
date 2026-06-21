@@ -98,11 +98,11 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **Primary tags** (1-3 per post): `tech`, `personal`, `talks`, `trading`, `portfolio`, `dailybot` (do NOT use `demo` — that tag is only for demo posts in `_demo/` folders).
 
-**Secondary tags** (1-10 per post): `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`, `mobile`.
+**Secondary tags** (0-10 per post): `web-development`, `javascript`, `ai`, `blockchain`, `devops`, `python`, `university`, `database`, `iot`, `design`, `mobile`.
 
 **Subtopic tags** (0-15 per post — tier 3, fine-grained technology handles): `kotlin` (parent: `mobile`), `astro`/`svelte`/`graphql` (parent: `web-development`), `cloudflare`/`docker` (parent: `devops`), `django` (parent: `python`), `openclaw` (parent: `ai`).
 
-**Caps:** per post — **1-3 primary**, **1-10 secondary**, **0-15 subtopic**. At least **1 primary AND 1 secondary** required. No fixed total cap — but only tag what the post genuinely covers (no tagging for the sake of tagging).
+**Caps:** per post — **1-3 primary**, **0-10 secondary**, **0-15 subtopic**. At least **1 primary** required. No fixed total cap — but only tag what the post genuinely covers (no tagging for the sake of tagging).
 
 **When to use a subtopic tag:** the post is FOCUSED on that specific technology/framework/product (not just mentions it in passing). If you're unsure whether a candidate qualifies, run [`/audit-taxonomy`](../audit-taxonomy/SKILL.md) to see the data.
 
@@ -146,7 +146,7 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 2. Check existing articles in `src/content/blog/en/` for voice reference and to avoid overlap
 3. **Read demo posts in `src/content/blog/en/_demo/` as structural references** — these are example articles showcasing different hero layouts (banner, side-by-side, minimal, none), MDX features, rich markdown formatting, and code syntax highlighting. Use them as templates when deciding article structure and formatting.
 4. Check available tags in `src/content/tags/` — note which are `tier: primary` and which are `tier: secondary`
-5. **Assign tags:** Choose 1-3 primary tags (section) + 1-10 secondary tags (topic) + 0-15 subtopic tags (specific tech). At least 1 primary AND 1 secondary are required. Put all in a single `tags` array. Add every tag the post genuinely covers, but never tag for the sake of tagging.
+5. **Assign tags:** Choose 1-3 primary tags (section) + 0-10 secondary tags (topic) + 0-15 subtopic tags (specific tech). At least 1 primary is required. Put all in a single `tags` array. Add every tag the post genuinely covers, but never tag for the sake of tagging.
 6. Verify any referenced images exist in `public/images/blog/posts/` or `public/images/blog/shared/`
 7. **Topic mode only:** Identify the core story or angle. If the brief is too vague, stop and ask for clarification.
 

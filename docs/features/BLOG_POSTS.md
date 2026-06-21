@@ -478,7 +478,7 @@ Subtopic tags name a single concrete technology, framework, language, or product
 ### Assigning Tags to Posts
 
 1. Choose **1-3 primary tags** for section classification (at least 1 required).
-2. Choose **1-10 secondary tags** for content topics (at least 1 required).
+2. Choose **0-10 secondary tags** for content topics (optional, but add what genuinely applies).
 3. Choose **0-15 subtopic tags** for specific technologies/frameworks/products.
 4. Put ALL in a single `tags` array (any order — the tier is resolved at build time):
 
@@ -511,7 +511,7 @@ tags: ["tech", "web-development", "astro", "svelte", "cloudflare"]
 **Rules:**
 
 - **Naming**: lowercase, kebab-case (`web-development`), English-only — even on Spanish posts.
-- **Tag caps**: per post — **1-3 primary**, **1-10 secondary**, **0-15 subtopic**. At least **1 primary AND 1 secondary** required. No fixed total cap, but only tag what the post genuinely covers (no tagging for the sake of tagging).
+- **Tag caps**: per post — **1-3 primary**, **0-10 secondary**, **0-15 subtopic**. At least **1 primary** required. No fixed total cap, but only tag what the post genuinely covers (no tagging for the sake of tagging).
 - **Subtopic naming**: a single concrete technology/framework/language/product (e.g., `astro`, `svelte`, `golang`). Avoid broad categories (those are secondary) and feature-level slivers (out of scope).
 - **Agents must NEVER auto-create tags** without user approval.
 - **Audit cadence**: run [`/audit-taxonomy`](../../.agents/skills/audit-taxonomy/SKILL.md) quarterly OR after any content drop of 5+ posts. The skill reports tag drift, orphans, and new candidates against thresholds.
