@@ -33,7 +33,8 @@ That is a deeply free-software idea, which is why FLISOL is the right place to t
      alt="Sergio presenting the 'Construido en abierto' slide: OpenClaw as an open-source personal agent built on transparency, community, collaboration and freedom"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>"Built in the open" — the four pillars I anchor the talk on: transparency, community, collaboration, freedom.</figcaption>
 </figure>
 
@@ -48,7 +49,8 @@ For two months almost nothing happened. Then the curve broke physics: thousands 
      alt="Sergio at the screen showing the Star History chart comparing OpenClaw, React and Linux, with OpenClaw's line shooting almost vertically off the top"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>That near-vertical red line is OpenClaw — overtaking React and Linux in weeks, not decades.</figcaption>
 </figure>
 
@@ -59,7 +61,8 @@ Then comes the part the room enjoys most: the triple rebrand. A cease-and-desist
      alt="Sergio presenting the rebrand slide explaining the handle change from @clawdbot to @moltbot and the pump-and-dump scam"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Telling the rebrand chaos: Clawdbot → Moltbot → OpenClaw, with a crypto scam in the middle.</figcaption>
 </figure>
 
@@ -74,39 +77,39 @@ If there's one idea I want to land at FLISOL, it's that none of this comes out o
 The best part of a festival like this isn't the slides — it's a room full of people who actually care that their tools stay open.
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-01.webp"
      alt="Sergio and a co-host on stage, both wearing red lobster antennae, holding the OpenClaw FLISOL poster in front of the big OpenClaw projection"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Lobster antennae mandatory. Wrapping the session with the FLISOL edition poster.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-06.webp"
      alt="The OpenClaw cover slide projected on the big screen with the FLISOL, UTP, ASE UTP, QA CONF, Ubuntu Colombia and FOREST logos"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>The cover, with the full host-and-collaborator strip: FLISOL · UTP · ASE UTP · QA CONF · Ubuntu Colombia · FOREST.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Lobster antennae mandatory — wrapping with the FLISOL edition poster, and the cover with the full host strip: FLISOL · UTP · ASE UTP · QA CONF · Ubuntu Colombia · FOREST.</figcaption>
 </figure>
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-05.webp"
      alt="Wide shot of Sergio on stage presenting the slide about how OpenClaw's early days felt wild"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>On the "wild early days" — when OpenClaw feels like handling something powerful, not a toy in a life vest.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-07.webp"
      alt="The closing 'Gracias' slide with Sergio's contact details, speaker on stage"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Thanks for having me, FLISOL. Let's keep building — in the open.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>The "wild early days" slide, and the closing thank-you.</figcaption>
 </figure>
 
 ---

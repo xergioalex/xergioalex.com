@@ -33,7 +33,8 @@ Esa es una idea profundamente del software libre, y por eso FLISOL es el lugar c
      alt="Sergio presentando la diapositiva 'Construido en abierto': OpenClaw como agente personal de código abierto basado en transparencia, comunidad, colaboración y libertad"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>"Construido en abierto" — los cuatro pilares sobre los que armo la charla: transparencia, comunidad, colaboración, libertad.</figcaption>
 </figure>
 
@@ -48,7 +49,8 @@ Durante dos meses no pasó casi nada. Después la curva rompió la física: mile
      alt="Sergio frente a la pantalla mostrando la gráfica de Star History que compara OpenClaw, React y Linux, con la línea de OpenClaw disparándose casi vertical hacia arriba"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Esa línea roja casi vertical es OpenClaw — superando a React y a Linux en semanas, no en décadas.</figcaption>
 </figure>
 
@@ -59,7 +61,8 @@ Después viene la parte que más disfruta la sala: el triple rebrand. Una carta 
      alt="Sergio presentando la diapositiva del rebrand que explica el cambio de handle de @clawdbot a @moltbot y la estafa pump and dump"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Contando el caos del rebrand: Clawdbot → Moltbot → OpenClaw, con una estafa de cripto en el medio.</figcaption>
 </figure>
 
@@ -74,39 +77,39 @@ Si hay una idea que quiero que aterrice en FLISOL, es que nada de esto sale de u
 Lo mejor de un festival así no son las diapositivas — es una sala llena de gente a la que de verdad le importa que sus herramientas sigan siendo abiertas.
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-01.webp"
      alt="Sergio y un coanfitrión en tarima, ambos con antenas rojas de langosta, sosteniendo el afiche de OpenClaw de FLISOL frente a la gran proyección de OpenClaw"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Antenas de langosta obligatorias. Cerrando la sesión con el afiche de la edición de FLISOL.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-06.webp"
      alt="La diapositiva de portada de OpenClaw proyectada en la pantalla grande con los logos de FLISOL, UTP, ASE UTP, QA CONF, Ubuntu Colombia y FOREST"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>La portada, con toda la franja de organizadores y colaboradores: FLISOL · UTP · ASE UTP · QA CONF · Ubuntu Colombia · FOREST.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Antenas de langosta obligatorias — cerrando con el afiche de la edición de FLISOL, y la portada con toda la franja de organizadores: FLISOL · UTP · ASE UTP · QA CONF · Ubuntu Colombia · FOREST.</figcaption>
 </figure>
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-05.webp"
      alt="Toma abierta de Sergio en tarima presentando la diapositiva sobre lo salvajes que se sentían los primeros días de OpenClaw"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Sobre los "primeros días salvajes" — cuando OpenClaw se siente como manejar algo poderoso, no un juguete con chaleco salvavidas.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-flisol-talk/memories-07.webp"
      alt="La diapositiva final de '¡Gracias!' con los datos de contacto de Sergio, con el ponente en tarima"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Gracias por recibirme, FLISOL. A seguir construyendo — en abierto.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>La diapositiva de los "primeros días salvajes", y el cierre de agradecimiento.</figcaption>
 </figure>
 
 ---
