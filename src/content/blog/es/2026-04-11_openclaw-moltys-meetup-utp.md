@@ -47,13 +47,13 @@ Si quieres la versión completa — la persona detrás de OpenClaw, las decision
 Las diapositivas y el tablero son la excusa; la gente es el punto. Lo que hace buena la mañana es compartir unas horas con una comunidad que de verdad tiene curiosidad por esto — comparando configuraciones, haciendo el tipo de preguntas que solo salen de quien ya intentó algo y se topó con una pared, e intercambiando los trucos pequeños que nunca llegan a la documentación.
 
 <figure>
-<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-02.webp"
-     alt="Un presentador con camiseta verde explicando mientras otra persona escribe en el diagrama de OpenClaw, con un asistente con diadema de langosta en primer plano"
-     width="960"
-     height="1280"
+<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-04.webp"
+     alt="El público sentado en el salón de la UTP siguiendo el taller, con la mesa de los presentadores a la derecha"
+     width="1200"
+     height="900"
      loading="lazy"
      class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
-<figcaption>Taller, no conferencia — el espacio va pasando de uno a otro según quién tenga algo para mostrar.</figcaption>
+<figcaption>El salón del que se trata toda la mañana — una comunidad que dice presente.</figcaption>
 </figure>
 
 Gracias a la UTP por recibirnos, a Cursor por apoyar el evento, y a todos los que llegan con sus proyectos y sus tenazas puestas. Mañanas como esta son la razón por la que las comunidades locales importan — sales con más de lo que entraste.
@@ -62,10 +62,10 @@ Gracias a la UTP por recibirnos, a Cursor por apoyar el evento, y a todos los qu
 
 <figure>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
-<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-04.webp"
-     alt="El público sentado en el salón de la UTP siguiendo el taller, con la mesa de los presentadores a la derecha"
-     width="1200"
-     height="900"
+<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-02.webp"
+     alt="Un presentador con camiseta verde explicando mientras otra persona escribe en el diagrama de OpenClaw, con un asistente con diadema de langosta en primer plano"
+     width="960"
+     height="1280"
      loading="lazy"
      style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-05.webp"

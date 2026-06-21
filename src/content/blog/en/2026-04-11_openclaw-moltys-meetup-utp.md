@@ -47,13 +47,13 @@ If you want the full version — the person behind OpenClaw, the technical decis
 The slides and the whiteboard are the excuse; the people are the point. What makes it a good morning is sharing a few hours with a community that's actually curious about this stuff — comparing setups, asking the kind of questions that only come from people who've already tried something and hit a wall, and trading the small tricks that never make it into documentation.
 
 <figure>
-<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-02.webp"
-     alt="A presenter in a green shirt explaining while another person writes on the OpenClaw diagram, with an attendee in a lobster headband in the foreground"
-     width="960"
-     height="1280"
+<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-04.webp"
+     alt="The audience seated in the UTP room watching the workshop, the speakers' table at the right"
+     width="1200"
+     height="900"
      loading="lazy"
      class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
-<figcaption>Workshop, not lecture — the floor keeps moving between whoever has something to show.</figcaption>
+<figcaption>The room the whole morning is really about — a community that shows up.</figcaption>
 </figure>
 
 Thanks to the UTP for hosting us, to Cursor for backing the event, and to everyone who shows up with their projects and their claws on. Mornings like this are why local communities matter — you walk out with more than you walked in with.
@@ -62,10 +62,10 @@ Thanks to the UTP for hosting us, to Cursor for backing the event, and to everyo
 
 <figure>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
-<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-04.webp"
-     alt="The audience seated in the UTP room watching the workshop, the speakers' table at the right"
-     width="1200"
-     height="900"
+<img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-02.webp"
+     alt="A presenter in a green shirt explaining while another person writes on the OpenClaw diagram, with an attendee in a lobster headband in the foreground"
+     width="960"
+     height="1280"
      loading="lazy"
      style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-05.webp"
