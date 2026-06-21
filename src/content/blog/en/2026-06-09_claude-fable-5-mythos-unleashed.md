@@ -2,6 +2,7 @@
 title: "Claude Fable 5: The Model They Wouldn't Release Is Now in Your Hands"
 description: "Anthropic said a model was too dangerous to release. Then they released it — same weights, new name, and a safety layer that changes the equation."
 pubDate: "2026-06-09"
+updatedDate: "2026-06-12"
 heroImage: "/images/blog/posts/claude-fable-5-mythos-unleashed/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
@@ -112,6 +113,27 @@ Let's keep building. Carefully, still — but the door is open.
 
 ---
 
+## Update — June 12, 2026: The US Government Pulls the Plug
+
+I wrote above that "the door is open." Three days after the public launch, the US government closed it.
+
+On June 12, 2026, Anthropic [disabled both Fable 5 and Mythos 5 for every customer](https://www.anthropic.com/news/fable-mythos-access) after receiving an export control directive from the US government. The order required suspending access for any foreign national — inside or outside the United States, including [Anthropic's own non-US employees](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/). Because Anthropic couldn't guarantee it could block every non-US national from the models, it switched both off entirely rather than try to segment access by nationality. Every other Claude model — Opus 4.8 included — stayed online.
+
+<figure>
+<img src="/images/blog/posts/claude-fable-5-mythos-unleashed/anthropic-suspension-tweet.webp" alt="Anthropic's post on X announcing that, following a US government export control directive to suspend all access to Fable 5 and Mythos 5 by foreign nationals, it must abruptly disable both models for all customers; access to all other Claude models is not affected" width="1186" height="1314" loading="lazy" />
+<figcaption>Anthropic's announcement on X, June 12, 2026 — <a href="https://x.com/AnthropicAI/status/2065597531644743999">@AnthropicAI</a>.</figcaption>
+</figure>
+
+This is, as far as anyone can tell, [the first time the US has used export control authority to pull a specific frontier AI model](https://natlawreview.com/article/ai-company-anthropic-suspends-access-claude-fable-5-claude-mythos-5-following-us) on national security grounds. The reported trigger was a foreign company with access to Mythos and [suspected ties that raised national security flags](https://www.business-standard.com/technology/tech-news/us-anthropic-claude-fable-5-mythos-access-restricted-ai-export-controls-126061400194_1.html). The government's stated concern was a possible way to [bypass — "jailbreak" — Fable 5's cyber safeguards](https://www.anthropic.com/news/fable-mythos-access): the exact safety layer this whole post is about. Anthropic says it reviewed the demonstration and found a narrow, non-universal trick that surfaced a few already-known, minor vulnerabilities — and disagreed that a finding that narrow justifies recalling a model already deployed to hundreds of millions of people.
+
+The irony is hard to miss. The whole argument of this post is that the harness — not the weights — is what makes a dangerous model safe to ship. The government's move is, in its own way, a vote of no confidence in exactly that harness. The leash held against a thousand hours of bounty-funded jailbreak attempts; it took a government directive, not a broken filter, to take the model off the table.
+
+As of this writing, Anthropic [says it considers this a misunderstanding and is working to restore access](https://www.anthropic.com/news/fable-mythos-access), and an executive told press in Seoul the company is [confident the models will return "in the coming days."](https://www.koreajoongangdaily.com/business/anthropic-confident-of-reenabling-mythos-fable-5-access-in-coming-days-executive/12727522) Whether they come back unchanged, with a tighter harness, or under new access rules is the part nobody can answer yet. I'll update this post again when there's something solid to report.
+
+The door was open for three days. What happens next is the real story.
+
+---
+
 ## Resources
 
 - [Claude Fable 5 and Claude Mythos 5 — Anthropic](https://www.anthropic.com/news/claude-fable-5-mythos-5) — Official launch announcement with benchmarks, safeguards, and availability details
@@ -121,3 +143,6 @@ Let's keep building. Carefully, still — but the door is open.
 - [Anthropic's new model is Mythos on a leash — CyberScoop](https://cyberscoop.com/anthropic-claude-fable-5-release-mythos-guardrails/) — Security analysis of the safeguard architecture
 - [Claude Fable 5 & Mythos 5: The Frontier, Split in Two — Digital Applied](https://www.digitalapplied.com/blog/claude-fable-5-mythos-5-release-benchmarks-2026) — Detailed benchmark comparison across frontier models
 - [Claude API Models Overview — Anthropic Docs](https://platform.claude.com/docs/en/about-claude/models/overview) — Technical specs, pricing, and API identifiers
+- [Statement on the US government directive to suspend Fable 5 and Mythos 5 access — Anthropic](https://www.anthropic.com/news/fable-mythos-access) — June 12, 2026 statement on the suspension and Anthropic's response
+- [Anthropic Suspends Access to Fable 5 and Mythos 5 Following US Export Control Directive — National Law Review](https://natlawreview.com/article/ai-company-anthropic-suspends-access-claude-fable-5-claude-mythos-5-following-us) — Legal analysis of the first export-control action against a specific frontier model
+- [Anthropic disables Fable and Mythos after US bars foreign access — Fortune](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/) — Reporting on the directive, who is affected, and the national-security rationale

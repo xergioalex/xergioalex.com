@@ -2,6 +2,7 @@
 title: "Claude Fable 5: El modelo que no querían liberar ahora está en tus manos"
 description: "Anthropic dijo que era demasiado peligroso para liberarlo. Luego lo liberaron — mismos pesos, otro nombre y una capa de seguridad que cambia la ecuación."
 pubDate: "2026-06-09"
+updatedDate: "2026-06-12"
 heroImage: "/images/blog/posts/claude-fable-5-mythos-unleashed/hero-es.webp"
 heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
@@ -112,6 +113,27 @@ A seguir construyendo. Con cuidado, todavía — pero la puerta ya está abierta
 
 ---
 
+## Actualización — 12 de junio de 2026: el gobierno de Estados Unidos baja el interruptor
+
+Escribí arriba que "la puerta ya está abierta". Tres días después del lanzamiento público, el gobierno de Estados Unidos la cerró.
+
+El 12 de junio de 2026, Anthropic [desactivó Fable 5 y Mythos 5 para todos los clientes](https://www.anthropic.com/news/fable-mythos-access) tras recibir una directiva de control de exportaciones del gobierno de Estados Unidos. La orden exigía suspender el acceso a cualquier persona extranjera — dentro o fuera de Estados Unidos, incluidos [los propios empleados no estadounidenses de Anthropic](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/). Como Anthropic no podía garantizar que lograra bloquear a toda persona no estadounidense, apagó ambos modelos por completo en lugar de intentar segmentar el acceso por nacionalidad. Todos los demás modelos de Claude — incluido Opus 4.8 — siguieron disponibles.
+
+<figure>
+<img src="/images/blog/posts/claude-fable-5-mythos-unleashed/anthropic-suspension-tweet.webp" alt="Publicación de Anthropic en X que anuncia que, tras una directiva de control de exportaciones del gobierno de Estados Unidos para suspender todo acceso a Fable 5 y Mythos 5 por parte de personas extranjeras, debe desactivar abruptamente ambos modelos para todos los clientes; el acceso a los demás modelos de Claude no se ve afectado" width="1186" height="1314" loading="lazy" />
+<figcaption>El anuncio de Anthropic en X, 12 de junio de 2026 — <a href="https://x.com/AnthropicAI/status/2065597531644743999">@AnthropicAI</a>.</figcaption>
+</figure>
+
+Esta es, hasta donde se sabe, [la primera vez que Estados Unidos usa su autoridad de control de exportaciones para retirar un modelo de IA de frontera específico](https://natlawreview.com/article/ai-company-anthropic-suspends-access-claude-fable-5-claude-mythos-5-following-us) por motivos de seguridad nacional. El detonante reportado fue una empresa extranjera con acceso a Mythos y [sospechas que encendieron las alarmas de seguridad nacional](https://www.business-standard.com/technology/tech-news/us-anthropic-claude-fable-5-mythos-access-restricted-ai-export-controls-126061400194_1.html). La preocupación declarada del gobierno era una posible forma de [saltarse — "jailbreak" — las salvaguardas de ciberseguridad de Fable 5](https://www.anthropic.com/news/fable-mythos-access): justo la capa de seguridad de la que trata todo este post. Anthropic dice que revisó la demostración y encontró un truco estrecho y no universal que sacaba a la luz unas pocas vulnerabilidades menores ya conocidas — y no estuvo de acuerdo con que un hallazgo tan acotado justifique retirar un modelo ya desplegado a cientos de millones de personas.
+
+La ironía es difícil de ignorar. Todo el argumento de este post es que el harness — no los pesos — es lo que hace que un modelo peligroso sea seguro para lanzar. La movida del gobierno es, a su manera, un voto de no confianza en exactamente ese harness. La correa aguantó mil horas de intentos de jailbreak financiados con recompensas; hizo falta una directiva del gobierno, no un filtro roto, para sacar el modelo de la mesa.
+
+Al momento de escribir esto, Anthropic [dice que lo considera un malentendido y que está trabajando para restaurar el acceso](https://www.anthropic.com/news/fable-mythos-access), y un ejecutivo le dijo a la prensa en Seúl que la compañía está [segura de que los modelos volverán "en los próximos días".](https://www.koreajoongangdaily.com/business/anthropic-confident-of-reenabling-mythos-fable-5-access-in-coming-days-executive/12727522) Si vuelven sin cambios, con un harness más estricto, o bajo nuevas reglas de acceso es la parte que nadie puede responder todavía. Actualizaré este post de nuevo cuando haya algo sólido que reportar.
+
+La puerta estuvo abierta tres días. Lo que pase ahora es la verdadera historia.
+
+---
+
 ## Recursos
 
 - [Claude Fable 5 and Claude Mythos 5 — Anthropic](https://www.anthropic.com/news/claude-fable-5-mythos-5) — Anuncio oficial de lanzamiento con benchmarks, salvaguardas y detalles de disponibilidad
@@ -121,3 +143,6 @@ A seguir construyendo. Con cuidado, todavía — pero la puerta ya está abierta
 - [Anthropic's new model is Mythos on a leash — CyberScoop](https://cyberscoop.com/anthropic-claude-fable-5-release-mythos-guardrails/) — Análisis de seguridad de la arquitectura de salvaguardas
 - [Claude Fable 5 & Mythos 5: The Frontier, Split in Two — Digital Applied](https://www.digitalapplied.com/blog/claude-fable-5-mythos-5-release-benchmarks-2026) — Comparación detallada de benchmarks entre modelos de frontera
 - [Claude API Models Overview — Anthropic Docs](https://platform.claude.com/docs/en/about-claude/models/overview) — Especificaciones técnicas, precios e identificadores de API
+- [Statement on the US government directive to suspend Fable 5 and Mythos 5 access — Anthropic](https://www.anthropic.com/news/fable-mythos-access) — Comunicado del 12 de junio de 2026 sobre la suspensión y la respuesta de Anthropic
+- [Anthropic Suspends Access to Fable 5 and Mythos 5 Following US Export Control Directive — National Law Review](https://natlawreview.com/article/ai-company-anthropic-suspends-access-claude-fable-5-claude-mythos-5-following-us) — Análisis legal de la primera acción de control de exportaciones contra un modelo de frontera específico
+- [Anthropic disables Fable and Mythos after US bars foreign access — Fortune](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/) — Reporte sobre la directiva, a quién afecta y la justificación de seguridad nacional

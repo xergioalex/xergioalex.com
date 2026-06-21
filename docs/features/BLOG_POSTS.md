@@ -24,6 +24,26 @@ For AI agents and assistants, new blog post creation in `src/content/blog/` must
 - **Slugs MUST always be in English**, even for Spanish posts — both `en/` and `es/` versions share the same English slug
 - The date prefix is **stripped from URLs** (clean slugs: `/blog/my-post/`)
 
+> ### ⚠️ MANDATORY: the date in the filename MUST match `pubDate`
+>
+> The `YYYY-MM-DD` prefix in the filename and the `pubDate` in the frontmatter are **one fact in two places**. They must always be identical.
+>
+> **When you change a post's date — rescheduling, publishing, correcting — you MUST update BOTH:**
+>
+> 1. The `pubDate` in the frontmatter, AND
+> 2. The `YYYY-MM-DD` prefix in the filename (use `git mv` so history is preserved), in **both** `en/` and `es/`.
+>
+> Changing only the frontmatter (or only the filename) is a defect, not a partial fix. A mismatch is never acceptable — even though URLs ignore the prefix, the filename is the human- and agent-facing record of when the post publishes, and a drifted prefix silently misleads everyone who lists the directory.
+>
+> **Checklist when rescheduling a post to date `D`:**
+> - [ ] `pubDate: "D"` in `en/` frontmatter
+> - [ ] `pubDate: "D"` in `es/` frontmatter
+> - [ ] `git mv` the `en/` file so its prefix is `D`
+> - [ ] `git mv` the `es/` file so its prefix is `D`
+> - [ ] Confirm: `ls src/content/blog/*/D_<slug>.md` returns both files and no stale-dated copies remain
+>
+> Scheduling for the future is just a future `pubDate` (+ `draft: false`); the post stays hidden in production until that date in `America/Bogota`. See [Blog Content Lifecycle](BLOG_CONTENT_LIFECYCLE.md).
+
 **Examples:**
 
 | Title | pubDate | Filename |
@@ -119,7 +139,7 @@ schema: z.object({
 | `title` | Yes | Post title. Translated between languages. |
 | `description` | Yes | 1-2 sentence excerpt. **130-160 chars required** for optimal SERP display. Used in meta tags and Open Graph. Both EN and ES must independently meet this range. |
 | `pubDate` | Yes | Publication date. Accepts date-only (`'2026-01-31'`) or datetime (`'2026-01-31T14:00:00'`). Date-only defaults to midnight. |
-| `updatedDate` | No | Last significant update. Displayed with "Last updated on" label. |
+| `updatedDate` | No | Date of the last significant update. Renders an **"Updated {date}" / "Actualizado {date}"** badge next to the publish date and reading time in the post header. See [Marking a Post as Updated](#marking-a-post-as-updated). |
 | `heroImage` | No | Path from `public/`. Convention: `/images/blog/posts/{slug}/hero.{ext}`. ES posts can reference a different image (e.g., `hero-es.{ext}`) when the hero contains localized text. See [Multilingual Hero Images](#multilingual-hero-images). |
 | `heroLayout` | No | How the hero image is displayed. Default: `'banner'`. See [Hero Layouts](#hero-layouts). |
 | `tags` | No | Array of tag identifiers. Must match files in `src/content/tags/`. |
@@ -161,6 +181,27 @@ When creating the translated version:
 - Do NOT translate code blocks, CLI commands, or technical identifiers
 - **Direct quotes in English:** When a Spanish post includes a direct quote originally spoken/written in English, keep the original English text in italics and add a Spanish translation in parentheses immediately after. Example: *"Express my will to my agents."* ("Expresar mi voluntad a mis agentes.") — This preserves the original voice while ensuring readability for Spanish-speaking audiences.
 - Maintain the same markdown structure (headings, lists, emphasis)
+
+## Marking a Post as Updated
+
+When a post is revised after publication — typically to add a follow-up section because new facts emerged — surface that with the `updatedDate` frontmatter field.
+
+**Agent trigger phrase (IMPORTANT):** When the author asks to *"mark/note that the blog post was updated on a specific date"* (or in Spanish, *"pon que se actualizó el blog post en \<fecha\>"* / *"que diga que se actualizó el \<fecha\>"*), they mean **set the `updatedDate` frontmatter field to that date** — not add prose. This renders an **"Updated {date}"** (EN) / **"Actualizado {date}"** (ES) badge next to the publish date and reading time in the post header (`BlogPostHeader.astro`).
+
+**Rules:**
+
+- `updatedDate` uses the same format as `pubDate` (`'YYYY-MM-DD'`).
+- The date is the day of the update/event the author specifies — not necessarily today.
+- **Set it in BOTH the EN and ES versions** (same value) — this is one of the few frontmatter fields kept identical across locales (see [Translation Rules](#translation-rules)).
+- When the update adds content to the body, pair the badge with a clearly marked section at the end, e.g. `## Update — {date}: {headline}` / `## Actualización — {date}: {titular}`, ideally before the Resources section.
+- `updatedDate` must be on or after `pubDate`.
+
+**Example:**
+
+```yaml
+pubDate: "2026-06-09"
+updatedDate: "2026-06-12"   # renders "Updated Jun 12, 2026" / "Actualizado 12 jun 2026"
+```
 
 ## Hero Layouts
 

@@ -88,6 +88,8 @@ This skill is the mandatory workflow for creating new blog posts in this reposit
 
 **Frontmatter fields:** `title` (required), `description` (required), `pubDate` (required), `updatedDate`, `heroImage`, `heroLayout`, `tags`, `keywords`, `series`, `seriesOrder`
 
+**`updatedDate`:** When the author asks to "mark that the post was updated on \<date\>" (ES: "pon que se actualizó el blog post en \<fecha\>"), set `updatedDate: '<date>'` — it renders an "Updated/Actualizado {date}" badge in the header. Set the same value in BOTH locales; must be on/after `pubDate`. See [BLOG_POSTS.md — Marking a Post as Updated](../../../docs/features/BLOG_POSTS.md#marking-a-post-as-updated).
+
 **heroLayout:** `banner` for landscape, `side-by-side` for square, `minimal` for secondary, `none` for text-only
 
 **Image path:** `/images/blog/posts/{slug}/hero.{ext}` (ES variant: `hero-es.{ext}` when image has localized text)
