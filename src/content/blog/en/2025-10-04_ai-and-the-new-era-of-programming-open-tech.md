@@ -4,7 +4,7 @@ description: "From my Vibe Coding e IA workshop at Open Tech Hackathon — Curso
 pubDate: "2025-10-04"
 heroImage: "/images/blog/posts/ai-and-the-new-era-of-programming-open-tech/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "ai"]
+tags: ["talks", "tech", "ai", "ai-agents"]
 keywords: ["vibe coding AI programming", "Cursor vs Codex vs Claude Code", "AI code agent comparison", "developer as conductor orchestrator", "Open Tech Hackathon AI workshop", "AI coding tools productivity", "DailyBot AI features shipping"]
 ---
 

@@ -4,7 +4,7 @@ description: "Why Astro won me over — Microsoft and Firebase cases, measurable
 pubDate: "2024-08-01"
 heroImage: "/images/blog/posts/astro-in-action/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "web-development", "javascript"]
+tags: ["talks", "tech", "web-development", "javascript", "astro"]
 keywords: ["Astro in Action talk", "Astro Microsoft Firebase case study", "Pereira Tech Talks Astro", "Astro framework performance", "Astro islands architecture", "Astro zero JavaScript default", "Astro vs Next.js comparison"]
 ---
 
