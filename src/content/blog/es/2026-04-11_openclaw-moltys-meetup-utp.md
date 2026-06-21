@@ -17,7 +17,8 @@ Un meetup Moltys no es una charla de conferencia donde una persona presenta y el
      alt="Una mano sosteniendo una diadema con tenazas rojas de langosta, la mascota Moltys, con el público sentado y desenfocado detrás"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>La langosta es la mascota de OpenClaw — así que el salón llega con tenazas. El uniforme no oficial de un meetup Moltys.</figcaption>
 </figure>
 
@@ -34,7 +35,8 @@ Para la arquitectura me voy al tablero, porque es más fácil dibujarla que desc
      alt="Dos presentadores en un tablero con un diagrama de arquitectura de OpenClaw dibujado a mano: un agente conectado a OpenClaw, un gateway que se abre hacia Telegram, WhatsApp y Slack, y una caja de herramientas con APIs, skills, herramientas MCP y shells"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>La arquitectura en un tablero: agente → OpenClaw → gateway → Telegram/WhatsApp/Slack, con las herramientas (APIs, skills, MCP, shells) al lado.</figcaption>
 </figure>
 
@@ -49,7 +51,8 @@ Las diapositivas y el tablero son la excusa; la gente es el punto. Lo que hace b
      alt="Un presentador con camiseta verde explicando mientras otra persona escribe en el diagrama de OpenClaw, con un asistente con diadema de langosta en primer plano"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Taller, no conferencia — el espacio va pasando de uno a otro según quién tenga algo para mostrar.</figcaption>
 </figure>
 
@@ -58,39 +61,39 @@ Gracias a la UTP por recibirnos, a Cursor por apoyar el evento, y a todos los qu
 ## Memorias del evento
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-04.webp"
      alt="El público sentado en el salón de la UTP siguiendo el taller, con la mesa de los presentadores a la derecha"
      width="1200"
      height="900"
-     loading="lazy" />
-<figcaption>Un salón lleno en la UTP, atento.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-05.webp"
      alt="Asistentes sentados, varios con diademas de tenazas de langosta, con la ciudad a través de las ventanas"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Con las tenazas puestas y toda la atención arriba — la comunidad en su hábitat natural.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Un salón lleno en la UTP — con las tenazas puestas y toda la atención arriba.</figcaption>
 </figure>
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-06.webp"
      alt="Detrás de cámaras del montaje audiovisual: dos portátiles y una cámara en trípode, con la diadema de langosta sobre la mesa"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Detrás de cámaras — el equipo que mantiene viva la transmisión y la grabación.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-07.webp"
      alt="Foto grupal de los asistentes y presentadores del meetup Moltys en el salón de la UTP"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>El combo Moltys. Gracias por venir — repetimos.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Detrás de cámaras, y todo el combo Moltys — gracias por venir.</figcaption>
 </figure>
 
 Sigamos construyendo.

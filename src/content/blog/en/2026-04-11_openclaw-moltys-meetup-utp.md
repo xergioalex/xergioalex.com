@@ -17,7 +17,8 @@ A Moltys meetup isn't a conference talk where one person presents and everyone e
      alt="A hand holding up a red lobster-claw headband, the Moltys mascot, with the seated audience blurred behind"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>The lobster is OpenClaw's mascot — so the room comes with claws. The unofficial uniform of a Moltys meetup.</figcaption>
 </figure>
 
@@ -34,7 +35,8 @@ For the architecture I go to the whiteboard, because it's easier to draw than to
      alt="Two presenters at a whiteboard with a hand-drawn OpenClaw architecture diagram: an agent connected to OpenClaw, a gateway fanning out to Telegram, WhatsApp and Slack, and a tools box listing APIs, skills, MCP tools and shells"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>The architecture on a whiteboard: agent → OpenClaw → gateway → Telegram/WhatsApp/Slack, with tools (APIs, skills, MCP, shells) on the side.</figcaption>
 </figure>
 
@@ -49,7 +51,8 @@ The slides and the whiteboard are the excuse; the people are the point. What mak
      alt="A presenter in a green shirt explaining while another person writes on the OpenClaw diagram, with an attendee in a lobster headband in the foreground"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Workshop, not lecture — the floor keeps moving between whoever has something to show.</figcaption>
 </figure>
 
@@ -58,39 +61,39 @@ Thanks to the UTP for hosting us, to Cursor for backing the event, and to everyo
 ## Memories from the event
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-04.webp"
      alt="The audience seated in the UTP room watching the workshop, the speakers' table at the right"
      width="1200"
      height="900"
-     loading="lazy" />
-<figcaption>A full room at the UTP, following along.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-05.webp"
      alt="Attendees seated, several wearing lobster-claw headbands, with the city skyline visible through the windows"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Claws on, attention up — the community in its natural habitat.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>A full room at the UTP — claws on, attention up.</figcaption>
 </figure>
 
 <figure>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;align-items:start;">
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-06.webp"
      alt="Behind-the-scenes of the live A/V setup: two laptops and a camera on a tripod, with the lobster headband resting on the desk"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>Behind the scenes — the crew keeping the stream and the recording alive.</figcaption>
-</figure>
-
-<figure>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-07.webp"
      alt="Group photo of the Moltys meetup attendees and speakers in the UTP room"
      width="960"
      height="1280"
-     loading="lazy" />
-<figcaption>The Moltys crew. Thanks for coming out — let's do it again.</figcaption>
+     loading="lazy"
+     style="width:100%;height:auto;margin:0;border-radius:8px;" />
+</div>
+<figcaption>Behind the scenes, and the whole Moltys crew — thanks for coming out.</figcaption>
 </figure>
 
 Let's keep building.
