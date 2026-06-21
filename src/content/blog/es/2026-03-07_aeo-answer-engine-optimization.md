@@ -4,7 +4,7 @@ description: "Los agentes de IA son ahora algunos de los visitantes más importa
 pubDate: "2026-03-07T14:00:00"
 heroImage: "/images/blog/posts/aeo-answer-engine-optimization/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai", "aeo"]
 keywords: ["guía answer engine optimization AEO", "optimizar sitio web para motores de búsqueda IA", "llms.txt datos estructurados AEO", "cómo los motores de búsqueda IA citan fuentes", "AEO vs SEO guía práctica", "datos estructurados JSON-LD visibilidad IA", "markdown para agentes IA endpoints", "rastrear tráfico bots IA analítica servidor"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 1

@@ -4,7 +4,7 @@ description: "La negociación de contenido existe desde HTTP/1.1. Ahora tiene un
 pubDate: "2026-03-09T14:00:00"
 heroImage: "/images/blog/posts/aeo-markdown-for-agents/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai", "aeo"]
 keywords: ["implementación markdown for agents", "negociación de contenido bots IA", "header Accept text/markdown", "Cloudflare markdown for agents", "contenido web legible por IA", "servir markdown a agentes IA"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 3

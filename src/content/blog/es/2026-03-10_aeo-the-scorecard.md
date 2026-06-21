@@ -4,7 +4,7 @@ description: "La medición AEO está años por detrás de la optimización AEO. 
 pubDate: "2026-03-10T14:00:00"
 heroImage: "/images/blog/posts/aeo-the-scorecard/hero.webp"
 heroLayout: "side-by-side"
-tags: ["tech", "web-development", "ai"]
+tags: ["tech", "web-development", "ai", "aeo"]
 keywords: ["auditoría AEO metodología checklist", "rastrear tráfico bots IA analíticas", "informe rendimiento IA Bing", "medir citas búsqueda IA", "estadísticas crecimiento tráfico referido IA"]
 series: "aeo-from-invisible-to-cited"
 seriesOrder: 4
