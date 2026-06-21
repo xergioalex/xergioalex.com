@@ -1,6 +1,6 @@
 ---
 title: "Abril Mobile: The Talk Where I Finally Picked a Mobile Path"
-description: "My Abril Mobile talk at Universidad Católica de Pereira: how a backend dev chose a path to learn mobile in 2026 — and why I picked Kotlin Multiplatform."
+description: "My Abril Mobile talk at Universidad Católica de Pereira: how a full-stack dev chose a path to learn mobile in 2026 — and why I picked Kotlin Multiplatform."
 pubDate: "2026-04-18"
 heroImage: "/images/blog/posts/mobile-dev-meetup-pereira/hero-en.webp"
 heroLayout: "side-by-side"
@@ -25,7 +25,7 @@ That's the angle I want to take here. Not "the expert tour of the mobile ecosyst
 
 ## Why this talk, from someone who always said "someday"
 
-That barrier was never really about interest — it was logistics. Back in university the official IDE was Eclipse with the ADT plugin, and my humble laptop simply couldn't run it: it wouldn't start, or it would start and swallow all the memory in a compile loop that felt eternal. Years later I tried again with hybrid stacks like Cordova and Ionic, and hit a different wall — too many seams, and a result that never felt truly native. So each time I'd retreat to the place I knew: servers, APIs, and infrastructure.
+And it was never a one-off. Years later I came back to it with hybrid stacks like Cordova and Ionic — better hardware, newer tools — and hit a different wall: too many seams, and a result that never felt truly native. Each attempt ended the same way, with me back in the place I knew: servers, APIs, and infrastructure.
 
 What changed isn't that mobile got easier overnight. It's that I finally decided to treat "how do I learn this?" as a real engineering question — map the terrain, run the explorations, and commit to a path instead of bouncing off the entry barrier one more time. That decision is the spine of the talk. I lay out the full exploration in my companion write-up, [Mobile Development in 2026: State of the Art and Where to Start Today](/blog/mobile-development-landscape-2026/), and the slides for it live here: [the mobile landscape deck](/slides/mobile-landscape-2026/).
 
@@ -35,7 +35,7 @@ The deck walks through the whole ecosystem, so I'll keep this part fast. The mob
 
 Then the quick discards — quick because I've already lived several of them: native-only loses cross-platform reach, Ionic and Capacitor I've hit the ceiling on before, .NET MAUI is a world I'm not in, PWAs can't reach deep enough into the device, and React Native is solid but keeps its roots in JavaScript. What's left after that honest cut is two names: **Flutter** and **Kotlin Multiplatform**.
 
-I won't re-explain every framework here — that's exactly what the [deck](/slides/mobile-landscape-2026/) and the [companion post](/blog/mobile-development-landscape-2026/) are for. This is about the choice, not the catalog.
+But this is about the choice, not the catalog.
 
 ## Two philosophies, one goal
 

@@ -25,7 +25,7 @@ Ese es el ángulo que quiero tomar acá. No "el tour del experto por el ecosiste
 
 ## Por qué esta charla, viniendo de alguien que siempre dijo "algún día"
 
-Esa barrera nunca fue de interés — fue de logística. En la universidad el IDE oficial era Eclipse con el plugin ADT, y mi humilde laptop de ese entonces simplemente no lo corría: no arrancaba, o arrancaba y se comía toda la memoria en un loop de compilación que parecía eterno. Años después lo volví a intentar con stacks híbridos como Cordova e Ionic, y choqué con otro muro — demasiadas costuras y un resultado que nunca se sentía realmente nativo. Así que cada vez me devolvía al lugar que conocía: servidores, APIs e infraestructura.
+Y nunca fue algo de una sola vez. Años después volví a intentarlo con stacks híbridos como Cordova e Ionic — mejor hardware, herramientas más nuevas — y choqué con otro muro: demasiadas costuras y un resultado que nunca se sentía realmente nativo. Cada intento terminaba igual, conmigo de vuelta en el lugar que conocía: servidores, APIs e infraestructura.
 
 Lo que cambió no es que el móvil se volviera fácil de un día para otro. Es que por fin decidí tratar el "¿cómo aprendo esto?" como una pregunta de ingeniería en serio — mapear el terreno, hacer las exploraciones y comprometerme con un camino en vez de rebotar una vez más contra la barrera de entrada. Esa decisión es la columna vertebral de la charla. Toda la exploración la dejo en mi artículo complementario, [Desarrollo móvil en 2026: estado del arte y por dónde empezar hoy](/es/blog/mobile-development-landscape-2026/), y las diapositivas están acá: [el deck del panorama móvil](/es/slides/mobile-landscape-2026/).
 
@@ -35,7 +35,7 @@ El deck recorre todo el ecosistema, así que esta parte la paso rápido. El mund
 
 Después, los descartes rápidos — rápidos porque ya he vivido varios: solo nativo pierde el alcance cross-platform, Ionic y Capacitor ya me mostraron su techo, .NET MAUI es un mundo en el que no estoy, las PWA no llegan lo suficientemente hondo en el dispositivo, y React Native es sólido pero mantiene sus raíces en JavaScript. Lo que queda después de ese corte honesto son dos nombres: **Flutter** y **Kotlin Multiplatform**.
 
-No voy a reexplicar cada framework aquí — para eso están justamente el [deck](/es/slides/mobile-landscape-2026/) y el [artículo complementario](/es/blog/mobile-development-landscape-2026/). Esto es sobre la decisión, no sobre el catálogo.
+Pero esto es sobre la decisión, no sobre el catálogo.
 
 ## Dos filosofías, un mismo objetivo
 
