@@ -4,7 +4,7 @@ description: "Hands-on Docker at Rocka Labs—from containers and images to Dock
 pubDate: "2019-03-16"
 heroImage: "/images/blog/posts/docker-introductory-workshop/hero.webp"
 heroLayout: "side-by-side"
-tags: ["talks", "tech", "devops"]
+tags: ["talks", "tech", "devops", "docker"]
 keywords: ["Docker workshop hands-on", "Dockerfile volumes networks tutorial", "Docker Compose beginners guide", "Docker images containers explained", "Rocka Labs Docker workshop", "Docker from scratch tutorial", "container orchestration Docker Compose"]
 ---
 
