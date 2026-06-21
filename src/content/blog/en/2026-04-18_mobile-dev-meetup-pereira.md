@@ -3,7 +3,7 @@ title: "Abril Mobile: The Talk Where I Finally Picked a Mobile Path"
 description: "My Abril Mobile talk at Universidad Católica de Pereira: how a backend dev chose a path to learn mobile in 2026 — and why I picked Kotlin Multiplatform."
 pubDate: "2026-04-18"
 heroImage: "/images/blog/posts/mobile-dev-meetup-pereira/hero-en.webp"
-heroLayout: "banner"
+heroLayout: "side-by-side"
 tags: ["tech", "talks", "mobile", "kotlin", "flutter"]
 keywords: ["learn mobile development 2026", "Kotlin Multiplatform vs Flutter", "Pereira Tech Talks mobile", "mobile development talk", "Abril Mobile", "Kotlin Multiplatform for beginners", "mobile development with AI agents"]
 ---
