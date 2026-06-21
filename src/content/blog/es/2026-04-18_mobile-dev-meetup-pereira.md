@@ -1,6 +1,6 @@
 ---
 title: "Abril Mobile: la charla donde por fin elegí un camino móvil"
-description: "Mi charla Abril Mobile en la Universidad Católica de Pereira: cómo un dev backend eligió un camino para aprender móvil en 2026 — y por qué terminé en Kotlin Multiplatform."
+description: "Mi charla Abril Mobile en la Universidad Católica de Pereira: cómo elegí un camino para aprender móvil en 2026 y por qué terminé en Kotlin Multiplatform."
 pubDate: "2026-04-18"
 heroImage: "/images/blog/posts/mobile-dev-meetup-pereira/hero-es.webp"
 heroLayout: "banner"

@@ -1,6 +1,6 @@
 ---
 title: "Abril Mobile: The Talk Where I Finally Picked a Mobile Path"
-description: "My Abril Mobile talk at Universidad Católica de Pereira: how a backend developer chose a path to learn mobile in 2026 — and why I landed on Kotlin Multiplatform."
+description: "My Abril Mobile talk at Universidad Católica de Pereira: how a backend dev chose a path to learn mobile in 2026 — and why I picked Kotlin Multiplatform."
 pubDate: "2026-04-18"
 heroImage: "/images/blog/posts/mobile-dev-meetup-pereira/hero-en.webp"
 heroLayout: "banner"
