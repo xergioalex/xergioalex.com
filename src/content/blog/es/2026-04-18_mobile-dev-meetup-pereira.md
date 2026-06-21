@@ -42,7 +42,8 @@ No voy a reexplicar cada framework aquí — para eso están justamente el [deck
      alt="Sergio en tarima señalando una diapositiva titulada 'Dos filosofías, un mismo camino' que compara Flutter y Kotlin Multiplatform"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>La diapositiva sobre la que gira toda la charla — Flutter y Kotlin Multiplatform, dos filosofías apuntando al mismo objetivo.</figcaption>
 </figure>
 
@@ -67,7 +68,8 @@ No fui el único speaker, y eso es lo que hizo que la noche se sintiera completa
      alt="Juan Campuzano en tarima presentando su charla 'Generative UI - Flutter' en Abril Mobile"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Juan Campuzano del lado de Flutter — su charla "Generative UI - Flutter" convirtió la noche en una conversación de dos frameworks.</figcaption>
 </figure>
 

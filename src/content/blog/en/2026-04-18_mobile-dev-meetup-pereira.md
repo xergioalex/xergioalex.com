@@ -42,7 +42,8 @@ I won't re-explain every framework here — that's exactly what the [deck](/slid
      alt="Sergio on stage pointing at a slide titled 'Dos filosofías, un mismo camino' comparing Flutter and Kotlin Multiplatform"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>The slide the whole talk pivots on — Flutter and Kotlin Multiplatform, two philosophies aiming at the same goal.</figcaption>
 </figure>
 
@@ -67,7 +68,8 @@ I wasn't the only speaker, and that's what made the evening feel complete. **Jua
      alt="Juan Campuzano on stage presenting his 'Generative UI - Flutter' talk at Abril Mobile"
      width="960"
      height="1280"
-     loading="lazy" />
+     loading="lazy"
+     class="block mx-auto h-auto w-full rounded-lg md:w-1/2" />
 <figcaption>Juan Campuzano on the Flutter side — his "Generative UI - Flutter" talk made the night a two-framework conversation.</figcaption>
 </figure>
 
