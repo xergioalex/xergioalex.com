@@ -11,7 +11,7 @@ syntaxHighlight: true
 math: false
 eventName: "Aprendiendo desarrollo móvil — Deck companion de la serie"
 eventDate: 2026-04-26
-relatedPost: mobile-development-landscape-2026
+relatedPost: mobile-dev-meetup-pereira
 ---
 
 <!-- ==================== Portada ==================== -->
