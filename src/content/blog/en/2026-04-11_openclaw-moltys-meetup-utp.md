@@ -8,9 +8,9 @@ tags: ["talks", "tech", "ai-agents", "openclaw"]
 keywords: ["OpenClaw meetup", "Moltys community", "OpenClaw workshop UTP Pereira", "Cursor OpenClaw event", "OpenClaw use cases architecture", "OpenClaw community Colombia"]
 ---
 
-The easiest way to spot a **Moltys meetup** is the room full of people wearing little red lobster claws on their heads. It's a gathering of the OpenClaw community, and this one is at the Universidad Tecnológica de Pereira, with the support of [Cursor](https://cursor.com), with me as one of the people leading the workshop. If you know OpenClaw, the lobster headbands make sense; if you don't, that's the first thing worth explaining.
+The easiest way to spot a **Moltys meetup** is the room full of people wearing little red lobster claws on their heads. It's a gathering of the OpenClaw community, and this one is at the Universidad Tecnológica de Pereira, with the support of [Cursor](https://cursor.com). I got the chance to help lead the workshop, sharing my own experience and what I've been learning about OpenClaw. If you know the project, the lobster headbands make sense; if you don't, that's the first thing worth explaining.
 
-A Moltys meetup isn't a conference talk where one person presents and everyone else listens. The idea is the opposite: open the floor and let the community show what they're actually building with OpenClaw. People come to share their own setups, their experiments, the weird and useful things they've wired up — and the morning turns into a back-and-forth instead of a lecture. That format is the part I like most. You learn far more from ten people's real projects than from one polished slide deck.
+A Moltys meetup — a room where everyone's wearing lobster claws on their heads — is, above all, a gathering of enthusiasts. The idea is to open the floor so the community can show what they're actually building with OpenClaw. People come to share their own setups, their experiments, the weird and useful things they've wired up — and the morning turns into a back-and-forth between everyone. That format is the part I like most: you learn far more from ten people's real projects than from the best slide deck.
 
 <figure>
 <img src="/images/blog/posts/openclaw-moltys-meetup-utp/memories-03.webp"
