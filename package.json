@@ -9,7 +9,7 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "1.0.52",
+  "version": "1.0.53",
   "packageManager": "pnpm@11.1.2",
   "engines": {
     "node": ">=24.15.0"
