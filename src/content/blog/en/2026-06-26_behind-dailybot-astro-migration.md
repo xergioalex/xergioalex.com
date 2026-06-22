@@ -1,7 +1,7 @@
 ---
 title: "Behind dailybot.com's Astro migration: the engineer's view"
 description: "I led dailybot.com's migration from a visual-editor CMS to Astro. The team's story is on the dailybot.com blog. Here's the engineering underneath it."
-pubDate: "2026-04-20"
+pubDate: "2026-06-26"
 heroLayout: "none"
 tags: ["portfolio", "tech", "web-development", "dailybot", "astro"]
 keywords:
@@ -15,11 +15,11 @@ keywords:
 draft: true
 ---
 
-Over the last six weeks I led the migration of [dailybot.com](https://www.dailybot.com) from a visual-editor CMS to [Astro](https://astro.build). The team's side of that story is on the DailyBot blog: [How we migrated dailybot.com to Astro](https://www.dailybot.com/blog/how-we-migrated-dailybot-to-astro/). That piece is the "we" — why we moved, what the new pace feels like, what it changed for the company.
+Over the last six weeks I led the migration of [dailybot.com](https://www.dailybot.com) from Webflow — a visual-editor CMS that had served us well for four years — to [Astro](https://astro.build). The team's side of that story is on the DailyBot blog: [How we migrated dailybot.com to Astro](https://www.dailybot.com/blog/how-we-migrated-dailybot-to-astro/). That piece is the "we" — why we moved, what the new pace feels like, what it changed for the company.
 
-This is the "I". The engineering underneath it. The scaffolding that let four non-engineers ship to production without me in the loop, and the specific pieces I'd tell another engineer to build if they were about to do the same migration.
+This is the "I". The engineering underneath it, and the part that's harder to fit into a company post: what a migration like this does to how an engineer thinks about his own job. The scaffolding that let four non-engineers ship to production without me in the loop, the specific pieces I'd tell another engineer to build if they were about to do the same — and why, six weeks in, I cared more about the boring parts than the site itself.
 
-I've already made the long argument for [Astro and Svelte](/blog/astro-and-svelte-the-future-of-web-development/) on this blog. I'm not going to re-argue it here. If you want the "why Astro", read that one. This post is the "how I built the floor".
+I've already made the long argument for [Astro and Svelte](/blog/astro-and-svelte-the-future-of-web-development/) on this blog. I'm not going to re-argue it here. If you want the "why Astro", read that one. This post is the "how I built the floor" — and what building the floor instead of the ceiling taught me.
 
 ---
 
@@ -34,13 +34,17 @@ Here's what was on my desk at the end of Q1:
 
 The gap wasn't performance — the old site was fine. The gap was velocity. Every other surface in the company had started moving at agent speed. The marketing site moved at CMS speed. A layout tweak that was five minutes in our product app was a multi-day exercise in the visual editor. That's the problem I was actually solving.
 
+We didn't jump straight to a rewrite, either. We spent two weeks trying to land the rebrand inside Webflow first — the cheaper path, on paper. It didn't get us the velocity we were after, and it made the real constraint obvious: the bottleneck wasn't the tool's polish, it was that every change still had to pass through a surface only one or two people could operate. That's when "rebuild" stopped being an option on a slide and became the plan.
+
 ---
 
 ## What I optimized for, and what I did not
 
 The most important call I made early was **rebuild, don't port**. Component-for-component translation would have preserved decisions we already wanted to revisit. We kept URLs and content; we rebuilt everything else. I'd made a much smaller version of this call when I [built my personal site from scratch](/blog/building-xergioalex-website/) — a one-person site is a very different animal from a five-person, 700-page one, but the instinct was the same: if you're going to do the work, do the rebuild.
 
-The second call was framing the job. My job wasn't to build the prettiest site. It was to **build the floor** — the content model, the schemas, the CI, the onboarding — so that four other people could stand on it and ship. The ceiling would take care of itself. I spent most of the six weeks on the floor.
+What made that call safe to make was a two-day spike. Before committing the quarter, I sat down with Cursor and Claude Code and ported the new design system plus a handful of core page types in two days. Not production-ready, but real enough to prove the rebuild wasn't a six-month hole. If the prototype had taken two weeks, I'd have argued for staying on Webflow. It took two days. That number is what bought the rebuild — I walked into the planning meeting with a working preview instead of a pitch.
+
+The second call was harder, because it was about ego as much as architecture. My instinct as an engineer is to build the ceiling — the impressive thing, the part you'd screenshot. The job in front of me was the opposite: **build the floor** — the content model, the schemas, the CI, the onboarding — so that four other people could stand on it and ship. The floor is invisible. Nobody screenshots a Zod schema. I spent most of the six weeks on it anyway, and somewhere in week two I made peace with the fact that the best work I'd do on this migration was work nobody would ever see.
 
 I did not chase: a custom visual page builder, a bespoke authoring DSL, or any "magic" that would have to be maintained forever. Astro + TypeScript + Zod covered every authoring need we actually had.
 
@@ -49,6 +53,25 @@ I did not chase: a custom visual page builder, a bespoke authoring DSL, or any "
 ## Collections as the content model
 
 The single most valuable thing I built is also the least glamorous: a `src/content.config.ts` with **12 typed Astro Content Collections**, one per surface — `blog`, `series`, `changelog`, `tags`, `templates`, `academy`, `integrations`, `skills`, `careers`, `helpCenter`, `pages`, `authors`. Each one has its own Zod schema. Each entry — a blog post, a help article, an integration page — is a file on disk with frontmatter validated at build time.
+
+The shape is boring on purpose. The blog schema looks roughly like this:
+
+```typescript
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().max(70),
+      description: z.string().min(130).max(160),
+      pubDate: z.coerce.date(),
+      heroImage: image(),
+      tags: z.array(z.string()).min(1),
+      lang: z.enum(['en', 'es', 'pt']),
+    }),
+});
+```
+
+Nothing clever in there. But that `min(130).max(160)` on `description` means a teammate physically cannot merge a post with a meta description that would hurt SEO, and that `z.enum(['en', 'es', 'pt'])` means a typo'd locale is a red X in CI, not a broken page a user finds three weeks later. The schema is where I encoded every rule I used to enforce by reviewing.
 
 This is the move that paid back the migration cost. At 700 pages per language, the question "are the three languages in sync?" stops being something a human reviews in a spreadsheet and becomes a **compile error**. Miss a `description` in Portuguese? Build fails. Misspell a `tag`? Build fails. Forget a hero image on a new academy article? Build fails. Every content invariant I used to police by hand, the schema polices for me now — and for every non-engineer editing files on their own.
 
@@ -103,7 +126,7 @@ The answer was Cursor. Not as an IDE — as the literal visual editor for the si
 
 The onboarding was two hours. A short session on git basics, a short session on how Cursor works, a short session on how to **brief** an agent so the instruction actually lands. Then helping each person set up their local environment. That's it. The next day, all three of them — PM, designer, growth lead — were opening pull requests.
 
-What made it click wasn't the editor. It was the pattern we gave them: open the live preview next to the editor, use the inspector to point at the specific element, tell the agent what to change. Underneath every click was the actual codebase, and every edit was a diff. The "[Astro is still a CMS]" reframe in the DailyBot post isn't a reframe — it's literally what the working surface looks like all day.
+What made it click wasn't the editor. It was the pattern we gave them: open the live preview next to the editor, use the inspector to point at the specific element, tell the agent what to change. Underneath every click was the actual codebase, and every edit was a diff. The "Astro is still a CMS" reframe in the DailyBot post isn't a reframe — it's literally what the working surface looks like all day.
 
 Three pieces of scaffolding made that work at team scale:
 
@@ -132,6 +155,8 @@ Neither of these are interesting enough to have made the company post. They're t
 The real output of this migration wasn't the new dailybot.com. It was the system that lets four non-engineers ship to production without me in the loop.
 
 On a normal Tuesday, the PM opens a PR with a new changelog entry. The designer updates the spacing on a pricing tier. The growth lead tweaks copy on a landing page. Each one passes CI, hits preview, gets reviewed, merges, goes live — sometimes in the same afternoon, usually without a single message to me.
+
+There's a strange feeling in that, and I'll be honest about it. The whole point of the migration was to make myself unnecessary for the day-to-day, and it worked — most weeks now, the public site moves without me touching it. Six weeks of my best engineering went into building something whose success looks exactly like my absence from it. I thought that might feel like a loss. It doesn't. It feels like the most leverage I've ever had: I stopped being the person who moves the site and became the person who builds what moves it. That's the part the company post couldn't hold, and the part that actually changed how I see the work.
 
 That is the migration that mattered. The URL didn't change; the site looks different but behaves the same; the Lighthouse score went up a few points. None of that is the story. The story is that the shape of who can move our public surface changed, because the agents finally got good enough to sit between non-engineers and a git repo and translate one to the other. I've been writing about [this shift](/blog/from-programmer-to-orchestrator/) for a year. Running this migration is the first time I've watched it happen at team scale.
 

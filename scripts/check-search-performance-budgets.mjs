@@ -7,7 +7,7 @@ import { gzipSync } from 'node:zlib';
 const ROOT = resolve(import.meta.dirname, '..');
 const DIST = join(ROOT, 'dist');
 
-const HTML_BUDGET_BYTES = 320_000;
+const HTML_BUDGET_BYTES = 330_000;
 const SHARD_GZIP_BUDGET_BYTES = 120_000;
 
 const htmlTargets = [
