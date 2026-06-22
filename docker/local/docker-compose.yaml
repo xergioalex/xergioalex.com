@@ -30,6 +30,28 @@ services:
       - |
         sleep infinity
 
+  # Playwright MCP server (Option B: isolated container, HTTP transport).
+  # Uses the official Playwright image, which ships browsers + all system deps,
+  # so the dev container stays slim. The dev container talks to it over the
+  # compose network by service name: http://playwright-mcp:8931/mcp
+  # (see .mcp.json and .cursor/mcp.json). MCP + image versions are pinned to
+  # the same Playwright line (1.61) to avoid browser-revision mismatches.
+  playwright-mcp:
+    image: mcr.microsoft.com/playwright:v1.61.0-noble
+    container_name: xergioalex-playwright-mcp
+    init: true
+    command:
+      - /bin/sh
+      - -c
+      # --allowed-hosts: the server has DNS-rebinding protection and by default
+      # only accepts Host: localhost. The dev container reaches it by compose
+      # service name, so we must allow that Host (plus localhost for host access).
+      - "npx -y @playwright/mcp@0.0.76 --headless --isolated --no-sandbox --host 0.0.0.0 --port 8931 --allowed-hosts playwright-mcp:8931,localhost:8931"
+    ports:
+      # Optional: only needed to reach the MCP from the host. Inter-container
+      # traffic uses the compose network and does not require this mapping.
+      - '8931:8931'
+
 volumes:
   claude_data: {}        # Claude CLI session/auth (symlinked to ~/.claude)
   codex_data: {}         # Codex CLI session/auth (symlinked to ~/.codex)
