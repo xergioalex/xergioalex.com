@@ -45,5 +45,11 @@ coverage/
 tmp/*
 !tmp/.gitkeep
 
+# Playwright E2E artifacts (reports, traces, screenshots from test runs)
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+
 english.png
 spanish.png
