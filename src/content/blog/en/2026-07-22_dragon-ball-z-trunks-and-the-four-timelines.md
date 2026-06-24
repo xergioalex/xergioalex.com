@@ -1,5 +1,5 @@
 ---
-title: 'The Tangled Timelines of Dragon Ball Z: Trunks and the Four Histories'
+title: 'Dragon Ball Z: Trunks and the Four Timelines'
 description: 'Trunks travels back to save his friends and accidentally creates four timelines — the perfect, messy finale for a series about messing with time.'
 pubDate: '2026-07-22'
 heroImage: '/images/blog/posts/dragon-ball-z-trunks-and-the-four-timelines/hero.webp'
@@ -19,7 +19,7 @@ People argue about the exact count online to this day. Let me walk through it, b
 
 ---
 
-## The setup
+## The setup: why Future Trunks travels back in time
 
 Future Trunks comes from a ruined world. In his future, Goku has died of a heart virus, and two androids — 17 and 18 — have spent years murdering the Z Fighters and everyone else, leaving the planet a graveyard. Trunks and his mentor Gohan are among the last defenders, until Gohan dies too.
 
@@ -27,7 +27,7 @@ So his mother, Bulma, builds a time machine. Trunks travels back roughly twenty 
 
 ---
 
-## The rule of the Dragon Ball universe
+## The rule: time travel creates a new timeline
 
 Here's the key, and it's exactly the branching model from the last post: in *Dragon Ball*, **traveling to the past doesn't overwrite history — it creates a new, parallel timeline.** Trunks can hand Goku the medicine and change everything that follows, but he changes it in a *new* branch. His own ruined future stays ruined. Nothing he does in the past saves the world he came from.
 
@@ -35,7 +35,9 @@ The series is unusually honest about this, and it's why the bookkeeping gets com
 
 ---
 
-## The four timelines
+## The four timelines of Dragon Ball Z, explained
+
+The short version: counting every trip across time, *Dragon Ball Z* runs on **four timelines**. Here's each one, in the order they branch.
 
 **Timeline 1 — the original.** Goku dies of the heart virus, the androids rampage, the Z Fighters fall, and eventually the monster Cell rises too. No time travel has touched this history yet. This is the baseline, the worst version of events, the one everything else branches away from.
 
@@ -49,7 +51,7 @@ Four histories, all sprouting from one act of mercy. A young man tried to save h
 
 ---
 
-## Why this is the perfect ending for the series
+## Why four timelines is the perfect ending for the series
 
 Look at what *Dragon Ball Z* gets right — better, honestly, than a lot of "serious" science fiction.
 
