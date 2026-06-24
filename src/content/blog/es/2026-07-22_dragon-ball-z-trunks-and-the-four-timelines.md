@@ -1,5 +1,5 @@
 ---
-title: 'Las líneas temporales enredadas de Dragon Ball Z: Trunks y las cuatro historias'
+title: 'Dragon Ball Z: Trunks y las cuatro líneas temporales'
 description: 'Trunks viaja al pasado para salvar a sus amigos y crea sin querer cuatro líneas temporales. El final perfecto y enredado para una serie sobre el tiempo.'
 pubDate: '2026-07-22'
 heroImage: '/images/blog/posts/dragon-ball-z-trunks-and-the-four-timelines/hero.webp'
@@ -19,7 +19,7 @@ La gente todavía discute el conteo exacto en internet. Déjame recorrerlo, porq
 
 ---
 
-## El planteamiento
+## El planteamiento: por qué Trunks del futuro viaja al pasado
 
 Trunks del futuro viene de un mundo arruinado. En su futuro, Goku ha muerto de un virus en el corazón, y dos androides — el 17 y el 18 — se han pasado años asesinando a los Guerreros Z y a todos los demás, dejando el planeta hecho un cementerio. Trunks y su maestro Gohan están entre los últimos defensores, hasta que Gohan también muere.
 
@@ -27,7 +27,7 @@ Así que su madre, Bulma, construye una máquina del tiempo. Trunks viaja unos v
 
 ---
 
-## La regla del universo de Dragon Ball
+## La regla: viajar al pasado crea una nueva línea temporal
 
 Aquí está la clave, y es exactamente el modelo de la bifurcación del artículo anterior: en *Dragon Ball*, **viajar al pasado no sobrescribe la historia — crea una nueva línea temporal paralela.** Trunks puede entregarle la medicina a Goku y cambiar todo lo que sigue, pero lo cambia en una *nueva* rama. Su propio futuro arruinado sigue arruinado. Nada de lo que hace en el pasado salva el mundo del que vino.
 
@@ -35,7 +35,9 @@ La serie es inusualmente honesta con esto, y por eso la contabilidad se complica
 
 ---
 
-## Las cuatro líneas temporales
+## Las cuatro líneas temporales de Dragon Ball Z, explicadas
+
+La versión corta: contando cada viaje a través del tiempo, *Dragon Ball Z* corre sobre **cuatro líneas temporales**. Aquí está cada una, en el orden en que se bifurcan.
 
 **Línea temporal 1 — la original.** Goku muere del virus del corazón, los androides arrasan, los Guerreros Z caen y con el tiempo también surge el monstruo Cell. Ningún viaje en el tiempo ha tocado esta historia todavía. Es la base, la peor versión de los hechos, de la que todo lo demás se desprende.
 
@@ -49,7 +51,7 @@ Cuatro historias, todas brotando de un solo acto de misericordia. Un joven inten
 
 ---
 
-## Por qué este es el final perfecto para la serie
+## Por qué cuatro líneas temporales son el final perfecto para la serie
 
 Mira lo que *Dragon Ball Z* hace bien — mejor, honestamente, que mucha ciencia ficción "seria".
 
