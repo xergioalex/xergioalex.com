@@ -13,6 +13,10 @@
       "env": {
         "PATH": "/usr/local/bin:/usr/bin:/bin"
       }
+    },
+    "playwright": {
+      "type": "sse",
+      "url": "http://playwright-mcp:8931/sse"
     }
   }
 }

@@ -30,7 +30,73 @@ services:
       - |
         sleep infinity
 
+  # Playwright MCP server (Option B: isolated container, SSE transport).
+  # Uses the official Playwright image, which ships system deps for browsers,
+  # so the dev container stays slim. The dev container talks to it over the
+  # compose network by service name, via SSE: http://playwright-mcp:8931/sse
+  # (see .mcp.json and .cursor/mcp.json). SSE is used instead of streamable
+  # HTTP (/mcp) because the client's Accept header triggers a 406 there, which
+  # the SDK misreads as an auth failure. The MCP installs its own (alpha)
+  # Chromium revision at boot — see the command + playwright_browsers volume.
+  playwright-mcp:
+    image: mcr.microsoft.com/playwright:v1.61.0-noble
+    container_name: xergioalex-playwright-mcp
+    init: true
+    command:
+      - /bin/sh
+      - -c
+      # --allowed-hosts: the server has DNS-rebinding protection and by default
+      # only accepts Host: localhost. The dev container reaches it by compose
+      # service name, so we must allow that Host (plus localhost for host access).
+      # @playwright/mcp pins an *alpha* playwright build whose Chromium revision
+      # differs from the one preinstalled in the stable mcr image, so we install
+      # the exact browser the MCP needs on first boot. It is cached in the
+      # playwright_browsers volume, so later recreates reuse it (no re-download).
+      # --output-dir: write screenshots/snapshots/traces into the repo's tmp/
+      # folder. The repo is bind-mounted at /app (same as the dev container), so
+      # files land in /app/tmp/screenshots and are visible from the dev
+      # container and the host IDE (tmp/ is git-ignored).
+      - "npx -y @playwright/mcp@0.0.76 install-browser chrome-for-testing && npx -y @playwright/mcp@0.0.76 --headless --isolated --no-sandbox --browser chromium --host 0.0.0.0 --port 8931 --allowed-hosts playwright-mcp:8931,localhost:8931 --output-dir /app/tmp/screenshots"
+    volumes:
+      # Mount the repo at /app (mirrors the dev container) so MCP output written
+      # under /app/tmp/screenshots shows up in the working tree.
+      - ../..:/app
+      # Persist the MCP-installed browser revision across container recreates.
+      - playwright_browsers:/ms-playwright
+    ports:
+      # Optional: only needed to reach the MCP from the host. Inter-container
+      # traffic uses the compose network and does not require this mapping.
+      - '8931:8931'
+
+  # End-to-end test runner (Playwright Test). On-demand only (profile "e2e"),
+  # so it never starts with `docker compose up`. Reuses the same pinned image
+  # as the MCP, which already ships the browsers + system deps. By default the
+  # Playwright config builds the site and runs `astro preview` itself, so the
+  # run is self-contained. See tests/e2e/README.md. Run from the host:
+  #   docker compose --profile e2e run --rm e2e
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.61.0-noble
+    container_name: xergioalex-e2e
+    init: true
+    working_dir: /app
+    profiles: ['e2e']
+    environment:
+      - CI=true
+      # Override to hit an already-running server instead of building:
+      # - E2E_BASE_URL=http://172.22.0.3:4444
+    volumes:
+      - ../..:/app
+      # Isolate node_modules from the dev container (different base image) and
+      # persist it so repeated runs don't reinstall from scratch.
+      - e2e_node_modules:/app/node_modules
+    command:
+      - /bin/sh
+      - -c
+      - "corepack enable && pnpm install && pnpm run test:e2e"
+
 volumes:
+  playwright_browsers: {}  # Chromium revision installed by @playwright/mcp
+  e2e_node_modules: {}     # node_modules for the e2e runner (isolated from dev)
   claude_data: {}        # Claude CLI session/auth (symlinked to ~/.claude)
   codex_data: {}         # Codex CLI session/auth (symlinked to ~/.codex)
   cursor_data: {}        # Cursor CLI session/auth (symlinked to ~/.cursor)

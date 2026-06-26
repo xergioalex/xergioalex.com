@@ -11,6 +11,10 @@
         "--executablePath=/app/scripts/chromium-mcp.sh"
       ],
       "env": {}
+    },
+    "playwright": {
+      "type": "sse",
+      "url": "http://playwright-mcp:8931/sse"
     }
   }
 }

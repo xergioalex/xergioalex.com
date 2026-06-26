@@ -9,7 +9,7 @@
     "url": "https://github.com/xergioalex/xergioalex.com"
   },
   "type": "module",
-  "version": "1.0.52",
+  "version": "1.0.54",
   "packageManager": "pnpm@11.1.2",
   "engines": {
     "node": ">=24.15.0"
@@ -30,6 +30,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:optimize:slides": "node scripts/optimize-images.mjs --target=slides",
     "images:webp": "echo 'All images are natively WebP — no generation needed'",
@@ -57,6 +60,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
+    "@playwright/test": "1.61.0",
     "@lhci/cli": "0.15.1",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
     "@tailwindcss/typography": "0.5.19",

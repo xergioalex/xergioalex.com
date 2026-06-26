@@ -1,7 +1,7 @@
 ---
 title: "Detrás de la migración de dailybot.com a Astro: la vista del ingeniero"
 description: "Lideré la migración de dailybot.com de un CMS visual a Astro. La historia del equipo está en el blog de DailyBot. Acá va la ingeniería de abajo."
-pubDate: "2026-04-20"
+pubDate: "2026-06-26"
 heroLayout: "none"
 tags: ["portfolio", "tech", "web-development", "dailybot", "astro"]
 keywords:
@@ -15,11 +15,11 @@ keywords:
 draft: true
 ---
 
-Durante las últimas seis semanas lideré la migración de [dailybot.com](https://www.dailybot.com) desde un CMS con editor visual hacia [Astro](https://astro.build). La historia del equipo está en el blog de DailyBot: [How we migrated dailybot.com to Astro](https://www.dailybot.com/blog/how-we-migrated-dailybot-to-astro/) ("Cómo migramos dailybot.com a Astro"). Ese texto es el "nosotros" — por qué nos movimos, qué cambió en el ritmo de la compañía, qué significó para el equipo.
+Durante las últimas seis semanas lideré la migración de [dailybot.com](https://www.dailybot.com) desde Webflow — un CMS con editor visual que nos había servido bien durante cuatro años — hacia [Astro](https://astro.build). La historia del equipo está en el blog de DailyBot: [How we migrated dailybot.com to Astro](https://www.dailybot.com/blog/how-we-migrated-dailybot-to-astro/) ("Cómo migramos dailybot.com a Astro"). Ese texto es el "nosotros" — por qué nos movimos, qué cambió en el ritmo de la compañía, qué significó para el equipo.
 
-Este post es el "yo". La ingeniería que está debajo. El andamiaje que dejó que cuatro personas no ingenieras desplegaran a producción sin pasar por mí, y las piezas específicas que le recomendaría construir a otro ingeniero que esté a punto de hacer la misma migración.
+Este post es el "yo". La ingeniería que está debajo, y la parte que cuesta más meter en un post corporativo: lo que una migración así le hace a la forma en que un ingeniero piensa sobre su propio trabajo. El andamiaje que dejó que cuatro personas no ingenieras desplegaran a producción sin pasar por mí, las piezas específicas que le recomendaría construir a otro ingeniero a punto de hacer lo mismo — y por qué, a seis semanas, me importaban más las partes aburridas que el sitio en sí.
 
-Ya escribí el argumento largo sobre [Astro y Svelte](/es/blog/astro-and-svelte-the-future-of-web-development/) en este blog. No lo voy a repetir acá. Si quieres el "por qué Astro", lee ese. Este post es el "cómo construí el piso".
+Ya escribí el argumento largo sobre [Astro y Svelte](/es/blog/astro-and-svelte-the-future-of-web-development/) en este blog. No lo voy a repetir acá. Si quieres el "por qué Astro", lee ese. Este post es el "cómo construí el piso" — y lo que construir el piso en vez del techo me terminó enseñando.
 
 ---
 
@@ -34,13 +34,17 @@ Esto es lo que tenía sobre la mesa al cerrar el Q1:
 
 La brecha no era de rendimiento — el sitio viejo iba bien. La brecha era de velocidad. Todas las demás superficies de la compañía ya se movían a ritmo de agente. El sitio de marketing se movía a ritmo de CMS. Un ajuste de layout que eran cinco minutos en nuestra app de producto era un ejercicio de varios días en el editor visual. Ese era el problema que estaba resolviendo de verdad.
 
+Tampoco saltamos directo a una reescritura. Primero pasamos dos semanas intentando aterrizar el rebrand dentro de Webflow — el camino más barato, en el papel. No nos dio la velocidad que buscábamos, y dejó obvio el verdadero límite: el cuello de botella no era el acabado de la herramienta, era que cada cambio seguía teniendo que pasar por una superficie que solo una o dos personas podían operar. Ahí "reconstruir" dejó de ser una opción en una diapositiva y se volvió el plan.
+
 ---
 
 ## Qué optimicé, y qué deliberadamente no
 
 La decisión más importante que tomé temprano fue **reconstruir, no portar**. Una traducción componente a componente habría preservado decisiones que ya queríamos revisar. Conservamos las URLs y el contenido; reconstruimos todo lo demás. Había tomado una versión mucho más pequeña de esta decisión cuando [armé mi sitio personal desde cero](/es/blog/building-xergioalex-website/) — un sitio de una persona es un animal muy diferente a uno de cinco personas y 700 páginas, pero el instinto era el mismo: si vas a hacer el trabajo, haz la reconstrucción.
 
-La segunda decisión fue cómo enmarcar el trabajo. Mi trabajo no era construir el sitio más lindo. Era **construir el piso** — el modelo de contenido, los esquemas, el CI, el onboarding — para que otras cuatro personas pudieran pararse encima y publicar. El techo se iba a cuidar solo. Pasé la mayor parte de las seis semanas en el piso.
+Lo que hizo segura esa decisión fue un spike de dos días. Antes de comprometer el trimestre, me senté con Cursor y Claude Code y porté el nuevo sistema de diseño más un puñado de tipos de página centrales en dos días. No listo para producción, pero lo bastante real como para probar que la reconstrucción no era un hueco de seis meses. Si el prototipo hubiera tomado dos semanas, habría defendido quedarnos en Webflow. Tomó dos días. Ese número fue el que pagó la reconstrucción — entré a la reunión de planeación con una vista previa funcionando en vez de con un pitch.
+
+La segunda decisión fue más difícil, porque iba tanto de ego como de arquitectura. Mi instinto como ingeniero es construir el techo — la parte impresionante, la que mostrarías en un screenshot. El trabajo que tenía enfrente era el opuesto: **construir el piso** — el modelo de contenido, los esquemas, el CI, el onboarding — para que otras cuatro personas pudieran pararse encima y publicar. El piso es invisible. Nadie le toma un screenshot a un esquema de Zod. Aun así pasé encima de él la mayor parte de las seis semanas, y en algún punto de la segunda semana hice las paces con que el mejor trabajo de toda la migración sería un trabajo que nadie iba a ver nunca.
 
 Lo que deliberadamente no perseguí: un page builder visual a medida, un DSL propietario para autoría, o cualquier "magia" que hubiera que mantener para siempre. Astro + TypeScript + Zod cubrió todas las necesidades reales de autoría que teníamos.
 
@@ -49,6 +53,25 @@ Lo que deliberadamente no perseguí: un page builder visual a medida, un DSL pro
 ## Las Content Collections como modelo de contenido
 
 Lo más valioso que construí es también lo menos vistoso: un `src/content.config.ts` con **12 Content Collections de Astro tipadas**, una por superficie — `blog`, `series`, `changelog`, `tags`, `templates`, `academy`, `integrations`, `skills`, `careers`, `helpCenter`, `pages`, `authors`. Cada una tiene su propio esquema de Zod. Cada entrada — un post de blog, un artículo de ayuda, una página de integración — es un archivo en disco con un frontmatter que se valida en tiempo de build.
+
+La forma es aburrida a propósito. El esquema del blog se ve más o menos así:
+
+```typescript
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string().max(70),
+      description: z.string().min(130).max(160),
+      pubDate: z.coerce.date(),
+      heroImage: image(),
+      tags: z.array(z.string()).min(1),
+      lang: z.enum(['en', 'es', 'pt']),
+    }),
+});
+```
+
+Nada ingenioso ahí. Pero ese `min(130).max(160)` en `description` significa que un compañero literalmente no puede fusionar un post con una meta description que le haría daño al SEO, y ese `z.enum(['en', 'es', 'pt'])` significa que un idioma mal escrito es una X roja en CI, no una página rota que un usuario encuentra tres semanas después. El esquema es donde codifiqué cada regla que antes hacía cumplir revisando a mano.
 
 Esta es la jugada que pagó el costo de la migración. Con 700 páginas por idioma, la pregunta "¿están los tres idiomas sincronizados?" deja de ser algo que una persona revisa en una hoja de cálculo y se convierte en un **error de compilación**. ¿Faltó un `description` en portugués? Build falla. ¿Se escribió mal un `tag`? Build falla. ¿Se olvidó la imagen de portada en un nuevo artículo de academia? Build falla. Cada invariante de contenido que yo vigilaba a mano, ahora lo vigila el esquema — y lo hace también para cada persona no ingeniera que edita archivos por su cuenta.
 
@@ -132,6 +155,8 @@ Ninguna de estas es lo bastante interesante como para haber entrado al post de l
 El resultado real de esta migración no fue el nuevo dailybot.com. Fue el sistema que deja que cuatro personas no ingenieras publiquen a producción sin pasar por mí.
 
 En un martes normal, el PM abre un PR con una nueva entrada de changelog. La diseñadora ajusta el espaciado de un tier de pricing. El growth lead modifica copy en una landing. Cada uno pasa el CI, aterriza en preview, recibe revisión, se fusiona, sale en vivo — a veces la misma tarde, casi siempre sin un solo mensaje para mí.
+
+Hay una sensación rara en eso, y voy a ser honesto al respecto. El punto entero de la migración era volverme innecesario para el día a día, y funcionó — la mayoría de las semanas el sitio público se mueve sin que yo lo toque. Seis semanas de mi mejor ingeniería se fueron en construir algo cuyo éxito se ve exactamente como mi ausencia. Pensé que quizás se sentiría como una pérdida. No. Se siente como el mayor apalancamiento que he tenido: dejé de ser la persona que mueve el sitio y me convertí en la persona que construye lo que lo mueve. Esa es la parte que el post de la compañía no podía contener, y la parte que de verdad cambió cómo veo el trabajo.
 
 Esa es la migración que importó. La URL no cambió; el sitio se ve distinto pero se comporta igual; el puntaje de Lighthouse subió unos puntos. Nada de eso es la historia. La historia es que la forma de quién puede mover nuestra superficie pública cambió, porque los agentes finalmente se volvieron lo suficientemente buenos como para sentarse entre personas no ingenieras y un repo de git y traducir de uno al otro. Llevo un año escribiendo sobre [este cambio](/es/blog/from-programmer-to-orchestrator/). Correr esta migración es la primera vez que lo veo pasar a escala de equipo.
 
