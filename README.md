@@ -14,7 +14,7 @@
 
 ---
 
-## ✨ Overview
+## ✨ Overview.
 
 A modern, fast, and fully bilingual personal website built with [Astro](https://astro.build). It serves as a professional portfolio, blog platform, and personal brand presence — showcasing experience, projects, and thought leadership.
 
