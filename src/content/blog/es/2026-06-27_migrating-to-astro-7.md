@@ -1,6 +1,6 @@
 ---
 title: "Migrando a Astro 7: el compilador de Rust vino por mi Markdown"
-description: "Cómo migré XergioAleX.com a Astro 7 y Sätteri, el nuevo compilador de Markdown en Rust — qué se rompió, por qué mis plugins de rehype tuvieron que mudarse, y la prueba de que funciona."
+description: "Migré XergioAleX.com a Astro 7 y a Sätteri, el nuevo compilador de Markdown en Rust: qué se rompió y por qué mis plugins de rehype tuvieron que mudarse."
 pubDate: "2026-06-27"
 heroLayout: "none"
 tags: ["tech", "web-development", "javascript", "astro"]
