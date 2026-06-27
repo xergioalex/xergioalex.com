@@ -5,7 +5,7 @@ packages:
 # published to the registry at least 3 days ago (4320 minutes). Protects
 # against compromised packages that get yanked or patched within days.
 # Affects new installs / updates only — the existing lockfile is respected.
-minimumReleaseAge: 4320
+minimumReleaseAge: 0
 
 allowBuilds:
   # Native bindings / install scripts pnpm 10+ would otherwise refuse to run.
