@@ -8,57 +8,57 @@ This site features a bilingual blog and professional profile covering software d
 
 ## Core Sections
 
-- Home: /
-- Blog: /blog/
-- About: /about/
-- CV: /cv/
-- Contact: /contact/
-- Portfolio: /portfolio/
-- Tech Talks: /tech-talks/
-- DailyBot: /dailybot/
-- Trading: /trading/
-- Entrepreneur: /entrepreneur/
-- Hobbies: /hobbies/
-- Foodie: /foodie/
+- [Home](https://xergioalex.com/): Landing page and latest highlights
+- [Blog](https://xergioalex.com/blog/): Bilingual technical and personal blog
+- [About](https://xergioalex.com/about/): Biography and background
+- [CV](https://xergioalex.com/cv/): Professional resume and experience
+- [Contact](https://xergioalex.com/contact/): Ways to get in touch
+- [Portfolio](https://xergioalex.com/portfolio/): Project retrospectives and case studies
+- [Tech Talks](https://xergioalex.com/tech-talks/): Slide decks and event recaps
+- [DailyBot](https://xergioalex.com/dailybot/): DailyBot product stories and startup journey
+- [Trading](https://xergioalex.com/trading/): Trading journal and market analysis
+- [Entrepreneur](https://xergioalex.com/entrepreneur/): Entrepreneurship and Y Combinator journey
+- [Hobbies](https://xergioalex.com/hobbies/): Personal interests and side pursuits
+- [Foodie](https://xergioalex.com/foodie/): Food and travel notes
 
 ## Blog Tags
 
-- tech — Software development tutorials and technical articles
-- talks — Tech talks, slides, and event recaps
-- portfolio — Project retrospectives and case studies
-- dailybot — DailyBot collaboration platform (human + AI agents), product stories and startup journey
-- trading — Trading journal entries and market analysis
-- personal — Personal reflections and life experiences
-- entrepreneur — Entrepreneurship, startup building, and Y Combinator journey
+- [tech](https://xergioalex.com/blog/tag/tech/): Software development tutorials and technical articles
+- [talks](https://xergioalex.com/blog/tag/talks/): Tech talks, slides, and event recaps
+- [portfolio](https://xergioalex.com/blog/tag/portfolio/): Project retrospectives and case studies
+- [dailybot](https://xergioalex.com/blog/tag/dailybot/): DailyBot collaboration platform (human + AI agents), product stories and startup journey
+- [trading](https://xergioalex.com/blog/tag/trading/): Trading journal entries and market analysis
+- [personal](https://xergioalex.com/blog/tag/personal/): Personal reflections and life experiences
+- [entrepreneur](https://xergioalex.com/blog/tag/entrepreneur/): Entrepreneurship, startup building, and Y Combinator journey
 
 ## Blog Series
 
-- Building XergioAleX.com (7 chapters) — How the site was built from scratch with Astro: architecture, Lighthouse 100, analytics, content collections, multilingual support, deployment, and AI bot tracking
-- Trading Journey (3 chapters) — From manual to algorithmic trading: futures, forex, and market profile
-- AEO: From Invisible to Cited (4 chapters) — Answer Engine Optimization: what it is, how AI search engines work, Markdown for Agents implementation, and measuring AEO results
+- [Building XergioAleX.com](https://xergioalex.com/blog/series/building-xergioalex/): How the site was built from scratch with Astro (7 chapters): architecture, Lighthouse 100, analytics, content collections, multilingual support, deployment, and AI bot tracking
+- [Trading Journey](https://xergioalex.com/blog/series/trading-journey/): From manual to algorithmic trading (3 chapters): futures, forex, and market profile
+- [AEO: From Invisible to Cited](https://xergioalex.com/blog/series/aeo-from-invisible-to-cited/): Answer Engine Optimization (4 chapters): what it is, how AI search engines work, Markdown for Agents implementation, and measuring AEO results
 
 ## Languages
 
-- English (default): /
-- Spanish: /es/
+- [English (default)](https://xergioalex.com/): English content at the site root
+- [Spanish](https://xergioalex.com/es/): Spanish content under the /es/ prefix
 
 ## Agent-Friendly Markdown
 
 All pages and blog posts are available as native Markdown for AI agents:
 
-- Page Markdown: /{page}.md (EN), /es/{page}.md (ES)
-- Blog index: /blog/index.md (EN), /es/blog/index.md (ES)
-- Blog posts: /blog/{slug}.md (EN), /es/blog/{slug}.md (ES)
-- Content Negotiation: Send Accept: text/markdown header to get Markdown for any page
-- Content-Type: text/markdown; charset=utf-8
-- Source Markdown — not HTML-to-Markdown conversion
+- [Blog index (Markdown, EN)](https://xergioalex.com/blog/index.md): English blog index as source Markdown
+- [Blog index (Markdown, ES)](https://xergioalex.com/es/blog/index.md): Spanish blog index as source Markdown
+- Page Markdown pattern: `/{page}.md` (EN), `/es/{page}.md` (ES)
+- Blog post pattern: `/blog/{slug}.md` (EN), `/es/blog/{slug}.md` (ES)
+- Content negotiation: send `Accept: text/markdown` to get Markdown for any page
+- Content-Type: `text/markdown; charset=utf-8` — source Markdown, not HTML-to-Markdown conversion
 
 ## Machine-Readable Feeds
 
-- Sitemap: /sitemap-index.xml
-- RSS (English): /rss.xml
-- RSS (Spanish): /es/rss.xml
-- Search API: /api/posts.json
+- [Sitemap](https://xergioalex.com/sitemap-index.xml): Full URL index for crawlers
+- [RSS (English)](https://xergioalex.com/rss.xml): English blog feed
+- [RSS (Spanish)](https://xergioalex.com/es/rss.xml): Spanish blog feed
+- [Search API](https://xergioalex.com/api/posts.json): JSON index of blog posts
 
 ## Crawling Guidance
 
@@ -68,4 +68,4 @@ All pages and blog posts are available as native Markdown for AI agents:
 
 ## Detailed Version
 
-For comprehensive content descriptions, see: /llms-full.txt
+- [llms-full.txt](https://xergioalex.com/llms-full.txt): Comprehensive, expanded content descriptions for deeper context
