@@ -10,68 +10,68 @@ Based in Colombia, he has led the development of DailyBot, a modern collaboratio
 
 ### Social Profiles
 
-- GitHub: https://github.com/xergioalex
-- LinkedIn: https://www.linkedin.com/in/xergioalex/
-- X (Twitter): https://x.com/XergioAleX
-- Instagram: https://www.instagram.com/xergioalex
+- [GitHub](https://github.com/xergioalex)
+- [LinkedIn](https://www.linkedin.com/in/xergioalex/)
+- [X (Twitter)](https://x.com/XergioAleX)
+- [Instagram](https://www.instagram.com/xergioalex)
 
 ## Site Structure
 
 ### Pages
 
-- **Home** (/) - Overview of Sergio's profile, work, and interests
-- **Blog** (/blog/) - Articles about technology, programming, entrepreneurship, and more
-- **About** (/about/) - Personal background, passions, and quick facts
-- **CV** (/cv/) - Professional experience, education, skills, and languages
-- **Contact** (/contact/) - Contact form and social links
-- **Portfolio** (/portfolio/) - Software projects, open-source work, and case studies
-- **Tech Talks** (/tech-talks/) - Conference presentations, meetup talks, and workshops
-- **DailyBot** (/dailybot/) - Modern collaboration platform for human teams and AI agents; Y Combinator journey and product evolution
-- **Trading** (/trading/) - Trading journey, approach, philosophy, and market analysis
-- **Entrepreneur** (/entrepreneur/) - Entrepreneurship experiences and startup building
-- **Hobbies** (/hobbies/) - Sports, gaming, and other interests
-- **Foodie** (/foodie/) - Food experiences and culinary adventures
+- **[Home](https://xergioalex.com/)** - Overview of Sergio's profile, work, and interests
+- **[Blog](https://xergioalex.com/blog/)** - Articles about technology, programming, entrepreneurship, and more
+- **[About](https://xergioalex.com/about/)** - Personal background, passions, and quick facts
+- **[CV](https://xergioalex.com/cv/)** - Professional experience, education, skills, and languages
+- **[Contact](https://xergioalex.com/contact/)** - Contact form and social links
+- **[Portfolio](https://xergioalex.com/portfolio/)** - Software projects, open-source work, and case studies
+- **[Tech Talks](https://xergioalex.com/tech-talks/)** - Conference presentations, meetup talks, and workshops
+- **[DailyBot](https://xergioalex.com/dailybot/)** - Modern collaboration platform for human teams and AI agents; Y Combinator journey and product evolution
+- **[Trading](https://xergioalex.com/trading/)** - Trading journey, approach, philosophy, and market analysis
+- **[Entrepreneur](https://xergioalex.com/entrepreneur/)** - Entrepreneurship experiences and startup building
+- **[Hobbies](https://xergioalex.com/hobbies/)** - Sports, gaming, and other interests
+- **[Foodie](https://xergioalex.com/foodie/)** - Food experiences and culinary adventures
 
 ### Blog Categories/Tags
 
-- **tech** — Tutorials, guides, and technical articles about software development
-- **talks** — Tech talks, slides, videos, and event recaps
-- **portfolio** — Project retrospectives, open-source contributions, and case studies
-- **dailybot** — DailyBot collaboration platform (human + AI agents), Y Combinator experience, startup journey
-- **trading** — Trading journal entries, market analysis, algorithmic trading learnings
-- **personal** — Articles about life experiences and personal reflections
-- **entrepreneur** — Entrepreneurship experiences, startup building, and Y Combinator journey
+- **[tech](https://xergioalex.com/blog/tag/tech/)** — Tutorials, guides, and technical articles about software development
+- **[talks](https://xergioalex.com/blog/tag/talks/)** — Tech talks, slides, videos, and event recaps
+- **[portfolio](https://xergioalex.com/blog/tag/portfolio/)** — Project retrospectives, open-source contributions, and case studies
+- **[dailybot](https://xergioalex.com/blog/tag/dailybot/)** — DailyBot collaboration platform (human + AI agents), Y Combinator experience, startup journey
+- **[trading](https://xergioalex.com/blog/tag/trading/)** — Trading journal entries, market analysis, algorithmic trading learnings
+- **[personal](https://xergioalex.com/blog/tag/personal/)** — Articles about life experiences and personal reflections
+- **[entrepreneur](https://xergioalex.com/blog/tag/entrepreneur/)** — Entrepreneurship experiences, startup building, and Y Combinator journey
 
 ### Blog Series
 
-#### Building XergioAleX.com (7 chapters)
+#### [Building XergioAleX.com](https://xergioalex.com/blog/series/building-xergioalex/) (7 chapters)
 How this website was built from scratch with Astro, covering architecture decisions, performance optimization, analytics, content collections, multilingual support, deployment, and AI bot tracking:
-1. Building an Astro Website — Why Astro and the initial architecture (/blog/building-xergioalex-website/)
-2. Lighthouse Perfect Scores — Achieving 100 across all Lighthouse categories (/blog/lighthouse-perfect-scores/)
-3. Measuring What Matters — Free analytics without sacrificing performance (/blog/measuring-what-matters-free-analytics/)
-4. Building a Blog Without a Backend — Content Collections and file-based content (/blog/building-blog-without-backend/)
-5. Building a Multilingual Website — i18n architecture with typed translations (/blog/building-multilingual-website/)
-6. The Best Way to Deploy Your Astro Site — Free deployment on Cloudflare Pages (/blog/best-way-deploy-astro-site-free/)
-7. Tracking the Invisible — AI bot analytics with zero client-side JavaScript (/blog/tracking-invisible-ai-bot-analytics/)
+1. [Building an Astro Website](https://xergioalex.com/blog/building-xergioalex-website/) — Why Astro and the initial architecture
+2. [Lighthouse Perfect Scores](https://xergioalex.com/blog/lighthouse-perfect-scores/) — Achieving 100 across all Lighthouse categories
+3. [Measuring What Matters](https://xergioalex.com/blog/measuring-what-matters-free-analytics/) — Free analytics without sacrificing performance
+4. [Building a Blog Without a Backend](https://xergioalex.com/blog/building-blog-without-backend/) — Content Collections and file-based content
+5. [Building a Multilingual Website](https://xergioalex.com/blog/building-multilingual-website/) — i18n architecture with typed translations
+6. [The Best Way to Deploy Your Astro Site](https://xergioalex.com/blog/best-way-deploy-astro-site-free/) — Free deployment on Cloudflare Pages
+7. [Tracking the Invisible](https://xergioalex.com/blog/tracking-invisible-ai-bot-analytics/) — AI bot analytics with zero client-side JavaScript
 
-#### Trading Journey (3 chapters)
+#### [Trading Journey](https://xergioalex.com/blog/series/trading-journey/) (3 chapters)
 From manual trading to algorithmic strategies:
-1. My Trading Journey — From futures to forex (/blog/my-trading-journey-from-futures-to-forex/)
-2. What is Market Profile — Volume profiling and market analysis (/blog/what-is-market-profile-in-trading/)
-3. From Manual to Algorithmic Trading — Automating trading strategies (/blog/from-manual-to-algorithmic-trading/)
+1. [My Trading Journey](https://xergioalex.com/blog/my-trading-journey-from-futures-to-forex/) — From futures to forex
+2. [What is Market Profile](https://xergioalex.com/blog/what-is-market-profile-in-trading/) — Volume profiling and market analysis
+3. [From Manual to Algorithmic Trading](https://xergioalex.com/blog/from-manual-to-algorithmic-trading/) — Automating trading strategies
 
-#### AEO: From Invisible to Cited (4 chapters)
+#### [AEO: From Invisible to Cited](https://xergioalex.com/blog/series/aeo-from-invisible-to-cited/) (4 chapters)
 Answer Engine Optimization — how to build a website that AI answer engines can find, understand, and reference:
-1. AEO: What Changes When AI Starts Answering Instead of Linking — Introduction to AEO, how it differs from SEO, and why the first-mover window is open (/blog/aeo-answer-engine-optimization/)
-2. The Shift: Why Rankings No Longer Mean Visibility — The landscape change, how answer engines work, llms.txt and structured data foundations (/blog/aeo-the-shift/)
-3. Markdown for Agents: Making Your Content Speak AI's Language — Content negotiation for AI, hybrid implementation with Astro and Cloudflare Pages (/blog/aeo-markdown-for-agents/)
-4. The Scorecard: How to Measure What AI Can't Tell You — Bot tracking, audit methodology, measurement tools, and what's next (/blog/aeo-the-scorecard/)
+1. [AEO: What Changes When AI Starts Answering Instead of Linking](https://xergioalex.com/blog/aeo-answer-engine-optimization/) — Introduction to AEO, how it differs from SEO, and why the first-mover window is open
+2. [The Shift: Why Rankings No Longer Mean Visibility](https://xergioalex.com/blog/aeo-the-shift/) — The landscape change, how answer engines work, llms.txt and structured data foundations
+3. [Markdown for Agents: Making Your Content Speak AI's Language](https://xergioalex.com/blog/aeo-markdown-for-agents/) — Content negotiation for AI, hybrid implementation with Astro and Cloudflare Pages
+4. [The Scorecard: How to Measure What AI Can't Tell You](https://xergioalex.com/blog/aeo-the-scorecard/) — Bot tracking, audit methodology, measurement tools, and what's next
 
 ### Languages
 
 All pages and blog posts are available in:
-- English (default): /
-- Spanish: /es/
+- [English (default)](https://xergioalex.com/)
+- [Spanish](https://xergioalex.com/es/)
 
 Each language has its own RSS feed, blog listing, and full page set.
 
@@ -160,13 +160,13 @@ curl -H "Accept: text/markdown" https://xergioalex.com/about
 
 ## Feeds & Discovery
 
-- RSS Feed (English): /rss.xml
-- RSS Feed (Spanish): /es/rss.xml
-- Sitemap: /sitemap-index.xml
-- Search API: /api/posts.json
-- robots.txt: /robots.txt
-- This file: /llms-full.txt
-- Short version: /llms.txt
+- [RSS Feed (English)](https://xergioalex.com/rss.xml)
+- [RSS Feed (Spanish)](https://xergioalex.com/es/rss.xml)
+- [Sitemap](https://xergioalex.com/sitemap-index.xml)
+- [Search API](https://xergioalex.com/api/posts.json)
+- [robots.txt](https://xergioalex.com/robots.txt)
+- [This file (llms-full.txt)](https://xergioalex.com/llms-full.txt)
+- [Short version (llms.txt)](https://xergioalex.com/llms.txt)
 
 ## Structured Data
 
