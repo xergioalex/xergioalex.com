@@ -44,8 +44,8 @@ For agents that probe the standard OAuth discovery surface, the site publishes
 spec-shaped metadata. These are **reserved, non-active stubs** — the site has no
 live OAuth flows today:
 
-- Protected Resource Metadata — [`/.well-known/oauth-protected-resource`](/.well-known/oauth-protected-resource)
-- Authorization Server Metadata — [`/.well-known/oauth-authorization-server`](/.well-known/oauth-authorization-server)
+- Protected Resource Metadata (RFC 9728) — [https://xergioalex.com/.well-known/oauth-protected-resource](https://xergioalex.com/.well-known/oauth-protected-resource)
+- Authorization Server Metadata (RFC 8414) — [https://xergioalex.com/.well-known/oauth-authorization-server](https://xergioalex.com/.well-known/oauth-authorization-server)
   - Includes an `agent_auth` block advertising an `anonymous` identity type and
     a reserved `register_uri`.
 
