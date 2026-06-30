@@ -6,7 +6,7 @@
   "jwks_uri": "https://xergioalex.com/.well-known/jwks.json",
   "grant_types_supported": ["authorization_code"],
   "response_types_supported": ["code"],
-  "scopes_supported": [],
+  "scopes_supported": ["read"],
   "token_endpoint_auth_methods_supported": ["none"],
   "agent_auth": {
     "_comment": "Reserved, non-active stub for agent-readiness compliance (Auth.md convention). xergioalex.com is a static, public, read-only site: agents access all content anonymously with no registration. These endpoints are reserved paths and do not currently accept requests — do not probe them during passive scans.",
@@ -16,6 +16,9 @@
     "claim_uri": "https://xergioalex.com/agent/auth/claim",
     "claim_endpoint": "https://xergioalex.com/agent/auth/claim",
     "identity_types_supported": ["anonymous"],
+    "anonymous": {
+      "credential_types_supported": ["bearer"]
+    },
     "credential_types_supported": ["bearer"]
   }
 }
