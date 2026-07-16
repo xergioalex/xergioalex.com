@@ -137,6 +137,21 @@ function buildUrlPrefix(lang: string): string {
 }
 
 /**
+ * One-line hint included in every .md mirror header so agents know how to
+ * fetch Markdown for any other URL on the site via content negotiation
+ * (see functions/_middleware.ts), without appending `.md` or parsing HTML.
+ *
+ * The header name and media type stay literal in every language — agents
+ * parse those tokens. Only the surrounding prose is localized.
+ */
+export function buildMarkdownAccessLine(lang: string): string {
+  if (lang === 'es') {
+    return 'Markdown: envía el header `Accept: text/markdown` en cualquier URL para recibir Markdown en lugar de HTML.';
+  }
+  return 'Markdown: send header `Accept: text/markdown` on any URL to receive Markdown instead of HTML.';
+}
+
+/**
  * Serialize a blog post to agent-friendly Markdown.
  * Returns clean Markdown with metadata header + original body.
  */
@@ -162,6 +177,7 @@ export function serializePostToAgentMarkdown(
   }
   lines.push(`Language: ${lang}`);
   lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
   if (tags && tags.length > 0) {
     lines.push(`Tags: ${tags.join(', ')}`);
   }
@@ -201,6 +217,7 @@ export function serializeBlogIndexToMarkdown(
   lines.push('');
   lines.push(`Language: ${lang}`);
   lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
   lines.push(`Total posts: ${entries.length}`);
   lines.push('');
   lines.push('---');
@@ -257,6 +274,7 @@ export function serializeSeriesIndexToMarkdown(
   }
   lines.push(`Language: ${lang}`);
   lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
   lines.push(`Total chapters: ${entries.length}`);
   lines.push('');
   lines.push('---');
@@ -311,6 +329,7 @@ export function serializeSeriesListingToMarkdown(
   lines.push('');
   lines.push(`Language: ${lang}`);
   lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
   lines.push(`Total series: ${entries.length}`);
   lines.push('');
   lines.push('---');
@@ -324,6 +343,141 @@ export function serializeSeriesListingToMarkdown(
     const chapterCount = `${entry.postCount} ${entry.postCount === 1 ? 'chapter' : 'chapters'}`;
     lines.push(
       `- [${entry.title}](${seriesMdUrl}) — ${entry.description} (${chapterCount})`
+    );
+  }
+
+  lines.push(generateSiteNavigation(lang));
+
+  return `${lines.join('\n')}\n`;
+}
+
+interface SlideDeckSerializeOptions {
+  slug: string;
+  lang: string;
+}
+
+interface SlidesIndexEntry {
+  title: string;
+  slug: string;
+  description: string;
+  type: string;
+  pubDate: Date;
+  eventName?: string;
+}
+
+interface SlidesIndexOptions {
+  lang: string;
+  title: string;
+  description: string;
+}
+
+/**
+ * Serialize a slide deck to agent-friendly Markdown.
+ * Metadata keys stay in English across languages so agents parse one format;
+ * only section headings and the body follow the deck's language.
+ */
+export function serializeSlideDeckToMarkdown(
+  deck: CollectionEntry<'slides'>,
+  options: SlideDeckSerializeOptions
+): string {
+  const { slug, lang } = options;
+  const data = deck.data;
+  const prefix = buildUrlPrefix(lang);
+  const canonicalUrl = `${SITE_URL}${prefix}/slides/${slug}`;
+
+  const lines: string[] = [];
+
+  lines.push(`# ${data.title}`);
+  lines.push('');
+  lines.push(`> ${data.description}`);
+  lines.push('');
+  lines.push(`Language: ${lang}`);
+  lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
+  lines.push(`Type: ${data.type}`);
+  lines.push(`Published: ${formatDate(data.pubDate)}`);
+  if (data.updatedDate) {
+    lines.push(`Updated: ${formatDate(data.updatedDate)}`);
+  }
+  if (data.eventName) {
+    let event = `Event: ${data.eventName}`;
+    if (data.eventDate) {
+      event += ` (${formatDate(data.eventDate)})`;
+    }
+    if (data.eventUrl) {
+      event += ` — ${data.eventUrl}`;
+    }
+    lines.push(event);
+  }
+  if (data.relatedPost) {
+    lines.push(`Related post: ${SITE_URL}${prefix}/blog/${data.relatedPost}`);
+  }
+  lines.push('Author: Sergio Alexander Florez Galeano (XergioAleX)');
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+
+  if (data.type === 'external') {
+    const heading =
+      lang === 'es' ? 'Presentación Externa' : 'External Presentation';
+    lines.push(`## ${heading}`);
+    lines.push('');
+    lines.push(`- **URL:** ${data.externalUrl}`);
+    if (data.provider) {
+      const providerLabel = lang === 'es' ? 'Proveedor' : 'Provider';
+      lines.push(`- **${providerLabel}:** ${data.provider}`);
+    }
+    lines.push('');
+  }
+
+  if (deck.body?.trim()) {
+    const heading = lang === 'es' ? 'Contenido' : 'Content';
+    lines.push(`## ${heading}`);
+    lines.push('');
+    lines.push(deck.body.trim());
+  }
+
+  lines.push(generateSiteNavigation(lang));
+
+  return `${lines.join('\n')}\n`;
+}
+
+/**
+ * Serialize the slides listing to agent-friendly Markdown.
+ * Returns a list of decks with links to their .md versions.
+ */
+export function serializeSlidesIndexToMarkdown(
+  entries: SlidesIndexEntry[],
+  options: SlidesIndexOptions
+): string {
+  const { lang, title, description } = options;
+  const prefix = buildUrlPrefix(lang);
+  const canonicalUrl = `${SITE_URL}${prefix}/slides`;
+
+  const lines: string[] = [];
+
+  lines.push(`# ${title}`);
+  lines.push('');
+  lines.push(`> ${description}`);
+  lines.push('');
+  lines.push(`Language: ${lang}`);
+  lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
+  lines.push(`Total decks: ${entries.length}`);
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+  lines.push(`## ${lang === 'es' ? 'Presentaciones' : 'Decks'}`);
+  lines.push('');
+
+  for (const entry of entries) {
+    const deckMdUrl = `${prefix}/slides/${entry.slug}.md`;
+    const parts = [`${entry.type}`, formatDate(entry.pubDate)];
+    if (entry.eventName) {
+      parts.push(entry.eventName);
+    }
+    lines.push(
+      `- [${entry.title}](${deckMdUrl}) — ${entry.description} (${parts.join(', ')})`
     );
   }
 
@@ -354,6 +508,7 @@ export function serializePageToAgentMarkdown(
   lines.push('');
   lines.push(`Language: ${lang}`);
   lines.push(`Canonical: ${canonicalUrl}`);
+  lines.push(buildMarkdownAccessLine(lang));
 
   if ('lastUpdated' in page.data && page.data.lastUpdated instanceof Date) {
     lines.push(`Last Updated: ${formatDate(page.data.lastUpdated)}`);

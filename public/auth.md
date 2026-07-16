@@ -32,7 +32,9 @@ authenticate before using a site's resources.
 ## What agents can do without registering
 
 - Read any HTML page (`https://xergioalex.com/…`) and its Spanish twin (`/es/…`).
-- Read the Markdown-for-agents twin of any page (append `.md` to the path).
+- Read the Markdown-for-agents twin of any page — either append `.md` to the
+  path, or send the header `Accept: text/markdown` on any URL to receive
+  Markdown instead of HTML.
 - Read `/.well-known/api-catalog`, `/openapi.json`, `/llms.txt`, and
   `/llms-full.txt` for a machine-readable map of the site.
 - Discover skills via `/.well-known/agent-skills/index.json` and the MCP
