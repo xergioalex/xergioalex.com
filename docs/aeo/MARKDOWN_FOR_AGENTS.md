@@ -48,6 +48,17 @@ Source: `post.body` from Astro content collection (raw Markdown without frontmat
 
 Source: `src/content/pages/{en,es}/` content collection.
 
+### Slides
+
+| Pattern | Description |
+|---------|-------------|
+| `/slides/{slug}.md` (EN) | A single deck — metadata header + deck body |
+| `/es/slides/{slug}.md` (ES) | Spanish twin |
+| `/slides/index.md` (EN) | Lists all EN decks with `.md` links |
+| `/es/slides/index.md` (ES) | Lists all ES decks with `.md` links |
+
+Source: `src/content/slides/{en,es}/` content collection. Metadata keys stay in English across languages (agents parse one format); only section headings and the body follow the deck's language.
+
 ## Response Format
 
 ```markdown
@@ -59,6 +70,7 @@ Published: 2026-03-09
 Updated: 2026-03-10
 Language: en
 Canonical: https://xergioalex.com/blog/post-slug
+Markdown: send header `Accept: text/markdown` on any URL to receive Markdown instead of HTML.
 Tags: tag1, tag2
 
 ---
@@ -70,6 +82,7 @@ Tags: tag1, tag2
 - Blockquote description — visually distinct
 - Simple key-value metadata — easy to parse
 - Canonical URL — always points to the HTML version
+- Markdown access line — tells agents to send `Accept: text/markdown` on any URL for Markdown instead of HTML. Emitted by `buildMarkdownAccessLine(lang)`, always immediately after `Canonical:`, localized per language (the header name and media type stay literal so agents can parse them). See [Content Negotiation](#content-negotiation-via-accept-textmarkdown).
 - Separator before body — clear content boundary
 - Site navigation footer — global nav links appended to every output (see below)
 
@@ -96,7 +109,13 @@ Tags: tag1, tag2
 - `serializePostToAgentMarkdown(post, { slug, lang })` — blog posts
 - `serializeBlogIndexToMarkdown(entries, { lang, title, description })` — blog index
 - `serializeSeriesIndexToMarkdown(entries, { slug, seriesTitle, seriesDescription, lang })` — series index
+- `serializeSeriesListingToMarkdown(entries, { lang, title, description })` — series landing page
 - `serializePageToAgentMarkdown(page, { slug, lang })` — non-blog pages
+- `serializeSlideDeckToMarkdown(deck, { slug, lang })` — slide decks
+- `serializeSlidesIndexToMarkdown(entries, { lang, title, description })` — slides index
+- `buildMarkdownAccessLine(lang)` — the Markdown access line; the single source of that string
+
+**Rule:** every serializer that emits a metadata header MUST call `buildMarkdownAccessLine(lang)` immediately after its `Canonical:` line. Never hardcode the string in a route file — routes call serializers, and the helper lives only in the shared module. A new serializer without the access line is a defect.
 
 ### Site Navigation Partial
 

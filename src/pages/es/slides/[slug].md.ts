@@ -1,5 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 
+import { serializeSlideDeckToMarkdown } from '@/lib/markdown-for-agents';
 import { getDeckSlug, getSlideDecks } from '@/lib/slides';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -10,47 +11,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-export const GET: APIRoute = ({ props }) => {
+export const GET: APIRoute = ({ props, params }) => {
   const { deck } = props;
-  const data = deck.data;
-  let markdown = '';
 
-  markdown += `# ${data.title}\n\n`;
-  markdown += `> ${data.description}\n\n`;
-
-  // Bloque de metadatos (legible por agentes)
-  markdown += '## Metadatos\n\n';
-  markdown += `- **Tipo:** ${data.type}\n`;
-  markdown += `- **Idioma:** es\n`;
-  markdown += `- **Publicado:** ${data.pubDate.toISOString().split('T')[0]}\n`;
-  if (data.updatedDate) {
-    markdown += `- **Actualizado:** ${data.updatedDate.toISOString().split('T')[0]}\n`;
-  }
-  if (data.eventName) {
-    markdown += `- **Evento:** ${data.eventName}`;
-    if (data.eventDate) {
-      markdown += ` (${data.eventDate.toISOString().split('T')[0]})`;
-    }
-    if (data.eventUrl) markdown += ` — ${data.eventUrl}`;
-    markdown += '\n';
-  }
-  if (data.relatedPost) {
-    markdown += `- **Artículo relacionado:** /es/blog/${data.relatedPost}\n`;
-  }
-  markdown += '- **Autor:** Sergio Alexander Florez Galeano (XergioAleX)\n';
-  markdown += '\n';
-
-  if (data.type === 'external') {
-    markdown += '## Presentación Externa\n\n';
-    markdown += `- **URL:** ${data.externalUrl}\n`;
-    if (data.provider) markdown += `- **Proveedor:** ${data.provider}\n`;
-    markdown += '\n';
-  }
-
-  if (deck.body?.trim()) {
-    markdown += '## Contenido\n\n';
-    markdown += deck.body;
-  }
+  const markdown = serializeSlideDeckToMarkdown(deck, {
+    slug: params.slug as string,
+    lang: 'es',
+  });
 
   return new Response(markdown, {
     headers: {
