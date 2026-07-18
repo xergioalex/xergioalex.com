@@ -82,6 +82,8 @@ Visit **http://localhost:4444** to preview.
 | `pnpm run test` | Run unit tests (Vitest) |
 | `pnpm run test:watch` | Vitest in watch mode |
 | `pnpm run test:coverage` | Tests with coverage report |
+| `pnpm run test:e2e` | Run end-to-end tests (Playwright) |
+| `pnpm run test:e2e:ui` | Open the Playwright test runner UI |
 | `pnpm run images:optimize` | Convert staged images to WebP |
 | `pnpm run md:check` | Verify HTML / Markdown agent-endpoint parity |
 | `pnpm run search:budgets` | Check search index performance budgets |
