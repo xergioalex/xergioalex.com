@@ -88,6 +88,7 @@ Visit **http://localhost:4444** to preview.
 | `pnpm run test:e2e:ui` | Open the Playwright test runner UI |
 | `pnpm run images:optimize` | Convert staged images to WebP |
 | `pnpm run md:check` | Verify HTML / Markdown agent-endpoint parity |
+| `pnpm run md:check:strict` | Same as above but exits `1` on missing files (CI mode) |
 | `pnpm run search:budgets` | Check search index performance budgets |
 | `pnpm run lighthouse` | Run Lighthouse CI audit |
 | `pnpm run ncu:check` | Check for dependency updates |
