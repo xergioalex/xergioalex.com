@@ -7,6 +7,8 @@
 [![Code Check](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml/badge.svg)](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Astro](https://img.shields.io/badge/Astro-6.x-FF5D01?logo=astro)](https://astro.build)
+[![Node.js](https://img.shields.io/badge/Node.js-24+-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+[![pnpm](https://img.shields.io/badge/pnpm-11.x-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
 
 [🌐 Live Site](https://xergioalex.com) · [📖 Architecture](./docs/ARCHITECTURE.md) · [📋 Product Spec](./docs/PRODUCT_SPEC.md)
 
@@ -14,7 +16,7 @@
 
 ---
 
-## ✨ Overview.
+## ✨ Overview
 
 A modern, fast, and fully bilingual personal website built with [Astro](https://astro.build). It serves as a professional portfolio, blog platform, and personal brand presence — showcasing experience, projects, and thought leadership.
 
@@ -82,8 +84,11 @@ Visit **http://localhost:4444** to preview.
 | `pnpm run test` | Run unit tests (Vitest) |
 | `pnpm run test:watch` | Vitest in watch mode |
 | `pnpm run test:coverage` | Tests with coverage report |
+| `pnpm run test:e2e` | Run end-to-end tests (Playwright) |
+| `pnpm run test:e2e:ui` | Open the Playwright test runner UI |
 | `pnpm run images:optimize` | Convert staged images to WebP |
 | `pnpm run md:check` | Verify HTML / Markdown agent-endpoint parity |
+| `pnpm run md:check:strict` | Same as above but exits `1` on missing files (CI mode) |
 | `pnpm run search:budgets` | Check search index performance budgets |
 | `pnpm run lighthouse` | Run Lighthouse CI audit |
 | `pnpm run ncu:check` | Check for dependency updates |
