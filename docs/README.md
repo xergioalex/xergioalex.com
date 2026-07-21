@@ -25,7 +25,7 @@ Welcome to the **XergioAleX.com** documentation. This guide helps developers and
 
 | Document | Description |
 |----------|-------------|
-| [Testing Guide](TESTING_GUIDE.md) | Test setup and conventions (future) |
+| [Testing Guide](TESTING_GUIDE.md) | Vitest unit tests and Playwright e2e |
 | [I18N Guide](I18N_GUIDE.md) | Internationalization and language support |
 | [Security](SECURITY.md) | Static site security best practices |
 
@@ -41,12 +41,13 @@ Welcome to the **XergioAleX.com** documentation. This guide helps developers and
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Astro** | 5.16.15 | Static site generator |
-| **Svelte** | 5.48.0 | Interactive components |
-| **TypeScript** | 5.9.3 | Type-safe development |
-| **Tailwind CSS** | 4.1.18 | Utility-first styling |
-| **Biome** | 2.3.11 | Linting and formatting |
-| **MDX** | 4.3.13 | Enhanced Markdown |
+| **Astro** | 7.x | Static site generator |
+| **Svelte** | 5.x | Interactive components |
+| **TypeScript** | 6.x | Type-safe development |
+| **Tailwind CSS** | 4.x | Utility-first styling |
+| **Biome** | 2.x | Linting and formatting |
+| **Vitest** | 4.x | Unit and component testing |
+| **Playwright** | 1.x | End-to-end testing |
 
 ## Project Structure Overview
 
@@ -54,13 +55,15 @@ Welcome to the **XergioAleX.com** documentation. This guide helps developers and
 xergioalex.com/
 ├── src/
 │   ├── components/      # Reusable UI components (.astro, .svelte)
-│   ├── content/         # Content Collections (blog/, tags/)
-│   ├── layouts/         # Page layouts (MainLayout.astro)
-│   ├── lib/             # Utility functions and types
-│   ├── pages/           # File-based routing
+│   ├── content/         # Content Collections (blog/, slides/, tags/, series/, authors/)
+│   ├── layouts/         # Page layouts (MainLayout, SlideLayout, ...)
+│   ├── lib/             # Utility functions, translations, and types
+│   ├── pages/           # File-based routing (EN root, ES in /es/)
+│   ├── middleware.ts    # Route allowlist and rewrites
 │   └── styles/          # Global CSS and Tailwind
 ├── public/              # Static assets (images, fonts, icons)
 ├── docs/                # This documentation folder
+├── .agents/             # Cross-agent skills, commands, and agent definitions
 └── .dwp/                # Deep Work Plan outputs (git-ignored)
 ```
 
@@ -76,6 +79,10 @@ pnpm run astro:preview    # Preview build
 pnpm run biome:check      # Check linting/formatting
 pnpm run biome:fix        # Auto-fix issues
 pnpm run astro:check      # TypeScript checking
+
+# Testing
+pnpm run test             # Run unit tests (Vitest)
+pnpm run test:e2e         # Run e2e tests (Playwright)
 
 # Deployment
 pnpm run build            # Production build (Cloudflare Pages)
