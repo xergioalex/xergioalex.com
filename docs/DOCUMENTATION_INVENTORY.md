@@ -8,7 +8,7 @@ Tracking documentation coverage for XergioAleX.com.
 
 | File | Status | Last Updated | Description |
 |------|--------|--------------|-------------|
-| [AGENTS.md](../AGENTS.md) | ✅ Current | 2026-01 | Main AI agent guidance |
+| [AGENTS.md](../AGENTS.md) | ✅ Current | 2026-07 | Main AI agent guidance |
 | [CLAUDE.md](../CLAUDE.md) | ✅ Current | 2026-01 | Claude Code wrapper |
 | [README.md](../README.md) | ✅ Current | - | Project overview |
 
@@ -21,7 +21,7 @@ Tracking documentation coverage for XergioAleX.com.
 | [ARCHITECTURE.md](ARCHITECTURE.md) | ✅ Current | Technical architecture |
 | [STANDARDS.md](STANDARDS.md) | ✅ Current | Coding conventions |
 | [DEVELOPMENT_COMMANDS.md](DEVELOPMENT_COMMANDS.md) | ✅ Current | npm scripts reference |
-| [TESTING_GUIDE.md](TESTING_GUIDE.md) | ✅ Current | Testing setup (future) |
+| [TESTING_GUIDE.md](TESTING_GUIDE.md) | ✅ Current | Vitest and Playwright testing |
 | [SECURITY.md](SECURITY.md) | ✅ Current | Security best practices |
 | [PERFORMANCE.md](PERFORMANCE.md) | ✅ Current | Performance optimization |
 | [I18N_GUIDE.md](I18N_GUIDE.md) | ✅ Current | Internationalization |
@@ -31,6 +31,27 @@ Tracking documentation coverage for XergioAleX.com.
 | [DOCUMENTATION_GUIDE.md](DOCUMENTATION_GUIDE.md) | ✅ Current | Documentation standards |
 | [BRAND_GUIDE.md](BRAND_GUIDE.md) | ✅ Current | Color palette, typography, logo, visual identity |
 | [DOCUMENTATION_INVENTORY.md](DOCUMENTATION_INVENTORY.md) | ✅ Current | This file |
+| [SEO.md](SEO.md) | ✅ Current | Meta tags, structured data, multilingual SEO |
+| [ACCESSIBILITY.md](ACCESSIBILITY.md) | ✅ Current | WCAG AA standards and patterns |
+| [ANALYTICS.md](ANALYTICS.md) | ✅ Current | Tracking, GSC, verification |
+| [DESIGN.md](DESIGN.md) | ✅ Current | Design tokens and component patterns |
+| [WRITING_VOICE_GUIDE.md](WRITING_VOICE_GUIDE.md) | ✅ Current | Anti-AI-slop voice and tone |
+| [WRITING_CRAFT_GUIDE.md](WRITING_CRAFT_GUIDE.md) | ✅ Current | Narrative structure and fact verification |
+
+### docs/aeo/ Folder
+
+| File | Status | Description |
+|------|--------|-------------|
+| [MARKDOWN_FOR_AGENTS.md](aeo/MARKDOWN_FOR_AGENTS.md) | ✅ Current | Agent-friendly Markdown endpoints |
+| [CHECKLIST.md](aeo/CHECKLIST.md) | ✅ Current | AEO implementation checklist |
+| [AUDIT.md](aeo/AUDIT.md) | ✅ Current | Site-wide AEO audit |
+| [QUERIES.md](aeo/QUERIES.md) | ✅ Current | Target query tracking |
+
+### docs/technical/ Folder
+
+| File | Status | Description |
+|------|--------|-------------|
+| [TEAM_AGENTS_REFERENCE.md](technical/TEAM_AGENTS_REFERENCE.md) | ✅ Current | Team agents execution modes |
 
 ### docs/features/ Folder
 
@@ -43,6 +64,11 @@ Tracking documentation coverage for XergioAleX.com.
 | [PAGINATION.md](features/PAGINATION.md) | ✅ Current | Blog post pagination |
 | [PUBLIC_ASSETS.md](features/PUBLIC_ASSETS.md) | ✅ Current | Static assets structure |
 | [RSS_FEED.md](features/RSS_FEED.md) | ✅ Current | RSS feed generation |
+| [BLOG_POSTS.md](features/BLOG_POSTS.md) | ✅ Current | Blog post structure and workflows |
+| [BLOG_CONTENT_LIFECYCLE.md](features/BLOG_CONTENT_LIFECYCLE.md) | ✅ Current | Draft, scheduled, and published states |
+| [AUTHORS.md](features/AUTHORS.md) | ✅ Current | Multi-author YAML schema and AuthorCard |
+| [SLIDES.md](features/SLIDES.md) | ✅ Current | Tech-talk slide decks (Reveal.js) |
+| [IMAGE_OPTIMIZATION.md](features/IMAGE_OPTIMIZATION.md) | ✅ Current | Sharp-based image pipeline |
 
 ### src/ README Files
 
@@ -88,8 +114,10 @@ plan/draft outputs live in the git-ignored `.dwp/`.
 | Category | Files | Coverage |
 |----------|-------|----------|
 | Core | 3 | 100% |
-| docs/ | 15 | 100% |
-| docs/features/ | 6 | 100% |
+| docs/ | 22 | 100% |
+| docs/features/ | 11 | 100% |
+| docs/aeo/ | 4 | 100% |
+| docs/technical/ | 1 | 100% |
 | src/ READMEs | 10 | 100% |
 | public/ | 1 | 100% |
 | Agent Commands | 5 | 100% |
@@ -97,8 +125,8 @@ plan/draft outputs live in the git-ignored `.dwp/`.
 
 ### Total
 
-- **Documentation Files:** 44
-- **Current:** 44
+- **Documentation Files:** 55+
+- **Current:** 55+
 - **Needs Review:** 0
 
 ## AI Interoperability Checklist
@@ -108,9 +136,9 @@ plan/draft outputs live in the git-ignored `.dwp/`.
 | Root Documentation | ✅ | AGENTS.md, CLAUDE.md, README.md |
 | Architecture Docs | ✅ | Full technical documentation |
 | Component Docs | ✅ | README.md in each component folder |
-| Feature Docs | ✅ | docs/features/ with 5 feature docs |
+| Feature Docs | ✅ | docs/features/ with 11 feature docs |
 | Agent Commands | ✅ | Deep work plans, skills, upgrades |
-| Skills & Agents | ✅ | 9 skills, 4 agents documented |
+| Skills & Agents | ✅ | Skills, agents, and commands catalog |
 | Example Plans | ✅ | Astro-specific example plan |
 
 **AI Interoperability: 100%**
