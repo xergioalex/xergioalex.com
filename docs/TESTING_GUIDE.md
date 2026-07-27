@@ -10,7 +10,7 @@ This project uses **Vitest** for unit and component testing. The testing infrast
 - **Svelte component tests** for key interactive components using `@testing-library/svelte`
 - **Coverage enforcement** at 80%+ on `src/lib/` code
 
-E2E testing (Playwright) is not yet configured.
+E2E testing uses **Playwright** (`pnpm run test:e2e`). See [Testing Guide](../docs/TESTING_GUIDE.md) for setup details.
 
 ## Running Tests
 
