@@ -6,12 +6,12 @@ Quick start guide for AI coding assistants (Cursor AI, Claude Code, ChatGPT, Gem
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Astro** | 5.16.15 | Static site generator (islands architecture) |
-| **Svelte** | 5.48.0 | Interactive components |
-| **TypeScript** | 5.9.3 | Type-safe development |
-| **Tailwind CSS** | 4.1.18 | Utility-first CSS framework |
-| **Biome** | 2.3.11 | Linter and formatter |
-| **MDX** | 4.3.13 | Enhanced Markdown for blog |
+| **Astro** | 7.x | Static site generator (islands architecture) |
+| **Svelte** | 5.x | Interactive components |
+| **TypeScript** | 6.x | Type-safe development |
+| **Tailwind CSS** | 4.x | Utility-first CSS framework |
+| **Biome** | 2.x | Linter and formatter |
+| **Vitest** | 4.x | Unit and component testing |
 
 ## Project Type
 
@@ -26,10 +26,11 @@ Quick start guide for AI coding assistants (Cursor AI, Claude Code, ChatGPT, Gem
 xergioalex.com/
 ├── src/
 │   ├── components/      # UI components (.astro, .svelte)
-│   ├── content/         # Blog posts and tags (Markdown/MDX)
-│   ├── layouts/         # Page layouts
-│   ├── lib/             # Utilities and types
-│   ├── pages/           # File-based routing
+│   ├── content/         # Content Collections (blog/, slides/, tags/, series/, authors/)
+│   ├── layouts/         # Page layouts (MainLayout, SlideLayout, ...)
+│   ├── lib/             # Utilities, translations, and types
+│   ├── pages/           # File-based routing (EN root, ES in /es/)
+│   ├── middleware.ts    # Route allowlist and rewrites
 │   └── styles/          # Global CSS
 ├── public/              # Static assets
 ├── docs/                # Documentation
