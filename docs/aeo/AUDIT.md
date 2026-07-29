@@ -3,7 +3,7 @@
 **Date:** 2026-03-03
 **Auditor:** Agent (automated)
 **Site:** https://xergioalex.com
-**Stack:** Astro 5.16.15 (SSG), Svelte 5, TypeScript, Tailwind CSS
+**Stack:** Astro 7.x (SSG), Svelte 5, TypeScript, Tailwind CSS
 **Content:** 59 blog posts (EN/ES), 2 series, 7 page types
 
 ## Executive Summary
