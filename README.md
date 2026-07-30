@@ -6,7 +6,7 @@
 
 [![Code Check](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml/badge.svg)](https://github.com/xergioalex/xergioalex.com/actions/workflows/code_check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Astro](https://img.shields.io/badge/Astro-6.x-FF5D01?logo=astro)](https://astro.build)
+[![Astro](https://img.shields.io/badge/Astro-7.x-FF5D01?logo=astro)](https://astro.build)
 [![Node.js](https://img.shields.io/badge/Node.js-24+-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![pnpm](https://img.shields.io/badge/pnpm-11.x-F69220?logo=pnpm&logoColor=white)](https://pnpm.io)
 
@@ -42,7 +42,7 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 
 | Layer | Technology |
 | :---- | :--------- |
-| Framework | [Astro](https://astro.build) 6.x |
+| Framework | [Astro](https://astro.build) 7.x |
 | UI | [Svelte](https://svelte.dev) 5.x |
 | Styling | [Tailwind CSS](https://tailwindcss.com) 4.x |
 | Language | [TypeScript](https://www.typescriptlang.org) 5.x |
@@ -138,6 +138,8 @@ Visit **http://localhost:4444** to preview.
 | [Authors](./docs/features/AUTHORS.md) | Multi-author support and schema |
 | [Slides](./docs/features/SLIDES.md) | Tech-talk decks (Reveal.js + embeds) |
 | [Writing Voice](./docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop voice and tone guide |
+| [Writing Craft](./docs/WRITING_CRAFT_GUIDE.md) | Narrative structure, quotes, and fact verification |
+| [Design System](./docs/DESIGN.md) | Design tokens, color roles, and component patterns |
 | [I18N Guide](./docs/I18N_GUIDE.md) | Multilingual content and translations |
 | [Testing](./docs/TESTING_GUIDE.md) | Vitest setup and test conventions |
 | [Performance](./docs/PERFORMANCE.md) | Astro SSG optimization and budgets |
