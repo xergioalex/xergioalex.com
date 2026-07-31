@@ -37,12 +37,12 @@
 
 **Technology Stack:**
 
-- **Astro 5.16.15** — Static site generator (islands architecture)
-- **Svelte 5.48.0** — Interactive components
-- **TypeScript 5.9.3** — Type-safe development
-- **Tailwind CSS 4.1.18** — Utility-first styling with dark mode
-- **Biome 2.3.11** — Linter and formatter (replaces ESLint + Prettier)
-- **MDX** — Enhanced Markdown for blog posts
+- **Astro 7.x** — Static site generator (islands architecture)
+- **Svelte 5.x** — Interactive components
+- **TypeScript 6.x** — Type-safe development
+- **Tailwind CSS 4.x** — Utility-first styling with dark mode
+- **Biome 2.x** — Linter and formatter (replaces ESLint + Prettier)
+- **Vitest 4.x** — Unit and component testing
 
 ## Project Structure
 
