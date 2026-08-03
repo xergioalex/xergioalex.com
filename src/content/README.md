@@ -12,6 +12,7 @@ This directory contains Content Collections for blog posts and tags. Astro's Con
 
 ```
 content/
+├── authors/                             # Multi-author definitions (.yaml)
 ├── blog/
 │   ├── en/                              # English posts
 │   │   ├── _demo/                       # Demo posts (dev only)
@@ -26,7 +27,10 @@ content/
 │       │   └── ...
 │       ├── 2020-12-31_personal-branding-xergioalex.md
 │       └── ...
-└── tags/                                # Tag definitions
+├── pages/                               # Agent-friendly Markdown endpoints (en/, es/)
+├── series/                              # Blog series definitions
+├── slides/                              # Slide decks by language (en/, es/)
+└── tags/                                # Tag definitions with tiers
     ├── tech.md
     ├── personal.md
     ├── talks.md
