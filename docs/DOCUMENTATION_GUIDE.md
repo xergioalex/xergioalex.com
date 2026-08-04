@@ -39,7 +39,12 @@ docs/
 ├── STANDARDS.md           # Coding conventions
 ├── DEVELOPMENT_COMMANDS.md
 ├── TESTING_GUIDE.md
-├── ...
+├── aeo/                   # Answer Engine Optimization guides
+│   ├── MARKDOWN_FOR_AGENTS.md
+│   ├── CHECKLIST.md
+│   └── AUDIT.md
+├── features/              # Feature-specific documentation
+└── ...
 ```
 
 ### 3. Component Documentation
