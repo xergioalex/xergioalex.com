@@ -121,6 +121,7 @@ If you're an AI coding assistant, start here:
 1. **Read [AGENTS.md](../AGENTS.md)** - Main guidance document
 2. **Read [AI Agent Onboarding](AI_AGENT_ONBOARDING.md)** - Quick checklist
 3. **Follow [Standards](STANDARDS.md)** - Coding conventions
+4. **Track coverage in [Documentation Inventory](DOCUMENTATION_INVENTORY.md)** - What is documented and where
 
 ## Contributing
 
