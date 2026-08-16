@@ -1,24 +1,27 @@
 import type { APIRoute } from 'astro';
 
+import { serializeSlidesIndexToMarkdown } from '@/lib/markdown-for-agents';
 import { getDeckSlug, getSlideDecks } from '@/lib/slides';
 
 export const GET: APIRoute = async () => {
   const decks = await getSlideDecks('en');
 
-  let markdown = '# Slides — Presentation Decks\n\n';
-  markdown +=
-    '> A collection of presentation decks by Sergio Alexander — conference talks, meetup slides, and technical deep dives.\n\n';
-
-  for (const deck of decks) {
-    const slug = getDeckSlug(deck.id);
-    markdown += `## [${deck.data.title}](/slides/${slug})\n\n`;
-    markdown += `> ${deck.data.description}\n\n`;
-    markdown += `- **Type:** ${deck.data.type}\n`;
-    markdown += `- **Date:** ${deck.data.pubDate.toISOString().split('T')[0]}\n`;
-    if (deck.data.eventName)
-      markdown += `- **Event:** ${deck.data.eventName}\n`;
-    markdown += '\n---\n\n';
-  }
+  const markdown = serializeSlidesIndexToMarkdown(
+    decks.map((deck) => ({
+      title: deck.data.title,
+      slug: getDeckSlug(deck.id),
+      description: deck.data.description,
+      type: deck.data.type,
+      pubDate: deck.data.pubDate,
+      eventName: deck.data.eventName,
+    })),
+    {
+      lang: 'en',
+      title: 'Slides — Presentation Decks',
+      description:
+        'A collection of presentation decks by Sergio Alexander — conference talks, meetup slides, and technical deep dives.',
+    }
+  );
 
   return new Response(markdown, {
     headers: {
