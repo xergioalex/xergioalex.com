@@ -27,6 +27,8 @@ Welcome to the **XergioAleX.com** documentation. This guide helps developers and
 |----------|-------------|
 | [Testing Guide](TESTING_GUIDE.md) | Vitest unit tests and Playwright e2e |
 | [I18N Guide](I18N_GUIDE.md) | Internationalization and language support |
+| [SEO](SEO.md) | Meta tags, structured data, and multilingual SEO |
+| [Accessibility](ACCESSIBILITY.md) | WCAG AA standards and patterns |
 | [Security](SECURITY.md) | Static site security best practices |
 
 ### AI & Collaboration
