@@ -37,6 +37,11 @@ components/
 ├── layout/             # Layout components
 │   ├── Header.svelte
 │   └── MobileMenu.svelte
+├── slides/             # Tech-talk slide deck components
+│   ├── RevealDeck.svelte
+│   ├── SlideCard.astro
+│   ├── SlidesCatalog.astro
+│   └── ExternalView.astro
 ├── BaseHead.astro      # HTML head metadata
 ├── Footer.astro        # Site footer
 ├── FormattedDate.astro # Date formatting utility

@@ -9,17 +9,21 @@ src/
 ├── components/          # Reusable UI components (Astro + Svelte)
 │   ├── blog/           # Blog-related components
 │   ├── home/           # Homepage section components
-│   └── layout/         # Layout components (Header, MobileMenu)
-├── content/            # Content Collections (blog posts, tags)
-│   ├── blog/           # Blog posts (Markdown/MDX)
-│   └── tags/           # Tag definitions
-├── layouts/            # Page layouts
-│   └── MainLayout.astro
-├── lib/                # Utility functions, types, constants
-├── pages/              # File-based routing (all routes)
-│   ├── api/            # API endpoints
-│   ├── blog/           # Blog routes
+│   ├── layout/         # Layout components (Header, MobileMenu)
+│   └── pages/          # Shared page components (*Page.astro)
+├── content/            # Content Collections
+│   ├── authors/        # Multi-author definitions (.yaml)
+│   ├── blog/           # Blog posts by language (en/, es/)
+│   ├── pages/          # Agent-friendly Markdown endpoints
+│   ├── series/         # Blog series definitions
+│   ├── slides/         # Slide decks by language
+│   └── tags/           # Tag taxonomy with tiers
+├── layouts/            # Page layouts (MainLayout, SlideLayout, ...)
+├── lib/                # Utilities, translations, types, constants
+├── pages/              # File-based routing (EN root, ES in /es/)
+│   ├── api/            # JSON API endpoints
 │   └── es/             # Spanish language routes
+├── middleware.ts       # Route allowlist and rewrites
 ├── styles/             # Global styles and Tailwind
 └── content.config.ts   # Content Collections schema
 ```
@@ -29,7 +33,7 @@ src/
 | Folder | Purpose | Tech |
 |--------|---------|------|
 | `components/` | Reusable UI components | Astro (.astro) + Svelte (.svelte) |
-| `content/` | Blog posts and tags | Markdown, MDX, Content Collections |
+| `content/` | Blog posts, slides, tags, series, authors | Markdown, MDX, YAML, Content Collections |
 | `layouts/` | Page wrapper layouts | Astro |
 | `lib/` | Utilities, types, constants | TypeScript |
 | `pages/` | Routes (file-based) | Astro |
@@ -39,7 +43,7 @@ src/
 
 | File | Description |
 |------|-------------|
-| `content.config.ts` | Defines Content Collections schemas for blog and tags |
+| `content.config.ts` | Defines Content Collections schemas (blog, tags, series, slides, authors) |
 | `env.d.ts` | TypeScript environment declarations |
 
 ## Quick Start Guide

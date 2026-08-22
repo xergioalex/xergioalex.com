@@ -54,7 +54,7 @@ pnpm run build
 ```
 
 This command:
-1. Runs `prebuild` (generates WebP variants via `images:webp`)
+1. Runs `prebuild` (generates the agent skills index via `generate-agent-skills-index.mjs`)
 2. Runs TypeScript checking (`astro check`)
 3. Builds to `dist/` directory
 
@@ -290,7 +290,7 @@ pnpm run dev -- --port 3000
 
 ### Devcontainer (Cursor / VS Code)
 
-When using the devcontainer, the host port is mapped to **4444** (not 4444) to avoid conflict with macOS AirPlay Receiver. Access the dev server at `http://localhost:4444`.
+When using the devcontainer, the host port is mapped to **4444**. Access the dev server at `http://localhost:4444`.
 
 ## Scripts Reference
 
@@ -301,7 +301,7 @@ Full `package.json` scripts:
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "prebuild": "node scripts/generate-webp-homepage.mjs && node scripts/generate-webp-blog-shared.mjs && node scripts/generate-webp-blog-posts.mjs",
+    "prebuild": "node scripts/generate-agent-skills-index.mjs",
     "astro": "astro",
     "astro:check": "astro check",
     "astro:preview": "astro preview",
@@ -310,15 +310,22 @@ Full `package.json` scripts:
     "biome:fix:unsafe": "biome check --write --unsafe",
     "ncu:check": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "echo 'Running tests...'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "md:check": "node scripts/check-md-parity.mjs",
+    "md:check:strict": "node scripts/check-md-parity.mjs --strict",
+    "search:budgets": "node scripts/check-search-performance-budgets.mjs",
+    "lighthouse": "lhci autorun",
     "release": "bash .github/scripts/prepare_release.sh"
   }
 }
 ```
 
-## Testing (Future)
-
-Testing is not yet configured. When implemented:
+## Testing
 
 ```bash
 # Unit tests (Vitest)
@@ -329,4 +336,9 @@ pnpm run test:e2e
 
 # Watch mode
 pnpm run test:watch
+
+# Coverage report
+pnpm run test:coverage
 ```
+
+See [Testing Guide](TESTING_GUIDE.md) for conventions and coverage targets.
