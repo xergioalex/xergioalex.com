@@ -5,7 +5,7 @@ pubDate: '2026-08-24'
 tags: ['tech', 'civic-tech', 'colombia', 'personal']
 keywords: ['apps de ayuda terremoto Colombia', 'tecnología cívica emergencias', 'por qué hay tantas apps de emergencia', 'información desactualizada en emergencias', 'centros de acopio Pereira', 'coordinación por WhatsApp en emergencias', 'datos abiertos terremoto']
 series: 'colombia-earthquake-2026'
-seriesOrder: 3
+seriesOrder: 2
 draft: true
 ---
 

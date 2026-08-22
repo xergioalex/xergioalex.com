@@ -5,7 +5,7 @@ pubDate: '2026-08-31'
 tags: ['tech', 'civic-tech', 'ai-agents', 'mcp', 'web-development']
 keywords: ['construir software en un desastre', 'API pública sin autenticación ventajas y riesgos', 'idempotencia source externalId', 'servidor MCP para emergencias', 'privacidad datos personas desaparecidas', 'apps offline first emergencia', 'frescura del dato timestamps API']
 series: 'colombia-earthquake-2026'
-seriesOrder: 5
+seriesOrder: 4
 draft: true
 ---
 

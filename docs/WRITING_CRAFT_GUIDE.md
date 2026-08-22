@@ -67,6 +67,36 @@ For quotes, name the source in the sentence and link:
 
 > Peter [summed it up with a bitter line on X](https://x.com/steipete/status/2040209434019082522): *"Funny how timings match up..."*
 
+### Introduce every entity on first mention (MANDATORY)
+
+The first time an organization, agency, or acronym appears, gloss it in a short
+parenthetical saying what it is. Later mentions use the bare name.
+
+> El [Servicio Geologico Colombiano](https://www2.sgc.gov.co/...) (el SGC, la entidad
+> estatal que monitorea la actividad sismica del pais) registro un movimiento...
+
+> Segun el MinTIC (el Ministerio de Tecnologias de la Informacion y las Comunicaciones),
+> **mas de 3.400 estaciones base moviles quedaron fuera de servicio**.
+
+> ...local crews plus USAR teams -- units trained in urban search and rescue -- sent from Bogota.
+
+Readers outside the country or the domain do not recognize these names, and an
+unexplained acronym reads as authority the reader cannot evaluate. One clause is
+enough; do not turn it into a digression.
+
+**Mechanical trap:** put the gloss *outside* the link parentheses. Writing it inside
+`](...)` swallows the text into the URL and silently breaks the link:
+
+```markdown
+<!-- BROKEN: gloss ends up inside the href -->
+[Servicio Geologico Colombiano](https://www2.sgc.gov.co/..., el SGC, la entidad...)
+
+<!-- CORRECT -->
+[Servicio Geologico Colombiano](https://www2.sgc.gov.co/...) (el SGC, la entidad...)
+```
+
+Check with: `grep -oE '\]\(https?://[^)]*[[:space:],][^)]*\)' <file>` -- any hit is malformed.
+
 ### Multiple sources for heavy claims
 
 When a claim is doing a lot of work, cite multiple sources by embedding links on different phrases:

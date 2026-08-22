@@ -5,7 +5,7 @@ pubDate: '2026-08-31'
 tags: ['tech', 'civic-tech', 'ai-agents', 'mcp', 'web-development']
 keywords: ['building software during a disaster', 'unauthenticated public API tradeoffs', 'idempotency source externalId', 'MCP server emergency response', 'PII missing persons privacy', 'offline first emergency app', 'data freshness timestamps API']
 series: 'colombia-earthquake-2026'
-seriesOrder: 5
+seriesOrder: 4
 draft: true
 ---
 

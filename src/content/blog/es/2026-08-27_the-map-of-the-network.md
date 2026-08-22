@@ -5,7 +5,7 @@ pubDate: '2026-08-27'
 tags: ['tech', 'civic-tech', 'colombia', 'web-development']
 keywords: ['directorio de apps de ayuda terremoto Colombia', 'Pereira Responde API', 'Gravitas mapa Colombia', 'Encontrados.co personas desaparecidas', 'AquíAyuda centros de acopio', 'herramientas ciudadanas emergencia', 'plataformas de código abierto terremoto']
 series: 'colombia-earthquake-2026'
-seriesOrder: 4
+seriesOrder: 3
 draft: true
 ---
 
