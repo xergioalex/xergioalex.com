@@ -1100,6 +1100,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'slides-as-code': 'Slides as Code',
     'the-mythos-saga': 'La saga de Mythos',
     'playing-with-time': 'Jugando con el Tiempo',
+    'colombia-earthquake-2026': 'Cuando tembló en Colombia',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1124,6 +1125,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       "Los modelos de clase Mythos de Anthropic: de 'demasiado peligroso para liberar' a disponible para todos — y lo que esa capacidad significa para nosotros.",
     'playing-with-time':
       'Ciencia, paradojas y ficción — qué pasa de verdad cuando te metes con el tiempo. Desde la dilatación temporal y los agujeros de gusano hasta las enredadas líneas temporales de Dragon Ball Z.',
+    'colombia-earthquake-2026':
+      'El 10 de agosto de 2026 un terremoto de magnitud 7,4 golpeó el occidente de Colombia. Entre las ciudades afectadas, Pereira, mi ciudad, fue una de las más golpeadas. Qué pasó, por qué se cayó lo que se cayó, y cómo los desarrolladores respondieron con soluciones en cuestión de horas.',
   },
 
   // Date formatting
