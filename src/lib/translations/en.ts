@@ -1089,6 +1089,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     'slides-as-code': 'Slides as Code',
     'the-mythos-saga': 'The Mythos Saga',
     'playing-with-time': 'Playing With Time',
+    'colombia-earthquake-2026': 'When Colombia Shook',
   },
   seriesDescriptions: {
     'building-xergioalex':
@@ -1113,6 +1114,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       "Following Anthropic's Mythos-class models from 'too dangerous to release' to available to everyone — and what frontier AI capability means for the rest of us.",
     'playing-with-time':
       'Science, paradoxes, and fiction — what really happens when you mess with time. From relativistic time dilation and wormholes to the tangled timelines of Dragon Ball Z.',
+    'colombia-earthquake-2026':
+      'A magnitude 7.4 earthquake hit western Colombia on August 10, 2026. Among the cities affected, Pereira, my city, was one of the hardest hit. What happened, why the buildings that fell fell, and how developers answered with solutions in a matter of hours.',
   },
 
   // Date formatting
