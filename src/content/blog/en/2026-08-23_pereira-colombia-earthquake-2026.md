@@ -1,7 +1,7 @@
 ---
 title: 'Pereira, Colombia: 7:34 a.m., Magnitude 7.4'
 description: 'On August 10, 2026, an earthquake shook western Colombia for ninety seconds. Pereira, my city, was one of the hardest hit. Every figure sourced.'
-pubDate: '2026-08-17'
+pubDate: '2026-08-23'
 tags: ['personal', 'colombia', 'tech']
 keywords: ['2026 Colombia earthquake', 'Pereira earthquake August 2026', 'San José del Palmar Chocó earthquake', 'Colombia earthquake death toll', 'Pereira buildings collapsed', 'how long did the Colombia earthquake last', 'UNGRD earthquake balance', 'what is the NSR-10 seismic code', 'why buildings collapse in an earthquake', 'Armenia 1999 vs 2026 earthquake', 'Cali earthquake deaths 2026', 'Colombia earthquake official figures']
 series: 'colombia-earthquake-2026'

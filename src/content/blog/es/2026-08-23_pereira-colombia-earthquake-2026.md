@@ -1,7 +1,7 @@
 ---
 title: 'Pereira, Colombia: 7:34 a. m., magnitud 7,4'
 description: 'El 10 de agosto de 2026 un terremoto sacudió el occidente de Colombia durante noventa segundos. Pereira, mi ciudad, fue una de las más golpeadas.'
-pubDate: '2026-08-17'
+pubDate: '2026-08-23'
 tags: ['personal', 'colombia', 'tech']
 keywords: ['terremoto Colombia 2026', 'terremoto Pereira 10 de agosto', 'qué pasó en el terremoto de Colombia', 'cuántos muertos dejó el terremoto en Colombia', 'sismo San José del Palmar Chocó', 'edificios colapsados en Pereira', 'cuánto duró el terremoto en Colombia', 'qué es la norma NSR-10', 'por qué se caen los edificios en un terremoto', 'comparación terremoto Armenia 1999 y 2026', 'terremoto en Cali fallecidos', 'cifras oficiales damnificados terremoto Colombia']
 series: 'colombia-earthquake-2026'
