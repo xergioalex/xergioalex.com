@@ -226,7 +226,7 @@ This was important to bring up here because I want to take up, in later chapters
 
 ## The city helped itself
 
-This is the part I did not expect, and it's the reason I'm writing at all.
+This is the most beautiful part of all of it, and it's the reason I'm writing at all.
 
 The collaboration that came out of this has been something else. Doctors did medicine. Restaurants cooked. People with trucks moved things. People with a spare room offered it. Students sorted donations in warehouses for entire days. Rescue workers went on far past the point where anyone would have called it reasonable. El Colombiano ran an interview with one of them under the headline [*"Estoy donde me toque, lo más importante es ayudar"*](https://www.elcolombiano.com/inicio/rescatistas-pereira-buscan-personas-tras-terremoto-colombia-PF39871068) ("I'll be wherever I'm needed, the important thing is to help"), and in La Patria, a volunteer who had spent days clearing rubble in the La Lorena neighborhood put it this way: [*"Estamos cansados pero satisfechos de poder ayudar"*](https://www.lapatria.com/eje-cafetero/estamos-cansados-pero-satisfechos-de-ayudar-el-espiritu-solidario-sobrevive-en-pereira) ("We're exhausted but glad to be able to help"). Those are their words, not mine.
 
