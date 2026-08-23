@@ -171,7 +171,7 @@ El reporte temprano de la Alcaldía: **66 edificaciones con colapso total, 26 co
 
 Del resto del balance: 243 personas rescatadas, 279 trasladadas a clínicas y hospitales, 14 animales sacados de los escombros. [Al 19 de agosto la cifra de Pereira iba en 99 fallecidos y 132 desaparecidos](https://www.semana.com/nacion/pereira/articulo/actualizacion-de-cifras-en-pereira-tras-el-terremoto-se-reportan-99-fallecidos-y-mas-de-132-personas-desaparecidas/202658/).
 
-El edificio Invico, sobre la Avenida Circunvalar, es el que todo el mundo ha visto. Su piso doce simplemente no está. Tres personas quedaron atrapadas ahí y [no pudieron ser recuperadas](https://www.pulzo.com/nacion/terremoto-pereira-danos-edificio-invico-rescatados-balance-oficial-PP5272271), porque no quedó paso entre pisos.
+[El edificio Invico](https://www.pulzo.com/nacion/terremoto-pereira-danos-edificio-invico-rescatados-balance-oficial-PP5272271), sobre la Avenida Circunvalar, es el que todo el mundo ha visto. Su piso doce simplemente no está. Tres personas quedaron atrapadas ahí y no pudieron ser recuperadas, porque no quedó paso entre pisos.
 
 Unos 267 rescatistas trabajaban al mismo tiempo, entre personal local y equipos USAR (brigadas especializadas en búsqueda y rescate urbano) enviados desde Bogotá, Envigado, Yopal y Medellín. Solo Bogotá mandó cien personas. Y al lado de ellos, miles de vecinos. En Los Álamos y en Lorena, más de doscientas personas se concentraron en dos puntos a escarbar.
 

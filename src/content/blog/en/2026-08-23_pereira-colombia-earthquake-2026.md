@@ -173,7 +173,7 @@ The city government's early report: **66 buildings in total collapse, 26 in part
 
 The rest of the balance: 243 people rescued, 279 moved to clinics and hospitals, 14 animals pulled out. [By August 19 the Pereira count stood at 99 dead and 132 missing](https://www.semana.com/nacion/pereira/articulo/actualizacion-de-cifras-en-pereira-tras-el-terremoto-se-reportan-99-fallecidos-y-mas-de-132-personas-desaparecidas/202658/).
 
-The Invico building on Avenida Circunvalar is the one everyone has seen. Its twelfth floor is simply gone. Three people were trapped in it and [couldn't be recovered](https://www.pulzo.com/nacion/terremoto-pereira-danos-edificio-invico-rescatados-balance-oficial-PP5272271), because there was no passage left between floors.
+[The Invico building](https://www.pulzo.com/nacion/terremoto-pereira-danos-edificio-invico-rescatados-balance-oficial-PP5272271) on Avenida Circunvalar is the one everyone has seen. Its twelfth floor is simply gone. Three people were trapped in it and couldn't be recovered, because there was no passage left between floors.
 
 Around 267 rescue workers were operating at once, local crews plus USAR teams (units trained in urban search and rescue) sent from Bogotá, Envigado, Yopal and Medellín. Bogotá alone sent a hundred people. And alongside them, thousands of neighbors. In Los Álamos and Lorena, more than two hundred people gathered at two points and dug.
 
