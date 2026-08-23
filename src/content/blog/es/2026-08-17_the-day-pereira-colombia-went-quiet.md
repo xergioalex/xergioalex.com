@@ -96,7 +96,7 @@ Un terremoto no cae sobre un territorio neutral. Cae sobre el que ya estaba. Y e
 
 ---
 
-## Por qué Armenia quedó en pie
+## Armenia quedó en pie, y la norma explica por qué
 
 Armenia merece una mención especial: no colapsó totalmente ni una sola edificación. [Lo publicó El Tiempo el 15 de agosto](https://www.eltiempo.com/colombia/otras-ciudades/razones-por-las-que-armenia-no-tuvo-estructuras-colapsadas-durante-el-terremoto-que-sacudio-a-colombia-3578698) y [El País lo confirmó al día siguiente](https://www.elpais.com.co/colombia/por-que-armenia-resistio-el-terremoto-del-10-de-agosto-el-exito-de-la-reconstruccion-tras-la-tragedia-de-1999-1633.html). Lo que sí hay son **80 edificaciones con orden de evacuación** por riesgo de colapso, y cero víctimas mortales por edificaciones caídas. [Las tres que registró el Quindío](https://cronicadelquindio.com/judicial/rostro-tragedia-quindio-yesica-lorena-terremoto/) fueron consecuencias indirectas del temblor. Una mujer cayó desde un balcón en pleno centro de Armenia mientras la tierra todavía se movía, y murió dos días después. Otra [quedó atrapada en un derrumbe en la vía Montenegro–Quimbaya](https://cronicadelquindio.com/judicial/derrumbe-provocado-por-el-sismo-deja-una-victima-mortal-en-el-quindio/), en moto, camino al trabajo.
 

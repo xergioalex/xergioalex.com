@@ -96,7 +96,7 @@ An earthquake doesn't land on neutral ground. It lands on what was already there
 
 ---
 
-## Why Armenia stayed standing
+## Armenia stayed standing, and the code explains why
 
 Armenia deserves a special mention: not a single building there collapsed outright. [El Tiempo reported it on August 15](https://www.eltiempo.com/colombia/otras-ciudades/razones-por-las-que-armenia-no-tuvo-estructuras-colapsadas-durante-el-terremoto-que-sacudio-a-colombia-3578698) and [El País confirmed it the next day](https://www.elpais.com.co/colombia/por-que-armenia-resistio-el-terremoto-del-10-de-agosto-el-exito-de-la-reconstruccion-tras-la-tragedia-de-1999-1633.html). What Armenia does have is **80 buildings under evacuation orders** for risk of collapse, and zero deaths from fallen buildings. [The three Quindío recorded](https://cronicadelquindio.com/judicial/rostro-tragedia-quindio-yesica-lorena-terremoto/) were indirect consequences of the shaking. One woman fell from a balcony in downtown Armenia while the ground was still moving, and died two days later. Another [was buried by a landslide on the Montenegro–Quimbaya road](https://cronicadelquindio.com/judicial/derrumbe-provocado-por-el-sismo-deja-una-victima-mortal-en-el-quindio/), on her motorcycle, on her way to work.
 
