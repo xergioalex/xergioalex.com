@@ -189,7 +189,7 @@ Se habilitaron albergues en el Parque El Vergel, el Parque El Oso, el Coliseo Ma
 
 El alcalde Mauricio Salazar declaró calamidad pública y emergencia económica, impuso toque de queda de seis de la tarde a cinco de la mañana tras reportes de saqueos, y después prohibió por completo la circulación de vehículos particulares desde la medianoche del 12 hasta las ocho de la noche del 17. El censo de edificaciones arrancó el 12.
 
-La cifra que más se movió fue la de damnificados. Empezó en "2.000, y seguramente vamos a llegar a 4.000". Después llegó a **41.600 familias, alrededor de 140.000 personas afectadas**. No son números contradictorios: el primero era gente en albergues, el segundo es gente cuya vivienda quedó afectada. Pero si los ves citados uno al lado del otro sin esa distinción, parecen un desorden, y no lo son.
+La cifra que más osciló fue la de damnificados. Empezó en "2.000, y seguramente vamos a llegar a 4.000". Después llegó a **41.600 familias, alrededor de 140.000 personas afectadas**. No son números contradictorios: el primero era gente en albergues, el segundo es gente cuya vivienda quedó afectada. Pero si los ves citados uno al lado del otro sin esa distinción, parecen un desorden, y no lo son.
 
 ---
 

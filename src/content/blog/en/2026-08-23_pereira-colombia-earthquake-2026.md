@@ -191,7 +191,7 @@ Shelters opened at Parque El Vergel, Parque El Oso, Coliseo Mayor, Parque Olaya,
 
 Mayor Mauricio Salazar declared public calamity and economic emergency, imposed a curfew from six in the evening to five in the morning after reports of looting, and then banned private vehicle circulation entirely from midnight on the 12th until eight in the evening on the 17th. The building census started on the 12th.
 
-The displaced-family count is the figure that moved most. It began at "2,000, and we'll probably get to 4,000." It later reached **41,600 families, around 140,000 people affected**. Those aren't contradictory numbers: the first was people in shelters, the second is people whose homes were damaged. But if you see them quoted side by side without that distinction, they look like chaos, and they aren't.
+The displaced-family count is the figure that fluctuated most. It began at "2,000, and we'll probably get to 4,000." It later reached **41,600 families, around 140,000 people affected**. Those aren't contradictory numbers: the first was people in shelters, the second is people whose homes were damaged. But if you see them quoted side by side without that distinction, they look like chaos, and they aren't.
 
 ---
 
