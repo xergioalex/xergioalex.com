@@ -114,6 +114,17 @@ Esa diferencia tiene nombre: la norma sismorresistente. [Colombia tiene código 
 
 Acá está la parte que casi todo el mundo entiende mal, yo incluido hasta que me puse a leer: **la NSR-10 no promete que tu edificio quede bien. Promete que no se caiga.** [El texto de la norma lo dice sin rodeos](https://www.scg.org.co/Titulo-A-NSR-10-Decreto%20Final-2010-01-13.pdf): una edificación diseñada bajo el Reglamento debe resistir "un temblor fuerte con daños a elementos estructurales y no estructurales pero sin colapso", y ante un sismo de esa magnitud deben esperarse daños "reparables, aunque en algunos casos pueda que no sea económicamente factible su reparación". El objeto declarado es "reducir a un mínimo el riesgo de la pérdida de vidas humanas". Un edificio puede quedar agrietado, evacuado y finalmente condenado, y aun así haber hecho exactamente lo que la norma le pidió. "El edificio quedó destruido" y "la norma falló" no son la misma frase; muchas veces son lo contrario.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/norma-dos-edificios-es.webp"
+    alt="Lámina técnica que compara dos edificios en corte. A la izquierda, una construcción de mampostería anterior a la norma sismorresistente, con el esquema de un colapso de pisos sucesivos. A la derecha, un pórtico de concreto reforzado bajo la NSR-10: agrietado y con recubrimiento descascarado, pero en pie, con la ruta de evacuación señalada."
+    width="1400"
+    height="989"
+    loading="lazy"
+  />
+  <figcaption>Lo que la norma promete, y lo que no. Fuente: NSR-10, Título A, artículos A.1.2.2.1 y A.1.2.2.2.</figcaption>
+</figure>
+
 La norma es más estricta donde más importa: hospitales, colegios, universidades, estaciones de bomberos, lo que el Reglamento llama edificaciones indispensables y de atención a la comunidad, donde exige además que el daño no sea "tan severo que inhiba la operación y ocupación inmediata y continuada". Por eso las cifras de salud son las que más me inquietan. El **Hospital Universitario del Valle tuvo colapso parcial** y siete grandes instituciones de salud de Cali fueron evacuadas por fallas estructurales. [Al corte del 20 de agosto iban 348 centros de salud y 3.483 centros educativos afectados en todo el país](https://www.vanguardia.com/colombia/2026/08/20/ungrd-actualiza-cifras-del-terremoto-en-colombia-319-fallecidos-y-31461-viviendas-destruidas/).
 
 Y aun así, [la mayoría de las construcciones en Colombia no se diseñan con la NSR-10](https://www.semana.com/nacion/pereira/articulo/claves-de-la-destruccion-sismica-en-colombia-la-mayoria-de-las-construcciones-no-se-disenan-con-la-nsr-10/202618/). Tenemos una norma obligatoria con más de cuarenta años de aprendizaje detrás, y un parque construido que en buena parte es anterior a ella o la ignora.

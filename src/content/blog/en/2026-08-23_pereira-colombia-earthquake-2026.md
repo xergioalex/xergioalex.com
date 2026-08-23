@@ -116,6 +116,17 @@ That difference has a name: the seismic building code. [Colombia has had a manda
 
 Here's the part almost everyone gets wrong, me included until I sat down to read it: **NSR-10 doesn't promise your building will be fine. It promises it won't fall down.** [The code says so plainly](https://www.scg.org.co/Titulo-A-NSR-10-Decreto%20Final-2010-01-13.pdf): a building designed to the Reglamento must withstand "un temblor fuerte con daños a elementos estructurales y no estructurales pero sin colapso" — a strong quake with damage to structural and non-structural elements but without collapse — and after a quake that size the expected damage is "reparable, though in some cases repair may not be economically feasible." Its stated purpose is to "reduce to a minimum the risk of loss of human life." A building can end up cracked, evacuated and ultimately condemned, and still have done exactly what the code asked of it. "The building was destroyed" and "the code failed" are not the same sentence; often they're opposites.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/norma-dos-edificios-en.webp"
+    alt="Technical panel comparing two buildings in cross-section. On the left, masonry construction predating the seismic code, with a schematic of successive floor collapse. On the right, a reinforced concrete frame built to the NSR-10: cracked and with spalled cover, but still standing, with the evacuation route marked."
+    width="1400"
+    height="963"
+    loading="lazy"
+  />
+  <figcaption>What the code promises, and what it doesn't. Source: NSR-10, Title A, articles A.1.2.2.1 and A.1.2.2.2.</figcaption>
+</figure>
+
 The code is strictest where it matters most: hospitals, schools, universities, fire stations, what the Reglamento calls indispensable and community-service buildings, where it further requires that damage not be "so severe that it inhibits immediate and continued operation and occupancy." Which is why the health figures are the ones that worry me. **Hospital Universitario del Valle partially collapsed**, and seven major health institutions in Cali were evacuated for structural failure. [As of August 20, 348 health centers and 3,483 educational centers had been affected nationwide](https://www.vanguardia.com/colombia/2026/08/20/ungrd-actualiza-cifras-del-terremoto-en-colombia-319-fallecidos-y-31461-viviendas-destruidas/).
 
 And even so, [most construction in Colombia isn't designed to NSR-10](https://www.semana.com/nacion/pereira/articulo/claves-de-la-destruccion-sismica-en-colombia-la-mayoria-de-las-construcciones-no-se-disenan-con-la-nsr-10/202618/). We have a mandatory code with more than forty years of institutional learning behind it, and a building stock that largely predates it or ignores it.
