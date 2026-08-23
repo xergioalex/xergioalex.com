@@ -193,6 +193,12 @@ La cifra que más osciló fue la de damnificados. Empezó en "2.000, y seguramen
 
 ---
 
+Y está La Lorena, el conjunto residencial que más ha sonado en Pereira. [Eran 16 torres de cinco pisos donde vivían unas 500 personas](https://www.univision.com/noticias/terremoto-en-colombia-asi-quedaron-torres-de-vivienda-en-uno-de-los-barrios-mas-tradicionales-de-pereira-video), en uno de los barrios más tradicionales de la ciudad. Hoy más del 80 % de esas edificaciones está en riesgo: unas quedaron reducidas a escombros y otras quedaron inclinadas, y [las 16 torres de La Lorena 3 quedaron en ruinas](https://citytv.eltiempo.com/fotos-y-videos/video-y-multimedia/terremoto-deja-en-ruinas-las-16-torres-del-conjunto-la-lorena-3-en-pereira_94334). Tres personas murieron ahí. Los rescatistas alcanzaron a oírlas pedir ayuda y no pudieron sacarlas.
+
+Lo que más me impresiona es que esos edificios ya habían pasado por esto. Aguantaron el sismo de 1999 con daños en las fachadas, y después les hicieron un reforzamiento estructural. Aun así, veintisiete años más tarde, se perdieron. Lo que quedó en pie va a tener que demolerse.
+
+Mi hermano vivía ahí. Salió con vida. Su apartamento no.
+
 ## Tres días sin servicios públicos y sin comunicación
 
 Gran parte de la ciudad se quedó sin agua, sin energía y sin internet al mismo tiempo, y así estuvo unos tres días. Algunos sectores todavía no tienen, o lo tienen intermitente, mientras escribo esto.

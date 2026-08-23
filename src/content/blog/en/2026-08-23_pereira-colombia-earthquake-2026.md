@@ -195,6 +195,12 @@ The displaced-family count is the figure that fluctuated most. It began at "2,00
 
 ---
 
+And there's La Lorena, the residential complex that has been talked about most in Pereira. [It was 16 five-story towers where about 500 people lived](https://www.univision.com/noticias/terremoto-en-colombia-asi-quedaron-torres-de-vivienda-en-uno-de-los-barrios-mas-tradicionales-de-pereira-video), in one of the city's most traditional neighborhoods. Today more than 80% of those buildings are at risk: some were reduced to rubble and others were left leaning, and [the 16 towers of La Lorena 3 were left in ruins](https://citytv.eltiempo.com/fotos-y-videos/video-y-multimedia/terremoto-deja-en-ruinas-las-16-torres-del-conjunto-la-lorena-3-en-pereira_94334). Three people died there. Rescue workers could hear them calling for help and couldn't get them out.
+
+What strikes me most is that those buildings had already been through this. They held up in the 1999 earthquake with damage to their façades, and afterward they were structurally reinforced. Even so, twenty-seven years later, they were lost. What's still standing will have to come down.
+
+My brother lived there. He got out alive. His apartment didn't.
+
 ## Three days without utilities and without communication
 
 Most of the city lost water, power and internet at the same time, and stayed that way for about three days. Some sectors are still without, or intermittent, as I write this.
