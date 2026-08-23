@@ -90,7 +90,7 @@ None of that is anybody's mistake. The missing who drop off are people who were 
   <figcaption>Why the figures move. Source: UNGRD and city government bulletins.</figcaption>
 </figure>
 
-By department, at the August 13 cut (the last one the UNGRD published): Valle del Cauca 125, **Risaralda 94**, Chocó 14, Caldas 6, Quindío 3, Antioquia 1. According to Asocapitales, capital cities accounted for roughly 75% of the dead. This was an urban disaster. Note, though: those six departments add up to 243, and the national consolidation for that same day stood at 281. They don't reconcile, and I couldn't find an official explanation for the gap.
+Deaths by department, at the August 13 cut (the last breakdown the UNGRD published): Valle del Cauca 125, **Risaralda 94**, Chocó 14, Caldas 6, Quindío 3, Antioquia 1. According to Asocapitales, capital cities accounted for roughly 75% of the dead. This was an urban disaster. Note, though: those six departments add up to 243, and the national consolidation for that same day stood at 281. They don't reconcile, and I couldn't find an official explanation for the gap.
 
 And by city. For deaths and missing, the first figure is [the Asocapitales consolidation of August 11](https://www.asocapitales.co/actualidad/noticias/ciudades-seguras/terremoto-deja-188-fallecidos-y-1677-heridos-en-ciudades) and the second is each city's most recent cut. Collapses and damaged are from the most recent cut:
 

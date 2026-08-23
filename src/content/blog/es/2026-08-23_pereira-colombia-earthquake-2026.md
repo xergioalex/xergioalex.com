@@ -88,7 +88,7 @@ Nada de eso es un error de nadie. Los desaparecidos que bajan son personas que a
   <figcaption>Por qué las cifras se mueven. Fuente: boletines de la UNGRD y de las alcaldías.</figcaption>
 </figure>
 
-Por departamento, con corte al 13 de agosto (el último que publicó la UNGRD): Valle del Cauca 125, **Risaralda 94**, Chocó 14, Caldas 6, Quindío 3, Antioquia 1. Según Asocapitales, las ciudades capitales concentraron cerca del 75 % de los fallecidos. Este fue un desastre urbano. Ojo: esos seis departamentos suman 243, y el consolidado nacional de ese mismo día iba en 281. No cuadran, y no encontré explicación oficial de la diferencia.
+Los fallecidos por departamento, con corte al 13 de agosto (el último desglose que publicó la UNGRD): Valle del Cauca 125, **Risaralda 94**, Chocó 14, Caldas 6, Quindío 3, Antioquia 1. Según Asocapitales, las ciudades capitales concentraron cerca del 75 % de los fallecidos. Este fue un desastre urbano. Ojo: esos seis departamentos suman 243, y el consolidado nacional de ese mismo día iba en 281. No cuadran, y no encontré explicación oficial de la diferencia.
 
 Y por ciudad. En fallecidos y desaparecidos, la primera cifra es [el consolidado de Asocapitales del 11 de agosto](https://www.asocapitales.co/actualidad/noticias/ciudades-seguras/terremoto-deja-188-fallecidos-y-1677-heridos-en-ciudades) y la segunda el corte más reciente de cada alcaldía. Colapsos y afectadas son del corte más reciente:
 
