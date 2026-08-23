@@ -130,7 +130,7 @@ But it does come due. Twenty-seven years later, on a Monday at 7:34 in the morni
 
 ---
 
-## Pereira
+## Pereira, my city
 
 [El Tiempo called it the hardest-hit city](https://www.eltiempo.com/justicia/investigacion/pereira-la-ciudad-mas-golpeada-por-el-terremoto-al-menos-67-victimas-mortales-3577462), and the building count is why.
 

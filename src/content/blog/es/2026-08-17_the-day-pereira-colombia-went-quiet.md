@@ -128,7 +128,7 @@ Pero se cobra. Veintisiete años después, un lunes a las 7:34 de la mañana, se
 
 ---
 
-## Pereira
+## Pereira, mi ciudad
 
 [El Tiempo la llamó la ciudad más golpeada](https://www.eltiempo.com/justicia/investigacion/pereira-la-ciudad-mas-golpeada-por-el-terremoto-al-menos-67-victimas-mortales-3577462), y el conteo de edificios explica por qué.
 
