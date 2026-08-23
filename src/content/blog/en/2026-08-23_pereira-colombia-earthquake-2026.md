@@ -220,7 +220,7 @@ The telecom failure is the one I keep coming back to, and I think it's the one t
 
 The ministry opened spectrum temporarily, made interconnection between operators mandatory so a call could exit through whichever network was still alive, and made emergency-line calls free for users with no balance. [Starlink offered free service until September 12](https://www.semana.com/tecnologia/articulo/starlink-anuncia-internet-satelital-gratis-a-colombia-tras-el-devastador-terremoto-asi-puede-recibirlo/202612/) and shipped equipment for response agencies. Antennas went up in Pereira.
 
-I mention all of this now because in later chapters of this series I'm going to write about the technology that showed up afterward: the apps, the collaborative maps, the tools people put together within days to search for the missing and coordinate aid. And I don't want to tell that part without telling this one. For the first days, a large part of the city had no way to load any of it. Everything that got built came later, and it came because the network came back.
+I mention all of this now because the later chapters of this series are given over to the technology that showed up afterward: the apps, the collaborative maps, the tools people put together within days to search for the missing and coordinate aid. And I don't want to tell that part without telling this one. For the first days, a large part of the city had no way to load any of it. Everything that got built came later, and it came because the network came back.
 
 ---
 
