@@ -218,7 +218,7 @@ La caída de las telecomunicaciones es la que más me deja pensando, y creo que 
 
 El ministerio abrió espectro de forma temporal, volvió obligatoria la interconexión entre operadores para que una llamada pudiera salir por la red que estuviera viva, y liberó las llamadas a líneas de emergencia para usuarios sin saldo. [Starlink ofreció servicio gratuito hasta el 12 de septiembre](https://www.semana.com/tecnologia/articulo/starlink-anuncia-internet-satelital-gratis-a-colombia-tras-el-devastador-terremoto-asi-puede-recibirlo/202612/) y envió equipos para organismos de respuesta. En Pereira se instalaron antenas.
 
-Esto es importante mencionarlo ahora porque quiero tratar en capítulos posteriores de esta serie las soluciones tecnológicas que aparecieron después: las aplicaciones, los mapas colaborativos, las herramientas que se armaron en cuestión de días para buscar gente y coordinar ayuda. Y no quiero contar esa parte sin contar esta. Durante los primeros días, buena parte de la ciudad no tenía cómo abrir una. Todo lo que se construyó llegó después, y llegó porque la red volvió.
+Esto era importante mencionarlo ahora porque quiero tratar en capítulos posteriores de esta serie las soluciones tecnológicas que aparecieron después: las aplicaciones, los mapas colaborativos, las herramientas que se armaron en cuestión de días para buscar gente y coordinar ayuda. Y no quiero contar esa parte sin contar esta. Durante los primeros días, buena parte de la ciudad no tenía cómo abrir una. Todo lo que se construyó llegó después, y llegó porque la red volvió.
 
 ---
 
