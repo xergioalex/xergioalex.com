@@ -193,6 +193,17 @@ Nationally, [Andesco, the trade association of Colombia's utility companies, rep
 
 The telecom failure is the one I keep thinking about as an engineer. According to MinTIC (Colombia's ministry of information technology and communications), [**3,403 mobile base stations went out of service**](https://www.eltiempo.com/colombia/otras-ciudades/terremoto-que-sacudio-a-colombia-golpea-la-senal-movil-3-403-estaciones-quedan-fuera-de-servicio-en-siete-departamentos-3577513), out of 7,379 across seven departments: 46.1%. In Risaralda the outage reached 77%. Nearly half the cell network in the affected region, gone.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/tres-dias-en.webp"
+    alt="Three-panel plate with the same city profile repeated. The blackout: the city completely dark, with 3,403 of 7,379 base stations out of service across seven departments and 77% unavailability in Risaralda. The response: spectrum released, roaming between carriers made mandatory, satellite antennas installed. The recovery: 93% of affected demand restored and 90% in Pereira, with some sectors still without service."
+    width="1400"
+    height="1050"
+    loading="lazy"
+  />
+  <figcaption>What went down, what was done and what came back. Sources: MinTIC, Andesco, XM.</figcaption>
+</figure>
+
 The ministry opened spectrum temporarily, made interconnection between operators mandatory so a call could exit through whichever network was still alive, and made emergency-line calls free for users with no balance. [Starlink offered free service until September 12](https://www.semana.com/tecnologia/articulo/starlink-anuncia-internet-satelital-gratis-a-colombia-tras-el-devastador-terremoto-asi-puede-recibirlo/202612/) and shipped equipment for response agencies. Antennas went up in Pereira.
 
 I mention all of this now because in later chapters of this series I'm going to write about the technology that showed up afterward: the apps, the collaborative maps, the tools people put together within days to search for the missing and coordinate aid. And I don't want to tell that part without telling this one. For the first days, a large part of the city had no way to load any of it. Everything that got built came later, and it came because the network came back.

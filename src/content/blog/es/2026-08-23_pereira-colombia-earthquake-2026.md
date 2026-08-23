@@ -191,6 +191,17 @@ A nivel nacional, [Andesco, el gremio de las empresas de servicios públicos, re
 
 La caída de telecomunicaciones es la que no se me quita de la cabeza como ingeniero. Según el MinTIC (el Ministerio de Tecnologías de la Información y las Comunicaciones), [**3.403 estaciones base móviles quedaron fuera de servicio**](https://www.eltiempo.com/colombia/otras-ciudades/terremoto-que-sacudio-a-colombia-golpea-la-senal-movil-3-403-estaciones-quedan-fuera-de-servicio-en-siete-departamentos-3577513), de 7.379 en siete departamentos: el 46,1 %. En Risaralda la indisponibilidad llegó al 77 %. Casi la mitad de la red celular de la región afectada, abajo.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/tres-dias-es.webp"
+    alt="Lámina en tres tramos con el mismo perfil de ciudad repetido. El apagón: la ciudad completamente a oscuras, con 3.403 de 7.379 estaciones base fuera de servicio en siete departamentos y 77 % de indisponibilidad en Risaralda. La respuesta: se libera espectro, se vuelve obligatoria la interconexión entre operadores y se instalan antenas satelitales. La recuperación: 93 % de la demanda afectada restablecida y 90 % en Pereira, con algunos sectores todavía sin servicio."
+    width="1400"
+    height="1050"
+    loading="lazy"
+  />
+  <figcaption>Lo que se cayó, lo que se hizo y lo que volvió. Fuentes: MinTIC, Andesco, XM.</figcaption>
+</figure>
+
 El ministerio abrió espectro de forma temporal, volvió obligatoria la interconexión entre operadores para que una llamada pudiera salir por la red que estuviera viva, y liberó las llamadas a líneas de emergencia para usuarios sin saldo. [Starlink ofreció servicio gratuito hasta el 12 de septiembre](https://www.semana.com/tecnologia/articulo/starlink-anuncia-internet-satelital-gratis-a-colombia-tras-el-devastador-terremoto-asi-puede-recibirlo/202612/) y envió equipos para organismos de respuesta. En Pereira se instalaron antenas.
 
 Menciono todo esto ahora porque en siguientes capítulos de esta serie voy a hablar de soluciones tecnológicas que aparecieron después: las aplicaciones, los mapas colaborativos, las herramientas que se armaron en cuestión de días para buscar gente y coordinar ayuda. Y no quiero contar esa parte sin contar esta. Durante los primeros días, buena parte de la ciudad no tenía cómo abrir una. Todo lo que se construyó llegó después, y llegó porque la red volvió.
