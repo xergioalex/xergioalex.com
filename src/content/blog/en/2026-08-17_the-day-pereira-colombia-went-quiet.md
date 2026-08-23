@@ -21,7 +21,7 @@ I live in Pereira. And two weeks later I still don't have a clean way to describ
 
 ## What actually happened
 
-The epicenter was near **San José del Palmar**, in Chocó, about 20 km from the town. Magnitude **7.4**. Depth **103 km** [according to the SGC](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) — [the USGS puts it slightly deeper, at 110 km](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive). In the first hours you saw [82 km](https://x.com/sgcol/status/2086793923788148955) and [96 km](https://www.larepublica.co/economia/servicio-geologico-colombiano-reporto-sismo-de-magnitud-de-7-4-con-epicentro-en-choco-4454483) circulating. Those were early estimates that got revised, which is worth remembering, because it's the first small example of a pattern that shaped everything else that week.
+The epicenter was near **San José del Palmar**, in Chocó, about 20 km from the town. Magnitude **7.4**. Depth **103 km** [according to the SGC](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) — [the USGS puts it slightly deeper, at 110 km](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive).
 
 The depth is the whole story of why this one felt different.
 

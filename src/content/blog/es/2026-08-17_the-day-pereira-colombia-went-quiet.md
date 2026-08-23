@@ -21,7 +21,7 @@ Yo vivo en Pereira. Y dos semanas después todavía no tengo una forma limpia de
 
 ## Qué pasó, en concreto
 
-El epicentro estuvo cerca de **San José del Palmar**, en el Chocó, a unos 20 km del casco urbano. Magnitud **7,4**. Profundidad de **103 km** [según el SGC](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) — [el USGS (el servicio geológico de Estados Unidos) lo calcula un poco más hondo, en 110 km](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive). En las primeras horas circularon [82 km](https://x.com/sgcol/status/2086793923788148955) y [96 km](https://www.larepublica.co/economia/servicio-geologico-colombiano-reporto-sismo-de-magnitud-de-7-4-con-epicentro-en-choco-4454483). Eran estimaciones tempranas que después se corrigieron, y vale la pena recordarlo, porque es el primer ejemplo pequeño de un patrón que marcó todo el resto de la semana.
+El epicentro estuvo cerca de **San José del Palmar**, en el Chocó, a unos 20 km del casco urbano. Magnitud **7,4**. Profundidad de **103 km** [según el SGC](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) — [el USGS (el servicio geológico de Estados Unidos) lo calcula un poco más hondo, en 110 km](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive).
 
 La profundidad explica por qué este se sintió distinto a todo.
 
