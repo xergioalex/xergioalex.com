@@ -3,7 +3,7 @@ title: 'Pereira, Colombia: 7:34 a. m., magnitud 7,4'
 description: 'El 10 de agosto de 2026 un terremoto sacudió el occidente de Colombia durante noventa segundos. Pereira, mi ciudad, fue una de las más golpeadas.'
 pubDate: '2026-08-17'
 tags: ['personal', 'colombia', 'tech']
-keywords: ['terremoto Colombia 2026', 'terremoto Pereira 10 de agosto', 'qué pasó en el terremoto de Colombia', 'cuántos muertos dejó el terremoto en Colombia', 'sismo San José del Palmar Chocó', 'edificios colapsados en Pereira', 'cuánto duró el terremoto en Colombia', 'qué es la norma NSR-10', 'por qué se caen los edificios en un terremoto', 'comparación terremoto Armenia 1999 y 2026']
+keywords: ['terremoto Colombia 2026', 'terremoto Pereira 10 de agosto', 'qué pasó en el terremoto de Colombia', 'cuántos muertos dejó el terremoto en Colombia', 'sismo San José del Palmar Chocó', 'edificios colapsados en Pereira', 'cuánto duró el terremoto en Colombia', 'qué es la norma NSR-10', 'por qué se caen los edificios en un terremoto', 'comparación terremoto Armenia 1999 y 2026', 'terremoto en Cali fallecidos', 'cifras oficiales damnificados terremoto Colombia']
 series: 'colombia-earthquake-2026'
 seriesOrder: 1
 draft: true
@@ -188,7 +188,9 @@ Lo que más vueltas me ha dado en estas dos semanas es que casi todo lo que func
 
 Y lo que no estaba decidido antes lo puso la gente, a mano y en desorden. El que abrió su casa, el que cocinó, el que manejó horas con un camión prestado, el que se sentó a programar algo que la semana anterior no existía. Eso también sostiene una ciudad, solo que no se puede planear ni exigir. Aparece o no aparece.
 
-Acá apareció. Y eso, más que cualquier cifra de este artículo, es lo que quiero que quede escrito.
+Acá apareció. Pereira no se quedó en silencio noventa segundos, se quedó en silencio tres días, y lo que terminó llenando ese silencio fue gente apareciendo con lo que tenía. Eso, más que cualquier cifra de este artículo, es lo que quiero que quede escrito.
+
+A seguir construyendo.
 
 ---
 
@@ -198,11 +200,3 @@ Acá apareció. Y eso, más que cualquier cifra de este artículo, es lo que qui
 - [Chequeado — preguntas y respuestas para entender qué pasó](https://chequeado.com/el-explicador/terremoto-en-colombia-10-preguntas-y-respuestas-para-entender-que-paso/)
 - [El Tiempo — balance oficial de la UNGRD](https://www.eltiempo.com/colombia/otras-ciudades/balance-oficial-de-la-ungrd-tras-terremoto-de-magnitud-7-4-en-colombia-273-fallecidos-3-824-heridos-y-377-desaparecidos-3578196)
 - [corag.app/ecosystem — directorio de las apps de ayuda construidas tras el terremoto](https://corag.app/ecosystem/)
-
----
-
-Pereira no se quedó en silencio noventa segundos. Se quedó en silencio tres días: sin luz, sin agua, sin señal, y con mucha gente parada en la calle porque volver a entrar se sentía como una apuesta.
-
-Lo que llenó ese silencio, con el tiempo, fue gente apareciendo con lo que tenía.
-
-A seguir construyendo.

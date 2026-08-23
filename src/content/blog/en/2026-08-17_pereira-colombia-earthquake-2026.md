@@ -3,7 +3,7 @@ title: 'Pereira, Colombia: 7:34 a.m., Magnitude 7.4'
 description: 'On August 10, 2026, an earthquake shook western Colombia for ninety seconds. Pereira, my city, was one of the hardest hit. Every figure sourced.'
 pubDate: '2026-08-17'
 tags: ['personal', 'colombia', 'tech']
-keywords: ['2026 Colombia earthquake', 'Pereira earthquake August 2026', 'San José del Palmar Chocó earthquake', 'Colombia earthquake death toll', 'Pereira buildings collapsed', 'how long did the Colombia earthquake last', 'UNGRD earthquake balance', 'what is the NSR-10 seismic code', 'why buildings collapse in an earthquake', 'Armenia 1999 vs 2026 earthquake']
+keywords: ['2026 Colombia earthquake', 'Pereira earthquake August 2026', 'San José del Palmar Chocó earthquake', 'Colombia earthquake death toll', 'Pereira buildings collapsed', 'how long did the Colombia earthquake last', 'UNGRD earthquake balance', 'what is the NSR-10 seismic code', 'why buildings collapse in an earthquake', 'Armenia 1999 vs 2026 earthquake', 'Cali earthquake deaths 2026', 'Colombia earthquake official figures']
 series: 'colombia-earthquake-2026'
 seriesOrder: 1
 draft: true
@@ -190,7 +190,9 @@ What I keep turning over, two weeks in, is that almost everything that worked on
 
 And what hadn't been decided beforehand, people supplied by hand and out of order. The one who opened up their house, the one who cooked, the one who drove for hours in a borrowed truck, the one who sat down and built something that hadn't existed the week before. That holds a city up too, except you can't plan it and you can't require it. It shows up or it doesn't.
 
-Here it showed up. And that, more than any figure in this article, is what I want on the record.
+Here it showed up. Pereira didn't go quiet for ninety seconds, it went quiet for three days, and what eventually filled that silence was people showing up with whatever they had. That, more than any figure in this article, is what I want on the record.
+
+Let's keep building.
 
 ---
 
@@ -200,11 +202,3 @@ Here it showed up. And that, more than any figure in this article, is what I wan
 - [Chequeado — questions and answers to understand what happened](https://chequeado.com/el-explicador/terremoto-en-colombia-10-preguntas-y-respuestas-para-entender-que-paso/)
 - [El Tiempo — official UNGRD balance](https://www.eltiempo.com/colombia/otras-ciudades/balance-oficial-de-la-ungrd-tras-terremoto-de-magnitud-7-4-en-colombia-273-fallecidos-3-824-heridos-y-377-desaparecidos-3578196)
 - [corag.app/ecosystem — directory of the aid apps built after the earthquake](https://corag.app/ecosystem/)
-
----
-
-Pereira didn't go quiet for ninety seconds. It went quiet for three days: no power, no water, no signal, and a lot of people standing in the street because going back inside felt like a bet.
-
-What filled that silence, eventually, was people showing up with whatever they had.
-
-Let's keep building.
