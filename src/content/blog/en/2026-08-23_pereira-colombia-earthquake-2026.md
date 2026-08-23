@@ -185,7 +185,7 @@ The displaced-family count is the figure that moved most. It began at "2,000, an
 
 ---
 
-## Three days without anything
+## Three days without utilities and without communication
 
 Most of the city lost water, power and internet at the same time, and stayed that way for about three days. Some sectors are still without, or intermittent, as I write this.
 

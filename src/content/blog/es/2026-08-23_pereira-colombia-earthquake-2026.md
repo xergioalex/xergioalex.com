@@ -183,7 +183,7 @@ La cifra que más se movió fue la de damnificados. Empezó en "2.000, y seguram
 
 ---
 
-## Tres días sin nada
+## Tres días sin servicios públicos y sin comunicación
 
 Gran parte de la ciudad se quedó sin agua, sin energía y sin internet al mismo tiempo, y así estuvo unos tres días. Algunos sectores todavía no tienen, o lo tienen intermitente, mientras escribo esto.
 
