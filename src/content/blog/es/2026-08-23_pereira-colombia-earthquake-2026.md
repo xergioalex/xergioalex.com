@@ -77,6 +77,17 @@ Mira cómo se mueven. Los desaparecidos: 379 el 13 de agosto, 202 al día siguie
 
 Nada de eso es un error de nadie. Los desaparecidos que bajan son personas que aparecieron: que se reunieron con su familia, que estaban en un albergue, que fueron identificadas. Los que vuelven a subir son reportes que todavía no habían entrado al consolidado. Una cifra de fallecidos que baja suele ser un duplicado depurado, dos entidades contando a la misma persona. Y los 251 edificios que aparecieron colapsados en treinta y seis horas no se cayeron en esas horas: es la inspección avanzando, y cada estructura que un ingeniero entra a revisar puede cambiar de columna. Detrás de cada corrección hay seres humanos cruzando listas. Voy a volver a eso más adelante en la serie, porque parte de ese cruce ocurrió en software que no existía la semana anterior.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/como-se-arma-un-conteo-es.webp"
+    alt="Diagrama del proceso por el que se arma un conteo en una emergencia: los reportes suben de los municipios a las gobernaciones y de ahí al consolidado nacional, y tres viñetas explican por qué las cifras cambian — un duplicado que se depura, una persona desaparecida que aparece, y una edificación que cambia de categoría cuando la inspección avanza."
+    width="1400"
+    height="876"
+    loading="lazy"
+  />
+  <figcaption>Por qué las cifras se mueven. Fuente: boletines de la UNGRD y de las alcaldías.</figcaption>
+</figure>
+
 Por departamento, con corte al 13 de agosto (el último que publicó la UNGRD): Valle del Cauca 125, **Risaralda 94**, Chocó 14, Caldas 6, Quindío 3, Antioquia 1. Según Asocapitales, las ciudades capitales concentraron cerca del 75 % de los fallecidos. Este fue un desastre urbano. Ojo: esos seis departamentos suman 243, y el consolidado nacional de ese mismo día iba en 281. No cuadran, y no encontré explicación oficial de la diferencia.
 
 Y por ciudad. En fallecidos y desaparecidos, la primera cifra es [el consolidado de Asocapitales del 11 de agosto](https://www.asocapitales.co/actualidad/noticias/ciudades-seguras/terremoto-deja-188-fallecidos-y-1677-heridos-en-ciudades) y la segunda el corte más reciente de cada alcaldía. Colapsos y afectadas son del corte más reciente:

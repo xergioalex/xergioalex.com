@@ -79,6 +79,17 @@ Look at how they move. The missing: 379 on August 13, 202 the next day, 320 the 
 
 None of that is anybody's mistake. The missing who drop off are people who were found: reunited with family, located in a shelter, identified. The ones who reappear are reports that hadn't reached the tally yet. A death count that falls is usually a purged duplicate, two agencies counting the same person. And the 251 buildings that showed up collapsed in thirty-six hours didn't come down in those hours: it's inspection catching up, and every structure an engineer walks into can change columns. Behind every correction there are human beings cross-referencing lists. I'll come back to that in this series, because some of that cross-referencing happened in software that didn't exist the week before.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/como-se-arma-un-conteo-en.webp"
+    alt="Diagram of how a count gets built during an emergency: reports move up from municipalities to departments and then to the national consolidation, and three vignettes explain why the figures change — a duplicate being removed, a missing person turning up, and a building changing category as inspection advances."
+    width="1400"
+    height="876"
+    loading="lazy"
+  />
+  <figcaption>Why the figures move. Source: UNGRD and city government bulletins.</figcaption>
+</figure>
+
 By department, at the August 13 cut (the last one the UNGRD published): Valle del Cauca 125, **Risaralda 94**, Chocó 14, Caldas 6, Quindío 3, Antioquia 1. According to Asocapitales, capital cities accounted for roughly 75% of the dead. This was an urban disaster. Note, though: those six departments add up to 243, and the national consolidation for that same day stood at 281. They don't reconcile, and I couldn't find an official explanation for the gap.
 
 And by city. For deaths and missing, the first figure is [the Asocapitales consolidation of August 11](https://www.asocapitales.co/actualidad/noticias/ciudades-seguras/terremoto-deja-188-fallecidos-y-1677-heridos-en-ciudades) and the second is each city's most recent cut. Collapses and damaged are from the most recent cut:
