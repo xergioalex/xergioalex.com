@@ -173,7 +173,7 @@ The city government's early report: **66 buildings in total collapse, 26 in part
 
 The rest of the balance: 243 people rescued, 279 moved to clinics and hospitals, 14 animals pulled out. [By August 19 the Pereira count stood at 99 dead and 132 missing](https://www.semana.com/nacion/pereira/articulo/actualizacion-de-cifras-en-pereira-tras-el-terremoto-se-reportan-99-fallecidos-y-mas-de-132-personas-desaparecidas/202658/).
 
-[The Invico building](https://www.pulzo.com/nacion/terremoto-pereira-danos-edificio-invico-rescatados-balance-oficial-PP5272271) on Avenida Circunvalar is the one everyone has seen. Its twelfth floor is simply gone. Three people were trapped in it and couldn't be recovered, because there was no passage left between floors.
+[The Invico building](https://www.pulzo.com/nacion/terremoto-pereira-danos-edificio-invico-rescatados-balance-oficial-PP5272271) on Avenida Circunvalar is the one everyone brings up in disbelief. Its twelfth floor is simply gone. Three people were trapped in it and couldn't be recovered, because there was no passage left between floors.
 
 That building deserves its own mention, because it's the one that left the most questions. [It was built in the 1970s](https://www.eltiempo.com/colombia/otras-ciudades/tragedia-en-terremoto-en-colombia-piso-12-de-iconico-edificio-en-pereira-colapso-y-aplasto-a-personas-impactantes-imagenes-de-danos-y-rescate-3577778), which puts it before any Colombian seismic code at all: the first mandatory one arrived in 1984. It had held up through the 1995 and 1999 earthquakes.
 
