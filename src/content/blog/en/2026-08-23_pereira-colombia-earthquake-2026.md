@@ -224,7 +224,7 @@ This was important to bring up here because I want to take up, in later chapters
 
 ---
 
-## Everybody helped from wherever they were standing
+## The city helped itself
 
 This is the part I did not expect, and it's the reason I'm writing at all.
 

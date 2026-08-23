@@ -222,7 +222,7 @@ Esto era importante mencionarlo ahora porque quiero tratar en capítulos posteri
 
 ---
 
-## Cada quien ayudó desde donde estaba parado
+## La ciudad se ayudó a sí misma
 
 Esta es la parte que no esperaba, y es la razón por la que estoy escribiendo.
 
