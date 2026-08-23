@@ -29,7 +29,7 @@ Esos 103 kilómetros de profundidad son la razón por la que este no se sintió 
 
 No fue una falla superficial rompiéndose debajo de una ciudad. Frente a la costa Pacífica, la placa de Nazca se hunde por debajo de la Sudamericana. Es subducción, el mismo proceso que levantó los Andes. Este sismo ocurrió *adentro* de esa placa que ya va descendiendo, a más de cien kilómetros de profundidad. [El USGS lo clasifica como falla de rumbo dentro de la placa](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/technical), no como una ruptura en el límite entre placas.
 
-Es decir: la energía vino de muy abajo y se repartió sobre un área enorme en vez de concentrarse en un valle. Más de **12.000 personas de 900 centros poblados** reportaron haberlo sentido, según el SGC. Se sintió en Panamá. Se sintió en Venezuela. Y siguió y siguió porque, en palabras del SGC, cuando hay magnitudes tan altas, la energía liberada no alcanza a disiparse completamente por debajo de la superficie.
+Es decir: la energía vino de muy abajo y se repartió sobre un área enorme en vez de concentrarse en un valle. Llegaron reportes de haberlo sentido desde **900 centros poblados**, según el SGC. Se sintió en Panamá. Se sintió en Venezuela. Y siguió y siguió porque, en palabras del SGC, cuando hay magnitudes tan altas, la energía liberada no alcanza a disiparse completamente por debajo de la superficie.
 
 <figure>
   <img

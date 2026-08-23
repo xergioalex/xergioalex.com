@@ -29,7 +29,7 @@ Those 103 kilometers of depth are why this one didn't feel like any earthquake w
 
 This wasn't a shallow fault rupturing under a city. Off the Pacific coast, the Nazca plate slides underneath the South American plate. That's subduction, the same process that built the Andes. This earthquake happened *inside* that descending slab, more than a hundred kilometers down. [The USGS classifies it as strike-slip faulting within the plate](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/technical) rather than a rupture along the plate boundary.
 
-Which means: the energy came from far below and spread out over an enormous area instead of concentrating in one valley. Over **12,000 people from 900 population centers** reported feeling it, according to the SGC. It was felt in Panama. It was felt in Venezuela. And it went on and on because, in the SGC's words, when the magnitude is that high, the energy released can't fully dissipate before it reaches the surface.
+Which means: the energy came from far below and spread out over an enormous area instead of concentrating in one valley. Reports of people feeling it came in from **900 population centers**, according to the SGC. It was felt in Panama. It was felt in Venezuela. And it went on and on because, in the SGC's words, when the magnitude is that high, the energy released can't fully dissipate before it reaches the surface.
 
 <figure>
   <img
