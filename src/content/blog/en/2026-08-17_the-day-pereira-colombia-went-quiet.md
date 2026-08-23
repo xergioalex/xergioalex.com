@@ -1,6 +1,6 @@
 ---
-title: 'The Day Pereira, Colombia, Went Quiet'
-description: 'On August 10, 2026, a magnitude 7.4 earthquake hit western Colombia. Pereira, my city, was one of the hardest hit. What happened, with every figure sourced.'
+title: 'Pereira, Colombia: 7:34 a.m., Magnitude 7.4'
+description: 'On August 10, 2026, an earthquake shook western Colombia for ninety seconds. Pereira, my city, was one of the hardest hit. Every figure sourced.'
 pubDate: '2026-08-17'
 tags: ['personal', 'colombia', 'tech']
 keywords: ['2026 Colombia earthquake', 'Pereira earthquake August 2026', 'San José del Palmar Chocó earthquake', 'Colombia earthquake death toll', 'Pereira buildings collapsed', 'how long did the Colombia earthquake last', 'UNGRD earthquake balance', 'what is the NSR-10 seismic code', 'why buildings collapse in an earthquake', 'Armenia 1999 vs 2026 earthquake']
@@ -9,7 +9,7 @@ seriesOrder: 1
 draft: true
 ---
 
-Monday, August 10, 2026. 7:34 in the morning.
+Monday, August 10, 2026. 7:34 a.m.
 
 The [Servicio Geológico Colombiano](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) (the SGC, Colombia's state agency for monitoring seismic activity) recorded a quake in western Colombia that lasted somewhere between ninety seconds and two minutes. We had never felt one that long. Ninety seconds is enough time to understand exactly what is happening and to be able to do nothing about it. Whole buildings came down, houses split open, entire housing complexes ended up on the ground. In some of the videos shot from above you can see, seconds later, all of Pereira wrapped in a cloud of dust, and behind it the chaos.
 

@@ -1,6 +1,6 @@
 ---
-title: 'El día que Pereira, Colombia, se quedó en silencio'
-description: 'El 10 de agosto de 2026 un terremoto de magnitud 7,4 golpeó el occidente de Colombia. Pereira, mi ciudad, fue una de las más golpeadas. Qué pasó, con fuentes.'
+title: 'Pereira, Colombia: 7:34 a. m., magnitud 7,4'
+description: 'El 10 de agosto de 2026 un terremoto sacudió el occidente de Colombia durante noventa segundos. Pereira, mi ciudad, fue una de las más golpeadas.'
 pubDate: '2026-08-17'
 tags: ['personal', 'colombia', 'tech']
 keywords: ['terremoto Colombia 2026', 'terremoto Pereira 10 de agosto', 'qué pasó en el terremoto de Colombia', 'cuántos muertos dejó el terremoto en Colombia', 'sismo San José del Palmar Chocó', 'edificios colapsados en Pereira', 'cuánto duró el terremoto en Colombia', 'qué es la norma NSR-10', 'por qué se caen los edificios en un terremoto', 'comparación terremoto Armenia 1999 y 2026']
@@ -9,7 +9,7 @@ seriesOrder: 1
 draft: true
 ---
 
-Lunes 10 de agosto de 2026. 7:34 de la mañana.
+Lunes 10 de agosto de 2026. 7:34 a. m.
 
 El [Servicio Geológico Colombiano](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) (el SGC, la entidad estatal que monitorea la actividad sísmica del país) registró un movimiento en el occidente colombiano que duró entre noventa segundos y dos minutos. Nunca habíamos sentido un temblor tan largo. Noventa segundos alcanzan para entender lo que está pasando y para no poder hacer nada al respecto. Edificaciones enteras se desplomaron, casas se agrietaron, conjuntos residenciales completos quedaron en el piso. En algunos videos grabados desde las alturas se ve, segundos después, a toda Pereira envuelta en una nube de polvo, y detrás de ella el caos.
 
