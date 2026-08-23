@@ -39,7 +39,7 @@ Las réplicas son la razón por la que la gente dejó de dormir tranquila. Y son
 
 ## Las cifras de la catástrofe
 
-Acá quiero ir con cuidado. Voy a usar números porque es la única forma de dimensionar lo que pasó, pero cada cifra de esta sección son personas: alguien con nombre, con casa, con familia. Es también donde mucha escritura sobre desastres se tuerce sin que nadie se dé cuenta. Por eso cada cifra de acá abajo viene con dos cosas: de dónde salió — la UNGRD, las alcaldías, el SGC, el DANE, prensa cuando no hay conteo oficial — y a qué hora se cortó. En una emergencia, un número sin fecha no es un dato. Es una foto vieja.
+Acá quiero ir con cuidado. Voy a usar números porque es la única forma de dimensionar lo que pasó, pero cada cifra de esta sección son personas: alguien con nombre, con casa, con familia. Es también donde mucha escritura sobre desastres se tuerce sin que nadie se dé cuenta. Por eso cada cifra de acá abajo viene con dos cosas: de dónde salió — la UNGRD, las alcaldías, el SGC, el DANE, prensa cuando no hay conteo oficial — y a qué hora se registró. En una emergencia, un número sin fecha no es un dato. Es una foto vieja.
 
 Una aclaración: **cuando doy una cifra sin decir de qué ciudad es, es nacional**. Escribo desde Pereira porque es donde vivo, pero el sismo no fue local: sacudió dieciséis departamentos, y las tres ciudades con más fallecidos quedan en tres distintos.
 
@@ -47,7 +47,7 @@ Entre el 10 y el 21 de agosto las cifras oficiales cambiaron todos los días, y 
 
 Así se ve:
 
-| Corte | Fallecidos | Heridos | Desaparecidos |
+| Registro | Fallecidos | Heridos | Desaparecidos |
 |-------|-----------|---------|---------------|
 | [10 ago (preliminar)](https://chequeado.com/el-explicador/terremoto-de-magnitud-7-4-en-colombia-el-gobierno-declara-desastre-nacional-y-reporta-al-menos-111-muertos/) | 132 | 570 | — |
 | 12 ago, 7:30 a. m. | 239 | 3.755 | 287 |
@@ -70,7 +70,7 @@ Por departamento, con corte al 13 de agosto (el último que publicó la UNGRD): 
 
 Y por ciudad. En fallecidos y desaparecidos, la primera cifra es [el consolidado de Asocapitales del 11 de agosto](https://www.asocapitales.co/actualidad/noticias/ciudades-seguras/terremoto-deja-188-fallecidos-y-1677-heridos-en-ciudades) y la segunda el corte más reciente de cada alcaldía. Colapsos y afectadas son del corte más reciente:
 
-| Ciudad | 👤 Fallecidos | 👤 Desaparecidos | 🏢 Colapso total | 🏢 Afectadas | Corte |
+| Ciudad | 👤 Fallecidos | 👤 Desaparecidos | 🏢 Colapso total | 🏢 Afectadas | Registro |
 |--------|-----------|---------------|----------|-----------|-------|
 | Cali | 95 → **147** | 180 → **47** | 24 | 8.030 | [20 ago](https://www.pulzo.com/nacion/terremoto-en-cali-balance-oficial-de-fallecidos-desaparecidos-y-danos-al-20-de-agosto-PP5279710A) |
 | **Pereira** | **79 → 99** | **37 → 132** | **66** | **35.263** | [19 ago](https://elnortehoy.com/2026/08/19/en-pereira-actualizan-balance-victimas-por-terremoto) |
@@ -180,7 +180,7 @@ Ya son más de veinte herramientas. Hace unos días la gente detrás de varias d
 
 ## Una nota sobre las cifras de esta serie
 
-Cada número de estos artículos lleva fuente nombrada y fecha de corte. Lo hago por una razón aburrida y por una importante.
+Cada número de estos artículos lleva fuente nombrada y fecha de registro. Lo hago por una razón aburrida y por una importante.
 
 La aburrida es que estos números todavía se están moviendo. Cualquier cosa que escriba hoy va a estar desactualizada en algún margen el mes entrante, y un número sin fecha es un número que empieza a mentir en silencio a medida que envejece.
 

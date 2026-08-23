@@ -39,7 +39,7 @@ The aftershocks are why people stopped sleeping easy. And they're why no damage 
 
 ## The catastrophe in numbers
 
-I want to be careful here. I'm going to use numbers because it's the only way to grasp the size of what happened, but every figure in this section is people: someone with a name, a house, a family. It's also where a lot of writing about disasters quietly goes wrong. So every figure below comes with two things: where it came from — the UNGRD, city governments, the SGC, DANE, the press where there is no official count — and what hour it was cut. In an emergency, a number without a date isn't data. It's an old photograph.
+I want to be careful here. I'm going to use numbers because it's the only way to grasp the size of what happened, but every figure in this section is people: someone with a name, a house, a family. It's also where a lot of writing about disasters quietly goes wrong. So every figure below comes with two things: where it came from — the UNGRD, city governments, the SGC, DANE, the press where there is no official count — and the hour it was recorded. In an emergency, a number without a date isn't data. It's an old photograph.
 
 A clarification: **when I give a figure without naming a city, it's national**. I write from Pereira because it's where I live, but the earthquake wasn't local: it shook sixteen departments, and the three cities with the most deaths are in three different ones.
 
@@ -47,7 +47,7 @@ Between August 10 and August 21, the official figures changed every day and some
 
 Here's the shape of it:
 
-| Cut-off | Deaths | Injured | Missing |
+| Recorded | Deaths | Injured | Missing |
 |---------|--------|---------|---------|
 | [Aug 10 (preliminary)](https://chequeado.com/el-explicador/terremoto-de-magnitud-7-4-en-colombia-el-gobierno-declara-desastre-nacional-y-reporta-al-menos-111-muertos/) | 132 | 570 | — |
 | Aug 12, 7:30 a.m. | 239 | 3,755 | 287 |
@@ -70,7 +70,7 @@ By department, at the August 13 cut (the last one the UNGRD published): Valle de
 
 And by city. For deaths and missing, the first figure is [the Asocapitales consolidation of August 11](https://www.asocapitales.co/actualidad/noticias/ciudades-seguras/terremoto-deja-188-fallecidos-y-1677-heridos-en-ciudades) and the second is each city's most recent cut. Collapses and damaged are from the most recent cut:
 
-| City | 👤 Deaths | 👤 Missing | 🏢 Total collapse | 🏢 Damaged | Cut |
+| City | 👤 Deaths | 👤 Missing | 🏢 Total collapse | 🏢 Damaged | Recorded |
 |------|--------|---------|-----------|---------|-----|
 | Cali | 95 → **147** | 180 → **47** | 24 | 8,030 | [Aug 20](https://www.pulzo.com/nacion/terremoto-en-cali-balance-oficial-de-fallecidos-desaparecidos-y-danos-al-20-de-agosto-PP5279710A) |
 | **Pereira** | **79 → 99** | **37 → 132** | **66** | **35,263** | [Aug 19](https://elnortehoy.com/2026/08/19/en-pereira-actualizan-balance-victimas-por-terremoto) |
@@ -180,7 +180,7 @@ There are more than twenty of these tools now. A few days ago the people behind 
 
 ## A note on the numbers in this series
 
-Every figure in these articles carries a named source and a cut-off date. I'm doing that for a boring reason and an important one.
+Every figure in these articles carries a named source and the date it was recorded. I'm doing that for a boring reason and an important one.
 
 The boring reason is that these numbers are still moving. Anything I write today will be wrong by some margin next month, and a number without a date is a number that quietly lies as it ages.
 
