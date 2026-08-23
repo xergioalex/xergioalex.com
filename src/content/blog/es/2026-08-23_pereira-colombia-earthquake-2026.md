@@ -183,6 +183,12 @@ Aparte quiero mencionar la **Universidad Tecnológica de Pereira**, de donde soy
 
 Me duele verla así, y va a pasar tiempo antes de que vuelva a funcionar en todo su esplendor.
 
+Y está La Lorena, el conjunto residencial que más ha sonado en Pereira. [Eran 16 torres de cinco pisos donde vivían unas 500 personas](https://www.univision.com/noticias/terremoto-en-colombia-asi-quedaron-torres-de-vivienda-en-uno-de-los-barrios-mas-tradicionales-de-pereira-video), en uno de los barrios más tradicionales de la ciudad. Hoy más del 80 % de esas edificaciones está en riesgo: unas quedaron reducidas a escombros y otras quedaron inclinadas, y [las 16 torres de La Lorena 3 quedaron en ruinas](https://citytv.eltiempo.com/fotos-y-videos/video-y-multimedia/terremoto-deja-en-ruinas-las-16-torres-del-conjunto-la-lorena-3-en-pereira_94334). Tres personas murieron ahí. Los rescatistas alcanzaron a oírlas pedir ayuda y no pudieron sacarlas.
+
+Lo que más me impresiona es que esos edificios ya habían pasado por esto. Aguantaron el sismo de 1999 con daños en las fachadas, y después les hicieron un reforzamiento estructural. Aun así, veintisiete años más tarde, se perdieron. Lo que quedó en pie va a tener que demolerse.
+
+Mi hermano vivía ahí. Salió con vida. Su apartamento no.
+
 Y el 18 de agosto, ocho días después del terremoto, [una casa de tres pisos en la calle 26 con carrera 11 se cayó sola](https://www.semana.com/nacion/pereira/articulo/la-historia-de-la-casa-de-tres-pisos-que-colapso-en-pereira-este-martes-ocho-dias-despues-del-terremoto-del-10-de-agosto/202611/). No hubo heridos: la fachada estaba marcada con el aviso de riesgo de la alcaldía, y el propietario había publicado un video el mismo día del sismo advirtiendo cómo había quedado. Eso explica por qué el conteo de colapsos siguió subiendo durante semanas. No todo lo que se cayó se cayó el lunes.
 
 Se habilitaron albergues en el Parque El Vergel, el Parque El Oso, el Coliseo Mayor, el Parque Olaya, la Plaza de Ferias y el Estadio Mora Mora. [Dos llegaron al límite en cuestión de días](https://www.semana.com/nacion/pereira/articulo/terremoto-en-pereira-dos-albergues-ya-estan-al-limite-y-estos-son-los-puntos-disponibles/202651/).
@@ -190,14 +196,6 @@ Se habilitaron albergues en el Parque El Vergel, el Parque El Oso, el Coliseo Ma
 El alcalde Mauricio Salazar declaró calamidad pública y emergencia económica, impuso toque de queda de seis de la tarde a cinco de la mañana tras reportes de saqueos, y después prohibió por completo la circulación de vehículos particulares desde la medianoche del 12 hasta las ocho de la noche del 17. El censo de edificaciones arrancó el 12.
 
 La cifra que más osciló fue la de damnificados. Empezó en "2.000, y seguramente vamos a llegar a 4.000". Después llegó a **41.600 familias, alrededor de 140.000 personas afectadas**. No son números contradictorios: el primero era gente en albergues, el segundo es gente cuya vivienda quedó afectada. Pero si los ves citados uno al lado del otro sin esa distinción, parecen un desorden, y no lo son.
-
----
-
-Y está La Lorena, el conjunto residencial que más ha sonado en Pereira. [Eran 16 torres de cinco pisos donde vivían unas 500 personas](https://www.univision.com/noticias/terremoto-en-colombia-asi-quedaron-torres-de-vivienda-en-uno-de-los-barrios-mas-tradicionales-de-pereira-video), en uno de los barrios más tradicionales de la ciudad. Hoy más del 80 % de esas edificaciones está en riesgo: unas quedaron reducidas a escombros y otras quedaron inclinadas, y [las 16 torres de La Lorena 3 quedaron en ruinas](https://citytv.eltiempo.com/fotos-y-videos/video-y-multimedia/terremoto-deja-en-ruinas-las-16-torres-del-conjunto-la-lorena-3-en-pereira_94334). Tres personas murieron ahí. Los rescatistas alcanzaron a oírlas pedir ayuda y no pudieron sacarlas.
-
-Lo que más me impresiona es que esos edificios ya habían pasado por esto. Aguantaron el sismo de 1999 con daños en las fachadas, y después les hicieron un reforzamiento estructural. Aun así, veintisiete años más tarde, se perdieron. Lo que quedó en pie va a tener que demolerse.
-
-Mi hermano vivía ahí. Salió con vida. Su apartamento no.
 
 ## Tres días sin servicios públicos y sin comunicación
 
