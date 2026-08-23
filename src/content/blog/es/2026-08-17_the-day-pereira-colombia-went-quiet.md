@@ -178,15 +178,15 @@ Ya son más de veinte herramientas. Hace unos días la gente detrás de varias d
 
 ---
 
-## Una nota sobre las cifras de esta serie
+## Dos semanas después
 
-Cada número de estos artículos lleva fuente nombrada y fecha de registro. Lo hago por una razón aburrida y por una importante.
+Pereira no ha vuelto a la normalidad y no va a volver pronto. [La alcaldía habla de cinco años de reconstrucción y de más de diez billones de pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). Hay familias esperando que un ingeniero les diga si pueden volver a entrar a su casa, y otras que ya saben que no. Hay gente que duerme mal, que se levanta cuando pasa un camión pesado, que todavía siente que el piso se mueve cuando no se está moviendo.
 
-La aburrida es que estos números todavía se están moviendo. Cualquier cosa que escriba hoy va a estar desactualizada en algún margen el mes entrante, y un número sin fecha es un número que empieza a mentir en silencio a medida que envejece.
+Lo que más vueltas me ha dado en estas dos semanas es que casi todo lo que funcionó el 10 de agosto se había decidido años antes. La norma que dejó a Armenia en pie se escribió después de 1999, por gente que no tenía cómo saber cuándo iba a servir. Las ciudades que pudieron dar cifras al día siguiente pudieron hacerlo porque ya tenían con qué contar. Nada de eso se improvisó esa mañana. Esa mañana solo se cobró.
 
-La importante es que toda esta serie sostiene que la información confiable importa — que los timestamps y la evidencia son la diferencia entre que la ayuda llegue y que se evapore. No puedo defender eso en un artículo que juega sucio con sus propios datos.
+Y lo que no estaba decidido antes lo puso la gente, a mano y en desorden. El que abrió su casa, el que cocinó, el que manejó horas con un camión prestado, el que se sentó a programar algo que la semana anterior no existía. Eso también sostiene una ciudad, solo que no se puede planear ni exigir. Aparece o no aparece.
 
-Entonces: nada de porcentajes inventados. Nada de "media ciudad quedó destruida". Cuando escribo, en el tercer párrafo, que gran parte de Pereira está destruida, eso es lo que veo con mis propios ojos — no es una cifra oficial, y no la voy a presentar como si lo fuera.
+Acá apareció. Y eso, más que cualquier cifra de este artículo, es lo que quiero que quede escrito.
 
 ---
 

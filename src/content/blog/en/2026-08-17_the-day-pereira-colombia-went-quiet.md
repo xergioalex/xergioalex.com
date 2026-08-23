@@ -178,15 +178,15 @@ There are more than twenty of these tools now. A few days ago the people behind 
 
 ---
 
-## A note on the numbers in this series
+## Two weeks later
 
-Every figure in these articles carries a named source and the date it was recorded. I'm doing that for a boring reason and an important one.
+Pereira has not gone back to normal and it won't any time soon. [The city government is talking about five years of reconstruction and more than ten trillion pesos in damage](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). There are families waiting for an engineer to tell them whether they can go back into their house, and others who already know they can't. There are people sleeping badly, getting up when a heavy truck goes by, still feeling the floor move when the floor isn't moving.
 
-The boring reason is that these numbers are still moving. Anything I write today will be wrong by some margin next month, and a number without a date is a number that quietly lies as it ages.
+What I keep turning over, two weeks in, is that almost everything that worked on August 10 had been decided years earlier. The code that kept Armenia standing was written after 1999, by people with no way of knowing when it would matter. The cities that could publish figures the next day could do it because they already had something to count with. None of that was improvised that morning. That morning it just came due.
 
-The important one is that this whole series argues that trustworthy information matters — that timestamps and evidence are the difference between help arriving and help evaporating. I can't make that argument in an article that plays loose with its own facts.
+And what hadn't been decided beforehand, people supplied by hand and out of order. The one who opened up their house, the one who cooked, the one who drove for hours in a borrowed truck, the one who sat down and built something that hadn't existed the week before. That holds a city up too, except you can't plan it and you can't require it. It shows up or it doesn't.
 
-So: no invented percentages. No "half the city was destroyed." When I write, in the third paragraph, that a lot of Pereira is destroyed, that is what I see with my own eyes — it is not an official figure, and I am not going to dress it up as one.
+Here it showed up. And that, more than any figure in this article, is what I want on the record.
 
 ---
 
