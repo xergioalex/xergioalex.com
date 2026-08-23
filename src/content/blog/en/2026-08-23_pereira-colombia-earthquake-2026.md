@@ -31,6 +31,17 @@ This wasn't a shallow fault rupturing under a city. Off the Pacific coast, the N
 
 Which means: the energy came from far below and spread out over an enormous area instead of concentrating in one valley. Over **12,000 people from 900 population centers** reported feeling it, according to the SGC. It was felt in Panama. It was felt in Venezuela. And it went on and on because, in the SGC's words, when the magnitude is that high, the energy released can't fully dissipate before it reaches the surface.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/corte-subduccion-en.webp"
+    alt="Cross-section of the subsurface in western Colombia: the Nazca plate slides under the South American plate and the earthquake's focus is marked 103 kilometers down, inside the descending slab, with waves fanning out very wide toward the surface. An inset compares it with a shallow quake, whose waves concentrate in a narrow area."
+    width="1400"
+    height="876"
+    loading="lazy"
+  />
+  <figcaption>Why three countries felt it. Sources: Servicio Geológico Colombiano; USGS.</figcaption>
+</figure>
+
 It's the strongest earthquake recorded in Colombia this century.
 
 Then the aftershocks started. Eighteen by noon on the first day. [More than 130 by six in the morning on August 12](https://www.infobae.com/colombia/2026/08/12/tras-el-terremoto-de-74-en-colombia-ya-son-130-las-replicas-confirmo-el-servicio-geologico-colombiano/), ranging from 0.6 to 4.8, clustered around San José del Palmar, El Litoral del San Juan and Sipí. On the 13th it shook hard again in Chocó in the middle of the night.

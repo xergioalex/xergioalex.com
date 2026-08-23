@@ -31,6 +31,17 @@ No fue una falla superficial rompiéndose debajo de una ciudad. Frente a la cost
 
 Es decir: la energía vino de muy abajo y se repartió sobre un área enorme en vez de concentrarse en un valle. Más de **12.000 personas de 900 centros poblados** reportaron haberlo sentido, según el SGC. Se sintió en Panamá. Se sintió en Venezuela. Y siguió y siguió porque, en palabras del SGC, cuando hay magnitudes tan altas, la energía liberada no alcanza a disiparse completamente por debajo de la superficie.
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/corte-subduccion-es.webp"
+    alt="Corte transversal del subsuelo del occidente colombiano: la placa de Nazca se hunde bajo la Sudamericana y el foco del sismo aparece marcado a 103 kilómetros de profundidad, dentro de la placa que desciende, con las ondas abriéndose en un abanico muy ancho hacia la superficie. Un recuadro compara con un sismo superficial, cuyas ondas se concentran en un área estrecha."
+    width="1400"
+    height="876"
+    loading="lazy"
+  />
+  <figcaption>Por qué se sintió en tres países. Fuentes: Servicio Geológico Colombiano; USGS.</figcaption>
+</figure>
+
 Es el sismo de mayor magnitud registrado en Colombia en este siglo.
 
 Después empezaron las réplicas. Dieciocho al mediodía del primer día. [Más de 130 a las seis de la mañana del 12 de agosto](https://www.infobae.com/colombia/2026/08/12/tras-el-terremoto-de-74-en-colombia-ya-son-130-las-replicas-confirmo-el-servicio-geologico-colombiano/), entre 0,6 y 4,8, concentradas en San José del Palmar, El Litoral del San Juan y Sipí. El 13 volvió a temblar fuerte en el Chocó de madrugada.
