@@ -187,7 +187,7 @@ Y está La Lorena, el conjunto residencial que más ha sonado en Pereira. [Eran 
 
 Lo que más me impresiona es que esos edificios ya habían pasado por esto. Aguantaron el sismo de 1999 con daños en las fachadas, y después les hicieron un reforzamiento estructural. Aun así, veintisiete años más tarde, se perdieron. Lo que quedó en pie va a tener que demolerse.
 
-Mi hermano vivía ahí. Salió con vida. Su apartamento no.
+Mi hermano vivía ahí y afortunadamente salió con vida. Es una historia que me toca de cerca, y es apenas una más dentro de las cifras de damnificados que perdieron su hogar en ese conjunto. Hay infinidad de historias así, y no alcanzaría este artículo para contarlas todas.
 
 Y el 18 de agosto, ocho días después del terremoto, [una casa de tres pisos en la calle 26 con carrera 11 se cayó sola](https://www.semana.com/nacion/pereira/articulo/la-historia-de-la-casa-de-tres-pisos-que-colapso-en-pereira-este-martes-ocho-dias-despues-del-terremoto-del-10-de-agosto/202611/). No hubo heridos: la fachada estaba marcada con el aviso de riesgo de la alcaldía, y el propietario había publicado un video el mismo día del sismo advirtiendo cómo había quedado. Eso explica por qué el conteo de colapsos siguió subiendo durante semanas. No todo lo que se cayó se cayó el lunes.
 

@@ -189,7 +189,7 @@ And there's La Lorena, the residential complex that has been talked about most i
 
 What strikes me most is that those buildings had already been through this. They held up in the 1999 earthquake with damage to their façades, and afterward they were structurally reinforced. Even so, twenty-seven years later, they were lost. What's still standing will have to come down.
 
-My brother lived there. He got out alive. His apartment didn't.
+My brother lived there and, fortunately, he got out alive. It's a story that hits close to home for me, and it is only one more inside the count of displaced people who lost their homes in that complex. There are countless stories like it, and this article wouldn't be long enough to tell them all.
 
 And on August 18, eight days after the earthquake, [a three-story house at Calle 26 with Carrera 11 came down on its own](https://www.semana.com/nacion/pereira/articulo/la-historia-de-la-casa-de-tres-pisos-que-colapso-en-pereira-este-martes-ocho-dias-despues-del-terremoto-del-10-de-agosto/202611/). Nobody was hurt: the facade was marked with the city's risk notice, and the owner had posted a video on the day of the quake warning about the state it was in. That's why the collapse count kept climbing for weeks. Not everything that fell, fell on Monday.
 
