@@ -23,7 +23,7 @@ Yo vivo en Pereira. Y dos semanas después todavía no tengo una forma limpia de
 
 El epicentro estuvo cerca de **San José del Palmar**, en el Chocó, a unos 20 km del casco urbano. Magnitud **7,4**. Profundidad de **103 km** [según el SGC](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) — [el USGS (el servicio geológico de Estados Unidos) lo calcula un poco más hondo, en 110 km](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive).
 
-La profundidad explica por qué este se sintió distinto a todo.
+Esos 103 kilómetros de profundidad explican casi todo lo demás: los noventa segundos, el alcance y el tipo de daño que dejó.
 
 No fue una falla superficial rompiéndose debajo de una ciudad. Frente a la costa Pacífica, la placa de Nazca se hunde por debajo de la Sudamericana — subducción, el mismo proceso que levantó los Andes. Este sismo ocurrió *adentro* de esa placa que ya va descendiendo, a más de cien kilómetros de profundidad. [El USGS lo clasifica como falla de rumbo dentro de la placa](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/technical), no como una ruptura en el límite entre placas.
 

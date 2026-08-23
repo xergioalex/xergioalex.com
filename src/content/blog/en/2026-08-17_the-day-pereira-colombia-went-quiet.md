@@ -23,7 +23,7 @@ I live in Pereira. And two weeks later I still don't have a clean way to describ
 
 The epicenter was near **San José del Palmar**, in Chocó, about 20 km from the town. Magnitude **7.4**. Depth **103 km** [according to the SGC](https://www2.sgc.gov.co/Noticias/Paginas/SGC-actualiza-la-informacion-sobre-el-sismo-ocurrido-en-San-Jose-del-Palmar-Choco.aspx) — [the USGS puts it slightly deeper, at 110 km](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive).
 
-The depth is the whole story of why this one felt different.
+Those 103 kilometers of depth explain almost everything else: the ninety seconds, the reach, and the kind of damage it left behind.
 
 This wasn't a shallow fault rupturing under a city. Off the Pacific coast, the Nazca plate slides underneath the South American plate — subduction, the same process that built the Andes. This earthquake happened *inside* that descending slab, more than a hundred kilometers down. [The USGS classifies it as strike-slip faulting within the plate](https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/technical) rather than a rupture along the plate boundary.
 
