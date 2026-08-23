@@ -193,9 +193,9 @@ Y el 18 de agosto, ocho días después del terremoto, [una casa de tres pisos en
 
 Se habilitaron albergues en el Parque El Vergel, el Parque El Oso, el Coliseo Mayor, el Parque Olaya, la Plaza de Ferias y el Estadio Mora Mora. [Dos llegaron al límite en cuestión de días](https://www.semana.com/nacion/pereira/articulo/terremoto-en-pereira-dos-albergues-ya-estan-al-limite-y-estos-son-los-puntos-disponibles/202651/).
 
-El alcalde Mauricio Salazar declaró calamidad pública y emergencia económica, impuso toque de queda de seis de la tarde a cinco de la mañana tras reportes de saqueos, y después prohibió por completo la circulación de vehículos particulares desde la medianoche del 12 hasta las ocho de la noche del 17. El censo de edificaciones arrancó el 12.
+El alcalde Mauricio Salazar declaró calamidad pública y emergencia económica, e impuso toque de queda de seis de la tarde a cinco de la mañana tras reportes de saqueos. El censo de edificaciones arrancó el 12.
 
-La cifra que más osciló fue la de damnificados. Empezó en "2.000, y seguramente vamos a llegar a 4.000". Después llegó a **41.600 familias, alrededor de 140.000 personas afectadas**. No son números contradictorios: el primero era gente en albergues, el segundo es gente cuya vivienda quedó afectada. Pero si los ves citados uno al lado del otro sin esa distinción, parecen un desorden, y no lo son.
+Pereira está viviendo una situación muy compleja, y la reconstrucción se mide en años, no en meses. Pero la ciudad no está sola, y lo que se vuelva a levantar se va a levantar bajo norma. Con la ayuda adecuada, Pereira va a resurgir, y va a hacerlo más fuerte de lo que era.
 
 ## Tres días sin servicios públicos y sin comunicación
 

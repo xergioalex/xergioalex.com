@@ -195,9 +195,9 @@ And on August 18, eight days after the earthquake, [a three-story house at Calle
 
 Shelters opened at Parque El Vergel, Parque El Oso, Coliseo Mayor, Parque Olaya, Plaza de Ferias and Estadio Mora Mora. [Two of them hit capacity within days](https://www.semana.com/nacion/pereira/articulo/terremoto-en-pereira-dos-albergues-ya-estan-al-limite-y-estos-son-los-puntos-disponibles/202651/).
 
-Mayor Mauricio Salazar declared public calamity and economic emergency, imposed a curfew from six in the evening to five in the morning after reports of looting, and then banned private vehicle circulation entirely from midnight on the 12th until eight in the evening on the 17th. The building census started on the 12th.
+Mayor Mauricio Salazar declared public calamity and economic emergency, and imposed a curfew from six in the evening to five in the morning after reports of looting. The building census started on the 12th.
 
-The displaced-family count is the figure that fluctuated most. It began at "2,000, and we'll probably get to 4,000." It later reached **41,600 families, around 140,000 people affected**. Those aren't contradictory numbers: the first was people in shelters, the second is people whose homes were damaged. But if you see them quoted side by side without that distinction, they look like chaos, and they aren't.
+Pereira is in a very hard place, and the rebuilding is measured in years, not months. But the city isn't alone, and whatever goes back up will go up to code. With the right help, Pereira will come back, and it will come back stronger than it was.
 
 ## Three days without utilities and without communication
 
