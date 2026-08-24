@@ -153,6 +153,7 @@ export async function getPostBySlug(
  *    author-aid / accessibility, not reader time)
  *  - All other HTML tags
  *  - Markdown formatting characters (#, *, _, etc.)
+ *  - Table pipes and any other token with no letter or digit in it
  *
  * Preserves:
  *  - Visible text inside markdown links `[text](url)` -> `text`
@@ -178,7 +179,11 @@ function normalizeContentForWordCount(content: string): string {
  */
 export function getWordCount(content: string): number {
   const normalized = normalizeContentForWordCount(content);
-  return normalized.length > 0 ? normalized.split(' ').length : 0;
+  if (normalized.length === 0) return 0;
+  // A table pipe or a stray dash is punctuation, not a word. Without this
+  // filter a wide table adds dozens of phantom words to the reading time.
+  return normalized.split(' ').filter((token) => /[\p{L}\p{N}]/u.test(token))
+    .length;
 }
 
 /**
