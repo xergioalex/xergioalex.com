@@ -50,6 +50,7 @@ const subtopicAccentByName = await getSubtopicAccentMap();
       {
         posts.map((post) => (
           <BlogCard
+            headingLevel="h3"
             client:visible
             {post}
             lang={lang as Language}

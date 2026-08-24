@@ -1,7 +1,7 @@
 /**
  * Cloudflare Pages Middleware — AI Bot Analytics & Markdown Content Negotiation
  *
- * Two responsibilities:
+ * Three responsibilities:
  *
  * 1. **Markdown for Agents**: If a request sends `Accept: text/markdown`,
  *    serves the static `.md` version of the page (if it exists) instead of HTML.
@@ -12,8 +12,23 @@
  *    and tracks them server-side to Umami (AI bots don't execute JavaScript,
  *    so client-side analytics are invisible to them).
  *
- * Non-bot, non-markdown requests pass through with zero overhead.
+ * 3. **Agent-friendly errors**: Every prerendered `/api/*` endpoint is a static
+ *    file, so a request for a path that was never built is answered by
+ *    Cloudflare with the HTML 404 page. This middleware turns those into a
+ *    structured JSON error under `/api/`, and into a short Markdown recovery
+ *    document for any non-browser client elsewhere. Browsers keep the styled
+ *    HTML 404. See `src/lib/agent-errors.ts`.
+ *
+ * Non-bot, non-markdown requests that succeed pass through with zero overhead.
  */
+
+import {
+  apiAssetFallbacks,
+  buildApiErrorBody,
+  buildNotFoundMarkdown,
+  prefersHtml,
+  wantsJson,
+} from '../src/lib/agent-errors';
 
 interface AssetsFetcher {
   fetch(request: Request | string): Promise<Response>;
@@ -341,6 +356,120 @@ function isDirectMarkdownUrl(pathname: string): boolean {
     !MARKDOWN_EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 }
 
+/** Cache headers shared by every generated error response. */
+const ERROR_HEADERS = {
+  'Cache-Control': 'public, max-age=60, must-revalidate',
+  'Access-Control-Allow-Origin': '*',
+  Vary: 'Accept',
+} as const;
+
+/** Build the JSON error response for a failed request. */
+function jsonErrorResponse(
+  status: number,
+  pathname: string,
+  scope: 'api' | 'site'
+): Response {
+  return new Response(
+    `${JSON.stringify(buildApiErrorBody({ status, pathname, scope }), null, 2)}\n`,
+    {
+      status,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        ...ERROR_HEADERS,
+      },
+    }
+  );
+}
+
+/** Build the Markdown 404 response for a non-browser client. */
+function markdownNotFoundResponse(status: number, pathname: string): Response {
+  return new Response(buildNotFoundMarkdown(pathname), {
+    status,
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      ...ERROR_HEADERS,
+    },
+  });
+}
+
+/**
+ * Resolve directory-style API URLs to the prerendered file behind them.
+ *
+ * `/api/series/en` and `/api/series/en/` both map to the built asset
+ * `/api/series/en/index.json`. Without this, an agent that follows the
+ * collection path an OpenAPI `{lang}` template suggests gets a 404.
+ */
+async function tryApiAssetFallback(
+  context: EventContext,
+  pathname: string
+): Promise<Response | null> {
+  const origin = new URL(context.request.url).origin;
+
+  for (const candidate of apiAssetFallbacks(pathname)) {
+    try {
+      const assetResponse = await context.env.ASSETS.fetch(
+        new Request(new URL(candidate, origin).toString())
+      );
+      if (!assetResponse.ok) continue;
+
+      return new Response(assetResponse.body, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Cache-Control': 'public, max-age=3600',
+          'Access-Control-Allow-Origin': '*',
+          'Content-Location': candidate,
+        },
+      });
+    } catch {
+      // Try the next candidate.
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Replace an unparseable HTML error page with something an agent can act on.
+ *
+ * - `/api/*` always gets JSON, whatever the client asked for: there is no
+ *   HTML API surface, so an HTML body there is never the right answer.
+ * - Elsewhere, browsers (any client whose `Accept` lists `text/html`) keep the
+ *   styled 404 page; every other client gets the Markdown recovery document,
+ *   or JSON when it explicitly asked for JSON.
+ */
+async function handleErrorResponse(
+  context: EventContext,
+  response: Response
+): Promise<Response> {
+  if (response.status < 400) return response;
+
+  const { pathname } = new URL(context.request.url);
+  const accept = context.request.headers.get('accept') || '';
+
+  if (pathname.startsWith('/api/') || pathname === '/api') {
+    if (response.status === 404) {
+      const fallback = await tryApiAssetFallback(context, pathname);
+      if (fallback) return fallback;
+    }
+    return jsonErrorResponse(response.status, pathname, 'api');
+  }
+
+  if (wantsJson(accept)) {
+    return jsonErrorResponse(response.status, pathname, 'site');
+  }
+
+  if (!prefersHtml(accept)) {
+    return markdownNotFoundResponse(response.status, pathname);
+  }
+
+  // Browser navigation — keep the designed HTML page, but tell caches that the
+  // representation depends on Accept.
+  const htmlResponse = new Response(response.body, response);
+  htmlResponse.headers.set('Vary', 'Accept');
+  return htmlResponse;
+}
+
 export async function onRequest(context: EventContext): Promise<Response> {
   // 0. robots.txt UA rewrite — strip Content-Signal for Lighthouse-family
   //    tools to keep PageSpeed SEO at 1.00 without weakening the directive
@@ -378,7 +507,7 @@ export async function onRequest(context: EventContext): Promise<Response> {
       );
     }
 
-    return context.next();
+    return handleErrorResponse(context, await context.next());
   }
 
   // Check for unknown bots
@@ -402,5 +531,5 @@ export async function onRequest(context: EventContext): Promise<Response> {
     }
   }
 
-  return context.next();
+  return handleErrorResponse(context, await context.next());
 }

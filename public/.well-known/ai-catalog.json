@@ -3,7 +3,7 @@
   "host": {
     "displayName": "XergioAleX.com",
     "identifier": "did:web:xergioalex.com",
-    "documentationUrl": "https://xergioalex.com/llms.txt",
+    "documentationUrl": "https://xergioalex.com/developers",
     "logoUrl": "https://xergioalex.com/images/logo_small_version_white.svg"
   },
   "entries": [
@@ -13,8 +13,17 @@
       "type": "application/mcp-server-card+json",
       "url": "https://xergioalex.com/.well-known/mcp/server-card.json",
       "description": "Read-only MCP surface for the site: search blog posts, list series, and open a post by slug. Exposed in the browser via WebMCP (navigator.modelContext).",
-      "tags": ["mcp", "blog", "search", "read-only"],
-      "capabilities": ["search_blog", "list_series", "open_post"],
+      "tags": [
+        "mcp",
+        "blog",
+        "search",
+        "read-only"
+      ],
+      "capabilities": [
+        "search_blog",
+        "list_series",
+        "open_post"
+      ],
       "representativeQueries": [
         "search XergioAleX's blog for posts about Astro and Cloudflare Pages",
         "list the blog series published on xergioalex.com",
@@ -27,14 +36,22 @@
       "displayName": "XergioAleX.com Public JSON API",
       "type": "application/vnd.oai.openapi+json",
       "url": "https://xergioalex.com/openapi.json",
-      "description": "OpenAPI 3.1 description of the site's read-only JSON endpoints: blog search index (all languages and per language), series, and timeline.",
-      "tags": ["openapi", "json", "blog", "read-only"],
+      "description": "OpenAPI 3.1 description of the site's read-only JSON endpoints. Every operation carries an operationId and a typed response schema, plus the shared RFC 9457 error model.",
+      "tags": [
+        "openapi",
+        "json",
+        "blog",
+        "read-only"
+      ],
       "capabilities": [
+        "/api/index.json",
         "/api/posts.json",
         "/api/posts-en.json",
         "/api/posts-es.json",
-        "/api/series/{lang}",
-        "/api/timeline/{lang}"
+        "/api/series/{lang}/index.json",
+        "/api/series/{lang}/{slug}.json",
+        "/api/timeline/{lang}/{tag}.json",
+        "/api/slides-timeline/{lang}.json"
       ],
       "representativeQueries": [
         "fetch the full blog post index from xergioalex.com as JSON",
@@ -43,12 +60,35 @@
       ]
     },
     {
+      "identifier": "urn:air:xergioalex.com:api:index",
+      "displayName": "XergioAleX.com API Index",
+      "type": "application/json",
+      "url": "https://xergioalex.com/api/index.json",
+      "description": "Runtime index of every JSON endpoint with fully-resolved URLs, the versioning policy, the anonymous auth model and the error format. The entry point for an agent that wants to enumerate the API without parsing OpenAPI.",
+      "tags": [
+        "api",
+        "discovery",
+        "json",
+        "read-only"
+      ],
+      "representativeQueries": [
+        "list every JSON endpoint on xergioalex.com",
+        "what API does xergioalex.com expose and does it need a key",
+        "how is the xergioalex.com API versioned",
+        "que endpoints JSON ofrece xergioalex.com"
+      ]
+    },
+    {
       "identifier": "urn:air:xergioalex.com:skills:agent-readiness",
       "displayName": "XergioAleX.com Agent Skills Index",
       "type": "application/agent-skills+json",
       "url": "https://xergioalex.com/.well-known/agent-skills/index.json",
       "description": "Agent Skills Discovery index (RFC v0.2.0) listing the agent-readiness conventions this site implements, each pinned by SHA-256 digest.",
-      "tags": ["agent-skills", "discovery", "well-known"],
+      "tags": [
+        "agent-skills",
+        "discovery",
+        "well-known"
+      ],
       "representativeQueries": [
         "which agent skills does xergioalex.com implement",
         "show the agent skills discovery index for xergioalex.com",
@@ -61,7 +101,11 @@
       "type": "application/linkset+json",
       "url": "https://xergioalex.com/.well-known/api-catalog",
       "description": "RFC 9727 API catalog linkset pointing at the site's service description (OpenAPI) and service documentation (llms.txt).",
-      "tags": ["api-catalog", "rfc9727", "linkset"],
+      "tags": [
+        "api-catalog",
+        "rfc9727",
+        "linkset"
+      ],
       "representativeQueries": [
         "where is the API catalog for xergioalex.com",
         "find the service description document for xergioalex.com"
@@ -73,7 +117,11 @@
       "type": "text/plain",
       "url": "https://xergioalex.com/llms.txt",
       "description": "Curated map of the site for language models: sections, blog tags, series, and language coverage, as Markdown links.",
-      "tags": ["llms-txt", "content", "navigation"],
+      "tags": [
+        "llms-txt",
+        "content",
+        "navigation"
+      ],
       "representativeQueries": [
         "what is xergioalex.com about",
         "give me a map of the sections and blog series on xergioalex.com",
@@ -86,7 +134,12 @@
       "type": "text/plain",
       "url": "https://xergioalex.com/llms-full.txt",
       "description": "Expanded llms.txt corpus with the site's long-form content for retrieval and grounding. Every HTML page also has a Markdown twin at the same path plus .md.",
-      "tags": ["llms-txt", "content", "corpus", "markdown"],
+      "tags": [
+        "llms-txt",
+        "content",
+        "corpus",
+        "markdown"
+      ],
       "representativeQueries": [
         "read the full content of xergioalex.com for grounding",
         "summarize the technical writing published on xergioalex.com",
@@ -99,7 +152,12 @@
       "type": "text/markdown",
       "url": "https://xergioalex.com/auth.md",
       "description": "Auth.md document describing how agents access this site: everything is public, read-only and anonymous — no registration, no credentials, no OAuth flow required.",
-      "tags": ["auth", "anonymous", "read-only", "policy"],
+      "tags": [
+        "auth",
+        "anonymous",
+        "read-only",
+        "policy"
+      ],
       "representativeQueries": [
         "how do agents authenticate against xergioalex.com",
         "does xergioalex.com require an API key or OAuth",

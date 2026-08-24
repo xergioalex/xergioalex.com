@@ -37,6 +37,9 @@ export const es: SiteTranslations = {
     sponsor: 'Patrocina mi trabajo',
     sponsorMessage:
       '¿Te gustan mis posts y mi trabajo open source? Tu patrocinio me ayuda a seguir creando y compartiendo.',
+    resourcesLabel: 'Recursos del sitio',
+    developers: 'Desarrolladores',
+    privacy: 'Privacidad',
   },
 
   // Homepage hero
@@ -1149,6 +1152,179 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Lo sentimos, la página que buscas no existe o pudo haber sido movida. Intenta volver a la página principal o buscar en el blog.',
     backHome: 'Volver al inicio',
     searchBlog: 'Buscar en el blog',
+  },
+
+  notFoundRecovery: {
+    heading: 'Dónde buscar',
+    sitemap: 'Sitemap — todas las URLs publicadas',
+    llmsTxt: 'llms.txt — mapa del sitio para modelos de lenguaje',
+    developers: 'Portal de desarrolladores — API, MCP y recursos para agentes',
+    series: 'Series del blog — contenido largo por capítulos',
+  },
+
+  developersPage: {
+    title: 'Portal de desarrolladores de XergioAleX.com',
+    description:
+      'Recursos para desarrolladores y agentes de XergioAleX.com: API JSON pública de solo lectura, especificación OpenAPI, tarjeta MCP y documentos de descubrimiento.',
+    subtitle: 'API, MCP y recursos para agentes',
+    heroDescription:
+      'Todo lo que un desarrollador o un agente de IA necesita para consumir XergioAleX.com de forma programática: una API JSON de solo lectura, una descripción OpenAPI 3.1, una tarjeta de servidor MCP y los documentos de descubrimiento que los conectan. Sin API key, sin registro y sin límite de peticiones.',
+    quickstart: {
+      title: 'Inicio rápido',
+      description:
+        'Cada endpoint es un archivo JSON estático detrás de un CDN. Empieza por el índice: lista todos los endpoints con URLs completas, así no hay que adivinar nada.',
+      tryIt: 'Pruébalo',
+      noKeyTitle: 'Sin key, sin registro',
+      noKeyBody:
+        'No hay nada que registrar. Envía un GET normal y listo: si mandas credenciales, simplemente se ignoran.',
+    },
+    endpoints: {
+      title: 'Endpoints',
+      description:
+        'Ocho operaciones de solo lectura, todas documentadas en la especificación OpenAPI 3.1 con su operationId y un esquema de respuesta tipado, listas para conectarse a function calling.',
+      colEndpoint: 'Endpoint',
+      colWhat: 'Qué devuelve',
+      descriptions: {
+        getApiIndex:
+          'Todos los endpoints con URLs completas, la política de versionado y el modelo de autenticación. El punto de entrada.',
+        listPosts: 'El índice de búsqueda del blog en todos los idiomas.',
+        listPostsInEnglish:
+          'El índice de búsqueda del blog, solo artículos en inglés.',
+        listPostsInSpanish:
+          'El índice de búsqueda del blog, solo artículos en español.',
+        listSeries:
+          'Todas las series del blog en un idioma, con el número de capítulos.',
+        getSeries: 'Los capítulos de una serie en orden de lectura.',
+        getTimelineByTag:
+          'Todos los artículos con una etiqueta, del más reciente al más antiguo.',
+        getSlidesTimeline: 'Todas las presentaciones publicadas en un idioma.',
+      },
+    },
+    errors: {
+      title: 'Errores',
+      description:
+        'Los fallos devuelven JSON, nunca HTML. El cuerpo incluye los campos de RFC 9457 (Problem Details) junto a un objeto <code>error</code> con un código estable, un mensaje legible y una pista de recuperación, para que un agente pueda reaccionar sin analizar una página.',
+      codesTitle: 'Códigos de error',
+      colCode: 'Código',
+      colMeaning: 'Significado',
+      codes: {
+        resourceNotFound:
+          'No existe ningún recurso en esa ruta. La pista indica el índice de endpoints.',
+        methodNotAllowed: 'La API es de solo lectura. Reintenta con GET.',
+        gone: 'El recurso existió y fue eliminado de forma permanente.',
+        internalError: 'La petición no pudo completarse. Reintentar es seguro.',
+      },
+    },
+    versioning: {
+      title: 'Versionado',
+      description:
+        'La API usa versionado semántico y publica su versión actual en tiempo de ejecución dentro del índice de la API, así ningún cliente necesita fijarla en el código.',
+      additiveTitle: 'Los cambios aditivos salen sin aviso',
+      additiveBody:
+        'Pueden aparecer endpoints nuevos y campos opcionales nuevos en cualquier momento. Analiza de forma defensiva: ignora los campos que no conozcas.',
+      breakingTitle: 'Los cambios incompatibles estrenan prefijo',
+      breakingBody:
+        'Eliminar un campo, cambiar su tipo o retirar un endpoint sale bajo <code>/api/v2/…</code>. Las rutas sin prefijo nunca se reutilizan para otra cosa.',
+      deprecationTitle: 'Seis meses de convivencia',
+      deprecationBody:
+        'Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses para que nada se rompa sin aviso.',
+    },
+    agentSurface: {
+      title: 'Superficie para agentes',
+      description:
+        'Además de la API, el sitio publica los documentos de descubrimiento que buscan los agentes. Cada uno es una URL estable que puedes consultar directamente.',
+      colResource: 'Recurso',
+      colWhat: 'Qué es',
+      items: {
+        aiCatalog:
+          'Manifiesto de capacidades ARD: todos los artefactos para agentes que publica este sitio, en un solo documento.',
+        mcpServerCard:
+          'Tarjeta de servidor MCP para las herramientas de solo lectura expuestas en el navegador vía WebMCP.',
+        agentSkills:
+          'Índice de descubrimiento de Agent Skills: las convenciones de agent-readiness que implementa el sitio.',
+        apiCatalog:
+          'Linkset de catálogo de API (RFC 9727) que apunta a la descripción OpenAPI y a llms.txt.',
+        llmsTxt: 'Mapa curado del sitio para modelos de lenguaje.',
+        llmsFullTxt:
+          'El corpus de contenido ampliado para recuperación y grounding.',
+        authMd:
+          'Política de acceso Auth.md: todo es público, anónimo y de solo lectura.',
+        openapi: 'Descripción OpenAPI 3.1 de todos los endpoints anteriores.',
+        markdown:
+          'Markdown para agentes: envía <code>Accept: text/markdown</code> en cualquier URL, o añade <code>.md</code>, para recibir Markdown en lugar de HTML.',
+      },
+    },
+    limits: {
+      title: 'Acceso, límites y licencia',
+      description: 'En resumen: usa lo que necesites y di de dónde salió.',
+      authTitle: 'Autenticación',
+      authBody:
+        'Ninguna. Todos los endpoints son públicos, anónimos y de solo lectura. No hay un plan gratuito que activar porque no hay plan de pago, y tampoco hay cuenta, así que no hay nada que configurar.',
+      rateLimitTitle: 'Límites de uso',
+      rateLimitBody:
+        'No hay límite de peticiones a nivel de aplicación. Los endpoints son archivos estáticos cacheados detrás de Cloudflare, que aplica su propia protección contra abuso a nivel de red. Si cacheas las respuestas una hora, nunca te acercarás al límite.',
+      licenseTitle: 'Licencia y atribución',
+      licenseBody:
+        'El contenido está disponible bajo CC BY 4.0: reutilízalo, incluso para entrenamiento y grounding, citando a xergioalex.com.',
+    },
+    support: {
+      title: '¿Algo roto o algo que falta?',
+      description:
+        'Si un endpoint devuelve una forma incorrecta, un documento está desactualizado o necesitas un campo que aún no se expone, escríbeme: esta superficie existe para usarse.',
+      cta: 'Repórtalo',
+    },
+  },
+
+  privacyPage: {
+    title: 'Privacidad',
+    description:
+      'Qué recoge XergioAleX.com y qué no: analítica sin cookies, sin cuentas, sin publicidad y exactamente qué terceros ven una petición.',
+    subtitle: 'Qué recoge este sitio y qué no',
+    heroDescription:
+      'XergioAleX.com es un sitio personal estático. No hay cuentas, ni publicidad, ni seguimiento entre sitios. Esta página enumera cada lugar donde se manejan datos, para que puedas verificarlo en vez de creer en mi palabra.',
+    lastUpdatedLabel: 'Última actualización',
+    lastUpdated: '24 de agosto de 2026',
+    summary: {
+      title: 'En resumen',
+      description: 'Toda la política, antes del detalle.',
+      points: [
+        'Sin cuentas, sin inicios de sesión, sin publicidad y sin seguimiento entre sitios.',
+        'La analítica es agregada y sin cookies: no hay banner de cookies porque no hay cookies de seguimiento que consentir.',
+        'Los únicos datos personales que recibo son los que escribes a propósito en el formulario de contacto o de newsletter.',
+        'El contenido es público y se puede leer de forma anónima, tanto por personas como por agentes.',
+      ],
+    },
+    analytics: {
+      title: 'Analítica',
+      description:
+        'Las visitas se miden con Umami Cloud, un servicio de analítica sin cookies enfocado en la privacidad. Registra páginas vistas, referentes, país, navegador y tipo de dispositivo de forma agregada: sin cookies, sin fingerprinting, sin perfil entre sitios y sin datos que te identifiquen personalmente. Las visitas de rastreadores de IA se cuentan igual, desde el servidor, para saber qué agentes leen el sitio.',
+    },
+    forms: {
+      title: 'Formularios de contacto y newsletter',
+      description:
+        'El formulario de contacto y el de newsletter envían a Google Forms. Lo que escribes —tu nombre, tu correo y tu mensaje— se guarda en ese formulario de Google y se usa solo para responderte o para enviarte la newsletter que pediste. No se vende nada ni se comparte con nadie más. Si prefieres no usar el formulario, escríbeme directamente por correo.',
+    },
+    storage: {
+      title: 'Qué se guarda en tu navegador',
+      description:
+        'Dos cosas, ambas locales en tu dispositivo y que nunca se envían a ningún lado: tu preferencia de tema claro u oscuro y una marca que recuerda que ya te suscribiste a la newsletter para que el formulario deje de preguntar. Al borrar el almacenamiento del navegador desaparecen las dos.',
+    },
+    hosting: {
+      title: 'Alojamiento',
+      description:
+        'El sitio está alojado en Cloudflare Pages. Como cualquier hosting web, Cloudflare procesa la dirección IP y las cabeceras necesarias para entregar una página y para proteger el sitio de abusos. Yo no guardo registros propios de servidor.',
+    },
+    embeds: {
+      title: 'Contenido embebido',
+      description:
+        'Algunos artículos y presentaciones incrustan contenido de terceros como YouTube o SpeakerDeck. Cuando cargas una página con un embed, ese proveedor recibe la petición y aplica su propia política de privacidad. Las páginas sin embeds no contactan a ningún tercero salvo el endpoint de analítica.',
+    },
+    rights: {
+      title: 'Tus datos, tu decisión',
+      description:
+        'Si enviaste algo por un formulario y quieres que se borre, pídelo y se borra: sin trámites ni verificaciones. Lo mismo para cualquier duda sobre qué hay guardado.',
+      cta: 'Escríbeme',
+    },
   },
 
   // Blog post engagement

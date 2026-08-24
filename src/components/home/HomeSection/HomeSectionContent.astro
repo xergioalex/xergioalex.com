@@ -14,10 +14,17 @@ const { title, subtitle, description, ctaText, ctaLink, cta2Text, cta2Link } =
 ---
 
 <h2
-  class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight"
+  class:list={[
+    'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight',
+    /* Without a subtitle the h2 absorbs the h3's bottom margin so the gap
+       before the description stays identical. */
+    subtitle ? 'mb-4' : 'mb-6',
+  ]}
   set:html={title}
 />
-<h3 class="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-6" set:html={subtitle} />
+{subtitle && (
+  <h3 class="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-6" set:html={subtitle} />
+)}
 <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-10" set:html={description} />
 {
   (ctaText || cta2Text) && (

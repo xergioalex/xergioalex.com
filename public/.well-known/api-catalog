@@ -12,6 +12,18 @@
           "rel": "service-doc",
           "href": "https://xergioalex.com/llms.txt",
           "type": "text/plain"
+        },
+        {
+          "rel": "service-doc",
+          "href": "https://xergioalex.com/developers",
+          "type": "text/html",
+          "title": "XergioAleX.com Developer Portal"
+        },
+        {
+          "rel": "service-meta",
+          "href": "https://xergioalex.com/api/index.json",
+          "type": "application/json",
+          "title": "XergioAleX.com API index"
         }
       ]
     }

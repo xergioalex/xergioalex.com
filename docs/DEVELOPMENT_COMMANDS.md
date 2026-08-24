@@ -13,6 +13,8 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 | `pnpm run astro:check` | TypeScript type checking |
 | `pnpm run md:check` | Verify every HTML page has a matching `.md` for agents |
 | `pnpm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
+| `pnpm run generate:openapi` | Regenerate `public/openapi.json` (also runs in `prebuild`) |
+| `pnpm run generate:agent-skills-index` | Regenerate the agent-skills discovery index (also runs in `prebuild`) |
 
 ## Development
 
@@ -43,9 +45,15 @@ pnpm run astro:preview
 pnpm run build
 ```
 
+- Runs the `prebuild` generators: the agent-skills discovery index and `public/openapi.json`
 - Runs TypeScript checking (`astro check`)
 - Builds static site to `dist/` folder
 - Optimizes assets (CSS, JS, images)
+
+> **Generated files — never edit by hand:** `public/openapi.json`
+> (`scripts/build-openapi.mjs`) and `public/.well-known/agent-skills/index.json`
+> (`scripts/generate-agent-skills-index.mjs`). Both are rewritten on every build,
+> so a manual edit is silently discarded.
 
 ### Production Build (Cloudflare Pages)
 
