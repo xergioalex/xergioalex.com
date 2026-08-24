@@ -5,7 +5,7 @@ pubDate: '2026-08-31'
 tags: ['tech', 'civic-tech', 'ai-agents', 'mcp', 'web-development']
 keywords: ['building software during a disaster', 'unauthenticated public API tradeoffs', 'idempotency source externalId', 'MCP server emergency response', 'PII missing persons privacy', 'offline first emergency app', 'data freshness timestamps API']
 series: 'colombia-earthquake-2026'
-seriesOrder: 4
+seriesOrder: 3
 draft: true
 ---
 
@@ -85,7 +85,7 @@ I'll be honest that this is the piece where I'm most likely to be wrong about th
 
 ## 6. Verification by corroboration, with a human closing it
 
-I covered [Gravitas](https://mapa.gravitasworld.com/) in the previous article, but the pattern belongs here too because it's the reusable part.
+The best case of this I saw is [Gravitas](https://mapa.gravitasworld.com/), the platform a design studio in Risaralda rebuilt for the emergency in 42 hours.
 
 Their rule, [as Juan Camilo Garzón described it to El Colombiano](https://www.elcolombiano.com/tecnologia/plataforma-ia-organiza-ayudas-voluntarios-recursos-terremoto-colombia-KC39918222): five people reporting the same collection center raises confidence far more than one report that looks unusual or unsupported. AI narrows, an administrator confirms, then it hits the map.
 
@@ -113,6 +113,8 @@ It isn't, and the arithmetic isn't close. Four teams building four collection-ce
 
 The check I'd apply now, before writing a line: *does this already exist, and if so, does it have a way for me to read it?* If yes to both, build the thing on top. If yes to the first and no to the second, message the team — most of them will hand you a JSON endpoint if you ask, because they're not competing with you, they're exhausted.
 
+And here's what nobody has measured yet: how many supply-point entries are out of date right now, in any of these tools, including the ones I help maintain. Nobody has audited the overlap to see how many reports are duplicated across four maps because the same neighbor posted them in four places. I also don't know which of these tools will still be running in three months. An honest directory should say what it can't see, and none of them sees those three things.
+
 ---
 
 ## 9. What AI actually did, and what it didn't
@@ -129,6 +131,7 @@ What AI clearly did was collapse the distance between *someone has an idea for a
 
 ## Resources
 
+- [corag.app/ecosystem — the living directory of the tools](https://corag.app/ecosystem/)
 - [Corag developer documentation](https://corag.app/developers)
 - [Corag public OpenAPI spec](https://ayuda.corag.app/api/public/openapi.json)
 - [Corag MCP server](https://ayuda.corag.app/mcp)

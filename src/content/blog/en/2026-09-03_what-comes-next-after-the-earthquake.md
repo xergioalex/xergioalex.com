@@ -5,7 +5,7 @@ pubDate: '2026-09-03'
 tags: ['tech', 'personal', 'civic-tech', 'colombia']
 keywords: ['how to help Colombia earthquake victims', 'avoid donation scams Colombia', 'Colombia earthquake reconstruction cost', 'contribute to civic tech projects', 'long term disaster recovery', 'open data after emergency', 'Pereira reconstruction plan']
 series: 'colombia-earthquake-2026'
-seriesOrder: 5
+seriesOrder: 4
 draft: true
 ---
 
