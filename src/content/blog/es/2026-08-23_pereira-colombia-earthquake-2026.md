@@ -242,11 +242,11 @@ Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El 
 
 Pereira no ha vuelto a la normalidad y no va a volver pronto. [La alcaldía habla de cinco años de reconstrucción y de más de diez billones de pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). Hay familias esperando que un ingeniero les diga si pueden volver a entrar a su casa, y otras que ya saben que no. Hay gente que duerme mal, que se levanta cuando pasa un camión pesado, que todavía siente que el piso se mueve cuando no se está moviendo.
 
-Lo que más vueltas me ha dado en estas dos semanas es que casi todo lo que funcionó el 10 de agosto se había decidido años antes. La norma que dejó a Armenia en pie se escribió después de 1999, por gente que no tenía cómo saber cuándo iba a servir. Las ciudades que pudieron dar cifras al día siguiente pudieron hacerlo porque ya tenían con qué contar. Nada de eso se improvisó esa mañana. Esa mañana solo se cobró.
+Un terremoto no inventa nada. Deja a la vista lo que ya estaba. Armenia quedó en pie por decisiones que alguien tomó hace veintisiete años; el Invico perdió un piso siendo anterior a cualquier norma; el Chocó no aparece en las cifras por las mismas razones por las que llevaba décadas sin aparecer en nada. Nada de eso pasó el 10 de agosto. El 10 de agosto solo se cobró.
 
-Y lo que no estaba decidido antes lo puso la gente, a mano y en desorden. El que abrió su casa, el que cocinó, el que manejó horas con un camión prestado, el que se sentó a programar algo que la semana anterior no existía. Eso también sostiene una ciudad, solo que no se puede planear ni exigir. Aparece o no aparece.
+Lo que sí pasó ese día fue la gente. El que abrió su casa, el que cocinó, el que se puso en una fila a pasar escombros de mano en mano, el que se sentó a programar algo que la semana anterior no existía. Eso no se puede planear ni exigir: aparece o no aparece. Acá apareció, y esa es la razón por la que estoy escribiendo esto.
 
-Acá apareció. Pereira no se quedó en silencio noventa segundos, se quedó en silencio tres días, y lo que terminó llenando ese silencio fue gente apareciendo con lo que tenía. Eso, más que cualquier cifra de este artículo, es lo que quiero que quede escrito.
+También sé cómo sigue. Las cámaras se van, y en unos meses va a haber familias en albergues y edificios esperando demolición sin que nadie los cuente. Armenia ya salió del noticiero porque casi nadie murió. Quibdó salió porque no tiene quien publique sus cifras. Contra eso no tengo mucho: nombrar las fuentes, poner las fechas y seguir escribiendo lo que pasó después, que es de lo que tratan los capítulos que siguen.
 
 A seguir construyendo.
 
