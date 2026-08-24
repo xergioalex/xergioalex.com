@@ -238,7 +238,7 @@ Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El 
 
 ---
 
-## Dos semanas después
+## Lo que el terremoto no alcanzó a tumbar
 
 Pereira no ha vuelto a la normalidad y no va a volver pronto. [La alcaldía habla de cinco años de reconstrucción y de más de diez billones de pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). Hay familias esperando que un ingeniero les diga si pueden volver a entrar a su casa, y otras que ya saben que no. Hay gente que duerme mal, que se levanta cuando pasa un camión pesado, que todavía siente que el piso se mueve cuando no se está moviendo.
 

@@ -240,7 +240,7 @@ All of this has brought problems of its own, which I'll get into in the chapters
 
 ---
 
-## Two weeks later
+## What the earthquake couldn't knock down
 
 Pereira has not gone back to normal and it won't any time soon. [The city government is talking about five years of reconstruction and more than ten trillion pesos in damage](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). There are families waiting for an engineer to tell them whether they can go back into their house, and others who already know they can't. There are people sleeping badly, getting up when a heavy truck goes by, still feeling the floor move when the floor isn't moving.
 
