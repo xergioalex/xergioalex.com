@@ -234,7 +234,7 @@ Yo por mi lado, junto con muchos que nos dedicamos al desarrollo de software, pu
 
 Yo me uní a [Corag](https://corag.app/) y he estado apoyando desde entonces. Es un movimiento social que conocí en medio de la emergencia, aunque venía existiendo desde mucho antes, bajo un lema que le hace honor al nombre: *"Tenemos coraje para servir y transformar vidas"*. Conectan a quien quiere ayudar con quien más lo necesita, bajo una regla que me parece la correcta: cada entrega deja evidencia. Ayudé a construir su landing, entre otras tareas. Pero así como esta hay muchas más iniciativas que se han desarrollado, y he estado armando un mapa de todas ellas, para que las piezas se puedan encontrar entre sí. Ese mapa vive en [corag.app/ecosystem](https://corag.app/ecosystem/).
 
-Ya son más de veinte herramientas, y eso ha traído otros retos que abordaré en los capítulos siguientes. El más evidente es la saturación: soluciones que resuelven lo mismo, que compiten entre sí por la atención de la misma gente y que no se hablan. Hace unos días quienes están detrás de varias de ellas se sentaron a mirar cómo dejar de duplicarse.
+Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El más evidente es la saturación: soluciones que resuelven lo mismo, que compiten entre sí por la atención de la misma gente y que no se hablan. Hace unos días quienes están detrás de varias de ellas se sentaron a mirar cómo dejar de duplicarse.
 
 ---
 
