@@ -236,7 +236,7 @@ For my part, along with a lot of us who build software for a living, I put to us
 
 I joined [Corag](https://corag.app/) and have been helping out ever since. It's a social movement I came across in the middle of the emergency, though it had existed long before, under a motto that lives up to the name: *"Tenemos coraje para servir y transformar vidas"* ("We have the courage to serve and transform lives"). They connect people who want to help with the people who need it most, under a rule I think is the right one: every delivery leaves evidence behind. I helped build their landing page, among other things. But there are many more initiatives like it out there, and I've been putting together a map of all of them, so the pieces can find each other. That map lives at [corag.app/ecosystem](https://corag.app/ecosystem/).
 
-There are more than twenty of these tools now. A few days ago the people behind several of them sat down together to figure out how to stop duplicating each other. That conversation is what the rest of this series is about.
+There are more than twenty of these tools now, and that has brought problems of its own, which I'll get into in the chapters ahead. The most obvious one is saturation: tools that solve the same thing, competing for the attention of the same people, and not talking to each other. A few days ago the people behind several of them sat down together to figure out how to stop duplicating each other.
 
 ---
 
