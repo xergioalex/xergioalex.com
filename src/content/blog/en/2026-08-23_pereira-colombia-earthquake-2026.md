@@ -246,7 +246,7 @@ Pereira has not gone back to normal and it won't any time soon. [The city govern
 
 If one thing became clear to me in these two weeks, it's that people here don't wait to be told what to do. I saw it in the lines passing rubble hand to hand, in the restaurants cooking for strangers, in the people who drove for hours in a borrowed truck, in the ones who sat down and coded through the night. This is a region of hard-working people, and that's the one thing the earthquake couldn't knock down.
 
-But work isn't enough when what lies ahead is five years and ten trillion pesos. Now comes the second phase, the one that no longer makes the news: inspecting, demolishing, relocating, rebuilding. It will take far more effort than the rescue did and last far longer, and for that Pereira needs real help, from the national government, from institutions, from the whole country. With that help I have no doubt the city will come back. The people who are going to rebuild it have already shown what they're made of.
+But work isn't enough when what lies ahead is many years of hard work. Now comes the second phase, the one that no longer makes the news: inspecting, demolishing, relocating, rebuilding. It will take far more effort than the rescue did and last far longer, and for that Pereira needs real help, from the national government, from institutions, from the whole country. With that help I have no doubt the city will come back. The people who are going to rebuild it have already shown what they're made of.
 
 Let's keep building.
 

@@ -244,7 +244,7 @@ Pereira no ha vuelto a la normalidad y no va a volver pronto. [La alcaldía habl
 
 Si algo me quedó claro en estas dos semanas es que acá la gente no espera a que le digan qué hacer. Lo vi en las filas pasando escombros de mano en mano, en los restaurantes cocinando para desconocidos, en los que manejaron horas con un camión prestado, en los que se sentaron a programar toda una noche. Esta es una región de gente trabajadora, y eso es lo único que el terremoto no alcanzó a tumbar.
 
-Pero trabajar no alcanza cuando lo que hay por delante son cinco años y diez billones de pesos. Ahora empieza la segunda fase, la que ya no sale en el noticiero: inspeccionar, demoler, reubicar, reconstruir. Va a exigir muchísimo más esfuerzo que el rescate y va a durar mucho más tiempo, y para eso Pereira necesita ayuda de verdad, la del gobierno, la de las entidades, la del país entero. Con esa ayuda no me cabe duda de que la ciudad va a renacer. La gente que la va a levantar ya mostró de qué está hecha.
+Pero trabajar no alcanza cuando lo que hay por delante son muchos años de trabajo duro. Ahora empieza la segunda fase, la que ya no sale en el noticiero: inspeccionar, demoler, reubicar, reconstruir. Va a exigir muchísimo más esfuerzo que el rescate y va a durar mucho más tiempo, y para eso Pereira necesita ayuda de verdad, la del gobierno, la de las entidades, la del país entero. Con esa ayuda no me cabe duda de que la ciudad va a renacer. La gente que la va a levantar ya mostró de qué está hecha.
 
 A seguir construyendo.
 
