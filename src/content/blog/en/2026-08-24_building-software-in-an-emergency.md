@@ -9,17 +9,25 @@ seriesOrder: 2
 draft: true
 ---
 
-On the first night, the information problem looked like this.
+Day one: nothing. No power, no signal, and the only thing moving was people in the street looking for each other.
+
+Day three: a design studio in Risaralda that until that week had been working on rural tourism had rebuilt its entire platform for emergency use. [It took them forty-two hours](https://www.elcolombiano.com/tecnologia/plataforma-ia-organiza-ayudas-voluntarios-recursos-terremoto-colombia-KC39918222).
+
+Day seven: there were more than twenty aid tools that hadn't existed on August 9.
+
+What happened in between is what this chapter is about.
+
+---
+
+## What failed wasn't the goodwill
+
+Day one looked like this.
 
 A WhatsApp group with four hundred people. Someone posts that a supply point on Avenida 30 de Agosto needs water. Forty people forward it. Two hours later that place is full and has stopped taking donations, but the message is already in nine other groups and will keep circulating for two more days. In the same thread there's a voice note saying a bridge is about to fail. Nobody knows who recorded it. Everybody forwards it.
 
 Meanwhile a woman is trying to find out whether the shelter closest to her mother is still taking people, and the most recent thing she can find is a screenshot of a list with no date on it.
 
 That wasn't a failure of goodwill. There was goodwill to spare.
-
----
-
-## What failed wasn't the goodwill
 
 In the previous chapter I wrote that nearly half the region's cell network went down: **3,403 base stations out of service**, 46.1% of the ones checked across seven departments. It's worth repeating here because it's the constraint that shaped everything built that week.
 

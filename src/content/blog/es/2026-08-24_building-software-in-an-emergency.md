@@ -9,17 +9,25 @@ seriesOrder: 2
 draft: true
 ---
 
-La primera noche, el problema de información se veía así.
+Día uno: nada. No había luz, no había señal, y lo único que se movía era la gente en la calle buscándose.
+
+Día tres: un estudio de diseño de Risaralda que hasta esa semana trabajaba en turismo rural había rehecho su plataforma entera para uso de emergencia. [Le tomó cuarenta y dos horas](https://www.elcolombiano.com/tecnologia/plataforma-ia-organiza-ayudas-voluntarios-recursos-terremoto-colombia-KC39918222).
+
+Día siete: existían más de veinte herramientas de ayuda que no existían el 9 de agosto.
+
+Lo que pasó en medio es de lo que trata este capítulo.
+
+---
+
+## Lo que falló no fue la buena voluntad
+
+El día uno se veía así.
 
 Un grupo de WhatsApp con cuatrocientas personas. Alguien publica que un centro de acopio en la Avenida 30 de Agosto necesita agua. Cuarenta personas lo reenvían. Dos horas después ese centro está lleno y dejó de recibir, pero el mensaje ya está en otros nueve grupos y va a seguir circulando dos días más. En el mismo hilo hay una nota de voz diciendo que un puente está a punto de fallar. Nadie sabe quién la grabó. Todo el mundo la reenvía.
 
 Mientras tanto una señora está tratando de averiguar si el albergue más cercano a su mamá todavía recibe gente, y lo más reciente que encuentra es la captura de pantalla de una lista sin fecha.
 
 Eso no fue una falla de buena voluntad. Buena voluntad sobraba.
-
----
-
-## Lo que falló no fue la buena voluntad
 
 En el capítulo anterior conté que casi la mitad de la red celular de la región se cayó: **3.403 estaciones base fuera de servicio**, el 46,1 % de las revisadas en siete departamentos. Vale la pena repetirlo acá porque es la restricción que condicionó todo lo que se construyó esa semana.
 
