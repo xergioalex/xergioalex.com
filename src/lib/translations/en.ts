@@ -37,6 +37,9 @@ export const en: SiteTranslations = {
     sponsor: 'Sponsor my work',
     sponsorMessage:
       'Enjoying my posts and open-source work? Your sponsorship helps me keep building and sharing.',
+    resourcesLabel: 'Site resources',
+    developers: 'Developers',
+    privacy: 'Privacy',
   },
 
   // Homepage hero
@@ -1138,6 +1141,175 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       "Sorry, the page you are looking for doesn't exist or may have been moved. Try navigating back to the homepage or searching the blog.",
     backHome: 'Go back home',
     searchBlog: 'Search the blog',
+  },
+
+  notFoundRecovery: {
+    heading: 'Where to look next',
+    sitemap: 'Sitemap — every published URL',
+    llmsTxt: 'llms.txt — site map for language models',
+    developers: 'Developer portal — API, MCP and agent resources',
+    series: 'Blog series — long-form, multi-part writing',
+  },
+
+  developersPage: {
+    title: 'XergioAleX.com Developer Portal',
+    description:
+      'Developer and agent resources for XergioAleX.com: a public read-only JSON API, an OpenAPI spec, an MCP server card and agent discovery documents. No key needed.',
+    subtitle: 'API, MCP and agent resources',
+    heroDescription:
+      'Everything a developer or an AI agent needs to consume XergioAleX.com programmatically: a read-only JSON API, an OpenAPI 3.1 description, an MCP server card, and the discovery documents that tie them together. No API key, no signup, no rate limit.',
+    quickstart: {
+      title: 'Quickstart',
+      description:
+        'Every endpoint is a static JSON file behind a CDN. Start from the index — it lists every endpoint with fully-resolved URLs, so nothing has to be guessed.',
+      tryIt: 'Try it',
+      noKeyTitle: 'No key, no signup',
+      noKeyBody:
+        'There is nothing to register for. Send a plain GET and you are done — credentials, if you send them, are ignored.',
+    },
+    endpoints: {
+      title: 'Endpoints',
+      description:
+        'Eight read-only operations, all documented in the OpenAPI 3.1 spec with an operationId and a typed response schema, so they can be wired straight into function calling.',
+      colEndpoint: 'Endpoint',
+      colWhat: 'What it returns',
+      descriptions: {
+        getApiIndex:
+          'Every endpoint with fully-resolved URLs, the versioning policy and the auth model. The entry point.',
+        listPosts: 'The blog search index across every language.',
+        listPostsInEnglish: 'The blog search index, English posts only.',
+        listPostsInSpanish: 'The blog search index, Spanish posts only.',
+        listSeries: 'Every blog series in one language, with chapter counts.',
+        getSeries: 'The ordered chapters of one series.',
+        getTimelineByTag: 'Every post carrying one tag, newest first.',
+        getSlidesTimeline: 'Every published slide deck in one language.',
+      },
+    },
+    errors: {
+      title: 'Errors',
+      description:
+        'Failures return JSON, never HTML. The body carries RFC 9457 problem-details members alongside an <code>error</code> object with a stable code, a human message and a recovery hint — so an agent can act on the failure without parsing a page.',
+      codesTitle: 'Error codes',
+      colCode: 'Code',
+      colMeaning: 'Meaning',
+      codes: {
+        resourceNotFound:
+          'No resource exists at that path. The hint names the endpoint index.',
+        methodNotAllowed: 'The API is read-only. Retry with GET.',
+        gone: 'The resource existed and was removed permanently.',
+        internalError: 'The request could not be completed. Retrying is safe.',
+      },
+    },
+    versioning: {
+      title: 'Versioning',
+      description:
+        'The API is versioned semantically and its current version is published at runtime in the API index, so a client never has to hardcode it.',
+      additiveTitle: 'Additive changes ship silently',
+      additiveBody:
+        'New endpoints and new optional fields can appear at any time. Parse defensively: ignore fields you do not know.',
+      breakingTitle: 'Breaking changes get a new prefix',
+      breakingBody:
+        'Removing a field, retyping one, or removing an endpoint ships under <code>/api/v2/…</code>. The unprefixed paths are never repurposed.',
+      deprecationTitle: 'Six months of overlap',
+      deprecationBody:
+        'When a new prefix ships, the previous paths keep serving for at least six months so nothing breaks without warning.',
+    },
+    agentSurface: {
+      title: 'Agent surface',
+      description:
+        'Beyond the API, the site publishes the discovery documents agents look for. Each one is a stable URL you can fetch directly.',
+      colResource: 'Resource',
+      colWhat: 'What it is',
+      items: {
+        aiCatalog:
+          'ARD capability manifest — every agent-facing artifact this site publishes, in one document.',
+        mcpServerCard:
+          'MCP server card for the read-only site tools exposed in the browser via WebMCP.',
+        agentSkills:
+          'Agent Skills discovery index — the agent-readiness conventions this site implements.',
+        apiCatalog:
+          'RFC 9727 API catalog linkset pointing at the OpenAPI description and llms.txt.',
+        llmsTxt: 'Curated map of the site for language models.',
+        llmsFullTxt: 'The expanded content corpus for retrieval and grounding.',
+        authMd:
+          'Auth.md access policy: everything is public, anonymous and read-only.',
+        openapi: 'OpenAPI 3.1 description of every endpoint above.',
+        markdown:
+          'Markdown for Agents — send <code>Accept: text/markdown</code> on any URL, or append <code>.md</code>, to get Markdown instead of HTML.',
+      },
+    },
+    limits: {
+      title: 'Access, limits and licensing',
+      description:
+        'The short version: take what you need, and say where it came from.',
+      authTitle: 'Authentication',
+      authBody:
+        'None. Every endpoint is public, anonymous and read-only. There is no free tier to sign up for because there is no paid tier — and no account, so nothing to onboard.',
+      rateLimitTitle: 'Rate limits',
+      rateLimitBody:
+        'No application-level rate limit. The endpoints are cached static assets behind Cloudflare, which applies its own network-level abuse protection. Cache responses for an hour and you will never come close.',
+      licenseTitle: 'Licensing and attribution',
+      licenseBody:
+        'Content is available under CC BY 4.0: reuse it, including for training and grounding, with attribution to xergioalex.com.',
+    },
+    support: {
+      title: 'Something broken or missing?',
+      description:
+        'If an endpoint returns the wrong shape, a document is stale, or you need a field that is not exposed yet, get in touch — this surface exists to be used.',
+      cta: 'Report it',
+    },
+  },
+
+  privacyPage: {
+    title: 'Privacy',
+    description:
+      'What XergioAleX.com collects and what it does not: cookieless analytics, no accounts, no ad tracking, and exactly which third parties see a request.',
+    subtitle: 'What this site collects, and what it does not',
+    heroDescription:
+      'XergioAleX.com is a static personal site. There are no accounts, no advertising, and no cross-site tracking. This page lists every place data is handled, so you can verify it rather than take my word for it.',
+    lastUpdatedLabel: 'Last updated',
+    lastUpdated: 'August 24, 2026',
+    summary: {
+      title: 'In short',
+      description: 'The whole policy, before the detail.',
+      points: [
+        'No accounts, no logins, no advertising, no cross-site tracking.',
+        'Analytics are cookieless and aggregate — no cookie banner, because there are no tracking cookies to consent to.',
+        'The only personal data I ever receive is what you type into the contact or newsletter form and send on purpose.',
+        'Content is public and free to read anonymously, by people and by agents alike.',
+      ],
+    },
+    analytics: {
+      title: 'Analytics',
+      description:
+        'Page views are measured with Umami Cloud, a privacy-first, cookieless analytics service. It records aggregate page views, referrers, country, browser and device type — no cookies, no fingerprinting, no cross-site profile, and no data that identifies you personally. Visits from AI crawlers are counted the same way, server-side, so I can see which agents read the site.',
+    },
+    forms: {
+      title: 'Contact and newsletter forms',
+      description:
+        'The contact form and the newsletter form submit to Google Forms. What you type — your name, email address, and message — is stored in that Google Form and used only to reply to you or to send the newsletter you asked for. Nothing is sold, and nothing is shared with anyone else. If you would rather not use the form, email me directly.',
+    },
+    storage: {
+      title: 'What is stored in your browser',
+      description:
+        'Two things, both local to your device and never sent anywhere: your light or dark theme preference, and a flag remembering that you already subscribed to the newsletter so the form stops asking. Clearing your browser storage removes both.',
+    },
+    hosting: {
+      title: 'Hosting',
+      description:
+        'The site is hosted on Cloudflare Pages. Like any web host, Cloudflare processes the IP address and request headers needed to deliver a page and to protect the site from abuse. I do not keep server logs of my own.',
+    },
+    embeds: {
+      title: 'Embedded content',
+      description:
+        'Some articles and slide decks embed content from third parties such as YouTube or SpeakerDeck. When a page with an embed loads, that provider receives the request and applies its own privacy policy. Pages without embeds contact no third party other than the analytics endpoint.',
+    },
+    rights: {
+      title: 'Your data, your call',
+      description:
+        'If you sent something through a form and want it deleted, ask and it is deleted — no process, no verification hoops. The same goes for any question about what is stored.',
+      cta: 'Get in touch',
+    },
   },
 
   // Blog post engagement

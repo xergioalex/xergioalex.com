@@ -86,6 +86,9 @@ export interface SiteTranslations {
     allRightsReserved: string;
     sponsor: string;
     sponsorMessage: string;
+    resourcesLabel: string;
+    developers: string;
+    privacy: string;
   };
 
   // Homepage hero
@@ -531,6 +534,142 @@ export interface SiteTranslations {
     message: string;
     backHome: string;
     searchBlog: string;
+  };
+
+  // 404 page — agent recovery links
+  notFoundRecovery: {
+    heading: string;
+    sitemap: string;
+    llmsTxt: string;
+    developers: string;
+    series: string;
+  };
+
+  // Developer portal (/developers)
+  developersPage: {
+    title: string;
+    description: string;
+    subtitle: string;
+    heroDescription: string;
+    quickstart: {
+      title: string;
+      description: string;
+      tryIt: string;
+      noKeyTitle: string;
+      noKeyBody: string;
+    };
+    endpoints: {
+      title: string;
+      description: string;
+      colEndpoint: string;
+      colWhat: string;
+      /** Keyed by the operationId published in openapi.json. */
+      descriptions: {
+        getApiIndex: string;
+        listPosts: string;
+        listPostsInEnglish: string;
+        listPostsInSpanish: string;
+        listSeries: string;
+        getSeries: string;
+        getTimelineByTag: string;
+        getSlidesTimeline: string;
+      };
+    };
+    errors: {
+      title: string;
+      description: string;
+      codesTitle: string;
+      colCode: string;
+      colMeaning: string;
+      codes: {
+        resourceNotFound: string;
+        methodNotAllowed: string;
+        gone: string;
+        internalError: string;
+      };
+    };
+    versioning: {
+      title: string;
+      description: string;
+      additiveTitle: string;
+      additiveBody: string;
+      breakingTitle: string;
+      breakingBody: string;
+      deprecationTitle: string;
+      deprecationBody: string;
+    };
+    agentSurface: {
+      title: string;
+      description: string;
+      colResource: string;
+      colWhat: string;
+      items: {
+        aiCatalog: string;
+        mcpServerCard: string;
+        agentSkills: string;
+        apiCatalog: string;
+        llmsTxt: string;
+        llmsFullTxt: string;
+        authMd: string;
+        openapi: string;
+        markdown: string;
+      };
+    };
+    limits: {
+      title: string;
+      description: string;
+      authTitle: string;
+      authBody: string;
+      rateLimitTitle: string;
+      rateLimitBody: string;
+      licenseTitle: string;
+      licenseBody: string;
+    };
+    support: {
+      title: string;
+      description: string;
+      cta: string;
+    };
+  };
+
+  // Privacy page (/privacy)
+  privacyPage: {
+    title: string;
+    description: string;
+    subtitle: string;
+    heroDescription: string;
+    lastUpdatedLabel: string;
+    lastUpdated: string;
+    summary: {
+      title: string;
+      description: string;
+      points: string[];
+    };
+    analytics: {
+      title: string;
+      description: string;
+    };
+    forms: {
+      title: string;
+      description: string;
+    };
+    storage: {
+      title: string;
+      description: string;
+    };
+    hosting: {
+      title: string;
+      description: string;
+    };
+    embeds: {
+      title: string;
+      description: string;
+    };
+    rights: {
+      title: string;
+      description: string;
+      cta: string;
+    };
   };
 
   // Blog post engagement

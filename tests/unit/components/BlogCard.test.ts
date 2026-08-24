@@ -57,6 +57,40 @@ describe('BlogCard', () => {
 
   // ─── Hero image ────────────────────────────────────
 
+  // ─── Heading level ───────────────────────────────────
+
+  describe('heading level', () => {
+    it('renders the title as an h2 by default', () => {
+      const { container } = render(BlogCard, {
+        props: { post: publishedEnglishPost as never },
+      });
+      const heading = container.querySelector('h2');
+      expect(heading?.textContent?.trim()).toBe('My Awesome Post');
+      expect(container.querySelector('h3')).toBeNull();
+    });
+
+    // The homepage sections carry their own h2, so a card nested inside one
+    // must drop to h3 or the document outline goes flat.
+    it('renders the title as an h3 when the card sits inside a section', () => {
+      const { container } = render(BlogCard, {
+        props: { post: publishedEnglishPost as never, headingLevel: 'h3' },
+      });
+      const heading = container.querySelector('h3');
+      expect(heading?.textContent?.trim()).toBe('My Awesome Post');
+      expect(container.querySelector('h2')).toBeNull();
+    });
+
+    it('keeps the title styling identical across heading levels', () => {
+      const asH2 = render(BlogCard, {
+        props: { post: publishedEnglishPost as never },
+      }).container.querySelector('h2');
+      const asH3 = render(BlogCard, {
+        props: { post: publishedEnglishPost as never, headingLevel: 'h3' },
+      }).container.querySelector('h3');
+      expect(asH3?.getAttribute('class')).toBe(asH2?.getAttribute('class'));
+    });
+  });
+
   describe('hero image', () => {
     it('renders hero image when heroImage is provided', () => {
       const { container } = render(BlogCard, {
