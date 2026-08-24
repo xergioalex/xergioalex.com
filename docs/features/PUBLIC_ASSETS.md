@@ -12,7 +12,19 @@ public/
 ├── favicon.svg                        # SVG favicon (primary)
 ├── llms.txt                           # LLM-readable site summary
 ├── llms-full.txt                      # LLM-readable full content
-├── robots.txt                         # Search engine crawling rules
+├── robots.txt                         # Crawling rules + Content-Signal + Agentmap
+├── auth.md                            # Auth.md agent access policy
+├── openapi.json                       # OpenAPI 3.1 description of the JSON API
+├── site.webmanifest                   # PWA manifest
+├── _headers                           # Cloudflare Pages response headers
+├── _redirects                         # Cloudflare Pages redirects
+├── .well-known/                       # Agent-readiness discovery surface (see below)
+│   ├── ai-catalog.json                # ARD capability manifest
+│   ├── api-catalog                    # RFC 9727 linkset
+│   ├── oauth-authorization-server     # RFC 8414 metadata (stub)
+│   ├── oauth-protected-resource       # RFC 9728 metadata (stub)
+│   ├── agent-skills/index.json        # Agent Skills index (generated)
+│   └── mcp/server-card.json           # MCP server card
 ├── fonts/                             # Custom web fonts (2 files, 48 KB)
 │   ├── atkinson-bold.woff
 │   └── atkinson-regular.woff
@@ -50,6 +62,43 @@ public/
 | `robots.txt` | Search engine crawling rules |
 | `llms.txt` | LLM-readable site summary |
 | `llms-full.txt` | LLM-readable full content |
+
+### Agent-Readiness Surface (`.well-known/`)
+
+Machine-readable discovery documents for AI agents. All are served with
+`Access-Control-Allow-Origin: *` and a 5-minute cache via `public/_headers`.
+
+| File | Spec | Purpose |
+|------|------|---------|
+| `.well-known/ai-catalog.json` | [ARD](https://agenticresourcediscovery.org/) / [ai-catalog](https://github.com/Agent-Card/ai-catalog) | Capability manifest listing every agent-facing artifact the site publishes |
+| `.well-known/api-catalog` | RFC 9727 | Linkset pointing at the OpenAPI description and `llms.txt` |
+| `.well-known/oauth-authorization-server` | RFC 8414 | Authorization-server metadata (reserved stub — the site is anonymous read-only) |
+| `.well-known/oauth-protected-resource` | RFC 9728 | Protected-resource metadata (reserved stub) |
+| `.well-known/agent-skills/index.json` | Agent Skills Discovery v0.2.0 | Adopted agent-readiness skills, pinned by SHA-256. **Generated** — edit `scripts/generate-agent-skills-index.mjs`, never the JSON |
+| `.well-known/mcp/server-card.json` | SEP-1649 | MCP server card for the read-only site tools exposed via WebMCP |
+| `auth.md` | Auth.md convention | How agents authenticate: they don't — everything is public and anonymous |
+
+**ARD manifest rules** (`ai-catalog.json`) — a broken entry silently degrades
+discovery, so keep these invariants:
+
+- Every entry needs `identifier`, `displayName`, `type`, and **exactly one** of
+  `url` or `data` — never both, never neither (ARD spec §3.4)
+- Identifiers follow `urn:air:xergioalex.com:<namespace>:<name>` and must be unique
+- Each entry carries 2–5 `representativeQueries` so registries can build semantic
+  embeddings; write them as real natural-language questions, not keywords
+- Every `url` must return HTTP 200 — verify after any path change
+- The manifest is advertised through three channels that must stay in sync:
+  the `Agentmap:` directive in `robots.txt`, `<link rel="ai-catalog">` in
+  `BaseHead.astro`, and the `Link: rel="ai-catalog"` header in `_headers`
+
+Verify the whole surface with the scanner API and read the per-check evidence
+trail rather than the UI message:
+
+```bash
+curl -s -X POST https://isitagentready.com/api/scan \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://xergioalex.com"}'
+```
 
 ### Fonts
 
