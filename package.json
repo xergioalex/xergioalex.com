@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
-    "prebuild": "node scripts/generate-agent-skills-index.mjs",
+    "prebuild": "node scripts/generate-agent-skills-index.mjs && node scripts/build-openapi.mjs",
     "generate:agent-skills-index": "node scripts/generate-agent-skills-index.mjs",
     "astro": "astro",
     "astro:check": "astro check",
@@ -41,7 +41,8 @@
     "md:check:strict": "node scripts/check-md-parity.mjs --strict",
     "lighthouse": "lhci autorun",
     "lighthouse:full": "lhci autorun --config=lighthouserc.full.cjs",
-    "release": "bash .github/scripts/prepare_release.sh"
+    "release": "bash .github/scripts/prepare_release.sh",
+    "generate:openapi": "node scripts/build-openapi.mjs"
   },
   "dependencies": {
     "@astrojs/check": "0.9.10",

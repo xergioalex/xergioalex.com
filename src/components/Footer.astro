@@ -1,4 +1,5 @@
 ---
+import { getUrlPrefix } from '@/lib/i18n';
 import type { Language } from '@/lib/translations';
 import { getTranslations } from '@/lib/translations';
 
@@ -8,8 +9,19 @@ interface Props {
 
 const { lang = 'en' } = Astro.props;
 const t = getTranslations(lang as Language);
+const prefix = getUrlPrefix(lang as Language);
 
 const iconClass = 'w-6 h-6 text-current';
+
+/**
+ * Resource links. `/developers` and `/privacy` have no place in the main nav,
+ * but both need to be reachable from every page — agents and people alike look
+ * for them in the footer.
+ */
+const resourceLinks = [
+  { href: `${prefix}/developers`, label: t.footer.developers },
+  { href: `${prefix}/privacy`, label: t.footer.privacy },
+];
 ---
 
 <footer
@@ -33,6 +45,16 @@ const iconClass = 'w-6 h-6 text-current';
 			</a>
 			<p class="max-w-md text-gray-600 dark:text-gray-300">{t.footer.sponsorMessage}</p>
 		</div>
+		<nav class="flex flex-wrap gap-x-4 gap-y-1 justify-center mb-4" aria-label={t.footer.resourcesLabel}>
+			{resourceLinks.map((link) => (
+				<a
+					href={link.href}
+					class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white underline underline-offset-4 transition-colors"
+				>
+					{link.label}
+				</a>
+			))}
+		</nav>
 		<div>
 			&copy; <span id="copyright-year">{new Date().getFullYear()}</span> {t.footer.copyright}. {t.footer.allRightsReserved}
 		</div>

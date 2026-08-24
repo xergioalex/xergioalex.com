@@ -14,7 +14,7 @@ public/
 ├── llms-full.txt                      # LLM-readable full content
 ├── robots.txt                         # Crawling rules + Content-Signal + Agentmap
 ├── auth.md                            # Auth.md agent access policy
-├── openapi.json                       # OpenAPI 3.1 description of the JSON API
+├── openapi.json                       # OpenAPI 3.1 description (generated)
 ├── site.webmanifest                   # PWA manifest
 ├── _headers                           # Cloudflare Pages response headers
 ├── _redirects                         # Cloudflare Pages redirects
@@ -77,6 +77,7 @@ Machine-readable discovery documents for AI agents. All are served with
 | `.well-known/agent-skills/index.json` | Agent Skills Discovery v0.2.0 | Adopted agent-readiness skills, pinned by SHA-256. **Generated** — edit `scripts/generate-agent-skills-index.mjs`, never the JSON |
 | `.well-known/mcp/server-card.json` | SEP-1649 | MCP server card for the read-only site tools exposed via WebMCP |
 | `auth.md` | Auth.md convention | How agents authenticate: they don't — everything is public and anonymous |
+| `openapi.json` | OpenAPI 3.1 | Every API operation with an `operationId`, a typed response schema and the shared error model. **Generated** — edit `scripts/build-openapi.mjs`, never the JSON |
 
 **ARD manifest rules** (`ai-catalog.json`) — a broken entry silently degrades
 discovery, so keep these invariants:

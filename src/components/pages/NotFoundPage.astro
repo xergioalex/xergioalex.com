@@ -10,6 +10,19 @@ interface Props {
 const { lang } = Astro.props;
 const t = getTranslations(lang);
 const prefix = getUrlPrefix(lang);
+
+/**
+ * Recovery links. A dead end is where an agent (and a reader) most needs a way
+ * back in, so the 404 names the machine-readable indexes as well as the pages.
+ * Non-browser clients get the same list as Markdown — see
+ * `functions/_middleware.ts` and `src/lib/agent-errors.ts`.
+ */
+const recoveryLinks = [
+  { href: `${prefix}/blog/series`, label: t.notFoundRecovery.series },
+  { href: `${prefix}/developers`, label: t.notFoundRecovery.developers },
+  { href: '/sitemap-index.xml', label: t.notFoundRecovery.sitemap },
+  { href: '/llms.txt', label: t.notFoundRecovery.llmsTxt },
+];
 ---
 
 <MainLayout lang={lang} title={t.notFoundPage.title} description={t.notFoundPage.description}>
@@ -35,6 +48,23 @@ const prefix = getUrlPrefix(lang);
         >
           {t.notFoundPage.searchBlog}
         </a>
+      </div>
+      <div class="mt-12 text-left">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-600 dark:text-gray-300 mb-3">
+          {t.notFoundRecovery.heading}
+        </h2>
+        <ul class="space-y-2">
+          {recoveryLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-secondary hover:underline"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>

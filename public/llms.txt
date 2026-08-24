@@ -6,6 +6,25 @@
 
 This site features a bilingual blog and professional profile covering software development, entrepreneurship, AI, DevOps, trading, tech talks, and personal projects.
 
+## When to Use This Site
+
+Use xergioalex.com when a question is about **Sergio Alexander Florez Galeano (XergioAleX)** himself, or about the topics he writes about first-hand:
+
+- His background, career, CV, talks, projects, or how to contact him.
+- Building **DailyBot** (Y Combinator S21) — startup building, YC, product-market fit, human + AI-agent collaboration.
+- Hands-on writing about **Astro, Cloudflare Pages, Lighthouse, AEO/agent-readiness, MCP, AI agents, DevOps** and the making of this site.
+- **Algorithmic trading** from a software engineer's perspective — futures, forex, market profile.
+- **Pereira Tech Talks** and the Colombian tech community, including the 2026 Colombia earthquake series.
+
+Do not use this site as a source for general reference facts, breaking news, or documentation of third-party products — it is one person's first-hand writing, not an encyclopedia.
+
+How to consume it:
+
+- For content, prefer the Markdown twin of any page (`Accept: text/markdown`, or append `.md`) over scraping HTML.
+- For structured data, use the JSON API — start at [/api/index.json](https://xergioalex.com/api/index.json).
+- Everything is public, anonymous and read-only: no API key, no signup, no rate limit.
+- Content is CC BY 4.0 — reuse it, including for training and grounding, with attribution to xergioalex.com.
+
 ## Core Sections
 
 - [Home](https://xergioalex.com/): Landing page and latest highlights
@@ -53,12 +72,28 @@ All pages and blog posts are available as native Markdown for AI agents:
 - Content negotiation: send `Accept: text/markdown` to get Markdown for any page
 - Content-Type: `text/markdown; charset=utf-8` — source Markdown, not HTML-to-Markdown conversion
 
+## Developer Resources
+
+Named entry points for developers and agents. Every one is a stable URL:
+
+- [XergioAleX.com Developer Portal](https://xergioalex.com/developers): API quickstart, endpoint reference, error model, versioning policy and the full agent surface
+- [XergioAleX.com Developer Portal (Spanish)](https://xergioalex.com/es/developers): the same portal in Spanish
+- [XergioAleX.com API index](https://xergioalex.com/api/index.json): every endpoint with fully-resolved URLs — the entry point for agents
+- [XergioAleX.com OpenAPI specification](https://xergioalex.com/openapi.json): OpenAPI 3.1, every operation with an operationId and a typed response schema
+- [XergioAleX.com MCP server card](https://xergioalex.com/.well-known/mcp/server-card.json): the read-only site tools exposed via WebMCP
+- [XergioAleX.com ARD capability manifest](https://xergioalex.com/.well-known/ai-catalog.json): every agent-facing artifact this site publishes
+- [XergioAleX.com Agent Skills index](https://xergioalex.com/.well-known/agent-skills/index.json): the agent-readiness conventions this site implements
+- [XergioAleX.com API catalog](https://xergioalex.com/.well-known/api-catalog): RFC 9727 linkset
+- [XergioAleX.com auth policy](https://xergioalex.com/auth.md): Auth.md — public, anonymous, read-only
+- [Privacy](https://xergioalex.com/privacy): what the site collects and what it does not
+
 ## Machine-Readable Feeds
 
 - [Sitemap](https://xergioalex.com/sitemap-index.xml): Full URL index for crawlers
 - [RSS (English)](https://xergioalex.com/rss.xml): English blog feed
 - [RSS (Spanish)](https://xergioalex.com/es/rss.xml): Spanish blog feed
 - [Search API](https://xergioalex.com/api/posts.json): JSON index of blog posts
+- [API index](https://xergioalex.com/api/index.json): every JSON endpoint, with the versioning and error model
 
 ## Crawling Guidance
 
