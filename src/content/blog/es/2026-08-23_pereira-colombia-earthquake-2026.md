@@ -165,6 +165,17 @@ Pero se cobra. Veintisiete años después, un lunes a las 7:34 de la mañana, se
 
 ## Pereira, mi ciudad
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/plaza-bolivar-pereira.webp"
+    alt="Ilustración del Parque de Bolívar de Pereira en un día despejado: la catedral al fondo, palmeras, gente caminando, y en primer plano la escultura del Bolívar Desnudo de Rodrigo Arenas Betancourt sobre su pedestal."
+    width="1400"
+    height="788"
+    loading="lazy"
+  />
+  <figcaption>El Parque de Bolívar, con el Bolívar Desnudo de Rodrigo Arenas Betancourt. El centro histórico fue una de las zonas más golpeadas.</figcaption>
+</figure>
+
 [El Tiempo la llamó la ciudad más golpeada](https://www.eltiempo.com/justicia/investigacion/pereira-la-ciudad-mas-golpeada-por-el-terremoto-al-menos-67-victimas-mortales-3577462), y el conteo de edificios explica por qué.
 
 El reporte temprano de la Alcaldía: **66 edificaciones con colapso total, 26 con colapso parcial**, más cientos de viviendas afectadas. Buena parte de ese inventario es anterior a la norma sismorresistente, o se levantó sin aplicarla, [algo que los ingenieros venían advirtiendo desde antes del sismo](https://www.eltiempo.com/vida/ciencia/la-nsr-10-la-norma-de-construccion-sismorresistente-en-colombia-que-expertos-dicen-que-esta-desactualizada-y-que-es-urgente-reformarla-tras-terremoto-3577623). Esa cifra de 66 se mantuvo en el censo estructural del 19 de agosto, pero no es la única que circuló: [John Henry Mora Galvis, presidente de la Asociación de Ingenieros de Risaralda, estimó unas 80 estructuras completamente colapsadas cuando solo se había evaluado el 10 % de los cerca de 180.000 predios de la ciudad](https://www.lafm.com.co/actualidad/pereira-terremoto-estructuras-colapsadas-ingenieros-danos-predios-edificaciones-aeropuerto-riesgos-408008). No se contradicen: una cifra es lo verificado y la otra lo proyectado. Mora advertía además que el inventario final iba a ser bastante mayor.

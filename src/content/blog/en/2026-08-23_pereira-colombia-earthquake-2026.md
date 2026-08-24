@@ -167,6 +167,17 @@ But it does come due. Twenty-seven years later, on a Monday at 7:34 in the morni
 
 ## Pereira, my city
 
+<figure>
+  <img
+    src="/images/blog/posts/pereira-colombia-earthquake-2026/plaza-bolivar-pereira.webp"
+    alt="Illustration of Pereira's Parque de Bolívar on a clear day: the cathedral in the background, palm trees, people walking, and in the foreground the Bolívar Desnudo sculpture by Rodrigo Arenas Betancourt on its pedestal."
+    width="1400"
+    height="788"
+    loading="lazy"
+  />
+  <figcaption>The Parque de Bolívar, with Rodrigo Arenas Betancourt's Bolívar Desnudo. The historic center was one of the hardest-hit areas.</figcaption>
+</figure>
+
 [El Tiempo called it the hardest-hit city](https://www.eltiempo.com/justicia/investigacion/pereira-la-ciudad-mas-golpeada-por-el-terremoto-al-menos-67-victimas-mortales-3577462), and the building count is why.
 
 The city government's early report: **66 buildings in total collapse, 26 in partial collapse**, plus hundreds of damaged homes. Much of that stock predates the seismic code, or went up without applying it, [something engineers had been warning about long before the quake](https://www.eltiempo.com/vida/ciencia/la-nsr-10-la-norma-de-construccion-sismorresistente-en-colombia-que-expertos-dicen-que-esta-desactualizada-y-que-es-urgente-reformarla-tras-terremoto-3577623). That 66 held in the August 19 structural census, but it wasn't the only figure going around: [John Henry Mora Galvis, president of the Risaralda engineers' association, estimated some 80 structures fully collapsed when only 10% of the city's roughly 180,000 properties had been assessed](https://www.lafm.com.co/actualidad/pereira-terremoto-estructuras-colapsadas-ingenieros-danos-predios-edificaciones-aeropuerto-riesgos-408008). They don't contradict each other: one is what's verified, the other is what's projected. Mora also warned that the final inventory was going to be considerably larger.
