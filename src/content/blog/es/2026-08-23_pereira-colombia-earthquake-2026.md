@@ -234,7 +234,7 @@ Yo por mi lado, junto con muchos que nos dedicamos al desarrollo de software, pu
 
 Yo me uní a [Corag](https://corag.app/) y he estado apoyando desde entonces. Es un movimiento social que conocí en medio de la emergencia, aunque venía existiendo desde mucho antes, bajo un lema que le hace honor al nombre: *"Tenemos coraje para servir y transformar vidas"*. Conectan a quien quiere ayudar con quien más lo necesita, bajo una regla que me parece la correcta: cada entrega deja evidencia. Ayudé a construir su landing, entre otras tareas. Pero así como esta hay muchas más iniciativas que se han desarrollado, y he estado armando un mapa de todas ellas, para que las piezas se puedan encontrar entre sí. Ese mapa vive en [corag.app/ecosystem](https://corag.app/ecosystem/).
 
-Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El más evidente es la saturación: soluciones que resuelven lo mismo, que compiten entre sí por la atención de la misma gente y que no se hablan. Hace unos días quienes estamos detrás de varias de ellas nos sentamos a mirar cómo dejar de duplicarnos.
+Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El más evidente es la saturación: soluciones que resuelven lo mismo, que compiten entre sí por la atención de la misma gente y que no se hablan. Hace unos días quienes estamos detrás de varias de ellas nos sentamos a mirar cómo dejar de duplicarnos. De ahí salió [Cabuya](https://cabuya.org/es/), un protocolo abierto para que las aplicaciones publiquen y lean los mismos datos sin depender de que alguien las autorice. Cada equipo expone dos archivos en su propio dominio, un manifiesto y un listado de puntos de ayuda en JSON, sin datos personales, y un validador público mide qué tan bien los está publicando. La idea, en palabras del propio proyecto, es que la ayuda "fluya entre sistemas", bajo un principio que resume bien el momento: "Crecemos juntos: no competimos, nos alimentamos".
 
 ---
 
@@ -267,4 +267,5 @@ A seguir construyendo.
 - [El Tiempo — Pereira inicia su reconstrucción: cinco años y más de diez billones de pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150)
 - [UNGRD — portal oficial de la Unidad Nacional para la Gestión del Riesgo de Desastres](https://portal.gestiondelriesgo.gov.co/)
 - [Servicio Geológico Colombiano — portal de monitoreo sísmico en tiempo real](https://www.sgc.gov.co/)
+- [Cabuya — protocolo abierto para que las apps de ayuda publiquen y lean los mismos datos](https://cabuya.org/es/)
 - [corag.app/ecosystem — directorio de las apps de ayuda construidas tras el terremoto](https://corag.app/ecosystem/)

@@ -236,7 +236,7 @@ For my part, along with a lot of us who build software for a living, I put to us
 
 I joined [Corag](https://corag.app/) and have been helping out ever since. It's a social movement I came across in the middle of the emergency, though it had existed long before, under a motto that lives up to the name: *"Tenemos coraje para servir y transformar vidas"* ("We have the courage to serve and transform lives"). They connect people who want to help with the people who need it most, under a rule I think is the right one: every delivery leaves evidence behind. I helped build their landing page, among other things. But there are many more initiatives like it out there, and I've been putting together a map of all of them, so the pieces can find each other. That map lives at [corag.app/ecosystem](https://corag.app/ecosystem/).
 
-All of this has brought problems of its own, which I'll get into in the chapters ahead. The most obvious one is saturation: tools that solve the same thing, competing for the attention of the same people, and not talking to each other. A few days ago those of us behind several of them sat down together to figure out how to stop duplicating each other.
+All of this has brought problems of its own, which I'll get into in the chapters ahead. The most obvious one is saturation: tools that solve the same thing, competing for the attention of the same people, and not talking to each other. A few days ago those of us behind several of them sat down together to figure out how to stop duplicating each other. Out of that came [Cabuya](https://cabuya.org/es/), an open protocol so that applications publish and read the same data without needing anyone's approval. Each team exposes two files on its own domain, a manifest and a JSON feed of aid locations with no personal data in it, and a public validator measures how well they're publishing. The idea, in the project's own words, is for aid to "flow between systems", under a principle that sums up the moment well: "Crecemos juntos: no competimos, nos alimentamos" — we grow together: we don't compete, we feed each other.
 
 ---
 
@@ -269,4 +269,5 @@ Let's keep building.
 - [El Tiempo — Pereira begins reconstruction: five years and over ten trillion pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150)
 - [UNGRD — official portal of Colombia's national disaster risk management agency](https://portal.gestiondelriesgo.gov.co/)
 - [Servicio Geológico Colombiano — real-time seismic monitoring portal](https://www.sgc.gov.co/)
+- [Cabuya — open protocol so aid apps publish and read the same data](https://cabuya.org/es/)
 - [corag.app/ecosystem — directory of the aid apps built after the earthquake](https://corag.app/ecosystem/)
