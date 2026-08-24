@@ -5,7 +5,7 @@ pubDate: '2026-08-31'
 tags: ['tech', 'civic-tech', 'ai-agents', 'mcp', 'web-development']
 keywords: ['construir software en un desastre', 'API pública sin autenticación ventajas y riesgos', 'idempotencia source externalId', 'servidor MCP para emergencias', 'privacidad datos personas desaparecidas', 'apps offline first emergencia', 'frescura del dato timestamps API']
 series: 'colombia-earthquake-2026'
-seriesOrder: 5
+seriesOrder: 3
 draft: true
 ---
 
@@ -85,7 +85,7 @@ Voy a ser honesto: esta es la pieza en la que es más probable que me esté equi
 
 ## 6. Verificación por corroboración, con un humano cerrando
 
-Ya hablé de [Gravitas](https://mapa.gravitasworld.com/) en el artículo anterior, pero el patrón también va acá porque es la parte reutilizable.
+El mejor caso que vi de esto es [Gravitas](https://mapa.gravitasworld.com/), la plataforma que un estudio de diseño de Risaralda rehízo para la emergencia en 42 horas.
 
 Su regla, [como se la describió Juan Camilo Garzón a El Colombiano](https://www.elcolombiano.com/tecnologia/plataforma-ia-organiza-ayudas-voluntarios-recursos-terremoto-colombia-KC39918222): cinco personas reportando el mismo centro de acopio suben la confianza mucho más que un reporte solitario que se ve raro o sin respaldo. La IA reduce, un administrador confirma, y ahí sí llega al mapa.
 

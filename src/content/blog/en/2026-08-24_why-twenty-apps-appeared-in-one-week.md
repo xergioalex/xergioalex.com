@@ -5,7 +5,7 @@ pubDate: '2026-08-24'
 tags: ['tech', 'civic-tech', 'colombia', 'personal']
 keywords: ['civic tech disaster response', 'aid apps Colombia earthquake', 'why so many emergency apps', 'data freshness emergency information', 'aggregating disaster data', 'WhatsApp coordination emergency', 'open data earthquake response']
 series: 'colombia-earthquake-2026'
-seriesOrder: 3
+seriesOrder: 2
 draft: true
 ---
 

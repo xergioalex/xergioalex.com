@@ -140,6 +140,9 @@ function formatDate(pubDate: string): string {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
+    // pubDate is a date-only string, so it parses as UTC midnight. Without
+    // this the date renders one day early for anyone west of Greenwich.
+    timeZone: 'UTC',
   });
 }
 </script>

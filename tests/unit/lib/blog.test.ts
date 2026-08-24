@@ -202,6 +202,16 @@ describe('getWordCount', () => {
   it('handles content with only whitespace', () => {
     expect(getWordCount('   \n\n  ')).toBe(0);
   });
+
+  it('does not count table pipes as words', () => {
+    const table = '| Ciudad | Fallecidos |\n|---|---|\n| Cali | 147 |';
+    // Ciudad, Fallecidos, Cali, 147 — the pipes and the divider row are not words
+    expect(getWordCount(table)).toBe(4);
+  });
+
+  it('does not count standalone punctuation as words', () => {
+    expect(getWordCount('uno — dos : tres')).toBe(3);
+  });
 });
 
 // ─── getReadingTimeFromContent ──────────────────────────
