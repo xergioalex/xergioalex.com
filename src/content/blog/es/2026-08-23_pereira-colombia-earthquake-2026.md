@@ -207,6 +207,8 @@ El alcalde Mauricio Salazar declaró calamidad pública y emergencia económica,
 
 Pereira está viviendo una situación muy compleja, y la reconstrucción se mide en años, no en meses. Pero la ciudad no está sola, y lo que se vuelva a levantar se va a levantar bajo norma. Con la ayuda adecuada, Pereira va a resurgir, y va a hacerlo más fuerte de lo que era.
 
+---
+
 ## Tres días sin servicios públicos y sin comunicación
 
 Gran parte de la ciudad se quedó sin agua, sin energía y sin internet al mismo tiempo, y así estuvo unos tres días. Algunos sectores todavía no tienen, o lo tienen intermitente, mientras escribo esto.

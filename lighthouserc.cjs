@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       staticDistDir: './dist',
-      url: ['/', '/about/', '/blog/', '/blog/astro-and-svelte-the-future-of-web-development/', '/es/'],
+      url: ['/', '/about/', '/blog/', '/blog/astro-and-svelte-the-future-of-web-development/', '/es/', '/developers/', '/privacy/'],
       numberOfRuns: 3,
       settings: {
         chromeFlags: '--no-sandbox --headless',

@@ -117,6 +117,12 @@ Answer Engine Optimization — how to build a website that AI answer engines can
 3. Markdown for Agents: Making Your Content Speak AI's Language — Content negotiation for AI, hybrid implementation with Astro and Cloudflare Pages (/blog/aeo-markdown-for-agents/)
 4. The Scorecard: How to Measure What AI Can't Tell You — Bot tracking, audit methodology, measurement tools, and what's next (/blog/aeo-the-scorecard/)
 
+#### When Colombia Shook (in progress)
+A magnitude 7.4 earthquake hit western Colombia on August 10, 2026. Pereira, the author's city, was among the hardest hit. Reported from inside the affected region, with every figure attributed to a named source and a cut-off time:
+1. Pereira, Colombia: 7:34 a.m., Magnitude 7.4 — What happened, the official casualty and damage figures and why they moved daily, why Armenia stayed standing and what the NSR-10 seismic code actually promises, the three days without utilities or communications, and the civic response (/blog/pereira-colombia-earthquake-2026/)
+
+Later chapters cover the aid software built in the days after the quake and what comes next for the region. They are not published yet.
+
 ### Languages
 
 All pages and blog posts are available in:
