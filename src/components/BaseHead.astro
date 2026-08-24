@@ -208,6 +208,27 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
       'Algorithmic Trading',
       'Startup Building',
     ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Pereira',
+      addressRegion: 'Risaralda',
+      addressCountry: 'CO',
+    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'general inquiries',
+        email: 'xergioalex@gmail.com',
+        url: new URL('/contact', Astro.site).href,
+        availableLanguage: ['en', 'es'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'technical support',
+        url: new URL('/developers', Astro.site).href,
+        availableLanguage: ['en', 'es'],
+      },
+    ],
     sameAs: [
       'https://github.com/xergioalex',
       'https://www.linkedin.com/in/xergioalex/',

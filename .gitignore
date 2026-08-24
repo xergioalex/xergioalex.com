@@ -53,3 +53,6 @@ blob-report/
 
 english.png
 spanish.png
+
+# Wrangler local state (`wrangler pages dev` — see docs/features/PUBLIC_API.md)
+.wrangler/

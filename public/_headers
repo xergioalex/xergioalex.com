@@ -37,6 +37,19 @@
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300, must-revalidate
 
+# Public JSON API. The endpoints are prerendered static files, so the
+# Cache-Control the Astro routes set at build time never reaches the client —
+# it has to be declared here. One hour matches what /developers documents.
+/api/*
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/openapi.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 

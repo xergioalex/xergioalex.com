@@ -1,0 +1,93 @@
+---
+import JsonLd from '@/components/JsonLd.astro';
+import PageHero from '@/components/pages/PageHero.astro';
+import PageSection from '@/components/pages/PageSection.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { getUrlPrefix, type Language } from '@/lib/i18n';
+import { getTranslations } from '@/lib/translations';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+const prefix = getUrlPrefix(lang);
+const siteUrl =
+  Astro.site?.href?.replace(/\/$/, '') ?? 'https://xergioalex.com';
+const p = t.privacyPage;
+
+const sections = [
+  { id: 'analytics', ...p.analytics },
+  { id: 'forms', ...p.forms },
+  { id: 'storage', ...p.storage },
+  { id: 'hosting', ...p.hosting },
+  { id: 'embeds', ...p.embeds },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: `${siteUrl}${prefix}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: p.title,
+      item: `${siteUrl}${prefix}/privacy`,
+    },
+  ],
+};
+
+const cardClass =
+  'rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6';
+---
+
+<MainLayout lang={lang} title={p.title} description={p.description}>
+  <Fragment slot="head">
+    <JsonLd data={breadcrumbSchema} />
+  </Fragment>
+
+  <PageHero title={p.title} subtitle={p.subtitle} description={p.heroDescription} />
+
+  <PageSection id="summary" title={p.summary.title} description={p.summary.description}>
+    <p class="mb-6 text-sm text-gray-600 dark:text-gray-300">
+      {p.lastUpdatedLabel}: {p.lastUpdated}
+    </p>
+    <ul class="space-y-3">
+      {p.summary.points.map((point) => (
+        <li class="flex gap-3 text-gray-700 dark:text-gray-200">
+          <span class="text-secondary font-bold" aria-hidden="true">—</span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  </PageSection>
+
+  <PageSection id="details" background="gray">
+    <div class="grid gap-6 md:grid-cols-2">
+      {sections.map((section) => (
+        <div class={cardClass} id={section.id}>
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            {section.title}
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300">{section.description}</p>
+        </div>
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection id="rights" title={p.rights.title} description={p.rights.description}>
+    <a
+      href={`${prefix}/contact`}
+      class="inline-block px-6 py-3 bg-secondary text-white font-semibold rounded-lg hover:opacity-90 transition"
+    >
+      {p.rights.cta}
+    </a>
+  </PageSection>
+</MainLayout>

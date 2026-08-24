@@ -13,6 +13,13 @@ export let searchResult: SearchResult | undefined = undefined;
 export let topicTagNames: string[] = [];
 export let subtopicTagNames: string[] = [];
 export let subtopicAccentByName: Record<string, string> = {};
+/**
+ * Heading tag for the card title. Cards rendered directly under a page `h1`
+ * (the blog listing) keep `h2`; cards nested inside an `h2` section (the
+ * homepage sections) pass `h3` so the document outline stays hierarchical
+ * instead of flat. Visual size is set by the classes, not the tag.
+ */
+export let headingLevel: 'h2' | 'h3' | 'h4' = 'h2';
 let postData: {
   title: string;
   description: string;
@@ -181,9 +188,12 @@ $: displayDescription = searchQuery
     </div>
   {/if}
   <div class="p-6">
-    <h2 class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+    <svelte:element
+      this={headingLevel}
+      class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+    >
       {@html displayTitle}
-    </h2>
+    </svelte:element>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
       {@html displayDescription}
     </p>

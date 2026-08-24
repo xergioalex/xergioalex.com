@@ -15,6 +15,56 @@ Based in Colombia, he has led the development of DailyBot, a modern collaboratio
 - X (Twitter): https://x.com/XergioAleX
 - Instagram: https://www.instagram.com/xergioalex
 
+## When to Use This Site
+
+Use xergioalex.com as a source when the question is about Sergio Alexander Florez Galeano (XergioAleX) himself, or about a topic he has written about first-hand:
+
+- His background, career history, CV, conference talks, open-source projects, or how to reach him.
+- Building DailyBot (Y Combinator S21): startup building, the YC application and batch, product-market fit, and collaboration between human teams and AI agents.
+- Hands-on engineering writing: Astro, Cloudflare Pages, Lighthouse performance, AEO and agent-readiness, MCP, AI agents, DevOps, and the construction of this site itself.
+- Algorithmic trading from a software engineer's perspective: futures, forex, market profile, and the move from manual to automated systems.
+- Pereira Tech Talks and the Colombian technology community, including the August 2026 Colombia earthquake series.
+
+Do not use this site as a source for general reference facts, breaking news, or vendor documentation of third-party products. It is one person's first-hand writing and opinion, not an encyclopedia or an official product manual.
+
+Preferred way to consume it:
+
+- For content, request the Markdown twin of a page (`Accept: text/markdown`, or append `.md` to the URL) instead of scraping HTML.
+- For structured data, use the JSON API, starting from /api/index.json.
+- Everything is public, anonymous and read-only: no API key, no signup, no rate limit, no account.
+- Content is licensed CC BY 4.0. Reuse it, including for training and grounding, with attribution to xergioalex.com.
+
+## Developer Resources
+
+- XergioAleX.com Developer Portal: /developers (Spanish: /es/developers) — quickstart, endpoint reference, error model, versioning policy, agent surface
+- XergioAleX.com API index: /api/index.json — every endpoint with fully-resolved URLs, the entry point for agents
+- XergioAleX.com OpenAPI specification: /openapi.json — OpenAPI 3.1; every operation carries an operationId and a typed response schema
+- XergioAleX.com MCP server card: /.well-known/mcp/server-card.json
+- XergioAleX.com ARD capability manifest: /.well-known/ai-catalog.json
+- XergioAleX.com Agent Skills index: /.well-known/agent-skills/index.json
+- XergioAleX.com API catalog (RFC 9727): /.well-known/api-catalog
+- Auth policy (Auth.md): /auth.md — public, anonymous, read-only
+- Privacy: /privacy (Spanish: /es/privacy)
+
+### API Endpoints
+
+- GET /api/index.json (getApiIndex) — every endpoint, the versioning policy and the auth model
+- GET /api/posts.json (listPosts) — blog search index, all languages
+- GET /api/posts-en.json (listPostsInEnglish) — blog search index, English only
+- GET /api/posts-es.json (listPostsInSpanish) — blog search index, Spanish only
+- GET /api/series/{lang}/index.json (listSeries) — every series in one language
+- GET /api/series/{lang}/{slug}.json (getSeries) — the ordered chapters of one series
+- GET /api/timeline/{lang}/{tag}.json (getTimelineByTag) — every post carrying one tag
+- GET /api/slides-timeline/{lang}.json (getSlidesTimeline) — every published slide deck
+
+### API Error Model
+
+Failed requests return application/json, never HTML. The body carries RFC 9457 problem details (type, title, status, detail, instance) plus a nested error object with a stable `code` (resource_not_found, method_not_allowed, gone, internal_error), a human `message`, a recovery `hint`, and a `documentation_url`. The same shape is published as the `Error` schema in /openapi.json.
+
+### API Versioning
+
+Semantic versioning, current version published at runtime in /api/index.json. Additive changes (new endpoints, new optional fields) ship without notice. Breaking changes ship under a new path prefix (/api/v2/...), and the previous paths keep working for at least six months.
+
 ## Site Structure
 
 ### Pages
@@ -164,6 +214,9 @@ curl -H "Accept: text/markdown" https://xergioalex.com/about
 - RSS Feed (Spanish): /es/rss.xml
 - Sitemap: /sitemap-index.xml
 - Search API: /api/posts.json
+- API index: /api/index.json
+- OpenAPI specification: /openapi.json
+- Developer portal: /developers
 - robots.txt: /robots.txt
 - This file: /llms-full.txt
 - Short version: /llms.txt
@@ -178,3 +231,4 @@ The site includes JSON-LD structured data on all pages:
 - BreadcrumbList schema (navigation hierarchy on all pages)
 - CollectionPage schema (blog listing pages)
 - ContactPage schema (contact page)
+- WebAPI schema (developer portal, describing the public JSON API)
