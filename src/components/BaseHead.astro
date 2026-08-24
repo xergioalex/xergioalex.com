@@ -75,6 +75,8 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<!-- ARD capability manifest (Agentic Resource Discovery) -->
+<link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/json" />
 <link
 	rel="alternate"
 	type="application/rss+xml"

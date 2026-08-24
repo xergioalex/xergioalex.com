@@ -72,6 +72,11 @@ const SKILLS = [
     description:
       'Expose site tools to in-browser AI agents via the WebMCP navigator.modelContext.registerTool() API.',
   },
+  {
+    name: 'ard',
+    description:
+      'Publish an ARD capability manifest at /.well-known/ai-catalog.json so agents can discover MCP servers, skills and API tools.',
+  },
 ];
 
 const CLOUDFLARE_ROOT = 'https://isitagentready.com/.well-known/agent-skills';

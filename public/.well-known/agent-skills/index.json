@@ -56,6 +56,13 @@
       "description": "Expose site tools to in-browser AI agents via the WebMCP navigator.modelContext.registerTool() API.",
       "url": "https://isitagentready.com/.well-known/agent-skills/webmcp/SKILL.md",
       "digest": "sha256:7084ef104e2cdac6a92a29622170c3c894628fbf6406597f86bf4349fa87732b"
+    },
+    {
+      "name": "ard",
+      "type": "skill-md",
+      "description": "Publish an ARD capability manifest at /.well-known/ai-catalog.json so agents can discover MCP servers, skills and API tools.",
+      "url": "https://isitagentready.com/.well-known/agent-skills/ard/SKILL.md",
+      "digest": "sha256:7dbc6775d78ebb59d97426e6858e036b0653c69e029289c62caadeed3f3c5394"
     }
   ]
 }
