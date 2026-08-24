@@ -242,11 +242,11 @@ Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El 
 
 Pereira no ha vuelto a la normalidad y no va a volver pronto. [La alcaldía habla de cinco años de reconstrucción y de más de diez billones de pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). Hay familias esperando que un ingeniero les diga si pueden volver a entrar a su casa, y otras que ya saben que no. Hay gente que duerme mal, que se levanta cuando pasa un camión pesado, que todavía siente que el piso se mueve cuando no se está moviendo.
 
-Un terremoto no inventa nada. Deja a la vista lo que ya estaba. Armenia quedó en pie por decisiones que alguien tomó hace veintisiete años; el Invico perdió un piso siendo anterior a cualquier norma; el Chocó no aparece en las cifras por las mismas razones por las que llevaba décadas sin aparecer en nada. Nada de eso pasó el 10 de agosto. El 10 de agosto solo se cobró.
+Ya no hay rescates. Lo que queda es más lento y menos fotografiable: en Armenia, más de doce mil predios que la alcaldía todavía no ha alcanzado a inspeccionar. En Pereira, familias que llevan semanas en un albergue. En todo el Eje Cafetero, edificios marcados esperando una demolición que no tiene fecha. Nada de eso produce imágenes, y por eso es lo primero que se deja de contar.
 
-Lo que sí pasó ese día fue la gente. El que abrió su casa, el que cocinó, el que se puso en una fila a pasar escombros de mano en mano, el que se sentó a programar algo que la semana anterior no existía. Eso no se puede planear ni exigir: aparece o no aparece. Acá apareció, y esa es la razón por la que estoy escribiendo esto.
+Ya está pasando. Armenia salió del noticiero en cuestión de días porque casi nadie murió, y sigue teniendo 354 predios inhabitables y un albergue cerca de su tope. Quibdó, la capital más cercana al epicentro, es la única que no volvió a publicar cifras propias después del 11 de agosto, y no es porque allá haya pasado menos. La ayuda tiende a llegar donde estuvieron las cámaras, y las cámaras ya se están yendo.
 
-También sé cómo sigue. Las cámaras se van, y en unos meses va a haber familias en albergues y edificios esperando demolición sin que nadie los cuente. Armenia ya salió del noticiero porque casi nadie murió. Quibdó salió porque no tiene quien publique sus cifras. Contra eso no tengo mucho: nombrar las fuentes, poner las fechas y seguir escribiendo lo que pasó después, que es de lo que tratan los capítulos que siguen.
+Contra eso no tengo mucho: nombrar las fuentes, poner las fechas y seguir escribiendo cuando esto ya no sea noticia. Y contar lo que la gente construyó después, que es de lo que tratan los capítulos que siguen. Yo no me senté a escribir un terremoto. Me senté a escribir eso otro, y necesitaba que primero entendieras sobre qué se construyó.
 
 A seguir construyendo.
 
