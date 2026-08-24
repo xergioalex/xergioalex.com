@@ -10,6 +10,9 @@ Content-Signal: ai-train=yes, search=yes, ai-input=yes
 # Sitemap location
 Sitemap: https://xergioalex.com/sitemap-index.xml
 
+# ARD capability manifest (Agentic Resource Discovery)
+Agentmap: https://xergioalex.com/.well-known/ai-catalog.json
+
 # LLM guidance files
 # https://xergioalex.com/llms.txt
 # https://xergioalex.com/llms-full.txt
