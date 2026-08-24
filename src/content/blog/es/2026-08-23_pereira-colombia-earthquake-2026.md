@@ -8,7 +8,6 @@ tags: ['personal', 'colombia', 'tech']
 keywords: ['terremoto Colombia 2026', 'terremoto Pereira 10 de agosto', 'qué pasó en el terremoto de Colombia', 'cuántos muertos dejó el terremoto en Colombia', 'sismo San José del Palmar Chocó', 'edificios colapsados en Pereira', 'cuánto duró el terremoto en Colombia', 'qué es la norma NSR-10', 'por qué se caen los edificios en un terremoto', 'comparación terremoto Armenia 1999 y 2026', 'terremoto en Cali fallecidos', 'cifras oficiales damnificados terremoto Colombia']
 series: 'colombia-earthquake-2026'
 seriesOrder: 1
-draft: true
 ---
 
 Lunes 10 de agosto de 2026. 7:34 a. m.

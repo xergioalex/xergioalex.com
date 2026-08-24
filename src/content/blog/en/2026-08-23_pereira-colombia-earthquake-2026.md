@@ -8,7 +8,6 @@ tags: ['personal', 'colombia', 'tech']
 keywords: ['2026 Colombia earthquake', 'Pereira earthquake August 2026', 'San José del Palmar Chocó earthquake', 'Colombia earthquake death toll', 'Pereira buildings collapsed', 'how long did the Colombia earthquake last', 'UNGRD earthquake balance', 'what is the NSR-10 seismic code', 'why buildings collapse in an earthquake', 'Armenia 1999 vs 2026 earthquake', 'Cali earthquake deaths 2026', 'Colombia earthquake official figures']
 series: 'colombia-earthquake-2026'
 seriesOrder: 1
-draft: true
 ---
 
 Monday, August 10, 2026. 7:34 a.m.
