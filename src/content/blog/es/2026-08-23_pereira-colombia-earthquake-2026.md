@@ -242,11 +242,9 @@ Todo esto ha traído otros retos que abordaré en los capítulos siguientes. El 
 
 Pereira no ha vuelto a la normalidad y no va a volver pronto. [La alcaldía habla de cinco años de reconstrucción y de más de diez billones de pesos](https://www.eltiempo.com/colombia/otras-ciudades/pereira-inicia-su-reconstruccion-tras-el-terremoto-120-mil-afectados-y-danos-que-superan-los-10-billones-terminaria-en-cinco-anos-3579150). Hay familias esperando que un ingeniero les diga si pueden volver a entrar a su casa, y otras que ya saben que no. Hay gente que duerme mal, que se levanta cuando pasa un camión pesado, que todavía siente que el piso se mueve cuando no se está moviendo.
 
-Ya no hay rescates. Lo que queda es más lento y menos fotografiable: en Armenia, más de doce mil predios que la alcaldía todavía no ha alcanzado a inspeccionar. En Pereira, familias que llevan semanas en un albergue. En todo el Eje Cafetero, edificios marcados esperando una demolición que no tiene fecha. Nada de eso produce imágenes, y por eso es lo primero que se deja de contar.
+Si algo me quedó claro en estas dos semanas es que acá la gente no espera a que le digan qué hacer. Lo vi en las filas pasando escombros de mano en mano, en los restaurantes cocinando para desconocidos, en los que manejaron horas con un camión prestado, en los que se sentaron a programar toda una noche. Esta es una región de gente trabajadora, y eso es lo único que el terremoto no alcanzó a tumbar.
 
-Ya está pasando. Armenia salió del noticiero en cuestión de días porque casi nadie murió, y sigue teniendo 354 predios inhabitables y un albergue cerca de su tope. Quibdó, la capital más cercana al epicentro, es la única que no volvió a publicar cifras propias después del 11 de agosto, y no es porque allá haya pasado menos. La ayuda tiende a llegar donde estuvieron las cámaras, y las cámaras ya se están yendo.
-
-Contra eso no tengo mucho: nombrar las fuentes, poner las fechas y seguir escribiendo cuando esto ya no sea noticia. Y contar lo que la gente construyó después, que es de lo que tratan los capítulos que siguen. Yo no me senté a escribir un terremoto. Me senté a escribir eso otro, y necesitaba que primero entendieras sobre qué se construyó.
+Pero trabajar no alcanza cuando lo que hay por delante son cinco años y diez billones de pesos. Ahora empieza la segunda fase, la que ya no sale en el noticiero: inspeccionar, demoler, reubicar, reconstruir. Va a exigir muchísimo más esfuerzo que el rescate y va a durar mucho más tiempo, y para eso Pereira necesita ayuda de verdad, la del gobierno, la de las entidades, la del país entero. Con esa ayuda no me cabe duda de que la ciudad va a renacer. La gente que la va a levantar ya mostró de qué está hecha.
 
 A seguir construyendo.
 
