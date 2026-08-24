@@ -171,7 +171,7 @@ But it does come due. Twenty-seven years later, on a Monday at 7:34 in the morni
     src="/images/blog/posts/pereira-colombia-earthquake-2026/plaza-bolivar-pereira.webp"
     alt="Illustration of Pereira's Parque de Bolívar on a clear day: the cathedral in the background, palm trees, people walking, and in the foreground the Bolívar Desnudo sculpture by Rodrigo Arenas Betancourt on its pedestal."
     width="1400"
-    height="788"
+    height="917"
     loading="lazy"
   />
   <figcaption>The Parque de Bolívar, with Rodrigo Arenas Betancourt's Bolívar Desnudo.</figcaption>

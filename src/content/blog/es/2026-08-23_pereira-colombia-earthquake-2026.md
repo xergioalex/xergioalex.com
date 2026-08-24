@@ -169,7 +169,7 @@ Pero se cobra. Veintisiete años después, un lunes a las 7:34 de la mañana, se
     src="/images/blog/posts/pereira-colombia-earthquake-2026/plaza-bolivar-pereira.webp"
     alt="Ilustración del Parque de Bolívar de Pereira en un día despejado: la catedral al fondo, palmeras, gente caminando, y en primer plano la escultura del Bolívar Desnudo de Rodrigo Arenas Betancourt sobre su pedestal."
     width="1400"
-    height="788"
+    height="917"
     loading="lazy"
   />
   <figcaption>El Parque de Bolívar, con el Bolívar Desnudo de Rodrigo Arenas Betancourt.</figcaption>
