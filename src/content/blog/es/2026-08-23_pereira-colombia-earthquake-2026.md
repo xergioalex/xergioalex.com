@@ -173,7 +173,7 @@ Pero se cobra. Veintisiete años después, un lunes a las 7:34 de la mañana, se
     height="788"
     loading="lazy"
   />
-  <figcaption>El Parque de Bolívar, con el Bolívar Desnudo de Rodrigo Arenas Betancourt. El centro histórico fue una de las zonas más golpeadas.</figcaption>
+  <figcaption>El Parque de Bolívar, con el Bolívar Desnudo de Rodrigo Arenas Betancourt.</figcaption>
 </figure>
 
 [El Tiempo la llamó la ciudad más golpeada](https://www.eltiempo.com/justicia/investigacion/pereira-la-ciudad-mas-golpeada-por-el-terremoto-al-menos-67-victimas-mortales-3577462), y el conteo de edificios explica por qué.
