@@ -1,5 +1,5 @@
 ---
-title: 'The Software That Came After'
+title: 'Building Software in an Emergency'
 description: 'Within days there were more than twenty citizen aid tools. Why there were so many, what I learned building one of them, and what still keeps me up.'
 pubDate: '2026-08-31'
 tags: ['tech', 'civic-tech', 'colombia', 'ai-agents', 'mcp', 'web-development']

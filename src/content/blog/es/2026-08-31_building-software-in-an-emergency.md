@@ -1,5 +1,5 @@
 ---
-title: 'El software que apareció después'
+title: 'Construir software en una emergencia'
 description: 'En días había más de veinte herramientas ciudadanas de ayuda. Por qué fueron tantas, qué aprendí construyendo una, y lo que aún no me deja tranquilo.'
 pubDate: '2026-08-31'
 tags: ['tech', 'civic-tech', 'colombia', 'ai-agents', 'mcp', 'web-development']
