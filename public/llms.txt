@@ -55,6 +55,7 @@ How to consume it:
 - [Building XergioAleX.com](https://xergioalex.com/blog/series/building-xergioalex/): How the site was built from scratch with Astro (7 chapters): architecture, Lighthouse 100, analytics, content collections, multilingual support, deployment, and AI bot tracking
 - [Trading Journey](https://xergioalex.com/blog/series/trading-journey/): From manual to algorithmic trading (3 chapters): futures, forex, and market profile
 - [AEO: From Invisible to Cited](https://xergioalex.com/blog/series/aeo-from-invisible-to-cited/): Answer Engine Optimization (4 chapters): what it is, how AI search engines work, Markdown for Agents implementation, and measuring AEO results
+- [When Colombia Shook](https://xergioalex.com/blog/series/colombia-earthquake-2026/): The magnitude 7.4 earthquake that hit western Colombia on August 10, 2026, reported from Pereira with every figure sourced and dated: what happened, why the buildings that fell fell, and the civic software built in response. Chapter 1 published; later chapters in progress
 
 ## Languages
 
