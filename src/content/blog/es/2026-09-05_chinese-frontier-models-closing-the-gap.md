@@ -1,6 +1,6 @@
 ---
 title: "La ola china de pesos abiertos: empatados en el trabajo, meses atrás en el arma"
-description: "Los labs chinos ya publican modelos de pesos abiertos que empatan con los agentes clase Mythos en código, a una fracción del precio. La brecha que queda cuenta la historia."
+description: "Los labs chinos publican modelos de pesos abiertos que empatan con la clase Mythos en código, a una fracción del precio. La brecha que queda cuenta la historia."
 pubDate: "2026-09-05"
 heroImage: "/images/blog/posts/chinese-frontier-models-closing-the-gap/hero.webp"
 heroLayout: "banner"

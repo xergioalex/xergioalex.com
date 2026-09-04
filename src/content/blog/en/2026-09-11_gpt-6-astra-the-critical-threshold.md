@@ -1,6 +1,6 @@
 ---
 title: "GPT-6 Astra: The First 'Critical' Model OpenAI Shipped Anyway"
-description: "GPT-6 Astra crossed the cyber threshold OpenAI itself calls Critical, got slowed and paused, then shipped anyway — with a reasoning trick that alarms safety experts."
+description: "GPT-6 Astra crossed the cyber threshold OpenAI itself calls Critical, got slowed and paused, then shipped — with a reasoning trick that alarms safety experts."
 pubDate: "2026-09-11"
 heroImage: "/images/blog/posts/gpt-6-astra-the-critical-threshold/hero.webp"
 heroLayout: "banner"

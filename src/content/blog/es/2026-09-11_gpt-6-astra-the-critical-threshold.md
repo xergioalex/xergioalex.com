@@ -1,6 +1,6 @@
 ---
 title: "GPT-6 Astra: el primer modelo «Critical» que OpenAI lanzó de todos modos"
-description: "GPT-6 Astra cruzó el umbral de ciberseguridad que el propio framework de OpenAI llama Critical, fue frenado y pausado, y aun así salió — con un truco de razonamiento que alarma a los expertos."
+description: "GPT-6 Astra cruzó el umbral que OpenAI misma llama Critical, fue frenado y pausado, y aun así salió — con un truco de razonamiento que alarma a los expertos."
 pubDate: "2026-09-11"
 heroImage: "/images/blog/posts/gpt-6-astra-the-critical-threshold/hero.webp"
 heroLayout: "banner"

@@ -1,6 +1,6 @@
 ---
 title: "Claude Fable 5.1: la correa aguanta, y ahora podemos medirla"
-description: "Fable 5.1 trae el mismo cerebro que Mythos 5.1 con un impuesto de salvaguardas medible, caché 75% más barata — y una system card que bajó en silencio la confianza de alineación."
+description: "Fable 5.1 trae el mismo cerebro que Mythos 5.1, con un impuesto de salvaguardas medible y una system card que rebajó en silencio su confianza de alineación."
 pubDate: "2026-09-08"
 heroImage: "/images/blog/posts/claude-fable-5-1-back-in-the-race/hero.webp"
 heroLayout: "banner"
