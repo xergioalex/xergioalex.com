@@ -6,7 +6,7 @@ updatedDate: "2026-06-12"
 heroImage: "/images/blog/posts/claude-fable-5-mythos-unleashed/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
-series: "the-mythos-saga"
+series: "the-agi-race"
 seriesOrder: 2
 keywords: ["Claude Fable 5 release", "Claude Mythos 5 public", "Anthropic Fable 5 capabilities", "Project Glasswing update 2026", "Mythos class model general availability", "AI safety classifiers"]
 ---

@@ -1101,7 +1101,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     'mastering-openclaw': 'Dominando OpenClaw',
     'learning-mobile-development': 'Aprendiendo Desarrollo Móvil',
     'slides-as-code': 'Slides as Code',
-    'the-mythos-saga': 'La saga de Mythos',
+    'the-agi-race': 'La carrera hacia la AGI',
     'playing-with-time': 'Jugando con el Tiempo',
     'colombia-earthquake-2026': 'Cuando tembló en Colombia',
   },
@@ -1124,8 +1124,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       'Un recorrido honesto por el desarrollo móvil — el estado del arte, escoger herramientas y aprender a construir para Android e iOS documentando cada paso.',
     'slides-as-code':
       'Una serie que explora herramientas de presentación orientadas a desarrolladores, compara alternativas y documenta cómo construir un sistema de diapositivas multilingüe dentro de un framework web moderno.',
-    'the-mythos-saga':
-      "Los modelos de clase Mythos de Anthropic: de 'demasiado peligroso para liberar' a disponible para todos — y lo que esa capacidad significa para nosotros.",
+    'the-agi-race':
+      'La carrera de modelos frontera hacia la inteligencia artificial general — desde el Mythos de Anthropic, "demasiado peligroso para liberar", hasta los retadores chinos y la respuesta de OpenAI, y lo que significa para el resto de nosotros.',
     'playing-with-time':
       'Ciencia, paradojas y ficción — qué pasa de verdad cuando te metes con el tiempo. Desde la dilatación temporal y los agujeros de gusano hasta las enredadas líneas temporales de Dragon Ball Z.',
     'colombia-earthquake-2026':

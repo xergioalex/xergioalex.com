@@ -5,7 +5,7 @@ pubDate: "2026-04-07"
 heroImage: "/images/blog/posts/claude-mythos-the-model-too-dangerous-to-release/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
-series: "the-mythos-saga"
+series: "the-agi-race"
 seriesOrder: 1
 keywords: ["Claude Mythos Preview zero-day exploits", "Project Glasswing Anthropic cybersecurity", "AI vulnerability discovery 2026", "Claude Mythos benchmarks BrowseComp", "AI cybersecurity revolution zero-day", "Anthropic $100M security coalition", "AI finds 28-year-old OpenBSD bug"]
 ---
