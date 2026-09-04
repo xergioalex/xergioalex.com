@@ -123,6 +123,13 @@ A magnitude 7.4 earthquake hit western Colombia on August 10, 2026. Pereira, the
 
 Later chapters cover the aid software built in the days after the quake and what comes next for the region. They are not published yet.
 
+#### The AGI Race (in progress)
+The frontier-model race toward AGI-class capability, told as it happened — every benchmark and incident sourced:
+1. Claude Mythos: The Model Too Dangerous to Release — Thousands of zero-days found across every major operating system, the $100M Project Glasswing coalition, and why Anthropic withheld its most capable model (/blog/claude-mythos-the-model-too-dangerous-to-release/)
+2. Claude Fable 5: The Model They Wouldn't Release Is Now in Your Hands — The June launch, the US export-control suspension three days later, and the July 1 return under a thicker harness (/blog/claude-fable-5-mythos-unleashed/)
+
+Chapters on China's open-weight frontier, Claude Fable 5.1, and OpenAI's GPT-6 Astra are scheduled for September 2026.
+
 ### Languages
 
 All pages and blog posts are available in:
