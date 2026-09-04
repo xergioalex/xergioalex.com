@@ -2,7 +2,7 @@
 title: "Claude Fable 5: The Model They Wouldn't Release Is Now in Your Hands"
 description: "Anthropic said a model was too dangerous to release. Then they released it — same weights, new name, and a safety layer that changes the equation."
 pubDate: "2026-06-09"
-updatedDate: "2026-06-12"
+updatedDate: "2026-07-01"
 heroImage: "/images/blog/posts/claude-fable-5-mythos-unleashed/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
@@ -131,6 +131,16 @@ The irony is hard to miss. The whole argument of this post is that the harness �
 As of this writing, Anthropic [says it considers this a misunderstanding and is working to restore access](https://www.anthropic.com/news/fable-mythos-access), and an executive told press in Seoul the company is [confident the models will return "in the coming days."](https://www.koreajoongangdaily.com/business/anthropic-confident-of-reenabling-mythos-fable-5-access-in-coming-days-executive/12727522) Whether they come back unchanged, with a tighter harness, or under new access rules is the part nobody can answer yet. I'll update this post again when there's something solid to report.
 
 The door was open for three days. What happens next is the real story.
+
+---
+
+## Update — July 1, 2026: The Door Reopened
+
+The real story arrived three weeks later. On June 30, [Anthropic announced](https://www.anthropic.com/news/redeploying-fable-5) the export controls were lifted, and on July 1, Fable 5 returned worldwide — Claude.ai, the API, Claude Code, Cowork.
+
+What came back was not what left. The redeployed model carries a new cybersecurity classifier aimed at the exact prompt-framing technique that triggered the suspension, and Anthropic says it blocks it in over 99% of attempts. Before the switch flipped, the safeguards were independently tested by CAISI — the Commerce Department's AI standards center — a first for a frontier model. The return also brought a four-criteria Cyber Jailbreak Severity framework drafted with Amazon, Microsoft, and Google, plus a new HackerOne program for anyone who finds a way through. Mythos 5 came back too, but only for the approved set of US Glasswing organizations.
+
+The thesis of this post survived its stress test. The model didn't change — everything around it got thicker. What the leash now costs, in benchmark points, is measured in [the Fable 5.1 chapter of this series](/blog/claude-fable-5-1-back-in-the-race/).
 
 ---
 

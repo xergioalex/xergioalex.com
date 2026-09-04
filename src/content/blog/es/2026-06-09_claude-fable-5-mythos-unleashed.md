@@ -2,7 +2,7 @@
 title: "Claude Fable 5: El modelo que no querían liberar ahora está en tus manos"
 description: "Anthropic dijo que era demasiado peligroso para liberarlo. Luego lo liberaron — mismos pesos, otro nombre y una capa de seguridad que cambia la ecuación."
 pubDate: "2026-06-09"
-updatedDate: "2026-06-12"
+updatedDate: "2026-07-01"
 heroImage: "/images/blog/posts/claude-fable-5-mythos-unleashed/hero-es.webp"
 heroLayout: "banner"
 tags: ["tech", "ai-agents", "personal", "claude"]
@@ -131,6 +131,16 @@ La ironía es difícil de ignorar. Todo el argumento de este post es que el harn
 Al momento de escribir esto, Anthropic [dice que lo considera un malentendido y que está trabajando para restaurar el acceso](https://www.anthropic.com/news/fable-mythos-access), y un ejecutivo le dijo a la prensa en Seúl que la compañía está [segura de que los modelos volverán "en los próximos días".](https://www.koreajoongangdaily.com/business/anthropic-confident-of-reenabling-mythos-fable-5-access-in-coming-days-executive/12727522) Si vuelven sin cambios, con un harness más estricto, o bajo nuevas reglas de acceso es la parte que nadie puede responder todavía. Actualizaré este post de nuevo cuando haya algo sólido que reportar.
 
 La puerta estuvo abierta tres días. Lo que pase ahora es la verdadera historia.
+
+---
+
+## Actualización — 1 de julio de 2026: la puerta se reabrió
+
+La verdadera historia llegó tres semanas después. El 30 de junio, [Anthropic anunció](https://www.anthropic.com/news/redeploying-fable-5) que los controles de exportación quedaban levantados, y el 1 de julio Fable 5 volvió al mundo — Claude.ai, la API, Claude Code, Cowork.
+
+Lo que volvió no era lo que se fue. El modelo redesplegado trae un clasificador de ciberseguridad nuevo apuntado exactamente a la técnica de encuadre de prompts que detonó la suspensión, y Anthropic dice que la bloquea en más del 99% de los intentos. Antes de accionar el interruptor, las salvaguardas fueron probadas de forma independiente por CAISI — el centro de estándares de IA del Departamento de Comercio — una primera para un modelo de frontera. El regreso también trajo un framework de severidad de jailbreaks cibernéticos con cuatro criterios, redactado junto con Amazon, Microsoft y Google, más un nuevo programa en HackerOne para quien encuentre una forma de atravesarlo. Mythos 5 también volvió, pero solo para el conjunto aprobado de organizaciones estadounidenses de Glasswing.
+
+La tesis de este post sobrevivió su prueba de estrés. El modelo no cambió — todo lo que lo rodea se hizo más grueso. Lo que cuesta ahora la correa, en puntos de benchmark, está medido en [el capítulo de Fable 5.1 de esta serie](/es/blog/claude-fable-5-1-back-in-the-race/).
 
 ---
 
