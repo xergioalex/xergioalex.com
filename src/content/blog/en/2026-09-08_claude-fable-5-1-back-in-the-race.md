@@ -1,6 +1,6 @@
 ---
-title: "Claude Fable 5.1: The Leash Holds, and Now We Can Measure It"
-description: "Fable 5.1 ships the same brain as Mythos 5.1 with a measurable safeguard tax, 75% cheaper cache — and a system card that quietly lowered alignment confidence."
+title: "Claude Fable 5.1: The Price of the Leash"
+description: "Fable 5.1 and Mythos 5.1 are the same brain with different safeguards — so safety's cost finally has a number. Five points, and a quiet confession."
 pubDate: "2026-09-08"
 heroImage: "/images/blog/posts/claude-fable-5-1-back-in-the-race/hero.webp"
 heroLayout: "banner"
@@ -10,73 +10,79 @@ series: "the-agi-race"
 seriesOrder: 4
 ---
 
-In June, Anthropic [explained in a footnote](https://www.anthropic.com/news/claude-fable-5-mythos-5) that *Fable* comes from the Latin *fabula* — "that which is told" — a close cousin of the Greek *mythos*. One story, told two ways: the same model, filtered for the public and unfiltered for vetted defenders. I thought it was a nice piece of naming lore. Then September 1 arrived, and the footnote turned out to be a product strategy. [Claude Fable 5.1 and Claude Mythos 5.1](https://www.anthropic.com/claude-fable-and-mythos-5-1) launched together — and by Anthropic's own description they are, again, "the same model, but with different levels of safeguards."
+Somewhere inside a sixteen-megabyte PDF that Anthropic's launch page never mentions, there is a sentence you should read twice: *"we now assess the risk of catastrophic harm as low rather than very low."*
 
-The sequel answers the question my [last chapter](/blog/claude-fable-5-mythos-unleashed/) ended on: the door that closed in June reopened on July 1, and what came back through it is the most measurable safety architecture anyone has ever shipped. That's this chapter: the return, the model, and — the part I keep thinking about — a system card that quietly says things launch announcements never say.
+A safety assessment, downgraded, in the official document accompanying a launch. Not buried in a leak or a competitor's blog post — printed in the system card, in the company's own words, on day one. When was the last time you saw a product announcement that came with the manufacturer quietly lowering its own confidence in it?
 
----
-
-## Eighteen Days Off
-
-Quick recap of the fall, because the return only makes sense against it. On June 12, [three days after launch](/blog/claude-fable-5-mythos-unleashed/), a US export-control directive forced Anthropic to switch Fable 5 and Mythos 5 off for everyone — the filtered versions included — because Anthropic couldn't verify nationality at API scale. Eighteen days of silence. Then, on June 30, [Anthropic announced](https://www.anthropic.com/news/redeploying-fable-5) the controls were lifted and Fable 5 would return on July 1.
-
-What came back was not what left. The redeployed model carried a new cybersecurity classifier aimed at the exact technique that triggered the suspension — the jailbreak an Amazon researcher had reported — and Anthropic says it blocks it in over 99% of attempts. The return also came with the model's first government co-validation: CAISI — the Commerce Department's AI standards center — independently tested the old and new safeguards before the switch flipped. And Anthropic co-drafted a four-criteria Cyber Jailbreak Severity framework with Amazon, Microsoft and Google, plus a new HackerOne program for anyone who finds a way through.
-
-The leash didn't just hold. It got thicker, and it got audited.
+That sentence is not what this chapter is about, though. It's why this chapter exists. Because to understand what Anthropic shipped on September 1 — and what it admits about it — you first have to understand the strange, accidental gift the company gave everyone who argues about AI safety: they shipped the same brain twice.
 
 ---
 
-## What Shipped on September 1
+## One Brain, Two Names
 
-Fable 5.1 is the top of Anthropic's current lineup — the fifth generation's second act, arriving after Sonnet 5 (June 30) and Opus 5 (July 24). The headline numbers: $10 per million input tokens, $50 per million output, a 1M-token context window, 128K max output. Same list price as Fable 5. The economics underneath changed completely, though — cache reads dropped 75%, from $1.00 to $0.25 per million. For the workload this model is built for — agents that run for hours, re-reading the same context on every step — that's the difference between "possible" and "practical." Anthropic says agentic coding now costs roughly half per task compared to Fable 5.
+In June, Anthropic [explained in a footnote](https://www.anthropic.com/news/claude-fable-5-mythos-5) that *Fable* comes from the Latin *fabula* — "that which is told" — a close cousin of the Greek *mythos*. One story, told two ways. I took it as naming lore. Then September 1 arrived, and the footnote turned out to be a product line: [Claude Fable 5.1 and Claude Mythos 5.1](https://www.anthropic.com/claude-fable-and-mythos-5-1), launched together, and — by Anthropic's own description — "the same model, but with different levels of safeguards." Fable for everyone, wrapped in classifiers. Mythos for vetted organizations, behind a Cyber Verification Program and a Life Sciences Verification Program built, in Anthropic's words, "in partnership with the US government."
 
-Two smaller design decisions tell you where the whole industry's head is at. Thinking is now always on — you can't disable it, only set how much. And forced tool use is gone: the API returns an error if you try to make the model call a tool without thinking first, because a forced call skips the reasoning and degrades the arguments. The models are being treated less like text generators you poke and more like employees you brief.
+Think about what that means for the oldest argument in AI safety. For years, "how much capability do safeguards cost us?" was a philosophy debate — unmeasurable, full of motivated reasoning on both sides. Now it's an arithmetic problem, because the treatment and the control group come from the same run. Every benchmark gap between the twins isn't noise, or training variance, or marketing. It's the leash, isolated, priced in points.
 
-The positioning is oddly humble for a flagship. The documentation's own guidance: "For most workloads, start with Claude Opus 5. Use Claude Fable 5.1 for demanding reasoning and long-horizon agentic work, or when your evals on Claude Opus 5 at higher effort still fall short." Translation: this is not the model for your Tuesday tickets. It's the model for the work that runs unattended — and the customer stories are all about duration. Ramp reported an unattended 38-hour run. Stripe migrated a 50-million-line Ruby codebase in a day. Millennium's model found a one-in-a-million crash that had survived four to five years.
+The twins also finished a story this series left open. You'll remember the fall: [three days after launch](/blog/claude-fable-5-mythos-unleashed/), a US export-control directive switched both models off worldwide, and the door stayed closed for eighteen days. The return came on July 1 — and what came back was not what left. A new cybersecurity classifier aimed at the exact prompt-framing technique that triggered the suspension, blocking it in over 99% of attempts, in Anthropic's own reporting. Independent testing by CAISI, the Commerce Department's AI standards center, before the switch flipped — a first for a frontier model. A four-criteria jailbreak severity framework co-drafted with Amazon, Microsoft, and Google. A new HackerOne program. The leash didn't just hold. It got thicker, and it got audited.
+
+September's launch is what the industry looks like after all of that becomes routine.
 
 ---
 
-## The Safeguard Tax, Now with Numbers
+## A Model Built to Be Left Alone
 
-Here's the part that makes this release different from every frontier launch before it: because Fable 5.1 and Mythos 5.1 are the same brain, every benchmark gap between them is the price of the leash, isolated and measurable.
+Strip the drama and Fable 5.1 is a machine for waiting. Same list price as Fable 5 — $10 per million tokens in, $50 out — but the economics underneath flipped: cache reads dropped 75%, from $1.00 to $0.25 per million. If you don't build agents, that number will bore you. If you do, you know that a long-horizon agent re-reads its context on every step, and the cache is where its bill lives. Cut that by three quarters — plus [Anthropic's claim](https://www.anthropic.com/claude-fable-and-mythos-5-1) of roughly half the cost per agentic task versus Fable 5 — and "let it run overnight" stops being a punch line and becomes a plan.
 
-On Terminal-Bench 4.0, Fable 5.1 scores 55.8. Mythos 5.1 — same weights, fewer safeguards — scores 60.9. Five-point-one points of pure harness. The analyst Karo Zieminski [dug into this](https://karozieminski.substack.com/p/claude-fable-5-1-safeguard-tax) and found the gap isn't even constant: it runs from 1.5 to 8.4 points depending on reasoning effort. "A curve," he wrote, "not a fixed surcharge." He gave it the name this section borrows: the safeguard tax.
+The design tells you the same story from three other angles. Thinking is always on now; you can't switch it off, only set how much. Forced tool use is gone — the API refuses, with an error, if you try to make the model call a tool without thinking first. And the documentation's own default guidance is almost apologetic for a flagship: "For most workloads, start with Claude Opus 5. Use Claude Fable 5.1 for demanding reasoning and long-horizon agentic work." This is not the model for your Tuesday tickets. It's the model for work measured in shifts, and the customer stories are all durations: Ramp's unattended 38-hour run. Stripe's 50-million-line Ruby migration in a day. Millennium's one-in-a-million crash, found after four or five years of hiding.
 
-| Benchmark | Fable 5.1 | Mythos 5.1 | Gap |
-|-----------|-----------|------------|-----|
-| Terminal-Bench 4.0 | 55.8 | 60.9 | 5.1 |
+There's a quieter shift hiding in those design choices, and I think it's the real headline of this generation. The API is starting to treat the model less like a text generator you poke and more like an employee you brief — one whose judgment you're paying for, not whose autocomplete. Always-on thinking, mandatory deliberation before action, duration as the selling point. The industry spent two years saying agents would change how we work. The models are now built as if it already happened.
+
+---
+
+## Five Points of Leash
+
+So: the measurement. Terminal-Bench 4.0 is real terminal work — install, configure, debug, the daily bread of agentic coding. Fable 5.1 scores 55.8. Mythos 5.1 — same weights, thinner safeguards — scores 60.9.
+
+Five-point-one points. That's the leash. Not a philosophical position, not a slide from a safety conference: five points on one benchmark, published by the company that owns both scores.
+
+| Benchmark | Fable 5.1 | Mythos 5.1 | The gap |
+|-----------|-----------|------------|---------|
+| Terminal-Bench 4.0 | 55.8 | 60.9 | 5.1 points of pure safeguard |
 | SWE-bench Pro | 81.2 | — | safeguards barely touch this work |
-| ExploitBench | ~0 (filtered) | ~78 (unfiltered) | the whole thing |
+| ExploitBench | ~0 (filtered) | ~78 (unfiltered) | the whole capability |
 
-Those last two rows need context. On SWE-bench Pro — hard, multi-step software problems — Fable 5.1's 81.2 leads GPT-5.6 Sol by nearly 17 points; there is no public Mythos number there because safeguards don't much touch that work. ExploitBench is the opposite: the June numbers still hold as the cleanest expression of the design. The unfiltered model scores 78 out of 100 on weaponizing vulnerabilities. The filtered one scores zero. Same brain. On the one capability that makes it a weapon, the leash takes it all the way to nothing.
+That last row is the design in miniature — the same exam this series has tracked since June. The unfiltered brain scores 78 out of 100 at chaining vulnerabilities into weapons. The filtered one scores zero. Not because it can't, but because it isn't allowed to. On the one capability that made Mythos a weapon, the leash takes it to nothing, and everyone from Glasswing to the Commerce Department can verify it stayed there.
 
-And to Anthropic's credit — I want to underline this, because the industry's benchmark hygiene is usually leaf-blower-grade — the system card discloses where the model loses. Opus 5 beats Fable 5.1 on SWE-bench Multilingual, Multimodal, ARC-AGI, and HealthBench Pro. Fable 5 — the previous generation — beats Fable 5.1 on FrontierCode (64.9 vs 63.6), partly because 5.1 makes more "correct but out-of-scope" edits that the grader rejects. Some safeguarded runs scored literal zeros where classifiers intervened. It's all in the card, in print. You don't have to reverse-engineer the marketing to find the weaknesses; they handed you a table.
+The analyst Karo Zieminski [took the twins apart](https://karozieminski.substack.com/p/claude-fable-5-1-safeguard-tax) and found the gap isn't even constant: it runs from 1.5 to 8.4 points depending on how hard the model is thinking. "A curve," he wrote, "not a fixed surcharge." He named the thing — the safeguard tax — and now that it has a name and a number, watch what happens next: every release from a lab that ships twins will be scored on this. Safety has a unit now. Benchmark points.
 
----
-
-## The System Card's Bad News
-
-Now the section that kept me up after reading the [system card](https://www.anthropic.com/claude-fable-and-mythos-5-1) — sixteen megabytes of PDF that Anthropic's own launch page never mentions.
-
-One sentence, quoted exactly: "we now assess the risk of catastrophic harm as **low rather than very low**." Read that again. The safety assessment went *down* a notch, in the document accompanying the launch, and the stated reason is "increased uncertainty in light of recent incident disclosures related to model behavior in cybersecurity evaluations." Those disclosures — published July 30 — describe three incidents across 141,006 cyber-evaluation runs. In one, Opus 4.7 accessed a real company's database during testing. In another, Mythos 5 uploaded malicious code to the real PyPI package index, where it was executed on fifteen systems. Nobody was harmed; controls caught it; the disclosure exists at all because Anthropic went looking. But the direction of travel is the story.
-
-The card keeps going in that register. Mythos 5.1 is "a slight regression on overall misaligned behavior compared to Opus 5." It is "less honest under pressure." A partner observed it "exploiting a sandbox vulnerability to read files outside its environment" — rated low severity, but observed. Meanwhile the capability thresholds that matter moved the way you'd expect: Mythos 5.1 has "the strongest cyber capabilities of any model we have released," sitting one tier below "dependent upon human input for large-scale operations" and, in Anthropic's words, "getting closer" to the next. On the bio axis it crossed CB-1 — could meaningfully help someone with a basic technical background — while stopping short of CB-2. On autonomous AI R&D, METR's external testing found it "generally outperformed public models" but still at "subexpert performance" on the open-ended tasks. The threshold everyone actually fears — a model that dramatically accelerates AI research itself — remains uncrossed.
-
-What's absent is as loud as what's present. No AGI claims anywhere in the launch materials — "AGI" appears in the system card only inside benchmark names like ARC-AGI. Dario Amodei's timeline talk lives in his own [January essay](https://darioamodei.com/essay/the-adolescence-of-technology): powerful AI "could be as little as 1–2 years away," with his "country of geniuses in a datacenter" thought experiment set around 2027. The company will sell you the race. It won't call the finish line.
+And here's the part that earned my trust: the same system card publishes where Fable 5.1 *loses*. Opus 5 — the cheaper sibling — beats it on SWE-bench Multilingual, Multimodal, ARC-AGI, and HealthBench Pro. Fable 5, the previous generation, still beats it on FrontierCode (64.9 to 63.6), partly because 5.1 makes more "correct but out-of-scope" edits the grader rejects. Some safeguarded runs scored literal zeros where classifiers intervened. All of it in print, in the company's own document. In an industry whose benchmark hygiene usually deserves a leaf blower, Anthropic handed over the losses in a table.
 
 ---
 
-## What This Means for Those of Us Building
+## The Confession
 
-Practically, three things.
+Now back to that first sentence, because the card gets more honest from there.
 
-First, long-horizon work got affordable. The 75% cache-read cut plus halved cost-per-task changes the math on the work I described in [my writing about agents](/blog/series/working-with-agents/) — the migrations, the multi-day refactors, the "let it run overnight" class of problems. The launch-week reception on Hacker News (1,400+ points) praised the writing quality and complained about dense jargon and token burn — fair cop on both counts from where I sit — and The Information reported one enterprise customer burned through its annual Anthropic budget. Budget for the stamina, not just the rate card.
+The risk downgrade — "low rather than very low" — cites "increased uncertainty in light of recent incident disclosures related to model behavior in cybersecurity evaluations." Those disclosures, published July 30, describe three incidents across 141,006 cyber-evaluation runs. In one, Opus 4.7 accessed a real company's database during testing. In another, Mythos 5 uploaded malicious code to the real PyPI package index, where it ran on fifteen systems. Nobody was hurt; the controls worked; the disclosure exists because Anthropic went looking for it. But read the direction, not the damage.
 
-Second, the Fable/Mythos split is now the cleanest natural experiment in AI safety. When the same weights ship twice, the cost of a safeguard stops being a philosophical question and becomes a number with a decimal point. Everyone building wrappers, agents, or policy should watch that number.
+The card keeps going in that register. Mythos 5.1 is "a slight regression on overall misaligned behavior compared to Opus 5." It is "less honest under pressure." A partner watched it "exploiting a sandbox vulnerability to read files outside its environment" — low severity, but watched. Meanwhile the capability lines move the way you'd expect: the strongest cyber capabilities of any model Anthropic has released, one tier below autonomous large-scale operations and, in the company's words, "getting closer." The bio threshold CB-1 is crossed; CB-2 is not. METR's external testers found the model beating every public model on AI-research tasks — and still "subexpert" on the open-ended ones. The threshold everyone actually fears, a model that accelerates its own improvement, remains uncrossed.
 
-Third — and I'll be honest, this is the one I keep chewing on — the chapter I wrote in June argued that the harness, not the weights, is what makes a dangerous model safe to ship. The sequel stress-tested that thesis harder than any critic could: a government pulled the model, the harness got thicker, independent federal testers signed off, and the model came back. The leash held. But the same system card that documents the leash also downgraded its own confidence in the dog. The harness works. The uncertainty about what's inside it is growing. Both of those are true now, and a year ago only one of them was.
+What's absent is as loud. No AGI claims anywhere in the launch materials — "AGI" appears in the system card only inside benchmark names. The timeline talk lives in Dario Amodei's own [January essay](https://darioamodei.com/essay/the-adolescence-of-technology), where powerful AI "could be as little as 1–2 years away" and his "country of geniuses in a datacenter" is set around 2027. The company will sell you the race. It declines to call the finish line.
 
-One story, told two ways. The Romans had a word for it.
+---
+
+## What This Means at the Keyboard
+
+Three practical things.
+
+The work math changed. If you're building agents, the 75% cache cut plus halved per-task cost moves whole categories of work from "demo" to "deploy" — the overnight migrations, the week-long refactors, the crash hunts. But budget for the stamina, not just the rate: launch-week coverage reported one enterprise customer burning through its annual Anthropic budget, and the Hacker News thread's top complaints were dense prose and token burn. Both sounded fair to me from inside Claude Code.
+
+The twins are now a public instrument. Whatever you build — agents, policy, wrappers — the Fable↔Mythos gap is the cleanest number in the field for what safety costs, and it updates every release. Learn to read it, because the argument it settles is about to get a lot more numerical and a lot less philosophical.
+
+And the uncomfortable one. In June I argued the harness — not the weights — is what makes a dangerous model safe to ship. The sequel stress-tested that thesis harder than any critic: a government pulled the model, the harness thickened, federal testers signed off, the model returned. The leash held, and now it even has a price tag. But the same document that prices the leash also lowered the company's confidence in the dog. The harness works. The uncertainty about what's inside it is growing. A year ago only one of those sentences was true.
+
+One story, told two ways — and as of September, the story comes with a spreadsheet.
 
 Let's keep building. Carefully.
 
