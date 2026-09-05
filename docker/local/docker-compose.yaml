@@ -15,6 +15,8 @@ services:
       - codex_data:/home/node/.codex_data
       - cursor_data:/home/node/.cursor_data
       - gh_data:/home/node/.gh_data
+      - chelper_data:/home/node/.chelper_data
+      - opencode_data:/home/node/.opencode_data
       - ${HOME}/.ssh:/home/node/.ssh_host:ro
       - ${HOME}/.gitconfig:/home/node/.gitconfig:ro
     ports:
@@ -101,3 +103,5 @@ volumes:
   codex_data: {}         # Codex CLI session/auth (symlinked to ~/.codex)
   cursor_data: {}        # Cursor CLI session/auth (symlinked to ~/.cursor)
   gh_data: {}            # GitHub CLI session/auth (symlinked to ~/.config/gh)
+  chelper_data: {}       # Z.AI Coding Tool Helper config (symlinked to ~/.chelper)
+  opencode_data: {}      # OpenCode config + share (symlinked to ~/.config/opencode, ~/.local/share/opencode)

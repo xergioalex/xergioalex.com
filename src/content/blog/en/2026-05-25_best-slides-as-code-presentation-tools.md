@@ -2,7 +2,7 @@
 title: "The Best Slides-as-Code Presentation Tools for Developers"
 description: "A hands-on comparison of Reveal.js, Slidev, Marp, and Spectacle — plus the 2026 agentic wave: Claude Design, Cursor agents, and Gemini Notebook decks."
 pubDate: 2026-05-25T10:00:00Z
-updatedDate: "2026-09-04"
+updatedDate: "2026-09-05"
 tags: [tech, web-development, talks]
 series: "slides-as-code"
 seriesOrder: 1
