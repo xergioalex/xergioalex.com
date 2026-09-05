@@ -11,15 +11,13 @@ seriesOrder: 6
 draft: false
 ---
 
-Think of the last time you landed on a site you'd never visited and clicked "Sign in with Google." The button just worked. First try, on any site, with any provider — Google, Apple, Microsoft. For that to work, the site needs to know specific things about Google: which address to send you to for your password, where to verify afterwards that it's really you. And those addresses can change. Nobody can hand-update millions of websites every time Google moves something.
+Look at any site's logs at three in the morning and you'll find visits that don't fit: dozens of pages read in seconds, not a single click, not one image downloaded, and they're gone. Not people. Not the usual crawlers either — those only fetched content for a search engine. These are AI agents — programs that arrive to read and to act — and there are more of them every month.
 
-The fix is a rule of the internet almost nobody knows: when a domain wants to publish instructions for the world, it puts them in the same folder, at the same path — `/.well-known/`. So anyone looking knows where to check without asking anyone. And notice how little you need to know: the site knows Google's domain, same as you. That's enough, because the rule says where the rest lives: `accounts.google.com/.well-known/openid-configuration`. That file — which any program can read — lists the current addresses: where to request permission, where identity gets verified, where the public keys live. If Google moves one tomorrow, the site never notices: it reads the file again and moves on.
+That visitor doesn't see your site. It doesn't render the design, doesn't follow the navigation, doesn't fall for the copy. And it still decides things about you: how much of your content to use, how to cite you, whether to become a customer or move on. The question of this guide is simple: where do you leave instructions for someone who doesn't come in through the front door?
 
-The folder isn't a metaphor — it's a fixed path that [RFC 8615](https://www.rfc-editor.org/rfc/rfc8615) (RFCs are the documents Internet rules are written in) reserved years ago for exactly this: *whatever a site wants the world to know up front, lives here*. Clients have been using it for a decade: `openid-configuration` — the file from the button story — `security.txt` for vulnerability reports, the ACME challenges that renew your site's certificates while you sleep.
+The answer has been working for a decade, and you already used it today without knowing. When you land on an unknown page and click "Sign in with Google," the button works because Google — and Apple, and Microsoft — publish their instructions in the same folder, at the same path: `/.well-known/`. The site knows Google's domain; that's enough, because the rule says where everything else lives. [RFC 8615](https://www.rfc-editor.org/rfc/rfc8615) (RFCs are the documents Internet rules are written in) reserved that folder for exactly this: *whatever a site wants the world to know up front, lives here*. That's where `openid-configuration` lives, and `security.txt` for vulnerability reports, and the ACME challenges that renew your certificates while you sleep.
 
-What's new isn't the folder. It's who moved in. Through 2025 and 2026 it filled up with files written not for humans or browsers but for AI agents — programs that visit sites to read and to act, not to look. An agent arriving at your site doesn't see your design, your navigation, or your carefully revised copy: it does what a courier in a hurry would do, head straight for the front desk. The `.well-known/` folder is that front desk.
-
-This guide walks the whole family, in the order you'd ship it on a new site: cheapest file first. And this time I have something I didn't have when I wrote the original draft: a second site, [cabuya.org](https://cabuya.org/), where this entire family runs in production. Every section uses it as the real example.
+What's new isn't the folder. It's who moved in. Through 2025 and 2026 it filled up with files written for the three-in-the-morning visitor, and this guide walks all of them, in the order you'd ship them on a new site: cheapest file first. I also have something I didn't have when I wrote the original draft: a second site, [cabuya.org](https://cabuya.org/), where this entire family runs in production. Every section uses it as the real example.
 
 ## What changed since April
 
@@ -33,6 +31,8 @@ This post sat in drafts for months, and the ground moved underneath it. Four thi
 If you don't code, stay for each section's "what it is" and "why it exists"; the code can wait. If you do, every section is self-contained: *what it is / why it exists / minimum valid example / common pitfalls / where to learn more.* Skip around.
 
 ## 1. robots.txt Content Signals
+
+The first conversation with whoever arrives: before they read a single word of yours, they find out what they may do with it.
 
 ### What it is
 
@@ -64,6 +64,8 @@ All three signals (`ai-train`, `search`, `ai-input`) must appear. A fourth is on
 - Cloudflare's [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/)
 
 ## 2. Link response headers (RFC 8288)
+
+A sign on every response: "catalog over there, instructions over there" — without anyone having to open the HTML.
 
 ### What it is
 
@@ -100,6 +102,8 @@ Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+j
 - [IANA Link Relations registry](https://www.iana.org/assignments/link-relations/)
 
 ## 3. API Catalog (RFC 9727 + Linkset RFC 9264)
+
+Everything your site knows how to do, listed in one file anyone can read without asking you a thing.
 
 ### What it is
 
@@ -152,6 +156,8 @@ Cabuya.org's catalog (trimmed) points at the OpenAPI spec, the docs, and the pro
 
 ## 4. OAuth Authorization Server Metadata (RFC 8414) / OIDC Discovery
 
+Here it is again: the button story near the top of this post is this section, seen from the other side of the door.
+
 ### What it is
 
 Publishing your OAuth authorization server's configuration at a fixed path (OAuth is the standard that lets one app ask another for permissions without sharing passwords) so clients discover endpoints programmatically.
@@ -201,6 +207,8 @@ Six required fields, served at `/.well-known/oauth-authorization-server` or `/.w
 
 ## 5. OAuth Protected Resource Metadata (RFC 9728)
 
+The other half of the conversation: not "where do I get a key" but "what does that key open here."
+
 ### What it is
 
 The companion document to the previous one: it declares which *resources* are protected and which authorization servers issue tokens for them.
@@ -239,6 +247,8 @@ Two required fields. On a content site with no protected resources, a self-refer
 - [RFC 9728](https://www.rfc-editor.org/rfc/rfc9728) (OAuth 2.0 Protected Resource Metadata)
 
 ## 6. MCP Server Card (SEP-1649)
+
+Agents don't just read sites — they use tools. This card says where yours live.
 
 ### What it is
 
@@ -282,6 +292,8 @@ Note the detail: the SEP defines `capabilities` as a flat string array; cabuya.o
 - [The next generation of MCP](https://blog.cloudflare.com/mcp-v2/) (Cloudflare, on 2026-07-28)
 
 ## 7. Agent Skills Discovery (Cloudflare RFC v0.2.0)
+
+A tool gets called. A skill gets learned. This index says where your site's knowledge lives.
 
 ### What it is
 
@@ -332,6 +344,8 @@ Did you catch it? The canonical spec calls the field `digest` with a `sha256:` p
 
 ## 8. WebMCP (browser)
 
+Everything so far was for agents arriving from outside. What if the agent is already inside your page?
+
 ### What it is
 
 A browser API — `navigator.modelContext.registerTool()` — that lets a page publish tools an agent running *in the browser itself* can call. MCP over a page context instead of a server.
@@ -369,6 +383,8 @@ Four properties per tool: `name`, `description`, `inputSchema`, `execute`. Pass 
 - [Chrome's WebMCP explainer](https://developer.chrome.com/blog/webmcp-epp)
 
 ## 9. Web Bot Auth (no longer a bonus)
+
+Anyone can knock. This is how an agent proves who they are when they do.
 
 ### What it is
 

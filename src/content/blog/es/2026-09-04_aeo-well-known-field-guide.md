@@ -11,15 +11,13 @@ seriesOrder: 6
 draft: false
 ---
 
-Piensa en la última vez que entraste a una página que no conocías y le diste a «Iniciar sesión con Google». El botón simplemente funcionó. A la primera, en cualquier página, con cualquier proveedor — Google, Apple, Microsoft. Para que eso funcione, la página necesita saber cosas concretas de Google: a qué dirección enviarte a poner tu clave, dónde verificar después que eres tú. Y esas direcciones pueden cambiar. Nadie puede andar actualizando a mano los millones de sitios del mundo cada vez que Google mueve algo.
+Mira los registros de un sitio cualquiera a las tres de la mañana y vas a encontrar visitas que no encajan: docenas de páginas leídas en segundos, ni un clic, ni una imagen descargada, y se van. No son personas. Tampoco son los crawlers de siempre, que solo traían contenido para un buscador. Son agentes de IA — programas que llegan a leer y a actuar — y cada mes llegan más.
 
-La solución es una regla de internet que casi nadie conoce: cuando un dominio quiere publicar instrucciones para el mundo, las pone siempre en la misma carpeta, en la misma ruta — `/.well-known/`. Así, quien busca sabe dónde mirar sin preguntarle a nadie. Y fíjate en lo poco que hace falta saber: la página conoce el dominio de Google, igual que tú. Con eso basta, porque la regla dice dónde está el resto: `accounts.google.com/.well-known/openid-configuration`. Ese archivo — que cualquier programa puede leer — lista las direcciones vigentes: dónde se pide permiso, dónde se verifica la identidad, dónde viven las llaves públicas. Si mañana Google cambia una, la página ni se entera: vuelve a leer el archivo y ya.
+Ese visitante no ve tu sitio. No renderiza el diseño, no sigue la navegación, no se deja seducir por el copy. Y aun así decide cosas sobre ti: cuánto de tu contenido usar, cómo citarte, si volverse cliente o pasar de largo. La pregunta de esta guía es sencilla: ¿dónde le dejas las instrucciones a alguien que no entra por la puerta principal?
 
-La carpeta no es una metáfora — es una ruta fija que la [RFC 8615](https://www.rfc-editor.org/rfc/rfc8615) (los RFC son los documentos con los que Internet define sus reglas) reservó hace años para exactamente eso: *lo que un sitio quiere que el mundo sepa de antemano, vive aquí*. Los clientes la llevan usando una década: `openid-configuration` — el archivo de la historia del botón —, `security.txt` para reportar vulnerabilidades, los desafíos de ACME que renuevan los certificados de tu sitio mientras duermes.
+La respuesta lleva una década funcionando y tú ya la usaste hoy, sin saberlo. Cuando entras a una página desconocida y le das a «Iniciar sesión con Google», el botón funciona porque Google — y Apple, y Microsoft — publican sus instrucciones siempre en la misma carpeta, en la misma ruta: `/.well-known/`. La página conoce el dominio de Google; con eso le basta, porque la regla dice dónde está todo lo demás. La [RFC 8615](https://www.rfc-editor.org/rfc/rfc8615) (los RFC son los documentos con los que Internet escribe sus reglas) reservó esa carpeta para exactamente eso: *lo que un sitio quiere que el mundo sepa de antemano, vive aquí*. Ahí viven `openid-configuration`, `security.txt` para reportar vulnerabilidades, los desafíos de ACME que renuevan tus certificados mientras duermes.
 
-Lo nuevo no es la carpeta. Es quién se mudó a ella. Durante 2025 y 2026 se llenó de archivos que no están escritos para humanos ni para navegadores, sino para agentes de IA — programas que visitan sitios a leer y a actuar, no a mirar. Un agente que llega a tu sitio no ve tu diseño, tu navegación ni tu copy cuidadoso: hace lo que haría un mensajero con prisa, ir derecho a la recepción. `/.well-known/` es esa recepción.
-
-Esta guía recorre la familia completa, en el orden en que la implementarías en un sitio nuevo: del archivo más barato al más caro. Y esta vez tengo algo que no tenía cuando escribí el borrador original: un segundo sitio, [cabuya.org](https://cabuya.org/es/), donde toda esta familia vive en producción. Cada sección lo usa como ejemplo real.
+Lo nuevo no es la carpeta. Es quién se mudó a ella. Durante 2025 y 2026 se llenó de archivos escritos para el visitante de las tres de la mañana, y esta guía los recorre todos, en el orden en que los implementarías en un sitio nuevo: del archivo más barato al más caro. Además tengo algo que no tenía cuando escribí el borrador original: un segundo sitio, [cabuya.org](https://cabuya.org/es/), donde toda esta familia vive en producción. Cada sección lo usa como ejemplo real.
 
 ## Qué cambió desde abril
 
@@ -33,6 +31,8 @@ Este post llevaba meses de borrador, y el terreno se movió mientras tanto. Cuat
 Si no programas, quédate en los "qué es" y "por qué existe" de cada sección; el código puede esperar. Si sí programas, cada sección es autocontenida: *qué es / por qué existe / ejemplo mínimo válido / trampas comunes / dónde aprender más*. Salta entre ellas.
 
 ## 1. Content Signals en robots.txt
+
+La primera conversación con quien llega: antes de leer una sola palabra tuya, descubre qué puede hacer con ella.
 
 ### Qué es
 
@@ -64,6 +64,8 @@ Las tres señales (`ai-train`, `search`, `ai-input`) deben aparecer. Hay una cua
 - [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/) de Cloudflare
 
 ## 2. Link headers de respuesta (RFC 8288)
+
+Un letrero en cada respuesta: «el catálogo está por ahí, las instrucciones por allá» — sin que nadie tenga que abrir el HTML.
 
 ### Qué es
 
@@ -100,6 +102,8 @@ Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+j
 - [Registro de Link Relations de IANA](https://www.iana.org/assignments/link-relations/)
 
 ## 3. API Catalog (RFC 9727 + Linkset RFC 9264)
+
+Todo lo que tu sitio sabe hacer, listado en un solo archivo que se lee sin preguntarte nada.
 
 ### Qué es
 
@@ -152,6 +156,8 @@ El catálogo de cabuya.org (recortado) apunta al OpenAPI, a la documentación y 
 
 ## 4. OAuth Authorization Server Metadata (RFC 8414) / OIDC Discovery
 
+Aquí vuelve a aparecer: la historia del botón con la que abrí este post es esta sección, vista desde el otro lado de la puerta.
+
 ### Qué es
 
 Publicar la configuración de tu servidor de autorización OAuth (OAuth es el estándar con el que una app pide permisos a otra sin compartir contraseñas) en una ruta fija, para que los clientes descubran los endpoints programáticamente.
@@ -201,6 +207,8 @@ Seis campos requeridos, servidos en `/.well-known/oauth-authorization-server` o 
 
 ## 5. OAuth Protected Resource Metadata (RFC 9728)
 
+La otra mitad de la conversación: no «dónde consigo una llave», sino «qué abre esa llave aquí».
+
 ### Qué es
 
 El documento compañero del anterior: declara qué *recursos* están protegidos y qué servidores de autorización emiten tokens para ellos.
@@ -239,6 +247,8 @@ Dos campos requeridos. En un sitio de contenido sin recursos protegidos, una aut
 - [RFC 9728](https://www.rfc-editor.org/rfc/rfc9728) (OAuth 2.0 Protected Resource Metadata)
 
 ## 6. MCP Server Card (SEP-1649)
+
+Los agentes no solo leen sitios: usan herramientas. Esta tarjeta dice dónde están las tuyas.
 
 ### Qué es
 
@@ -282,6 +292,8 @@ Nota el detalle: el SEP define `capabilities` como un array plano de strings; ca
 - [The next generation of MCP](https://blog.cloudflare.com/mcp-v2/) (Cloudflare, sobre 2026-07-28)
 
 ## 7. Agent Skills Discovery (Cloudflare RFC v0.2.0)
+
+Una herramienta se llama. Una skill se aprende. Este índice dice dónde vive lo que tu sitio puede enseñar.
 
 ### Qué es
 
@@ -332,6 +344,8 @@ Un `skills[]` vacío es válido. El de cabuya.org lista dos, con hash y licencia
 
 ## 8. WebMCP (navegador)
 
+Todo lo anterior era para agentes que llegan desde afuera. ¿Y si el agente ya está dentro de tu página?
+
 ### Qué es
 
 Una API de navegador — `navigator.modelContext.registerTool()` — con la que una página publica herramientas que un agente corriendo *dentro del navegador* puede llamar. MCP sobre el contexto de una página en vez de sobre un servidor.
@@ -369,6 +383,8 @@ Cuatro propiedades por herramienta: `name`, `description`, `inputSchema`, `execu
 - [Explicación de WebMCP por Chrome](https://developer.chrome.com/blog/webmcp-epp)
 
 ## 9. Web Bot Auth (ya no es bonus)
+
+Cualquiera puede tocar la puerta. Esto es cómo un agente demuestra quién es cuando toca.
 
 ### Qué es
 
