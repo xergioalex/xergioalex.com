@@ -25,10 +25,10 @@ Lo nuevo no es la carpeta. Es quién se mudó a ella. Durante 2025 y 2026 se lle
 
 Este post llevaba meses de borrador, y el terreno se movió mientras tanto. Cuatro cosas, todas verificadas hoy:
 
-1. **El tablero creció.** [isitagentready.com](https://isitagentready.com/) (el tablero de Cloudflare — la empresa de infraestructura web — que mide qué tan listo para agentes está un sitio) pasó de 8 verificaciones a **22, en cinco ejes**: descubribilidad, accesibilidad de contenido, control de bots, descubrimiento de protocolos y comercio. También cambió el número por niveles con nombre, de 0 a 5.
+1. **El tablero creció.** [isitagentready.com](https://isitagentready.com/) — el tablero de Cloudflare (la empresa de infraestructura web) que mide qué tan listo para agentes está un sitio — pasó de 8 verificaciones a **22, agrupadas en cinco ejes**: qué tan fácil es encontrarte, qué tan accesible es tu contenido, cómo controlas los bots, qué protocolos publicas y comercio. El número también cambió de forma: ahora son niveles con nombre, del 0 al 5.
 2. **Llegaron los pagos.** Cuatro formatos compiten por la billetera del agente: x402, UCP, MPP y ACP. Un eje completo del tablero que en abril no existía.
 3. **Web Bot Auth se volvió real.** Era roadmap cuando escribí el borrador; hoy es una verificación del tablero y tiene grupo de trabajo propio en la IETF (el organismo que estandariza Internet).
-4. **MCP publicó el spec 2026-07-28.** El protocolo con el que los agentes hablan con herramientas externas se reescribió sin estado — sin handshake, sin sesiones.
+4. **MCP publicó el spec 2026-07-28.** El protocolo con el que los agentes hablan con herramientas externas se reescribió sin estado: sin saludo inicial, sin sesiones que recordar.
 
 Si no programas, quédate en los "qué es" y "por qué existe" de cada sección; el código puede esperar. Si sí programas, cada sección es autocontenida: *qué es / por qué existe / ejemplo mínimo válido / trampas comunes / dónde aprender más*. Salta entre ellas.
 
@@ -71,11 +71,11 @@ Un letrero en cada respuesta: «el catálogo está por ahí, las instrucciones p
 
 ### Qué es
 
-Encabezados HTTP `Link:` en las respuestas HTML que apuntan a documentos compañeros legibles por máquina. Piénsalos como las etiquetas `<link rel>` de HTML promovidas al encabezado de respuesta, para que los clientes que nunca parsean el HTML igual encuentren los metadatos del sitio.
+Encabezados HTTP `Link:` en las respuestas HTML que apuntan a documentos compañeros legibles por máquina. Piénsalos como las etiquetas que el HTML usa para decir «mi hoja de estilos vive allá», pero promovidas al sobre de la respuesta: así, el cliente que nunca abre el HTML igual se entera de dónde están los metadatos del sitio.
 
 ### Por qué existe
 
-Los agentes no siempre renderizan la página — a veces hacen `HEAD /` y toman decisiones desde los encabezados solos. Los Link headers les permiten descubrir tu catálogo de APIs, tu tarjeta MCP o tu índice de skills sin traer el HTML.
+Los agentes no siempre renderizan la página — a veces piden solo los encabezados (un `HEAD`: el equivalente a asomarse y preguntar «¿qué hay aquí?» sin descargar nada) y deciden con eso. Los Link headers les permiten descubrir tu catálogo de APIs, tu tarjeta MCP o tu índice de skills sin traer el HTML.
 
 ### Ejemplo mínimo válido
 
@@ -113,7 +113,7 @@ Un documento JSON en `/.well-known/api-catalog` que lista tus APIs públicas, ca
 
 ### Por qué existe
 
-Un solo puntero a tu spec OpenAPI no basta — los sitios grandes tienen varias APIs, cada una con docs distintas. El catálogo usa el formato *linkset* para que las herramientas consuman una lista de descripciones de APIs de manera uniforme.
+Un solo puntero a tu spec OpenAPI no basta — los sitios grandes tienen varias APIs, cada una con documentación distinta. El catálogo usa el formato *linkset* (una lista de enlaces estandarizada en JSON) para que cualquier herramienta consuma todas esas descripciones de la misma manera.
 
 ### Ejemplo mínimo válido
 
@@ -166,7 +166,7 @@ Publicar la configuración de tu servidor de autorización OAuth (OAuth es el es
 
 ### Por qué existe
 
-Los agentes no pueden traer codificada a mano la ubicación de tu endpoint de autorización. Estos metadatos les permiten hacer un solo fetch y saber exactamente cómo iniciar un flujo de autenticación.
+Ningún agente puede traer de fábrica la ubicación de tu endpoint de autorización — cada sitio tiene las suyas. Con estos metadatos le basta un solo pedido para saber exactamente cómo empezar a autenticarse contigo.
 
 ### Ejemplo mínimo válido
 
@@ -228,7 +228,7 @@ Los metadatos del servidor de autorización responden "¿dónde consigo un token
 }
 ```
 
-Dos campos requeridos. En un sitio de contenido sin recursos protegidos, una autoreferencia es una tautología honesta válida — así la sirve cabuya.org:
+Dos campos requeridos. En un sitio de contenido sin recursos protegidos, declarar que el recurso eres tú mismo es una redundancia honesta que el spec permite — así la sirve cabuya.org:
 
 ```json
 {
@@ -262,7 +262,7 @@ MCP (Model Context Protocol) se volvió el lenguaje compartido con el que los ag
 
 ### Qué cambió en el spec
 
-La versión [2026-07-28](https://blog.cloudflare.com/mcp-v2/) reescribió el transporte: MCP ahora es sin estado — sin handshake de inicialización, sin `Mcp-Session-Id`, con encabezados nuevos (`Mcp-Method`, `Mcp-Name`) para que gateways y WAF decidan sin parsear el cuerpo. El transporte HTTP+SSE quedó deprecado. La tarjeta sigue siendo una propuesta — la [SEP-1649](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1649) — ahora acompañada de un [draft IETF](https://datatracker.ietf.org/doc/draft-serra-mcp-discovery-uri/04/) para un esquema URI `mcp://`. El estándar se está asentando; los detalles todavía se mueven.
+La versión [2026-07-28](https://blog.cloudflare.com/mcp-v2/) reescribió el transporte: MCP ahora es sin estado — sin handshake de inicialización (la salutación con la que dos programas se ponen de acuerdo antes de hablar), sin `Mcp-Session-Id`, con encabezados nuevos (`Mcp-Method`, `Mcp-Name`) para que gateways y WAF (los filtros que inspeccionan el tráfico de red) decidan sin leer el cuerpo de la petición. El transporte HTTP+SSE quedó deprecado. La tarjeta sigue siendo una propuesta — la [SEP-1649](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1649) — ahora acompañada de un [draft IETF](https://datatracker.ietf.org/doc/draft-serra-mcp-discovery-uri/04/) para un esquema URI `mcp://`. El estándar se está asentando; los detalles todavía se mueven.
 
 ### Ejemplo en producción
 
@@ -412,7 +412,7 @@ El tablero ahora corre 22 verificaciones. Estas son las que no estaban cuando es
 
 - **A2A Agent Card** — `/.well-known/agent-card.json`: descubrimiento de agente a agente, para agentes que se buscan entre sí ([spec](https://a2a-protocol.org/latest/specification/)).
 - **ARD** — `/.well-known/ai-catalog.json`: un manifiesto unificado que lista tus servidores MCP, agentes A2A, skills y APIs en un solo documento ([spec](https://agenticresourcediscovery.org/), aún v0.9).
-- **DNS-AID** — descubrimiento por DNS: registros `SVCB` bajo el namespace `_agents` de tu dominio, para que un agente encuentre tus endpoints antes de hacer una sola petición HTTP.
+- **DNS-AID** — descubrimiento por DNS (el sistema que traduce dominios en direcciones): registros `SVCB` bajo el namespace `_agents` de tu dominio, para que un agente encuentre tus endpoints antes de hacer su primera petición HTTP.
 - **auth.md** — un `/auth.md` en la raíz que explica tu autenticación en prosa para agentes ([la propuesta](https://workos.com/auth-md)).
 - **Comercio** — cuatro formatos que compiten por la billetera del agente: [x402](https://x402.org) (de Coinbase, pagos HTTP nativos con respuesta 402), [UCP](https://ucp.dev/), [MPP](https://mpp.dev) y [ACP](https://agenticcommerce.dev).
 
@@ -428,7 +428,7 @@ Así que cabuya.org sirve la familia completa: encabezados `Link` en cada respue
 
 Hay una vuelta que me gusta más que todo lo demás: **el protocolo mismo vive en la carpeta**. Un publicador de Cabuya declara su manifiesto en `/.well-known/cabuya.json`. La carpeta que describe el protocolo también lo ejecuta. Ese es el patrón de fondo de toda esta guía — cuando diseñes un protocolo, la carpeta te presta un cajón propio.
 
-Medido, no declarado (que es la norma de la casa): el [API de isitagentready](https://isitagentready.com/api/scan) devuelve hoy nivel 5, *Agent-Native*, para cabuya.org — las 22 verificaciones pasan o aplican como neutrales, salvo la tarjeta A2A y el catálogo ARD, que el sitio no sirve.
+Medido, no declarado (que es la norma de la casa): el [API de isitagentready](https://isitagentready.com/api/scan) devuelve hoy nivel 5, *Agent-Native*, para cabuya.org — las 22 verificaciones pasan o cuentan como neutras, salvo la tarjeta A2A y el catálogo ARD, que el sitio no sirve.
 
 ¿Y el tráfico? Honestamente: no que yo pueda medir. Creo que publicar esta familia es una apuesta correcta y barata, no una lotería ganada — los formatos todavía compiten entre sí y ninguno tiene el monopolio de cómo llegarán los agentes. Pero una tarde de trabajo te deja dentro de la conversación, y no publicarte deja fuera de ella. El costo es asimétrico.
 

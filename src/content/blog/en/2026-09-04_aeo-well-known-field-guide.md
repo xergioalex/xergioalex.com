@@ -25,10 +25,10 @@ What's new isn't the folder. It's who moved in. Through 2025 and 2026 it filled 
 
 This post sat in drafts for months, and the ground moved underneath it. Four things, all verified today:
 
-1. **The scorecard grew.** [isitagentready.com](https://isitagentready.com/) (Cloudflare's scoreboard — the web infrastructure company — that measures how agent-ready a site is) went from 8 checks to **22, across five axes**: discoverability, content accessibility, bot access control, protocol discovery, and commerce. It also traded the numeric score for named levels, 0 to 5.
+1. **The scorecard grew.** [isitagentready.com](https://isitagentready.com/) — Cloudflare's scoreboard (the web infrastructure company) measuring how agent-ready a site is — went from 8 checks to **22, grouped into five axes**: how easy you are to find, how accessible your content is, how you control bots, which protocols you publish, and commerce. The number also changed shape: named levels now, 0 through 5.
 2. **Payments arrived.** Four formats are competing for the agent's wallet: x402, UCP, MPP, and ACP. A whole axis of the scorecard that didn't exist in April.
 3. **Web Bot Auth got real.** It was roadmap when I wrote the draft; today it's a scorecard check with its own working group at the IETF (the body that standardizes Internet protocols).
-4. **MCP shipped the 2026-07-28 spec.** The protocol agents use to talk to external tools got rewritten stateless — no handshake, no sessions.
+4. **MCP shipped the 2026-07-28 spec.** The protocol agents use to talk to external tools got rewritten stateless: no opening handshake, no sessions to remember.
 
 If you don't code, stay for each section's "what it is" and "why it exists"; the code can wait. If you do, every section is self-contained: *what it is / why it exists / minimum valid example / common pitfalls / where to learn more.* Skip around.
 
@@ -71,11 +71,11 @@ A sign on every response: "catalog over there, instructions over there" — with
 
 ### What it is
 
-HTTP `Link:` headers on HTML responses pointing at machine-readable companion documents. Think of them as HTML's `<link rel>` tags promoted to the response header, so clients that never parse the HTML still find the site's metadata.
+HTTP `Link:` headers on HTML responses pointing at machine-readable companion documents. Think of them as the tags HTML uses to say "my stylesheet lives over there," promoted to the envelope of the response: a client that never opens the HTML still learns where the site's metadata lives.
 
 ### Why it exists
 
-Agents don't always render the page — sometimes they `HEAD /` and decide from response headers alone. Link headers let them discover your API catalog, MCP server card, or skills index without fetching the HTML.
+Agents don't always render the page — sometimes they request headers only (a `HEAD`: the equivalent of asking "what's in there?" without downloading anything) and decide from that. Link headers let them discover your API catalog, MCP server card, or skills index without fetching the HTML.
 
 ### Minimum valid example
 
@@ -113,7 +113,7 @@ A JSON document at `/.well-known/api-catalog` listing your public APIs, each wit
 
 ### Why it exists
 
-A single pointer to your OpenAPI spec isn't enough — larger sites have several APIs, each with different docs. The catalog uses the *linkset* format so tooling consumes a list of API descriptions uniformly.
+A single pointer to your OpenAPI spec isn't enough — larger sites have several APIs, each with different docs. The catalog uses the *linkset* format (a standardized JSON list of links) so any tool consumes all those descriptions the same way.
 
 ### Minimum valid example
 
@@ -166,7 +166,7 @@ Publishing your OAuth authorization server's configuration at a fixed path (OAut
 
 ### Why it exists
 
-Agents can't ship hard-coded knowledge of where your authorization endpoint lives. This metadata lets them make one fetch and know exactly how to start an auth flow.
+No agent can ship from the factory knowing where your authorization endpoint lives — every site has its own. With this metadata, one request is enough to know exactly how to start authenticating against you.
 
 ### Minimum valid example
 
@@ -228,7 +228,7 @@ Authorization server metadata answers "where do I get a token?" Protected resour
 }
 ```
 
-Two required fields. On a content site with no protected resources, a self-reference is a valid honest tautology — that's how cabuya.org serves it:
+Two required fields. On a content site with no protected resources, declaring the resource to be yourself is an honest redundancy the spec allows — that's how cabuya.org serves it:
 
 ```json
 {
@@ -262,7 +262,7 @@ MCP (Model Context Protocol) became the shared language agents use to talk to ex
 
 ### What changed in the spec
 
-The [2026-07-28](https://blog.cloudflare.com/mcp-v2/) version rewrote the transport: MCP is now stateless — no initialize handshake, no `Mcp-Session-Id`, with new headers (`Mcp-Method`, `Mcp-Name`) so gateways and WAFs can decide without parsing the body. The HTTP+SSE transport is deprecated. The card itself is still a proposal — [SEP-1649](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1649) — now joined by an [IETF draft](https://datatracker.ietf.org/doc/draft-serra-mcp-discovery-uri/04/) for an `mcp://` URI scheme. The standard is settling; the details still move.
+The [2026-07-28](https://blog.cloudflare.com/mcp-v2/) version rewrote the transport: MCP is now stateless — no initialize handshake (the greeting two programs exchange before talking), no `Mcp-Session-Id`, with new headers (`Mcp-Method`, `Mcp-Name`) so gateways and WAFs (the filters that inspect network traffic) can decide without reading the request body. The HTTP+SSE transport is deprecated. The card itself is still a proposal — [SEP-1649](https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1649) — now joined by an [IETF draft](https://datatracker.ietf.org/doc/draft-serra-mcp-discovery-uri/04/) for an `mcp://` URI scheme. The standard is settling; the details still move.
 
 ### Production example
 
@@ -412,7 +412,7 @@ The scorecard now runs 22 checks. These are the ones that didn't exist when I wr
 
 - **A2A Agent Card** — `/.well-known/agent-card.json`: agent-to-agent discovery, for agents looking for each other ([spec](https://a2a-protocol.org/latest/specification/)).
 - **ARD** — `/.well-known/ai-catalog.json`: a unified manifest listing your MCP servers, A2A agents, skills, and APIs in one document ([spec](https://agenticresourcediscovery.org/), still v0.9).
-- **DNS-AID** — discovery over DNS: `SVCB` records under your domain's `_agents` namespace, so an agent finds your endpoints before making a single HTTP request.
+- **DNS-AID** — discovery over DNS (the system that turns domain names into addresses): `SVCB` records under your domain's `_agents` namespace, so an agent finds your endpoints before making its first HTTP request.
 - **auth.md** — a `/auth.md` at the root explaining your authentication in prose, for agents ([the proposal](https://workos.com/auth-md)).
 - **Commerce** — four formats competing for the agent's wallet: [x402](https://x402.org) (from Coinbase, native HTTP payments with a 402 response), [UCP](https://ucp.dev/), [MPP](https://mpp.dev), and [ACP](https://agenticcommerce.dev).
 
@@ -428,7 +428,7 @@ So cabuya.org serves the whole family: `Link` headers on every response; the API
 
 There's a twist I like more than everything else: **the protocol itself lives in the folder**. A Cabuya publisher declares its manifest at `/.well-known/cabuya.json`. The folder that describes the protocol also executes it. That's the deep pattern of this whole guide — when you design a protocol, the folder lends you a drawer of your own.
 
-Measured, not declared (house rule): the [isitagentready API](https://isitagentready.com/api/scan) returns level 5, *Agent-Native*, for cabuya.org today — all 22 checks pass or register as neutral, except the A2A card and the ARD catalog, which the site doesn't serve.
+Measured, not declared (house rule): the [isitagentready API](https://isitagentready.com/api/scan) returns level 5, *Agent-Native*, for cabuya.org today — all 22 checks pass or count as neutral, except the A2A card and the ARD catalog, which the site doesn't serve.
 
 And the traffic? Honestly: none that I can measure. I think publishing this family is a correct, cheap bet — not a won lottery; the formats are still competing with each other and none has a monopoly on how agents will arrive. But an afternoon of work keeps you in the conversation, and not publishing keeps you out of it. The cost is asymmetric.
 
