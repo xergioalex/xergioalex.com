@@ -443,7 +443,7 @@ order: 1                                         # sort order within tier
 |--------|-------|-------------|-------|
 | `tech` | 1 | Technical content | Main technology tag, parent of all secondary tags |
 | `personal` | 2 | Personal posts | Life, reflections |
-| `portfolio` | 3 | Portfolio/branding | Projects showcase |
+| `portfolio` | 3 | Portfolio/branding | Projects showcase. Surfacing rule: any post tagged `portfolio` appears on the `/portfolio` and `/es/portfolio` timeline pages (tag-filtered via `getTimelineIndex('portfolio', lang)`) — no page changes needed, just add the tag in both languages |
 | `talks` | 4 | Conference talks | Speaking events |
 | `trading` | 5 | Trading content | Financial/trading |
 | `dailybot` | 6 | DailyBot product | Product-specific |
