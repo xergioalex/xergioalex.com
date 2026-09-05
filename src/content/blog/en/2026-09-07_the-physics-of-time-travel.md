@@ -1,14 +1,13 @@
 ---
 title: 'The Physics of Time Travel: What Science Really Says'
 description: 'General relativity does not forbid traveling to the past. It just demands wormholes, exotic matter, and energy beyond cosmic scale. The real physics, honestly.'
-pubDate: '2026-07-01'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/the-physics-of-time-travel/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['physics of time travel', 'closed timelike curves explained', 'wormhole time machine', 'exotic matter negative energy', 'chronology protection conjecture', 'is time travel scientifically possible']
 series: 'playing-with-time'
 seriesOrder: 2
-draft: true
 ---
 
 This is the post I was most excited to write, and also the one I was most nervous about — because it's easy to talk about the physics of time travel badly. You either hand-wave it into magic ("quantum!") or you flatten it into a hard "no." The truth is more interesting than either, and it lives in a narrow, honest band between *forbidden* and *buildable*.

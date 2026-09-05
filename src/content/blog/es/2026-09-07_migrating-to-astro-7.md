@@ -1,13 +1,12 @@
 ---
 title: "Migrando a Astro 7: el compilador de Rust vino por mi Markdown"
 description: "Migré XergioAleX.com a Astro 7 y a Sätteri, el nuevo compilador de Markdown en Rust: qué se rompió y por qué mis plugins de rehype tuvieron que mudarse."
-pubDate: "2026-06-27"
+pubDate: "2026-09-07"
 heroLayout: "none"
 tags: ["tech", "web-development", "javascript", "astro"]
 keywords: ["guía migración Astro 7", "compilador Markdown Satteri Astro", "Astro 7 Markdown MDX en Rust", "portar plugins rehype a hastPlugins Satteri", "Astro 7 Vite 8 Rolldown", "actualizar Astro 6 a 7", "procesador markdown satteri astro", "ejemplo defineHastPlugin"]
 series: "building-xergioalex"
 seriesOrder: 10
-draft: true
 ---
 
 La vez pasada, [activé un compilador de Rust experimental](/es/blog/migrating-to-astro-6/) y vi cómo mi servidor de desarrollo pasaba de once segundos a menos de tres. Se sentía como hacer trampa. La trampa estaba ahí mismo, en el nombre: *experimental*. Tenías que optar por él, instalar un paquete extra, poner un flag, y aceptar que el compilador más estricto podía dejar escapar una etiqueta `<style>` directo a producción — que, para que conste, fue exactamente lo que me hizo.

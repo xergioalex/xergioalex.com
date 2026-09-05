@@ -1,14 +1,13 @@
 ---
 title: 'La física del viaje en el tiempo: lo que dice de verdad la ciencia'
 description: 'La relatividad general no prohíbe viajar al pasado. Solo exige agujeros de gusano, materia exótica y energía a escala cósmica. La física real, sin adornos.'
-pubDate: '2026-07-01'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/the-physics-of-time-travel/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['física del viaje en el tiempo', 'qué son las curvas temporales cerradas', 'agujero de gusano máquina del tiempo', 'materia exótica energía negativa', 'conjetura de protección de la cronología', 'es posible viajar al pasado según la ciencia']
 series: 'playing-with-time'
 seriesOrder: 2
-draft: true
 ---
 
 Este es el artículo que más ganas tenía de escribir, y también el que más nervios me daba — porque es fácil hablar mal de la física del viaje en el tiempo. O la conviertes en magia ("¡es cuántico!") o la aplastas en un "no" rotundo. La verdad es más interesante que las dos cosas, y vive en una franja estrecha y honesta entre lo *prohibido* y lo *construible*.

@@ -1,14 +1,13 @@
 ---
 title: 'Las paradojas del viaje en el tiempo: abuelos, bootstraps y bucles'
 description: 'Si pudieras alcanzar el pasado, la lógica empezaría a romperse. La paradoja del abuelo, el bucle del bootstrap y la física propuesta para resolverlas.'
-pubDate: '2026-07-08'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/the-paradoxes-of-time-travel/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['paradojas del viaje en el tiempo', 'paradoja del abuelo', 'paradoja del bootstrap', 'principio de autoconsistencia de Novikov', 'se puede cambiar el pasado', 'paradoja de la predestinación']
 series: 'playing-with-time'
 seriesOrder: 3
-draft: true
 ---
 
 Supongamos que superamos la física. Supongamos que, contra toda objeción sobre materia exótica y energías imposibles, te encuentras parado en tu propio pasado. Aquí está lo que me fascinaba de niño y todavía me fascina: ahí es cuando empieza el *verdadero* problema. Porque la dificultad más grande del viaje en el tiempo no es la ingeniería. Es la lógica. El pasado no solo es caro de alcanzar — es peligroso de tocar, de una forma que anuda la realidad.

@@ -1,14 +1,13 @@
 ---
 title: '¿Es posible viajar en el tiempo? Lo que dicen la ciencia y la ficción'
 description: 'El viaje en el tiempo son dos preguntas, no una. Viajar al futuro es ciencia real y medible. Viajar al pasado es donde chocan la física y las paradojas.'
-pubDate: '2026-06-24'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/is-time-travel-possible/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['es posible viajar en el tiempo', 'viajar al futuro es posible', 'qué es la dilatación del tiempo', 'ciencia del viaje en el tiempo', 'por qué es difícil viajar al pasado', 'viaje en el tiempo ciencia y ficción']
 series: 'playing-with-time'
 seriesOrder: 1
-draft: true
 ---
 
 De todas las ideas que me ha regalado la ciencia ficción, a la que siempre vuelvo es al viaje en el tiempo. No por las máquinas ni por las luces de colores, sino por el *enredo*. Vas al pasado, cambias una cosa pequeña, y de repente toda la historia se anuda sobre sí misma. ¿Quién es tu abuelo ahora? ¿Eso que fuiste a evitar igual pasó? ¿Lo causaste tú? Me encanta ese nudo. Me encanta desde que era niño y nunca se me pasó.

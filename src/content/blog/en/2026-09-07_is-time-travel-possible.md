@@ -1,14 +1,13 @@
 ---
 title: 'Is Time Travel Possible? What Science and Fiction Each Say'
 description: 'Time travel is really two questions. Traveling to the future is real, measured science. Traveling to the past is where physics and paradoxes collide.'
-pubDate: '2026-06-24'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/is-time-travel-possible/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['is time travel possible', 'time travel science vs fiction', 'travel to the future', 'time dilation explained', 'why is time travel to the past hard', 'real science of time travel']
 series: 'playing-with-time'
 seriesOrder: 1
-draft: true
 ---
 
 Of all the ideas science fiction has given me, the one I keep circling back to is time travel. Not the gadgets, not the flashing machines — the *tangle*. You go back, you change one small thing, and suddenly the whole story knots up on itself. Who's your grandfather now? Did the thing you came to prevent still happen? Did you cause it? I love that knot. I've loved it since I was a kid, and I never really grew out of it.

@@ -1,14 +1,13 @@
 ---
 title: "Construye algo que los agentes quieran"
 description: "YC reescribió su lema con una palabra. Cloudflare dijo que los agentes ya pueden ser clientes. Dos posts, 48 horas, y el público del software cambió."
-pubDate: "2026-06-15"
+pubDate: "2026-09-07"
 heroImage: "/images/blog/posts/make-something-agents-want/hero-es.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["construye algo que los agentes quieran", "agentes como clientes Cloudflare", "Y Combinator software para agentes", "agentes IA ciudadanos primera clase", "cómo construir software para agentes", "Cloudflare Stripe protocolo agentes", "economía de agentes 2026"]
 series: "working-with-agents"
 seriesOrder: 6
-draft: true
 ---
 
 Algo cambió en cómo la industria tech habla sobre los agentes de IA, y se puede ver concentrado en dos afirmaciones hechas con días de diferencia.

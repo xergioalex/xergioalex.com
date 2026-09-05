@@ -1,8 +1,7 @@
 ---
 title: 'Kotlin Multiplatform desde cero: compartir código sin renunciar a lo nativo'
 description: 'Una introducción a Kotlin Multiplatform: su historia, por qué gana fuerza y qué lo diferencia de otras formas de construir apps para Android e iOS.'
-draft: true
-pubDate: '2026-05-02'
+pubDate: '2026-09-07'
 heroLayout: 'side-by-side'
 tags: ["tech", "mobile", "kotlin", "flutter"]
 keywords: ['Kotlin Multiplatform', 'KMP', 'desarrollo mobile', 'Android iOS', 'Compose Multiplatform', 'apps multiplataforma']

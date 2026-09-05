@@ -1,14 +1,13 @@
 ---
 title: 'Universos paralelos: la salida de las líneas temporales que se bifurcan'
 description: 'Ante las paradojas, la ficción recurre a un truco: la línea temporal se parte. Elegante, con física real detrás — y cuesta más de lo que parece.'
-pubDate: '2026-07-15'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/parallel-universes-and-branching-timelines/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['universos paralelos viaje en el tiempo', 'líneas temporales que se bifurcan', 'interpretación de los muchos mundos', 'reglas del viaje en el tiempo de Avengers Endgame', 'líneas temporales alternativas ficción', 'cambiar el pasado crea una nueva línea temporal']
 series: 'playing-with-time'
 seriesOrder: 4
-draft: true
 ---
 
 Hay una razón por la que casi toda historia moderna de viajes en el tiempo termina en el mismo lugar. Las paradojas son feroces — mata a tu abuelo y el universo se atraganta con la contradicción — y los escritores necesitan una salida que deje avanzar la trama sin colapsar en un sinsentido. El arreglo al que recurren, una y otra vez, es la idea más pragmática de toda la ciencia ficción: **la línea temporal simplemente se parte.**

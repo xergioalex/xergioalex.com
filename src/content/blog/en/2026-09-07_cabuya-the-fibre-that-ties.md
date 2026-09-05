@@ -1,14 +1,13 @@
 ---
 title: 'Cabuya: The Fibre That Ties'
 description: 'Twenty aid apps that could not read each other, so we built the fibre that ties them: Cabuya, an open protocol for help to flow across systems.'
-pubDate: '2026-09-05'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/cabuya-the-fibre-that-ties/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['tech', 'portfolio', 'civic-tech', 'colombia']
 keywords: ['Cabuya protocol', 'cabuya.org', 'aid app interoperability', 'open protocol emergency response', 'data standards for disaster response', 'JSON schema humanitarian data', 'agent skill for protocol adoption', 'civic tech Colombia earthquake']
 series: 'colombia-earthquake-2026'
 seriesOrder: 4
-draft: true
 ---
 
 Take one need. Water, at a collection point in the south of the city. A neighbor posts it where they can — a WhatsApp group, a web form, a pin on a map — and then posts it again somewhere else, because nobody, including the neighbor, knows which map anyone else is looking at. Four maps end up holding the same need. Three hours later the point is full. One map finds out. The other three keep sending people.

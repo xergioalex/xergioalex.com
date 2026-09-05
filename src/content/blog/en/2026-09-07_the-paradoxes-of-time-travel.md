@@ -1,14 +1,13 @@
 ---
 title: 'The Paradoxes of Time Travel: Grandfathers, Bootstraps, and Loops'
 description: 'If you could reach the past, logic itself would start to break. The grandfather paradox, the bootstrap loop, and the serious physics proposed to resolve them.'
-pubDate: '2026-07-08'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/the-paradoxes-of-time-travel/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['time travel paradoxes explained', 'grandfather paradox', 'bootstrap paradox', 'Novikov self-consistency principle', 'can you change the past', 'predestination paradox']
 series: 'playing-with-time'
 seriesOrder: 3
-draft: true
 ---
 
 Suppose we get past the physics. Suppose, against every objection about exotic matter and impossible energies, you find yourself standing in your own past. Here's the thing that fascinated me as a kid and still does: that's when the *real* trouble starts. Because the hardest problem with time travel isn't engineering. It's logic. The past isn't just expensive to reach — it's dangerous to touch, in a way that ties reality into knots.

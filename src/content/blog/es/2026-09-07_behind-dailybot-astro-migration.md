@@ -1,7 +1,7 @@
 ---
 title: "Detrás de la migración de dailybot.com a Astro: la vista del ingeniero"
 description: "Lideré la migración de dailybot.com de un CMS visual a Astro. La historia del equipo está en el blog de DailyBot. Acá va la ingeniería de abajo."
-pubDate: "2026-06-26"
+pubDate: "2026-09-07"
 heroLayout: "none"
 tags: ["portfolio", "tech", "web-development", "dailybot", "astro"]
 keywords:
@@ -12,7 +12,6 @@ keywords:
   - "cursor como CMS visual"
   - "reconstruir vs portar migración CMS"
   - "astro 700 páginas 3 idiomas"
-draft: true
 ---
 
 Durante las últimas seis semanas lideré la migración de [dailybot.com](https://www.dailybot.com) desde Webflow — un CMS con editor visual que nos había servido bien durante cuatro años — hacia [Astro](https://astro.build). La historia del equipo está en el blog de DailyBot: [How we migrated dailybot.com to Astro](https://www.dailybot.com/blog/how-we-migrated-dailybot-to-astro/) ("Cómo migramos dailybot.com a Astro"). Ese texto es el "nosotros" — por qué nos movimos, qué cambió en el ritmo de la compañía, qué significó para el equipo.

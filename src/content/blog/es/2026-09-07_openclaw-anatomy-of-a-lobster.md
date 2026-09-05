@@ -1,8 +1,7 @@
 ---
 title: 'Anatomía de una langosta: cómo funciona OpenClaw por dentro'
 description: 'Por dentro de OpenClaw: el Gateway, el agente PI, los siete archivos del workspace, skills, MCP, heartbeat y la capa de sandbox — la anatomía completa.'
-draft: true
-pubDate: '2026-05-04'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/openclaw-anatomy-of-a-lobster/hero.webp'
 heroLayout: 'banner'
 tags: ["tech", "ai-agents", "openclaw", "claude"]

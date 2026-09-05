@@ -1,14 +1,13 @@
 ---
 title: 'Parallel Universes: The Branching-Timeline Escape Hatch'
 description: 'Faced with the paradoxes, fiction reaches for one fix: the timeline splits. Elegant, with real physics behind it — and it costs more than it looks.'
-pubDate: '2026-07-15'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/parallel-universes-and-branching-timelines/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['parallel universes time travel', 'branching timelines explained', 'many-worlds interpretation', 'Avengers Endgame time travel rules', 'alternate timeline fiction', 'does changing the past create a new timeline']
 series: 'playing-with-time'
 seriesOrder: 4
-draft: true
 ---
 
 There's a reason almost every modern time-travel story ends up in the same place. The paradoxes are vicious — kill your grandfather and the universe chokes on the contradiction — and writers need a way out that lets the plot keep moving without collapsing into nonsense. The fix they reach for, over and over, is the most pragmatic idea in all of science fiction: **the timeline just splits.**

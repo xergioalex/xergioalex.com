@@ -1,14 +1,13 @@
 ---
 title: 'Dragon Ball Z: Trunks and the Four Timelines'
 description: 'Trunks travels back to save his friends and accidentally creates four timelines — the perfect, messy finale for a series about messing with time.'
-pubDate: '2026-07-22'
+pubDate: '2026-09-07'
 heroImage: '/images/blog/posts/dragon-ball-z-trunks-and-the-four-timelines/hero.webp'
 heroLayout: 'banner'
 tags: ['science-fiction', 'time-travel', 'personal']
 keywords: ['Dragon Ball Z timelines explained', 'Future Trunks timeline', 'four timelines Dragon Ball Z', 'Trunks time travel Cell', 'Dragon Ball branching timelines', 'how many timelines in DBZ']
 series: 'playing-with-time'
 seriesOrder: 5
-draft: true
 ---
 
 I've been building toward this one the whole series, and I'm not going to pretend to be objective about it. *Dragon Ball Z* is one of my favorite stories of all time. I grew up with it. And buried inside all the shouting and the power-ups is one of the cleanest, most gloriously tangled examples of branching time travel anywhere in fiction — the arc where Future Trunks travels to the past to save the Z Fighters, and ends up spinning the story into *four* separate timelines.

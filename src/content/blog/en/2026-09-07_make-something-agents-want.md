@@ -1,14 +1,13 @@
 ---
 title: "Make Something Agents Want"
 description: "YC quietly echoed its 20-year-old motto. Cloudflare said agents can now be customers. Two posts, 48 hours apart, and the audience for software just changed."
-pubDate: "2026-06-15"
+pubDate: "2026-09-07"
 heroImage: "/images/blog/posts/make-something-agents-want/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["make something agents want", "agents as customers Cloudflare", "YC software for agents", "AI agents first class users", "building software for AI agents", "Cloudflare Stripe agents protocol", "agent economy 2026"]
 series: "working-with-agents"
 seriesOrder: 6
-draft: true
 ---
 
 Something shifted in how the tech industry talks about AI agents, and you can see it concentrated in two declarations made days apart.

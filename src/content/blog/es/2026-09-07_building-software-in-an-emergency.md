@@ -1,12 +1,11 @@
 ---
 title: 'Construir software en una emergencia'
 description: 'En días había más de veinte herramientas ciudadanas de ayuda. Por qué fueron tantas, qué aprendí construyendo una, y lo que aún no me deja tranquilo.'
-pubDate: '2026-08-24'
+pubDate: '2026-09-07'
 tags: ['tech', 'civic-tech', 'colombia', 'ai-agents', 'mcp', 'web-development']
 keywords: ['apps de ayuda terremoto Colombia', 'tecnología cívica emergencias', 'por qué hay tantas apps de emergencia', 'construir software en un desastre', 'API pública sin autenticación', 'idempotencia source externalId', 'servidor MCP para emergencias', 'privacidad datos personas desaparecidas', 'frescura del dato timestamps API', 'protocolo Cabuya interoperabilidad']
 series: 'colombia-earthquake-2026'
 seriesOrder: 2
-draft: true
 ---
 
 Día uno: nada. No había luz, no había señal, y lo único que se movía era la gente en la calle buscándose.
