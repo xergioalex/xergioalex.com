@@ -121,7 +121,7 @@ Answer Engine Optimization — how to build a website that AI answer engines can
 A magnitude 7.4 earthquake hit western Colombia on August 10, 2026. Pereira, the author's city, was among the hardest hit. Reported from inside the affected region, with every figure attributed to a named source and a cut-off time:
 1. Pereira, Colombia: 7:34 a.m., Magnitude 7.4 — What happened, the official casualty and damage figures and why they moved daily, why Armenia stayed standing and what the NSR-10 seismic code actually promises, the three days without utilities or communications, and the civic response (/blog/pereira-colombia-earthquake-2026/)
 
-Later chapters cover the aid software built in the days after the quake and what comes next for the region. They are not published yet.
+Later chapters cover the aid software built in the days after the quake, what comes next for the region, and Cabuya — the open interoperability protocol the author co-created so the emergency's aid apps can read each other. They are not published yet.
 
 #### The AGI Race (in progress)
 The frontier-model race toward AGI-class capability, told as it happened — every benchmark and incident sourced:
