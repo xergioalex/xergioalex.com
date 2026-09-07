@@ -40,11 +40,11 @@ This project includes reusable **Skills** (procedures) and **Agents** (specializ
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 12             | 2                  | 0              | 14    |
+| Skills | 13             | 2                  | 0              | 15    |
 | Agents | 0              | 4                  | 1              | 5     |
-| **Total** | **12**      | **6**              | **1**          | **19** |
+| **Total** | **13**      | **6**              | **1**          | **20** |
 
-### Available Skills (14)
+### Available Skills (15)
 
 | Skill | Invocation | Tier | Description |
 |-------|-----------|------|-------------|
@@ -59,6 +59,7 @@ This project includes reusable **Skills** (procedures) and **Agents** (specializ
 | add-page | `/add-page` | 1 | Create new page with routing and MainLayout |
 | add-blog-post | `/add-blog-post` | 1 | Create blog post with Content Collections frontmatter |
 | translate-sync | `/translate-sync` | 1 | Synchronize content between English and Spanish versions |
+| rename-series | `/rename-series` | 1 | Rename a blog series safely (file, images, frontmatters, translations, 301 redirects) |
 | update-styles | `/update-styles` | 1 | Update Tailwind styles with dark mode support |
 | write-tests | `/write-tests` | 2 | Add or expand tests (Vitest/Playwright when configured) |
 | refactor-safe | `/refactor-safe` | 2 | Safe refactor in bounded scope (1-10 files, no behavior change) |

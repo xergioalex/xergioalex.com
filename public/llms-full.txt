@@ -121,7 +121,14 @@ Answer Engine Optimization — how to build a website that AI answer engines can
 A magnitude 7.4 earthquake hit western Colombia on August 10, 2026. Pereira, the author's city, was among the hardest hit. Reported from inside the affected region, with every figure attributed to a named source and a cut-off time:
 1. Pereira, Colombia: 7:34 a.m., Magnitude 7.4 — What happened, the official casualty and damage figures and why they moved daily, why Armenia stayed standing and what the NSR-10 seismic code actually promises, the three days without utilities or communications, and the civic response (/blog/pereira-colombia-earthquake-2026/)
 
-Later chapters cover the aid software built in the days after the quake and what comes next for the region. They are not published yet.
+Later chapters cover the aid software built in the days after the quake, what comes next for the region, and Cabuya — the open interoperability protocol the author co-created so the emergency's aid apps can read each other. They are scheduled for September 2026.
+
+#### The AGI Race (in progress)
+The frontier-model race toward AGI-class capability, told as it happened — every benchmark and incident sourced:
+1. Claude Mythos: The Model Too Dangerous to Release — Thousands of zero-days found across every major operating system, the $100M Project Glasswing coalition, and why Anthropic withheld its most capable model (/blog/claude-mythos-the-model-too-dangerous-to-release/)
+2. Claude Fable 5: The Model They Wouldn't Release Is Now in Your Hands — The June launch, the US export-control suspension three days later, and the July 1 return under a thicker harness (/blog/claude-fable-5-mythos-unleashed/)
+
+Chapters on China's open-weight frontier, Claude Fable 5.1, and OpenAI's GPT-6 Astra are scheduled for September 2026.
 
 ### Languages
 
