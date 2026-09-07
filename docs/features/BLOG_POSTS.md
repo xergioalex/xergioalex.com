@@ -776,3 +776,4 @@ Posts can be published, scheduled, or demo. See **[Blog Content Lifecycle](./BLO
 - [Internationalization](./I18N.md) - Multi-language support
 - [Public Assets](./PUBLIC_ASSETS.md) - Static assets structure
 - [Architecture Guide](../ARCHITECTURE.md) - Overall site architecture
+- [Writing Craft Guide §14 — Section Headers](../WRITING_CRAFT_GUIDE.md#14-section-headers) - Heading visual hierarchy (`.prose-blog`: h2 = chapter, h3 = editorial label) and authoring rules

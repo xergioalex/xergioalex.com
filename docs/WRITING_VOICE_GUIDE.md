@@ -98,6 +98,7 @@ Expected: zero matches. If any match is found, fix before committing.
 [ ] Does every section have at least some sentence length variety?
 [ ] Is there at least 1 sentence that starts with "Honestly" or "I think"?
 [ ] Spanish content uses tuteo (tú), not voseo (vos)?
+[ ] No anchor word repeated into a tic (grep the usual suspects: "today"/"hoy", "honest", "real")?
 ```
 
 ## 7. AI Vocabulary Blocklist
@@ -126,6 +127,7 @@ Words and phrases to search for and replace before publishing:
 | Three-part negation ("No X. No Y. No Z.") | Use 2-part, or a single sentence |
 | "What excites me most about X isn't just Y. It's what they represent:" | "What I like about this stack isn't the benchmarks. It's the direction." |
 | "I am particularly pleased with" | Cut — just show the thing |
+| Em-dash pileup (10+ per 1,000 words of prose) | Reserve em-dashes for contrast and mid-thought corrections; move mechanical glosses to parentheses, colons, or commas |
 
 ### Quick search command
 
