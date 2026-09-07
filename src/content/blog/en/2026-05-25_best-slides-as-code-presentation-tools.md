@@ -14,11 +14,14 @@ keywords: [slides as code, presentation tools, reveal.js, slidev, marp, spectacl
 
 If you've ever built a presentation in PowerPoint, Google Slides, Keynote, or similar tools, you know the manual work: dragging boxes, designing every slide by hand, nudging images pixel by pixel, losing formatting on every paste, and no version control. You can `git diff` your source code — but not your slides.
 
-**Slides-as-code** is the alternative: write presentations in Markdown, in your IDE, version-controlled, CI/CD-friendly, and shareable as static HTML. In the age of agents, that matters even more — the format is text-based and structured, so agents can draft decks with near-zero error rate while I focus on the narrative.
+**Slides-as-code** is the alternative: write your slides as code — Markdown in your IDE, version-controlled, CI/CD-friendly, and shareable as static HTML. In the age of agents, that matters even more — the format is text-based and structured, so agents can draft decks with near-zero error rate while I focus on the narrative.
+
+<figure>
+<img src="/images/blog/posts/best-slides-as-code-presentation-tools/slide-is-text.webp" alt="Light-background infographic with two panels connected by an arrow with an equals sign: on the left, a classic slide with a title box, bullets, and an image; on the right, the same slide as a Markdown file with git diff lines marked in green and red." width="1200" height="675" loading="lazy" />
+<figcaption>The same slide, two truths: what the audience sees and what git reviews.</figcaption>
+</figure>
 
 Before [building a slide system into my Astro site](/blog/building-slide-system-inside-astro-revealjs), I evaluated every serious option in this space. This post is that comparison — the criteria, the tools, and the tradeoffs that led to my pick.
-
-> **Updated September 2026:** Refreshed GitHub numbers throughout, and added a section on the agentic turn — Claude Design, Claude Artifacts, Claude Code, Cursor agents, and Gemini Notebook (formerly NotebookLM).
 
 ## What Makes a Good Slides-as-Code Tool?
 
@@ -117,83 +120,6 @@ Spectacle takes the opposite approach from Marp: if you know React, you already 
 
 **Pandoc + Beamer** — The LaTeX pipeline. Write Markdown, convert to Beamer PDF via Pandoc. Ideal for academia. Not web-native.
 
-## The Agentic Turn — Decks Written by Agents
-
-The biggest shift since I published this comparison isn't a new framework — it's *who writes the deck*. Agents went from occasionally helpful to first-class authors, and a generation of AI-native tools grew around that. Here's the 2026 landscape.
-
-### Claude Design — The conversational one
-
-**[claude.ai/design](https://claude.ai/design)** · Anthropic Labs
-
-Claude Design is Anthropic's conversational design tool. You describe the deck in plain language — "a 10-slide Q1 results deck, dark theme, our brand fonts" — and it generates a complete deck you refine slide by slide, in the same conversation.
-
-**What makes it stand out:**
-- **Interactive HTML output.** Decks render as live HTML, not static images — including animations that carry storytelling across slides.
-- **Brand-aware.** With a design system configured, slides automatically match your colors, typography, and assets.
-- **Real export options.** Standalone HTML, PPTX, PDF, send to Canva — or hand the deck off to Claude Code to keep iterating in a repo.
-- **Collaborative.** Share with view, comment, or edit permissions; several people can chat with the agent in the same thread.
-
-**The tradeoff:** It's design-first, not git-first. The source of truth lives in the conversation until you export — there's no diffable Markdown underneath.
-
-**Best for:** Polished decks on a deadline, teams without a designer, the 80% of presentations that never needed a custom theme system.
-
-### Claude Artifacts — The zero-setup one
-
-On any Claude plan — free included — you can generate a full HTML slide deck as an artifact, preview it live in the chat, and iterate conversationally. It's the fastest path from "I have an outline" to "I have something presentable," and you can download the standalone HTML when it's good enough.
-
-**The tradeoff:** Every deck is bespoke HTML. No plugin ecosystem, no theming system, nothing reusable across decks.
-
-**Best for:** One-off decks, internal presentations, prototyping a narrative before committing to a real tool.
-
-### Claude Code — The full-circle one
-
-Here's where agents and slides-as-code meet: [Claude Code](https://claude.com/product/claude-code), Anthropic's coding agent, can author the deck *inside your repo* — write the Markdown, wire the frontmatter, commit, open a PR. The format agents write best turns out to be exactly the format this whole post is about.
-
-That's not hypothetical — it's how the decks on this site get built. I describe the talk, the agent writes the Markdown and metadata, Reveal renders it. I review the diff, not the slide boxes.
-
-**The tradeoff:** You need the scaffolding first — a deck pipeline your agent can write into. That's what [the next post in this series](/blog/building-slide-system-inside-astro-revealjs) is about.
-
-**Best for:** Developers who want decks to be content: versioned, reviewed, CI-rendered, agent-authorable.
-
-### Cursor — Agents, not canvases
-
-People ask whether Cursor — the AI-first code editor — has a "canvas" for building slides. It doesn't, and that's kind of the point: Cursor's agents write decks *in the same slides-as-code frameworks above* — Slidev, Marp, Reveal — inside your repository. Same loop as Claude Code, different editor. The framework stays yours; the agent is just the author.
-
-**Best for:** Teams already living in Cursor who want decks to flow through their normal review process.
-
-### Gemini Notebook — The grounded one
-
-**[Google's research notebook](https://support.google.com/gemininotebook/answer/16757456)** · Formerly NotebookLM, renamed July 2026
-
-NotebookLM became Gemini Notebook in July 2026 — same product, deeper Google integration. For presentations, the headline feature is Slide Decks: point it at the sources in your notebook and it generates a full deck, with visuals from Google's Nano Banana Pro image model. Since March 2026 you can revise any slide by prompt and export as PPTX or PDF. And when a deck isn't the right medium, Video Overviews (including the Cinematic variant) turn the same sources into narrated video.
-
-**What makes it stand out:**
-- **Grounded generation.** Every deck is built from *your* sources — docs, papers, notes — not from the model's general knowledge.
-- **A real editing loop.** Per-slide revisions by prompt; each regeneration lands as a new deck you can compare against.
-- **PPTX and PDF export.** For all users since March 2026.
-- **Video too.** Narrated slideshows and Cinematic Video Overviews from the same sources.
-
-**The tradeoff:** The deck style is consumer-grade, not a design system you control. And it's the opposite of code — nothing to diff, nothing to version.
-
-**Best for:** Research-to-deck workflows, study material, turning a pile of documents into a presentation or a narrated video.
-
-## Online and AI-Powered Platforms
-
-Not everything needs to be code. Here's when cloud platforms make more sense:
-
-| Platform | Strength | Best For |
-|---|---|---|
-| **[Gamma](https://gamma.app)** | Generate full decks from text prompts | Quick AI-generated presentations for meetings |
-| **[Pitch](https://pitch.com)** | Real-time collaborative editing | Team pitch decks, investor presentations |
-| **[Beautiful.ai](https://beautiful.ai)** | AI layout engine that auto-arranges content | Design-heavy decks without a designer |
-| **[slides.com](https://slides.com)** | WYSIWYG editor built on Reveal.js by the same author | Reveal-style decks without writing code |
-| **Google Slides** | Universal compatibility, easy sharing | Corporate environments, cross-team collaboration |
-| **Canva** | Massive template library | Non-technical presenters, social media content |
-| **[Claude Design](https://claude.ai/design)** | Conversational, brand-aware deck generation | Polished HTML/PPTX decks without touching code |
-| **[Gemini Notebook](https://support.google.com/gemininotebook/answer/16757456)** | Decks and videos grounded in your own sources | Research-backed decks, narrated overviews |
-
-These platforms solve different problems than slides-as-code. If your audience is investors or a non-technical team, Google Slides or Pitch might be the pragmatic choice. If your audience is developers and your content is code, the slides-as-code tools above are what you want. And the line keeps blurring: Claude Design exports standalone HTML and Gemini Notebook exports PPTX, so the agentic tools are often just one export away from the code world.
-
 ## The Full Comparison
 
 | Feature | Reveal.js | Slidev | Marp | Spectacle |
@@ -212,6 +138,83 @@ These platforms solve different problems than slides-as-code. If your audience i
 | **GitHub stars** | ~72k | ~48k | ~3.8k | ~10k |
 | **Learning curve** | Medium | Medium (Vue helps) | Low | Medium (React) |
 
+## Coding agents — native capabilities for building decks
+
+### Claude Code
+
+No framework needed: coding agents like Claude now ship with native capabilities to build complete decks. In Claude Code, Anthropic's coding agent, those capabilities arrive through two tools — Claude Design and Artifacts — and with them the agent puts a deck together end to end, no skill to install. From there, the spectrum runs from the coding agent that ships without ever leaving your repo to the conversation that ends in an export. Here's the 2026 landscape.
+
+#### Claude Design
+
+**[claude.ai/design](https://claude.ai/design)** · Anthropic Labs
+
+Claude Design is Anthropic's conversational design tool. You describe the deck in plain language — "a 10-slide Q1 results deck, dark theme, our brand fonts" — and it generates a complete deck you refine slide by slide, in the same conversation.
+
+**What makes it stand out:**
+- **Interactive HTML output.** Decks render as live HTML, not static images — including animations that carry storytelling across slides.
+- **Brand-aware.** With a design system configured, slides automatically match your colors, typography, and assets.
+- **Real export options.** Standalone HTML, PPTX, PDF, send to Canva — or hand the deck off to Claude Code to keep iterating in a repo.
+- **Collaborative.** Share with view, comment, or edit permissions; several people can chat with the agent in the same thread.
+
+**The tradeoff:** It's design-first, not git-first. The source of truth lives in the conversation until you export — there's no diffable Markdown underneath.
+
+**Best for:** Polished decks on a deadline, teams without a designer, the 80% of presentations that never needed a custom theme system.
+
+#### Claude Artifacts
+
+On any Claude plan — free included — you can generate a full HTML slide deck as an artifact, preview it live in the chat, and iterate conversationally. It's the fastest path from "I have an outline" to "I have something presentable," and you can download the standalone HTML when it's good enough.
+
+**The tradeoff:** Every deck is bespoke HTML. No plugin ecosystem, no theming system, nothing reusable across decks.
+
+**Best for:** One-off decks, internal presentations, prototyping a narrative before committing to a real tool.
+
+### Cursor — Canvases to iterate, repo to ship
+
+Cursor — the AI-first code editor — does have [canvases](https://cursor.com/docs/agent/tools/canvas) now: interactive artifacts the agent opens alongside the chat when a result is better seen than read — dashboards, reports, analyses — re-runnable with fresh data, with the source editable one click away. For sketching how a deck should feel before writing it, that's a good place to think.
+
+What the canvas doesn't give you is publishing: it lives in your Cursor workspace, and sharing it creates a snapshot link inside their ecosystem (on paid plans). The full loop still runs through the frameworks above: Cursor's agents write decks in Slidev, Marp, or Reveal *inside your repository*, and publishing is a commit, not a link. Canvas to iterate; repo to ship.
+
+**Best for:** Teams already living in Cursor who want decks to flow through their normal review process.
+
+### Gemini Notebook — The grounded one
+
+**[Google's research notebook](https://notebook.google.com/)** · Formerly NotebookLM, renamed July 2026
+
+NotebookLM became [Gemini Notebook](https://notebook.google.com/) in July 2026 — same product, deeper Google integration. For presentations, the headline feature is Slide Decks: point it at the sources in your notebook and it generates a full deck, with visuals from Google's Nano Banana Pro image model. Since March 2026 you can revise any slide by prompt and export as PPTX or PDF. And when a deck isn't the right medium, Video Overviews (including the Cinematic variant) turn the same sources into narrated video.
+
+**What makes it stand out:**
+- **Grounded generation.** Every deck is built from *your* sources — docs, papers, notes — not from the model's general knowledge.
+- **A real editing loop.** Per-slide revisions by prompt; each regeneration lands as a new deck you can compare against.
+- **PPTX and PDF export.** For all users since March 2026.
+- **Video too.** Narrated slideshows and Cinematic Video Overviews from the same sources.
+
+**The tradeoff:** The deck style is consumer-grade, not a design system you control. And it's the opposite of code — nothing to diff, nothing to version.
+
+**Best for:** Research-to-deck workflows, study material, turning a pile of documents into a presentation or a narrated video.
+
+### ChatGPT Images — The honorable mention
+
+Everything above in this section is slides-as-code; this one isn't, but it earned its slot. [ChatGPT's image generator](https://openai.com/index/introducing-chatgpt-images-2-0/) reached the point where a complete deck — image by image — comes together fast and with remarkably high quality: you describe the slide, iterate the description, and the visual deck is ready without writing a line of Markdown. I've generated whole decks this way, and I think it's one of the best generators we have to date.
+
+And the nuance that brings it close to this world: the deck isn't code, but the prompt that generates each image is. Good prompts get written, polished, versioned. The interface changes; the discipline stays the same.
+
+## Online and AI-Powered Platforms
+
+Not everything needs to be code. When AI presentations are the pragmatic answer, these platforms make more sense:
+
+| Platform | Strength | Best For |
+|---|---|---|
+| **[Gamma](https://gamma.app)** | Generate full decks from text prompts | Quick AI-generated presentations for meetings |
+| **[Pitch](https://pitch.com)** | Real-time collaborative editing | Team pitch decks, investor presentations |
+| **[Beautiful.ai](https://beautiful.ai)** | AI layout engine that auto-arranges content | Design-heavy decks without a designer |
+| **[slides.com](https://slides.com)** | WYSIWYG editor built on Reveal.js by the same author | Reveal-style decks without writing code |
+| **Google Slides** | Universal compatibility, easy sharing | Corporate environments, cross-team collaboration |
+| **Canva** | Massive template library | Non-technical presenters, social media content |
+| **[Claude Design](https://claude.ai/design)** | Conversational, brand-aware deck generation | Polished HTML/PPTX decks without touching code |
+| **[Gemini Notebook](https://notebook.google.com/)** | Decks and videos grounded in your own sources | Research-backed decks, narrated overviews |
+
+These platforms solve different problems than slides-as-code. If your audience is investors or a non-technical team, Google Slides or Pitch might be the pragmatic choice. If your audience is developers and your content is code, the slides-as-code tools above are what you want. And the line keeps blurring: Claude Design exports standalone HTML and Gemini Notebook exports PPTX, so the agentic tools are often just one export away from the code world.
+
 ## My Pick — and Why (Slides-as-Code Inside My Own Site)
 
 I wanted to integrate a **slides-as-code** system into my own site for my tech talks — to have [xergioalex.com](https://xergioalex.com) itself host the decks, not an external service. That's why I chose **Reveal.js**.
@@ -220,7 +223,12 @@ The deciding factor wasn't that Reveal has the best DX (Slidev wins there) or th
 
 I needed slides to live *inside* my Astro website — as first-class content, with the same multilingual support, the same theme system, the same SEO and AEO infrastructure as my blog posts. Reveal is vanilla JS that I can initialize in a Svelte component, inside an Astro layout, importing CSS only on deck pages. No second framework runtime. No separate build pipeline.
 
-The agentic turn since then hasn't changed that conclusion — it strengthened it. When an agent can author the deck, the format you choose *is* the interface, and a diffable Markdown file is the interface both humans and agents review best. Agents write bespoke HTML too, but nobody wants to review that diff.
+<figure>
+<img src="/images/blog/posts/best-slides-as-code-presentation-tools/deck-lives-in-site.webp" alt="Light-background infographic: a browser window whose interior splits into a blog page and a full-screen slide sharing the same theme; a Markdown document enters through a dotted pipeline line with a verified commit point and comes out as the slide." width="1200" height="675" loading="lazy" />
+<figcaption>The same site publishes the post and the talk: same theme, same URL, same pipeline.</figcaption>
+</figure>
+
+An agent being able to create and publish the deck hasn't changed that conclusion — it strengthened it. When an agent can author the deck, the format you choose *is* the interface, and a diffable Markdown file is the interface both humans and agents review best. Agents write bespoke HTML too, but nobody wants to review that diff.
 
 In the [next post in this series](/blog/building-slide-system-inside-astro-revealjs), I'll walk through exactly how I built it: a three-type deck catalog with discriminated-union schemas, build-time Markdown rendering, asset isolation, AEO twins, and live dark/light theme sync.
 
@@ -231,9 +239,15 @@ In the [next post in this series](/blog/building-slide-system-inside-astro-revea
 - [Marp](https://marp.app) — Official site
 - [Spectacle](https://formidable.com/open-source/spectacle/) — Official site
 - [Impress.js](https://impress.js.org) — Official site
+- [WebSlides](https://webslides.tv) — Official site
+- [Pandoc](https://pandoc.org) — The universal document converter (the Beamer pipeline)
 - [Claude Design](https://claude.ai/design) — Anthropic's conversational deck tool
+- [Claude Artifacts](https://claude.ai) — HTML decks in the chat, zero setup
 - [Claude Code](https://claude.com/product/claude-code) — Anthropic's coding agent
 - [Cursor](https://cursor.com) — AI-first code editor
-- [Gemini Notebook](https://support.google.com/gemininotebook/answer/16757456) — Slide Decks help (formerly NotebookLM)
+- [ChatGPT Images](https://openai.com/index/introducing-chatgpt-images-2-0/) — OpenAI's image generator
+- [Gemini Notebook](https://notebook.google.com/) — decks and videos grounded in your own sources (formerly NotebookLM)
 - [Gamma](https://gamma.app) — AI presentation platform
 - [Pitch](https://pitch.com) — Collaborative presentations
+- [slides.com](https://slides.com) — Visual editor built on Reveal.js, by the same author
+- [Beautiful.ai](https://beautiful.ai) — AI design engine that auto-arranges content
