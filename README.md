@@ -135,18 +135,24 @@ Visit **http://localhost:4444** to preview.
 | [Development Commands](./docs/DEVELOPMENT_COMMANDS.md) | Build scripts and workflows |
 | [Standards](./docs/STANDARDS.md) | Coding conventions |
 | [Blog Posts](./docs/features/BLOG_POSTS.md) | Blog content structure and workflows |
+| [Blog Content Lifecycle](./docs/features/BLOG_CONTENT_LIFECYCLE.md) | Published, scheduled and draft post visibility |
 | [Authors](./docs/features/AUTHORS.md) | Multi-author support and schema |
 | [Slides](./docs/features/SLIDES.md) | Tech-talk decks (Reveal.js + embeds) |
+| [Public API & Developer Portal](./docs/features/PUBLIC_API.md) | JSON endpoints, OpenAPI generation, versioning |
 | [Writing Voice](./docs/WRITING_VOICE_GUIDE.md) | Anti-AI-slop voice and tone guide |
 | [Writing Craft](./docs/WRITING_CRAFT_GUIDE.md) | Narrative structure, quotes, and fact verification |
 | [Design System](./docs/DESIGN.md) | Design tokens, color roles, and component patterns |
+| [Brand Guide](./docs/BRAND_GUIDE.md) | Visual identity, colors, and typography |
 | [I18N Guide](./docs/I18N_GUIDE.md) | Multilingual content and translations |
 | [Testing](./docs/TESTING_GUIDE.md) | Vitest setup and test conventions |
 | [Performance](./docs/PERFORMANCE.md) | Astro SSG optimization and budgets |
 | [Accessibility](./docs/ACCESSIBILITY.md) | WCAG AA standards and patterns |
 | [SEO](./docs/SEO.md) | Meta, structured data, multilingual, AEO |
+| [Analytics](./docs/ANALYTICS.md) | Tracking, Search Console, and bot analytics |
 | [Security](./docs/SECURITY.md) | Security best practices |
 | [AI Agent Onboarding](./docs/AI_AGENT_ONBOARDING.md) | Setup for AI coding assistants |
+| [AI Agent Collaboration](./docs/AI_AGENT_COLLAB.md) | Multi-agent handoff and coordination |
+| [Documentation Guide](./docs/DOCUMENTATION_GUIDE.md) | When and how to update docs |
 | [Skills & Agents Catalog](./.agents/docs/skills_agents_catalog.md) | Available skills and agents |
 
 ---

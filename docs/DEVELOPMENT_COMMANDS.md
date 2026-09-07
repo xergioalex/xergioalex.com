@@ -15,6 +15,12 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 | `pnpm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
 | `pnpm run generate:openapi` | Regenerate `public/openapi.json` (also runs in `prebuild`) |
 | `pnpm run generate:agent-skills-index` | Regenerate the agent-skills discovery index (also runs in `prebuild`) |
+| `pnpm run test` | Run unit tests (Vitest) |
+| `pnpm run test:e2e` | Run end-to-end tests (Playwright) |
+| `pnpm run images:optimize` | Convert staged images to WebP |
+| `pnpm run images:optimize:slides` | Convert staged slide images to WebP |
+| `pnpm run search:budgets` | Check search index performance budgets |
+| `pnpm run lighthouse` | Run the Lighthouse CI audit |
 
 ## Development
 
@@ -163,6 +169,14 @@ pnpm run lighthouse
 - Requires Chrome installed locally
 - Tests pages defined in `lighthouserc.cjs`: `/`, `/about/`, `/blog/`, `/es/`
 - Asserts performance budgets: Performance >= 95, Accessibility = 100, Best Practices >= 95, SEO >= 95
+
+### Run the Full Audit
+
+```bash
+pnpm run lighthouse:full
+```
+
+- Same pipeline, but uses `lighthouserc.full.cjs` — the extended page set (14 URLs) and uploads the report for release audits
 
 ## Release
 
@@ -341,6 +355,12 @@ pnpm run test
 
 # E2E tests (Playwright)
 pnpm run test:e2e
+
+# E2E test runner UI (interactive)
+pnpm run test:e2e:ui
+
+# Open the last Playwright HTML report
+pnpm run test:e2e:report
 
 # Watch mode
 pnpm run test:watch
