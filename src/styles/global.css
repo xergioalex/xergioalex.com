@@ -46,6 +46,21 @@
   }
 
   /*
+   * Blog heading hierarchy — h2 reads as a chapter (larger, rule above,
+   * generous air), h3 reads as an editorial label (smaller, semibold,
+   * muted). Guide-style posts depend on this: internal subtitles must
+   * never compete with numbered section titles. Scoped to .prose-blog
+   * so other .prose consumers (slide decks) keep the default typography.
+   */
+  .prose-blog h2 {
+    @apply mt-14 border-t border-gray-200 pt-6 text-3xl font-bold leading-tight dark:border-gray-700;
+  }
+
+  .prose-blog h3 {
+    @apply mt-8 mb-2 text-base font-semibold text-gray-600 dark:text-gray-300;
+  }
+
+  /*
    * Blog prose overflow containment — wide content must scroll inside the column,
    * never expand the page horizontally (mobile or desktop).
    */

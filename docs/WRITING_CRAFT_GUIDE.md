@@ -246,6 +246,8 @@ Em-dashes are a signature of this voice. Use them 1–2 times per 500 words. The
 
 Never decorative. Every em-dash should earn its place.
 
+**Density, reconciled with the glossing pattern in §15.** Jargon glossing (one em-dash aside per unfamiliar term) inflates the count fast — a gloss-heavy technical post can hit 90+ em-dashes, and at that density they stop landing and start reading as an AI tell. Glosses count toward the budget: when a section carries many of them, use parentheses or a colon for the mechanical ones ("MCP — the protocol agents use" becomes "MCP (the protocol agents use)") and save the em-dash for genuine asides and corrections. Rough ceiling even for gloss-heavy posts: ~4–5 per 500 words.
+
 ### Fragments for emphasis
 
 Sentence fragments are allowed — in moderation — to land a point:
@@ -607,6 +609,20 @@ Headers are **statements, not questions** in 80% of cases. When questions appear
 
 Most headers are 2–5 words. Longer headers (up to ~10 words) are allowed when they contain a hook, but avoid anything that feels like a subtitle.
 
+### Visual hierarchy: h2 is the chapter, h3 is the label
+
+Blog post content renders through the `.prose-blog` wrapper (styles in `src/styles/global.css`, applied in `BlogPostPage.astro`). The two heading levels are styled to read very differently, and posts must be authored to exploit that — never to fight it:
+
+- **h2 (`##`)** renders as a **chapter**: large (30px), bold, with a horizontal rule above and generous top spacing. Use it for the numbered sections of a guide (`## 3. API Catalog (RFC 9727)`), or the major beats of a narrative. One idea per h2.
+- **h3 (`###`)** renders as an **editorial label**: smaller (16px), semibold, muted gray. Use it for the repeating internal skeleton of a section — *What it is / Why it exists / Minimum valid example / Common pitfalls / Where to learn more* — or any short internal sub-part. h3 titles are signposts, not headlines: keep them 2–5 words, sentence case, no emphasis decoration.
+
+Authoring rules of thumb:
+
+- **Guide-style posts** (field guides, technical walkthroughs): numbered h2 sections + the fixed h3 skeleton per section. The styling already does the hierarchy work — do not add bold caps, emoji, or `---` separators to compensate; trust the styles.
+- **Narrative posts**: h2 for chapter beats; use h3 sparingly. If a post has no repeating internal structure, it may need no h3 at all.
+- **Never skip levels** (h1 → h3): the h1 is the post title rendered outside the prose column; content headings start at h2 and go in order.
+- **h4 (`####`) is almost never used.** If you reach for h4, the section probably wants to be two h2s.
+
 ---
 
 ## 15. Refinement Patterns
@@ -769,8 +785,9 @@ Before marking an article as done, run through this:
 ### Content quality
 - [ ] Every factual claim has a source or is clearly the author's opinion
 - [ ] Every quote has an attribution link
-- [ ] No temporal references that will age ("last week", "yesterday")
+- [ ] No temporal references that will age ("last week", "yesterday") — anchor snapshots with an absolute date instead
 - [ ] No unverified numbers
+- [ ] No word repeated into a tic (anchor-word grep: "today"/"hoy", "honest", "real" — the author's usual suspects)
 - [ ] No clichés slipped through
 - [ ] Every specific number has context or comparison
 
@@ -866,5 +883,5 @@ The rules exist because they come from concrete mistakes that had to be fixed. B
 
 ---
 
-**Last updated:** 2026-04-12
-**Origin:** Distilled from the OpenClaw refinement session + pattern analysis across 10 recent posts.
+**Last updated:** 2026-09-07
+**Origin:** Distilled from the OpenClaw refinement session + pattern analysis across 10 recent posts + the .well-known field-guide refinement (em-dash density, anchor-word tics).

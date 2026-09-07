@@ -34,6 +34,7 @@ Fast, low-risk, pattern-following tasks.
 | add-timeline-page | create | `/add-timeline-page` | haiku | Add a new tag-filtered infinite-scroll timeline page (e.g. /trading, /entrepreneur) |
 | translate-sync  | execute| `/translate-sync` | haiku  | Synchronize content between English and Spanish versions                    |
 | optimize-image  | execute| `/optimize-image` | haiku  | Convert and optimize images to WebP for blog posts and series               |
+| rename-series   | execute| `/rename-series`  | haiku  | Rename a blog series safely: file, images, frontmatters, translations, 301s |
 | update-styles   | fix    | `/update-styles`  | haiku  | Update Tailwind styles with dark mode support                               |
 
 ### Tier 2 (Standard)
