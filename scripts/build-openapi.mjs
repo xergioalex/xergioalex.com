@@ -74,7 +74,7 @@ const spec = {
       '',
       '## Versioning',
       '',
-      'The API follows semantic versioning, currently `' + API_VERSION + '`.',
+      `The API follows semantic versioning, currently \`${API_VERSION}\`.`,
       'Additive changes — new endpoints, new optional fields — ship without notice and without a version bump in the path.',
       'A breaking change (a removed or retyped field, a removed endpoint) ships under a new path prefix `/api/v2/...`, and the current unprefixed paths keep working for at least six months after that.',
       'Poll `' +
