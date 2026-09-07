@@ -7,6 +7,7 @@ tags: ["tech", "web-development", "javascript", "astro"]
 keywords: ["Astro 7 migration guide", "Satteri markdown compiler Astro", "Astro 7 Rust markdown MDX", "port rehype plugins to Satteri hastPlugins", "Astro 7 Vite 8 Rolldown", "upgrade Astro 6 to 7", "Astro markdown processor satteri", "defineHastPlugin example"]
 series: "building-xergioalex"
 seriesOrder: 10
+draft: true
 ---
 
 Last time, [I flipped on an experimental Rust compiler](/blog/migrating-to-astro-6/) and watched my dev server go from eleven seconds to under three. It felt like cheating. The catch was right there in the name: *experimental*. You opted in, you installed an extra package, you set a flag, and you accepted that the stricter compiler might escape a `<style>` tag straight into production — which, for the record, it did to me.

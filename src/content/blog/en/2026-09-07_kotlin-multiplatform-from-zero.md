@@ -7,6 +7,7 @@ tags: ["tech", "mobile", "kotlin", "flutter"]
 keywords: ['Kotlin Multiplatform', 'KMP', 'mobile development', 'Android iOS', 'Compose Multiplatform', 'cross-platform apps']
 series: 'learning-mobile-development'
 seriesOrder: 2
+draft: true
 ---
 
 # Kotlin Multiplatform from zero: sharing code without giving up native

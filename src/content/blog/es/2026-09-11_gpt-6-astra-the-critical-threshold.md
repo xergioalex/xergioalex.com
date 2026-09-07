@@ -8,6 +8,7 @@ tags: ["tech", "ai-agents", "personal"]
 keywords: ["lanzamiento GPT-6 Astra", "OpenAI Astra umbral Critical ciberseguridad", "GPT-6 Astra vs Claude Fable 5.1", "recurrent depth razonamiento OpenAI", "Daybreak programa ciberseguridad OpenAI", "precio y benchmarks GPT-6 Astra", "incidente Hugging Face OpenAI"]
 series: "the-agi-race"
 seriesOrder: 5
+draft: true
 ---
 
 El 7 de agosto, alguien en OpenAI tomó el teléfono y le dijo a un periodista que quizá la empresa no podría liberar su próximo modelo.

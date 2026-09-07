@@ -12,6 +12,7 @@ keywords:
   - "cursor as visual CMS"
   - "rebuild vs port CMS migration"
   - "astro 700 pages 3 languages"
+draft: true
 ---
 
 Over the last six weeks I led the migration of [dailybot.com](https://www.dailybot.com) from Webflow — a visual-editor CMS that had served us well for four years — to [Astro](https://astro.build). The team's side of that story is on the DailyBot blog: [How we migrated dailybot.com to Astro](https://www.dailybot.com/blog/how-we-migrated-dailybot-to-astro/). That piece is the "we" — why we moved, what the new pace feels like, what it changed for the company.

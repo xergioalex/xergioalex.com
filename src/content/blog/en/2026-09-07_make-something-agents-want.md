@@ -8,6 +8,7 @@ tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["make something agents want", "agents as customers Cloudflare", "YC software for agents", "AI agents first class users", "building software for AI agents", "Cloudflare Stripe agents protocol", "agent economy 2026"]
 series: "working-with-agents"
 seriesOrder: 6
+draft: true
 ---
 
 Something shifted in how the tech industry talks about AI agents, and you can see it concentrated in two declarations made days apart.

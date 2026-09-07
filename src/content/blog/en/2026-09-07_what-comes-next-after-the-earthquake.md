@@ -6,6 +6,7 @@ tags: ['tech', 'personal', 'civic-tech', 'colombia']
 keywords: ['how to help Colombia earthquake victims', 'avoid donation scams Colombia', 'Colombia earthquake reconstruction cost', 'contribute to civic tech projects', 'long term disaster recovery', 'open data after emergency', 'Pereira reconstruction plan']
 series: 'colombia-earthquake-2026'
 seriesOrder: 3
+draft: true
 ---
 
 The rescue phase of a disaster lasts about two weeks. Reconstruction lasts years, and almost nobody is watching by month three.

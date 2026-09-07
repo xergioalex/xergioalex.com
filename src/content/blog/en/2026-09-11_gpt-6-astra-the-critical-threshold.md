@@ -8,6 +8,7 @@ tags: ["tech", "ai-agents", "personal"]
 keywords: ["GPT-6 Astra launch", "OpenAI Astra Critical cybersecurity threshold", "GPT-6 Astra vs Claude Fable 5.1", "recurrent depth reasoning OpenAI", "Daybreak OpenAI cybersecurity program", "GPT-6 Astra pricing benchmarks", "Hugging Face incident OpenAI"]
 series: "the-agi-race"
 seriesOrder: 5
+draft: true
 ---
 
 On August 7, somebody at OpenAI picked up the phone and told a reporter the company might not be able to release its next model.

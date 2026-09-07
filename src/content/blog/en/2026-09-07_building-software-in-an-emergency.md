@@ -6,6 +6,7 @@ tags: ['tech', 'civic-tech', 'colombia', 'ai-agents', 'mcp', 'web-development']
 keywords: ['Colombia earthquake aid apps', 'civic tech emergency response', 'why so many emergency apps', 'building software in a disaster', 'public API without authentication', 'idempotency source externalId', 'MCP server for emergencies', 'missing persons data privacy', 'data freshness timestamps API', 'Cabuya interoperability protocol']
 series: 'colombia-earthquake-2026'
 seriesOrder: 2
+draft: true
 ---
 
 Day one: nothing. No power, no signal, and the only thing moving was people in the street looking for each other.

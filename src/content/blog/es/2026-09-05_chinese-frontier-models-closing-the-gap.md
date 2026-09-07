@@ -8,6 +8,7 @@ tags: ["tech", "ai-agents", "personal"]
 keywords: ["Kimi K3 pesos abiertos", "modelos de IA chinos vs Claude", "benchmarks GLM-5.3", "precio DeepSeek V4", "modelos open weight frontera 2026", "brecha modelos chinos Mythos", "Terminal-Bench modelos chinos", "controles de exportación IA pesos abiertos"]
 series: "the-agi-race"
 seriesOrder: 3
+draft: true
 ---
 
 Durante dieciocho días de junio no pudiste alquilar el modelo de IA más vigilado de Occidente. Pudiste descargarte un casi-equivalente gratis.

@@ -8,6 +8,7 @@ tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['time travel paradoxes explained', 'grandfather paradox', 'bootstrap paradox', 'Novikov self-consistency principle', 'can you change the past', 'predestination paradox']
 series: 'playing-with-time'
 seriesOrder: 3
+draft: true
 ---
 
 Suppose we get past the physics. Suppose, against every objection about exotic matter and impossible energies, you find yourself standing in your own past. Here's the thing that fascinated me as a kid and still does: that's when the *real* trouble starts. Because the hardest problem with time travel isn't engineering. It's logic. The past isn't just expensive to reach — it's dangerous to touch, in a way that ties reality into knots.

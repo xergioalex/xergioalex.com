@@ -8,6 +8,7 @@ tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['física del viaje en el tiempo', 'qué son las curvas temporales cerradas', 'agujero de gusano máquina del tiempo', 'materia exótica energía negativa', 'conjetura de protección de la cronología', 'es posible viajar al pasado según la ciencia']
 series: 'playing-with-time'
 seriesOrder: 2
+draft: true
 ---
 
 Este es el artículo que más ganas tenía de escribir, y también el que más nervios me daba — porque es fácil hablar mal de la física del viaje en el tiempo. O la conviertes en magia ("¡es cuántico!") o la aplastas en un "no" rotundo. La verdad es más interesante que las dos cosas, y vive en una franja estrecha y honesta entre lo *prohibido* y lo *construible*.

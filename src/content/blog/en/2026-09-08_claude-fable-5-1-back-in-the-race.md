@@ -8,6 +8,7 @@ tags: ["tech", "ai-agents", "personal", "claude"]
 keywords: ["Claude Fable 5.1 benchmarks", "Fable 5.1 vs Mythos 5.1", "Claude Fable 5.1 pricing", "Anthropic safeguard tax", "Fable 5.1 Terminal-Bench 4.0", "Claude Fable 5.1 system card", "Fable 5 cache read discount"]
 series: "the-agi-race"
 seriesOrder: 4
+draft: true
 ---
 
 Somewhere inside a sixteen-megabyte PDF that Anthropic's launch page never mentions, there is a sentence you should read twice: *"we now assess the risk of catastrophic harm as low rather than very low."*

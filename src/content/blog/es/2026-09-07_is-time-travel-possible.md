@@ -8,6 +8,7 @@ tags: ['science-fiction', 'physics', 'time-travel']
 keywords: ['es posible viajar en el tiempo', 'viajar al futuro es posible', 'qué es la dilatación del tiempo', 'ciencia del viaje en el tiempo', 'por qué es difícil viajar al pasado', 'viaje en el tiempo ciencia y ficción']
 series: 'playing-with-time'
 seriesOrder: 1
+draft: true
 ---
 
 De todas las ideas que me ha regalado la ciencia ficción, a la que siempre vuelvo es al viaje en el tiempo. No por las máquinas ni por las luces de colores, sino por el *enredo*. Vas al pasado, cambias una cosa pequeña, y de repente toda la historia se anuda sobre sí misma. ¿Quién es tu abuelo ahora? ¿Eso que fuiste a evitar igual pasó? ¿Lo causaste tú? Me encanta ese nudo. Me encanta desde que era niño y nunca se me pasó.

@@ -6,6 +6,7 @@ tags: ['tech', 'personal', 'civic-tech', 'colombia']
 keywords: ['cómo ayudar a los damnificados del terremoto', 'evitar estafas con donaciones Colombia', 'cuánto cuesta la reconstrucción tras el terremoto', 'cómo aportar a proyectos de tecnología cívica', 'recuperación a largo plazo desastres', 'datos abiertos después de una emergencia', 'plan de reconstrucción Pereira']
 series: 'colombia-earthquake-2026'
 seriesOrder: 3
+draft: true
 ---
 
 La fase de rescate de un desastre dura unas dos semanas. La reconstrucción dura años, y para el tercer mes casi nadie está mirando.

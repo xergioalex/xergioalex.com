@@ -8,6 +8,7 @@ tags: ["tech", "ai-agents", "openclaw", "claude"]
 keywords: ['OpenClaw architecture', 'OpenClaw PI agent', 'OpenClaw workspace files', 'OpenClaw Gateway 18789', 'OpenClaw MCP servers', 'SOUL.md AGENTS.md HEARTBEAT.md MEMORY.md STARTUP.md', 'OpenClaw skills ClawHub', 'OpenClaw pluggable memory Honcho LanceDB']
 series: 'mastering-openclaw'
 seriesOrder: 2
+draft: true
 ---
 
 I keep finding myself reaching for body metaphors when I try to explain OpenClaw, so let's just start there.

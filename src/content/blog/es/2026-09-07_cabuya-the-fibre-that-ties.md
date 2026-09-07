@@ -8,6 +8,7 @@ tags: ['tech', 'portfolio', 'civic-tech', 'colombia']
 keywords: ['protocolo Cabuya', 'qué es Cabuya', 'interoperabilidad apps de ayuda', 'protocolo abierto emergencias', 'estándar de datos para desastres', 'esquema JSON ayuda humanitaria', 'tecnología cívica Colombia', 'coger la cabuya significado']
 series: 'colombia-earthquake-2026'
 seriesOrder: 4
+draft: true
 ---
 
 Toma una necesidad. Agua, en un centro de acopio del sur de la ciudad. Un vecino la publica donde puede — un grupo de WhatsApp, un formulario, un pin en un mapa — y después la publica otra vez en otro lado, porque nadie, incluido el vecino, sabe cuál mapa está mirando cada quien. Cuatro mapas terminan sosteniendo la misma necesidad. Tres horas después el centro está lleno. Un mapa se entera. Los otros tres siguen mandando gente.

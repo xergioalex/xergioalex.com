@@ -8,6 +8,7 @@ tags: ["tech", "ai-agents", "personal"]
 keywords: ["Kimi K3 open weights", "Chinese AI models vs Claude", "GLM-5.3 benchmarks", "DeepSeek V4 pricing", "open weight frontier models 2026", "China AI models Mythos gap", "Terminal-Bench Chinese models", "AI export controls open weights"]
 series: "the-agi-race"
 seriesOrder: 3
+draft: true
 ---
 
 For eighteen days in June, you could not rent the most guarded AI model in the West. You could download a near-match for free.
