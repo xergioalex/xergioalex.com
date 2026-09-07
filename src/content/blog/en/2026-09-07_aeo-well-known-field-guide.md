@@ -1,7 +1,7 @@
 ---
 title: "The .well-known Explosion: A Field Guide to the New Agent Standards"
 description: "A field guide to the .well-known family for AI agents: Link headers, API Catalog, OAuth, MCP, skills, Web Bot Auth — with cabuya.org and this site as examples."
-pubDate: "2026-09-08T19:30:00"
+pubDate: "2026-09-07T19:30:00"
 heroImage: "/images/blog/posts/aeo-well-known-field-guide/hero.webp"
 heroLayout: "banner"
 tags: ["tech", "web-development", "ai-agents", "cloudflare", "mcp", "aeo"]
