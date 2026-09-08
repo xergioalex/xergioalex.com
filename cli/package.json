@@ -1,7 +1,7 @@
 {
   "name": "xergioalex",
   "version": "1.0.0",
-  "description": "The official CLI for xergioalex.com — read Sergio Florez (XergioAleX)'s blog, series, tags and tech talks from the terminal, straight from the public JSON API.",
+  "description": "The official CLI for xergioalex.com \u2014 read Sergio Florez (XergioAleX)'s blog, series, tags and tech talks from the terminal, straight from the public JSON API.",
   "type": "module",
   "bin": {
     "xergioalex": "./bin/xergioalex.mjs"
@@ -16,7 +16,7 @@
     "ai-agents",
     "developer-tools"
   ],
-  "license": "CC-BY-4.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xergioalex/xergioalex.com.git",
