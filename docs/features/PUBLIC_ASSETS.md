@@ -75,7 +75,8 @@ Machine-readable discovery documents for AI agents. All are served with
 | `.well-known/oauth-authorization-server` | RFC 8414 | Authorization-server metadata (reserved stub — the site is anonymous read-only) |
 | `.well-known/oauth-protected-resource` | RFC 9728 | Protected-resource metadata (reserved stub) |
 | `.well-known/agent-skills/index.json` | Agent Skills Discovery v0.2.0 | Adopted agent-readiness skills, pinned by SHA-256. **Generated** — edit `scripts/generate-agent-skills-index.mjs`, never the JSON |
-| `.well-known/mcp/server-card.json` | SEP-1649 | MCP server card for the read-only site tools exposed via WebMCP |
+| `/mcp` (function) + `/.well-known/mcp` (alias) | MCP 2025-06-18, Streamable HTTP | The site's MCP server — six read-only tools over the prerendered JSON API. See [Public API](PUBLIC_API.md) |
+| `.well-known/mcp/server-card.json` | SEP-1649 | MCP server card; documents both the Streamable HTTP endpoint and the browser WebMCP bridge |
 | `auth.md` | Auth.md convention | How agents authenticate: they don't — everything is public and anonymous |
 | `openapi.json` | OpenAPI 3.1 | Every API operation with an `operationId`, a typed response schema and the shared error model. **Generated** — edit `scripts/build-openapi.mjs`, never the JSON |
 

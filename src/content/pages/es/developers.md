@@ -1,12 +1,12 @@
 ---
 title: "Portal de desarrolladores de XergioAleX.com"
-description: "Recursos para desarrolladores y agentes de XergioAleX.com: API JSON pública de solo lectura, especificación OpenAPI, tarjeta MCP y documentos de descubrimiento."
-lastUpdated: 2026-08-24
+description: "Recursos para desarrolladores y agentes de XergioAleX.com: API JSON de solo lectura, OpenAPI, servidor MCP en /mcp, CLI y documentos de descubrimiento."
+lastUpdated: 2026-09-08
 ---
 
 ## API, MCP y recursos para agentes
 
-Todo lo que un desarrollador o un agente de IA necesita para consumir XergioAleX.com de forma programática: una API JSON de solo lectura, una descripción OpenAPI 3.1, una tarjeta de servidor MCP y los documentos de descubrimiento que los conectan. Sin API key, sin registro y sin límite de peticiones.
+Todo lo que un desarrollador o un agente de IA necesita para consumir XergioAleX.com de forma programática: una API JSON de solo lectura, una descripción OpenAPI 3.1, un servidor MCP en /mcp, una CLI en npm y los documentos de descubrimiento que los conectan. Sin API key y sin registro — solo respeta el límite de peticiones publicado.
 
 ---
 
@@ -46,7 +46,7 @@ Ocho operaciones de solo lectura, todas documentadas en la [especificación Open
 
 ## Errores
 
-Los fallos devuelven JSON, nunca HTML. El cuerpo incluye los campos de RFC 9457 (Problem Details) junto a un objeto `error` con un código estable, un mensaje legible y una pista de recuperación, para que un agente pueda reaccionar sin analizar una página.
+Los fallos devuelven `application/problem+json` (RFC 9457), nunca HTML. El cuerpo incluye los campos estándar de Problem Details junto a un objeto `error` con un código estable, un mensaje legible y una pista de recuperación, para que un agente pueda reaccionar sin analizar una página.
 
 ```json
 {
@@ -69,17 +69,18 @@ Los fallos devuelven JSON, nunca HTML. El cuerpo incluye los campos de RFC 9457 
 | `resource_not_found` | 404 | No existe ningún recurso en esa ruta. La pista indica el índice de endpoints. |
 | `method_not_allowed` | 405 | La API es de solo lectura. Reintenta con GET. |
 | `gone` | 410 | El recurso existió y fue eliminado de forma permanente. |
+| `rate_limited` | 429 | Demasiadas peticiones. Espera los segundos indicados en Retry-After y reintenta. |
 | `internal_error` | 500 | La petición no pudo completarse. Reintentar es seguro. |
 
 ---
 
-## Versionado
+## Versionado y deprecación
 
-La API usa versionado semántico y publica su versión actual en tiempo de ejecución dentro del índice de la API, así ningún cliente necesita fijarla en el código.
+La API usa versionado semántico. Cada respuesta lleva la versión en el header `X-API-Version` y la versión actual se publica en tiempo de ejecución dentro del índice de la API, así ningún cliente necesita fijarla en el código.
 
 - **Los cambios aditivos salen sin aviso.** Pueden aparecer endpoints nuevos y campos opcionales nuevos en cualquier momento. Analiza de forma defensiva: ignora los campos que no conozcas.
 - **Los cambios incompatibles estrenan prefijo.** Eliminar un campo, cambiar su tipo o retirar un endpoint sale bajo `/api/v2/…`. Las rutas sin prefijo nunca se reutilizan para otra cosa.
-- **Seis meses de convivencia.** Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses para que nada se rompa sin aviso.
+- **La deprecación se anuncia, no se sobrentiende.** Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses y responden con los headers `Deprecation` (RFC 9745) y `Sunset` (RFC 8594), así un cliente ve la fecha final en la propia respuesta y puede migrar antes.
 
 ---
 
@@ -89,6 +90,7 @@ Además de la API, el sitio publica los documentos de descubrimiento que buscan 
 
 | Recurso | Qué es |
 |---------|--------|
+| [/mcp](https://xergioalex.com/mcp) | Servidor MCP sobre Streamable HTTP (protocolo 2025-06-18): seis herramientas de solo lectura sobre los mismos datos que la API REST. También disponible en `/.well-known/mcp`. |
 | [/.well-known/ai-catalog.json](https://xergioalex.com/.well-known/ai-catalog.json) | Manifiesto de capacidades ARD: todos los artefactos para agentes que publica este sitio, en un solo documento. |
 | [/.well-known/mcp/server-card.json](https://xergioalex.com/.well-known/mcp/server-card.json) | Tarjeta de servidor MCP para las herramientas de solo lectura expuestas en el navegador vía WebMCP. |
 | [/.well-known/agent-skills/index.json](https://xergioalex.com/.well-known/agent-skills/index.json) | Índice de descubrimiento de Agent Skills: las convenciones de agent-readiness que implementa el sitio. |
@@ -102,10 +104,27 @@ Markdown para agentes: envía `Accept: text/markdown` en cualquier URL, o añade
 
 ---
 
+## Servidor MCP y CLI
+
+Dos puertas más a la misma sala: un servidor Model Context Protocol para clientes de IA y una CLI para la terminal.
+
+**Servidor MCP — /mcp.** Un servidor MCP sin estado y de solo lectura (Streamable HTTP, protocolo 2025-06-18) que sirve seis herramientas sobre el JSON pregenerado del sitio: `search_blog_posts`, `list_series`, `get_series`, `get_posts_by_tag`, `list_slide_decks` y `get_api_index`. Sin autenticación; aplica el mismo límite de peticiones que la API REST. Añade `https://xergioalex.com/mcp` a cualquier cliente MCP.
+
+```bash
+curl -s https://xergioalex.com/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
+**CLI — `npm install -g xergioalex`.** La CLI oficial envuelve la misma API para la terminal: `xergioalex posts`, `search`, `series`, `tag`, `talks` y `api`, con `--json` y `--lang en|es` en todos los comandos. Cero dependencias, Node 18+.
+
+---
+
 ## Acceso, límites y licencia
 
 - **Autenticación.** Ninguna. Todos los endpoints son públicos, anónimos y de solo lectura. No hay un plan gratuito que activar porque no hay plan de pago, y tampoco hay cuenta, así que no hay nada que configurar.
-- **Límites de uso.** No hay límite de peticiones a nivel de aplicación. Los endpoints son archivos estáticos cacheados detrás de Cloudflare, que aplica su propia protección contra abuso a nivel de red. Si cacheas las respuestas una hora, nunca te acercarás al límite.
+- **Límites de uso.** 300 peticiones por minuto por IP, aplicadas de forma best-effort en el edge. Cada respuesta publica la cuota en los headers RateLimit-Policy y RateLimit (draft-ietf-httpapi-ratelimit-headers); si la superas, recibirás un 429 con Retry-After. Si cacheas las respuestas una hora, nunca te acercarás al límite.
 - **Licencia.** El contenido está disponible bajo CC BY 4.0: reutilízalo, incluso para entrenamiento y grounding, citando a xergioalex.com.
 
 ---

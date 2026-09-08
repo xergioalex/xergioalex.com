@@ -1,11 +1,18 @@
 {
   "serverInfo": {
     "name": "xergioalex-site",
+    "title": "XergioAleX.com",
     "version": "1.0.0",
-    "description": "xergioalex.com — personal site + blog. Read-only agent surface: search posts, list series, list timeline. Exposed via WebMCP in the browser and documented via Agent Skills at /.well-known/agent-skills/index.json."
+    "description": "xergioalex.com — personal site + blog. Read-only agent surface: search posts, list series, browse tag timelines and slide decks. Served over Streamable HTTP at /mcp and in the browser via WebMCP (navigator.modelContext); documented at /.well-known/agent-skills/index.json."
   },
   "transport": {
-    "endpoint": "https://xergioalex.com/"
+    "endpoint": "https://xergioalex.com/",
+    "streamableHttp": {
+      "endpoint": "https://xergioalex.com/mcp",
+      "alias": "https://xergioalex.com/.well-known/mcp",
+      "protocolVersion": "2025-06-18",
+      "authentication": "none"
+    }
   },
-  "capabilities": ["tools", "resources"]
+  "capabilities": ["tools"]
 }

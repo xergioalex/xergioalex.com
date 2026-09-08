@@ -47,8 +47,32 @@ describe('OpenAPI document', () => {
 
   it('documents the versioning policy', () => {
     expect(spec.info.version).toMatch(/^\d+\.\d+\.\d+$/);
-    expect(spec.info.description).toMatch(/## Versioning/);
+    expect(spec.info.description).toMatch(/## Versioning and deprecation/);
     expect(spec.info.description).toContain('/api/v2/');
+    expect(spec.info.description).toContain('X-API-Version');
+    expect(spec.info.description).toContain('Sunset');
+  });
+
+  it('documents the rate-limit policy and its response headers', () => {
+    expect(spec.info.description).toMatch(/## Methods and rate limits/);
+    expect(spec.info.description).toContain('RateLimit-Policy');
+    expect(spec.info.description).toContain('Retry-After');
+    for (const header of [
+      'XApiVersion',
+      'RateLimitPolicy',
+      'RateLimit',
+      'RateLimitLimit',
+      'RateLimitRemaining',
+      'RateLimitReset',
+      'RetryAfter',
+      'Deprecation',
+      'Sunset',
+    ]) {
+      expect(
+        spec.components.headers[header],
+        `${header} component`
+      ).toBeTruthy();
+    }
   });
 
   it('exposes at least one operation', () => {
@@ -74,24 +98,39 @@ describe('every operation', () => {
     }
   });
 
-  it('returns a typed 200 schema rather than a bare object', () => {
+  it('returns a typed 200 schema with a concrete example and standard headers', () => {
     for (const { path, operation } of operations) {
-      const schema = (operation.responses as any)?.['200']?.content?.[
-        'application/json'
-      ]?.schema;
+      const ok = (operation.responses as any)?.['200'];
+      const schema = ok?.content?.['application/json']?.schema;
       expect(schema, `200 schema of ${path}`).toBeTruthy();
       // A $ref into components — never an untyped `{ type: 'object' }`.
       expect(schema.$ref, `200 schema of ${path} must be a $ref`).toMatch(
         /^#\/components\/schemas\//
       );
+      // A concrete sample value: what makes the operation usable as an
+      // LLM tool description without fetching it first.
+      expect(
+        ok.content['application/json'].examples?.default?.value,
+        `200 example of ${path}`
+      ).toBeTruthy();
+      // The version / rate-limit / deprecation headers every response carries.
+      expect(ok.headers?.['X-API-Version']?.$ref, `headers of ${path}`).toBe(
+        '#/components/headers/XApiVersion'
+      );
+      expect(ok.headers?.['RateLimit-Policy']?.$ref).toBe(
+        '#/components/headers/RateLimitPolicy'
+      );
     }
   });
 
-  it('documents the shared error model on 404 and 500', () => {
+  it('documents the shared error model on 404, 429 and 500', () => {
     for (const { path, operation } of operations) {
       const responses = operation.responses as Record<string, any>;
       expect(responses['404']?.$ref, `404 of ${path}`).toBe(
         '#/components/responses/NotFound'
+      );
+      expect(responses['429']?.$ref, `429 of ${path}`).toBe(
+        '#/components/responses/TooManyRequests'
       );
       expect(responses['500']?.$ref, `500 of ${path}`).toBe(
         '#/components/responses/InternalError'
@@ -142,8 +181,26 @@ describe('error schema', () => {
       'resource_not_found',
       'method_not_allowed',
       'gone',
+      'rate_limited',
       'internal_error',
     ]);
+  });
+
+  it('serves errors as RFC 9457 application/problem+json', () => {
+    for (const name of ['NotFound', 'TooManyRequests', 'InternalError']) {
+      const response = (spec.components.responses as any)[name];
+      expect(
+        response.content['application/problem+json'],
+        `${name} problem+json content`
+      ).toBeTruthy();
+      expect(response.content['application/problem+json'].schema.$ref).toBe(
+        '#/components/schemas/Error'
+      );
+    }
+    const tooManyRequests = (spec.components.responses as any).TooManyRequests;
+    expect(tooManyRequests.headers['Retry-After'].$ref).toBe(
+      '#/components/headers/RetryAfter'
+    );
   });
 });
 

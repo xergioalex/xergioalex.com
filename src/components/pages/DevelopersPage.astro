@@ -37,10 +37,12 @@ const errorCodes = [
     text: d.errors.codes.methodNotAllowed,
   },
   { code: 'gone', status: 410, text: d.errors.codes.gone },
+  { code: 'rate_limited', status: 429, text: d.errors.codes.rateLimited },
   { code: 'internal_error', status: 500, text: d.errors.codes.internalError },
 ];
 
 const agentResources = [
+  { path: '/mcp', text: d.agentSurface.items.mcpEndpoint },
   {
     path: '/.well-known/ai-catalog.json',
     text: d.agentSurface.items.aiCatalog,
@@ -65,6 +67,11 @@ const quickstartCommands = [
   `curl -s ${siteUrl}/api/posts-${lang}.json`,
   `curl -s ${siteUrl}/api/series/${lang}/index.json`,
 ];
+
+const mcpExample = `curl -s ${siteUrl}/mcp \\
+  -H 'Content-Type: application/json' \\
+  -H 'Accept: application/json, text/event-stream' \\
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'`;
 
 const errorExample = `$ curl -s ${siteUrl}/api/series/fr/index.json
 {
@@ -310,6 +317,30 @@ const cardClass =
       class="mt-6 text-gray-600 dark:text-gray-300"
       set:html={d.agentSurface.items.markdown}
     />
+  </PageSection>
+
+  <!-- MCP server and CLI -->
+  <PageSection
+    id="tools"
+    title={d.tools.title}
+    description={d.tools.description}
+    background="gray"
+  >
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class={cardClass}>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+          {d.tools.mcpTitle}
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300" set:html={d.tools.mcpBody} />
+      </div>
+      <div class={cardClass}>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+          {d.tools.cliTitle}
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300" set:html={d.tools.cliBody} />
+      </div>
+    </div>
+    <pre class={`${preClass} mt-6`}><code>{mcpExample}</code></pre>
   </PageSection>
 
   <!-- Access, limits, licensing -->

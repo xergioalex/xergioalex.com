@@ -1,7 +1,7 @@
 /**
  * Cloudflare Pages Middleware — AI Bot Analytics & Markdown Content Negotiation
  *
- * Three responsibilities:
+ * Four responsibilities:
  *
  * 1. **Markdown for Agents**: If a request sends `Accept: text/markdown`,
  *    serves the static `.md` version of the page (if it exists) instead of HTML.
@@ -19,16 +19,30 @@
  *    document for any non-browser client elsewhere. Browsers keep the styled
  *    HTML 404. See `src/lib/agent-errors.ts`.
  *
+ * 4. **Rate limiting**: Programmatic surfaces (`/api/*`, `/mcp`) get a
+ *    best-effort per-IP sliding-window quota and RateLimit response headers
+ *    (draft-ietf-httpapi-ratelimit-headers-11), so agents can self-throttle.
+ *    See `src/lib/rate-limit.ts`.
+ *
  * Non-bot, non-markdown requests that succeed pass through with zero overhead.
  */
 
 import {
+  API_VERSION,
   apiAssetFallbacks,
   buildApiErrorBody,
   buildNotFoundMarkdown,
   prefersHtml,
   wantsJson,
 } from '../src/lib/agent-errors';
+import { handleMcpHttpRequest } from '../src/lib/mcp/endpoint';
+import {
+  API_RATE_LIMIT_POLICY,
+  apiRateLimiter,
+  isRateLimitedPath,
+  rateLimitHeaders,
+  type RateLimitDecision,
+} from '../src/lib/rate-limit';
 
 interface AssetsFetcher {
   fetch(request: Request | string): Promise<Response>;
@@ -373,8 +387,10 @@ function jsonErrorResponse(
     `${JSON.stringify(buildApiErrorBody({ status, pathname, scope }), null, 2)}\n`,
     {
       status,
+      // RFC 9457 problem details — the body is a problem document, so the
+      // media type says so. JSON clients parse it identically.
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Type': 'application/problem+json; charset=utf-8',
         ...ERROR_HEADERS,
       },
     }
@@ -470,30 +486,125 @@ async function handleErrorResponse(
   return htmlResponse;
 }
 
+
+/**
+ * Apply a set of headers to a response from `next()`.
+ *
+ * Subrequest responses expose immutable Headers, so the response is rewrapped
+ * with the same status, body and headers plus the additions.
+ */
+function withHeaders(
+  response: Response,
+  additions: Record<string, string>
+): Response {
+  const wrapped = new Response(response.body, response);
+  for (const [name, value] of Object.entries(additions)) {
+    wrapped.headers.set(name, value);
+  }
+  return wrapped;
+}
+
+/** Client identity for the per-IP quota. */
+function clientKey(request: Request): string {
+  return request.headers.get('CF-Connecting-IP') ?? 'unknown';
+}
+
+/** Read a site asset (the prerendered JSON API) relative to the origin. */
+function assetJsonFetcher(context: EventContext) {
+  const origin = new URL(context.request.url).origin;
+  return async (path: string): Promise<unknown | null> => {
+    try {
+      const asset = await context.env.ASSETS.fetch(
+        new Request(new URL(path, origin).toString())
+      );
+      if (!asset.ok) return null;
+      return await asset.json();
+    } catch {
+      return null;
+    }
+  };
+}
+
+/** The 429 answer for an API path that blew the quota. */
+function rateLimitedResponse(pathname: string, decision: RateLimitDecision): Response {
+  const body = JSON.stringify(
+    buildApiErrorBody({ status: 429, pathname, scope: 'api' }),
+    null,
+    2
+  );
+  return new Response(`${body}\n`, {
+    status: 429,
+    headers: {
+      'Content-Type': 'application/problem+json; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'Access-Control-Allow-Origin': '*',
+      'X-API-Version': API_VERSION,
+      ...rateLimitHeaders(API_RATE_LIMIT_POLICY, decision),
+    },
+  });
+}
+
 export async function onRequest(context: EventContext): Promise<Response> {
-  // 0. robots.txt UA rewrite — strip Content-Signal for Lighthouse-family
+  // 0. MCP server endpoints. Handled before everything else — /mcp and
+  //    /.well-known/mcp are the same Streamable HTTP server (functions/mcp.ts
+  //    routes /mcp; the middleware routes the well-known alias so both URLs
+  //    run identical code), and their JSON-RPC answers must not be rewritten
+  //    by the error-shaping or markdown paths below.
+  const url = new URL(context.request.url);
+  if (url.pathname === '/mcp' || url.pathname === '/.well-known/mcp') {
+    const mcpDecision = apiRateLimiter.check(
+      clientKey(context.request),
+      API_RATE_LIMIT_POLICY
+    );
+    if (mcpDecision.limited) {
+      return rateLimitedResponse(url.pathname, mcpDecision);
+    }
+    const mcpResponse = await handleMcpHttpRequest(context.request, (path) =>
+      assetJsonFetcher(context)(path)
+    );
+    return withHeaders(
+      mcpResponse,
+      rateLimitHeaders(API_RATE_LIMIT_POLICY, mcpDecision)
+    );
+  }
+
+  // 1. robots.txt UA rewrite — strip Content-Signal for Lighthouse-family
   //    tools to keep PageSpeed SEO at 1.00 without weakening the directive
   //    for search engines, AI crawlers, or isitagentready.com's scanner.
   const robotsRewrite = await tryRewriteRobotsForLighthouse(context);
   if (robotsRewrite) return robotsRewrite;
 
-  // 1. Markdown content negotiation — serve .md if Accept: text/markdown
+  // 2. Markdown content negotiation — serve .md if Accept: text/markdown
   const markdownResponse = await tryServeMarkdown(context);
   if (markdownResponse) {
     trackMarkdownRequest(context, 'content_negotiation');
     return markdownResponse;
   }
 
-  // 2. Track direct .md URL requests (e.g., /about.md, /blog/post.md)
-  const url = new URL(context.request.url);
+  // 3. Track direct .md URL requests (e.g., /about.md, /blog/post.md)
   if (isDirectMarkdownUrl(url.pathname)) {
     trackMarkdownRequest(context, 'direct_url');
   }
 
-  // 3. AI bot analytics
+  // 4. Rate limiting on the programmatic surfaces (/api/*, /mcp). Every
+  //    answer from those paths — success or error — carries the quota status
+  //    in the RateLimit header fields.
+  let rateLimitDecision: RateLimitDecision | null = null;
+  if (isRateLimitedPath(url.pathname)) {
+    rateLimitDecision = apiRateLimiter.check(
+      clientKey(context.request),
+      API_RATE_LIMIT_POLICY
+    );
+    if (rateLimitDecision.limited) {
+      return rateLimitedResponse(url.pathname, rateLimitDecision);
+    }
+  }
+
+  // 5. AI bot analytics
   const userAgent = context.request.headers.get('user-agent') || '';
   const botName = detectAiBot(userAgent);
 
+  let response: Response;
   if (botName) {
     // Known AI bot
     console.log(
@@ -507,29 +618,42 @@ export async function onRequest(context: EventContext): Promise<Response> {
       );
     }
 
-    return handleErrorResponse(context, await context.next());
-  }
-
-  // Check for unknown bots
-  if (isUnknownBot(userAgent)) {
-    const name = extractBotName(userAgent);
-    console.log(
-      `[Unknown Bot] ${name} → ${url.pathname} (${context.request.method}) UA: ${userAgent.slice(0, 150)}`
-    );
-
-    const websiteId = context.env.PUBLIC_UMAMI_WEBSITE_ID;
-    if (websiteId) {
-      context.waitUntil(
-        sendToUmami(
-          websiteId,
-          'unknown_bot_visit',
-          name,
-          context.request,
-          userAgent
-        )
+    response = await handleErrorResponse(context, await context.next());
+  } else {
+    // Check for unknown bots
+    if (isUnknownBot(userAgent)) {
+      const name = extractBotName(userAgent);
+      console.log(
+        `[Unknown Bot] ${name} → ${url.pathname} (${context.request.method}) UA: ${userAgent.slice(0, 150)}`
       );
+
+      const websiteId = context.env.PUBLIC_UMAMI_WEBSITE_ID;
+      if (websiteId) {
+        context.waitUntil(
+          sendToUmami(
+            websiteId,
+            'unknown_bot_visit',
+            name,
+            context.request,
+            userAgent
+          )
+        );
+      }
     }
+
+    response = await handleErrorResponse(context, await context.next());
   }
 
-  return handleErrorResponse(context, await context.next());
+  if (rateLimitDecision) {
+    response = withHeaders(
+      response,
+      // /api/* responses announce the API version (the versioning contract
+      // documented in openapi.json) alongside the quota status.
+      url.pathname === '/api' || url.pathname.startsWith('/api/')
+        ? { 'X-API-Version': API_VERSION, ...rateLimitHeaders(API_RATE_LIMIT_POLICY, rateLimitDecision) }
+        : rateLimitHeaders(API_RATE_LIMIT_POLICY, rateLimitDecision)
+    );
+  }
+
+  return response;
 }

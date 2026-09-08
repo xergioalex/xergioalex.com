@@ -238,6 +238,53 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
   }}
 />
 
+<!-- JSON-LD: Organization (the site publisher — XergioAleX) -->
+<JsonLd
+  data={{
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'XergioAleX',
+    alternateName: 'XergioAleX.com',
+    url: Astro.site?.href,
+    logo: new URL('/images/logo_small_version_white.svg', Astro.site).href,
+    description:
+      'The personal brand of Sergio Alexander Florez Galeano (XergioAleX): the publisher of xergioalex.com — software engineering, AI agents, algorithmic trading and startup writing, in English and Spanish.',
+    founder: {
+      '@type': 'Person',
+      name: 'Sergio Alexander Florez Galeano',
+      url: Astro.site?.href,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Pereira',
+      addressRegion: 'Risaralda',
+      addressCountry: 'CO',
+    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'general inquiries',
+        email: 'xergioalex@gmail.com',
+        url: new URL('/contact', Astro.site).href,
+        availableLanguage: ['en', 'es'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'technical support',
+        email: 'xergioalex@gmail.com',
+        url: new URL('/developers', Astro.site).href,
+        availableLanguage: ['en', 'es'],
+      },
+    ],
+    sameAs: [
+      'https://github.com/xergioalex',
+      'https://www.linkedin.com/in/xergioalex/',
+      'https://x.com/XergioAleX',
+      'https://www.instagram.com/xergioalex',
+    ],
+  }}
+/>
+
 <!-- JSON-LD: Organization (DailyBot) -->
 <JsonLd
   data={{
@@ -246,6 +293,13 @@ const rssHref = new URL(`${langPrefix}/rss.xml`.replace(/^\//, ''), Astro.site);
     name: 'DailyBot',
     url: 'https://www.dailybot.com',
     description: 'AI-powered platform for asynchronous team collaboration',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'support@dailybot.com',
+      url: 'https://dailybot.com/help',
+      availableLanguage: ['en', 'es', 'pt'],
+    },
     sameAs: [
       'https://twitter.com/dailybotHQ',
       'https://www.linkedin.com/company/dailybot',

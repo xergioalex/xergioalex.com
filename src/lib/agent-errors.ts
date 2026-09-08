@@ -23,11 +23,23 @@ export const OPENAPI_URL = `${SITE_ORIGIN}/openapi.json`;
 export const SITEMAP_URL = `${SITE_ORIGIN}/sitemap-index.xml`;
 export const LLMS_TXT_URL = `${SITE_ORIGIN}/llms.txt`;
 
+/**
+ * Semantic version of the public JSON API. Every /api/* response carries it
+ * in the X-API-Version header; keep in sync with scripts/build-openapi.mjs
+ * (which owns the OpenAPI `info.version`) and /api/index.json.
+ *
+ * Lives here — not in `lib/constances.ts` — because the edge middleware
+ * imports it, and constances evaluates `import.meta.env` at module scope,
+ * which does not exist in the Workers runtime.
+ */
+export const API_VERSION = '1.0.0';
+
 /** Machine-readable error codes. Stable identifiers — never renamed. */
 export type AgentErrorCode =
   | 'resource_not_found'
   | 'method_not_allowed'
   | 'gone'
+  | 'rate_limited'
   | 'internal_error';
 
 export interface AgentErrorBody {
@@ -55,6 +67,7 @@ const TITLES: Record<AgentErrorCode, string> = {
   resource_not_found: 'Not Found',
   method_not_allowed: 'Method Not Allowed',
   gone: 'Gone',
+  rate_limited: 'Too Many Requests',
   internal_error: 'Internal Server Error',
 };
 
@@ -62,6 +75,7 @@ const TITLES: Record<AgentErrorCode, string> = {
 export function errorCodeForStatus(status: number): AgentErrorCode {
   if (status === 405) return 'method_not_allowed';
   if (status === 410) return 'gone';
+  if (status === 429) return 'rate_limited';
   if (status >= 500) return 'internal_error';
   return 'resource_not_found';
 }
@@ -105,7 +119,9 @@ export function buildApiErrorBody({
         ? `The HTTP method used is not allowed on ${pathname}. This site is read-only and accepts GET and HEAD only.`
         : code === 'gone'
           ? `The ${subject} at ${pathname} has been removed permanently.`
-          : `The request for ${pathname} could not be completed.`;
+          : code === 'rate_limited'
+            ? `Too many requests to ${pathname}. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.`
+            : `The request for ${pathname} could not be completed.`;
 
   const notFoundHint =
     scope === 'api'
@@ -119,7 +135,9 @@ export function buildApiErrorBody({
         ? 'Retry the same URL with GET.'
         : code === 'gone'
           ? notFoundHint
-          : `Retry in a few seconds. If it keeps failing, report it via ${DEVELOPER_PORTAL_URL}.`;
+          : code === 'rate_limited'
+            ? `Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see ${DEVELOPER_PORTAL_URL}#rate-limits.`
+            : `Retry in a few seconds. If it keeps failing, report it via ${DEVELOPER_PORTAL_URL}.`;
 
   const resolvedMessage = message ?? defaultMessage;
 

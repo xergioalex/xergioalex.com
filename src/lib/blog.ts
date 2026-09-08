@@ -648,6 +648,107 @@ export async function getBlogPosts(
 }
 
 /**
+ * Serializable, body-free post shape for client islands (BlogCard, search).
+ *
+ * Astro serializes every prop of a `client:*` island into the HTML as an
+ * `astro-island` `props` attribute, so handing a full `CollectionEntry` to
+ * BlogCard embeds the entire Markdown body of the post in the page — hundreds
+ * of kilobytes per listing page. Islands only need the fields below; BlogCard
+ * already understands this flat shape (the search index uses it).
+ */
+export interface CardEntry {
+  id: string;
+  slug: string;
+  lang: string;
+  title: string;
+  description: string;
+  pubDate: string;
+  /** Primary-tier tags. */
+  tags: string[];
+  /** Secondary-tier tags. */
+  topics: string[];
+  /** Subtopic-tier tags. */
+  subtopics: string[];
+  heroImage?: string;
+  series?: string;
+  seriesCurrent?: number;
+  seriesTotal?: number;
+  seriesTitle?: string;
+  isScheduled: boolean;
+  isDraft: boolean;
+}
+
+/** Extra series fields `getBlogPosts` enriches its results with. */
+type EnrichedPost = CollectionEntry<'blog'> & {
+  seriesCurrent?: number;
+  seriesTotal?: number;
+  seriesTitle?: string;
+};
+
+/**
+ * Convert one (series-enriched) post into a `CardEntry` for client islands.
+ * Tags are tier-grouped here, server-side, exactly the way BlogCard groups
+ * them when it receives a `CollectionEntry` — so the rendered card is
+ * identical while the serialized payload stays a few hundred bytes.
+ */
+export async function toCardEntry(post: EnrichedPost): Promise<CardEntry> {
+  const { primaryTags, secondaryTags, subtopicTags } = await groupPostTags(
+    post.data.tags ?? []
+  );
+
+  return {
+    id: post.id,
+    slug: getPostSlug(post.id),
+    lang: getPostLanguage(post.id),
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate.toISOString(),
+    tags: primaryTags,
+    topics: secondaryTags,
+    subtopics: subtopicTags,
+    heroImage: post.data.heroImage,
+    series: post.data.series,
+    seriesCurrent: post.seriesCurrent,
+    seriesTotal: post.seriesTotal,
+    seriesTitle: post.seriesTitle,
+    isScheduled: isScheduledPost(post),
+    isDraft: isDraftPost(post),
+  };
+}
+
+/** Map many posts at once with `toCardEntry`. */
+export async function toCardEntries(
+  posts: EnrichedPost[]
+): Promise<CardEntry[]> {
+  return Promise.all(posts.map(toCardEntry));
+}
+
+/**
+ * Serializable post shape for the timeline islands (TradingTimeline,
+ * EntrepreneurTimeline), which expect a `{ id, data }` structure.
+ *
+ * Same rationale as `toCardEntry`: the island props must not carry the post
+ * `body`. Only the fields the timelines actually render are kept; `pubDate`
+ * stays a Date object (devalue round-trips it) so date math is unchanged.
+ */
+export function toTimelineEntry(post: EnrichedPost) {
+  return {
+    id: post.id,
+    data: {
+      title: post.data.title,
+      description: post.data.description,
+      pubDate: post.data.pubDate,
+      updatedDate: post.data.updatedDate,
+      heroImage: post.data.heroImage,
+      tags: post.data.tags,
+      series: post.data.series,
+      seriesOrder: post.data.seriesOrder,
+      draft: post.data.draft,
+    },
+  };
+}
+
+/**
  * Get series navigation info for a post that belongs to a series.
  * Returns series metadata, all posts in order, and prev/next navigation.
  */

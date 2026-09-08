@@ -1165,10 +1165,10 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
   developersPage: {
     title: 'Portal de desarrolladores de XergioAleX.com',
     description:
-      'Recursos para desarrolladores y agentes de XergioAleX.com: API JSON pública de solo lectura, especificación OpenAPI, tarjeta MCP y documentos de descubrimiento.',
+      'Recursos para desarrolladores y agentes de XergioAleX.com: API JSON de solo lectura, OpenAPI, servidor MCP en /mcp, CLI y documentos de descubrimiento.',
     subtitle: 'API, MCP y recursos para agentes',
     heroDescription:
-      'Todo lo que un desarrollador o un agente de IA necesita para consumir XergioAleX.com de forma programática: una API JSON de solo lectura, una descripción OpenAPI 3.1, una tarjeta de servidor MCP y los documentos de descubrimiento que los conectan. Sin API key, sin registro y sin límite de peticiones.',
+      'Todo lo que un desarrollador o un agente de IA necesita para consumir XergioAleX.com de forma programática: una API JSON de solo lectura, una descripción OpenAPI 3.1, un servidor MCP en /mcp, una CLI en npm y los documentos de descubrimiento que los conectan. Sin API key y sin registro — solo respeta el límite de peticiones publicado.',
     quickstart: {
       title: 'Inicio rápido',
       description:
@@ -1203,7 +1203,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
     errors: {
       title: 'Errores',
       description:
-        'Los fallos devuelven JSON, nunca HTML. El cuerpo incluye los campos de RFC 9457 (Problem Details) junto a un objeto <code>error</code> con un código estable, un mensaje legible y una pista de recuperación, para que un agente pueda reaccionar sin analizar una página.',
+        'Los fallos devuelven <code>application/problem+json</code> (RFC 9457), nunca HTML. El cuerpo incluye los campos estándar de Problem Details junto a un objeto <code>error</code> con un código estable, un mensaje legible y una pista de recuperación, para que un agente pueda reaccionar sin analizar una página.',
       codesTitle: 'Códigos de error',
       colCode: 'Código',
       colMeaning: 'Significado',
@@ -1212,22 +1212,24 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
           'No existe ningún recurso en esa ruta. La pista indica el índice de endpoints.',
         methodNotAllowed: 'La API es de solo lectura. Reintenta con GET.',
         gone: 'El recurso existió y fue eliminado de forma permanente.',
+        rateLimited:
+          'Demasiadas peticiones. Espera los segundos indicados en Retry-After y reintenta.',
         internalError: 'La petición no pudo completarse. Reintentar es seguro.',
       },
     },
     versioning: {
-      title: 'Versionado',
+      title: 'Versionado y deprecación',
       description:
-        'La API usa versionado semántico y publica su versión actual en tiempo de ejecución dentro del índice de la API, así ningún cliente necesita fijarla en el código.',
+        'La API usa versionado semántico. Cada respuesta lleva la versión en el header <code>X-API-Version</code> y la versión actual se publica en tiempo de ejecución dentro del índice de la API, así ningún cliente necesita fijarla en el código.',
       additiveTitle: 'Los cambios aditivos salen sin aviso',
       additiveBody:
         'Pueden aparecer endpoints nuevos y campos opcionales nuevos en cualquier momento. Analiza de forma defensiva: ignora los campos que no conozcas.',
       breakingTitle: 'Los cambios incompatibles estrenan prefijo',
       breakingBody:
         'Eliminar un campo, cambiar su tipo o retirar un endpoint sale bajo <code>/api/v2/…</code>. Las rutas sin prefijo nunca se reutilizan para otra cosa.',
-      deprecationTitle: 'Seis meses de convivencia',
+      deprecationTitle: 'La deprecación se anuncia, no se sobrentiende',
       deprecationBody:
-        'Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses para que nada se rompa sin aviso.',
+        'Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses y responden con los headers <code>Deprecation</code> (RFC 9745) y <code>Sunset</code> (RFC 8594), así un cliente ve la fecha final en la propia respuesta y puede migrar antes.',
     },
     agentSurface: {
       title: 'Superficie para agentes',
@@ -1236,10 +1238,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       colResource: 'Recurso',
       colWhat: 'Qué es',
       items: {
-        aiCatalog:
-          'Manifiesto de capacidades ARD: todos los artefactos para agentes que publica este sitio, en un solo documento.',
+        mcpEndpoint:
+          'Servidor MCP sobre Streamable HTTP (protocolo 2025-06-18): seis herramientas de solo lectura sobre los mismos datos que la API REST. También disponible en <code>/.well-known/mcp</code>.',
         mcpServerCard:
           'Tarjeta de servidor MCP para las herramientas de solo lectura expuestas en el navegador vía WebMCP.',
+        aiCatalog:
+          'Manifiesto de capacidades ARD: todos los artefactos para agentes que publica este sitio, en un solo documento.',
         agentSkills:
           'Índice de descubrimiento de Agent Skills: las convenciones de agent-readiness que implementa el sitio.',
         apiCatalog:
@@ -1254,15 +1258,27 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
           'Markdown para agentes: envía <code>Accept: text/markdown</code> en cualquier URL, o añade <code>.md</code>, para recibir Markdown en lugar de HTML.',
       },
     },
+    tools: {
+      title: 'Servidor MCP y CLI',
+      description:
+        'Dos puertas más a la misma sala: un servidor Model Context Protocol para clientes de IA y una CLI para la terminal.',
+      mcpTitle: 'Servidor MCP — /mcp',
+      mcpBody:
+        'Un servidor MCP sin estado y de solo lectura (Streamable HTTP, protocolo 2025-06-18) que sirve seis herramientas sobre el JSON pregenerado del sitio: search_blog_posts, list_series, get_series, get_posts_by_tag, list_slide_decks y get_api_index. Sin autenticación; aplica el mismo límite de peticiones que la API REST. Añade <code>https://xergioalex.com/mcp</code> a cualquier cliente MCP.',
+      cliTitle: 'CLI — npm install -g xergioalex',
+      cliBody:
+        'La CLI oficial envuelve la misma API para la terminal: <code>xergioalex posts</code>, <code>search</code>, <code>series</code>, <code>tag</code>, <code>talks</code> y <code>api</code>, con <code>--json</code> y <code>--lang en|es</code> en todos los comandos. Cero dependencias, Node 18+.',
+    },
     limits: {
       title: 'Acceso, límites y licencia',
-      description: 'En resumen: usa lo que necesites y di de dónde salió.',
+      description:
+        'En resumen: usa lo que necesites, respeta la cuota y di de dónde salió.',
       authTitle: 'Autenticación',
       authBody:
         'Ninguna. Todos los endpoints son públicos, anónimos y de solo lectura. No hay un plan gratuito que activar porque no hay plan de pago, y tampoco hay cuenta, así que no hay nada que configurar.',
       rateLimitTitle: 'Límites de uso',
       rateLimitBody:
-        'No hay límite de peticiones a nivel de aplicación. Los endpoints son archivos estáticos cacheados detrás de Cloudflare, que aplica su propia protección contra abuso a nivel de red. Si cacheas las respuestas una hora, nunca te acercarás al límite.',
+        '300 peticiones por minuto por IP, aplicadas de forma best-effort en el edge. Cada respuesta publica la cuota en los headers RateLimit-Policy y RateLimit (draft-ietf-httpapi-ratelimit-headers); si la superas, recibirás un 429 con Retry-After. Si cacheas las respuestas una hora, nunca te acercarás al límite.',
       licenseTitle: 'Licencia y atribución',
       licenseBody:
         'El contenido está disponible bajo CC BY 4.0: reutilízalo, incluso para entrenamiento y grounding, citando a xergioalex.com.',

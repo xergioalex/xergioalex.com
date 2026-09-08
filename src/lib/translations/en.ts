@@ -1154,10 +1154,10 @@ I currently focus on AI applications, developer productivity, and high-impact pr
   developersPage: {
     title: 'XergioAleX.com Developer Portal',
     description:
-      'Developer and agent resources for XergioAleX.com: a public read-only JSON API, an OpenAPI spec, an MCP server card and agent discovery documents. No key needed.',
+      'Developer and agent resources for XergioAleX.com: read-only JSON API, OpenAPI spec, MCP server at /mcp, npm CLI and agent discovery docs. No key needed.',
     subtitle: 'API, MCP and agent resources',
     heroDescription:
-      'Everything a developer or an AI agent needs to consume XergioAleX.com programmatically: a read-only JSON API, an OpenAPI 3.1 description, an MCP server card, and the discovery documents that tie them together. No API key, no signup, no rate limit.',
+      'Everything a developer or an AI agent needs to consume XergioAleX.com programmatically: a read-only JSON API, an OpenAPI 3.1 description, an MCP server at /mcp, a CLI on npm, and the discovery documents that tie them together. No API key, no signup — just stay inside the published rate limit.',
     quickstart: {
       title: 'Quickstart',
       description:
@@ -1188,7 +1188,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
     errors: {
       title: 'Errors',
       description:
-        'Failures return JSON, never HTML. The body carries RFC 9457 problem-details members alongside an <code>error</code> object with a stable code, a human message and a recovery hint — so an agent can act on the failure without parsing a page.',
+        'Failures return <code>application/problem+json</code> (RFC 9457), never HTML. The body carries the standard problem-details members alongside an <code>error</code> object with a stable code, a human message and a recovery hint — so an agent can act on the failure without parsing a page.',
       codesTitle: 'Error codes',
       colCode: 'Code',
       colMeaning: 'Meaning',
@@ -1197,22 +1197,24 @@ I currently focus on AI applications, developer productivity, and high-impact pr
           'No resource exists at that path. The hint names the endpoint index.',
         methodNotAllowed: 'The API is read-only. Retry with GET.',
         gone: 'The resource existed and was removed permanently.',
+        rateLimited:
+          'Too many requests. Wait the number of seconds in Retry-After, then retry.',
         internalError: 'The request could not be completed. Retrying is safe.',
       },
     },
     versioning: {
-      title: 'Versioning',
+      title: 'Versioning and deprecation',
       description:
-        'The API is versioned semantically and its current version is published at runtime in the API index, so a client never has to hardcode it.',
+        'The API is versioned semantically. Every response carries the version in the <code>X-API-Version</code> header and the current version is published at runtime in the API index, so a client never has to hardcode it.',
       additiveTitle: 'Additive changes ship silently',
       additiveBody:
         'New endpoints and new optional fields can appear at any time. Parse defensively: ignore fields you do not know.',
       breakingTitle: 'Breaking changes get a new prefix',
       breakingBody:
         'Removing a field, retyping one, or removing an endpoint ships under <code>/api/v2/…</code>. The unprefixed paths are never repurposed.',
-      deprecationTitle: 'Six months of overlap',
+      deprecationTitle: 'Deprecation is signalled, not implied',
       deprecationBody:
-        'When a new prefix ships, the previous paths keep serving for at least six months so nothing breaks without warning.',
+        'When a new prefix ships, the previous paths keep serving for at least six months and answer with <code>Deprecation</code> (RFC 9745) and <code>Sunset</code> (RFC 8594) headers, so a client can see the end date in-band and migrate before it.',
     },
     agentSurface: {
       title: 'Agent surface',
@@ -1221,10 +1223,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       colResource: 'Resource',
       colWhat: 'What it is',
       items: {
-        aiCatalog:
-          'ARD capability manifest — every agent-facing artifact this site publishes, in one document.',
+        mcpEndpoint:
+          'MCP server over Streamable HTTP (protocol 2025-06-18) — six read-only tools over the same data as the REST API. Also reachable at <code>/.well-known/mcp</code>.',
         mcpServerCard:
           'MCP server card for the read-only site tools exposed in the browser via WebMCP.',
+        aiCatalog:
+          'ARD capability manifest — every agent-facing artifact this site publishes, in one document.',
         agentSkills:
           'Agent Skills discovery index — the agent-readiness conventions this site implements.',
         apiCatalog:
@@ -1238,16 +1242,27 @@ I currently focus on AI applications, developer productivity, and high-impact pr
           'Markdown for Agents — send <code>Accept: text/markdown</code> on any URL, or append <code>.md</code>, to get Markdown instead of HTML.',
       },
     },
+    tools: {
+      title: 'MCP server and CLI',
+      description:
+        'Two more doors into the same room: a Model Context Protocol server for AI clients, and a CLI for the terminal.',
+      mcpTitle: 'MCP server — /mcp',
+      mcpBody:
+        'A stateless, read-only MCP server (Streamable HTTP, protocol 2025-06-18) serving six tools over the site’s prerendered JSON: search_blog_posts, list_series, get_series, get_posts_by_tag, list_slide_decks and get_api_index. No authentication; the same rate limit as the REST API applies. Add <code>https://xergioalex.com/mcp</code> to any MCP client.',
+      cliTitle: 'CLI — npm install -g xergioalex',
+      cliBody:
+        'The official CLI wraps the same API for the terminal: <code>xergioalex posts</code>, <code>search</code>, <code>series</code>, <code>tag</code>, <code>talks</code> and <code>api</code>, with <code>--json</code> and <code>--lang en|es</code> on every command. Zero dependencies, Node 18+.',
+    },
     limits: {
       title: 'Access, limits and licensing',
       description:
-        'The short version: take what you need, and say where it came from.',
+        'The short version: take what you need, stay inside the quota, and say where it came from.',
       authTitle: 'Authentication',
       authBody:
         'None. Every endpoint is public, anonymous and read-only. There is no free tier to sign up for because there is no paid tier — and no account, so nothing to onboard.',
       rateLimitTitle: 'Rate limits',
       rateLimitBody:
-        'No application-level rate limit. The endpoints are cached static assets behind Cloudflare, which applies its own network-level abuse protection. Cache responses for an hour and you will never come close.',
+        '300 requests per minute per client IP, enforced best-effort at the edge. Every response publishes the quota in the RateLimit-Policy and RateLimit headers (draft-ietf-httpapi-ratelimit-headers); exceeding it returns 429 with Retry-After. Cache responses for an hour and you will never come close.',
       licenseTitle: 'Licensing and attribution',
       licenseBody:
         'Content is available under CC BY 4.0: reuse it, including for training and grounding, with attribution to xergioalex.com.',

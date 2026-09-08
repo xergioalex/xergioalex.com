@@ -21,6 +21,8 @@ const OUT_PATH = resolve(__dirname, '..', 'public', 'openapi.json');
 
 const ORIGIN = 'https://xergioalex.com';
 const API_VERSION = '1.0.0';
+const RATE_LIMIT_QUOTA = 300;
+const RATE_LIMIT_WINDOW_SECONDS = 60;
 
 const LANG_PARAM = {
   name: 'lang',
@@ -32,15 +34,32 @@ const LANG_PARAM = {
   example: 'en',
 };
 
-/** 404 / 500 responses, attached to every operation. */
+/**
+ * Response headers every operation declares, formalizing the rate-limit and
+ * deprecation conventions agents can rely on (see `info.description`).
+ */
+const STANDARD_RESPONSE_HEADERS = {
+  'X-API-Version': { $ref: '#/components/headers/XApiVersion' },
+  'RateLimit-Policy': { $ref: '#/components/headers/RateLimitPolicy' },
+  RateLimit: { $ref: '#/components/headers/RateLimit' },
+  'RateLimit-Limit': { $ref: '#/components/headers/RateLimitLimit' },
+  'RateLimit-Remaining': { $ref: '#/components/headers/RateLimitRemaining' },
+  'RateLimit-Reset': { $ref: '#/components/headers/RateLimitReset' },
+  Deprecation: { $ref: '#/components/headers/Deprecation' },
+  Sunset: { $ref: '#/components/headers/Sunset' },
+};
+
+/** 404 / 429 / 500 responses, attached to every operation. */
 const errorResponses = {
   404: { $ref: '#/components/responses/NotFound' },
+  429: { $ref: '#/components/responses/TooManyRequests' },
   500: { $ref: '#/components/responses/InternalError' },
 };
 
 function jsonResponse(description, schemaRef, example) {
   return {
     description,
+    headers: STANDARD_RESPONSE_HEADERS,
     content: {
       'application/json': {
         schema: { $ref: schemaRef },
@@ -60,7 +79,7 @@ const spec = {
     description: [
       'The public API of **XergioAleX.com**, the personal site and technical blog of Sergio Alexander Florez Galeano (XergioAleX), CTO & Co-founder at DailyBot.',
       '',
-      '`xergioalex.com` is a static site on Cloudflare Pages: every endpoint below is a prerendered JSON file served from the CDN.',
+      '`xergioalex.com` is a static site on Cloudflare Pages: every endpoint below is a prerendered JSON file served from the CDN, fronted by an edge middleware.',
       '',
       '## Authentication',
       '',
@@ -70,20 +89,23 @@ const spec = {
       '',
       '## Methods and rate limits',
       '',
-      '`GET` and `HEAD` only. There is no application-level rate limit; the endpoints are static assets behind Cloudflare, which applies its own network-level abuse protection. Responses are cacheable for one hour (`Cache-Control: public, max-age=3600`) and CORS is open (`Access-Control-Allow-Origin: *`).',
+      `\`GET\` and \`HEAD\` only. Requests are rate limited per client IP: ${RATE_LIMIT_QUOTA} requests per sliding ${RATE_LIMIT_WINDOW_SECONDS}-second window, best-effort enforced at the edge (Cloudflare may run several middleware isolates, so the effective ceiling can be a small multiple of the quota).`,
       '',
-      '## Versioning',
+      'Every response carries the quota in the RateLimit header fields of `draft-ietf-httpapi-ratelimit-headers` — `RateLimit-Policy` and `RateLimit` — plus the `RateLimit-Limit` / `RateLimit-Remaining` / `RateLimit-Reset` aliases from earlier drafts of the same specification. Exceeding the quota returns `429 Too Many Requests` with `Retry-After` (RFC 6585); honor `Retry-After` and retry. Responses are cacheable for one hour (`Cache-Control: public, max-age=3600`) and CORS is open (`Access-Control-Allow-Origin: *`).',
       '',
-      `The API follows semantic versioning, currently \`${API_VERSION}\`.`,
+      '## Versioning and deprecation',
+      '',
+      `The API follows semantic versioning, currently \`${API_VERSION}\`. Every response carries the version in the \`X-API-Version\` header.`,
+      '',
       'Additive changes — new endpoints, new optional fields — ship without notice and without a version bump in the path.',
-      'A breaking change (a removed or retyped field, a removed endpoint) ships under a new path prefix `/api/v2/...`, and the current unprefixed paths keep working for at least six months after that.',
-      'Poll `' +
+      '',
+      'A breaking change (a removed or retyped field, a removed endpoint) ships under a new path prefix `/api/v2/...`, and the current unprefixed paths keep working for at least six months after that. During that deprecation window every response from an affected endpoint carries `Deprecation` (RFC 9745, the date the deprecation started) and `Sunset` (RFC 8594, the date the endpoint stops working). Poll `' +
         ORIGIN +
         '/api/index.json` to read the version and policy at runtime.',
       '',
       '## Errors',
       '',
-      'Failed requests return `application/json` with RFC 9457 problem-details members (`type`, `title`, `status`, `detail`, `instance`) plus a nested `error` object carrying a stable `code`, a human `message`, a recovery `hint` and a `documentation_url`. HTML is never returned under `/api/`.',
+      'Failed requests return RFC 9457 problem details — `application/problem+json` with `type`, `title`, `status`, `detail`, `instance` — plus a nested `error` object carrying a stable `code`, a human `message`, a recovery `hint` and a `documentation_url`. `429` responses follow the same model. HTML is never returned under `/api/`.',
     ].join('\n'),
     contact: {
       name: 'Sergio Alexander Florez Galeano (XergioAleX)',
@@ -129,7 +151,21 @@ const spec = {
         description:
           'Entry point for agents: lists every endpoint with fully-resolved URLs (not {lang} templates), plus the versioning policy, the auth model and links to the OpenAPI spec, llms.txt and the agent discovery documents.',
         responses: {
-          200: jsonResponse('The API index.', '#/components/schemas/ApiIndex'),
+          200: jsonResponse('The API index.', '#/components/schemas/ApiIndex', {
+            name: 'XergioAleX.com public API',
+            version: API_VERSION,
+            total: 8,
+            links: { openapi: `${ORIGIN}/openapi.json` },
+            endpoints: [
+              {
+                operationId: 'listPosts',
+                description:
+                  'Combined blog search index across every language.',
+                pathTemplate: '/api/posts.json',
+                urls: [`${ORIGIN}/api/posts.json`],
+              },
+            ],
+          }),
           ...errorResponses,
         },
       },
@@ -144,7 +180,23 @@ const spec = {
         responses: {
           200: jsonResponse(
             'Every published post in every language.',
-            '#/components/schemas/PostIndex'
+            '#/components/schemas/PostIndex',
+            [
+              {
+                id: 'en/2026-08-20_aeo-score-100-on-isitagentready',
+                slug: 'aeo-score-100-on-isitagentready',
+                lang: 'en',
+                title:
+                  'What It Actually Takes to Score 100 on isitagentready.com',
+                description: 'A field guide to agent readiness.',
+                pubDate: '2026-08-20T12:00:00.000Z',
+                tags: ['tech'],
+                topics: ['aeo'],
+                subtopics: [],
+                heroImage:
+                  '/images/blog/posts/aeo-score-100-on-isitagentready/hero.webp',
+              },
+            ]
           ),
           ...errorResponses,
         },
@@ -159,7 +211,22 @@ const spec = {
         responses: {
           200: jsonResponse(
             'Every published English post.',
-            '#/components/schemas/PostIndex'
+            '#/components/schemas/PostIndex',
+            [
+              {
+                id: 'en/2026-08-20_aeo-score-100-on-isitagentready',
+                slug: 'aeo-score-100-on-isitagentready',
+                lang: 'en',
+                title:
+                  'What It Actually Takes to Score 100 on isitagentready.com',
+                description: 'A field guide to agent readiness.',
+                pubDate: '2026-08-20T12:00:00.000Z',
+                tags: ['tech'],
+                topics: ['aeo'],
+                subtopics: [],
+                heroImage: null,
+              },
+            ]
           ),
           ...errorResponses,
         },
@@ -174,7 +241,23 @@ const spec = {
         responses: {
           200: jsonResponse(
             'Every published Spanish post.',
-            '#/components/schemas/PostIndex'
+            '#/components/schemas/PostIndex',
+            [
+              {
+                id: 'es/2026-08-20_aeo-score-100-on-isitagentready',
+                slug: 'aeo-score-100-on-isitagentready',
+                lang: 'es',
+                title:
+                  'Lo que de verdad hace falta para lograr 100 en isitagentready.com',
+                description:
+                  'Una guía de campo sobre preparación para agentes.',
+                pubDate: '2026-08-20T12:00:00.000Z',
+                tags: ['tech'],
+                topics: ['aeo'],
+                subtopics: [],
+                heroImage: null,
+              },
+            ]
           ),
           ...errorResponses,
         },
@@ -191,7 +274,23 @@ const spec = {
         responses: {
           200: jsonResponse(
             'The series listing for one language.',
-            '#/components/schemas/SeriesListing'
+            '#/components/schemas/SeriesListing',
+            {
+              lang: 'en',
+              total: 1,
+              series: [
+                {
+                  slug: 'trading-journey',
+                  title: 'Trading Journey',
+                  description: 'From manual to algorithmic trading.',
+                  order: 1,
+                  postCount: 3,
+                  heroImage: null,
+                  firstPostHero: null,
+                  lastPostDate: '2026-02-10T12:00:00.000Z',
+                },
+              ],
+            }
           ),
           ...errorResponses,
         },
@@ -219,7 +318,24 @@ const spec = {
         responses: {
           200: jsonResponse(
             'The ordered chapters of one series.',
-            '#/components/schemas/SeriesDetail'
+            '#/components/schemas/SeriesDetail',
+            {
+              series: 'trading-journey',
+              lang: 'en',
+              total: 1,
+              posts: [
+                {
+                  slug: 'my-trading-journey-from-futures-to-forex',
+                  lang: 'en',
+                  title: 'My Trading Journey: From Futures to Forex',
+                  description: 'Where the journey started.',
+                  pubDate: '2025-11-02T12:00:00.000Z',
+                  tags: ['trading'],
+                  heroImage: null,
+                  isDraft: false,
+                },
+              ],
+            }
           ),
           ...errorResponses,
         },
@@ -247,7 +363,25 @@ const spec = {
         responses: {
           200: jsonResponse(
             'The posts carrying this tag.',
-            '#/components/schemas/TagTimeline'
+            '#/components/schemas/TagTimeline',
+            {
+              tag: 'tech',
+              lang: 'en',
+              total: 1,
+              posts: [
+                {
+                  slug: 'aeo-score-100-on-isitagentready',
+                  lang: 'en',
+                  title:
+                    'What It Actually Takes to Score 100 on isitagentready.com',
+                  description: 'A field guide to agent readiness.',
+                  pubDate: '2026-08-20T12:00:00.000Z',
+                  tags: ['tech', 'aeo'],
+                  heroImage: null,
+                  isDraft: false,
+                },
+              ],
+            }
           ),
           ...errorResponses,
         },
@@ -264,7 +398,23 @@ const spec = {
         responses: {
           200: jsonResponse(
             'The slide decks for one language.',
-            '#/components/schemas/SlidesTimeline'
+            '#/components/schemas/SlidesTimeline',
+            {
+              lang: 'en',
+              total: 1,
+              decks: [
+                {
+                  slug: 'supercharging-dev-productivity-with-ai',
+                  lang: 'en',
+                  title: 'Supercharging Developer Productivity with AI',
+                  description: 'A talk on AI-assisted development.',
+                  pubDate: '2025-08-13T17:30:00.000Z',
+                  heroImage: null,
+                  type: 'external-embed',
+                  isDraft: false,
+                },
+              ],
+            }
           ),
           ...errorResponses,
         },
@@ -272,12 +422,69 @@ const spec = {
     },
   },
   components: {
+    headers: {
+      XApiVersion: {
+        description: `Semantic version of the API, currently ${API_VERSION}.`,
+        schema: { type: 'string', example: API_VERSION },
+      },
+      RateLimitPolicy: {
+        description:
+          'Quota policy (draft-ietf-httpapi-ratelimit-headers-11): a quoted policy name with q = quota and w = window in seconds.',
+        schema: {
+          type: 'string',
+          example: `"edge";q=${RATE_LIMIT_QUOTA};w=${RATE_LIMIT_WINDOW_SECONDS}`,
+        },
+      },
+      RateLimit: {
+        description:
+          'Quota status for this request: r = remaining requests, t = effective window in seconds.',
+        schema: {
+          type: 'string',
+          example: `"edge";r=${RATE_LIMIT_QUOTA - 1};t=${RATE_LIMIT_WINDOW_SECONDS}`,
+        },
+      },
+      RateLimitLimit: {
+        description:
+          'Requests allowed per window (alias from earlier drafts of the rate-limit specification).',
+        schema: { type: 'integer', example: RATE_LIMIT_QUOTA },
+      },
+      RateLimitRemaining: {
+        description: 'Requests still allowed in this window.',
+        schema: { type: 'integer', example: RATE_LIMIT_QUOTA - 1 },
+      },
+      RateLimitReset: {
+        description: 'Seconds until the window resets.',
+        schema: { type: 'integer', example: RATE_LIMIT_WINDOW_SECONDS },
+      },
+      RetryAfter: {
+        description:
+          'Seconds to wait before retrying (RFC 6585). Present on 429 responses.',
+        schema: { type: 'integer', example: RATE_LIMIT_WINDOW_SECONDS },
+      },
+      Deprecation: {
+        description:
+          'RFC 9745. Present only once the operation is deprecated: the date the deprecation began. Consumers should treat any 410/Gone as final.',
+        schema: {
+          type: 'string',
+          example: 'Mon, 01 Jun 2026 00:00:00 GMT',
+        },
+      },
+      Sunset: {
+        description:
+          'RFC 8594. Present only on deprecated operations: the date the operation stops working. Current operations carry no Sunset header.',
+        schema: {
+          type: 'string',
+          example: 'Sun, 01 Nov 2026 00:00:00 GMT',
+        },
+      },
+    },
     responses: {
       NotFound: {
         description:
           'No resource exists at that path. The body names the endpoint index so an agent can recover.',
+        headers: STANDARD_RESPONSE_HEADERS,
         content: {
-          'application/json': {
+          'application/problem+json': {
             schema: { $ref: '#/components/schemas/Error' },
             examples: {
               default: {
@@ -299,11 +506,52 @@ const spec = {
               },
             },
           },
+          'application/json': {
+            schema: { $ref: '#/components/schemas/Error' },
+          },
+        },
+      },
+      TooManyRequests: {
+        description: `More than ${RATE_LIMIT_QUOTA} requests per ${RATE_LIMIT_WINDOW_SECONDS} seconds from one client IP. Retry after the Retry-After delay.`,
+        headers: {
+          ...STANDARD_RESPONSE_HEADERS,
+          'Retry-After': { $ref: '#/components/headers/RetryAfter' },
+        },
+        content: {
+          'application/problem+json': {
+            schema: { $ref: '#/components/schemas/Error' },
+            examples: {
+              default: {
+                value: {
+                  type: `${ORIGIN}/developers#rate-limits`,
+                  title: 'Too Many Requests',
+                  status: 429,
+                  detail:
+                    'Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.',
+                  instance: '/api/posts.json',
+                  error: {
+                    code: 'rate_limited',
+                    message:
+                      'Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.',
+                    hint: `Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see ${ORIGIN}/developers#rate-limits.`,
+                    documentation_url: `${ORIGIN}/developers`,
+                  },
+                },
+              },
+            },
+          },
+          'application/json': {
+            schema: { $ref: '#/components/schemas/Error' },
+          },
         },
       },
       InternalError: {
         description: 'The request could not be completed.',
+        headers: STANDARD_RESPONSE_HEADERS,
         content: {
+          'application/problem+json': {
+            schema: { $ref: '#/components/schemas/Error' },
+          },
           'application/json': {
             schema: { $ref: '#/components/schemas/Error' },
           },
@@ -352,6 +600,7 @@ const spec = {
                   'resource_not_found',
                   'method_not_allowed',
                   'gone',
+                  'rate_limited',
                   'internal_error',
                 ],
               },
@@ -638,6 +887,7 @@ const spec = {
           'versioning',
           'authentication',
           'methods',
+          'rate_limit',
           'error_format',
           'links',
           'total',
@@ -672,6 +922,55 @@ const spec = {
             },
           },
           methods: { type: 'array', items: { type: 'string' } },
+          rate_limit: {
+            type: 'object',
+            description:
+              'The quota enforced at the edge and how it is signalled.',
+            required: [
+              'quota',
+              'window_seconds',
+              'enforcement',
+              'headers',
+              'throttle_response',
+              'documentation_url',
+            ],
+            properties: {
+              quota: {
+                type: 'integer',
+                description: 'Requests allowed per window per client IP.',
+                examples: [RATE_LIMIT_QUOTA],
+              },
+              window_seconds: {
+                type: 'integer',
+                description: 'Sliding window length, in seconds.',
+                examples: [RATE_LIMIT_WINDOW_SECONDS],
+              },
+              enforcement: {
+                type: 'string',
+                description:
+                  'How the quota is enforced. "best-effort-edge" means per middleware isolate.',
+                examples: ['best-effort-edge'],
+              },
+              headers: {
+                type: 'array',
+                items: { type: 'string' },
+                description:
+                  'Every response carries these; a 429 also carries Retry-After.',
+              },
+              throttle_response: {
+                type: 'object',
+                properties: {
+                  status: { type: 'integer', examples: [429] },
+                  content_type: {
+                    type: 'string',
+                    examples: ['application/problem+json'],
+                  },
+                  retry_after: { type: 'string' },
+                },
+              },
+              documentation_url: { type: 'string', format: 'uri' },
+            },
+          },
           error_format: {
             type: 'object',
             required: ['media_type', 'description', 'documentation_url'],

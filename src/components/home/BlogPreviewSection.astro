@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogCard from '@/components/blog/BlogCard.svelte';
-import { getBlogPosts, getSubtopicAccentMap } from '@/lib/blog';
+import { getBlogPosts, getSubtopicAccentMap, toCardEntries } from '@/lib/blog';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 
@@ -25,7 +25,7 @@ const prefix = getUrlPrefix(lang as Language);
 const viewAllText = t.homeSections.viewAllPosts;
 
 const blogResult = await getBlogPosts({ lang: lang as Language, pageSize: 2 });
-const posts = blogResult.postsResult;
+const posts = await toCardEntries(blogResult.postsResult);
 
 const allTags = await getCollection('tags');
 const topicTagNames = allTags

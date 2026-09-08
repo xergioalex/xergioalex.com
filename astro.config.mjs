@@ -24,7 +24,12 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   site: 'https://xergioalex.com',
   build: {
-    inlineStylesheets: 'always',
+    // 'auto' keeps small per-component styles inlined but emits the shared
+    // Tailwind bundle (~120KB) as one external, cacheable /_astro/*.css file
+    // instead of inlining a copy into every page's HTML. This keeps page HTML
+    // small — the raw-HTML content-to-markup ratio is what agent scanners and
+    // readability tools measure (is-agentic "Content without JavaScript").
+    inlineStylesheets: 'auto',
   },
   // Astro 7 ships Sätteri (the Rust Markdown/MDX compiler) as the default and
   // only compiler. It does not run remark/rehype plugins, so our former

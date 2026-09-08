@@ -24,6 +24,12 @@
           "href": "https://xergioalex.com/api/index.json",
           "type": "application/json",
           "title": "XergioAleX.com API index"
+        },
+        {
+          "rel": "service-doc",
+          "href": "https://xergioalex.com/mcp",
+          "type": "application/json",
+          "title": "XergioAleX.com MCP server (Streamable HTTP)"
         }
       ]
     }
