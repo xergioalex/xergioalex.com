@@ -1187,11 +1187,12 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       descriptions: {
         getApiIndex:
           'Todos los endpoints con URLs completas, la política de versionado y el modelo de autenticación. El punto de entrada.',
-        listPosts: 'El índice de búsqueda del blog en todos los idiomas.',
+        listPosts:
+          'El índice de búsqueda del blog en todos los idiomas. Soporta ?limit=N (1-500) para obtener solo los N artículos más recientes.',
         listPostsInEnglish:
-          'El índice de búsqueda del blog, solo artículos en inglés.',
+          'El índice de búsqueda del blog, solo artículos en inglés. Soporta ?limit=N (1-500).',
         listPostsInSpanish:
-          'El índice de búsqueda del blog, solo artículos en español.',
+          'El índice de búsqueda del blog, solo artículos en español. Soporta ?limit=N (1-500).',
         listSeries:
           'Todas las series del blog en un idioma, con el número de capítulos.',
         getSeries: 'Los capítulos de una serie en orden de lectura.',
@@ -1226,7 +1227,7 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
         'Pueden aparecer endpoints nuevos y campos opcionales nuevos en cualquier momento. Analiza de forma defensiva: ignora los campos que no conozcas.',
       breakingTitle: 'Los cambios incompatibles estrenan prefijo',
       breakingBody:
-        'Eliminar un campo, cambiar su tipo o retirar un endpoint sale bajo <code>/api/v2/…</code>. Las rutas sin prefijo nunca se reutilizan para otra cosa.',
+        'La versión actual es accesible de dos formas: sin prefijo (<code>/api/posts.json</code>) y versionada (<code>/api/v1/posts.json</code>) — mismas respuestas. Un cambio incompatible sale bajo <code>/api/v2/…</code>; las rutas existentes nunca se reutilizan para otra cosa.',
       deprecationTitle: 'La deprecación se anuncia, no se sobrentiende',
       deprecationBody:
         'Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses y responden con los headers <code>Deprecation</code> (RFC 9745) y <code>Sunset</code> (RFC 8594), así un cliente ve la fecha final en la propia respuesta y puede migrar antes.',

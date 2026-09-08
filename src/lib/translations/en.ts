@@ -1176,9 +1176,12 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       descriptions: {
         getApiIndex:
           'Every endpoint with fully-resolved URLs, the versioning policy and the auth model. The entry point.',
-        listPosts: 'The blog search index across every language.',
-        listPostsInEnglish: 'The blog search index, English posts only.',
-        listPostsInSpanish: 'The blog search index, Spanish posts only.',
+        listPosts:
+          'The blog search index across every language. Supports ?limit=N (1-500) to fetch only the newest N posts.',
+        listPostsInEnglish:
+          'The blog search index, English posts only. Supports ?limit=N (1-500).',
+        listPostsInSpanish:
+          'The blog search index, Spanish posts only. Supports ?limit=N (1-500).',
         listSeries: 'Every blog series in one language, with chapter counts.',
         getSeries: 'The ordered chapters of one series.',
         getTimelineByTag: 'Every post carrying one tag, newest first.',
@@ -1211,7 +1214,7 @@ I currently focus on AI applications, developer productivity, and high-impact pr
         'New endpoints and new optional fields can appear at any time. Parse defensively: ignore fields you do not know.',
       breakingTitle: 'Breaking changes get a new prefix',
       breakingBody:
-        'Removing a field, retyping one, or removing an endpoint ships under <code>/api/v2/…</code>. The unprefixed paths are never repurposed.',
+        'The current version is addressable two ways: unprefixed (<code>/api/posts.json</code>) and versioned (<code>/api/v1/posts.json</code>) — same responses. A breaking change ships under <code>/api/v2/…</code>; existing paths are never repurposed.',
       deprecationTitle: 'Deprecation is signalled, not implied',
       deprecationBody:
         'When a new prefix ships, the previous paths keep serving for at least six months and answer with <code>Deprecation</code> (RFC 9745) and <code>Sunset</code> (RFC 8594) headers, so a client can see the end date in-band and migrate before it.',

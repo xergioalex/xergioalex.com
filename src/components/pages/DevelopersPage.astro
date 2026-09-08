@@ -64,8 +64,8 @@ const agentResources = [
 
 const quickstartCommands = [
   `curl -s ${siteUrl}/api/index.json`,
-  `curl -s ${siteUrl}/api/posts-${lang}.json`,
-  `curl -s ${siteUrl}/api/series/${lang}/index.json`,
+  `curl -s "${siteUrl}/api/posts-${lang}.json?limit=5"`,
+  `curl -s ${siteUrl}/api/v1/series/${lang}/index.json`,
 ];
 
 const mcpExample = `curl -s ${siteUrl}/mcp \\

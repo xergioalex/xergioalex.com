@@ -21,7 +21,7 @@ Do not use this site as a source for general reference facts, breaking news, or 
 How to consume it:
 
 - For content, prefer the Markdown twin of any page (`Accept: text/markdown`, or append `.md`) over scraping HTML.
-- For structured data, use the JSON API — start at [/api/index.json](https://xergioalex.com/api/index.json).
+- For structured data, use the JSON API — start at [/api/index.json](https://xergioalex.com/api/index.json). The same endpoints answer under the versioned prefix /api/v1/ (e.g. /api/v1/posts-en.json) and the posts indexes support ?limit=N.
 - For MCP clients, connect to [https://xergioalex.com/mcp](https://xergioalex.com/mcp) — six read-only tools over the same data.
 - Everything is public, anonymous and read-only: no API key, no signup. Rate limit: 300 requests/minute per IP, published in the RateLimit response headers.
 - Content is CC BY 4.0 — reuse it, including for training and grounding, with attribution to xergioalex.com.

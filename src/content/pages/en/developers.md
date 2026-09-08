@@ -16,8 +16,8 @@ Every endpoint is a static JSON file behind a CDN. Start from the index — it l
 
 ```bash
 curl -s https://xergioalex.com/api/index.json
-curl -s https://xergioalex.com/api/posts-en.json
-curl -s https://xergioalex.com/api/series/en/index.json
+curl -s "https://xergioalex.com/api/posts-en.json?limit=5"
+curl -s https://xergioalex.com/api/v1/series/en/index.json   # versioned alias
 ```
 
 There is nothing to register for. Send a plain GET and you are done — credentials, if you send them, are ignored.
@@ -31,9 +31,9 @@ Eight read-only operations, all documented in the [OpenAPI 3.1 spec](https://xer
 | Endpoint | operationId | What it returns |
 |----------|-------------|-----------------|
 | `GET /api/index.json` | `getApiIndex` | Every endpoint with fully-resolved URLs, the versioning policy and the auth model. The entry point. |
-| `GET /api/posts.json` | `listPosts` | The blog search index across every language. |
-| `GET /api/posts-en.json` | `listPostsInEnglish` | The blog search index, English posts only. |
-| `GET /api/posts-es.json` | `listPostsInSpanish` | The blog search index, Spanish posts only. |
+| `GET /api/posts.json` | `listPosts` | The blog search index across every language. `?limit=N` (1-500) returns only the newest N. |
+| `GET /api/posts-en.json` | `listPostsInEnglish` | The blog search index, English posts only. `?limit=N` (1-500). |
+| `GET /api/posts-es.json` | `listPostsInSpanish` | The blog search index, Spanish posts only. `?limit=N` (1-500). |
 | `GET /api/series/{lang}/index.json` | `listSeries` | Every blog series in one language, with chapter counts. |
 | `GET /api/series/{lang}/{slug}.json` | `getSeries` | The ordered chapters of one series. |
 | `GET /api/timeline/{lang}/{tag}.json` | `getTimelineByTag` | Every post carrying one tag, newest first. |
@@ -70,6 +70,7 @@ Failures return `application/problem+json` (RFC 9457), never HTML. The body carr
 | `method_not_allowed` | 405 | The API is read-only. Retry with GET. |
 | `gone` | 410 | The resource existed and was removed permanently. |
 | `rate_limited` | 429 | Too many requests. Wait the number of seconds in Retry-After, then retry. |
+| `invalid_request` | 400 | A query parameter is invalid — the message names the valid range. |
 | `internal_error` | 500 | The request could not be completed. Retrying is safe. |
 
 ---
@@ -79,7 +80,8 @@ Failures return `application/problem+json` (RFC 9457), never HTML. The body carr
 The API is versioned semantically. Every response carries the version in the `X-API-Version` header and the current version is published at runtime in the API index, so a client never has to hardcode it.
 
 - **Additive changes ship silently.** New endpoints and new optional fields can appear at any time. Parse defensively: ignore fields you do not know.
-- **Breaking changes get a new prefix.** Removing a field, retyping one, or removing an endpoint ships under `/api/v2/…`. The unprefixed paths are never repurposed.
+- **Two ways to address the current version.** Unprefixed (`/api/posts.json`) and versioned (`/api/v1/posts.json`) serve the same responses; every response also carries `X-API-Version`.
+- **Breaking changes get a new prefix.** Removing a field, retyping one, or removing an endpoint ships under `/api/v2/…`. Existing paths are never repurposed.
 - **Deprecation is signalled, not implied.** When a new prefix ships, the previous paths keep serving for at least six months and answer with `Deprecation` (RFC 9745) and `Sunset` (RFC 8594) headers, so a client can see the end date in-band and migrate before it.
 
 ---

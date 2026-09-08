@@ -148,9 +148,10 @@ export const GET: APIRoute = async () => {
     version: API_VERSION,
     versioning: {
       policy:
-        'Semantic versioning. Additive changes (new fields, new endpoints) ship without notice and without a version bump in the path. A breaking change ships as a new path prefix (/api/v2/...) while the current paths keep working for at least 6 months, during which they answer with Deprecation (RFC 9745) and Sunset (RFC 8594) headers. Every response carries the current version in the X-API-Version header.',
+        'Semantic versioning, expressed in the URL and in a header. The current major version is addressable under /api/v1/... (same responses as the unprefixed paths), and every response carries the version in the X-API-Version header. Additive changes (new fields, new endpoints) ship without notice. A breaking change ships as a new path prefix (/api/v2/...) while the current paths keep working for at least 6 months, during which they answer with Deprecation (RFC 9745) and Sunset (RFC 8594) headers.',
       current: API_VERSION,
       version_header: 'X-API-Version',
+      url_prefixes: [`${SITE_ORIGIN}/api/`, `${SITE_ORIGIN}/api/v1/`],
       deprecation_headers: ['Deprecation', 'Sunset'],
       documentation_url: `${DEVELOPER_PORTAL_URL}#versioning`,
     },
