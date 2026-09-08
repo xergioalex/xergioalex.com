@@ -35,6 +35,17 @@ import {
   prefersHtml,
   wantsJson,
 } from '../src/lib/agent-errors';
+import {
+  LIMIT_MAX,
+  LIMIT_MIN,
+  parseLimitParam,
+  POSTS_INDEX_PATHS,
+} from '../src/lib/api-query';
+import { stripApiV1Prefix } from '../src/lib/api-versioning';
+import {
+  isStrictRobotsParser,
+  stripDirectivesForStrictParsers,
+} from '../src/lib/robots';
 import { handleMcpHttpRequest } from '../src/lib/mcp/endpoint';
 import {
   API_RATE_LIMIT_POLICY,
@@ -186,17 +197,7 @@ async function sendToUmami(
 }
 
 /**
- * Detect Lighthouse-family user-agents (Google PageSpeed Insights, Lighthouse
- * DevTools, Lighthouse CI). These tools audit `robots.txt` strictly against
- * RFC 9309 and reject the `Content-Signal` directive as "unknown", even
- * though RFC 9309 §2.2.3 says unknown directives MUST be ignored by parsers.
- * For these specific tools only, we strip the `Content-Signal` line so
- * their audit passes without weakening the directive for any other client.
- */
-const LIGHTHOUSE_UA_PATTERN = /Chrome-Lighthouse|PageSpeed|Lighthouse/i;
-
-/**
- * Serve a Content-Signal-free version of `/robots.txt` to Lighthouse-family
+ * Serve a strict-parser-friendly version of `/robots.txt` to Lighthouse-family
  * tools so their strict `robots-txt` audit passes. Every other client
  * (Googlebot, AI crawlers, users, isitagentready.com's scanner) still sees
  * the canonical static `/robots.txt` with the `Content-Signal` directive.
@@ -214,7 +215,7 @@ async function tryRewriteRobotsForLighthouse(
   if (url.pathname !== '/robots.txt') return null;
 
   const ua = context.request.headers.get('user-agent') || '';
-  if (!LIGHTHOUSE_UA_PATTERN.test(ua)) return null;
+  if (!isStrictRobotsParser(ua)) return null;
 
   try {
     const assetResponse = await context.env.ASSETS.fetch(
@@ -223,8 +224,9 @@ async function tryRewriteRobotsForLighthouse(
     if (!assetResponse.ok) return null;
 
     const originalBody = await assetResponse.text();
-    // Remove the `Content-Signal: ...` directive line plus its trailing newline.
-    const rewritten = originalBody.replace(/^Content-Signal:.*\r?\n?/m, '');
+    // Strip the non-standard agent directives (Content-Signal, Agentmap) —
+    // see src/lib/robots.ts for why only for these tools.
+    const rewritten = stripDirectivesForStrictParsers(originalBody);
 
     return new Response(rewritten, {
       status: 200,
@@ -381,10 +383,15 @@ const ERROR_HEADERS = {
 function jsonErrorResponse(
   status: number,
   pathname: string,
-  scope: 'api' | 'site'
+  scope: 'api' | 'site',
+  overrides?: { message?: string; hint?: string }
 ): Response {
   return new Response(
-    `${JSON.stringify(buildApiErrorBody({ status, pathname, scope }), null, 2)}\n`,
+    `${JSON.stringify(
+      buildApiErrorBody({ status, pathname, scope, ...overrides }),
+      null,
+      2
+    )}\n`,
     {
       status,
       // RFC 9457 problem details — the body is a problem document, so the
@@ -421,7 +428,11 @@ async function tryApiAssetFallback(
 ): Promise<Response | null> {
   const origin = new URL(context.request.url).origin;
 
-  for (const candidate of apiAssetFallbacks(pathname)) {
+  const candidates = pathname.includes('.')
+    ? [pathname]
+    : apiAssetFallbacks(pathname);
+
+  for (const candidate of candidates) {
     try {
       const assetResponse = await context.env.ASSETS.fetch(
         new Request(new URL(candidate, origin).toString())
@@ -598,6 +609,67 @@ export async function onRequest(context: EventContext): Promise<Response> {
     if (rateLimitDecision.limited) {
       return rateLimitedResponse(url.pathname, rateLimitDecision);
     }
+  }
+
+  // 4b. Versioned URL aliases: /api/v1/<path> serves the canonical
+  //     /api/<path> asset — same body, same schema, plus X-API-Version.
+  //     ?limit= on the posts indexes applies to both forms, so it runs first.
+  const versionedCanonicalPath = stripApiV1Prefix(url.pathname);
+  const apiPath = versionedCanonicalPath ?? url.pathname;
+
+  if (rateLimitDecision && POSTS_INDEX_PATHS.has(apiPath)) {
+    const limitParam = url.searchParams.get('limit');
+    const limit = parseLimitParam(limitParam);
+    if (limit === null) {
+      return withHeaders(
+        jsonErrorResponse(400, url.pathname, 'api', {
+          message: `Invalid limit "${limitParam}": it must be an integer between ${LIMIT_MIN} and ${LIMIT_MAX}.`,
+          hint: `Retry without limit, or with limit between ${LIMIT_MIN} and ${LIMIT_MAX}, e.g. ${url.pathname}?limit=5.`,
+        }),
+        {
+          'X-API-Version': API_VERSION,
+          ...rateLimitHeaders(API_RATE_LIMIT_POLICY, rateLimitDecision),
+        }
+      );
+    }
+    if (limit !== undefined) {
+      const asset = await tryApiAssetFallback(context, apiPath);
+      if (asset) {
+        const index = (await asset.json()) as unknown[];
+        if (Array.isArray(index)) {
+          return new Response(
+            `${JSON.stringify(index.slice(0, limit))}\n`,
+            {
+              status: 200,
+              headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Cache-Control': 'public, max-age=3600',
+                'Access-Control-Allow-Origin': '*',
+                'Content-Location': apiPath,
+                'X-Total-Count': String(index.length),
+                'X-API-Version': API_VERSION,
+                ...rateLimitHeaders(API_RATE_LIMIT_POLICY, rateLimitDecision),
+              },
+            }
+          );
+        }
+      }
+    }
+  }
+
+  if (versionedCanonicalPath && rateLimitDecision) {
+    const versionedHeaders = {
+      'X-API-Version': API_VERSION,
+      ...rateLimitHeaders(API_RATE_LIMIT_POLICY, rateLimitDecision),
+    };
+    const canonicalResponse = await tryApiAssetFallback(context, apiPath);
+    if (canonicalResponse) {
+      return withHeaders(canonicalResponse, versionedHeaders);
+    }
+    return withHeaders(
+      jsonErrorResponse(404, url.pathname, 'api'),
+      versionedHeaders
+    );
   }
 
   // 5. AI bot analytics

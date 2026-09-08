@@ -123,33 +123,66 @@ describe('every operation', () => {
     }
   });
 
-  it('documents the shared error model on 404, 429 and 500', () => {
+  it('documents the shared error model inline on 404, 429 and 500', () => {
     for (const { path, operation } of operations) {
       const responses = operation.responses as Record<string, any>;
-      expect(responses['404']?.$ref, `404 of ${path}`).toBe(
-        '#/components/responses/NotFound'
-      );
-      expect(responses['429']?.$ref, `429 of ${path}`).toBe(
-        '#/components/responses/TooManyRequests'
-      );
-      expect(responses['500']?.$ref, `500 of ${path}`).toBe(
-        '#/components/responses/InternalError'
-      );
+      for (const code of ['404', '429', '500']) {
+        const error = responses[code];
+        expect(error, `${code} of ${path}`).toBeTruthy();
+        // The Error schema must be reachable WITHOUT resolving a
+        // components/responses indirection — not every consumer follows it.
+        expect(
+          error.content?.['application/problem+json']?.schema?.$ref,
+          `${code} schema of ${path}`
+        ).toBe('#/components/schemas/Error');
+        expect(
+          error.content['application/json']?.schema?.$ref,
+          `${code} json alias of ${path}`
+        ).toBe('#/components/schemas/Error');
+      }
+      expect(
+        responses['429'].headers?.['Retry-After']?.$ref,
+        `429 Retry-After of ${path}`
+      ).toBe('#/components/headers/RetryAfter');
     }
   });
 
-  it('types and describes every path parameter', () => {
+  it('types and describes every parameter, and query params are real behavior', () => {
     for (const { path, operation } of operations) {
       const templated = path.match(/\{([^}]+)\}/g) ?? [];
       const parameters = (operation.parameters as any[]) ?? [];
-      expect(parameters.length, `parameters of ${path}`).toBe(templated.length);
+      const pathParams = parameters.filter((p) => p.in === 'path');
+      expect(pathParams.length, `path parameters of ${path}`).toBe(
+        templated.length
+      );
       for (const parameter of parameters) {
         expect(parameter.description, `${path} ${parameter.name}`).toBeTruthy();
-        expect(parameter.schema?.type, `${path} ${parameter.name}`).toBe(
-          'string'
-        );
-        expect(parameter.required).toBe(true);
+        expect(
+          parameter.schema?.type,
+          `${path} ${parameter.name}`
+        ).toBeTruthy();
+        if (parameter.in === 'path') {
+          expect(parameter.required, `${path} ${parameter.name}`).toBe(true);
+        }
       }
+    }
+
+    // The posts indexes take ?limit= — implemented by the edge middleware.
+    const posts = operations.filter(({ path }) =>
+      path.startsWith('/api/posts')
+    );
+    expect(posts).toHaveLength(3);
+    for (const { path, operation } of posts) {
+      const limit = (operation.parameters as any[]).find(
+        (p) => p.name === 'limit' && p.in === 'query'
+      );
+      expect(limit, `limit param of ${path}`).toBeTruthy();
+      expect(limit.schema).toEqual({
+        type: 'integer',
+        minimum: 1,
+        maximum: 500,
+      });
+      expect(operation.responses['400'], `400 of ${path}`).toBeTruthy();
     }
   });
 });
@@ -178,6 +211,7 @@ describe('error schema', () => {
 
   it('enumerates the same codes the edge middleware emits', () => {
     expect(error.properties.error.properties.code.enum).toEqual([
+      'invalid_request',
       'resource_not_found',
       'method_not_allowed',
       'gone',
@@ -187,20 +221,18 @@ describe('error schema', () => {
   });
 
   it('serves errors as RFC 9457 application/problem+json', () => {
-    for (const name of ['NotFound', 'TooManyRequests', 'InternalError']) {
-      const response = (spec.components.responses as any)[name];
-      expect(
-        response.content['application/problem+json'],
-        `${name} problem+json content`
-      ).toBeTruthy();
-      expect(response.content['application/problem+json'].schema.$ref).toBe(
+    for (const { path, operation } of operations) {
+      const problem = (operation.responses as any)['404'].content[
+        'application/problem+json'
+      ];
+      expect(problem.schema.$ref, `404 of ${path}`).toBe(
         '#/components/schemas/Error'
       );
+      expect(
+        problem.examples?.default?.value?.error?.code,
+        `404 example of ${path}`
+      ).toBe('resource_not_found');
     }
-    const tooManyRequests = (spec.components.responses as any).TooManyRequests;
-    expect(tooManyRequests.headers['Retry-After'].$ref).toBe(
-      '#/components/headers/RetryAfter'
-    );
   });
 });
 

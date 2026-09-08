@@ -16,8 +16,8 @@ Cada endpoint es un archivo JSON estático detrás de un CDN. Empieza por el ín
 
 ```bash
 curl -s https://xergioalex.com/api/index.json
-curl -s https://xergioalex.com/api/posts-es.json
-curl -s https://xergioalex.com/api/series/es/index.json
+curl -s "https://xergioalex.com/api/posts-es.json?limit=5"
+curl -s https://xergioalex.com/api/v1/series/es/index.json   # alias versionado
 ```
 
 No hay nada que registrar. Envía un GET normal y listo: si mandas credenciales, simplemente se ignoran.
@@ -31,9 +31,9 @@ Ocho operaciones de solo lectura, todas documentadas en la [especificación Open
 | Endpoint | operationId | Qué devuelve |
 |----------|-------------|--------------|
 | `GET /api/index.json` | `getApiIndex` | Todos los endpoints con URLs completas, la política de versionado y el modelo de autenticación. El punto de entrada. |
-| `GET /api/posts.json` | `listPosts` | El índice de búsqueda del blog en todos los idiomas. |
-| `GET /api/posts-en.json` | `listPostsInEnglish` | El índice de búsqueda del blog, solo artículos en inglés. |
-| `GET /api/posts-es.json` | `listPostsInSpanish` | El índice de búsqueda del blog, solo artículos en español. |
+| `GET /api/posts.json` | `listPosts` | El índice de búsqueda del blog en todos los idiomas. `?limit=N` (1-500) devuelve solo los N más recientes. |
+| `GET /api/posts-en.json` | `listPostsInEnglish` | El índice de búsqueda del blog, solo artículos en inglés. `?limit=N` (1-500). |
+| `GET /api/posts-es.json` | `listPostsInSpanish` | El índice de búsqueda del blog, solo artículos en español. `?limit=N` (1-500). |
 | `GET /api/series/{lang}/index.json` | `listSeries` | Todas las series del blog en un idioma, con el número de capítulos. |
 | `GET /api/series/{lang}/{slug}.json` | `getSeries` | Los capítulos de una serie en orden de lectura. |
 | `GET /api/timeline/{lang}/{tag}.json` | `getTimelineByTag` | Todos los artículos con una etiqueta, del más reciente al más antiguo. |
@@ -70,6 +70,7 @@ Los fallos devuelven `application/problem+json` (RFC 9457), nunca HTML. El cuerp
 | `method_not_allowed` | 405 | La API es de solo lectura. Reintenta con GET. |
 | `gone` | 410 | El recurso existió y fue eliminado de forma permanente. |
 | `rate_limited` | 429 | Demasiadas peticiones. Espera los segundos indicados en Retry-After y reintenta. |
+| `invalid_request` | 400 | Un parámetro de consulta es inválido — el mensaje indica el rango válido. |
 | `internal_error` | 500 | La petición no pudo completarse. Reintentar es seguro. |
 
 ---
@@ -79,7 +80,8 @@ Los fallos devuelven `application/problem+json` (RFC 9457), nunca HTML. El cuerp
 La API usa versionado semántico. Cada respuesta lleva la versión en el header `X-API-Version` y la versión actual se publica en tiempo de ejecución dentro del índice de la API, así ningún cliente necesita fijarla en el código.
 
 - **Los cambios aditivos salen sin aviso.** Pueden aparecer endpoints nuevos y campos opcionales nuevos en cualquier momento. Analiza de forma defensiva: ignora los campos que no conozcas.
-- **Los cambios incompatibles estrenan prefijo.** Eliminar un campo, cambiar su tipo o retirar un endpoint sale bajo `/api/v2/…`. Las rutas sin prefijo nunca se reutilizan para otra cosa.
+- **Dos formas de dirigirse a la versión actual.** Sin prefijo (`/api/posts.json`) y versionada (`/api/v1/posts.json`) sirven las mismas respuestas; además, cada respuesta lleva `X-API-Version`.
+- **Los cambios incompatibles estrenan prefijo.** Eliminar un campo, cambiar su tipo o retirar un endpoint sale bajo `/api/v2/…`. Las rutas existentes nunca se reutilizan para otra cosa.
 - **La deprecación se anuncia, no se sobrentiende.** Cuando se estrena un prefijo nuevo, las rutas anteriores siguen funcionando al menos seis meses y responden con los headers `Deprecation` (RFC 9745) y `Sunset` (RFC 8594), así un cliente ve la fecha final en la propia respuesta y puede migrar antes.
 
 ---

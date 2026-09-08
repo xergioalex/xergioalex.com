@@ -35,6 +35,21 @@ const LANG_PARAM = {
 };
 
 /**
+ * ?limit= on the posts indexes — implemented by the edge middleware over the
+ * prerendered array, so the newest N posts can be fetched without downloading
+ * the whole index.
+ */
+const LIMIT_PARAM = {
+  name: 'limit',
+  in: 'query',
+  required: false,
+  description:
+    'Return at most the N newest posts (1-500). The full index size is reported in the X-Total-Count header. Applies to /api/v1/ URLs too.',
+  schema: { type: 'integer', minimum: 1, maximum: 500 },
+  example: 5,
+};
+
+/**
  * Response headers every operation declares, formalizing the rate-limit and
  * deprecation conventions agents can rely on (see `info.description`).
  */
@@ -49,17 +64,100 @@ const STANDARD_RESPONSE_HEADERS = {
   Sunset: { $ref: '#/components/headers/Sunset' },
 };
 
-/** 404 / 429 / 500 responses, attached to every operation. */
-const errorResponses = {
-  404: { $ref: '#/components/responses/NotFound' },
-  429: { $ref: '#/components/responses/TooManyRequests' },
-  500: { $ref: '#/components/responses/InternalError' },
+/** Headers the sliced posts responses add on top of the standard set. */
+const POSTS_HEADERS = {
+  ...STANDARD_RESPONSE_HEADERS,
+  'X-Total-Count': { $ref: '#/components/headers/XTotalCount' },
 };
 
-function jsonResponse(description, schemaRef, example) {
+/**
+ * Error responses, attached inline to every operation.
+ *
+ * The Error schema is referenced directly here rather than through
+ * `components.responses` indirection: not every OpenAPI consumer resolves
+ * response-level `$ref`s, and an error model a scanner cannot see on the
+ * operation is a model it treats as missing.
+ */
+function inlineErrorResponse(description, example, extraHeaders = {}) {
   return {
     description,
-    headers: STANDARD_RESPONSE_HEADERS,
+    headers: { ...STANDARD_RESPONSE_HEADERS, ...extraHeaders },
+    content: {
+      'application/problem+json': {
+        schema: { $ref: '#/components/schemas/Error' },
+        ...(example ? { examples: { default: { value: example } } } : {}),
+      },
+      'application/json': {
+        schema: { $ref: '#/components/schemas/Error' },
+      },
+    },
+  };
+}
+
+const notFoundExample = {
+  type: `${ORIGIN}/developers#errors`,
+  title: 'Not Found',
+  status: 404,
+  detail: 'No API resource exists at /api/series/fr/index.json.',
+  instance: '/api/series/fr/index.json',
+  error: {
+    code: 'resource_not_found',
+    message: 'No API resource exists at /api/series/fr/index.json.',
+    hint: `Fetch ${ORIGIN}/api/index.json for the list of available endpoints, or ${ORIGIN}/openapi.json for the full OpenAPI description. Endpoint paths always end in ".json".`,
+    documentation_url: `${ORIGIN}/developers`,
+  },
+};
+
+const tooManyRequestsExample = {
+  type: `${ORIGIN}/developers#rate-limits`,
+  title: 'Too Many Requests',
+  status: 429,
+  detail: `Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.`,
+  instance: '/api/posts.json',
+  error: {
+    code: 'rate_limited',
+    message: `Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.`,
+    hint: `Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see ${ORIGIN}/developers#rate-limits.`,
+    documentation_url: `${ORIGIN}/developers`,
+  },
+};
+
+/** 400 for invalid query parameters, on operations that accept them. */
+const badRequestResponse = inlineErrorResponse(
+  'A query parameter is invalid.',
+  {
+    type: `${ORIGIN}/developers#endpoints`,
+    title: 'Bad Request',
+    status: 400,
+    detail: 'Invalid limit "0": it must be an integer between 1 and 500.',
+    instance: '/api/posts-en.json?limit=0',
+    error: {
+      code: 'invalid_request',
+      message: 'Invalid limit "0": it must be an integer between 1 and 500.',
+      hint: 'Retry without limit, or with limit between 1 and 500, e.g. /api/posts-en.json?limit=5.',
+      documentation_url: `${ORIGIN}/developers`,
+    },
+  }
+);
+
+/** 404 / 429 / 500 responses, attached inline to every operation. */
+const errorResponses = {
+  404: inlineErrorResponse(
+    'No resource exists at that path. The body names the endpoint index so an agent can recover.',
+    notFoundExample
+  ),
+  429: inlineErrorResponse(
+    `More than ${RATE_LIMIT_QUOTA} requests per ${RATE_LIMIT_WINDOW_SECONDS} seconds from one client IP. Retry after the Retry-After delay.`,
+    tooManyRequestsExample,
+    { 'Retry-After': { $ref: '#/components/headers/RetryAfter' } }
+  ),
+  500: inlineErrorResponse('The request could not be completed.', null),
+};
+
+function jsonResponse(description, schemaRef, example, headers) {
+  return {
+    description,
+    headers: headers ?? STANDARD_RESPONSE_HEADERS,
     content: {
       'application/json': {
         schema: { $ref: schemaRef },
@@ -71,6 +169,25 @@ function jsonResponse(description, schemaRef, example) {
 
 const spec = {
   openapi: '3.1.0',
+  // Machine-readable versioning strategy, mirroring the prose in
+  // info.description. A structured declaration next to `info.version` is
+  // where tooling looks first.
+  'x-versioning': {
+    strategy: ['url-prefix', 'response-header'],
+    current: API_VERSION,
+    url_prefixes: {
+      '': `${ORIGIN}/api/`,
+      v1: `${ORIGIN}/api/v1/`,
+    },
+    version_header: 'X-API-Version',
+    deprecation: {
+      headers: ['Deprecation', 'Sunset'],
+      specification: ['RFC 9745', 'RFC 8594'],
+      notice:
+        'At least six months of overlap before a prefixed path stops serving.',
+      next_breaking_prefix: '/api/v2/',
+    },
+  },
   info: {
     title: 'XergioAleX.com Public API',
     version: API_VERSION,
@@ -95,7 +212,9 @@ const spec = {
       '',
       '## Versioning and deprecation',
       '',
-      `The API follows semantic versioning, currently \`${API_VERSION}\`. Every response carries the version in the \`X-API-Version\` header.`,
+      `The API follows semantic versioning, currently \`${API_VERSION}\`. The strategy is both URL- and header-based: every response carries the version in the \`X-API-Version\` header, and the current major version is addressable under \`/api/v1/...\` — \`https://' +
+        ORIGIN +
+        '/api/v1/posts.json\` serves exactly what \`/api/posts.json\` serves.`,
       '',
       'Additive changes — new endpoints, new optional fields — ship without notice and without a version bump in the path.',
       '',
@@ -177,6 +296,7 @@ const spec = {
         summary: 'Blog post index, all languages',
         description:
           'The combined blog search index across every language. Use the per-language variants when you only need one language — they are roughly half the size.',
+        parameters: [LIMIT_PARAM],
         responses: {
           200: jsonResponse(
             'Every published post in every language.',
@@ -196,8 +316,10 @@ const spec = {
                 heroImage:
                   '/images/blog/posts/aeo-score-100-on-isitagentready/hero.webp',
               },
-            ]
+            ],
+            POSTS_HEADERS
           ),
+          400: badRequestResponse,
           ...errorResponses,
         },
       },
@@ -208,6 +330,7 @@ const spec = {
         tags: ['posts'],
         summary: 'Blog post index, English only',
         description: 'The blog search index filtered to English posts.',
+        parameters: [LIMIT_PARAM],
         responses: {
           200: jsonResponse(
             'Every published English post.',
@@ -226,8 +349,10 @@ const spec = {
                 subtopics: [],
                 heroImage: null,
               },
-            ]
+            ],
+            POSTS_HEADERS
           ),
+          400: badRequestResponse,
           ...errorResponses,
         },
       },
@@ -238,6 +363,7 @@ const spec = {
         tags: ['posts'],
         summary: 'Blog post index, Spanish only',
         description: 'The blog search index filtered to Spanish posts.',
+        parameters: [LIMIT_PARAM],
         responses: {
           200: jsonResponse(
             'Every published Spanish post.',
@@ -257,8 +383,10 @@ const spec = {
                 subtopics: [],
                 heroImage: null,
               },
-            ]
+            ],
+            POSTS_HEADERS
           ),
+          400: badRequestResponse,
           ...errorResponses,
         },
       },
@@ -456,6 +584,11 @@ const spec = {
         description: 'Seconds until the window resets.',
         schema: { type: 'integer', example: RATE_LIMIT_WINDOW_SECONDS },
       },
+      XTotalCount: {
+        description:
+          'Full size of the posts index when ?limit= sliced the response.',
+        schema: { type: 'integer', example: 194 },
+      },
       RetryAfter: {
         description:
           'Seconds to wait before retrying (RFC 6585). Present on 429 responses.',
@@ -475,86 +608,6 @@ const spec = {
         schema: {
           type: 'string',
           example: 'Sun, 01 Nov 2026 00:00:00 GMT',
-        },
-      },
-    },
-    responses: {
-      NotFound: {
-        description:
-          'No resource exists at that path. The body names the endpoint index so an agent can recover.',
-        headers: STANDARD_RESPONSE_HEADERS,
-        content: {
-          'application/problem+json': {
-            schema: { $ref: '#/components/schemas/Error' },
-            examples: {
-              default: {
-                value: {
-                  type: `${ORIGIN}/developers#errors`,
-                  title: 'Not Found',
-                  status: 404,
-                  detail:
-                    'No API resource exists at /api/series/fr/index.json.',
-                  instance: '/api/series/fr/index.json',
-                  error: {
-                    code: 'resource_not_found',
-                    message:
-                      'No API resource exists at /api/series/fr/index.json.',
-                    hint: `Fetch ${ORIGIN}/api/index.json for the list of available endpoints, or ${ORIGIN}/openapi.json for the full OpenAPI description. Endpoint paths always end in ".json".`,
-                    documentation_url: `${ORIGIN}/developers`,
-                  },
-                },
-              },
-            },
-          },
-          'application/json': {
-            schema: { $ref: '#/components/schemas/Error' },
-          },
-        },
-      },
-      TooManyRequests: {
-        description: `More than ${RATE_LIMIT_QUOTA} requests per ${RATE_LIMIT_WINDOW_SECONDS} seconds from one client IP. Retry after the Retry-After delay.`,
-        headers: {
-          ...STANDARD_RESPONSE_HEADERS,
-          'Retry-After': { $ref: '#/components/headers/RetryAfter' },
-        },
-        content: {
-          'application/problem+json': {
-            schema: { $ref: '#/components/schemas/Error' },
-            examples: {
-              default: {
-                value: {
-                  type: `${ORIGIN}/developers#rate-limits`,
-                  title: 'Too Many Requests',
-                  status: 429,
-                  detail:
-                    'Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.',
-                  instance: '/api/posts.json',
-                  error: {
-                    code: 'rate_limited',
-                    message:
-                      'Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.',
-                    hint: `Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see ${ORIGIN}/developers#rate-limits.`,
-                    documentation_url: `${ORIGIN}/developers`,
-                  },
-                },
-              },
-            },
-          },
-          'application/json': {
-            schema: { $ref: '#/components/schemas/Error' },
-          },
-        },
-      },
-      InternalError: {
-        description: 'The request could not be completed.',
-        headers: STANDARD_RESPONSE_HEADERS,
-        content: {
-          'application/problem+json': {
-            schema: { $ref: '#/components/schemas/Error' },
-          },
-          'application/json': {
-            schema: { $ref: '#/components/schemas/Error' },
-          },
         },
       },
     },
@@ -597,6 +650,7 @@ const spec = {
                 type: 'string',
                 description: 'Stable machine-readable error code.',
                 enum: [
+                  'invalid_request',
                   'resource_not_found',
                   'method_not_allowed',
                   'gone',
@@ -899,10 +953,34 @@ const spec = {
           version: { type: 'string', examples: [API_VERSION] },
           versioning: {
             type: 'object',
-            required: ['policy', 'current', 'documentation_url'],
+            required: [
+              'policy',
+              'current',
+              'version_header',
+              'url_prefixes',
+              'deprecation_headers',
+              'documentation_url',
+            ],
             properties: {
               policy: { type: 'string' },
               current: { type: 'string' },
+              version_header: {
+                type: 'string',
+                description: 'Response header carrying the API version.',
+                examples: ['X-API-Version'],
+              },
+              url_prefixes: {
+                type: 'array',
+                items: { type: 'string', format: 'uri' },
+                description:
+                  'Every URL prefix the current version answers on: unversioned and /api/v1/.',
+              },
+              deprecation_headers: {
+                type: 'array',
+                items: { type: 'string' },
+                description:
+                  'Headers a deprecated endpoint answers with during the overlap window.',
+              },
               documentation_url: { type: 'string', format: 'uri' },
             },
           },

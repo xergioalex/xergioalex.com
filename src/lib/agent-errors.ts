@@ -36,6 +36,7 @@ export const API_VERSION = '1.0.0';
 
 /** Machine-readable error codes. Stable identifiers — never renamed. */
 export type AgentErrorCode =
+  | 'invalid_request'
   | 'resource_not_found'
   | 'method_not_allowed'
   | 'gone'
@@ -64,6 +65,7 @@ export interface AgentErrorBody {
 }
 
 const TITLES: Record<AgentErrorCode, string> = {
+  invalid_request: 'Bad Request',
   resource_not_found: 'Not Found',
   method_not_allowed: 'Method Not Allowed',
   gone: 'Gone',
@@ -73,6 +75,7 @@ const TITLES: Record<AgentErrorCode, string> = {
 
 /** Map an HTTP status to the error code this site reports for it. */
 export function errorCodeForStatus(status: number): AgentErrorCode {
+  if (status === 400) return 'invalid_request';
   if (status === 405) return 'method_not_allowed';
   if (status === 410) return 'gone';
   if (status === 429) return 'rate_limited';
@@ -113,15 +116,17 @@ export function buildApiErrorBody({
   const subject = scope === 'api' ? 'API resource' : 'page';
 
   const defaultMessage =
-    code === 'resource_not_found'
-      ? `No ${subject} exists at ${pathname}.`
-      : code === 'method_not_allowed'
-        ? `The HTTP method used is not allowed on ${pathname}. This site is read-only and accepts GET and HEAD only.`
-        : code === 'gone'
-          ? `The ${subject} at ${pathname} has been removed permanently.`
-          : code === 'rate_limited'
-            ? `Too many requests to ${pathname}. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.`
-            : `The request for ${pathname} could not be completed.`;
+    code === 'invalid_request'
+      ? `The request for ${pathname} is invalid.`
+      : code === 'resource_not_found'
+        ? `No ${subject} exists at ${pathname}.`
+        : code === 'method_not_allowed'
+          ? `The HTTP method used is not allowed on ${pathname}. This site is read-only and accepts GET and HEAD only.`
+          : code === 'gone'
+            ? `The ${subject} at ${pathname} has been removed permanently.`
+            : code === 'rate_limited'
+              ? `Too many requests to ${pathname}. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.`
+              : `The request for ${pathname} could not be completed.`;
 
   const notFoundHint =
     scope === 'api'
@@ -129,15 +134,17 @@ export function buildApiErrorBody({
       : `Fetch ${SITEMAP_URL} for every published URL, or ${LLMS_TXT_URL} for a curated map of the site. Request this URL with "Accept: text/markdown" to get the same recovery list as Markdown.`;
 
   const defaultHint =
-    code === 'resource_not_found'
-      ? notFoundHint
-      : code === 'method_not_allowed'
-        ? 'Retry the same URL with GET.'
-        : code === 'gone'
-          ? notFoundHint
-          : code === 'rate_limited'
-            ? `Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see ${DEVELOPER_PORTAL_URL}#rate-limits.`
-            : `Retry in a few seconds. If it keeps failing, report it via ${DEVELOPER_PORTAL_URL}.`;
+    code === 'invalid_request'
+      ? `Fix the query parameters and retry. Valid parameters are documented at ${DEVELOPER_PORTAL_URL}#endpoints.`
+      : code === 'resource_not_found'
+        ? notFoundHint
+        : code === 'method_not_allowed'
+          ? 'Retry the same URL with GET.'
+          : code === 'gone'
+            ? notFoundHint
+            : code === 'rate_limited'
+              ? `Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see ${DEVELOPER_PORTAL_URL}#rate-limits.`
+              : `Retry in a few seconds. If it keeps failing, report it via ${DEVELOPER_PORTAL_URL}.`;
 
   const resolvedMessage = message ?? defaultMessage;
 

@@ -1,10 +1,34 @@
 {
   "openapi": "3.1.0",
+  "x-versioning": {
+    "strategy": [
+      "url-prefix",
+      "response-header"
+    ],
+    "current": "1.0.0",
+    "url_prefixes": {
+      "": "https://xergioalex.com/api/",
+      "v1": "https://xergioalex.com/api/v1/"
+    },
+    "version_header": "X-API-Version",
+    "deprecation": {
+      "headers": [
+        "Deprecation",
+        "Sunset"
+      ],
+      "specification": [
+        "RFC 9745",
+        "RFC 8594"
+      ],
+      "notice": "At least six months of overlap before a prefixed path stops serving.",
+      "next_breaking_prefix": "/api/v2/"
+    }
+  },
   "info": {
     "title": "XergioAleX.com Public API",
     "version": "1.0.0",
     "summary": "Read-only JSON endpoints for the blog, series, tag timelines and slide decks of xergioalex.com.",
-    "description": "The public API of **XergioAleX.com**, the personal site and technical blog of Sergio Alexander Florez Galeano (XergioAleX), CTO & Co-founder at DailyBot.\n\n`xergioalex.com` is a static site on Cloudflare Pages: every endpoint below is a prerendered JSON file served from the CDN, fronted by an edge middleware.\n\n## Authentication\n\nNone. Every endpoint is public, anonymous and read-only — no API key, no signup, no OAuth flow. Sending credentials has no effect. See <https://xergioalex.com/auth.md>.\n\n## Methods and rate limits\n\n`GET` and `HEAD` only. Requests are rate limited per client IP: 300 requests per sliding 60-second window, best-effort enforced at the edge (Cloudflare may run several middleware isolates, so the effective ceiling can be a small multiple of the quota).\n\nEvery response carries the quota in the RateLimit header fields of `draft-ietf-httpapi-ratelimit-headers` — `RateLimit-Policy` and `RateLimit` — plus the `RateLimit-Limit` / `RateLimit-Remaining` / `RateLimit-Reset` aliases from earlier drafts of the same specification. Exceeding the quota returns `429 Too Many Requests` with `Retry-After` (RFC 6585); honor `Retry-After` and retry. Responses are cacheable for one hour (`Cache-Control: public, max-age=3600`) and CORS is open (`Access-Control-Allow-Origin: *`).\n\n## Versioning and deprecation\n\nThe API follows semantic versioning, currently `1.0.0`. Every response carries the version in the `X-API-Version` header.\n\nAdditive changes — new endpoints, new optional fields — ship without notice and without a version bump in the path.\n\nA breaking change (a removed or retyped field, a removed endpoint) ships under a new path prefix `/api/v2/...`, and the current unprefixed paths keep working for at least six months after that. During that deprecation window every response from an affected endpoint carries `Deprecation` (RFC 9745, the date the deprecation started) and `Sunset` (RFC 8594, the date the endpoint stops working). Poll `https://xergioalex.com/api/index.json` to read the version and policy at runtime.\n\n## Errors\n\nFailed requests return RFC 9457 problem details — `application/problem+json` with `type`, `title`, `status`, `detail`, `instance` — plus a nested `error` object carrying a stable `code`, a human `message`, a recovery `hint` and a `documentation_url`. `429` responses follow the same model. HTML is never returned under `/api/`.",
+    "description": "The public API of **XergioAleX.com**, the personal site and technical blog of Sergio Alexander Florez Galeano (XergioAleX), CTO & Co-founder at DailyBot.\n\n`xergioalex.com` is a static site on Cloudflare Pages: every endpoint below is a prerendered JSON file served from the CDN, fronted by an edge middleware.\n\n## Authentication\n\nNone. Every endpoint is public, anonymous and read-only — no API key, no signup, no OAuth flow. Sending credentials has no effect. See <https://xergioalex.com/auth.md>.\n\n## Methods and rate limits\n\n`GET` and `HEAD` only. Requests are rate limited per client IP: 300 requests per sliding 60-second window, best-effort enforced at the edge (Cloudflare may run several middleware isolates, so the effective ceiling can be a small multiple of the quota).\n\nEvery response carries the quota in the RateLimit header fields of `draft-ietf-httpapi-ratelimit-headers` — `RateLimit-Policy` and `RateLimit` — plus the `RateLimit-Limit` / `RateLimit-Remaining` / `RateLimit-Reset` aliases from earlier drafts of the same specification. Exceeding the quota returns `429 Too Many Requests` with `Retry-After` (RFC 6585); honor `Retry-After` and retry. Responses are cacheable for one hour (`Cache-Control: public, max-age=3600`) and CORS is open (`Access-Control-Allow-Origin: *`).\n\n## Versioning and deprecation\n\nThe API follows semantic versioning, currently `1.0.0`. The strategy is both URL- and header-based: every response carries the version in the `X-API-Version` header, and the current major version is addressable under `/api/v1/...` — `https://' +\n        ORIGIN +\n        '/api/v1/posts.json` serves exactly what `/api/posts.json` serves.\n\nAdditive changes — new endpoints, new optional fields — ship without notice and without a version bump in the path.\n\nA breaking change (a removed or retyped field, a removed endpoint) ships under a new path prefix `/api/v2/...`, and the current unprefixed paths keep working for at least six months after that. During that deprecation window every response from an affected endpoint carries `Deprecation` (RFC 9745, the date the deprecation started) and `Sunset` (RFC 8594, the date the endpoint stops working). Poll `https://xergioalex.com/api/index.json` to read the version and policy at runtime.\n\n## Errors\n\nFailed requests return RFC 9457 problem details — `application/problem+json` with `type`, `title`, `status`, `detail`, `instance` — plus a nested `error` object carrying a stable `code`, a human `message`, a recovery `hint` and a `documentation_url`. `429` responses follow the same model. HTML is never returned under `/api/`.",
     "contact": {
       "name": "Sergio Alexander Florez Galeano (XergioAleX)",
       "url": "https://xergioalex.com/contact",
@@ -113,13 +137,164 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -132,6 +307,20 @@
         ],
         "summary": "Blog post index, all languages",
         "description": "The combined blog search index across every language. Use the per-language variants when you only need one language — they are roughly half the size.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Return at most the N newest posts (1-500). The full index size is reported in the X-Total-Count header. Applies to /api/v1/ URLs too.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500
+            },
+            "example": 5
+          }
+        ],
         "responses": {
           "200": {
             "description": "Every published post in every language.",
@@ -159,6 +348,9 @@
               },
               "Sunset": {
                 "$ref": "#/components/headers/Sunset"
+              },
+              "X-Total-Count": {
+                "$ref": "#/components/headers/XTotalCount"
               }
             },
             "content": {
@@ -191,14 +383,223 @@
               }
             }
           },
+          "400": {
+            "description": "A query parameter is invalid.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#endpoints",
+                      "title": "Bad Request",
+                      "status": 400,
+                      "detail": "Invalid limit \"0\": it must be an integer between 1 and 500.",
+                      "instance": "/api/posts-en.json?limit=0",
+                      "error": {
+                        "code": "invalid_request",
+                        "message": "Invalid limit \"0\": it must be an integer between 1 and 500.",
+                        "hint": "Retry without limit, or with limit between 1 and 500, e.g. /api/posts-en.json?limit=5.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -211,6 +612,20 @@
         ],
         "summary": "Blog post index, English only",
         "description": "The blog search index filtered to English posts.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Return at most the N newest posts (1-500). The full index size is reported in the X-Total-Count header. Applies to /api/v1/ URLs too.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500
+            },
+            "example": 5
+          }
+        ],
         "responses": {
           "200": {
             "description": "Every published English post.",
@@ -238,6 +653,9 @@
               },
               "Sunset": {
                 "$ref": "#/components/headers/Sunset"
+              },
+              "X-Total-Count": {
+                "$ref": "#/components/headers/XTotalCount"
               }
             },
             "content": {
@@ -270,14 +688,223 @@
               }
             }
           },
+          "400": {
+            "description": "A query parameter is invalid.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#endpoints",
+                      "title": "Bad Request",
+                      "status": 400,
+                      "detail": "Invalid limit \"0\": it must be an integer between 1 and 500.",
+                      "instance": "/api/posts-en.json?limit=0",
+                      "error": {
+                        "code": "invalid_request",
+                        "message": "Invalid limit \"0\": it must be an integer between 1 and 500.",
+                        "hint": "Retry without limit, or with limit between 1 and 500, e.g. /api/posts-en.json?limit=5.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -290,6 +917,20 @@
         ],
         "summary": "Blog post index, Spanish only",
         "description": "The blog search index filtered to Spanish posts.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Return at most the N newest posts (1-500). The full index size is reported in the X-Total-Count header. Applies to /api/v1/ URLs too.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500
+            },
+            "example": 5
+          }
+        ],
         "responses": {
           "200": {
             "description": "Every published Spanish post.",
@@ -317,6 +958,9 @@
               },
               "Sunset": {
                 "$ref": "#/components/headers/Sunset"
+              },
+              "X-Total-Count": {
+                "$ref": "#/components/headers/XTotalCount"
               }
             },
             "content": {
@@ -349,14 +993,223 @@
               }
             }
           },
+          "400": {
+            "description": "A query parameter is invalid.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#endpoints",
+                      "title": "Bad Request",
+                      "status": 400,
+                      "detail": "Invalid limit \"0\": it must be an integer between 1 and 500.",
+                      "instance": "/api/posts-en.json?limit=0",
+                      "error": {
+                        "code": "invalid_request",
+                        "message": "Invalid limit \"0\": it must be an integer between 1 and 500.",
+                        "hint": "Retry without limit, or with limit between 1 and 500, e.g. /api/posts-en.json?limit=5.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -443,13 +1296,164 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -550,13 +1554,164 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -658,13 +1813,164 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -751,13 +2057,164 @@
             }
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#errors",
+                      "title": "Not Found",
+                      "status": 404,
+                      "detail": "No API resource exists at /api/series/fr/index.json.",
+                      "instance": "/api/series/fr/index.json",
+                      "error": {
+                        "code": "resource_not_found",
+                        "message": "No API resource exists at /api/series/fr/index.json.",
+                        "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "429": {
-            "$ref": "#/components/responses/TooManyRequests"
+            "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "default": {
+                    "value": {
+                      "type": "https://xergioalex.com/developers#rate-limits",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                      "instance": "/api/posts.json",
+                      "error": {
+                        "code": "rate_limited",
+                        "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
+                        "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
+                        "documentation_url": "https://xergioalex.com/developers"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           },
           "500": {
-            "$ref": "#/components/responses/InternalError"
+            "description": "The request could not be completed.",
+            "headers": {
+              "X-API-Version": {
+                "$ref": "#/components/headers/XApiVersion"
+              },
+              "RateLimit-Policy": {
+                "$ref": "#/components/headers/RateLimitPolicy"
+              },
+              "RateLimit": {
+                "$ref": "#/components/headers/RateLimit"
+              },
+              "RateLimit-Limit": {
+                "$ref": "#/components/headers/RateLimitLimit"
+              },
+              "RateLimit-Remaining": {
+                "$ref": "#/components/headers/RateLimitRemaining"
+              },
+              "RateLimit-Reset": {
+                "$ref": "#/components/headers/RateLimitReset"
+              },
+              "Deprecation": {
+                "$ref": "#/components/headers/Deprecation"
+              },
+              "Sunset": {
+                "$ref": "#/components/headers/Sunset"
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         }
       }
@@ -807,6 +2264,13 @@
           "example": 60
         }
       },
+      "XTotalCount": {
+        "description": "Full size of the posts index when ?limit= sliced the response.",
+        "schema": {
+          "type": "integer",
+          "example": 194
+        }
+      },
       "RetryAfter": {
         "description": "Seconds to wait before retrying (RFC 6585). Present on 429 responses.",
         "schema": {
@@ -826,168 +2290,6 @@
         "schema": {
           "type": "string",
           "example": "Sun, 01 Nov 2026 00:00:00 GMT"
-        }
-      }
-    },
-    "responses": {
-      "NotFound": {
-        "description": "No resource exists at that path. The body names the endpoint index so an agent can recover.",
-        "headers": {
-          "X-API-Version": {
-            "$ref": "#/components/headers/XApiVersion"
-          },
-          "RateLimit-Policy": {
-            "$ref": "#/components/headers/RateLimitPolicy"
-          },
-          "RateLimit": {
-            "$ref": "#/components/headers/RateLimit"
-          },
-          "RateLimit-Limit": {
-            "$ref": "#/components/headers/RateLimitLimit"
-          },
-          "RateLimit-Remaining": {
-            "$ref": "#/components/headers/RateLimitRemaining"
-          },
-          "RateLimit-Reset": {
-            "$ref": "#/components/headers/RateLimitReset"
-          },
-          "Deprecation": {
-            "$ref": "#/components/headers/Deprecation"
-          },
-          "Sunset": {
-            "$ref": "#/components/headers/Sunset"
-          }
-        },
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "default": {
-                "value": {
-                  "type": "https://xergioalex.com/developers#errors",
-                  "title": "Not Found",
-                  "status": 404,
-                  "detail": "No API resource exists at /api/series/fr/index.json.",
-                  "instance": "/api/series/fr/index.json",
-                  "error": {
-                    "code": "resource_not_found",
-                    "message": "No API resource exists at /api/series/fr/index.json.",
-                    "hint": "Fetch https://xergioalex.com/api/index.json for the list of available endpoints, or https://xergioalex.com/openapi.json for the full OpenAPI description. Endpoint paths always end in \".json\".",
-                    "documentation_url": "https://xergioalex.com/developers"
-                  }
-                }
-              }
-            }
-          },
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      },
-      "TooManyRequests": {
-        "description": "More than 300 requests per 60 seconds from one client IP. Retry after the Retry-After delay.",
-        "headers": {
-          "X-API-Version": {
-            "$ref": "#/components/headers/XApiVersion"
-          },
-          "RateLimit-Policy": {
-            "$ref": "#/components/headers/RateLimitPolicy"
-          },
-          "RateLimit": {
-            "$ref": "#/components/headers/RateLimit"
-          },
-          "RateLimit-Limit": {
-            "$ref": "#/components/headers/RateLimitLimit"
-          },
-          "RateLimit-Remaining": {
-            "$ref": "#/components/headers/RateLimitRemaining"
-          },
-          "RateLimit-Reset": {
-            "$ref": "#/components/headers/RateLimitReset"
-          },
-          "Deprecation": {
-            "$ref": "#/components/headers/Deprecation"
-          },
-          "Sunset": {
-            "$ref": "#/components/headers/Sunset"
-          },
-          "Retry-After": {
-            "$ref": "#/components/headers/RetryAfter"
-          }
-        },
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            },
-            "examples": {
-              "default": {
-                "value": {
-                  "type": "https://xergioalex.com/developers#rate-limits",
-                  "title": "Too Many Requests",
-                  "status": 429,
-                  "detail": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
-                  "instance": "/api/posts.json",
-                  "error": {
-                    "code": "rate_limited",
-                    "message": "Too many requests to /api/posts.json. The limit is published in the RateLimit-Policy response header; retry after the Retry-After delay.",
-                    "hint": "Wait the number of seconds in the Retry-After header, then retry. The quota and window are in the RateLimit-Policy header; see https://xergioalex.com/developers#rate-limits.",
-                    "documentation_url": "https://xergioalex.com/developers"
-                  }
-                }
-              }
-            }
-          },
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      },
-      "InternalError": {
-        "description": "The request could not be completed.",
-        "headers": {
-          "X-API-Version": {
-            "$ref": "#/components/headers/XApiVersion"
-          },
-          "RateLimit-Policy": {
-            "$ref": "#/components/headers/RateLimitPolicy"
-          },
-          "RateLimit": {
-            "$ref": "#/components/headers/RateLimit"
-          },
-          "RateLimit-Limit": {
-            "$ref": "#/components/headers/RateLimitLimit"
-          },
-          "RateLimit-Remaining": {
-            "$ref": "#/components/headers/RateLimitRemaining"
-          },
-          "RateLimit-Reset": {
-            "$ref": "#/components/headers/RateLimitReset"
-          },
-          "Deprecation": {
-            "$ref": "#/components/headers/Deprecation"
-          },
-          "Sunset": {
-            "$ref": "#/components/headers/Sunset"
-          }
-        },
-        "content": {
-          "application/problem+json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          },
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
         }
       }
     },
@@ -1045,6 +2347,7 @@
                 "type": "string",
                 "description": "Stable machine-readable error code.",
                 "enum": [
+                  "invalid_request",
                   "resource_not_found",
                   "method_not_allowed",
                   "gone",
@@ -1497,6 +2800,9 @@
             "required": [
               "policy",
               "current",
+              "version_header",
+              "url_prefixes",
+              "deprecation_headers",
               "documentation_url"
             ],
             "properties": {
@@ -1505,6 +2811,28 @@
               },
               "current": {
                 "type": "string"
+              },
+              "version_header": {
+                "type": "string",
+                "description": "Response header carrying the API version.",
+                "examples": [
+                  "X-API-Version"
+                ]
+              },
+              "url_prefixes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "description": "Every URL prefix the current version answers on: unversioned and /api/v1/."
+              },
+              "deprecation_headers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Headers a deprecated endpoint answers with during the overlap window."
               },
               "documentation_url": {
                 "type": "string",

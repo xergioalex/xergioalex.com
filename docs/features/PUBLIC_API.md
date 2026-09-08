@@ -61,6 +61,9 @@ The Pages Function fixes that after `context.next()`:
 | Non-API 4xx, `Accept` **without** `text/html` | Short Markdown recovery document, EN or ES by path |
 | Non-API 4xx from a browser (`Accept` lists `text/html`) | The designed HTML 404 page, unchanged, plus `Vary: Accept` |
 | Any `/api/*` over quota | `429` problem+json with `Retry-After` and the `RateLimit-*` headers (see below) |
+| Posts index with a bad `?limit=` | `400` problem+json, code `invalid_request` |
+| `/api/v1/<path>` | The canonical asset, plus `X-API-Version` |
+| Posts index with `?limit=N` | The newest N entries, with `X-Total-Count` reporting the full size |
 
 The decision logic lives in `src/lib/agent-errors.ts` as pure functions so it
 can be unit-tested; the Function itself needs the Workers runtime and the
@@ -126,7 +129,12 @@ literally true:
   least six months, and answer with `Deprecation` (RFC 9745) and `Sunset`
   (RFC 8594) headers for the whole overlap.
 - **Version in band**: every `/api/*` response carries `X-API-Version`
-  (set by the edge middleware; the value lives in `src/lib/constances.ts`).
+  (set by the edge middleware; the value lives in
+  `src/lib/agent-errors.ts` → `API_VERSION`).
+- **Versioned alias**: `/api/v1/<path>` serves the canonical `/api/<path>`
+  asset (`src/lib/api-versioning.ts` + the middleware) — same body, plus
+  `X-API-Version`. The strategy is declared machine-readably in
+  `openapi.json` under `x-versioning` and `components.headers`.
 
 If you ever need to break a response shape, that is the contract to honor —
 changing a field in place silently is the one thing this policy rules out.
@@ -158,8 +166,23 @@ Honesty rules, inherited from the old "no limits" policy this replaced:
   `RATE_LIMIT_WINDOW_SECONDS`) and regenerate the spec. The openapi test pins
   the header components, not the numbers.
 
+The posts indexes (`/api/posts.json`, `-en`, `-es`) accept `?limit=1-500`,
+sliced at the edge (`src/lib/api-query.ts`). Anything else answers `400`.
+
 Auth is still none. The OAuth documents under `.well-known/` are labelled
 reserved stubs for a reason.
+
+---
+
+## robots.txt and strict parsers
+
+`/robots.txt` ships `Content-Signal` and `Agentmap` (ARD). RFC 9309 says
+parsers MUST ignore unknown directives, but Lighthouse's `robots-txt` audit
+flags them — costing SEO points in PageSpeed Insights. The middleware
+(`src/lib/robots.ts`) serves Lighthouse-family user agents a copy with those
+two lines stripped; every other client gets the canonical file. If a new
+agent directive is ever added to robots.txt, add it to
+`NON_STANDARD_DIRECTIVES` so PageSpeed stays at 100.
 
 ---
 
