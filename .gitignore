@@ -56,3 +56,11 @@ spanish.png
 
 # Wrangler local state (`wrangler pages dev` — see docs/features/PUBLIC_API.md)
 .wrangler/
+
+# CLI package (cli/) publish artifacts — never commit these:
+# packed tarballs, accidental npm lockfiles, local installs, and above all
+# an .npmrc carrying an auth token.
+cli/*.tgz
+cli/package-lock.json
+cli/node_modules/
+cli/.npmrc
