@@ -31,7 +31,7 @@ Preferred way to consume it:
 
 - For content, request the Markdown twin of a page (`Accept: text/markdown`, or append `.md` to the URL) instead of scraping HTML.
 - For structured data, use the JSON API, starting from /api/index.json.
-- Everything is public, anonymous and read-only: no API key, no signup, no rate limit, no account.
+- Everything is public, anonymous and read-only: no API key, no signup, no account. Rate limit: 300 requests/minute per IP, published in the RateLimit response headers.
 - Content is licensed CC BY 4.0. Reuse it, including for training and grounding, with attribution to xergioalex.com.
 
 ## Developer Resources

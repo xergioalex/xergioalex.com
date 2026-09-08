@@ -1,12 +1,19 @@
 <script lang="ts">
 import type { CollectionEntry } from 'astro:content';
 import { EVENTS, trackEvent } from '@/lib/analytics';
+import type { CardEntry } from '@/lib/blog';
 import { SITE_TIMEZONE } from '@/lib/constances';
 import { getUrlPrefix, type Language } from '@/lib/i18n';
 import { getHighlightedField, type SearchResult } from '@/lib/search';
 import { getTranslations } from '@/lib/translations';
 
-export let post: CollectionEntry<'blog'>;
+/**
+ * The card accepts a full `CollectionEntry` (direct .astro rendering) or the
+ * serializable `CardEntry` shape every `client:*` island receives — islands
+ * must not carry the post `body` in their serialized props. Both shapes are
+ * normalized by `getPostData()` below.
+ */
+export let post: CollectionEntry<'blog'> | CardEntry;
 export let lang: Language = 'en';
 export let searchQuery: string = '';
 export let searchResult: SearchResult | undefined = undefined;
@@ -55,7 +62,7 @@ function getPostSlug(): string {
 // Helper function to get post data regardless of structure
 function getPostData() {
   // If post has data property (CollectionEntry structure)
-  if (post.data) {
+  if ('data' in post && post.data) {
     // Split unified tags array using tier name lookups
     const allTags: string[] = post.data.tags || [];
     const subtopic = allTags.filter((t) => subtopicTagNames.includes(t));
@@ -73,7 +80,7 @@ function getPostData() {
       heroImage: post.data.heroImage,
     };
   }
-  // If post is flat structure (search index) — already pre-grouped by API
+  // If post is flat structure (search index / CardEntry) — already pre-grouped
   return {
     title: post.title,
     description: post.description,
@@ -109,7 +116,9 @@ $: {
   const rawSeriesTitle =
     typeof seriesTitleValue === 'string' ? seriesTitleValue : undefined;
   const seriesSlugForTitle =
-    (post as any).seriesSlug ?? post.data?.series ?? (post as any).series;
+    (post as any).seriesSlug ??
+    ('data' in post ? post.data.series : undefined) ??
+    (post as any).series;
   seriesTitle =
     (typeof seriesSlugForTitle === 'string' &&
       t.seriesNames[seriesSlugForTitle]) ||
@@ -118,7 +127,9 @@ $: {
 let seriesSlug: string | undefined;
 $: {
   const slug =
-    (post as any).seriesSlug ?? post.data?.series ?? (post as any).series;
+    (post as any).seriesSlug ??
+    ('data' in post ? post.data.series : undefined) ??
+    (post as any).series;
   seriesSlug = typeof slug === 'string' ? slug : undefined;
 }
 $: seriesBadgeLabel =
@@ -146,7 +157,9 @@ $: isScheduled = (() => {
 // Draft flag is server-computed (we pass it through the lightweight payload).
 // A draft post that slipped into the client means we're on dev or a preview
 // branch — the production build filters it upstream.
-$: isDraft = !!(post as any).isDraft || post.data?.draft === true;
+$: isDraft =
+  !!(post as any).isDraft ||
+  ('data' in post ? post.data.draft : undefined) === true;
 
 // Get highlighted title and description if search result is available
 $: displayTitle = searchQuery

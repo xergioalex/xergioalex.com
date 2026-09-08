@@ -111,9 +111,21 @@ describe('ARD capability manifest', () => {
   });
 
   it('points every url entry at an absolute https URL on the site', () => {
+    // The one sanctioned off-site artifact host: the npm registry page for
+    // the CLI package. Everything else must live on the site itself, so a
+    // rotting third-party URL cannot sneak into the manifest.
+    const EXTERNAL_URL_ALLOWLIST: Record<string, RegExp> = {
+      'urn:air:xergioalex.com:tool:cli':
+        /^https:\/\/www\.npmjs\.com\/package\/xergioalex$/,
+    };
     for (const entry of entries) {
       if (!entry.url) continue;
-      expect(entry.url).toMatch(new RegExp(`^https://${SITE_DOMAIN}/`));
+      const external = EXTERNAL_URL_ALLOWLIST[entry.identifier ?? ''];
+      if (external) {
+        expect(entry.url).toMatch(external);
+      } else {
+        expect(entry.url).toMatch(new RegExp(`^https://${SITE_DOMAIN}/`));
+      }
     }
   });
 });

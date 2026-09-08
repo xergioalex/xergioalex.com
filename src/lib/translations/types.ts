@@ -585,6 +585,7 @@ export interface SiteTranslations {
         resourceNotFound: string;
         methodNotAllowed: string;
         gone: string;
+        rateLimited: string;
         internalError: string;
       };
     };
@@ -604,6 +605,7 @@ export interface SiteTranslations {
       colResource: string;
       colWhat: string;
       items: {
+        mcpEndpoint: string;
         aiCatalog: string;
         mcpServerCard: string;
         agentSkills: string;
@@ -614,6 +616,14 @@ export interface SiteTranslations {
         openapi: string;
         markdown: string;
       };
+    };
+    tools: {
+      title: string;
+      description: string;
+      mcpTitle: string;
+      mcpBody: string;
+      cliTitle: string;
+      cliBody: string;
     };
     limits: {
       title: string;

@@ -22,7 +22,8 @@ How to consume it:
 
 - For content, prefer the Markdown twin of any page (`Accept: text/markdown`, or append `.md`) over scraping HTML.
 - For structured data, use the JSON API — start at [/api/index.json](https://xergioalex.com/api/index.json).
-- Everything is public, anonymous and read-only: no API key, no signup, no rate limit.
+- For MCP clients, connect to [https://xergioalex.com/mcp](https://xergioalex.com/mcp) — six read-only tools over the same data.
+- Everything is public, anonymous and read-only: no API key, no signup. Rate limit: 300 requests/minute per IP, published in the RateLimit response headers.
 - Content is CC BY 4.0 — reuse it, including for training and grounding, with attribution to xergioalex.com.
 
 ## Core Sections
@@ -78,10 +79,12 @@ All pages and blog posts are available as native Markdown for AI agents:
 
 Named entry points for developers and agents. Every one is a stable URL:
 
-- [XergioAleX.com Developer Portal](https://xergioalex.com/developers): API quickstart, endpoint reference, error model, versioning policy and the full agent surface
+- [XergioAleX.com Developer Portal](https://xergioalex.com/developers): API quickstart, endpoint reference, error model, versioning policy, MCP server, CLI and the full agent surface
 - [XergioAleX.com Developer Portal (Spanish)](https://xergioalex.com/es/developers): the same portal in Spanish
 - [XergioAleX.com API index](https://xergioalex.com/api/index.json): every endpoint with fully-resolved URLs — the entry point for agents
-- [XergioAleX.com OpenAPI specification](https://xergioalex.com/openapi.json): OpenAPI 3.1, every operation with an operationId and a typed response schema
+- [XergioAleX.com OpenAPI specification](https://xergioalex.com/openapi.json): OpenAPI 3.1, every operation with an operationId, a typed response schema and the rate-limit/deprecation headers
+- [XergioAleX.com MCP server](https://xergioalex.com/mcp): Streamable HTTP MCP server (protocol 2025-06-18) with six read-only tools
+- [XergioAleX.com CLI](https://www.npmjs.com/package/xergioalex): `npm install -g xergioalex` — posts, search, series, tags and talks from the terminal
 - [XergioAleX.com MCP server card](https://xergioalex.com/.well-known/mcp/server-card.json): the read-only site tools exposed via WebMCP
 - [XergioAleX.com ARD capability manifest](https://xergioalex.com/.well-known/ai-catalog.json): every agent-facing artifact this site publishes
 - [XergioAleX.com Agent Skills index](https://xergioalex.com/.well-known/agent-skills/index.json): the agent-readiness conventions this site implements

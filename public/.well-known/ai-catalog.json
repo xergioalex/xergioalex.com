@@ -9,10 +9,10 @@
   "entries": [
     {
       "identifier": "urn:air:xergioalex.com:server:site",
-      "displayName": "XergioAleX.com Site MCP Server",
-      "type": "application/mcp-server-card+json",
-      "url": "https://xergioalex.com/.well-known/mcp/server-card.json",
-      "description": "Read-only MCP surface for the site: search blog posts, list series, and open a post by slug. Exposed in the browser via WebMCP (navigator.modelContext).",
+      "displayName": "XergioAleX.com MCP Server",
+      "type": "application/json",
+      "url": "https://xergioalex.com/mcp",
+      "description": "Read-only MCP server over Streamable HTTP (protocol 2025-06-18) at https://xergioalex.com/mcp (alias /.well-known/mcp): search blog posts, list and open series, browse tag timelines and slide decks, read the API index. Stateless, no authentication; the browser-side WebMCP bridge is described by the server card.",
       "tags": [
         "mcp",
         "blog",
@@ -20,15 +20,43 @@
         "read-only"
       ],
       "capabilities": [
-        "search_blog",
+        "search_blog_posts",
         "list_series",
-        "open_post"
+        "get_series",
+        "get_posts_by_tag",
+        "list_slide_decks",
+        "get_api_index"
       ],
       "representativeQueries": [
         "search XergioAleX's blog for posts about Astro and Cloudflare Pages",
         "list the blog series published on xergioalex.com",
         "open the post about answer engine optimization",
         "busca articulos de Sergio Florez sobre trading algoritmico"
+      ]
+    },
+    {
+      "identifier": "urn:air:xergioalex.com:tool:cli",
+      "displayName": "XergioAleX.com CLI (xergioalex)",
+      "type": "application/vnd.npm.package+json",
+      "url": "https://www.npmjs.com/package/xergioalex",
+      "description": "The official CLI for xergioalex.com on npm: `npm install -g xergioalex`. Posts, search, series, tags, tech talks and the API index from the terminal, over the same public JSON API. Zero dependencies, Node 18+.",
+      "tags": [
+        "cli",
+        "npm",
+        "developer-tools",
+        "read-only"
+      ],
+      "capabilities": [
+        "posts",
+        "search",
+        "series",
+        "tag",
+        "talks",
+        "api"
+      ],
+      "representativeQueries": [
+        "read the latest xergioalex.com posts from the terminal",
+        "xergioalex CLI to search Sergio Florez blog"
       ]
     },
     {

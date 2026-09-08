@@ -4,6 +4,7 @@ import type { APIRoute } from 'astro';
 
 import {
   API_INDEX_URL,
+  API_VERSION,
   DEVELOPER_PORTAL_URL,
   OPENAPI_URL,
   SITE_ORIGIN,
@@ -11,6 +12,7 @@ import {
 import { type ApiOperationId, pathTemplateFor } from '@/lib/api-endpoints';
 import { getSeriesTimelineIndex, isPostVisibleInProduction } from '@/lib/blog';
 import type { Language } from '@/lib/i18n';
+import { API_RATE_LIMIT_POLICY } from '@/lib/rate-limit';
 
 /**
  * `/api/index.json` — the entry point an agent lands on when it guesses `/api`
@@ -142,12 +144,14 @@ export const GET: APIRoute = async () => {
   const body = {
     name: 'XergioAleX.com public API',
     description:
-      'Read-only JSON endpoints exposed by xergioalex.com (a static content site) for agents and developers. No API key, no signup, no rate limit: every endpoint is a cached static file served from Cloudflare CDN.',
-    version: '1.0.0',
+      'Read-only JSON endpoints exposed by xergioalex.com (a static content site) for agents and developers. No API key, no signup. Every endpoint is a cached static file served from the Cloudflare CDN, rate limited per client IP at the edge.',
+    version: API_VERSION,
     versioning: {
       policy:
-        'Additive changes (new fields, new endpoints) ship without notice. A breaking change ships as a new path prefix (/api/v2/...) and the current paths keep working for at least 6 months.',
-      current: '1.0.0',
+        'Semantic versioning. Additive changes (new fields, new endpoints) ship without notice and without a version bump in the path. A breaking change ships as a new path prefix (/api/v2/...) while the current paths keep working for at least 6 months, during which they answer with Deprecation (RFC 9745) and Sunset (RFC 8594) headers. Every response carries the current version in the X-API-Version header.',
+      current: API_VERSION,
+      version_header: 'X-API-Version',
+      deprecation_headers: ['Deprecation', 'Sunset'],
       documentation_url: `${DEVELOPER_PORTAL_URL}#versioning`,
     },
     authentication: {
@@ -158,15 +162,35 @@ export const GET: APIRoute = async () => {
       documentation_url: `${SITE_ORIGIN}/auth.md`,
     },
     methods: ['GET', 'HEAD'],
+    rate_limit: {
+      quota: API_RATE_LIMIT_POLICY.quota,
+      window_seconds: API_RATE_LIMIT_POLICY.windowSeconds,
+      enforcement: 'best-effort-edge',
+      description: `Best-effort per-client-IP sliding window enforced by the edge middleware. Every response publishes the quota in the RateLimit-Policy and RateLimit header fields (draft-ietf-httpapi-ratelimit-headers-11) plus the RateLimit-Limit/Remaining/Reset aliases; exceeding it returns 429 with Retry-After.`,
+      headers: [
+        'RateLimit-Policy',
+        'RateLimit',
+        'RateLimit-Limit',
+        'RateLimit-Remaining',
+        'RateLimit-Reset',
+      ],
+      throttle_response: {
+        status: 429,
+        content_type: 'application/problem+json',
+        retry_after: 'seconds until the window drains',
+      },
+      documentation_url: `${DEVELOPER_PORTAL_URL}#rate-limits`,
+    },
     error_format: {
-      media_type: 'application/json',
+      media_type: 'application/problem+json',
       description:
-        'Failed requests return RFC 9457 problem details plus a nested error object with code, message, hint and documentation_url.',
+        'Failed requests return RFC 9457 problem details (type, title, status, detail, instance) plus a nested error object with a stable code, message, hint and documentation_url.',
       documentation_url: `${DEVELOPER_PORTAL_URL}#errors`,
     },
     links: {
       openapi: OPENAPI_URL,
       developer_portal: DEVELOPER_PORTAL_URL,
+      mcp_endpoint: `${SITE_ORIGIN}/mcp`,
       llms_txt: `${SITE_ORIGIN}/llms.txt`,
       ai_catalog: `${SITE_ORIGIN}/.well-known/ai-catalog.json`,
       mcp_server_card: `${SITE_ORIGIN}/.well-known/mcp/server-card.json`,

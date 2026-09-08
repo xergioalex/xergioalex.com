@@ -1,14 +1,7 @@
 ---
 
 import StaticBlogSearch from '@/components/blog/StaticBlogSearch.svelte';
-import {
-  getPostLanguage,
-  getPostSlug,
-  getSubtopicAccentMap,
-  groupPostTags,
-  isDraftPost,
-  isScheduledPost,
-} from '@/lib/blog';
+import { getSubtopicAccentMap, toCardEntries } from '@/lib/blog';
 import type { BlogPostsResultType } from '@/lib/types';
 
 export interface Props {
@@ -19,31 +12,7 @@ export interface Props {
 const { blogPostsResult, currentTag, lang = 'en' } = Astro.props;
 const subtopicAccentByName = await getSubtopicAccentMap();
 
-const lightweightPosts = await Promise.all(
-  blogPostsResult.postsResult.map(async (post) => {
-    const allTags = post.data.tags || [];
-    const { primaryTags, secondaryTags, subtopicTags } =
-      await groupPostTags(allTags);
-    return {
-      id: post.id,
-      slug: getPostSlug(post.id),
-      lang: getPostLanguage(post.id),
-      title: post.data.title,
-      description: post.data.description,
-      pubDate: post.data.pubDate.toISOString(),
-      tags: primaryTags,
-      topics: secondaryTags,
-      subtopics: subtopicTags,
-      heroImage: post.data.heroImage,
-      series: post.data.series,
-      seriesCurrent: (post as { seriesCurrent?: number }).seriesCurrent,
-      seriesTotal: (post as { seriesTotal?: number }).seriesTotal,
-      seriesTitle: (post as { seriesTitle?: string }).seriesTitle,
-      isScheduled: isScheduledPost(post),
-      isDraft: isDraftPost(post),
-    };
-  })
-);
+const lightweightPosts = await toCardEntries(blogPostsResult.postsResult);
 ---
 
 <StaticBlogSearch

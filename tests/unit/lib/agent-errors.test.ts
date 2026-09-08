@@ -23,6 +23,7 @@ describe('errorCodeForStatus', () => {
     expect(errorCodeForStatus(404)).toBe('resource_not_found');
     expect(errorCodeForStatus(405)).toBe('method_not_allowed');
     expect(errorCodeForStatus(410)).toBe('gone');
+    expect(errorCodeForStatus(429)).toBe('rate_limited');
     expect(errorCodeForStatus(500)).toBe('internal_error');
     expect(errorCodeForStatus(503)).toBe('internal_error');
   });
@@ -62,6 +63,17 @@ describe('buildApiErrorBody', () => {
     });
     expect(methodError.error.code).toBe('method_not_allowed');
     expect(methodError.error.hint).toContain('GET');
+  });
+
+  it('tells a rate-limited client to honor Retry-After', () => {
+    const throttled = buildApiErrorBody({
+      status: 429,
+      pathname: '/api/posts.json',
+    });
+    expect(throttled.title).toBe('Too Many Requests');
+    expect(throttled.error.code).toBe('rate_limited');
+    expect(throttled.error.hint).toContain('Retry-After');
+    expect(throttled.error.hint).toContain('#rate-limits');
   });
 
   it('accepts explicit overrides', () => {
