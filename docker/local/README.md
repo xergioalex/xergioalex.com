@@ -1,6 +1,6 @@
 # Local Docker development stack
 
-Dev container for xergioalex.com: Node 24, pnpm, Claude Code, Codex, Cursor CLI, and optional Z.AI GLM Coding Plan support.
+Dev container for xergioalex.com: Node 24, pnpm, and a shared suite of Claude, Codex, OpenCode, Pi, Cline, Grok, Cursor, and Z.AI coding-agent commands.
 
 ## Quick start
 
@@ -37,6 +37,18 @@ Use [Z.AI GLM Coding Plan](https://docs.z.ai/devpack/quick-start) alongside the 
 
 ### Commands
 
+The complete wrapper list is also available with `help` inside the container. Provider aliases and `pix` run with full permissions by default and accept `-c` / `--continue`:
+
+| Group | Commands |
+|-------|----------|
+| Grok / xAI | `grokx`, `opencode-xai`, `cline-xai`, `pix`, `codex-xai`, `claude-xai`, `pi-xai` |
+| Claude Code | `claude`, `claudex`, `claude-glm`, `cline-glm`, `clinex-glm` |
+| Codex | `codex`, `codexx`, `codex-azure`, `codex-glm` |
+| OpenCode | `opencode`, `opencodex`, `opencode-azure`, `opencode-glm`, `opencode-xai` |
+| Pi | `pi`, `pix`, `pi-azure`, `pi-glm`, `pi-xai` |
+| Cline | `cline`, `clinex`, `clinex-azure`, `cline-xai`, `cline-glm` |
+| Other | `herdr`, `chelper`, `agent`, `cursorx` |
+
 | Command | Description |
 |---------|-------------|
 | `claude-glm` | Claude Code via Z.AI (`https://api.z.ai/api/anthropic`) |
@@ -58,6 +70,8 @@ Opus/Sonnet/Haiku aliases are remapped to GLM **only** when using `claude-glm` /
 
 See [latest model mapping](https://docs.z.ai/devpack/latest-model). For 1M context, set models to e.g. `glm-5.3[1m]` and `ZAI_CODING_AUTO_COMPACT_WINDOW=1000000`.
 
+The `opencode-glm` wrapper writes the configured GLM model IDs and Coding Plan endpoint to OpenCode automatically. Likewise, `opencode-xai` uses `XAI_MODEL_DAILY`, `XAI_MODEL_REASONING`, and `XAI_BASE_URL`; `opencode-azure` uses the corresponding `AZURE_OPENAI_*` variables. The selected provider and model are persisted in `~/.config/opencode/opencode.json`.
+
 ### Verify
 
 In a **new** `claude-glm` session, run `/status`:
@@ -69,4 +83,4 @@ After changing wrappers or model env vars, exit the old session and start a new 
 
 ### Persistence
 
-Config for `chelper` and OpenCode survives rebuilds via named Docker volumes (`chelper_data`, `opencode_data`), symlinked in the entrypoint to `~/.chelper`, `~/.config/opencode`, and `~/.local/share/opencode`.
+Sessions and configuration survive container rebuilds through named Docker volumes. Claude and Codex use `claude_data` / `codex_data`; OpenCode and the helper use `opencode_data` / `chelper_data`; Pi and Cline use `pi_data` / `cline_data`. The entrypoint symlinks these volumes to the agents' normal home directories, including `~/.claude`, `~/.codex`, `~/.config/opencode`, `~/.local/share/opencode`, `~/.pi`, and `~/.cline`.
