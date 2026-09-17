@@ -265,6 +265,36 @@ setup_opencode_persistence_for_user() {
 setup_opencode_persistence_for_user "/home/node"
 chown -R node:node /home/node/.opencode_data /home/node/.config/opencode /home/node/.local/share/opencode 2>/dev/null || true
 
+# Persist Pi and Cline sessions/configuration across container rebuilds.
+# Both CLIs keep their session history under a user-home directory, so the
+# wrappers can continue sessions after the image is recreated.
+setup_agent_directory_persistence_for_user() {
+    USER_HOME="$1"
+    DATA_DIR="$2"
+    TARGET_DIR="$3"
+
+    mkdir -p "${DATA_DIR}"
+    mkdir -p "$(dirname "${TARGET_DIR}")"
+    if [ ! -L "${TARGET_DIR}" ]; then
+        if [ -d "${TARGET_DIR}" ]; then
+            if [ ! -d "${DATA_DIR}/content" ] || [ -z "$(ls -A "${DATA_DIR}/content" 2>/dev/null)" ]; then
+                cp -r "${TARGET_DIR}" "${DATA_DIR}/content"
+            fi
+            rm -rf "${TARGET_DIR}"
+        else
+            mkdir -p "${DATA_DIR}/content"
+        fi
+        ln -sf "${DATA_DIR}/content" "${TARGET_DIR}"
+    fi
+}
+
+setup_agent_directory_persistence_for_user "/home/node" "/home/node/.pi_data" "/home/node/.pi"
+setup_agent_directory_persistence_for_user "/home/node" "/home/node/.cline_data" "/home/node/.cline"
+setup_agent_directory_persistence_for_user "/home/node" "/home/node/.herdr_data" "/home/node/.config/herdr"
+setup_agent_directory_persistence_for_user "/home/node" "/home/node/.grok_data" "/home/node/.grok"
+chown -R node:node /home/node/.pi_data /home/node/.pi /home/node/.cline_data /home/node/.cline 2>/dev/null || true
+chown -R node:node /home/node/.herdr_data /home/node/.config/herdr /home/node/.grok_data /home/node/.grok 2>/dev/null || true
+
 # Setup SSH keys from host with correct permissions for a given user
 # This allows git operations with GitHub/GitLab
 setup_ssh_keys_for_user() {

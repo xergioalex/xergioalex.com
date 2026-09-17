@@ -64,8 +64,9 @@ ENV PNPM_HOME=/usr/local/share/pnpm
 RUN mkdir -p "${PNPM_HOME}/bin" \
     && chown -R node:node "${PNPM_HOME}"
 
-# Make node user's CLI install dirs available on PATH (pnpm globals, Claude, Cursor agent)
-ENV PATH=${PNPM_HOME}/bin:${PNPM_HOME}:/home/node/.local/bin:/home/node/.cursor/bin:$PATH
+# Make node user's CLI install dirs available on PATH (pnpm globals, Claude, Cursor, OpenCode, Grok)
+ENV PATH=${PNPM_HOME}/bin:${PNPM_HOME}:/home/node/.local/bin:/home/node/.cursor/bin:/home/node/.opencode/bin:/home/node/.grok/bin:$PATH
+ENV CLINE_DATA_DIR=/home/node/.cline/data
 
 # Redirect any `npm` invocation to pnpm — this repo uses pnpm exclusively,
 # so running npm would corrupt node_modules and pnpm-lock.yaml. Replace the
@@ -82,7 +83,7 @@ RUN echo 'source /app/docker/custom_commands.sh' >> /home/node/.bashrc \
 
 # Pre-create persistent data dirs so the named volumes inherit node ownership on first mount
 RUN mkdir -p /home/node/.claude_data /home/node/.codex_data /home/node/.cursor_data /home/node/.gh_data \
-    /home/node/.chelper_data /home/node/.opencode_data /home/node/.ssh \
+    /home/node/.chelper_data /home/node/.opencode_data /home/node/.pi_data /home/node/.cline_data /home/node/.herdr_data /home/node/.grok_data /home/node/.ssh \
     && chown -R node:node /home/node
 
 # Install AI CLIs and configure git as node user
@@ -96,10 +97,21 @@ RUN curl -fsSL https://claude.ai/install.sh | bash \
 # Install Cursor CLI (provides the 'agent' command in ~/.cursor/bin)
 RUN curl -fsSL https://cursor.com/install | bash
 
-# Install Codex, Z.AI Coding Tool Helper, and OpenCode globally via pnpm (resolves under ${PNPM_HOME})
-# opencode-ai requires its postinstall script to download the platform binary (pnpm may skip it on global add)
-RUN corepack pnpm add -g @openai/codex @z_ai/coding-helper opencode-ai \
-    && node "$(find "${PNPM_HOME}/global" -path '*/node_modules/opencode-ai/postinstall.mjs' -print -quit)"
+# Install OpenCode with its official installer.
+RUN curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path \
+    && opencode --version
+
+# Install Codex, Cline, Pi, and Z.AI Coding Tool Helper globally via pnpm.
+# Pi needs --ignore-scripts per upstream docs.
+RUN corepack pnpm add -g @openai/codex cline @z_ai/coding-helper \
+    && corepack pnpm add -g --ignore-scripts @earendil-works/pi-coding-agent
+
+# Install the official xAI Grok CLI and Herdr terminal runtime.
+RUN curl -fsSL https://x.ai/cli/install.sh | bash \
+    && curl -fsSL https://herdr.dev/install.sh | bash \
+    && pi --version \
+    && cline --version \
+    && herdr --version
 
 # Configure Git for node user (can be overridden by mounted .gitconfig)
 RUN git config --global init.defaultBranch main \
