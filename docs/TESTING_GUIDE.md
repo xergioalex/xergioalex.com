@@ -14,16 +14,76 @@ E2E testing uses **Playwright** (`pnpm run test:e2e`). See [Testing Guide](../do
 
 ## Running Tests
 
+Working directory for every command below is the **repository root**. Vitest is **4.1.11**; Biome is **2.5.10**. Flag behavior is version-sensitive — do not assume npm/jest selectors.
+
+### Full suite
+
 ```bash
-# Run all tests (single run)
+# Unit tests, single run (full)
 pnpm run test
 
 # Watch mode (re-runs on file changes)
 pnpm run test:watch
 
-# Run with coverage report
+# Run with coverage report (full; 80% floor on src/lib/)
 pnpm run test:coverage
+
+# Lint/format (full)
+pnpm run biome:check
+
+# TypeScript / Astro check (full — no file-scoped variant)
+pnpm run astro:check
+
+# E2E (Playwright, full)
+pnpm run test:e2e
 ```
+
+### Scoped invocation (verified)
+
+Vitest and Biome accept a path. A scoped run that selects **zero** tests is not verified — fix the selector.
+
+```bash
+# Unit tests by file (verified 2026-09-17: 45 tests, exit 0)
+pnpm exec vitest run tests/unit/lib/blog.test.ts
+
+# Unit tests by directory
+pnpm exec vitest run tests/unit/lib/
+
+# Name filter
+pnpm exec vitest run tests/unit/lib/blog.test.ts -t "getPostSlug"
+
+# Lint/format one file (verified 2026-09-17: 1 file, exit 0)
+pnpm exec biome check src/lib/blog.ts
+```
+
+Playwright can take a file (`pnpm exec playwright test tests/e2e/<file>`). That pattern is **proposed / unverified** in this session — if e2e is in the gate, run `pnpm run test:e2e` unless you have just confirmed a non-empty selection. `astro check` is project-wide only.
+
+When the full unit suite is cheap (it is, on this repo), prefer `pnpm run test` over elaborate selection. Use scoped Vitest for a single touched lib/component file.
+
+### Source-to-test mapping
+
+| Source | Test |
+|--------|------|
+| `src/lib/<name>.ts` | `tests/unit/lib/<name>.test.ts` (mirrored tree, `*.test.ts`) |
+| `src/components/**/*.svelte` | `tests/unit/components/<Component>.test.ts` |
+| `src/pages/`, `src/content/`, layouts | no co-located unit tests; cover via lib helpers, component tests, or Playwright |
+
+**Dependent consumers:** there is no `--changed` / `testmon` / affected-tests graph. When a shared module changes, run the tests of its known importers (grep `from '@/lib/<name>'`) and, if unsure, the full unit suite.
+
+**Blind spots:** `astro:content` virtual module (mocked at `tests/mocks/astro-content.ts`; async helpers like `getBlogPosts` are **not** unit-tested); Markdown/MDX content; Cloudflare `functions/_middleware.ts` runtime; generated `public/openapi.json` and `public/.well-known/agent-skills/index.json`; image pipelines; Tailwind class presence.
+
+**Escalation — always run the full unit suite (`pnpm run test`) when the change includes:** `src/lib/` shared utilities, `vitest.config.ts`, `astro.config.mjs`, `tsconfig.json`, `biome.json`, `package.json` / `pnpm-lock.yaml`, `src/content.config.ts`, or `src/middleware.ts`. Content-only or docs-only diffs do not require the unit suite; still run `pnpm run biome:check` if `src/` or `tests/` or `scripts/` files changed.
+
+**Fallback:** if scoping cannot cover the change, run `pnpm run test`. If lint cannot be scoped, run `pnpm run biome:check`. If types are in play, run `pnpm run astro:check`.
+
+## Test layers and posture
+
+- **Unit (base, unit-first):** `tests/unit/**/*.test.ts` via Vitest + happy-dom. Fast, deterministic tests of observable behavior and meaningful boundaries — return values, rendered text, error/edge cases. Mock at useful boundaries (`astro:content`). **No** assertions on internal call sequences.
+- **Component:** Svelte under `tests/unit/components/` with `@testing-library/svelte`.
+- **Integration / real seams:** JSON API contracts live in `src/pages/api/` and `src/lib/agent-errors.ts` / `src/lib/rate-limit.ts`. A change to those seams should add or update unit tests of the pure helpers; there is no separate integration runner.
+- **E2E:** Playwright (`pnpm run test:e2e`, `playwright.config.ts`) for a few high-value flows. Not the default gate for a lib or component change.
+
+**Current vs proposed:** everything in this guide is the current, verified toolchain except the Playwright file-scoped pattern (proposed/unverified) and `astro check` (full only).
 
 ## Test Structure
 

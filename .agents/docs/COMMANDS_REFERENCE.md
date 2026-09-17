@@ -30,17 +30,19 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 ## Deep Work Plans
 
 > These are **thin delegators** to the installed `deepworkplan` skill
-> (`.agents/skills/deepworkplan/`). Plan/draft outputs live in the git-ignored
-> `.dwp/` (`.dwp/plans/`, `.dwp/drafts/`).
+> (`.agents/skills/deepworkplan/`). Plan outputs live in the git-ignored
+> `.dwp/` (`.dwp/plans/`). Invoke with `/` in Claude Code, `#<name>` on hosts
+> that intercept slash syntax, or plain text ("run `<name>`") elsewhere.
 
 | Command | Procedure File | Description |
 |---------|---------------|-------------|
-| `/dwp-create` | `.agents/commands/dwp-create.md` | Create a deep work plan (single-step refined draft → final plan) |
+| `/dwp-create` | `.agents/commands/dwp-create.md` | Create a Lite (or Full) deep work plan |
 | `/dwp-execute` | `.agents/commands/dwp-execute.md` | Execute an existing deep work plan task-by-task |
-| `/dwp-refine` | `.agents/commands/dwp-refine.md` | Refine a draft or modify an existing final plan |
+| `/dwp-refine` | `.agents/commands/dwp-refine.md` | Modify a plan, promote Lite → Full, or migrate a legacy plan |
 | `/dwp-resume` | `.agents/commands/dwp-resume.md` | Resume an interrupted deep work plan |
 | `/dwp-status` | `.agents/commands/dwp-status.md` | Check status of deep work plans without executing |
 | `/dwp-verify` | `.agents/commands/dwp-verify.md` | Verify repository + plan conformance to the DWP spec (read-only) |
+| `/dwp-upgrade` | `.agents/commands/dwp-upgrade.md` | Check/install a newer DeepWorkPlan skill (read-only until accepted) |
 
 ## Git & Version Control
 
@@ -61,6 +63,7 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 | `/type-fix` | `.agents/skills/type-fix/SKILL.md` | Fix TypeScript type errors in 1-3 files |
 | `/quick-fix` | `.agents/skills/quick-fix/SKILL.md` | Fix small bugs in 1-3 files following existing patterns |
 | `/security-check` | `.agents/skills/security-check/SKILL.md` | Quick security checklist (secrets, API routes, client exposure) |
+| `/ai-diff-reviewer` | `.agents/skills/ai-diff-reviewer/SKILL.md` | Local AI Diff Reviewer v2.3.1 (Flow A; `.review/extension.md`) |
 
 ## Blog & Content
 

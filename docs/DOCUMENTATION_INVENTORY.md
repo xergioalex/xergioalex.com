@@ -87,16 +87,21 @@ Tracking documentation coverage for XergioAleX.com.
 
 ### Deep Work Plan (installed skill)
 
-The DWP engine is the installed `deepworkplan` skill (cross-machine, not in-repo);
-plan/draft outputs live in the git-ignored `.dwp/`.
+The DWP engine is the vendored `deepworkplan` skill **5.5.1** at
+`.agents/skills/deepworkplan/` (DWP standard 5.0.0). Plan outputs live in the
+git-ignored `.dwp/plans/`. Local review is AI Diff Reviewer **v2.3.1**
+(`.agents/skills/ai-diff-reviewer/` + `.review/extension.md`).
 
 | Resource | Status | Description |
 |------|--------|-------------|
 | `.agents/skills/deepworkplan/guide/GUIDE.md` | ✅ Current | DWP methodology guide |
 | `.agents/skills/deepworkplan/spec/` | ✅ Current | Normative DWP specification |
 | `.agents/skills/deepworkplan/author/` | ✅ Current | Skill/agent authoring (`/skill-create`, `/agent-create`) |
+| `.agents/skills/deepworkplan/upgrade/` | ✅ Current | Skill upgrade check (`/dwp-upgrade`) |
 | `.agents/skills/deepworkplan/addons/dependency-upgrade/` | ✅ Current | Library upgrade addon (`/lib-upgrade`) |
-| `.dwp/plans/`, `.dwp/drafts/` | ✅ Current | Plan/draft outputs (git-ignored) |
+| `.agents/skills/ai-diff-reviewer/` | ✅ Current | Required local review (Flow A) |
+| `.review/extension.md` | ✅ Current | Repo-tailored reviewer overrides |
+| `.dwp/plans/` | ✅ Current | Plan outputs (git-ignored) |
 
 ### .agents/ Documentation
 

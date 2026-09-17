@@ -8,15 +8,17 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 |---------|-------------|
 | `pnpm run dev` | Start development server |
 | `pnpm run build` | Production build with type check |
-| `pnpm run biome:check` | Check code quality |
+| `pnpm run biome:check` | Check code quality (full) |
+| `pnpm exec biome check <path>` | Check code quality (scoped) |
 | `pnpm run biome:fix` | Auto-fix code issues |
-| `pnpm run astro:check` | TypeScript type checking |
+| `pnpm run astro:check` | TypeScript type checking (full; no scoped variant) |
 | `pnpm run md:check` | Verify every HTML page has a matching `.md` for agents |
 | `pnpm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
 | `pnpm run generate:openapi` | Regenerate `public/openapi.json` (also runs in `prebuild`) |
 | `pnpm run generate:agent-skills-index` | Regenerate the agent-skills discovery index (also runs in `prebuild`) |
-| `pnpm run test` | Run unit tests (Vitest) |
-| `pnpm run test:e2e` | Run end-to-end tests (Playwright) |
+| `pnpm run test` | Run unit tests (Vitest, full) |
+| `pnpm exec vitest run <path>` | Run unit tests (Vitest, scoped) |
+| `pnpm run test:e2e` | Run end-to-end tests (Playwright, full) |
 | `pnpm run images:optimize` | Convert staged images to WebP |
 | `pnpm run images:optimize:slides` | Convert staged slide images to WebP |
 | `pnpm run search:budgets` | Check search index performance budgets |
@@ -350,10 +352,16 @@ Full `package.json` scripts:
 ## Testing
 
 ```bash
-# Unit tests (Vitest)
+# Unit tests (Vitest) — full
 pnpm run test
 
-# E2E tests (Playwright)
+# Unit tests (Vitest) — scoped by file (verified: tests/unit/lib/blog.test.ts, 45 tests)
+pnpm exec vitest run tests/unit/lib/blog.test.ts
+
+# Lint (Biome) — scoped by file
+pnpm exec biome check src/lib/blog.ts
+
+# E2E tests (Playwright) — full
 pnpm run test:e2e
 
 # E2E test runner UI (interactive)

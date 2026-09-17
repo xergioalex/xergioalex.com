@@ -6,9 +6,9 @@ This document serves as the central reference for all available Skills and Agent
 
 | Type   | Tier 1 (Light) | Tier 2 (Standard) | Tier 3 (Heavy) | Total |
 |--------|:--------------:|:------------------:|:--------------:|:-----:|
-| Skills | 13             | 8                  | 0              | 21    |
+| Skills | 13             | 8                  | 2              | 23    |
 | Agents | 0              | 5                  | 1              | 6     |
-| **Total** | **13**      | **13**             | **1**          | **27** |
+| **Total** | **13**      | **13**             | **3**          | **29** |
 
 ---
 
@@ -58,7 +58,8 @@ Complex planning and architecture.
 
 | Skill | Intent | Invocation | Model | Description |
 |-------|--------|-------------|-------|-------------|
-| *Add with /skill-create* | | | | |
+| deepworkplan | plan | `/dwp-create` and the other `/dwp-*` aliases | — | Vendored Deep Work Plan skill **5.5.1** (router + create/execute/refine/resume/status/verify/onboard/author/upgrade). Engine, not a repo-authored skill. |
+| ai-diff-reviewer | review | `/ai-diff-reviewer` | — | Vendored AI Diff Reviewer **v2.3.1** (Flow A). Required local review for DWP Final Review. Config: `.review/extension.md`. |
 
 ---
 
@@ -375,9 +376,9 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-09-17 | DWP 5.5.1 + AI Diff Reviewer v2.3.1 | Vendored DeepWorkPlan skill upgraded 2.15.0 → 5.5.1; added `/dwp-upgrade`; installed required local reviewer (Flow A) with `.review/extension.md`. |
 | 2026-04-26 | add-slide-deck skill added | New Tier 2 skill for creating slide decks — internal Reveal.js, external-embed, or external-link. Mandatory for new files in `src/content/slides/`. Added Slides & Presentations domain section (#2). |
 | 2026-03-23 | audit-series skill added | New Tier 2 skill for pre-publication blog series auditing — 9-step review covering series definition, post discovery, ordering validation, cross-post consistency, i18n parity, individual post summary checks, build validation, and final report. Companion to audit-post. |
-| 2026-03-23 | audit-post skill added | New Tier 2 skill for pre-publication blog post auditing — 10-step comprehensive review covering frontmatter, SEO, AEO, images, accessibility, content quality, i18n parity, resources, build validation. |
 
 ---
 

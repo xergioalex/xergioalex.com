@@ -56,12 +56,14 @@ skill's own `shared/auth.md` flow.
 
 | Want | Offer |
 |------|-------|
-| **Dailybot skill** (recommended — brings consent/auth + `report`) | `npx skills add DailybotHQ/agent-skill` · OpenClaw `openclaw skills install dailybot` · `git clone https://github.com/DailybotHQ/agent-skill.git` + `./setup.sh` |
-| **Dailybot CLI only** (developer explicitly wants the binary) | `pip install dailybot-cli` (Py 3.10+) · `brew install dailybothq/tap/dailybot` (macOS) · `curl -sSL https://cli.dailybot.com/install.sh \| bash` **only with the skill's checksum/consent verification** |
+| **Dailybot skill** (recommended — brings consent/auth + `report`) | `npx --yes skills add DailybotHQ/agent-skill@v3.10.3 --skill dailybot -y` (**pinned to a published tag**; content hash recorded in `skills-lock.json`) · OpenClaw `openclaw skills install dailybot` (registry-managed pin) |
+| **Dailybot CLI only** (developer explicitly wants the binary) | `pip install 'dailybot-cli>=3.7.0'` (Py 3.10+) · `brew install dailybothq/tap/dailybot` (macOS) · vendor's verified installer flow (macOS / Linux / Windows) via [`shared/auth.md`](https://github.com/DailybotHQ/agent-skill/blob/main/skills/dailybot/shared/auth.md) — `download → verify SHA-256 → execute`, never a one-line remote-installer pipe |
 
 > Prefer installing the **skill** — it owns the SHA-256-verified CLI install and
 > the OTP/API-key auth flow. Only surface the raw CLI commands when the developer
-> wants the CLI without the skill. Never recommend `curl ... | bash` unverified.
+> wants the CLI without the skill. Never recommend piping a remote installer to
+> a shell (any variant of "fetch from the network and execute in one line") —
+> use a package manager or the vendor's documented download-then-verify flow.
 
 ## 3. Auth — point at the Dailybot skill, do not reinvent
 
@@ -146,27 +148,30 @@ Decision notes:
 
 ---
 
-## 4b. Offer deterministic hook enforcement (skill >= 1.6.0, CLI >= 1.12.0)
+## 4b. Offer deterministic hook enforcement (CLI >= 3.7.0)
 
-The §4 wiring is prompt-layer — it relies on the model remembering. When the
-installed Dailybot skill/CLI versions support it, also offer (opt-in, show the
-exact config first) to commit the repo-level harness hook config so the harness
-itself reminds the agent about unreported work at end of turn:
+The §4 wiring is prompt-layer — it relies on the model remembering. When
+`dailybot-cli` is **>= 3.7.0** (the unified floor for the current skill pack,
+currently **3.10.3**), also offer (opt-in, show the exact config first) to commit
+the repo-level harness hook config so the harness itself reminds the agent about
+unreported work at end of turn:
 
 ```bash
-# Version gate — only offer when both hold
-dailybot --version          # >= 1.12.0 (the `dailybot hook` command group)
-grep -m1 'version:' ~/.*/skills/dailybot/SKILL.md   # >= 1.6.0 (report/hooks.md)
+# Version gate — only offer when the CLI meets the floor
+dailybot --version          # >= 3.7.0 (hooks, chat, authoring, browse/read)
+dailybot version --check      # confirms whether an upgrade is available
 ```
 
 Reason against the repo, then merge (never overwrite) the config the Dailybot
 skill's `report/hooks.md` documents — Claude Code `.claude/settings.json` (or
-`.agents/settings.json` where `.claude → .agents`), Cursor `.cursor/hooks.json`,
+`.agents/settings.json` where `.claude → .agents`), Cursor `.cursor/hooks.json`
+(or via `.cursor → .agents`),
 other harnesses per its table. Decision notes:
 
 - **Defer the mechanics** — templates, output formats (`--format claude|cursor|generic`),
-  anti-noise gates, and uninstall all live in the Dailybot skill's
-  `report/hooks.md`; do not duplicate them into the repo docs.
+  auto-activation triggers (`report/triggers.md`), anti-noise gates, and uninstall
+  all live in the Dailybot skill's `report/hooks.md`; do not duplicate them into
+  the repo docs.
 - **No double-reporting by construction:** every successful
   `dailybot agent update` (any §4 lifecycle event) resets the hook ledger.
   The hooks are the deterministic backstop for a missed lifecycle event.
@@ -175,9 +180,10 @@ other harnesses per its table. Decision notes:
   `dailybot hook dismiss` (if not) — never ignored silently, never blocking.
 - **Committed policy knobs** live in `.dailybot/profile.json`:
   `"report": {"min_interval_minutes": 30, "nudge": false}` turns reminders off
-  for the repo while keeping manual reporting.
-- **Older versions:** skip the offer, suggest `dailybot upgrade` once, and let
-  the §4 wiring stand alone.
+  for the repo while keeping manual reporting; `"mode": "continuous"` nudges
+  non-commit work (research, docs, plans) sooner in research-heavy repos.
+- **Older CLI:** below 3.7.0 → skip the offer, suggest `dailybot upgrade` once,
+  and let the §4 wiring stand alone.
 
 ---
 
@@ -187,10 +193,12 @@ other harnesses per its table. Decision notes:
   without explicit acceptance.
 - **Defer auth:** never prompt for or store credentials; point at the Dailybot
   skill's `shared/auth.md`.
-- **Verified install only:** never recommend `curl ... install.sh | bash`
-  without the skill's checksum/consent verification.
+- **Verified install only:** never recommend piping a remote installer to a
+  shell without the skill's checksum/consent verification. Prefer a package
+  manager (`pip`, `brew`) or the skill's documented `download → verify SHA-256
+  → execute` flow — never a one-line `fetch-and-execute` pipe.
 - **Never block:** the wired report step is best-effort; absence, auth failure,
   network errors, or `.dailybot/disabled` mean skip-and-continue — warn once, no
   retries, no diagnostic loop. `execute` always succeeds regardless.
-- **Vendor-neutral:** never imply DWP requires Dailybot. A repo with zero addons
+- **Vendor-neutral:** never imply DWP requires Dailybot. A repo with zero optional addons
   is fully conformant.

@@ -2,6 +2,10 @@
 
 **Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others). Ensures all agents work with consistent guidelines and patterns.
 
+DWP standard: 5.0.0 (onboarded 2026-06-12; upgraded 2026-09-17; skill 5.5.1)
+
+Local review: AI Diff Reviewer v2.3.1 (Flow A — vendored skill at `.agents/skills/ai-diff-reviewer/` plus `.review/extension.md`). Flow B (CI Action) is not installed.
+
 ## Detailed Documentation
 
 **Comprehensive guides for specific tasks:**
@@ -252,23 +256,43 @@ See **[Accessibility Guide](docs/ACCESSIBILITY.md)**.
 
 Multiple AI agents collaborate on this codebase. When updating agent guidance, mirror changes across all relevant files. See **[AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)**.
 
+## Working principles
+
+Work with autonomy, ownership, and sound judgment. These defaults apply to ordinary work and plans; they never override host permissions, a narrower requested scope, plan gates, or this repository's approval rules (do not push `main` without confirmation; do not clobber handwritten docs).
+
+- **Own the outcome.** Carry authorized work through investigation, execution, and validation (`pnpm run test` / scoped Vitest, `pnpm run biome:check`, `pnpm run astro:check` as the change requires) until the request is complete or a concrete blocker stops progress.
+- **Be resourceful before asking.** Read `AGENTS.md`, `docs/`, `.agents/`, and the code. Resolve questions those sources already answer.
+- **Make routine decisions independently.** Choose stack-fitting approaches (pnpm, Biome, Page Wrapper, `client:visible`) without confirmation for already-authorized steps.
+- **Ask when judgment or authorization is missing.** New tags, destructive doc rewrites, pushing `main`, or installing optional addons need an explicit yes. Bring options and a recommendation.
+- **Make approvals concrete.** Prepare the reviewable result first; name the action and why it needs approval.
+- **Work through obstacles.** Investigate failures and retry within scope. Escalate when user input or an external change is required.
+- **Respect intent and scope.** Analysis stays analysis. Do not silently turn a small fix into a Deep Work Plan, and do not expand into unrelated refactors.
+- **Apply proportionate rigor.** Match validation to the touched surface using [Testing Guide](docs/TESTING_GUIDE.md). Shared `src/lib/` or toolchain files take the full unit suite.
+- **Communicate directly and precisely.** Lead with the result. Separate verified facts from assumptions.
+- **Verify before declaring completion.** Run the selected gates, fix what they catch, and report what was (and was not) checked.
+
 ## Quick Commands
 
+Gates are selected from the touched surface using [Testing Guide](docs/TESTING_GUIDE.md). Fall back to the full command when scoping cannot cover the change.
+
 ```bash
-pnpm run dev                # Dev server (http://localhost:4444)
-pnpm run build              # Production build (prebuild runs images:webp)
-pnpm run astro:preview      # Preview production build
-pnpm run biome:check        # Lint and format check
-pnpm run biome:fix          # Auto-fix lint issues
-pnpm run astro:check        # TypeScript type checking
-pnpm run test               # Run unit tests
-pnpm run test:coverage      # Tests with coverage
-pnpm run images:optimize    # Process staged images
-pnpm run md:check           # Verify every HTML page has a matching .md for agents
-pnpm run md:check:strict    # Same as above; exits 1 on missing (for CI)
-pnpm run lighthouse         # Lighthouse audit
-pnpm run release            # Bump version and release commit
-pnpm run ncu:check          # Check for package updates
+pnpm run dev                              # Dev server (http://localhost:4444)
+pnpm run build                            # Production build (prebuild generators + astro check)
+pnpm run astro:preview                    # Preview production build
+pnpm run biome:check                      # Lint/format check (full)
+pnpm exec biome check src/lib/blog.ts     # Lint/format check (scoped — verified)
+pnpm run biome:fix                        # Auto-fix lint issues
+pnpm run astro:check                      # TypeScript type checking (full; no file-scoped variant)
+pnpm run test                             # Unit tests (full)
+pnpm exec vitest run tests/unit/lib/blog.test.ts  # Unit tests (scoped — verified: 45 tests)
+pnpm run test:coverage                    # Tests with coverage
+pnpm run test:e2e                         # Playwright e2e (full)
+pnpm run images:optimize                  # Process staged images
+pnpm run md:check                         # Verify every HTML page has a matching .md for agents
+pnpm run md:check:strict                  # Same as above; exits 1 on missing (for CI)
+pnpm run lighthouse                       # Lighthouse audit
+pnpm run release                          # Bump version and release commit
+pnpm run ncu:check                        # Check for package updates
 ```
 
 Full command reference: **[Development Commands](docs/DEVELOPMENT_COMMANDS.md)**.
@@ -462,9 +486,30 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 - [ ] Performance: lightest hydration, minimal JS
 - [ ] Commit message in English (conventional format)
 
+## Deep Work Plans — invocation
+
+Structured work runs through the local DWP flows (`.agents/commands/dwp-*`
+delegators; the flows live in `.agents/skills/deepworkplan/` — discovery is
+local, no network service is consulted):
+
+| Intent | Route |
+|---|---|
+| "plan this work", "create a plan" | `/dwp-create` |
+| "execute / run the plan" | `/dwp-execute` |
+| "continue / resume the interrupted plan" | `/dwp-resume` |
+| "plan status", "what's left" | `/dwp-status` (read-only) |
+| "verify the repo / the plan" | `/dwp-verify` (read-only) |
+| "upgrade DWP" | `/dwp-upgrade` (read-only until accepted) |
+| ordinary direct edit ("fix this", "rename that") | done directly — never silently becomes a plan |
+
+Hosts without slash commands invoke the same flows by name
+(`#deepworkplan-create` or plain text). `trust`/`auto` authorizes
+unattended continuation within the requested flow; it is not a flow
+selector, and read-only routes stay read-only.
+
 ## Skills & Agents
 
-- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `add-slide-deck`, `promote-post`, `optimize-image`
+- **Skills** — Reusable procedures via slash commands: `quick-fix`, `doc-edit`, `pr-review-lite`, `fix-lint`, `write-tests`, `type-fix`, `refactor-safe`, `security-check`, `git-commit-push`, `translate-sync`, `add-blog-post`, `add-slide-deck`, `promote-post`, `optimize-image`, plus vendored `deepworkplan` (5.5.1) and `ai-diff-reviewer` (v2.3.1)
 - **Agents** — Specialized workers: `reviewer`, `executor`, `architect`, `security-auditor`, `i18n-guardian`, `content-writer`
 - **Critical policy:** New blog posts MUST use `/add-blog-post` skill; new slide decks MUST use `/add-slide-deck` skill
 - **Management:** `/skill-list`, `/agent-list`, `/skill-create`, `/agent-create`
