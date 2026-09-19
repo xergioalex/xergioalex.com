@@ -57,7 +57,7 @@ A modern, fast, and fully bilingual personal website built with [Astro](https://
 
 ## 🚀 Quick Start
 
-> Requires **Node.js 24+** (CI runs on 24.15.0). The package manager is
+> Requires **Node.js 24+** (CI runs on 24.21.0). The package manager is
 > **pnpm**, pinned via Corepack in `package.json#packageManager`. Enable it
 > once with `corepack enable`; the dev container does this automatically.
 
@@ -68,6 +68,16 @@ pnpm run dev
 ```
 
 Visit **http://localhost:4444** to preview.
+
+Prefer a container? Open the project in Cursor / VS Code with the Dev Containers
+plugin, or start the same stack from a plain terminal:
+
+```bash
+bash dev.sh setup && bash dev.sh build && bash dev.sh up && bash dev.sh shell
+```
+
+Both paths produce the same containers. See
+[Development Commands](docs/DEVELOPMENT_COMMANDS.md#dev-containers-without-an-editor-devsh).
 
 ---
 

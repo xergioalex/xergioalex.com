@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Login bash may source this from /etc/profile.d AND ~/.bashrc. Skip the
+# second load in the same shell so the welcome message is not printed twice.
+# Do not export the guard: child processes (PATH shims, nested shells) must
+# still be able to source this file and define the wrapper functions.
+if [ -n "${_XERGIOALEX_CUSTOM_COMMANDS_LOADED:-}" ]; then
+	return 0 2>/dev/null || exit 0
+fi
+_XERGIOALEX_CUSTOM_COMMANDS_LOADED=1
+
 function print.success {
 	GREEN="\033[0;32m"
   RESET="\033[0m"
