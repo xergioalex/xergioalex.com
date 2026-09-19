@@ -64,3 +64,4 @@ cli/*.tgz
 cli/package-lock.json
 cli/node_modules/
 cli/.npmrc
+public/images/blog/_staging/
