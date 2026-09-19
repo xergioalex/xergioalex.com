@@ -4,14 +4,30 @@ Dev container for xergioalex.com: Node 24, pnpm, and a shared suite of Claude, C
 
 ## Quick start
 
+From the repository root, `dev.sh` starts the same containers the Dev Containers
+plugin starts — no editor required:
+
+```bash
+bash dev.sh setup     # env files, networks, .devcontainer/
+bash dev.sh build
+bash dev.sh up
+bash dev.sh shell     # login shell as `node` in /app
+```
+
+Or open the project in Cursor / VS Code and let the Dev Containers plugin do it.
+Both paths produce the same containers and can be used interchangeably. See
+[Development Commands → Dev Containers Without an Editor](../../docs/DEVELOPMENT_COMMANDS.md#dev-containers-without-an-editor-devsh).
+
+Raw compose still works, but you have to name the project yourself — the
+launcher and the plugin both use `xergioalexlocal`, and letting compose default
+to the directory name creates a second, conflicting stack:
+
 ```bash
 cd docker/local
 bash setup.sh
-docker compose build
-docker compose up -d
+docker compose -p xergioalexlocal build
+docker compose -p xergioalexlocal up -d xergioalexcomvscode
 ```
-
-Attach to the dev container (VS Code Dev Containers, or `docker compose exec xergioalexcomvscode bash`).
 
 ## Z.AI GLM Coding Plan (optional)
 
