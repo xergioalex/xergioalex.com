@@ -9,13 +9,11 @@ keywords: ['jev typesafe system one model', 'jev model decisions not text', 'nou
 author: 'sergio-florez'
 ---
 
-On September 15th a startup called TypeSafe launched a model called Jev, and my feed would not shut up about it. The post that stuck with me came from Sayed Allam: *"LLMs to Jev is like CPU to GPU moment."* A thousand people replied some version of "this changes everything."
+On September 15th, a startup called TypeSafe released Jev, a model with an unusual constraint: it cannot generate text. It reads a state — a support ticket, an email, a document — answers a set of typed questions about it, and returns numbers: a choice, a score, a probability. That is the entire product. When the launch drew comparisons like *"LLMs to Jev is like CPU to GPU moment"* (Sayed Allam), and the Hacker News thread collected 1,900 points, the reasonable question is what all the noise is actually about.
 
-My first reaction was: really? A model that can't write? Not "can't write well" — architecturally cannot produce a sentence. It reads a blob of context, answers a handful of yes/no/multiple-choice questions about it, and returns numbers. That's the product. And this is what has Hacker News at 1,900 points?
+Because on paper, there is very little here. Reading context and answering multiple-choice questions is the least glamorous job in machine learning — a zero-shot classifier, as more than one commenter put it. The interesting part is what sits underneath: a non-autoregressive architecture that emits every probability in parallel, a training objective tuned for calibrated uncertainty instead of persuasive prose, and pricing — $42 per billion tokens, output free — that only works if the whole stack is genuinely different. The distance between what Jev appears to be and what it takes to build is the real story.
 
-I've been here before. In March I didn't get the hype around [PreTeXt](/blog/pretext-programmable-text-layout/), a text measurement library, and it took me building 39 demos to understand why it mattered. So I did the same thing here: read everything, then point my terminal at the real API and run the numbers myself. TypeSafe publishes honest docs — more on that, it's rare — and their launch post even names the file where they admit what their model is bad at.
-
-Three days and six experiments later: I get it. And the reason I get it is dumber and more interesting than the hype.
+So I did what I did in March with [PreTeXt](/blog/pretext-programmable-text-layout/), another release that looked trivial until it wasn't: I read the complete documentation, then pointed my terminal at the live API and ran my own numbers instead of citing theirs. Six experiments and a 16-module lab later, I have a defensible answer — and it starts with TypeSafe's own honesty. Their launch post names the biases in its benchmarks; their docs include a page listing exactly what the model is bad at.
 
 ---
 
@@ -70,7 +68,7 @@ All three questions ride on one call. Every one of them is evaluated **in parall
 
 ## The embarrassingly simple part
 
-Here's what I keep turning over. Every ingredient of this existed before September 15th. LLMs expose logprobs. "Zero-shot classifier" is a decades-old idea (a commenter on Hacker News called Jev exactly that, and they weren't wrong). Routers, guardrails, semantic scores — people have been coercing GPT-shaped models into emitting JSON for years, then validating and re-trying and paying for it.
+Every ingredient of this existed before September 15th. LLMs expose logprobs. "Zero-shot classifier" is a decades-old idea (a commenter on Hacker News called Jev exactly that, and they weren't wrong). Routers, guardrails, semantic scores — people have been coercing GPT-shaped models into emitting JSON for years, then validating and re-trying and paying for it.
 
 The joke is that TypeSafe knows this. Their [launch post](https://typesafe.ai/blog/introducing-system-one-models-and-jev) describes Jev as *"a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out."* The model is **non-autoregressive** — it outputs all probabilities in parallel instead of generating token by token — and it's trained with something they call RLCD (reinforcement learning for calibrated decisions) instead of the RLHF that makes chatbots sound confident. The founder, Diogo Almeida, co-invented RLHF at OpenAI and then spent two years in stealth building the version that optimizes for *calibration* instead of *sounding right*. When something like this comes from the person who invented the thing it's replacing, I pay attention.
 
@@ -82,7 +80,7 @@ Which brings us to the numbers.
 
 ## So I ran the numbers
 
-Their benchmark claims (40–200x faster than frontier LLMs) are self-graded — their own launch post admits this, which I respect but don't cite. So I measured what I could measure myself, from my laptop, against the live API. Pricing is public: **$42 per billion input tokens, output free**. My first probe call consumed 370 input tokens. That's $0.0000155.
+Their benchmark claims — 40–200x faster than frontier LLMs — are self-graded. Their own launch post admits it, which I respect; it is also why I don't cite those numbers. I measured what I could measure myself: my laptop, the live API, published scripts. Pricing is public: **$42 per billion input tokens, output free**. My first probe call consumed 370 input tokens. That's $0.0000155.
 
 **Experiment 1 — is latency really flat?** The docs claim adding questions barely changes response time. I threw up to 64 questions at one support ticket:
 
@@ -91,7 +89,7 @@ Their benchmark claims (40–200x faster than frontier LLMs) are self-graded —
   <figcaption>One to 64 questions in a single call: 502ms → 518ms. The p95 (dashed) spikes once at 755ms and that was my network, not the model.</figcaption>
 </figure>
 
-Sixty-three extra questions cost sixteen milliseconds. That is the "parallel and isolated" claim, verified, and it's the unlock for everything below.
+Sixty-three extra questions cost sixteen milliseconds. That is the "parallel and isolated" claim, verified — and it is the unlock for everything below.
 
 **Experiment 2 — same decisions, Jev vs a real LLM.** Five support tickets, three decisions each (route the ticket, is it urgent, how frustrated is the customer). Jev answered with one call per ticket. Grok 4.3 answered with 15 sequential calls using a strict JSON prompt — the way most agents do routing today.
 
@@ -134,7 +132,7 @@ Here's the real tree running live on a duplicate-charge ticket (this screenshot 
   <figcaption>Module 13 and 14 of jev-lab, running against the live API: a 20-ticket queue triaged for $0.0007 total.</figcaption>
 </figure>
 
-But here's the thing I got wrong on the first try, and it matters. I built the tree the obvious way: evaluate a node, follow the branch, evaluate the next node — one API call per node. It works. It's also **1.8x more expensive than it needs to be**, because every call re-sends the state. The cheap way is TypeSafe's own "speculative fan-out" pattern: throw *all* the tree's questions at the API in one call and do the branching in code, ignoring answers you don't need. Same answers, 20/20 tickets, half the tokens:
+I built my first version the obvious way: evaluate a node, follow the branch, evaluate the next — one API call per node. It works, and it is **1.8x more expensive than it needs to be**, because every call re-sends the state. The cheap way is TypeSafe's own "speculative fan-out" pattern: throw *all* the tree's questions at the API in one call and do the branching in code, ignoring answers you don't need. Same answers, 20/20 tickets, half the tokens:
 
 <figure>
   <img src="/images/blog/posts/jev-decisions-instead-of-text/chart-e4-cost.svg" alt="Bar chart comparing decision tree costs: sequential at 34 dollars per million decisions versus 19 dollars with speculative fan-out" loading="lazy" width="720" height="400" />
@@ -147,11 +145,11 @@ A complete AI decision tree: two thousandths of a cent per decision. Twenty tick
 
 ## Why this changes things
 
-**Your next router might not be an LLM.** I measured a confidence-gated escalation pattern: Jev routes everything cheap; low-confidence cases escalate to a big model. On my eight tickets, honest finding — the escalation *hurt*. Jev's hedged answers were correct; the one ticket where I "escalated" to the LLM's confident answer, the LLM was wrong. Confidence gates buy predictability and auditability, not automatic accuracy. Measure your own break-even. (The gate still won on the thing that matters operationally: you learn exactly which 12% of traffic needs the expensive model.)
+**Your next router might not be an LLM.** I measured a confidence-gated escalation pattern: Jev routes everything cheap; low-confidence cases escalate to a big model. On my eight tickets, the honest finding is that the escalation *hurt*. Jev's hedged answers were correct; the one ticket where I "escalated" to the LLM's confident answer, the LLM was wrong. Confidence gates buy predictability and auditability, not automatic accuracy. Measure your own break-even. (The gate still won on the thing that matters operationally: you learn exactly which 12% of traffic needs the expensive model.)
 
 **Agents are sitting on a pile of expensive non-decisions.** A coding agent makes dozens of tiny judgments per task: which tool, is this step safe, does this output look sane, should this PR get a full review. Today those judgments cost LLM calls — most of an agent's token bill is this plumbing, not the writing of code. My lab's module 16 is that idea as a tool: a PR description goes in, a review-effort verdict comes out, ~500 tokens. On my 20 synthetic PRs it caught 18/20 of the high/critical ones. If Anthropic and OpenAI wired this kind of model into their agents' decision paths, the cost curves would move. I built a what-if model (assumptions shown, not a measurement): an agent fleet making 40,000 internal decisions a day costs ~$634/month as sequential LLM calls, ~$1.80 as batched Jev questions.
 
-**And yes — everyone is going to copy it.** That's not a risk to the thesis, it *is* the thesis. The idea is embarrassingly simple: judge, don't generate; evaluate in parallel; calibrate the probabilities. The hard parts are the parts you can't fake — the training objective that makes confidence honest, the non-autoregressive architecture that makes it cheap. PreTeXt got re-implemented too; the value was in understanding what text measurement unlocked. Same here.
+**And yes — everyone is going to copy it.** That's not a risk to the thesis, it *is* the thesis. The idea is embarrassingly simple: judge, don't generate; evaluate in parallel; calibrate the probabilities. The hard parts are the parts you can't fake — the training objective that makes confidence honest, the non-autoregressive architecture that makes it cheap. PreTeXt got re-implemented within weeks; the lasting value was understanding what text measurement unlocked. I expect the same shape here.
 
 ---
 

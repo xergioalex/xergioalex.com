@@ -9,13 +9,11 @@ keywords: ['qué es jev typesafe', 'modelo de ia que no genera texto', 'jev syst
 author: 'sergio-florez'
 ---
 
-El 15 de septiembre una startup llamada TypeSafe lanzó un modelo llamado Jev, y mi feed no paró de hablar de ello. El post que me quedó pegado fue de Sayed Allam: *"LLMs to Jev is like CPU to GPU moment."* ("De los LLMs a Jev es como el momento CPU a GPU"). Mil personas respondieron alguna versión de "esto lo cambia todo".
+El 15 de septiembre, una startup llamada TypeSafe lanzó Jev, un modelo con una restricción inusual: no puede generar texto. Lee un estado —un ticket de soporte, un correo, un documento—, responde un conjunto de preguntas tipadas sobre él y devuelve números: una elección, una puntuación, una probabilidad. Ese es el producto completo. Cuando el lanzamiento provocó comparaciones como *"LLMs to Jev is like CPU to GPU moment"* ("De los LLMs a Jev es como el momento CPU a GPU", Sayed Allam), y el hilo de Hacker News acumuló 1,900 puntos, la pregunta razonable es de qué va tanto ruido.
 
-Mi primera reacción fue: ¿en serio? ¿Un modelo que no sabe escribir? Y no digo "escribe mal" — es que arquitectónicamente no puede producir una frase. Lee un bloque de contexto, responde unas preguntas de sí/no/selección múltiple y devuelve números. Ese es el producto. ¿Y esto tiene a Hacker News en 1,900 puntos?
+Porque sobre el papel hay muy poco aquí. Leer contexto y responder preguntas de selección múltiple es el trabajo menos glamoroso del aprendizaje automático — un clasificador zero-shot, como lo resumió más de un comentarista. Lo interesante es lo que hay debajo: una arquitectura no autorregresiva que emite todas las probabilidades en paralelo, un objetivo de entrenamiento construido para incertidumbre calibrada en lugar de prosa persuasiva, y un precio —$42 por mil millones de tokens, salida gratis— que solo funciona si toda la pila es genuinamente diferente. La distancia entre lo que Jev parece ser y lo que toma construirlo es la historia real.
 
-Ya he estado aquí antes. En marzo no entendía el hype alrededor de [PreTeXt](/es/blog/pretext-programmable-text-layout/), una librería de medición de texto, y me tomaron 39 demos entender por qué importaba. Así que hice lo mismo: lo leí todo y luego apunté mi terminal a la API real a correr los números yo mismo. TypeSafe publica documentación honesta — ya vuelvo a eso, es raro — y su post de lanzamiento hasta nombra la página donde admiten en qué es malo su modelo.
-
-Tres días y seis experimentos después: lo entiendo. Y la razón por la que lo entiendo es más tonta y más interesante que el hype.
+Así que hice lo que hice en marzo con [PreTeXt](/es/blog/pretext-programmable-text-layout/), otro lanzamiento que parecía trivial hasta que dejó de serlo: leí la documentación completa y luego apunté mi terminal a la API en vivo a correr mis propios números en lugar de citar los de ellos. Seis experimentos y un laboratorio de 16 módulos después, tengo una respuesta defendible — y empieza con la honestidad de TypeSafe. Su post de lanzamiento nombra los sesgos de sus benchmarks; su documentación incluye una página que enumera exactamente en qué es malo el modelo.
 
 ---
 
@@ -70,7 +68,7 @@ Las tres preguntas viajan en una sola llamada. Cada una se evalúa **en paralelo
 
 ## La parte vergonzosamente simple
 
-Esto es lo que no logro sacar de mi cabeza. Cada ingrediente de esto existía antes del 15 de septiembre. Los LLMs exponen logprobs. "Clasificador zero-shot" es una idea de hace décadas (un comentarista en Hacker News le llamó a Jev exactamente eso, y no estaba equivocado). Routers, guardrails, puntuaciones semánticas — la gente lleva años forzando modelos con forma de GPT a emitir JSON, y luego validando, reintentando y pagando la factura.
+Cada ingrediente de esto existía antes del 15 de septiembre. Los LLMs exponen logprobs. "Clasificador zero-shot" es una idea de hace décadas (un comentarista en Hacker News le llamó a Jev exactamente eso, y no estaba equivocado). Routers, guardrails, puntuaciones semánticas — la gente lleva años forzando modelos con forma de GPT a emitir JSON, y luego validando, reintentando y pagando la factura.
 
 La gracia es que TypeSafe lo sabe. Su [post de lanzamiento](https://typesafe.ai/blog/introducing-system-one-models-and-jev) describe a Jev como *"a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out."* ("Una llamada a función con inteligencia de frontera: estado no estructurado entra, decisiones probabilísticas tipadas salen"). El modelo es **no autorregresivo** — emite todas las probabilidades en paralelo en vez de generar token a token — y está entrenado con algo que llaman RLCD (aprendizaje por refuerzo para decisiones calibradas) en lugar del RLHF que hace que los chatbots suenen seguros. El fundador, Diogo Almeida, co-inventó RLHF en OpenAI y luego pasó dos años en modo sigiloso construyendo la versión que optimiza para *calibración* en vez de *sonar seguro*. Cuando algo así viene de la persona que inventó lo que está reemplazando, me presta atención.
 
@@ -82,7 +80,7 @@ Lo que nos lleva a los números.
 
 ## Así que corrí los números
 
-Sus benchmarks (40–200x más rápidos que LLMs de frontera) se califican a sí mismos — su propio post lo admite, lo cual respeto pero no cito. Así que medí lo que puedo medir yo mismo, desde mi portátil, contra la API en vivo. El precio es público: **$42 por mil millones de tokens de entrada, salida gratis**. Mi primera llamada de prueba consumió 370 tokens de entrada. Eso son $0.0000155.
+Sus benchmarks —40–200x más rápidos que LLMs de frontera— se califican a sí mismos. Su propio post lo admite, lo cual respeto; también es la razón por la que no cito esas cifras. Medí lo que podía medir yo mismo: mi portátil, la API en vivo, scripts publicados. El precio es público: **$42 por mil millones de tokens de entrada, salida gratis**. Mi primera llamada de prueba consumió 370 tokens de entrada. Eso son $0.0000155.
 
 **Experimento 1 — ¿la latencia es realmente plana?** La documentación dice que agregar preguntas casi no cambia el tiempo de respuesta. Le lancé hasta 64 preguntas a un solo ticket de soporte:
 
@@ -91,7 +89,7 @@ Sus benchmarks (40–200x más rápidos que LLMs de frontera) se califican a sí
   <figcaption>De 1 a 64 preguntas en una sola llamada: 502ms → 518ms. El p95 (línea punteada) sube una vez a 755ms y fue mi red, no el modelo.</figcaption>
 </figure>
 
-Sesenta y tres preguntas extra costaron dieciséis milisegundos. Esa es la afirmación de "paralelo y aislado", verificada, y es la llave de todo lo que viene abajo.
+Sesenta y tres preguntas extra costaron dieciséis milisegundos. Esa es la afirmación de "paralelo y aislado", verificada — y es la llave de todo lo que viene abajo.
 
 **Experimento 2 — las mismas decisiones, Jev contra un LLM real.** Cinco tickets de soporte, tres decisiones cada uno (enrutar el ticket, si es urgente, qué tan frustrado está el cliente). Jev respondió con una llamada por ticket. Grok 4.3 respondió con 15 llamadas secuenciales usando un prompt estricto de JSON — como hacen el enrutamiento la mayoría de agentes hoy.
 
@@ -134,7 +132,7 @@ Este es el árbol real corriendo en vivo sobre un ticket de cobro duplicado (la 
   <figcaption>Módulos 13 y 14 de jev-lab contra la API en vivo: una cola de 20 tickets triada por $0.0007 en total.</figcaption>
 </figure>
 
-Pero esto es lo que hice mal a la primera, y importa. Construí el árbol de la forma obvia: evaluar un nodo, seguir la rama, evaluar el siguiente — una llamada a la API por nodo. Funciona. También es **1.8 veces más caro de lo necesario**, porque cada llamada reenvía el estado. La forma barata es el patrón propio de TypeSafe llamado "speculative fan-out": lanzar *todas* las preguntas del árbol en una sola llamada y hacer la ramificación en el código, ignorando las respuestas que no necesites. Mismas respuestas, 20/20 tickets, la mitad de los tokens:
+Mi primera versión hacía lo obvio: evaluar un nodo, seguir la rama, evaluar el siguiente — una llamada a la API por nodo. Funciona, y es **1.8 veces más caro de lo necesario**, porque cada llamada reenvía el estado. La forma barata es el patrón propio de TypeSafe llamado "speculative fan-out": lanzar *todas* las preguntas del árbol en una sola llamada y hacer la ramificación en el código, ignorando las respuestas que no necesites. Mismas respuestas, 20/20 tickets, la mitad de los tokens:
 
 <figure>
   <img src="/images/blog/posts/jev-decisions-instead-of-text/chart-e4-cost.svg" alt="Gráfico de barras comparando costos de árboles de decisión: secuencial a 34 dólares por millón de decisiones contra 19 dólares con fan-out especulativo" loading="lazy" width="720" height="400" />
@@ -147,11 +145,11 @@ Un árbol de decisión completo con IA: dos milésimas de centavo por decisión.
 
 ## Por qué esto cambia las cosas
 
-**Tu próximo router puede no ser un LLM.** Medí el patrón de escalado por confianza: Jev enruta todo barato; los casos de baja confianza escalan a un modelo grande. En mis ocho tickets, hallazgo honesto — la escalada *empeoró* las cosas. Las respuestas desconfiadas de Jev eran correctas; en el único ticket donde "escalé" a la respuesta segura del LLM, el LLM estaba equivocado. Las compuertas de confianza compran previsibilidad y auditabilidad, no precisión automática. Mide tu propio punto de equilibrio. (La compuerta igual ganó en lo que importa operacionalmente: sabes exactamente qué 12% del tráfico necesita el modelo caro.)
+**Tu próximo router puede no ser un LLM.** Medí el patrón de escalado por confianza: Jev enruta todo barato; los casos de baja confianza escalan a un modelo grande. En mis ocho tickets, el hallazgo honesto es que la escalada *empeoró* las cosas. Las respuestas desconfiadas de Jev eran correctas; en el único ticket donde "escalé" a la respuesta segura del LLM, el LLM estaba equivocado. Las compuertas de confianza compran previsibilidad y auditabilidad, no precisión automática. Mide tu propio punto de equilibrio. (La compuerta igual ganó en lo que importa operacionalmente: sabes exactamente qué 12% del tráfico necesita el modelo caro.)
 
 **Los agentes están sentados sobre un montón de no-decisiones caras.** Un agente de código toma docenas de juicios pequeños por tarea: qué herramienta usar, si este paso es seguro, si esta salida se ve cuerda, si este PR merece revisión completa. Hoy esos juicios cuestan llamadas a LLM — la mayor parte de la factura de tokens de un agente es esta fontanería, no la escritura de código. El módulo 16 de mi laboratorio es esa idea convertida en herramienta: entra una descripción de PR, sale un veredicto de esfuerzo de revisión, ~500 tokens. En mis 20 PRs sintéticos atrapó 18/20 de los de riesgo alto/crítico. Si Anthropic y OpenAI conectaran este tipo de modelo a las rutas de decisión de sus agentes, las curvas de costo se moverían. Construí un modelo de escenario (supuestos a la vista, no es una medición): una flota de agentes que toma 40,000 decisiones internas al día cuesta ~$634/mes como llamadas secuenciales a LLM, ~$1.80 como preguntas agrupadas de Jev.
 
-**Y sí — todos lo van a copiar.** Eso no es un riesgo para la tesis, es la tesis. La idea es vergonzosamente simple: juzgar, no generar; evaluar en paralelo; calibrar las probabilidades. Las partes difíciles son las que no se pueden fingir — el objetivo de entrenamiento que hace honesta la confianza, la arquitectura no autorregresiva que la hace barata. A PreTeXt también lo reimplementaron; el valor estaba en entender qué desbloqueaba la medición de texto. Aquí mismo.
+**Y sí — todos lo van a copiar.** Eso no es un riesgo para la tesis, es la tesis. La idea es vergonzosamente simple: juzgar, no generar; evaluar en paralelo; calibrar las probabilidades. Las partes difíciles son las que no se pueden fingir — el objetivo de entrenamiento que hace honesta la confianza, la arquitectura no autorregresiva que la hace barata. A PreTeXt lo reimplementaron en cuestión de semanas; el valor duradero estuvo en entender qué desbloqueaba la medición de texto. Espero aquí la misma película.
 
 ---
 
