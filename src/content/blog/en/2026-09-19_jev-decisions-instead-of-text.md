@@ -9,11 +9,11 @@ keywords: ['jev typesafe system one model', 'jev model decisions not text', 'nou
 author: 'sergio-florez'
 ---
 
-On September 15th, a startup called TypeSafe released Jev, a model with an unusual constraint: it cannot generate text. It reads a state — a support ticket, an email, a document — answers a set of typed questions about it, and returns numbers: a choice, a score, a probability. That is the entire product. When the launch drew comparisons like *"LLMs to Jev is like CPU to GPU moment"* (Sayed Allam), and the Hacker News thread collected 1,900 points, the reasonable question is what all the noise is actually about.
+There is a model called Jev — the flagship release of a startup called TypeSafe — that operates under an unusual constraint: it cannot generate text. It reads a state — a support ticket, an email, a document — answers a set of typed questions about it, and returns numbers: a choice, a score, a probability. That is the entire product. The launch drew comparisons like *"LLMs to Jev is like CPU to GPU moment"* (Sayed Allam) and a 1,900-point Hacker News thread, which raises a fair question: what is all the noise actually about?
 
 Because on paper, there is very little here. Reading context and answering multiple-choice questions is the least glamorous job in machine learning — a zero-shot classifier, as more than one commenter put it. The interesting part is what sits underneath: a non-autoregressive architecture that emits every probability in parallel, a training objective tuned for calibrated uncertainty instead of persuasive prose, and pricing — $42 per billion tokens, output free — that only works if the whole stack is genuinely different. The distance between what Jev appears to be and what it takes to build is the real story.
 
-So I did what I did in March with [PreTeXt](/blog/pretext-programmable-text-layout/), another release that looked trivial until it wasn't: I read the complete documentation, then pointed my terminal at the live API and ran my own numbers instead of citing theirs. Six experiments and a 16-module lab later — both open-sourced as [jev-lab](https://github.com/xergioalex/jev-lab) — I have a defensible answer, and it starts with TypeSafe's own honesty. Their launch post names the biases in its benchmarks; their docs include a page listing exactly what the model is bad at.
+So I did what I did with [PreTeXt](/blog/pretext-programmable-text-layout/), another release that looked trivial until it wasn't: I read the complete documentation, then pointed my terminal at the live API and ran my own numbers instead of citing theirs. Six experiments and a 16-module lab later — both open-sourced as [jev-lab](https://github.com/xergioalex/jev-lab) — I have a defensible answer, and it starts with TypeSafe's own honesty. Their launch post names the biases in its benchmarks; their docs include a page listing exactly what the model is bad at.
 
 ---
 
@@ -68,7 +68,7 @@ All three questions ride on one call. Every one of them is evaluated **in parall
 
 ## The embarrassingly simple part
 
-Every ingredient of this existed before September 15th. LLMs expose logprobs. "Zero-shot classifier" is a decades-old idea (a commenter on Hacker News called Jev exactly that, and they weren't wrong). Routers, guardrails, semantic scores — people have been coercing GPT-shaped models into emitting JSON for years, then validating and re-trying and paying for it.
+Every ingredient of this existed before Jev did. LLMs expose logprobs. "Zero-shot classifier" is a decades-old idea (a commenter on Hacker News called Jev exactly that, and they weren't wrong). Routers, guardrails, semantic scores — people have been coercing GPT-shaped models into emitting JSON for years, then validating and re-trying and paying for it.
 
 The joke is that TypeSafe knows this. Their [launch post](https://typesafe.ai/blog/introducing-system-one-models-and-jev) describes Jev as *"a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out."* The model is **non-autoregressive** — it outputs all probabilities in parallel instead of generating token by token — and it's trained with something they call RLCD (reinforcement learning for calibrated decisions) instead of the RLHF that makes chatbots sound confident. The founder, Diogo Almeida, co-invented RLHF at OpenAI and then spent two years in stealth building the version that optimizes for *calibration* instead of *sounding right*. When something like this comes from the person who invented the thing it's replacing, I pay attention.
 
@@ -180,7 +180,7 @@ Don't use it when you need **generated text** — replies, code, summaries, anyt
 
 If you want to poke at it yourself: the lab is [github.com/xergioalex/jev-lab](https://github.com/xergioalex/jev-lab) — 16 modules, zero dependencies, the whole test suite runs with no API key, and every module has a `--live` flag. Start at module 13 and break my decision tree. There's a [playground](https://console.typesafe.ai/playground) if you want to try the API without writing anything.
 
-I came into this week thinking a model that can't write was a contradiction. I'm leaving with a router, a guardrail, a triage pipeline and two tools I'll actually keep using — all running on judgments that cost thousandths of a cent. The coal just got cheaper.
+I started digging into Jev half-expecting a model that can't write to be a contradiction. I'm coming out the other side with a router, a guardrail, a triage pipeline and two tools I'll actually keep using — all running on judgments that cost thousandths of a cent. The coal just got cheaper.
 
 Let's keep building.
 

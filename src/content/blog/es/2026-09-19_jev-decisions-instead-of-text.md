@@ -9,11 +9,11 @@ keywords: ['qué es jev typesafe', 'modelo de ia que no genera texto', 'jev syst
 author: 'sergio-florez'
 ---
 
-El 15 de septiembre, una startup llamada TypeSafe lanzó Jev, un modelo con una restricción inusual: no puede generar texto. Lee un estado —un ticket de soporte, un correo, un documento—, responde un conjunto de preguntas tipadas sobre él y devuelve números: una elección, una puntuación, una probabilidad. Ese es el producto completo. Cuando el lanzamiento provocó comparaciones como *"LLMs to Jev is like CPU to GPU moment"* ("De los LLMs a Jev es como el momento CPU a GPU", Sayed Allam), y el hilo de Hacker News acumuló 1,900 puntos, la pregunta razonable es de qué va tanto ruido.
+Existe un modelo llamado Jev —el lanzamiento insignia de una startup llamada TypeSafe— que opera bajo una restricción inusual: no puede generar texto. Lee un estado —un ticket de soporte, un correo, un documento—, responde un conjunto de preguntas tipadas sobre él y devuelve números: una elección, una puntuación, una probabilidad. Ese es el producto completo. El lanzamiento provocó comparaciones como *"LLMs to Jev is like CPU to GPU moment"* ("De los LLMs a Jev es como el momento CPU a GPU", Sayed Allam) y un hilo de 1,900 puntos en Hacker News, lo que plantea una pregunta justa: ¿de qué va tanto ruido?
 
 Porque sobre el papel hay muy poco aquí. Leer contexto y responder preguntas de selección múltiple es el trabajo menos glamoroso del aprendizaje automático — un clasificador zero-shot, como lo resumió más de un comentarista. Lo interesante es lo que hay debajo: una arquitectura no autorregresiva que emite todas las probabilidades en paralelo, un objetivo de entrenamiento construido para incertidumbre calibrada en lugar de prosa persuasiva, y un precio —$42 por mil millones de tokens, salida gratis— que solo funciona si toda la pila es genuinamente diferente. La distancia entre lo que Jev parece ser y lo que toma construirlo es la historia real.
 
-Así que hice lo que hice en marzo con [PreTeXt](/es/blog/pretext-programmable-text-layout/), otro lanzamiento que parecía trivial hasta que dejó de serlo: leí la documentación completa y luego apunté mi terminal a la API en vivo a correr mis propios números en lugar de citar los de ellos. Seis experimentos y un laboratorio de 16 módulos después —ambos abiertos como [jev-lab](https://github.com/xergioalex/jev-lab)— tengo una respuesta defendible, y empieza con la honestidad de TypeSafe. Su post de lanzamiento nombra los sesgos de sus benchmarks; su documentación incluye una página que enumera exactamente en qué es malo el modelo.
+Así que hice lo que hice con [PreTeXt](/es/blog/pretext-programmable-text-layout/), otro lanzamiento que parecía trivial hasta que dejó de serlo: leí la documentación completa y luego apunté mi terminal a la API en vivo a correr mis propios números en lugar de citar los de ellos. Seis experimentos y un laboratorio de 16 módulos después —ambos abiertos como [jev-lab](https://github.com/xergioalex/jev-lab)— tengo una respuesta defendible, y empieza con la honestidad de TypeSafe. Su post de lanzamiento nombra los sesgos de sus benchmarks; su documentación incluye una página que enumera exactamente en qué es malo el modelo.
 
 ---
 
@@ -68,7 +68,7 @@ Las tres preguntas viajan en una sola llamada. Cada una se evalúa **en paralelo
 
 ## La parte vergonzosamente simple
 
-Cada ingrediente de esto existía antes del 15 de septiembre. Los LLMs exponen logprobs. "Clasificador zero-shot" es una idea de hace décadas (un comentarista en Hacker News le llamó a Jev exactamente eso, y no estaba equivocado). Routers, guardrails, puntuaciones semánticas — la gente lleva años forzando modelos con forma de GPT a emitir JSON, y luego validando, reintentando y pagando la factura.
+Cada ingrediente de esto existía antes de que Jev existiera. Los LLMs exponen logprobs. "Clasificador zero-shot" es una idea de hace décadas (un comentarista en Hacker News le llamó a Jev exactamente eso, y no estaba equivocado). Routers, guardrails, puntuaciones semánticas — la gente lleva años forzando modelos con forma de GPT a emitir JSON, y luego validando, reintentando y pagando la factura.
 
 La gracia es que TypeSafe lo sabe. Su [post de lanzamiento](https://typesafe.ai/blog/introducing-system-one-models-and-jev) describe a Jev como *"a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out."* ("Una llamada a función con inteligencia de frontera: estado no estructurado entra, decisiones probabilísticas tipadas salen"). El modelo es **no autorregresivo** — emite todas las probabilidades en paralelo en vez de generar token a token — y está entrenado con algo que llaman RLCD (aprendizaje por refuerzo para decisiones calibradas) en lugar del RLHF que hace que los chatbots suenen seguros. El fundador, Diogo Almeida, co-inventó RLHF en OpenAI y luego pasó dos años en modo sigiloso construyendo la versión que optimiza para *calibración* en vez de *sonar seguro*. Cuando algo así viene de la persona que inventó lo que está reemplazando, me presta atención.
 
@@ -180,7 +180,7 @@ No lo uses cuando necesites **texto generado** — respuestas, código, resúmen
 
 Si quieres jugar con ello tú mismo: el laboratorio está en [github.com/xergioalex/jev-lab](https://github.com/xergioalex/jev-lab) — 16 módulos, cero dependencias, toda la suite de pruebas corre sin API key, y cada módulo tiene su bandera `--live`. Empieza en el módulo 13 y rómpeme el árbol de decisión. Hay un [playground](https://console.typesafe.ai/playground) si quieres probar la API sin escribir nada.
 
-Entré a esta semana pensando que un modelo que no puede escribir era una contradicción. Salgo con un router, un guardrail, un pipeline de triaje y dos herramientas que voy a seguir usando — todos corriendo sobre juicios que cuestan milésimas de centavo. El carbón acaba de abaratarse.
+Empecé a investigar Jev medio esperando que un modelo que no puede escribir fuera una contradicción. Salgo del otro lado con un router, un guardrail, un pipeline de triaje y dos herramientas que voy a seguir usando — todos corriendo sobre juicios que cuestan milésimas de centavo. El carbón acaba de abaratarse.
 
 Sigamos construyendo.
 
