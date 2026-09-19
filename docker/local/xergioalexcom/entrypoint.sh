@@ -360,6 +360,310 @@ setup_ssh_keys_for_user() {
 setup_ssh_keys_for_user "/home/node"
 chown -R node:node /home/node/.ssh 2>/dev/null || true
 
+# Make custom_commands.sh available in every shell herdr/SSH/agents can spawn.
+# grokx, claudex, pix, etc. are bash functions, not binaries. Without this:
+# - Login shells (SSH, herdr remote) skip ~/.bashrc → commands missing
+# - /bin/sh (herdr default when SHELL is unset) cannot see bash functions
+#   → `/bin/sh: 1: grokx: not found`
+setup_shell_for_custom_commands() {
+    USER_HOME="/home/node"
+    BASHRC="${USER_HOME}/.bashrc"
+    PROFILE="${USER_HOME}/.profile"
+    CUSTOM_COMMANDS="/app/docker/custom_commands.sh"
+    SOURCE_LINE="source ${CUSTOM_COMMANDS}"
+
+    usermod -s /bin/bash node 2>/dev/null || true
+
+    # Do not create ~/.bash_profile: bash would skip debian ~/.profile, which
+    # is what puts ~/.local/bin (herdr) on PATH for SSH login shells.
+    if [ ! -f "${PROFILE}" ] || ! grep -qF '.bashrc' "${PROFILE}" 2>/dev/null; then
+        printf '%s\n' \
+            '# POSIX login shells. Source bashrc only when running bash.' \
+            'if [ -n "${BASH_VERSION:-}" ] && [ -f "$HOME/.bashrc" ]; then' \
+            '  . "$HOME/.bashrc"' \
+            'fi' \
+            'if [ -d "$HOME/.local/bin" ]; then' \
+            '  PATH="$HOME/.local/bin:$PATH"' \
+            'fi' \
+            > "${PROFILE}"
+    fi
+
+    touch "${BASHRC}"
+    if ! grep -q 'custom_commands.sh' "${BASHRC}" 2>/dev/null; then
+        printf '\n%s\n' "${SOURCE_LINE}" >> "${BASHRC}"
+    fi
+
+    # PREPENDED, above Debian's `case $- in *i*) ;; *) return;; esac` guard.
+    # A non-interactive SSH command (`ssh host cmd`, `herdr --machine X cmd`) is
+    # neither a login shell nor interactive: it reads no /etc/profile.d and no
+    # ~/.profile, and bails out of ~/.bashrc at that guard on line 5. Anything
+    # appended to this file is therefore dead code for exactly the case that
+    # needs it most. Only PATH and the materialised environment go here --
+    # custom_commands.sh stays below the guard, because the /usr/local/bin
+    # shims already cover its functions for non-interactive callers.
+    if ! grep -q 'container-env-preamble' "${BASHRC}" 2>/dev/null; then
+        TMP_BASHRC="$(mktemp)"
+        {
+            printf '%s\n' \
+                '# container-env-preamble (entrypoint.sh) -- must stay ABOVE the' \
+                '# non-interactive guard below, or ssh-without-a-tty sees none of it.' \
+                'if [ -r "$HOME/.container_env" ]; then' \
+                '  . "$HOME/.container_env"' \
+                'fi' \
+                'for _d in /usr/local/share/pnpm/bin "$HOME/.local/bin" "$HOME/.cursor/bin" "$HOME/.opencode/bin" "$HOME/.grok/bin"; do' \
+                '  [ -d "$_d" ] || continue' \
+                '  case ":${PATH}:" in' \
+                '    *":${_d}:"*) ;;' \
+                '    *) PATH="${PATH}:${_d}" ;;' \
+                '  esac' \
+                'done' \
+                'unset _d' \
+                'export PATH' \
+                ''
+            cat "${BASHRC}"
+        } > "${TMP_BASHRC}"
+        cat "${TMP_BASHRC}" > "${BASHRC}"
+        rm -f "${TMP_BASHRC}"
+    fi
+
+    chown node:node "${BASHRC}" "${PROFILE}" 2>/dev/null || true
+
+    # NOTE: no 01-agent-cli-path.sh here. The image ships
+    # /etc/profile.d/01-container-tool-paths.sh, which APPENDS the tool dirs.
+    # The earlier version of this block prepended them, which pushed
+    # /home/node/.grok/bin ahead of /usr/local/bin and silently undid
+    # 00-container-node-first.sh -- the whole point of which is that the
+    # image's own node wins over an IDE-bundled one.
+
+    if [ ! -f /etc/profile.d/99-xergioalex-custom-commands.sh ]; then
+        printf '%s\n' \
+            '# Login shells (SSH, herdr remote). Dash cannot parse bash functions.' \
+            'if [ -n "${BASH_VERSION:-}" ] && [ -f /app/docker/custom_commands.sh ]; then' \
+            '  . /app/docker/custom_commands.sh' \
+            'fi' \
+            > /etc/profile.d/99-xergioalex-custom-commands.sh
+        chmod 0644 /etc/profile.d/99-xergioalex-custom-commands.sh
+    fi
+
+    # PATH shims: herdr, `ssh host grokx`, and `/bin/sh -c grokx` look up
+    # executables, not bash functions. Each shim re-sources custom_commands
+    # and invokes the function of the same name. Do not shim names that
+    # already exist as real binaries (herdr, claude, grok, pi, ...) or that
+    # collide with system tools (test, install, help).
+    SHIM="/usr/local/bin/custom-command-shim"
+    cat > "${SHIM}" << 'EOF'
+#!/bin/bash
+# SSH/herdr non-login shells do not inherit Docker ENV PATH. Put agent
+# binaries on PATH before resolving grok/claude/pi/etc. from the wrappers.
+for dir in \
+    /usr/local/share/pnpm/bin \
+    /usr/local/share/pnpm \
+    /home/node/.local/bin \
+    /home/node/.cursor/bin \
+    /home/node/.opencode/bin \
+    /home/node/.grok/bin \
+    /usr/local/bin
+do
+    case ":${PATH}:" in
+        *":${dir}:"*) : ;;
+        *) PATH="${dir}:${PATH}" ;;
+    esac
+done
+export PATH
+
+CUSTOM_COMMANDS="${CUSTOM_COMMANDS_FILE:-/app/docker/custom_commands.sh}"
+if [ ! -f "${CUSTOM_COMMANDS}" ]; then
+    echo "custom_commands.sh not found at ${CUSTOM_COMMANDS}" >&2
+    exit 127
+fi
+# shellcheck disable=SC1090
+source "${CUSTOM_COMMANDS}"
+cmd="$(basename "$0")"
+if ! declare -F "${cmd}" >/dev/null 2>&1; then
+    echo "${cmd}: custom command is not defined" >&2
+    exit 127
+fi
+"${cmd}" "$@"
+EOF
+    chmod 0755 "${SHIM}"
+
+    for cmd in \
+        grokx claudex claudex-glm claude-glm claude-xai \
+        codexx codex-azure codex-glm codex-xai cursorx \
+        opencodex opencode-azure opencode-glm opencode-xai \
+        pix pi-xai pi-azure pi-glm \
+        clinex cline-xai cline-azure clinex-azure cline-glm clinex-glm \
+        check fix codecheck lighthouse check_devcontainer
+    do
+        ln -sfn "${SHIM}" "/usr/local/bin/${cmd}"
+    done
+
+    echo "Custom commands: login profiles + PATH shims ready"
+}
+
+setup_shell_for_custom_commands
+
+# Setup SSH daemon for Herdr remote/multi-machine access
+# - Build authorized_keys from mounted host public keys
+# - Ensure correct permissions on ~/.ssh
+# - Generate host keys at runtime if missing (volume scenarios)
+# - Validate config and start sshd
+# - Patch allow_nested into volume-backed herdr config
+setup_ssh_daemon_for_herdr() {
+    SSH_DIR="/home/node/.ssh"
+    SSH_HOST_DIR="/home/node/.ssh_host"
+    HERDR_CONFIG_DIR="/home/node/.config/herdr"
+
+    # Ensure .ssh directory exists with correct mode
+    mkdir -p "${SSH_DIR}"
+    chmod 700 "${SSH_DIR}"
+
+    # Build authorized_keys from host public keys if present
+    if [ -d "${SSH_HOST_DIR}" ]; then
+        > "${SSH_DIR}/authorized_keys"
+        for pub in "${SSH_HOST_DIR}"/*.pub; do
+            if [ -f "$pub" ]; then
+                cat "$pub" >> "${SSH_DIR}/authorized_keys"
+                echo "" >> "${SSH_DIR}/authorized_keys"
+            fi
+        done
+        if [ -s "${SSH_DIR}/authorized_keys" ]; then
+            chmod 600 "${SSH_DIR}/authorized_keys"
+            chown node:node "${SSH_DIR}/authorized_keys"
+            echo "Herdr SSH: authorized_keys populated from host"
+        else
+            rm -f "${SSH_DIR}/authorized_keys"
+        fi
+    fi
+
+    # Host keys live in the ssh_host_keys volume, generated once. Not
+    # `ssh-keygen -A` into /etc/ssh: that path is baked into the image layer and
+    # is not persisted, so the container would mint a new identity on every
+    # recreate and every client that pinned the old key would refuse to connect
+    # until someone cleared known_hosts by hand.
+    mkdir -p /etc/ssh/host_keys
+    chmod 700 /etc/ssh/host_keys
+    if [ ! -f /etc/ssh/host_keys/ssh_host_ed25519_key ]; then
+        ssh-keygen -q -t ed25519 -N '' -f /etc/ssh/host_keys/ssh_host_ed25519_key
+        echo "Herdr SSH: generated a persistent ed25519 host key"
+    fi
+    if [ ! -f /etc/ssh/host_keys/ssh_host_rsa_key ]; then
+        ssh-keygen -q -t rsa -b 4096 -N '' -f /etc/ssh/host_keys/ssh_host_rsa_key
+        echo "Herdr SSH: generated a persistent rsa host key"
+    fi
+    chown root:root /etc/ssh/host_keys/ssh_host_* 2>/dev/null || true
+    chmod 600 /etc/ssh/host_keys/ssh_host_ed25519_key /etc/ssh/host_keys/ssh_host_rsa_key 2>/dev/null || true
+    chmod 644 /etc/ssh/host_keys/*.pub 2>/dev/null || true
+
+    # Volume-backed herdr config may predate these keys. Match comment-safe
+    # assignments only (the default file comments out default_shell).
+    mkdir -p "${HERDR_CONFIG_DIR}"
+    HERDR_TOML="${HERDR_CONFIG_DIR}/config.toml"
+    touch "${HERDR_TOML}"
+    if ! grep -qE '^[[:space:]]*allow_nested[[:space:]]*=' "${HERDR_TOML}" 2>/dev/null; then
+        printf '\n%s\n' '[experimental]' 'allow_nested = true' >> "${HERDR_TOML}"
+    fi
+    # Empty default_shell → $SHELL, then /bin/sh. Herdr panes then cannot see
+    # bash functions from custom_commands.sh (`/bin/sh: 1: grokx: not found`).
+    if ! grep -qE '^[[:space:]]*default_shell[[:space:]]*=' "${HERDR_TOML}" 2>/dev/null; then
+        printf '\n[terminal]\ndefault_shell = "/bin/bash"\nshell_mode = "login"\n' >> "${HERDR_TOML}"
+    fi
+    # New Herdr terminals open in the workspace, not in $HOME. The key is
+    # terminal.new_cwd -- `working_directory` looks right and is silently
+    # rejected ("unknown config key"), so this was confirmed against the
+    # TerminalConfig struct (default_shell / shell_mode / new_cwd) and then
+    # validated with `herdr config check`, which is also the only honest way to
+    # check this file: an invalid config is not partially applied, it is
+    # discarded wholesale and herdr falls back to defaults, so a grep that finds
+    # the line proves nothing about whether herdr ever read it.
+    if ! grep -qE '^[[:space:]]*new_cwd[[:space:]]*=' "${HERDR_TOML}" 2>/dev/null; then
+        if grep -qE '^\[terminal\]' "${HERDR_TOML}" 2>/dev/null; then
+            awk '/^\[terminal\]/ { print; print "new_cwd = \"/app\""; next } { print }' \
+                "${HERDR_TOML}" > "${HERDR_TOML}.tmp" && mv "${HERDR_TOML}.tmp" "${HERDR_TOML}"
+        else
+            printf '\n[terminal]\nnew_cwd = "/app"\n' >> "${HERDR_TOML}"
+        fi
+    fi
+    chown -R node:node "${HERDR_CONFIG_DIR}" 2>/dev/null || true
+
+    # Parse it, do not grep it. herdr discards an invalid config.toml entirely
+    # and runs on defaults, so a malformed file here would silently undo every
+    # setting above while every grep-based check still passed.
+    if command -v runuser >/dev/null 2>&1; then
+        HERDR_CHECK="$(runuser -u node -- bash -lc 'herdr config check' 2>&1 || true)"
+    else
+        HERDR_CHECK="$(su node -c 'bash -lc "herdr config check"' 2>&1 || true)"
+    fi
+    case "${HERDR_CHECK}" in
+        *"config: ok"*) echo "Herdr SSH: config.toml validated (new terminals open in /app)" ;;
+        *) echo "Herdr SSH: WARNING - config.toml rejected by herdr, it will run on defaults:"
+           printf '%s\n' "${HERDR_CHECK}" | head -5 ;;
+    esac
+
+    # Validate and start sshd
+    if /usr/sbin/sshd -t 2>/dev/null; then
+        /usr/sbin/sshd
+        echo "Herdr SSH: sshd started on container port 22 (host 22029)"
+    else
+        echo "Herdr SSH: sshd config validation failed; daemon not started"
+    fi
+}
+
+# Materialise the container environment for SSH sessions.
+#
+# sshd starts every session clean: nothing compose passed through `env_file` or
+# `environment` survives. `docker exec` DOES inherit it, which is why the same
+# command works in the editor terminal and fails in an SSH or Herdr pane with
+# "API key is not set" while the key is plainly set in the container. Dump the
+# live environment to a file and source it from a profile.d drop-in, which login
+# shells read (Herdr's config.toml pins shell_mode = "login").
+materialize_environment_for_ssh() {
+    ENV_FILE="/home/node/.container_env"
+
+    # Opened 0600 from the first byte, never written-then-chmod'd: this file ends
+    # up holding ZAI_CODING_API_KEY, XAI_API_KEY and AZURE_OPENAI_API_KEY, and a
+    # window where it is world-readable is a window too many.
+    (umask 077 && : > "${ENV_FILE}") || return 0
+
+    # PATH is deliberately excluded: /etc/profile rewrites it and the
+    # 00-/01- drop-ins put it back in the right order. Re-exporting Docker's ENV
+    # PATH here would race with them. HOME/PWD/SHLVL and friends are per-session
+    # facts, not configuration.
+    env | while IFS= read -r line; do
+        key="${line%%=*}"
+        val="${line#*=}"
+        case "${key}" in
+            PATH|HOME|PWD|OLDPWD|SHLVL|TERM|USER|LOGNAME|HOSTNAME|_) continue ;;
+            ""|*[!A-Za-z0-9_]*) continue ;;
+        esac
+        # Single-quote the value and escape any embedded quote, so a key
+        # containing spaces or $ is restored verbatim rather than re-evaluated.
+        esc=$(printf '%s' "${val}" | sed "s/'/'\\\\''/g")
+        printf "export %s='%s'\n" "${key}" "${esc}"
+    done >> "${ENV_FILE}"
+
+    chown node:node "${ENV_FILE}" 2>/dev/null || true
+    chmod 600 "${ENV_FILE}" 2>/dev/null || true
+
+    if [ ! -f /etc/profile.d/02-container-env.sh ]; then
+        printf '%s\n' \
+            '# Restore the compose-injected environment for SSH/Herdr sessions,' \
+            '# which sshd does not pass through. Written by entrypoint.sh.' \
+            'if [ -r "$HOME/.container_env" ]; then' \
+            '  . "$HOME/.container_env"' \
+            'fi' \
+            > /etc/profile.d/02-container-env.sh
+        chmod 0644 /etc/profile.d/02-container-env.sh
+    fi
+
+    echo "Herdr SSH: container environment materialised to ~/.container_env (0600)"
+}
+
+materialize_environment_for_ssh
+
+# Setup SSH daemon for node user
+setup_ssh_daemon_for_herdr
+
 # Setup Node.js specific configurations
 setup_nodejs() {
     # Ensure pnpm store and state directories exist with correct ownership.

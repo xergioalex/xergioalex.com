@@ -21,15 +21,26 @@ services:
       - cline_data:/home/node/.cline_data
       - herdr_data:/home/node/.herdr_data
       - grok_data:/home/node/.grok_data
+      # Host keys generated once at first start and kept here, so the
+      # container's SSH identity survives rebuilds and recreates. Without this
+      # every recreate mints a new identity and every client that pinned the old
+      # one refuses to connect until known_hosts is cleared by hand.
+      - ssh_host_keys:/etc/ssh/host_keys
       - ${HOME}/.ssh:/home/node/.ssh_host:ro
       - ${HOME}/.gitconfig:/home/node/.gitconfig:ro
     ports:
       # Use 4444 on host to avoid conflict with macOS AirPlay Receiver (port 4444)
       - '4444:4444'
+      # SSH for Herdr remote/multi-machine access (avoid 2222: Cursor, 22: macOS Remote Login)
+      - '22029:22'
     env_file:
       - xergioalexcom/.env
     environment:
       - DOCKER_DEV_ENV=vscode
+      # Herdr, SSH, and agent CLIs spawn $SHELL (or /bin/sh if unset). Wrappers
+      # like grokx live in custom_commands.sh as bash functions, so the default
+      # shell must be bash or those commands are "not found".
+      - SHELL=/bin/bash
     command:
       - /bin/sh
       - -c
@@ -101,6 +112,7 @@ services:
       - "corepack enable && pnpm install && pnpm run test:e2e"
 
 volumes:
+  ssh_host_keys: {}       # sshd host keys (persistent SSH identity for Herdr)
   playwright_browsers: {}  # Chromium revision installed by @playwright/mcp
   e2e_node_modules: {}     # node_modules for the e2e runner (isolated from dev)
   claude_data: {}        # Claude CLI session/auth (symlinked to ~/.claude)
