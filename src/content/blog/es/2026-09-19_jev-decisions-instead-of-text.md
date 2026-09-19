@@ -13,7 +13,7 @@ El 15 de septiembre, una startup llamada TypeSafe lanzó Jev, un modelo con una 
 
 Porque sobre el papel hay muy poco aquí. Leer contexto y responder preguntas de selección múltiple es el trabajo menos glamoroso del aprendizaje automático — un clasificador zero-shot, como lo resumió más de un comentarista. Lo interesante es lo que hay debajo: una arquitectura no autorregresiva que emite todas las probabilidades en paralelo, un objetivo de entrenamiento construido para incertidumbre calibrada en lugar de prosa persuasiva, y un precio —$42 por mil millones de tokens, salida gratis— que solo funciona si toda la pila es genuinamente diferente. La distancia entre lo que Jev parece ser y lo que toma construirlo es la historia real.
 
-Así que hice lo que hice en marzo con [PreTeXt](/es/blog/pretext-programmable-text-layout/), otro lanzamiento que parecía trivial hasta que dejó de serlo: leí la documentación completa y luego apunté mi terminal a la API en vivo a correr mis propios números en lugar de citar los de ellos. Seis experimentos y un laboratorio de 16 módulos después, tengo una respuesta defendible — y empieza con la honestidad de TypeSafe. Su post de lanzamiento nombra los sesgos de sus benchmarks; su documentación incluye una página que enumera exactamente en qué es malo el modelo.
+Así que hice lo que hice en marzo con [PreTeXt](/es/blog/pretext-programmable-text-layout/), otro lanzamiento que parecía trivial hasta que dejó de serlo: leí la documentación completa y luego apunté mi terminal a la API en vivo a correr mis propios números en lugar de citar los de ellos. Seis experimentos y un laboratorio de 16 módulos después —ambos abiertos como [jev-lab](https://github.com/xergioalex/jev-lab)— tengo una respuesta defendible, y empieza con la honestidad de TypeSafe. Su post de lanzamiento nombra los sesgos de sus benchmarks; su documentación incluye una página que enumera exactamente en qué es malo el modelo.
 
 ---
 
@@ -79,6 +79,8 @@ Lo que nos lleva a los números.
 ---
 
 ## Así que corrí los números
+
+Todo en esta sección es reproducible: cada script, cada salida cruda y cada gráfico viven en [jev-lab](https://github.com/xergioalex/jev-lab), el laboratorio que construí mientras escribía este post.
 
 Sus benchmarks —40–200x más rápidos que LLMs de frontera— se califican a sí mismos. Su propio post lo admite, lo cual respeto; también es la razón por la que no cito esas cifras. Medí lo que podía medir yo mismo: mi portátil, la API en vivo, scripts publicados. El precio es público: **$42 por mil millones de tokens de entrada, salida gratis**. Mi primera llamada de prueba consumió 370 tokens de entrada. Eso son $0.0000155.
 

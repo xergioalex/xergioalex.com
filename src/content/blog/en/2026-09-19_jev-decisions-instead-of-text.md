@@ -13,7 +13,7 @@ On September 15th, a startup called TypeSafe released Jev, a model with an unusu
 
 Because on paper, there is very little here. Reading context and answering multiple-choice questions is the least glamorous job in machine learning — a zero-shot classifier, as more than one commenter put it. The interesting part is what sits underneath: a non-autoregressive architecture that emits every probability in parallel, a training objective tuned for calibrated uncertainty instead of persuasive prose, and pricing — $42 per billion tokens, output free — that only works if the whole stack is genuinely different. The distance between what Jev appears to be and what it takes to build is the real story.
 
-So I did what I did in March with [PreTeXt](/blog/pretext-programmable-text-layout/), another release that looked trivial until it wasn't: I read the complete documentation, then pointed my terminal at the live API and ran my own numbers instead of citing theirs. Six experiments and a 16-module lab later, I have a defensible answer — and it starts with TypeSafe's own honesty. Their launch post names the biases in its benchmarks; their docs include a page listing exactly what the model is bad at.
+So I did what I did in March with [PreTeXt](/blog/pretext-programmable-text-layout/), another release that looked trivial until it wasn't: I read the complete documentation, then pointed my terminal at the live API and ran my own numbers instead of citing theirs. Six experiments and a 16-module lab later — both open-sourced as [jev-lab](https://github.com/xergioalex/jev-lab) — I have a defensible answer, and it starts with TypeSafe's own honesty. Their launch post names the biases in its benchmarks; their docs include a page listing exactly what the model is bad at.
 
 ---
 
@@ -79,6 +79,8 @@ Which brings us to the numbers.
 ---
 
 ## So I ran the numbers
+
+Everything in this section is reproducible: every script, raw output and chart lives in [jev-lab](https://github.com/xergioalex/jev-lab), a lab I built while writing this post.
 
 Their benchmark claims — 40–200x faster than frontier LLMs — are self-graded. Their own launch post admits it, which I respect; it is also why I don't cite those numbers. I measured what I could measure myself: my laptop, the live API, published scripts. Pricing is public: **$42 per billion input tokens, output free**. My first probe call consumed 370 input tokens. That's $0.0000155.
 
