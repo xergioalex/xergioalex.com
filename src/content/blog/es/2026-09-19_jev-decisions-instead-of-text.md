@@ -1,7 +1,7 @@
 ---
 title: 'Jev: el modelo que toma decisiones en lugar de texto'
 description: 'Un modelo que no genera texto resolvió 15 decisiones de soporte en 2.5 segundos por centésimas de centavo. Corrí los experimentos y monté un laboratorio.'
-pubDate: '2026-09-22'
+pubDate: '2026-09-19'
 heroImage: '/images/blog/posts/jev-decisions-instead-of-text/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['portfolio', 'tech', 'ai', 'ai-agents', 'javascript', 'python']
@@ -58,6 +58,11 @@ response.answers.department.confidence    // 1.0
 response.answers.urgent.noul              // 0.96
 response.answers.frustration.score        // 2.0
 ```
+
+<figure>
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-01.webp" alt="Diagrama del flujo de Jev: un documento de estado y burbujas de preguntas alimentan carriles de evaluación paralela, que producen fichas de respuesta choice, score y noul con distribuciones de probabilidad" loading="lazy" width="1200" height="675" />
+  <figcaption>El flujo completo: un estado y muchas preguntas entran, respuestas tipadas con distribuciones salen — una sola llamada.</figcaption>
+</figure>
 
 Las tres preguntas viajan en una sola llamada. Cada una se evalúa **en paralelo y en aislamiento** contra el mismo estado — la pregunta 12 nunca ve la respuesta de la 11, así que no hay pudrición de contexto cuando la lista crece. Las respuestas las combinas en tu propio código: `if urgent AND refund → priority lane`.
 
@@ -125,7 +130,7 @@ Con Jev, los nodos del árbol pueden ser criterio. Mi [jev-lab](https://github.c
 Este es el árbol real corriendo en vivo sobre un ticket de cobro duplicado (la captura viene de la corrida del laboratorio):
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/jev-lab-live-run.png" alt="Captura de terminal del motor de árboles de decisión de jev-lab enrutando un ticket a cobros con prioridad de reembolso y valores de confianza" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/jev-lab-live-run.webp" alt="Captura de terminal del motor de árboles de decisión de jev-lab enrutando un ticket a cobros con prioridad de reembolso y valores de confianza" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
   <figcaption>Módulos 13 y 14 de jev-lab contra la API en vivo: una cola de 20 tickets triada por $0.0007 en total.</figcaption>
 </figure>
 
@@ -153,6 +158,11 @@ Un árbol de decisión completo con IA: dos milésimas de centavo por decisión.
 ## El turno de los escépticos
 
 Tres objeciones merecen algo mejor que un gesto de mano, porque yo mismo tuve las tres.
+
+<figure>
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-02.webp" alt="Diagrama que contrasta el camino secuencial de tokens de un LLM con los carriles paralelos de decisiones de Jev abriéndose en un árbol de decisión" loading="lazy" width="1200" height="675" />
+  <figcaption>La analogía, dibujada: el LLM se desenrolla token a token; Jev dispara todas las preguntas a la vez y deja que el código elija.</figcaption>
+</figure>
 
 *"Es solo un clasificador."* A nivel de idea, claro — ese es el contenido real del tuit de CPU-a-GPU, y la razón por la que es una buena analogía: una GPU es "solo" operaciones simples en paralelo. Lo nuevo no es el concepto, es el paquete: criterio de nivel frontera, calibración como objetivo de entrenamiento, con precio para millones de llamadas. Nadie había lanzado eso como producto estrella. Una GPU también es "solo" un montón de unidades aritméticas — el empaquetado era la revolución.
 

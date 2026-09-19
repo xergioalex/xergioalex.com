@@ -1,7 +1,7 @@
 ---
 title: 'Jev: The Model That Makes Decisions Instead of Text'
 description: 'A model that cannot write text answered 15 support decisions correctly in 2.5 seconds for a hundredth of a cent. I ran the experiments and built a lab.'
-pubDate: '2026-09-22'
+pubDate: '2026-09-19'
 heroImage: '/images/blog/posts/jev-decisions-instead-of-text/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['portfolio', 'tech', 'ai', 'ai-agents', 'javascript', 'python']
@@ -58,6 +58,11 @@ response.answers.department.confidence    // 1.0
 response.answers.urgent.noul              // 0.96
 response.answers.frustration.score        // 2.0
 ```
+
+<figure>
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-01.webp" alt="Diagram of the Jev pipeline: a state document and question bubbles feed parallel evaluation lanes, which produce choice, score and noul answer tiles with probability distributions" loading="lazy" width="1200" height="675" />
+  <figcaption>The whole pipeline: one state and many questions in, typed answers with distributions out - one call.</figcaption>
+</figure>
 
 All three questions ride on one call. Every one of them is evaluated **in parallel and in isolation** against the same state — question 12 never sees question 11's answer, so there is no context rot as the list grows. You combine the answers in your own code: `if urgent AND refund → priority lane`.
 
@@ -125,7 +130,7 @@ With Jev, the nodes of the tree can be judgment. My [jev-lab](https://github.com
 Here's the real tree running live on a duplicate-charge ticket (this screenshot is from the lab's own run):
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/jev-lab-live-run.png" alt="Terminal screenshot of the jev-lab decision tree engine routing a support ticket to billing refund priority with confidence values" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/jev-lab-live-run.webp" alt="Terminal screenshot of the jev-lab decision tree engine routing a support ticket to billing refund priority with confidence values" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
   <figcaption>Module 13 and 14 of jev-lab, running against the live API: a 20-ticket queue triaged for $0.0007 total.</figcaption>
 </figure>
 
@@ -153,6 +158,11 @@ A complete AI decision tree: two thousandths of a cent per decision. Twenty tick
 ## The skeptics' turn
 
 Three objections deserve better than a hand-wave, because I had all three myself.
+
+<figure>
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-02.webp" alt="Diagram contrasting an LLM's single winding sequential token path with Jev's parallel decision lanes fanning into a decision tree" loading="lazy" width="1200" height="675" />
+  <figcaption>The analogy, drawn: the LLM unspools one token at a time; Jev fires every question at once and lets code pick.</figcaption>
+</figure>
 
 *"It's just a classifier."* At the idea level, sure — that's the CPU-to-GPU tweet's actual content, and the reason it's a good analogy: a GPU is "just" simple ops in parallel. What's new is not the concept, it's the package: frontier-level judgment, calibration as a training objective, priced for millions of calls. Nobody shipped that as a flagship before. A GPU is also "just" a bunch of arithmetic units — the packaging was the revolution.
 
