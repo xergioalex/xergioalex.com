@@ -9,9 +9,11 @@ keywords: ['qué es jev typesafe', 'modelo de ia que no genera texto', 'jev syst
 author: 'sergio-florez'
 ---
 
-Quince juicios —enrutar este ticket, si es urgente, qué tan frustrado está este cliente— respondidos correctamente en 2.5 segundos. Costo total del modelo: una centésima de centavo. El sistema que lo hizo nunca ha escrito una frase, y nunca la va a escribir.
+Llegaron quince juicios de golpe —enrutar este ticket, marcar los urgentes, medir qué tan cerca está de hervir cada cliente—. Un modelo los calificó todos, correctamente, en 2.5 segundos. La factura de toda la corrida: una centésima de centavo.
 
-Se llama Jev, y la restricción es el producto. Construido por una startup llamada TypeSafe, Jev no puede generar texto. Lee un estado —un ticket de soporte, un correo, un documento—, responde un conjunto de preguntas tipadas sobre él y devuelve números: una elección, una puntuación, una probabilidad. Nada que parsear, nada que suavizar. Números sobre los que tu código puede ramificar.
+El modelo que lo hizo nunca ha escrito una frase. Nunca la va a escribir.
+
+Se llama Jev —el buque insignia de TypeSafe— y la restricción es el producto. Lee un estado: un ticket de soporte, un correo, un documento. Responde preguntas tipadas sobre ese estado y devuelve números —una elección, una puntuación, una probabilidad—. Nada que parsear, nada que suavizar. Números sobre los que tu código puede ramificar.
 
 El lanzamiento le ganó una comparación tipo *"LLMs to Jev is like CPU to GPU moment"* ("De los LLMs a Jev es como el momento CPU a GPU", Sayed Allam) y un hilo de 1,900 puntos en Hacker News, y ambas cosas se quedan cortas frente a lo que está pasando. Sobre el papel hay muy poco aquí — leer contexto y responder preguntas de selección múltiple es el trabajo menos glamoroso del aprendizaje automático, un clasificador zero-shot como lo resumió más de un comentarista. Lo que hay debajo no lo es: una arquitectura no autorregresiva que emite todas las probabilidades en paralelo, un objetivo de entrenamiento construido para incertidumbre calibrada en lugar de prosa persuasiva, y un precio —$42 por mil millones de tokens, salida gratis— que solo funciona si toda la pila es genuinamente diferente. La distancia entre lo que Jev parece ser y lo que toma construirlo es la historia real.
 

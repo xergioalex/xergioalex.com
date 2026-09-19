@@ -9,9 +9,11 @@ keywords: ['jev typesafe system one model', 'jev model decisions not text', 'nou
 author: 'sergio-florez'
 ---
 
-Fifteen judgment calls — route this ticket, is it urgent, how frustrated is this customer — answered correctly in 2.5 seconds. Total model cost: one hundredth of a cent. The system that did it has never written a sentence, and it never will.
+Fifteen judgment calls came in at once — route this ticket, flag the urgent ones, gauge how close each customer is to boiling over. A model graded every one of them, correctly, in 2.5 seconds. The bill for the entire run: one hundredth of a cent.
 
-It's called Jev, and the constraint is the product. Built by a startup called TypeSafe, Jev cannot generate text. It reads a state — a support ticket, an email, a document — answers a set of typed questions about it, and returns numbers: a choice, a score, a probability. Nothing to parse, nothing to hedge. Numbers your code can branch on.
+The model that did it has never written a sentence. It never will.
+
+It's called Jev — TypeSafe's flagship — and the constraint is the product. It reads a state: a support ticket, an email, a document. It answers typed questions about that state and returns numbers — a choice, a score, a probability. Nothing to parse, nothing to hedge. Numbers your code can branch on.
 
 The launch earned it a *"LLMs to Jev is like CPU to GPU moment"* comparison (Sayed Allam) and a 1,900-point Hacker News thread, and both undersell what is actually going on. On paper there is very little here — reading context and answering multiple-choice questions is the least glamorous job in machine learning, a zero-shot classifier as more than one commenter put it. What sits underneath is not: a non-autoregressive architecture that emits every probability in parallel, a training objective tuned for calibrated uncertainty instead of persuasive prose, and pricing — $42 per billion tokens, output free — that only works if the whole stack is genuinely different. The distance between what Jev appears to be and what it takes to build is the real story.
 
