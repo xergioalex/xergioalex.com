@@ -387,23 +387,21 @@ function codex-xai() {
 	esac
 }
 
-function claude-glm() {
-	_require_agent_env ZAI_CODING_API_KEY || return 1
-	print.success "Starting Claude Code with Z.AI GLM in full permissions mode..."
-	ANTHROPIC_AUTH_TOKEN="${ZAI_CODING_API_KEY}" ANTHROPIC_BASE_URL="${ZAI_ANTHROPIC_BASE_URL:-https://api.z.ai/api/anthropic}" claude --dangerously-skip-permissions "$@"
-}
-
-function claudex-glm() {
-	case "${1:-}" in
-		-c|--continue) shift; claude-glm --continue "$@" ;;
-		*) claude-glm "$@" ;;
-	esac
-}
+# NOTE: claude-glm/claudex-glm live earlier in this file (they delegate to
+# _zai_claude_run, which maps ANTHROPIC_DEFAULT_*_MODEL to GLM). Do NOT redefine
+# them here without the model mapping — the last definition sourced wins, and a
+# mapping-less wrapper sends native claude-* model IDs to Z.AI.
 
 function claude-xai() {
 	_require_agent_env XAI_API_KEY || return 1
-	print.success "Starting Claude Code with xAI Grok in full permissions mode..."
-	ANTHROPIC_AUTH_TOKEN="${XAI_API_KEY}" ANTHROPIC_BASE_URL="${XAI_ANTHROPIC_BASE_URL:-https://api.x.ai}" claude --dangerously-skip-permissions "$@"
+	print.success "Starting Claude Code with xAI Grok (${XAI_MODEL_REASONING:-grok-4.6} / ${XAI_MODEL_DAILY:-grok-4.3}) in full permissions mode..."
+	ANTHROPIC_AUTH_TOKEN="${XAI_API_KEY}" \
+		ANTHROPIC_BASE_URL="${XAI_ANTHROPIC_BASE_URL:-https://api.x.ai}" \
+		API_TIMEOUT_MS="${XAI_API_TIMEOUT_MS:-3000000}" \
+		ANTHROPIC_DEFAULT_OPUS_MODEL="${XAI_MODEL_REASONING:-grok-4.6}" \
+		ANTHROPIC_DEFAULT_SONNET_MODEL="${XAI_MODEL_DAILY:-grok-4.3}" \
+		ANTHROPIC_DEFAULT_HAIKU_MODEL="${XAI_MODEL_DAILY:-grok-4.3}" \
+		claude --dangerously-skip-permissions "$@"
 }
 
 function opencodex() {
