@@ -9,7 +9,7 @@ keywords: ['jev typesafe system one model', 'jev model decisions not text', 'nou
 author: 'sergio-florez'
 ---
 
-AI already has customers, and they aren't human. They're programs — agents, pipelines, dashboards — asking other machines millions of small questions every hour: which team handles this ticket, whether this transaction is suspicious, whether this message needs a human. Every one of those questions ends the same way: in an if-statement. And today, every one of them is answered by models whose entire training pushes them to write essays nobody asked for.
+AI already has customers, and they aren't human. They're programs — agents, workflows, pipelines, dashboards — asking other machines millions of small questions every hour: which team handles this ticket, whether this transaction is suspicious, whether this message needs a human. Every one of those questions ends the same way: in an if-statement. And today, every one of them is answered by models whose entire training pushes them to write essays nobody asked for.
 
 TypeSafe exists because of that mismatch. Its flagship model, Jev, cannot generate text — not that it struggles; it refuses by design. It reads a state: a support ticket, an email, a document. It answers typed questions about that state and returns numbers — a choice, a score, a probability. Nothing to parse, nothing to hedge. Numbers your code can branch on. Aimed at a real support queue, it graded fifteen judgment calls correctly in 2.5 seconds. The entire bill: one hundredth of a cent.
 
