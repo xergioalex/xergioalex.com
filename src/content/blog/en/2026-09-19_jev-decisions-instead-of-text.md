@@ -84,7 +84,7 @@ Which brings us to the numbers.
 
 Everything in this section is reproducible: every script, raw output and chart lives in [jev-lab](https://github.com/xergioalex/jev-lab), a lab I built while writing this post.
 
-Their benchmark claims — 40–200x faster than frontier LLMs — are self-graded. Their own launch post admits it, which I respect; it is also why I don't cite those numbers. I measured what I could measure myself: my laptop, the live API, published scripts. Pricing is public: **$42 per billion input tokens, output free**. My first probe call consumed 370 input tokens. That's $0.0000155.
+Their benchmark claims — 40–200x faster than frontier LLMs — are self-graded. Their own launch post admits it, which I respect; it is also why I don't cite those numbers. I measured what I could measure myself: my laptop, the live API, published scripts. Pricing is public: **$42 per billion input tokens, output free** — "too cheap to meter," in their words. My first probe call consumed 370 input tokens. That's $0.0000155.
 
 **Experiment 1 — is latency really flat?** The docs claim adding questions barely changes response time. I threw up to 64 questions at one support ticket:
 
@@ -170,7 +170,12 @@ Three objections deserve better than a hand-wave, because I had all three myself
 
 *"The benchmarks are self-graded."* Correct, and their launch post says so — that's exactly why I ran my own six experiments and published every script. My numbers are one laptop on one day; they're in [the lab](https://github.com/xergioalex/jev-lab), reproducible, and they were good enough to move me from skeptic to builder.
 
-*"'Can't hallucinate' is marketing."* Also correct — a Jev answer can be confidently wrong; it just can't invent a string that isn't in your option list. The distinction that matters: wrong-with-a-calibrated-confidence-score is a *detectable* failure, and my experiment 3 suggests the calibration is real. "It can still be wrong, it just can't make up data" — that's not a bug in the pitch, that IS the pitch.
+*"'Can't hallucinate' is marketing."* Partly correct — a Jev answer can be confidently wrong; it just can't invent a string that isn't in your option list. But the type-safety half of the claim is measurable, and TypeSafe measured it. In their own error-rate evals, Jev's structured outputs came back valid **0%** of the time they were wrong — zero, by construction, because the schema either matches or there is no answer at all — while the frontier models they compared against ranged from 0.6% to a painful 45.5%, with tool-call errors climbing to 17%. Hold it at the same skepticism as everything else: the LLM baselines came from OpenRouter traffic (routing bias, admitted), and a guaranteed-by-construction zero is not the same kind of result as a benchmark win. What the chart actually proves is narrower and more useful — the failure modes are *different kinds*. A hallucinated tool call is, in their words, *"an absolute deal-breaker if it's part of a system with latency guarantees or it's buried several layers deep in a dependency chain"*; a wrong answer carrying calibrated confidence is a *detectable* one, and my experiment 3 suggests that calibration is real. "It can still be wrong, it just can't make up data" — that's not a bug in the pitch, that IS the pitch.
+
+<figure>
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/type-safety.webp" alt="Bar charts from TypeSafe's launch post comparing structured output error rate and tool call error rate: Jev at 0 percent versus frontier models ranging from 0.58 to 45.5 percent" loading="lazy" width="1400" height="433" />
+  <figcaption>TypeSafe's own measurements: structured-output and tool-call error rates. The 0% is guaranteed by the output contract rather than earned empirically — the honest caveat is in their post. (Source: TypeSafe launch blog.)</figcaption>
+</figure>
 
 ---
 

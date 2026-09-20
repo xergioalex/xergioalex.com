@@ -84,7 +84,7 @@ Lo que nos lleva a los números.
 
 Todo en esta sección es reproducible: cada script, cada salida cruda y cada gráfico viven en [jev-lab](https://github.com/xergioalex/jev-lab), el laboratorio que construí mientras escribía este post.
 
-Sus benchmarks —40–200x más rápidos que LLMs de frontera— se califican a sí mismos. Su propio post lo admite, lo cual respeto; también es la razón por la que no cito esas cifras. Medí lo que podía medir yo mismo: mi portátil, la API en vivo, scripts publicados. El precio es público: **$42 por mil millones de tokens de entrada, salida gratis**. Mi primera llamada de prueba consumió 370 tokens de entrada. Eso son $0.0000155.
+Sus benchmarks —40–200x más rápidos que LLMs de frontera— se califican a sí mismos. Su propio post lo admite, lo cual respeto; también es la razón por la que no cito esas cifras. Medí lo que podía medir yo mismo: mi portátil, la API en vivo, scripts publicados. El precio es público: **$42 por mil millones de tokens de entrada, salida gratis** — "too cheap to meter" (demasiado barato para medirse), en sus palabras. Mi primera llamada de prueba consumió 370 tokens de entrada. Eso son $0.0000155.
 
 **Experimento 1 — ¿la latencia es realmente plana?** La documentación dice que agregar preguntas casi no cambia el tiempo de respuesta. Le lancé hasta 64 preguntas a un solo ticket de soporte:
 
@@ -170,7 +170,12 @@ Tres objeciones merecen algo mejor que un gesto de mano, porque yo mismo tuve la
 
 *"Los benchmarks los califica el propio vendedor."* Correcto, y su post de lanzamiento lo dice — por eso corrí mis propios seis experimentos y publiqué todos los scripts. Mis números son un portátil en un día; están en [el laboratorio](https://github.com/xergioalex/jev-lab), son reproducibles, y fueron suficientes para moverme de escéptico a constructor.
 
-*"'No puede alucinar' es marketing."* También correcto — una respuesta de Jev puede estar equivocada con seguridad; lo que no puede es inventar un texto que no esté en tu lista de opciones. La distinción que importa: equivocado-con-una-confianza-calibrada es un fallo *detectable*, y mi experimento 3 sugiere que la calibración es real. "Sigue pudiendo estar equivocado, solo que no puede inventar datos" — ese no es un defecto del pitch, ese es el pitch.
+*"'No puede alucinar' es marketing."* Parcialmente correcto — una respuesta de Jev puede estar equivocada con seguridad; lo que no puede es inventar un texto que no esté en tu lista de opciones. Pero la mitad de type-safety de esa afirmación es medible, y TypeSafe la midió. En sus propias evaluaciones de tasas de error, las salidas estructuradas de Jev resultaron inválidas el **0%** de las veces — cero, por construcción, porque el esquema coincide o directamente no hay respuesta — mientras que los modelos de frontera con los que los compararon iban del 0.6% a un doloroso 45.5%, con errores en tool calls que subían hasta el 17%. Aplícales la misma desconfianza que a todo lo demás: las líneas base de los LLM vinieron del tráfico de OpenRouter (sesgo de enrutamiento, admitido), y un cero garantizado por construcción no es el mismo tipo de resultado que una victoria de benchmark. Lo que la gráfica prueba en realidad es algo más estrecho y más útil: los modos de fallo son de *otra naturaleza*. Una tool call alucinada es, en sus palabras, *"an absolute deal-breaker if it's part of a system with latency guarantees or it's buried several layers deep in a dependency chain"* ("un problema absoluto si forma parte de un sistema con garantías de latencia o está enterrado varias capas abajo en una cadena de dependencias"); una respuesta equivocada pero con confianza calibrada es un fallo *detectable*, y mi experimento 3 sugiere que esa calibración es real. "Sigue pudiendo estar equivocado, solo que no puede inventar datos" — ese no es un defecto del pitch, ese es el pitch.
+
+<figure>
+  <img src="/images/blog/posts/jev-decisions-instead-of-text/type-safety.webp" alt="Gráficas de barras del post de lanzamiento de TypeSafe comparando la tasa de error de salidas estructuradas y de tool calls: Jev en 0 por ciento contra modelos de frontera entre 0.58 y 45.5 por ciento" loading="lazy" width="1400" height="433" />
+  <figcaption>Mediciones propias de TypeSafe: tasas de error en salidas estructuradas y tool calls. El 0% está garantizado por el contrato de salida, no ganado empíricamente — la advertencia honesta está en su post. (Fuente: blog de lanzamiento de TypeSafe.)</figcaption>
+</figure>
 
 ---
 
