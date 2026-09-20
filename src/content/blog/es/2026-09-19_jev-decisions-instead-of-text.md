@@ -9,7 +9,7 @@ keywords: ['qué es jev typesafe', 'modelo de ia que no genera texto', 'jev syst
 author: 'sergio-florez'
 ---
 
-La IA ya tiene clientes, y no son humanos: son programas. Agentes, workflows, pipelines y paneles que le hacen a otras máquinas millones de preguntas pequeñas cada hora —qué equipo atiende este ticket, si esta transacción es sospechosa, si este mensaje necesita un humano—. Cada una de esas preguntas termina igual: en un condicional. Y hoy, todas se las responde modelos entrenados para escribir ensayos que nadie pidió.
+Los primeros usuarios de los modelos de IA no son humanos: son programas. Agentes, workflows, pipelines y paneles que les hacen a otras máquinas millones de preguntas pequeñas cada hora —qué equipo atiende este ticket, si esta transacción es sospechosa, si este mensaje necesita un humano—. Cada una de esas preguntas termina igual: en un condicional. Y hoy, todas se las responde modelos entrenados para escribir ensayos que nadie pidió.
 
 TypeSafe existe por ese desajuste. Su modelo insignia, Jev, no genera texto —no es que le cueste: está diseñado para no hacerlo—. Lee un estado: un ticket de soporte, un correo, un documento. Responde preguntas tipadas sobre ese estado y devuelve números —una elección, una puntuación, una probabilidad—. Nada que parsear, nada que suavizar: números sobre los que tu código puede ramificar. Apuntado a una cola de soporte real, calificó quince juicios correctamente en 2.5 segundos. La factura completa: una centésima de centavo.
 
