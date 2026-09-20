@@ -488,7 +488,7 @@ EOF
     chmod 0755 "${SHIM}"
 
     for cmd in \
-        grokx claudex claudex-glm claude-glm claude-xai \
+        grokx claudex claude-glm claude-xai \
         codexx codex-azure codex-glm codex-xai cursorx \
         opencodex opencode-azure opencode-glm opencode-xai \
         pix pi-xai pi-azure pi-glm \

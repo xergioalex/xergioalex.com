@@ -67,8 +67,7 @@ The complete wrapper list is also available with `help` inside the container. Pr
 
 | Command | Description |
 |---------|-------------|
-| `claude-glm` | Claude Code via Z.AI (`https://api.z.ai/api/anthropic`) |
-| `claudex-glm` | Same, with `--dangerously-skip-permissions` (mirrors `claudex`) |
+| `claude-glm` | Claude Code via Z.AI (`https://api.z.ai/api/anthropic`), always with `--dangerously-skip-permissions` |
 | `chelper` | Z.AI Coding Tool Helper wizard |
 | `opencode` | OpenCode CLI — run `opencode auth login` and select **Z.AI Coding Plan** |
 
@@ -76,7 +75,7 @@ Plain `claude` and `claudex` continue to use your Anthropic auth unchanged.
 
 ### Model mapping
 
-Opus/Sonnet/Haiku aliases are remapped to GLM **only** when using `claude-glm` / `claudex-glm`:
+Opus/Sonnet/Haiku aliases are remapped to GLM **only** when using `claude-glm`:
 
 | Env var | Default |
 |---------|---------|
@@ -95,7 +94,7 @@ In a **new** `claude-glm` session, run `/status`:
 - **Anthropic base URL** must be `https://api.z.ai/api/anthropic`
 - The **Model** line may still show a Claude-looking alias; traffic routing is determined by the base URL and process-scoped `ANTHROPIC_DEFAULT_*_MODEL` env vars
 
-After changing wrappers or model env vars, exit the old session and start a new one with `claude-glm` or `claudex-glm`.
+After changing wrappers or model env vars, exit the old session and start a new one with `claude-glm`.
 
 ### Persistence
 
