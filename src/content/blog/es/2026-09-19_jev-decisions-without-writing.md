@@ -1,15 +1,23 @@
 ---
-title: 'Jev: el modelo que toma decisiones en lugar de texto'
+title: 'Jev: el modelo que toma decisiones sin escribir una sola palabra'
 description: 'Un modelo que no genera texto resolvió 15 decisiones de soporte en 2.5 segundos por centésimas de centavo. Corrí los experimentos y monté un laboratorio.'
 pubDate: '2026-09-19'
-heroImage: '/images/blog/posts/jev-decisions-instead-of-text/hero.webp'
+heroImage: '/images/blog/posts/jev-decisions-without-writing/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['portfolio', 'tech', 'ai', 'ai-agents', 'javascript', 'python']
 keywords: ['qué es jev typesafe', 'modelo de ia que no genera texto', 'jev system one modelo', 'árboles de decisión con ia baratos', 'api noul choice score', 'jev vs llm diferencias', 'enrutamiento con ia barata']
 author: 'sergio-florez'
 ---
 
-Los primeros usuarios de los modelos de IA no son humanos: son programas. Agentes, workflows, pipelines y paneles que les hacen a otras máquinas millones de preguntas pequeñas cada hora —qué equipo atiende este ticket, si esta transacción es sospechosa, si este mensaje necesita un humano—. Cada una de esas preguntas termina igual: en un condicional. Y hoy, todas se las responde modelos entrenados para escribir ensayos que nadie pidió.
+¿Cuánto le cuesta a un software evaluar si algo es urgente? Responder esa pregunta requiere razonamiento, y hoy delegamos esa tarea a una herramienta avanzada: un modelo generalista entrenado para escribir código y ensayos complejos.
+
+Usamos a los mejores programadores y escritores del mundo para decir sí o no. Esa es la factura que nadie mira. Y no empezó así. La pregunta es vieja: ¿esto va al principio de la cola o al final? Casi cualquier sistema de software necesita esa respuesta por cada mensaje que recibe, y ningún `if` sabe hacer esa pregunta. Al inicio lo resolvíamos arcaicamente con regex o ifs sencillos como:
+
+```javascript
+if (message.includes("urgent"))
+```
+
+Esa línea no evalúa nada: reza para que la palabra justa llegue en el mensaje justo, y con ella la intención correcta. El juicio real —qué equipo atiende este ticket, si esta transacción es sospechosa, si este mensaje necesita un humano— nunca cupo ahí. Una década de palabras clave y expresiones regulares fingiendo que sí. Cuando las condicionales arcaicas dejaron de ser suficientes, le dimos ese trabajo a un ensayista de mil millones de parámetros que cobra por palabra.
 
 TypeSafe existe por ese desajuste. Su modelo insignia, Jev, no genera texto —no es que le cueste: está diseñado para no hacerlo—. Lee un estado: un ticket de soporte, un correo, un documento. Responde preguntas tipadas sobre ese estado y devuelve números —una elección, una puntuación, una probabilidad—. Nada que parsear, nada que suavizar: números sobre los que tu código puede ramificar. Apuntado a una cola de soporte real, calificó quince juicios correctamente en 2.5 segundos. La factura completa: una centésima de centavo.
 
@@ -60,7 +68,7 @@ response.answers.frustration.score        // 2.0
 ```
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-01.webp" alt="Diagrama del flujo de Jev: un documento de estado y burbujas de preguntas alimentan carriles de evaluación paralela, que producen fichas de respuesta choice, score y noul con distribuciones de probabilidad" loading="lazy" width="1200" height="675" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/diagram-01.webp" alt="Diagrama del flujo de Jev: un documento de estado y burbujas de preguntas alimentan carriles de evaluación paralela, que producen fichas de respuesta choice, score y noul con distribuciones de probabilidad" loading="lazy" width="1200" height="675" />
   <figcaption>El flujo completo: un estado y muchas preguntas entran, respuestas tipadas con distribuciones salen — una sola llamada.</figcaption>
 </figure>
 
@@ -89,7 +97,7 @@ Sus benchmarks —40–200x más rápidos que LLMs de frontera— se califican a
 **Experimento 1 — ¿la latencia es realmente plana?** La documentación dice que agregar preguntas casi no cambia el tiempo de respuesta. Le lancé hasta 64 preguntas a un solo ticket de soporte:
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/chart-e1-latency.svg" alt="Gráfico de línea que muestra la latencia de Jev plana alrededor de 500ms mientras el número de preguntas crece de 1 a 64" loading="lazy" width="720" height="400" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/chart-e1-latency.svg" alt="Gráfico de línea que muestra la latencia de Jev plana alrededor de 500ms mientras el número de preguntas crece de 1 a 64" loading="lazy" width="720" height="400" />
   <figcaption>De 1 a 64 preguntas en una sola llamada: 502ms → 518ms. El p95 (línea punteada) sube una vez a 755ms y fue mi red, no el modelo.</figcaption>
 </figure>
 
@@ -109,7 +117,7 @@ Ahora la parte que casi no escribo. Mi **primera** corrida de Jev sacó 1/5. El 
 
 ## Árboles de decisión, de vuelta de entre los muertos
 
-La forma más común en el software es un flujo condicional: si es urgente enruta aquí, si es reembolso enruta allá, escala el resto. Por una década no pudimos poner criterio dentro de esos árboles sin pagar precios de LLM por nodo, así que lo fingimos con palabras clave y expresiones regulares. El diagrama de flujo de cada documento de arquitectura tenía un recuadro punteado que decía "aquí pasa la magia".
+La apuesta del inicio es la forma más común del software: si es urgente enruta aquí, si es reembolso enruta allá, escala el resto. Por una década no pudimos poner criterio dentro de esos árboles sin pagar precios de LLM por nodo, así que lo fingimos. El diagrama de flujo de cada documento de arquitectura tenía un recuadro punteado que decía "aquí pasa la magia".
 
 Con Jev, los nodos del árbol pueden ser criterio. Mi [jev-lab](https://github.com/xergioalex/jev-lab) tiene un motor de árboles de decisión donde el árbol es un archivo JSON — los nodos noul evalúan condiciones, los choice ramifican, los score agrupan en bandas, y cada nodo puede tener su propia compuerta de confianza:
 
@@ -132,14 +140,14 @@ Con Jev, los nodos del árbol pueden ser criterio. Mi [jev-lab](https://github.c
 Este es el árbol real corriendo en vivo sobre un ticket de cobro duplicado (la captura viene de la corrida del laboratorio):
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/jev-lab-live-run.webp" alt="Captura de terminal del motor de árboles de decisión de jev-lab enrutando un ticket a cobros con prioridad de reembolso y valores de confianza" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/jev-lab-live-run.webp" alt="Captura de terminal del motor de árboles de decisión de jev-lab enrutando un ticket a cobros con prioridad de reembolso y valores de confianza" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
   <figcaption>Módulos 13 y 14 de jev-lab contra la API en vivo: una cola de 20 tickets triada por $0.0007 en total.</figcaption>
 </figure>
 
 Mi primera versión hacía lo obvio: evaluar un nodo, seguir la rama, evaluar el siguiente — una llamada a la API por nodo. Funciona, y es **1.8 veces más caro de lo necesario**, porque cada llamada reenvía el estado. La forma barata es el patrón propio de TypeSafe llamado "speculative fan-out": lanzar *todas* las preguntas del árbol en una sola llamada y hacer la ramificación en el código, ignorando las respuestas que no necesites. Mismas respuestas, 20/20 tickets, la mitad de los tokens:
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/chart-e4-cost.svg" alt="Gráfico de barras comparando costos de árboles de decisión: secuencial a 34 dólares por millón de decisiones contra 19 dólares con fan-out especulativo" loading="lazy" width="720" height="400" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/chart-e4-cost.svg" alt="Gráfico de barras comparando costos de árboles de decisión: secuencial a 34 dólares por millón de decisiones contra 19 dólares con fan-out especulativo" loading="lazy" width="720" height="400" />
   <figcaption>Una decisión completa de árbol cuesta $18.83 por millón — cerca de 0.002 centavos — cuando agrupas las preguntas y ramificas en código. El recorrido secuencial cuesta $34.13 por respuestas idénticas.</figcaption>
 </figure>
 
@@ -162,7 +170,7 @@ Un árbol de decisión completo con IA: dos milésimas de centavo por decisión.
 Tres objeciones merecen algo mejor que un gesto de mano, porque yo mismo tuve las tres.
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-02.webp" alt="Diagrama que contrasta el camino secuencial de tokens de un LLM con los carriles paralelos de decisiones de Jev abriéndose en un árbol de decisión" loading="lazy" width="1200" height="675" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/diagram-02.webp" alt="Diagrama que contrasta el camino secuencial de tokens de un LLM con los carriles paralelos de decisiones de Jev abriéndose en un árbol de decisión" loading="lazy" width="1200" height="675" />
   <figcaption>La analogía, dibujada: el LLM se desenrolla token a token; Jev dispara todas las preguntas a la vez y deja que el código elija.</figcaption>
 </figure>
 
@@ -173,7 +181,7 @@ Tres objeciones merecen algo mejor que un gesto de mano, porque yo mismo tuve la
 *"'No puede alucinar' es marketing."* Parcialmente correcto — una respuesta de Jev puede estar equivocada con seguridad; lo que no puede es inventar un texto que no esté en tu lista de opciones. Pero la mitad de type-safety de esa afirmación es medible, y TypeSafe la midió. En sus propias evaluaciones de tasas de error, las salidas estructuradas de Jev resultaron inválidas el **0%** de las veces — cero, por construcción, porque el esquema coincide o directamente no hay respuesta — mientras que los modelos de frontera con los que los compararon iban del 0.6% a un doloroso 45.5%, con errores en tool calls que subían hasta el 17%. Aplícales la misma desconfianza que a todo lo demás: las líneas base de los LLM vinieron del tráfico de OpenRouter (sesgo de enrutamiento, admitido), y un cero garantizado por construcción no es el mismo tipo de resultado que una victoria de benchmark. Lo que la gráfica prueba en realidad es algo más estrecho y más útil: los modos de fallo son de *otra naturaleza*. Una tool call alucinada es, en sus palabras, *"an absolute deal-breaker if it's part of a system with latency guarantees or it's buried several layers deep in a dependency chain"* ("un problema absoluto si forma parte de un sistema con garantías de latencia o está enterrado varias capas abajo en una cadena de dependencias"); una respuesta equivocada pero con confianza calibrada es un fallo *detectable*, y mi experimento 3 sugiere que esa calibración es real. "Sigue pudiendo estar equivocado, solo que no puede inventar datos" — ese no es un defecto del pitch, ese es el pitch.
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/type-safety-es.webp" alt="Gráficas de barras del post de lanzamiento de TypeSafe comparando la tasa de error de salidas estructuradas y de tool calls: Jev en 0 por ciento contra modelos de frontera entre 0.58 y 45.5 por ciento" loading="lazy" width="1400" height="433" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/type-safety-es.webp" alt="Gráficas de barras del post de lanzamiento de TypeSafe comparando la tasa de error de salidas estructuradas y de tool calls: Jev en 0 por ciento contra modelos de frontera entre 0.58 y 45.5 por ciento" loading="lazy" width="1400" height="433" />
   <figcaption>Mediciones propias de TypeSafe: tasas de error en salidas estructuradas y tool calls. El 0% está garantizado por el contrato de salida, no ganado empíricamente — la advertencia honesta está en su post. (Fuente: blog de lanzamiento de TypeSafe.)</figcaption>
 </figure>
 

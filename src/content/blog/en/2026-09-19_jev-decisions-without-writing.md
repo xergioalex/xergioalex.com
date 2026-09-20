@@ -1,15 +1,23 @@
 ---
-title: 'Jev: The Model That Makes Decisions Instead of Text'
+title: "Jev: The Model That Makes Decisions Without Writing a Single Word"
 description: 'A model that cannot write text answered 15 support decisions correctly in 2.5 seconds for a hundredth of a cent. I ran the experiments and built a lab.'
 pubDate: '2026-09-19'
-heroImage: '/images/blog/posts/jev-decisions-instead-of-text/hero.webp'
+heroImage: '/images/blog/posts/jev-decisions-without-writing/hero.webp'
 heroLayout: 'side-by-side'
 tags: ['portfolio', 'tech', 'ai', 'ai-agents', 'javascript', 'python']
 keywords: ['jev typesafe system one model', 'jev model decisions not text', 'noul choice score api', 'cheap ai decision trees', 'llm cpu to gpu moment', 'jev api example', 'system one vs llm']
 author: 'sergio-florez'
 ---
 
-The first users of AI models aren't human: they're programs. Agents, workflows, pipelines and dashboards asking other machines millions of small questions every hour: which team handles this ticket, whether this transaction is suspicious, whether this message needs a human. Every one of those questions ends the same way: in an if-statement. And today, every one of them is answered by models whose entire training pushes them to write essays nobody asked for.
+How much does it cost software to evaluate whether something is urgent? Answering that question takes reasoning, and today we delegate it to an advanced tool: a generalist model trained to write code and complex essays.
+
+We use the best programmers and writers in the world to say yes or no. That's the bill nobody looks at. And it didn't start there. The question is old: does this go to the front of the queue or the back? Almost every piece of software needs that answer for every message it receives, and no `if` knows how to ask it. At first we solved it archaically, with regexes or simple ifs like:
+
+```javascript
+if (message.includes("urgent"))
+```
+
+That line doesn't evaluate anything: it prays that the right word arrives in the right message, carrying the right intention with it. The actual judgment — which team handles this ticket, whether this transaction is suspicious, whether this message needs a human — never fit inside it. A decade of keywords and regexes pretending it did. When the archaic conditionals stopped being enough, we gave the job to a billion-parameter essayist who charges by the word.
 
 TypeSafe exists because of that mismatch. Its flagship model, Jev, cannot generate text — not that it struggles; it refuses by design. It reads a state: a support ticket, an email, a document. It answers typed questions about that state and returns numbers — a choice, a score, a probability. Nothing to parse, nothing to hedge. Numbers your code can branch on. Aimed at a real support queue, it graded fifteen judgment calls correctly in 2.5 seconds. The entire bill: one hundredth of a cent.
 
@@ -60,7 +68,7 @@ response.answers.frustration.score        // 2.0
 ```
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-01.webp" alt="Diagram of the Jev pipeline: a state document and question bubbles feed parallel evaluation lanes, which produce choice, score and noul answer tiles with probability distributions" loading="lazy" width="1200" height="675" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/diagram-01.webp" alt="Diagram of the Jev pipeline: a state document and question bubbles feed parallel evaluation lanes, which produce choice, score and noul answer tiles with probability distributions" loading="lazy" width="1200" height="675" />
   <figcaption>The whole pipeline: one state and many questions in, typed answers with distributions out - one call.</figcaption>
 </figure>
 
@@ -89,7 +97,7 @@ Their benchmark claims — 40–200x faster than frontier LLMs — are self-grad
 **Experiment 1 — is latency really flat?** The docs claim adding questions barely changes response time. I threw up to 64 questions at one support ticket:
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/chart-e1-latency.svg" alt="Line chart showing Jev latency staying flat around 500ms as question count grows from 1 to 64" loading="lazy" width="720" height="400" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/chart-e1-latency.svg" alt="Line chart showing Jev latency staying flat around 500ms as question count grows from 1 to 64" loading="lazy" width="720" height="400" />
   <figcaption>One to 64 questions in a single call: 502ms → 518ms. The p95 (dashed) spikes once at 755ms and that was my network, not the model.</figcaption>
 </figure>
 
@@ -109,7 +117,7 @@ Now the part I almost didn't write. My **first** Jev run scored 1/5. The bug was
 
 ## Decision trees, back from the dead
 
-The most common shape in software is a conditional workflow: if urgent route here, if refund route there, escalate the rest. For a decade we couldn't put judgment inside those trees without paying LLM prices per node, so we faked it with keywords and regexes. The flowchart in every architecture doc had a dashed box called "magic happens here."
+The opening bet is the most common shape in software: if urgent route here, if refund route there, escalate the rest. For a decade we couldn't put judgment inside those trees without paying LLM prices per node, so we faked it. The flowchart in every architecture doc had a dashed box called "magic happens here."
 
 With Jev, the nodes of the tree can be judgment. My [jev-lab](https://github.com/xergioalex/jev-lab) has a decision-tree engine where the tree is a JSON file — noul nodes gate on conditions, choice nodes branch, score nodes band, and every node can carry its own confidence gate:
 
@@ -132,14 +140,14 @@ With Jev, the nodes of the tree can be judgment. My [jev-lab](https://github.com
 Here's the real tree running live on a duplicate-charge ticket (this screenshot is from the lab's own run):
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/jev-lab-live-run.webp" alt="Terminal screenshot of the jev-lab decision tree engine routing a support ticket to billing refund priority with confidence values" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/jev-lab-live-run.webp" alt="Terminal screenshot of the jev-lab decision tree engine routing a support ticket to billing refund priority with confidence values" loading="lazy" width="860" height="1600" style="background:#0d1117;border-radius:12px" />
   <figcaption>Module 13 and 14 of jev-lab, running against the live API: a 20-ticket queue triaged for $0.0007 total.</figcaption>
 </figure>
 
 I built my first version the obvious way: evaluate a node, follow the branch, evaluate the next — one API call per node. It works, and it is **1.8x more expensive than it needs to be**, because every call re-sends the state. The cheap way is TypeSafe's own "speculative fan-out" pattern: throw *all* the tree's questions at the API in one call and do the branching in code, ignoring answers you don't need. Same answers, 20/20 tickets, half the tokens:
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/chart-e4-cost.svg" alt="Bar chart comparing decision tree costs: sequential at 34 dollars per million decisions versus 19 dollars with speculative fan-out" loading="lazy" width="720" height="400" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/chart-e4-cost.svg" alt="Bar chart comparing decision tree costs: sequential at 34 dollars per million decisions versus 19 dollars with speculative fan-out" loading="lazy" width="720" height="400" />
   <figcaption>A full decision-tree decision costs $18.83 per million — about 0.002 cents — when you batch questions and branch in code. The sequential walk costs $34.13 for identical answers.</figcaption>
 </figure>
 
@@ -162,7 +170,7 @@ A complete AI decision tree: two thousandths of a cent per decision. Twenty tick
 Three objections deserve better than a hand-wave, because I had all three myself.
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/diagram-02.webp" alt="Diagram contrasting an LLM's single winding sequential token path with Jev's parallel decision lanes fanning into a decision tree" loading="lazy" width="1200" height="675" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/diagram-02.webp" alt="Diagram contrasting an LLM's single winding sequential token path with Jev's parallel decision lanes fanning into a decision tree" loading="lazy" width="1200" height="675" />
   <figcaption>The analogy, drawn: the LLM unspools one token at a time; Jev fires every question at once and lets code pick.</figcaption>
 </figure>
 
@@ -173,7 +181,7 @@ Three objections deserve better than a hand-wave, because I had all three myself
 *"'Can't hallucinate' is marketing."* Partly correct — a Jev answer can be confidently wrong; it just can't invent a string that isn't in your option list. But the type-safety half of the claim is measurable, and TypeSafe measured it. In their own error-rate evals, Jev's structured outputs came back valid **0%** of the time they were wrong — zero, by construction, because the schema either matches or there is no answer at all — while the frontier models they compared against ranged from 0.6% to a painful 45.5%, with tool-call errors climbing to 17%. Hold it at the same skepticism as everything else: the LLM baselines came from OpenRouter traffic (routing bias, admitted), and a guaranteed-by-construction zero is not the same kind of result as a benchmark win. What the chart actually proves is narrower and more useful — the failure modes are *different kinds*. A hallucinated tool call is, in their words, *"an absolute deal-breaker if it's part of a system with latency guarantees or it's buried several layers deep in a dependency chain"*; a wrong answer carrying calibrated confidence is a *detectable* one, and my experiment 3 suggests that calibration is real. "It can still be wrong, it just can't make up data" — that's not a bug in the pitch, that IS the pitch.
 
 <figure>
-  <img src="/images/blog/posts/jev-decisions-instead-of-text/type-safety.webp" alt="Bar charts from TypeSafe's launch post comparing structured output error rate and tool call error rate: Jev at 0 percent versus frontier models ranging from 0.58 to 45.5 percent" loading="lazy" width="1400" height="433" />
+  <img src="/images/blog/posts/jev-decisions-without-writing/type-safety.webp" alt="Bar charts from TypeSafe's launch post comparing structured output error rate and tool call error rate: Jev at 0 percent versus frontier models ranging from 0.58 to 45.5 percent" loading="lazy" width="1400" height="433" />
   <figcaption>TypeSafe's own measurements: structured-output and tool-call error rates. The 0% is guaranteed by the output contract rather than earned empirically — the honest caveat is in their post. (Source: TypeSafe launch blog.)</figcaption>
 </figure>
 
