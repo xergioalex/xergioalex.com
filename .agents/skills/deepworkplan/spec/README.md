@@ -1,33 +1,44 @@
-# DeepWorkPlan Methodology Specification — v2.2.0
+# DeepWorkPlan Methodology Specification — v6
 
 > The canonical normative standard for an **AI-first autopilot repository** and the
-> **Deep Work Plan (DWP)** workflow. Version **2.2.0**. This v2 spec **supersedes**
-> the v1 baseline specs in `PLAN_build_deepworkplan_brand/.../deepworkplan/spec/`
-> (and the upstream `repo-ready/` and `opensource` drafts). Reconciled from that
-> baseline plus the 6 (+1) new ideas per `../RECONCILIATION.md`.
+> The current **Deep Work Plan (DWP)** standard is v6. The v5 base documents
+> below remain versioned 5.0.0 so existing plans keep their recorded rules;
+> the four `V6_*.md` documents define the current lifecycle on top of that
+> base. New plans created by the 6.x pack use v6. Existing v1/v2/v5 plans
+> retain their recorded generation and are never silently migrated. Schema
+> URLs are published at `https://deepworkplan.com/schema/`.
 
 All documents use RFC-2119 normative language (MUST / SHOULD / MAY / MUST NOT) and
-are grounded in an audit of 6 Dailybot repositories (~90% common structure, ~10%
-reason-per-repo). All three archetypes — individual repo (the default case),
+are grounded in an audit of 6 Dailybot repositories, in which most of the
+AI-first structure was common and a small remainder was reason-per-repo (a
+finding about those six repositories, not a measured constant). All three archetypes — individual repo (the default case),
 orchestrator hub, and agent workspace — are addressed throughout.
 
 ## Documents
 
 | Document | Defines |
 |----------|---------|
-| [`DOCUMENTATION_STANDARD.md`](DOCUMENTATION_STANDARD.md) | Repo structure: `AGENTS.md` (index + mandatory rules + quick commands), `CLAUDE.md → AGENTS.md`, the 10 `docs/` categories, per-module nested docs, `.agents/` layout, `.claude → .agents` symlink, and the reason-per-repo 10%. |
-| [`DWP_SPECIFICATION.md`](DWP_SPECIFICATION.md) | The DWP workflow: single-step refined-draft create flow, `.dwp/` output, the 9-section task anatomy (+ optional Delta section), validation/completion, the DWP Resume Protocol, proportional rigor tiers, the three mandatory final tasks, orchestrator + team-agents support. |
+| [`DOCUMENTATION_STANDARD.md`](DOCUMENTATION_STANDARD.md) | Repo structure: `AGENTS.md` (index + mandatory rules + quick commands), `CLAUDE.md → AGENTS.md`, the 10 `docs/` categories, per-module nested docs, `.agents/` layout, `.claude → .agents` and `.cursor → .agents` symlinks, and the reason-per-repo 10%. |
+| [`DWP_SPECIFICATION.md`](DWP_SPECIFICATION.md) | The DWP workflow: the Lite-first create flow (guided review / direct trust), `.dwp/` output, the 10-section task anatomy (Touched Surface + optional Delta section), gate selection by affected surface and final-state validation, the DWP Resume Protocol, proportional rigor tiers, the single mandatory Final Review with task-local skills decisions and an optional Executive Report, compatibility rules, orchestrator + team-agents support. |
 | [`AGENT_PROTOCOL.md`](AGENT_PROTOCOL.md) | Cross-agent behavior: the supported agents (interactive + autonomous platforms), the `/` vs `#` command mapping, shared `.agents/` reading, progress reporting, and the interactive vs **unattended** execution profiles. |
 | [`ARCHETYPES.md`](ARCHETYPES.md) | The three archetypes (individual repo, orchestrator hub, agent workspace), the classification heuristic, and how onboarding differs. |
 | [`PLAN_STATE.md`](PLAN_STATE.md) | The machine-readable plan state layer: `manifest.json` + `state.json`, gate records, outcome records, checkpoint/blocked state, reconciliation rules, and the published [JSON Schemas](schema/). |
-| [`ADDONS.md`](ADDONS.md) | The opt-in addon mechanism + contract (reconcile-don't-clobber); devcontainer as the first addon (pointer to Task 6). |
+| [`LITE_PLANS.md`](LITE_PLANS.md) | Lite and Full representations, creation grammar, promotion and v2 schema contracts. |
+| [`V6_CONTRACT.md`](V6_CONTRACT.md) | **v6 line** normative surfaces: the outcome/authority `contract.json` (content-addressed identity, revisions, closed adaptation enumeration) and the append-only `journal.ndjson` event catalog with trust labels; published as `schema/plan-contract-v6` + `schema/journal-event-v6`. Binds v6 new plans only — the v5 standard is untouched. |
+| [`V6_CONTEXT.md`](V6_CONTEXT.md) | **v6 line** context contract: the per-task context manifest (derived, never stored — Q6 derivation table), mandatory sections no pruning may drop, the next-action ladder, the retention-biased dead-end digest (U4), input-fingerprint freshness invalidation, history loading by trigger only, and the four-quantity accounting rule (bytes / tokens / cost / wall-clock — missing stays missing, never bytes-to-money). Binds v6 new plans only. |
+| [`V6_RESOURCES.md`](V6_RESOURCES.md) | **v6 line** resource contract: host capability negotiation (closed ability set, minimal-host floor), the counter-source split (journal vs host meter, unknown unit = advisory), limit reserves with a runtime dispatch ceiling, the `LIMIT:` exhaustion grammar with derived dispatch holds, exactly-once cancellation settlement (`RESERVATION:` grammar, double-charge refused), and fixed-model-default routing posture (grant AND host ability). Binds v6 new plans only. |
+| [`V6_LIFECYCLE.md`](V6_LIFECYCLE.md) | **Current v6** flow wiring: plan-generation detection by artifacts (manifest contract pointer / `contract.json` / `contracts/` chain — never by skill version alone), the v6 activation rule (default for pack line 6+), the guarded materialization order (manifest → contract → approval, resumable, refusals that hold), the execution boundary (scheduler dispatch, runner-only observed evidence, derived completion), the amendment path (revision chain + fresh approval + evidence invalidation), read-only status/verify surfaces, v5/v6 coexistence, the explicit one-directional v5 migration (preview → backup → contract → manifest swap → journal import → projection, rollback guarded by real history), cross-agent/cold resume (journal-is-truth ladder, export handoff), and the v6 onboarding guidance (capability declaration, authority boundaries, outcome/test mapping, concise context). Binds v6 new plans only. |
+| [`V7_ROADMAP.md`](V7_ROADMAP.md) | **Non-normative** planning record for the next version: the two optional super addons (Herdr mesh wiring, DeepWorkPlan Vim), the `[herdr-mesh]` grant/stop protocol core, and the never-a-conformance-gate posture. Nothing here gates the current standard. |
+| [`ADDONS.md`](ADDONS.md) | The addon mechanism + contract (reconcile-don't-clobber); four opt-in addons plus the AI Diff Reviewer local review, required in the baseline since 2.3.0 (§6.5). |
 
 ## Key v2 Divergences from v1 (see `../RECONCILIATION.md`)
 
 1. Distribution: WebFetch framework repo → **installed skill pack** (idea #2).
 2. Output path: `.agent_commands/.../results/` → gitignored **`.dwp/`** (idea #3).
 3. Create flow: two-step draft → **single refined draft** (idea #4).
-4. **`.claude → .agents`** directory symlink + canonical `.agents/` (idea #1).
+   *(Superseded in 2.4.0: the draft is gone entirely — `create` materializes an
+   executable Lite plan, see [`LITE_PLANS.md`](LITE_PLANS.md).)*
+4. **`.claude → .agents`** and **`.cursor → .agents`** directory symlinks + canonical `.agents/` (idea #1).
 5. **Two archetypes** made first-class (idea #5).
 6. **Per-module `README.md` + `docs/`** formalized as normative (idea #6).
 7. **Opt-in addons** mechanism, devcontainer first (idea #7).
@@ -70,4 +81,4 @@ orchestrator hub, and agent workspace — are addressed throughout.
 
 ---
 
-*DeepWorkPlan methodology v2.2.0, MIT License, by [Dailybot](https://dailybot.com) / dailybotops.*
+*DeepWorkPlan methodology v6, MIT License, by [Dailybot](https://dailybot.com) / dailybotops.*

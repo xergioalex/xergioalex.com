@@ -15,7 +15,10 @@ Complete reference for all npm scripts and CLI commands available in XergioAleX.
 | `pnpm run md:check:strict` | Same as above; exits `1` on missing (for CI) |
 | `pnpm run generate:openapi` | Regenerate `public/openapi.json` (also runs in `prebuild`) |
 | `pnpm run generate:agent-skills-index` | Regenerate the agent-skills discovery index (also runs in `prebuild`) |
-| `pnpm run test` | Run unit tests (Vitest) |
+| `pnpm run test` | Run unit tests (Vitest), **full** |
+| `pnpm exec vitest run <path>` | Run unit tests, **scoped** to a file or directory |
+| `pnpm exec vitest related --run <src files>` | Run only the tests that import the changed files, **scoped** |
+| `pnpm exec biome check <files>` | Lint and format, **scoped** to the given files |
 | `pnpm run test:e2e` | Run end-to-end tests (Playwright) |
 | `pnpm run images:optimize` | Convert staged images to WebP |
 | `pnpm run images:optimize:slides` | Convert staged slide images to WebP |
@@ -115,6 +118,9 @@ pnpm run astro:check
 - Runs Astro's TypeScript checker
 - Validates `.astro`, `.ts`, `.tsx` files
 - Reports type errors
+- Has no per-file mode: always run it project-wide (**full**)
+
+Scoped test and lint examples, expected evidence and escalation rules live in the [Testing Guide](TESTING_GUIDE.md#validation-gates-full-and-scoped-commands).
 
 ### Markdown-for-Agents Parity Check
 
@@ -323,6 +329,7 @@ VS Code keeps working exactly as before — the two paths coexist.
 ```bash
 bash dev.sh setup     # one-time: env files, networks, .devcontainer/
 bash dev.sh build     # build the image
+bash dev.sh rebuild   # build the image and recreate the dev container
 bash dev.sh up        # start the runServices, detached
 bash dev.sh shell     # login shell as `node` in /app
 ```
@@ -343,6 +350,8 @@ read from the same file.
 | `shell [service]` | Login shell as `remoteUser`, in `workspaceFolder` |
 | `exec <service> <cmd>` | Run one command in a service |
 | `build [service...]` | Build images |
+| `rebuild [service...]` | Build images and recreate containers |
+| `herdr-layout` | Reset the Herdr workspace to `Home`, `Editor`, `Development`, and `Agents` without starting Vite |
 | `config` | Resolved configuration — writes nothing, starts nothing |
 | `doctor` | Environment diagnosis — writes nothing, starts nothing |
 
@@ -361,6 +370,29 @@ wrong, so they never create a file, a network, or a container.
 other accounts on the machine (it holds API keys), and which compose files the
 running container was created from — the fastest way to see whether the terminal
 path and the editor path agree.
+
+### Herdr layout
+
+Run this from a Herdr-managed host pane after the container is running:
+
+```bash
+bash dev.sh herdr-layout
+```
+
+The command recreates the repository's dedicated `XergioAleX.com` Herdr
+workspace with four shell-only tabs: `Home`, `Editor`, `Development`, and
+`Agents`. It does not start Astro, Vite, tests, or any other process in those
+tabs. Existing workspaces with other names are left untouched.
+
+The container's `test` shortcut is installed after Bash's standard startup
+checks. This prevents the shell builtin `test` used by `.bashrc` from invoking
+the project's Vitest suite when a Herdr pane opens.
+
+Set `HERDR_MACHINE` when the saved machine profile uses a different label:
+
+```bash
+HERDR_MACHINE="xergioalex.com" bash dev.sh herdr-layout
+```
 
 ### SSH access for Herdr
 

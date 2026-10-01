@@ -11,19 +11,84 @@ Source of truth: <https://deepworkplan.com> · License: MIT.
 ## What this skill is
 
 A **Markdown-first** agent skill: the "code" is the `SKILL.md` prompt files an
-agent reads at runtime, plus two small Bash helpers (`setup.sh` for symlinking
-and `shared/context.sh` for repo/branch/`.dwp/` detection). The **core
+agent reads at runtime, plus a small set of local helpers. Two Bash: `setup.sh`
+(symlinking, at the repository root, not inside the pack) and, inside the pack,
+`shared/context.sh` for repo/branch/`.dwp/` detection. Thirteen Python (stdlib
+only, Python 3.9+), all inside the pack: `verify/conformance.sh` and its
+`verify/plan_contract.py` for the read-only conformance check,
+`shared/plan_paths.py` for monotonic plan IDs and plan selection,
+`shared/update-state.py`, `shared/state_contract.py` and
+`shared/finalize_plan.py` for the guarded state, evidence and completion
+transactions, `shared/contract_v6.py` validating the v6 outcome
+contract and journal records (identity, graph and verdict semantics; it
+never executes gates), and — for v6 plans — `shared/ledger.py`, the single
+journal writer and gate executor (the only place `observed` gate evidence
+is produced, by actually running the declared command; evidence replay
+from its cache is bound to the same task and criterion the cached result
+was recorded under, so an identical command for another linkage runs
+fresh instead of silently minting nothing; its `materialize` command is
+the guarded creator of a v6 plan — manifest contract pointer, stamped
+content-addressed contract, then the materialization-time approval event,
+each step atomic and resumable, never rewriting a different contract or
+another generation's manifest; it also captures
+each task's starting fingerprint at `task_start` and executes both legs of
+a declared control pair, materializing the old leg as a detached worktree
+at that recorded revision), `shared/views.py`
+rendering the deterministic generated views under the human-edit rule,
+`shared/scheduler.py` — the read-only authorization core that turns journal
+records into dispatch/refusal decisions (it never writes and never executes
+anything; every refusal it returns is a decision, not a side effect) — and
+`shared/outcomes.py`, the v6 outcome-verification helper: closure decisions
+and receipts are pure recomputations over the records (a receipt is written
+only to the `--out` path you name), review states are recorded as ordinary
+`asserted` observations through the ledger writer, and a declared control
+executes through the ledger's control executor — never on its own — and
+`shared/context_manifest.py`, the v6 context-selection helper: a read-only
+derivation of the per-task context manifest, dead-end digest, freshness
+verdict and four-quantity accounting from the plan's own records (it takes
+no lock and writes nothing unless you pass `--out`); and
+`shared/resources.py`, the v6 resource helper: it composes the
+scheduler's envelope accounting and the ledger's record discipline to
+negotiate host abilities, apply reserves, record exhaustion and settle
+cancellations — the only events it writes are journal observations
+through the ledger writer, and it never mints observed trust; and
+`shared/migrate_v6.py`, the explicit v5 → v6 migration helper — preview,
+guarded resumable migrate, verified rollback. It never executes anything:
+a v5 gate record is imported through the ledger writer as `imported`
+evidence with the v5 source digest as provenance (or `asserted` history
+when the v5 state kept no resolvable pointer), and `observed` is refused
+there exactly as everywhere else. The only v5 byte it ever rewrites is the
+manifest, swapped to the v6 pointer after the verified backup exists. They
+read and write only your repository and its `.dwp/`
+directory — with one honest exception that is CPython's behavior rather than
+ours: importing a Python helper can leave a `__pycache__/` bytecode cache
+beside it inside the installed pack. The shipped flows set
+`sys.dont_write_bytecode` to avoid it, but a direct `python3 -c 'import …'`
+against a helper (a diagnosis step, say) will still create one. It is a cache
+of our own files, contains nothing of yours, and is safe to delete. The **core
 methodology makes no CLI calls, no HTTP API calls, no authentication flow, and no
 network calls**, and emits **no telemetry** of any kind.
 
-> **One honest caveat — opt-in addons.** The shipped tree includes opt-in addons
-> (`addons/dailybot`, `addons/devcontainer`, `addons/dependency-upgrade`) that, if
-> you explicitly choose to install them, may run third-party installers (e.g. the
-> Dailybot, Claude, or Cursor CLIs) via their official URLs — always behind your
-> consent and with verification guidance. **A repository is fully conformant with
-> zero addons**, and the baseline methodology never touches the network. The
-> self-audit below scopes the no-network check to the core and lists the addons
-> separately so you can see exactly where any network reference lives.
+> **One honest caveat — addons.** The shipped tree includes five addons
+> (`addons/dailybot`, `addons/devcontainer`, `addons/dependency-upgrade`,
+> `addons/ai-diff-reviewer`, `addons/design-system`). Four are opt-in: if you
+> explicitly choose to install them, they may install third-party artifacts —
+> **always behind your consent, always pinned** (a published tag or a
+> package-manager version), and always through a verifiable path: a package
+> manager, the checksummed `skills` CLI, or a documented download → verify
+> SHA-256 → execute flow. The fifth, the **AI Diff Reviewer local review**, is
+> part of the baseline since standard 2.3.0: `onboard` installs one MIT-licensed, tag-pinned
+> skill (`DailybotHQ/ai-diff-reviewer`) through the checksummed `skills` CLI,
+> and the Final Review's security pass runs it through your own coding agent —
+> no service, no provider secret, no telemetry; its CI Action stays opt-in and
+> a decline is recorded, never hidden. No addon ever pipes a remote installer
+> into a shell, copies host credentials anywhere without an explicit visible
+> opt-in, or documents permission-bypass shortcuts. **A repository is fully
+> conformant with zero optional addons**. Core runtime helpers never touch the
+> network; consent-gated onboarding Phase 7a is the sole baseline exception and
+> may run the pinned AI Diff Reviewer install plus extension bootstrap. The
+> self-audit below checks that exception explicitly and lists other addons
+> separately.
 
 ## Permissions it requests (`allowed-tools`)
 
@@ -33,8 +98,9 @@ network calls**, and emits **no telemetry** of any kind.
   reason about it rather than copy a template.
 - **Edit, Write** — generate and reconcile `AGENTS.md`, `docs/`, per-module docs,
   the `.agents/` kit, and write plan artifacts under `.dwp/`.
-- **Bash** — run `shared/context.sh` (reads local git + environment metadata only)
-  and the repo's own validation commands during plan execution.
+- **Bash** — run `shared/context.sh` (reads local git + environment metadata
+  only), `verify/conformance.sh` (reads plan and repository files; writes
+  nothing), and the repo's own validation commands during plan execution.
 
 ## What it does to your machine
 
@@ -46,7 +112,7 @@ non-destructive by design:
   before replacing or deleting anything you already have.
 - **Proposes before large changes.** Onboarding presents a plan and waits for your
   confirmation before big or destructive edits.
-- **Keeps working state out of version control.** Plans and drafts land in a
+- **Keeps working state out of version control.** Plans land in a
   gitignored `.dwp/` directory; onboarding **appends** to `.gitignore` rather than
   rewriting it.
 - **Touches no secrets.** It never reads or commits credentials, and keeps changes
@@ -55,7 +121,7 @@ non-destructive by design:
 ## What it does NOT do
 
 - No telemetry, no analytics, no "phone home" — ever, including the addons.
-- No network requests in the **core** methodology or its two Bash helpers. (Opt-in
+- No network requests in the **core** methodology or any of its Bash helpers. (Opt-in
   addons may install third-party tools via their official installers, only with
   your consent — see the caveat above.)
 - No background daemon, no persistent external state.
@@ -82,18 +148,33 @@ source, so you can also diff any shipped file against the repository at its tag.
 Run these from the repo root to confirm the claims above:
 
 ```bash
-# 1. No network calls in the CORE methodology (excludes opt-in addons; expect none):
+# 1. No network calls in the CORE methodology (excludes addons; expect none):
 grep -RInE 'curl|wget|fetch\(|urllib|requests\.|XMLHttpRequest' \
   skills/deepworkplan --exclude-dir=addons --exclude=TRUST.md \
   || echo 'OK: no network calls in the core skill'
 
-# 2. See every network reference that DOES exist — all inside opt-in addons:
+# 2. See every network reference that DOES exist — all inside addons:
 grep -RIlE 'curl|wget' skills/deepworkplan/addons || echo 'none'
 
-# 3. The only shipped runtime script is context.sh; confirm it makes no network call:
+# 3. Two scripts ship inside the pack; confirm neither makes a network call:
 find skills/deepworkplan -name '*.sh'
-grep -nE 'curl|wget|http' skills/deepworkplan/shared/context.sh \
-  || echo 'OK: context.sh reads local git + env only'
+grep -nE 'curl|wget|https?://' \
+  skills/deepworkplan/shared/context.sh skills/deepworkplan/verify/conformance.sh \
+  || echo 'OK: both read local files, git and env only'
+
+# 4. No remote-installer pipes or bypass-flag literals anywhere in the pack
+#    (the lexical shapes Snyk E005/E006 and Socket W012 audit for). The
+#    bracketed letters keep this grep from matching its own pattern:
+grep -RInE --exclude=TRUST.md -- '--dangerous[l]y|--full-permissio[n]|c[u]rl[^|]*\|[[:space:]]*(ba)?sh|w[g]et[^|]*\|[[:space:]]*(ba)?sh|\|[[:space:]]*(ie[x]|pws[h])[[:space:]]*$|ir[m][[:space:]]+https?://[^ ]*[[:space:]]+\|[[:space:]]*ie[x]' \
+  skills/deepworkplan \
+  || echo 'OK: no installer pipes, no bypass flags'
+
+# 5. No unpinned installs of any kind: no clone-and-run (installing by
+#    cloning whatever a remote default branch currently holds), no un-tagged
+#    `skills add`, and no moving refs — a pin is an immutable version tag
+#    (@vX.Y.Z), never @main/@master/@latest/@head:
+grep -RInE --exclude=TRUST.md 'git clone |skills add [A-Za-z0-9_./-]+([[:space:]]|$)|skills add [^`]*@(main|master|latest|head)([[:space:]\`]|$)' skills/deepworkplan \
+  || echo 'OK: every install path is tag-pinned or package-managed'
 ```
 
 ## Reporting a vulnerability
