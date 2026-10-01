@@ -31,16 +31,17 @@ When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
 > These are **thin delegators** to the installed `deepworkplan` skill
 > (`.agents/skills/deepworkplan/`). Plan/draft outputs live in the git-ignored
-> `.dwp/` (`.dwp/plans/`, `.dwp/drafts/`).
+> `.dwp/` (`.dwp/plans/`). The flows are also invocable by name without slash syntax (`#deepworkplan-create` or plain text).
 
 | Command | Procedure File | Description |
 |---------|---------------|-------------|
-| `/dwp-create` | `.agents/commands/dwp-create.md` | Create a deep work plan (single-step refined draft → final plan) |
+| `/dwp-create` | `.agents/commands/dwp-create.md` | Create a deep work plan (Lite inline plan by default; promoted to Full task files when needed) |
 | `/dwp-execute` | `.agents/commands/dwp-execute.md` | Execute an existing deep work plan task-by-task |
-| `/dwp-refine` | `.agents/commands/dwp-refine.md` | Refine a draft or modify an existing final plan |
+| `/dwp-refine` | `.agents/commands/dwp-refine.md` | Edit scope, add or split tasks, promote a Lite plan to Full, or migrate a legacy plan |
 | `/dwp-resume` | `.agents/commands/dwp-resume.md` | Resume an interrupted deep work plan |
 | `/dwp-status` | `.agents/commands/dwp-status.md` | Check status of deep work plans without executing |
 | `/dwp-verify` | `.agents/commands/dwp-verify.md` | Verify repository + plan conformance to the DWP spec (read-only) |
+| `/dwp-upgrade` | `.agents/commands/dwp-upgrade.md` | Check for a newer DeepWorkPlan skill and upgrade only with explicit consent |
 
 ## Git & Version Control
 

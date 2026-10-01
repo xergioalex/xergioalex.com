@@ -13,7 +13,7 @@ Route this invocation to the **author** sub-skill of the installed `deepworkplan
 skill and follow its **Create a skill** flow: read
 `.agents/skills/deepworkplan/author/SKILL.md` and execute it, passing along any
 arguments as the skill name/intent. Keep any new command thin and keep this
-repo's `.agents/docs/` catalog (`skills_agents_catalog.md`) in sync.
+repo's `.agents/docs/` catalog in sync.
 
 > Other agents: invoke the skill's `deepworkplan-author` sub-skill directly
 > (`/deepworkplan-author` in Claude Code, `#deepworkplan-author` elsewhere). This

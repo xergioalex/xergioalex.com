@@ -51,6 +51,7 @@ Everyday development work.
 | promote-post  | create   | `/promote-post`  | sonnet | Generate social media content for any blog post (Twitter/X, LinkedIn, HN, dev.to, Reddit, Facebook) |
 | write-tests   | tests    | `/write-tests`   | sonnet | Add or expand tests (*.test.ts) - Vitest/Playwright when configured      |
 | refactor-safe | execute  | `/refactor-safe` | sonnet | Safe refactor in bounded scope (1-10 files, no behavior change)          |
+| ai-diff-reviewer | review | `/ai-diff-reviewer` | sonnet | Local review of the branch diff using the repo-tailored `.review/extension.md`; required by the DWP Final Review. Vendored at `.agents/skills/ai-diff-reviewer/` (v3.2.2). |
 
 ### Tier 3 (Heavy/Reasoning)
 
@@ -225,6 +226,7 @@ Resources for security review and auditing.
 |----------|------|-------------|
 | security-check | Skill (T1) | Quick security checklist (secrets, API routes, client exposure) |
 | security-auditor | Agent (T2) | Static site security; API routes, secrets, client exposure |
+| ai-diff-reviewer | Skill (T2) | Local diff review with repo-specific severity rules in `.review/extension.md` (DWP Final Review security pass) |
 
 ### 6. Component & Page Creation
 
@@ -375,6 +377,7 @@ All skills and agents are adapted for this Astro repository:
 
 | Date | Change | Details |
 |------|--------|---------|
+| 2026-10-01 | DeepWorkPlan upgraded to skill 6.0.2 (standard 6.0.0) | Refreshed `dwp-*`, `skill-create` and `agent-create` delegators, added `/dwp-upgrade`, installed the `ai-diff-reviewer` skill with `.review/extension.md`, added working principles, DWP routing and scoped test gates. |
 | 2026-04-26 | add-slide-deck skill added | New Tier 2 skill for creating slide decks — internal Reveal.js, external-embed, or external-link. Mandatory for new files in `src/content/slides/`. Added Slides & Presentations domain section (#2). |
 | 2026-03-23 | audit-series skill added | New Tier 2 skill for pre-publication blog series auditing — 9-step review covering series definition, post discovery, ordering validation, cross-post consistency, i18n parity, individual post summary checks, build validation, and final report. Companion to audit-post. |
 | 2026-03-23 | audit-post skill added | New Tier 2 skill for pre-publication blog post auditing — 10-step comprehensive review covering frontmatter, SEO, AEO, images, accessibility, content quality, i18n parity, resources, build validation. |
