@@ -21,6 +21,7 @@ services:
       - cline_data:/home/node/.cline_data
       - herdr_data:/home/node/.herdr_data
       - grok_data:/home/node/.grok_data
+      - nvim_data:/home/node/.nvim_data
       # Host keys generated once at first start and kept here, so the
       # container's SSH identity survives rebuilds and recreates. Without this
       # every recreate mints a new identity and every client that pinned the old
@@ -125,3 +126,4 @@ volumes:
   cline_data: {}         # Cline sessions/config (symlinked to ~/.cline)
   herdr_data: {}         # Herdr config/logs (symlinked to ~/.config/herdr)
   grok_data: {}          # Grok CLI sessions/config (symlinked to ~/.grok)
+  nvim_data: {}          # DeepWorkPlan Vim plugins, Mason LSPs, undo/shada (symlinked to ~/.local/{share,state}/nvim)

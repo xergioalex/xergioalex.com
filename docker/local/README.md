@@ -29,6 +29,12 @@ docker compose -p xergioalexlocal build
 docker compose -p xergioalexlocal up -d xergioalexcomvscode
 ```
 
+## Neovim (DeepWorkPlan Vim)
+
+`nvim` is Neovim 0.12.5 with the [DeepWorkPlan Vim](https://github.com/DailybotHQ/deepworkplan-vim) config, baked into the image at a pinned release (`DWPVIM_REF` build arg in the Dockerfile; bump it to upgrade). Plugins are installed headless during the build (`xergioalexcom/nvim-bootstrap.lua`), so the first `nvim` after a rebuild opens ready.
+
+`~/.local/share/nvim` (plugins, Mason LSP servers) and `~/.local/state/nvim` (undo, shada) live on the `nvim_data` volume, so Mason only downloads LSP servers once. Icons need a Nerd Font in your host terminal. To reset the editor state: `docker volume rm xergioalexlocal_nvim_data` and recreate the container.
+
 ## Z.AI GLM Coding Plan (optional)
 
 Use [Z.AI GLM Coding Plan](https://docs.z.ai/devpack/quick-start) alongside the default Anthropic-backed `claude` / `claudex` commands. Wrappers inject auth and model mapping **only for that process** — nothing is written to `~/.claude/settings.json`.
