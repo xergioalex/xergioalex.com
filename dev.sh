@@ -35,7 +35,13 @@ while [ -L "$_self" ]; do
 done
 REPO_ROOT="$(cd -P "$(dirname "$_self")" && pwd)"
 
-VERBS=" setup up down stop start restart ps logs shell exec build config doctor help "
+VERBS=" setup up down stop start restart ps logs shell exec build rebuild herdr-layout config doctor help "
+
+# Herdr layout settings. The CLI controls the Herdr server running in the
+# devcontainer through the saved SSH machine profile on the host.
+HERDR_LAYOUT_MACHINE="${HERDR_MACHINE:-xergioalex.com}"
+HERDR_LAYOUT_WORKSPACE="XergioAleX.com"
+HERDR_LAYOUT_CWD="/app"
 
 # --------------------------------------------------------------------------
 # Argument parsing
@@ -738,6 +744,74 @@ cmd_build() {
   dc build "${SERVICES[@]}"
 }
 
+cmd_rebuild() {
+  fast_check
+  write_overlay
+  selected_services
+  note "rebuilding ${SERVICES[*]} (project $PROJECT)"
+  dc build "${SERVICES[@]}"
+  note "recreating ${SERVICES[*]} (project $PROJECT)"
+  dc up -d --force-recreate "${SERVICES[@]}"
+}
+
+herdr_cli() {
+  command -v herdr >/dev/null 2>&1 || die "herdr CLI not found on the host"
+  [ "${HERDR_ENV:-}" = "1" ] || die "herdr-layout must run from a Herdr pane (HERDR_ENV=1)"
+  herdr --machine "$HERDR_LAYOUT_MACHINE" "$@"
+}
+
+herdr_workspace_id_for_label() {
+  python3 -c '
+import json
+import sys
+
+payload = json.load(sys.stdin)
+for workspace in payload.get("result", {}).get("workspaces", []):
+    if workspace.get("label") == sys.argv[1]:
+        print(workspace.get("workspace_id", ""))
+        break
+' "$1"
+}
+
+herdr_created_id() {
+  python3 -c '
+import json
+import sys
+
+payload = json.load(sys.stdin)
+value = payload.get("result", {}).get(sys.argv[1], {})
+print(value.get(sys.argv[2], ""))
+' "$1" "$2"
+}
+
+cmd_herdr_layout() {
+  local workspaces workspace_id created root_tab_id label tab_result
+
+  note "checking Herdr machine $HERDR_LAYOUT_MACHINE"
+  workspaces="$(herdr_cli workspace list)" || die "could not inspect Herdr machine $HERDR_LAYOUT_MACHINE"
+  workspace_id="$(printf '%s\n' "$workspaces" | herdr_workspace_id_for_label "$HERDR_LAYOUT_WORKSPACE")"
+
+  if [ -n "$workspace_id" ]; then
+    note "resetting Herdr workspace $HERDR_LAYOUT_WORKSPACE ($workspace_id)"
+    herdr_cli workspace close "$workspace_id" >/dev/null || die "could not close existing Herdr workspace $workspace_id"
+  fi
+
+  created="$(herdr_cli workspace create --cwd "$HERDR_LAYOUT_CWD" --label "$HERDR_LAYOUT_WORKSPACE" --no-focus)" || die "could not create Herdr workspace $HERDR_LAYOUT_WORKSPACE"
+  workspace_id="$(printf '%s\n' "$created" | herdr_created_id workspace workspace_id)"
+  root_tab_id="$(printf '%s\n' "$created" | herdr_created_id tab tab_id)"
+  [ -n "$workspace_id" ] || die "Herdr did not return the new workspace id"
+  [ -n "$root_tab_id" ] || die "Herdr did not return the new root tab id"
+
+  herdr_cli tab rename "$root_tab_id" Home >/dev/null || die "could not name the Home tab"
+  for label in Editor Development Agents; do
+    tab_result="$(herdr_cli tab create --workspace "$workspace_id" --cwd "$HERDR_LAYOUT_CWD" --label "$label" --no-focus)" || die "could not create the $label tab"
+    [ -n "$tab_result" ] || die "Herdr returned no result for the $label tab"
+  done
+
+  note "Herdr layout ready in $HERDR_LAYOUT_WORKSPACE"
+  note "  Home / Editor / Development / Agents -> $HERDR_LAYOUT_CWD (bash only; no Vite server starts automatically)"
+}
+
 cmd_config() {
   local f
   note "repository       $REPO_ROOT"
@@ -864,6 +938,8 @@ Verbs
   shell [service]       login shell as remoteUser, in workspaceFolder
   exec <service> <cmd>  run one command in a service
   build [service...]    build images
+  rebuild [service...]   build images and recreate containers
+  herdr-layout           reset the Herdr workspace to Home, Editor, Development, Agents
   config                resolved configuration; writes nothing, starts nothing
   doctor                environment diagnosis; writes nothing, starts nothing
   help                  this text
@@ -887,6 +963,7 @@ USAGE
 
 case "$VERB" in
   help) cmd_help; exit 0 ;;
+  herdr-layout) cmd_herdr_layout; exit 0 ;;
 esac
 
 load_context
@@ -902,6 +979,7 @@ case "$VERB" in
   shell)   cmd_shell ;;
   exec)    cmd_exec ;;
   build)   cmd_build ;;
+  rebuild) cmd_rebuild ;;
   config)  cmd_config ;;
   doctor)  cmd_doctor ;;
   *)       die "unknown verb '$VERB' — run: bash dev.sh help" ;;

@@ -2,6 +2,8 @@
 
 **Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others). Ensures all agents work with consistent guidelines and patterns.
 
+DWP standard: 6.0.0 (onboarded earlier; upgraded 2026-10-01; skill 6.0.2)
+
 ## Detailed Documentation
 
 **Comprehensive guides for specific tasks:**
@@ -74,59 +76,22 @@ scripts/                 # Build utilities (image optimization)
 docs/                    # Project documentation
 .agents/                 # Cross-agent skills, commands, agents, settings (canonical)
 .claude → .agents        # Backward-compat symlink for Claude Code
+.review/extension.md     # Repo-specific rules for the local AI Diff Reviewer
 .dwp/                    # Deep Work Plan outputs (git-ignored: plans/, drafts/)
 tmp/                     # Temporary workspace (git-ignored, see below)
 ```
 
 ## Temporary Workspace (`tmp/`)
 
-The `tmp/` directory at the project root is a **git-ignored scratch space** for agents and developers.
-
-**Use it for:**
-- Temporary prompts, outputs, or drafts
-- One-off analysis results or debug logs
-- Any ephemeral file that should NOT be committed
-
-**Rules:**
-- Everything inside `tmp/` is ignored by git (except `.gitkeep`)
-- Do NOT store anything permanent or important here — it can be deleted at any time
-- When a user asks for a temporary file, prompt output, or scratch artifact, **write it to `tmp/`**
-- Subdirectories are fine (e.g., `tmp/prompts/`, `tmp/analysis/`)
+`tmp/` is a **git-ignored scratch space** (only `.gitkeep` is tracked) for temporary prompts, drafts, one-off analysis and debug logs; subdirectories are fine (`tmp/prompts/`, `tmp/analysis/`). When asked for a temporary file or scratch artifact, **write it to `tmp/`**. Never store anything permanent there. It is distinct from `.dwp/`, which holds the structured outputs of Deep Work Plans.
 
 ## Skills, Commands, and Agents (`.agents/`)
 
 The `.agents/` directory is the **canonical, cross-agent home** for everything that defines how AI assistants behave in this repo: skills, slash commands, agent definitions, internal documentation, and settings. The same content is consumed by Claude Code, Cursor AI, OpenAI Codex, Gemini, and any other coding agent that picks up local skills/commands.
 
-```
-.agents/
-├── agents/        # Agent definitions (architect, executor, reviewer, ...)
-├── commands/      # Slash commands (commit, pr, branch, dwp-*, ...)
-├── skills/        # Skill procedures (add-blog-post, fix-lint, ...)
-├── docs/          # Catalogs and references (skills_agents_catalog.md, COMMANDS_REFERENCE.md)
-├── README.md      # Conventions for authoring skills, agents, and commands
-├── settings.json           # Claude Code env (env vars, experimental flags)
-└── settings.local.json     # Claude Code local permissions (git-tracked)
-```
+Layout: `agents/` (personas), `commands/` (slash commands incl. `dwp-*`), `skills/` (procedures), `docs/` (catalog and commands reference), `README.md`, `settings.json` (Claude Code env), `settings.local.json` (Claude Code permissions, git-tracked).
 
-**Backward compatibility — `.claude/` symlink:**
-
-Claude Code historically reads from `.claude/` at the repo root. To keep that working without duplicating files, **`.claude` is a symlink to `.agents`**:
-
-```bash
-ls -la .claude
-# .claude -> .agents
-```
-
-This means every `.claude/...` path (e.g., `.claude/skills/foo/SKILL.md`) resolves transparently to `.agents/skills/foo/SKILL.md`. No tool, hook, or settings file needs to change for Claude Code to keep working.
-
-**Authoring rules (all agents):**
-
-- Use `.agents/...` as the canonical path in **all new documentation, prompts, and skill/command files**. Do not write `.claude/...` in new content.
-- Do not edit files via the `.claude/` symlink — edit the real files under `.agents/`.
-- Settings files (`settings.json`, `settings.local.json`) are Claude Code-specific but live in `.agents/` for symmetry. They're a no-op for other agents.
-- The `.agents/README.md` documents how to add new skills, commands, and agents.
-
-**Why the rename?** The `.agents/` name signals that the folder is shared across agents, matching the project-level `AGENTS.md` convention (which is itself the canonical file that `CLAUDE.md` symlinks to). It avoids implying that the contents are Claude-only.
+**Symlinks and authoring rules:** `.claude` and `.cursor` are symlinks to `.agents` (backward compatibility for Claude Code and Cursor), so `.claude/...` paths resolve to `.agents/...`. Use `.agents/...` as the canonical path in all new docs, prompts, skills and commands, and edit the real files under `.agents/`, never through a symlink. Settings files (`settings.json`, `settings.local.json`) are Claude Code-specific and a no-op for other agents. Rationale and how to add skills, commands and agents: [`.agents/README.md`](.agents/README.md).
 
 ## CRITICAL: Mandatory Requirements
 
@@ -248,6 +213,39 @@ See **[Accessibility Guide](docs/ACCESSIBILITY.md)**.
 3. Keep Bing verification as optional env-based meta tag (`PUBLIC_BING_SITE_VERIFICATION`)
 4. GSC verification is DNS-only (Domain property DNS TXT)
 
+## Deep Work Plans — invocation
+
+Structured work runs through the local DWP flows (`.agents/commands/dwp-*` delegators; the flows live in `.agents/skills/deepworkplan/`; discovery is local, no network service is consulted):
+
+| Intent | Route |
+|---|---|
+| "plan this work", "create a plan" | `/dwp-create` |
+| "execute / run the plan" | `/dwp-execute` |
+| "continue / resume the interrupted plan" | `/dwp-resume` |
+| "plan status", "what's left" | `/dwp-status` (read-only) |
+| "verify the repo / the plan" | `/dwp-verify` (read-only) |
+| "upgrade DWP" | `/dwp-upgrade` (asks before installing) |
+| ordinary direct edit ("fix this", "rename that") | done directly; never silently becomes a plan |
+
+Hosts without slash commands invoke the same flows by name (`#deepworkplan-create` or plain text). `trust`/`auto` authorizes unattended continuation within the requested flow; it is not a flow selector, and read-only routes stay read-only. Task validation gates come from the touched surface and the mapping in the [Testing Guide](docs/TESTING_GUIDE.md#validation-gates-full-and-scoped-commands), with a fallback to the full suite.
+
+The Final Review of every plan runs the local AI Diff Reviewer (`.agents/skills/ai-diff-reviewer/`, rules in `.review/extension.md`) over the plan's accumulated change set. The CI surface (`pr-review.yml`, Flow B) is not installed. A `critical` finding verified by a completed review blocks completion; an incomplete or failed review is recorded, never counted as a clean pass.
+
+## Working principles
+
+Work with autonomy, ownership and sound judgment. These are defaults within the current request; they never override the mandatory rules, host permissions, plan gates or read-only requests.
+
+- **Own the outcome.** Carry authorized work through investigation, execution and validation until it is complete or a concrete blocker stops it.
+- **Be resourceful before asking.** Inspect code, docs, tools and prior decisions before asking the user.
+- **Decide routine matters independently.** Choose sensible approaches within scope, state consequential assumptions, and do not re-ask for authorized steps.
+- **Ask when judgment or authorization is missing.** Bring the investigation, options and a recommendation.
+- **Make approvals concrete.** Finish authorized preparation first, then name the action needing approval and why.
+- **Work through obstacles.** Investigate failures and recover within scope; escalate when progress needs user input or an external change.
+- **Respect intent and scope.** Analysis stays analysis. Propose broader improvements separately and preserve the user's existing work and uncommitted changes.
+- **Apply proportionate rigor.** Fix underlying causes, avoid unrelated changes, and match validation to impact.
+- **Communicate directly.** Lead with the result and separate verified facts from assumptions.
+- **Verify before declaring completion.** Check the result against the request, run the right gates, and report what was validated and what remains. Never claim checks that did not run.
+
 ## Shared Agent Coordination
 
 Multiple AI agents collaborate on this codebase. When updating agent guidance, mirror changes across all relevant files. See **[AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)**.
@@ -258,10 +256,13 @@ Multiple AI agents collaborate on this codebase. When updating agent guidance, m
 pnpm run dev                # Dev server (http://localhost:4444)
 pnpm run build              # Production build (prebuild runs images:webp)
 pnpm run astro:preview      # Preview production build
-pnpm run biome:check        # Lint and format check
+pnpm run biome:check        # Lint and format check (full)
 pnpm run biome:fix          # Auto-fix lint issues
-pnpm run astro:check        # TypeScript type checking
-pnpm run test               # Run unit tests
+pnpm run astro:check        # TypeScript type checking (full only)
+pnpm run test               # Run unit tests (full)
+pnpm exec vitest run tests/unit/lib/blog.test.ts  # Unit tests (scoped)
+pnpm exec vitest related --run src/lib/blog.ts    # Tests affected by a source file (scoped)
+pnpm exec biome check src/lib/blog.ts             # Lint and format (scoped)
 pnpm run test:coverage      # Tests with coverage
 pnpm run images:optimize    # Process staged images
 pnpm run md:check           # Verify every HTML page has a matching .md for agents
@@ -384,9 +385,7 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 **URL surface:** `/slides/<slug>` (and `/es/slides/<slug>`). Catalog at `/slides` and `/es/slides`.
 
-**Reveal.js config:** Virtual canvas 1280×720 (16:9), base font 32px, scaled by Reveal to fit any viewport/projector.
-
-**Chrome UI:** Back-link (top-left) uses site logo on `#0f1124` background; toolbar (top-right) with language toggle, theme toggle (sun=light, moon=dark), fullscreen. Slide number in dark pill, readable on any background.
+Canvas and chrome UI details: [Slides Guide](docs/features/SLIDES.md#deck-canvas-and-chrome-ui).
 
 **Asset isolation:** Reveal.js CSS/JS only loads on internal deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
 
@@ -472,14 +471,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 
 ### Execution Modes
 
-| Mode | Support | Description |
-|------|---------|-------------|
-| Sequential | All agents | Default — tasks one at a time |
-| Subagents | Claude Code | Helper agents within session |
-| Team Agents | Claude Code only | Parallel instances with shared coordination |
-| Orchestrator | All agents | Child DWPs in sub-repos |
-
-See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details.
+Sequential (all agents, default), Subagents and Team Agents (Claude Code), and Orchestrator (child DWPs in sub-repos). Selection guidance: [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md).
 
 ## ⚡ Slash Commands (All Agents)
 
@@ -487,14 +479,7 @@ See [Team Agents Reference](docs/technical/TEAM_AGENTS_REFERENCE.md) for details
 
 ### How to Invoke Commands
 
-| Agent | Prefix | Example |
-|-------|--------|---------|
-| **Claude Code** | `/` (native) | `/add-blog-post` |
-| **OpenAI Codex** | `#` | `#add-blog-post` |
-| **Cursor AI** | `#` | `#add-blog-post` |
-| **Gemini / others** | `#` | `#add-blog-post` |
-
-> **Why `#` for non-Claude agents?** Most AI CLIs (Codex, Cursor) intercept `/` as their own system commands. Using `#` avoids interception. You can also write the command name in plain text: "run add-blog-post".
+Claude Code uses `/<name>` natively. Codex, Cursor, Gemini and other agents that intercept `/` use `#<name>` (for example `#add-blog-post`) or plain text ("run add-blog-post").
 
 When a command is invoked (via `/`, `#`, or by name), the agent MUST:
 
