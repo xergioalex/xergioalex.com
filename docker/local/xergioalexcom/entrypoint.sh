@@ -393,6 +393,15 @@ setup_shell_for_custom_commands() {
         printf '\n%s\n' "${SOURCE_LINE}" >> "${BASHRC}"
     fi
 
+    # Keep the convenient `test` shortcut, but define it only after the
+    # standard .bashrc startup checks have used Bash's builtin `test` command.
+    # custom_commands.sh is also sourced from /etc/profile.d for login shells,
+    # so defining a function named `test` there would run the full test suite
+    # every time Herdr opens a pane.
+    if ! grep -qE '^[[:space:]]*alias test=' "${BASHRC}" 2>/dev/null; then
+        printf '%s\n' "alias test='run_tests'" >> "${BASHRC}"
+    fi
+
     # PREPENDED, above Debian's `case $- in *i*) ;; *) return;; esac` guard.
     # A non-interactive SSH command (`ssh host cmd`, `herdr --machine X cmd`) is
     # neither a login shell nor interactive: it reads no /etc/profile.d and no

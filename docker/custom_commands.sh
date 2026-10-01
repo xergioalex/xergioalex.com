@@ -47,7 +47,11 @@ function fix() {
 	corepack pnpm run biome:fix
 }
 
-function test() {
+# Do not call this function `test`: login shells source this file from
+# /etc/profile.d before ~/.bashrc, where Debian uses the builtin `test` command
+# for startup checks. Shadowing it would run the full Vitest suite on every
+# Herdr pane before the shell prompt appears.
+function run_tests() {
   print.success "Running tests..."
 	corepack pnpm run test
 }
@@ -82,7 +86,7 @@ function codecheck() {
 		print.error "⚠️ WebP generation failed..."
 		return 1
 	fi
-	test
+	run_tests
 	if [ $? != 0 ]; then
 		print.error "⚠️ Tests failed..."
 		return 1

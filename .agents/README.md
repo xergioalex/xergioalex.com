@@ -700,3 +700,28 @@ Options:
 | `/code-review [PR#]` | Review code for critical issues | Security/bugs/performance findings |
 | `/commit` | Generate commit message | Commit with message |
 | `/pr` | Generate PR description | PR title and body |
+
+## Symlink and Authoring Conventions
+
+`.claude` and `.cursor` are both symlinks to `.agents`; the mechanism below applies to each.
+
+**Backward compatibility — `.claude/` symlink:**
+
+Claude Code historically reads from `.claude/` at the repo root. To keep that working without duplicating files, **`.claude` is a symlink to `.agents`**:
+
+```bash
+ls -la .claude
+# .claude -> .agents
+```
+
+This means every `.claude/...` path (e.g., `.claude/skills/foo/SKILL.md`) resolves transparently to `.agents/skills/foo/SKILL.md`. No tool, hook, or settings file needs to change for Claude Code to keep working.
+
+**Authoring rules (all agents):**
+
+- Use `.agents/...` as the canonical path in **all new documentation, prompts, and skill/command files**. Do not write `.claude/...` in new content.
+- Do not edit files via the `.claude/` symlink — edit the real files under `.agents/`.
+- Settings files (`settings.json`, `settings.local.json`) are Claude Code-specific but live in `.agents/` for symmetry. They're a no-op for other agents.
+- The `.agents/README.md` documents how to add new skills, commands, and agents.
+
+**Why the rename?** The `.agents/` name signals that the folder is shared across agents, matching the project-level `AGENTS.md` convention (which is itself the canonical file that `CLAUDE.md` symlinks to). It avoids implying that the contents are Claude-only.
+

@@ -460,3 +460,9 @@ success.
 - [Blog Posts Guide](./BLOG_POSTS.md) — parallel content surface
 - [Architecture Guide](../ARCHITECTURE.md) — Content Collections, layouts
 - [I18N Guide](../I18N_GUIDE.md) — multilingual conventions
+
+## Deck Canvas and Chrome UI
+
+**Reveal.js config:** Virtual canvas 1280×720 (16:9), base font 32px, scaled by Reveal to fit any viewport/projector.
+
+**Chrome UI:** Back-link (top-left) uses site logo on `#0f1124` background; toolbar (top-right) with language toggle, theme toggle (sun=light, moon=dark), fullscreen. Slide number in dark pill, readable on any background.
