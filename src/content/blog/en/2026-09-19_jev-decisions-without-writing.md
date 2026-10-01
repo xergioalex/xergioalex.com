@@ -7,6 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['portfolio', 'tech', 'ai', 'ai-agents', 'javascript', 'python']
 keywords: ['jev typesafe system one model', 'jev model decisions not text', 'noul choice score api', 'cheap ai decision trees', 'llm cpu to gpu moment', 'jev api example', 'system one vs llm']
 author: 'sergio-florez'
+draft: true
 ---
 
 How much does it cost software to evaluate whether something is urgent? Answering that question takes reasoning, and today we delegate it to an advanced tool: a generalist model trained to write code and complex essays.

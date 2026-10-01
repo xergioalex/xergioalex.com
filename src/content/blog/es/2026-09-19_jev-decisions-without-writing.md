@@ -7,6 +7,7 @@ heroLayout: 'side-by-side'
 tags: ['portfolio', 'tech', 'ai', 'ai-agents', 'javascript', 'python']
 keywords: ['qué es jev typesafe', 'modelo de ia que no genera texto', 'jev system one modelo', 'árboles de decisión con ia baratos', 'api noul choice score', 'jev vs llm diferencias', 'enrutamiento con ia barata']
 author: 'sergio-florez'
+draft: true
 ---
 
 ¿Cuánto le cuesta a un software evaluar si algo es urgente? Responder esa pregunta requiere razonamiento, y hoy delegamos esa tarea a una herramienta avanzada: un modelo generalista entrenado para escribir código y ensayos complejos.
