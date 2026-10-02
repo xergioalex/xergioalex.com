@@ -393,6 +393,8 @@ Canvas and chrome UI details: [Slides Guide](docs/features/SLIDES.md#deck-canvas
 
 **Hydration:** `RevealDeck.svelte` uses `client:only="svelte"` (documented exception to `client:visible` preference — Reveal needs DOM).
 
+**Slide references (dev-only):** in `astro dev` the deck toolbar has a bug button that copies `[slide-ref] deck=… lang=… id=… position=n/total text="…"` for the current slide. When a user pastes one, locate the slide by `id` (`data-slide-id` / `data-aod-id` / `<!-- ID · slug -->`) in both language files and **always apply the requested change to BOTH languages (`es` and `en`), even though the reference shows one `lang`** — see [Slides Guide → Dev-only slide reference](docs/features/SLIDES.md#dev-only-slide-reference-copy-the-current-slide-id). Not rendered in production.
+
 **New deck workflow:** Use `/add-slide-deck` skill (mandatory). Do not create slide deck files manually.
 
 ## Documentation Standards

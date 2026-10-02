@@ -6,11 +6,13 @@ The slides feature adds a **unified presentation deck catalog** to xergioalex.co
 
 | Type | When to Use | Renders As |
 |---|---|---|
-| `internal` | Author decks in Markdown with Reveal.js | Fullscreen Reveal.js presentation |
+| `native` (older docs say `internal`) | Author decks in Markdown with Reveal.js | Fullscreen Reveal.js presentation |
 | `external-embed` | Third-party deck that supports iframe (Google Slides published, Speaker Deck) | Fullscreen iframe in the same chrome |
 | `external-link` | Third-party deck without iframe support (private Drive, Google Docs) | Stub info page with CTA to external URL |
 
 ## Schema
+
+> **Verified against `src/content.config.ts`:** internal Reveal.js decks use `type: native` (external ones `type: external`), the slide schema has **no `tags` field**, and deck routes are `/slides/<slug>/` and `/es/slides/<slug>/` (with a trailing slash). Older sections of this guide that say `internal`, `tags` or `/tech-talks/<slug>` predate that and are kept for history.
 
 The `slides` collection uses a Zod discriminated union defined in `src/content.config.ts`. The `type` field narrows which additional fields are required.
 
@@ -22,7 +24,6 @@ description: string (130-160 chars)
 pubDate: date
 updatedDate: date (optional)
 heroImage: string (optional)
-tags: string[] (max 5, optional)
 draft: boolean (default false)
 eventName: string (optional)
 eventDate: date (optional)
@@ -33,7 +34,7 @@ relatedPost: string (optional, blog slug)
 ### Internal Deck
 
 ```yaml
-type: internal
+type: native
 theme: dark | light (default: dark)
 transition: none | fade | slide | convex | concave | zoom (default: slide)
 syntaxHighlight: boolean (default: true)
@@ -454,6 +455,66 @@ The optimizer applies the same hero-aware presets (1400px landscape, 800px
 square) and JPEG/WebP encoding settings used for blog posts. Optimized files
 land in `public/images/slides/<slug>/` and are removed from `_staging/` on
 success.
+
+## Deck-scoped primitive families (`.aod-*`)
+
+Large designed keynotes may ship their own primitives instead of inline styles. The first one is the deck
+"The Art of Directing Agents" (`src/content/slides/{es,en}/2026-10-02_the-art-of-directing-agents.md`), whose
+primitives live in one **append-only block** at the end of `src/styles/slides.css`, namespaced `.aod-*` so no other
+deck is affected (rules: never edit or delete existing rules; add new ones inside the block).
+
+| Group | Classes |
+|---|---|
+| Scope and tokens | `section.aod` (put on every slide: `<!-- .slide: class="aod" data-background-color="#0f1124" -->`), `--aod-bg/surface/ink/muted/accent(teal)/warn(crimson)/ok` |
+| Type | `.aod-punch` (`--s`, `--xs`, `--l`, `--xl`), `.aod-idea` (`--s`, `--xs`, `--m`), `.aod-kicker`, `.aod-sub`, `.aod-accent`, `.aod-warn`, `.aod-muted`, `.aod-sr` (visually hidden text kept for accessibility and the Markdown twin) |
+| Layout | `.aod-stage`, `.aod-row`, `.aod-col`, `.aod-split`, `.aod-grid` (`--2`, `--3`, `--skills`), `.aod-box` (`--hot`, `--warn`, `--locked`, `--dim`, `--skill`), `.aod-airy` (slide-level class: more space between statement and diagram) |
+| Atoms | `.aod-chip`, `.aod-pill`, `.aod-node`, `.aod-arrow`, `.aod-chain`, `.aod-check`, `.aod-terminal`, `.aod-card`, `.aod-doc`, `.aod-tree`, `.aod-timeline`, `.aod-ladder`, `.aod-board`, `.aod-loop` |
+| Images | `.aod-art` (`--s`, `--m`, `--l`, `--xxl`, `--hub`, `--framed`), `.aod-photo`, `.aod-act` (image + text), `.aod-chapter`, `.aod-panels` |
+
+Conventions: first line of each slide is `<!-- ID · slug -->` and the attribute comment carries `data-aod-id="ID"`
+(used by the dev-only slide reference below); one slide per click-through step (never collapse a sequence into
+fragments); every text size stays >= 24 px on the 1280x720 canvas (>= 18 px for diagram labels); motion is
+opacity/transform only and disabled under `prefers-reduced-motion`; text-bearing diagrams are HTML so they translate,
+purely graphical art ships as images. Deck images live in `public/images/slides/<slug>/` (`art/`, `community/`,
+`dwp-site/`, `mr-bucket/`). A deck this size exceeds the 400-line guardrail of the `/add-slide-deck` skill on purpose.
+
+## Dev-only slide reference (copy the current slide id)
+
+A **bug button** sits at the left of the top-right toolbar (before the language toggle). It exists **only in
+local development** (`astro dev`, `import.meta.env.DEV`): the button, its toast and its script are **not
+rendered in production builds**. Clicking it copies a one-line reference to the slide you are standing on:
+
+```text
+[slide-ref] deck=the-art-of-directing-agents lang=es id=S05 position=12/129 text="Mismo modelo."
+```
+
+| Field | Meaning |
+|---|---|
+| `deck` | Deck slug (last URL segment). File: `src/content/slides/{lang}/*_<deck>.md` |
+| `lang` | `es` or `en`; the same `id` exists in both files (edit both) |
+| `id` | Stable slide id (see below), or `none` if the slide has none |
+| `position` | 1-based position among all slides / total (equals Reveal's `#/N` + 1) |
+| `text` | First ~70 characters of the visible slide text (notes excluded), for grep when `id=none` |
+
+**How an agent resolves a `[slide-ref]`:**
+
+1. If `id` is not `none`, find the slide in each language file:
+   `grep -n 'data-aod-id="S05"\|data-slide-id="S05"\|<!-- S05 ·' src/content/slides/{es,en}/*_<deck>.md`.
+   The slide is the block between two `---` separator lines that contains the match.
+2. If `id=none`, use `position` (count `---` separators, skipping frontmatter) and confirm with `text`.
+3. **Always apply the change to BOTH languages (`es` and `en`)**, whichever `lang` the reference shows. A slide edit in only one language breaks the multilingual sync rule; the only exception is when the user explicitly says to change a single language.
+
+**Slide ids.** Give every slide a stable id so references survive reordering. Generic form, in the slide's
+attribute comment: `<!-- .slide: data-slide-id="intro-02" -->`. The keynote deck "The Art of Directing Agents"
+uses `data-aod-id="S05"` (generated together with the marker comment `<!-- S05 · mismo-modelo -->`; ids
+`S01…S100`, `C01…C10`, `P..` prologue, `S101…S104` inserted slides). The button reads `data-slide-id` first,
+then `data-aod-id`.
+
+**Implementation.** Markup + dev-only render in `src/layouts/SlideLayout.astro`; behavior in
+`src/lib/slide-debug-ref.js` (injected with `set:html` only when `import.meta.env.DEV`); styles
+`.slide-toolbar__btn--debug` / `.slide-toolbar__toast` at the end of `src/styles/slides.css`; labels in
+`slides.toolbar.copySlideRef` / `copySlideRefDone` (EN + ES). Clipboard uses `navigator.clipboard` with a
+`execCommand('copy')` fallback and, if both fail, a `window.prompt` with the text.
 
 ## Related
 

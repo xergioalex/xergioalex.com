@@ -743,6 +743,8 @@ export interface SiteTranslations {
       themeToDark: string;
       enterFullscreen: string;
       exitFullscreen: string;
+      copySlideRef: string;
+      copySlideRefDone: string;
     };
   };
 
