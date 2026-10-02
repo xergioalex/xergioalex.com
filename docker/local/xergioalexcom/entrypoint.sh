@@ -295,6 +295,15 @@ setup_agent_directory_persistence_for_user "/home/node" "/home/node/.grok_data" 
 chown -R node:node /home/node/.pi_data /home/node/.pi /home/node/.cline_data /home/node/.cline 2>/dev/null || true
 chown -R node:node /home/node/.herdr_data /home/node/.config/herdr /home/node/.grok_data /home/node/.grok 2>/dev/null || true
 
+# DeepWorkPlan Vim: plugins + Mason LSP servers (share) and undo/shada (state).
+# The config itself (~/.config/nvim) stays in the image at a pinned release.
+# A fresh volume is seeded with the plugins the image installed at build time.
+setup_agent_directory_persistence_for_user "/home/node" "/home/node/.nvim_data/share" "/home/node/.local/share/nvim"
+setup_agent_directory_persistence_for_user "/home/node" "/home/node/.nvim_data/state" "/home/node/.local/state/nvim"
+chown -R node:node /home/node/.nvim_data 2>/dev/null || true
+# mkdir -p above runs as root; ~/.local/state is new in the image and must stay node-owned.
+chown -h node:node /home/node/.local /home/node/.local/share /home/node/.local/state /home/node/.local/share/nvim /home/node/.local/state/nvim 2>/dev/null || true
+
 # Setup SSH keys from host with correct permissions for a given user
 # This allows git operations with GitHub/GitLab
 setup_ssh_keys_for_user() {
