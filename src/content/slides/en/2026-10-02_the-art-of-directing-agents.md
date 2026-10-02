@@ -4,7 +4,7 @@ title: 'The Art of Directing Agents'
 description: 'Why two people with the same model get different results: directing agents means designing delegable work with specs, skills, a harness and Deep Work Plan.'
 pubDate: 2026-10-02
 heroImage: '/images/slides/the-art-of-directing-agents/flyer-en.webp'
-draft: true
+draft: false
 theme: dark
 transition: fade
 syntaxHighlight: true
@@ -571,6 +571,17 @@ Note: I lived with that ping-pong for quite a while, until I discovered Herdr. N
 <img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/herdr-hub.webp" width="1672" height="941" alt="Herdr as an agent orchestration hub: five machines with Docker containers and AI agents sending messages to each other">
 
 Note: Herdr is a workspace in the terminal. The idea is simple: each agent lives in its own pane, and I can see and manage several at once. So far it looks like one more terminal manager; the interesting part is on the next slide.
+
+---
+
+<!-- S149 · control-desde-el-celular -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S149" -->
+
+<p class="aod-idea aod-idea--s">And I can control it <span class="aod-accent">from my phone</span>.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/herdr-celular.webp" width="1672" height="941" alt="A hand holds a phone showing the Herdr dashboard with five machines, their containers and agents, surrounded by the Web, Backend, Bot Services, Dailybot.com and other machines">
+
+Note: And this is what I like most: since everything is connected, I can see and control my machines, containers and agents remotely, even from my phone. I check what is happening, see recent activity and keep supervising without being in front of my computer.
 
 ---
 

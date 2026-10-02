@@ -4,7 +4,7 @@ title: 'El Arte de dirigir agentes'
 description: 'Por qué dos personas con el mismo modelo obtienen resultados distintos: dirigir agentes es diseñar trabajo delegable con specs, skills, harness y Deep Work Plan'
 pubDate: 2026-10-02
 heroImage: '/images/slides/the-art-of-directing-agents/flyer-es.webp'
-draft: true
+draft: false
 theme: dark
 transition: fade
 syntaxHighlight: true
@@ -571,6 +571,17 @@ Note: Viví un buen tiempo con ese ping-pong, hasta que conocí Herdr. Ahora les
 <img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/herdr-hub.webp" width="1672" height="941" alt="Panel de Herdr como centro de orquestación: cinco máquinas con contenedores Docker y agentes de IA que se envían mensajes entre sí">
 
 Note: Herdr es un espacio de trabajo en la terminal. La idea es sencilla: cada agente vive en su propio panel, y puedo ver y manejar varios a la vez. Hasta aquí parece un administrador de terminales más; lo interesante viene en el siguiente slide.
+
+---
+
+<!-- S149 · control-desde-el-celular -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S149" -->
+
+<p class="aod-idea aod-idea--s">Y puedo controlarlo <span class="aod-accent">desde el celular</span>.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/herdr-celular.webp" width="1672" height="941" alt="Un celular en la mano muestra el panel de Herdr con las cinco máquinas, sus contenedores y agentes, rodeado de las máquinas Web, Backend, Bot Services, Dailybot.com y otras">
+
+Note: Y esto es lo que más me gusta: como todo está conectado, puedo ver y controlar mis máquinas, contenedores y agentes de forma remota, incluso desde el celular. Reviso qué está pasando, veo la actividad reciente y sigo supervisando sin estar frente al computador.
 
 ---
 
