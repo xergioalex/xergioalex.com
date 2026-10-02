@@ -665,6 +665,90 @@ Note: Y este es el siguiente paso. Ya no hablo con cada agente: oriento a un age
 
 ---
 
+<!-- S150 · nuevo-problema -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S150" -->
+
+<p class="aod-kicker">Y apareció un nuevo problema</p>
+<p class="aod-idea aod-idea--xs">Con ese gran setup, necesitaba ejecutar <span class="aod-accent">varios planes en paralelo</span>, de trabajos completamente distintos.</p>
+<img class="aod-art aod-art--hub aod-art--framed" src="/images/slides/the-art-of-directing-agents/art/planes-paralelos.webp" width="1672" height="941" alt="Una persona en el centro supervisa seis plataformas de trabajo en paralelo, cada una con agentes que programan, analizan datos, diseñan, gestionan infraestructura, redactan documentos y prueban calidad">
+
+Note: Después de tener este gran setup me surgió un problema nuevo. Un solo conjunto de agentes ya no me alcanzaba: necesitaba ejecutar varios planes en paralelo, cada uno de un trabajo completamente distinto.
+
+---
+
+<!-- S151 · clonar-repos -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S151" -->
+
+<p class="aod-idea aod-idea--xs">Lo primero que hice fue <span class="aod-accent">clonar los repositorios</span>.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/clones-api-puertos.webp" width="1672" height="941" alt="Un centro de orquestación de Herdr en el puerto 8000 conectado con cinco contenedores de API clonados, cada uno con su agente y su propio puerto (8001 a 8005)">
+<p class="aod-sub">Los worktrees no me bastaban: necesito todo el entorno para correr los tests.</p>
+
+Note: Lo primero que hice fue clonar los repositorios. Para mis necesidades los worktrees no son suficientes, porque necesito todo el entorno para poder correr los tests y todo lo demás, no solo una copia de los archivos.
+
+---
+
+<!-- S154 · workspaces -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S154" -->
+
+<p class="aod-kicker">Nuestra solución</p>
+<p class="aod-idea aod-idea--xs">Scripts y un <span class="aod-accent">CLI interno</span> para crear <span class="aod-accent">workspaces</span>.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/workspaces-cli.webp" width="1672" height="941" alt="Un CLI que crea workspaces: cada workspace agrupa contenedores de API, web y otros repositorios, un agente líder con sus agentes y una lista de tareas">
+<p class="aod-sr">Un workspace es un entorno clonado que agrupa varios repositorios y levanta su propio contenedor de Docker. Funciona como un worktree, pero es un clon completo.</p>
+
+Note: Entonces nos ideamos un sistema con scripts internos y un CLI interno para crear workspaces. Un workspace funciona como un worktree, pero en realidad también es un clon: un entorno clonado donde agrupo varios repositorios y levanto su propio contenedor de Docker.
+
+---
+
+<!-- S155 · caddy -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S155" -->
+
+<p class="aod-idea aod-idea--xs">Un balanceador con <span class="aod-accent">Caddy</span> decide cuál workspace ocupa el puerto principal.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/caddy-workspaces.webp" width="1672" height="941" alt="localhost:8000 entra por Caddy, un balanceador que enruta al workspace en foco (B); cada workspace tiene su repo y su app en el puerto 8080 interno y un puerto aleatorio propio">
+<p class="aod-sub">Cambio el foco y el workspace elegido responde en el puerto 8000 del navegador.</p>
+
+Note: Los workspaces usan todos el mismo puerto dentro de Docker, por ejemplo el 8080 o el 8000, pero cada uno tiene además un puerto aleatorio. Un balanceador intermedio con Caddy me deja elegir cuál ocupa el puerto principal en cada momento, y puedo cambiar el foco para abrirlo en el navegador de mi máquina. Los números del slide son ilustrativos.
+
+---
+
+<!-- S156 · lider-por-workspace -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S156" -->
+
+<p class="aod-idea aod-idea--xs">En cada workspace, un <span class="aod-accent">agente líder</span> con N agentes. En paralelo, otro workspace con otro trabajo.</p>
+<img class="aod-art aod-art--strip" src="/images/slides/the-art-of-directing-agents/art/roles-distintos.webp" width="953" height="474" alt="Siete rostros de una misma persona, separados por barras verticales">
+<p class="aod-sub aod-accent">A cada workspace le di un rol distinto.</p>
+<p class="aod-sr">workspace 1: agente líder, N agentes, feature A. workspace 2: agente líder, N agentes, migración B.</p>
+
+Note: Así, en cada workspace tengo un agente líder que distribuye el trabajo entre N agentes, y en paralelo, en otro workspace, puedo estar trabajando en algo totalmente distinto. Ese es el paso de dirigir un plan a dirigir varios planes a la vez.
+
+---
+
+<!-- S157 · roles-detras-de-caddy -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S157" -->
+
+<p class="aod-idea aod-idea--xs">Cada workspace con su <span class="aod-accent">rol</span>, todos detrás de Caddy.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/workspaces-roles.webp" width="1672" height="941" alt="Siete workspaces conectados a Caddy, cada uno con su rol, su puerto interno 8080 y su puerto externo; Dennis tiene el foco">
+
+Note: Así lo represento: cada workspace tiene un rol distinto, con su propia personalidad, sus agentes y sus contenedores, y todos están detrás de Caddy. Yo decido cuál tiene el foco en cada momento, y mientras tanto los demás siguen trabajando en lo suyo.
+
+---
+
+<!-- S158 · n-workspaces -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S158" -->
+
+<p class="aod-idea aod-idea--xs"><span class="aod-accent">N workspaces</span> trabajando en tareas paralelas.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/n-workspaces.webp" width="1672" height="941" alt="Una persona sonriente descansa en una silla mientras siete workspaces con distintos roles, detrás de Caddy, trabajan en tareas paralelas">
+
+Note: Y el resultado es este: N workspaces trabajando en tareas paralelas, cada uno con su agente líder y sus agentes, mientras yo superviso con calma. Cambio el foco entre ellos cuando necesito ver o revisar uno, y los demás siguen avanzando.
+
+---
+
 <!-- S148 · gracias -->
 
 <!-- .slide: class="aod" data-background-color="#0f1124" data-aod-id="S148" -->

@@ -665,6 +665,90 @@ Note: And this is the next step. I no longer talk to each agent: I direct a lead
 
 ---
 
+<!-- S150 · nuevo-problema -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S150" -->
+
+<p class="aod-kicker">And a new problem showed up</p>
+<p class="aod-idea aod-idea--xs">With that great setup, I needed to run <span class="aod-accent">several plans in parallel</span>, on completely different jobs.</p>
+<img class="aod-art aod-art--hub aod-art--framed" src="/images/slides/the-art-of-directing-agents/art/planes-paralelos.webp" width="1672" height="941" alt="A person in the center oversees six parallel workstations, each with agents coding, analyzing data, designing, managing infrastructure, writing documents and testing quality">
+
+Note: After building this great setup, a new problem showed up. One set of agents was no longer enough: I needed to run several plans in parallel, each on a completely different job.
+
+---
+
+<!-- S151 · clonar-repos -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S151" -->
+
+<p class="aod-idea aod-idea--xs">The first thing I did was <span class="aod-accent">clone the repositories</span>.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/clones-api-puertos.webp" width="1672" height="941" alt="A Herdr orchestration hub on port 8000 connected to five cloned API containers, each with its own agent and its own port (8001 to 8005)">
+<p class="aod-sub">Worktrees were not enough: I need the whole environment to run the tests.</p>
+
+Note: The first thing I did was clone the repositories. For my needs worktrees are not enough, because I need the whole environment to run the tests and everything else, not just a copy of the files.
+
+---
+
+<!-- S154 · workspaces -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S154" -->
+
+<p class="aod-kicker">Our solution</p>
+<p class="aod-idea aod-idea--xs">Scripts and an <span class="aod-accent">internal CLI</span> to create <span class="aod-accent">workspaces</span>.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/workspaces-cli.webp" width="1672" height="941" alt="A CLI that creates workspaces: each workspace groups API, web and other repository containers, a lead agent with its agents and a task list">
+<p class="aod-sr">A workspace is a cloned environment that groups several repositories and brings up its own Docker container. It works like a worktree, but it is a full clone.</p>
+
+Note: So we came up with a system of internal scripts and an internal CLI to create workspaces. A workspace works like a worktree, but it is really a clone too: a cloned environment where I group several repositories and bring up its own Docker container.
+
+---
+
+<!-- S155 · caddy -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S155" -->
+
+<p class="aod-idea aod-idea--xs">A <span class="aod-accent">Caddy</span> load balancer decides which workspace takes the main port.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/caddy-workspaces.webp" width="1672" height="941" alt="localhost:8000 goes through Caddy, a load balancer that routes to the workspace in focus (B); each workspace has its repo and its app on internal port 8080 and its own random port">
+<p class="aod-sub">I switch focus and the chosen workspace answers on port 8000 in the browser.</p>
+
+Note: All workspaces use the same port inside Docker, for example 8080 or 8000, but each one also has a random port. An intermediate Caddy load balancer lets me choose which one takes the main port at any moment, and I can switch focus to open it in the browser on my machine. The numbers on the slide are illustrative.
+
+---
+
+<!-- S156 · lider-por-workspace -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S156" -->
+
+<p class="aod-idea aod-idea--xs">In each workspace, a <span class="aod-accent">lead agent</span> with N agents. In parallel, another workspace with another job.</p>
+<img class="aod-art aod-art--strip" src="/images/slides/the-art-of-directing-agents/art/roles-distintos.webp" width="953" height="474" alt="Seven faces of the same person, separated by vertical bars">
+<p class="aod-sub aod-accent">I gave each workspace a different role.</p>
+<p class="aod-sr">workspace 1: lead agent, N agents, feature A. workspace 2: lead agent, N agents, migration B.</p>
+
+Note: So in each workspace I have a lead agent that distributes the work among N agents, and in parallel, in another workspace, I can be working on something totally different. That is the step from directing one plan to directing several plans at once.
+
+---
+
+<!-- S157 · roles-detras-de-caddy -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S157" -->
+
+<p class="aod-idea aod-idea--xs">Each workspace with its own <span class="aod-accent">role</span>, all behind Caddy.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/workspaces-roles.webp" width="1672" height="941" alt="Seven workspaces connected to Caddy, each with its role, internal port 8080 and its external port; Dennis has the focus">
+
+Note: This is how I picture it: each workspace has a different role, with its own personality, its agents and its containers, and all of them sit behind Caddy. I decide which one has the focus at any moment, and meanwhile the others keep working on their own thing.
+
+---
+
+<!-- S158 · n-workspaces -->
+
+<!-- .slide: class="aod aod-airy" data-background-color="#0f1124" data-aod-id="S158" -->
+
+<p class="aod-idea aod-idea--xs"><span class="aod-accent">N workspaces</span> working on parallel tasks.</p>
+<img class="aod-art aod-art--hub" src="/images/slides/the-art-of-directing-agents/art/n-workspaces.webp" width="1672" height="941" alt="A smiling person relaxes in a chair while seven workspaces with different roles, behind Caddy, work on parallel tasks">
+
+Note: And the result is this: N workspaces working on parallel tasks, each with its lead agent and its agents, while I supervise calmly. I switch focus between them when I need to look at or review one, and the others keep moving.
+
+---
+
 <!-- S148 · gracias -->
 
 <!-- .slide: class="aod" data-background-color="#0f1124" data-aod-id="S148" -->
