@@ -215,6 +215,49 @@ RUN printf '%s\n' \
     > /etc/profile.d/01-container-tool-paths.sh \
     && chmod 0644 /etc/profile.d/01-container-tool-paths.sh
 
+# DeepWorkPlan Vim (https://github.com/DailybotHQ/deepworkplan-vim): Neovim
+# plus the official DWP config, so `nvim` works in every pane.
+#
+# Kept in late layers on purpose, like the PATH fix above: adding these
+# packages to the first apt RUN would invalidate the Chromium, OpenCode and
+# Herdr layers. Do not apt-install neovim — Debian trixie ships 0.10 and the
+# config needs 0.12+, so the upstream tarball goes to /opt/nvim. Runtime deps:
+# ripgrep/fd for Telescope, lua for the config's tooling, and unzip +
+# python3-venv for the Mason LSP installers.
+RUN apt-get update -y && \
+    apt-get install --no-install-recommends -y ripgrep fd-find lua5.4 unzip python3-venv && \
+    ln -sf "$(command -v fdfind)" /usr/local/bin/fd && \
+    ln -sf "$(command -v lua5.4)" /usr/local/bin/lua && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+ARG NVIM_VERSION=0.12.5
+RUN set -eu; \
+    case "$(dpkg --print-architecture)" in \
+      amd64) nvim_arch=linux-x86_64 ;; \
+      arm64) nvim_arch=linux-arm64 ;; \
+      *) echo "unsupported arch for the neovim tarball: $(dpkg --print-architecture)" >&2; exit 1 ;; \
+    esac; \
+    mkdir -p /opt/nvim; \
+    curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-${nvim_arch}.tar.gz" \
+      | tar -xz -C /opt/nvim --strip-components=1; \
+    ln -sfn /opt/nvim/bin/nvim /usr/local/bin/nvim; \
+    nvim --version | head -1
+
+# The config is baked in at a pinned release; bump DWPVIM_REF to upgrade.
+# Plugins are installed here, headless, so the first `nvim` after a rebuild
+# opens ready instead of asking to be restarted. ~/.local/share/nvim and
+# ~/.local/state/nvim are then moved onto the nvim_data volume by
+# entrypoint.sh, which keeps Mason's LSP servers, undo history and shada
+# across rebuilds.
+ARG DWPVIM_REF=v0.2.0
+COPY --chown=node:node xergioalexcom/nvim-bootstrap.lua /tmp/nvim-bootstrap.lua
+USER node
+RUN git clone --depth 1 --branch "${DWPVIM_REF}" https://github.com/DailybotHQ/deepworkplan-vim.git /home/node/.config/nvim \
+    && timeout 1200 nvim --headless -c "luafile /tmp/nvim-bootstrap.lua"
+USER root
+RUN rm -f /tmp/nvim-bootstrap.lua
+
 # Copy and setup entrypoint script
 COPY xergioalexcom/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
