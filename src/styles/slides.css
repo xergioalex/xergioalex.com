@@ -2193,6 +2193,38 @@ body.reveal-theme-dark {
   color: var(--aod-accent);
 }
 
+.reveal .aod-row > .aod-box.aod-col {
+  font-size: 1.05em;
+  min-width: 9.5em;
+  padding: 0.7em 0.9em;
+  gap: 0.5em;
+}
+.reveal .aod-row > .aod-box.aod-col .aod-node {
+  font-size: 0.85em;
+}
+.reveal .aod-row > .aod-box.aod-col .aod-chip {
+  font-size: 0.78em;
+}
+
+.reveal .aod-row--tight > .aod-box.aod-col {
+  min-width: 7.2em;
+  font-size: 0.95em;
+  padding: 0.5em 0.6em;
+}
+.reveal .aod-row--tight {
+  flex-wrap: nowrap;
+}
+
+.reveal .slides section.aod-airy .aod-idea + .aod-art {
+  margin-top: 0.7em;
+}
+
+.reveal .aod-art--strip {
+  max-height: 11em;
+  width: auto;
+  border-radius: 0.4em;
+}
+
 /* ===== end aod ===== */
 
 /* ---------- Dev-only debug button (copy slide reference) ---------- */
