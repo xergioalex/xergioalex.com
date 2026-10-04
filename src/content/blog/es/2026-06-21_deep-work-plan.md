@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "portfolio", "ai-agents", "claude"]
 keywords: ["metodología Deep Work Plan", "desarrollo guiado por especificaciones agentes IA", "harness engineering para agentes de código", "trabajo de agentes de larga duración", "repositorio como harness de agentes", "spec-driven development agnóstico de herramienta", "planes de agentes reanudables en disco"]
 series: "working-with-agents"
-seriesOrder: 8
+seriesOrder: 7
 draft: false
 ---
 

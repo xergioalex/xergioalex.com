@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]
 keywords: ["harness engineering", "agent harness", "Agent = Model + Harness", "Mitchell Hashimoto harness engineering", "AI coding agents reliability", "Guides and Sensors harness", "spec-driven development harness"]
 series: "working-with-agents"
-seriesOrder: 7
+seriesOrder: 6
 draft: false
 ---
 

@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]
 keywords: ["harness engineering qué es", "agent harness", "Agent = Model + Harness", "ingeniería de harness agentes IA", "dirigir agentes de IA", "desarrollo dirigido por especificaciones", "fiabilidad agentes de código"]
 series: "working-with-agents"
-seriesOrder: 7
+seriesOrder: 6
 draft: false
 ---
 

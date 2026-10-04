@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]
 keywords: ["loop engineering", "qué es loop engineering", "loops de agentes", "agentes autónomos", "agentes programados", "desarrollo guiado por especificaciones", "automatización con IA", "loops en Claude Code"]
 series: "working-with-agents"
-seriesOrder: 9
+seriesOrder: 8
 draft: false
 ---
 

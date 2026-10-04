@@ -1,14 +1,14 @@
 ---
 title: "Make Something Agents Want"
 description: "YC quietly echoed its 20-year-old motto. Cloudflare said agents can now be customers. Two posts, 48 hours apart, and the audience for software just changed."
-pubDate: "2026-09-07"
+pubDate: "2026-10-05"
 heroImage: "/images/blog/posts/make-something-agents-want/hero.webp"
 heroLayout: "side-by-side"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["make something agents want", "agents as customers Cloudflare", "YC software for agents", "AI agents first class users", "building software for AI agents", "Cloudflare Stripe agents protocol", "agent economy 2026"]
 series: "working-with-agents"
-seriesOrder: 6
-draft: true
+seriesOrder: 9
+draft: false
 ---
 
 Something shifted in how the tech industry talks about AI agents, and you can see it concentrated in two declarations made days apart.
@@ -45,9 +45,9 @@ The internet noticed. And the internet, being the internet, also got two things 
 
 There were two readings of these events that spread fast and need to be corrected before the rest of the post makes sense.
 
-**Reading one: "YC changed its motto."** It didn't. [yc.com](https://www.ycombinator.com/) still says "Make something people want" at the bottom of the page. The new line — *"Making Something Agents Want"* — is an RFS closer. A campaign echo. Aaron Epstein wrote it as the kicker for a wishlist of startups he wants to see, deliberately inverting the canonical motto to make a point. That's still a thesis-level signal. It's just not a rebrand. It's YC saying *the methodology applies — but the audience just expanded.*
+**Reading one: "YC changed its motto."** It didn't. [yc.com](https://www.ycombinator.com/) still says "Make something people want" at the bottom of the page. The new line (*"Making Something Agents Want"*) is an RFS closer. A campaign echo. Aaron Epstein wrote it as the kicker for a wishlist of startups he wants to see, deliberately inverting the canonical motto to make a point. That's still a thesis-level signal. It's just not a rebrand. It's YC saying *the methodology applies — but the audience just expanded.*
 
-**Reading two: "Cloudflare did this alone."** It didn't. The [Cloudflare blog post](https://blog.cloudflare.com/agents-stripe-projects/) makes it clear within three paragraphs: the architecture is a co-launch with Stripe. The new primitive underneath is the Machine Payments Protocol — MPP — built on top of Stripe Projects and Shared Payment Tokens. PlanetScale is named in the same post as the first non-Cloudflare infrastructure provider to integrate with the same rail. Stripe's side of the launch shipped on April 29 at [Sessions 2026](https://stripe.com/blog/everything-we-announced-at-sessions-2026).
+**Reading two: "Cloudflare did this alone."** It didn't. The [Cloudflare blog post](https://blog.cloudflare.com/agents-stripe-projects/) makes it clear within three paragraphs: the architecture is a co-launch with Stripe. The new primitive underneath is the Machine Payments Protocol (MPP), built on top of Stripe Projects and Shared Payment Tokens. PlanetScale is named in the same post as the first non-Cloudflare infrastructure provider to integrate with the same rail. Stripe's side of the launch shipped on April 29 at [Sessions 2026](https://stripe.com/blog/everything-we-announced-at-sessions-2026).
 
 So the more accurate framing is: Cloudflare and Stripe co-launched a protocol that lets an agent prove who its human is, get billed without ever touching the human's card number, and end up holding a fresh cloud account in its own session. Cloudflare led the announcement. Stripe built half the rails. PlanetScale was the first to follow.
 
@@ -75,7 +75,7 @@ None of those primitives is new on its own. OAuth is from 2010. Virtual cards ha
 
 I keep coming back to one quote from the Cloudflare post: *"Similar to how the OAuth standard made it possible to delegate access to your account to other platforms, the protocol uses OAuth and extends further into payments and account creation, doing so in a way that treats agents as a first-class concern."*
 
-First-class concern. That's the phrase to sit with. For 20 years, agents — bots, scripts, crawlers — were second-class. They got rate-limited. They got CAPTCHA'd. They got banned from buying tickets on Ticketmaster. The signup form was a moat, not a feature. Now the signup form is being rebuilt so the bot can use it intentionally.
+First-class concern. That's the phrase to sit with. For 20 years, agents (bots, scripts, crawlers) were second-class. They got rate-limited. They got CAPTCHA'd. They got banned from buying tickets on Ticketmaster. The signup form was a moat, not a feature. Now the signup form is being rebuilt so the bot can use it intentionally.
 
 ---
 
@@ -99,9 +99,9 @@ That's a narrower definition of *want* than PG's original. It's also a falsifiab
 
 I don't want to write a hype piece. The framing has problems, and the skeptics are right to push on them.
 
-The cleanest critique I've found is from [Cooley LLP](https://www.cooley.com/news/insight/2026/2026-03-26-ai-agents-and-consumer-law-what-businesses-need-to-know), a law firm whose AI-and-consumer-law team published a piece in March making one point with unusual clarity: *"The fact that it is an AI agent, rather than a human, performing these functions does not diminish the business's obligations under consumer protection law."* Translation — calling the agent a "customer" doesn't move liability anywhere new. If your agent buys the wrong domain, signs up for the wrong plan, or breaches consumer rules at scale, the company that deployed the agent is still on the hook.
+The cleanest critique I've found is from [Cooley LLP](https://www.cooley.com/news/insight/2026/2026-03-26-ai-agents-and-consumer-law-what-businesses-need-to-know), a law firm whose AI-and-consumer-law team published a piece in March making one point with unusual clarity: *"The fact that it is an AI agent, rather than a human, performing these functions does not diminish the business's obligations under consumer protection law."* Translation: calling the agent a "customer" doesn't move liability anywhere new. If your agent buys the wrong domain, signs up for the wrong plan, or breaches consumer rules at scale, the company that deployed the agent is still on the hook.
 
-And agents do break at scale. They don't make one mistake. They make ten thousand. The Cooley team flagged a UK CMA guidance update from March 9, 2026 that already codifies this: scale doesn't excuse, it aggravates.
+And agents do break at scale. They don't make one mistake. They make ten thousand. The Cooley team flagged a guidance update from the UK's Competition and Markets Authority (CMA), dated March 9, 2026, that already codifies this: scale doesn't excuse, it aggravates.
 
 Then there's the abuse vector. The [top comment](https://news.ycombinator.com/item?id=48031684) on the Hacker News thread about Cloudflare's launch is a single sentence: *"Perfect for spammers, scammers and domain squatters, who can now automate their activities even more."* One line and it lands, because the same plumbing that lets a legitimate agent spin up a deploy in seconds lets a hostile one spin up thousands in the same window. Cloudflare profits from selling the rails *and* from selling the abuse defenses on top of those rails. That's not new. But it does scale.
 
@@ -117,11 +117,11 @@ Aaron Epstein's tweet ends with a sentence that I keep underlining: *"...that wo
 
 I've been thinking about why he's probably right.
 
-The incumbents — Salesforce, SAP, Workday, Oracle, the seat-priced enterprise stack — have three drags that compound. Their UI is built around dropdowns and dashboards optimized for humans clicking. Their pricing is per-seat, which falls apart the moment the seat is an agent that runs 10,000 actions per day for one human. Their brand equity is built on training, certifications, conferences full of humans in branded lanyards. Rebuilding any one of those three for an agent-first audience is an architectural change. Rebuilding all three is a different company.
+The incumbents (Salesforce, SAP, Workday, Oracle, the seat-priced enterprise stack) have three drags that compound. Their UI is built around dropdowns and dashboards optimized for humans clicking. Their pricing is per-seat, which falls apart the moment the seat is an agent that runs 10,000 actions per day for one human. Their brand equity is built on training, certifications, conferences full of humans in branded lanyards. Rebuilding any one of those three for an agent-first audience is an architectural change. Rebuilding all three is a different company.
 
 It's not impossible. Microsoft has been retrofitting Copilot into Office at speed. Stripe has shown that an old-line payments company can publish a new protocol in months. But the friction is real, and the friction is asymmetric. A newcomer doesn't have legacy UI to deprecate. A newcomer doesn't have tens of thousands of enterprise contracts to migrate off per-seat pricing. A newcomer can just ship the API-first version and call it the product.
 
-[The Next Web's read](https://thenextweb.com/news/yc-summer-2026-rfs-hard-tech-pivot) on the YC RFS made the same point in a sentence I keep coming back to: *"Software is now the substrate, not the moat. The models are commoditising. The infrastructure is scaling."* If software is the substrate, the moat moves up the stack — to the agent-shaped interface and to whoever lands the protocol first. That's where the new companies show up.
+[The Next Web's read](https://thenextweb.com/news/yc-summer-2026-rfs-hard-tech-pivot) on the YC RFS made the same point in a sentence I keep coming back to: *"Software is now the substrate, not the moat. The models are commoditising. The infrastructure is scaling."* If software is the substrate, the moat moves up the stack: to the agent-shaped interface and to whoever lands the protocol first. That's where the new companies show up.
 
 The post I wrote in April on [Cloudflare's Agents Week](/blog/cloudflare-agents-week-2026/) tracked the full Cloudflare infrastructure push — sandboxes, browsers, mail, identity. What's different now isn't the *infrastructure.* The infrastructure was already there. What's different is the *relationship.* The infrastructure is now backed by the proposition that the agent holds the account, not just uses it.
 
@@ -131,7 +131,7 @@ The post I wrote in April on [Cloudflare's Agents Week](/blog/cloudflare-agents-
 
 Specifics, not abstractions. Here's what I've actually changed since these two posts went up.
 
-**On this site.** A few weeks ago I shipped [Markdown for Agents](/blog/aeo-markdown-for-agents/) — every HTML page on xergioalex.com has a matching `.md` endpoint. I ran [isitagentready.com](https://isitagentready.com/) against the site that same week. Got a 33/100. Content was the only category at full marks; everything else — discoverability, bot access control, the `.well-known/` family — was the work that remained. I'm working through the rest of that scorecard now, and I'm going to write it up when I cross 80.
+**On this site.** A few weeks ago I shipped [Markdown for Agents](/blog/aeo-markdown-for-agents/) — every HTML page on xergioalex.com has a matching `.md` endpoint. I ran [isitagentready.com](https://isitagentready.com/) against the site that same week. Got a 33/100. Content was the only category at full marks; everything else (discoverability, bot access control, the `.well-known/` family) was the work that remained. I'm working through the rest of that scorecard now, and I'm going to write it up when I cross 80.
 
 **On the agent stack I use for client work.** I run a small set of private MCP servers — for repository search, for client document retrieval, for a couple of internal data pipelines. After the Cloudflare announcement I went back through them and added two things I'd been deferring: stricter scopes per consumer (so a coding agent literally cannot call the billing tool) and hard daily spend caps tied to the agent identity. Both took an afternoon. Both should have been there from the start. Cooley's piece pushed me.
 
@@ -145,7 +145,7 @@ The simpler way I'd put it: a year ago, the question was *can my product work wi
 
 ## Closing
 
-*Make something people want* didn't get retired. It got generalized. PG's sentence was written when "users" meant humans clicking. Twenty years later it means something fuzzier — partly humans, partly the agents acting for them, increasingly the agents acting on their own goals inside scopes humans set. The methodology applies. The audience expanded.
+*Make something people want* didn't get retired. It got generalized. PG's sentence was written when "users" meant humans clicking. Twenty years later it means something fuzzier: partly humans, partly the agents acting for them, increasingly the agents acting on their own goals inside scopes humans set. The methodology applies. The audience expanded.
 
 If you're building right now, the question Aaron Epstein wrote into the RFS is the one to sit with. Not as a slogan. As a forcing function. *Would a working agent pick this?* If the answer is "yes, eventually, after we redesign the UI," the answer is no. The agent is already deciding. The redesign is the work.
 

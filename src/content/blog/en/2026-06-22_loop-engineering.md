@@ -7,7 +7,7 @@ heroLayout: "side-by-side"
 tags: ["tech", "ai-agents", "claude"]
 keywords: ["loop engineering", "agentic loops", "autonomous agents", "scheduled AI agents", "spec-driven development", "AI automation workflow", "self-executing roadmap", "Claude Code loops"]
 series: "working-with-agents"
-seriesOrder: 9
+seriesOrder: 8
 draft: false
 ---
 
