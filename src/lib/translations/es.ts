@@ -623,6 +623,8 @@ Actualmente estoy enfocado en aplicaciones de IA, productividad para developers 
       themeToDark: 'Cambiar a modo oscuro',
       enterFullscreen: 'Pantalla completa',
       exitFullscreen: 'Salir de pantalla completa',
+      copySlideRef: 'Copiar referencia del slide (solo desarrollo)',
+      copySlideRefDone: '¡Copiado!',
     },
   },
 

@@ -120,6 +120,8 @@ This skill is the mandatory workflow for creating new slide decks in this reposi
 
 **Tags:** All tags go in a single `tags` array. The tier (primary/secondary) is determined by the tags collection. Max 5 tags per deck.
 
+**Slide ids (recommended):** give each slide `<!-- .slide: data-slide-id="short-stable-id" -->` so the dev-only toolbar button can copy a `[slide-ref]` that pinpoints it (see SLIDES.md → Dev-only slide reference).
+
 **Layouts catalog (internal decks):** 15 reusable layout primitives in `src/content/slides/_layouts/`. Use them as copy-paste references when scaffolding slide structure.
 
 ### Frontmatter Templates

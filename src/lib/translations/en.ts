@@ -616,6 +616,8 @@ I currently focus on AI applications, developer productivity, and high-impact pr
       themeToDark: 'Switch to dark mode',
       enterFullscreen: 'Enter fullscreen',
       exitFullscreen: 'Exit fullscreen',
+      copySlideRef: 'Copy slide reference (dev only)',
+      copySlideRefDone: 'Copied!',
     },
   },
 
