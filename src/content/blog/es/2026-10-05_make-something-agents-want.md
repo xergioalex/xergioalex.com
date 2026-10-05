@@ -65,7 +65,7 @@ En [La economía de los agentes](/es/blog/the-agent-economy/), el post que escri
 
 Esta es otra historia. Esta es sobre si los agentes pueden ser la **contraparte.** No el consumidor en la caja, sino el nombre en el contrato. No la billetera que se carga, sino la cuenta que se factura.
 
-Mira lo que Cloudflare acaba de desempacar. Cinco cosas que tiene cualquier cliente legítimo, descompuestas y reconstruidas para una parte no humana:
+Mira lo que Cloudflare desempacó. Cinco cosas que tiene cualquier cliente legítimo, descompuestas y reconstruidas para una parte no humana:
 
 | Primitiva | Lo que solía significar | Lo que significa ahora |
 |-----------|------------------------|----------------------|

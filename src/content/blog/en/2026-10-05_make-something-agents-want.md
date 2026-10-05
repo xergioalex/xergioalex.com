@@ -65,7 +65,7 @@ All of it matters for the rest of the post, because the smaller, more accurate v
 
 This is a different story. This one is about whether agents can be the **counterparty.** Not the consumer at the till, but the name on the contract. Not the wallet being charged, but the account being billed.
 
-Look at what Cloudflare just unbundled. Five things that every legitimate customer has, taken apart and rebuilt for a non-human party:
+Look at what Cloudflare unbundled. Five things that every legitimate customer has, taken apart and rebuilt for a non-human party:
 
 | Primitive | What it used to mean | What it means now |
 |-----------|---------------------|-------------------|
@@ -91,7 +91,7 @@ The phrase "Make something people want" comes from an essay Paul Graham publishe
 
 > *"About a month after we started Y Combinator we came up with the phrase that became our motto: 'Make something people want.' We've learned a lot since then, but if I were choosing now that's still the one I'd pick."*
 
-YC was three years old when PG wrote that. The phrase has outlasted three economic cycles. It's outlasted the iPhone's first decade, the rise and fall of crypto twice, the entire SaaS era. The reason it's outlasted everything is that it's almost impossible to argue with. *Want* is a measurable thing. Wanting is the only thing the market actually rewards.
+YC was three years old when PG wrote that. The phrase has outlasted three economic cycles. It's outlasted the iPhone's first decade, the rise and fall of crypto twice, the entire SaaS era. The reason it's outlasted everything is that it's almost impossible to argue with. *Want* is a measurable thing. Wanting is the only thing the market rewards.
 
 Honestly, I think of that sentence every time I look at a new product idea. Including this site you're reading. Including DailyBot.
 
@@ -157,7 +157,7 @@ The cleanest version of the redrawn line comes from Cloudflare — an incumbent 
 
 So the dividing line isn't incumbent versus startup. It's whether your value can be exposed as something an agent calls, and priced by what the call does: a resolution, a request, a query, a token. Salesforce can sell a resolution. SAP can sell an API call into ERP. What still doesn't repackage is the deeper stack: software whose value *is* the dashboard, the certification programs, the multi-year contracts priced per human. Those drags are real. They're just not the ones I pointed at in April.
 
-[The Next Web's read](https://thenextweb.com/news/yc-summer-2026-rfs-hard-tech-pivot) on the YC RFS made the same point in a sentence I keep coming back to: *"Software is now the substrate, not the moat. The models are commoditising. The infrastructure is scaling."* If software is the substrate, the moat moves up the stack: to the agent-shaped interface and to whoever lands the protocol first. Cloudflare's manifesto gives that territory four names — the agent-facing web has to be *readable, discoverable, callable,* and *payable* — which is as good a map of where the new companies actually show up as anything YC published.
+[The Next Web's read](https://thenextweb.com/news/yc-summer-2026-rfs-hard-tech-pivot) on the YC RFS made the same point in a sentence I keep coming back to: *"Software is now the substrate, not the moat. The models are commoditising. The infrastructure is scaling."* If software is the substrate, the moat moves up the stack: to the agent-shaped interface and to whoever lands the protocol first. Cloudflare's manifesto gives that territory four names — the agent-facing web has to be *readable, discoverable, callable,* and *payable* — which is as good a map of where the new companies show up as anything YC published.
 
 The post I wrote in April on [Cloudflare's Agents Week](/blog/cloudflare-agents-week-2026/) tracked the full Cloudflare infrastructure push — sandboxes, browsers, mail, identity. What's different now isn't the *infrastructure.* The infrastructure was already there. What's different is the *relationship.* The infrastructure is now backed by the proposition that the agent holds the account, not just uses it.
 
@@ -203,7 +203,7 @@ Let's keep building.
 - [Cloudflare — Monetization Gateway beta](https://blog.cloudflare.com/monetization-gateway-beta/) — the September 30 beta: pricing at the edge, "charge agents, not humans."
 - [Cloudflare — The agentic web](https://blog.cloudflare.com/agentic-web) — Birthday Week: 1,700% agent growth, half of traffic non-human, Pay Per Use.
 - [Cloudflare — The Agentic Internet](https://blog.cloudflare.com/the-agentic-internet) — the Agents Week manifesto: readable, discoverable, callable, payable.
-- [Cloudflare — Agent Readiness](https://blog.cloudflare.com/agent-readiness) — the Radar scan of how much of the web agents can actually use.
+- [Cloudflare — Agent Readiness](https://blog.cloudflare.com/agent-readiness) — the Radar scan of how much of the web agents can use.
 - [x402](https://x402.org) — the protocol dashboard: live transaction and volume counts.
 - [Y Combinator — Fall 2026 Requests for Startups](https://www.ycombinator.com/rfs) — the current RFS. "Software for Agents" is gone.
 - [Y Combinator tweet — Aaron Epstein](https://x.com/ycombinator/status/2048834309994565832) — the post that opened the framing.
