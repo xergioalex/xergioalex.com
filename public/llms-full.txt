@@ -117,6 +117,18 @@ Answer Engine Optimization — how to build a website that AI answer engines can
 3. Markdown for Agents: Making Your Content Speak AI's Language — Content negotiation for AI, hybrid implementation with Astro and Cloudflare Pages (/blog/aeo-markdown-for-agents/)
 4. The Scorecard: How to Measure What AI Can't Tell You — Bot tracking, audit methodology, measurement tools, and what's next (/blog/aeo-the-scorecard/)
 
+#### Working with Agents (9 chapters)
+From writing code to orchestrating AI agents — the new role, real workflows, what breaks, judgment, context, and team adoption:
+1. From Programmer to Orchestrator: The Silent Revolution Almost Nobody Sees — the shift from writing every line to directing agents (/blog/from-programmer-to-orchestrator/)
+2. The Hidden Job of the AI Era: The Art of Directing Agents — delegation, judgment and review as the core skills (/blog/the-art-of-directing-agents/)
+3. The Permanent Hackathon: Why We Can't Stop Building — what agent tooling does to how teams build (/blog/the-permanent-hackathon/)
+4. The Agent Economy: When AI Gets Its Own Money — agents as economic actors, from wallets to payment protocols (/blog/the-agent-economy/)
+5. The Skill Layer: When Agents Stop Reinventing the Wheel — reusable skills instead of rebuilt context (/blog/the-skill-layer/)
+6. The Harness Layer: The System Around the Model — the scaffolding that makes agents reliable (/blog/the-harness-layer/)
+7. Deep Work Plan: Give Your Agent a Plan and a Harness — structured plans for deep agent work (/blog/deep-work-plan/)
+8. Loop Engineering: Automation in the Age of AI — designing the loops agents run (/blog/loop-engineering/)
+9. Make Something Agents Want — agents as customers and counterparties: the April 2026 hinge and five months of receipts (/blog/make-something-agents-want/)
+
 #### When Colombia Shook (in progress)
 A magnitude 7.4 earthquake hit western Colombia on August 10, 2026. Pereira, the author's city, was among the hardest hit. Reported from inside the affected region, with every figure attributed to a named source and a cut-off time:
 1. Pereira, Colombia: 7:34 a.m., Magnitude 7.4 — What happened, the official casualty and damage figures and why they moved daily, why Armenia stayed standing and what the NSR-10 seismic code actually promises, the three days without utilities or communications, and the civic response (/blog/pereira-colombia-earthquake-2026/)
