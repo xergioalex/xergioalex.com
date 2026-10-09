@@ -67,3 +67,9 @@ cli/package-lock.json
 cli/node_modules/
 cli/.npmrc
 public/images/blog/_staging/
+
+# Claude Code runtime state written through the .claude -> .agents symlink
+.agents/scheduled_tasks.lock
+
+# Local git worktrees (agent and release checkouts)
+.worktrees/
