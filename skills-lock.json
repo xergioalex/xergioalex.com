@@ -5,13 +5,13 @@
       "source": "DailybotHQ/ai-diff-reviewer",
       "sourceType": "github",
       "skillPath": "skills/ai-diff-reviewer/SKILL.md",
-      "computedHash": "8dbc7f760190b1d071caa6093dec2c7c0ca69b5253993dddbb5691a72e878408"
+      "computedHash": "d88307a2e6c8cb0294dcfda9792ef8a0be3e9fbf76bb520c2c2100fee9e04d15"
     },
     "deepworkplan": {
       "source": "DailybotHQ/deepworkplan-skill",
       "sourceType": "github",
       "skillPath": "skills/deepworkplan/SKILL.md",
-      "computedHash": "ee082251381689095906db19ab63d33021c78e56fed081ad9ebd7047ef6840f5"
+      "computedHash": "a542b00b136e21d6223ec0e9be59622da9fa8451eba704f1e536152fe8de0d5f"
     }
   }
 }

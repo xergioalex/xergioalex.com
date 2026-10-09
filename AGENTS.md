@@ -2,7 +2,7 @@
 
 **Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others). Ensures all agents work with consistent guidelines and patterns.
 
-DWP standard: 6.0.0 (onboarded earlier; upgraded 2026-10-01; skill 6.0.2)
+DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-09; skill 7.0.0)
 
 ## Detailed Documentation
 
@@ -61,7 +61,7 @@ src/
 ├── content/             # Content Collections (blog posts, tags, series, authors)
 │   ├── authors/         # Author definitions (.yaml files, one per author)
 │   ├── blog/{en,es}/    # Blog posts by language (YYYY-MM-DD_slug.md)
-│   ├── slides/{en,es}/  # Slide decks by language (3 types: internal/external-link/external-embed)
+│   ├── slides/{en,es}/  # Slide decks by language (2 types: native/external)
 │   ├── tags/            # Tag definitions (.md files with tier/order)
 │   └── series/          # Series definitions
 ├── layouts/             # MainLayout, InternalLayout, ShowcaseLayout
@@ -231,6 +231,8 @@ Hosts without slash commands invoke the same flows by name (`#deepworkplan-creat
 
 The Final Review of every plan runs the local AI Diff Reviewer (`.agents/skills/ai-diff-reviewer/`, rules in `.review/extension.md`) over the plan's accumulated change set. The CI surface (`pr-review.yml`, Flow B) is not installed. A `critical` finding verified by a completed review blocks completion; an incomplete or failed review is recorded, never counted as a clean pass.
 
+Optional addons a developer accepted are recorded in the tracked addon registry `.dwp/config.json` (the one `.dwp/` file not git-ignored) (written with `python3 .agents/skills/deepworkplan/shared/config.py enable <key> --repo .`; read with `... show`). The registry only offers or amplifies: every flow works with no file or with every addon disabled, and machine-level addons (`vim`, `herdr`, `agentkit`) contribute abilities only when their product is detected on the machine.
+
 ## Working principles
 
 Work with autonomy, ownership and sound judgment. These are defaults within the current request; they never override the mandatory rules, host permissions, plan gates or read-only requests.
@@ -377,19 +379,15 @@ Dev-only portal at `/internal/`. Uses `InternalLayout` or `ShowcaseLayout` (neve
 
 ## Slides Conventions
 
-> Full reference: **[Slides Guide](docs/features/SLIDES.md)**
+> Full reference: **[Slides Guide](docs/features/SLIDES.md)** (canvas and chrome UI: [Deck canvas and chrome UI](docs/features/SLIDES.md#deck-canvas-and-chrome-ui))
 
-**Three deck types:** `internal` (Reveal.js Markdown), `external-embed` (iframe), `external-link` (stub info page). All three share one `slides` Zod discriminated-union collection in `src/content.config.ts`.
+**Two deck types:** `native` (Reveal.js Markdown rendered in-site) and `external` (hosted elsewhere: `externalUrl`, optional `provider`). Both share one `slides` Zod discriminated-union collection (`type` is the discriminator) in `src/content.config.ts`.
 
-**File naming:** `YYYY-MM-DD_slug.md` in `src/content/slides/{en,es}/`. **Slugs MUST be in English** on both languages.
+**File naming:** `YYYY-MM-DD_slug.md` in `src/content/slides/{en,es}/`. **Slugs MUST be in English** on both languages. **Images:** `public/images/slides/<slug>/`, hero `hero.{ext}`.
 
 **URL surface:** `/slides/<slug>` (and `/es/slides/<slug>`). Catalog at `/slides` and `/es/slides`.
 
-Canvas and chrome UI details: [Slides Guide](docs/features/SLIDES.md#deck-canvas-and-chrome-ui).
-
-**Asset isolation:** Reveal.js CSS/JS only loads on internal deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
-
-**Images:** Stored in `public/images/slides/<slug>/`. Hero: `hero.{ext}`.
+**Asset isolation:** Reveal.js CSS/JS only loads on native deck pages via `SlideLayout.astro`. Never import Reveal CSS in `MainLayout` or other layouts.
 
 **Hydration:** `RevealDeck.svelte` uses `client:only="svelte"` (documented exception to `client:visible` preference — Reveal needs DOM).
 
@@ -426,7 +424,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 19. List related articles or previous chapters in the Resources section when the post belongs to a series — they already appear in `#series-navigation` below; listing them is redundant
 20. **Leave placeholder content in blog posts** — `[AUTHOR: ...]`, `[TODO: ...]`, `[TBD]`, or any bracketed "fill in later" text. Published posts must be complete. Zero tolerance.
 21. **Use Spanish slugs for blog posts or series** — all slugs (filenames, series names, image directories) MUST be in English, even for Spanish content
-22. **Create slide routes outside `/tech-talks/*`** — the URL surface is `/tech-talks/<slug>`, not `/slides/<slug>`
+22. **Create deck routes outside `/slides/*`** — decks live at `/slides/<slug>` (and `/es/slides/<slug>`); `/tech-talks` is a listing page, not a deck route
 23. **Import Reveal CSS outside `SlideLayout`** — Reveal styles must not leak to non-deck routes
 24. **Add a new top-level page without updating `src/middleware.ts`** — the middleware has a hardcoded allowlist (`KNOWN_ROOT_PATHS` / `KNOWN_ES_PATHS`). New top-level routes (`/foo`, `/es/foo`) return 404 until added to the allowlist. Symptom: dev log shows `[404] (rewrite) /foo` (the `(rewrite)` is the smoking gun — it comes from `context.rewrite()` in the middleware, not from Astro routing). Multi-segment paths like `/foo/bar` and any path containing `.` bypass the rule, which is why deck detail pages can work while the listing page 404s. See [Architecture → Middleware Allowlist](docs/ARCHITECTURE.md#middleware-allowlist-critical).
 
@@ -443,7 +441,7 @@ Update docs after: adding components/pages, changing schemas, updating config, a
 9. Use date-prefix naming for blog posts (`YYYY-MM-DD_slug.md`)
 10. Verify Spanish diacritical marks before committing
 11. Ensure no placeholder content in blog posts (`grep -rn '\[AUTHOR:\|\[AUTOR:\|\[TODO:\|\[TBD\]\|\[FIXME\]' src/content/blog/` → zero matches)
-12. Use discriminated union narrowing for deck type checks (`if (deck.data.type === 'internal')`)
+12. Use discriminated union narrowing for deck type checks (`if (deck.data.type === 'native')`)
 13. Add both EN and ES versions for all slide deck types
 
 ## Pre-Commit Checklist
