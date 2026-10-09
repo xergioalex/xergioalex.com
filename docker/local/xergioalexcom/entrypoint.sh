@@ -296,7 +296,8 @@ chown -R node:node /home/node/.pi_data /home/node/.pi /home/node/.cline_data /ho
 chown -R node:node /home/node/.herdr_data /home/node/.config/herdr /home/node/.grok_data /home/node/.grok 2>/dev/null || true
 
 # DeepWorkPlan Vim: plugins + Mason LSP servers (share) and undo/shada (state).
-# The config itself (~/.config/nvim) stays in the image at a pinned release.
+# The config itself (~/.config/nvim) stays in the image at a pinned release
+# (DWP_VIM_VERSION, installed by the hosted installer).
 # A fresh volume is seeded with the plugins the image installed at build time.
 setup_agent_directory_persistence_for_user "/home/node" "/home/node/.nvim_data/share" "/home/node/.local/share/nvim"
 setup_agent_directory_persistence_for_user "/home/node" "/home/node/.nvim_data/state" "/home/node/.local/state/nvim"

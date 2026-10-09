@@ -220,43 +220,43 @@ RUN printf '%s\n' \
 #
 # Kept in late layers on purpose, like the PATH fix above: adding these
 # packages to the first apt RUN would invalidate the Chromium, OpenCode and
-# Herdr layers. Do not apt-install neovim — Debian trixie ships 0.10 and the
-# config needs 0.12+, so the upstream tarball goes to /opt/nvim. Runtime deps:
-# ripgrep/fd for Telescope, lua for the config's tooling, and unzip +
-# python3-venv for the Mason LSP installers.
+# Herdr layers. Do not apt-install neovim: Debian trixie ships 0.10 and the
+# config needs 0.12+. The hosted installer runs with --skip-packages, so the
+# image provides everything it and the plugins need: git/curl/lua (installer),
+# ripgrep/fd for Telescope, unzip + python3-venv for the Mason LSP installers,
+# gcc/make/libc6-dev for plugins that compile native code, and fontconfig.
 RUN apt-get update -y && \
-    apt-get install --no-install-recommends -y ripgrep fd-find lua5.4 unzip python3-venv && \
+    apt-get install --no-install-recommends -y ripgrep fd-find lua5.4 unzip python3-venv \
+      gcc make libc6-dev fontconfig && \
     ln -sf "$(command -v fdfind)" /usr/local/bin/fd && \
     ln -sf "$(command -v lua5.4)" /usr/local/bin/lua && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
 
-ARG NVIM_VERSION=0.12.5
-RUN set -eu; \
-    case "$(dpkg --print-architecture)" in \
-      amd64) nvim_arch=linux-x86_64 ;; \
-      arm64) nvim_arch=linux-arm64 ;; \
-      *) echo "unsupported arch for the neovim tarball: $(dpkg --print-architecture)" >&2; exit 1 ;; \
-    esac; \
-    mkdir -p /opt/nvim; \
-    curl -fsSL "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-${nvim_arch}.tar.gz" \
-      | tar -xz -C /opt/nvim --strip-components=1; \
-    ln -sfn /opt/nvim/bin/nvim /usr/local/bin/nvim; \
-    nvim --version | head -1
-
-# The config is baked in at a pinned release; bump DWPVIM_REF to upgrade.
-# Plugins are installed here, headless, so the first `nvim` after a rebuild
-# opens ready instead of asking to be restarted. ~/.local/share/nvim and
-# ~/.local/state/nvim are then moved onto the nvim_data volume by
+# The hosted installer pins the config release (DWP_VIM_VERSION) and installs
+# the sha256-verified Neovim tarball (NVIM_VERSION) into
+# ~/.local/opt/nvim-vX.Y.Z, linked as ~/.local/bin/nvim (on PATH via ENV and
+# 01-container-tool-paths.sh). It installs every plugin headless and
+# --strict fails the build if any required plugin is missing or an empty
+# clone, so the first `nvim` after a rebuild opens ready. ~/.local/share/nvim
+# and ~/.local/state/nvim are then moved onto the nvim_data volume by
 # entrypoint.sh, which keeps Mason's LSP servers, undo history and shada
-# across rebuilds.
-ARG DWPVIM_REF=v0.2.0
-COPY --chown=node:node xergioalexcom/nvim-bootstrap.lua /tmp/nvim-bootstrap.lua
+# across rebuilds. Bump DWP_VIM_VERSION to upgrade.
+#
+# The installer looks up Neovim's checksum through the GitHub API. If a build
+# is rate-limited, pass a token as a BuildKit secret (never an ARG/ENV):
+#   GITHUB_TOKEN=... docker build --secret id=github_token,env=GITHUB_TOKEN ...
+ARG DWP_VIM_VERSION=0.5.0
+ARG NVIM_VERSION=0.12.5
 USER node
-RUN git clone --depth 1 --branch "${DWPVIM_REF}" https://github.com/DailybotHQ/deepworkplan-vim.git /home/node/.config/nvim \
-    && timeout 1200 nvim --headless -c "luafile /tmp/nvim-bootstrap.lua"
+RUN --mount=type=secret,id=github_token,uid=1000,required=false \
+    if [ -s /run/secrets/github_token ]; then GITHUB_TOKEN="$(cat /run/secrets/github_token)"; export GITHUB_TOKEN; fi; \
+    curl -fsSL https://vim.deepworkplan.com/install.sh \
+      | bash -s -- --version "${DWP_VIM_VERSION}" --nvim "${NVIM_VERSION}" --skip-packages --strict
 USER root
-RUN rm -f /tmp/nvim-bootstrap.lua
+# Keep `nvim` on the system PATH too (root, sudo's secure_path), as the old
+# /opt/nvim install was.
+RUN ln -sfn /home/node/.local/bin/nvim /usr/local/bin/nvim && nvim --version | head -1
 
 # Copy and setup entrypoint script
 COPY xergioalexcom/entrypoint.sh /usr/local/bin/entrypoint.sh
