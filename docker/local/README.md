@@ -31,9 +31,9 @@ docker compose -p xergioalexlocal up -d xergioalexcomvscode
 
 ## Neovim (DeepWorkPlan Vim)
 
-`nvim` is Neovim 0.12.5 with the [DeepWorkPlan Vim](https://github.com/DailybotHQ/deepworkplan-vim) config, baked into the image at a pinned release (`DWPVIM_REF` build arg in the Dockerfile; bump it to upgrade). Plugins are installed headless during the build (`xergioalexcom/nvim-bootstrap.lua`), so the first `nvim` after a rebuild opens ready.
+`nvim` is Neovim 0.12.5 with the [DeepWorkPlan Vim](https://github.com/DailybotHQ/deepworkplan-vim) config, installed at build time by the hosted installer (`curl -fsSL https://vim.deepworkplan.com/install.sh | bash -s -- --version "${DWP_VIM_VERSION}" --nvim "${NVIM_VERSION}" --skip-packages --strict`). Both versions are build args in the Dockerfile; bump `DWP_VIM_VERSION` to upgrade. The installer puts Neovim in `~/.local/opt/nvim-vX.Y.Z` (linked as `~/.local/bin/nvim` and `/usr/local/bin/nvim`), installs every plugin headless, and `--strict` fails the build when a required plugin is missing, so the first `nvim` after a rebuild opens ready. If the Neovim checksum lookup hits the GitHub API rate limit, build once with plain `docker build` and pass a token as a BuildKit secret (it never lands in the image; `docker compose build` has no `--secret` flag): `GITHUB_TOKEN=... docker build --secret id=github_token,env=GITHUB_TOKEN -f docker/local/xergioalexcom/Dockerfile -t xergioalexlocal-xergioalexcomvscode docker/local`.
 
-`~/.local/share/nvim` (plugins, Mason LSP servers) and `~/.local/state/nvim` (undo, shada) live on the `nvim_data` volume, so Mason only downloads LSP servers once. Icons need a Nerd Font in your host terminal. To reset the editor state: `docker volume rm xergioalexlocal_nvim_data` and recreate the container.
+`~/.local/share/nvim` (plugins, Mason LSP servers) and `~/.local/state/nvim` (undo, shada) live on the `nvim_data` volume, so Mason only downloads LSP servers once. The volume is seeded from the image only while it is empty, so after bumping `DWP_VIM_VERSION` (or coming from the pre-0.5.0 clone-and-sync build, which could leave empty plugin clones) reset it once, as below. Icons need a Nerd Font in your host terminal. To reset the editor state: `docker volume rm xergioalexlocal_nvim_data` and recreate the container.
 
 ## Z.AI GLM Coding Plan (optional)
 
