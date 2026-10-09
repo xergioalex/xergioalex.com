@@ -244,8 +244,10 @@ RUN apt-get update -y && \
 # across rebuilds. Bump DWP_VIM_VERSION to upgrade.
 #
 # The installer looks up Neovim's checksum through the GitHub API. If a build
-# is rate-limited, pass a token as a BuildKit secret (never an ARG/ENV):
-#   GITHUB_TOKEN=... docker build --secret id=github_token,env=GITHUB_TOKEN ...
+# is rate-limited, pass a token as a BuildKit secret (never an ARG/ENV); compose
+# build has no --secret flag, so build once with plain docker build:
+#   GITHUB_TOKEN=... docker build --secret id=github_token,env=GITHUB_TOKEN \
+#     -f docker/local/xergioalexcom/Dockerfile -t xergioalexlocal-xergioalexcomvscode docker/local
 ARG DWP_VIM_VERSION=0.5.0
 ARG NVIM_VERSION=0.12.5
 USER node
