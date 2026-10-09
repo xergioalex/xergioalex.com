@@ -95,7 +95,7 @@ Create a modern, fast, and visually appealing personal website that:
 - No HTML→Markdown conversion — original source served for token efficiency
 - Discovery via `llms.txt`, `llms-full.txt`, and `robots.txt`
 
-**Technical details:** See [Markdown for Agents](docs/aeo/MARKDOWN_FOR_AGENTS.md)
+**Technical details:** See [Markdown for Agents](aeo/MARKDOWN_FOR_AGENTS.md)
 
 ### 6. Multilingual Support
 

@@ -351,5 +351,5 @@ Dark accent tone:   #CD3553 (Softer Crimson) → auto-applied in `.dark`
 - [Public Assets](features/PUBLIC_ASSETS.md) — Static asset inventory
 - [Styling Guide](../src/styles/README.md) — CSS and Tailwind technical reference
 - [Content Writer Agent](../.agents/agents/content-writer.md) — Brand voice guidelines for articles
-- [Branding Blog Post (EN)](../src/content/blog/en/personal-branding-xergioalex.md) — Full brand story
+- [Branding Blog Post (EN)](../src/content/blog/en/2020-12-31_personal-branding-xergioalex.md) — Full brand story
 - [Branding Assets Repo](https://github.com/xergioalex/personal-branding) — Source design files
