@@ -2,7 +2,7 @@
 
 **Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others). Ensures all agents work with consistent guidelines and patterns.
 
-DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-08; skill 7.0.0-beta.1)
+DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-09; skill 7.0.0)
 
 ## Detailed Documentation
 
@@ -231,7 +231,7 @@ Hosts without slash commands invoke the same flows by name (`#deepworkplan-creat
 
 The Final Review of every plan runs the local AI Diff Reviewer (`.agents/skills/ai-diff-reviewer/`, rules in `.review/extension.md`) over the plan's accumulated change set. The CI surface (`pr-review.yml`, Flow B) is not installed. A `critical` finding verified by a completed review blocks completion; an incomplete or failed review is recorded, never counted as a clean pass.
 
-Optional addons a developer accepted are recorded in the local, git-ignored addon registry `.dwp/config.json` (written with `python3 .agents/skills/deepworkplan/shared/config.py enable <key> --repo .`; read with `... show`). The registry only offers or amplifies: every flow works with no file or with every addon disabled, and machine-level addons (`vim`, `herdr`, `agentkit`) contribute abilities only when their product is detected on the machine.
+Optional addons a developer accepted are recorded in the tracked addon registry `.dwp/config.json` (the one `.dwp/` file not git-ignored) (written with `python3 .agents/skills/deepworkplan/shared/config.py enable <key> --repo .`; read with `... show`). The registry only offers or amplifies: every flow works with no file or with every addon disabled, and machine-level addons (`vim`, `herdr`, `agentkit`) contribute abilities only when their product is detected on the machine.
 
 ## Working principles
 
