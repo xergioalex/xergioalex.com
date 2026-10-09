@@ -33,7 +33,7 @@ Personal website and blog built as a static Astro 7 site (Svelte 5 islands, Tail
 - **Agent-friendly Markdown parity:** changes to page or translation content must also update `src/content/pages/{en,es}/*.md`, which `functions/_middleware.ts` serves for `Accept: text/markdown`.
 - **Import order:** Node built-ins, third-party packages, `@/` project modules, then `import type` statements as a separate group.
 - **Series and tags:** series and image directories use English slugs; tags are never auto-created (they come from `src/content/tags/*.md`), with 1-3 primary tags per post.
-- **Slides:** Reveal.js CSS and JS load only through `SlideLayout.astro`; routes live under `/tech-talks/`, not `/slides/`.
+- **Slides:** Reveal.js CSS and JS load only through `SlideLayout.astro`; deck routes live under `/slides/<slug>` (and `/es/slides/<slug>`), while `/tech-talks` is a listing page.
 - **Conventional commits** in English (`feat:`, `fix:`, `docs:`, ...).
 
 ## Test-strategy expectations
