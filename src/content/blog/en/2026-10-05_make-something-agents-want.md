@@ -3,7 +3,7 @@ title: "Make Something Agents Want"
 description: "April made agents a customer class. Five months of receipts later the counterparty is real, the payment rails split, and the question outlived its category."
 pubDate: "2026-10-05"
 heroImage: "/images/blog/posts/make-something-agents-want/hero.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["make something agents want", "agents as customers Cloudflare", "YC software for agents", "AI agents first class users", "building software for AI agents", "Cloudflare Stripe agents protocol", "agent economy 2026"]
 series: "working-with-agents"
