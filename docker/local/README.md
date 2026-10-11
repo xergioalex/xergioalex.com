@@ -1,107 +1,149 @@
 # Local Docker development stack
 
-Dev container for xergioalex.com: Node 24, pnpm, and a shared suite of Claude, Codex, OpenCode, Pi, Cline, Grok, Cursor, and Z.AI coding-agent commands.
+The site's development container is rendered by
+[devcontainer-kit](https://github.com/DailybotHQ/devcontainer-kit) (`dck`) v0.2.5 from
+`.devcontainer/dck.toml`. The same container serves a plain terminal (`bash dev.sh …`) and
+VS Code / Cursor ("Reopen in Container").
+
+| File | Role |
+| --- | --- |
+| `.devcontainer/dck.toml` | the settings: service `xergioalexcom`, user `node`, workspace `/app`, ports, layers, Herdr |
+| `.devcontainer/devcontainer.json` | what VS Code / Cursor open (same compose service) |
+| `docker/local/docker-compose.yaml` | the service, its volumes and loopback ports |
+| `docker/local/xergioalexcom/Dockerfile` | the image: dck's managed blocks, then the site's own section (chromium, the npm → pnpm shim, the site helpers) |
+| `docker/local/xergioalexcom/dck/` | the build steps dck vendors (pinned and verified downloads); reconciled by `dck init` |
+| `docker/local/xergioalexcom/.env` | your keys (copied from `.env.example` on the first `up`, mode 0600, gitignored) |
+| `dev.sh` | the entry point, a thin launcher over `dck` (plain `docker compose` when dck is absent) |
+| `docker/local/dev-setup-hook.sh` | the site's start hook (run by dck at every start): points new shells at the mounted host SSH agent when Herdr's forwarded one dangles |
+
+Blocks between `>>> dck:` and `<<< dck:` markers belong to dck: to change them, edit
+`dck.toml` and run `dck init`. Everything outside the markers is ours.
 
 ## Quick start
 
-From the repository root, `dev.sh` starts the same containers the Dev Containers
-plugin starts — no editor required:
+Docker is the only host requirement. Without devcontainer-kit, `dev.sh` runs `up`, `down`,
+`shell`, `exec`, `build`, `rebuild`, `logs` and `ps` on plain `docker compose` (it still
+creates the `.env`; the container's entrypoint runs the start hook). devcontainer-kit adds the Herdr machine, the dck
+SSH key, `ssh`, `doctor`, `agents` and `ask`; install it once, pinned, when you want those:
 
 ```bash
-bash dev.sh setup     # env files, networks, .devcontainer/
-bash dev.sh build
-bash dev.sh up
-bash dev.sh shell     # login shell as `node` in /app
+git clone --branch v0.2.5 https://github.com/DailybotHQ/devcontainer-kit && ./devcontainer-kit/install.sh
 ```
 
-Or open the project in Cursor / VS Code and let the Dev Containers plugin do it.
-Both paths produce the same containers and can be used interchangeably. See
-[Development Commands → Dev Containers Without an Editor](../../docs/DEVELOPMENT_COMMANDS.md#dev-containers-without-an-editor-devsh).
-
-Raw compose still works, but you have to name the project yourself — the
-launcher and the plugin both use `xergioalexlocal`, and letting compose default
-to the directory name creates a second, conflicting stack:
+`dev.sh` finds dck on `PATH` or in its default install directory (`~/.local/share/dck`).
+From the repository root:
 
 ```bash
-cd docker/local
-bash setup.sh
-docker compose -p xergioalexlocal build
-docker compose -p xergioalexlocal up -d xergioalexcomvscode
+bash dev.sh up        # first run: .env files and the dck SSH key; then build, start, attach to Herdr
+bash dev.sh shell     # a login shell inside, as node, in /app
+pnpm run dev          # inside: the dev server on http://localhost:4444
+bash dev.sh down      # stop and remove the container (named volumes are kept)
 ```
 
-## Neovim (DeepWorkPlan Vim)
+`bash dev.sh help` lists every verb: `up`, `down`, `shell`, `exec`, `build`, `rebuild`,
+`logs`, `ps`, `doctor`, `ssh`, `herdr`, `herdr-layout`, `agents`, `ask`, `install-dck`.
 
-`nvim` is Neovim 0.12.5 with the [DeepWorkPlan Vim](https://github.com/DailybotHQ/deepworkplan-vim) config, installed at build time by the hosted installer (`curl -fsSL https://vim.deepworkplan.com/install.sh | bash -s -- --version "${DWP_VIM_VERSION}" --nvim "${NVIM_VERSION}" --skip-packages --strict`). Both versions are build args in the Dockerfile; bump `DWP_VIM_VERSION` to upgrade. The installer puts Neovim in `~/.local/opt/nvim-vX.Y.Z` (linked as `~/.local/bin/nvim` and `/usr/local/bin/nvim`), installs every plugin headless, and `--strict` fails the build when a required plugin is missing, so the first `nvim` after a rebuild opens ready. If the Neovim checksum lookup hits the GitHub API rate limit, build once with plain `docker build` and pass a token as a BuildKit secret (it never lands in the image; `docker compose build` has no `--secret` flag): `GITHUB_TOKEN=... docker build --secret id=github_token,env=GITHUB_TOKEN -f docker/local/xergioalexcom/Dockerfile -t xergioalexlocal-xergioalexcomvscode docker/local`.
+## How `docker/local/xergioalexcom/.env` reaches your shell
 
-`~/.local/share/nvim` (plugins, Mason LSP servers) and `~/.local/state/nvim` (undo, shada) live on the `nvim_data` volume, so Mason only downloads LSP servers once. The volume is seeded from the image only while it is empty, so after bumping `DWP_VIM_VERSION` (or coming from the pre-0.5.0 clone-and-sync build, which could leave empty plugin clones) reset it once, as below. Icons need a Nerd Font in your host terminal. To reset the editor state: `docker volume rm xergioalexlocal_nvim_data` and recreate the container.
+- **At creation.** Compose loads it as the service's `env_file`. `docker exec` shells and
+  editor terminals inherit it.
+- **In ssh and Herdr sessions.** The entrypoint writes an environment profile from it.
+- **In every new bash.** `docker/custom_commands.sh` re-reads it, so after editing the file,
+  opening a new shell is enough.
 
-## Z.AI GLM Coding Plan (optional)
+Values are never printed. `dck doctor --json` reports key names only.
 
-Use [Z.AI GLM Coding Plan](https://docs.z.ai/devpack/quick-start) alongside the default Anthropic-backed `claude` / `claudex` commands. Wrappers inject auth and model mapping **only for that process** — nothing is written to `~/.claude/settings.json`.
+## Coding agents (coding-agents-kit)
 
-### Setup
+The agents layer installs [coding-agents-kit](https://github.com/DailybotHQ/coding-agents-kit)
+v0.3.0 and the seven CLIs listed in `dck.toml`: claude, codex, cursor, opencode, pi, cline and
+grok. Each is installed at a pinned version and verified. Every CLI home lives on its own named
+volume, so logins survive `bash dev.sh rebuild`.
 
-1. Copy or edit `docker/local/xergioalexcom/.env` and set your Coding Plan API key ([manage API keys](https://z.ai/manage-apikey/apikey-list)):
+| Names | What they run |
+| --- | --- |
+| `claudex`, `codexx`, `cursorx`, `opencodex`, `pix`, `clinex`, `grokx` | each CLI through `ak` (`classic` preset) |
+| `claude-glm`, `codex-glm`, `opencode-glm`, `pi-glm` | Z.AI GLM Coding Plan — `ZAI_CODING_API_KEY` |
+| `codex-azure`, `opencode-azure`, `pi-azure`, `cline-azure` | Azure OpenAI / Foundry — `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_RESOURCE` or `AZURE_OPENAI_BASE_URL`, `AZURE_OPENAI_MODEL_DAILY` |
+| `codex-xai`, `opencode-xai`, `pi-xai`, `cline-xai` | xAI — `XAI_API_KEY` |
 
-   ```bash
-   ZAI_CODING_API_KEY=your-key-here
-   ```
+`ak doctor` shows what is installed and which keys are set (names only). Session flags are the
+same for every CLI: `-c` continues, `-r <id>` resumes.
 
-2. Rebuild and restart the dev container:
+**Autonomy by default.** Agents launched through `ak` run with their CLI's own autonomy flag:
+the container is the sandbox. To have them ask before acting, set `AGENTKIT_PERMISSIONS=ask` in
+`docker/local/xergioalexcom/.env`, or pass `--ask` to one launch. The opt-out always wins.
 
-   ```bash
-   cd docker/local
-   docker compose build
-   docker compose up -d
-   ```
+## Git over SSH
 
-3. Open a **fresh shell** inside the container (or `source /app/docker/custom_commands.sh`).
+Git signs and pushes with the keys your **host's SSH agent** holds. The agent's socket is mounted
+into the container; no key file is copied in, and neither `~/.ssh` nor `~/.gitconfig` is
+mounted.
 
-### Commands
+- Load your key on the host once. On macOS: `ssh-add --apple-use-keychain ~/.ssh/<your key>`.
+  `bash dev.sh up` warns when the agent holds no keys.
+- `dck setup` (run by the first `up`) copies your git name and email into `.env` as `DCK_GIT_*`.
+  SSH commit signing is copied too; openpgp signing is not, because the container has no gpg key.
+- Check from inside: `ssh-add -l`, then `ssh -T git@github.com`.
 
-The complete wrapper list is also available with `help` inside the container. Provider aliases and `pix` run with full permissions by default and accept `-c` / `--continue`:
+## Herdr
 
-| Group | Commands |
-|-------|----------|
-| Grok / xAI | `grokx`, `opencode-xai`, `cline-xai`, `pix`, `codex-xai`, `claude-xai`, `pi-xai` |
-| Claude Code | `claude`, `claudex`, `claude-glm`, `cline-glm`, `clinex-glm` |
-| Codex | `codex`, `codexx`, `codex-azure`, `codex-glm` |
-| OpenCode | `opencode`, `opencodex`, `opencode-azure`, `opencode-glm`, `opencode-xai` |
-| Pi | `pi`, `pix`, `pi-azure`, `pi-glm`, `pi-xai` |
-| Cline | `cline`, `clinex`, `clinex-azure`, `cline-xai`, `cline-glm` |
-| Other | `herdr`, `chelper`, `agent`, `cursorx` |
+`bash dev.sh up` registers the container as a [Herdr](https://herdr.dev) machine. Its sshd
+listens on `127.0.0.1:22029` and accepts only the dck key. The machine opens with the standard
+sidebar: Home · Editor · Development (server | tests) · Agents (Agent 1..4).
+`bash dev.sh herdr-layout --keep` recreates whatever is missing, and `--reset` rebuilds it.
 
-| Command | Description |
-|---------|-------------|
-| `claude-glm` | Claude Code via Z.AI (`https://api.z.ai/api/anthropic`), always with `--dangerously-skip-permissions` |
-| `chelper` | Z.AI Coding Tool Helper wizard |
-| `opencode` | OpenCode CLI — run `opencode auth login` and select **Z.AI Coding Plan** |
+Agents inside reach Herdr agents on the host and in other dck containers through
+[herdr-peers](https://github.com/DailybotHQ/herdr-peers). From the host:
 
-Plain `claude` and `claudex` continue to use your Anthropic auth unchanged.
+```bash
+bash dev.sh agents                                  # the live agents on every machine
+bash dev.sh ask <machine>:<pane> "Which test covers the parser?"
+```
 
-### Model mapping
+Since dck v0.2.3 the mesh is complete: `dck up` also pushes the host (when your dck host
+profile enables it: `dck setup` offers dck's own loopback listener once, or `[host]
+listener = "external"` points at one you already run) and the other loopback containers your
+host's Herdr manages, such as the Dailybot ones, each with a pinned host key. The container's
+Herdr machine catalog lives on the `state` volume, so `rebuild` keeps it. To let containers
+that dck did not create log in here, list the public keys they use under `[ssh]
+authorized_extra` in the host profile. `dck setup` also installs a verified herdr-peers on the
+host, so host agents can reply with `herdr-peers reply`.
 
-Opus/Sonnet/Haiku aliases are remapped to GLM **only** when using `claude-glm`:
+The mesh between containers needs Docker Desktop. It is on by default and can be turned off
+with `[herdr] mesh = false` in `dck.toml`. Read devcontainer-kit's `docs/SECURITY.md` before
+running an untrusted repository next to this one.
 
-| Env var | Default |
-|---------|---------|
-| `ZAI_DEFAULT_OPUS_MODEL` | `glm-5.3` |
-| `ZAI_DEFAULT_SONNET_MODEL` | `glm-5.3` |
-| `ZAI_DEFAULT_HAIKU_MODEL` | `glm-5.3-flash` |
+## Backing services
 
-See [latest model mapping](https://docs.z.ai/devpack/latest-model). For 1M context, set models to e.g. `glm-5.3[1m]` and `ZAI_CODING_AUTO_COMPACT_WINDOW=1000000`.
+`docker/local/docker-compose.yaml` also declares, outside the dck blocks:
 
-The `opencode-glm` wrapper writes the configured GLM model IDs and Coding Plan endpoint to OpenCode automatically. Likewise, `opencode-xai` uses `XAI_MODEL_DAILY`, `XAI_MODEL_REASONING`, and `XAI_BASE_URL`; `opencode-azure` uses the corresponding `AZURE_OPENAI_*` variables. The selected provider and model are persisted in `~/.config/opencode/opencode.json`.
+- **`playwright-mcp`** — the Playwright MCP server (SSE at `http://playwright-mcp:8931/sse`,
+  used by `.mcp.json` and `.cursor/mcp.json`; loopback `127.0.0.1:8931` from the host). It is
+  not started by `dev.sh up`; start it with
+  `docker compose -f docker/local/docker-compose.yaml up -d playwright-mcp`.
+- **`e2e`** — the Playwright Test runner, on demand only (profile `e2e`):
+  `docker compose -f docker/local/docker-compose.yaml --profile e2e run --rm e2e`.
 
-### Verify
+Both keep their caches under `tmp/` (git-ignored).
 
-In a **new** `claude-glm` session, run `/status`:
+## Persistence
 
-- **Anthropic base URL** must be `https://api.z.ai/api/anthropic`
-- The **Model** line may still show a Claude-looking alias; traffic routing is determined by the base URL and process-scoped `ANTHROPIC_DEFAULT_*_MODEL` env vars
+| Volume (compose project `xergioalex-com`) | Holds |
+| --- | --- |
+| `state` | sshd host keys, `gh` login, Herdr config, Dailybot CLI config, shell history |
+| `agentkit` | ak profiles and its env file |
+| `claude`, `codex`, `cursor`, `opencode`, `pi`, `cline`, `grok` | each CLI's home (logins, sessions) |
 
-After changing wrappers or model env vars, exit the old session and start a new one with `claude-glm`.
+`bash dev.sh rebuild` replaces the image and keeps every volume. Removing a volume
+(`docker volume rm xergioalex-com_<name>`) loses what it holds.
 
-### Persistence
+## Troubleshooting
 
-Sessions and configuration survive container rebuilds through named Docker volumes. Claude and Codex use `claude_data` / `codex_data`; OpenCode and the helper use `opencode_data` / `chelper_data`; Pi and Cline use `pi_data` / `cline_data`. The entrypoint symlinks these volumes to the agents' normal home directories, including `~/.claude`, `~/.codex`, `~/.config/opencode`, `~/.local/share/opencode`, `~/.pi`, and `~/.cline`.
+| Symptom | Fix |
+| --- | --- |
+| `dev.sh needs devcontainer-kit (dck)` | Install it, pinned (Quick start). |
+| `Permission denied (publickey)` on `git push` | The host agent has no key: run `ssh-add` on the host, then retry. No rebuild is needed. |
+| `claudex: command not found` | Open an interactive shell (`bash dev.sh shell`). The presets load in interactive bash. |
+| Port 4444 busy | Look for another dev server: `lsof -i :4444`. |
+| Anything else | `bash dev.sh doctor` (or `dck doctor --json`). |

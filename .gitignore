@@ -35,9 +35,6 @@ coverage/
 # VSCode (local editor settings)
 .vscode/
 
-# devcontainer (local dev setup)
-.devcontainer/
-
 # Deep Work Plan outputs (plans + drafts are working artifacts, not tracked source);
 # the addon registry .dwp/config.json is tracked so teammates and CI share it
 .dwp/*
@@ -73,3 +70,12 @@ public/images/blog/_staging/
 
 # Local git worktrees (agent and release checkouts)
 .worktrees/
+.dailybot/disabled
+
+# >>> dck:gitignore >>>
+# devcontainer-kit: runtime env files hold secrets; backups from `dck init`.
+docker/local/**/.env
+docker/local/**/.env.*
+!docker/local/**/.env.example
+*.dck-bak-*
+# <<< dck:gitignore <<<
