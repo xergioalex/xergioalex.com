@@ -1,0 +1,12 @@
+{
+  "name": "xergioalex.com",
+  "default_metadata": {
+    "repo": "xergioalex.com"
+  },
+  "report": {
+    "min_interval_minutes": 30,
+    "nudge": true,
+    "mode": "balanced",
+    "soft_turn_threshold": 8
+  }
+}
