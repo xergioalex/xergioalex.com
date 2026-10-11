@@ -2,7 +2,7 @@
 
 **Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others). Ensures all agents work with consistent guidelines and patterns.
 
-DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-09; skill 7.0.1)
+DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-09 and 2026-10-11; skill 7.3.0, vendored 2026-10-11)
 
 ## Detailed Documentation
 
@@ -251,6 +251,12 @@ Work with autonomy, ownership and sound judgment. These are defaults within the 
 ## Shared Agent Coordination
 
 Multiple AI agents collaborate on this codebase. When updating agent guidance, mirror changes across all relevant files. See **[AI Agent Collaboration](docs/AI_AGENT_COLLAB.md)**.
+
+### Optional — Dailybot reporting (best-effort, never blocks)
+
+The DWP **Dailybot addon** is wired: the `dailybot` skill is vendored under `.agents/skills/dailybot/` (pinned in `skills-lock.json`), and `.dailybot/profile.json` signs reports as `xergioalex.com`. When the Dailybot CLI is present and authenticated, DWP work emits standup-style updates at four plan lifecycle points — **kickoff** (a plan is approved: what is being built), **significant task** (a feature or fix ships mid-plan), **blocked** (a run halts; `state.json.blocked` says what it needs) and **completion** (the only milestone: what was built) — with `--json-data` derived from the plan's `state.json`. If Dailybot is absent, unauthenticated or unreachable, or `.dailybot/disabled` exists, skip silently and continue: **reporting never blocks any work.** Describe outcomes for the team, never plan IDs, task numbers, file paths or git stats.
+
+`.agents/settings.json` wires the Dailybot lifecycle hooks (`dailybot hook session-start | activity | stop`, CLI >= 3.9.0) so the harness reminds the agent about unreported work at the end of a turn. When a reminder fires, send a report if a meaningful unit of work is done, or run `dailybot hook dismiss` if not. The hooks are local-only, always exit 0 and respect `.dailybot/disabled`.
 
 ## Quick Commands
 
