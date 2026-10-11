@@ -323,7 +323,7 @@ When using the devcontainer, the host port is mapped to **4444**. Access the dev
 ## Development Container (`dev.sh`)
 
 The container is rendered by [devcontainer-kit](https://github.com/DailybotHQ/devcontainer-kit)
-(`dck`, v0.2.10) from `.devcontainer/dck.toml`; Cursor / VS Code "Reopen in Container" opens the
+(`dck`, v0.2.11) from `.devcontainer/dck.toml`; Cursor / VS Code "Reopen in Container" opens the
 same one. `dev.sh` at the repository root is a thin launcher over `dck`. Docker is the only host
 requirement: without dck, the container verbs (`up`, `down`, `shell`, `exec`, `build`,
 `rebuild`, `logs`, `ps`) run on plain `docker compose`, and `bash dev.sh install-dck` installs
