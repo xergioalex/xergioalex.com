@@ -2,7 +2,7 @@
 
 **Purpose:** Single source of truth for all AI coding assistants (Claude Code, Cursor AI, OpenAI Codex, Google Gemini, GitHub Copilot, and others). Ensures all agents work with consistent guidelines and patterns.
 
-DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-09 and 2026-10-11; skill 7.3.1, vendored 2026-10-11)
+DWP standard: 7.0.0 (onboarded earlier; upgraded 2026-10-09 and 2026-10-11; skill 7.3.2, vendored 2026-10-11)
 
 ## Detailed Documentation
 
