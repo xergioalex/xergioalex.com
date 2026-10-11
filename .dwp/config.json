@@ -2,43 +2,35 @@
   "addons": {
     "agentkit": {
       "enabled": true,
-      "note": "ak installed machine-wide in the container (agents layer) and on the host",
-      "version": "v0.4.0"
+      "version": "v0.5.0"
     },
     "ai-diff-reviewer": {
       "enabled": true,
-      "note": "vendored local review (.agents/skills/ai-diff-reviewer, .review/extension.md)",
-      "version": "v3.3.1"
+      "version": "v3.3.9"
     },
     "dailybot": {
       "enabled": true,
-      "note": "repo-level: vendored skill + lifecycle hooks in .agents/settings.json (AGENTS.md)",
-      "version": "v3.23.4"
+      "version": "v3.23.12"
     },
     "dependency-upgrade": {
       "enabled": true,
-      "note": "in-pack addon, versioned with the vendored deepworkplan pack",
-      "version": "v7.5.1"
+      "version": "v7.6.0"
     },
     "design-system": {
       "enabled": true,
-      "note": "in-pack addon, versioned with the vendored deepworkplan pack (docs/DESIGN.md)",
-      "version": "v7.5.1"
+      "version": "v7.6.0"
     },
     "devcontainer": {
       "enabled": true,
-      "note": "dck-rendered container: docker/local/xergioalexcom (dck init)",
-      "version": "v0.2.11"
+      "version": "v0.3.0"
     },
     "herdr": {
       "enabled": true,
-      "note": "herdr-peers pinned in the image; the container is a Herdr machine with the mesh on",
-      "version": "v0.1.0"
+      "version": "v0.2.1"
     },
     "vim": {
       "enabled": true,
-      "note": "DeepWorkPlan Vim installed as the container editor (editor layer)",
-      "version": "v0.6.0"
+      "version": "v0.7.0"
     }
   }
 }
