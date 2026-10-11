@@ -18,17 +18,17 @@
     "dependency-upgrade": {
       "enabled": true,
       "note": "in-pack addon, versioned with the vendored deepworkplan pack",
-      "version": "v7.5.0"
+      "version": "v7.5.1"
     },
     "design-system": {
       "enabled": true,
       "note": "in-pack addon, versioned with the vendored deepworkplan pack (docs/DESIGN.md)",
-      "version": "v7.5.0"
+      "version": "v7.5.1"
     },
     "devcontainer": {
       "enabled": true,
       "note": "dck-rendered container: docker/local/xergioalexcom (dck init)",
-      "version": "v0.2.10"
+      "version": "v0.2.11"
     },
     "herdr": {
       "enabled": true,
