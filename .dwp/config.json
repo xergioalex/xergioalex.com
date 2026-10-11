@@ -3,7 +3,7 @@
     "agentkit": {
       "enabled": true,
       "note": "ak installed machine-wide in the container (agents layer) and on the host",
-      "version": "v0.3.0"
+      "version": "v0.4.0"
     },
     "ai-diff-reviewer": {
       "enabled": true,
@@ -18,17 +18,17 @@
     "dependency-upgrade": {
       "enabled": true,
       "note": "in-pack addon, versioned with the vendored deepworkplan pack",
-      "version": "v7.4.0"
+      "version": "v7.5.0"
     },
     "design-system": {
       "enabled": true,
       "note": "in-pack addon, versioned with the vendored deepworkplan pack (docs/DESIGN.md)",
-      "version": "v7.4.0"
+      "version": "v7.5.0"
     },
     "devcontainer": {
       "enabled": true,
       "note": "dck-rendered container: docker/local/xergioalexcom (dck init)",
-      "version": "v0.2.9"
+      "version": "v0.2.10"
     },
     "herdr": {
       "enabled": true,
