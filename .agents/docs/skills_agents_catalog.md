@@ -407,3 +407,7 @@ DeepWorkPlan v7.6.3, AI Diff Reviewer v3.3.11 and Dailybot skill v3.23.14 are pi
 ## Dogfood reconciliation — 2026-10-12 (DeepWorkPlan v7.7.0)
 
 DeepWorkPlan v7.7.0 is installed from its tagged release and verified against the release `SHA256SUMS` (178 files, exact file set). AI Diff Reviewer v3.3.11 and Dailybot skill v3.23.14 remain at the pack's pins. The pack now pins coding-agents-kit v0.6.1 and herdr-peers v0.3.2; the container stays rendered with dck v0.3.5 (coding-agents-kit v0.5.3, herdr-peers v0.2.3) until a devcontainer-kit release carries the new pins, so the registry keeps those two addons at their rendered versions. DeepWorkPlan Vim v0.7.0, repository hooks, review rules and historical plans are unchanged.
+
+## Dogfood reconciliation — 2026-10-12 (DeepWorkPlan v7.7.1)
+
+DeepWorkPlan v7.7.1 is installed from its tagged release and verified against the release `SHA256SUMS` (178 files, exact file set). AI Diff Reviewer v3.3.12 and Dailybot skill v3.23.15 follow the pack's pins and are pinned in `skills-lock.json`. The container is re-rendered with dck v0.3.7 (`dck init --yes`, dck-managed blocks only), which brings coding-agents-kit v0.7.1 and herdr-peers v0.3.2; DeepWorkPlan Vim v0.7.0 remains a container editor layer. Repository hooks, review rules, design documentation and historical plans are preserved.
