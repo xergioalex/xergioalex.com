@@ -3,7 +3,7 @@ title: "Construye algo que los agentes quieran"
 description: "Cinco meses de comprobantes después, la contraparte es real, los rieles de pago se partieron y la pregunta le sobrevivió a su categoría."
 pubDate: "2026-10-05"
 heroImage: "/images/blog/posts/make-something-agents-want/hero-es.webp"
-heroLayout: "side-by-side"
+heroLayout: "banner"
 tags: ["tech", "personal", "ai-agents", "cloudflare"]
 keywords: ["construye algo que los agentes quieran", "agentes como clientes Cloudflare", "Y Combinator software para agentes", "agentes IA ciudadanos primera clase", "cómo construir software para agentes", "Cloudflare Stripe protocolo agentes", "economía de agentes 2026"]
 series: "working-with-agents"
